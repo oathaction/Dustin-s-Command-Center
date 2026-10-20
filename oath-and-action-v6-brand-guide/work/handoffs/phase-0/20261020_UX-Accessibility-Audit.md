@@ -25,7 +25,7 @@ The intro's `max-width:65ch` runs long because Inter's zero is wider than its av
 
 **Heading outline.** The page exposes 214 headings. Each chapter h2 is a slogan, with the chapter name in an eyebrow span, so heading and region lists read "A structure you can read." with no mention of the Grid. Skips: Data Visualization h2 to h4; In Use h2 to h5, then runs of h5 and h6; The Grid, Topic Icons and Photography h3 to h5. At least 41 headings come from mockups inside specimens, 36 of them in In Use.
 
-**Landmarks.** A `nav` outside `main`, one `main`, a second `nav` inside the hero, 17 named regions, and the report `dialog` outside `main`. There is no banner or contentinfo, and the closing section has no name.
+**Landmarks.** Two `nav` elements (one inside the hero), one `main`, 17 named regions and the report `dialog`. There is no banner or contentinfo, and the closing section has no name.
 
 **Cross-references.** Nine references such as "chapter 07" appear in five chapters. None is a link, and no chapter ends with related chapters (brief section 7, item 7).
 
@@ -33,12 +33,12 @@ The intro's `max-width:65ch` runs long because Inter's zero is wider than its av
 
 | Control | Result |
 |---|---|
-| Report reader | Native modal `dialog`, background inert, named "Report page reader", no visible title. Focus lands on Close and cycles within the dialog and browser chrome. Escape and Close return focus to the opener. |
+| Report reader | Native modal `dialog` named "Report page reader", with no visible title. Focus starts on Close, stays inside, and returns to the opener on Escape or Close. |
 | Reader arrow keys | Left and Right turn pages anywhere in the dialog, including on the Zoom select. At Full size on 390 the page is 816 px wide in a 350 px scroller, and ArrowRight turns the page, so a keyboard user cannot pan right. |
 | Previous, Next | Well named; dashed border when disabled. Reaching page 12 with Next drops focus to the document body. The counter is a polite live region. |
 | Play the hinge, Play the lever reveal | Each plays once (680 and 560 ms) from a still frame. Under reduced motion a click shows and announces nothing; the written timelines serve as stills. The hinge div's `aria-label` is ignored. |
 | Advance a stage, Reset | Steps 1 to 9, then wraps to 1 without notice. The stage label is not a live region. |
-| View on dark | Works by keyboard. `aria-pressed` turns true while the label changes to "View on light", so it announces "View on light, pressed". |
+| View on dark | Works by keyboard. The label flips along with `aria-pressed`, so it announces "View on light, pressed". |
 | Icon search, group, size | Labeled; live count; helpful empty state. The 16 px option draws the 16 px master at 48 px (`icons-size-16-option.png`). |
 | Signal Grid composer | Selects and Reset work. The decoding reaches assistive technology only as a replaced SVG's name. The conflict warning is silent, in 12 px Pillar Red at 2.96:1 (`composer-conflict.png`). |
 
@@ -52,7 +52,7 @@ The guide has no pause control and no download or copy button.
 | Active | Verdigris lever | Differs from Ready only by hue, 1.14:1 between the two. Fails 1.4.1. |
 | Loading (lockmark, tracker row) | Lever pulsing between 20 and 50 percent opacity, forever | Starts on load with no pause: fails 2.2.2. Lever at 1.27:1 to 1.83:1 on Newsprint: fails 1.4.11. No text of its own. Brief 17 and tension 2 require a replacement. |
 | Ready | Lever lands in red on page load | Plays unasked; the motion chapter limits it to the hero and report cover. |
-| Completed, current, upcoming | Charcoal fill, 2 px Verdigris ring, 1 px Stone ring | Current and upcoming differ by 1.28:1 and 1 px of stroke. At the 24 px section-marker size a node is 1.5 px across, so no ring can read. |
+| Completed, current, upcoming | Charcoal fill, 2 px Verdigris ring, 1 px Stone ring | Current and upcoming differ by 1.28:1 and 1 px of stroke; at the 24 px marker size a node is 1.5 px across. |
 | Final, gap | Red lever at 1.25 times; dashed Stone ring | At 40 px the lever is 3 px and the gap ring 2.5 px across, too small to read. |
 | Warning (composer) | Red 12 px text | Fails 1.4.3 and 4.1.3. |
 | Empty result (icons) | Text with advice, live count | Passes; a model for V6. |
@@ -86,7 +86,7 @@ V5 defines no selected, muted, error, success or general warning state, and no d
 
 ### Critical
 
-1. **Loading pulses forever.** 2.2.2 Pause, Stop, Hide; 1.4.11 Non-text Contrast. The Grid, States and tracker row. Evidence: infinite animation from page load; 1.27:1 when frozen (section 3). Fix: status text ("Loading tracker"), a still Stone outline lever, motion only on request and under five seconds.
+1. **Loading pulses forever.** 2.2.2 Pause, Stop, Hide; 1.4.11 Non-text Contrast. The Grid, States and tracker row. Evidence: section 3. Fix: status text ("Loading tracker"), a still Stone outline lever, motion only on request and under five seconds.
 2. **Signal Grid meaning rests on hue at tiny sizes.** 1.4.1 Use of Color; 1.4.11 Non-text Contrast. The Grid, kickers, tracker cards, In Use. Evidence: section 4, color-only row. Fix: precedence rules (tension 4), content type in text or shape, a minimum size per encoding, a decoding key beside each use, distinct shapes for Active and Ready.
 3. **The reader takes the arrow keys.** 2.1.1 Keyboard; 2.4.3 Focus Order. Reports dialog. Evidence: section 2. Fix: page keys only on the reader chrome; end buttons that keep focus through `aria-disabled`; a visible title ("Page 5 of 12: Narrative page") as the dialog name.
 
