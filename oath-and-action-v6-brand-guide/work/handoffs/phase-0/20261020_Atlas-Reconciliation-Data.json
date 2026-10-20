@@ -31,6 +31,7 @@
    "Index sheet rows": 12,
    "Index busiest crossings": 4,
    "Field Guide specimens": 20,
+   "Field Guide ring textures and end marks": 20,
    "Who Can Act route rows": 11,
    "Who Can Act outcome rows": 4,
    "Who Can Act group rows": 8,
@@ -39,18 +40,40 @@
    "Circuit counts": 1,
    "Circuit pass-on examples": 5,
    "numeric and structural claims": 21,
+   "Ledger reform counts": 12,
    "reform effect words": 12,
    "AVS outcome cells": 12,
    "AVS domain rows": 10,
    "AVS layer rows": 3
   },
-  "auto_findings": 8,
+  "auto_findings": 2,
+  "reviewed_false_positives": 8,
   "auto_findings_by_type": {
-   "grade": 8
+   "structure": 2
   },
   "documents_scanned": 121
  },
  "findings": [
+  {
+   "file": "source/20261019_Oath-And-Action-Atlas-Design-Concepts_V2.html",
+   "location": "section 07 (Concept 06 Ledger); row D03",
+   "item": "D03 reforms",
+   "shown": "10",
+   "v7": "9 live reforms target this domain; 10 if the rejected R-35 is counted",
+   "type": "structure",
+   "note": "Ledger reform count"
+  },
+  {
+   "file": "source/20261019_Oath-And-Action-Atlas-Design-Concepts_V2.html",
+   "location": "section 07 (Concept 06 Ledger); row D04",
+   "item": "D04 reforms",
+   "shown": "14",
+   "v7": "13 live reforms target this domain; 14 if the rejected R-35 is counted",
+   "type": "structure",
+   "note": "Ledger reform count"
+  }
+ ],
+ "reviewed_false_positives": [
   {
    "file": "work/extract/v5-polished/chapters/16-atlas-system.html",
    "location": "chapter 16-atlas-system; Loop R1: A1 to B1 through L01 positive; B1 to E1 through L02 positive ",
@@ -58,7 +81,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   },
   {
    "file": "work/extract/v5-polished/chapters/16-atlas-system.html",
@@ -67,7 +91,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   },
   {
    "file": "work/extract/v5-polished/images/e44e256497.svg",
@@ -76,7 +101,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   },
   {
    "file": "work/extract/v5-polished/images/0164ea8408.svg",
@@ -85,7 +111,8 @@
    "shown": "plausible",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: Intended change: weaken L03 and reduce A1 over time. \n Remedy evidence in V7: plausible. \n DECISION AND ROUTE \n V7 assigns this proposal to Congress and a federal \n tax-law route through reconciliatio"
+   "note": "connection attribute in context: Intended change: weaken L03 and reduce A1 over time. \n Remedy evidence in V7: plausible. \n DECISION AND ROUTE \n V7 assigns this proposal to Congress and a federal \n tax-law route through reconciliatio",
+   "why": "'plausible' is the remedy evidence grade of reform R-28, shown on the line below"
   },
   {
    "file": "work/extract/atlas-visual-system/chapters/05-evidence.html",
@@ -94,7 +121,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   },
   {
    "file": "work/extract/atlas-visual-system/chapters/05-evidence.html",
@@ -103,7 +131,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   },
   {
    "file": "work/extract/atlas-visual-system/images/0164ea8408.svg",
@@ -112,7 +141,8 @@
    "shown": "plausible",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: Intended change: weaken L03 and reduce A1 over time. \n Remedy evidence in V7: plausible. \n DECISION AND ROUTE \n V7 assigns this proposal to Congress and a federal \n tax-law route through reconciliatio"
+   "note": "connection attribute in context: Intended change: weaken L03 and reduce A1 over time. \n Remedy evidence in V7: plausible. \n DECISION AND ROUTE \n V7 assigns this proposal to Congress and a federal \n tax-law route through reconciliatio",
+   "why": "'plausible' is the remedy evidence grade of reform R-28, shown on the line below"
   },
   {
    "file": "work/extract/atlas-visual-system/images/e44e256497.svg",
@@ -121,7 +151,8 @@
    "shown": "hypothesis",
    "v7": "well-supported",
    "type": "grade",
-   "note": "connection attribute in context: L26 and one hypothetical return link "
+   "note": "connection attribute in context: L26 and one hypothetical return link ",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
   }
  ],
  "collisions": [

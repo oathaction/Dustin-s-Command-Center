@@ -119,7 +119,7 @@ DOMAIN_IDS = set(DOMAINS)
 
 ID_RE = re.compile(
     r"(?<![A-Za-z0-9\-.])("
-    r"R-\d{2}|CL\d{4}|RL\d{2}|DL\d{2}|EC\d{1,2}|TC\d{1,2}|LX\d|LE\d{2}|LT\d{2}|L\d{2}|L##|"
+    r"R-\d{2}|CL\d{4}|RL\d{2}|DL\d{2}|LTR\d|EC\d{1,2}|TC\d{1,2}|LX\d|LE\d{2}|LT\d{2}|L\d{2}|L##|"
     r"T\d{2}|R\d{1,2}[ab]?|B\d{1,2}a?|[ACE]\d{1,2}|D\d{1,2}|X\d{1,2}|I\d{3}"
     r")(?![A-Za-z0-9])"
 )
@@ -147,6 +147,8 @@ def kinds_of(tok, standards_doc=False):
         k.append("repair-log row")
     if tok in DELIVERY:
         k.append("delivery-log row")
+    if tok in {r["id"] for r in V7["rejectedLinks"]}:
+        k.append("rejected connection")
     if standards_doc and re.fullmatch(r"R[1-9]", tok):
         k.append("standards rule")
     if tok == "L##":
@@ -857,6 +859,17 @@ for spec, svg in zip([f for f in FIELD], specimen_svgs):
     pos = sum(1 for l in LP["links"] if LINKS[l]["polarity"] == "+")
     neg = sum(1 for l in LP["links"] if LINKS[l]["polarity"] == "-")
     dashes = collections.Counter(a[1] or "solid" for a in arcs)
+    tex_name = {"solid": "solid", "8 6": "dashed", "0.1 5.2": "dotted", "0.1 4.4": "dotted", "10 4 2 4": "dash-dot"}
+    shown_tex = collections.Counter(tex_name.get(k, k) for k in dashes.elements())
+    exp_tex = collections.Counter({"documented": "solid", "well-supported": "solid", "plausible": "dashed",
+                                   "plausible_contested": "dash-dot", "hypothesis": "dotted"}[LINKS[l]["evidence"]]
+                                  for l in LP["links"])
+    checked["Field Guide ring textures and end marks"] += 1
+    if shown_tex != exp_tex:
+        finding(fg, "specimen " + spec["loop"], spec["loop"], dict(shown_tex), dict(exp_tex), "encoding", "ring textures")
+    if heads - 1 != pos or bars != neg:
+        finding(fg, "specimen " + spec["loop"], spec["loop"], "%d arrowheads, %d bars" % (heads - 1, bars),
+                "%d positive, %d negative" % (pos, neg), "sign", "ring end marks (one triangle belongs to the centre glyph)")
     FIELD_GLYPHS.append({"loop": spec["loop"], "arcs": len(arcs), "arrowheads_or_triangles": heads, "bars": bars,
                          "v7_plus": pos, "v7_minus": neg, "textures": dict(dashes),
                          "red_arcs": sum(1 for a in arcs if a[0] == "#E63946")})
@@ -1084,6 +1097,17 @@ for code, row in LEDGER.items():
     if row["loops"] not in (c["loops (first-domain)"], c["loops (any domain)"]):
         finding(led, "row " + code, code + " loops", str(row["loops"]),
                 "%d or %d" % (c["loops (first-domain)"], c["loops (any domain)"]), "structure", "Ledger count")
+    vs_set = set(vars_on[code])
+
+    def touches(R, S=vs_set):
+        return any((t in S) or (t in LINKS and (LINKS[t]["from"] in S or LINKS[t]["to"] in S)) for t in R["targets"])
+    live_n = sum(1 for R in REFORMS.values() if not R["rejected"] and touches(R))
+    all_n = sum(1 for R in REFORMS.values() if touches(R))
+    checked["Ledger reform counts"] += 1
+    if row["reforms"] != live_n:
+        finding(led, "row " + code, code + " reforms", str(row["reforms"]),
+                "%d live reforms target this domain; %d if the rejected R-35 is counted" % (live_n, all_n),
+                "structure", "Ledger reform count")
     vs = sorted(vars_on[code])
     if row["vars"] and not set(row["vars"]) <= set(vs):
         finding(led, "row " + code, code + " variables", " ".join(row["vars"]), " ".join(vs), "structure", "Ledger variables")
@@ -1163,6 +1187,19 @@ for i, o in enumerate(occ):
         if norm(after) != norm(lt) and not norm(after).startswith(norm(lt)) and norm(lt)[:20] in norm(after) is False:
             finding(o["doc"], o["sub"], o["id"], after[:90], lt, "label", "loop title next to ID")
 
+# ---------------------------------------------- reviewed false positives
+REVIEWED_FALSE = []
+keep = []
+for f in FINDINGS:
+    n = f["note"]
+    if f["item"] == "L26" and "hypothetical return link" in n:
+        REVIEWED_FALSE.append(dict(f, why="the word 'hypothetical' in this clause describes T01, the next link"))
+    elif f["item"] == "L03" and "Remedy evidence in V7: plausible" in n:
+        REVIEWED_FALSE.append(dict(f, why="'plausible' is the remedy evidence grade of reform R-28, shown on the line below"))
+    else:
+        keep.append(f)
+FINDINGS[:] = keep
+
 # ---------------------------------------------- summary
 id_occ = [o for o in occ if o["kinds"] not in (["route"], ["effect code"])]
 unique_ids = sorted({o["id"] for o in id_occ})
@@ -1177,6 +1214,7 @@ summary = {
     "occurrences_by_kind": dict(by_kind),
     "checks_run": dict(checked),
     "auto_findings": len(FINDINGS),
+    "reviewed_false_positives": len(REVIEWED_FALSE),
     "auto_findings_by_type": dict(collections.Counter(f["type"] for f in FINDINGS)),
     "documents_scanned": len(DOCS),
 }
@@ -1184,6 +1222,7 @@ summary = {
 out = {
     "summary": summary,
     "findings": FINDINGS,
+    "reviewed_false_positives": REVIEWED_FALSE,
     "collisions": COLLISIONS,
     "standards_rules_found": std_rules,
     "v5_atlas_loops_found": v5_loops,
