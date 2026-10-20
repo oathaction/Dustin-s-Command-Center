@@ -1,0 +1,4653 @@
+{
+ "headings": [
+  {
+   "lvl": 1,
+   "text": "A country that answers to its people.",
+   "chapter": "top",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "People belong in the picture.",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The hinge.",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Four pillars, always in this order.",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Explain",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Track",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Connect",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Act",
+   "chapter": "purpose",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Clear enough to invite someone in.",
+   "chapter": "voice",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Supporting lines.",
+   "chapter": "voice",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "How we sound.",
+   "chapter": "voice",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Vocabulary.",
+   "chapter": "voice",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The hinge headline.",
+   "chapter": "voice",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "A strong center. Room around it.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Clear space.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Minimum sizes, at true size.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Eight lockups.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L1 · Primary wordmark",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L2 · Stacked",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L3 · Horizontal lockup",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L4 · Box and tagline",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L5 · Horizontal with tagline",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L6 · Editorial signature",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L7 · Section masthead",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "L8 · Monogram",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Four surfaces and mono.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Quiet signatures.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The decision behind the service.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Follow the public record.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Color matrix.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Misuse.",
+   "chapter": "identity",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "One character, a wider range.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Container marks.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The hinge diagram.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Hinge headlines at three scales.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Editorial crop.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Hinge divider.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Seal and emboss.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Partnership lockup.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Hinge motion.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Misuse.",
+   "chapter": "ampersand",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Newsprint carries the conversation.",
+   "chapter": "color",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Proportion.",
+   "chapter": "color",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Contrast, measured.",
+   "chapter": "color",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The keyline rule.",
+   "chapter": "color",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Four surfaces.",
+   "chapter": "color",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "A voice you can recognize.",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The scale.",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Craft.",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "1 · Tabular figures",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "2 · Balanced headings",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "3 · Hanging punctuation",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "4 · Measure",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "5 · The 8 px rhythm",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "6 · Ligatures and figures",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Email is the one exception.",
+   "chapter": "type",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "A structure you can read.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Geometry.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "States.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Positions and sizes.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The same geometry, used to code content.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Position names the pillar.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Color names the content type.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Fill shows progress.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "The gap.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Series paths.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "The kicker lockup.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "A bill tracker in nine stages.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Six series, six routes.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The kicker lockup.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In context.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "What a primary decides, and who may vote in it.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": "h3 to h5"
+  },
+  {
+   "lvl": 5,
+   "text": "Three election bills moved this week.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Watchthe vote.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The promisethe record.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Composer.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Misuse.",
+   "chapter": "grid",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Four silhouettes, one family.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "How the pillars work together.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Read the rule.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Follow the record.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Find the people.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Take the next step.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Construction.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In a circular badge.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In a name lockup.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In the website navigation.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "As a section opener.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Watch the vote.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In the poster quartet.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Know therules.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "poster",
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Watch thevote.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "poster",
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Find yourhearing.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "poster",
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Make themove.",
+   "chapter": "pillar-marks",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "poster",
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Twenty subjects, drawn like a typeface.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Construction.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Field and keylines",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Ballot",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Bill",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Committee hearing",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Optical sizes.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The distinctness test.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Four surfaces.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "In use.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "In this report",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": "h3 to h5"
+  },
+  {
+   "lvl": 5,
+   "text": "The budgetthe bill.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "tile",
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The library.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Ballot",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Ranked ballot",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Open primary",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "District map",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "State house",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Bill",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Committee hearing",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Roll call vote",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Court",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Campaign money",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Local government",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Public records",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Housing",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Work and wages",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Taxes and budget",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Health care",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Cost of living",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Contact an official",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Testify",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Organize",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "icon-tile",
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Utility glyphs.",
+   "chapter": "topic-icons",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Photograph the process, not the idea of it.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The shot list.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Avoid.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Two treatments.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Type never sits on a busy image.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Three election bills moved this week.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": "h3 to h5"
+  },
+  {
+   "lvl": 3,
+   "text": "Testimonials.",
+   "chapter": "photography",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "The chart proves the sentence.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Every chart carries a claim.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": "h2 to h4"
+  },
+  {
+   "lvl": 4,
+   "text": "Series order.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Chart types.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Axes and labels.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Status and deltas.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "The grid as a legend mark.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Four conventions, drawn.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Closed primaries are the largest group.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Turnout in the closed primary fell 24 points in twelve years.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "District 4 moved most after the rule change.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Where each election bill sits this week.",
+   "chapter": "data",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Things slide, draw and land.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The hinge.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Tokens.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Three easings.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Standard",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Enter",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Exit",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Reduced motion.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Never.",
+   "chapter": "motion",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Fewer applications, fully resolved.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Three election bills moved this week.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "email",
+   "skip": "h2 to h5"
+  },
+  {
+   "lvl": 5,
+   "text": "What a primary decides, and who may vote in it.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "01 The rule",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "02 The gap",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "What you can do",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "H.4212 · Stage 3 of 9",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "The rule",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "What a primary decides, and who may vote in it.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "How a district line gets drawn, and who holds the pen.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "Three election bills moved this week.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 6,
+   "text": "Testifying for the first time: a ninety-second script.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "What a primary decides, and who may vote in it.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The tracker.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Testify on H.4212 in ninety seconds.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Know therules.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Watch thevote.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Find yourhearing.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Make themove.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The budgetthe bill.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The hearingthe vote.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "How the rules connect, and where the gaps are.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Name the rule.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Find the gap.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Make the move.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The lever.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "A country that answers to its people.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Who wrote the rule you are angry about?",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Who wrote the rule you are angry about?",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Open primaries in one page.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Closed primaries are the largest group.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The hearingthe vote.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "A country that answers to its people.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "The gap.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 4,
+   "text": "Turnout in the closed primary fell 24 points in twelve years.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "chart",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Put the promise to work.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 5,
+   "text": "Find yourhearing.",
+   "chapter": "in-use",
+   "inButton": false,
+   "exposed": true,
+   "specimen": "app",
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "A complete argument, page by page.",
+   "chapter": "reports",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The decisionbehind theservice.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Start with a question.Follow the record.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "A useful question has a clear address.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "The allocation",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "The decision",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "The household perspective",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Who dotheyanswer to?",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "A service schedule shapes someone's day.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Give the reader a way to check.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Return to the record.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Every handoff belongs to someone.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Resident",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Clerk",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Council",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Council office",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Where the public can take part",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "100 units.Named uses.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Fewer steps.Then check the outcome.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Earlier route",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Revised route",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "What the count leaves open",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "What remainsafter the bills?",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Put the promiseto work.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Find the responsible office.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Name the evidence.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Prepare one useful question.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Check the follow-through.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Keep the evidence within reach.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Method",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 4,
+   "text": "Before publication",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "A countrythat answersto its people.",
+   "chapter": "reports",
+   "inButton": true,
+   "exposed": false,
+   "specimen": "report-page"
+  },
+  {
+   "lvl": 3,
+   "text": "Anatomy.",
+   "chapter": "reports",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "The working rules stay with the work.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Ten rules that cover most mistakes.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Newsprint leads.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "One lever per page.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Hairlines, not boxes.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Specify and show.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Red is punctuation.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "The grid is a signature.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Dimension everything.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Source everything.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Pillars in order.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Number the system.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Specifications.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Asset index.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Accessibility.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Before anything is called final.",
+   "chapter": "standards",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Make the mechanism easier to see.",
+   "chapter": "atlas-system",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 3,
+   "text": "Working rules for the atlas.",
+   "chapter": "atlas-system",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  },
+  {
+   "lvl": 2,
+   "text": "Put the promiseto work.",
+   "chapter": "closing",
+   "inButton": false,
+   "exposed": true,
+   "specimen": null,
+   "skip": null
+  }
+ ],
+ "landmarks": [
+  {
+   "tag": "nav",
+   "id": null,
+   "cls": "site-nav",
+   "label": "Guide sections",
+   "insideMain": false,
+   "insideSection": false
+  },
+  {
+   "tag": "main",
+   "id": null,
+   "cls": "",
+   "label": null,
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "section",
+   "id": "top",
+   "cls": "chapter",
+   "label": "A country that answers to its people.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "nav",
+   "id": null,
+   "cls": "toc",
+   "label": "Chapters",
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "purpose",
+   "cls": "chapter",
+   "label": "People belong in the picture.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "voice",
+   "cls": "chapter",
+   "label": "Clear enough to invite someone in.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "identity",
+   "cls": "chapter",
+   "label": "A strong center. Room around it.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "ampersand",
+   "cls": "chapter",
+   "label": "One character, a wider range.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "color",
+   "cls": "chapter",
+   "label": "Newsprint carries the conversation.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "type",
+   "cls": "chapter",
+   "label": "A voice you can recognize.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "grid",
+   "cls": "chapter",
+   "label": "A structure you can read.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "pillar-marks",
+   "cls": "chapter",
+   "label": "Four silhouettes, one family.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "topic-icons",
+   "cls": "chapter",
+   "label": "Twenty subjects, drawn like a typeface.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "photography",
+   "cls": "chapter",
+   "label": "Photograph the process, not the idea of it.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "data",
+   "cls": "chapter",
+   "label": "The chart proves the sentence.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "motion",
+   "cls": "chapter",
+   "label": "Things slide, draw and land.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "in-use",
+   "cls": "chapter",
+   "label": "Fewer applications, fully resolved.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "aside",
+   "id": null,
+   "cls": "aside",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "reports",
+   "cls": "chapter",
+   "label": "A complete argument, page by page.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "report-folio",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "standards",
+   "cls": "chapter",
+   "label": "The working rules stay with the work.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "section",
+   "id": "atlas-system",
+   "cls": "chapter",
+   "label": "Make the mechanism easier to see.",
+   "insideMain": true,
+   "insideSection": false
+  },
+  {
+   "tag": "header",
+   "id": null,
+   "cls": "chapter-head",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "footer",
+   "id": null,
+   "cls": "section-foot",
+   "label": null,
+   "insideMain": true,
+   "insideSection": true
+  },
+  {
+   "tag": "dialog",
+   "id": "report-dialog",
+   "cls": "modal",
+   "label": "Report page reader",
+   "insideMain": false,
+   "insideSection": false
+  }
+ ],
+ "ariaSnapshotNav": "- navigation \"Guide sections\":\n  - link \"Oath and Action, beginning\":\n    - /url: \"#top\"\n    - img \"Oath and Action\"\n  - link \"Purpose\":\n    - /url: \"#purpose\"\n  - link \"Identity\":\n    - /url: \"#identity\"\n  - link \"Symbols\":\n    - /url: \"#grid\"\n  - link \"In use\":\n    - /url: \"#photography\"\n  - link \"Reports\":\n    - /url: \"#reports\"\n  - link \"Standards\":\n    - /url: \"#standards\"\n  - link \"Systems\":\n    - /url: \"#atlas-system\"",
+ "ariaSnapshotToc": "- navigation \"Chapters\":\n  - link \"01 Purpose Purpose\":\n    - /url: \"#purpose\"\n  - link \"02 Voice Purpose\":\n    - /url: \"#voice\"\n  - link \"03 Identity Identity\":\n    - /url: \"#identity\"\n  - link \"04 The Ampersand Identity\":\n    - /url: \"#ampersand\"\n  - link \"05 Color Identity\":\n    - /url: \"#color\"\n  - link \"06 Type Identity\":\n    - /url: \"#type\"\n  - link \"07 The Grid Symbols\":\n    - /url: \"#grid\"\n  - link \"08 Pillar Marks Symbols\":\n    - /url: \"#pillar-marks\"\n  - link \"09 Topic Icons Symbols\":\n    - /url: \"#topic-icons\"\n  - link \"10 Photography In use\":\n    - /url: \"#photography\"\n  - link \"11 Data Visualization In use\":\n    - /url: \"#data\"\n  - link \"12 Motion In use\":\n    - /url: \"#motion\"\n  - link \"13 In Use In use\":\n    - /url: \"#in-use\"\n  - link \"14 Reports Reports\":\n    - /url: \"#reports\"\n  - link \"15 Standards Standards\":\n    - /url: \"#standards\"\n  - link \"16 Systems maps Systems\":\n    - /url: \"#atlas-system\"",
+ "anchors": [
+  {
+   "href": "#purpose",
+   "text": "Skip to the guide",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#top",
+   "text": "",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#purpose",
+   "text": "Purpose",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#identity",
+   "text": "Identity",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#grid",
+   "text": "Symbols",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#photography",
+   "text": "In use",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#reports",
+   "text": "Reports",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#standards",
+   "text": "Standards",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#atlas-system",
+   "text": "Systems",
+   "where": "Guide sections",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#purpose",
+   "text": "01PurposePurpose",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#voice",
+   "text": "02VoicePurpose",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#identity",
+   "text": "03IdentityIdentity",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#ampersand",
+   "text": "04The AmpersandIdentity",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#color",
+   "text": "05ColorIdentity",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#type",
+   "text": "06TypeIdentity",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#grid",
+   "text": "07The GridSymbols",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#pillar-marks",
+   "text": "08Pillar MarksSymbols",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#topic-icons",
+   "text": "09Topic IconsSymbols",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#photography",
+   "text": "10PhotographyIn use",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#data",
+   "text": "11Data VisualizationIn use",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#motion",
+   "text": "12MotionIn use",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#in-use",
+   "text": "13In UseIn use",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#reports",
+   "text": "14ReportsReports",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#standards",
+   "text": "15StandardsStandards",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#atlas-system",
+   "text": "16Systems mapsSystems",
+   "where": "Chapters",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  },
+  {
+   "href": "#top",
+   "text": "Back to the beginning",
+   "where": "closing",
+   "targetExists": true,
+   "targetTag": "section",
+   "targetFocusable": false
+  }
+ ],
+ "sections": [
+  {
+   "id": "top",
+   "part": null,
+   "title": "A country that answers to its people."
+  },
+  {
+   "id": "purpose",
+   "part": "Purpose",
+   "title": "People belong in the picture."
+  },
+  {
+   "id": "voice",
+   "part": "Purpose",
+   "title": "Clear enough to invite someone in."
+  },
+  {
+   "id": "identity",
+   "part": "Identity",
+   "title": "A strong center. Room around it."
+  },
+  {
+   "id": "ampersand",
+   "part": "Identity",
+   "title": "One character, a wider range."
+  },
+  {
+   "id": "color",
+   "part": "Identity",
+   "title": "Newsprint carries the conversation."
+  },
+  {
+   "id": "type",
+   "part": "Identity",
+   "title": "A voice you can recognize."
+  },
+  {
+   "id": "grid",
+   "part": "Symbols",
+   "title": "A structure you can read."
+  },
+  {
+   "id": "pillar-marks",
+   "part": "Symbols",
+   "title": "Four silhouettes, one family."
+  },
+  {
+   "id": "topic-icons",
+   "part": "Symbols",
+   "title": "Twenty subjects, drawn like a typeface."
+  },
+  {
+   "id": "photography",
+   "part": "In use",
+   "title": "Photograph the process, not the idea of it."
+  },
+  {
+   "id": "data",
+   "part": "In use",
+   "title": "The chart proves the sentence."
+  },
+  {
+   "id": "motion",
+   "part": "In use",
+   "title": "Things slide, draw and land."
+  },
+  {
+   "id": "in-use",
+   "part": "In use",
+   "title": "Fewer applications, fully resolved."
+  },
+  {
+   "id": "reports",
+   "part": "Reports",
+   "title": "A complete argument, page by page."
+  },
+  {
+   "id": "standards",
+   "part": "Standards",
+   "title": "The working rules stay with the work."
+  },
+  {
+   "id": "atlas-system",
+   "part": "Systems",
+   "title": "Make the mechanism easier to see."
+  },
+  {
+   "id": "closing",
+   "part": "Standards",
+   "title": "Put the promiseto work."
+  }
+ ],
+ "duplicateIds": [],
+ "textCrossRefs": [
+  {
+   "chapter": "voice",
+   "refs": [
+    "chapter 07"
+   ],
+   "linked": false
+  },
+  {
+   "chapter": "voice",
+   "refs": [
+    "Chapter 04"
+   ],
+   "linked": false
+  },
+  {
+   "chapter": "motion",
+   "refs": [
+    "chapter 04"
+   ],
+   "linked": false
+  },
+  {
+   "chapter": "in-use",
+   "refs": [
+    "chapter 08",
+    "chapter 14"
+   ],
+   "linked": false
+  },
+  {
+   "chapter": "reports",
+   "refs": [
+    "chapter 11",
+    "chapter 07",
+    "chapter 10"
+   ],
+   "linked": false
+  },
+  {
+   "chapter": "standards",
+   "refs": [
+    "chapter 05"
+   ],
+   "linked": false
+  }
+ ],
+ "navCurrent": [
+  {
+   "section": "top",
+   "part": null,
+   "current": []
+  },
+  {
+   "section": "purpose",
+   "part": "Purpose",
+   "current": []
+  },
+  {
+   "section": "voice",
+   "part": "Purpose",
+   "current": [
+    "Purpose"
+   ]
+  },
+  {
+   "section": "identity",
+   "part": "Identity",
+   "current": [
+    "Purpose"
+   ]
+  },
+  {
+   "section": "ampersand",
+   "part": "Identity",
+   "current": [
+    "Purpose"
+   ]
+  },
+  {
+   "section": "color",
+   "part": "Identity",
+   "current": [
+    "Identity"
+   ]
+  },
+  {
+   "section": "type",
+   "part": "Identity",
+   "current": [
+    "Identity"
+   ]
+  },
+  {
+   "section": "grid",
+   "part": "Symbols",
+   "current": [
+    "Identity"
+   ]
+  },
+  {
+   "section": "pillar-marks",
+   "part": "Symbols",
+   "current": [
+    "Identity"
+   ]
+  },
+  {
+   "section": "topic-icons",
+   "part": "Symbols",
+   "current": [
+    "Identity"
+   ]
+  },
+  {
+   "section": "photography",
+   "part": "In use",
+   "current": [
+    "Symbols"
+   ]
+  },
+  {
+   "section": "data",
+   "part": "In use",
+   "current": [
+    "Symbols"
+   ]
+  },
+  {
+   "section": "motion",
+   "part": "In use",
+   "current": [
+    "Symbols"
+   ]
+  },
+  {
+   "section": "in-use",
+   "part": "In use",
+   "current": [
+    "Symbols"
+   ]
+  },
+  {
+   "section": "reports",
+   "part": "Reports",
+   "current": [
+    "In use"
+   ]
+  },
+  {
+   "section": "standards",
+   "part": "Standards",
+   "current": [
+    "In use"
+   ]
+  },
+  {
+   "section": "atlas-system",
+   "part": "Systems",
+   "current": [
+    "In use"
+   ]
+  },
+  {
+   "section": "closing",
+   "part": "Standards",
+   "current": [
+    "Reports"
+   ]
+  }
+ ],
+ "navHeight1440": 69.390625,
+ "measure1440": [
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 77,
+   "lines": 3,
+   "sample": "Oath & Action makes public decisions easier to und"
+  },
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 76,
+   "lines": 3,
+   "sample": "Most of the rules that decide those questions are "
+  },
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 79,
+   "lines": 3,
+   "sample": "The oath is the promise every officeholder swears "
+  },
+  {
+   "chapter": "voice",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 84,
+   "lines": 2,
+   "sample": "Authority comes from useful explanations and care "
+  },
+  {
+   "chapter": "voice",
+   "cls": "voice-row",
+   "fs": 14,
+   "width": 290,
+   "cpl": 44,
+   "lines": 3,
+   "sample": "The purpose statement. Use it in full on the About"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "Plain and active. Short sentences sit next to long"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 80,
+   "lines": 2,
+   "sample": "Sourced. Every claim names its dataset, its date a"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 76,
+   "lines": 2,
+   "sample": "Nonpartisan. Describe the mechanism and let reader"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 77,
+   "lines": 3,
+   "sample": "Series names: Reform 101, The Oath, Proof It Works"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 79,
+   "lines": 3,
+   "sample": "An editorial format that joins two noun phrases wi"
+  },
+  {
+   "chapter": "identity",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 88,
+   "lines": 2,
+   "sample": "The wordmark is two words and a hinge. Everything "
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 88,
+   "lines": 2,
+   "sample": "The ampersand is the hinge between the oath and th"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 74,
+   "lines": 4,
+   "sample": "The original OATH & ACTION lettering anchors the g"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 79,
+   "lines": 3,
+   "sample": "A hairline broken by a small red ampersand. It sep"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "What you can do. Written testimony is accepted unt"
+  },
+  {
+   "chapter": "color",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 86,
+   "lines": 2,
+   "sample": "Six colors and White. Each has a share and a job, "
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 79,
+   "lines": 2,
+   "sample": "Newsprint leads. Sixty to eighty-five percent of e"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 3,
+   "sample": "Red is punctuation. One job per composition: a but"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 79,
+   "lines": 3,
+   "sample": "Red never pairs with blue as a partisan signal, an"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 77,
+   "lines": 2,
+   "sample": "Dividers are Stone hairlines. A red rule belongs t"
+  },
+  {
+   "chapter": "type",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 86,
+   "lines": 2,
+   "sample": "Three faces, each with one job. Compact headlines "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 411,
+   "cpl": 63,
+   "lines": 2,
+   "sample": "800. Headlines, section titles, covers, large numb"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 411,
+   "cpl": 63,
+   "lines": 4,
+   "sample": "400, 600, 700. Body, interface, labels, captions, "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 411,
+   "cpl": 62,
+   "lines": 3,
+   "sample": "400 and 500. Pull quotes, testimonials and the quo"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 62,
+   "lines": 2,
+   "sample": "Numbers in tables, trackers and scorecards align i"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 64,
+   "lines": 2,
+   "sample": "Headings balance their lines. Body text wraps pret"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 61,
+   "lines": 3,
+   "sample": "A reading measure between 60 and 72 characters kee"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 64,
+   "lines": 3,
+   "sample": "Spacing steps in eights. Margins between blocks ar"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 63,
+   "lines": 2,
+   "sample": "Common ligatures stay on. Discretionary ligatures "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 81,
+   "lines": 3,
+   "sample": "Mail clients ignore web fonts, so email uses a sys"
+  },
+  {
+   "chapter": "grid",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 86,
+   "lines": 2,
+   "sample": "The lockmark never changes. The Signal Grid uses i"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 80,
+   "lines": 3,
+   "sample": "A 3 by 3 grid of nodes joined by hairlines. The bo"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "The grid is a signature, which means it appears in"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 69,
+   "lines": 6,
+   "sample": "The four corners light in reading order: Explain t"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 67,
+   "lines": 4,
+   "sample": "Prussian marks explainers and evidence. Verdigris "
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 69,
+   "lines": 4,
+   "sample": "For trackers the nine nodes read left to right, to"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 66,
+   "lines": 3,
+   "sample": "For accountability content, one node is replaced b"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 69,
+   "lines": 3,
+   "sample": "Each recurring series owns one fixed route through"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 475,
+   "cpl": 71,
+   "lines": 3,
+   "sample": "A Signal Grid at 20 to 24 px, a topic icon and a s"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 88,
+   "lines": 2,
+   "sample": "Explain, Track, Connect, Act. An open folio, a seq"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 4,
+   "sample": "The marks use the existing 123.5-unit field. Broad"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 80,
+   "lines": 4,
+   "sample": "On a light surface, the folio insert is Prussian, "
+  },
+  {
+   "chapter": "topic-icons",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 89,
+   "lines": 2,
+   "sample": "Twenty subjects share substantial silhouettes, ope"
+  },
+  {
+   "chapter": "photography",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 87,
+   "lines": 2,
+   "sample": "Images show what Oath & Action will publish: peopl"
+  },
+  {
+   "chapter": "photography",
+   "cls": "body-large",
+   "fs": 24,
+   "width": 624,
+   "cpl": 55,
+   "lines": 2,
+   "sample": "Documentary, available light, eye level. Real civi"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 77,
+   "lines": 4,
+   "sample": "Photograph the process. A hearing room from the pu"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "Captions name the place, the date and what is happ"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 81,
+   "lines": 2,
+   "sample": "In the article, one testimonial becomes the pull q"
+  },
+  {
+   "chapter": "data",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 89,
+   "lines": 2,
+   "sample": "Bar, line and tracker conventions with the grid as"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 66,
+   "lines": 3,
+   "sample": "The title is the sentence the chart proves. A sour"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 64,
+   "lines": 3,
+   "sample": "Charcoal, Prussian, Stone, Verdigris. Pillar Red m"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 64,
+   "lines": 3,
+   "sample": "Bar, line, dumbbell, stacked bar, small multiples "
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 64,
+   "lines": 3,
+   "sample": "Axes and baselines in Stone at 1 px. Gridlines das"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 63,
+   "lines": 3,
+   "sample": "Pillar Red and Verdigris with a sign or an arrow. "
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 416,
+   "cpl": 62,
+   "lines": 3,
+   "sample": "When a chart is about leverage, the Signal Grid re"
+  },
+  {
+   "chapter": "motion",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 86,
+   "lines": 2,
+   "sample": "Movement is rare and mechanical. Three behaviors, "
+  },
+  {
+   "chapter": "motion",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 3,
+   "sample": "OATH and ACTION settle into place and the ampersan"
+  },
+  {
+   "chapter": "motion",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 3,
+   "sample": "When the reader prefers reduced motion, every anim"
+  },
+  {
+   "chapter": "in-use",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 93,
+   "lines": 2,
+   "sample": "Each application is built live at its true ratio w"
+  },
+  {
+   "chapter": "reports",
+   "cls": "intro",
+   "fs": 22,
+   "width": 902,
+   "cpl": 89,
+   "lines": 2,
+   "sample": "The research brief from cover to sources, with the"
+  },
+  {
+   "chapter": "reports",
+   "cls": "p",
+   "fs": 17,
+   "width": 624,
+   "cpl": 78,
+   "lines": 4,
+   "sample": "Every page is a reusable layout with live type and"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "Sixty to eighty-five percent of every composition "
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 75,
+   "lines": 2,
+   "sample": "Stone hairlines separate modules. White is a speci"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 74,
+   "lines": 2,
+   "sample": "One job per composition. The wordmark ampersand an"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 78,
+   "lines": 2,
+   "sample": "Sanctioned positions at fixed sizes. It is never w"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 75,
+   "lines": 2,
+   "sample": "Clear space, minimum size and export size are draw"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 82,
+   "lines": 2,
+   "sample": "Every statistic names its dataset, the date pulled"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 79,
+   "lines": 2,
+   "sample": "Explain, Track, Connect, Act. The order never chan"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 544,
+   "cpl": 76,
+   "lines": 2,
+   "sample": "Rules, lockups, marks and checks carry numbers so "
+  },
+  {
+   "chapter": "atlas-system",
+   "cls": "lead",
+   "fs": 17,
+   "width": 1312,
+   "cpl": 167,
+   "lines": 1,
+   "sample": "A shared graphic language for the atlas’s variable"
+  }
+ ],
+ "nav390": {
+  "navHeight": 85,
+  "linksScrollWidth": 425,
+  "linksClientWidth": 350,
+  "scrollbarHidden": "none",
+  "fontSize": "11px",
+  "links": [
+   {
+    "text": "Purpose",
+    "left": 20,
+    "right": 64,
+    "w": 44,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Identity",
+    "left": 84,
+    "right": 125,
+    "w": 41,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Symbols",
+    "left": 145,
+    "right": 191,
+    "w": 46,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "In use",
+    "left": 211,
+    "right": 243,
+    "w": 32,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Reports",
+    "left": 263,
+    "right": 304,
+    "w": 42,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Standards",
+    "left": 324,
+    "right": 379,
+    "w": 54,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Systems",
+    "left": 399,
+    "right": 445,
+    "w": 46,
+    "h": 34,
+    "visible": false
+   }
+  ],
+  "scrollPaddingTop": "116px",
+  "navShareOfViewport": 10
+ },
+ "measure390": [
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 6,
+   "sample": "Oath & Action makes public decisions easier to und"
+  },
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 5,
+   "sample": "Most of the rules that decide those questions are "
+  },
+  {
+   "chapter": "purpose",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 6,
+   "sample": "The oath is the promise every officeholder swears "
+  },
+  {
+   "chapter": "voice",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 40,
+   "lines": 4,
+   "sample": "Authority comes from useful explanations and care "
+  },
+  {
+   "chapter": "voice",
+   "cls": "voice-row",
+   "fs": 14,
+   "width": 350,
+   "cpl": 53,
+   "lines": 2,
+   "sample": "The purpose statement. Use it in full on the About"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 3,
+   "sample": "Plain and active. Short sentences sit next to long"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 45,
+   "lines": 3,
+   "sample": "Sourced. Every claim names its dataset, its date a"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 3,
+   "sample": "Nonpartisan. Describe the mechanism and let reader"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 4,
+   "sample": "Series names: Reform 101, The Oath, Proof It Works"
+  },
+  {
+   "chapter": "voice",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 5,
+   "sample": "An editorial format that joins two noun phrases wi"
+  },
+  {
+   "chapter": "identity",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 42,
+   "lines": 3,
+   "sample": "The wordmark is two words and a hinge. Everything "
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 4,
+   "sample": "The ampersand is the hinge between the oath and th"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 42,
+   "lines": 7,
+   "sample": "The original OATH & ACTION lettering anchors the g"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 5,
+   "sample": "A hairline broken by a small red ampersand. It sep"
+  },
+  {
+   "chapter": "ampersand",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 3,
+   "sample": "What you can do. Written testimony is accepted unt"
+  },
+  {
+   "chapter": "color",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 3,
+   "sample": "Six colors and White. Each has a share and a job, "
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 4,
+   "sample": "Newsprint leads. Sixty to eighty-five percent of e"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 5,
+   "sample": "Red is punctuation. One job per composition: a but"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 5,
+   "sample": "Red never pairs with blue as a partisan signal, an"
+  },
+  {
+   "chapter": "color",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 4,
+   "sample": "Dividers are Stone hairlines. A red rule belongs t"
+  },
+  {
+   "chapter": "type",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 4,
+   "sample": "Three faces, each with one job. Compact headlines "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 3,
+   "sample": "800. Headlines, section titles, covers, large numb"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 53,
+   "lines": 4,
+   "sample": "400, 600, 700. Body, interface, labels, captions, "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 53,
+   "lines": 4,
+   "sample": "400 and 500. Pull quotes, testimonials and the quo"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 52,
+   "lines": 2,
+   "sample": "Numbers in tables, trackers and scorecards align i"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 2,
+   "sample": "Headings balance their lines. Body text wraps pret"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 52,
+   "lines": 4,
+   "sample": "A reading measure between 60 and 72 characters kee"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 4,
+   "sample": "Spacing steps in eights. Margins between blocks ar"
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 53,
+   "lines": 2,
+   "sample": "Common ligatures stay on. Discretionary ligatures "
+  },
+  {
+   "chapter": "type",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 46,
+   "lines": 5,
+   "sample": "Mail clients ignore web fonts, so email uses a sys"
+  },
+  {
+   "chapter": "grid",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 3,
+   "sample": "The lockmark never changes. The Signal Grid uses i"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 45,
+   "lines": 6,
+   "sample": "A 3 by 3 grid of nodes joined by hairlines. The bo"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 4,
+   "sample": "The grid is a signature, which means it appears in"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 51,
+   "lines": 8,
+   "sample": "The four corners light in reading order: Explain t"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 49,
+   "lines": 6,
+   "sample": "Prussian marks explainers and evidence. Verdigris "
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 51,
+   "lines": 6,
+   "sample": "For trackers the nine nodes read left to right, to"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 48,
+   "lines": 4,
+   "sample": "For accountability content, one node is replaced b"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 51,
+   "lines": 3,
+   "sample": "Each recurring series owns one fixed route through"
+  },
+  {
+   "chapter": "grid",
+   "cls": "p",
+   "fs": 15,
+   "width": 350,
+   "cpl": 52,
+   "lines": 4,
+   "sample": "A Signal Grid at 20 to 24 px, a topic icon and a s"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 42,
+   "lines": 4,
+   "sample": "Explain, Track, Connect, Act. An open folio, a seq"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 8,
+   "sample": "The marks use the existing 123.5-unit field. Broad"
+  },
+  {
+   "chapter": "pillar-marks",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 45,
+   "lines": 7,
+   "sample": "On a light surface, the folio insert is Prussian, "
+  },
+  {
+   "chapter": "topic-icons",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 42,
+   "lines": 4,
+   "sample": "Twenty subjects share substantial silhouettes, ope"
+  },
+  {
+   "chapter": "photography",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 3,
+   "sample": "Images show what Oath & Action will publish: peopl"
+  },
+  {
+   "chapter": "photography",
+   "cls": "body-large",
+   "fs": 20,
+   "width": 350,
+   "cpl": 37,
+   "lines": 3,
+   "sample": "Documentary, available light, eye level. Real civi"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 6,
+   "sample": "Photograph the process. A hearing room from the pu"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 3,
+   "sample": "Captions name the place, the date and what is happ"
+  },
+  {
+   "chapter": "photography",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 45,
+   "lines": 4,
+   "sample": "In the article, one testimonial becomes the pull q"
+  },
+  {
+   "chapter": "data",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 42,
+   "lines": 3,
+   "sample": "Bar, line and tracker conventions with the grid as"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 56,
+   "lines": 3,
+   "sample": "The title is the sentence the chart proves. A sour"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 4,
+   "sample": "Charcoal, Prussian, Stone, Verdigris. Pillar Red m"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 3,
+   "sample": "Bar, line, dumbbell, stacked bar, small multiples "
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 54,
+   "lines": 4,
+   "sample": "Axes and baselines in Stone at 1 px. Gridlines das"
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 53,
+   "lines": 4,
+   "sample": "Pillar Red and Verdigris with a sign or an arrow. "
+  },
+  {
+   "chapter": "data",
+   "cls": "p",
+   "fs": 14,
+   "width": 350,
+   "cpl": 52,
+   "lines": 4,
+   "sample": "When a chart is about leverage, the Signal Grid re"
+  },
+  {
+   "chapter": "motion",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 41,
+   "lines": 3,
+   "sample": "Movement is rare and mechanical. Three behaviors, "
+  },
+  {
+   "chapter": "motion",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 5,
+   "sample": "OATH and ACTION settle into place and the ampersan"
+  },
+  {
+   "chapter": "motion",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 43,
+   "lines": 5,
+   "sample": "When the reader prefers reduced motion, every anim"
+  },
+  {
+   "chapter": "in-use",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 44,
+   "lines": 4,
+   "sample": "Each application is built live at its true ratio w"
+  },
+  {
+   "chapter": "reports",
+   "cls": "intro",
+   "fs": 18,
+   "width": 350,
+   "cpl": 42,
+   "lines": 4,
+   "sample": "The research brief from cover to sources, with the"
+  },
+  {
+   "chapter": "reports",
+   "cls": "p",
+   "fs": 17,
+   "width": 350,
+   "cpl": 44,
+   "lines": 7,
+   "sample": "Every page is a reusable layout with live type and"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 39,
+   "lines": 4,
+   "sample": "Sixty to eighty-five percent of every composition "
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 37,
+   "lines": 3,
+   "sample": "Stone hairlines separate modules. White is a speci"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 37,
+   "lines": 3,
+   "sample": "One job per composition. The wordmark ampersand an"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 39,
+   "lines": 4,
+   "sample": "Sanctioned positions at fixed sizes. It is never w"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 37,
+   "lines": 3,
+   "sample": "Clear space, minimum size and export size are draw"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 41,
+   "lines": 3,
+   "sample": "Every statistic names its dataset, the date pulled"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 39,
+   "lines": 4,
+   "sample": "Explain, Track, Connect, Act. The order never chan"
+  },
+  {
+   "chapter": "standards",
+   "cls": "p",
+   "fs": 15,
+   "width": 270,
+   "cpl": 38,
+   "lines": 3,
+   "sample": "Rules, lockups, marks and checks carry numbers so "
+  },
+  {
+   "chapter": "atlas-system",
+   "cls": "lead",
+   "fs": 17,
+   "width": 350,
+   "cpl": 45,
+   "lines": 3,
+   "sample": "A shared graphic language for the atlas’s variable"
+  }
+ ],
+ "toc390": {
+  "top": 885,
+  "height": 823
+ },
+ "nav360": {
+  "navHeight": 85,
+  "linksScrollWidth": 425,
+  "linksClientWidth": 320,
+  "scrollbarHidden": "none",
+  "fontSize": "11px",
+  "links": [
+   {
+    "text": "Purpose",
+    "left": 20,
+    "right": 64,
+    "w": 44,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Identity",
+    "left": 84,
+    "right": 125,
+    "w": 41,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Symbols",
+    "left": 145,
+    "right": 191,
+    "w": 46,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "In use",
+    "left": 211,
+    "right": 243,
+    "w": 32,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Reports",
+    "left": 263,
+    "right": 304,
+    "w": 42,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Standards",
+    "left": 324,
+    "right": 379,
+    "w": 54,
+    "h": 34,
+    "visible": false
+   },
+   {
+    "text": "Systems",
+    "left": 399,
+    "right": 445,
+    "w": 46,
+    "h": 34,
+    "visible": false
+   }
+  ],
+  "scrollPaddingTop": "116px",
+  "navShareOfViewport": 10
+ },
+ "nav320": {
+  "navHeight": 85,
+  "linksScrollWidth": 425,
+  "linksClientWidth": 280,
+  "scrollbarHidden": "none",
+  "fontSize": "11px",
+  "links": [
+   {
+    "text": "Purpose",
+    "left": 20,
+    "right": 64,
+    "w": 44,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Identity",
+    "left": 84,
+    "right": 125,
+    "w": 41,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Symbols",
+    "left": 145,
+    "right": 191,
+    "w": 46,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "In use",
+    "left": 211,
+    "right": 243,
+    "w": 32,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Reports",
+    "left": 263,
+    "right": 304,
+    "w": 42,
+    "h": 34,
+    "visible": true
+   },
+   {
+    "text": "Standards",
+    "left": 324,
+    "right": 379,
+    "w": 54,
+    "h": 34,
+    "visible": false
+   },
+   {
+    "text": "Systems",
+    "left": 399,
+    "right": 445,
+    "w": 46,
+    "h": 34,
+    "visible": false
+   }
+  ],
+  "scrollPaddingTop": "116px",
+  "navShareOfViewport": 10
+ }
+}

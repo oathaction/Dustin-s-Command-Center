@@ -1,0 +1,744 @@
+{
+ "reader1440": {
+  "afterOpen": {
+   "state": {
+    "open": true,
+    "counter": "1 / 12",
+    "zoom": "fit",
+    "prevDisabled": true,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   }
+  },
+  "dialogSemantics": {
+   "role": null,
+   "ariaModal": null,
+   "ariaLabel": "Report page reader",
+   "ariaLabelledby": null,
+   "matchesModal": true,
+   "headingInside": false,
+   "bodyTabIndex": -1,
+   "bodyRole": null
+  },
+  "snapshot": "- dialog \"Report page reader\":\n  - button \"Previous report page\" [disabled]: Previous\n  - text: 1 / 12 Zoom\n  - combobox \"Zoom\":\n    - option \"Fit width\" [selected]\n    - option \"Full size\"\n  - button \"Next report page\": Next\n  - button \"Close\"\n  - 'article \"Report page 1: Cover\"':\n    - img \"Oath and Action\"\n    - text: The Public Record / Research brief\n    - heading \"The decision behind the service.\" [level=3]\n    - paragraph: Follow a public budget into daily life.\n    - 'img \"Photograph: A planning board meeting in a school cafeteria\"': Charcoal duotone / 3:2 A planning board meeting in a school cafeteria\n    - text: OATH & ACTION / RESEARCH BRIEF 01",
+  "tabForward": [
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   }
+  ],
+  "tabBack": [
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   }
+  ],
+  "arrowRightOnClose": {
+   "open": true,
+   "counter": "2 / 12",
+   "zoom": "fit",
+   "prevDisabled": false,
+   "nextDisabled": false
+  },
+  "arrowLeftOnClose": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "fit",
+   "prevDisabled": true,
+   "nextDisabled": false
+  },
+  "arrowDownOnZoom": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "full",
+   "prevDisabled": true,
+   "nextDisabled": false
+  },
+  "arrowRightOnZoom": {
+   "open": true,
+   "counter": "2 / 12",
+   "zoom": "full",
+   "prevDisabled": false,
+   "nextDisabled": false
+  },
+  "fullSize": {
+   "scrollW": 848,
+   "clientW": 848,
+   "scrollH": 1056,
+   "clientH": 702,
+   "focusable": false
+  },
+  "axeOpen": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "count": 1,
+    "ex": [
+     "#report-body |   Element should have focusable content"
+    ]
+   }
+  ],
+  "dupIdsOpen": [],
+  "atLastPage": {
+   "state": {
+    "open": true,
+    "counter": "12 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": true
+   },
+   "focus": {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "tabAfterLast": {
+   "tag": "button",
+   "id": "report-close",
+   "name": "Close",
+   "inDialog": true,
+   "disabled": false
+  },
+  "afterEscape": {
+   "state": {
+    "open": false,
+    "counter": "12 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": true
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-first",
+    "name": "Open the report reader",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "thumb5": {
+   "state": {
+    "open": true,
+    "counter": "5 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   }
+  },
+  "afterCloseButton": {
+   "state": {
+    "open": false,
+    "counter": "5 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": null,
+    "name": "Open report page 5: Narrative page",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "afterBackdropClick": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "fit",
+   "prevDisabled": true,
+   "nextDisabled": false
+  }
+ },
+ "reader390": {
+  "afterOpen": {
+   "state": {
+    "open": true,
+    "counter": "1 / 12",
+    "zoom": "fit",
+    "prevDisabled": true,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   }
+  },
+  "dialogSemantics": {
+   "role": null,
+   "ariaModal": null,
+   "ariaLabel": "Report page reader",
+   "ariaLabelledby": null,
+   "matchesModal": true,
+   "headingInside": false,
+   "bodyTabIndex": -1,
+   "bodyRole": null
+  },
+  "snapshot": "- dialog \"Report page reader\":\n  - button \"Previous report page\" [disabled]: Previous\n  - text: 1 / 12 Zoom\n  - combobox \"Zoom\":\n    - option \"Fit width\" [selected]\n    - option \"Full size\"\n  - button \"Next report page\": Next\n  - button \"Close\"\n  - 'article \"Report page 1: Cover\"':\n    - img \"Oath and Action\"\n    - text: The Public Record / Research brief\n    - heading \"The decision behind the service.\" [level=3]\n    - paragraph: Follow a public budget into daily life.\n    - 'img \"Photograph: A planning board meeting in a school cafeteria\"': Charcoal duotone / 3:2 A planning board meeting in a school cafeteria\n    - text: OATH & ACTION / RESEARCH BRIEF 01",
+  "tabForward": [
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   }
+  ],
+  "tabBack": [
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "button",
+    "id": "report-next",
+    "name": "Next report page",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "select",
+    "id": "report-zoom",
+    "name": "Fit widthFull size",
+    "inDialog": true,
+    "disabled": false
+   },
+   {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   },
+   {
+    "tag": "div",
+    "id": "report-body",
+    "name": "The Public Record/Research briefThe deci",
+    "inDialog": true,
+    "disabled": false
+   }
+  ],
+  "arrowRightOnClose": {
+   "open": true,
+   "counter": "2 / 12",
+   "zoom": "fit",
+   "prevDisabled": false,
+   "nextDisabled": false
+  },
+  "arrowLeftOnClose": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "fit",
+   "prevDisabled": true,
+   "nextDisabled": false
+  },
+  "arrowDownOnZoom": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "full",
+   "prevDisabled": true,
+   "nextDisabled": false
+  },
+  "arrowRightOnZoom": {
+   "open": true,
+   "counter": "2 / 12",
+   "zoom": "full",
+   "prevDisabled": false,
+   "nextDisabled": false
+  },
+  "fullSize": {
+   "scrollW": 816,
+   "clientW": 350,
+   "scrollH": 1056,
+   "clientH": 655,
+   "focusable": false
+  },
+  "axeOpen": [
+   {
+    "id": "scrollable-region-focusable",
+    "impact": "serious",
+    "count": 1,
+    "ex": [
+     "#report-body |   Element should have focusable content"
+    ]
+   }
+  ],
+  "dupIdsOpen": [],
+  "atLastPage": {
+   "state": {
+    "open": true,
+    "counter": "12 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": true
+   },
+   "focus": {
+    "tag": "body",
+    "id": null,
+    "name": "Skip to the guidePurposeIdentitySymbolsI",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "tabAfterLast": {
+   "tag": "button",
+   "id": "report-close",
+   "name": "Close",
+   "inDialog": true,
+   "disabled": false
+  },
+  "afterEscape": {
+   "state": {
+    "open": false,
+    "counter": "12 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": true
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-first",
+    "name": "Open the report reader",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "thumb5": {
+   "state": {
+    "open": true,
+    "counter": "5 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": "report-close",
+    "name": "Close",
+    "inDialog": true,
+    "disabled": false
+   }
+  },
+  "afterCloseButton": {
+   "state": {
+    "open": false,
+    "counter": "5 / 12",
+    "zoom": "fit",
+    "prevDisabled": false,
+    "nextDisabled": false
+   },
+   "focus": {
+    "tag": "button",
+    "id": null,
+    "name": "Open report page 5: Narrative page",
+    "inDialog": false,
+    "disabled": false
+   }
+  },
+  "afterBackdropClick": {
+   "open": true,
+   "counter": "1 / 12",
+   "zoom": "fit",
+   "prevDisabled": true,
+   "nextDisabled": false
+  }
+ },
+ "motion": {
+  "normal": {
+   "runningOnLoad": [
+    {
+     "name": "pulse",
+     "target": "Oath and Action mechanism grid, loading",
+     "iterations": null,
+     "state": "running"
+    },
+    {
+     "name": "land-lever",
+     "target": "Oath and Action mechanism grid, ready",
+     "iterations": 1,
+     "state": "finished"
+    },
+    {
+     "name": "pulse",
+     "target": "Oath and Action mechanism grid, loading",
+     "iterations": null,
+     "state": "running"
+    }
+   ],
+   "loadingLever": {
+    "opacity": "0.476836",
+    "anim": "pulse",
+    "iter": "infinite"
+   },
+   "trackerLoading": {
+    "label": "Oath and Action mechanism grid, loading",
+    "circles": [
+     "1/none",
+     "1/none",
+     "0.476836/pulse"
+    ]
+   },
+   "hingeBefore": "hinge-anim still",
+   "hingeDuring": {
+    "cls": "hinge-anim play",
+    "w1opacity": "0.422148",
+    "anims": 3
+   },
+   "hingeAfter": {
+    "cls": "hinge-anim play",
+    "w1opacity": "1",
+    "ampOpacity": "1"
+   },
+   "hingeA11y": "- text: OATH ACTION",
+   "leverBefore": "lm lever-anim",
+   "leverDuring": {
+    "cls": "lm lever-anim play",
+    "anims": 15
+   },
+   "tracker": [
+    "2 / 9 · Referred | Tracker at stage 2",
+    "3 / 9 · Hearing | Tracker at stage 3",
+    "4 / 9 · Reported out | Tracker at stage 4",
+    "5 / 9 · Passed first chamber | Tracker at stage 5",
+    "6 / 9 · Passed second chamber | Tracker at stage 6",
+    "7 / 9 · Reconciled | Tracker at stage 7",
+    "8 / 9 · Signed | Tracker at stage 8",
+    "9 / 9 · In effect | Tracker at stage 9",
+    "1 / 9 · Filed | Tracker at stage 1"
+   ],
+   "trackerLive": {
+    "labelLive": null,
+    "gridLive": null,
+    "role": null
+   },
+   "trackerAfterReset": "1 / 9 · Filed"
+  },
+  "reduced": {
+   "runningOnLoad": [],
+   "loadingLever": {
+    "opacity": "0.2",
+    "anim": "none",
+    "iter": "1"
+   },
+   "trackerLoading": {
+    "label": "Oath and Action mechanism grid, loading",
+    "circles": [
+     "1/none",
+     "1/none",
+     "0.2/none"
+    ]
+   },
+   "hingeBefore": "hinge-anim still",
+   "hingeDuring": {
+    "cls": "hinge-anim still",
+    "w1opacity": "1",
+    "anims": 0
+   },
+   "hingeAfter": {
+    "cls": "hinge-anim still",
+    "w1opacity": "1",
+    "ampOpacity": "1"
+   },
+   "hingeA11y": "- text: OATH ACTION",
+   "leverBefore": "lm lever-anim",
+   "leverDuring": {
+    "cls": "lm lever-anim",
+    "anims": 0
+   },
+   "tracker": [
+    "2 / 9 · Referred | Tracker at stage 2",
+    "3 / 9 · Hearing | Tracker at stage 3",
+    "4 / 9 · Reported out | Tracker at stage 4",
+    "5 / 9 · Passed first chamber | Tracker at stage 5",
+    "6 / 9 · Passed second chamber | Tracker at stage 6",
+    "7 / 9 · Reconciled | Tracker at stage 7",
+    "8 / 9 · Signed | Tracker at stage 8",
+    "9 / 9 · In effect | Tracker at stage 9",
+    "1 / 9 · Filed | Tracker at stage 1"
+   ],
+   "trackerLive": {
+    "labelLive": null,
+    "gridLive": null,
+    "role": null
+   },
+   "trackerAfterReset": "1 / 9 · Filed"
+  }
+ },
+ "controls": {
+  "toggleBefore": "- button \"View on dark\"",
+  "toggleAfter": "- button \"View on light\" [pressed]",
+  "toggleState": {
+   "pressed": "true",
+   "text": "View on light",
+   "dark": true,
+   "outline": "rgb(220, 217, 210) solid 2px",
+   "browserBg": "rgb(18, 18, 18)",
+   "btnBg": "rgba(0, 0, 0, 0)",
+   "btnColor": "rgb(220, 217, 210)",
+   "btnBorder": "rgb(220, 217, 210)"
+  },
+  "darkContrast": {
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @12px": 31,
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @13px": 1,
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @17px": 20,
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @15px": 20,
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @10px": 20,
+   "rgb(220, 217, 210) on rgb(18, 18, 18) = 13.29 @18px": 1
+  },
+  "darkIconColors": {
+   "rgb(220, 217, 210)": 20
+  },
+  "searchEmpty": {
+   "results": "0 of 20 icons",
+   "emptyShown": true,
+   "emptyText": "No icon matches. Try a broader word.",
+   "emptyLive": null
+  },
+  "searchVote": "1 of 20 icons",
+  "searchLabel": "- searchbox \"Search\"",
+  "size16": {
+   "w": 48,
+   "h": 48,
+   "vb": "0 0 16 16"
+  },
+  "composerLive": {
+   "grid": "polite",
+   "decode": null,
+   "warn": null,
+   "warnRole": null
+  },
+  "composerConflict": {
+   "decode": "Red names a step the reader can take now. Tracker at stage 9 of 9, in effect. The decision is final, so the lever is red.",
+   "warn": "Two red nodes would result. The final stage already owns the red, so the content type falls back to Charcoal.",
+   "warnColor": "rgb(230, 57, 70)",
+   "warnSize": "12px",
+   "svgLabel": "Red names a step the reader can take now. Tracker at stage 9 of 9, in effect. The decision is final, so the lever is red."
+  },
+  "composerReset": "A plain grid. The lockmark, unsignalled.",
+  "detailsBefore": true,
+  "detailsAfterEnter": false,
+  "detailsAfterSpace": true
+ }
+}
