@@ -316,17 +316,19 @@ def spacing_panel():
         y = pm["min_gap_at_y"]
         xa = crossings(seq[i]["polys"], y)[-1]
         xb = crossings(seq[i + 1]["polys"], y)[0]
-        marks.append(f'<line x1="{xa:.2f}" y1="{y:.2f}" x2="{xb:.2f}" y2="{y:.2f}" stroke="{PRUS}" stroke-width="1.6"/>'
-                     f'<circle cx="{xa:.2f}" cy="{y:.2f}" r="1.6" fill="{PRUS}"/><circle cx="{xb:.2f}" cy="{y:.2f}" r="1.6" fill="{PRUS}"/>')
+        marks.append(f'<line x1="{xa:.2f}" y1="{y:.2f}" x2="{xb:.2f}" y2="{y:.2f}" stroke="#2F7BFF" stroke-width="2.4"/>'
+                     f'<circle cx="{xa:.2f}" cy="{y:.2f}" r="2.4" fill="#2F7BFF"/><circle cx="{xb:.2f}" cy="{y:.2f}" r="2.4" fill="#2F7BFF"/>')
         cx = (xa + xb) / 2
         lab = k.split("_")[0].replace("&", "&amp;")
-        marks.append(f'<text x="{cx:.1f}" y="128" text-anchor="middle" font-size="9" fill="{CHAR}" font-weight="600">{lab}</text>'
-                     f'<text x="{cx:.1f}" y="140" text-anchor="middle" font-size="8.5" fill="{CHAR}">{pm["min_gap"] / 100:.3f}x</text>'
-                     f'<text x="{cx:.1f}" y="151" text-anchor="middle" font-size="8.5" fill="{STONE}">{pm["mean_gap_depthcap_20"] / 100:.3f}x</text>')
+        dy = 0 if i % 2 == 0 else 34
+        marks.append(f'<line x1="{cx:.1f}" y1="108" x2="{cx:.1f}" y2="{116 + dy}" stroke="{STONE}" stroke-width="0.4"/>'
+                     f'<text x="{cx:.1f}" y="{124 + dy}" text-anchor="middle" font-size="8" fill="{CHAR}" font-weight="600">{lab}</text>'
+                     f'<text x="{cx:.1f}" y="{133 + dy}" text-anchor="middle" font-size="7.5" fill="{CHAR}">{pm["min_gap"] / 100:.3f}x</text>'
+                     f'<text x="{cx:.1f}" y="{142 + dy}" text-anchor="middle" font-size="7.5" fill="{STONE}">{pm["mean_gap_depthcap_20"] / 100:.3f}x</text>')
     body = re.sub(r"<title>.*?</title>", "", wm)
     inner = body[body.find(">") + 1: body.rfind("</svg>")]
-    svg = (f'<svg viewBox="-20 -8 1010 166" width="1400" role="img" aria-label="Wordmark with the nearest ink-to-ink gap marked for each letter pair">'
-           f'<g style="color:{CHAR};--amp:{RED}" opacity="0.92">{inner}</g>'
+    svg = (f'<svg viewBox="-20 -8 1010 192" width="1400" role="img" aria-label="Wordmark with the nearest ink-to-ink gap marked for each letter pair">'
+           f'<g style="color:{CHAR};--amp:{RED}" opacity="0.55">{inner}</g>'
            f'<line x1="-20" y1="4" x2="990" y2="4" stroke="{STONE}" stroke-width="0.4" stroke-dasharray="2 2"/>'
            f'<line x1="-20" y1="104" x2="990" y2="104" stroke="{STONE}" stroke-width="0.4" stroke-dasharray="2 2"/>'
            f'{"".join(marks)}</svg>')
@@ -383,7 +385,7 @@ def joins_panel():
     for nm in ("amp", "amp-16"):
         for h in (16, 24):
             img = png(f"{nm}__newsprint__mono__{h}")
-            figs.append(f'<figure class="c"><div class="sw" style="background:{NEWS}"><img class="px grid" src="{b64(img)}" width="{img.width * 12}" height="{img.height * 12}" alt="{nm} {h} px at 12x"></div><figcaption>{nm}, {h} px, 12x</figcaption></figure>')
+            figs.append(f'<figure class="c"><div class="sw" style="background:{NEWS}"><span class="gw" style="--g:12px"><img class="px" src="{b64(img)}" width="{img.width * 12}" height="{img.height * 12}" alt="{nm} {h} px at 12x"></span></div><figcaption>{nm}, {h} px, 12x</figcaption></figure>')
     return "".join(figs)
 
 
@@ -393,7 +395,7 @@ def lock_panel():
         for mode in ("color", "mono"):
             img = png(f"lockmark__newsprint__{mode}__{h}")
             z = 12 if h < 48 else 6
-            figs.append(f'<figure class="c"><div class="sw" style="background:{NEWS}"><img class="px grid" style="--g:{z}px" src="{b64(img)}" width="{img.width * z}" height="{img.height * z}" alt="lockmark {h} px {mode} at {z}x"></div><figcaption>Lockmark {h} px, {"color" if mode == "color" else "one color"}, {z}x</figcaption></figure>')
+            figs.append(f'<figure class="c"><div class="sw" style="background:{NEWS}"><span class="gw" style="--g:{z}px"><img class="px" src="{b64(img)}" width="{img.width * z}" height="{img.height * z}" alt="lockmark {h} px {mode} at {z}x"></span></div><figcaption>Lockmark {h} px, {"color" if mode == "color" else "one color"}, {z}x</figcaption></figure>')
     return "".join(figs)
 
 
@@ -443,7 +445,8 @@ td.n{{font-variant-numeric:tabular-nums;text-align:right}}
 .sw{{padding:10px;display:inline-block;line-height:0;border:1px solid var(--rule)}}
 img{{display:block}}
 img.px{{image-rendering:pixelated;image-rendering:crisp-edges}}
-img.grid{{--g:12px;background-image:none}}
+.gw{{position:relative;display:inline-block;line-height:0}}
+.gw::after{{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,rgba(31,45,90,.28) 1px,transparent 1px),linear-gradient(to bottom,rgba(31,45,90,.28) 1px,transparent 1px);background-size:var(--g,12px) var(--g,12px)}}
 .disp{{display:flex;flex-wrap:wrap;gap:16px}}
 .pair{{display:flex;gap:12px;flex-wrap:wrap;line-height:0}}
 .panel{{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}}
