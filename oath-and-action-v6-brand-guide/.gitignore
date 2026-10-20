@@ -1,0 +1,8 @@
+# Large supplied originals stay on Dustin's machine; the manifest records their checksums.
+source/*.html
+source/*.zip
+# Regenerable by work/build/scripts/extract_sources.py and render_v5.js
+work/extract/
+work/boards/screens/
+work/build/node_modules/
+work/build/package-lock.json

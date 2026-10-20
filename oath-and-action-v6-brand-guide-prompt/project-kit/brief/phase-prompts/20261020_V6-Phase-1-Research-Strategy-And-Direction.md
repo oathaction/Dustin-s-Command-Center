@@ -4,17 +4,17 @@ Paste everything below the line into Claude Code after I approve Gate 0. Add any
 
 ---
 
-This is Phase 1 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/gate-0-report.md`, then Master Brief sections 1 to 12. Work only within the Phase 1 proposal approved at Gate 0.
+This is Phase 1 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/YYYYMMDD_Gate-0-Report.md`, then Master Brief sections 1 to 12. Work only within the Phase 1 proposal approved at Gate 0.
 
 Gate 0 decisions: [paste or write "As proposed"]
 
 **Outcome.** Everything I need to approve the direction and any identity changes before anything is built:
-- `work/research/research-ledger.md`, complete for this phase
+- `work/research/YYYYMMDD_Research-Ledger.md`, complete for this phase
 - `work/boards/YYYYMMDD_Strategy-And-Direction-Board.html`
 - `work/boards/YYYYMMDD_Identity-Refinement-Board.html`
 - `work/boards/YYYYMMDD_Symbol-Family-Board.html`
 - `work/ledger/YYYYMMDD_Guide-Architecture-Map.md` and `work/ledger/YYYYMMDD_Token-Architecture.md`
-- `work/ledger/gate-1-report.md` with the Phase 2 proposal
+- `work/ledger/YYYYMMDD_Gate-1-Report.md` with the Phase 2 proposal
 
 **Inputs.** `source/`, `work/extract/`, the Phase 0 audits in `work/handoffs/phase-0/`, and web research.
 

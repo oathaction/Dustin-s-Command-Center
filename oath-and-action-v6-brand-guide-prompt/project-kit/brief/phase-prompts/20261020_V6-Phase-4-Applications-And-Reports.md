@@ -4,7 +4,7 @@ Paste everything below the line into Claude Code after I approve Gate 3. Record 
 
 ---
 
-This is Phase 4 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/gate-3-report.md`, then Master Brief sections 15, 16 and 18 to 19. Work only within the approved Phase 4 proposal.
+This is Phase 4 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/YYYYMMDD_Gate-3-Report.md`, then Master Brief sections 15, 16 and 18 to 19. Work only within the approved Phase 4 proposal.
 
 Gate 3 decisions: [paste or write "As proposed"]
 
@@ -13,7 +13,7 @@ Gate 3 decisions: [paste or write "As proposed"]
 - Each application as a working file or export: email HTML, social PNGs, slide layouts, letterhead, one-page explainer, event sign, video title and end frames
 - The report reader with all twelve pages revised
 - `work/research/YYYYMMDD_Platform-Specifications.md` with each spec, its official source and the date checked
-- `work/ledger/gate-4-report.md` with the Phase 5 proposal
+- `work/ledger/YYYYMMDD_Gate-4-Report.md` with the Phase 5 proposal
 
 **Inputs.** Phases 2 and 3 work, the research ledger, the rights ledger, and connected image generation tools if this session has them.
 

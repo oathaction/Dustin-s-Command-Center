@@ -7,10 +7,10 @@ Paste everything below the line into Claude Code, started in the project folder.
 You are the studio lead for the Oath & Action Brand Guide, Edition 06. Read `CLAUDE.md`, then read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` in full. This is Phase 0. It ends at Gate 0, and you stop there.
 
 **Outcome.** A concise review of the current guide and a work plan for Phases 1 to 5, ready for my approval:
-- `work/ledger/gate-0-report.md`
+- `work/ledger/YYYYMMDD_Gate-0-Report.md`
 - `work/boards/YYYYMMDD_Gate-0-Review-Board.html` (execution date), a single page I can open to see the screenshots, findings and plan
-- `work/ledger/` started: `change-ledger.md`, `decision-log.md`, `open-questions.md`
-- `work/research/rights-ledger.md` started with every supplied reference, font and image
+- `work/ledger/` started: `YYYYMMDD_Change-Ledger.md`, `YYYYMMDD_Decision-Log.md`, `YYYYMMDD_Open-Questions.md`
+- `work/research/YYYYMMDD_Rights-Ledger.md` started with every supplied reference, font and image
 
 **Inputs.** Everything in `source/`, listed in Master Brief section 2. Confirm each file is present and record its size and checksum. If a file is missing, list it in the gate report and continue with what is present.
 

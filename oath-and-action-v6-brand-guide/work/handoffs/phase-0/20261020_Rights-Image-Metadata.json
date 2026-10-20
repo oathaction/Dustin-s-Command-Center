@@ -1,0 +1,2601 @@
+{
+ "data-viz": [
+  {
+   "file": "work/extract/references/data-viz/data viz/1000_F_144421710_E7Urb5uzpnUy7TuvHYDr8hZMtqymVZna.jpg",
+   "bytes": 188363,
+   "sha256": "eaf908856ef920473bc6ecf616a7f43927bdd8baeacc56735a5698da9f5ecab5",
+   "format": "JPEG",
+   "width": 1000,
+   "height": 667,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<84 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x01\\x00\\x00\\x02\\x00\\x04'}",
+    "xmp": "<3170 bytes>"
+   },
+   "markers": [
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {},
+   "sheet_number": 1
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1000_F_1668742324_MfyDoZ8zwNtq0DCyFtciNyMT6aYJTdxt.jpg",
+   "bytes": 253066,
+   "sha256": "ef970a52e43dafb245613a35d58ee471d014eea13cc9e04ead11e3180a3be23d",
+   "format": "JPEG",
+   "width": 1000,
+   "height": 533,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<84 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x01\\x00\\x00\\x02\\x00\\x04'}",
+    "xmp": "<3408 bytes>"
+   },
+   "markers": [
+    "adobe_stock",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Stock Platform"
+    ]
+   },
+   "sheet_number": 2
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1000_F_1668742324_MfyDoZ8zwNtq0DCyFtciNyMT6aYJTdxt4.jpg",
+   "bytes": 253066,
+   "sha256": "ef970a52e43dafb245613a35d58ee471d014eea13cc9e04ead11e3180a3be23d",
+   "format": "JPEG",
+   "width": 1000,
+   "height": 533,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<84 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x01\\x00\\x00\\x02\\x00\\x04'}",
+    "xmp": "<3408 bytes>"
+   },
+   "markers": [
+    "adobe_stock",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Stock Platform"
+    ]
+   },
+   "sheet_number": 3
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/110718VizUNDG.jpg",
+   "bytes": 75414,
+   "sha256": "86bb0422c0a64e60972b342415f9d26256972d10dfec5b42ac6f9931cb1fb2ad",
+   "format": "JPEG",
+   "width": 500,
+   "height": 323,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "256",
+    "jfif_version": "(1, 0)",
+    "dpi": "(96, 96)",
+    "jfif_unit": "1",
+    "jfif_density": "(96, 96)",
+    "comment": "b'LEAD Technologies Inc. V1.01\\x00'"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 4
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1762720728608.jpg",
+   "bytes": 89447,
+   "sha256": "823a6c400e4b4f162391916c4b8fdf3e1d39d184a1e2723c739438de5f1717a3",
+   "format": "JPEG",
+   "width": 800,
+   "height": 1000,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 5
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1781506808478.jpg",
+   "bytes": 106616,
+   "sha256": "a89f6e7fd7012c9d8ae481ceddcdf06378e6f2bc85faf8ab5b06b4188b1ad26d",
+   "format": "JPEG",
+   "width": 800,
+   "height": 999,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 6
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/19648601.548fbcd244503.jpg",
+   "bytes": 51451,
+   "sha256": "3fb96cf3720dddf0884acc223d4ff444b270ad0273d5a969447d88501db5f20d",
+   "format": "JPEG",
+   "width": 404,
+   "height": 316,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "xmp": "<782 bytes>",
+    "exif": "<22 bytes>",
+    "adobe": "100",
+    "adobe_transform": "1",
+    "progressive": "1",
+    "progression": "1",
+    "dpi": "(72, 72)"
+   },
+   "markers": [
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Photoshop CS6 (Macintosh)"
+    ]
+   },
+   "sheet_number": 7
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_342jL-XRKa-047bRjvllag.png",
+   "bytes": 841604,
+   "sha256": "d56f909d198b952e78cf33f8f9b5b070248682bb4bf42d32707b910863710b4b",
+   "format": "PNG",
+   "width": 1450,
+   "height": 1586,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "exif": "<186 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 8
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_E0fSJFXlDVY5sHzjG-2TAg.png",
+   "bytes": 225472,
+   "sha256": "e12b2f9b11a4885f621222d591e16784dc83b03c53a69139d1cfd229de12de8a",
+   "format": "PNG",
+   "width": 1500,
+   "height": 750,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "XML:com.adobe.xmp": "<?xpacket begin=\"\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Go XMP SDK 1.0\"><rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"></rdf:RDF></x:xmpmeta>\n<?xpacket end=\"w\"?>",
+    "exif": "<186 bytes>"
+   },
+   "markers": [
+    "xmp"
+   ],
+   "xmp": {},
+   "sheet_number": 9
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_E9KlI6hGJQr92JF1J69_2A.png",
+   "bytes": 182315,
+   "sha256": "853faa1138886b7415c9da4735ce3e5f376ab9f2ce9a257368fbb4e94da74b10",
+   "format": "PNG",
+   "width": 880,
+   "height": 495,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "exif": "<186 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 10
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_Id5fhvjlB0DMoWum7hyDnQ.png",
+   "bytes": 306245,
+   "sha256": "9a38b2763b1a503e8e43bbfcdb3fb2c3ff824090d3db56d72bc694d183c61c14",
+   "format": "PNG",
+   "width": 1280,
+   "height": 678,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "exif": "<186 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 11
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_L40_TO6wSPkrBzmLA9yKvQ.jpg",
+   "bytes": 56225,
+   "sha256": "7113a83c71b625ea1c525de905a855278e95ae759613c2057793ea821d2b03be",
+   "format": "JPEG",
+   "width": 800,
+   "height": 720,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "exif": "<186 bytes>",
+    "dpi": "(72.0, 72.0)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 12
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/1_bdh1L76aXqFubJByqD97NQ.png",
+   "bytes": 97501,
+   "sha256": "2c9ee755135cf1d90d426d015f3841eccdeddb65c55ebed23e0122095b2129fb",
+   "format": "PNG",
+   "width": 960,
+   "height": 540,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "exif": "<186 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 13
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/288_9136f88e88_3a53a4f0f7.png",
+   "bytes": 701334,
+   "sha256": "11f185700167023fd2e0e23542210c52df71691f4f574703d35423733058fa86",
+   "format": "PNG",
+   "width": 2250,
+   "height": 1286,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "gamma": "0.45455",
+    "srgb": "0",
+    "dpi": "(143.99259999999998, 143.99259999999998)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 14
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/360_F_1781899469_Jytu6lfY76GJXiu0tqfI3RVPO1XByfqe.jpg",
+   "bytes": 47930,
+   "sha256": "cb7b91e0340210eb2bfc1d90aa03ad10db0f48fb8ec30fee2b30552abeaba72a",
+   "format": "JPEG",
+   "width": 526,
+   "height": 360,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<84 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x01\\x00\\x00\\x02\\x00\\x04'}",
+    "xmp": "<3408 bytes>"
+   },
+   "markers": [
+    "adobe_stock",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Stock Platform"
+    ]
+   },
+   "sheet_number": 15
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/444_791b999cb2.png",
+   "bytes": 59961,
+   "sha256": "0fc8b9ff5c0bafed9995e7db00eb0546c1a0f6509521b23d5dd3f7d7774977c3",
+   "format": "PNG",
+   "width": 1280,
+   "height": 800,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "transparency": "b'\\xff\\x01w'"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 16
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/88VfQ.jpg",
+   "bytes": 202804,
+   "sha256": "c8b368999d22005fd8250f84a518c7622828eaf28dcfd6a2fb217c7e6f8d12f9",
+   "format": "JPEG",
+   "width": 1345,
+   "height": 1554,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "icc_profile": "<3144 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 17
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/9534574904c0df0b8968a92321d78d56.jpg",
+   "bytes": 50228,
+   "sha256": "34ce920914e571846091884b3a5d4713c9382e62275435764002cbe5f439d552",
+   "format": "JPEG",
+   "width": 600,
+   "height": 850,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 18
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Aligned_image_-_Adaptive_Strategy_-_Systems_-_Example_4.png",
+   "bytes": 536703,
+   "sha256": "8a20a3da01d24b5d68bcb400dca22e2f0fec54d0099e996dce4bee7b2f49f1c9",
+   "format": "PNG",
+   "width": 966,
+   "height": 542,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "dpi": "(143.99259999999998, 143.99259999999998)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 19
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Giorgia+Lupi+-+Doomsday+Clock.png",
+   "bytes": 1670457,
+   "sha256": "c63904dbd432e928316912715d9bec70ba7d93980beed85894446427224ee8ef",
+   "format": "PNG",
+   "width": 1921,
+   "height": 1201,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(71.9836, 71.9836)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 20
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/IPOs.png",
+   "bytes": 29320,
+   "sha256": "39e108dda771051c61d8419613644e041f11d12b8875af9bbf447d11c0206e03",
+   "format": "PNG",
+   "width": 931,
+   "height": 582,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "gamma": "0.45455",
+    "srgb": "0"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 21
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/MOBILE-What-makes-a-good-infoviz.png",
+   "bytes": 49445,
+   "sha256": "304929da1e5323abe042e29573fab2fa9a7b3435f324fe1ed354ea1db5a1dde4",
+   "format": "PNG",
+   "width": 1280,
+   "height": 1640,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 22
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screen-Shot-2021-07-08-at-8.51.12-AM-1025x630.png",
+   "bytes": 103055,
+   "sha256": "86427f48e60e959742848b7353f34935dfd3c3fb60502d16413252ebb0178743",
+   "format": "PNG",
+   "width": 1025,
+   "height": 630,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 23
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 124345.png",
+   "bytes": 163060,
+   "sha256": "6f7028cfcc9b845d29fcdfe3943ba6d5047c3367fb2437fe73eac913c223f8bc",
+   "format": "PNG",
+   "width": 523,
+   "height": 582,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 24
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 130653.png",
+   "bytes": 70904,
+   "sha256": "d8a673f503a4b0d00024028b2941688d40799997503ed2264fdd458493b73855",
+   "format": "PNG",
+   "width": 647,
+   "height": 242,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 25
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 130813.png",
+   "bytes": 202055,
+   "sha256": "6aa9b3608a76de4b524bbd24a4bb16027efd575e7f11191c6936d1f8a81751e8",
+   "format": "PNG",
+   "width": 685,
+   "height": 401,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 26
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 131425.png",
+   "bytes": 278444,
+   "sha256": "8a0f3ef5fdc70bee519923ab3f69ccbb3e3d651dc35b4be0d2845fd5ec7baafa",
+   "format": "PNG",
+   "width": 656,
+   "height": 361,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 27
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 131449.png",
+   "bytes": 202267,
+   "sha256": "be1555f701fa7a2bdf8c18b69ed7309b8f1c3addcb5dec34b4cc7f62d252bb17",
+   "format": "PNG",
+   "width": 537,
+   "height": 313,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 28
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 132258.png",
+   "bytes": 219891,
+   "sha256": "935e80d41212b92c9d38378902d07236863774f6af965e003fc584e10c1ca3c7",
+   "format": "PNG",
+   "width": 485,
+   "height": 363,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 29
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 132431.png",
+   "bytes": 184620,
+   "sha256": "736a9c9ddf34c707b3f479c9983132e37ea72aef2f22285f3a5309142532c93e",
+   "format": "PNG",
+   "width": 657,
+   "height": 473,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 30
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 132522.png",
+   "bytes": 566191,
+   "sha256": "763c991483fb335f7f419ed6b3654460ce2955a3d980e65d8eef989e4cac3e62",
+   "format": "PNG",
+   "width": 568,
+   "height": 561,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 31
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/Screenshot 2026-10-20 132720.png",
+   "bytes": 307524,
+   "sha256": "afa831f3aa1371b2ada10344b8af7ee4c9134f721b39600564308d2282d2d111",
+   "format": "PNG",
+   "width": 637,
+   "height": 341,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 32
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/adf88419648601.5c4c69f7a2b4e.jpeg",
+   "bytes": 282439,
+   "sha256": "de5ecbc0b2a45ddcaec33454e42d49a1ff8ac0093e51f53a70b7609cede0a1bb",
+   "format": "JPEG",
+   "width": 1920,
+   "height": 1080,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "exif": "<62 bytes>",
+    "adobe": "100",
+    "adobe_transform": "1",
+    "progressive": "1",
+    "progression": "1",
+    "icc_profile": "<3144 bytes>",
+    "dpi": "(72, 72)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 33
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/best-table-visualization-768x1024.png",
+   "bytes": 171586,
+   "sha256": "f8961cad8419961787a59cd8e7ec99ed885f699ac417d6e4f0b6d93713cc965c",
+   "format": "PNG",
+   "width": 768,
+   "height": 1024,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 34
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/bubble-chart-of-top-100-companies-from-2017-forbes-global-2000.png",
+   "bytes": 160940,
+   "sha256": "69e617bccf0cb2f9ac8df25d042a1ddcfcea3ac56135b78517fdb01676046923",
+   "format": "PNG",
+   "width": 841,
+   "height": 661,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 35
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/buildsys26_workshop.jpg",
+   "bytes": 683534,
+   "sha256": "a46aa224ae9da166bd320efdaf3511cc2ee26e33868356945d36e428249eb78d",
+   "format": "JPEG",
+   "width": 3138,
+   "height": 1828,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(144, 144)",
+    "xmp": "<2306 bytes>",
+    "icc_profile": "<4064 bytes>"
+   },
+   "markers": [
+    "xmp"
+   ],
+   "xmp": {},
+   "sheet_number": 36
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/changes-social-activity-dfp-750x641.png",
+   "bytes": 108047,
+   "sha256": "9373f21d2f181f34f9e96195bb4f39d5a08bedd9b5a9d01d02a1e549f194d733",
+   "format": "PNG",
+   "width": 750,
+   "height": 641,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 37
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/cleanshot-2025-05-19-at-16.12.33@2x.png",
+   "bytes": 6396031,
+   "sha256": "54d0c10c31e36405e0c2832fcbc6e4aef406c53db2267084f44baacf09957619",
+   "format": "PNG",
+   "width": 2959,
+   "height": 2158,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "xmp": "<671 bytes>",
+    "XML:com.adobe.xmp": "<?xpacket begin=\"\ufeff\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"XMP Core 6.0.0\">\n <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n  <rdf:Description rdf:about=\"\"\n    xmlns:tiff=\"http://ns.adobe.com/tiff/1.0/\"\n    xmlns:exif=\"http://ns.adobe.com/exif/1.0/\"\n   tiff:YResolution=\"144/1\"\n   tiff:XResolution=\"144/1\"\n   tiff:ResolutionUnit=\"2\"\n   exif:Pi",
+    "srgb": "0"
+   },
+   "markers": [
+    "c2pa",
+    "screenshot",
+    "xmp"
+   ],
+   "xmp": {},
+   "sheet_number": 38
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/csm_Windriver_Intelligent_Systems_Infographic__1__2a9040fe53.jpg",
+   "bytes": 39013,
+   "sha256": "3e7c0ff9e0dc902e33ee11d68ced565124bd9d68f79ad7492739f801ec7da77e",
+   "format": "JPEG",
+   "width": 600,
+   "height": 451,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(96, 96)",
+    "jfif_unit": "1",
+    "jfif_density": "(96, 96)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 39
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/data-visualization-best-practices-in-anychart-js-charts-dataviz-weekly.png",
+   "bytes": 445606,
+   "sha256": "00ba92f094137a3a354340a8973191d6d7b2a7598c67870b8b7c2513f69607e5",
+   "format": "PNG",
+   "width": 1253,
+   "height": 780,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "icc_profile": "<560 bytes>",
+    "xmp": "<15368 bytes>",
+    "XML:com.adobe.xmp": "<?xpacket begin=\"\ufeff\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\n<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 5.6-c014 79.156797, 2014/08/20-09:53:02        \">\n   <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n      <rdf:Description rdf:about=\"\"\n            xmlns:xmp=\"http://ns.adobe.com/xap/1.0/\"\n            xmlns:xmpMM=\"http://ns.adobe.com/xap/1.0/mm/\"\n            xmlns:stEv",
+    "chromaticity": "(0.31269, 0.32899, 0.63999, 0.33, 0.21, 0.71, 0.14999, 0.05999)"
+   },
+   "markers": [
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Photoshop CC 2014 (Windows)"
+    ]
+   },
+   "sheet_number": 40
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/data-visualization-for-marketers.jpg",
+   "bytes": 47381,
+   "sha256": "f679406dada78af4323ad3a87b58d3a5488af8f0318f3aea66b132d55cfd645a",
+   "format": "JPEG",
+   "width": 800,
+   "height": 404,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "exif": "<22 bytes>",
+    "xmp": "<781 bytes>",
+    "adobe": "100",
+    "adobe_transform": "1",
+    "dpi": "(72, 72)"
+   },
+   "markers": [
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "xmp:CreatorTool": [
+     "Adobe Photoshop 22.0 (Windows)"
+    ]
+   },
+   "sheet_number": 41
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/datylon-blog-Why-is-data-visualization-important-ecars.png",
+   "bytes": 837288,
+   "sha256": "ede49b42daf9314604264f546870ef4a85b56b18cf37c3e2427c1c6e3a61b46c",
+   "format": "PNG",
+   "width": 5001,
+   "height": 5001,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "chromaticity": "(0.3127, 0.329, 0.64, 0.33, 0.3, 0.6, 0.15, 0.06)",
+    "dpi": "(299.9994, 299.9994)",
+    "date:create": "2025-11-04T10:09:10+00:00",
+    "date:modify": "2025-11-04T10:09:10+00:00",
+    "date:timestamp": "2025-11-04T10:09:10+00:00"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 42
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/drawhappyall.png",
+   "bytes": 283826,
+   "sha256": "e83be989bba58a0f2dc7c9c5cf1d28ea88dc3a433af1df056655b58d560904a3",
+   "format": "PNG",
+   "width": 3300,
+   "height": 2573,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "Software": "Adobe ImageReady"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 43
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/dynamic-data-visualization-stockcake.jpg",
+   "bytes": 35369,
+   "sha256": "5c695c9abe7da833dc5907762d897c87cc4b29d3f3bd637379e29ce6d5163528",
+   "format": "JPEG",
+   "width": 704,
+   "height": 384,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 44
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/e3dd0547bc6726cdd56ce94445c866b8.jpg",
+   "bytes": 53871,
+   "sha256": "4fbdd67c27112de1f200a02b643147b66f4eef125e146e925abf5b8ffa7c1983",
+   "format": "JPEG",
+   "width": 600,
+   "height": 840,
+   "mode": "RGB",
+   "exif": {
+    "DateTime": "2008:03:26 22:25:42"
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "exif": "<52 bytes>",
+    "progressive": "1",
+    "progression": "1",
+    "dpi": "(72, 72)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 45
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/feature-image.png",
+   "bytes": 443694,
+   "sha256": "26420e804782341c689901bcb39e2365a47b7c3d6d4c1c3b0c4335fb34118828",
+   "format": "PNG",
+   "width": 4537,
+   "height": 2268,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "dpi": "(575.9958, 575.9958)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 46
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/flow-chart.png",
+   "bytes": 77306,
+   "sha256": "a5f67a20c5e3f4afc5f2c1df760d33346cd7f3e3c8c4d52b2d21c75eb714c139",
+   "format": "PNG",
+   "width": 786,
+   "height": 886,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 47
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/futuristic-infographic-information-aesthetic-design-complex-data-threads-graphic-visualization-abstract-data-graph-2B6DBAG.jpg",
+   "bytes": 102166,
+   "sha256": "cfaa3a079f07b968098595ea4838bc12392756e02f998da49553849b50b0d21d",
+   "format": "JPEG",
+   "width": 1300,
+   "height": 1003,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 48
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/gettyimages-513496652-612x612.jpg",
+   "bytes": 96890,
+   "sha256": "35a3b6d15231ac1eda62e6e99862cbf9f991a691ef99a78f17e420c04c4c11ab",
+   "format": "JPEG",
+   "width": 612,
+   "height": 606,
+   "mode": "RGB",
+   "exif": {
+    "Copyright": "andresr",
+    "ImageDescription": "Illustration of a variety of business graphs in blue"
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<143 bytes>",
+    "xmp": "<1401 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\x07andresr\\x1c\\x02x\\x004Illustrati"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "andresr"
+    ],
+    "photoshop:Credit": [
+     "Getty Images"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.gettyimages.com/eula?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.gettyimages.com/detail/513496652?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "Illustration of a variety of business graphs in blue"
+    ]
+   },
+   "sheet_number": 49
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/global-warming-the-economist.png",
+   "bytes": 54357,
+   "sha256": "90425660afc248ee80b3fa8ee8f214dfb171b74cf61368314ed91995a024c437",
+   "format": "PNG",
+   "width": 1200,
+   "height": 705,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 50
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images.png",
+   "bytes": 32464,
+   "sha256": "871e4a1b79c574e4e317ed7b2668730f6f5c8a576b15648c91d0d84436776c2c",
+   "format": "PNG",
+   "width": 643,
+   "height": 477,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 51
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images2.jpg",
+   "bytes": 28721,
+   "sha256": "0028b5b94a42355f7e157fa23bf314627ce9668da052032840422a1875aa25e1",
+   "format": "JPEG",
+   "width": 374,
+   "height": 534,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 52
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images22.jpg",
+   "bytes": 53574,
+   "sha256": "d0e6bf2dddaff46bafb373eb1596bfb534bf01a34049e948b9ceec34b1637d19",
+   "format": "JPEG",
+   "width": 554,
+   "height": 554,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 53
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images221.jpg",
+   "bytes": 17895,
+   "sha256": "6f2aad8da3928c0bfe96f42432130c520e8afab74752e705bf7855567bfae424",
+   "format": "JPEG",
+   "width": 673,
+   "height": 456,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 54
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images2221.jpg",
+   "bytes": 38661,
+   "sha256": "9b8f953e9915c3b242e92162ee62fc114f2596563b7620d863288ac660240b34",
+   "format": "JPEG",
+   "width": 683,
+   "height": 449,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 55
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/images2222214.jpg",
+   "bytes": 36448,
+   "sha256": "aa5a00c894fe561bf5578797e83302be119e76b7021d03db7c063165d78b9813",
+   "format": "JPEG",
+   "width": 415,
+   "height": 739,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 56
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesbt.jpg",
+   "bytes": 24281,
+   "sha256": "c0ed1496c0eaa49170b69afbd5f2c75a1ed120c6c54a30c69120a83e7d579067",
+   "format": "JPEG",
+   "width": 400,
+   "height": 500,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 57
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagescc.jpg",
+   "bytes": 20663,
+   "sha256": "16e64598affd6fd013a8bff0241d4fa631baa60c4b4d7101cb919320280ed371",
+   "format": "JPEG",
+   "width": 576,
+   "height": 360,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 58
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesccccc.jpg",
+   "bytes": 31048,
+   "sha256": "ef3ad1834e182b4b5022ad5dca98362444452fb02d95b439ee05aeb77e30a70b",
+   "format": "JPEG",
+   "width": 503,
+   "height": 397,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 59
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagescv.jpg",
+   "bytes": 37875,
+   "sha256": "aa25b8cdccbaaade58e835a41ffa1181c3fbf05cbe131902d0dbf18f81520071",
+   "format": "JPEG",
+   "width": 587,
+   "height": 522,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 60
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesddd5.png",
+   "bytes": 15633,
+   "sha256": "8d688bbea2f0a1b4a6cc3fc8afb753ceab407ec0f56f013fe170c3d86394893b",
+   "format": "PNG",
+   "width": 517,
+   "height": 386,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 61
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesdddd42.png",
+   "bytes": 31816,
+   "sha256": "13e6dc72c64f40da1c441225f2bf3a7fe49d7887a3e7682d8eadedb9c1bd7075",
+   "format": "PNG",
+   "width": 495,
+   "height": 619,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 62
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesdddd5.jpg",
+   "bytes": 48901,
+   "sha256": "ab11027f6730b20d35be1b67f7f27f9e6b5985cc2042b060347d622639288cad",
+   "format": "JPEG",
+   "width": 554,
+   "height": 554,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 63
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagese3.jpg",
+   "bytes": 27297,
+   "sha256": "8a0fb9196a8b18385cb07e3804f30d2bdf74cff22feae9fd230b1429177d93a3",
+   "format": "JPEG",
+   "width": 520,
+   "height": 384,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 64
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imageshgcj.jpg",
+   "bytes": 51358,
+   "sha256": "08182175b2f7064d8bb25b02035b1c0570f37d7ce7aa11e75b776a814e553718",
+   "format": "JPEG",
+   "width": 646,
+   "height": 475,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 65
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesjj.jpg",
+   "bytes": 35162,
+   "sha256": "74777005f8d5aa635af90e18266d88a2aa74cfcfdcd2340327e95d8a27980a14",
+   "format": "JPEG",
+   "width": 515,
+   "height": 388,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 66
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesku.jpg",
+   "bytes": 31777,
+   "sha256": "5fa813041e4351906e6adf907e3d4cc46e4db401a62ad733800ee7cd2f74003a",
+   "format": "JPEG",
+   "width": 381,
+   "height": 805,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 67
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagessssss.png",
+   "bytes": 6936,
+   "sha256": "63145653a472fc0333b6513d7bac1fdcb3f5860125d16854f5ba30389f561d34",
+   "format": "PNG",
+   "width": 311,
+   "height": 162,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 68
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesvb.jpg",
+   "bytes": 40957,
+   "sha256": "989c618e21690d950f218719df1fb3e20775bb51efa6939d7076ec0eaec02fca",
+   "format": "JPEG",
+   "width": 640,
+   "height": 480,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 69
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/imagesvbn.jpg",
+   "bytes": 42436,
+   "sha256": "07b9caa3b59c761380042b10a33b9a21c35a9eedf7949b1e9f990e055be88c9d",
+   "format": "JPEG",
+   "width": 633,
+   "height": 484,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 70
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/istockphoto-484739781-612x612.jpg",
+   "bytes": 100722,
+   "sha256": "1a883f2fd0184b1947a4258a5ff2adf91006cac5b4cdd720f1754f596bcc16d8",
+   "format": "JPEG",
+   "width": 612,
+   "height": 612,
+   "mode": "RGB",
+   "exif": {
+    "Copyright": "bgblue",
+    "ImageDescription": "Infographic background with different elements like charts, pie charts, diagrams, time lines,..."
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<186 bytes>",
+    "xmp": "<1472 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\x06bgblue\\x1c\\x02x\\x00`Infographic",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "bgblue"
+    ],
+    "photoshop:Credit": [
+     "Getty Images"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.istockphoto.com/legal/license-agreement?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.istockphoto.com/photo/license-gm484739781-?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "Infographic background with different elements like charts, pie charts, diagrams, time lines,..."
+    ]
+   },
+   "sheet_number": 71
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/istockphoto-954791424-1024x1024.jpg",
+   "bytes": 126099,
+   "sha256": "59b780eb4b96abe60ca293ab460fa5c066370bf4cced77d474ab911fc8c4c54c",
+   "format": "JPEG",
+   "width": 1024,
+   "height": 1024,
+   "mode": "RGB",
+   "exif": {
+    "ImageDescription": "Big data visualization. Futuristic infographic. Information aesthetic design. Visual data complexity. Complex data threads graphic visualization. Social network representation. Abstract data graph."
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<269 bytes>",
+    "xmp": "<1572 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\x0cGarryKillian\\x1c\\x02x\\x00\\xc5Bi"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "istock",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "GarryKillian"
+    ],
+    "photoshop:Credit": [
+     "Getty Images/iStockphoto"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.istockphoto.com/legal/license-agreement?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.istockphoto.com/photo/license-gm954791424-?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "Big data visualization. Futuristic infographic. Information aesthetic design. Visual data complexity. Complex data threads graphic visualization. Social network representation. Abstract data graph."
+    ]
+   },
+   "sheet_number": 72
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/line-chart-1024x469.png",
+   "bytes": 98426,
+   "sha256": "4840bb565b79bdf53a95cdbb49a98d940bda3bcadae2b98d9f89995207d6dbc0",
+   "format": "PNG",
+   "width": 1024,
+   "height": 469,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 73
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/radial-graph-707x1024.jpg",
+   "bytes": 124294,
+   "sha256": "6418d687056463b99a8d3b09fb5c6cf42c5289633bad4e39184d4dcfda0fce79",
+   "format": "JPEG",
+   "width": 707,
+   "height": 1024,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 74
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/rrrrr.jpg",
+   "bytes": 19847,
+   "sha256": "572915a3abeb667afce1d392aebcaf1b8d92aa62642e5074054b210fec87a1e4",
+   "format": "JPEG",
+   "width": 447,
+   "height": 447,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 75
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/tudor-government-networks.png",
+   "bytes": 627439,
+   "sha256": "9f4a7ffe54fbb6b8f2b7d21581d3b733df1104a9a1f4a8aa4f6ec2840e6bf6dd",
+   "format": "PNG",
+   "width": 1200,
+   "height": 672,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "icc_profile": "<3144 bytes>",
+    "chromaticity": "(0.31269, 0.32899, 0.63999, 0.33001, 0.3, 0.6, 0.15, 0.05999)"
+   },
+   "markers": [
+    "photoshop"
+   ],
+   "xmp": {},
+   "sheet_number": 76
+  },
+  {
+   "file": "work/extract/references/data-viz/data viz/unnamed.jpg",
+   "bytes": 325890,
+   "sha256": "8628bc2325983ddf27686e2eb435c21381c1a201196095d6249d533068f0e18d",
+   "format": "JPEG",
+   "width": 2957,
+   "height": 2284,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "258",
+    "jfif_version": "(1, 2)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 77
+  }
+ ],
+ "design-i-like": [
+  {
+   "file": "work/extract/references/design-i-like/Design I like/1_Y2K-icons.png",
+   "bytes": 11917148,
+   "sha256": "086d3a0b81301d4111adbf8c27eeffe64f37c372fa61b8e7c7f74ab431425b4a",
+   "format": "PNG",
+   "width": 4019,
+   "height": 2477,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(329.9968, 329.9968)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 1
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Abstract geometric civic icon concept sheet.png",
+   "bytes": 1975540,
+   "sha256": "1eef59dbc129ee5735be7497807ce99189e008fc08d82bb0e0b7990736c44e21",
+   "format": "PNG",
+   "width": 1086,
+   "height": 1448,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 2
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/E18213_00.jpg",
+   "bytes": 110371,
+   "sha256": "8f1314bb05a69d97814494cca5dad358efd36b715de9da39ae97d8b197dfd11c",
+   "format": "JPEG",
+   "width": 592,
+   "height": 396,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "icc_profile": "<60960 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 3
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Flat civic pillar icon studies.png",
+   "bytes": 1275021,
+   "sha256": "397f78aa898b95796ec18731ec2ea5caeede9dae07d87c01550da623304fb719",
+   "format": "PNG",
+   "width": 1086,
+   "height": 1448,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 4
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Isometric civic pillars_ explain, track, connect, act.png",
+   "bytes": 1605074,
+   "sha256": "190508708881656470126ab472515f98bc4637284bced2d65b7d297c6e2199c8",
+   "format": "PNG",
+   "width": 1086,
+   "height": 1448,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 5
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Oath & action geometric pillars.png",
+   "bytes": 1354835,
+   "sha256": "487d4e959b6b0a39549071417d6173b6f4f82fccb6e1ee150c77d1e0591cf56b",
+   "format": "PNG",
+   "width": 1086,
+   "height": 1448,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 6
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Picture17.png",
+   "bytes": 467852,
+   "sha256": "0bc208d7df1f7aeea371ad4de5d16a4dd58ec3eef446f2cb83004e9491f48c96",
+   "format": "PNG",
+   "width": 1152,
+   "height": 720,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(95.9866, 95.9866)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 7
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-18 223125.png",
+   "bytes": 157946,
+   "sha256": "f58da3b9e3f254809c392ca770bfc6b963f0f985bc4219eebf45f4c87e4baa49",
+   "format": "PNG",
+   "width": 663,
+   "height": 391,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 8
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-18 223308.png",
+   "bytes": 82973,
+   "sha256": "3efdc6cd72f7def36388e4db74e5071cb249292c932bb1ae105a85c6010c795f",
+   "format": "PNG",
+   "width": 493,
+   "height": 375,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 9
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-18 224643.png",
+   "bytes": 297076,
+   "sha256": "89c8ca04e5ed7a775045898c7b0fb0b3667008c67c4f7cce8cb5a9c705a837be",
+   "format": "PNG",
+   "width": 647,
+   "height": 442,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 10
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-18 231301.png",
+   "bytes": 182475,
+   "sha256": "f8d727eb66b0457a0ef90b8e6d71983029ca2244f52b2d52506bc7ebb4c5656a",
+   "format": "PNG",
+   "width": 552,
+   "height": 552,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 11
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-19 105838.png",
+   "bytes": 225497,
+   "sha256": "8aa56da85e2ec84e8b6eb56ce0f56c7c6bf8cd6abb77372fceca383bc19d043e",
+   "format": "PNG",
+   "width": 475,
+   "height": 658,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 12
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-20 100317.png",
+   "bytes": 365014,
+   "sha256": "12cbd52f3dd8be9078c721aecf08ac3b8e865c566beb9cca904faa9eb2d880da",
+   "format": "PNG",
+   "width": 1597,
+   "height": 998,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 13
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-20 at 10-04-26 Atlas Design Concepts V2.png",
+   "bytes": 222940,
+   "sha256": "09c11da0fd484fb5e946d9944e25a37f5f057937f0fa480c4ec7aea538c685f6",
+   "format": "PNG",
+   "width": 1184,
+   "height": 1167,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 14
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-20 at 10-04-35 Atlas Design Concepts V2.png",
+   "bytes": 589612,
+   "sha256": "defbdae1a1f3d48d9533cd23d4b2a7a9a7200eb5d1bf606897766ff753be29c6",
+   "format": "PNG",
+   "width": 1201,
+   "height": 1367,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 15
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-20 at 10-04-43 Atlas Design Concepts V2.png",
+   "bytes": 154975,
+   "sha256": "9e8a8b333701c443d78579925fc6fbcd4772ce7b56632d047c573cd610450f45",
+   "format": "PNG",
+   "width": 1200,
+   "height": 870,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 16
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Screenshot 2026-10-20 at 10-04-57 Atlas Design Concepts V2.png",
+   "bytes": 262546,
+   "sha256": "4819b85d0cd3ce71e38b68a03eafde663c971d11046370a4cabd8ea235b4639c",
+   "format": "PNG",
+   "width": 1179,
+   "height": 1392,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 17
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Styles-1.png",
+   "bytes": 76400,
+   "sha256": "fc0a3e571d07089645d980741c4a5e981d8ca3b4f0da03956afffe76ec44db57",
+   "format": "PNG",
+   "width": 1920,
+   "height": 1640,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "srgb": "0",
+    "gamma": "0.45455"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 18
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Atlas_ Follow the housing loop-1.png",
+   "bytes": 1777804,
+   "sha256": "ef8cb8ebc9b98832572b99f7308c00a751ea40f8480efe47c744a776878320f0",
+   "format": "PNG",
+   "width": 1536,
+   "height": 1024,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 19
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/1__rM1Hrhyv_9JTWtCnq-gdw@2x.jpg",
+   "bytes": 22905,
+   "sha256": "fbbf0ae08c98655d7a0d88794eacbafe65dc8868f8b2a66863d215ad50a41355",
+   "format": "JPEG",
+   "width": 1400,
+   "height": 788,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "exif": "<186 bytes>",
+    "dpi": "(72.0, 72.0)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 20
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/1_c0ZvO-swfCl8JH9R4PMlaQ.png",
+   "bytes": 88808,
+   "sha256": "6e716015a6d626093a242531ddfdeb18e93d26f6ccf113d15a57493b267ab2c0",
+   "format": "PNG",
+   "width": 1400,
+   "height": 389,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "dpi": "(72.009, 72.009)",
+    "exif": "<186 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 21
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/68c17b9cae4a630ea9cff5a9_5H3XDgQAjeojS70GjC6o5CAw.png",
+   "bytes": 221500,
+   "sha256": "1a12df982c03dfc4b929fe32c74b2e7364cf961bbe2e7485455a1f95ac685b91",
+   "format": "PNG",
+   "width": 1600,
+   "height": 980,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "transparency": "b'\\x00\\xd3\\xff\\xff?\\xad\\xdc\\x06\\x0f\\\\'",
+    "dpi": "(72.009, 72.009)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 22
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/8BaseLayersofTheNationalMap.JPG",
+   "bytes": 46702,
+   "sha256": "72067a1306d98b7c6bf1671bfad2213fce97be83c4e11f2beed6484bf90d6180",
+   "format": "JPEG",
+   "width": 372,
+   "height": 536,
+   "mode": "RGB",
+   "exif": {
+    "Artist": "Sexton, Pamela Ann",
+    "XPAuthor": "Sexton, Pamela Ann"
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(96, 96)",
+    "jfif_unit": "1",
+    "jfif_density": "(96, 96)",
+    "exif": "<4354 bytes>",
+    "xmp": "<2822 bytes>"
+   },
+   "markers": [
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "Sexton, Pamela Ann"
+    ]
+   },
+   "sheet_number": 23
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 112145.png",
+   "bytes": 161258,
+   "sha256": "107aa4f19e52273b881c943e33871c0cb57bb2f56224290c08e583c088f61587",
+   "format": "PNG",
+   "width": 612,
+   "height": 507,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 24
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 112341.png",
+   "bytes": 105211,
+   "sha256": "6b66abf7354374066d763940a5026c929de24f20e749406a0de1b3b5d6f48c29",
+   "format": "PNG",
+   "width": 622,
+   "height": 561,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 25
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 112445.png",
+   "bytes": 447709,
+   "sha256": "86250072e9251dd1247c9a8f23fd350b42d22164eff0612f73d144dee626ace3",
+   "format": "PNG",
+   "width": 686,
+   "height": 378,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 26
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 120905.png",
+   "bytes": 422451,
+   "sha256": "06b9741b17953098e1746e47699a075c899b3b86d46c6e45b0cadea2f46f1021",
+   "format": "PNG",
+   "width": 657,
+   "height": 381,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 27
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 121301.png",
+   "bytes": 146723,
+   "sha256": "5e9cb589bf52055181a6ecc43006f1abad4d9852402c427d82a26da5ecfbc82d",
+   "format": "PNG",
+   "width": 497,
+   "height": 351,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 28
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 122131.png",
+   "bytes": 211868,
+   "sha256": "c57afb8129de3c54ab468636462db963c4cf3d56458043c07c41f805330ecec8",
+   "format": "PNG",
+   "width": 645,
+   "height": 556,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 29
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 122545.png",
+   "bytes": 171354,
+   "sha256": "a273bed8b0b7d058f13a87c03adf87e4ed4fc9617619c2f656c2b6a644a3ee1a",
+   "format": "PNG",
+   "width": 663,
+   "height": 345,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(119.9896, 119.9896)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 30
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/Screenshot 2026-10-19 at 12-15-02 Organisational Transformation Systems Mapping.png",
+   "bytes": 462919,
+   "sha256": "c8786389c4c3d84d0689fb74895f0994577acb019856065b3124133fc0c1945f",
+   "format": "PNG",
+   "width": 715,
+   "height": 848,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 31
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/bf1eaf07-8cd2-4a84-b45a-2f5320d3397e-cover.png",
+   "bytes": 185444,
+   "sha256": "54a551229c87c82865a0cd2b9663e3a8681eb7e2976af1fd541966e83513adbc",
+   "format": "PNG",
+   "width": 1578,
+   "height": 1048,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {
+    "srgb": "0",
+    "gamma": "0.45455",
+    "dpi": "(95.9866, 95.9866)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 32
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/capsifi-1.jpg",
+   "bytes": 114384,
+   "sha256": "913ca970743cdb72e97e40d0e528792d9f46d3826b9a8e727a543e71e9ca3725",
+   "format": "JPEG",
+   "width": 887,
+   "height": 494,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "256",
+    "jfif_version": "(1, 0)",
+    "dpi": "(96, 96)",
+    "jfif_unit": "1",
+    "jfif_density": "(96, 96)",
+    "comment": "b'LEAD Technologies Inc. V1.01\\x00'"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 33
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/image5-6.png",
+   "bytes": 79918,
+   "sha256": "263bc3bc5e4a0717e3d309165860f5dd52df4c1930126aa7f2edb3163849090f",
+   "format": "PNG",
+   "width": 1033,
+   "height": 794,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 34
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/images00.jpg",
+   "bytes": 32251,
+   "sha256": "992817f8f41b5cb0b5fb849a675bb772894902d6420337f43a12afaa9752ea16",
+   "format": "JPEG",
+   "width": 554,
+   "height": 554,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 35
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/imagesddddddd.png",
+   "bytes": 20177,
+   "sha256": "0a1a0660835aeea92ef5e787eb0533f3bddc339684967c12f0bd41972847f883",
+   "format": "PNG",
+   "width": 526,
+   "height": 380,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 36
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/imagesgg.jpg",
+   "bytes": 28686,
+   "sha256": "8135fccdeb965405a5f79233519c14b96bb0fbed4a35c3b957583d3253fb6f8a",
+   "format": "JPEG",
+   "width": 684,
+   "height": 292,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 37
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Systems Map and Atlast Design Ideass/operating-model-business-architecture.png",
+   "bytes": 86471,
+   "sha256": "45263e65c4034a25c8cadc8fa53e22c7e8e0ae78d19f1f90742ad95f4548076d",
+   "format": "PNG",
+   "width": 1132,
+   "height": 1209,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "dpi": "(130.9878, 130.9878)",
+    "Description": "Created with Enterprise Architect (Build: 1600) 2"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 38
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/What_are_modular_blockchains_1png_028c67284a_5c6b345be4.png",
+   "bytes": 25825,
+   "sha256": "d0df2fbe52ce1fb899059d3e887123fd59677bde16c88e2d4c004c338956e501",
+   "format": "PNG",
+   "width": 1200,
+   "height": 630,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "transparency": "b'\\x99\\xff\\xff\\xff\\xd7\\xff\\xff\\xa6\\xe7k'",
+    "dpi": "(72.009, 72.009)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 39
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/Y2K Civic Pillar Icon Sheet.png",
+   "bytes": 1470915,
+   "sha256": "21860ed1aafd13bd12450196f3b151723d585feb3c29b836575da7aff8205afd",
+   "format": "PNG",
+   "width": 1086,
+   "height": 1448,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [
+    "c2pa",
+    "caBX_chunk",
+    "chatgpt",
+    "jumbf",
+    "openai",
+    "trainedAlgorithmicMedia"
+   ],
+   "xmp": {},
+   "sheet_number": 40
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/b9_circuit(1).png",
+   "bytes": 294207,
+   "sha256": "eaaf34a149e1bd6b57c9bdd1ae62cf41ec58119b4b5b562526b08d87bb426f57",
+   "format": "PNG",
+   "width": 1600,
+   "height": 1232,
+   "mode": "RGB",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 41
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/gallerydd.jpg",
+   "bytes": 49314,
+   "sha256": "bc0c144e557fe27a2b02c12e0ba504a85004f7d1f4ca164ef8c2774b5aa86eac",
+   "format": "JPEG",
+   "width": 806,
+   "height": 423,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(71.12, 71.12)",
+    "jfif_unit": "2",
+    "jfif_density": "(28, 28)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 42
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/gettyimages-2213817563-612x612.jpg",
+   "bytes": 34466,
+   "sha256": "bc0fada3e9bbe656732b59849919971ed911a5850d582d36490f1c291b47c7f1",
+   "format": "JPEG",
+   "width": 612,
+   "height": 482,
+   "mode": "RGB",
+   "exif": {
+    "ImageDescription": "A vibrant collection of abstract geometric icons featuring a mix of pink, gold, and black elements. This set includes various modern symbols, shapes, and minimalist designs, ideal for creative projects, digital artwork, and branding concepts."
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<314 bytes>",
+    "xmp": "<1581 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\x0fPikusisi-Studio\\x1c\\x02x\\x00\\xf"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "Pikusisi-Studio"
+    ],
+    "photoshop:Credit": [
+     "Getty Images"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.gettyimages.com/eula?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.gettyimages.com/detail/2213817563?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "A vibrant collection of abstract geometric icons featuring a mix of pink, gold, and black elements. This set includes various modern symbols, shapes, and minimalist designs, ideal for creative projects, digital artwork, and branding concepts."
+    ]
+   },
+   "sheet_number": 43
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/gettyimages-693902454-612x612.jpg",
+   "bytes": 37048,
+   "sha256": "9adf690bcc00679ad5038a7a589363c061770f1e342c04a944c4ce8c115cd1e8",
+   "format": "JPEG",
+   "width": 612,
+   "height": 612,
+   "mode": "RGB",
+   "exif": {
+    "ImageDescription": "Business and office icons,vector illustration."
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<118 bytes>",
+    "xmp": "<1377 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\tfairywong\\x1c\\x02x\\x00.Business a"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "fairywong"
+    ],
+    "photoshop:Credit": [
+     "Getty Images"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.gettyimages.com/eula?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.gettyimages.com/detail/693902454?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "Business and office icons,vector illustration."
+    ]
+   },
+   "sheet_number": 44
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/images33.jpg",
+   "bytes": 44311,
+   "sha256": "f02a83f024ae3367f2864187b5c7b44c283070054e12237f8d3aef3d14cf8ab1",
+   "format": "JPEG",
+   "width": 626,
+   "height": 412,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 45
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/imagesddd.png",
+   "bytes": 5002,
+   "sha256": "89d0e6bccafae97782cb8129699f6de787ed62237bf9dde9631ff70fe74d5179",
+   "format": "PNG",
+   "width": 300,
+   "height": 168,
+   "mode": "P",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 46
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/istockphoto-2223389849-612x612.jpg",
+   "bytes": 37983,
+   "sha256": "e13b2695ab42169f4d89812b8f2f3af8f0072b59f9d7c13bbac9fd61ffd43dae",
+   "format": "JPEG",
+   "width": 612,
+   "height": 525,
+   "mode": "RGB",
+   "exif": {
+    "ImageDescription": "A creative vector set combining neumorphic UI design elements with Bauhaus-inspired geometric symbols. This unique collection features soft, minimalist buttons, backgrounds, and interface components, each adorned with abstract Bauhaus shapes like circles, triangles, and lines. Ideal for modern app i"
+   },
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "dpi": "(300, 300)",
+    "jfif_unit": "1",
+    "jfif_density": "(300, 300)",
+    "exif": "<543 bytes>",
+    "xmp": "<1835 bytes>",
+    "photoshop": "{1028: b'\\x1c\\x01Z\\x00\\x03\\x1b%G\\x1c\\x02P\\x00\\x0bAstrolounge\\x1c\\x02x\\x01\\xd7A c",
+    "progressive": "1",
+    "progression": "1"
+   },
+   "markers": [
+    "getty",
+    "iptc_8bim",
+    "photoshop",
+    "xmp"
+   ],
+   "xmp": {
+    "dc:creator": [
+     "Astrolounge"
+    ],
+    "photoshop:Credit": [
+     "Getty Images"
+    ],
+    "xmpRights:WebStatement": [
+     "https://www.istockphoto.com/legal/license-agreement?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "Iptc4xmpCore": [
+     "http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    ],
+    "plus:Licensor": [
+     "https://www.istockphoto.com/photo/license-gm2223389849-?utm_medium=organic&amp;utm_source=google&amp;utm_campaign=iptcurl"
+    ],
+    "dc:description": [
+     "A creative vector set combining neumorphic UI design elements with Bauhaus-inspired geometric symbols. This unique collection features soft, minimalist buttons, backgrounds, and interface components, each adorned with abstract Bauhaus shapes like circles, triangles, and lines. Ideal for modern app i"
+    ]
+   },
+   "sheet_number": 47
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/set-y2k-futuristic-black-icons_498654-1035.jpg",
+   "bytes": 55528,
+   "sha256": "0a39f5ff20234a69293460ecbc3e2bf6f69fc34ca76994a5dc95bbd269159008",
+   "format": "JPEG",
+   "width": 740,
+   "height": 592,
+   "mode": "L",
+   "exif": {},
+   "info": {
+    "jfif": "257",
+    "jfif_version": "(1, 1)",
+    "jfif_unit": "0",
+    "jfif_density": "(1, 1)",
+    "progressive": "1",
+    "progression": "1",
+    "icc_profile": "<524 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 48
+  },
+  {
+   "file": "work/extract/references/design-i-like/Design I like/what_are_blockchain_sequencers_and_why_do_they_matter_635ac6439a_fdf9f4d9ec.png",
+   "bytes": 21511,
+   "sha256": "830792f63d6f6846615060c696fa1424b13d8c101befca685421ecf90e5522c1",
+   "format": "PNG",
+   "width": 1200,
+   "height": 630,
+   "mode": "P",
+   "exif": {},
+   "info": {
+    "transparency": "b'\\xfd\\xff\\xff\\xff\\xff\\xff\\xff\\xbb\\xcaa'",
+    "dpi": "(72.009, 72.009)"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 49
+  }
+ ],
+ "icon-studies": [
+  {
+   "file": "source/icon-studies/20261020_Icon-Study-04-Flat-Square.png",
+   "bytes": 484748,
+   "sha256": "8e922224d8a7665061713dee964bc36686f45063b668650bfa0b9d674240048b",
+   "format": "PNG",
+   "width": 547,
+   "height": 731,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 1
+  },
+  {
+   "file": "source/icon-studies/20261020_Icon-Study-05-Hand-Drawn.webp",
+   "bytes": 97150,
+   "sha256": "2af934bb26d4ee7cc27b14564e16050f53339b364a298fee0b57c70e2d34eaec",
+   "format": "WEBP",
+   "width": 548,
+   "height": 731,
+   "mode": "RGB",
+   "exif": {},
+   "info": {
+    "loop": "1",
+    "background": "(255, 255, 255, 255)",
+    "icc_profile": "<456 bytes>"
+   },
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 2
+  },
+  {
+   "file": "source/icon-studies/20261020_Icon-Study-08-Simple-Line.png",
+   "bytes": 468205,
+   "sha256": "6c67194b04abed5571d74e26ab86ade1f5b23deb4c08149177ad4d03dadf5cd5",
+   "format": "PNG",
+   "width": 547,
+   "height": 731,
+   "mode": "RGBA",
+   "exif": {},
+   "info": {},
+   "markers": [],
+   "xmp": {},
+   "sheet_number": 3
+  }
+ ]
+}

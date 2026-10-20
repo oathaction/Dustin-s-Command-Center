@@ -26,7 +26,7 @@ deliverables/           finished files only
 
 ## Start of every session
 
-Read, in order: `work/ledger/decision-log.md`, `work/ledger/change-ledger.md`, `work/ledger/open-questions.md`, and the latest gate report. Confirm which phase is active and what was approved. Then continue.
+Read, in order: `work/ledger/YYYYMMDD_Decision-Log.md`, `work/ledger/YYYYMMDD_Change-Ledger.md`, `work/ledger/YYYYMMDD_Open-Questions.md`, and the latest gate report. Confirm which phase is active and what was approved. Then continue.
 
 ## Large files
 
@@ -40,6 +40,7 @@ The studio agents live in `.claude/agents/`. Use them as Master Brief section 4 
 
 - Files: `YYYYMMDD_Title-Case-Words.ext`, with the execution date, one `_` after the date, Title-Case words joined by hyphens, a lowercase extension, and an optional `_V2`, `_DRAFT`, `_REVIEW` or `_FINAL` suffix.
 - Folders: lowercase kebab-case. `_archive/` and `_templates/` are the only folders that start with `_`.
+- In paths written as `YYYYMMDD_...`, use the date the file is first created. A living ledger keeps its first date, so find it with a pattern such as `work/ledger/*_Decision-Log.md`.
 - Source code and tool configuration keep their language or tool conventions (`build.mjs`, `tokens.css`, `CLAUDE.md`).
 - Never use spaces, `(1)`, `copy`, or `FINAL_FINAL`.
 

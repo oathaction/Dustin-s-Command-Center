@@ -127,12 +127,12 @@ Each gate approves the proposal for the next phase. Dustin reviews every stage b
 
 Keep these ledgers in `work/ledger/` and `work/research/`:
 
-- `change-ledger.md`: one line per change, with the chapter, the change, the reason and the approving gate.
-- `decision-log.md`: routine decisions made inside an approved phase.
-- `open-questions.md`: factual, rights and model questions for Dustin.
-- `research/research-ledger.md`: reference, maker, verified status and date, principle observed, proposed use, limits, URL, date checked.
-- `research/rights-ledger.md`: every font, image, reference and generated asset, with source, license or terms and whether it may ship.
-- `gate-0-report.md` through `gate-5-report.md`.
+- `YYYYMMDD_Change-Ledger.md`: one line per change, with the chapter, the change, the reason and the approving gate.
+- `YYYYMMDD_Decision-Log.md`: routine decisions made inside an approved phase.
+- `YYYYMMDD_Open-Questions.md`: factual, rights and model questions for Dustin.
+- `research/YYYYMMDD_Research-Ledger.md`: reference, maker, verified status and date, principle observed, proposed use, limits, URL, date checked.
+- `research/YYYYMMDD_Rights-Ledger.md`: every font, image, reference and generated asset, with source, license or terms and whether it may ship.
+- `YYYYMMDD_Gate-0-Report.md` through `YYYYMMDD_Gate-5-Report.md`.
 
 ### Research starting points
 

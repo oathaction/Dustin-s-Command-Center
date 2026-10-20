@@ -4,7 +4,7 @@ Paste everything below the line into Claude Code after I approve Gate 2. Record 
 
 ---
 
-This is Phase 3 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/gate-2-report.md`, then Master Brief sections 8 and 13 to 15 in full. Work only within the approved Phase 3 proposal.
+This is Phase 3 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/YYYYMMDD_Gate-2-Report.md`, then Master Brief sections 8 and 13 to 15 in full. Work only within the approved Phase 3 proposal.
 
 Gate 2 decisions: [paste or write "As proposed"]
 
@@ -15,7 +15,7 @@ Gate 2 decisions: [paste or write "As proposed"]
 - The six Atlas V7 worked examples from Master Brief section 14
 - The configurable policy workflows, mapped to the V7 route codes
 - The final reconciliation table
-- `work/ledger/gate-3-report.md` with the Phase 4 proposal
+- `work/ledger/YYYYMMDD_Gate-3-Report.md` with the Phase 4 proposal
 
 **Inputs.** `work/extract/atlas-v7-data.json`, the Phase 2 tokens, symbols and encoding glyphs, the research ledger, and primary public data sources found by the research lead.
 

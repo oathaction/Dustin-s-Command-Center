@@ -4,7 +4,7 @@ Paste everything below the line into Claude Code after I approve Gate 1. Record 
 
 ---
 
-This is Phase 2 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/gate-1-report.md`, then Master Brief sections 3, 6 to 12 and 17. Apply only what I approved at Gate 1.
+This is Phase 2 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/YYYYMMDD_Gate-1-Report.md`, then Master Brief sections 3, 6 to 12 and 17. Apply only what I approved at Gate 1.
 
 Gate 1 decisions: [paste: approved strategy, symbol direction, each identity refinement accepted or declined, architecture, tokens]
 
@@ -13,7 +13,7 @@ Gate 1 decisions: [paste: approved strategy, symbol direction, each identity ref
 - Vector masters in `work/build/assets/`: identity, pillars, topics, atlas symbols, status marks, encoding glyphs, utility icons and graphic devices, at 16, 24 and 48 px where useful
 - `tokens.css` and `tokens.json` generated from one source
 - A preview build of these chapters as one HTML file in `work/boards/`
-- `work/ledger/gate-2-report.md` with the Phase 3 proposal
+- `work/ledger/YYYYMMDD_Gate-2-Report.md` with the Phase 3 proposal
 
 **Inputs.** `source/`, `work/extract/`, the Gate 1 boards and decisions, and the research ledger.
 

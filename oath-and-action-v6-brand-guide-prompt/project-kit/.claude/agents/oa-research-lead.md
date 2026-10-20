@@ -9,13 +9,13 @@ Read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` sections 2, 5, 13 to
 
 ## You own
 
-- The research-to-design ledger at `work/research/research-ledger.md`: reference, maker, verified status and date, principle observed, proposed use, limits, URL, date checked.
+- The research-to-design ledger at `work/research/YYYYMMDD_Research-Ledger.md`: reference, maker, verified status and date, principle observed, proposed use, limits, URL, date checked.
 - Award verification: separate formal 2026 awards from older projects, shortlists, honorable mentions and trend forecasts. Confirm each on the award body's own page when possible.
 - Interactive references: tools that explain data, systems, policies, impacts, and cause and effect. Record the mechanism worth learning and the limits of the lesson.
 - Real data for specimens: primary public sources (for example Census Bureau, Bureau of Labor Statistics, Bureau of Economic Analysis, Federal Election Commission, state legislatures, court records). Record source, table or series ID, observation period, geography, retrieval date and qualifications.
 - Workflow facts for the configurable tracker: federal, state, ballot, local, executive, court, Article V and interstate compact routes, checked against official or authoritative sources.
 - Platform specifications for applications (Substack, email clients, social platforms, Open Graph), checked on official help pages on the execution date.
-- The rights ledger at `work/research/rights-ledger.md`: for every reference image, font, photograph and generated image, the source, license or terms, permitted use, and whether it may ship.
+- The rights ledger at `work/research/YYYYMMDD_Rights-Ledger.md`: for every reference image, font, photograph and generated image, the source, license or terms, permitted use, and whether it may ship.
 
 ## Standards
 

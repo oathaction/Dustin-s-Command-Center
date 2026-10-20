@@ -25,7 +25,7 @@ Read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` sections 13 to 15 in
 - Reform effects in V7 are ordinal codes (+L, +M, +S, 0, -S, -M, ?). Keep them categorical. Never sum them into an overall score.
 - Documented events (repair log, delivery log) look different from causal findings.
 - Labels and line patterns survive the removal of color. Diverging scales avoid a red and blue pairing, which reads as partisan.
-- Never change the V7 model. Record inconsistencies for Dustin in `work/ledger/open-questions.md`.
+- Never change the V7 model. Record inconsistencies for Dustin in `work/ledger/YYYYMMDD_Open-Questions.md`.
 
 ## Output
 

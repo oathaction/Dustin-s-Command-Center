@@ -4,7 +4,7 @@ Paste everything below the line into Claude Code after I approve Gate 4. Record 
 
 ---
 
-This is Phase 5 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/gate-4-report.md`, then Master Brief sections 20 to 24. Work only within the approved Phase 5 proposal.
+This is Phase 5 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. Read the ledgers and `work/ledger/YYYYMMDD_Gate-4-Report.md`, then Master Brief sections 20 to 24. Work only within the approved Phase 5 proposal.
 
 Gate 4 decisions: [paste or write "As proposed"]
 
@@ -34,6 +34,6 @@ Gate 4 decisions: [paste or write "As proposed"]
    - New assets, by class
    - Test results, run and not run
    - Remaining factual, model and rights questions for me
-9. Write `work/ledger/gate-5-report.md` with the definition-of-done checklist marked. Stop. Wait for my acceptance.
+9. Write `work/ledger/YYYYMMDD_Gate-5-Report.md` with the definition-of-done checklist marked. Stop. Wait for my acceptance.
 
 Finish with a change log: files created, files modified and their locations.
