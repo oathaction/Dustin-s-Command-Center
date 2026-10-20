@@ -491,7 +491,7 @@ def meaning(o):
     tok = o["id"]
     if "standards rule" in o["kinds"]:
         return "standards rule"
-    if re.search(r"loop\s*$|loops\s*$|loops .*$", before) or "loop" in prv[-12:]:
+    if re.search(r"loop\s*$|loops\s*$|loops .*$", before) or prv.endswith(("loop", "loops")):
         return "loop (typed)"
     if re.search(r"variable\s*$|variables .*$", before):
         return "variable (typed)"
@@ -983,8 +983,6 @@ for code, row in LEDGER.items():
                              "loops (first-domain)": len(loops_all), "loops (any domain)": len(loops_any),
                              "reforms touching": SHEET_COMPUTED.get(code, {}).get("reforms (targets touching sheet)")}
     checked["Ledger rows"] += 1
-    if sorted(row["vars"]) != sorted(vs) and not row["vars"][:4] == sorted(vs)[:4]:
-        pass
 
 # ---------------------------------------------- Concepts V2 Circuit (section 10)
 cir = next(i for i, dd in enumerate(DOCS) if dd["location"].startswith("section 10"))
@@ -1041,9 +1039,6 @@ for m in re.finditer(r"Passes (?:on to|back to) ([A-E]): (.+?) \(([A-Z]+\d+)\)",
         finding(cir, "pass-on", lid, nm, L["name"] if L else "missing", "label", "pass-on example")
     elif area(L["to"]) != to_area:
         finding(cir, "pass-on", lid, "lands in area " + to_area, "lands in " + area(L["to"]), "structure", "pass-on example")
-for m in re.finditer(r"\b(A\d|B\d|C\d|D\d|E\d|EC\d{1,2}|TC\d|X\d) ([A-Z][^A-Z\n]{2,40}?)(?= (?:A\d|B\d|C\d|D\d|E\d|EC\d|TC\d|X\d)\b| \d|$)",
-                     " ".join(t for t in cl if re.match(r"^(A|B|C|D|E|EC|TC|X)\d", t))):
-    pass
 
 # ---------------------------------------------- other numeric claims in Concepts V2
 CLAIMS_CHECK = []
@@ -1183,8 +1178,13 @@ for i, o in enumerate(occ):
     t = html.unescape(o["text"])
     after = t[o["pos"] + len(o["id"]):].strip(" :·,")
     lt = LOOPS[o["id"]]["title"]
+    if o["id"] in NODES and meaning(o).startswith("variable"):
+        continue  # a colliding ID used as a variable; recorded under ID collisions
+    if re.match(r"^(Variables?|Links?|Loops?|Reforms?)\b", after):
+        continue  # a footer list of IDs, with no title
     if after and len(after) > 25 and not ID_RE.match(after) and re.match(r"^[A-Z][a-z]", after):
-        if norm(after) != norm(lt) and not norm(after).startswith(norm(lt)) and norm(lt)[:20] in norm(after) is False:
+        checked["loop titles next to loop IDs"] += 1
+        if not norm(after).startswith(norm(lt)) and norm(lt)[:20] not in norm(after):
             finding(o["doc"], o["sub"], o["id"], after[:90], lt, "label", "loop title next to ID")
 
 # ---------------------------------------------- reviewed false positives

@@ -47,7 +47,7 @@ ROWS = [
      "Variable chips B2, B3, B4, B5 and D1 to D5 in the same table as domain codes D01 to D10 and bare loop IDs in \"Main loop\" (R1, R1b, R2, R3, R6, R8, R10)",
      "B2 to B5 are both variables and loops; D1 to D7 are variables, D01 to D10 domains", "ID",
      "Typed chips in every column: \"Var B4\", \"Loop R3\", \"Domain D02\"."),
-    (CV2, "Concept 11 Register sheets 03 (D02), 04 (D03), 05 (D04), 11 (D10)", "B4, B5",
+    (CV2, "Concept 11 Register sheets 03 (D02), 04 (D03), 05 (D04)", "B4, B5",
      "Variable B4 or B5 in the From column and on variable cards, and loop B4 or B5 in \"Closed loops that pass through\", on the same sheet; only the neighbouring name tells them apart",
      "Variables B4, B5 and loops B4, B5", "ID", "Typed chips; set loop chips in the loop style used in the loop list."),
     (CV2, "Concept 11 Register, all 12 data sheets", "D1 to D7 beside D01 to D10",
@@ -210,6 +210,7 @@ COMP = [
     ("AVS production table rows: from and to, sign, delay, grade", cr["table rows (link, from-to, sign, delay, grade)"] * 4, 0),
     ("Connection names shown without an ID, with their grade and delay", cr["link names shown without their ID"], 0),
     ("Connection IDs with a grade, delay or glyph shown beside them (all sources)", link_attr, 0),
+    ("Loop titles printed beside loop IDs", cr.get("loop titles next to loop IDs", 0), 0),
     ("Reform effect words (Concepts V2 and AVS outcome figure)", cr["reform effect words"] + cr["AVS outcome cells"], 0),
     ("AVS domain titles and layer rows", cr["AVS domain rows"] + cr["AVS layer rows"], 0),
 ]

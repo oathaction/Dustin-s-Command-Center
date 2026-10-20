@@ -44,7 +44,8 @@
    "reform effect words": 12,
    "AVS outcome cells": 12,
    "AVS domain rows": 10,
-   "AVS layer rows": 3
+   "AVS layer rows": 3,
+   "loop titles next to loop IDs": 42
   },
   "auto_findings": 2,
   "reviewed_false_positives": 8,
@@ -178,16 +179,6 @@
    "bare": 1
   },
   {
-   "file": "work/extract/v5-polished/images/e44e256497.svg",
-   "location": "chapter 16-atlas-system, figure 3 (loop R16)",
-   "group": "B2-B5",
-   "tokens": {
-    "B2 as loop (typed)": 1,
-    "B2 as variable (typed)": 1
-   },
-   "bare": 0
-  },
-  {
    "file": "work/extract/atlas-visual-system/chapters/04-loops.html",
    "location": "chapter 04-loops",
    "group": "R-number",
@@ -227,16 +218,6 @@
     "R16 as loop (typed)": 2
    },
    "bare": 1
-  },
-  {
-   "file": "work/extract/atlas-visual-system/images/e44e256497.svg",
-   "location": "image in chapter 05-evidence",
-   "group": "B2-B5",
-   "tokens": {
-    "B2 as loop (typed)": 1,
-    "B2 as variable (typed)": 1
-   },
-   "bare": 0
   },
   {
    "file": "source/20261019_Oath-And-Action-Atlas-Design-Concepts_V2.html",
@@ -803,18 +784,6 @@
     "D10 as domain": 2,
     "D2 as variable": 1,
     "D5 as variable": 1
-   },
-   "bare": 0
-  },
-  {
-   "file": "source/20261019_Oath-And-Action-Atlas-Design-Concepts_V2.html",
-   "location": "section 22 (Concept 11 Register)",
-   "group": "B2-B5",
-   "tokens": {
-    "B2 as variable (by label)": 1,
-    "B3 as variable (by label)": 3,
-    "B4 as loop (typed)": 1,
-    "B4 as variable (by label)": 2
    },
    "bare": 0
   },
