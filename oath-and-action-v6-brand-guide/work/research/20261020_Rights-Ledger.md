@@ -267,3 +267,7 @@ Third-party or unknown images that show visual traits of a generated image: data
 - The license terms for Alamy, Shutterstock, Dreamstime, Depositphotos, Freepik, Vexels and Getty Images previews. None are needed for study use, and none permit shipping a watermarked preview.
 - Whether the URW font exception covers web embedding in HTML, and whether Atlas V7 needs any license text at all if V6 replaces those fonts.
 - The authorship of Concepts V2 and of the Atlas Visual System diagrams. I treated them as Oath & Action work because Dustin supplied them as such.
+
+## Added October 20, 2026: icon style collages shared in chat
+
+Five collages of icon styles reached the project as images in the conversation, without files. They are described in `work/research/20261020_Icon-Style-References-Chat.md`. Origin: third-party icon sets and two Getty Images previews (watermarks "Astrolounge" and "fairywong"). Permitted use: study only. If the files are added to `source/icon-style-references/`, give each one a row here.

@@ -1,0 +1,293 @@
+<title>Edition 06 Gate 0 Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap">
+<style>
+/* Layout: one 1120 px reading column on Newsprint; evidence in a two-up grid that stacks on phones; tables scroll inside their own frames. */
+:root {
+  --bg: #DCD9D2;          /* Newsprint */
+  --surface: #E6E3DD;     /* raised panel, Newsprint mixed toward White */
+  --fg: #121212;          /* Charcoal */
+  --muted: #45494F;       /* text-safe secondary on Newsprint, 7.1:1 */
+  --rule: #5D636D;        /* Stone, hairlines only */
+  --deep: #1F2D5A;        /* Prussian */
+  --on-deep: #DCD9D2;
+  --accent: #E63946;      /* Pillar Red: one job, the status marker */
+  --ok-bg: #C9D6D2;       /* Verdigris mixed toward Newsprint */
+  --mid-bg: #CFCCC5;
+  --low-bg: #BFBAB1;      /* Newsprint mixed toward Charcoal */
+  --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --quote: "Lora", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --accent: #F0626C; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --accent: #F0626C; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 400 1rem/1.6 var(--body); margin: 0 }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 72px }
+.eyebrow { font: 700 0.8125rem/1.4 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; text-wrap: balance; margin: 0 }
+h1 { font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.02; margin-top: 12px }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.1; margin-bottom: 16px }
+h3 { font-size: 1.125rem; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em }
+p { margin: 0 0 12px; max-width: 68ch }
+.lede { font-size: 1.1875rem; line-height: 1.5; max-width: 60ch; margin-top: 16px }
+section { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--rule) }
+.wordmark { font: 800 1.125rem/1 var(--display); letter-spacing: -0.02em }
+.wordmark span { color: var(--accent) }
+.head { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: baseline; justify-content: space-between }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 600 0.875rem/1 var(--body); border: 1px solid var(--fg); padding: 8px 12px }
+.status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); outline: 1px solid var(--fg) }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 24px }
+.figure-num { background: var(--bg); padding: 16px }
+.figure-num b { display: block; font: 800 2.25rem/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums }
+.figure-num span { display: block; margin-top: 8px; font-size: 0.875rem; line-height: 1.4; color: var(--muted) }
+.ask { background: var(--deep); color: var(--on-deep); padding: 24px; margin-top: 32px }
+.ask h2 { color: var(--on-deep) }
+.ask ol { margin: 0; padding-left: 20px; display: grid; gap: 8px }
+.ask p { color: var(--on-deep) }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px }
+@media (max-width: 760px) { .grid2 { grid-template-columns: minmax(0, 1fr) } }
+figure { margin: 0; min-width: 0 }
+figure .frame { background: var(--surface); border: 1px solid var(--rule); padding: 12px; overflow-x: auto }
+figure img { display: block; max-width: 100%; height: auto }
+.pix img { image-rendering: pixelated }
+figcaption { font-size: 0.875rem; line-height: 1.5; margin-top: 8px }
+figcaption b { font-weight: 700 }
+.src { display: block; color: var(--muted); font-size: 0.8125rem; margin-top: 4px }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end }
+.row .cell { display: grid; gap: 4px; font-size: 0.8125rem; color: var(--muted) }
+.table { overflow-x: auto; border: 1px solid var(--rule); margin-top: 16px }
+table { border-collapse: collapse; width: 100%; font-size: 0.875rem; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top }
+th { font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--surface) }
+td.s { text-align: center; font-weight: 700; width: 3.2em }
+td.s1, td.s2 { background: var(--low-bg) }
+td.s3 { background: var(--mid-bg) }
+td.s4, td.s5 { background: var(--ok-bg) }
+.key { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.8125rem; color: var(--muted); margin-top: 8px }
+.key i { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--rule) }
+.chip { display: inline-block; font: 700 0.75rem/1.2 var(--body); letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid var(--fg); padding: 3px 6px; white-space: nowrap }
+.chip.new { background: var(--fg); color: var(--bg) }
+.phases { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule) }
+.phases li { background: var(--bg); padding: 16px; display: grid; gap: 6px; align-content: start }
+.phases li.now { background: var(--surface); box-shadow: inset 0 4px 0 var(--accent) }
+.phases b { font: 800 1rem/1.2 var(--display) }
+.phases span { font-size: 0.875rem; line-height: 1.45; color: var(--muted) }
+.list { display: grid; gap: 10px; padding-left: 22px; margin: 0 }
+.list li { max-width: 72ch }
+.default { color: var(--muted); font-size: 0.875rem; display: block }
+code { font: 0.8125rem/1.4 ui-monospace, Menlo, Consolas, monospace; background: var(--surface); padding: 1px 4px; overflow-wrap: anywhere }
+blockquote { margin: 0; font: italic 400 1.25rem/1.45 var(--quote); max-width: 54ch }
+.foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 0.8125rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between }
+a { color: inherit; text-underline-offset: 3px }
+:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="wordmark" aria-label="Oath and Action">OATH<span>&amp;</span>ACTION</div>
+    <p class="status">Waiting for your approval</p>
+  </header>
+
+  <p class="eyebrow" style="margin-top:40px">Brand Guide, Edition 06 · Phase 0 · October 20, 2026</p>
+  <h1>Gate 0 review</h1>
+  <p class="lede">Six specialists audited the V5 Polished guide against the commission brief and Atlas V7. This page shows what they found, what to keep, and what Phase 1 will do next. Nothing in the guide has changed yet.</p>
+
+  <div class="figures" role="list">
+    <div class="figure-num" role="listitem"><b>0 of 18</b><span>chapters reach the ship threshold of 4 on every rubric criterion</span></div>
+    <div class="figure-num" role="listitem"><b>35%</b><span>of rendered text sits under the guide's own 13 px minimum</span></div>
+    <div class="figure-num" role="listitem"><b>0</b><span>download or copy controls in the guide</span></div>
+    <div class="figure-num" role="listitem"><b>2 in 2,644</b><span>atlas values that conflict with V7 across three files</span></div>
+    <div class="figure-num" role="listitem"><b>32</b><span>tensions to resolve: 15 from the brief, 17 found in Phase 0</span></div>
+  </div>
+
+  <div class="ask">
+    <h2>What I need from you</h2>
+    <ol>
+      <li>Approve the review on this page.</li>
+      <li>Approve the Master Brief corrections, issued as Brief V2 when Phase 1 starts. The main ones: V5 has no downloads; the wordmark is built from stock type; V7 draws hypotheses dotted.</li>
+      <li>Approve the Phase 1 proposal below.</li>
+    </ol>
+    <p style="margin-top:16px">Answer the open questions whenever you can. Each one has a default the studio follows until you do.</p>
+  </div>
+
+  <section aria-labelledby="keep">
+    <h2 id="keep">What to keep</h2>
+    <ul class="list">
+      <li>The editorial base of Newsprint, Charcoal and red punctuation. The cover and closing pass the cover-the-wordmark test.</li>
+      <li>The hinge as headline, diagram and the divider before "What you can do".</li>
+      <li>The voice method, "We publish the mechanism / Not the mood", with new examples.</li>
+      <li>The Signal Grid's geometry and the nine-stage tracker idea, redesigned so a reader can decode them.</li>
+      <li>The atlas demonstrations' fidelity to V7, the Atlas Visual System's rule "Closure is a claim.", and Concept 11 Register, which reproduces V7 row for row.</li>
+      <li>Tab order, visible focus, target sizes, the dialog's Escape and focus return, and the icon library's empty state, which already pass.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the audits found</h2>
+    <p>Each figure is captured from V5 Polished at its true size or magnified without smoothing.</p>
+    <div class="grid2" style="margin-top:24px">
+      <figure>
+        <div class="frame"><img src="{{chart}}" width="652" height="423" alt="Bar chart titled Closed primaries are the largest group. Bars: Closed 15 in red, Partly open 11, Open 18, Top two or top four 6."></div>
+        <figcaption><b>The title contradicts the chart.</b> Open (18) is the largest group, and the red bar marks Closed (15). The one-pager repeats the claim.<span class="src">Data Visualization chapter · Creative director, editor, data visualization lead</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="{{hinge}}" width="624" height="633" alt="Four hinge headlines in white on Prussian blue, each with a red ampersand: The rule and the result, The budget and the bill, The hearing and the vote, The promise and the record."></div>
+        <figcaption><b>Red on Prussian.</b> The same chapter says "Never red against blue." In the United States the pairing reads as partisan. This touches a locked rule, so you will see options at Gate 1.<span class="src">Voice chapter · Creative director</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="{{l5}}" width="648" height="341" alt="Lockup L5: the wordmark above the tagline, where the descenders are cut so it reads A countrv that answers to its peoole."></div>
+        <div class="frame" style="margin-top:8px"><img src="{{l6}}" width="648" height="341" alt="Lockup L6 on Prussian: the tagline and the URL oathandaction.org with clipped descenders, reading .orq."></div>
+        <figcaption><b>Clipped outlines.</b> Six symbols cut their own outlines. The tagline reads "A countrv that answers to its peoole." and the URL ends ".orq". The ampersand loses the top of its loop and the tip of its tail.<span class="src">Identity chapter · Design director</span></figcaption>
+      </figure>
+      <figure class="pix">
+        <div class="frame">
+          <div class="row">
+            <div class="cell"><img src="{{amp}}" width="184" height="192" alt="The red ampersand at 16 px, magnified 8 times: soft red pixels with no solid edge.">Ampersand, 16 px</div>
+            <div class="cell"><img src="{{lock}}" width="192" height="192" alt="The lockmark at 16 px, magnified 8 times: the centre cross renders as two gray rows.">Lockmark, 16 px</div>
+          </div>
+          <img src="{{word}}" width="1216" height="192" alt="The wordmark at 16 px, magnified 8 times." style="margin-top:12px">
+        </div>
+        <figcaption><b>No small-size masters.</b> The wordmark is stock Inter Tight 800 with display tracking at every size. The ampersand is the unmodified Lora Bold glyph. At 16 px only 43 percent of its pixels are solid, and no red pixel reaches 3:1 on Newsprint.<span class="src">Magnified 8x from the real sprite masters · Design director</span></figcaption>
+      </figure>
+      <figure class="pix">
+        <div class="frame">
+          <div class="row">
+            <div class="cell"><img src="{{money}}" width="192" height="192" alt="Campaign money icon at 16 px, magnified: a dark box with a small mark in the centre.">Campaign money</div>
+            <div class="cell"><img src="{{contact}}" width="192" height="192" alt="Contact an official icon at 16 px, magnified: a dark box with a small mark in the centre, nearly the same shape.">Contact an official</div>
+          </div>
+        </div>
+        <figcaption><b>Two subjects, one silhouette.</b> At 16 px these topic icons are landscape boxes with a centre mark. The four pillar marks use four unrelated constructions, and the 24 px topic masters are the 48 px drawings halved, so none sits on the pixel grid.<span class="src">Topic Icons chapter · Design director</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame">
+          <img src="{{sgc}}" width="1060" height="240" alt="Signal Grid encodings for four content types, in color.">
+          <img src="{{sgg}}" width="1060" height="240" alt="The same four Signal Grid encodings in grayscale, where they look alike." style="margin-top:8px">
+        </div>
+        <figcaption><b>The Signal Grid relies on hue.</b> In grayscale the four content types look alike. Active and Ready differ by hue alone, at 1.14:1, on nodes 1 to 3 px wide. Loading pulses forever with no pause.<span class="src">The Grid chapter · UX and accessibility lead</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="{{tracker}}" width="652" height="357" alt="A tracker list of four bills with status words in Verdigris and small Signal Grid markers."></div>
+        <figcaption><b>One route, no key.</b> The tracker models a two-chamber bill only. Its stage marks need a key the reader cannot see, and its Verdigris status words measure 3.37:1. Atlas V7 lists eleven routes to change.<span class="src">Data Visualization chapter · Data visualization lead</span></figcaption>
+      </figure>
+      <figure>
+        <div class="frame" style="max-height:520px"><img src="{{reflow}}" width="320" height="800" alt="The Pillar Marks chapter at 320 px wide, with content running past the right edge."></div>
+        <figcaption><b>Reflow fails at 320 px.</b> The page grows to 524 px. Every type size is in px, and 44 boxes clip their text at 200 percent. No chart or map has a text or table equivalent.<span class="src">UX and accessibility lead</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="scores">
+    <h2 id="scores">Rubric scores</h2>
+    <p>Scored 1 to 5 by the creative director, using the automated checks. V6 ships each chapter only when every criterion reaches 4.</p>
+    <div class="key"><span><i style="background:var(--low-bg)"></i>1 or 2</span><span><i style="background:var(--mid-bg)"></i>3</span><span><i style="background:var(--ok-bg)"></i>4 or 5</span></div>
+    <div class="table">
+      <table>
+        <thead><tr><th scope="col">Chapter</th><th scope="col">Craft</th><th scope="col">Clarity</th><th scope="col">Brand</th><th scope="col">Useful</th><th scope="col">Evidence</th><th scope="col">Access</th><th scope="col">Lowest, and why</th></tr></thead>
+        <tbody>{{rubric_rows}}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="tensions">
+    <h2 id="tensions">Tensions to resolve</h2>
+    <p>The brief named fifteen. The audits confirmed all of them, corrected two, and found seventeen more.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th scope="col">#</th><th scope="col">Tension</th><th scope="col">Status</th><th scope="col">Evidence</th></tr></thead>
+        <tbody>{{tension_rows}}</tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="atlas">
+    <h2 id="atlas">The atlas bases</h2>
+    <div class="grid2">
+      <div>
+        <p>Your four favored concepts cover the overview (09 The Circuit), the layers (03 Field Manual), the actors (10 Who Can Act) and the evidence (11 Register). The data visualization lead proposes 07 Loop Card as a fifth base, because five of the six worked examples are single loops or interventions.</p>
+        <p>What changes: V7's line code (dotted hypothesis, dashed plausible), typed ID chips in place of bare IDs, ordinal effects shown as words or pips with V7's qualifiers, costs drawn beside gains, and a static table view behind every interactive map.</p>
+      </div>
+      <figure>
+        <div class="frame"><img src="{{concepts}}" width="1100" height="1294" alt="Screenshots of Concepts 09 The Circuit, 10 Who Can Act, 11 Register and 03 Field Manual."></div>
+        <figcaption>Your saved screenshots of Concepts 09, 10, 11 and 03.<span class="src">Atlas Design Concepts V2</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="plan">
+    <h2 id="plan">The plan</h2>
+    <p>Six phases, each ending at a gate where you review the work and approve the next proposal.</p>
+    <ol class="phases">
+      <li class="now"><b>0 Intake and review</b><span>Done. You are here.</span></li>
+      <li><b>1 Research, strategy and direction</b><span>Boards for strategy, identity refinements, symbol family, systems marks, architecture and tokens</span></li>
+      <li><b>2 Identity, foundations and symbols</b><span>Approved refinements applied; tokens, states, Signal Grid, pillar and topic symbols</span></li>
+      <li><b>3 Data visualization and systems</b><span>Chart chooser, palettes, twenty or more specimens, six atlas worked examples</span></li>
+      <li><b>4 Applications and reports</b><span>Web, email, social, the twelve-page report, print, slides, signs, video frames</span></li>
+      <li><b>5 Assembly and verification</b><span>Single-file guide, asset package, builder brief, full test matrix</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="phase1">
+    <h2 id="phase1">Phase 1 proposal</h2>
+    <div class="grid2">
+      <div>
+        <h3>Phase 1 produces</h3>
+        <ol class="list" style="margin-top:12px">
+          <li>A research ledger with every reference re-verified, civic identity benchmarks, interactive references, and the license position on a logo built from Inter Tight and Lora outlines.</li>
+          <li>A strategy board: positioning, audiences, brand architecture, the Act pattern that separates process pieces from labeled position pieces, a written nonpartisan rule set, and the voice line revision beside the original.</li>
+          <li>An identity board with one panel per element, each marked as a defect fix or an option. It includes two ampersand options: an optical tune with a true small master, or a drawn ampersand that keeps the silhouette and becomes Oath &amp; Action's own.</li>
+          <li>A symbol family board: one skeleton per pillar in two directions, geometric solid and line with one accent, shown filled, as line and as tile at 16 to 96 px. It draws on the icon styles you shared today.</li>
+          <li>A systems marks board, the guide architecture and navigation, the token architecture, and Master Brief V2.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>You decide at Gate 1</h3>
+        <ul class="list" style="margin-top:12px">
+          <li>Strategy and the Act pattern</li>
+          <li>The voice line revision</li>
+          <li>One symbol direction and the topic grammar</li>
+          <li>Each identity refinement, accepted or declined</li>
+          <li>The red ampersand on Prussian</li>
+          <li>Evidence line code, grade words, ID chips and the ordinal effect mark</li>
+          <li>Architecture, navigation and tokens</li>
+          <li>The atlas bases, including 07 Loop Card</li>
+        </ul>
+        <p style="margin-top:16px">Phase 1 changes no master, builds no chapter and ships no reference image.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="questions">
+    <h2 id="questions">Open questions</h2>
+    <ol class="list">{{question_rows}}</ol>
+  </section>
+
+  <section aria-labelledby="decided">
+    <h2 id="decided">Already decided</h2>
+    <ul class="list">
+      <li>Act may take a position when the piece is labeled as opinion or an editorial position.</li>
+      <li>The pillar marks are redrawn from one shared skeleton.</li>
+      <li>The atlas converges on Inter Tight, Inter and Pillar Red.</li>
+      <li>The voice line is editable, with any revision shown beside the original.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="files">
+    <h2 id="files">Files behind this page</h2>
+    <ul class="list">
+      <li><code>work/ledger/20261020_Gate-0-Report.md</code> holds the full report, verification and change log.</li>
+      <li><code>work/handoffs/phase-0/</code> holds the six audits and the 45-row atlas reconciliation table.</li>
+      <li><code>work/research/20261020_Rights-Ledger.md</code> covers 157 references, fonts and images.</li>
+      <li><code>work/boards/phase-0/</code> holds the design director's two diagnostic boards.</li>
+      <li><code>work/ledger/20261020_Open-Questions.md</code> and <code>20261020_Decision-Log.md</code></li>
+    </ul>
+  </section>
+
+  <footer class="foot"><span>Oath &amp; Action · Brand Guide Edition 06 · Gate 0</span><span>Prepared October 20, 2026. Review only. No design has changed.</span></footer>
+</div>
