@@ -1,6 +1,6 @@
 // Phase 0 UX audit, part 2: every control in V5 Polished, tested with keyboard and pointer.
 // Usage: node ux_interaction.js <project-root>
-// Writes work/handoffs/phase-0/ux-data/ux-interaction.json and screenshots in work/boards/screens/phase-0-ux/.
+// Writes work/handoffs/phase-0/ux-data/20261020_UX-Interaction-Data.json and screenshots in work/boards/screens/phase-0-ux/.
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
@@ -197,7 +197,7 @@ async function controlTests(browser) {
   data.reader390 = await readerTests(browser, 390, 844);
   data.motion = await motionTests(browser);
   data.controls = await controlTests(browser);
-  fs.writeFileSync(path.join(OUT, 'ux-interaction.json'), JSON.stringify(data, null, 1));
+  fs.writeFileSync(path.join(OUT, '20261020_UX-Interaction-Data.json'), JSON.stringify(data, null, 1));
   await browser.close();
   console.log('done');
 })();

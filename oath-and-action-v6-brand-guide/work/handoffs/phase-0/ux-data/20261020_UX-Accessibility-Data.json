@@ -1,0 +1,3232 @@
+{
+ "reflow320": {
+  "top": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "purpose": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "voice": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "identity": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "ampersand": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "color": {
+   "overflowing": 39,
+   "maxRight": 359,
+   "examples": [
+    "table.contrast right=359",
+    "thead. right=359",
+    "tr. right=359",
+    "th. right=359"
+   ],
+   "scrollers": []
+  },
+  "type": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "grid": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "pillar-marks": {
+   "overflowing": 5,
+   "maxRight": 524,
+   "examples": [
+    "div.dark right=524",
+    "div.badge right=380",
+    "svg.pm. right=359",
+    "div.badge right=500"
+   ],
+   "scrollers": []
+  },
+  "topic-icons": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "photography": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "data": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "motion": {
+   "overflowing": 13,
+   "maxRight": 374,
+   "examples": [
+    "div.motion-stage right=374",
+    "span.eyebrow right=333",
+    "div.btnrow right=333",
+    "div.timeline right=333"
+   ],
+   "scrollers": []
+  },
+  "in-use": {
+   "overflowing": 1,
+   "maxRight": 349,
+   "examples": [
+    "figcaption. right=349"
+   ],
+   "scrollers": []
+  },
+  "reports": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "standards": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "atlas-system": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": [
+    "art 850/278",
+    "art 850/278",
+    "art 850/278",
+    "art 850/278"
+   ]
+  },
+  "closing": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "_doc": {
+   "scrollWidth": 524,
+   "clientWidth": 320
+  }
+ },
+ "clip320": {
+  "clippedBoxes": 17,
+  "examples": [
+   "ampersand: div.stage.dark 328x328 in 278x258 \"A place for your questions.\"",
+   "color: div. 57x62 in 42x62 \"Charcoal 15\"",
+   "color: div. 37x62 in 17x62 \"Stone 6\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2A planning \"",
+   "photography: div.img.natural. 130x133 in 130x86 \"Natural color / 3:2A resident \"",
+   "photography: div.img.duotone. 130x102 in 130x86 \"Charcoal duotone / 3:2A kitche\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2A small bus\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2Neighbors t\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2A library b\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2Veterans an\"",
+   "photography: div.img.natural. 130x102 in 130x86 \"Natural color / 3:2A volunteer\"",
+   "in-use: div.app.desk 301x241 in 278x241 \"Explain Track Connect ActAbout\""
+  ],
+  "byChapter": {
+   "ampersand": 1,
+   "color": 2,
+   "photography": 8,
+   "in-use": 4,
+   "reports": 2
+  }
+ },
+ "axe320": [
+  {
+   "id": "color-contrast",
+   "count": 96,
+   "ex": [
+    ".mark-set:nth-child(1) > .sizes > div:nth-child(1) > .size-tag",
+    ".mark-set:nth-child(1) > .sizes > div:nth-child(2) > .size-tag",
+    ".mark-set:nth-child(1) > .sizes > div:nth-child(3) > .size-tag"
+   ]
+  },
+  {
+   "id": "scrollable-region-focusable",
+   "count": 4,
+   "ex": [
+    ".figure:nth-child(1) > .art",
+    ".figure:nth-child(2) > .art",
+    ".figure:nth-child(3) > .art"
+   ]
+  }
+ ],
+ "targets320": [
+  {
+   "name": "Oath and Action, beginning",
+   "w": 140,
+   "h": 18,
+   "inline": false,
+   "spacingPasses": true,
+   "section": "shell"
+  },
+  {
+   "name": "Back to the beginning",
+   "w": 151,
+   "h": 14,
+   "inline": true,
+   "spacingPasses": true,
+   "section": "closing"
+  }
+ ],
+ "focus320": [
+  {
+   "name": "Skip to the guide",
+   "top": 16,
+   "h": 59,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Oath and Action, beginning",
+   "top": 12,
+   "h": 18,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Purpose",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Symbols",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "In use",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reports",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Standards",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Systems",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "01PurposePurpose",
+   "top": 433,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "02VoicePurpose",
+   "top": 484,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "03IdentityIdentity",
+   "top": 535,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "04The AmpersandIdentity",
+   "top": 587,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "05ColorIdentity",
+   "top": 638,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "06TypeIdentity",
+   "top": 690,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "07The GridSymbols",
+   "top": 741,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "08Pillar MarksSymbols",
+   "top": 748,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "09Topic IconsSymbols",
+   "top": 749,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "10PhotographyIn use",
+   "top": 432,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "11Data VisualizationIn use",
+   "top": 483,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "12MotionIn use",
+   "top": 535,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "13In UseIn use",
+   "top": 586,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "14ReportsReports",
+   "top": 638,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "15StandardsStandards",
+   "top": 689,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "16Systems mapsSystems",
+   "top": 740,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the hinge",
+   "top": 435,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainTrackConnectAct",
+   "top": 436,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainer or evidenceTrack",
+   "top": 523,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "No tracker1 · Filed2 · Referre",
+   "top": 610,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneNode 1 · FiledNode 2 · Ref",
+   "top": 697,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneReform 101The OathDispatch",
+   "top": 756,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 435,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "INPUT",
+   "top": 436,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "All three groupsDemocracy and ",
+   "top": 523,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "48 px24 px16 px",
+   "top": 611,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "View on dark",
+   "top": 671,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the lever reveal",
+   "top": 435,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Advance a stage",
+   "top": 434,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 434,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open the report reader",
+   "top": 434,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 1: Cover",
+   "top": 513,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 2: Contents",
+   "top": 513,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 3: Executive ",
+   "top": 596,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 4: Section op",
+   "top": 596,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 5: Narrative ",
+   "top": 356,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 6: System map",
+   "top": 356,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 7: Evidence p",
+   "top": 584,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 8: Comparison",
+   "top": 584,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 9: Case study",
+   "top": 356,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 10: What you ",
+   "top": 356,
+   "h": 204,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 11: Sources a",
+   "top": 578,
+   "h": 222,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 12: Back cove",
+   "top": 578,
+   "h": 222,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity geometry",
+   "top": 441,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Color tokens and shares",
+   "top": 441,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Type",
+   "top": 524,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Icons and marks",
+   "top": 607,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Motion tokens",
+   "top": 689,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Export sizes",
+   "top": 767,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 134,
+   "h": 648,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 144,
+   "h": 628,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 184,
+   "h": 546,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 170,
+   "h": 576,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Back to the beginning",
+   "top": 759,
+   "h": 14,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  }
+ ],
+ "rootDouble": {
+  "textElements": 2383,
+  "scaledToDouble": 0
+ },
+ "text200": {
+  "elements": 4871,
+  "docScrollWidth": 1512,
+  "navHeight": 96,
+  "navLinksOverflow": 0
+ },
+ "text200overflow": {
+  "top": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "purpose": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "voice": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "identity": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "ampersand": {
+   "overflowing": 17,
+   "maxRight": 1444,
+   "examples": [
+    "table.spec-table right=1444",
+    "thead. right=1444",
+    "tr. right=1444",
+    "th. right=1444"
+   ],
+   "scrollers": []
+  },
+  "color": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "type": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "grid": {
+   "overflowing": 11,
+   "maxRight": 1454,
+   "examples": [
+    "label.control right=1454",
+    "select. right=1454",
+    "label.control right=1454",
+    "select. right=1454"
+   ],
+   "scrollers": []
+  },
+  "pillar-marks": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "topic-icons": {
+   "overflowing": 1,
+   "maxRight": 1512,
+   "examples": [
+    "span. right=1512"
+   ],
+   "scrollers": []
+  },
+  "photography": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "data": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "motion": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "in-use": {
+   "overflowing": 1,
+   "maxRight": 1476,
+   "examples": [
+    "figcaption. right=1476"
+   ],
+   "scrollers": []
+  },
+  "reports": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "standards": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "atlas-system": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "closing": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "_doc": {
+   "scrollWidth": 1512,
+   "clientWidth": 1440
+  }
+ },
+ "text200clip": {
+  "clippedBoxes": 44,
+  "examples": [
+   "ampersand: div.stage.dark 469x328 in 419x258 \"A place for your questions.\"",
+   "color: div. 91x62 in 79x62 \"Stone 6\"",
+   "photography: div.img.natural. 248x176 in 248x164 \"Natural color / 3:2A planning \"",
+   "photography: div.img.natural. 248x238 in 248x164 \"Natural color / 3:2A resident \"",
+   "photography: div.img.duotone. 248x176 in 248x164 \"Charcoal duotone / 3:2A kitche\"",
+   "photography: div.img.natural. 248x176 in 248x164 \"Natural color / 3:2A small bus\"",
+   "photography: div.img.natural. 248x176 in 248x164 \"Natural color / 3:2A library b\"",
+   "photography: div.img.natural. 248x176 in 248x164 \"Natural color / 3:2Veterans an\"",
+   "photography: div.img.natural. 248x176 in 248x164 \"Natural color / 3:2A volunteer\"",
+   "in-use: div.app.mobile 301x1135 in 301x653 \"Reform 101/Open primariesWhat \"",
+   "in-use: div.app.tile.frame-navy 296x394 in 296x371 \"ConnectFind yourhearing.Commit\"",
+   "in-use: div.app.tile.sq.frame-dark 296x392 in 296x296 \"Reform 101The budgetthe bill.H\""
+  ],
+  "byChapter": {
+   "ampersand": 1,
+   "color": 1,
+   "photography": 7,
+   "in-use": 23,
+   "reports": 12
+  }
+ },
+ "zoom200": {
+  "top": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "purpose": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "voice": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "identity": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "ampersand": {
+   "overflowing": 12,
+   "maxRight": 808,
+   "examples": [
+    "figure.mark-set right=808",
+    "div.sizes right=808",
+    "div. right=808",
+    "div.cm.circle.c-prussian right=808"
+   ],
+   "scrollers": []
+  },
+  "color": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "type": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "grid": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "pillar-marks": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "topic-icons": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "photography": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "data": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "motion": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "in-use": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "reports": {
+   "overflowing": 29,
+   "maxRight": 723,
+   "examples": [
+    "table.spec-table right=723",
+    "thead. right=723",
+    "tr. right=723",
+    "th. right=723"
+   ],
+   "scrollers": []
+  },
+  "standards": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "atlas-system": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": [
+    "art 850/638",
+    "art 850/638",
+    "art 850/638",
+    "art 850/638"
+   ]
+  },
+  "closing": {
+   "overflowing": 0,
+   "maxRight": 0,
+   "examples": [],
+   "scrollers": []
+  },
+  "_doc": {
+   "scrollWidth": 808,
+   "clientWidth": 720
+  }
+ },
+ "zoom200nav": {
+  "navHeight": 69,
+  "share": 15,
+  "hiddenLinks": []
+ },
+ "focus720": [
+  {
+   "name": "Skip to the guide",
+   "top": 16,
+   "h": 59,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Oath and Action, beginning",
+   "top": 25,
+   "h": 18,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Purpose",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Symbols",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "In use",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reports",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Standards",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Systems",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "01PurposePurpose",
+   "top": 243,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "02VoicePurpose",
+   "top": 243,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "03IdentityIdentity",
+   "top": 296,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "04The AmpersandIdentity",
+   "top": 296,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "05ColorIdentity",
+   "top": 349,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "06TypeIdentity",
+   "top": 349,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "07The GridSymbols",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "08Pillar MarksSymbols",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "09Topic IconsSymbols",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "10PhotographyIn use",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "11Data VisualizationIn use",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "12MotionIn use",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "13In UseIn use",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "14ReportsReports",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "15StandardsStandards",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "16Systems mapsSystems",
+   "top": 397,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the hinge",
+   "top": 246,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainTrackConnectAct",
+   "top": 247,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainer or evidenceTrack",
+   "top": 334,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "No tracker1 · Filed2 · Referre",
+   "top": 406,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneNode 1 · FiledNode 2 · Ref",
+   "top": 247,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneReform 101The OathDispatch",
+   "top": 334,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 394,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "INPUT",
+   "top": 247,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "All three groupsDemocracy and ",
+   "top": 247,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "48 px24 px16 px",
+   "top": 247,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "View on dark",
+   "top": 307,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the lever reveal",
+   "top": 245,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Advance a stage",
+   "top": 315,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 374,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open the report reader",
+   "top": 246,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 1: Cover",
+   "top": 88,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 2: Contents",
+   "top": 88,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 3: Executive ",
+   "top": 54,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 4: Section op",
+   "top": 54,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 5: Narrative ",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 6: System map",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 7: Evidence p",
+   "top": 54,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 8: Comparison",
+   "top": 54,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 9: Case study",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 14,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 10: What you ",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 14,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 11: Sources a",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 12: Back cove",
+   "top": 55,
+   "h": 429,
+   "navBottom": 69,
+   "coveredPx": 15,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity geometry",
+   "top": 252,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Color tokens and shares",
+   "top": 252,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Type",
+   "top": 334,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Icons and marks",
+   "top": 416,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Motion tokens",
+   "top": 253,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Export sizes",
+   "top": 335,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": -55,
+   "h": 648,
+   "navBottom": 69,
+   "coveredPx": 69,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": -45,
+   "h": 628,
+   "navBottom": 69,
+   "coveredPx": 69,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": -4,
+   "h": 546,
+   "navBottom": 69,
+   "coveredPx": 69,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": -19,
+   "h": 576,
+   "navBottom": 69,
+   "coveredPx": 69,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Back to the beginning",
+   "top": 383,
+   "h": 35,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  }
+ ],
+ "focus1440": [
+  {
+   "name": "Skip to the guide",
+   "top": 16,
+   "h": 59,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Oath and Action, beginning",
+   "top": 25,
+   "h": 18,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Purpose",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Symbols",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "In use",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reports",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Standards",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Systems",
+   "top": 16,
+   "h": 36,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "01PurposePurpose",
+   "top": 847,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "02VoicePurpose",
+   "top": 847,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "03IdentityIdentity",
+   "top": 847,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "04The AmpersandIdentity",
+   "top": 467,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "05ColorIdentity",
+   "top": 467,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "06TypeIdentity",
+   "top": 467,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "07The GridSymbols",
+   "top": 520,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "08Pillar MarksSymbols",
+   "top": 520,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "09Topic IconsSymbols",
+   "top": 520,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "10PhotographyIn use",
+   "top": 573,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "11Data VisualizationIn use",
+   "top": 573,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "12MotionIn use",
+   "top": 573,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "13In UseIn use",
+   "top": 626,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "14ReportsReports",
+   "top": 626,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "15StandardsStandards",
+   "top": 626,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "16Systems mapsSystems",
+   "top": 679,
+   "h": 53,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the hinge",
+   "top": 470,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainTrackConnectAct",
+   "top": 472,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainer or evidenceTrack",
+   "top": 559,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "No tracker1 · Filed2 · Referre",
+   "top": 646,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneNode 1 · FiledNode 2 · Ref",
+   "top": 733,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneReform 101The OathDispatch",
+   "top": 820,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 853,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "INPUT",
+   "top": 472,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "All three groupsDemocracy and ",
+   "top": 472,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "48 px24 px16 px",
+   "top": 472,
+   "h": 44,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "View on dark",
+   "top": 470,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the lever reveal",
+   "top": 470,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Advance a stage",
+   "top": 540,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 540,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open the report reader",
+   "top": 471,
+   "h": 47,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 1: Cover",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 2: Contents",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 3: Executive ",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 4: Section op",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 5: Narrative ",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 6: System map",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 7: Evidence p",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 8: Comparison",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 9: Case study",
+   "top": 327,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 10: What you ",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 11: Sources a",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 12: Back cove",
+   "top": 207,
+   "h": 574,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity geometry",
+   "top": 477,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Color tokens and shares",
+   "top": 477,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Type",
+   "top": 560,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Icons and marks",
+   "top": 642,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Motion tokens",
+   "top": 725,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Export sizes",
+   "top": 807,
+   "h": 34,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Back to the beginning",
+   "top": 826,
+   "h": 18,
+   "navBottom": 69,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  }
+ ],
+ "targets1440": [
+  {
+   "name": "Oath and Action, beginning",
+   "w": 160,
+   "h": 18,
+   "inline": false,
+   "spacingPasses": true,
+   "section": "shell"
+  },
+  {
+   "name": "Back to the beginning",
+   "w": 151,
+   "h": 18,
+   "inline": false,
+   "spacingPasses": true,
+   "section": "closing"
+  }
+ ],
+ "alt": {
+  "imgs": [
+   {
+    "alt": "Six relationship conventions plus the exact delay categories used in V7. Authority does not carry a causal sign or close loops.",
+    "w": 1310,
+    "captionSame": true,
+    "chapter": "atlas-system"
+   },
+   {
+    "alt": "Loop R1: A1 to B1 through L01 positive; B1 to E1 through L02 positive and plausible; E1 to A1 through L03 positive. The middle step is the weakest.",
+    "w": 1310,
+    "captionSame": true,
+    "chapter": "atlas-system"
+   },
+   {
+    "alt": "R16 has one supported forward link L26 and one hypothetical return link T01. The return is dashed and explicitly unconfirmed.",
+    "w": 1310,
+    "captionSame": true,
+    "chapter": "atlas-system"
+   },
+   {
+    "alt": "Reform R-28 is attached to link L03 with a red target bracket. The bracket is not a causal edge. Owner, delivery requirement, intended effect, and evidence are separate.",
+    "w": 1310,
+    "captionSame": true,
+    "chapter": "atlas-system"
+   }
+  ],
+  "svgImgCount": 420,
+  "unlabeled": 0,
+  "topLabels": [
+   [
+    "Oath and Action",
+    69
+   ],
+   [
+    "Oath and Action mechanism grid",
+    51
+   ],
+   [
+    "and",
+    15
+   ],
+   [
+    "Track pillar mark",
+    14
+   ],
+   [
+    "Act pillar mark",
+    14
+   ],
+   [
+    "Explain pillar mark",
+    13
+   ],
+   [
+    "Connect pillar mark",
+    12
+   ],
+   [
+    "Testify",
+    12
+   ],
+   [
+    "Organize",
+    11
+   ],
+   [
+    "State house",
+    10
+   ],
+   [
+    "Cost of living",
+    10
+   ],
+   [
+    "O and A monogram",
+    9
+   ]
+  ],
+  "exposedNoRole": 0,
+  "divImgCount": 50,
+  "divImgSample": [
+   "Circle on Charcoal at 1080 px",
+   "Circle on Charcoal at 180 px",
+   "Circle on Charcoal at 64 px",
+   "Circle on Charcoal at 32 px",
+   "Circle on Charcoal at 16 px"
+  ],
+  "ariaLabelOnGeneric": [
+   "hinge-anim"
+  ],
+  "diagrams": [
+   {
+    "chapter": "top",
+    "label": "The Oath and Action ampersand",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "purpose",
+    "label": "The hinge: Oath, ampersand, Action, with understand and impa",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "identity",
+    "label": "Wordmark construction with dimensions: cap height x, ampersa",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "identity",
+    "label": "Clear space equals one cap height on every side",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "identity",
+    "label": "L6 editorial signature strip on Prussian",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Ampersand master with overshoot, hinge gap and clear space d",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Circle on Charcoal at 1080 px",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Circle on Newsprint at 1080 px",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Circle on Prussian at 1080 px",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Square on Charcoal at 1080 px",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Mono for print at 1080 px",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "ampersand",
+    "label": "Hinge diagram",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "grid",
+    "label": "Lockmark geometry: a 123.5 unit field, node centers at 11.75",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "grid",
+    "label": "A plain grid. The lockmark, unsignalled.",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "topic-icons",
+    "label": "The 48 unit field, 4 unit safe margin and four keyline shape",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "topic-icons",
+    "label": "Construction of the Ballot icon on a 48 unit field with a 4 ",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "topic-icons",
+    "label": "Construction of the Bill icon on a 48 unit field with a 4 un",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "topic-icons",
+    "label": "Construction of the Committee hearing icon on a 48 unit fiel",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A planning board meeting in a school cafeteria",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A resident testifying at a microphone in a state",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A kitchen table with bills and a laptop at night",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A polling place in a gymnasium",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A small business owner at the counter",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: Neighbors talking on a front porch",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A union hall meeting",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A library bulletin board with meeting notices",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: Veterans and families at a town hall",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "photography",
+    "label": "Photograph: A volunteer with a clipboard on a sidewalk",
+    "describedby": false,
+    "tableNearby": true,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "data",
+    "label": "Closed primaries are the largest group.",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "data",
+    "label": "Turnout in the closed primary fell 24 points in twelve years",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "data",
+    "label": "District 4 moved most after the rule change.",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "L3 lockup: wordmark and mechanism grid",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Photograph: A resident testifying at a microphone in a state",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Photograph: A polling place in a gymnasium",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Photograph: A polling place in a gymnasium",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Photograph: A polling place in a gymnasium",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Closed primaries are the largest group.",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Photograph: Veterans and families at a town hall",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Turnout in the closed primary fell 24 points in twelve years",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Black tee with the wordmark on the chest",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Charcoal cap with the circle mark",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "in-use",
+    "label": "Newsprint tote with the stacked wordmark",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "atlas-system",
+    "label": "Six relationship conventions plus the exact delay categories",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "atlas-system",
+    "label": "Loop R1: A1 to B1 through L01 positive; B1 to E1 through L02",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "atlas-system",
+    "label": "R16 has one supported forward link L26 and one hypothetical ",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   },
+   {
+    "chapter": "atlas-system",
+    "label": "Reform R-28 is attached to link L03 with a red target bracke",
+    "describedby": false,
+    "tableNearby": false,
+    "detailsNearby": false
+   }
+  ]
+ },
+ "focus390": [
+  {
+   "name": "Skip to the guide",
+   "top": 16,
+   "h": 59,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Oath and Action, beginning",
+   "top": 12,
+   "h": 18,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Purpose",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Symbols",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "In use",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reports",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Standards",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Systems",
+   "top": 38,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "01PurposePurpose",
+   "top": 454,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "02VoicePurpose",
+   "top": 506,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "03IdentityIdentity",
+   "top": 557,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "04The AmpersandIdentity",
+   "top": 609,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "05ColorIdentity",
+   "top": 660,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "06TypeIdentity",
+   "top": 711,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "07The GridSymbols",
+   "top": 763,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "08Pillar MarksSymbols",
+   "top": 792,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "09Topic IconsSymbols",
+   "top": 793,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "10PhotographyIn use",
+   "top": 793,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "11Data VisualizationIn use",
+   "top": 454,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "12MotionIn use",
+   "top": 506,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "13In UseIn use",
+   "top": 557,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "14ReportsReports",
+   "top": 609,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "15StandardsStandards",
+   "top": 660,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "16Systems mapsSystems",
+   "top": 711,
+   "h": 51,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the hinge",
+   "top": 456,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainTrackConnectAct",
+   "top": 458,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneExplainer or evidenceTrack",
+   "top": 545,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "No tracker1 · Filed2 · Referre",
+   "top": 633,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneNode 1 · FiledNode 2 · Ref",
+   "top": 720,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "NoneReform 101The OathDispatch",
+   "top": 800,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 457,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "INPUT",
+   "top": 458,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "All three groupsDemocracy and ",
+   "top": 545,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "48 px24 px16 px",
+   "top": 545,
+   "h": 44,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "View on dark",
+   "top": 605,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Play the lever reveal",
+   "top": 457,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Advance a stage",
+   "top": 457,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Reset",
+   "top": 457,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open the report reader",
+   "top": 457,
+   "h": 47,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 1: Cover",
+   "top": 536,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 2: Contents",
+   "top": 536,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 3: Executive ",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 4: Section op",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 5: Narrative ",
+   "top": 355,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 6: System map",
+   "top": 355,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 7: Evidence p",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 8: Comparison",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 9: Case study",
+   "top": 356,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 10: What you ",
+   "top": 356,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 11: Sources a",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Open report page 12: Back cove",
+   "top": 594,
+   "h": 250,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Identity geometry",
+   "top": 463,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Color tokens and shares",
+   "top": 463,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Type",
+   "top": 546,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Icons and marks",
+   "top": 628,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Motion tokens",
+   "top": 711,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Export sizes",
+   "top": 794,
+   "h": 34,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 156,
+   "h": 648,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 166,
+   "h": 628,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 207,
+   "h": 546,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "DIV",
+   "top": 193,
+   "h": 576,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  },
+  {
+   "name": "Back to the beginning",
+   "top": 803,
+   "h": 14,
+   "navBottom": 85,
+   "coveredPx": 0,
+   "entirely": false,
+   "belowViewport": false
+  }
+ ],
+ "targets390": [
+  {
+   "name": "Oath and Action, beginning",
+   "w": 140,
+   "h": 18,
+   "inline": false,
+   "spacingPasses": true,
+   "section": "shell"
+  },
+  {
+   "name": "Back to the beginning",
+   "w": 151,
+   "h": 14,
+   "inline": true,
+   "spacingPasses": true,
+   "section": "closing"
+  }
+ ],
+ "forced": {
+  "forcedMatches": true,
+  "bodyBg": "rgb(255, 255, 255)",
+  "swatches": [
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)"
+  ],
+  "keySwatches": [
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)",
+   "rgb(255, 255, 255)"
+  ],
+  "sgCircleFill": "rgb(0, 0, 0)",
+  "leverFill": "rgb(230, 57, 70)",
+  "btnBorder": "rgb(0, 0, 0)",
+  "modalDisabledBorder": "solid",
+  "navCurrentBorder": "rgb(0, 0, 159)"
+ },
+ "chartLabels1440": [
+  15,
+  15,
+  15
+ ],
+ "chartLabels390": [
+  {
+   "scale": 0.55,
+   "labelPx": 6.6
+  },
+  {
+   "scale": 0.55,
+   "labelPx": 6.6
+  },
+  {
+   "scale": 0.55,
+   "labelPx": 6.6
+  }
+ ]
+}

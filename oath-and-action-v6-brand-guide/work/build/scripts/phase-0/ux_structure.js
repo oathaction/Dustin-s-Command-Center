@@ -131,7 +131,7 @@ const measureFn = () => {
     await p.close();
   }
 
-  fs.writeFileSync(path.join(OUT, 'ux-structure.json'), JSON.stringify(data, null, 1));
+  fs.writeFileSync(path.join(OUT, '20261020_UX-Structure-Data.json'), JSON.stringify(data, null, 1));
   await browser.close();
   console.log('done');
 })();
