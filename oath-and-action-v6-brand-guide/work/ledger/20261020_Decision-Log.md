@@ -15,3 +15,12 @@ Routine decisions made inside an approved phase, one line each with the reason. 
 | D0-07 | Ledger and gate report filenames now carry a date prefix in both copies of the kit | The undated names in the first version of the kit broke Dustin's naming rule |
 | D0-08 | Screenshots are saved as JPEG at quality 72, then tiled at 1,700 px for review | Keeps 70 full-chapter captures under 40 MB and legible when an agent views them |
 | D0-09 | Text census excludes text inside SVG artwork | Diagram text is drawn at artwork scale and needs a separate check in Phase 3 |
+
+## Dustin's decisions, October 20, 2026 (before Gate 0)
+
+| # | Question | Decision | Effect on later phases |
+|---|---|---|---|
+| DC-01 | How far can an Act piece go? | Labeled positions allowed. Act may ask readers to support a specific measure when the piece is labeled as opinion or an editorial position | Phase 1 strategy defines the label, where it sits, and how process-only Act pieces differ from labeled position pieces. Examples still rotate across issues |
+| DC-02 | May the studio redraw the four pillar marks? | Yes, from one shared skeleton per pillar, with filled and line versions | Phase 1 proposes the skeletons and up to two directions. Nothing changes before Gate 1 approval |
+| DC-03 | Should the atlas use the guide's fonts? | Converge on Inter Tight, Inter and Pillar Red | The atlas applications drop the renamed URW Nimbus faces and V7's darker red |
+| DC-04 | Status of the V5 voice line | Editable. The editor may propose a revision beside the original at Gate 1. The original stays in force until approved | Phase 1 editor task |

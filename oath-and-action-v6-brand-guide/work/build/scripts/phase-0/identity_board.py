@@ -461,6 +461,7 @@ img.px{{image-rendering:pixelated;image-rendering:crisp-edges}}
 <p class="note">Oath &amp; Action Brand Guide, Edition 06. Phase 0 review board, October 20, 2026. Design director. Diagnosis only: nothing on this board proposes a change.</p>
 <h1>Identity at small sizes</h1>
 <p class="lede">Every mark here is the V5 Polished vector master from the inline sprite, extracted to <code>work/extract/v5-polished/sprite/</code>. Each is rendered by Chromium at device scale 1 and shown at its true pixels, then enlarged with nearest-neighbour scaling so you can see what the screen draws. Measurements come from the outlines themselves (<code>work/build/scripts/phase-0/identity_geometry.py</code>) and from the rasters (<code>identity_board.py</code>). x means one cap height of the wordmark, 100 units.</p>
+<p class="note">Companion board: <a href="20261020_Symbol-Pixel-Fit-And-Similarity-Diagnostic.html">pillar marks and topic icons</a>. Audit note: <code>work/handoffs/phase-0/20261020_Design-Director-Audit.md</code>.</p>
 <p class="toc">Panels: <a href="#spacing">1 Spacing</a> · <a href="#weight">2 Ampersand weight</a> · <a href="#joins">3 Joins at small sizes</a> · <a href="#red">4 Red edge contrast</a> · <a href="#clip">5 Clipped outlines</a> · <a href="#amp16">6 The 16 px ampersand</a> · <a href="#lock">7 Lockmark pixel fit</a> · <a href="#min">8 Stated minimums</a> · <a href="#matrix">9 Full matrix</a></p>
 
 <h2 id="spacing">1. Letterspacing and kerning across O A T H &amp; A C T I O N</h2>
@@ -512,7 +513,7 @@ img.px{{image-rendering:pixelated;image-rendering:crisp-edges}}
 <tr><td>L2 minimum 72 px or 0.75 in</td><td class="n">24.95 px tall, cap height 11.45 px</td><td>Smaller cap height than L1 at its minimum.</td></tr>
 <tr><td>L8 minimum 48 px or 0.5 in</td><td class="n">17 px tall, cap height 15.8 px</td><td>L8 is also named for favicons, which are 16 to 32 px.</td></tr>
 <tr><td>Ampersand minimum 16 px freestanding, 24 px master</td><td class="n">The 16 px container draws it about 12 px tall</td><td>The container sits below the stated minimum.</td></tr>
-<tr><td>Clear space 1.0x on every side</td><td class="n">One cap height</td><td>The construction figure and tables agree. Lockups L3 to L7 state the same rule; L6 places the lockmark and dots inside a Prussian strip whose edge sits closer than 1.0x.</td></tr>
+<tr><td>Clear space 1.0x on every side; "nothing enters it: no type"</td><td class="n">One cap height</td><td>Inside the lockups the tagline sits 0.39x below the baseline in L5 and 0.79x in L6. V5 never says that lockup parts are exempt. The one-color lockmark (<code>#lockmark-mono</code>) keeps Stone links, so it is two colors.</td></tr>
 <tr><td>Hinge diagram labels</td><td class="n">At 516 px wide the labels reach a 13 px font size</td><td>No minimum is stated.</td></tr>
 <tr><td>Prussian: red stays at display size or goes mono</td><td class="n">3.19:1</td><td>The color matrix shows red ampersands on Prussian at small sizes (03-identity-03.jpg).</td></tr>
 </tbody></table>
