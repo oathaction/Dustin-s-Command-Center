@@ -1,0 +1,729 @@
+[
+ {
+  "section": "2",
+  "claim": "variables",
+  "brief": 51,
+  "v7": 51,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "connections",
+  "brief": 118,
+  "v7": 118,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "loops (numbered)",
+  "brief": "23 (20)",
+  "v7": "23 (20)",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "reforms",
+  "brief": 50,
+  "v7": 50,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "issues (active)",
+  "brief": "194 (193)",
+  "v7": "194 (193)",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "claims",
+  "brief": 433,
+  "v7": 433,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "2",
+  "claim": "sources",
+  "brief": 1099,
+  "v7": 1099,
+  "status": "confirmed",
+  "note": "meta.counts.sources is 1099; the sources register holds 1140 IDs (meta.counts.sources_total_ids 1140)"
+ },
+ {
+  "section": "2",
+  "claim": "pathways, hubs",
+  "brief": "16, 5",
+  "v7": "16, 5",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "8.7",
+  "claim": "variable IDs B2 to B5 match loop IDs B2 to B5",
+  "brief": "B2 B3 B4 B5 in both",
+  "v7": "nodes B2 B3 B4 B5; loops B2 B3 B4 B5",
+  "status": "confirmed",
+  "note": "Also near collisions: variable B1 beside loop B1a; loop R1 beside R1b."
+ },
+ {
+  "section": "8.7",
+  "claim": "loop IDs R1 to R18 beside reform IDs R-01 to R-50",
+  "brief": "R1 to R18; R-01 to R-50",
+  "v7": "R loops: R1, R1b, R2, R3, R4a, R4b, R5, R6, R7, R8, R9, R10, R11, R12, R13, R15, R16, R18 (18). Reforms R-01 to R-50 (50)",
+  "status": "confirmed",
+  "note": "The range holds. No R4, R14 or R17 exists; R1b, R4a and R4b carry letter suffixes."
+ },
+ {
+  "section": "8.7",
+  "claim": "V5 Standards numbers its rules R1 to R9",
+  "brief": "R1 to R9",
+  "v7": "R1, R2, R3, R4, R5, R6, R7, R8, R9",
+  "status": "confirmed",
+  "note": "Standards states: 'Rules, lockups, marks and checks carry numbers so a reviewer can cite R5 instead of describing it.' Its closing checklist lists R1 to R3 and R5 to R9 and skips R4."
+ },
+ {
+  "section": "8.8",
+  "claim": "connections use 'well-supported' and 'plausible_contested'",
+  "brief": "yes",
+  "v7": {
+   "well-supported": 37,
+   "plausible": 35,
+   "documented": 32,
+   "plausible_contested": 7,
+   "hypothesis": 7
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "8.8",
+  "claim": "issues use 'well_supported' and 'retired'",
+  "brief": "yes",
+  "v7": {
+   "well_supported": 89,
+   "plausible": 32,
+   "hypothesis": 2,
+   "documented": 70,
+   "retired": 1
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "8.8",
+  "claim": "claims use 'contested'",
+  "brief": "yes",
+  "v7": {
+   "well-supported": 56,
+   "plausible": 38,
+   "documented": 321,
+   "contested": 18
+  },
+  "status": "confirmed",
+  "note": "Claims also use 'well-supported' with a hyphen."
+ },
+ {
+  "section": "8.8",
+  "claim": "methods text defines 'Mixed'",
+  "brief": "yes",
+  "v7": "defined: True; records graded mixed: 0",
+  "status": "confirmed",
+  "note": "No connection, issue, claim or reform carries 'mixed' as a grade. repairLog uses 'mixed' as a direction, a separate vocabulary."
+ },
+ {
+  "section": "8.8",
+  "claim": "(not quoted) reform problem and remedy grades",
+  "brief": "n/a",
+  "v7": {
+   "problem": {
+    "plausible": 1,
+    "well-supported": 13,
+    "documented": 34,
+    "plausible_contested": 2
+   },
+   "remedy": {
+    "plausible_contested": 2,
+    "plausible": 29,
+    "well-supported": 11,
+    "hypothesis": 7,
+    "contested": 1
+   }
+  },
+  "status": "confirmed",
+  "note": "Reforms use 'well-supported', 'plausible_contested' and also 'contested' (one remedy grade)."
+ },
+ {
+  "section": "13",
+  "claim": "current chapter holds two specimens",
+  "brief": 2,
+  "v7": 4,
+  "status": "corrected",
+  "note": "11-data.html draws four: a bar chart of primary types, a turnout line chart, a district dumbbell for the competitiveness index and a bill tracker list."
+ },
+ {
+  "section": "13",
+  "claim": "repair log rows",
+  "brief": 64,
+  "v7": 64,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "delivery log cases",
+  "brief": 24,
+  "v7": 24,
+  "status": "confirmed",
+  "note": "Delivery log dates are periods ('1935-1955', 'FY2024', '2024 analysis'), so a time chart needs a start-year rule."
+ },
+ {
+  "section": "13",
+  "claim": "repair log directions",
+  "brief": "toward voters, away from voters, voters kept existing rules, mixed, pending",
+  "v7": {
+   "toward voters": 24,
+   "away from voters": 24,
+   "voters kept existing rules": 10,
+   "mixed": 3,
+   "pending": 3
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "repair log instrument field",
+  "brief": "instrument",
+  "v7": {
+   "federal statute": 7,
+   "municipal ordinance (local law)": 1,
+   "court ruling": 14,
+   "state statute": 11,
+   "ballot initiative": 17,
+   "referendum": 10,
+   "agency rule": 1,
+   "executive action": 1,
+   "executive order": 1,
+   "council funding vote": 1
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "delays and grades across 118 connections",
+  "brief": 118,
+  "v7": 118,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "19 states prohibit RCV in some or all elections, as of Oct 15, 2026",
+  "brief": "19 states, 2026-10-15",
+  "v7": "route LOC: '19 states prohibit ranked-choice voting in some or all elections'; R-01 LOC note checked 2026-10-15",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "claims carry confidence, population, jurisdiction, period, limitation, sources",
+  "brief": "fields present",
+  "v7": [
+   "id",
+   "claim",
+   "supports",
+   "confidence",
+   "population",
+   "jurisdiction",
+   "period",
+   "limitation",
+   "sources",
+   "verified_on",
+   "pathway"
+  ],
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "numbers: eight headline figures with captions, qualifications, sources and check dates",
+  "brief": 8,
+  "v7": "8; verified_status: ['checked October 15, 2026']",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "13",
+  "claim": "meta, outcomes, scenarios, overlays, omissions, leverage present",
+  "brief": "present",
+  "v7": [
+   "meta",
+   "outcomes",
+   "scenarios",
+   "overlays",
+   "omissions",
+   "leverage"
+  ],
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "node types",
+  "brief": "stock 31, flow 9, auxiliary 6, driver 5",
+  "v7": {
+   "stock": 31,
+   "flow": 9,
+   "auxiliary": 6,
+   "driver": 5
+  },
+  "status": "confirmed",
+  "note": "D6 is typed flow while its kind_plain text begins 'Stock (an amount built up over time)'."
+ },
+ {
+  "section": "14",
+  "claim": "increase_means on every variable",
+  "brief": 51,
+  "v7": 51,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "drivers X1 to X5",
+  "brief": "X1-X5",
+  "v7": [
+   "X1",
+   "X2",
+   "X3",
+   "X4",
+   "X5"
+  ],
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "V7 draws drivers as rounded pills outside the clusters",
+  "brief": "rounded pills",
+  "v7": "not confirmed",
+  "status": "corrected",
+  "note": "In the extracted V7 renderer (work/extract/atlas-v7/script.js) the only rounded pill (rx 11) is the connection-code label, with an authority variant; regionMap() lists X1 to X5 as a sixth region card, 'Outside drivers'. The rendered page could not be inspected beyond two screenshots."
+ },
+ {
+  "section": "14",
+  "claim": "connection types",
+  "brief": "causal 80, money 17, information 9, authority 7, ownership 5",
+  "v7": {
+   "money": 17,
+   "causal": 80,
+   "information": 9,
+   "ownership": 5,
+   "authority": 7
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "polarity + 70, − 41, none 7 (all authority)",
+  "brief": "70/41/7",
+  "v7": {
+   "+": 70,
+   "-": 41,
+   "None": 7
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "a plus sign means same direction and does not mean a benefit",
+  "brief": "stated",
+  "v7": "The connected variables tend to move in the same direction, with the model's other conditions held steady. A positive sign does not mean a benefit.",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "authority connections",
+  "brief": "LE02, LE03, LE19, LT13, LT14, LT16, LT17",
+  "v7": "LE02, LE03, LE19, LT13, LT14, LT16, LT17",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "authority never closes a loop",
+  "brief": "none in any loop",
+  "v7": "none",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "delay definitions",
+  "brief": "S under 2, M 2 to 10, L over 10",
+  "v7": "The time between a change and its effect. Codes: S, under 2 years; M, 2 to 10 years; L, over 10 years.",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "connection grades",
+  "brief": "documented, well-supported, plausible, plausible_contested, hypothesis",
+  "v7": {
+   "well-supported": 37,
+   "plausible": 35,
+   "documented": 32,
+   "plausible_contested": 7,
+   "hypothesis": 7
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "contested flag on 7",
+  "brief": 7,
+  "v7": 7,
+  "status": "confirmed",
+  "note": "The flag sits on exactly the 7 plausible_contested links: L09, L47, LE04, LE06, LT04, LT05, LT12"
+ },
+ {
+  "section": "14",
+  "claim": "V7 draws hypothesis as a dotted line",
+  "brief": "dotted",
+  "v7": "methods: 'drawn as a dotted line'; renderer .u-hypothesis dasharray 2 4",
+  "status": "confirmed",
+  "note": "V7's renderer also dashes plausible (9 4) and dash-dots contested (9 3 2 3); documented and well-supported are solid."
+ },
+ {
+  "section": "14",
+  "claim": "loop types R 18, B 5",
+  "brief": "18/5",
+  "v7": {
+   "R": 18,
+   "B": 5
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "closure: hypothesized step R2, R16; conceptual B2, B3, R9",
+  "brief": "R2, R16 / B2, B3, R9",
+  "v7": "R16, R2 / B2, B3, R9",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "layers core, economy, technology; domains D01 to D10",
+  "brief": "3 layers, 10 domains",
+  "v7": "core, economy, technology; D01, D02, D03, D04, D05, D06, D07, D08, D09, D10",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "reform bands",
+  "brief": "parameter, feedback, information, rules, power to change the rules, goals",
+  "v7": {
+   "rules": 26,
+   "power to change the rules": 3,
+   "parameter": 11,
+   "information": 4,
+   "feedback": 5,
+   "goals": 1
+  },
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "effects by family DQ GE EP EQ in codes +L +M +S 0 −S −M ?",
+  "brief": "seven codes",
+  "v7": "162 of 200 values use one of the seven codes",
+  "status": "corrected",
+  "note": "The families and the code list are right. 38 values add a qualifier or a range, such as '+M sector', '0 to -S', '+S hypothesis' and '+M / -M risk'; a display must keep that text."
+ },
+ {
+  "section": "14",
+  "claim": "V7 states effects are never added into one score",
+  "brief": "stated",
+  "v7": "he reform working as described, and codes for different families are never added together.",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "problem_evidence and remedy_evidence on each reform",
+  "brief": 50,
+  "v7": 50,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "routes.items: 11 codes",
+  "brief": 11,
+  "v7": 11,
+  "status": "confirmed",
+  "note": "LOC, SS, BI, FS, FR, FA, ENF, CRT, AV, IC, CIV"
+ },
+ {
+  "section": "14",
+  "claim": "feasibility high, medium, low, very low",
+  "brief": "4 levels",
+  "v7": [
+   "high",
+   "low",
+   "medium",
+   "very low"
+  ],
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "dependencies authority, funding, enforcement, capacity, durability",
+  "brief": "5",
+  "v7": [
+   "authority",
+   "capacity",
+   "durability",
+   "enforcement",
+   "funding"
+  ],
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "per-reform checked dates",
+  "brief": "present",
+  "v7": "13 of 126 reform-route entries carry a checked date",
+  "status": "corrected",
+  "note": "Most route entries have checked: null. A tracker cannot show a check date for them."
+ },
+ {
+  "section": "14",
+  "claim": "repairLog 64, deliveryLog 24",
+  "brief": "64/24",
+  "v7": "64/24",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14",
+  "claim": "omissions 9, rejectedLinks 3, methods",
+  "brief": "9/3/present",
+  "v7": "9/3/present",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex1",
+  "claim": "R1 title",
+  "brief": "Wealth and political influence reinforce each other",
+  "v7": "Wealth and political influence reinforce each other",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex1",
+  "claim": "L01",
+  "brief": "A1 B1 + money well-supported S",
+  "v7": "A1 B1 + money well-supported S",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex1",
+  "claim": "L02",
+  "brief": "B1 E1 + money plausible M",
+  "v7": "B1 E1 + money plausible M",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex1",
+  "claim": "L03",
+  "brief": "E1 A1 + money well-supported L",
+  "v7": "E1 A1 + money well-supported L",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex1",
+  "claim": "L02 is the least certain step",
+  "brief": "weakest",
+  "v7": "The first and last steps are well supported: L01: Concentrated wealth funds more political spending rests on donor records, and L03: Policy advantages add to we",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex2",
+  "claim": "R8 title",
+  "brief": "Housing scarcity strengthens owners' incentive to restrict building",
+  "v7": "Housing scarcity strengthens owners' incentive to restrict building",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex2",
+  "claim": "L38",
+  "brief": "A5 A6 + well-supported L",
+  "v7": "A5 A6 + well-supported L",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex2",
+  "claim": "L39",
+  "brief": "A6 A5 + well-supported L",
+  "v7": "A6 A5 + well-supported L",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex2",
+  "claim": "V7 notes R8 no longer depends on A1",
+  "brief": "noted",
+  "v7": "well-supported for both links; the loop no longer depends on A1",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "B4 title",
+  "brief": "Electoral consequences can improve public performance",
+  "v7": "Electoral consequences can improve public performance",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "L23",
+  "brief": "D5 C3 -",
+  "v7": "D5 C3 -",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "L24",
+  "brief": "C3 C5 +",
+  "v7": "C3 C5 +",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "L54",
+  "brief": "C5 D5 +",
+  "v7": "C5 D5 +",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "R10 title",
+  "brief": "Safe seats shift accountability to small primary electorates",
+  "v7": "Safe seats shift accountability to small primary electorates",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "R10 links",
+  "brief": "L08, L25, L53, L42",
+  "v7": "L08, L25, L53, L42",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex3",
+  "claim": "V7 names C3 to C4 as the weakest link",
+  "brief": "C3 to C4",
+  "v7": "documented for C1 to C2; well-supported for C2 to C3; plausible for C3 to C4 (the weakest link)",
+  "status": "confirmed",
+  "note": "C3 to C4 is L53, graded plausible."
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 title",
+  "brief": "All-party primaries with ranked general elections",
+  "v7": "All-party primaries with ranked general elections",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 targets",
+  "brief": "L25, L08, C2",
+  "v7": "L25, L08, C2",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 loops",
+  "brief": "R10, B4, R11",
+  "v7": "R10, B4, R11",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 effects",
+  "brief": "DQ +M, GE +S, EP 0, EQ 0",
+  "v7": "DQ +M, GE +S, EP 0, EQ 0",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 routes",
+  "brief": "BI (medium), SS (low), LOC (medium), FS (very low)",
+  "v7": "BI (medium), SS (low), LOC (medium), FS (very low)",
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex4",
+  "claim": "R-01 route check dates",
+  "brief": "a date on each route",
+  "v7": "BI 2026-10-15, SS no date, LOC 2026-10-15, FS no date",
+  "status": "corrected",
+  "note": "Only BI and LOC carry a check date (2026-10-15); SS and FS have none. The reform status itself was checked 2026-10-15."
+ },
+ {
+  "section": "14 ex5",
+  "claim": "seven authority connections exist for an authority diagram",
+  "brief": 7,
+  "v7": 7,
+  "status": "confirmed",
+  "note": ""
+ },
+ {
+  "section": "14 ex6",
+  "claim": "B2, B3, R9 are conceptual loops with no numbered links",
+  "brief": "no links",
+  "v7": {
+   "B2": [],
+   "B3": [],
+   "R9": []
+  },
+  "status": "confirmed",
+  "note": ""
+ }
+]

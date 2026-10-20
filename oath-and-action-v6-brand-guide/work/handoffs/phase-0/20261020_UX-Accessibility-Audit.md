@@ -2,13 +2,13 @@
 
 Phase 0 review by oa-ux-accessibility-lead, 20 October 2026, of `source/20261018_Oath-And-Action-Brand-Guide_V5-Polished.html` against WCAG 2.2 AA.
 
-Method: Chromium 141 through Playwright 1.56.1, axe-core 4.10.2 and scripted keyboard input; files are listed in the change log. Sticky-bar overlap was tested live, since the screenshot tiles carry a capture artifact.
+Method: Chromium 141 through Playwright 1.56.1, axe-core 4.10.2 and scripted keyboard input; files are listed in the change log. Sticky-bar overlap was tested live, since the screenshot tiles carry a capture artifact. Terms: a live region is text that screen readers announce when it changes; forced colors is the Windows high-contrast mode; reflow is reading at 320 px wide without sideways scrolling.
 
 ## 1. Information architecture
 
 **Contents and navigation.** The only full contents list sits in the hero; each link reads number, title and part ("07 The Grid Symbols"). The sticky bar offers 7 part links for 16 chapters, and its grouping misleads: "Symbols" opens The Grid, a layout chapter; "In use" opens Photography and also covers Data Visualization, Motion and a chapter named "In Use"; Voice sits under Purpose; the closing counts as Standards.
 
-The script that sets `aria-current` has no entry for Systems, so chapter 16 marks no link. All 26 in-page anchors resolve, land clear of the bar, and move the next Tab into the chapter.
+The script that sets `aria-current` has no entry for Systems, so chapter 16 marks no link. All 26 in-page anchors resolve; contents links land clear of the bar and move the next Tab into the chapter.
 
 **Phone navigation.** At 390 px the bar (85 px) holds one scrolling strip of 11 px links with a hidden scrollbar. "Standards" is cut at the edge and "Systems" is off screen; at 360 and 320 px two links are off screen. Nothing shows that the strip scrolls (`nav-390.png`). The contents list starts 885 px down the page, with no way back to it.
 
@@ -21,7 +21,7 @@ The script that sets `aria-current` has no entry for Systems, so chapter 16 mark
 | Chapter intro 22 px (13) | 84 to 93 | 40 to 44 |
 | Systems maps lead | 167 on one line | 45 |
 
-The intro's `max-width:65ch` runs long because Inter's zero is wider than its average letter. The brief's 60 to 75 range needs a phone counterpart.
+The intro's `max-width:65ch` runs long because Inter's zero is wider than its average letter.
 
 **Heading outline.** The page exposes 214 headings. Each chapter h2 is a slogan, with the chapter name in an eyebrow span, so heading and region lists read "A structure you can read." with no mention of the Grid. Skips: Data Visualization h2 to h4; In Use h2 to h5, then runs of h5 and h6; The Grid, Topic Icons and Photography h3 to h5. At least 41 headings come from mockups inside specimens, 36 of them in In Use.
 
@@ -33,8 +33,8 @@ The intro's `max-width:65ch` runs long because Inter's zero is wider than its av
 
 | Control | Result |
 |---|---|
-| Report reader | Native modal `dialog` named "Report page reader", with no visible title. Focus starts on Close, stays inside, and returns to the opener on Escape or Close. |
-| Reader arrow keys | Left and Right turn pages anywhere in the dialog, including on the Zoom select. At Full size on 390 the page is 816 px wide in a 350 px scroller, and ArrowRight turns the page, so a keyboard user cannot pan right. |
+| Report reader | Native modal `dialog` named "Report page reader", with no visible title. Focus starts on Close, cycles through the dialog and browser chrome, and returns to the opener on Escape or Close. |
+| Reader arrow keys | Left and Right turn pages anywhere in the dialog, including on the Zoom select. At Full size on 390 the 816 px page sits in a 350 px scroller, and ArrowRight turns the page, so keyboard users cannot pan right. |
 | Previous, Next | Well named; dashed border when disabled. Reaching page 12 with Next drops focus to the document body. The counter is a polite live region. |
 | Play the hinge, Play the lever reveal | Each plays once (680 and 560 ms) from a still frame. Under reduced motion a click shows and announces nothing; the written timelines serve as stills. The hinge div's `aria-label` is ignored. |
 | Advance a stage, Reset | Steps 1 to 9, then wraps to 1 without notice. The stage label is not a live region. |
@@ -60,9 +60,9 @@ The guide has no pause control and no download or copy button.
 | Disabled (reader) | Dashed border | Shape change passes; focus loss fails 2.4.3; gives no reason (brief 10). |
 | Current (top nav) | 2 px underline | Passes; missing for Systems; lost in forced colors. |
 | Hover | Link underline; button turns Prussian | The button change is color alone, 1.41:1 (brief 10). |
-| Focus | 2 px Verdigris outline, 3 px offset | 3.37:1 on Newsprint, Newsprint on dark: passes 2.4.7 and 1.4.11. The motion chapter states a 2 px offset. |
+| Focus | 2 px Verdigris outline, 3 px offset | 3.37:1 on Newsprint, Newsprint on dark: passes 2.4.7 and 1.4.11. |
 
-V5 defines no selected, muted, error, success or general warning state, and no disabled state outside the reader. Brief section 10 requires each one.
+V5 defines no selected, muted, error, success or general warning state, and no disabled state outside the reader. Brief section 10 requires them.
 
 ## 4. Checks run now
 
@@ -76,7 +76,7 @@ V5 defines no selected, muted, error, success or general warning state, and no d
 | Reduced motion | Emulated | All animation stops; Loading freezes at 20 percent. |
 | Forced colors | Emulated | Swatches and chart key squares turn white, names intact. Every nav link shows an underline, hiding the current cue. SVG art keeps its colors. |
 | Target size | Under 24 by 24, with the spacing test | Two links 18 px tall (nav wordmark, "Back to the beginning"), both pass on spacing. Passes 2.5.8. |
-| Text alternatives | DOM audit | 420 SVG images, all named, but one name covers 51, including five different states. Photo placeholders announce "Photograph: …" for photographs that do not exist. Atlas alt text repeats captions and uses bare IDs (A1, L01, R-28). |
+| Text alternatives | DOM audit | 420 SVG images carry names; one name covers 51 of them, including five different states. Photo placeholders announce "Photograph: …" for photographs that do not exist. Atlas alt text repeats captions and uses bare IDs (A1, L01, R-28). |
 | Diagram equivalents | Graphics at least 200 by 120 px | 46 found; 10 have a table nearby; none uses `aria-describedby`. The three charts expose only their titles. |
 | Color-only meaning | Pairwise contrast; grayscale renders | Prussian and Charcoal 1.41:1; Verdigris and Stone 1.28:1; Red and Verdigris 1.14:1. The lit node is 3 px across at 40 px and 1.8 px at 24 px. In grayscale the four content types look alike (`signal-grid-encodings-grayscale.png`). Charts hold up through direct labels (`charts-grayscale.png`). |
 | Labels on phones | Rendered chart label size | 11.9 px at 1440, 6.6 px at 390; In Use mockup text down to 2.8 px. |
@@ -115,16 +115,14 @@ V5 defines no selected, muted, error, success or general warning state, and no d
 
 ## 6. Passes to protect
 
-Logical tab order, visible focus, native modal semantics with focus return, a skip link, labeled controls, adequate targets, native disclosures, reduced motion honored by the hinge and lever, the icon library's empty state, and direct chart labels.
+Tab order, visible focus, modal focus return, the skip link, labeled controls, target sizes, native disclosures, reduced-motion stills, the icon empty state and direct chart labels.
 
 ## 7. Not tested in this environment
 
 - Screen readers (NVDA, JAWS, VoiceOver, TalkBack); announcements are inferred from the accessibility tree.
-- Firefox and Safari. Chromium makes scroll boxes focusable, so the axe scrollable-region result may matter more there.
-- True text-only zoom, browser font settings and Windows contrast themes on hardware; each was emulated only.
-- Touch on real phones, speech control, switch access, and color vision simulation beyond grayscale.
-- Layouts at 1024 and 360 px beyond the nav, print, and downloads or copy buttons, which V5 lacks.
-- Sessions with real readers.
+- Firefox and Safari, where scroll boxes may not take focus, so the axe scrollable-region result may matter more.
+- Real text-only zoom, browser font settings and Windows contrast themes (each emulated only); touch, speech control and switch access; color vision simulation beyond grayscale.
+- Layouts at 1024 and 360 px beyond the nav, print, downloads and copy buttons (V5 has none), and sessions with real readers.
 
 ## Change log
 
