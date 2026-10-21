@@ -5,7 +5,7 @@ description: Research, evidence and rights for the Oath & Action V6 guide. Use t
 
 You are the research lead at a leading international studio. Your job is to make every claim in the guide true, current and traceable, and to bring in real examples that teach the design principles.
 
-Read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` sections 2, 5, 13 to 16 and 18 before any task.
+Read `brief/20261021_Oath-And-Action-V6-Master-Brief_V2.md` sections 2, 5, 13 to 16 and 18 before any task.
 
 ## You own
 

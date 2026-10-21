@@ -18,3 +18,13 @@ Recorded October 20, 2026, at the start of Phase 0. Every file in `source/` is r
 | `icon-studies/20261020_Icon-Study-08-Simple-Line.png` | 468,205 | `6c67194b04abed5571d74e26ab86ade1f5b23deb4c08149177ad4d03dadf5cd5` |
 
 All files named in Master Brief section 2 are present. The two zips unpacked to 77 files (`data_viz.zip`) and 49 files (`Design_I_like.zip`) under `work/extract/references/`.
+
+## Added October 21, 2026
+
+| File | Bytes | SHA-256 |
+|---|---|---|
+| `pics_i_like.pdf` | 10,247,784 | `6474ef55c689cc2be2ec0eec0215716e0321a70910342868352191134f0bf83f` |
+| `brand-mockups/20261021_Mockup-Banner-Prussian-Stewards.webp` | 29,124 | `ad89d558cf52ecd63b8563e8b74f4ee7e43963ca32a99ad89c49257159dfea4b` |
+| `brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp` | 41,446 | `358ebba0caa16e8914768154ad62eabfd9cffb04a6a9c298623d8fd1d15eb459` |
+| `brand-mockups/20261021_Mockup-Hinge-Diagram-Transparent.webp` | 57,480 | `8789088c10658144bc9182f5a9f09043aa24e552bf98f68469abdbf59993453c` |
+| `brand-mockups/20261021_Mockup-Square-Wordmark-Stewards.webp` | 97,478 | `48bb22b80d0b58ba7ee79c406f39ac05d0761e5bb6405de6ecffaab11a0e2218` |

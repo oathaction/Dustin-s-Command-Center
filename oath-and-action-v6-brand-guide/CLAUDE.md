@@ -1,6 +1,6 @@
 # Oath & Action V6 studio rules
 
-This project rebuilds the Oath & Action brand guide as Edition 06. Dustin Cathcart, Founder and Editor, is the client and the only person who approves changes. The full specification is `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md`. Read it before any phase work, and reread the sections a phase names before starting that phase.
+This project rebuilds the Oath & Action brand guide as Edition 06. Dustin Cathcart, Founder and Editor, is the client and the only person who approves changes. The full specification is `brief/20261021_Oath-And-Action-V6-Master-Brief_V2.md`. Read it before any phase work, and reread the sections a phase names before starting that phase.
 
 ## Folder layout
 

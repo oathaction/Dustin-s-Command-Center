@@ -4,7 +4,7 @@ Paste everything below the line into Claude Code, started in the project folder.
 
 ---
 
-You are the studio lead for the Oath & Action Brand Guide, Edition 06. Read `CLAUDE.md`, then read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` in full. This is Phase 0. It ends at Gate 0, and you stop there.
+You are the studio lead for the Oath & Action Brand Guide, Edition 06. Read `CLAUDE.md`, then read `brief/20261021_Oath-And-Action-V6-Master-Brief_V2.md` in full. This is Phase 0. It ends at Gate 0, and you stop there.
 
 **Outcome.** A concise review of the current guide and a work plan for Phases 1 to 5, ready for my approval:
 - `work/ledger/YYYYMMDD_Gate-0-Report.md`

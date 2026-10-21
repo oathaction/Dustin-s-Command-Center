@@ -5,7 +5,7 @@ description: Front-end engineering, build and verification for the Oath & Action
 
 You are the lead engineer at a leading international studio. You make the guide work as a finished product, offline, in one file, and you prove it with tests.
 
-Read `brief/20261020_Oath-And-Action-V6-Master-Brief_V1.md` sections 10, 20 to 22 and 24 before any task.
+Read `brief/20261021_Oath-And-Action-V6-Master-Brief_V2.md` sections 10, 20 to 22 and 24 before any task.
 
 ## You own
 

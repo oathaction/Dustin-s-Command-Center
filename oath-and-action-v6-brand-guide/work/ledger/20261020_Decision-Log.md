@@ -24,3 +24,24 @@ Routine decisions made inside an approved phase, one line each with the reason. 
 | DC-02 | May the studio redraw the four pillar marks? | Yes, from one shared skeleton per pillar, with filled and line versions | Phase 1 proposes the skeletons and up to two directions. Nothing changes before Gate 1 approval |
 | DC-03 | Should the atlas use the guide's fonts? | Converge on Inter Tight, Inter and Pillar Red | The atlas applications drop the renamed URW Nimbus faces and V7's darker red |
 | DC-04 | Status of the V5 voice line | Editable. The editor may propose a revision beside the original at Gate 1. The original stays in force until approved | Phase 1 editor task |
+
+## Gate 0, approved by Dustin on October 21, 2026
+
+Dustin approved the review, the Master Brief corrections (issued as Brief V2) and the Phase 1 proposal.
+
+| # | Question | Decision | Effect on later phases |
+|---|---|---|---|
+| DC-05 | What is the brand's central idea? | The ampersand is the hinge: a promise or commitment, then action. The ampersand runs through the brand and joins pairs such as problem and solution, cause and effect, you and me, and people finding common ground across the left and the right | Phase 1 strategy builds the brand narrative, the hinge system and the pairing rules on it. Pairings stay nonpartisan in form and color |
+| DC-06 | Audience | National. Massachusetts examples may appear, but the system serves a national audience | Examples, data and workflows default to national and multi-state material |
+| DC-07 | Platforms at launch | Substack, email, X, LinkedIn, Instagram-sized posts, link previews and TikTok | Phase 4 adds TikTok formats |
+| DC-08 | Atlas V7 inconsistencies | Prepare them for an atlas V7.1 | The data visualization lead writes an issue list for the atlas editor. V6 still never edits the model |
+| DC-09 | Research access | Dustin wants the best output and will grant more access when asked | Network access for page fetches was requested on October 21. Until it changes, research rests on official-domain search results and flags unread quotes |
+| DC-10 | References | Dustin shared `source/pics_i_like.pdf` (54 pages of brand mockups and concepts) and four mockups in `source/brand-mockups/` | Phase 1 studies them for principles. Several carry the lines "From spectators to stewards." and "Democracy has a structure.", which go to Gate 1 as candidate lines beside the locked lines |
+
+## Phase 1, October 21, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D1-01 | Master Brief V2 becomes the governing brief. V1 stays in `brief/` for the record, and `CLAUDE.md` and the agent files in this project now point to V2 | Gate 0 approved the corrections |
+| D1-02 | New files in Phase 1 carry the date 20261021 | The execution date changed |
+| D1-03 | The prompt pack in `oath-and-action-v6-brand-guide-prompt/` keeps Brief V1 | It is the reusable template. Brief V2 is specific to this project |
