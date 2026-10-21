@@ -116,6 +116,7 @@ def stroke_path(segments, width, cap="round", join="round"):
     capm = {"round": pathops.LineCap.ROUND_CAP, "butt": pathops.LineCap.BUTT_CAP, "square": pathops.LineCap.SQUARE_CAP}[cap]
     joinm = {"round": pathops.LineJoin.ROUND_JOIN, "miter": pathops.LineJoin.MITER_JOIN, "bevel": pathops.LineJoin.BEVEL_JOIN}[join]
     p.stroke(width, capm, joinm, 4)
+    p.convertConicsToQuads()
     return simplify(p)
 
 
