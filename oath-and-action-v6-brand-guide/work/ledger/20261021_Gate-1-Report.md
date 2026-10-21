@@ -95,7 +95,7 @@ B is a first drawing. Phase 2 would raise its stroke contrast from 1.5 to 1 towa
 
 Your logo-system references use a condensed heavy wordmark. The design director drew one from Inter Tight 800's own capitals. At 7.5 to 1 it stands 1.26 times taller in the same width, and its A stays open at 16 px. The creative director scores it under threshold. It reads as a squeezed Inter Tight, about 25 percent wider than the references it answers, and close to campaign-sign lettering.
 
-The studio recommends one proper drawing pass in Phase 2, so that you choose between finished drawings at Gate 2. It costs double work, because Phase 2 then draws the key lockups at both widths. If you don't need the extra height, say no and Phase 2 skips it.
+The studio recommends one proper drawing pass in Phase 2, so that you choose between finished drawings at Gate 2. It costs double work, because Phase 2 then draws the main lockups at both widths. If you don't need the extra height, say no and Phase 2 skips it.
 
 ### 3. The hinge diagram
 
@@ -178,7 +178,7 @@ I3 carries whichever ampersand you choose in call 1.
 
 - "From spectators to stewards." with no role cuts against your references, which use it throughout.
 - Under the red rule, red appears less often than in your mockups.
-- A condensed drawing pass means Phase 2 draws the key lockups twice.
+- A condensed drawing pass means Phase 2 draws the main lockups twice.
 - Each position piece puts the nonpartisan standing at stake.
 - Pillar Red on Newsprint measures 2.96:1 at best. It marks and fills, and small text never sets in it. The 1 px Charcoal edge stays wherever red carries meaning. WCAG exempts logotypes.
 - Ampersand B is a first drawing. If the refinement pass fails, Phase 2 falls back to A and loses that time.
@@ -219,7 +219,7 @@ I3 carries whichever ampersand you choose in call 1.
 **What your answers set in motion**
 
 - If you approve ampersand B, its refinement pass, print proof and commercial check come first, since every lockup carries the ampersand. If B fails one of them, the studio tells you at once and moves to A.
-- If you approve the condensed pass, the C, N and A get redrawn, B gets a narrow 16 px master, and the hinge diagram's OATH and ACTION get a condensed drawing. Key lockups come to Gate 2 at both widths.
+- If you approve the condensed pass, the C, N and A get redrawn, B gets a narrow 16 px master, and the hinge diagram's OATH and ACTION get a condensed drawing. The main lockups come to Gate 2 at both widths.
 - If you approve Direction A, the four marks get one node-to-stem ratio, Track is raised, and the Act mark is tested beside chapter numbers at 16 px before the twenty topics are drawn.
 - If you decline any refinement, V5 stays in force for that element and Phase 2 builds its chapter on V5.
 
