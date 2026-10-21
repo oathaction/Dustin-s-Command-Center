@@ -48,16 +48,15 @@ Item 6 is under threshold: its letters want a drawing pass, its 16 px ampersand 
 
 ## Checked and not checked
 
-**Checked.** Ink bounds from curves. Spacing from outlines. Every cell rendered in Chromium 141 on Linux at device scale 1, with overlays, red pixel contrast, solid share and joins measured from them. Silhouette overlap of B against five serif fonts. The board at 1440 and 390 px after the review fixes: no horizontal page scroll, 2,045 images load, no skipped heading levels, no text under 13 px.
+**Checked.** Ink bounds from curves. Spacing from outlines. Every cell rendered in Chromium 141 (Linux, 1x), with overlays and measures taken from the renders. Silhouette overlap of B against five serif fonts. A red-on-Prussian pixel audit at 1440 and 390 px, panels closed and open: 2,290 red pixels touch Prussian, all in the labeled V5 today cells; 0 without them. The board at 1440 and 390 px after the review fixes: no horizontal page scroll, 1,791 images load, no skipped heading levels, no text under 13 px.
 
-**Not checked.** Windows, macOS, high-density screens, Firefox and Safari (pixel fit holds for 1x Chromium on Linux). Print proofs. Commercial serif ampersands. Reader tests. Screen readers. A 16 px favicon tile.
+**Not checked.** Other systems and browsers (pixel fit holds for 1x Chromium on Linux). Print proofs. Commercial serif ampersands. Reader tests. Screen readers.
 
 ## Open risks
 
 - The larger ampersand at 16 and 24 px (item 3) and the larger lever at 16 and 24 px (item 8) reverse stated V5 measures. Each needs a named approval.
 - L4, L5 and L6 minimums grow sharply under the 13 px tagline rule.
 - If Dustin approves B and the condensed width, Phase 2 draws a narrow B 16 px master and refines the condensed C, N and A first.
-- The similarity check covers only fonts on this machine.
 
 ## Change log
 

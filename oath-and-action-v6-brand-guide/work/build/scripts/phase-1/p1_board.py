@@ -579,7 +579,7 @@ def page(parts):
               '<li>Spacing by nearest ink and depth-limited area for every letter pair, from outlines.</li>'
               '<li>Red pixel contrast, solid share and join openness from the renders; numbers in <code>work/handoffs/phase-1/20261021_Identity-Refinement-Measurements.json</code>.</li>'
               '<li>Silhouette overlap of option B against Lora Bold and four serif fonts on this machine.</li>'
-              '<li>This board at 1440 and 390 px wide: no horizontal page scroll, every image loads.</li></ul></div>'
+              '<li>This board at 1440 and 390 px wide: no horizontal page scroll, every image loads.</li><li>A pixel audit at 1440 and 390 px, panels closed and open: 2,290 Pillar Red pixels touch Prussian (within 3 px), all in the two labeled V5 today cells in item 10. With those hidden, the count is 0.</li></ul></div>'
               '<div><h3>Not checked</h3><ul><li>Windows, macOS and high-density screens: pixel fit holds for 1x Chromium on Linux.</li><li>Firefox and Safari.</li><li>Print: no proofs; print minimums are calculated.</li>'
               '<li>Commercial serif ampersands, for similarity to option B: no page access.</li><li>Reader tests: optical spacing comes from a model and my eye.</li>'
               '<li>Screen readers on this board.</li></ul></div></div></section>')
