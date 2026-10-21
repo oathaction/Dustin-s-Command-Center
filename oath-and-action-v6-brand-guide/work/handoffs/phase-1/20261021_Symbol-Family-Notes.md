@@ -24,35 +24,19 @@ Nothing in any master. Every drawing is a proposal under DC-02.
    - in Connect, the space between the halves;
    - in Act, the handle.
 
-   The node always sits on the horizontal centre line, so in a row one line passes through all four nodes. That is the grammar of the hinge diagram and the Signal Grid. I set aside three alternatives, with sketches on the board:
-   - the ampersand's crossing, which becomes an X at 16 px and borrows the master ampersand;
-   - a ring around each mark, which makes four look-alike badges and drifts toward ©;
-   - a shared baseline bar, which adds the same shape to all four and pulls them together.
+   The node always sits on the horizontal centre line, so in a row one line passes through all four nodes, the grammar of the hinge diagram and the Signal Grid. The board sketches three alternatives I set aside: the ampersand's crossing (an X at 16 px, and it borrows the master ampersand), a ring around each mark (look-alike badges that drift toward ©) and a shared baseline bar (one more shape common to all four).
 4. **Red rule.** Pillar Red goes only on the Act handle, in Act contexts.
    - On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint is 2.96:1.
    - On Charcoal the seat is cut out, and red meets Charcoal at 4.49:1.
    - Prussian never carries red.
    - At 16 px the handle is 2 px, so Act stays one colour there.
 5. **Topic grammar proof.** I redrew Ballot, Bill, Contact an official and Campaign money in Direction A at 16, 24 and 48 px, with one node per subject. Campaign money is now a coin stack with one standing coin, so it no longer shares the envelope's landscape box.
-6. **Sanctioned treatments map** gives each treatment one job and a minimum size:
-   - filled marks from 16 px;
-   - the line companion from 24 px;
-   - tiles for avatars and series markers;
-   - isometric drawing only for layer diagrams, with flat labels;
-   - hand-drawn spot illustration at 96 px and up, drawn by a person;
-   - patterns from study 07 and chat collage 4, at 12 percent ink or less behind text;
-   - Y2K orbits as motion only.
-
-   The board includes sketches of a three-layer isometric diagram, a hand-drawn texture study (labelled as script-generated), four pattern swatches with measured coverage, avatars and series chips.
+6. **Sanctioned treatments map** gives each treatment one job and a minimum size: filled marks from 16 px, the line companion from 24 px, tiles for avatars and series markers, isometric only for layer diagrams with flat labels, hand-drawn spot illustration from 96 px drawn by a person, patterns at 12 percent ink or less behind text, and Y2K orbits as motion only. Sketches show each one; the hand-drawn texture study is labelled as script-generated.
 
 ## Why
 
 - **Track and Act.** V5's Track and Act both run from bottom left to top right and correlate at 0.81 at 16 px. The stair is wide and low, the door tall and narrow. Direction A now correlates at 0.21, a score of 0.29 against V5's 0.65.
-- **Phase 0 watch points.** All of them are avoided, and each one is measured.
-  - Track against a status-light row: 0.22 (A filled, the higher of 16 and 24 px).
-  - Act against a letter D: 0.55. Against a play triangle: 0.33. Against an outbound arrow: 0.47.
-  - Explain against © and a letter C: 0.55 and 0.54.
-  - Connect against V5's chain link: 0.57.
+- **Phase 0 watch points** are avoided and measured (A filled, higher of 16 and 24 px): Track against a status-light row 0.22; Act against a letter D 0.55, a play triangle 0.33 and an outbound arrow 0.47; Explain against © 0.55 and a letter C 0.54; Connect against V5's chain link 0.57.
 - **Contact an official and Campaign money** fall from 0.93 to 0.44 at 16 px, and from 0.86 to 0.44 at 24 px.
 - **The node** lets a reader learn one rule and find the point of focus in every mark. Red keeps one job.
 
@@ -89,64 +73,24 @@ Totals: Direction A, 86 pass and 10 fail. Direction B, 85 pass and 11 fail.
 | Evidence honesty | 5 | 5 |
 | Accessibility | 4 | 3 |
 
-The board gives a reason for each score. Neither direction reaches 4 on usefulness, because exports, the other sixteen topics and the tokens come in Phase 2. The clarity and brand fidelity scores for B rest on studio judgment, and the board labels them so.
+Reasons are on the board. Neither reaches 4 on usefulness until Phase 2 adds exports, the other sixteen topics and tokens. B's clarity and brand fidelity scores are labelled studio judgment.
 
 ## Recommendation
 
-**Direction A.** Its leading treatment, the filled master, passes at 16 px for all four pillars. B leads with the line, which fails at 16 px for Track and Connect. A keeps red in one place and gives topic and atlas symbols a grammar that holds at small sizes. Decisions for Gate 1 are on the board in section 11:
-
-1. the direction;
-2. the four skeletons;
-3. the shared node;
-4. the red rule;
-5. the line companion starting at 24 px;
-6. the topic redraw;
-7. the treatments map.
-
-Suggested decision-log entries for the main session:
-
-- the 24-unit grid and node rule;
-- the 60-percent crisp-share and 0.60 similarity thresholds, which are studio judgment;
-- the 12 percent pattern limit behind text.
+**Direction A.** Its leading treatment, the filled master, passes at 16 px for all four pillars; B leads with the line, which fails there for Track and Connect. A keeps red in one place and gives topic and atlas symbols a grammar that holds at small sizes. Section 11 of the board lists the seven Gate 1 decisions: direction, skeletons, shared node, red rule, line companion from 24 px, topic redraw and treatments map. For the decision log: the 24-unit grid and node rule, the studio thresholds (60 percent crisp share, 0.60 similarity) and the 12 percent pattern limit.
 
 ## Checked and not checked
 
-**Checked:**
-- every drawing rendered in Chromium on Linux at 16, 24, 48 and 96 px on four surfaces;
-- the nine craft checks on 24 pillar drawings and 4 topics;
-- similarity against V5 and the watch items;
-- red-ring contrast on rendered pixels;
-- pattern coverage;
-- board layout and type at 1440 and 390 px. Inter and Inter Tight loaded from Google Fonts; Lora was requested but did not appear in the loaded list.
+**Checked:** every drawing rendered in Chromium on Linux at 16, 24, 48 and 96 px on four surfaces; the nine craft checks on 24 pillar drawings and 4 topics; similarity against V5 and the watch items; red-ring contrast on rendered pixels; pattern coverage; board layout and type at 1440 and 390 px. Inter and Inter Tight loaded from Google Fonts; Lora was requested but did not appear in the loaded list.
 
-**Not checked:**
-- readers (similarity comes from a model of a glance);
-- other browsers, high-density screens, and Windows or macOS rendering;
-- print sizes;
-- the other sixteen topics, atlas, status and utility symbols;
-- screen-reader output beyond the labels written into the board;
-- whether the illustrative headlines describe real procedures in every state. They are labelled.
+**Not checked:** readers (similarity comes from a model of a glance); other browsers, high-density screens, Windows or macOS rendering; print sizes; the other sixteen topics and the atlas, status and utility symbols; screen-reader output beyond the labels in the board; whether the illustrative headlines describe real procedures in every state (they are labelled).
 
 ## Change log
 
 **Created**
 - `work/boards/20261021_Symbol-Family-Board.html`
-- `work/boards/phase-1/symbols/`:
-  - `20261021_Pillar-Sketches-Direction-A.svg`
-  - `20261021_Pillar-Sketches-Direction-B.svg`
-  - `20261021_Topic-Sketches-Direction-A.svg`
-  - `20261021_Symbol-Family-Measurements.json`
-  - `20261021_Symbol-Family-Board-Check.json`
-  - `px/` (1x renders for the pixel views)
-  - `screens/20261021_Symbol-Family-Board-1440.jpg`
-  - `screens/20261021_Symbol-Family-Board-390.jpg`
-- `work/build/scripts/phase-1/`:
-  - `symbols_geom.py`
-  - `symbols_family.py`
-  - `symbols_measure.py`
-  - `symbols_board_build.py`
-  - `symbols_board_check.js`
-  - `symbols_render_cells.js`
+- `work/boards/phase-1/symbols/`: `20261021_Pillar-Sketches-Direction-A.svg`, `20261021_Pillar-Sketches-Direction-B.svg`, `20261021_Topic-Sketches-Direction-A.svg`, `20261021_Symbol-Family-Measurements.json`, `20261021_Symbol-Family-Board-Check.json`, `px/` (1x renders), `screens/20261021_Symbol-Family-Board-1440.jpg` and `-390.jpg`
+- `work/build/scripts/phase-1/`: `symbols_geom.py`, `symbols_family.py`, `symbols_measure.py`, `symbols_board_build.py`, `symbols_board_check.js`, `symbols_render_cells.js`
 - `work/handoffs/phase-1/20261021_Symbol-Family-Notes.md` (this file)
 
 **Modified:** none. No master, ledger or source file changed. The shared `board-base.css` is untouched; the board overrides the tag size to 13 px in its own styles.
