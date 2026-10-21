@@ -32,6 +32,9 @@ def css_vars(surface, mode, style=None, size=None):
     else:
         link = o.WHITE if sid == "prussian" else (o.NEWS if sid == "charcoal" else o.STONE)
         v = f"--amp:{o.RED};--lever:{o.RED};--link:{link};--line:{o.NEWS if dark else o.STONE};"
+    if sid == "prussian" and mode == "color" and style not in ("displayonly", "keyline", "newsprint", "v5red"):
+        # Rule 05.3, treatment D: identity marks on Prussian are one color, White, ampersand and lever included
+        v = "--amp:currentColor;--lever:currentColor;--link:currentColor;--line:currentColor;"
     if style == "displayonly":
         v += "--amp:currentColor;" if size in (16, 24) else f"--amp:{o.RED};"
     elif style == "newsprint":
@@ -66,8 +69,8 @@ def jobs_for_pair(p):
                     h = size if size != "display" else disp_h(p)
                     style = p.get("prop_style") if vk == "prop" else None
                     fg, v = css_vars(s, m, style, size)
-                    if p.get("glyph") == "amp" and m == "color":
-                        fg = o.RED  # a freestanding ampersand is Pillar Red on every approved surface
+                    if p.get("glyph") == "amp" and m == "color" and s != "prussian":
+                        fg = o.RED  # a freestanding ampersand is Pillar Red, except on Prussian (Rule 05.3, treatment D)
                     svg, W, H = cell(inner, vb, h, fg, v, SURF[s][2])
                     jobs.append({"id": f"{p['id']}__{vk}__{s}__{m}__{size}", "w": W, "h": H, "bg": SURF[s][2], "html": svg,
                                  "out": f"{p['id']}/{vk}__{s}__{m}__{size}.png"})

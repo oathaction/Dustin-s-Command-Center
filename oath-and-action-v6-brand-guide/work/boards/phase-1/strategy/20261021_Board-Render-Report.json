@@ -90,7 +90,7 @@
         "Inter Tight 600 normal",
         "Inter Tight 800 normal"
       ],
-      "words": 3279,
+      "words": 3387,
       "hingeV2": [
         {
           "cls": "display",
@@ -104,7 +104,7 @@
         "rgb(230, 57, 70)",
         "rgb(230, 57, 70)"
       ],
-      "pageHeight": 11948,
+      "pageHeight": 12249,
       "keyboardStops": 12,
       "keyboardWithoutOutline": [],
       "axe": {
@@ -282,7 +282,7 @@
         "Inter Tight 600 normal",
         "Inter Tight 800 normal"
       ],
-      "words": 3279,
+      "words": 3387,
       "hingeV2": [
         {
           "cls": "compact",
@@ -296,7 +296,7 @@
         "rgb(230, 57, 70)",
         "rgb(230, 57, 70)"
       ],
-      "pageHeight": 25706,
+      "pageHeight": 25990,
       "keyboardStops": 12,
       "keyboardWithoutOutline": [],
       "axe": {
