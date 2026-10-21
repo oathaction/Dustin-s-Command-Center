@@ -2,7 +2,7 @@
 
 Oath & Action Brand Guide, Edition 06. Phase 1, October 21, 2026. Status: stopped at Gate 1, waiting for Dustin's approval.
 
-Open the review board: `work/boards/20261021_Gate-1-Review-Board.html`, also published as a private page at GATE1_URL. It puts each decision beside the drawings it needs. The five detailed boards behind it sit in `work/boards/`:
+Open the review board: `work/boards/20261021_Gate-1-Review-Board.html`, also published as a private page at https://claude.ai/artifact/2Torwu3WHrrp8fUs5RUHG2. It puts each decision beside the drawings it needs. The five detailed boards behind it sit in `work/boards/`:
 
 - `20261021_Strategy-And-Direction-Board.html`
 - `20261021_Identity-Refinement-Board.html`
@@ -133,7 +133,7 @@ The studio recommends one proper drawing pass in Phase 2, so that you choose bet
 
 ### 3. The hinge diagram
 
-Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. V5's hinge arc is dotted and your mockup's arcs are dashed, so to an atlas reader either one would say the brand is a guess. V2 follows your mockups: the ampersand in a circle, OATH and ACTION on a line with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath. Five rules on the systems board keep it apart from data marks. The identity board also draws V2 without its return arc. Under the red rule's wording in call 4, the hinge diagram is an identity mark of its own, so it never shares a view with the wordmark. A piece that needs the hinge beside the wordmark uses the hinge divider. The V2 masters still draw V5's ampersand, and they take whichever ampersand you choose in call 1. The display master holds 13 px labels from 526 px wide, and the compact master drops the labels and works down to 241 px.
+Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. V5's hinge arc is dotted and your mockup's arcs are dashed, so to an atlas reader either one would say the brand is a guess. V2 follows your mockups: the ampersand in a circle, OATH and ACTION on a line with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath. Five rules on the systems board keep it apart from data marks. The identity board also draws V2 without its return arc. Under the red rule's wording in call 4, the hinge diagram is an identity mark of its own, so it never shares a view with the wordmark. A piece that needs the hinge beside the wordmark uses the hinge divider. The V2 masters still draw V5's ampersand, and they take whichever ampersand you choose in call 1. V2 costs your mockup's dashed arcs, and the hinge diagram can no longer sit beside the wordmark. The display master holds 13 px labels from 526 px wide, and the compact master drops the labels and works down to 241 px.
 
 ### 4. Red's job, and the ampersand on Prussian
 
@@ -143,11 +143,11 @@ The creative director found red's job written five ways across the boards, and t
 
 The re-check after the fix round tested this wording on every board and found four cases it left open: the divider's ink on dark surfaces, the hinge diagram's own ampersand, a reform with several targets, and the guide's own failure cases and swatches. The four sentences that settle them are part of the wording above.
 
-On Prussian, V5's red ampersand measures 2.27:1 at 16 px. White measures 8.27:1 there and 13.28:1 at 96 px. The rule's last sentence rules out options A and C, which leaves B and D, and the studio recommends D for identity marks.
+On Prussian, V5's red ampersand measures 2.27:1 at 16 px. White measures 8.27:1 there and 13.28:1 at 96 px. The rule's last sentence rules out options A and C, which leaves B and D, and the studio recommends D for identity marks. Data graphics on Prussian keep Newsprint. The cost is that red appears less often than in your mockups, and the Prussian banner loses its red ampersand.
 
 If you approve the badge (S9, section 5), the rule's first sentence becomes: "The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks."
 
-One case is yours to settle. The rule ranks the step a reader can take now above the point the headline names, so on an Act piece the step takes the red and a hinge headline's ampersand cannot. Post 4 of the composite shows the other order, with the headline's ampersand red and the Act handle in Charcoal. Until you choose, the rule stands as written and post 4 is an exception for you to judge. If you want hinge headlines to carry red on Act pieces, say so, and the rule gains a sentence giving the headline's ampersand the red before the step. Data graphics on Prussian keep Newsprint. The cost is that red appears less often than in your mockups, and the Prussian banner loses its red ampersand.
+One case is yours to settle. The rule ranks the step a reader can take now above the point the headline names, so on an Act piece the step takes the red and a hinge headline's ampersand cannot. Post 4 of the composite shows the other order, with the headline's ampersand red and the Act handle in Charcoal. Until you choose, the rule stands as written and post 4 is an exception for you to judge. If you want hinge headlines to carry red on Act pieces, say so, and the rule gains a sentence giving the headline's ampersand the red before the step.
 
 ### 5. The pillar marks
 
@@ -185,7 +185,7 @@ Five repairs or small-size masters, and one new mark.
 | I3 | Wordmark masters at display, 24 and 16 px | Optical spacing, stems and bars on whole pixels, and the ampersand at full box height at the two small sizes | V5 scales one master down, and its small sizes blur. The larger small ampersand reverses a V5 measure |
 | I7 | Lockmark masters at 16 and 24 px | Node centers on whole pixels, with a larger lever. Thresholds: 16 px master to 23 px, 24 px master to 47 px, V5's master from 48 px | At 24 px, V5's lockmark has 5 percent solid ink. The master raises it to 60 percent. The larger lever reverses a V5 measure |
 | I8 | One minimum-size rule | No mark draws capitals under 14 px on screen and no tagline sets under 13 px. Each lockup names its replacement below its minimum. Favicons use the ampersand's 16 px master | V5's minimum sizes conflict (defect fix) |
-| S9 | A wordless hinge-circle badge, a new mark | Ampersand B in the hinge diagram's ring, with no words, taking the ampersand you choose in call 1. Signature red on Newsprint, White and Charcoal, White on Prussian. Three conditions: Rule 05.3 names it as signature red (the added sentence is under call 4), or it goes Charcoal; it keeps to its jobs, an end mark, a report's back cover and events, and never appears as an avatar or favicon, near a candidate or ballot, or beside the wordmark or the hinge diagram; and Phase 2 redraws its 16 px master from ampersand B's | Your references show seals, and V5 says "Seals imply an authority we do not claim." A badge without words claims none. Against a generated seal it scores 0.584 at 16 px, under the studio's 0.60 similarity limit, and 0.608 at 24 px, over it. No reader has tested it. Drawn on the symbol board, section 12 |
+| S9 | A wordless hinge-circle badge, a new mark | Ampersand B in the hinge diagram's ring, with no words, taking the ampersand you choose in call 1. Signature red on Newsprint, White and Charcoal, White on Prussian. Three conditions: Rule 05.3 names it as signature red (the added sentence is under call 4), or it goes Charcoal; it keeps to its jobs, an end mark, a report's back cover and events, and never appears as an avatar or favicon, near a candidate or ballot, or beside the wordmark or the hinge diagram; and Phase 2 redraws its 16 px master from ampersand B's own 16 px master | Your references show seals, and V5 says "Seals imply an authority we do not claim." A badge without words claims none. Against a generated seal it scores 0.584 at 16 px, under the studio's 0.60 similarity limit, and 0.608 at 24 px, over it. No reader has tested it. Drawn on the symbol board, section 12 |
 
 I3 and S9 carry whichever ampersand you choose in call 1.
 
@@ -296,10 +296,10 @@ Phase 1 changed no V5 master and no file in `source/` or `work/extract/`. Your t
 - `source/pics_i_like.pdf` and `source/brand-mockups/` (four mockups), your supplied files, recorded in the source manifest
 - `work/ledger/`: `20261021_Guide-Architecture-Map.md`, `20261021_Token-Architecture.md`, this report
 - `work/research/20261021_Research-Ledger.md`
-- `work/handoffs/phase-1/`: 16 files, the notes, reviews, issue list and measurement data named in section 1, with `20261021_CD-Recheck-After-Fixes.md`
+- `work/handoffs/phase-1/`: 17 files, the notes, reviews, issue list and measurement data named in section 1, among them `20261021_CD-Recheck-After-Fixes.md` and `20261021_CD-Final-Check.md`
 - `work/boards/`: the five Phase 1 boards, `20261021_Gate-1-Review-Board.html`, `20261021_Board-Conventions.md`, `board-base.css`
-- `work/boards/phase-1/`: identity (1,466 files: SVG proposals in eight item folders and rendered cells), symbols (109), strategy (22), navigation (11, the guide shell among them), systems (9), gate-1 (the combined board's template and images)
-- `work/build/scripts/phase-1/`: 44 build, render and check scripts, plus the Gate 1 board builder
+- `work/boards/phase-1/`: identity (1,302 files: SVG proposals in eight item folders and rendered cells), symbols (118, with the S9 badge masters in `badge/`), strategy (22), navigation (11, the guide shell among them), systems (9), gate-1 (60: the combined board's template, 57 captured images with their manifest, and the check results)
+- `work/build/scripts/phase-1/`: 51 build, render and check scripts, the Gate 1 board's builder, capture and check scripts among them
 - `work/build/tokens/20261021_Token-Schema-Draft.json`
 
 **Modified**

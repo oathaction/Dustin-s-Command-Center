@@ -127,6 +127,11 @@ figure { margin: 0; min-width: 0 }
 .cell .lab { margin: 0; white-space: nowrap }
 .lrow .gap { flex: 0 0 8px; align-self: stretch; border-left: 1px solid #A8ACB2 }
 .stack .item > .lab { margin: 0 }
+.hq { container-type: inline-size }
+.hq-compact { display: none }
+@container (max-width: 559px) { .hq-display { display: none } .hq-compact { display: block } }
+.cap .choice { display: block; color: var(--fg); margin-bottom: 6px }
+.cap .choice .tag { margin-right: 4px }
 .eq > figure { display: grid; grid-template-rows: 1fr auto }
 .eq > figure > .spec { display: grid; place-items: center }
 @media (max-width: 600px) { .lrow { flex-wrap: wrap } .lname { flex: 0 0 100% } .lrow .gap { display: none } }

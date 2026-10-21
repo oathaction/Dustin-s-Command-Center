@@ -338,7 +338,12 @@ need(l_note, "L note missing")
 
 s5 = section(sections, "5. ")
 fix_head, fix_rows = md_table(s5, "| ID | Fix |")
-fix_after = [p.strip() for p in s5.split("\n\n") if p.strip() and not p.strip().startswith("|")]
+# Only the paragraphs after the table: the lead above it restates the approval item the intro already quotes.
+s5_tail = s5.split("\n")
+s5_last_row = max(k for k, l in enumerate(s5_tail) if l.startswith("|"))
+fix_after = [p.strip() for p in "\n".join(s5_tail[s5_last_row + 1:]).split("\n\n") if p.strip()]
+s5_title = [t for t, _ in sections if t.startswith("5. ")][0].split(". ", 1)[1]
+s6_title = [t for t, _ in sections if t.startswith("6. ")][0].split(". ", 1)[1]
 
 s6 = section(sections, "6. ")
 set_head, set_rows = md_table(s6, "| ID | Question |")
@@ -373,7 +378,7 @@ def sentences(text):
 COSTS = {
     "1": [("risk", "Ampersand B is a first drawing"), ("prose", r"fallback|fails")],
     "2": [("prose", r"\bcosts?\b"), ("risk", "A condensed drawing pass")],
-    "3": [("prose", r"compact master drops"), ("prose", r"\bcosts?\b")],
+    "3": [("prose", r"\bV2 costs\b"), ("prose", r"compact master drops")],
     "4": [("prose", r"\bThe cost\b|\bcosts?\b"), ("risk", "Under the red rule")],
     "5": [("prose", r"A's Act mark at 16 px"), ("prose", r"\btests?\b")],
     "6": [("risk", '"From spectators to stewards." with no role'), ("prose", r"\bcosts?\b")],
@@ -470,7 +475,11 @@ def composite():
         if shows:
             bits.append("It shows " + (", ".join(shows[:-1]) + " and " + shows[-1] if len(shows) > 1 else shows[0]) + ".")
         alt = " ".join(bits)
-        figs.append(f'<figure>{img(path, alt, scale=2, cls="fit")}<figcaption class="cap">{esc(tidy(info.get("caption", "").strip()))}</figcaption></figure>')
+        choice = ""
+        if "hinge headline" in (label + " " + info.get("caption", "")).lower():
+            choice = ('<span class="choice"><span class="tag solid">Your choice</span> This post gives the working red to the hinge headline\'s ampersand ahead of the step a reader can take now. '
+                      'Rule 05.3\'s order of precedence does not allow that as written, and <a href="#call-4">call 4</a> asks you to settle it.</span>')
+        figs.append(f'<figure>{img(path, alt, scale=2, cls="fit")}<figcaption class="cap">{choice}{esc(tidy(info.get("caption", "").strip()))}</figcaption></figure>')
     note_html = f'<p class="cap"><span class="illus">Illustrative</span> {esc(tidy(strip_tags(note.group(1))))}</p>' if note else ""
     return f'<div class="posts n{len(posts)}">{"".join(figs)}</div>{note_html}'
 
@@ -559,8 +568,14 @@ def call3():
     svg = svg_inline(master, "Hinge diagram V2 display master: OATH and ACTION on a line with four nodes, the red ampersand in a circle at the center, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath", width=1100, style="color:#121212;width:100%;min-width:560px;height:auto")
     head = re.search(r'<h3>([^<]*)</h3><div class="three">', sec)
     h = [f'<h4>{esc(head.group(1)) if head else "The drawings side by side"}</h4>', f'<div class="{grid} eq">{figs}</div><p class="cap">{esc(cap)}</p>']
-    h.append('<h4>The V2 display master</h4>')
-    h.append(spec_figure(scroll(svg, "Hinge diagram V2 display master"), "The display master file, <code>work/boards/phase-1/identity/07-hinge/20261021_Hinge-Display-Master_V2.svg</code>, inlined as drawn. Below 560 px the frame scrolls, so the labels never draw under the master's 526 px minimum."))
+    compact = os.path.join(IDSVG, "07-hinge", "20261021_Hinge-Compact-Master_V2.svg")
+    csvg = svg_inline(compact, "Hinge diagram V2 compact master: OATH and ACTION on a line with four nodes, the red ampersand in a circle at the center and two solid hairline arcs running clockwise, without labels", width=520, cls="fit", style="color:#121212")
+    swap = ('<div class="hq">'
+            f'<div class="hq-display">{scroll(svg, "Hinge diagram V2 display master")}<p class="lab">The display master, with UNDERSTAND and IMPACT. Narrower than 560 px, this frame shows the compact master.</p></div>'
+            f'<div class="hq-compact">{csvg}<p class="lab">The compact master, which drops the labels and works down to 241 px. The display master, with its labels, returns on wider screens.</p></div>'
+            '</div>')
+    h.append('<h4>The V2 masters</h4>')
+    h.append(spec_figure(swap, "Inlined as drawn from <code>work/boards/phase-1/identity/07-hinge/</code>: <code>20261021_Hinge-Display-Master_V2.svg</code> and <code>20261021_Hinge-Compact-Master_V2.svg</code>. The frame switches between them at 560 px, as the strategy and systems boards do."))
     return "".join(h)
 
 
@@ -1025,7 +1040,7 @@ def rubric_html():
             cells = [f'<th scope="row">{inline(r[0])}</th>']
             for c in r[1:]:
                 m = re.fullmatch(r"\s*([1-5])\s*(\*?)\s*", c)
-                cells.append(f'<td class="s s{m.group(1)}">{esc(c.strip())}</td>' if m else f"<td>{inline(c)}</td>")
+                cells.append(f'<td class="s s{m.group(1)}">{esc(c.strip())}</td>' if m else "<td>" + re.sub(r"^Under 4:", "<strong>Under 4:</strong>", inline(c)) + "</td>")
             body.append("<tr>" + "".join(cells) + "</tr>")
         prose = md_blocks(s3)
         return (prose + RUBRIC_KEY + f'<div class="table" tabindex="0" role="region" aria-label="Rubric scores"><table><thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'), len(rows)
@@ -1095,10 +1110,10 @@ fills = {
     "calls": calls_html(),
     "fixes_intro": inline(re.sub(r"^\*\*[^*]+\*\* in section 5\. ", "", approve_list[1])) + " " + " ".join(inline(p) for p in fix_after),
     "calls_heading": f"The {count_word(len(call_rows))} big calls",
-    "fixes_heading": f"{count_word(len(fix_rows)).capitalize()} identity fixes to approve by name",
-    "set_heading": f"{count_word(len(set_rows)).capitalize()} studio recommendations, approved as a set",
+    "fixes_heading": f"{count_word(len(fix_rows)).capitalize()} {s5_title[0].lower() + s5_title[1:]}",
+    "set_heading": f"{count_word(len(set_rows)).capitalize()} {s6_title[0].lower() + s6_title[1:]}",
     "toc_calls": f"The {count_word(len(call_rows))} big calls",
-    "toc_fixes": f"{count_word(len(fix_rows)).capitalize()} identity fixes",
+    "toc_fixes": f"{count_word(len(fix_rows)).capitalize()} " + " ".join(s5_title.split()[:2]).lower(),
     "toc_set": f"{count_word(len(set_rows)).capitalize()} recommendations",
     "fixes": fixes_html(),
     "set_intro": "The studio asks you to approve these as one set. Name any you would change, and the rest stand.",

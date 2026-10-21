@@ -1,8 +1,8 @@
 {
  "board": "work/boards/20261021_Gate-1-Review-Board.html",
- "checked": "2026-10-21T06:02:02.538Z",
- "bytes": 3633551,
- "megabytes": 3.47,
+ "checked": "2026-10-21T06:26:47.912Z",
+ "bytes": 3649684,
+ "megabytes": 3.48,
  "underTenMegabytes": true,
  "startsWithTitle": true,
  "hasSkeletonTags": false,
@@ -23,7 +23,7 @@
    "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 31,
+   "inlineSvgs": 32,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -38,13 +38,13 @@
    "h1Count": 1,
    "headingSkips": [],
    "redOutsideSpecimens": [],
-   "tableCells": 206,
+   "tableCells": 430,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 27,
+   "scrollRegions": 28,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 32655,
+   "pageHeight": 34973,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -65,7 +65,7 @@
     },
     {
      "tag": "A",
-     "text": "Six identity fixes",
+     "text": "Six identity changes",
      "outline": "solid 2px"
     }
    ],
@@ -99,7 +99,8 @@
     "work/boards/screens/gate-1/gate1-1440-light-14.png",
     "work/boards/screens/gate-1/gate1-1440-light-15.png",
     "work/boards/screens/gate-1/gate1-1440-light-16.png",
-    "work/boards/screens/gate-1/gate1-1440-light-17.png"
+    "work/boards/screens/gate-1/gate1-1440-light-17.png",
+    "work/boards/screens/gate-1/gate1-1440-light-18.png"
    ]
   },
   {
@@ -111,7 +112,7 @@
    "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 31,
+   "inlineSvgs": 32,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -126,13 +127,13 @@
    "h1Count": 1,
    "headingSkips": [],
    "redOutsideSpecimens": [],
-   "tableCells": 206,
+   "tableCells": 430,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 27,
+   "scrollRegions": 28,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 32655,
+   "pageHeight": 34973,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -153,7 +154,7 @@
     },
     {
      "tag": "A",
-     "text": "Six identity fixes",
+     "text": "Six identity changes",
      "outline": "solid 2px"
     }
    ],
@@ -187,7 +188,8 @@
     "work/boards/screens/gate-1/gate1-1440-dark-14.png",
     "work/boards/screens/gate-1/gate1-1440-dark-15.png",
     "work/boards/screens/gate-1/gate1-1440-dark-16.png",
-    "work/boards/screens/gate-1/gate1-1440-dark-17.png"
+    "work/boards/screens/gate-1/gate1-1440-dark-17.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-18.png"
    ]
   },
   {
@@ -199,7 +201,7 @@
    "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 31,
+   "inlineSvgs": 32,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -214,13 +216,13 @@
    "h1Count": 1,
    "headingSkips": [],
    "redOutsideSpecimens": [],
-   "tableCells": 206,
+   "tableCells": 430,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 27,
+   "scrollRegions": 28,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 51851,
+   "pageHeight": 57219,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -241,7 +243,7 @@
     },
     {
      "tag": "A",
-     "text": "Six identity fixes",
+     "text": "Six identity changes",
      "outline": "solid 2px"
     }
    ],
@@ -258,7 +260,7 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 89
+     "nodes": 123
     }
    ],
    "pageErrors": [],
@@ -288,7 +290,10 @@
     "work/boards/screens/gate-1/gate1-390-light-23.png",
     "work/boards/screens/gate-1/gate1-390-light-24.png",
     "work/boards/screens/gate-1/gate1-390-light-25.png",
-    "work/boards/screens/gate-1/gate1-390-light-26.png"
+    "work/boards/screens/gate-1/gate1-390-light-26.png",
+    "work/boards/screens/gate-1/gate1-390-light-27.png",
+    "work/boards/screens/gate-1/gate1-390-light-28.png",
+    "work/boards/screens/gate-1/gate1-390-light-29.png"
    ]
   },
   {
@@ -300,7 +305,7 @@
    "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 31,
+   "inlineSvgs": 32,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -315,13 +320,13 @@
    "h1Count": 1,
    "headingSkips": [],
    "redOutsideSpecimens": [],
-   "tableCells": 206,
+   "tableCells": 430,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 27,
+   "scrollRegions": 28,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 51851,
+   "pageHeight": 57219,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -342,7 +347,7 @@
     },
     {
      "tag": "A",
-     "text": "Six identity fixes",
+     "text": "Six identity changes",
      "outline": "solid 2px"
     }
    ],
@@ -359,7 +364,7 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 89
+     "nodes": 123
     }
    ],
    "pageErrors": [],
@@ -389,7 +394,10 @@
     "work/boards/screens/gate-1/gate1-390-dark-23.png",
     "work/boards/screens/gate-1/gate1-390-dark-24.png",
     "work/boards/screens/gate-1/gate1-390-dark-25.png",
-    "work/boards/screens/gate-1/gate1-390-dark-26.png"
+    "work/boards/screens/gate-1/gate1-390-dark-26.png",
+    "work/boards/screens/gate-1/gate1-390-dark-27.png",
+    "work/boards/screens/gate-1/gate1-390-dark-28.png",
+    "work/boards/screens/gate-1/gate1-390-dark-29.png"
    ]
   }
  ],
