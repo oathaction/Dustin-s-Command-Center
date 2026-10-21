@@ -17,7 +17,7 @@ Four format rules shape this design:
 
 **Categories.** The groups are `oa.color`, `oa.font` with `oa.type`, `oa.space`, `oa.size`, `oa.border`, `oa.radius`, `oa.opacity`, `oa.layout`, `oa.motion`, `oa.zIndex`, `oa.chart` and `oa.component`. Together they cover every category in Master Brief V2 section 10.
 
-**Naming.** JSON path segments use camelCase. The CSS name is `--oa-` followed by the path in kebab case, with the surface last: `oa.color.text.secondary.onNewsprint` becomes `--oa-color-text-secondary-on-newsprint`. The generator also writes four surface classes, such as `.oa-surface-prussian`, and each class points a short name like `--oa-color-text-secondary` at that surface's token. V5's `--surface` and `--ink` already work this way. JSON holds only the explicit tokens, so each one can be tested.
+**Naming.** JSON path segments use camelCase. The CSS name is `--oa-` followed by the path in kebab case, with the surface last: `oa.color.text.secondary.onNewsprint` becomes `--oa-color-text-secondary-on-newsprint`. The generator also writes four surface classes, such as `.oa-surface-prussian`, and each class points a short name like `--oa-color-text-secondary` at that surface's token. JSON holds only the explicit tokens, so each one can be tested.
 
 ## 2. Tiers
 
@@ -27,7 +27,7 @@ Four format rules shape this design:
 | Semantic | A role on a surface | Primitives | `oa.color.text.secondary.onNewsprint` |
 | Component | One part of one component | Semantic tokens | `oa.component.button.disabled.label.onWhite` |
 
-Identity marks use palette primitives and never take a tint. State and data colors have their own groups. Data tokens never point to Pillar Red. The one exception is a future `data.emphasisRed`, which carries the one-red rule and switches off when status already uses red (tension 14). Series palettes go to Gate 2.
+Identity marks use palette primitives and never take a tint. State and data colors have their own groups. Data reaches Pillar Red only through a future `data.emphasisRed`, which carries the one-red rule and switches off when status already uses red (tension 14). Series palettes go to Gate 2.
 
 ## 3. Roles per surface
 
