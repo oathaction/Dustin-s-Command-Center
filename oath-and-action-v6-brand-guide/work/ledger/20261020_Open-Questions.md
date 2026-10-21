@@ -2,13 +2,16 @@
 
 Factual, rights and model questions only Dustin can answer, ranked by how much later work depends on them. Each carries the default the studio follows until he answers. Design choices with recommendations go to the gate where boards show them, listed at the end.
 
-Opened at Gate 0, October 20, 2026.
+Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 2026.
 
 ## Open
 
 | # | Question | Why it matters | Default until answered | Raised by |
 |---|---|---|---|---|
-| (none) | All Gate 0 questions are answered | | | |
+| Q-11 | Can the environment's network access be widened before Phase 3? | Research can't read pages, and Phase 3 can't download public data | Search only. Quotes stay marked as snippets, and chart specimens use Atlas V7 data | Research lead, Gate 1 |
+| Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
+| Q-13 | Can you show a one-page sheet of the 16 px marks to five or more people before Gate 2? | The Act mark, the similarity limit and the pixel-fit limit are studio thresholds that no reader has checked | Studio thresholds only, marked untested | Creative director, Gate 1 |
+| Q-14 | Who made page 14 of `pics_i_like.pdf`, the rendered data visualization study? | It is the only page whose maker the rights review couldn't trace | Study only | Research lead, Gate 1 |
 
 ## Answered
 
