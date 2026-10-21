@@ -54,7 +54,7 @@ Two atlas loops carry the brand's argument:
 - Loop R9, "Taking part in a successful repair may support the next one." V7 grades the full loop a hypothesis: "The complete loop is a design hypothesis." Its chain is effective participation, accountable delivery and warranted trust.
 - Loop B4, "Electoral consequences can improve public performance." V7 calls it "The main balancing loop in the model," well-supported where seats are competitive. It describes the condition the tagline names.
 
-So the brand may describe its loop as a goal and a design, and it may never present it as a proven effect. Proposals for the drawing:
+So the brand presents its loop as a goal and a design, and any claim about its effect carries Loop R9's grade and the verb "can" or "may." Proposals for the drawing:
 - Arrowheads point one way, clockwise, reading left to right along the top.
 - Arcs are solid hairlines. Atlas V7 draws hypotheses dotted and plausible links dashed, so a dashed brand arc would read as an evidence grade.
 - When Loop R9 appears inside an atlas graphic, it follows the atlas line code and is drawn dotted, with its grade.
@@ -64,7 +64,7 @@ So the brand may describe its loop as a goal and a design, and it may never pres
 
 > Every public rule starts with people who promised to serve: a council that adopts a budget, a legislature that passes a bill. Then the rule reaches a household as a rent renewal, a pay stub, a ballot or a power bill.
 >
-> Oath & Action follows that path for readers in every state. We read the rule and show who holds the decision. We keep the record within reach while the decision moves. When it is time to act, we point to the office that answers for it and the step a reader can take.
+> Oath & Action follows that path for readers in every state. We read the rule and show who holds the decision. The record stays within reach while the decision moves. When it is time to act, we point to the office that answers for it and the step a reader can take.
 >
 > The ampersand in our name is the hinge between a promise and the action that keeps it. It joins a rule to its result and a problem to the fixes on the table. It also joins people: you and a neighbor who lives under the same rule and may vote another way. You both get the same record and the same way in.
 >
@@ -195,10 +195,10 @@ Dustin's 54 slides were mostly generated in ChatGPT from his descriptions (Q-02)
 
 | Theme | Pages | Take | Avoid |
 |---|---|---|---|
-| Condensed heavy wordmark | p01, p07, p08, p13, p40, p41, banner mockup. The square poster departs, with a wide sans | A heavy grotesque against a calligraphic serif ampersand. The contrast between two kinds of letter is the hinge made visible | Condensed capitals in every headline (p17, p40), the off-palette condensed face named on p09 |
-| Serif red ampersand | p07 sections 05 to 07, p15 avatars, p41 badges | Circle and square containers in one size system | The ampersand in Verdigris, Stone or Prussian (p07); ring-of-words seals with "EST. 2026" (p03, p07, p41), which V5 rules out: "Seals imply an authority we do not claim." |
+| Condensed heavy wordmark | p01, p07, p08, p13, p40, p41, banner mockup. The square poster departs, with a wide sans | A heavy grotesque against a calligraphic serif ampersand. The contrast between two kinds of letter is the hinge made visible | Condensed capitals in every headline (p17, p40), the substitute condensed face named on p09 |
+| Serif red ampersand | p07 sections 05 to 07, p15 avatars, p41 badges | Circle and square containers in one size system | The ampersand in Verdigris, Stone or Prussian (p07); seals with a ring of words or "EST. 2026" (p03, p07, p41), which V5 rules out: "Seals imply an authority we do not claim." |
 | Hinge circle | p04, p07 section 10, p12, p41, both hinge mockups | The circle around the ampersand and the two pin dots where the line meets it | Double arrowheads, dashed arcs, labels under 13 px |
-| Pillar badges | p01, p04, p08, p40, p45 | Four filled circles in pillar order as a navigation row | The ampersand and O&A monogram reused as pillar icons; Prussian beside red in one row; the pillar names "Understand" and "Expose" (p01, p03, p17) |
+| Pillar badges | p01, p04, p08, p40, p45 | Four filled circles in pillar order as a navigation row | The ampersand and O&A monogram reused as pillar icons; Prussian beside red in one row; the pillar names "Understand," "Expose" and "Strengthen" (p01, p03, p17) |
 | Signal Grid as pattern | p15 patterns and watermarks, square poster | The node-and-link field at low density on covers, merchandise and openers | Lit red or Verdigris nodes inside a pattern; a pattern behind body text; a 5 by 5 lockmark |
 | Black-and-white documentary photography | p01, p05, p15, p17, p40 | People doing the work: signing, reading, testifying, counting. Natural light. Captions that name the act | Every one of these images is generated and can never stand in for a photograph; "VOTE" signs and flags as props (p05); legible protest signs (p01, p05); institutions without people (p03) |
 | Editorial social templates | p01, p02, p17, p40, p41 | Headline top left, wordmark bottom left, grid bottom right; numbered carousels (p41) | Invented numbers such as "12.4M" with no source (p01, p04, p17, p41); slogan triplets (p17, p40); all-red tiles (p40, p41); quotes credited to invented groups (p17) |
@@ -216,10 +216,10 @@ Scored on Master Brief V2 section 6, for the board and this document as one item
 |---|---|---|
 | Craft | 3 | The Act mocks and the loop diagram are working sketches in board CSS, at no true specimen ratio |
 | Clarity | 4 | Each section opens with its recommendation, and every term is defined at first use |
-| Brand fidelity | 4 | Locked lines are quoted exactly, the board uses red only for the ampersand and the ask buttons, and red never meets Prussian |
+| Brand fidelity | 4 | Locked lines are quoted exactly (checked by script). Red appears only in ampersands, the ask buttons and one labeled failure case |
 | Usefulness | 4 | Twenty numbered rules, naming patterns and a fairness kit a producer can apply. Tokens wait for Phase 2 |
 | Evidence honesty | 4 | Every invented item carries "Illustrative" beside it, Loop R9 keeps its hypothesis grade, and judgments are labeled |
-| Accessibility | 4 | Board results recorded in "What I checked." Screen readers and other browsers are untested |
+| Accessibility | 4 | axe-core 4.10.2 found no violations at 1440 or 390 px, text is 13 px or larger, and all 12 tab stops show focus. Screen readers and other browsers are untested |
 
 ## Required changes
 
@@ -247,7 +247,7 @@ Scored on Master Brief V2 section 6, for the board and this document as one item
 | 6 | "Democracy has a structure." | Lockmark explanation; brand line; none | Lockmark explanation. It restates V5's meaning of the grid |
 | 7 | Act pattern | Two kinds with the fairness kit; positions without the kit | Two kinds with the kit, label "Our position" (editor's option A) |
 | 8 | Nonpartisan rule set | Adopt NP-01 to NP-20; adopt with edits | Adopt |
-| 9 | Seals | V5 rule plus a wordless hinge-circle badge; ring-of-words seals | V5 rule plus the badge. Seals with words imply an authority we do not claim |
+| 9 | Seals | V5 rule plus a wordless hinge-circle badge; ring-of-words seals | V5 rule plus the badge. V5: "Seals imply an authority we do not claim." |
 | 10 | Signal Grid pattern | Allow at low density with no lit nodes; keep V5's "never wallpaper" | Allow, with limits. The references use it well on covers and merchandise |
 | 11 | Photography default | Black and white documentary; color | Black and white, with color where it carries evidence |
 | 12 | Wordmark width and ampersand | Decided on the identity board | Condensed and drawn, per `20261021_CD-Notes-For-Identity.md` |
@@ -260,14 +260,17 @@ Scored on Master Brief V2 section 6, for the board and this document as one item
 - Read Loops R9, B4 and R4a, the glossary, pathways, domains and the atlas title from `work/extract/atlas-v7-data.json`.
 - Confirmed "Historical tagline From spectators to stewards. Retired from current applications." in V4.2 chapter 18, and the lockmark sentence in V5 chapter 07.
 - Checked the weekdays of every date in the Act mocks with Python.
-- Board render checks are listed in the reply that accompanies this file and in the board's own footer.
+- Rendered the board in Chromium at 1440 and 390 px with `work/build/scripts/phase-1/cd_check_board.js` (report: `work/boards/phase-1/strategy/20261021_Board-Render-Report.json`, screenshots beside it). Results: no sideways page scroll at either width; only the products table scrolls, inside a labeled, focusable region; all 12 images load with alt text; smallest HTML text 13 px; smallest SVG text 16.7 px at 1440 and 13.5 px at 390; no red on a Prussian background; 12 tab stops, each with a visible outline; axe-core 4.10.2 with WCAG 2.2 AA and best-practice rules, 0 violations at both widths. axe could not compute contrast for SVG text and for table cells scrolled out of view, so I computed those pairs by formula: the lowest is white on Pillar Red, 4.17:1, used only at 19 px bold.
+- Checked by script that every locked line appears character for character in the board and this file, and that neither file has an em dash, an en dash or a listed filler or corporate word.
+- Inter Tight and Inter loaded from Google Fonts in the render. Lora Italic is linked and unused on the board.
 
 ## What I could not check
 
 - How either candidate line or the word "democracy" reads to real readers across the country.
 - Prior or trademark use of "From spectators to stewards." (needs web access).
 - The research ledger, which was not yet written when I finished.
+- Screen readers, Firefox, Safari, 320 px, 200 percent zoom, forced colors and print, for the board.
 
 ## Change log
 
-Created: this file; `work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md`; `work/boards/20261021_Strategy-And-Direction-Board.html`; `work/boards/phase-1/strategy/` (board template and reference review copies); `work/build/scripts/phase-1/cd_wordmark_proportions.py`, `cd_reference_thumbs.py`, `cd_build_strategy_board.py` and `cd_check_board.js`. Modified: none.
+Created: this file; `work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md`; `work/boards/20261021_Strategy-And-Direction-Board.html`; in `work/boards/phase-1/strategy/`: `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, `20261021_Strategy-Board-Render-1440.jpg`, `20261021_Strategy-Board-Render-390.jpg` and 17 review copies in `refs/`; in `work/build/scripts/phase-1/`: `cd_wordmark_proportions.py`, `cd_reference_thumbs.py`, `cd_build_strategy_board.py` and `cd_check_board.js`. Modified: none. Nothing in `source/` or `work/extract/` changed.

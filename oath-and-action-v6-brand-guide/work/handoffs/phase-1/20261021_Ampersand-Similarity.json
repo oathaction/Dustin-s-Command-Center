@@ -1,0 +1,25 @@
+{
+ "method": "Similarity of the drawn ampersand (option B) against the V5 glyph (Lora Bold) and the serif\nampersands installed on this machine. Each glyph is scaled to the same ink height, centred on its\nink box, rasterised by Chromium at 200 px, and compared by silhouette overlap (intersection over\nunion). 1.0 means identical silhouettes.\n\nRun: python3 -I p1_similarity.py",
+ "results": {
+  "V5 master (Lora Bold)": {
+   "IoU with option B": 0.778,
+   "IoU with option A": 0.921
+  },
+  "Caladea Bold": {
+   "IoU with option B": 0.471,
+   "IoU with option A": 0.479
+  },
+  "Liberation Serif Bold": {
+   "IoU with option B": 0.562,
+   "IoU with option A": 0.604
+  },
+  "FreeSerif Bold": {
+   "IoU with option B": 0.602,
+   "IoU with option A": 0.576
+  },
+  "DejaVu Serif Bold": {
+   "IoU with option B": 0.522,
+   "IoU with option A": 0.509
+  }
+ }
+}

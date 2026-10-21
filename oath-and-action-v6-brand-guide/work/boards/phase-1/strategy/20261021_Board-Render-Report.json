@@ -1,0 +1,290 @@
+{
+  "board": "work/boards/20261021_Strategy-And-Direction-Board.html",
+  "runs": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "pageOverflowPx": 0,
+      "beyondViewport": [],
+      "innerOverflow": [],
+      "minHtmlFontPx": 13,
+      "htmlUnder13": [],
+      "minSvgTextPx": 16.7,
+      "svgUnder13": [],
+      "images": [
+        {
+          "src": "phase-1/strategy/refs/20261021_V5-Hinge-Diagram.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Mockup-Hinge-Newsprint.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-24.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-07.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-41.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-04.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-08.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Mockup-Square-Poster.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-05.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-17.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-14.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-25.jpg",
+          "ok": true,
+          "alt": true
+        }
+      ],
+      "brokenImages": [],
+      "redOnPrussian": [],
+      "fonts": {
+        "interTight800": true,
+        "interTight600": true,
+        "inter400": true,
+        "inter700": true,
+        "loraItalic": false
+      },
+      "fontFacesLoaded": [
+        "Inter 400 normal",
+        "Inter 600 normal",
+        "Inter 700 normal",
+        "Inter Tight 600 normal",
+        "Inter Tight 800 normal"
+      ],
+      "words": 2917,
+      "pageHeight": 10999,
+      "keyboardStops": 12,
+      "keyboardWithoutOutline": [],
+      "axe": {
+        "version": "4.10.2",
+        "violations": [],
+        "passes": 46,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 7
+          }
+        ]
+      },
+      "screenshot": "work/boards/phase-1/strategy/20261021_Strategy-Board-Render-1440.jpg"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "pageOverflowPx": 0,
+      "beyondViewport": [],
+      "innerOverflow": [
+        {
+          "tag": "th",
+          "text": "Locked line, exact",
+          "sw": 146,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Commitment",
+          "sw": 100,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Action",
+          "sw": 54,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Locked line, exact",
+          "sw": 146,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Role",
+          "sw": 36,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Where",
+          "sw": 50,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Criterion",
+          "sw": 75,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Score",
+          "sw": 47,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Reason, and the instruction when under 4",
+          "sw": 339,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Decision",
+          "sw": 67,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Options",
+          "sw": 63,
+          "cw": 1
+        },
+        {
+          "tag": "th",
+          "text": "Studio recommendation",
+          "sw": 191,
+          "cw": 1
+        }
+      ],
+      "minHtmlFontPx": 13,
+      "htmlUnder13": [],
+      "minSvgTextPx": 13.5,
+      "svgUnder13": [],
+      "images": [
+        {
+          "src": "phase-1/strategy/refs/20261021_V5-Hinge-Diagram.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Mockup-Hinge-Newsprint.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-24.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-07.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-41.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-04.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-08.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Mockup-Square-Poster.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-05.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-17.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-14.jpg",
+          "ok": true,
+          "alt": true
+        },
+        {
+          "src": "phase-1/strategy/refs/20261021_Ref-Page-25.jpg",
+          "ok": true,
+          "alt": true
+        }
+      ],
+      "brokenImages": [],
+      "redOnPrussian": [],
+      "fonts": {
+        "interTight800": true,
+        "interTight600": true,
+        "inter400": true,
+        "inter700": true,
+        "loraItalic": false
+      },
+      "fontFacesLoaded": [
+        "Inter 400 normal",
+        "Inter 600 normal",
+        "Inter 700 normal",
+        "Inter Tight 600 normal",
+        "Inter Tight 800 normal"
+      ],
+      "words": 2917,
+      "pageHeight": 24247,
+      "keyboardStops": 12,
+      "keyboardWithoutOutline": [],
+      "axe": {
+        "version": "4.10.2",
+        "violations": [],
+        "passes": 47,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 27
+          }
+        ]
+      },
+      "screenshot": "work/boards/phase-1/strategy/20261021_Strategy-Board-Render-390.jpg"
+    }
+  ]
+}

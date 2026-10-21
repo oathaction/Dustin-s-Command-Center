@@ -1,0 +1,758 @@
+{
+ "board": "work/boards/20261021_Systems-Marks-Board.html",
+ "run": "2026-10-21T03:36:53.108Z",
+ "widths": {
+  "390": {
+   "texts": 2741,
+   "minSize": 12,
+   "under13": [
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Defect fix",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Defect fix",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Revise",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Add as a fifth base",
+     "size": 12,
+     "tag": "SPAN"
+    }
+   ],
+   "lowContrast": [],
+   "chips": {
+    "s-newsprint": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 50
+    },
+    "none": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 262
+    },
+    "s-white": {
+     "kind": 18.73,
+     "code": 18.73,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-charcoal": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-prussian": {
+     "kind": 9.42,
+     "code": 9.42,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-newsprint-gray": {
+     "kind": 13.27,
+     "code": 13.27,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-white-gray": {
+     "kind": 18.73,
+     "code": 18.73,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-charcoal-gray": {
+     "kind": 13.27,
+     "code": 13.27,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-prussian-gray": {
+     "kind": 9.76,
+     "code": 9.76,
+     "minSize": 13,
+     "count": 18
+    }
+   },
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 64400,
+   "fontsLoaded": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-1/systems/20261021_V5-Hinge-Master-Copy.svg",
+     "ok": true
+    },
+    {
+     "src": "../../source/brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-03-Field-Manual.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-10-Who-Can-Act.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-11-Register.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-04-Broadsheet.jpg",
+     "ok": false
+    }
+   ],
+   "screens": [
+    "work/boards/screens/phase-1-systems/board-390-00.png",
+    "work/boards/screens/phase-1-systems/board-390-01.png",
+    "work/boards/screens/phase-1-systems/board-390-02.png",
+    "work/boards/screens/phase-1-systems/board-390-03.png",
+    "work/boards/screens/phase-1-systems/board-390-04.png",
+    "work/boards/screens/phase-1-systems/board-390-05.png",
+    "work/boards/screens/phase-1-systems/board-390-06.png",
+    "work/boards/screens/phase-1-systems/board-390-07.png",
+    "work/boards/screens/phase-1-systems/board-390-08.png",
+    "work/boards/screens/phase-1-systems/board-390-09.png",
+    "work/boards/screens/phase-1-systems/board-390-10.png",
+    "work/boards/screens/phase-1-systems/board-390-11.png",
+    "work/boards/screens/phase-1-systems/board-390-12.png",
+    "work/boards/screens/phase-1-systems/board-390-13.png",
+    "work/boards/screens/phase-1-systems/board-390-14.png",
+    "work/boards/screens/phase-1-systems/board-390-15.png",
+    "work/boards/screens/phase-1-systems/board-390-16.png",
+    "work/boards/screens/phase-1-systems/board-390-17.png",
+    "work/boards/screens/phase-1-systems/board-390-18.png",
+    "work/boards/screens/phase-1-systems/board-390-19.png",
+    "work/boards/screens/phase-1-systems/board-390-20.png",
+    "work/boards/screens/phase-1-systems/board-390-21.png"
+   ],
+   "axe": {
+    "violations": [
+     {
+      "id": "scrollable-region-focusable",
+      "impact": "serious",
+      "nodes": 11,
+      "sample": [
+       "#m1 > .wrap:nth-child(11)",
+       ".wrap:nth-child(12)",
+       "#m2 > .wrap:nth-child(8)"
+      ]
+     }
+    ],
+    "passes": 27
+   }
+  },
+  "1440": {
+   "texts": 2774,
+   "minSize": 12,
+   "under13": [
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Defect fix",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Defect fix",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Misuse",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Original",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Option",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Recommended",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Revise",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Confirm with changes",
+     "size": 12,
+     "tag": "SPAN"
+    },
+    {
+     "text": "Add as a fifth base",
+     "size": 12,
+     "tag": "SPAN"
+    }
+   ],
+   "lowContrast": [],
+   "chips": {
+    "s-newsprint": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 50
+    },
+    "none": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 262
+    },
+    "s-white": {
+     "kind": 18.73,
+     "code": 18.73,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-charcoal": {
+     "kind": 13.29,
+     "code": 13.29,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-prussian": {
+     "kind": 9.42,
+     "code": 9.42,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-newsprint-gray": {
+     "kind": 13.27,
+     "code": 13.27,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-white-gray": {
+     "kind": 18.73,
+     "code": 18.73,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-charcoal-gray": {
+     "kind": 13.27,
+     "code": 13.27,
+     "minSize": 13,
+     "count": 18
+    },
+    "s-prussian-gray": {
+     "kind": 9.76,
+     "code": 9.76,
+     "minSize": 13,
+     "count": 18
+    }
+   },
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 33308,
+   "fontsLoaded": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-1/systems/20261021_V5-Hinge-Master-Copy.svg",
+     "ok": true
+    },
+    {
+     "src": "../../source/brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-03-Field-Manual.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-10-Who-Can-Act.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-11-Register.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
+     "ok": false
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-04-Broadsheet.jpg",
+     "ok": false
+    }
+   ],
+   "screens": [
+    "work/boards/screens/phase-1-systems/board-1440-00.png",
+    "work/boards/screens/phase-1-systems/board-1440-01.png",
+    "work/boards/screens/phase-1-systems/board-1440-02.png",
+    "work/boards/screens/phase-1-systems/board-1440-03.png",
+    "work/boards/screens/phase-1-systems/board-1440-04.png",
+    "work/boards/screens/phase-1-systems/board-1440-05.png",
+    "work/boards/screens/phase-1-systems/board-1440-06.png",
+    "work/boards/screens/phase-1-systems/board-1440-07.png",
+    "work/boards/screens/phase-1-systems/board-1440-08.png",
+    "work/boards/screens/phase-1-systems/board-1440-09.png",
+    "work/boards/screens/phase-1-systems/board-1440-10.png",
+    "work/boards/screens/phase-1-systems/board-1440-11.png"
+   ],
+   "grayScreens": [
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-00.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-01.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-02.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-03.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-04.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-05.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-06.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-07.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-08.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-09.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-10.png",
+    "work/boards/screens/phase-1-systems/board-grayscale-1440-11.png"
+   ],
+   "axe": {
+    "violations": [],
+    "passes": 27
+   }
+  }
+ },
+ "summary": [
+  "Rendered in Chromium (Playwright) at 1440 px and 390 px, 2026-10-21. Fonts loaded: 5 faces from Google Fonts.",
+  "Horizontal page scroll: 1440 px scrollWidth 1440 of 1440; 390 px scrollWidth 390 of 390. Wide tables scroll inside their own frames.",
+  "Smallest rendered text: 12 px at 1440, 12 px at 390; text elements under 13 px: 45 and 45.",
+  "Text contrast below the WCAG AA threshold, computed from rendered colours (grayscale strips converted): 0 at 1440, 0 at 390.",
+  "Typed chips: 438 chip cells measured at 1440; lowest rendered contrast 9.42:1; smallest chip text 13 px.",
+  "axe-core 4.10 (WCAG 2.2 AA tags): 0 violating nodes at 1440, 11 at 390.",
+  "Images loaded: 2 of 8.",
+  "Grayscale: the board carries a grayscale strip for every option, and a full-page grayscale capture at 1440 px was saved for review."
+ ],
+ "not_checked": [
+  "Screen readers, keyboard order through the board, Firefox and Safari, print, forced colours and 200 percent zoom.",
+  "Pixel-level contrast of SVG strokes and marks (contrast was computed for text and from the locked hex values for marks).",
+  "Whether readers decode the marks as intended; that needs testing with people."
+ ]
+}

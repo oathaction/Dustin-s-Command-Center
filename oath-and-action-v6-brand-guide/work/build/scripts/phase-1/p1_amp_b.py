@@ -36,95 +36,139 @@ K = 100 / CAP  # to wordmark units
 
 # Pen path: (x, y, direction of travel in degrees, width multiplier[, tension])
 PEN = [
-    (556, 372, -96, 0.90),        # arm, just below the terminal cut
-    (548, 262, -104, 0.86),       # arm, down to the crossing
-    (488, 142, -138, 0.80),       # crossing with the diagonal (thinned)
-    (392, 52, -164, 0.92),        # bowl, bottom right
-    (268, 30, 180, 1.00),         # bowl, bottom
-    (96, 182, 90, 1.00),          # bowl, left side
-    (168, 318, 38, 0.96),         # bowl, top left, turning into the waist
-    (262, 392, 42, 0.86),         # waist, going up
-    (418, 560, 92, 0.86),         # loop, right side
-    (300, 660, 180, 0.94),        # loop, top
-    (178, 566, -88, 0.84),        # loop, left side
-    (262, 392, -48, 0.90),        # waist, going down
-    (400, 248, -46, 1.00),        # diagonal
-    (488, 142, -46, 0.84),        # crossing (thinned)
-    (568, 62, -26, 0.94),         # tail, turning flat
-    (680, 36, 0, 0.90),           # tail end, before the cut
+    (566, 384, -92, 0.66),        # arm, just below the terminal cut (a hairline, as in the serif ampersand)
+    (556, 268, -104, 0.66),       # arm, down to the crossing
+    (498, 152, -134, 0.70),       # crossing with the diagonal (thinned: ink trap)
+    (404, 62, -160, 0.80),        # bowl, bottom right
+    (282, 36, 180, 1.00),         # bowl, bottom
+    (94, 190, 90, 0.97),          # bowl, left side
+    (180, 322, 30, 0.92),         # bowl, top left, turning into the waist
+    (272, 382, 34, 0.74),         # waist, going up (thinned so the waist stays short)
+    (404, 556, 90, 0.80),         # loop, right side
+    (292, 662, 180, 0.95),        # loop, top
+    (172, 566, -94, 0.80),        # loop, left side
+    (272, 382, -56, 0.76),        # waist, going down
+    (412, 250, -46, 0.95),        # diagonal
+    (498, 152, -44, 0.90),        # crossing (thinned: ink trap)
+    (582, 66, -22, 0.90),         # tail, turning flat
+    (684, 44, 4, 0.96),           # tail end, before the cut: a slight upward flick
 ]
-NIB, THIN, THICK, POWER = 20.0, 94.0, 160.0, 1.4
+NIB, THIN, THICK, POWER = 20.0, 86.0, 140.0, 1.4
 ARM_CUT_Y = 392.0       # flat cut at the top of the arm
 TAIL_CUT_X = 672.0      # vertical cut at the end of the tail
 OVERSHOOT = 10.0        # rounds overshoot the cap line and baseline by 10 units (1.43 percent)
 
 
-def serif():
-    """A short bracketed serif on the arm's flat cut: a slab with curved brackets into the arm."""
-    t = 64.0                       # slab thickness, a hairline
-    x0, x1 = 470.0, 628.0          # reaches 92 left and 58 right of the arm's centre
-    slab = box(x0, ARM_CUT_Y - t, x1, ARM_CUT_Y)
-    # brackets: quarter-round fillets under the slab on both sides of the arm
-    br = []
-    for side, cx in ((-1, 0), (1, 0)):
-        pass
-    return slab
-
-
-def glyph(debug=False):
-    s = st.Stroke(PEN, nib_angle=NIB, thin=THIN, thick=THICK, power=POWER, samples=160)
+def guide():
+    """The stroke-model construction guide (a single pen path), as a shapely polygon."""
+    s = st.Stroke(PEN, nib_angle=NIB, thin=THIN, thick=THICK, power=POWER, samples=240)
     g = s.polygon(ext0=60, ext1=40)
-    # terminal planes
     g = g.difference(box(490, ARM_CUT_Y, 760, ARM_CUT_Y + 120))  # arm: flat cut, kept clear of the loop
     g = g.difference(box(TAIL_CUT_X, -200, 900, 200))     # tail: vertical cut
     g = g.difference(box(520, -400, 900, 0))               # tail foot sits on the baseline
     g = unary_union([g, serif_shape()])
-    g = st.clean(g, 0.8)
-    return g, s
+    return st.clean(g, 4.0), s
+
+
+# The drawn master: three contours drawn over the guide, font units, y up, cap 700, baseline 0.
+# Nodes sit on extrema with level handles, corners are deliberate (waist, notch, V, terminals).
+B_OUTER = (
+    "M306 710"
+    "C205 710 117 642 117 555"            # loop, top to left side
+    "C117 490 152 440 195 395"            # loop, left side down to the waist
+    "C128 352 28 290 28 182"              # bowl, upper left to left side
+    "C28 64 128 -12 258 -12"              # bowl, left side to bottom
+    "C352 -12 430 20 482 72"              # bowl, bottom to the V under the crossing
+    "C514 34 552 0 604 0"                 # tail, underside
+    "L668 0L668 82"                       # tail, foot on the baseline and vertical cut
+    "C626 84 588 112 566 178"             # tail, top edge into the arm
+    "C578 222 606 268 606 330"            # arm, outer edge
+    "L606 392L470 392L470 330"            # flat cut and the beak serif
+    "L506 330C514 330 518 318 518 300"    # beak underside, bracket into the arm
+    "C518 274 512 254 503 240"            # arm, inner edge, to the notch floor
+    "L345 382"                            # diagonal, upper edge, to the loop
+    "C404 424 458 486 458 560"            # loop, right side
+    "C458 648 392 710 306 710Z"           # loop, right side to top
+)
+B_UPPER = "M276 620C246 620 224 596 224 566C224 520 262 468 296 426C330 470 352 506 352 542C352 590 318 620 276 620Z"
+B_LOWER = "M245 318L428 122C398 98 356 86 302 86C216 86 157 132 157 202C157 254 194 292 245 318Z"
+
+
+def glyph():
+    p = o.path_from_d(B_OUTER)
+    p = o.diff(p, o.path_from_d(B_UPPER))
+    p = o.diff(p, o.path_from_d(B_LOWER))
+    return o.simplify(p)
 
 
 def serif_shape():
-    t = 66.0
-    x0, x1 = 474.0, 630.0
-    slab = box(x0, ARM_CUT_Y - t, x1, ARM_CUT_Y)
-    # bracket fillets: the area under the slab between the arm and a quarter circle
-    import shapely.geometry as sg
-    fill = []
-    r = 30.0
-    for (cx, sign) in ((508.0 - r, -1), (604.0 + r, 1)):
-        # quarter circle centred below the slab, tangent to the slab underside and the arm side
-        cy = ARM_CUT_Y - t - r
-        sq = box(min(cx, cx - sign * r), cy, max(cx, cx - sign * r), cy + r)
-        circ = sg.Point(cx, cy).buffer(r, resolution=32)
-        fill.append(sq.difference(circ))
-    return unary_union([slab] + fill)
+    """The arm's terminal: a flat cut and a short slab that reaches left, toward the loop, as a beak."""
+    t = 64.0
+    return box(470.0, ARM_CUT_Y - t, 604.0, ARM_CUT_Y)
 
 
 def fit(g):
     def to_wm(p):
         return (p[0] * K, (CAP - p[1]) * K)
-    return st.geom_to_d(g, err=0.7, nd=2, transform=to_wm, step=2.0)
+    return st.geom_to_d(g, err=1.2, nd=2, transform=to_wm, step=3.0, corner_deg=34.0)
+
+
+# The 16 px master of option B, drawn on the pixel grid over glyph() scaled to 16 px
+# (1 unit = 1 px, y down, 14 x 16 px). Hairlines 2 px, bowl stem 3 px, diagonal 2.6 px square
+# to its direction, upper counter 3 px wide, the notch 1.6 px wide under the beak.
+B16_OUTER = ("M4.6 0H7.4C9 0 10 1.3 10 3V4C10 5.4 8.9 6.5 7 7.2"         # loop top, right side, into the notch corner
+             "L10.6 10.6C10.8 10.4 11 10 11 9.5V9H10V7H13V9.6"             # diagonal to the notch floor, arm, beak, flat cut
+             "C13 10.5 12.4 11.2 12 11.8C12.6 13.2 13.2 13.9 14 14V16H12.8"  # arm outer edge, tail top, vertical cut, foot
+             "C11.6 16 10.7 15.2 10 14.4C9 15.5 7.6 16 5.6 16H4.4"          # tail underside, the V, bowl bottom
+             "C1.8 16 0 14.4 0 12.2V11.4C0 9.4 1.5 8 3.5 7"                  # bowl left side up to the waist
+             "C2.6 6.2 2 5 2 3.6V3C2 1.2 3.1 0 4.6 0Z")                      # loop left side
+B16_UPPER = "M5.5 2C4.6 2 4 2.6 4 3.5V4C4 4.9 4.9 5.8 5.9 6.6C6.6 5.8 7 5 7 4V3.4C7 2.6 6.4 2 5.5 2Z"
+B16_LOWER = "M4.8 8.7L8.9 13C8.4 13.7 7.4 14 6.4 14H4.6C3.6 14 3 13.2 3 12.2V10.8C3 9.8 3.7 9.1 4.8 8.7Z"
+
+
+def b16():
+    p = o.path_from_d(B16_OUTER)
+    p = o.diff(p, o.path_from_d(B16_UPPER))
+    p = o.diff(p, o.path_from_d(B16_LOWER))
+    return o.simplify(p)
+
+
+def narrow(p_font, s=0.85):
+    """Option B narrowed for a condensed wordmark: scale x by s, then give the vertical strokes
+    back the weight the scale took (a horizontal-only embolden of 140 x (1 - s) / 2)."""
+    import p1_amp_a as A
+    q = o.tx(p_font, a=s)
+    return o.simplify(A.ell_embolden(q, 140 * (1 - s) / 2, 2.0))
+
+
+def to_symbol(p_font, x_shift=0.0):
+    """Font units (y up, cap 700) to wordmark units (y down, cap line at 0, baseline at 100)."""
+    return o.tx(p_font, a=K, d=-K, e=-x_shift * K, f=CAP * K)
 
 
 def export():
     DIR.mkdir(parents=True, exist_ok=True)
-    g, s = glyph()
-    d = fit(g)
-    p = o.simplify(o.path_from_d(d))
-    b = o.bounds(p)
-    # origin at the ink's left edge, cap line at y = 0 kept as the reference
-    q = o.tx(p, e=-b[0])
+    g = glyph()
+    b = o.bounds(g)
+    q = to_symbol(g, b[0])
     qb = o.bounds(q)
     vb = [0, round(qb[1], 2), round(qb[2], 2), round(qb[3] - qb[1], 2)]
     o.write_svg(DIR / "20261021_Amp-B-Drawn-Master.svg", vb,
                 f'<path id="amp-b" fill="currentColor" d="{o.d_from_path(q)}"/>', "Ampersand option B, drawn master (proposal, Phase 1)")
-    info = {"viewBox": vb, "nodes": st.count_nodes(o.d_from_path(q)), "ink_box": [round(v, 2) for v in qb],
-            "overshoot_top_units": round(-qb[1], 2), "below_baseline_units": round(qb[3] - 100, 2),
-            "pen": PEN, "nib": NIB, "thin": THIN, "thick": THICK}
-    # construction drawing: centreline over outline, for the board
-    cl = s.centreline_svg()
-    (DIR / "construction.json").write_text(json.dumps({"centreline_font_units_y_up": cl, "offset_x_units": round(b[0], 2)}))
-    return info
+    q16 = b16()
+    o.write_svg(DIR / "20261021_Amp-B-Small-Master-16px.svg", [0, 0, 14, 16],
+                f'<path id="amp-b-16" fill="currentColor" d="{o.d_from_path(q16, 2)}"/>', "Ampersand option B, 16 px master on the pixel grid (proposal, Phase 1)")
+    gn = narrow(g)
+    bn = o.bounds(gn)
+    qn = to_symbol(gn, bn[0])
+    qnb = o.bounds(qn)
+    o.write_svg(DIR / "20261021_Amp-B-Narrow-For-Condensed.svg", [0, round(qnb[1], 2), round(qnb[2], 2), round(qnb[3] - qnb[1], 2)],
+                f'<path id="amp-b-narrow" fill="currentColor" d="{o.d_from_path(qn)}"/>', "Ampersand option B, narrowed to 0.85 for the condensed wordmark (proposal, Phase 1)")
+    gd, s = guide()
+    gd_d = st.geom_to_d(gd, err=1.2, nd=2, transform=lambda p: ((p[0] - b[0]) * K, (CAP - p[1]) * K), step=3.0, corner_deg=34.0)
+    (DIR / "construction.json").write_text(json.dumps({"guide_d": gd_d, "centreline_font_units_y_up": s.centreline_svg(), "offset_x_units": round(b[0], 2)}))
+    return {"viewBox": vb, "ink_box": [round(v, 2) for v in qb], "nodes": st.count_nodes(o.d_from_path(q)),
+            "overshoot_top_units": round(-qb[1], 2), "below_baseline_units": round(qb[3] - 100, 2)}
 
 
 if __name__ == "__main__":

@@ -50,6 +50,7 @@ def ell_embolden(p, dx, dy, outward_only=False, join=pathops.LineJoin.MITER_JOIN
     s = pathops.Path()
     q.draw(s.getPen())
     s.stroke(2 * dy, pathops.LineCap.BUTT_CAP, join, 3)
+    s.convertConicsToQuads()
     g = o.union(q, s)
     return o.tx(g, a=1 / k)
 

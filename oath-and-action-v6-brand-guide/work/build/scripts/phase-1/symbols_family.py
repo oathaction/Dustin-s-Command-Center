@@ -79,7 +79,7 @@ def explain_24(direction, treatment):
                      _ln([("M", 15, 3), ("L", 21, 3), ("L", 21, 9), ("L", 15, 9), ("Z",)], 2))
         return _layers(body, 12, 12, 3, 4)
     if direction == "B" and treatment == "filled":
-        sq = minus(rrect(2, 6, 16, 16, 2), rect(10, 5, 9, 9))
+        sq = union(rrect(2, 6, 8, 16, 2), rrect(2, 14, 16, 8, 2))
         body = union(sq, rrect(14, 2, 8, 8, 2))
         return _layers(body, 12, 12, 3, 4)
     raise ValueError
@@ -96,11 +96,7 @@ def track_24(direction, treatment):
         body = _ln([("M", 3, 17), ("L", 8, 17), ("L", 8, 12), ("L", 16, 12), ("L", 16, 7), ("L", 21, 7)], 2)
         return _layers(body, 12, 12, 3, 4)
     if direction == "B" and treatment == "filled":
-        st = union(rrect(2, 17, 8, 5, 2), rect(4, 17, 6, 5), rrect(8, 12, 10, 10, 2), rect(8, 14, 10, 8), rrect(16, 7, 6, 15, 2), rect(16, 19, 6, 3))
-        st = union(st, rect(2, 20, 20, 2))
-        st = minus(st, rect(0, 22, 24, 2))
-        st = union(minus(st, rect(0, 20, 24, 4)), rrect(2, 14, 20, 8, 2))
-        st = union(st, rect(8, 12, 2, 4), rect(16, 7, 2, 9))
+        st = union(rrect(2, 17, 20, 5, 2), rrect(7, 12, 15, 10, 2), rrect(17, 7, 5, 15, 2))
         return _layers(st, 12, 12, 3, 4)
     raise ValueError
 
@@ -110,10 +106,8 @@ def connect_24(direction, treatment):
         body = minus(circle(12, 12, 10), rect(11, 0, 2, 24))
         return _layers(body, 12, 12, 2, 3)
     if direction == "A" and treatment == "line":
-        left = _ln([("M", 10, 3), ("A", 12, 12, 9, 270, 90), ("Z",)], 2, "square", "miter")
-        right = _ln([("M", 14, 21), ("A", 12, 12, 9, 90, -90), ("Z",)], 2, "square", "miter")
-        left = _ln([("M", 10, 3.25), ("A", 12, 12, 9, -103, -257), ("L", 10, 20.75), ("Z",)], 2, "square", "miter")
-        right = _ln([("M", 14, 20.75), ("A", 12, 12, 9, 77, -77), ("L", 14, 3.25), ("Z",)], 2, "square", "miter")
+        left = _ln([("A", 12, 12, 9, 97, 263)], 2, "butt", "miter")
+        right = _ln([("A", 12, 12, 9, -83, 83)], 2, "butt", "miter")
         return _layers(union(left, right), 12, 12, 2, 3)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 12, 12, 9, 112, 248)], 2), _ln([("A", 12, 12, 9, -68, 68)], 2))
@@ -179,8 +173,8 @@ def explain_16(direction, treatment):
                      _ln([("M", 10, 2), ("L", 14, 2), ("L", 14, 6), ("L", 10, 6), ("Z",)], 2))
         return _layers(body, 8, 8, 2, 2)
     if direction == "B" and treatment == "filled":
-        body = union(minus(rrect(1, 4, 11, 11, 1.5), rect(6, 3, 7, 7)), rrect(9, 1, 6, 6, 1.5))
-        return _layers(body, 7.5, 7.5, 2, 3)
+        body = union(rrect(1, 4, 5, 10, 1.5), rrect(1, 9, 10, 5, 1.5), rrect(9, 1, 5, 5, 1.5))
+        return _layers(body, 7.5, 7.5, 1.5, 2.5)
     raise ValueError
 
 
@@ -195,9 +189,8 @@ def track_16(direction, treatment):
         body = _ln([("M", 2, 12), ("L", 5, 12), ("L", 5, 8), ("L", 11, 8), ("L", 11, 4), ("L", 14, 4)], 2)
         return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "filled":
-        st = union(rrect(1, 11, 6, 4, 1.5), rrect(5, 7, 7, 8, 1.5), rrect(10, 3, 5, 12, 1.5), rect(3, 13, 10, 2))
-        st = union(st, rect(5, 11, 2, 2), rect(10, 7, 2, 3))
-        return _layers(st, 8, 8, 2, 3)
+        st = union(rrect(1, 11, 14, 4, 1.5), rrect(5, 7, 10, 8, 1.5), rrect(11, 3, 4, 12, 1.5))
+        return _layers(st, 7.5, 7.5, 1.5, 2.5)
     raise ValueError
 
 
@@ -206,9 +199,9 @@ def connect_16(direction, treatment):
         body = minus(circle(7.5, 7.5, 7), rect(7, 0, 1, 16))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
     if direction == "A" and treatment == "line":
-        left = _ln([("M", 6, 2.1), ("A", 7.5, 7.5, 5.6, -105.5, -254.5), ("L", 6, 12.9), ("Z",)], 2, "square", "miter")
-        right = _ln([("M", 9, 12.9), ("A", 7.5, 7.5, 5.6, 74.5, -74.5), ("L", 9, 2.1), ("Z",)], 2, "square", "miter")
-        return _layers(union(left, right), 7.5, 7.5, 1.5, 2.5)
+        left = _ln([("A", 8, 8, 6, 100, 260)], 2, "butt", "miter")
+        right = _ln([("A", 8, 8, 6, -80, 80)], 2, "butt", "miter")
+        return _layers(union(left, right), 8, 8, 1.5, 1.5)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 8, 8, 6, 118, 242)], 2), _ln([("A", 8, 8, 6, -62, 62)], 2))
         return _layers(body, 8, 8, 2, 3)
@@ -225,12 +218,12 @@ def act_16(direction, treatment):
         return _layers(union(leaf, frame), 5, 8, 1, 2)
     if direction == "A" and treatment == "line":
         f = _ln([("M", 10, 2), ("L", 13, 2), ("L", 13, 15)], 2, "square", "miter")
-        lf = _ln([("M", 3, 2.5), ("L", 7, 4), ("L", 7, 14), ("L", 3, 14), ("Z",)], 2, "square", "miter")
-        return _layers(union(f, lf), 5, 8.5, 0.01, 0.01)
+        lf = _ln([("M", 2, 2.5), ("L", 8, 4.5), ("L", 8, 14), ("L", 2, 14), ("Z",)], 2, "square", "miter")
+        return {"body": union(f, lf), "seat": empty(), "node": rect(4, 8, 2, 2)}
     if direction == "B" and treatment == "line":
         f = _ln([("M", 10, 2), ("L", 13, 2), ("L", 13, 14)], 2)
-        lf = _ln([("M", 3, 2.5), ("L", 7, 4), ("L", 7, 14), ("L", 3, 14), ("Z",)], 2)
-        return _layers(union(f, lf), 5, 8.5, 0.01, 0.01)
+        lf = _ln([("M", 2, 2.5), ("L", 8, 4.5), ("L", 8, 14), ("L", 2, 14), ("Z",)], 2)
+        return {"body": union(f, lf), "seat": empty(), "node": circle(5, 9, 1.25)}
     if direction == "B" and treatment == "filled":
         leaf = _round_poly([(2, 1), (8, 3), (8, 15), (2, 15)], 1)
         frame = union(rrect(9, 1, 5, 2, 1), rrect(12, 1, 2, 14, 1), rect(11, 1, 2, 2))
@@ -272,3 +265,61 @@ def tile(pillar, direction, size):
         off = size / 6
         lay = {k: transform(v, s, off, off) for k, v in DRAW_24[pillar](direction, inner).items()}
     return {"plate": plate, **lay}
+
+
+# ------------------------------------------------------------------ topic grammar proof (Direction A)
+# Same rules as the A pillars: filled primitives, square corners, one hinge node as a
+# dot in a clear seat. The node takes a real job in each subject: the filled oval on a
+# ballot, the seal on a bill, the seal on an envelope, the face of a coin.
+
+TOPICS = ["ballot", "bill", "contact-an-official", "campaign-money"]
+TOPIC_LABELS = {"ballot": "Ballot", "bill": "Bill", "contact-an-official": "Contact an official", "campaign-money": "Campaign money"}
+
+
+def topic_24(name):
+    if name == "ballot":
+        box = minus(rect(3, 13, 18, 9), rect(6, 13, 12, 2))
+        return _layers(union(box, rect(8, 2, 8, 12)), 12, 7, 2, 3)
+    if name == "bill":
+        sh = poly((4, 2), (15, 2), (20, 7), (20, 22), (4, 22))
+        sh = minus(sh, poly((14, 1), (14, 8), (21, 8), (21, 1)))
+        sh = union(sh, poly((16, 2), (16, 6), (20, 6)))
+        sh = minus(sh, rect(8, 9, 8, 2), rect(8, 13, 5, 2))
+        return _layers(sh, 12, 18, 2, 3)
+    if name == "contact-an-official":
+        env = minus(rect(2, 5, 20, 14), stroke_path([("M", 1, 4.4), ("L", 12, 12.6), ("L", 23, 4.4)], 2, "butt", "miter"))
+        return _layers(env, 12, 12.5, 2, 3.2)
+    if name == "campaign-money":
+        stack = minus(union(rrect(2, 17, 15, 5, 2.5), rrect(4, 11, 12, 5, 2.5)), circle(16, 9, 7.5))
+        coin = circle(16, 9, 6.5)
+        lay = _layers(coin, 16, 9, 2, 3)
+        lay["body"] = union(lay["body"], stack)
+        return lay
+    raise ValueError
+
+
+def topic_16(name):
+    if name == "ballot":
+        box = minus(rect(2, 10, 13, 5), rect(4, 10, 9, 1))
+        return _layers(union(box, rect(5, 1, 7, 10)), 8.5, 4.5, 1.5, 2.5)
+    if name == "bill":
+        sh = minus(rect(3, 1, 11, 14), rect(10, 0, 5, 5))
+        sh = union(sh, poly((11, 1), (11, 4), (14, 4)))
+        sh = minus(sh, rect(5, 6, 6, 2))
+        return _layers(sh, 8.5, 11.5, 1.5, 2.5)
+    if name == "contact-an-official":
+        env = minus(rect(1, 3, 13, 10), stroke_path([("M", 0.6, 2.6), ("L", 7.5, 8.4), ("L", 14.4, 2.6)], 1.6, "butt", "miter"))
+        return _layers(env, 7.5, 9.5, 1.5, 2.5)
+    if name == "campaign-money":
+        stack = minus(union(rrect(1, 11, 11, 4, 2), rrect(2, 7, 8, 3, 1.5)), circle(10.5, 5.5, 5.5))
+        lay = _layers(circle(10.5, 5.5, 4.5), 10.5, 5.5, 1.5, 2.5)
+        lay["body"] = union(lay["body"], stack)
+        return lay
+    raise ValueError
+
+
+def topic(name, size):
+    if size == 16:
+        return topic_16(name)
+    s = size / 24
+    return {k: transform(v, s) for k, v in topic_24(name).items()}

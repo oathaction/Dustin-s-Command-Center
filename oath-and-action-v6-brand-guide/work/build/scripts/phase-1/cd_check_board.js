@@ -117,8 +117,14 @@ async function keyboardPass(page) {
   for (const [w, h] of [[1440, 900], [390, 844]]) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
-    await page.goto('file://' + BOARD, { waitUntil: 'networkidle' });
-    await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map((im) => im.decode().catch(() => null))); });
+    await page.goto('file://' + BOARD, { waitUntil: 'load', timeout: 60000 });
+    // Lazy images below the fold never load in a headless run, so load them all before measuring.
+    await page.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach((im) => { im.loading = 'eager'; }));
+    await page.evaluate(async () => {
+      const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+      await Promise.race([document.fonts.ready, wait(15000)]);
+      await Promise.race([Promise.all([...document.images].map((im) => (im.complete ? null : new Promise((r) => { im.onload = im.onerror = r; })))), wait(15000)]);
+    });
     const res = await inspect(page, w);
     res.keyboard = await keyboardPass(page);
     res.keyboardStops = res.keyboard.length;

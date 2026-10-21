@@ -76,7 +76,7 @@
     var origin = a.closest('[id^="rule-"], .closer[id], [data-track]');
     var sec = sectionFor(a);
     if (!origin || !sec) return;
-    var what = origin.matches('[data-track]') ? '' : (origin.querySelector('h3') ? origin.querySelector('h3').textContent.replace(/\s+/g, ' ').trim() : '');
+    var what = origin.matches('[data-track]') ? '' : (origin.querySelector('h3') ? origin.querySelector('h3').textContent.replace(/\s+/g, ' ').trim().replace(/[.:]$/, '') : '');
     pendingReturn = { id: origin.id, label: (what ? what + ', ' : '') + sec.getAttribute('data-label') };
   });
 
