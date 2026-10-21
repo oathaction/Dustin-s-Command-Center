@@ -1,0 +1,1762 @@
+{
+  "$description": "Oath & Action V6 token schema DRAFT, 20261021. A sketch of the source format for Gate 1. Not for use. Values are proposals; nothing here ships.",
+  "$extensions": {
+    "org.oathandaction": {
+      "formatVersion": "2025.10",
+      "formatReference": "https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/",
+      "tokenSetVersion": "6.0.0-draft.1",
+      "status": "draft",
+      "namespaceNote": "Reverse-domain key from oathandaction.org as written in V5; ownership not confirmed",
+      "needs": {
+        "N-01": "Secondary small text on Newsprint: Stone measures 4.29:1; 49 Stone-on-Newsprint text failures in the V5 census; Concepts V2 already uses #4E535C 1,606 times",
+        "N-02": "Secondary text on Charcoal and Prussian: Stone measures 3.10:1 and 2.20:1; 8 failures in the V5 census",
+        "N-03": "Error message ground that holds 13 px text: Charcoal on Pillar Red is 4.49:1 and White on Pillar Red 4.17:1",
+        "N-04": "Verdigris status marks on Prussian measure 2.80:1; held until the Phase 2 Signal Grid redesign"
+      },
+      "fontSizeExceptions": []
+    }
+  },
+  "oa": {
+    "color": {
+      "$description": "Identity, state and data color. Identity marks use palette primitives only.",
+      "palette": {
+        "newsprint": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8627,
+              0.851,
+              0.8235
+            ],
+            "alpha": 1,
+            "hex": "#DCD9D2"
+          },
+          "$description": "Default reading surface",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Default reading surface",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "charcoal": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0706,
+              0.0706,
+              0.0706
+            ],
+            "alpha": 1,
+            "hex": "#121212"
+          },
+          "$description": "Primary text on light surfaces; the dark beat",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Primary text on light surfaces; the dark beat",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "pillarRed": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.902,
+              0.2235,
+              0.2745
+            ],
+            "alpha": 1,
+            "hex": "#E63946"
+          },
+          "$description": "The ampersand, the lever and one point of emphasis per composition",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "The ampersand, the lever and one point of emphasis per composition",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "prussian": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1216,
+              0.1765,
+              0.3529
+            ],
+            "alpha": 1,
+            "hex": "#1F2D5A"
+          },
+          "$description": "Depth, panels and explainers",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Depth, panels and explainers",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "stone": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3647,
+              0.3882,
+              0.4275
+            ],
+            "alpha": 1,
+            "hex": "#5D636D"
+          },
+          "$description": "Hairlines, structure and context marks",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Hairlines, structure and context marks",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "verdigris": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2902,
+              0.4863,
+              0.4549
+            ],
+            "alpha": 1,
+            "hex": "#4A7C74"
+          },
+          "$description": "Live status, focus on light surfaces",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Live status, focus on light surfaces",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        },
+        "white": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1,
+            "hex": "#FFFFFF"
+          },
+          "$description": "Reversed text, specimens and neutral production",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "locked",
+              "job": "Reversed text, specimens and neutral production",
+              "lockedIn": "Master Brief V2 section 3"
+            }
+          }
+        }
+      },
+      "derived": {
+        "deepStone": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3059,
+              0.3255,
+              0.3569
+            ],
+            "alpha": 1,
+            "hex": "#4E535B"
+          },
+          "$description": "Secondary text, captions, labels and disabled text on Newsprint and White",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "proposed",
+              "job": "Secondary text, captions, labels and disabled text on Newsprint and White",
+              "kind": "text",
+              "derivation": {
+                "method": "color-mix",
+                "space": "oklab",
+                "base": "{oa.color.palette.stone}",
+                "toward": "{oa.color.palette.charcoal}",
+                "amount": 0.18
+              },
+              "surfaces": [
+                "newsprint",
+                "white"
+              ],
+              "contrast": {
+                "newsprint": 5.49,
+                "white": 7.74
+              },
+              "need": "N-01",
+              "gate": "Gate 1"
+            }
+          }
+        },
+        "dimNewsprint": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6392,
+              0.6314,
+              0.6118
+            ],
+            "alpha": 1,
+            "hex": "#A3A19C"
+          },
+          "$description": "Secondary text, captions, labels and disabled text on Charcoal and Prussian",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "proposed",
+              "job": "Secondary text, captions, labels and disabled text on Charcoal and Prussian",
+              "kind": "text",
+              "derivation": {
+                "method": "color-mix",
+                "space": "oklab",
+                "base": "{oa.color.palette.newsprint}",
+                "toward": "{oa.color.palette.charcoal}",
+                "amount": 0.25
+              },
+              "surfaces": [
+                "charcoal",
+                "prussian"
+              ],
+              "contrast": {
+                "charcoal": 7.26,
+                "prussian": 5.14
+              },
+              "need": "N-02",
+              "gate": "Gate 1"
+            }
+          }
+        },
+        "errorBand": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8824,
+              0.7882,
+              0.7569
+            ],
+            "alpha": 1,
+            "hex": "#E1C9C1"
+          },
+          "$description": "Background of an error message on Newsprint and White",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "proposed",
+              "job": "Background of an error message on Newsprint and White",
+              "kind": "background",
+              "derivation": {
+                "method": "color-mix",
+                "space": "oklab",
+                "base": "{oa.color.palette.pillarRed}",
+                "toward": "{oa.color.palette.newsprint}",
+                "amount": 0.88
+              },
+              "surfaces": [
+                "newsprint",
+                "white"
+              ],
+              "contrast": {
+                "charcoalTextOnIt": 11.89,
+                "deepStoneTextOnIt": 4.91
+              },
+              "need": "N-03",
+              "gate": "Gate 1"
+            }
+          }
+        },
+        "verdigrisOnDark": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.349,
+              0.5216,
+              0.4902
+            ],
+            "alpha": 1,
+            "hex": "#59857D"
+          },
+          "$description": "Status marks on Prussian, only if the Phase 2 Signal Grid keeps Verdigris there",
+          "$extensions": {
+            "org.oathandaction": {
+              "tier": "primitive",
+              "status": "held",
+              "job": "Status marks on Prussian, only if the Phase 2 Signal Grid keeps Verdigris there",
+              "kind": "graphic",
+              "derivation": {
+                "method": "color-mix",
+                "space": "oklab",
+                "base": "{oa.color.palette.verdigris}",
+                "toward": "{oa.color.palette.newsprint}",
+                "amount": 0.1
+              },
+              "surfaces": [
+                "charcoal",
+                "prussian"
+              ],
+              "contrast": {
+                "charcoal": 4.53,
+                "prussian": 3.21
+              },
+              "need": "N-04",
+              "gate": "Gate 1"
+            }
+          }
+        }
+      },
+      "text": {
+        "primary": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Body text, headings and data values",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "newsprint",
+                "contrast": 13.29,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Body text, headings and data values",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "white",
+                "contrast": 18.73,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Body text, headings and data values",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "charcoal",
+                "contrast": 13.29,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.white}",
+            "$description": "Body text, headings and data values",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "prussian",
+                "contrast": 13.28,
+                "threshold": 4.5
+              }
+            }
+          }
+        },
+        "secondary": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.derived.deepStone}",
+            "$description": "Captions, metadata, labels, source lines, disabled text",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "newsprint",
+                "contrast": 5.49,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.derived.deepStone}",
+            "$description": "Captions, metadata, labels, source lines, disabled text",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "white",
+                "contrast": 7.74,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.derived.dimNewsprint}",
+            "$description": "Captions, metadata, labels, source lines, disabled text",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "charcoal",
+                "contrast": 7.26,
+                "threshold": 4.5
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.derived.dimNewsprint}",
+            "$description": "Captions, metadata, labels, source lines, disabled text",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "text",
+                "surface": "prussian",
+                "contrast": 5.14,
+                "threshold": 4.5
+              }
+            }
+          }
+        }
+      },
+      "border": {
+        "strong": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Edges of inputs and controls that a reader must find",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "newsprint",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Edges of inputs and controls that a reader must find",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "white",
+                "contrast": 18.73,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Edges of inputs and controls that a reader must find",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "charcoal",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Edges of inputs and controls that a reader must find",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "prussian",
+                "contrast": 9.42,
+                "threshold": 3.0
+              }
+            }
+          }
+        },
+        "hairline": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.stone}",
+            "$description": "Dividers and table rules with no meaning of their own",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "decorative",
+                "surface": "newsprint",
+                "contrast": 4.29,
+                "threshold": null
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.stone}",
+            "$description": "Dividers and table rules with no meaning of their own",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "decorative",
+                "surface": "white",
+                "contrast": 6.05,
+                "threshold": null
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.stone}",
+            "$description": "Dividers and table rules with no meaning of their own",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "decorative",
+                "surface": "charcoal",
+                "contrast": 3.1,
+                "threshold": null
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.white}",
+            "$description": "Dividers and table rules with no meaning of their own",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "decorative",
+                "surface": "prussian",
+                "contrast": 13.28,
+                "threshold": null
+              }
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.verdigris}",
+            "$description": "Keyboard focus outline",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "focus",
+                "surface": "newsprint",
+                "contrast": 3.37,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.verdigris}",
+            "$description": "Keyboard focus outline",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "focus",
+                "surface": "white",
+                "contrast": 4.74,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Keyboard focus outline",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "focus",
+                "surface": "charcoal",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Keyboard focus outline",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "focus",
+                "surface": "prussian",
+                "contrast": 9.42,
+                "threshold": 3.0
+              }
+            }
+          }
+        }
+      },
+      "state": {
+        "selected": {
+          "band": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Background of a selected row or option; pair with a 4 px bar and a check",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "newsprint",
+                  "contrast": 18.73,
+                  "threshold": 4.5
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.newsprint}",
+              "$description": "Background of a selected row or option; pair with a 4 px bar and a check",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "white",
+                  "contrast": 13.29,
+                  "threshold": 4.5
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.prussian}",
+              "$description": "Background of a selected row or option; pair with a 4 px bar and a check",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "charcoal",
+                  "contrast": 9.42,
+                  "threshold": 4.5
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Background of a selected row or option; pair with a 4 px bar and a check",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "prussian",
+                  "contrast": 13.29,
+                  "threshold": 4.5
+                }
+              }
+            }
+          }
+        },
+        "error": {
+          "band": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.derived.errorBand}",
+              "$description": "Background of an error message; pair with the word Error and a mark",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "newsprint",
+                  "contrast": 11.89,
+                  "threshold": 4.5
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.derived.errorBand}",
+              "$description": "Background of an error message; pair with the word Error and a mark",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "background",
+                  "surface": "white",
+                  "contrast": 11.89,
+                  "threshold": 4.5
+                }
+              }
+            }
+          }
+        }
+      },
+      "data": {
+        "$description": "Data color. Never aliases Pillar Red except data.emphasisRed under the one-red rule. Series palettes are decided at Gate 2.",
+        "emphasis": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "The mark the chart title is about",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "newsprint",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "The mark the chart title is about",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "white",
+                "contrast": 18.73,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "The mark the chart title is about",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "charcoal",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "The mark the chart title is about",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "prussian",
+                "contrast": 9.42,
+                "threshold": 3.0
+              }
+            }
+          }
+        },
+        "context": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.stone}",
+            "$description": "Every other data mark in the same chart",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "newsprint",
+                "contrast": 4.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.stone}",
+            "$description": "Every other data mark in the same chart",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "white",
+                "contrast": 6.05,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.derived.dimNewsprint}",
+            "$description": "Every other data mark in the same chart",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "charcoal",
+                "contrast": 7.26,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.derived.dimNewsprint}",
+            "$description": "Every other data mark in the same chart",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "prussian",
+                "contrast": 5.14,
+                "threshold": 3.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "font": {
+      "family": {
+        "display": {
+          "$type": "fontFamily",
+          "$value": [
+            "Inter Tight",
+            "Arial",
+            "sans-serif"
+          ],
+          "$description": "Display"
+        },
+        "reading": {
+          "$type": "fontFamily",
+          "$value": [
+            "Inter",
+            "Arial",
+            "sans-serif"
+          ],
+          "$description": "Reading and interface"
+        },
+        "quote": {
+          "$type": "fontFamily",
+          "$value": [
+            "Lora",
+            "Georgia",
+            "serif"
+          ],
+          "$description": "Editorial quotation, italic only",
+          "$extensions": {
+            "org.oathandaction": {
+              "fontStyle": "italic"
+            }
+          }
+        },
+        "emailSans": {
+          "$type": "fontFamily",
+          "$value": [
+            "Helvetica",
+            "Arial",
+            "sans-serif"
+          ],
+          "$description": "Email display and body"
+        },
+        "emailQuote": {
+          "$type": "fontFamily",
+          "$value": [
+            "Georgia",
+            "serif"
+          ],
+          "$description": "Email quotation, italic"
+        }
+      },
+      "weight": {
+        "regular": {
+          "$type": "fontWeight",
+          "$value": 400,
+          "$description": "Inter reading text; Lora Italic quotation"
+        },
+        "medium": {
+          "$type": "fontWeight",
+          "$value": 500,
+          "$description": "Lora Italic 500 for quote cards"
+        },
+        "semibold": {
+          "$type": "fontWeight",
+          "$value": 600,
+          "$description": "Inter interface text and data labels"
+        },
+        "bold": {
+          "$type": "fontWeight",
+          "$value": 700,
+          "$description": "Inter labels and strong emphasis"
+        },
+        "extrabold": {
+          "$type": "fontWeight",
+          "$value": 800,
+          "$description": "Inter Tight display and the wordmark face"
+        }
+      }
+    },
+    "type": {
+      "title": {
+        "$type": "typography",
+        "$description": "Cover and chapter-opening titles",
+        "$value": {
+          "fontFamily": "{oa.font.family.display}",
+          "fontWeight": "{oa.font.weight.extrabold}",
+          "fontSize": {
+            "value": 6.875,
+            "unit": "rem"
+          },
+          "lineHeight": 0.95,
+          "letterSpacing": {
+            "value": -0.30938,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 3.5,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(3.5rem, 2.2464rem + 5.1429vw, 6.875rem)",
+            "trackingEm": -0.045,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "section": {
+        "$type": "typography",
+        "$description": "Chapter headings (h2)",
+        "$value": {
+          "fontFamily": "{oa.font.family.display}",
+          "fontWeight": "{oa.font.weight.extrabold}",
+          "fontSize": {
+            "value": 5.0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.03,
+          "letterSpacing": {
+            "value": -0.2,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 2.75,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(2.75rem, 1.9143rem + 3.4286vw, 5rem)",
+            "trackingEm": -0.04,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "h3": {
+        "$type": "typography",
+        "$description": "Module headings",
+        "$value": {
+          "fontFamily": "{oa.font.family.display}",
+          "fontWeight": "{oa.font.weight.extrabold}",
+          "fontSize": {
+            "value": 2.0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.08,
+          "letterSpacing": {
+            "value": -0.06,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 1.625,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(1.625rem, 1.4857rem + 0.5714vw, 2rem)",
+            "trackingEm": -0.03,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "h4": {
+        "$type": "typography",
+        "$description": "Sub-module and card headings",
+        "$value": {
+          "fontFamily": "{oa.font.family.display}",
+          "fontWeight": "{oa.font.weight.extrabold}",
+          "fontSize": {
+            "value": 1.5,
+            "unit": "rem"
+          },
+          "lineHeight": 1.15,
+          "letterSpacing": {
+            "value": -0.03,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 1.25,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(1.25rem, 1.1571rem + 0.3810vw, 1.5rem)",
+            "trackingEm": -0.02,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "quote": {
+        "$type": "typography",
+        "$description": "Pull quotes and quote cards, Lora Italic",
+        "$value": {
+          "fontFamily": "{oa.font.family.quote}",
+          "fontWeight": "{oa.font.weight.regular}",
+          "fontSize": {
+            "value": 2.0,
+            "unit": "rem"
+          },
+          "lineHeight": 1.3,
+          "letterSpacing": {
+            "value": -0.04,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 1.5,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(1.5rem, 1.3143rem + 0.7619vw, 2rem)",
+            "trackingEm": -0.02,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "intro": {
+        "$type": "typography",
+        "$description": "Chapter introduction paragraph",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.regular}",
+          "fontSize": {
+            "value": 1.375,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 1.1875,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(1.1875rem, 1.1179rem + 0.2857vw, 1.375rem)",
+            "trackingEm": 0,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "body": {
+        "$type": "typography",
+        "$description": "Running text",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.regular}",
+          "fontSize": {
+            "value": 1.0625,
+            "unit": "rem"
+          },
+          "lineHeight": 1.6,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 1.0625,
+              "unit": "rem"
+            },
+            "cssFontSize": "1.0625rem",
+            "trackingEm": 0,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "bodySmall": {
+        "$type": "typography",
+        "$description": "Table cells, dense specimen notes",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.regular}",
+          "fontSize": {
+            "value": 0.9375,
+            "unit": "rem"
+          },
+          "lineHeight": 1.6,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 0.9375,
+              "unit": "rem"
+            },
+            "cssFontSize": "0.9375rem",
+            "trackingEm": 0,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "ui": {
+        "$type": "typography",
+        "$description": "Buttons, navigation, form controls",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.semibold}",
+          "fontSize": {
+            "value": 0.9375,
+            "unit": "rem"
+          },
+          "lineHeight": 1.4,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 0.9375,
+              "unit": "rem"
+            },
+            "cssFontSize": "0.9375rem",
+            "trackingEm": 0,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "caption": {
+        "$type": "typography",
+        "$description": "Figure captions and source lines",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.regular}",
+          "fontSize": {
+            "value": 0.875,
+            "unit": "rem"
+          },
+          "lineHeight": 1.5,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 0.875,
+              "unit": "rem"
+            },
+            "cssFontSize": "0.875rem",
+            "trackingEm": 0,
+            "textTransform": "sentence"
+          }
+        }
+      },
+      "label": {
+        "$type": "typography",
+        "$description": "Eyebrows, column heads and tags, set in capitals",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.bold}",
+          "fontSize": {
+            "value": 0.8125,
+            "unit": "rem"
+          },
+          "lineHeight": 1.4,
+          "letterSpacing": {
+            "value": 0.04875,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 0.8125,
+              "unit": "rem"
+            },
+            "cssFontSize": "0.8125rem",
+            "trackingEm": 0.06,
+            "textTransform": "uppercase"
+          }
+        }
+      },
+      "dataLabel": {
+        "$type": "typography",
+        "$description": "Chart labels, axis values and table figures",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.semibold}",
+          "fontSize": {
+            "value": 0.8125,
+            "unit": "rem"
+          },
+          "lineHeight": 1.3,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 0.8125,
+              "unit": "rem"
+            },
+            "cssFontSize": "0.8125rem",
+            "trackingEm": 0,
+            "textTransform": "sentence",
+            "numeric": "tabular-nums",
+            "minusSign": "U+2212"
+          }
+        }
+      },
+      "figure": {
+        "$type": "typography",
+        "$description": "Big numbers in reports and specimens",
+        "$value": {
+          "fontFamily": "{oa.font.family.display}",
+          "fontWeight": "{oa.font.weight.extrabold}",
+          "fontSize": {
+            "value": 6.5,
+            "unit": "rem"
+          },
+          "lineHeight": 1.0,
+          "letterSpacing": {
+            "value": -0.26,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "minFontSize": {
+              "value": 3.0,
+              "unit": "rem"
+            },
+            "cssFontSize": "clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem)",
+            "trackingEm": -0.04,
+            "textTransform": "sentence",
+            "numeric": "tabular-nums",
+            "minusSign": "U+2212"
+          }
+        }
+      }
+    },
+    "space": {
+      "0": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.0,
+          "unit": "rem"
+        },
+        "$description": "0 px"
+      },
+      "050": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.25,
+          "unit": "rem"
+        },
+        "$description": "4 px"
+      },
+      "100": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.5,
+          "unit": "rem"
+        },
+        "$description": "8 px"
+      },
+      "150": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "$description": "12 px"
+      },
+      "200": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.0,
+          "unit": "rem"
+        },
+        "$description": "16 px"
+      },
+      "300": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1.5,
+          "unit": "rem"
+        },
+        "$description": "24 px"
+      },
+      "400": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.0,
+          "unit": "rem"
+        },
+        "$description": "32 px"
+      },
+      "500": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.5,
+          "unit": "rem"
+        },
+        "$description": "40 px"
+      },
+      "600": {
+        "$type": "dimension",
+        "$value": {
+          "value": 3.0,
+          "unit": "rem"
+        },
+        "$description": "48 px"
+      },
+      "800": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.0,
+          "unit": "rem"
+        },
+        "$description": "64 px"
+      },
+      "1000": {
+        "$type": "dimension",
+        "$value": {
+          "value": 5.0,
+          "unit": "rem"
+        },
+        "$description": "80 px"
+      },
+      "1300": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6.5,
+          "unit": "rem"
+        },
+        "$description": "104 px"
+      }
+    },
+    "layout": {
+      "breakpoint": {
+        "wide": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1440,
+            "unit": "px"
+          },
+          "$description": "Design and test width 1440 px",
+          "$extensions": {
+            "org.oathandaction": {
+              "mediaQueryEm": 90.0,
+              "columns": 12,
+              "gutterPx": 24,
+              "marginPx": 64
+            }
+          }
+        },
+        "desktop": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1024,
+            "unit": "px"
+          },
+          "$description": "Design and test width 1024 px",
+          "$extensions": {
+            "org.oathandaction": {
+              "mediaQueryEm": 64.0,
+              "columns": 12,
+              "gutterPx": 24,
+              "marginPx": 40
+            }
+          }
+        },
+        "tablet": {
+          "$type": "dimension",
+          "$value": {
+            "value": 768,
+            "unit": "px"
+          },
+          "$description": "Design and test width 768 px",
+          "$extensions": {
+            "org.oathandaction": {
+              "mediaQueryEm": 48.0,
+              "columns": 8,
+              "gutterPx": 24,
+              "marginPx": 32
+            }
+          }
+        },
+        "phone": {
+          "$type": "dimension",
+          "$value": {
+            "value": 390,
+            "unit": "px"
+          },
+          "$description": "Design and test width 390 px",
+          "$extensions": {
+            "org.oathandaction": {
+              "mediaQueryEm": 24.375,
+              "columns": 4,
+              "gutterPx": 16,
+              "marginPx": 20
+            }
+          }
+        },
+        "phoneSmall": {
+          "$type": "dimension",
+          "$value": {
+            "value": 360,
+            "unit": "px"
+          },
+          "$description": "Design and test width 360 px",
+          "$extensions": {
+            "org.oathandaction": {
+              "mediaQueryEm": 22.5,
+              "columns": 4,
+              "gutterPx": 16,
+              "marginPx": 16
+            }
+          }
+        }
+      },
+      "measure": {
+        "bodyIdeal": {
+          "$type": "dimension",
+          "$value": {
+            "value": 33.88,
+            "unit": "rem"
+          },
+          "$description": "68 characters of 17 px Inter",
+          "$extensions": {
+            "org.oathandaction": {
+              "chars": 68
+            }
+          }
+        },
+        "bodyMax": {
+          "$type": "dimension",
+          "$value": {
+            "value": 37.37,
+            "unit": "rem"
+          },
+          "$description": "75 characters of 17 px Inter",
+          "$extensions": {
+            "org.oathandaction": {
+              "chars": 75
+            }
+          }
+        },
+        "introMax": {
+          "$type": "dimension",
+          "$value": {
+            "value": 41.91,
+            "unit": "rem"
+          },
+          "$description": "65 characters of 22 px Inter",
+          "$extensions": {
+            "org.oathandaction": {
+              "chars": 65
+            }
+          }
+        }
+      }
+    },
+    "radius": {
+      "none": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0,
+          "unit": "px"
+        },
+        "$description": "Default for every box, button and input"
+      },
+      "full": {
+        "$type": "number",
+        "$value": 0.5,
+        "$description": "Circles: Signal Grid nodes, badges, round container mark",
+        "$extensions": {
+          "org.oathandaction": {
+            "cssValue": "50%"
+          }
+        }
+      }
+    },
+    "border": {
+      "width": {
+        "hairline": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1,
+            "unit": "px"
+          },
+          "$description": "Dividers, keylines, chart axes"
+        },
+        "rule": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2,
+            "unit": "px"
+          },
+          "$description": "Current-page underline, focus ring"
+        },
+        "bar": {
+          "$type": "dimension",
+          "$value": {
+            "value": 4,
+            "unit": "px"
+          },
+          "$description": "State bar beside selected, error and warning items"
+        }
+      },
+      "focusOffset": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
+        "$description": "Gap between control and focus ring"
+      }
+    },
+    "opacity": {
+      "watermarkOnLight": {
+        "$type": "number",
+        "$value": 0.08,
+        "$description": "Charcoal watermark on Newsprint or White. Decoration only",
+        "$extensions": {
+          "org.oathandaction": {
+            "measured": {
+              "hex": "#CCC9C3",
+              "contrastWithGround": 1.17
+            }
+          }
+        }
+      },
+      "watermarkOnDark": {
+        "$type": "number",
+        "$value": 0.1,
+        "$description": "Newsprint watermark on Charcoal or Prussian. Decoration only",
+        "$extensions": {
+          "org.oathandaction": {
+            "measured": {
+              "hex": "#262625",
+              "contrastWithGround": 1.24
+            }
+          }
+        }
+      }
+    },
+    "motion": {
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": {
+            "value": 120,
+            "unit": "ms"
+          },
+          "$description": "Hover, focus, toggle",
+          "$extensions": {
+            "org.oathandaction": {
+              "reducedMotionValue": {
+                "value": 0,
+                "unit": "ms"
+              }
+            }
+          }
+        },
+        "standard": {
+          "$type": "duration",
+          "$value": {
+            "value": 200,
+            "unit": "ms"
+          },
+          "$description": "Reveal, panel, node fill",
+          "$extensions": {
+            "org.oathandaction": {
+              "reducedMotionValue": {
+                "value": 0,
+                "unit": "ms"
+              }
+            }
+          }
+        },
+        "slow": {
+          "$type": "duration",
+          "$value": {
+            "value": 320,
+            "unit": "ms"
+          },
+          "$description": "Page-level moves, hinge settle, ring slide",
+          "$extensions": {
+            "org.oathandaction": {
+              "reducedMotionValue": {
+                "value": 0,
+                "unit": "ms"
+              }
+            }
+          }
+        },
+        "stagger": {
+          "$type": "duration",
+          "$value": {
+            "value": 40,
+            "unit": "ms"
+          },
+          "$description": "Between siblings",
+          "$extensions": {
+            "org.oathandaction": {
+              "reducedMotionValue": {
+                "value": 0,
+                "unit": "ms"
+              }
+            }
+          }
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "Most transitions"
+        },
+        "enter": {
+          "$type": "cubicBezier",
+          "$value": [
+            0,
+            0,
+            0.2,
+            1
+          ],
+          "$description": "Arriving: panels, ampersand, lever"
+        },
+        "exit": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.4,
+            0,
+            1,
+            1
+          ],
+          "$description": "Leaving, at the fast duration"
+        }
+      }
+    },
+    "zIndex": {
+      "base": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Page"
+      },
+      "raised": {
+        "$type": "number",
+        "$value": 10,
+        "$description": "Specimen overlays"
+      },
+      "sticky": {
+        "$type": "number",
+        "$value": 40,
+        "$description": "Sticky navigation"
+      },
+      "overlay": {
+        "$type": "number",
+        "$value": 90,
+        "$description": "Menus and popovers outside the top layer"
+      },
+      "skip": {
+        "$type": "number",
+        "$value": 100,
+        "$description": "Skip link"
+      }
+    },
+    "component": {
+      "button": {
+        "disabled": {
+          "label": {
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.text.secondary.onWhite}",
+              "$description": "Disabled button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            }
+          },
+          "border": {
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.text.secondary.onWhite}",
+              "$description": "Disabled button edge, drawn dashed",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component",
+                  "strokeStyle": "dashed"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

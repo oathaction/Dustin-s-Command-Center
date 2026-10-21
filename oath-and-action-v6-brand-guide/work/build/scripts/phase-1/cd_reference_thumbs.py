@@ -28,9 +28,21 @@ ITEMS += [
 ]
 
 
+# Crops of the Phase 0 V5 Polished capture, so the original sits beside the proposal.
+V5_TILES = ROOT / "work/boards/screens/v5-polished/1440-tiles"
+CROPS = [("20261021_V5-Hinge-Diagram.jpg", V5_TILES / "04-ampersand-01.jpg", (745, 680, 1390, 870))]
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     report = []
+    for name, src, box in CROPS:
+        with Image.open(src) as im:
+            im = im.convert("RGB").crop(box)
+            dest = OUT / name
+            im.save(dest, "JPEG", quality=80, optimize=True)
+            report.append({"file": str(dest.relative_to(ROOT)), "from": str(src.relative_to(ROOT)),
+                           "size": list(im.size), "bytes": dest.stat().st_size})
     for name, src in ITEMS:
         with Image.open(src) as im:
             im = im.convert("RGB")

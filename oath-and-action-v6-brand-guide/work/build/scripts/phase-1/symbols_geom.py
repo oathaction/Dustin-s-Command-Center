@@ -49,9 +49,10 @@ class _Pen:
 
 
 def d_of(path):
-    pen = _Pen()
+    from fontTools.pens.svgPathPen import SVGPathPen
+    pen = SVGPathPen(None, ntos=_fmt)
     path.draw(pen)
-    return "".join(pen.out)
+    return pen.getCommands()
 
 
 def poly(*pts):
@@ -104,15 +105,19 @@ def stroke_path(segments, width, cap="round", join="round"):
     Arcs are approximated by cubics. Returns a filled outline path.
     """
     p = pathops.Path()
+    open_ = False
     for s in segments:
         if s[0] == "M":
             p.moveTo(s[1], s[2])
+            open_ = True
         elif s[0] == "L":
             p.lineTo(s[1], s[2])
         elif s[0] == "A":
-            _arc(p, *s[1:])
+            _arc(p, *s[1:], start=not open_)
+            open_ = True
         elif s[0] == "Z":
             p.close()
+            open_ = False
     capm = {"round": pathops.LineCap.ROUND_CAP, "butt": pathops.LineCap.BUTT_CAP, "square": pathops.LineCap.SQUARE_CAP}[cap]
     joinm = {"round": pathops.LineJoin.ROUND_JOIN, "miter": pathops.LineJoin.MITER_JOIN, "bevel": pathops.LineJoin.BEVEL_JOIN}[join]
     p.stroke(width, capm, joinm, 4)
@@ -120,7 +125,7 @@ def stroke_path(segments, width, cap="round", join="round"):
     return simplify(p)
 
 
-def _arc(p, cx, cy, r, a0, a1):
+def _arc(p, cx, cy, r, a0, a1, start=True):
     """Append an arc from angle a0 to a1 (degrees, screen coordinates, clockwise positive)."""
     n = max(1, int(math.ceil(abs(a1 - a0) / 90 - 1e-9)))
     step = (a1 - a0) / n
@@ -132,8 +137,11 @@ def _arc(p, cx, cy, r, a0, a1):
         x1, y1 = cx + r * math.cos(t1), cy + r * math.sin(t1)
         c1 = (x0 - alpha * r * math.sin(t0), y0 + alpha * r * math.cos(t0))
         c2 = (x1 + alpha * r * math.sin(t1), y1 - alpha * r * math.cos(t1))
-        if i == 0 and not _has_point(p):
-            p.moveTo(x0, y0)
+        if i == 0:
+            if start:
+                p.moveTo(x0, y0)
+            else:
+                p.lineTo(x0, y0)
         p.cubicTo(c1[0], c1[1], c2[0], c2[1], x1, y1)
 
 

@@ -1,0 +1,4961 @@
+{
+ "generated": {
+  "script": "work/build/scripts/phase-1/systems_marks_data.py",
+  "run_date": "2026-10-21",
+  "source": "work/extract/atlas-v7-data.json",
+  "snapshot": "2026-10-15",
+  "meta_counts": {
+   "variables": 51,
+   "connections": 118,
+   "loops": 23,
+   "loops_numbered": 20,
+   "issues": 194,
+   "issues_active": 193,
+   "reforms": 50,
+   "sources": 1099,
+   "sources_total_ids": 1140,
+   "pathways": 16,
+   "hubs": 5,
+   "claims": 433,
+   "core_links": 72,
+   "economy_links": 27,
+   "technology_links": 19,
+   "core_variables": 31
+  },
+  "counts_live": {
+   "sources_register_ids": 1140,
+   "issues_records": 194,
+   "issues_active": 193
+  }
+ },
+ "palette": {
+  "Newsprint": "#DCD9D2",
+  "White": "#FFFFFF",
+  "Charcoal": "#121212",
+  "Prussian": "#1F2D5A",
+  "Pillar Red": "#E63946",
+  "Stone": "#5D636D",
+  "Verdigris": "#4A7C74",
+  "Board muted": "#45494F"
+ },
+ "contrast_table": {
+  "Newsprint": {
+   "Newsprint": 1.0,
+   "White": 1.41,
+   "Charcoal": 13.29,
+   "Prussian": 9.42
+  },
+  "White": {
+   "Newsprint": 1.41,
+   "White": 1.0,
+   "Charcoal": 18.73,
+   "Prussian": 13.28
+  },
+  "Charcoal": {
+   "Newsprint": 13.29,
+   "White": 18.73,
+   "Charcoal": 1.0,
+   "Prussian": 1.41
+  },
+  "Prussian": {
+   "Newsprint": 9.42,
+   "White": 13.28,
+   "Charcoal": 1.41,
+   "Prussian": 1.0
+  },
+  "Pillar Red": {
+   "Newsprint": 2.96,
+   "White": 4.17,
+   "Charcoal": 4.49,
+   "Prussian": 3.19
+  },
+  "Stone": {
+   "Newsprint": 4.29,
+   "White": 6.05,
+   "Charcoal": 3.1,
+   "Prussian": 2.2
+  },
+  "Verdigris": {
+   "Newsprint": 3.37,
+   "White": 4.74,
+   "Charcoal": 3.95,
+   "Prussian": 2.8
+  },
+  "Board muted": {
+   "Newsprint": 6.42,
+   "White": 9.06,
+   "Charcoal": 2.07,
+   "Prussian": 1.47
+  }
+ },
+ "chip_contrast": {
+  "Newsprint": {
+   "ink": "Charcoal",
+   "code_text_on_surface": 13.29,
+   "kind_text_on_ink_fill": 13.29,
+   "grayscale_code": 13.27,
+   "grayscale_kind": 13.27,
+   "red_ring_on_surface": 2.96
+  },
+  "White": {
+   "ink": "Charcoal",
+   "code_text_on_surface": 18.73,
+   "kind_text_on_ink_fill": 18.73,
+   "grayscale_code": 18.73,
+   "grayscale_kind": 18.73,
+   "red_ring_on_surface": 4.17
+  },
+  "Charcoal": {
+   "ink": "Newsprint",
+   "code_text_on_surface": 13.29,
+   "kind_text_on_ink_fill": 13.29,
+   "grayscale_code": 13.27,
+   "grayscale_kind": 13.27,
+   "red_ring_on_surface": 4.49
+  },
+  "Prussian": {
+   "ink": "Newsprint",
+   "code_text_on_surface": 9.42,
+   "kind_text_on_ink_fill": 9.42,
+   "grayscale_code": 9.76,
+   "grayscale_kind": 9.76,
+   "red_ring_on_surface": 3.19
+  }
+ },
+ "muted_on_light": {
+  "Newsprint": 6.42,
+  "White": 9.06
+ },
+ "grayscale_values": {
+  "Newsprint": "#D9D9D9",
+  "White": "#FFFFFF",
+  "Charcoal": "#121212",
+  "Prussian": "#2D2D2D",
+  "Pillar Red": "#5F5F5F",
+  "Stone": "#626262",
+  "Verdigris": "#717171",
+  "Board muted": "#494949"
+ },
+ "renderer": {
+  "grade_table": {
+   "documented": {
+    "label": "Documented",
+    "meter": 4,
+    "class": "",
+    "text": "An official record, court ruling, statute or direct count shows this happened or exists. The label says nothing about the size of an effect unless the record does."
+   },
+   "well-supported": {
+    "label": "Well supported",
+    "meter": 3,
+    "class": "",
+    "text": "Strong evidence backs the direction of the effect: a well-designed study such as a randomized experiment, several consistent studies, or an official estimate made with a published method. No credible study finds the opposite."
+   },
+   "plausible": {
+    "label": "Plausible",
+    "meter": 2,
+    "class": "",
+    "text": "The mechanism is coherent and some evidence points this way. The studies are few, weak in design or limited to some places."
+   },
+   "contested": {
+    "label": "Contested",
+    "meter": 2,
+    "class": "c-contested",
+    "text": "Credible studies disagree. The record shows both sides."
+   },
+   "hypothesis": {
+    "label": "Hypothesis",
+    "meter": 1,
+    "class": "",
+    "text": "A proposed explanation that has not been tested. It is never the only support for a claim."
+   },
+   "not yet tested": {
+    "label": "Not yet tested",
+    "meter": 0,
+    "class": "c-untested",
+    "text": "No evaluation of this response's effects exists yet."
+   },
+   "mixed": {
+    "label": "Mixed",
+    "meter": 2,
+    "class": "c-contested",
+    "text": "The evidence points in different directions for different parts of the claim."
+   }
+  },
+  "legend_dashes": {
+   "documented or well supported": "solid",
+   "conceptual step": "5 4 in #8b9095"
+  },
+  "edge_css_dashes": {
+   "u-plausible": "9 4",
+   "u-contested": "9 3 2 3",
+   "u-hypothesis": "2 4",
+   "u-concept": "5 4"
+  },
+  "edge_width": "1.8",
+  "kind_label": {
+   "variable": "Variable",
+   "connection": "Connection",
+   "loop": "Loop",
+   "issue": "Issue record",
+   "reform": "Reform",
+   "claim": "Claim",
+   "source": "Source",
+   "pathway": "Pathway",
+   "hub": "Topic",
+   "domain": "Issue area",
+   "route": "Route",
+   "era": "History",
+   "repair": "Rule change",
+   "delivery": "Delivery case",
+   "overlay": "Group",
+   "glossary": "Term",
+   "office": "Office",
+   "page": "Page"
+  },
+  "ambiguous_rule": "return (kind === 'variable' && LOOPS[id]) || (kind === 'loop' && NODES[id]);",
+  "pill_rx": "11",
+  "outside_driver_region": [
+   "Outside drivers"
+  ]
+ },
+ "quotes": {
+  "outside_driver_glossary": "A force that affects the model but whose own causes lie outside its boundary, such as technology, population patterns, trade, foreign interference and major shocks. Drawn as a rounded pill outside the clusters.",
+  "confidence_label_glossary": "The short label on a claim or response saying what kind of evidence supports it: documented, well-supported, plausible, contested, hypothesis or not yet tested. The same scale grades connections on the map.",
+  "connection_glossary": "A claimed relationship between two variables. Its record explains the mechanism, gives the evidence grade and states the delay. Connection IDs begin with L, LE, LT, LX or T.",
+  "issue_record_glossary": "One of 193 records beneath the map, with IDs such as I017 or X01. Each describes a documented problem, case or policy, names its mechanism, gives an evidence grade, status and sources, and links to a variable or connection where it can.",
+  "well_supported_glossary": "The confidence label for a relationship on which several credible studies, designed to rule out other explanations, agree about direction. Each study's setting and limits still apply.",
+  "documented_glossary": "The confidence label for a fact or event on the public record: a statute, a court ruling or an official statistic. It establishes the event; it says nothing about the size of an effect unless the record does.",
+  "hypothesis_glossary": "The confidence label for a proposed relationship that needs stronger evidence. Diagrams draw it as a dotted line, and it never serves as the only support for a claim.",
+  "authority_glossary": "A connection showing that one body holds legal power over something: it appoints, appropriates, preempts, enforces or sets a rate. It says who decides, without saying which way the decision goes, so it has no sign and never closes a loop.",
+  "delay_glossary": "The time between a change and its effect. Codes: S, under 2 years; M, 2 to 10 years; L, over 10 years.",
+  "loop_closure_glossary": "A complete path of connections that returns to the starting variable. If any closing step is only a hypothesis, the whole loop stays uncertain.",
+  "positive_sign_glossary": "The connected variables tend to move in the same direction, with the model's other conditions held steady. A positive sign does not mean a benefit.",
+  "repair_log_glossary": "A dated list of 64 rule changes that altered who officials answer to, coded toward voters, away from voters, voters kept existing rules, mixed or pending.",
+  "methods_documented": "Documented means the event or fact is on the public record, such as a statute, a court ruling or an official statistic;",
+  "methods_well_supported": "Well supported means strong evidence backs the direction: a well-designed study such as a randomized experiment, several consistent studies, or an official estimate made with a published method, with no credible study finding the opposite.",
+  "methods_plausible": "Plausible means the mechanism is coherent and some evidence points that way, though the studies are weak or few.",
+  "methods_mixed": "Mixed means the evidence points in different directions for different parts of a claim.",
+  "methods_contested": "Contested means credible studies disagree, and both sides appear with the claim.",
+  "methods_hypothesis": "Hypothesis marks a proposed mechanism the model needs and cannot yet support;",
+  "methods_identifiers": "Identifiers are exact: R-05 is a reform profile and R5 is a loop, and a code such as B2 can name a variable (local reporting) or a loop (automatic benefits), so the text always says which.",
+  "methods_authority": "They record who holds legal power over something, such as Congress appropriating research money, without saying which way the decision will go, so they carry no sign and never close a loop.",
+  "methods_sign": "a plus sign can mark a harmful effect.",
+  "methods_no_score": "The Atlas does not predict elections or the odds that a reform passes, add reform effects into a single score, rank candidates or parties, or estimate how strong a whole loop is.",
+  "outcomes_why_not_one_number": "The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality. Keeping the families separate lets readers see those tradeoffs; adding them into one score would hide them.",
+  "effect_codes_note": "Reform profiles use these codes to show the expected direction and rough size of an effect on each outcome family. The codes are conditional on the reform working as described, and codes for different families are never added together.",
+  "repair_coding_last": "A row's direction describes the rule's effect on who officials answer to and carries no judgment of the people or parties involved.",
+  "delivery_grade_note": "The evidence grade on each entry rates the measured result;"
+ },
+ "grades": {
+  "links.evidence": {
+   "well-supported": 37,
+   "plausible": 35,
+   "documented": 32,
+   "plausible_contested": 7,
+   "hypothesis": 7
+  },
+  "links.contested (flag)": {
+   "false": 111,
+   "true": 7
+  },
+  "issues.grade": {
+   "well_supported": 89,
+   "plausible": 32,
+   "hypothesis": 2,
+   "documented": 70,
+   "retired": 1
+  },
+  "issues.remedy_note (first word)": {
+   "Hypothesis": 90,
+   "Well supported": 27,
+   "Plausible": 68,
+   "Contested": 1,
+   "Documented": 6,
+   "Retired": 1,
+   "Mixed": 1
+  },
+  "claims.confidence": {
+   "well-supported": 56,
+   "plausible": 38,
+   "documented": 321,
+   "contested": 18
+  },
+  "reforms.problem_evidence.grade": {
+   "plausible": 1,
+   "well-supported": 13,
+   "documented": 34,
+   "plausible_contested": 2
+  },
+  "reforms.remedy_evidence.grade": {
+   "plausible_contested": 2,
+   "plausible": 29,
+   "well-supported": 11,
+   "hypothesis": 7,
+   "contested": 1
+  },
+  "deliveryLog.rows.evidence_grade": {
+   "well-supported": 12,
+   "documented": 10,
+   "plausible": 2
+  },
+  "loops.evidence (first grade word)": {
+   "plausible": 7,
+   "hypothesis": 3,
+   "plausible_contested": 1,
+   "documented": 4,
+   "well-supported": 8
+  },
+  "repairLog.rows.direction": {
+   "toward voters": 24,
+   "away from voters": 24,
+   "voters kept existing rules": 10,
+   "mixed": 3,
+   "pending": 3
+  },
+  "repairLog.rows.verified": {
+   "true": 63,
+   "false": 1
+  },
+  "issues.jurisdiction = mixed": {
+   "other": 152,
+   "mixed": 42
+  },
+  "reforms.effects_confidence": {
+   "free text with scopes": 39,
+   "plain level": 11
+  }
+ },
+ "grade_facts": {
+  "contested_flag_links": [
+   "L09",
+   "L47",
+   "LE04",
+   "LE06",
+   "LT04",
+   "LT05",
+   "LT12"
+  ],
+  "plausible_contested_links": [
+   "L09",
+   "L47",
+   "LE04",
+   "LE06",
+   "LT04",
+   "LT05",
+   "LT12"
+  ],
+  "flag_equals_grade": true,
+  "mixed_remedy_issue": [
+   "X16"
+  ],
+  "retired_issue": [
+   "I128"
+  ],
+  "remedy_contested": [
+   [
+    "R-01",
+    "plausible_contested"
+   ],
+   [
+    "R-22",
+    "plausible_contested"
+   ],
+   [
+    "R-23",
+    "contested"
+   ]
+  ],
+  "problem_contested": [
+   [
+    "R-38",
+    "plausible_contested"
+   ],
+   [
+    "R-40",
+    "plausible_contested"
+   ]
+  ],
+  "not_yet_tested_uses": 0,
+  "grade_examples": {
+   "documented": [
+    "L05",
+    "L06",
+    "L08",
+    "L13"
+   ],
+   "well-supported": [
+    "L01",
+    "L03",
+    "L10",
+    "L11"
+   ],
+   "plausible": [
+    "L02",
+    "L04",
+    "L12",
+    "L15"
+   ],
+   "plausible_contested": [
+    "L09",
+    "L47",
+    "LE04",
+    "LE06"
+   ],
+   "hypothesis": [
+    "L18",
+    "L19",
+    "LE11",
+    "LT02"
+   ]
+  }
+ },
+ "links_example": {
+  "L08": {
+   "id": "L08",
+   "from": "C1",
+   "to": "C2",
+   "polarity": "+",
+   "type": "causal",
+   "delay": "S",
+   "evidence": "documented",
+   "contested": false,
+   "name": "Safe seats make the primary decisive",
+   "loops": [
+    "R10"
+   ],
+   "qualification": "Unite America, a reform advocacy group, counted 88% of House seats (383 of 435) as effectively decided in the 2026 primaries using Cook Political Report ratings; the count depends on the group's own definition of a decided seat.",
+   "from_title": "Seats with little electoral competition",
+   "to_title": "How often the primary decides the winner"
+  },
+  "L25": {
+   "id": "L25",
+   "from": "C2",
+   "to": "C3",
+   "polarity": "-",
+   "type": "causal",
+   "delay": "S",
+   "evidence": "well-supported",
+   "contested": false,
+   "name": "Decisive primaries reduce general-election pressure",
+   "loops": [
+    "R10"
+   ],
+   "qualification": "Incumbents can still lose primaries; this link measures the loss of general-election pressure, and total pressure depends on how often primaries are contested.",
+   "from_title": "How often the primary decides the winner",
+   "to_title": "Risk of losing office"
+  },
+  "L02": {
+   "id": "L02",
+   "from": "B1",
+   "to": "E1",
+   "polarity": "+",
+   "type": "money",
+   "delay": "M",
+   "evidence": "plausible",
+   "contested": false,
+   "name": "Political spending can tilt policy toward donors",
+   "loops": [
+    "R1",
+    "R6"
+   ],
+   "qualification": "A 2016 field experiment (Kalla and Broockman) found congressional offices granted meetings more often to people identified as donors; affluent and middle-income Americans want the same policy about 90% of the time, so any tilt shows on the issues where they differ.",
+   "from_title": "Money spent to influence politics",
+   "to_title": "Policy advantages for wealthy and organized interests"
+  },
+  "L09": {
+   "id": "L09",
+   "from": "C2",
+   "to": "B4",
+   "polarity": "+",
+   "type": "causal",
+   "delay": "L",
+   "evidence": "plausible_contested",
+   "contested": true,
+   "name": "Decisive primaries may deepen partisan hostility",
+   "loops": [],
+   "qualification": "Contested. The strongest tests (McGhee and coauthors 2014) found that opening primaries did not measurably change legislators' voting records, and they measured legislators; this link concerns voters' feelings toward the other party. A study of one Alaska election cycle found some moderation (Reilly, Wright and Lublin 2025).",
+   "from_title": "How often the primary decides the winner",
+   "to_title": "Hostility toward the other political party"
+  },
+  "T01": {
+   "id": "T01",
+   "from": "C3",
+   "to": "B2",
+   "polarity": "+",
+   "type": "causal",
+   "delay": "L",
+   "evidence": "hypothesis",
+   "contested": false,
+   "name": "Competitive politics may sustain demand for local news",
+   "loops": [
+    "R16"
+   ],
+   "qualification": "Hypothesis with no cited study. It is the only step that closes loop R16, so that whole loop stays unconfirmed until this step is tested.",
+   "from_title": "Risk of losing office",
+   "to_title": "Availability of local reporting"
+  },
+  "L42": {
+   "id": "L42",
+   "from": "C4",
+   "to": "C1",
+   "polarity": "+",
+   "type": "causal",
+   "delay": "M",
+   "evidence": "documented",
+   "contested": false,
+   "name": "Incumbent-drawn maps create safe seats",
+   "loops": [
+    "R4a",
+    "R10",
+    "R12"
+   ],
+   "qualification": "Residential sorting also produces safe seats without any map drawing (Chen and Rodden 2013), so the count of safe seats has more than one cause.",
+   "from_title": "Officeholders' control over election rules",
+   "to_title": "Seats with little electoral competition"
+  },
+  "L53": {
+   "id": "L53",
+   "from": "C3",
+   "to": "C4",
+   "polarity": "-",
+   "type": "causal",
+   "delay": "M",
+   "evidence": "plausible",
+   "contested": false,
+   "name": "Officials safe from defeat write rules for themselves",
+   "loops": [
+    "R10"
+   ],
+   "qualification": "The evidence is events, chiefly the 2025 mid-decade redistricting in states with one-party control, and legal analysis (Hasen 2020); no study measures this link directly.",
+   "from_title": "Risk of losing office",
+   "to_title": "Officeholders' control over election rules"
+  }
+ },
+ "loops": {
+  "R1": {
+   "id": "R1",
+   "type": "R",
+   "title": "Wealth and political influence reinforce each other",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "plausible",
+   "delay": "L",
+   "chain": [
+    [
+     "A1",
+     "+"
+    ],
+    [
+     "B1",
+     "+"
+    ],
+    [
+     "E1",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Wealth concentration",
+     "+"
+    ],
+    [
+     "Money in politics",
+     "+"
+    ],
+    [
+     "Policy tilt to insiders",
+     "+"
+    ]
+   ],
+   "links": [
+    "L01",
+    "L02",
+    "L03"
+   ],
+   "evidence_summary": "The first and last steps are well supported: L01: Concentrated wealth funds more political spending rests on donor records, and L03: Policy advantages add to wealth at the top on CBO's accounting of who receives tax benefits. The middle step, L02: Political spending can tilt policy toward donors, is plausible and the weakest. A 2016 field experiment found that donors get meetings, and since affluent and middle-income Americans want the same policy about 90% of the time, any tilt shows only where they disagree.",
+   "qualification": "The loop runs on issues where wealthy donors' preferences differ from those of middle-income voters; on most issues the two groups agree, so its reach depends on the issue.",
+   "reforms": [
+    "R-08",
+    "R-09",
+    "R-11",
+    "R-28"
+   ],
+   "direction": "running_up",
+   "link_detail": [
+    {
+     "id": "L01",
+     "from": "A1",
+     "to": "B1",
+     "polarity": "+",
+     "type": "money",
+     "delay": "S",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Concentrated wealth funds more political spending",
+     "loops": [
+      "R1",
+      "R6"
+     ],
+     "qualification": null,
+     "from_title": "Concentration of household wealth",
+     "to_title": "Money spent to influence politics"
+    },
+    {
+     "id": "L02",
+     "from": "B1",
+     "to": "E1",
+     "polarity": "+",
+     "type": "money",
+     "delay": "M",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Political spending can tilt policy toward donors",
+     "loops": [
+      "R1",
+      "R6"
+     ],
+     "qualification": "A 2016 field experiment (Kalla and Broockman) found congressional offices granted meetings more often to people identified as donors; affluent and middle-income Americans want the same policy about 90% of the time, so any tilt shows on the issues where they differ.",
+     "from_title": "Money spent to influence politics",
+     "to_title": "Policy advantages for wealthy and organized interests"
+    },
+    {
+     "id": "L03",
+     "from": "E1",
+     "to": "A1",
+     "polarity": "+",
+     "type": "money",
+     "delay": "L",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Policy advantages add to wealth at the top",
+     "loops": [
+      "R1"
+     ],
+     "qualification": "CBO estimated that about 75% of the benefit of lower tax rates on capital gains and dividends went to the top 1% of households in 2019; asset prices also move the top share, so policy is one cause among several.",
+     "from_title": "Policy advantages for wealthy and organized interests",
+     "to_title": "Concentration of household wealth"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "A1",
+     "title": "Concentration of household wealth",
+     "type": "stock",
+     "increase_means": "A higher value means the wealthiest households hold a larger share of all household wealth.",
+     "label": "Wealth concentration"
+    },
+    {
+     "id": "B1",
+     "title": "Money spent to influence politics",
+     "type": "flow",
+     "increase_means": "A higher value means more money flowing into campaigns, outside groups and lobbying.",
+     "label": "Money in politics"
+    },
+    {
+     "id": "E1",
+     "title": "Policy advantages for wealthy and organized interests",
+     "type": "stock",
+     "increase_means": "A higher value means rules deliver more of their benefits to wealthy people and organized groups.",
+     "label": "Policy tilt to insiders"
+    }
+   ]
+  },
+  "R8": {
+   "id": "R8",
+   "type": "R",
+   "title": "Housing scarcity strengthens owners' incentive to restrict building",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "well-supported for both links; the loop no longer depends on A1",
+   "delay": "L",
+   "chain": [
+    [
+     "A5",
+     "+"
+    ],
+    [
+     "A6",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Housing scarcity",
+     "+"
+    ],
+    [
+     "Owner home equity",
+     "+"
+    ]
+   ],
+   "links": [
+    "L38",
+    "L39"
+   ],
+   "evidence_summary": "Both steps are well supported. L38: Scarcity raises existing home values rests on house-price studies and the owner-renter wealth gap in the Survey of Consumer Finances (1989 to 2022). L39: Owners' equity drives opposition to new housing rests on homevoter research (Fischel 2001) and records of Massachusetts planning meetings (Einstein, Glick and Palmer 2019); it is the weaker step because equity is one motive among several for opposing construction.",
+   "qualification": "The loop follows owners' equity and the gap between owners and renters. Rising home equity tends to lower the top 1% share of wealth (T12: Rising home equity lowers the top wealth share), so this loop does not explain that share.",
+   "reforms": [
+    "R-30"
+   ],
+   "direction": "running_up",
+   "link_detail": [
+    {
+     "id": "L38",
+     "from": "A5",
+     "to": "A6",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Scarcity raises existing home values",
+     "loops": [
+      "R8"
+     ],
+     "qualification": null,
+     "from_title": "Housing scarcity",
+     "to_title": "Homeowners' equity"
+    },
+    {
+     "id": "L39",
+     "from": "A6",
+     "to": "A5",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Owners' equity drives opposition to new housing",
+     "loops": [
+      "R8"
+     ],
+     "qualification": "Einstein, Glick and Palmer (2019) found that people commenting at Massachusetts planning and zoning meetings were disproportionately older homeowners opposed to new housing; the study does not separate equity from other motives, such as traffic or school crowding.",
+     "from_title": "Homeowners' equity",
+     "to_title": "Housing scarcity"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "A5",
+     "title": "Housing scarcity",
+     "type": "stock",
+     "increase_means": "A higher value means homes are harder to find or afford in the places people want to live.",
+     "label": "Housing scarcity"
+    },
+    {
+     "id": "A6",
+     "title": "Homeowners' equity",
+     "type": "stock",
+     "increase_means": "A higher value means owners hold more value in their homes, relative to their mortgages and to renters' wealth.",
+     "label": "Owner home equity"
+    }
+   ]
+  },
+  "B4": {
+   "id": "B4",
+   "type": "B",
+   "title": "Electoral consequences can improve public performance",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "well-supported where seats are competitive; C5 to D5 well-supported",
+   "delay": "M",
+   "chain": [
+    [
+     "D5",
+     "-"
+    ],
+    [
+     "C3",
+     "+"
+    ],
+    [
+     "C5",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Public service quality",
+     "-"
+    ],
+    [
+     "Electoral pressure",
+     "+"
+    ],
+    [
+     "Sanction applied",
+     "+"
+    ]
+   ],
+   "links": [
+    "L23",
+    "L24",
+    "L54"
+   ],
+   "evidence_summary": "All three steps are well supported: retrospective voting in L23: Poor service raises incumbents' risk of losing, defeats where seats are competitive in L24: Electoral pressure leads to actual defeats, and better performance after replacement or its threat in L54: Removing incumbents improves performance of those remaining. For U.S. services the weakest is L54, since its main study covers Brazilian mayors.",
+   "qualification": "The loop works only where seats are competitive. The threat of defeat and an actual defeat are separate steps, and testing the loop needs evidence on both over several election cycles.",
+   "reforms": [
+    "R-01",
+    "R-02",
+    "R-06",
+    "R-07"
+   ],
+   "direction": "running",
+   "link_detail": [
+    {
+     "id": "L23",
+     "from": "D5",
+     "to": "C3",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "S",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Poor service raises incumbents' risk of losing",
+     "loops": [
+      "B4"
+     ],
+     "qualification": "Retrospective voting is well documented (Healy and Malhotra 2013), and voters also punish officials for events outside their control, such as natural disasters, so the pressure does not track performance alone.",
+     "from_title": "Quality of public services",
+     "to_title": "Risk of losing office"
+    },
+    {
+     "id": "L24",
+     "from": "C3",
+     "to": "C5",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Electoral pressure leads to actual defeats",
+     "loops": [
+      "B4"
+     ],
+     "qualification": "Pressure can change an official's behavior before any defeat occurs, so testing the whole chain needs evidence on both the threat and the defeats over several election cycles.",
+     "from_title": "Risk of losing office",
+     "to_title": "Incumbents defeated or pushed into retirement"
+    },
+    {
+     "id": "L54",
+     "from": "C5",
+     "to": "D5",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Removing incumbents improves performance of those remaining",
+     "loops": [
+      "B4"
+     ],
+     "qualification": "The main study (Ferraz and Finan 2011) found that Brazilian mayors who could run again misused less federal money than mayors facing term limits; U.S. service quality was not studied.",
+     "from_title": "Incumbents defeated or pushed into retirement",
+     "to_title": "Quality of public services"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "D5",
+     "title": "Quality of public services",
+     "type": "stock",
+     "increase_means": "A higher value means services are delivered faster and with fewer errors.",
+     "label": "Public service quality"
+    },
+    {
+     "id": "C3",
+     "title": "Risk of losing office",
+     "type": "auxiliary",
+     "increase_means": "A higher value means incumbents face a more credible chance of defeat.",
+     "label": "Electoral pressure"
+    },
+    {
+     "id": "C5",
+     "title": "Incumbents defeated or pushed into retirement",
+     "type": "flow",
+     "increase_means": "A higher value means more incumbents lose or retire under threat of defeat in an election cycle.",
+     "label": "Sanction applied"
+    }
+   ]
+  },
+  "R10": {
+   "id": "R10",
+   "type": "R",
+   "title": "Safe seats shift accountability to small primary electorates",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "documented for C1 to C2; well-supported for C2 to C3; plausible for C3 to C4 (the weakest link)",
+   "delay": "M",
+   "chain": [
+    [
+     "C1",
+     "+"
+    ],
+    [
+     "C2",
+     "-"
+    ],
+    [
+     "C3",
+     "-"
+    ],
+    [
+     "C4",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Safe seats",
+     "+"
+    ],
+    [
+     "Primary decisiveness",
+     "-"
+    ],
+    [
+     "Electoral pressure",
+     "-"
+    ],
+    [
+     "Incumbent control of election rules",
+     "+"
+    ]
+   ],
+   "links": [
+    "L08",
+    "L25",
+    "L53",
+    "L42"
+   ],
+   "evidence_summary": "L08: Safe seats make the primary decisive and L42: Incumbent-drawn maps create safe seats are documented, and L25: Decisive primaries reduce general-election pressure is well supported. The weakest step is L53: Officials safe from defeat write rules for themselves, graded plausible: its evidence is the 2025 mid-decade redistricting in states with one-party control and legal analysis. Whether primaries make legislators more extreme is a separate, contested question, and the strongest tests found no effect.",
+   "qualification": "Seat safety also comes from where voters live, and the claim that primary reform makes legislators more moderate is contested, so the loop concerns accountability more than ideology.",
+   "reforms": [
+    "R-01",
+    "R-02",
+    "R-03"
+   ],
+   "direction": "running_up",
+   "link_detail": [
+    {
+     "id": "L08",
+     "from": "C1",
+     "to": "C2",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "S",
+     "evidence": "documented",
+     "contested": false,
+     "name": "Safe seats make the primary decisive",
+     "loops": [
+      "R10"
+     ],
+     "qualification": "Unite America, a reform advocacy group, counted 88% of House seats (383 of 435) as effectively decided in the 2026 primaries using Cook Political Report ratings; the count depends on the group's own definition of a decided seat.",
+     "from_title": "Seats with little electoral competition",
+     "to_title": "How often the primary decides the winner"
+    },
+    {
+     "id": "L25",
+     "from": "C2",
+     "to": "C3",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "S",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Decisive primaries reduce general-election pressure",
+     "loops": [
+      "R10"
+     ],
+     "qualification": "Incumbents can still lose primaries; this link measures the loss of general-election pressure, and total pressure depends on how often primaries are contested.",
+     "from_title": "How often the primary decides the winner",
+     "to_title": "Risk of losing office"
+    },
+    {
+     "id": "L53",
+     "from": "C3",
+     "to": "C4",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Officials safe from defeat write rules for themselves",
+     "loops": [
+      "R10"
+     ],
+     "qualification": "The evidence is events, chiefly the 2025 mid-decade redistricting in states with one-party control, and legal analysis (Hasen 2020); no study measures this link directly.",
+     "from_title": "Risk of losing office",
+     "to_title": "Officeholders' control over election rules"
+    },
+    {
+     "id": "L42",
+     "from": "C4",
+     "to": "C1",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "documented",
+     "contested": false,
+     "name": "Incumbent-drawn maps create safe seats",
+     "loops": [
+      "R4a",
+      "R10",
+      "R12"
+     ],
+     "qualification": "Residential sorting also produces safe seats without any map drawing (Chen and Rodden 2013), so the count of safe seats has more than one cause.",
+     "from_title": "Officeholders' control over election rules",
+     "to_title": "Seats with little electoral competition"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "C1",
+     "title": "Seats with little electoral competition",
+     "type": "stock",
+     "increase_means": "A higher value means more seats are safe for one party.",
+     "label": "Safe seats"
+    },
+    {
+     "id": "C2",
+     "title": "How often the primary decides the winner",
+     "type": "auxiliary",
+     "increase_means": "A higher value means more seats are settled in the primary.",
+     "label": "Primary decisiveness"
+    },
+    {
+     "id": "C3",
+     "title": "Risk of losing office",
+     "type": "auxiliary",
+     "increase_means": "A higher value means incumbents face a more credible chance of defeat.",
+     "label": "Electoral pressure"
+    },
+    {
+     "id": "C4",
+     "title": "Officeholders' control over election rules",
+     "type": "stock",
+     "increase_means": "A higher value means incumbents have more say over the rules of their own elections.",
+     "label": "Incumbent control of election rules"
+    }
+   ]
+  },
+  "R11": {
+   "id": "R11",
+   "type": "R",
+   "title": "Party loyalty weakens consequences for breaking norms",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "well-supported for B4 to C3; plausible for the rest",
+   "delay": "M",
+   "chain": [
+    [
+     "B4",
+     "-"
+    ],
+    [
+     "C3",
+     "-"
+    ],
+    [
+     "D2",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Affective polarization",
+     "-"
+    ],
+    [
+     "Electoral pressure",
+     "-"
+    ],
+    [
+     "Executive unilateralism",
+     "+"
+    ]
+   ],
+   "links": [
+    "L50",
+    "L51",
+    "L52"
+   ],
+   "evidence_summary": "Survey experiments (Graham and Svolik 2020) give strong support to L50: Partisan loyalty shields incumbents from voter punishment, and studies of presidential power back L51: Electoral pressure restrains unilateral presidential action (Howell 2003; Christenson and Kriner 2020). The weakest step is L52: Unilateral action deepens partisan hostility, graded plausible, which rests on social identity research (Mason 2018) without a direct test.",
+   "qualification": "In realistic matchups only about 3.5% of respondents defected from a norm-breaking candidate of their own party, which can decide close races, so the loop bites hardest where seats are safe.",
+   "reforms": [
+    "R-01"
+   ],
+   "direction": "running_up",
+   "link_detail": [
+    {
+     "id": "L50",
+     "from": "B4",
+     "to": "C3",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "S",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Partisan loyalty shields incumbents from voter punishment",
+     "loops": [
+      "R11"
+     ],
+     "qualification": "Graham and Svolik (2020) found in survey experiments with 1,691 U.S. respondents that about 3.5% of respondents defected from their own party's candidate in realistic matchups, and the average penalty across all matchups was 11.7 points.",
+     "from_title": "Hostility toward the other political party",
+     "to_title": "Risk of losing office"
+    },
+    {
+     "id": "L51",
+     "from": "C3",
+     "to": "D2",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Electoral pressure restrains unilateral presidential action",
+     "loops": [
+      "R11"
+     ],
+     "qualification": "The restraint works through public opinion and the reaction in Congress (Christenson and Kriner 2020), so it weakens when partisans do not punish their own side.",
+     "from_title": "Risk of losing office",
+     "to_title": "Presidential action without new legislation"
+    },
+    {
+     "id": "L52",
+     "from": "D2",
+     "to": "B4",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "M",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Unilateral action deepens partisan hostility",
+     "loops": [
+      "R11"
+     ],
+     "qualification": "This rests on social identity research (Mason 2018); no direct test of unilateral action's effect on partisan hostility is cited.",
+     "from_title": "Presidential action without new legislation",
+     "to_title": "Hostility toward the other political party"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "B4",
+     "title": "Hostility toward the other political party",
+     "type": "stock",
+     "increase_means": "A higher value means people feel colder and more hostile toward the other party's supporters.",
+     "label": "Affective polarization"
+    },
+    {
+     "id": "C3",
+     "title": "Risk of losing office",
+     "type": "auxiliary",
+     "increase_means": "A higher value means incumbents face a more credible chance of defeat.",
+     "label": "Electoral pressure"
+    },
+    {
+     "id": "D2",
+     "title": "Presidential action without new legislation",
+     "type": "stock",
+     "increase_means": "A higher value means more policy is set by presidential order or emergency power without a new law.",
+     "label": "Executive unilateralism"
+    }
+   ]
+  },
+  "R13": {
+   "id": "R13",
+   "type": "R",
+   "title": "Congressional weakness creates room for presidential action",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "well-supported for D1 to D2; plausible for D2 to D1",
+   "delay": "L",
+   "chain": [
+    [
+     "D1",
+     "-"
+    ],
+    [
+     "D2",
+     "-"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Congressional capacity",
+     "-"
+    ],
+    [
+     "Executive unilateralism",
+     "-"
+    ]
+   ],
+   "links": [
+    "L11",
+    "L12"
+   ],
+   "evidence_summary": "L11: A weaker Congress invites presidential action is well supported (Howell 2003). The return step, L12: Presidential action erodes Congress's will to legislate, is plausible and the weaker, resting on legal and historical analysis (Chafetz 2017).",
+   "qualification": "Court rulings can strengthen or limit the executive from outside the loop, as the February 2026 tariff ruling did, so the loop's pace depends on doctrine.",
+   "reforms": [
+    "R-12",
+    "R-17",
+    "R-18"
+   ],
+   "direction": "running_up",
+   "link_detail": [
+    {
+     "id": "L11",
+     "from": "D1",
+     "to": "D2",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "S",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "A weaker Congress invites presidential action",
+     "loops": [
+      "R13"
+     ],
+     "qualification": null,
+     "from_title": "Congress's ability to write and check policy",
+     "to_title": "Presidential action without new legislation"
+    },
+    {
+     "id": "L12",
+     "from": "D2",
+     "to": "D1",
+     "polarity": "-",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Presidential action erodes Congress's will to legislate",
+     "loops": [
+      "R13"
+     ],
+     "qualification": "This return effect rests on legal and historical analysis (Chafetz 2017) and has no quantitative test.",
+     "from_title": "Presidential action without new legislation",
+     "to_title": "Congress's ability to write and check policy"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "D1",
+     "title": "Congress's ability to write and check policy",
+     "type": "stock",
+     "increase_means": "A higher value means Congress has more staff and expertise to draft laws and oversee agencies.",
+     "label": "Congressional capacity"
+    },
+    {
+     "id": "D2",
+     "title": "Presidential action without new legislation",
+     "type": "stock",
+     "increase_means": "A higher value means more policy is set by presidential order or emergency power without a new law.",
+     "label": "Executive unilateralism"
+    }
+   ]
+  },
+  "R16": {
+   "id": "R16",
+   "type": "R",
+   "title": "Local news loss and weak electoral pressure may reinforce each other",
+   "closure": "closed with a hypothesized step",
+   "evidence": "well-supported for the step from local reporting to the risk of losing office; hypothesis for the closing step",
+   "delay": "L",
+   "chain": [
+    [
+     "B2",
+     "+"
+    ],
+    [
+     "C3",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Local news supply",
+     "+"
+    ],
+    [
+     "Electoral pressure",
+     "+"
+    ]
+   ],
+   "links": [
+    "L26",
+    "T01"
+   ],
+   "evidence_summary": "L26: Local reporting raises pressure on incumbents is well supported by studies of mayoral elections (Rubado and Jennings 2020). The return step, T01: Competitive politics may sustain demand for local news, is a hypothesis with no cited study and the weakest step; it alone closes the loop. A separate connection, L27: Local reporting can temper partisan hostility, links local reporting to partisan hostility and sits outside this loop.",
+   "qualification": "Until the return step is tested, the loop is a proposal, and the evidence supports only the one-way effect of local reporting on electoral pressure.",
+   "reforms": [
+    "R-06",
+    "R-32"
+   ],
+   "direction": "running_down",
+   "link_detail": [
+    {
+     "id": "L26",
+     "from": "B2",
+     "to": "C3",
+     "polarity": "+",
+     "type": "information",
+     "delay": "M",
+     "evidence": "well-supported",
+     "contested": false,
+     "name": "Local reporting raises pressure on incumbents",
+     "loops": [
+      "R16"
+     ],
+     "qualification": "The electoral evidence comes from U.S. mayoral elections (Rubado and Jennings 2020). The finding that newspaper closures raise municipal borrowing costs (Gao, Lee and Murphy 2020) concerns a separate outcome.",
+     "from_title": "Availability of local reporting",
+     "to_title": "Risk of losing office"
+    },
+    {
+     "id": "T01",
+     "from": "C3",
+     "to": "B2",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "hypothesis",
+     "contested": false,
+     "name": "Competitive politics may sustain demand for local news",
+     "loops": [
+      "R16"
+     ],
+     "qualification": "Hypothesis with no cited study. It is the only step that closes loop R16, so that whole loop stays unconfirmed until this step is tested.",
+     "from_title": "Risk of losing office",
+     "to_title": "Availability of local reporting"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "B2",
+     "title": "Availability of local reporting",
+     "type": "stock",
+     "increase_means": "A higher value means more reporting on local government and local elections.",
+     "label": "Local news supply"
+    },
+    {
+     "id": "C3",
+     "title": "Risk of losing office",
+     "type": "auxiliary",
+     "increase_means": "A higher value means incumbents face a more credible chance of defeat.",
+     "label": "Electoral pressure"
+    }
+   ]
+  },
+  "R7": {
+   "id": "R7",
+   "type": "R",
+   "title": "Service performance and earned trust can reinforce each other",
+   "closure": "closed: every step is a numbered connection",
+   "evidence": "hypothesis for the named direction; plausible for the compliance channel; the delivery leg is documented case by case in the Delivery Log, though no study measures the loop closing",
+   "delay": "L",
+   "chain": [
+    [
+     "D5",
+     "+"
+    ],
+    [
+     "E2",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Public service quality",
+     "+"
+    ],
+    [
+     "Warranted trust",
+     "+"
+    ]
+   ],
+   "links": [
+    "L20",
+    "L21"
+   ],
+   "evidence_summary": "Both steps are graded plausible. In L20: Better public services build earned trust, survey trust also moves with which party holds office (Hetherington 2005). L21: Earned trust supports compliance and service funding works through compliance and revenue, which tax morale research supports; its funding channel is a hypothesis and the weakest part of the loop.",
+   "qualification": "No study has measured the complete loop, and the claim that a service failure makes the next budget cut easier is a hypothesis.",
+   "reforms": [
+    "R-14",
+    "R-17",
+    "R-27"
+   ],
+   "direction": "running_down",
+   "link_detail": [
+    {
+     "id": "L20",
+     "from": "D5",
+     "to": "E2",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Better public services build earned trust",
+     "loops": [
+      "R7"
+     ],
+     "qualification": "Survey trust also moves with which party holds office (Hetherington 2005), so the share of trust that comes from performance is uncertain.",
+     "from_title": "Quality of public services",
+     "to_title": "Trust earned through performance"
+    },
+    {
+     "id": "L21",
+     "from": "E2",
+     "to": "D5",
+     "polarity": "+",
+     "type": "causal",
+     "delay": "L",
+     "evidence": "plausible",
+     "contested": false,
+     "name": "Earned trust supports compliance and service funding",
+     "loops": [
+      "R7"
+     ],
+     "qualification": "Studies of tax morale (Luttmer and Singhal 2014) and COVID-19 rules (Bargain and Aminjonov 2020) support the compliance channel; the claim that trust raises political support for funding is a hypothesis.",
+     "from_title": "Trust earned through performance",
+     "to_title": "Quality of public services"
+    }
+   ],
+   "node_detail": [
+    {
+     "id": "D5",
+     "title": "Quality of public services",
+     "type": "stock",
+     "increase_means": "A higher value means services are delivered faster and with fewer errors.",
+     "label": "Public service quality"
+    },
+    {
+     "id": "E2",
+     "title": "Trust earned through performance",
+     "type": "stock",
+     "increase_means": "A higher value means more of the public's confidence rests on evidence that institutions perform.",
+     "label": "Warranted trust"
+    }
+   ]
+  },
+  "B2": {
+   "id": "B2",
+   "type": "B",
+   "title": "Automatic benefits cushion economic shocks",
+   "closure": "conceptual: no complete numbered chain",
+   "evidence": "well-supported",
+   "delay": "S",
+   "chain": [
+    [
+     "A4 hardship",
+     "+"
+    ],
+    [
+     "Automatic support",
+     "-"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Household hardship",
+     "+"
+    ],
+    [
+     "Automatic support (UI, credits)",
+     "-"
+    ]
+   ],
+   "links": [],
+   "evidence_summary": "The model grades the mechanism well supported. Neither step is a numbered connection with its own citation, so the evidence cannot be inspected step by step, and that missing chain is the weakest point.",
+   "qualification": "Only benefits with triggers in law respond automatically. The 2021 expanded child tax credit was a one-year decision that expired on a set date, so it shows what a permanent design could do without being an instance of one.",
+   "reforms": [
+    "R-25",
+    "R-26"
+   ],
+   "direction": "running",
+   "link_detail": [],
+   "node_detail": []
+  },
+  "B3": {
+   "id": "B3",
+   "type": "B",
+   "title": "New competitors can limit market power",
+   "closure": "conceptual: no complete numbered chain",
+   "evidence": "well-supported where entry is possible",
+   "delay": "M",
+   "chain": [
+    [
+     "Excess profits",
+     "+"
+    ],
+    [
+     "Entry",
+     "+"
+    ],
+    [
+     "Competitive pressure",
+     "-"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Excess profits",
+     "+"
+    ],
+    [
+     "Entry",
+     "+"
+    ],
+    [
+     "Competitive pressure",
+     "-"
+    ]
+   ],
+   "links": [],
+   "evidence_summary": "The model grades the mechanism well supported where entry is possible. Its three variables sit outside the model's numbered variables and none of its steps is a numbered connection, so the weakest point is the missing chain.",
+   "qualification": "Entry needs access, financing and scale, and vertical integration or serial acquisitions can block it, so high profits in a concentrated market do not guarantee that a rival appears.",
+   "reforms": [
+    "R-19",
+    "R-20"
+   ],
+   "direction": "disabled in concentrated sectors",
+   "link_detail": [],
+   "node_detail": []
+  },
+  "R9": {
+   "id": "R9",
+   "type": "R",
+   "title": "Taking part in a successful repair may support the next one",
+   "closure": "conceptual: no complete numbered chain",
+   "evidence": "hypothesis",
+   "delay": "M",
+   "chain": [
+    [
+     "Effective participation",
+     "+"
+    ],
+    [
+     "Accountable delivery",
+     "+"
+    ],
+    [
+     "E2",
+     "+"
+    ]
+   ],
+   "chain_labels": [
+    [
+     "Effective participation",
+     "+"
+    ],
+    [
+     "Accountable delivery",
+     "+"
+    ],
+    [
+     "Warranted trust",
+     "+"
+    ]
+   ],
+   "links": [],
+   "evidence_summary": "The complete loop is a design hypothesis. Studies of citizen panels and participatory budgeting measure effects on participants, and the weakest step is the return from trust to wider participation, which has not been measured across the population.",
+   "qualification": "Effects are measured on the people who took part; evidence of lasting change in the wider public's trust or participation is limited.",
+   "reforms": [
+    "R-33",
+    "R-34"
+   ],
+   "direction": "design_target",
+   "link_detail": [],
+   "node_detail": [
+    {
+     "id": "E2",
+     "title": "Trust earned through performance",
+     "type": "stock",
+     "increase_means": "A higher value means more of the public's confidence rests on evidence that institutions perform.",
+     "label": "Warranted trust"
+    }
+   ]
+  }
+ },
+ "loops_through_C3": [
+  "B4",
+  "R10",
+  "R11",
+  "R16"
+ ],
+ "r11_has_variable_b4": true,
+ "reform_R01": {
+  "id": "R-01",
+  "title": "All-party primaries with ranked general elections",
+  "targets": [
+   "L25",
+   "L08",
+   "C2"
+  ],
+  "loops": [
+   "R10",
+   "B4",
+   "R11"
+  ],
+  "band": "rules",
+  "effects": {
+   "DQ": "+M",
+   "GE": "+S",
+   "EP": "0",
+   "EQ": "0"
+  },
+  "effects_confidence": "medium (participation); low (moderation)",
+  "problem_grade": "plausible",
+  "remedy_grade": "plausible_contested",
+  "routes": [
+   {
+    "route": "BI",
+    "who": "Voters in initiative states",
+    "feasibility": "medium",
+    "note": "Massachusetts Question 3 and Alaska Ballot Measure 2, which would repeal Alaska's top-four primary and ranked-choice general election, are both on the November 3, 2026 ballot.",
+    "checked": "2026-10-15"
+   },
+   {
+    "route": "SS",
+    "who": "Legislatures",
+    "feasibility": "low",
+    "note": "Legislators elected under the current rules rarely change them.",
+    "checked": null
+   },
+   {
+    "route": "LOC",
+    "who": "Home-rule cities, for municipal offices",
+    "feasibility": "medium",
+    "note": "This route is closed to cities and counties in the 19 states that prohibit ranked-choice voting in some or all elections, as of October 15, 2026.",
+    "checked": "2026-10-15"
+   },
+   {
+    "route": "FS",
+    "who": "Congress under the Elections Clause",
+    "feasibility": "very low",
+    "note": null,
+    "checked": null
+   }
+  ],
+  "status_checked": "2026-10-15",
+  "rejected": false,
+  "target_detail": [
+   {
+    "id": "L25",
+    "kind": "connection",
+    "title": "Decisive primaries reduce general-election pressure"
+   },
+   {
+    "id": "L08",
+    "kind": "connection",
+    "title": "Safe seats make the primary decisive"
+   },
+   {
+    "id": "C2",
+    "kind": "variable",
+    "title": "How often the primary decides the winner"
+   }
+  ],
+  "loop_titles": {
+   "R10": "Safe seats shift accountability to small primary electorates",
+   "B4": "Electoral consequences can improve public performance",
+   "R11": "Party loyalty weakens consequences for breaking norms"
+  }
+ },
+ "namespaces": {
+  "variable": {
+   "count": 51,
+   "sample": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "A5",
+    "B1"
+   ]
+  },
+  "connection": {
+   "count": 118,
+   "sample": [
+    "L01",
+    "L02",
+    "L03",
+    "L04",
+    "L05",
+    "L06"
+   ]
+  },
+  "loop": {
+   "count": 23,
+   "sample": [
+    "R1",
+    "R1b",
+    "R2",
+    "R3",
+    "R4a",
+    "R4b"
+   ]
+  },
+  "reform": {
+   "count": 50,
+   "sample": [
+    "R-01",
+    "R-02",
+    "R-03",
+    "R-04",
+    "R-05",
+    "R-06"
+   ]
+  },
+  "issue": {
+   "count": 194,
+   "sample": [
+    "I001",
+    "I002",
+    "I003",
+    "I004",
+    "I005",
+    "I006"
+   ]
+  },
+  "claim": {
+   "count": 433,
+   "sample": [
+    "CL1400",
+    "CL1401",
+    "CL1402",
+    "CL1403",
+    "CL1404",
+    "CL1405"
+   ]
+  },
+  "source": {
+   "count": 1140,
+   "sample": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06"
+   ]
+  },
+  "pathway": {
+   "count": 16,
+   "sample": [
+    "PW01",
+    "PW02",
+    "PW03",
+    "PW04",
+    "PW05",
+    "PW06"
+   ]
+  },
+  "domain": {
+   "count": 10,
+   "sample": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06"
+   ]
+  },
+  "route": {
+   "count": 11,
+   "sample": [
+    "LOC",
+    "SS",
+    "BI",
+    "FS",
+    "FR",
+    "FA"
+   ]
+  },
+  "repair": {
+   "count": 64,
+   "sample": [
+    "RL01",
+    "RL02",
+    "RL03",
+    "RL04",
+    "RL05",
+    "RL06"
+   ]
+  },
+  "delivery": {
+   "count": 24,
+   "sample": [
+    "DL01",
+    "DL02",
+    "DL03",
+    "DL04",
+    "DL05",
+    "DL06"
+   ]
+  },
+  "overlay": {
+   "count": 9,
+   "sample": [
+    "DV-RACE",
+    "DV-HIST",
+    "DV-DISAB",
+    "DV-GENDER",
+    "DV-GEO",
+    "DV-IMMIG"
+   ]
+  },
+  "check": {
+   "count": 14,
+   "sample": [
+    "CC01",
+    "CC02",
+    "CC03",
+    "CC04",
+    "CC05",
+    "CC06"
+   ]
+  },
+  "rejected_link": {
+   "count": 3,
+   "sample": [
+    "LTR1",
+    "LTR2",
+    "LTR3"
+   ]
+  },
+  "era": {
+   "count": 16,
+   "sample": [
+    "H01",
+    "H02",
+    "H03",
+    "H04",
+    "H05",
+    "H06"
+   ]
+  },
+  "region": {
+   "count": 10,
+   "sample": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "X"
+   ]
+  },
+  "v5_standards_rule": {
+   "count": 10,
+   "sample": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+   ]
+  }
+ },
+ "v5_standards_rules": {
+  "R1": "Newsprint leads.",
+  "R2": "One lever per page.",
+  "R3": "Hairlines, not boxes.",
+  "R4": "Specify and show.",
+  "R5": "Red is punctuation.",
+  "R6": "The grid is a signature.",
+  "R7": "Dimension everything.",
+  "R8": "Source everything.",
+  "R9": "Pillars in order.",
+  "R10": "Number the system."
+ },
+ "collisions": {
+  "exact": [
+   [
+    "B2",
+    [
+     "loop",
+     "variable"
+    ]
+   ],
+   [
+    "B3",
+    [
+     "loop",
+     "variable"
+    ]
+   ],
+   [
+    "B4",
+    [
+     "loop",
+     "variable"
+    ]
+   ],
+   [
+    "B5",
+    [
+     "loop",
+     "variable"
+    ]
+   ],
+   [
+    "R1",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R10",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R2",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R3",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R5",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R6",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R7",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R8",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ],
+   [
+    "R9",
+    [
+     "loop",
+     "v5_standards_rule"
+    ]
+   ]
+  ],
+  "near": [
+   {
+    "normalized": "B2",
+    "members": [
+     [
+      "loop",
+      "B2"
+     ],
+     [
+      "variable",
+      "B2"
+     ]
+    ]
+   },
+   {
+    "normalized": "B3",
+    "members": [
+     [
+      "loop",
+      "B3"
+     ],
+     [
+      "variable",
+      "B3"
+     ]
+    ]
+   },
+   {
+    "normalized": "B4",
+    "members": [
+     [
+      "loop",
+      "B4"
+     ],
+     [
+      "variable",
+      "B4"
+     ]
+    ]
+   },
+   {
+    "normalized": "B5",
+    "members": [
+     [
+      "loop",
+      "B5"
+     ],
+     [
+      "variable",
+      "B5"
+     ]
+    ]
+   },
+   {
+    "normalized": "D1",
+    "members": [
+     [
+      "domain",
+      "D01"
+     ],
+     [
+      "variable",
+      "D1"
+     ]
+    ]
+   },
+   {
+    "normalized": "D2",
+    "members": [
+     [
+      "domain",
+      "D02"
+     ],
+     [
+      "variable",
+      "D2"
+     ]
+    ]
+   },
+   {
+    "normalized": "D3",
+    "members": [
+     [
+      "domain",
+      "D03"
+     ],
+     [
+      "variable",
+      "D3"
+     ]
+    ]
+   },
+   {
+    "normalized": "D4",
+    "members": [
+     [
+      "domain",
+      "D04"
+     ],
+     [
+      "variable",
+      "D4"
+     ]
+    ]
+   },
+   {
+    "normalized": "D5",
+    "members": [
+     [
+      "domain",
+      "D05"
+     ],
+     [
+      "variable",
+      "D5"
+     ]
+    ]
+   },
+   {
+    "normalized": "D6",
+    "members": [
+     [
+      "domain",
+      "D06"
+     ],
+     [
+      "variable",
+      "D6"
+     ]
+    ]
+   },
+   {
+    "normalized": "D7",
+    "members": [
+     [
+      "domain",
+      "D07"
+     ],
+     [
+      "variable",
+      "D7"
+     ]
+    ]
+   },
+   {
+    "normalized": "R1",
+    "members": [
+     [
+      "loop",
+      "R1"
+     ],
+     [
+      "reform",
+      "R-01"
+     ],
+     [
+      "v5_standards_rule",
+      "R1"
+     ]
+    ]
+   },
+   {
+    "normalized": "R10",
+    "members": [
+     [
+      "loop",
+      "R10"
+     ],
+     [
+      "reform",
+      "R-10"
+     ],
+     [
+      "v5_standards_rule",
+      "R10"
+     ]
+    ]
+   },
+   {
+    "normalized": "R11",
+    "members": [
+     [
+      "loop",
+      "R11"
+     ],
+     [
+      "reform",
+      "R-11"
+     ]
+    ]
+   },
+   {
+    "normalized": "R12",
+    "members": [
+     [
+      "loop",
+      "R12"
+     ],
+     [
+      "reform",
+      "R-12"
+     ]
+    ]
+   },
+   {
+    "normalized": "R13",
+    "members": [
+     [
+      "loop",
+      "R13"
+     ],
+     [
+      "reform",
+      "R-13"
+     ]
+    ]
+   },
+   {
+    "normalized": "R15",
+    "members": [
+     [
+      "loop",
+      "R15"
+     ],
+     [
+      "reform",
+      "R-15"
+     ]
+    ]
+   },
+   {
+    "normalized": "R16",
+    "members": [
+     [
+      "loop",
+      "R16"
+     ],
+     [
+      "reform",
+      "R-16"
+     ]
+    ]
+   },
+   {
+    "normalized": "R18",
+    "members": [
+     [
+      "loop",
+      "R18"
+     ],
+     [
+      "reform",
+      "R-18"
+     ]
+    ]
+   },
+   {
+    "normalized": "R2",
+    "members": [
+     [
+      "loop",
+      "R2"
+     ],
+     [
+      "reform",
+      "R-02"
+     ],
+     [
+      "v5_standards_rule",
+      "R2"
+     ]
+    ]
+   },
+   {
+    "normalized": "R3",
+    "members": [
+     [
+      "loop",
+      "R3"
+     ],
+     [
+      "reform",
+      "R-03"
+     ],
+     [
+      "v5_standards_rule",
+      "R3"
+     ]
+    ]
+   },
+   {
+    "normalized": "R4",
+    "members": [
+     [
+      "reform",
+      "R-04"
+     ],
+     [
+      "v5_standards_rule",
+      "R4"
+     ]
+    ]
+   },
+   {
+    "normalized": "R5",
+    "members": [
+     [
+      "loop",
+      "R5"
+     ],
+     [
+      "reform",
+      "R-05"
+     ],
+     [
+      "v5_standards_rule",
+      "R5"
+     ]
+    ]
+   },
+   {
+    "normalized": "R6",
+    "members": [
+     [
+      "loop",
+      "R6"
+     ],
+     [
+      "reform",
+      "R-06"
+     ],
+     [
+      "v5_standards_rule",
+      "R6"
+     ]
+    ]
+   },
+   {
+    "normalized": "R7",
+    "members": [
+     [
+      "loop",
+      "R7"
+     ],
+     [
+      "reform",
+      "R-07"
+     ],
+     [
+      "v5_standards_rule",
+      "R7"
+     ]
+    ]
+   },
+   {
+    "normalized": "R8",
+    "members": [
+     [
+      "loop",
+      "R8"
+     ],
+     [
+      "reform",
+      "R-08"
+     ],
+     [
+      "v5_standards_rule",
+      "R8"
+     ]
+    ]
+   },
+   {
+    "normalized": "R9",
+    "members": [
+     [
+      "loop",
+      "R9"
+     ],
+     [
+      "reform",
+      "R-09"
+     ],
+     [
+      "v5_standards_rule",
+      "R9"
+     ]
+    ]
+   },
+   {
+    "normalized": "X1",
+    "members": [
+     [
+      "issue",
+      "X01"
+     ],
+     [
+      "variable",
+      "X1"
+     ]
+    ]
+   },
+   {
+    "normalized": "X2",
+    "members": [
+     [
+      "issue",
+      "X02"
+     ],
+     [
+      "variable",
+      "X2"
+     ]
+    ]
+   },
+   {
+    "normalized": "X3",
+    "members": [
+     [
+      "issue",
+      "X03"
+     ],
+     [
+      "variable",
+      "X3"
+     ]
+    ]
+   },
+   {
+    "normalized": "X4",
+    "members": [
+     [
+      "issue",
+      "X04"
+     ],
+     [
+      "variable",
+      "X4"
+     ]
+    ]
+   },
+   {
+    "normalized": "X5",
+    "members": [
+     [
+      "issue",
+      "X05"
+     ],
+     [
+      "variable",
+      "X5"
+     ]
+    ]
+   }
+  ],
+  "suffix_neighbours": [
+   [
+    "R1",
+    "v5_standards_rule",
+    "R1b",
+    "loop"
+   ],
+   [
+    "R4",
+    "v5_standards_rule",
+    "R4a",
+    "loop"
+   ],
+   [
+    "R4",
+    "v5_standards_rule",
+    "R4b",
+    "loop"
+   ],
+   [
+    "B1",
+    "variable",
+    "B1a",
+    "loop"
+   ]
+  ],
+  "prefix_candidates": {
+   "STD": {
+    "exact_prefix_in_v7": [],
+    "prefixes_that_share_letters": [
+     "S"
+    ]
+   },
+   "ST": {
+    "exact_prefix_in_v7": [],
+    "prefixes_that_share_letters": [
+     "S"
+    ]
+   },
+   "G": {
+    "exact_prefix_in_v7": [],
+    "prefixes_that_share_letters": []
+   },
+   "QA": {
+    "exact_prefix_in_v7": [],
+    "prefixes_that_share_letters": [
+     "Q"
+    ]
+   },
+   "OA": {
+    "exact_prefix_in_v7": [],
+    "prefixes_that_share_letters": []
+   }
+  },
+  "pairs": [
+   {
+    "a": [
+     "variable",
+     "B4",
+     "Hostility toward the other political party"
+    ],
+    "b": [
+     "loop",
+     "B4",
+     "Electoral consequences can improve public performance"
+    ]
+   },
+   {
+    "a": [
+     "loop",
+     "R1",
+     "Wealth and political influence reinforce each other"
+    ],
+    "b": [
+     "reform",
+     "R-01",
+     "All-party primaries with ranked general elections"
+    ]
+   },
+   {
+    "a": [
+     "variable",
+     "D1",
+     "Congress's ability to write and check policy"
+    ],
+    "b": [
+     "domain",
+     "D01",
+     "News, records and public information"
+    ]
+   },
+   {
+    "a": [
+     "variable",
+     "X1",
+     "What new technology can do"
+    ],
+    "b": [
+     "issue",
+     "X01",
+     "In safe seats, a small primary electorate picks the winner"
+    ]
+   },
+   {
+    "a": [
+     "variable",
+     "B1",
+     "Money spent to influence politics"
+    ],
+    "b": [
+     "loop",
+     "B1a",
+     "Independent oversight can limit policy favoritism"
+    ]
+   },
+   {
+    "a": [
+     "loop",
+     "R5",
+     "Financial strain narrows who takes part in policy decisions"
+    ],
+    "b": [
+     "reform",
+     "R-05",
+     "Automatic voter registration"
+    ],
+    "c": [
+     "standard",
+     "Std-05",
+     "V5 Standards rule R5: Red is punctuation."
+    ]
+   }
+  ]
+ },
+ "chip_examples": {
+  "variable": {
+   "code": "B4",
+   "name": "Hostility toward the other political party"
+  },
+  "connection": {
+   "code": "L25",
+   "name": "Decisive primaries reduce general-election pressure"
+  },
+  "loop": {
+   "code": "B4",
+   "name": "Electoral consequences can improve public performance"
+  },
+  "reform": {
+   "code": "R-01",
+   "name": "All-party primaries with ranked general elections"
+  },
+  "issue": {
+   "code": "I006",
+   "name": "Feeds built for attention reward attacks on the other side"
+  },
+  "claim": {
+   "code": "CL1400",
+   "name": "Staff wages are the largest cost in childcare, and infant care costs more because state rules require more adults per child."
+  },
+  "domain": {
+   "code": "D02",
+   "name": "Elections and representation"
+  },
+  "route": {
+   "code": "BI",
+   "name": "State ballot"
+  },
+  "standard": {
+   "code": "Std-05",
+   "name": "Red is punctuation.",
+   "v5_code": "R5"
+  }
+ },
+ "effects": {
+  "total": 200,
+  "plain": 162,
+  "qualified": 38,
+  "qualified_list": [
+   [
+    "R-06",
+    "DQ",
+    "+L local",
+    false
+   ],
+   [
+    "R-07",
+    "DQ",
+    "+S entry; -S extremity",
+    false
+   ],
+   [
+    "R-09",
+    "DQ",
+    "+S direct; trust +M if enforced",
+    false
+   ],
+   [
+    "R-11",
+    "DQ",
+    "+M precondition",
+    false
+   ],
+   [
+    "R-12",
+    "DQ",
+    "+M / -M risk",
+    false
+   ],
+   [
+    "R-16",
+    "DQ",
+    "+M structure",
+    false
+   ],
+   [
+    "R-16",
+    "EQ",
+    "+S indirect, decades",
+    false
+   ],
+   [
+    "R-19",
+    "EP",
+    "+M sector",
+    false
+   ],
+   [
+    "R-20",
+    "EP",
+    "+S to +M",
+    false
+   ],
+   [
+    "R-21",
+    "EP",
+    "0 to -S short run",
+    false
+   ],
+   [
+    "R-21",
+    "EQ",
+    "+M if density rises; +S otherwise",
+    false
+   ],
+   [
+    "R-22",
+    "EP",
+    "0 to -S covered employment",
+    false
+   ],
+   [
+    "R-22",
+    "EQ",
+    "+M sector",
+    false
+   ],
+   [
+    "R-23",
+    "EP",
+    "0 to -S at high bite",
+    false
+   ],
+   [
+    "R-23",
+    "EQ",
+    "+M lower tail",
+    false
+   ],
+   [
+    "R-24",
+    "DQ",
+    "+S conditional",
+    false
+   ],
+   [
+    "R-24",
+    "EP",
+    "+S contested long run",
+    false
+   ],
+   [
+    "R-25",
+    "DQ",
+    "+S hypothesis",
+    false
+   ],
+   [
+    "R-25",
+    "EP",
+    "+S long run",
+    false
+   ],
+   [
+    "R-26",
+    "EP",
+    "+M in recessions",
+    false
+   ],
+   [
+    "R-26",
+    "EQ",
+    "+M in recessions",
+    false
+   ],
+   [
+    "R-28",
+    "EP",
+    "0 to -S",
+    false
+   ],
+   [
+    "R-28",
+    "EQ",
+    "+M over decades",
+    false
+   ],
+   [
+    "R-29",
+    "EP",
+    "+S long run",
+    false
+   ],
+   [
+    "R-29",
+    "EQ",
+    "+M at scale; 0 at $1,000",
+    false
+   ],
+   [
+    "R-30",
+    "DQ",
+    "+S delayed",
+    false
+   ],
+   [
+    "R-30",
+    "EQ",
+    "+M renter-owner",
+    false
+   ],
+   [
+    "R-31",
+    "EQ",
+    "+M long run",
+    false
+   ],
+   [
+    "R-32",
+    "DQ",
+    "+M if coverage restored",
+    false
+   ],
+   [
+    "R-33",
+    "DQ",
+    "+S participants; 0 to +S public",
+    false
+   ],
+   [
+    "R-33",
+    "GE",
+    "+S where adopted",
+    false
+   ],
+   [
+    "R-34",
+    "GE",
+    "+S local",
+    false
+   ],
+   [
+    "R-34",
+    "EQ",
+    "+S allocations",
+    false
+   ],
+   [
+    "R-36",
+    "EP",
+    "+M long run",
+    false
+   ],
+   [
+    "R-38",
+    "EP",
+    "+S sector",
+    false
+   ],
+   [
+    "R-38",
+    "EQ",
+    "+S renters",
+    false
+   ],
+   [
+    "R-39",
+    "EQ",
+    "+S take-up",
+    false
+   ],
+   [
+    "R-41",
+    "EQ",
+    "+S households",
+    false
+   ]
+  ],
+  "plain_counts": {
+   "+M": 15,
+   "+S": 60,
+   "0": 74,
+   "+L": 5,
+   "?": 6,
+   "-S": 1,
+   "-M": 1
+  },
+  "words": {
+   "+L": "large positive",
+   "+M": "moderate positive",
+   "+S": "small positive",
+   "0": "no expected effect",
+   "-S": "small negative",
+   "-M": "moderate negative",
+   "?": "direction uncertain"
+  },
+  "families": {
+   "DQ": "Democratic quality",
+   "GE": "Government efficacy",
+   "EP": "Economic performance",
+   "EQ": "Income and wealth equality"
+  },
+  "costs_live": [
+   [
+    "R-07",
+    "DQ",
+    "+S entry; -S extremity"
+   ],
+   [
+    "R-12",
+    "DQ",
+    "+M / -M risk"
+   ],
+   [
+    "R-21",
+    "EP",
+    "0 to -S short run"
+   ],
+   [
+    "R-22",
+    "EP",
+    "0 to -S covered employment"
+   ],
+   [
+    "R-23",
+    "EP",
+    "0 to -S at high bite"
+   ],
+   [
+    "R-28",
+    "EP",
+    "0 to -S"
+   ]
+  ],
+  "parser_covered": 200,
+  "examples": {
+   "R-01": {
+    "title": "All-party primaries with ranked general elections",
+    "effects": {
+     "DQ": "+M",
+     "GE": "+S",
+     "EP": "0",
+     "EQ": "0"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 2,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "GE": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EQ": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "medium (participation); low (moderation)",
+    "remedy_grade": "plausible_contested"
+   },
+   "R-12": {
+    "title": "Senate filibuster reform",
+    "effects": {
+     "DQ": "+M / -M risk",
+     "GE": "+L",
+     "EP": "+S",
+     "EQ": "?"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 2,
+      "gain_open": 0,
+      "cost": 2,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+M / -M risk"
+     },
+     "GE": {
+      "gain": 3,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EQ": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": true,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "high (throughput); low (net DQ)",
+    "remedy_grade": "plausible"
+   },
+   "R-07": {
+    "title": "Public matching for small donations and vouchers",
+    "effects": {
+     "DQ": "+S entry; -S extremity",
+     "GE": "0",
+     "EP": "0",
+     "EQ": "0"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 1,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+S entry; -S extremity"
+     },
+     "GE": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EQ": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "medium",
+    "remedy_grade": "plausible"
+   },
+   "R-28": {
+    "title": "Taxing inherited gains and capital income",
+    "effects": {
+     "DQ": "+S",
+     "GE": "+S",
+     "EP": "0 to -S",
+     "EQ": "+M over decades"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "GE": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 1,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": "0 to -S"
+     },
+     "EQ": {
+      "gain": 2,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+M over decades"
+     }
+    },
+    "effects_confidence": "medium (inequality, revenue); low (growth)",
+    "remedy_grade": "plausible"
+   },
+   "R-06": {
+    "title": "Hold local elections alongside November races",
+    "effects": {
+     "DQ": "+L local",
+     "GE": "+S",
+     "EP": "0",
+     "EQ": "+S"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 3,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+L local"
+     },
+     "GE": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "high",
+    "remedy_grade": "well-supported"
+   },
+   "R-20": {
+    "title": "Merger enforcement for consumers and workers",
+    "effects": {
+     "DQ": "+S",
+     "GE": "0",
+     "EP": "+S to +M",
+     "EQ": "+S"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "GE": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 1,
+      "gain_open": 2,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+S to +M"
+     },
+     "EQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "medium (prices); low (productivity)",
+    "remedy_grade": "plausible"
+   },
+   "R-29": {
+    "title": "Baby bonds: publicly funded child accounts",
+    "effects": {
+     "DQ": "0",
+     "GE": "0",
+     "EP": "+S long run",
+     "EQ": "+M at scale; 0 at $1,000"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "GE": {
+      "gain": 0,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+S long run"
+     },
+     "EQ": {
+      "gain": 2,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": true,
+      "uncertain": false,
+      "qualifier": "+M at scale; 0 at $1,000"
+     }
+    },
+    "effects_confidence": "high (arithmetic); low (behavior at scale)",
+    "remedy_grade": "plausible"
+   },
+   "R-25": {
+    "title": "Full child tax credit for low-earning families",
+    "effects": {
+     "DQ": "+S hypothesis",
+     "GE": "+S",
+     "EP": "+S long run",
+     "EQ": "+L"
+    },
+    "parsed": {
+     "DQ": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+S hypothesis"
+     },
+     "GE": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     },
+     "EP": {
+      "gain": 1,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": "+S long run"
+     },
+     "EQ": {
+      "gain": 3,
+      "gain_open": 0,
+      "cost": 0,
+      "cost_open": 0,
+      "zero": false,
+      "uncertain": false,
+      "qualifier": null
+     }
+    },
+    "effects_confidence": "high (poverty); medium (employment); low (participation link)",
+    "remedy_grade": "well-supported"
+   }
+  }
+ },
+ "routes": {
+  "entries": 126,
+  "checked": 13,
+  "checked_list": [
+   [
+    "R-01",
+    "BI",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-01",
+    "LOC",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-08",
+    "BI",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-09",
+    "FS",
+    "low",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-19",
+    "FS",
+    "high",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-21",
+    "ENF",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-29",
+    "FS",
+    "low",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-37",
+    "SS",
+    "low",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-38",
+    "SS",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-39",
+    "FA",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-40",
+    "LOC",
+    "low",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-44",
+    "ENF",
+    "medium",
+    "2026-10-15",
+    false
+   ],
+   [
+    "R-45",
+    "SS",
+    "high",
+    "2026-10-15",
+    false
+   ]
+  ],
+  "feasibility": {
+   "medium": 53,
+   "low": 45,
+   "very low": 8,
+   "high": 20
+  },
+  "scale": {
+   "high": "The route is open, and the reform has been adopted somewhere through it since 2020.",
+   "medium": "The route is open in some places, and a credible campaign could carry the reform through it by 2030.",
+   "low": "The route exists, but it needs a coalition that does not exist now.",
+   "very low": "It needs a supermajority, a constitutional change or a reversal of court doctrine."
+  },
+  "names": {
+   "LOC": "Local",
+   "SS": "State statute",
+   "BI": "State ballot",
+   "FS": "Federal statute",
+   "FR": "Chamber rule or confirmation",
+   "FA": "Federal executive action",
+   "ENF": "Enforcement and litigation",
+   "CRT": "Court doctrine",
+   "AV": "Article V",
+   "IC": "Interstate compact",
+   "CIV": "Civil society"
+  }
+ },
+ "repair": {
+  "rows": [
+   {
+    "id": "RL01",
+    "date": "1965-08-06",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "The Voting Rights Act banned discriminatory voting tests and required places with a history of discrimination to get federal approval (preclearance) before changing voting rules."
+   },
+   {
+    "id": "RL02",
+    "date": "1988-02-29",
+    "jurisdiction": "New York City",
+    "direction": "toward voters",
+    "instrument": "municipal ordinance (local law)",
+    "family": "Statute or local law",
+    "loop": "R1",
+    "verified": false,
+    "rule": "New York City Local Law 8 of 1988 created the Campaign Finance Board and a public matching-funds program for small contributions, first paid at 1 to 1 in 1989 and raised to 4 to 1 in 1998, 6 to 1 in 2007 and 8 to 1 from 2019. A charter referendum on November 8, 1988 then made the Board an independent agency under the City Charter, so a later Council could not simply repeal it."
+   },
+   {
+    "id": "RL03",
+    "date": "2010-01-21",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R1",
+    "verified": true,
+    "rule": "Citizens United v. FEC held that limits on independent political spending by corporations and unions violate the First Amendment."
+   },
+   {
+    "id": "RL04",
+    "date": "2013-06-25",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "Shelby County v. Holder struck down the Section 4(b) coverage formula, ending Section 5 preclearance in practice."
+   },
+   {
+    "id": "RL05",
+    "date": "2014-04-02",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R1",
+    "verified": true,
+    "rule": "McCutcheon v. FEC struck down aggregate limits on how much one donor may give to all federal candidates and parties combined."
+   },
+   {
+    "id": "RL06",
+    "date": "2015-03-16",
+    "jurisdiction": "Oregon",
+    "direction": "toward voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "HB 2177 made Oregon the first state to register eligible voters automatically from driver license records. By the National Conference of State Legislatures' count of August 19, 2026, 24 states and the District of Columbia have enacted or put in place automatic voter registration."
+   },
+   {
+    "id": "RL07",
+    "date": "2016-11-08",
+    "jurisdiction": "Maine",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Question 5 adopted ranked-choice voting, in which voters rank candidates and ballots transfer when a first choice is eliminated, for state and federal primaries and for general elections for U.S. Senate, U.S. House, governor and the legislature."
+   },
+   {
+    "id": "RL08",
+    "date": "2017-10-23",
+    "jurisdiction": "Maine",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R10",
+    "verified": true,
+    "rule": "LD 1646 delayed ranked-choice voting until December 2021 and repealed it automatically unless voters amended the state constitution."
+   },
+   {
+    "id": "RL09",
+    "date": "2018-06-12",
+    "jurisdiction": "Maine",
+    "direction": "toward voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "B4",
+    "verified": true,
+    "rule": "Question 1, a people's veto (a referendum that lets voters repeal a law the legislature passed), overturned the legislature's 2017 delay-and-repeal law and restored ranked-choice voting for primaries and federal general elections."
+   },
+   {
+    "id": "RL10",
+    "date": "2018-11-06",
+    "jurisdiction": "Michigan",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Proposal 2 created a 13-member independent citizens redistricting commission to draw congressional and legislative maps."
+   },
+   {
+    "id": "RL11",
+    "date": "2018-11-06",
+    "jurisdiction": "Utah",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Proposition 4 created an independent redistricting commission and banned partisan gerrymandering in the drawing of congressional and legislative districts."
+   },
+   {
+    "id": "RL12",
+    "date": "2018-11-06",
+    "jurisdiction": "New York City",
+    "direction": "toward voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R1",
+    "verified": true,
+    "rule": "Charter Question 1 raised the public match to 8-to-1 on small contributions and lowered contribution limits for city offices."
+   },
+   {
+    "id": "RL13",
+    "date": "2020-03-28",
+    "jurisdiction": "Utah",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Utah S.B. 200 turned the redistricting commission created by Proposition 4 into a seven-member advisory body appointed largely by legislative leaders, and let the Legislature vote on or adopt a commission map without being required to. It also dropped Proposition 4's partisan-fairness standard and its route to court review."
+   },
+   {
+    "id": "RL14",
+    "date": "2020-11-03",
+    "jurisdiction": "Alaska",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Ballot Measure 2 replaced party primaries with a top-four open primary (all candidates on one ballot, with the top four advancing), adopted ranked-choice voting for general elections and required disclosure of the true source of large political contributions."
+   },
+   {
+    "id": "RL15",
+    "date": "2021-03-11",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "B2",
+    "verified": true,
+    "rule": "The American Rescue Plan raised the child tax credit to $3,600 for young children and $3,000 for older children, made it fully refundable, and paid half in monthly installments for 2021 only."
+   },
+   {
+    "id": "RL16",
+    "date": "2021-12-31",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "B2",
+    "verified": true,
+    "rule": "The expanded child tax credit expired, returning the credit to $2,000 per child with refunds capped at $1,500 per child for 2022."
+   },
+   {
+    "id": "RL17",
+    "date": "2022-11-08",
+    "jurisdiction": "Nevada",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Question 3, a constitutional amendment for top-five open primaries and ranked-choice general elections, passed its first of two required votes."
+   },
+   {
+    "id": "RL18",
+    "date": "2022-12-23",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "R18",
+    "verified": true,
+    "rule": "The Securing Inspector General Independence Act required the President to give Congress 30 days' notice and a substantive, case-specific reason before removing an inspector general."
+   },
+   {
+    "id": "RL19",
+    "date": "2022-12-29",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "B4",
+    "verified": true,
+    "rule": "The Electoral Count Reform Act made the Vice President's role ministerial and raised the threshold to object to electoral votes to one-fifth of each chamber."
+   },
+   {
+    "id": "RL20",
+    "date": "2024-07-11",
+    "jurisdiction": "Utah",
+    "direction": "toward voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "The Utah Supreme Court held unanimously that the legislature may not repeal or impair a voter-approved government-reform initiative unless narrowly tailored to a compelling interest, reviving the challenge to SB 200."
+   },
+   {
+    "id": "RL21",
+    "date": "2024-11-05",
+    "jurisdiction": "Alaska",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Ballot Measure 2 to repeal the top-four primary and ranked-choice voting failed, keeping the 2020 system in place."
+   },
+   {
+    "id": "RL22",
+    "date": "2024-11-05",
+    "jurisdiction": "Montana",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "CI-126, which would have created a top-four open primary for state and federal offices, was defeated."
+   },
+   {
+    "id": "RL23",
+    "date": "2024-11-05",
+    "jurisdiction": "Montana",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "CI-127, which would have required a majority vote to win statewide and legislative elections, was defeated."
+   },
+   {
+    "id": "RL24",
+    "date": "2024-11-05",
+    "jurisdiction": "Idaho",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Proposition 1, a top-four primary with ranked-choice general elections, was defeated."
+   },
+   {
+    "id": "RL25",
+    "date": "2024-11-05",
+    "jurisdiction": "Colorado",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Proposition 131, a top-four primary with ranked-choice general elections, was defeated."
+   },
+   {
+    "id": "RL26",
+    "date": "2024-11-05",
+    "jurisdiction": "Nevada",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Nevada Question 3 would have replaced closed party primaries with one open primary for all candidates, the top five advancing, and required ranked-choice voting in general elections for federal and statewide offices. Nevada requires two votes for a citizen-initiated constitutional amendment; this was the second, after the first passed in 2022 with 52.94%."
+   },
+   {
+    "id": "RL27",
+    "date": "2024-11-05",
+    "jurisdiction": "Oregon",
+    "direction": "voters kept existing rules",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Measure 117, ranked-choice voting for federal and statewide offices beginning 2028, was defeated."
+   },
+   {
+    "id": "RL28",
+    "date": "2024-11-05",
+    "jurisdiction": "Arizona",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Proposition 140, a single open primary for all candidates with possible ranked-choice general elections, was defeated."
+   },
+   {
+    "id": "RL29",
+    "date": "2024-11-05",
+    "jurisdiction": "District of Columbia",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Initiative 83 adopted ranked-choice voting beginning in 2026 and opened party primaries to voters not registered with a party, subject to funding by the D.C. Council."
+   },
+   {
+    "id": "RL30",
+    "date": "2024-11-05",
+    "jurisdiction": "Missouri",
+    "direction": "away from voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Amendment 7 wrote a ban on ranked-choice voting into the state constitution and required plurality primary winners to be the sole nominee."
+   },
+   {
+    "id": "RL31",
+    "date": "2024-12-12",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "agency rule",
+    "family": "Executive or agency action",
+    "loop": "R18",
+    "verified": true,
+    "rule": "The Consumer Financial Protection Bureau finalized a rule treating overdraft fees at large banks as credit under the Truth in Lending Act unless capped at $5 or priced at cost."
+   },
+   {
+    "id": "RL32",
+    "date": "2025-01-24",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "executive action",
+    "family": "Executive or agency action",
+    "loop": "R18",
+    "verified": true,
+    "rule": "The White House removed at least 17 inspectors general by email, effective immediately, without the 30 days' notice or case-specific reason the statute requires."
+   },
+   {
+    "id": "RL33",
+    "date": "2025-03-25",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "executive order",
+    "family": "Executive or agency action",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "Executive Order 14248 directed the Election Assistance Commission to require documentary proof of citizenship on the federal voter registration form and to penalize states that count mail ballots received after Election Day."
+   },
+   {
+    "id": "RL34",
+    "date": "2025-05-09",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "R18",
+    "verified": true,
+    "rule": "S.J.Res.18 nullified the Consumer Financial Protection Bureau's overdraft rule under the Congressional Review Act and barred a substantially similar rule."
+   },
+   {
+    "id": "RL35",
+    "date": "2025-07-04",
+    "jurisdiction": "United States",
+    "direction": "mixed",
+    "instrument": "federal statute",
+    "family": "Statute or local law",
+    "loop": "B2",
+    "verified": true,
+    "rule": "P.L. 119-21 set the child tax credit at up to $2,200 per child. At most $1,700 of it is refundable (paid to families whose credit exceeds the income tax they owe), and the refundable part requires at least $2,500 in earnings, so the full refundability of 2021 was not restored."
+   },
+   {
+    "id": "RL36",
+    "date": "2025-07-14",
+    "jurisdiction": "District of Columbia",
+    "direction": "toward voters",
+    "instrument": "council funding vote",
+    "family": "Statute or local law",
+    "loop": "R10",
+    "verified": true,
+    "rule": "The D.C. Council voted 8-4 to fund ranked-choice voting implementation for the June 2026 primary, while withholding funds for semi-open primaries until June 2026."
+   },
+   {
+    "id": "RL37",
+    "date": "2025-08-05",
+    "jurisdiction": "Seattle, Washington",
+    "direction": "toward voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R1",
+    "verified": true,
+    "rule": "Proposition 1 renewed the Democracy Voucher property tax levy for ten years starting 2026 to keep funding four $25 vouchers per resident per election."
+   },
+   {
+    "id": "RL38",
+    "date": "2025-08-29",
+    "jurisdiction": "Texas",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "HB 4 enacted a mid-decade congressional map designed to move five seats held by Democrats to Republicans."
+   },
+   {
+    "id": "RL39",
+    "date": "2025-09-24",
+    "jurisdiction": "United States",
+    "direction": "mixed",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R18",
+    "verified": true,
+    "rule": "In Storch v. Hegseth Judge Ana Reyes said the January 2025 removals of inspectors general almost undoubtedly violated the Inspector General Act, but denied reinstatement because the President could remove them again after giving proper notice. The court then paused the case until the Supreme Court decided Trump v. Slaughter (June 29, 2026)."
+   },
+   {
+    "id": "RL40",
+    "date": "2025-09-28",
+    "jurisdiction": "Missouri",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "HB 1 (2025 Second Extraordinary Session) enacted a mid-decade congressional map splitting Kansas City among three districts to change control of the 5th District."
+   },
+   {
+    "id": "RL41",
+    "date": "2025-11-04",
+    "jurisdiction": "California",
+    "direction": "away from voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Proposition 50 temporarily transferred congressional redistricting from the independent Citizens Redistricting Commission to a legislature-drawn map for 2026 through 2030 in response to Texas."
+   },
+   {
+    "id": "RL42",
+    "date": "2025-11-04",
+    "jurisdiction": "Maine",
+    "direction": "voters kept existing rules",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "Question 1, which would have required photo ID, limited drop boxes to one per town and ended automatic absentee eligibility for older voters and voters with disabilities, was rejected."
+   },
+   {
+    "id": "RL43",
+    "date": "2025-11-04",
+    "jurisdiction": "New York City",
+    "direction": "voters kept existing rules",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "B4",
+    "verified": true,
+    "rule": "Charter Question 6, which would have moved city elections to even-numbered years to raise turnout, was rejected."
+   },
+   {
+    "id": "RL44",
+    "date": "2025-11-04",
+    "jurisdiction": "Texas",
+    "direction": "mixed",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R4b",
+    "verified": true,
+    "rule": "Proposition 16 added an explicit constitutional ban on noncitizen voting, which state law already prohibited."
+   },
+   {
+    "id": "RL45",
+    "date": "2025-11-10",
+    "jurisdiction": "Utah",
+    "direction": "toward voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Third District Judge Dianna Gibson rejected the legislature's Map C, blocked SB 1011 and adopted the plaintiffs' Map 1 for the 2026 congressional elections under the restored Proposition 4 standards."
+   },
+   {
+    "id": "RL46",
+    "date": "2026-02-24",
+    "jurisdiction": "Indiana",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R10",
+    "verified": true,
+    "rule": "SB 12 banned ranked-choice voting in all Indiana elections. With Ohio's law of March 17, 2026, the National Conference of State Legislatures counts 19 states that prohibit it in some or all elections."
+   },
+   {
+    "id": "RL47",
+    "date": "2026-03-17",
+    "jurisdiction": "Nineteen states",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Nineteen states prohibit ranked-choice voting in some or all elections: Florida 2022, Tennessee 2022, Idaho 2023, Montana 2023, South Dakota 2023, Alabama 2024, Kentucky 2024, Louisiana 2024, Mississippi 2024, Missouri 2024, Oklahoma 2024, Arkansas 2025, Iowa 2025, Kansas 2025, North Dakota 2025, West Virginia 2025, Wyoming 2025, Indiana 2026 (SB 12, February 24) and Ohio 2026 (signed March 17). Missouri's prohibition is in its constitution (Amendment 7, 2024); the others are statutes, and their scope varies by state."
+   },
+   {
+    "id": "RL48",
+    "date": "2026-03-24",
+    "jurisdiction": "Missouri",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "The Missouri Supreme Court held 4-3 that the constitution does not bar the legislature from redrawing congressional districts mid-decade."
+   },
+   {
+    "id": "RL49",
+    "date": "2026-04-14",
+    "jurisdiction": "Virginia",
+    "direction": "toward voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "B4",
+    "verified": true,
+    "rule": "In April 2026 Virginia joined the National Popular Vote Interstate Compact, an agreement among states to award their electoral votes to the national popular-vote winner once members hold 270 electoral votes. Virginia brought the compact to 18 states plus D.C. and 222 electoral votes."
+   },
+   {
+    "id": "RL50",
+    "date": "2026-04-21",
+    "jurisdiction": "Virginia",
+    "direction": "away from voters",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Voters approved a constitutional amendment letting the General Assembly redraw congressional districts through 2030 in response to other states' mid-decade maps."
+   },
+   {
+    "id": "RL51",
+    "date": "2026-04-27",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Abbott v. League of United Latin American Citizens: the Supreme Court stayed the three-judge court's order blocking Texas's 2025 mid-decade map on December 4, 2025 (No. 25A608, 6 to 3), then summarily reversed that judgment on April 27, 2026 (No. 25-845, 6 to 3, without an opinion). The 2025 map governs the 2026 elections and, absent new litigation, the rest of the decade."
+   },
+   {
+    "id": "RL52",
+    "date": "2026-04-29",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "In Louisiana v. Callais the Supreme Court held 6 to 3 that Section 2 of the Voting Rights Act did not require Louisiana's second majority-Black district, which made that map an unconstitutional racial gerrymander, and that Section 2 is violated only when the evidence supports a strong inference of intentional discrimination."
+   },
+   {
+    "id": "RL53",
+    "date": "2026-05-04",
+    "jurisdiction": "Florida",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Florida House Bill 1-D of the 2026 Special Session D, enacted as Chapter 2026-229, redrew all 28 congressional districts in the middle of the decade, adopting plan EOGPCRP2026. Reporting at the time put the effect at three to four additional Republican seats. Equal Ground Education Fund sued in Leon County circuit court the day the bill was signed."
+   },
+   {
+    "id": "RL54",
+    "date": "2026-05-07",
+    "jurisdiction": "Tennessee",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Tennessee's Second Extraordinary Session of 2026 passed three bills in one day: HB 7002 (Public Chapter 1) repealed the statutory ban on changing congressional districts between censuses, HB 7001 (Chapter 2) set the election mechanics, and HB 7003 with SB 7004 (Chapter 3) drew the map, splitting Memphis and Shelby County across three districts and ending the 9th's status as the state's only majority-Black district. The NAACP Tennessee State Conference sued within hours."
+   },
+   {
+    "id": "RL55",
+    "date": "2026-05-08",
+    "jurisdiction": "Virginia",
+    "direction": "toward voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "The Supreme Court of Virginia voided the April 21 redistricting referendum 4-3 because the legislature's first passage came after early voting had begun in the intervening 2025 election."
+   },
+   {
+    "id": "RL56",
+    "date": "2026-05-29",
+    "jurisdiction": "Louisiana",
+    "direction": "away from voters",
+    "instrument": "state statute",
+    "family": "Statute or local law",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "SB 121 enacted a new congressional map eliminating one of the state's two majority-Black districts."
+   },
+   {
+    "id": "RL57",
+    "date": "2026-06-02",
+    "jurisdiction": "Alabama",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R4a",
+    "verified": true,
+    "rule": "Allen v. Milligan, No. 25A1314: after the three-judge district court found again on May 26, 2026 that Alabama's 2023 map was drawn to dilute Black votes, the Supreme Court stayed that order on June 2, 2026, an interim ruling. The 2023 map, without a second district where Black voters can elect a candidate of their choice, governs Alabama's 2026 elections in place of the court-ordered map used in 2024."
+   },
+   {
+    "id": "RL58",
+    "date": "2026-06-30",
+    "jurisdiction": "United States",
+    "direction": "away from voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "R1",
+    "verified": true,
+    "rule": "NRSC v. FEC struck down federal limits on spending that political parties coordinate with their candidates, overruling the Court's 2001 Colorado II decision."
+   },
+   {
+    "id": "RL59",
+    "date": "2026-08-18",
+    "jurisdiction": "Alaska",
+    "direction": "toward voters",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R1",
+    "verified": true,
+    "rule": "Alaska Ballot Measure 1, on the August 18, 2026 primary ballot, reinstated state contribution limits of $2,000 per individual and $4,000 per group, per candidate per election, adjusted every ten years from 2031. It fills the gap left when a Ninth Circuit panel struck Alaska's 2006 limits in 2021 and the state declined to appeal, which left Alaska with no contribution limits for three election cycles. It does not reach independent-expenditure committees."
+   },
+   {
+    "id": "RL60",
+    "date": "2026-09-03",
+    "jurisdiction": "Missouri",
+    "direction": "toward voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "B4",
+    "verified": true,
+    "rule": "The Missouri Supreme Court held that the referendum power covers any act of the General Assembly, including a congressional map, so HB 1 is suspended and cannot be used in 2026 unless voters approve Proposition A."
+   },
+   {
+    "id": "RL61",
+    "date": "2026-09-10",
+    "jurisdiction": "United States",
+    "direction": "toward voters",
+    "instrument": "court ruling",
+    "family": "Court ruling",
+    "loop": "B4",
+    "verified": true,
+    "rule": "The U.S. Supreme Court refused to let Missouri use its 2025 congressional map in November, leaving the state Supreme Court's referendum ruling and the 2022 map in place. A further order on September 25, 2026 (No. 26A388) directed that the 2022 map be used for the 2026 election and barred lower courts from requiring the 2025 map."
+   },
+   {
+    "id": "RL62",
+    "date": "2026-11-03",
+    "jurisdiction": "Alaska",
+    "direction": "pending",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Ballot Measure 2 would repeal the top-four open primary and ranked-choice voting, restore party primaries and plurality general elections (the candidate with the most votes wins), and repeal the rule requiring disclosure of the true source of contributions of $2,000 or more."
+   },
+   {
+    "id": "RL63",
+    "date": "2026-11-03",
+    "jurisdiction": "Missouri",
+    "direction": "pending",
+    "instrument": "referendum",
+    "family": "Ballot measure",
+    "loop": "B4",
+    "verified": true,
+    "rule": "Proposition A asks voters whether to approve HB 1 (2025) and its congressional map; a yes vote adopts the new map and a no vote keeps the 2022 districts."
+   },
+   {
+    "id": "RL64",
+    "date": "2026-11-03",
+    "jurisdiction": "Massachusetts",
+    "direction": "pending",
+    "instrument": "ballot initiative",
+    "family": "Ballot measure",
+    "loop": "R10",
+    "verified": true,
+    "rule": "Question 3 would replace party primaries for state, county and congressional offices with a single primary listing every candidate on one ballot, the top two advancing to the general election. It would take effect January 1, 2028, and would let parties endorse candidates and show the endorsement on the ballot."
+   }
+  ],
+  "direction_counts": {
+   "toward voters": 24,
+   "away from voters": 24,
+   "voters kept existing rules": 10,
+   "mixed": 3,
+   "pending": 3
+  },
+  "instrument_counts": {
+   "federal statute": 7,
+   "municipal ordinance (local law)": 1,
+   "court ruling": 14,
+   "state statute": 11,
+   "ballot initiative": 17,
+   "referendum": 10,
+   "agency rule": 1,
+   "executive action": 1,
+   "executive order": 1,
+   "council funding vote": 1
+  },
+  "family_counts": {
+   "Statute or local law": 20,
+   "Court ruling": 14,
+   "Ballot measure": 27,
+   "Executive or agency action": 3
+  },
+  "unmapped_instruments": [],
+  "loop_counts": {
+   "R4b": 6,
+   "R1": 7,
+   "R10": 19,
+   "B4": 7,
+   "R4a": 17,
+   "B2": 3,
+   "R18": 5
+  },
+  "coding_note": "Each row is coded by one of five labels. 'Toward voters' means the change widens who can register, vote or have a ballot counted, makes each vote weigh more equally, opens the contest that decides the seat, makes political money more limited or more visible, strengthens an independent check on officials, or adds to household security through automatic benefits. 'Away from voters' means the change does the reverse. 'Voters kept existing rules' means a ballot measure failed and the rules in force stayed, coded the same whichever way the measure would have moved power. 'Pending' means voters or courts have not yet decided. 'Mixed' means the change moved in both directions at once or left the rules in practice unchanged; the row's own note says which. Three rules apply across parties. A partisan redraw of district maps in the middle of a decade is coded away from voters whichever party draws it and whether or not voters approved it; a court order that blocks one is coded toward voters, and one that lets it take effect is coded away. A change that widens who takes part in the deciding round (open or all-party primaries) or lets voters rank candidates is coded toward voters, and a law or amendment that bans those options is coded away; readers may weigh these entries differently, and the reform profiles R-01 and R-02 rate confidence in their effect on moderation as low. A row's direction describes the rule's effect on who officials answer to and carries no judgment of the people or parties involved."
+ },
+ "delivery": {
+  "rows": [
+   {
+    "id": "DL01",
+    "date": "1935-1955",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "The federal government lent money at low interest to farmer-owned cooperatives to string power lines down roads that private utilities had judged would never pay for themselves.",
+    "period": {
+     "start": "1935-01-01",
+     "end": "1955-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "R7"
+   },
+   {
+    "id": "DL02",
+    "date": "1944-1956",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "The GI Bill paid tuition and a living stipend for any returning veteran who enrolled in school, with no means test and no requirement to prove ability in advance.",
+    "period": {
+     "start": "1944-01-01",
+     "end": "1956-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL03",
+    "date": "1945-01-25 onward",
+    "jurisdiction": "Grand Rapids, Michigan, then most US municipalities",
+    "grade": "well-supported",
+    "what": "A city commission voted to add a trace of fluoride to the municipal water supply, and the US Public Health Service measured the children's teeth before and after.",
+    "period": {
+     "start": "1945-01-25",
+     "end": "2026-10-15",
+     "precision": "day",
+     "kind": "open span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL04",
+    "date": "1956-1992",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "Congress created a dedicated gas-tax trust fund and built 41,000 miles of limited-access highway to a single national standard.",
+    "period": {
+     "start": "1956-01-01",
+     "end": "1992-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "R7"
+   },
+   {
+    "id": "DL05",
+    "date": "1965-07-30 to 1966-07-01",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "Congress enrolled every American over 65 in a single hospital insurance program and stood it up in under a year, before computers were common in government.",
+    "period": {
+     "start": "1965-07-30",
+     "end": "1966-07-01",
+     "precision": "day",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL06",
+    "date": "1966-2012",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "A new federal agency was given power to write binding minimum safety standards for every car sold in America, starting with seat belts and energy-absorbing steering columns.",
+    "period": {
+     "start": "1966-01-01",
+     "end": "2012-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL07",
+    "date": "1935-2023",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "A payroll tax funds a monthly check that arrives automatically at 62 or 65, indexed to inflation since 1972, with no application review of need.",
+    "period": {
+     "start": "1935-01-01",
+     "end": "2023-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL08",
+    "date": "1970-2020",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "Congress set national health-based air quality standards and required EPA to enforce them against states and industry regardless of cost.",
+    "period": {
+     "start": "1970-01-01",
+     "end": "2020-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL09",
+    "date": "1973-1996",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "EPA ordered refiners to take lead out of gasoline on a fixed schedule, over sustained industry objection, and finished the job in 1996.",
+    "period": {
+     "start": "1973-01-01",
+     "end": "1996-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL10",
+    "date": "1975-2023",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "The tax code pays a refundable credit that rises with earnings, so low-wage workers can receive money back even when they owe no income tax, delivered through the return they already file.",
+    "period": {
+     "start": "1975-01-01",
+     "end": "2023-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL11",
+    "date": "1990-2022",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "Congress capped total sulfur dioxide from power plants, handed out tradable allowances, and required continuous emissions monitors on every smokestack so the count could not be disputed.",
+    "period": {
+     "start": "1990-01-01",
+     "end": "2022-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL12",
+    "date": "1994-2023",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "The federal government buys childhood vaccines in bulk and gives them free to any provider treating an uninsured or Medicaid-eligible child, so a family's insurance status stops determining whether the child is vaccinated.",
+    "period": {
+     "start": "1994-01-01",
+     "end": "2023-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "R7"
+   },
+   {
+    "id": "DL13",
+    "date": "1983-2017",
+    "jurisdiction": "federal",
+    "grade": "plausible",
+    "what": "The Defense Department built a satellite navigation system. A Republican president opened it to civilian use, and a Democratic president switched off the deliberate degradation of the civilian signal, giving the whole economy a free and precise location service.",
+    "period": {
+     "start": "1983-01-01",
+     "end": "2017-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL14",
+    "date": "1995-2018",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "The Veterans Health Administration was rebuilt around primary care, a universal electronic health record and public performance measurement, at a time when almost no private hospital had any of the three.",
+    "period": {
+     "start": "1995-01-01",
+     "end": "2018-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "R7"
+   },
+   {
+    "id": "DL15",
+    "date": "2002-2006",
+    "jurisdiction": "New York City",
+    "grade": "documented",
+    "what": "The city raised its cigarette excise tax from 8 cents to 1.50 dollars a pack, banned smoking in every indoor workplace including bars, and ran a graphic television campaign.",
+    "period": {
+     "start": "2002-01-01",
+     "end": "2006-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL16",
+    "date": "1994-2004",
+    "jurisdiction": "Florida",
+    "grade": "well-supported",
+    "what": "After Hurricane Andrew destroyed 63,000 homes, Florida tightened its building codes and then replaced a patchwork of local codes with one statewide code with real inspection behind it.",
+    "period": {
+     "start": "1994-01-01",
+     "end": "2004-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL17",
+    "date": "2003-2024",
+    "jurisdiction": "federal (operating abroad)",
+    "grade": "well-supported",
+    "what": "The United States bought and delivered antiretroviral drugs at scale to countries where HIV treatment had been considered logistically impossible.",
+    "period": {
+     "start": "2003-01-01",
+     "end": "2024-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "R7"
+   },
+   {
+    "id": "DL18",
+    "date": "2005-08-29 to 2005-09-30",
+    "jurisdiction": "federal (Gulf Coast)",
+    "grade": "documented",
+    "what": "During the worst federal disaster failure in modern memory, one agency positioned its aircraft and crews outside the storm track in advance and started flying rescues before the water stopped rising.",
+    "period": {
+     "start": "2005-08-29",
+     "end": "2005-09-30",
+     "precision": "day",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL19",
+    "date": "2006-2010",
+    "jurisdiction": "Massachusetts",
+    "grade": "well-supported",
+    "what": "A Republican governor and a Democratic legislature required everyone to carry health insurance, subsidized it for people who could not afford it, and got the uninsured rate to the lowest in the country.",
+    "period": {
+     "start": "2006-01-01",
+     "end": "2010-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL20",
+    "date": "1996-2006, published 2012",
+    "jurisdiction": "California",
+    "grade": "documented",
+    "what": "California's workplace safety agency chose firms for inspection by lottery, which let researchers measure what an inspection does.",
+    "period": {
+     "start": "1996-01-01",
+     "end": "2006-12-31",
+     "precision": "year",
+     "kind": "span",
+     "extra_point": {
+      "date": "2012-01-01",
+      "label": "published 2012"
+     }
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL21",
+    "date": "1990-2024",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "NOAA ran public supercomputers, satellites and hurricane hunter aircraft, and published its own forecast errors every year so anyone could check whether the forecasts were getting better.",
+    "period": {
+     "start": "1990-01-01",
+     "end": "2024-12-31",
+     "precision": "year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL22",
+    "date": "2021-03 to 2021-12",
+    "jurisdiction": "federal",
+    "grade": "documented",
+    "what": "For six months the Child Tax Credit was made fully refundable, raised, and paid out monthly, so families got the money whether or not they earned enough to owe tax.",
+    "period": {
+     "start": "2021-03-01",
+     "end": "2021-12-31",
+     "precision": "month",
+     "kind": "span"
+    },
+    "loop": null
+   },
+   {
+    "id": "DL23",
+    "date": "FY2024",
+    "jurisdiction": "federal",
+    "grade": "plausible",
+    "what": "Congress funds auditors who are independent of the agencies they audit, and they publish what they find whether or not the agency wants it published.",
+    "period": {
+     "start": "2023-10-01",
+     "end": "2024-09-30",
+     "precision": "federal fiscal year",
+     "kind": "span"
+    },
+    "loop": "B1a"
+   },
+   {
+    "id": "DL24",
+    "date": "2024 analysis",
+    "jurisdiction": "federal",
+    "grade": "well-supported",
+    "what": "The Congressional Budget Office estimated how federal revenue changes when the IRS hires more enforcement staff, so the return on an enforcement dollar became a number Congress could score.",
+    "period": {
+     "start": "2024-01-01",
+     "end": null,
+     "precision": "year",
+     "kind": "point (analysis date)"
+    },
+    "loop": "R7"
+   }
+  ],
+  "unparsed": [],
+  "v7_order_is_chronological": false,
+  "grade_counts": {
+   "well-supported": 12,
+   "documented": 10,
+   "plausible": 2
+  }
+ },
+ "authority": {
+  "links": [
+   {
+    "id": "LE02",
+    "from": "D1",
+    "to": "EC2",
+    "polarity": null,
+    "type": "authority",
+    "delay": "M",
+    "evidence": "documented",
+    "contested": false,
+    "name": "Congress decides public investment levels",
+    "loops": [],
+    "qualification": "Money appropriated and money spent can differ for years: as of July 31, 2026, 75.7% of the infrastructure law's transportation funds were obligated and 46.6% spent (Department of Transportation).",
+    "from_title": "Congress's ability to write and check policy",
+    "to_title": "Public investment in research and infrastructure"
+   },
+   {
+    "id": "LE03",
+    "from": "D2",
+    "to": "EC2",
+    "polarity": null,
+    "type": "authority",
+    "delay": "S",
+    "evidence": "documented",
+    "contested": false,
+    "name": "The executive administers appropriated public investment",
+    "loops": [],
+    "qualification": "GAO documented in 2026 that $7.8 billion of $11 billion in CHIPS research awards had been canceled; whether a given withholding is lawful is decided case by case.",
+    "from_title": "Presidential action without new legislation",
+    "to_title": "Public investment in research and infrastructure"
+   },
+   {
+    "id": "LE19",
+    "from": "D2",
+    "to": "EC10",
+    "polarity": null,
+    "type": "authority",
+    "delay": "S",
+    "evidence": "documented",
+    "contested": false,
+    "name": "The executive sets tariff rates",
+    "loops": [],
+    "qualification": "The Supreme Court ruled 6-3 in February 2026 (Learning Resources v. Trump) that the International Emergency Economic Powers Act does not authorize tariffs; most of those tariffs were replaced under Sections 122, 232 and 301.",
+    "from_title": "Presidential action without new legislation",
+    "to_title": "Costs of tariffs and trade rules"
+   },
+   {
+    "id": "LT13",
+    "from": "D4",
+    "to": "TC7",
+    "polarity": null,
+    "type": "authority",
+    "delay": "S",
+    "evidence": "documented",
+    "contested": false,
+    "name": "Antitrust enforcers decide what pricing software may do",
+    "loops": [],
+    "qualification": "The proposed decree requires training data at least 12 months old and an outside monitor; court entry was pending as of May 2026.",
+    "from_title": "Ability to investigate and enforce the rules",
+    "to_title": "Use of pricing algorithms"
+   },
+   {
+    "id": "LT14",
+    "from": "D6",
+    "to": "TC7",
+    "polarity": null,
+    "type": "authority",
+    "delay": "S",
+    "evidence": "documented",
+    "contested": false,
+    "name": "States and cities set rules for pricing software",
+    "loops": [],
+    "qualification": null,
+    "from_title": "State and local testing of reforms",
+    "to_title": "Use of pricing algorithms"
+   },
+   {
+    "id": "LT16",
+    "from": "D2",
+    "to": "TC5",
+    "polarity": null,
+    "type": "authority",
+    "delay": "S",
+    "evidence": "documented",
+    "contested": false,
+    "name": "The executive opens and closes federal digital teams",
+    "loops": [],
+    "qualification": null,
+    "from_title": "Presidential action without new legislation",
+    "to_title": "Government's ability to build and run digital services"
+   },
+   {
+    "id": "LT17",
+    "from": "D1",
+    "to": "TC5",
+    "polarity": null,
+    "type": "authority",
+    "delay": "M",
+    "evidence": "documented",
+    "contested": false,
+    "name": "Congress decides funding for government digital capacity",
+    "loops": [],
+    "qualification": "GAO reported in 2025 that about 80% of federal IT spending goes to operating and maintaining existing systems, the most critical of which are 23 to 60 years old.",
+    "from_title": "Congress's ability to write and check policy",
+    "to_title": "Government's ability to build and run digital services"
+   }
+  ],
+  "in_loops": []
+ },
+ "delay": {
+  "counts": {
+   "S": 38,
+   "M": 45,
+   "L": 35
+  },
+  "definition": "The time between a change and its effect. Codes: S, under 2 years; M, 2 to 10 years; L, over 10 years.",
+  "loop_delay_rule": [
+   [
+    "R1",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R1b",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R2",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R3",
+    "S",
+    "S",
+    true
+   ],
+   [
+    "R4a",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "R4b",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "R5",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R6",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R7",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R8",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R10",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "R11",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "R12",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R13",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R15",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R16",
+    "L",
+    "L",
+    true
+   ],
+   [
+    "R18",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "B1a",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "B4",
+    "M",
+    "M",
+    true
+   ],
+   [
+    "B5",
+    "L",
+    "L",
+    true
+   ]
+  ],
+  "loop_delay_rule_holds": true,
+  "loop_sign_rule": [
+   [
+    "R1",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R1b",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R2",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R3",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R4a",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R4b",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R5",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R6",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R7",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R8",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R10",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R11",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R12",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R13",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R15",
+    "R",
+    2,
+    true
+   ],
+   [
+    "R16",
+    "R",
+    0,
+    true
+   ],
+   [
+    "R18",
+    "R",
+    2,
+    true
+   ],
+   [
+    "B1a",
+    "B",
+    1,
+    true
+   ],
+   [
+    "B4",
+    "B",
+    1,
+    true
+   ],
+   [
+    "B5",
+    "B",
+    1,
+    true
+   ]
+  ],
+  "loop_sign_rule_holds": true
+ },
+ "model_facts": {
+  "D6": {
+   "type": "flow",
+   "kind_plain": "Stock (an amount built up over time). The listed indicators count adoptions per year, which is a flow; the stock would be the number of reforms in force or the legal room states and localities have to act.",
+   "title": "State and local testing of reforms"
+  },
+  "compound_domains": [
+   [
+    "A4",
+    "D08/D09"
+   ],
+   [
+    "D4",
+    "D04/D05"
+   ],
+   [
+    "D6",
+    "D02/D05"
+   ],
+   [
+    "E1",
+    "D03/D08"
+   ],
+   [
+    "X1",
+    "D06/D07"
+   ],
+   [
+    "X2",
+    "D10/D02"
+   ],
+   [
+    "X3",
+    "D08/D06"
+   ],
+   [
+    "X5",
+    "D05/D09"
+   ],
+   [
+    "D7",
+    "D02/D05"
+   ]
+  ],
+  "conceptual_chain_items": {
+   "B2": [
+    "A4 hardship",
+    "Automatic support"
+   ],
+   "B3": [
+    "Excess profits",
+    "Entry",
+    "Competitive pressure"
+   ],
+   "R9": [
+    "Effective participation",
+    "Accountable delivery",
+    "E2"
+   ]
+  },
+  "conceptual_chain_non_ids": {
+   "B2": [
+    "A4 hardship",
+    "Automatic support"
+   ],
+   "B3": [
+    "Excess profits",
+    "Entry",
+    "Competitive pressure"
+   ],
+   "R9": [
+    "Effective participation",
+    "Accountable delivery"
+   ]
+  },
+  "conceptual_loop_grades": {
+   "B2": "well-supported",
+   "B3": "well-supported where entry is possible",
+   "R9": "hypothesis"
+  },
+  "glossary_connection_prefixes": [
+   "L",
+   "LE",
+   "LT",
+   "LX",
+   "T"
+  ],
+  "link_prefixes": {
+   "L": 55,
+   "LX": 5,
+   "T": 12,
+   "LE": 27,
+   "LT": 19
+  },
+  "rejected_reforms": [
+   "R-35"
+  ],
+  "loop_closure_counts": {
+   "closed: every step is a numbered connection": 18,
+   "closed with a hypothesized step": 2,
+   "conceptual: no complete numbered chain": 3
+  }
+ }
+}

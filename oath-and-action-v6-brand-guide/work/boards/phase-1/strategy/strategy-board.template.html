@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategy and Direction Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="board-base.css">
+<style>
+  .tag { font-size: .8125rem }
+  .board > header .wm { width: min(100%, 360px); height: auto; display: block; margin: 0 0 20px; color: var(--charcoal) }
+  .lede { font-size: 1.125rem; max-width: 62ch }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 16px 0 0; list-style: none; font-weight: 600 }
+  .toc a, a { color: var(--fg); text-underline-offset: 3px }
+  a:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px }
+  .legend { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin-top: 16px }
+  .legend p { margin: 0; font-size: .9375rem }
+  .illus { display: inline-block; font: 600 .8125rem/1.25 var(--body); border: 1px dashed var(--charcoal); color: var(--charcoal); padding: 1px 6px; margin-left: 6px; vertical-align: .1em; white-space: nowrap; letter-spacing: 0; text-transform: none }
+  .ref { display: inline-block; font: 600 .8125rem/1.25 var(--body); border: 1px solid var(--muted); color: var(--muted); padding: 1px 6px; white-space: nowrap }
+  .rec { border-left: 4px solid var(--charcoal); padding: 4px 0 4px 14px; margin: 0 0 16px; max-width: 74ch }
+  .rec strong { font-family: var(--display) }
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start }
+  .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start }
+  @media (max-width: 900px) { .two, .three { grid-template-columns: minmax(0, 1fr) } }
+  figure { margin: 0 }
+  img { max-width: 100%; height: auto; display: block }
+  figcaption { font-size: .875rem; line-height: 1.45; color: var(--muted); margin-top: 8px }
+  .white { background: var(--white); border: 1px solid var(--rule); padding: 16px; min-width: 0 }
+  .loop svg { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto }
+  .looplabels { position: relative; height: 1.6em; max-width: 560px; margin: 4px auto 0; font: 600 .8125rem/1.4 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+  .looplabels span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap }
+  .r9 svg { width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto }
+  .pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; text-align: center; margin-top: 12px }
+  .pillars .p { font: 800 1.0625rem/1.2 var(--display); padding: 10px 4px; border: 1px solid var(--charcoal); background: var(--white) }
+  .pillars .half { grid-column: span 2; font-size: .9375rem; padding: 8px 6px; border-top: 3px solid var(--charcoal) }
+  .pillars .half.act { border-top-style: double }
+  .hingemark { text-align: center; margin: 8px 0 0; font-size: .9375rem }
+  .pair { font: 800 clamp(1.375rem, 3vw, 1.75rem)/1.15 var(--display); letter-spacing: -0.02em; margin: 0 0 4px }
+  .pair .a { color: var(--red) }
+  .pairs li { margin-bottom: 14px }
+  .pairs { list-style: none; padding: 0; margin: 0 }
+  .narrative p { max-width: 66ch }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch }
+  .scroll table { min-width: 640px }
+  td.y { font-weight: 700 }
+  @media (max-width: 760px) {
+    table.stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap }
+    table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: 100% }
+    table.stack tr { border-bottom: 1px solid var(--rule); padding: 10px 0 }
+    table.stack td { border: 0; padding: 3px 0 }
+    table.stack td::before { content: attr(data-label); display: block; font-weight: 700; font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted) }
+    .decision table.stack td::before { color: inherit }
+  }
+  .aud h3 { margin-bottom: 8px }
+  .aud dl { margin: 0 }
+  .aud dt { font-weight: 700; font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 8px }
+  .aud dd { margin: 2px 0 0 }
+  /* Act mock layouts */
+  .mock { background: var(--white); border: 1px solid var(--rule); padding: 20px; min-width: 0 }
+  .mock .kicker { font: 700 .8125rem/1.4 var(--body); letter-spacing: .06em; text-transform: uppercase; margin: 0 0 10px; display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center }
+  .poslabel { background: var(--charcoal); color: var(--white); padding: 3px 8px; letter-spacing: .04em }
+  .mock .mh { font: 800 1.5rem/1.15 var(--display); letter-spacing: -0.02em; margin: 0 0 10px; text-wrap: balance }
+  .mock h4 { font: 600 1rem/1.3 var(--display); margin: 16px 0 6px }
+  .mock p, .mock li { font-size: 1rem }
+  .mock ol { padding-left: 1.25rem; margin: 0 0 12px }
+  .against { border: 1px solid var(--charcoal); padding: 12px 14px; margin: 14px 0 }
+  .hdiv { display: flex; align-items: center; gap: 16px; margin: 18px 0 12px }
+  .hdiv::before, .hdiv::after { content: ""; flex: 1; border-top: 1px solid var(--rule) }
+  .hdiv svg { width: 16px; height: 18px; color: var(--red) }
+  .ask { display: inline-block; background: var(--red); color: var(--white); font: 700 1.1875rem/1.2 var(--body); padding: 12px 18px; text-decoration: none; margin: 4px 0 12px }
+  .ask:focus-visible { outline: 3px solid var(--charcoal); outline-offset: 3px }
+  .disclose { font-size: .9375rem; border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 8px }
+  .cn { display: inline-grid; place-items: center; min-width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--charcoal); color: var(--white); font: 700 .8125rem/1 var(--body); margin-right: 4px }
+  .fair { padding-left: 1.25rem } .fair li { margin-bottom: 6px; max-width: 72ch }
+  /* rule set */
+  .rules h3 { margin: 0 0 8px }
+  .rules ol { list-style: none; padding: 0; margin: 0 }
+  .rules li { margin: 0 0 8px; font-size: .9375rem }
+  .rules b { font-family: var(--display) }
+  .bars { display: grid; gap: 8px; margin: 10px 0 4px }
+  .bar { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 8px; align-items: center; font-size: .9375rem }
+  .bar span.fill { display: block; height: 22px }
+  .f-red { background: var(--red) } .f-pru { background: var(--prussian) }
+  .f-char { background: var(--charcoal) }
+  .f-stone { background: repeating-linear-gradient(135deg, var(--stone, #5D636D) 0 2px, transparent 2px 7px); border: 2px solid #5D636D; box-sizing: border-box }
+  /* art direction */
+  .art { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) }
+  .art .panel h3 { margin: 12px 0 6px }
+  .art .panel p { font-size: .9375rem; margin-bottom: 8px }
+  .art .panel p b { font-family: var(--display) }
+  .decision table { margin-top: 8px }
+  .decision th, .decision td { border-bottom-color: rgba(220, 217, 210, .45) }
+  .decision h2 { color: var(--newsprint) }
+  .decision .tag { border-color: currentColor }
+  .checks ul { padding-left: 1.25rem } .checks li { margin-bottom: 4px; max-width: 80ch }
+</style>
+</head>
+<body>
+<main class="board">
+
+<header>
+  {{WORDMARK}}
+  <p class="eyebrow">Edition 06 · Phase 1 · Creative director · October 21, 2026</p>
+  <h1>Strategy and direction board</h1>
+  <p class="lede">This board proposes the brand idea, the audiences, how the products fit together, the role of each line, the Act pattern, a nonpartisan rule set and the art direction drawn from your references. Nothing here changes a master or a locked line. Each section opens with its recommendation, and every decision is collected in the panel at the end.</p>
+  <nav aria-label="Board sections">
+    <ul class="toc">
+      <li><a href="#idea">1 The hinge</a></li>
+      <li><a href="#audiences">2 Audiences</a></li>
+      <li><a href="#architecture">3 Architecture</a></li>
+      <li><a href="#lines">4 Lines</a></li>
+      <li><a href="#act">5 Act pattern</a></li>
+      <li><a href="#rules">6 Nonpartisan rules</a></li>
+      <li><a href="#art">7 Art direction</a></li>
+      <li><a href="#scores">8 Scores</a></li>
+      <li><a href="#decisions">9 Decisions</a></li>
+    </ul>
+  </nav>
+  <div class="legend">
+    <p><span class="tag">Option</span> A proposal you may accept or decline.</p>
+    <p><span class="tag defect">Defect fix</span> Corrects a measured problem.</p>
+    <p><span class="illus">Illustrative</span> Invented to show a pattern. Nothing so marked is real.</p>
+    <p><span class="ref">Reference, study only</span> Your slides, mostly generated in ChatGPT. Never traced or shipped.</p>
+  </div>
+  <p class="cap" style="margin-top:12px">Terms: the <b>lockmark</b> is the 3 by 3 grid of nodes beside the wordmark, and its larger red node at bottom right is the <b>lever</b>. The <b>Signal Grid</b> is the same grid used to code content. A <b>hinge headline</b> joins two noun phrases with the red ampersand. The <b>hinge divider</b> is a hairline broken by a small red ampersand, placed before "What you can do."</p>
+</header>
+
+<section id="idea" aria-labelledby="h-idea">
+  <p class="eyebrow">1 · Positioning and the brand idea</p>
+  <h2 id="h-idea">The ampersand is the hinge, and the hinge turns in a loop</h2>
+  <p class="rec"><strong>Recommendation.</strong> Make the hinge the organizing idea of the whole system <span class="tag">Option</span>. Your idea (DC-05) is a promise or commitment, then action. Each locked line already has that shape.</p>
+
+  <div class="two">
+    <div class="panel">
+      <h3>Positioning</h3>
+      <p>For people in every state who live under public rules they rarely get to read, Oath &amp; Action is a nonpartisan publication and set of tools. It explains how a decision is made and gives a practical way to take part. Readers can check it: claims carry a source and an evidence grade, and every explanation ends with a step.</p>
+      <h3 style="margin-top:12px">Points of difference</h3>
+      <ul>
+        <li>It explains the path from a rule to its result, with evidence graded the way the atlas grades it.</li>
+        <li>Every piece turns at the hinge divider to "What you can do."</li>
+        <li>Readers of every party and state get the same record and the same way in.</li>
+        <li>A position piece carries a label before its headline and the strongest case against it.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>The locked lines already share the hinge</h3>
+      <table class="stack">
+        <thead><tr><th scope="col">Locked line, exact</th><th scope="col">Commitment</th><th scope="col">Action</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Locked line">"Help people understand and improve the rules that shape their lives."</td><td data-label="Commitment">understand</td><td data-label="Action">improve</td></tr>
+          <tr><td data-label="Locked line">"We explain how a decision is made and give you a practical way to take part."</td><td data-label="Commitment">explain how a decision is made</td><td data-label="Action">give you a practical way to take part</td></tr>
+          <tr><td data-label="Locked line">"Clarity is our duty. Action is our promise."</td><td data-label="Commitment">clarity, our duty</td><td data-label="Action">action, our promise</td></tr>
+          <tr><td data-label="Locked line">"A country that answers to its people."</td><td data-label="Commitment" colspan="2">The result when the loop closes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:20px">
+    <h3>The pillars split at the hinge</h3>
+    <p>The order stays exactly as locked: Explain → Track → Connect → Act. The hinge falls between Track and Connect, where a reader stops learning about a decision and starts taking part in it.</p>
+    <div class="pillars" role="img" aria-label="Explain and Track sit under Clarity is our duty. Connect and Act sit under Action is our promise. The hinge falls between Track and Connect.">
+      <div class="p">Explain</div><div class="p">Track</div><div class="p">Connect</div><div class="p">Act</div>
+      <div class="half">Clarity is our duty.</div><div class="half act">Action is our promise.</div>
+    </div>
+    <p class="hingemark">The hinge sits on the line between the second and third pillar.</p>
+  </div>
+
+  <h3 style="margin-top:28px">The hinge drawn as a loop</h3>
+  <p>Your mockups circle the ampersand with two dashed arcs, each with arrowheads at both ends, so the figure reads as an exchange. When both arcs run one way it becomes a loop, which Atlas V7's glossary defines as "A chain of causes that returns to its starting variable." V5's own hinge arc is dotted, and the atlas draws hypotheses dotted and plausible links dashed. So the proposal uses solid arcs.</p>
+  <div class="three">
+    <figure class="panel">
+      <img src="phase-1/strategy/refs/20261021_V5-Hinge-Diagram.jpg" width="645" height="190" alt="V5 hinge diagram: the wordmark with UNDERSTAND under OATH, IMPACT under ACTION, and one dotted arc above, from OATH to ACTION.">
+      <figcaption><b>Original.</b> V5 Polished hinge diagram, chapter 04.</figcaption>
+    </figure>
+    <figure class="panel">
+      <img src="phase-1/strategy/refs/20261021_Ref-Mockup-Hinge-Newsprint.jpg" width="880" height="587" loading="lazy" alt="Mockup: OATH and ACTION joined by a line through a circle around a red serif ampersand, with dashed arcs above and below and the caption The ampersand is the hinge.">
+      <figcaption><span class="ref">Reference, study only</span> Hinge mockup on Newsprint.</figcaption>
+    </figure>
+    <figure class="white loop">
+      {{LOOP_SVG}}
+      <figcaption><span class="tag">Option</span> Arrowheads one way, clockwise. Top: the promise becomes action. Bottom: the result informs the next promise. Solid hairlines; labels 13 px or larger at every width.</figcaption>
+    </figure>
+  </div>
+
+  <div class="two" style="margin-top:20px">
+    <figure class="white r9">
+      {{R9_SVG}}
+      <figcaption>Loop R9, "Taking part in a successful repair may support the next one," reinforcing, from Atlas V7 (snapshot October 15, 2026), drawn dotted because V7 grades it a hypothesis: "The complete loop is a design hypothesis."</figcaption>
+    </figure>
+    <div class="panel">
+      <h3>What this lets the brand say, and what it must not claim</h3>
+      <p>Loop R9 has the brand's shape. Loop B4, "Electoral consequences can improve public performance," is what V7 calls "The main balancing loop in the model," well-supported where seats are competitive. It describes the condition the tagline names.</p>
+      <p>The brand may present its loop as a goal and a design. Any claim about its effect carries R9's grade and uses "can" or "may" (Master Brief section 15).</p>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:20px">
+    <div class="white">
+      <h3>What the ampersand joins</h3>
+      <p class="cap">Your pairs are ideas. A hinge headline must name a rule, so each idea reaches the page through a concrete pair. Headlines from the editor's file, section 4.</p>
+      <ul class="pairs">
+        <li><p class="pair">The campaign pledge <span class="a">&amp;</span> the roll call.</p><span class="cap">A commitment, then action</span></li>
+        <li><p class="pair">The zoning code <span class="a">&amp;</span> the rent.</p><span class="cap">Cause and effect</span></li>
+        <li><p class="pair">The proposal <span class="a">&amp;</span> the outcome.</p><span class="cap">Problem and solution</span></li>
+        <li><p class="pair">Your signature <span class="a">&amp;</span> the ballot question.</p><span class="cap">You and me</span></li>
+        <li><p class="pair">The compromise <span class="a">&amp;</span> the law.</p><span class="cap">Common ground across the left and the right</span></li>
+      </ul>
+    </div>
+    <div class="panel narrative">
+      <h3>Brand narrative (232 words)</h3>
+      <p>Every public rule starts with people who promised to serve: a council that adopts a budget, a legislature that passes a bill. Then the rule reaches a household as a rent renewal, a pay stub, a ballot or a power bill.</p>
+      <p>Oath &amp; Action follows that path for readers in every state. We read the rule and show who holds the decision. The record stays within reach while the decision moves. When it is time to act, we point to the office that answers for it and the step a reader can take.</p>
+      <p>The ampersand in our name is the hinge between a promise and the action that keeps it. It joins a rule to its result and a problem to the fixes on the table. It also joins people: you and a neighbor who lives under the same rule and may vote another way. You both get the same record and the same way in.</p>
+      <p>The hinge turns in a loop. People who take part and see the result can hold the next promise to account, and the people who made it answer to them. Our tagline names that goal: "A country that answers to its people."</p>
+      <p>We are nonpartisan. When credible sources disagree, we show both readings and the evidence for each. When we take a position, we label it before the headline and summarize the strongest case against it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="audiences" aria-labelledby="h-aud">
+  <p class="eyebrow">2 · Audiences across the country</p>
+  <h2 id="h-aud">Six readers, one record</h2>
+  <p class="rec"><strong>Recommendation.</strong> Design each product for one lead audience, and test every product for fairness with officials and staff, because they are the people readers are asked to contact. They come from both parties and from nonpartisan offices.</p>
+  <div class="grid aud">
+    <div class="panel"><h3>Newcomers</h3><dl><dt>Need</dt><dd>A plain answer to one question about their own life</dd><dt>Served by</dt><dd>Explainers and the atlas's 16 question-first pathways, such as "Why did my rent go up?"</dd></dl></div>
+    <div class="panel"><h3>Engaged citizens</h3><dl><dt>Need</dt><dd>To follow a decision and know when acting is worth it</dd><dt>Served by</dt><dd>Trackers and the weekly newsletter</dd></dl></div>
+    <div class="panel"><h3>Local organizers</h3><dl><dt>Need</dt><dd>Who decides, the dates, and accurate material to share</dd><dt>Served by</dt><dd>Act process pieces, scripts and the atlas view of who can act</dd></dl></div>
+    <div class="panel"><h3>Journalists and researchers</h3><dl><dt>Need</dt><dd>Sources, grades, method and data they can cite</dd><dt>Served by</dt><dd>Reports, the atlas Register (Concept 11), downloads, the method page</dd></dl></div>
+    <div class="panel"><h3>Officials and staff</h3><dl><dt>Need</dt><dd>A fair account of their process and a way to correct the record</dd><dt>Served by</dt><dd>Trackers, reports, dated route records, the corrections page</dd></dl></div>
+    <div class="panel"><h3>Funders and partners</h3><dl><dt>Need</dt><dd>Mission, method, evidence of use, nonpartisan safeguards</dd><dt>Served by</dt><dd>The About and method pages, the position log, the partnership lockup</dd></dl></div>
+  </div>
+</section>
+
+<section id="architecture" aria-labelledby="h-arch">
+  <p class="eyebrow">3 · Brand architecture</p>
+  <h2 id="h-arch">One masterbrand, with products named for what they do</h2>
+  <p class="rec"><strong>Recommendation.</strong> Oath &amp; Action signs everything and holds the only ampersand in any product name <span class="tag">Option</span>. The atlas, the trackers and the data never take a position.</p>
+  <div class="scroll" tabindex="0" role="region" aria-label="Products by pillar table, scrolls sideways on small screens">
+    <table>
+      <thead><tr><th scope="col">Product and name rule</th><th scope="col">Explain</th><th scope="col">Track</th><th scope="col">Connect</th><th scope="col">Act</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Publication: Oath &amp; Action</th><td class="y">Leads</td><td>Supports</td><td>Supports</td><td>Supports</td></tr>
+        <tr><th scope="row">Newsletter: Oath &amp; Action, "the weekly briefing," numbered and dated issues</th><td class="y">Leads</td><td>Supports</td><td>Supports</td><td>Ends every issue</td></tr>
+        <tr><th scope="row">Atlas: Who Do They Answer To? The Oath &amp; Action Systems Atlas</th><td>Pathways</td><td>Register</td><td>Who can act</td><td>Reforms as options studied</td></tr>
+        <tr><th scope="row">Trackers: {Subject} Tracker, with an "as of" date on every view</th><td></td><td class="y">Leads</td><td></td><td>Links to Act</td></tr>
+        <tr><th scope="row">Reports: Oath &amp; Action Report {number}: {title}, dated</th><td class="y">Leads</td><td>Supports</td><td>Supports</td><td>Closing page</td></tr>
+        <tr><th scope="row">Explainers: series, slash, topic, such as "Reform 101 / Ranked-choice voting"</th><td class="y">Leads</td><td></td><td></td><td>Hinge divider</td></tr>
+        <tr><th scope="row">Act pieces: kicker "Act" plus "How to take part" or "Our position"</th><td></td><td></td><td>Supports</td><td class="y">Leads</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="two" style="margin-top:20px">
+    <div class="panel">
+      <h3>Naming rules</h3>
+      <ol>
+        <li>Names describe what the product does. Only the atlas is titled as a question.</li>
+        <li>No product name contains an ampersand. A partner's ampersand is written "and" (V5).</li>
+        <li>Every piece carries a content label: Explainer, Tracker, Analysis, Report, Act: How to take part, or Act: Our position.</li>
+        <li>Keep V5's series names. "Dispatch from the Front" becomes "Dispatch," which V5's kicker already uses <span class="tag">Option</span>.</li>
+        <li>Drop "scorecards" from Track. Grading individual officials is an advocacy format.</li>
+        <li>An atlas reform is an option studied, with its grade. Positions live only in labeled Act pieces.</li>
+      </ol>
+    </div>
+    <figure class="panel">
+      <img src="phase-1/strategy/refs/20261021_Ref-Page-24.jpg" width="880" height="495" loading="lazy" alt="Reference slide: an atlas home page headed WHO DO THEY ANSWER TO? with four question cards built on everyday documents such as a renewal notice and an electricity bill.">
+      <figcaption><span class="ref">Reference, study only</span> p24. Keep its question-first entry, which matches V7's 16 pathways. Leave its dome in the ballot card.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="lines" aria-labelledby="h-lines">
+  <p class="eyebrow">4 · The lines</p>
+  <h2 id="h-lines">Give each locked line one job, and keep both candidates out of the tagline slot</h2>
+  <table class="stack">
+    <thead><tr><th scope="col">Locked line, exact</th><th scope="col">Role</th><th scope="col">Where it appears</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Line">"A country that answers to its people."</td><td data-label="Role">Principal tagline: the result the loop works toward</td><td data-label="Where">Hero, back cover, newsletter ending, last video frame</td></tr>
+      <tr><td data-label="Line">"Help people understand and improve the rules that shape their lives."</td><td data-label="Role">Mission</td><td data-label="Where">About page, grant and partner material, report inside cover</td></tr>
+      <tr><td data-label="Line">"We explain how a decision is made and give you a practical way to take part."</td><td data-label="Role">Reader promise: what every piece owes the reader</td><td data-label="Where">Under the home page masthead, newsletter welcome</td></tr>
+      <tr><td data-label="Line">"Clarity is our duty. Action is our promise."</td><td data-label="Role">Editorial commitment: the standard staff answer to</td><td data-label="Where">Colophon, method page, corrections page</td></tr>
+      <tr><td data-label="Line">Explain → Track → Connect → Act</td><td data-label="Role">Pillars: the order of every sequence</td><td data-label="Where">Navigation, the four-dot row, Signal Grid corners</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px">Voice line: the V5 line stays in force (DC-04). I support the editor's revision B, which splits at the hinge and gives the action to the reader.</p>
+  <div class="two" style="margin-top:12px">
+    <div class="panel">
+      <h3>"From spectators to stewards."</h3>
+      <p><b>Recommended role: none as a brand line.</b> Record it in Purpose as the founding line.</p>
+      <ul>
+        <li>V4.2 lists it as "Historical tagline" and "Retired from current applications." Your slides return it to the tagline slot (p01, p07, p13, square poster), where it competes with "A country that answers to its people."</li>
+        <li>The "from X to Y" turn is a contrasting pair, which the voice rules exclude.</li>
+        <li>It calls the newcomer a spectator, which scolds the reader we most want to welcome.</li>
+        <li>It favors no party, and stewardship has a home in faith, conservation and fiscal traditions alike (design judgment).</li>
+        <li>The narrowest role, if you want one: membership and events, never in a lockup. The research lead checks prior use first.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>"Democracy has a structure."</h3>
+      <p><b>Recommended role: the lockmark's explanatory line,</b> in the Signal Grid chapter and on the About page, followed by a sentence that names the lever.</p>
+      <ul>
+        <li>Plain and present tense, and it names a mechanism. It passes the voice rules.</li>
+        <li>It restates V5: the lockmark "says that democracy has a locatable structure and that one point moves it."</li>
+        <li>Campaigns in both parties have made "democracy" a theme, and some readers answer it with "a republic." The risk is low in an explanatory role. Studio and editor judgment, untested with readers.</li>
+        <li>Keep it out of the tagline slot. Fallback: "Every public decision has a structure."</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="act" aria-labelledby="h-act">
+  <p class="eyebrow">5 · The Act pattern (DC-01)</p>
+  <h2 id="h-act">Two kinds of Act piece, labeled so a reader knows which one is in front of them</h2>
+  <p class="rec"><strong>Recommendation.</strong> A process piece names the step and leaves the position to the reader. A position piece asks support for a named measure, carries the label "Our position" (the editor's option A) and a fairness kit <span class="tag">Option</span>. Numbered dots mark where each part sits.</p>
+  <div class="two">
+    <article class="mock" aria-label="Mock layout: process piece">
+      <p class="kicker"><span class="cn" aria-hidden="true">1</span> Act · How to take part</p>
+      <h3 class="mh">Alder County votes on backyard cottages March 9. Here is how to weigh in. <span class="illus">Illustrative</span></h3>
+      <p>This guide names the steps and takes no side on the proposal.</p>
+      <h4>What would change</h4>
+      <p>Owners could add one small second home, up to 800 square feet, on any lot. <span class="illus">Illustrative</span></p>
+      <h4>Who decides</h4>
+      <p>Five county supervisors. Three votes pass it. <span class="illus">Illustrative</span></p>
+      <h4><span class="cn" aria-hidden="true">2</span> What each side has said</h4>
+      <p>Supporters said more homes on existing lots would ease rents. Opponents said streets and sewers were sized for fewer homes. Both from the February 23 first reading. <span class="illus">Illustrative</span></p>
+      <div class="hdiv" role="separator" aria-label="Hinge divider">{{AMP_SMALL}}</div>
+      <h4>What you can do</h4>
+      <ol>
+        <li>Send a written comment by 5 p.m. Wednesday, March 3, 2027. <span class="illus">Illustrative</span></li>
+        <li>Or speak for up to two minutes at 6 p.m. Tuesday, March 9, 2027, County Building, Room 2. <span class="illus">Illustrative</span></li>
+      </ol>
+      <a class="ask" href="#act">Send a comment</a>
+      <p class="disclose"><span class="cn" aria-hidden="true">3</span> Follow the vote on the Accessory Homes Tracker. <span class="illus">Illustrative</span></p>
+    </article>
+    <article class="mock" aria-label="Mock layout: position piece">
+      <p class="kicker"><span class="cn" aria-hidden="true">1</span> <span class="poslabel">Our position</span> Act</p>
+      <h3 class="mh">State senate committees should post every vote within two days. <span class="illus">Illustrative</span></h3>
+      <p>We support S. 214, which would require every state senate committee to post its roll-call votes within two days. <span class="illus">Illustrative</span></p>
+      <h4>What the record shows</h4>
+      <p>Documented: 14 of 20 committees posted no roll calls last session. Source: Senate clerk's journal, 2026 session. <span class="illus">Illustrative</span></p>
+      <div class="against">
+        <h4 style="margin-top:0"><span class="cn" aria-hidden="true">2</span> The strongest case against</h4>
+        <p>Some committee chairs in both parties argue that posting every procedural vote would discourage early compromise, and that clerks would need new staff to post on time. Sources: committee testimony, February 2027; clerk's staffing estimate. <span class="illus">Illustrative</span></p>
+      </div>
+      <h4>What we don't know</h4>
+      <p>No study in this state has measured whether faster posting changes how members vote. <span class="illus">Illustrative</span></p>
+      <div class="hdiv" role="separator" aria-label="Hinge divider">{{AMP_SMALL}}</div>
+      <p class="disclose" style="border:0;padding:0"><span class="cn" aria-hidden="true">3</span> Oath &amp; Action supports S. 214. Read our explainer on it, which sets out the main arguments, before you decide.</p>
+      <a class="ask" href="#act">Ask your senator to vote yes by March 16</a>
+      <p class="disclose"><span class="cn" aria-hidden="true">4</span> Decided by the editorial board, February 26, 2027. No funder asked for or reviewed this piece. All positions: position log. <span class="illus">Illustrative</span></p>
+    </article>
+  </div>
+  <div class="two" style="margin-top:20px">
+    <div class="panel">
+      <h3>Where the parts sit</h3>
+      <p><span class="cn" aria-hidden="true">1</span> The kicker, above the headline. "Our position" is a filled Charcoal label, read first. Red stays on the ask button.</p>
+      <p><span class="cn" aria-hidden="true">2</span> Both readings. In a position piece, the strongest opposing case comes before the ask.</p>
+      <p><span class="cn" aria-hidden="true">3</span> The disclosure line, directly above the ask button in a position piece.</p>
+      <p><span class="cn" aria-hidden="true">4</span> Who decided, when, funder interest, and the position log.</p>
+    </div>
+    <div class="panel">
+      <h3>What keeps a position piece fair</h3>
+      <ol class="fair">
+        <li>The label leads, and the disclosure repeats above the ask. On a shared card the label holds the top-left corner.</li>
+        <li>The strongest case against is written as its supporters would put it, with sources, at no less than a third of the argument's length.</li>
+        <li>Every claim keeps its evidence grade, with a verb to match.</li>
+        <li>Opponents are named by office or role, never as a party villain.</li>
+        <li>Process facts match the neutral tracker word for word.</li>
+        <li>A public position log lists every position by date and issue.</li>
+        <li>Positions never appear in the atlas, trackers or data.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="rules" aria-labelledby="h-rules">
+  <p class="eyebrow">6 · Nonpartisan rule set</p>
+  <h2 id="h-rules">Twenty rules that keep every piece readable by every reader</h2>
+  <p class="rec"><strong>Recommendation.</strong> Adopt NP-01 to NP-20 <span class="tag">Option</span>. The NP prefix cannot collide with atlas or Standards IDs.</p>
+  <div class="grid rules">
+    <div class="panel"><h3>Color</h3><ol>
+      <li><b>NP-01</b> Pillar Red and Prussian never share a figure. Prussian surfaces carry Newsprint marks. The locked lockups on Prussian go to the identity board.</li>
+      <li><b>NP-02</b> Two sides never take red against any blue or against Verdigris. Use Charcoal and Stone, or solid and outline, with direct labels.</li>
+      <li><b>NP-03</b> Diverging scales center on Newsprint, use two hues outside the red and blue pair, and name both directions in words.</li>
+      <li><b>NP-04</b> Red has one job per layout and never marks a party, side or person.</li>
+      <li><b>NP-05</b> Maps never color places by party or result.</li>
+    </ol></div>
+    <div class="panel"><h3>Imagery</h3><ol>
+      <li><b>NP-06</b> Domes, columns and flags appear only in a captioned photograph of that place or event.</li>
+      <li><b>NP-07</b> No party symbols, candidate photos, campaign merchandise or legible protest slogans. A party logo may appear as evidence in a sourced document.</li>
+      <li><b>NP-08</b> Photographs show people of different ages, places and roles at public work, officials included, captioned who, what, where and when.</li>
+    </ol></div>
+    <div class="panel"><h3>Rotation</h3><ol>
+      <li><b>NP-09</b> In a chapter, no V7 domain supplies more than one example in four, and no state more than one in five.</li>
+      <li><b>NP-10</b> Rotate federal, state, county or city and school district decisions, and regions.</li>
+      <li><b>NP-11</b> When majorities of either party use a mechanism, show both. Loop R4a, "Majorities draw maps that help them keep control," is the test case.</li>
+      <li><b>NP-12</b> A rotation log records domain, state, level and the coalition that usually backs any reform shown, reviewed at each gate.</li>
+    </ol></div>
+    <div class="panel"><h3>Language</h3><ol>
+      <li><b>NP-13</b> Name the office that decides. Name a party only when party is the mechanism, with the count and source.</li>
+      <li><b>NP-14</b> No grievance framing: "the rule you are angry about," "rigged," "broken," "crisis."</li>
+      <li><b>NP-15</b> No war or sports metaphors: fight, battle, front.</li>
+      <li><b>NP-16</b> Contested claims show both readings at equal length, with the same verbs and type.</li>
+      <li><b>NP-17</b> A reader who supports the current rule would accept its description.</li>
+    </ol></div>
+    <div class="panel"><h3>Hinge pairs</h3><ol>
+      <li><b>NP-18</b> Both halves share one color and weight. Only the ampersand is red.</li>
+      <li><b>NP-19</b> People pairs join people through a shared rule or place, and their order rotates.</li>
+      <li><b>NP-20</b> "Left," "right" or party names enter a hinge headline only to report a sourced agreement.</li>
+    </ol></div>
+    <div class="white">
+      <h3>NP-02 in practice</h3>
+      <p class="cap">Written comments on one proposal <span class="illus">Illustrative</span></p>
+      <p style="margin:8px 0 0"><span class="tag defect">Failure case</span></p>
+      <div class="bars" role="img" aria-label="Failure case: For 212 in red and Against 187 in Prussian blue.">
+        <div class="bar"><span>For, 212</span><span class="fill f-red" style="width:100%"></span></div>
+        <div class="bar"><span>Against, 187</span><span class="fill f-pru" style="width:88%"></span></div>
+      </div>
+      <p class="cap">Red against blue reads as party colors.</p>
+      <p style="margin:8px 0 0"><span class="tag">Correct</span></p>
+      <div class="bars" role="img" aria-label="Correct: For 212 in solid Charcoal and Against 187 in hatched Stone outline, with direct labels.">
+        <div class="bar"><span>For, 212</span><span class="fill f-char" style="width:100%"></span></div>
+        <div class="bar"><span>Against, 187</span><span class="fill f-stone" style="width:88%"></span></div>
+      </div>
+      <p class="cap">Solid and hatched, direct labels. It still reads in grayscale.</p>
+    </div>
+  </div>
+</section>
+
+<section id="art" aria-labelledby="h-art">
+  <p class="eyebrow">7 · Art direction</p>
+  <h2 id="h-art">Take the contrast of heavy capitals and a serif ampersand, and leave the domes</h2>
+  <p class="rec"><strong>What the slides share.</strong> Newsprint grounds, heavy condensed capitals, one red serif ampersand, the Signal Grid at bottom right, Prussian panels and black-and-white scenes of people. They repeat: p07 appears five times (p07, p37, p38, p43, p46), and nine groups of pages are duplicates.</p>
+  <div class="art">
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-07.jpg" width="880" height="495" loading="lazy" alt="Reference slide p07: logo system with a condensed OATH and ACTION wordmark, a red serif ampersand, stacked and horizontal lockups, circle and square ampersand marks and seals.">
+      <h3>Condensed heavy wordmark</h3><p><span class="ref">p01, p07, p08, p13, p40, p41, banner</span></p>
+      <p><b>Take</b> heavy grotesque capitals against a calligraphic ampersand. Two kinds of letter joined is the hinge made visible. The square poster departs, with a wide sans.</p>
+      <p><b>Avoid</b> condensed capitals in every headline (p17, p40) and the substitute face named on p09.</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-41.jpg" width="880" height="495" loading="lazy" alt="Reference slide p41: content concepts including a carousel, a newsletter header, quote cards, a hinge slide and round badges with a red ampersand.">
+      <h3>Serif red ampersand</h3><p><span class="ref">p07 sections 05 to 07, p15, p41</span></p>
+      <p><b>Take</b> circle and square containers in one size system.</p>
+      <p><b>Avoid</b> the ampersand in Verdigris, Stone or Prussian (p07); seals with a ring of words (p07, p41) or "EST. 2026" (p03, p25). V5: "Seals imply an authority we do not claim."</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-04.jpg" width="880" height="495" loading="lazy" alt="Reference slide p04: component library with a hero statement, pillar explainer circles, a metric card, the structure grid and the ampersand hinge diagram.">
+      <h3>Hinge circle</h3><p><span class="ref">p04, p07, p12, p41, both mockups</span></p>
+      <p><b>Take</b> the circle around the ampersand and the two pin dots where the line meets it. It can become a wordless badge for stickers and merchandise.</p>
+      <p><b>Avoid</b> double arrowheads, dashed arcs and labels under 13 px.</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-08.jpg" width="880" height="495" loading="lazy" alt="Reference slide p08: stationery, a home page hero, and a row of four pillar circles labeled Explain, Track, Connect and Act.">
+      <h3>Pillar badges</h3><p><span class="ref">p01, p04, p08, p40, p45</span></p>
+      <p><b>Take</b> four filled circles in pillar order as a navigation row.</p>
+      <p><b>Avoid</b> the ampersand and monogram reused as pillar icons, Prussian and red in one row, and the names "Understand," "Expose" and "Strengthen" (p01, p03, p17).</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Mockup-Square-Poster.jpg" width="880" height="880" loading="lazy" alt="Mockup: square poster with a wide OATH and ACTION wordmark, the line From spectators to stewards, an extended dot grid and a hinge diagram.">
+      <h3>Signal Grid as pattern</h3><p><span class="ref">p15, square poster</span></p>
+      <p><b>Take</b> the node-and-link field at low density on covers, merchandise and openers <span class="tag">Option</span>.</p>
+      <p><b>Avoid</b> lit red or Verdigris nodes in a pattern, pattern behind body text, and a 5 by 5 lockmark.</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-05.jpg" width="880" height="495" loading="lazy" alt="Reference slide p05: imagery direction with a grid of generated black-and-white style scenes of people voting, registering, reading and organizing.">
+      <h3>Documentary photography</h3><p><span class="ref">p01, p05, p15, p17, p40</span></p>
+      <p><b>Take</b> people doing the work, in natural light, in black and white, with captions that name the act.</p>
+      <p><b>Avoid</b> treating any of these as photographs: all are generated. Also flags and "VOTE" signs as props (p05), legible protest signs (p01, p05) and buildings without people (p03).</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-17.jpg" width="880" height="495" loading="lazy" alt="Reference slide p17: social templates, report covers, an email header, an infographic and call-to-action banners.">
+      <h3>Editorial social templates</h3><p><span class="ref">p01, p02, p17, p40, p41</span></p>
+      <p><b>Take</b> headline top left, wordmark bottom left, grid bottom right, numbered carousels (p41).</p>
+      <p><b>Avoid</b> unsourced numbers such as "12.4M" (p01, p04, p17, p41), slogan triplets (p17, p40), all-red tiles (p40, p41) and quotes credited to invented groups (p17).</p></div>
+    <div class="panel"><img src="phase-1/strategy/refs/20261021_Ref-Page-14.jpg" width="880" height="495" loading="lazy" alt="Reference slide p14: eight small chart studies, each titled with a sentence and labeled illustrative data, design study.">
+      <h3>Data-led cards</h3><p><span class="ref">p14 above all, p17</span></p>
+      <p><b>Take</b> from p14: a sentence title, units in the subtitle, the illustrative label inside each chart, direct labels, red only on the point the title names.</p>
+      <p><b>Avoid</b> icon-bullet percentages with a vague source (p17) and a growth line called a civic impact index (p41).</p></div>
+  </div>
+  <div class="two" style="margin-top:20px">
+    <div class="panel">
+      <h3>Clichés to avoid</h3>
+      <p>The Capitol dome and columns (p03, p08, p24, p25, p41). Scales of justice, stars, shields, a gold-on-navy heritage plaque and a rising-sun pediment (p25). The U.S. map silhouette and the handshake (p25). Megaphones (p15, p40). Flags behind type (p25). The phrases "Democracy is not a spectator sport" (p25) and "Be the change" (p17).</p>
+      <p>Until a photography decision is made (Q-04), use labeled placeholders that announce themselves as placeholders.</p>
+    </div>
+    <figure class="panel">
+      <img src="phase-1/strategy/refs/20261021_Ref-Page-25.jpg" width="880" height="495" loading="lazy" alt="Reference slide p25: heritage-style logo concepts with a temple pediment, a monogram badge with a star, dome watermarks and an icon set with scales and a shield.">
+      <figcaption><span class="ref">Reference, study only</span> p25 gathers most of the clichés in one slide.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="scores" aria-labelledby="h-scores">
+  <p class="eyebrow">8 · Scores</p>
+  <h2 id="h-scores">My scores for these proposals, on the six rubric criteria</h2>
+  <table class="stack">
+    <thead><tr><th scope="col">Criterion</th><th scope="col">Score</th><th scope="col">Reason, and the instruction when under 4</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Criterion">Craft</td><td data-label="Score">3</td><td data-label="Reason">The Act mocks and loop are working sketches in board CSS. Phase 2 rebuilds both Act layouts at 1440 and 390 px in guide tokens, with the hinge divider master and the finished label.</td></tr>
+      <tr><td data-label="Criterion">Clarity</td><td data-label="Score">4</td><td data-label="Reason">Each section opens with its recommendation, and terms are defined in the header.</td></tr>
+      <tr><td data-label="Criterion">Brand fidelity</td><td data-label="Score">4</td><td data-label="Reason">Locked lines quoted exactly. Red appears only in the ampersand, the hinge headlines, the ask buttons and one labeled failure case.</td></tr>
+      <tr><td data-label="Criterion">Usefulness</td><td data-label="Score">4</td><td data-label="Reason">Twenty numbered rules, naming patterns and a fairness kit a producer can apply. Tokens follow in Phase 2.</td></tr>
+      <tr><td data-label="Criterion">Evidence honesty</td><td data-label="Score">4</td><td data-label="Reason">Every invented item is labeled beside it, Loop R9 keeps its hypothesis grade, and judgments say so.</td></tr>
+      <tr><td data-label="Criterion">Accessibility</td><td data-label="Score">{{A11Y_SCORE}}</td><td data-label="Reason">{{A11Y_REASON}}</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="decisions" aria-labelledby="h-dec">
+  <div class="decision">
+    <h2 id="h-dec">Decisions for Gate 1</h2>
+    <table class="stack">
+      <thead><tr><th scope="col">Decision</th><th scope="col">Options</th><th scope="col">Studio recommendation</th></tr></thead>
+      <tbody>
+        <tr><td data-label="Decision">1 Brand idea</td><td data-label="Options">The hinge as the organizing idea, as written; with edits</td><td data-label="Recommendation">As written. Every locked line already has its shape</td></tr>
+        <tr><td data-label="Decision">2 Hinge loop</td><td data-label="Options">One direction, solid arcs; two-way dashed arcs as in the mockups; V5's single arc only</td><td data-label="Recommendation">One direction. It reads as a loop and stays clear of the evidence line code</td></tr>
+        <tr><td data-label="Decision">3 Architecture</td><td data-label="Options">Masterbrand with descriptive names; separately branded products</td><td data-label="Recommendation">Masterbrand. One trust mark across products</td></tr>
+        <tr><td data-label="Decision">4 "Dispatch from the Front"</td><td data-label="Options">Rename to "Dispatch"; keep</td><td data-label="Recommendation">Rename. V5's kicker already says "Dispatch"</td></tr>
+        <tr><td data-label="Decision">5 "From spectators to stewards."</td><td data-label="Options">None, kept as the founding line; membership and events only; restore in lockups</td><td data-label="Recommendation">None. It scolds the newcomer and competes with the tagline</td></tr>
+        <tr><td data-label="Decision">6 "Democracy has a structure."</td><td data-label="Options">Lockmark explanation; brand line; none</td><td data-label="Recommendation">Lockmark explanation. It restates V5's meaning of the grid</td></tr>
+        <tr><td data-label="Decision">7 Act pattern</td><td data-label="Options">Two kinds with the fairness kit; positions without the kit</td><td data-label="Recommendation">Two kinds with the kit and the label "Our position"</td></tr>
+        <tr><td data-label="Decision">8 Nonpartisan rules</td><td data-label="Options">NP-01 to NP-20; with edits</td><td data-label="Recommendation">Adopt. They turn "Never red against blue" into checkable rules</td></tr>
+        <tr><td data-label="Decision">9 Seals</td><td data-label="Options">V5's rule plus a wordless hinge-circle badge; seals with a ring of words</td><td data-label="Recommendation">V5's rule plus the badge. It keeps the circle you like without claiming authority</td></tr>
+        <tr><td data-label="Decision">10 Signal Grid pattern</td><td data-label="Options">Allow at low density, no lit nodes; keep V5's "never wallpaper"</td><td data-label="Recommendation">Allow, with those limits. It works on covers and merchandise</td></tr>
+        <tr><td data-label="Decision">11 Photography default</td><td data-label="Options">Black and white documentary; color</td><td data-label="Recommendation">Black and white, with color where color carries evidence</td></tr>
+        <tr><td data-label="Decision">12 Wordmark width and ampersand</td><td data-label="Options">Decided on the identity board</td><td data-label="Recommendation">Condensed and drawn, per the creative director's identity notes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="checks" aria-labelledby="h-checks">
+  <h2 id="h-checks">What I checked, and what I could not</h2>
+  <div class="two">
+    <div><h3>Checked</h3><ul>{{CHECKED}}</ul></div>
+    <div><h3>Not checked</h3><ul>{{NOT_CHECKED}}</ul></div>
+  </div>
+  <p class="cap">Full text: <code>work/handoffs/phase-1/20261021_Brand-Strategy.md</code>. Identity notes: <code>work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md</code>. Reference copies in <code>phase-1/strategy/refs/</code> are for review only.</p>
+</section>
+
+</main>
+</body>
+</html>

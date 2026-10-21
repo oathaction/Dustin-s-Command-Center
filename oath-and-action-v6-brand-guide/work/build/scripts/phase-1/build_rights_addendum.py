@@ -46,7 +46,7 @@ C = {
     12: (GEN, "Two hinge diagrams: OATH and ACTION joined through a circled red ampersand with dashed return arrows, 'UNDERSTAND' and 'IMPACT' labels, 'The ampersand is the hinge.'", "Same compositions as the two hinge files in source/brand-mockups/"),
     13: (GEN, "Prussian banner 'From spectators to stewards.' (3,318 x 474 canvas) above a logo system board like page 07", "Banner matches 20261021_Mockup-Banner-Prussian-Stewards.webp in content"),
     14: (OAD, "Data visualization concept studies on one sheet, headed 'All values and records are illustrative.': a budget bar chart, a record line, a dumbbell, a 100-square unit chart, a waterfall, interval estimates, a stage tracker and a responsibility map, each footed 'ILLUSTRATIVE DATA / DESIGN STUDY'", "Rendered page with live-quality text. The first specimen sets Pillar Red, Charcoal and Prussian bars side by side"),
-    15: (GEN, "Logo in context, 'PHOTO DIRECTION - REAL ACTION. REAL PEOPLE.' with five generated photoreal scenes, civic action icon set, favicon states, email headers, watermark system, merchandise (clipboard, bottle, tote, notebook)", "Photoreal generated people. Never present as photographs"),
+    15: (GEN, "Logo in context, a photo direction strip headed 'REAL ACTION. REAL PEOPLE.' with five generated photoreal scenes, civic action icon set, favicon states, email headers, watermark system, merchandise (clipboard, bottle, tote, notebook)", "Photoreal generated people. Never present as photographs"),
     17: (GEN, "Brand philosophy, values, photography style, social templates such as 'UNDERSTAND THE SYSTEM. CHANGE THE OUTCOME.' and 'TOWN HALLS. REAL QUESTIONS.', print, stationery, infographic", "Photoreal generated people"),
     18: (GEN, "Brand identity board with Newsprint, Charcoal, Pillar Red and Prussian swatches, pillar icons, typography, logo system, do-not row, 'A PUBLIC INFRASTRUCTURE PUBLICATION'", ""),
     19: (GEN, "Logo system, watermarks, social templates, email header and footer, avatars, palette labelled True Black, Pillar Red, Stone, Newsprint, usage guidelines", ""),
@@ -58,19 +58,19 @@ C = {
     41: (GEN, "'NEW CONTENT IDEAS & CONCEPTS FOR OATH & ACTION': social carousel, '12.4M' data concept, quote cards, an interactive hinge diagram, event card, cap and t-shirt, report cover, badges, website hero, tote", "Photoreal generated people"),
     44: (GEN, "Crop of the seals and badges row (476 x 152)", "Crop of page 07"),
     45: (GEN, "Identity overview on a 1,672 x 941 canvas: pillar badges, Verdigris promise band, logo system, color system with Verdigris and a usage-ratio pie, type scale, spacing, component library", "Canvas size is unlike the others; visual traits match the generated boards"),
-    48: (GEN, "Crop 'EXPLAINER - OUR PILLARS (COMPACT)' (577 x 278)", "Crop of page 04"),
+    48: (GEN, "Crop of the compact pillar explainer panel (577 x 278)", "Crop of page 04"),
     20: (OAW, "Concepts V2, Concept 09 The Circuit, 'How the whole system is wired.'", "1,184 x 1,167, the same size as design-i-like-14"),
     21: (OAW, "Concepts V2, Concept 10 Who Can Act, 'Who can act, and what it would change.'", "1,201 x 1,367, the same size as design-i-like-15"),
     22: (OAW, "Concepts V2, Concept 11 Register index, 'The whole atlas, line by line.'", "1,200 x 870, the same size as design-i-like-16"),
     23: (OAW, "Concepts V2, Concept 11 Register sheet D02 'Elections and representation'", "1,179 x 1,392, the same size as design-i-like-17"),
     34: (OAW, "Concepts V2, Concept 00 The shared language, 'Every line says what happens next, and how sure we are.'", "1,152 x 720, the same size as design-i-like-07"),
     39: (OAW, "Earlier atlas concept headed 'THE SYSTEMS ATLAS CONCEPT 09': 'HOW ELECTIONS CAN CORRECT POOR PERFORMANCE', loop B4 with D5, C3, C5 and L23, L24, L54", "Footer: 'Private design preview. Evidence labels follow the supplied V4 model.' Built on an earlier model; reconcile every value to V7 before any use"),
-    49: (OAW, "Atlas page 'Follow a direct relationship.' in dark mode, header 'THE SYSTEMS ATLAS Edition 10 - October 20, 2026', footer 'Publication snapshot: October 15, 2026'", "An atlas build later than the supplied V7 file. Treat as a dated capture"),
+    49: (OAW, "Atlas page 'Follow a direct relationship.' in dark mode, header 'THE SYSTEMS ATLAS Edition 10 · October 20, 2026', footer 'Publication snapshot: October 15, 2026'", "The header date is later than the V7 file's October 15 snapshot, so this is probably a later atlas build. Treat as a dated capture"),
     50: (OAW, "Tall capture (1,920 x 6,041) of Concepts V2: Concept 08 Loop Field Guide and Concept 09 The Circuit 'The system runs in one long loop.'", ""),
     51: (OAW, "Concepts V2, Concept 03 Field Manual, 'Three layers, one machine.'", "1,600 x 1,000; design-i-like-13 is a 1,597 x 998 capture of the same view"),
     52: (OAW, "Atlas home page 'WHO DO THEY ANSWER TO?' with 'Start with something familiar' and 'See how the system fits together'", "Shows 50 variables, 117 numbered connections, 23 feedback loops and 50 reform profiles. V7 meta.counts gives 51 variables and 118 connections. A different build; never cite its counts"),
     53: (OAW, "Atlas loop page 'WHAT KEEPS A PATTERN GOING?' with loop R1", ""),
-    54: (OAW, "Five Concept 03 'Civic Circuit' panels: 'Who do they answer to?', 'When the primary decides the seat', 'Can elections correct poor performance?', 'Does my vote change who represents me?', 'Why can housing scarcity sustain itself?'", "Footers name 'Systems Atlas V7 - Model snapshot 15 October 2026'"),
+    54: (OAW, "Five Concept 03 'Civic Circuit' panels: 'Who do they answer to?', 'When the primary decides the seat', 'Can elections correct poor performance?', 'Does my vote change who represents me?', 'Why can housing scarcity sustain itself?'", "Footers read 'Systems Atlas V7 · Model snapshot 15 October 2026'"),
 }
 
 
@@ -96,8 +96,8 @@ for n in range(1, inv["page_count"] + 1):
         use = "may ship with label"
         terms = "T-OA (Q-03). Oath & Action owns it. Show only as a dated record of earlier work, labelled; re-read every value from V7; never as independent evidence"
     else:
-        use = "may ship with label"
-        terms = "T-OA (Q-03 covers atlas work; Dustin supplied this sheet as his own design study). Its values are illustrative and say so"
+        use = "study only"
+        terms = "Probably Oath & Action work, but Q-03 covers atlas work only. Dustin to confirm he made this sheet. Its values are illustrative and the sheet says so"
     full_note = "; ".join(x for x in (note, terms) if x)
     rows.append(f"| pics-{n:02d} | `source/pics_i_like.pdf` page {n} | {sizes(n)} | {cls} | {content} | {use} | {full_note} |")
 
@@ -109,7 +109,7 @@ text = f"""
 
 {MARK}
 
-Research lead, Phase 1. Checked October 21, 2026. Method: I viewed the six contact sheets `work/boards/screens/references/pics-i-like-01.jpg` to `-06.jpg`, opened twelve rendered pages at full size (05, 13, 14, 15, 23, 24, 35, 39, 45, 49, 52, 53, 54), and ran `work/build/scripts/phase-1/pics_pdf_inventory.py` (PDF metadata, embedded image sizes, page hashes; output `work/handoffs/phase-1/20261021_Pics-I-Like-Inventory.json`) and `work/build/scripts/phase-1/mockup_metadata.py` (WebP chunks and provenance strings). Nothing in `source/` or `work/extract/` changed.
+Research lead, Phase 1. Checked October 21, 2026. Method: I viewed the six contact sheets `work/boards/screens/references/pics-i-like-01.jpg` to `-06.jpg`, opened thirteen rendered pages at full size (05, 13, 14, 15, 23, 24, 35, 39, 45, 49, 52, 53, 54), and ran `work/build/scripts/phase-1/pics_pdf_inventory.py` (PDF metadata, embedded image sizes, page hashes; output `work/handoffs/phase-1/20261021_Pics-I-Like-Inventory.json`) and `work/build/scripts/phase-1/mockup_metadata.py` (WebP chunks and provenance strings). Nothing in `source/` or `work/extract/` changed.
 
 ### Dustin's answers recorded (from `work/ledger/20261020_Open-Questions.md`, answered October 21, 2026)
 
@@ -134,7 +134,7 @@ File facts: {inv['size_bytes']:,} bytes; SHA-256 `{inv['sha256']}` (matches `wor
 
 {unique} of the 54 pages are unique. Identical page groups (SHA-256 of the rendered PNG): {dups}.
 
-Classification by page: {counts[GEN]} generated mockups, {counts[OAW]} screenshots of Oath & Action atlas work, {counts[OAD]} screenshot of an Oath & Action design study (page 14), and 0 pages of third-party material. Evidence for the generated class: canvas sizes of 1,536 x 1,024, 1,024 x 1,536, 1,448 x 1,086 and 1,086 x 1,448, the sizes of the C2PA-signed ChatGPT images in this ledger; generated text artifacts; and page 24, which matches design-i-like-19, a C2PA-signed ChatGPT image. Evidence for the atlas class: pixel sizes identical to the dated browser captures design-i-like-07 and -14 to -17, live-quality text, and atlas wordmarks, IDs and footers.
+Classification by page: {counts[GEN]} generated mockups, {counts[OAW]} screenshots of Oath & Action atlas work, {counts[OAD]} screenshot of what appears to be an Oath & Action design study (page 14, authorship to confirm), and 0 pages of third-party material. Evidence for the generated class: canvas sizes of 1,536 x 1,024, 1,024 x 1,536, 1,448 x 1,086 and 1,086 x 1,448, the sizes of the C2PA-signed ChatGPT images in this ledger; generated text artifacts; and page 24, which matches design-i-like-19, a C2PA-signed ChatGPT image. Evidence for the atlas class: pixel sizes identical to the dated browser captures design-i-like-07 and -14 to -17, live-quality text, and atlas wordmarks, IDs and footers.
 
 Third-party content inside the generated mockups: X, LinkedIn, Instagram and email icons in footers (pages 01, 10, 11, 15, 19 and duplicates), the U.S. flag, and buildings that resemble the U.S. Capitol. None is a copied photograph that I could identify at the scale reviewed. Platform icons follow each platform's own brand rules when V6 uses them; V6 draws them from the platforms' official asset kits, never from these mockups.
 
@@ -151,13 +151,13 @@ Dustin's account (Master Brief V2 section 2, Q-02): generated in ChatGPT from hi
 | mockup-01 | `source/brand-mockups/20261021_Mockup-Banner-Prussian-Stewards.webp` | brand-mockups | AI-generated study | WebP 2,000 x 286, VP8X, ICCP and VP8 chunks only. Prussian banner: condensed heavy OATH and ACTION in Newsprint with a red serif ampersand, rule, 'From spectators to stewards.' with 'stewards.' in red, a 3 x 3 node grid with one red and one verdigris node | study only | T-OPENAI (Q-02). Direction for the banner lockup and the candidate line only. Sets the red ampersand on Prussian, an open Gate 1 decision. Never ship; rebuild from authored vectors |
 | mockup-02 | `source/brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp` | brand-mockups | AI-generated study | WebP 1,536 x 1,024, VP8X, ICCP and VP8 only. OATH and ACTION joined by lines with end nodes to a circled red ampersand, dashed curved arrows above and below, labels 'UNDERSTAND' and 'IMPACT', italic 'The ampersand is the hinge.' | study only | T-OPENAI (Q-02). Direction for the hinge diagram. The lower arc has no arrowheads while the upper arc has two, so the drawing does not settle the direction of the cycle |
 | mockup-03 | `source/brand-mockups/20261021_Mockup-Hinge-Diagram-Transparent.webp` | brand-mockups | AI-generated study | WebP 1,254 x 1,254, VP8X, ICCP and VP8 only, RGB with no alpha chunk. The hinge diagram in Newsprint-colored strokes over a checkerboard | study only | T-OPENAI (Q-02). The file is not transparent: the checkerboard is painted into the pixels. Never use it as a cut-out asset |
-| mockup-04 | `source/brand-mockups/20261021_Mockup-Square-Wordmark-Stewards.webp` | brand-mockups | AI-generated study | WebP 1,254 x 1,254, VP8X, ICCP and VP8 only. Stacked 'OATH & / ACTION' in a wide geometric sans with a red sans ampersand, tracked 'FROM SPECTATORS TO STEWARDS.', a 5 x 5 node grid with one red and one verdigris node, a small hinge diagram, a Prussian footer band 'CIVIC LIFE - INSTITUTIONS - ACCOUNTABILITY - SOLUTIONS' | study only | T-OPENAI (Q-02). Its wordmark face is neither Inter Tight nor condensed, unlike the other references. Direction for a square social or poster format only |
+| mockup-04 | `source/brand-mockups/20261021_Mockup-Square-Wordmark-Stewards.webp` | brand-mockups | AI-generated study | WebP 1,254 x 1,254, VP8X, ICCP and VP8 only. Stacked 'OATH & / ACTION' in a wide geometric sans with a red sans ampersand, tracked 'FROM SPECTATORS TO STEWARDS.', a 5 x 5 node grid with one red and one verdigris node, a small hinge diagram, a Prussian footer band with the words CIVIC LIFE, INSTITUTIONS, ACCOUNTABILITY and SOLUTIONS separated by red dots | study only | T-OPENAI (Q-02). Its wordmark face is neither Inter Tight nor condensed, unlike the other references. Direction for a square social or poster format only |
 
 ### Counts for this addendum
 
 | Set | Rows | generated mockup or AI-generated study | screenshot of Oath & Action work | font update | study only | may ship with label | not used in V6 |
 |---|---|---|---|---|---|---|---|
-| pics_i_like.pdf pages | 54 | {counts[GEN]} | {counts[OAW] + counts[OAD]} | 0 | {counts[GEN]} | {counts[OAW] + counts[OAD]} | 0 |
+| pics_i_like.pdf pages | 54 | {counts[GEN]} | {counts[OAW] + counts[OAD]} | 0 | {counts[GEN] + counts[OAD]} | {counts[OAW]} | 0 |
 | brand-mockups | 4 | 4 | 0 | 0 | 4 | 0 | 0 |
 | fonts | 1 (covers four files) | 0 | 0 | 1 | 0 | 0 | 1 |
 
@@ -165,6 +165,7 @@ Dustin's account (Master Brief V2 section 2, Q-02): generated in ChatGPT from hi
 
 - The tool behind each page of `pics_i_like.pdf` beyond page 24. The PDF strips provenance metadata, so the generated class rests on Dustin's account, canvas sizes and visual traits.
 - Which build of the atlas pages 49 and 52 to 54 show. Page 49 names "Edition 10", and page 52's counts differ from V7.
+- Who made page 14, the data visualization concept sheet. It is a rendered page, not a generated image, and Q-03 covers atlas work only.
 - The prompts behind the generated images. Brief section 16 asks for tool, date, prompt and terms; Dustin gave the tool and plan, and the prompts are not on file.
 - The current wording of OpenAI's terms. The T-OPENAI summary rests on official-domain search snippets from October 20, 2026; no page could be opened.
 """
