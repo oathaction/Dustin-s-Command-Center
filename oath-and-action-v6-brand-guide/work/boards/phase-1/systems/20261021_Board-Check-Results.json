@@ -1,237 +1,11 @@
 {
  "board": "work/boards/20261021_Systems-Marks-Board.html",
- "run": "2026-10-21T03:36:53.108Z",
+ "run": "2026-10-21T03:44:20.462Z",
  "widths": {
   "390": {
-   "texts": 2741,
-   "minSize": 12,
-   "under13": [
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Defect fix",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Defect fix",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Revise",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Add as a fifth base",
-     "size": 12,
-     "tag": "SPAN"
-    }
-   ],
+   "texts": 2753,
+   "minSize": 13,
+   "under13": [],
    "lowContrast": [],
    "chips": {
     "s-newsprint": {
@@ -292,7 +66,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 64400,
+   "height": 68120,
    "fontsLoaded": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -311,27 +85,27 @@
     },
     {
      "src": "phase-1/systems/20261021_Concept-03-Field-Manual.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-10-Who-Can-Act.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-11-Register.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-04-Broadsheet.jpg",
-     "ok": false
+     "ok": true
     }
    ],
    "screens": [
@@ -356,254 +130,18 @@
     "work/boards/screens/phase-1-systems/board-390-18.png",
     "work/boards/screens/phase-1-systems/board-390-19.png",
     "work/boards/screens/phase-1-systems/board-390-20.png",
-    "work/boards/screens/phase-1-systems/board-390-21.png"
+    "work/boards/screens/phase-1-systems/board-390-21.png",
+    "work/boards/screens/phase-1-systems/board-390-22.png"
    ],
    "axe": {
-    "violations": [
-     {
-      "id": "scrollable-region-focusable",
-      "impact": "serious",
-      "nodes": 11,
-      "sample": [
-       "#m1 > .wrap:nth-child(11)",
-       ".wrap:nth-child(12)",
-       "#m2 > .wrap:nth-child(8)"
-      ]
-     }
-    ],
-    "passes": 27
+    "violations": [],
+    "passes": 28
    }
   },
   "1440": {
-   "texts": 2774,
-   "minSize": 12,
-   "under13": [
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Defect fix",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Defect fix",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Misuse",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Original",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Option",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Recommended",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Revise",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Confirm with changes",
-     "size": 12,
-     "tag": "SPAN"
-    },
-    {
-     "text": "Add as a fifth base",
-     "size": 12,
-     "tag": "SPAN"
-    }
-   ],
+   "texts": 2786,
+   "minSize": 13,
+   "under13": [],
    "lowContrast": [],
    "chips": {
     "s-newsprint": {
@@ -664,7 +202,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 33308,
+   "height": 34109,
    "fontsLoaded": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -683,27 +221,27 @@
     },
     {
      "src": "phase-1/systems/20261021_Concept-03-Field-Manual.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-10-Who-Can-Act.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-11-Register.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
-     "ok": false
+     "ok": true
     },
     {
      "src": "phase-1/systems/20261021_Concept-04-Broadsheet.jpg",
-     "ok": false
+     "ok": true
     }
    ],
    "screens": [
@@ -743,11 +281,11 @@
  "summary": [
   "Rendered in Chromium (Playwright) at 1440 px and 390 px, 2026-10-21. Fonts loaded: 5 faces from Google Fonts.",
   "Horizontal page scroll: 1440 px scrollWidth 1440 of 1440; 390 px scrollWidth 390 of 390. Wide tables scroll inside their own frames.",
-  "Smallest rendered text: 12 px at 1440, 12 px at 390; text elements under 13 px: 45 and 45.",
+  "Smallest rendered text, with SVG text scaled by its drawing's rendered size: 13 px at 1440, 13 px at 390; text elements under 13 px: 0 and 0.",
   "Text contrast below the WCAG AA threshold, computed from rendered colours (grayscale strips converted): 0 at 1440, 0 at 390.",
   "Typed chips: 438 chip cells measured at 1440; lowest rendered contrast 9.42:1; smallest chip text 13 px.",
-  "axe-core 4.10 (WCAG 2.2 AA tags): 0 violating nodes at 1440, 11 at 390.",
-  "Images loaded: 2 of 8.",
+  "axe-core 4.10 (WCAG 2.2 AA tags): 0 violating nodes at 1440, 0 at 390.",
+  "Images loaded: 8 of 8.",
   "Grayscale: the board carries a grayscale strip for every option, and a full-page grayscale capture at 1440 px was saved for review."
  ],
  "not_checked": [

@@ -1,0 +1,1537 @@
+{
+ "date": "2026-10-21",
+ "axe": {
+  "shell-1440-top": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 49
+  },
+  "shell-390-top": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "aria-valid-attr-value",
+     "impact": "critical",
+     "wcag": [
+      "wcag2a",
+      "wcag412"
+     ],
+     "nodes": 1,
+     "targets": [
+      "#menubtn"
+     ],
+     "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"menu\""
+    },
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 48
+  },
+  "shell-390-menu-open": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 39,
+     "targets": [
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(4) > a[data-loc=\"graphic-devices\"][href$=\"#graphic-devices\"] > .n",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(4) > a[data-loc=\"graphic-devices\"][href$=\"#graphic-devices\"] > span:nth-child(2)",
+      ".menu-partlink[data-loc=\"part-evidence\"][href$=\"#part-evidence\"]",
+      "ul:nth-child(2) > li:nth-child(4) > ul > li:nth-child(1) > a[data-loc=\"evidence\"][href$=\"#evidence\"] > .n",
+      "ul:nth-child(2) > li:nth-child(4) > ul > li:nth-child(1) > a[data-loc=\"evidence\"][href$=\"#evidence\"] > span:nth-child(2)",
+      "ul:nth-child(2) > li:nth-child(4) > ul > li:nth-child(2) > a[data-loc=\"data-visualization\"][href$=\"#data-visualization\"] > .n"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    }
+   ],
+   "passes": 24
+  },
+  "shell-390-color": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "aria-valid-attr-value",
+     "impact": "critical",
+     "wcag": [
+      "wcag2a",
+      "wcag412"
+     ],
+     "nodes": 1,
+     "targets": [
+      "#menubtn"
+     ],
+     "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"menu\""
+    },
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 48
+  },
+  "shell-360-top": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "aria-valid-attr-value",
+     "impact": "critical",
+     "wcag": [
+      "wcag2a",
+      "wcag412"
+     ],
+     "nodes": 1,
+     "targets": [
+      "#menubtn"
+     ],
+     "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"menu\""
+    },
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 48
+  },
+  "shell-360-menu-open": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 43,
+     "targets": [
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(2) > a[data-loc=\"symbols\"][href$=\"#symbols\"] > .n",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(2) > a[data-loc=\"symbols\"][href$=\"#symbols\"] > span:nth-child(2)",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(3) > a[data-loc=\"icons\"][href$=\"#icons\"] > .n",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(3) > a[data-loc=\"icons\"][href$=\"#icons\"] > span:nth-child(2)",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(4) > a[data-loc=\"graphic-devices\"][href$=\"#graphic-devices\"] > .n",
+      "ul:nth-child(2) > li:nth-child(3) > ul > li:nth-child(4) > a[data-loc=\"graphic-devices\"][href$=\"#graphic-devices\"] > span:nth-child(2)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    }
+   ],
+   "passes": 24
+  },
+  "shell-360-color": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "aria-valid-attr-value",
+     "impact": "critical",
+     "wcag": [
+      "wcag2a",
+      "wcag412"
+     ],
+     "nodes": 1,
+     "targets": [
+      "#menubtn"
+     ],
+     "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"menu\""
+    },
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 48
+  },
+  "shell-320-color": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "aria-valid-attr-value",
+     "impact": "critical",
+     "wcag": [
+      "wcag2a",
+      "wcag412"
+     ],
+     "nodes": 1,
+     "targets": [
+      "#menubtn"
+     ],
+     "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"menu\""
+    },
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 48
+  },
+  "shell-1024-color": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 11,
+     "targets": [
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
+      "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
+      ".ph-img",
+      "text[y=\"34\"]",
+      "text[y=\"62\"]",
+      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+    }
+   ],
+   "passes": 49
+  },
+  "board-1440": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 9,
+     "targets": [
+      "tr:nth-child(1) > td:nth-child(2) > kbd:nth-child(1)",
+      "tr:nth-child(1) > td:nth-child(2) > kbd:nth-child(2)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(1)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(2)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(3)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(4)"
+     ],
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 53
+  },
+  "board-1440-reader-open": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 9,
+     "targets": [
+      "tr:nth-child(1) > td:nth-child(2) > kbd:nth-child(1)",
+      "tr:nth-child(1) > td:nth-child(2) > kbd:nth-child(2)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(1)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(2)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(3)",
+      "tr:nth-child(2) > td:nth-child(2) > kbd:nth-child(4)"
+     ],
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 54
+  },
+  "board-390": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 56,
+     "targets": [
+      "#contents-cap",
+      ".contents-table > thead > tr > th[scope=\"col\"]:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(1) > td:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(2) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(3) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(4) > td:nth-child(3)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 53
+  },
+  "board-390-reader-open": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 57,
+     "targets": [
+      "#contents-cap",
+      ".contents-table > thead > tr > th[scope=\"col\"]:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(1) > td:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(2) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(3) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(4) > td:nth-child(3)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 53
+  },
+  "board-360": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 56,
+     "targets": [
+      "#contents-cap",
+      ".contents-table > thead > tr > th[scope=\"col\"]:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(1) > td:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(2) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(3) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(4) > td:nth-child(3)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 53
+  },
+  "board-360-reader-open": {
+   "version": "4.10.2",
+   "violations": [],
+   "incomplete": [
+    {
+     "id": "color-contrast",
+     "impact": "serious",
+     "wcag": [
+      "wcag2aa",
+      "wcag143"
+     ],
+     "nodes": 56,
+     "targets": [
+      "#contents-cap",
+      ".contents-table > thead > tr > th[scope=\"col\"]:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(1) > td:nth-child(4)",
+      ".contents-table > tbody > tr:nth-child(2) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(3) > td:nth-child(3)",
+      ".contents-table > tbody > tr:nth-child(4) > td:nth-child(3)"
+     ],
+     "summary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+    },
+    {
+     "id": "frame-tested",
+     "impact": "critical",
+     "wcag": [],
+     "nodes": 3,
+     "targets": [
+      "#wide-holder > iframe",
+      "iframe[width=\"390\"][height=\"844\"]",
+      "iframe[width=\"360\"][height=\"780\"]"
+     ],
+     "summary": "Fix all of the following:\n  The iframe still has to be tested with axe-core"
+    }
+   ],
+   "passes": 53
+  }
+ },
+ "keyboard": {
+  "shell": {
+   "shell-1440": {
+    "firstStops": [
+     "Skip to main content",
+     "Skip to contents",
+     "Brand Guide, Edition 06",
+     "Foundations",
+     "Symbols and graphics",
+     "Evidence and media"
+    ],
+    "tabPass": {
+     "stops": 286,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "skip": {
+     "first": {
+      "name": "Skip to main content",
+      "visible": true,
+      "lands": "main",
+      "nextTabInMain": true
+     },
+     "second": {
+      "name": "Skip to contents",
+      "visible": true,
+      "lands": "contents-h"
+     }
+    },
+    "outline": {
+     "h1": 1,
+     "h2": 37,
+     "h3": 14,
+     "chapterH2Pattern": 28,
+     "chapterH2": 28,
+     "levelSkips": [],
+     "sample": [
+      "04 The Ampersand and the hinge",
+      "05 Color",
+      "06 Type"
+     ]
+    },
+    "landmarks": [
+     "- banner:",
+     "- navigation \"Parts\":",
+     "- navigation \"Chapters\":",
+     "- main:",
+     "- contentinfo:"
+    ],
+    "currentMarkerViaRail": {
+     "targets": 36,
+     "ok": 36,
+     "failures": [],
+     "startHasNoPart": [
+      []
+     ],
+     "names": [
+      "Where to start",
+      "Foundations",
+      "01 Purpose",
+      "02 Voice"
+     ]
+    },
+    "currentMarkerViaScroll": {
+     "targets": 35,
+     "ok": 35,
+     "failures": []
+    },
+    "crossReference": {
+     "landedOn": "type-h",
+     "returnShown": true,
+     "returnText": "Return to Rule 05.2 Text sits only on pairs that pass, 05 Color",
+     "tabReachesReturn": true,
+     "returnLandsOn": "Rule 05.2 Text sits only on pairs that pass.",
+     "returnHiddenAfter": true,
+     "hash": "#rule-05-2"
+    },
+    "backToContents": "contents-h",
+    "copy": {
+     "status": "Copied #121212 to the clipboard.",
+     "clipboard": "#121212",
+     "focusStays": "Copy #121212, text primary on Newsprint"
+    },
+    "download": {
+     "file": "20261021_Oath-And-Action-Palette_DRAFT.css",
+     "bytes": 342,
+     "hasAllSeven": 7,
+     "status": "Download started: 20261021_Oath-And-Action-Palette_DRAFT.css, 342 bytes. Check your downloads folder."
+    },
+    "disabledDownload": {
+     "fired": false,
+     "status": "Unavailable. The swatch file is exported in Phase 5, from the final token file.",
+     "stillFocused": true,
+     "describedBy": "dl-ase-why"
+    },
+    "targets": {
+     "checked": 286,
+     "under24": 97,
+     "under24NotInline": [
+      {
+       "name": "Skip to main content",
+       "w": 1,
+       "h": 1
+      },
+      {
+       "name": "Skip to contents",
+       "w": 1,
+       "h": 1
+      }
+     ]
+    },
+    "errors": []
+   },
+   "shell-390": {
+    "firstStops": [
+     "Skip to main content",
+     "Skip to contents",
+     "Brand Guide, Edition 06",
+     "Menu",
+     "Foundations",
+     "01 Purpose"
+    ],
+    "tabPass": {
+     "stops": 244,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "skip": {
+     "first": {
+      "name": "Skip to main content",
+      "visible": true,
+      "lands": "main",
+      "nextTabInMain": true
+     },
+     "second": {
+      "name": "Skip to contents",
+      "visible": true,
+      "lands": "contents-h"
+     }
+    },
+    "outline": {
+     "h1": 1,
+     "h2": 37,
+     "h3": 14,
+     "chapterH2Pattern": 28,
+     "chapterH2": 28,
+     "levelSkips": [],
+     "sample": [
+      "04 The Ampersand and the hinge",
+      "05 Color",
+      "06 Type"
+     ]
+    },
+    "landmarks": [
+     "- banner:",
+     "- main:",
+     "- contentinfo:"
+    ],
+    "menu": {
+     "firstStops": [
+      "Skip to main content",
+      "Skip to contents",
+      "Brand Guide, Edition 06",
+      "Menu"
+     ],
+     "button": {
+      "w": 98,
+      "h": 44,
+      "haspopup": "dialog",
+      "where": "05 Color"
+     },
+     "focusOnOpen": {
+      "name": "05 Color",
+      "current": null,
+      "inDialog": true
+     },
+     "dialog": {
+      "open": true,
+      "modal": true,
+      "name": "Contents",
+      "links": 38,
+      "chapterLinks": 28,
+      "partLinks": 7,
+      "under44": [],
+      "outsideWidth": [],
+      "sideScroll": false,
+      "where": "04 The Ampersand and the hinge",
+      "current": [
+       "04 The Ampersand and the hinge"
+      ]
+     },
+     "tabStaysInside": true,
+     "leftDialog": [],
+     "shiftTabInside": true,
+     "passesToBrowserChrome": 1,
+     "escapeCloses": true,
+     "focusAfterEscape": "menubtn",
+     "chooseChapter": {
+      "open": false,
+      "hash": "#atlas",
+      "focus": "atlas-h",
+      "where": "21 The atlas",
+      "current": [
+       "atlas"
+      ]
+     },
+     "focusAfterClose": "menubtn",
+     "tabInsideRing": []
+    },
+    "targets": {
+     "checked": 244,
+     "under24": 99,
+     "under24NotInline": [
+      {
+       "name": "Skip to main content",
+       "w": 1,
+       "h": 1
+      },
+      {
+       "name": "Skip to contents",
+       "w": 1,
+       "h": 1
+      }
+     ]
+    },
+    "errors": []
+   },
+   "shell-360": {
+    "firstStops": [
+     "Skip to main content",
+     "Skip to contents",
+     "Brand Guide, Edition 06",
+     "Menu",
+     "Foundations",
+     "01 Purpose"
+    ],
+    "tabPass": {
+     "stops": 244,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "skip": {
+     "first": {
+      "name": "Skip to main content",
+      "visible": true,
+      "lands": "main",
+      "nextTabInMain": true
+     },
+     "second": {
+      "name": "Skip to contents",
+      "visible": true,
+      "lands": "contents-h"
+     }
+    },
+    "outline": {
+     "h1": 1,
+     "h2": 37,
+     "h3": 14,
+     "chapterH2Pattern": 28,
+     "chapterH2": 28,
+     "levelSkips": [],
+     "sample": [
+      "04 The Ampersand and the hinge",
+      "05 Color",
+      "06 Type"
+     ]
+    },
+    "landmarks": [
+     "- banner:",
+     "- main:",
+     "- contentinfo:"
+    ],
+    "menu": {
+     "firstStops": [
+      "Skip to main content",
+      "Skip to contents",
+      "Brand Guide, Edition 06",
+      "Menu"
+     ],
+     "button": {
+      "w": 98,
+      "h": 44,
+      "haspopup": "dialog",
+      "where": "05 Color"
+     },
+     "focusOnOpen": {
+      "name": "04 The Ampersand and the hinge",
+      "current": "location",
+      "inDialog": true
+     },
+     "dialog": {
+      "open": true,
+      "modal": true,
+      "name": "Contents",
+      "links": 38,
+      "chapterLinks": 28,
+      "partLinks": 7,
+      "under44": [],
+      "outsideWidth": [],
+      "sideScroll": false,
+      "where": "04 The Ampersand and the hinge",
+      "current": [
+       "04 The Ampersand and the hinge"
+      ]
+     },
+     "tabStaysInside": true,
+     "leftDialog": [],
+     "shiftTabInside": true,
+     "passesToBrowserChrome": 1,
+     "escapeCloses": true,
+     "focusAfterEscape": "menubtn",
+     "chooseChapter": {
+      "open": false,
+      "hash": "#atlas",
+      "focus": "atlas-h",
+      "where": "21 The atlas",
+      "current": [
+       "atlas"
+      ]
+     },
+     "focusAfterClose": "menubtn",
+     "tabInsideRing": []
+    },
+    "targets": {
+     "checked": 244,
+     "under24": 97,
+     "under24NotInline": [
+      {
+       "name": "Skip to main content",
+       "w": 1,
+       "h": 1
+      },
+      {
+       "name": "Skip to contents",
+       "w": 1,
+       "h": 1
+      }
+     ]
+    },
+    "errors": []
+   }
+  },
+  "board": {
+   "board-1440": {
+    "scroll": {
+     "scrollWidth": 1440,
+     "viewport": 1440
+    },
+    "frames": [
+     {
+      "title": "Guide shell wireframe at 1440 by 900 pixels, opened at 05 Color",
+      "w": 1440
+     },
+     {
+      "title": "Guide shell wireframe at 390 by 844 pixels",
+      "w": 390
+     },
+     {
+      "title": "Guide shell wireframe at 360 by 780 pixels",
+      "w": 360
+     }
+    ],
+    "tabPass": {
+     "stops": 45,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "firstStops": [
+     "Skip to main content",
+     "open the wireframe on its own page",
+     "The contents in six parts",
+     "The heading rule"
+    ],
+    "fitToggle": {
+     "label": "Fit the frame to this window",
+     "pressed": "true",
+     "scale": "scale(0.865278)"
+    },
+    "reader": {
+     "thumbName": {
+      "visible": "05 Narrative page",
+      "name": "05 Narrative page, open in the reader"
+     },
+     "dialogName": "- 'dialog \"Page 5 of 12: Narrative page\"':",
+     "focusOnOpen": "reader-title",
+     "arrowOnTitle": "Page 6 of 12: System map",
+     "arrowOnNext": "Page 7 of 12: Evidence page",
+     "enterOnNext": "Page 8 of 12: Comparison",
+     "arrowRightOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowDownOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowInPage": {
+      "title": "Page 8 of 12: Comparison",
+      "scrollLeft": 0,
+      "canScroll": false
+     },
+     "atLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "nextDisabled": "true",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "pressAtLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "home": "Page 1 of 12: Cover",
+     "prevAtFirst": "true",
+     "tabStaysInside": true,
+     "passesToBrowserChrome": 2,
+     "tabStops": [
+      "rd-zoom",
+      "rd-close",
+      "rd-page",
+      null,
+      "rd-prev",
+      "rd-next",
+      "rd-zoom"
+     ],
+     "afterEscape": {
+      "open": false,
+      "focus": "5"
+     }
+    },
+    "copyDownload": {
+     "status": "Copied #E63946 to the clipboard.",
+     "clipboard": "#E63946",
+     "svg": {
+      "file": "20261021_Lockmark-Charcoal-On-Newsprint_DRAFT.svg",
+      "bytes": 1583,
+      "hasTitle": true,
+      "hasDesc": true,
+      "id": "oa-lockmark",
+      "circles": 9,
+      "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/checks/20261021_Lockmark-Charcoal-On-Newsprint_DRAFT.svg"
+     },
+     "svgParses": true,
+     "statusAfterDownload": "Download started: 20261021_Lockmark-Charcoal-On-Newsprint_DRAFT.svg, 1583 bytes. Check your downloads folder.",
+     "disabled": {
+      "fired": false,
+      "status": "Unavailable. PNG exports at 1080, 180, 64, 32 and 16 px are made in Phase 5, after the masters are approved.",
+      "focusStays": true
+     }
+    },
+    "pairDemo": {
+     "initial": "Charcoal on Newsprint at 17 px: 13.29 to 1. Passes for text at any size.",
+     "afterArrowDown": {
+      "value": "1",
+      "status": "Prussian on Newsprint at 17 px: 9.42 to 1. Passes for text at any size."
+     },
+     "stoneOnNewsprint": "Stone on Newsprint at 17 px: 4.29 to 1. Fails at this size. Passes at 24 px and up, and for graphics.",
+     "radioArrow": "Stone on White at 17 px: 6.05 to 1. Passes for text at any size.",
+     "size13": "Stone on White at 13 px: 6.05 to 1. Passes for text at any size.",
+     "specimenName": "Specimen: Stone text on White at 13 px",
+     "matchesRendered": {
+      "fill": "#5D636D",
+      "bg": "#FFFFFF",
+      "ratio": "6.05",
+      "inStatus": true
+     },
+     "reset": "Reset. Charcoal on Newsprint at 17 px: 13.29 to 1. Passes for text at any size."
+    },
+    "motion": {
+     "initial": {
+      "now": 1,
+      "status": "Ready at step 1 of 4. Press Play or Step forward.",
+      "still": "false",
+      "play": "false",
+      "pause": "true",
+      "step": "false",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "afterPlay": {
+      "now": 2,
+      "status": "Step 2 of 4: The clerk places the question on an agenda.",
+      "still": "false",
+      "play": "true",
+      "pause": "false",
+      "step": "false",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "afterPause3s": {
+      "now": 2,
+      "status": "Paused at step 2 of 4.",
+      "still": "false",
+      "play": "false",
+      "pause": "true",
+      "step": "false",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "atEnd": {
+      "now": 4,
+      "status": "Step 4 of 4: The council office publishes the decision and its reasons. End of the sequence. Reset to start again.",
+      "still": "false",
+      "play": "true",
+      "pause": "true",
+      "step": "true",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "stepAtEnd": {
+      "now": 4,
+      "status": "Step 4 is the last step. Press Reset to start again.",
+      "still": "false",
+      "play": "true",
+      "pause": "true",
+      "step": "true",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "afterReset": {
+      "now": 1,
+      "status": "Reset to step 1 of 4: A resident asks about the service hours.",
+      "still": "false",
+      "play": "false",
+      "pause": "true",
+      "step": "false",
+      "transition": "0.32s, 0.32s",
+      "markerShown": true
+     },
+     "stillOn": {
+      "now": 1,
+      "status": "Still view: all four steps shown at once.",
+      "still": "true",
+      "play": "false",
+      "pause": "true",
+      "step": "false",
+      "transition": "0.32s, 0.32s",
+      "markerShown": false
+     }
+    },
+    "errors": []
+   },
+   "board-390": {
+    "scroll": {
+     "scrollWidth": 390,
+     "viewport": 390
+    },
+    "frames": [
+     {
+      "title": "Guide shell wireframe at 1440 by 900 pixels, opened at 05 Color",
+      "w": 1440
+     },
+     {
+      "title": "Guide shell wireframe at 390 by 844 pixels",
+      "w": 390
+     },
+     {
+      "title": "Guide shell wireframe at 360 by 780 pixels",
+      "w": 360
+     }
+    ],
+    "tabPass": {
+     "stops": 45,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "firstStops": [
+     "Skip to main content",
+     "open the wireframe on its own page",
+     "The contents in six parts",
+     "The heading rule"
+    ],
+    "reader": {
+     "thumbName": {
+      "visible": "05 Narrative page",
+      "name": "05 Narrative page, open in the reader"
+     },
+     "dialogName": "- 'dialog \"Page 5 of 12: Narrative page\"':",
+     "focusOnOpen": "reader-title",
+     "arrowOnTitle": "Page 6 of 12: System map",
+     "arrowOnNext": "Page 7 of 12: Evidence page",
+     "enterOnNext": "Page 8 of 12: Comparison",
+     "arrowRightOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowDownOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowInPage": {
+      "title": "Page 8 of 12: Comparison",
+      "scrollLeft": 234,
+      "canScroll": true
+     },
+     "atLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "nextDisabled": "true",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "pressAtLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "home": "Page 1 of 12: Cover",
+     "prevAtFirst": "true",
+     "tabStaysInside": true,
+     "passesToBrowserChrome": 2,
+     "tabStops": [
+      "rd-zoom",
+      "rd-close",
+      "rd-page",
+      null,
+      "rd-prev",
+      "rd-next",
+      "rd-zoom"
+     ],
+     "afterEscape": {
+      "open": false,
+      "focus": "5"
+     }
+    },
+    "errors": []
+   },
+   "board-360": {
+    "scroll": {
+     "scrollWidth": 360,
+     "viewport": 360
+    },
+    "frames": [
+     {
+      "title": "Guide shell wireframe at 1440 by 900 pixels, opened at 05 Color",
+      "w": 1440
+     },
+     {
+      "title": "Guide shell wireframe at 390 by 844 pixels",
+      "w": 390
+     },
+     {
+      "title": "Guide shell wireframe at 360 by 780 pixels",
+      "w": 360
+     }
+    ],
+    "tabPass": {
+     "stops": 45,
+     "withoutVisibleRing": [],
+     "obscured": [],
+     "outsideViewport": [],
+     "backwardJumps": []
+    },
+    "firstStops": [
+     "Skip to main content",
+     "open the wireframe on its own page",
+     "The contents in six parts",
+     "The heading rule"
+    ],
+    "reader": {
+     "thumbName": {
+      "visible": "05 Narrative page",
+      "name": "05 Narrative page, open in the reader"
+     },
+     "dialogName": "- 'dialog \"Page 5 of 12: Narrative page\"':",
+     "focusOnOpen": "reader-title",
+     "arrowOnTitle": "Page 6 of 12: System map",
+     "arrowOnNext": "Page 7 of 12: Evidence page",
+     "enterOnNext": "Page 8 of 12: Comparison",
+     "arrowRightOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowDownOnZoom": {
+      "title": "Page 8 of 12: Comparison",
+      "zoom": "full"
+     },
+     "arrowInPage": {
+      "title": "Page 8 of 12: Comparison",
+      "scrollLeft": 233,
+      "canScroll": true
+     },
+     "atLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "nextDisabled": "true",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "pressAtLast": {
+      "title": "Page 12 of 12: Back cover",
+      "focus": "rd-next",
+      "status": "Page 12 of 12. This is the last page. Use Previous page or Close."
+     },
+     "home": "Page 1 of 12: Cover",
+     "prevAtFirst": "true",
+     "tabStaysInside": true,
+     "passesToBrowserChrome": 2,
+     "tabStops": [
+      "rd-zoom",
+      "rd-close",
+      "rd-page",
+      null,
+      "rd-prev",
+      "rd-next",
+      "rd-zoom"
+     ],
+     "afterEscape": {
+      "open": false,
+      "focus": "5"
+     }
+    },
+    "errors": []
+   },
+   "reducedMotion": {
+    "still": "true",
+    "status": "Still view, because your system asks for reduced motion. All four steps are shown. Play still works.",
+    "transition": "0s",
+    "markerShown": false,
+    "playStillWorks": 2
+   }
+  }
+ },
+ "layout": {
+  "shell-320": {
+   "scrollWidth": 320,
+   "viewport": 320,
+   "overflowing": [],
+   "railShown": false,
+   "menuButtonShown": true
+  },
+  "shell-360": {
+   "scrollWidth": 360,
+   "viewport": 360,
+   "overflowing": [],
+   "railShown": false,
+   "menuButtonShown": true
+  },
+  "shell-390": {
+   "scrollWidth": 390,
+   "viewport": 390,
+   "overflowing": [],
+   "railShown": false,
+   "menuButtonShown": true
+  },
+  "shell-1024": {
+   "scrollWidth": 1024,
+   "viewport": 1024,
+   "overflowing": [],
+   "railShown": true,
+   "menuButtonShown": false
+  },
+  "shell-1440": {
+   "scrollWidth": 1440,
+   "viewport": 1440,
+   "overflowing": [],
+   "railShown": true,
+   "menuButtonShown": false
+  },
+  "shell-zoom200": {
+   "scrollWidth": 720,
+   "viewport": 720,
+   "menuButtonShown": true,
+   "headerHeight": 56
+  },
+  "shell-forced-colors": {
+   "forced": true,
+   "current": {
+    "borderLeft": "4px solid rgb(0, 0, 0)",
+    "weight": "700"
+   },
+   "other": {
+    "borderLeft": "0px none rgb(0, 0, 159)",
+    "weight": "400"
+   },
+   "partUnderline": "underline"
+  },
+  "shell-text200": {
+   "390": {
+    "rootFontSize": "32px",
+    "scrollWidth": 399,
+    "viewport": 390,
+    "railShown": false,
+    "clipped": []
+   },
+   "1440": {
+    "rootFontSize": "32px",
+    "scrollWidth": 1440,
+    "viewport": 1440,
+    "railShown": false,
+    "clipped": []
+   }
+  }
+ },
+ "notes": [],
+ "chromium": "141.0.7390.37",
+ "contrast": {
+  "shell-1440-top": {
+   "checked": 886,
+   "failures": [
+    {
+     "text": "✓",
+     "ratio": 3.37,
+     "px": 15,
+     "large": false
+    }
+   ],
+   "minSmall": 3.37,
+   "minLarge": 9.42,
+   "under13px": []
+  },
+  "shell-390-top": {
+   "checked": 811,
+   "failures": [
+    {
+     "text": "✓",
+     "ratio": 3.37,
+     "px": 15,
+     "large": false
+    }
+   ],
+   "minSmall": 3.37,
+   "minLarge": 9.42,
+   "under13px": []
+  },
+  "shell-390-menu-open": {
+   "checked": 881,
+   "failures": [
+    {
+     "text": "✓",
+     "ratio": 3.37,
+     "px": 15,
+     "large": false
+    }
+   ],
+   "minSmall": 3.37,
+   "minLarge": 9.42,
+   "under13px": []
+  },
+  "shell-360-top": {
+   "checked": 811,
+   "failures": [
+    {
+     "text": "✓",
+     "ratio": 3.37,
+     "px": 15,
+     "large": false
+    }
+   ],
+   "minSmall": 3.37,
+   "minLarge": 9.42,
+   "under13px": []
+  },
+  "shell-360-menu-open": {
+   "checked": 881,
+   "failures": [
+    {
+     "text": "✓",
+     "ratio": 3.37,
+     "px": 15,
+     "large": false
+    }
+   ],
+   "minSmall": 3.37,
+   "minLarge": 9.42,
+   "under13px": []
+  },
+  "board-1440": {
+   "checked": 409,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  },
+  "board-1440-reader-open": {
+   "checked": 423,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  },
+  "board-390": {
+   "checked": 409,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  },
+  "board-390-reader-open": {
+   "checked": 423,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  },
+  "board-360": {
+   "checked": 409,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  },
+  "board-360-reader-open": {
+   "checked": 423,
+   "failures": [],
+   "minSmall": 6.42,
+   "minLarge": 9.42,
+   "under13px": [
+    "Defect fix 12px",
+    "Option 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Option 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Defect fix 12px",
+    "Now 12px",
+    "Later 12px",
+    "Later 12px",
+    "Later 12px"
+   ]
+  }
+ }
+}

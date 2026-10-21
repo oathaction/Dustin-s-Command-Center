@@ -167,7 +167,7 @@ def contents_section():
 
 
 def start_section():
-    return ('<section class="start" id="start"><h2 id="start-h">Where to start</h2>'
+    return ('<section class="start" id="start" data-track="front" data-label="Where to start"><h2 id="start-h">Where to start</h2>'
             '<p>Pick the route that matches what you came to do.</p><ul class="routes">'
             '<li><p class="route-name">New to Oath &amp; Action</p><p>Read <a href="#purpose">01 Purpose</a> first. '
             '<a href="#evidence">13 Evidence and sourcing</a> then shows how every chart and claim says what it rests on.</p></li>'

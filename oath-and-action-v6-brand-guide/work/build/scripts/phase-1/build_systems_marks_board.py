@@ -9,6 +9,7 @@ Writes work/boards/20261021_Systems-Marks-Board.html
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -195,7 +196,7 @@ def section_evidence():
 
   <div class="opt">
     <div class="opthead">{tag("Option")}<h3>Conceptual steps</h3></div>
-    <p>A conceptual loop has no complete numbered chain ({", ".join("Loop " + k for k in ["B2", "B3", "R9"])}). V7 draws its steps as a gray {esc(DATA["renderer"]["edge_css_dashes"]["u-concept"])} dash in #8B9095, one shade and four pixels away from the plausible dash. The proposal is a hollow line: two hairlines around an empty core, which no grade uses and which survives grayscale.</p>
+    <p>A conceptual loop has no complete numbered chain ({", ".join("Loop " + k for k in ["B2", "B3", "R9"])}). V7 draws its steps as a lighter gray dash ({esc(DATA["renderer"]["edge_css_dashes"]["u-concept"])}, #8B9095). Plausible steps are dashed too ({esc(DATA["renderer"]["edge_css_dashes"]["u-plausible"])}), so the two differ only in shade and dash length. The proposal is a hollow line: two hairlines around an empty core, which no grade uses and which survives grayscale.</p>
     {surfaces(conceptual_rows)}
   </div>
 
@@ -230,7 +231,8 @@ GLOSS = {"documented": "on the public record", "well-supported": "strong studies
 def grade_cell(mode):
     def cell(s):
         out = []
-        for g in GRADES_ALL:
+        order = ["well-supported", "documented", "plausible", "contested", "hypothesis"] if mode == "v2" else GRADES_ALL
+        for g in order:
             if mode == "v2" and g not in V2_WORDS:
                 continue
             word = V2_WORDS[g] if mode == "v2" else DATA["renderer"]["grade_table"][g]["label"]
@@ -340,7 +342,7 @@ def section_grades():
       <p class="eyebrow">Record panel, Loop R8</p>
       <dl>
         <dt>What the record shows</dt><dd>Both steps are graded <b>Well supported</b>: strong studies agree on the direction.</dd>
-        <dt>What still needs an answer</dt><dd>{esc(r8["evidence_summary"].split("; ")[-1] if "; " in r8["evidence_summary"] else r8["evidence_summary"])}</dd>
+        <dt>What still needs an answer</dt><dd>V7 calls L39 “{esc(re.search(r"(the weaker step[^.]*)", r8["evidence_summary"]).group(1))}”.</dd>
         <dt>Model note</dt><dd>V7: “{esc(r8["evidence"])}”.</dd>
         <dt>Qualification</dt><dd>{esc(r8["qualification"])}</dd>
       </dl>
@@ -427,14 +429,14 @@ def r01_card():
 
 def section_chips():
     coll = DATA["collisions"]
-    v7_near = [m for m in coll["near"] if not any(k == "v5_standards_rule" for k, _ in m["members"])]
+    v7_near = [m for m in coll["near"] if len({k for k, _ in m["members"] if k != "v5_standards_rule"}) > 1]
     exact_v7 = [x for x, kinds in coll["exact"] if "v5_standards_rule" not in kinds]
     pc = coll["prefix_candidates"]
     return f'''
 <section id="m3">
   <p class="eyebrow">Mark 3</p>
   <h2>3. Typed ID chips</h2>
-  <p>V7's codes collide, and V7 says so: “{esc(Q["methods_identifiers"])}” Its renderer adds the type word only when a code is identical across kinds, which covers {", ".join(exact_v7)}. The script compared every V7 namespace and found {len(v7_near)} codes that match another kind once a hyphen, a leading zero or a letter case is set aside, such as Loop R1 and Reform R-01, Variable D1 and Domain D01, Variable X1 and Issue X01. V5's Standards chapter adds a third R list, rules R1 to R10. The chip below types every code, every time.</p>
+  <p>V7's codes collide, and V7 says so: “{esc(Q["methods_identifiers"])}” Its renderer adds the type word only when a code is identical across kinds, which covers {", ".join(exact_v7)}. The script compared every V7 namespace and found {len(v7_near)} codes that match another kind once a hyphen or a leading zero is set aside, such as Loop R1 and Reform R-01, Variable D1 and Domain D01, Variable X1 and Issue X01. V5's Standards chapter adds a third R list, rules R1 to R10. The chip below types every code, every time.</p>
 
   <div class="opt">
     <div class="opthead">{tag("Original")}<h3>Bare chips, as in Concept 08 Loop Field Guide</h3></div>
@@ -459,7 +461,7 @@ def section_chips():
   {near_table()}
   <div class="ex2">{r01_card()}
     <div class="panel s-newsprint"><p class="eyebrow">Standards rules</p>
-      <p>V5 numbers its Standards rules R1 to R10, for example R5, “{esc(DATA["v5_standards_rules"]["R5"])}”. They become Std-01 to Std-10, cited as “Std-05”. No V7 code starts with Std; its first letter is shared with source IDs such as S05 (prefixes found: {", ".join(pc["STD"]["prefixes_that_share_letters"]) or "none"}), and the lowercase letters and hyphen keep it apart. G-05 is the fallback with no shared letter ({"no V7 prefix starts with G" if not pc["G"]["prefixes_that_share_letters"] else "shared"}).</p>
+      <p>V5 numbers its Standards rules R1 to R10, for example R5, “{esc(DATA["v5_standards_rules"]["R5"].rstrip("."))}”. They become Std-01 to Std-10, cited as “Std-05”. No V7 code starts with Std; its first letter is shared with source IDs such as S05 (prefixes found: {", ".join(pc["STD"]["prefixes_that_share_letters"]) or "none"}), and the lowercase letters and hyphen keep it apart. G-05 is the fallback with no shared letter ({"no V7 prefix starts with G" if not pc["G"]["prefixes_that_share_letters"] else "shared"}).</p>
       <p>{chip("standard", "Std-05")}</p>
     </div>
   </div>
@@ -475,7 +477,10 @@ FAMS = ["DQ", "GE", "EP", "EQ"]
 
 def fx_word(v):
     w = FX["words"].get(v)
-    return w[0].upper() + w[1:] if w else None
+    if w:
+        return w[0].upper() + w[1:]
+    out = re.sub(r"(?<![\w$])([+\-](?:S|M|L)|0|\?)(?![\w,])", lambda m: FX["words"][m.group(1)], v)
+    return out[0].upper() + out[1:]
 
 
 def fx_cell(mode, rid="R-01", fams=None):
@@ -522,7 +527,7 @@ def fx_table():
         for f in FAMS:
             v = ex["effects"][f]
             p = ex["parsed"][f]
-            words = fx_word(v) or ("V7 value quoted in full")
+            words = fx_word(v)
             rows.append("<tr>" + (f'<td rowspan="4">{chip("reform", rid)}<br><span class="cap">{esc(ex["title"])}</span></td>' if first else "")
                         + f'<td>{esc(FX["families"][f])}</td><td class="pipcell">{M.pips(p, 120)}</td><td><span class="code">{esc(tm(v))}</span></td><td>{esc(words)}</td>'
                         + (f'<td rowspan="4">{esc(ex["effects_confidence"])}<br><span class="cap">Remedy grade: {esc(M.GRADE_WORD[ex["remedy_grade"]])}</span></td>' if first else "")
@@ -684,34 +689,41 @@ def authority_fig():
     for a in auth:
         titles[a["from"]] = a["from_title"]
         titles[a["to"]] = a["to_title"]
-    W, bw, bh, gap = 320, 112, 62, 10
-    ly = {k: 6 + i * (bh + gap) for i, k in enumerate(left)}
-    ry = {k: 6 + i * (bh + gap) for i, k in enumerate(right)}
+    W, bw, gap = 320, 126, 12
+
+    def col(keys):
+        pos, y = {}, 6
+        for k in keys:
+            n = len(M.wrap(titles[k], bw - 12, 13, 400))
+            h = 24 + n * 15
+            pos[k] = (y, h)
+            y += h + gap
+        return pos, y
+    lp, lh = col(left)
+    rp, rh = col(right)
     out = []
     order = {}
     for a in auth:
         order.setdefault(a["from"], []).append(a)
         order.setdefault("to:" + a["to"], []).append(a)
     for a in auth:
-        fs = order[a["from"]]
-        ts = order["to:" + a["to"]]
-        fy = ly[a["from"]] + bh * (fs.index(a) + 1) / (len(fs) + 1)
-        ty = ry[a["to"]] + bh * (ts.index(a) + 1) / (len(ts) + 1)
+        fs, ts = order[a["from"]], order["to:" + a["to"]]
+        fy = lp[a["from"]][0] + lp[a["from"]][1] * (fs.index(a) + 1) / (len(fs) + 1)
+        ty = rp[a["to"]][0] + rp[a["to"]][1] * (ts.index(a) + 1) / (len(ts) + 1)
         out.append(M.connection([(bw + 4, fy), (W - bw - 4, ty)], a["evidence"], a["delay"], kind="authority", width=1.5))
     for k in left:
-        out.append(_auth_box(4, ly[k], bw, bh, k, titles[k]))
+        out.append(_auth_box(4, lp[k][0], bw, lp[k][1], k, titles[k]))
     for k in right:
-        out.append(_auth_box(W - bw - 4, ry[k], bw, bh, k, titles[k]))
-    H = 6 + 4 * (bh + gap)
-    return M.svg(W, H, "".join(out), "Authority diagram: the seven authority connections in V7")
+        out.append(_auth_box(W - bw - 4, rp[k][0], bw, rp[k][1], k, titles[k]))
+    return M.svg(W, max(lh, rh), "".join(out), "Authority diagram: the seven authority connections in V7")
 
 
 def _auth_box(x, y, w, h, code, title):
-    lines = M.wrap(title, w - 12, 13, 400)[:3]
+    lines = M.wrap(title, w - 12, 13, 400)
     out = [f'<rect x="{x}" y="{y}" width="{w}" height="{h}" class="bgf" stroke="currentColor" stroke-width="1.5"/>',
-           M.T(x + 6, y + 15, code, "b")]
+           M.T(x + 6, y + 16, code, "b")]
     for i, ln in enumerate(lines):
-        out.append(M.T(x + 6, y + 30 + i * 14.5, ln))
+        out.append(M.T(x + 6, y + 32 + i * 15, ln))
     return "".join(out)
 
 
@@ -804,24 +816,40 @@ def amp(x, y, h, red=True):
             f'transform="translate(-3.16 98.41) scale(0.14 -0.14)"/></g>')
 
 
-def hinge_primer(W=320, arcs="solid"):
+def _chev(p2, p3, size=7):
+    import math
+    dx, dy = p3[0] - p2[0], p3[1] - p2[1]
+    n = math.hypot(dx, dy)
+    ux, uy = dx / n, dy / n
+    pts = []
+    for ang in (0.5, -0.5):
+        ca, sa = math.cos(ang), math.sin(ang)
+        bx, by = -(ux * ca - uy * sa), -(ux * sa + uy * ca)
+        pts.append((p3[0] + bx * size, p3[1] + by * size))
+    return (f'<path d="M{pts[0][0]:.1f} {pts[0][1]:.1f} L{p3[0]:.1f} {p3[1]:.1f} L{pts[1][0]:.1f} {pts[1][1]:.1f}" '
+            f'fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>')
+
+
+def hinge_primer(W=280, arcs="solid", red=True):
     """Studio sketch of the hinge diagram as a loop primer. Words only: no IDs, signs, grades or delays."""
     cx, cy = W / 2, 112
     dash = ' stroke-dasharray="1 6" stroke-linecap="round"' if arcs == "v5" else (' stroke-dasharray="6 5"' if arcs == "mock" else "")
+    t1 = ((cx + 50, cy - 44), (cx + 28, cy - 84), (cx - 28, cy - 84), (cx - 50, cy - 44))
+    t2 = ((cx - 50, cy + 44), (cx - 28, cy + 84), (cx + 28, cy + 84), (cx + 50, cy + 44))
+
+    def arc(t):
+        return (f'<path d="M{t[0][0]} {t[0][1]} C{t[1][0]} {t[1][1]} {t[2][0]} {t[2][1]} {t[3][0]} {t[3][1]}" '
+                f'fill="none" stroke="currentColor" stroke-width="1.25"{dash}/>' + _chev(t[2], t[3]))
     out = [
         f'<circle cx="{cx}" cy="{cy}" r="34" fill="none" stroke="currentColor" stroke-width="1"/>',
-        amp(cx - 22, cy - 24, 48),
-        f'<line x1="{cx - 34}" y1="{cy}" x2="{cx - 70}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
-        f'<line x1="{cx + 34}" y1="{cy}" x2="{cx + 70}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
-        f'<circle cx="{cx - 70}" cy="{cy}" r="3.5" fill="currentColor"/><circle cx="{cx + 70}" cy="{cy}" r="3.5" fill="currentColor"/>',
-        M.T(cx - 78, cy + 5, "OATH", "hw", anchor="end"), M.T(cx + 78, cy + 5, "ACTION", "hw"),
-        M.T(cx - 78, cy + 24, "A promise", "ink2", anchor="end"), M.T(cx + 78, cy + 24, "Acting on it", "ink2"),
-        # top arc: action returns to the promise; bottom arc: promise to action
-        f'<path d="M{cx + 52} {cy - 46} C{cx + 30} {cy - 84} {cx - 30} {cy - 84} {cx - 52} {cy - 46}" fill="none" stroke="currentColor" stroke-width="1.25"{dash}/>',
-        f'<path d="M{cx - 59} {cy - 52} L{cx - 52} {cy - 46} L{cx - 50} {cy - 55}" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>',
-        f'<path d="M{cx - 52} {cy + 46} C{cx - 30} {cy + 84} {cx + 30} {cy + 84} {cx + 52} {cy + 46}" fill="none" stroke="currentColor" stroke-width="1.25"{dash}/>',
-        f'<path d="M{cx + 59} {cy + 52} L{cx + 52} {cy + 46} L{cx + 50} {cy + 55}" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>',
-        M.T(cx, cy - 84, "The result shapes the next promise", "ink2", anchor="middle"),
+        amp(cx - 22, cy - 24, 48, red),
+        f'<line x1="{cx - 34}" y1="{cy}" x2="{cx - 58}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
+        f'<line x1="{cx + 34}" y1="{cy}" x2="{cx + 58}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
+        f'<circle cx="{cx - 58}" cy="{cy}" r="3.5" fill="currentColor"/><circle cx="{cx + 58}" cy="{cy}" r="3.5" fill="currentColor"/>',
+        M.T(cx - 64, cy + 6, "OATH", "hw", anchor="end"), M.T(cx + 64, cy + 6, "ACTION", "hw"),
+        M.T(cx - 64, cy + 24, "A promise", "ink2", anchor="end"), M.T(cx + 64, cy + 24, "Acting on it", "ink2"),
+        arc(t1), arc(t2),
+        M.T(cx, cy - 86, "The result shapes the next promise", "ink2", anchor="middle"),
         M.T(cx, cy + 100, "The promise becomes action", "ink2", anchor="middle"),
     ]
     return M.svg(W, 224, "".join(out), "Hinge diagram sketch: a promise, then action, and the result returns")
@@ -843,10 +871,10 @@ def section_hinge():
       <div class="s-newsprint pad"><img src="../../source/brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp" alt="Hinge diagram mockup on Newsprint" width="300" height="200"></div>
       <p class="cap">Generated reference image, shown for study. Both arcs are dashed; in V7's grammar a dash is plausible.</p></div>
     <div class="opt rec-opt"><div class="opthead">{tag("Option")}{tag("Recommended")}<h3>Hinge primer for systems pages</h3></div>
-      <div class="s-newsprint pad">{hinge_primer()}</div>
+      <div class="s-newsprint pad">{hinge_primer(300)}</div>
       <p class="cap">Studio sketch. Solid hairline arcs with open chevrons, thinner than any data line, and words only. Drawn with the V5 ampersand outline.</p></div>
   </div>
-  {surfaces(lambda s: hinge_primer(150 * 2 if False else 300), note="The primer on all four surfaces and in grayscale. At phone width each cell shows the sketch scaled into its column; the true-size sketch is above.")}
+  <div class="widecells">{surfaces(lambda s: hinge_primer(280, red=s in ("Newsprint", "White")), note="The primer at true size on all four surfaces and in grayscale. On Charcoal and Prussian the ampersand is drawn in Newsprint here, because red on Prussian is an open identity question on the design director's board.")}</div>
 
   <h3 class="exh">From the hinge to a real loop</h3>
   <ol class="steps">
@@ -855,7 +883,7 @@ def section_hinge():
     <li><b>Where loops meet.</b> {chip("variable", "C3")} Risk of losing office sits in {", ".join("Loop " + k for k in DATA["loops_through_C3"])}. Where seats are safe, {chip("loop", "R10")} wears down the pressure that B4 needs; V7's qualification for B4: “{esc(b4["qualification"].split(". ")[0])}.”</li>
   </ol>
   <div class="ex2">
-    {figure(loop_head("B4") + loop_fig("B4"), "Loop B4 in the systems grammar: IDs, signs, grades, delays and a source line, which the hinge never carries.", SRC_V7 + "; loop B4, connections L23, L24, L54.")}
+    {figure(loop_head("B4") + loop_fig("B4"), "Loop B4 in the systems grammar: IDs, signs, grades, delays and a source line, which the hinge never carries. All three steps are well supported; V7's summary adds that for U.S. services the weakest is L54, “since its main study covers Brazilian mayors”.", SRC_V7 + "; loop B4, connections L23, L24, L54.")}
     {figure(loop_head("R10") + loop_fig("R10", rings={"links": R01["targets"], "nodes": [t for t in R01["targets"] if not t.startswith("L")]}),
             f'Loop R10 shares C3 with B4. The red rings mark where Reform R-01 acts: {", ".join(t["id"] for t in R01["target_detail"])}. Red in a data figure marks only a reform’s target.',
             SRC_V7 + "; loop R10; reforms.R-01.targets.")}
@@ -968,6 +996,7 @@ def section_decisions():
 
 
 CSS = r"""
+:root{--cell:#DCD9D2;--ink:#121212;--ink2:#45494F}
 .s-newsprint{--cell:#DCD9D2;--ink:#121212;--ink2:#45494F}
 .s-white{--cell:#FFFFFF;--ink:#121212;--ink2:#45494F}
 .s-charcoal{--cell:#121212;--ink:#DCD9D2;--ink2:#DCD9D2}
@@ -1056,7 +1085,7 @@ dd{margin:2px 0 0;font-size:.9375rem}
 .decision th{color:var(--newsprint)}
 details{margin-top:12px} summary{cursor:pointer;font-weight:600}
 q{quotes:"“" "”"}
-.surfaces svg.mk{max-width:100%}
+.widecells .surfaces{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 @media (max-width:760px){.lw{min-width:0}}
 """
 

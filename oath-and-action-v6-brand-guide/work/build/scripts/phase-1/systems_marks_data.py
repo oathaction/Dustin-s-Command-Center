@@ -147,7 +147,7 @@ quotes = {
     "outcomes_why_not_one_number": d["outcomes"]["why_not_one_number"],
     "effect_codes_note": d["outcomes"]["effect_codes_note"],
     "repair_coding_last": sentence_with(d["repairLog"]["coding_note"], "carries no judgment"),
-    "delivery_grade_note": sentence_with(d["deliveryLog"]["intro"], "The evidence grade on each entry"),
+    "delivery_grade_note": [x for x in re.split(r"(?<=[.])\s+", d["deliveryLog"]["intro"]) if "The evidence grade on each entry" in x][0],
 }
 
 # ------------------------------------------------------------------ grade vocabulary by record type

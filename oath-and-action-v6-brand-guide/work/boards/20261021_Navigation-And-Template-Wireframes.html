@@ -53,6 +53,7 @@
   .wide-holder iframe { width: 1440px; height: 900px; border: 0; display: block }
   .is-fit .scrollbox { overflow: hidden }
   .phones { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start }
+  .phone { min-width: 0; max-width: 100% }
   .phone figure { margin: 0 }
   .phone .scrollbox { width: max-content }
   .phone iframe { border: 0; display: block }
@@ -142,8 +143,8 @@
   <header>
     <p class="eyebrow">Gate 1 review board · Phase 1 · October 21, 2026</p>
     <h1>Navigation and template wireframes</h1>
-    <p class="lead">How a reader moves through the Edition 06 guide, at desktop and phone widths, and how one chapter reads in the new template. Everything here is a working proposal. Nothing is built into V6.</p>
-    <p class="meta">Prepared by the UX and accessibility lead. The full chapter mapping is in <code>work/ledger/20261021_Guide-Architecture-Map.md</code>. The wireframe opens on its own at <a href="phase-1/navigation/20261021_Guide-Shell-Wireframe.html">phase-1/navigation/20261021_Guide-Shell-Wireframe.html</a>. Labels follow the board conventions: <span class="tag defect">Defect fix</span> repairs a problem Phase 0 measured; <span class="tag">Option</span> is a choice.</p>
+    <p class="lead">How a reader moves through the Edition 06 guide at desktop and phone widths, and how one chapter reads in the new template. Everything here is a working proposal for Gate 1; V6 itself is not built yet.</p>
+    <p class="meta">Prepared by the UX and accessibility lead. The full chapter mapping is in <code>work/ledger/20261021_Guide-Architecture-Map.md</code>. You can also <a href="phase-1/navigation/20261021_Guide-Shell-Wireframe.html">open the wireframe on its own page</a> (<code>phase-1/navigation/20261021_Guide-Shell-Wireframe.html</code>). Labels follow the board conventions: <span class="tag defect">Defect fix</span> repairs a problem Phase 0 measured; <span class="tag">Option</span> is a choice.</p>
   </header>
 
   <nav class="boardnav" aria-label="On this board">
@@ -254,7 +255,7 @@
     <ol class="callouts">
       <li><strong>The Menu button</strong> has a text label, is 44 px tall, and says it opens a dialog.</li>
       <li><strong>The contents panel</strong> is a modal dialog named by its visible title, Contents. Focus moves to the current chapter's link. Tab stays inside the panel. Escape or Close returns focus to Menu.</li>
-      <li><strong>Every link shows.</strong> 37 links: Cover, the contents page, Where to start, six parts, 28 chapters and the Closing. Each row is at least 44 px tall and the panel scrolls up and down only.</li>
+      <li><strong>Every link shows.</strong> 38 links: Cover, the contents page, Where to start, six parts, 28 chapters and the Closing. Each row is at least 44 px tall and the panel scrolls up and down only.</li>
       <li><strong>Choosing a link</strong> closes the panel, scrolls to the chapter and moves focus to its h2.</li>
       <li><strong>The header name</strong> ("05 Color") updates as you scroll. Below 360 px it gives way to the Menu button; the location line under each h2 carries the same information.</li>
     </ol>
@@ -406,7 +407,7 @@
         <thead><tr><th scope="col">#</th><th scope="col">Decision</th><th scope="col">Options</th><th scope="col">Recommendation</th></tr></thead>
         <tbody>
           <tr><td>N1</td><td>Desktop navigation</td><td>(a) Part links in the masthead, a rail with every chapter and a current marker, and an In this chapter list. (b) A rail with only the current part.</td><td>(a). Every chapter is one click away and the marker is always in view.</td></tr>
-          <tr><td>N2</td><td>Phone navigation</td><td>(a) Menu opens a full-height contents dialog with every link. (b) A panel that opens under the masthead. (c) V5's scrolling strip.</td><td>(a). All 37 links show, focus is managed, and Escape closes it.</td></tr>
+          <tr><td>N2</td><td>Phone navigation</td><td>(a) Menu opens a full-height contents dialog with every link. (b) A panel that opens under the masthead. (c) V5's scrolling strip.</td><td>(a). All 38 links show, focus is managed, and Escape closes it.</td></tr>
           <tr><td>N3</td><td>Cross-references</td><td>(a) Linked references, a Return link after a jump, and a Related chapters block. (b) Related chapters block only.</td><td>(a). Readers who follow a reference can get back without hunting.</td></tr>
           <tr><td>T1</td><td>Chapter template</td><td>(a) The eight blocks in the brief's order, rules as h3s, failure specimens as images with a text description. (b) Failure specimens as live text, excluded from automated checks.</td><td>(a). The page keeps passing its own checks while it shows the failure.</td></tr>
           <tr><td>I1</td><td>Report reader keys</td><td>(a) Page keys on the reader chrome only, focus kept at the ends, visible title as the dialog name. (b) V5's behavior.</td><td>(a). Fixes WCAG 2.1.1 and 2.4.3 failures found at Gate 0.</td></tr>

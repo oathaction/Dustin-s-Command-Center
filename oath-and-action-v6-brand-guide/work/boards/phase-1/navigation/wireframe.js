@@ -58,13 +58,19 @@
     }
     return cur;
   }
-  var ticking = false;
+  // After a link lands, the target stays marked while the browser finishes scrolling, then scrolling takes over again.
+  var ticking = false, pinTimer = null;
   window.addEventListener('scroll', function () {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(function () {
       ticking = false;
-      if (Date.now() < pinnedUntil) return;
+      var wait = pinnedUntil - Date.now();
+      if (wait > 0) {
+        clearTimeout(pinTimer);
+        pinTimer = setTimeout(function () { setCurrent(compute()); }, wait + 20);
+        return;
+      }
       setCurrent(compute());
     });
   }, { passive: true });
@@ -88,7 +94,7 @@
     if (!target) { pendingReturn = null; return; }
     var sec = sectionFor(target);
     if (target === document.getElementById('main')) sec = null;
-    if (sec) { setCurrent(sec); pinnedUntil = Date.now() + 900; }
+    if (sec) { setCurrent(sec); pinnedUntil = Date.now() + 600; }
     // Move focus to the heading the link points at, so the next Tab continues from there.
     var h = target.matches('h1, h2, h3') ? target : target.querySelector('h1, h2, h3');
     if (target.id === 'main') h = target;
@@ -205,11 +211,16 @@
   });
 
   // Start position: the board's frames open the shell at a chapter with ?at=<id>, scrolling only this window.
+  // Runs again once the web fonts have loaded, because text above the target reflows when they arrive.
   var at = new URLSearchParams(location.search).get('at');
-  if (at && document.getElementById(at)) {
-    var t = document.getElementById(at);
-    var y = t.getBoundingClientRect().top + window.pageYOffset - header.getBoundingClientRect().height - 20;
-    window.scrollTo(0, y);
+  function start() {
+    if (at && document.getElementById(at) && !location.hash) {
+      var t = document.getElementById(at);
+      var y = t.getBoundingClientRect().top + window.pageYOffset - header.getBoundingClientRect().height - 20;
+      window.scrollTo(0, y);
+    }
+    if (location.hash) onHash(); else setCurrent(compute());
   }
-  if (location.hash) onHash(); else setCurrent(compute());
+  start();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { current = null; start(); });
 })();

@@ -244,7 +244,7 @@
   "outcomes_why_not_one_number": "The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality. Keeping the families separate lets readers see those tradeoffs; adding them into one score would hide them.",
   "effect_codes_note": "Reform profiles use these codes to show the expected direction and rough size of an effect on each outcome family. The codes are conditional on the reform working as described, and codes for different families are never added together.",
   "repair_coding_last": "A row's direction describes the rule's effect on who officials answer to and carries no judgment of the people or parties involved.",
-  "delivery_grade_note": "The evidence grade on each entry rates the measured result;"
+  "delivery_grade_note": "The evidence grade on each entry rates the measured result; the qualification says how far it can be carried."
  },
  "grades": {
   "links.evidence": {

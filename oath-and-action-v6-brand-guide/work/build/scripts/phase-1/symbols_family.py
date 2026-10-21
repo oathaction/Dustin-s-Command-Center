@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from symbols_geom import (circle, d_of, empty, intersect, minus, poly, rect, rrect,  # noqa: E402
+from symbols_geom import (circle, d_of, empty, fillet_poly, intersect, minus, poly, rect, rrect,  # noqa: E402
                           stroke_path, transform, union)
 
 PILLARS = ["explain", "track", "connect", "act"]
@@ -133,7 +133,7 @@ def act_24(direction, treatment):
         lf = _ln([("M", 4, 3.4), ("L", 10, 5.6), ("L", 10, 21), ("L", 4, 21), ("Z",)], 2)
         return _layers(union(f, lf), 7, 12, 3, 4)
     if direction == "B" and treatment == "filled":
-        lf = _round_poly([(3, 2), (11, 5), (11, 22), (3, 22)], 1.5)
+        lf = fillet_poly([(3, 2), (11, 5), (11, 22), (3, 22)], 2)
         fr = union(rrect(12, 2, 9, 3, 1.5), rrect(18, 2, 3, 20, 1.5), rect(17, 2, 3, 3))
         return _layers(union(lf, fr), 7, 12, 3, 4)
     raise ValueError
@@ -165,13 +165,13 @@ def explain_16(direction, treatment):
         body = union(minus(rect(1, 4, 10, 10), rect(6, 4, 5, 5)), rect(9, 1, 5, 5))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
     if direction == "A" and treatment == "line":
-        body = union(_ln([("M", 2, 5), ("L", 5, 5), ("L", 5, 10), ("L", 10, 10), ("L", 10, 13), ("L", 2, 13), ("Z",)], 2, "square", "miter"),
-                     _ln([("M", 10, 2), ("L", 13, 2), ("L", 13, 5), ("L", 10, 5), ("Z",)], 2, "square", "miter"))
-        return _layers(body, 7.5, 7.5, 1.5, 1.5)
+        body = union(_ln([("M", 2, 6), ("L", 5, 6), ("L", 5, 11), ("L", 11, 11), ("L", 11, 14), ("L", 2, 14), ("Z",)], 2, "square", "miter"),
+                     _ln([("M", 11, 2), ("L", 14, 2), ("L", 14, 5), ("L", 11, 5), ("Z",)], 2, "square", "miter"))
+        return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "line":
-        body = union(_ln([("M", 2, 5), ("L", 5, 5), ("L", 5, 10), ("L", 11, 10), ("L", 11, 14), ("L", 2, 14), ("Z",)], 2),
-                     _ln([("M", 10, 2), ("L", 14, 2), ("L", 14, 6), ("L", 10, 6), ("Z",)], 2))
-        return _layers(body, 8, 8, 2, 2)
+        body = union(_ln([("M", 2, 6), ("L", 5, 6), ("L", 5, 11), ("L", 11, 11), ("L", 11, 14), ("L", 2, 14), ("Z",)], 2),
+                     _ln([("M", 11, 2), ("L", 14, 2), ("L", 14, 5), ("L", 11, 5), ("Z",)], 2))
+        return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "filled":
         body = union(rrect(1, 4, 5, 10, 1.5), rrect(1, 9, 10, 5, 1.5), rrect(9, 1, 5, 5, 1.5))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
@@ -183,10 +183,10 @@ def track_16(direction, treatment):
     if direction == "A" and treatment == "filled":
         return _layers(stairs, 7.5, 7.5, 1.5, 2.5)
     if direction == "A" and treatment == "line":
-        body = _ln([("M", 2, 12), ("L", 6, 12), ("L", 6, 8), ("L", 12, 8), ("L", 12, 4), ("L", 14, 4), ("L", 14, 14), ("L", 2, 14), ("Z",)], 2, "square", "miter")
-        return _layers(body, 9, 8, 1.5, 2.5)
+        body = _ln([("M", 2, 11), ("L", 4, 11), ("L", 4, 8), ("L", 12, 8), ("L", 12, 4), ("L", 14, 4), ("L", 14, 14), ("L", 2, 14), ("Z",)], 2, "square", "miter")
+        return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "line":
-        body = _ln([("M", 2, 12), ("L", 5, 12), ("L", 5, 8), ("L", 11, 8), ("L", 11, 4), ("L", 14, 4)], 2)
+        body = _ln([("M", 2, 12), ("L", 4, 12), ("L", 4, 8), ("L", 12, 8), ("L", 12, 4), ("L", 14, 4)], 2)
         return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "filled":
         st = union(rrect(1, 11, 14, 4, 1.5), rrect(5, 7, 10, 8, 1.5), rrect(11, 3, 4, 12, 1.5))
@@ -196,18 +196,18 @@ def track_16(direction, treatment):
 
 def connect_16(direction, treatment):
     if direction == "A" and treatment == "filled":
-        body = minus(circle(7.5, 7.5, 7), rect(7, 0, 1, 16))
+        body = minus(circle(7.5, 7.5, 6.5), rect(7, 0, 1, 16))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
     if direction == "A" and treatment == "line":
-        left = _ln([("A", 8, 8, 6, 100, 260)], 2, "butt", "miter")
-        right = _ln([("A", 8, 8, 6, -80, 80)], 2, "butt", "miter")
-        return _layers(union(left, right), 8, 8, 1.5, 1.5)
+        left = _ln([("A", 8, 8, 6, 104, 256)], 2, "butt", "miter")
+        right = _ln([("A", 8, 8, 6, -76, 76)], 2, "butt", "miter")
+        return _layers(union(left, right), 8, 8, 2, 3)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 8, 8, 6, 118, 242)], 2), _ln([("A", 8, 8, 6, -62, 62)], 2))
         return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "filled":
-        body = minus(circle(8, 8, 7), rect(7, 0, 2, 16))
-        return _layers(body, 8, 8, 2, 3)
+        body = minus(circle(7.5, 7.5, 6.5), rect(7, 0, 1, 16))
+        return _layers(body, 7.5, 7.5, 1.5, 2.5)
     raise ValueError
 
 
@@ -223,9 +223,9 @@ def act_16(direction, treatment):
     if direction == "B" and treatment == "line":
         f = _ln([("M", 10, 2), ("L", 13, 2), ("L", 13, 14)], 2)
         lf = _ln([("M", 2, 2.5), ("L", 8, 4.5), ("L", 8, 14), ("L", 2, 14), ("Z",)], 2)
-        return {"body": union(f, lf), "seat": empty(), "node": circle(5, 9, 1.25)}
+        return {"body": union(f, lf), "seat": empty(), "node": circle(5, 9, 1)}
     if direction == "B" and treatment == "filled":
-        leaf = _round_poly([(2, 1), (8, 3), (8, 15), (2, 15)], 1)
+        leaf = fillet_poly([(2, 1), (8, 3), (8, 15), (2, 15)], 1)
         frame = union(rrect(9, 1, 5, 2, 1), rrect(12, 1, 2, 14, 1), rect(11, 1, 2, 2))
         return _layers(union(leaf, frame), 5, 8, 1, 2)
     raise ValueError
@@ -256,15 +256,14 @@ def tile(pillar, direction, size):
     plate = rrect(0, 0, size, size, r)
     inner = "filled" if direction == "A" else "line"
     if size == 16:
-        lay = DRAW_16[pillar](direction, "filled")
-        lay = {k: transform(v, 10 / 16, 3, 3) for k, v in lay.items()}
+        lay = {k: (transform(v, 1, 3, 3) if k != "hole" else v) for k, v in micro_10(pillar).items()}
     elif size == 24:
         lay = {k: transform(v, 1, 4, 4) for k, v in DRAW_16[pillar](direction, inner).items()}
     else:
         s = size * 2 / 3 / 24
         off = size / 6
         lay = {k: transform(v, s, off, off) for k, v in DRAW_24[pillar](direction, inner).items()}
-    return {"plate": plate, **lay}
+    return {"plate": plate, **{k: v for k, v in lay.items() if k != "hole"}, "hole": bool(lay.get("hole"))}
 
 
 # ------------------------------------------------------------------ topic grammar proof (Direction A)
@@ -323,3 +322,21 @@ def topic(name, size):
         return topic_16(name)
     s = size / 24
     return {k: transform(v, s) for k, v in topic_24(name).items()}
+
+
+def micro_10(pillar):
+    """10 px drawings for the 16 px tile, on whole pixels. Shared by both directions:
+    at this size the two grammars converge. Nodes are 2 px."""
+    if pillar == "explain":
+        body = union(minus(rect(0, 3, 6, 6), rect(3, 3, 3, 3)), rect(7, 0, 3, 3))
+        return {"body": body, "seat": empty(), "node": rect(4, 3, 2, 2)}
+    if pillar == "track":
+        body = union(rect(0, 7, 3, 3), rect(3, 4, 4, 6), rect(7, 1, 3, 9))
+        return {"body": body, "seat": empty(), "node": rect(4, 1, 2, 2)}
+    if pillar == "connect":
+        body = minus(circle(5, 5, 5), rect(4, 0, 2, 10))
+        return {"body": body, "seat": empty(), "node": rect(4, 4, 2, 2)}
+    if pillar == "act":
+        body = minus(union(poly((0, 0), (4, 1), (4, 10), (0, 10)), rect(5, 0, 5, 2), rect(8, 0, 2, 10)), rect(1, 4, 2, 2))
+        return {"body": body, "seat": empty(), "node": rect(1, 4, 2, 2), "hole": True}
+    raise ValueError

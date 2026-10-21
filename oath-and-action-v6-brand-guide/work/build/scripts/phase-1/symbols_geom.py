@@ -203,3 +203,71 @@ def transform(path, s=1.0, dx=0.0, dy=0.0):
 
 def empty():
     return pathops.Path()
+
+
+def fillet_poly(pts, r):
+    """Polygon with every corner filleted by an arc of radius r (cubic approximation).
+
+    Straight edges keep their exact coordinates, so axis-aligned edges stay on the pixel grid.
+    """
+    n = len(pts)
+    p = pathops.Path()
+    first = True
+    for i in range(n):
+        vx, vy = pts[i]
+        ax, ay = pts[i - 1]
+        bx, by = pts[(i + 1) % n]
+        u1 = (ax - vx, ay - vy)
+        u2 = (bx - vx, by - vy)
+        l1 = math.hypot(*u1)
+        l2 = math.hypot(*u2)
+        u1 = (u1[0] / l1, u1[1] / l1)
+        u2 = (u2[0] / l2, u2[1] / l2)
+        cosang = max(-1.0, min(1.0, u1[0] * u2[0] + u1[1] * u2[1]))
+        theta = math.acos(cosang)
+        t = r / math.tan(theta / 2)
+        p1 = (vx + u1[0] * t, vy + u1[1] * t)
+        p2 = (vx + u2[0] * t, vy + u2[1] * t)
+        phi = math.pi - theta
+        k = 4 / 3 * math.tan(phi / 4) * r
+        c1 = (p1[0] - u1[0] * k, p1[1] - u1[1] * k)
+        c2 = (p2[0] - u2[0] * k, p2[1] - u2[1] * k)
+        if first:
+            p.moveTo(*p1)
+            first = False
+        else:
+            p.lineTo(*p1)
+        p.cubicTo(c1[0], c1[1], c2[0], c2[1], p2[0], p2[1])
+    p.close()
+    return simplify(p)
+
+
+def flatten_segments(path):
+    """Yield ('L', p0, p1) and ('C', p0, c1, c2, p1) / ('Q', p0, c, p1) segments with implied points resolved."""
+    from fontTools.pens.basePen import BasePen
+    out = []
+
+    class P(BasePen):
+        def __init__(self):
+            super().__init__(None)
+
+        def _moveTo(self, pt):
+            out.append(("M", pt))
+
+        def _lineTo(self, pt):
+            out.append(("L", self._getCurrentPoint(), pt))
+
+        def _curveToOne(self, a, b, c):
+            out.append(("C", self._getCurrentPoint(), a, b, c))
+
+        def _qCurveToOne(self, a, b):
+            out.append(("Q", self._getCurrentPoint(), a, b))
+
+        def _closePath(self):
+            out.append(("Z",))
+
+        def _endPath(self):
+            out.append(("Z",))
+
+    path.draw(P())
+    return out

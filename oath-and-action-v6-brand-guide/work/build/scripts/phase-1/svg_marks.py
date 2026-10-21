@@ -171,7 +171,7 @@ def vloop(nodes, steps, ret, W=320, record_mark=True, rings=None, label="", grad
             out.append(T(px, py + 38, GRADE_WORD[st["evidence"]], "sb"))
             out.append(T(px, py + 54, DELAY_WORD[st["delay"]], "ink2"))
         if st["id"] in rings["links"]:
-            out.append(ring(ax, (y_a + y_b) / 2 + 6))
+            out.append(ring(ax, y_b - 20))
     yl = ys[-1] + bh
     rp = [(ax, yl), (ax, yl + 26), (12, yl + 26), (12, ys[0] + bh / 2), (bx, ys[0] + bh / 2)]
     out.append(connection(rp, ret["evidence"], ret["delay"], ret["type"]))
@@ -298,9 +298,9 @@ def timeline(events, y0, y1, W, label_w, tick_step, title):
                 levels[lv] = x
             placed.append((x, lv, e))
         n = max(1, len(levels))
-        row_h = max(30, n * pitch + 12)
-        base = y + row_h - 8
         lab = wrap(DIR_LABEL[dirn], label_w - 4, 13, 600)
+        row_h = max(30, n * pitch + 12, len(lab) * 15 + 10)
+        base = y + row_h - 8
         for i, ln in enumerate(lab):
             out.append(T(2, y + 15 + i * 15, ln, "sb"))
         out.append(f'<line x1="{plot_x0}" y1="{base + 4}" x2="{plot_x1}" y2="{base + 4}" stroke="currentColor" stroke-width="1"/>')

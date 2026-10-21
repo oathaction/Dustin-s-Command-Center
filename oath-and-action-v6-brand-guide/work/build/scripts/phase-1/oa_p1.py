@@ -419,3 +419,27 @@ def column_openness(img, bg, ink, x_a, x_b, y_a, y_b):
             if col:
                 best = max(best, 1 - sum(col) / len(col))
     return round(best, 2)
+
+
+# ---------------------------------------------------------------- fast spacing profiles
+
+class Profile:
+    """Left and right ink profile of a path across a band, so spacing searches only add offsets."""
+
+    def __init__(self, p, cap_top=4.0, base=104.0, step=0.25):
+        pl = polyline(p)
+        self.rows = []
+        y = cap_top + step / 2
+        while y < base:
+            xs = crossings(pl, y)
+            self.rows.append((xs[0], xs[-1]) if xs else None)
+            y += step
+        self.band = base - cap_top
+        self.step = step
+
+
+def gap_profiles(pa, pb, shift=0.0, depth=20.0):
+    gaps = [(rb[0] + shift) - ra[1] for ra, rb in zip(pa.rows, pb.rows) if ra and rb]
+    gmin = min(gaps)
+    area = sum(min(g, gmin + depth) for g in gaps) * pa.step / pa.band
+    return {"min": round(gmin, 2), "area": round(area, 2)}
