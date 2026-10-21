@@ -57,3 +57,6 @@ Dustin approved the review, the Master Brief corrections (issued as Brief V2) an
 | D1-13 | Hinge gap spacing is measured as white area 0.15x deep, with a 0.07x floor | Equal white area reads as equal gaps, where equal nearest distance does not |
 | D1-14 | Ampersand option B carries extra weight so its stem reaches 0.85 of the wordmark stem | Keeps the drawn ampersand from reading lighter than the letters, the main Phase 0 finding |
 | D1-15 | skia-pathops and shapely installed to user site-packages for boolean path geometry | Needed to merge and measure outlines. Not part of any shipped file |
+| D1-16 | Symbol similarity limit: two symbols are distinct when their blurred correlation is under 0.60 | A studio threshold, to be confirmed with reader tests |
+| D1-17 | A 16 or 24 px master passes pixel fit when at least 60 percent of its ink pixels are crisp | A studio threshold set from the Phase 0 measurements |
+| D1-18 | Patterns cover no more than 12 percent of an area that carries text | Keeps texture behind text from lowering legibility. A studio threshold |

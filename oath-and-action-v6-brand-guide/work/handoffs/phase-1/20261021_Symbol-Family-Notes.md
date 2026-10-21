@@ -17,19 +17,9 @@ Nothing in any master. Every drawing is a proposal under DC-02.
 2. **Two directions** come from the same four skeletons.
    - **A, geometric solid:** filled primitives with square corners. The node is a 4 px dot set into a 1 px clear seat.
    - **B, line with one accent:** a 2 px monoline with round ends. The node is a 6 px dot held off the line by a 1 px gap.
-   - Each direction has filled, line and tile treatments. The board shows them at 16, 24, 48 and 96 px, in one colour, on Newsprint, White, Charcoal and Prussian, with 8x pixel views. Each direction also gets one composition: a 1080 by 1080 Act post and an article kicker with a story list.
-3. **The shared element is the hinge node.** Every mark is two parts and the point that joins them:
-   - in Explain, where the quarter lifted out;
-   - in Track, the stage a decision has reached;
-   - in Connect, the space between the halves;
-   - in Act, the handle.
-
-   The node always sits on the horizontal centre line, so in a row one line passes through all four nodes, the grammar of the hinge diagram and the Signal Grid. The board sketches three alternatives I set aside: the ampersand's crossing (an X at 16 px, and it borrows the master ampersand), a ring around each mark (look-alike badges that drift toward ©) and a shared baseline bar (one more shape common to all four).
-4. **Red rule.** Pillar Red goes only on the Act handle, in Act contexts.
-   - On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint is 2.96:1.
-   - On Charcoal the seat is cut out, and red meets Charcoal at 4.49:1.
-   - Prussian never carries red.
-   - At 16 px the handle is 2 px, so Act stays one colour there.
+   - Each has filled, line and tile treatments at 16, 24, 48 and 96 px in one colour on all four surfaces, with 8x pixel views, plus one composition: a 1080 by 1080 Act post and an article kicker.
+3. **The shared element is the hinge node.** Every mark is two parts and the point that joins them: where Explain's quarter lifted out, the stage Track has reached, the space between Connect's halves, and Act's handle. The node always sits on the horizontal centre line, so in a row one line passes through all four nodes, the grammar of the hinge diagram and the Signal Grid. The board sketches three alternatives I set aside: the ampersand's crossing (an X at 16 px, and it borrows the master ampersand), a ring around each mark (look-alike badges that drift toward ©) and a shared baseline bar (one more shape common to all four).
+4. **Red rule.** Pillar Red goes only on the Act handle, in Act contexts: inside a 1 px Charcoal ring on Newsprint and White (red on Newsprint is 2.96:1), in a cut-out seat against Charcoal (4.49:1), never on Prussian, and not at 16 px, where the handle is 2 px.
 5. **Topic grammar proof.** I redrew Ballot, Bill, Contact an official and Campaign money in Direction A at 16, 24 and 48 px, with one node per subject. Campaign money is now a coin stack with one standing coin, so it no longer shares the envelope's landscape box.
 6. **Sanctioned treatments map** gives each treatment one job and a minimum size: filled marks from 16 px, the line companion from 24 px, tiles for avatars and series markers, isometric only for layer diagrams with flat labels, hand-drawn spot illustration from 96 px drawn by a person, patterns at 12 percent ink or less behind text, and Y2K orbits as motion only. Sketches show each one; the hand-drawn texture study is labelled as script-generated.
 
@@ -42,7 +32,7 @@ Nothing in any master. Every drawing is a proposal under DC-02.
 
 ## Checks passed
 
-The methods are the Phase 0 measures: silhouette overlap plus correlation after a 3 by 3 blur. Every raster is a Chromium render at device scale 1.
+Similarity uses the Phase 0 measure (silhouette overlap plus correlation after a 3 by 3 blur) on Chromium renders at device scale 1.
 
 - **Pixel fit:** all 48 pillar masters at 16 and 24 px, and all 8 topic masters. Every straight edge and every tangent of a node, seat, disc and arc lands on a whole pixel. Round caps, joins and fillets are exempt.
 - **Silhouette at 16 px:** every filled master in both directions passes. A filled crisp share runs 0.69 to 0.91, against V5's 0.38 to 0.54.
@@ -95,4 +85,4 @@ Reasons are on the board. Neither reaches 4 on usefulness until Phase 2 adds exp
 
 **Modified:** none. No master, ledger or source file changed. The shared `board-base.css` is untouched; the board overrides the tag size to 13 px in its own styles.
 
-**Rebuild:** run `python3 -I symbols_measure.py`, then `python3 -I symbols_board_build.py`, then `node symbols_board_check.js <board> <check.json> <screens>`. Then run `symbols_board_build.py` once more to fold the check into the board.
+**Rebuild:** `symbols_measure.py`, `symbols_board_build.py`, `symbols_board_check.js`, then the build script again to fold in the check.
