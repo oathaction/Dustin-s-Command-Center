@@ -683,7 +683,7 @@ def composite():
     hinge_note = ("The identity board's V2 hinge diagram, with solid arcs, sits between the headline and the steps as a divider, so its ampersand is Charcoal. In the covered post its words are covered too, and its ring, nodes, arcs and ampersand stay visible." if HINGE_V2.exists() else
                   "The hinge diagram is left out: its revised solid drawing (V2) was not ready when this board was built.")
     figs = [(post("current"), "As designed. Wordmark with ampersand B at today's width (identity board items 3 and 5)."),
-            (post("condensed"), "As designed. Wordmark at the condensed 7.5 to 1 width (identity board item 6)."),
+            (post("condensed"), "As designed. Wordmark at the condensed 7.5 to 1 width (identity board item 6). The hinge letters stay at today's width; Phase 2 draws a condensed hinge only if Dustin approves the condensed width."),
             (post("current", covered=True), "Wordmark covered, with the hinge diagram's words. Judge whether the post still reads as Oath & Action.")]
     cells = "".join(f'<figure class="comp">{p_}<figcaption>{e(c)}</figcaption></figure>' for p_, c in figs)
     return (f'<section id="composite" aria-labelledby="h-co"><h2 id="h-co">11. The whole recommended set in one post</h2>'
