@@ -4,253 +4,253 @@
   "p01-amp": {
    "overlay_16": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 1.2,
+    "changed_share": 0.004
    },
    "overlay_24": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 3.2,
+    "changed_share": 0.005
    },
    "overlay_48": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.4,
+    "proposal_only_px": 12.0,
+    "changed_share": 0.006
    },
    "overlay_96": {
-    "original_only_px": 0.9,
-    "proposal_only_px": 0.7,
-    "changed_share": 0.0
+    "original_only_px": 1.2,
+    "proposal_only_px": 40.3,
+    "changed_share": 0.005
    },
    "overlay_display": {
-    "original_only_px": 3.7,
-    "proposal_only_px": 0.6,
-    "changed_share": 0.0
+    "original_only_px": 5.1,
+    "proposal_only_px": 252.9,
+    "changed_share": 0.005
    },
    "red": {
     "orig newsprint 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.38,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.74
+     "ink_px": 154,
+     "solid_share": 0.47,
+     "median_contrast": 2.68,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 24": {
-     "ink_px": 319,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.82
+     "ink_px": 312,
+     "solid_share": 0.61,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.9
+     "ink_px": 1137,
+     "solid_share": 0.79,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.94
+     "ink_px": 4276,
+     "solid_share": 0.89,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig white 16": {
-     "ink_px": 156,
-     "solid_share": 0.65,
-     "median_contrast": 12.27,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.76
+     "ink_px": 155,
+     "solid_share": 0.47,
+     "median_contrast": 3.52,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.63
     },
     "orig white 24": {
-     "ink_px": 319,
-     "solid_share": 0.71,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.82
+     "ink_px": 313,
+     "solid_share": 0.6,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.72
     },
     "orig white 48": {
-     "ink_px": 1145,
-     "solid_share": 0.84,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.9
-    },
-    "orig white 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.94
-    },
-    "orig charcoal 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.68,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.77
-    },
-    "orig charcoal 24": {
-     "ink_px": 317,
-     "solid_share": 0.71,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.85
-    },
-    "orig charcoal 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.91
-    },
-    "orig charcoal 96": {
-     "ink_px": 4295,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
-    },
-    "orig prussian 16": {
-     "ink_px": 156,
-     "solid_share": 0.53,
-     "median_contrast": 9.97,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.81
-    },
-    "orig prussian 24": {
-     "ink_px": 315,
-     "solid_share": 0.64,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.87
-    },
-    "orig prussian 48": {
-     "ink_px": 1145,
-     "solid_share": 0.8,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.92
-    },
-    "orig prussian 96": {
-     "ink_px": 4293,
-     "solid_share": 0.9,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
-    },
-    "prop newsprint 16": {
-     "ink_px": 151,
-     "solid_share": 0.61,
-     "median_contrast": 9.64,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.76
-    },
-    "prop newsprint 24": {
-     "ink_px": 310,
-     "solid_share": 0.68,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.81
-    },
-    "prop newsprint 48": {
-     "ink_px": 1098,
-     "solid_share": 0.85,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.91
-    },
-    "prop newsprint 96": {
-     "ink_px": 4193,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.94
-    },
-    "prop white 16": {
-     "ink_px": 151,
-     "solid_share": 0.62,
-     "median_contrast": 12.63,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.77
-    },
-    "prop white 24": {
-     "ink_px": 310,
-     "solid_share": 0.69,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.82
-    },
-    "prop white 48": {
-     "ink_px": 1099,
-     "solid_share": 0.86,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.91
-    },
-    "prop white 96": {
-     "ink_px": 4196,
-     "solid_share": 0.91,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.94
-    },
-    "prop charcoal 16": {
-     "ink_px": 150,
-     "solid_share": 0.61,
-     "median_contrast": 10.08,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.81
-    },
-    "prop charcoal 24": {
-     "ink_px": 308,
-     "solid_share": 0.68,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.84
-    },
-    "prop charcoal 48": {
-     "ink_px": 1098,
-     "solid_share": 0.85,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.92
-    },
-    "prop charcoal 96": {
-     "ink_px": 4192,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
-    },
-    "prop prussian 16": {
-     "ink_px": 149,
-     "solid_share": 0.52,
-     "median_contrast": 10.35,
-     "max_contrast": 13.28,
+     "ink_px": 1141,
+     "solid_share": 0.79,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
      "share_at_or_above_3": 0.83
     },
-    "prop prussian 24": {
+    "orig white 96": {
+     "ink_px": 4284,
+     "solid_share": 0.89,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.91
+    },
+    "orig charcoal 16": {
+     "ink_px": 152,
+     "solid_share": 0.47,
+     "median_contrast": 3.62,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.61
+    },
+    "orig charcoal 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.69
+    },
+    "orig charcoal 48": {
+     "ink_px": 1134,
+     "solid_share": 0.79,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.82
+    },
+    "orig charcoal 96": {
+     "ink_px": 4270,
+     "solid_share": 0.89,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.91
+    },
+    "orig prussian 16": {
+     "ink_px": 150,
+     "solid_share": 0.48,
+     "median_contrast": 2.7,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.43
+    },
+    "orig prussian 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.57
+    },
+    "orig prussian 48": {
+     "ink_px": 1132,
+     "solid_share": 0.79,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.77
+    },
+    "orig prussian 96": {
+     "ink_px": 4259,
+     "solid_share": 0.89,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.88
+    },
+    "prop newsprint 16": {
+     "ink_px": 148,
+     "solid_share": 0.49,
+     "median_contrast": 2.69,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 24": {
+     "ink_px": 306,
+     "solid_share": 0.61,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 48": {
+     "ink_px": 1097,
+     "solid_share": 0.79,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 96": {
+     "ink_px": 4182,
+     "solid_share": 0.89,
+     "median_contrast": 2.96,
+     "max_contrast": 2.98,
+     "share_at_or_above_3": 0.0
+    },
+    "prop white 16": {
+     "ink_px": 149,
+     "solid_share": 0.49,
+     "median_contrast": 3.58,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.61
+    },
+    "prop white 24": {
      "ink_px": 308,
-     "solid_share": 0.65,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.86
+     "solid_share": 0.6,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.68
+    },
+    "prop white 48": {
+     "ink_px": 1097,
+     "solid_share": 0.79,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.85
+    },
+    "prop white 96": {
+     "ink_px": 4188,
+     "solid_share": 0.88,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.91
+    },
+    "prop charcoal 16": {
+     "ink_px": 147,
+     "solid_share": 0.49,
+     "median_contrast": 3.62,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.58
+    },
+    "prop charcoal 24": {
+     "ink_px": 304,
+     "solid_share": 0.61,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.68
+    },
+    "prop charcoal 48": {
+     "ink_px": 1092,
+     "solid_share": 0.79,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.84
+    },
+    "prop charcoal 96": {
+     "ink_px": 4181,
+     "solid_share": 0.88,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.91
+    },
+    "prop prussian 16": {
+     "ink_px": 142,
+     "solid_share": 0.51,
+     "median_contrast": 2.82,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.42
+    },
+    "prop prussian 24": {
+     "ink_px": 303,
+     "solid_share": 0.61,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.55
     },
     "prop prussian 48": {
-     "ink_px": 1098,
-     "solid_share": 0.81,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.93
+     "ink_px": 1085,
+     "solid_share": 0.79,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.76
     },
     "prop prussian 96": {
-     "ink_px": 4192,
+     "ink_px": 4168,
      "solid_share": 0.89,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.87
     }
    },
    "solid_share_mono_newsprint": {
@@ -273,17 +273,17 @@
    },
    "overlay_48": {
     "original_only_px": 1.1,
-    "proposal_only_px": 0.4,
+    "proposal_only_px": 0.8,
     "changed_share": 0.0
    },
    "overlay_96": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
+    "original_only_px": 3.1,
+    "proposal_only_px": 1.6,
     "changed_share": 0.0
    },
    "overlay_display": {
-    "original_only_px": 5.1,
-    "proposal_only_px": 2.3,
+    "original_only_px": 5.4,
+    "proposal_only_px": 12.5,
     "changed_share": 0.0
    },
    "solid_share_mono_newsprint": {
@@ -296,28 +296,28 @@
   "p01-tl-1": {
    "overlay_16": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 31.0,
+    "changed_share": 0.006
    },
    "overlay_24": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 68.5,
+    "changed_share": 0.007
    },
    "overlay_48": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.6,
+    "proposal_only_px": 280.8,
+    "changed_share": 0.008
    },
    "overlay_96": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 1114.1,
+    "changed_share": 0.008
    },
    "overlay_display": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.3,
-    "changed_share": 0.0
+    "proposal_only_px": 193.1,
+    "changed_share": 0.007
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.46,
@@ -328,29 +328,29 @@
   },
   "p01-tl-2a": {
    "overlay_16": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.2,
+    "proposal_only_px": 11.9,
+    "changed_share": 0.004
    },
    "overlay_24": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 26.7,
+    "changed_share": 0.004
    },
    "overlay_48": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.1,
+    "proposal_only_px": 114.7,
+    "changed_share": 0.005
    },
    "overlay_96": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 6.8,
+    "proposal_only_px": 453.4,
+    "changed_share": 0.005
    },
    "overlay_display": {
-    "original_only_px": 0.1,
-    "proposal_only_px": 0.2,
-    "changed_share": 0.0
+    "original_only_px": 0.6,
+    "proposal_only_px": 79.6,
+    "changed_share": 0.005
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.45,
@@ -361,29 +361,29 @@
   },
   "p01-tl-2b": {
    "overlay_16": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.1,
+    "proposal_only_px": 18.4,
+    "changed_share": 0.01
    },
    "overlay_24": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 39.4,
+    "changed_share": 0.011
    },
    "overlay_48": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 167.7,
+    "changed_share": 0.013
    },
    "overlay_96": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 663.3,
+    "changed_share": 0.013
    },
    "overlay_display": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 113.9,
+    "changed_share": 0.012
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.46,
@@ -395,28 +395,28 @@
   "p01-url-1": {
    "overlay_16": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 21.2,
+    "changed_share": 0.008
    },
    "overlay_24": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 47.2,
+    "changed_share": 0.009
    },
    "overlay_48": {
     "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "proposal_only_px": 191.9,
+    "changed_share": 0.009
    },
    "overlay_96": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.1,
+    "proposal_only_px": 774.2,
+    "changed_share": 0.01
    },
    "overlay_display": {
-    "original_only_px": 0.0,
-    "proposal_only_px": 0.0,
-    "changed_share": 0.0
+    "original_only_px": 0.1,
+    "proposal_only_px": 133.3,
+    "changed_share": 0.009
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.46,
@@ -1308,228 +1308,228 @@
    },
    "red": {
     "orig newsprint 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.38,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.74
+     "ink_px": 154,
+     "solid_share": 0.47,
+     "median_contrast": 2.68,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 24": {
-     "ink_px": 319,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.82
+     "ink_px": 312,
+     "solid_share": 0.61,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.9
+     "ink_px": 1137,
+     "solid_share": 0.79,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.94
+     "ink_px": 4276,
+     "solid_share": 0.89,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig white 16": {
-     "ink_px": 156,
-     "solid_share": 0.65,
-     "median_contrast": 12.27,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.76
+     "ink_px": 155,
+     "solid_share": 0.47,
+     "median_contrast": 3.52,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.63
     },
     "orig white 24": {
-     "ink_px": 319,
-     "solid_share": 0.71,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.82
+     "ink_px": 313,
+     "solid_share": 0.6,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.72
     },
     "orig white 48": {
-     "ink_px": 1145,
-     "solid_share": 0.84,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.9
-    },
-    "orig white 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.94
-    },
-    "orig charcoal 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.68,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.77
-    },
-    "orig charcoal 24": {
-     "ink_px": 317,
-     "solid_share": 0.71,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.85
-    },
-    "orig charcoal 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.91
-    },
-    "orig charcoal 96": {
-     "ink_px": 4295,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
-    },
-    "orig prussian 16": {
-     "ink_px": 156,
-     "solid_share": 0.53,
-     "median_contrast": 9.97,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.81
-    },
-    "orig prussian 24": {
-     "ink_px": 315,
-     "solid_share": 0.64,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.87
-    },
-    "orig prussian 48": {
-     "ink_px": 1145,
-     "solid_share": 0.8,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.92
-    },
-    "orig prussian 96": {
-     "ink_px": 4293,
-     "solid_share": 0.9,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
-    },
-    "prop newsprint 16": {
-     "ink_px": 152,
-     "solid_share": 0.75,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.84
-    },
-    "prop newsprint 24": {
-     "ink_px": 335,
-     "solid_share": 0.69,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
+     "ink_px": 1141,
+     "solid_share": 0.79,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
      "share_at_or_above_3": 0.83
     },
-    "prop newsprint 48": {
-     "ink_px": 1213,
-     "solid_share": 0.84,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
+    "orig white 96": {
+     "ink_px": 4283,
+     "solid_share": 0.89,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.92
+    },
+    "orig charcoal 16": {
+     "ink_px": 152,
+     "solid_share": 0.47,
+     "median_contrast": 3.62,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.61
+    },
+    "orig charcoal 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.69
+    },
+    "orig charcoal 48": {
+     "ink_px": 1134,
+     "solid_share": 0.79,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.82
+    },
+    "orig charcoal 96": {
+     "ink_px": 4270,
+     "solid_share": 0.89,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.91
+    },
+    "orig prussian 16": {
+     "ink_px": 150,
+     "solid_share": 0.48,
+     "median_contrast": 2.7,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.43
+    },
+    "orig prussian 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.57
+    },
+    "orig prussian 48": {
+     "ink_px": 1132,
+     "solid_share": 0.79,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.77
+    },
+    "orig prussian 96": {
+     "ink_px": 4259,
+     "solid_share": 0.89,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
      "share_at_or_above_3": 0.88
     },
+    "prop newsprint 16": {
+     "ink_px": 150,
+     "solid_share": 0.68,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 24": {
+     "ink_px": 328,
+     "solid_share": 0.64,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 48": {
+     "ink_px": 1204,
+     "solid_share": 0.8,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
     "prop newsprint 96": {
-     "ink_px": 4554,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
+     "ink_px": 4538,
+     "solid_share": 0.89,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "prop white 16": {
-     "ink_px": 152,
-     "solid_share": 0.75,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.85
+     "ink_px": 150,
+     "solid_share": 0.68,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.75
     },
     "prop white 24": {
-     "ink_px": 335,
-     "solid_share": 0.7,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.84
+     "ink_px": 330,
+     "solid_share": 0.63,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.7
     },
     "prop white 48": {
-     "ink_px": 1213,
-     "solid_share": 0.85,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.89
+     "ink_px": 1206,
+     "solid_share": 0.8,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.84
     },
     "prop white 96": {
-     "ink_px": 4554,
-     "solid_share": 0.92,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.95
+     "ink_px": 4544,
+     "solid_share": 0.89,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.91
     },
     "prop charcoal 16": {
-     "ink_px": 152,
-     "solid_share": 0.74,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.86
+     "ink_px": 149,
+     "solid_share": 0.67,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.76
     },
     "prop charcoal 24": {
-     "ink_px": 334,
-     "solid_share": 0.69,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.85
+     "ink_px": 328,
+     "solid_share": 0.63,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.69
     },
     "prop charcoal 48": {
-     "ink_px": 1213,
-     "solid_share": 0.84,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.89
+     "ink_px": 1202,
+     "solid_share": 0.8,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.84
     },
     "prop charcoal 96": {
-     "ink_px": 4551,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
+     "ink_px": 4527,
+     "solid_share": 0.89,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.91
     },
     "prop prussian 16": {
-     "ink_px": 152,
-     "solid_share": 0.72,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.86
+     "ink_px": 148,
+     "solid_share": 0.68,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.63
     },
     "prop prussian 24": {
-     "ink_px": 333,
-     "solid_share": 0.65,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.87
+     "ink_px": 326,
+     "solid_share": 0.63,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.58
     },
     "prop prussian 48": {
-     "ink_px": 1211,
-     "solid_share": 0.81,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.9
+     "ink_px": 1195,
+     "solid_share": 0.8,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.78
     },
     "prop prussian 96": {
-     "ink_px": 4550,
-     "solid_share": 0.9,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
+     "ink_px": 4517,
+     "solid_share": 0.89,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.88
     }
    },
    "solid_share_mono_newsprint": {
@@ -1832,284 +1832,284 @@
     "changed_share": 0.094
    },
    "overlay_24": {
-    "original_only_px": 26.3,
-    "proposal_only_px": 26.4,
-    "changed_share": 0.086
-   },
-   "overlay_48": {
-    "original_only_px": 118.5,
-    "proposal_only_px": 112.3,
-    "changed_share": 0.104
-   },
-   "overlay_96": {
-    "original_only_px": 450.6,
-    "proposal_only_px": 443.0,
+    "original_only_px": 21.6,
+    "proposal_only_px": 45.7,
     "changed_share": 0.106
    },
+   "overlay_48": {
+    "original_only_px": 93.8,
+    "proposal_only_px": 172.1,
+    "changed_share": 0.116
+   },
+   "overlay_96": {
+    "original_only_px": 358.2,
+    "proposal_only_px": 709.3,
+    "changed_share": 0.121
+   },
    "overlay_display": {
-    "original_only_px": 3832.6,
-    "proposal_only_px": 3784.1,
-    "changed_share": 0.109
+    "original_only_px": 3109.0,
+    "proposal_only_px": 6039.6,
+    "changed_share": 0.126
    },
    "red": {
     "orig newsprint 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.38,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.74
+     "ink_px": 154,
+     "solid_share": 0.47,
+     "median_contrast": 2.68,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 24": {
-     "ink_px": 319,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.82
+     "ink_px": 312,
+     "solid_share": 0.61,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.9
+     "ink_px": 1137,
+     "solid_share": 0.79,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig newsprint 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.94
+     "ink_px": 4276,
+     "solid_share": 0.89,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
     },
     "orig white 16": {
-     "ink_px": 156,
-     "solid_share": 0.65,
-     "median_contrast": 12.27,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.76
+     "ink_px": 155,
+     "solid_share": 0.47,
+     "median_contrast": 3.52,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.63
     },
     "orig white 24": {
-     "ink_px": 319,
-     "solid_share": 0.71,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.82
+     "ink_px": 313,
+     "solid_share": 0.6,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.72
     },
     "orig white 48": {
-     "ink_px": 1143,
-     "solid_share": 0.84,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.9
-    },
-    "orig white 96": {
-     "ink_px": 4297,
-     "solid_share": 0.92,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.94
-    },
-    "orig charcoal 16": {
-     "ink_px": 156,
-     "solid_share": 0.63,
-     "median_contrast": 9.68,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.77
-    },
-    "orig charcoal 24": {
-     "ink_px": 317,
-     "solid_share": 0.71,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.85
-    },
-    "orig charcoal 48": {
-     "ink_px": 1145,
-     "solid_share": 0.83,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.91
-    },
-    "orig charcoal 96": {
-     "ink_px": 4296,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
-    },
-    "orig prussian 16": {
-     "ink_px": 156,
-     "solid_share": 0.53,
-     "median_contrast": 9.97,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.81
-    },
-    "orig prussian 24": {
-     "ink_px": 315,
-     "solid_share": 0.64,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.87
-    },
-    "orig prussian 48": {
-     "ink_px": 1145,
-     "solid_share": 0.8,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.92
-    },
-    "orig prussian 96": {
-     "ink_px": 4295,
-     "solid_share": 0.9,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
-    },
-    "prop newsprint 16": {
-     "ink_px": 149,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
+     "ink_px": 1139,
+     "solid_share": 0.79,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
      "share_at_or_above_3": 0.83
     },
-    "prop newsprint 24": {
-     "ink_px": 319,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.8
-    },
-    "prop newsprint 48": {
-     "ink_px": 1135,
-     "solid_share": 0.84,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.9
-    },
-    "prop newsprint 96": {
-     "ink_px": 4285,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.94
-    },
-    "prop white 16": {
-     "ink_px": 149,
-     "solid_share": 0.73,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.84
-    },
-    "prop white 24": {
-     "ink_px": 319,
-     "solid_share": 0.71,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.82
-    },
-    "prop white 48": {
-     "ink_px": 1137,
-     "solid_share": 0.85,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.9
-    },
-    "prop white 96": {
-     "ink_px": 4285,
-     "solid_share": 0.92,
-     "median_contrast": 18.73,
-     "max_contrast": 18.73,
-     "share_at_or_above_3": 0.94
-    },
-    "prop charcoal 16": {
-     "ink_px": 148,
-     "solid_share": 0.7,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.86
-    },
-    "prop charcoal 24": {
-     "ink_px": 318,
-     "solid_share": 0.69,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.84
-    },
-    "prop charcoal 48": {
-     "ink_px": 1135,
-     "solid_share": 0.84,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.91
-    },
-    "prop charcoal 96": {
-     "ink_px": 4285,
-     "solid_share": 0.91,
-     "median_contrast": 13.29,
-     "max_contrast": 13.29,
-     "share_at_or_above_3": 0.95
-    },
-    "prop prussian 16": {
-     "ink_px": 147,
-     "solid_share": 0.68,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.89
-    },
-    "prop prussian 24": {
-     "ink_px": 317,
-     "solid_share": 0.66,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.85
-    },
-    "prop prussian 48": {
-     "ink_px": 1135,
-     "solid_share": 0.8,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
+    "orig white 96": {
+     "ink_px": 4283,
+     "solid_share": 0.89,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
      "share_at_or_above_3": 0.92
     },
-    "prop prussian 96": {
-     "ink_px": 4285,
+    "orig charcoal 16": {
+     "ink_px": 152,
+     "solid_share": 0.47,
+     "median_contrast": 3.62,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.61
+    },
+    "orig charcoal 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.69
+    },
+    "orig charcoal 48": {
+     "ink_px": 1134,
+     "solid_share": 0.79,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.82
+    },
+    "orig charcoal 96": {
+     "ink_px": 4271,
+     "solid_share": 0.89,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.91
+    },
+    "orig prussian 16": {
+     "ink_px": 150,
+     "solid_share": 0.48,
+     "median_contrast": 2.7,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.43
+    },
+    "orig prussian 24": {
+     "ink_px": 312,
+     "solid_share": 0.6,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.57
+    },
+    "orig prussian 48": {
+     "ink_px": 1132,
+     "solid_share": 0.79,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.77
+    },
+    "orig prussian 96": {
+     "ink_px": 4260,
+     "solid_share": 0.89,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.88
+    },
+    "prop newsprint 16": {
+     "ink_px": 146,
+     "solid_share": 0.64,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 24": {
+     "ink_px": 334,
+     "solid_share": 0.67,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 48": {
+     "ink_px": 1205,
+     "solid_share": 0.82,
+     "median_contrast": 2.96,
+     "max_contrast": 2.96,
+     "share_at_or_above_3": 0.0
+    },
+    "prop newsprint 96": {
+     "ink_px": 4612,
+     "solid_share": 0.91,
+     "median_contrast": 2.96,
+     "max_contrast": 2.98,
+     "share_at_or_above_3": 0.0
+    },
+    "prop white 16": {
+     "ink_px": 147,
+     "solid_share": 0.63,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.7
+    },
+    "prop white 24": {
+     "ink_px": 335,
+     "solid_share": 0.67,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.73
+    },
+    "prop white 48": {
+     "ink_px": 1205,
+     "solid_share": 0.82,
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.86
+    },
+    "prop white 96": {
+     "ink_px": 4619,
      "solid_share": 0.9,
-     "median_contrast": 13.28,
-     "max_contrast": 13.28,
-     "share_at_or_above_3": 0.95
+     "median_contrast": 4.17,
+     "max_contrast": 4.17,
+     "share_at_or_above_3": 0.93
+    },
+    "prop charcoal 16": {
+     "ink_px": 146,
+     "solid_share": 0.63,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.69
+    },
+    "prop charcoal 24": {
+     "ink_px": 332,
+     "solid_share": 0.67,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.72
+    },
+    "prop charcoal 48": {
+     "ink_px": 1201,
+     "solid_share": 0.82,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.86
+    },
+    "prop charcoal 96": {
+     "ink_px": 4600,
+     "solid_share": 0.91,
+     "median_contrast": 4.49,
+     "max_contrast": 4.49,
+     "share_at_or_above_3": 0.93
+    },
+    "prop prussian 16": {
+     "ink_px": 146,
+     "solid_share": 0.63,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.59
+    },
+    "prop prussian 24": {
+     "ink_px": 331,
+     "solid_share": 0.67,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.63
+    },
+    "prop prussian 48": {
+     "ink_px": 1198,
+     "solid_share": 0.82,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.8
+    },
+    "prop prussian 96": {
+     "ink_px": 4595,
+     "solid_share": 0.91,
+     "median_contrast": 3.19,
+     "max_contrast": 3.19,
+     "share_at_or_above_3": 0.89
     }
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.49,
     "orig 24": 0.61,
     "prop 16": 0.65,
-    "prop 24": 0.67
+    "prop 24": 0.69
    },
    "joins_openness": {}
   },
   "p05-wordmark": {
    "overlay_16": {
-    "original_only_px": 519.8,
-    "proposal_only_px": 400.0,
-    "changed_share": 0.344
+    "original_only_px": 521.9,
+    "proposal_only_px": 401.4,
+    "changed_share": 0.343
    },
    "overlay_24": {
-    "original_only_px": 937.4,
-    "proposal_only_px": 879.2,
-    "changed_share": 0.312
+    "original_only_px": 877.8,
+    "proposal_only_px": 844.0,
+    "changed_share": 0.297
    },
    "overlay_48": {
-    "original_only_px": 860.9,
-    "proposal_only_px": 915.4,
-    "changed_share": 0.079
+    "original_only_px": 1079.2,
+    "proposal_only_px": 1194.3,
+    "changed_share": 0.1
    },
    "overlay_96": {
-    "original_only_px": 3460.4,
-    "proposal_only_px": 3592.9,
-    "changed_share": 0.081
+    "original_only_px": 4351.2,
+    "proposal_only_px": 4796.7,
+    "changed_share": 0.105
    },
    "overlay_display": {
-    "original_only_px": 5397.8,
-    "proposal_only_px": 5607.1,
-    "changed_share": 0.082
+    "original_only_px": 6769.8,
+    "proposal_only_px": 7472.0,
+    "changed_share": 0.106
    },
    "red": {
     "orig newsprint 16": {
@@ -2232,22 +2232,22 @@
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 24": {
-     "ink_px": 315,
-     "solid_share": 0.65,
+     "ink_px": 334,
+     "solid_share": 0.67,
      "median_contrast": 2.96,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 48": {
-     "ink_px": 1046,
-     "solid_share": 0.78,
+     "ink_px": 1120,
+     "solid_share": 0.8,
      "median_contrast": 2.96,
      "max_contrast": 2.98,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 96": {
-     "ink_px": 3933,
-     "solid_share": 0.88,
+     "ink_px": 4218,
+     "solid_share": 0.89,
      "median_contrast": 2.96,
      "max_contrast": 2.98,
      "share_at_or_above_3": 0.0
@@ -2260,25 +2260,25 @@
      "share_at_or_above_3": 0.7
     },
     "prop white 24": {
-     "ink_px": 316,
-     "solid_share": 0.64,
+     "ink_px": 335,
+     "solid_share": 0.67,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.7
+     "share_at_or_above_3": 0.73
     },
     "prop white 48": {
-     "ink_px": 1050,
-     "solid_share": 0.77,
+     "ink_px": 1121,
+     "solid_share": 0.8,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.82
+     "share_at_or_above_3": 0.84
     },
     "prop white 96": {
-     "ink_px": 3938,
-     "solid_share": 0.88,
+     "ink_px": 4224,
+     "solid_share": 0.89,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.9
+     "share_at_or_above_3": 0.91
     },
     "prop charcoal 16": {
      "ink_px": 146,
@@ -2288,25 +2288,25 @@
      "share_at_or_above_3": 0.69
     },
     "prop charcoal 24": {
-     "ink_px": 313,
-     "solid_share": 0.65,
+     "ink_px": 332,
+     "solid_share": 0.67,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.69
+     "share_at_or_above_3": 0.72
     },
     "prop charcoal 48": {
-     "ink_px": 1044,
-     "solid_share": 0.77,
+     "ink_px": 1117,
+     "solid_share": 0.8,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.81
+     "share_at_or_above_3": 0.83
     },
     "prop charcoal 96": {
-     "ink_px": 3925,
-     "solid_share": 0.88,
+     "ink_px": 4212,
+     "solid_share": 0.89,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.9
+     "share_at_or_above_3": 0.91
     },
     "prop prussian 16": {
      "ink_px": 146,
@@ -2316,32 +2316,32 @@
      "share_at_or_above_3": 0.59
     },
     "prop prussian 24": {
-     "ink_px": 312,
-     "solid_share": 0.65,
+     "ink_px": 331,
+     "solid_share": 0.68,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.6
+     "share_at_or_above_3": 0.64
     },
     "prop prussian 48": {
-     "ink_px": 1035,
-     "solid_share": 0.78,
+     "ink_px": 1114,
+     "solid_share": 0.8,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.76
+     "share_at_or_above_3": 0.78
     },
     "prop prussian 96": {
-     "ink_px": 3906,
+     "ink_px": 4202,
      "solid_share": 0.89,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.87
+     "share_at_or_above_3": 0.88
     }
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.56,
     "orig 24": 0.74,
-    "prop 16": 0.69,
-    "prop 24": 0.76
+    "prop 16": 0.67,
+    "prop 24": 0.78
    },
    "joins_openness": {
     "orig 16": {
@@ -2372,28 +2372,28 @@
   },
   "p06-c75": {
    "overlay_16": {
-    "original_only_px": 642.3,
-    "proposal_only_px": 495.4,
-    "changed_share": 0.505
+    "original_only_px": 596.4,
+    "proposal_only_px": 455.5,
+    "changed_share": 0.466
    },
    "overlay_24": {
-    "original_only_px": 1387.7,
-    "proposal_only_px": 1096.1,
-    "changed_share": 0.468
+    "original_only_px": 1338.3,
+    "proposal_only_px": 1064.6,
+    "changed_share": 0.452
    },
    "overlay_48": {
-    "original_only_px": 5550.6,
-    "proposal_only_px": 4128.9,
-    "changed_share": 0.458
+    "original_only_px": 5550.0,
+    "proposal_only_px": 4175.9,
+    "changed_share": 0.459
    },
    "overlay_96": {
-    "original_only_px": 22217.9,
-    "proposal_only_px": 16650.5,
-    "changed_share": 0.482
+    "original_only_px": 22129.5,
+    "proposal_only_px": 16817.7,
+    "changed_share": 0.481
    },
    "overlay_display": {
-    "original_only_px": 34650.6,
-    "proposal_only_px": 25953.4,
+    "original_only_px": 34517.3,
+    "proposal_only_px": 26219.7,
     "changed_share": 0.485
    },
    "red": {
@@ -2510,123 +2510,123 @@
      "share_at_or_above_3": 0.86
     },
     "prop newsprint 16": {
-     "ink_px": 143,
-     "solid_share": 0.54,
-     "median_contrast": 2.84,
+     "ink_px": 148,
+     "solid_share": 0.56,
+     "median_contrast": 2.92,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 24": {
-     "ink_px": 295,
-     "solid_share": 0.64,
+     "ink_px": 314,
+     "solid_share": 0.68,
      "median_contrast": 2.96,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 48": {
-     "ink_px": 1001,
-     "solid_share": 0.8,
+     "ink_px": 1067,
+     "solid_share": 0.81,
      "median_contrast": 2.96,
-     "max_contrast": 2.98,
+     "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 96": {
-     "ink_px": 3805,
-     "solid_share": 0.89,
+     "ink_px": 4055,
+     "solid_share": 0.91,
      "median_contrast": 2.96,
      "max_contrast": 2.98,
      "share_at_or_above_3": 0.0
     },
     "prop white 16": {
-     "ink_px": 143,
-     "solid_share": 0.53,
-     "median_contrast": 3.91,
+     "ink_px": 148,
+     "solid_share": 0.56,
+     "median_contrast": 4.07,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.64
+     "share_at_or_above_3": 0.65
     },
     "prop white 24": {
-     "ink_px": 296,
-     "solid_share": 0.64,
+     "ink_px": 315,
+     "solid_share": 0.67,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.7
+     "share_at_or_above_3": 0.73
     },
     "prop white 48": {
-     "ink_px": 1003,
-     "solid_share": 0.8,
+     "ink_px": 1069,
+     "solid_share": 0.81,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.84
+     "share_at_or_above_3": 0.85
     },
     "prop white 96": {
-     "ink_px": 3813,
-     "solid_share": 0.89,
+     "ink_px": 4059,
+     "solid_share": 0.91,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.91
+     "share_at_or_above_3": 0.92
     },
     "prop charcoal 16": {
-     "ink_px": 143,
-     "solid_share": 0.52,
-     "median_contrast": 4.04,
+     "ink_px": 148,
+     "solid_share": 0.55,
+     "median_contrast": 4.25,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.62
+     "share_at_or_above_3": 0.64
     },
     "prop charcoal 24": {
-     "ink_px": 295,
-     "solid_share": 0.64,
+     "ink_px": 311,
+     "solid_share": 0.67,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.69
+     "share_at_or_above_3": 0.73
     },
     "prop charcoal 48": {
-     "ink_px": 998,
-     "solid_share": 0.8,
+     "ink_px": 1066,
+     "solid_share": 0.81,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.83
+     "share_at_or_above_3": 0.85
     },
     "prop charcoal 96": {
-     "ink_px": 3796,
-     "solid_share": 0.89,
+     "ink_px": 4046,
+     "solid_share": 0.91,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.91
+     "share_at_or_above_3": 0.92
     },
     "prop prussian 16": {
-     "ink_px": 142,
-     "solid_share": 0.53,
-     "median_contrast": 2.9,
+     "ink_px": 148,
+     "solid_share": 0.55,
+     "median_contrast": 3.03,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.48
+     "share_at_or_above_3": 0.51
     },
     "prop prussian 24": {
-     "ink_px": 294,
-     "solid_share": 0.64,
+     "ink_px": 306,
+     "solid_share": 0.68,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.59
+     "share_at_or_above_3": 0.64
     },
     "prop prussian 48": {
-     "ink_px": 994,
+     "ink_px": 1062,
      "solid_share": 0.81,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.77
+     "share_at_or_above_3": 0.79
     },
     "prop prussian 96": {
-     "ink_px": 3786,
-     "solid_share": 0.89,
+     "ink_px": 4034,
+     "solid_share": 0.91,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.88
+     "share_at_or_above_3": 0.9
     }
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.69,
     "orig 24": 0.76,
     "prop 16": 0.75,
-    "prop 24": 0.83
+    "prop 24": 0.84
    },
    "joins_openness": {
     "orig 16": {
@@ -2657,29 +2657,29 @@
   },
   "p06-c60": {
    "overlay_16": {
-    "original_only_px": 639.5,
+    "original_only_px": 632.6,
     "proposal_only_px": 454.9,
-    "changed_share": 0.473
+    "changed_share": 0.472
    },
    "overlay_24": {
-    "original_only_px": 1513.0,
-    "proposal_only_px": 897.2,
-    "changed_share": 0.473
+    "original_only_px": 1509.3,
+    "proposal_only_px": 903.8,
+    "changed_share": 0.475
    },
    "overlay_48": {
-    "original_only_px": 6322.8,
-    "proposal_only_px": 3633.3,
-    "changed_share": 0.506
+    "original_only_px": 6282.7,
+    "proposal_only_px": 3664.4,
+    "changed_share": 0.503
    },
    "overlay_96": {
-    "original_only_px": 25289.1,
-    "proposal_only_px": 14621.3,
-    "changed_share": 0.529
+    "original_only_px": 25152.5,
+    "proposal_only_px": 14744.7,
+    "changed_share": 0.527
    },
    "overlay_display": {
-    "original_only_px": 39430.6,
-    "proposal_only_px": 22774.5,
-    "changed_share": 0.532
+    "original_only_px": 39221.0,
+    "proposal_only_px": 22971.7,
+    "changed_share": 0.531
    },
    "red": {
     "orig newsprint 16": {
@@ -2795,123 +2795,123 @@
      "share_at_or_above_3": 0.86
     },
     "prop newsprint 16": {
-     "ink_px": 136,
-     "solid_share": 0.54,
-     "median_contrast": 2.85,
+     "ink_px": 141,
+     "solid_share": 0.55,
+     "median_contrast": 2.84,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 24": {
-     "ink_px": 279,
+     "ink_px": 298,
      "solid_share": 0.64,
      "median_contrast": 2.96,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 48": {
-     "ink_px": 1001,
-     "solid_share": 0.8,
+     "ink_px": 1068,
+     "solid_share": 0.82,
      "median_contrast": 2.96,
      "max_contrast": 2.98,
      "share_at_or_above_3": 0.0
     },
     "prop newsprint 96": {
-     "ink_px": 3803,
-     "solid_share": 0.89,
+     "ink_px": 4062,
+     "solid_share": 0.9,
      "median_contrast": 2.96,
      "max_contrast": 2.96,
      "share_at_or_above_3": 0.0
     },
     "prop white 16": {
-     "ink_px": 136,
-     "solid_share": 0.54,
-     "median_contrast": 3.95,
+     "ink_px": 141,
+     "solid_share": 0.55,
+     "median_contrast": 3.91,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.59
+     "share_at_or_above_3": 0.63
     },
     "prop white 24": {
-     "ink_px": 279,
+     "ink_px": 298,
      "solid_share": 0.64,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.69
+     "share_at_or_above_3": 0.71
     },
     "prop white 48": {
-     "ink_px": 1005,
-     "solid_share": 0.79,
+     "ink_px": 1069,
+     "solid_share": 0.82,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.84
+     "share_at_or_above_3": 0.85
     },
     "prop white 96": {
-     "ink_px": 3809,
-     "solid_share": 0.89,
+     "ink_px": 4068,
+     "solid_share": 0.9,
      "median_contrast": 4.17,
      "max_contrast": 4.17,
-     "share_at_or_above_3": 0.91
+     "share_at_or_above_3": 0.92
     },
     "prop charcoal 16": {
-     "ink_px": 134,
+     "ink_px": 140,
      "solid_share": 0.54,
      "median_contrast": 4.09,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.57
+     "share_at_or_above_3": 0.62
     },
     "prop charcoal 24": {
-     "ink_px": 277,
-     "solid_share": 0.63,
+     "ink_px": 297,
+     "solid_share": 0.64,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.69
+     "share_at_or_above_3": 0.71
     },
     "prop charcoal 48": {
-     "ink_px": 998,
-     "solid_share": 0.79,
+     "ink_px": 1065,
+     "solid_share": 0.82,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.84
+     "share_at_or_above_3": 0.85
     },
     "prop charcoal 96": {
-     "ink_px": 3793,
-     "solid_share": 0.89,
+     "ink_px": 4058,
+     "solid_share": 0.9,
      "median_contrast": 4.49,
      "max_contrast": 4.49,
-     "share_at_or_above_3": 0.91
+     "share_at_or_above_3": 0.92
     },
     "prop prussian 16": {
-     "ink_px": 133,
-     "solid_share": 0.54,
-     "median_contrast": 2.92,
+     "ink_px": 138,
+     "solid_share": 0.56,
+     "median_contrast": 2.97,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.45
+     "share_at_or_above_3": 0.48
     },
     "prop prussian 24": {
-     "ink_px": 275,
+     "ink_px": 294,
      "solid_share": 0.64,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
      "share_at_or_above_3": 0.62
     },
     "prop prussian 48": {
-     "ink_px": 996,
-     "solid_share": 0.8,
+     "ink_px": 1062,
+     "solid_share": 0.82,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.77
+     "share_at_or_above_3": 0.8
     },
     "prop prussian 96": {
-     "ink_px": 3782,
-     "solid_share": 0.89,
+     "ink_px": 4052,
+     "solid_share": 0.9,
      "median_contrast": 3.19,
      "max_contrast": 3.19,
-     "share_at_or_above_3": 0.88
+     "share_at_or_above_3": 0.9
     }
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.69,
     "orig 24": 0.76,
-    "prop 16": 0.58,
-    "prop 24": 0.72
+    "prop 16": 0.6,
+    "prop 24": 0.73
    },
    "joins_openness": {
     "orig 16": {
@@ -2928,14 +2928,14 @@
     },
     "prop 16": {
      "T-H": 0.7,
-     "T-I": 0.77,
-     "I-O": 0.9,
-     "O-N": 1.0
+     "T-I": 0.82,
+     "I-O": 0.99,
+     "O-N": 0.93
     },
     "prop 24": {
      "T-H": 0.9,
-     "T-I": 0.69,
-     "I-O": 1.0,
+     "T-I": 1.0,
+     "I-O": 0.99,
      "O-N": 1.0
     }
    }

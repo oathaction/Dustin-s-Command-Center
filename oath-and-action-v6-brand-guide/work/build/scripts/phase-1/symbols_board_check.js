@@ -25,6 +25,7 @@ const { chromium } = require(path.join(execSync('npm root -g').toString().trim()
       // elements that stick out of the viewport, outside the scroll regions that are meant to scroll
       for (const el of document.querySelectorAll('main *')) {
         if (el.closest('.scroll')) continue;
+        if (el.ownerSVGElement) continue; // measure an SVG by its outer box; its children may be clipped
         const b = el.getBoundingClientRect();
         if (b.width && (b.right > vw + 0.5 || b.left < -0.5)) out.overflow.push(el.tagName.toLowerCase() + '.' + (el.className && el.className.baseVal === undefined ? el.className : '') + ' ' + Math.round(b.left) + '..' + Math.round(b.right));
       }

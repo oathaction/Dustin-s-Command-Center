@@ -53,3 +53,7 @@ Dustin approved the review, the Master Brief corrections (issued as Brief V2) an
 | D1-09 | Failure specimens in wireframes are drawn as images with alt text | A failure example must not add failing text to the page's own accessibility results |
 | D1-10 | Board renders use the font files extracted from V5 Polished | This environment cannot load Google Fonts, so renders would otherwise fall back to system faces |
 | D1-11 | The Phase 2 and Phase 4 prompt chapter lists will follow the architecture map approved at Gate 1 | The map renumbers chapters into six parts and 28 chapters |
+| D1-12 | Board copy uses American spelling | Matches the brief and a national audience |
+| D1-13 | Hinge gap spacing is measured as white area 0.15x deep, with a 0.07x floor | Equal white area reads as equal gaps, where equal nearest distance does not |
+| D1-14 | Ampersand option B carries extra weight so its stem reaches 0.85 of the wordmark stem | Keeps the drawn ampersand from reading lighter than the letters, the main Phase 0 finding |
+| D1-15 | skia-pathops and shapely installed to user site-packages for boolean path geometry | Needed to merge and measure outlines. Not part of any shipped file |

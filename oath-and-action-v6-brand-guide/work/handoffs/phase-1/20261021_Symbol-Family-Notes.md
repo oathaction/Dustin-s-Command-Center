@@ -1,0 +1,154 @@
+# Symbol family notes, Phase 1
+
+Design director pass, October 21, 2026. It covers the symbol family only. A separate pass handles the wordmark and the ampersand.
+
+**Board to open:** `work/boards/20261021_Symbol-Family-Board.html`. It needs `board-base.css` beside it and the PNGs in `work/boards/phase-1/symbols/px/`.
+
+## What changed
+
+Nothing in any master. Every drawing is a proposal under DC-02.
+
+1. **One skeleton per pillar** sits on a shared 24-unit grid with a 2-unit margin. One unit is one pixel at 24 px.
+   - **Explain** is a square broken open. Its top-right quarter lifts out along the diagonal.
+   - **Track** is three stages on a rising stair.
+   - **Connect** is one circle in two equal halves, held apart.
+   - **Act** is a door swung open toward the reader.
+   - The 48 and 96 px sizes scale the 24 px master. The 16 px masters are separate drawings, fitted to whole pixels.
+2. **Two directions** come from the same four skeletons.
+   - **A, geometric solid:** filled primitives with square corners. The node is a 4 px dot set into a 1 px clear seat.
+   - **B, line with one accent:** a 2 px monoline with round ends. The node is a 6 px dot held off the line by a 1 px gap.
+   - Each direction has filled, line and tile treatments. The board shows them at 16, 24, 48 and 96 px, in one colour, on Newsprint, White, Charcoal and Prussian, with 8x pixel views. Each direction also gets one composition: a 1080 by 1080 Act post and an article kicker with a story list.
+3. **The shared element is the hinge node.** Every mark is two parts and the point that joins them:
+   - in Explain, where the quarter lifted out;
+   - in Track, the stage a decision has reached;
+   - in Connect, the space between the halves;
+   - in Act, the handle.
+
+   The node always sits on the horizontal centre line, so in a row one line passes through all four nodes. That is the grammar of the hinge diagram and the Signal Grid. I set aside three alternatives, with sketches on the board:
+   - the ampersand's crossing, which becomes an X at 16 px and borrows the master ampersand;
+   - a ring around each mark, which makes four look-alike badges and drifts toward ©;
+   - a shared baseline bar, which adds the same shape to all four and pulls them together.
+4. **Red rule.** Pillar Red goes only on the Act handle, in Act contexts.
+   - On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint is 2.96:1.
+   - On Charcoal the seat is cut out, and red meets Charcoal at 4.49:1.
+   - Prussian never carries red.
+   - At 16 px the handle is 2 px, so Act stays one colour there.
+5. **Topic grammar proof.** I redrew Ballot, Bill, Contact an official and Campaign money in Direction A at 16, 24 and 48 px, with one node per subject. Campaign money is now a coin stack with one standing coin, so it no longer shares the envelope's landscape box.
+6. **Sanctioned treatments map** gives each treatment one job and a minimum size:
+   - filled marks from 16 px;
+   - the line companion from 24 px;
+   - tiles for avatars and series markers;
+   - isometric drawing only for layer diagrams, with flat labels;
+   - hand-drawn spot illustration at 96 px and up, drawn by a person;
+   - patterns from study 07 and chat collage 4, at 12 percent ink or less behind text;
+   - Y2K orbits as motion only.
+
+   The board includes sketches of a three-layer isometric diagram, a hand-drawn texture study (labelled as script-generated), four pattern swatches with measured coverage, avatars and series chips.
+
+## Why
+
+- **Track and Act.** V5's Track and Act both run from bottom left to top right and correlate at 0.81 at 16 px. The stair is wide and low, the door tall and narrow. Direction A now correlates at 0.21, a score of 0.29 against V5's 0.65.
+- **Phase 0 watch points.** All of them are avoided, and each one is measured.
+  - Track against a status-light row: 0.22 (A filled, the higher of 16 and 24 px).
+  - Act against a letter D: 0.55. Against a play triangle: 0.33. Against an outbound arrow: 0.47.
+  - Explain against © and a letter C: 0.55 and 0.54.
+  - Connect against V5's chain link: 0.57.
+- **Contact an official and Campaign money** fall from 0.93 to 0.44 at 16 px, and from 0.86 to 0.44 at 24 px.
+- **The node** lets a reader learn one rule and find the point of focus in every mark. Red keeps one job.
+
+## Checks passed
+
+The methods are the Phase 0 measures: silhouette overlap plus correlation after a 3 by 3 blur. Every raster is a Chromium render at device scale 1.
+
+- **Pixel fit:** all 48 pillar masters at 16 and 24 px, and all 8 topic masters. Every straight edge and every tangent of a node, seat, disc and arc lands on a whole pixel. Round caps, joins and fillets are exempt.
+- **Silhouette at 16 px:** every filled master in both directions passes. A filled crisp share runs 0.69 to 0.91, against V5's 0.38 to 0.54.
+- **Similarity:** every pillar pair in every set scores under 0.60. Direction A's highest is 0.47. Every topic pair scores under 0.60.
+- **Optical balance:** A filled ink runs 0.297 to 0.365 at 96 px.
+- **Monochrome:** the node stays a separate shape in both polarities for every drawing at 16 and 24 px.
+- **Contrast:** ink against surface is 9.42:1 or better on all four surfaces. The red-handle ring measures 3.48:1 or better against red at 24 px and 4.49:1 at 48 px.
+- **Board layout:** at 1440 and 390 px there is no horizontal overflow and no text under 13 px. No heading ends on a single word, all 161 numeric cells use tabular figures, and no hyphen stands in for a minus.
+
+Totals: Direction A, 86 pass and 10 fail. Direction B, 85 pass and 11 fail.
+
+## Checks that still fail
+
+- **Track sits low.** The solid stair's centre of mass is 17 to 18 percent of the field below centre, in A filled, A line and B filled. Phase 2 should test a raised stair.
+- **The Act handle at 16 px** is a declared exception in every treatment. A 6 px leaf cannot hold a 3 px dot and a ring, so the handle is 2 px.
+- **Line masters at 16 px.** A Connect, B Track and B Connect fail the silhouette test, so the line companion should start at 24 px. A line Connect and B line Track are also light on ink.
+- **Tiles at 16 px** hold a 10 px micro drawing that both directions share. Its nodes are 2 px with no seat, so all eight count as consistency failures. The B tile Track is also light on ink.
+- **Watch for a reader test.** Ballot against Bill scores 0.58 at 16 px, down from V5's 0.71. A filled Connect against © scores 0.53; round marks score high on the silhouette half of that test.
+
+## Rubric (Master Brief V2 section 6)
+
+| Criterion | A | B |
+|---|---|---|
+| Craft | 4 | 3 |
+| Clarity | 4 | 3 |
+| Brand fidelity | 4 | 3 |
+| Usefulness | 3 | 3 |
+| Evidence honesty | 5 | 5 |
+| Accessibility | 4 | 3 |
+
+The board gives a reason for each score. Neither direction reaches 4 on usefulness, because exports, the other sixteen topics and the tokens come in Phase 2. The clarity and brand fidelity scores for B rest on studio judgment, and the board labels them so.
+
+## Recommendation
+
+**Direction A.** Its leading treatment, the filled master, passes at 16 px for all four pillars. B leads with the line, which fails at 16 px for Track and Connect. A keeps red in one place and gives topic and atlas symbols a grammar that holds at small sizes. Decisions for Gate 1 are on the board in section 11:
+
+1. the direction;
+2. the four skeletons;
+3. the shared node;
+4. the red rule;
+5. the line companion starting at 24 px;
+6. the topic redraw;
+7. the treatments map.
+
+Suggested decision-log entries for the main session:
+
+- the 24-unit grid and node rule;
+- the 60-percent crisp-share and 0.60 similarity thresholds, which are studio judgment;
+- the 12 percent pattern limit behind text.
+
+## Checked and not checked
+
+**Checked:**
+- every drawing rendered in Chromium on Linux at 16, 24, 48 and 96 px on four surfaces;
+- the nine craft checks on 24 pillar drawings and 4 topics;
+- similarity against V5 and the watch items;
+- red-ring contrast on rendered pixels;
+- pattern coverage;
+- board layout and type at 1440 and 390 px. Inter and Inter Tight loaded from Google Fonts; Lora was requested but did not appear in the loaded list.
+
+**Not checked:**
+- readers (similarity comes from a model of a glance);
+- other browsers, high-density screens, and Windows or macOS rendering;
+- print sizes;
+- the other sixteen topics, atlas, status and utility symbols;
+- screen-reader output beyond the labels written into the board;
+- whether the illustrative headlines describe real procedures in every state. They are labelled.
+
+## Change log
+
+**Created**
+- `work/boards/20261021_Symbol-Family-Board.html`
+- `work/boards/phase-1/symbols/`:
+  - `20261021_Pillar-Sketches-Direction-A.svg`
+  - `20261021_Pillar-Sketches-Direction-B.svg`
+  - `20261021_Topic-Sketches-Direction-A.svg`
+  - `20261021_Symbol-Family-Measurements.json`
+  - `20261021_Symbol-Family-Board-Check.json`
+  - `px/` (1x renders for the pixel views)
+  - `screens/20261021_Symbol-Family-Board-1440.jpg`
+  - `screens/20261021_Symbol-Family-Board-390.jpg`
+- `work/build/scripts/phase-1/`:
+  - `symbols_geom.py`
+  - `symbols_family.py`
+  - `symbols_measure.py`
+  - `symbols_board_build.py`
+  - `symbols_board_check.js`
+  - `symbols_render_cells.js`
+- `work/handoffs/phase-1/20261021_Symbol-Family-Notes.md` (this file)
+
+**Modified:** none. No master, ledger or source file changed. The shared `board-base.css` is untouched; the board overrides the tag size to 13 px in its own styles.
+
+**Rebuild:** run `python3 -I symbols_measure.py`, then `python3 -I symbols_board_build.py`, then `node symbols_board_check.js <board> <check.json> <screens>`. Then run `symbols_board_build.py` once more to fold the check into the board.

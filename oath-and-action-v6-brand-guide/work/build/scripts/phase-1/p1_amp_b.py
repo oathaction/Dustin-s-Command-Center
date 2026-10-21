@@ -94,11 +94,35 @@ B_UPPER = "M276 620C246 620 224 596 224 566C224 520 262 468 296 426C330 470 352 
 B_LOWER = "M245 318L428 122C398 98 356 86 302 86C216 86 157 132 157 202C157 254 194 292 245 318Z"
 
 
-def glyph():
+def glyph(weight=(7.0, 3.0)):
+    """The drawn outline, then a light elliptical embolden (7 units across, 3 up and down) so the
+    thick strokes reach 0.85 of the wordmark stem, and a vertical warp that puts the foot back on
+    the baseline and keeps the drawn overshoots."""
+    import p1_amp_a as A
     p = o.path_from_d(B_OUTER)
     p = o.diff(p, o.path_from_d(B_UPPER))
     p = o.diff(p, o.path_from_d(B_LOWER))
-    return o.simplify(p)
+    p = o.simplify(p)
+    if weight:
+        dx, dy = weight
+        b0 = o.bounds(p)
+        p = A.ell_embolden(p, dx, dy)
+        b1 = o.bounds(p)
+        p = A.ywarp(p, [(b1[1], b0[1]), (-dy, 0.0), (b1[3], b0[3])])
+        p = refit(o.simplify(p))
+    return p
+
+
+def refit(p, err=0.6):
+    """Refit an outline as clean cubic Beziers with nodes on extrema and corners (the stroker that
+    adds weight leaves many short quadratic segments)."""
+    from shapely.geometry import Polygon
+    rings = [Polygon(r) for r in o.polyline(p, steps=48)]
+    rings.sort(key=lambda g: -g.area)
+    outer, holes = rings[0], [r for r in rings[1:] if rings[0].contains(r.representative_point())]
+    geom = Polygon(outer.exterior.coords, [h.exterior.coords for h in holes])
+    d = st.geom_to_d(geom, err=err, nd=2, step=2.0, corner_deg=30.0)
+    return o.simplify(o.path_from_d(d))
 
 
 def serif_shape():

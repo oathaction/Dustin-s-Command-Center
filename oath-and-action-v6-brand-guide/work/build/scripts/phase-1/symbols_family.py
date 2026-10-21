@@ -47,7 +47,7 @@ def _ln(segs, w, cap="round", join="round"):
 
 SKELETON_24 = {
     "explain": {
-        "square": (2, 6, 16, 16), "notch": (10, 6, 8, 8), "quarter": (14, 2, 8, 8), "node": (12, 12),
+        "square": (3, 7, 14, 14), "notch": (10, 7, 7, 7), "quarter": (14, 3, 7, 7), "node": (12, 12),
         "note": "A square, broken open. Its top-right quarter lifts out along the diagonal; the node sits where it came from.",
     },
     "track": {
@@ -55,7 +55,7 @@ SKELETON_24 = {
         "note": "Three stages on a rising line. The node stands on the stage a decision has reached.",
     },
     "connect": {
-        "circle": (12, 12, 10), "divide": (9, 2, 6, 20), "node": (12, 12),
+        "circle": (12, 12, 10), "divide": (8, 2, 8, 20), "node": (12, 12),
         "note": "One circle in two equal halves, held apart. The node sits in the space between them: the common ground.",
     },
     "act": {
@@ -68,19 +68,19 @@ SKELETON_24 = {
 
 def explain_24(direction, treatment):
     if direction == "A" and treatment == "filled":
-        body = union(minus(rect(2, 6, 16, 16), rect(10, 6, 8, 8)), rect(14, 2, 8, 8))
+        body = union(minus(rect(3, 7, 14, 14), rect(10, 7, 7, 7)), rect(14, 3, 7, 7))
         return _layers(body, 12, 12, 2, 3)
     if direction == "A" and treatment == "line":
-        body = union(_ln([("M", 3, 7), ("L", 9, 7), ("L", 9, 15), ("L", 17, 15), ("L", 17, 21), ("L", 3, 21), ("Z",)], 2, "square", "miter"),
-                     _ln([("M", 15, 3), ("L", 21, 3), ("L", 21, 9), ("L", 15, 9), ("Z",)], 2, "square", "miter"))
+        body = union(_ln([("M", 4, 8), ("L", 9, 8), ("L", 9, 15), ("L", 16, 15), ("L", 16, 20), ("L", 4, 20), ("Z",)], 2, "square", "miter"),
+                     _ln([("M", 15, 4), ("L", 20, 4), ("L", 20, 9), ("L", 15, 9), ("Z",)], 2, "square", "miter"))
         return _layers(body, 12, 12, 2, 3)
     if direction == "B" and treatment == "line":
-        body = union(_ln([("M", 3, 7), ("L", 9, 7), ("L", 9, 15), ("L", 17, 15), ("L", 17, 21), ("L", 3, 21), ("Z",)], 2),
-                     _ln([("M", 15, 3), ("L", 21, 3), ("L", 21, 9), ("L", 15, 9), ("Z",)], 2))
+        body = union(_ln([("M", 4, 8), ("L", 9, 8), ("L", 9, 15), ("L", 16, 15), ("L", 16, 20), ("L", 4, 20), ("Z",)], 2),
+                     _ln([("M", 15, 4), ("L", 20, 4), ("L", 20, 9), ("L", 15, 9), ("Z",)], 2))
         return _layers(body, 12, 12, 3, 4)
     if direction == "B" and treatment == "filled":
-        sq = union(rrect(2, 6, 8, 16, 2), rrect(2, 14, 16, 8, 2))
-        body = union(sq, rrect(14, 2, 8, 8, 2))
+        sq = union(rrect(3, 7, 7, 14, 2), rrect(3, 14, 14, 7, 2))
+        body = union(sq, rrect(14, 3, 7, 7, 2))
         return _layers(body, 12, 12, 3, 4)
     raise ValueError
 
@@ -103,12 +103,12 @@ def track_24(direction, treatment):
 
 def connect_24(direction, treatment):
     if direction == "A" and treatment == "filled":
-        body = minus(circle(12, 12, 10), rect(9, 0, 6, 24))
+        body = minus(circle(12, 12, 10), rect(8, 0, 8, 24))
         return _layers(body, 12, 12, 2, 3)
     if direction == "A" and treatment == "line":
-        # arcs follow the outer edge of each filled half and stop at the divide (x 9 and x 15)
-        left = minus(_ln([("A", 12, 12, 9, 100, 260)], 2, "butt", "miter"), rect(9, 0, 6, 24))
-        right = minus(_ln([("A", 12, 12, 9, -80, 80)], 2, "butt", "miter"), rect(9, 0, 6, 24))
+        # arcs follow the outer edge of each filled half and stop at the divide (x 8 and x 16)
+        left = minus(_ln([("A", 12, 12, 9, 100, 260)], 2, "butt", "miter"), rect(8, 0, 8, 24))
+        right = minus(_ln([("A", 12, 12, 9, -80, 80)], 2, "butt", "miter"), rect(8, 0, 8, 24))
         return _layers(union(left, right), 12, 12, 2, 3)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 12, 12, 9, 112, 248)], 2), _ln([("A", 12, 12, 9, -68, 68)], 2))

@@ -110,10 +110,10 @@ def pairs():
               "orig": same(sp("lockmark")), "prop": by_size({16: L / "20261021_Lockmark-16px-Master.svg", 24: L / "20261021_Lockmark-24px-Master.svg",
                                                               48: sp("lockmark"), 96: sp("lockmark"), "display": sp("lockmark")})})
     # ---- 10 Prussian
-    for kind, lab, style in (("display-only", "A. Red at display size only: one colour below 48 px", "displayonly"),
+    for kind, lab, style in (("display-only", "A. Red at display size only: one color below 48 px", "displayonly"),
                              ("newsprint", "B. Newsprint ampersand, White letters", "newsprint"),
                              ("keyline", "C. Red with a 1 px Newsprint keyline", "keyline"),
-                             ("mono", "D. One colour, all White", "mono")):
+                             ("mono", "D. One color, all White", "mono")):
         P.append({"panel": 10, "id": f"p10-{kind}", "label": lab, "display": 120, "overlay": None, "surfaces": ["prussian"],
                   "orig": same(sp("wordmark")), "prop": prussian_variant(kind), "prop_style": style})
     return P
