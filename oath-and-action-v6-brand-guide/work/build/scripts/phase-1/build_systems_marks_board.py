@@ -860,6 +860,16 @@ def hinge_primer(W=280, arcs="solid", red=True, amp_fill=None):
 HINGE_READY = ROOT / "work/handoffs/phase-1/20261021_Hinge-V2-Ready.md"
 
 
+def red_rule_d126():
+    """Rule 05.3, the red rule, word for word from decision D1-26 in the decision log."""
+    log = next((ROOT / "work/ledger").glob("*_Decision-Log.md")).read_text(encoding="utf-8")
+    row = [ln for ln in log.splitlines() if ln.startswith("| D1-26 |")][0]
+    return re.search(r'every board: "(.*)" \|', row).group(1)
+
+
+RED_RULE_0503 = red_rule_d126()
+
+
 def hinge_v2_path(which="Compact"):
     """The V2 master (Display or Compact) named in the identity agent's ready note, or None."""
     if not HINGE_READY.exists():
@@ -923,7 +933,7 @@ def section_hinge():
       <p class="cap">Generated reference image, shown for study. Both arcs are dashed; in V7's grammar a dash is plausible.</p></div>
     <div class="opt rec-opt span-all">{V2_BLOCK}</div>
   </div>
-  <div class="widecells">{surfaces(lambda s: ('<div class="hv2">' + hinge_v2_pair(s) + '</div>') if hinge_v2_path() else hinge_primer(280, amp_fill="#FFFFFF" if s == "Prussian" else None), note="Hinge diagram V2 at true size on all four surfaces and in grayscale, clockwise, with V5's labels. The ampersand is red on Newsprint, White and Charcoal (4.49:1 on Charcoal) and White on Prussian, because red never sits on Prussian and identity marks there use White (treatment D).")}</div>
+  <div class="widecells">{surfaces(lambda s: ('<div class="hv2">' + hinge_v2_pair(s) + '</div>') if hinge_v2_path() else hinge_primer(280, amp_fill="#FFFFFF" if s == "Prussian" else None), note="Hinge diagram V2 at true size on all four surfaces and in grayscale, clockwise, with V5's labels. The ampersand inside the hinge diagram is an identity mark, which Rule 05.3 does not count toward a view's working red. It is red on Newsprint, White and Charcoal (4.49:1 on Charcoal) and White on Prussian, because under Rule 05.3 red never sits on Prussian and identity marks there use White (treatment D).")}</div>
 
   <h3 class="exh">From the hinge to a real loop</h3>
   <ol class="steps">
@@ -934,7 +944,7 @@ def section_hinge():
   <div class="ex2">
     {figure(loop_head("B4") + loop_fig("B4"), "Loop B4 in the systems grammar: IDs, signs, grades, delays and a source line, which the hinge never carries. All three steps are well supported; V7's summary adds that for U.S. services the weakest is L54, “since its main study covers Brazilian mayors”.", SRC_V7 + "; loop B4, connections L23, L24, L54.")}
     {figure(loop_head("R10") + loop_fig("R10", rings={"links": R01["targets"], "nodes": [t for t in R01["targets"] if not t.startswith("L")]}),
-            f'Loop R10 shares C3 with B4. The red rings mark where Reform R-01 acts: {", ".join(t["id"] for t in R01["target_detail"])}. Under the red rule, the one working red in a systems figure marks where a reform acts.',
+            f'Loop R10 shares C3 with B4. The red rings mark where Reform R-01 acts: {", ".join(t["id"] for t in R01["target_detail"])}. Under Rule 05.3 the one working red in a systems figure marks where a reform acts, and “One job may take several marks, such as each target of one reform.”, so the three rings count as one red.',
             SRC_V7 + "; loop R10; reforms.R-01.targets.")}
   </div>
   {equivalent_table("B4")}
@@ -945,7 +955,7 @@ def section_hinge():
       <li>The hinge carries words only. It never carries an ID, a sign, a grade, a delay or a count. Every loop drawn from the atlas carries all of them, with a key and a source line.</li>
       <li>The hinge never sits inside a figure that has a key, and a data figure never contains the ampersand.</li>
       <li>No brand graphic uses a dotted or dashed line, since V7 gives those textures to evidence grades. The hinge diagram's arcs are solid hairlines with open chevrons, and they run clockwise.</li>
-      <li>Red follows the red rule: “The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian.” Data graphics on Prussian keep the token table's Newsprint marks; identity marks on Prussian use White.</li>
+      <li>Red follows Rule 05.3, the red rule: “{esc(RED_RULE_0503)}” Data graphics on Prussian keep the token table's Newsprint marks; identity marks on Prussian use White.</li>
       <li>“Hinge” stays a brand word. The atlas calls a shared variable a place where loops meet.</li>
     </ol>
   </div>
@@ -1026,7 +1036,7 @@ DECISIONS = [
     ("Event mark and period rule", "Adopt; revise", "Adopt: shape for instrument, row for direction, outline for pending, the seven-step period rule", "Events stay visibly apart from causal findings and every V7 date string parses."),
     ("Authority mark", "Open arrowhead; V7 teal line; open diamond", "Open diamond in ink with “no sign” in the label", "It cannot be read as a causal arrow and adds no color job."),
     ("Delay mark", "Letters; words; ticks with words", "Ticks on the line, words in the label", "S, M and L also size effects, so letters stay in data tables only."),
-    ("The hinge in the systems grammar", "V5's dotted arc; two-way dashed arcs; identity item 7 V2, solid and clockwise", "Identity item 7 V2 as the primer's first step, with the five separation rules and the red rule", "A dotted or dashed hinge reads as a hypothesis or a plausible link once a reader learns the key."),
+    ("The hinge diagram (I6)", "V5's dotted arc; two-way dashed arcs; V2 with solid arcs; V2 without the return arc", "V2 with solid arcs, running clockwise, with the five separation rules; the primer reuses it as its first step", "A dotted or dashed hinge reads as a hypothesis or a plausible link once a reader learns the key."),
     ("Atlas bases", "Confirm, revise or drop each", "Confirm 03, 09, 11; revise 10; add 07 with 04's record panel", "Covers layers, the whole map, actors, evidence and single loops."),
     ("Atlas V7.1 issue list", "Send to the atlas editor; hold", "Send it as written", "Every item has a JSON location, evidence and a fix, and V6 works around each one meanwhile."),
 ]

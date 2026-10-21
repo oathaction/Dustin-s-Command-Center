@@ -1,0 +1,411 @@
+<title>Edition 06 Gate 1 Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap">
+<style>
+/* Gate 1 review board. Built by work/build/scripts/phase-1/build_gate1_board.py from this template and the Gate 1 report.
+   Layout: one 1200 px column. Each big call reads prose and options first, then the drawings, then the verdict.
+   Specimen frames keep their own surfaces in both themes. Pillar Red appears only inside specimens and marks. */
+:root {
+  --bg: #DCD9D2;          /* Newsprint */
+  --surface: #E6E3DD;     /* raised panel, Newsprint mixed toward White */
+  --fg: #121212;          /* Charcoal */
+  --muted: #45494F;       /* secondary text, 7.1:1 on Newsprint */
+  --rule: #5D636D;        /* Stone, hairlines */
+  --hair: #B9B6AF;        /* light internal dividers, decorative */
+  --deep: #1F2D5A;        /* Prussian */
+  --on-deep: #DCD9D2;
+  --ok-bg: #C9D6D2; --mid-bg: #CFCCC5; --low-bg: #BFBAB1;
+  --btn-bg: #121212; --btn-fg: #DCD9D2;
+  --focus: #121212;
+  --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --quote: "Lora", Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E; --hair: #34363A;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40;
+  --btn-bg: #DCD9D2; --btn-fg: #121212; --focus: #DCD9D2; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E; --hair: #34363A;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40;
+  --btn-bg: #DCD9D2; --btn-fg: #121212; --focus: #DCD9D2; color-scheme: dark }
+@media (prefers-reduced-motion: no-preference) { :root { scroll-behavior: smooth } }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 400 1rem/1.6 var(--body); margin: 0; -webkit-text-size-adjust: 100% }
+.wrap { max-width: 1232px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 72px; overflow-wrap: break-word }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px }
+p { margin: 0 0 12px; max-width: 70ch }
+h1, h2, h3, h4 { font-family: var(--display); letter-spacing: -0.02em; text-wrap: balance; margin: 0 }
+h1 { font-weight: 800; font-size: clamp(2.25rem, 5.6vw, 4.25rem); line-height: 1.02; margin-top: 10px; max-width: 18ch }
+h2 { font-weight: 800; font-size: clamp(1.625rem, 3.2vw, 2.375rem); line-height: 1.08; margin-bottom: 14px }
+h3 { font-weight: 800; font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.15; margin-bottom: 10px }
+h4 { font-weight: 600; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -0.01em; margin: 28px 0 10px }
+code { font: 0.875rem/1.4 ui-monospace, Menlo, Consolas, monospace; background: var(--surface); padding: 1px 4px; overflow-wrap: anywhere }
+blockquote { margin: 0 0 16px; padding: 4px 0 4px 20px; border-left: 3px solid var(--fg); font: italic 400 1.1875rem/1.55 var(--quote); max-width: 64ch }
+blockquote p { max-width: none }
+.eyebrow { font: 700 0.8125rem/1.4 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px }
+.muted { color: var(--muted) }
+.small { font-size: 0.875rem; line-height: 1.5 }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--rule) }
+.top .mark { display: block; width: 210px; max-width: 60vw; height: auto; color: var(--fg) }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 600 0.875rem/1 var(--body); border: 1px solid var(--fg); padding: 8px 12px }
+.status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--fg) }
+.intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; align-items: end; margin-top: 36px }
+.meta { font: 600 0.9375rem/1.4 var(--body); color: var(--muted); margin: 14px 0 0 }
+.lede { font-size: 1.1875rem; line-height: 1.55; max-width: 58ch; margin: 0 }
+@media (max-width: 860px) { .intro { grid-template-columns: minmax(0, 1fr) } }
+
+.toc { margin-top: 28px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0 }
+.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; counter-reset: toc }
+.toc li { counter-increment: toc; font-size: 0.9375rem }
+.toc li::before { content: counter(toc, decimal-leading-zero); font: 600 0.8125rem/1 var(--body); color: var(--muted); margin-right: 6px; font-variant-numeric: tabular-nums }
+.toc a { font-weight: 600 }
+
+/* The ask */
+.ask { background: var(--deep); color: var(--on-deep); padding: clamp(20px, 3vw, 32px); margin-top: 28px; --focus: #DCD9D2 }
+.ask h2 { color: var(--on-deep) }
+.ask .eyebrow { color: var(--on-deep) }
+.ask ol.asklist { margin: 0 0 20px; padding-left: 22px; display: grid; gap: 8px; max-width: 76ch }
+.ask a { color: var(--on-deep) }
+.reply { background: #DCD9D2; color: #121212; padding: 16px; display: grid; gap: 12px; margin-top: 8px; --focus: #121212 }
+.reply-label { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: #45494F }
+.reply-text { font: 400 1rem/1.55 ui-monospace, Menlo, Consolas, monospace; margin: 0; max-width: none; user-select: all; -webkit-user-select: all; padding: 10px 12px; background: #FFFFFF; border: 1px solid #5D636D }
+.reply-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center }
+.btn { font: 700 0.9375rem/1 var(--body); background: #121212; color: #DCD9D2; border: 2px solid #121212; padding: 12px 18px; min-height: 44px; cursor: pointer }
+.btn:hover { background: #2A2B2E }
+.copy-status { font-size: 0.875rem; color: #121212; min-height: 1.4em }
+.ask .after { margin: 16px 0 0; max-width: 76ch }
+
+/* Sections */
+section.block { padding-top: 44px; margin-top: 48px; border-top: 2px solid var(--fg) }
+.sec-head { display: grid; gap: 4px; margin-bottom: 18px }
+.sec-intro { max-width: 70ch }
+
+/* Specimen frames keep their own surfaces in both themes */
+.spec { background: #DCD9D2; color: #121212; border: 1px solid var(--rule); padding: 16px }
+.spec.white { background: #FFFFFF }
+.spec.prussian { background: #1F2D5A; color: #DCD9D2 }
+.spec .lab, .spec figcaption { font: 600 0.8125rem/1.35 var(--body); color: #45494F; margin: 6px 0 0 }
+.spec.prussian .lab, .spec.prussian figcaption { color: #DCD9D2 }
+.spec h5 { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px; color: #121212 }
+.spec.prussian h5 { color: #DCD9D2 }
+.spec img, .spec svg { display: block }
+.fit { max-width: 100%; height: auto }
+img.px { image-rendering: pixelated; image-rendering: crisp-edges; max-width: none }
+.scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch }
+.scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px }
+figure { margin: 0; min-width: 0 }
+/* Grid children may shrink below their widest image; wide specimens scroll inside their own frames */
+.intro > *, .call-body > *, .two > *, .three > *, .display3 > *, .posts > *, .fixes > *, .ba > *, .ba-grid > *, .side > *,
+.stack > *, .lines > *, .thumbs > *, .wire > *, .tokens > *, .verdict > *, .fix-dl > *, .ladder > *, .qs > *, .spec > * { min-width: 0 }
+.lrow > img, .lrow > svg { flex: 0 0 auto }
+.cap { font-size: 0.875rem; line-height: 1.5; color: var(--muted); margin: 8px 0 0; max-width: 72ch }
+.cap b { color: var(--fg) }
+
+.tag { display: inline-block; font: 700 0.8125rem/1.2 var(--body); letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid currentColor; padding: 3px 6px; white-space: nowrap; vertical-align: 1px }
+.tag.solid { background: var(--fg); color: var(--bg); border-color: var(--fg) }
+.tag.rec { background: var(--deep); color: #DCD9D2; border-color: var(--deep) }
+.tag.out { border-style: dashed }
+.spec .tag.rec { background: #1F2D5A; color: #DCD9D2; border-color: #1F2D5A }
+.spec.prussian .tag.rec { background: #DCD9D2; color: #1F2D5A; border-color: #DCD9D2 }
+.illus { display: inline-block; font: 600 0.8125rem/1.2 var(--body); border: 1px dashed currentColor; padding: 2px 6px; white-space: nowrap }
+
+/* Size ladders: rows of one mark at 16, 24, 48 and 96 px, then magnified cells */
+.ladder { display: grid; gap: 18px }
+.lrow { display: flex; flex-wrap: nowrap; align-items: flex-end; gap: 18px }
+.lname { flex: 0 0 150px; font: 700 0.875rem/1.35 var(--body); color: #121212; align-self: center; margin: 0 }
+.lname span { display: block; font-weight: 400; color: #45494F; font-size: 0.8125rem }
+.spec.prussian .lname, .spec.prussian .lname span { color: #DCD9D2 }
+.cell { display: grid; justify-items: start; gap: 4px; flex: 0 0 auto }
+.cell .lab { margin: 0; white-space: nowrap }
+.lrow .gap { flex: 0 0 8px; align-self: stretch; border-left: 1px solid #A8ACB2 }
+.display3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
+.display3 .spec { display: grid; justify-items: center; align-content: end; gap: 8px; min-height: 100% }
+.stack { display: grid; gap: 14px }
+.stack .item { display: grid; gap: 6px; justify-items: start }
+.psheet { display: grid; gap: 14px; width: max-content }
+.ps-row { display: grid; grid-template-columns: 80px repeat(3, max-content); gap: 0 28px; align-items: end }
+.ps-name { font: 700 0.875rem/1.3 var(--body); align-self: center; color: #121212 }
+.ps-group { display: grid; gap: 6px }
+.ps-head .ps-group b { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: #121212 }
+.ps-sizes, .ps-cells { display: grid; grid-template-columns: 26px 34px 56px 100px; gap: 8px; align-items: end; justify-items: start }
+.ps-sizes i { font: 600 0.8125rem/1 var(--body); color: #45494F }
+@media (max-width: 760px) { .display3 { grid-template-columns: minmax(0, 1fr) } }
+
+/* Big calls */
+.calltable { margin-top: 8px }
+article.call { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--rule) }
+.call-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px 40px; align-items: start }
+.options { background: var(--surface); border: 1px solid var(--rule); padding: 16px 18px }
+.options h4 { margin: 0 0 8px }
+.options p { margin: 0 }
+@media (max-width: 900px) { .call-body { grid-template-columns: minmax(0, 1fr) } }
+.prose ol, .prose ul { padding-left: 22px; margin: 0 0 12px; display: grid; gap: 6px; max-width: 70ch }
+.verdict { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 28px 0 0; border: 1px solid var(--rule); background: var(--surface) }
+.verdict > div { padding: 14px 16px; border-left: 1px solid var(--hair) }
+.verdict > div:first-child { border-left: 0; box-shadow: inset 4px 0 0 var(--deep) }
+.verdict dt { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px }
+.verdict dd { margin: 0 }
+.verdict > div:first-child dd { font-weight: 600 }
+@media (max-width: 760px) { .verdict { grid-template-columns: minmax(0, 1fr) } .verdict > div { border-left: 0; border-top: 1px solid var(--hair) } .verdict > div:first-child { border-top: 0 } }
+.evidence { font-size: 0.875rem; line-height: 1.5; color: var(--muted); margin: 10px 0 0; max-width: none }
+.evidence b { color: var(--fg) }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
+@media (max-width: 860px) { .two, .three { grid-template-columns: minmax(0, 1fr) } }
+.posts { display: grid; grid-template-columns: repeat(3, minmax(0, 360px)); gap: 24px; justify-content: start }
+.posts figure img { border: 1px solid var(--rule) }
+@media (max-width: 1180px) { .posts { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px)) } }
+.lines { display: grid; gap: 12px }
+.line-card { border: 1px solid var(--rule); background: var(--surface); padding: 14px 16px; display: grid; gap: 6px }
+.line-card.is-rec { box-shadow: inset 4px 0 0 var(--deep) }
+.line-card q, .line-card .says { font: italic 400 1.125rem/1.5 var(--quote); quotes: none }
+.line-card .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font: 700 0.875rem/1.3 var(--body) }
+.line-card p { margin: 0 }
+
+/* Fixes */
+.fixes { display: grid; gap: 24px }
+article.fix { border: 1px solid var(--rule); background: var(--surface); padding: clamp(16px, 2.4vw, 24px) }
+.fix-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-bottom: 10px }
+.fix-head h3 { margin: 0 }
+.fix-id { font: 800 1.25rem/1 var(--display); font-variant-numeric: tabular-nums }
+.fix-dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; margin: 0 0 16px }
+.fix-dl dt { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted) }
+.fix-dl dd { margin: 0 }
+@media (max-width: 760px) { .fix-dl { grid-template-columns: minmax(0, 1fr) } }
+.ba { display: grid; gap: 12px }
+.ba .side { display: grid; gap: 8px }
+.ba-label { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 }
+.ba-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px }
+@media (max-width: 760px) { .ba-grid { grid-template-columns: minmax(0, 1fr) } }
+
+/* Tables */
+.table { overflow-x: auto; border: 1px solid var(--rule); margin-top: 12px; max-width: 100% }
+.table:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; line-height: 1.45; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--hair); vertical-align: top }
+thead th { font: 700 0.8125rem/1.3 var(--body); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--surface); border-bottom: 1px solid var(--rule) }
+tbody th { font-weight: 700 }
+tbody tr:last-child > * { border-bottom: 0 }
+td.n, th.n { text-align: right; white-space: nowrap }
+td.id { font-weight: 700; white-space: nowrap }
+td.s { text-align: center; font-weight: 700; width: 3.2em }
+td.s1, td.s2 { background: var(--low-bg) }
+td.s3 { background: var(--mid-bg) }
+td.s4, td.s5 { background: var(--ok-bg) }
+.spec table { color: #121212; font-size: 0.875rem }
+.spec th, .spec td { border-color: #A8ACB2 }
+.spec thead th { background: transparent; color: #45494F; border-color: #5D636D }
+.key { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.875rem; color: var(--muted); margin-top: 10px }
+.key i { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--rule) }
+.pending { border: 1px dashed var(--rule); padding: 16px 18px; background: var(--surface); max-width: 72ch }
+
+/* The set */
+.group { margin-top: 32px }
+.group h3 { display: flex; gap: 10px; align-items: baseline }
+.group h3 .count { font: 600 0.9375rem/1 var(--body); color: var(--muted); letter-spacing: 0 }
+.strip { margin-top: 20px }
+.thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
+.thumbs figure img { border: 1px solid var(--rule); width: 100%; height: auto }
+@media (max-width: 860px) { .thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 480px) { .thumbs { grid-template-columns: minmax(0, 1fr) } }
+.wire { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 24px; align-items: start }
+.wire .tall { max-height: 846px; overflow-y: auto; border: 1px solid var(--rule) }
+.wire .tall:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px }
+.wire img { border: 1px solid var(--rule) }
+.wire .tall img { border: 0; width: 100%; height: auto }
+@media (max-width: 900px) { .wire { grid-template-columns: minmax(0, 1fr) } .wire .tall { max-height: 640px } }
+.tokens { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--rule) }
+.tsurf { padding: 16px; display: grid; gap: 10px; align-content: start }
+.tsurf h5 { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 }
+.trow { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; align-items: center }
+.tsw { width: 44px; height: 32px; display: grid; place-items: center; font: 700 1.0625rem/1 var(--body) }
+.tsw.g { border: 0 }
+.tsw .bar { display: block; width: 40px; height: 6px }
+.tsw .ring { display: block; width: 26px; height: 26px; border: 3px solid }
+.tsw .edge { display: block; width: 30px; height: 22px; border: 2px solid }
+.tmeta { font-size: 0.8125rem; line-height: 1.35 }
+.tmeta b { display: block; font-size: 0.875rem }
+.tmeta .ratio { font-variant-numeric: tabular-nums; font-weight: 700 }
+@media (max-width: 980px) { .tokens { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 480px) { .tokens { grid-template-columns: minmax(0, 1fr) } }
+
+/* Closing lists */
+.list { display: grid; gap: 10px; padding-left: 22px; margin: 0 }
+.list li { max-width: 76ch }
+.qs { display: grid; gap: 16px; list-style: none; padding: 0; margin: 0 }
+.qs li { border: 1px solid var(--rule); background: var(--surface); padding: 16px 18px; display: grid; gap: 6px }
+.qs .qid { font: 800 1rem/1 var(--display); font-variant-numeric: tabular-nums }
+.qs .q { font-weight: 700; margin: 0 }
+.qs p { margin: 0 }
+.qs .dflt { border-top: 1px solid var(--hair); padding-top: 8px }
+.files li code { font-size: 0.875rem }
+.phase2 .two > div > ol, .phase2 .two > div > ul { padding-left: 22px; margin: 0 0 12px; display: grid; gap: 8px }
+.foot { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 0.875rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    {{wordmark}}
+    <p class="status" style="margin:0">{{status}}</p>
+  </header>
+
+  <main id="main">
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Edition 06 · Gate 1</p>
+      <h1>{{title}}</h1>
+      <p class="meta"><time datetime="2026-10-21">October 21, 2026</time> · Oath &amp; Action Brand Guide · Phase 1</p>
+    </div>
+    <p class="lede">{{lede}} This page sets each decision beside the drawings it needs, with the studio's recommendation and what it costs under each one.</p>
+  </div>
+
+  <nav class="toc" aria-label="On this page">
+    <ol>
+      <li><a href="#approve">What you are asked to approve</a></li>
+      <li><a href="#identity">One identity</a></li>
+      <li><a href="#calls">The seven big calls</a></li>
+      <li><a href="#fixes">Six identity fixes</a></li>
+      <li><a href="#set">Twenty-two recommendations</a></li>
+      <li><a href="#scores">Rubric scores</a></li>
+      <li><a href="#risks">Risks</a></li>
+      <li><a href="#phase2">Phase 2 proposal</a></li>
+      <li><a href="#questions">Questions for you</a></li>
+      <li><a href="#files">Files</a></li>
+    </ol>
+  </nav>
+
+  <section class="ask" id="approve" aria-labelledby="approve-h">
+    <p class="eyebrow">From the Gate 1 report</p>
+    <h2 id="approve-h">What you are asked to approve</h2>
+    <ol class="asklist">{{approve_items}}</ol>
+    <div class="reply">
+      <p class="reply-label" id="reply-label">{{reply_intro}}</p>
+      <p class="reply-text" id="reply-text" tabindex="0" aria-labelledby="reply-label">{{reply}}</p>
+      <div class="reply-row">
+        <button type="button" class="btn" id="copy-btn" data-copy="reply-text">Copy the sample reply</button>
+        <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+    <p class="after">{{approve_after}}</p>
+  </section>
+
+  <section class="block" id="identity" aria-labelledby="identity-h">
+    <div class="sec-head">
+      <p class="eyebrow">Symbol board, section 11</p>
+      <h2 id="identity-h">One identity, the recommended set</h2>
+    </div>
+    <p class="sec-intro">This Act post shows every studio recommendation at once: ampersand B in the wordmark, Direction A's pillar marks, the V2 hinge diagram as a divider and the red rule, with one working red on the Act handle. The first post sets the wordmark at today's width and the second at the condensed 7.5 to 1 width. The third covers the wordmark, so you can judge whether the system still reads as Oath &amp; Action without it.</p>
+    {{composite}}
+  </section>
+
+  <section class="block" id="calls" aria-labelledby="calls-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 4</p>
+      <h2 id="calls-h">The seven big calls</h2>
+    </div>
+    <p class="sec-intro">These seven change what the brand looks like or what it says. Each one below shows the options side by side, with V5 first.</p>
+    {{calls_table}}
+    {{calls}}
+  </section>
+
+  <section class="block" id="fixes" aria-labelledby="fixes-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 5</p>
+      <h2 id="fixes-h">Six identity fixes to approve by name</h2>
+    </div>
+    <p class="sec-intro">{{fixes_intro}}</p>
+    <div class="fixes">{{fixes}}</div>
+  </section>
+
+  <section class="block" id="set" aria-labelledby="set-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 6</p>
+      <h2 id="set-h">Twenty-two studio recommendations, approved as a set</h2>
+    </div>
+    <p class="sec-intro">{{set_intro}}</p>
+    {{set_groups}}
+  </section>
+
+  <section class="block" id="scores" aria-labelledby="scores-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 3</p>
+      <h2 id="scores-h">Rubric scores</h2>
+    </div>
+    {{rubric}}
+  </section>
+
+  <section class="block" id="risks" aria-labelledby="risks-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 7</p>
+      <h2 id="risks-h">Risks</h2>
+    </div>
+    {{risks}}
+  </section>
+
+  <section class="block phase2" id="phase2" aria-labelledby="phase2-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 9, condensed</p>
+      <h2 id="phase2-h">The Phase 2 proposal</h2>
+    </div>
+    {{phase2}}
+  </section>
+
+  <section class="block" id="questions" aria-labelledby="questions-h">
+    <div class="sec-head">
+      <p class="eyebrow">Report section 10</p>
+      <h2 id="questions-h">Questions only you can answer</h2>
+    </div>
+    <p class="sec-intro">Each has a default the studio follows until you answer.</p>
+    <ol class="qs">{{questions}}</ol>
+  </section>
+
+  <section class="block" id="files" aria-labelledby="files-h">
+    <div class="sec-head">
+      <h2 id="files-h">Files</h2>
+    </div>
+    <p class="sec-intro">The five detailed boards sit in <code>work/boards/</code> and hold the full evidence for every item above. The report holds the verification, research and change log.</p>
+    <ul class="list files">{{files}}</ul>
+  </section>
+  </main>
+
+  <footer class="foot"><span>Oath &amp; Action · Brand Guide Edition 06 · Gate 1</span><span>Built from the Gate 1 report on October 21, 2026. Review only. No master has changed.</span></footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-btn');
+  var src = document.getElementById('reply-text');
+  var status = document.getElementById('copy-status');
+  if (!btn || !src || !status) return;
+  function selectText() {
+    var range = document.createRange();
+    range.selectNodeContents(src);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  function fallback() {
+    selectText();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    status.textContent = ok ? 'Copied. Paste it into your reply and edit it.' : 'The reply is selected. Press Ctrl+C, or Command+C on a Mac, to copy it.';
+  }
+  btn.addEventListener('click', function () {
+    var text = src.textContent.trim();
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () {
+        status.textContent = 'Copied. Paste it into your reply and edit it.';
+      }, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>

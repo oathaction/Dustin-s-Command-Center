@@ -2,7 +2,7 @@
 
 Phase 1, October 21, 2026, oa-creative-director. Revised the same day after the creative director and editor reviews (`20261021_CD-Review-Of-Phase-1.md`, `20261021_Editor-Review-Of-Phase-1.md`). Board: `work/boards/20261021_Strategy-And-Direction-Board.html`, with assets in `work/boards/phase-1/strategy/`. Everything here is a proposal for Gate 1. No master, locked line or guide chapter changes.
 
-Terms used below: the **lockmark** is the 3 by 3 grid of nodes beside the wordmark, with a larger red node, the **lever**, at bottom right. The **Signal Grid** is the same grid used to code content. A **hinge headline** joins two noun phrases with the V5 master ampersand in the view's working red. The **hinge divider** is a hairline broken by a small Charcoal ampersand, placed before "What you can do." The **hinge diagram** is the drawing of OATH and ACTION joined through the ampersand. Chapter numbers follow `work/ledger/20261021_Guide-Architecture-Map.md`.
+Terms used below: the **lockmark** is the 3 by 3 grid of nodes beside the wordmark, with a larger red node, the **lever**, at bottom right. The **Signal Grid** is the same grid used to code content. A **hinge headline** joins two noun phrases with the V5 master ampersand in the view's working red. The **hinge divider** is a hairline broken by a small ampersand in its surface's ink (Charcoal on Newsprint and White), placed before "What you can do." The **hinge diagram** is the drawing of OATH and ACTION joined through the ampersand. Chapter numbers follow `work/ledger/20261021_Guide-Architecture-Map.md`.
 
 ## Decision or verdict
 
@@ -11,7 +11,7 @@ Terms used below: the **lockmark** is the 3 by 3 grid of nodes beside the wordma
 3. Keep one masterbrand. Products take plain descriptive names, and the atlas keeps "Who Do They Answer To?" with V7's own endorsement, "The Oath & Action Systems Atlas." The atlas, the trackers and the data never take a position.
 4. Give "From spectators to stewards." no brand-line role, and record it in 01 Purpose as the founding line. Use "Democracy has a structure." only to explain the lockmark in 08 The Signal Grid.
 5. Publish Act pieces in two labeled kinds, process and position, with a fairness kit on every position piece.
-6. Adopt the nonpartisan rule set in section 6 as Rules 01.1 to 01.20 in 01 Purpose, with the red rule as Rule 01.1.
+6. Adopt the nonpartisan rule set in section 6 as Rules 01.1 to 01.20 in 01 Purpose, with Rule 01.1 "Red never marks a party, a side or a person." The red rule stays Rule 05.3 in 05 Color, and 01 cites it (D1-27).
 7. From Dustin's references, take the condensed wordmark, the serif red ampersand, the hinge circle and the data-led card. Section 7 lists what to leave out, including domes, slogans, invented numbers and red on Prussian.
 
 ## 1. Positioning and the brand idea
@@ -42,11 +42,11 @@ The pillar order stays exactly as locked. The hinge sits between Track and Conne
 |---|---|
 | A commitment, then action | "The campaign pledge & the roll call." |
 | Cause and effect | "The zoning code & the rent." |
-| Problem and solution | "The permit delay & the by-right rule." (studio draft; C15 asks the editor to redraft "The proposal & the outcome.", which names no problem) |
+| Problem and solution | "The lead pipe rule & your tap water." (the editor's pair, which names the problem inside the rule) |
 | You and me | "Your signature & the ballot question." |
 | Common ground across the left and the right | "The compromise & the law." |
 
-Every hinge headline sets the V5 master ampersand (`work/extract/v5-polished/sprite/amp.svg`) at the words' cap height, never the display face's own ampersand. Both halves of a pair take the same color and weight. Only the ampersand is red, as the view's working red (Rule 01.1).
+Every hinge headline sets the V5 master ampersand (`work/extract/v5-polished/sprite/amp.svg`) at the words' cap height, never the display face's own ampersand. Both halves of a pair take the same color and weight. Only the ampersand is red, as the view's working red (Rule 05.3).
 
 **House format for "you & me" pieces.** Arguments for and against, then each party's majorities, sourced. The Program for Public Consultation works this way: respondents rate the strongest arguments on each side, and results show Republican and Democratic majorities side by side (research ledger I4, checked through search results only; its panels are online opt-in).
 
@@ -146,7 +146,7 @@ The pattern lives in 13 Evidence and sourcing.
 | Ask | A step with a date and a place, with no side taken | Support or oppose a named measure |
 | Both readings | Supporters' and opponents' arguments, equal length, sourced | "The strongest case against," before the ask |
 | Before the ask | Hinge divider, its ampersand Charcoal | Hinge divider, its ampersand Charcoal, then the disclosure line directly above the button |
-| Red | The ask button, the view's one working red (Rule 01.1) | The ask button, the view's one working red. The label stays Charcoal |
+| Red | The ask button, the view's one working red (Rule 05.3) | The ask button, the view's one working red. The label stays Charcoal |
 | Links | The tracker for the measure | The neutral explainer and tracker, the methods page and the position log |
 
 **What keeps a position piece fair**
@@ -163,10 +163,12 @@ The board shows both kinds as mock layouts, with "Illustrative" beside every inv
 
 ## 6. Nonpartisan rule set
 
-The set lives in 01 Purpose as Rules 01.1 to 01.20, one public set that other chapters cite. The IDs follow the architecture map's Rule NN.n form, which cannot collide with Atlas V7 IDs (C4). Rule 01.1 is the red rule, quoted from the creative director review; it replaces the earlier red and Prussian wording.
+The set lives in 01 Purpose as Rules 01.1 to 01.20, one public set that other chapters cite. The IDs follow the architecture map's Rule NN.n form, which cannot collide with Atlas V7 IDs (C4). The red rule keeps its home as Rule 05.3 in 05 Color (D1-27), and 01 cites it. Quoted from D1-26:
+
+> Rule 05.3. The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither does the ampersand inside the hinge diagram, which is an identity mark. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian.
 
 **Color**
-- Rule 01.1. The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian.
+- Rule 01.1. Red never marks a party, a side or a person.
 - Rule 01.2. A comparison of two sides never uses red against any blue, or red against Verdigris. Two sides take Charcoal and Stone, or solid and outline, with direct labels.
 - Rule 01.3. Diverging scales center on Newsprint, use two hues outside the red and blue pair, and name both directions in words. The data visualization lead sets values in Phase 3.
 - Rule 01.4. Identity marks on Prussian use treatment D, one color White, as V5 sets its letters. Data graphics on Prussian keep the token table's Newsprint (C2).
@@ -222,7 +224,7 @@ Scored on Master Brief V2 section 6, for the board and this document as one item
 |---|---|---|
 | Craft | 3 | The Act mocks are working sketches in board CSS, at no true specimen ratio |
 | Clarity | 4 | Each section opens with its recommendation, and every term is defined at first use |
-| Brand fidelity | 4 | Locked lines are quoted exactly (checked by script). Hinge headlines set the V5 master glyph, each view carries one working red under Rule 01.1, and the hinge diagram is the identity board's V2 |
+| Brand fidelity | 4 | Locked lines are quoted exactly (checked by script). Hinge headlines set the V5 master glyph, each view carries one working red under Rule 05.3, and the hinge diagram is the identity board's V2 |
 | Usefulness | 4 | Twenty rules with Rule NN.n IDs, naming patterns and a fairness kit a producer can apply. Tokens wait for Phase 2 |
 | Evidence honesty | 4 | Every invented item carries "Illustrative" beside it, Loop R9 keeps its hypothesis grade, and judgments are labeled |
 | Accessibility | 4 | axe-core 4.10.2 found no violations at 1440 or 390 px, text is 13 px or larger, and all 12 tab stops show focus. Screen readers and other browsers are untested |
@@ -231,7 +233,6 @@ Scored on Master Brief V2 section 6, for the board and this document as one item
 
 - Craft, at Phase 2: rebuild both Act layouts as true-size specimens at 1440 and 390 px in guide tokens, with the type scale, the hinge divider master and the finished position label.
 - The data visualization lead confirms the diverging-scale hues for Rule 01.3 in Phase 3.
-- The editor redrafts the problem-and-solution hinge pair (C15).
 - The research lead checks prior use of "From spectators to stewards." if Dustin wants it in use.
 
 ## Risks for Dustin to weigh
@@ -249,13 +250,13 @@ L marks a change to a locked element or identity geometry. It needs Dustin's app
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
 | 1 | Brand idea | Adopt the hinge as the organizing idea, as written; or with edits | Adopt. Every locked line already has its shape |
-| 2 | Hinge diagram (L) | Identity V2, solid arcs, clockwise; two-way dashed arcs as in the mockups; V5's dotted arc | Identity V2. Dotted and dashed lines stay with evidence grades (D1-21) |
+| 2 | Hinge diagram (L) | V5's dotted arc; two-way dashed arcs; V2 with solid arcs; V2 without the return arc | V2 with solid arcs, running clockwise, with the five separation rules |
 | 3 | Architecture | Masterbrand with descriptive names; separately branded products | Masterbrand. One trust mark across products |
 | 4 | "Dispatch from the Front" | Rename to "Dispatch"; keep | Rename. V5's kicker already uses "Dispatch" |
 | 5 | "From spectators to stewards." | None, recorded as the founding line in 01 Purpose; membership and events only; restore in lockups (L) | None. It scolds the newcomer and competes with the tagline |
 | 6 | "Democracy has a structure." | Lockmark explanation in 08 The Signal Grid; brand line; none | Lockmark explanation. It restates V5's meaning of the grid |
 | 7 | Act pattern | Two kinds with the fairness kit; positions without the kit | Two kinds with the kit, label "Our position" (editor's option A) |
-| 8 | Nonpartisan rule set | Adopt Rules 01.1 to 01.20; adopt with edits | Adopt, with the red rule as Rule 01.1 (identity decision I10) |
+| 8 | Nonpartisan rule set | Adopt Rules 01.1 to 01.20; adopt with edits | Adopt Rules 01.1 to 01.20 in 01 Purpose, with Rule 01.1 "Red never marks a party, a side or a person."; the red rule stays Rule 05.3 in 05 Color, and 01 cites it |
 | 9 | Seals (L) | V5 rule plus a wordless hinge-circle badge; ring-of-words seals | V5 rule plus the badge. V5: "Seals imply an authority we do not claim." |
 | 10 | Signal Grid pattern | Allow at low density with no lit nodes; keep V5's "never wallpaper" | Allow, with limits. The references use it well on covers and merchandise |
 | 11 | Photography default | Black and white documentary; color | Black and white, with color where it carries evidence |
@@ -287,5 +288,7 @@ L marks a change to a locked element or identity geometry. It needs Dustin's app
 First pass, created: this file; `work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md`; `work/boards/20261021_Strategy-And-Direction-Board.html`; in `work/boards/phase-1/strategy/`: `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, `20261021_Strategy-Board-Render-1440.jpg`, `20261021_Strategy-Board-Render-390.jpg` and 17 review copies in `refs/`; in `work/build/scripts/phase-1/`: `cd_wordmark_proportions.py`, `cd_reference_thumbs.py`, `cd_build_strategy_board.py` and `cd_check_board.js`.
 
 Review pass, modified: this file, the board, `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, both render JPEGs, `cd_build_strategy_board.py` and `cd_check_board.js`. The board now reads the identity board's V2 hinge masters from `work/boards/phase-1/identity/07-hinge/` without changing them.
+
+Recheck pass (D1-26, D1-27), modified: this file, the board, `strategy-board.template.html`, `20261021_Board-Render-Report.json` and both render JPEGs. The red rule is Rule 05.3 with D1-26's wording, Rule 01.1 is the party clause again, decisions 2 and 8 follow the recheck, and the problem-and-solution pair is the editor's.
 
 Nothing in `source/` or `work/extract/` changed.

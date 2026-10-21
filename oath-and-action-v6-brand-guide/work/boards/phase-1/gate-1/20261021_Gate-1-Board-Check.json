@@ -1,0 +1,327 @@
+{
+ "board": "work/boards/20261021_Gate-1-Review-Board.html",
+ "checked": "2026-10-21T05:09:49.444Z",
+ "bytes": 3405179,
+ "megabytes": 3.25,
+ "underTenMegabytes": true,
+ "startsWithTitle": true,
+ "hasSkeletonTags": true,
+ "externalScripts": 0,
+ "stylesheetLinks": [
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap"
+ ],
+ "nonDataImageSources": 0,
+ "axeVersion": "4.10.2",
+ "renderedIn": "Chromium chromium, wrapped in a standard skeleton with lang=\"en\"",
+ "views": [
+  {
+   "width": 1440,
+   "scheme": "light",
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "horizontalScroll": false,
+   "images": 225,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 13,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 10,
+    "h3": 19,
+    "h4": 27,
+    "h5": 4
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 206,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 25,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 20,
+   "pageHeight": 30791,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to approve",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "One identity",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "The seven big calls",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Six identity fixes",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 32,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    }
+   ],
+   "pageErrors": [],
+   "screenshot": "work/boards/screens/gate-1/gate1-1440-light.png"
+  },
+  {
+   "width": 1440,
+   "scheme": "dark",
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "horizontalScroll": false,
+   "images": 225,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 13,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 10,
+    "h3": 19,
+    "h4": 27,
+    "h5": 4
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 206,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 25,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 20,
+   "pageHeight": 30791,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to approve",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "One identity",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "The seven big calls",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Six identity fixes",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 32,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    }
+   ],
+   "pageErrors": [],
+   "screenshot": "work/boards/screens/gate-1/gate1-1440-dark.png"
+  },
+  {
+   "width": 390,
+   "scheme": "light",
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "horizontalScroll": false,
+   "images": 225,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 13,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 10,
+    "h3": 19,
+    "h4": 27,
+    "h5": 4
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 206,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 25,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 20,
+   "pageHeight": 49432,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to approve",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "One identity",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "The seven big calls",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Six identity fixes",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 32,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 86
+    }
+   ],
+   "pageErrors": [],
+   "screenshot": "work/boards/screens/gate-1/gate1-390-light.png"
+  },
+  {
+   "width": 390,
+   "scheme": "dark",
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "horizontalScroll": false,
+   "images": 225,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 13,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 10,
+    "h3": 19,
+    "h4": 27,
+    "h5": 4
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 206,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 25,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 20,
+   "pageHeight": 49432,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to approve",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "One identity",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "The seven big calls",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Six identity fixes",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 32,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 86
+    }
+   ],
+   "pageErrors": [],
+   "screenshot": "work/boards/screens/gate-1/gate1-390-dark.png"
+  }
+ ],
+ "chromium": "141.0.7390.37",
+ "reducedMotion": {
+  "scrollBehaviorWhenReduced": "auto",
+  "animations": 0
+ },
+ "summary": {
+  "noHorizontalScroll": true,
+  "allImagesLoad": true,
+  "noTextUnder13px": true,
+  "oneH1NoSkips": true,
+  "axeZeroViolations": true,
+  "noRedOutsideSpecimens": true,
+  "allImagesHaveAlt": true,
+  "tabularFiguresInTables": true,
+  "scrollRegionsFocusable": true,
+  "focusVisible": true,
+  "copyControlResponds": true,
+  "tokenRatiosMatchWcag": true,
+  "reducedMotionRespected": true,
+  "underTenMegabytes": true
+ }
+}

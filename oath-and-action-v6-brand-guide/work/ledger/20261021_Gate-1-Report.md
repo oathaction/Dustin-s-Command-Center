@@ -39,7 +39,9 @@ Section 10 has four new questions only you can answer. Each has a default the st
 | Review of every word on every board | Editor | `20261021_Editor-Review-Of-Phase-1.md` |
 | Rubric review, cross-board conflicts, the red rule | Creative director | `20261021_CD-Review-Of-Phase-1.md` |
 | Fix round on all five boards and their notes | Each maker, resumed with the reviews | The boards and notes above |
-| Re-check and re-score after the fixes | Creative director | `20261021_CD-Recheck-After-Fixes.md` |
+| Re-check and re-score after the fixes. It found four defects that would have misled you | Creative director | `20261021_CD-Recheck-After-Fixes.md` |
+| Final fix pass on those four defects, the red rule's wording and one set of chapter instruction lines | Each maker, resumed; the editor and UX lead for the instruction lines | The boards and notes above |
+| Final check of the four defects, and the rubric scores in section 3 | Creative director | `20261021_CD-Final-Check.md` |
 | This report | Main session | This file |
 | The combined Gate 1 board, built by script from this report | Engineer | `work/boards/20261021_Gate-1-Review-Board.html`; builder `work/build/scripts/phase-1/build_gate1_board.py` |
 
@@ -77,8 +79,8 @@ RUBRIC_PENDING
 |---|---|---|---|---|
 | 1 | The ampersand | I4 (L) | V5's Lora glyph; A, V5's glyph tuned, with true small masters; B, a drawn ampersand of Oath & Action's own | B as the direction, A as the fallback |
 | 2 | The wordmark's width | I5 (L) | Phase 2 draws a condensed wordmark at 7.5 to 1 for a final choice at Gate 2; keep today's width and stop | Draw it, with today's width in force until Gate 2 |
-| 3 | The hinge diagram | I6 (L) | V5's dotted arc; the dashed arcs of your mockup; V2, solid hairline arcs running clockwise | V2, with the five separation rules |
-| 4 | Red's job, and the ampersand on Prussian | I10; I9 (L) | Adopt the red rule, or keep each board's wording. On Prussian: A, red at display size; B, Newsprint; C, red with a keyline; D, White | Adopt the red rule, and D |
+| 3 | The hinge diagram | I6 (L) | V5's dotted arc; two-way dashed arcs, as in your mockup; V2 with solid arcs running clockwise; V2 without the return arc | V2 with solid arcs, running clockwise, with the five separation rules |
+| 4 | Red's job, and the ampersand on Prussian | I10; I9 (L) | Adopt the red rule as Rule 05.3, or keep each board's wording. On Prussian: B, Newsprint; D, White. The rule rules out A, red at display size, and C, red with a keyline | Adopt the red rule, and D |
 | 5 | The pillar marks | Y1 | A, geometric solid; B, line with one accent | A |
 | 6 | The brand lines | S3; S4 | Voice line: keep V5's, or A, B or C. "From spectators to stewards.": no role, recorded in 01 Purpose; membership and events only; lockups (L) | Revision B, and no role |
 | 7 | Position pieces | S6 | Two labeled Act kinds with the fairness kit; positions without the kit. Label: "Our position", "Opinion" or "Position: Support" | Two kinds with the kit, labeled "Our position" |
@@ -99,15 +101,17 @@ The studio recommends one proper drawing pass in Phase 2, so that you choose bet
 
 ### 3. The hinge diagram
 
-Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. V5's hinge arc is dotted and your mockup's arcs are dashed, so to an atlas reader either one would say the brand is a guess. V2 follows your mockups: the ampersand in a circle, OATH and ACTION on a line with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath. Five rules on the systems board keep it apart from data marks. The display master holds 13 px labels from 526 px wide, and the compact master drops the labels and works down to 241 px.
+Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. V5's hinge arc is dotted and your mockup's arcs are dashed, so to an atlas reader either one would say the brand is a guess. V2 follows your mockups: the ampersand in a circle, OATH and ACTION on a line with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath. Five rules on the systems board keep it apart from data marks. The identity board also draws V2 without its return arc. Under the red rule's wording in call 4, the hinge diagram is an identity mark of its own, so it never shares a view with the wordmark. A piece that needs the hinge beside the wordmark uses the hinge divider. The display master holds 13 px labels from 526 px wide, and the compact master drops the labels and works down to 241 px.
 
 ### 4. Red's job, and the ampersand on Prussian
 
-The creative director found red's job written five ways across the boards, and the Act mocks spent two reds in one view. One rule replaces all five:
+The creative director found red's job written five ways across the boards, and the Act mocks spent two reds in one view. One rule replaces all five. It would be Rule 05.3, in 05 Color:
 
-> The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian.
+> The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither does the ampersand inside the hinge diagram, which is an identity mark. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian.
 
-On Prussian, V5's red ampersand measures 2.27:1 at 16 px. White measures 8.27:1 there and 13.28:1 at 96 px. The rule's last sentence rules out options A and C, so the studio recommends D for identity marks. Data graphics on Prussian keep Newsprint. The cost is that red appears less often than in your mockups, and the Prussian banner loses its red ampersand.
+The re-check after the fix round tested this wording on every board and found four cases it left open: the divider's ink on dark surfaces, the hinge diagram's own ampersand, a reform with several targets, and the guide's own failure cases and swatches. The four sentences that settle them are part of the wording above.
+
+On Prussian, V5's red ampersand measures 2.27:1 at 16 px. White measures 8.27:1 there and 13.28:1 at 96 px. The rule's last sentence rules out options A and C, which leaves B and D, and the studio recommends D for identity marks. Data graphics on Prussian keep Newsprint. The cost is that red appears less often than in your mockups, and the Prussian banner loses its red ampersand.
 
 ### 5. The pillar marks
 
@@ -154,7 +158,7 @@ I3 carries whichever ampersand you choose in call 1.
 | S1 | Should the hinge, a promise and then the action that keeps it, organize the system? | Yes, as the strategy board writes it |
 | S2 | One masterbrand with plain product names, and "Dispatch from the Front" renamed "Dispatch"? | Yes to both. V5's kicker already says "Dispatch", and a front is a war metaphor |
 | S5 | What role does "Democracy has a structure." take? | It explains the lockmark in 08 The Signal Grid and on the About page |
-| S7 | Adopt the twenty nonpartisan rules? | Adopt them as Rules 01.1 to 01.20 in 01 Purpose, with the red rule as Rule 01.1 |
+| S7 | Adopt the twenty nonpartisan rules? | Adopt them as Rules 01.1 to 01.20 in 01 Purpose, with Rule 01.1 "Red never marks a party, a side or a person." The red rule keeps its home as Rule 05.3 in 05 Color, and 01 cites it |
 | S8 | Which house format for "you & me" pieces? | The strongest arguments for and against, then each party's majorities side by side, sourced, as the Program for Public Consultation does |
 | S10 | What is the photography default? | Black and white, with color where color is evidence. Labeled placeholders until photography is settled |
 | Y2 | Approve the four skeletons and the shared node? | Yes, with the node. Raise Track, and test Act at 16 px |
@@ -172,7 +176,7 @@ I3 carries whichever ampersand you choose in call 1.
 | T2 | Chapter numbers, anchors and rule IDs? | Chapters 01 to 28, word anchors, V5 anchors kept as aliases, Rule NN.n |
 | T3 | Navigation, template and interaction? | As proposed on the wireframe board |
 | T4 | Derived colors? | Mixed in OKLab. Deep Stone at 18 percent (#4E535B, 5.49:1 on Newsprint). Adopt Dim Newsprint and Error Band |
-| T5 | The rest of the token architecture? | As proposed |
+| T5 | The rest of the token architecture? | As proposed, including the red rule with keylines and no derived red (T-6) and the ask button's White label at 19 px bold, 4.17:1 (T-7) |
 
 ## 7. Risks
 
@@ -242,7 +246,7 @@ These are added to `work/ledger/20261020_Open-Questions.md`.
 
 ## 11. Decisions made
 
-The studio's routine decisions D1-01 to D1-25 are in `work/ledger/20261020_Decision-Log.md`. Four of them set working rules for the boards: D1-20 the red rule, D1-21 no dotted or dashed line in any brand graphic, D1-22 the hinge divider's ink, and D1-23 the ask button. They become guide rules only through your answers to call 4 and the set in section 6.
+The studio's routine decisions D1-01 to D1-27 are in `work/ledger/20261020_Decision-Log.md`. Six of them set working rules for the boards: D1-20 the red rule, D1-21 no dotted or dashed line in any brand graphic, D1-22 the hinge divider's ink, D1-23 the ask button, D1-26 the red rule's amended wording and D1-27 its ID, Rule 05.3. They become guide rules only through your answers to call 4 and the set in section 6.
 
 ## 12. Change log
 
@@ -265,5 +269,5 @@ Phase 1 changed no V5 master and no file in `source/` or `work/extract/`. Your t
 - `CLAUDE.md` and all seven files in `.claude/agents/`, to point to Brief V2 and to add the naming rule for living ledgers
 - `brief/phase-prompts/20261020_V6-Phase-0-Intake-And-Review.md`, ledger names
 - `.gitignore`
-- `work/ledger/`: `20261020_Decision-Log.md` (DC-05 to DC-10, D1-01 to D1-25), `20261020_Change-Ledger.md` (C-002 to C-004), `20261020_Open-Questions.md` (Q-01 to Q-10 answered, Q-11 to Q-14 added), `20261020_Source-Manifest.md` (the October 21 additions)
+- `work/ledger/`: `20261020_Decision-Log.md` (DC-05 to DC-10, D1-01 to D1-27), `20261020_Change-Ledger.md` (C-002 to C-004), `20261020_Open-Questions.md` (Q-01 to Q-10 answered, Q-11 to Q-14 added), `20261020_Source-Manifest.md` (the October 21 additions)
 - `work/research/20261020_Rights-Ledger.md`, with the Phase 1 rights addendum appended

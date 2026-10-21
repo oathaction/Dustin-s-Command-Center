@@ -1,0 +1,450 @@
+{
+ "post-today-width.jpg": {
+  "source": "20261021_Symbol-Family-Board.html#h-co",
+  "selector": "#composite .post",
+  "scale": 2,
+  "cssWidth": 360,
+  "cssHeight": 450,
+  "bytes": 67861
+ },
+ "post-condensed-width.jpg": {
+  "source": "20261021_Symbol-Family-Board.html#h-co",
+  "selector": "#composite .post",
+  "scale": 2,
+  "cssWidth": 360,
+  "cssHeight": 450,
+  "bytes": 68859
+ },
+ "post-wordmark-covered.jpg": {
+  "source": "20261021_Symbol-Family-Board.html#h-co",
+  "selector": "#composite .post",
+  "scale": 2,
+  "cssWidth": 360,
+  "cssHeight": 450,
+  "bytes": 58891
+ },
+ "sym-A-filled-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 889
+ },
+ "sym-A-filled-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 1784
+ },
+ "sym-A-filled-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 885
+ },
+ "sym-A-filled-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 1785
+ },
+ "sym-A-filled-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1893
+ },
+ "sym-A-filled-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3746
+ },
+ "sym-A-filled-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1342
+ },
+ "sym-A-filled-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, filled, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 2458
+ },
+ "sym-A-line-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 949
+ },
+ "sym-A-line-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 1893
+ },
+ "sym-A-line-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 860
+ },
+ "sym-A-line-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 1699
+ },
+ "sym-A-line-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 2606
+ },
+ "sym-A-line-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 5340
+ },
+ "sym-A-line-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1376
+ },
+ "sym-A-line-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, line, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 2716
+ },
+ "sym-A-tile-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1383
+ },
+ "sym-A-tile-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Explain, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 2699
+ },
+ "sym-A-tile-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1400
+ },
+ "sym-A-tile-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Track, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 2687
+ },
+ "sym-A-tile-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 2056
+ },
+ "sym-A-tile-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Connect, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 4004
+ },
+ "sym-A-tile-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1627
+ },
+ "sym-A-tile-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-a",
+  "selector": "[role=\"group\"][aria-label=\"Act, tile, Direction A, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3214
+ },
+ "sym-B-filled-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1737
+ },
+ "sym-B-filled-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3578
+ },
+ "sym-B-filled-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1504
+ },
+ "sym-B-filled-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3114
+ },
+ "sym-B-filled-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 2027
+ },
+ "sym-B-filled-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3991
+ },
+ "sym-B-filled-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 2098
+ },
+ "sym-B-filled-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, filled, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 4205
+ },
+ "sym-B-line-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1536
+ },
+ "sym-B-line-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3024
+ },
+ "sym-B-line-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1250
+ },
+ "sym-B-line-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 2436
+ },
+ "sym-B-line-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 3131
+ },
+ "sym-B-line-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 6329
+ },
+ "sym-B-line-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1869
+ },
+ "sym-B-line-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, line, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3727
+ },
+ "sym-B-tile-explain-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1929
+ },
+ "sym-B-tile-explain-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Explain, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3735
+ },
+ "sym-B-tile-track-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1613
+ },
+ "sym-B-tile-track-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Track, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 3224
+ },
+ "sym-B-tile-connect-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 2841
+ },
+ "sym-B-tile-connect-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Connect, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 5772
+ },
+ "sym-B-tile-act-48.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 48",
+  "scale": 2,
+  "cssWidth": 48,
+  "cssHeight": 48,
+  "bytes": 1972
+ },
+ "sym-B-tile-act-96.png": {
+  "source": "20261021_Symbol-Family-Board.html#h-direction-b",
+  "selector": "[role=\"group\"][aria-label=\"Act, tile, Direction B, on Newsprint, at 16, 24, 48 and 96 px\"] .mc 96",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 4057
+ },
+ "act-mock-process.jpg": {
+  "source": "20261021_Strategy-And-Direction-Board.html#h-act",
+  "selector": "#act article.mock",
+  "scale": 2,
+  "cssWidth": 574,
+  "cssHeight": 609,
+  "bytes": 155053
+ },
+ "act-mock-position.jpg": {
+  "source": "20261021_Strategy-And-Direction-Board.html#h-act",
+  "selector": "#act article.mock",
+  "scale": 2,
+  "cssWidth": 574,
+  "cssHeight": 744,
+  "bytes": 221474
+ },
+ "systems-evidence-lines.png": {
+  "source": "20261021_Systems-Marks-Board.html#m1",
+  "selector": "#m1 .opt.rec-opt .surfaces:not(.gray)",
+  "scale": 2,
+  "cssWidth": 1150,
+  "cssHeight": 269,
+  "bytes": 103152
+ },
+ "systems-typed-chips.png": {
+  "source": "20261021_Systems-Marks-Board.html#m3",
+  "selector": "#m3 .opt.rec-opt .surfaces",
+  "scale": 2,
+  "cssWidth": 1150,
+  "cssHeight": 400,
+  "bytes": 256004
+ },
+ "ref-p07-seals.jpg": {
+  "source": "phase-1/strategy/refs/20261021_Ref-Page-07.jpg (strategy board #h-art)",
+  "selector": "clip {\"x\":118,\"y\":287,\"width\":318,\"height\":100}",
+  "scale": 1,
+  "cssWidth": 318,
+  "cssHeight": 100,
+  "bytes": 9343
+ }
+}

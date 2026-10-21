@@ -1,6 +1,6 @@
 # Token architecture
 
-Oath & Action Brand Guide, Edition 06. Phase 1 proposal for Gate 1, October 21, 2026, by oa-engineer, revised after the Phase 1 reviews. Nothing ships before Dustin decides section 9.
+Oath & Action Brand Guide, Edition 06. Phase 1 proposal for Gate 1, October 21, 2026, by oa-engineer, revised after review. Nothing ships before Dustin decides section 9.
 
 A token is a named design value that the guide, the asset package and builders all read from one file. Figures come from `work/build/scripts/phase-1/tokens_phase1.py`.
 
@@ -26,7 +26,7 @@ Format rules that shape the design:
 | Semantic | A role on a surface | Primitives | `oa.color.text.secondary.onNewsprint` |
 | Component | One part of one component | Semantic tokens | `oa.component.button.ask.fill.onNewsprint` |
 
-Identity marks use palette primitives, never tints. Red follows the creative director's red rule (review section 2): signature red in the wordmark and lever does not count, and each view spends one working red, on an error first, then the ask, then the headline's point. Data reaches red only through a future `data.emphasisRed` at that third rank. Series palettes go to Gate 2.
+Identity marks use palette primitives, never tints. Red follows Rule 05.3 (D1-26). Signature red (the wordmark's ampersand, the lever, the hinge diagram's ampersand) does not count. Each view gives one working red to one job: an error, else the ask, else the headline's point. One job may take several marks. Data reaches red only through a future `data.emphasisRed` at the third rank. Series palettes go to Gate 2.
 
 ## 3. Roles per surface
 
@@ -37,14 +37,14 @@ WCAG thresholds: 4.5:1 for text; 3:1 for large text (24 px, or 18.66 px bold), n
 | Text, primary | Charcoal 13.29 | Charcoal 18.73 | Newsprint 13.29 | White 13.28 |
 | Text, secondary | Deep Stone 5.49 | Deep Stone 7.74 | Dim Newsprint 7.26 | Dim Newsprint 5.14 |
 | Identity marks (signature red) | Pillar Red 2.96, logotype | Pillar Red 4.17 | Pillar Red 4.49 | White 13.28 |
-| Working red (one per view) | Pillar Red 2.96; 1 px Charcoal keyline 13.29 | Pillar Red 4.17 | Pillar Red 4.49 | None: red never sits on Prussian |
+| Working red (one job per view) | Pillar Red 2.96; 1 px Charcoal keyline 13.29 | Pillar Red 4.17 | Pillar Red 4.49 | None: red never sits on Prussian |
 | Graphic, essential; data emphasis | Charcoal 13.29 | Charcoal 18.73 | Newsprint 13.29 | Newsprint 9.42 |
 | Graphic, subtle; data context | Stone 4.29 | Stone 6.05 | Dim Newsprint 7.26 | Dim Newsprint 5.14 |
 | Border, strong (inputs) | Charcoal 13.29 | Charcoal 18.73 | Newsprint 13.29 | Newsprint 9.42 |
 | Border, hairline (decorative) | Stone 4.29 | Stone 6.05 | Stone 3.10 | White 13.28 |
 | Focus ring | Verdigris 3.37 | Verdigris 4.74 | Newsprint 13.29 | Newsprint 9.42 |
 
-The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. Stone and Verdigris on Newsprint, and Pillar Red on White and Charcoal, pass for large text only.
+The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian (D1-26). Stone and Verdigris on Newsprint, and Pillar Red on White and Charcoal, pass for large text only.
 
 **Derived values.** Three derived values fill gaps that no palette color serves:
 
@@ -81,7 +81,7 @@ Every state changes text or shape as well as color. No state uses opacity.
 
 Paired surfaces differ by 1.41:1, so the bar and glyph carry the selection. Pillar Red and Verdigris measure 1.14:1, so V5's "status never codes red against green" becomes "status never relies on red and Verdigris alone". A disabled action names its reason beside the control ("Choose a size to download") and in its accessible description.
 
-**Ask button.** The ask is the step a reader can take now, second in the red rule after an error.
+**Ask button.** The ask is the step a reader can take now, second in Rule 05.3 after an error.
 
 | Surface | Fill | Label, Inter 700 at 19 px | Edge |
 |---|---|---|---|
@@ -144,14 +144,14 @@ The floor is 13 px (0.8125 rem), with no screen exceptions. V5 set labels at 10 
 4. It passes contrast on every surface it serves, at the threshold for its kind, and stores the ratio.
 5. It is registered with a `$description` (usage notes), a tier and a status.
 
-The tier rules, the exact locked palette, the red rule and the 13 px floor apply as well. Held and rejected values stay unused.
+The tier rules, the exact locked palette, Rule 05.3 and the 13 px floor apply as well. Held and rejected values stay unused.
 
 **Test.** `token_rule_test.py` recomputes every derivation and contrast with its own formulas, so stored numbers cannot go stale. The draft passes: 157 tokens, 0 failures. Eleven broken copies each fail on their own check, among them an 11 px label, a red ask on Prussian and a 15 px ask label.
 
 ## 7. Generation pipeline
 
-1. **Source.** One DTCG file, `work/build/tokens/oa.tokens.json`, with the needs register and red rule in its root `$extensions`, as the schema draft sketches.
-2. **Validate.** The rule test runs first and stops the build on failure.
+1. **Source.** One DTCG file, `work/build/tokens/oa.tokens.json`, with the needs register and Rule 05.3 in its root `$extensions`, as the schema draft sketches.
+2. **Validate.** The rule test runs first; a failure stops the build.
 3. **Build.** A zero-dependency Node script, `build-tokens.mjs`, writes `tokens.css` (properties, surface classes, reduced-motion block, em media queries) and `tokens.json` (DTCG, aliases kept). A lint fails on raw hex or px font sizes outside `tokens.css`.
 4. **Parity.** Playwright at 1440 and 390 px checks `:root` properties, specimens marked `data-token`, values printed in the guide's tables, every computed color (artwork exempt), rendered contrast and reduced-motion durations against the JSON.
 5. **Versions.** SemVer from 6.0.0. A rename, removal or primitive change is major, and the palette needs Dustin's named approval. A new token or a passing value change is minor; notes are a patch. A replaced token carries `$deprecated`† for one minor release, with its old CSS name kept as an alias.
@@ -177,7 +177,7 @@ The page is chapter 26, in Production, as the architecture map places it (C9). T
 | T-3 | Derivation | OKLab; OKLCH | OKLab |
 | T-4 | Deep Stone | 18%, #4E535B, 5.49; 15%, #51565E, 5.24 | 18%, matching Concepts V2 |
 | T-5 | Dim Newsprint, Error Band | Adopt; hold | Adopt both |
-| T-6 | Red | The red rule with keylines; a derived red | The red rule; no small red text; no derived red |
+| T-6 | Red | Rule 05.3 with keylines; a derived red | Rule 05.3 (D1-26); no small red text or derived red |
 | T-7 | Ask button | White label (4.17); Charcoal label (4.49) | White label at 19 px bold, as V5 sets it |
 | T-8 | Warning, success, selected | As in section 4; tinted selection | As in section 4 |
 | T-9 | Type and measure | No screen exceptions; documented exceptions | No exceptions; labels 13 px at 6%; measures in rem |

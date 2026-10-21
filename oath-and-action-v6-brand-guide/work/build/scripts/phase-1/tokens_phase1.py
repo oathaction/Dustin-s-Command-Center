@@ -430,11 +430,9 @@ draft = {
                              "N-04": "Verdigris status marks on Prussian measure 2.80:1; held until the Phase 2 Signal Grid redesign",
                          },
                          "fontSizeExceptions": [],
-                         "redRule": ("The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) "
-                                     "then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point "
-                                     "the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge "
-                                     "divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."),
-                         "redRuleSource": "work/handoffs/phase-1/20261021_CD-Review-Of-Phase-1.md, section 2"}},
+                         "redRuleId": "Rule 05.3",
+                         "redRule": "The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither does the ampersand inside the hinge diagram, which is an identity mark. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian.",
+                         "redRuleSource": "work/ledger/20261020_Decision-Log.md, D1-26 (wording) and D1-27 (ID)"}},
     "oa": {
         "color": {
             "$description": "Identity, state and data color. Identity marks use palette primitives only.",
@@ -456,7 +454,7 @@ draft = {
                                            red={"redRole": "working", "precedence": 1})},
             },
             "identity": {
-                "signature": semantic("identity.signature", "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+                "signature": semantic("identity.signature", "Wordmark ampersand, lockmark lever and the hinge diagram's ampersand: signature red, which does not count against the view's working red (Rule 05.3)",
                                       "logotype", red={"redRole": "signature"}),
                 "hingeDivider": semantic("identity.hingeDivider", "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)", "graphic"),
             },
@@ -527,7 +525,7 @@ draft = {
               "ask": {
                 "fill": {on[s]: atok("color", "oa.color.action.ask.fill." + on[s], "Ask button fill", tier="component",
                                      fallback="{oa.component.button.primary.fill." + on[s] + "}",
-                                     redRule="Second claim on the view's working red; when an error holds it, use the primary button") for s in SURF},
+                                     redRule="Rule 05.3: second claim on the view's working red; when an error holds it, use the primary button") for s in SURF},
                 "label": {on[s]: atok("color", "oa.color.action.ask.label." + on[s], "Ask button label", tier="component") for s in SURF},
                 "keyline": {"onNewsprint": atok("color", "oa.color.border.strong.onNewsprint", "1 px edge that gives the red fill its boundary on Newsprint",
                                                 tier="component")},
