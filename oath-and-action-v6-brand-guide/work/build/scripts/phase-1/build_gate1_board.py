@@ -562,34 +562,52 @@ def call3():
 
 def call4():
     sec = board_section(idb, "item-10")
-    th, tr = board_table(sec, "Treatment table")
+    has_table = 'aria-label="Treatment table"' in sec
+    th, tr = board_table(sec, "Treatment table") if has_table else ([], [])
     tcap = re.search(r'<p class="cap">(Median contrast of the ampersand.s pixels against Prussian.*?)</p>', sec, flags=re.S)
-    # The treatments are the identity board's own p10 pairs, in board order; V5 is the first pair's original.
+    # The option set is the identity board's own p10 pairs, in board order.
     pids = re.findall(r'<div class="pair" id="(p10-[^"]+)">', sec)
     need(pids, "identity board item 10 has no p10 pairs")
-    prose = call_prose["4"][1]
-    out_letters = set(re.findall(r"\b([A-D])\b", (re.search(r"rules out (?:options? )?([A-D](?:,? (?:and |or )?[A-D])*)", prose) or [None, ""])[1]))
     rec_row = [r for r in call_rows if r[0] == "4"]
     rec_letter = (re.findall(r"\b([A-D])\b", rec_row[0][4]) or [None])[-1] if rec_row else None
-    treatments = [(pids[0], "orig", tr[0][0] if tr else "V5", "")]
+    rows = []
     for pid in pids:
-        name = pair_title(pid).split(":")[0]
-        letter = name[:1]
-        tag = "out" if letter in out_letters else ("rec" if letter == rec_letter else "")
-        treatments.append((pid, "prop", name, tag))
-    tags = {"out": '<span class="tag out" style="color:#DCD9D2">Ruled out by the red rule</span>', "rec": '<span class="tag rec">Studio recommendation</span>', "": ""}
+        if os.path.exists(idpng(pid, "orig__prussian__color__16.png")):
+            rows.append((pid, "orig", tr[0][0] if tr else "V5", ""))
+            break
+    for pid in pids:
+        title = pair_title(pid)
+        name = re.sub(r"\s*\(recommended\)", "", title.split(":")[0]).strip()
+        letter = re.sub(r"^Option ", "", name)[:1]
+        tag = "rec" if ("(recommended)" in title or letter == rec_letter) else ""
+        if os.path.exists(idpng(pid, "prop__prussian__color__16.png")):
+            rows.append((pid, "prop", name, tag))
+    tags = {"rec": '<span class="tag rec">Studio recommendation</span>', "": ""}
     r16, r96 = [], []
-    for folder, who, name, tg in treatments:
+    for folder, who, name, tg in rows:
         p16 = idpng(folder, f"{who}__prussian__color__16.png")
         p96 = idpng(folder, f"{who}__prussian__color__96.png")
         what = f"Wordmark on Prussian, {name}"
         r16.append(f'<div class="lrow"><p class="lname">{esc(name)}<span>{tags[tg]}</span></p>{cell(p16, "16 px", what + ", at 16 px, actual size")}{cell(p16, "16 px at 4x", what + ", at 16 px, magnified 4 times without smoothing", factor=4)}</div>')
         r96.append(f'<div class="item"><p class="lab"><b style="color:#DCD9D2">{esc(name)}</b> {tags[tg]}</p>{img(p96, what + ", at 96 px tall, actual size")}</div>')
-    h = ['<h4>On Prussian at 16 px</h4>']
-    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "Treatments on Prussian at 16 px"), "V5 first, then each option in the identity board's order. Renders at 1x from the identity board.", cls="prussian"))
-    h.append('<h4>On Prussian at 96 px</h4>')
+    names = ", ".join(r[2] for r in rows)
+    h = ['<h4>The options on Prussian at 16 px</h4>']
+    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "Treatments on Prussian at 16 px"), f"{esc(names)}, in the identity board's order. Renders at 1x from the identity board.", cls="prussian"))
+    h.append('<h4>The options on Prussian at 96 px</h4>')
     h.append(spec_figure(scroll(f'<div class="stack">{"".join(r96)}</div>', "Treatments on Prussian at 96 px"), "The same treatments at 96 px tall.", cls="prussian"))
-    h.append(html_table(th, tr, "Contrast on Prussian by treatment and size"))
+    ruled = re.search(r'<div class="ruled">(.*?)</div></div>', sec, flags=re.S)
+    if ruled:
+        rcap = re.search(r'<p class="cap">(.*?)</p>', ruled.group(1), flags=re.S)
+        figs = []
+        for fc, src, w, hh, alt in re.findall(r'<figure><figcaption>(.*?)</figcaption><img src="([^"]+)" width="(\d+)" height="(\d+)" alt="([^"]*)"', ruled.group(1), flags=re.S):
+            path = os.path.join(BOARDS, src)
+            pw, _ = image_size(path)
+            figs.append(f'<figure class="cell">{img(path, html.unescape(alt), scale=pw / int(w))}<figcaption class="lab">{esc(strip_tags(fc))}</figcaption></figure>')
+        h.append('<h4>Ruled out by the red rule</h4>')
+        h.append(spec_figure(scroll(f'<div class="lrow" style="flex-wrap:wrap;gap:24px">{"".join(figs)}</div>', "Ruled-out treatments in grayscale"),
+                             esc(strip_tags(rcap.group(1))) if rcap else "Shown in grayscale, as the identity board shows them.", cls="white"))
+    if has_table:
+        h.append(html_table(th, tr, "Contrast on Prussian by treatment and size"))
     if tcap:
         h.append(f'<p class="cap">{esc(strip_tags(tcap.group(1)))}</p>')
     return "".join(h)
