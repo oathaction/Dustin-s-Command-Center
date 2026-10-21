@@ -62,7 +62,7 @@ So the brand presents its loop as a goal and a design, and any claim about its e
 - When Loop R9 appears inside an atlas graphic, it follows the systems board's line code: its conceptual steps take the hollow line, two hairlines around an empty core, with V7's grade word, "Hypothesis."
 - The labels under the words stay V5's, UNDERSTAND and IMPACT. The display master holds them at 13 px from 526 px wide; below that the compact master drops them.
 
-**Brand narrative** (232 words)
+**Brand narrative** (233 words)
 
 > Every public rule starts with people who promised to serve: a council that adopts a budget, a legislature that passes a bill. Then the rule reaches a household as a rent renewal, a pay stub, a ballot or a power bill.
 >
@@ -271,7 +271,7 @@ L marks a change to a locked element or identity geometry. It needs Dustin's app
 - Read Loops R9, B4 and R4a, the glossary, pathways, domains and the atlas title from `work/extract/atlas-v7-data.json`.
 - Confirmed "Historical tagline From spectators to stewards. Retired from current applications." in V4.2 chapter 18, and the lockmark sentence in V5 chapter 07.
 - Checked the weekdays of every date in the Act mocks with Python.
-- Rendered the board in Chromium at 1440 and 390 px with `work/build/scripts/phase-1/cd_check_board.js` (report: `work/boards/phase-1/strategy/20261021_Board-Render-Report.json`, screenshots beside it). Results: no sideways page scroll at either width; only the products table scrolls, inside a labeled, focusable region; all 12 images load with alt text; smallest HTML text 13 px; smallest SVG text 16.7 px at 1440 and 13.5 px at 390; no red on a Prussian background; 12 tab stops, each with a visible outline; axe-core 4.10.2 with WCAG 2.2 AA and best-practice rules, 0 violations at both widths. axe could not compute contrast for SVG text and for table cells scrolled out of view, so I computed those pairs by formula: the lowest is white on Pillar Red, 4.17:1, used only at 19 px bold.
+- Rendered the board in Chromium at 1440 and 390 px with `work/build/scripts/phase-1/cd_check_board.js` after the review fixes (report: `work/boards/phase-1/strategy/20261021_Board-Render-Report.json`, screenshots beside it). Results: no sideways page scroll at either width; only the products table scrolls, inside a labeled, focusable region; all 12 images load with alt text; smallest HTML text 13 px; smallest SVG text 16.7 px at 1440 and 13.5 px at 390; the V2 hinge diagram renders at 880 px wide (display master, labels from 526 px) at 1440 and 324 px (compact master, from 241 px) at 390; all five hinge headlines carry the master glyph in Pillar Red; no red on a Prussian background; 12 tab stops, each with a visible outline; axe-core 4.10.2 with WCAG 2.2 AA and best-practice rules, 0 violations at both widths, after I fixed one caption on Prussian that the first rerun flagged. axe could not compute contrast for SVG text and for table cells scrolled out of view, so I computed those pairs by formula: the lowest is white on Pillar Red, 4.17:1, used only at 19 px bold.
 - Checked by script that every locked line appears character for character in the board and this file, and that neither file has an em dash, an en dash or a listed filler or corporate word.
 - Inter Tight and Inter loaded from Google Fonts in the render. Lora Italic is linked and unused on the board.
 
@@ -284,4 +284,8 @@ L marks a change to a locked element or identity geometry. It needs Dustin's app
 
 ## Change log
 
-Created: this file; `work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md`; `work/boards/20261021_Strategy-And-Direction-Board.html`; in `work/boards/phase-1/strategy/`: `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, `20261021_Strategy-Board-Render-1440.jpg`, `20261021_Strategy-Board-Render-390.jpg` and 17 review copies in `refs/`; in `work/build/scripts/phase-1/`: `cd_wordmark_proportions.py`, `cd_reference_thumbs.py`, `cd_build_strategy_board.py` and `cd_check_board.js`. Modified: none. Nothing in `source/` or `work/extract/` changed.
+First pass, created: this file; `work/handoffs/phase-1/20261021_CD-Notes-For-Identity.md`; `work/boards/20261021_Strategy-And-Direction-Board.html`; in `work/boards/phase-1/strategy/`: `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, `20261021_Strategy-Board-Render-1440.jpg`, `20261021_Strategy-Board-Render-390.jpg` and 17 review copies in `refs/`; in `work/build/scripts/phase-1/`: `cd_wordmark_proportions.py`, `cd_reference_thumbs.py`, `cd_build_strategy_board.py` and `cd_check_board.js`.
+
+Review pass, modified: this file, the board, `strategy-board.template.html`, `20261021_Board-Check-Results.json`, `20261021_Board-Render-Report.json`, both render JPEGs, `cd_build_strategy_board.py` and `cd_check_board.js`. The board now reads the identity board's V2 hinge masters from `work/boards/phase-1/identity/07-hinge/` without changing them.
+
+Nothing in `source/` or `work/extract/` changed.

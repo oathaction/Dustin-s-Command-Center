@@ -30,7 +30,7 @@ Identity marks use palette primitives, never tints. Red follows the creative dir
 
 ## 3. Roles per surface
 
-WCAG thresholds: 4.5:1 for text; 3:1 for large text (24 px, or 18.66 px bold), needed graphics and focus rings. All 21 cells of the brief's table (section 8, item 9) match the script.
+WCAG thresholds: 4.5:1 for text; 3:1 for large text (24 px, or 18.66 px bold), needed graphics and focus rings.
 
 | Role | Newsprint | White | Charcoal | Prussian |
 |---|---|---|---|---|
@@ -56,7 +56,7 @@ The hinge divider's ampersand is Charcoal (Newsprint on dark surfaces, my readin
 
 Registered needs: N-01, 49 Stone-on-Newsprint text failures in the V5 census; N-02, 8 Stone failures on dark surfaces; N-03, a red-family ground for small text (Charcoal on Pillar Red is 4.49).
 
-**The Concepts V2 Stone.** #4E535C (5.49 on Newsprint, 2.42 on Charcoal) is exactly Stone scaled to 84% in sRGB, a mix toward black, outside the palette. Deep Stone lies 0.0017 away in OKLab, far below a visible difference, so its 1,606 uses can move to the token unchanged.
+**The Concepts V2 Stone.** #4E535C (5.49 on Newsprint, 2.42 on Charcoal) is exactly Stone scaled to 84% in sRGB, a mix toward black, outside the palette. Deep Stone lies 0.0017 away in OKLab, so its 1,606 uses can move to the token with no visible change.
 
 **Mixing method.** OKLab is a color space where equal numeric steps look equal; OKLCH is the same space as lightness, chroma and hue. Toward Charcoal, which has no chroma, they agree. Toward Newsprint, OKLCH swings the hue: the Error Band would become #DBCDB6, a beige 58 degrees from red. I propose `color-mix(in oklab, …)`.
 
@@ -146,7 +146,7 @@ The floor is 13 px (0.8125 rem), with no screen exceptions. V5 set labels at 10 
 
 The tier rules, the exact locked palette, the red rule and the 13 px floor apply as well. Held and rejected values stay unused.
 
-**Test.** `token_rule_test.py` recomputes every derivation and contrast with its own formulas, so stored numbers cannot go stale. The draft passes: 157 tokens, 0 failures. Eleven broken copies each fail on their own check, among them an 11 px label, a red ask on Prussian and a 15 px ask label. On my first draft it caught two real defects.
+**Test.** `token_rule_test.py` recomputes every derivation and contrast with its own formulas, so stored numbers cannot go stale. The draft passes: 157 tokens, 0 failures. Eleven broken copies each fail on their own check, among them an 11 px label, a red ask on Prussian and a 15 px ask label.
 
 ## 7. Generation pipeline
 
@@ -186,7 +186,7 @@ The page is chapter 26, in Production, as the architecture map places it (C9). T
 
 ## Checks run
 
-- Palette contrast: 21 of 21 brief cells match.
+- Palette contrast: 21 of 21 cells of the brief's table (section 8, item 9) match.
 - Six derived candidates in OKLab and OKLCH; #4E535C traced to sRGB scaling; opacity composites.
 - Inter advance widths from the V5 font, checked against the audit's line lengths.
 - Rule test: 157 tokens, 0 failures; 11 of 11 broken copies caught.
