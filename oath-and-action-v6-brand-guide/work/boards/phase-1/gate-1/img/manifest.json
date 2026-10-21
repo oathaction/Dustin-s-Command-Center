@@ -51,7 +51,7 @@
   "scale": 2,
   "cssWidth": 360,
   "cssHeight": 450,
-  "bytes": 77547,
+  "bytes": 78415,
   "info": {
    "label": "Portrait Act post with the wordmark covered",
    "kicker": "Act · State hearings",
@@ -73,7 +73,7 @@
   "scale": 2,
   "cssWidth": 360,
   "cssHeight": 450,
-  "bytes": 81972,
+  "bytes": 82820,
   "info": {
    "label": "Portrait Act post with a hinge headline",
    "kicker": "Act · State hearings",
@@ -88,6 +88,17 @@
     "Lockmark, 24 px master"
    ],
    "caption": "4. Hinge headline: its ampersand B is the working red, and the Act handle turns Charcoal. Working red: one, the headline's ampersand. Signature red, uncounted: the wordmark's ampersand and the lockmark's lever."
+  }
+ },
+ "ref-seal-1.jpg": {
+  "source": "20261021_Symbol-Family-Board.html#h-ba",
+  "selector": "#badge .seal-crop",
+  "scale": 2,
+  "cssWidth": 96,
+  "cssHeight": 96,
+  "bytes": 8035,
+  "info": {
+   "label": "Generated reference seal from page 41 of the reference file: a ring of words around an ampersand"
   }
  },
  "sym-A-filled-explain-48.png": {
@@ -529,13 +540,5 @@
   "cssWidth": 1150,
   "cssHeight": 400,
   "bytes": 256004
- },
- "ref-p07-seals.jpg": {
-  "source": "phase-1/strategy/refs/20261021_Ref-Page-07.jpg (strategy board #h-art)",
-  "selector": "clip {\"x\":118,\"y\":287,\"width\":318,\"height\":100}",
-  "scale": 1,
-  "cssWidth": 318,
-  "cssHeight": 100,
-  "bytes": 9343
  }
 }

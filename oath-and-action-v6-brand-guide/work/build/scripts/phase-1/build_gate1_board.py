@@ -448,13 +448,12 @@ def captured(prefix):
     return [(os.path.join(IMG, k), MANIFEST[k].get("info", {})) for k in names]
 
 
-COMPOSITE_INTRO = []
-
-
 def composite():
     sec = board_section(symb, "composite")
     note = re.search(r'<p class="cap"><span class="tag">Illustrative</span>(.*?)</p>', sec, flags=re.S)
     posts = captured("post-")
+    if len(posts) != 4:
+        warn(f"the symbol board shows {len(posts)} composite posts; the section intro describes four")
     figs = []
     for path, info in posts:
         label = info.get("label") or "Portrait Act post"
@@ -473,8 +472,6 @@ def composite():
         alt = " ".join(bits)
         figs.append(f'<figure>{img(path, alt, scale=2, cls="fit")}<figcaption class="cap">{esc(tidy(info.get("caption", "").strip()))}</figcaption></figure>')
     note_html = f'<p class="cap"><span class="illus">Illustrative</span> {esc(tidy(strip_tags(note.group(1))))}</p>' if note else ""
-    intro = re.search(r'</h2>\s*<p>(.*?)</p>', sec, flags=re.S)
-    COMPOSITE_INTRO.append(re.sub(r"\bsection (\d+)\b", r"the symbol board's section \1", tidy(strip_tags(intro.group(1)))) if intro else "")
     return f'<div class="posts n{len(posts)}">{"".join(figs)}</div>{note_html}'
 
 
@@ -577,11 +574,23 @@ def call4():
     need(pids, "identity board item 10 has no p10 pairs")
     rec_row = [r for r in call_rows if r[0] == "4"]
     rec_letter = (re.findall(r"\b([A-D])\b", rec_row[0][4]) or [None])[-1] if rec_row else None
-    rows = []
-    for pid in pids:
-        if os.path.exists(idpng(pid, "orig__prussian__color__16.png")):
-            rows.append((pid, "orig", tr[0][0] if tr else "V5", ""))
-            break
+    rows, v5caps, v5note = [], {}, ""
+    v5 = re.search(r'<div class="pair v5today"[^>]*><h3>(.*?)</h3>(.*?)(?=<div class="pair")', sec, flags=re.S)
+    if v5:
+        # V5 today, the one red on Prussian the identity board keeps, with its own measured captions.
+        v5name = strip_tags(v5.group(1)).split(":")[0].strip()
+        srcs = dict((sz, src) for src, sz in re.findall(r'<img src="(phase-1/identity/png/[^"]+__(16|96)\.png)"', v5.group(2)))
+        for fc, sz in re.findall(r"<figcaption>([^<]*?, (16|96) px:[^<]*)</figcaption>", v5.group(2)):
+            v5caps[sz] = strip_tags(fc)
+        note = re.search(r'<p class="cap">(.*?)</p>', v5.group(2), flags=re.S)
+        v5note = strip_tags(note.group(1)) if note else ""
+        need("16" in srcs and "96" in srcs, "V5 today needs 16 and 96 px renders")
+        rows.append(("v5", srcs, v5name, "v5"))
+    else:
+        for pid in pids:
+            if os.path.exists(idpng(pid, "orig__prussian__color__16.png")):
+                rows.append((pid, "orig", "V5", "v5"))
+                break
     for pid in pids:
         title = pair_title(pid)
         name = re.sub(r"\s*\(recommended\)", "", title.split(":")[0]).strip()
@@ -589,19 +598,26 @@ def call4():
         tag = "rec" if ("(recommended)" in title or letter == rec_letter) else ""
         if os.path.exists(idpng(pid, "prop__prussian__color__16.png")):
             rows.append((pid, "prop", name, tag))
-    tags = {"rec": '<span class="tag rec">Studio recommendation</span>', "": ""}
+    tags = {"rec": '<span class="tag rec">Studio recommendation</span>', "v5": '<span class="tag" style="color:#DCD9D2">In force</span>', "": ""}
     r16, r96 = [], []
     for folder, who, name, tg in rows:
-        p16 = idpng(folder, f"{who}__prussian__color__16.png")
-        p96 = idpng(folder, f"{who}__prussian__color__96.png")
-        what = f"Wordmark on Prussian, {name}"
-        r16.append(f'<div class="lrow"><p class="lname">{esc(name)}<span>{tags[tg]}</span></p>{cell(p16, "16 px", what + ", at 16 px, actual size")}{cell(p16, "16 px at 4x", what + ", at 16 px, magnified 4 times without smoothing", factor=4)}</div>')
-        r96.append(f'<div class="item"><p class="lab"><b style="color:#DCD9D2">{esc(name)}</b> {tags[tg]}</p>{img(p96, what + ", at 96 px tall, actual size")}</div>')
-    names = ", ".join(r[2] for r in rows)
-    h = ['<h4>The options on Prussian at 16 px</h4>']
-    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "Treatments on Prussian at 16 px"), f"{esc(names)}, in the identity board's order. Renders at 1x from the identity board.", cls="prussian"))
-    h.append('<h4>The options on Prussian at 96 px</h4>')
-    h.append(spec_figure(scroll(f'<div class="stack">{"".join(r96)}</div>', "Treatments on Prussian at 96 px"), "The same treatments at 96 px tall.", cls="prussian"))
+        if folder == "v5":
+            p16, p96 = os.path.join(BOARDS, who["16"]), os.path.join(BOARDS, who["96"])
+            what = f"{name}: V5's wordmark with its red ampersand on Prussian"
+        else:
+            p16 = idpng(folder, f"{who}__prussian__color__16.png")
+            p96 = idpng(folder, f"{who}__prussian__color__96.png")
+            what = f"Wordmark on Prussian, {name}"
+        m16 = f'<span>{esc(re.sub(r"^[^:]*:\s*", "", v5caps["16"]))}</span>' if folder == "v5" and "16" in v5caps else ""
+        l96 = f" · {esc(v5caps['96'])}" if folder == "v5" and "96" in v5caps else ""
+        r16.append(f'<div class="lrow"><p class="lname">{esc(name)}<span>{tags[tg]}</span>{m16}</p>{cell(p16, "16 px", what + ", at 16 px, actual size")}{cell(p16, "16 px at 4x", what + ", at 16 px, magnified 4 times without smoothing", factor=4)}</div>')
+        r96.append(f'<div class="item"><p class="lab"><b style="color:#DCD9D2">{esc(name)}</b> {tags[tg]}{l96}</p>{img(p96, what + ", at 96 px tall, actual size")}</div>')
+    names = ", then ".join(r[2] for r in rows)
+    first = f" {esc(v5note)}" if v5note else ""
+    h = ['<h4>V5 today and the live options on Prussian, at 16 px</h4>']
+    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "V5 today and the options on Prussian at 16 px"), f"{esc(names)}. Renders at 1x from the identity board's item 10.{first}", cls="prussian"))
+    h.append('<h4>The same, at 96 px</h4>')
+    h.append(spec_figure(scroll(f'<div class="stack">{"".join(r96)}</div>', "V5 today and the options on Prussian at 96 px"), "Each at 96 px tall.", cls="prussian"))
     ruled = re.search(r'<div class="ruled">(.*?)</div></div>', sec, flags=re.S)
     if ruled:
         rcap = re.search(r'<p class="cap">(.*?)</p>', ruled.group(1), flags=re.S)
@@ -610,7 +626,7 @@ def call4():
             path = os.path.join(BOARDS, src)
             pw, _ = image_size(path)
             figs.append(f'<figure class="cell">{img(path, html.unescape(alt), scale=pw / int(w))}<figcaption class="lab">{esc(strip_tags(fc))}</figcaption></figure>')
-        h.append('<h4>Ruled out by the red rule</h4>')
+        h.append('<h4>Ruled out by Rule 05.3</h4>')
         h.append(spec_figure(scroll(f'<div class="lrow" style="flex-wrap:wrap;gap:24px">{"".join(figs)}</div>', "Ruled-out treatments in grayscale"),
                              esc(strip_tags(rcap.group(1))) if rcap else "Shown in grayscale, as the identity board shows them.", cls="white"))
     if has_table:
@@ -810,32 +826,50 @@ def fix_I8():
     return ba(side("orig", "V5"), side("prop", "Proposed")) + '<p class="cap">Each mark at its minimum, at 1x, from the identity board\'s item 9.</p>'
 
 
-def badge_svg():
-    t = read(os.path.join(IDSVG, "07-hinge", "20261021_Hinge-Display-Master_V2.svg"))
-    ring = re.search(r'<circle cx="638.67" cy="54.0" r="110.0"[^>]*/>', t)
-    nodes = re.findall(r'<circle cx="(?:528|748)\.67" cy="54.0" r="9.0"[^>]*/>', t)
-    amp = re.search(r'<path fill="var\(--amp,#E63946\)" d="[^"]+"/>', t)
-    need(ring and len(nodes) == 2 and amp, "hinge master parts for the badge")
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="516.17 -60 245 228">{ring.group(0)}{"".join(nodes)}{amp.group(0)}</svg>'
+BADGE = os.path.join(P1, "symbols", "badge")
+SURFACE_HEX = {"newsprint": "#DCD9D2", "white": "#FFFFFF", "charcoal": "#121212", "prussian": "#1F2D5A"}
 
 
 def fix_S9():
-    crop = os.path.join(IMG, "ref-p07-seals.jpg")
-    bsvg = badge_svg()
-    before = (f'<div class="spec">{img(crop, "Generated reference: four round seals and badges with rings of words such as FROM SPECTATORS TO STEWARDS around a red ampersand", scale=0.5, cls="fit")}'
-              '<p class="lab"><span class="illus">Generated reference, study only</span> Your references p07, seals with a ring of words, enlarged 2x</p></div>'
-              '<p class="small">V5: "Seals imply an authority we do not claim."</p>')
-    after = (f'<div class="spec"><div class="lrow" style="flex-wrap:wrap;align-items:flex-end">{svg_inline(bsvg, "Wordless badge: the red ampersand inside the hinge circle with its two nodes, 200 px", height=200, cls="fit", style="color:#121212", is_text=True)}'
-             f'{svg_inline(bsvg, "Wordless badge at 64 px", height=64, style="color:#121212", is_text=True)}</div><p class="lab">The ring, two nodes and ampersand of the V2 hinge display master, at 200 and 64 px</p></div>'
-             '<p class="small">Cut from the hinge master at its own geometry. The strategy board describes the badge in words, and no separate badge master is drawn yet.</p>')
-    return ba(before, after, grid=True, labels=("Before, your references and V5's rule", "After, the proposal"))
+    sec = board_section(symb, "badge")
+    meas = json.load(open(os.path.join(BADGE, "20261021_Hinge-Badge-Measurements.json"), encoding="utf-8"))
+    m16, m24, mdisp = (os.path.join(BADGE, meas["masters"][k]) for k in ("16", "24", "display"))
+    blocks = re.findall(r'<div class="s-(\w+) mx"><p class="sname">([^<]*)</p>(.*?)<p class="cap">([^<]*)</p></div>', sec, flags=re.S)
+    need(blocks, "symbol board section 12 has no badge surfaces")
+    panels = []
+    for key, name, inner, cap in blocks:
+        color = re.search(r'style="color:(#[0-9A-Fa-f]{6})"', inner).group(1)
+        ink = "#121212" if key in ("newsprint", "white") else "#DCD9D2"
+        sizes = [(m16, 16), (m24, 24), (mdisp, 48), (mdisp, 96)]
+        cells = "".join(f'<figure class="bcell">{svg_inline(m, f"Badge at {s} px on {name}", width=s, style=f"color:{color}")}<figcaption class="tmeta">{s}</figcaption></figure>' for m, s in sizes)
+        disp = svg_inline(mdisp, f"Badge at display size, 160 px, on {name}", width=160, cls="fit", style=f"color:{color}")
+        panels.append(f'<div class="tsurf" style="background:{SURFACE_HEX.get(key, "#DCD9D2")};color:{ink}"><p class="tname">{esc(name)}</p><div class="bsizes">{cells}</div>{disp}<p class="tmeta" style="margin:0">{esc(cap)}</p></div>')
+    mags = []
+    for f, s, k in (("nbadge-16.png", 16, 6), ("nbadge-24.png", 24, 4)):
+        p = os.path.join(SYMPX, f)
+        if os.path.exists(p):
+            mags.append(cell(p, f"{s} px master at {k}x", f"The badge's {s} px master, magnified {k} times without smoothing", factor=k))
+    rule = re.search(r'"(Seals imply[^"]*)"', [r for r in fix_rows if r[0] == "S9"][0][3]) if any(r[0] == "S9" for r in fix_rows) else None
+    rule_text = rule.group(1) if rule else "Seals imply an authority we do not claim."
+    seal = [c for c in MANIFEST if c.startswith("ref-seal-")]
+    seal_html = ""
+    if seal:
+        info = MANIFEST[seal[0]].get("info", {})
+        seal_html = (f'<figure style="margin-top:12px;display:grid;gap:6px;justify-items:start">{img(os.path.join(IMG, seal[0]), info.get("label") or "Generated reference seal", scale=2)}'
+                     '<figcaption class="lab"><span class="illus">Generated reference, study only</span> A seal with a ring of words, the form V5\'s rule bars</figcaption></figure>')
+    before = (f'<div class="spec"><p style="margin:0;font:italic 400 1.125rem/1.5 var(--quote);color:#121212">V5: "{esc(rule_text)}"</p>'
+              '<p class="lab">V5 draws no badge. Its rule bars seals outright.</p>' + seal_html + '</div>')
+    after = (f'<div class="tokens" role="group" aria-label="The proposed badge on four surfaces">{"".join(panels)}</div>'
+             + (f'<div class="spec" style="margin-top:12px">{scroll(f"<div class=\"lrow\" style=\"flex-wrap:wrap\">{"".join(mags)}</div>", "The badge masters magnified")}</div>' if mags else "")
+             + '<p class="cap">The symbol board\'s three masters, from <code>work/boards/phase-1/symbols/badge/</code>: the 16 px master at 16, the 24 px master at 24, and the display master at 48, 96 and 160 px. Each surface takes one color, as the symbol board sets it.</p>')
+    return ba(before, after, labels=("Before: V5's rule, and the kind of seal it bars", "After: the proposed badge"))
 
 
 FIX_SPECIMENS = {"I1": fix_I1, "I2": fix_I2, "I3": fix_I3, "I7": fix_I7, "I8": fix_I8, "S9": fix_S9}
 FIX_SOURCE = {
     "I1": [(IDENTITY_BOARD, "item 1", "#item-1")], "I2": [(IDENTITY_BOARD, "item 2", "#item-2")], "I3": [(IDENTITY_BOARD, "item 3", "#item-3")],
     "I7": [(IDENTITY_BOARD, "item 8", "#item-8")], "I8": [(IDENTITY_BOARD, "item 9", "#item-9")],
-    "S9": [(STRATEGY_BOARD, "section 7, Art direction, and Decisions for Gate 1, decision 9", "#art, #decisions")],
+    "S9": [(SYMBOL_BOARD, "section 12, the hinge-circle badge", "#badge"), (STRATEGY_BOARD, "section 7, Art direction", "#art")],
 }
 
 
@@ -1029,9 +1063,9 @@ def questions_html():
 
 
 FILE_NOTES = {
-    "20261021_Strategy-And-Direction-Board.html": "Calls 6 and 7, the S recommendations and the S9 badge",
+    "20261021_Strategy-And-Direction-Board.html": "Calls 6 and 7 and the S recommendations",
     "20261021_Identity-Refinement-Board.html": "Calls 1 to 4 and fixes I1 to I8",
-    "20261021_Symbol-Family-Board.html": "Call 5, the Y recommendations and the composite post",
+    "20261021_Symbol-Family-Board.html": "Call 5, the Y recommendations, the composite post and the S9 badge",
     "20261021_Systems-Marks-Board.html": "The M recommendations and the hinge's five separation rules",
     "20261021_Navigation-And-Template-Wireframes.html": "The T recommendations: architecture, navigation and the chapter template",
 }
@@ -1057,7 +1091,6 @@ fills = {
     "reply": esc(reply),
     "approve_after": link_sections(inline(after[0])),
     "composite": composite(),
-    "composite_intro": esc(COMPOSITE_INTRO[0]) if COMPOSITE_INTRO and COMPOSITE_INTRO[0] else "",
     "calls_table": calls_table(),
     "calls": calls_html(),
     "fixes_intro": inline(re.sub(r"^\*\*[^*]+\*\* in section 5\. ", "", approve_list[1])) + " " + " ".join(inline(p) for p in fix_after),

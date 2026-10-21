@@ -1,8 +1,8 @@
 {
  "board": "work/boards/20261021_Gate-1-Review-Board.html",
- "checked": "2026-10-21T05:24:33.813Z",
- "bytes": 3516953,
- "megabytes": 3.35,
+ "checked": "2026-10-21T06:02:02.538Z",
+ "bytes": 3633551,
+ "megabytes": 3.47,
  "underTenMegabytes": true,
  "startsWithTitle": true,
  "hasSkeletonTags": false,
@@ -20,10 +20,10 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "horizontalScroll": false,
-   "images": 220,
+   "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 13,
+   "inlineSvgs": 31,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -40,11 +40,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 26,
+   "scrollRegions": 27,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 31823,
+   "pageHeight": 32655,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -98,7 +98,8 @@
     "work/boards/screens/gate-1/gate1-1440-light-13.png",
     "work/boards/screens/gate-1/gate1-1440-light-14.png",
     "work/boards/screens/gate-1/gate1-1440-light-15.png",
-    "work/boards/screens/gate-1/gate1-1440-light-16.png"
+    "work/boards/screens/gate-1/gate1-1440-light-16.png",
+    "work/boards/screens/gate-1/gate1-1440-light-17.png"
    ]
   },
   {
@@ -107,10 +108,10 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "horizontalScroll": false,
-   "images": 220,
+   "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 13,
+   "inlineSvgs": 31,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -127,11 +128,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 26,
+   "scrollRegions": 27,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 31823,
+   "pageHeight": 32655,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -185,7 +186,8 @@
     "work/boards/screens/gate-1/gate1-1440-dark-13.png",
     "work/boards/screens/gate-1/gate1-1440-dark-14.png",
     "work/boards/screens/gate-1/gate1-1440-dark-15.png",
-    "work/boards/screens/gate-1/gate1-1440-dark-16.png"
+    "work/boards/screens/gate-1/gate1-1440-dark-16.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-17.png"
    ]
   },
   {
@@ -194,10 +196,10 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "horizontalScroll": false,
-   "images": 220,
+   "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 13,
+   "inlineSvgs": 31,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -214,11 +216,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 26,
+   "scrollRegions": 27,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 49979,
+   "pageHeight": 51851,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -256,7 +258,7 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 88
+     "nodes": 89
     }
    ],
    "pageErrors": [],
@@ -295,10 +297,10 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "horizontalScroll": false,
-   "images": 220,
+   "images": 225,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
-   "inlineSvgs": 13,
+   "inlineSvgs": 31,
    "svgsWithoutName": 0,
    "svgsUnlabeledVisible": 0,
    "textUnder13px": [],
@@ -315,11 +317,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 26,
+   "scrollRegions": 27,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 49979,
+   "pageHeight": 51851,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -357,7 +359,7 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 88
+     "nodes": 89
     }
    ],
    "pageErrors": [],

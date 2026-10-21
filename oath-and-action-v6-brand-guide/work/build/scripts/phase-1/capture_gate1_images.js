@@ -88,6 +88,11 @@ async function shot(page, selector, name, opts = {}) {
       };
     });
   }
+  // Symbol board section 12: the generated reference seal the badge is set beside.
+  if (await page.locator('#badge .seal-crop').count()) {
+    await shot(page, '#badge .seal-crop', 'ref-seal-1.jpg', { source: SYMBOL + '#h-ba' });
+    manifest['ref-seal-1.jpg'].info = { label: await page.locator('#badge .seal-crop').getAttribute('aria-label') };
+  }
   for (const dir of ['A', 'B']) {
     for (const treat of ['filled', 'line', 'tile']) {
       for (const pillar of ['Explain', 'Track', 'Connect', 'Act']) {
@@ -131,15 +136,6 @@ async function shot(page, selector, name, opts = {}) {
   await shot(page, '#m3 .opt.rec-opt .surfaces', 'systems-typed-chips.png', { nth: 0, source: SYSTEMS + '#m3' });
   await page.close();
 
-  // Strategy board reference p07, cropped to its seals row for the S9 card. This one is cut from the
-  // 880 px reference file at 1x, since the board itself shows the file smaller than that.
-  page = await browser.newPage({ viewport: { width: 880, height: 495 }, deviceScaleFactor: 1 });
-  await page.goto(url('phase-1/strategy/refs/20261021_Ref-Page-07.jpg'));
-  await page.addStyleTag({ content: 'body{margin:0} img{display:block}' });
-  const clip = { x: 118, y: 287, width: 318, height: 100 };
-  await page.screenshot({ path: path.join(OUT, 'ref-p07-seals.jpg'), type: 'jpeg', quality: 90, clip });
-  manifest['ref-p07-seals.jpg'] = { source: 'phase-1/strategy/refs/20261021_Ref-Page-07.jpg (strategy board #h-art)', selector: 'clip ' + JSON.stringify(clip), scale: 1, cssWidth: clip.width, cssHeight: clip.height, bytes: fs.statSync(path.join(OUT, 'ref-p07-seals.jpg')).size };
-  await page.close();
 
   await browser.close();
   fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 1));
