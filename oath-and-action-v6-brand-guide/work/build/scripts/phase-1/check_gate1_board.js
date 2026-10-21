@@ -45,7 +45,7 @@ function wcag(hex1, hex2) {
     megabytes: +(fs.statSync(BOARD).size / 1048576).toFixed(2),
     underTenMegabytes: fs.statSync(BOARD).size < 10 * 1048576,
     startsWithTitle: raw.startsWith('<title>'),
-    hasSkeletonTags: /<!doctype|<html|<head|<body/i.test(raw),
+    hasSkeletonTags: /<!doctype|<html[\s>]|<head[\s>]|<body[\s>]/i.test(raw),
     externalScripts: (raw.match(/<script[^>]+src=/gi) || []).length,
     stylesheetLinks: (raw.match(/<link[^>]+rel="stylesheet"[^>]*>/gi) || []).map((l) => (l.match(/href="([^"]+)"/) || [])[1]),
     nonDataImageSources: (raw.match(/<img[^>]+src="(?!data:)[^"]*"/gi) || []).length,
