@@ -45,3 +45,6 @@ Dustin approved the review, the Master Brief corrections (issued as Brief V2) an
 | D1-01 | Master Brief V2 becomes the governing brief. V1 stays in `brief/` for the record, and `CLAUDE.md` and the agent files in this project now point to V2 | Gate 0 approved the corrections |
 | D1-02 | New files in Phase 1 carry the date 20261021 | The execution date changed |
 | D1-03 | The prompt pack in `oath-and-action-v6-brand-guide-prompt/` keeps Brief V1 | It is the reusable template. Brief V2 is specific to this project |
+| D1-04 | Derived colors are mixed in OKLab with `color-mix`, toward Charcoal or Newsprint | OKLCH mixes toward Newsprint swing the hue, for example the error band would turn beige. OKLab matches OKLCH toward Charcoal |
+| D1-05 | Phase 1 Python scripts load the shared `oa_color.py` by file path | Running Python with `-I` drops the script folder from the import path |
+| D1-06 | The draft token JSON uses the `org.oathandaction` namespace | A stable reverse-domain namespace for token extensions. Ownership of oathandaction.org is unconfirmed, so the namespace can change before Phase 5 |

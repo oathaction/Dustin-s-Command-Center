@@ -7,3 +7,5 @@ work/boards/screens/
 work/build/node_modules/
 work/build/package-lock.json
 source/*.pdf
+__pycache__/
+*.pyc

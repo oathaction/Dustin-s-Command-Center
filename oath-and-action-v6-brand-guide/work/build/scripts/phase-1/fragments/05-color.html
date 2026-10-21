@@ -1,0 +1,164 @@
+<section class="chapter full" id="color" data-track="chapter" data-part="foundations" data-label="05 Color">
+  <div class="chapter-head">
+    <div class="loc">
+      <p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 05 of 28</p>
+      <p class="return" hidden></p>
+    </div>
+    <h2 id="color-h"><span class="n">05</span> Color</h2>
+    <p class="instr">Choose a surface first, then the text and graphic colors that pass on it.</p>
+    <p class="wf-label">Wireframe of the chapter template. Token names follow the pattern in Master Brief V2 section 10; final names and any new values come from the token architecture in Phase 2. Grey dashed boxes stand in for specimens.</p>
+  </div>
+
+  <div class="local-toc">
+    <p class="local-toc-title" id="color-toc-t">In this chapter</p>
+    <ul aria-labelledby="color-toc-t">
+      <li><a href="#rule-05-1">Rule 05.1 Newsprint leads</a></li>
+      <li><a href="#rule-05-2">Rule 05.2 Text sits only on pairs that pass</a></li>
+      <li><a href="#rule-05-3">Rule 05.3 Red marks one thing</a></li>
+      <li><a href="#rule-05-4">Rule 05.4 State color travels with a word or a shape</a></li>
+      <li><a href="#color-specs">Specifications</a></li>
+      <li><a href="#color-related">Related chapters</a></li>
+      <li><a href="#color-builders">For builders</a></li>
+    </ul>
+  </div>
+
+  <div class="chapter-body">
+
+    <div class="rule compact" id="rule-05-1">
+      <h3><span class="rid">Rule 05.1</span> Newsprint leads.</h3>
+      <p>Newsprint covers 60 to 85 percent of every composition. Charcoal carries text and structure. A dark panel is a beat, one per section at most.</p>
+      <p class="tokens"><span class="blocklabel">Tokens</span> <code>--oa-color-surface-newsprint</code> <code>--oa-color-surface-charcoal</code> <code>--oa-color-surface-prussian</code> <code>--oa-color-surface-white</code></p>
+      <p class="blocklabel">Why it works</p>
+      <p><span class="judgment">Design judgment.</span> A warm, light ground keeps long reading calm, and a rare dark panel tells the reader a section has turned.</p>
+      <div class="pair">
+        <div class="ph" role="img" aria-label="Placeholder for the correct application: a report spread at true size with Newsprint at about 72 percent">Correct application, placeholder: a report spread at true size, Newsprint about 72 percent.</div>
+        <div class="ph" role="img" aria-label="Placeholder for the failure case: a page split half Charcoal and half Prussian with no reading surface">Failure case, placeholder: a page split between Charcoal and Prussian with no reading surface.</div>
+      </div>
+    </div>
+
+    <div class="rule" id="rule-05-2">
+      <h3><span class="rid">Rule 05.2</span> Text sits only on pairs that pass.</h3>
+      <p>Small text needs a contrast ratio of 4.5 to 1 against its surface. Large text needs 3 to 1; <a class="xref" href="#type">06 Type</a> says which sizes count as large. Read each pair's ratio in the Specifications table. Never judge it by eye.</p>
+      <p class="tokens"><span class="blocklabel">Tokens</span>
+        <span class="tok"><code>--oa-color-text-primary-on-newsprint</code> <span class="val">#121212</span> <button type="button" class="copy" data-copy="#121212" aria-label="Copy #121212, text primary on Newsprint">Copy</button></span>
+        <span class="tok"><code>--oa-color-text-secondary-on-newsprint</code> <span class="val">value set in Phase 2</span></span>
+        <span class="tok"><code>--oa-color-text-primary-on-prussian</code> <span class="val">#FFFFFF</span> <button type="button" class="copy" data-copy="#FFFFFF" aria-label="Copy #FFFFFF, text primary on Prussian">Copy</button></span>
+      </p>
+      <p class="status" role="status" id="status-05-2">Nothing copied yet.</p>
+
+      <p class="blocklabel">Why it works</p>
+      <p>WCAG 2.2 success criterion <a href="https://www.w3.org/WAI/WCAG22/quickref/#contrast-minimum">1.4.3 Contrast (Minimum)</a> sets 4.5 to 1 for text and 3 to 1 for large-scale text, which WCAG defines as 18 point, or 14 point bold. Readers with low vision need that margin, and so does anyone reading a phone outdoors. Stone was V5's secondary text color, and it measures 4.29 to 1 on Newsprint, so the secondary text token on Newsprint needs a new value.</p>
+
+      <p class="blocklabel">Correct application</p>
+      <figure class="specimen">
+        <div class="mock" aria-describedby="mock-05-2-note">
+          <p class="mock-kicker">Explain / Local budgets</p>
+          <p class="mock-head">Who sets the library's hours?</p>
+          <p class="mock-body">The council sets the hours each spring, when it passes the budget. Residents can speak at the hearing before the vote.</p>
+          <div class="ph ph-img" role="img" aria-label="Placeholder for a photograph of a library reading room. Not a photograph.">Placeholder: library reading room. Not a photograph.</div>
+          <p class="mock-caption">The reading room before it opens.</p>
+          <p class="mock-source">Source slot: [Publisher, table, period, date retrieved]</p>
+        </div>
+        <figcaption id="mock-05-2-note"><span class="illus">Illustrative copy. No real town or library.</span> Shown at true size. Body 17 px, caption 14 px and source line 13 px, all Charcoal on Newsprint at 13.29 to 1.</figcaption>
+      </figure>
+
+      <p class="blocklabel">Failure case</p>
+      <figure class="specimen">
+        <svg class="fail-svg" viewBox="0 0 360 96" width="360" height="96" role="img" aria-labelledby="fail-05-2-t">
+          <title id="fail-05-2-t">Failure case: a caption in Stone and a link in Pillar Red, both at 13 px on Newsprint</title>
+          <rect width="360" height="96" fill="#DCD9D2"/>
+          <text x="16" y="34" fill="#5D636D" font-family="Inter, Arial, sans-serif" font-size="13">The reading room before it opens.</text>
+          <text x="16" y="62" fill="#E63946" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600">Read the budget hearing notice</text>
+        </svg>
+        <figcaption><strong>Fails 1.4.3.</strong> The Stone caption measures 4.29 to 1 and the red link 2.96 to 1, both below the 4.5 to 1 that 13 px text needs. The caption is the first thing a reader with low vision loses. The specimen is an image so that the page itself keeps passing; this description carries its content.</figcaption>
+      </figure>
+    </div>
+
+    <div class="rule compact" id="rule-05-3">
+      <h3><span class="rid">Rule 05.3</span> Red marks one thing.</h3>
+      <p>Pillar Red does one job per composition: a button, a data point, a rule under a headline or the current step. The wordmark ampersand and the Signal Grid lever are identity, so they do not count. Where status or data already uses red, editorial emphasis moves to weight or a Charcoal rule.</p>
+      <p class="tokens"><span class="blocklabel">Tokens</span> <code>--oa-color-accent-red</code> <code>--oa-color-graphic-keyline-on-newsprint</code></p>
+      <p class="blocklabel">Why it works</p>
+      <p><span class="judgment">Design judgment.</span> One red mark tells the eye where to go. Red on Newsprint measures 2.96 to 1, under the 3 to 1 that <a href="https://www.w3.org/WAI/WCAG22/quickref/#non-text-contrast">1.4.11 Non-text Contrast</a> asks of informative graphics, so an essential red graphic takes a 1 px Charcoal keyline.</p>
+      <div class="pair">
+        <div class="ph" role="img" aria-label="Placeholder for the correct application: one red bar with a Charcoal keyline in a bar chart">Correct application, placeholder: one red bar with a Charcoal keyline.</div>
+        <div class="ph" role="img" aria-label="Placeholder for the failure case: a red headline rule, a red button and red negative values in one module">Failure case, placeholder: a red rule, a red button and red values in one module.</div>
+      </div>
+    </div>
+
+    <div class="rule" id="rule-05-4">
+      <h3><span class="rid">Rule 05.4</span> State color travels with a word or a shape.</h3>
+      <p>Every interface state shows a text label or a change of shape as well as a color. A disabled control stays readable and says what will make it available. State colors are their own set, kept apart from identity color and from <a class="xref" href="#data-visualization">14 Data visualization</a> palettes.</p>
+      <p class="tokens"><span class="blocklabel">Tokens</span> <code>--oa-color-state-focus</code> <code>--oa-color-state-selected</code> <code>--oa-color-state-error-edge</code> <code>--oa-color-state-success-mark</code> <span class="val">values set in Phase 2</span></p>
+
+      <p class="blocklabel">Why it works</p>
+      <p>WCAG 2.2 <a href="https://www.w3.org/WAI/WCAG22/quickref/#use-of-color">1.4.1 Use of Color</a> bars color as the only way to convey a state, and 1.4.11 asks 3 to 1 for the edges and focus indicators that identify a control. In V5 the Active and Ready lever states differed by hue alone, at 1.14 to 1 between the two.</p>
+
+      <p class="blocklabel">Correct application</p>
+      <figure class="specimen">
+        <ul class="states" aria-describedby="states-note">
+          <li><span class="st-name">Default</span><span class="st-demo btn-demo">Download SVG</span><span class="st-cue">Cue: 1 px border</span></li>
+          <li><span class="st-name">Hover, shown still</span><span class="st-demo btn-demo is-hover">Download SVG</span><span class="st-cue">Cue: underline and a 2 px edge</span></li>
+          <li><span class="st-name">Focus, shown still</span><span class="st-demo btn-demo is-focus">Download SVG</span><span class="st-cue">Cue: 2 px Verdigris ring, 3 px out, 3.37 to 1</span></li>
+          <li><span class="st-name">Selected</span><span class="st-demo btn-demo is-selected"><span aria-hidden="true">✓</span> Newsprint</span><span class="st-cue">Cue: fill, check mark and the word</span></li>
+          <li><span class="st-name">Disabled</span><span class="st-demo btn-demo is-disabled">Download PNG</span><span class="st-cue">Cue: dashed edge. Reason shown: "PNG masters arrive in Phase 5."</span></li>
+          <li><span class="st-name">Loading</span><span class="st-demo st-text"><span class="lever-still" aria-hidden="true"></span> Loading tracker</span><span class="st-cue">Cue: the words and a still outline. No pulse</span></li>
+          <li><span class="st-name">Empty</span><span class="st-demo st-text">No symbols match. Try a broader word.</span><span class="st-cue">Cue: a sentence with a next step</span></li>
+          <li><span class="st-name">Warning</span><span class="st-demo st-text"><span class="glyph-tri" aria-hidden="true"></span> Warning: large text only on this pair.</span><span class="st-cue">Cue: triangle and the word</span></li>
+          <li><span class="st-name">Error</span><span class="st-demo st-text st-error"><span class="glyph-x" aria-hidden="true">×</span> Error: the file did not download. Try again.</span><span class="st-cue">Cue: red edge with Charcoal keyline, cross, the word</span></li>
+          <li><span class="st-name">Success</span><span class="st-demo st-text"><span class="glyph-check" aria-hidden="true">✓</span> Copied #121212.</span><span class="st-cue">Cue: check mark and the result</span></li>
+          <li><span class="st-name">Muted</span><span class="st-demo st-text st-muted">Shown for reference. Not in use.</span><span class="st-cue">Cue: the words; text still 6.42 to 1</span></li>
+        </ul>
+        <figcaption id="states-note">Wireframe treatments for each state named in Master Brief V2 section 10. Values come from the state tokens in Phase 2. Hover and focus are drawn still so they can be compared side by side.</figcaption>
+      </figure>
+
+      <p class="blocklabel">Failure case</p>
+      <figure class="specimen">
+        <svg class="fail-svg" viewBox="0 0 360 120" width="360" height="120" role="img" aria-labelledby="fail-05-4-t">
+          <title id="fail-05-4-t">Failure case: two status dots, Verdigris for Active and red for Ready, then the same two dots in grayscale, where they look the same</title>
+          <rect width="360" height="120" fill="#DCD9D2"/>
+          <circle cx="40" cy="44" r="9" fill="#4A7C74"/><circle cx="100" cy="44" r="9" fill="#E63946"/>
+          <circle cx="220" cy="44" r="9" fill="#7A7A7A"/><circle cx="280" cy="44" r="9" fill="#7B7B7B"/>
+          <text x="22" y="86" fill="#121212" font-family="Inter, Arial, sans-serif" font-size="13">Color</text>
+          <text x="200" y="86" fill="#121212" font-family="Inter, Arial, sans-serif" font-size="13">Grayscale</text>
+        </svg>
+        <figcaption><strong>Fails 1.4.1.</strong> V5's Active and Ready states used a Verdigris dot and a red dot with no word and no change of shape. In grayscale, and for many readers with color vision deficiency, the two are one dot.</figcaption>
+      </figure>
+    </div>
+
+    <div class="closer" id="color-specs">
+      <h3>Specifications</h3>
+      <p>Contrast of each palette color on each approved surface, computed with the WCAG formula. "Text" means 4.5 to 1 or more. "Large and graphics" means 3 to 1 or more. "Fails" means under 3 to 1.</p>
+      <!--COLOR-TABLE-->
+      <div class="downloads">
+        <p class="blocklabel">Downloads</p>
+        <p class="cap">Draft files from the wireframe. Each name carries the date and a status suffix.</p>
+        <div class="dl-row">
+          <button type="button" class="btn dl" data-file="20261021_Oath-And-Action-Palette_DRAFT.css" data-kind="css">Download palette CSS, draft</button>
+          <button type="button" class="btn dl" data-file="20261021_Oath-And-Action-Palette_DRAFT.json" data-kind="json">Download palette JSON, draft</button>
+          <button type="button" class="btn dl" aria-disabled="true" aria-describedby="dl-ase-why" data-reason="The swatch file is exported in Phase 5, from the final token file.">Download ASE swatches</button>
+        </div>
+        <p class="why" id="dl-ase-why">Unavailable until Phase 5: the swatch file is exported from the final token file.</p>
+        <p class="status" role="status" id="status-dl">No file downloaded yet.</p>
+      </div>
+    </div>
+
+    <div class="closer" id="color-related">
+      <h3>Related chapters</h3>
+      <ul class="related">
+        <li><a class="xref" href="#type"><span class="n">06</span> Type</a><span>Which sizes count as large text.</span></li>
+        <li><a class="xref" href="#signal-grid"><span class="n">08</span> The Signal Grid</a><span>The lever and the content-type colors.</span></li>
+        <li><a class="xref" href="#data-visualization"><span class="n">14</span> Data visualization</a><span>Data palettes, kept apart from identity color.</span></li>
+        <li><a class="xref" href="#motion-and-states"><span class="n">17</span> Motion and states</a><span>How each state behaves over time.</span></li>
+        <li><a class="xref" href="#tokens"><span class="n">26</span> Tokens and how to choose them</a><span>Every color token, with its job.</span></li>
+      </ul>
+    </div>
+
+    <div class="closer builders" id="color-builders">
+      <h3>For builders</h3>
+      <p>Pick the surface token first, then the role, then the state. A caption on Newsprint is <code>surface: newsprint</code>, <code>role: text secondary</code>, which gives <code>--oa-color-text-secondary-on-newsprint</code>. If the table says "Large and graphics" for your pair, set the text at 24 px, or 18.66 px bold, and up. Copy hex values from this page; never sample them from a screenshot.</p>
+    </div>
+
+    <!--CHAPNAV-->
+  </div>
+</section>
