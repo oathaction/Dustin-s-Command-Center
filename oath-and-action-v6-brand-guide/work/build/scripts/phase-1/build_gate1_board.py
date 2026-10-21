@@ -541,20 +541,27 @@ def call2():
     return "".join(h)
 
 
+KNOWN_HINGE_ALTS = {
+    "threeup__v5.png": "V5's hinge diagram: the wordmark under one dotted arc ending in an open arrowhead, with UNDERSTAND and IMPACT beneath.",
+    "threeup__draft.png": "The withdrawn first draft: the ampersand in a circle on a line joining OATH and ACTION, with dotted arcs above and below.",
+    "threeup__v2.png": "V2: the ampersand in a circle on a line joining OATH and ACTION with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath.",
+}
+
+
 def call3():
     sec = board_section(idb, "item-7")
-    names =["threeup__v5.png", "threeup__draft.png", "threeup__v2.png"]
-    labels = [strip_tags(re.search(rf'<figcaption>([^<]*)</figcaption><img src="phase-1/identity/png/p07/{n}"', sec).group(1)) for n in names]
-    alts = [
-        "V5's hinge diagram: the wordmark under one dotted arc ending in an open arrowhead, with UNDERSTAND and IMPACT beneath.",
-        "The withdrawn first draft: the ampersand in a circle on a line joining OATH and ACTION, with dotted arcs above and below.",
-        "V2: the ampersand in a circle on a line joining OATH and ACTION with four nodes, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath.",
-    ]
-    figs = "".join(f'<figure><div class="spec">{img(os.path.join(IDPNG, "p07", n), a, cls="fit")}</div><figcaption class="cap"><b>{esc(l)}</b></figcaption></figure>' for n, l, a in zip(names, labels, alts))
-    cap = re.search(r"Each rendered 640 px wide[^<]*?\.", sec).group(0)
+    block = re.search(r'<div class="three">(.*?)</div>', sec, flags=re.S)
+    need(block, "identity board item 7 has no three-up comparison")
+    found = re.findall(r'<figure><figcaption>(.*?)</figcaption><img src="([^"]+)"[^>]*alt="([^"]*)"', block.group(1), flags=re.S)
+    need(found, "identity board item 7 three-up has no figures")
+    figs = "".join(f'<figure><div class="spec">{img(os.path.join(BOARDS, src), KNOWN_HINGE_ALTS.get(os.path.basename(src), html.unescape(alt)), cls="fit")}</div><figcaption class="cap"><b>{esc(strip_tags(fc))}</b></figcaption></figure>' for fc, src, alt in found)
+    grid = "three" if len(found) == 3 else "two"
+    cm = re.search(r"Each rendered 640 px wide[^<]*?\.", sec)
+    cap = cm.group(0) if cm else "Each rendered 640 px wide and shown reduced."
     master = os.path.join(IDSVG, "07-hinge", "20261021_Hinge-Display-Master_V2.svg")
     svg = svg_inline(master, "Hinge diagram V2 display master: OATH and ACTION on a line with four nodes, the red ampersand in a circle at the center, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath", width=1100, style="color:#121212;width:100%;min-width:560px;height:auto")
-    h = ['<h4>V5, the withdrawn first draft and V2</h4>', f'<div class="three eq">{figs}</div><p class="cap">{esc(cap)}</p>']
+    head = re.search(r'<h3>([^<]*)</h3><div class="three">', sec)
+    h = [f'<h4>{esc(head.group(1)) if head else "The drawings side by side"}</h4>', f'<div class="{grid} eq">{figs}</div><p class="cap">{esc(cap)}</p>']
     h.append('<h4>The V2 display master</h4>')
     h.append(spec_figure(scroll(svg, "Hinge diagram V2 display master"), "The display master file, <code>work/boards/phase-1/identity/07-hinge/20261021_Hinge-Display-Master_V2.svg</code>, inlined as drawn. Below 560 px the frame scrolls, so the labels never draw under the master's 526 px minimum."))
     return "".join(h)

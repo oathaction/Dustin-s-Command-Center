@@ -5,7 +5,8 @@ Usage: python3 -I build_navigation_wireframe.py <project-root>
 Writes work/boards/phase-1/navigation/20261021_Guide-Shell-Wireframe.html.
 Fills the contents table in work/boards/20261021_Navigation-And-Template-Wireframes.html
 between <!-- contents:start --> and <!-- contents:end --> when the board exists.
-The chapter list matches work/ledger/20261021_Guide-Architecture-Map.md, section 2.
+The chapter list matches work/ledger/20261021_Guide-Architecture-Map.md, section 2. Instruction lines are the editor's final set
+(work/handoffs/phase-1/20261021_Voice-Line-And-Headlines.md, section 3).
 """
 import html
 import re
@@ -29,35 +30,37 @@ PARTS = [
 ]
 
 CHAPTERS = [
-    ("01", "purpose", "Purpose", "foundations", "Learn what Oath & Action does and how the four pillars lead a reader from a question to a next step."),
-    ("02", "voice", "Voice", "foundations", "Write copy that sounds like Oath & Action, with the locked lines quoted exactly."),
-    ("03", "identity", "Identity", "foundations", "Pick the right lockup for the surface and give the wordmark its clear space."),
-    ("04", "ampersand", "The Ampersand and the hinge", "foundations", "Use the ampersand to join a promise to an action, once per composition."),
+    ("01", "purpose", "Purpose", "foundations", "Learn what Oath & Action does, and how its pillars and nonpartisan rules shape every piece."),
+    ("02", "voice", "Voice", "foundations", "Write the way you'd explain a rule to a neighbor, and quote the brand lines exactly."),
+    ("03", "identity", "Identity", "foundations", "Pick the lockup that fits the surface and size, and give it room on every side."),
+    ("04", "ampersand", "The Ampersand and the hinge", "foundations", "Use the ampersand once per composition to join a commitment to what it produces."),
     ("05", "color", "Color", "foundations", "Choose a surface first, then the text and graphic colors that pass on it."),
     ("06", "type", "Type", "foundations", "Set every word at a readable size with the three faces and the type scale."),
-    ("07", "layout", "Layout and spacing", "foundations", "Build pages on the column grid and spacing scale so the measure stays comfortable at every width."),
-    ("08", "signal-grid", "The Signal Grid", "foundations", "Place the lockmark in its sanctioned spots, and code content with the Signal Grid only where a key beside it lets a reader decode it."),
+    ("07", "layout", "Layout and spacing", "foundations", "Build each page on the column grid and spacing scale, readable at every width."),
+    ("08", "signal-grid", "The Signal Grid", "foundations", "Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content."),
     ("09", "pillar-marks", "Pillar marks", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
-    ("11", "icons", "Status and utility icons", "symbols", "Show a record's state or an interface action with a glyph that never stands in for a topic."),
+    ("11", "icons", "Status and utility icons", "symbols", "Give each record state or interface action a glyph and a word that read without color."),
     ("12", "graphic-devices", "Graphic devices and patterns", "symbols", "Add dividers, frames, markers and watermarks only where they help someone read."),
-    ("13", "evidence", "Evidence and sourcing", "evidence", "Say what kind of evidence a claim rests on, and put its source and any illustrative label beside it."),
+    ("13", "evidence", "Evidence and sourcing", "evidence", "Name the kind of evidence behind each claim, with its source and any label beside it."),
     ("14", "data-visualization", "Data visualization", "evidence", "Start from the reader's question to choose a chart, then title it with the evidence it shows."),
-    ("15", "systems-graphics", "Systems graphics", "evidence", "Draw causes, loops and authority from Atlas V7 so a reader can follow one link at a time."),
-    ("16", "photography", "Photography, illustration and video", "evidence", "Show public life as it happens, and label every placeholder and generated image for what it is."),
-    ("17", "motion-and-states", "Motion and states", "behavior", "Keep motion under the reader's control, and give every state a word or a shape as well as a color."),
-    ("18", "components", "Components and interaction", "behavior", "Build controls that work by keyboard and screen reader, with a status line for every change."),
+    ("15", "systems-graphics", "Systems graphics", "evidence", "Draw Atlas V7's mechanisms so a reader can follow them one link at a time."),
+    ("16", "photography", "Photography, illustration and video", "evidence", "Show public life as it happens, and label every placeholder and generated image."),
+    ("17", "motion-and-states", "Motion and states", "behavior", "Keep motion under the reader's control, and give every state visible text."),
+    ("18", "components", "Components and interaction", "behavior", "Build controls that work by keyboard and screen reader and announce every change."),
     ("19", "accessibility", "Accessibility", "behavior", "Check a page against WCAG 2.2 AA before you call it finished."),
-    ("20", "web", "Web", "applications", "Assemble the website mastheads, navigation, article pages, trackers and footer from the system."),
-    ("21", "atlas", "The atlas", "applications", "Apply the system to the atlas, its hardest test, with typed IDs and the evidence one step away."),
+    ("20", "web", "Web", "applications", "Build each web page from the system, opening on the reader's question."),
+    ("21", "atlas", "The atlas", "applications", "Apply the system to the atlas, with typed IDs and evidence a step from every claim."),
     ("22", "newsletter-and-email", "Newsletter and email", "applications", "Build an email that reads well with images off and web fonts unavailable."),
-    ("23", "social-and-video", "Social and video", "applications", "Size posts, covers and video frames to each platform's safe areas, with captions clear of the interface."),
+    ("23", "social-and-video", "Social and video", "applications", "Size each post and video frame for its platform, with text clear of the app's buttons."),
     ("24", "reports", "Reports", "applications", "Lay out a report page by page, from the cover to the source notes."),
-    ("25", "print", "Print and presentation", "applications", "Produce one-pagers, letterhead, slides, event signs and merchandise at their print sizes."),
-    ("26", "tokens", "Tokens and how to choose them", "production", "Pick a token by surface, then role, then state."),
-    ("27", "assets", "Assets and downloads", "production", "Download a master with a dated name and see which chapter governs it."),
-    ("28", "standards", "Standards checklist", "production", "Run the checklist before anything is called final."),
+    ("25", "print", "Print and presentation", "applications", "Proof each slide and printed piece at its real size before it goes out."),
+    ("26", "tokens", "Tokens and how to choose them", "production", "Choose a token step by step from its surface, and call it by name."),
+    ("27", "assets", "Assets and downloads", "production", "Download the file for your size and surface, and see which chapter governs it."),
+    ("28", "standards", "Standards checklist", "production", "Run the checklist before you publish anything."),
 ]
+
+FRONT = {'Contents': 'Jump to any chapter by its part or number.', 'Where to start': "Pick the route that matches why you're here.", 'Closing': "See which edition you're reading, and return to the contents from here."}
 
 # V5 anchors kept as aliases on their new homes (map section 4).
 ALIASES = {"signal-grid": "grid", "symbols": "topic-icons", "data-visualization": "data",
@@ -100,6 +103,10 @@ def color_table():
                 cells.append(f'<td role="cell" data-label="On {sname}"><span class="cell"><span class="r">n/a</span><span class="v">Same color</span></span></td>')
                 continue
             r = ratio(hx, shx)
+            if name == "Pillar Red" and sname == "Prussian":
+                # Red never sits on Prussian (Rule 05.3, decision D1-26).
+                cells.append(f'<td role="cell" data-label="On {sname}"><span class="cell"><span class="r">{r:.2f} to 1</span><span class="v">Not used: Rule 05.3</span></span></td>')
+                continue
             # Rounded to two decimals, as in Master Brief V2 section 8. The verdict uses the unrounded ratio.
             shown = f"{r:.2f}"
             cells.append(f'<td role="cell" data-label="On {sname}"><span class="cell"><span class="r">{shown} to 1</span><span class="v">{verdict(r)}</span></span></td>')
@@ -178,7 +185,7 @@ def nav_list(cls_prefix):
 
 def contents_section():
     out = ['<section class="contents" id="contents"><h2 id="contents-h">Contents</h2>',
-           '<p>Six parts and 28 chapters. Each chapter opens with one sentence that says what it helps you do.</p>']
+           f'<p class="instr">{e(FRONT["Contents"])}</p>']
     for slug, name, desc in PARTS:
         out.append(f'<div class="toc-part"><h3><a href="#part-{slug}">{e(name)}</a></h3><ul class="toc-list">')
         for num, cid, cname, cpart, line in CHAPTERS:
@@ -191,7 +198,7 @@ def contents_section():
 
 def start_section():
     return ('<section class="start" id="start" data-track="front" data-label="Where to start"><h2 id="start-h">Where to start</h2>'
-            '<p>Pick the route that matches what you came to do.</p><ul class="routes">'
+            f'<p class="instr">{e(FRONT["Where to start"])}</p><ul class="routes">'
             '<li><p class="route-name">New to Oath &amp; Action</p><p>Read <a href="#purpose">01 Purpose</a> first. '
             '<a href="#evidence">13 Evidence and sourcing</a> then shows how every chart and claim says what it rests on.</p></li>'
             '<li><p class="route-name">Making something</p><p>Start in <a href="#color">05 Color</a> and <a href="#identity">03 Identity</a>. '
@@ -270,7 +277,7 @@ def build():
     {"".join(body)}
     <section class="closing" id="closing" data-track="closing" data-part="production" data-label="Closing">
       <h2 id="closing-h">Closing</h2>
-      <p class="instr">Colophon, edition notes and the way back to the start.</p>
+      <p class="instr">{e(FRONT["Closing"])}</p>
       <p class="stub">Wireframe stub. The colophon and edition notes go here.</p>
       <div class="chapnav"><a href="#standards" rel="prev">Previous chapter: <span class="n">28</span> Standards checklist</a><a class="to-contents" href="#contents">Back to contents</a></div>
     </section>
@@ -306,8 +313,8 @@ def board_contents():
             part_cell = f'<th scope="rowgroup" rowspan="{len(chs)}">{e(name)}</th>' if k == 0 else ""
             rows.append(f"<tr>{part_cell}<td class=\"num\">{num}</td><td><strong>{e(cname)}</strong></td><td>{e(line)}</td></tr>")
     table = ('<div class="tablewrap" role="region" aria-labelledby="contents-cap" tabindex="0"><table class="contents-table">'
-             '<caption id="contents-cap">Proposed V6 contents, with the draft instruction line for each chapter</caption>'
-             '<thead><tr><th scope="col">Part</th><th scope="col">No.</th><th scope="col">Chapter</th><th scope="col">Instruction line, draft for the editor</th></tr></thead>'
+             '<caption id="contents-cap">Proposed V6 contents, with each chapter\'s instruction line</caption>'
+             '<thead><tr><th scope="col">Part</th><th scope="col">No.</th><th scope="col">Chapter</th><th scope="col">Instruction line</th></tr></thead>'
              f'<tbody>{"".join(rows)}</tbody></table></div>')
     s = BOARD.read_text()
     new = re.sub(r"(<!-- contents:start -->).*?(<!-- contents:end -->)", lambda m: m.group(1) + table + m.group(2), s, flags=re.S)

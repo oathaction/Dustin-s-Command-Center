@@ -1128,7 +1128,7 @@
      },
      "arrowInPage": {
       "title": "Page 8 of 12: Comparison",
-      "scrollLeft": 240,
+      "scrollLeft": 235,
       "canScroll": true
      },
      "atLast": {
@@ -1367,42 +1367,42 @@
    "under13px": []
   },
   "board-1440": {
-   "checked": 523,
+   "checked": 528,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-1440-reader-open": {
-   "checked": 537,
+   "checked": 542,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-390": {
-   "checked": 523,
+   "checked": 528,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-390-reader-open": {
-   "checked": 537,
+   "checked": 542,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-360": {
-   "checked": 523,
+   "checked": 528,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-360-reader-open": {
-   "checked": 537,
+   "checked": 542,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,

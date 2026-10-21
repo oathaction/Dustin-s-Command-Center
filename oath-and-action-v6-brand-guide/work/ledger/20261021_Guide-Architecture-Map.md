@@ -32,41 +32,41 @@ Action words in the tables:
 
 ## 2. Proposed contents
 
-Front matter, unnumbered: Cover, Contents, Where to start (three routes in, for a newcomer, a designer and a builder).
+Front matter, unnumbered: Cover, Contents ("Jump to any chapter by its part or number."), Where to start ("Pick the route that matches why you're here."), with three routes in, for a newcomer, a designer and a builder.
 
-The instruction lines are drafts for the editor. Each one sits under its chapter's h2 (section 5).
+The instruction lines are the editor's final set, from section 3 of `work/handoffs/phase-1/20261021_Voice-Line-And-Headlines.md`, carried word for word. Each one sits under its chapter's h2 (section 5).
 
 | No. | Chapter | Part | Instruction line (draft) | Main sources | Built in |
 |---|---|---|---|---|---|
-| 01 | Purpose | Foundations | Learn what Oath & Action does and how the four pillars lead a reader from a question to a next step. | V5 01; V4.2 01 | Phase 2 |
-| 02 | Voice | Foundations | Write copy that sounds like Oath & Action, with the locked lines quoted exactly. | V5 02; V4.2 02, 18 | Phase 2 |
-| 03 | Identity | Foundations | Pick the right lockup for the surface and give the wordmark its clear space. | V5 03; V4.2 03, 05 | Phase 2 |
-| 04 | The Ampersand and the hinge | Foundations | Use the ampersand to join a promise to an action, once per composition. | V5 04; V4.2 04 | Phase 2 |
+| 01 | Purpose | Foundations | Learn what Oath & Action does, and how its pillars and nonpartisan rules shape every piece. | V5 01; V4.2 01 | Phase 2 |
+| 02 | Voice | Foundations | Write the way you'd explain a rule to a neighbor, and quote the brand lines exactly. | V5 02; V4.2 02, 18 | Phase 2 |
+| 03 | Identity | Foundations | Pick the lockup that fits the surface and size, and give it room on every side. | V5 03; V4.2 03, 05 | Phase 2 |
+| 04 | The Ampersand and the hinge | Foundations | Use the ampersand once per composition to join a commitment to what it produces. | V5 04; V4.2 04 | Phase 2 |
 | 05 | Color | Foundations | Choose a surface first, then the text and graphic colors that pass on it. | V5 05; V4.2 10, 18 | Phase 2 |
 | 06 | Type | Foundations | Set every word at a readable size with the three faces and the type scale. | V5 06; V4.2 11 | Phase 2 |
-| 07 | Layout and spacing | Foundations | Build pages on the column grid and spacing scale so the measure stays comfortable at every width. | New; V5 06 craft | Phase 2 |
-| 08 | The Signal Grid | Foundations | Place the lockmark in its sanctioned spots, and code content with the Signal Grid only where a key beside it lets a reader decode it. | V5 07 | Phase 2 |
+| 07 | Layout and spacing | Foundations | Build each page on the column grid and spacing scale, readable at every width. | New; V5 06 craft | Phase 2 |
+| 08 | The Signal Grid | Foundations | Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content. | V5 07 | Phase 2 |
 | 09 | Pillar marks | Symbols and graphics | Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act. | V5 08 | Phase 2 |
 | 10 | Topic and atlas symbols | Symbols and graphics | Find the symbol for a subject or an atlas element and set it with its label. | V5 09; V4.2 07, 08 | Phase 2 |
-| 11 | Status and utility icons | Symbols and graphics | Show a record's state or an interface action with a glyph that never stands in for a topic. | New; V5 09; V4.2 08 | Phase 2 |
+| 11 | Status and utility icons | Symbols and graphics | Give each record state or interface action a glyph and a word that read without color. | New; V5 09; V4.2 08 | Phase 2 |
 | 12 | Graphic devices and patterns | Symbols and graphics | Add dividers, frames, markers and watermarks only where they help someone read. | New; V5 03, 05; V4.2 06, 09 | Phase 2 |
-| 13 | Evidence and sourcing | Evidence and media | Say what kind of evidence a claim rests on, and put its source and any illustrative label beside it. | New; V5 11, 15; V4.2 12, 14 | Phase 3 |
+| 13 | Evidence and sourcing | Evidence and media | Name the kind of evidence behind each claim, with its source and any label beside it. | New; V5 11, 15; V4.2 12, 14 | Phase 3 |
 | 14 | Data visualization | Evidence and media | Start from the reader's question to choose a chart, then title it with the evidence it shows. | V5 11 | Phase 3 |
-| 15 | Systems graphics | Evidence and media | Draw causes, loops and authority from Atlas V7 so a reader can follow one link at a time. | V5 16; V4.2 09 | Phase 3 |
-| 16 | Photography, illustration and video | Evidence and media | Show public life as it happens, and label every placeholder and generated image for what it is. | V5 10; V4.2 16 | Phase 4 |
-| 17 | Motion and states | Behavior | Keep motion under the reader's control, and give every state a word or a shape as well as a color. | V5 12; V5 07 states | Phase 2 |
-| 18 | Components and interaction | Behavior | Build controls that work by keyboard and screen reader, with a status line for every change. | New; V5 07, 09, 14 controls | Phase 2 |
+| 15 | Systems graphics | Evidence and media | Draw Atlas V7's mechanisms so a reader can follow them one link at a time. | V5 16; V4.2 09 | Phase 3 |
+| 16 | Photography, illustration and video | Evidence and media | Show public life as it happens, and label every placeholder and generated image. | V5 10; V4.2 16 | Phase 4 |
+| 17 | Motion and states | Behavior | Keep motion under the reader's control, and give every state visible text. | V5 12; V5 07 states | Phase 2 |
+| 18 | Components and interaction | Behavior | Build controls that work by keyboard and screen reader and announce every change. | New; V5 07, 09, 14 controls | Phase 2 |
 | 19 | Accessibility | Behavior | Check a page against WCAG 2.2 AA before you call it finished. | New; V5 15; V4.2 17 | Phase 2 rules, Phase 5 results |
-| 20 | Web | Applications | Assemble the website mastheads, navigation, article pages, trackers and footer from the system. | V5 13; V4.2 12, 13 | Phase 4 |
-| 21 | The atlas | Applications | Apply the system to the atlas, its hardest test, with typed IDs and the evidence one step away. | V5 16; Atlas V7; Concepts V2 | Phase 4 |
+| 20 | Web | Applications | Build each web page from the system, opening on the reader's question. | V5 13; V4.2 12, 13 | Phase 4 |
+| 21 | The atlas | Applications | Apply the system to the atlas, with typed IDs and evidence a step from every claim. | V5 16; Atlas V7; Concepts V2 | Phase 4 |
 | 22 | Newsletter and email | Applications | Build an email that reads well with images off and web fonts unavailable. | V5 13; V4.2 05, 13 | Phase 4 |
-| 23 | Social and video | Applications | Size posts, covers and video frames to each platform's safe areas, with captions clear of the interface. | V5 13; V4.2 15 | Phase 4 |
+| 23 | Social and video | Applications | Size each post and video frame for its platform, with text clear of the app's buttons. | V5 13; V4.2 15 | Phase 4 |
 | 24 | Reports | Applications | Lay out a report page by page, from the cover to the source notes. | V5 14; V4.2 14 | Phase 4 |
-| 25 | Print and presentation | Applications | Produce one-pagers, letterhead, slides, event signs and merchandise at their print sizes. | V5 13, 08 | Phase 4 |
-| 26 | Tokens and how to choose them | Production | Pick a token by surface, then role, then state. | New; V5 15 | Phase 2 |
-| 27 | Assets and downloads | Production | Download a master with a dated name and see which chapter governs it. | New; V5 15 asset index | Phase 5 |
-| 28 | Standards checklist | Production | Run the checklist before anything is called final. | V5 15; V4.2 17, 18 | Phase 5 |
-| | Closing | Production | Colophon, edition notes and the way back to the start. | V5 17; V4.2 18, 19 | Phase 5 |
+| 25 | Print and presentation | Applications | Proof each slide and printed piece at its real size before it goes out. | V5 13, 08 | Phase 4 |
+| 26 | Tokens and how to choose them | Production | Choose a token step by step from its surface, and call it by name. | New; V5 15 | Phase 2 |
+| 27 | Assets and downloads | Production | Download the file for your size and surface, and see which chapter governs it. | New; V5 15 asset index | Phase 5 |
+| 28 | Standards checklist | Production | Run the checklist before you publish anything. | V5 15; V4.2 17, 18 | Phase 5 |
+| | Closing | Production | See which edition you're reading, and return to the contents from here. | V5 17; V4.2 18, 19 | Phase 5 |
 
 Phase consequences. The Phase 2 prompt lists "Layout and the Signal Grid" as one chapter; this map makes it two (07 and 08). The Phase 4 prompt lists "Web and atlas", "Social", "Video frames" and "Atlas system test"; this map makes them 20, 21 and 23. No prompt names 19 Accessibility, 27 Assets and downloads, 28 Standards checklist or the Closing. The Gate 1 report should place them in the Phase 2 proposal and carry the rest forward.
 
@@ -113,7 +113,7 @@ Front matter: `#top`, `#contents`, `#start`. Parts: `#part-foundations`, `#part-
 
 **V5 anchors kept as aliases**, so links written for Edition 05 still land: `#grid` lands on `#signal-grid`, `#topic-icons` on `#symbols`, `#data` on `#data-visualization`, `#motion` on `#motion-and-states`, `#in-use` on `#part-applications`, and `#atlas-system` on `#systems-graphics`. The other V5 anchors (`#purpose`, `#voice`, `#identity`, `#ampersand`, `#color`, `#type`, `#pillar-marks`, `#photography`, `#reports`, `#standards`, `#closing`) keep their names.
 
-**Rule IDs.** A rule is cited as "Rule 05.2": chapter 05, rule 2. Its anchor is `#rule-05-2`. The form cannot collide with Atlas V7 IDs, which start with a letter (variables A1, B4 and X1, connections L01 and LE02, loops R1 and B2, reforms R-01, domains D01), with V4.2 symbol codes (01-01, P-01, U-01), or with report folios ("05 / Narrative page"). V6 uses no "R" prefix for its own rules, because V7 already uses R for loops and reforms (tension 7). V5's ten standards R1 to R10 each map to the home rule that carries them (section 6, V5 15), and the checklist in 28 cites those rule IDs. The systems marks board proposes Std-01 to Std-10 instead, so this scheme waits for Dustin's ruling (decision A7). The creative director recommends Rule NN.n for every guide rule, with the strategy board's nonpartisan rules NP-01 to NP-20 becoming Rules 01.n in 01 Purpose (review C4).
+**Rule IDs.** A rule is cited as "Rule 05.2": chapter 05, rule 2. Its anchor is `#rule-05-2`. The form cannot collide with Atlas V7 IDs, which start with a letter (variables A1, B4 and X1, connections L01 and LE02, loops R1 and B2, reforms R-01, domains D01), with V4.2 symbol codes (01-01, P-01, U-01), or with report folios ("05 / Narrative page"). V6 uses no "R" prefix for its own rules, because V7 already uses R for loops and reforms (tension 7). V5's ten standards R1 to R10 each map to the home rule that carries them (section 6, V5 15), and the checklist in 28 cites those rule IDs. The systems marks board proposes Std-01 to Std-10 instead, so this scheme waits for Dustin's ruling (decision A7). The creative director recommends Rule NN.n for every guide rule (review C4). Under decision D1-27, Rule 01.1 in 01 Purpose is "Red never marks a party, a side or a person.", Rules 01.2 to 01.20 are the strategy board's nonpartisan rules, and the red rule's one ID is Rule 05.3.
 
 Atlas IDs themselves always appear in a typed chip ("Variable B4", "Loop B4", "Reform R-01"). The systems marks board owns that design; 15 and 21 apply it.
 
@@ -158,7 +158,7 @@ Eighteen sections: the cover, sixteen chapters and the closing. Units are V5's h
 
 | V5 unit | V6 home | Action | Note |
 |---|---|---|---|
-| [Opener] "People belong in the picture." and the open-door line | 01 | Keep | Slogan moves under the h2 or into Rule 01.1 |
+| [Opener] "People belong in the picture." and the open-door line | 01 | Keep | Slogan moves under the h2 |
 | [Mission and about text] | 01 | Keep | Mission quoted exactly |
 | The hinge. | 01 and 04 | Split | 01 states the idea (DC-05); 04 owns the drawing, the headlines and their rules |
 | Four pillars, always in this order. (Explain, Track, Connect, Act, with their products) | 01 | Keep | The product list grows into the brand architecture from the strategy board |
@@ -213,7 +213,7 @@ Eighteen sections: the cover, sixteen chapters and the closing. Units are V5's h
 | ["There are no tints."] | 05 and 26 | Retire | Replaced by bounded tints with tokens and named jobs (tension 3) |
 | [Watermark opacities] | 12 | Move | |
 | Proportion. | 05 | Keep | Rule 05.1 on the board's wireframe |
-| [Red discipline, red against blue, red against green, deltas] | 05 and 14 | Split | Rewritten as the red rule from the creative director's review (C3), shown as Rule 05.3 on the board. Deltas move to 14 |
+| [Red discipline, red against blue, red against green, deltas] | 05 and 14 | Split | Rewritten as the red rule, Rule 05.3, in the words of decision D1-26: "The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither does the ampersand inside the hinge diagram, which is an identity mark. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian." Deltas move to 14 |
 | [Stone hairline dividers] | 12 | Move | 05 keeps the hairline's color |
 | Contrast, measured. | 05 | Rebuild | Text-safe and graphic-safe roles for each color on each surface (tension 9) |
 | The keyline rule. | 05 | Keep | |
@@ -536,4 +536,4 @@ Created:
 - `work/build/scripts/phase-1/ux_architecture_coverage.py`
 - The navigation board and its files, listed in the board's own change log
 
-Modified after the creative director's and editor's reviews (October 21, 2026): the chapter 08 line, the ID list and the standards note in section 4, the Rule 05.2 example, the V5 cover row, the red-rule note in V5 05, and decision A7. `source/`, `work/extract/` and the V5 masters were not touched.
+Modified after the creative director's and editor's reviews (October 21, 2026): the chapter 08 line, the ID list and the standards note in section 4, the Rule 05.2 example, the V5 cover row, the red-rule note in V5 05, and decision A7. Modified after the creative director's re-check: the instruction lines in section 2 now carry the editor's final set; the V5 05 note quotes the red rule as D1-26 words it; the V5 01 opener note and the section 4 standards note follow D1-27. `source/`, `work/extract/` and the V5 masters were not touched.

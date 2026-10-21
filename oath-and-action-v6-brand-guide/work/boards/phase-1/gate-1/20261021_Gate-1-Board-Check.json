@@ -1,8 +1,8 @@
 {
  "board": "work/boards/20261021_Gate-1-Review-Board.html",
- "checked": "2026-10-21T05:09:49.444Z",
- "bytes": 3405179,
- "megabytes": 3.25,
+ "checked": "2026-10-21T05:21:04.254Z",
+ "bytes": 3516963,
+ "megabytes": 3.35,
  "underTenMegabytes": true,
  "startsWithTitle": true,
  "hasSkeletonTags": true,
@@ -20,7 +20,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "horizontalScroll": false,
-   "images": 225,
+   "images": 220,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
    "inlineSvgs": 13,
@@ -32,7 +32,7 @@
     "h1": 1,
     "h2": 10,
     "h3": 19,
-    "h4": 27,
+    "h4": 28,
     "h5": 4
    },
    "h1Count": 1,
@@ -40,11 +40,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 25,
+   "scrollRegions": 26,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 30791,
+   "pageHeight": 31823,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -82,7 +82,24 @@
     }
    ],
    "pageErrors": [],
-   "screenshot": "work/boards/screens/gate-1/gate1-1440-light.png"
+   "screenshots": [
+    "work/boards/screens/gate-1/gate1-1440-light-01.png",
+    "work/boards/screens/gate-1/gate1-1440-light-02.png",
+    "work/boards/screens/gate-1/gate1-1440-light-03.png",
+    "work/boards/screens/gate-1/gate1-1440-light-04.png",
+    "work/boards/screens/gate-1/gate1-1440-light-05.png",
+    "work/boards/screens/gate-1/gate1-1440-light-06.png",
+    "work/boards/screens/gate-1/gate1-1440-light-07.png",
+    "work/boards/screens/gate-1/gate1-1440-light-08.png",
+    "work/boards/screens/gate-1/gate1-1440-light-09.png",
+    "work/boards/screens/gate-1/gate1-1440-light-10.png",
+    "work/boards/screens/gate-1/gate1-1440-light-11.png",
+    "work/boards/screens/gate-1/gate1-1440-light-12.png",
+    "work/boards/screens/gate-1/gate1-1440-light-13.png",
+    "work/boards/screens/gate-1/gate1-1440-light-14.png",
+    "work/boards/screens/gate-1/gate1-1440-light-15.png",
+    "work/boards/screens/gate-1/gate1-1440-light-16.png"
+   ]
   },
   {
    "width": 1440,
@@ -90,7 +107,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "horizontalScroll": false,
-   "images": 225,
+   "images": 220,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
    "inlineSvgs": 13,
@@ -102,7 +119,7 @@
     "h1": 1,
     "h2": 10,
     "h3": 19,
-    "h4": 27,
+    "h4": 28,
     "h5": 4
    },
    "h1Count": 1,
@@ -110,11 +127,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 25,
+   "scrollRegions": 26,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 30791,
+   "pageHeight": 31823,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -152,7 +169,24 @@
     }
    ],
    "pageErrors": [],
-   "screenshot": "work/boards/screens/gate-1/gate1-1440-dark.png"
+   "screenshots": [
+    "work/boards/screens/gate-1/gate1-1440-dark-01.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-02.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-03.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-04.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-05.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-06.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-07.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-08.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-09.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-10.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-11.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-12.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-13.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-14.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-15.png",
+    "work/boards/screens/gate-1/gate1-1440-dark-16.png"
+   ]
   },
   {
    "width": 390,
@@ -160,7 +194,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "horizontalScroll": false,
-   "images": 225,
+   "images": 220,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
    "inlineSvgs": 13,
@@ -172,7 +206,7 @@
     "h1": 1,
     "h2": 10,
     "h3": 19,
-    "h4": 27,
+    "h4": 28,
     "h5": 4
    },
    "h1Count": 1,
@@ -180,11 +214,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 25,
+   "scrollRegions": 26,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 49432,
+   "pageHeight": 49979,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -222,11 +256,38 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 86
+     "nodes": 88
     }
    ],
    "pageErrors": [],
-   "screenshot": "work/boards/screens/gate-1/gate1-390-light.png"
+   "screenshots": [
+    "work/boards/screens/gate-1/gate1-390-light-01.png",
+    "work/boards/screens/gate-1/gate1-390-light-02.png",
+    "work/boards/screens/gate-1/gate1-390-light-03.png",
+    "work/boards/screens/gate-1/gate1-390-light-04.png",
+    "work/boards/screens/gate-1/gate1-390-light-05.png",
+    "work/boards/screens/gate-1/gate1-390-light-06.png",
+    "work/boards/screens/gate-1/gate1-390-light-07.png",
+    "work/boards/screens/gate-1/gate1-390-light-08.png",
+    "work/boards/screens/gate-1/gate1-390-light-09.png",
+    "work/boards/screens/gate-1/gate1-390-light-10.png",
+    "work/boards/screens/gate-1/gate1-390-light-11.png",
+    "work/boards/screens/gate-1/gate1-390-light-12.png",
+    "work/boards/screens/gate-1/gate1-390-light-13.png",
+    "work/boards/screens/gate-1/gate1-390-light-14.png",
+    "work/boards/screens/gate-1/gate1-390-light-15.png",
+    "work/boards/screens/gate-1/gate1-390-light-16.png",
+    "work/boards/screens/gate-1/gate1-390-light-17.png",
+    "work/boards/screens/gate-1/gate1-390-light-18.png",
+    "work/boards/screens/gate-1/gate1-390-light-19.png",
+    "work/boards/screens/gate-1/gate1-390-light-20.png",
+    "work/boards/screens/gate-1/gate1-390-light-21.png",
+    "work/boards/screens/gate-1/gate1-390-light-22.png",
+    "work/boards/screens/gate-1/gate1-390-light-23.png",
+    "work/boards/screens/gate-1/gate1-390-light-24.png",
+    "work/boards/screens/gate-1/gate1-390-light-25.png",
+    "work/boards/screens/gate-1/gate1-390-light-26.png"
+   ]
   },
   {
    "width": 390,
@@ -234,7 +295,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "horizontalScroll": false,
-   "images": 225,
+   "images": 220,
    "imagesBroken": [],
    "imagesWithoutAlt": 0,
    "inlineSvgs": 13,
@@ -246,7 +307,7 @@
     "h1": 1,
     "h2": 10,
     "h3": 19,
-    "h4": 27,
+    "h4": 28,
     "h5": 4
    },
    "h1Count": 1,
@@ -254,11 +315,11 @@
    "redOutsideSpecimens": [],
    "tableCells": 206,
    "cellsWithoutTabularFigures": 0,
-   "scrollRegions": 25,
+   "scrollRegions": 26,
    "scrollRegionsNotFocusable": 0,
    "scrollBehavior": "smooth",
    "tokenRows": 20,
-   "pageHeight": 49432,
+   "pageHeight": 49979,
    "tokenMismatches": 0,
    "tokenBelowMinimum": 0,
    "focusSample": [
@@ -296,11 +357,38 @@
     },
     {
      "id": "color-contrast",
-     "nodes": 86
+     "nodes": 88
     }
    ],
    "pageErrors": [],
-   "screenshot": "work/boards/screens/gate-1/gate1-390-dark.png"
+   "screenshots": [
+    "work/boards/screens/gate-1/gate1-390-dark-01.png",
+    "work/boards/screens/gate-1/gate1-390-dark-02.png",
+    "work/boards/screens/gate-1/gate1-390-dark-03.png",
+    "work/boards/screens/gate-1/gate1-390-dark-04.png",
+    "work/boards/screens/gate-1/gate1-390-dark-05.png",
+    "work/boards/screens/gate-1/gate1-390-dark-06.png",
+    "work/boards/screens/gate-1/gate1-390-dark-07.png",
+    "work/boards/screens/gate-1/gate1-390-dark-08.png",
+    "work/boards/screens/gate-1/gate1-390-dark-09.png",
+    "work/boards/screens/gate-1/gate1-390-dark-10.png",
+    "work/boards/screens/gate-1/gate1-390-dark-11.png",
+    "work/boards/screens/gate-1/gate1-390-dark-12.png",
+    "work/boards/screens/gate-1/gate1-390-dark-13.png",
+    "work/boards/screens/gate-1/gate1-390-dark-14.png",
+    "work/boards/screens/gate-1/gate1-390-dark-15.png",
+    "work/boards/screens/gate-1/gate1-390-dark-16.png",
+    "work/boards/screens/gate-1/gate1-390-dark-17.png",
+    "work/boards/screens/gate-1/gate1-390-dark-18.png",
+    "work/boards/screens/gate-1/gate1-390-dark-19.png",
+    "work/boards/screens/gate-1/gate1-390-dark-20.png",
+    "work/boards/screens/gate-1/gate1-390-dark-21.png",
+    "work/boards/screens/gate-1/gate1-390-dark-22.png",
+    "work/boards/screens/gate-1/gate1-390-dark-23.png",
+    "work/boards/screens/gate-1/gate1-390-dark-24.png",
+    "work/boards/screens/gate-1/gate1-390-dark-25.png",
+    "work/boards/screens/gate-1/gate1-390-dark-26.png"
+   ]
   }
  ],
  "chromium": "141.0.7390.37",

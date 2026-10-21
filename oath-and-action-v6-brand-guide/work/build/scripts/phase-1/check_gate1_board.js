@@ -176,7 +176,7 @@ function wcag(hex1, hex2) {
       const total = await page.evaluate(() => document.documentElement.scrollHeight);
       view.screenshots = [];
       for (let y = 0, k = 1; y < total; y += 2000, k++) {
-        await page.evaluate((yy) => window.scrollTo(0, yy), y);
+        await page.evaluate((yy) => window.scrollTo({ top: yy, left: 0, behavior: 'instant' }), y);
         await page.waitForTimeout(150);
         const shot = path.join(SCREENS, `gate1-${width}-${scheme}-${String(k).padStart(2, '0')}.png`);
         await page.screenshot({ path: shot });
