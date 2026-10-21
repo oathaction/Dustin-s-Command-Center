@@ -1,9 +1,9 @@
 {
  "board": "work/boards/20261021_Systems-Marks-Board.html",
- "run": "2026-10-21T03:44:20.462Z",
+ "run": "2026-10-21T04:34:16.765Z",
  "widths": {
   "390": {
-   "texts": 2753,
+   "texts": 2719,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -66,7 +66,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 68120,
+   "height": 68033,
    "fontsLoaded": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -135,11 +135,11 @@
    ],
    "axe": {
     "violations": [],
-    "passes": 28
+    "passes": 29
    }
   },
   "1440": {
-   "texts": 2786,
+   "texts": 2752,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -202,7 +202,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 34109,
+   "height": 35013,
    "fontsLoaded": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -274,7 +274,7 @@
    ],
    "axe": {
     "violations": [],
-    "passes": 27
+    "passes": 28
    }
   }
  },
@@ -282,14 +282,14 @@
   "Rendered in Chromium (Playwright) at 1440 px and 390 px, 2026-10-21. Fonts loaded: 5 faces from Google Fonts.",
   "Horizontal page scroll: 1440 px scrollWidth 1440 of 1440; 390 px scrollWidth 390 of 390. Wide tables scroll inside their own frames.",
   "Smallest rendered text, with SVG text scaled by its drawing's rendered size: 13 px at 1440, 13 px at 390; text elements under 13 px: 0 and 0.",
-  "Text contrast below the WCAG AA threshold, computed from rendered colours (grayscale strips converted): 0 at 1440, 0 at 390.",
+  "Text contrast below the WCAG AA threshold, computed from rendered colors (grayscale strips converted): 0 at 1440, 0 at 390.",
   "Typed chips: 438 chip cells measured at 1440; lowest rendered contrast 9.42:1; smallest chip text 13 px.",
   "axe-core 4.10 (WCAG 2.2 AA tags): 0 violating nodes at 1440, 0 at 390.",
   "Images loaded: 8 of 8.",
   "Grayscale: the board carries a grayscale strip for every option, and a full-page grayscale capture at 1440 px was saved for review."
  ],
  "not_checked": [
-  "Screen readers, keyboard order through the board, Firefox and Safari, print, forced colours and 200 percent zoom.",
+  "Screen readers, keyboard order through the board, Firefox and Safari, print, forced colors and 200 percent zoom.",
   "Pixel-level contrast of SVG strokes and marks (contrast was computed for text and from the locked hex values for marks).",
   "Whether readers decode the marks as intended; that needs testing with people."
  ]

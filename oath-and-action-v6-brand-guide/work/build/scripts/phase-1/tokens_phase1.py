@@ -157,15 +157,27 @@ ROLES = [
                               "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("White", P["white"])}),
     ("text.secondary", "text", {"newsprint": ("Deep Stone", DS), "white": ("Deep Stone", DS),
                                 "charcoal": ("Dim Newsprint", DN), "prussian": ("Dim Newsprint", DN)}),
-    ("text.onAction (button label, any size)", "text", {"newsprint": ("White on Charcoal", None), "white": ("White on Charcoal", None),
+    ("identity.signature (wordmark ampersand, lockmark lever)", "logotype", {"newsprint": ("Pillar Red", P["pillarRed"]),
+                                "white": ("Pillar Red", P["pillarRed"]), "charcoal": ("Pillar Red", P["pillarRed"]),
+                                "prussian": ("White", P["white"])}),
+    ("identity.hingeDivider (divider ampersand)", "graphic", {"newsprint": ("Charcoal", P["charcoal"]), "white": ("Charcoal", P["charcoal"]),
+                                "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("Newsprint", P["newsprint"])}),
+    ("action.ask fill", "graphic", {"newsprint": ("Pillar Red + 1 px Charcoal keyline", P["pillarRed"]),
+                                "white": ("Pillar Red", P["pillarRed"]), "charcoal": ("Pillar Red", P["pillarRed"]),
+                                "prussian": ("Newsprint", P["newsprint"])}),
+    ("action.ask label (19 px bold)", "largeText", {"newsprint": ("White on Pillar Red", None), "white": ("White on Pillar Red", None),
+                                "charcoal": ("White on Pillar Red", None), "prussian": ("Charcoal on Newsprint", None)}),
+    ("action.primary fill", "graphic", {"newsprint": ("Charcoal", P["charcoal"]), "white": ("Charcoal", P["charcoal"]),
+                                "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("Newsprint", P["newsprint"])}),
+    ("action.primary label", "text", {"newsprint": ("White on Charcoal", None), "white": ("White on Charcoal", None),
                                 "charcoal": ("Charcoal on Newsprint", None), "prussian": ("Charcoal on Newsprint", None)}),
     ("graphic.essential", "graphic", {"newsprint": ("Charcoal", P["charcoal"]), "white": ("Charcoal", P["charcoal"]),
                                       "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("Newsprint", P["newsprint"])}),
     ("graphic.subtle (unlit nodes, context marks)", "graphic", {"newsprint": ("Stone", P["stone"]), "white": ("Stone", P["stone"]),
                                       "charcoal": ("Dim Newsprint", DN), "prussian": ("Dim Newsprint", DN)}),
-    ("graphic.red (one red per composition)", "graphic", {"newsprint": ("Pillar Red + 1 px Charcoal keyline", P["pillarRed"]),
+    ("working.red (one per view)", "graphic", {"newsprint": ("Pillar Red + 1 px Charcoal keyline", P["pillarRed"]),
                                       "white": ("Pillar Red", P["pillarRed"]), "charcoal": ("Pillar Red", P["pillarRed"]),
-                                      "prussian": ("Pending Gate 1 (red on Prussian)", P["pillarRed"])}),
+                                      "prussian": ("None: red never sits on Prussian", None)}),
     ("border.strong (inputs, component edges)", "graphic", {"newsprint": ("Charcoal", P["charcoal"]), "white": ("Charcoal", P["charcoal"]),
                                       "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("Newsprint", P["newsprint"])}),
     ("border.hairline (decorative)", "decorative", {"newsprint": ("Stone", P["stone"]), "white": ("Stone", P["stone"]),
@@ -185,14 +197,15 @@ ROLES = [
     ("data.context", "graphic", {"newsprint": ("Stone", P["stone"]), "white": ("Stone", P["stone"]),
                                  "charcoal": ("Dim Newsprint", DN), "prussian": ("Dim Newsprint", DN)}),
 ]
+ON_PAIRS = {"White on Charcoal": (P["white"], P["charcoal"]), "Charcoal on Newsprint": (P["charcoal"], P["newsprint"]),
+            "White on Pillar Red": (P["white"], P["pillarRed"])}
 role_rows = []
 for role, kind, cells in ROLES:
     row = {"role": role, "kind": kind, "cells": {}}
     for s in SURF:
         label, hexv = cells[s]
-        if role.startswith("text.onAction"):
-            fg, bg = ({"White on Charcoal": (P["white"], P["charcoal"]),
-                       "Charcoal on Newsprint": (P["charcoal"], P["newsprint"])})[label]
+        if label in ON_PAIRS:
+            fg, bg = ON_PAIRS[label]
             c = oc.contrast(fg, bg)
         elif hexv is None:
             c = None
@@ -203,6 +216,9 @@ for role, kind, cells in ROLES:
         t = THRESH.get(kind if kind != "background" else "text")
         row["cells"][s] = {"token": label, "hex": hexv, "ratio": r2(c) if c else None,
                            "passes": (c >= t) if (c and t) else None}
+        if "keyline" in label:
+            k = oc.contrast(P["charcoal"], P[s])
+            row["cells"][s].update(keylineRatio=r2(k), passes=k >= 3.0)
     role_rows.append(row)
 
 # 5. Type measures from Inter's own advance widths -------------------------------
@@ -305,6 +321,7 @@ TYPE = [
     ("label", "reading", 700, 13, 13, 1.4, 0.06, "uppercase"),
     ("dataLabel", "reading", 600, 13, 13, 1.3, 0, "sentence"),
     ("figure", "display", 800, 48, 104, 1.0, -0.04, "sentence"),
+    ("ask", "reading", 700, 19, 19, 1.2, 0, "sentence"),
 ]
 TYPE_JOBS = {
     "title": "Cover and chapter-opening titles", "section": "Chapter headings (h2)", "h3": "Module headings",
@@ -313,6 +330,7 @@ TYPE_JOBS = {
     "ui": "Buttons, navigation, form controls", "caption": "Figure captions and source lines",
     "label": "Eyebrows, column heads and tags, set in capitals", "dataLabel": "Chart labels, axis values and table figures",
     "figure": "Big numbers in reports and specimens",
+    "ask": "Ask button label. White on Pillar Red passes only as large text, so it never sets below 19 px bold",
 }
 type_rows = []
 for name, fam, w, mn, mx, lh, tr, case in TYPE:
@@ -373,22 +391,30 @@ for name, d in derived.items():
         gate="Gate 1")
 
 on = {"newsprint": "onNewsprint", "white": "onWhite", "charcoal": "onCharcoal", "prussian": "onPrussian"}
-REF = {"Charcoal": "oa.color.palette.charcoal", "Newsprint": "oa.color.palette.newsprint", "White": "oa.color.palette.white",
+REF = {"Pillar Red": "oa.color.palette.pillarRed", "Charcoal": "oa.color.palette.charcoal", "Newsprint": "oa.color.palette.newsprint", "White": "oa.color.palette.white",
        "Stone": "oa.color.palette.stone", "Verdigris": "oa.color.palette.verdigris", "Prussian": "oa.color.palette.prussian",
        "Deep Stone": "oa.color.derived.deepStone", "Dim Newsprint": "oa.color.derived.dimNewsprint",
        "Error Band": "oa.color.derived.errorBand"}
 
 
-def semantic(role_key, desc, kind):
+def semantic(role_key, desc, kind, red=None, **extra):
     row = next(r for r in role_rows if r["role"].split(" (")[0] == role_key)
     group = {}
     for s in SURF:
         cell = row["cells"][s]
         label = cell["token"].split(" +")[0]
+        more = dict(extra)
+        if label in ON_PAIRS:
+            label, ground = label.split(" on ")
+            more["ground"] = "{" + REF[ground] + "}"
         if label not in REF:
             continue
+        if "keyline" in cell["token"]:
+            more.update(keyline="{oa.color.palette.charcoal}", keylineContrast=cell["keylineRatio"])
+        if red and label == "Pillar Red":
+            more.update(red)
         group[on[s]] = atok("color", REF[label], desc, tier="semantic", kind=kind, surface=s,
-                            contrast=cell["ratio"], threshold=THRESH.get(kind if kind != "background" else "text"))
+                            contrast=cell["ratio"], threshold=THRESH.get(kind if kind != "background" else "text"), **more)
     return group
 
 
@@ -403,7 +429,12 @@ draft = {
                              "N-03": "Error message ground that holds 13 px text: Charcoal on Pillar Red is 4.49:1 and White on Pillar Red 4.17:1",
                              "N-04": "Verdigris status marks on Prussian measure 2.80:1; held until the Phase 2 Signal Grid redesign",
                          },
-                         "fontSizeExceptions": []}},
+                         "fontSizeExceptions": [],
+                         "redRule": ("The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) "
+                                     "then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point "
+                                     "the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge "
+                                     "divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."),
+                         "redRuleSource": "work/handoffs/phase-1/20261021_CD-Review-Of-Phase-1.md, section 2"}},
     "oa": {
         "color": {
             "$description": "Identity, state and data color. Identity marks use palette primitives only.",
@@ -420,10 +451,28 @@ draft = {
             "focus": {"ring": semantic("focus.ring", "Keyboard focus outline", "focus")},
             "state": {
                 "selected": {"band": semantic("state.selected band", "Background of a selected row or option; pair with a 4 px bar and a check", "background")},
-                "error": {"band": semantic("state.error band", "Background of an error message; pair with the word Error and a mark", "background")},
+                "error": {"band": semantic("state.error band", "Background of an error message; pair with the word Error and a mark", "background"),
+                          "mark": semantic("state.error mark", "Error glyph and state bar", "graphic",
+                                           red={"redRole": "working", "precedence": 1})},
+            },
+            "identity": {
+                "signature": semantic("identity.signature", "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+                                      "logotype", red={"redRole": "signature"}),
+                "hingeDivider": semantic("identity.hingeDivider", "Ampersand in the hinge divider", "graphic"),
+            },
+            "action": {
+                "ask": {
+                    "fill": semantic("action.ask fill", "Ask button fill: the step a reader can take now", "graphic",
+                                     red={"redRole": "working", "precedence": 2}),
+                    "label": semantic("action.ask label", "Ask button label, set in oa.type.ask", "largeText", requiresType="{oa.type.ask}"),
+                },
+                "primary": {
+                    "fill": semantic("action.primary fill", "Primary button fill; also the ask button when an error holds the view's red", "graphic"),
+                    "label": semantic("action.primary label", "Primary button label", "text"),
+                },
             },
             "data": {
-                "$description": "Data color. Never aliases Pillar Red except data.emphasisRed under the one-red rule. Series palettes are decided at Gate 2.",
+                "$description": "Data color. Reaches Pillar Red only through a future data.emphasisRed, the third claim on the view's working red. Series palettes are decided at Gate 2.",
                 "emphasis": semantic("data.emphasis default", "The mark the chart title is about", "graphic"),
                 "context": semantic("data.context", "Every other data mark in the same chart", "graphic"),
             },
@@ -474,11 +523,26 @@ draft = {
                    [("base", 0, "Page"), ("raised", 10, "Specimen overlays"), ("sticky", 40, "Sticky navigation"),
                     ("overlay", 90, "Menus and popovers outside the top layer"), ("skip", 100, "Skip link")]},
         "component": {
-            "button": {"disabled": {
+            "button": {
+              "ask": {
+                "fill": {on[s]: atok("color", "oa.color.action.ask.fill." + on[s], "Ask button fill", tier="component",
+                                     fallback="{oa.component.button.primary.fill." + on[s] + "}",
+                                     redRule="Second claim on the view's working red; when an error holds it, use the primary button") for s in SURF},
+                "label": {on[s]: atok("color", "oa.color.action.ask.label." + on[s], "Ask button label", tier="component") for s in SURF},
+                "keyline": {"onNewsprint": atok("color", "oa.color.border.strong.onNewsprint", "1 px edge that gives the red fill its boundary on Newsprint",
+                                                tier="component")},
+                "labelType": atok("typography", "oa.type.ask", "Ask button label style", tier="component"),
+              },
+              "primary": {
+                "fill": {on[s]: atok("color", "oa.color.action.primary.fill." + on[s], "Primary button fill", tier="component") for s in SURF},
+                "label": {on[s]: atok("color", "oa.color.action.primary.label." + on[s], "Primary button label", tier="component") for s in SURF},
+              },
+              "disabled": {
                 "label": {"onWhite": atok("color", "oa.color.text.secondary.onWhite", "Disabled button label", tier="component")},
                 "border": {"onWhite": atok("color", "oa.color.text.secondary.onWhite", "Disabled button edge, drawn dashed", tier="component",
                                            strokeStyle="dashed")},
-            }},
+              },
+            },
         },
     },
 }
@@ -491,7 +555,7 @@ for t in type_rows:
         "$value": {"fontFamily": "{" + fam + "}", "fontWeight": "{oa.font.weight." + w + "}",
                    "fontSize": {"value": t["maxRem"], "unit": "rem"}, "lineHeight": t["lineHeight"],
                    "letterSpacing": {"value": t["trackingRemAtMax"], "unit": "rem"}},
-        "$extensions": ext(minFontSize={"value": t["minRem"], "unit": "rem"}, cssFontSize=t["css"],
+        "$extensions": ext(tier="semantic", minFontSize={"value": t["minRem"], "unit": "rem"}, cssFontSize=t["css"],
                            trackingEm=t["trackingEm"], textTransform=t["case"],
                            **({"numeric": "tabular-nums", "minusSign": "U+2212"} if t["name"] in ("dataLabel", "figure") else {})),
     }

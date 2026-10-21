@@ -80,7 +80,7 @@ def arrow_d(px, py, ang_travel, length, spread=32):
     return f"M{out[0][0]:.2f} {out[0][1]:.2f}L{px:.2f} {py:.2f}L{out[1][0]:.2f} {out[1][1]:.2f}"
 
 
-def hinge(compact=False):
+def hinge(compact=False, v2=False):
     oath, action, aw = word_paths()
     line_w = 6.0 if compact else 3.5
     node_r = 12.0 if compact else 9.0
@@ -108,11 +108,23 @@ def hinge(compact=False):
     st = f'fill="none" stroke="var(--line,#5D636D)" stroke-width="{line_w}" stroke-linecap="round" stroke-linejoin="round"'
     parts.append(f'<path {st} d="M{n1:.2f} {cy}H{c_l:.2f}M{c_r:.2f} {cy}H{n2:.2f}"/>')
     parts.append(f'<circle cx="{cx:.2f}" cy="{cy}" r="{rc}" {st}/>')
-    dot = f'stroke-dasharray="0 {line_w * 2.6:.1f}"'
-    parts.append(f'<path {st} {dot} d="{top_d}"/>')
-    parts.append(f'<path {st} d="{arrow_d(top_end[0], top_end[1], 90 - 22, alen)}"/>')
-    parts.append(f'<path {st} {dot} d="{bot_d}"/>')
-    parts.append(f'<path {st} d="{arrow_d(bot_end[0], bot_end[1], 90 + 158, alen)}"/>')
+    if v2:
+        # V2: solid hairline arcs, clockwise, each with one open chevron. No dotted or dashed
+        # texture on a brand mark: Atlas V7 gives those to evidence grades. The arcs run at 0.8 of
+        # the line weight on the display master (1 px at its 526 px minimum) and at the line
+        # weight on the compact master, where 1 px is the floor.
+        arc_w = line_w * (1.0 if compact else 0.8)
+        sa = f'fill="none" stroke="var(--line,#5D636D)" stroke-width="{arc_w:g}" stroke-linecap="round" stroke-linejoin="round"'
+        parts.append(f'<path {sa} d="{top_d}"/>')
+        parts.append(f'<path {sa} d="{arrow_d(top_end[0], top_end[1], 90 - 22, alen)}"/>')
+        parts.append(f'<path {sa} d="{bot_d}"/>')
+        parts.append(f'<path {sa} d="{arrow_d(bot_end[0], bot_end[1], 90 + 158, alen)}"/>')
+    else:
+        dot = f'stroke-dasharray="0 {line_w * 2.6:.1f}"'
+        parts.append(f'<path {st} {dot} d="{top_d}"/>')
+        parts.append(f'<path {st} d="{arrow_d(top_end[0], top_end[1], 90 - 22, alen)}"/>')
+        parts.append(f'<path {st} {dot} d="{bot_d}"/>')
+        parts.append(f'<path {st} d="{arrow_d(bot_end[0], bot_end[1], 90 + 158, alen)}"/>')
     for x in (n1, c_l, c_r, n2):
         parts.append(f'<circle cx="{x:.2f}" cy="{cy}" r="{node_r}" fill="currentColor"/>')
     parts.append(f'<path fill="var(--amp,#E63946)" d="{o.d_from_path(amp)}"/>')
@@ -126,7 +138,7 @@ def hinge(compact=False):
         parts.append(f'<path fill="currentColor" d="{o.d_from_path(o.tx(lu, e=179.33 - lw / 2, f=ly))}"/>')
         parts.append(f'<path fill="currentColor" d="{o.d_from_path(o.tx(li, e=a_x + aw / 2 - iw / 2, f=ly))}"/>')
     vb = [-12.0, round(top, 2), round(a_x + aw + 24, 2), round(bottom - top, 2)]
-    info = {"viewBox": vb, "line_units": line_w, "node_r": node_r, "circle_r": rc, "arc_r": R, "amp_height_x": 1.25,
+    info = {"viewBox": vb, "line_units": line_w, "arc_units": (line_w * (1.0 if compact else 0.8)) if v2 else line_w, "arcs": "solid, clockwise" if v2 else "dotted (first draft)", "node_r": node_r, "circle_r": rc, "arc_r": R, "amp_height_x": 1.25,
             "label_cap_units": None if compact else 26.0}
     return "".join(parts), vb, info
 
@@ -155,21 +167,23 @@ def build():
     for d in (D7, D8, D10):
         d.mkdir(parents=True, exist_ok=True)
     res = {}
-    for compact in (False, True):
-        body, vb, info = hinge(compact)
+    for compact, v2 in ((False, False), (True, False), (False, True), (True, True)):
+        body, vb, info = hinge(compact, v2)
         nm = "Compact" if compact else "Display"
-        fn = D7 / f"20261021_Hinge-{nm}-Master.svg"
-        o.write_svg(fn, vb, body, f"Hinge {nm.lower()} master (proposal, Phase 1)")
+        sfx = "_V2" if v2 else ""
+        fn = D7 / f"20261021_Hinge-{nm}-Master{sfx}.svg"
+        o.write_svg(fn, vb, body, f"Hinge diagram, {nm.lower()} master{', V2 with solid arcs' if v2 else ', first draft with dotted arcs'} (proposal, Phase 1)")
         # minimum width for 13 px labels (display) or 1 px lines (compact)
         if compact:
-            min_w = math.ceil(vb[2] * 1.0 / info["line_units"])
+            min_w = math.ceil(vb[2] * 1.0 / min(info["line_units"], info["arc_units"]))
         else:
             cap_px_13 = 13 * 0.727
             min_w = math.ceil(vb[2] * cap_px_13 / info["label_cap_units"])
         info["min_width_px"] = min_w
         info["line_px_at_min"] = round(info["line_units"] * min_w / vb[2], 2)
+        info["arc_px_at_min"] = round(info["arc_units"] * min_w / vb[2], 2)
         info["file"] = str(fn.relative_to(o.ROOT))
-        res[f"hinge_{nm.lower()}"] = info
+        res[f"hinge_{nm.lower()}{sfx.lower()}"] = info
     for size in (16, 24):
         body, vb, info = lockmark_small(size)
         fn = D8 / f"20261021_Lockmark-{size}px-Master.svg"

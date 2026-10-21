@@ -1,7 +1,8 @@
 /* Guide shell wireframe for Gate 1. A proposal, not V6 code. V5 palette, rem type, em breakpoints so layouts follow the reader's text size. */
 :root {
   --np: #DCD9D2; --ch: #121212; --red: #E63946; --pr: #1F2D5A; --st: #5D636D; --vg: #4A7C74; --wh: #FFFFFF;
-  --muted: #45494F;   /* board value for secondary text: 6.42 to 1 on Newsprint. The V6 token is set in Phase 2 */
+  --muted: #4E535B;   /* Deep Stone, --oa-color-text-secondary-on-newsprint in the token draft: 5.49 to 1 on Newsprint */
+  --error-band: #E1C9C1; /* --oa-color-state-error-band-on-newsprint in the token draft */
   --raised: #E6E3DD;  /* board value for a raised panel: Charcoal 14.63, muted 7.07, Verdigris 3.70 */
   --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
   --body: "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -16,7 +17,7 @@ main *, .colophon * { scroll-margin-top: calc(var(--head-h) + 1.25rem) }
 body { margin: 0; background: var(--np); color: var(--ch); font: 400 1.0625rem/1.6 var(--body) }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .18em }
 a:hover { text-decoration-thickness: 2px }
-:focus-visible { outline: 2px solid var(--vg); outline-offset: 3px }
+:focus-visible { outline: 2px solid var(--vg); outline-offset: 2px }  /* --oa-border-focus-offset */
 [tabindex="-1"]:focus { outline: none }
 code { font: 500 .875rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; overflow-wrap: anywhere }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
@@ -72,7 +73,10 @@ main:focus { outline: none }
 .eyebrow { font: 700 .8125rem/1.4 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 }
 h1 { font: 800 clamp(2.25rem, 6vw, 4.25rem)/1.02 var(--display); letter-spacing: -.025em; margin: .5rem 0 1rem; text-wrap: balance }
 .tagline { font: 800 clamp(1.5rem, 3.4vw, 2.25rem)/1.15 var(--display); letter-spacing: -.015em; margin: 0 0 .75rem; max-width: 30ch }
-.pillars { font: 600 1rem/1.4 var(--body); margin: 0 }
+.pillars { font: 600 1rem/1.4 var(--body); margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .625rem }
+.pillars .pm { width: 24px; height: 24px; flex: none; color: var(--ch); display: block }
+.pillars .pw { display: inline-flex; align-items: center; gap: .375rem }
+.pillar-cap { font-size: .8125rem; color: var(--muted); margin: .5rem 0 0 }
 h1, h2, h3 { overflow-wrap: break-word }
 h2 { font: 800 clamp(1.875rem, 4.4vw, 3rem)/1.05 var(--display); letter-spacing: -.02em; margin: 0 0 .75rem; text-wrap: balance }
 h2 .n { font-variant-numeric: tabular-nums; margin-right: .3em }
@@ -166,15 +170,17 @@ p { margin: 0 0 1rem }
 .st-cue { font-size: .8125rem; line-height: 1.4; color: var(--muted) }
 .btn-demo { justify-self: start; border: 1px solid var(--ch); padding: .5rem .75rem; font: 600 .9375rem/1.2 var(--body); background: var(--np) }
 .btn-demo.is-hover { text-decoration: underline; box-shadow: inset 0 0 0 1px var(--ch) }
-.btn-demo.is-focus { outline: 2px solid var(--vg); outline-offset: 3px }
-.btn-demo.is-selected { background: var(--ch); color: var(--np) }
-.btn-demo.is-disabled { border-style: dashed }
+.btn-demo.is-focus { outline: 2px solid var(--vg); outline-offset: 2px }
+.btn-demo.is-selected { background: var(--wh); color: var(--ch); border-left: 4px solid var(--ch) }
+.btn-demo.is-disabled { border-style: dashed; color: var(--muted) }
 .st-text { font-size: .9375rem; line-height: 1.4; display: flex; gap: .5rem; align-items: flex-start }
-.st-error { border-left: 4px solid var(--red); box-shadow: -1px 0 0 0 var(--ch); padding-left: .5rem }
+.st-error { background: var(--error-band); border-left: 4px solid var(--red); box-shadow: -1px 0 0 0 var(--ch); padding: .375rem .5rem }
+.st-warning { border-left: 4px solid var(--ch); padding-left: .5rem }
 .st-muted { color: var(--muted) }
-.lever-still { flex: none; width: 1rem; height: 1rem; border-radius: 50%; border: 2px solid var(--ch); margin-top: .15rem }
+.lever-still { flex: none; width: 1rem; height: 1rem; border-radius: 50%; border: 2px solid var(--st); margin-top: .15rem }
 .glyph-tri { flex: none; width: 0; height: 0; border-left: .55rem solid transparent; border-right: .55rem solid transparent; border-bottom: .95rem solid var(--ch); margin-top: .15rem }
 .glyph-x, .glyph-check { flex: none; font-weight: 800; width: 1.1rem; text-align: center }
+.glyph-x { border: 2px solid var(--ch); border-radius: 50%; width: 1.25rem; height: 1.25rem; line-height: 1rem; font-size: .875rem }
 .glyph-check { color: var(--ch); border: 2px solid var(--vg); border-radius: 50%; width: 1.25rem; height: 1.25rem; line-height: 1.05rem; font-size: .8125rem }  /* the ring is the graphic, 3.37 to 1; the mark is Charcoal text */
 
 /* Specifications table: a table on wide screens, stacked rows on phones. Roles are explicit so stacking keeps table semantics. */

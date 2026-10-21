@@ -1,0 +1,1 @@
+Hinge diagram V2 (solid hairline arcs, clockwise, UNDERSTAND and IMPACT below; display from 526 px wide, compact from 241 px): work/boards/phase-1/identity/07-hinge/20261021_Hinge-Display-Master_V2.svg and work/boards/phase-1/identity/07-hinge/20261021_Hinge-Compact-Master_V2.svg

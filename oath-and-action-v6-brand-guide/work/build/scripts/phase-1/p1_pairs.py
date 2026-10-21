@@ -70,11 +70,11 @@ def pairs():
     # ---- 2 hinge gaps
     P.append({"panel": 2, "id": "p02-literal", "label": "Hinge gaps at the stated 0.10x, nearest ink", "display": 120, "overlay": "left",
               "orig": same(sp("wordmark")), "prop": same(I / "02-hinge-gaps/20261021_Wordmark-Hinge-Literal-0.10x.svg")})
-    P.append({"panel": 2, "id": "p02-optical", "label": "Hinge gaps by equal white area (recommended)", "display": 120, "overlay": "left",
+    P.append({"panel": 2, "id": "p02-optical", "label": "Hinge gaps by equal white area (recommended; design judgment)", "display": 120, "overlay": "left",
               "orig": same(sp("wordmark")), "prop": same(I / "02-hinge-gaps/20261021_Wordmark-Hinge-Optical.svg")})
     # ---- 3 wordmark masters
-    P.append({"panel": 3, "id": "p03-masters", "label": "Wordmark: 16 px master at 16, 24 px master at 24, display master from 48 up", "display": 120,
-              "overlay": "left", "orig": same(sp("wordmark")), "prop": wordmark_masters()})
+    P.append({"panel": 3, "id": "p03-masters", "label": "Wordmark with ampersand B: 16 px master at 16, 24 px master at 24, display master from 48 up", "display": 120,
+              "overlay": "left", "orig": same(sp("wordmark")), "prop": wordmark_masters("B")})
     # ---- 4 ampersand A
     P.append({"panel": 4, "id": "p04-amp", "label": "Freestanding ampersand: 16 px master at 16, display tune from 24 up", "display": 280, "overlay": "left",
               "orig": same(sp("amp")), "prop": by_size({16: I / "04-amp-a/20261021_Amp-A-Small-Master-16px.svg", 24: I / "04-amp-a/20261021_Amp-A-Display-Tune.svg",
@@ -92,18 +92,18 @@ def pairs():
     # ---- 6 condensed
     C = I / "06-condensed"
     P.append({"panel": 6, "id": "p06-c75", "label": "Condensed, 7.5 to 1 (chosen by the 16 px test), against the current proportions at the same height", "display": 120,
-              "overlay": "left", "orig": wordmark_masters(),
+              "overlay": "left", "orig": wordmark_masters("B"),
               "prop": by_size({16: C / "20261021_Wordmark-Condensed-7-5-To-1-16px.svg", 24: C / "20261021_Wordmark-Condensed-7-5-To-1-24px.svg",
                                48: C / "20261021_Wordmark-Condensed-7-5-To-1-Display.svg", 96: C / "20261021_Wordmark-Condensed-7-5-To-1-Display.svg",
                                "display": C / "20261021_Wordmark-Condensed-7-5-To-1-Display.svg"})})
     P.append({"panel": 6, "id": "p06-c60", "label": "Condensed, 6 to 1 (drawn for comparison, display master only)", "display": 120, "overlay": "left",
-              "orig": wordmark_masters(), "prop": same(C / "20261021_Wordmark-Condensed-6-0-To-1-Display.svg")})
+              "orig": wordmark_masters("B"), "prop": same(C / "20261021_Wordmark-Condensed-6-0-To-1-Display.svg")})
     # ---- 7 hinge
     H = I / "07-hinge"
-    P.append({"panel": 7, "id": "p07-hinge", "label": "Hinge: compact master below 526 px wide, display master above", "display": 200, "overlay": "left",
-              "orig": same(sp("hinge")), "prop": by_size({16: H / "20261021_Hinge-Compact-Master.svg", 24: H / "20261021_Hinge-Compact-Master.svg",
-                                                           48: H / "20261021_Hinge-Compact-Master.svg", 96: H / "20261021_Hinge-Compact-Master.svg",
-                                                           "display": H / "20261021_Hinge-Display-Master.svg"})})
+    P.append({"panel": 7, "id": "p07-hinge", "label": "Hinge diagram V2: compact master below 526 px wide, display master above", "display": 200, "overlay": "left",
+              "orig": same(sp("hinge")), "prop": by_size({16: H / "20261021_Hinge-Compact-Master_V2.svg", 24: H / "20261021_Hinge-Compact-Master_V2.svg",
+                                                           48: H / "20261021_Hinge-Compact-Master_V2.svg", 96: H / "20261021_Hinge-Compact-Master_V2.svg",
+                                                           "display": H / "20261021_Hinge-Display-Master_V2.svg"})})
     # ---- 8 lockmark
     L = I / "08-lockmark"
     P.append({"panel": 8, "id": "p08-lockmark", "label": "Lockmark: 16 and 24 px masters, V5 master from 48 up", "display": 240, "overlay": "left",

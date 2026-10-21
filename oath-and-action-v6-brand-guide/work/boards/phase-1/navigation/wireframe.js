@@ -180,16 +180,18 @@
 
   // Download controls with a status line. Disabled ones stay focusable and say why.
   var palette = [
-    ['newsprint', '#DCD9D2'], ['charcoal', '#121212'], ['pillar-red', '#E63946'], ['prussian', '#1F2D5A'],
-    ['stone', '#5D636D'], ['verdigris', '#4A7C74'], ['white', '#FFFFFF']
+    ['newsprint', 'newsprint', '#DCD9D2'], ['charcoal', 'charcoal', '#121212'], ['pillar-red', 'pillarRed', '#E63946'], ['prussian', 'prussian', '#1F2D5A'],
+    ['stone', 'stone', '#5D636D'], ['verdigris', 'verdigris', '#4A7C74'], ['white', 'white', '#FFFFFF']
   ];
+  // Names and value shape follow the token schema draft: oa.color.palette.*, written to CSS as --oa-color-palette-*.
+  function comps(hex) { return [1, 3, 5].map(function (i) { return Math.round(parseInt(hex.substr(i, 2), 16) / 255 * 10000) / 10000; }); }
   function fileBody(kind) {
     if (kind === 'css') {
       return '/* Oath & Action locked palette. Draft from the Gate 1 wireframe, October 21, 2026. Not the V6 token file. */\n:root {\n' +
-        palette.map(function (p) { return '  --oa-color-' + p[0] + ': ' + p[1] + ';'; }).join('\n') + '\n}\n';
+        palette.map(function (p) { return '  --oa-color-palette-' + p[0] + ': ' + p[2] + ';'; }).join('\n') + '\n}\n';
     }
-    var o = {}; palette.forEach(function (p) { o[p[0]] = { $value: p[1], $type: 'color' }; });
-    return JSON.stringify({ $description: 'Oath & Action locked palette. Draft from the Gate 1 wireframe, October 21, 2026. Not the V6 token file.', oa: { color: o } }, null, 2) + '\n';
+    var o = {}; palette.forEach(function (p) { o[p[1]] = { $type: 'color', $value: { colorSpace: 'srgb', components: comps(p[2]), alpha: 1, hex: p[2] } }; });
+    return JSON.stringify({ $description: 'Oath & Action locked palette. Draft from the Gate 1 wireframe, October 21, 2026. Not the V6 token file.', oa: { color: { palette: o } } }, null, 2) + '\n';
   }
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button.dl');

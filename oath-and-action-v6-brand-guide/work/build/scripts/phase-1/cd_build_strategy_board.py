@@ -1,8 +1,10 @@
 """Creative director, Phase 1: build the Strategy and Direction board.
 
 Reads the template in work/boards/phase-1/strategy/, inlines V5 Polished vector
-masters from work/extract/v5-polished/sprite/ (read only), draws the proposed hinge
-loop and the Loop R9 sketch as inline SVG, and writes
+masters from work/extract/v5-polished/sprite/ (read only), inlines the identity
+board's V2 hinge diagram from work/boards/phase-1/identity/07-hinge/ once
+work/handoffs/phase-1/20261021_Hinge-V2-Ready.md exists (a marked placeholder
+otherwise), draws the Loop R9 sketch with hollow conceptual lines, and writes
 work/boards/20261021_Strategy-And-Direction-Board.html.
 
 Run: python3 -I work/build/scripts/phase-1/cd_build_strategy_board.py <project root>
@@ -55,64 +57,66 @@ def amp_small():
             f'<g fill="currentColor">{amp_inner()}</g></svg>')
 
 
-def loop_svg():
-    oath_vb, action_vb = viewbox("word-oath"), viewbox("word-action")
-    ow = 358.67 * 30 / 108
-    aw = 502.43 * 30 / 108
-    ox, ax = 24, 520 - 24 - aw
-    cx, cy, r, R = 240, 120, 38, 72
-    import math
+HINGE_DIR = ROOT / "work/boards/phase-1/identity/07-hinge"
+HINGE_READY = ROOT / "work/handoffs/phase-1/20261021_Hinge-V2-Ready.md"
+HINGE_LABEL = ("Hinge diagram V2: OATH{u} and ACTION{i}, joined by a line through a circle around the red ampersand. "
+               "A solid arc runs clockwise over the top from OATH to ACTION, and a second solid arc returns under the bottom.")
 
-    def pt(deg):
-        a = math.radians(deg)
-        return round(cx + R * math.cos(a), 1), round(cy + R * math.sin(a), 1)
 
-    t0, t1, b0, b1 = pt(205), pt(335), pt(25), pt(155)
-    amp_h = 50
-    amp_w = amp_h * 95.62 / 106.61
-    parts = [
-        '<svg viewBox="0 30 520 182" role="img" aria-label="Proposed hinge loop: OATH on the left and ACTION on the right, '
-        'joined by a line through a circle around the red ampersand. One arc runs clockwise over the top from OATH to ACTION, '
-        'and a second arc returns under the bottom from ACTION to OATH.">',
-        f'<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">'
-        f'<path d="M0 0L10 5L0 10z" fill="{CHARCOAL}"/></marker></defs>',
-        f'<svg x="{ox}" y="105" width="{ow:.1f}" height="30" viewBox="{oath_vb}"><path fill="{CHARCOAL}" d="{path_d("word-oath")}"/></svg>',
-        f'<svg x="{ax:.1f}" y="105" width="{aw:.1f}" height="30" viewBox="{action_vb}"><path fill="{CHARCOAL}" d="{path_d("word-action")}"/></svg>',
-        f'<g stroke="{CHARCOAL}" stroke-width="1.5" fill="none">'
-        f'<line x1="132" y1="{cy}" x2="{cx - r}" y2="{cy}"/><line x1="{cx + r}" y1="{cy}" x2="348" y2="{cy}"/>'
-        f'<circle cx="{cx}" cy="{cy}" r="{r}"/>'
-        f'<path d="M{t0[0]} {t0[1]} A{R} {R} 0 0 1 {t1[0]} {t1[1]}" marker-end="url(#ah)"/>'
-        f'<path d="M{b0[0]} {b0[1]} A{R} {R} 0 0 1 {b1[0]} {b1[1]}" marker-end="url(#ah)"/></g>',
-        f'<g fill="{CHARCOAL}"><circle cx="132" cy="{cy}" r="4"/><circle cx="{cx - r}" cy="{cy}" r="4"/>'
-        f'<circle cx="{cx + r}" cy="{cy}" r="4"/><circle cx="348" cy="{cy}" r="4"/></g>',
-        f'<svg x="{cx - amp_w / 2:.1f}" y="{cy - amp_h / 2:.1f}" width="{amp_w:.1f}" height="{amp_h}" viewBox="{AMP_VIEWBOX}">'
-        f'<g fill="{RED}">{amp_inner()}</g></svg>',
-        "</svg>",
-    ]
-    labels = (f'<div class="looplabels" aria-hidden="true"><span style="left:{(ox + ow / 2) / 520 * 100:.1f}%">Understand</span>'
-              f'<span style="left:{(ax + aw / 2) / 520 * 100:.1f}%">Impact</span></div>')
-    return "".join(parts) + labels
+def hinge_inline(name, cls, label):
+    svg = (HINGE_DIR / name).read_text(encoding="utf-8")
+    svg = re.sub(r"<title>.*?</title>", "", svg, flags=re.S)
+    return svg.replace("<svg ", f'<svg class="{cls}" role="img" aria-label="{label}" ', 1)
+
+
+def hinge_amp_head():
+    """Hinge headline ampersand: the V5 master glyph, colored by CSS (the view's working red)."""
+    return (f'<svg class="hamp" viewBox="{AMP_VIEWBOX}" role="img" aria-label="and" focusable="false">'
+            f'<g fill="currentColor">{amp_inner()}</g></svg>')
+
+
+def loop_figure():
+    disp, comp = "20261021_Hinge-Display-Master_V2.svg", "20261021_Hinge-Compact-Master_V2.svg"
+    if HINGE_READY.exists() and (HINGE_DIR / disp).exists() and (HINGE_DIR / comp).exists():
+        body = (hinge_inline(disp, "display", HINGE_LABEL.format(u=" with UNDERSTAND below", i=" with IMPACT below"))
+                + hinge_inline(comp, "compact", HINGE_LABEL.format(u="", i="")))
+        cap = ('<span class="tag">Option</span> The identity board\'s V2 hinge diagram: solid arcs, clockwise, '
+               'UNDERSTAND and IMPACT below. Under 600 px its compact master drops the labels.')
+        return f'<figure class="white hingev2">{body}<figcaption>{cap}</figcaption></figure>'
+    return ('<figure class="placeholder hingev2"><p><span class="tag defect">Placeholder</span></p>'
+            '<p>The identity board\'s V2 hinge diagram goes here, from '
+            '<code>work/handoffs/phase-1/20261021_Hinge-V2-Ready.md</code>, which did not exist when this board was built.</p></figure>')
 
 
 def r9_svg():
+    """Loop R9 sketch. Conceptual steps take the systems board's hollow line: two hairlines around an empty core."""
     def node(x, y, l1, l2):
         return (f'<rect x="{x}" y="{y}" width="150" height="56" fill="#FFFFFF" stroke="{CHARCOAL}" stroke-width="1.5"/>'
                 f'<text x="{x + 75}" y="{y + 24}" text-anchor="middle">{l1}</text>'
                 f'<text x="{x + 75}" y="{y + 44}" text-anchor="middle">{l2}</text>')
 
-    dotted = f'stroke="{CHARCOAL}" stroke-width="2" stroke-dasharray="0.1 5" stroke-linecap="round" fill="none" marker-end="url(#ah9)"'
+    def hollow(x1, y1, x2, y2):
+        import math
+        L = math.hypot(x2 - x1, y2 - y1)
+        ux, uy = (x2 - x1) / L, (y2 - y1) / L
+        ex, ey = x2 - ux * 9, y2 - uy * 9  # stop the line where the arrowhead starts
+        px, py = -uy * 5, ux * 5
+        head = f"M{x2:.1f} {y2:.1f} L{ex + px:.1f} {ey + py:.1f} L{ex - px:.1f} {ey - py:.1f}Z"
+        return (f'<path d="M{x1} {y1} L{ex:.1f} {ey:.1f}" stroke="{CHARCOAL}" stroke-width="5" fill="none"/>'
+                f'<path d="M{x1} {y1} L{ex:.1f} {ey:.1f}" stroke="#FFFFFF" stroke-width="2.2" fill="none"/>'
+                f'<path d="{head}" fill="{CHARCOAL}"/>')
+
     return "".join([
-        '<svg viewBox="0 0 360 236" role="img" aria-label="Loop R9 sketch: effective participation raises accountable delivery, '
-        'which raises warranted trust, which raises effective participation. Every link is positive and drawn dotted as a hypothesis.">',
-        f'<defs><marker id="ah9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">'
-        f'<path d="M0 0L10 5L0 10z" fill="{CHARCOAL}"/></marker></defs>',
+        '<svg viewBox="0 0 360 236" role="img" aria-label="Loop R9 sketch, graded Hypothesis: effective participation raises accountable delivery, '
+        'which raises warranted trust, which raises effective participation. Every step is positive and drawn as a hollow line, for a conceptual step.">',
         f'<g font-family="Inter, Helvetica Neue, Arial, sans-serif" font-size="15" fill="{CHARCOAL}">',
         node(0, 8, "Effective", "participation"), node(210, 8, "Accountable", "delivery"), node(105, 172, "Warranted", "trust"),
-        f'<path d="M154 36 L204 36" {dotted}/>', f'<path d="M296 68 L236 166" {dotted}/>', f'<path d="M124 166 L64 68" {dotted}/>',
+        hollow(154, 36, 206, 36), hollow(296, 68, 236, 166), hollow(124, 166, 64, 68),
         '<g font-weight="700" font-size="17"><text x="179" y="27" text-anchor="middle">+</text>'
         '<text x="284" y="124" text-anchor="middle">+</text><text x="76" y="124" text-anchor="middle">+</text></g>',
-        f'<circle cx="180" cy="104" r="21" fill="none" stroke="{CHARCOAL}" stroke-width="1.5"/>'
-        '<text x="180" y="109" text-anchor="middle" font-weight="700">R9</text>',
+        f'<rect x="138" y="82" width="84" height="26" fill="#FFFFFF" stroke="{CHARCOAL}" stroke-width="1.5"/>'
+        '<text x="180" y="100" text-anchor="middle" font-weight="700">Loop R9</text>'
+        '<text x="180" y="130" text-anchor="middle">Hypothesis</text>',
         "</g></svg>",
     ])
 
@@ -126,7 +130,8 @@ def main():
     checks = json.loads(CHECKS.read_text(encoding="utf-8")) if CHECKS.exists() else {}
     fill = {
         "{{WORDMARK}}": wordmark(),
-        "{{LOOP_SVG}}": loop_svg(),
+        "{{LOOP_FIGURE}}": loop_figure(),
+        "{{AMP_HEAD}}": hinge_amp_head(),
         "{{R9_SVG}}": r9_svg(),
         "{{AMP_SMALL}}": amp_small(),
         "{{A11Y_SCORE}}": checks.get("a11y_score", "Pending"),

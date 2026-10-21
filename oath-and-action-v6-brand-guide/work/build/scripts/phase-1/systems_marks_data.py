@@ -33,7 +33,7 @@ css = CSS.read_text(encoding="utf-8")
 N, L, LP, R, I, C = d["nodes"], d["links"], d["loops"], d["reforms"], d["issues"], d["claims"]
 SNAP = d["meta"]["snapshot"]
 
-# ------------------------------------------------------------------ colour and contrast (WCAG 2.x formula)
+# ------------------------------------------------------------------ color and contrast (WCAG 2.x formula)
 PALETTE = OrderedDict([
     ("Newsprint", "#DCD9D2"), ("White", "#FFFFFF"), ("Charcoal", "#121212"), ("Prussian", "#1F2D5A"),
     ("Pillar Red", "#E63946"), ("Stone", "#5D636D"), ("Verdigris", "#4A7C74"),
@@ -276,14 +276,15 @@ for key, members in normed.items():
     if len(kinds) > 1:
         near_collisions.append({"normalized": key, "members": sorted(members)})
 near_collisions.sort(key=lambda m: m["normalized"])
-# Suffix neighbours: an ID that equals another with a letter suffix removed (B1 and B1a; R4 does not exist).
-suffix_neighbours = []
+# Suffix neighbors: an ID that equals another with a letter suffix removed (B1 and B1a; R4 does not exist).
+suffix_neighbors = []
 allids = {x: k for k, ids in ns.items() for x in ids}
 for x, k in allids.items():
     m = re.match(r"^([A-Z]+\d+)([a-z])$", x)
     if m and m.group(1) in allids and allids[m.group(1)] != k:
-        suffix_neighbours.append((m.group(1), allids[m.group(1)], x, k))
+        suffix_neighbors.append((m.group(1), allids[m.group(1)], x, k))
 
+digit_led_ids = sorted(x for ids in ns.items() if ids[0] != "v5_standards_rule" for x in ids[1] if re.match(r"^\d", str(x)))
 prefix_candidates = {}
 all_prefixes = Counter(re.match(r"^[A-Za-z]+", x).group(0).upper() for ids in ns.values() for x in ids if re.match(r"^[A-Za-z]+", x))
 for cand in ["STD", "ST", "G", "QA", "OA"]:
@@ -302,7 +303,7 @@ chip_examples = OrderedDict([
     ("claim", {"code": "CL1400", "name": C["CL1400"]["claim"]}),
     ("domain", {"code": "D02", "name": [x for x in d["domains"] if x["id"] == "D02"][0]["title"]}),
     ("route", {"code": "BI", "name": [r for r in d["routes"]["items"] if r["code"] == "BI"][0]["name"]}),
-    ("standard", {"code": "Std-05", "name": std_rules.get("R5"), "v5_code": "R5"}),
+    ("standard", {"code": "05.1", "name": std_rules.get("R1") + " (V5 Standards R1; its home rule in the architecture map)", "v5_code": "R1"}),
 ])
 collision_pairs = [
     {"a": ("variable", "B4", N["B4"]["title"]), "b": ("loop", "B4", LP["B4"]["title"])},
@@ -310,8 +311,8 @@ collision_pairs = [
     {"a": ("variable", "D1", N["D1"]["title"]), "b": ("domain", "D01", [x for x in d["domains"] if x["id"] == "D01"][0]["title"])},
     {"a": ("variable", "X1", N["X1"]["title"]), "b": ("issue", "X01", I["X01"]["title"])},
     {"a": ("variable", "B1", N["B1"]["title"]), "b": ("loop", "B1a", LP["B1a"]["title"])},
-    {"a": ("loop", "R5", LP["R5"]["title"]), "b": ("reform", "R-05", R["R-05"]["title"]),
-     "c": ("standard", "Std-05", "V5 Standards rule R5: " + (std_rules.get("R5") or ""))},
+    {"a": ("loop", "R1", LP["R1"]["title"]), "b": ("reform", "R-01", R["R-01"]["title"]),
+     "c": ("standard", "05.1", "Was V5 Standards rule R1, " + (std_rules.get("R1") or "") + " Its home rule in the architecture map")},
 ]
 
 # ------------------------------------------------------------------ effects
@@ -487,8 +488,8 @@ data["r11_has_variable_b4"] = r11_has_variable_b4
 data["reform_R01"] = reform_r01
 data["namespaces"] = {k: {"count": len(v), "sample": v[:6]} for k, v in ns.items()}
 data["v5_standards_rules"] = std_rules
-data["collisions"] = {"exact": exact_collisions, "near": near_collisions, "suffix_neighbours": suffix_neighbours,
-                      "prefix_candidates": prefix_candidates, "pairs": collision_pairs}
+data["collisions"] = {"exact": exact_collisions, "near": near_collisions, "suffix_neighbors": suffix_neighbors,
+                      "prefix_candidates": prefix_candidates, "digit_led_ids": digit_led_ids, "pairs": collision_pairs}
 data["chip_examples"] = chip_examples
 data["effects"] = {"total": len(all_effects), "plain": len(plain), "qualified": len(qualified),
                    "qualified_list": qualified, "plain_counts": dict(Counter(e[2] for e in plain)), "words": effect_words,
@@ -521,7 +522,7 @@ print("snapshot", SNAP)
 print("grade fields", {k: dict(v) for k, v in list(grades.items())[:8]})
 print("exact collisions", exact_collisions)
 print("near collisions", [(m["normalized"], m["members"]) for m in near_collisions][:30])
-print("suffix neighbours", suffix_neighbours)
+print("suffix neighbours", suffix_neighbors)
 print("prefix candidates", prefix_candidates)
 print("effects", len(all_effects), len(plain), len(qualified), "parser covered", parsed_ok, "live costs", costs_live)
 print("routes checked", len(route_checked), "of", len(route_entries))

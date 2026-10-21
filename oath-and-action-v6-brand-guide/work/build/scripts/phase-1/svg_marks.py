@@ -1,6 +1,6 @@
 """Drawing helpers for the Systems Marks Board. Every mark is drawn at 1 SVG unit = 1 CSS pixel.
 
-Colour comes from the enclosing surface cell: currentColor is the ink, the class .bgf fills with var(--cell),
+Color comes from the enclosing surface cell: currentColor is the ink, the class .bgf fills with var(--cell),
 and .ink2 uses var(--ink2). Nothing here reads V7; callers pass values read by systems_marks_data.py.
 """
 import html
@@ -197,12 +197,12 @@ def line_specimen(grade, w=104, delay=None, kind="causal", conceptual=False, das
     body = connection([(4, 9), (w - 4, 9)], grade, delay, kind, width=width, conceptual=conceptual, dash_override=dash)
     if opacity is not None:
         body = f'<g opacity="{opacity}">{body}</g>'
-    return svg(w, 18, body, f"{grade} line")
+    return svg(w, 18, body, f"{GRADE_WORD.get(grade, grade)} line")
 
 
 def grade_sample(grade, w=40):
     return svg(w, 12, f'<path d="M2 6 L{w - 2} 6" stroke="currentColor" stroke-width="2" fill="none"'
-                      + (f' stroke-dasharray="{DASH[grade]}"' if DASH.get(grade) else "") + "/>", f"{grade} texture", "mk inl")
+                      + (f' stroke-dasharray="{DASH[grade]}"' if DASH.get(grade) else "") + "/>", f"{GRADE_WORD.get(grade, grade)} texture", "mk inl")
 
 
 def pips(parsed, w=150, h=22):
@@ -258,7 +258,7 @@ def ev_glyph(family, cx, cy, pending=False):
         return f'<rect x="{cx - 6:.1f}" y="{cy - 3:.1f}" width="12" height="6" {fill} {stroke}/>'
     if family == "Court ruling":
         return f'<rect x="{cx - 3:.1f}" y="{cy - 6:.1f}" width="6" height="12" {fill} {stroke}/>'
-    # executive or agency action: outline square with a centre dot
+    # executive or agency action: outline square with a center dot
     return (f'<rect x="{cx - 3.75:.1f}" y="{cy - 3.75:.1f}" width="7.5" height="7.5" fill="none" stroke="currentColor" stroke-width="1.5"{dash}/>'
             f'<rect x="{cx - 1.5:.1f}" y="{cy - 1.5:.1f}" width="3" height="3" fill="currentColor"/>')
 

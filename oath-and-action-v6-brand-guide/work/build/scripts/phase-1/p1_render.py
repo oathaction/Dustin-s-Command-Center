@@ -110,12 +110,12 @@ def l5_proposal():
 
 MIN_ITEMS = [
     # id, label, original (inner, vb, size_by, size), proposal
-    ("L1", "L1 wordmark", (PP.sp("wordmark"), "width", 120), (PP.WM / "20261021_Wordmark-16px-Master.svg", "height", 16)),
+    ("L1", "L1 wordmark", (PP.sp("wordmark"), "width", 120), (PP.WM / "20261021_Wordmark-16px-Amp-B.svg", "height", 16)),
     ("L2", "L2 stacked", (PP.sp("stacked"), "width", 72), (o.OUT / "01-reexport/20261021_Stacked-L2-Reexported.svg", "width", 88)),
     ("L5", "L5 wordmark and tagline", (PP.sp("l5"), "width", 240), ("L5PROP", "width", 384)),
-    ("AMP", "Freestanding ampersand", (PP.sp("amp-16"), "height", 16), (o.OUT / "04-amp-a/20261021_Amp-A-Small-Master-16px.svg", "height", 16)),
+    ("AMP", "Freestanding ampersand", (PP.sp("amp-16"), "height", 16), (o.OUT / "05-amp-b/20261021_Amp-B-Small-Master-16px.svg", "height", 16)),
     ("LOCK", "Lockmark", (PP.sp("lockmark"), "height", 16), (o.OUT / "08-lockmark/20261021_Lockmark-16px-Master.svg", "height", 16)),
-    ("HINGE", "Hinge, compact", (PP.sp("hinge"), "width", 241), (o.OUT / "07-hinge/20261021_Hinge-Compact-Master.svg", "width", 241)),
+    ("HINGE", "Hinge diagram, compact", (PP.sp("hinge"), "width", 241), (o.OUT / "07-hinge/20261021_Hinge-Compact-Master_V2.svg", "width", 241)),
 ]
 
 
@@ -137,13 +137,19 @@ def min_jobs():
 def extra_jobs():
     jobs = []
     # same width comparison for the condensed panel: 360 px wide, Newsprint, colour
-    for nm, f in (("current", PP.WM / "20261021_Wordmark-Display-Master.svg"), ("condensed", o.OUT / "06-condensed/20261021_Wordmark-Condensed-7-5-To-1-Display.svg"),
+    for nm, f in (("current", PP.WM / "20261021_Wordmark-Display-Amp-B.svg"), ("condensed", o.OUT / "06-condensed/20261021_Wordmark-Condensed-7-5-To-1-Display.svg"),
                   ("condensed60", o.OUT / "06-condensed/20261021_Wordmark-Condensed-6-0-To-1-Display.svg")):
         inner, vb = PP.svg_parts(f)
         for wpx in (360, 180):
             fg, v = css_vars("newsprint", "color")
             svg, W, H = cell(inner, vb, wpx * vb[3] / vb[2], fg, v, o.NEWS, w=wpx)
             jobs.append({"id": f"sw__{nm}__{wpx}", "w": W, "h": H, "bg": o.NEWS, "html": svg, "out": f"p06/samewidth__{nm}__{wpx}.png"})
+    # the hinge diagram three ways, for the side-by-side figure: V5, the dotted first draft, V2
+    for nm, f in (("v5", PP.sp("hinge")), ("draft", o.OUT / "07-hinge/20261021_Hinge-Display-Master.svg"), ("v2", o.OUT / "07-hinge/20261021_Hinge-Display-Master_V2.svg")):
+        inner, vb = PP.svg_parts(f)
+        fg, v = css_vars("newsprint", "color")
+        svg, W, H = cell(inner, vb, 640 * vb[3] / vb[2], fg, v, o.NEWS, w=640)
+        jobs.append({"id": f"h3__{nm}", "w": W, "h": H, "bg": o.NEWS, "html": svg, "out": f"p07/threeup__{nm}.png"})
     return jobs
 
 
@@ -238,7 +244,8 @@ def joins(p, vk, size, path):
 
 
 def main():
-    pairs = PP.pairs()
+    only = [a for a in sys.argv[1:] if not a.startswith("-")]
+    pairs = [p for p in PP.pairs() if not only or any(p["id"].startswith(x) for x in only)]
     jobs = []
     for p in pairs:
         jobs += jobs_for_pair(p)
@@ -248,6 +255,8 @@ def main():
     o.render([{k: j[k] for k in ("id", "w", "h", "bg", "html")} for j in jobs], raw, "board")
     PNG.mkdir(parents=True, exist_ok=True)
     manifest = {"cells": {}, "measures": {}}
+    if only and (o.SCRATCH / "manifest.json").exists():
+        manifest = json.loads((o.SCRATCH / "manifest.json").read_text())
     for j in jobs:
         src = raw / f"{j['id']}.png"
         dst = PNG / j["out"]

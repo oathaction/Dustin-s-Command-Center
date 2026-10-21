@@ -12,16 +12,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 49
@@ -50,16 +50,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 48
@@ -113,16 +113,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 48
@@ -151,16 +151,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 48
@@ -214,16 +214,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 48
@@ -252,16 +252,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 48
@@ -277,16 +277,16 @@
       "wcag2aa",
       "wcag143"
      ],
-     "nodes": 11,
+     "nodes": 14,
      "targets": [
+      ".pillars > span[aria-hidden=\"true\"]:nth-child(2)",
+      "span[aria-hidden=\"true\"]:nth-child(4)",
+      "span[aria-hidden=\"true\"]:nth-child(6)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(1)",
       "#rule-05-1 > .pair > .ph[role=\"img\"]:nth-child(2)",
-      ".ph-img",
-      "text[y=\"34\"]",
-      "text[y=\"62\"]",
-      "#rule-05-3 > .pair > .ph[role=\"img\"]:nth-child(1)"
+      ".ph-img"
      ],
-     "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+     "summary": "Fix any of the following:\n  Element content contains only non-text characters"
     }
    ],
    "passes": 49
@@ -526,7 +526,7 @@
      "Evidence and media"
     ],
     "tabPass": {
-     "stops": 286,
+     "stops": 287,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -605,9 +605,9 @@
     },
     "download": {
      "file": "20261021_Oath-And-Action-Palette_DRAFT.css",
-     "bytes": 342,
+     "bytes": 398,
      "hasAllSeven": 7,
-     "status": "Download started: 20261021_Oath-And-Action-Palette_DRAFT.css, 342 bytes. Check your downloads folder."
+     "status": "Download started: 20261021_Oath-And-Action-Palette_DRAFT.css, 398 bytes. Check your downloads folder."
     },
     "disabledDownload": {
      "fired": false,
@@ -616,7 +616,7 @@
      "describedBy": "dl-ase-why"
     },
     "targets": {
-     "checked": 286,
+     "checked": 287,
      "under24": 97,
      "under24NotInline": [
       {
@@ -643,7 +643,7 @@
      "01 Purpose"
     ],
     "tabPass": {
-     "stops": 244,
+     "stops": 245,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -736,8 +736,8 @@
      "tabInsideRing": []
     },
     "targets": {
-     "checked": 244,
-     "under24": 99,
+     "checked": 245,
+     "under24": 98,
      "under24NotInline": [
       {
        "name": "Skip to main content",
@@ -763,7 +763,7 @@
      "01 Purpose"
     ],
     "tabPass": {
-     "stops": 244,
+     "stops": 245,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -856,7 +856,7 @@
      "tabInsideRing": []
     },
     "targets": {
-     "checked": 244,
+     "checked": 245,
      "under24": 97,
      "under24NotInline": [
       {
@@ -1128,7 +1128,7 @@
      },
      "arrowInPage": {
       "title": "Page 8 of 12: Comparison",
-      "scrollLeft": 239,
+      "scrollLeft": 240,
       "canScroll": true
      },
      "atLast": {
@@ -1332,37 +1332,37 @@
  "chromium": "141.0.7390.37",
  "contrast": {
   "shell-1440-top": {
-   "checked": 886,
+   "checked": 899,
    "failures": [],
-   "minSmall": 5.47,
+   "minSmall": 4.68,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-390-top": {
-   "checked": 811,
+   "checked": 824,
    "failures": [],
-   "minSmall": 5.47,
+   "minSmall": 4.68,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-390-menu-open": {
-   "checked": 881,
+   "checked": 894,
    "failures": [],
-   "minSmall": 5.47,
+   "minSmall": 4.68,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-360-top": {
-   "checked": 811,
+   "checked": 824,
    "failures": [],
-   "minSmall": 5.47,
+   "minSmall": 4.68,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-360-menu-open": {
-   "checked": 881,
+   "checked": 894,
    "failures": [],
-   "minSmall": 5.47,
+   "minSmall": 4.68,
    "minLarge": 9.42,
    "under13px": []
   },

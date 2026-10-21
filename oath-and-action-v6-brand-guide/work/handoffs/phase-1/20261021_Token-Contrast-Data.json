@@ -567,7 +567,158 @@
    }
   },
   {
-   "role": "text.onAction (button label, any size)",
+   "role": "identity.signature (wordmark ampersand, lockmark lever)",
+   "kind": "logotype",
+   "cells": {
+    "newsprint": {
+     "token": "Pillar Red",
+     "hex": "#E63946",
+     "ratio": 2.96,
+     "passes": null
+    },
+    "white": {
+     "token": "Pillar Red",
+     "hex": "#E63946",
+     "ratio": 4.17,
+     "passes": null
+    },
+    "charcoal": {
+     "token": "Pillar Red",
+     "hex": "#E63946",
+     "ratio": 4.49,
+     "passes": null
+    },
+    "prussian": {
+     "token": "White",
+     "hex": "#FFFFFF",
+     "ratio": 13.28,
+     "passes": null
+    }
+   }
+  },
+  {
+   "role": "identity.hingeDivider (divider ampersand)",
+   "kind": "graphic",
+   "cells": {
+    "newsprint": {
+     "token": "Charcoal",
+     "hex": "#121212",
+     "ratio": 13.29,
+     "passes": true
+    },
+    "white": {
+     "token": "Charcoal",
+     "hex": "#121212",
+     "ratio": 18.73,
+     "passes": true
+    },
+    "charcoal": {
+     "token": "Newsprint",
+     "hex": "#DCD9D2",
+     "ratio": 13.29,
+     "passes": true
+    },
+    "prussian": {
+     "token": "Newsprint",
+     "hex": "#DCD9D2",
+     "ratio": 9.42,
+     "passes": true
+    }
+   }
+  },
+  {
+   "role": "action.ask fill",
+   "kind": "graphic",
+   "cells": {
+    "newsprint": {
+     "token": "Pillar Red + 1 px Charcoal keyline",
+     "hex": "#E63946",
+     "ratio": 2.96,
+     "passes": true,
+     "keylineRatio": 13.29
+    },
+    "white": {
+     "token": "Pillar Red",
+     "hex": "#E63946",
+     "ratio": 4.17,
+     "passes": true
+    },
+    "charcoal": {
+     "token": "Pillar Red",
+     "hex": "#E63946",
+     "ratio": 4.49,
+     "passes": true
+    },
+    "prussian": {
+     "token": "Newsprint",
+     "hex": "#DCD9D2",
+     "ratio": 9.42,
+     "passes": true
+    }
+   }
+  },
+  {
+   "role": "action.ask label (19 px bold)",
+   "kind": "largeText",
+   "cells": {
+    "newsprint": {
+     "token": "White on Pillar Red",
+     "hex": null,
+     "ratio": 4.17,
+     "passes": true
+    },
+    "white": {
+     "token": "White on Pillar Red",
+     "hex": null,
+     "ratio": 4.17,
+     "passes": true
+    },
+    "charcoal": {
+     "token": "White on Pillar Red",
+     "hex": null,
+     "ratio": 4.17,
+     "passes": true
+    },
+    "prussian": {
+     "token": "Charcoal on Newsprint",
+     "hex": null,
+     "ratio": 13.29,
+     "passes": true
+    }
+   }
+  },
+  {
+   "role": "action.primary fill",
+   "kind": "graphic",
+   "cells": {
+    "newsprint": {
+     "token": "Charcoal",
+     "hex": "#121212",
+     "ratio": 13.29,
+     "passes": true
+    },
+    "white": {
+     "token": "Charcoal",
+     "hex": "#121212",
+     "ratio": 18.73,
+     "passes": true
+    },
+    "charcoal": {
+     "token": "Newsprint",
+     "hex": "#DCD9D2",
+     "ratio": 13.29,
+     "passes": true
+    },
+    "prussian": {
+     "token": "Newsprint",
+     "hex": "#DCD9D2",
+     "ratio": 9.42,
+     "passes": true
+    }
+   }
+  },
+  {
+   "role": "action.primary label",
    "kind": "text",
    "cells": {
     "newsprint": {
@@ -657,14 +808,15 @@
    }
   },
   {
-   "role": "graphic.red (one red per composition)",
+   "role": "working.red (one per view)",
    "kind": "graphic",
    "cells": {
     "newsprint": {
      "token": "Pillar Red + 1 px Charcoal keyline",
      "hex": "#E63946",
      "ratio": 2.96,
-     "passes": false
+     "passes": true,
+     "keylineRatio": 13.29
     },
     "white": {
      "token": "Pillar Red",
@@ -679,10 +831,10 @@
      "passes": true
     },
     "prussian": {
-     "token": "Pending Gate 1 (red on Prussian)",
-     "hex": "#E63946",
-     "ratio": 3.19,
-     "passes": true
+     "token": "None: red never sits on Prussian",
+     "hex": null,
+     "ratio": null,
+     "passes": null
     }
    }
   },
@@ -814,7 +966,8 @@
      "token": "Pillar Red + keyline",
      "hex": "#E63946",
      "ratio": 2.96,
-     "passes": false
+     "passes": true,
+     "keylineRatio": 13.29
     },
     "white": {
      "token": "Pillar Red",
@@ -1159,6 +1312,20 @@
    "case": "sentence",
    "css": "clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem)",
    "trackingRemAtMax": -0.26
+  },
+  {
+   "name": "ask",
+   "family": "reading",
+   "weight": 700,
+   "minPx": 19,
+   "maxPx": 19,
+   "minRem": 1.1875,
+   "maxRem": 1.1875,
+   "lineHeight": 1.2,
+   "trackingEm": 0,
+   "case": "sentence",
+   "css": "1.1875rem",
+   "trackingRemAtMax": 0.0
   }
  ],
  "typeFloorHolds": true

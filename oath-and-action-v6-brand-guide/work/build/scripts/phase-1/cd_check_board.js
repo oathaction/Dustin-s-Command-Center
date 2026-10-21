@@ -90,6 +90,10 @@ async function inspect(page, width) {
     out.fontFacesLoaded = [...document.fonts].filter((f) => f.status === 'loaded').map((f) => `${f.family} ${f.weight} ${f.style}`);
     // word count of visible text in main
     out.words = (document.querySelector('main').innerText.match(/[A-Za-z0-9][A-Za-z0-9'’.,:;()\/-]*/g) || []).length;
+    // hinge diagram V2: rendered width of the visible master (display holds 13 px labels from 526 px; compact from 241 px)
+    out.hingeV2 = [...document.querySelectorAll('.hingev2 svg')].filter(visible).map((sv) => ({ cls: sv.getAttribute('class'), width: Math.round(sv.getBoundingClientRect().width) }));
+    // hinge headline ampersands: master glyph present and colored by the working red
+    out.hingeHeadlineGlyphs = [...document.querySelectorAll('.pair svg.hamp')].map((sv) => getComputedStyle(sv).color);
     out.pageHeight = de.scrollHeight;
     return out;
   }, width);

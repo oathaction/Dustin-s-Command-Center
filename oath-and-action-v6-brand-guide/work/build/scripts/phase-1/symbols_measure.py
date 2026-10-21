@@ -415,7 +415,7 @@ def main():
                 b = lay["node"].bounds
                 nx, ny = int((b[0] + b[2]) / 2), int((b[1] + b[3]) / 2)
                 if lay.get("hole"):
-                    # a hole-style handle: background at its centre, ink on all four sides
+                    # a hole-style handle: background at its center, ink on all four sides
                     sep[pol] = (not mask[ny][nx]) and all(mask[ny + dy][nx + dx] for dx, dy in ((-2, 0), (1, 0), (0, -2), (0, 1)))
                     continue
                 lab, sizes = components(mask)
@@ -486,7 +486,7 @@ def main():
                 nr, sw = node_metrics(lay)
                 res["topics"][f"metrics|{n}|{sz}"]["node_r"] = nr
                 res["topics"][f"metrics|{n}|{sz}"]["seat_w"] = sw
-    # red node: the colour of the ring band just outside the node, on rendered pixels
+    # red node: the color of the ring band just outside the node, on rendered pixels
     for d in F.DIRECTIONS:
         for t in ("filled", "line"):
             for sz in (24, 48):

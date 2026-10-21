@@ -28,6 +28,7 @@ MEAS = json.loads((ROOT / "work/boards/phase-1/symbols/20261021_Symbol-Family-Me
 CHECK = ROOT / "work/boards/phase-1/symbols/20261021_Symbol-Family-Board-Check.json"
 SCRATCH = M.SCRATCH
 NEWS, CHAR, WHITE, PRUS, RED, STONE, VERD = M.NEWS, M.CHAR, M.WHITE, M.PRUS, M.RED, M.STONE, M.VERD
+RED_RULE = "The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."
 PL = {"explain": "Explain", "track": "Track", "connect": "Connect", "act": "Act"}
 TL = {"filled": "Filled", "line": "Line", "tile": "Tile"}
 DL = {"A": "A, geometric solid", "B": "B, line with one accent"}
@@ -166,7 +167,7 @@ def checks(d, t, p):
     dev = m96["density"] / med - 1
     cx, cy = m96["centroid"]
     ok = abs(dev) <= 0.20 and abs(cx) <= 0.12 and abs(cy) <= 0.12
-    out.append((ok, f"Ink {num(dev * 100, 0)}% from set median; centre offset {num(cx)}, {num(cy)}"))
+    out.append((ok, f"Ink {num(dev * 100, 0)}% from set median; center offset {num(cx)}, {num(cy)}"))
     # 5 similarity
     worst = max(((pair(d, t, p, q, sz)["score"], q, sz) for q in F.PILLARS if q != p for sz in (16, 24)))
     if t == "tile":
@@ -178,10 +179,10 @@ def checks(d, t, p):
         out.append((ok, f"Nearest pillar {PL[worst[1]]} {num(worst[0])} at {worst[2]} px; nearest watch item {wwatch[1]} {num(wwatch[0])}"))
     # 6 monochrome
     ok = all(m16["node_separate"].values()) and all(m24["node_separate"].values())
-    out.append((ok, "Node stays separate in Charcoal on Newsprint and Newsprint on Charcoal, 16 and 24 px" if ok else "Node merges with the body in one colour"))
+    out.append((ok, "Node stays separate in Charcoal on Newsprint and Newsprint on Charcoal, 16 and 24 px" if ok else "Node merges with the body in one color"))
     # 7 red discipline
     if p == "act":
-        out.append((True, "Red only on the handle, in Act contexts"))
+        out.append((True, "Red only on the handle, and only where the Act mark is the call to act"))
     else:
         out.append((True, "No red"))
     # 8 contrast
@@ -261,7 +262,7 @@ def accent_panel(d):
         for t in F.TREATMENTS:
             marks = "".join(f'<span class="mc">{mark(d, t, "act", s, cls)}</span>' for s in (24, 48, 96))
             out.append(f'<div class="arow" role="group" aria-label="Act {t} on {sname}"><span class="pl">{TL[t]}</span>{marks}</div>')
-        note = "One colour only. Red never sits on Prussian." if sid == "prussian" else ("Red handle inside a Charcoal ring" if sid != "charcoal" else "Red handle in a knocked-out seat, against Charcoal")
+        note = "One color only. Red never sits on Prussian." if sid == "prussian" else ("Red handle inside a Charcoal ring" if sid != "charcoal" else "Red handle in a knocked-out seat, against Charcoal")
         out.append(f'<p class="cap">{note}</p></div>')
     out.append("</div>")
     return "".join(out)
@@ -277,7 +278,7 @@ def composition(d):
   <p class="so-dek">Find the hearing, sign up, then say who you are and what the rule changes for you.</p>
   <p class="so-foot"><span class="so-sig">Oath &amp; Action</span><span class="so-series">{mark(d, "tile", "act", 24)}<span>Act series</span></span></p>
 </div></div>
-<figcaption><span class="tag">Illustrative</span> 1080 by 1080 post shown at one third. Headline and steps are example copy, labelled here as illustrative. The signature is set in type as a stand-in; the identity board owns the wordmark. One red job: the handle on the Act mark.</figcaption>
+<figcaption><span class="tag">Illustrative</span> 1080 by 1080 post shown at one third. Headline and steps are example copy, labeled here as illustrative. The signature is set in type as a stand-in; the identity board owns the wordmark. One working red: the Act handle, because the mark is the call to act.</figcaption>
 </figure>'''
     stories = []
     heads = {"explain": "What a primary election decides, and who can vote in one",
@@ -286,16 +287,16 @@ def composition(d):
              "act": "Ask for a hearing date before the committee votes"}
     topics = {"explain": "Elections", "track": "Budget", "connect": "Ballot access", "act": "Hearings"}
     for p in F.PILLARS:
-        cls = "accent" if p == "act" else ""
-        stories.append(f'<li><p class="ki">{mark(d, t_kick, p, 24, cls)}<span class="kp">{PL[p]}</span><span class="kt">{topics[p]}</span></p><p class="kh">{heads[p]}</p></li>')
+        stories.append(f'<li><p class="ki">{mark(d, t_kick, p, 24)}<span class="kp">{PL[p]}</span><span class="kt">{topics[p]}</span><span class="tag ki-il">Illustrative</span></p><p class="kh">{heads[p]}</p></li>')
     kicker = f'''<figure class="comp">
 <div class="article s-white">
   <p class="ki">{mark(d, t_kick, "explain", 24)}<span class="kp">Explain</span><span class="kt">Elections</span></p>
   <p class="ah">What a primary election decides, and who can vote in one</p>
+  <p class="cap" style="margin:0 0 8px"><span class="tag">Illustrative</span> Headline and dek are example copy.</p>
   <p class="ad">The rules differ by state. Four questions tell you which kind your state runs and whether you can take part.</p>
   <ul class="stories" aria-label="Story list with pillar kickers">{"".join(stories)}</ul>
 </div>
-<figcaption><span class="tag">Illustrative</span> Article kicker and a story list at 1:1, 24 px marks. Headlines are example copy. Each story carries its pillar; only the Act story carries red.</figcaption>
+<figcaption><span class="tag">Illustrative</span> Article kicker and a story list at 1:1, 24 px marks. Each story carries its pillar in Charcoal. No mark here is a call to act, so the view spends no working red.</figcaption>
 </figure>'''
     return f'<div class="comps">{social}{kicker}</div>'
 
@@ -311,15 +312,15 @@ def skeleton_card(p):
         g.append(f'<line x1="{i * S}" y1="0" x2="{i * S}" y2="240" stroke="#9EA2A8" stroke-width="{w}"/>')
         g.append(f'<line x1="0" y1="{i * S}" x2="240" y2="{i * S}" stroke="#9EA2A8" stroke-width="{w}"/>')
     g.append(f'<rect x="20" y="20" width="200" height="200" fill="none" stroke="{VERD}" stroke-width="1.5"/>')
-    g.append(f'<line x1="0" y1="120" x2="240" y2="120" stroke="{PRUS}" stroke-width="1.2" stroke-dasharray="2 3"/>')
-    g.append(f'<line x1="120" y1="0" x2="120" y2="240" stroke="{PRUS}" stroke-width="1.2" stroke-dasharray="2 3"/>')
+    g.append(f'<line x1="0" y1="120" x2="240" y2="120" stroke="{PRUS}" stroke-width="1"/>')
+    g.append(f'<line x1="120" y1="0" x2="120" y2="240" stroke="{PRUS}" stroke-width="1"/>')
     sk = F.SKELETON_24[p]
     st = f'fill="none" stroke="{CHAR}" stroke-width="2"'
     if p == "explain":
         x, y, w, h = sk["square"]
         nxs, nys, nw, nh = sk["notch"]
         g.append(f'<path d="M{x*S} {y*S}H{nxs*S}V{(nys+nh)*S}H{(x+w)*S}V{(y+h)*S}H{x*S}Z" {st}/>')
-        g.append(f'<rect x="{nxs*S}" y="{nys*S}" width="{nw*S}" height="{nh*S}" fill="none" stroke="{CHAR}" stroke-width="1" stroke-dasharray="3 3"/>')
+        g.append(f'<rect x="{nxs*S}" y="{nys*S}" width="{nw*S}" height="{nh*S}" fill="none" stroke="{STONE}" stroke-width="1.5"/>')
         qx, qy, qw, qh = sk["quarter"]
         g.append(f'<rect x="{qx*S}" y="{qy*S}" width="{qw*S}" height="{qh*S}" {st}/>')
         g.append(f'<line x1="{nxs*S}" y1="{(nys+nh)*S}" x2="{qx*S}" y2="{(qy+qh)*S}" stroke="{PRUS}" stroke-width="1.5"/>')
@@ -329,27 +330,27 @@ def skeleton_card(p):
         g.append(f'<path d="M20 170H80V120H160V70H220" fill="none" stroke="{PRUS}" stroke-width="1.5"/>')
     elif p == "connect":
         g.append(f'<circle cx="120" cy="120" r="100" {st}/>')
-        g.append(f'<rect x="80" y="20" width="80" height="200" fill="#F4F2EE" stroke="{CHAR}" stroke-width="1" stroke-dasharray="3 3"/>')
+        g.append(f'<rect x="80" y="20" width="80" height="200" fill="#F4F2EE" stroke="{STONE}" stroke-width="1.5"/>')
     elif p == "act":
         g.append(f'<path d="M30 20L110 50V220H30Z" {st}/>')
         g.append(f'<path d="M120 20H210V220H180V50H120Z" {st}/>')
         g.append(f'<line x1="110" y1="50" x2="110" y2="220" stroke="{PRUS}" stroke-width="1.5"/>')
     nx, ny = sk["node"]
-    g.append(f'<circle cx="{nx*S}" cy="{ny*S}" r="30" fill="none" stroke="{CHAR}" stroke-width="1" stroke-dasharray="2 2"/>')
+    g.append(f'<circle cx="{nx*S}" cy="{ny*S}" r="30" fill="none" stroke="{STONE}" stroke-width="1.5"/>')
     g.append(f'<circle cx="{nx*S}" cy="{ny*S}" r="20" fill="{CHAR}"/>')
     g.append("</svg>")
     v5name = f"pm-{p}"
     derived = (f'<div class="der"><span>{mark("A", "filled", p, 48, label=f"{PL[p]}, Direction A")}<small>A</small></span>'
                f'<span>{mark("B", "line", p, 48, label=f"{PL[p]}, Direction B")}<small>B</small></span></div>')
     watch = {"explain": "No letter C, no copyright sign: square primitives only, and the node sits between two pieces.",
-             "track": "No status light: one node, no row of coloured circles. No tree, so it stays apart from the Signal Grid.",
-             "connect": "No chain link: the halves never interlock. Same size and colour on both sides, so neither side leads.",
+             "track": "No status light: one node, no row of colored circles. No tree, so it stays apart from the Signal Grid.",
+             "connect": "No chain link: the halves never interlock. Same size and color on both sides, so neither side leads.",
              "act": "No letter D, no play button, no outbound arrow: straight edges, a frame and a leaf, no arrowhead."}[p]
     return f'''<article class="sk panel">
 <h3>{PL[p]}</h3>
 <div class="sk-row">
   <figure class="orig"><div class="s-newsprint pad">{v5(v5name, 96, mono=False, label=f"V5 {PL[p]} mark")}</div><figcaption><span class="tag">Original</span> V5 <code>{v5name}</code></figcaption></figure>
-  <figure class="cons-f">{"".join(g)}<figcaption><span class="tag">Option</span> Skeleton, 24-unit grid at 10x. Green: live area 2 to 22. Blue dashes: centre lines. Dashed ring: the node's clear seat.</figcaption></figure>
+  <figure class="cons-f">{"".join(g)}<figcaption><span class="tag">Option</span> Skeleton, 24-unit grid at 10x. Green: live area 2 to 22. Blue: center lines. Gray: the part removed or held apart, and the node's clear seat.</figcaption></figure>
   <figure class="derf">{derived}<figcaption>Derived at 48 px</figcaption></figure>
 </div>
 <p>{e(sk["note"])}</p>
@@ -360,8 +361,7 @@ def skeleton_card(p):
 def hinge_row():
     items = []
     for i, p in enumerate(F.PILLARS):
-        cls = "accent" if p == "act" else ""
-        items.append(f'<div class="hr-m">{mark("A", "filled", p, 48, cls, label=f"{PL[p]}, Direction A")}<span>{PL[p]}</span></div>')
+        items.append(f'<div class="hr-m">{mark("A", "filled", p, 48, label=f"{PL[p]}, Direction A")}<span>{PL[p]}</span></div>')
         if i < 3:
             items.append('<div class="hr-l" aria-hidden="true"></div>')
     return f'<div class="hrow s-newsprint" role="group" aria-label="The four Direction A pillar marks in order, joined by one line through their nodes">{"".join(items)}</div>'
@@ -390,7 +390,7 @@ def alternatives():
     def s(path):
         return f'<svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="{d_of(path)}" fill="currentColor"/></svg>'
     items = [(a, "The ampersand's crossing", "At 16 px the crossing becomes an X, which readers know as close or wrong. It also borrows the master ampersand, which the identity board is refining."),
-             (b, "A ring around every mark", "Four rings make four badges of the same shape, and a ring with a centre point drifts toward the copyright sign."),
+             (b, "A ring around every mark", "Four rings make four badges of the same shape, and a ring with a center point drifts toward the copyright sign."),
              (c, "A shared baseline bar", "A bar under every mark adds the same shape to all four, which pulls them together at small sizes, the opposite of what Track and Act need.")]
     return "".join(f'<figure class="alt panel"><div class="s-newsprint pad">{s(pth)}</div><figcaption><strong>{e(h)}</strong> <span class="tag">Not chosen</span><br>{e(t)}</figcaption></figure>' for pth, h, t in items)
 
@@ -466,17 +466,7 @@ def patterns():
             if rnd.random() < 0.18 and col < 9:
                 p.append(f'<line x1="{x + 4}" y1="{y}" x2="{x + 20}" y2="{y}" stroke="{CHAR}" stroke-width="1"/>')
     p.append("</svg>")
-    out.append(("Node rhythm", "".join(p), "From the hinge node and the Signal Grid pitch. Dividers, section openers, social backgrounds."))
-    # dotted arcs (study 07 rhythm lines)
-    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
-    for ring in range(1, 7):
-        r = ring * 16
-        n = int(math.pi * r / 7)
-        for k in range(n + 1):
-            a = math.pi + math.pi * k / n
-            p.append(f'<circle cx="{120 + r * math.cos(a):.1f}" cy="{118 + r * math.sin(a):.1f}" r="1.2" fill="{CHAR}"/>')
-    p.append("</svg>")
-    out.append(("Dotted arcs", "".join(p), "From study 07's rhythm lines. Openers and covers, away from body text."))
+    out.append(("Node rhythm", "".join(p), "From the pillar marks' node and the Signal Grid pitch. Dividers, section openers, social backgrounds."))
     # halftone nodes
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">']
     for row in range(10):
@@ -570,6 +560,7 @@ h4{font:600 1rem/1.3 var(--display);margin:26px 0 10px}
 .article{padding:22px 24px;border:1px solid var(--rule);max-width:640px}
 .ki{display:flex;align-items:center;gap:8px;margin:0;font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .ki .kt{font-weight:600;letter-spacing:.04em;color:#45494F}
+.ki .ki-il{margin-left:auto;letter-spacing:.04em}
 .ki .kt::before{content:"\\00B7";margin-right:8px}
 .ah{font:800 2rem/1.08 var(--display);letter-spacing:-.02em;margin:12px 0 10px;text-wrap:balance;max-width:24ch}
 .ad{font-size:1.0625rem;margin:0 0 18px;max-width:58ch}
@@ -612,15 +603,93 @@ td.n,th.n{text-align:right}
 .chip{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.9375rem}
 .tag.rec{background:var(--prussian);color:var(--newsprint);border-color:var(--prussian)}
 .decision h2{color:var(--newsprint)}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,360px));gap:24px;margin:14px 0 8px}
+.post{width:100%;max-width:360px;aspect-ratio:4/5;container-type:inline-size;border:1px solid var(--rule)}
+.po-in{height:100%;padding:6cqw 7cqw;display:flex;flex-direction:column}
+.po-wm{height:11cqw;display:flex;align-items:center}
+.po-hd{margin:0 0 3cqw}
+.po-hinge{display:block;width:72cqw;height:auto;color:var(--charcoal)}
+.po-wmsvg{display:block;width:76cqw;height:auto;color:var(--charcoal)}
+.po-cover{width:76cqw;height:11cqw;background:#B3B0A8;display:flex;align-items:center;justify-content:center}
+.po-cover span{font:600 3.8cqw/1 var(--body);color:var(--charcoal)}
+.po-act{display:flex;align-items:center;gap:4cqw;margin-top:4cqw}
+.po-mark{width:17cqw;height:17cqw}
+.po-k{font:700 4.4cqw/1 var(--body);letter-spacing:.1em;text-transform:uppercase;margin:0}
+.po-head{font:800 7.4cqw/1.05 var(--display);letter-spacing:-.02em;margin:4cqw 0 3cqw;text-wrap:balance}
+.po-steps{margin:0;padding-left:5.5cqw;font:400 3.9cqw/1.4 var(--body)}
+.po-steps li{margin:0 0 1.2cqw}
+.po-row{margin-top:auto;display:flex;justify-content:space-between;border-top:1px solid var(--rule);padding-top:3.5cqw}
+.po-row span{display:flex;flex-direction:column;align-items:center;gap:1.5cqw}
+.po-row svg{width:6.7cqw;height:6.7cqw}
+.po-row em{font:600 3.7cqw/1 var(--body);font-style:normal}
 .decision ol{padding-left:1.2em;margin:0}
 .decision li{margin:0 0 14px;max-width:80ch}
 .decision .rec{display:block;margin-top:4px}
 .fail-list li{margin-bottom:6px}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 @media (max-width:1100px){.matrix{grid-template-columns:repeat(2,minmax(0,1fr))}.sk-grid{grid-template-columns:1fr}}
-@media (max-width:760px){.comps{grid-template-columns:1fr}.two{grid-template-columns:1fr}.topicrow{grid-template-columns:1fr}}
+@media (max-width:1100px){.posts{grid-template-columns:repeat(2,minmax(0,360px))}}
+@media (max-width:760px){.posts{grid-template-columns:minmax(0,360px)}.comps{grid-template-columns:1fr}.two{grid-template-columns:1fr}.topicrow{grid-template-columns:1fr}}
 @media (max-width:560px){.matrix{grid-template-columns:1fr}.mgrid{grid-template-columns:58px 16px 24px 48px 96px;gap:8px}.ah{font-size:1.625rem}}
 """
+
+
+IDENT = ROOT / "work/boards/phase-1/identity"
+WM_FILES = {"current": IDENT / "03-wordmark-masters/20261021_Wordmark-Display-Amp-B.svg",
+            "condensed": IDENT / "06-condensed/20261021_Wordmark-Condensed-7-5-To-1-Display.svg"}
+HINGE_V2 = ROOT / "work/handoffs/phase-1/20261021_Hinge-V2-Ready.md"
+
+
+def wordmark_inline(kind, label):
+    s = WM_FILES[kind].read_text()
+    s = re.sub(r"<title>.*?</title>", "", s)
+    return s.replace("<svg ", f'<svg class="po-wmsvg" role="img" aria-label="{e(label)}" ', 1)
+
+
+HINGE_FILE = IDENT / "07-hinge/20261021_Hinge-Compact-Master_V2.svg"
+
+
+def hinge_divider(covered=False):
+    """The V2 compact hinge diagram, used as a divider: ampersand Charcoal, lines Stone (red rule)."""
+    h = HINGE_FILE.read_text()
+    h = re.sub(r"<title>.*?</title>", "", h)
+    if covered:
+        cover = '<rect x="-12" y="-14" width="394" height="134" fill="#B3B0A8"/><rect x="922" y="-14" width="511" height="134" fill="#B3B0A8"/>'
+        h = re.sub(r"</svg>\s*$", cover + "</svg>", h)
+    lab = "Hinge diagram V2 used as a divider" + (", with its words covered" if covered else "")
+    return h.replace("<svg ", f'<svg class="po-hinge" role="img" aria-label="{e(lab)}" style="--amp:#121212;--line:#5D636D" ', 1)
+
+
+def post(kind, covered=False):
+    if covered:
+        wm = '<div class="po-cover"><span>Wordmark covered</span></div>'
+        lab = "Portrait post with the wordmark covered"
+    else:
+        wm = wordmark_inline(kind, "Oath & Action wordmark with ampersand B" + (", condensed 7.5 to 1" if kind == "condensed" else ""))
+        lab = "Portrait Act post with the wordmark" + (" at the condensed width" if kind == "condensed" else " at today's width")
+    row = "".join(f'<span>{mark("A", "filled", p, 24)}<em>{PL[p]}</em></span>' for p in F.PILLARS)
+    hinge = f'<div class="po-hd">{hinge_divider(covered)}</div>' if HINGE_V2.exists() else ""
+    return f'''<div class="post s-newsprint" role="group" aria-label="{e(lab)}"><div class="po-in">
+  <div class="po-wm">{wm}</div>
+  <div class="po-act">{mark("A", "filled", "act", 96, "accent po-mark", label="Act mark, the call to act")}<p class="po-k">Act</p></div>
+  <p class="po-head">How to speak at a public hearing in your state</p>
+  {hinge}
+  <ol class="po-steps"><li>Find the hearing date.</li><li>Sign up to speak.</li><li>Say what the rule changes for you.</li></ol>
+  <div class="po-row">{row}</div>
+</div></div>'''
+
+
+def composite():
+    hinge_note = ("The identity board's V2 hinge diagram, with solid arcs, sits between the headline and the steps as a divider, so its ampersand is Charcoal. In the covered post its words are covered too, and its ring, nodes, arcs and ampersand stay visible." if HINGE_V2.exists() else
+                  "The hinge diagram is left out: its revised solid drawing (V2) was not ready when this board was built.")
+    figs = [(post("current"), "As designed. Wordmark with ampersand B at today's width (identity board items 3 and 5)."),
+            (post("condensed"), "As designed. Wordmark at the condensed 7.5 to 1 width (identity board item 6)."),
+            (post("current", covered=True), "Wordmark covered, with the hinge diagram's words. Judge whether the post still reads as Oath & Action.")]
+    cells = "".join(f'<figure class="comp">{p_}<figcaption>{e(c)}</figcaption></figure>' for p_, c in figs)
+    return (f'<section id="composite" aria-labelledby="h-co"><h2 id="h-co">11. The whole recommended set in one post</h2>'
+            "<p>The Act post from section 3, rebuilt at 1080 by 1350, the portrait size, with the set the studio recommends: the identity board's wordmark with ampersand B, Direction A's marks and the red rule. The first post sets the wordmark at today's width and the second at the condensed 7.5 to 1 width. The third covers the wordmark, so you can judge whether the system still reads as Oath &amp; Action without it. " + e(hinge_note) + "</p>"
+            f'<div class="posts">{cells}</div>'
+            '<p class="cap"><span class="tag">Illustrative</span> Headline and steps are example copy. Posts are shown at one third. Red: the wordmark\'s ampersand is signature red and does not count. The one working red is the Act handle, because the Act mark is the call to act. The pillar row and the hinge divider stay Charcoal. The wordmark and hinge files are identity board proposals, inlined unchanged apart from the divider colors the red rule sets.</p></section>')
 
 
 def build():
@@ -653,7 +722,7 @@ def build():
     tb_pass, tb_fail = tally("B")
     H.append('<p class="eyebrow">Oath &amp; Action Brand Guide, Edition 06 · Phase 1 proposal board · October 21, 2026 · Design director</p>')
     H.append("<h1>One skeleton per pillar, drawn two ways</h1>")
-    H.append('<p class="lede">This board proposes new pillar marks for Explain, Track, Connect and Act. Each pillar starts as one skeleton on a shared 24-unit grid. Two directions grow from the same four skeletons: A, a geometric solid, and B, a line with one accent. Every mark carries one hinge node, so the family belongs to the ampersand. The studio recommends Direction A.</p>')
+    H.append('<p class="lede">This board proposes new pillar marks for Explain, Track, Connect and Act. Each pillar starts as one skeleton on a shared 24-unit grid. Two directions grow from the same four skeletons: A, a geometric solid, and B, a line with one accent. Every mark carries one node, the point where its two parts meet. The studio recommends Direction A.</p>')
     H.append('<p>Everything here is a sketch for a decision at Gate 1. No master changes. Decision DC-02 allows the redraw; the drawings live in <code>work/boards/phase-1/symbols/</code>. Each proposal sits beside the V5 original it would replace. <span class="tag defect">Defect fix</span> marks a change that repairs a measured problem. <span class="tag">Option</span> marks a choice for you.</p>')
     H.append('<div class="keyfacts">')
     H.append(f'<div><b>{num(ta[("A", "filled", "track", "act", 16)]["blurred_corr"])}</b><span>Track against Act at 16 px, blurred correlation, Direction A filled. V5 measures {num(ta[("V5", "current", "track", "act", 16)]["blurred_corr"])}.</span></div>')
@@ -663,42 +732,42 @@ def build():
     H.append(f'<div><b>{ta_pass} pass, {ta_fail} fail</b><span>Craft checks on Direction A drawings. Direction B: {tb_pass} pass, {tb_fail} fail.</span></div>')
     H.append("</div>")
     H.append('<nav aria-label="On this board"><ul class="toc">' + "".join(f'<li><a href="#{a}">{t}</a></li>' for a, t in [
-        ("skeletons", "1. Skeletons"), ("hinge", "2. The hinge node"), ("direction-a", "3. Direction A"), ("direction-b", "4. Direction B"),
+        ("skeletons", "1. Skeletons"), ("hinge", "2. The shared node"), ("direction-a", "3. Direction A"), ("direction-b", "4. Direction B"),
         ("track-act", "5. Track and Act at 16 px"), ("topics", "6. Topic grammar"), ("treatments", "7. Sanctioned treatments"),
-        ("checks", "8. Craft checks"), ("rubric", "9. Rubric"), ("tested", "10. Checked and not checked"), ("decisions", "11. Decisions")]) + "</ul></nav>")
+        ("checks", "8. Craft checks"), ("rubric", "9. Rubric"), ("tested", "10. Checked and not checked"), ("composite", "11. The whole set in one post"), ("decisions", "12. Decisions")]) + "</ul></nav>")
 
     # ---------------- 1 skeletons
     H.append('<section id="skeletons" aria-labelledby="h-sk"><h2 id="h-sk">1. Four skeletons on one grid</h2>')
     H.append("<p>Each skeleton is the drawing both directions share: the parts, their proportions and where the node sits. The grid is 24 units square, one unit to a pixel at 24 px, with a 2-unit margin. 48 and 96 px scale the 24 px master by 2 and 4. The 16 px masters are separate drawings of the same skeletons, fitted to whole pixels.</p>")
     H.append('<div class="sk-grid">' + "".join(skeleton_card(p) for p in F.PILLARS) + "</div>")
     H.append('<h3 style="margin-top:24px">Family specification</h3><div class="scroll" tabindex="0" role="region" aria-label="Family specification table"><table class="spec"><thead><tr><th scope="col">Item</th><th scope="col">Direction A, geometric solid</th><th scope="col">Direction B, line with one accent</th></tr></thead><tbody>')
-    for row in [("Grid", "24 units, 2-unit margin, centre lines at 12", "Same"),
-                ("Keylines", "Square 2 to 22; circle radius 10 at the centre; portrait door 3 to 21", "Same"),
-                ("Hinge node at 24 px", "4 px dot in a 1 px clear seat cut into the mass", "6 px dot held off the line by a 1 px gap"),
-                ("Hinge node at 16 px", "3 px dot on a pixel centre in a 1 px seat (filled); 4 px dot with a 1 px gap (line)", "Same as A at this size"),
-                ("Node position", "On the horizontal centre line in all four marks", "Same"),
+    for row in [("Grid", "24 units, 2-unit margin, center lines at 12", "Same"),
+                ("Keylines", "Square 2 to 22; circle radius 10 at the center; portrait door 3 to 21", "Same"),
+                ("Node at 24 px", "4 px dot in a 1 px clear seat cut into the mass", "6 px dot held off the line by a 1 px gap"),
+                ("Node at 16 px", "3 px dot on a pixel center in a 1 px seat (filled); 4 px dot with a 1 px gap (line)", "Same as A at this size"),
+                ("Node position", "On the horizontal center line in all four marks", "Same"),
                 ("Stroke, line treatment", "2 px at 16 and 24, 4 px at 48, 8 px at 96", "Same"),
-                ("Terminals and joins", "Butt or square ends, mitred joins", "Round ends, round joins"),
+                ("Terminals and joins", "Butt or square ends, mitered joins", "Round ends, round joins"),
                 ("Corners", "Square", "2 px radius at 24, 1.5 px at 16"),
                 ("Tiles", "Rounded square, radius one sixth of the side; mark at two thirds; 10 px micro drawing inside the 16 px tile", "Same plate; the line master sits inside from 24 px"),
-                ("Colour", "One colour. Pillar Red only on the Act node, in Act contexts, inside a Charcoal ring on light surfaces", "Same")]:
+                ("Color", "One color. The Act handle turns red only where the Act mark is the call to act (the red rule, section 12), inside a Charcoal ring on light surfaces and never on Prussian", "Same")]:
         H.append(f"<tr><td>{e(row[0])}</td><td>{e(row[1])}</td><td>{e(row[2])}</td></tr>")
     H.append("</tbody></table></div></section>")
 
     # ---------------- 2 hinge
     H.append('<section id="hinge" aria-labelledby="h-hi"><h2 id="h-hi">2. One node runs through all four</h2>')
     H.append("<p>Dustin described the hinge as a promise, then acting, and as the point where two sides meet. Each pillar mark is drawn as two parts and the point that joins them. In Explain the node sits where a quarter of the square lifts out. In Track it stands on the stage a decision has reached. In Connect it holds the space between two equal halves. In Act it is the handle of the open door.</p>")
-    H.append("<p>The node always sits on the horizontal centre line. When the four marks run in order, one line can pass through every node, so the row reads as a single path from Explain to Act. That is the same grammar as the hinge diagram and the Signal Grid: a node and a line. A reader who learns one mark learns where to look in the other three.</p>")
-    H.append(f'<div class="hingebox"><figure>{hinge_row()}<figcaption><span class="tag">Option</span> The four Direction A marks at 48 px, joined through their nodes. The Act handle is red because the row ends in action.</figcaption></figure>'
-             f'<figure>{hinge_schematic()}<figcaption>Schematic of the V5 hinge for comparison, drawn with the V5 ampersand outline in one colour. Not a master.</figcaption></figure></div>')
+    H.append("<p>The node always sits on the horizontal center line. When the four marks run in order, one line can pass through every node, so the row reads as a single path from Explain to Act. That is the same grammar as the hinge diagram and the Signal Grid: a node and a line. A reader who learns one mark learns where to look in the other three.</p>")
+    H.append(f'<div class="hingebox"><figure>{hinge_row()}<figcaption><span class="tag">Option</span> The four Direction A marks at 48 px, joined through their nodes. All four stay Charcoal: the row names the pillars and asks nothing of the reader.</figcaption></figure>'
+             f'<figure>{hinge_schematic()}<figcaption>Simplified schematic of the proposed hinge diagram (identity item 7), without its arcs, drawn with the V5 ampersand outline in one color. Not a master.</figcaption></figure></div>')
     H.append("<h3>Shared elements considered</h3>")
     H.append(f'<div class="alts">{alternatives()}</div>')
-    H.append("<p style=\"margin-top:14px\">The node won for three reasons a reader can feel. It adds no new shape, because every mark already needs one point of focus. It sits in the same place every time. It already carries the brand's single point of colour. It also keeps the ampersand out of the pillar marks, so the wordmark keeps sole use of it.</p></section>")
+    H.append("<p style=\"margin-top:14px\">The node adds no new shape, because every mark already needs one point of focus. It sits in the same place every time, and it is the only place a pillar mark may ever carry red. It also keeps the ampersand out of the pillar marks, so the wordmark keeps sole use of it.</p></section>")
 
     # ---------------- 3 and 4 directions
     intro = {
-        "A": ("Filled primitives: squares, a circle cut in two, a frame and a leaf. Corners stay square. The node is a dot set into a clear seat in the mass, which keeps it visible in one colour. The geometry comes from study 06 and the filled silhouettes in the chat collages. It drops study 06's three colours, its concentric arcs and its quadrant.",
-              "Its line treatment traces the same parts with a 2 px stroke and mitred corners."),
+        "A": ("Filled primitives: squares, a circle cut in two, a frame and a leaf. Corners stay square. The node is a dot set into a clear seat in the mass, which keeps it visible in one color. The geometry comes from study 06 and the filled silhouettes in the chat collages. It drops study 06's three colors, its concentric arcs and its quadrant.",
+              "Its line treatment traces the same parts with a 2 px stroke and mitered corners."),
         "B": ("A 2 px monoline with round ends, and one solid accent: the node, larger than the line and held off it by a 1 px gap. The approach comes from study 08 and the offset-accent icons in chat collage 5. It drops study 08's tree and its letter-C Explain.",
               "Its filled treatment closes the same contours with 2 px rounded corners."),
     }
@@ -707,13 +776,13 @@ def build():
         H.append(f'<section id="{did}" aria-labelledby="h-{did}"><div class="dirhead"><h2 id="h-{did}">{3 if d == "A" else 4}. Direction {DL[d]}</h2><span class="tag">Option</span>{"<span class=\"tag rec\">Recommended</span>" if d == "A" else ""}</div>')
         H.append(f"<p>{e(intro[d][0])} {e(intro[d][1])}</p>")
         for t in F.TREATMENTS:
-            H.append(f"<h4>{d}. {TL[t]}, in one colour, at 16, 24, 48 and 96 px</h4>")
+            H.append(f"<h4>{d}. {TL[t]}, in one color, at 16, 24, 48 and 96 px</h4>")
             if t == "tile":
-                H.append("<p class=\"cap\">The plate takes the ink colour and the mark is cut out of it, so the surface shows through. At 16 px the plate holds a 10 px micro drawing shared by both directions.</p>")
+                H.append("<p class=\"cap\">The plate takes the ink color and the mark is cut out of it, so the surface shows through. At 16 px the plate holds a 10 px micro drawing shared by both directions.</p>")
             H.append(matrix(d, t))
             H.append(zooms(d, t))
-        H.append(f"<h4>{d}. Red in Act contexts</h4>")
-        H.append("<p>Pillar Red appears on one element only: the Act handle, in Act contexts. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Prussian never carries red. At 16 px the handle is 2 px, too small to carry colour, so Act stays one colour there.</p>")
+        H.append(f"<h4>{d}. The red handle, where the Act mark is the call to act</h4>")
+        H.append("<p>Under the red rule in section 12, the Act handle is red only when the Act mark is itself the call to act, as on a social tile, and the handle then spends the view's one working red. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Red never sits on Prussian. At 16 px the handle is 2 px, too small to carry color, so Act stays one color there.</p>")
         r24 = min(MEAS["red"][f"{d}|{t}|24|{s}"]["ring_vs_red"] for t in ("filled", "line") for s in ("newsprint", "white", "charcoal"))
         H.append(accent_panel(d))
         H.append(f'<p class="cap">Measured on the rendered pixels: the ring around the red handle reads {num(r24)}:1 or better against the red at 24 px, where the 1 px ring is antialiased, and 4.49:1 at 48 px.</p>')
@@ -750,8 +819,9 @@ def build():
     H.append(f"</tbody></table></div><p class=\"cap\">V5 scores 1.00 against its own chain link and arrow, the metaphors these sketches replace. Any round mark scores high on the silhouette half of the test against the copyright sign. An 8-unit divide between Connect's halves holds Direction A at {num(cc)}; a 2-unit divide scored 0.82 in an earlier sketch. Connect stays on the watch list for a reader test.</p></section>")
 
     # ---------------- 6 topics
-    H.append('<section id="topics" aria-labelledby="h-tp"><h2 id="h-tp">6. Topic grammar proof in Direction A</h2><span class="tag defect">Defect fix</span>')
+    H.append('<section id="topics" aria-labelledby="h-tp"><h2 id="h-tp">6. Topic grammar proof in Direction A</h2><span class="tag">Option</span>')
     H.append("<p>Four V5 topics redrawn with Direction A's rules: filled primitives, square corners and one node with a real job. The node is the filled oval on the ballot, the seal at the foot of the bill, the seal on the envelope and the face of the coin. In V5, Contact an official and Campaign money shared one silhouette at 16 px, a landscape box with a mark in the middle. Campaign money is now a stack of coins with one coin standing, so the two subjects no longer share an outline.</p>")
+    H.append('<p><span class="tag defect">Defect fix</span> applies to one change only: splitting Contact an official from Campaign money, which shared one silhouette in V5. The grammar itself, for all four topics and the sixteen still to draw, is an option for you.</p>')
     for n in F.TOPICS:
         old = "".join(f'<span class="mc">{v5(f"ic-{n}-{s}", s, label=f"V5 {F.TOPIC_LABELS[n]} {s} px")}</span>' for s in (16, 24, 48))
         new = "".join(f'<span class="mc">{use(f"tp-{n}-{16 if s == 16 else 24}", s, 16 if s == 16 else 24, label=f"Proposed {F.TOPIC_LABELS[n]} {s} px")}</span>' for s in (16, 24, 48))
@@ -771,9 +841,9 @@ def build():
     H.append("<p>One master family, Direction A, and a short list of treatments with fixed jobs. Each treatment may appear only in the places named here.</p>")
     H.append('<div class="scroll" tabindex="0" role="region" aria-label="Sanctioned treatments map"><table><thead><tr><th scope="col">Treatment</th><th scope="col">Source</th><th scope="col">Job</th><th scope="col">Where it appears</th><th scope="col">Minimum</th><th scope="col">Never</th></tr></thead><tbody>')
     for row in [
-        ("Filled mark", "Study 06; chat collages 1 to 3", "Pillar marks and topic symbols", "Navigation, kickers, chapter openers, report covers, the atlas", "16 px", "In more than one colour"),
+        ("Filled mark", "Study 06; chat collages 1 to 3", "Pillar marks and topic symbols", "Navigation, kickers, chapter openers, report covers, the atlas", "16 px", "In more than one color"),
         ("Line companion", "Study 08; chat collage 5", "The same drawings at reading size", "Inline with text, interface buttons, large line art on covers", "24 px", "Below 24 px, or mixed with filled marks in one row"),
-        ("Tile", "Study 04", "Avatars and series markers", "Social avatars, app and favicon tiles, series chips, newsletter sections", "16 px (micro drawing)", "An all-red tile; red on Prussian"),
+        ("Tile", "Study 04", "Avatars and series markers", "Social avatars, app tiles, series chips, newsletter sections", "16 px (micro drawing)", "An all-red tile; red on Prussian"),
         ("Isometric layers", "Study 03", "Exploded layer diagrams", "The three atlas layers; layer explainers in reports", "320 px wide", "Icons; tilted labels"),
         ("Hand-drawn spot illustration", "Study 05", "Human texture in editorial pieces", "Article openers, report spreads, event signs", "96 px", "Icons; red and blue pairs; a Capitol dome or scales"),
         ("Patterns", "Study 07; chat collage 4", "Rhythm and texture", "Dividers, section openers, social backgrounds, watermark fields", "Coverage limits below", "More than 12 percent ink behind text"),
@@ -785,13 +855,13 @@ def build():
     H.append(f'<figure class="panel">{iso_diagram()}<figcaption><span class="tag">Sketch</span> Isometric is sanctioned for exploded layer diagrams only. The slabs tilt; the labels stay flat and horizontal. Layer names from Master Brief V2 section 11, in the order of the Concept 03 screenshot.</figcaption></figure>')
     H.append(f'<figure class="panel"><div class="s-newsprint pad">{hand_drawn()}</div><figcaption><span class="tag">Sketch</span> Texture study generated by script from the Ballot drawing, to show line quality at spot size. Final spot illustrations are drawn by a person at 96 px and larger, in Charcoal on Newsprint. Study 05 is likely generated, so it cannot ship.</figcaption></figure>')
     av = "".join(f'<div class="av s-charcoal" style="border-radius:50%;overflow:hidden">{mark("A", "tile", p, 96, label=f"{PL[p]} avatar")}<span class="ring"></span></div>' for p in ("explain", "track"))
-    chips = "".join(f'<span class="chip">{mark("A", "tile", p, 24)}<span>{PL[p]} · {s}</span></span>' for p, s in (("track", "Bill watch"), ("explain", "How it works"), ("connect", "Common ground"), ("act", "Take part")))
-    H.append(f'<figure class="panel"><div class="avatars"><div class="s-newsprint pad" style="display:flex;gap:16px">{av}</div><div class="series">{chips}</div></div><figcaption><span class="tag">Sketch</span> Tiles for avatars and series markers. Avatars are 400 by 400 shown at one quarter; the grey ring is the circle-safe area, and the mark sits inside it. Series chips use the 24 px tile. Names are examples.</figcaption></figure>')
+    chips = "".join(f'<span class="chip">{mark("A", "tile", p, 24)}<span>{PL[p]} · {s}</span></span>' for p, s in (("track", "Bill watch"), ("explain", "How it works"), ("connect", "Common ground"), ("act", "How to take part")))
+    H.append(f'<figure class="panel"><div class="avatars"><div class="s-newsprint pad" style="display:flex;gap:16px">{av}</div><div class="series">{chips}</div></div><figcaption><span class="tag">Sketch</span> Tiles for avatars and series markers. Avatars are 400 by 400 shown at one quarter; the gray ring is the circle-safe area, and the mark sits inside it. Series chips use the 24 px tile. Names are examples.</figcaption></figure>')
     H.append("</div>")
     H.append("<h3 style=\"margin-top:22px\">Patterns, with measured ink coverage</h3><div class=\"pats\">")
     for (nm, svg, rule), c in zip(pats, cov):
         H.append(f'<figure class="pat"><div class="sw">{svg}</div><figcaption><strong>{e(nm)}</strong>, {num(c * 100, 1)} percent ink. {e(rule)}</figcaption></figure>')
-    H.append("</div><p class=\"cap\">Rule proposed for Gate 1: a pattern behind text stays at or under 12 percent ink in one palette colour, and never runs under body copy. Standalone dividers may reach 25 percent. Coverage is measured on Chromium renders of the swatches above.</p></section>")
+    H.append("</div><p class=\"cap\">Rule proposed for Gate 1: a pattern behind text stays at or under 12 percent ink in one palette color, and never runs under body copy. Standalone dividers may reach 25 percent. Coverage is measured on Chromium renders of the swatches above.</p></section>")
 
     # ---------------- 8 checks
     H.append('<section id="checks" aria-labelledby="h-ck"><h2 id="h-ck">8. Craft checks on every drawing</h2>')
@@ -806,10 +876,10 @@ def build():
         ("Silhouette", "At 16 px, at least 60 percent of inked pixels are solid (crisp share) and ink covers at least 25 percent of the field. V5's pillar masters score 0.30 to 0.57 crisp share."),
         ("Pixel fit", "In the 16 and 24 px masters, every horizontal and vertical straight edge, and every horizontal or vertical tangent of the node, seats, discs and arcs, lies within 0.06 px of a whole pixel. Round caps, round joins and corner fillets are exempt."),
         ("Consistency", "The node and its 1 px ring match the family specification at 16 and 24 px. A declared exception counts as a fail and is named in the cell."),
-        ("Optical balance", "At 96 px, ink sits within 20 percent of the median of its set, and the centre of mass sits within 12 percent of the field centre on both axes."),
+        ("Optical balance", "At 96 px, ink sits within 20 percent of the median of its set, and the center of mass sits within 12 percent of the field center on both axes."),
         ("Similarity", "Every score against another pillar in the same set, and against each Phase 0 watch item, is under 0.60. Tiles are compared inside the plate and inherit the watch-item results of the drawing they hold. Topic against pillar must be under 0.70, because the two never share a slot."),
         ("Monochrome", "Rendered in Charcoal on Newsprint and in Newsprint on Charcoal, the node is its own connected shape at 16 and 24 px."),
-        ("Red discipline", "Red appears only on the Act node in Act contexts. Checked in the drawings and in every composition on this board."),
+        ("Red discipline", "Red appears only on the Act handle, and only where the Act mark is the call to act, as the red rule in section 12 sets out. Checked in the drawings and in every composition on this board."),
         ("Contrast", "Ink against every surface (WCAG ratio), and the ring around the red handle against the red, measured on rendered pixels."),
         ("Type", "Applies to compositions. Results for the board's headings and the composition headlines are listed below.")]
     H.append("<h3 style=\"margin-top:18px\">How each check was run</h3><ul>" + "".join(f"<li><strong>{e(a)}.</strong> {e(b)}</li>" for a, b in tests) + "</ul>")
@@ -825,7 +895,7 @@ def build():
     H.append(f"<h3>Failures, {len(fails)} in all</h3><ul class=\"fail-list\">" + "".join(f"<li>{e(f)}</li>" for f in fails) + "</ul>")
     sil_fail = [f"{d} {PL[p]}" for d in F.DIRECTIONS for p in F.PILLARS if res_all[(d, "line", p)][0][0] is False]
     tcy = [mk(d, t, "track", 96)["centroid"][1] for d, t in (("A", "filled"), ("A", "line"), ("B", "filled"))]
-    H.append(f"<p><strong>What the failures say.</strong> At 16 px, the line masters of {', '.join(sil_fail)} fail the silhouette test, so the line companion should start at 24 px. Track's solid stair carries its weight low, {num(min(tcy) * 100, 0)} to {num(max(tcy) * 100, 0)} percent of the field below centre in the filled and A line drawings, and fails optical balance; Phase 2 should test a raised stair. The Act handle at 16 px is a declared exception in both directions, because a 6 px leaf has no room for a 3 px dot and a ring. Direction B's Track line carries {num(mk('B', 'line', 'track', 96)['density'] * 100, 0)} percent ink at 96 px, far below its set.</p>")
+    H.append(f"<p><strong>What the failures say.</strong> At 16 px, the line masters of {', '.join(sil_fail)} fail the silhouette test, so the line companion should start at 24 px. Track's solid stair carries its weight low, {num(min(tcy) * 100, 0)} to {num(max(tcy) * 100, 0)} percent of the field below center in the filled and A line drawings, and fails optical balance; Phase 2 should test a raised stair. The Act handle at 16 px is a declared exception in both directions, because a 6 px leaf has no room for a 3 px dot and a ring. Direction B's Track line carries {num(mk('B', 'line', 'track', 96)['density'] * 100, 0)} percent ink at 96 px, far below its set.</p>")
     if check:
         H.append("<h3>Type and layout check</h3><ul>" + "".join(f"<li>{e(x)}</li>" for x in check.get("summary", [])) + "</ul>")
     H.append("</section>")
@@ -833,11 +903,11 @@ def build():
     # ---------------- 9 rubric
     H.append('<section id="rubric" aria-labelledby="h-ru"><h2 id="h-ru">9. Rubric scores</h2><p>Scored against Master Brief V2 section 6. The ship threshold is 4 on every criterion. These are Phase 1 sketches, so usefulness is scored on what a builder could take from the board today.</p>')
     rub = [
-        ("Craft", 4, "Every filled master sits on whole pixels; nodes survive one colour at 16 px. Track sits low and the 16 px handle is an exception.", 3, "Two of four line masters fail the 16 px silhouette test; the B Track line carries little ink; the large B handle crowds the Act leaf."),
+        ("Craft", 4, "Every filled master sits on whole pixels; nodes survive one color at 16 px. Track sits low and the 16 px handle is an exception.", 3, "Two of four line masters fail the 16 px silhouette test; the B Track line carries little ink; the large B handle crowds the Act leaf."),
         ("Clarity", 4, "Each skeleton names its idea in a sentence; one rule places the node in every mark.", 3, "The same skeletons. In the studio's judgment, Connect's two arcs and dot read close to a target or broadcast symbol."),
-        ("Brand fidelity", 4, "One colour, one red job, a node grammar shared with the hinge and the Signal Grid. In the studio's judgment it reads as Oath & Action without the wordmark.", 3, "Brand rules hold. In the studio's judgment a monoline set with round ends sits close to stock icon sets, the criticism Phase 0 made of V5's topics."),
+        ("Brand fidelity", 4, "One color, one red job, a node grammar shared with the hinge and the Signal Grid. In the studio's judgment it reads as Oath & Action without the wordmark.", 3, "Brand rules hold. In the studio's judgment a monoline set with round ends sits close to stock icon sets, the criticism Phase 0 made of V5's topics."),
         ("Usefulness", 3, "Specification, masters at 16 and 24, measured checks and a topic proof. Missing: exports, the other sixteen topics, tokens.", 3, "Same gaps."),
-        ("Evidence honesty", 5, "Every number comes from a script run on rendered pixels; every example headline is labelled.", 5, "Same."),
+        ("Evidence honesty", 5, "Every number comes from a script run on rendered pixels; every example headline is labeled.", 5, "Same."),
         ("Accessibility", 4, "Ink on all surfaces 9.42:1 or better; red is never the only signal; marks carry text labels in use.", 3, "Contrast holds, but 2 px lines at 16 px lose shape, so the marks need their labels even more."),
     ]
     H.append('<div class="scroll" tabindex="0" role="region" aria-label="Rubric scores"><table><thead><tr><th scope="col">Criterion</th><th scope="col" class="n">A</th><th scope="col">Reason</th><th scope="col" class="n">B</th><th scope="col">Reason</th></tr></thead><tbody>')
@@ -847,7 +917,7 @@ def build():
 
     # ---------------- 10 tested
     H.append('<section id="tested" aria-labelledby="h-te"><h2 id="h-te">10. Checked and not checked</h2><div class="two"><div><h3>Checked</h3><ul>'
-             "<li>Every drawing rendered by Chromium at device scale 1, at 16, 24, 48 and 96 px, in one colour on all four surfaces.</li>"
+             "<li>Every drawing rendered by Chromium at device scale 1, at 16, 24, 48 and 96 px, in one color on all four surfaces.</li>"
              "<li>The nine craft checks on all 24 pillar drawings and four topics, with the tests listed in section 8.</li>"
              "<li>Similarity among the four pillars in every set, against V5, against the Phase 0 watch items, and among the four topics against V5.</li>"
              "<li>Red ring contrast on rendered pixels at 24 and 48 px, on Newsprint, White and Charcoal.</li>"
@@ -856,21 +926,22 @@ def build():
              "</ul></div><div><h3>Not checked</h3><ul>"
              "<li>Readers. Similarity comes from a model of a glance, not from people.</li>"
              "<li>Rendering outside Chromium on Linux, high-density screens, Windows and macOS font smoothing.</li>"
-             "<li>Print. No inch or millimetre minimums yet.</li>"
+             "<li>Print. No inch or millimeter minimums yet.</li>"
              "<li>The other sixteen topics, the atlas symbols, status marks and utility icons.</li>"
              "<li>Screen reader output for this board beyond the labels written into it.</li>"
-             "<li>Whether the example headlines describe real procedures in every state. They are labelled as illustrative.</li>"
+             "<li>Whether the example headlines describe real procedures in every state. They are labeled as illustrative.</li>"
              "</ul></div></div></section>")
 
     # ---------------- 11 decisions
-    H.append('<section id="decisions" aria-labelledby="h-de" class="decision"><h2 id="h-de">11. Decisions for Gate 1</h2><ol>')
+    H.append(composite())
+    H.append('<section id="decisions" aria-labelledby="h-de" class="decision"><h2 id="h-de">12. Decisions for Gate 1</h2><ol>')
     LINE16 = ", ".join(f"{d} {PL[p]}" for d in F.DIRECTIONS for p in F.PILLARS if res_all[(d, "line", p)][0][0] is False)
     LINE16 = LINE16[0].upper() + LINE16[1:] if LINE16 else "No line masters"
     decisions = [
         ("Symbol direction", "A, geometric solid; or B, line with one accent.", "A. It leads with the filled master, which passes the 16 px silhouette test for all four pillars. B leads with the line, which fails it for Track and Connect."),
-        ("The four skeletons", "Approve the exploded square, the stair, the split circle and the open door, or ask for changes to any one.", "Approve, with one Phase 2 change: raise Track's stair so its mass sits nearer the centre."),
-        ("The shared element", "The hinge node on the centre line in every mark; the ampersand's crossing; a ring; a baseline bar.", "The node. It ties the marks to the hinge and the Signal Grid without adding a shape, and leaves the ampersand to the wordmark."),
-        ("Red in the pillar marks", "Red only on the Act node in Act contexts, inside a Charcoal ring on light surfaces and never on Prussian; or red in all four marks, as in study 06.", "Red on Act only. Red keeps one job, and the ring fixes the 2.96:1 edge on Newsprint."),
+        ("The four skeletons", "Approve the exploded square, the stair, the split circle and the open door, or ask for changes to any one.", "Approve, with one Phase 2 change: raise Track's stair so its mass sits nearer the center."),
+        ("The shared element", "One node on the center line in every mark; the ampersand's crossing; a ring; a baseline bar.", "The node. It ties the marks to the hinge and the Signal Grid without adding a shape, and leaves the ampersand to the wordmark."),
+        ("Red in the pillar marks", "Adopt the red rule, which also settles whether the Act handle counts; or red in all four marks, as in study 06.", "Adopt the red rule. " + RED_RULE),
         ("Line treatment at 16 px", "Allow line marks at 16 px; or start the line companion at 24 px.", f"Start at 24 px. {LINE16} fail the 16 px silhouette test, and filled masters pass it in both directions."),
         ("Topic grammar", "Redraw all twenty topics in Direction A's grammar, one node per subject; or keep V5's topic set.", "Redraw in Phase 2, starting with the four pairs Phase 0 named and Ballot against Bill."),
         ("Sanctioned treatments", "Approve the map in section 7, including hand-drawn at 96 px and up, isometric for layer diagrams only, tiles for avatars and series, and the 12 percent pattern limit behind text.", "Approve. Each treatment gets one job and a minimum size a builder can check."),

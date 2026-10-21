@@ -17,6 +17,7 @@ OUT = root / "work/boards/phase-1/navigation/20261021_Guide-Shell-Wireframe.html
 BOARD = root / "work/boards/20261021_Navigation-And-Template-Wireframes.html"
 FRAG = root / "work/build/scripts/phase-1/fragments/05-color.html"
 WORDMARK = root / "work/extract/v5-polished/sprite/wordmark.svg"
+DIR_A = root / "work/boards/phase-1/symbols/20261021_Pillar-Sketches-Direction-A.svg"
 
 PARTS = [
     ("foundations", "Foundations", "The identity, its color and type, the page grid and the Signal Grid."),
@@ -35,7 +36,7 @@ CHAPTERS = [
     ("05", "color", "Color", "foundations", "Choose a surface first, then the text and graphic colors that pass on it."),
     ("06", "type", "Type", "foundations", "Set every word at a readable size with the three faces and the type scale."),
     ("07", "layout", "Layout and spacing", "foundations", "Build pages on the column grid and spacing scale so the measure stays comfortable at every width."),
-    ("08", "signal-grid", "The Signal Grid", "foundations", "Place the lockmark in its sanctioned spots, and code content with it only where a key beside it lets a reader decode it."),
+    ("08", "signal-grid", "The Signal Grid", "foundations", "Place the lockmark in its sanctioned spots, and code content with the Signal Grid only where a key beside it lets a reader decode it."),
     ("09", "pillar-marks", "Pillar marks", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
     ("11", "icons", "Status and utility icons", "symbols", "Show a record's state or an interface action with a glyph that never stands in for a topic."),
@@ -136,6 +137,28 @@ def wordmark_svg():
     return s
 
 
+def pillar_sprite():
+    """The four filled 24 px Direction A sketches, inlined so the cover's pillar row can use them (CD review C11)."""
+    s = DIR_A.read_text()
+    out = []
+    for p in ("explain", "track", "connect", "act"):
+        m = re.search(rf'<symbol id="oa-sketch-a-filled-{p}-24".*?</symbol>', s, re.S)
+        out.append(m.group(0))
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">' + "".join(out) + "</svg>"
+
+
+def pillar_row():
+    names = ["Explain", "Track", "Connect", "Act"]
+    items = []
+    for i, n in enumerate(names):
+        items.append(f'<span class="pw"><svg class="pm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#oa-sketch-a-filled-{n.lower()}-24"/></svg>{n}</span>')
+        if i < 3:
+            items.append('<span aria-hidden="true">→</span>')
+    return ('<p class="pillars">' + "".join(items) + '</p>'
+            '<p class="pillar-cap">Pillar marks: Direction A sketches, filled, 24 px, in one color, pending Gate 1 decision Y1. '
+            'The Act handle stays Charcoal because this mark is not the call to act.</p>')
+
+
 def part_name(slug):
     return next(p[1] for p in PARTS if p[0] == slug)
 
@@ -221,6 +244,7 @@ def build():
 <link rel="stylesheet" href="wireframe.css">
 </head>
 <body>
+{pillar_sprite()}
 <a class="skip" href="#main">Skip to main content</a>
 <a class="skip" href="#contents">Skip to contents</a>
 <header class="masthead">
@@ -235,18 +259,18 @@ def build():
   <nav class="rail" aria-label="Chapters">{nav_list("rail")}</nav>
   <main id="main" tabindex="-1">
     <section class="cover" id="top">
-      <p class="wf-label">Wireframe for Gate 1, October 21, 2026. A proposal for the Edition 06 navigation and chapter template. It is not a V6 chapter, and grey dashed boxes stand in for specimens.</p>
+      <p class="wf-label">Wireframe for Gate 1, October 21, 2026. A proposal for the Edition 06 navigation and chapter template. It is not a V6 chapter, and gray dashed boxes stand in for specimens.</p>
       <p class="eyebrow">Brand Guide · Edition 06</p>
       <h1>Oath &amp; Action Brand Guide, Edition 06</h1>
       <p class="tagline">A country that answers to its people.</p>
-      <p class="pillars">Explain → Track → Connect → Act</p>
+      {pillar_row()}
     </section>
     {contents_section()}
     {start_section()}
     {"".join(body)}
     <section class="closing" id="closing" data-track="closing" data-part="production" data-label="Closing">
       <h2 id="closing-h">Closing</h2>
-      <p class="instr">Put the promise to work.</p>
+      <p class="instr">Colophon, edition notes and the way back to the start.</p>
       <p class="stub">Wireframe stub. The colophon and edition notes go here.</p>
       <div class="chapnav"><a href="#standards" rel="prev">Previous chapter: <span class="n">28</span> Standards checklist</a><a class="to-contents" href="#contents">Back to contents</a></div>
     </section>

@@ -5,7 +5,7 @@ Default input: work/build/tokens/20261021_Token-Schema-Draft.json
 
 The five conditions of section 10, plus the tier and format rules in
 work/ledger/20261021_Token-Architecture.md. Exit code 1 on any failure.
-After the real file, it runs seven broken copies and expects each to fail,
+After the real file, it runs eleven broken copies and expects each to fail,
 so a check that silently passes everything is caught too.
 
 The color math is written out again here on purpose: the test must not
@@ -131,6 +131,13 @@ def x(t):
     return (t.get("$extensions") or {}).get(NS, {})
 
 
+def ref_value(ref, toks):
+    target = ref[1:-1]
+    if target not in toks:
+        raise KeyError(f"missing {target}")
+    return resolve(target, toks)[1]
+
+
 # --- the checks -----------------------------------------------------------------
 def check(tree):
     fails = []
@@ -215,22 +222,56 @@ def check(tree):
                     if stored is None or abs(stored - round(c, 2)) > 0.005:
                         fails.append(f"{path}: stored contrast on {s} ({stored}) is stale; measured {c:.2f}")
 
-        # condition 4 for every semantic color on its surface
+        # condition 4 for every semantic color on its surface (or on its stated ground)
         e = x(t)
         if tier == "semantic" and t["$type"] == "color" and e.get("surface"):
             kind, s = e.get("kind"), e["surface"]
             hexv = val["hex"]
-            if kind == "background":
+            c = need = None
+            if kind == "logotype":
+                if e.get("redRole") != "signature" and hexv.upper() == LOCKED["pillarRed"]:
+                    fails.append(f"{path}: only signature red may use the logotype exemption")
+            elif kind == "background":
                 ink = LOCKED["charcoal"] if s in ("newsprint", "white") else LOCKED["newsprint"]
                 c, need = ratio(ink, hexv), 4.5
             elif kind in THRESH:
-                c, need = ratio(hexv, LOCKED[s]), THRESH[kind]
-            else:
-                continue
-            if c < need:
-                fails.append(f"{path}: condition 4, {c:.2f}:1 is under {need}:1")
-            if e.get("contrast") is not None and abs(e["contrast"] - round(c, 2)) > 0.005:
+                ground = ref_value(e["ground"], toks)["hex"] if e.get("ground") else LOCKED[s]
+                c, need = ratio(hexv, ground), THRESH[kind]
+            if c is not None and c < need:
+                kl = e.get("keyline")
+                if kind == "graphic" and kl:
+                    kc = ratio(ref_value(kl, toks)["hex"], LOCKED[s])
+                    if kc < 3.0:
+                        fails.append(f"{path}: condition 4, keyline {kc:.2f}:1 is under 3:1")
+                    if e.get("keylineContrast") is None or abs(e["keylineContrast"] - round(kc, 2)) > 0.005:
+                        fails.append(f"{path}: stored keyline contrast is stale; measured {kc:.2f}")
+                else:
+                    fails.append(f"{path}: condition 4, {c:.2f}:1 is under {need}:1")
+            if c is not None and e.get("contrast") is not None and abs(e["contrast"] - round(c, 2)) > 0.005:
                 fails.append(f"{path}: stored contrast {e['contrast']} is stale; measured {c:.2f}")
+            if e.get("requiresType") and kind == "largeText":
+                ty = ref_value(e["requiresType"], toks)
+                fs = ty["fontSize"]
+                px = fs["value"] * (16 if fs["unit"] == "rem" else 1)
+                wt = ty["fontWeight"]
+                wt = ref_value(wt, toks) if isinstance(wt, str) else wt
+                if not (px >= 24 or (px >= 18.66 and wt >= 700)):
+                    fails.append(f"{path}: large-text pass needs 24 px, or 18.66 px bold; its type is {px:g} px at {wt}")
+
+        # the red rule (CD review, section 2)
+        if t["$type"] == "color" and tier in ("semantic", "component") and isinstance(val, dict) \
+                and val.get("hex", "").upper() == LOCKED["pillarRed"]:
+            if path.endswith("onPrussian") or e.get("surface") == "prussian":
+                fails.append(f"{path}: red rule, red never sits on Prussian")
+            if tier == "semantic":
+                role = e.get("redRole")
+                if role not in ("signature", "working") or (role == "working" and e.get("precedence") not in (1, 2, 3)):
+                    fails.append(f"{path}: red rule, a red token names its claim (signature, or working red at precedence 1 to 3)")
+        if e.get("fallback"):
+            try:
+                ref_value(e["fallback"], toks)
+            except (KeyError, ValueError) as err:
+                fails.append(f"{path}: fallback does not resolve ({err})")
 
         # the 13 px floor
         if t["$type"] == "typography":
@@ -272,6 +313,18 @@ def mutants(tree):
     g = copy.deepcopy(tree)
     g["oa"]["color"]["text"]["primary"]["onWhite"]["$value"] = "{oa.color.derived.verdigrisOnDark}"
     m.append(("Semantic token using a held value", g))
+    h = copy.deepcopy(tree)
+    h["oa"]["color"]["action"]["ask"]["fill"]["onPrussian"]["$value"] = "{oa.color.palette.pillarRed}"
+    m.append(("Red ask button on Prussian", h))
+    i = copy.deepcopy(tree)
+    i["oa"]["type"]["ask"]["$value"]["fontSize"] = {"value": 0.9375, "unit": "rem"}
+    m.append(("Ask label set at 15 px", i))
+    j = copy.deepcopy(tree)
+    del j["oa"]["color"]["state"]["error"]["mark"]["onNewsprint"]["$extensions"][NS]["keyline"]
+    m.append(("Red error mark on Newsprint without its keyline", j))
+    k = copy.deepcopy(tree)
+    del k["oa"]["color"]["action"]["ask"]["fill"]["onWhite"]["$extensions"][NS]["redRole"]
+    m.append(("Red ask fill that does not name its claim on the view's red", k))
     return m
 
 

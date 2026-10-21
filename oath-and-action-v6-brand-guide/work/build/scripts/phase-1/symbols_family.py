@@ -157,8 +157,8 @@ def _round_poly(pts, r):
 DRAW_24 = {"explain": explain_24, "track": track_24, "connect": connect_24, "act": act_24}
 
 # ------------------------------------------------------------------ 16 px master (pixel fit)
-# Hand-fitted. A: node dot 3 px at a pixel centre (7.5, 7.5) in a 5 px seat, so the
-# 1 px ring and the dot land on whole pixels. B: 2 px lines on whole-pixel centres,
+# Hand-fitted. A: node dot 3 px at a pixel center (7.5, 7.5) in a 5 px seat, so the
+# 1 px ring and the dot land on whole pixels. B: 2 px lines on whole-pixel centers,
 # node 4 px at (8, 8) with a 1 px gap.
 
 def explain_16(direction, treatment):
@@ -250,8 +250,8 @@ def tile(pillar, direction, size):
     """A rounded-square tile with the mark reversed out of it.
 
     Returns layers: tile (the plate, with the mark cut out), body, seat, node in tile
-    space. On a tile the mark is the surface colour, so the renderer paints body and
-    node in the surface colour over the plate.
+    space. On a tile the mark is the surface color, so the renderer paints body and
+    node in the surface color over the plate.
     """
     r = {16: 3, 24: 4, 48: 8, 96: 16}[size]
     plate = rrect(0, 0, size, size, r)

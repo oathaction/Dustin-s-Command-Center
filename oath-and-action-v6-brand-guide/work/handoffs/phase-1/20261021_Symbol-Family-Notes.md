@@ -17,11 +17,11 @@ Nothing in any master. Every drawing is a proposal under DC-02.
 2. **Two directions** come from the same four skeletons.
    - **A, geometric solid:** filled primitives with square corners. The node is a 4 px dot set into a 1 px clear seat.
    - **B, line with one accent:** a 2 px monoline with round ends. The node is a 6 px dot held off the line by a 1 px gap.
-   - Each has filled, line and tile treatments at 16, 24, 48 and 96 px in one colour on all four surfaces, with 8x pixel views, plus one composition: a 1080 by 1080 Act post and an article kicker.
-3. **The shared element is the hinge node.** Every mark is two parts and the point that joins them: where Explain's quarter lifted out, the stage Track has reached, the space between Connect's halves, and Act's handle. The node always sits on the horizontal centre line, so in a row one line passes through all four nodes, the grammar of the hinge diagram and the Signal Grid. The board sketches three alternatives I set aside: the ampersand's crossing (an X at 16 px, and it borrows the master ampersand), a ring around each mark (look-alike badges that drift toward ©) and a shared baseline bar (one more shape common to all four).
+   - Each has filled, line and tile treatments at 16, 24, 48 and 96 px in one color on all four surfaces, with 8x pixel views, plus one composition: a 1080 by 1080 Act post and an article kicker.
+3. **The shared element is the hinge node.** Every mark is two parts and the point that joins them: where Explain's quarter lifted out, the stage Track has reached, the space between Connect's halves, and Act's handle. The node always sits on the horizontal center line, so in a row one line passes through all four nodes, the grammar of the hinge diagram and the Signal Grid. The board sketches three alternatives I set aside: the ampersand's crossing (an X at 16 px, and it borrows the master ampersand), a ring around each mark (look-alike badges that drift toward ©) and a shared baseline bar (one more shape common to all four).
 4. **Red rule.** Pillar Red goes only on the Act handle, in Act contexts: inside a 1 px Charcoal ring on Newsprint and White (red on Newsprint is 2.96:1), in a cut-out seat against Charcoal (4.49:1), never on Prussian, and not at 16 px, where the handle is 2 px.
 5. **Topic grammar proof.** I redrew Ballot, Bill, Contact an official and Campaign money in Direction A at 16, 24 and 48 px, with one node per subject. Campaign money is now a coin stack with one standing coin, so it no longer shares the envelope's landscape box.
-6. **Sanctioned treatments map** gives each treatment one job and a minimum size: filled marks from 16 px, the line companion from 24 px, tiles for avatars and series markers, isometric only for layer diagrams with flat labels, hand-drawn spot illustration from 96 px drawn by a person, patterns at 12 percent ink or less behind text, and Y2K orbits as motion only. Sketches show each one; the hand-drawn texture study is labelled as script-generated.
+6. **Sanctioned treatments map** gives each treatment one job and a minimum size: filled marks from 16 px, the line companion from 24 px, tiles for avatars and series markers, isometric only for layer diagrams with flat labels, hand-drawn spot illustration from 96 px drawn by a person, patterns at 12 percent ink or less behind text, and Y2K orbits as motion only. Sketches show each one; the hand-drawn texture study is labeled as script-generated.
 
 ## Why
 
@@ -46,7 +46,7 @@ Totals: Direction A, 86 pass and 10 fail. Direction B, 85 pass and 11 fail.
 
 ## Checks that still fail
 
-- **Track sits low.** The solid stair's centre of mass is 17 to 18 percent of the field below centre, in A filled, A line and B filled. Phase 2 should test a raised stair.
+- **Track sits low.** The solid stair's center of mass is 17 to 18 percent of the field below center, in A filled, A line and B filled. Phase 2 should test a raised stair.
 - **The Act handle at 16 px** is a declared exception in every treatment. A 6 px leaf cannot hold a 3 px dot and a ring, so the handle is 2 px.
 - **Line masters at 16 px.** A Connect, B Track and B Connect fail the silhouette test, so the line companion should start at 24 px. A line Connect and B line Track are also light on ink.
 - **Tiles at 16 px** hold a 10 px micro drawing that both directions share. Its nodes are 2 px with no seat, so all eight count as consistency failures. The B tile Track is also light on ink.
@@ -63,7 +63,7 @@ Totals: Direction A, 86 pass and 10 fail. Direction B, 85 pass and 11 fail.
 | Evidence honesty | 5 | 5 |
 | Accessibility | 4 | 3 |
 
-Reasons are on the board. Neither reaches 4 on usefulness until Phase 2 adds exports, the other sixteen topics and tokens. B's clarity and brand fidelity scores are labelled studio judgment.
+Reasons are on the board. Neither reaches 4 on usefulness until Phase 2 adds exports, the other sixteen topics and tokens. B's clarity and brand fidelity scores are labeled studio judgment.
 
 ## Recommendation
 
@@ -73,7 +73,7 @@ Reasons are on the board. Neither reaches 4 on usefulness until Phase 2 adds exp
 
 **Checked:** every drawing rendered in Chromium on Linux at 16, 24, 48 and 96 px on four surfaces; the nine craft checks on 24 pillar drawings and 4 topics; similarity against V5 and the watch items; red-ring contrast on rendered pixels; pattern coverage; board layout and type at 1440 and 390 px. Inter and Inter Tight loaded from Google Fonts; Lora was requested but did not appear in the loaded list.
 
-**Not checked:** readers (similarity comes from a model of a glance); other browsers, high-density screens, Windows or macOS rendering; print sizes; the other sixteen topics and the atlas, status and utility symbols; screen-reader output beyond the labels in the board; whether the illustrative headlines describe real procedures in every state (they are labelled).
+**Not checked:** readers (similarity comes from a model of a glance); other browsers, high-density screens, Windows or macOS rendering; print sizes; the other sixteen topics and the atlas, status and utility symbols; screen-reader output beyond the labels in the board; whether the illustrative headlines describe real procedures in every state (they are labeled).
 
 ## Change log
 

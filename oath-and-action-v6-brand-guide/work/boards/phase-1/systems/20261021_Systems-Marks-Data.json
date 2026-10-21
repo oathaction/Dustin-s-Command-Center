@@ -2415,7 +2415,7 @@
     ]
    }
   ],
-  "suffix_neighbours": [
+  "suffix_neighbors": [
    [
     "R1",
     "v5_standards_rule",
@@ -2469,6 +2469,7 @@
     "prefixes_that_share_letters": []
    }
   },
+  "digit_led_ids": [],
   "pairs": [
    {
     "a": [
@@ -2533,18 +2534,18 @@
    {
     "a": [
      "loop",
-     "R5",
-     "Financial strain narrows who takes part in policy decisions"
+     "R1",
+     "Wealth and political influence reinforce each other"
     ],
     "b": [
      "reform",
-     "R-05",
-     "Automatic voter registration"
+     "R-01",
+     "All-party primaries with ranked general elections"
     ],
     "c": [
      "standard",
-     "Std-05",
-     "V5 Standards rule R5: Red is punctuation."
+     "05.1",
+     "Was V5 Standards rule R1, Newsprint leads. Its home rule in the architecture map"
     ]
    }
   ]
@@ -2583,9 +2584,9 @@
    "name": "State ballot"
   },
   "standard": {
-   "code": "Std-05",
-   "name": "Red is punctuation.",
-   "v5_code": "R5"
+   "code": "05.1",
+   "name": "Newsprint leads. (V5 Standards R1; its home rule in the architecture map)",
+   "v5_code": "R1"
   }
  },
  "effects": {

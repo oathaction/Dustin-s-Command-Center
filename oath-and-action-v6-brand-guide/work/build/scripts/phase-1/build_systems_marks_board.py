@@ -9,6 +9,7 @@ Writes work/boards/20261021_Systems-Marks-Board.html
 """
 import html
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -70,7 +71,7 @@ def surfaces(fn, note=None, gray=True):
 def chip(kind, code, compact=False):
     words = {"variable": ("Variable", "Var"), "connection": ("Connection", "Conn"), "loop": ("Loop", "Loop"),
              "reform": ("Reform", "Reform"), "issue": ("Issue", "Issue"), "claim": ("Claim", "Claim"),
-             "domain": ("Domain", "Domain"), "route": ("Route", "Route"), "standard": ("Standard", "Std"),
+             "domain": ("Domain", "Domain"), "route": ("Route", "Route"), "standard": ("Rule", "Rule"),
              "rule change": ("Rule change", "Rule change"), "delivery": ("Delivery case", "Case")}[kind]
     w = words[1] if compact else words[0]
     return f'<span class="chip"><span class="k">{esc(w)}</span><span class="c">{esc(code)}</span></span>'
@@ -120,7 +121,7 @@ def loop_head(loop):
     lp = LP[loop]
     kind = "Reinforcing loop" if lp["type"] == "R" else "Balancing loop"
     return (f'<div class="loophead">{chip("loop", loop)} <span class="lt">{esc(lp["title"])}</span>'
-            f'<span class="lk">{kind} · {esc(lp["closure"].split(":")[0])} · V7 loop grade: {esc(lp["evidence"])}</span></div>')
+            f'<span class="lk">{kind} · {esc(lp["closure"].split(":")[0])} · V7 loop grade: “{esc(lp["evidence"])}”</span></div>')
 
 
 # ======================================================================= section 1: evidence lines
@@ -172,7 +173,7 @@ def section_evidence():
 
   <div class="opt">
     <div class="opthead">{tag("Original")}<h3>V5 Polished and the Atlas Visual System</h3></div>
-    <p>Their working rules say: "Hypotheses use 8/7 dashes ... All other evidence distinctions remain textual." Plausible links such as L02 are drawn solid, the same as their well-supported neighbours.</p>
+    <p>Their working rules say: "Hypotheses use 8/7 dashes ... All other evidence distinctions remain textual." Plausible links such as L02 are drawn solid, the same as their well supported neighbors.</p>
     {surfaces(spec_lines(V5_ROWS))}
   </div>
 
@@ -190,7 +191,7 @@ def section_evidence():
 
   <div class="opt">
     <div class="opthead">{tag("Misuse")}<h3>C. A weight or opacity ramp</h3></div>
-    <p>Fading lines as evidence weakens looks orderly in colour. In grayscale the middle steps blur together, and a fainter or thinner line reads as a smaller effect, which mixes grade with size.</p>
+    <p>Fading lines as evidence weakens looks orderly in color. In grayscale the middle steps blur together, and a fainter or thinner line reads as a smaller effect, which mixes grade with size.</p>
     {surfaces(spec_lines(RAMP_ROWS, opacity=True))}
   </div>
 
@@ -371,7 +372,7 @@ def chips_collision_cell(s):
 
 def chips_compact_cell(s):
     return ('<div class="cp">' + chip("variable", "B4", True) + " " + chip("loop", "B4", True) + '</div><div class="cp">'
-            + chip("loop", "R1", True) + " " + chip("reform", "R-01", True) + '</div><div class="cp">' + chip("standard", "Std-05", True) + "</div>")
+            + chip("loop", "R1", True) + " " + chip("reform", "R-01", True) + '</div><div class="cp">' + chip("standard", "05.1", True) + "</div>")
 
 
 def bare_cell(s):
@@ -389,7 +390,7 @@ def v7style_cell(s):
 def kinds_table():
     kl = DATA["renderer"]["kind_label"]
     v7 = {"variable": kl.get("variable"), "connection": kl.get("connection"), "loop": kl.get("loop"), "reform": kl.get("reform"),
-          "issue": kl.get("issue"), "claim": kl.get("claim"), "domain": kl.get("domain"), "route": kl.get("route"), "standard": "none (V5 guide)"}
+          "issue": kl.get("issue"), "claim": kl.get("claim"), "domain": kl.get("domain"), "route": kl.get("route"), "standard": "none (guide rule, architecture map)"}
     rows = []
     for k in KIND_ROWS:
         ex = DATA["chip_examples"][k]
@@ -449,7 +450,7 @@ def section_chips():
   </div>
   <div class="opt rec-opt">
     <div class="opthead">{tag("Option")}{tag("Recommended")}<h3>B. Two-part chip: type word in an ink cell, code in an outlined cell</h3></div>
-    <p>Type word: Inter 600, 13 px, uppercase with 0.04 em tracking, set in the surface colour on an ink fill. Code: Inter 700, 14 px, tabular figures, in ink inside a 1.5 px outline. Chip height 26 px, so a chip that links meets the 24 px target size. The measured contrast under each cell comes from the WCAG formula on the locked hex values; the rendered check at the end of the board confirms it on the page.</p>
+    <p>Type word: Inter 600, 13 px, uppercase with 0.06 em tracking (the token value), set in the surface color on an ink fill. Code: Inter 700, 14 px, tabular figures, in ink inside a 1.5 px outline. Chip height 26 px, so a chip that links meets the 24 px target size. The measured contrast under each cell comes from the WCAG formula on the locked hex values; the rendered check at the end of the board confirms it on the page.</p>
     {surfaces(chips_collision_cell)}
   </div>
   <div class="opt">
@@ -460,13 +461,13 @@ def section_chips():
   {kinds_table()}
   {near_table()}
   <div class="ex2">{r01_card()}
-    <div class="panel s-newsprint"><p class="eyebrow">Standards rules</p>
-      <p>V5 numbers its Standards rules R1 to R10, for example R5, “{esc(DATA["v5_standards_rules"]["R5"].rstrip("."))}”. They become Std-01 to Std-10, cited as “Std-05”. No V7 code starts with Std; its first letter is shared with source IDs such as S05 (prefixes found: {", ".join(pc["STD"]["prefixes_that_share_letters"]) or "none"}), and the lowercase letters and hyphen keep it apart. G-05 is the fallback with no shared letter ({"no V7 prefix starts with G" if not pc["G"]["prefixes_that_share_letters"] else "shared"}).</p>
-      <p>{chip("standard", "Std-05")}</p>
+    <div class="panel s-newsprint"><p class="eyebrow">Guide rule IDs</p>
+      <p>V5 numbers its Standards rules R1 to R10, the same codes as loops R1 to R10. The architecture map gives every guide rule a home rule ID in the form Rule NN.n, chapter then rule: V5's R1, “{esc(DATA["v5_standards_rules"]["R1"].rstrip("."))}”, becomes Rule 05.1. The form starts with a digit, and the script found {len(DATA["collisions"]["digit_led_ids"])} V7 IDs that do, so it cannot collide. The chip uses the type word Rule and the code 05.1. Std-01, which an earlier draft of this board proposed, is held back pending Dustin's ruling on the map's scheme.</p>
+      <p>{chip("standard", "05.1")}</p>
     </div>
   </div>
   <div class="rec"><p class="eyebrow">Recommendation</p>
-    <p><b>Option B on every surface: the two-part chip with the full type word, and the compact word only where space forces it.</b> Inside a diagram, a code may sit bare where the mark states its kind (a code in a variable box, a code in a connection label on its line) and the key says so. Loops and reforms always carry their type word, in diagrams too. Renumber the Standards rules Std-01 to Std-10. Use “Domain” for D01 to D10; V7's renderer says “Issue area”, which the V7.1 list asks the atlas editor to settle.</p>
+    <p><b>Option B on every surface: the two-part chip with the full type word, and the compact word only where space forces it.</b> Inside a diagram, a code may sit bare where the mark states its kind (a code in a variable box, a code in a connection label on its line) and the key says so. Loops and reforms always carry their type word, in diagrams too. Cite guide rules as Rule NN.n, as the architecture map proposes, and hold Std-01. Use “Domain” for D01 to D10; V7's renderer says “Issue area”, which the V7.1 list asks the atlas editor to settle.</p>
   </div>
 </section>'''
 
@@ -533,7 +534,7 @@ def fx_table():
                         + (f'<td rowspan="4">{esc(ex["effects_confidence"])}<br><span class="cap">Remedy grade: {esc(M.GRADE_WORD[ex["remedy_grade"]])}</span></td>' if first else "")
                         + "</tr>")
             first = False
-    return ('<div class="wrap" tabindex="0" role="region" aria-label="Scrollable table"><table class="eq fx"><caption>Effects of eight V7 reforms, drawn with the recommended mark. No row or column is totalled.</caption>'
+    return ('<div class="wrap" tabindex="0" role="region" aria-label="Scrollable table"><table class="eq fx"><caption>Effects of eight V7 reforms, drawn with the recommended mark. No row or column is totaled.</caption>'
             '<thead><tr><th>Reform</th><th>Outcome family</th><th>Mark</th><th>V7 value, verbatim</th><th>Words</th><th>Separate properties: confidence and remedy grade</th></tr></thead><tbody>'
             + "".join(rows) + "</tbody></table></div>")
 
@@ -567,7 +568,7 @@ def section_effects():
   <h3 class="exh">Real example: Reform R-01, with seven reforms that carry costs or qualifiers</h3>
   {fx_table()}
   <div class="rec"><p class="eyebrow">Recommendation</p>
-    <p><b>Option B with V7's words beside it.</b> Pips for scanning, words for reading, and V7's full value wherever it adds a qualifier. Costs share the row with gains. Never total a reform, a family or a route. Keep confidence (<span class="code">effects_confidence</span>) and the remedy grade as separate lines on the card, so effect size, uncertainty and evidence stay three properties. Retire width for effects (brief tension 13).</p>
+    <p><b>Option B with V7's words beside it.</b> The words quote V7's full value wherever it adds a qualifier. Costs share the row with gains. Never total a reform, a family or a route. Keep confidence (<span class="code">effects_confidence</span>) and the remedy grade as separate lines on the card, so effect size, uncertainty and evidence stay three properties. Retire width for effects (brief tension 13).</p>
   </div>
 </section>'''
 
@@ -614,7 +615,7 @@ def section_events():
 <section id="m5">
   <p class="eyebrow">Mark 5</p>
   <h2>5. The event mark</h2>
-  <p>The repair log records {len(rep["rows"])} dated rule changes and the delivery log {len(DATA["delivery"]["rows"])} measured results. Both are documented events. They sit on a time axis and keep away from the causal grammar: no arrowheads, no variable boxes, no grade textures. Direction gets a row with V7's own words ({", ".join(f"{M.DIR_LABEL[k].lower()} {v}" for k, v in rep["direction_counts"].items())}). Instrument gets a shape, grouped into four families from V7's {len(rep["instrument_counts"])} instrument values ({esc(instr_lines)}). The exact V7 instrument stays in the label and the table. Events on the same day stack upward in their row, so a count stays visible. No colour is used, so the mark makes no red and blue pairing. V7's coding note: “{esc(Q["repair_coding_last"])}”</p>
+  <p>The repair log records {len(rep["rows"])} dated rule changes and the delivery log {len(DATA["delivery"]["rows"])} measured results. Both are documented events. They sit on a time axis and keep away from the causal grammar: no arrowheads, no variable boxes, no grade textures. Direction gets a row with V7's own words ({", ".join(f"{M.DIR_LABEL[k].lower()} {v}" for k, v in rep["direction_counts"].items())}). Instrument gets a shape, grouped into four families from V7's {len(rep["instrument_counts"])} instrument values ({esc(instr_lines)}). The exact V7 instrument stays in the label and the table. Events on the same day stack upward in their row, so a count stays visible. No color is used, so the mark makes no red and blue pairing. V7's coding note: “{esc(Q["repair_coding_last"])}”</p>
 
   <div class="opt rec-opt">
     <div class="opthead">{tag("Option")}{tag("Recommended")}<h3>The mark: a shape per instrument family, placed in its direction row</h3></div>
@@ -660,7 +661,7 @@ def section_events():
     </div>
   </div>
   <div class="rec"><p class="eyebrow">Recommendation</p>
-    <p><b>Adopt the event mark and the period rule.</b> Shape for instrument family, row for direction in V7's words, outline for pending, stacking for events on the same day, and no arrowheads, boxes or grade textures. Delivery cases are bars for periods and open squares for points, with V7's date text beside them.</p>
+    <p><b>Adopt the event mark and the period rule.</b> Shape for instrument family, row for direction in V7's words, outline for pending, stacking for events on the same day, and no arrowheads, boxes or grade textures. Delivery cases are bars for periods and open squares for points, with V7's date text beside them. Every figure that uses the event mark carries the shape key.</p>
   </div>
 </section>'''
 
@@ -809,9 +810,9 @@ def section_authority_delay():
 AMP_PATH = ("M261 -16Q218 -16 175.5 -5.0Q133 6 98.5 28.5Q64 51 43.5 86.0Q23 121 23 170Q23 237 67.5 288.5Q112 340 179 365Q143 404 125.5 436.0Q108 468 102.5 496.0Q97 524 97 551Q98 627 150.0 671.5Q202 716 288 716Q341 716 380.0 694.0Q419 672 440.5 636.5Q462 601 462 559Q462 518 441.5 481.5Q421 445 388.0 415.5Q355 386 318 364Q322 360 346.0 335.0Q370 310 406.0 275.0Q442 240 480 205Q483 217 484.0 229.5Q485 242 485 255Q485 283 479.0 299.0Q473 315 461.5 322.5Q450 330 432 331V395H600V320L545 323Q550 311 553.0 295.5Q556 280 556 262Q556 233 551.0 206.0Q546 179 537 154Q541 151 544.5 147.5Q548 144 552 141Q591 108 623.0 87.0Q655 66 675 66V0H568Q560 0 532.5 15.0Q505 30 470 57Q431 23 378.0 3.5Q325 -16 261 -16ZM293 55Q331 55 362.5 67.5Q394 80 418 102Q405 113 393.0 124.5Q381 136 368 147Q310 200 274.5 236.5Q239 273 208 308Q189 293 178.5 272.0Q168 251 163.5 230.5Q159 210 159 195Q159 150 175.0 118.5Q191 87 221.0 71.0Q251 55 293 55ZM273 417Q311 446 330.0 489.5Q349 533 349 564Q349 600 331.5 623.0Q314 646 283 646Q255 646 235.5 623.0Q216 600 216 556Q216 526 232.5 486.5Q249 447 273 417Z")
 
 
-def amp(x, y, h, red=True):
+def amp(x, y, h, red=True, fill=None):
     s = h / 100.61
-    fill = "#E63946" if red else "currentColor"
+    fill = fill or ("#E63946" if red else "currentColor")
     return (f'<g transform="translate({x:.1f} {y:.1f}) scale({s:.4f})"><path d="{AMP_PATH}" fill="{fill}" '
             f'transform="translate(-3.16 98.41) scale(0.14 -0.14)"/></g>')
 
@@ -830,33 +831,83 @@ def _chev(p2, p3, size=7):
             f'fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>')
 
 
-def hinge_primer(W=280, arcs="solid", red=True):
+def hinge_primer(W=280, arcs="solid", red=True, amp_fill=None):
     """Studio sketch of the hinge diagram as a loop primer. Words only: no IDs, signs, grades or delays."""
     cx, cy = W / 2, 112
     dash = ' stroke-dasharray="1 6" stroke-linecap="round"' if arcs == "v5" else (' stroke-dasharray="6 5"' if arcs == "mock" else "")
-    t1 = ((cx + 50, cy - 44), (cx + 28, cy - 84), (cx - 28, cy - 84), (cx - 50, cy - 44))
-    t2 = ((cx - 50, cy + 44), (cx - 28, cy + 84), (cx + 28, cy + 84), (cx + 50, cy + 44))
+    # clockwise: the top arc runs from OATH to ACTION, the bottom arc returns from ACTION to OATH
+    t1 = ((cx - 50, cy - 44), (cx - 28, cy - 84), (cx + 28, cy - 84), (cx + 50, cy - 44))
+    t2 = ((cx + 50, cy + 44), (cx + 28, cy + 84), (cx - 28, cy + 84), (cx - 50, cy + 44))
 
     def arc(t):
         return (f'<path d="M{t[0][0]} {t[0][1]} C{t[1][0]} {t[1][1]} {t[2][0]} {t[2][1]} {t[3][0]} {t[3][1]}" '
                 f'fill="none" stroke="currentColor" stroke-width="1.25"{dash}/>' + _chev(t[2], t[3]))
     out = [
         f'<circle cx="{cx}" cy="{cy}" r="34" fill="none" stroke="currentColor" stroke-width="1"/>',
-        amp(cx - 22, cy - 24, 48, red),
+        amp(cx - 22, cy - 24, 48, red, amp_fill),
         f'<line x1="{cx - 34}" y1="{cy}" x2="{cx - 58}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
         f'<line x1="{cx + 34}" y1="{cy}" x2="{cx + 58}" y2="{cy}" stroke="currentColor" stroke-width="1"/>',
         f'<circle cx="{cx - 58}" cy="{cy}" r="3.5" fill="currentColor"/><circle cx="{cx + 58}" cy="{cy}" r="3.5" fill="currentColor"/>',
         M.T(cx - 64, cy + 6, "OATH", "hw", anchor="end"), M.T(cx + 64, cy + 6, "ACTION", "hw"),
-        M.T(cx - 64, cy + 24, "A promise", "ink2", anchor="end"), M.T(cx + 64, cy + 24, "Acting on it", "ink2"),
+        M.T(cx - 64, cy + 24, "UNDERSTAND", "lbl", anchor="end"), M.T(cx + 64, cy + 24, "IMPACT", "lbl"),
         arc(t1), arc(t2),
-        M.T(cx, cy - 86, "The result shapes the next promise", "ink2", anchor="middle"),
-        M.T(cx, cy + 100, "The promise becomes action", "ink2", anchor="middle"),
+        M.T(cx, cy - 86, "The promise becomes action", "ink2", anchor="middle"),
+        M.T(cx, cy + 100, "The result shapes the next promise", "ink2", anchor="middle"),
     ]
     return M.svg(W, 224, "".join(out), "Hinge diagram sketch: a promise, then action, and the result returns")
 
 
+HINGE_READY = ROOT / "work/handoffs/phase-1/20261021_Hinge-V2-Ready.md"
+
+
+def hinge_v2_path(which="Compact"):
+    """The V2 master (Display or Compact) named in the identity agent's ready note, or None."""
+    if not HINGE_READY.exists():
+        return None
+    for c in re.findall(r"[\w./-]+\.svg", HINGE_READY.read_text(encoding="utf-8")):
+        path = ROOT / c.lstrip("./")
+        if path.exists() and which in path.name:
+            return path
+    return None
+
+
+def hinge_v2_pair(surface="Newsprint"):
+    """Display master at 560 px where the view is 700 px or wider, compact master at 280 px below that,
+    as the identity board's minimum sizes require (display from 526 px, compact from 241 px)."""
+    return (f'<div class="hdisp">{hinge_v2_inline(560, surface, "Display")}</div>'
+            f'<div class="hcomp">{hinge_v2_inline(280, surface, "Compact")}</div>')
+
+
+def hinge_v2_inline(W, surface="Newsprint", which="Compact"):
+    path = hinge_v2_path(which)
+    svg = path.read_text(encoding="utf-8")
+    svg = re.sub(r"<\?xml[^>]*>", "", svg).strip()
+    vb = [float(x) for x in re.search(r'viewBox="([^"]+)"', svg).group(1).split()]
+    H = W * vb[3] / vb[2]
+    amp_c = "#FFFFFF" if surface == "Prussian" else "#E63946"
+    line_c = "#5D636D" if surface in ("Newsprint", "White") else "#DCD9D2"
+    svg = svg.replace("<svg ", f'<svg class="mk" width="{W:.0f}" height="{H:.1f}" role="img" aria-label="Hinge diagram V2" style="--amp:{amp_c};--line:{line_c}" ', 1)
+    cap_top = '<p class="harc">The promise becomes action</p>'
+    cap_bot = '<p class="harc">The result shapes the next promise</p>'
+    return cap_top + svg + cap_bot
+
+
+def hinge_v2_block():
+    """Reuse the identity board's hinge diagram V2 when its ready note exists; otherwise show a marked placeholder."""
+    head = f'<div class="opthead">{tag("Option")}{tag("Recommended")}<h3>Hinge diagram V2, from the identity board, as the primer\'s first step</h3></div>'
+    path = hinge_v2_path()
+    if path:
+        rel = path.relative_to(ROOT)
+        disp = hinge_v2_path("Display").relative_to(ROOT)
+        return (head + f'<div class="s-newsprint pad hv2">{hinge_v2_pair()}</div>'
+                + f'<p class="cap">The identity board\'s hinge diagram V2, drawn inline from <span class="code">{esc(str(disp))}</span> at 560 px (minimum 526 px) and, in views under 700 px, from <span class="code">{esc(str(rel))}</span> at 280 px (minimum 241 px). Solid hairline arcs, clockwise, with V5\'s labels UNDERSTAND and IMPACT on the display master; the compact master drops them. The arc captions are this board\'s.</p>'), True
+    return (head + '<div class="s-newsprint pad placeholder"><p><b>Placeholder.</b> The identity board\'s hinge diagram V2 goes here, from the path the identity agent writes to <span class="code">work/handoffs/phase-1/20261021_Hinge-V2-Ready.md</span>. That file did not exist when this board was built. The studio sketch below follows the same brief.</p>'
+            + hinge_primer(300) + '</div>'), False
+
+
 def section_hinge():
     b4 = LP["B4"]
+    V2_BLOCK, _ = hinge_v2_block()
     return f'''
 <section id="m7">
   <p class="eyebrow">Mark 7</p>
@@ -870,11 +921,9 @@ def section_hinge():
     <div class="opt"><div class="opthead">{tag("Original")}<h3>Dustin's hinge mockup</h3></div>
       <div class="s-newsprint pad"><img src="../../source/brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp" alt="Hinge diagram mockup on Newsprint" width="300" height="200"></div>
       <p class="cap">Generated reference image, shown for study. Both arcs are dashed; in V7's grammar a dash is plausible.</p></div>
-    <div class="opt rec-opt"><div class="opthead">{tag("Option")}{tag("Recommended")}<h3>Hinge primer for systems pages</h3></div>
-      <div class="s-newsprint pad">{hinge_primer(300)}</div>
-      <p class="cap">Studio sketch. Solid hairline arcs with open chevrons, thinner than any data line, and words only. Drawn with the V5 ampersand outline.</p></div>
+    <div class="opt rec-opt span-all">{V2_BLOCK}</div>
   </div>
-  <div class="widecells">{surfaces(lambda s: hinge_primer(280, red=s in ("Newsprint", "White")), note="The primer at true size on all four surfaces and in grayscale. On Charcoal and Prussian the ampersand is drawn in Newsprint here, because red on Prussian is an open identity question on the design director's board.")}</div>
+  <div class="widecells">{surfaces(lambda s: ('<div class="hv2">' + hinge_v2_pair(s) + '</div>') if hinge_v2_path() else hinge_primer(280, amp_fill="#FFFFFF" if s == "Prussian" else None), note="Hinge diagram V2 at true size on all four surfaces and in grayscale, clockwise, with V5's labels. The ampersand is red on Newsprint, White and Charcoal (4.49:1 on Charcoal) and White on Prussian, because red never sits on Prussian and identity marks there use White (treatment D).")}</div>
 
   <h3 class="exh">From the hinge to a real loop</h3>
   <ol class="steps">
@@ -885,7 +934,7 @@ def section_hinge():
   <div class="ex2">
     {figure(loop_head("B4") + loop_fig("B4"), "Loop B4 in the systems grammar: IDs, signs, grades, delays and a source line, which the hinge never carries. All three steps are well supported; V7's summary adds that for U.S. services the weakest is L54, “since its main study covers Brazilian mayors”.", SRC_V7 + "; loop B4, connections L23, L24, L54.")}
     {figure(loop_head("R10") + loop_fig("R10", rings={"links": R01["targets"], "nodes": [t for t in R01["targets"] if not t.startswith("L")]}),
-            f'Loop R10 shares C3 with B4. The red rings mark where Reform R-01 acts: {", ".join(t["id"] for t in R01["target_detail"])}. Red in a data figure marks only a reform’s target.',
+            f'Loop R10 shares C3 with B4. The red rings mark where Reform R-01 acts: {", ".join(t["id"] for t in R01["target_detail"])}. Under the red rule, the one working red in a systems figure marks where a reform acts.',
             SRC_V7 + "; loop R10; reforms.R-01.targets.")}
   </div>
   {equivalent_table("B4")}
@@ -895,13 +944,13 @@ def section_hinge():
     <ol>
       <li>The hinge carries words only. It never carries an ID, a sign, a grade, a delay or a count. Every loop drawn from the atlas carries all of them, with a key and a source line.</li>
       <li>The hinge never sits inside a figure that has a key, and a data figure never contains the ampersand.</li>
-      <li>On any page that teaches or shows the atlas, the hinge's arcs are solid hairlines with open chevrons. No grade texture appears on a brand mark.</li>
-      <li>Red in the hinge belongs to the ampersand. Red in a data figure marks only where a reform acts.</li>
+      <li>No brand graphic uses a dotted or dashed line, since V7 gives those textures to evidence grades. The hinge diagram's arcs are solid hairlines with open chevrons, and they run clockwise.</li>
+      <li>Red follows the red rule: “The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian.” Data graphics on Prussian keep the token table's Newsprint marks; identity marks on Prussian use White.</li>
       <li>“Hinge” stays a brand word. The atlas calls a shared variable a place where loops meet.</li>
     </ol>
   </div>
   <div class="rec"><p class="eyebrow">Recommendation</p>
-    <p><b>Use the hinge as a three-step primer for loops, and adopt the five rules.</b> Rule 3 changes how the hinge's arcs are drawn on systems pages, which is identity geometry: it needs your named approval and a matching panel on the design director's hinge board. Until then the V5 hinge stays as it is, and systems pages leave it out.</p>
+    <p><b>Use the identity board's hinge diagram V2 (item 7: solid hairline arcs, clockwise, UNDERSTAND and IMPACT) as the first step of the three-step primer, and adopt the five rules.</b> The arcs are identity geometry, so they need your named approval at identity item 7. The primer reuses that drawing and adds no third hinge.</p>
   </div>
 </section>'''
 
@@ -914,7 +963,7 @@ BASES = [
      "The layer overview: covers, report openers and the atlas page that explains how the model is built."),
     ("09", "The Circuit", "20261021_Concept-09-Circuit.jpg", "Confirm with changes",
      "The whole model in reading order, every crossing counted, the five V7 areas as cards listing variables by ID, authority wires ending in diamonds, an explicit return line.",
-     "Let a reader light one loop at a time. Print signs in wire labels. Give colour one job. Keep a static printable state with a table equivalent, so hover is never the only route. Say “back to area A, Economic structure”.",
+     "Let a reader light one loop at a time. Print signs in wire labels. Give color one job. Keep a static printable state with a table equivalent, so hover is never the only route. Say “back to area A, Economic structure”.",
      "The whole-system map behind the atlas home page and the systems chapter."),
     ("10", "Who Can Act", "20261021_Concept-10-Who-Can-Act.jpg", "Revise",
      "V7's eleven routes with their actors, every count, a separate result per outcome family, and the note that strand counts carry “no judgment about which route matters most”.",
@@ -944,7 +993,7 @@ def section_bases():
 <section id="m8">
   <p class="eyebrow">Mark 8</p>
   <h2>8. The atlas bases</h2>
-  <p>Dustin's saved screenshots favour Concepts 03, 09, 10 and 11. Together they cover layers, the whole map, actors and evidence. None gives one loop its own page, and five of the brief's six worked examples are loop or intervention pages, so the fifth base is Concept 07 with Concept 04's record panel. Thumbnails are Phase 0 captures of Concepts V2 at 1440 px, scaled down for review.</p>
+  <p>Dustin's saved screenshots favor Concepts 03, 09, 10 and 11. Together they cover layers, the whole map, actors and evidence. None gives one loop its own page, and five of the brief's six worked examples are loop or intervention pages, so the fifth base is Concept 07 with Concept 04's record panel. Thumbnails are Phase 0 captures of Concepts V2 at 1440 px, scaled down for review.</p>
   <div class="bases">{"".join(cards)}</div>
   <div class="rec"><p class="eyebrow">Recommendation</p>
     <p><b>Confirm 03, 09 and 11 with the changes listed, revise 10, and add 07 with 04's record panel as the fifth base.</b> All five take the marks on this board, so the atlas and the guide share one grammar.</p>
@@ -972,12 +1021,12 @@ def section_checks():
 DECISIONS = [
     ("Evidence line code", "V7's code; V5's dash rule; a weight ramp", "V7's code, plus the record square on documented labels and the hollow line for conceptual steps", "It matches the model and survives grayscale; the square tells documented from well supported in print."),
     ("Grade words", "V7's labels; Concepts V2's plain words; hybrid", "Hybrid: V7's word with a plain gloss, documented first", "Readers meet the same words in the atlas, and the gloss carries the plain meaning."),
-    ("Typed ID chips and the Standards prefix", "Bare codes; V7's colon style; two-part chip. Std- or G-", "Two-part chip with the full type word everywhere; Standards rules Std-01 to Std-10", "It solves all the collisions the script found, at 13 px and above with at least 9.42:1."),
+    ("Typed ID chips and guide rule IDs", "Bare codes; V7's colon style; two-part chip. Rule NN.n or Std-01", "Two-part chip with the full type word everywhere; guide rules cited as Rule NN.n, as the architecture map proposes; Std-01 held", "It solves all the collisions the script found, at 13 px and above with at least 9.42:1, and one rule set keeps one ID system."),
     ("Ordinal effect mark", "Words; pips with a sign; width with a key", "Pips with a sign, costs left of zero, V7's words beside them", "Countable, never summed, and it keeps costs and qualifiers on the graphic."),
     ("Event mark and period rule", "Adopt; revise", "Adopt: shape for instrument, row for direction, outline for pending, the seven-step period rule", "Events stay visibly apart from causal findings and every V7 date string parses."),
-    ("Authority mark", "Open arrowhead; V7 teal line; open diamond", "Open diamond in ink with “no sign” in the label", "It cannot be read as a causal arrow and adds no colour job."),
+    ("Authority mark", "Open arrowhead; V7 teal line; open diamond", "Open diamond in ink with “no sign” in the label", "It cannot be read as a causal arrow and adds no color job."),
     ("Delay mark", "Letters; words; ticks with words", "Ticks on the line, words in the label", "S, M and L also size effects, so letters stay in data tables only."),
-    ("The hinge on systems pages", "Keep V5's dotted arc; solid hairline arcs; leave the hinge off systems pages", "Solid hairline arcs and the five separation rules, by your named approval", "A dotted or dashed hinge reads as a hypothesis or a plausible link once a reader learns the key."),
+    ("The hinge in the systems grammar", "V5's dotted arc; two-way dashed arcs; identity item 7 V2, solid and clockwise", "Identity item 7 V2 as the primer's first step, with the five separation rules and the red rule", "A dotted or dashed hinge reads as a hypothesis or a plausible link once a reader learns the key."),
     ("Atlas bases", "Confirm, revise or drop each", "Confirm 03, 09, 11; revise 10; add 07 with 04's record panel", "Covers layers, the whole map, actors, evidence and single loops."),
     ("Atlas V7.1 issue list", "Send to the atlas editor; hold", "Send it as written", "Every item has a JSON location, evidence and a fix, and V6 works around each one meanwhile."),
 ]
@@ -1005,7 +1054,7 @@ CSS = r"""
 svg.mk{display:block;overflow:visible;max-width:none}
 svg.mk.inl{display:inline-block;vertical-align:middle}
 svg text{font-family:var(--body);font-size:13px;fill:currentColor}
-svg .b{font-weight:700} svg .sb{font-weight:600} svg .ink2{fill:var(--ink2)} svg .hw{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-0.01em}
+svg .b{font-weight:700} svg .sb{font-weight:600} svg .ink2{fill:var(--ink2)} svg .hw{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-0.01em} svg .lbl{font-weight:600;letter-spacing:.06em;fill:var(--ink2)}
 .toc{display:flex;flex-wrap:wrap;gap:8px 18px;padding:0;margin:20px 0 0;list-style:none}
 .toc a{color:var(--fg);font-weight:600}
 .lede{font-size:1.0625rem}
@@ -1033,7 +1082,7 @@ svg .b{font-weight:700} svg .sb{font-weight:600} svg .ink2{fill:var(--ink2)} svg
 .chip .k{color:var(--ink,#121212)}
 .chip .k::after{content:none}
 .chip .c{display:inline-flex;align-items:center;padding:0 8px;border:1.5px solid currentColor;border-left:0;font:700 .875rem/1 var(--body)}
-.chip .k{font:600 .8125rem/1 var(--body);letter-spacing:.04em;text-transform:uppercase}
+.chip .k{font:600 .8125rem/1 var(--body);letter-spacing:.06em;text-transform:uppercase}
 .chip .k{background:var(--ink,#121212);color:var(--cell,#DCD9D2);border-color:var(--ink,#121212)}
 .chip .c{color:var(--ink,#121212);border-color:var(--ink,#121212)}
 .cp{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin:4px 0}
@@ -1085,7 +1134,13 @@ dd{margin:2px 0 0;font-size:.9375rem}
 .decision th{color:var(--newsprint)}
 details{margin-top:12px} summary{cursor:pointer;font-weight:600}
 q{quotes:"“" "”"}
-.widecells .surfaces{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.placeholder{outline:2px solid var(--fg);outline-offset:-6px}
+.hv2{display:grid;justify-items:center;gap:6px}.harc{font-size:.8125rem;margin:0;color:var(--ink2);text-align:center}
+.s-charcoal .harc,.s-prussian .harc{color:var(--ink)}
+.widecells .surfaces{grid-template-columns:repeat(auto-fit,minmax(min(592px,100%),1fr))}
+.span-all{grid-column:1/-1}
+.hcomp{display:none}
+@media (max-width:699px){.hdisp{display:none}.hcomp{display:block}.widecells .surfaces{grid-template-columns:1fr}}
 @media (max-width:760px){.lw{min-width:0}}
 """
 

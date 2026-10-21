@@ -45,7 +45,7 @@ The instruction lines are drafts for the editor. Each one sits under its chapter
 | 05 | Color | Foundations | Choose a surface first, then the text and graphic colors that pass on it. | V5 05; V4.2 10, 18 | Phase 2 |
 | 06 | Type | Foundations | Set every word at a readable size with the three faces and the type scale. | V5 06; V4.2 11 | Phase 2 |
 | 07 | Layout and spacing | Foundations | Build pages on the column grid and spacing scale so the measure stays comfortable at every width. | New; V5 06 craft | Phase 2 |
-| 08 | The Signal Grid | Foundations | Place the lockmark in its sanctioned spots, and code content with it only where a key beside it lets a reader decode it. | V5 07 | Phase 2 |
+| 08 | The Signal Grid | Foundations | Place the lockmark in its sanctioned spots, and code content with the Signal Grid only where a key beside it lets a reader decode it. | V5 07 | Phase 2 |
 | 09 | Pillar marks | Symbols and graphics | Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act. | V5 08 | Phase 2 |
 | 10 | Topic and atlas symbols | Symbols and graphics | Find the symbol for a subject or an atlas element and set it with its label. | V5 09; V4.2 07, 08 | Phase 2 |
 | 11 | Status and utility icons | Symbols and graphics | Show a record's state or an interface action with a glyph that never stands in for a topic. | New; V5 09; V4.2 08 | Phase 2 |
@@ -113,7 +113,7 @@ Front matter: `#top`, `#contents`, `#start`. Parts: `#part-foundations`, `#part-
 
 **V5 anchors kept as aliases**, so links written for Edition 05 still land: `#grid` lands on `#signal-grid`, `#topic-icons` on `#symbols`, `#data` on `#data-visualization`, `#motion` on `#motion-and-states`, `#in-use` on `#part-applications`, and `#atlas-system` on `#systems-graphics`. The other V5 anchors (`#purpose`, `#voice`, `#identity`, `#ampersand`, `#color`, `#type`, `#pillar-marks`, `#photography`, `#reports`, `#standards`, `#closing`) keep their names.
 
-**Rule IDs.** A rule is cited as "Rule 05.2": chapter 05, rule 2. Its anchor is `#rule-05-2`. The form cannot collide with Atlas V7 IDs, which start with a letter (variables A1 and B4, links L01 and LE02, loops R1 and B2, reforms R-01, domains D01, drivers X1), with V4.2 symbol codes (01-01, P-01, U-01), or with report folios ("05 / Narrative page"). V6 uses no "R" prefix for its own rules, because V7 already uses R for loops and reforms (tension 7). V5's ten standards R1 to R10 each map to the home rule that carries them (section 6, V5 15), and the checklist in 28 cites those rule IDs.
+**Rule IDs.** A rule is cited as "Rule 05.2": chapter 05, rule 2. Its anchor is `#rule-05-2`. The form cannot collide with Atlas V7 IDs, which start with a letter (variables A1, B4 and X1, connections L01 and LE02, loops R1 and B2, reforms R-01, domains D01), with V4.2 symbol codes (01-01, P-01, U-01), or with report folios ("05 / Narrative page"). V6 uses no "R" prefix for its own rules, because V7 already uses R for loops and reforms (tension 7). V5's ten standards R1 to R10 each map to the home rule that carries them (section 6, V5 15), and the checklist in 28 cites those rule IDs. The systems marks board proposes Std-01 to Std-10 instead, so this scheme waits for Dustin's ruling (decision A7). The creative director recommends Rule NN.n for every guide rule, with the strategy board's nonpartisan rules NP-01 to NP-20 becoming Rules 01.n in 01 Purpose (review C4).
 
 Atlas IDs themselves always appear in a typed chip ("Variable B4", "Loop B4", "Reform R-01"). The systems marks board owns that design; 15 and 21 apply it.
 
@@ -124,7 +124,7 @@ Atlas IDs themselves always appear in a typed chip ("Variable B4", "Loop B4", "R
 | h1 | The guide's title, once, on the cover | Oath & Action Brand Guide, Edition 06 |
 | h2 | A chapter's number and name, and nothing else | 05 Color |
 | Beneath the h2 | The instruction line: one sentence, set as a large paragraph | Choose a surface first, then the text and graphic colors that pass on it. |
-| h3 | One per rule, starting with its ID, then three fixed closers | Rule 05.2 Set text only on pairs that pass. / Specifications / Related chapters / For builders |
+| h3 | One per rule, starting with its ID, then three fixed closers | Rule 05.2 Text sits only on pairs that pass. / Specifications / Related chapters / For builders |
 | Labels | Template blocks inside a rule: "Why it works", "Correct application", "Failure case" | Visible labels on paragraphs and figures |
 
 Notes on the rule:
@@ -149,7 +149,8 @@ Eighteen sections: the cover, sixteen chapters and the closing. Units are V5's h
 |---|---|---|---|
 | [Edition line] "Brand Guide / Edition 05 / October 2026" | Cover | Rebuild | Reads Edition 06 with the issue date |
 | [Tagline] "A country that answers to its people." | Cover | Keep | Locked line, exact. Display text; the h1 names the guide |
-| [Lines] "Public life belongs to everyone. There should be a way in." and "A people-powered, nonpartisan publication about the rules that shape our lives." | Cover | Keep | Editor reviews |
+| [Line] "Public life belongs to everyone. There should be a way in." | Cover | Keep | Editor reviews |
+| [Line] "A people-powered, nonpartisan publication about the rules that shape our lives." | Cover | Retire | It echoes the locked mission. The cover quotes the mission exactly instead: "Help people understand and improve the rules that shape their lives." (editor review, section 4) |
 | [Pillar line] Explain / Track / Connect / Act | Cover | Keep | Locked order |
 | [Chapter list in the hero] | Contents | Rebuild | One contents system feeds the contents page, the desktop rail and the phone menu |
 
@@ -212,7 +213,7 @@ Eighteen sections: the cover, sixteen chapters and the closing. Units are V5's h
 | ["There are no tints."] | 05 and 26 | Retire | Replaced by bounded tints with tokens and named jobs (tension 3) |
 | [Watermark opacities] | 12 | Move | |
 | Proportion. | 05 | Keep | Rule 05.1 on the board's wireframe |
-| [Red discipline, red against blue, red against green, deltas] | 05 and 14 | Split | Deltas move to 14 |
+| [Red discipline, red against blue, red against green, deltas] | 05 and 14 | Split | Rewritten as the red rule from the creative director's review (C3), shown as Rule 05.3 on the board. Deltas move to 14 |
 | [Stone hairline dividers] | 12 | Move | 05 keeps the hairline's color |
 | Contrast, measured. | 05 | Rebuild | Text-safe and graphic-safe roles for each color on each surface (tension 9) |
 | The keyline rule. | 05 | Keep | |
@@ -450,6 +451,7 @@ Nothing retires without a replacement or a record. Every row here also goes into
 | "Brand field guide / HTML refinement" title | V4.2 00 | The Edition 06 title | Edition notes |
 | Master-status notes ("Typeset placeholder", masters pending) | V4.2 03, 18 | Phase 1 identity decisions | Edition notes |
 | "Website and newsletter remain on pause." | V4.2 19 | Nothing; the note is out of date | Edition notes |
+| "A people-powered, nonpartisan publication about the rules that shape our lives." | V5 00 | The mission, quoted exactly | Change report; editor review |
 | The 124 V4.2 symbol drawings as shipping art | V4.2 08 | Phase 2 masters; names and meanings recovered | Rights ledger lists them as study material |
 
 ## 10. Cross-reference plan
@@ -509,7 +511,7 @@ The script prints any miss. It printed none on the final run.
 | A4 | Accessibility | (a) Chapter 19 in Behavior. (b) A chapter in Production. (c) No chapter; rules spread across chapters. | (a). The rules describe behavior, and 28 links to them. |
 | A5 | The atlas | (a) 20 Web and 21 The atlas, with the system test inside 21. (b) "Web and atlas" plus "Atlas system test", as in the brief. | (a). The hardest application deserves a findable chapter. |
 | A6 | Social and video | (a) One chapter, 23. (b) Separate "Video frames" chapter. | (a). One set of safe-area overlays. |
-| A7 | Numbering and IDs | (a) Continuous 01 to 28, word anchors, Rule NN.n, V5 aliases. (b) Numbering within each part. | (a). Short citations that cannot collide with V7 IDs. |
+| A7 | Numbering and IDs | (a) Continuous 01 to 28, word anchors, Rule NN.n, V5 aliases. (b) Numbering within each part. (c) Std-01 to Std-10 for the standards, as the systems board proposes. | (a). Short citations that cannot collide with V7 IDs; the creative director agrees (C4). |
 | A8 | Heading rule | (a) h2 "05 Color", instruction beneath, rule h3s, labels for template blocks. (b) h2 plus h3 for every template block. | (a). A clean outline for screen reader users. |
 | A9 | Candidate line history | Show Dustin that V4.2 lists "From spectators to stewards." as a retired historical tagline before he rules on it. | Attach the V4.2 record to the strategy board's candidate-line decision. |
 
@@ -534,4 +536,4 @@ Created:
 - `work/build/scripts/phase-1/ux_architecture_coverage.py`
 - The navigation board and its files, listed in the board's own change log
 
-Modified: none. `source/`, `work/extract/` and the V5 masters were not touched.
+Modified after the creative director's and editor's reviews (October 21, 2026): the chapter 08 line, the ID list and the standards note in section 4, the Rule 05.2 example, the V5 cover row, the red-rule note in V5 05, and decision A7. `source/`, `work/extract/` and the V5 masters were not touched.

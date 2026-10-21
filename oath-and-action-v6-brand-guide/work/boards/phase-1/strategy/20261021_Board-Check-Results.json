@@ -2,16 +2,14 @@
   "a11y_score": "4",
   "a11y_reason": "axe-core 4.10.2 found no violations at 1440 or 390 px, text is 13 px or larger and every tab stop shows focus. Screen readers are untested.",
   "checked": [
-    "Chromium at 1440 and 390 px: no sideways page scroll. Only the products table scrolls, inside a labeled region.",
-    "All 12 images load with alt text. Smallest HTML text 13 px; smallest SVG text 13.5 px at 390.",
-    "No red touches Prussian.",
-    "axe-core, WCAG 2.2 AA and best practice: 0 violations. SVG text contrast checked by formula; the lowest pair is white on red, 4.17:1 at 19 px bold.",
-    "Keyboard: 12 tab stops, each with a visible outline.",
-    "Locked lines character for character, the weekdays of every date, and V7 quotes against the JSON."
+    "Chromium at 1440 and 390 px: no sideways page scroll; only the products table scrolls, in a labeled region.",
+    "12 images load with alt text. Text 13 px or larger; the V2 hinge renders at 880 px (display) and 324 px (compact), above its 526 and 241 px floors.",
+    "Hinge headlines use the V5 master glyph in red; no red sits on Prussian.",
+    "axe-core, WCAG 2.2 AA and best practice: 0 violations. SVG contrast by formula; lowest pair white on red, 4.17:1 at 19 px bold.",
+    "Keyboard: 12 tab stops with visible focus. Locked lines, dates and V7 quotes by script."
   ],
   "not_checked": [
-    "Screen readers, Firefox, Safari, 320 px, 200 percent zoom, forced colors, print.",
-    "How the candidate lines read to real readers.",
-    "Prior use of \"From spectators to stewards.\""
+    "Screen readers, Firefox, Safari, 320 px, zoom, forced colors, print.",
+    "How the lines read to real readers, and prior use of the stewards line."
   ]
 }

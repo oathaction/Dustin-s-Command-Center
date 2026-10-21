@@ -90,8 +90,21 @@
         "Inter Tight 600 normal",
         "Inter Tight 800 normal"
       ],
-      "words": 2917,
-      "pageHeight": 10999,
+      "words": 3279,
+      "hingeV2": [
+        {
+          "cls": "display",
+          "width": 880
+        }
+      ],
+      "hingeHeadlineGlyphs": [
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)"
+      ],
+      "pageHeight": 11948,
       "keyboardStops": 12,
       "keyboardWithoutOutline": [],
       "axe": {
@@ -101,7 +114,7 @@
         "incomplete": [
           {
             "id": "color-contrast",
-            "nodes": 7
+            "nodes": 8
           }
         ]
       },
@@ -269,8 +282,21 @@
         "Inter Tight 600 normal",
         "Inter Tight 800 normal"
       ],
-      "words": 2917,
-      "pageHeight": 24247,
+      "words": 3279,
+      "hingeV2": [
+        {
+          "cls": "compact",
+          "width": 324
+        }
+      ],
+      "hingeHeadlineGlyphs": [
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)",
+        "rgb(230, 57, 70)"
+      ],
+      "pageHeight": 25706,
       "keyboardStops": 12,
       "keyboardWithoutOutline": [],
       "axe": {
@@ -280,7 +306,7 @@
         "incomplete": [
           {
             "id": "color-contrast",
-            "nodes": 27
+            "nodes": 28
           }
         ]
       },

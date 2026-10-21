@@ -22,6 +22,7 @@ SIM = json.loads((o.ROOT / "work/handoffs/phase-1/20261021_Ampersand-Similarity.
 SURF = [("newsprint", "Newsprint"), ("white", "White"), ("charcoal", "Charcoal"), ("prussian", "Prussian")]
 MODES = [("color", "Color"), ("mono", "One color")]
 E = html.escape
+RED_RULE = "The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."
 
 
 def img(cid, alt, zoom=1, cls="", lazy=True):
@@ -105,7 +106,7 @@ def table(head, rows, cls=""):
 def checks_html(checks):
     rows = []
     for name, res, note in checks:
-        cls = {"Pass": "pass", "Fail": "fail"}.get(res, "na")
+        cls = "pass" if res.startswith("Pass") else ("fail" if res.startswith("Fail") else "na")
         rows.append([E(name), f'<span class="res {cls}">{E(res)}</span>', E(note)])
     return table(["Craft check", "Result", "What I measured or saw"], rows, "checks")
 
@@ -210,28 +211,28 @@ def build():
             ["2a. 0.10x nearest ink, as V5 states", f'{hl["H&"]["nearest_x"]:.3f}x', f'{hl["&A"]["nearest_x"]:.3f}x', f'{hl["H&"]["area_x"]:.3f}x', f'{hl["&A"]["area_x"]:.3f}x', f'{hl["&A"]["area_x"] / hl["H&"]["area_x"]:.2f}', f'{hl["width_units"]}'],
             ["2b. Equal white area (recommended)", f'{ho["H&"]["nearest_x"]:.3f}x', f'{ho["&A"]["nearest_x"]:.3f}x', f'{ho["H&"]["area_x"]:.3f}x', f'{ho["&A"]["area_x"]:.3f}x', f'{ho["&A"]["area_x"] / ho["H&"]["area_x"]:.2f}', f'{ho["width_units"]}']]
     b2 = P("V5 states a hinge gap of 0.10x on each side of the ampersand, measured ink to ink. Here x is one cap height of the wordmark, 100 units. The right gap measures 0.083x, and it still reads wider than the left, because the wedge of white above the A's diagonal adds to it. So the ampersand leans toward OATH.",
-           f"Two fixes are drawn. Option 2a applies the stated rule: ACTION moves {hl['action_shift']:g} units right so both nearest gaps measure 0.10x. The white on the right then grows further, to {hl['&A']['area_x'] / hl['H&']['area_x']:.2f} times the left. Option 2b sets the gaps by area, which is how the eye judges space: the white between the ampersand and each neighbor, row by row across the cap band, each row counted up to 0.15x deeper than the nearest point. The ampersand moves {ho['amp_shift']:g} units toward ACTION, the wordmark keeps its width to within 0.1 unit, and both sides measure {ho['H&']['area_x']:.3f}x.",
-           "I recommend 2b, with the V6 rule written as: equal white on both sides of the ampersand, measured as area across the cap band to a depth of 0.15x, with no ink closer than 0.07x.")
+           f"Two fixes are drawn. Option 2a applies the stated rule: ACTION moves {hl['action_shift']:g} units right so both nearest gaps measure 0.10x. The white on the right then grows further, to {hl['&A']['area_x'] / hl['H&']['area_x']:.2f} times the left. Option 2b sets the gaps by area (a design judgment: I chose the area model and its 0.15x depth by eye). It measures the white between the ampersand and each neighbor, row by row across the cap band, each row counted up to 0.15x deeper than the nearest point. The ampersand moves {ho['amp_shift']:g} units toward ACTION, the wordmark keeps its width to within 0.1 unit, and both sides measure {ho['H&']['area_x']:.3f}x.",
+           "I recommend 2b, labeled as a design judgment, with the V6 rule written as: equal white on both sides of the ampersand, measured as area across the cap band to a depth of 0.15x, with no ink closer than 0.07x.")
     b2 += table(["Spacing", "Nearest, left", "Nearest, right", "Area, left", "Area, right", "Right over left", "Width, units"], rows)
     b2 += "".join(pair_block(p) for p in pairs_of(2))
     b2 += "<h3>Craft checks, option 2b</h3>" + checks_html([
         ("1 Silhouette at 16 px", "Pass", "Same letters and glyph; the hinge white looks even at 16 px in the magnified render"),
         ("2 Pixel fit", "Not applicable", "Spacing only; the 16 and 24 px masters in item 3 carry the pixel fit"),
         ("3 Consistency", "Pass", "One spacing model for every pair in items 2, 3 and 6"),
-        ("4 Optical balance", "Pass", f"Area left {ho['H&']['area_x']:.3f}x, right {ho['&A']['area_x']:.3f}x"),
+        ("4 Optical balance", "Pass", f"Area left {ho['H&']['area_x']:.3f}x, right {ho['&A']['area_x']:.3f}x, by the area model (a design judgment)"),
         ("5 Similarity", "Not applicable", "No new shapes"),
         ("6 Monochrome", "Pass", "Checked in one color on all four surfaces"),
         ("7 Red discipline", "Pass", "Red on the ampersand only"),
         ("8 Contrast", "Fail, inherited", "Pillar Red on Newsprint, 2.96:1 nominal; item 10 and the edge rule apply"),
         ("9 Type", "Pass", f"Nearest ink on the right is {ho['&A']['nearest_x']:.3f}x, above the 0.07x floor"),
     ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 5, 4, 5, 4], "Craft is 4: at 16 px the tail and the A's foot sit 1 px apart in the unhinted master, which the 16 px master in item 3 widens to 2 px.")
-    parts.append(section(2, "Equal hinge gaps around the ampersand", "defect", "Recommended: 2b", b2))
+    parts.append(section(2, "Equal hinge gaps around the ampersand", "defect", "Recommended: 2b (design judgment)", b2))
     # ------------------------------------------------------------ 3
     m16, m24, dm = W["master_16"], W["master_24"], W["display_master"]
     sol = m("p03-masters", "solid_share_mono_newsprint")
     b3 = P("V5 draws one wordmark and scales it, so the 16 px logo carries display spacing: T to H and T to I clog, I to O to N runs dark, and no stem lands on a whole pixel. This proposal draws three masters from the same letters.",
            f"The display master is option 2b plus two spacing changes: I to O and O to N open by 2.4 units (their white area rises from 0.140x to {dm['IO']['area_x']:.3f}x), and the T joins open by 1.4 units. It is {dm['width_units']:g} units wide against V5's 970.71.",
-           f"The 24 px master ({m24['viewBox'][2]} by 24 px) has a 22 px cap height, 5 px stems and 4 px bars, all on whole pixels; each letter pair gets the same white area, the T arms are 1.5 units shorter and nothing comes closer than 2 px. The 16 px master ({m16['viewBox'][2]} by 16 px) has a 14 px cap height, 3 px stems and bars, T arms 4 units shorter, and the option A 16 px ampersand. At 16 and 24 px the ampersand fills the full box height, 1.14 and 1.09 times the cap height, so the red keeps its weight beside Charcoal capitals. That is an optical-size change to V5's rule that the glyph matches the cap height, and it needs Dustin's approval with the rest.",
+           f"The 24 px master ({m24['viewBox'][2]} by 24 px) has a 22 px cap height, 5 px stems and 4 px bars, all on whole pixels; each letter pair gets the same white area, the T arms are 1.5 units shorter and nothing comes closer than 2 px. The 16 px master ({m16['viewBox'][2]} by 16 px) has a 14 px cap height, 3 px stems and bars, T arms 4 units shorter, and the 16 px master of the recommended ampersand, B. The same masters with ampersand A are on item 4, as the fallback. At 16 and 24 px the ampersand fills the full box height, 1.14 and 1.09 times the cap height, so the red keeps its weight beside Charcoal capitals. That is an optical-size change to V5's rule that the glyph matches the cap height, and it needs Dustin's approval with the rest.",
            f"Solid share of ink pixels, one color on Newsprint: original {sol.get('orig 16', 'n/a')} at 16 px and {sol.get('orig 24', 'n/a')} at 24 px; proposal {sol.get('prop 16', 'n/a')} and {sol.get('prop 24', 'n/a')}.")
     b3 += "<h3>Joins at small sizes</h3><p class=\"cap\">The lightest column between two letters in the top fifth of the cap band (T joins) or across the band (I, O, N), as a share of full background. 1.00 means a clear column.</p>" + joins_text("p03-masters")
     b3 += "".join(pair_block(p) for p in pairs_of(3))
@@ -243,7 +244,7 @@ def build():
         ("5 Similarity", "Not applicable", "Same letters"),
         ("6 Monochrome", "Pass", "One color checked on all four surfaces"),
         ("7 Red discipline", "Pass", "Red on the ampersand only"),
-        ("8 Contrast", "Fail, inherited", "Red on Newsprint stays under 3:1; the larger 16 px glyph makes more of its pixels solid (item 4)"),
+        ("8 Contrast", "Fail, inherited", "Red on Newsprint stays under 3:1; the larger 16 px glyph makes more of its pixels solid (items 4 and 5)"),
         ("9 Type", "Pass", "Tracking opens as size falls: +2.5 units per pair at 24 px, +5 at 16 px, then each pair evened by area"),
     ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 5, 5, 4], "Brand fidelity is 4: the larger ampersand at 16 and 24 px changes a stated V5 measure, so it needs a named approval.")
     parts.append(section(3, "Wordmark masters for display, 24 px and 16 px", "option", "Recommended", b3))
@@ -263,17 +264,17 @@ def build():
         ("5 Similarity", "Pass", f"Overlap with the V5 glyph {SIM['V5 master (Lora Bold)']['IoU with option A']}: it stays the same ampersand"),
         ("6 Monochrome", "Pass", "One color on all four surfaces"),
         ("7 Red discipline", "Pass", "One ampersand moment"),
-        ("8 Contrast", "Fail on Newsprint", "Solid pixels reach the nominal 2.96:1 and no higher; the 1 px Charcoal edge rule stays for informative use. Logotypes are exempt from WCAG contrast"),
+        ("8 Contrast", "Fail on Newsprint", "Solid pixels reach the nominal 2.96:1, the ceiling for Pillar Red on Newsprint; the 1 px Charcoal edge rule stays for informative use. Logotypes are exempt from WCAG contrast"),
         ("9 Type", "Not applicable", "A glyph"),
-    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 5, 4, 5, 4], "The tune is low-risk and fixes the small sizes. It does not make the glyph proprietary: anyone can still set Lora Bold.")
+    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 5, 4, 5, 4], "The tune is low-risk and fixes the small sizes. It stays a stock glyph: anyone can set Lora Bold.")
     parts.append(section(4, "Ampersand option A: an optical tune and a true small master", "option", "Fallback if B is declined", b4))
     # ------------------------------------------------------------ 5
     sim_rows = [[E(k), f'{v["IoU with option B"]:.3f}', f'{v["IoU with option A"]:.3f}'] for k, v in SIM.items()]
     b5 = P("Option B is a drawn ampersand. It keeps the silhouette a reader knows (a loop over a bowl, a diagonal that crosses to a tail, an arm with a serif) and makes four decisions of its own.",
            "Contrast: one broad-nib axis, the bowl stem at 0.85 of the wordmark's stem (Lora's thick strokes reach 0.67 to 0.78) and hairlines of 13.7 to 14.9 units (Lora's: 9.8 to 10.2), so thick to thin is about 1.5 to 1 against Lora's 1.9. The red now carries weight beside the Charcoal capitals. Terminals: the arm ends in a flat cut with a beak serif that reaches only toward the loop, and the tail sweeps out flat and stops with a vertical cut, its foot on the baseline like the letters' feet. Crossing: the diagonal meets the arm close to square, and both strokes narrow where they cross, so the corners of the counters stay open. Counters: a taller loop counter and a fuller bowl than Lora's.",
            "I drew it first as one pen path that crosses itself twice, the way an ampersand is written, then redrew the outline by hand as three contours of cubic Beziers with nodes on extrema, added weight with an elliptical pen and refitted it (41 nodes). A 16 px master, 14 by 16 px, is drawn on the pixel grid with the same rules as option A's.")
-    b5 += f'<figure class="constr"><figcaption>Construction. Red fill: option B. Dashed line: the V5 glyph (Lora Bold) at the same cap height. Gray: the pen path B was drawn from.</figcaption>{construction_svg()}</figure>'
-    b5 += "<h3>Similarity to other serif ampersands</h3><p class=\"cap\">Silhouette overlap (intersection over union) after scaling each glyph to the same ink height and centring it. 1.000 is identical. Fonts installed on this machine; a wider check against commercial serif ampersands needs page access.</p>" + table(["Glyph", "Overlap with B", "Overlap with A"], sim_rows)
+    b5 += f'<figure class="constr"><figcaption>Construction. Red fill: option B. Black outline: the V5 glyph (Lora Bold) at the same cap height. Gray: the pen path B was drawn from.</figcaption>{construction_svg()}</figure>'
+    b5 += "<h3>Similarity to other serif ampersands</h3><p class=\"cap\">Silhouette overlap (intersection over union) after scaling each glyph to the same ink height and centering it. 1.000 is identical. Fonts installed on this machine; a wider check against commercial serif ampersands needs page access.</p>" + table(["Glyph", "Overlap with B", "Overlap with A"], sim_rows)
     b5 += red_table("p05-amp")
     s5 = m("p05-amp", "solid_share_mono_newsprint")
     b5 += f'<p class="cap">Solid share of ink pixels at 16 px, one color on Newsprint: V5 {s5.get("orig 16", "n/a")}, option B {s5.get("prop 16", "n/a")}.</p>'
@@ -283,12 +284,12 @@ def build():
         ("2 Pixel fit", "Pass", "The 16 px master is drawn on whole pixels"),
         ("3 Consistency", "Pass", "Stem and hairline weights sit with the wordmark's 800 capitals; one contrast axis throughout"),
         ("4 Optical balance", "Pass", "Overshoot 1.43 units above the cap line, 1.71 below the baseline; the tail's foot sits on the baseline"),
-        ("5 Similarity", "Pass", f"Overlap with Lora {SIM['V5 master (Lora Bold)']['IoU with option B']:.3f}: recognizably the same kind of glyph, and its own. With the other serifs 0.47 to 0.60"),
+        ("5 Similarity", "Pass", f"Overlap with Lora {SIM['V5 master (Lora Bold)']['IoU with option B']:.3f}: recognizably the same kind of glyph, and its own. With the other serifs 0.48 to 0.61"),
         ("6 Monochrome", "Pass", "One color on all four surfaces"),
         ("7 Red discipline", "Pass", "One ampersand moment"),
         ("8 Contrast", "Fail on Newsprint", "As option A: 2.96:1 at best on Newsprint"),
         ("9 Type", "Not applicable", "A glyph"),
-    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 4], "Craft is 4 for a first drawing. Before it ships it needs a refinement pass at 2x and a print proof, and a check against commercial serif ampersands.")
+    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 4], "Craft is 4 for a first drawing. Before it ships it needs a refinement pass at 2x and a print proof, and a check against commercial serif ampersands.") + P("<b>Next step, Phase 2, if Dustin approves B:</b> restore its contrast toward 1.7 to 1, and set the crossing on the hinge diagram's center line, so the pivot and the nodes share one line. These are stated here and not drawn yet.")
     parts.append(section(5, "Ampersand option B: a drawn ampersand of Oath & Action's own", "option", "Recommended direction", b5))
     # ------------------------------------------------------------ 6
     c75, c60 = CD["7.5"], CD["6.0"]
@@ -319,27 +320,32 @@ def build():
     ]) + "<h3>Rubric</h3>" + scores_html([3, 4, 3, 4, 5, 4], "Craft 3: the letters are derived by a measured transform and want a drawing pass (the C's terminals and the N's joins at display size, a drawn narrow ampersand at 16 px). Brand fidelity 3: it changes the locked wordmark's proportions, which is Dustin's call.")
     parts.append(section(6, "Wordmark width: a condensed exploration", "option", "For Dustin's named decision", b6))
     # ------------------------------------------------------------ 7
-    hd, hc = MK["hinge_display"], MK["hinge_compact"]
+    hd, hc = MK["hinge_display_v2"], MK["hinge_compact_v2"]
     b7 = P("V5's hinge diagram sets the wordmark under a dotted arc that ends in an open arrowhead, with UNDERSTAND and IMPACT beneath. Its arc keeps a fixed 1.25 px weight at every size (a non-scaling stroke), so it is heavy when small and faint when large, and its labels fall under 13 px below 516 px wide.",
-           "The proposal is drawn from Dustin's mockups: the ampersand sits in a circle on a line that joins OATH and ACTION, with a node at each end of each line, and two dotted arcs loop around it. The upper arc runs from OATH to ACTION, the promise then the act, and the lower arc returns, so the figure reads as a cycle. Each arc ends in one open arrowhead. It keeps V5's rules: the original lettering anchors it, the labels sit under the optical centers of their words, and the ampersand is the master glyph in Pillar Red, here at 1.25 times the cap height in a circle 2.2 times the cap height.",
-           f"Every stroke is drawn in units, so line weight scales with the mark. The display master (lines 3.5 units, labels with a 26-unit cap height) holds 13 px labels from {hd['min_width_px']} px wide, where its lines measure {hd['line_px_at_min']} px. Below that, the compact master drops the labels and draws lines at 6 units, which stay at 1 px or more down to {hc['min_width_px']} px wide. Labels are Charcoal on light surfaces: Stone measures 4.29:1 on Newsprint, under the 4.5:1 that 13 px text needs.")
+           "The proposal is drawn from Dustin's mockups: the ampersand sits in a circle on a line that joins OATH and ACTION, with a node at each end of each line, and two solid hairline arcs loop around it, clockwise. The upper arc runs from OATH to ACTION, the promise then the act, and the lower arc returns, so the figure reads as a cycle. Each arc ends in one open arrowhead. It keeps V5's rules: the original lettering anchors it, the labels sit under the optical centers of their words, and the ampersand is the master glyph in Pillar Red, here at 1.25 times the cap height in a circle 2.2 times the cap height.",
+           f"Every stroke is drawn in units, so line weight scales with the mark. The display master (lines 3.5 units, arcs 2.8 units, labels with a 26-unit cap height) holds 13 px labels from {hd['min_width_px']} px wide, where its lines measure {hd['line_px_at_min']} px and its arcs {hd['arc_px_at_min']} px. Below that, the compact master drops the labels and draws lines and arcs at 6 units, which stay at 1 px or more down to {hc['min_width_px']} px wide. Labels are Charcoal on light surfaces: Stone measures 4.29:1 on Newsprint, under the 4.5:1 that 13 px text needs.")
+    b7 += P("This is V2. My first draft drew the arcs dotted. Atlas V7 draws hypotheses dotted and plausible links dashed, so a dotted or dashed brand line would read as an evidence grade once a reader learns the key. V2 draws them as solid hairlines, and no brand graphic on this board uses a dotted or dashed line. The systems board's five separation rules keep the diagram apart from data figures: words only, never inside a keyed figure, solid hairline arcs, red on the ampersand alone, and “hinge” kept as a brand word. Under the red rule the diagram's ampersand takes the view's working red, as a hinge headline's does.")
+    b7 += ('<h3>V5, the first draft and V2</h3><div class="three">' + "".join(
+        f'<figure><figcaption>{lab}</figcaption>{img(f"h3__{k}", lab + ", 640 px wide, shown reduced", lazy=False, cls="fit")}</figure>'
+        for k, lab in (("v5", "V5: one dotted arc, fixed 1.25 px"), ("draft", "First draft: dotted arcs (withdrawn)"), ("v2", "V2: solid hairline arcs, clockwise"))) +
+        '</div><p class="cap">Each rendered 640 px wide and shown reduced to fit three across. The pair below shows V5 and V2 at true size.</p>')
     b7 += "".join(pair_block(p) for p in pairs_of(7))
     b7 += "<h3>Craft checks</h3>" + checks_html([
         ("1 Silhouette at 16 px", "Not applicable", "The hinge has a minimum of 241 px wide; the 16, 24 and 48 px rows show both versions below their minimum, for the record"),
         ("2 Pixel fit", "Not applicable", "A diagram that scales; line weight is held at 1 px or more by the two masters"),
-        ("3 Consistency", "Pass", "Lines, circle, arcs and arrowheads share one weight; nodes share one size"),
+        ("3 Consistency", "Pass", "Lines and circle share one weight, arcs and chevrons a hairline at 0.8 of it; nodes share one size"),
         ("4 Optical balance", "Pass", "The ampersand is centered on its ink in the circle; arcs are concentric with it"),
         ("5 Similarity", "Pass", "Distinct from the lockmark and the Signal Grid: no 3 by 3 field"),
         ("6 Monochrome", "Pass", "One color on all four surfaces"),
-        ("7 Red discipline", "Pass", "Red on the ampersand only; lines Stone or Newsprint"),
-        ("8 Contrast", "Pass", "Stone lines on Newsprint 4.29:1, Newsprint lines on Charcoal 13.29:1, on Prussian 9.42:1, all above 3:1"),
+        ("7 Red discipline", "Pass", "The ampersand is the view's working red under the red rule; lines are Stone or Newsprint"),
+        ("8 Contrast", "Pass", "Stone lines on Newsprint 4.29:1, Newsprint lines on Charcoal 13.29:1 and on Prussian 9.42:1. On Prussian the ampersand follows treatment D (item 10)"),
         ("9 Type", "Pass", f"Labels 13 px or larger at the display master's minimum ({hd['min_width_px']} px)"),
-    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 4], "Brand fidelity is 4 because the circle and the return arc are new to V5's hinge; both come from Dustin's references.")
-    parts.append(section(7, "The hinge mark", "option", "Recommended", b7))
+    ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 4], "Brand fidelity is 4 because the circle and the return arc are new to V5's hinge; both come from Dustin's references. Clarity rises to 4 now the arcs are solid.")
+    parts.append(section(7, "The hinge diagram", "option", "Recommended: V2", b7))
     # ------------------------------------------------------------ 8
     l16, l24 = MK["lockmark_16"], MK["lockmark_24"]
     b8 = P("V5 draws the lockmark's links as 1 px non-scaling strokes on a 123.5-unit field. At 16 px a node is 0.98 px across, the width of a link, and the lever is one pink pixel. The middle links land on a pixel boundary at 16, 24 and 48 px, so the center cross splits into two gray rows inside a dark frame.",
-           f"The 16 px master puts node centers at {', '.join(str(c) for c in l16['node_centres_px'])} px, so every 1 px link fills a whole pixel row or column. Nodes are {l16['node_diameter_px']:g} px and the lever {l16['lever_diameter_px']:g} px. The 24 px master uses centers {', '.join(str(c) for c in l24['node_centres_px'])}, nodes {l24['node_diameter_px']:g} px and the lever {l24['lever_diameter_px']:g} px. The lever stays one size larger than the nodes, so it still reads in one color; V5 made it match the nodes below 32 px. From 48 px up the V5 master stays.")
+           f"The 16 px master puts node centers at {', '.join(str(c) for c in l16['node_centres_px'])} px, so every 1 px link fills a whole pixel row or column. Nodes are {l16['node_diameter_px']:g} px and the lever {l16['lever_diameter_px']:g} px. The 24 px master uses centers {', '.join(str(c) for c in l24['node_centres_px'])}, nodes {l24['node_diameter_px']:g} px and the lever {l24['lever_diameter_px']:g} px. The lever stays one size larger than the nodes, so it still reads in one color; V5 made it match the nodes below 32 px. The thresholds: the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px, and the V5 master from 48 px up.")
     s8 = m("p08-lockmark", "solid_share_mono_newsprint")
     b8 += f'<p class="cap">Solid share of ink pixels, one color on Newsprint: V5 {s8.get("orig 16", "n/a")} at 16 px and {s8.get("orig 24", "n/a")} at 24 px; proposal {s8.get("prop 16", "n/a")} and {s8.get("prop 24", "n/a")}.</p>'
     b8 += "".join(pair_block(p) for p in pairs_of(8))
@@ -351,7 +357,7 @@ def build():
         ("5 Similarity", "Pass", "Compared with the Signal Grid states: Empty has no lever, Active a Verdigris lever; the masters keep those differences"),
         ("6 Monochrome", "Pass", "The lever reads by size in one color"),
         ("7 Red discipline", "Pass", "Red on the lever only"),
-        ("8 Contrast", "Fail on Newsprint", "A red lever on Newsprint is 2.96:1. Its size, not its color, carries the meaning, so it is decorative there"),
+        ("8 Contrast", "Pass, by the red rule", "A red lever on Newsprint is 2.96:1. Under the red rule the lever is signature red and does not count, and its larger size carries its meaning in one color"),
         ("9 Type", "Not applicable", "No type"),
     ]) + "<h3>Rubric</h3>" + scores_html([5, 4, 4, 5, 5, 4], "Brand fidelity is 4: a larger lever at 16 px reverses V5's rule for small sizes.")
     parts.append(section(8, "A lockmark master for small sizes", "defect", "Recommended", b8))
@@ -359,14 +365,14 @@ def build():
     mins = [
         ["L1 wordmark", "120 px wide (13.4 px tall, cap 12.4 px)", f"16 px tall with the 16 px master ({W['master_16']['viewBox'][2]} px wide); 24 px master from 20 to 40 px tall; display master above", "1.25 in", "Below 16 px tall, use L8"],
         ["L2 stacked", "72 px wide (cap 11.5 px, smaller than L1's)", "88 px wide (cap 14 px)", "0.75 in", "Below 88 px, use L8"],
-        ["L3 horizontal with lockmark", "192 px wide", "200 px wide (wordmark 16 px tall, lockmark 34 px)", "1.5 in", "Below 200 px, use L1"],
+        ["L3 horizontal with lockmark", "192 px wide", "200 px wide (wordmark 16 px tall, lockmark 34 px from its 24 px master)", "1.5 in", "Below 200 px, use L1"],
         ["L4 box and tagline", "144 px wide (tagline cap 4.5 px)", "304 px wide (tagline at 13 px)", "2.3 in (tagline at 7 pt)", "Below 304 px, use L8 and set the tagline as live text"],
         ["L5 wordmark and tagline", "240 px wide (tagline cap 5.9 px)", "384 px wide (tagline at 13 px)", "2.85 in (tagline at 7 pt)", "Below 384 px, use L1 and set the tagline as live text"],
         ["L6 editorial signature", "288 px wide (tagline cap 3.1 px)", "880 px wide (tagline at 13 px)", "6.6 in (tagline at 7 pt)", "Below 880 px, use L3 with the tagline as live text"],
         ["L7 section masthead", "168 px wide", "250 px wide (pillar word at 13 px)", "1.9 in (pillar word at 7 pt)", "Pillar word drawn in Inter 600 caps"],
         ["L8 monogram", "48 px wide, also used for favicons", "48 px wide; never a favicon", "0.5 in", "Favicons use the ampersand, below"],
-        ["Ampersand, freestanding", "16 px with the optical drawing; 24 px master", "16 px master from 16 to 23 px; display master from 24 px", "0.25 in", "Favicon: the 16 px master on a clear ground at 16 px, the S2 tile from 32 px"],
-        ["Lockmark", "16 px, one color", "16 and 24 px masters; V5 master from 32 px", "0.25 in", "The lever stays one size up at 16 and 24 px"],
+        ["Ampersand, freestanding", "16 px with the optical drawing; 24 px master", "16 px master from 16 to 23 px; display master from 24 px", "0.25 in", "Favicon: the 16 px master on a clear ground at 16 px; from 32 px, V5's square Charcoal app tile (S2)"],
+        ["Lockmark", "16 px, one color", "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; V5 master from 48 px", "0.25 in", "The lever stays one size up at 16 and 24 px"],
         ["Hinge", "None set", "Display master from 526 px wide; compact from 241 px", "4 in (display)", "Below 241 px, use a hinge headline"],
     ]
     b9 = P("V5's minimums leave a gap and contradict each other. L1's 120 px minimum is 13.4 px tall, and the rule that the monogram replaces the wordmark below 80 px leaves 80 to 120 px undefined. L2 at 72 px has a smaller cap height than L1 at its minimum. L8 has a 48 px minimum but is listed for favicons. Clear space allows no type, yet the taglines in L5 and L6 sit 0.39x and 0.79x below the baseline, inside it.",
@@ -415,7 +421,9 @@ def build():
         vals0.append(f'{r["median_contrast"]:.2f} ({int(round(r["share_at_or_above_3"] * 100))}%)' if r and "median_contrast" in r else "n/a")
     rows10.insert(0, ["V5: red at every size"] + vals0)
     nom = MK["prussian_nominal"]
-    b10 = P(f"V5 sets White letters and a red ampersand on Prussian, and its own text says red there “stays at display size or goes mono”, while its color matrix shows small red ampersands. Pillar Red measures {nom['Pillar Red']}:1 on Prussian, just above the 3:1 that graphics need, and antialiasing pulls the small sizes below it. V5's Voice chapter also says “Never red against blue”, because red on blue reads as a party pairing.",
+    b10 = P(f"V5 sets White letters and a red ampersand on Prussian, and its own text says red there “stays at display size or goes mono”, while its color matrix shows small red ampersands. Pillar Red measures {nom['Pillar Red']}:1 on Prussian, and antialiasing pulls the small sizes under 3:1.",
+            'The red rule, as the creative director wrote it for every board: <q>' + E(RED_RULE) + '</q>',
+            "Under that rule treatments A and C put red on Prussian and fall away. B and D stay. I recommend D, White, for identity marks on Prussian, the color V5 already gives the letters. Data graphics keep the token table's Newsprint.",
             f"Four treatments are drawn and measured. Nominal contrast on Prussian: Pillar Red {nom['Pillar Red']}, Newsprint {nom['Newsprint']}, White {nom['White']}. The keyline in option C is Newsprint, and Pillar Red against Newsprint is {nom['Pillar Red on Newsprint keyline']}:1, so the keyline carries the edge while the red reads as a fill.")
     b10 += '<p class="cap">Median contrast of the ampersand’s pixels against Prussian, after rendering, with the share of its pixels at 3:1 or more in brackets.</p>' + table(["Treatment", "16 px", "24 px", "48 px", "96 px"], rows10)
     b10 += "".join(pair_block(p) for p in pairs_of(10))
@@ -426,7 +434,7 @@ def build():
         ("4 Optical balance", "Pass", "No change"),
         ("5 Similarity", "Not applicable", "Color only"),
         ("6 Monochrome", "Pass", "It is the one-color version"),
-        ("7 Red discipline", "Pass", "No red on blue"),
+        ("7 Red discipline", "Pass", "Red never sits on Prussian"),
         ("8 Contrast", "Pass", f"White on Prussian {nom['White']}:1"),
         ("9 Type", "Not applicable", "Color only"),
     ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 5], "Brand fidelity is 4: Dustin's Prussian banner reference uses the red ampersand, and option D gives that up on Prussian.")
@@ -449,20 +457,21 @@ def construction_svg():
             f'<line x1="-6" y1="0" x2="{vb[2] + 6:.1f}" y2="0" stroke="#4A7C74" stroke-width="0.25"/><line x1="-6" y1="100" x2="{vb[2] + 6:.1f}" y2="100" stroke="#4A7C74" stroke-width="0.25"/>'
             f'<path d="{d}" fill="#E63946" fill-opacity="0.85"/>'
             f'<path d="{cons["centreline_font_units_y_up"]}" fill="none" stroke="#45494F" stroke-width="0.35" transform="matrix({k} 0 0 {-k} {-off * k:.3f} 100)"/>'
-            f'<path d="{lora_d}" fill="none" stroke="#121212" stroke-width="0.45" stroke-dasharray="1.2 1"/></svg>')
+            f'<path d="{lora_d}" fill="none" stroke="#121212" stroke-width="0.4"/></svg>')
 
 
 def decisions():
     rows = [
         ("1. Re-export six clipped symbols", "Accept or decline", "Accept. It restores ink V5 cuts away and changes no outline."),
         ("2. Hinge gaps", "2a: 0.10x nearest ink. 2b: equal white area. Keep V5", "2b. It centers the ampersand by the white the eye sees and keeps the wordmark's width."),
-        ("3. Wordmark masters for display, 24 and 16 px", "Accept, accept without the larger small-size ampersand, or decline", "Accept all three, with the ampersand at full box height at 16 and 24 px. The 16 px logo stops clogging."),
+        ("3. Wordmark masters for display, 24 and 16 px", "Accept, accept without the larger small-size ampersand, or decline", "Accept all three, led by ampersand B's small masters, with the ampersand at full box height at 16 and 24 px. The A versions are the fallback. The 16 px logo stops clogging."),
         ("4 and 5. The ampersand", "A: tune the Lora glyph. B: the drawn ampersand. Keep V5", "B as the direction, refined in Phase 2, with A as the fallback. B makes the hinge Oath & Action's own and holds at 16 px; A fixes the small sizes but stays a stock glyph."),
-        ("6. Wordmark width", "Condensed at 7.5 to 1, or the current proportions", "Your call. I lean to the condensed 7.5 to 1 as a direction: it matches your references and gains 1.26 times the height at the same width. It is not finished; it needs a drawing pass and a narrow 16 px ampersand."),
-        ("7. The hinge mark", "Accept, accept without the return arc, or keep V5", "Accept. It follows your mockups, keeps V5's rules and scales its lines."),
+        ("6. Wordmark width", "Condensed at 7.5 to 1, or the current proportions", "Condensed 7.5 to 1 as the Phase 2 direction, after a drawing pass and a narrow 16 px ampersand."),
+        ("7. The hinge diagram", "V2 with solid arcs, V2 without the return arc, or keep V5", "V2. It follows your mockups, keeps V5's rules, scales its lines and uses no dotted or dashed line."),
         ("8. Lockmark small masters", "Accept or decline", "Accept. Nodes read at 16 and 24 px and the cross fills whole pixels."),
         ("9. Minimum sizes", "Accept, or keep V5's", "Accept. One rule, no undefined range, no tagline under 13 px."),
-        ("10. Red ampersand on Prussian", "A: red at display size only. B: Newsprint ampersand. C: red with a keyline. D: one color", "D. It follows V5's “Never red against blue” and passes at every size. If you want the red from your banner, A is the fallback."),
+        ("The red rule", "Adopt, or keep each board's wording", "Adopt: " + RED_RULE),
+        ("10. Red ampersand on Prussian", "A: red at display size only. B: Newsprint ampersand. C: red with a keyline. D: one color", "D, White, for identity marks on Prussian. Red never sits on Prussian, and White measures 13.28:1 there at every size."),
     ]
     tr = "".join(f"<tr><th scope=\"row\">{E(a)}</th><td>{E(b)}</td><td>{E(c)}</td></tr>" for a, b, c in rows)
     return ('<section id="decisions" aria-labelledby="h-dec"><div class="decision"><p class="eyebrow">Decisions for Gate 1</p><h2 id="h-dec">What I need you to decide</h2>'
@@ -509,6 +518,7 @@ summary:focus-visible{outline:3px solid var(--prussian);outline-offset:2px}
 table.checks td:nth-child(2){white-space:nowrap}
 .res{font-weight:700}.res.pass{color:#1E4F47}.res.fail{color:#9E1B26}.res.na{color:var(--muted)}
 .score{font:800 1.25rem/1 var(--display)}.score.low{color:#9E1B26}
+.three{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.three figure{margin:0}.three img.fit{width:100%;height:auto;max-width:100%}
 .constr{margin:16px 0}
 .constr svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--rule)}
 .spec{padding:20px;display:grid;gap:12px;justify-items:start}
@@ -532,7 +542,7 @@ def page(parts):
              '<p>Tags: <span class="tag defect">Defect fix</span> repairs something V5 gets wrong. <span class="tag">Option</span> is a choice. In the text, x means one cap height of the wordmark, 100 units.</p>'
              '<nav aria-label="Items on this board"><ol class="toc">'
              + "".join(f'<li><a href="#item-{n}">{E(t)}</a></li>' for n, t in [(1, "Re-export the six clipped symbols"), (2, "Equal hinge gaps"), (3, "Wordmark masters for display, 24 and 16 px"),
-                                                                             (4, "Ampersand option A"), (5, "Ampersand option B"), (6, "Wordmark width, condensed"), (7, "The hinge mark"),
+                                                                             (4, "Ampersand option A"), (5, "Ampersand option B"), (6, "Wordmark width, condensed"), (7, "The hinge diagram"),
                                                                              (8, "Lockmark for small sizes"), (9, "One set of minimum sizes"), (10, "Red ampersand on Prussian")])
              + '<li><a href="#decisions">Decisions for Gate 1</a></li><li><a href="#tested">What I checked</a></li></ol></nav></header>')
     tested = ('<section id="tested" aria-labelledby="h-t"><h2 id="h-t">What I checked and what I could not</h2><div class="tested"><div><h3>Checked</h3><ul>'

@@ -13,7 +13,9 @@
         "N-03": "Error message ground that holds 13 px text: Charcoal on Pillar Red is 4.49:1 and White on Pillar Red 4.17:1",
         "N-04": "Verdigris status marks on Prussian measure 2.80:1; held until the Phase 2 Signal Grid redesign"
       },
-      "fontSizeExceptions": []
+      "fontSizeExceptions": [],
+      "redRule": "The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian.",
+      "redRuleSource": "work/handoffs/phase-1/20261021_CD-Review-Of-Phase-1.md, section 2"
     }
   },
   "oa": {
@@ -720,11 +722,456 @@
                 }
               }
             }
+          },
+          "mark": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Error glyph and state bar",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "newsprint",
+                  "contrast": 2.96,
+                  "threshold": 3.0,
+                  "keyline": "{oa.color.palette.charcoal}",
+                  "keylineContrast": 13.29,
+                  "redRole": "working",
+                  "precedence": 1
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Error glyph and state bar",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "white",
+                  "contrast": 4.17,
+                  "threshold": 3.0,
+                  "redRole": "working",
+                  "precedence": 1
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Error glyph and state bar",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "charcoal",
+                  "contrast": 4.49,
+                  "threshold": 3.0,
+                  "redRole": "working",
+                  "precedence": 1
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.newsprint}",
+              "$description": "Error glyph and state bar",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "prussian",
+                  "contrast": 9.42,
+                  "threshold": 3.0
+                }
+              }
+            }
+          }
+        }
+      },
+      "identity": {
+        "signature": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.pillarRed}",
+            "$description": "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "logotype",
+                "surface": "newsprint",
+                "contrast": 2.96,
+                "threshold": null,
+                "redRole": "signature"
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.pillarRed}",
+            "$description": "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "logotype",
+                "surface": "white",
+                "contrast": 4.17,
+                "threshold": null,
+                "redRole": "signature"
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.pillarRed}",
+            "$description": "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "logotype",
+                "surface": "charcoal",
+                "contrast": 4.49,
+                "threshold": null,
+                "redRole": "signature"
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.white}",
+            "$description": "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "logotype",
+                "surface": "prussian",
+                "contrast": 13.28,
+                "threshold": null
+              }
+            }
+          }
+        },
+        "hingeDivider": {
+          "onNewsprint": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Ampersand in the hinge divider",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "newsprint",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onWhite": {
+            "$type": "color",
+            "$value": "{oa.color.palette.charcoal}",
+            "$description": "Ampersand in the hinge divider",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "white",
+                "contrast": 18.73,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onCharcoal": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Ampersand in the hinge divider",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "charcoal",
+                "contrast": 13.29,
+                "threshold": 3.0
+              }
+            }
+          },
+          "onPrussian": {
+            "$type": "color",
+            "$value": "{oa.color.palette.newsprint}",
+            "$description": "Ampersand in the hinge divider",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "semantic",
+                "kind": "graphic",
+                "surface": "prussian",
+                "contrast": 9.42,
+                "threshold": 3.0
+              }
+            }
+          }
+        }
+      },
+      "action": {
+        "ask": {
+          "fill": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Ask button fill: the step a reader can take now",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "newsprint",
+                  "contrast": 2.96,
+                  "threshold": 3.0,
+                  "keyline": "{oa.color.palette.charcoal}",
+                  "keylineContrast": 13.29,
+                  "redRole": "working",
+                  "precedence": 2
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Ask button fill: the step a reader can take now",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "white",
+                  "contrast": 4.17,
+                  "threshold": 3.0,
+                  "redRole": "working",
+                  "precedence": 2
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.pillarRed}",
+              "$description": "Ask button fill: the step a reader can take now",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "charcoal",
+                  "contrast": 4.49,
+                  "threshold": 3.0,
+                  "redRole": "working",
+                  "precedence": 2
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.newsprint}",
+              "$description": "Ask button fill: the step a reader can take now",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "prussian",
+                  "contrast": 9.42,
+                  "threshold": 3.0
+                }
+              }
+            }
+          },
+          "label": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Ask button label, set in oa.type.ask",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "largeText",
+                  "surface": "newsprint",
+                  "contrast": 4.17,
+                  "threshold": 3.0,
+                  "requiresType": "{oa.type.ask}",
+                  "ground": "{oa.color.palette.pillarRed}"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Ask button label, set in oa.type.ask",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "largeText",
+                  "surface": "white",
+                  "contrast": 4.17,
+                  "threshold": 3.0,
+                  "requiresType": "{oa.type.ask}",
+                  "ground": "{oa.color.palette.pillarRed}"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Ask button label, set in oa.type.ask",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "largeText",
+                  "surface": "charcoal",
+                  "contrast": 4.17,
+                  "threshold": 3.0,
+                  "requiresType": "{oa.type.ask}",
+                  "ground": "{oa.color.palette.pillarRed}"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Ask button label, set in oa.type.ask",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "largeText",
+                  "surface": "prussian",
+                  "contrast": 13.29,
+                  "threshold": 3.0,
+                  "requiresType": "{oa.type.ask}",
+                  "ground": "{oa.color.palette.newsprint}"
+                }
+              }
+            }
+          }
+        },
+        "primary": {
+          "fill": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Primary button fill; also the ask button when an error holds the view's red",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "newsprint",
+                  "contrast": 13.29,
+                  "threshold": 3.0
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Primary button fill; also the ask button when an error holds the view's red",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "white",
+                  "contrast": 18.73,
+                  "threshold": 3.0
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.newsprint}",
+              "$description": "Primary button fill; also the ask button when an error holds the view's red",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "charcoal",
+                  "contrast": 13.29,
+                  "threshold": 3.0
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.newsprint}",
+              "$description": "Primary button fill; also the ask button when an error holds the view's red",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "graphic",
+                  "surface": "prussian",
+                  "contrast": 9.42,
+                  "threshold": 3.0
+                }
+              }
+            }
+          },
+          "label": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "text",
+                  "surface": "newsprint",
+                  "contrast": 18.73,
+                  "threshold": 4.5,
+                  "ground": "{oa.color.palette.charcoal}"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.palette.white}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "text",
+                  "surface": "white",
+                  "contrast": 18.73,
+                  "threshold": 4.5,
+                  "ground": "{oa.color.palette.charcoal}"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "text",
+                  "surface": "charcoal",
+                  "contrast": 13.29,
+                  "threshold": 4.5,
+                  "ground": "{oa.color.palette.newsprint}"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.palette.charcoal}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "semantic",
+                  "kind": "text",
+                  "surface": "prussian",
+                  "contrast": 13.29,
+                  "threshold": 4.5,
+                  "ground": "{oa.color.palette.newsprint}"
+                }
+              }
+            }
           }
         }
       },
       "data": {
-        "$description": "Data color. Never aliases Pillar Red except data.emphasisRed under the one-red rule. Series palettes are decided at Gate 2.",
+        "$description": "Data color. Reaches Pillar Red only through a future data.emphasisRed, the third claim on the view's working red. Series palettes are decided at Gate 2.",
         "emphasis": {
           "onNewsprint": {
             "$type": "color",
@@ -942,6 +1389,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 3.5,
               "unit": "rem"
@@ -970,6 +1418,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 2.75,
               "unit": "rem"
@@ -998,6 +1447,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 1.625,
               "unit": "rem"
@@ -1026,6 +1476,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 1.25,
               "unit": "rem"
@@ -1054,6 +1505,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 1.5,
               "unit": "rem"
@@ -1082,6 +1534,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 1.1875,
               "unit": "rem"
@@ -1110,6 +1563,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 1.0625,
               "unit": "rem"
@@ -1138,6 +1592,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 0.9375,
               "unit": "rem"
@@ -1166,6 +1621,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 0.9375,
               "unit": "rem"
@@ -1194,6 +1650,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 0.875,
               "unit": "rem"
@@ -1222,6 +1679,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 0.8125,
               "unit": "rem"
@@ -1250,6 +1708,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 0.8125,
               "unit": "rem"
@@ -1280,6 +1739,7 @@
         },
         "$extensions": {
           "org.oathandaction": {
+            "tier": "semantic",
             "minFontSize": {
               "value": 3.0,
               "unit": "rem"
@@ -1289,6 +1749,35 @@
             "textTransform": "sentence",
             "numeric": "tabular-nums",
             "minusSign": "U+2212"
+          }
+        }
+      },
+      "ask": {
+        "$type": "typography",
+        "$description": "Ask button label. White on Pillar Red passes only as large text, so it never sets below 19 px bold",
+        "$value": {
+          "fontFamily": "{oa.font.family.reading}",
+          "fontWeight": "{oa.font.weight.bold}",
+          "fontSize": {
+            "value": 1.1875,
+            "unit": "rem"
+          },
+          "lineHeight": 1.2,
+          "letterSpacing": {
+            "value": 0.0,
+            "unit": "rem"
+          }
+        },
+        "$extensions": {
+          "org.oathandaction": {
+            "tier": "semantic",
+            "minFontSize": {
+              "value": 1.1875,
+              "unit": "rem"
+            },
+            "cssFontSize": "1.1875rem",
+            "trackingEm": 0,
+            "textTransform": "sentence"
           }
         }
       }
@@ -1729,6 +2218,208 @@
     },
     "component": {
       "button": {
+        "ask": {
+          "fill": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.fill.onNewsprint}",
+              "$description": "Ask button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component",
+                  "fallback": "{oa.component.button.primary.fill.onNewsprint}",
+                  "redRule": "Second claim on the view's working red; when an error holds it, use the primary button"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.fill.onWhite}",
+              "$description": "Ask button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component",
+                  "fallback": "{oa.component.button.primary.fill.onWhite}",
+                  "redRule": "Second claim on the view's working red; when an error holds it, use the primary button"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.fill.onCharcoal}",
+              "$description": "Ask button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component",
+                  "fallback": "{oa.component.button.primary.fill.onCharcoal}",
+                  "redRule": "Second claim on the view's working red; when an error holds it, use the primary button"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.fill.onPrussian}",
+              "$description": "Ask button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component",
+                  "fallback": "{oa.component.button.primary.fill.onPrussian}",
+                  "redRule": "Second claim on the view's working red; when an error holds it, use the primary button"
+                }
+              }
+            }
+          },
+          "label": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.label.onNewsprint}",
+              "$description": "Ask button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.label.onWhite}",
+              "$description": "Ask button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.label.onCharcoal}",
+              "$description": "Ask button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.action.ask.label.onPrussian}",
+              "$description": "Ask button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            }
+          },
+          "keyline": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.border.strong.onNewsprint}",
+              "$description": "1 px edge that gives the red fill its boundary on Newsprint",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            }
+          },
+          "labelType": {
+            "$type": "typography",
+            "$value": "{oa.type.ask}",
+            "$description": "Ask button label style",
+            "$extensions": {
+              "org.oathandaction": {
+                "tier": "component"
+              }
+            }
+          }
+        },
+        "primary": {
+          "fill": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.fill.onNewsprint}",
+              "$description": "Primary button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.fill.onWhite}",
+              "$description": "Primary button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.fill.onCharcoal}",
+              "$description": "Primary button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.fill.onPrussian}",
+              "$description": "Primary button fill",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            }
+          },
+          "label": {
+            "onNewsprint": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.label.onNewsprint}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onWhite": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.label.onWhite}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onCharcoal": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.label.onCharcoal}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            },
+            "onPrussian": {
+              "$type": "color",
+              "$value": "{oa.color.action.primary.label.onPrussian}",
+              "$description": "Primary button label",
+              "$extensions": {
+                "org.oathandaction": {
+                  "tier": "component"
+                }
+              }
+            }
+          }
+        },
         "disabled": {
           "label": {
             "onWhite": {
