@@ -67,7 +67,7 @@ def jobs_for_pair(p):
                 for size in PP.SIZES + ["display"]:
                     inner, vb = var[size]
                     h = size if size != "display" else disp_h(p)
-                    style = p.get("prop_style") if vk == "prop" else None
+                    style = p.get("prop_style") if vk == "prop" else ("v5red" if p["panel"] == 10 else None)
                     fg, v = css_vars(s, m, style, size)
                     if p.get("glyph") == "amp" and m == "color" and s != "prussian":
                         fg = o.RED  # a freestanding ampersand is Pillar Red, except on Prussian (Rule 05.3, treatment D)

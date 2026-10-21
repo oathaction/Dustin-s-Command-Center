@@ -12,10 +12,13 @@ PRUS = np.array((31, 45, 90), float)
 
 
 def dilate(m, r):
+    """Square dilation by r px, separable: rows then columns."""
     out = m.copy()
-    for dy in range(-r, r + 1):
-        for dx in range(-r, r + 1):
-            out |= np.roll(np.roll(m, dy, 0), dx, 1)
+    for k in range(1, r + 1):
+        out[k:] |= m[:-k]; out[:-k] |= m[k:]
+    m2 = out.copy()
+    for k in range(1, r + 1):
+        out[:, k:] |= m2[:, :-k]; out[:, :-k] |= m2[:, k:]
     return out
 
 

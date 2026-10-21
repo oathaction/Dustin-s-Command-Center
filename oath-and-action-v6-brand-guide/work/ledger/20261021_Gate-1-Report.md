@@ -147,7 +147,7 @@ Each position piece puts the nonpartisan standing at stake, and the kit adds wri
 | I3 | Wordmark masters at display, 24 and 16 px | Optical spacing, stems and bars on whole pixels, and the ampersand at full box height at the two small sizes | V5 scales one master down, and its small sizes blur. The larger small ampersand reverses a V5 measure |
 | I7 | Lockmark masters at 16 and 24 px | Node centers on whole pixels, with a larger lever. Thresholds: 16 px master to 23 px, 24 px master to 47 px, V5's master from 48 px | At 24 px, V5's lockmark has 5 percent solid ink. The master raises it to 60 percent. The larger lever reverses a V5 measure |
 | I8 | One minimum-size rule | No mark draws capitals under 14 px on screen and no tagline sets under 13 px. Each lockup names its replacement below its minimum. Favicons use the ampersand's 16 px master | V5's minimum sizes conflict (defect fix) |
-| S9 | A wordless hinge-circle badge | The ampersand in its circle, with no words, beside V5's no-seals rule | Your references show seals, and V5 says "Seals imply an authority we do not claim." A badge without words claims none |
+| S9 | A wordless hinge-circle badge | Ampersand B in the hinge diagram's ring, with no words. Signature red on Newsprint, White and Charcoal, White on Prussian. If you approve it, Rule 05.3's first sentence names the badge's ampersand beside the hinge diagram's as signature red. Phase 2 redraws its 16 px master from ampersand B's | Your references show seals, and V5 says "Seals imply an authority we do not claim." A badge without words claims none, and at 16 px it doesn't read as a seal. Drawn on the symbol board, section 12 |
 
 I3 carries whichever ampersand you choose in call 1.
 

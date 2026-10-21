@@ -436,6 +436,14 @@ def build():
             "Under the rule's last sentence, treatments A (red at display size only) and C (red with a keyline) fall away, and so does V5's own red. Two options remain: B, a Newsprint ampersand with White letters, and D, everything in White. I recommend D for identity marks on Prussian, the color V5 already gives the letters. Data graphics keep the token table's Newsprint.",
             f"Nominal contrast on Prussian: Newsprint {nom['Newsprint']}, White {nom['White']}. The measurements of the ruled-out treatments stay in the table for the record.")
     b10 += '<p class="cap">Median contrast of the ampersand\u2019s pixels against Prussian, after rendering, with the share of its pixels at 3:1 or more in brackets.</p>' + table(["Treatment", "16 px", "24 px", "48 px", "96 px"], rows10)
+    v5r = m("p10-mono", "red")
+    v16, v96 = v5r.get("orig prussian 16", {}), v5r.get("orig prussian 96", {})
+    vt = "".join(f'<figure class="c"><div class="sw s-prussian">{img(f"p10-mono__orig__prussian__color__{z}", f"V5 today at {z} px on Prussian, red ampersand")}</div><figcaption>V5 today, {z} px: median {r.get("median_contrast", 0):.2f}:1, {int(round(r.get("share_at_or_above_3", 0) * 100))}% of its pixels at 3:1 or more</figcaption></figure>'
+                 for z, r in ((16, v16), (96, v96)))
+    vz = f'<figure><figcaption>V5 today, 16 px, 4x</figcaption>{img("p10-mono__orig__prussian__color__16", "V5 today at 16 px on Prussian, magnified 4x", zoom=4)}</figure>'
+    b10 += (f'<div class="pair v5today" id="p10-v5-today"><h3>V5 today: red ampersand on Prussian, shown as the original</h3>'
+            f'<p class="cap">The only red on Prussian on this board. It stays so you can compare the original with options B and D before you decide.</p>'
+            f'<div class="scroll" tabindex="0" role="region" aria-label="V5 today on Prussian"><div class="sizes">{vt}{vz}</div></div></div>')
     for pid, lab in (("p10-newsprint", "Option B. Newsprint ampersand, White letters"), ("p10-mono", "Option D. One color, all White (recommended)")):
         rowc = "".join(f'<figure class="c"><div class="sw s-prussian">{img(f"{pid}__prop__prussian__color__{z}", f"{lab} at {z} px")}</div><figcaption>{z}</figcaption></figure>' for z in PP.SIZES)
         zc = "".join(f'<figure><figcaption>{z} px, 4x</figcaption>{img(f"{pid}__prop__prussian__color__{z}", f"{lab} at {z} px, magnified", zoom=4)}</figure>' for z in (16, 24))

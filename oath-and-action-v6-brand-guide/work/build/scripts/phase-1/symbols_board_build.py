@@ -609,6 +609,13 @@ td.n,th.n{text-align:right}
 .chip{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.9375rem}
 .tag.rec{background:var(--prussian);color:var(--newsprint);border-color:var(--prussian)}
 .decision h2{color:var(--newsprint)}
+.bgrid{display:grid;grid-template-columns:16px 24px 48px 96px;gap:10px;align-items:end}
+.bgrid .sz{font-size:.8125rem;line-height:1;opacity:.85}
+.bdisp{line-height:0;margin-top:6px}
+.bdisp svg{max-width:100%;height:auto}
+.bcomp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;align-items:start}
+.bcomp .zx{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;line-height:0}
+.seal-crop{width:96px;height:96px;background-image:url("phase-1/strategy/refs/20261021_Ref-Page-41.jpg");background-size:1564px 880px;background-position:-1106px -542px;border:1px solid var(--rule)}
 .posts{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:24px 28px;margin:14px 0 8px}
 .post{width:100%;max-width:360px;aspect-ratio:4/5;container-type:inline-size;border:1px solid var(--rule)}
 .po-in{height:100%;padding:5.5cqw 6.5cqw 0;display:flex;flex-direction:column}
@@ -724,6 +731,85 @@ def composite():
             "</ul></section>")
 
 
+BADGE_DIR = ROOT / "work/boards/phase-1/symbols/badge"
+
+
+def badge_svg(key, size, cls="", label=None, style=""):
+    f = {16: "20261021_Hinge-Badge-16px-Master.svg", 24: "20261021_Hinge-Badge-24px-Master.svg", "display": "20261021_Hinge-Badge-Display-Master.svg"}[key]
+    t = (BADGE_DIR / f).read_text().strip()
+    t = re.sub(r"<title>.*?</title>", "", t)
+    aria = f'role="img" aria-label="{e(label)}"' if label else 'aria-hidden="true"'
+    return t.replace("<svg ", f'<svg class="mk {cls}" width="{size}" height="{size}" {aria} style="{style}" focusable="false" ', 1)
+
+
+def fav16_inline():
+    d = re.search(r' d="([^"]+)"', (ROOT / "work/boards/phase-1/identity/05-amp-b/20261021_Amp-B-Small-Master-16px.svg").read_text()).group(1)
+    return f'<svg class="mk" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="color:#121212"><path transform="translate(1 0)" fill="currentColor" d="{d}"/></svg>'
+
+
+def badge_checks():
+    B = json.loads((BADGE_DIR / "20261021_Hinge-Badge-Measurements.json").read_text())
+    sim = {k: v["score"] for k, v in B["similarity"].items()}
+    pf16, pf24 = B["pixel_fit"]["16"], B["pixel_fit"]["24"]
+    tiles16 = max(sim[f"tile-{p}|16"] for p in F.PILLARS)
+    tiles24 = max(sim[f"tile-{p}|24"] for p in F.PILLARS)
+    row = [
+        (B["sizes"]["16"]["crisp"] >= 0.60 and B["sizes"]["16"]["density"] >= 0.25, f"Crisp share {num(B['sizes']['16']['crisp'])}, ink {num(B['sizes']['16']['density'])} at 16 px"),
+        (pf16["share"] == 1.0 and pf24["share"] == 1.0, f"16 px {pf16['on_grid']} of {pf16['checked']}; 24 px {pf24['on_grid']} of {pf24['checked']}; both rings drawn as whole pixels"),
+        (False, "The 16 px master carries a new 9 by 9 px ampersand, a second small drawing of B beside its 16 px master, and only the identity owner can approve it"),
+        (abs(B["centroid_96"][0]) <= 0.12 and abs(B["centroid_96"][1]) <= 0.12, f"Center of mass {num(abs(B['centroid_96'][0]) * 100, 0)} percent left of and {num(abs(B['centroid_96'][1]) * 100, 0)} percent below the field center at 96 px; a single mark, so no set median"),
+        (sim["favicon|16"] < SIM_PASS and sim["favicon|24"] < SIM_PASS and tiles16 < SIM_PASS, f"Favicon master {num(sim['favicon|16'])} at 16 px and {num(sim['favicon|24'])} at 24 px (the same ampersand drawing); tiles {num(tiles16)} at most"),
+        (all(B["pixel_fit"]["16_amp_separate"].values()) and all(B["pixel_fit"]["24_amp_separate"].values()), "The ampersand stays apart from the ring in both polarities, 16 and 24 px"),
+        (False, "Rule 05.3 lists no badge among the signature reds, so as written its red would spend the view's working red"),
+        (False, f"Red on Newsprint {num(B['contrast']['newsprint']['ratio'])}:1, under 3:1; White {num(B['contrast']['white']['ratio'])}, Charcoal {num(B['contrast']['charcoal']['ratio'])}, White on Prussian {num(B['contrast']['prussian']['ratio'])}"),
+        (None, "No type in the mark"),
+    ]
+    return row
+
+
+def badge_section():
+    B = json.loads((BADGE_DIR / "20261021_Hinge-Badge-Measurements.json").read_text())
+    sim = {k: v["score"] for k, v in B["similarity"].items()}
+    ink = {"newsprint": "#E63946", "white": "#E63946", "charcoal": "#E63946", "prussian": "#FFFFFF"}
+    cells = []
+    for sid, sname in SURF:
+        sizes = "".join(f'<span class="mc">{badge_svg(16 if z == 16 else 24 if z == 24 else "display", z, style="color:" + ink[sid])}</span>' for z in (16, 24, 48, 96))
+        disp = badge_svg("display", 160, style="color:" + ink[sid], label=f"Badge at display size on {sname}")
+        word = "signature red" if sid != "prussian" else "White (treatment D)"
+        cells.append(f'<div class="s-{sid} mx"><p class="sname">{sname}</p><div class="bgrid"><span class="sz">16</span><span class="sz">24</span><span class="sz">48</span><span class="sz">96</span>{sizes}</div>'
+                     f'<div class="bdisp">{disp}</div><p class="cap">{word}, {num(B["contrast"][sid]["ratio"])}:1</p></div>')
+    seal = ('<div class="seal-crop" role="img" aria-label="Generated reference seal from page 41 of the reference file: a ring of words around an ampersand"></div>')
+    comp = (f'<div class="bcomp">'
+            f'<figure>{seal}<figcaption><span class="tag">Generated reference, study only</span> A seal from page 41: words in a ring around the ampersand. V5 has no badge to set beside the proposal, because its rule bars seals outright, so this generated seal stands in as the form to avoid.</figcaption></figure>'
+            f'<figure><div class="s-newsprint pad">{badge_svg("display", 96, style="color:#E63946", label="Proposed badge at 96 px")}</div><figcaption><span class="tag">Option</span> The badge at 96 px: no words, one ring, one ampersand B.</figcaption></figure>'
+            f'<figure><div class="s-newsprint pad zx">{fav16_inline()}{zoom("nfav-16.png", 16, 6, "Ampersand B 16 px favicon master at 6x")}</div><figcaption><span class="tag">Option</span> Ampersand B\u2019s 16 px favicon master, identity item 5, at 1x and 6x. The badge must stay apart from it.</figcaption></figure>'
+            f'<figure><div class="s-newsprint pad zx">{badge_svg(16, 16, style="color:#121212")}{zoom("nbadge-16.png", 16, 6, "Badge 16 px master at 6x")}</div><figcaption><span class="tag">Option</span> The badge\u2019s 16 px master at 1x and 6x.</figcaption></figure>'
+            f'<figure><div class="s-newsprint pad zx">{badge_svg(24, 24, style="color:#121212")}{zoom("nbadge-24.png", 24, 4, "Badge 24 px master at 4x")}</div><figcaption><span class="tag">Option</span> The badge\u2019s 24 px master at 1x and 4x.</figcaption></figure>'
+            f'<figure><div class="s-newsprint pad zx">{mark("A", "tile", "explain", 16)}{zoom("ntile-explain-16.png", 16, 6, "Direction A Explain tile 16 px at 6x")}</div><figcaption><span class="tag">Option</span> The Direction A Explain tile, the mark for avatars and series chips, at 1x and 6x.</figcaption></figure>'
+            f'</div>')
+    jobs_rows = [
+        ("The close of an article or report", "End mark after the last line, set at text size", "16 px master inline, 24 px in the newsletter"),
+        ("The printed report", "Back cover, alone", "Display master"),
+        ("Events and merchandise", "Signs, lanyards, pins, stickers, with no words added", "Display master, 24 mm across or more"),
+    ]
+    never = ["Avatars, app tiles and series chips: the Direction A tile does those jobs (section 7).",
+             "The favicon: the ampersand\u2019s 16 px master does that job.",
+             "A stamp, a seal of approval, a certificate, or a \u201cverified\u201d or \u201capproved\u201d mark, and any place beside a candidate, an official, a ballot or a result where it could read as an endorsement.",
+             "With words, a date or a second ring around it, such as \u201cEST. 2026\u201d.",
+             "Locked up with the wordmark, which already carries the ampersand, or in one view with the hinge diagram, where the two rings would read as one mark set twice."]
+    return ('<section id="badge" aria-labelledby="h-ba"><div class="dirhead"><h2 id="h-ba">12. The hinge-circle badge, decision S9</h2><span class="tag">Option</span></div>'
+            "<p>Decision S9 in the brand strategy asks Dustin to keep V5\u2019s rule on seals and to add one wordless badge: ampersand B in the hinge diagram\u2019s ring. V5\u2019s rule reads: \u201cSeals imply an authority we do not claim.\u201d Until now no one had drawn the badge. Here it is as a proposal, beside a reference seal, the ampersand\u2019s favicon master and a pillar tile, so the differences show at actual size.</p>"
+            "<p>Three masters live in <code>work/boards/phase-1/symbols/badge/</code>. The 16 px master draws a 1 px ring in whole pixels around a 9 by 9 px ampersand fitted from B. The 24 px master puts ampersand B\u2019s own 16 px master, unchanged, inside a 1 px pixel ring. The display master keeps the V2 hinge diagram\u2019s proportions, a ring 2.2 cap heights across around an ampersand 1.25 cap heights tall. Its ring rises from 3.5 to 4.6 units, so it still draws 1 px at 48 px. Each surface takes one color: signature red on Newsprint, White and Charcoal, and White on Prussian (treatment D).</p>"
+            f'<div class="surfaces matrix">{"".join(cells)}</div>'
+            f'<h3 style="margin-top:20px">Beside a seal, the favicon and a tile</h3>{comp}'
+            "<h3 style=\"margin-top:20px\">Does it read as a seal at 16 px?</h3>"
+            f"<p>No. At 16 px it reads as an ampersand in a ring, with no words, no second ring and no rim. Against the generated reference seal reduced to 16 px, the filled silhouettes overlap at {num(B['similarity']['seal|16']['silhouette_iou'])}, as any two circles do, and the blurred correlation is {num(B['similarity']['seal|16']['blurred_corr'])}, because the seal is a dark disc and the badge an open ring. The seal reading grows with size. From 96 px a ring around a centered mark is a seal\u2019s form, so the rule against words around it does the work. These are measurements of form. Whether readers take it for a seal needs a reader test, which the studio has not run.</p>"
+            "<h3>Where it belongs</h3><div class=\"scroll\" tabindex=\"0\" role=\"region\" aria-label=\"Badge jobs\"><table class=\"tt\"><thead><tr><th scope=\"col\">Place</th><th scope=\"col\">Use</th><th scope=\"col\">Master</th></tr></thead><tbody>"
+            + "".join(f"<tr><td>{e(a)}</td><td>{e(b)}</td><td>{e(c)}</td></tr>" for a, b, c in jobs_rows)
+            + "</tbody></table></div><h3 style=\"margin-top:16px\">Where it never goes</h3><ul>" + "".join(f"<li>{e(x)}</li>" for x in never) + "</ul>"
+            f"<p><strong>Recommendation on S9.</strong> Approve the badge on three conditions. Rule 05.3 adds the hinge-circle badge to its signature reds, or the badge takes Charcoal wherever a view already spends its working red. The badge keeps only the jobs above. Phase 2 redraws the 16 px end mark beside ampersand B\u2019s small masters. Its craft checks pass on silhouette, pixel fit, similarity and monochrome. Three fail: a second small ampersand drawing, the missing line in Rule 05.3, and red on Newsprint at {num(B['contrast']['newsprint']['ratio'])}:1. The badge is a wordless identity mark, so the last one matters least, and the wordmark\u2019s ampersand already uses the same red on Newsprint.</p></section>")
+
+
 def build():
     check = json.loads(CHECK.read_text()) if CHECK.exists() else None
     pats = patterns()
@@ -766,7 +852,7 @@ def build():
     H.append('<nav aria-label="On this board"><ul class="toc">' + "".join(f'<li><a href="#{a}">{t}</a></li>' for a, t in [
         ("skeletons", "1. Skeletons"), ("hinge", "2. The shared node"), ("direction-a", "3. Direction A"), ("direction-b", "4. Direction B"),
         ("track-act", "5. Track and Act at 16 px"), ("topics", "6. Topic grammar"), ("treatments", "7. Sanctioned treatments"),
-        ("checks", "8. Craft checks"), ("rubric", "9. Rubric"), ("tested", "10. Checked and not checked"), ("composite", "11. The whole set in one post"), ("decisions", "12. Decisions")]) + "</ul></nav>")
+        ("checks", "8. Craft checks"), ("rubric", "9. Rubric"), ("tested", "10. Checked and not checked"), ("composite", "11. The whole set in one post"), ("badge", "12. Hinge-circle badge"), ("decisions", "13. Decisions")]) + "</ul></nav>")
 
     # ---------------- 1 skeletons
     H.append('<section id="skeletons" aria-labelledby="h-sk"><h2 id="h-sk">1. Four skeletons on one grid</h2>')
@@ -814,7 +900,7 @@ def build():
             H.append(matrix(d, t))
             H.append(zooms(d, t))
         H.append(f"<h4>{d}. The red handle, where the Act mark is the call to act</h4>")
-        H.append("<p>Under Rule 05.3, quoted in section 12, the Act handle is red only when the Act mark is itself the call to act, as on a social tile, and the handle then spends the view's one working red. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Red never sits on Prussian. At 16 px the handle is 2 px, too small to carry color, so Act stays one color there.</p>")
+        H.append("<p>Under Rule 05.3, quoted in section 13, the Act handle is red only when the Act mark is itself the call to act, as on a social tile, and the handle then spends the view's one working red. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Red never sits on Prussian. At 16 px the handle is 2 px, too small to carry color, so Act stays one color there.</p>")
         r24 = min(MEAS["red"][f"{d}|{t}|24|{s}"]["ring_vs_red"] for t in ("filled", "line") for s in ("newsprint", "white", "charcoal"))
         H.append(accent_panel(d))
         H.append(f'<p class="cap">Measured on the rendered pixels: the ring around the red handle reads {num(r24)}:1 or better against the red at 24 px, where the 1 px ring is antialiased, and 4.49:1 at 48 px.</p>')
@@ -903,6 +989,8 @@ def build():
         H.append(f"<tr><th scope=\"row\">{d} · {TL[t]} · {PL[p]}</th>" + "".join(status_cell(s, dt) for s, dt in res) + "</tr>")
     for n, res in res_topics.items():
         H.append(f"<tr><th scope=\"row\">Topic · {F.TOPIC_LABELS[n]}</th>" + "".join(status_cell(s, dt) for s, dt in res) + "</tr>")
+    res_badge = badge_checks()
+    H.append("<tr><th scope=\"row\">Badge · Hinge circle (section 12)</th>" + "".join(status_cell(s, dt) for s, dt in res_badge) + "</tr>")
     H.append("</tbody></table></div>")
     tests = [
         ("Silhouette", "At 16 px, at least 60 percent of inked pixels are solid (crisp share) and ink covers at least 25 percent of the field. V5's pillar masters score 0.30 to 0.57 crisp share."),
@@ -913,7 +1001,8 @@ def build():
         ("Monochrome", "Rendered in Charcoal on Newsprint and in Newsprint on Charcoal, the node is its own connected shape at 16 and 24 px."),
         ("Red discipline", "Red appears only on the Act handle, and only where the Act mark is the call to act, as Rule 05.3 sets out. Checked in the drawings and in every composition on this board."),
         ("Contrast", "Ink against every surface (WCAG ratio), and the ring around the red handle against the red, measured on rendered pixels."),
-        ("Type", "Applies to compositions. Results for the board's headings and the composition headlines are listed below.")]
+        ("Type", "Applies to compositions. Results for the board's headings and the composition headlines are listed below."),
+        ("The badge", "The same tests, with two changes. Similarity is scored against the ampersand\u2019s 16 px favicon master and the four Direction A tiles, at 16 and 24 px. Contrast is scored for the badge\u2019s own ink: signature red on Newsprint, White and Charcoal, and White on Prussian.")]
     H.append("<h3 style=\"margin-top:18px\">How each check was run</h3><ul>" + "".join(f"<li><strong>{e(a)}.</strong> {e(b)}</li>" for a, b in tests) + "</ul>")
     fails = []
     for (d, t, p), res in res_all.items():
@@ -924,6 +1013,9 @@ def build():
         for i, (s, dt) in enumerate(res):
             if s is False:
                 fails.append(f"Topic {F.TOPIC_LABELS[n]}: {CHECK_NAMES[i].lower()}. {dt}.")
+    for i, (s, dt) in enumerate(res_badge):
+        if s is False:
+            fails.append(f"Badge: {CHECK_NAMES[i].lower()}. {dt}.")
     H.append(f"<h3>Failures, {len(fails)} in all</h3><ul class=\"fail-list\">" + "".join(f"<li>{e(f)}</li>" for f in fails) + "</ul>")
     sil_fail = [f"{d} {PL[p]}" for d in F.DIRECTIONS for p in F.PILLARS if res_all[(d, "line", p)][0][0] is False]
     tcy = [mk(d, t, "track", 96)["centroid"][1] for d, t in (("A", "filled"), ("A", "line"), ("B", "filled"))]
@@ -966,7 +1058,8 @@ def build():
 
     # ---------------- 11 decisions
     H.append(composite())
-    H.append('<section id="decisions" aria-labelledby="h-de" class="decision"><h2 id="h-de">12. Decisions for Gate 1</h2><ol>')
+    H.append(badge_section())
+    H.append('<section id="decisions" aria-labelledby="h-de" class="decision"><h2 id="h-de">13. Decisions for Gate 1</h2><ol>')
     LINE16 = ", ".join(f"{d} {PL[p]}" for d in F.DIRECTIONS for p in F.PILLARS if res_all[(d, "line", p)][0][0] is False)
     LINE16 = LINE16[0].upper() + LINE16[1:] if LINE16 else "No line masters"
     decisions = [
@@ -976,6 +1069,7 @@ def build():
         ("Red in the pillar marks", "Adopt Rule 05.3, which also settles whether the Act handle counts; or red in all four marks, as in study 06.", "Adopt Rule 05.3, word for word as decision D1-26 sets it: \u201c" + RED_RULE + "\u201d"),
         ("Line treatment at 16 px", "Allow line marks at 16 px; or start the line companion at 24 px.", f"Start at 24 px. {LINE16} fail the 16 px silhouette test, and filled masters pass it in both directions."),
         ("Topic grammar", "Redraw all twenty topics in Direction A's grammar, one node per subject; or keep V5's topic set.", "Redraw in Phase 2, starting with the four pairs Phase 0 named and Ballot against Bill."),
+        ("Hinge-circle badge (strategy decision S9)", "Keep V5's no-seals rule alone; keep the rule and add the wordless badge drawn in section 12; or allow ring-of-words seals.", "Keep the rule and add the badge, on three conditions. Rule 05.3 lists the badge among its signature reds, or the badge takes Charcoal wherever a view already spends its working red. The badge keeps the jobs section 12 names. Phase 2 redraws its 16 px end mark beside ampersand B's small masters."),
         ("Sanctioned treatments", "Approve the map in section 7, including hand-drawn at 96 px and up, isometric for layer diagrams only, tiles for avatars and series, and the 12 percent pattern limit behind text.", "Approve. Each treatment gets one job and a minimum size a builder can check."),
     ]
     for h, opts, rec in decisions:
@@ -986,6 +1080,7 @@ def build():
              "<li>Sketch sprites: <code>work/boards/phase-1/symbols/20261021_Pillar-Sketches-Direction-A.svg</code>, <code>…-Direction-B.svg</code>, <code>20261021_Topic-Sketches-Direction-A.svg</code></li>"
              "<li>Measurements: <code>work/boards/phase-1/symbols/20261021_Symbol-Family-Measurements.json</code>; renders in <code>work/boards/phase-1/symbols/px/</code></li>"
              "<li>Scripts: <code>work/build/scripts/phase-1/symbols_geom.py</code>, <code>symbols_family.py</code>, <code>symbols_measure.py</code>, <code>symbols_board_build.py</code>, <code>symbols_board_check.js</code>, <code>symbols_render_cells.js</code></li>"
+             "<li>Badge masters and measurements: <code>work/boards/phase-1/symbols/badge/20261021_Hinge-Badge-16px-Master.svg</code>, <code>…-24px-Master.svg</code>, <code>…-Display-Master.svg</code>, <code>20261021_Hinge-Badge-Measurements.json</code>; script <code>symbols_badge.py</code></li>"
              "<li>Notes: <code>work/handoffs/phase-1/20261021_Symbol-Family-Notes.md</code></li></ul></section>")
     H.append("</main></body></html>")
     out = "".join(H)

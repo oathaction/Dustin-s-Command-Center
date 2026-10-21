@@ -19,6 +19,9 @@ def svg_parts(path):
     vb = o.viewbox(s)
     s = re.sub(r"<title>.*?</title>", "", s)
     inner = s[s.find(">") + 1: s.rfind("</svg>")]
+    # the V5 hinge sprite hard-codes its ampersand's red; route it through --amp so one-color
+    # renders are one color and treatment D applies on Prussian
+    inner = inner.replace('<g color="#E63946">', '<g style="color:var(--amp,#E63946)">')
     return inner, vb
 
 

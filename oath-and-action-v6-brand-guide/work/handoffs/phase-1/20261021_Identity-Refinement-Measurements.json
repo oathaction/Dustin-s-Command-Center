@@ -2942,33 +2942,33 @@
   },
   "p07-hinge": {
    "overlay_16": {
-    "original_only_px": 98.2,
-    "proposal_only_px": 72.1,
-    "changed_share": 0.288
+    "original_only_px": 102.5,
+    "proposal_only_px": 71.5,
+    "changed_share": 0.292
    },
    "overlay_24": {
-    "original_only_px": 226.6,
-    "proposal_only_px": 187.5,
-    "changed_share": 0.374
+    "original_only_px": 236.8,
+    "proposal_only_px": 186.4,
+    "changed_share": 0.38
    },
    "overlay_48": {
-    "original_only_px": 943.3,
-    "proposal_only_px": 753.4,
-    "changed_share": 0.476
+    "original_only_px": 988.4,
+    "proposal_only_px": 750.1,
+    "changed_share": 0.486
    },
    "overlay_96": {
-    "original_only_px": 3769.1,
-    "proposal_only_px": 3118.8,
-    "changed_share": 0.557
+    "original_only_px": 3945.1,
+    "proposal_only_px": 3099.1,
+    "changed_share": 0.568
    },
    "overlay_display": {
-    "original_only_px": 16932.6,
-    "proposal_only_px": 14568.8,
-    "changed_share": 0.625
+    "original_only_px": 17744.1,
+    "proposal_only_px": 14526.4,
+    "changed_share": 0.64
    },
    "solid_share_mono_newsprint": {
     "orig 16": 0.22,
-    "orig 24": 0.31,
+    "orig 24": 0.32,
     "prop 16": 0.11,
     "prop 24": 0.21
    }
@@ -3119,7 +3119,7 @@
      "share_at_or_above_3": 0.87
     },
     "prop prussian 96": {
-     "ink_px": 3785,
+     "ink_px": 3786,
      "solid_share": 0.87,
      "median_contrast": 9.42,
      "max_contrast": 9.42,
@@ -3152,7 +3152,7 @@
      "share_at_or_above_3": 0.74
     },
     "orig prussian 96": {
-     "ink_px": 3760,
+     "ink_px": 3763,
      "solid_share": 0.88,
      "median_contrast": 3.19,
      "max_contrast": 3.19,

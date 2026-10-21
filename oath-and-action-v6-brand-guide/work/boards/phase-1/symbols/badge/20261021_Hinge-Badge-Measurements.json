@@ -1,0 +1,142 @@
+{
+ "masters": {
+  "16": "20261021_Hinge-Badge-16px-Master.svg",
+  "24": "20261021_Hinge-Badge-24px-Master.svg",
+  "display": "20261021_Hinge-Badge-Display-Master.svg"
+ },
+ "sizes": {
+  "16": {
+   "crisp": 1.0,
+   "density": 0.379
+  },
+  "24": {
+   "crisp": 0.77,
+   "density": 0.331
+  },
+  "48": {
+   "crisp": 0.44,
+   "density": 0.185
+  },
+  "96": {
+   "crisp": 0.68,
+   "density": 0.185
+  }
+ },
+ "similarity": {
+  "favicon|16": {
+   "silhouette_iou": 0.64,
+   "blurred_corr": 0.32,
+   "score": 0.483
+  },
+  "tile-explain|16": {
+   "silhouette_iou": 0.84,
+   "blurred_corr": 0.02,
+   "score": 0.428
+  },
+  "tile-track|16": {
+   "silhouette_iou": 0.84,
+   "blurred_corr": -0.03,
+   "score": 0.404
+  },
+  "tile-connect|16": {
+   "silhouette_iou": 0.84,
+   "blurred_corr": 0.06,
+   "score": 0.447
+  },
+  "tile-act|16": {
+   "silhouette_iou": 0.84,
+   "blurred_corr": 0.15,
+   "score": 0.494
+  },
+  "favicon|24": {
+   "silhouette_iou": 0.33,
+   "blurred_corr": 0.86,
+   "score": 0.595
+  },
+  "tile-explain|24": {
+   "silhouette_iou": 0.79,
+   "blurred_corr": -0.19,
+   "score": 0.301
+  },
+  "tile-track|24": {
+   "silhouette_iou": 0.79,
+   "blurred_corr": -0.26,
+   "score": 0.266
+  },
+  "tile-connect|24": {
+   "silhouette_iou": 0.79,
+   "blurred_corr": -0.2,
+   "score": 0.299
+  },
+  "tile-act|24": {
+   "silhouette_iou": 0.79,
+   "blurred_corr": -0.22,
+   "score": 0.288
+  },
+  "seal|16": {
+   "silhouette_iou": 0.95,
+   "blurred_corr": 0.22,
+   "score": 0.584
+  },
+  "seal-vs-favicon|16": {
+   "silhouette_iou": 0.62,
+   "blurred_corr": 0.28,
+   "score": 0.448
+  },
+  "seal|24": {
+   "silhouette_iou": 0.95,
+   "blurred_corr": 0.27,
+   "score": 0.608
+  },
+  "seal-vs-favicon|24": {
+   "silhouette_iou": 0.33,
+   "blurred_corr": 0.27,
+   "score": 0.3
+  }
+ },
+ "contrast": {
+  "newsprint": {
+   "ink": "#E63946",
+   "ratio": 2.96
+  },
+  "white": {
+   "ink": "#E63946",
+   "ratio": 4.17
+  },
+  "charcoal": {
+   "ink": "#E63946",
+   "ratio": 4.49
+  },
+  "prussian": {
+   "ink": "#FFFFFF",
+   "ratio": 13.28
+  }
+ },
+ "pixel_fit": {
+  "16": {
+   "checked": 109,
+   "on_grid": 109,
+   "share": 1.0,
+   "off": []
+  },
+  "16_amp_separate": {
+   "dark_on_light": true,
+   "light_on_dark": true
+  },
+  "24": {
+   "checked": 155,
+   "on_grid": 155,
+   "share": 1.0,
+   "off": []
+  },
+  "24_amp_separate": {
+   "dark_on_light": true,
+   "light_on_dark": true
+  }
+ },
+ "centroid_96": [
+  -0.01,
+  0.02
+ ],
+ "red_on_newsprint_16_crisp": 1.0
+}

@@ -5,7 +5,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { chromium } = require(path.join(execSync('npm root -g').toString().trim(), 'playwright'));
 (async () => {
-  const [html, outDir, w, state] = process.argv.slice(2);
+  const [html, outDir, w, state, hide] = process.argv.slice(2);
   const width = parseInt(w, 10);
   fs.mkdirSync(outDir, { recursive: true });
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
@@ -18,6 +18,7 @@ const { chromium } = require(path.join(execSync('npm root -g').toString().trim()
     await Promise.all(imgs.map(i => i.complete ? null : new Promise(r => { i.onload = i.onerror = r; })));
     document.querySelectorAll('.scroll').forEach(e => { e.style.overflow = 'visible'; });
   }, state);
+  if (hide) await page.evaluate(sel => document.querySelectorAll(sel).forEach(e => { e.style.visibility = 'hidden'; }), hide);
   await page.evaluate(() => document.fonts.ready);
   const total = await page.evaluate(() => Math.max(document.documentElement.scrollHeight, document.body.scrollHeight));
   const vw = await page.evaluate(() => document.documentElement.scrollWidth);
