@@ -31,6 +31,7 @@ function wcag(hex1, hex2) {
 
 (async () => {
   fs.mkdirSync(SCREENS, { recursive: true });
+  for (const f of fs.readdirSync(SCREENS)) if (/^gate1-.*\.png$/.test(f)) fs.unlinkSync(path.join(SCREENS, f));
   const raw = fs.readFileSync(BOARD, 'utf8');
   const wrappedPath = path.join(os.tmpdir(), 'gate1-board-wrapped.html');
   fs.writeFileSync(wrappedPath, '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' + raw + '</html>');
@@ -169,10 +170,18 @@ function wcag(hex1, hex2) {
       view.axeIncomplete = axe.incomplete;
       view.pageErrors = consoleErrors;
 
-      const shot = path.join(SCREENS, `gate1-${width}-${scheme}.png`);
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.screenshot({ path: shot, fullPage: true });
-      view.screenshot = path.relative(ROOT, shot);
+      // Screenshots in 2000 px tall chunks: a single full-page capture of a page this tall drops images.
+      await page.evaluate(async () => { await Promise.all([...document.images].map((i) => i.decode().catch(() => null))); });
+      await page.setViewportSize({ width, height: 2000 });
+      const total = await page.evaluate(() => document.documentElement.scrollHeight);
+      view.screenshots = [];
+      for (let y = 0, k = 1; y < total; y += 2000, k++) {
+        await page.evaluate((yy) => window.scrollTo(0, yy), y);
+        await page.waitForTimeout(150);
+        const shot = path.join(SCREENS, `gate1-${width}-${scheme}-${String(k).padStart(2, '0')}.png`);
+        await page.screenshot({ path: shot });
+        view.screenshots.push(path.relative(ROOT, shot));
+      }
       results.views.push(view);
       await context.close();
     }

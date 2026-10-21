@@ -22,7 +22,7 @@ SIM = json.loads((o.ROOT / "work/handoffs/phase-1/20261021_Ampersand-Similarity.
 SURF = [("newsprint", "Newsprint"), ("white", "White"), ("charcoal", "Charcoal"), ("prussian", "Prussian")]
 MODES = [("color", "Color"), ("mono", "One color")]
 E = html.escape
-RED_RULE = "The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."
+RED_RULE = "The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither does the ampersand inside the hinge diagram, which is an identity mark. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian."
 
 
 def img(cid, alt, zoom=1, cls="", lazy=True):
@@ -72,14 +72,18 @@ def pair_block(p):
     rows = []
     for s in surfaces:
         for m in modes:
+            if s == "prussian" and m == "color":
+                continue
             for vk, lab in (("orig", "Original"), ("prop", "Proposal")):
                 cells = "".join(f'<figure class="c"><div class="sw s-{s}">{img(f"{pid}__{vk}__{s}__{m}__{z}", f"{lab} at {z} px on {sl[s]}, {ml[m].lower()}")}</div><figcaption>{z}</figcaption></figure>' for z in PP.SIZES)
                 rows.append(f'<div class="mrow"><div class="ml"><b>{lab}</b><span>{sl[s]}, {ml[m].lower()}</span></div><div class="sizes">{cells}</div></div>')
-    out.append(f'<details><summary>Every surface and color mode at 1x: 16, 24, 48 and 96 px</summary><div class="scroll matrix" tabindex="0" role="region" aria-label="Surface matrix for {E(p["label"])}">{"".join(rows)}</div></details>')
+    out.append(f'<details><summary>Every surface and color mode at 1x: 16, 24, 48 and 96 px. On Prussian, one color only (Rule 05.3, treatment D)</summary><div class="scroll matrix" tabindex="0" role="region" aria-label="Surface matrix for {E(p["label"])}">{"".join(rows)}</div></details>')
     # magnified on every surface
     zr = []
     for s in surfaces:
         for m in modes:
+            if s == "prussian" and m == "color":
+                continue
             cells = []
             for vk, lab in (("orig", "Original"), ("prop", "Proposal")):
                 for z in (16, 24):
@@ -90,6 +94,8 @@ def pair_block(p):
     dr = []
     for s in surfaces:
         for m in modes:
+            if s == "prussian" and m == "color":
+                continue
             for vk, lab in (("orig", "Original"), ("prop", "Proposal")):
                 dr.append(f'<figure><figcaption>{lab}, {sl[s]}, {ml[m].lower()}</figcaption><div class="scroll" tabindex="0" role="region" aria-label="{lab} display size on {sl[s]}">{img(f"{pid}__{vk}__{s}__{m}__display", f"{lab} at display size on {sl[s]}, {ml[m].lower()}")}</div></figure>')
     out.append(f'<details><summary>Display size on every surface and in one color</summary><div class="dispall">{"".join(dr)}</div></details>')
@@ -123,7 +129,7 @@ def red_row(pid, vk, size):
     for s, lab in SURF:
         r = m.get(f"{vk} {s} {size}")
         vals.append(f'{r["median_contrast"]:.2f}' if r and "median_contrast" in r else "n/a")
-    return vals
+    return vals[:3]
 
 
 def red_table(pid, sizes=(16, 24), label="Median contrast of the ampersand's pixels against the surface"):
@@ -131,7 +137,8 @@ def red_table(pid, sizes=(16, 24), label="Median contrast of the ampersand's pix
     for vk, lab in (("orig", "Original"), ("prop", "Proposal")):
         for s in sizes:
             rows.append([f"{lab}, {s} px"] + red_row(pid, vk, s))
-    return f'<p class="cap">{E(label)}. Nominal values: 2.96 on Newsprint, 4.17 on White, 4.49 on Charcoal, 3.19 on Prussian.</p>' + table(["Render"] + [s for _, s in SURF], rows)
+    return (f'<p class="cap">{E(label)}. Nominal values: 2.96 on Newsprint, 4.17 on White, 4.49 on Charcoal. On Prussian the ampersand is White under Rule 05.3 (treatment D), 13.28:1.</p>'
+            + table(["Render"] + [s for _, s in SURF[:3]], rows))
 
 
 def solid_row(pid):
@@ -324,7 +331,7 @@ def build():
     b7 = P("V5's hinge diagram sets the wordmark under a dotted arc that ends in an open arrowhead, with UNDERSTAND and IMPACT beneath. Its arc keeps a fixed 1.25 px weight at every size (a non-scaling stroke), so it is heavy when small and faint when large, and its labels fall under 13 px below 516 px wide.",
            "The proposal is drawn from Dustin's mockups: the ampersand sits in a circle on a line that joins OATH and ACTION, with a node at each end of each line, and two solid hairline arcs loop around it, clockwise. The upper arc runs from OATH to ACTION, the promise then the act, and the lower arc returns, so the figure reads as a cycle. Each arc ends in one open arrowhead. It keeps V5's rules: the original lettering anchors it, the labels sit under the optical centers of their words, and the ampersand is the master glyph in Pillar Red, here at 1.25 times the cap height in a circle 2.2 times the cap height.",
            f"Every stroke is drawn in units, so line weight scales with the mark. The display master (lines 3.5 units, arcs 2.8 units, labels with a 26-unit cap height) holds 13 px labels from {hd['min_width_px']} px wide, where its lines measure {hd['line_px_at_min']} px and its arcs {hd['arc_px_at_min']} px. Below that, the compact master drops the labels and draws lines and arcs at 6 units, which stay at 1 px or more down to {hc['min_width_px']} px wide. Labels are Charcoal on light surfaces: Stone measures 4.29:1 on Newsprint, under the 4.5:1 that 13 px text needs.")
-    b7 += P("This is V2. My first draft drew the arcs dotted. Atlas V7 draws hypotheses dotted and plausible links dashed, so a dotted or dashed brand line would read as an evidence grade once a reader learns the key. V2 draws them as solid hairlines, and no brand graphic on this board uses a dotted or dashed line. The systems board's five separation rules keep the diagram apart from data figures: words only, never inside a keyed figure, solid hairline arcs, red on the ampersand alone, and “hinge” kept as a brand word. Under the red rule the diagram's ampersand takes the view's working red, as a hinge headline's does.")
+    b7 += P("This is V2. My first draft drew the arcs dotted. Atlas V7 draws hypotheses dotted and plausible links dashed, so a dotted or dashed brand line would read as an evidence grade once a reader learns the key. V2 draws them as solid hairlines, and no brand graphic on this board uses a dotted or dashed line. The systems board's five separation rules keep the diagram apart from data figures: words only, never inside a keyed figure, solid hairline arcs, red on the ampersand alone, and “hinge” kept as a brand word. Under Rule 05.3 the diagram's ampersand is signature red, as an identity mark, and does not count toward the view's working red; the diagram never shares a view with the wordmark and never stands in for the hinge divider.")
     b7 += ('<h3>V5, the first draft and V2</h3><div class="three">' + "".join(
         f'<figure><figcaption>{lab}</figcaption>{img(f"h3__{k}", lab + ", 640 px wide, shown reduced", lazy=False, cls="fit")}</figure>'
         for k, lab in (("v5", "V5: one dotted arc, fixed 1.25 px"), ("draft", "First draft: dotted arcs (withdrawn)"), ("v2", "V2: solid hairline arcs, clockwise"))) +
@@ -337,8 +344,8 @@ def build():
         ("4 Optical balance", "Pass", "The ampersand is centered on its ink in the circle; arcs are concentric with it"),
         ("5 Similarity", "Pass", "Distinct from the lockmark and the Signal Grid: no 3 by 3 field"),
         ("6 Monochrome", "Pass", "One color on all four surfaces"),
-        ("7 Red discipline", "Pass", "The ampersand is the view's working red under the red rule; lines are Stone or Newsprint"),
-        ("8 Contrast", "Pass", "Stone lines on Newsprint 4.29:1, Newsprint lines on Charcoal 13.29:1 and on Prussian 9.42:1. On Prussian the ampersand follows treatment D (item 10)"),
+        ("7 Red discipline", "Pass", "The ampersand is signature red under Rule 05.3, as an identity mark; lines are Stone on light surfaces, Newsprint on Charcoal"),
+        ("8 Contrast", "Pass", "Stone lines on Newsprint 4.29:1, Newsprint lines on Charcoal 13.29:1. On Prussian the renders draw the whole diagram in White, ampersand included, 13.28:1 (treatment D)"),
         ("9 Type", "Pass", f"Labels 13 px or larger at the display master's minimum ({hd['min_width_px']} px)"),
     ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 4, 4, 5, 4], "Brand fidelity is 4 because the circle and the return arc are new to V5's hinge; both come from Dustin's references. Clarity rises to 4 now the arcs are solid.")
     parts.append(section(7, "The hinge diagram", "option", "Recommended: V2", b7))
@@ -357,7 +364,7 @@ def build():
         ("5 Similarity", "Pass", "Compared with the Signal Grid states: Empty has no lever, Active a Verdigris lever; the masters keep those differences"),
         ("6 Monochrome", "Pass", "The lever reads by size in one color"),
         ("7 Red discipline", "Pass", "Red on the lever only"),
-        ("8 Contrast", "Pass, by the red rule", "A red lever on Newsprint is 2.96:1. Under the red rule the lever is signature red and does not count, and its larger size carries its meaning in one color"),
+        ("8 Contrast", "Fail on Newsprint, logotype", "The lever's size carries its meaning in one color. A red lever on Newsprint measures 2.96:1"),
         ("9 Type", "Not applicable", "No type"),
     ]) + "<h3>Rubric</h3>" + scores_html([5, 4, 4, 5, 5, 4], "Brand fidelity is 4: a larger lever at 16 px reverses V5's rule for small sizes.")
     parts.append(section(8, "A lockmark master for small sizes", "defect", "Recommended", b8))
@@ -384,6 +391,8 @@ def build():
         for vk, vl in (("orig", "V5 at its minimum"), ("prop", "Proposal at its minimum")):
             for s, sl_ in SURF:
                 for md, mdl in MODES:
+                    if s == "prussian" and md == "color":
+                        continue
                     cid = f"min__{mid}__{vk}__{s}__{md}"
                     cells.append(f'<figure class="c"><div class="sw s-{s}">{img(cid, f"{lab}, {vl}, {sl_}, {mdl}")}</div><figcaption>{vl.split(" at")[0]}, {sl_}, {mdl.lower()}</figcaption></figure>')
         rows9.append(f'<div class="mrow"><div class="ml"><b>{E(lab)}</b><span>1x</span></div><div class="sizes">{"".join(cells)}</div></div>')
@@ -399,7 +408,7 @@ def build():
         ("4 Optical balance", "Not applicable", "A rule set"),
         ("5 Similarity", "Not applicable", "A rule set"),
         ("6 Monochrome", "Pass", "Minimums hold in one color; checked on all surfaces"),
-        ("7 Red discipline", "Pass", "No change"),
+        ("7 Red discipline", "Pass", "Every minimum on Prussian is shown in one color, White; no red touches Prussian in this grid"),
         ("8 Contrast", "Pass", "Taglines at 13 px in Charcoal or Newsprint clear 4.5:1 on every approved surface"),
         ("9 Type", "Pass", "No tagline under the 13 px floor"),
     ]) + "<h3>Rubric</h3>" + scores_html([4, 4, 5, 5, 5, 4], "L4, L5 and L6 grow a lot. If Dustin wants them smaller, the taglines inside them have to grow relative to the wordmark, which redraws those lockups.")
@@ -421,12 +430,22 @@ def build():
         vals0.append(f'{r["median_contrast"]:.2f} ({int(round(r["share_at_or_above_3"] * 100))}%)' if r and "median_contrast" in r else "n/a")
     rows10.insert(0, ["V5: red at every size"] + vals0)
     nom = MK["prussian_nominal"]
-    b10 = P(f"V5 sets White letters and a red ampersand on Prussian, and its own text says red there “stays at display size or goes mono”, while its color matrix shows small red ampersands. Pillar Red measures {nom['Pillar Red']}:1 on Prussian, and antialiasing pulls the small sizes under 3:1.",
-            'The red rule, as the creative director wrote it for every board: <q>' + E(RED_RULE) + '</q>',
-            "Under that rule treatments A and C put red on Prussian and fall away. B and D stay. I recommend D, White, for identity marks on Prussian, the color V5 already gives the letters. Data graphics keep the token table's Newsprint.",
-            f"Four treatments are drawn and measured. Nominal contrast on Prussian: Pillar Red {nom['Pillar Red']}, Newsprint {nom['Newsprint']}, White {nom['White']}. The keyline in option C is Newsprint, and Pillar Red against Newsprint is {nom['Pillar Red on Newsprint keyline']}:1, so the keyline carries the edge while the red reads as a fill.")
-    b10 += '<p class="cap">Median contrast of the ampersand’s pixels against Prussian, after rendering, with the share of its pixels at 3:1 or more in brackets.</p>' + table(["Treatment", "16 px", "24 px", "48 px", "96 px"], rows10)
-    b10 += "".join(pair_block(p) for p in pairs_of(10))
+    rows10 = [[("Ruled out by Rule 05.3: " if lab[0] in "VAC" else "") + lab] + vals for lab, vals in [(r[0], r[1:]) for r in rows10]]
+    b10 = P(f"V5 sets White letters and a red ampersand on Prussian, and its own text says red there \u201cstays at display size or goes mono\u201d, while its color matrix shows small red ampersands. Pillar Red measures {nom['Pillar Red']}:1 on Prussian, and antialiasing pulls the small sizes under 3:1.",
+            'Rule 05.3, the red rule: <q>' + E(RED_RULE) + '</q>',
+            "Under the rule's last sentence, treatments A (red at display size only) and C (red with a keyline) fall away, and so does V5's own red. Two options remain: B, a Newsprint ampersand with White letters, and D, everything in White. I recommend D for identity marks on Prussian, the color V5 already gives the letters. Data graphics keep the token table's Newsprint.",
+            f"Nominal contrast on Prussian: Newsprint {nom['Newsprint']}, White {nom['White']}. The measurements of the ruled-out treatments stay in the table for the record.")
+    b10 += '<p class="cap">Median contrast of the ampersand\u2019s pixels against Prussian, after rendering, with the share of its pixels at 3:1 or more in brackets.</p>' + table(["Treatment", "16 px", "24 px", "48 px", "96 px"], rows10)
+    for pid, lab in (("p10-newsprint", "Option B. Newsprint ampersand, White letters"), ("p10-mono", "Option D. One color, all White (recommended)")):
+        rowc = "".join(f'<figure class="c"><div class="sw s-prussian">{img(f"{pid}__prop__prussian__color__{z}", f"{lab} at {z} px")}</div><figcaption>{z}</figcaption></figure>' for z in PP.SIZES)
+        zc = "".join(f'<figure><figcaption>{z} px, 4x</figcaption>{img(f"{pid}__prop__prussian__color__{z}", f"{lab} at {z} px, magnified", zoom=4)}</figure>' for z in (16, 24))
+        b10 += (f'<div class="pair" id="{pid}"><h3>{E(lab)}</h3><div class="disp"><figure><figcaption>Display size, 120 px tall, on Prussian</figcaption>'
+                f'<div class="scroll" tabindex="0" role="region" aria-label="{E(lab)} at display size">{img(f"{pid}__prop__prussian__color__display", lab + " at display size", lazy=False)}</div></figure></div>'
+                f'<div class="zgrid"><div class="scroll zrow" tabindex="0" role="region" aria-label="{E(lab)} magnified">{zc}</div></div>'
+                f'<div class="scroll" tabindex="0" role="region" aria-label="{E(lab)} at 1x"><div class="sizes">{rowc}</div></div></div>')
+    ro = "".join(f'<figure><figcaption>Ruled out by Rule 05.3: {E(t)}</figcaption><img src="phase-1/identity/png/p10-ruled-out/{k}__gray.png" width="216" height="24" alt="{E(t)}, ruled out, shown in grayscale"></figure>'
+                 for k, t in (("v5", "V5, red at every size"), ("a", "A, red at display size only"), ("c", "C, red with a Newsprint keyline")))
+    b10 += f'<div class="ruled"><p class="cap">Outside the option set. Small specimens at 48 px, shown here at half size and in grayscale, so no red touches Prussian on this board.</p><div class="sizes">{ro}</div></div>'
     b10 += "<h3>Craft checks, option D</h3>" + checks_html([
         ("1 Silhouette at 16 px", "Pass", "Same mark"),
         ("2 Pixel fit", "Not applicable", "Color only"),
@@ -466,12 +485,12 @@ def decisions():
         ("2. Hinge gaps", "2a: 0.10x nearest ink. 2b: equal white area. Keep V5", "2b. It centers the ampersand by the white the eye sees and keeps the wordmark's width."),
         ("3. Wordmark masters for display, 24 and 16 px", "Accept, accept without the larger small-size ampersand, or decline", "Accept all three, led by ampersand B's small masters, with the ampersand at full box height at 16 and 24 px. The A versions are the fallback. The 16 px logo stops clogging."),
         ("4 and 5. The ampersand", "A: tune the Lora glyph. B: the drawn ampersand. Keep V5", "B as the direction, refined in Phase 2, with A as the fallback. B makes the hinge Oath & Action's own and holds at 16 px; A fixes the small sizes but stays a stock glyph."),
-        ("6. Wordmark width", "Condensed at 7.5 to 1, or the current proportions", "Condensed 7.5 to 1 as the Phase 2 direction, after a drawing pass and a narrow 16 px ampersand."),
-        ("7. The hinge diagram", "V2 with solid arcs, V2 without the return arc, or keep V5", "V2. It follows your mockups, keeps V5's rules, scales its lines and uses no dotted or dashed line."),
+        ("6. Wordmark width", "Condensed at 7.5 to 1, or the current proportions", "Draw it, with today's width in force until Gate 2."),
+        ("7. The hinge diagram", "V5's dotted arc; two-way dashed arcs; V2 with solid arcs; V2 without the return arc", "V2 with solid arcs, running clockwise, with the five separation rules."),
         ("8. Lockmark small masters", "Accept or decline", "Accept. Nodes read at 16 and 24 px and the cross fills whole pixels."),
         ("9. Minimum sizes", "Accept, or keep V5's", "Accept. One rule, no undefined range, no tagline under 13 px."),
-        ("The red rule", "Adopt, or keep each board's wording", "Adopt: " + RED_RULE),
-        ("10. Red ampersand on Prussian", "A: red at display size only. B: Newsprint ampersand. C: red with a keyline. D: one color", "D, White, for identity marks on Prussian. Red never sits on Prussian, and White measures 13.28:1 there at every size."),
+        ("Rule 05.3, the red rule", "Adopt, or keep each board's wording", "Adopt: " + RED_RULE),
+        ("10. Red ampersand on Prussian", "B: Newsprint ampersand. D: one color, White. A and C are ruled out by Rule 05.3", "B and D remain under the red rule; D recommended. White measures 13.28:1 on Prussian at every size."),
     ]
     tr = "".join(f"<tr><th scope=\"row\">{E(a)}</th><td>{E(b)}</td><td>{E(c)}</td></tr>" for a, b, c in rows)
     return ('<section id="decisions" aria-labelledby="h-dec"><div class="decision"><p class="eyebrow">Decisions for Gate 1</p><h2 id="h-dec">What I need you to decide</h2>'
@@ -519,6 +538,7 @@ table.checks td:nth-child(2){white-space:nowrap}
 .res{font-weight:700}.res.pass{color:#1E4F47}.res.fail{color:#9E1B26}.res.na{color:var(--muted)}
 .score{font:800 1.25rem/1 var(--display)}.score.low{color:#9E1B26}
 .three{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.three figure{margin:0}.three img.fit{width:100%;height:auto;max-width:100%}
+.ruled{margin:16px 0;padding:12px;border-top:1px solid var(--rule)}.ruled figure{margin:0}
 .constr{margin:16px 0}
 .constr svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--rule)}
 .spec{padding:20px;display:grid;gap:12px;justify-items:start}

@@ -28,7 +28,13 @@ MEAS = json.loads((ROOT / "work/boards/phase-1/symbols/20261021_Symbol-Family-Me
 CHECK = ROOT / "work/boards/phase-1/symbols/20261021_Symbol-Family-Board-Check.json"
 SCRATCH = M.SCRATCH
 NEWS, CHAR, WHITE, PRUS, RED, STONE, VERD = M.NEWS, M.CHAR, M.WHITE, M.PRUS, M.RED, M.STONE, M.VERD
-RED_RULE = "The wordmark's ampersand and the lockmark's lever are signature red and do not count. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. A hinge headline's ampersand uses the view's working red. The hinge divider's ampersand is Charcoal. The Act handle is red only when the Act mark is itself the call to act, as on a social tile. Red never sits on Prussian."
+def _rule_0503():
+    log = (ROOT / "work/ledger/20261020_Decision-Log.md").read_text()
+    row = next(l for l in log.splitlines() if l.startswith("| D1-26 |"))
+    return re.search(r'quoted exactly on every board: "(.*?)" \|', row).group(1)
+
+
+RED_RULE = _rule_0503()
 PL = {"explain": "Explain", "track": "Track", "connect": "Connect", "act": "Act"}
 TL = {"filled": "Filled", "line": "Line", "tile": "Tile"}
 DL = {"A": "A, geometric solid", "B": "B, line with one accent"}
@@ -182,7 +188,7 @@ def checks(d, t, p):
     out.append((ok, "Node stays separate in Charcoal on Newsprint and Newsprint on Charcoal, 16 and 24 px" if ok else "Node merges with the body in one color"))
     # 7 red discipline
     if p == "act":
-        out.append((True, "Red only on the handle, and only where the Act mark is the call to act"))
+        out.append((True, "Red only on the handle, and only where the Act mark is the call to act (Rule 05.3)"))
     else:
         out.append((True, "No red"))
     # 8 contrast
@@ -603,32 +609,35 @@ td.n,th.n{text-align:right}
 .chip{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.9375rem}
 .tag.rec{background:var(--prussian);color:var(--newsprint);border-color:var(--prussian)}
 .decision h2{color:var(--newsprint)}
-.posts{display:grid;grid-template-columns:repeat(3,minmax(0,360px));gap:24px;margin:14px 0 8px}
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:24px 28px;margin:14px 0 8px}
 .post{width:100%;max-width:360px;aspect-ratio:4/5;container-type:inline-size;border:1px solid var(--rule)}
-.po-in{height:100%;padding:6cqw 7cqw;display:flex;flex-direction:column}
+.po-in{height:100%;padding:5.5cqw 6.5cqw 0;display:flex;flex-direction:column}
 .po-wm{height:11cqw;display:flex;align-items:center}
-.po-hd{margin:0 0 3cqw}
-.po-hinge{display:block;width:72cqw;height:auto;color:var(--charcoal)}
 .po-wmsvg{display:block;width:76cqw;height:auto;color:var(--charcoal)}
 .po-cover{width:76cqw;height:11cqw;background:#B3B0A8;display:flex;align-items:center;justify-content:center}
-.po-cover span{font:600 3.8cqw/1 var(--body);color:var(--charcoal)}
-.po-act{display:flex;align-items:center;gap:4cqw;margin-top:4cqw}
-.po-mark{width:17cqw;height:17cqw}
-.po-k{font:700 4.4cqw/1 var(--body);letter-spacing:.1em;text-transform:uppercase;margin:0}
-.po-head{font:800 7.4cqw/1.05 var(--display);letter-spacing:-.02em;margin:4cqw 0 3cqw;text-wrap:balance}
-.po-steps{margin:0;padding-left:5.5cqw;font:400 3.9cqw/1.4 var(--body)}
+.po-cover span{font:600 4.4cqw/1 var(--body);color:var(--charcoal)}
+.po-k{font:600 4cqw/1.2 var(--body);margin:4.5cqw 0 0}
+.po-head{font:800 7.4cqw/1.05 var(--display);letter-spacing:-.02em;margin:2.5cqw 0 3cqw;text-wrap:balance}
+.po-hamp{display:inline-block;height:0.74em;width:auto;vertical-align:-0.01em}
+.po-div{display:flex;align-items:center;gap:2.5cqw;margin:0 0 4cqw}
+.po-div span{flex:1;height:1px;background:var(--charcoal)}
+.po-damp{display:block;height:6cqw;width:auto}
+.po-do{display:flex;gap:3cqw;align-items:flex-start}
+.po-mark{flex:0 0 auto;width:13cqw;height:13cqw}
+.po-steps{margin:0;padding-left:5cqw;font:400 3.9cqw/1.36 var(--body)}
 .po-steps li{margin:0 0 1.2cqw}
-.po-row{margin-top:auto;display:flex;justify-content:space-between;border-top:1px solid var(--rule);padding-top:3.5cqw}
-.po-row span{display:flex;flex-direction:column;align-items:center;gap:1.5cqw}
-.po-row svg{width:6.7cqw;height:6.7cqw}
-.po-row em{font:600 3.7cqw/1 var(--body);font-style:normal}
+.po-steps .tag{font-size:13px}
+.po-band{margin:auto -6.5cqw 0;padding:3.2cqw 6.5cqw;display:flex;align-items:center;justify-content:space-between}
+.po-path{display:flex;align-items:center}
+.po-path svg{width:16px;height:16px}
+.po-path i{display:block;width:4cqw;height:1px;background:var(--newsprint);margin:0 1cqw}
+.po-lock{display:block;width:24px;height:24px;color:var(--newsprint)}
 .decision ol{padding-left:1.2em;margin:0}
 .decision li{margin:0 0 14px;max-width:80ch}
 .decision .rec{display:block;margin-top:4px}
 .fail-list li{margin-bottom:6px}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 @media (max-width:1100px){.matrix{grid-template-columns:repeat(2,minmax(0,1fr))}.sk-grid{grid-template-columns:1fr}}
-@media (max-width:1100px){.posts{grid-template-columns:repeat(2,minmax(0,360px))}}
 @media (max-width:760px){.posts{grid-template-columns:minmax(0,360px)}.comps{grid-template-columns:1fr}.two{grid-template-columns:1fr}.topicrow{grid-template-columns:1fr}}
 @media (max-width:560px){.matrix{grid-template-columns:1fr}.mgrid{grid-template-columns:58px 16px 24px 48px 96px;gap:8px}.ah{font-size:1.625rem}}
 """
@@ -646,50 +655,73 @@ def wordmark_inline(kind, label):
     return s.replace("<svg ", f'<svg class="po-wmsvg" role="img" aria-label="{e(label)}" ', 1)
 
 
-HINGE_FILE = IDENT / "07-hinge/20261021_Hinge-Compact-Master_V2.svg"
+AMP_FILES = {"current": IDENT / "05-amp-b/20261021_Amp-B-Drawn-Master.svg",
+             "condensed": IDENT / "05-amp-b/20261021_Amp-B-Narrow-For-Condensed.svg"}
+LOCK_24 = IDENT / "08-lockmark/20261021_Lockmark-24px-Master.svg"
+STEP1 = "Find the hearing: Tuesday, March 9, 2027, 10 a.m., Senate Housing Committee, Room 204, State Capitol."
 
 
-def hinge_divider(covered=False):
-    """The V2 compact hinge diagram, used as a divider: ampersand Charcoal, lines Stone (red rule)."""
-    h = HINGE_FILE.read_text()
-    h = re.sub(r"<title>.*?</title>", "", h)
-    if covered:
-        cover = '<rect x="-12" y="-14" width="394" height="134" fill="#B3B0A8"/><rect x="922" y="-14" width="511" height="134" fill="#B3B0A8"/>'
-        h = re.sub(r"</svg>\s*$", cover + "</svg>", h)
-    lab = "Hinge diagram V2 used as a divider" + (", with its words covered" if covered else "")
-    return h.replace("<svg ", f'<svg class="po-hinge" role="img" aria-label="{e(lab)}" style="--amp:#121212;--line:#5D636D" ', 1)
+def amp_b(kind, cls, color, label="and"):
+    """Ampersand B (narrow B for the condensed post), inlined from the identity board."""
+    a = AMP_FILES[kind].read_text()
+    a = re.sub(r"<title>.*?</title>", "", a)
+    a = re.sub(r' id="[^"]*"', "", a)
+    return a.replace("<svg ", f'<svg class="{cls}" role="img" aria-label="{e(label)}" style="color:{color}" ', 1)
 
 
-def post(kind, covered=False):
+def lockmark_24():
+    lk = re.sub(r"<title>.*?</title>", "", LOCK_24.read_text())
+    return lk.replace("<svg ", '<svg class="po-lock" width="24" height="24" role="img" aria-label="Lockmark, 24 px master" ', 1)
+
+
+def post(kind, covered=False, hinge=False):
     if covered:
         wm = '<div class="po-cover"><span>Wordmark covered</span></div>'
-        lab = "Portrait post with the wordmark covered"
+        lab = "Portrait Act post with the wordmark covered"
     else:
-        wm = wordmark_inline(kind, "Oath & Action wordmark with ampersand B" + (", condensed 7.5 to 1" if kind == "condensed" else ""))
-        lab = "Portrait Act post with the wordmark" + (" at the condensed width" if kind == "condensed" else " at today's width")
-    row = "".join(f'<span>{mark("A", "filled", p, 24)}<em>{PL[p]}</em></span>' for p in F.PILLARS)
-    hinge = f'<div class="po-hd">{hinge_divider(covered)}</div>' if HINGE_V2.exists() else ""
+        wm = wordmark_inline(kind, "Oath & Action wordmark with ampersand B" + (", condensed 7.5 to 1, narrow B" if kind == "condensed" else ""))
+        lab = "Portrait Act post" + (" with a hinge headline" if hinge else "") + (" with the wordmark at the condensed width" if kind == "condensed" else "")
+    if hinge:
+        head = (f'The open meeting law {amp_b(kind, "po-hamp", "#E63946")} the posted agenda.')
+        act = mark("A", "filled", "act", 96, "po-mark", label="Act mark")
+    else:
+        head = "How to speak at a public hearing in your state"
+        act = mark("A", "filled", "act", 96, "accent po-mark", label="Act mark, the call to act")
+    divider = f'<div class="po-div" role="separator" aria-label="Hinge divider"><span></span>{amp_b(kind, "po-damp", "#121212")}<span></span></div>'
+    path = "".join(f'{mark("A", "filled", q, 16, label=PL[q])}' + ('<i aria-hidden="true"></i>' if i < 3 else "") for i, q in enumerate(F.PILLARS))
     return f'''<div class="post s-newsprint" role="group" aria-label="{e(lab)}"><div class="po-in">
   <div class="po-wm">{wm}</div>
-  <div class="po-act">{mark("A", "filled", "act", 96, "accent po-mark", label="Act mark, the call to act")}<p class="po-k">Act</p></div>
-  <p class="po-head">How to speak at a public hearing in your state</p>
-  {hinge}
-  <ol class="po-steps"><li>Find the hearing date.</li><li>Sign up to speak.</li><li>Say what the rule changes for you.</li></ol>
-  <div class="po-row">{row}</div>
+  <p class="po-k">Act · State hearings</p>
+  <p class="po-head">{head}</p>
+  {divider}
+  <div class="po-do">{act}<ol class="po-steps"><li>{e(STEP1)} <span class="tag">Illustrative</span></li><li>Sign up to speak, in person or in writing.</li><li>Say who you are and what the rule changes for you.</li></ol></div>
+  <div class="po-band s-charcoal"><span class="po-path" role="img" aria-label="Explain, Track, Connect, Act, joined through their nodes">{path}</span>{lockmark_24()}</div>
 </div></div>'''
 
 
 def composite():
-    hinge_note = ("The identity board's V2 hinge diagram, with solid arcs, sits between the headline and the steps as a divider, so its ampersand is Charcoal. In the covered post its words are covered too, and its ring, nodes, arcs and ampersand stay visible." if HINGE_V2.exists() else
-                  "The hinge diagram is left out: its revised solid drawing (V2) was not ready when this board was built.")
-    figs = [(post("current"), "As designed. Wordmark with ampersand B at today's width (identity board items 3 and 5)."),
-            (post("condensed"), "As designed. Wordmark at the condensed 7.5 to 1 width (identity board item 6). The hinge letters stay at today's width; Phase 2 draws a condensed hinge only if Dustin approves the condensed width."),
-            (post("current", covered=True), "Wordmark covered, with the hinge diagram's words. Judge whether the post still reads as Oath & Action.")]
-    cells = "".join(f'<figure class="comp">{p_}<figcaption>{e(c)}</figcaption></figure>' for p_, c in figs)
-    return (f'<section id="composite" aria-labelledby="h-co"><h2 id="h-co">11. The whole recommended set in one post</h2>'
-            "<p>The Act post from section 3, rebuilt at 1080 by 1350, the portrait size, with the set the studio recommends: the identity board's wordmark with ampersand B, Direction A's marks and the red rule. The first post sets the wordmark at today's width and the second at the condensed 7.5 to 1 width. The third covers the wordmark, so you can judge whether the system still reads as Oath &amp; Action without it. " + e(hinge_note) + "</p>"
+    figs = [(post("current"), "1. Today's width: wordmark and divider with ampersand B.",
+             "Working red: one, the Act handle, because the Act mark is the call to act. Signature red, uncounted: the wordmark's ampersand and the lockmark's lever."),
+            (post("condensed"), "2. Condensed 7.5 to 1: wordmark and divider with the narrow B.",
+             "Working red: one, the Act handle. Signature red, uncounted: the wordmark's ampersand and the lockmark's lever."),
+            (post("current", covered=True), "3. Wordmark covered.",
+             "Working red: one, the Act handle. Signature red, uncounted: the lockmark's lever."),
+            (post("current", hinge=True), "4. Hinge headline: its ampersand B is the working red, and the Act handle turns Charcoal.",
+             "Working red: one, the headline's ampersand. Signature red, uncounted: the wordmark's ampersand and the lockmark's lever.")]
+    cells = "".join(f'<figure class="comp">{p_}<figcaption><strong>{e(t)}</strong> {e(c)}</figcaption></figure>' for p_, t, c in figs)
+    return ('<section id="composite" aria-labelledby="h-co"><h2 id="h-co">11. The whole recommended set in one post</h2>'
+            "<p>The Act post from section 3, rebuilt at 1080 by 1350, the portrait size, with the set the studio recommends: the identity board's wordmark with ampersand B, Direction A's marks, the lockmark and Rule 05.3. Every ampersand is drawn from ampersand B, and the condensed post uses the narrow B. Rule 05.3 keeps the hinge diagram out of any view with the wordmark, so the hinge divider takes its place: a hairline broken by a small ampersand B in Charcoal, the ink of the Newsprint surface. The lockmark sits at bottom right. The board shows each post at one third, where the lockmark draws at 24 px from the identity board's 24 px master; the 1080 px export would use V5's master, which serves 48 px and up.</p>"
             f'<div class="posts">{cells}</div>'
-            '<p class="cap"><span class="tag">Illustrative</span> Headline and steps are example copy. Posts are shown at one third. Red: the wordmark\'s ampersand is signature red and does not count. The one working red is the Act handle, because the Act mark is the call to act. The pillar row and the hinge divider stay Charcoal. The wordmark and hinge files are identity board proposals, inlined unchanged apart from the divider colors the red rule sets.</p></section>')
+            '<p class="cap"><span class="tag">Illustrative</span> The headline, the date, place and office in step 1, and the steps are example copy. Version 4 uses the editor\u2019s tested hinge pair 8. The wordmark, ampersand and lockmark files are identity board proposals, inlined unchanged.</p>'
+            "<h3 style=\"margin-top:18px\">The covered test, run again</h3>"
+            "<p>With the wordmark covered, version 3 still reads as Oath &amp; Action through four things. The serif ampersand B breaks the hinge divider between the headline and the steps. The lockmark at bottom right carries its grid of nodes and the red lever. The same node appears in the Act handle, in each pillar mark along the band and in the lockmark, so the eye finds one system. Two red points remain: the Act handle inside its Charcoal ring, and the lever on the Charcoal band; Rule 05.3 counts only the handle. Without the divider, the band and the lockmark, the post would fall back to a headline over a numbered list.</p>"
+            "<h3>What changed against the generic list</h3><ul>"
+            "<li><strong>The tab-bar row</strong> became a Charcoal band. The four pillar marks sit on one line through their nodes and read as a sequence, the way the hinge row does. The lockmark closes the band.</li>"
+            "<li><strong>The tracked ACT badge</strong> became a sentence-case kicker, \u201cAct \u00b7 State hearings\u201d. The Act mark moved beside the steps, where it stands as the door into them and earns its red handle as the call to act.</li>"
+            "<li><strong>The flat card</strong> now has three structural parts: the divider, the steps beside the Act mark, and the band.</li>"
+            "<li><strong>Steps</strong> now name a date, a place and an office, labeled Illustrative.</li>"
+            "<li><strong>Left as it is:</strong> the headline face. Inter Tight is the locked display face, so the post keeps it; version 4 shows the hinge headline beside the plain one so Dustin can compare them.</li>"
+            "</ul></section>")
 
 
 def build():
@@ -750,7 +782,7 @@ def build():
                 ("Terminals and joins", "Butt or square ends, mitered joins", "Round ends, round joins"),
                 ("Corners", "Square", "2 px radius at 24, 1.5 px at 16"),
                 ("Tiles", "Rounded square, radius one sixth of the side; mark at two thirds; 10 px micro drawing inside the 16 px tile", "Same plate; the line master sits inside from 24 px"),
-                ("Color", "One color. The Act handle turns red only where the Act mark is the call to act (the red rule, section 12), inside a Charcoal ring on light surfaces and never on Prussian", "Same")]:
+                ("Color", "One color. The Act handle turns red only where the Act mark is the call to act (Rule 05.3), inside a Charcoal ring on light surfaces and never on Prussian", "Same")]:
         H.append(f"<tr><td>{e(row[0])}</td><td>{e(row[1])}</td><td>{e(row[2])}</td></tr>")
     H.append("</tbody></table></div></section>")
 
@@ -782,7 +814,7 @@ def build():
             H.append(matrix(d, t))
             H.append(zooms(d, t))
         H.append(f"<h4>{d}. The red handle, where the Act mark is the call to act</h4>")
-        H.append("<p>Under the red rule in section 12, the Act handle is red only when the Act mark is itself the call to act, as on a social tile, and the handle then spends the view's one working red. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Red never sits on Prussian. At 16 px the handle is 2 px, too small to carry color, so Act stays one color there.</p>")
+        H.append("<p>Under Rule 05.3, quoted in section 12, the Act handle is red only when the Act mark is itself the call to act, as on a social tile, and the handle then spends the view's one working red. On Newsprint and White the handle sits inside a 1 px Charcoal ring, because red on Newsprint measures 2.96:1 and an informative mark needs 3:1. On Charcoal the seat is cut out and red meets Charcoal at 4.49:1. Red never sits on Prussian. At 16 px the handle is 2 px, too small to carry color, so Act stays one color there.</p>")
         r24 = min(MEAS["red"][f"{d}|{t}|24|{s}"]["ring_vs_red"] for t in ("filled", "line") for s in ("newsprint", "white", "charcoal"))
         H.append(accent_panel(d))
         H.append(f'<p class="cap">Measured on the rendered pixels: the ring around the red handle reads {num(r24)}:1 or better against the red at 24 px, where the 1 px ring is antialiased, and 4.49:1 at 48 px.</p>')
@@ -879,7 +911,7 @@ def build():
         ("Optical balance", "At 96 px, ink sits within 20 percent of the median of its set, and the center of mass sits within 12 percent of the field center on both axes."),
         ("Similarity", "Every score against another pillar in the same set, and against each Phase 0 watch item, is under 0.60. Tiles are compared inside the plate and inherit the watch-item results of the drawing they hold. Topic against pillar must be under 0.70, because the two never share a slot."),
         ("Monochrome", "Rendered in Charcoal on Newsprint and in Newsprint on Charcoal, the node is its own connected shape at 16 and 24 px."),
-        ("Red discipline", "Red appears only on the Act handle, and only where the Act mark is the call to act, as the red rule in section 12 sets out. Checked in the drawings and in every composition on this board."),
+        ("Red discipline", "Red appears only on the Act handle, and only where the Act mark is the call to act, as Rule 05.3 sets out. Checked in the drawings and in every composition on this board."),
         ("Contrast", "Ink against every surface (WCAG ratio), and the ring around the red handle against the red, measured on rendered pixels."),
         ("Type", "Applies to compositions. Results for the board's headings and the composition headlines are listed below.")]
     H.append("<h3 style=\"margin-top:18px\">How each check was run</h3><ul>" + "".join(f"<li><strong>{e(a)}.</strong> {e(b)}</li>" for a, b in tests) + "</ul>")
@@ -941,7 +973,7 @@ def build():
         ("Symbol direction", "A, geometric solid; or B, line with one accent.", "A. It leads with the filled master, which passes the 16 px silhouette test for all four pillars. B leads with the line, which fails it for Track and Connect."),
         ("The four skeletons", "Approve the exploded square, the stair, the split circle and the open door, or ask for changes to any one.", "Approve, with one Phase 2 change: raise Track's stair so its mass sits nearer the center."),
         ("The shared element", "One node on the center line in every mark; the ampersand's crossing; a ring; a baseline bar.", "The node. It ties the marks to the hinge and the Signal Grid without adding a shape, and leaves the ampersand to the wordmark."),
-        ("Red in the pillar marks", "Adopt the red rule, which also settles whether the Act handle counts; or red in all four marks, as in study 06.", "Adopt the red rule. " + RED_RULE),
+        ("Red in the pillar marks", "Adopt Rule 05.3, which also settles whether the Act handle counts; or red in all four marks, as in study 06.", "Adopt Rule 05.3, word for word as decision D1-26 sets it: \u201c" + RED_RULE + "\u201d"),
         ("Line treatment at 16 px", "Allow line marks at 16 px; or start the line companion at 24 px.", f"Start at 24 px. {LINE16} fail the 16 px silhouette test, and filled masters pass it in both directions."),
         ("Topic grammar", "Redraw all twenty topics in Direction A's grammar, one node per subject; or keep V5's topic set.", "Redraw in Phase 2, starting with the four pairs Phase 0 named and Ballot against Bill."),
         ("Sanctioned treatments", "Approve the map in section 7, including hand-drawn at 96 px and up, isometric for layer diagrams only, tiles for avatars and series, and the 12 percent pattern limit behind text.", "Approve. Each treatment gets one job and a minimum size a builder can check."),

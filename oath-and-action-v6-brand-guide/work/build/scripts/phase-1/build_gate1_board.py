@@ -338,12 +338,19 @@ need(l_note, "L note missing")
 
 s5 = section(sections, "5. ")
 fix_head, fix_rows = md_table(s5, "| ID | Fix |")
-need([r[0] for r in fix_rows] == ["I1", "I2", "I3", "I7", "I8", "S9"], "fix IDs changed")
 fix_after = [p.strip() for p in s5.split("\n\n") if p.strip() and not p.strip().startswith("|")]
 
 s6 = section(sections, "6. ")
 set_head, set_rows = md_table(s6, "| ID | Question |")
-need(len(set_rows) == 22, f"expected 22 recommendations, found {len(set_rows)}")
+
+WORDS = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty".split()
+
+
+def count_word(n):
+    if n < len(WORDS):
+        return WORDS[n]
+    tens = {2: "twenty", 3: "thirty", 4: "forty"}
+    return tens[n // 10] + ("-" + WORDS[n % 10] if n % 10 else "") if n // 10 in tens else str(n)
 
 s3 = section(sections, "3. ")
 s7 = section(sections, "7. ")
@@ -355,27 +362,36 @@ board_files = re.findall(r"^- `(2026\d{4}_[^`]+\.html)`", report, flags=re.M)
 need(len(board_files) == 5, "five board files expected in the report header")
 
 
-def find_sentence(text, pattern):
-    m = re.search(pattern, text)
-    need(m, f"sentence not found: {pattern}")
-    return m.group(0)
+def sentences(text):
+    flat = " ".join(l.strip() for l in text.split("\n") if l.strip() and not l.startswith(("|", ">", "#")))
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+(?=[A-Z\"'])", flat) if s.strip()]
 
 
-def find_risk(prefix):
-    hits = [r for r in risks if r.startswith(prefix)]
-    need(len(hits) == 1, f"risk not found: {prefix}")
-    return hits[0]
-
-
+# What each call costs, as the report words it. Each entry lists where to look, in order: a risk bullet
+# that starts with the given words, or a prose sentence matching the pattern. If none matches after the
+# report is edited, the builder takes the call's first sentence that names a cost, and warns.
 COSTS = {
-    "1": lambda: find_risk("Ampersand B is a first drawing."),
-    "2": lambda: find_sentence(call_prose["2"][1], r"It costs double work[^.]*\."),
-    "3": lambda: find_sentence(call_prose["3"][1], r"The display master holds[^.]*\."),
-    "4": lambda: find_sentence(call_prose["4"][1], r"The cost is that[^.]*\."),
-    "5": lambda: find_sentence(call_prose["5"][1], r"A's Act mark at 16 px[^.]*\."),
-    "6": lambda: find_risk('"From spectators to stewards." with no role'),
-    "7": lambda: find_sentence(call_prose["7"][1], r"Each position piece puts[^.]*\."),
+    "1": [("risk", "Ampersand B is a first drawing"), ("prose", r"fallback|fails")],
+    "2": [("prose", r"\bcosts?\b"), ("risk", "A condensed drawing pass")],
+    "3": [("prose", r"compact master drops"), ("prose", r"\bcosts?\b")],
+    "4": [("prose", r"\bThe cost\b|\bcosts?\b"), ("risk", "Under the red rule")],
+    "5": [("prose", r"A's Act mark at 16 px"), ("prose", r"\btests?\b")],
+    "6": [("risk", '"From spectators to stewards." with no role'), ("prose", r"\bcosts?\b")],
+    "7": [("prose", r"puts the nonpartisan standing at stake"), ("risk", "Each position piece")],
 }
+
+
+def cost(n):
+    prose = sentences(call_prose[n][1])
+    for kind, key in COSTS.get(n, []) + [("prose", r"\bcosts?\b|\bat stake\b|\bloses?\b")]:
+        if kind == "risk":
+            hits = [r for r in risks if r.startswith(key)]
+        else:
+            hits = [s for s in prose if re.search(key, s)]
+        if hits:
+            return hits[0]
+    warn(f"call {n}: no cost sentence found in the report; the board says so")
+    return "The report names no cost for this call."
 
 EVIDENCE = {
     "1": [(IDENTITY_BOARD, "items 4 and 5", "#item-4, #item-5")],
@@ -422,20 +438,44 @@ def spec_figure(inner, caption, cls=""):
 
 # ---------------------------------------------------------------- one identity
 
+MANIFEST = json.load(open(os.path.join(IMG, "manifest.json"), encoding="utf-8"))
+
+
+def captured(prefix):
+    """Captured files whose names start with prefix, in capture order, with their recorded info."""
+    names = sorted((k for k in MANIFEST if k.startswith(prefix)), key=lambda k: int(re.search(r"(\d+)\.\w+$", k).group(1)))
+    need(names, f"no captured images named {prefix}*; run capture_gate1_images.js")
+    return [(os.path.join(IMG, k), MANIFEST[k].get("info", {})) for k in names]
+
+
+COMPOSITE_INTRO = []
+
+
 def composite():
     sec = board_section(symb, "composite")
-    caps = [tidy(strip_tags(c)) for c in re.findall(r'<figure class="comp">.*?<figcaption>(.*?)</figcaption>', sec, flags=re.S)]
-    need(len(caps) == 3, "composite captions")
     note = re.search(r'<p class="cap"><span class="tag">Illustrative</span>(.*?)</p>', sec, flags=re.S)
-    need(note, "composite note")
-    alts = [
-        "Portrait Act post on Newsprint. At the top, the wordmark with ampersand B at today's width. Below it the Act mark with its red handle and the word ACT, the headline How to speak at a public hearing in your state, the V2 hinge diagram as a divider with a Charcoal ampersand, three numbered steps, and a row of the four pillar marks labeled Explain, Track, Connect and Act.",
-        "The same portrait Act post with the wordmark at the condensed 7.5 to 1 width, which stands taller in the same space. Everything below the wordmark is unchanged.",
-        "The same portrait Act post with the wordmark covered by a gray bar and the hinge diagram's words covered. The Act mark, the hinge ring, nodes, arcs and ampersand, the steps and the pillar row stay visible.",
-    ]
-    files = ["post-today-width.jpg", "post-condensed-width.jpg", "post-wordmark-covered.jpg"]
-    figs = "".join(f'<figure>{img(os.path.join(IMG, f), a, scale=2)}<figcaption class="cap">{esc(c)}</figcaption></figure>' for f, a, c in zip(files, alts, caps))
-    return f'<div class="posts">{figs}</div><p class="cap"><span class="illus">Illustrative</span> {esc(tidy(strip_tags(note.group(1))))}</p>'
+    posts = captured("post-")
+    figs = []
+    for path, info in posts:
+        label = info.get("label") or "Portrait Act post"
+        bits = [f"{label}, 1080 by 1350 on Newsprint."]
+        if info.get("covered"):
+            bits.append("The wordmark is covered by a gray bar.")
+        if info.get("kicker"):
+            bits.append(f"Kicker: {info['kicker']}.")
+        if info.get("head"):
+            bits.append(f"Headline: {info['head'].rstrip('.')}.")
+        shows = list(info.get("named", []))
+        if info.get("steps"):
+            shows.append(f"{count_word(info['steps'])} numbered steps")
+        if shows:
+            bits.append("It shows " + (", ".join(shows[:-1]) + " and " + shows[-1] if len(shows) > 1 else shows[0]) + ".")
+        alt = " ".join(bits)
+        figs.append(f'<figure>{img(path, alt, scale=2, cls="fit")}<figcaption class="cap">{esc(tidy(info.get("caption", "").strip()))}</figcaption></figure>')
+    note_html = f'<p class="cap"><span class="illus">Illustrative</span> {esc(tidy(strip_tags(note.group(1))))}</p>' if note else ""
+    intro = re.search(r'</h2>\s*<p>(.*?)</p>', sec, flags=re.S)
+    COMPOSITE_INTRO.append(re.sub(r"\bsection (\d+)\b", r"the symbol board's section \1", tidy(strip_tags(intro.group(1)))) if intro else "")
+    return f'<div class="posts n{len(posts)}">{"".join(figs)}</div>{note_html}'
 
 
 # ---------------------------------------------------------------- the seven calls
@@ -476,7 +516,7 @@ def call1():
         (os.path.join(IDSVG, "03-wordmark-masters", "20261021_Wordmark-Display-Amp-A.svg"), "With option A", "The display wordmark with ampersand option A"),
         (os.path.join(IDSVG, "03-wordmark-masters", "20261021_Wordmark-Display-Amp-B.svg"), "With option B", "The display wordmark with ampersand option B"),
     ]
-    items = "".join(f'<div class="item">{svg_inline(p, a, height=108, cls="fit", style="color:#121212")}<p class="lab">{esc(n)}</p></div>' for p, n, a in wm)
+    items = "".join(f'<div class="item"><p class="lab">{esc(n)}</p>{svg_inline(p, a, height=108, cls="fit", style="color:#121212")}</div>' for p, n, a in wm)
     h.append('<h4>In the display wordmark</h4>')
     h.append(spec_figure(f'<div class="stack">{items}</div>', "Options A and B sit in the display master of fix I3, which carries the hinge gaps of fix I2. The wordmarks are shown 108 px tall, scaled down on narrow screens."))
     return "".join(h)
@@ -487,8 +527,8 @@ def call2():
     con = os.path.join(IDSVG, "06-condensed", "20261021_Wordmark-Condensed-7-5-To-1-Display.svg")
     (cw, ch), (kw, kh) = svg_root_size(read(cur)), svg_root_size(read(con))
     ratio = (kh / kw) / (ch / cw)
-    items = (f'<div class="item">{svg_inline(cur, "The wordmark at today&#39;s width with ampersand B", width=640, cls="fit", style="color:#121212")}<p class="lab">Today\'s width, with ampersand B</p></div>'
-             f'<div class="item">{svg_inline(con, "The condensed wordmark at 7.5 to 1, at the same width", width=640, cls="fit", style="color:#121212")}<p class="lab">Condensed 7.5 to 1, same width</p></div>')
+    items = (f'<div class="item"><p class="lab">Today\'s width, with ampersand B</p>{svg_inline(cur, "The wordmark at today's width with ampersand B", width=640, cls="fit", style="color:#121212")}</div>'
+             f'<div class="item"><p class="lab">Condensed 7.5 to 1, at the same width</p>{svg_inline(con, "The condensed wordmark at 7.5 to 1, at the same width", width=640, cls="fit", style="color:#121212")}</div>')
     h = ['<h4>Same width, more height</h4>']
     h.append(spec_figure(f'<div class="stack">{items}</div>', f"Both drawings set to the same width. The condensed wordmark stands {ratio:.2f} times taller, measured from the two files."))
     rows = []
@@ -514,7 +554,7 @@ def call3():
     cap = re.search(r"Each rendered 640 px wide[^<]*?\.", sec).group(0)
     master = os.path.join(IDSVG, "07-hinge", "20261021_Hinge-Display-Master_V2.svg")
     svg = svg_inline(master, "Hinge diagram V2 display master: OATH and ACTION on a line with four nodes, the red ampersand in a circle at the center, two solid hairline arcs running clockwise, and UNDERSTAND and IMPACT beneath", width=1100, style="color:#121212;width:100%;min-width:560px;height:auto")
-    h = ['<h4>V5, the withdrawn first draft and V2</h4>', f'<div class="three">{figs}</div><p class="cap">{esc(cap)}</p>']
+    h = ['<h4>V5, the withdrawn first draft and V2</h4>', f'<div class="three eq">{figs}</div><p class="cap">{esc(cap)}</p>']
     h.append('<h4>The V2 display master</h4>')
     h.append(spec_figure(scroll(svg, "Hinge diagram V2 display master"), "The display master file, <code>work/boards/phase-1/identity/07-hinge/20261021_Hinge-Display-Master_V2.svg</code>, inlined as drawn. Below 560 px the frame scrolls, so the labels never draw under the master's 526 px minimum."))
     return "".join(h)
@@ -523,28 +563,35 @@ def call3():
 def call4():
     sec = board_section(idb, "item-10")
     th, tr = board_table(sec, "Treatment table")
-    tcap = strip_tags(re.search(r'<p class="cap">(Median contrast of the ampersand.s pixels against Prussian.*?)</p>', sec, flags=re.S).group(1))
-    treatments = [
-        ("p10-display-only", "orig", tr[0][0], ""),
-        ("p10-display-only", "prop", pair_title("p10-display-only").split(":")[0], "out"),
-        ("p10-newsprint", "prop", pair_title("p10-newsprint").split(":")[0], ""),
-        ("p10-keyline", "prop", pair_title("p10-keyline").split(":")[0], "out"),
-        ("p10-mono", "prop", pair_title("p10-mono").split(":")[0], "rec"),
-    ]
+    tcap = re.search(r'<p class="cap">(Median contrast of the ampersand.s pixels against Prussian.*?)</p>', sec, flags=re.S)
+    # The treatments are the identity board's own p10 pairs, in board order; V5 is the first pair's original.
+    pids = re.findall(r'<div class="pair" id="(p10-[^"]+)">', sec)
+    need(pids, "identity board item 10 has no p10 pairs")
+    prose = call_prose["4"][1]
+    out_letters = set(re.findall(r"\b([A-D])\b", (re.search(r"rules out (?:options? )?([A-D](?:,? (?:and |or )?[A-D])*)", prose) or [None, ""])[1]))
+    rec_row = [r for r in call_rows if r[0] == "4"]
+    rec_letter = (re.findall(r"\b([A-D])\b", rec_row[0][4]) or [None])[-1] if rec_row else None
+    treatments = [(pids[0], "orig", tr[0][0] if tr else "V5", "")]
+    for pid in pids:
+        name = pair_title(pid).split(":")[0]
+        letter = name[:1]
+        tag = "out" if letter in out_letters else ("rec" if letter == rec_letter else "")
+        treatments.append((pid, "prop", name, tag))
     tags = {"out": '<span class="tag out" style="color:#DCD9D2">Ruled out by the red rule</span>', "rec": '<span class="tag rec">Studio recommendation</span>', "": ""}
     r16, r96 = [], []
-    for folder, who, name, t in treatments:
+    for folder, who, name, tg in treatments:
         p16 = idpng(folder, f"{who}__prussian__color__16.png")
         p96 = idpng(folder, f"{who}__prussian__color__96.png")
         what = f"Wordmark on Prussian, {name}"
-        r16.append(f'<div class="lrow"><p class="lname">{esc(name)}<span>{tags[t]}</span></p>{cell(p16, "16 px", what + ", at 16 px, actual size")}{cell(p16, "16 px at 4x", what + ", at 16 px, magnified 4 times without smoothing", factor=4)}</div>')
-        r96.append(f'<div class="item"><p class="lab"><b style="color:#DCD9D2">{esc(name)}</b> {tags[t]}</p>{img(p96, what + ", at 96 px tall, actual size")}</div>')
+        r16.append(f'<div class="lrow"><p class="lname">{esc(name)}<span>{tags[tg]}</span></p>{cell(p16, "16 px", what + ", at 16 px, actual size")}{cell(p16, "16 px at 4x", what + ", at 16 px, magnified 4 times without smoothing", factor=4)}</div>')
+        r96.append(f'<div class="item"><p class="lab"><b style="color:#DCD9D2">{esc(name)}</b> {tags[tg]}</p>{img(p96, what + ", at 96 px tall, actual size")}</div>')
     h = ['<h4>On Prussian at 16 px</h4>']
-    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "Treatments on Prussian at 16 px"), "V5 first, then options A to D. Renders at 1x from the identity board.", cls="prussian"))
+    h.append(spec_figure(scroll(f'<div class="ladder">{"".join(r16)}</div>', "Treatments on Prussian at 16 px"), "V5 first, then each option in the identity board's order. Renders at 1x from the identity board.", cls="prussian"))
     h.append('<h4>On Prussian at 96 px</h4>')
     h.append(spec_figure(scroll(f'<div class="stack">{"".join(r96)}</div>', "Treatments on Prussian at 96 px"), "The same treatments at 96 px tall.", cls="prussian"))
     h.append(html_table(th, tr, "Contrast on Prussian by treatment and size"))
-    h.append(f'<p class="cap">{esc(tcap)}</p>')
+    if tcap:
+        h.append(f'<p class="cap">{esc(strip_tags(tcap.group(1)))}</p>')
     return "".join(h)
 
 
@@ -610,12 +657,31 @@ def call6():
     return "".join(h)
 
 
+def mock_alt(info):
+    parts = [f"Mock layout, {info.get('label', 'Act piece').replace('Mock layout: ', '')}"]
+    if info.get("kicker"):
+        parts.append(f"kicker {info['kicker']}")
+    if info.get("head"):
+        parts.append(f"headline {info['head']}")
+    if info.get("sections"):
+        parts.append("sections " + ", ".join(s for s in info["sections"] if s))
+    if info.get("ask"):
+        parts.append(f"an ask button reading {info['ask']}")
+    n = info.get("illustrative", 0)
+    tail = f" {count_word(n).capitalize()} lines carry an Illustrative label." if n else ""
+    return "; ".join(parts) + "." + tail
+
+
 def call7():
-    a1 = "Mock layout of a process piece, every factual line tagged Illustrative: the kicker Act, How to take part; the headline Alder County votes on backyard cottages March 9. Here is how to weigh in; Who decides; What each side has said; a hinge divider; What you can do, with two dated steps; a red Send a comment button; and a line pointing to the tracker."
-    a2 = "Mock layout of a position piece, every factual line tagged Illustrative: the label Our position before the headline State senate committees should post every vote within two days; What the record shows; a boxed section The strongest case against; What we don't know; a hinge divider; a disclosure above a red Ask your senator to vote yes button; and a line naming who decided the position and when."
-    return ('<h4>The two kinds of Act piece</h4><div class="two">'
-            f'<figure>{img(os.path.join(IMG, "act-mock-process.jpg"), a1, scale=2, cls="fit", style="border:1px solid var(--rule)")}<figcaption class="cap"><b>Process piece.</b> A step with a date and a place, taking no side.</figcaption></figure>'
-            f'<figure>{img(os.path.join(IMG, "act-mock-position.jpg"), a2, scale=2, cls="fit", style="border:1px solid var(--rule)")}<figcaption class="cap"><b>Position piece.</b> Labeled "Our position", with the fairness kit.</figcaption></figure>'
+    mocks = captured("act-mock-")
+    figs = []
+    for path, info in mocks:
+        label = info.get("label", "").replace("Mock layout: ", "")
+        kind = label[:1].upper() + label[1:] if label else "Act piece"
+        desc = next((s for s in sentences(call_prose["7"][1]) if label and s.lower().startswith("a " + label.lower())), "")
+        desc = desc.split(":")[0].rstrip(".") + "." if desc else ""
+        figs.append(f'<figure>{img(path, mock_alt(info), scale=2, cls="fit")}<figcaption class="cap"><b>{esc(kind)}.</b> {esc(desc)}</figcaption></figure>')
+    return ('<h4>The two kinds of Act piece</h4><div class="two">' + "".join(figs) +
             '</div><p class="cap"><span class="illus">Illustrative</span> Mock layouts from the strategy board, section 5. Every name, date, measure and figure in them is example copy, labeled Illustrative beside the item.</p>')
 
 
@@ -624,7 +690,7 @@ CALL_SPECIMENS = {"1": call1, "2": call2, "3": call3, "4": call4, "5": call5, "6
 
 def evidence_line(n):
     parts = []
-    for f, what, anchors in EVIDENCE[n]:
+    for f, what, anchors in EVIDENCE.get(n, [("work/ledger/20261021_Gate-1-Report.md", "section 4", None)]):
         a = f" (<code>{esc(anchors)}</code>)" if anchors else ""
         parts.append(f"<code>{esc(f)}</code>, {esc(what)}{a}")
     return '<p class="evidence"><b>Full evidence:</b> ' + "; ".join(parts) + ".</p>"
@@ -637,16 +703,16 @@ def calls_html():
         ptitle, body = call_prose[n]
         need(ptitle.lower().startswith(name.lower()[:12]), f"call {n} title mismatch: {ptitle!r} vs {name!r}")
         out.append(f'''<article class="call" id="call-{n}" aria-labelledby="call-{n}-h">
-  <p class="eyebrow">Big call {n} of 7 · {esc(ids)}</p>
+  <p class="eyebrow">Big call {n} of {len(call_rows)} · {esc(ids)}</p>
   <h3 id="call-{n}-h">{esc(ptitle)}</h3>
   <div class="call-body">
     <div class="prose">{md_blocks(body)}</div>
     <aside class="options" aria-labelledby="call-{n}-opt"><h4 id="call-{n}-opt">Options</h4><p>{inline(options)}</p></aside>
   </div>
-  {CALL_SPECIMENS[n]()}
+  {CALL_SPECIMENS[n]() if n in CALL_SPECIMENS else ""}
   <dl class="verdict">
     <div><dt>Studio recommendation</dt><dd>{inline(rec)}</dd></div>
-    <div><dt>What it costs</dt><dd>{inline(COSTS[n]())}</dd></div>
+    <div><dt>What it costs</dt><dd>{inline(cost(n))}</dd></div>
     <div><dt>Decision IDs</dt><dd>{inline(ids)}</dd></div>
   </dl>
   {evidence_line(n)}
@@ -663,9 +729,9 @@ def calls_table():
 
 # ---------------------------------------------------------------- the six fixes
 
-def ba(before, after, grid=False):
-    b = f'<div class="side"><p class="ba-label">Before, V5</p>{before}</div>'
-    a = f'<div class="side"><p class="ba-label">After, the proposal</p>{after}</div>'
+def ba(before, after, grid=False, labels=("Before, V5", "After, the proposal")):
+    b = f'<div class="side"><p class="ba-label">{esc(labels[0])}</p>{before}</div>'
+    a = f'<div class="side"><p class="ba-label">{esc(labels[1])}</p>{after}</div>'
     return f'<div class="ba{" ba-grid" if grid else ""}">{b}{a}</div>'
 
 
@@ -673,17 +739,18 @@ def fix_I1():
     def side(who, tl_alt, amp_alt):
         tl = idpng("p01-tl-1", f"{who}__newsprint__mono__display.png")
         amp = idpng("p01-amp", f"{who}__newsprint__color__display.png")
-        return f'<div class="spec"><div class="stack"><div class="item">{img(tl, tl_alt, cls="fit")}<p class="lab">Tagline, one line, 40 px tall</p></div><div class="item">{img(amp, amp_alt, cls="fit")}<p class="lab">Master ampersand, 240 px tall</p></div></div></div>'
+        return f'<div class="spec"><div class="stack"><div class="item"><p class="lab">Tagline, one line, 40 px tall</p>{img(tl, tl_alt, cls="fit")}</div><div class="item"><p class="lab">Master ampersand, 240 px tall</p>{img(amp, amp_alt, cls="fit")}</div></div></div>'
     return ba(side("orig", "V5's tagline A country that answers to its people., with the bottoms of y and p cut off so it reads A countrv that answers to its peoole.", "V5's master ampersand, with the top of its loop and the tip of its tail cut off by its box"),
               side("prop", "The re-exported tagline with every descender whole", "The re-exported master ampersand with its full loop and tail"), grid=True)
 
 
 def fix_I2():
-    legend = strip_tags(re.search(r"Overlay legend for every panel: ([^.]*\.)", idb).group(1))
+    lm = re.search(r"Overlay legend for every panel: ([^.]*\.)", idb)
+    legend = strip_tags(lm.group(1)) if lm else "Charcoal where both versions have ink, light gray where only the original has ink, Verdigris where only the proposal has ink."
     o = lambda w, a: f'<div class="spec">{img(idpng("p02-optical", w), a, cls="fit")}</div>'
     return (ba(o("orig__newsprint__color__display.png", "V5's wordmark at display size, with the ampersand closer to ACTION than to OATH"),
                o("prop__newsprint__color__display.png", "The wordmark with option 2b spacing: the ampersand moved 1.42 units toward ACTION so both sides hold equal white"))
-            + f'<figure><div class="spec">{img(idpng("p02-optical", "overlay__display.png"), "Overlay of V5 and the proposal at display size: the ampersand and ACTION show thin edges where they moved", cls="fit")}</div><figcaption class="cap"><b>Overlay.</b> {esc(legend)}</figcaption></figure>')
+            + f'<figure class="side" style="margin-top:12px"><p class="ba-label">Overlay of the two</p><div class="spec white">{img(idpng("p02-optical", "overlay__display.png"), "Overlay of V5 and the proposal at display size: the ampersand and ACTION show thin edges where they moved", cls="fit")}</div><figcaption class="cap">{esc(legend)}</figcaption></figure>')
 
 
 def small_pair(folder, name, mags=((16, 4), (24, 4))):
@@ -715,7 +782,7 @@ def fix_I8():
             m = img(p, f"{label} {name} at its minimum, magnified {mag} times without smoothing", factor=mag) if mag else ""
             items.append(f'<div class="item"><p class="lab">{esc(name)}, {w} by {h} px at its minimum{f", and at {mag}x" if mag else ""}</p><div class="lrow">{img(p, f"{label} {name} at its minimum size, {w} by {h} px", cls="px")}{m}</div></div>')
         return f'<div class="spec">{scroll(f"<div class=\"stack\">{"".join(items)}</div>", f"{label} minimum sizes")}</div>'
-    return ba(side("orig", "V5"), side("prop", "Proposed"), grid=True) + '<p class="cap">Each mark at its minimum, at 1x, from the identity board\'s item 9.</p>'
+    return ba(side("orig", "V5"), side("prop", "Proposed")) + '<p class="cap">Each mark at its minimum, at 1x, from the identity board\'s item 9.</p>'
 
 
 def badge_svg():
@@ -736,23 +803,37 @@ def fix_S9():
     after = (f'<div class="spec"><div class="lrow" style="flex-wrap:wrap;align-items:flex-end">{svg_inline(bsvg, "Wordless badge: the red ampersand inside the hinge circle with its two nodes, 200 px", height=200, cls="fit", style="color:#121212", is_text=True)}'
              f'{svg_inline(bsvg, "Wordless badge at 64 px", height=64, style="color:#121212", is_text=True)}</div><p class="lab">The ring, two nodes and ampersand of the V2 hinge display master, at 200 and 64 px</p></div>'
              '<p class="small">Cut from the hinge master at its own geometry. The strategy board describes the badge in words, and no separate badge master is drawn yet.</p>')
-    return ba(before, after, grid=True)
+    return ba(before, after, grid=True, labels=("Before, your references and V5's rule", "After, the proposal"))
 
 
 FIX_SPECIMENS = {"I1": fix_I1, "I2": fix_I2, "I3": fix_I3, "I7": fix_I7, "I8": fix_I8, "S9": fix_S9}
-FIX_SOURCE = {"I1": "identity board item 1", "I2": "identity board item 2", "I3": "identity board item 3", "I7": "identity board item 8", "I8": "identity board item 9", "S9": "strategy board sections 7 and 9"}
+FIX_SOURCE = {
+    "I1": [(IDENTITY_BOARD, "item 1", "#item-1")], "I2": [(IDENTITY_BOARD, "item 2", "#item-2")], "I3": [(IDENTITY_BOARD, "item 3", "#item-3")],
+    "I7": [(IDENTITY_BOARD, "item 8", "#item-8")], "I8": [(IDENTITY_BOARD, "item 9", "#item-9")],
+    "S9": [(STRATEGY_BOARD, "section 7, Art direction, and Decisions for Gate 1, decision 9", "#art, #decisions")],
+}
+
+
+def evidence_parts(entries):
+    parts = []
+    for f, what, anchors in entries:
+        a = f" (<code>{esc(anchors)}</code>)" if anchors else ""
+        parts.append(f"<code>{esc(f)}</code>, {esc(what)}{a}")
+    return '<p class="evidence"><b>Full evidence:</b> ' + "; ".join(parts) + ".</p>"
 
 
 def fixes_html():
     out = []
     for fid, fix, what, why in fix_rows:
         defect = "(defect fix)" in why
+        if fid not in FIX_SPECIMENS:
+            warn(f"fix {fid} is new in section 5 and has no drawings on this board")
         tag = ' <span class="tag solid">Defect fix</span>' if defect else ""
         out.append(f'''<article class="fix" id="fix-{fid}" aria-labelledby="fix-{fid}-h">
   <div class="fix-head"><span class="fix-id">{esc(fid)}</span><h3 id="fix-{fid}-h">{inline(fix)}</h3>{tag}</div>
   <dl class="fix-dl"><div><dt>What changes</dt><dd>{inline(what)}</dd></div><div><dt>Why</dt><dd>{inline(why)}</dd></div></dl>
-  {FIX_SPECIMENS[fid]()}
-  <p class="evidence"><b>Full evidence:</b> {esc(FIX_SOURCE[fid])}.</p>
+  {FIX_SPECIMENS[fid]() if fid in FIX_SPECIMENS else ""}
+  {evidence_parts(FIX_SOURCE.get(fid, [("work/ledger/20261021_Gate-1-Report.md", "section 5", None)]))}
 </article>''')
     return "\n".join(out)
 
@@ -827,7 +908,7 @@ def systems_bases():
     sec = board_section(sysb, "m8")
     arts = re.findall(r'<article class="base">\s*<div class="opthead"><span class="tag">(.*?)</span><h3>(.*?)</h3></div>\s*<img src="([^"]+)" alt="([^"]+)"', sec, flags=re.S)
     need(len(arts) >= 5, "atlas bases")
-    figs = "".join(f'<figure>{img(os.path.join(BOARDS, src), html.unescape(alt), cls="fit")}<figcaption class="cap"><b>{esc(strip_tags(h3))}</b> · {esc(strip_tags(tag))}</figcaption></figure>' for tag, h3, src, alt in arts)
+    figs = "".join(f'<figure><div class="tb">{img(os.path.join(BOARDS, src), html.unescape(alt))}</div><figcaption class="cap"><b>{esc(strip_tags(h3))}</b> · {esc(strip_tags(tag))}</figcaption></figure>' for tag, h3, src, alt in arts)
     return f'<div class="thumbs">{figs}</div><p class="cap">Thumbnails from the systems board, section 8: Phase 0 captures of Concepts V2 at 1440 px, scaled down for review.</p>'
 
 
@@ -836,10 +917,17 @@ GROUPS = [("S", "Strategy"), ("Y", "Symbols"), ("M", "Systems marks"), ("T", "St
 
 def set_html():
     out = []
-    for prefix, name in GROUPS:
-        rows = [r for r in set_rows if r[0].startswith(prefix)]
+    known = tuple(p for p, _ in GROUPS)
+    stray = [r[0] for r in set_rows if not r[0].startswith(known)]
+    groups = GROUPS + ([("", "Other")] if stray else [])
+    if stray:
+        warn(f"section 6 IDs outside S, Y, M and T: {stray}")
+    for prefix, name in groups:
+        rows = [r for r in set_rows if (r[0].startswith(prefix) if prefix else not r[0].startswith(known))]
+        if not rows:
+            continue
         body = "".join(f'<tr><td class="id">{esc(r[0])}</td><td>{inline(r[1])}</td><td>{inline(r[2])}</td></tr>' for r in rows)
-        table = f'<div class="table" tabindex="0" role="region" aria-label="{attr(name)} recommendations"><table><thead><tr><th scope="col">ID</th><th scope="col">{esc(set_head[1])}</th><th scope="col">{esc(set_head[2])}</th></tr></thead><tbody>{body}</tbody></table></div>'
+        table = f'<div class="table" tabindex="0" role="region" aria-label="{attr(name)} recommendations"><table class="settable"><colgroup><col style="width:4.5em"><col style="width:44%"><col></colgroup><thead><tr><th scope="col">ID</th><th scope="col">{esc(set_head[1])}</th><th scope="col">{esc(set_head[2])}</th></tr></thead><tbody>{body}</tbody></table></div>'
         extra = ""
         if prefix == "M":
             extra = ('<h4>Evidence line code and typed chips (M1, M3)</h4>'
@@ -857,7 +945,9 @@ def set_html():
                      '<figcaption class="cap">The chapter template applied to 05 Color at 1440 px, shown reduced. Scroll inside the frame to read the whole chapter.</figcaption></figure></div>'
                      '<h4>Token roles on the four surfaces (T4, T5)</h4>' + token_strip()
                      + '<p class="cap">Rendered from <code>work/build/tokens/20261021_Token-Schema-Draft.json</code>. Each ratio is worked out here from the two hex values with the WCAG formula, and it matches the value stored in the file. Text needs 4.5 to 1 and graphics need 3 to 1.</p>')
-        out.append(f'<div class="group" id="set-{prefix.lower()}"><h3>{esc(name)} ({prefix}) <span class="count">{len(rows)} recommendations</span></h3>{table}{extra}</div>')
+        pid = prefix.lower() or "other"
+        ptxt = f" ({prefix})" if prefix else ""
+        out.append(f'<div class="group" id="set-{pid}"><h3>{esc(name)}{ptxt} <span class="count">{len(rows)} recommendation{"s" if len(rows) != 1 else ""}</span></h3>{table}{extra}</div>')
     return "\n".join(out)
 
 
@@ -942,9 +1032,16 @@ fills = {
     "reply": esc(reply),
     "approve_after": link_sections(inline(after[0])),
     "composite": composite(),
+    "composite_intro": esc(COMPOSITE_INTRO[0]) if COMPOSITE_INTRO and COMPOSITE_INTRO[0] else "",
     "calls_table": calls_table(),
     "calls": calls_html(),
-    "fixes_intro": inline(re.sub(r"^\*\*Six identity fixes\*\* in section 5\. ", "", approve_list[1])) + " " + " ".join(inline(p) for p in fix_after),
+    "fixes_intro": inline(re.sub(r"^\*\*[^*]+\*\* in section 5\. ", "", approve_list[1])) + " " + " ".join(inline(p) for p in fix_after),
+    "calls_heading": f"The {count_word(len(call_rows))} big calls",
+    "fixes_heading": f"{count_word(len(fix_rows)).capitalize()} identity fixes to approve by name",
+    "set_heading": f"{count_word(len(set_rows)).capitalize()} studio recommendations, approved as a set",
+    "toc_calls": f"The {count_word(len(call_rows))} big calls",
+    "toc_fixes": f"{count_word(len(fix_rows)).capitalize()} identity fixes",
+    "toc_set": f"{count_word(len(set_rows)).capitalize()} recommendations",
     "fixes": fixes_html(),
     "set_intro": "The studio asks you to approve these as one set. Name any you would change, and the rest stand.",
     "set_groups": set_html(),
@@ -968,4 +1065,8 @@ size = os.path.getsize(OUT)
 need(size < 10 * 1024 * 1024, f"board is {size} bytes, over 10 MB")
 print(f"{OUT}: {size / 1024 / 1024:.2f} MB, {len(EMBEDDED)} images embedded ({len(USES)} uses), "
       f"{len(call_rows)} calls, {len(fix_rows)} fixes, {len(set_rows)} recommendations, {len(q_rows)} questions, "
-      f"rubric rows {rubric_rows or 'pending'}, {len(TOKEN_REPORT)} token pairs")
+      f"rubric rows {rubric_rows or 'pending'}, {len(TOKEN_REPORT)} token pairs, {len(WARNINGS)} warnings")
+for w in WARNINGS:
+    print("  warning: " + w)
+if "--check" in FLAGS:
+    run_node("check_gate1_board.js")

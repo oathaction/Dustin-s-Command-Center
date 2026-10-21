@@ -119,12 +119,17 @@ figure { margin: 0; min-width: 0 }
 /* Size ladders: rows of one mark at 16, 24, 48 and 96 px, then magnified cells */
 .ladder { display: grid; gap: 18px }
 .lrow { display: flex; flex-wrap: nowrap; align-items: flex-end; gap: 18px }
-.lname { flex: 0 0 150px; font: 700 0.875rem/1.35 var(--body); color: #121212; align-self: center; margin: 0 }
+.lname { flex: 0 0 200px; min-width: 0; font: 700 0.875rem/1.35 var(--body); color: #121212; align-self: center; margin: 0 }
+.lname .tag { white-space: normal; margin-top: 6px }
 .lname span { display: block; font-weight: 400; color: #45494F; font-size: 0.8125rem }
 .spec.prussian .lname, .spec.prussian .lname span { color: #DCD9D2 }
 .cell { display: grid; justify-items: start; gap: 4px; flex: 0 0 auto }
 .cell .lab { margin: 0; white-space: nowrap }
 .lrow .gap { flex: 0 0 8px; align-self: stretch; border-left: 1px solid #A8ACB2 }
+.stack .item > .lab { margin: 0 }
+.eq > figure { display: grid; grid-template-rows: 1fr auto }
+.eq > figure > .spec { display: grid; place-items: center }
+@media (max-width: 600px) { .lrow { flex-wrap: wrap } .lname { flex: 0 0 100% } .lrow .gap { display: none } }
 .display3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
 .display3 .spec { display: grid; justify-items: center; align-content: end; gap: 8px; min-height: 100% }
 .stack { display: grid; gap: 14px }
@@ -140,6 +145,8 @@ figure { margin: 0; min-width: 0 }
 
 /* Big calls */
 .calltable { margin-top: 8px }
+.calltable table { min-width: 760px }
+table.settable { table-layout: fixed; min-width: 540px }
 article.call { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--rule) }
 .call-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px 40px; align-items: start }
 .options { background: var(--surface); border: 1px solid var(--rule); padding: 16px 18px }
@@ -160,7 +167,7 @@ article.call { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--
 .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
 @media (max-width: 860px) { .two, .three { grid-template-columns: minmax(0, 1fr) } }
 .posts { display: grid; grid-template-columns: repeat(3, minmax(0, 360px)); gap: 24px; justify-content: start }
-.posts figure img { border: 1px solid var(--rule) }
+.posts.n4 { grid-template-columns: repeat(2, minmax(0, 360px)) }
 @media (max-width: 1180px) { .posts { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 360px)) } }
 .lines { display: grid; gap: 12px }
 .line-card { border: 1px solid var(--rule); background: var(--surface); padding: 14px 16px; display: grid; gap: 6px }
@@ -180,7 +187,7 @@ article.fix { border: 1px solid var(--rule); background: var(--surface); padding
 .fix-dl dd { margin: 0 }
 @media (max-width: 760px) { .fix-dl { grid-template-columns: minmax(0, 1fr) } }
 .ba { display: grid; gap: 12px }
-.ba .side { display: grid; gap: 8px }
+.ba .side, figure.side { display: grid; gap: 8px; align-content: start }
 .ba-label { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 }
 .ba-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px }
 @media (max-width: 760px) { .ba-grid { grid-template-columns: minmax(0, 1fr) } }
@@ -212,7 +219,8 @@ td.s4, td.s5 { background: var(--ok-bg) }
 .group h3 .count { font: 600 0.9375rem/1 var(--body); color: var(--muted); letter-spacing: 0 }
 .strip { margin-top: 20px }
 .thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px }
-.thumbs figure img { border: 1px solid var(--rule); width: 100%; height: auto }
+.thumbs .tb { aspect-ratio: 720 / 672; display: grid; place-items: center; background: #DCD9D2; border: 1px solid var(--rule) }
+.thumbs .tb img { width: 100%; height: auto }
 @media (max-width: 860px) { .thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
 @media (max-width: 480px) { .thumbs { grid-template-columns: minmax(0, 1fr) } }
 .wire { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 24px; align-items: start }
@@ -270,9 +278,9 @@ td.s4, td.s5 { background: var(--ok-bg) }
     <ol>
       <li><a href="#approve">What you are asked to approve</a></li>
       <li><a href="#identity">One identity</a></li>
-      <li><a href="#calls">The seven big calls</a></li>
-      <li><a href="#fixes">Six identity fixes</a></li>
-      <li><a href="#set">Twenty-two recommendations</a></li>
+      <li><a href="#calls">{{toc_calls}}</a></li>
+      <li><a href="#fixes">{{toc_fixes}}</a></li>
+      <li><a href="#set">{{toc_set}}</a></li>
       <li><a href="#scores">Rubric scores</a></li>
       <li><a href="#risks">Risks</a></li>
       <li><a href="#phase2">Phase 2 proposal</a></li>
@@ -301,16 +309,16 @@ td.s4, td.s5 { background: var(--ok-bg) }
       <p class="eyebrow">Symbol board, section 11</p>
       <h2 id="identity-h">One identity, the recommended set</h2>
     </div>
-    <p class="sec-intro">This Act post shows every studio recommendation at once: ampersand B in the wordmark, Direction A's pillar marks, the V2 hinge diagram as a divider and the red rule, with one working red on the Act handle. The first post sets the wordmark at today's width and the second at the condensed 7.5 to 1 width. The third covers the wordmark, so you can judge whether the system still reads as Oath &amp; Action without it.</p>
+    <p class="sec-intro">This Act post shows every studio recommendation at once. The symbol board describes it this way: {{composite_intro}}</p>
     {{composite}}
   </section>
 
   <section class="block" id="calls" aria-labelledby="calls-h">
     <div class="sec-head">
       <p class="eyebrow">Report section 4</p>
-      <h2 id="calls-h">The seven big calls</h2>
+      <h2 id="calls-h">{{calls_heading}}</h2>
     </div>
-    <p class="sec-intro">These seven change what the brand looks like or what it says. Each one below shows the options side by side, with V5 first.</p>
+    <p class="sec-intro">These change what the brand looks like or what it says. Each one below shows the options side by side, with V5 first.</p>
     {{calls_table}}
     {{calls}}
   </section>
@@ -318,7 +326,7 @@ td.s4, td.s5 { background: var(--ok-bg) }
   <section class="block" id="fixes" aria-labelledby="fixes-h">
     <div class="sec-head">
       <p class="eyebrow">Report section 5</p>
-      <h2 id="fixes-h">Six identity fixes to approve by name</h2>
+      <h2 id="fixes-h">{{fixes_heading}}</h2>
     </div>
     <p class="sec-intro">{{fixes_intro}}</p>
     <div class="fixes">{{fixes}}</div>
@@ -327,7 +335,7 @@ td.s4, td.s5 { background: var(--ok-bg) }
   <section class="block" id="set" aria-labelledby="set-h">
     <div class="sec-head">
       <p class="eyebrow">Report section 6</p>
-      <h2 id="set-h">Twenty-two studio recommendations, approved as a set</h2>
+      <h2 id="set-h">{{set_heading}}</h2>
     </div>
     <p class="sec-intro">{{set_intro}}</p>
     {{set_groups}}

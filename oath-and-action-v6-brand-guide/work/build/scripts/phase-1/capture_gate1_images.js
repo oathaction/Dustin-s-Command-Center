@@ -65,12 +65,28 @@ async function shot(page, selector, name, opts = {}) {
   for (let i = 0; i < nPosts; i++) {
     const name = `post-${i + 1}.jpg`;
     await shot(page, '#composite .post', name, { nth: i, source: SYMBOL + '#h-co' });
-    manifest[name].info = await page.locator('#composite .post').nth(i).evaluate((el) => ({
-      label: el.getAttribute('aria-label') || '',
-      head: ((el.querySelector('.po-head') || {}).textContent || '').trim(),
-      covered: !!el.querySelector('.po-cover'),
-      caption: ((el.closest('figure') || el).querySelector('figcaption') || {}).textContent || '',
-    }));
+    manifest[name].info = await page.locator('#composite .post').nth(i).evaluate((el) => {
+      // Text with each inline SVG read as its accessible name, so a drawn ampersand reads as "and".
+      const read = (node) => {
+        if (!node) return '';
+        const c = node.cloneNode(true);
+        c.querySelectorAll('svg').forEach((s) => s.replaceWith(' ' + (s.getAttribute('aria-label') || '') + ' '));
+        c.querySelectorAll('.tag, .illus').forEach((s) => s.remove());
+        return c.textContent.replace(/\s+/g, ' ').trim();
+      };
+      const named = [...el.querySelectorAll('[role="img"], [role="separator"]')]
+        .filter((n) => !n.parentElement.closest('[role="img"], [role="separator"]') && !n.closest('.po-head'))
+        .map((n) => n.getAttribute('aria-label')).filter(Boolean);
+      return {
+        label: el.getAttribute('aria-label') || '',
+        kicker: read(el.querySelector('.po-k')),
+        head: read(el.querySelector('.po-head')),
+        covered: !!el.querySelector('.po-cover'),
+        steps: el.querySelectorAll('ol li').length,
+        named: [...new Set(named)],
+        caption: (el.closest('figure') && el.closest('figure').querySelector('figcaption') || { textContent: '' }).textContent.replace(/\s+/g, ' ').trim(),
+      };
+    });
   }
   for (const dir of ['A', 'B']) {
     for (const treat of ['filled', 'line', 'tile']) {
@@ -99,7 +115,7 @@ async function shot(page, selector, name, opts = {}) {
       const clean = (n) => (n ? n.textContent.replace(/Illustrative/g, '').replace(/\s+/g, ' ').trim() : '');
       return {
         label: el.getAttribute('aria-label') || '',
-        kicker: clean(el.querySelector('.kicker')),
+        kicker: clean(el.querySelector('.kicker')).replace(/^\d+\s*/, ''),
         head: clean(el.querySelector('.mh, h3')),
         sections: [...el.querySelectorAll('h4')].map(clean).map((s) => s.replace(/^\d+\s*/, '')),
         ask: clean(el.querySelector('.ask')),

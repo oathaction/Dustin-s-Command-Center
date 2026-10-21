@@ -10,7 +10,7 @@ Method: page fetches still fail (ENOTFOUND today), so I ran 97 searches limited 
 
 2. **Common ground works best as something a reader can try.** The strongest tools ask for a commitment, then show a result. More in Common's Perception Gap Quiz asks you to guess the other side's views, then shows them. The Program for Public Consultation gives the strongest arguments for and against, then shows both parties' majorities side by side. Stanford's America in One Room measures views before and after deliberation. Pew's 2026 typology sorts the public into nine groups and is titled "Beyond Red vs. Blue". The strategy can pick one as the house format for "you & me" pieces.
 
-3. **Red and blue split the field.** AllSides encodes the spectrum in blue, purple and red, with published hex values. The League of Women Voters' 2024 standards require LWV Red and LWV Blue. Braver Angels labels participants Red and Blue in equal numbers and now debates whether the binary helps. Brief section 13 rules the pairing out. Dustin's references break that rule in the Prussian banner (red ampersand on Prussian), the pillar badge rows and the page 14 data sheet. The Gate 1 decision on red and Prussian should show these.
+3. **Red and blue split the field.** AllSides encodes the spectrum in blue, purple and red, with published hex values. The League of Women Voters' 2024 standards require LWV Red and LWV Blue. Braver Angels labels participants Red and Blue in equal numbers and now debates whether the binary helps. Brief section 13 rules the pairing out for diverging scales, and V5 says "Never red against blue." Dustin's references break that rule in the Prussian banner (red ampersand on Prussian), the pillar badge rows and the page 14 data sheet. The Gate 1 decision on red and Prussian should show these.
 
 4. **Balance can be written down.** Ballotpedia's neutrality policy covers balanced candidate coverage across major and minor parties, sources trusted across the spectrum, and never excluding a study because of its sponsor. With Braver Angels' equal-representation rule, it gives the editor tested wording for the nonpartisan rule set.
 
@@ -61,5 +61,6 @@ Created:
 
 Modified:
 - `work/research/20261020_Rights-Ledger.md` (section "Added October 21, 2026: Phase 1 rights review" appended)
+- This file, item 3, edited by `oa-editor` on October 21, 2026 (editor review, section 6, row 1): "Brief section 13 rules the pairing out." now reads "Brief section 13 rules the pairing out for diverging scales, and V5 says "Never red against blue."" Brief section 13 limits the rule to diverging scales.
 
 Nothing in `source/` or `work/extract/` changed.
