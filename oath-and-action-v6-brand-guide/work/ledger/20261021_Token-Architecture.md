@@ -22,7 +22,7 @@ Format rules that shape the design:
 
 | Tier | Holds | May point to | Example |
 |---|---|---|---|
-| Primitive | Literal values: the seven locked colors, derived colors, the scales | Nothing | `oa.color.derived.deepStone` = #4E535B |
+| Primitive | Locked colors, derived colors, scales | Nothing | `oa.color.derived.deepStone` = #4E535B |
 | Semantic | A role on a surface | Primitives | `oa.color.text.secondary.onNewsprint` |
 | Component | One part of one component | Semantic tokens | `oa.component.button.ask.fill.onNewsprint` |
 
@@ -46,7 +46,7 @@ WCAG thresholds: 4.5:1 for text; 3:1 for large text (24 px, or 18.66 px bold), n
 
 The hinge divider's ampersand is Charcoal (Newsprint on dark surfaces, my reading). Stone and Verdigris on Newsprint, and Pillar Red on White and Charcoal, pass for large text only.
 
-**Derived values.** No palette color serves secondary text on Newsprint, Charcoal or Prussian. Three derived values fill the gaps:
+**Derived values.** Three derived values fill gaps that no palette color serves:
 
 | Name | Hex | Method | One job | Measured |
 |---|---|---|---|---|
@@ -81,7 +81,7 @@ Every state changes text or shape as well as color. No state uses opacity.
 
 Paired surfaces differ by 1.41:1, so the bar and glyph carry the selection. Pillar Red and Verdigris measure 1.14:1, so V5's "status never codes red against green" becomes "status never relies on red and Verdigris alone". A disabled action names its reason beside the control ("Choose a size to download") and in its accessible description.
 
-**Ask button.** The ask is the step a reader can take now, second in the red rule's order after an error the reader must fix.
+**Ask button.** The ask is the step a reader can take now, second in the red rule after an error.
 
 | Surface | Fill | Label, Inter 700 at 19 px | Edge |
 |---|---|---|---|
@@ -94,7 +94,7 @@ White on Pillar Red passes only as large text, so `oa.type.ask` stays at 19 px b
 
 ## 5. Type, space, layout, radius, opacity, motion
 
-**Type.** Sizes are in rem (the reader's base size, 16 px by default), so text follows browser settings. Fluid sizes run from 390 to 1440 px.
+**Type.** Sizes are in rem (the reader's base size, 16 px by default), so text follows browser settings; fluid sizes run from 390 to 1440 px.
 
 | Style | Face and weight | Size (rem) | Line height | Tracking |
 |---|---|---|---|---|
@@ -126,7 +126,7 @@ The floor is 13 px (0.8125 rem), with no screen exceptions. V5 set labels at 10 
 | Desktop | 1024 | 64em | 12 | 24 | 40 |
 | Tablet | 768 | 48em | 8 | 24 | 32 |
 | Phone | 390 | base | 4 | 16 | 20 |
-| Small phone, and the 320 reflow test | 360 | test width | 4 | 16 | 16 |
+| Small phone (also 320 reflow) | 360 | test width | 4 | 16 | 16 |
 
 **Radius, border, z-index.** Radius `none` for boxes and controls, `full` for nodes and badges. Borders 1, 2 and 4 px; focus offset 2 px (V5 writes 2 and draws 3, a mismatch the parity test catches). Z-index 0, 10, 40 (sticky), 90 (overlay), 100 (skip link).
 
@@ -153,20 +153,20 @@ The tier rules, the exact locked palette, the red rule and the 13 px floor apply
 1. **Source.** One DTCG file, `work/build/tokens/oa.tokens.json`, with the needs register and red rule in its root `$extensions`, as the schema draft sketches.
 2. **Validate.** The rule test runs first and stops the build on failure.
 3. **Build.** A zero-dependency Node script, `build-tokens.mjs`, writes `tokens.css` (properties, surface classes, reduced-motion block, em media queries) and `tokens.json` (DTCG, aliases kept). A lint fails on raw hex or px font sizes outside `tokens.css`.
-4. **Parity.** Playwright at 1440 and 390 px checks against the JSON: `:root` properties, specimens marked `data-token`, values printed in the guide's tables, every computed color (artwork exempt), rendered contrast, and durations under reduced motion.
+4. **Parity.** Playwright at 1440 and 390 px checks `:root` properties, specimens marked `data-token`, values printed in the guide's tables, every computed color (artwork exempt), rendered contrast and reduced-motion durations against the JSON.
 5. **Versions.** SemVer from 6.0.0. A rename, removal or primitive change is major, and the palette needs Dustin's named approval. A new token or a passing value change is minor; notes are a patch. A replaced token carries `$deprecated`† for one minor release, with its old CSS name kept as an alias.
 6. **Change notes.** `YYYYMMDD_Token-Change-Notes.md` in the package's `tokens/` folder logs version, date, token, change, reason, need and gate. A version rise with no note fails the build.
 
 ## 8. Plan for "How to choose a token"
 
-The page is chapter 26, in Production, as the architecture map places it (C9). Each token name has a copy button, and the steps repeat in the AI builder brief. The order is surface, role, emphasis, state, then any component token, which wins. Each example shows the specimen at actual size beside its failure.
+The page is chapter 26, in Production, as the architecture map places it (C9). Token names have copy buttons, and the steps repeat in the AI builder brief: surface, role, emphasis, state, then any component token, which wins. Each example shows the specimen at actual size beside its failure.
 
 | Example | Path | Tokens | Measured | Failure shown |
 |---|---|---|---|---|
 | Caption under a chart | Newsprint, text, secondary | `--oa-color-text-secondary-on-newsprint`, `oa.type.caption` | 5.49 | Stone, 4.29 |
 | Disabled download button | White, action, disabled | `--oa-component-button-disabled-label-on-white`, dashed edge, "Choose a size to download" | 7.74 | 40% opacity, 2.61, no reason |
-| Chart highlight | Newsprint, data, emphasis | `data-emphasis` Charcoal; other bars `data-context` Stone; direct label | 13.29 and 4.29; bars differ by 3.10 | Pillar Red bar with no keyline, 2.96, in a view whose red already marks an error |
-| Warning in a Prussian tracker | Prussian, state, warning | White text, Newsprint bar and triangle, the word "Warning" | 13.28 and 9.42 | Red text, 3.19, breaking "red never sits on Prussian" |
+| Chart highlight | Newsprint, data, emphasis | `data-emphasis` Charcoal; other bars `data-context` Stone; direct label | 13.29 and 4.29; bars differ by 3.10 | Pillar Red bar, no keyline, 2.96, beside an error's red |
+| Warning in a Prussian tracker | Prussian, state, warning | White text, Newsprint bar and triangle, the word "Warning" | 13.28 and 9.42 | Red text on Prussian, 3.19 |
 
 ## 9. Decisions for Gate 1
 
@@ -186,7 +186,7 @@ The page is chapter 26, in Production, as the architecture map places it (C9). E
 
 ## Checks run
 
-- Palette contrast on four surfaces: 21 of 21 brief cells match.
+- Palette contrast: 21 of 21 brief cells match.
 - Six derived candidates in OKLab and OKLCH; #4E535C traced to sRGB scaling; opacity composites.
 - Inter advance widths from the V5 font, checked against the audit's line lengths.
 - Rule test: 157 tokens, 0 failures; 11 of 11 broken copies caught.
@@ -202,4 +202,4 @@ The page is chapter 26, in Production, as the architecture map places it (C9). E
 
 ## Change log
 
-Created this phase, and revised after the reviews: this file; `work/build/tokens/20261021_Token-Schema-Draft.json`; `work/handoffs/phase-1/20261021_Token-Contrast-Data.json`; `oa_color.py`, `tokens_phase1.py` and `token_rule_test.py` in `work/build/scripts/phase-1/`. Modified outside these: none.
+Created this phase and revised after the reviews: this file; `work/build/tokens/20261021_Token-Schema-Draft.json`; `work/handoffs/phase-1/20261021_Token-Contrast-Data.json`; `oa_color.py`, `tokens_phase1.py` and `token_rule_test.py` in `work/build/scripts/phase-1/`. Modified outside these: none.
