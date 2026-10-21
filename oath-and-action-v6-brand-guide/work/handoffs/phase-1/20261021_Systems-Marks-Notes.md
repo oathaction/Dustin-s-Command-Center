@@ -10,7 +10,7 @@ Data visualization and systems lead, October 21, 2026. Board: `work/boards/20261
 4. **Effects.** One to three pips with a sign, costs left of the zero line, V7's words beside them, full V7 text where it adds a qualifier, no totals. Confidence (`effects_confidence`) and remedy grade stay separate lines. Real example: R-01 (DQ +M, GE +S, EP 0, EQ 0) and seven reforms with costs or qualifiers.
 5. **Events.** A shape per instrument family (ballot measure, statute or local law, court ruling, executive or agency action) in a row per direction, an outline for pending, same-day stacking, no arrowheads, boxes or grade textures. Real example: the 19 rule changes on Loop R10 and 7 on Loop B4. The delivery log gets a seven-step period rule that parses all 24 date strings, including "FY2024" (October 1, 2023 to September 30, 2024) and "2024 analysis" (a point).
 6. **Authority and delay.** Authority: an open diamond in ink with "no sign" in the label, outside loop rings. The authority diagram draws all seven authority connections. Delay: ticks on the line and words in the label; letters only in data tables, because S, M and L also size effects.
-7. **The hinge.** A three-step primer (the hinge diagram, Loop B4, then B4 and R10 meeting at C3) and five rules that keep the brand mark apart from data marks. Finding: the V5 hinge master draws its arc dotted (1.25 px, dashes 1 6), which is V7's hypothesis texture, and Dustin's mockup draws dashed arcs, which is V7's plausible texture. The primer now reuses the identity board's hinge diagram V2 (solid hairline arcs, clockwise, UNDERSTAND and IMPACT) at or above its minimum sizes. Rule 4 quotes the red rule verbatim; on Prussian the ampersand is White and data marks stay Newsprint. The arcs need Dustin's named approval at identity item 7.
+7. **The hinge.** A three-step primer, from the hinge diagram to Loops B4 and R10, and five separation rules. The V5 master's arc is dotted (V7's hypothesis texture) and Dustin's mockup's arcs are dashed (plausible). The primer reuses the identity board's hinge diagram V2: solid hairline arcs, clockwise, UNDERSTAND and IMPACT. Rule 4 quotes Rule 05.3, the red rule, word for word from D1-26; the R10 caption cites "One job may take several marks" for R-01's three rings. Decision I6 lists four options: V5's dotted arc; two-way dashed arcs; V2 with solid arcs; V2 without the return arc. Recommended: V2 with solid arcs, clockwise, with the five rules.
 8. **Atlas bases.** Confirm 03, 09 and 11 with changes, revise 10, and add 07 Loop Card with 04's record panel as the fifth base. 
 
 ## V7 fields used
@@ -48,8 +48,9 @@ Every item is in the board's Decisions for Gate 1 panel with a recommendation. T
 - V7's rendered map: whether drivers appear as pills. I read the renderer code only.
 - Real-world routes and dates beyond V7's own records.
 
-## Files
+## Change log
 
-Created: the board; in `work/boards/phase-1/systems/` the data and check JSON, the hinge copy and six concept thumbnails; six scripts in `work/build/scripts/phase-1/` (`systems_marks_data.py`, `svg_marks.py`, `build_systems_marks_board.py`, `crop_concept_thumbs.py`, `check_systems_board.js`, `build_v71_issue_list.py`); the issue list and this file; gitignored screenshots.
-
-Modified: none. The ledgers were not touched; the main session may want to point `work/ledger/20261020_Open-Questions.md` question 7 to the issue list.
+- October 21, first issue: created the board; in `work/boards/phase-1/systems/` the data and check JSON, the hinge copy and six thumbnails; six scripts in `work/build/scripts/phase-1/`; the issue list and this file; gitignored screenshots.
+- October 21, review fixes: Rule NN.n in place of Std-01; hinge diagram V2 reused; editor's fixes.
+- October 21, D1-26 and D1-27: red rule quoted from D1-26 as Rule 05.3; R10 caption; I6 option list. Board rebuilt and rechecked at 1440 and 390 px.
+- Modified outside these files: none. Ledgers and `source/` untouched.

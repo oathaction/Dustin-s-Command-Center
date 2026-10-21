@@ -53,12 +53,25 @@ async function shot(page, selector, name, opts = {}) {
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
+  // Start clean, so a version the boards dropped never lingers in the review board.
+  for (const f of fs.readdirSync(OUT)) if (/\.(png|jpg|json)$/.test(f)) fs.unlinkSync(path.join(OUT, f));
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 
   // Symbol board: the composite posts (section 11) and the 48 and 96 px cells of both directions.
   let page = await open(browser, SYMBOL, 1440);
-  const posts = ['post-today-width.jpg', 'post-condensed-width.jpg', 'post-wordmark-covered.jpg'];
-  for (let i = 0; i < posts.length; i++) await shot(page, '#composite .post', posts[i], { nth: i, source: SYMBOL + '#h-co' });
+  // Every version of the composite post, however many the board holds, with its label and headline.
+  const nPosts = await page.locator('#composite .post').count();
+  if (nPosts < 1) throw new Error('no composite posts on the symbol board');
+  for (let i = 0; i < nPosts; i++) {
+    const name = `post-${i + 1}.jpg`;
+    await shot(page, '#composite .post', name, { nth: i, source: SYMBOL + '#h-co' });
+    manifest[name].info = await page.locator('#composite .post').nth(i).evaluate((el) => ({
+      label: el.getAttribute('aria-label') || '',
+      head: ((el.querySelector('.po-head') || {}).textContent || '').trim(),
+      covered: !!el.querySelector('.po-cover'),
+      caption: ((el.closest('figure') || el).querySelector('figcaption') || {}).textContent || '',
+    }));
+  }
   for (const dir of ['A', 'B']) {
     for (const treat of ['filled', 'line', 'tile']) {
       for (const pillar of ['Explain', 'Track', 'Connect', 'Act']) {
@@ -77,8 +90,23 @@ async function shot(page, selector, name, opts = {}) {
   // Strategy board: the two Act mocks (section 5). At a 1200 px viewport each mock is 574 px wide,
   // which fits the review board's two-up grid at true size.
   page = await open(browser, STRATEGY, 1200);
-  await shot(page, '#act article.mock', 'act-mock-process.jpg', { nth: 0, source: STRATEGY + '#h-act' });
-  await shot(page, '#act article.mock', 'act-mock-position.jpg', { nth: 1, source: STRATEGY + '#h-act' });
+  const nMocks = await page.locator('#act article.mock').count();
+  if (nMocks < 1) throw new Error('no Act mocks on the strategy board');
+  for (let i = 0; i < nMocks; i++) {
+    const name = `act-mock-${i + 1}.jpg`;
+    await shot(page, '#act article.mock', name, { nth: i, source: STRATEGY + '#h-act' });
+    manifest[name].info = await page.locator('#act article.mock').nth(i).evaluate((el) => {
+      const clean = (n) => (n ? n.textContent.replace(/Illustrative/g, '').replace(/\s+/g, ' ').trim() : '');
+      return {
+        label: el.getAttribute('aria-label') || '',
+        kicker: clean(el.querySelector('.kicker')),
+        head: clean(el.querySelector('.mh, h3')),
+        sections: [...el.querySelectorAll('h4')].map(clean).map((s) => s.replace(/^\d+\s*/, '')),
+        ask: clean(el.querySelector('.ask')),
+        illustrative: el.querySelectorAll('.illus').length,
+      };
+    });
+  }
   await page.close();
 
   // Systems board: the recommended options of marks 1 and 3, on all four surfaces.

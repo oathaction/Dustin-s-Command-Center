@@ -1,7 +1,11 @@
 """Build the combined Gate 1 review board from its template, the Gate 1 report and the five Phase 1 boards.
 
 Usage:
-    python3 -I build_gate1_board.py <project-root> [--report PATH] [--out PATH]
+    python3 -I build_gate1_board.py <project-root> [--report PATH] [--out PATH] [--no-capture] [--check]
+
+Each run first recaptures every screenshot from the five boards (capture_gate1_images.js), so one
+rerun picks up any change to the boards. --no-capture reuses the images already in
+work/boards/phase-1/gate-1/img/. --check runs check_gate1_board.js on the result.
 
 Every table, the approval list, the sample reply and the prose of the seven big calls come from the
 report at build time, so the board and the report cannot disagree. Section 3 renders as a pending
@@ -18,7 +22,9 @@ import html
 import json
 import os
 import re
+import shutil
 import struct
+import subprocess
 import sys
 
 # ---------------------------------------------------------------- paths and arguments
@@ -27,7 +33,27 @@ args = sys.argv[1:]
 if not args:
     raise SystemExit(__doc__)
 ROOT = os.path.abspath(args[0])
-opts = dict(zip(args[1::2], args[2::2]))
+FLAGS = {a for a in args[1:] if a in ("--no-capture", "--check")}
+rest = [a for a in args[1:] if a not in FLAGS]
+opts = dict(zip(rest[0::2], rest[1::2]))
+HERE = os.path.dirname(os.path.abspath(__file__))
+WARNINGS = []
+
+
+def warn(msg):
+    WARNINGS.append(msg)
+    print("WARNING: " + msg, file=sys.stderr)
+
+
+def run_node(script):
+    node = shutil.which("node")
+    if not node:
+        raise SystemExit("build_gate1_board: node is not on the PATH")
+    subprocess.run([node, os.path.join(HERE, script), ROOT], check=True)
+
+
+if "--no-capture" not in FLAGS:
+    run_node("capture_gate1_images.js")
 BOARDS = os.path.join(ROOT, "work", "boards")
 P1 = os.path.join(BOARDS, "phase-1")
 IDPNG = os.path.join(P1, "identity", "png")
@@ -245,7 +271,7 @@ def img(path, alt, scale=1, factor=None, cls="", style=""):
     USES.append(os.path.relpath(path, ROOT))
     c = f' class="{cls}"' if cls else ""
     s = f' style="{style}"' if style else ""
-    return f'<img src="{data_uri(path)}" width="{w}" height="{h}" alt="{attr(alt)}"{c}{s} decoding="async">'
+    return f'<img src="{data_uri(path)}" width="{w}" height="{h}" alt="{attr(alt)}"{c}{s}>'
 
 
 def svg_root_size(markup):
@@ -303,9 +329,10 @@ need(after, "closing approval paragraph not found")
 
 s4 = section(sections, "4. ")
 calls_head, call_rows = md_table(s4, "| # | Call |")
-need(len(call_rows) == 7, "expected seven big calls")
+if len(call_rows) != 7:
+    warn(f"section 4 lists {len(call_rows)} big calls, the board's specimens are drawn for seven")
 call_prose = {t.split(".", 1)[0]: (t.split(". ", 1)[1], body) for t, body in split_headings(s4, 3)}
-need(sorted(call_prose) == [str(n) for n in range(1, 8)], "expected ### 1. to ### 7. in section 4")
+need(sorted(call_prose, key=int) == [r[0] for r in call_rows], "section 4's ### headings must match its table rows")
 l_note = [p for p in s4.split("\n\n") if p.strip().startswith("**L** marks")]
 need(l_note, "L note missing")
 
