@@ -171,6 +171,15 @@ async function shellChecks(browser) {
     });
     kb.landmarks = (await page.locator('body').ariaSnapshot()).split('\n').filter((l) => /^\s*- (banner|navigation|main|contentinfo|region|complementary)\b/.test(l)).map((l) => l.trim());
 
+    // Focusing masthead controls (and the desktop rail) must not scroll the page.
+    await page.goto(SHELL + '?at=color&r=3'); await settle(page); await wait(page, 200);
+    kb.stickyFocusJumps = await page.evaluate(() => {
+      const els = [...document.querySelectorAll('.masthead a, .masthead button, .rail a')].filter((e) => e.getBoundingClientRect().width > 0);
+      const jumps = [];
+      for (const e of els) { const y = scrollY; e.focus(); if (Math.abs(scrollY - y) > 1) { jumps.push((e.textContent || '').trim().slice(0, 30) + ' ' + Math.round(scrollY - y)); window.scrollTo(0, y); } }
+      return { checked: els.length, jumps };
+    });
+
     if (w === 1440) {
       // Every chapter, part and the closing: activate its rail link by keyboard and check the markers and focus.
       const ids = await page.evaluate(() => [...document.querySelectorAll('.rail [data-loc]')].map((a) => a.getAttribute('data-loc')));
@@ -248,6 +257,7 @@ async function shellChecks(browser) {
       const btn = await page.evaluate(() => { const b = document.getElementById('menubtn'); const r = b.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height), haspopup: b.getAttribute('aria-haspopup'), where: document.getElementById('where').textContent }; });
       await page.keyboard.press('Enter'); await wait(page, 300);
       const opened = await active(page);
+      await page.screenshot({ path: path.join(NAV, `20261021_Nav-${w}-Menu.png`) });
       const menu = await page.evaluate(() => {
         const d = document.getElementById('menu'), sc = d.querySelector('.menu-scroll');
         const links = [...d.querySelectorAll('nav a')];
@@ -266,7 +276,6 @@ async function shellChecks(browser) {
       for (let i = 0; i < 6; i++) { await page.keyboard.press('Shift+Tab'); shiftStops.push(await active(page)); }
       await axe(page, `${k}-menu-open`);
       await contrastAudit(page, `${k}-menu-open`);
-      await page.screenshot({ path: path.join(NAV, `20261021_Nav-${w}-Menu.png`) });
       await page.keyboard.press('Escape'); await wait(page, 250);
       const afterEsc = await active(page);
       const closed = await page.evaluate(() => !document.getElementById('menu').open);

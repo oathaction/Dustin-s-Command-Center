@@ -61,7 +61,7 @@ def gap(a, b):
     return o.pair_gap(a, b, depth=DEPTH)
 
 
-def solve_hinge(H, amp, A2, keep_total=True):
+def solve_hinge(H, amp, A2, keep_total=True, floor=None):
     """Shift the ampersand (d) and ACTION (e) so the depth-limited white areas match, with no
     ink nearer than FLOOR. Returns d, e and the resulting gaps."""
     pH, pa, pA = o.Profile(H), o.Profile(amp), o.Profile(A2)
@@ -78,7 +78,7 @@ def solve_hinge(H, amp, A2, keep_total=True):
                 hi = d
         l = o.gap_profiles(pH, pa, d, DEPTH)
         r = o.gap_profiles(pa, pA, e - d, DEPTH)
-        if min(l["min"], r["min"]) >= FLOOR - 1e-6:
+        if min(l["min"], r["min"]) >= (FLOOR if floor is None else floor) - 1e-6:
             return round(d, 2), e, l, r
     return round(d, 2), e, l, r
 
@@ -354,8 +354,61 @@ def build():
     return res
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "--amp-variants" not in sys.argv:
     r = build()
     (o.SCRATCH / "specs").mkdir(parents=True, exist_ok=True)
     (o.SCRATCH / "specs/wordmark.json").write_text(json.dumps(r, indent=1))
     print(json.dumps(r, indent=1)[:4000])
+
+
+def build_amp_variants():
+    """Wordmarks carrying option A or option B, for the ampersand panels: display masters with the
+    hinge solved for each glyph, and 24 and 16 px masters with each option's small drawing."""
+    import p1_amp_b as Bm
+    G, amp_v5 = glyphs()
+    adj = spacing_display(G, amp_v5)
+    out = {}
+    tune = A.a_display()
+    tb = o.bounds(tune)
+    s = A.S
+    a_disp = o.tx(tune, a=s, d=-s, e=-tb[0] * s, f=A.CAP_FONT * s + 4)
+    a_disp = o.tx(a_disp, e=365.5 + 23 * s)   # roughly where V5 sets its glyph; the solver moves it
+    bg = Bm.glyph()
+    bb = o.bounds(bg)
+    b_disp = o.tx(Bm.to_symbol(bg, bb[0]), e=368.72, f=4.0)
+    for key, ampg, small16, disp24 in (("A", a_disp, A.a16(), tune), ("B", b_disp, Bm.b16(), bg)):
+        ab = o.bounds(ampg)
+        ampg = o.tx(ampg, e=368.72 - ab[0])
+        d, e, l, r = solve_hinge(G["H"], ampg, G["A2"])
+        parts = place(G, ampg, adj, d, e)
+        bx = o.bounds(o.union(*parts.values()))
+        vb = [0, 0, round(bx[2], 2), 108]
+        fn = DIR3 / f"20261021_Wordmark-Display-Amp-{key}.svg"
+        o.write_svg(fn, vb, to_svg(parts, vb), f"Wordmark display master with ampersand option {key} (proposal, Phase 1)")
+        out[f"display_{key}"] = {"file": str(fn.relative_to(o.ROOT)), "viewBox": vb, "hinge": {"amp_shift": d, "action_shift": e}, **measures(parts)}
+        for size in (24, 16):
+            pp = place(G, ampg, adj, d, e, track=TRACK[size], t_trim=T_TRIM[size])
+            px = pixel_master(pp, size, small16 if size == 16 else None)
+            if size == 24:
+                gb = o.bounds(disp24)
+                k = 24 / (gb[3] - gb[1])
+                q = o.tx(disp24, a=k, d=-k, e=-gb[0] * k, f=gb[3] * k)
+                abx = o.bounds(pp["&"])
+                cx = (abx[0] + abx[2]) / 2 * YPX[24]["cap_px"] / 100
+                qb = o.bounds(q)
+                px["&"] = o.tx(q, e=round(cx - (qb[2] - qb[0]) / 2))
+            space_px(px, size)
+            solve_hinge_px(px, size, 1.5 if size == 16 else 2.0)
+            enforce_gaps(px, {"*": 1.0, ("T", "H"): 2.0, ("T2", "I"): 2.0, ("H", "&"): 2.0, ("&", "A2"): 1.0}, size)
+            bx = o.bounds(o.union(*px.values()))
+            vb = [0, 0, math.ceil(bx[2]), size]
+            fn = DIR3 / f"20261021_Wordmark-{size}px-Amp-{key}.svg"
+            o.write_svg(fn, vb, to_svg(px, vb, nd=3), f"Wordmark {size} px master with ampersand option {key} (proposal, Phase 1)")
+            out[f"{size}_{key}"] = {"file": str(fn.relative_to(o.ROOT)), "viewBox": vb}
+    return out
+
+
+if __name__ == "__main__" and "--amp-variants" in sys.argv:
+    r = build_amp_variants()
+    (o.SCRATCH / "specs/wordmark_amp.json").write_text(json.dumps(r, indent=1))
+    print(json.dumps({k: (v.get("viewBox"), v.get("hinge"), v.get("H&"), v.get("&A")) for k, v in r.items()}, indent=1))

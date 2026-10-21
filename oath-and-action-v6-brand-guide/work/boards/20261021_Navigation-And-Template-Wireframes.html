@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="board-base.css">
 <style>
   :focus-visible { outline: 2px solid var(--verdigris); outline-offset: 3px }
+  .tag { font-size: .8125rem }  /* board-base.css sets 12 px, under the 13 px floor */
   [tabindex="-1"]:focus { outline: none }
   a { color: inherit; text-underline-offset: .18em }
   .skip { position: absolute; left: 16px; top: 8px; z-index: 10; background: var(--fg); color: var(--bg); padding: 12px 16px; font-weight: 700 }
@@ -70,7 +71,7 @@
   .status { font: 600 .9375rem/1.45 var(--body); margin: 12px 0 0; padding-left: 10px; border-left: 3px solid var(--verdigris); max-width: 70ch }
   .status.is-error { border-left: 4px double var(--fg) }
   .why { font-size: .875rem; margin: 8px 0 0 }
-  .keys { border-collapse: collapse; max-width: 760px }
+  .keys { border-collapse: collapse; max-width: 760px; margin-top: 24px }
   .keys kbd { font: 600 .8125rem ui-monospace, Menlo, monospace; border: 1px solid var(--fg); padding: 1px 6px; background: var(--white) }
   .thumbs { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) }
   .thumbs button { width: 100%; display: grid; gap: 6px; padding: 8px; border: 1px solid var(--fg); background: var(--bg); color: var(--fg); cursor: pointer; text-align: left; font: 600 .8125rem/1.3 var(--body); min-height: 44px }
@@ -84,6 +85,7 @@
   .reader-bar h2 { font-size: 1.375rem; margin: 0 0 10px }
   .reader-controls { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center }
   .reader-controls label { font: 600 .875rem var(--body) }
+  .zoomgrp { display: inline-flex; gap: 8px; align-items: center }
   .reader-controls select { min-height: 44px; border: 1px solid var(--fg); background: var(--white); color: var(--fg); font: 400 .9375rem var(--body); padding: 0 8px }
   .reader-controls .close { margin-left: auto }
   .reader-keys { font-size: .8125rem; color: var(--muted); margin: 8px 0 0 }
@@ -98,7 +100,7 @@
   .sheet p { margin: 0 }
   .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center }
   .tokrow { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 10px }
-  .tokrow code { background: var(--white); border: 1px solid var(--rule); padding: 3px 6px }
+  .tokrow code { background: var(--white); padding: 3px 6px }
   .copy-fallback { display: block; margin-top: 8px; font: 500 .9375rem ui-monospace, monospace; padding: 6px 8px; border: 1px solid var(--fg); background: var(--white); width: min(100%, 360px) }
   fieldset { border: 1px solid var(--rule); padding: 10px 12px; margin: 0 }
   legend { font-weight: 700; font-size: .875rem; padding: 0 4px }
@@ -110,7 +112,7 @@
   .field select { min-height: 44px; border: 1px solid var(--fg); background: var(--white); color: var(--fg); font: 400 .9375rem var(--body); padding: 0 8px }
   .pair-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); align-items: end }
   .pair-specimen { display: block; width: 100%; max-width: 560px; height: auto; border: 1px solid var(--fg); margin-top: 14px }
-  .mv { position: relative; margin-top: 14px }
+  .mv { position: relative; margin-top: 14px; padding-bottom: 16px }
   .mv-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)) }
   .mv-steps li { border: 1px solid var(--rule); background: var(--newsprint); padding: 12px; min-height: 140px; display: grid; gap: 6px; align-content: start }
   .mv-steps .num { font: 800 1.5rem/1 var(--display) }
@@ -218,7 +220,7 @@
     <div id="wide-wrap">
       <div class="scrollbox" id="wide-box" tabindex="0" role="region" aria-label="Wireframe frame at 1440 pixels, scrolls sideways">
         <div class="wide-holder" id="wide-holder">
-          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" title="Guide shell wireframe at 1440 by 900 pixels, opened at 05 Color" allow="clipboard-write" loading="lazy"></iframe>
+          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" title="Guide shell wireframe at 1440 by 900 pixels, opened at 05 Color" allow="clipboard-write"></iframe>
         </div>
       </div>
     </div>
@@ -241,13 +243,13 @@
     <div class="phones">
       <figure class="phone">
         <div class="scrollbox" tabindex="0" role="region" aria-label="Wireframe frame at 390 pixels">
-          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" width="390" height="844" title="Guide shell wireframe at 390 by 844 pixels" allow="clipboard-write" loading="lazy"></iframe>
+          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" width="390" height="844" title="Guide shell wireframe at 390 by 844 pixels" allow="clipboard-write"></iframe>
         </div>
         <figcaption>390 by 844 CSS px. Tap Menu.</figcaption>
       </figure>
       <figure class="phone">
         <div class="scrollbox" tabindex="0" role="region" aria-label="Wireframe frame at 360 pixels">
-          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" width="360" height="780" title="Guide shell wireframe at 360 by 780 pixels" allow="clipboard-write" loading="lazy"></iframe>
+          <iframe src="phase-1/navigation/20261021_Guide-Shell-Wireframe.html?at=color" width="360" height="780" title="Guide shell wireframe at 360 by 780 pixels" allow="clipboard-write"></iframe>
         </div>
         <figcaption>360 by 780 CSS px.</figcaption>
       </figure>
@@ -378,7 +380,85 @@
 
   <section id="s-checks" aria-labelledby="s-checks-h">
     <h2 id="s-checks-h">7. Checks run on these wireframes</h2>
-    <!-- checks:start --><p>Results are added after the check script runs.</p><!-- checks:end -->
+    <!-- checks:start --><p>Run on October 21, 2026 with Chromium 141 through Playwright 1.56.1 and axe-core 4.10.2, by <code>work/build/scripts/phase-1/ux_wireframe_checks.js</code>. Every figure below comes from <code>phase-1/navigation/20261021_Wireframe-Check-Results.json</code>. Fonts were served from the Inter, Inter Tight and Lora files extracted from V5 Polished, so the renders use the real faces.</p>
+
+<h3 id="s-checks-axe">7.1 axe-core, WCAG 2.2 A and AA plus best practice</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-labelledby="axe-cap">
+<table class="data results">
+  <caption id="axe-cap">axe-core results on the wireframes</caption>
+  <thead><tr><th scope="col">Page and state</th><th scope="col">Widths</th><th scope="col">Violations</th><th scope="col">Rules passed</th></tr></thead>
+  <tbody>
+    <tr><td>Guide shell, from the top</td><td>1440, 390, 360</td><td class="ok">0</td><td>48 to 49</td></tr>
+    <tr><td>Guide shell, at 05 Color</td><td>1024, 390, 360, 320</td><td class="ok">0</td><td>48 to 49</td></tr>
+    <tr><td>Guide shell, phone menu open</td><td>390, 360</td><td class="ok">0</td><td>24</td></tr>
+    <tr><td>This board</td><td>1440, 390, 360</td><td class="ok">0</td><td>53</td></tr>
+    <tr><td>This board, report reader open at page 12</td><td>1440, 390, 360</td><td class="ok">0</td><td>53 to 54</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Fifteen states, no violations. axe left three kinds of item for review, and each was checked another way:</p>
+<ul>
+  <li><strong>Color contrast it could not compute</strong>: text over the striped placeholder ground, menu and table text clipped inside scroll boxes, and the arrow glyphs in the key table. A second script composited each element's real background and applied the WCAG formula to every visible text element: 886 in the shell and up to 537 on the board. The lowest small-text ratio is 5.47 to 1 in the shell and 6.42 to 1 on the board; the lowest large-text ratio is 9.42 to 1. None falls under its threshold, and no text renders under 13 px. The failure specimens are images and are not counted.</li>
+  <li><strong>A reference to a closed dialog</strong>: the Menu button points at the menu dialog, which exists but is closed. The menu tests below open it.</li>
+  <li><strong>The three frames on this board</strong>: axe does not scan into them here. The same page was scanned on its own at each width, as the first three rows show.</li>
+</ul>
+
+<h3 id="s-checks-keys">7.2 Keyboard pass</h3>
+<div class="tablewrap" tabindex="0" role="region" aria-labelledby="kb-cap">
+<table class="data results">
+  <caption id="kb-cap">Scripted keyboard checks</caption>
+  <thead><tr><th scope="col">Check</th><th scope="col">Result</th></tr></thead>
+  <tbody>
+    <tr><td>Tab order through the whole shell</td><td>286 stops at 1440 px and 244 at 390 and 360 px. Every stop shows a 2 px ring. None is hidden behind the masthead, tested by hit-testing five points on each line box (WCAG 2.4.11 and 2.4.12). No stop jumps back up the page.</td></tr>
+    <tr><td>Skip links</td><td>The first two stops, visible on focus. One lands on the main text, the other on the Contents heading.</td></tr>
+    <tr><td>Current-location marker, every chapter</td><td>All 36 rail targets (Where to start, six parts, 28 chapters, the Closing) by keyboard: the marker moves to the chosen link, the part link marks its part, and focus lands on the heading clear of the masthead. Scrolling to each of the 35 sections other than Where to start marks it too: 35 of 35.</td></tr>
+    <tr><td>Focus in the masthead and rail</td><td>Focusing any of the 44 masthead and rail controls at 1440 px, or the two at phone widths, leaves the page where it was.</td></tr>
+    <tr><td>Phone menu, 390 and 360 px</td><td>Menu is 98 by 44 px and says it opens a dialog. It opens a modal dialog named Contents, with focus on "05 Color", marked current. 38 links, 28 of them chapters; every row is at least 44 px tall and nothing scrolls sideways. Tab and Shift+Tab never reach the page behind; focus passes once to the browser's own controls, as native modal dialogs do, then returns. Escape and Close return focus to Menu. Choosing 21 The atlas closes the menu, moves focus to its h2 and marks it current.</td></tr>
+    <tr><td>Cross-reference and return</td><td>The 06 Type link in Rule 05.2 lands focus on the 06 Type heading. "Return to Rule 05.2 Text sits only on pairs that pass, 05 Color" appears and is the next Tab stop. It returns to the Rule 05.2 heading and then hides.</td></tr>
+    <tr><td>Back to contents</td><td>From the end of 05 Color, lands on the Contents heading.</td></tr>
+    <tr><td>Copy</td><td>Status: "Copied #121212 to the clipboard." The clipboard read back #121212. Focus stayed on the button.</td></tr>
+    <tr><td>Download and the unavailable download</td><td><code>20261021_Oath-And-Action-Palette_DRAFT.css</code>, 342 bytes, all seven colors. The board's SVG, 1,583 bytes, parses as SVG with a title, a description, the ID <code>oa-lockmark</code> and nine nodes. The unavailable buttons start no download, say why in the status line and keep focus.</td></tr>
+    <tr><td>Report reader</td><td>The thumbnail's name starts with its visible text. The dialog's name is its visible title, "Page 5 of 12: Narrative page", and focus starts there. Arrow keys on the title and on Next page turn pages. On Zoom they change only the zoom. Inside the page at full size they scroll it, 240 px sideways at 390 and 234 px at 360, and the page number stays put. At page 12 focus stays on Next page, now marked unavailable, and the status line says it is the last page. Home goes to page 1. Escape closes and returns focus to the 05 thumbnail.</td></tr>
+    <tr><td>Pair checker</td><td>Down arrow on Text color announces "Prussian on Newsprint at 17 px: 9.42 to 1." Stone on Newsprint at 17 px reads 4.29 to 1 and fails at that size. Right arrow on the surface radios moves to White and announces 6.05 to 1. The ratio in the status line matches the ratio computed from the rendered fills. Reset announces the reset pair.</td></tr>
+    <tr><td>Motion</td><td>Play reaches step 2 after 2.8 seconds. Pause holds it for 3 seconds. Step forward reaches step 4 and says the sequence has ended; pressed again, it says step 4 is the last. Reset returns to step 1. Still view hides the marker. With reduced motion emulated, Still view starts pressed, the marker has no transition and Play still steps.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="s-checks-layout">7.3 Layout, zoom, color modes and targets</h3>
+<ul>
+  <li><strong>Reflow</strong>: no sideways scroll at 320, 360, 390, 1024 or 1440 px. This board has none at 1440, 390 or 360 px.</li>
+  <li><strong>Page zoom at 200 percent</strong> (720 by 450 CSS px at device scale 2): no sideways scroll, and the phone pattern with Menu takes over.</li>
+  <li><strong>Text at 200 percent</strong>, emulated by setting Chromium's default font size to 32 px: no sideways scroll and no clipped text at 1440 or 390 px. Breakpoints are in em, so the layout switches to the Menu pattern when text grows. <a href="phase-1/navigation/20261021_Nav-1440-Text-200.png">Still at 1440 px</a>.</li>
+  <li><strong>Forced colors</strong>, emulated: the current rail link keeps its 4 px bar and bold weight, other links have no bar, and the current part keeps its underline. <a href="phase-1/navigation/20261021_Nav-1440-Forced-Colors.png">Still at 1440 px</a>.</li>
+  <li><strong>Targets</strong>: every control is at least 24 by 24 CSS px except links inside lines of text (95 at 1440 px), which WCAG 2.5.8 exempts, and the skip links while hidden. Phone menu rows are at least 44 px tall.</li>
+  <li><strong>Outline and landmarks</strong>: one h1; 37 h2s in the main text; all 28 chapter h2s read number then name; no skipped levels. Landmarks: banner, the Parts and Chapters navigation at desktop, main and contentinfo.</li>
+</ul>
+
+<h3 id="s-checks-fixed">7.4 Fixed while checking</h3>
+<ol>
+  <li>A root <code>scroll-padding-top</code> made Chromium scroll the page 400 px whenever Menu took focus. The masthead offset now sits on content as <code>scroll-margin-top</code>.</li>
+  <li>This board scrolled sideways at 390 and 360 px, because the phone frames would not shrink. They now sit in their own scroll boxes.</li>
+  <li>The wordmark was sized in rem, grew with the text, and pushed Menu off screen at 32 px text. Artwork is now sized in px.</li>
+  <li>Numbers and names ran together in accessible names ("05Color"). They now have a space.</li>
+  <li>The Return link sat before the heading, behind the next Tab stop. It now follows the instruction line.</li>
+  <li>Opening a frame at 05 Color ran before the fonts loaded, so the marker landed on 04. It now runs again when the fonts arrive.</li>
+  <li><code>board-base.css</code> sets the Defect fix and Option tags at 12 px, under the 13 px floor. This board overrides them to 13 px. The shared file needs the same change.</li>
+  <li>The success check mark was Verdigris text at 3.37 to 1. It is now a Charcoal mark inside a Verdigris ring.</li>
+  <li>The specification table first truncated ratios (2.95 to 1 for red on Newsprint). It now rounds them, matching the brief's table.</li>
+</ol>
+
+<h3 id="s-checks-not">7.5 Not tested here</h3>
+<ul>
+  <li>Screen readers (NVDA, JAWS, VoiceOver, TalkBack). Names, roles and announcements come from the accessibility tree and axe.</li>
+  <li>Firefox, Safari, and Chromium on Windows or macOS; touch, speech control and switch access.</li>
+  <li>Real text-only zoom in Firefox and Safari, and Windows contrast themes. Forced colors and reduced motion were emulated.</li>
+  <li>A color vision simulation. Only the grayscale reasoning in the 05.4 failure case was used.</li>
+  <li>The clipboard fallback, because the test browser granted clipboard access; the code path was written and not triggered.</li>
+  <li>Whether downloaded files reach a reader's folder. The check covers the browser's download event and the file contents.</li>
+  <li>The 768 px layout, print styles, and any session with real readers.</li>
+</ul>
+<!-- checks:end -->
   </section>
 
   <section id="s-decisions" aria-labelledby="s-decisions-h">
@@ -423,10 +503,11 @@
     <p><strong>Files for this board.</strong> Created October 21, 2026:</p>
     <ul>
       <li><code>work/boards/20261021_Navigation-And-Template-Wireframes.html</code> (this board)</li>
-      <li><code>work/boards/phase-1/navigation/</code>: the shell wireframe, <code>wireframe.css</code>, <code>wireframe.js</code>, stills and the check results</li>
+      <li><code>work/boards/phase-1/navigation/</code>: <code>20261021_Guide-Shell-Wireframe.html</code>, <code>wireframe.css</code>, <code>wireframe.js</code>, <code>20261021_Wireframe-Check-Results.json</code> and seven stills (<code>20261021_Nav-390-Menu.png</code>, <code>20261021_Nav-360-Menu.png</code>, <code>20261021_Color-Chapter-1440.jpg</code>, <code>20261021_Color-Chapter-360.jpg</code>, <code>20261021_Nav-1440-Text-200.png</code>, <code>20261021_Nav-1440-Forced-Colors.png</code>, <code>20261021_Reader-390.png</code>)</li>
       <li><code>work/ledger/20261021_Guide-Architecture-Map.md</code></li>
       <li><code>work/build/scripts/phase-1/</code>: <code>build_navigation_wireframe.py</code>, <code>fragments/05-color.html</code>, <code>ux_architecture_coverage.py</code>, <code>ux_lib.js</code>, <code>ux_wireframe_checks.js</code></li>
     </ul>
+    <p>Modified: none. <code>source/</code>, <code>work/extract/</code>, <code>board-base.css</code> and the V5 masters were not touched.</p>
   </footer>
 </main>
 
@@ -437,8 +518,8 @@
       <div class="reader-controls">
         <button type="button" class="btn" id="rd-prev">Previous page</button>
         <button type="button" class="btn" id="rd-next">Next page</button>
-        <label for="rd-zoom">Zoom</label>
-        <select id="rd-zoom"><option value="fit">Fit width</option><option value="full">Full size, 816 px</option></select>
+        <span class="zoomgrp"><label for="rd-zoom">Zoom</label>
+        <select id="rd-zoom"><option value="fit">Fit width</option><option value="full">Full size, 816 px</option></select></span>
         <button type="button" class="btn close" id="rd-close">Close</button>
       </div>
       <p class="reader-keys" id="reader-keys">Arrow keys turn pages while focus is on the title or a page button. Inside the page they scroll it.</p>

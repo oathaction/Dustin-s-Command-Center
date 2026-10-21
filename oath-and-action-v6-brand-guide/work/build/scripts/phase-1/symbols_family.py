@@ -55,8 +55,8 @@ SKELETON_24 = {
         "note": "Three stages on a rising line. The node stands on the stage a decision has reached.",
     },
     "connect": {
-        "circle": (12, 12, 10), "divide": (11, 2, 2, 20), "node": (12, 12),
-        "note": "One circle in two equal halves. The node holds the two sides together at the centre.",
+        "circle": (12, 12, 10), "divide": (9, 2, 6, 20), "node": (12, 12),
+        "note": "One circle in two equal halves, held apart. The node sits in the space between them: the common ground.",
     },
     "act": {
         "head": (12, 2, 9, 3), "jamb": (18, 2, 3, 20), "leaf": [(3, 2), (11, 5), (11, 22), (3, 22)], "node": (7, 12),
@@ -103,18 +103,19 @@ def track_24(direction, treatment):
 
 def connect_24(direction, treatment):
     if direction == "A" and treatment == "filled":
-        body = minus(circle(12, 12, 10), rect(11, 0, 2, 24))
+        body = minus(circle(12, 12, 10), rect(9, 0, 6, 24))
         return _layers(body, 12, 12, 2, 3)
     if direction == "A" and treatment == "line":
-        left = _ln([("A", 12, 12, 9, 97, 263)], 2, "butt", "miter")
-        right = _ln([("A", 12, 12, 9, -83, 83)], 2, "butt", "miter")
+        # arcs follow the outer edge of each filled half and stop at the divide (x 9 and x 15)
+        left = minus(_ln([("A", 12, 12, 9, 100, 260)], 2, "butt", "miter"), rect(9, 0, 6, 24))
+        right = minus(_ln([("A", 12, 12, 9, -80, 80)], 2, "butt", "miter"), rect(9, 0, 6, 24))
         return _layers(union(left, right), 12, 12, 2, 3)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 12, 12, 9, 112, 248)], 2), _ln([("A", 12, 12, 9, -68, 68)], 2))
         return _layers(body, 12, 12, 3, 4)
     if direction == "B" and treatment == "filled":
-        body = minus(circle(12, 12, 10), rrect(11, -1, 2, 26, 0))
-        # soften the four corners where the halves meet the divide
+        body = union(intersect(rrect(2, 2, 7, 20, 2), circle(12, 12, 10)), intersect(rrect(15, 2, 7, 20, 2), circle(12, 12, 10)))
+        body = minus(body, rect(8, 0, 1, 24), rect(15, 0, 1, 24))
         return _layers(body, 12, 12, 3, 4)
     raise ValueError
 
@@ -196,17 +197,17 @@ def track_16(direction, treatment):
 
 def connect_16(direction, treatment):
     if direction == "A" and treatment == "filled":
-        body = minus(circle(7.5, 7.5, 6.5), rect(7, 0, 1, 16))
+        body = minus(circle(7.5, 7.5, 6.5), rect(5, 0, 5, 16))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
     if direction == "A" and treatment == "line":
-        left = _ln([("A", 8, 8, 6, 104, 256)], 2, "butt", "miter")
-        right = _ln([("A", 8, 8, 6, -76, 76)], 2, "butt", "miter")
+        left = minus(_ln([("A", 8, 8, 6, 105, 255)], 2, "butt", "miter"), rect(5, 0, 6, 16))
+        right = minus(_ln([("A", 8, 8, 6, -75, 75)], 2, "butt", "miter"), rect(5, 0, 6, 16))
         return _layers(union(left, right), 8, 8, 2, 3)
     if direction == "B" and treatment == "line":
         body = union(_ln([("A", 8, 8, 6, 118, 242)], 2), _ln([("A", 8, 8, 6, -62, 62)], 2))
         return _layers(body, 8, 8, 2, 3)
     if direction == "B" and treatment == "filled":
-        body = minus(circle(7.5, 7.5, 6.5), rect(7, 0, 1, 16))
+        body = minus(circle(7.5, 7.5, 6.5), rect(5, 0, 5, 16))
         return _layers(body, 7.5, 7.5, 1.5, 2.5)
     raise ValueError
 
@@ -269,7 +270,7 @@ def tile(pillar, direction, size):
 # ------------------------------------------------------------------ topic grammar proof (Direction A)
 # Same rules as the A pillars: filled primitives, square corners, one hinge node as a
 # dot in a clear seat. The node takes a real job in each subject: the filled oval on a
-# ballot, the seal on a bill, the seal on an envelope, the face of a coin.
+# ballot, the seal at the foot of a bill, the seal on an envelope, the face of a coin.
 
 TOPICS = ["ballot", "bill", "contact-an-official", "campaign-money"]
 TOPIC_LABELS = {"ballot": "Ballot", "bill": "Bill", "contact-an-official": "Contact an official", "campaign-money": "Campaign money"}
@@ -277,21 +278,19 @@ TOPIC_LABELS = {"ballot": "Ballot", "bill": "Bill", "contact-an-official": "Cont
 
 def topic_24(name):
     if name == "ballot":
-        box = minus(rect(3, 13, 18, 9), rect(6, 13, 12, 2))
-        return _layers(union(box, rect(8, 2, 8, 12)), 12, 7, 2, 3)
+        box = minus(rect(2, 14, 20, 8), rect(5, 14, 14, 2))
+        return _layers(union(box, rect(8, 3, 8, 12)), 12, 8, 2, 3)
     if name == "bill":
-        sh = poly((4, 2), (15, 2), (20, 7), (20, 22), (4, 22))
-        sh = minus(sh, poly((14, 1), (14, 8), (21, 8), (21, 1)))
-        sh = union(sh, poly((16, 2), (16, 6), (20, 6)))
-        sh = minus(sh, rect(8, 9, 8, 2), rect(8, 13, 5, 2))
+        sh = minus(poly((5, 2), (15, 2), (19, 6), (19, 22), (5, 22)), poly((14, 1), (14, 7), (20, 7), (20, 1)),
+                   rect(8, 9, 8, 2), rect(8, 13, 5, 2))
+        sh = union(sh, poly((16, 2), (16, 5), (19, 5)))
         return _layers(sh, 12, 18, 2, 3)
     if name == "contact-an-official":
-        env = minus(rect(2, 5, 20, 14), stroke_path([("M", 1, 4.4), ("L", 12, 12.6), ("L", 23, 4.4)], 2, "butt", "miter"))
-        return _layers(env, 12, 12.5, 2, 3.2)
+        env = minus(rect(2, 5, 20, 14), stroke_path([("M", 1, 4.6), ("L", 12, 13), ("L", 23, 4.6)], 2, "butt", "miter"))
+        return _layers(env, 12, 13, 2, 3)
     if name == "campaign-money":
-        stack = minus(union(rrect(2, 17, 15, 5, 2.5), rrect(4, 11, 12, 5, 2.5)), circle(16, 9, 7.5))
-        coin = circle(16, 9, 6.5)
-        lay = _layers(coin, 16, 9, 2, 3)
+        stack = minus(union(rrect(2, 17, 15, 5, 2), rrect(4, 11, 12, 5, 2)), circle(16, 9, 7))
+        lay = _layers(circle(16, 9, 6), 16, 9, 2, 3)
         lay["body"] = union(lay["body"], stack)
         return lay
     raise ValueError
@@ -299,18 +298,17 @@ def topic_24(name):
 
 def topic_16(name):
     if name == "ballot":
-        box = minus(rect(2, 10, 13, 5), rect(4, 10, 9, 1))
-        return _layers(union(box, rect(5, 1, 7, 10)), 8.5, 4.5, 1.5, 2.5)
+        box = minus(rect(1, 10, 14, 5), rect(3, 10, 10, 1))
+        return _layers(union(box, rect(4, 2, 7, 9)), 7.5, 5.5, 1.5, 2.5)
     if name == "bill":
-        sh = minus(rect(3, 1, 11, 14), rect(10, 0, 5, 5))
-        sh = union(sh, poly((11, 1), (11, 4), (14, 4)))
-        sh = minus(sh, rect(5, 6, 6, 2))
+        sh = minus(rect(5, 1, 7, 14), rect(9, 0, 4, 4), rect(7, 6, 3, 2))
+        sh = union(sh, poly((10, 1), (10, 3), (12, 3)))
         return _layers(sh, 8.5, 11.5, 1.5, 2.5)
     if name == "contact-an-official":
         env = minus(rect(1, 3, 13, 10), stroke_path([("M", 0.6, 2.6), ("L", 7.5, 8.4), ("L", 14.4, 2.6)], 1.6, "butt", "miter"))
         return _layers(env, 7.5, 9.5, 1.5, 2.5)
     if name == "campaign-money":
-        stack = minus(union(rrect(1, 11, 11, 4, 2), rrect(2, 7, 8, 3, 1.5)), circle(10.5, 5.5, 5.5))
+        stack = minus(union(rrect(1, 11, 11, 4, 1), rrect(2, 7, 8, 3, 1)), circle(10.5, 5.5, 5.5))
         lay = _layers(circle(10.5, 5.5, 4.5), 10.5, 5.5, 1.5, 2.5)
         lay["body"] = union(lay["body"], stack)
         return lay
@@ -334,7 +332,7 @@ def micro_10(pillar):
         body = union(rect(0, 7, 3, 3), rect(3, 4, 4, 6), rect(7, 1, 3, 9))
         return {"body": body, "seat": empty(), "node": rect(4, 1, 2, 2)}
     if pillar == "connect":
-        body = minus(circle(5, 5, 5), rect(4, 0, 2, 10))
+        body = minus(circle(5, 5, 5), rect(3, 0, 4, 10))
         return {"body": body, "seat": empty(), "node": rect(4, 4, 2, 2)}
     if pillar == "act":
         body = minus(union(poly((0, 0), (4, 1), (4, 10), (0, 10)), rect(5, 0, 5, 2), rect(8, 0, 2, 10)), rect(1, 4, 2, 2))

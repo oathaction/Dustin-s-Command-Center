@@ -21,12 +21,12 @@
 <path class="node" d="M15 12C15 13.657 13.657 15 12 15C10.343 15 9 13.657 9 12C9 10.343 10.343 9 12 9C13.657 9 15 10.343 15 12Z" fill="var(--node,currentColor)"/>
 </symbol>
 <symbol id="oa-sketch-b-filled-connect-16" viewBox="0 0 16 16"><title>Connect, Direction B, filled, 16 px</title>
-<path class="body" d="M7 1.019C3.644 1.274 1 4.078 1 7.5C1 10.922 3.644 13.726 7 13.981V9.95C5.859 9.718 5 8.709 5 7.5C5 6.291 5.859 5.282 7 5.05ZM14 7.5C14 4.078 11.356 1.274 8 1.019V5.05C9.141 5.282 10 6.291 10 7.5C10 8.709 9.141 9.718 8 9.95V13.981C11.356 13.726 14 10.922 14 7.5Z" fill="currentColor"/>
+<path class="body" d="M5 1.498C2.651 2.478 1 4.796 1 7.5C1 10.204 2.651 12.522 5 13.502ZM14 7.5C14 4.796 12.349 2.478 10 1.498V13.502C12.349 12.522 14 10.204 14 7.5Z" fill="currentColor"/>
 <path class="seat" d="M10 7.5C10 6.119 8.881 5 7.5 5C6.119 5 5 6.119 5 7.5C5 8.881 6.119 10 7.5 10C8.881 10 10 8.881 10 7.5ZM9 7.5C9 8.328 8.328 9 7.5 9C6.672 9 6 8.328 6 7.5C6 6.672 6.672 6 7.5 6C8.328 6 9 6.672 9 7.5Z" fill="var(--seat,none)"/>
 <path class="node" d="M9 7.5C9 8.328 8.328 9 7.5 9C6.672 9 6 8.328 6 7.5C6 6.672 6.672 6 7.5 6C8.328 6 9 6.672 9 7.5Z" fill="var(--node,currentColor)"/>
 </symbol>
 <symbol id="oa-sketch-b-filled-connect-24" viewBox="0 0 24 24"><title>Connect, Direction B, filled, 24 px</title>
-<path class="body" d="M22 12C22 6.815 18.053 2.551 13 2.049V8.126C14.725 8.57 16 10.136 16 12C16 13.864 14.725 15.43 13 15.874V21.951C18.053 21.449 22 17.185 22 12ZM11 2.049C5.947 2.551 2 6.815 2 12C2 17.185 5.947 21.449 11 21.951V15.874C9.275 15.43 8 13.864 8 12C8 10.136 9.275 8.57 11 8.126Z" fill="currentColor"/>
+<path class="body" d="M22 12C22 7.899 19.532 4.375 16 2.832V21.168C19.532 19.625 22 16.101 22 12ZM8 2.832C4.468 4.375 2 7.899 2 12C2 16.101 4.468 19.625 8 21.168Z" fill="currentColor"/>
 <path class="seat" d="M16 12C16 9.791 14.209 8 12 8C9.791 8 8 9.791 8 12C8 14.209 9.791 16 12 16C14.209 16 16 14.209 16 12ZM15 12C15 13.657 13.657 15 12 15C10.343 15 9 13.657 9 12C9 10.343 10.343 9 12 9C13.657 9 15 10.343 15 12Z" fill="var(--seat,none)"/>
 <path class="node" d="M15 12C15 13.657 13.657 15 12 15C10.343 15 9 13.657 9 12C9 10.343 10.343 9 12 9C13.657 9 15 10.343 15 12Z" fill="var(--node,currentColor)"/>
 </symbol>
@@ -130,7 +130,7 @@
 </symbol>
 <symbol id="oa-sketch-b-tile-connect-16" viewBox="0 0 16 16"><title>Connect, Direction B, tile, 16 px</title>
 <path class="plate" d="M3 0H13C14.657 0 16 1.343 16 3V13C16 14.657 14.657 16 13 16H3C1.343 16 0 14.657 0 13V3C0 1.343 1.343 0 3 0Z" fill="currentColor"/>
-<path class="body" d="M7 12.9V3.1C4.718 3.563 3 5.581 3 8C3 10.419 4.718 12.437 7 12.9ZM13 8C13 5.581 11.282 3.563 9 3.1V12.9C11.282 12.437 13 10.419 13 8Z" fill="var(--knock,#DCD9D2)"/>
+<path class="body" d="M6 12.584V3.416C4.234 4.188 3 5.95 3 8C3 10.05 4.234 11.812 6 12.584ZM13 8C13 5.95 11.766 4.188 10 3.416V12.584C11.766 11.812 13 10.05 13 8Z" fill="var(--knock,#DCD9D2)"/>
 <path class="seat" d="" fill="var(--seat,none)"/>
 <path class="node" d="M7 7H9V9H7Z" fill="var(--node,var(--knock,#DCD9D2))"/>
 </symbol>

@@ -565,6 +565,10 @@
      "- main:",
      "- contentinfo:"
     ],
+    "stickyFocusJumps": {
+     "checked": 44,
+     "jumps": []
+    },
     "currentMarkerViaRail": {
      "targets": 36,
      "ok": 36,
@@ -676,6 +680,10 @@
      "- main:",
      "- contentinfo:"
     ],
+    "stickyFocusJumps": {
+     "checked": 2,
+     "jumps": []
+    },
     "menu": {
      "firstStops": [
       "Skip to main content",
@@ -691,7 +699,7 @@
      },
      "focusOnOpen": {
       "name": "05 Color",
-      "current": null,
+      "current": "location",
       "inDialog": true
      },
      "dialog": {
@@ -704,9 +712,9 @@
       "under44": [],
       "outsideWidth": [],
       "sideScroll": false,
-      "where": "04 The Ampersand and the hinge",
+      "where": "05 Color",
       "current": [
-       "04 The Ampersand and the hinge"
+       "05 Color"
       ]
      },
      "tabStaysInside": true,
@@ -792,6 +800,10 @@
      "- main:",
      "- contentinfo:"
     ],
+    "stickyFocusJumps": {
+     "checked": 2,
+     "jumps": []
+    },
     "menu": {
      "firstStops": [
       "Skip to main content",
@@ -806,7 +818,7 @@
       "where": "05 Color"
      },
      "focusOnOpen": {
-      "name": "04 The Ampersand and the hinge",
+      "name": "05 Color",
       "current": "location",
       "inDialog": true
      },
@@ -820,9 +832,9 @@
       "under44": [],
       "outsideWidth": [],
       "sideScroll": false,
-      "where": "04 The Ampersand and the hinge",
+      "where": "05 Color",
       "current": [
-       "04 The Ampersand and the hinge"
+       "05 Color"
       ]
      },
      "tabStaysInside": true,
@@ -883,7 +895,7 @@
      }
     ],
     "tabPass": {
-     "stops": 45,
+     "stops": 49,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -1084,7 +1096,7 @@
      }
     ],
     "tabPass": {
-     "stops": 45,
+     "stops": 49,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -1116,7 +1128,7 @@
      },
      "arrowInPage": {
       "title": "Page 8 of 12: Comparison",
-      "scrollLeft": 234,
+      "scrollLeft": 239,
       "canScroll": true
      },
      "atLast": {
@@ -1170,7 +1182,7 @@
      }
     ],
     "tabPass": {
-     "stops": 45,
+     "stops": 49,
      "withoutVisibleRing": [],
      "obscured": [],
      "outsideViewport": [],
@@ -1202,7 +1214,7 @@
      },
      "arrowInPage": {
       "title": "Page 8 of 12: Comparison",
-      "scrollLeft": 233,
+      "scrollLeft": 240,
       "canScroll": true
      },
      "atLast": {
@@ -1302,7 +1314,7 @@
   "shell-text200": {
    "390": {
     "rootFontSize": "32px",
-    "scrollWidth": 399,
+    "scrollWidth": 390,
     "viewport": 390,
     "railShown": false,
     "clipped": []
@@ -1321,217 +1333,80 @@
  "contrast": {
   "shell-1440-top": {
    "checked": 886,
-   "failures": [
-    {
-     "text": "✓",
-     "ratio": 3.37,
-     "px": 15,
-     "large": false
-    }
-   ],
-   "minSmall": 3.37,
+   "failures": [],
+   "minSmall": 5.47,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-390-top": {
    "checked": 811,
-   "failures": [
-    {
-     "text": "✓",
-     "ratio": 3.37,
-     "px": 15,
-     "large": false
-    }
-   ],
-   "minSmall": 3.37,
+   "failures": [],
+   "minSmall": 5.47,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-390-menu-open": {
    "checked": 881,
-   "failures": [
-    {
-     "text": "✓",
-     "ratio": 3.37,
-     "px": 15,
-     "large": false
-    }
-   ],
-   "minSmall": 3.37,
+   "failures": [],
+   "minSmall": 5.47,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-360-top": {
    "checked": 811,
-   "failures": [
-    {
-     "text": "✓",
-     "ratio": 3.37,
-     "px": 15,
-     "large": false
-    }
-   ],
-   "minSmall": 3.37,
+   "failures": [],
+   "minSmall": 5.47,
    "minLarge": 9.42,
    "under13px": []
   },
   "shell-360-menu-open": {
    "checked": 881,
-   "failures": [
-    {
-     "text": "✓",
-     "ratio": 3.37,
-     "px": 15,
-     "large": false
-    }
-   ],
-   "minSmall": 3.37,
+   "failures": [],
+   "minSmall": 5.47,
    "minLarge": 9.42,
    "under13px": []
   },
   "board-1440": {
-   "checked": 409,
+   "checked": 523,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   },
   "board-1440-reader-open": {
-   "checked": 423,
+   "checked": 537,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   },
   "board-390": {
-   "checked": 409,
+   "checked": 523,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   },
   "board-390-reader-open": {
-   "checked": 423,
+   "checked": 537,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   },
   "board-360": {
-   "checked": 409,
+   "checked": 523,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   },
   "board-360-reader-open": {
-   "checked": 423,
+   "checked": 537,
    "failures": [],
    "minSmall": 6.42,
    "minLarge": 9.42,
-   "under13px": [
-    "Defect fix 12px",
-    "Option 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Option 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Defect fix 12px",
-    "Now 12px",
-    "Later 12px",
-    "Later 12px",
-    "Later 12px"
-   ]
+   "under13px": []
   }
  }
 }

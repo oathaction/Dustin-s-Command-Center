@@ -48,3 +48,8 @@ Dustin approved the review, the Master Brief corrections (issued as Brief V2) an
 | D1-04 | Derived colors are mixed in OKLab with `color-mix`, toward Charcoal or Newsprint | OKLCH mixes toward Newsprint swing the hue, for example the error band would turn beige. OKLab matches OKLCH toward Charcoal |
 | D1-05 | Phase 1 Python scripts load the shared `oa_color.py` by file path | Running Python with `-I` drops the script folder from the import path |
 | D1-06 | The draft token JSON uses the `org.oathandaction` namespace | A stable reverse-domain namespace for token extensions. Ownership of oathandaction.org is unconfirmed, so the namespace can change before Phase 5 |
+| D1-07 | The shared board stylesheet sets tags at 13 px | The UX lead found them at 12 px, under the 13 px floor |
+| D1-08 | In the wireframes, the masthead offset sits on the content as `scroll-margin-top` | Anchored headings land clear of the sticky masthead without script |
+| D1-09 | Failure specimens in wireframes are drawn as images with alt text | A failure example must not add failing text to the page's own accessibility results |
+| D1-10 | Board renders use the font files extracted from V5 Polished | This environment cannot load Google Fonts, so renders would otherwise fall back to system faces |
+| D1-11 | The Phase 2 and Phase 4 prompt chapter lists will follow the architecture map approved at Gate 1 | The map renumbers chapters into six parts and 28 chapters |

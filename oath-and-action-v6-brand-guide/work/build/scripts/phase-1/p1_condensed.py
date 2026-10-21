@@ -24,9 +24,9 @@ import p1_amp_b as B  # noqa: E402
 import p1_wordmark as W  # noqa: E402
 
 DIR = o.OUT / "06-condensed"
-VARIANTS = {
-    "7.5": {"s": 0.63, "stem": 21.0, "bar_thin": 2.4, "target_area": 13.0},
-    "6.5": {"s": 0.52, "stem": 19.5, "bar_thin": 2.8, "target_area": 11.5},
+VARIANTS = {   # keyed by the target width over ink height, the measure the creative director used
+    "7.5": {"s": 0.74, "stem": 22.0, "bar_thin": 2.2, "target_area": 14.0, "a_wide": 1.10, "hinge_floor": 5.0},
+    "6.0": {"s": 0.52, "stem": 19.5, "bar_thin": 2.8, "target_area": 11.5, "a_wide": 1.15, "hinge_floor": 5.0},
 }
 SIGN_Y = {"cap": 1, "base": -1, "o_in_top": -1, "o_in_bot": 1, "t_bar_bot": -1, "h_bar_top": 1, "h_bar_bot": -1,
           "a_bar_top": 1, "a_bar_bot": -1, "c_term_top": -1, "c_term_bot": 1}
@@ -41,7 +41,7 @@ def condense(g, name, v):
     spec = W.EDGES[base[0]]
     off = base[1]
     b = o.bounds(g)
-    s = v["s"]
+    s = v["s"] * (v.get("a_wide", 1.0) if base[0] == "A" else 1.0)
     stem0 = 24.1
     dx = (v["stem"] - stem0 * s) / 2
     q = o.tx(g, a=s, e=-b[0] * s)
@@ -103,7 +103,7 @@ def build_variant(key, v, amp_scale=0.85):
         placed[n] = o.tx(g0, e=x)
         prev = n
     # hinge: equal areas
-    d, e, lg, rg = W.solve_hinge(placed["H"], placed["&"], placed["A2"])
+    d, e, lg, rg = W.solve_hinge(placed["H"], placed["&"], placed["A2"], floor=v["hinge_floor"])
     placed["&"] = o.tx(placed["&"], e=d)
     for n in ["A2", "C", "T2", "I", "O2", "N"]:
         placed[n] = o.tx(placed[n], e=e)

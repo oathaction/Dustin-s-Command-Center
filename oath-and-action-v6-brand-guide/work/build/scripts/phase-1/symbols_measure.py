@@ -370,6 +370,7 @@ def main():
     for (n, sz), lay in topics.items():
         jobs.append({"id": f"w-topic-{n}-{sz}", "w": sz, "h": sz, "bg": WHITE, "html": svg_layers(lay, sz, "#000000", WHITE)})
         jobs.append({"id": f"n-topic-{n}-{sz}", "w": sz, "h": sz, "bg": NEWS, "html": svg_layers(lay, sz, CHAR, NEWS)})
+        jobs.append({"id": f"k-topic-{n}-{sz}", "w": sz, "h": sz, "bg": CHAR, "html": svg_layers(lay, sz, NEWS, CHAR)})
         v5 = v5_svg(f"ic-{n}-{sz}", sz, mono=True).replace('style="color:#000;', 'style="color:#000000;')
         jobs.append({"id": f"w-v5topic-{n}-{sz}", "w": sz, "h": sz, "bg": WHITE, "html": v5})
         jobs.append({"id": f"n-v5topic-{n}-{sz}", "w": sz, "h": sz, "bg": NEWS, "html": v5_svg(f"ic-{n}-{sz}", sz, mono=True).replace("color:#000;", "color:#121212;")})
@@ -424,11 +425,17 @@ def main():
             row["node_separate"] = sep
         res["marks"][key] = row
     # pillar pairs per direction and treatment
+    def crop(c, sz):
+        lo, hi = (3, 13) if sz == 16 else (4, 20)
+        return [row[lo:hi] for row in c[lo:hi]]
     for d in F.DIRECTIONS:
         for t in F.TREATMENTS:
             for sz in (16, 24):
                 for a, b in combinations(F.PILLARS, 2):
-                    res["pairs"][f"{d}|{t}|{a}|{b}|{sz}"] = sim(cw(f"w-{d}-{t}-{a}-{sz}"), cw(f"w-{d}-{t}-{b}-{sz}"))
+                    ca, cb = cw(f"w-{d}-{t}-{a}-{sz}"), cw(f"w-{d}-{t}-{b}-{sz}")
+                    if t == "tile":
+                        ca, cb = crop(ca, sz), crop(cb, sz)
+                    res["pairs"][f"{d}|{t}|{a}|{b}|{sz}"] = sim(ca, cb)
     for sz in (16, 24):
         for a, b in combinations(F.PILLARS, 2):
             res["pairs"][f"V5|current|{a}|{b}|{sz}"] = sim(cw(f"w-v5-{a}-{sz}"), cw(f"w-v5-{b}-{sz}"))
@@ -467,33 +474,47 @@ def main():
             if sz in (16, 24):
                 res["topics"][f"metrics|{n}|{sz}"]["pixel_fit"] = pixel_fit(topics[(n, sz)])
                 lay = topics[(n, sz)]
-                cc = load_cov(R / f"n-topic-{n}-{sz}.png", NEWS, CHAR)
-                mask = [[v > .5 for v in r] for r in cc]
-                lab, sizes = components(mask)
                 b = lay["node"].bounds
-                comp = lab[int((b[1] + b[3]) / 2)][int((b[0] + b[2]) / 2)]
-                res["topics"][f"metrics|{n}|{sz}"]["node_separate"] = bool(comp) and sizes.get(comp, 0) <= max(1, (b[2] - b[0]) ** 2 * math.pi / 4) * 2.2
-    # red node edge contrast on rendered pixels
+                seps = {}
+                for pol, pre, bg, fg in (("dark_on_light", "n", NEWS, CHAR), ("light_on_dark", "k", CHAR, NEWS)):
+                    cc = load_cov(R / f"{pre}-topic-{n}-{sz}.png", bg, fg)
+                    mask = [[v > .5 for v in r] for r in cc]
+                    lab, sizes = components(mask)
+                    comp = lab[int((b[1] + b[3]) / 2)][int((b[0] + b[2]) / 2)]
+                    seps[pol] = bool(comp) and sizes.get(comp, 0) <= max(1, (b[2] - b[0]) ** 2 * math.pi / 4) * 2.2
+                res["topics"][f"metrics|{n}|{sz}"]["node_separate"] = seps
+                nr, sw = node_metrics(lay)
+                res["topics"][f"metrics|{n}|{sz}"]["node_r"] = nr
+                res["topics"][f"metrics|{n}|{sz}"]["seat_w"] = sw
+    # red node: the colour of the ring band just outside the node, on rendered pixels
     for d in F.DIRECTIONS:
         for t in ("filled", "line"):
             for sz in (24, 48):
+                lay = marks[(d, t, "act", sz)]
+                b = lay["node"].bounds
+                cx, cy, r = (b[0] + b[2]) / 2, (b[1] + b[3]) / 2, (b[2] - b[0]) / 2
+                ring = (sz / 24) * 1.0
                 for sname, bg, ink in SURFACES[:3]:
                     img = Image.open(R / f"r-{d}-{t}-act-{sz}-{sname}.png").convert("RGB")
                     px = img.load()
-                    red = hexrgb(RED)
-                    reds = [(x, y) for y in range(img.height) for x in range(img.width) if sum(abs(px[x, y][i] - red[i]) for i in range(3)) < 30]
-                    edge = []
-                    for (x, y) in reds:
-                        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                            xx, yy = x + dx, y + dy
-                            if 0 <= xx < img.width and 0 <= yy < img.height and (xx, yy) not in reds:
-                                q = px[xx, yy]
-                                if sum(abs(q[i] - red[i]) for i in range(3)) > 120:
-                                    edge.append(contrast_rgb(red, q))
-                    edge.sort()
-                    res["red"][f"{d}|{t}|{sz}|{sname}"] = {"red_px": len(reds), "edge_min": round(edge[0], 2) if edge else None,
-                                                          "edge_median": round(edge[len(edge) // 2], 2) if edge else None,
-                                                          "edge_px": len(edge)}
+                    band = []
+                    core = []
+                    for y in range(img.height):
+                        for x in range(img.width):
+                            dist = math.hypot(x + .5 - cx, y + .5 - cy)
+                            if r + 0.15 * ring <= dist <= r + 0.85 * ring:
+                                band.append(px[x, y])
+                            if dist <= r - 0.7:
+                                core.append(px[x, y])
+                    lumsort = sorted(band, key=lambda q: lum("#%02X%02X%02X" % q))
+                    med = lumsort[len(lumsort) // 2] if lumsort else None
+                    corec = sorted(core, key=lambda q: lum("#%02X%02X%02X" % q))[len(core) // 2] if core else None
+                    res["red"][f"{d}|{t}|{sz}|{sname}"] = {
+                        "core": "#%02X%02X%02X" % corec if corec else None,
+                        "ring_median": "#%02X%02X%02X" % med if med else None,
+                        "ring_vs_red": round(contrast_rgb(hexrgb(RED), med), 2) if med else None,
+                        "ring_vs_surface": round(contrast_rgb(med, hexrgb(bg)), 2) if med else None,
+                        "band_px": len(band)}
     # palette ratios used by the marks
     for sname, bg, ink in SURFACES:
         res["contrast"][f"ink|{sname}"] = round(contrast(ink, bg), 2)

@@ -19,7 +19,7 @@ p { margin: 0 0 12px; max-width: 70ch }
 section { border-top: 1px solid var(--rule); margin-top: 40px; padding-top: 32px }
 .panel { background: var(--surface); border: 1px solid var(--rule); padding: 16px; min-width: 0 }
 .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) }
-.tag { display: inline-block; font: 700 .75rem/1.2 var(--body); letter-spacing: .04em; text-transform: uppercase; border: 1px solid var(--fg); padding: 3px 6px }
+.tag { display: inline-block; font: 700 .8125rem/1.2 var(--body); letter-spacing: .04em; text-transform: uppercase; border: 1px solid var(--fg); padding: 3px 6px }
 .tag.defect { background: var(--fg); color: var(--bg) }
 .decision { background: var(--prussian); color: var(--newsprint); padding: 20px; margin-top: 24px }
 .decision * { color: inherit }

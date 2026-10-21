@@ -1,0 +1,79 @@
+{
+ "widths": {
+  "390": {
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflow": [
+    "text. 236..402",
+    "g. -15..251",
+    "line. -15..55",
+    "line. -8..62",
+    "line. -1..69"
+   ],
+   "widows": [],
+   "tabular": {
+    "cells": 161,
+    "ok": 161
+   },
+   "asciiMinus": [],
+   "small": 6,
+   "smallSamples": [
+    "p 12.7px \"Find the hearing, sign up, the\"",
+    "span 12.7px \"Oath & Action\"",
+    "span 11.2px \"Act series\"",
+    "p 12.7px \"Find the hearing, sign up, the\"",
+    "span 12.7px \"Oath & Action\"",
+    "span 11.2px \"Act series\""
+   ],
+   "fonts": [
+    "Inter 400",
+    "Inter 600",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800"
+   ],
+   "height": 54728,
+   "capture": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/screens/20261021_Symbol-Family-Board-390.png"
+  },
+  "1440": {
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflow": [],
+   "widows": [],
+   "tabular": {
+    "cells": 161,
+    "ok": 161
+   },
+   "asciiMinus": [],
+   "small": 8,
+   "smallSamples": [
+    "p 6.9px \"Act\"",
+    "p 6.6px \"Find the hearing, sign up, the\"",
+    "span 6.6px \"Oath & Action\"",
+    "span 5.8px \"Act series\"",
+    "p 6.9px \"Act\"",
+    "p 6.6px \"Find the hearing, sign up, the\""
+   ],
+   "fonts": [
+    "Inter 400",
+    "Inter 600",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800"
+   ],
+   "height": 24346,
+   "capture": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/screens/20261021_Symbol-Family-Board-1440.png"
+  }
+ },
+ "summary": [
+  "390 px: page 390 px wide in a 390 px viewport; 5 elements outside the viewport, not counting the tables that scroll on purpose.",
+  "390 px: 0 headings end on a single word.",
+  "390 px: 161 of 161 numeric cells use tabular figures; 0 numeric cells use a hyphen for minus.",
+  "390 px: 6 text elements set under 13 px (p 12.7px \"Find the hearing, sign up, the\"; span 12.7px \"Oath & Action\"; span 11.2px \"Act series\"; p 12.7px \"Find the hearing, sign up, the\"; span 12.7px \"Oath & Action\"; span 11.2px \"Act series\").",
+  "1440 px: page 1440 px wide in a 1440 px viewport; 0 elements outside the viewport, not counting the tables that scroll on purpose.",
+  "1440 px: 0 headings end on a single word.",
+  "1440 px: 161 of 161 numeric cells use tabular figures; 0 numeric cells use a hyphen for minus.",
+  "1440 px: 8 text elements set under 13 px (p 6.9px \"Act\"; p 6.6px \"Find the hearing, sign up, the\"; span 6.6px \"Oath & Action\"; span 5.8px \"Act series\"; p 6.9px \"Act\"; p 6.6px \"Find the hearing, sign up, the\").",
+  "Web fonts loaded in the check: Inter 400, Inter 600, Inter 700, Inter Tight 600, Inter Tight 800."
+ ]
+}

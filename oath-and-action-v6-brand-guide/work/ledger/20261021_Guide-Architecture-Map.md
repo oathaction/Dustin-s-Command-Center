@@ -519,7 +519,7 @@ The script prints any miss. It printed none on the final run.
 - Every V5 Polished section and h3 heading, and every V4.2 section, against this map, by script (section 11).
 - V5 chapter text in full for all eighteen sections, and V4.2 text for all twenty.
 - Section sizes from the V5 inventory (the Grid at 110,055 characters and 63 figures).
-- Palette contrast values in the brief, recomputed with the WCAG formula; all 24 pairs match to two decimals.
+- Palette contrast values in the brief's table, recomputed with the WCAG formula; all 21 numeric pairs match to two decimals.
 
 **Not checked:**
 - The creative director's review of this map, which the phase prompt calls for.
@@ -532,5 +532,6 @@ The script prints any miss. It printed none on the final run.
 Created:
 - `work/ledger/20261021_Guide-Architecture-Map.md` (this file)
 - `work/build/scripts/phase-1/ux_architecture_coverage.py`
+- The navigation board and its files, listed in the board's own change log
 
 Modified: none. `source/`, `work/extract/` and the V5 masters were not touched.
