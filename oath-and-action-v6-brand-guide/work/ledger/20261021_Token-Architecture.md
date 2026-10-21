@@ -44,7 +44,7 @@ WCAG thresholds: 4.5:1 for text; 3:1 for large text (24 px, or 18.66 px bold), n
 | Border, hairline (decorative) | Stone 4.29 | Stone 6.05 | Stone 3.10 | White 13.28 |
 | Focus ring | Verdigris 3.37 | Verdigris 4.74 | Newsprint 13.29 | Newsprint 9.42 |
 
-The hinge divider's ampersand is Charcoal (Newsprint on dark surfaces, my reading). Stone and Verdigris on Newsprint, and Pillar Red on White and Charcoal, pass for large text only.
+The hinge divider's ampersand takes its surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. Stone and Verdigris on Newsprint, and Pillar Red on White and Charcoal, pass for large text only.
 
 **Derived values.** Three derived values fill gaps that no palette color serves:
 

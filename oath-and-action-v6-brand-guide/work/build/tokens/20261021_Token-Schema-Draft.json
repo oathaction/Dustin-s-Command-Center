@@ -857,7 +857,7 @@
           "onNewsprint": {
             "$type": "color",
             "$value": "{oa.color.palette.charcoal}",
-            "$description": "Ampersand in the hinge divider",
+            "$description": "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)",
             "$extensions": {
               "org.oathandaction": {
                 "tier": "semantic",
@@ -871,7 +871,7 @@
           "onWhite": {
             "$type": "color",
             "$value": "{oa.color.palette.charcoal}",
-            "$description": "Ampersand in the hinge divider",
+            "$description": "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)",
             "$extensions": {
               "org.oathandaction": {
                 "tier": "semantic",
@@ -885,7 +885,7 @@
           "onCharcoal": {
             "$type": "color",
             "$value": "{oa.color.palette.newsprint}",
-            "$description": "Ampersand in the hinge divider",
+            "$description": "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)",
             "$extensions": {
               "org.oathandaction": {
                 "tier": "semantic",
@@ -898,14 +898,14 @@
           },
           "onPrussian": {
             "$type": "color",
-            "$value": "{oa.color.palette.newsprint}",
-            "$description": "Ampersand in the hinge divider",
+            "$value": "{oa.color.palette.white}",
+            "$description": "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)",
             "$extensions": {
               "org.oathandaction": {
                 "tier": "semantic",
                 "kind": "graphic",
                 "surface": "prussian",
-                "contrast": 9.42,
+                "contrast": 13.28,
                 "threshold": 3.0
               }
             }

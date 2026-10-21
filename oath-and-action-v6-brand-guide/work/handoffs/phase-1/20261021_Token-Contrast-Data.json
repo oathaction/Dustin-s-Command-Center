@@ -619,9 +619,9 @@
      "passes": true
     },
     "prussian": {
-     "token": "Newsprint",
-     "hex": "#DCD9D2",
-     "ratio": 9.42,
+     "token": "White",
+     "hex": "#FFFFFF",
+     "ratio": 13.28,
      "passes": true
     }
    }

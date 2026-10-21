@@ -161,7 +161,7 @@ ROLES = [
                                 "white": ("Pillar Red", P["pillarRed"]), "charcoal": ("Pillar Red", P["pillarRed"]),
                                 "prussian": ("White", P["white"])}),
     ("identity.hingeDivider (divider ampersand)", "graphic", {"newsprint": ("Charcoal", P["charcoal"]), "white": ("Charcoal", P["charcoal"]),
-                                "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("Newsprint", P["newsprint"])}),
+                                "charcoal": ("Newsprint", P["newsprint"]), "prussian": ("White", P["white"])}),
     ("action.ask fill", "graphic", {"newsprint": ("Pillar Red + 1 px Charcoal keyline", P["pillarRed"]),
                                 "white": ("Pillar Red", P["pillarRed"]), "charcoal": ("Pillar Red", P["pillarRed"]),
                                 "prussian": ("Newsprint", P["newsprint"])}),
@@ -458,7 +458,7 @@ draft = {
             "identity": {
                 "signature": semantic("identity.signature", "Wordmark ampersand and lockmark lever: signature red, which does not count against the view's working red",
                                       "logotype", red={"redRole": "signature"}),
-                "hingeDivider": semantic("identity.hingeDivider", "Ampersand in the hinge divider", "graphic"),
+                "hingeDivider": semantic("identity.hingeDivider", "Ampersand in the hinge divider: the surface's ink, never red (White on Prussian, as treatment D)", "graphic"),
             },
             "action": {
                 "ask": {
