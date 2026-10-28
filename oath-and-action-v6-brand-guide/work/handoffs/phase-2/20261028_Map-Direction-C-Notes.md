@@ -246,3 +246,11 @@ Created (`work/boards/phase-2/maps-r2/c/`): `20261028_Loop-Lines-Poster-Print.sv
 Regenerated: every drawing, page, capture and proof in that folder, the PDF, the network data, the verify and check results, and the board `work/boards/20261028_Map-Direction-C-Loop-Lines.html`.
 
 Unchanged: `maps_model.py`, `verify_maps_data.py`, `check_maps_board.js`, `work/extract/atlas-v7-data.json`, `source/` and the ledgers.
+
+### Follow-up after the creative director's check (review section 7)
+
+- **One recommendation.** The board's direction row now recommends the studio's pick: this poster, working map and reform view for the whole system, with Direction A's catalog and cards for the loops, joined by this map's locator inset. A line under the table links to `work/boards/20261028_Map-Direction-A-Field-Guide.html` for the loops. The "Adopt C" row and its mention of A's circuit are gone.
+- **Phone cards inside their White card.** The phone card drawing was 358 px wide inside a card whose content box is 326 px, so the drawing, both lists and the rail ran 16 px past the card. The drawing is now 326 px, and the card's grid columns may shrink below their content. `maps_r2_c_check.js` gained a probe that counts elements running past the edge of each White card (loop card pages and catalog cards). The probe also found the phone catalog's R4b and R1b miniatures, 192 px wide in a 149 px card, running 10 px past each side. A catalog miniature may now shrink to its card's width, so on the phone those two tiles draw at about 78 percent of the shared phone scale; they carry no text, and every other tile keeps the shared scale.
+- **Route dates.** A route with no check date in V7 now reads "no check date in V7", as Direction A prints it, in the reform panel's table and in the phone list ("Feasibility low. Checked: no check date in V7.").
+
+Modified in this follow-up: `maps_r2_c_pages.py`, `maps_r2_c_board.py`, `maps_r2_c_check.js`, and the regenerated pages, drawings, captures and board.

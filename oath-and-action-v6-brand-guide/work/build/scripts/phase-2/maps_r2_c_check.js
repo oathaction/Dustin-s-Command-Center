@@ -106,6 +106,28 @@ async function labelAudit(page) {
   });
 }
 
+// Content inside each White card (the loop card page, every catalog card) stays inside the card: an element whose
+// box runs past the card's left or right edge counts, unless it sits inside a focusable scroll region.
+async function cardProbe(page) {
+  return page.evaluate(() => {
+    const out = { cards: 0, past: [] };
+    for (const card of document.querySelectorAll('article.cardpage, article.card')) {
+      const cr = card.getBoundingClientRect();
+      if (cr.width < 2) continue;
+      out.cards++;
+      for (const el of card.querySelectorAll('*')) {
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 || r.height === 0) continue;
+        const reg = el.closest('[role="region"][tabindex]');
+        if (reg && reg !== el && card.contains(reg)) continue;
+        if (r.right > cr.right + 0.5 || r.left < cr.left - 0.5) out.past.push({ card: card.getAttribute('data-loop'), tag: el.tagName, right: Math.round(r.right), cardRight: Math.round(cr.right) });
+      }
+    }
+    out.past = out.past.slice(0, 30);
+    return out;
+  });
+}
+
 async function open(browser, file, width, dsf = 1, height = 1000) {
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dsf, ignoreHTTPSErrors: true });
   const page = await ctx.newPage();
@@ -138,6 +160,7 @@ async function shots(page, width, tag) {
     const { ctx, page } = await open(browser, file, width, 1, height || 1000);
     const a = await audit(page);
     a.labels = await labelAudit(page);
+    a.cardFit = await cardProbe(page);
     a.axe = await runAxe(page);
     const cap = path.join(ASSETS, `20261028_Loop-Lines-${name}-Capture.png`);
     const full = !height;
@@ -242,7 +265,7 @@ async function shots(page, width, tag) {
   const lines = [];
   const lab = (t) => `labels ${t.labels} in ${t.drawings} drawings: ${t.outside.length} outside, ${t.overlaps.length} on labels, ${t.markOverlaps.length} on marks, ${t.lineOverlaps.length} on lines`;
   for (const [name, a] of Object.entries(results.pages)) {
-    lines.push(`${name} at ${PAGES.find(p => p[0] === name)[2]} px: scrollWidth ${a.scrollWidth} of ${a.clientWidth}, smallest text ${a.minSize} px (${a.under13.length} under 13), ${a.lowContrast.length} low-contrast texts, images ${a.images.filter(i => i.ok).length}/${a.images.length}, axe ${axeN(a)} violating nodes; ${lab(a.labels)}.`);
+    lines.push(`${name} at ${PAGES.find(p => p[0] === name)[2]} px: scrollWidth ${a.scrollWidth} of ${a.clientWidth}, smallest text ${a.minSize} px (${a.under13.length} under 13), ${a.lowContrast.length} low-contrast texts, images ${a.images.filter(i => i.ok).length}/${a.images.length}, axe ${axeN(a)} violating nodes; ${lab(a.labels)}${a.cardFit.cards ? `; ${a.cardFit.past.length} elements past the edge of ${a.cardFit.cards} White cards` : ''}.`);
   }
   lines.push(`Poster print drawing: ${lab(results.printLabels)}.`);
   lines.push(`Label audit self-test on a planted copy of the poster: ${Object.values(results.selfTest).filter(Boolean).length} of ${Object.keys(results.selfTest).length} planted faults caught (label on label, label on a sign tag, label on a line, label past the edge, 11 px text).`);
@@ -264,6 +287,7 @@ async function shots(page, width, tag) {
     if (a.overflowing.length) console.log(k, 'overflowing', JSON.stringify(a.overflowing.slice(0, 6)));
     if (a.axe && a.axe.violations.length) console.log(k, 'axe', JSON.stringify(a.axe.violations));
     const bad = a.images.filter(i => !i.ok); if (bad.length) console.log(k, 'images', JSON.stringify(bad));
+    if (a.cardFit && a.cardFit.past.length) console.log(k, 'past card', JSON.stringify(a.cardFit.past.slice(0, 8)));
     if (a.labels && a.labels.total) console.log(k, 'labels', JSON.stringify([...a.labels.outside, ...a.labels.overlaps, ...a.labels.markOverlaps, ...a.labels.lineOverlaps].slice(0, 12)));
   }
 })();

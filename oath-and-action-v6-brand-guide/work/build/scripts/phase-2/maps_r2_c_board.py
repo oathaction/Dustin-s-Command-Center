@@ -149,7 +149,7 @@ DECISIONS = [
 ]
 
 FOR_DUSTIN = [
-    ("Direction C as the systems map direction", "Adopt C; keep A's Circuit as the whole-system fallback", "Adopt C", "Twenty closed lines hold at 1440 px with zero crossings, so the fallback the review set is not needed."),
+    ("The systems map: the studio's pick", "Adopt the pick: this poster, working map and reform view for the whole system, with Direction A's catalog and cards for the loops, joined by this map's locator inset; or adopt one direction alone", "Adopt the pick", "The poster passed the wall test as the whole-system map, and A's cards teach each loop. The loops are on Direction A's board."),
     ("The pointing sign tag", "Adopt; signs without direction", "Adopt", "A loop has an order; the review's notation budget gives the map a sign glyph and no direction mark."),
     ("The M3 bullet form and the shared spiral and ring", "Adopt both; the full chip with the word Loop", "Adopt both", "Twenty full chips crowd the poster; the glyph prints where it reaches 24 px."),
     ("The field tint token", "Register #39476D; keep #2C3B64; draw fields as outlines", "Register #39476D", "Only the stronger step reads as five areas at 25 percent in grayscale."),
@@ -390,6 +390,7 @@ def board_html(L, order):
 
 <section id="decide" class="decision"><p class="eyebrow">Decisions for Dustin</p><h2>What you decide</h2>
 <div class="wrap" tabindex="0" role="region" aria-label="Decisions for Dustin"><table><thead><tr><th scope="col">Decision</th><th scope="col">Options</th><th scope="col">Studio recommendation</th><th scope="col">Why</th></tr></thead><tbody>{fd}</tbody></table></div>
+<p>The loops in the pick live on <a href="20261028_Map-Direction-A-Field-Guide.html">Direction A's board</a>: its catalog, R8 and R10 cards and R-01 page, each with this map's locator inset. The catalog and cards on this board stay as an appendix.</p>
 <p>Red on these specimens follows Rule 05.3 as worded in D2-01. Each view carries one working red, the point the headline names, which in a systems figure is where a reform acts. Red never sits on Prussian.</p></section>
 <p class="src" style="margin-top:28px">{esc(P.SRC)} Built by work/build/scripts/phase-2/maps_r2_c_build.py. Notes: work/handoffs/phase-2/20261028_Map-Direction-C-Notes.md.</p>
 </main></body></html>'''

@@ -175,10 +175,10 @@ def reform_panel(rid, lid=None, compact=False, responsive=False):
     rows = "".join(f'<tr><th scope="row">{esc(fam[k])}</th><td>{pips_svg(v, w=pw)}</td><td>{esc(tm(v))}</td></tr>' for k, v in r["effects"].items())
     routes = "".join(
         f'<tr><td>{chip("Route", x["route"])}</td><td>{esc(M["route_names"][x["route"]])}</td><td>{esc(x["feasibility"].capitalize())}</td>'
-        f'<td>{esc(datefmt(x["checked"]) if x["checked"] else "Unchecked")}</td></tr>' for x in r["routes"])
+        f'<td>{esc(datefmt(x["checked"]) if x["checked"] else "no check date in V7")}</td></tr>' for x in r["routes"])
     route_items = "".join(
         f'<li>{chip("Route", x["route"])} <b>{esc(M["route_names"][x["route"]])}</b><br>'
-        f'<span class="small">Feasibility {esc(x["feasibility"])}. {esc("Checked " + datefmt(x["checked"]) if x["checked"] else "Not yet checked")}.</span></li>'
+        f'<span class="small">Feasibility {esc(x["feasibility"])}. Checked: {esc(datefmt(x["checked"]) if x["checked"] else "no check date in V7")}.</span></li>'
         for x in r["routes"])
     route_table = (f'<div class="wrap rt-wide" tabindex="0" role="region" aria-label="Routes for {rid}"><table class="eff"><caption>Routes to change, with V7\'s feasibility and the date each was checked</caption>'
                    f'<thead><tr><th scope="col">Route</th><th scope="col">Who</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{routes}</tbody></table></div>')
@@ -254,6 +254,7 @@ CAT_CSS_PHONE = """
 .card h3{font-size:15px}
 .card.w2 .inner{display:block}
 .card .stations{font-size:13px;color:var(--charcoal);margin:6px 0}
+.card figure svg{max-width:100%;height:auto}
 """
 
 
@@ -413,6 +414,7 @@ caption{caption-side:top;text-align:left;font-size:13px;color:var(--deep);paddin
 .stationlist li{padding:6px 0}
 .stationlist .n{font:700 18px/1.25 var(--display)}
 .rfgrid>*{min-width:0}
+.grid>*{min-width:0}
 .routes{list-style:none;padding:0;margin:0}
 .routes li{border-bottom:1px solid var(--stone);padding:8px 0;font-size:14px;line-height:1.5}
 .rcap{margin:0 0 6px}
@@ -450,7 +452,8 @@ def facts(lid):
 def card_page(L, Ls, lid, reform, phone=False, written=None):
     lp = LOOPS[lid]
     if phone:
-        drawing = C.card_drawing(L, lid, reform=reform, width=358, height=260 if lp["n"] == 2 else 420, phone=True)
+        # 390 less the page and card padding (16 px each side, twice): the drawing sits inside the White card
+        drawing = C.card_drawing(L, lid, reform=reform, width=326, height=250 if lp["n"] == 2 else 400, phone=True)
     else:
         drawing = C.card_drawing(L, lid, reform=reform, width=860, height=440 if lp["n"] == 2 else 680)
     loc = C.locator(Ls, lid, 300, 196)

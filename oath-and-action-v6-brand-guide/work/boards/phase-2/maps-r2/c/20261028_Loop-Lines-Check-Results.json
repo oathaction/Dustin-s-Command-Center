@@ -1,5 +1,5 @@
 {
- "run": "2026-10-28T22:44:49.917Z",
+ "run": "2026-10-28T23:31:14.540Z",
  "pages": {
   "Poster": {
    "texts": 281,
@@ -34,6 +34,10 @@
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 0,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -77,6 +81,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 0,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 20,
@@ -118,6 +126,10 @@
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 0,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -161,6 +173,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 0,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 22,
@@ -202,6 +218,10 @@
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 0,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -245,6 +265,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 0,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 26,
@@ -282,6 +306,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 23,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 18,
@@ -299,7 +327,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 7165,
+   "height": 7132,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -318,6 +346,10 @@
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 23,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -357,6 +389,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 1,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 21,
@@ -374,7 +410,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 3406,
+   "height": 3462,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -389,12 +425,16 @@
     "drawings": 2,
     "labels": 4,
     "marks": 29,
-    "lineSamples": 1870,
+    "lineSamples": 1838,
     "outside": [],
     "overlaps": [],
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 1,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -434,6 +474,10 @@
     "lineOverlaps": [],
     "total": 0
    },
+   "cardFit": {
+    "cards": 1,
+    "past": []
+   },
    "axe": {
     "violations": [],
     "passes": 21,
@@ -451,7 +495,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 4173,
+   "height": 4273,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -466,12 +510,16 @@
     "drawings": 2,
     "labels": 8,
     "marks": 33,
-    "lineSamples": 1990,
+    "lineSamples": 1938,
     "outside": [],
     "overlaps": [],
     "markOverlaps": [],
     "lineOverlaps": [],
     "total": 0
+   },
+   "cardFit": {
+    "cards": 1,
+    "past": []
    },
    "axe": {
     "violations": [],
@@ -484,7 +532,7 @@
  },
  "board": {
   "390": {
-   "texts": 584,
+   "texts": 586,
    "svgTexts": 0,
    "minSize": 13,
    "under13": [],
@@ -492,7 +540,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 69664,
+   "height": 70339,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -651,7 +699,7 @@
    ]
   },
   "1440": {
-   "texts": 584,
+   "texts": 586,
    "svgTexts": 0,
    "minSize": 13,
    "under13": [],
@@ -659,7 +707,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 31536,
+   "height": 31687,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -857,12 +905,12 @@
   "Poster-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
   "Working-Map-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
   "Reform-View-R-01-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 124 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 21 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 41 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
-  "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 8 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 124 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 23 White cards.",
+  "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 23 White cards.",
+  "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 21 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 1 White cards.",
+  "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 1 White cards.",
+  "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 41 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 1 White cards.",
+  "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 8 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines; 0 elements past the edge of 1 White cards.",
   "Poster print drawing: labels 175 in 1 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
   "Label audit self-test on a planted copy of the poster: 5 of 5 planted faults caught (label on label, label on a sign tag, label on a line, label past the edge, 11 px text).",
   "Board at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 26/26, axe 0 violating nodes, fonts 5; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",

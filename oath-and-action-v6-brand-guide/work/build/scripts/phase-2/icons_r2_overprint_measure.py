@@ -99,19 +99,77 @@ def _refs24():
 
 
 # Each icon against the readings a reader could take it for: the creative director's watch column,
-# the stage 1 blind test's misreadings, the letters and numerals Phase 1 and round one watched.
-WATCH = {
-    "explain": ["crop", "expand", "notification badge", "letter C", "letter L", "copyright sign"],
+# the stage 1 and stage 2 blind tests' misreadings, the letters and numerals Phase 1 and round one
+# watched, and (fix pass, ruling on OP-18) the banned interface glyphs, drawn here and as Material
+# Symbols. Housing is not scored against Material's home: a house is its subject.
+BANNED_MS = ["refresh", "sync", "undo", "redo", "radio_button_checked", "notifications", "app_badging",
+             "content_copy", "crop", "open_in_full", "home", "share"]
+BANNED_DRAWN = ["sync", "reload", "record", "notification badge", "crop", "expand"]
+EXTRA_MS = {"explain": ["unarchive", "photo_camera"], "track": ["bar_chart", "leaderboard", "podium"],
+            "connect": ["pause", "graphic_eq", "sensors", "podcasts"], "act": ["logout", "door_front"],
+            "ballot": ["inbox", "print"], "bill": ["print", "receipt_long"], "testify": ["location_on", "person"],
+            "housing": ["storefront"], "money": ["photo_camera", "wallet", "voicemail"],
+            "loop": ["cycle", "recycling", "group", "hub", "autorenew"]}
+WATCH_DRAWN = {
+    "explain": ["letter C", "letter L", "copyright sign"],
     "track": ["bar chart", "podium", "status light", "Signal Grid lockmark"],
-    "connect": ["pause", "audio", "record", "copyright sign", "V5 chain link (pm-connect)"],
+    "connect": ["pause", "audio", "copyright sign", "V5 chain link (pm-connect)"],
     "act": ["chapter number 01", "letter n", "letter D", "play button"],
     "ballot": ["inbox", "printer"],
     "bill": ["printer"],
     "testify": ["map pin"],
     "housing": ["letter n"],
-    "money": ["record", "chapter number 01"],
-    "loop": ["sync", "reload", "eye", "record", "letter C", "letter G"],
+    "money": ["chapter number 01"],
+    "loop": ["eye", "letter C", "letter G"],
 }
+MS_SKIP = {("housing", "home")}
+WATCH = {n: WATCH_DRAWN[n] + BANNED_DRAWN + [f"ms:{m}" for m in BANNED_MS + EXTRA_MS[n] if (n, m) not in MS_SKIP]
+         for n in WATCH_DRAWN}
+MS_NAMES = sorted({m for v in EXTRA_MS.values() for m in v} | set(BANNED_MS))
+MS_CSS = "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0"
+
+
+def render_ms(names, sizes=(16, 24)):
+    """Material Symbols Outlined at weight 400, unfilled and filled, rendered by Chromium from the
+    Google Fonts stylesheet into one capture and cropped to one cell each. Writes
+    ref-ms-<name>-<fill>-<size>.png beside the other references."""
+    cells, order, y = [], [], 0
+    for fill in (0, 1):
+        for sz in sizes:
+            x = 0
+            for n in names:
+                cells.append(f'<div style="position:absolute;left:{x}px;top:{y}px;width:{sz}px;height:{sz}px;font-family:\'Material Symbols Outlined\';'
+                             f'font-size:{sz}px;line-height:{sz}px;font-variation-settings:\'FILL\' {fill},\'wght\' 400,\'GRAD\' 0,\'opsz\' {min(48, max(20, sz))};color:#000;overflow:hidden">{n}</div>')
+                order.append((n, fill, sz, x, y))
+                x += sz + 8
+            y += sz + 8
+    width = (24 + 8) * len(names)
+    page = (f'<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{MS_CSS}">'
+            f'<style>html,body{{margin:0;background:#fff}}</style></head><body><div style="position:relative;width:{width}px;height:{y}px">{"".join(cells)}</div></body></html>')
+    C.SCRATCH.mkdir(parents=True, exist_ok=True)
+    hp = C.SCRATCH / "ms-refs.html"
+    hp.write_text(page)
+    png = C.SCRATCH / "ms-refs.png"
+    subprocess.run(["node", str(C.SHOT_JS), str(hp), str(png), str(width), "1", str(y)], check=True)
+    im = Image.open(png).convert("RGB")
+    R.mkdir(parents=True, exist_ok=True)
+    for n, fill, sz, x, yy in order:
+        im.crop((x, yy, x + sz, yy + sz)).save(R / f"ref-ms-{n}-{fill}-{sz}.png")
+
+
+def ref_cov(nm, s):
+    """Coverage of a reference; a Material glyph returns the worse-matching of its two fills
+    later, so here it returns both."""
+    if nm.startswith("ms:"):
+        m = nm[3:]
+        return [cov(f"ref-ms-{m}-{f}-{s}") for f in (0, 1)]
+    return [cov(f"ref-{M.slug(nm)}-{s}")]
+
+
+def look(c, nm, s):
+    """The closer of the reference's fills, by blurred correlation, with its full similarity row."""
+    rows = [M.sim(c, rc) for rc in ref_cov(nm, s)]
+    return max(rows, key=lambda r: r["blurred_corr"])
 
 
 def ref_jobs():
@@ -226,7 +284,7 @@ def main():
     jobs = []
     for n in O.ICONS:
         for kind, s in (("16px", 16), ("24px", 24)):
-            L = C.lay(n, kind)
+            L = C.lay(n, kind)   # the 16 px cut is one color: its drawn and idle renders are the same
             jobs.append({"id": f"w-{n}-{s}", "w": s, "h": s, "bg": C.WHITE, "html": mono(L, s, s)})
             jobs.append({"id": f"i-{n}-{s}", "w": s, "h": s, "bg": C.WHITE, "html": mono(L, s, s, plane=None)})
             # test 2 on Prussian: White line, no plane
@@ -239,11 +297,10 @@ def main():
         jobs.append({"id": f"p48-{n}", "w": 48, "h": 48, "bg": C.PRUS, "html": mono(D, 24, 48, ink=C.WHITE, plane=None)})
     rj, ref_names = ref_jobs()
     jobs += rj
-    for k in range(0, len(jobs), 1):
-        pass
     jp = C.SCRATCH / "measure-jobs.json"
     jp.write_text(json.dumps(jobs))
     subprocess.run(["node", str(C.RENDER_JS), str(jp), str(R)], check=True)
+    render_ms(MS_NAMES)
 
     res = {"icons": {}, "pairs": {}, "watch": {}, "sets": {}, "contrast": {}, "tiles": {}, "spec": {}}
     # ---------------- per icon
@@ -311,8 +368,10 @@ def main():
     for n in O.ICONS:
         for s in (16, 24):
             for mode, pre in (("drawn", "w"), ("idle", "i")):
+                if s == 16 and mode == "idle":
+                    continue          # one color at 16 px: idle is the drawing
                 for nm in WATCH[n]:
-                    res["watch"][f"{mode}|{n}|{nm}|{s}"] = M.sim(cov(f"{pre}-{n}-{s}"), cov(f"ref-{M.slug(nm)}-{s}"))
+                    res["watch"][f"{mode}|{n}|{nm}|{s}"] = look(cov(f"{pre}-{n}-{s}"), nm, s)
     # ---------------- summaries
     def worst(prefix, s=None):
         items = [(v["score"], k) for k, v in res["pairs"].items() if k.startswith(prefix) and (s is None or k.endswith(f"|{s}"))]
@@ -324,13 +383,25 @@ def main():
                 res["sets"][f"worst_{mode}_{s}"] = [w[1].split("|")[1], w[1].split("|")[2], w[0]]
                 res["sets"][f"over_060_{mode}_{s}"] = sum(1 for k, v in res["pairs"].items() if k.startswith(f"{mode}|") and k.endswith(f"|{s}") and v["score"] >= 0.60)
     for n in O.ICONS:
-        items = [(v["score"], k) for k, v in res["watch"].items() if f"|{n}|" in k]
+        items = [(v["blurred_corr"], k) for k, v in res["watch"].items() if f"|{n}|" in k]
         sc, k = max(items)
-        res["icons"][n]["watch_worst"] = [k.split("|")[2], k.split("|")[0], int(k.split("|")[3]), sc]
+        res["icons"][n]["watch_worst"] = [k.split("|")[2].replace("ms:", "Material "), k.split("|")[0], int(k.split("|")[3]), sc, res["watch"][k]["score"]]
     res["sets"]["act_vs_01_16"] = res["watch"]["drawn|act|chapter number 01|16"]["score"]
     res["sets"]["act_vs_n_16"] = res["watch"]["drawn|act|letter n|16"]["score"]
-    res["sets"]["act_idle_vs_01_16"] = res["watch"]["idle|act|chapter number 01|16"]["score"]
-    res["sets"]["act_idle_vs_n_16"] = res["watch"]["idle|act|letter n|16"]["score"]
+    res["sets"]["act_vs_01_16_blur"] = res["watch"]["drawn|act|chapter number 01|16"]["blurred_corr"]
+    res["sets"]["act_vs_n_16_blur"] = res["watch"]["drawn|act|letter n|16"]["blurred_corr"]
+    # fix 1's pass marks for the 16 px solid cut, by D1-16's blurred correlation
+    p16 = [(v["blurred_corr"], k) for k, v in res["pairs"].items() if k.startswith("drawn|") and k.endswith("|16")]
+    w16 = [(v["blurred_corr"], k) for k, v in res["watch"].items() if k.endswith("|16")]
+    res["sets"]["solid16"] = {
+        "pairs_over_060": sum(1 for b, _ in p16 if b >= 0.60), "worst_pair": [max(p16)[1].split("|")[1], max(p16)[1].split("|")[2], max(p16)[0]],
+        "crisp_min": min(res["icons"][n]["crisp_16"] for n in O.ICONS),
+        "lookalikes_over_060": sorted([[k.split("|")[1], k.split("|")[2], b] for b, k in w16 if b >= 0.60], key=lambda r: -r[2]),
+        "worst_lookalike": [max(w16)[1].split("|")[1], max(w16)[1].split("|")[2], max(w16)[0]],
+        "act_vs_01": res["watch"]["drawn|act|chapter number 01|16"]}
+    for s_ in (24,):
+        w = [(v["blurred_corr"], k) for k, v in res["watch"].items() if k.endswith(f"|{s_}")]
+        res["sets"][f"lookalikes_over_060_{s_}"] = sorted([[k.split("|")[0], k.split("|")[1], k.split("|")[2], b] for b, k in w if b >= 0.60], key=lambda r: -r[3])
     # ---------------- contrast
     for sname, label, bg in C.SURFACES:
         ink = C.NEWS if sname == "charcoal" else (C.WHITE if sname == "prussian" else C.CHAR)
