@@ -215,7 +215,7 @@ def A_24(name, var=None):
     if name == "loop":
         end = 450 - 33
         arc = _arc(12, 11, 8, 90 + 25, end)
-        head = chevron(12, 11, 8, end, 4.0)
+        head = chevron(12, 11, 8, end, 4.6)
         return layers(union(arc, head), 12, 19, 24)
     if name == "search":
         lens = ring(10, 10, 8, 6)
@@ -363,7 +363,7 @@ def _C24(name, cut):
         frame = union(_ln([(2, 3), (22, 3)]), _ln([(21, 4), (21, 22)]))
         return [leaf], [frame], (7, 12), None
     if name == "ballot":
-        box = minus(rect(3, 14, 18, 8), rect(6, 14, 12, 2))
+        box = minus(rect(4, 14, 16, 8), rect(6, 14, 12, 2))
         paper = rect(7, 3, 10, 12)
         return [box, paper], [], (12, 9), None
     if name == "money":
@@ -373,10 +373,10 @@ def _C24(name, cut):
     if name == "loop":
         end = 450 - 33
         arc = sector(12, 11, 9, 6 if flat else 7, 90 + 25, end)
-        head = chevron(12, 11, 8, end, 4.0)
+        head = chevron(12, 11, 8, end, 4.6)
         if flat:
             (px, py), (tx, ty), (nx, ny) = _tangent(12, 11, 8, end)
-            k = 4.0 * 0.7071
+            k = 4.6 * 0.7071
             head = union(head, poly((px, py), (px - tx * k + nx * k, py - ty * k + ny * k), (px - tx * k - nx * k, py - ty * k - ny * k)))
         return [], [arc, head], (12, 19), None
     if name == "search":
