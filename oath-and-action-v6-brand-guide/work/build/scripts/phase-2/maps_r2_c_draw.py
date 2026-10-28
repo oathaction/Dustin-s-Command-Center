@@ -273,11 +273,11 @@ def sign_tag(p, u, sign, theme, bundle_w=0.0, lit=True, extra=""):
 
 
 def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=True, show_bullets=True,
-            bullets=None, line_w=LINE_W, show_ids=True, ghost=False):
+            bullets=None, line_w=LINE_W, show_ids=True, ghost=False, station_scale=1.0, hub_names=True):
     """Draw every numbered loop line, its stations and signs. Returns (svg, boxes) where boxes lists label and
     station boxes for the collision check."""
     reform_targets = set(M["reforms"][reform]["targets"]) if reform else set()
-    lines, tags, stations, labels, boxes, bullet_svg = [], [], [], [], [], []
+    lines, tags, stations, labels, boxes, bullet_svgs, tag_boxes = [], [], [], [], [], [], []
     for (a, b), trs in L.tracks.items():
         base = L.corridor_px(a, b)
         n = len(trs)
@@ -312,20 +312,18 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                 # one sign per connection: across its bundle when several loops ride it
                 pts = base if l["from"] == a else list(reversed(base))
                 Lp = G.plen(pts)
-                if len(links_here) == 2:
-                    frac = 0.36 if li == 0 else 0.64
-                    if l["from"] != a:
-                        frac = 1 - frac
-                else:
-                    frac = 0.5
                 runs = G.straight_runs(pts)
                 longest = max(runs, key=lambda r: r[2])
-                if len(runs) > 1:
-                    # on a bent route the tag sits in the middle of its longest straight run
-                    s0 = sum(r[2] for r in runs[:runs.index(longest)])
-                    sp = s0 + longest[2] * frac
+                s0 = sum(r[2] for r in runs[:runs.index(longest)])
+                mid_s = s0 + longest[2] / 2
+                if len(links_here) == 2:
+                    # the two directions of a two-step loop: tags 48 px apart about the middle, each on its own track
+                    shift = 24.0 if li == 0 else -24.0
+                    if l["from"] != a:
+                        shift = -shift
+                    sp = mid_s + shift
                 else:
-                    sp = Lp * frac
+                    sp = mid_s
                 p, u = G.point_at(pts, sp)
                 offs = [t["offset"] if l["from"] == a else -t["offset"] for t in group]
                 mo = sum(offs) / len(offs)
@@ -335,10 +333,15 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                 on = (lit_loop is None) or any(t["loop"] == lit_loop for t in group)
                 tags.append((1 if on else 0, sign_tag(p, u, l["polarity"], theme, bw, lit=on,
                                                      extra=f' data-for="{link}" data-sign="{l["polarity"]}"')))
+                hw = max(8.0, bw / 2 + 5) + 2
+                ext = 19
+                tag_boxes.append((p[0] - ext, p[1] - ext, p[0] + ext, p[1] + ext) if abs(u[0]) > 0.3 and abs(u[1]) > 0.3 else
+                                 (p[0] - (ext if abs(u[0]) > 0.5 else hw), p[1] - (ext if abs(u[1]) > 0.5 else hw),
+                                  p[0] + (ext if abs(u[0]) > 0.5 else hw), p[1] + (ext if abs(u[1]) > 0.5 else hw)))
     for sid in G.STATIONS:
         on = (lit_loop is None) or (lit_loop in G.station_loops(sid))
         red = sid in reform_targets
-        g, box = station_shape(L, sid, theme, red=red, lit=on, show_id=show_ids)
+        g, box = station_shape(L, sid, theme, red=red, lit=on, show_id=show_ids, scale=station_scale, inside_name=hub_names)
         stations.append((1 if on else 0, g))
         boxes.append(("station", sid, box))
         if show_labels:
@@ -346,35 +349,126 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
             if lg:
                 labels.append(lg)
                 boxes.append(("label", sid, lb))
-    if show_bullets and bullets is not None:
+    if show_bullets:
+        placed = bullets if bullets else {k: v for k, v in place_bullets(L, boxes, tag_boxes).items()}
         for lid in G.NUMBERED:
+            (cx, cy), score = placed[lid]
             on = (lit_loop is None) or (lit_loop == lid)
-            bg, bb = loop_bullet(L, lid, theme, bullets, lit=on)
-            bullet_svg.append((1 if on else 0, bg))
-            boxes.append(("bullet", lid, bb))
+            ink = theme.line if on else STONE
+            if theme.name == "newsprint" and on and lit_loop:
+                ink = CHARCOAL
+            first = LOOPS[lid]["stations"][0]["code"]
+            bullet_svgs.append((1 if on else 0, bullet_svg(cx, cy, lid, ink, theme.bg, extra=f' data-first="{first}" data-score="{score:.0f}"')))
+            w, h = bullet_size(lid)
+            boxes.append(("bullet", lid, (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)))
     body = ("".join(s for _, s in sorted(lines, key=lambda x: x[0]))
             + "".join(s for _, s in sorted(tags, key=lambda x: x[0]))
             + "".join(s for _, s in sorted(stations, key=lambda x: x[0]))
-            + "".join(labels) + "".join(s for _, s in sorted(bullet_svg, key=lambda x: x[0])))
+            + "".join(labels) + "".join(s for _, s in sorted(bullet_svgs, key=lambda x: x[0])))
+    for b in tag_boxes:
+        boxes.append(("sign", "", b))
     return body, boxes
 
 
-def loop_bullet(L, lid, theme, bullets, lit=True):
-    """The loop's typed chip (M3) as its line bullet, with its kind glyph, beside its first station."""
+BULLET_H = 22.0
+
+
+def bullet_size(lid):
+    return 24 + text_w(lid, 14, 700) + 14, BULLET_H
+
+
+def bullet_svg(cx, cy, lid, ink, ground, extra=""):
+    """The loop's line bullet: the typed chip (M3) in its bullet form. The ink cell holds the loop's kind glyph in
+    place of the word Loop; the outlined cell holds the code."""
+    w, h = bullet_size(lid)
+    x, y = cx - w / 2, cy - h / 2
+    kind = LOOPS[lid]["type"]
+    out = [f'<rect x="{x:.1f}" y="{y:.1f}" width="24" height="{h}" fill="{ink}"/>',
+           kind_glyph(x + 12, y + h / 2, kind, 16, ground, 1.8),
+           f'<rect x="{x + 24:.1f}" y="{y + 0.75:.1f}" width="{w - 24.75:.1f}" height="{h - 1.5}" fill="{ground}" stroke="{ink}" stroke-width="1.5"/>',
+           T(x + 24 + (w - 24) / 2, y + h / 2 + 5, lid, 14, 700, ink, "middle")]
+    return f'<g class="bullet" data-bullet="{lid}" data-kind="{kind}"{extra}>' + "".join(out) + "</g>"
+
+
+def bullet_candidates(L, lid):
+    """Places for a loop's bullet: inside its ring near each station (the first station first), or beside a
+    two-step shuttle at several points along it."""
     lp = LOOPS[lid]
-    first = lp["stations"][0]["code"]
-    x, y = L.station_px(first)
-    dx, dy = bullets.get(lid, (1.0, -1.0))
-    cx, cy = x + dx * L.cell, y + dy * L.cell
-    ink = theme.line if lit else STONE
-    if theme.name == "newsprint" and lit:
-        ink = CHARCOAL
-    ground = theme.bg
-    _, w = chip(0, 0, "Loop", lid, ink, ground, glyph=lp["type"])
-    h = 26
-    svg, w = chip(cx - w / 2, cy - h / 2, "Loop", lid, ink, ground, glyph=lp["type"],
-                  extra=f' data-bullet="{lid}" data-first="{first}" data-kind="{lp["type"]}"')
-    return svg, (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+    codes = [st["code"] for st in lp["stations"]]
+    pts = [L.station_px(c) for c in codes]
+    w, h = bullet_size(lid)
+    out = []
+    if lp["n"] == 2:
+        a, b = sorted(codes)
+        base = L.corridor_px(a, b)
+        if codes[0] != a:
+            base = list(reversed(base))
+        Lp = G.plen(base)
+        for rank, f in enumerate((0.3, 0.42, 0.58, 0.7, 0.22, 0.78)):
+            p, u = G.point_at(base, Lp * f)
+            n = (-u[1], u[0])
+            for side in (1, -1):
+                # clear the two tracks by 7 px, measured on the bullet's own box
+                ext = abs(n[0]) * w / 2 + abs(n[1]) * h / 2
+                dd = L.pitch / 2 + LINE_W / 2 + 7 + ext
+                out.append(((p[0] + n[0] * dd * side, p[1] + n[1] * dd * side), rank * 2 + (0 if side == 1 else 1)))
+    else:
+        poly = pts
+        k = len(poly)
+        for i in range(k):
+            S, P, N = poly[i], poly[i - 1], poly[(i + 1) % k]
+            u1 = G.unit(P[0] - S[0], P[1] - S[1])
+            u2 = G.unit(N[0] - S[0], N[1] - S[1])
+            bis = G.unit(u1[0] + u2[0], u1[1] + u2[1])
+            for dist in (64, 80, 96, 112, 128, 150):
+                out.append(((S[0] + bis[0] * dist, S[1] + bis[1] * dist), i * 10 + dist / 40))
+    return out
+
+
+def place_bullets(L, boxes, tag_boxes):
+    """Choose each bullet's place by a collision score against corridors, stations, labels, signs and other bullets."""
+    chosen = {}
+    occupied = [b for _, _, b in boxes] + tag_boxes
+    corridor_segs = []
+    for (a, c), trs in L.tracks.items():
+        hw = ((len(trs) - 1) * L.pitch + LINE_W) / 2 + 3
+        pts = L.corridor_px(a, c)
+        for i in range(len(pts) - 1):
+            corridor_segs.append((pts[i], pts[i + 1], hw))
+    order = sorted(G.NUMBERED, key=lambda lid: len(bullet_candidates(L, lid)))
+    for lid in order:
+        w, h = bullet_size(lid)
+        best, bscore = None, 1e18
+        poly = [L.station_px(st["code"]) for st in LOOPS[lid]["stations"]]
+        for (cx, cy), pref in bullet_candidates(L, lid):
+            bx = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+            score = pref
+            for (p, q, hw) in corridor_segs:
+                if _seg_box(p, q, (bx[0] - hw, bx[1] - hw, bx[2] + hw, bx[3] + hw)):
+                    score += 1000
+            for ob in occupied:
+                if bx[0] < ob[2] + 4 and ob[0] < bx[2] + 4 and bx[1] < ob[3] + 4 and ob[1] < bx[3] + 4:
+                    score += 1000
+            if LOOPS[lid]["n"] > 2:
+                corners = [(bx[0], bx[1]), (bx[2], bx[1]), (bx[2], bx[3]), (bx[0], bx[3])]
+                if not all(_inside(c, poly) for c in corners):
+                    score += 400
+            if score < bscore:
+                best, bscore = (cx, cy), score
+        chosen[lid] = (best, bscore)
+        occupied.append((best[0] - w / 2, best[1] - h / 2, best[0] + w / 2, best[1] + h / 2))
+    return chosen
+
+
+def _inside(pt, poly):
+    x, y = pt
+    c = False
+    for i in range(len(poly)):
+        x0, y0 = poly[i]
+        x1, y1 = poly[(i + 1) % len(poly)]
+        if (y0 > y) != (y1 > y) and x < (x1 - x0) * (y - y0) / (y1 - y0) + x0:
+            c = not c
+    return c
 
 
 def overlaps(boxes, pad=2):
@@ -383,7 +477,7 @@ def overlaps(boxes, pad=2):
     for i in range(len(boxes)):
         for j in range(i + 1, len(boxes)):
             (k1, n1, a), (k2, n2, b) = boxes[i], boxes[j]
-            if k1 == "station" and k2 == "station":
+            if {k1, k2} <= {"station", "sign"}:
                 continue
             if n1 == n2 and {k1, k2} == {"station", "label"}:
                 continue

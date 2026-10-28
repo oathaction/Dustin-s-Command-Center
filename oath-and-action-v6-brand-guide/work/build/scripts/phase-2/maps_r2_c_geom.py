@@ -10,7 +10,7 @@ stations already sit on a 0, 45 or 90 degree line, otherwise the cheapest octili
 one cell clear of every other station, never shares a cell with an earlier corridor and never leaves a station in
 a direction another corridor already uses. Each loop then rides its corridors as one track; tracks sort so a loop
 stays on the side of each corridor that faces its own inside, nested loops inner-most, and each direction of a
-two-step loop keeps to its right.
+two-step loop keeps to its left, so the loop runs clockwise and its first step rides the upper track.
 """
 import csv
 import heapq
@@ -80,8 +80,9 @@ def _octi(dx, dy):
     return None
 
 
-def route_all(table):
-    """Route every corridor. Returns {(a, b): [cells from a to b]} and the ports used at each station."""
+def route_all(table, keepout=()):
+    """Route every corridor. Returns {(a, b): [cells from a to b]} and the ports used at each station. Cells in
+    keepout (the boxes of the station names) are closed to routed corridors; straight corridors keep their line."""
     pos = {k: (v["col"], v["row"]) for k, v in table.items()}
     used_cells, used_diag = set(), set()
     ports = {k: set() for k in pos}
@@ -128,8 +129,10 @@ def route_all(table):
     ys = [p[1] for p in pos.values()]
     bx = (min(xs) - 4, max(xs) + 4)
     by = (min(ys) - 4, max(ys) + 4)
+    ko = set(keepout)
+    clear_routed = lambda c, a, b: clear_cell(c, a, b) and c not in ko
     for (a, b) in sorted(other, key=lambda e: math.hypot(pos[e[1]][0] - pos[e[0]][0], pos[e[1]][1] - pos[e[0]][1])):
-        cells = _astar(pos[a], pos[b], a, b, clear_cell, used_diag, ports, bx, by, diag_key)
+        cells = _astar(pos[a], pos[b], a, b, clear_routed, used_diag, ports, bx, by, diag_key)
         if cells is None:
             raise RuntimeError(f"no octilinear route for {a}-{b}")
         commit(a, b, cells)
@@ -215,7 +218,7 @@ def tracks(table, pitch):
             lp = LOOPS[it["loop"]]
             fwd = it["from"] == a
             if lp["n"] == 2:
-                side = 1 if fwd else -1          # each direction of a two-step loop keeps to its right
+                side = -1 if fwd else 1          # a two-step loop runs clockwise: each direction keeps to its left
                 size = 0.0
             else:
                 cw = area[it["loop"]] > 0         # screen coordinates: positive area runs clockwise
@@ -321,10 +324,11 @@ def straight_runs(pts):
 class Layout:
     """One placement of the network at one scale: grid cell size, origin, line pitch and corner radius."""
 
-    def __init__(self, cell, ox, oy, pitch=9.0, radius=22.0, table=None):
+    def __init__(self, cell, ox, oy, pitch=9.0, radius=22.0, table=None, keepout_fn=None):
         self.table = table or read_table()
         self.cell, self.ox, self.oy, self.pitch, self.radius = cell, ox, oy, pitch, radius
-        self.routes_cells, self.ports = route_all(self.table)
+        self.keepout = keepout_fn(self) if keepout_fn else set()
+        self.routes_cells, self.ports = route_all(self.table, self.keepout)
         self.tracks = tracks(self.table, pitch)
 
     def px(self, c):

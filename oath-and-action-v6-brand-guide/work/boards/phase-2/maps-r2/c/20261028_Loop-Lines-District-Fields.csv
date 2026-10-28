@@ -1,0 +1,8 @@
+district,part,vertices,island,why
+A,main,-14 -12; -8.5 -12; -8.5 -4.5; -2 -4.5; -2 14; -14 14,no,West; owns the top-left corner so the outside drivers reach it
+B,main,-8.5 -12; 26 -12; 26 -0.5; 11.5 -0.5; 11.5 -4.5; -8.5 -4.5,no,North band and the northeast where B4 and B2 sit
+B,b1,-2 4.5; 2.5 4.5; 2.5 14; -2 14,no,B1 sits south of the hub because R1 and R6 close through it
+E,main,-2 -4.5; 1.5 -4.5; 1.5 4.5; -2 4.5,no,The hub at the center
+E,e2,4 6; 8 6; 8 10; 4 10,yes,E2 hangs off the R7 shuttle; an island inside D with a moat around it
+C,main,8.5 -0.5; 26 -0.5; 26 7.5; 11.5 7.5; 11.5 2.5; 8.5 2.5,no,East
+D,main,1.5 -4.5; 11.5 -4.5; 11.5 -0.5; 8.5 -0.5; 8.5 2.5; 11.5 2.5; 11.5 7.5; 26 7.5; 26 14; 2.5 14; 2.5 4.5; 1.5 4.5,no,Between the hub and C and wrapping south of C

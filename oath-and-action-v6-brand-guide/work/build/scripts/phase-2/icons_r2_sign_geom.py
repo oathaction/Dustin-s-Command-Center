@@ -82,6 +82,21 @@ def chevron(tip, direction, arm, w=BAR):
     return bar(p1, tip, p2, w=w)
 
 
+def arrowhead(tip, direction, length=4.25, half=3.0, r=0.6):
+    """A solid arrowhead, the public-sign kind: a triangle with its tip at `tip`, pointing along
+    `direction` (degrees), its base two bars wide (half = one bar). Corners take a small round so
+    the tip stays sharp at 24 px."""
+    a = math.radians(direction)
+    ux, uy = math.cos(a), math.sin(a)
+    nx, ny = -uy, ux
+    bx, by = tip[0] - ux * length, tip[1] - uy * length
+    return solid([(tip[0], tip[1]), (bx + nx * half, by + ny * half), (bx - nx * half, by - ny * half)], r)
+
+
+def rot(p, deg, cx, cy):
+    return g.rot(p, deg, cx, cy)
+
+
 def area(p):
     return g.area(p)
 

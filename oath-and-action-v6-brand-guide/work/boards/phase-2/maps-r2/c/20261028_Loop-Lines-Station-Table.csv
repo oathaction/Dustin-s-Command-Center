@@ -1,26 +1,26 @@
 id,district,col,row,label,label_dx,label_dy,wrap,why
 E1,E,0,0,inside,0,0,0,Hub of seven loops at the center; eight spokes in eight directions; a station on five or more lines holds its name inside
-B5,B,0,-6,n,0,0,0,Top of the R15 square; R4b leaves northeast toward C4
-B3,B,-6,-6,n,0,0,0,Top-left corner of the R15 square (A2 to B3 to B5 to E1)
-A2,A,-6,0,ne,0,0,0,Shared corner of R15 above and R6 below; label sits inside R15
+B5,B,0,-6,nw,0,0,0,Top of the R15 square; R4b leaves northeast toward C4
+B3,B,-6,-6,w,0,0,0,Top-left corner of the R15 square (A2 to B3 to B5 to E1)
+A2,A,-6,0,w,0,0,0,"Shared corner of R15 above and R6 below; name sits to the west, above R8"
 A4,A,-3,-3,w,0,0,1,Inside R15 at the apex of R5 (A4 to B5 to E1)
-A1,A,-6,6,s,0,0,0,Bottom-left corner of R6; R1 closes on the diagonal to E1
-B1,B,0,6,s,30,0,0,Bottom of the R6 square; R1b leaves southeast toward D3
-A6,A,-11,-3,e,0,0,0,R8 stands alone in district A as a short shuttle
-A5,A,-11,1,e,0,0,0,R8 first station; Housing scarcity
-D1,D,3,-3,n,0,0,0,R2 shuttle from E1 northeast; R13 shuttle east to D2
-D2,D,9,-3,n,0,0,0,Meets D1 and D4 shuttles; R11 runs east to B4 and southeast to C3
+A1,A,-6,6,w,0,0,0,Bottom-left corner of R6; R1 closes on the diagonal to E1
+B1,B,0,6,sw,0,0,0,Bottom of the R6 square; R1b leaves southeast toward D3
+A6,A,-8,3,s,0,0,1,R8 stands alone in district A as a short shuttle between the fan's left edge and A5
+A5,A,-12,3,ne,0,0,0,R8 first station; R8 runs left to right like the line map inside a train car
+D1,D,3,-3,n,0,0,1,R2 shuttle from E1 northeast; R13 shuttle east to D2
+D2,D,9,-3,n,0,0,1,Meets D1 and D4 shuttles; R11 runs east to B4 and southeast to C3
 D4,D,6,0,s,0,0,1,East of E1 at six cells so the E1 capsule leaves the B1a shuttle visible
-D6,D,3,3,se,0,0,1,B5 shuttle from E1 southeast
-B4,B,13,-3,n,0,0,0,Top of the R11 triangle; R3 shuttle northwest to B6
+D6,D,3,3,s,0,0,1,B5 shuttle from E1 southeast
+B4,B,13,-3,ne,0,0,1,Top of the R11 triangle; R3 shuttle northwest to B6
 B6,B,10,-6,n,0,0,0,R3 shuttle; two cells below the R4b arch
-B2,B,16,-2,w,0,0,0,R16 shuttle from C3 northeast
+B2,B,15,-1,n,10,0,0,"R16 shuttle from C3 northeast, two cells, clear of the R4b arch"
 C3,C,13,1,e,0,0,0,Hub of four loops; seven spokes; label takes the free east port
-C5,C,10,1,n,0,0,0,West corner of the B4 triangle
-D5,D,10,4,w,0,0,1,Southwest corner of the B4 triangle; R7 shuttle southwest to E2
-E2,E,7,7,s,0,0,0,R7 shuttle end; stays in the E field south of the hub
-C2,C,13,4,e,0,0,0,R10 runs south from C3 then southeast
+C5,C,9,1,n,0,0,0,"West corner of the B4 triangle, four cells from C3 so its bullet fits inside"
+D5,D,9,5,nw,0,0,1,Southwest corner of the B4 triangle; R7 shuttle southwest to E2
+E2,E,6,8,s,0,0,0,"R7 shuttle end; an E island inside D, south of the hub"
+C2,C,13,4,sw,0,0,1,R10 runs south from C3 then southeast
 C1,C,15,6,sw,0,0,0,Shared by R10 R4a R12; three lines run west from C4
 C4,C,18,6,e,0,0,1,East edge; its five spokes fan west so R4b arrives from the north
-D7,D,15,9,s,0,0,0,Bottom-left corner of the R12 square
+D7,D,15,9,w,0,0,1,Bottom-left corner of the R12 square
 D3,D,18,9,e,0,0,1,Bottom-right corner of R12; R1b arrives from the south
