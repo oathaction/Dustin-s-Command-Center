@@ -1,5 +1,5 @@
 {
- "run": "2026-10-28T21:29:34.360Z",
+ "run": "2026-10-28T21:30:52.860Z",
  "pages": {
   "Poster": {
    "texts": 180,
@@ -82,149 +82,8 @@
   "Catalog": {
    "texts": 287,
    "svgTexts": 141,
-   "minSize": 11.77,
-   "under13": [
-    {
-     "text": "Housing scarcity",
-     "size": 12.42,
-     "tag": "text"
-    },
-    {
-     "text": "Owner home",
-     "size": 12.42,
-     "tag": "text"
-    },
-    {
-     "text": "equity",
-     "size": 12.42,
-     "tag": "text"
-    },
-    {
-     "text": "Safe seats",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "Primary",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "decisiveness",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "Electoral",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "pressure",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "Incumbent",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "control of",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "election rules",
-     "size": 12.82,
-     "tag": "text"
-    },
-    {
-     "text": "Doctrine favoring",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "the appointing",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "coalition",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "Incumbent",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "control of",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "election rules",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "Safe seats",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "Entrenched",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "majority control",
-     "size": 12.51,
-     "tag": "text"
-    },
-    {
-     "text": "Congressional",
-     "size": 11.77,
-     "tag": "text"
-    },
-    {
-     "text": "capacity",
-     "size": 11.77,
-     "tag": "text"
-    },
-    {
-     "text": "Executive",
-     "size": 11.77,
-     "tag": "text"
-    },
-    {
-     "text": "unilateralism",
-     "size": 11.77,
-     "tag": "text"
-    },
-    {
-     "text": "Policy tilt to",
-     "size": 12.33,
-     "tag": "text"
-    },
-    {
-     "text": "insiders",
-     "size": 12.33,
-     "tag": "text"
-    },
-    {
-     "text": "Oversight and",
-     "size": 12.33,
-     "tag": "text"
-    },
-    {
-     "text": "enforcement",
-     "size": 12.33,
-     "tag": "text"
-    }
-   ],
+   "minSize": 13,
+   "under13": [],
    "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
@@ -392,7 +251,7 @@
   "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Working-Map at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 11.77 px (28 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
