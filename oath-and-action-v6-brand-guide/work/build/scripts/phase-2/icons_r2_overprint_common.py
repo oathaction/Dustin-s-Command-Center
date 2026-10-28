@@ -71,7 +71,16 @@ def master_file(name, kind):
     return OUT / f"{stem(name, kind)}.svg"
 
 
+# The 16 px solid cut is one color, so its colorways collapse to three: Charcoal (the master),
+# Newsprint and White.
+CW16 = {"Charcoal-Red": "Charcoal", "Charcoal": "Charcoal", "Charcoal-Plane-Ink": "Charcoal",
+        "Newsprint-Red": "Newsprint", "Newsprint": "Newsprint", "White": "White"}
+
+
 def variant_file(name, kind, cw):
+    if kind == "16px":
+        cw = CW16[cw]
+        return master_file(name, kind) if cw == "Charcoal" else VARIANTS / f"{stem(name, kind)}-{cw}.svg"
     if cw == "Charcoal-Red":
         return master_file(name, kind)
     return VARIANTS / f"{stem(name, kind)}-{cw}.svg"

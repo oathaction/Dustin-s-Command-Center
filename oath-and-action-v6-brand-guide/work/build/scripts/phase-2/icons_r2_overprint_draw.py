@@ -1,30 +1,33 @@
 """Concept 1, Overprint: the ten round-two test icons (design director, Phase 2, round two,
-October 28, 2026). Stage 2: the display masters redrawn after the creative director's stage 1
-notes, and the 24 and 16 px masters drawn on whole pixels.
+October 28, 2026). Stage 2 redrew the display masters after the creative director's stage 1 notes.
+The fix pass applies fixes 1 to 4 of the creative director's final review: a solid, one-color
+16 px cut; Feedback loop as a closed ring with three stations; Ballot's paper raised; Connect and
+Campaign money pulled apart at 24 px (with Testify's 24 px master raised 1 px to clear Track).
 
 Idea. A fine Charcoal line drawing printed over one solid Pillar Red plane set off register, the way
 a second ink lands on a newspaper page. The red sits under the part of the subject the story is
-about. The line drawing is whole without it.
+about. The line drawing is whole without it. From 24 px up.
 
 Grid. Round one's 24-unit grid (icons_draw.py): 2-unit padding, live area 2 to 22; keylines circle 20,
 square 18, portrait 16 by 20, landscape 20 by 16. Straight edges stay inside the live area; round
-forms overshoot it by 0.25 units at most. The 16 px masters are separate drawings on a 16-unit grid
-with 1-unit padding, live area 1 to 15. Every drawing is written as center lines.
+forms overshoot it by 0.25 units at most. Every line drawing is written as center lines.
 
-Line. Round caps and round joins. Display master (48 px and up): 1.5 units. 24 and 16 px masters:
-2 px, with straight center lines on whole pixels so both edges land on pixel boundaries.
-Rectangles take a 2-unit outer radius in the display master (center-line radius 1.25) and 1 px at
-24 px. The pillar marks carry the node as a solid ink disc 3 units across.
+Line. Round caps and round joins. Display master (48 px and up): 1.5 units. 24 px master: 2 px,
+with straight center lines on whole pixels so both edges land on pixel boundaries. Rectangles take
+a 2-unit outer radius in the display master (center-line radius 1.25) and 1 px at 24 px; the
+banknote keeps a 1-unit corner. The pillar marks carry the node as a solid ink disc 3 units across.
 
 The red plane. It fills one shape of the drawing, to the line's center, and prints off register at
 one fixed offset toward the lower left: 1.5 units left and 1.5 down in the display master, 2 px at
-24 px and 1 px at 16 px. Ballot's mark covers its printed oval to the outer edge, as a pen mark
-does. Connect is the one exception (Rule 01.1): its plane centers on the gap and prints straight
-down, clear of both halves.
+24 px. Ballot's mark covers its printed oval to the outer edge, as a pen mark does. Connect is the
+one exception (Rule 01.1): its plane centers on the gap and prints straight down, clear of both
+halves.
+
+16 px. A separate solid cut in one color, with no red (see the section below).
 
 Every drawing returns layers:
-  ink     the line drawing and any ink nodes, as one filled outline
-  accent  the red plane, already moved by its offset
+  ink     the line drawing and any ink nodes, as one filled outline (at 16 px, the solid pieces)
+  accent  the red plane, already moved by its offset (empty at 16 px)
   lines   the center-line paths (construction views)
   reg     the red plane in register, before the offset (construction views)
 Run with python3 -I. Imports round one's shared helpers and changes none of them.
@@ -60,7 +63,7 @@ REASON = {
     "bill": "Red highlights the one line of the bill the story is about.",
     "testify": "Red fills the microphone, where a voice goes on the record.",
     "housing": "Red fills the doorway, the way into a home.",
-    "money": "Red fills the banknote's center disc, the money itself.",
+    "money": "Red fills the banknote's disc, the money itself.",
     "loop": "Red fills the top station, where a reform acts on the loop.",
 }
 
@@ -364,121 +367,124 @@ def solid(fn):
     return fn
 
 
-@solid
-def explain16(var=None):
-    """Moving part's L-shaped body and node seat, with the lid lifted and turned 20 degrees on its
-    hinge corner, kept low so it reads as a flap of the box."""
-    body = minus(R16(2, 5, 12, 15), R16(7, 5, 12, 10))
-    seat = circle(8, 9, 2.414)
-    body = minus(body, seat)
-    node = R16(7, 8, 9, 10)
-    t = math.radians(-20)
-    hx, hy, sd = 8.6, 4.2, 4.5
+def _turned_rect(hx, hy, w, h, deg):
+    """A w by h rectangle hinged at its top-left corner (hx, hy) and turned deg degrees."""
+    t = math.radians(deg)
     u = (math.cos(t), math.sin(t))
     v = (-math.sin(t), math.cos(t))
-    pts = [(hx, hy), (hx + u[0] * sd, hy + u[1] * sd), (hx + u[0] * sd + v[0] * sd, hy + u[1] * sd + v[1] * sd), (hx + v[0] * sd, hy + v[1] * sd)]
-    lid = minus(poly(*pts), circle(8, 9, 2.414 + 0.0))
+    return poly((hx, hy), (hx + u[0] * w, hy + u[1] * w), (hx + u[0] * w + v[0] * h, hy + u[1] * w + v[1] * h), (hx + v[0] * h, hy + v[1] * h))
+
+
+def _page16(x0, x1, fold, holes, y1=15):
+    """A page with its top-right corner folded down as a separate flap, 1 px clear of the page."""
+    f = x1 - fold
+    page = poly((x0, 1), (f, 1), (x1, 1 + fold), (x1, y1), (x0, y1))
+    page = minus(page, union(R16(f - 1, 1, f, 2 + fold), R16(f - 1, 1 + fold, x1, 2 + fold)))
+    flap = intersect(poly((f, 1), (x1, 1 + fold), (f, 1 + fold)), R16(f, 1, x1, 1 + fold))
+    page = union(minus(page, R16(f, 1, x1, 1 + fold)), flap)
+    return minus(page, union(*[R16(*h) for h in holes])) if holes else page
+
+
+@solid
+def explain16(var=None):
+    """Moving part's L-shaped body with the node in its seat at the inner corner; the lid is a flat
+    slab lifted off the open quarter and turned 25 degrees on its hinge corner."""
+    body = minus(minus(R16(2, 5, 12, 15), R16(7, 5, 12, 10)), circle(8, 9, 2.414))
+    node = R16(7, 8, 9, 10)
+    lid = _turned_rect(8.2, 3.6, 5.2, 2.0, -25)
     return union(body, node, lid)
 
 
 @solid
 def track16(var=None):
-    """Three rises, as the 24 px stair: the top stage sits on the stair, never floats. The node sits
-    on the first tread against the riser, 1 px clear of both."""
-    stair = union(R16(1, 11, 15, 14), R16(6, 7, 15, 11), R16(11, 3, 15, 7))
+    """A flight of three rises with a sloped underside, so the top stage sits on the stair and the
+    shape reads as steps rather than bars. The node sits on the first tread, 1 px from the riser."""
+    flight = poly((1, 15), (1, 11), (6, 11), (6, 7), (10, 7), (10, 3), (15, 3), (15, 7), (7, 15))
     node = R16(3, 8, 5, 10)
-    return union(stair, node)
+    return union(flight, node)
 
 
 @solid
 def connect16(var=None):
-    """One disc in two halves held 4 px apart; the node sits in the gap, 1 px clear of both."""
+    """One disc of 7 px radius in two halves held 6 px apart; the node sits in the gap, 2 px clear
+    of both."""
     d = circle(8, 8, 7)
-    left = intersect(d, R16(0, 0, 6, 16))
-    right = intersect(d, R16(10, 0, 16, 16))
-    node = R16(7, 7, 9, 9)
-    return union(left, right, node)
+    return union(intersect(d, R16(0, 0, 5, 16)), intersect(d, R16(11, 0, 16, 16)), R16(7, 7, 9, 9))
 
 
 @solid
 def act16(var=None):
-    """Moving part's frame with the full lintel (round one's IC-04), the far jamb and the floor; the
-    leaf stands open in the doorway with the handle knocked out of it."""
+    """Moving part's frame with the full lintel (round one's IC-04), the far jamb and the floor,
+    each 1 px apart. The leaf stands open on the near side in perspective, with the node knocked out
+    of it as the handle."""
     frame = union(R16(2, 1, 15, 3), R16(13, 3, 15, 12))
     floor = R16(1, 13, 15, 15)
-    leaf = minus(poly((3, 4), (8, 5.5), (8, 12), (3, 12)), R16(6, 8, 7, 10)) if var == "hole" else poly((3, 4), (7, 5.25), (7, 12), (3, 12))
-    node = R16(9, 8, 11, 10)
-    return union(frame, floor, leaf, node)
+    leaf = minus(poly((3, 4), (8, 5.5), (8, 12), (3, 12)), R16(6, 8, 7, 10))
+    return union(frame, floor, leaf)
 
 
 @solid
 def ballot16(var=None):
-    """A ballot raised well out of its box: the paper shows 5 px above the box and sinks 2 px into
-    the slot; the printed oval is knocked out of its upper half."""
-    paper = minus(R16(5, 1, 11, 10), rrect(6, 3, 4, 2, 1))
-    box = minus(R16(1, 8, 15, 15), R16(4, 8, 12, 11))
-    return union(paper, box)
+    """The paper stands 7 px above the box, between the two halves of the lid, with the printed
+    oval knocked out of its upper half; the box sits 1 px below the lid."""
+    paper = minus(R16(5, 2, 11, 9), rrect(6, 3, 4, 2, 1))
+    lid = union(R16(1, 9, 4, 10), R16(12, 9, 15, 10))
+    box = R16(1, 11, 15, 15)
+    return union(paper, lid, box)
 
 
 @solid
 def bill16(var=None):
-    """A page with its corner folded down as a separate flap, and three lines of text knocked out."""
-    page = poly((3, 1), (9, 1), (13, 5), (13, 15), (3, 15))
-    page = minus(page, union(R16(8, 1, 9, 6), R16(8, 5, 13, 6)))
-    flap = intersect(poly((9, 1), (13, 5), (9, 5)), R16(9, 1, 13, 5))
-    page = union(minus(page, R16(9, 1, 13, 5)), flap)
-    text = union(R16(5, 8, 8, 9), R16(5, 10, 11, 11), R16(5, 12, 11, 13))
-    return minus(page, text)
+    """A page 8 px wide with its corner folded down as a flap; three lines of text knocked out,
+    running to the page's right edge."""
+    return _page16(4, 12, 4, [(6, 8, 12, 9), (6, 10, 12, 11), (6, 12, 12, 13)])
 
 
 @solid
 def testify16(var=None):
-    """A person at a table speaking into a microphone on a short gooseneck, capsule at mouth height
-    and turned 45 degrees toward the face."""
-    head = circle(11, 4.5, 2.5)
-    shoulders = intersect(rrect(6, 9, 10, 8, 4), R16(6, 9, 16, 12))
+    """A person at a table speaking into a microphone on a stand, the capsule at mouth height and
+    turned 45 degrees toward the face."""
+    head = circle(10, 3.5, 2.5)
+    shoulders = intersect(rrect(6, 8, 8, 8, 3.2), R16(6, 8, 14, 11))
     table = R16(1, 13, 15, 15)
-    cap = tilted_stadium(4.75, 6.75, 2.5, 4.5, 45)
-    neck = R16(2, 8, 4, 12)
-    return union(head, shoulders, table, cap, neck)
+    cap = tilted_stadium(4.25, 5.5, 2.5, 4.0, 45)
+    stand = R16(3, 7, 4, 12)
+    return union(head, shoulders, table, cap, stand)
 
 
 @solid
 def housing16(var=None):
-    """Moving part's roof and walls, with the doorway knocked out of the walls."""
-    roof = poly((1, 8), (8, 1), (15, 8))
+    """A roof drawn as a band over walls with the doorway knocked out; roof and walls 1 px apart."""
+    roof = minus(poly((1, 8), (8, 1), (15, 8)), poly((4, 8), (8, 4), (12, 8)))
     walls = minus(R16(3, 9, 13, 15), R16(6, 11, 10, 15))
     return union(roof, walls)
 
 
 @solid
 def money16(var=None):
-    """The banknote filled: the note across the landscape keyline, its disc left of center and set
-    apart by a 1 px ring, and a short bar knocked out at the top and bottom right."""
-    note = R16(1, 3, 15, 13)
-    note = minus(note, circle(6, 8, 3))
-    disc = circle(6, 8, 2)
-    bars = union(R16(11, 5, 13, 6), R16(11, 10, 13, 11))
-    return union(minus(note, bars), disc)
+    """The banknote across the keyline as a solid piece with a counter; the disc sits left of
+    center inside it, and one short bar sits at the bottom right."""
+    note = minus(R16(1, 3, 15, 13), R16(3, 5, 13, 11))
+    return union(note, circle(6.5, 8.5, 1.5), R16(10, 9, 12, 10))
 
 
 @solid
 def loop16(var=None):
-    """The ring filled: a 2 px ring with three stations as solid beads, and a solid arrowhead on the
-    ring between each pair, turning clockwise."""
-    cx, cy, Rr = 8, 8.5, 5
-    ring = g.ring(cx, cy, Rr + 1, Rr - 1)
-    nodes = [circle(cx + Rr * math.cos(math.radians(a)), cy + Rr * math.sin(math.radians(a)), 2) for a in (-90, 30, 150)]
-    heads = []
-    for a in (-30, 90, 210):
+    """The ring with its three stations as solid beads. The ring breaks 1 px clear of each bead, and
+    each of its three arcs carries a solid arrowhead turning clockwise."""
+    cx, cy, Rr, rn = 8, 8.5, 5.5, 1.75
+    pos = [(cx + Rr * math.cos(math.radians(a)), cy + Rr * math.sin(math.radians(a))) for a in (-90, 30, 150)]
+    ring = minus(g.ring(cx, cy, Rr + 1, Rr - 1), union(*[circle(x, y, rn + 1) for x, y in pos]))
+    parts = [ring] + [circle(x, y, rn) for x, y in pos]
+    for a in (10, 130, 250):
         t = math.radians(a)
         p = (cx + Rr * math.cos(t), cy + Rr * math.sin(t))
-        d = (-math.sin(t), math.cos(t))          # clockwise tangent on screen
+        d = (-math.sin(t), math.cos(t))
         n = (math.cos(t), math.sin(t))
         tip = (p[0] + d[0] * 1.75, p[1] + d[1] * 1.75)
-        base = (p[0] - d[0] * 1.0, p[1] - d[1] * 1.0)
-        heads.append(poly(tip, (base[0] + n[0] * 2.25, base[1] + n[1] * 2.25), (base[0] - n[0] * 2.25, base[1] - n[1] * 2.25)))
-    return union(ring, *nodes, *heads)
+        base = (p[0] - d[0], p[1] - d[1])
+        parts.append(poly(tip, (base[0] + n[0] * 2.25, base[1] + n[1] * 2.25), (base[0] - n[0] * 2.25, base[1] - n[1] * 2.25)))
+    return union(*parts)
 
 
 def solid16(name, var=None):
@@ -696,14 +702,15 @@ def testify(size, var=None):
         reg = tilted_stadium(cx, cy, cw, cl, ang)
         return build([head, shoulders, table, cap, neck], [], reg, size)
     if size == 24:
-        head = ring_c(16, 7, 3)
-        shoulders = arc_c(16, 20, 5, 180, 360)
-        table = line_c((3, 20), (21, 20))
-        cx, cy, cw, cl, ang = 8.5, 12.5, 4.0, 5.5, 45
+        # one pixel higher than the display master, so the table no longer sits on Track's base line
+        head = ring_c(16, 6, 3)
+        shoulders = arc_c(16, 19, 5, 180, 360)
+        table = line_c((3, 19), (21, 19))
+        cx, cy, cw, cl, ang = 8.5, 11.5, 4.0, 5.5, 45
         cap = tilted_stadium_pen(cx, cy, cw, cl, ang)
         u = (math.sin(math.radians(ang)), -math.cos(math.radians(ang)))
         foot = (cx - u[0] * cl / 2, cy - u[1] * cl / 2)
-        neck = rpoly([foot, (6, 15.25), (6, 20)], [0, 1.0, 0], closed=False)
+        neck = rpoly([foot, (6, 14.25), (6, 19)], [0, 1.0, 0], closed=False)
         reg = tilted_stadium(cx, cy, cw, cl, ang)
         return build([head, shoulders, table, cap, neck], [], reg, size)
     raise KeyError(size)
@@ -728,36 +735,34 @@ def housing(size, var=None):
 
 @icon
 def money(size, var=None):
-    """A banknote across the full landscape keyline, with tight corners, a disc 2 units left of
-    center and a short bar at the top and bottom right, so it shares no mirror symmetry with
-    Connect. The red fills the disc."""
+    """A banknote filling the landscape keyline, 20 by 16, with tight 1-unit corners, its disc 2
+    units left of center and one short bar at the bottom right, so it shares no mirror symmetry
+    with Connect. The red fills the disc."""
     if size == "display":
-        note = rrect_c(2.75, 7.25, 21.25, 16.75, 0.25)
+        note = rrect_c(2.75, 4.75, 21.25, 19.25, 0.25)
         disc = ring_c(10, 12, 2.75)
-        b1 = line_c((16.25, 10), (18.25, 10))
-        b2 = line_c((16.25, 14), (18.25, 14))
+        bar = line_c((16.75, 16), (18.25, 16))
         reg = circle(10, 12, 2.75)
-        return build([note, disc, b1, b2], [], reg, size)
+        return build([note, disc, bar], [], reg, size)
     if size == 24:
-        note = rrect_c(3, 7, 21, 17, 0)
+        note = rrect_c(3, 5, 21, 19, 0)
         disc = ring_c(10, 12, 3)
-        b1 = line_c((16, 10), (18, 10))
-        b2 = line_c((16, 14), (18, 14))
+        bar = line_c((17, 16), (18, 16))
         reg = circle(10, 12, 3)
-        return build([note, disc, b1, b2], [], reg, size)
+        return build([note, disc, bar], [], reg, size)
     raise KeyError(size)
 
 
 @icon
 def loop(size, var=None):
     """A closed ring with three stations evenly spaced and one arrowhead on the ring between each
-    pair, all turning clockwise, as the hinge diagram's arcs do. A closed ring with three stations
-    breaks the two-arrow pattern that reload, sync, undo and redo share. The red fills the top
-    station, where a reform acts."""
+    pair, set just short of the station it arrives at, all turning clockwise, as the hinge
+    diagram's arcs do. A closed ring with three stations breaks the two-arrow pattern that
+    reload, sync, undo and redo share. The red fills the top station, where a reform acts."""
     if size == "display":
-        cx, cy, R, rn, rr, arm = 12.0, 12.5, 7.0, 2.0, 2.5, 2.75
+        cx, cy, R, rn, rr, arm = 12.0, 12.5, 7.25, 2.0, 2.5, 2.5
     elif size == 24:
-        cx, cy, R, rn, rr, arm = 12.0, 13.0, 7.0, 2.0, 2.5, 2.5
+        cx, cy, R, rn, rr, arm = 12.0, 13.0, 7.0, 2.0, 2.0, 2.0
     else:
         raise KeyError(size)
     if isinstance(var, dict):
@@ -765,8 +770,9 @@ def loop(size, var=None):
     ring = ring_c(cx, cy, R)
     pos = {a: (cx + R * math.cos(math.radians(a)), cy + R * math.sin(math.radians(a))) for a in (-90, 30, 150)}
     heads = []
-    for a in (-30, 90, 210):
-        heads += _arrow_on_arc((cx, cy), R, a + math.degrees(arm * 0.5 / R), +1, arm)
+    clear = 1.25 if size == "display" else 1.5      # the tip stops this far short of the next station
+    for nxt, r_next in ((30, rn), (150, rn), (270, rr)):
+        heads += _arrow_on_arc((cx, cy), R, nxt - math.degrees((r_next + clear) / R), +1, arm)
     discs = [(pos[-90][0], pos[-90][1], rr), (pos[30][0], pos[30][1], rn), (pos[150][0], pos[150][1], rn)]
     reg = circle(pos[-90][0], pos[-90][1], rr)
     return build([ring] + heads, discs, reg, size)

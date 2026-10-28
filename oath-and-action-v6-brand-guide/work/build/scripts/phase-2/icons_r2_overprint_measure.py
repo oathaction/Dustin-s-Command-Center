@@ -10,10 +10,13 @@ one's glyph helper in icons_measure.py, all imported and unchanged.
 
 Checks (pass marks in brackets):
   pixel fit      D1-17: crisp share of inked pixels at 16 and 24 px, ink and plane together [0.60]
-  similarity     D1-16: blurred correlation and silhouette overlap, every pair at 16 and 24 px,
-                 as drawn and idle (plane removed) [under 0.60]
-  look-alikes    every icon against letters, "01", "n", and interface glyphs (sync, reload, record,
-                 pause, notification badge, map pin, crop, eye, printer, inbox) [under 0.60]
+  similarity     D1-16: blurred correlation, with round one's combined score beside it, every pair
+                 at 16, 24 and 48 px, as drawn and idle (plane removed) [under 0.60]. The 16 px
+                 solid cut is one color, so its drawn and idle renders are the same
+  look-alikes    every icon against its watch list: letters, "01", "n", interface glyphs drawn here,
+                 and (fix pass) the banned glyphs and the creative director's extra checks as
+                 Material Symbols, filled at 16 px and outlined at 24 px [combined score under
+                 0.60; blurred correlation kept beside it]
   weight         line ink of the display master at 96 px, as a share of the field
                  [16 to 24 percent, and within 15 percent of the set's median]
   red share      the plane's area over the painted area, ink and plane together [15 to 25 percent]
@@ -21,10 +24,9 @@ Checks (pass marks in brackets):
   live area      straight edges inside 2 to 22 units; round forms 0.25 beyond at most
   badge corner   no red in the top-right 6 by 6 units of the field
   contrast       ink on every surface and tile; red on every surface; line over red
-  holders        ink and plane inside the live area (half the side) in all 90 tiles at 40, 80 and
-                 180 px, and inside 40 percent of the side from the center in the circle
-  test 2         the plane turned to ink and removed, at 16, 24 and 48 px and in White on
-                 Prussian: still distinct from every other icon and from every look-alike
+  holders        ink and plane inside the live area (half the side) in all 90 tiles at 28, 40, 80
+                 and 180 px, and inside 40 percent of the side from the center in the circle
+  test 2         the plane turned to ink and removed, at 24 and 48 px and in White on Prussian
   test 3         one line weight (ridge widths at 96 px), the smallest clear gap between parts
 """
 import json
@@ -158,18 +160,17 @@ def render_ms(names, sizes=(16, 24)):
 
 
 def ref_cov(nm, s):
-    """Coverage of a reference; a Material glyph returns the worse-matching of its two fills
-    later, so here it returns both."""
+    """Coverage of a reference at size s. A Material glyph is taken in the style of the cut it is
+    compared with: filled at 16 px, where the family is solid, and outlined at 24 px, where it is a
+    line, as on the benchmark sheet."""
     if nm.startswith("ms:"):
-        m = nm[3:]
-        return [cov(f"ref-ms-{m}-{f}-{s}") for f in (0, 1)]
+        return [cov(f"ref-ms-{nm[3:]}-{1 if s <= 16 else 0}-{s}")]
     return [cov(f"ref-{M.slug(nm)}-{s}")]
 
 
 def look(c, nm, s):
-    """The closer of the reference's fills, by blurred correlation, with its full similarity row."""
-    rows = [M.sim(c, rc) for rc in ref_cov(nm, s)]
-    return max(rows, key=lambda r: r["blurred_corr"])
+    """The similarity row of an icon against one reference."""
+    return M.sim(c, ref_cov(nm, s)[0])
 
 
 def ref_jobs():
@@ -382,26 +383,44 @@ def main():
             if w:
                 res["sets"][f"worst_{mode}_{s}"] = [w[1].split("|")[1], w[1].split("|")[2], w[0]]
                 res["sets"][f"over_060_{mode}_{s}"] = sum(1 for k, v in res["pairs"].items() if k.startswith(f"{mode}|") and k.endswith(f"|{s}") and v["score"] >= 0.60)
+    # Look-alikes are decided by round one's combined score, the measure behind round one's and
+    # Moving part's look-alike tables and the creative director's own figures (Ballot and printer
+    # 0.63; Moving part's Act and "01" 0.07). D1-16's blurred correlation is kept beside it.
+    banned = set(f"ms:{m}" for m in BANNED_MS) | set(BANNED_DRAWN)
+
+    def row(k):
+        mode, n, nm, s_ = k.split("|")
+        v = res["watch"][k]
+        return {"icon": n, "ref": nm.replace("ms:", "Material "), "mode": mode, "size": int(s_), "score": v["score"],
+                "blurred": v["blurred_corr"], "banned": nm in banned}
     for n in O.ICONS:
-        items = [(v["blurred_corr"], k) for k, v in res["watch"].items() if f"|{n}|" in k]
-        sc, k = max(items)
-        res["icons"][n]["watch_worst"] = [k.split("|")[2].replace("ms:", "Material "), k.split("|")[0], int(k.split("|")[3]), sc, res["watch"][k]["score"]]
+        ks = [k for k in res["watch"] if f"|{n}|" in k]
+        k = max(ks, key=lambda k: res["watch"][k]["score"])
+        r = row(k)
+        res["icons"][n]["watch_worst"] = [r["ref"], r["mode"], r["size"], r["score"], r["blurred"]]
     res["sets"]["act_vs_01_16"] = res["watch"]["drawn|act|chapter number 01|16"]["score"]
     res["sets"]["act_vs_n_16"] = res["watch"]["drawn|act|letter n|16"]["score"]
     res["sets"]["act_vs_01_16_blur"] = res["watch"]["drawn|act|chapter number 01|16"]["blurred_corr"]
     res["sets"]["act_vs_n_16_blur"] = res["watch"]["drawn|act|letter n|16"]["blurred_corr"]
-    # fix 1's pass marks for the 16 px solid cut, by D1-16's blurred correlation
-    p16 = [(v["blurred_corr"], k) for k, v in res["pairs"].items() if k.startswith("drawn|") and k.endswith("|16")]
-    w16 = [(v["blurred_corr"], k) for k, v in res["watch"].items() if k.endswith("|16")]
+    res["sets"]["act_vs_01_24"] = res["watch"]["drawn|act|chapter number 01|24"]["score"]
+    # fix 1's pass marks for the 16 px solid cut
+    p16 = {k: v for k, v in res["pairs"].items() if k.startswith("drawn|") and k.endswith("|16")}
     res["sets"]["solid16"] = {
-        "pairs_over_060": sum(1 for b, _ in p16 if b >= 0.60), "worst_pair": [max(p16)[1].split("|")[1], max(p16)[1].split("|")[2], max(p16)[0]],
+        "pairs_over_060_blurred": sorted([[k.split("|")[1], k.split("|")[2], v["blurred_corr"], v["score"]] for k, v in p16.items() if v["blurred_corr"] >= 0.60], key=lambda r: -r[2]),
+        "pairs_over_060_score": sorted([[k.split("|")[1], k.split("|")[2], v["score"], v["blurred_corr"]] for k, v in p16.items() if v["score"] >= 0.60], key=lambda r: -r[2]),
+        "worst_pair_blurred": max(([k.split("|")[1], k.split("|")[2], v["blurred_corr"]] for k, v in p16.items()), key=lambda r: r[2]),
+        "worst_pair_score": max(([k.split("|")[1], k.split("|")[2], v["score"]] for k, v in p16.items()), key=lambda r: r[2]),
         "crisp_min": min(res["icons"][n]["crisp_16"] for n in O.ICONS),
-        "lookalikes_over_060": sorted([[k.split("|")[1], k.split("|")[2], b] for b, k in w16 if b >= 0.60], key=lambda r: -r[2]),
-        "worst_lookalike": [max(w16)[1].split("|")[1], max(w16)[1].split("|")[2], max(w16)[0]],
         "act_vs_01": res["watch"]["drawn|act|chapter number 01|16"]}
-    for s_ in (24,):
-        w = [(v["blurred_corr"], k) for k, v in res["watch"].items() if k.endswith(f"|{s_}")]
-        res["sets"][f"lookalikes_over_060_{s_}"] = sorted([[k.split("|")[0], k.split("|")[1], k.split("|")[2], b] for b, k in w if b >= 0.60], key=lambda r: -r[3])
+    for s_ in (16, 24):
+        rows = [row(k) for k in res["watch"] if k.endswith(f"|{s_}")]
+        res["sets"][f"lookalikes_{s_}"] = {
+            "banned_over_060_score": sorted([r for r in rows if r["banned"] and r["score"] >= 0.60], key=lambda r: -r["score"]),
+            "other_over_060_score": sorted([r for r in rows if not r["banned"] and r["score"] >= 0.60], key=lambda r: -r["score"]),
+            "banned_over_060_blurred": sum(1 for r in rows if r["banned"] and r["blurred"] >= 0.60),
+            "banned_checked": sum(1 for r in rows if r["banned"]),
+            "loop_cd_list": {r["ref"] + "|" + r["mode"]: [r["score"], r["blurred"]] for r in rows
+                             if r["icon"] == "loop" and r["ref"] in ("Material cycle", "Material recycling", "Material share", "Material group")}}
     # ---------------- contrast
     for sname, label, bg in C.SURFACES:
         ink = C.NEWS if sname == "charcoal" else (C.WHITE if sname == "prussian" else C.CHAR)
