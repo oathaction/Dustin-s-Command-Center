@@ -1,0 +1,43 @@
+{
+ "method": "work/build/scripts/phase-1/symbols_measure.py: crisp, sim; renders by maps_r2_b_check.js at device scale 1",
+ "marks": {
+  "Snowball 16": {
+   "crisp": 0.3,
+   "ink_share": 0.203,
+   "pixel_fit_pass": false,
+   "silhouette_pass": false
+  },
+  "Snowball 24": {
+   "crisp": 0.44,
+   "ink_share": 0.206,
+   "pixel_fit_pass": false,
+   "silhouette_pass": null
+  },
+  "Thermostat 16": {
+   "crisp": 0.35,
+   "ink_share": 0.183,
+   "pixel_fit_pass": false,
+   "silhouette_pass": false
+  },
+  "Thermostat 24": {
+   "crisp": 0.49,
+   "ink_share": 0.186,
+   "pixel_fit_pass": false,
+   "silhouette_pass": null
+  }
+ },
+ "pairs": {
+  "spiral vs ring 16": {
+   "silhouette_iou": 0.74,
+   "blurred_corr": 0.65,
+   "score": 0.694,
+   "distinct": false
+  },
+  "spiral vs ring 24": {
+   "silhouette_iou": 0.19,
+   "blurred_corr": 0.48,
+   "score": 0.338,
+   "distinct": true
+  }
+ }
+}

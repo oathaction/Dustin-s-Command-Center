@@ -618,9 +618,10 @@ def head(title, extra_css=""):
 
 
 def typo_html(page):
-    """Typographic apostrophes in the text between tags; tags, styles and scripts stay as written."""
-    parts = re.split(r"(<style.*?</style>|<script.*?</script>|<[^>]+>)", page, flags=re.S)
-    return "".join(x if x.startswith("<") else re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)]|$)", "\u2019", x) for x in parts)
+    """Typographic apostrophes, and reform IDs such as R-30 kept on one line, in the text between tags. Tags,
+    styles, scripts and drawings stay as written, so every drawing on a page matches its file byte for byte."""
+    parts = re.split(r"(<style.*?</style>|<script.*?</script>|<svg.*?</svg>|<[^>]+>)", page, flags=re.S)
+    return "".join(x if x.startswith("<") else nbh(re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)]|$)", "\u2019", x)) for x in parts)
 
 
 def standalone(name, title, fragment):
