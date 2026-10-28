@@ -1,17 +1,17 @@
 {
  "run_note": "Checked against work/extract/atlas-v7-data.json through verify_maps_data.py, independently of maps_model.py and the drawing code",
  "counts": {
-  "svg_files": 44,
-  "loop_views": 39,
-  "steps_checked": 109,
-  "stations_checked": 109,
-  "echoes_checked": 30,
-  "curve_points_checked": 2619,
+  "svg_files": 46,
+  "loop_views": 41,
+  "steps_checked": 113,
+  "stations_checked": 113,
+  "echoes_checked": 32,
+  "curve_points_checked": 2759,
   "red_marks_checked": 18,
   "targets_checked": 18,
   "pages_checked": 5,
   "page_values_checked": 89,
-  "inline_copies_checked": 33
+  "inline_copies_checked": 45
  },
  "mismatches": 0,
  "problems": [],
@@ -71,11 +71,11 @@
   "all_caught": true
  },
  "summary": [
-  "Data check against V7: 0 mismatches across 44 drawings and 5 specimen pages.",
+  "Data check against V7: 0 mismatches across 46 drawings and 5 specimen pages.",
   "All 23 loops drawn as miniatures and listed on the catalog page; each shape follows V7's loop type (spiral for R, ring for B).",
-  "Checked 109 drawn steps (link, from, to, sign, type, delay, grade, texture; ticks and sign labels on cards), 109 stations and 30 echoes against the equal-angle Archimedean geometry, and 2619 curve points (every Bezier endpoint and midpoint) against p(t) within 0.06 px.",
+  "Checked 113 drawn steps (link, from, to, sign, type, delay, grade, texture; ticks and sign labels on cards), 113 stations and 32 echoes against the equal-angle Archimedean geometry, and 2759 curve points (every Bezier endpoint and midpoint) against p(t) within 0.06 px.",
   "Checked 18 red marks against 18 targets of the reform each card names; no miniature carries red or any ink but Charcoal on White.",
-  "Checked 89 printed values on the pages (directions, delays, weakest steps, step tables, effects, routes) and 33 inline drawing copies against their files.",
+  "Checked 89 printed values on the pages (directions, delays, weakest steps, step tables, effects, routes) and 45 inline drawing copies against their files.",
   "Mutation test: caught: L39 drawn dashed though V7 grades it well supported, caught: C2 disc moved 6 px off its angle on the R10 miniature, caught: R1 miniature claims a different growth k, caught: L38 turned red on the R8 card, though R-30 does not target it, caught: B4 drawn as a spiral, caught: one delay tick removed from L53 on the R10 card, caught: R5 tile says running up though V7 records running down."
  ]
 }

@@ -1,9 +1,9 @@
 {
  "board": "work/boards/20261028_Map-Direction-A-Field-Guide.html",
- "run": "2026-10-28T20:24:28.465Z",
+ "run": "2026-10-28T20:31:36.826Z",
  "widths": {
   "390": {
-   "texts": 760,
+   "texts": 797,
    "svgTexts": 271,
    "minSize": 13,
    "under13": [],
@@ -19,7 +19,7 @@
     "overlaps": [],
     "discOverlaps": []
    },
-   "height": 44323,
+   "height": 47534,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -94,11 +94,12 @@
     "work/boards/screens/phase-2-maps-r2-a/board-390-11.png",
     "work/boards/screens/phase-2-maps-r2-a/board-390-12.png",
     "work/boards/screens/phase-2-maps-r2-a/board-390-13.png",
-    "work/boards/screens/phase-2-maps-r2-a/board-390-14.png"
+    "work/boards/screens/phase-2-maps-r2-a/board-390-14.png",
+    "work/boards/screens/phase-2-maps-r2-a/board-390-15.png"
    ]
   },
   "1440": {
-   "texts": 1308,
+   "texts": 1345,
    "svgTexts": 789,
    "minSize": 13,
    "under13": [],
@@ -114,7 +115,7 @@
     "overlaps": [],
     "discOverlaps": []
    },
-   "height": 27052,
+   "height": 28332,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -287,7 +288,7 @@
      "overlaps": [],
      "discOverlaps": []
     },
-    "height": 3156,
+    "height": 3137,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -606,7 +607,7 @@
   "outside": true
  },
  "summary": [
-  "Rendered in Chromium (Playwright) at 1440 and 390 px on 2026-10-28: the board and its five pages, 12 renders in all, with 5 Google Fonts faces loaded; 60 drawings inline on the board.",
+  "Rendered in Chromium (Playwright) at 1440 and 390 px on October 28, 2026: the board and its five pages, 12 renders in all, with 5 Google Fonts faces loaded; 60 drawings inline on the board.",
   "Horizontal page scroll: none in any render; the board at 390 measures 390 of 390.",
   "Smallest rendered text, counting SVG text at its drawing's rendered scale: 13 px at 1440 and 13 px at 390; text elements under 13 px across all renders: 0.",
   "Text below WCAG AA contrast, from rendered colors: 0 across all renders.",

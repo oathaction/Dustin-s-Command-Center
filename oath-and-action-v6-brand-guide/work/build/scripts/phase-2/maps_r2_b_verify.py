@@ -142,7 +142,7 @@ def check_loop_svg(f, raw, prob, scale_reg):
         reg.setdefault("spiral", set()).add((cx, cy, r, k))
     else:
         reg.setdefault("ring", set()).add((cx, cy, r))
-    card = view in ("b-card", "b-test-card", "b-reform", "b-card-phone", "b-reform-phone")
+    card = view in ("b-card", "b-test-card", "b-reform", "b-card-phone", "b-reform-phone", "b-test-phone")
     rho = lambda t: r * (1 + (k - 1) * t / 360.0)  # noqa: E731
     steps = [g for g in root.iter(NS + "g") if g.get("class") == "step"]
     conceptual = not lp["closure"].startswith("closed")

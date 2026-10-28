@@ -115,6 +115,12 @@ def build_drawings():
     svg18 = svg18.replace('data-view="b-test-card"', f'data-view="b-test-card" data-test-k="{D.K}"')
     save("20261028_B-Test-Card-R8-K18.svg", svg18)
     out["test"][("R8", "K18", "card")] = svg18
+    # phone size, so the board can show the same test at 390 px
+    for kk, tag in ((D.K_BRIEF, "K13"), (D.K, "K18")):
+        ph, f = D._figure(LP["R8"], M, None, dict(D.phone_geo(), k=kk), 358, 44, 64, "b-test-phone", D.WHITE, True, True)
+        ph = ph.replace('data-view="b-test-phone"', f'data-view="b-test-phone" data-test-k="{kk}"')
+        save(f"20261028_B-Test-Phone-R8-{tag}.svg", ph)
+        out["test"][("R8", tag, "phone")] = ph
     return out
 
 

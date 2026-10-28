@@ -107,9 +107,9 @@
  },
  "summary": [
   "Data check against V7: 0 mismatches across 60 Direction A drawings and 23 catalog captions.",
-  "All 23 loops drawn in each catalog set: fg-mini and fg-lead 23, fg-mini-phone 23.",
+  "All 23 loops drawn in the catalog: 23 as miniatures and leads at 1440, 23 as phone miniatures at 390.",
   "Checked 158 drawn loop steps and 92 circuit wires for link, from, to, sign, type, delay and grade; 234 line textures, 24 delay-tick sets and 234 sign glyphs; 118 miniature sign discs carry no record square and 118 miniature steps carry no ticks.",
-  "Circuit: Circuit draws 46 wires and 72 bundled connections; Reform-R-01-Circuit draws 46 wires and 72 bundled connections; 60 bundle groups checked for count and V7 areas.",
+  "The circuit draws 46 wires and counts 72 connections in bundles; the R-01 circuit draws 46 wires and counts 72 connections in bundles; 60 bundle groups checked for count and V7 areas.",
   "Checked 19 red marks, 57 red-painted elements and 8 weakest-step markings.",
   "Mutation test: 11 of 11 deliberate breaks caught."
  ]

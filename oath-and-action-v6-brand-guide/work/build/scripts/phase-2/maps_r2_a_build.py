@@ -607,6 +607,8 @@ body{margin:0;background:#DCD9D2}
 .bd-index .n{font:800 28px/1 'Inter Tight',Arial,sans-serif}
 .bd-index b{font:700 17px/1.3 Inter}
 .bd-index a{margin-top:auto;color:#121212;font-weight:600}
+.bd a{color:#121212}
+.bd-tests h4,.bd-tests .h4{font:700 17px/1.3 Inter,Arial,sans-serif;margin:16px 0 6px}
 """
 
 
@@ -645,9 +647,9 @@ SPECS = {
     "card": [
         ("Surface", "White card on Newsprint, 48 px padding at 1440 and 16 px at 390. Pillar Red marks the targets of the one reform the card names: the line and its disc outline for a step, a 3 px keyline for a box (4.17:1 on White)."),
         ("Headline", "Inter Tight 800 at 44 px (30 at 390), studio-written from V7's how_to_read for the editor, with the verb matched to the least certain grade. Then V7's title with the Loop chip, then the read-aloud sentence quoting how_to_read in Lora Italic 20 px."),
-        ("Drawing", "The catalog geometry at full size: boxes 264 px wide with a 222 px gap for two steps, 280 px with a 200 px gap for three or four, with the ID in Inter Tight 800 16 px, V7's chain label in Inter 16 semibold and its 'Higher:' rule from increase_means in Inter 16. Lines 2.5 px with V7's texture, delay ticks at the start, signs in 24 px discs with the record square on documented steps. Step labels give the ID, V7's name, the grade and the delay in words, set outside the line."),
+        ("Drawing", "The catalog geometry at full size: boxes 264 px wide with a 222 px gap for two steps, 280 px with a 200 px gap for three or four, with the ID in Inter Tight 800 16 px, V7's chain label in Inter 16 semibold and its “Higher:” rule from increase_means in Inter 16. Lines 2.5 px with V7's texture, delay ticks at the start, signs in 24 px discs with the record square on documented steps. Step labels give the ID, V7's name, the grade and the delay in words, set outside the line."),
         ("Rail", "Concept 08's order: feeds itself or pushes back with V7's glossary definition; what the return line means, from the closing connection's plain text; the least certain step, quoting V7's evidence summary; one turn; now, with V7's series. The rail sits beside a two-step drawing and under a three- or four-step one."),
-        ("Foot", "The reform's chip and title, where it acts, problem and remedy grades, V7's confidence text, the effect pips with no total, and the routes with V7's check dates or 'no check date in V7'."),
+        ("Foot", "The reform's chip and title, where it acts, problem and remedy grades, V7's confidence text, the effect pips with no total, and the routes with V7's check dates or “no check date in V7”."),
         ("Phone", "The boxes stack in chain order; forward steps run down a line at the left of the boxes; the return line runs up the left edge into the first box. Step labels sit beside the line."),
     ],
     "map": [
@@ -669,11 +671,11 @@ SPECS = {
 TESTS = {
     "catalog": [
         ("Wall test", "Pinned beside a Tufte small-multiples plate, the first draft read as a grid of equal cells. Changes: plates with Charcoal bands and 120 px letters, a lead specimen at double size on every plate, and three columns, where four left orphan rows and could not hold V7's longest chain label on two lines."),
-        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px. A second pass at 2x found captions listing tied steps one by one and the band letters touching the band's top edge; tied steps now read 'L02 and L31, both plausible', and the bands gained 30 px of air above the letter."),
+        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px. A second pass at 2x found captions listing tied steps one by one and the band letters touching the band's top edge; tied steps now read “L02 and L31, both plausible”, and the bands gained 30 px of air above the letter."),
     ],
     "card": [
         ("Wall test", "Beside Concept 08, the round-one card had gained little. Changes: an editorial headline, the read-aloud sentence in Lora Italic, Concept 08's rail order restored, and the return line and A5's keyline carrying the one red."),
-        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has. A second pass found 'under 2 years' broken across lines and a line starting with its separator dot; no-break spaces now hold each phrase whole, and the R8 gap widened from 170 to 222 px so L38's name takes two lines. On a phone the effect and route tables became lists, since their columns clipped at 358 px."),
+        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has. A second pass found “under 2 years” broken across lines and a line starting with its separator dot; no-break spaces now hold each phrase whole, and the R8 gap widened from 170 to 222 px so L38's name takes two lines. On a phone the effect and route tables became lists, since their columns clipped at 358 px."),
     ],
     "map": [
         ("Wall test", "Beside the Vignelli diagram, a first route put the top bus through the bundle tracks and set a bus label on the wires. Changes: drivers, bundles and the top bus each got their own band, and the three bus labels sit on a background halo where a wire crosses them."),

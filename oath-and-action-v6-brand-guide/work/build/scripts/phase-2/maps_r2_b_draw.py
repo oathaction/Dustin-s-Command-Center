@@ -304,10 +304,11 @@ def emblem(kind, geo, ink=NEWS, ground=INK, label=None):
 
 def glyph24(kind, ink=INK, ground=None, size=24):
     """The loop-kind mark (proposal, pending Dustin's approval), drawn on a 24 px grid and scaled for other sizes.
-    Same construction as the miniature: a start dot at twelve o'clock and a clockwise line. The spiral uses the
-    shared k and ends on the outer lap above its start, with a 1.5 px opening between the dot and the outer lap at
-    24 px; the ring closes on its dot. The ring is drawn at r 7.5 so the pair carries equal optical weight; marks
-    are not loop drawings, so their radii state no relation between kinds."""
+    Same construction as the miniature: a start dot at twelve o'clock and a clockwise line with the shared k. The
+    spiral (r 6) ends on the outer lap above its start, with a 1.5 px opening between the dot and the outer lap at
+    24 px; the ring (r 7.5) closes on its dot, so the pair carries equal optical weight. Marks are not loop drawings,
+    so their radii state no relation between kinds. A snapped variant (r 5, extremes on whole pixels) measured no
+    crisper and less distinct from the ring, so this drawing stays (see the notes, kind mark)."""
     s = size / 24
     sw = 2 * s
     dot = 2.25 * s

@@ -145,3 +145,62 @@ Created:
 - Screenshots in `work/boards/screens/phase-2-maps/` (gitignored, regenerable)
 
 Modified: none. Ledgers, V7, `source/` and other agents' Phase 2 files are untouched.
+
+## Round two: Direction A, Field Guide
+
+Built to the creative director's review, `work/handoffs/phase-2/20261028_CD-Review-Of-Map-Directions.md`, section 4, with its rules for all three directions, the notation budget and the four tests in section 5. Board: `work/boards/20261028_Map-Direction-A-Field-Guide.html`. Pages, drawings, captures and check data: `work/boards/phase-2/maps-r2/a/`. Scripts: `work/build/scripts/phase-2/maps_r2_a_*`. Directions B and C were built by other makers at the same time; this section covers A only.
+
+### Round-one fixes
+
+- The round-one board now prints Pillar Red on White as 4.17:1 (it printed 3.99:1). The same figure is corrected in the `maps_draw.py` comment, the `check_maps_board.js` not-checked text and section 7 above.
+- Loop counts now read 20 numbered loops (11 of two steps, 5 of three, 4 of four) plus 3 sketched loops with no numbered chain. The baseline note says the current system draws the 20 numbered loops on one ring and leaves the 3 sketched loops out.
+- Rebuilt and rechecked: 0 mismatches against V7; at 1440 and 390 px, no text under 13 px, no contrast failures, axe 0.
+
+### Decisions (one line each, for the decision log)
+
+| Decision | Reason |
+|---|---|
+| The catalog runs three columns of 400 px tiles | Four columns cannot hold V7's longest chain label on two lines at 13 px, and three fill every row |
+| Each plate's lead is R8 for area A, otherwise the loop with the most live reforms V7 lists; it spans three columns when the other loops divide by three, else two columns and two rows | No row ever holds one card alone |
+| Card headlines are studio-written from V7's `how_to_read` and labeled for the editor; V7's title sits under each one | The brief asks for an editorial headline; every other word on a card is V7's |
+| Boxes are Newsprint with a 5 px Charcoal spine and no outline; sketched stations that are not V7 variables get a hollow box | An outline and a spine together doubled the edge at miniature size |
+| Phone miniatures stack the boxes in chain order, with the return line up the left | The 376 px drawing cannot fit a 358 px phone tile without text under 13 px |
+| The circuit hooks same-area wires in the card's gutter, puts next-area wires in channel lanes, and runs long forward steps over the top bus and long returns along the bottom bus | Concept 09's reading order and its return line, with no two stubs sharing a row |
+| The circuit's 72 connections on no loop are Stone bundles with counts, and each bundle lists the IDs it counts | Drawing all 118 as wires buries the loops; the list keeps every connection one step away |
+| The reform view is a White page of its own | Red needs White (4.17:1), and the first draft's card frame ran 24 px past a 1440 px screen |
+| Wraps are measured with the font files from V5 Polished (Inter, Inter Tight, Lora) | Round one estimated widths, and most of its collisions came from that |
+| No-break spaces hold "under 2 years" and "R-01 acts here" together, and reform IDs take a no-break hyphen in page text | The 2x test found both phrases broken across lines |
+| Displayed text uses typographic apostrophes; data attributes keep V7's text exactly | The verifier reads the attributes against V7 |
+| On a phone, the effects and routes tables become lists | Their columns clipped at 358 px |
+| Cards mark the least certain step on its label; miniatures name it in the caption | The notation budget leaves that mark to the card |
+| `maps_model.py` and `verify_maps_data.py` are unchanged; Direction A's verifier imports the shared one by path | B and C import both, so their interfaces stay as they were |
+
+### What the wall and 2x tests changed
+
+The board records these beside each specimen. Second-pass changes made in this session: the catalog bands gained 30 px above the area letter, which had touched the band's top edge; captions now group tied steps ("L02 and L31, both plausible") and read "every step is a hypothesis"; the R8 card's gap widened from 170 to 222 px so L38's name takes two lines; the circuit's bus labels sit on a background halo where wires cross them, A3's name wraps inside card A, and both lower layers list in number order.
+
+### Tested
+
+- Data check against V7 (`maps_r2_a_verify.py`): 0 mismatches across 60 drawings and 23 catalog captions. All 23 loops appear in the catalog at 1440 and at 390. Every step on every drawing carries V7's link, from, to, sign, type, delay and grade; miniatures carry no record square and no ticks; cards carry both. Each circuit draws the 46 loop connections as wires and counts the other 72 in bundles whose areas match V7, for 118 in all, with all 51 variables. Red appears only at the named reform's targets, checked by mark and by paint color. A mutation test broke 11 drawings in memory, and the checks caught all 11.
+- Rendered checks (`maps_r2_a_check.js`), on the board and all five pages at 1440 and 390 px: no horizontal page scroll; no text under 13 px, counting SVG text at its rendered scale; no text below WCAG AA contrast; all 26 images load; axe-core 4.10 with WCAG 2.2 AA tags finds 0 violations. Of 2,084 rendered labels in 120 drawings, none sits outside its drawing or its box, and none overlaps another label or a sign disc. Before trusting that result, a self-test planted five faults in a copy of the R8 card, and the check caught all five.
+- Grayscale proofs of all five pages, viewed: red turns mid gray, and the keyline, the line and the words "acts here" still name each target.
+
+### Not tested
+
+- Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.
+- Pixel contrast of strokes and marks. Mark colors are locked palette values, measured by formula.
+- Labels crossing wires on the circuit. The text check covers label against label and label against disc, not label against line.
+- The ten-second reader check in the CD brief. It needs Dustin's go and five readers new to the brand.
+- Distinctiveness beyond the studio's own judgment, and the live atlas renderer and its interactions.
+
+### Change log, round two
+
+Created:
+- `work/boards/20261028_Map-Direction-A-Field-Guide.html`
+- `work/boards/phase-2/maps-r2/a/`: 60 SVG drawings (19 catalog miniatures, 4 leads, 23 phone miniatures, the catalog head at both widths, 3 card drawings and 3 phone card drawings, 2 circuits, 4 touched-loop drawings for R-01); 5 pages (`20261028_A-Loop-Catalog.html`, `-R8-Loop-Card.html`, `-R10-Loop-Card.html`, `-Circuit-Page.html`, `-R-01-Reform-View.html`); 11 PNG captures (4 phone pages, 5 grayscale proofs, 2 reduced circuits); `20261028_A-Verify-Results.json`, `20261028_A-Check-Results.json`
+- `work/build/scripts/phase-2/`: `maps_r2_a_text.py`, `maps_r2_a_fg.py`, `maps_r2_a_circuit.py`, `maps_r2_a_build.py`, `maps_r2_a_verify.py`, `maps_r2_a_check.js`
+- Screenshots in `work/boards/screens/phase-2-maps-r2-a/` (regenerable, not committed)
+
+Modified (round-one fixes): `work/build/scripts/phase-2/build_maps_board.py`, `maps_draw.py` (comment only), `check_maps_board.js` (not-checked text), `work/boards/20261028_Systems-Map-Directions-Board.html`, `work/boards/phase-2/maps/20261028_Maps-Verify-Results.json` and `20261028_Maps-Check-Results.json`, and this file.
+
+Untouched: `maps_model.py`, `verify_maps_data.py`, V7 data, `source/`, every ledger, and the B and C makers' files.

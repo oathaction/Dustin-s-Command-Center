@@ -1,5 +1,5 @@
 {
- "run": "2026-10-28T20:26:25.430Z",
+ "run": "2026-10-28T20:33:23.223Z",
  "pages": {
   "Loop-Catalog": {
    "390": {
@@ -81,22 +81,7 @@
     "svgTexts": 11,
     "minSize": 13,
     "under13": [],
-    "lowContrast": [
-     {
-      "text": "A5",
-      "size": 15,
-      "ratio": 4.17,
-      "need": 4.5,
-      "tag": "text"
-     },
-     {
-      "text": "A5",
-      "size": 15,
-      "ratio": 4.17,
-      "need": 4.5,
-      "tag": "text"
-     }
-    ],
+    "lowContrast": [],
     "scrollWidth": 390,
     "clientWidth": 390,
     "overflowing": [],
@@ -170,15 +155,7 @@
     "svgTexts": 16,
     "minSize": 13,
     "under13": [],
-    "lowContrast": [
-     {
-      "text": "C2",
-      "size": 15,
-      "ratio": 4.17,
-      "need": 4.5,
-      "tag": "text"
-     }
-    ],
+    "lowContrast": [],
     "scrollWidth": 390,
     "clientWidth": 390,
     "overflowing": [],
@@ -252,15 +229,7 @@
     "svgTexts": 11,
     "minSize": 13,
     "under13": [],
-    "lowContrast": [
-     {
-      "text": "C3",
-      "size": 15,
-      "ratio": 4.17,
-      "need": 4.5,
-      "tag": "text"
-     }
-    ],
+    "lowContrast": [],
     "scrollWidth": 390,
     "clientWidth": 390,
     "overflowing": [],
@@ -334,15 +303,7 @@
     "svgTexts": 23,
     "minSize": 13,
     "under13": [],
-    "lowContrast": [
-     {
-      "text": "C2",
-      "size": 15,
-      "ratio": 4.17,
-      "need": 4.5,
-      "tag": "text"
-     }
-    ],
+    "lowContrast": [],
     "scrollWidth": 390,
     "clientWidth": 390,
     "overflowing": [],
@@ -411,7 +372,190 @@
    }
   }
  },
- "board": {},
+ "board": {
+  "390": {
+   "texts": 285,
+   "svgTexts": 44,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 50750,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440-Grayscale.png",
+     "ok": true
+    }
+   ],
+   "svgs": 48,
+   "labels": {
+    "drawings": 8,
+    "labels": 10,
+    "curveClash": [],
+    "discClash": [],
+    "labelClash": [],
+    "idOverflow": [],
+    "minCurveGap": 17.63
+   },
+   "axe": {
+    "version": "4.10.2",
+    "violations": [],
+    "passes": 28,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps-r2-b/board-390-00.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-01.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-02.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-03.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-04.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-05.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-06.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-07.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-08.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-09.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-10.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-11.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-12.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-13.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-14.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-15.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-390-16.png"
+   ]
+  },
+  "1440": {
+   "texts": 317,
+   "svgTexts": 73,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 26469,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440-Grayscale.png",
+     "ok": true
+    }
+   ],
+   "svgs": 48,
+   "labels": {
+    "drawings": 8,
+    "labels": 40,
+    "curveClash": [],
+    "discClash": [],
+    "labelClash": [],
+    "idOverflow": [],
+    "minCurveGap": 16.96
+   },
+   "axe": {
+    "version": "4.10.2",
+    "violations": [],
+    "passes": 28,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-00.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-01.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-02.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-03.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-04.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-05.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-06.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-07.png",
+    "work/boards/screens/phase-2-maps-r2-b/board-1440-08.png"
+   ]
+  }
+ },
  "captures": [
   "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440.png",
   "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440-Grayscale.png",
@@ -459,14 +603,16 @@
  "summary": [
   "Loop-Catalog at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 0 in 23 drawings, 0 collisions, nearest label to a curve 99 px.",
   "Loop-Catalog at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 0 in 23 drawings, 0 collisions, nearest label to a curve 99 px.",
-  "Loop-Card-R8 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 2 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 5 in 1 drawings, 0 collisions, nearest label to a curve 17.63 px.",
+  "Loop-Card-R8 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 5 in 1 drawings, 0 collisions, nearest label to a curve 17.63 px.",
   "Loop-Card-R8 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 21 in 1 drawings, 0 collisions, nearest label to a curve 16.96 px.",
-  "Loop-Card-R10 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 1 drawings, 0 collisions, nearest label to a curve 16.02 px.",
+  "Loop-Card-R10 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 1 drawings, 0 collisions, nearest label to a curve 16.02 px.",
   "Loop-Card-R10 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 39 in 1 drawings, 0 collisions, nearest label to a curve 16.34 px.",
-  "Loop-Card-B4 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 6 in 1 drawings, 0 collisions, nearest label to a curve 15.63 px.",
+  "Loop-Card-B4 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 6 in 1 drawings, 0 collisions, nearest label to a curve 15.63 px.",
   "Loop-Card-B4 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 28 in 1 drawings, 0 collisions, nearest label to a curve 18 px.",
-  "Reform-View-R-01 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 3 drawings, 0 collisions, nearest label to a curve 16.02 px.",
-  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 39 in 3 drawings, 0 collisions, nearest label to a curve 16.34 px."
+  "Reform-View-R-01 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 3 drawings, 0 collisions, nearest label to a curve 16.02 px.",
+  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 39 in 3 drawings, 0 collisions, nearest label to a curve 16.34 px.",
+  "Board at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; images 10 of 10 loaded; axe 0 violating nodes; 5 font faces loaded.",
+  "Board at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; images 10 of 10 loaded; axe 0 violating nodes; 5 font faces loaded."
  ],
  "not_checked": [
   "Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.",

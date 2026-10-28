@@ -418,11 +418,11 @@ def main():
         "mutation_test": {"cases": cases, "all_caught": not missed},
         "summary": [
             f"Data check against V7: {len(real)} mismatches across {counts['svg_files']} Direction A drawings and {n_caps} catalog captions.",
-            "All 23 loops drawn in each catalog set: " + ", ".join(f"{k} {len(v)}" for k, v in sorted(catalogs.items())) + ".",
+            f"All 23 loops drawn in the catalog: {len(catalogs.get('fg-mini and fg-lead', ()))} as miniatures and leads at 1440, {len(catalogs.get('fg-mini-phone', ()))} as phone miniatures at 390.",
             f"Checked {counts['steps_checked']} drawn loop steps and {counts['links_checked']} circuit wires for link, from, to, sign, type, delay and grade; "
             f"{counts['textures_checked']} line textures, {counts['ticks_checked']} delay-tick sets and {counts['glyphs_checked']} sign glyphs; "
             f"{counts['record_squares_absent_checked']} miniature sign discs carry no record square and {counts['ticks_absent_checked']} miniature steps carry no ticks.",
-            f"Circuit: " + "; ".join(f"{k.replace('20261028_A-', '').replace('.svg', '')} draws {v[0]} wires and {v[1]} bundled connections" for k, v in maps.items()) + "; "
+            "; ".join(f"{'the R-01 circuit' if 'Reform' in k else 'The circuit'} draws {v[0]} wires and counts {v[1]} connections in bundles" for k, v in maps.items()) + "; "
             f"{counts['bundles_checked']} bundle groups checked for count and V7 areas.",
             f"Checked {counts['red_marks_checked']} red marks, {counts['red_color_elements']} red-painted elements and {counts['weakest_checked']} weakest-step markings.",
             f"Mutation test: {len(cases) - len(missed)} of {len(cases)} deliberate breaks caught.",

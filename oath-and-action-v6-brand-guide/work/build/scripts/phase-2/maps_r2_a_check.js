@@ -292,7 +292,7 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
   const maxScroll = runs.filter(([, w, a]) => a.scrollWidth > a.clientWidth);
   const imgs = runs.reduce((acc, [, , a]) => acc.concat(a.images), []);
   results.summary = [
-    `Rendered in Chromium (Playwright) at 1440 and 390 px on ${results.run.slice(0, 10)}: the board and its five pages, ${runs.length} renders in all, with ${w14.fonts.length} Google Fonts faces loaded; ${w14.svgs} drawings inline on the board.`,
+    `Rendered in Chromium (Playwright) at 1440 and 390 px on ${new Date(results.run).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}: the board and its five pages, ${runs.length} renders in all, with ${w14.fonts.length} Google Fonts faces loaded; ${w14.svgs} drawings inline on the board.`,
     `Horizontal page scroll: ${maxScroll.length ? maxScroll.map(([n, w, a]) => `${n} at ${w} (${a.scrollWidth})`).join(', ') : 'none in any render'}; the board at 390 measures ${w39.scrollWidth} of ${w39.clientWidth}.`,
     `Smallest rendered text, counting SVG text at its drawing's rendered scale: ${Math.min(...runs.map(([, w, a]) => w === '1440' ? a.minSize : 99))} px at 1440 and ${Math.min(...runs.map(([, w, a]) => w === '390' ? a.minSize : 99))} px at 390; text elements under 13 px across all renders: ${sum(a => a.under13.length)}.`,
     `Text below WCAG AA contrast, from rendered colors: ${sum(a => a.lowContrast.length)} across all renders.`,
