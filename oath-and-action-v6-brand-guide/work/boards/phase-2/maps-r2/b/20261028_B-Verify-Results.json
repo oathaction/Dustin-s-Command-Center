@@ -1,0 +1,81 @@
+{
+ "run_note": "Checked against work/extract/atlas-v7-data.json through verify_maps_data.py, independently of maps_model.py and the drawing code",
+ "counts": {
+  "svg_files": 44,
+  "loop_views": 39,
+  "steps_checked": 109,
+  "stations_checked": 109,
+  "echoes_checked": 30,
+  "curve_points_checked": 2619,
+  "red_marks_checked": 18,
+  "targets_checked": 18,
+  "pages_checked": 5,
+  "page_values_checked": 89,
+  "inline_copies_checked": 33
+ },
+ "mismatches": 0,
+ "problems": [],
+ "mutation_test": {
+  "baseline_mismatches": 0,
+  "planted": [
+   {
+    "planted": "L39 drawn dashed though V7 grades it well supported",
+    "file": "20261028_B-Card-R8.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Card-R8.svg: L39 texture 9 4/9 4, V7 grade well-supported needs solid"
+   },
+   {
+    "planted": "C2 disc moved 6 px off its angle on the R10 miniature",
+    "file": "20261028_B-Mini-R10.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Mini-R10.svg: R10 station C2 at 90.00 degrees and 57.00 px, geometry needs 90.00 and 51.00"
+   },
+   {
+    "planted": "R1 miniature claims a different growth k",
+    "file": "20261028_B-Mini-R1.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Mini-R1.svg: R1 step 1 curve point off the spiral by 0.537 px"
+   },
+   {
+    "planted": "L38 turned red on the R8 card, though R-30 does not target it",
+    "file": "20261028_B-Card-R8.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Card-R8.svg: red at ['A5', 'L38', 'L39'], R-30 targets drawn here ['A5', 'L39']"
+   },
+   {
+    "planted": "B4 drawn as a spiral",
+    "file": "20261028_B-Mini-B4.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Mini-B4.svg: B4 drawn as spiral, V7 type B needs ring"
+   },
+   {
+    "planted": "one delay tick removed from L53 on the R10 card",
+    "file": "20261028_B-Card-R10.svg",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_B-Card-R10.svg: L53 draws 1 delay ticks marked 2, V7 delay M needs 2"
+   },
+   {
+    "planted": "R5 tile says running up though V7 records running down",
+    "file": "20261028_Direction-B-Loop-Catalog.html",
+    "edit_applied": true,
+    "caught": true,
+    "first_report": "20261028_Direction-B-Loop-Catalog.html: R5 facts carry running_up/L, V7 running_down/L"
+   }
+  ],
+  "all_caught": true
+ },
+ "summary": [
+  "Data check against V7: 0 mismatches across 44 drawings and 5 specimen pages.",
+  "All 23 loops drawn as miniatures and listed on the catalog page; each shape follows V7's loop type (spiral for R, ring for B).",
+  "Checked 109 drawn steps (link, from, to, sign, type, delay, grade, texture; ticks and sign labels on cards), 109 stations and 30 echoes against the equal-angle Archimedean geometry, and 2619 curve points (every Bezier endpoint and midpoint) against p(t) within 0.06 px.",
+  "Checked 18 red marks against 18 targets of the reform each card names; no miniature carries red or any ink but Charcoal on White.",
+  "Checked 89 printed values on the pages (directions, delays, weakest steps, step tables, effects, routes) and 33 inline drawing copies against their files.",
+  "Mutation test: caught: L39 drawn dashed though V7 grades it well supported, caught: C2 disc moved 6 px off its angle on the R10 miniature, caught: R1 miniature claims a different growth k, caught: L38 turned red on the R8 card, though R-30 does not target it, caught: B4 drawn as a spiral, caught: one delay tick removed from L53 on the R10 card, caught: R5 tile says running up though V7 records running down."
+ ]
+}

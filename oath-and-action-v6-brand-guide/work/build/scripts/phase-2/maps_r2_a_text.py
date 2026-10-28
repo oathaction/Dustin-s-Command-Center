@@ -39,7 +39,8 @@ def width(text, size, weight=400, family="inter", tracking=0.0):
 def wrap(text, max_w, size, weight=400, family="inter", max_lines=None):
     """Greedy wrap on spaces. Never truncates: if max_lines is set and the text needs more, it returns all lines
     and the caller must make room."""
-    words, lines, cur = text.split(), [], ""
+    # split on plain spaces only, so a no-break space (U+00A0) holds a phrase such as "over 10 years" together
+    words, lines, cur = [w for w in text.split(" ") if w], [], ""
     for w in words:
         t = (cur + " " + w).strip()
         if width(t, size, weight, family) <= max_w or not cur:

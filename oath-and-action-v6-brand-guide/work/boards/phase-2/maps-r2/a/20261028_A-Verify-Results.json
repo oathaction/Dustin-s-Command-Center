@@ -1,0 +1,116 @@
+{
+ "run_note": "Checked against work/extract/atlas-v7-data.json, independently of maps_model.py and the drawing code",
+ "counts": {
+  "svg_files": 60,
+  "steps_checked": 158,
+  "links_checked": 92,
+  "nodes_checked": 246,
+  "targets_checked": 0,
+  "red_marks_checked": 19,
+  "weakest_checked": 8,
+  "ticks_checked": 24,
+  "textures_checked": 234,
+  "glyphs_checked": 234,
+  "captions_checked": 23,
+  "bundles_checked": 60,
+  "bundled_links": 144,
+  "red_color_elements": 57,
+  "record_squares_absent_checked": 118,
+  "ticks_absent_checked": 118
+ },
+ "views": {
+  "fg-card-phone": 3,
+  "fg-card": 3,
+  "fg-head-phone": 1,
+  "fg-head": 1,
+  "circuit-map": 2,
+  "fg-lead": 4,
+  "fg-mini": 21,
+  "fg-mini-phone": 25
+ },
+ "catalog_loops": {
+  "fg-mini and fg-lead": 23,
+  "fg-mini-phone": 23
+ },
+ "mismatches": 0,
+ "problems": [],
+ "mutation_test": {
+  "cases": [
+   {
+    "break": "sign glyph flipped",
+    "file": "20261028_A-Mini-R1.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "line texture changed",
+    "file": "20261028_A-Mini-R5.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "red on a catalog variable",
+    "file": "20261028_A-Mini-R6.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "record square on a miniature",
+    "file": "20261028_A-Mini-R12.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "delay ticks miscounted",
+    "file": "20261028_A-Card-R8.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "sign glyph flipped",
+    "file": "20261028_A-Card-R10.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "weakest step mark removed",
+    "file": "20261028_A-Card-R10.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "red paint outside the targets",
+    "file": "20261028_A-Card-R10.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "one loop wire removed",
+    "file": "20261028_A-Circuit.svg",
+    "caught": true,
+    "reports": 2
+   },
+   {
+    "break": "bundle count off by one",
+    "file": "20261028_A-Circuit.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "red on a non-target variable",
+    "file": "20261028_A-Reform-R-01-Circuit.svg",
+    "caught": true,
+    "reports": 1
+   }
+  ],
+  "all_caught": true
+ },
+ "summary": [
+  "Data check against V7: 0 mismatches across 60 Direction A drawings and 23 catalog captions.",
+  "All 23 loops drawn in each catalog set: fg-mini and fg-lead 23, fg-mini-phone 23.",
+  "Checked 158 drawn loop steps and 92 circuit wires for link, from, to, sign, type, delay and grade; 234 line textures, 24 delay-tick sets and 234 sign glyphs; 118 miniature sign discs carry no record square and 118 miniature steps carry no ticks.",
+  "Circuit: Circuit draws 46 wires and 72 bundled connections; Reform-R-01-Circuit draws 46 wires and 72 bundled connections; 60 bundle groups checked for count and V7 areas.",
+  "Checked 19 red marks, 57 red-painted elements and 8 weakest-step markings.",
+  "Mutation test: 11 of 11 deliberate breaks caught."
+ ]
+}

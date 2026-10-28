@@ -1,0 +1,825 @@
+{
+ "source": "work/extract/atlas-v7-data.json via work/build/scripts/phase-2/maps_model.py",
+ "snapshot": "2026-10-15",
+ "rule": "Snowball: p(t) = r (1 + (k - 1) t / 2 pi), t clockwise from twelve o'clock, one turn. Thermostat: circle at r. Stations at t_i = 2 pi i / n. k is one constant for every reinforcing loop.",
+ "k": 1.8,
+ "k_review_start": 1.3,
+ "scales": {
+  "miniature": {
+   "r": 42.5,
+   "k": 1.8,
+   "disc": 13,
+   "stroke": 2.5,
+   "w": 150,
+   "h": 167,
+   "cx": 83.5,
+   "cy": 91.75,
+   "clear": 5.5,
+   "r_need": 41.88,
+   "gap": 3,
+   "arrow": [
+    9,
+    4.5
+   ]
+  },
+  "card": {
+   "r": 155.0,
+   "k": 1.8,
+   "disc": 27,
+   "stroke": 2.5,
+   "gap": 5,
+   "arrow": [
+    11,
+    5.5
+   ]
+  },
+  "phone_card": {
+   "r": 56.0,
+   "k": 1.8,
+   "disc": 19,
+   "stroke": 2.5,
+   "gap": 4,
+   "arrow": [
+    9,
+    4.5
+   ]
+  },
+  "head_emblem": {
+   "r": 63.59,
+   "k": 1.8,
+   "disc": 15,
+   "stroke": 2.5,
+   "w": 240,
+   "h": 240,
+   "cx": 132.67,
+   "cy": 132.72,
+   "gap": 4,
+   "arrow": [
+    10,
+    5
+   ]
+  }
+ },
+ "loops": {
+  "R1": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "A1",
+     "label": "Wealth concentration",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "B1",
+     "label": "Money in politics",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.2667
+    },
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.5333
+    },
+    {
+     "code": "A1",
+     "label": "Wealth concentration, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L01",
+    "L02",
+    "L03"
+   ],
+   "group": "A"
+  },
+  "R1b": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "B1",
+     "label": "Money in politics",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "D3",
+     "label": "Doctrine favoring the appointing coalition",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "B1",
+     "label": "Money in politics, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L04",
+    "L05"
+   ],
+   "group": "B"
+  },
+  "R2": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "D1",
+     "label": "Congressional capacity",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "D1",
+     "label": "Congressional capacity, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L18",
+    "L19"
+   ],
+   "group": "D"
+  },
+  "R3": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "B4",
+     "label": "Affective polarization",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "B6",
+     "label": "Hostile-content exposure",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "B4",
+     "label": "Affective polarization, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L46",
+    "L47"
+   ],
+   "group": "B"
+  },
+  "R4a": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C1",
+     "label": "Safe seats",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.2667
+    },
+    {
+     "code": "D7",
+     "label": "Entrenched majority control",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.5333
+    },
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L42",
+    "L55",
+    "L56"
+   ],
+   "group": "C"
+  },
+  "R4b": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "B5",
+     "label": "Turnout equality",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L44",
+    "L45"
+   ],
+   "group": "B"
+  },
+  "R5": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "A4",
+     "label": "Household security",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "B5",
+     "label": "Turnout equality",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.2667
+    },
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.5333
+    },
+    {
+     "code": "A4",
+     "label": "Household security, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L35",
+    "L36",
+    "L37"
+   ],
+   "group": "A"
+  },
+  "R6": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "A2",
+     "label": "Worker bargaining power",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "A1",
+     "label": "Wealth concentration",
+     "angle_deg": 90.0,
+     "radius_in_r": 1.2
+    },
+    {
+     "code": "B1",
+     "label": "Money in politics",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 270.0,
+     "radius_in_r": 1.6
+    },
+    {
+     "code": "A2",
+     "label": "Worker bargaining power, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L30",
+    "L01",
+    "L02",
+    "L31"
+   ],
+   "group": "A"
+  },
+  "R7": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "D5",
+     "label": "Public service quality",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "E2",
+     "label": "Warranted trust",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "D5",
+     "label": "Public service quality, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L20",
+    "L21"
+   ],
+   "group": "D"
+  },
+  "R8": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "A5",
+     "label": "Housing scarcity",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "A6",
+     "label": "Owner home equity",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "A5",
+     "label": "Housing scarcity, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L38",
+    "L39"
+   ],
+   "group": "A"
+  },
+  "R10": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "C1",
+     "label": "Safe seats",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C2",
+     "label": "Primary decisiveness",
+     "angle_deg": 90.0,
+     "radius_in_r": 1.2
+    },
+    {
+     "code": "C3",
+     "label": "Electoral pressure",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules",
+     "angle_deg": 270.0,
+     "radius_in_r": 1.6
+    },
+    {
+     "code": "C1",
+     "label": "Safe seats, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L08",
+    "L25",
+    "L53",
+    "L42"
+   ],
+   "group": "C"
+  },
+  "R11": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "B4",
+     "label": "Affective polarization",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C3",
+     "label": "Electoral pressure",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.2667
+    },
+    {
+     "code": "D2",
+     "label": "Executive unilateralism",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.5333
+    },
+    {
+     "code": "B4",
+     "label": "Affective polarization, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L50",
+    "L51",
+    "L52"
+   ],
+   "group": "B"
+  },
+  "R12": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "D3",
+     "label": "Doctrine favoring the appointing coalition",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C4",
+     "label": "Incumbent control of election rules",
+     "angle_deg": 90.0,
+     "radius_in_r": 1.2
+    },
+    {
+     "code": "C1",
+     "label": "Safe seats",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "D7",
+     "label": "Entrenched majority control",
+     "angle_deg": 270.0,
+     "radius_in_r": 1.6
+    },
+    {
+     "code": "D3",
+     "label": "Doctrine favoring the appointing coalition, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L06",
+    "L42",
+    "L55",
+    "L57"
+   ],
+   "group": "C"
+  },
+  "R13": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "D1",
+     "label": "Congressional capacity",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "D2",
+     "label": "Executive unilateralism",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "D1",
+     "label": "Congressional capacity, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L11",
+    "L12"
+   ],
+   "group": "D"
+  },
+  "R15": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "A2",
+     "label": "Worker bargaining power",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "B3",
+     "label": "Cross-cutting civic ties",
+     "angle_deg": 90.0,
+     "radius_in_r": 1.2
+    },
+    {
+     "code": "B5",
+     "label": "Turnout equality",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 270.0,
+     "radius_in_r": 1.6
+    },
+    {
+     "code": "A2",
+     "label": "Worker bargaining power, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L32",
+    "L34",
+    "L36",
+    "L31"
+   ],
+   "group": "B"
+  },
+  "R16": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "B2",
+     "label": "Local news supply",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C3",
+     "label": "Electoral pressure",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "B2",
+     "label": "Local news supply, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L26",
+    "T01"
+   ],
+   "group": "B"
+  },
+  "R18": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": "D2",
+     "label": "Executive unilateralism",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "D4",
+     "label": "Oversight and enforcement",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.4
+    },
+    {
+     "code": "D2",
+     "label": "Executive unilateralism, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    "L14",
+    "L15"
+   ],
+   "group": "D"
+  },
+  "B1a": {
+   "type": "B",
+   "shape": "ring",
+   "stations": [
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "D4",
+     "label": "Oversight and enforcement",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.0
+    }
+   ],
+   "steps": [
+    "L17",
+    "L16"
+   ],
+   "group": "D"
+  },
+  "B4": {
+   "type": "B",
+   "shape": "ring",
+   "stations": [
+    {
+     "code": "D5",
+     "label": "Public service quality",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C3",
+     "label": "Electoral pressure",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "C5",
+     "label": "Sanction applied",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.0
+    }
+   ],
+   "steps": [
+    "L23",
+    "L24",
+    "L54"
+   ],
+   "group": "C"
+  },
+  "B5": {
+   "type": "B",
+   "shape": "ring",
+   "stations": [
+    {
+     "code": "E1",
+     "label": "Policy tilt to insiders",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": "D6",
+     "label": "State and local experimentation",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.0
+    }
+   ],
+   "steps": [
+    "L48",
+    "L49"
+   ],
+   "group": "D"
+  },
+  "B2": {
+   "type": "B",
+   "shape": "ring",
+   "stations": [
+    {
+     "code": null,
+     "label": "Household hardship",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": null,
+     "label": "Automatic support (UI, credits)",
+     "angle_deg": 180.0,
+     "radius_in_r": 1.0
+    }
+   ],
+   "steps": [
+    null,
+    null
+   ],
+   "group": "SK"
+  },
+  "B3": {
+   "type": "B",
+   "shape": "ring",
+   "stations": [
+    {
+     "code": null,
+     "label": "Excess profits",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": null,
+     "label": "Entry",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": null,
+     "label": "Competitive pressure",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.0
+    }
+   ],
+   "steps": [
+    null,
+    null,
+    null
+   ],
+   "group": "SK"
+  },
+  "R9": {
+   "type": "R",
+   "shape": "spiral",
+   "stations": [
+    {
+     "code": null,
+     "label": "Effective participation",
+     "angle_deg": 0.0,
+     "radius_in_r": 1.0
+    },
+    {
+     "code": null,
+     "label": "Accountable delivery",
+     "angle_deg": 120.0,
+     "radius_in_r": 1.2667
+    },
+    {
+     "code": "E2",
+     "label": "Warranted trust",
+     "angle_deg": 240.0,
+     "radius_in_r": 1.5333
+    },
+    {
+     "code": null,
+     "label": "Effective participation, one turn later",
+     "angle_deg": 360.0,
+     "radius_in_r": 1.8,
+     "echo": true
+    }
+   ],
+   "steps": [
+    null,
+    null,
+    null
+   ],
+   "group": "SK"
+  }
+ }
+}

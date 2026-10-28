@@ -12,7 +12,7 @@ outward step means one more turn and never an amount: k is one constant for ever
 from V7's delay, direction, grade or valence.
 
 Curves are written as cubic Bezier pieces of at most 8 degrees, with control points from the exact derivative
-(Hermite form), so the drawn line stays within 0.01 px of the true spiral at card size. verify_maps_r2_b.py reads
+(Hermite form), so the drawn line stays within 0.01 px of the true spiral at card size. maps_r2_b_verify.py reads
 the endpoints back and checks them against p(t).
 """
 import math

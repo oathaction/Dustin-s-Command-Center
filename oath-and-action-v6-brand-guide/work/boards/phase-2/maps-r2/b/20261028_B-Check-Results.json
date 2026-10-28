@@ -1,0 +1,476 @@
+{
+ "run": "2026-10-28T20:26:25.430Z",
+ "pages": {
+  "Loop-Catalog": {
+   "390": {
+    "texts": 348,
+    "svgTexts": 73,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": [],
+    "height": 10308,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 600 normal",
+     "Inter Tight 800 normal"
+    ],
+    "images": [],
+    "svgs": 26,
+    "labels": {
+     "drawings": 23,
+     "labels": 0,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 99
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 20,
+     "incomplete": 2
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-390.png"
+   },
+   "1440": {
+    "texts": 348,
+    "svgTexts": 73,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflowing": [],
+    "height": 4744,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 600 normal",
+     "Inter Tight 800 normal"
+    ],
+    "images": [],
+    "svgs": 26,
+    "labels": {
+     "drawings": 23,
+     "labels": 0,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 99
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 20,
+     "incomplete": 2
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440.png"
+   }
+  },
+  "Loop-Card-R8": {
+   "390": {
+    "texts": 98,
+    "svgTexts": 11,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [
+     {
+      "text": "A5",
+      "size": 15,
+      "ratio": 4.17,
+      "need": 4.5,
+      "tag": "text"
+     },
+     {
+      "text": "A5",
+      "size": 15,
+      "ratio": 4.17,
+      "need": 4.5,
+      "tag": "text"
+     }
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": [],
+    "height": 3985,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 5,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 17.63
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 22,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-390.png"
+   },
+   "1440": {
+    "texts": 116,
+    "svgTexts": 27,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflowing": [],
+    "height": 2172,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 21,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 16.96
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 20,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440.png"
+   }
+  },
+  "Loop-Card-R10": {
+   "390": {
+    "texts": 133,
+    "svgTexts": 16,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [
+     {
+      "text": "C2",
+      "size": 15,
+      "ratio": 4.17,
+      "need": 4.5,
+      "tag": "text"
+     }
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": [],
+    "height": 5142,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 9,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 16.02
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 22,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-390.png"
+   },
+   "1440": {
+    "texts": 157,
+    "svgTexts": 46,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflowing": [],
+    "height": 2514,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 39,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 16.34
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 20,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440.png"
+   }
+  },
+  "Loop-Card-B4": {
+   "390": {
+    "texts": 114,
+    "svgTexts": 11,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [
+     {
+      "text": "C3",
+      "size": 15,
+      "ratio": 4.17,
+      "need": 4.5,
+      "tag": "text"
+     }
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": [],
+    "height": 4550,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 6,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 15.63
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 22,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-390.png"
+   },
+   "1440": {
+    "texts": 134,
+    "svgTexts": 33,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflowing": [],
+    "height": 2241,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 800 normal",
+     "Lora 400 italic"
+    ],
+    "images": [],
+    "svgs": 3,
+    "labels": {
+     "drawings": 1,
+     "labels": 28,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 18
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 20,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440.png"
+   }
+  },
+  "Reform-View-R-01": {
+   "390": {
+    "texts": 106,
+    "svgTexts": 23,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [
+     {
+      "text": "C2",
+      "size": 15,
+      "ratio": 4.17,
+      "need": 4.5,
+      "tag": "text"
+     }
+    ],
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": [],
+    "height": 4306,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 600 normal",
+     "Inter Tight 800 normal"
+    ],
+    "images": [],
+    "svgs": 4,
+    "labels": {
+     "drawings": 3,
+     "labels": 9,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 16.02
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 22,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-390.png"
+   },
+   "1440": {
+    "texts": 125,
+    "svgTexts": 53,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "overflowing": [],
+    "height": 2264,
+    "fonts": [
+     "Inter 400 normal",
+     "Inter 600 normal",
+     "Inter 700 normal",
+     "Inter Tight 600 normal",
+     "Inter Tight 800 normal"
+    ],
+    "images": [],
+    "svgs": 4,
+    "labels": {
+     "drawings": 3,
+     "labels": 39,
+     "curveClash": [],
+     "discClash": [],
+     "labelClash": [],
+     "idOverflow": [],
+     "minCurveGap": 16.34
+    },
+    "axe": {
+     "version": "4.10.2",
+     "violations": [],
+     "passes": 22,
+     "incomplete": 1
+    },
+    "capture": "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440.png"
+   }
+  }
+ },
+ "board": {},
+ "captures": [
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-1440-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-390.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Catalog-390-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-1440-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-390.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R8-390-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-1440-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-390.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-R10-390-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-1440-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-390.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Loop-Card-B4-390-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-1440-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-390.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Page-Reform-View-R-01-390-Grayscale.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Kind-Mark-Snowball-16px.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Kind-Mark-Snowball-24px.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Kind-Mark-Thermostat-16px.png",
+  "work/boards/phase-2/maps-r2/b/20261028_B-Kind-Mark-Thermostat-24px.png"
+ ],
+ "crops": [
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-1440-R8.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-1440-R10.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-1440-B4.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-1440-R15.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-1440-R9.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-390-R8.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-390-R10.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Catalog-390-B4.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-R8-1440-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-R8-390-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-R10-1440-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-R10-390-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-B4-1440-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Loop-Card-B4-390-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Reform-View-R-01-1440-figure.png",
+  "work/boards/screens/phase-2-maps-r2-b/2x-Reform-View-R-01-390-figure.png"
+ ],
+ "summary": [
+  "Loop-Catalog at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 0 in 23 drawings, 0 collisions, nearest label to a curve 99 px.",
+  "Loop-Catalog at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 0 in 23 drawings, 0 collisions, nearest label to a curve 99 px.",
+  "Loop-Card-R8 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 2 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 5 in 1 drawings, 0 collisions, nearest label to a curve 17.63 px.",
+  "Loop-Card-R8 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 21 in 1 drawings, 0 collisions, nearest label to a curve 16.96 px.",
+  "Loop-Card-R10 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 1 drawings, 0 collisions, nearest label to a curve 16.02 px.",
+  "Loop-Card-R10 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 39 in 1 drawings, 0 collisions, nearest label to a curve 16.34 px.",
+  "Loop-Card-B4 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 6 in 1 drawings, 0 collisions, nearest label to a curve 15.63 px.",
+  "Loop-Card-B4 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 28 in 1 drawings, 0 collisions, nearest label to a curve 18 px.",
+  "Reform-View-R-01 at 390 px: scrollWidth 390 of 390; smallest text 13 px (0 under 13); 1 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 9 in 3 drawings, 0 collisions, nearest label to a curve 16.02 px.",
+  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440; smallest text 13 px (0 under 13); 0 low-contrast texts; 0 broken images; axe 0 violating nodes; labels 39 in 3 drawings, 0 collisions, nearest label to a curve 16.34 px."
+ ],
+ "not_checked": [
+  "Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.",
+  "Widths between 390 and 1440 px other than the two named; the card pages switch to the phone figure under 1000 px.",
+  "Pixel contrast of strokes and marks; mark colors are locked palette values, measured by formula."
+ ]
+}

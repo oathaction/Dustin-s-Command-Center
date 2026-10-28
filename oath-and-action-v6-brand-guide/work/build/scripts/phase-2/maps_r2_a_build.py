@@ -30,7 +30,10 @@ REL = "phase-2/maps-r2/a/"
 VERIFY = ASSETS / "20261028_A-Verify-Results.json"
 CHECK = ASSETS / "20261028_A-Check-Results.json"
 V7 = json.loads((ROOT / "work/extract/atlas-v7-data.json").read_text(encoding="utf-8"))
-esc = html.escape
+def esc(text, quote=True):
+    """Escape for HTML and set apostrophes as typographic ones (owners' becomes owners’). Display only."""
+    t = re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)]|$)", "\u2019", str(text))
+    return html.escape(t, quote=quote)
 M = MM.build_model()
 LP = M["loops"]
 SRC = "Source: Who Do They Answer To? Systems Atlas V7, snapshot October 15, 2026."
@@ -77,10 +80,18 @@ def least_certain(lp, short=True):
         return "Sketched in V7: no numbered steps, so no step carries its own grade."
     if lp["weakest"]:
         ws = [s for s in lp["steps"] if s["id"] in lp["weakest"]]
-        return "Least certain: " + " and ".join(f'{s["id"]}, {gw(s["evidence"])}' for s in ws) + "."
+        ids = [s["id"] for s in ws]
+        grades = {gw(s["evidence"]) for s in ws}
+        if len(ws) == 1:
+            return f"Least certain: {ids[0]}, {gw(ws[0]['evidence'])}."
+        joined = ", ".join(ids[:-1]) + " and " + ids[-1]
+        if len(grades) == 1:
+            return f"Least certain: {joined}, {'both' if len(ws) == 2 else 'all'} {grades.pop()}."
+        return "Least certain: " + " and ".join(f'{s["id"]} ({gw(s["evidence"])})' for s in ws) + "."
     grades = sorted({gw(s["evidence"]) for s in lp["steps"]})
     if len(grades) == 1:
-        return f"Least certain: no single step; every step is {grades[0]}."
+        g = "a hypothesis" if grades[0] == "hypothesis" else grades[0]
+        return f"Least certain: no single step; every step is {g}."
     return f"Least certain: no single step; its steps are {' and '.join(grades)}, which V7 ranks equal."
 
 
@@ -267,6 +278,19 @@ def route_rows(r):
     return "".join(out)
 
 
+def phone_lists(r, eff_cap, route_cap):
+    """The same rows as the two tables, as lists that read top to bottom on a phone."""
+    eff = "".join(f'<li><b>{esc(M["families"][k])}</b><span class="pv">{pips(v)}<span>{esc(tm(v))}'
+                  f'{(" (" + esc(M["effect_codes"][v]) + ")") if v in M["effect_codes"] else ""}</span></span></li>' for k, v in r["effects"].items())
+    rts = []
+    for x in r["routes"]:
+        chk = D_long(x["checked"]) if x["checked"] else "no check date in V7"
+        rts.append(f'<li>{chip("Route", x["route"])}<b>{esc(M["route_names"][x["route"]])}: {esc(x["who"])}</b>'
+                   f'<span>Feasibility, 2026 to 2030: {esc(x["feasibility"])}. Checked: {esc(chk)}.</span></li>')
+    return (f'<div class="phn fga-plist"><p class="cap">{eff_cap}</p><ul>{eff}</ul>'
+            f'<p class="cap">{route_cap}</p><ul>{"".join(rts)}</ul></div>')
+
+
 def D_long(iso):
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     y, m, d = iso.split("-")
@@ -298,10 +322,11 @@ def reform_block(rid, loop_id):
 <h3>{chip("Reform", rid)} {esc(r["title"])}</h3>
 <p><span class="fga-redkey" aria-hidden="true"></span>{nbh(f"Red marks where {rid} acts in this loop: ")}{esc("; ".join(nm(t) for t in inside))}.{(" It also acts outside this loop on " + esc("; ".join(nm(t) for t in outside)) + ".") if outside else ""}{nbh(esc(also))}</p>
 <p>Evidence that the problem exists: <b>{esc(D.GRADE_WORD[r["problem_grade"]])}</b>. Evidence that the remedy works: <b>{esc(D.GRADE_WORD[r["remedy_grade"]])}</b>. Confidence in the effects, in V7’s words: “{esc(r["effects_confidence"])}”.</p>
-<div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Ordinal marks, never added up.</caption>
+<div class="dsk"><div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Ordinal marks, never added up.</caption>
 <thead><tr><th scope="col">Outcome family</th><th scope="col">Mark</th><th scope="col">V7 value</th></tr></thead><tbody>{eff}</tbody></table></div>
 <div class="fga-tw" tabindex="0" role="region" aria-label="Routes for {rid}"><table><caption>Routes to change, with V7’s check dates</caption>
-<thead><tr><th scope="col">Route</th><th scope="col">Who acts</th><th scope="col">Feasibility, 2026 to 2030</th><th scope="col">Checked</th></tr></thead><tbody>{route_rows(r)}</tbody></table></div></div>
+<thead><tr><th scope="col">Route</th><th scope="col">Who acts</th><th scope="col">Feasibility, 2026 to 2030</th><th scope="col">Checked</th></tr></thead><tbody>{route_rows(r)}</tbody></table></div></div></div>
+{phone_lists(r, "Expected effect by outcome family. Ordinal marks, never added up.", "Routes to change, with V7’s check dates")}
 </section>'''
 
 
@@ -391,8 +416,9 @@ def reform_page(hl="h2"):
 <p class="fga-deckd">Red marks its three targets and nothing else: {esc(targets)}. All three sit on Loop R10. V7 also lists Loops B4 and R11 as touched by it. V7 never adds a reform’s effects into one score, so this view gives none.</p>
 <div class="fga-rv"><figure class="fga-cfig"><div class="dsk">{d_svg}</div><div class="phn">{p_svg}</div><figcaption class="cap">Loop R10, {esc(lp["title"])}. The red line is L25 and L08; the red keyline is C2.</figcaption></figure>
 <div class="fga-touch">{"".join(touched)}</div></div>
-<div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Confidence, in V7’s words: “{esc(r["effects_confidence"])}”</caption><thead><tr><th scope="col">Outcome family</th><th scope="col">Mark</th><th scope="col">V7 value</th></tr></thead><tbody>{eff}</tbody></table></div>
-<div class="fga-tw" tabindex="0" role="region" aria-label="Routes for {rid}"><table><caption>Routes to change. Remedy evidence: {esc(D.GRADE_WORD[r["remedy_grade"]])}; problem evidence: {esc(D.GRADE_WORD[r["problem_grade"]])}</caption><thead><tr><th scope="col">Route</th><th scope="col">Who acts</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{route_rows(r)}</tbody></table></div></div>
+<div class="dsk"><div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Confidence, in V7’s words: “{esc(r["effects_confidence"])}”</caption><thead><tr><th scope="col">Outcome family</th><th scope="col">Mark</th><th scope="col">V7 value</th></tr></thead><tbody>{eff}</tbody></table></div>
+<div class="fga-tw" tabindex="0" role="region" aria-label="Routes for {rid}"><table><caption>Routes to change. Remedy evidence: {esc(D.GRADE_WORD[r["remedy_grade"]])}; problem evidence: {esc(D.GRADE_WORD[r["problem_grade"]])}</caption><thead><tr><th scope="col">Route</th><th scope="col">Who acts</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{route_rows(r)}</tbody></table></div></div></div>
+{phone_lists(r, "Expected effect by outcome family. Confidence, in V7’s words: “" + esc(r["effects_confidence"]) + "”", "Routes to change. Remedy evidence: " + esc(D.GRADE_WORD[r["remedy_grade"]]) + "; problem evidence: " + esc(D.GRADE_WORD[r["problem_grade"]]))}
 <h3 class="fga-sub">{rid} on the whole system</h3>
 <figure class="fga-map"><div class="dsk">{map_svg}</div><div class="phn"><img src="20261028_A-Reform-R-01-Circuit-Reduced.png" width="{iw}" height="{ih}" alt="The circuit on White, reduced to fit a phone, with L25, L08 and C2 in red"><p>Reduced to fit. Open the page on a wide screen to read the circuit.</p></div></figure>
 <p class="fga-src">{esc(SRC)} Reform R-01 targets, loops, effects and routes read by script.</p>
@@ -429,7 +455,8 @@ CSS = """
 /* plates */
 .fga-plate{margin-top:56px}
 .fga-band{background:var(--ink);color:var(--news)}
-.fga-bandin{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end;padding-top:34px;padding-bottom:24px}
+.fga-bandin{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end}
+.fga .fga-bandin{padding-top:30px;padding-bottom:26px}
 .fga-letter{font:800 120px/0.8 'Inter Tight',Arial,sans-serif;letter-spacing:-0.04em;color:var(--news)}
 .fga-letter.sk{font-size:96px}
 .fga-band h3{font:800 34px/1.05 'Inter Tight',Arial,sans-serif;letter-spacing:-0.02em;margin:0 0 8px;color:var(--news)}
@@ -492,9 +519,18 @@ CSS = """
 .fga-reform{border-top:1px solid var(--ink);margin-top:24px;padding-top:18px}
 .fga-reform h3{display:flex;align-items:center;flex-wrap:wrap;gap:4px;font:800 26px/1.2 'Inter Tight',Arial,sans-serif;margin:8px 0 10px}
 .fga-reform p{font:400 16px/1.5 Inter;max-width:80ch}
+.fga .fga-reform p.fga-eyebrow{font:700 13px/1.4 Inter;letter-spacing:.08em;color:var(--deep)}
+.fga p,.fga li{text-wrap:pretty}
+.fga h1,.fga h2,.fga h3,.fga h4,.fga-key b{text-wrap:balance}
 .fga-redkey{display:inline-block;width:26px;height:4px;background:var(--red);vertical-align:middle;margin-right:8px}
 .fga-tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px;margin-top:12px}
 .fga-tw{overflow-x:auto;max-width:100%}
+.fga-plist .cap{font:400 14px/1.45 Inter;color:var(--deep);margin:16px 0 6px}
+.fga-plist ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.fga-plist li{padding:12px 0;border-bottom:1px solid var(--news);font:400 15px/1.45 Inter}
+.fga-plist li b{display:block;font-weight:700;margin:2px 0}
+.fga-plist li .chip{margin-bottom:6px}
+.fga-plist .pv{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .fga-tw:focus-visible{outline:3px solid #4A7C74;outline-offset:2px}
 .fga table{border-collapse:collapse;width:100%;font:400 14px/1.45 Inter}
 .fga caption{caption-side:top;text-align:left;font:400 13px/1.4 Inter;color:var(--deep);padding:4px 0}
@@ -549,7 +585,7 @@ body{margin:0;background:#DCD9D2}
 .bd-frame:focus-visible{outline:3px solid #4A7C74;outline-offset:2px}
 .bd-frame img{display:block}
 .bd-gray img{width:100%;height:auto;display:block;border:1px solid #5D636D}
-.bd-specpanel{background:#E6E3DD;border:1px solid #5D636D;padding:18px 20px;margin-top:20px}
+.bd-specpanel{background:#FFFFFF;border:1px solid #5D636D;padding:18px 20px;margin-top:20px}
 .bd-specpanel dl{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:8px 20px;margin:8px 0 0}
 .bd-specpanel dt{font:700 14px/1.5 Inter}.bd-specpanel dd{margin:0;font:400 15px/1.55 Inter}
 @media (max-width:640px){.bd-specpanel dl{grid-template-columns:1fr}.bd-specpanel dd{margin-bottom:8px}}
@@ -562,10 +598,15 @@ body{margin:0;background:#DCD9D2}
 .bd-dec thead th{font:700 13px Inter;letter-spacing:.04em;text-transform:uppercase}
 .bd-wrapt{overflow-x:auto}
 .bd-wrapt:focus-visible{outline:3px solid #DCD9D2;outline-offset:2px}
-.bd .eyebrow{font:700 13px/1.4 Inter;letter-spacing:.08em;text-transform:uppercase;color:#45494F;margin:0}
+.bd .eyebrow{font:700 13px/1.4 Inter;letter-spacing:.08em;text-transform:uppercase;color:#4E535B;margin:0}
 .bd-toc{display:flex;flex-wrap:wrap;gap:6px 20px;font:400 15px Inter;margin-top:12px}
 .bd-toc a{color:#121212}
-.bd-sum{background:#E6E3DD;border:1px solid #5D636D;padding:16px 18px;margin-top:20px}
+.bd-sum{background:#FFFFFF;border:1px solid #5D636D;padding:16px 18px;margin-top:20px}
+.bd-index{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
+.bd-index li{background:#FFFFFF;padding:16px;display:flex;flex-direction:column;gap:6px;font:400 15px/1.45 Inter}
+.bd-index .n{font:800 28px/1 'Inter Tight',Arial,sans-serif}
+.bd-index b{font:700 17px/1.3 Inter}
+.bd-index a{margin-top:auto;color:#121212;font-weight:600}
 """
 
 
@@ -576,9 +617,15 @@ def head(title, extra_css=""):
             f'<style>body{{margin:0;background:#DCD9D2}}{CSS}{extra_css}</style></head><body><main>')
 
 
+def typo_html(page):
+    """Typographic apostrophes in the text between tags; tags, styles and scripts stay as written."""
+    parts = re.split(r"(<style.*?</style>|<script.*?</script>|<[^>]+>)", page, flags=re.S)
+    return "".join(x if x.startswith("<") else re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)]|$)", "\u2019", x) for x in parts)
+
+
 def standalone(name, title, fragment):
     path = ASSETS / f"20261028_A-{name}.html"
-    path.write_text(head(title) + fragment + "</main></body></html>", encoding="utf-8")
+    path.write_text(typo_html(head(title) + fragment + "</main></body></html>"), encoding="utf-8")
     WRITTEN.append(path)
     return path
 
@@ -597,7 +644,7 @@ SPECS = {
     "card": [
         ("Surface", "White card on Newsprint, 48 px padding at 1440 and 16 px at 390. Pillar Red marks the targets of the one reform the card names: the line and its disc outline for a step, a 3 px keyline for a box (4.17:1 on White)."),
         ("Headline", "Inter Tight 800 at 44 px (30 at 390), studio-written from V7's how_to_read for the editor, with the verb matched to the least certain grade. Then V7's title with the Loop chip, then the read-aloud sentence quoting how_to_read in Lora Italic 20 px."),
-        ("Drawing", "The catalog geometry at full size: boxes 300 px wide with the ID in Inter Tight 800 16 px, V7's chain label in Inter 16 semibold and its 'Higher:' rule from increase_means in Inter 16. Lines 2.5 px with V7's texture, delay ticks at the start, signs in 24 px discs with the record square on documented steps. Step labels give the ID, V7's name, the grade and the delay in words, set outside the line."),
+        ("Drawing", "The catalog geometry at full size: boxes 264 px wide with a 222 px gap for two steps, 280 px with a 200 px gap for three or four, with the ID in Inter Tight 800 16 px, V7's chain label in Inter 16 semibold and its 'Higher:' rule from increase_means in Inter 16. Lines 2.5 px with V7's texture, delay ticks at the start, signs in 24 px discs with the record square on documented steps. Step labels give the ID, V7's name, the grade and the delay in words, set outside the line."),
         ("Rail", "Concept 08's order: feeds itself or pushes back with V7's glossary definition; what the return line means, from the closing connection's plain text; the least certain step, quoting V7's evidence summary; one turn; now, with V7's series. The rail sits beside a two-step drawing and under a three- or four-step one."),
         ("Foot", "The reform's chip and title, where it acts, problem and remedy grades, V7's confidence text, the effect pips with no total, and the routes with V7's check dates or 'no check date in V7'."),
         ("Phone", "The boxes stack in chain order; forward steps run down a line at the left of the boxes; the return line runs up the left edge into the first box. Step labels sit beside the line."),
@@ -614,25 +661,25 @@ SPECS = {
         ("Surface", "White. Red marks R-01's three targets, L25, L08 and C2, on the R10 card drawing and on the circuit, and nothing else."),
         ("Order", "Headline, R-01's chip and V7 title, where it acts, the R10 drawing with the two loops V7 lists as touched beside it, the effects and routes, then the reform on the whole circuit."),
         ("Honesty", "No total and no ranking: V7 never adds effects into one score. B4 and R11 carry no red, because none of R-01's targets sits on them, and their captions say so."),
-        ("Phone", "The R10 drawing stacks, the touched loops follow as tiles, the tables reflow, and the circuit appears reduced with a note."),
+        ("Phone", "The R10 drawing stacks, the touched loops follow as tiles, the two tables become lists, and the circuit appears reduced with a note."),
     ],
 }
 
 TESTS = {
     "catalog": [
         ("Wall test", "Pinned beside a Tufte small-multiples plate, the first draft read as a grid of equal cells. Changes: plates with Charcoal bands and 120 px letters, a lead specimen at double size on every plate, and three columns, where four left orphan rows and could not hold V7's longest chain label on two lines."),
-        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px."),
+        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px. A second pass at 2x found captions listing tied steps one by one and the band letters touching the band's top edge; tied steps now read 'L02 and L31, both plausible', and the bands gained 30 px of air above the letter."),
     ],
     "card": [
         ("Wall test", "Beside Concept 08, the round-one card had gained little. Changes: an editorial headline, the read-aloud sentence in Lora Italic, Concept 08's rail order restored, and the return line and A5's keyline carrying the one red."),
-        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has."),
+        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has. A second pass found 'under 2 years' broken across lines and a line starting with its separator dot; no-break spaces now hold each phrase whole, and the R8 gap widened from 170 to 222 px so L38's name takes two lines. On a phone the effect and route tables became lists, since their columns clipped at 358 px."),
     ],
     "map": [
-        ("Wall test", "Beside the Vignelli diagram, a first route put the top bus through the bundle tracks and set a bus label on the wires. Changes: drivers, bundles and the top bus each got their own band, and the bus labels moved into clear space."),
-        ("2x test", "The lower band set two-line names on a one-line rhythm, so they overlapped, and a card footer ran past its card. Changes: a two-line rhythm for the lower band and footers that wrap inside their card."),
+        ("Wall test", "Beside the Vignelli diagram, a first route put the top bus through the bundle tracks and set a bus label on the wires. Changes: drivers, bundles and the top bus each got their own band, and the three bus labels sit on a background halo where a wire crosses them."),
+        ("2x test", "The lower band set two-line names on a one-line rhythm, so they overlapped, and a card footer ran past its card. Changes: a two-line rhythm for the lower band and footers that wrap inside their card. A later pass found A3's name running past card A and the economy layer listing EC5 after EC9; A3 now wraps inside its card and both layers list in number order."),
     ],
     "reform": [
-        ("Wall test", "Round one's reform view ran the C2 row red across the full fabric. Here red touches only two wires and one box."),
+        ("Wall test", "Round one's reform view ran the C2 row red across the full fabric. Here red touches only two wires and one box. The first draft also sat the view inside a card frame that ran 24 px past a 1440 px screen; the view is now a White page of its own."),
         ("2x test", "Checked the three loop drawings and the circuit on White at 2x; the touched-loop captions were rewritten to say exactly why they carry no red."),
     ],
 }
@@ -679,13 +726,20 @@ def board():
     sections = [("idea", "The idea"), ("spec-catalog", "Catalog page"), ("spec-r8", "R8 card"), ("spec-r10", "R10 card"),
                 ("spec-map", "Circuit"), ("spec-reform", "R-01 view"), ("checks", "Checks"), ("decide", "Decisions")]
     toc = "".join(f'<a href="#{a}">{esc(b)}</a>' for a, b in sections)
+    index = "".join(f'<li><span class="n">{n}</span><b>{t}</b><span>{d}</span><a href="{REL}20261028_A-{f}.html">Open the {t.replace("Loop catalog", "catalog").replace("Circuit", "circuit")}</a></li>'
+                    for n, (f, t, d) in enumerate((("Loop-Catalog", "Loop catalog", "All 23 loops, R8 taught at full size, one plate per area."),
+                                                    ("R8-Loop-Card", "R8 card", "Two steps on White, with R-30's targets in red."),
+                                                    ("R10-Loop-Card", "R10 card", "The stress test: four steps, R-01 in red."),
+                                                    ("Circuit-Page", "Circuit", "51 variables and 118 connections, Concept 09 redrawn."),
+                                                    ("R-01-Reform-View", "R-01 view", "One reform on its loop and on the whole system.")), 1))
     intro = f'''<div class="bd"><p class="eyebrow">Phase 2 {DOT} Systems maps, round two {DOT} October 28, 2026 {DOT} Direction A</p>
 <h1>Field Guide</h1>
 <p class="lede">Dustin's reference card came from Concept 08, the Loop Field Guide. This direction takes the name at its word: every loop is a specimen card drawn one way, and the catalog is a set of plates where each card is the R8 card at a smaller size. The head of the catalog teaches one card at full size, and a reader then reads all 23 the way a birder reads a guide.</p>
 <div class="bd-sum"><p><b>What a first-time reader grasps without a key:</b> boxes are things that change; the line across the top runs forward; the line underneath, or up the left side, brings the last change back to the first box.</p>
 <p><b>Built to the creative director's brief</b> (<span>work/handoffs/phase-2/20261028_CD-Review-Of-Map-Directions.md</span>, section 4): the notation budget by scale, Rule 05.3, the 13 px floor, Lora Italic only for V7's read-aloud sentence, constant stroke weight within a view, no truncated label and no row with one card alone. Every page below is shown first as a page at its true composition, then at 390 px and in grayscale, then its spec and what the wall and 2x tests changed.</p></div>
 <nav class="bd-toc" aria-label="Board sections">{toc}</nav>
-<section class="bd-spec" id="idea"><p class="eyebrow">Specimens</p><h2>Five pages</h2><p>The catalog page, the R8 card, the R10 card as the stress test, the whole system as Concept 09's Circuit redrawn, and the R-01 reform view. Each is a real page: open it from its proof to see it on its own.</p></section></div>'''
+<section class="bd-spec" id="idea"><p class="eyebrow">Specimens</p><h2>Five pages</h2><p>Each is a real page. The board shows it at its true composition, then at 390 px and in grayscale, then its spec and what the wall and 2x tests changed. Open any page on its own here.</p>
+<ol class="bd-index">{index}</ol></section></div>'''
 
     def spec_section(sid, num, title, lede, fragment, name, key, phone=True):
         return (f'<section id="{sid}" aria-label="{esc(title)}"><div class="bd"><div class="bd-spec"><p class="eyebrow">Specimen {num}</p><h2>{esc(title)}</h2><p>{esc(lede)}</p></div></div>'
@@ -716,6 +770,6 @@ def board():
 
 if __name__ == "__main__":
     ASSETS.mkdir(parents=True, exist_ok=True)
-    page = board()
+    page = typo_html(board())
     BOARD.write_text(page, encoding="utf-8")
     print("board", BOARD.relative_to(ROOT), f"{len(page) / 1e6:.2f} MB;", len(WRITTEN), "files;", "leads", LEADS)

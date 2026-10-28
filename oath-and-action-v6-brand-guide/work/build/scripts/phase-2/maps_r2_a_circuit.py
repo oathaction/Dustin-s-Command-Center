@@ -13,6 +13,7 @@ two stubs share a line. The other 72 connections are counted bundles in Stone, a
 connection listed on the bundle that counts it so the verifier can account for all 118.
 """
 import collections
+import re
 
 import maps_draw as D
 import maps_r2_a_fg as FG
@@ -239,8 +240,9 @@ def build(model, bg=D.NEWS, reform_id=None, lit_loop=None, w_total=1392):
     y_lower_strip = y_bus_bottom + 40
     y_lower = y_lower_strip + 96
     lower = {"EC": (card_x[0], card_x[2] + card_w[2]), "TC": (card_x[3], card_x[4] + card_w[4])}
-    rows_ec = [k for k in model["order"] if N[k]["area"] == "EC"]
-    rows_tc = [k for k in model["order"] if N[k]["area"] == "TC"]
+    num = lambda k: int(re.sub(r"\D", "", k))
+    rows_ec = sorted((k for k in model["order"] if N[k]["area"] == "EC"), key=num)
+    rows_tc = sorted((k for k in model["order"] if N[k]["area"] == "TC"), key=num)
     y_lower_end = y_lower + 80 + 40 * ((len(rows_ec) + 2) // 3) + 10
     H = y_lower_end + 12
 
@@ -295,9 +297,10 @@ def build(model, bg=D.NEWS, reform_id=None, lit_loop=None, w_total=1392):
             cards.append("".join(g))
         yr = col_bottom[a] - 26 * len(card_rest[a]) + 8
         for k in card_rest[a]:
-            cards.append(f'<g class="var"{D.node_attrs(k)}>' + FG.T(box_x[a], yr + 4, f"{k}  {model['nodes'][k]['title']}", 13, 600, D.INK) + "</g>")
-            cards.append(FG.T(box_x[a], yr + 21, "on no loop", 13, 400, D.DEEP))
-            yr += 40
+            lines = TX.wrap(f"{k}  {model['nodes'][k]['title']}", bw[a], 13, 600)
+            cards.append(f'<g class="var"{D.node_attrs(k)}>' + "".join(FG.T(box_x[a], yr + 4 + 17 * i, t, 13, 600, D.INK) for i, t in enumerate(lines)) + "</g>")
+            cards.append(FG.T(box_x[a], yr + 21 + 17 * (len(lines) - 1), "on no loop", 13, 400, D.DEEP))
+            yr += 40 + 17 * (len(lines) - 1)
     # ---- the other 72: counted bundles
     bundles = collections.defaultdict(list)
     for k, l in L.items():
@@ -334,7 +337,7 @@ def build(model, bg=D.NEWS, reform_id=None, lit_loop=None, w_total=1392):
                     + FG.T(xt + 12, 28, k, 15, 800, D.NEWS, family="tight")
                     + "".join(FG.T(xt + 46, 26 + 17 * j, t, 13, 600, D.NEWS) for j, t in enumerate(title_lines)) + "</g>")
     bsvg.append(f'<rect x="{margin}" y="66" width="{W - 2 * margin:.1f}" height="4" fill="{D.INK}"/>')
-    bsvg.append(FG.T(margin, 94, "Outside drivers: conditions the model treats as given", 13, 600, D.DEEP))
+    late_labels = [FG.T(margin, 94, "Outside drivers: conditions the model treats as given", 13, 600, D.DEEP, extra=f' stroke="{bg}" stroke-width="6" stroke-linejoin="round" paint-order="stroke"')]
     # driver bundles into each card and the layers
     for a in COLS + ["EC", "TC"]:
         ks = bundles.get(("X", a), [])
@@ -441,11 +444,11 @@ def build(model, bg=D.NEWS, reform_id=None, lit_loop=None, w_total=1392):
         y_lower_end = max(y_lower_end, y_lower + 80 + 40 * ((len(rows) + ncols - 1) // ncols) + 10)
     # TC to EC across the lower band
     # bus labels
-    bus = []
+    bus = list(late_labels)
     if n_top:
-        bus.append(FG.T(card_x[0], y_top_bus - (n_top - 1) * LP - 30, "Over the top: loop steps that skip an area going forward", 13, 600, D.DEEP))
+        bus.append(FG.T(card_x[0], y_top_bus - (n_top - 1) * LP - 30, "Over the top: loop steps that skip an area going forward", 13, 600, D.DEEP, extra=f' stroke="{bg}" stroke-width="6" stroke-linejoin="round" paint-order="stroke"'))
     if n_bot:
-        bus.append(FG.T(card_x[0] + card_w[0] + 12, y_bus_bottom + 22, "The return line: loop steps that run back across areas", 13, 600, D.DEEP))
+        bus.append(FG.T(card_x[0] + card_w[0] + 12, y_bus_bottom + 22, "The return line: loop steps that run back across areas", 13, 600, D.DEEP, extra=f' stroke="{bg}" stroke-width="6" stroke-linejoin="round" paint-order="stroke"'))
     H = max(H, y_lower_end + 16)
     body = ("".join(cards) + "".join(bsvg) + "".join(out_wires) + "".join(out_red) + "".join(bus))
     label = ("Whole system as a circuit: five area cards, A to E. The 46 connections on named loops are drawn as wires; the other 72 "

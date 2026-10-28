@@ -52,7 +52,7 @@ K_BRIEF = 1.3      # the review's starting value, drawn only in the test panel
 def mini_geo(k=K, disc=13, w=150):
     """Miniature frame: one center, one r, for every loop. r is the largest that keeps the echo disc clear of the
     first station (edge to edge at least 5 px) and the whole curve with discs inside the 150 px frame."""
-    stroke = 2
+    stroke = 2.5
     if k == 1:
         raise ValueError
     # clearance between first station and echo: (k - 1) r - 2 disc - stroke >= 5
@@ -77,22 +77,24 @@ def mini_geo(k=K, disc=13, w=150):
     cx = 1 - b[0] + ((w - 2) - (b[2] - b[0])) / 2
     cy = 1 - b[1]
     return {"r": round(r, 2), "k": k, "disc": disc, "stroke": stroke, "w": w, "h": h, "cx": round(cx, 2), "cy": round(cy, 2),
-            "clear": round((k - 1) * r - 2 * disc - stroke, 2), "r_need": round(r_need, 2), "gap": 3, "arrow": (8, 4)}
+            "clear": round((k - 1) * r - 2 * disc - stroke, 2), "r_need": round(r_need, 2), "gap": 3, "arrow": (9, 4.5)}
 
 
 def head_geo(size=240, k=K, disc=15, stroke=2.5):
-    r = 70.0
-    while True:
+    """Display size for the catalog head: the largest r whose spiral, with its discs, fits the square."""
+    lo, hi = 5.0, size / 2
+    for _ in range(50):
+        r = (lo + hi) / 2
         e = G.extents(2, r, k, disc + stroke / 2)
-        if e[3] - e[1] <= size - 2 and e[2] - e[0] <= size - 2:
-            r += 0.25
-            continue
-        r -= 0.25
-        break
+        if e[3] - e[1] <= size - 4 and e[2] - e[0] <= size - 4:
+            lo = r
+        else:
+            hi = r
+    r = round(lo, 2)
     e = G.extents(2, r, k, disc + stroke / 2)
-    cx = 1 - e[0] + ((size - 2) - (e[2] - e[0])) / 2
-    cy = 1 - e[1] + ((size - 2) - (e[3] - e[1])) / 2
-    return {"r": round(r, 2), "k": k, "disc": disc, "stroke": stroke, "w": size, "h": size, "cx": round(cx, 2), "cy": round(cy, 2),
+    cx = 2 - e[0] + ((size - 4) - (e[2] - e[0])) / 2
+    cy = 2 - e[1] + ((size - 4) - (e[3] - e[1])) / 2
+    return {"r": r, "k": k, "disc": disc, "stroke": stroke, "w": size, "h": size, "cx": round(cx, 2), "cy": round(cy, 2),
             "gap": 4, "arrow": (10, 5)}
 
 
@@ -301,30 +303,32 @@ def emblem(kind, geo, ink=NEWS, ground=INK, label=None):
 
 
 def glyph24(kind, ink=INK, ground=None, size=24):
-    """The loop-kind mark at 24 px (proposal, pending Dustin's approval). Same construction as the miniature: start
-    disc at twelve o'clock, clockwise; the spiral ends on the outer lap above its start, the ring closes on it."""
+    """The loop-kind mark (proposal, pending Dustin's approval), drawn on a 24 px grid and scaled for other sizes.
+    Same construction as the miniature: a start dot at twelve o'clock and a clockwise line. The spiral uses the
+    shared k and ends on the outer lap above its start, with a 1.5 px opening between the dot and the outer lap at
+    24 px; the ring closes on its dot. The ring is drawn at r 7.5 so the pair carries equal optical weight; marks
+    are not loop drawings, so their radii state no relation between kinds."""
     s = size / 24
     sw = 2 * s
+    dot = 2.25 * s
     if kind == "R":
         k = K
-        r = 5.0 * s
-        # center the spiral's box: extents of the curve with the start dot
+        r = 6.0 * s
         e = G.extents(1, r, k, 0)
         cx = size / 2 - (e[0] + e[2]) / 2
         cy = size / 2 - (e[1] + e[3]) / 2
-        cx, cy = round(cx * 2) / 2, round(cy * 2) / 2
-        t_end = G.TAU
-        d = G.bezier_d(0, t_end, r, k, cx, cy, max_deg=6)
+        cx, cy = round(cx * 4) / 4, round(cy * 4) / 4
+        d = G.bezier_d(0, G.TAU, r, k, cx, cy, max_deg=6)
         x0, y0 = G.pt(cx, cy, r, 0)
-        body = (f'<path d="{d}" fill="none" stroke="{ink}" stroke-width="{sw}" stroke-linecap="round"/>'
-                f'<circle cx="{x0:.2f}" cy="{y0:.2f}" r="{2.75 * s:.2f}" fill="{ink}"/>')
+        body = (f'<path d="{d}" fill="none" stroke="{ink}" stroke-width="{sw:.2f}" stroke-linecap="round"/>'
+                f'<circle cx="{x0:.2f}" cy="{y0:.2f}" r="{dot:.2f}" fill="{ink}"/>')
     else:
         r = 7.5 * s
         cx = cy = size / 2
-        body = (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{ink}" stroke-width="{sw}"/>'
-                f'<circle cx="{cx}" cy="{cy - r:.2f}" r="{2.75 * s:.2f}" fill="{ink}"/>')
+        body = (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{ink}" stroke-width="{sw:.2f}"/>'
+                f'<circle cx="{cx}" cy="{cy - r:.2f}" r="{dot + 0.5 * s:.2f}" fill="{ink}"/>')
     bg = f'<rect x="0" y="0" width="{size}" height="{size}" fill="{ground}"/>' if ground else ""
-    lab = "Snowball loop mark" if kind == "R" else "Thermostat loop mark"
+    lab = "Snowball loop mark: feeds itself" if kind == "R" else "Thermostat loop mark: pushes back"
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}" role="img" '
             f'aria-label="{lab}" data-view="b-glyph" data-kind="{kind}"><title>{lab}</title>{bg}{body}</svg>')
 
@@ -371,13 +375,13 @@ def block_size(lines):
     return w, y, base
 
 
-def place_block(placer, lines, anchor_pt, direction, gap=14, slide=True):
+def place_block(placer, lines, anchor_pt, direction, gap=14, slide=True, max_slide=260):
     """Try to put a label block outward of anchor_pt along direction (unit vector), sliding outward until clear.
     Returns (x0, y0, x1, y1, text_anchor) or None."""
     w, h, _ = block_size(lines)
     ux, uy = direction
     ax, ay = anchor_pt
-    for extra in range(0, 260, 4) if slide else (0,):
+    for extra in range(0, max_slide, 4) if slide else (0,):
         dist = gap + extra
         px, py = ax + ux * dist, ay + uy * dist
         # choose the block's attachment by direction: left of, right of, above or below the point
@@ -430,7 +434,7 @@ def align_for(direction):
 
 # ------------------------------------------------------------------ card figure (desktop) and phone figure
 
-def card_geo(k=K, r=140.0, disc=27, stroke=2.5):
+def card_geo(k=K, r=155.0, disc=27, stroke=2.5):
     return {"r": r, "k": k, "disc": disc, "stroke": stroke, "gap": 5, "arrow": (11, 5.5)}
 
 
@@ -464,7 +468,7 @@ def pill_w(step, size=14):
 
 def _station_lines(s, echo=False, name_w=200, rule_w=200, compact=False, size=16):
     if echo:
-        return [(ln, size, 600, "inter", INK) for ln in TX.wrap(f'{s["label"]}, one turn later', name_w + 40, size, 600)]
+        return [(ln, size, 600, "inter", INK) for ln in TX.wrap(f'{s["label"]}, one turn later', 330, size, 600)]
     lines = [(ln, size, 600, "inter", INK) for ln in TX.wrap(s["label"], name_w, size, 600)]
     if not compact and s.get("increase_means"):
         for ln in TX.wrap(higher_rule(s["increase_means"]), rule_w, 14, 400):
@@ -551,27 +555,25 @@ def _figure(loop, model, reform_id, geo, w, top_room, bottom_room, view, ground,
     red_links = {s["id"] for s in loop["steps"] if s["id"] in red_targets}
     red_nodes = {s["code"] for s in loop["stations"] if s["code"] in red_targets}
     steps, mids = draw_steps(loop, geo, ground, red_links=red_links, ticks=True, open_r=12 if not phone else 9)
-    stations, centers, echo = draw_stations(loop, geo, ground, id_size=20 if not phone else 15, red_nodes=red_nodes,
+    stations, centers, echo = draw_stations(loop, geo, ground, id_size=20 if not phone else 19, red_nodes=red_nodes,
                                             reform_id=reform_id, id_display=True, open_r=12 if not phone else 9)
     poly = _curve_poly(loop, geo)
     discs = [(c, disc + 2) for _, _, c in centers] + ([(echo[2], disc + 2)] if echo else [])
     P = Placer([poly], discs, w, h, margin=10 if not phone else 7)
     labels, failed = [], []
     order = ([("echo", echo)] if echo else []) + [("station", c) for c in centers]
+    if phone:
+        # on a phone the figure names only the echo; the strip under the figure names every station in order
+        order = [("echo", echo)] if echo else []
     for kind_, (s, t, c) in order:
         cands = [G.outward(t)] if kind_ == "echo" else _station_cands(t, (t == 0 and not ring))
         rect = None
-        tries = [(200, 200)] if not phone else [(300, 0), (130, 0), (100, 0)]
-        for name_w, rule_w in tries:
-            if phone:
-                txt = f'{s["label"]}, one turn later' if kind_ == "echo" else s["label"]
-                lines = [(ln, 15, 600, "inter", INK) for ln in TX.wrap(txt, name_w, 15, 600)]
-            else:
-                lines = _station_lines(s, echo=(kind_ == "echo"), name_w=name_w, rule_w=rule_w, compact=compact)
-            for dvec in cands:
-                rect = place_block(P, lines, c, dvec, gap=disc + (10 if not phone else 7))
-                if rect:
-                    break
+        if phone:
+            lines = [(f'{s["code"] or "Start"} again, one turn later', 14, 600, "inter", INK)]
+        else:
+            lines = _station_lines(s, echo=(kind_ == "echo"), name_w=200, rule_w=200, compact=compact)
+        for dvec in cands:
+            rect = place_block(P, lines, c, dvec, gap=disc + (10 if not phone else 7), max_slide=44)
             if rect:
                 break
         if rect is None:
@@ -595,7 +597,24 @@ def _figure(loop, model, reform_id, geo, w, top_room, bottom_room, view, ground,
     label = f'Loop {loop["id"]} drawn as a {"spiral" if not ring else "ring"}. {kind_word}. {loop["how_to_read"]}'
     extra = f' data-reform="{esc(reform_id)}"' if reform_id else ""
     extra += f' data-label-failures="{esc("|".join(failed))}"' if failed else ""
-    svg = svg_doc(w, h, "".join(steps) + "".join(stations) + "".join(labels), label, view, root_attrs(loop, geo, extra), bg=ground)
+    # crop the canvas to the drawing and its labels; r, k and every mark keep their size
+    xs, ys = [p[0] for p in poly], [p[1] for p in poly]
+    for c, rad in discs:
+        xs += [c[0] - rad, c[0] + rad]
+        ys += [c[1] - rad, c[1] + rad]
+    for r_ in P.rects:
+        xs += [r_[0], r_[2]]
+        ys += [r_[1], r_[3]]
+    pad = 16 if not phone else 10
+    x0, y0, x1, y1 = min(xs) - pad, min(ys) - pad, max(xs) + pad, max(ys) + pad
+    if phone:
+        x0, x1 = 0, w
+    vw, vh = math.ceil(x1 - x0), math.ceil(y1 - y0)
+    body = "".join(steps) + "".join(stations) + "".join(labels)
+    bgr = f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{vw}" height="{vh}" fill="{ground}"/>'
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{vw}" height="{vh}" viewBox="{x0:.0f} {y0:.0f} {vw} {vh}" '
+           f'role="img" aria-label="{esc(label)}" data-view="{esc(view)}"{root_attrs(loop, geo, extra)}><title>{esc(label)}</title>'
+           f'{STYLE}{bgr}{body}</svg>')
     return svg, failed
 
 

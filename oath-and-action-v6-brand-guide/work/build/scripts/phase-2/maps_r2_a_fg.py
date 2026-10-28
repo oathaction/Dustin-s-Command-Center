@@ -14,6 +14,7 @@ Notation by scale follows the creative director's budget (CD review section 4):
              reform's targets, on White only
 Every data mark carries the round-one data-* attributes, so the verifier reads them back.
 """
+import re
 import math
 
 import maps_draw as D
@@ -37,6 +38,7 @@ def T(x, y, s, size, weight=400, fill=D.INK, anchor=None, family="inter", extra=
     elif family == "inter" and weight >= 600:
         cls += " ms"
     a = f' text-anchor="{anchor}"' if anchor else ""
+    s = re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)]|$)", "\u2019", str(s))  # typographic apostrophes, display only
     return f'<text x="{x:.1f}" y="{y:.1f}" class="{cls}" font-size="{size}" fill="{fill}"{a}{extra}>{D.esc(s)}</text>'
 
 
@@ -207,7 +209,7 @@ def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, ma
     n = loop["n"]
     if card:
         # two steps sit beside the rail; three and four steps take the card's full width
-        sc.update(dict(bw=290, hg=170) if n == 2 else dict(bw=280, hg=200))
+        sc.update(dict(bw=264, hg=222) if n == 2 else dict(bw=280, hg=200))
     has_id = sc["ids"] > 0
     texts = box_texts(loop, model, sc, with_rules=card)
     red_targets = set(model["reforms"][reform_id]["targets"]) if reform_id else set()
@@ -289,14 +291,16 @@ def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, ma
 
 def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
     """Card labels: the step's ID with the weakest-step note, its V7 name, then grade and delay in words."""
-    gw = D.GRADE_WORD[st["evidence"]] + ("  ·  " + st["type"] if st["type"] != "causal" else "")
+    # no-break spaces hold each phrase together, and the one before each dot keeps the dot at a line's end
+    nb, sep = (lambda t: t.replace(" ", "\u00a0")), "\u00a0·  "
+    gw = nb(D.GRADE_WORD[st["evidence"]]) + (sep + nb(st["type"]) if st["type"] != "causal" else "")
     head = st["id"] + ("  ·  least certain step" if st["id"] in loop["weakest"] else "")
-    tail = D.DELAY_WORD[st["delay"]] + (f"  ·  {reform_id} acts here" if red else "")
+    tail = nb(D.DELAY_WORD[st["delay"]]) + (sep + nb(f"{reform_id} acts here") if red else "")
     if orn == "top":
         (x1, y), (x2, _) = rt[0], rt[-1]
         mx = (x1 + x2) / 2
         lines = TX.balanced_wrap(st["name"], (x2 - x1) - 24, 16, 600)
-        tails = TX.balanced_wrap(gw + "  ·  " + tail, (x2 - x1) - 24, 13, 400)
+        tails = TX.balanced_wrap(gw + sep + tail, (x2 - x1) - 24, 13, 400)
         rows = [(head, 13, 700, D.INK)] + [(l, 16, 600, D.INK) for l in lines] + [(t, 13, 400, D.DEEP) for t in tails]
         y_end = y - 26
         blk = []
@@ -306,7 +310,7 @@ def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
         yb = rt[1][1]
         mx = (rt[1][0] + rt[2][0]) / 2
         lines = TX.balanced_wrap(st["name"], 440, 16, 600)
-        rows = [(head, 13, 700, D.INK)] + [(l, 16, 600, D.INK) for l in lines] + [(gw + "  ·  " + tail, 13, 400, D.DEEP)]
+        rows = [(head, 13, 700, D.INK)] + [(l, 16, 600, D.INK) for l in lines] + [(gw + sep + tail, 13, 400, D.DEEP)]
         blk = [T(mx, yb + 36 + i * 21, t, s, wgt, col, "middle") for i, (t, s, wgt, col) in enumerate(rows)]
     elif orn == "bottom":
         (x1, y), (x2, _) = rt[0], rt[-1]
@@ -327,7 +331,7 @@ def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
         y_start = ymid - (len(rows) * 21) / 2 + 14
         xx = x_line + 22 if right else x_line - 22
         blk = [T(xx, y_start + i * 21, t, s, wgt, col, "start" if right else "end") for i, (t, s, wgt, col) in enumerate(rows)]
-    return f'<g class="steplabel" data-for="{st["id"]}">' + "".join(blk) + "</g>"
+    return f'<g class="steplabel" data-for="{st["id"]}"' + (f' data-weakest="{st["id"]}"' if st["id"] in loop["weakest"] else "") + '>' + "".join(blk) + "</g>"
 
 
 # ------------------------------------------------------------------ the phone card: boxes stacked, return up the left
@@ -363,7 +367,7 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-
                    [(D.GRADE_WORD[st["evidence"]] + "  ·  " + D.DELAY_WORD[st["delay"]], 13, 400, D.DEEP)]
             if red:
                 rows.append((f"{reform_id} acts here", 13, 700, D.INK))
-            labels.append(f'<g class="steplabel" data-for="{st["id"]}">' + "".join(
+            labels.append(f'<g class="steplabel" data-for="{st["id"]}"' + (f' data-weakest="{st["id"]}"' if st["id"] in loop["weakest"] else "") + '>' + "".join(
                 T(lab_x, lab_y0 + 20 * k, t, s, wt, c) for k, (t, s, wt, c) in enumerate(rows)) + "</g>")
         else:
             first = boxes[0]
@@ -377,7 +381,7 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-
             if red:
                 rows.append((f"{reform_id} acts here", 13, 700, D.INK))
             ly = a[1] + a[3] + 28
-            labels.append(f'<g class="steplabel" data-for="{st["id"]}">' + "".join(
+            labels.append(f'<g class="steplabel" data-for="{st["id"]}"' + (f' data-weakest="{st["id"]}"' if st["id"] in loop["weakest"] else "") + '>' + "".join(
                 T(left, ly + 20 * k, t, s, wt, c) for k, (t, s, wt, c) in enumerate(rows)) + "</g>")
             total = max(total, ly + 20 * len(rows) + 10)
         poly = rounded(rt, 10)

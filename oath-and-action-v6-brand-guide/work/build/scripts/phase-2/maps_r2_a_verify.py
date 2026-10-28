@@ -1,0 +1,441 @@
+#!/usr/bin/env python3
+"""Check every Direction A (Field Guide) drawing against Atlas V7, independently of the drawing code.
+
+Run:  python3 -I work/build/scripts/phase-2/maps_r2_a_verify.py
+Reads  work/extract/atlas-v7-data.json (raw V7, through the shared verifier's loader, not maps_model.py)
+       work/boards/phase-2/maps-r2/a/20261028_A-*.svg, the catalog page and the Direction A board
+Writes work/boards/phase-2/maps-r2/a/20261028_A-Verify-Results.json
+
+It imports verify_maps_data.py for V7, its constants and its per-step check, and leaves that file unchanged, so
+Directions B and C keep the same interface. The rules here follow the round-two notation budget:
+  miniatures and leads   texture, hollow line, sign glyph; no record square, no ticks, no red
+  cards and the head     every mark: texture, ticks, sign glyph, record square on documented steps, weakest step
+  circuit map            46 loop wires with V7 values and one sign glyph each, 72 connections counted in bundles
+                         whose areas match V7, 51 variables, red only at the named reform's targets
+Red anywhere else in a drawing, by color, is a mismatch. A mutation test breaks one copy of each kind of
+drawing in memory and confirms the checks catch it.
+"""
+import copy
+import json
+import re
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import verify_maps_data as VM  # noqa: E402  (shared verifier: V7 loading, constants, check_step)
+
+ROOT = VM.ROOT
+ASSETS = ROOT / "work/boards/phase-2/maps-r2/a"
+BOARD = ROOT / "work/boards/20261028_Map-Direction-A-Field-Guide.html"
+CATALOG = ASSETS / "20261028_A-Loop-Catalog.html"
+OUT = ASSETS / "20261028_A-Verify-Results.json"
+NS = VM.NS
+N, L, LOOPS, REF = VM.N, VM.L, VM.LOOPS, VM.REF
+RED = "#E63946"
+GRADE_WORDS = {"documented": "documented", "well-supported": "well supported", "plausible": "plausible",
+               "plausible_contested": "contested", "hypothesis": "hypothesis"}
+DELAY_WORDS = {"S": "under 2 years", "M": "2 to 10 years", "L": "over 10 years"}
+
+problems = VM.problems          # the shared list, so check_step reports land here
+counts = VM.counts
+counts.update({"captions_checked": 0, "bundles_checked": 0, "bundled_links": 0, "red_color_elements": 0,
+               "record_squares_absent_checked": 0, "ticks_absent_checked": 0})
+
+
+def fail(f, msg):
+    problems.append(f"{f}: {msg}")
+
+
+def area_of(code):
+    n = N[code]
+    return n["cluster"] if n["layer"] == "core" else {"economy": "EC", "technology": "TC"}[n["layer"]]
+
+
+def words(el):
+    """The text a group prints, one space between its text lines, with typographic apostrophes and no-break
+    spaces read back as V7 writes them."""
+    t = " ".join((x.text or "").strip() for x in el.iter(NS + "text"))
+    return " ".join(t.replace("\u2019", "'").replace("\u00a0", " ").split())
+
+
+def parents(root):
+    return {c: p for p in root.iter() for c in p}
+
+
+def red_color_ok(f, root, allowed):
+    """Every element painted Pillar Red must sit inside a mark for an allowed target."""
+    par = parents(root)
+    for e in root.iter():
+        if RED.lower() not in ((e.get("stroke") or "") + (e.get("fill") or "")).lower():
+            continue
+        counts["red_color_elements"] += 1
+        a, owner = e, None
+        while a is not None:
+            key = a.get("data-link") or a.get("data-node") or a.get("data-for")
+            if a.get("data-red") or (key and key in allowed):
+                owner = key or "red"
+                if key is None:
+                    # a red path inside a step group: take the group's link
+                    b = par.get(a)
+                    while b is not None and owner == "red":
+                        owner = b.get("data-link") or b.get("data-node") or "red"
+                        b = par.get(b)
+                break
+            a = par.get(a)
+        if owner is None or owner not in allowed:
+            fail(f, f"red paint on a <{e.tag.replace(NS, '')}> outside the named reform's targets (owner {owner})")
+
+
+def red_marks(root):
+    par = parents(root)
+    out = set()
+    for e in root.iter():
+        if not e.get("data-red"):
+            continue
+        a = e
+        while a is not None and not (a.get("data-link") or a.get("data-node")):
+            a = par.get(a)
+        if a is not None:
+            out.add(a.get("data-link") or a.get("data-node"))
+    return out
+
+
+def check_loop(f, root, view):
+    """One loop drawing, at any scale. Returns the loop ID."""
+    lid = root.get("data-loop")
+    if lid not in LOOPS:
+        fail(f, f"unknown loop {lid}")
+        return None
+    lp = LOOPS[lid]
+    full = view in ("fg-card", "fg-card-phone", "fg-head", "fg-head-phone")
+    conceptual = not lp["closure"].startswith("closed")
+    steps = [g for g in root.iter(NS + "g") if g.get("class") == "step"]
+    if conceptual:
+        if len(steps) != len(lp["chain"]):
+            fail(f, f"{lid} draws {len(steps)} sketched steps, V7 chain has {len(lp['chain'])}")
+        labels = [lab for lab, _ in lp["chain_labels"]]
+        for i, g in enumerate(steps):
+            counts["steps_checked"] += 1
+            if g.get("data-sign") != lp["chain"][i][1]:
+                fail(f, f"{lid} sketched step {i + 1} sign {g.get('data-sign')}, V7 {lp['chain'][i][1]}")
+            if g.get("data-from-label") != labels[i] or g.get("data-to-label") != labels[(i + 1) % len(labels)]:
+                fail(f, f"{lid} sketched step {i + 1} labels differ from V7 chain_labels")
+            if not any(p.get("data-texture") == "hollow" for p in g.iter(NS + "path")):
+                fail(f, f"{lid} sketched step {i + 1} is not drawn in the hollow line")
+    else:
+        drawn = [g.get("data-link") for g in steps]
+        if drawn != lp["links"]:
+            fail(f, f"{lid} draws steps {drawn}, V7 {lp['links']}")
+        for g in steps:
+            counts["steps_checked"] += 1
+            # the shared check covers link, from, to, sign, grade, delay, type, texture; on full views also the
+            # ticks, the sign glyph and the record square
+            VM.check_step(f, g, root, require_marks=full, require_ticks=full)
+            if not full:
+                k = g.get("data-link")
+                pills = [p for p in root.iter(NS + "g") if p.get("class") == "pill" and p.get("data-for") == k]
+                if len(pills) != 1:
+                    fail(f, f"{k} has {len(pills)} sign discs")
+                else:
+                    counts["glyphs_checked"] += 1
+                    gl = [t for t in pills[0].iter(NS + "text") if t.get("data-sign-glyph")]
+                    want = VM.GLYPH.get(L[k]["polarity"], "no sign")
+                    if not gl or VM.text_of(gl[0]) != want:
+                        fail(f, f"{k} sign disc reads {VM.text_of(gl[0]) if gl else None!r}, V7 sign {L[k]['polarity']!r}")
+                    counts["record_squares_absent_checked"] += 1
+                    if any(r.get("data-record") for r in pills[0].iter(NS + "rect")):
+                        fail(f, f"{k} miniature carries a record square; the budget leaves it to the card")
+                counts["ticks_absent_checked"] += 1
+                if any(t.get("class") == "ticks" for t in g.iter(NS + "g")):
+                    fail(f, f"{k} miniature carries delay ticks; the budget leaves them to the card")
+    nodes = {g.get("data-node"): g for g in root.iter(NS + "g") if g.get("class") == "var"}
+    want_nodes = {c for c, _ in lp["chain"] if c in N}
+    if set(nodes) != want_nodes:
+        fail(f, f"{lid} draws variables {sorted(nodes)}, V7 chain {sorted(want_nodes)}")
+    lab_of = {c: lab for (c, _), (lab, _) in zip(lp["chain"], lp["chain_labels"])}
+    for c, g in nodes.items():
+        counts["nodes_checked"] += 1
+        if g.get("data-label") != lab_of.get(c):
+            fail(f, f"{lid} variable {c} label {g.get('data-label')!r}, V7 chain label {lab_of.get(c)!r}")
+        shown = words(g)
+        if " ".join(lab_of.get(c, "").split()) not in " ".join(shown.split()):
+            fail(f, f"{lid} variable {c} does not print its V7 label")
+        if view in ("fg-card", "fg-card-phone", "fg-head", "fg-head-phone", "fg-lead") and c not in shown:
+            fail(f, f"{lid} variable {c} does not print its ID")
+    # weakest step: cards and the head mark it; miniatures leave it to the caption
+    if full:
+        counts["weakest_checked"] += 1
+        drawn = {e.get("data-weakest") for e in root.iter() if e.get("data-weakest")}
+        want = VM.expected_weakest(lid)
+        if drawn != want:
+            fail(f, f"{lid} weakest marks {sorted(drawn)}, V7 ranks give {sorted(want)}")
+    # red: only the named reform's targets that this drawing draws
+    rid = root.get("data-reform")
+    drawn_els = set(lp["links"]) | want_nodes
+    allowed = (set(REF[rid]["targets"]) & drawn_els) if rid else set()
+    got = red_marks(root)
+    counts["red_marks_checked"] += len(got)
+    if got != allowed:
+        fail(f, f"red marks at {sorted(got)}, {'reform ' + rid + ' targets drawn here ' if rid else 'expected none '}{sorted(allowed)}")
+    red_color_ok(f, root, allowed)
+    if rid:
+        tg = {e.get("data-node") or e.get("data-link") for e in root.iter() if e.get("data-target") == rid}
+        if not tg <= allowed:
+            fail(f, f"data-target marks {sorted(tg - allowed)} are not {rid} targets")
+    return lid
+
+
+def check_circuit(f, root):
+    rid = root.get("data-reform")
+    loop_links = {k for k, l in L.items() if l["loops"]}
+    wires = [g for g in root.iter(NS + "g") if g.get("class") == "link" and g.get("data-link")]
+    ids = [g.get("data-link") for g in wires]
+    if len(ids) != len(set(ids)):
+        fail(f, "a loop connection is drawn as more than one wire")
+    if set(ids) != loop_links:
+        fail(f, f"draws {len(set(ids))} wires, V7 has {len(loop_links)} loop connections; "
+                f"missing {sorted(loop_links - set(ids))[:5]}, extra {sorted(set(ids) - loop_links)[:5]}")
+    for g in wires:
+        counts["links_checked"] += 1
+        VM.check_step(f, g, root, require_marks=False, require_ticks=False)
+        gl = [t for t in g.iter(NS + "text") if t.get("data-sign-glyph")]
+        counts["glyphs_checked"] += 1
+        want = VM.GLYPH.get(L[g.get("data-link")]["polarity"], "no sign")
+        if len(gl) != 1 or VM.text_of(gl[0]) != want:
+            fail(f, f"{g.get('data-link')} wire carries {len(gl)} sign glyphs {[VM.text_of(t) for t in gl]}, V7 sign {want!r}")
+    bundled = []
+    for b in root.iter(NS + "g"):
+        if b.get("class") != "bundle":
+            continue
+        counts["bundles_checked"] += 1
+        ks = (b.get("data-links") or "").split()
+        if str(len(ks)) != b.get("data-count"):
+            fail(f, f"bundle {b.get('data-from-area')} to {b.get('data-to-area')} lists {len(ks)} links, data-count {b.get('data-count')}")
+        printed = words(b)
+        m = re.match(r"(\d+)", printed)
+        if printed and ((m and int(m.group(1)) != len(ks)) or (not m and not (printed.startswith("No other") and not ks))):
+            fail(f, f"bundle {b.get('data-from-area')} to {b.get('data-to-area')} prints {printed[:30]!r}, lists {len(ks)}")
+        for k in ks:
+            if k not in L:
+                fail(f, f"bundle lists {k}, not a V7 connection")
+                continue
+            fa, ta = area_of(L[k]["from"]), area_of(L[k]["to"])
+            if (fa, ta) != (b.get("data-from-area"), b.get("data-to-area")):
+                fail(f, f"{k} runs {fa} to {ta} in V7, bundled as {b.get('data-from-area')} to {b.get('data-to-area')}")
+            if L[k]["loops"]:
+                fail(f, f"{k} sits on a loop in V7 but is bundled")
+        bundled += ks
+    counts["bundled_links"] += len(bundled)
+    if len(bundled) != len(set(bundled)):
+        fail(f, "a connection is counted in more than one bundle")
+    if set(bundled) | set(ids) != set(L) or set(bundled) & set(ids):
+        fail(f, f"wires plus bundles give {len(set(bundled) | set(ids))} connections, V7 has {len(L)}")
+    nodes = {g.get("data-node") for g in root.iter(NS + "g") if g.get("class") == "var"}
+    counts["nodes_checked"] += len(nodes)
+    if nodes != set(N):
+        fail(f, f"draws {len(nodes)} variables, V7 has {len(N)}; missing {sorted(set(N) - nodes)[:5]}")
+    want = set(REF[rid]["targets"]) if rid else set()
+    got = red_marks(root)
+    counts["red_marks_checked"] += len(got)
+    if got != want:
+        fail(f, f"red marks at {sorted(got)}, expected {sorted(want)}")
+    red_color_ok(f, root, want)
+    return len(set(ids)), len(bundled)
+
+
+def check_captions(html):
+    """The miniature budget moves kind, one turn and the least certain step into the caption: check each against V7."""
+    seen = set()
+    for m in re.finditer(r'<article class="fga-tile[^"]*" data-loop="([^"]+)">(.*?)</article>', html, re.S):
+        lid, body = m.group(1), m.group(2)
+        seen.add(lid)
+        cap = re.search(r'<p class="fga-cap">(.*?)</p>', body, re.S)
+        if not cap:
+            fail("catalog", f"{lid} tile has no caption")
+            continue
+        t = re.sub(r"<[^>]+>", "", cap.group(1))
+        lp = LOOPS[lid]
+        counts["captions_checked"] += 1
+        kind = "Feeds itself." if lp["type"] == "R" else "Pushes back."
+        if not t.startswith(kind):
+            fail("catalog", f"{lid} caption kind {t[:14]!r}, V7 type {lp['type']}")
+        if f"One turn: {DELAY_WORDS[lp['delay']]}." not in t:
+            fail("catalog", f"{lid} caption turn differs from V7 delay {lp['delay']}")
+        if not lp["closure"].startswith("closed"):
+            if "Sketched in V7" not in t:
+                fail("catalog", f"{lid} is sketched in V7, caption does not say so")
+            continue
+        want = VM.expected_weakest(lid)
+        part = t.split("Least certain:", 1)[1] if "Least certain:" in t else ""
+        named = set(re.findall(r"\b(L\d\d|LE\d\d|LT\d\d|LX\d|T\d\d)\b", part))
+        if named != want:
+            fail("catalog", f"{lid} caption names least certain {sorted(named)}, V7 ranks give {sorted(want)}")
+        for k in want:
+            if GRADE_WORDS[L[k]["evidence"]] not in part:
+                fail("catalog", f"{lid} caption omits the grade of {k}")
+        if not want and "no single step" not in part:
+            fail("catalog", f"{lid} has no single least certain step, caption does not say so")
+    if seen != set(LOOPS):
+        fail("catalog", f"catalog tiles cover {len(seen)} loops, V7 has {len(LOOPS)}; missing {sorted(set(LOOPS) - seen)}")
+    return len(seen)
+
+
+def run_file(f, root):
+    view = root.get("data-view")
+    if view in ("fg-mini", "fg-mini-phone", "fg-lead", "fg-card", "fg-card-phone", "fg-head", "fg-head-phone"):
+        return view, check_loop(f, root, view)
+    if view == "circuit-map":
+        return view, check_circuit(f, root)
+    fail(f, f"unknown view {view}")
+    return view, None
+
+
+def mutation_test():
+    """Break one copy of each kind of drawing and confirm the checks catch every break."""
+    cases = []
+
+    def attempt(name, fname, mutate):
+        root = ET.fromstring((ASSETS / fname).read_text(encoding="utf-8"))
+        mutated = mutate(copy.deepcopy(root))
+        before = len(problems)
+        run_file("mutation:" + fname, mutated)
+        caught = len(problems) - before
+        del problems[before:]
+        cases.append({"break": name, "file": fname, "caught": caught > 0, "reports": caught})
+
+    def flip_sign(r):
+        for t in r.iter(NS + "text"):
+            if t.get("data-sign-glyph"):
+                t.text = "−" if t.text == "+" else "+"
+                break
+        return r
+
+    def drop_texture(r):
+        for p in r.iter(NS + "path"):
+            if p.get("data-texture") and p.get("data-texture") != "hollow":
+                p.set("data-texture", "solid" if p.get("data-texture") != "solid" else "9 4")
+                break
+        return r
+
+    def add_red(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "var" and not g.get("data-red"):
+                g.set("data-red", "1")
+                break
+        return r
+
+    def paint_red(r):
+        for p in r.iter(NS + "rect"):
+            p.set("fill", RED)
+            break
+        return r
+
+    def drop_wire(r):
+        for par in r.iter():
+            for c in list(par):
+                if c.get("class") == "link":
+                    par.remove(c)
+                    return r
+        return r
+
+    def miscount(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "bundle":
+                g.set("data-count", str(int(g.get("data-count")) + 1))
+                break
+        return r
+
+    def add_record(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "pill":
+                ET.SubElement(g, NS + "rect", {"data-record": "1", "width": "4", "height": "4"})
+                break
+        return r
+
+    def drop_weakest(r):
+        for e in r.iter():
+            if e.get("data-weakest"):
+                del e.attrib["data-weakest"]
+        return r
+
+    def shift_delay(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "ticks":
+                g.set("data-ticks", str(int(g.get("data-ticks")) % 3 + 1))
+                break
+        return r
+
+    attempt("sign glyph flipped", "20261028_A-Mini-R1.svg", flip_sign)
+    attempt("line texture changed", "20261028_A-Mini-R5.svg", drop_texture)
+    attempt("red on a catalog variable", "20261028_A-Mini-R6.svg", add_red)
+    attempt("record square on a miniature", "20261028_A-Mini-R12.svg", add_record)
+    attempt("delay ticks miscounted", "20261028_A-Card-R8.svg", shift_delay)
+    attempt("sign glyph flipped", "20261028_A-Card-R10.svg", flip_sign)
+    attempt("weakest step mark removed", "20261028_A-Card-R10.svg", drop_weakest)
+    attempt("red paint outside the targets", "20261028_A-Card-R10.svg", paint_red)
+    attempt("one loop wire removed", "20261028_A-Circuit.svg", drop_wire)
+    attempt("bundle count off by one", "20261028_A-Circuit.svg", miscount)
+    attempt("red on a non-target variable", "20261028_A-Reform-R-01-Circuit.svg", add_red)
+    return cases
+
+
+def main():
+    files = sorted(ASSETS.glob("20261028_A-*.svg"))
+    board = BOARD.read_text(encoding="utf-8") if BOARD.exists() else ""
+    views, catalogs, maps = {}, {}, {}
+    for path in files:
+        f = path.name
+        raw = path.read_text(encoding="utf-8")
+        body = raw.split("?>", 1)[1].strip() if raw.startswith("<?xml") else raw
+        if body not in board:
+            fail(f, "drawing file differs from every copy on the Direction A board")
+        root = ET.fromstring(raw)
+        counts["svg_files"] += 1
+        view, res = run_file(f, root)
+        views[view] = views.get(view, 0) + 1
+        if view in ("fg-mini", "fg-lead") and not ("Touches" in f or "Reform-" in f):
+            catalogs.setdefault("fg-mini and fg-lead", set()).add(res)
+        elif view == "fg-mini-phone" and not ("Touches" in f or "Reform-" in f):
+            catalogs.setdefault("fg-mini-phone", set()).add(res)
+        if view == "circuit-map":
+            maps[f] = res
+    for k, s in catalogs.items():
+        if s != set(LOOPS):
+            fail(k, f"catalog draws {len(s)} loops, V7 has {len(LOOPS)}; missing {sorted(set(LOOPS) - s)}")
+    n_caps = check_captions(CATALOG.read_text(encoding="utf-8"))
+    real = list(problems)
+    final = json.loads(json.dumps(counts))  # counts from the real drawings, before the mutation test adds its own
+    cases = mutation_test()
+    counts.clear()
+    counts.update(final)
+    missed = [c for c in cases if not c["caught"]]
+    result = {
+        "run_note": "Checked against work/extract/atlas-v7-data.json, independently of maps_model.py and the drawing code",
+        "counts": counts, "views": views, "catalog_loops": {k: len(v) for k, v in catalogs.items()},
+        "mismatches": len(real), "problems": real[:200],
+        "mutation_test": {"cases": cases, "all_caught": not missed},
+        "summary": [
+            f"Data check against V7: {len(real)} mismatches across {counts['svg_files']} Direction A drawings and {n_caps} catalog captions.",
+            "All 23 loops drawn in each catalog set: " + ", ".join(f"{k} {len(v)}" for k, v in sorted(catalogs.items())) + ".",
+            f"Checked {counts['steps_checked']} drawn loop steps and {counts['links_checked']} circuit wires for link, from, to, sign, type, delay and grade; "
+            f"{counts['textures_checked']} line textures, {counts['ticks_checked']} delay-tick sets and {counts['glyphs_checked']} sign glyphs; "
+            f"{counts['record_squares_absent_checked']} miniature sign discs carry no record square and {counts['ticks_absent_checked']} miniature steps carry no ticks.",
+            f"Circuit: " + "; ".join(f"{k.replace('20261028_A-', '').replace('.svg', '')} draws {v[0]} wires and {v[1]} bundled connections" for k, v in maps.items()) + "; "
+            f"{counts['bundles_checked']} bundle groups checked for count and V7 areas.",
+            f"Checked {counts['red_marks_checked']} red marks, {counts['red_color_elements']} red-painted elements and {counts['weakest_checked']} weakest-step markings.",
+            f"Mutation test: {len(cases) - len(missed)} of {len(cases)} deliberate breaks caught.",
+        ],
+    }
+    OUT.write_text(json.dumps(result, indent=1, ensure_ascii=False), encoding="utf-8")
+    print("\n".join(result["summary"]))
+    for p in real[:40]:
+        print("  ", p)
+    for c in missed:
+        print("   MISSED:", c)
+    return 0 if not real and not missed else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
