@@ -48,6 +48,9 @@ HINT = {"24px": {"S": 24, "cut": 2.0, "scale": 1.0, "step": 1.0, "node_r": 2.0, 
         "16px": {"S": 16, "cut": 1.5, "scale": 2 / 3, "step": 1.5, "node_r": 1.5, "bite_extra": 1.5 * (math.sqrt(2) - 1)}}
 
 # Hand fixes by (icon, size), set by eye on the magnified review sheet:
+#   "pixel": True           draw every piece in whole pixels after snapping (Testify and Feedback loop at
+#                           16 px, Feedback loop at 24 px), so their curves stay crisp (D1-17)
+#   "pixel_fix": {"rest": {...}, "open": {...}}   pixels to add or drop after that
 #   "shift": (dx, dy)       the move before snapping, in place of the automatic choice
 #   "spec": {"node_r": r, "ovr": {...}}   drawing overrides for this size, in drawing units
 #   "x" / "y": {old: new}   coordinates to force before snapping, matched to 0.01 px after the shift
@@ -59,10 +62,8 @@ FIX = {
     # Act: the hinge pin moves out of the leaf so the bite takes 1 px of the leaf's 4 px, and the leaf
     # never reads as a C around a dot.
     ("act", "24px"): {"spec": {"ovr": {"act_pin": 3.0}}},
-    # Housing: at 24 px the eave rises half a pixel and the door starts a pixel lower, so a 2 px band
-    # of wall runs over the door; the door narrows to 3 px so the wall left of it keeps 2 px and the
-    # window keeps 2 px walls on both sides.
-    ("housing", "24px"): {"spec": {"ovr": {"housing_door": (8.0, 11.0), "housing_window": (15.0, 16.0, 3.0), "housing_eave": 11.0, "housing_door_top": 17.0}}},
+    # Housing: at 24 px the door starts 1.5 px lower, so a 2 px band of wall runs over its cut.
+    ("housing", "24px"): {"spec": {"ovr": {"housing_door_top": 17.0}}},
     # Campaign money: the back note lifts further at small sizes, so enough of it shows above the
     # front note to read as a second note and never as a red line.
     ("money", "24px"): {"spec": {"ovr": {"money_lift": 4.0}}, "shift": (-0.25, -0.25)},
@@ -72,13 +73,13 @@ FIX = {
     # Testify: at 16 px the figure is redrawn on whole pixels (shoulders 6 px across, head 4 px)
     # and the sound ring is 1.5 px thick, so the cuts on both sides of it stay a full pixel; at 24 px
     # the ring thins to 1.75 px so the microphone keeps its 2 px cut.
-    ("testify", "16px"): {"spec": {"ovr": {"testify_sc": (6.0, 21.0), "testify_sr": 4.5, "testify_hr": 3.0, "testify_ring_w": 2.25}}},
+    ("testify", "16px"): {"spec": {"ovr": {"testify_sc": (6.0, 21.0), "testify_sr": 4.5, "testify_hr": 3.0, "testify_ring_w": 2.25}}, "pixel": True},
     ("testify", "24px"): {"spec": {"ovr": {"testify_ring_w": 1.75}}},
     # Feedback loop: the two nodes sit a whole number of pixels apart so both stay round; at 24 px
     # they shrink to 5 px so the forward arrow keeps a shaft.
-    ("loop", "24px"): {"spec": {"ovr": {"loop_nr": 2.5, "loop_ty": 4.5, "loop_by": 19.5}}},
-    ("loop", "16px"): {"spec": {"ovr": {"loop_ty": 4.5, "loop_by": 19.5}}},
-    ("money", "16px"): {"spec": {"ovr": {"money_lift": 4.25}}, "shift": (0.5, 0.0)},
+    ("loop", "24px"): {"spec": {"ovr": {"loop_nr": 2.5, "loop_ty": 4.5, "loop_by": 19.5}}, "pixel": True},
+    ("loop", "16px"): {"spec": {"ovr": {"loop_ty": 4.5, "loop_by": 19.5}}, "pixel": True},
+    ("money", "16px"): {"spec": {"ovr": {"money_lift": 4.25}}, "shift": (0.5, 1 / 3)},
 }
 
 
@@ -421,7 +422,85 @@ def hint(name, size, open_):
     CENTER[:] = [S / 2 + dx, S / 2 + dy]
     pcs = move(drawing(name, size, open_), dx, dy)
     snapped, disp = snap_all(pcs, fix)
+    if fix.get("pixel"):
+        snapped = pixelize(snapped, S, 1.41 if S == 24 else 1.0, fix.get("pixel_fix", {}).get("open" if open_ else "rest", {}))
     return snapped, (dx, dy), (max(disp) if disp else 0.0)
+
+
+def _sq(x, y):
+    p = pathops.Path()
+    p.moveTo(x, y)
+    p.lineTo(x + 1, y)
+    p.lineTo(x + 1, y + 1)
+    p.lineTo(x, y + 1)
+    p.close()
+    return p
+
+
+def coverage(path, S):
+    from fontTools.pens.areaPen import AreaPen
+    b = path.bounds
+    out = {}
+    for y in range(max(0, math.floor(b[1])), min(S, math.ceil(b[3]))):
+        for x in range(max(0, math.floor(b[0])), min(S, math.ceil(b[2]))):
+            pen = AreaPen()
+            pathops.op(path, _sq(x, y), pathops.PathOp.INTERSECTION).draw(pen)
+            if abs(pen.value) > 1e-4:
+                out[(x, y)] = min(1.0, abs(pen.value))
+    return out
+
+
+def edge_dist(p, q):
+    dx, dy = abs(p[0] - q[0]), abs(p[1] - q[1])
+    return math.hypot(max(0, dx - 1), max(0, dy - 1))
+
+
+def pixelize(pcs, S, thr, fix):
+    """For the icons whose curves would leave too many half-covered pixels: every piece becomes whole
+    pixels (a pixel belongs to a piece the drawing covers by half or more), then the cut is enforced
+    between pieces, dropping the pixel the drawing covers least, red before Charcoal. fix holds hand
+    edits, {"ink+": [(x, y)], "ink-": [...], "accent+": [...], "accent-": [...]}."""
+    units = []
+    for role, d in pcs:
+        c = coverage(G.to_pathops(d), S)
+        units.append({"role": role, "cov": c, "px": {p for p, v in c.items() if v >= 0.5 - 1e-6}})
+    changed = True
+    while changed:
+        changed = False
+        for i, a in enumerate(units):
+            for b in units[i + 1:]:
+                drop = set()
+                for p in a["px"]:
+                    for q in b["px"]:
+                        if abs(p[0] - q[0]) <= 3 and abs(p[1] - q[1]) <= 3 and edge_dist(p, q) < thr - 1e-6:
+                            ca, cb = a["cov"].get(p, 0), b["cov"].get(q, 0)
+                            if abs(ca - cb) < 1e-6:
+                                pick = "a" if a["role"] == "accent" and b["role"] != "accent" else "b"
+                            else:
+                                pick = "a" if ca < cb else "b"
+                            drop.add((pick, p if pick == "a" else q))
+                for who, p in drop:
+                    (a if who == "a" else b)["px"].discard(p)
+                    changed = True
+    for role in ("ink", "accent"):
+        for p in fix.get(role + "-", []):
+            for u in units:
+                u["px"].discard(tuple(p))
+        tgt = [u for u in units if u["role"] == role]
+        for p in fix.get(role + "+", []):
+            if tgt:
+                tgt[0]["px"].add(tuple(p))
+    out = []
+    for u in units:
+        p = pathops.Path()
+        for (x, y) in sorted(u["px"]):
+            p.moveTo(x, y)
+            p.lineTo(x + 1, y)
+            p.lineTo(x + 1, y + 1)
+            p.lineTo(x, y + 1)
+            p.close()
+        out.append((u["role"], d_of(pathops.simplify(p, clockwise=True)) if u["px"] else ""))
+    return out
 
 
 def keyline_d(acc_d, ink_d, w=1.0):

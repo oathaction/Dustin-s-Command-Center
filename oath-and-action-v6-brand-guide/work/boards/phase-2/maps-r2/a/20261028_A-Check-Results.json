@@ -1,6 +1,6 @@
 {
  "board": "work/boards/20261028_Map-Direction-A-Field-Guide.html",
- "run": "2026-10-28T22:13:47.641Z",
+ "run": "2026-10-28T22:48:25.563Z",
  "widths": {
   "390": {
    "texts": 905,
@@ -100,8 +100,8 @@
    ]
   },
   "1440": {
-   "texts": 1160,
-   "svgTexts": 554,
+   "texts": 1154,
+   "svgTexts": 548,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -119,18 +119,9 @@
    },
    "cDrawings": {
     "drawings": 1,
-    "labels": 181,
+    "labels": 175,
     "outside": [],
-    "overlaps": [
-     {
-      "a": "Electoral",
-      "b": "competition"
-     },
-     {
-      "a": "Governing",
-      "b": "institutions"
-     }
-    ]
+    "overlaps": []
    },
    "height": 28412,
    "fonts": [
@@ -616,8 +607,8 @@
     ]
    },
    "1440": {
-    "texts": 310,
-    "svgTexts": 248,
+    "texts": 304,
+    "svgTexts": 242,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -635,18 +626,9 @@
     },
     "cDrawings": {
      "drawings": 1,
-     "labels": 181,
+     "labels": 175,
      "outside": [],
-     "overlaps": [
-      {
-       "a": "Electoral",
-       "b": "competition"
-      },
-      {
-       "a": "Governing",
-       "b": "institutions"
-      }
-     ]
+     "overlaps": []
     },
     "height": 3030,
     "fonts": [
@@ -702,7 +684,7 @@
   "Images loaded: 22 of 22 across all renders.",
   "axe-core 4.10 with WCAG 2.2 AA tags: 0 violating nodes across all renders (board 0 at 1440, 0 at 390).",
   "Text inside Direction A's drawings: 1518 rendered labels in 153 drawings checked; 0 outside their drawing, 0 outside their box, 0 overlapping another label, 0 overlapping a sign disc; 0 sign marks or stations outside their drawing.",
-  "Direction C's reform view as embedded here, with the same label test: 362 labels in 2 renders, 4 overlapping pairs, 0 outside the drawing. These are C's to fix (CD round two, fix 10).",
+  "Direction C's reform view as embedded here, with the same label test: 350 labels in 2 renders, 0 overlapping pairs, 0 outside the drawing.",
   "Captured 10 images for the board and the phone pages: 4 pages at 390 px, 4 grayscale proofs, and reduced copies of the retired circuit and of C's reform view.",
   "Self-test of the text check on a planted copy of the R8 card: 6 of 6 planted faults caught (overlapping label, label outside its box, label outside the drawing, label on a sign disc, 11 px text, sign mark off the edge)."
  ],

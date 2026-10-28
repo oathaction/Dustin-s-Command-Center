@@ -53,7 +53,7 @@ CLASS = {"explain": "Pillar mark", "track": "Pillar mark", "connect": "Pillar ma
          "money": "Topic symbol", "loop": "Atlas symbol"}
 REASON = {
     "explain": "The lid is red: it is the part you lift to see inside, turning on its hinge.",
-    "track": "The top stage is red: it is the stage the decision rises to next.",
+    "track": "The top stage is red: it is the stage the decision rises to next, lifting from its seat.",
     "connect": "The bridge is red: it is the ground that spans the gap and joins the two halves.",
     "act": "The door leaf is red: it is the part you push to walk through. The node is its hinge.",
     "ballot": "The paper is red: it is your marked vote, on its way into the box.",
@@ -135,14 +135,16 @@ def explain(step=0.0):
 def track(step=0.0):
     """Three stages of equal rise and run, climbing from bottom left to top right on the landscape
     keyline. The node rests in the joint between the first and second stages. The top stage is a red
-    block resting on the stair across the cut; it rises."""
+    block of the full rise; the stair under it drops by the cut, so the block's foot lines up with the
+    second tread and the block rests across the cut. In the row state it rises."""
     x0, x1, top, base = 3.5, 20.5, 4.0, 20.0
-    u, r = (x1 - x0) / 3, (base - top) / 3
-    xs = [x0 + u * i for i in range(4)]
+    u, r = (x1 - x0 - CUT) / 3, (base - top) / 3
+    xs = [x0, x0 + u, x0 + 2 * u]
     t1, t2 = base - r, base - 2 * r
     nc = (xs[1] - NODE_R - CUT, t1 - NODE_R - CUT)
-    stair = [(xs[0], base, R1), (xs[0], t1, R1), (xs[1], t1, 0), (xs[1], t2, R1), (xs[3], t2, R1), (xs[3], base, R1)]
-    red = rect(xs[2], top - step, u, t2 - CUT - top, R1)
+    stair = [(xs[0], base, R1), (xs[0], t1, R1), (xs[1], t1, 0), (xs[1], t2, R1), (xs[2], t2, R1), (xs[2], t2 + CUT, 0),
+             (x1, t2 + CUT, R1), (x1, base, R1)]
+    red = rect(xs[2] + CUT, top - step, u, t2 - top, R1)
     return [("ink", contour_d(stair)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(red))]
 
 
@@ -204,7 +206,7 @@ def ballot(step=0.0):
     ballot oval knocked out. Its lower third sinks into the slot and behind the box's face; in the row
     state it sinks 2 units deeper."""
     bx0, bx1, top, bot = 3.5, 20.5, 11.0, 20.5
-    pw = 5.5
+    pw = 5.0
     depth = 2.75
     sx0, sx1 = 12 - pw / 2 - CUT, 12 + pw / 2 + CUT
     floor = top + depth
@@ -212,7 +214,7 @@ def ballot(step=0.0):
     ptop = 3.0 + step
     pb = floor - CUT
     paper = contour_d(rect(12 - pw / 2, ptop, pw, pb - ptop, R1))
-    mark = ellipse_d(12.0, ptop + CUT + 1.1, 1.75, 1.1, hole=True)
+    mark = ellipse_d(12.0, ptop + CUT + 1.1, 1.5, 1.1, hole=True)
     return [("ink", contour_d(box)), ("accent", paper + mark)]
 
 
@@ -261,20 +263,19 @@ def testify(step=0.0):
 
 
 def housing(step=0.0):
-    """A house with a pitched roof and a door. The door is red; a window keeps it a house. In the row
+    """A house with a pitched roof over its eaves and a door at its center. The door is red. In the row
     state the door swings open, its free edge moving 2 units toward its hinge."""
-    rx0, rx1, eave = 3.0, 21.0, OVR.get("housing_eave", 11.5)
+    rx0, rx1, eave = 3.0, 21.0, OVR.get("housing_eave", 11.0)
     apex = (12.0, eave - (rx1 - rx0) / 2)
     roof = [(rx0, eave, R1), (*apex, R1), (rx1, eave, R1)]
-    bx0, bx1, by0, by1 = 4.0, 20.0, eave + CUT, 21.0
-    dx0, dx1 = OVR.get("housing_door", (7.25, 11.75))
-    dy0 = OVR.get("housing_door_top", 16.0)
+    bx0, bx1 = OVR.get("housing_body", (5.5, 18.5))
+    by0, by1 = eave + CUT, 21.0
+    dx0, dx1 = OVR.get("housing_door", (10.0, 14.0))
+    dy0 = OVR.get("housing_door_top", 15.5)
     body = [(bx0, by0, R1), (bx1, by0, R1), (bx1, by1, R1), (dx1 + CUT, by1, R1), (dx1 + CUT, dy0 - CUT, 0),
             (dx0 - CUT, dy0 - CUT, 0), (dx0 - CUT, by1, R1), (bx0, by1, R1)]
-    wx, wy, ws = OVR.get("housing_window", (15.25, 15.25, 3.0))
-    window = rect_hole(wx, wy, ws, ws)
     door = rect(dx0, dy0, dx1 - dx0 - step, by1 - dy0, R1)
-    return [("ink", contour_d(roof)), ("ink", contour_d(body) + contour_d(window)), ("accent", contour_d(door))]
+    return [("ink", contour_d(roof)), ("ink", contour_d(body)), ("accent", contour_d(door))]
 
 
 def _note(cx, cy, w, h, ang, r):
@@ -290,11 +291,12 @@ def money(step=0.0):
     money changing hands."""
     import pathops
     from icons_geom import d_of
-    w, h, cy, fcx = 16.0, 9.5, 15.0, 11.25
+    w, h, cy, fcx = 16.0, 9.5, 13.0, 11.25
     front = contour_d(_note(fcx, cy, w, h, 0, R1)) + circle_d(fcx, cy, 2.75, hole=True)
     front += contour_d(rect_hole(fcx - w / 2 + 1.75, cy - h / 2 + 1.75, 2.5, CUT))
     front += contour_d(rect_hole(fcx + w / 2 - 1.75 - 2.5, cy + h / 2 - 1.75 - CUT, 2.5, CUT))
-    back = contour_d(_note(fcx + 2.25, cy - OVR.get("money_lift", 3.5) - step, w, h, -12.0, R1))
+    # The row state lifts the note 1.6 units, short of the full 2, so its corner stays in the live area.
+    back = contour_d(_note(fcx + 2.25, cy - OVR.get("money_lift", 3.5) - min(step, 1.6), w, h, -12.0, R1))
     grown = G.to_pathops(contour_d(_note(fcx, cy, w + 2 * CUT, h + 2 * CUT, 0, R1 + CUT)))
     red = pathops.simplify(pathops.op(G.to_pathops(back), grown, pathops.PathOp.DIFFERENCE), clockwise=True)
     return [("ink", front), ("accent", d_of(red))]

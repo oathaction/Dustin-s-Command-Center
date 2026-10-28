@@ -239,8 +239,7 @@ The review (`work/handoffs/phase-2/20261028_CD-Review-Of-Map-Round-Two.md`) pick
 **Not tested:**
 - Labels crossing lines.
 - The data in C's embedded view, which is C's verifier's job.
-- My label test finds 4 overlapping pairs in C's embedded view: the two-line district names "Electoral competition" and "Governing institutions", which overlap at tight leading. These are C's to fix (fix 10).
-- Whether C's in-progress poster fixes change the embedded view or the network data. Rebuilding picks up the change, and the verifier fails until the copies match.
+- Nothing further in C's embedded view. After C's fix pass I rebuilt from C's final files. No station moved, the view's two-line district names no longer overlap, and my label test now finds 0 overlapping pairs in it. If C changes the view again, the verifier fails until the next build.
 - Screen readers, other browsers, print and zoom.
 
 **Change log (this pass):**

@@ -27,7 +27,8 @@
    },
    "d96": {
     "density": 0.262,
-    "red_share": 0.062,
+    "red_share": 0.11,
+    "red_over_ink_share": 0.436,
     "centroid": [
      -0.035,
      -0.015
@@ -73,6 +74,7 @@
    "d96": {
     "density": 0.277,
     "red_share": 0.138,
+    "red_over_ink_share": 0.0,
     "centroid": [
      0.038,
      0.035
@@ -117,7 +119,8 @@
    },
    "d96": {
     "density": 0.287,
-    "red_share": 0.088,
+    "red_share": 0.134,
+    "red_over_ink_share": 0.345,
     "centroid": [
      -0.0,
      0.021
@@ -163,6 +166,7 @@
    "d96": {
     "density": 0.333,
     "red_share": 0.097,
+    "red_over_ink_share": 0.003,
     "centroid": [
      0.005,
      0.046
@@ -208,6 +212,7 @@
    "d96": {
     "density": 0.33,
     "red_share": 0.125,
+    "red_over_ink_share": 1.0,
     "centroid": [
      -0.0,
      0.087
@@ -253,6 +258,7 @@
    "d96": {
     "density": 0.379,
     "red_share": 0.068,
+    "red_over_ink_share": 0.0,
     "centroid": [
      -0.012,
      0.013
@@ -298,6 +304,7 @@
    "d96": {
     "density": 0.268,
     "red_share": 0.11,
+    "red_over_ink_share": 0.0,
     "centroid": [
      -0.053,
      0.098
@@ -343,6 +350,7 @@
    "d96": {
     "density": 0.272,
     "red_share": 0.094,
+    "red_over_ink_share": 0.0,
     "centroid": [
      -0.009,
      0.01
@@ -387,7 +395,8 @@
    },
    "d96": {
     "density": 0.302,
-    "red_share": 0.108,
+    "red_share": 0.12,
+    "red_over_ink_share": 0.102,
     "centroid": [
      0.011,
      0.07
@@ -432,7 +441,8 @@
    },
    "d96": {
     "density": 0.18,
-    "red_share": 0.056,
+    "red_share": 0.115,
+    "red_over_ink_share": 0.512,
     "centroid": [
      -0.007,
      -0.086
