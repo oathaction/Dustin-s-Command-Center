@@ -104,7 +104,7 @@ def checks_html():
 
 RUBRIC = [
     ("Craft", 4, "Octilinear routes on one 36 px grid, one corner radius with concentric parallel tracks, zero crossings, no truncated name, "
-              "every label and bullet placed by a collision score and reviewed at 2x. Two small touches remain at 2x (listed under the tests)."),
+              "every label and bullet placed by a collision score and reviewed at 2x. Three near-touches remain at 2x, listed under the tests."),
     ("Clarity", 4, "Each loop reads as a closed line with its stations on it, and the legend teaches the rest. With one ink, a reader cannot "
                    "follow a line through the E1 hub on the poster alone; the working map lights one line to answer that."),
     ("Brand fidelity", 4, "Locked palette and faces only. Prussian carries no red; red appears on White at one reform's targets. "
