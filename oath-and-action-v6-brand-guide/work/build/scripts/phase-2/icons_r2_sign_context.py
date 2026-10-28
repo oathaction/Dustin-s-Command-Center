@@ -24,7 +24,7 @@ FONTS = ('<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@
 
 def page(body, w, h, css):
     return (f'<!doctype html><html><head><meta charset="utf-8">{FONTS}<style>'
-            f'html,body{{margin:0;padding:0}}body{{width:{w}px;height:{h}px;overflow:hidden;background:{NEWS};color:{CHAR};'
+            f'html,body{{margin:0;padding:0}}body{{width:{w}px;height:{h}px;overflow:hidden;position:relative;background:{NEWS};color:{CHAR};'
             f'font-family:Inter,Arial,sans-serif}}{css}</style></head><body>{body}</body></html>')
 
 
