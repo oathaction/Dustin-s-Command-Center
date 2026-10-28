@@ -91,6 +91,7 @@ def build_drawings():
     hg["arrow"] = (18, 9)
     hg["gap"] = 5
     out["emblem"] = {k: D.emblem(k, hg) for k in ("R", "B")}
+    out["emblem_geo"] = hg
     save("20261028_B-Emblem-Snowball-240.svg", out["emblem"]["R"])
     save("20261028_B-Emblem-Thermostat-240.svg", out["emblem"]["B"])
     out["glyph"] = {k: D.glyph24(k) for k in ("R", "B")}
@@ -144,7 +145,7 @@ def geometry_data(dr):
             "rule": "Snowball: p(t) = r (1 + (k - 1) t / 2 pi), t clockwise from twelve o'clock, one turn. Thermostat: circle at r. "
                     "Stations at t_i = 2 pi i / n. k is one constant for every reinforcing loop.",
             "k": D.K, "k_review_start": D.K_BRIEF,
-            "scales": {"miniature": geo, "card": dict(cg), "phone_card": D.phone_geo(), "head_emblem": D.head_geo()},
+            "scales": {"miniature": geo, "card": dict(cg), "phone_card": D.phone_geo(), "head_emblem": dr["emblem_geo"]},
             "loops": rows}
     save("20261028_Direction-B-Geometry-Data.json", json.dumps(data, indent=1, ensure_ascii=False))
 

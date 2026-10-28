@@ -1,5 +1,5 @@
 {
- "run": "2026-10-28T20:33:23.223Z",
+ "run": "2026-10-28T20:41:15.216Z",
  "pages": {
   "Loop-Catalog": {
    "390": {
@@ -374,7 +374,7 @@
  },
  "board": {
   "390": {
-   "texts": 285,
+   "texts": 282,
    "svgTexts": 44,
    "minSize": 13,
    "under13": [],
@@ -382,7 +382,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 50750,
+   "height": 50398,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -477,7 +477,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 26469,
+   "height": 26558,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",

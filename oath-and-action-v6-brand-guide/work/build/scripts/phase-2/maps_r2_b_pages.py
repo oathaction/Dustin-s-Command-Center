@@ -60,8 +60,8 @@ def weakest_text(lp):
             if g not in grades:
                 grades.append(g)
         if len(grades) == 1:
-            return f"Least certain: {_join_ids([s['id'] for s in ws])}, {grades[0]}"
-        return "Least certain: " + ", ".join(f'{s["id"]}, {D.GRADE_WORD[s["evidence"]].lower()}' for s in ws)
+            return f"Least certain: {_join_ids([s['id'] for s in ws])},\u00a0{grades[0].replace(' ', chr(160))}"
+        return "Least certain: " + ", ".join(f'{s["id"]},\u00a0{D.GRADE_WORD[s["evidence"]].lower()}' for s in ws)
     grades = sorted({D.GRADE_WORD[s["evidence"]] for s in steps})
     if len(grades) == 1:
         return f"Every step graded {grades[0].lower()}"
@@ -71,7 +71,7 @@ def weakest_text(lp):
 def turn_text(lp):
     if lp["conceptual"]:
         return "no complete numbered chain"
-    return f'{lp["delay_word"]} a turn'
+    return f'{lp["delay_word"]} a turn'.replace("10 years", "10\u00a0years").replace(" a turn", "\u00a0a\u00a0turn")
 
 
 def kind_word(lp):
@@ -198,7 +198,7 @@ body{background:var(--news)}
 .st{list-style:none;margin:0 0 10px;padding:0;font-size:13px;line-height:1.4}
 .st li{display:grid;grid-template-columns:26px 1fr;gap:4px}
 .st b{font-weight:700}
-.fx{margin:auto 0 0;padding-top:10px;border-top:1px solid #C9C6BF;font-size:13px;line-height:1.45;color:var(--deep)}
+.fx{margin:auto 0 0;padding-top:10px;border-top:1px solid #C9C6BF;font-size:13px;line-height:1.45;color:var(--deep);text-wrap:pretty}
 .note{background:var(--white);padding:18px 18px 22px;border-left:6px solid var(--ink)}
 .note h3{font:800 20px/1.15 var(--display);margin:0 0 8px}
 .note p{margin:0 0 10px;font-size:14px;line-height:1.5}

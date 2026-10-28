@@ -434,6 +434,8 @@ def run(files_text=None, pages_text=None, board_text=None):
             lid = m.group(1)
             rid = re.search(r'<article data-loop="[^"]+" data-reform="([^"]*)"', h).group(1)
             check_card_page(name, h, lid, rid, prob)
+            if LOOPS[lid]["type"] == "R" and HONEST not in h:
+                prob.append(f"{name}: the printed honesty line is missing from a snowball card")
             inline_copies(name, h, [ASSETS / f"20261028_B-Card-{lid}.svg", ASSETS / f"20261028_B-Card-Phone-{lid}.svg"], prob)
         if "Reform-View-R-01" in name:
             counts["pages_checked"] += 1
