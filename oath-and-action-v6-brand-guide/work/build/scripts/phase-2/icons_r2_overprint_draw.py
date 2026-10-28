@@ -61,34 +61,44 @@ REASON = {
 W = 1.5                  # display stroke, in grid units
 R_RECT = 1.25            # center-line corner radius for rectangles (2-unit outer radius)
 NODE_R = 1.5             # pillar-mark node, a solid ink disc 3 units across
-OFFSET = (-2.0, 2.0)     # the red plane's fixed off-register shift, toward the lower left
+OFFSET = (-1.5, 1.5)     # the red plane's fixed off-register shift, toward the lower left (2.1 units)
 
 
 # ------------------------------------------------------------------ center-line construction
 
 class Pen:
-    """A center-line path: lines and circular arcs (angles in degrees, screen coordinates,
-    clockwise positive)."""
+    """A center-line path of lines and circular arcs (angles in degrees, screen coordinates,
+    clockwise positive). It keeps its commands, so stroke() can build the outline from exact
+    primitives: a bar for each line, an annular sector for each arc, a disc at each corner and end."""
 
     def __init__(self):
+        self.ops = []
         self.p = po.Path()
         self.open = False
 
     def M(self, x, y):
+        self.ops.append(("M", x, y))
         self.p.moveTo(x, y)
         self.open = True
         return self
 
     def L(self, x, y):
+        self.ops.append(("L", x, y))
         self.p.lineTo(x, y)
         return self
 
     def A(self, cx, cy, r, a0, a1):
+        t = math.radians(a0)
+        start = (cx + r * math.cos(t), cy + r * math.sin(t))
+        if not self.ops or self.ops[-1][0] == "Z":
+            self.ops.append(("M", *start))
+        self.ops.append(("A", cx, cy, r, a0, a1))
         g._arc_to(self.p, cx, cy, r, a0, a1, move=not self.open)
         self.open = True
         return self
 
     def Z(self):
+        self.ops.append(("Z",))
         self.p.close()
         self.open = False
         return self
@@ -169,12 +179,99 @@ def line_c(*pts):
     return pen
 
 
+def _bar(p, q, w):
+    dx, dy = q[0] - p[0], q[1] - p[1]
+    L = math.hypot(dx, dy)
+    if L < 1e-9:
+        return g.empty()
+    nx, ny = -dy / L * w / 2, dx / L * w / 2
+    return poly((p[0] + nx, p[1] + ny), (q[0] + nx, q[1] + ny), (q[0] - nx, q[1] - ny), (p[0] - nx, p[1] - ny))
+
+
+def _dir_line(p, q):
+    return _unit((q[0] - p[0], q[1] - p[1]))
+
+
+def _dir_arc(a, sweep):
+    t = math.radians(a)
+    s_ = 1 if sweep > 0 else -1
+    return (-math.sin(t) * s_, math.cos(t) * s_)
+
+
 def stroke(pen, w=W):
-    p = po.Path()
-    pen.p.draw(p.getPen())
-    p.stroke(w, po.LineCap.ROUND_CAP, po.LineJoin.ROUND_JOIN, 4)
-    p.convertConicsToQuads()
-    return g.simplify(p)
+    """Outline a center-line Pen at width w with round caps and round joins, built from exact
+    primitives so every edge is a straight line or a true circular arc."""
+    parts, discs = [], []
+    cur = start = None
+    seg_dirs = []          # (start_dir, end_dir, start_pt, end_pt) per segment of the current contour
+    contours = []
+
+    def close_contour(closed):
+        if not seg_dirs:
+            if cur is not None:
+                discs.append(cur)
+            return
+        n = len(seg_dirs)
+        for i in range(n - 1):
+            d_out, d_in = seg_dirs[i][1], seg_dirs[i + 1][0]
+            if d_out[0] * d_in[0] + d_out[1] * d_in[1] < 0.9999:
+                discs.append(seg_dirs[i][3])
+        if closed:
+            d_out, d_in = seg_dirs[-1][1], seg_dirs[0][0]
+            if d_out[0] * d_in[0] + d_out[1] * d_in[1] < 0.9999:
+                discs.append(seg_dirs[0][2])
+        else:
+            discs.append(seg_dirs[0][2])
+            discs.append(seg_dirs[-1][3])
+
+    for op in pen.ops:
+        if op[0] == "M":
+            if seg_dirs:
+                close_contour(False)
+            seg_dirs = []
+            cur = start = (op[1], op[2])
+        elif op[0] == "L":
+            q = (op[1], op[2])
+            if math.hypot(q[0] - cur[0], q[1] - cur[1]) > 1e-9:
+                parts.append(_bar(cur, q, w))
+                d = _dir_line(cur, q)
+                seg_dirs.append((d, d, cur, q))
+            cur = q
+        elif op[0] == "A":
+            _, cx, cy, r, a0, a1 = op
+            t0, t1 = math.radians(a0), math.radians(a1)
+            p0 = (cx + r * math.cos(t0), cy + r * math.sin(t0))
+            p1 = (cx + r * math.cos(t1), cy + r * math.sin(t1))
+            if math.hypot(p0[0] - cur[0], p0[1] - cur[1]) > 1e-6:
+                parts.append(_bar(cur, p0, w))
+                d = _dir_line(cur, p0)
+                seg_dirs.append((d, d, cur, p0))
+            ri = max(0.0, r - w / 2)
+            if abs(a1 - a0) >= 359.999:
+                parts.append(g.ring(cx, cy, r + w / 2, ri) if ri > 0 else circle(cx, cy, r + w / 2))
+            elif ri > 0:
+                parts.append(g.sector(cx, cy, r + w / 2, ri, min(a0, a1), max(a0, a1)))
+            else:
+                pie = po.Path()
+                pie.moveTo(cx, cy)
+                g._arc_to(pie, cx, cy, r + w / 2, min(a0, a1), max(a0, a1), move=False)
+                pie.close()
+                parts.append(g.simplify(pie))
+            seg_dirs.append((_dir_arc(a0, a1 - a0), _dir_arc(a1, a1 - a0), p0, p1))
+            cur = p1
+        elif op[0] == "Z":
+            if start is not None and math.hypot(start[0] - cur[0], start[1] - cur[1]) > 1e-6:
+                parts.append(_bar(cur, start, w))
+                d = _dir_line(cur, start)
+                seg_dirs.append((d, d, cur, start))
+            close_contour(True)
+            seg_dirs = []
+            cur = start
+    if seg_dirs:
+        close_contour(False)
+    parts += [circle(x, y, w / 2) for (x, y) in discs]
+    parts = [q for q in parts if not g.is_empty(q)]
+    return union(*parts) if parts else g.empty()
 
 
 def chevron(tip, direction, arm=3.0):
@@ -192,7 +289,8 @@ def stadium(x0, y0, x1, y1):
     return rrect(x0, y0, x1 - x0, y1 - y0, r)
 
 
-def shifted(path, d=OFFSET):
+def shifted(path, d=None):
+    d = d or OFFSET
     return g.transform(path, 1.0, d[0], d[1])
 
 
@@ -210,75 +308,90 @@ def explain(var=None):
     # right as a closed lid. The node sits at the body's inner corner, where the lid lifted from.
     body = rpoly([(3, 7), (10, 7), (10, 14), (17, 14), (17, 21), (3, 21)], [R_RECT, R_RECT, 0, R_RECT, R_RECT, R_RECT])
     lid = rrect_c(14, 3, 21, 10)
-    reg = rrect(14, 3, 7, 7, R_RECT)          # the plane in register: the lid's fill
+    reg = rrect(14, 3, 7, 7, R_RECT)          # in register: the lid's fill
     return build([body, lid], [(10, 14, NODE_R)], reg)
 
 
 def track(var=None):
-    # Three stages on a rising stair, drawn as one closed block; the node rides the middle tread.
+    # Three stages on a rising stair, drawn as one closed block. The node sits on the nose of the
+    # middle stage, where the decision steps up.
     st = rpoly([(3, 20), (3, 16), (9, 16), (9, 12), (15, 12), (15, 8), (21, 8), (21, 20)],
                [R_RECT, R_RECT, 0, R_RECT, 0, R_RECT, R_RECT, R_RECT])
     reg = rrect(15, 8, 6, 6, R_RECT)          # in register: the top stage
-    return build([st], [(12, 12, NODE_R)], reg)
+    node = (9, 12) if var != "mid" else (12, 12)
+    return build([st], [(*node, NODE_R)], reg)
 
 
-def _half(cx, cy, r, side, gap):
-    """One half of a circle of radius r, cut by a chord gap/2 from the center, corners rounded."""
-    big = 40
-    if side < 0:
-        region = intersect(circle(cx, cy, r), rect(cx - big, cy - big, big - gap / 2, 2 * big))
-    else:
-        region = intersect(circle(cx, cy, r), rect(cx + gap / 2, cy - big, big, 2 * big))
-    return region
-
-
-def _outline_pen(region, rcorner=1.0):
-    """Treat a filled region as a center-line outline, with convex corners rounded by rcorner."""
-    import icons_draw as D  # round one, shared; imported, never changed
-    rr = D.round_convex(region, rcorner) if rcorner > 0 else region
+def half_pen(cx, cy, R, gap, side, rf=1.0):
+    """One half of a circle of radius R cut by a chord gap/2 from the center (side -1 left,
+    +1 right), as a center line whose two corners take fillets of radius rf, tangent to the chord
+    and to the circle."""
+    xc_rel = gap / 2                           # chord distance from the center
+    fx = xc_rel + rf                           # fillet center distance from the center, in x
+    fy = math.sqrt((R - rf) ** 2 - fx ** 2)
+    phi = math.degrees(math.atan2(-fy, -fx))   # direction from the center to the top-left fillet
     pen = Pen()
-    rr.draw(pen.p.getPen())
-    return pen
+    if side < 0:
+        x = cx - xc_rel
+        pen.M(x, cy + fy).L(x, cy - fy)
+        pen.A(cx - fx, cy - fy, rf, 0, phi)            # top fillet
+        pen.A(cx, cy, R, phi, -360 - phi)               # the round side
+        pen.A(cx - fx, cy + fy, rf, -phi, 0)            # bottom fillet
+    else:
+        th = 180 + phi
+        x = cx + xc_rel
+        pen.M(x, cy - fy).L(x, cy + fy)
+        pen.A(cx + fx, cy + fy, rf, 180, th)
+        pen.A(cx, cy, R, th, -th)
+        pen.A(cx + fx, cy - fy, rf, -th, -180)
+    return pen.Z()
 
 
 def connect(var=None):
     # One circle in two halves held apart; the node sits in the gap on the center line.
-    r, gap = 9.25, 8.0
-    left = _outline_pen(_half(12, 12, r, -1, gap), 1.0)
-    right = _outline_pen(_half(12, 12, r, +1, gap), 1.0)
-    reg = circle(12, 12, 3.25)                # in register: a disc centered in the gap
+    R, gap = 9.25, 8.0
+    left = half_pen(12, 12, R, gap, -1, 1.0)
+    right = half_pen(12, 12, R, gap, +1, 1.0)
+    if var == "low":
+        reg = circle(12, 16, 3.0)             # in register: low in the gap, the ground under the node
+    elif var == "small":
+        reg = circle(12, 12, 2.6)
+    else:
+        reg = circle(12, 12, 3.0)             # in register: a disc centered in the gap
     return build([left, right], [(12, 12, NODE_R)], reg)
 
 
 def act(var=None):
-    # A door swung open: the leaf, hinged at the doorway's left jamb, comes toward the reader in
-    # perspective; the frame runs over the opening and down the far jamb. The node is the handle.
-    leaf = rpoly([(4, 2.75), (11, 5), (11, 21), (4, 21)], [1.0, 0.0, 0.0, 1.0])
-    frame = rpoly([(11, 5), (19, 5), (19, 21)], [0, R_RECT, 0], closed=False)
-    lines = [leaf, frame]
-    if var == "floor":
-        lines.append(line_c((2.5, 21), (21.5, 21)))
-    reg = rrect(13, 12, 5.5, 8, R_RECT)       # in register: light in the lower doorway
-    return build(lines, [(7.5, 12.5, NODE_R)], reg)
+    # A door swung open on its floor. The leaf, hinged at the doorway's left side, comes toward the
+    # reader in perspective; the frame runs over the opening only and down the far jamb, held
+    # apart from the leaf as Direction A draws it. The node is the handle.
+    floor = line_c((2.5, 21), (21.5, 21))
+    leaf = rpoly([(4, 21), (4, 2.75), (10.5, 5), (10.5, 21)], [0, 1.0, 0.6, 0], closed=False)
+    frame = rpoly([(13.25, 5), (19.5, 5), (19.5, 21)], [0, R_RECT, 0], closed=False)
+    reg = rrect(14, 13.5, 5, 6.5, R_RECT)     # in register: light on the floor of the doorway
+    return build([leaf, frame, floor], [(7.25, 12.5, NODE_R)], reg)
 
 
 def ballot(var=None):
-    # A box with a slot in its top; a paper goes in through the slot. The red is the filled oval.
-    box = rpoly([(7, 12), (3.5, 12), (3.5, 21), (20.5, 21), (20.5, 12), (17, 12)], [0, R_RECT, R_RECT, R_RECT, R_RECT, 0],
-                closed=False)
-    paper = rpoly([(8.5, 14.5), (8.5, 3), (15.5, 3), (15.5, 14.5)], [0, 1.0, 1.0, 0], closed=False)
-    reg = stadium(9.5, 5.5, 16.0, 10.0)       # in register: the oval on the paper
-    return build([box, paper], [], reg)
+    # A box with a paper going in at its top. The paper carries a printed oval; the red is the
+    # voter's mark, which covers the oval to its outer edge and prints off register.
+    top = 12.5
+    box = rrect_c(3.5, top, 20.5, 21)
+    paper = rpoly([(7, top), (7, 2.75), (17, 2.75), (17, top)], [0, 1.0, 1.0, 0], closed=False)
+    ox0, oy0, ox1, oy1 = 9.5, 5.0, 14.5, 8.25
+    oval = rpoly([(ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)], (oy1 - oy0) / 2)
+    reg = stadium(ox0 - 0.75, oy0 - 0.75, ox1 + 0.75, oy1 + 0.75)   # in register: the oval, edge to edge
+    return build([box, paper, oval], [], reg)
 
 
 def bill(var=None):
-    # A page with a folded corner and lines of text; the red is a highlight under one line.
+    # A page with a folded corner and lines of text; the red is a highlight under the last line.
     page = rpoly([(5, 3), (14, 3), (19, 8), (19, 21), (5, 21)], [R_RECT, 0, 0, R_RECT, R_RECT])
     fold = rpoly([(14, 3), (14, 8), (19, 8)], [0, 1.0, 0], closed=False)
-    t1 = line_c((8.5, 12), (15.5, 12))
-    t2 = line_c((8.5, 15), (15.5, 15))
-    t3 = line_c((8.5, 18), (12.5, 18))
-    reg = stadium(8.25, 13.0, 17.75, 17.0)    # in register: a highlight over the middle line
+    t1 = line_c((8.5, 9.5), (11, 9.5))
+    t2 = line_c((8.5, 12.5), (15.5, 12.5))
+    t3 = line_c((8.5, 15.5), (15.5, 15.5))
+    reg = stadium(8.75, 13.25, 17.25, 17.75)  # in register: a highlight over the last line
     return build([page, fold, t1, t2, t3], [], reg)
 
 
@@ -287,9 +400,9 @@ def testify(var=None):
     head = ring_c(15, 7, 3.0)
     shoulders = arc_c(15, 19.5, 5.5, 180, 360)
     table = line_c((2.75, 19.5), (21.25, 19.5))
-    mic = rpoly([(5.5, 7.5), (8.5, 7.5), (8.5, 12.5), (5.5, 12.5)], 1.5)
+    mic = rpoly([(5.5, 7), (8.5, 7), (8.5, 12.5), (5.5, 12.5)], 1.5)
     stem = line_c((7, 12.5), (7, 19.5))
-    reg = circle(7, 10, 3.25)                 # in register: behind the microphone head
+    reg = circle(7, 9.75, 3.25)               # in register: behind the microphone head
     return build([head, shoulders, table, mic, stem], [], reg)
 
 
@@ -303,34 +416,39 @@ def housing(var=None):
 
 
 def money(var=None):
-    # An open hand, palm up, with a coin resting on it; the wrist sits behind a cuff.
-    cuff = line_c((3, 13.5), (3, 21))
-    hand = Pen().M(5.5, 15).L(17.5, 15).A(17.5, 17.25, 2.25, -90, 90).L(5.5, 19.5)
-    thumb = line_c((8.5, 15), (11, 12.5))
-    coin = ring_c(15, 9, 3.5)
-    reg = circle(15, 9, 3.5)                  # in register: the coin's fill
-    return build([cuff, hand, thumb, coin], [], reg)
+    # An open hand, palm up, with a coin lifting off it; the red is the coin, printed off register.
+    # A cuff at the wrist; the thumb lies forward along the top of the hand and steps down to the
+    # palm; the fingers end in one round tip.
+    cuff = rpoly([(2.5, 12.5), (5, 12.5), (5, 21.5), (2.5, 21.5)], 0.75)
+    hand = rpoly([(5, 13.5), (10.75, 13.5), (10.75, 15.5), (20.25, 15.5), (20.25, 20), (5, 20)],
+                 [0, 1.5, 0.5, 2.25, 2.25, 0], closed=False)
+    coin = ring_c(15, 7, 3.25)
+    reg = circle(15, 7, 3.25)                 # in register: the coin's fill
+    return build([cuff, hand, coin], [], reg)
+
+def _arrow_on_arc(c, R, ang, sense, arm):
+    """A chevron sitting on an arc at angle ang, pointing along the arc (+1 clockwise on screen)."""
+    t = math.radians(ang)
+    tip = (c[0] + R * math.cos(t), c[1] + R * math.sin(t))
+    return chevron(tip, ang + 90 * sense, arm)
 
 
 def loop(var=None):
-    # Two nodes joined by two arrowed arcs into a loop, as a systems map draws a feedback loop.
-    lx, rx, cy = 5.5, 18.5, 12
+    # Two nodes joined by two arcs into one closed loop, as a systems map draws a feedback loop;
+    # an arrowhead on each arc gives the direction of travel.
+    cy, lx, rx = 12, 5.0, 19.0
     half = (rx - lx) / 2
-    s = 5.0
-    R = (half * half + s * s) / (2 * s)
-    top_c = (12, cy + R - s)
-    bot_c = (12, cy - R + s)
+    sg = 4.5
+    R = (half * half + sg * sg) / (2 * sg)
+    top_c, bot_c = (12, cy + R - sg), (12, cy - R + sg)
     a = math.degrees(math.asin(half / R))
-    gap_deg = math.degrees(2.6 / R)
-    top = arc_c(top_c[0], top_c[1], R, -90 - a + gap_deg, -90 + a - gap_deg)
-    bot = arc_c(bot_c[0], bot_c[1], R, 90 - a + gap_deg, 90 + a - gap_deg)
-    t_end = math.radians(-90 + a - gap_deg)
-    tip_t = (top_c[0] + R * math.cos(t_end), top_c[1] + R * math.sin(t_end))
-    b_end = math.radians(90 + a - gap_deg)
-    tip_b = (bot_c[0] + R * math.cos(b_end), bot_c[1] + R * math.sin(b_end))
-    heads = chevron(tip_t, math.degrees(t_end) + 90, 2.6) + chevron(tip_b, math.degrees(b_end) + 90, 2.6)
+    top = arc_c(top_c[0], top_c[1], R, -90 - a, -90 + a)
+    bot = arc_c(bot_c[0], bot_c[1], R, 90 - a, 90 + a)
+    arm = 2.0
+    heads = _arrow_on_arc(top_c, R, -90 + 4, +1, arm) + _arrow_on_arc(bot_c, R, 90 + 4, +1, arm)
+    rn = 1.75
     reg = circle(rx, cy, 3.25)                # in register: under the right node
-    return build([top, bot] + heads, [(lx, cy, NODE_R), (rx, cy, NODE_R)], reg)
+    return build([top, bot] + heads, [(lx, cy, rn), (rx, cy, rn)], reg)
 
 
 DRAW = {"explain": explain, "track": track, "connect": connect, "act": act, "ballot": ballot, "bill": bill,
