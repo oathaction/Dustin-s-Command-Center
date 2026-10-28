@@ -97,10 +97,16 @@ def track(step=0.0):
     y3 = 5.0 - step
     nc = (x2 + CUT / 2, 12.0)
     Rb = NODE_R + CUT
-    # step 2's right edge x = x2 is bitten by the circle around nc
+    # step 2's top-right corner is bitten by the circle around nc: the bite starts on the tread
+    # when the circle reaches above it, and ends on the step's right edge
     h = math.sqrt(Rb ** 2 - (x2 - nc[0]) ** 2)
-    stair = [(2, base, R1), (2, y1, R1), (x1, y1, 0), (x1, y2, R1), (x2, y2, R1), (x2, nc[1] - h, R1),
-             ("arc", *nc, False), (x2, nc[1] + h, R1), (x2, base, R1)]
+    if nc[1] - h < y2:
+        xa = nc[0] - math.sqrt(Rb ** 2 - (nc[1] - y2) ** 2)
+        stair = [(2, base, R1), (2, y1, R1), (x1, y1, 0), (x1, y2, R1), (xa, y2, R1),
+                 ("arc", *nc, False), (x2, nc[1] + h, R1), (x2, base, R1)]
+    else:
+        stair = [(2, base, R1), (2, y1, R1), (x1, y1, 0), (x1, y2, R1), (x2, y2, R1), (x2, nc[1] - h, R1),
+                 ("arc", *nc, False), (x2, nc[1] + h, R1), (x2, base, R1)]
     h3 = math.sqrt(Rb ** 2 - (x3 - nc[0]) ** 2)
     top = [(x3, y3, R1), (22, y3, R1), (22, base - step, R1), (x3, base - step, R1), (x3, nc[1] + h3, R1),
            ("arc", *nc, False), (x3, nc[1] - h3, R1)]
