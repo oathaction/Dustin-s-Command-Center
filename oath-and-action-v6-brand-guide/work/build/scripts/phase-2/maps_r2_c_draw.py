@@ -171,7 +171,7 @@ def station_shape(L, sid, theme, red=False, lit=True, scale=1.0, inside_name=Tru
     x, y = L.station_px(sid)
     loops = G.station_loops(sid)
     ring = theme.ring if lit else STONE
-    idc = theme.id if lit else (DEEP if theme.name == "newsprint" else theme.id)
+    idc = theme.id if lit else (DEEP if theme.name in ("newsprint", "white") else theme.id)
     sw = 2.5
     out = []
     kind = "ring" if len(loops) == 1 else "capsule"
@@ -242,7 +242,7 @@ def station_label(L, sid, theme, box, lit=True, size=15):
         ax, anchor, ty = x0 + 2, "end", y1 + gap + size * 0.8
     ax += dx
     ty += dy
-    fill = theme.label if lit else (DEEP if theme.name == "newsprint" else theme.label)
+    fill = theme.label if lit else (DEEP if theme.name in ("newsprint", "white") else theme.label)
     out = "".join(T(ax, ty + i * lh, ln, size, 600, fill, anchor) for i, ln in enumerate(lines))
     if anchor == "start":
         bx = (ax, ty - size * 0.8, ax + wid, ty - size * 0.8 + hgt)
@@ -277,6 +277,7 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
     """Draw every numbered loop line, its stations and signs. Returns (svg, boxes) where boxes lists label and
     station boxes for the collision check."""
     reform_targets = set(M["reforms"][reform]["targets"]) if reform else set()
+    lit = None if lit_loop is None else ({lit_loop} if isinstance(lit_loop, str) else set(lit_loop))
     lines, tags, stations, labels, boxes, bullet_svgs, tag_boxes = [], [], [], [], [], [], []
     for (a, b), trs in L.tracks.items():
         base = L.corridor_px(a, b)
@@ -297,10 +298,10 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                     off = t["offset"]
                 d, _ = G.rounded_path(pts, L.radius, off)
                 dash, code = dash_for(l["evidence"], line_w)
-                on = (lit_loop is None) or (t["loop"] == lit_loop)
+                on = (lit is None) or (t["loop"] in lit)
                 red = link in reform_targets
                 col = RED if red else (theme.line if on else STONE)
-                if theme.name == "newsprint" and on and lit_loop:
+                if theme.name == "newsprint" and on and lit:
                     col = CHARCOAL
                 da = f' stroke-dasharray="{dash}"' if dash else ""
                 w = line_w + (0.5 if red else 0)
@@ -330,7 +331,7 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                 nx, ny = -u[1], u[0]
                 p = (p[0] + nx * mo, p[1] + ny * mo)
                 bw = (len(group) - 1) * L.pitch + line_w
-                on = (lit_loop is None) or any(t["loop"] == lit_loop for t in group)
+                on = (lit is None) or any(t["loop"] in lit for t in group)
                 tags.append((1 if on else 0, sign_tag(p, u, l["polarity"], theme, bw, lit=on,
                                                      extra=f' data-for="{link}" data-sign="{l["polarity"]}"')))
                 hw = max(7.0, bw / 2 + 4) + 2
@@ -339,7 +340,7 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                                  (p[0] - (ext if abs(u[0]) > 0.5 else hw), p[1] - (ext if abs(u[1]) > 0.5 else hw),
                                   p[0] + (ext if abs(u[0]) > 0.5 else hw), p[1] + (ext if abs(u[1]) > 0.5 else hw)))
     for sid in G.STATIONS:
-        on = (lit_loop is None) or (lit_loop in G.station_loops(sid))
+        on = (lit is None) or bool(lit & set(G.station_loops(sid)))
         red = sid in reform_targets
         g, box = station_shape(L, sid, theme, red=red, lit=on, show_id=show_ids, scale=station_scale, inside_name=hub_names)
         stations.append((1 if on else 0, g))
@@ -353,13 +354,13 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
         placed = bullets if bullets else {k: v for k, v in place_bullets(L, boxes, tag_boxes).items()}
         for lid in G.NUMBERED:
             (cx, cy), score = placed[lid]
-            on = (lit_loop is None) or (lit_loop == lid)
+            on = (lit is None) or (lid in lit)
             ink = theme.line if on else STONE
-            if theme.name == "newsprint" and on and lit_loop:
+            if theme.name == "newsprint" and on and lit:
                 ink = CHARCOAL
             first = LOOPS[lid]["stations"][0]["code"]
             bullet_svgs.append((1 if on else 0, bullet_svg(cx, cy, lid, ink, theme.bg, extra=f' data-first="{first}" data-score="{score:.0f}"',
-                                                           text_ink=(DEEP if (not on and theme.name == "newsprint") else None))))
+                                                           text_ink=(DEEP if not on else None))))
             w, h = bullet_size(lid)
             boxes.append(("bullet", lid, (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)))
     body = ("".join(s for _, s in sorted(lines, key=lambda x: x[0]))

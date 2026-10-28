@@ -61,8 +61,9 @@ def main():
     working, _, _, _ = V.poster(L, "newsprint", lit_loop="R10", view="c-working",
                                 label="Loop Lines working map on Newsprint with Loop R10 lit and every other line in Stone")
     save("Loop-Lines-Working-Map-R10-Lit", working, "svg")
-    reform, _, _, _ = V.poster(L, "white", reform="R-01", view="c-reform",
-                               label="Loop Lines reform view on White: Reform R-01 acts on L25, L08 and C2, marked in red")
+    reform, _, _, _ = V.poster(L, "white", reform="R-01", lit_loop=G.M["reforms"]["R-01"]["loops"], view="c-reform",
+                               label="Loop Lines reform view on White: Reform R-01 acts on L25, L08 and C2, marked in red; "
+                                     "the three loops it touches stay in Charcoal and the rest drop to Stone")
     save("Loop-Lines-Reform-View-R-01", reform, "svg")
     save("Loop-Lines-Poster", P.view_page("Loop Lines Poster", poster, "prussian", "The Loop Lines poster at 1440 px"), "html")
     save("Loop-Lines-Poster-Print", P.print_page(poster), "html")
