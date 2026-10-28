@@ -125,20 +125,22 @@ def centroid(c):
 
 
 def holes(d):
-    """Knock-outs inside a piece: subpaths that run counterclockwise, with their smallest side."""
+    """Knock-outs inside a piece: subpaths that wind the other way from the piece's largest contour,
+    with their smallest side."""
+    import pathops
     from fontTools.pens.areaPen import AreaPen
-    out = []
+    from fontTools.svgLib.path import parse_path
+    subs = []
     for sp in MS.subpaths(d):
-        p = G.to_pathops(sp)
-        raw = __import__("pathops").Path()
-        from fontTools.svgLib.path import parse_path
+        raw = pathops.Path()
         parse_path(sp, raw.getPen())
         pen = AreaPen()
         raw.draw(pen)
-        if pen.value < 0:       # here a solid (clockwise on screen) measures positive and a hole negative
-            b = p.bounds
-            out.append(round(min(b[2] - b[0], b[3] - b[1]), 2))
-    return out
+        subs.append((pen.value, raw.bounds))
+    if not subs:
+        return []
+    outer = max(subs, key=lambda t: abs(t[0]))[0]
+    return [round(min(b[2] - b[0], b[3] - b[1]), 2) for v, b in subs if v * outer < 0]
 
 
 def tiles():
@@ -162,7 +164,12 @@ def tiles():
         for _ in range(2):
             pd = np.pad(inside, 1, constant_values=False)
             inside = pd[1:-1, 1:-1] & pd[:-2, 1:-1] & pd[2:, 1:-1] & pd[1:-1, :-2] & pd[1:-1, 2:]
-        ink = (np.abs(img - fill).sum(-1) > 24) & inside
+        # a pixel counts as ink when it sits at least 40 percent of the way from the tile color to the
+        # icon's ink color, so the antialiased edge of a round form's allowed 0.25-unit overshoot
+        # does not count as ink outside the live area
+        ink_rgb = np.array([int(C.COLORWAYS[A.TILE[color][1]][0][i:i + 2], 16) for i in (1, 3, 5)], float)
+        full = np.abs(ink_rgb - fill).sum()
+        ink = (np.abs(img - fill).sum(-1) >= 0.4 * full) & inside
         ys, xs = np.nonzero(ink)
         lo, hi = px * (1 - RC.LIVE_FRACTION) / 2, px * (1 + RC.LIVE_FRACTION) / 2
         bbox = [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1]

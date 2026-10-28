@@ -33,7 +33,7 @@ RED_ON_INK = {"ballot"}
 # 24 px: straight red strokes drawn with square ends before fitting (same footprint as the round
 # ended display stroke, so the drawing does not move).
 SQUARE_RED_24 = {
-    "housing": lambda: G.rect(10.0, 16.5, 3.0, 5.5),
+    "housing": lambda: G.rect(10.0, 15.5, 3.0, 6.5),
     "bill": lambda: G.rect(8.5, 15.0, 5.5, 3.0),
 }
 

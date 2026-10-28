@@ -1,0 +1,28 @@
+{
+  "390": {
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "sideways": false,
+    "textUnder13": 0,
+    "textUnder13Samples": [],
+    "images": 554,
+    "broken": 0,
+    "brokenSamples": [],
+    "materialFont": true,
+    "overflowing": [],
+    "height": 36876
+  },
+  "1440": {
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "sideways": false,
+    "textUnder13": 0,
+    "textUnder13Samples": [],
+    "images": 554,
+    "broken": 0,
+    "brokenSamples": [],
+    "materialFont": true,
+    "overflowing": [],
+    "height": 18623
+  }
+}

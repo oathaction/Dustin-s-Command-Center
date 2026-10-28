@@ -98,10 +98,10 @@ def track():
     return {"ink": union(st, node), "accent": acc}
 
 def connect():
-    """One circle in two halves held apart: two bar arcs with their ends about 4 units apart, each
+    """One circle in two halves held apart: two bar arcs with their ends 4 units apart, each
     reaching inward on its center line with a short spur. The red bridge spans the gap between the
     spurs and the node sits on it. Centered on y 12.5 so the spurs land on whole pixels."""
-    r, d, cy = 6.0, 2.75, 12.5
+    r, d, cy = 5.75, 3.0, 12.5
     L = arc(12 - d, cy, r, 95, 265)
     R = arc(12 + d, cy, r, -85, 85)
     xl, xr = 12 - d - r, 12 + d + r
@@ -158,11 +158,14 @@ def testify():
 
 def housing():
     """A house: a pitched roof with a chimney, set one gap above two walls, and a door. Red: the
-    door, the way in. As stage 1, moved 0.5 left so the door's 3 px bar lands on whole pixels."""
+    door, the way in. As stage 1, moved 0.5 left so the door's 3 px bar lands on whole pixels, with
+    the walls starting 1.5 units lower: at stage 1 their round tops came within 0.2 units of the
+    roof, and the family gap is 1.5 (now 1.24 at the closest point, 1 px at 24 px). The door is a
+    unit taller than at stage 1, which keeps the house inside the weight band."""
     roof = bar((3.5, 12.0), (11.5, 4.0), (19.5, 12.0))
     chimney = bar((15.5, 8.0), (15.5, 3.5))
-    walls = union(bar((6.5, 13.5), (6.5, 20.5)), bar((16.5, 13.5), (16.5, 20.5)))
-    acc = bar((11.5, 18.0), (11.5, 20.5))
+    walls = union(bar((6.5, 15.0), (6.5, 20.5)), bar((16.5, 15.0), (16.5, 20.5)))
+    acc = bar((11.5, 17.0), (11.5, 20.5))
     return {"ink": union(roof, chimney, walls), "accent": acc}
 
 def money():
@@ -211,7 +214,6 @@ def display(name):
 #   loop   the fitted arrowheads become a diamond and a red block; the forward head is drawn as a
 #          stepped pixel triangle (7, 5, 3, 1 px) and the red return head as a 45 degree pixel
 #          triangle with its right angle at the tip, pointing down and left at node A
-#   housing the walls start lower, so the 1.5-unit gap under the roof keeps a pixel at 24 px
 #   bill   the text bars take square ends (as the red line already does in the masters module)
 #   money  the 3-unit disc on a whole-pixel center fits as a lopsided blob, and a 2, 4, 2 px
 #          oval reads as a plus; it is drawn as a 4 by 3 px block on the note's center
@@ -246,17 +248,7 @@ def bill24():
     return {"ink": union(page, flap, lines), "accent": bill()["accent"]}
 
 
-def housing24():
-    """The walls start 1.5 units lower, so a pixel of gap stays between their tops and the roof;
-    fitted as drawn, the walls' round tops land on the roof's bottom row and join it."""
-    d = housing()
-    walls = union(bar((6.5, 15.0), (6.5, 20.5)), bar((16.5, 15.0), (16.5, 20.5)))
-    roof = bar((3.5, 12.0), (11.5, 4.0), (19.5, 12.0))
-    chimney = bar((15.5, 8.0), (15.5, 3.5))
-    return {"ink": union(roof, chimney, walls), "accent": d["accent"]}
-
-
-DRAW24 = {"loop": loop24, "money": money24, "bill": bill24, "housing": housing24}
+DRAW24 = {"loop": loop24, "money": money24, "bill": bill24}
 
 
 def draw24(name):

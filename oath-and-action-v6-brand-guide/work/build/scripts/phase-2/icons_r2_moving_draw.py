@@ -214,7 +214,8 @@ def ballot(step=0.0):
     ptop = 3.0 + step
     pb = floor - CUT
     paper = contour_d(rect(12 - pw / 2, ptop, pw, pb - ptop, R1))
-    mark = ellipse_d(12.0, ptop + CUT + 1.1, 1.5, 1.1, hole=True)
+    mrx, mry = OVR.get("ballot_mark", (1.5, 1.1))
+    mark = ellipse_d(12.0, ptop + CUT + 1.1, mrx, mry, hole=True)
     return [("ink", contour_d(box)), ("accent", paper + mark)]
 
 

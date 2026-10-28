@@ -70,15 +70,23 @@ FIX = {
     # Act at 16 px: no vertical shift, so the lintel, the leaf's top corner and the floor all land
     # on whole pixels and the leaf keeps its 1 px cut from the lintel.
     ("act", "16px"): {"spec": {"ovr": {"act_pin": 2.75}}, "shift": (1 / 3, 0.0)},
-    # Testify: at 16 px the figure is redrawn on whole pixels (shoulders 6 px across, head 4 px)
-    # and the sound ring is 1.5 px thick, so the cuts on both sides of it stay a full pixel; at 24 px
-    # the ring thins to 1.75 px so the microphone keeps its 2 px cut.
-    ("testify", "16px"): {"spec": {"ovr": {"testify_sc": (6.0, 21.0), "testify_sr": 4.5, "testify_hr": 3.0, "testify_ring_w": 2.25}}, "pixel": True},
-    ("testify", "24px"): {"spec": {"ovr": {"testify_ring_w": 1.75}}},
-    # Feedback loop: the two nodes sit a whole number of pixels apart so both stay round; at 24 px
-    # they shrink to 5 px so the forward arrow keeps a shaft.
-    ("loop", "24px"): {"spec": {"ovr": {"loop_nr": 2.5, "loop_ty": 4.5, "loop_by": 19.5}}, "pixel": True},
-    ("loop", "16px"): {"spec": {"ovr": {"loop_ty": 4.5, "loop_by": 19.5}}, "pixel": True},
+    # Testify: at 16 px drawn by hand in whole pixels (head 4 px, shoulders 6 px, the sound a 2 px
+    # arc, the microphone 3 px), since its curves left half its pixels gray. At 24 px the figure sits on
+    # whole pixels: shoulders 10 px across from x 2, head 8 px, both centered on x 7, and the ring
+    # thins to 1.75 px so the microphone keeps its 2 px cut.
+    ("testify", "16px"): {"ascii": {"rest": ['................', '................', '................', '................', '................', '.......r........', '...##..rr..###..', '..####..rr.###..', '..####..rr.###..', '...##..rr..###..', '.......r....#...', '..####......#...', '.######.....#...', '.######...#####.', '................', '................'],
+                                     "open": ['................', '................', '................', '................', '.......r........', '.......rr.......', '...##...rr.###..', '..####..rr.###..', '..####.rr..###..', '...##..r...###..', '............#...', '..####......#...', '.######.....#...', '.######...#####.', '................', '................']}},
+    ("testify", "24px"): {"spec": {"ovr": {"testify_sc": (7.0, 21.0), "testify_sr": 5.0, "testify_hr": 4.0, "testify_ring_w": 1.75}}, "shift": (0.0, 0.0)},
+    # Ballot at 24 px: no shift, so the box (18 px), the slot and the paper (6 px) stay centered, and
+    # the mark is a 4 by 2 px knock-out with a 1 px wall on each side.
+    ("ballot", "24px"): {"spec": {"ovr": {"ballot_mark": (2.0, 1.0)}}, "shift": (0.0, 0.0)},
+    # Feedback loop: drawn by hand in whole pixels at 24 and 16 px. Its arc left most of its pixels
+    # gray, and plain pixel rounding turned the red arrowhead into a cross, which the family bars.
+    # The nodes are 5 px at 24 px and 4 px at 16 px, so the forward arrow keeps a shaft.
+    ("loop", "24px"): {"ascii": {"rest": ['........................', '........................', '.............###........', '.......r....#####.......', '.......rr...#####.......', '.......rrr..#####.......', '.......rr....###........', '.......rr...............', '......rr................', '......rr.....###........', '......rr.....###........', '......rr.....###........', '......rr...#######......', '......rr....#####.......', '......rr.....###........', '.......rr...............', '.......rr...............', '........rr...###........', '........rr..#####.......', '............#####.......', '............#####.......', '.............###........', '........................', '........................'],
+                                  "open": ['........................', '........................', '.............###........', '.......r....#####.......', '.......rr...#####.......', '.......rrr..#####.......', '......rrr....###........', '......rr................', '.....rr.................', '.....rr......###........', '.....rr......###........', '.....rr......###........', '.....rr....#######......', '.....rr.....#####.......', '.....rr......###........', '......rr................', '......rrr...............', '........rr...###........', '........rr..#####.......', '............#####.......', '............#####.......', '.............###........', '........................', '........................']}},
+    ("loop", "16px"): {"ascii": {"rest": ['................', '..........##....', '......r..####...', '......rr.####...', '.....rrr..##....', '.....rr.........', '....rr....##....', '....rr....##....', '....rr...####...', '....rr....##....', '.....rr.........', '.....rr...##....', '......rr.####...', '......rr.####...', '..........##....', '................'],
+                                  "open": ['................', '..........##....', '......r..####...', '......rr.####...', '.....rrr..##....', '....rrr.........', '...rr.....##....', '...rr.....##....', '...rr....####...', '...rr.....##....', '....rrr.........', '.....rr...##....', '......rr.####...', '......rr.####...', '..........##....', '................']}},
     ("money", "16px"): {"spec": {"ovr": {"money_lift": 4.25}}, "shift": (0.5, 1 / 3)},
 }
 
@@ -424,7 +432,38 @@ def hint(name, size, open_):
     snapped, disp = snap_all(pcs, fix)
     if fix.get("pixel"):
         snapped = pixelize(snapped, S, 1.41 if S == 24 else 1.0, fix.get("pixel_fix", {}).get("open" if open_ else "rest", {}))
+    if "ascii" in fix:
+        snapped = from_ascii(fix["ascii"]["open" if open_ else "rest"])
     return snapped, (dx, dy), (max(disp) if disp else 0.0)
+
+
+def from_ascii(rows):
+    """A master drawn by hand in whole pixels: "#" Charcoal, "r" red, "." empty. Each connected group
+    of pixels of one role becomes its own piece, so the cut check sees every piece."""
+    S = len(rows)
+    out = []
+    for role, ch in (("ink", "#"), ("accent", "r")):
+        cells = {(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == ch}
+        while cells:
+            stack = [cells.pop()]
+            comp = set(stack)
+            while stack:
+                x, y = stack.pop()
+                for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                    if q in cells:
+                        cells.discard(q)
+                        comp.add(q)
+                        stack.append(q)
+            p = pathops.Path()
+            for (x, y) in sorted(comp):
+                p.moveTo(x, y)
+                p.lineTo(x + 1, y)
+                p.lineTo(x + 1, y + 1)
+                p.lineTo(x, y + 1)
+                p.close()
+            out.append((role, d_of(pathops.simplify(p, clockwise=True))))
+    assert all(len(r) == S for r in rows)
+    return out
 
 
 def _sq(x, y):
