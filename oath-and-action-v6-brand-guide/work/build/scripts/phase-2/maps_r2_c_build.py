@@ -65,7 +65,7 @@ def main():
                                label="Loop Lines reform view on White: Reform R-01 acts on L25, L08 and C2, marked in red; "
                                      "the three loops it touches stay in Charcoal and the rest drop to Stone")
     save("Loop-Lines-Reform-View-R-01", reform, "svg")
-    save("Loop-Lines-Poster", P.view_page("Loop Lines Poster", poster, "prussian", "The Loop Lines poster at 1440 px"), "html")
+    save("Loop-Lines-Poster", P.view_page("Loop Lines Poster", poster, "prussian", "The Loop Lines poster at 1440 px", text=True), "html")
     save("Loop-Lines-Poster-Print", P.print_page(poster), "html")
     save("Loop-Lines-Working-Map", P.view_page("Loop Lines Working Map", working, "", "Working map with R10 lit"), "html")
     rpage = P.page("Reform View R-01", P.CARD_CSS + P.VIEW_CSS,

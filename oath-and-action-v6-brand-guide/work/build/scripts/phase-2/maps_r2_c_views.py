@@ -274,7 +274,7 @@ def frame(L, th, fields, rect, theme_name):
         rest = ""
         if unplaced:
             parts = [f"{len(per[d])} to {d}" for d in unplaced]
-            rest = " Away from a tick: " + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + "."
+            rest = " Also " + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + ", without a tick."
         note = f"{nvars} variables. {total} connections reach the core.{rest}"
         label_attr = f' data-frame-note="{gid}" data-total="{total}" data-unplaced="{" ".join(unplaced)}"'
         line1, line2 = f"{nvars} variables", f"{total} connections reach the core." + rest

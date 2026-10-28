@@ -468,13 +468,38 @@ def card_page(L, Ls, lid, reform, phone=False, written=None):
 VIEW_CSS = """
 body.prussian{background:var(--prussian)} body.white{background:var(--white)}
 .frame{width:1440px;margin:0}
+.tvsec{background:var(--newsprint);padding:32px 64px 48px}
+.tvsec h2{font:800 24px/1.2 var(--display);margin:0 0 12px}
+.wrap{overflow-x:auto;max-width:100%}
+table.tv{border-collapse:collapse;width:100%;font-size:14px}
+.tv th,.tv td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--stone);vertical-align:top}
+.tv thead th{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--deep)}
+.tv caption{caption-side:top;text-align:left;font-size:14px;color:var(--deep);padding:0 0 8px}
 """
 
 
-def view_page(title, svg, cls, desc=""):
-    return page(title, VIEW_CSS, f'<main class="frame" aria-label="{esc(title)}">{svg}</main>', desc=desc).replace("<body>", f'<body class="{cls}">', 1)
+def view_page(title, svg, cls, desc="", text=False):
+    tv = f'<section class="tvsec" aria-labelledby="tvh"><h2 id="tvh">The lines in words</h2>{text_version()}<p class="src">{esc(SRC)}</p></section>' if text else ""
+    return page(title, VIEW_CSS, f'<main class="frame" aria-label="{esc(title)}">{svg}</main>{tv}', desc=desc).replace("<body>", f'<body class="{cls}">', 1)
 
 
 def print_page(svg):
     css = "@page{size:36in 24in;margin:0} html,body{margin:0;background:#1F2D5A} svg{width:36in;height:24in;display:block}"
     return page("Loop Lines Poster Print", css, svg, desc="The Loop Lines poster at 24 by 36 inches")
+
+
+def text_version(caption="Text version of the poster: every line, its stations in order and the sign of each step"):
+    """The poster as a table, for screen readers and for anyone who wants the lines in words."""
+    rows = []
+    for lid in G.NUMBERED:
+        lp = LOOPS[lid]
+        parts = []
+        for st in lp["steps"]:
+            parts.append(f'{st["from_label"]} ({st["from"]}) {D.sign_glyph(st["polarity"])}\u2192')
+        seq = " ".join(parts) + f' {lp["steps"][0]["from_label"]} ({lp["steps"][0]["from"]})'
+        rows.append(f'<tr><th scope="row">{chip("Loop", lid)}</th><td>{esc(lp["kind_word"])}: {esc(lp["kind_gloss"])}</td>'
+                    f'<td>{esc(seq)}</td><td>{esc(words_list(areas_of(lid)))}</td></tr>')
+    return (f'<div class="wrap" tabindex="0" role="region" aria-label="Text version of the poster"><table class="tv"><caption>{esc(caption)}. '
+            f'A plus means both variables move the same way; a minus means they move opposite ways.</caption>'
+            f'<thead><tr><th scope="col">Line</th><th scope="col">Kind</th><th scope="col">Stations in order</th><th scope="col">Areas</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div>')

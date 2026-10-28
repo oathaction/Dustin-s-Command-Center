@@ -1,8 +1,8 @@
 {
- "run": "2026-10-28T21:32:56.276Z",
+ "run": "2026-10-28T21:39:29.670Z",
  "pages": {
   "Poster": {
-   "texts": 181,
+   "texts": 288,
    "svgTexts": 181,
    "minSize": 13,
    "under13": [],
@@ -10,7 +10,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 960,
+   "height": 2357,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -21,7 +21,7 @@
    "svgs": 1,
    "axe": {
     "violations": [],
-    "passes": 15,
+    "passes": 19,
     "incomplete": 1
    },
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
@@ -242,10 +242,250 @@
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png"
   }
  },
- "board": {},
+ "board": {
+  "390": {
+   "texts": 532,
+   "svgTexts": 0,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 48369,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png",
+     "ok": true
+    }
+   ],
+   "svgs": 0,
+   "axe": {
+    "violations": [],
+    "passes": 29,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps-r2-c/board-390-00.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-01.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-02.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-03.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-04.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-05.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-06.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-07.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-08.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-09.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-10.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-11.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-12.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-13.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-14.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-15.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-16.png"
+   ]
+  },
+  "1440": {
+   "texts": 532,
+   "svgTexts": 0,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 27244,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png",
+     "ok": true
+    }
+   ],
+   "svgs": 0,
+   "axe": {
+    "violations": [],
+    "passes": 29,
+    "incomplete": 0
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-00.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-01.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-02.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-03.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-04.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-05.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-06.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-07.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-08.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-09.png"
+   ],
+   "grayScreens": [
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-00.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-01.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-02.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-03.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-04.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-05.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-06.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-07.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-08.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-09.png"
+   ]
+  }
+ },
  "pdf": {
   "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf",
-  "bytes": 216640
+  "bytes": 216690
  },
  "summary": [
   "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
@@ -257,6 +497,8 @@
   "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
   "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Board at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 18/18, axe 0 violating nodes, fonts 5.",
+  "Board at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 18/18, axe 0 violating nodes, fonts 5.",
   "Poster PDF: work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf, 212 KB, page size 36 by 24 inches."
  ],
  "not_checked": [
