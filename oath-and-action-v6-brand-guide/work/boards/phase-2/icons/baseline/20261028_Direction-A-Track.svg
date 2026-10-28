@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>Direction A Track, approved at Gate 1, 24 px sketch from Phase 1</title>
+<path class="body" d="M2 17V22H22V7H16V12H15C15 13.657 13.657 15 12 15C10.343 15 9 13.657 9 12H8V17Z" fill="#121212"/>
+<path class="seat" d="M15 12C15 10.343 13.657 9 12 9C10.343 9 9 10.343 9 12C9 13.657 10.343 15 12 15C13.657 15 15 13.657 15 12ZM14 12C14 13.105 13.105 14 12 14C10.895 14 10 13.105 10 12C10 10.895 10.895 10 12 10C13.105 10 14 10.895 14 12Z" fill="none"/>
+<path class="node" d="M14 12C14 13.105 13.105 14 12 14C10.895 14 10 13.105 10 12C10 10.895 10.895 10 12 10C13.105 10 14 10.895 14 12Z" fill="#121212"/>
+</svg>

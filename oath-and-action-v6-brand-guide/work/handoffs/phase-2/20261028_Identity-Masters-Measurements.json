@@ -1,0 +1,2271 @@
+{
+ "note": "Phase 2 identity masters, October 28, 2026. Chromium at device scale 1 on Linux. Crisp share: ink pixels at 90 percent coverage or more, over ink pixels at 10 percent or more (D1-17 passes at 0.60). Open counters: enclosed background regions at 16 px. One color: largest RGB distance of a pixel from the surface-to-ink line. Contrast: median WCAG contrast of ink pixels against the surface.",
+ "pairs": {
+  "i1-amp": {
+   "label": "Master ampersand, #amp (V5's Lora glyph, kept for the A fallback)",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 1.2,
+    "changed_share": 0.004
+   },
+   "overlay_24": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 3.2,
+    "changed_share": 0.005
+   },
+   "overlay_48": {
+    "original_only_px": 0.4,
+    "proposal_only_px": 12.0,
+    "changed_share": 0.006
+   },
+   "overlay_96": {
+    "original_only_px": 2.7,
+    "proposal_only_px": 39.9,
+    "changed_share": 0.005
+   },
+   "overlay_display": {
+    "original_only_px": 5.2,
+    "proposal_only_px": 173.3,
+    "changed_share": 0.005
+   },
+   "orig": {
+    "crisp_16": 0.493,
+    "open_counters_16": 2,
+    "crisp_24": 0.612,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.7,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.7,
+     "prussian 16": 0.7,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 9.38,
+     "newsprint 24": 13.29,
+     "white 16": 12.27,
+     "white 24": 18.73,
+     "charcoal 16": 9.68,
+     "charcoal 24": 13.29,
+     "prussian 16": 9.97,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.68,
+     "newsprint 24": 2.96,
+     "white 16": 3.52,
+     "white 24": 4.17,
+     "charcoal 16": 3.62,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.518,
+    "open_counters_16": 2,
+    "crisp_24": 0.624,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 9.64,
+     "newsprint 24": 13.29,
+     "white 16": 12.63,
+     "white 24": 18.73,
+     "charcoal 16": 10.08,
+     "charcoal 24": 13.29,
+     "prussian 16": 10.35,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.69,
+     "newsprint 24": 2.96,
+     "white 16": 3.58,
+     "white 24": 4.17,
+     "charcoal 16": 3.62,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i1-stacked": {
+   "label": "Stacked lockup L2, #stacked (V5 geometry)",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.0,
+    "changed_share": 0.0
+   },
+   "overlay_24": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.0,
+    "changed_share": 0.0
+   },
+   "overlay_48": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.4,
+    "changed_share": 0.0
+   },
+   "overlay_96": {
+    "original_only_px": 4.6,
+    "proposal_only_px": 3.4,
+    "changed_share": 0.0
+   },
+   "overlay_display": {
+    "original_only_px": 3.1,
+    "proposal_only_px": 3.3,
+    "changed_share": 0.0
+   },
+   "orig": {
+    "crisp_16": 0.314,
+    "open_counters_16": 11,
+    "crisp_24": 0.499,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 6.38,
+     "newsprint 24": 8.97,
+     "white 16": 7.57,
+     "white 24": 11.55,
+     "charcoal 16": 7.19,
+     "charcoal 24": 9.44,
+     "prussian 16": 7.55,
+     "prussian 24": 9.7
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.99,
+     "newsprint 24": 2.6,
+     "white 16": 2.34,
+     "white 24": 3.37,
+     "charcoal 16": 2.17,
+     "charcoal 24": 3.48
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.316,
+    "open_counters_16": 11,
+    "crisp_24": 0.498,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 6.38,
+     "newsprint 24": 8.97,
+     "white 16": 7.57,
+     "white 24": 11.55,
+     "charcoal 16": 7.19,
+     "charcoal 24": 9.44,
+     "prussian 16": 7.55,
+     "prussian 24": 9.7
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.97,
+     "newsprint 24": 2.62,
+     "white 16": 2.29,
+     "white 24": 3.39,
+     "charcoal 16": 2.12,
+     "charcoal 24": 3.48
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i1-tl-1": {
+   "label": "Tagline, one line, #tl-1",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 31.0,
+    "changed_share": 0.006
+   },
+   "overlay_24": {
+    "original_only_px": 1.0,
+    "proposal_only_px": 69.3,
+    "changed_share": 0.007
+   },
+   "overlay_48": {
+    "original_only_px": 0.6,
+    "proposal_only_px": 280.8,
+    "changed_share": 0.008
+   },
+   "overlay_96": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 1114.1,
+    "changed_share": 0.008
+   },
+   "overlay_display": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 192.7,
+    "changed_share": 0.007
+   },
+   "orig": {
+    "crisp_16": 0.457,
+    "open_counters_16": 11,
+    "crisp_24": 0.619,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.6,
+     "newsprint 24": 13.29,
+     "white 16": 9.44,
+     "white 24": 18.73,
+     "charcoal 16": 8.28,
+     "charcoal 24": 13.29,
+     "prussian 16": 8.62,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.385,
+    "open_counters_16": 11,
+    "crisp_24": 0.551,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 6.09,
+     "newsprint 24": 11.84,
+     "white 16": 7.23,
+     "white 24": 16.29,
+     "charcoal 16": 7.0,
+     "charcoal 24": 11.68,
+     "prussian 16": 7.39,
+     "prussian 24": 11.78
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i1-tl-2a": {
+   "label": "Tagline, first of two lines, #tl-2a",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.2,
+    "proposal_only_px": 11.9,
+    "changed_share": 0.004
+   },
+   "overlay_24": {
+    "original_only_px": 1.2,
+    "proposal_only_px": 27.3,
+    "changed_share": 0.004
+   },
+   "overlay_48": {
+    "original_only_px": 0.1,
+    "proposal_only_px": 114.7,
+    "changed_share": 0.005
+   },
+   "overlay_96": {
+    "original_only_px": 0.2,
+    "proposal_only_px": 452.2,
+    "changed_share": 0.005
+   },
+   "overlay_display": {
+    "original_only_px": 0.5,
+    "proposal_only_px": 79.3,
+    "changed_share": 0.005
+   },
+   "orig": {
+    "crisp_16": 0.454,
+    "open_counters_16": 5,
+    "crisp_24": 0.614,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.6,
+     "newsprint 24": 13.29,
+     "white 16": 9.44,
+     "white 24": 18.73,
+     "charcoal 16": 8.28,
+     "charcoal 24": 13.29,
+     "prussian 16": 8.62,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.388,
+    "open_counters_16": 5,
+    "crisp_24": 0.565,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.9,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.37,
+     "newsprint 24": 12.23,
+     "white 16": 6.19,
+     "white 24": 17.04,
+     "charcoal 16": 6.35,
+     "charcoal 24": 12.04,
+     "prussian 16": 6.78,
+     "prussian 24": 12.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i1-tl-2b": {
+   "label": "Tagline, second of two lines, #tl-2b",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.1,
+    "proposal_only_px": 18.4,
+    "changed_share": 0.01
+   },
+   "overlay_24": {
+    "original_only_px": 0.4,
+    "proposal_only_px": 39.6,
+    "changed_share": 0.011
+   },
+   "overlay_48": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 167.7,
+    "changed_share": 0.013
+   },
+   "overlay_96": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 663.3,
+    "changed_share": 0.013
+   },
+   "overlay_display": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 113.9,
+    "changed_share": 0.012
+   },
+   "orig": {
+    "crisp_16": 0.459,
+    "open_counters_16": 6,
+    "crisp_24": 0.598,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.7,
+     "newsprint 24": 13.29,
+     "white 16": 9.59,
+     "white 24": 18.73,
+     "charcoal 16": 8.35,
+     "charcoal 24": 13.29,
+     "prussian 16": 8.71,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.369,
+    "open_counters_16": 6,
+    "crisp_24": 0.577,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 6.89,
+     "newsprint 24": 12.23,
+     "white 16": 8.32,
+     "white 24": 17.04,
+     "charcoal 16": 7.63,
+     "charcoal 24": 12.04,
+     "prussian 16": 8.02,
+     "prussian 24": 12.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i1-url-1": {
+   "label": "Web address, #url-1",
+   "item": "I1",
+   "overlay_16": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 21.2,
+    "changed_share": 0.008
+   },
+   "overlay_24": {
+    "original_only_px": 0.5,
+    "proposal_only_px": 47.4,
+    "changed_share": 0.009
+   },
+   "overlay_48": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 191.9,
+    "changed_share": 0.009
+   },
+   "overlay_96": {
+    "original_only_px": 0.1,
+    "proposal_only_px": 774.2,
+    "changed_share": 0.01
+   },
+   "overlay_display": {
+    "original_only_px": 0.1,
+    "proposal_only_px": 133.3,
+    "changed_share": 0.009
+   },
+   "orig": {
+    "crisp_16": 0.461,
+    "open_counters_16": 8,
+    "crisp_24": 0.632,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 8.43,
+     "newsprint 24": 13.29,
+     "white 16": 10.7,
+     "white 24": 18.73,
+     "charcoal 16": 8.94,
+     "charcoal 24": 13.29,
+     "prussian 16": 9.23,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.395,
+    "open_counters_16": 8,
+    "crisp_24": 0.532,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.46,
+     "newsprint 24": 11.57,
+     "white 16": 6.39,
+     "white 24": 15.91,
+     "charcoal 16": 6.42,
+     "charcoal 24": 11.46,
+     "prussian 16": 6.87,
+     "prussian 24": 11.65
+    },
+    "red_median_contrast": {},
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i2-hinge": {
+   "label": "Hinge gaps by equal white area, display master",
+   "item": "I2",
+   "overlay_16": {
+    "original_only_px": 94.1,
+    "proposal_only_px": 101.7,
+    "changed_share": 0.067
+   },
+   "overlay_24": {
+    "original_only_px": 208.7,
+    "proposal_only_px": 221.8,
+    "changed_share": 0.073
+   },
+   "overlay_48": {
+    "original_only_px": 847.2,
+    "proposal_only_px": 948.4,
+    "changed_share": 0.079
+   },
+   "overlay_96": {
+    "original_only_px": 3403.5,
+    "proposal_only_px": 3730.9,
+    "changed_share": 0.082
+   },
+   "overlay_display": {
+    "original_only_px": 5308.9,
+    "proposal_only_px": 5801.1,
+    "changed_share": 0.083
+   },
+   "orig": {
+    "crisp_16": 0.556,
+    "open_counters_16": 6,
+    "crisp_24": 0.742,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.43,
+     "newsprint 24": 2.96,
+     "white 16": 3.07,
+     "white 24": 4.17,
+     "charcoal 16": 3.02,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.571,
+    "open_counters_16": 6,
+    "crisp_24": 0.756,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.68,
+     "newsprint 24": 2.96,
+     "white 16": 3.58,
+     "white 24": 4.17,
+     "charcoal 16": 3.59,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i4-amp": {
+   "label": "Ampersand B: 16 px master at 16, 24 px master at 24, display master from 48",
+   "item": "I4",
+   "overlay_16": {
+    "original_only_px": 10.1,
+    "proposal_only_px": 26.5,
+    "changed_share": 0.129
+   },
+   "overlay_24": {
+    "original_only_px": 22.1,
+    "proposal_only_px": 35.7,
+    "changed_share": 0.094
+   },
+   "overlay_48": {
+    "original_only_px": 145.2,
+    "proposal_only_px": 195.9,
+    "changed_share": 0.15
+   },
+   "overlay_96": {
+    "original_only_px": 568.7,
+    "proposal_only_px": 788.9,
+    "changed_share": 0.157
+   },
+   "overlay_display": {
+    "original_only_px": 4870.9,
+    "proposal_only_px": 6803.8,
+    "changed_share": 0.163
+   },
+   "orig": {
+    "crisp_16": 0.478,
+    "open_counters_16": 3,
+    "crisp_24": 0.612,
+    "one_color_max_offline": {
+     "newsprint 16": 6.9,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.7,
+     "white 16": 6.9,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.4,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.7,
+     "prussian 16": 1.5,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.6,
+     "newsprint 24": 13.29,
+     "white 16": 9.44,
+     "white 24": 18.73,
+     "charcoal 16": 8.16,
+     "charcoal 24": 13.29,
+     "prussian 16": 8.52,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.49,
+     "newsprint 24": 2.96,
+     "white 16": 3.17,
+     "white 24": 4.17,
+     "charcoal 16": 3.15,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.662,
+    "open_counters_16": 2,
+    "crisp_24": 0.743,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.07,
+     "newsprint 24": 13.29,
+     "white 16": 18.42,
+     "white 24": 18.73,
+     "charcoal 16": 12.91,
+     "charcoal 24": 13.29,
+     "prussian 16": 12.95,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i4-p1": {
+   "label": "Ampersand B, Phase 1 drawing against the refinement",
+   "item": "I4",
+   "overlay_16": {
+    "original_only_px": 6.1,
+    "proposal_only_px": 7.2,
+    "changed_share": 0.046
+   },
+   "overlay_24": {
+    "original_only_px": 32.8,
+    "proposal_only_px": 22.4,
+    "changed_share": 0.088
+   },
+   "overlay_48": {
+    "original_only_px": 102.0,
+    "proposal_only_px": 74.4,
+    "changed_share": 0.075
+   },
+   "overlay_96": {
+    "original_only_px": 424.2,
+    "proposal_only_px": 293.9,
+    "changed_share": 0.08
+   },
+   "overlay_display": {
+    "original_only_px": 3580.6,
+    "proposal_only_px": 2595.9,
+    "changed_share": 0.083
+   },
+   "orig": {
+    "crisp_16": 0.648,
+    "open_counters_16": 2,
+    "crisp_24": 0.687,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.7
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "charcoal 16": 4.49,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.662,
+    "open_counters_16": 2,
+    "crisp_24": 0.743,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.07,
+     "newsprint 24": 13.29,
+     "charcoal 16": 12.91,
+     "charcoal 24": 13.29
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i4-narrow": {
+   "label": "Narrow B for the condensed wordmark: its own 16 and 24 px masters",
+   "item": "I4",
+   "overlay_16": {
+    "original_only_px": 27.1,
+    "proposal_only_px": 24.5,
+    "changed_share": 0.198
+   },
+   "overlay_24": {
+    "original_only_px": 50.9,
+    "proposal_only_px": 37.8,
+    "changed_share": 0.152
+   },
+   "overlay_48": {
+    "original_only_px": 220.5,
+    "proposal_only_px": 162.8,
+    "changed_share": 0.178
+   },
+   "overlay_96": {
+    "original_only_px": 879.8,
+    "proposal_only_px": 660.9,
+    "changed_share": 0.187
+   },
+   "overlay_display": {
+    "original_only_px": 7506.9,
+    "proposal_only_px": 5682.8,
+    "changed_share": 0.195
+   },
+   "orig": {
+    "crisp_16": 0.478,
+    "open_counters_16": 3,
+    "crisp_24": 0.612,
+    "one_color_max_offline": {
+     "newsprint 16": 6.9,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.7,
+     "white 16": 6.9,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.4,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.7,
+     "prussian 16": 1.5,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.6,
+     "newsprint 24": 13.29,
+     "white 16": 9.44,
+     "white 24": 18.73,
+     "charcoal 16": 8.16,
+     "charcoal 24": 13.29,
+     "prussian 16": 8.52,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.49,
+     "newsprint 24": 2.96,
+     "white 16": 3.17,
+     "white 24": 4.17,
+     "charcoal 16": 3.15,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.623,
+    "open_counters_16": 3,
+    "crisp_24": 0.747,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.18,
+     "newsprint 24": 13.29,
+     "white 16": 18.58,
+     "white 24": 18.73,
+     "charcoal 16": 13.04,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.06,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i3-wordmark": {
+   "label": "Wordmark: 16 px master at 16, 24 px master at 24, display master from 48",
+   "item": "I3",
+   "overlay_16": {
+    "original_only_px": 520.2,
+    "proposal_only_px": 401.5,
+    "changed_share": 0.344
+   },
+   "overlay_24": {
+    "original_only_px": 764.4,
+    "proposal_only_px": 719.4,
+    "changed_share": 0.255
+   },
+   "overlay_48": {
+    "original_only_px": 847.2,
+    "proposal_only_px": 948.4,
+    "changed_share": 0.079
+   },
+   "overlay_96": {
+    "original_only_px": 3407.3,
+    "proposal_only_px": 3733.6,
+    "changed_share": 0.082
+   },
+   "overlay_display": {
+    "original_only_px": 5306.3,
+    "proposal_only_px": 5807.7,
+    "changed_share": 0.083
+   },
+   "orig": {
+    "crisp_16": 0.556,
+    "open_counters_16": 6,
+    "crisp_24": 0.742,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.43,
+     "newsprint 24": 2.96,
+     "white 16": 3.07,
+     "white 24": 4.17,
+     "charcoal 16": 3.02,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.691,
+    "open_counters_16": 6,
+    "crisp_24": 0.77,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-l1": {
+   "label": "L1 wordmark: today's width against the condensed drawing at 7.5 to 1",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.691,
+    "open_counters_16": 6,
+    "crisp_24": 0.77,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.768,
+    "open_counters_16": 7,
+    "crisp_24": 0.86,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-p1": {
+   "label": "Condensed: the Phase 1 exploration against the drawing pass",
+   "item": "I5",
+   "overlay_16": {
+    "original_only_px": 339.9,
+    "proposal_only_px": 317.0,
+    "changed_share": 0.323
+   },
+   "overlay_24": {
+    "original_only_px": 404.6,
+    "proposal_only_px": 377.2,
+    "changed_share": 0.162
+   },
+   "overlay_48": {
+    "original_only_px": 1406.3,
+    "proposal_only_px": 1331.2,
+    "changed_share": 0.139
+   },
+   "overlay_96": {
+    "original_only_px": 5685.9,
+    "proposal_only_px": 5328.4,
+    "changed_share": 0.146
+   },
+   "overlay_display": {
+    "original_only_px": 8892.2,
+    "proposal_only_px": 8281.5,
+    "changed_share": 0.148
+   },
+   "orig": {
+    "crisp_16": 0.749,
+    "open_counters_16": 8,
+    "crisp_24": 0.839,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.92,
+     "newsprint 24": 2.96,
+     "charcoal 16": 4.25,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.768,
+    "open_counters_16": 7,
+    "crisp_24": 0.86,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "charcoal 16": 4.45,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-l2": {
+   "label": "L2 stacked: today's width against the condensed drawing",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.328,
+    "open_counters_16": 9,
+    "crisp_24": 0.517,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.01,
+     "newsprint 24": 10.47,
+     "white 16": 8.59,
+     "white 24": 13.97,
+     "charcoal 16": 7.79,
+     "charcoal 24": 10.63,
+     "prussian 16": 8.18,
+     "prussian 24": 10.83
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.22,
+     "newsprint 24": 2.71,
+     "white 16": 2.71,
+     "white 24": 3.7,
+     "charcoal 16": 2.57,
+     "charcoal 24": 3.74
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.293,
+    "open_counters_16": 10,
+    "crisp_24": 0.484,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.71,
+     "newsprint 24": 7.81,
+     "white 16": 6.69,
+     "white 24": 9.74,
+     "charcoal 16": 6.66,
+     "charcoal 24": 8.44,
+     "prussian 16": 7.07,
+     "prussian 24": 8.79
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.25,
+     "newsprint 24": 2.52,
+     "white 16": 2.69,
+     "white 24": 3.27,
+     "charcoal 16": 2.62,
+     "charcoal 24": 3.27
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-l3": {
+   "label": "L3 horizontal: today's width against the condensed drawing",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.275,
+    "open_counters_16": 10,
+    "crisp_24": 0.429,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 1.0,
+     "newsprint 96": 1.0,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.5,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.2,
+     "prussian 16": 0.8,
+     "prussian 24": 1.0,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.8,
+     "newsprint 24": 7.7,
+     "white 16": 6.79,
+     "white 24": 9.59,
+     "charcoal 16": 6.75,
+     "charcoal 24": 8.35,
+     "prussian 16": 7.15,
+     "prussian 24": 8.71
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.74,
+     "newsprint 24": 2.21,
+     "white 16": 1.96,
+     "white 24": 2.55,
+     "charcoal 16": 1.79,
+     "charcoal 24": 2.56
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.291,
+    "open_counters_16": 10,
+    "crisp_24": 0.36,
+    "one_color_max_offline": {
+     "newsprint 16": 0.9,
+     "newsprint 24": 1.0,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.6,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.1,
+     "prussian 16": 1.1,
+     "prussian 24": 0.9,
+     "prussian 96": 1.0
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 3.94,
+     "newsprint 24": 7.6,
+     "white 16": 4.35,
+     "white 24": 9.44,
+     "charcoal 16": 4.82,
+     "charcoal 24": 8.35,
+     "prussian 16": 5.28,
+     "prussian 24": 8.71
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.93,
+     "newsprint 24": 2.16,
+     "white 16": 2.15,
+     "white 24": 2.59,
+     "charcoal 16": 2.03,
+     "charcoal 24": 2.5
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-l8": {
+   "label": "L8 monogram: today's width against the condensed drawing",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.589,
+    "open_counters_16": 4,
+    "crisp_24": 0.72,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.07,
+     "newsprint 24": 13.29,
+     "white 16": 18.42,
+     "white 24": 18.73,
+     "charcoal 16": 12.91,
+     "charcoal 24": 13.29,
+     "prussian 16": 12.95,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.69,
+     "newsprint 24": 2.96,
+     "white 16": 3.62,
+     "white 24": 4.17,
+     "charcoal 16": 3.68,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.556,
+    "open_counters_16": 5,
+    "crisp_24": 0.713,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 12.81,
+     "newsprint 24": 13.29,
+     "white 16": 17.93,
+     "white 24": 18.73,
+     "charcoal 16": 12.54,
+     "charcoal 24": 13.29,
+     "prussian 16": 12.71,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.52,
+     "newsprint 24": 2.96,
+     "white 16": 3.27,
+     "white 24": 4.17,
+     "charcoal 16": 3.21,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-v5l2": {
+   "label": "L2 stacked: V5 against Phase 2 at today's width",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.314,
+    "open_counters_16": 11,
+    "crisp_24": 0.499,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 6.38,
+     "newsprint 24": 8.97,
+     "white 16": 7.57,
+     "white 24": 11.55,
+     "charcoal 16": 7.19,
+     "charcoal 24": 9.44,
+     "prussian 16": 7.55,
+     "prussian 24": 9.7
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.99,
+     "newsprint 24": 2.6,
+     "white 16": 2.34,
+     "white 24": 3.37,
+     "charcoal 16": 2.17,
+     "charcoal 24": 3.48
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.328,
+    "open_counters_16": 9,
+    "crisp_24": 0.517,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 7.01,
+     "newsprint 24": 10.47,
+     "white 16": 8.59,
+     "white 24": 13.97,
+     "charcoal 16": 7.79,
+     "charcoal 24": 10.63,
+     "prussian 16": 8.18,
+     "prussian 24": 10.83
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.22,
+     "newsprint 24": 2.75,
+     "white 16": 2.71,
+     "white 24": 3.7,
+     "charcoal 16": 2.57,
+     "charcoal 24": 3.74
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-v5l3": {
+   "label": "L3 horizontal: V5 against Phase 2 at today's width",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.304,
+    "open_counters_16": 9,
+    "crisp_24": 0.414,
+    "one_color_max_offline": {
+     "newsprint 16": 1.7,
+     "newsprint 24": 1.7,
+     "newsprint 96": 0.8,
+     "white 16": 1.7,
+     "white 24": 1.7,
+     "white 96": 0.0,
+     "charcoal 16": 1.7,
+     "charcoal 24": 1.1,
+     "charcoal 96": 1.2,
+     "prussian 16": 1.0,
+     "prussian 24": 0.9,
+     "prussian 96": 0.9
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.46,
+     "newsprint 24": 8.18,
+     "white 16": 6.39,
+     "white 24": 10.21,
+     "charcoal 16": 6.42,
+     "charcoal 24": 8.58,
+     "prussian 16": 6.87,
+     "prussian 24": 8.96
+    },
+    "red_median_contrast": {
+     "newsprint 16": 3.06,
+     "newsprint 24": 3.88,
+     "white 16": 3.5,
+     "white 24": 4.31,
+     "charcoal 16": 5.95,
+     "charcoal 24": 8.35
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.275,
+    "open_counters_16": 10,
+    "crisp_24": 0.429,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 1.0,
+     "newsprint 96": 1.0,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.5,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.2,
+     "prussian 16": 0.8,
+     "prussian 24": 1.0,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 5.8,
+     "newsprint 24": 7.7,
+     "white 16": 6.79,
+     "white 24": 9.59,
+     "charcoal 16": 6.75,
+     "charcoal 24": 8.35,
+     "prussian 16": 7.15,
+     "prussian 24": 8.71
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.74,
+     "newsprint 24": 2.21,
+     "white 16": 1.96,
+     "white 24": 2.55,
+     "charcoal 16": 1.79,
+     "charcoal 24": 2.56
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i5-v5l8": {
+   "label": "L8 monogram: V5 against Phase 2 at today's width",
+   "item": "I5",
+   "orig": {
+    "crisp_16": 0.564,
+    "open_counters_16": 4,
+    "crisp_24": 0.704,
+    "one_color_max_offline": {
+     "newsprint 16": 0.8,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 11.96,
+     "newsprint 24": 13.29,
+     "white 16": 16.48,
+     "white 24": 18.73,
+     "charcoal 16": 11.81,
+     "charcoal 24": 13.29,
+     "prussian 16": 12.07,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.44,
+     "newsprint 24": 2.96,
+     "white 16": 3.11,
+     "white 24": 4.17,
+     "charcoal 16": 3.04,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.589,
+    "open_counters_16": 4,
+    "crisp_24": 0.72,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.7,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.07,
+     "newsprint 24": 13.29,
+     "white 16": 18.42,
+     "white 24": 18.73,
+     "charcoal 16": 12.91,
+     "charcoal 24": 13.29,
+     "prussian 16": 12.95,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.69,
+     "newsprint 24": 2.96,
+     "white 16": 3.62,
+     "white 24": 4.17,
+     "charcoal 16": 3.68,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i6-hinge": {
+   "label": "Hinge diagram V2: compact master below 533 px wide, display master above",
+   "item": "I6",
+   "orig": {
+    "crisp_16": 0.22,
+    "open_counters_16": 5,
+    "crisp_24": 0.32,
+    "one_color_max_offline": {
+     "newsprint 16": 0.7,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.0,
+     "charcoal 24": 0.8,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.8,
+     "prussian 24": 1.0,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 2.91,
+     "newsprint 24": 4.26,
+     "white 16": 3.11,
+     "white 24": 4.81,
+     "charcoal 16": 3.69,
+     "charcoal 24": 5.29,
+     "prussian 16": 4.19,
+     "prussian 24": 5.79
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.62,
+     "newsprint 24": 3.47,
+     "white 16": 2.88,
+     "white 24": 4.17,
+     "charcoal 16": 3.36,
+     "charcoal 24": 4.8
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.119,
+    "open_counters_16": 3,
+    "crisp_24": 0.241,
+    "one_color_max_offline": {
+     "newsprint 16": 1.2,
+     "newsprint 24": 1.2,
+     "newsprint 96": 1.7,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 1.7,
+     "charcoal 16": 1.3,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.1,
+     "prussian 16": 1.3,
+     "prussian 24": 1.2,
+     "prussian 96": 1.0
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 1.67,
+     "newsprint 24": 2.26,
+     "white 16": 1.71,
+     "white 24": 2.38,
+     "charcoal 16": 1.87,
+     "charcoal 24": 2.75,
+     "prussian 16": 2.16,
+     "prussian 24": 3.08
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.06,
+     "newsprint 24": 2.2,
+     "white 16": 2.26,
+     "white 24": 2.24,
+     "charcoal 16": 2.3,
+     "charcoal 24": 2.52
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i6-cond": {
+   "label": "Hinge diagram V2 with the condensed OATH and ACTION",
+   "item": "I6",
+   "orig": {
+    "crisp_16": 0.119,
+    "open_counters_16": 3,
+    "crisp_24": 0.241,
+    "one_color_max_offline": {
+     "newsprint 16": 1.2,
+     "newsprint 24": 1.2,
+     "newsprint 96": 1.7,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 1.7,
+     "charcoal 16": 1.3,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.1,
+     "prussian 16": 1.3,
+     "prussian 24": 1.2,
+     "prussian 96": 1.0
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 1.67,
+     "newsprint 24": 2.26,
+     "white 16": 1.71,
+     "white 24": 2.38,
+     "charcoal 16": 1.87,
+     "charcoal 24": 2.75,
+     "prussian 16": 2.16,
+     "prussian 24": 3.08
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.06,
+     "newsprint 24": 2.2,
+     "white 16": 2.26,
+     "white 24": 2.24,
+     "charcoal 16": 2.3,
+     "charcoal 24": 2.52
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.069,
+    "open_counters_16": 5,
+    "crisp_24": 0.185,
+    "one_color_max_offline": {
+     "newsprint 16": 1.4,
+     "newsprint 24": 1.3,
+     "newsprint 96": 1.7,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 1.7,
+     "charcoal 16": 1.1,
+     "charcoal 24": 1.6,
+     "charcoal 96": 1.3,
+     "prussian 16": 1.2,
+     "prussian 24": 0.9,
+     "prussian 96": 0.9
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 1.62,
+     "newsprint 24": 2.39,
+     "white 16": 1.66,
+     "white 24": 2.52,
+     "charcoal 16": 1.78,
+     "charcoal 24": 2.93,
+     "prussian 16": 2.05,
+     "prussian 24": 3.3
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.96,
+     "newsprint 24": 2.12,
+     "white 16": 2.29,
+     "white 24": 2.55,
+     "charcoal 16": 2.12,
+     "charcoal 24": 2.37
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "i7-lockmark": {
+   "label": "Lockmark: 16 and 24 px masters, V5's master from 48",
+   "item": "I7",
+   "overlay_16": {
+    "original_only_px": 38.8,
+    "proposal_only_px": 61.6,
+    "changed_share": 0.467
+   },
+   "overlay_24": {
+    "original_only_px": 39.5,
+    "proposal_only_px": 154.8,
+    "changed_share": 0.385
+   },
+   "overlay_48": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.0,
+    "changed_share": 0.0
+   },
+   "overlay_96": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.0,
+    "changed_share": 0.0
+   },
+   "overlay_display": {
+    "original_only_px": 0.0,
+    "proposal_only_px": 0.0,
+    "changed_share": 0.0
+   },
+   "orig": {
+    "crisp_16": 0.51,
+    "open_counters_16": 4,
+    "crisp_24": 0.053,
+    "one_color_max_offline": {
+     "newsprint 16": 1.7,
+     "newsprint 24": 1.0,
+     "newsprint 96": 0.7,
+     "white 16": 1.7,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 1.0,
+     "charcoal 24": 1.4,
+     "charcoal 96": 1.1,
+     "prussian 16": 0.9,
+     "prussian 24": 0.9,
+     "prussian 96": 0.7
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 3.42,
+     "newsprint 24": 3.26,
+     "white 16": 3.69,
+     "white 24": 3.54,
+     "charcoal 16": 4.24,
+     "charcoal 24": 4.12,
+     "prussian 16": 4.64,
+     "prussian 24": 4.51
+    },
+    "red_median_contrast": {
+     "newsprint 16": 1.16,
+     "newsprint 24": 1.93,
+     "white 16": 1.18,
+     "white 24": 2.24,
+     "charcoal 16": 1.09,
+     "charcoal 24": 2.08
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 0.605,
+    "open_counters_16": 4,
+    "crisp_24": 0.599,
+    "one_color_max_offline": {
+     "newsprint 16": 1.7,
+     "newsprint 24": 1.7,
+     "newsprint 96": 0.7,
+     "white 16": 1.7,
+     "white 24": 1.7,
+     "white 96": 0.0,
+     "charcoal 16": 0.8,
+     "charcoal 24": 0.8,
+     "charcoal 96": 1.1,
+     "prussian 16": 0.5,
+     "prussian 24": 0.7,
+     "prussian 96": 0.7
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.26,
+     "charcoal 24": 13.26,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.85,
+     "newsprint 24": 2.96,
+     "white 16": 3.95,
+     "white 24": 4.17,
+     "charcoal 16": 4.09,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  },
+  "s9-badge": {
+   "label": "Hinge-circle badge: the Phase 1 drawing against the Phase 2 masters",
+   "item": "S9",
+   "overlay_16": {
+    "original_only_px": 22.0,
+    "proposal_only_px": 24.0,
+    "changed_share": 0.235
+   },
+   "overlay_24": {
+    "original_only_px": 6.1,
+    "proposal_only_px": 7.2,
+    "changed_share": 0.031
+   },
+   "overlay_48": {
+    "original_only_px": 29.5,
+    "proposal_only_px": 27.2,
+    "changed_share": 0.047
+   },
+   "overlay_96": {
+    "original_only_px": 122.5,
+    "proposal_only_px": 90.6,
+    "changed_share": 0.053
+   },
+   "overlay_display": {
+    "original_only_px": 484.2,
+    "proposal_only_px": 352.6,
+    "changed_share": 0.053
+   },
+   "orig": {
+    "crisp_16": 1.0,
+    "open_counters_16": 3,
+    "crisp_24": 0.766,
+    "one_color_max_offline": {
+     "newsprint 16": 0.0,
+     "newsprint 24": 0.7,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.0,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.7,
+     "prussian 16": 0.0,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.49,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   },
+   "prop": {
+    "crisp_16": 1.0,
+    "open_counters_16": 3,
+    "crisp_24": 0.774,
+    "one_color_max_offline": {
+     "newsprint 16": 0.0,
+     "newsprint 24": 0.8,
+     "newsprint 96": 0.8,
+     "white 16": 0.0,
+     "white 24": 0.0,
+     "white 96": 0.0,
+     "charcoal 16": 0.0,
+     "charcoal 24": 0.7,
+     "charcoal 96": 0.8,
+     "prussian 16": 0.0,
+     "prussian 24": 0.8,
+     "prussian 96": 0.8
+    },
+    "ink_contrast_median": {
+     "newsprint 16": 13.29,
+     "newsprint 24": 13.29,
+     "white 16": 18.73,
+     "white 24": 18.73,
+     "charcoal 16": 13.29,
+     "charcoal 24": 13.29,
+     "prussian 16": 13.28,
+     "prussian 24": 13.28
+    },
+    "red_median_contrast": {
+     "newsprint 16": 2.96,
+     "newsprint 24": 2.96,
+     "white 16": 4.17,
+     "white 24": 4.17,
+     "charcoal 16": 4.49,
+     "charcoal 24": 4.49
+    },
+    "red_pixels_on_prussian": 0
+   }
+  }
+ },
+ "minimums": {
+  "L1 orig": {
+   "w": 120,
+   "h": 14,
+   "crisp": 0.546
+  },
+  "L1 prop": {
+   "w": 152,
+   "h": 16,
+   "crisp": 0.691
+  },
+  "L1C orig": {
+   "w": 120,
+   "h": 14,
+   "crisp": 0.546
+  },
+  "L1C prop": {
+   "w": 120,
+   "h": 16,
+   "crisp": 0.768
+  },
+  "L2 orig": {
+   "w": 72,
+   "h": 25,
+   "crisp": 0.533
+  },
+  "L2 prop": {
+   "w": 90,
+   "h": 31,
+   "crisp": 0.579
+  },
+  "L3 orig": {
+   "w": 192,
+   "h": 37,
+   "crisp": 0.529
+  },
+  "L3 prop": {
+   "w": 196,
+   "h": 37,
+   "crisp": 0.598
+  },
+  "L8 orig": {
+   "w": 48,
+   "h": 18,
+   "crisp": 0.616
+  },
+  "L8 prop": {
+   "w": 48,
+   "h": 18,
+   "crisp": 0.595
+  },
+  "AMP orig": {
+   "w": 15,
+   "h": 16,
+   "crisp": 0.478
+  },
+  "AMP prop": {
+   "w": 14,
+   "h": 16,
+   "crisp": 0.662
+  },
+  "LOCK orig": {
+   "w": 16,
+   "h": 16,
+   "crisp": 0.51
+  },
+  "LOCK prop": {
+   "w": 16,
+   "h": 16,
+   "crisp": 0.605
+  },
+  "HINGE orig": {
+   "w": 245,
+   "h": 73,
+   "crisp": 0.67
+  },
+  "HINGE prop": {
+   "w": 245,
+   "h": 60,
+   "crisp": 0.546
+  },
+  "BADGE orig": {
+   "w": 16,
+   "h": 16,
+   "crisp": 1.0
+  },
+  "BADGE prop": {
+   "w": 16,
+   "h": 16,
+   "crisp": 1.0
+  }
+ },
+ "prussian": {
+  "wordmark": {
+   "label": "Wordmark",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "wordmark16": {
+   "label": "Wordmark, 16 px master",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "wordmarkc": {
+   "label": "Wordmark, condensed",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "l2": {
+   "label": "L2 stacked",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "l3": {
+   "label": "L3 horizontal",
+   "red_px": 0,
+   "one_color_max_offline": 0.9,
+   "median_contrast": 13.28
+  },
+  "l8": {
+   "label": "L8 monogram",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "amp": {
+   "label": "Ampersand B",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 13.28
+  },
+  "amp16": {
+   "label": "Ampersand B, 16 px master",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 12.95
+  },
+  "lock24": {
+   "label": "Lockmark, 24 px master",
+   "red_px": 0,
+   "one_color_max_offline": 0.7,
+   "median_contrast": 13.28
+  },
+  "lock": {
+   "label": "Lockmark",
+   "red_px": 0,
+   "one_color_max_offline": 1.2,
+   "median_contrast": 4.51
+  },
+  "hinge": {
+   "label": "Hinge diagram V2, compact",
+   "red_px": 0,
+   "one_color_max_offline": 0.9,
+   "median_contrast": 13.28
+  },
+  "badge": {
+   "label": "Hinge-circle badge",
+   "red_px": 0,
+   "one_color_max_offline": 0.8,
+   "median_contrast": 8.69
+  },
+  "badge16": {
+   "label": "Badge, 16 px master",
+   "red_px": 0,
+   "one_color_max_offline": 0.0,
+   "median_contrast": 13.28
+  },
+  "v5today_16": {
+   "red_px": 74,
+   "red_median_contrast": 11.15
+  },
+  "v5today_96": {
+   "red_px": 3415,
+   "red_median_contrast": 13.28
+  }
+ }
+}

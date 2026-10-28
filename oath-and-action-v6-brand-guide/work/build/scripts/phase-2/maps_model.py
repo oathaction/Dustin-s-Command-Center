@@ -187,6 +187,10 @@ def build_model():
         "groups": [{"id": g, "title": t, "loops": [lid for lid in v7["loops"] if loops[lid]["group"] == g]} for g, t in groups],
         "reforms": {rid: build_reform(v7, rid) for rid in v7["reforms"]},
         "glossary": {g["term"]: g["definition"] for g in v7["glossary"]},
+        "families": {k: v["name"] for k, v in v7["outcomes"]["families"].items()},
+        "effect_codes": dict(v7["outcomes"]["effect_codes"]),
+        "route_names": {i["code"]: i["name"] for i in v7["routes"]["items"]},
+        "feasibility_scale": dict(v7["routes"]["feasibility_scale"]),
     }
     return model
 

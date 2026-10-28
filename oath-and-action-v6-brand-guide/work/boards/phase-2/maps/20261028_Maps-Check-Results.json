@@ -1,0 +1,231 @@
+{
+ "board": "work/boards/20261028_Systems-Map-Directions-Board.html",
+ "run": "2026-10-28T19:27:54.952Z",
+ "widths": {
+  "390": {
+   "texts": 2022,
+   "svgTexts": 1100,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 67563,
+   "fonts": [
+    "Inter 400 italic",
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "../research/chat-references/20261028_Ref-Atlas-Loop-Catalog-Current.png",
+     "ok": true
+    },
+    {
+     "src": "../research/chat-references/20261028_Ref-Atlas-Loop-R8-Concept-08.webp",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps/20261028_Phone-Loop-Catalog.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps/20261028_Phone-R8-Loop-Card.png",
+     "ok": true
+    }
+   ],
+   "svgs": 86,
+   "axe": {
+    "violations": [],
+    "passes": 30,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps/board-390-00.png",
+    "work/boards/screens/phase-2-maps/board-390-01.png",
+    "work/boards/screens/phase-2-maps/board-390-02.png",
+    "work/boards/screens/phase-2-maps/board-390-03.png",
+    "work/boards/screens/phase-2-maps/board-390-04.png",
+    "work/boards/screens/phase-2-maps/board-390-05.png",
+    "work/boards/screens/phase-2-maps/board-390-06.png",
+    "work/boards/screens/phase-2-maps/board-390-07.png",
+    "work/boards/screens/phase-2-maps/board-390-08.png",
+    "work/boards/screens/phase-2-maps/board-390-09.png",
+    "work/boards/screens/phase-2-maps/board-390-10.png",
+    "work/boards/screens/phase-2-maps/board-390-11.png",
+    "work/boards/screens/phase-2-maps/board-390-12.png",
+    "work/boards/screens/phase-2-maps/board-390-13.png",
+    "work/boards/screens/phase-2-maps/board-390-14.png",
+    "work/boards/screens/phase-2-maps/board-390-15.png",
+    "work/boards/screens/phase-2-maps/board-390-16.png",
+    "work/boards/screens/phase-2-maps/board-390-17.png",
+    "work/boards/screens/phase-2-maps/board-390-18.png",
+    "work/boards/screens/phase-2-maps/board-390-19.png",
+    "work/boards/screens/phase-2-maps/board-390-20.png",
+    "work/boards/screens/phase-2-maps/board-390-21.png",
+    "work/boards/screens/phase-2-maps/board-390-22.png"
+   ]
+  },
+  "1440": {
+   "texts": 2022,
+   "svgTexts": 1100,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 32990,
+   "fonts": [
+    "Inter 400 italic",
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 600 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "../research/chat-references/20261028_Ref-Atlas-Loop-Catalog-Current.png",
+     "ok": true
+    },
+    {
+     "src": "../research/chat-references/20261028_Ref-Atlas-Loop-R8-Concept-08.webp",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-07-Loop-Card.jpg",
+     "ok": true
+    },
+    {
+     "src": "phase-1/systems/20261021_Concept-09-Circuit.jpg",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps/20261028_Phone-Loop-Catalog.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps/20261028_Phone-R8-Loop-Card.png",
+     "ok": true
+    }
+   ],
+   "svgs": 86,
+   "axe": {
+    "violations": [],
+    "passes": 30,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps/board-1440-00.png",
+    "work/boards/screens/phase-2-maps/board-1440-01.png",
+    "work/boards/screens/phase-2-maps/board-1440-02.png",
+    "work/boards/screens/phase-2-maps/board-1440-03.png",
+    "work/boards/screens/phase-2-maps/board-1440-04.png",
+    "work/boards/screens/phase-2-maps/board-1440-05.png",
+    "work/boards/screens/phase-2-maps/board-1440-06.png",
+    "work/boards/screens/phase-2-maps/board-1440-07.png",
+    "work/boards/screens/phase-2-maps/board-1440-08.png",
+    "work/boards/screens/phase-2-maps/board-1440-09.png",
+    "work/boards/screens/phase-2-maps/board-1440-10.png"
+   ],
+   "grayScreens": [
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-00.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-01.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-02.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-03.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-04.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-05.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-06.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-07.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-08.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-09.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-10.png"
+   ]
+  }
+ },
+ "phones": {
+  "20261028_Phone-Loop-Catalog": {
+   "texts": 262,
+   "svgTexts": 138,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 4596,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 23,
+   "axe": {
+    "violations": [],
+    "passes": 17,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps/20261028_Phone-Loop-Catalog-390-00.png",
+    "work/boards/screens/phase-2-maps/20261028_Phone-Loop-Catalog-390-01.png"
+   ]
+  },
+  "20261028_Phone-R8-Loop-Card": {
+   "texts": 59,
+   "svgTexts": 8,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 2063,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 1,
+   "axe": {
+    "violations": [],
+    "passes": 23,
+    "incomplete": 1
+   },
+   "screens": [
+    "work/boards/screens/phase-2-maps/20261028_Phone-R8-Loop-Card-390-00.png"
+   ]
+  }
+ },
+ "summary": [
+  "Rendered in Chromium (Playwright) at 1440 and 390 px on 2026-10-28, with 6 Google Fonts faces loaded; 86 drawings inline on the board.",
+  "Horizontal page scroll: none at 1440 (scrollWidth 1440 of 1440) or 390 (scrollWidth 390 of 390); wide drawings and tables scroll inside focusable regions.",
+  "Smallest rendered text, counting SVG text at its drawing's rendered scale: 13 px at 1440 and 13 px at 390; text elements under 13 px: 0 and 0.",
+  "Text below WCAG AA contrast, from rendered colors: 0 at 1440, 0 at 390.",
+  "Images loaded: 6 of 6.",
+  "axe-core 4.10 with WCAG 2.2 AA tags: 0 violating nodes at 1440, 0 at 390.",
+  "Phone page Phone-Loop-Catalog at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, axe 0 violating nodes.",
+  "Phone page Phone-R8-Loop-Card at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, axe 0 violating nodes."
+ ],
+ "not_checked": [
+  "Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.",
+  "Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 3.99:1 on White, Charcoal 18.1:1 on White).",
+  "The live atlas renderer; these are specimens only (G1-08)."
+ ]
+}

@@ -1,0 +1,545 @@
+{
+ "method": "I4 check: ampersand B (refined) against every serif ampersand installed on this machine.\n\nCandidates: every font file fontconfig lists in a serif family (book serifs, and the serif\ntypewriter faces Courier 10 Pitch, FreeMono and Liberation Mono), every style, plus the three Lora\nfiles extracted from V5 Polished, Lora Bold being the V5 master's source. Sans, monospaced sans\nand symbol fonts are left out.\n\nTwo measures, the same as Phase 1 and the symbol board:\n  silhouette overlap   each glyph scaled to the same ink height (200 px), centered on its ink box,\n                       rendered by Chromium, then intersection over union of the ink (1.0 = identical)\n  small-size score     at 16 and 24 px tall: the mean of filled-silhouette overlap and blurred\n                       correlation (the Phase 0 similarity score behind D1-16)\n\nPass rules (studio thresholds, stated before the run):\n  recognition   B overlaps the V5 glyph (Lora Bold) at 0.70 or more, so a reader still knows it\n  distinctness  B overlaps no other installed face as closely as one face's Regular and Bold\n                overlap each other (the median same-family weight pair): at that distance two\n                ampersands count as one design\n\nRun: python3 -I p2_amp_similarity.py",
+ "calibration_regular_vs_bold": {
+  "Bitstream Charter": 0.712,
+  "Caladea": 0.683,
+  "Courier 10 Pitch": 0.744,
+  "DejaVu Serif": 0.607,
+  "FreeMono": 0.473,
+  "FreeSerif": 0.576,
+  "Liberation Mono": 0.749,
+  "Liberation Serif": 0.762
+ },
+ "calibration_median": 0.698,
+ "verdict_B_refined": {
+  "recognition": {
+   "rule": "overlap with Lora Bold at 0.70 or more",
+   "value": 0.734,
+   "pass": true
+  },
+  "distinctness": {
+   "rule": "overlap with every other installed face below the median Regular-to-Bold overlap of one family (0.698)",
+   "nearest_face": "Liberation Mono Bold",
+   "value": 0.686,
+   "threshold": 0.698,
+   "pass": true
+  },
+  "faces_checked": 33,
+  "families_checked": [
+   "Bitstream Charter",
+   "Caladea",
+   "Courier 10 Pitch",
+   "DejaVu Serif",
+   "FreeMono",
+   "FreeSerif",
+   "Liberation Mono",
+   "Liberation Serif",
+   "Lora"
+  ],
+  "pass": true
+ },
+ "results": {
+  "B refined (Phase 2)": {
+   "Bitstream Charter Bold Italic": {
+    "silhouette_overlap_200px": 0.603,
+    "score_16px": 0.791,
+    "score_24px": 0.749
+   },
+   "Bitstream Charter Bold": {
+    "silhouette_overlap_200px": 0.618,
+    "score_16px": 0.753,
+    "score_24px": 0.741
+   },
+   "Bitstream Charter Italic": {
+    "silhouette_overlap_200px": 0.495,
+    "score_16px": 0.738,
+    "score_24px": 0.714
+   },
+   "Bitstream Charter Regular": {
+    "silhouette_overlap_200px": 0.514,
+    "score_16px": 0.738,
+    "score_24px": 0.704
+   },
+   "Caladea Bold Italic": {
+    "silhouette_overlap_200px": 0.453,
+    "score_16px": 0.403,
+    "score_24px": 0.412
+   },
+   "Caladea Bold": {
+    "silhouette_overlap_200px": 0.455,
+    "score_16px": 0.405,
+    "score_24px": 0.394
+   },
+   "Caladea Italic": {
+    "silhouette_overlap_200px": 0.341,
+    "score_16px": 0.311,
+    "score_24px": 0.312
+   },
+   "Caladea Regular": {
+    "silhouette_overlap_200px": 0.337,
+    "score_16px": 0.291,
+    "score_24px": 0.291
+   },
+   "Courier 10 Pitch Bold Italic": {
+    "silhouette_overlap_200px": 0.568,
+    "score_16px": 0.707,
+    "score_24px": 0.668
+   },
+   "Courier 10 Pitch Bold": {
+    "silhouette_overlap_200px": 0.685,
+    "score_16px": 0.817,
+    "score_24px": 0.791
+   },
+   "Courier 10 Pitch Italic": {
+    "silhouette_overlap_200px": 0.469,
+    "score_16px": 0.671,
+    "score_24px": 0.602
+   },
+   "Courier 10 Pitch Regular": {
+    "silhouette_overlap_200px": 0.607,
+    "score_16px": 0.752,
+    "score_24px": 0.734
+   },
+   "DejaVu Serif Bold": {
+    "silhouette_overlap_200px": 0.516,
+    "score_16px": 0.682,
+    "score_24px": 0.666
+   },
+   "DejaVu Serif Book": {
+    "silhouette_overlap_200px": 0.455,
+    "score_16px": 0.591,
+    "score_24px": 0.564
+   },
+   "FreeMono Bold Oblique": {
+    "silhouette_overlap_200px": 0.533,
+    "score_16px": 0.661,
+    "score_24px": 0.626
+   },
+   "FreeMono Bold": {
+    "silhouette_overlap_200px": 0.635,
+    "score_16px": 0.764,
+    "score_24px": 0.735
+   },
+   "FreeMono Oblique": {
+    "silhouette_overlap_200px": 0.296,
+    "score_16px": 0.562,
+    "score_24px": 0.499
+   },
+   "FreeMono Regular": {
+    "silhouette_overlap_200px": 0.377,
+    "score_16px": 0.634,
+    "score_24px": 0.583
+   },
+   "FreeSerif Bold Italic": {
+    "silhouette_overlap_200px": 0.446,
+    "score_16px": 0.669,
+    "score_24px": 0.59
+   },
+   "FreeSerif Bold": {
+    "silhouette_overlap_200px": 0.595,
+    "score_16px": 0.723,
+    "score_24px": 0.754
+   },
+   "FreeSerif Italic": {
+    "silhouette_overlap_200px": 0.368,
+    "score_16px": 0.63,
+    "score_24px": 0.562
+   },
+   "FreeSerif Regular": {
+    "silhouette_overlap_200px": 0.405,
+    "score_16px": 0.642,
+    "score_24px": 0.608
+   },
+   "Liberation Mono Bold Italic": {
+    "silhouette_overlap_200px": 0.531,
+    "score_16px": 0.691,
+    "score_24px": 0.634
+   },
+   "Liberation Mono Bold": {
+    "silhouette_overlap_200px": 0.686,
+    "score_16px": 0.852,
+    "score_24px": 0.806
+   },
+   "Liberation Mono Italic": {
+    "silhouette_overlap_200px": 0.431,
+    "score_16px": 0.628,
+    "score_24px": 0.583
+   },
+   "Liberation Mono Regular": {
+    "silhouette_overlap_200px": 0.554,
+    "score_16px": 0.782,
+    "score_24px": 0.753
+   },
+   "Liberation Serif Bold Italic": {
+    "silhouette_overlap_200px": 0.564,
+    "score_16px": 0.768,
+    "score_24px": 0.766
+   },
+   "Liberation Serif Bold": {
+    "silhouette_overlap_200px": 0.543,
+    "score_16px": 0.749,
+    "score_24px": 0.736
+   },
+   "Liberation Serif Italic": {
+    "silhouette_overlap_200px": 0.453,
+    "score_16px": 0.723,
+    "score_24px": 0.707
+   },
+   "Liberation Serif Regular": {
+    "silhouette_overlap_200px": 0.425,
+    "score_16px": 0.659,
+    "score_24px": 0.647
+   },
+   "Lora Bold (V5 master source)": {
+    "silhouette_overlap_200px": 0.734,
+    "score_16px": 0.878,
+    "score_24px": 0.866
+   },
+   "Lora Italic": {
+    "silhouette_overlap_200px": 0.327,
+    "score_16px": 0.373,
+    "score_24px": 0.371
+   },
+   "Lora Medium Italic": {
+    "silhouette_overlap_200px": 0.389,
+    "score_16px": 0.424,
+    "score_24px": 0.419
+   }
+  },
+  "B first drawing (Phase 1)": {
+   "Bitstream Charter Bold Italic": {
+    "silhouette_overlap_200px": 0.618,
+    "score_16px": 0.813,
+    "score_24px": 0.758
+   },
+   "Bitstream Charter Bold": {
+    "silhouette_overlap_200px": 0.657,
+    "score_16px": 0.81,
+    "score_24px": 0.789
+   },
+   "Bitstream Charter Italic": {
+    "silhouette_overlap_200px": 0.506,
+    "score_16px": 0.758,
+    "score_24px": 0.72
+   },
+   "Bitstream Charter Regular": {
+    "silhouette_overlap_200px": 0.564,
+    "score_16px": 0.802,
+    "score_24px": 0.759
+   },
+   "Caladea Bold Italic": {
+    "silhouette_overlap_200px": 0.494,
+    "score_16px": 0.466,
+    "score_24px": 0.469
+   },
+   "Caladea Bold": {
+    "silhouette_overlap_200px": 0.484,
+    "score_16px": 0.472,
+    "score_24px": 0.455
+   },
+   "Caladea Italic": {
+    "silhouette_overlap_200px": 0.388,
+    "score_16px": 0.387,
+    "score_24px": 0.382
+   },
+   "Caladea Regular": {
+    "silhouette_overlap_200px": 0.357,
+    "score_16px": 0.356,
+    "score_24px": 0.348
+   },
+   "Courier 10 Pitch Bold Italic": {
+    "silhouette_overlap_200px": 0.581,
+    "score_16px": 0.732,
+    "score_24px": 0.679
+   },
+   "Courier 10 Pitch Bold": {
+    "silhouette_overlap_200px": 0.713,
+    "score_16px": 0.835,
+    "score_24px": 0.825
+   },
+   "Courier 10 Pitch Italic": {
+    "silhouette_overlap_200px": 0.471,
+    "score_16px": 0.661,
+    "score_24px": 0.607
+   },
+   "Courier 10 Pitch Regular": {
+    "silhouette_overlap_200px": 0.624,
+    "score_16px": 0.766,
+    "score_24px": 0.75
+   },
+   "DejaVu Serif Bold": {
+    "silhouette_overlap_200px": 0.542,
+    "score_16px": 0.742,
+    "score_24px": 0.729
+   },
+   "DejaVu Serif Book": {
+    "silhouette_overlap_200px": 0.47,
+    "score_16px": 0.65,
+    "score_24px": 0.609
+   },
+   "FreeMono Bold Oblique": {
+    "silhouette_overlap_200px": 0.531,
+    "score_16px": 0.659,
+    "score_24px": 0.631
+   },
+   "FreeMono Bold": {
+    "silhouette_overlap_200px": 0.638,
+    "score_16px": 0.781,
+    "score_24px": 0.747
+   },
+   "FreeMono Oblique": {
+    "silhouette_overlap_200px": 0.304,
+    "score_16px": 0.565,
+    "score_24px": 0.502
+   },
+   "FreeMono Regular": {
+    "silhouette_overlap_200px": 0.388,
+    "score_16px": 0.643,
+    "score_24px": 0.593
+   },
+   "FreeSerif Bold Italic": {
+    "silhouette_overlap_200px": 0.466,
+    "score_16px": 0.685,
+    "score_24px": 0.604
+   },
+   "FreeSerif Bold": {
+    "silhouette_overlap_200px": 0.613,
+    "score_16px": 0.74,
+    "score_24px": 0.779
+   },
+   "FreeSerif Italic": {
+    "silhouette_overlap_200px": 0.394,
+    "score_16px": 0.635,
+    "score_24px": 0.575
+   },
+   "FreeSerif Regular": {
+    "silhouette_overlap_200px": 0.432,
+    "score_16px": 0.683,
+    "score_24px": 0.629
+   },
+   "Liberation Mono Bold Italic": {
+    "silhouette_overlap_200px": 0.521,
+    "score_16px": 0.676,
+    "score_24px": 0.621
+   },
+   "Liberation Mono Bold": {
+    "silhouette_overlap_200px": 0.707,
+    "score_16px": 0.864,
+    "score_24px": 0.824
+   },
+   "Liberation Mono Italic": {
+    "silhouette_overlap_200px": 0.429,
+    "score_16px": 0.603,
+    "score_24px": 0.566
+   },
+   "Liberation Mono Regular": {
+    "silhouette_overlap_200px": 0.575,
+    "score_16px": 0.79,
+    "score_24px": 0.77
+   },
+   "Liberation Serif Bold Italic": {
+    "silhouette_overlap_200px": 0.598,
+    "score_16px": 0.807,
+    "score_24px": 0.802
+   },
+   "Liberation Serif Bold": {
+    "silhouette_overlap_200px": 0.58,
+    "score_16px": 0.811,
+    "score_24px": 0.806
+   },
+   "Liberation Serif Italic": {
+    "silhouette_overlap_200px": 0.479,
+    "score_16px": 0.759,
+    "score_24px": 0.738
+   },
+   "Liberation Serif Regular": {
+    "silhouette_overlap_200px": 0.456,
+    "score_16px": 0.716,
+    "score_24px": 0.713
+   },
+   "Lora Bold (V5 master source)": {
+    "silhouette_overlap_200px": 0.769,
+    "score_16px": 0.909,
+    "score_24px": 0.9
+   },
+   "Lora Italic": {
+    "silhouette_overlap_200px": 0.384,
+    "score_16px": 0.465,
+    "score_24px": 0.456
+   },
+   "Lora Medium Italic": {
+    "silhouette_overlap_200px": 0.448,
+    "score_16px": 0.516,
+    "score_24px": 0.501
+   }
+  }
+ },
+ "fonts": {
+  "Bitstream Charter Bold Italic": {
+   "file": "/usr/share/fonts/X11/Type1/c0633bt_.pfb",
+   "family": "Bitstream Charter",
+   "style": "Bold Italic"
+  },
+  "Bitstream Charter Bold": {
+   "file": "/usr/share/fonts/X11/Type1/c0632bt_.pfb",
+   "family": "Bitstream Charter",
+   "style": "Bold"
+  },
+  "Bitstream Charter Italic": {
+   "file": "/usr/share/fonts/X11/Type1/c0649bt_.pfb",
+   "family": "Bitstream Charter",
+   "style": "Italic"
+  },
+  "Bitstream Charter Regular": {
+   "file": "/usr/share/fonts/X11/Type1/c0648bt_.pfb",
+   "family": "Bitstream Charter",
+   "style": "Regular"
+  },
+  "Caladea Bold Italic": {
+   "file": "/usr/share/fonts/truetype/crosextra/Caladea-BoldItalic.ttf",
+   "family": "Caladea",
+   "style": "Bold Italic"
+  },
+  "Caladea Bold": {
+   "file": "/usr/share/fonts/truetype/crosextra/Caladea-Bold.ttf",
+   "family": "Caladea",
+   "style": "Bold"
+  },
+  "Caladea Italic": {
+   "file": "/usr/share/fonts/truetype/crosextra/Caladea-Italic.ttf",
+   "family": "Caladea",
+   "style": "Italic"
+  },
+  "Caladea Regular": {
+   "file": "/usr/share/fonts/truetype/crosextra/Caladea-Regular.ttf",
+   "family": "Caladea",
+   "style": "Regular"
+  },
+  "Courier 10 Pitch Bold Italic": {
+   "file": "/usr/share/fonts/X11/Type1/c0611bt_.pfb",
+   "family": "Courier 10 Pitch",
+   "style": "Bold Italic"
+  },
+  "Courier 10 Pitch Bold": {
+   "file": "/usr/share/fonts/X11/Type1/c0583bt_.pfb",
+   "family": "Courier 10 Pitch",
+   "style": "Bold"
+  },
+  "Courier 10 Pitch Italic": {
+   "file": "/usr/share/fonts/X11/Type1/c0582bt_.pfb",
+   "family": "Courier 10 Pitch",
+   "style": "Italic"
+  },
+  "Courier 10 Pitch Regular": {
+   "file": "/usr/share/fonts/X11/Type1/c0419bt_.pfb",
+   "family": "Courier 10 Pitch",
+   "style": "Regular"
+  },
+  "DejaVu Serif Bold": {
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+   "family": "DejaVu Serif",
+   "style": "Bold"
+  },
+  "DejaVu Serif Book": {
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+   "family": "DejaVu Serif",
+   "style": "Book"
+  },
+  "FreeMono Bold Oblique": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeMonoBoldOblique.ttf",
+   "family": "FreeMono",
+   "style": "Bold Oblique"
+  },
+  "FreeMono Bold": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf",
+   "family": "FreeMono",
+   "style": "Bold"
+  },
+  "FreeMono Oblique": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeMonoOblique.ttf",
+   "family": "FreeMono",
+   "style": "Oblique"
+  },
+  "FreeMono Regular": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeMono.ttf",
+   "family": "FreeMono",
+   "style": "Regular"
+  },
+  "FreeSerif Bold Italic": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeSerifBoldItalic.ttf",
+   "family": "FreeSerif",
+   "style": "Bold Italic"
+  },
+  "FreeSerif Bold": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
+   "family": "FreeSerif",
+   "style": "Bold"
+  },
+  "FreeSerif Italic": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeSerifItalic.ttf",
+   "family": "FreeSerif",
+   "style": "Italic"
+  },
+  "FreeSerif Regular": {
+   "file": "/usr/share/fonts/truetype/freefont/FreeSerif.ttf",
+   "family": "FreeSerif",
+   "style": "Regular"
+  },
+  "Liberation Mono Bold Italic": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf",
+   "family": "Liberation Mono",
+   "style": "Bold Italic"
+  },
+  "Liberation Mono Bold": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
+   "family": "Liberation Mono",
+   "style": "Bold"
+  },
+  "Liberation Mono Italic": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf",
+   "family": "Liberation Mono",
+   "style": "Italic"
+  },
+  "Liberation Mono Regular": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+   "family": "Liberation Mono",
+   "style": "Regular"
+  },
+  "Liberation Serif Bold Italic": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf",
+   "family": "Liberation Serif",
+   "style": "Bold Italic"
+  },
+  "Liberation Serif Bold": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+   "family": "Liberation Serif",
+   "style": "Bold"
+  },
+  "Liberation Serif Italic": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf",
+   "family": "Liberation Serif",
+   "style": "Italic"
+  },
+  "Liberation Serif Regular": {
+   "file": "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+   "family": "Liberation Serif",
+   "style": "Regular"
+  },
+  "Lora Bold (V5 master source)": {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/extract/v5-polished/fonts/Lora-700-normal.ttf",
+   "family": "Lora",
+   "style": "Bold (V5 master source)"
+  },
+  "Lora Italic": {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/extract/v5-polished/fonts/Lora-Italic-400-normal.ttf",
+   "family": "Lora",
+   "style": "Italic"
+  },
+  "Lora Medium Italic": {
+   "file": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/extract/v5-polished/fonts/Lora-Italic-500-normal.ttf",
+   "family": "Lora",
+   "style": "Medium Italic"
+  }
+ },
+ "not_checked": "Commercial faces are not installed and could not be checked."
+}

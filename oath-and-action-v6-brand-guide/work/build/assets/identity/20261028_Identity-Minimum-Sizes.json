@@ -1,0 +1,89 @@
+{
+ "rule": "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Each lockup names its replacement below its minimum. Favicons use the ampersand's 16 px master.",
+ "rows": [
+  {
+   "lockup": "L1 wordmark",
+   "v5": "120 px wide (13.4 px tall, cap 12.4 px)",
+   "screen": "16 px tall: 16 px master from 16 to 19 px tall (152 px wide; condensed 120 px), 24 px master from 20 to 39 px, display master from 40 px",
+   "print": "1.20 in wide (condensed 0.95 in)",
+   "below": "Use L8; below 48 px wide, the ampersand's 16 px master"
+  },
+  {
+   "lockup": "L2 stacked",
+   "v5": "72 px wide (cap 11.5 px)",
+   "screen": "90 px wide (condensed 72 px), capitals 14 px",
+   "print": "0.80 in wide (condensed 0.65 in)",
+   "below": "Use L8"
+  },
+  {
+   "lockup": "L3 horizontal with lockmark",
+   "v5": "192 px wide",
+   "screen": "196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master",
+   "print": "1.55 in wide (condensed 1.30 in)",
+   "below": "Use L1"
+  },
+  {
+   "lockup": "L4 monogram and tagline",
+   "v5": "144 px wide (tagline cap 4.5 px)",
+   "screen": "304 px wide (tagline at 13 px)",
+   "print": "2.30 in (tagline at 7 pt)",
+   "below": "Use L8 and set the tagline as live text"
+  },
+  {
+   "lockup": "L5 wordmark and tagline",
+   "v5": "240 px wide (tagline cap 5.9 px)",
+   "screen": "388 px wide (tagline at 13 px)",
+   "print": "2.90 in (tagline at 7 pt)",
+   "below": "Use L1 and set the tagline as live text"
+  },
+  {
+   "lockup": "L6 editorial signature",
+   "v5": "288 px wide (tagline cap 3.1 px)",
+   "screen": "884 px wide (tagline at 13 px)",
+   "print": "6.60 in (tagline at 7 pt)",
+   "below": "Use L3 with the tagline as live text"
+  },
+  {
+   "lockup": "L7 section masthead",
+   "v5": "168 px wide",
+   "screen": "250 px wide (pillar word at 13 px), from V5's layout",
+   "print": "1.90 in (pillar word at 7 pt)",
+   "below": "Use L1 and name the pillar in live text"
+  },
+  {
+   "lockup": "L8 monogram",
+   "v5": "48 px wide, also listed for favicons",
+   "screen": "48 px wide (capitals 16.0 px; condensed 19.5 px). Never a favicon",
+   "print": "0.50 in wide",
+   "below": "Use the ampersand's 16 px master"
+  },
+  {
+   "lockup": "Ampersand B, freestanding",
+   "v5": "16 px with V5's stroked optical drawing",
+   "screen": "16 px master from 16 to 23 px tall; 24 px master from 24 to 47 px; display master from 48 px",
+   "print": "0.25 in tall",
+   "below": "Nothing smaller. Favicon: the 16 px master at 16 px"
+  },
+  {
+   "lockup": "Lockmark",
+   "v5": "16 px, one color",
+   "screen": "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; V5 master from 48 px",
+   "print": "0.25 in",
+   "below": "Nothing smaller; the lever stays one size up at 16 and 24 px"
+  },
+  {
+   "lockup": "Hinge diagram V2",
+   "v5": "None set",
+   "screen": "Display master from 533 px wide (labels at 13 px; condensed 463 px); compact master from 245 px (lines 1 px; condensed 213 px)",
+   "print": "4.00 in wide (labels at 7 pt)",
+   "below": "Use a hinge headline"
+  },
+  {
+   "lockup": "Hinge-circle badge",
+   "v5": "New mark (S9)",
+   "screen": "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; display master from 48 px",
+   "print": "0.25 in",
+   "below": "Nothing smaller. Never an avatar or favicon"
+  }
+ ]
+}

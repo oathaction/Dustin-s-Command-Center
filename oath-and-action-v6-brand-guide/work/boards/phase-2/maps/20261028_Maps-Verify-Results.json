@@ -1,0 +1,45 @@
+{
+ "run_note": "Checked against work/extract/atlas-v7-data.json, independently of maps_model.py",
+ "counts": {
+  "svg_files": 110,
+  "steps_checked": 297,
+  "links_checked": 486,
+  "nodes_checked": 438,
+  "targets_checked": 183,
+  "red_marks_checked": 15,
+  "weakest_checked": 95,
+  "ticks_checked": 230,
+  "textures_checked": 751,
+  "glyphs_checked": 230,
+  "fabric_copies": 7
+ },
+ "views": {
+  "explore": 7,
+  "line-card": 1,
+  "line-mini": 23,
+  "line-map": 1,
+  "orbit-card": 1,
+  "orbit-mini": 26,
+  "orbit-map": 1,
+  "orbit-card-phone": 1,
+  "orbit-mini-phone": 23,
+  "weave-map": 2,
+  "weave-card": 1,
+  "weave-mini": 23
+ },
+ "catalog_loops": {
+  "line-mini": 23,
+  "orbit-mini": 23,
+  "orbit-mini-phone": 23,
+  "weave-mini": 23
+ },
+ "mismatches": 0,
+ "problems": [],
+ "summary": [
+  "Data check against V7: 0 mismatches across 110 drawings.",
+  "All 23 loops drawn in each catalog: line 23, orbit 23, orbit-phone 23, weave 23.",
+  "Checked 297 drawn loop steps and 486 drawn map connections for link, from, to, sign, type, delay and grade; 751 line textures, 230 delay-tick sets and 230 sign labels with their record squares.",
+  "Checked 183 reform pointers, 15 red marks and 95 weakest-step markings against V7's reform targets and grade ranks.",
+  "Each whole-system map draws all 51 variables and all 118 connections; the fabric weaves 7 marked copies of connections that sit on more than one loop."
+ ]
+}

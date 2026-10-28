@@ -7414,5 +7414,39 @@
   "Warranted trust": "Confidence that follows shown competence, honesty and accountability, as distinct from unconditional trust in whoever holds office.",
   "Wealth (net worth)": "Assets minus debts at a point in time. A rise in an asset's value that has not been sold is different from cash income or taxable income.",
   "Well-supported": "The confidence label for a relationship on which several credible studies, designed to rule out other explanations, agree about direction. Each study's setting and limits still apply."
+ },
+ "families": {
+  "DQ": "Democratic quality",
+  "GE": "Government efficacy",
+  "EP": "Economic performance",
+  "EQ": "Income and wealth equality"
+ },
+ "effect_codes": {
+  "+L": "large positive",
+  "+M": "moderate positive",
+  "+S": "small positive",
+  "0": "no expected effect",
+  "-S": "small negative",
+  "-M": "moderate negative",
+  "?": "direction uncertain"
+ },
+ "route_names": {
+  "LOC": "Local",
+  "SS": "State statute",
+  "BI": "State ballot",
+  "FS": "Federal statute",
+  "FR": "Chamber rule or confirmation",
+  "FA": "Federal executive action",
+  "ENF": "Enforcement and litigation",
+  "CRT": "Court doctrine",
+  "AV": "Article V",
+  "IC": "Interstate compact",
+  "CIV": "Civil society"
+ },
+ "feasibility_scale": {
+  "high": "The route is open, and the reform has been adopted somewhere through it since 2020.",
+  "medium": "The route is open in some places, and a credible campaign could carry the reform through it by 2030.",
+  "low": "The route exists, but it needs a coalition that does not exist now.",
+  "very low": "It needs a supermajority, a constitutional change or a reversal of court doctrine."
  }
 }

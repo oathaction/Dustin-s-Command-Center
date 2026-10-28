@@ -24,6 +24,9 @@ MINUS = "−"
 DASH = {"documented": None, "well-supported": None, "plausible": "9 4", "plausible_contested": "9 3 2 3",
         "contested": "9 3 2 3", "hypothesis": "2 4"}
 TICKS = {"S": 1, "M": 2, "L": 3}
+GRADE_WORD = {"documented": "Documented", "well-supported": "Well supported", "plausible": "Plausible",
+              "plausible_contested": "Contested", "contested": "Contested", "hypothesis": "Hypothesis"}
+DELAY_WORD = {"S": "under 2 years", "M": "2 to 10 years", "L": "over 10 years"}
 FONT_UI = "Inter, 'Helvetica Neue', Arial, sans-serif"
 FONT_DISPLAY = "'Inter Tight', Inter, 'Helvetica Neue', Arial, sans-serif"
 
@@ -220,8 +223,11 @@ def stroke(poly, grade, conceptual=False, width=2, color=INK, bg=NEWS, red=False
     dash = DASH.get(grade)
     da = f' stroke-dasharray="{dash}"' if dash else ""
     tex = dash or "solid"
+    if red and bg == WHITE:
+        # Pillar Red on White measures 3.99:1, above the 3:1 floor for informative graphics
+        return f'<path d="{d}" fill="none" stroke="{RED}" stroke-width="{width + 1}"{da} data-texture="{tex}" data-red="1"/>'
     if red:
-        return (f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="{width + 3}"{da} data-texture="{tex}"/>'
+        return (f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="{width + 3}"{da} data-texture="{tex}" data-red="1"/>'
                 f'<path d="{d}" fill="none" stroke="{RED}" stroke-width="{width + 0.5}"{da}/>')
     return f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}"{da} data-texture="{tex}"/>'
 
@@ -239,7 +245,7 @@ def connection(poly, step, *, start_gap=0, end_gap=0, width=2, color=INK, bg=NEW
         if kind == "authority":
             end = diamond_at(base, bg=bg, ink=color)
         else:
-            end = arrow_at(base, fill=RED if red else color, edge=INK if red else None)
+            end = arrow_at(base, fill=RED if red else color, edge=INK if (red and bg != WHITE) else None)
     out = stroke(line_poly, step.get("evidence"), step.get("conceptual"), width, color, bg, red)
     if ticks and step.get("delay"):
         out += ticks_on(base, TICKS[step["delay"]], color=color)
@@ -313,20 +319,31 @@ def node_attrs(code, label=None):
 
 # ------------------------------------------------------------------ loop kind marks (new, flagged as an option)
 
-def kind_mark(cx, cy, kind, r=11, ink=INK):
-    """Reinforcing: an opening spiral (each turn adds to the last). Balancing: a ring held at a set point.
-    Drawn in ink only, never red. Studio addition beside M1 to M4, flagged for Dustin."""
-    if kind == "R":
-        pts = []
-        for i in range(0, 61):
-            t = i / 60
-            a = -math.pi / 2 + t * 2 * math.pi * 1.25
-            rr = r * (0.28 + 0.72 * t)
-            pts.append((cx + rr * math.cos(a), cy + rr * math.sin(a)))
-        body = f'<path d="{path_d(pts)}" fill="none" stroke="{ink}" stroke-width="1.75" stroke-linecap="round"/>'
-        body += arrow_at(pts, 6, 3.2, ink)
-    else:
-        body = (f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="none" stroke="{ink}" stroke-width="1.75"/>'
-                f'<line x1="{cx - r - 4:.1f}" y1="{cy:.1f}" x2="{cx + r + 4:.1f}" y2="{cy:.1f}" stroke="{ink}" stroke-width="1.75"/>'
-                f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="2.6" fill="{ink}"/>')
+def kind_mark(cx, cy, kind, r=11, ink=INK, bg=NEWS):
+    """Loop kind in the causal loop diagram convention (Sterman, Business Dynamics, chapter 5): a clockwise loop
+    arrow around the letter R (reinforcing, feeds itself) or B (balancing, pushes back). Ink only, never red.
+    The card and the catalog always print the words beside it."""
+    pts = []
+    a0 = math.radians(-70)
+    sweep = math.radians(300)
+    for i in range(49):
+        a = a0 + sweep * i / 48
+        pts.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+    w = 1.6 if r < 14 else 2.2
+    body = f'<path d="{path_d(trim(pts, 0, 4))}" fill="none" stroke="{ink}" stroke-width="{w}"/>' + arrow_at(pts, 6 if r < 14 else 8, 3.4 if r < 14 else 4.4, ink)
+    size = 13 if r < 14 else 17
+    body += T(cx, cy + size * 0.36, kind, size, 800, ink, "middle", display=True)
     return f'<g class="kind" data-kind="{kind}">{body}</g>'
+
+
+def pointer(tx, ty, ux, uy, red=False, ids=(), size=8, at=None):
+    """Reform target pointer: a small solid triangle outside the element, tip toward it. Ink on the catalog;
+    Pillar Red with a Charcoal edge when the view names one reform (Rule 05.3)."""
+    bx, by = tx + ux * size * 1.25, ty + uy * size * 1.25
+    px, py = -uy, ux
+    pts = f"{tx:.1f},{ty:.1f} {bx + px * size * 0.62:.1f},{by + py * size * 0.62:.1f} {bx - px * size * 0.62:.1f},{by - py * size * 0.62:.1f}"
+    tag = f' data-target="{esc(" ".join(ids))}"' if ids else ""
+    tag += f' data-at="{esc(at)}"' if at else ""
+    if red:
+        return f'<polygon class="tg"{tag} data-red="1" points="{pts}" fill="{RED}"/>'
+    return f'<polygon class="tg"{tag} points="{pts}" fill="{INK}"/>'
