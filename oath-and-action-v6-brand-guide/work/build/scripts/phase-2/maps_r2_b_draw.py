@@ -430,7 +430,7 @@ def align_for(direction):
 
 # ------------------------------------------------------------------ card figure (desktop) and phone figure
 
-def card_geo(k=K, r=150.0, disc=27, stroke=2.5):
+def card_geo(k=K, r=140.0, disc=27, stroke=2.5):
     return {"r": r, "k": k, "disc": disc, "stroke": stroke, "gap": 5, "arrow": (11, 5.5)}
 
 
@@ -446,7 +446,7 @@ def pill_svg(x, y, step, size=14, ground=WHITE, ink=INK):
     doc = step.get("evidence") == "documented"
     tw = TX.width(g, size, 700)
     h = 22
-    w = max(24, tw + 14 + (11 if doc else 0))
+    w = pill_w(step, size)
     out = [f'<rect x="{x:.2f}" y="{y - h / 2:.2f}" width="{w:.2f}" height="{h}" rx="{h / 2}" fill="{ground}" stroke="{ink}" stroke-width="1.5"/>']
     if doc:
         out.append(f'<rect x="{x + 8:.2f}" y="{y - 3.5:.2f}" width="7" height="7" fill="{ink}" data-record="1"/>')
@@ -457,17 +457,22 @@ def pill_svg(x, y, step, size=14, ground=WHITE, ink=INK):
     return f'<g class="pill" data-for="{esc(step["id"])}">' + "".join(out) + "</g>", w
 
 
-def _station_lines(s, echo=False, rule_w=210, compact=False):
+def pill_w(step, size=14):
+    tw = TX.width(sign_glyph(step["polarity"]), size, 700)
+    return max(24, tw + 14 + (11 if step.get("evidence") == "documented" else 0))
+
+
+def _station_lines(s, echo=False, name_w=200, rule_w=200, compact=False, size=16):
     if echo:
-        return [(f'{s["label"]}, one turn later', 16, 600, "inter", INK)]
-    lines = [(s["label"], 16, 600, "inter", INK)]
+        return [(ln, size, 600, "inter", INK) for ln in TX.wrap(f'{s["label"]}, one turn later', name_w + 40, size, 600)]
+    lines = [(ln, size, 600, "inter", INK) for ln in TX.wrap(s["label"], name_w, size, 600)]
     if not compact and s.get("increase_means"):
         for ln in TX.wrap(higher_rule(s["increase_means"]), rule_w, 14, 400):
             lines.append((ln, 14, 400, "inter", DEEP))
     return lines
 
 
-def _step_lines(step, loop, reform_id, red, name_w=230):
+def _step_lines(step, loop, reform_id, red, name_w=220):
     head = f'{step["id"]} · ' + ("same direction" if step["polarity"] == "+" else "opposite direction")
     lines = [(head, 13, 700, "inter", INK)]
     for ln in TX.wrap(step["name"], name_w, 15, 600):
@@ -480,136 +485,91 @@ def _step_lines(step, loop, reform_id, red, name_w=230):
     return lines
 
 
-PILL_INDENT = 34
+def _rot(v, deg):
+    a = math.radians(deg)
+    return (v[0] * math.cos(a) - v[1] * math.sin(a), v[0] * math.sin(a) + v[1] * math.cos(a))
 
 
-def card_figure(loop, model, reform_id=None, geo=None, w=900, h=None, view="b-card", compact=False, ground=WHITE):
-    """The loop card's drawing at full size. Station names and their Higher rules sit horizontal outside the curve;
-    step names sit outside each segment with the sign, grade word and delay ticks; red marks the targets of the one
-    reform the card names (Rule 05.3). Labels are placed by measured size and tested against the curve and discs."""
-    geo = dict(geo or card_geo())
+def _station_cands(t, first_of_spiral):
+    out = G.outward(t)
+    if first_of_spiral:
+        # the echo sits outward of the first station, so its label goes inside the turn, under the disc
+        return [(0, 1), (-1, 0.0001), (1, 0.0001)]
+    return [out, _rot(out, 30), _rot(out, -30), _rot(out, 60), _rot(out, -60)]
+
+
+def _place_step_label(P, lines, step, c, tm, ground):
+    """Step label with the sign pill on its first line. Returns svg or None."""
+    pw = pill_w(step)
+    head_w = TX.width(lines[0][0], 13, 700)
+    # measure as one block, with the pill's width added to the first line
+    first = (lines[0][0], lines[0][1], lines[0][2], lines[0][3], lines[0][4])
+    w_first = pw + 8 + head_w
+    w_rest = max((TX.width(t, sz, wt, fm) for t, sz, wt, fm, _ in lines[1:]), default=0)
+    _, h, base = block_size(lines)
+    bw = max(w_first, w_rest)
+    out = G.outward(tm)
+    for dvec in (out, _rot(out, 25), _rot(out, -25), _rot(out, 50), _rot(out, -50)):
+        ux, uy = dvec
+        for extra in range(0, 240, 4):
+            dist = 18 + extra
+            px, py = c[0] + ux * dist, c[1] + uy * dist
+            x0 = px if ux > 0.38 else (px - bw if ux < -0.38 else px - bw / 2)
+            y0 = py if uy > 0.38 else (py - h if uy < -0.38 else py - h / 2)
+            rect = (x0, y0 - 6, x0 + bw, y0 + h)
+            if P.ok(rect):
+                P.take(rect)
+                al = align_for(dvec)
+                x1 = x0 + bw
+                if al == "end":
+                    px0 = x1 - w_first
+                elif al == "middle":
+                    px0 = (x0 + x1) / 2 - w_first / 2
+                else:
+                    px0 = x0
+                pill, _ = pill_svg(px0, y0 + base[0] - 4.5, step, ground=ground)
+                body = [pill, T(px0 + pw + 8, y0 + base[0], lines[0][0], 13, 700, INK)]
+                for (text, size, weight, fam, color), b in zip(lines[1:], base[1:]):
+                    if al == "end":
+                        body.append(T(x1, y0 + b, text, size, weight, color, "end"))
+                    elif al == "middle":
+                        body.append(T((x0 + x1) / 2, y0 + b, text, size, weight, color, "middle"))
+                    else:
+                        body.append(T(x0, y0 + b, text, size, weight, color))
+                return f'<g class="lbl steplabel" data-for="{esc(step["id"])}" data-kind="step">' + "".join(body) + "</g>"
+    return None
+
+
+def _figure(loop, model, reform_id, geo, w, top_room, bottom_room, view, ground, compact, phone):
     ring = loop["type"] == "B"
-    k = 1 if ring else geo["k"]
     r, disc = geo["r"], geo["disc"]
-    # frame: the spiral (or ring) box, plus room for labels on each side
-    e = G.extents(4, r, geo["k"], disc)  # one frame for every loop of this kind at this scale
-    side = (w - (e[2] - e[0])) / 2
-    top_room = 64 if not compact else 40
-    geo["cx"] = side - e[0]
-    geo["cy"] = top_room - e[1]
-    h = h or math.ceil(e[3] - e[1] + top_room + 72)
+    e = G.extents(4, r, geo["k"], disc)  # one frame for every loop at this scale, whatever its kind
+    geo["cx"] = round((w - (e[2] - e[0])) / 2 - e[0], 2)
+    geo["cy"] = round(top_room - e[1], 2)
+    h = math.ceil(e[3] - e[1] + top_room + bottom_room)
     red_targets = set(model["reforms"][reform_id]["targets"]) if reform_id else set()
     red_links = {s["id"] for s in loop["steps"] if s["id"] in red_targets}
     red_nodes = {s["code"] for s in loop["stations"] if s["code"] in red_targets}
-    steps, mids = draw_steps(loop, geo, ground, red_links=red_links, ticks=not compact)
-    stations, centers, echo = draw_stations(loop, geo, ground, id_size=20, red_nodes=red_nodes, reform_id=reform_id,
-                                            id_display=True)
+    steps, mids = draw_steps(loop, geo, ground, red_links=red_links, ticks=True, open_r=12 if not phone else 9)
+    stations, centers, echo = draw_stations(loop, geo, ground, id_size=20 if not phone else 15, red_nodes=red_nodes,
+                                            reform_id=reform_id, id_display=True, open_r=12 if not phone else 9)
     poly = _curve_poly(loop, geo)
     discs = [(c, disc + 2) for _, _, c in centers] + ([(echo[2], disc + 2)] if echo else [])
-    P = Placer([poly], discs, w, h, margin=10)
-    labels = []
-    failed = []
-    # echo first (its spot is fixed above the outer lap), then stations, then steps
-    order = []
-    if echo:
-        order.append(("echo", echo))
-    order += [("station", c) for c in centers]
-    for kind_, (s, t, c) in order:
-        lines = _station_lines(s, echo=(kind_ == "echo"), compact=compact)
-        out_dir = G.outward(t)
-        cands = [out_dir]
-        if kind_ == "station" and t == 0 and not ring:
-            # the echo sits outward of the first station: try beside it, then inside the turn
-            cands = [(-1, 0), (0, 1), (1, 0)]
-        rect = None
-        for dvec in cands:
-            rect = place_block(P, lines, c, dvec, gap=disc + 10)
-            if rect:
-                break
-        if rect is None:
-            failed.append(s["label"])
-            continue
-        al = align_for(dvec)
-        labels.append(render_block(rect, lines, al, f' data-for="{esc(s["code"] or s["label"])}" data-kind="{kind_}"'))
-    for step, tm, c in mids:
-        if step.get("conceptual"):
-            continue
-        red = step["id"] in red_links
-        lines = _step_lines(step, loop, reform_id, red, name_w=200 if compact else 230)
-        # reserve the pill's width on the first line
-        lines_m = [(lines[0][0] + "   ", *lines[0][1:])] + lines[1:]
-        dvec = G.outward(tm)
-        rect = place_block(P, lines_m, c, dvec, gap=16)
-        if rect is None:
-            failed.append(step["id"])
-            continue
-        al = align_for(dvec)
-        x0, y0, x1, y1 = rect
-        _, _, base = block_size(lines_m)
-        pill_w = TX.width(sign_glyph(step["polarity"]), 14, 700) + 14 + (11 if step["evidence"] == "documented" else 0)
-        pill_w = max(24, pill_w)
-        head_w = TX.width(lines[0][0], 13, 700)
-        if al == "end":
-            hx_end = x1
-            px = x1 - head_w - 8 - pill_w
-        elif al == "middle":
-            tot = pill_w + 8 + head_w
-            px = (x0 + x1) / 2 - tot / 2
-            hx_end = px + tot
-        else:
-            px = x0
-            hx_end = x0 + pill_w + 8 + head_w
-        pill, _ = pill_svg(px, y0 + base[0] - 4.5, step, ground=ground)
-        body = [pill, T(hx_end, y0 + base[0], lines[0][0], 13, 700, INK, "end")]
-        for (text, size, weight, fam, color), b in zip(lines[1:], base[1:]):
-            if al == "end":
-                body.append(T(x1, y0 + b, text, size, weight, color, "end"))
-            elif al == "middle":
-                body.append(T((x0 + x1) / 2, y0 + b, text, size, weight, color, "middle"))
-            else:
-                body.append(T(x0, y0 + b, text, size, weight, color))
-        labels.append(f'<g class="lbl steplabel" data-for="{esc(step["id"])}" data-kind="step">' + "".join(body) + "</g>")
-    kind_word = "Snowball loop: it feeds itself" if not ring else "Thermostat loop: it pushes back"
-    label = f'Loop {loop["id"]} drawn as a {"spiral" if not ring else "ring"}. {kind_word}. {loop["how_to_read"]}'
-    extra = f' data-reform="{esc(reform_id)}"' if reform_id else ""
-    extra += f' data-label-failures="{esc("|".join(failed))}"' if failed else ""
-    svg = svg_doc(w, h, "".join(steps) + "".join(stations) + "".join(labels), label, view, root_attrs(loop, geo, extra), bg=ground)
-    return svg, failed
-
-
-def phone_figure(loop, model, reform_id=None, w=358):
-    """The card drawing at 390 px: the same geometry at a smaller r, station names only, step IDs with their sign.
-    Step names, grades and Higher rules move to the lists under the figure."""
-    geo = card_geo(r=62.0, disc=20, stroke=2.5)
-    geo["arrow"] = (9, 4.5)
-    geo["gap"] = 4
-    ring = loop["type"] == "B"
-    k = 1 if ring else geo["k"]
-    r, disc = geo["r"], geo["disc"]
-    e = G.extents(4, r, geo["k"], disc)
-    geo["cx"] = (w - (e[2] - e[0])) / 2 - e[0]
-    geo["cy"] = 46 - e[1]
-    h = math.ceil(e[3] - e[1] + 46 + 52)
-    red_targets = set(model["reforms"][reform_id]["targets"]) if reform_id else set()
-    red_links = {s["id"] for s in loop["steps"] if s["id"] in red_targets}
-    red_nodes = {s["code"] for s in loop["stations"] if s["code"] in red_targets}
-    steps, mids = draw_steps(loop, geo, WHITE, red_links=red_links, ticks=True)
-    stations, centers, echo = draw_stations(loop, geo, WHITE, id_size=15, red_nodes=red_nodes, reform_id=reform_id, id_display=True)
-    poly = _curve_poly(loop, geo)
-    discs = [(c, disc + 2) for _, _, c in centers] + ([(echo[2], disc + 2)] if echo else [])
-    P = Placer([poly], discs, w, h, margin=7)
+    P = Placer([poly], discs, w, h, margin=10 if not phone else 7)
     labels, failed = [], []
     order = ([("echo", echo)] if echo else []) + [("station", c) for c in centers]
     for kind_, (s, t, c) in order:
-        txt = f'{s["label"]}, one turn later' if kind_ == "echo" else s["label"]
-        cands = [G.outward(t)]
-        if kind_ == "station" and t == 0 and not ring:
-            cands = [(0, 1), (-1, 0)]
+        cands = [G.outward(t)] if kind_ == "echo" else _station_cands(t, (t == 0 and not ring))
         rect = None
-        for wrap_w in (300, 120, 96):
-            lines = [(ln, 15, 600, "inter", INK) for ln in TX.wrap(txt, wrap_w, 15, 600)]
+        tries = [(200, 200)] if not phone else [(300, 0), (130, 0), (100, 0)]
+        for name_w, rule_w in tries:
+            if phone:
+                txt = f'{s["label"]}, one turn later' if kind_ == "echo" else s["label"]
+                lines = [(ln, 15, 600, "inter", INK) for ln in TX.wrap(txt, name_w, 15, 600)]
+            else:
+                lines = _station_lines(s, echo=(kind_ == "echo"), name_w=name_w, rule_w=rule_w, compact=compact)
             for dvec in cands:
-                rect = place_block(P, lines, c, dvec, gap=disc + 7)
+                rect = place_block(P, lines, c, dvec, gap=disc + (10 if not phone else 7))
                 if rect:
                     break
             if rect:
@@ -621,19 +581,39 @@ def phone_figure(loop, model, reform_id=None, w=358):
     for step, tm, c in mids:
         if step.get("conceptual"):
             continue
-        lines = [(step["id"] + "  ", 13, 700, "inter", INK)]
-        dvec = G.outward(tm)
-        rect = place_block(P, lines, c, dvec, gap=12)
-        if rect is None:
+        red = step["id"] in red_links
+        if phone:
+            lines = [(step["id"], 13, 700, "inter", INK)]
+        else:
+            lines = _step_lines(step, loop, reform_id, red, name_w=200 if compact else 220)
+        svg = _place_step_label(P, lines, step, c, tm, ground)
+        if svg is None:
             failed.append(step["id"])
             continue
-        x0, y0, x1, y1 = rect
-        _, _, base = block_size(lines)
-        pill, pw = pill_svg(x0, y0 + base[0] - 4.5, step)
-        labels.append(f'<g class="lbl steplabel" data-for="{esc(step["id"])}" data-kind="step">{pill}'
-                      + T(x0 + pw + 6, y0 + base[0], step["id"], 13, 700, INK) + "</g>")
-    label = f'Loop {loop["id"]} drawn as a {"spiral" if not ring else "ring"}. {loop["how_to_read"]}'
+        labels.append(svg)
+    kind_word = "Snowball loop: it feeds itself" if not ring else "Thermostat loop: it pushes back"
+    label = f'Loop {loop["id"]} drawn as a {"spiral" if not ring else "ring"}. {kind_word}. {loop["how_to_read"]}'
     extra = f' data-reform="{esc(reform_id)}"' if reform_id else ""
     extra += f' data-label-failures="{esc("|".join(failed))}"' if failed else ""
-    svg = svg_doc(w, h, "".join(steps) + "".join(stations) + "".join(labels), label, "b-card-phone", root_attrs(loop, geo, extra), bg=WHITE)
+    svg = svg_doc(w, h, "".join(steps) + "".join(stations) + "".join(labels), label, view, root_attrs(loop, geo, extra), bg=ground)
     return svg, failed
+
+
+def card_figure(loop, model, reform_id=None, geo=None, w=960, view="b-card", compact=False, ground=WHITE):
+    """The loop card's drawing at full size: station names and their Higher rules horizontal outside the curve
+    (the first station's inside the turn, since its echo sits outward); step names outside each segment with the
+    sign, grade word and delay ticks; red at the targets of the one reform the card names (Rule 05.3)."""
+    return _figure(loop, model, reform_id, dict(geo or card_geo()), w, 64, 150, view, ground, compact, False)
+
+
+def phone_geo():
+    g = card_geo(r=56.0, disc=19, stroke=2.5)
+    g["arrow"] = (9, 4.5)
+    g["gap"] = 4
+    return g
+
+
+def phone_figure(loop, model, reform_id=None, w=358, view="b-card-phone"):
+    """The card drawing at 390 px: the same k at a smaller r, station names, step IDs with their sign pill. Step
+    names, grades and Higher rules move to the list under the figure."""
+    return _figure(loop, model, reform_id, phone_geo(), w, 44, 64, view, WHITE, True, True)
