@@ -9,7 +9,7 @@ This is Phase 2 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. 
 Gate 1 decisions: [paste: approved strategy, symbol direction, each identity refinement accepted or declined, architecture, tokens]
 
 **Outcome.** The foundations, symbols and graphic devices, built as finished chapters and real vector masters:
-- Chapters in `work/build/`: Purpose, Voice, Identity, The Ampersand and the hinge, Color, Type, Layout and the Signal Grid, Pillar marks, Topic and atlas symbols, Status and utility icons, Graphic devices and patterns, Motion and states, Components and interaction, Tokens and how to choose them
+- Chapters in `work/build/`, numbered by `work/ledger/20261021_Guide-Architecture-Map.md`: 01 Purpose, 02 Voice, 03 Identity, 04 The Ampersand and the hinge, 05 Color, 06 Type, 07 Layout and spacing, 08 The Signal Grid, 09 Pillar marks, 10 Topic and atlas symbols, 11 Status and utility icons, 12 Graphic devices and patterns, 17 Motion and states, 18 Components and interaction, the rules of 19 Accessibility, and 26 Tokens and how to choose them
 - Vector masters in `work/build/assets/`: identity, pillars, topics, atlas symbols, status marks, encoding glyphs, utility icons and graphic devices, at 16, 24 and 48 px where useful
 - `tokens.css` and `tokens.json` generated from one source
 - A preview build of these chapters as one HTML file in `work/boards/`

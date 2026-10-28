@@ -9,7 +9,7 @@ This is Phase 4 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. 
 Gate 3 decisions: [paste or write "As proposed"]
 
 **Outcome.** Every application in Master Brief section 18 and the twelve-page report, finished at exact sizes and built:
-- Chapters in `work/build/`: Photography, illustration and video; Web and atlas; Newsletter and email; Social; Reports; Print and presentation; Video frames; Atlas system test
+- Chapters in `work/build/`, numbered by `work/ledger/20261021_Guide-Architecture-Map.md`: 16 Photography, illustration and video; 20 Web; 21 The atlas, with the atlas system test; 22 Newsletter and email; 23 Social and video, with the video frames; 24 Reports; 25 Print and presentation
 - Each application as a working file or export: email HTML, social PNGs, slide layouts, letterhead, one-page explainer, event sign, video title and end frames
 - The report reader with all twelve pages revised
 - `work/research/YYYYMMDD_Platform-Specifications.md` with each spec, its official source and the date checked

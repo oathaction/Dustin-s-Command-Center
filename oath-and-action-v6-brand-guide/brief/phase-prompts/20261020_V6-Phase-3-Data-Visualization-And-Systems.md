@@ -9,7 +9,7 @@ This is Phase 3 of the Oath & Action Edition 06 commission. Follow `CLAUDE.md`. 
 Gate 2 decisions: [paste or write "As proposed"]
 
 **Outcome.** The data visualization, systems graphics, and evidence and sourcing chapters, finished and built:
-- Chapters in `work/build/`: Data visualization, Systems graphics, Evidence and sourcing
+- Chapters in `work/build/`, numbered by `work/ledger/20261021_Guide-Architecture-Map.md`: 13 Evidence and sourcing, 14 Data visualization, 15 Systems graphics
 - At least twenty specimens, each with its data file in `work/build/data/`
 - The data palette specification with contrast and grayscale proofs
 - The six Atlas V7 worked examples from Master Brief section 14
