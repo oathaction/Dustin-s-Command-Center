@@ -127,12 +127,9 @@ def write_holders():
     parts.append('<text x="10" y="298" font-size="13" fill="#45494F">Gray: a plain border radius, 22.37 percent of the side.</text>')
     px0, py0, pw, ph = 300, 20, 430, 200
     parts.append(f'<rect x="{px0}" y="{py0}" width="{pw}" height="{ph}" fill="none" stroke="#5D636D" stroke-width="1"/>')
-    for path, col, wdt in ((pl, "#8A8F96", 2), (se, "#121212", 2.5)):
-        pts = g.outline_curvature(path, S2)
-        if not pts:
-            continue
+    for pts, col, wdt in ((g.plain_corner_curvature(S2, C.CORNER_RADIUS), "#8A8F96", 2), (g.superellipse_curvature(S2, C.SUPERELLIPSE_N), "#121212", 2.5)):
         smax = pts[-1][0] or 1
-        kmax = 1.15 / (C.CORNER_RADIUS * S2)
+        kmax = 1.6 / (C.CORNER_RADIUS * S2)
         d = " ".join(f"{'M' if i == 0 else 'L'}{px0 + p[0] / smax * pw:.1f} {py0 + ph - min(p[1], kmax) / kmax * (ph - 10):.1f}" for i, p in enumerate(pts))
         parts.append(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{wdt}"/>')
     parts.append(f'<text x="{px0}" y="{py0 + ph + 22}" font-size="13" fill="#45494F">Curvature from the middle of the top edge to the middle of the right edge.</text>')

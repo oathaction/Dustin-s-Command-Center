@@ -158,6 +158,8 @@ def rot(path, deg, cx, cy):
     pen = p.getPen()
 
     def f(q):
+        if q is None:
+            return None
         x, y = q[0] - cx, q[1] - cy
         return (cx + x * ca - y * sa, cy + x * sa + y * ca)
 
@@ -280,41 +282,53 @@ def superellipse(x, y, size, n=5.0, per_quadrant=24):
     return p
 
 
-def outline_curvature(path, S, steps=48):
-    """Menger curvature along the top right quarter of an outline in the square (0, 0, S): from
-    the middle of the top edge to the middle of the right edge. Returns (arc length, curvature)."""
-    pts = []
-    for contour in _contours(path, steps):
-        pts = contour
-        break
-    # keep points in the top right quarter, in path order starting at the top edge
-    q = [i for i, (px, py) in enumerate(pts) if px >= S / 2 - 1e-6 and py <= S / 2 + 1e-6]
-    if not q:
-        return []
-    # rotate so the run is contiguous
-    n = len(pts)
-    start = next(i for i in q if (i - 1) % n not in q)
-    run = []
-    i = start
-    while i in q:
-        run.append(pts[i])
-        i = (i + 1) % n
-        if i == start:
-            break
-    if run[0][1] > run[-1][1]:
-        run = run[::-1]
-    out = []
-    s = 0.0
-    for j in range(1, len(run) - 1):
-        (x0, y0), (x1, y1), (x2, y2) = run[j - 1], run[j], run[j + 1]
-        a_ = math.hypot(x1 - x0, y1 - y0)
-        b_ = math.hypot(x2 - x1, y2 - y1)
-        c_ = math.hypot(x2 - x0, y2 - y0)
-        area2 = abs((x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0))
-        k = 2 * area2 / (a_ * b_ * c_) if a_ * b_ * c_ > 1e-12 else 0.0
-        s += a_
+def superellipse_curvature(size, n=5.0, samples=400):
+    """Exact curvature along one quarter of the superellipse |u|^n + |v|^n = 1 that fills a square
+    of this size, from the middle of one edge to the middle of the next. Returns (arc length, k)."""
+    a = size / 2
+
+    def pt(t):
+        return a * abs(math.cos(t)) ** (2 / n), a * abs(math.sin(t)) ** (2 / n)
+    out, s, prev = [], 0.0, None
+    for i in range(samples + 1):
+        t = (math.pi / 2) * i / samples
+        t = min(max(t, 1e-4), math.pi / 2 - 1e-4)
+        h = 1e-5
+        (x0, y0), (x1, y1), (x2, y2) = pt(t - h), pt(t), pt(t + h)
+        dx, dy = (x2 - x0) / (2 * h), (y2 - y0) / (2 * h)
+        ddx, ddy = (x2 - 2 * x1 + x0) / h ** 2, (y2 - 2 * y1 + y0) / h ** 2
+        k = abs(dx * ddy - dy * ddx) / (dx * dx + dy * dy) ** 1.5
+        if prev is not None:
+            s += math.hypot(x1 - prev[0], y1 - prev[1])
+        prev = (x1, y1)
         out.append((s, k))
     return out
+
+
+def plain_corner_curvature(size, radius_frac):
+    """Curvature of a plain rounded square along the same quarter: straight, then 1/R, then straight."""
+    R = radius_frac * size
+    run = size / 2 - R
+    arc = math.pi * R / 2
+    return [(0.0, 0.0), (run, 0.0), (run, 1 / R), (run + arc, 1 / R), (run + arc, 0.0), (2 * run + arc, 0.0)]
+
+
+def superellipse_fit_error(size, n=5.0, per_quadrant=24):
+    """Largest distance between the cubic approximation and the exact superellipse, in px."""
+    p = superellipse(0, 0, size, n, per_quadrant)
+    cont = _contours(p, 32)[0]
+    a = size / 2
+    worst = 0.0
+    for (x, y) in cont:
+        u, v = abs(x - a) / a, abs(y - a) / a
+        # radial distance to the exact curve along the ray from the center
+        r = math.hypot(u, v)
+        if r < 1e-9:
+            continue
+        ux, vy = u / r, v / r
+        rho = (ux ** n + vy ** n) ** (-1 / n)
+        worst = max(worst, abs(r - rho) * a)
+    return worst
 
 
 def plain_rounded(x, y, size, radius_frac=0.2237):
@@ -379,3 +393,35 @@ def min_dist_to(path, cx, cy, samples=24):
 
 def contains(path, x, y):
     return path.contains((x, y))
+
+
+def transform(path, s=1.0, dx=0.0, dy=0.0):
+    """Scale and move a path. Handles quadratic contours whose last point is implied (None),
+    which the Phase 1 helper does not."""
+    p = pathops.Path()
+    pen = p.getPen()
+
+    def f(q):
+        return None if q is None else (q[0] * s + dx, q[1] * s + dy)
+
+    class T:
+        def moveTo(self, a):
+            pen.moveTo(f(a))
+
+        def lineTo(self, a):
+            pen.lineTo(f(a))
+
+        def curveTo(self, *pts):
+            pen.curveTo(*[f(q) for q in pts])
+
+        def qCurveTo(self, *pts):
+            pen.qCurveTo(*[f(q) for q in pts])
+
+        def closePath(self):
+            pen.closePath()
+
+        def endPath(self):
+            pen.endPath()
+
+    path.draw(T())
+    return p

@@ -24,8 +24,9 @@ Concepts
      into a piece or between pieces.
   C  One drawing in two cuts. Direction A's geometry as closed outlines with square corners.
      Line cut: each outline as a 2 px wall inside its edge. Flat cut: each outline filled. A part
-     with no inside (a 2 px arc, a handle, a coin edge) is the same in both cuts. The node never
-     bites a wall: it sits in a counter, clear of every shape, or in a flat-ended gap in a wall.
+     with no inside keeps 2 px in both cuts, except the loop arc and the lens handle, which grow
+     inward to 3 px in the flat cut. The node never bites a wall: it sits in a counter, clear of
+     every shape, or in a flat-ended gap in a wall.
      The line cut starts at 24 px; 16 px uses the flat cut.
 """
 import math
@@ -196,8 +197,8 @@ def A_24(name, var=None):
         right = minus(intersect(circle(12, 12, 10), rect(16, 0, 8, 24)), intersect(circle(12, 12, 8), rect(18, 0, 6, 24)))
         return layers(union(left, right), 12, 12, 24)
     if name == "act":
-        leaf = wall_poly([(2, 2), (12, 5.75), (12, 22), (2, 22)])
-        frame = _ln([(14, 3), (21, 3), (21, 22)])
+        leaf = wall_poly([(2, 5), (12, 8.75), (12, 22), (2, 22)])
+        frame = union(_ln([(2, 3), (22, 3)]), _ln([(21, 4), (21, 22)]))
         return layers(union(leaf, frame), 7, 12, 24)
     if name == "ballot":
         box = _ln([(6, 14), (3, 14), (3, 21), (21, 21), (21, 14), (18, 14)])
@@ -239,9 +240,9 @@ def A_16(name, var=None):
         right = intersect(circle(7.5, 7.5, 6.5), rect(10, 0, 6, 16))
         return layers(union(left, right), 7.5, 7.5, 16)
     if name == "act":
-        leaf = wall_poly([(1, 1), (10, 4.375), (10, 15), (1, 15)])
-        frame = _ln([(12, 2), (14, 2), (14, 15)])
-        return layers(union(leaf, frame), 5.5, 8.5, 16)
+        leaf = wall_poly([(1, 4), (10, 7.0), (10, 15), (1, 15)])
+        frame = union(_ln([(1, 2), (15, 2)]), _ln([(14, 3), (14, 15)]))
+        return layers(union(leaf, frame), 5.5, 10.5, 16)
     if name == "ballot":
         box = _ln([(3, 10), (3, 14), (14, 14), (14, 10)])
         paper = _ln([(5, 9), (5, 2), (12, 2), (12, 9)])
@@ -280,8 +281,8 @@ def B_24(name, var=None):
         body = minus(circle(12, 12, 10), rect(8, 0, 8, 24))
         return layers(body, 12, 12, 24)
     if name == "act":
-        leaf = poly((2, 2), (12, 5.75), (12, 22), (2, 22))
-        frame = union(rect(14, 2, 8, 2), rect(20, 2, 2, 20))
+        leaf = poly((2, 5), (12, 8.75), (12, 22), (2, 22))
+        frame = union(rect(2, 2, 20, 2), rect(20, 2, 2, 20))
         return layers(union(leaf, frame), 7, 12, 24)
     if name == "ballot":
         box = minus(rect(2, 15, 20, 6), rect(6, 15, 12, 2))
@@ -315,9 +316,9 @@ def B_16(name, var=None):
         body = minus(circle(7.5, 7.5, 6.5), rect(5, 0, 5, 16))
         return layers(body, 7.5, 7.5, 16)
     if name == "act":
-        leaf = poly((1, 1), (9, 4), (9, 15), (1, 15))
-        frame = union(rect(10, 1, 5, 2), rect(13, 1, 2, 14))
-        return layers(union(leaf, frame), 4.5, 8.5, 16)
+        leaf = poly((1, 4), (9, 6.5), (9, 15), (1, 15))
+        frame = union(rect(1, 1, 14, 2), rect(13, 1, 2, 14))
+        return layers(union(leaf, frame), 4.5, 9.5, 16)
     if name == "ballot":
         box = minus(rect(1, 10, 14, 5), rect(3, 10, 10, 1))
         paper = rect(4, 1, 7, 10)
@@ -332,8 +333,8 @@ def B_16(name, var=None):
         head = intersect(arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2), rect(1, 1, 14, 14))
         return layers(union(band, head), 7.5, 12.5, 16)
     if name == "search":
-        lens = ring(6.5, 6.5, 5.5, 2.5)
-        handle = pixel_diag(10, 10, 3, 3)
+        lens = ring(6.5, 6.5, 5.0, 2.5)
+        handle = pixel_diag(9, 9, 4, 3)
         return layers(union(lens, handle), 6.5, 6.5, 16)
     raise ValueError(name)
 
@@ -343,7 +344,8 @@ def B_16(name, var=None):
 def _C24(name, cut):
     """Closed outlines, open parts for this cut, node center, and the flat-ended gap the line cut
     needs where the node sits in a wall. Both cuts share one silhouette: the flat cut fills each
-    outline, and its open lines grow inward from 2 to 3 px so their outer edges stay put."""
+    outline. Open lines keep 2 px, except the loop's arc and the lens handle, which carry the whole
+    subject and grow inward to 3 px in the flat cut, so their outer edges stay put."""
     flat = cut == "flat"
     if name == "explain":
         L = minus(rect(3, 8, 14, 14), rect(10, 8, 7, 7))
@@ -357,8 +359,8 @@ def _C24(name, cut):
         right = intersect(circle(12, 12, 10), rect(16, 0, 8, 24))
         return [left, right], [], (12, 12), None
     if name == "act":
-        leaf = poly((2, 2), (12, 5.75), (12, 22), (2, 22))
-        frame = _ln([(14, 3.5), (20.5, 3.5), (20.5, 22)], 3) if flat else _ln([(14, 3), (21, 3), (21, 22)])
+        leaf = poly((2, 5), (12, 8.75), (12, 22), (2, 22))
+        frame = union(_ln([(2, 3), (22, 3)]), _ln([(21, 4), (21, 22)]))
         return [leaf], [frame], (7, 12), None
     if name == "ballot":
         box = minus(rect(3, 14, 18, 8), rect(6, 14, 12, 2))
@@ -402,9 +404,9 @@ def C_16(name, cut="flat", var=None):
     if name == "connect":
         return layers(minus(circle(7.5, 7.5, 6.5), rect(5, 0, 5, 16)), 7.5, 7.5, 16)
     if name == "act":
-        leaf = poly((1, 1), (9, 4), (9, 15), (1, 15))
-        frame = union(rect(10, 1, 5, 2), rect(13, 1, 2, 14))
-        return layers(union(leaf, frame), 4.5, 8.5, 16)
+        leaf = poly((1, 4), (9, 6.5), (9, 15), (1, 15))
+        frame = union(rect(1, 1, 14, 2), rect(13, 1, 2, 14))
+        return layers(union(leaf, frame), 4.5, 9.5, 16)
     if name == "ballot":
         box = minus(rect(1, 10, 14, 5), rect(3, 10, 10, 1))
         return layers(union(box, rect(4, 1, 7, 10)), 7.5, 4.5, 16)
@@ -418,7 +420,7 @@ def C_16(name, cut="flat", var=None):
         head = intersect(arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2), rect(1, 1, 14, 14))
         return layers(union(arc, head), 7.5, 12.5, 16)
     if name == "search":
-        return layers(union(circle(6.5, 6.5, 5.5), pixel_diag(10, 10, 4)), 6.5, 6.5, 16)
+        return layers(union(circle(6.5, 6.5, 5.0), pixel_diag(9, 9, 4, 3)), 6.5, 6.5, 16)
     raise ValueError(name)
 
 

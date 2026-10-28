@@ -94,6 +94,173 @@ def node_separate(lay, size, id_dark, id_light):
     return out
 
 
+def _rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def _hex(t):
+    return "#%02X%02X%02X" % tuple(int(v) for v in t)
+
+
+def tile_svg(c, cut, n, shape, color, size, colorway=None):
+    """One holder with its icon, as a single SVG at `size` px: the 24 px master in a 40 px
+    holder, the display master above that."""
+    fill, cw = C.HOLDER_COLORS[color]
+    cw = colorway or cw
+    lay, s = (D.master(c, cut, n, 24), 24) if size == 40 else (D.display(c, cut, n), 24)
+    hp = C.holder_path(shape, size)
+    off = size * (1 - C.FIELD_FRACTION) / 2
+    sc = size * C.FIELD_FRACTION / s
+    ink, node, seat = C.COLORWAYS[cw]
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">',
+             f'<path d="{g.d_of(hp)}" fill="{fill}"/>',
+             f'<path d="{g.d_of(g.transform(lay["ink"], sc, off, off))}" fill="{ink}"/>',
+             f'<path d="{g.d_of(g.transform(lay["node"], sc, off, off))}" fill="{node}"/>', "</svg>"]
+    return "".join(parts), lay, sc, off
+
+
+def measure_tiles():
+    """Safe area and rendered contrast for every icon in every holder and tile color, and for
+    the bare icon on every surface."""
+    jobs, meta = [], {}
+    for (c, cut) in C.DRAWINGS:
+        for n in D.ICONS:
+            for shape in C.HOLDER_SHAPES:
+                for color in C.HOLDER_COLORS:
+                    for size in (40, 80):
+                        html, lay, sc, off = tile_svg(c, cut, n, shape, color, size)
+                        id_ = f"t-{c}-{cut}-{n}-{shape}-{color}-{size}"
+                        jobs.append({"id": id_, "w": size, "h": size, "bg": "#7F7F7F", "html": html})
+                        meta[id_] = (c, cut, n, shape, color, size, lay, sc, off)
+            for sname, label, bg in C.SURFACES:
+                cw = {"newsprint": "Ink-Charcoal-Red", "white": "Ink-Charcoal-Red", "charcoal": "Ink-Newsprint-Red", "prussian": "Ink-White"}[sname]
+                lay = D.display(c, cut, n)
+                id_ = f"s-{c}-{cut}-{n}-{sname}"
+                jobs.append({"id": id_, "w": 96, "h": 96, "bg": bg, "html": C.svg_doc(lay, 24, cw, px=96)})
+                meta[id_] = (c, cut, n, sname, bg, cw, lay)
+    jp = C.SCRATCH / "tile-jobs.json"
+    jp.write_text(json.dumps(jobs))
+    rt = C.SCRATCH / "rt"
+    subprocess.run(["node", str(C.RENDER_JS), str(jp), str(rt)], check=True)
+    tiles, surf = {}, {}
+    for id_, m in meta.items():
+        img = np.array(Image.open(rt / f"{id_}.png").convert("RGB")).astype(float)
+        if id_.startswith("t-"):
+            c, cut, n, shape, color, size, lay, sc, off = m
+            fill = np.array(_rgb(C.HOLDER_COLORS[color][0]), float)
+            hmask = np.zeros(img.shape[:2], bool)
+            yy, xx = np.mgrid[0:size, 0:size]
+            hp = C.holder_path(shape, size)
+            inside = np.array([[hp.contains((x + .5, y + .5)) for x in range(size)] for y in range(size)])
+            for _ in range(2):  # erode two pixels, so the holder's own antialiased edge is not read as ink
+                pd = np.pad(inside, 1, constant_values=False)
+                inside = pd[1:-1, 1:-1] & pd[:-2, 1:-1] & pd[2:, 1:-1] & pd[1:-1, :-2] & pd[1:-1, 2:]
+            diff = np.abs(img - fill).sum(-1) > 24
+            ink = diff & inside
+            ys, xs = np.nonzero(ink)
+            lo, hi = size * (1 - C.LIVE_FRACTION) / 2, size * (1 + C.LIVE_FRACTION) / 2
+            bbox = [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1]
+            in_live = bbox[0] >= lo - 0.5 and bbox[1] >= lo - 0.5 and bbox[2] <= hi + 0.5 and bbox[3] <= hi + 0.5
+            rmax = float(np.max(np.hypot(xs + .5 - size / 2, ys + .5 - size / 2))) / size
+            margin = min(bbox[0], bbox[1], size - bbox[2], size - bbox[3]) / size
+            # rendered colors: ink core and node core, and the ring around the node
+            ink_c, node_c, seat_c = C.COLORWAYS[C.HOLDER_COLORS[color][1]]
+            cx, cy = lay["center"]
+            ncx, ncy = cx * sc + off, cy * sc + off
+            rn, rs = 2.0 * sc, 3.0 * sc
+            dist = np.hypot(xx + .5 - ncx, yy + .5 - ncy)
+            core = img[dist <= max(0.6, rn - 0.8)]
+            band = img[(dist >= rn + 0.25 * (rs - rn)) & (dist <= rs - 0.25 * (rs - rn))]
+            node_med = np.median(core, 0) if len(core) else None
+            band_med = np.median(band, 0) if len(band) else None
+            full = ink & (np.abs(img - np.array(_rgb(ink_c), float)).sum(-1) < 30)
+            row = {"bbox": bbox, "in_live_area": bool(in_live), "r_max_share": round(rmax, 3), "margin_share": round(margin, 3),
+                   "ink_vs_tile": round(C.contrast(ink_c, C.HOLDER_COLORS[color][0]), 2),
+                   "ink_full_px": int(full.sum())}
+            if node_med is not None and band_med is not None:
+                row["node_core"] = _hex(node_med)
+                row["node_ring"] = _hex(band_med)
+                row["node_vs_ring"] = round(C.contrast(_hex(node_med), _hex(band_med)), 2)
+            if shape == "Circle":
+                row["in_circle_safe"] = bool(rmax <= C.CIRCLE_SAFE + 0.5 / size)
+            tiles[id_[2:]] = row
+        else:
+            c, cut, n, sname, bg, cw, lay = m
+            cx, cy = lay["center"]
+            sc = 4.0
+            yy, xx = np.mgrid[0:96, 0:96]
+            dist = np.hypot(xx + .5 - cx * sc, yy + .5 - cy * sc)
+            core = img[dist <= 2.0 * sc - 1.0]
+            band = img[(dist >= 2.0 * sc + 1.0) & (dist <= 3.0 * sc - 1.0)]
+            ink_c = C.COLORWAYS[cw][0]
+            surf[id_[2:]] = {"ink_vs_surface": round(C.contrast(ink_c, bg), 2),
+                             "node_core": _hex(np.median(core, 0)), "node_ring": _hex(np.median(band, 0)),
+                             "node_vs_ring": round(C.contrast(_hex(np.median(core, 0)), _hex(np.median(band, 0))), 2)}
+    return tiles, surf
+
+
+WATCH = {"explain": ["letter C", "letter L", "copyright sign"], "track": ["status light", "Signal Grid lockmark"],
+         "connect": ["copyright sign", "V5 chain link (pm-connect)"], "act": ["letter D", "chapter number 01", "play button"],
+         "loop": ["letter C", "letter G"], "search": ["letter Q"], "ballot": [], "money": []}
+
+
+def _glyphs_svg(text, size, font):
+    """Glyph outlines for a short string, scaled to the live area and centered, like Phase 1."""
+    from fontTools.ttLib import TTFont
+    from fontTools.pens.svgPathPen import SVGPathPen
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.transformPen import TransformPen
+    f = TTFont(str(font))
+    gs = f.getGlyphSet()
+    cmap = f.getBestCmap()
+    x = 0
+    parts = []
+    for ch in text:
+        name = cmap[ord(ch)]
+        parts.append((name, x))
+        x += gs[name].width
+    bp = BoundsPen(gs)
+    for name, dx in parts:
+        gs[name].draw(TransformPen(bp, (1, 0, 0, 1, dx, 0)))
+    x0, y0, x1, y1 = bp.bounds
+    live = size - 2
+    sc = min(live / (x1 - x0), live / (y1 - y0))
+    tx = (size - (x1 - x0) * sc) / 2 - x0 * sc
+    ty = (size - (y1 - y0) * sc) / 2 + y1 * sc
+    out = []
+    for name, dx in parts:
+        pen = SVGPathPen(gs)
+        gs[name].draw(TransformPen(pen, (1, 0, 0, 1, dx, 0)))
+        out.append(f'<path transform="translate({tx:.3f} {ty:.3f}) scale({sc:.5f} {-sc:.5f})" d="{pen.getCommands()}" fill="#000"/>')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">{"".join(out)}</svg>'
+
+
+def measure_watch():
+    """Each icon against the shapes a reader could take it for, at 16 px (24 px for C's line cut)."""
+    refs = {}
+    for sz in (16, 24):
+        rr = M.reference_svgs(sz)
+        rr["chapter number 01"] = _glyphs_svg("01", sz, M.FONTS / "Inter-Tight-800-normal.ttf")
+        rr["letter Q"] = _glyphs_svg("Q", sz, M.FONTS / "Inter-Tight-800-normal.ttf")
+        rr["letter G"] = _glyphs_svg("G", sz, M.FONTS / "Inter-Tight-800-normal.ttf")
+        refs[sz] = rr
+    jobs = []
+    for sz, rr in refs.items():
+        for nm, svg in rr.items():
+            jobs.append({"id": f"ref-{M.slug(nm)}-{sz}", "w": sz, "h": sz, "bg": C.WHITE, "html": svg})
+    jp = C.SCRATCH / "watch-jobs.json"
+    jp.write_text(json.dumps(jobs))
+    subprocess.run(["node", str(C.RENDER_JS), str(jp), str(R)], check=True)
+    out = {}
+    for (c, cut) in C.DRAWINGS:
+        sz = 16 if 16 in C.sizes(c, cut) else 24
+        for n in D.ICONS:
+            for nm in WATCH[n]:
+                out[f"{c}-{cut}|{n}|{nm}|{sz}"] = M.sim(cov(f"w-{key(c, cut, n, sz)}"), cov(f"ref-{M.slug(nm)}-{sz}"))
+    return out
+
+
 def main():
     C.SCRATCH.mkdir(parents=True, exist_ok=True)
     jobs = []
@@ -188,6 +355,8 @@ def main():
         res["contrast"][f"red|{sname}"] = round(C.contrast(C.RED, bg), 2)
     res["contrast"]["keyline|newsprint"] = round(C.contrast(C.CHAR, C.NEWS), 2)
     res["contrast"]["red|keyline"] = round(C.contrast(C.RED, C.CHAR), 2)
+    res["tiles"], res["surfaces_rendered"] = measure_tiles()
+    res["watch"] = measure_watch()
     out = C.OUT / f"{C.DATE}_Icon-Concepts-Measurements.json"
     C.OUT.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(res, indent=1))

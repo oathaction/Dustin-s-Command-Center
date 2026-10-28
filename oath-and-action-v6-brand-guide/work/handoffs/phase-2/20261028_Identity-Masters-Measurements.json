@@ -870,9 +870,9 @@
    "label": "Narrow B for the condensed wordmark: its own 16 and 24 px masters",
    "item": "I4",
    "overlay_16": {
-    "original_only_px": 27.1,
-    "proposal_only_px": 24.5,
-    "changed_share": 0.198
+    "original_only_px": 27.2,
+    "proposal_only_px": 22.6,
+    "changed_share": 0.194
    },
    "overlay_24": {
     "original_only_px": 50.9,
@@ -933,8 +933,8 @@
     "red_pixels_on_prussian": 0
    },
    "prop": {
-    "crisp_16": 0.623,
-    "open_counters_16": 3,
+    "crisp_16": 0.622,
+    "open_counters_16": 2,
     "crisp_24": 0.747,
     "one_color_max_offline": {
      "newsprint 16": 0.7,
@@ -951,19 +951,19 @@
      "prussian 96": 0.8
     },
     "ink_contrast_median": {
-     "newsprint 16": 13.18,
+     "newsprint 16": 12.96,
      "newsprint 24": 13.29,
-     "white 16": 18.58,
+     "white 16": 18.26,
      "white 24": 18.73,
-     "charcoal 16": 13.04,
+     "charcoal 16": 12.78,
      "charcoal 24": 13.29,
-     "prussian 16": 13.06,
+     "prussian 16": 12.84,
      "prussian 24": 13.28
     },
     "red_median_contrast": {
      "newsprint 16": 2.96,
      "newsprint 24": 2.96,
-     "white 16": 4.17,
+     "white 16": 4.15,
      "white 24": 4.17,
      "charcoal 16": 4.45,
      "charcoal 24": 4.49
@@ -1119,7 +1119,7 @@
    },
    "prop": {
     "crisp_16": 0.768,
-    "open_counters_16": 7,
+    "open_counters_16": 6,
     "crisp_24": 0.86,
     "one_color_max_offline": {
      "newsprint 16": 0.7,
@@ -1148,7 +1148,7 @@
     "red_median_contrast": {
      "newsprint 16": 2.96,
      "newsprint 24": 2.96,
-     "white 16": 4.17,
+     "white 16": 4.15,
      "white 24": 4.17,
      "charcoal 16": 4.45,
      "charcoal 24": 4.49
@@ -1160,8 +1160,8 @@
    "label": "Condensed: the Phase 1 exploration against the drawing pass",
    "item": "I5",
    "overlay_16": {
-    "original_only_px": 339.9,
-    "proposal_only_px": 317.0,
+    "original_only_px": 340.9,
+    "proposal_only_px": 315.9,
     "changed_share": 0.323
    },
    "overlay_24": {
@@ -1212,7 +1212,7 @@
    },
    "prop": {
     "crisp_16": 0.768,
-    "open_counters_16": 7,
+    "open_counters_16": 6,
     "crisp_24": 0.86,
     "one_color_max_offline": {
      "newsprint 16": 0.7,
@@ -1886,9 +1886,9 @@
     "changed_share": 0.467
    },
    "overlay_24": {
-    "original_only_px": 39.5,
-    "proposal_only_px": 154.8,
-    "changed_share": 0.385
+    "original_only_px": 44.6,
+    "proposal_only_px": 164.9,
+    "changed_share": 0.451
    },
    "overlay_48": {
     "original_only_px": 0.0,
@@ -1946,19 +1946,19 @@
    "prop": {
     "crisp_16": 0.605,
     "open_counters_16": 4,
-    "crisp_24": 0.599,
+    "crisp_24": 1.0,
     "one_color_max_offline": {
      "newsprint 16": 1.7,
-     "newsprint 24": 1.7,
+     "newsprint 24": 0.0,
      "newsprint 96": 0.7,
      "white 16": 1.7,
-     "white 24": 1.7,
+     "white 24": 0.0,
      "white 96": 0.0,
      "charcoal 16": 0.8,
-     "charcoal 24": 0.8,
+     "charcoal 24": 0.0,
      "charcoal 96": 1.1,
      "prussian 16": 0.5,
-     "prussian 24": 0.7,
+     "prussian 24": 0.0,
      "prussian 96": 0.7
     },
     "ink_contrast_median": {
@@ -1967,7 +1967,7 @@
      "white 16": 18.73,
      "white 24": 18.73,
      "charcoal 16": 13.26,
-     "charcoal 24": 13.26,
+     "charcoal 24": 13.29,
      "prussian 16": 13.28,
      "prussian 24": 13.28
     },
@@ -2232,7 +2232,7 @@
   "lock24": {
    "label": "Lockmark, 24 px master",
    "red_px": 0,
-   "one_color_max_offline": 0.7,
+   "one_color_max_offline": 0.0,
    "median_contrast": 13.28
   },
   "lock": {
