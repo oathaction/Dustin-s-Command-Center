@@ -1,6 +1,6 @@
 # Gate 1 report: research, strategy and direction
 
-Oath & Action Brand Guide, Edition 06. Phase 1, October 21, 2026. Status: stopped at Gate 1, waiting for Dustin's approval.
+Oath & Action Brand Guide, Edition 06. Phase 1, October 21, 2026. Status: approved by Dustin on October 28, 2026 ("I accept all your recommendations."). Decisions G1-01 to G1-06 in the decision log record it.
 
 Open the review board: `work/boards/20261021_Gate-1-Review-Board.html`, also published as a private page at https://claude.ai/artifact/2Torwu3WHrrp8fUs5RUHG2. It puts each decision beside the drawings it needs. The five detailed boards behind it sit in `work/boards/`:
 

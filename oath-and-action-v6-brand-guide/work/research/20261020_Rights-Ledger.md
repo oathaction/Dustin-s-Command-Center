@@ -387,3 +387,15 @@ Dustin's account (Master Brief V2 section 2, Q-02): generated in ChatGPT from hi
 - Who made page 14, the data visualization concept sheet. It is a rendered page, not a generated image, and Q-03 covers atlas work only.
 - The prompts behind the generated images. Brief section 16 asks for tool, date, prompt and terms; Dustin gave the tool and plan, and the prompts are not on file.
 - The current wording of OpenAI's terms. The T-OPENAI summary rests on official-domain search snippets from October 20, 2026; no page could be opened.
+
+## Added October 28, 2026: references sent with Gate 1 approval
+
+Five images Dustin sent as inspiration for the icons and the atlas, copied to `work/research/chat-references/` with dated names. All are study only and never ship.
+
+| File | What it shows | Rights note |
+|---|---|---|
+| `20261028_Ref-Icon-Collage-Line-Duo-Flat.webp` | Collage of commercial icon sets: hand-drawn doodles, blue line icons, a Line/Duo/Solid/Flat set, teal line icons, blue line icons with orange accents, circled line icons | Third-party sets; one tile carries a Getty Images watermark ("Credit: fairywong", 693902454). Study only |
+| `20261028_Ref-Icon-Set-Two-Tone-Geometric.png` | Two-tone purple geometric flat icons, a screenshot with viewer controls | Third-party; source unknown. Study only |
+| `20261028_Ref-Icon-Set-Geometric-Pink-Gold.jpg` | Geometric marks in black, pink and gold | Third-party stock look; source unknown. Study only |
+| `20261028_Ref-Atlas-Loop-Catalog-Current.png` | The current loop catalog board (23 loops drawn as uniform rings) | Oath & Action's own atlas work (Q-03) |
+| `20261028_Ref-Atlas-Loop-R8-Concept-08.webp` | Atlas Concept 08, the R8 housing scarcity loop card | Oath & Action's own atlas work (Q-03) |
