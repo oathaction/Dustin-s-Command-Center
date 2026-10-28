@@ -42,9 +42,7 @@
    ],
    "red_in_badge_zone": 0.28,
    "pieces": 3,
-   "counters": [
-    8.21
-   ],
+   "counters": [],
    "density96": 0.287,
    "centroid96": [
     -0.054,
@@ -433,8 +431,7 @@
    "pieces": 2,
    "counters": [
     1.5,
-    5.5,
-    9.44
+    5.5
    ],
    "density96": 0.274,
    "centroid96": [
@@ -462,8 +459,7 @@
    "pieces": 2,
    "counters": [
     1.5,
-    5.5,
-    9.44
+    5.5
    ],
    "density96": 0.318,
    "centroid96": [
@@ -1051,11 +1047,7 @@
     0.0,
     0.167
    ],
-   "counters_px": [
-    3.0,
-    4.0,
-    5.0
-   ]
+   "counters_px": []
   },
   "testify|16px|open": {
    "crisp": 1.0,
@@ -1073,11 +1065,7 @@
     0.0,
     0.167
    ],
-   "counters_px": [
-    3.0,
-    4.0,
-    5.0
-   ]
+   "counters_px": []
   },
   "housing|24px|rest": {
    "crisp": 0.89,
@@ -1169,8 +1157,7 @@
    ],
    "counters_px": [
     2.0,
-    6.0,
-    9.52
+    6.0
    ]
   },
   "money|24px|open": {
@@ -1191,8 +1178,7 @@
    ],
    "counters_px": [
     2.0,
-    6.0,
-    9.52
+    6.0
    ]
   },
   "money|16px|rest": {
@@ -1213,8 +1199,7 @@
    ],
    "counters_px": [
     1.0,
-    4.0,
-    6.42
+    4.0
    ]
   },
   "money|16px|open": {
@@ -1235,8 +1220,7 @@
    ],
    "counters_px": [
     1.0,
-    4.0,
-    6.42
+    4.0
    ]
   },
   "loop|24px|rest": {
@@ -1255,11 +1239,7 @@
     0.0,
     0.25
    ],
-   "counters_px": [
-    4.0,
-    5.0,
-    6.0
-   ]
+   "counters_px": []
   },
   "loop|24px|open": {
    "crisp": 1.0,
@@ -1277,10 +1257,7 @@
     0.0,
     0.25
    ],
-   "counters_px": [
-    5.0,
-    6.0
-   ]
+   "counters_px": []
   },
   "loop|16px|rest": {
    "crisp": 1.0,
@@ -1298,9 +1275,7 @@
     0.333,
     0.333
    ],
-   "counters_px": [
-    4.0
-   ]
+   "counters_px": []
   },
   "loop|16px|open": {
    "crisp": 1.0,
@@ -1318,10 +1293,7 @@
     0.333,
     0.333
    ],
-   "counters_px": [
-    4.0,
-    5.0
-   ]
+   "counters_px": []
   }
  },
  "pairs16": {
