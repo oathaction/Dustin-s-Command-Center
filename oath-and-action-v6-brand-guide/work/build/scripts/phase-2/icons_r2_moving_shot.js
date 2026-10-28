@@ -6,7 +6,7 @@ const { chromium } = require(path.join(execSync('npm root -g').toString().trim()
 (async () => {
   const [inp, out, w, s] = process.argv.slice(2);
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
-  const page = await browser.newPage({ deviceScaleFactor: parseFloat(s || '1'), viewport: { width: parseInt(w || '1200', 10), height: 800 } });
+  const page = await browser.newPage({ deviceScaleFactor: parseFloat(s || '1'), viewport: { width: parseInt(w || '1200', 10), height: 60 } });
   await page.goto('file://' + path.resolve(inp));
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(200);

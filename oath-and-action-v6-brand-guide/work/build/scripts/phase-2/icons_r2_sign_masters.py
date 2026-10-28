@@ -1,12 +1,13 @@
 """Concept 3, Public sign: hinted 16 and 24 px masters (design director, Phase 2 round two).
 
-The 24 px master is the display drawing fitted to whole pixels; the 16 px master is the separate
-16-unit drawing in icons_r2_sign_draw.py fitted the same way. Fitting keeps each pixel a layer
-covers by half or more (round one's pixel_shape in icons_draw.py, imported and unchanged) and
-traces the kept pixels as one outline per layer. A pixel is kept when its center falls inside the layer, sampled a
-hair off center so an edge that runs exactly through pixel centers resolves the same way every
-time. Center sampling gives true pixel discs (a 4.5-unit node becomes a 5 px disc with its corners
-cut), keeps 3 px bars at 3 px, and squares off round ends, so no short stroke fits into a plus.
+The 24 px master is the display drawing fitted to whole pixels (Feedback loop and Campaign money
+are drawn on the pixel grid first, see draw24 in icons_r2_sign_draw.py); the 16 px master is the
+separate 16-unit drawing in icons_r2_sign_draw.py fitted the same way.
+
+Fitting keeps a pixel when its center falls inside the layer, sampled a hair off center so an
+edge that runs exactly through pixel centers resolves the same way every time, and traces the
+kept pixels as one outline per layer. Center sampling gives true pixel discs (a 4.5-unit node
+becomes a 5 px disc with its corners cut), keeps 3 px bars at 3 px, and squares off round ends.
 Round one's area-coverage fitter (pixel_shape in icons_draw.py) turned these discs into crosses,
 so this module uses its own fitter and leaves round one's untouched.
 
@@ -33,7 +34,7 @@ RED_ON_INK = {"ballot"}
 # ended display stroke, so the drawing does not move).
 SQUARE_RED_24 = {
     "housing": lambda: G.rect(10.0, 16.5, 3.0, 5.5),
-    "bill": lambda: G.rect(10.0, 15.0, 5.0, 3.0),
+    "bill": lambda: G.rect(8.5, 15.0, 5.5, 3.0),
 }
 
 
@@ -59,7 +60,7 @@ def _fit(shape, size):
 def master(name, size):
     """{"ink": path, "accent": path} on whole pixels for size 16 or 24."""
     if size == 24:
-        d = D.draw(name)
+        d = D.draw24(name)
         acc_src = SQUARE_RED_24[name]() if name in SQUARE_RED_24 else d["accent"]
     elif size == 16:
         d = D.draw16(name)

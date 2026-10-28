@@ -40,7 +40,8 @@ def chip(kind, code):
     return f'<span class="chip"><span class="k">{esc(kind)}</span><span class="c">{esc(code)}</span></span>'
 
 
-def kind_svg(kind, size=18, ink=D.CHARCOAL):
+def kind_svg(kind, size=24, ink=D.CHARCOAL):
+    """The kind glyph, kept only where it draws at 24 px or more (round-two review, fix 2)."""
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 {size} {size}" aria-hidden="true" focusable="false">'
             f'{D.kind_glyph(size / 2, size / 2, kind, size, ink, 1.9)}</svg>')
 
@@ -165,13 +166,25 @@ def tm(s):
     return re.sub(r"(?<![\w])-(?=[SML0])", D.MINUS, s)
 
 
-def reform_panel(rid, lid=None, compact=False):
+def reform_panel(rid, lid=None, compact=False, responsive=False):
+    """Where a reform acts, its effects by outcome family and its routes. compact is the phone card's form: the
+    routes as a list, so no cell runs past the card. responsive carries both forms and lets the width choose."""
     r = M["reforms"][rid]
     fam = M["families"]
-    rows = "".join(f'<tr><th scope="row">{esc(fam[k])}</th><td>{pips_svg(v)}</td><td>{esc(tm(v))}</td></tr>' for k, v in r["effects"].items())
+    pw = 124 if (compact or responsive) else 150
+    rows = "".join(f'<tr><th scope="row">{esc(fam[k])}</th><td>{pips_svg(v, w=pw)}</td><td>{esc(tm(v))}</td></tr>' for k, v in r["effects"].items())
     routes = "".join(
         f'<tr><td>{chip("Route", x["route"])}</td><td>{esc(M["route_names"][x["route"]])}</td><td>{esc(x["feasibility"].capitalize())}</td>'
         f'<td>{esc(datefmt(x["checked"]) if x["checked"] else "Unchecked")}</td></tr>' for x in r["routes"])
+    route_items = "".join(
+        f'<li>{chip("Route", x["route"])} <b>{esc(M["route_names"][x["route"]])}</b><br>'
+        f'<span class="small">Feasibility {esc(x["feasibility"])}. {esc("Checked " + datefmt(x["checked"]) if x["checked"] else "Not yet checked")}.</span></li>'
+        for x in r["routes"])
+    route_table = (f'<div class="wrap rt-wide" tabindex="0" role="region" aria-label="Routes for {rid}"><table class="eff"><caption>Routes to change, with V7\'s feasibility and the date each was checked</caption>'
+                   f'<thead><tr><th scope="col">Route</th><th scope="col">Who</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{routes}</tbody></table></div>')
+    route_list = (f'<div class="rt-narrow"><p class="small rcap">Routes to change, with V7\'s feasibility and the date each was checked</p>'
+                  f'<ul class="routes">{route_items}</ul></div>')
+    route_html = route_list if compact else (route_table + route_list if responsive else route_table)
     tg = r["targets"]
     drawn = set()
     if lid:
@@ -193,8 +206,7 @@ def reform_panel(rid, lid=None, compact=False):
 <p>{esc(r["what_it_changes"]) if r.get("what_it_changes") else ""}</p>
 <div class="rfgrid"><div class="wrap" tabindex="0" role="region" aria-label="Effects of {rid}"><table class="eff"><caption>Effects by outcome family, as V7's ordinal codes. The atlas never adds them into one score.</caption>
 <thead><tr><th scope="col">Family</th><th scope="col">Mark</th><th scope="col">V7 code</th></tr></thead><tbody>{rows}</tbody></table></div>
-<div class="wrap" tabindex="0" role="region" aria-label="Routes for {rid}"><table class="eff"><caption>Routes to change, with V7's feasibility and the date each was checked</caption>
-<thead><tr><th scope="col">Route</th><th scope="col">Who</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{routes}</tbody></table></div></div>
+{route_html}</div>
 <p class="small">Problem evidence: {esc(D.GRADE_WORD.get(r["problem_grade"], r["problem_grade"]))}. Remedy evidence: {esc(D.GRADE_WORD.get(r["remedy_grade"], r["remedy_grade"]))}. Confidence in the effects: {esc(r["effects_confidence"])}.</p>
 </section>'''
 
@@ -221,9 +233,11 @@ CAT_CSS = """
 .card.w2{grid-column:span 2}
 .card .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .card .areas{font:600 13px/1.3 var(--body);color:var(--deep)}
+.card .kindw{display:inline-flex;align-items:center;gap:6px}
 .card h3{font:600 16px/1.3 var(--body);margin:10px 0 8px;text-wrap:balance}
 .card figure{margin:4px 0 8px;display:flex;justify-content:center;align-items:center;flex:1;min-height:90px}
-.card.w2 .inner{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;flex:1}
+.card figure svg{flex:none}
+.card.w2 .inner{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:20px;align-items:center;flex:1}
 .card.w2 figure{justify-content:flex-start}
 .card p{margin:0;font-size:13px;line-height:1.45;color:var(--deep)}
 .card p.k{color:var(--charcoal);font-weight:600}
@@ -251,8 +265,9 @@ def band_svg(L0, width, height, cell, ox, oy, head_size, head_lines, deck, phone
     body = [net]
     x = 64 if not phone else 16
     y = 130 if not phone else 70
-    for i, ln in enumerate(head_lines):
-        body.append(D.T(x, y + i * head_size * 0.98, ln, head_size, 800, D.WHITE, "start", "d"))
+    # the headline is one text of two lines (tspans), so its tight display leading reads as one label
+    spans = "".join(f'<tspan x="{x:.1f}" y="{y + i * head_size * 0.98:.1f}">{esc(ln)}</tspan>' for i, ln in enumerate(head_lines))
+    body.append(f'<text class="d" font-size="{head_size}" fill="{D.WHITE}">{spans}</text>')
     yy = y + (len(head_lines) - 1) * head_size * 0.98 + (44 if not phone else 34)
     for ln in deck:
         body.append(D.T(x, yy, ln, 18 if not phone else 15, 400, D.NEWS, "start"))
@@ -269,7 +284,7 @@ def read_strip(phone=False):
     cells = [
         f"<p>{sw('documented')}Documented or well supported. {sw('plausible')}Plausible.</p>",
         f"<p>{sw('plausible_contested')}Contested. {sw('hypothesis')}Hypothesis. A hollow line is a sketched step.</p>",
-        f"<p>{kind_svg('R', 18, ink)}A loop that feeds itself. {kind_svg('B', 18, ink)}One that pushes back.</p>",
+        f"<p>{kind_svg('R', 24, ink)}A loop that feeds itself. {kind_svg('B', 24, ink)}One that pushes back.</p>",
         "<p>Each card is the loop's own line lifted from the map at one shared scale. A wide card is a loop that crosses three areas.</p>",
     ]
     return f'<section class="read" aria-labelledby="howto"><div class="pw"><h2 id="howto">How to read a line</h2>{"".join(cells)}</div></section>'
@@ -292,7 +307,8 @@ def catalog_card(L, lid, sp, phone=False, written=None):
     cls = "card w2" if sp == 2 else "card"
     cap = (f'<p class="k">{esc(turn_text(lp))}</p><p>{esc(weakest_text(lp))}</p>'
            f'<p>Crosses {esc(words_list(ar))}.</p>')
-    head = f'<div class="top">{bullet}<span class="sr">Loop {lid}.</span><span class="areas">{esc(lp["kind_word"])}</span></div>'
+    head = (f'<div class="top">{bullet}<span class="sr">Loop {lid}.</span><span class="areas kindw">{kind_svg(lp["type"], 24, D.DEEP)}'
+            f'{esc(lp["kind_word"])}</span></div>')
     fig = f'<figure>{svg}</figure>'
     if sp == 2 and not phone:
         inner = f'<div class="inner">{fig}<div><h3>{esc(lp["title"])}</h3>{cap}</div></div>'
@@ -396,6 +412,11 @@ caption{caption-side:top;text-align:left;font-size:13px;color:var(--deep);paddin
 .stationlist{list-style:none;padding:0;margin:8px 0 0}
 .stationlist li{padding:6px 0}
 .stationlist .n{font:700 18px/1.25 var(--display)}
+.rfgrid>*{min-width:0}
+.routes{list-style:none;padding:0;margin:0}
+.routes li{border-bottom:1px solid var(--stone);padding:8px 0;font-size:14px;line-height:1.5}
+.rcap{margin:0 0 6px}
+.kind svg{flex:none}
 """
 
 CARD_CSS_PHONE = """
@@ -447,17 +468,16 @@ def card_page(L, Ls, lid, reform, phone=False, written=None):
         items = []
         for st in lp["steps"]:
             l = M["links"][st["id"]]
-            rec = " Documented on the public record." if st["evidence"] == "documented" else ""
             red = f" {reform} acts here." if st["id"] in M["reforms"][reform]["targets"] else ""
             items.append(f'<li><b>{st["id"]}</b> {esc(l["name"])}. {esc(st["from_label"])} to {esc(st["to_label"])}. '
                          f'Sign {esc(D.sign_glyph(st["polarity"]))}: {"both move the same way" if st["polarity"] == "+" else "they move opposite ways"}. '
-                         f'{esc(D.GRADE_WORD[st["evidence"]])}: {esc(D.GRADE_GLOSS[st["evidence"]])}.{rec} {esc(D.DELAY_WORD[st["delay"]].capitalize())}.{esc(red)}</li>')
+                         f'{esc(D.GRADE_WORD[st["evidence"]])}: {esc(D.GRADE_GLOSS[st["evidence"]])}. {esc(D.DELAY_WORD[st["delay"]].capitalize())}.{esc(red)}</li>')
         sts = "".join(f'<li><span class="n">{esc(s["label"])}</span> <span class="small">{esc(s["code"])}</span><br>{esc(C.higher_rule(s["code"]))}</li>' for s in lp["stations"])
         steplist = f'<h2 class="eyebrow" style="margin-top:16px">Steps, in order</h2><ol class="steps">{"".join(items)}</ol><h2 class="eyebrow" style="margin-top:12px">Stations</h2><ul class="stationlist">{sts}</ul>'
     body = (f'<main class="pw"><article class="cardpage" data-loop="{lid}">{head}<div class="grid"><div><figure style="margin:0">{drawing}'
             f'<figcaption class="small">The loop\'s own line from the map at full size. Tags show each step\'s sign and the way it runs; '
             f'ticks count the delay; the small square marks a documented step.</figcaption></figure>{steplist}</div>'
-            f'<aside class="rail" aria-label="Facts about Loop {lid}">{rail}</aside></div>{reform_panel(reform, lid)}'
+            f'<aside class="rail" aria-label="Facts about Loop {lid}">{rail}</aside></div>{reform_panel(reform, lid, compact=phone)}'
             f'<p class="src">{esc(SRC)}</p></article></main>')
     css = CARD_CSS + (CARD_CSS_PHONE if phone else "")
     return page(f"Loop {lid} Card" + (" Phone" if phone else ""), css, body, desc=f"Loop card for {lid}, Direction C")
@@ -468,6 +488,11 @@ def card_page(L, Ls, lid, reform, phone=False, written=None):
 VIEW_CSS = """
 body.prussian{background:var(--prussian)} body.white{background:var(--white)}
 .frame{width:1440px;margin:0}
+.fit,.full{display:none}
+.fit img{display:block;width:100%;height:auto}
+.full{margin:0;padding:10px 16px 18px;font-size:15px}
+body.prussian .full{color:var(--newsprint)} body.prussian .full a{color:var(--white)}
+.below{background:var(--white);padding:24px 64px 8px}
 .tvsec{background:var(--newsprint);padding:32px 64px 48px}
 .tvsec h2{font:800 24px/1.2 var(--display);margin:0 0 12px}
 .wrap{overflow-x:auto;max-width:100%}
@@ -475,12 +500,49 @@ table.tv{border-collapse:collapse;width:100%;font-size:14px}
 .tv th,.tv td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--stone);vertical-align:top}
 .tv thead th{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--deep)}
 .tv caption{caption-side:top;text-align:left;font-size:14px;color:var(--deep);padding:0 0 8px}
+.small{font-size:13px;color:var(--deep)}
+.eyebrow{font:700 13px/1.3 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--deep);margin:0 0 6px}
+.reform h2{font:800 24px/1.25 var(--display);margin:0 0 10px}
+.redkey{display:inline-block;width:24px;height:6px;background:var(--red);vertical-align:middle;margin-right:4px}
+.rfgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.rfgrid>*{min-width:0}
+table.eff{border-collapse:collapse;width:100%;font-size:14px}
+.eff th,.eff td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--stone);vertical-align:middle}
+.eff thead th{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--deep)}
+.eff caption{caption-side:top;text-align:left;font-size:13px;color:var(--deep);padding:0 0 6px}
+.routes{list-style:none;padding:0;margin:0}
+.routes li{border-bottom:1px solid var(--stone);padding:8px 0;font-size:14px;line-height:1.5}
+.rcap{margin:0 0 6px}
+.rt-narrow{display:none}
+.tv-narrow{display:none}
+.tvl{list-style:none;padding:0;margin:8px 0 0}
+.tvl li{border-top:1px solid var(--stone);padding:10px 0}
+.tvl p{margin:0 0 4px;font-size:15px;line-height:1.5}
+.tvl .tvh{font-weight:600}
+@media (max-width:1199px){
+ .tv-wide{display:none} .tv-narrow{display:block}
+ .frame{display:none}
+ .fit,.full{display:block}
+ .below{padding:20px 16px 8px}
+ .tvsec{padding:24px 16px 40px}
+ .rfgrid{grid-template-columns:1fr}
+ .rt-wide{display:none} .rt-narrow{display:block}
+}
 """
 
 
-def view_page(title, svg, cls, desc="", text=False):
-    tv = f'<section class="tvsec" aria-labelledby="tvh"><h2 id="tvh">The lines in words</h2>{text_version()}<p class="src">{esc(SRC)}</p></section>' if text else ""
-    return page(title, VIEW_CSS, f'<main class="frame" aria-label="{esc(title)}">{svg}</main>{tv}', desc=desc).replace("<body>", f'<body class="{cls}">', 1)
+def view_page(title, svg, cls, desc="", capture="", what="", panel=""):
+    """A whole-system view as a page. At 1440 the drawing sits inline at full size. Below 1200 px the page shows
+    the same drawing fit to the screen width, as its capture inside a focusable region, with a link to the full-size
+    image; then the reform panel where the view has one; then the lines in words."""
+    fit = (f'<div class="fit" role="region" tabindex="0" aria-label="{esc(title)}, fit to the screen width">'
+           f'<img src="{esc(capture)}" width="1440" height="960" alt="{esc(what)} The lines in words, below, give every line and its stations."></div>'
+           f'<p class="full"><a href="{esc(capture)}">Open the map at full size</a>, 1440 by 960 px, to zoom in.</p>')
+    below = f'<div class="below">{panel}</div>' if panel else ""
+    tv = (f'<section class="tvsec" aria-labelledby="tvh"><h2 id="tvh">The lines in words</h2>{text_version(narrow=True)}'
+          f'<p class="src">{esc(SRC)}</p></section>')
+    body = f'<main aria-label="{esc(title)}"><div class="frame">{svg}</div>{fit}{below}{tv}</main>'
+    return page(title, VIEW_CSS, body, desc=desc).replace("<body>", f'<body class="{cls}">', 1)
 
 
 def print_page(svg):
@@ -488,9 +550,10 @@ def print_page(svg):
     return page("Loop Lines Poster Print", css, svg, desc="The Loop Lines poster at 24 by 36 inches")
 
 
-def text_version(caption="Text version of the poster: every line, its stations in order and the sign of each step"):
-    """The poster as a table, for screen readers and for anyone who wants the lines in words."""
-    rows = []
+def text_version(caption="Text version of the poster: every line, its stations in order and the sign of each step", narrow=False):
+    """The poster as a table, for screen readers and for anyone who wants the lines in words. narrow adds the same
+    content as a list, which the view pages show below 1200 px in place of the table."""
+    rows, items = [], []
     for lid in G.NUMBERED:
         lp = LOOPS[lid]
         parts = []
@@ -499,7 +562,14 @@ def text_version(caption="Text version of the poster: every line, its stations i
         seq = " ".join(parts) + f' {lp["steps"][0]["from_label"]} ({lp["steps"][0]["from"]})'
         rows.append(f'<tr><th scope="row">{chip("Loop", lid)}</th><td>{esc(lp["kind_word"])}: {esc(lp["kind_gloss"])}</td>'
                     f'<td>{esc(seq)}</td><td>{esc(words_list(areas_of(lid)))}</td></tr>')
-    return (f'<div class="wrap" tabindex="0" role="region" aria-label="Text version of the poster"><table class="tv"><caption>{esc(caption)}. '
-            f'A plus means both variables move the same way; a minus means they move opposite ways.</caption>'
-            f'<thead><tr><th scope="col">Line</th><th scope="col">Kind</th><th scope="col">Stations in order</th><th scope="col">Areas</th></tr></thead>'
-            f'<tbody>{"".join(rows)}</tbody></table></div>')
+        items.append(f'<li><p class="tvh">{chip("Loop", lid)} {esc(lp["kind_word"])}: {esc(lp["kind_gloss"])}. '
+                     f'Areas {esc(words_list(areas_of(lid)))}.</p><p>{esc(seq)}</p></li>')
+    key = "A plus means both variables move the same way; a minus means they move opposite ways."
+    table = (f'<div class="wrap tv-wide" tabindex="0" role="region" aria-label="Text version of the poster"><table class="tv"><caption>{esc(caption)}. '
+             f'{key}</caption>'
+             f'<thead><tr><th scope="col">Line</th><th scope="col">Kind</th><th scope="col">Stations in order</th><th scope="col">Areas</th></tr></thead>'
+             f'<tbody>{"".join(rows)}</tbody></table></div>')
+    if not narrow:
+        return table
+    lst = f'<div class="tv-narrow"><p class="small">{esc(caption)}. {key}</p><ol class="tvl">{"".join(items)}</ol></div>'
+    return table + lst

@@ -125,19 +125,23 @@ def act():
 def ballot():
     """A ballot box with a slot across its top and a marked paper sinking into it, its lower third
     already in. The paper is solid, so the red check sits on Charcoal at 4.49:1. Red: the check,
-    long right arm at 45 degrees, short left arm, 7.25 units across."""
-    bx = minus(box(4.0, 13.0, 16.0, 8.0), rect(6.0, 12.0, 12.0, 6.0))
+    long right arm at 45 degrees, short left arm, 7 units across on an 8-unit paper. The box is low
+    and wide, so the ballot's silhouette stays apart from Bill's page."""
+    bx = minus(box(3.0, 14.0, 18.0, 7.0), rect(6.5, 13.0, 11.0, 5.0))
     paper = minus(box(8.0, 3.0, 8.0, 15.0, 1.5), rect(0, 18.0, 24, 10))
-    acc = bar((10.0, 9.75), (10.75, 10.5), (14.25, 7.0))
+    acc = bar((10.0, 10.0), (11.25, 11.25), (14.0, 8.5))
     return {"ink": union(bx, paper), "accent": acc}
 
 def bill():
     """A page with a folded corner, a diagonal with its small triangle, and two lines of text of
-    different lengths. Red: the signature line, set below the text where a bill becomes law."""
-    page = path([("M", 6.5, 3.5), ("L", 12.75, 3.5), ("L", 16.5, 7.25), ("L", 16.5, 20.5), ("L", 6.5, 20.5), ("Z",)])
-    flap = solid([(12.75, 3.5), (16.5, 7.25), (12.75, 7.25)], 0.75)
-    lines = union(bar((9.5, 8.5), (10.5, 8.5)), bar((9.5, 12.5), (13.5, 12.5)))
-    acc = bar((11.0, 16.5), (13.5, 16.5))
+    different lengths, the first stopping short of the fold. Red: the signature line, set below the
+    text where a bill becomes law. The page fills the portrait keyline (16 by 20 units outside), so
+    its silhouette stays larger than Explain's square and apart from it."""
+    x0, x1, y0, y1, f = 5.5, 18.5, 3.5, 20.5, 3.0
+    page = path([("M", x0, y0), ("L", x1 - f, y0), ("L", x1, y0 + f), ("L", x1, y1), ("L", x0, y1), ("Z",)])
+    flap = solid([(x1 - f, y0), (x1, y0 + f), (x1 - f, y0 + f)], 0.75)
+    lines = union(bar((10.0, 7.5), (11.0, 7.5)), bar((10.0, 12.0), (14.0, 12.0)))
+    acc = bar((10.0, 16.5), (12.5, 16.5))
     return {"ink": union(page, flap, lines), "accent": acc}
 
 def testify():
@@ -162,11 +166,11 @@ def housing():
     return {"ink": union(roof, chimney, walls), "accent": acc}
 
 def money():
-    """A banknote: a landscape bar frame with a solid disc at its center. Red: an arrow with a
-    shaft leaving the note's upper right edge, the money moving on."""
-    note = bar((3.5, 9.5), (20.5, 9.5), (20.5, 19.5), (3.5, 19.5), closed=True)
-    dsc = disc(12.0, 14.5, 4.5)
-    acc = _arrow((12.75, 7.75), (17.0, 3.5))
+    """A banknote: a wide landscape bar frame, 20 by 10.5 units, with a solid disc at its center.
+    Red: an arrow with a shaft leaving the note's upper right edge, the money moving on."""
+    note = bar((3.5, 10.5), (20.5, 10.5), (20.5, 18.5), (3.5, 18.5), closed=True)
+    dsc = disc(12.0, 14.5, 3.0)
+    acc = _arrow((13.0, 8.5), (17.25, 4.25))
     return {"ink": union(note, dsc), "accent": acc}
 
 def loop():
@@ -201,6 +205,54 @@ def display(name):
     return DRAW[name]()
 
 
+# ============================================================ 24 px hand-hinted drawings
+# Most 24 px masters are the display drawing fitted to whole pixels. Two are drawn on the pixel
+# grid instead, because the fit turns their small solids into shapes the drawing does not mean:
+#   loop   the fitted arrowheads become a diamond and a red block; the forward head is drawn as a
+#          stepped pixel triangle (7, 5, 3, 1 px) and the red return head as a 45 degree pixel
+#          triangle with its right angle at the tip, pointing down and left at node A
+#   bill   the text bars take square ends (as the red line already does in the masters module)
+#   money  the 3-unit disc on a whole-pixel center fits as a lopsided blob, and a 2, 4, 2 px
+#          oval reads as a plus; it is drawn as a 4 by 3 px block on the note's center
+# Units are pixels; the fitter keeps these shapes as drawn.
+
+def _px(*cells):
+    return union(*[rect(x, y, 1, 1) for x, y in cells])
+
+
+def loop24():
+    nodes = union(disc(4.5, 12.5, 5.25), disc(19.5, 12.5, 5.25))
+    head = union(*[rect(12 + i, 12 - (3 - i), 1, 2 * (3 - i) + 1) for i in range(4)])
+    fwd = union(rect(8, 11, 4, 3), head)
+    ret = g.sector(12, 13.0, 9.0, 6.0, 236, 314)
+    acc = _px(*[(6 + i, 8 - j) for i in range(4) for j in range(4 - i)])
+    return {"ink": union(nodes, fwd, ret), "accent": acc}
+
+
+def money24():
+    d = money()
+    ink = union(minus(d["ink"], rect(8, 12, 8, 5)), rect(10, 13, 4, 3))
+    return {"ink": ink, "accent": d["accent"]}
+
+
+def bill24():
+    """Bill's text bars take square ends, the way its red line does, so the short bar fits as a
+    4 by 3 px block and never as a blob with a nub."""
+    x0, x1, y0, y1, f = 5.5, 18.5, 3.5, 20.5, 3.0
+    page = path([("M", x0, y0), ("L", x1 - f, y0), ("L", x1, y0 + f), ("L", x1, y1), ("L", x0, y1), ("Z",)])
+    flap = solid([(x1 - f, y0), (x1, y0 + f), (x1 - f, y0 + f)], 0.75)
+    lines = union(rect(8.5, 6.0, 4.0, 3.0), rect(8.5, 10.5, 7.0, 3.0))
+    return {"ink": union(page, flap, lines), "accent": bill()["accent"]}
+
+
+DRAW24 = {"loop": loop24, "money": money24, "bill": bill24}
+
+
+def draw24(name):
+    """The drawing the 24 px master is fitted from: the display drawing, or a pixel-grid drawing."""
+    return DRAW24[name]() if name in DRAW24 else DRAW[name]()
+
+
 # ============================================================ 16 px masters, 16-unit grid
 # Separate drawings on the 16 px grid, 1-unit padding, live area 1 to 15. Bars are 2 px on
 # whole-pixel centerlines, so their edges land on pixel boundaries; discs are 3 px on half-pixel
@@ -227,7 +279,10 @@ def explain16():
     a = 4.0 / S2
     body = _bar16((11.0, 9.0), (11.0, 13.0), (3.0, 13.0), (3.0, 5.0), H, (H[0] + a, H[1] - a), (H[0] + 2 * a, H[1]))
     ink = union(body, disc(7.0, 9.0, 4.0))
-    acc = g.sector(H[0], H[1], 4.0 * S2 + 1.0, 4.0 * S2 - 1.0, 0, 45)
+    # At 16 px the swing stops short of the frame's corner: the full arc closes the lid, the red and
+    # the frame into one block the size of Bill's page (similarity 0.69); the shorter swing floats
+    # a pixel off the frame and reads as the start of the lid's path (0.57).
+    acc = g.sector(H[0], H[1], 4.0 * S2 + 1.0, 4.0 * S2 - 1.0, 0, 21)
     return {"ink": ink, "accent": acc}
 
 def track16():
@@ -256,19 +311,19 @@ def act16():
 
 
 def ballot16():
-    bx = minus(box(2.0, 9.0, 12.0, 6.0, 1.0), rect(4.0, 8.0, 8.0, 4.0))
-    paper = minus(box(5.0, 2.0, 6.0, 10.0, 1.0), rect(0, 12.0, 16, 4))
-    acc = _bar16((6.0, 6.5), (7.0, 7.5), (9.5, 5.0))
+    # The display master's proportions: a low wide box and a narrow paper, its lower part in the box.
+    bx = minus(box(1.0, 10.0, 14.0, 5.0, 1.0), rect(3.0, 9.0, 10.0, 4.0))
+    paper = minus(box(5.0, 1.0, 6.0, 11.0, 1.0), rect(0, 12.0, 16, 4))
+    acc = _bar16((6.0, 5.5), (7.0, 6.5), (9.5, 4.0))
     return {"ink": union(bx, paper), "accent": acc}
 
 
 def bill16():
-    page = path([("M", 4.0, 2.0), ("L", 9.0, 2.0), ("L", 12.0, 5.0), ("L", 12.0, 14.0), ("L", 4.0, 14.0), ("Z",)], w=B16)
-    flap = solid([(9.0, 2.0), (12.0, 5.0), (9.0, 5.0)], 0.4)
-    lines = union(_bar16((6.0, 7.0), (10.0, 7.0), butt=True), _bar16((6.0, 10.0), (8.0, 10.0), butt=True))
-    acc = _bar16((8.0, 12.0), (10.0, 12.0), butt=True)
+    page = path([("M", 4.0, 2.0), ("L", 10.0, 2.0), ("L", 12.0, 4.0), ("L", 12.0, 14.0), ("L", 4.0, 14.0), ("Z",)], w=B16)
+    flap = solid([(10.0, 2.0), (12.0, 4.0), (10.0, 4.0)], 0.3)
+    lines = union(rect(6.0, 4.0, 2.0, 2.0), rect(6.0, 7.0, 4.0, 2.0))
+    acc = rect(6.0, 10.0, 3.0, 2.0)
     return {"ink": union(page, flap, lines), "accent": acc}
-
 
 def testify16():
     head = disc(4.0, 6.0, 4.0)
@@ -288,19 +343,20 @@ def housing16():
 
 
 def money16():
-    note = path([("M", 3.0, 6.0), ("L", 13.0, 6.0), ("L", 13.0, 14.0), ("L", 3.0, 14.0), ("Z",)], w=B16)
-    dsc = disc(8.0, 10.0, 4.0)
-    acc = union(_bar16((8.25, 3.75), (8.75, 3.25)), arrowhead((11.0, 1.25), -45, 3.0, 2.0, 0.4))
+    note = path([("M", 2.0, 7.0), ("L", 14.0, 7.0), ("L", 14.0, 13.0), ("L", 2.0, 13.0), ("Z",)], w=B16)
+    dsc = disc(8.0, 10.0, 2.0)
+    acc = union(_bar16((8.75, 4.75), (9.25, 4.25)), arrowhead((11.0, 2.5), -45, 3.0, 2.0, 0.4))
     return {"ink": union(note, dsc), "accent": acc}
 
 def loop16():
-    a = disc(3.0, 9.0, 4.0)
-    b = disc(13.0, 9.0, 4.0)
-    fwd = union(_bar16((6.0, 9.0), (8.0, 9.0), butt=True), arrowhead((10.0, 9.0), 0, 3.0, 2.0, 0.4))
-    r = 5.0
-    ret = _arc16(8.0, 9.0, r, 205, 330)
-    acc = arrowhead(on_arc(8.0, 9.0, r, 195), 195 - 90 - 12, 3.0, 2.0, 0.4)
-    return {"ink": union(a, b, fwd, ret), "accent": acc}
+    # Drawn on the pixel grid. At 16 px the forward link drops its arrowhead (a 4 px head beside
+    # 4 px nodes fits as a third plus) and keeps the straight bar, so the loop still differs
+    # under a half turn; the return arc and its red head pointing down at node A carry the verb.
+    nodes = union(disc(3.0, 10.0, 4.0), disc(13.0, 10.0, 4.0))
+    link = rect(6, 9, 4, 2)
+    ret = g.sector(8, 10.5, 6.5, 4.5, 245, 315)
+    acc = _px(*[(3 + i, 6 - j) for i in range(3) for j in range(3 - i)])
+    return {"ink": union(nodes, link, ret), "accent": acc}
 
 
 DRAW16 = {n: globals()[n + "16"] for n in ICONS}

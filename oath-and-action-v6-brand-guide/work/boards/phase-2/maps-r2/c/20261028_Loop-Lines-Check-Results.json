@@ -1,9 +1,9 @@
 {
- "run": "2026-10-28T21:41:48.254Z",
+ "run": "2026-10-28T22:39:38.474Z",
  "pages": {
   "Poster": {
-   "texts": 288,
-   "svgTexts": 181,
+   "texts": 281,
+   "svgTexts": 174,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -17,60 +17,108 @@
     "Inter 700 normal",
     "Inter Tight 800 normal"
    ],
-   "images": [],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Poster-Capture.png",
+     "ok": true
+    }
+   ],
    "svgs": 1,
+   "labels": {
+    "drawings": 1,
+    "labels": 174,
+    "marks": 93,
+    "lineSamples": 6039,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
-    "passes": 19,
+    "passes": 20,
     "incomplete": 1
    },
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Grayscale.png"
   },
   "Working-Map": {
-   "texts": 181,
-   "svgTexts": 181,
+   "texts": 282,
+   "svgTexts": 175,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 960,
+   "height": 2357,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
     "Inter 700 normal",
     "Inter Tight 800 normal"
    ],
-   "images": [],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Working-Map-Capture.png",
+     "ok": true
+    }
+   ],
    "svgs": 1,
+   "labels": {
+    "drawings": 1,
+    "labels": 175,
+    "marks": 93,
+    "lineSamples": 6039,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
-    "passes": 15,
+    "passes": 20,
     "incomplete": 1
    },
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Capture.png",
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Grayscale.png"
   },
   "Reform-View-R-01": {
-   "texts": 228,
-   "svgTexts": 183,
+   "texts": 328,
+   "svgTexts": 177,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 1609,
+   "height": 2900,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
     "Inter 700 normal",
     "Inter Tight 800 normal"
    ],
-   "images": [],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Reform-View-R-01-Capture.png",
+     "ok": true
+    }
+   ],
    "svgs": 1,
+   "labels": {
+    "drawings": 1,
+    "labels": 175,
+    "marks": 93,
+    "lineSamples": 6039,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 21,
@@ -79,16 +127,142 @@
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Capture.png",
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Grayscale.png"
   },
+  "Poster-Phone": {
+   "texts": 85,
+   "svgTexts": 0,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 3248,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Poster-Capture.png",
+     "ok": true
+    }
+   ],
+   "svgs": 1,
+   "labels": {
+    "drawings": 0,
+    "labels": 0,
+    "marks": 0,
+    "lineSamples": 0,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
+   "axe": {
+    "violations": [],
+    "passes": 22,
+    "incomplete": 0
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Grayscale.png"
+  },
+  "Working-Map-Phone": {
+   "texts": 85,
+   "svgTexts": 0,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 3248,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Working-Map-Capture.png",
+     "ok": true
+    }
+   ],
+   "svgs": 1,
+   "labels": {
+    "drawings": 0,
+    "labels": 0,
+    "marks": 0,
+    "lineSamples": 0,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
+   "axe": {
+    "violations": [],
+    "passes": 22,
+    "incomplete": 0
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Grayscale.png"
+  },
+  "Reform-View-R-01-Phone": {
+   "texts": 123,
+   "svgTexts": 2,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 4624,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [
+    {
+     "src": "20261028_Loop-Lines-Reform-View-R-01-Capture.png",
+     "ok": true
+    }
+   ],
+   "svgs": 1,
+   "labels": {
+    "drawings": 0,
+    "labels": 0,
+    "marks": 0,
+    "lineSamples": 0,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
+   "axe": {
+    "violations": [],
+    "passes": 26,
+    "incomplete": 0
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Grayscale.png"
+  },
   "Catalog": {
-   "texts": 287,
-   "svgTexts": 141,
+   "texts": 291,
+   "svgTexts": 145,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 3451,
+   "height": 3473,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -97,6 +271,17 @@
    ],
    "images": [],
    "svgs": 24,
+   "labels": {
+    "drawings": 24,
+    "labels": 124,
+    "marks": 78,
+    "lineSamples": 6421,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 18,
@@ -114,7 +299,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 7076,
+   "height": 7165,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -123,6 +308,17 @@
    ],
    "images": [],
    "svgs": 24,
+   "labels": {
+    "drawings": 24,
+    "labels": 4,
+    "marks": 78,
+    "lineSamples": 3920,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 18,
@@ -150,6 +346,17 @@
    ],
    "images": [],
    "svgs": 2,
+   "labels": {
+    "drawings": 2,
+    "labels": 21,
+    "marks": 29,
+    "lineSamples": 2270,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 21,
@@ -159,7 +366,7 @@
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Grayscale.png"
   },
   "Card-R8-Phone": {
-   "texts": 78,
+   "texts": 71,
    "svgTexts": 7,
    "minSize": 13,
    "under13": [],
@@ -167,7 +374,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 3397,
+   "height": 3406,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -178,9 +385,20 @@
    ],
    "images": [],
    "svgs": 2,
+   "labels": {
+    "drawings": 2,
+    "labels": 4,
+    "marks": 29,
+    "lineSamples": 1870,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
-    "passes": 24,
+    "passes": 23,
     "incomplete": 1
    },
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Capture.png",
@@ -205,6 +423,17 @@
    ],
    "images": [],
    "svgs": 2,
+   "labels": {
+    "drawings": 2,
+    "labels": 41,
+    "marks": 33,
+    "lineSamples": 2031,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 21,
@@ -214,7 +443,7 @@
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Grayscale.png"
   },
   "Card-R10-Phone": {
-   "texts": 96,
+   "texts": 88,
    "svgTexts": 10,
    "minSize": 13,
    "under13": [],
@@ -222,7 +451,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 4245,
+   "height": 4173,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -233,9 +462,20 @@
    ],
    "images": [],
    "svgs": 2,
+   "labels": {
+    "drawings": 2,
+    "labels": 8,
+    "marks": 33,
+    "lineSamples": 1990,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
-    "passes": 24,
+    "passes": 23,
     "incomplete": 1
    },
    "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Capture.png",
@@ -244,7 +484,7 @@
  },
  "board": {
   "390": {
-   "texts": 532,
+   "texts": 584,
    "svgTexts": 0,
    "minSize": 13,
    "under13": [],
@@ -252,7 +492,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 48369,
+   "height": 69639,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -261,6 +501,26 @@
     "Inter Tight 800 normal"
    ],
    "images": [
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Current-Gray-25.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Stronger-Gray-25.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Capture.png",
+     "ok": true
+    },
     {
      "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
      "ok": true
@@ -332,9 +592,32 @@
     {
      "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png",
      "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Grayscale.png",
+     "ok": true
     }
    ],
    "svgs": 0,
+   "labels": {
+    "drawings": 0,
+    "labels": 0,
+    "marks": 0,
+    "lineSamples": 0,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 29,
@@ -357,11 +640,18 @@
     "work/boards/screens/phase-2-maps-r2-c/board-390-13.png",
     "work/boards/screens/phase-2-maps-r2-c/board-390-14.png",
     "work/boards/screens/phase-2-maps-r2-c/board-390-15.png",
-    "work/boards/screens/phase-2-maps-r2-c/board-390-16.png"
+    "work/boards/screens/phase-2-maps-r2-c/board-390-16.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-17.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-18.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-19.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-20.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-21.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-22.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-390-23.png"
    ]
   },
   "1440": {
-   "texts": 532,
+   "texts": 584,
    "svgTexts": 0,
    "minSize": 13,
    "under13": [],
@@ -369,7 +659,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 27244,
+   "height": 31536,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -378,6 +668,26 @@
     "Inter Tight 800 normal"
    ],
    "images": [
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Current-Gray-25.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Stronger-Gray-25.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Capture.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Capture.png",
+     "ok": true
+    },
     {
      "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
      "ok": true
@@ -449,9 +759,32 @@
     {
      "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png",
      "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Phone-Grayscale.png",
+     "ok": true
+    },
+    {
+     "src": "phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Phone-Grayscale.png",
+     "ok": true
     }
    ],
    "svgs": 0,
+   "labels": {
+    "drawings": 0,
+    "labels": 0,
+    "marks": 0,
+    "lineSamples": 0,
+    "outside": [],
+    "overlaps": [],
+    "markOverlaps": [],
+    "lineOverlaps": [],
+    "total": 0
+   },
    "axe": {
     "violations": [],
     "passes": 29,
@@ -467,7 +800,8 @@
     "work/boards/screens/phase-2-maps-r2-c/board-1440-06.png",
     "work/boards/screens/phase-2-maps-r2-c/board-1440-07.png",
     "work/boards/screens/phase-2-maps-r2-c/board-1440-08.png",
-    "work/boards/screens/phase-2-maps-r2-c/board-1440-09.png"
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-09.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-1440-10.png"
    ],
    "grayScreens": [
     "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-00.png",
@@ -479,27 +813,61 @@
     "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-06.png",
     "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-07.png",
     "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-08.png",
-    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-09.png"
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-09.png",
+    "work/boards/screens/phase-2-maps-r2-c/board-grayscale-1440-10.png"
    ]
   }
  },
  "pdf": {
   "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf",
-  "bytes": 216690
+  "bytes": 205032
+ },
+ "tintProof": [
+  {
+   "tint": "#2C3B64",
+   "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Current-Gray-25.png"
+  },
+  {
+   "tint": "#39476D",
+   "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Field-Tint-Stronger-Gray-25.png"
+  }
+ ],
+ "printLabels": {
+  "drawings": 1,
+  "labels": 175,
+  "marks": 113,
+  "lineSamples": 6072,
+  "outside": [],
+  "overlaps": [],
+  "markOverlaps": [],
+  "lineOverlaps": [],
+  "total": 0
+ },
+ "selfTest": {
+  "overlap": true,
+  "markOverlap": true,
+  "lineOverlap": true,
+  "outside": true,
+  "under13": true
  },
  "summary": [
-  "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Working-Map at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
-  "Board at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 18/18, axe 0 violating nodes, fonts 5.",
-  "Board at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 18/18, axe 0 violating nodes, fonts 5.",
-  "Poster PDF: work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf, 212 KB, page size 36 by 24 inches."
+  "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 174 in 1 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Working-Map at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 175 in 1 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 175 in 1 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Poster-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Working-Map-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Reform-View-R-01-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 1/1, axe 0 violating nodes; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 124 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 24 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 21 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 4 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 41 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes; labels 8 in 2 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Poster print drawing: labels 175 in 1 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Label audit self-test on a planted copy of the poster: 5 of 5 planted faults caught (label on label, label on a sign tag, label on a line, label past the edge, 11 px text).",
+  "Board at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 26/26, axe 0 violating nodes, fonts 5; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Board at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 26/26, axe 0 violating nodes, fonts 5; labels 0 in 0 drawings: 0 outside, 0 on labels, 0 on marks, 0 on lines.",
+  "Poster PDF: work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf, 200 KB, page size 36 by 24 inches."
  ],
  "not_checked": [
   "Screen readers, keyboard order, Firefox and Safari, forced colors and 200 percent zoom.",

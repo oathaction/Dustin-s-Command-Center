@@ -1,23 +1,26 @@
 {
  "run_note": "Checked against work/extract/atlas-v7-data.json through verify_maps_data.py, independently of the Direction C drawing modules",
  "counts": {
-  "svg_files": 59,
-  "steps_checked": 595,
-  "textures_checked": 595,
-  "signs_checked": 150,
+  "svg_files": 60,
+  "steps_checked": 648,
+  "textures_checked": 648,
+  "signs_checked": 196,
   "ticks_checked": 12,
   "records_checked": 6,
-  "stations_checked": 331,
-  "positions_checked": 225,
-  "bullets_checked": 60,
+  "stations_checked": 356,
+  "positions_checked": 250,
+  "bullets_checked": 80,
   "red_marks_checked": 13,
   "weakest_checked": 2,
   "ghosts_checked": 240,
-  "entries_checked": 18,
-  "fields_checked": 75,
+  "entries_checked": 60,
+  "fields_checked": 100,
   "sketched_steps_checked": 16,
   "pages_checked": 2,
-  "catalog_cards_checked": 46
+  "catalog_cards_checked": 46,
+  "bullet_tracks_checked": 80,
+  "lit_steps_checked": 318,
+  "lit_stations_checked": 150
  },
  "numbered_loops": [
   "R1",
@@ -77,10 +80,11 @@
  "mismatches": 0,
  "problems": [],
  "summary": [
-  "Data check against V7: 0 mismatches across 59 drawings.",
+  "Data check against V7: 0 mismatches across 60 drawings.",
   "All 20 numbered loops drawn on every network view and as miniatures; sketched loops listed: B2, B3, R9.",
-  "Checked 595 drawn steps for link, from, to, sign, type, delay, grade and loop; 595 line textures; 150 sign glyphs and their direction; 12 delay-tick sets; 6 record squares.",
-  "Checked 331 stations and 225 station positions against the 25-row station table, 75 stations inside their district field, 60 line bullets and 18 frame entry counts.",
+  "Checked 648 drawn steps for link, from, to, sign, type, delay, grade and loop; 648 line textures; 196 sign glyphs and their direction; 12 delay-tick sets; 6 record squares.",
+  "Checked 356 stations and 250 station positions against the 25-row station table, 100 stations inside their district field, 80 line bullets (80 on a stretch only their loop rides) and 60 frame counts in words.",
+  "Checked 318 steps and 150 stations on the lit views: lit loops at 6 px Charcoal, the rest at 2 px Stone, lit stations filled Charcoal with Newsprint IDs.",
   "Checked 13 red marks and 2 weakest-step markings; red sits only at the targets of the reform each view names, never on Prussian.",
   "Checked 46 catalog cards for district order, width by reach and full rows, and that every drawing file sits unchanged on a page."
  ],
@@ -116,7 +120,7 @@
    "planted": "station position",
    "file": "20261028_Loop-Lines-Station-Table.csv",
    "changed": true,
-   "caught": 9,
+   "caught": 10,
    "first": [
     "20261028_Loop-Lines-Catalog-Band-Phone.svg: C3 drawn at (259.1, 409.5), station table puts it at (259.2, 419.0)",
     "20261028_Loop-Lines-Catalog-Band.svg: C3 drawn at (1184.0, 318.0), station table puts it at (1184.0, 336.0)"
@@ -129,6 +133,33 @@
    "caught": 1,
    "first": [
     "20261028_Loop-Lines-Reform-View-R-01.svg: red at ['C2', 'C3', 'L08', 'L25'], expected ['C2', 'L08', 'L25']"
+   ]
+  },
+  {
+   "planted": "bullet off its own track",
+   "file": "20261028_Loop-Lines-Poster.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Poster.svg: bullet R4a set on C1-D7, which loops ['R12', 'R4a'] ride; a bullet goes on a stretch only its loop rides"
+   ]
+  },
+  {
+   "planted": "frame count in words",
+   "file": "20261028_Loop-Lines-Poster.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Poster.svg: frame note X does not say its 5 connections into area A: '5 variables. 12 connections reach areas A to E: 4 into area A, 4 into area B and 1 each into areas C, D and E.'"
+   ]
+  },
+  {
+   "planted": "lit line weight",
+   "file": "20261028_Loop-Lines-Working-Map-R10-Lit.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Working-Map-R10-Lit.svg: lit lines at [4.0, 6.0] px and the rest at [2.0] px; the lit view needs 6 and 2"
    ]
   }
  ]

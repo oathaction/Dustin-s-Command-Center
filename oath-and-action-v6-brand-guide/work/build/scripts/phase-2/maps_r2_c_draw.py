@@ -278,6 +278,121 @@ def sign_tag(p, u, sign, theme, bundle_w=0.0, lit=True, extra="", strong=False):
             f'{T(cx, cy + 4.6, g, 13, 700, tc, "middle", extra=" data-sign-glyph=\"1\"")}</g>')
 
 
+def _tag_poly(p, u, bw):
+    """The sign tag's outline (as sign_tag draws it, with its 2 px stroke) centred at p, pointing along u."""
+    hw = max(7.0, bw / 2 + 4) + 1
+    nx, ny = -u[1], u[0]
+    cx, cy = p
+    back, front, tip = -10.0, 10.0, 15.5
+    return [(cx + u[0] * back + nx * hw, cy + u[1] * back + ny * hw), (cx + u[0] * front + nx * hw, cy + u[1] * front + ny * hw),
+            (cx + u[0] * tip, cy + u[1] * tip),
+            (cx + u[0] * front - nx * hw, cy + u[1] * front - ny * hw), (cx + u[0] * back - nx * hw, cy + u[1] * back - ny * hw)]
+
+
+def _tag_bbox(p, u, bw):
+    poly = _tag_poly(p, u, bw)
+    xs, ys = [q[0] for q in poly], [q[1] for q in poly]
+    return (min(xs), min(ys), max(xs), max(ys))
+
+
+def _convex_hit(pa, pb, pad):
+    """Separating-axis test for two convex polygons, with a clearance pad."""
+    for poly in (pa, pb):
+        for i in range(len(poly)):
+            x0, y0 = poly[i]
+            x1, y1 = poly[(i + 1) % len(poly)]
+            ax, ay = y1 - y0, x0 - x1
+            ln = math.hypot(ax, ay)
+            if ln < 1e-9:
+                continue
+            ax, ay = ax / ln, ay / ln
+            a_ = [q[0] * ax + q[1] * ay for q in pa]
+            b_ = [q[0] * ax + q[1] * ay for q in pb]
+            if max(a_) + pad <= min(b_) or max(b_) + pad <= min(a_):
+                return False
+    return True
+
+
+def _box_poly(b):
+    return [(b[0], b[1]), (b[2], b[1]), (b[2], b[3]), (b[0], b[3])]
+
+
+def _tag_cost(poly, obstacles, placed_tags):
+    """Against stations and names the test is box against box, as the rendered label audit measures it; against
+    other tags it is outline against outline."""
+    c = 0
+    xs, ys = [q[0] for q in poly], [q[1] for q in poly]
+    bx = (min(xs), min(ys), max(xs), max(ys))
+    for ob in obstacles:
+        if bx[0] < ob[2] + 1 and ob[0] < bx[2] + 1 and bx[1] < ob[3] + 1 and ob[1] < bx[3] + 1:
+            c += 1000
+    for other in placed_tags:
+        if _convex_hit(poly, other, 1):
+            c += 1000
+    return c
+
+
+def _offset_point(pts, s, mo):
+    p, u = G.point_at(pts, s)
+    return (p[0] - u[1] * mo, p[1] + u[0] * mo), u
+
+
+def _place_tag(pts, pref, lo, hi, mo, bw, obstacles, placed_tags):
+    """A single sign tag: at its preferred place on the run (the middle, or the layout's shift), slid along the run
+    by the least distance that clears every station, name and tag already placed."""
+    best = None
+    for d in sorted(range(-60, 61, 3), key=abs):
+        sp = min(max(pref + d, lo), hi)
+        p, u = _offset_point(pts, sp, mo)
+        c = _tag_cost(_tag_poly(p, u, bw), obstacles, placed_tags) + abs(sp - pref) * 0.4
+        if best is None or c < best[0]:
+            best = (c, sp)
+    return best[1]
+
+
+def _place_tag_pair(L, a, b, by_link, links_here, base, line_w, lit, lit_w, dim_w, obstacles, placed_tags):
+    """Both tags of a two-step loop's corridor, placed together: centre and separation chosen by the least cost."""
+    Lp = G.plen(base)
+    runs = G.straight_runs(base)
+    longest = max(runs, key=lambda r: r[2])
+    s0 = sum(r[2] for r in runs[:runs.index(longest)])
+    mid = s0 + longest[2] / 2
+    lo, hi = s0 + 13, s0 + longest[2] - 13
+    info = []
+    for li, link in enumerate(links_here):
+        group = by_link[link]
+        l = M["links"][link]
+        fwd = l["from"] == a
+        pts = base if fwd else list(reversed(base))
+        on = (lit is None) or any(t["loop"] in lit for t in group)
+        bw = (len(group) - 1) * L.pitch + (line_w if lit is None else (lit_w if on else dim_w))
+        offs = [t["offset"] if fwd else -t["offset"] for t in group]
+        info.append((link, fwd, pts, sum(offs) / len(offs), bw, li))
+    best = None
+    # each tag points the way its step runs; "out" sets the tips toward the two stations, "in" toward each other
+    lead = next(i for i, (_, fwd, _, _, _, _) in enumerate(info) if fwd)
+    for order in ("out", "in"):
+        for sep in (48, 44, 40, 36, 32, 28, 24, 21):
+          for d in sorted(range(-45, 46, 3), key=abs):
+            c_base = mid + d
+            pos, polys = {}, []
+            for link, fwd, pts, mo, bw, li in info:
+                ahead = (li == lead) == (order == "out")
+                sb = c_base + (sep / 2 if ahead else -sep / 2)        # in the corridor's own direction, a to b
+                sb = min(max(sb, lo), hi)
+                sp = sb if fwd else Lp - sb
+                p, u = _offset_point(pts, sp, mo)
+                pos[link] = sp
+                polys.append(_tag_poly(p, u, bw))
+            c = (sum(_tag_cost(pg, obstacles, placed_tags) for pg in polys) + abs(d) * 0.4 + (48 - sep) * 0.6
+                 + (0 if order == "out" else 4))
+            if _convex_hit(polys[0], polys[1], 1.5):
+                c += 1000
+            if best is None or c < best[0]:
+                best = (c, pos)
+    return best[1]
+
+
 LIT_W, DIM_W = 6.0, 2.0
 
 
@@ -292,6 +407,22 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
     lit_w = LIT_W * line_w / LINE_W if lit_w is None else lit_w
     dim_w = DIM_W * line_w / LINE_W if dim_w is None else dim_w
     lines, tags, stations, labels, boxes, bullet_svgs, tag_boxes = [], [], [], [], [], [], []
+    # stations and their names first: sign tags and bullets keep clear of them
+    for sid in G.STATIONS:
+        on = (lit is None) or bool(lit & set(G.station_loops(sid)))
+        red = sid in reform_targets
+        g, box = station_shape(L, sid, theme, red=red, lit=on, show_id=show_ids, scale=station_scale, inside_name=hub_names,
+                               filled=(lit is not None and on))
+        stations.append((1 if on else 0, g))
+        boxes.append(("station", sid, box))
+        if show_labels:
+            lg, lb = station_label(L, sid, theme, box, lit=on)
+            if lg:
+                labels.append(lg)
+                boxes.append(("label", sid, lb))
+    obstacles = [b for _, _, b in boxes] + list(avoid)
+    placed_tags = []
+    pair_at = {}
     for (a, b), trs in L.tracks.items():
         base = L.corridor_px(a, b)
         n = len(trs)
@@ -331,44 +462,31 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                 longest = max(runs, key=lambda r: r[2])
                 s0 = sum(r[2] for r in runs[:runs.index(longest)])
                 mid_s = s0 + longest[2] / 2
+                on = (lit is None) or any(t["loop"] in lit for t in group)
+                bw = (len(group) - 1) * L.pitch + (line_w if lit is None else (lit_w if on else dim_w))
+                lo, hi = s0 + 13, s0 + longest[2] - 13
                 if len(links_here) == 2:
-                    # the two directions of a two-step loop: tags 48 px apart about the middle, each on its own track
-                    shift = 24.0 if li == 0 else -24.0
-                    if l["from"] != a:
-                        shift = -shift
-                    sp = mid_s + shift
+                    # the two directions of a two-step loop: tags about 48 px apart about the middle, each on its own
+                    # track, each pointing the way its step runs; placed together, clear of stations and names
+                    if (a, b) not in pair_at:
+                        pair_at[(a, b)] = _place_tag_pair(L, a, b, by_link, links_here, base, line_w, lit, lit_w, dim_w,
+                                                          obstacles, placed_tags)
+                    sp = pair_at[(a, b)][link]
                 else:
-                    sp = mid_s
-                # a tag slides along its run where the layout gives it a shift, to leave its loop's bullet room
-                sp += (tag_shift or {}).get(link, 0.0)
+                    pref = mid_s + (tag_shift or {}).get(link, 0.0)
+                    offs0 = [t["offset"] if l["from"] == a else -t["offset"] for t in group]
+                    sp = _place_tag(pts, pref, lo, hi, sum(offs0) / len(offs0), bw, obstacles, placed_tags)
                 p, u = G.point_at(pts, sp)
                 offs = [t["offset"] if l["from"] == a else -t["offset"] for t in group]
                 mo = sum(offs) / len(offs)
                 nx, ny = -u[1], u[0]
                 p = (p[0] + nx * mo, p[1] + ny * mo)
-                on = (lit is None) or any(t["loop"] in lit for t in group)
-                bw = (len(group) - 1) * L.pitch + (line_w if lit is None else (lit_w if on else dim_w))
+                placed_tags.append(_tag_poly(p, u, bw))
                 tags.append((1 if on else 0, sign_tag(p, u, l["polarity"], theme, bw, lit=on, strong=(lit is not None and on),
                                                      extra=f' data-for="{link}" data-sign="{l["polarity"]}"')))
-                hw = max(7.0, bw / 2 + 4) + 2
-                ext = 16
-                tag_boxes.append((p[0] - ext, p[1] - ext, p[0] + ext, p[1] + ext) if abs(u[0]) > 0.3 and abs(u[1]) > 0.3 else
-                                 (p[0] - (ext if abs(u[0]) > 0.5 else hw), p[1] - (ext if abs(u[1]) > 0.5 else hw),
-                                  p[0] + (ext if abs(u[0]) > 0.5 else hw), p[1] + (ext if abs(u[1]) > 0.5 else hw)))
-    for sid in G.STATIONS:
-        on = (lit is None) or bool(lit & set(G.station_loops(sid)))
-        red = sid in reform_targets
-        g, box = station_shape(L, sid, theme, red=red, lit=on, show_id=show_ids, scale=station_scale, inside_name=hub_names,
-                               filled=(lit is not None and on))
-        stations.append((1 if on else 0, g))
-        boxes.append(("station", sid, box))
-        if show_labels:
-            lg, lb = station_label(L, sid, theme, box, lit=on)
-            if lg:
-                labels.append(lg)
-                boxes.append(("label", sid, lb))
+                tag_boxes.append(_tag_bbox(p, u, bw))
     if show_bullets:
-        placed = place_bullets(L, boxes, tag_boxes, glyph=glyph_bullets, avoid=avoid)
+        placed = place_bullets(L, boxes, placed_tags, glyph=glyph_bullets, avoid=avoid)
         for lid in G.NUMBERED:
             (cx, cy), score, corr, leader = placed[lid]
             on = (lit is None) or (lid in lit)
@@ -507,45 +625,60 @@ def _seg_near_seg(p, q, a, b, d):
     return False
 
 
-def place_bullets(L, boxes, tag_boxes, glyph=False, avoid=()):
-    """Choose each bullet's place by a collision score against stations, names, sign tags, other corridors, the
-    view's fixed text and the bullets already placed. Returns {loop: (centre, score, corridor, leader)}."""
+def place_bullets(L, boxes, tag_polys, glyph=False, avoid=()):
+    """Choose each bullet's place by a collision score against stations, names, sign tags (their true outlines),
+    other corridors, the view's fixed text and the bullets already placed. The loops with the fewest clear places
+    go first. Returns {loop: (centre, score, corridor, leader)}."""
     chosen = {}
     stations_first = [b for k, _, b in boxes if k == "station"]
     n_station = len(stations_first)
-    n_label = n_station + len([1 for k, _, b in boxes if k != "station"])
-    n_tag = n_label + len(tag_boxes)
-    occupied = stations_first + [b for k, _, b in boxes if k != "station"] + list(tag_boxes) + list(avoid)
+    occupied = stations_first + [b for k, _, b in boxes if k != "station"] + list(avoid)
     segs = []
     for (a, c), trs in L.tracks.items():
         hw = ((len(trs) - 1) * L.pitch + LINE_W) / 2 + 3
         pts = L.corridor_px(a, c)
         for i in range(len(pts) - 1):
             segs.append((f"{a}-{c}", pts[i], pts[i + 1], hw))
-    for lid in G.NUMBERED:
+
+    def score_of(lid, cand, placed_boxes):
+        (cx, cy), pref, corr, leader = cand
+        w, h = bullet_size(lid, glyph)
+        bx = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+        score = pref
+        for (name, p, q, hw) in segs:
+            if name == corr and leader is None:
+                continue
+            if _seg_box(p, q, (bx[0] - hw, bx[1] - hw, bx[2] + hw, bx[3] + hw)):
+                score += 1000
+            if leader is not None and name != corr and _seg_near_seg(leader[0], leader[1], p, q, hw):
+                score += 1000
+        for i_ob, ob in enumerate(occupied + placed_boxes):
+            # stations get a wider berth, so a bullet never reads as a name
+            m = 7 if i_ob < n_station else 3
+            if bx[0] < ob[2] + m and ob[0] < bx[2] + m and bx[1] < ob[3] + m and ob[1] < bx[3] + m:
+                score += 1000
+            if leader is not None and _seg_hits_box(leader[0], leader[1], ob):
+                score += 1000
+        bpoly = _box_poly(bx)
+        for tp in tag_polys:
+            if _convex_hit(bpoly, tp, 4):
+                score += 1000
+            if leader is not None and _convex_hit([leader[0], leader[1]], tp, 2):
+                score += 1000
+        return score
+
+    cands = {lid: bullet_candidates(L, lid, glyph) for lid in G.NUMBERED}
+    free = {lid: sum(1 for c in cands[lid] if score_of(lid, c, []) < 1000) for lid in G.NUMBERED}
+    placed_boxes = []
+    for lid in sorted(G.NUMBERED, key=lambda k: (free[k], G.NUMBERED.index(k))):
         w, h = bullet_size(lid, glyph)
         best = None
-        for (cx, cy), pref, corr, leader in bullet_candidates(L, lid, glyph):
-            bx = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
-            score = pref
-            for (name, p, q, hw) in segs:
-                if name == corr and leader is None:
-                    continue
-                if _seg_box(p, q, (bx[0] - hw, bx[1] - hw, bx[2] + hw, bx[3] + hw)):
-                    score += 1000
-                if leader is not None and name != corr and _seg_near_seg(leader[0], leader[1], p, q, hw):
-                    score += 1000
-            for i_ob, ob in enumerate(occupied):
-                # stations get a wider berth, so a bullet never reads as a name; sign tags a little more than text
-                m = 7 if i_ob < n_station else (5 if n_label <= i_ob < n_tag else 3)
-                if bx[0] < ob[2] + m and ob[0] < bx[2] + m and bx[1] < ob[3] + m and ob[1] < bx[3] + m:
-                    score += 1000
-                if leader is not None and _seg_hits_box(leader[0], leader[1], ob):
-                    score += 1000
-            if best is None or score < best[1]:
-                best = ((cx, cy), score, corr, leader)
+        for cand in cands[lid]:
+            sc = score_of(lid, cand, placed_boxes)
+            if best is None or sc < best[1]:
+                best = (cand[0], sc, cand[2], cand[3])
         chosen[lid] = best
-        occupied.append((best[0][0] - w / 2, best[0][1] - h / 2, best[0][0] + w / 2, best[0][1] + h / 2))
+        placed_boxes.append((best[0][0] - w / 2, best[0][1] - h / 2, best[0][0] + w / 2, best[0][1] + h / 2))
     return chosen
 
 

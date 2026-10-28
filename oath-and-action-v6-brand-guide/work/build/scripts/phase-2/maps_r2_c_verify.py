@@ -33,6 +33,8 @@ OUT = ASSETS / "20261028_Loop-Lines-Verify-Results.json"
 NS = VM.NS
 V7, N, L, LOOPS, REF = VM.V7, VM.N, VM.L, VM.LOOPS, VM.REF
 RED = "#E63946"
+CHARCOAL, NEWSPRINT, STONE = "#121212", "#DCD9D2", "#5D636D"
+FULL_VIEWS = ("c-poster", "c-poster-print", "c-working", "c-reform")
 NUMBERED = [k for k, lp in LOOPS.items() if lp["closure"].startswith("closed")]
 SKETCHED = [k for k, lp in LOOPS.items() if not lp["closure"].startswith("closed")]
 LOOP_VARS = sorted({c for k in NUMBERED for c, _ in LOOPS[k]["chain"]})
@@ -75,7 +77,8 @@ class Run:
         self.c = {k: 0 for k in ("svg_files", "steps_checked", "textures_checked", "signs_checked", "ticks_checked",
                                  "records_checked", "stations_checked", "positions_checked", "bullets_checked",
                                  "red_marks_checked", "weakest_checked", "ghosts_checked", "entries_checked",
-                                 "fields_checked", "sketched_steps_checked", "pages_checked", "catalog_cards_checked")}
+                                 "fields_checked", "sketched_steps_checked", "pages_checked", "catalog_cards_checked",
+                                 "bullet_tracks_checked", "lit_steps_checked", "lit_stations_checked")}
         self.table = self.read_table()
 
     def fail(self, f, msg):
@@ -186,9 +189,9 @@ class Run:
                 self.fail(f, f"{v} marked on loops {lps}, V7 {loops_of_var(v)}")
             kind = g.get("data-kind")
             want_kind = "ring" if len(loops_of_var(v)) == 1 else ("hub" if len(loops_of_var(v)) >= 5 else "capsule")
-            if view in ("c-poster", "c-working", "c-reform") and kind != want_kind:
+            if view in FULL_VIEWS and kind != want_kind:
                 self.fail(f, f"{v} drawn as {kind}, a station on {len(loops_of_var(v))} loops is a {want_kind}")
-            if view in ("c-poster", "c-working", "c-reform") and v not in VM.text_of(g):
+            if view in FULL_VIEWS and v not in VM.text_of(g):
                 self.fail(f, f"{v} station does not print its ID")
             t = self.table.get(v)
             if t:
@@ -201,7 +204,7 @@ class Run:
                     self.fail(f, f"{v} table district {t['district']}, V7 cluster {area(v)}")
         # signs: one per connection, glyph and the way it points
         signs = [g for g in root.iter(NS + "g") if g.get("class") == "sign" and g.get("data-for")]
-        if signs or view in ("c-poster", "c-working", "c-reform"):
+        if signs or view in FULL_VIEWS:
             got = sorted(g.get("data-for") for g in signs)
             if got != LOOP_LINKS:
                 self.fail(f, f"{len(got)} sign tags, V7 numbered loops ride {len(LOOP_LINKS)} connections; missing {sorted(set(LOOP_LINKS) - set(got))[:5]}")
@@ -233,6 +236,13 @@ class Run:
                     self.fail(f, f"bullet {lid} kind {g.get('data-kind')}, V7 {LOOPS.get(lid, {}).get('type')}")
                 if g.get("data-first") and g.get("data-first") != LOOPS[lid]["chain"][0][0]:
                     self.fail(f, f"bullet {lid} first station {g.get('data-first')}, V7 chain starts {LOOPS[lid]['chain'][0][0]}")
+                self.check_bullet_track(f, root, g, lid)
+                glyphs = [x for x in g.iter(NS + "g") if x.get("class") == "kind"]
+                if view == "c-poster-print":
+                    if len(glyphs) != 1 or glyphs[0].get("data-kind") != LOOPS[lid]["type"]:
+                        self.fail(f, f"print bullet {lid} carries kind glyph {[x.get('data-kind') for x in glyphs]}, V7 kind {LOOPS[lid]['type']}")
+                elif glyphs:
+                    self.fail(f, f"screen bullet {lid} carries a kind glyph, which draws under 24 px on screen")
         # red
         rid = root.get("data-reform")
         reds = self.red_elements(root)
@@ -243,8 +253,13 @@ class Run:
         if root.get("fill") == "#1F2D5A" or (next(root.iter(NS + "rect")).get("fill") or "").upper() == "#1F2D5A":
             if reds:
                 self.fail(f, "red sits on Prussian")
+        if root.get("data-lit") and view in ("c-working", "c-reform", "c-locator"):
+            self.check_lit(f, root, view)
         # sketched loops and the register note on the poster views
-        if view in ("c-poster", "c-working", "c-reform"):
+        if view in FULL_VIEWS:
+            kinds = " ".join(VM.text_of(t) for t in root.iter(NS + "text") if t.get("data-note") == "kinds")
+            if "R: feeds itself." not in kinds or "B: pushes back." not in kinds:
+                self.fail(f, f"legend kind line reads {kinds!r}")
             sk = [g for g in root.iter(NS + "g") if g.get("class") == "sketched"]
             if not sk or sorted(sk[0].get("data-sketched", "").split()) != sorted(SKETCHED):
                 self.fail(f, f"sketched loops listed {sk[0].get('data-sketched') if sk else None}, V7 {sorted(SKETCHED)}")
@@ -260,32 +275,115 @@ class Run:
             self.check_fields(f, root, cell, ox, oy)
 
     def check_frame(self, f, root):
+        """Each band of the frame is one line of words: its variable count and, per area, how many of its
+        connections reach that area, all recounted from V7."""
         counts = {}
         for k, l in L.items():
             a, b = frame_group(l["from"]), frame_group(l["to"])
             for g, d in ((a, b), (b, a)):
                 if g in ("EC", "TC", "X") and d in "ABCDE":
                     counts.setdefault((g, d), set()).add(k)
-        for e in root.iter(NS + "g"):
-            if e.get("class") != "entry":
-                continue
-            self.c["entries_checked"] += 1
-            key = (e.get("data-frame"), e.get("data-district"))
-            links = set(e.get("data-links", "").split())
-            if links != counts.get(key, set()) or int(e.get("data-count")) != len(counts.get(key, ())):
-                self.fail(f, f"entry tick {key} counts {e.get('data-count')}, V7 {len(counts.get(key, ()))}")
-            if f"{len(counts.get(key, ()))} to {key[1]}" not in VM.text_of(e):
-                self.fail(f, f"entry tick {key} prints {VM.text_of(e)!r}")
+        seen = set()
+        if [e for e in root.iter(NS + "g") if e.get("class") == "entry"]:
+            self.fail(f, "the frame still draws entry ticks")
         for t in root.iter(NS + "text"):
             g = t.get("data-frame-note")
             if not g:
                 continue
+            seen.add(g)
+            txt = VM.text_of(t)
             total = sum(len(v) for (gg, d), v in counts.items() if gg == g)
-            if int(t.get("data-total")) != total or f"{total} connections" not in VM.text_of(t):
+            nvars = sum(1 for v in N if frame_group(v) == g)
+            if int(t.get("data-total")) != total or f"{total} connections" not in txt:
                 self.fail(f, f"frame note {g} total {t.get('data-total')}, V7 {total}")
-            for d in t.get("data-unplaced", "").split():
-                if f"{len(counts[(g, d)])} to {d}" not in VM.text_of(t):
-                    self.fail(f, f"frame note {g} omits its {len(counts[(g, d)])} connections to {d}")
+            if int(t.get("data-vars")) != nvars or f"{nvars} variables" not in txt:
+                self.fail(f, f"frame note {g} counts {t.get('data-vars')} variables, V7 {nvars}")
+            drawn = dict(x.split(":") for x in t.get("data-counts", "").split())
+            for d in "ABCDE":
+                n = len(counts.get((g, d), ()))
+                self.c["entries_checked"] += 1
+                if int(drawn.get(d, 0)) != n:
+                    self.fail(f, f"frame note {g} gives {drawn.get(d, 0)} connections into area {d}, V7 {n}")
+                if n and not (f"{n} into area {d}" in txt or re.search(rf"\b{n} each into areas [A-E, and]*\b{d}\b", txt)):
+                    self.fail(f, f"frame note {g} does not say its {n} connections into area {d}: {txt!r}")
+        if seen != {"X", "EC", "TC"}:
+            self.fail(f, f"frame notes for {sorted(seen)}, V7 groups X, EC and TC")
+
+    def check_bullet_track(self, f, root, g, lid):
+        """A bullet sits on a stretch only its own loop rides: on its track, or on a 1 px leader from that track."""
+        on = g.get("data-on", "")
+        a, _, b = on.partition("-")
+        here = {x for x, l in L.items() if {l["from"], l["to"]} == {a, b}}
+        riders = {k for x in here for k in L[x]["loops"] if k in NUMBERED}
+        self.c["bullet_tracks_checked"] += 1
+        if not here or riders != {lid}:
+            self.fail(f, f"bullet {lid} set on {on}, which loops {sorted(riders)} ride; a bullet goes on a stretch only its loop rides")
+            return
+        polys = []
+        for st in root.iter(NS + "g"):
+            if st.get("class") == "step" and st.get("data-loop") == lid and st.get("data-link") in here:
+                p = next((x for x in st.iter(NS + "path") if x.get("data-texture")), None)
+                if p is not None:
+                    polys.append(_path_points(p.get("d")))
+        lead = g.get("data-leader")
+        cx, cy = float(g.get("data-cx")), float(g.get("data-cy"))
+        if lead:
+            x0, y0, x1, y1 = (float(v) for v in lead.split())
+            d0 = min(_dist_poly((x0, y0), pl) for pl in polys) if polys else 1e9
+            rects = [r for r in g.iter(NS + "rect")]
+            bx0 = min(float(r.get("x")) for r in rects)
+            bx1 = max(float(r.get("x")) + float(r.get("width")) for r in rects)
+            by0 = min(float(r.get("y")) for r in rects)
+            by1 = max(float(r.get("y")) + float(r.get("height")) for r in rects)
+            on_edge = (bx0 - 1.5 <= x1 <= bx1 + 1.5 and by0 - 1.5 <= y1 <= by1 + 1.5 and
+                       min(abs(x1 - bx0), abs(x1 - bx1), abs(y1 - by0), abs(y1 - by1)) <= 1.5)
+            if d0 > 4.5 or not on_edge or math.hypot(x1 - x0, y1 - y0) > 60:
+                self.fail(f, f"bullet {lid} leader runs from {d0:.1f} px off its track to {'the' if on_edge else 'off the'} bullet")
+        else:
+            d = min(_dist_poly((cx, cy), pl) for pl in polys) if polys else 1e9
+            if d > 6.5:
+                self.fail(f, f"bullet {lid} sits {d:.1f} px from its own track on {on}")
+
+    def check_lit(self, f, root, view):
+        """A lit view: the lit loops at 6 px Charcoal (red at the reform's targets), every other loop at 2 px Stone,
+        stations on a lit loop filled Charcoal with their IDs in Newsprint."""
+        lit = set(root.get("data-lit").split())
+        rid = root.get("data-reform")
+        targets = set(REF[rid]["targets"]) if rid else set()
+        lw, dw = set(), set()
+        for g in root.iter(NS + "g"):
+            if g.get("class") != "step":
+                continue
+            p = next((x for x in g.iter(NS + "path") if x.get("data-texture")), None)
+            w = float(p.get("data-weight"))
+            col = (p.get("stroke") or "").upper()
+            self.c["lit_steps_checked"] += 1
+            if g.get("data-loop") in lit:
+                lw.add(w)
+                want = RED if g.get("data-link") in targets else CHARCOAL
+                if col != want:
+                    self.fail(f, f"lit step {g.get('data-link')} on {g.get('data-loop')} drawn {col}, needs {want}")
+            else:
+                dw.add(w)
+                if col != STONE:
+                    self.fail(f, f"unlit step {g.get('data-link')} on {g.get('data-loop')} drawn {col}, needs Stone")
+        if view in ("c-working", "c-reform"):
+            if lw != {6.0} or dw != {2.0}:
+                self.fail(f, f"lit lines at {sorted(lw)} px and the rest at {sorted(dw)} px; the lit view needs 6 and 2")
+        elif len(lw) != 1 or len(dw) != 1 or abs(min(lw) / min(dw) - 3) > 0.01:
+            self.fail(f, f"locator lit lines at {sorted(lw)} px against {sorted(dw)} px; the lit line is three times the rest")
+        for g in root.iter(NS + "g"):
+            if g.get("class") != "var":
+                continue
+            self.c["lit_stations_checked"] += 1
+            on = bool(lit & set(g.get("data-loops", "").split()))
+            shape = next((x for x in g if x.tag in (NS + "circle", NS + "rect")), None)
+            fill = (shape.get("fill") or "").upper()
+            ids = [x for x in g.iter(NS + "text") if VM.text_of(x) == g.get("data-node")]
+            if on and (fill != CHARCOAL or any((x.get("fill") or "").upper() != NEWSPRINT for x in ids)):
+                self.fail(f, f"{g.get('data-node')} on a lit loop drawn fill {fill}, IDs {[x.get('fill') for x in ids]}; needs Charcoal with a Newsprint ID")
+            if not on and fill == CHARCOAL:
+                self.fail(f, f"{g.get('data-node')} is on no lit loop but is filled Charcoal")
 
     def check_fields(self, f, root, cell, ox, oy):
         polys = {}
@@ -454,7 +552,7 @@ class Run:
             root = ET.fromstring(raw)
             self.c["svg_files"] += 1
             view = root.get("data-view")
-            if view in ("c-poster", "c-working", "c-reform", "c-band", "c-band-phone", "c-locator"):
+            if view in FULL_VIEWS + ("c-band", "c-band-phone", "c-locator"):
                 self.check_network(f, root, view)
             elif view in ("c-mini", "c-mini-phone"):
                 self.check_mini(f, root)
@@ -469,6 +567,29 @@ class Run:
             self.fail("catalog", f"miniatures drawn for {sorted(minis)}, V7 numbered {sorted(NUMBERED)}")
         self.check_pages(svgs)
         return self.problems
+
+
+def _path_points(d):
+    """The vertices of a step path (M, L and arc end points), as a polyline."""
+    pts = []
+    for cmd, args in re.findall(r"([MLA])([^MLA]*)", d):
+        nums = [float(x) for x in re.findall(r"-?[\d.]+", args)]
+        if cmd in "ML":
+            pts += [(nums[i], nums[i + 1]) for i in range(0, len(nums) - 1, 2)]
+        else:
+            pts.append((nums[5], nums[6]))
+    return pts
+
+
+def _dist_poly(pt, pts):
+    best = 1e9
+    for i in range(len(pts) - 1):
+        a, b = pts[i], pts[i + 1]
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        L2 = dx * dx + dy * dy
+        t = max(0, min(1, ((pt[0] - a[0]) * dx + (pt[1] - a[1]) * dy) / L2)) if L2 else 0
+        best = min(best, math.hypot(pt[0] - a[0] - t * dx, pt[1] - a[1] - t * dy))
+    return best
 
 
 def _inside_or_near(pt, poly, tol):
@@ -492,7 +613,7 @@ def _inside_or_near(pt, poly, tol):
 
 
 def mutation_test():
-    """Copy the drawings, plant one error per check family, and confirm each is caught."""
+    """Copy the drawings, plant one error per check family, and confirm each is caught (eight plants)."""
     plants = [
         ("20261028_Loop-Lines-Poster.svg", 'data-link="L02"', lambda s: s.replace('data-texture="9 4" data-weight="4.0"', 'data-texture="solid" data-weight="4.0"', 1),
          "texture"),
@@ -500,6 +621,9 @@ def mutation_test():
         ("20261028_Loop-Lines-Card-R10.svg", "ticks", lambda s: s.replace('data-ticks="1"', 'data-ticks="2"', 1), "delay ticks"),
         ("20261028_Loop-Lines-Station-Table.csv", "C3", lambda s: s.replace("C3,C,13,1", "C3,C,13,2", 1), "station position"),
         ("20261028_Loop-Lines-Reform-View-R-01.svg", "red", lambda s: s.replace('data-node="C3" data-label', 'data-node="C3" data-red="1" data-label', 1), "red mark"),
+        ("20261028_Loop-Lines-Poster.svg", "bullet", lambda s: s.replace('data-on="C4-D7"', 'data-on="C1-D7"', 1), "bullet off its own track"),
+        ("20261028_Loop-Lines-Poster.svg", "frame", lambda s: s.replace("5 into area A", "4 into area A", 1), "frame count in words"),
+        ("20261028_Loop-Lines-Working-Map-R10-Lit.svg", "lit", lambda s: s.replace('stroke-width="6.0" data-texture="solid" data-weight="6.0"', 'stroke-width="4.0" data-texture="solid" data-weight="4.0"', 1), "lit line weight"),
     ]
     out = []
     for fname, _, fn, what in plants:
@@ -546,7 +670,8 @@ def main():
             f"Checked {c['steps_checked']} drawn steps for link, from, to, sign, type, delay, grade and loop; {c['textures_checked']} line textures; "
             f"{c['signs_checked']} sign glyphs and their direction; {c['ticks_checked']} delay-tick sets; {c['records_checked']} record squares.",
             f"Checked {c['stations_checked']} stations and {c['positions_checked']} station positions against the 25-row station table, "
-            f"{c['fields_checked']} stations inside their district field, {c['bullets_checked']} line bullets and {c['entries_checked']} frame entry counts.",
+            f"{c['fields_checked']} stations inside their district field, {c['bullets_checked']} line bullets ({c['bullet_tracks_checked']} on a stretch only their loop rides) and {c['entries_checked']} frame counts in words.",
+            f"Checked {c['lit_steps_checked']} steps and {c['lit_stations_checked']} stations on the lit views: lit loops at 6 px Charcoal, the rest at 2 px Stone, lit stations filled Charcoal with Newsprint IDs.",
             f"Checked {c['red_marks_checked']} red marks and {c['weakest_checked']} weakest-step markings; red sits only at the targets of the reform each view names, never on Prussian.",
             f"Checked {c['catalog_cards_checked']} catalog cards for district order, width by reach and full rows, and that every drawing file sits unchanged on a page.",
         ],

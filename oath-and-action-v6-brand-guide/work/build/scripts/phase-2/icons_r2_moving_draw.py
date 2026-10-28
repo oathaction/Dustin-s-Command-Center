@@ -33,10 +33,14 @@ CUT = 1.5
 R1 = 1.0           # outer corner radius in the display master
 NODE_R = 1.5       # the pillar node, 3 units across
 STEP = 2.0         # how far the red piece moves for the current item in a row
+BITE_EXTRA = 0.0   # added to the bite's radius when a hinted master draws the node as a square
+OVR = {}           # per-size drawing overrides from the hinting script (act_pin, connect_R)
 
 
 def clear():
-    return NODE_R + CUT
+    """Radius of the bite a piece takes around the node: the node, the cut and, for a square node,
+    the extra that keeps the node's corners a full cut from the bite."""
+    return NODE_R + CUT + BITE_EXTRA
 
 
 ICONS = ["explain", "track", "connect", "act", "ballot", "bill", "testify", "housing", "money", "loop"]
@@ -136,7 +140,7 @@ def track(step=0.0):
     u, r = (x1 - x0) / 3, (base - top) / 3
     xs = [x0 + u * i for i in range(4)]
     t1, t2 = base - r, base - 2 * r
-    nc = (xs[1] - clear(), t1 - clear())
+    nc = (xs[1] - NODE_R - CUT, t1 - NODE_R - CUT)
     stair = [(xs[0], base, R1), (xs[0], t1, R1), (xs[1], t1, 0), (xs[1], t2, R1), (xs[3], t2, R1), (xs[3], base, R1)]
     red = rect(xs[2], top - step, u, t2 - CUT - top, R1)
     return [("ink", contour_d(stair)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(red))]
@@ -147,7 +151,7 @@ def connect(step=0.0):
     shallow slots in both halves across the cut, with the node knocked out at its center. In the
     row state the bridge slides 2 units down into place."""
     c = (12.0, 12.0)
-    R = 9.75
+    R = OVR.get("connect_R", 9.75)
     g = 2.5                         # half the gap
     bar, reach = 4.5, 1.5
     hy = math.sqrt(R * R - g * g)
@@ -182,10 +186,13 @@ def act(step=0.0):
     flo = rect(2.5, floor_t, 19.0, 22.0 - floor_t, R1)
     hx = 10.0
     fx = hx - 3.5 - step
-    tf = lint[1] + CUT - 0.6 + 0.15 * step
-    nc = (hx + 1.5, 12.0)
+    # The leaf's top corner sits a cut below the lintel; its fillet lets it rise 0.6 closer.
+    tf = lint[1] + CUT - (0.6 if R1 else 0.0) + 0.15 * step
+    nc = (hx + OVR.get("act_pin", 1.5), 12.0)
     C = clear()
-    leaf = [(fx, tf, R1), (hx, tf + 2.5, R1), (hx, _y_on(nc, C, hx, -1), R1), ("arc", *nc, False), (hx, _y_on(nc, C, hx, +1), R1),
+    bite_top = _y_on(nc, C, hx, -1)
+    drop = min(2.5, bite_top - tf - 0.5)      # the slant of the leaf's top edge, kept clear of the bite
+    leaf = [(fx, tf, R1), (hx, tf + drop, R1), (hx, bite_top, R1), ("arc", *nc, False), (hx, _y_on(nc, C, hx, +1), R1),
             (hx, floor_t - CUT, R1), (fx, floor_t - CUT, R1)]
     return [("ink", contour_d(frame)), ("ink", contour_d(flo)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(leaf))]
 
@@ -229,13 +236,13 @@ def testify(step=0.0):
     """A person speaking at a microphone. The person is Charcoal. The sound is a red quarter ring
     before the mouth, nested around the head across the cut; the microphone stands close, its head
     at mouth height. In the row state the sound turns upward along its ring."""
-    sc, sr = (6.75, 21.25), 5.0
-    hr = 3.75
+    sc, sr = OVR.get("testify_sc", (6.75, 21.25)), OVR.get("testify_sr", 5.0)
+    hr = OVR.get("testify_hr", 3.75)
     hc = (6.75, sc[1] - sr - CUT - hr)
     head = circle_d(*hc, hr)
     shoulders = [(sc[0] - sr, sc[1], R1), ("arc", *sc, True), (sc[0] + sr, sc[1], R1)]
     r_in = hr + CUT
-    ring_w = 2.0
+    ring_w = OVR.get("testify_ring_w", 2.0)
     rot = math.degrees(step / (r_in + ring_w / 2))
     sound = ring_sector(*hc, r_in + ring_w, r_in, -45 - rot, 45 - rot, R1)
     mw = 4.0
@@ -256,14 +263,16 @@ def testify(step=0.0):
 def housing(step=0.0):
     """A house with a pitched roof and a door. The door is red; a window keeps it a house. In the row
     state the door swings open, its free edge moving 2 units toward its hinge."""
-    rx0, rx1, eave = 3.0, 21.0, 11.5
+    rx0, rx1, eave = 3.0, 21.0, OVR.get("housing_eave", 11.5)
     apex = (12.0, eave - (rx1 - rx0) / 2)
     roof = [(rx0, eave, R1), (*apex, R1), (rx1, eave, R1)]
     bx0, bx1, by0, by1 = 4.0, 20.0, eave + CUT, 21.0
-    dx0, dx1, dy0 = 7.25, 11.75, 16.0
+    dx0, dx1 = OVR.get("housing_door", (7.25, 11.75))
+    dy0 = OVR.get("housing_door_top", 16.0)
     body = [(bx0, by0, R1), (bx1, by0, R1), (bx1, by1, R1), (dx1 + CUT, by1, R1), (dx1 + CUT, dy0 - CUT, 0),
             (dx0 - CUT, dy0 - CUT, 0), (dx0 - CUT, by1, R1), (bx0, by1, R1)]
-    window = rect_hole(15.25, 15.25, 3.0, 3.0)
+    wx, wy, ws = OVR.get("housing_window", (15.25, 15.25, 3.0))
+    window = rect_hole(wx, wy, ws, ws)
     door = rect(dx0, dy0, dx1 - dx0 - step, by1 - dy0, R1)
     return [("ink", contour_d(roof)), ("ink", contour_d(body) + contour_d(window)), ("accent", contour_d(door))]
 
@@ -277,15 +286,16 @@ def _note(cx, cy, w, h, ang, r):
 def money(step=0.0):
     """Campaign money as banknotes. A Charcoal landscape note with its center disc and two corner
     marks knocked out; a second note in red slides up and out from behind it across the cut, turned
-    12 degrees. The red note is the money changing hands."""
+    12 degrees, so it shows along the front note's top and past its right end. The red note is the
+    money changing hands."""
     import pathops
     from icons_geom import d_of
-    w, h, cy = 16.0, 9.5, 14.75
-    front = contour_d(_note(12.0, cy, w, h, 0, R1)) + circle_d(12.0, cy, 2.75, hole=True)
-    front += contour_d(rect_hole(12 - w / 2 + 1.75, cy - h / 2 + 1.75, 2.5, CUT))
-    front += contour_d(rect_hole(12 + w / 2 - 1.75 - 2.5, cy + h / 2 - 1.75 - CUT, 2.5, CUT))
-    back = contour_d(_note(12.25, cy - 3.25 - step, w, h, -12.0, R1))
-    grown = G.to_pathops(contour_d(_note(12.0, cy, w + 2 * CUT, h + 2 * CUT, 0, R1 + CUT)))
+    w, h, cy, fcx = 16.0, 9.5, 15.0, 11.25
+    front = contour_d(_note(fcx, cy, w, h, 0, R1)) + circle_d(fcx, cy, 2.75, hole=True)
+    front += contour_d(rect_hole(fcx - w / 2 + 1.75, cy - h / 2 + 1.75, 2.5, CUT))
+    front += contour_d(rect_hole(fcx + w / 2 - 1.75 - 2.5, cy + h / 2 - 1.75 - CUT, 2.5, CUT))
+    back = contour_d(_note(fcx + 2.25, cy - OVR.get("money_lift", 3.5) - step, w, h, -12.0, R1))
+    grown = G.to_pathops(contour_d(_note(fcx, cy, w + 2 * CUT, h + 2 * CUT, 0, R1 + CUT)))
     red = pathops.simplify(pathops.op(G.to_pathops(back), grown, pathops.PathOp.DIFFERENCE), clockwise=True)
     return [("ink", front), ("accent", d_of(red))]
 
@@ -348,8 +358,8 @@ def loop(step=0.0):
     Charcoal forward link with a solid arrowhead down the axis, and the return as a red arc with its
     arrowhead bowing out to the left and back up into the first node. The return is the feedback. In
     the row state the return bows 2 units further out."""
-    cx, ty, by = 13.0, 4.75, 19.25
-    nr = 3.0
+    cx, ty, by = 13.0, OVR.get("loop_ty", 4.75), OVR.get("loop_by", 19.25)
+    nr = OVR.get("loop_nr", 3.0)
     top, bot = (cx, ty), (cx, by)
     bar, hl, hh = 3.0, 3.25, 3.25
     y_from, y_tip = ty + nr + CUT, by - nr - CUT
@@ -378,19 +388,20 @@ def pieces(name, step=0.0):
 
 
 class spec:
-    """Context manager that redraws with another cut and corner radius, for the hinted masters."""
+    """Context manager that redraws with another cut, corner radius, node radius and bite extra,
+    for the hinted masters."""
 
-    def __init__(self, cut, r1, node_r=None):
-        self.cut, self.r1, self.node_r = cut, r1, node_r
+    def __init__(self, cut, r1, node_r=None, bite_extra=0.0, ovr=None):
+        self.cut, self.r1, self.node_r, self.extra, self.ovr = cut, r1, node_r, bite_extra, dict(ovr or {})
 
     def __enter__(self):
-        global CUT, R1, NODE_R
-        self.old = (CUT, R1, NODE_R)
-        CUT, R1 = self.cut, self.r1
+        global CUT, R1, NODE_R, BITE_EXTRA, OVR
+        self.old = (CUT, R1, NODE_R, BITE_EXTRA, OVR)
+        CUT, R1, BITE_EXTRA, OVR = self.cut, self.r1, self.extra, self.ovr
         if self.node_r is not None:
             NODE_R = self.node_r
         return self
 
     def __exit__(self, *a):
-        global CUT, R1, NODE_R
-        CUT, R1, NODE_R = self.old
+        global CUT, R1, NODE_R, BITE_EXTRA, OVR
+        CUT, R1, NODE_R, BITE_EXTRA, OVR = self.old

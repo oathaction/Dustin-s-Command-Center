@@ -389,10 +389,10 @@ BM16 = {
 .##.##....##.##.
 .##.##....##.##.
 .##.##.##.##.##.
-.##.##rRRr##.##.
-.##.##rrrr##.##.
-.##.##rrrr##.##.
-..####rrrr####..
+.##.##.RR.##.##.
+.##.##.rr.##.##.
+.##.##.rr.##.##.
+..####.rr.####..
 ...###....###...
 ....##....##....
 ................
@@ -433,20 +433,20 @@ BM16 = {
 ................""",
     "bill": """
 ................
-..#######.......
-..########......
-..##....###.....
-..##....####....
-..##....######..
-..##....######..
-..##........##..
-..##........##..
-..##.rrrrrr.##..
-..##.rrrrrr.##..
-..##........##..
-..##........##..
-..############..
-..############..
+...######.......
+...#######......
+...##..####.....
+...##..#####....
+...##..######...
+...##..######...
+...##......##...
+...##......##...
+...##rrrrr.##...
+...##rrrrr.##...
+...##......##...
+...##......##...
+...##########...
+...##########...
 ................""",
     "testify": """
 ................
@@ -469,17 +469,17 @@ BM16 = {
 ................
 .......##.......
 ......####......
-.....######.....
-....###..###....
-...###....###...
-..###......###..
+.....##..##.....
+....##....##....
+...##......##...
 ..##........##..
-..##.######.##..
-..##.######.##..
-..##.RRrr##.##..
-..##.RRrr##.##..
-..###RRrr#####..
-..###RRrr#####..
+.##..........##.
+.##..........##.
+.##..######..##.
+.##..######..##.
+.##..RRrr##..##.
+.####RRrr######.
+.####RRrr######.
 .....rrrr.......
 ................""",
     "money": """
@@ -609,7 +609,7 @@ def explain(size, var=None):
     corner. The red fills the open quarter and slides toward the node at the inner corner."""
     if size == "display":
         s_, x0, y0, turn = 12.0, 5.0, 6.0, -15.0
-        dx, dy = 0.75, -2.0                      # the lid lifts 2 and moves 0.75 toward its hinge side
+        dx, dy = 1.5, -2.0                       # the lid lifts 2 and moves 1.5 right, clear of the body
         r = R_RECT
         q = s_ / 2
         body = rpoly([(x0, y0), (x0 + q, y0), (x0 + q, y0 + q), (x0 + s_, y0 + q), (x0 + s_, y0 + s_), (x0, y0 + s_)],
@@ -621,9 +621,9 @@ def explain(size, var=None):
         return build([body, lid], [(x0 + q, y0 + q, NODE_R)], reg, size)
     if size == 24:
         body = rpoly([(5, 6), (11, 6), (11, 12), (17, 12), (17, 18), (5, 18)], 0)
-        hx, hy, q = 13, 4, 5
+        hx, hy, q = 12.5, 4.0, 4.5             # a lid a little smaller than the notch, so it sits over its gap
         lid = rotate_pen(rrect_c(hx, hy, hx + q, hy + q, 0), -15, hx, hy)
-        reg = rrect(12, 7, 5, 5, 1)
+        reg = rrect(12, 6, 5, 4, 1)
         return build([body, lid], [(11, 12, 2)], reg, size)
     raise KeyError(size)
 
@@ -662,7 +662,7 @@ def connect(size, var=None):
     if size == 24:
         left = half_pen(12, 12, 9, 8, -1, 1.0)
         right = half_pen(12, 12, 9, 8, +1, 1.0)
-        reg = rrect(10, 9, 4, 5, 1)
+        reg = rrect(11, 9, 2, 5, 1)
         return build([left, right], [(12, 12, 2)], reg, size, off=(0.0, 2.0))
     raise KeyError(size)
 
@@ -675,7 +675,7 @@ def act(size, var=None):
     if size == "display":
         floor = line_c((2.75, 21), (21.25, 21))
         leaf = rpoly([(4, 21), (4, 2.75), (10.5, 5), (10.5, 21)], [0, 1.0, 0.6, 0], closed=False)
-        frame = rpoly([(14, 5), (19.5, 5), (19.5, 21)], [0, R_RECT, 0], closed=False)
+        frame = rpoly([(14.5, 5), (19.5, 5), (19.5, 21)], [0, R_RECT, 0], closed=False)
         wr = 4.5
         reg = rrect(14.5, 10.5, wr, 9.0, R_RECT)
         return build([leaf, frame, floor], [(7.25, 12, NODE_R)], reg, size)
@@ -698,15 +698,15 @@ def ballot(size, var=None):
         p0, p1 = 7.25, 16.75
         box = rpoly([(p0, top), (4.75, top), (4.75, 19.75), (19.25, 19.75), (19.25, top), (p1, top)],
                     [0, R_RECT, R_RECT, R_RECT, R_RECT, 0], closed=False)
-        slot_l = line_c((6.75, slot), (17.25, slot))
-        paper = rpoly([(p0, slot), (p0, 4.25), (p1, 4.25), (p1, slot)], [0, 1.0, 1.0, 0], closed=False)
-        ox0, oy0, ox1, oy1 = 9.625, 6.5, 14.375, 9.5
+        slot_l = line_c((7, slot), (17, slot))
+        paper = rpoly([(p0, slot), (p0, 4.5), (p1, 4.5), (p1, slot)], [0, 1.0, 1.0, 0], closed=False)
+        ox0, oy0, ox1, oy1 = 9.625, 6.75, 14.375, 9.75
         oval = rpoly([(ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)], (oy1 - oy0) / 2)
         reg = stadium(ox0 - 0.75, oy0 - 0.75, ox1 + 0.75, oy1 + 0.75)
         return build([box, slot_l, paper, oval], [], reg, size)
     if size == 24:
-        box = rpoly([(7, 11), (3, 11), (3, 20), (21, 20), (21, 11), (17, 11)], 0, closed=False)
-        slot_l = line_c((5, 14), (19, 14))
+        box = rpoly([(7, 11), (4, 11), (4, 20), (20, 20), (20, 11), (17, 11)], 0, closed=False)
+        slot_l = line_c((6, 14), (18, 14))
         paper = rpoly([(7, 14), (7, 3), (17, 3), (17, 14)], 0, closed=False)
         oval = rpoly([(10, 6), (14, 6), (14, 9), (10, 9)], 1.5)
         reg = rrect(9, 5, 6, 5, 2.5)
@@ -718,20 +718,20 @@ def ballot(size, var=None):
 def bill(size, var=None):
     """A page with a folded corner and lines of text; the red highlights the last line."""
     if size == "display":
-        page = rpoly([(5.25, 3), (14, 3), (18.75, 7.75), (18.75, 21), (5.25, 21)], [R_RECT, 0, 0, R_RECT, R_RECT])
-        fold = rpoly([(14, 3), (14, 7.75), (18.75, 7.75)], [0, 1.0, 0], closed=False)
-        t1 = line_c((8.5, 8.5), (10.5, 8.5))
-        t2 = line_c((8.5, 11.5), (14.75, 11.5))
-        t3 = line_c((8.5, 14.5), (14.75, 14.5))
-        reg = stadium(8.75, 12.25, 17.25, 16.75)
+        page = rpoly([(5.75, 3), (14, 3), (18.25, 7.25), (18.25, 21), (5.75, 21)], [R_RECT, 0, 0, R_RECT, R_RECT])
+        fold = rpoly([(14, 3), (14, 7.25), (18.25, 7.25)], [0, 1.0, 0], closed=False)
+        t1 = line_c((9, 8.5), (11, 8.5))
+        t2 = line_c((9, 11.5), (14.75, 11.5))
+        t3 = line_c((9, 14.5), (14.75, 14.5))
+        reg = stadium(9.25, 12.25, 17.25, 16.75)
         return build([page, fold, t1, t2, t3], [], reg, size)
     if size == 24:
-        page = rpoly([(5, 3), (14, 3), (19, 8), (19, 21), (5, 21)], 0)
-        fold = rpoly([(14, 3), (14, 8), (19, 8)], 0, closed=False)
-        t1 = line_c((8, 9), (10, 9))
-        t2 = line_c((8, 12), (15, 12))
-        t3 = line_c((8, 15), (15, 15))
-        reg = rrect(9, 12, 8, 4, 2)
+        page = rpoly([(6, 3), (14, 3), (18, 7), (18, 21), (6, 21)], 0)
+        fold = rpoly([(14, 3), (14, 7), (18, 7)], 0, closed=False)
+        t1 = line_c((9, 9), (11, 9))
+        t2 = line_c((9, 12), (15, 12))
+        t3 = line_c((9, 15), (15, 15))
+        reg = rrect(10, 12, 7, 4, 2)
         return build([page, fold, t1, t2, t3], [], reg, size)
     raise KeyError(size)
 
@@ -770,13 +770,13 @@ def testify(size, var=None):
 def housing(size, var=None):
     """A house with a pitched roof; its door opens the base line. The red fills the doorway."""
     if size == "display":
-        house = rpoly([(9.5, 20), (4, 20), (4, 11), (12, 3), (20, 11), (20, 20), (14.5, 20)],
+        house = rpoly([(9.75, 20), (3.5, 20), (3.5, 12), (12, 3.5), (20.5, 12), (20.5, 20), (14.25, 20)],
                       [0, R_RECT, 0.6, 1.0, 0.6, R_RECT, 0], closed=False)
-        door = rpoly([(9.5, 20), (9.5, 13.5), (14.5, 13.5), (14.5, 20)], [0, 1.0, 1.0, 0], closed=False)
-        reg = rrect(9.5, 13.5, 4, 6.5, 1.0)
+        door = rpoly([(9.75, 20), (9.75, 14), (14.25, 14), (14.25, 20)], [0, 1.0, 1.0, 0], closed=False)
+        reg = rrect(9.75, 14, 3.5, 6, 1.0)
         return build([house, door], [], reg, size)
     if size == 24:
-        house = rpoly([(9, 20), (4, 20), (4, 11), (12, 3), (20, 11), (20, 20), (15, 20)], 0, closed=False)
+        house = rpoly([(9, 20), (3, 20), (3, 12), (12, 3), (21, 12), (21, 20), (15, 20)], 0, closed=False)
         door = rpoly([(9, 20), (9, 14), (15, 14), (15, 20)], 0, closed=False)
         reg = rrect(9, 14, 5, 6, 1)
         return build([house, door], [], reg, size)
@@ -788,7 +788,7 @@ def money(size, var=None):
     """A banknote: a landscape rounded rectangle with a disc at its center and a short bar in two
     opposite corners. The red fills the center disc."""
     if size == "display":
-        note = rrect_c(3, 6.5, 21, 17.5)
+        note = rrect_c(3, 7, 21, 17)
         disc = ring_c(12, 12, 2.75)
         b1 = line_c((5.75, 9.25), (7.25, 9.25))
         b2 = line_c((16.75, 14.75), (18.25, 14.75))
@@ -806,15 +806,15 @@ def money(size, var=None):
 
 @icon
 def loop(size, var=None):
-    """Two nodes on the center line. The forward link runs straight along the top with its
-    arrowhead at its middle, pointing on; the return comes back below as an arc, its arrowhead at
-    the bottom pointing back. The arc runs into both nodes. The red fills the left node, where the
-    return arrives."""
+    """Two nodes on the center line, joined into one closed loop. The forward link runs straight
+    along the top with its arrowhead at its middle, pointing on; the return comes back below as an
+    arc, its arrowhead at the bottom pointing back, and runs into both nodes. The red fills the
+    left node, where the return arrives."""
     if size == "display":
         lx, rx, rn, drop, arm = 5.75, 19.0, 2.25, 0.25, 2.75
         cy = 12.0
     elif size == 24:
-        lx, rx, rn, drop, arm = 6.0, 18.0, 2.0, 0.0, 2.0
+        lx, rx, rn, drop, arm = 6.0, 18.0, 2.0, 0.0, 2.5
         cy = 12.0
     else:
         raise KeyError(size)
@@ -827,7 +827,13 @@ def loop(size, var=None):
     ret = arc_c(cxa, cya, R, a_right, 180 - a_right)
     heads += _arrow_on_arc((cxa, cya), R, 90 - math.degrees(arm * 0.6 / R), +1, arm)
     reg = circle(lx, cy, rn)
-    return build([link, ret] + heads, [(lx, cy, rn), (rx, cy, rn)], reg, size)
+    out = build([link, ret] + heads, [(lx, cy, rn), (rx, cy, rn)], reg, size)
+    if size == 24 and var != "raw":
+        # hinted to whole pixels: its arc and arrowheads alone fall under D1-17 unhinted
+        import icons_draw as D  # round one, shared; imported, never changed
+        out["ink"] = D.pixel_shape(out["ink"], 24)
+        out["hinted"] = True
+    return out
 
 
 def _arrow_on_arc(c, R, ang, sense, arm):

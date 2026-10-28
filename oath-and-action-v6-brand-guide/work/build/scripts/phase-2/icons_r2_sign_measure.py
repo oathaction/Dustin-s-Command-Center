@@ -92,13 +92,20 @@ def text_glyph_svg(text, size):
     return None
 
 
-def components(mask, conn8=True):
+def components(mask, min_px=1):
+    """Separate parts (4-connected), counting only parts of at least min_px pixels."""
     lab, sizes = PM.components(mask.tolist())
-    return len(sizes)
+    return sum(1 for v in sizes.values() if v >= min_px)
 
 
-def holes(mask):
-    """Enclosed background regions: background components that do not touch the border."""
+# The display counts come from the 96 px render thresholded at half coverage, where antialiasing
+# leaves specks of a pixel or two at joins; parts and holes under 1 square unit (6 px) are ignored.
+D96_MIN_PX = 6
+
+
+def holes(mask, min_px=1):
+    """Enclosed background regions of at least min_px pixels: background components that do not
+    touch the border."""
     h, w = mask.shape
     bg = ~mask
     seen = np.zeros_like(bg)
@@ -118,7 +125,7 @@ def holes(mask):
                         if 0 <= xx < w and 0 <= yy < h and bg[yy, xx] and not seen[yy, xx]:
                             seen[yy, xx] = True
                             stack.append((xx, yy))
-                if not touch:
+                if not touch and n >= min_px:
                     count += 1
     return count
 
@@ -177,7 +184,7 @@ def main():
             dmask = np.array(cov(f"full-{n}-d96")) > 0.5
             row[f"m{s}"] = {"crisp": cr, "density": dens, "pixel_fit_pass": (cr or 0) >= 0.60,
                             "red_plus": M.red_plus(acc_m), "components": components(both), "holes": holes(both),
-                            "components_display": components(dmask), "holes_display": holes(dmask),
+                            "components_display": components(dmask, D96_MIN_PX), "holes_display": holes(dmask, D96_MIN_PX),
                             "red_px": int(acc_m.sum()), "ink_px": int(ink_m.sum())}
         f96, i96, a96 = cov(f"full-{n}-d96"), cov(f"ink-{n}-d96"), cov(f"accent-{n}-d96")
         tot = sum(map(sum, f96))
@@ -286,7 +293,10 @@ def measure_tiles():
         lo, hi = size * (1 - C.LIVE_FRACTION) / 2, size * (1 + C.LIVE_FRACTION) / 2
         bbox = [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1]
         rmax = float(np.max(np.hypot(xs + .5 - size / 2, ys + .5 - size / 2))) / size
-        r = {"bbox": bbox, "in_live_area": bool(bbox[0] >= lo - 0.5 and bbox[1] >= lo - 0.5 and bbox[2] <= hi + 0.5 and bbox[3] <= hi + 0.5),
+        # Tolerance: half a pixel of antialiasing plus the 0.25-unit overshoot the creative director
+        # allows round forms (ruling 4); the vector check holds straight edges to 2 to 22 exactly.
+        tol = 0.5 + 0.25 * (size * C.FIELD_FRACTION / 24 if size > 40 else 1.0)
+        r = {"bbox": bbox, "in_live_area": bool(bbox[0] >= lo - tol and bbox[1] >= lo - tol and bbox[2] <= hi + tol and bbox[3] <= hi + tol),
              "margin_share": round(min(bbox[0], bbox[1], size - bbox[2], size - bbox[3]) / size, 3), "r_max_share": round(rmax, 3)}
         if shape == "Circle":
             r["in_circle_safe"] = bool(rmax <= C.CIRCLE_SAFE + 0.5 / size)

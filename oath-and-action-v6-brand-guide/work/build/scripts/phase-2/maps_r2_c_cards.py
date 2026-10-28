@@ -72,43 +72,91 @@ def ghost_stubs(L, lid, scale, bb, ox, oy, length=0.85):
 def miniature(L, lid, scale=MINI_SCALE, names=True, pad=None, ink=D.CHARCOAL, ground=D.WHITE, view="c-mini", line_w=3.0,
               max_w=276):
     """Catalog miniature: the loop's own line lifted from the poster at one shared scale, station names in Inter
-    13, ghost stubs in Stone. Notation budget for a miniature: texture and the hollow line only. When the names
-    would make it wider than its card, the end names move above and below the line."""
-    for attempt in range(3):
+    13, ghost stubs in Stone. Notation budget for a miniature: texture and the hollow line only. Each name takes the
+    free side nearest the one facing away from its steps, clear of the other names, the stations and the line; when
+    the names would make the drawing wider than its card, they wrap narrower and favor the sides above and below."""
+    for attempt in range(4):
         svg, W, H = _miniature(L, lid, scale, names, pad, ink, ground, view, line_w, attempt)
         if W <= max_w or not names:
             break
     return svg, W, H
 
 
+SIDES = ("e", "se", "s", "sw", "w", "nw", "n", "ne")
+
+
+def _box_hit(a, b, m):
+    return a[0] < b[2] + m and b[0] < a[2] + m and a[1] < b[3] + m and b[1] < a[3] + m
+
+
+def place_mini_names(L, lid, scale, bb, tr, stations, spx, attempt):
+    """Name boxes for a miniature, in the drawing's own coordinates before padding: [(sid, lines, side, box)].
+    Each name has up to eight places; the search takes the set with the lowest cost, where a name on another name,
+    a station or the line costs most, then a side far from the one facing away from its steps, then the width."""
+    import itertools
+    segs = []
+    for st, pts, off in tr:
+        q = [_xf(p, bb, scale, 0, 0) for p in pts]
+        segs += [(q[i], q[i + 1]) for i in range(len(q) - 1)]
+    marks = []
+    for sid in stations:
+        x, y = _xf(spx[sid], bb, scale, 0, 0)
+        marks.append((x - 9, y - 6, x + 9, y + 6))
+    wrapw = (112, 112, 92, 84)[attempt]
+    w_pen = (0.0, 2.0, 2.0, 4.0)[attempt]
+    base = [min(m[0] for m in marks), min(m[1] for m in marks), max(m[2] for m in marks), max(m[3] for m in marks)]
+    options = []
+    for sid in stations:
+        name = M["nodes"][sid]["short"]
+        lines = D.wrap_to(name, wrapw, 13, 600)
+        lw = max(D.text_w(x, 13, 600) for x in lines) * 1.04          # Inter renders a little wider than the estimate
+        lh = 16 * len(lines)
+        pref = MINI_SIDES.get((lid, sid)) or mini_side(L, lid, sid)
+        k0 = SIDES.index(pref)
+        p = _xf(spx[sid], bb, scale, 0, 0)
+        opts = []
+        for side in SIDES:
+            k = SIDES.index(side)
+            rank = min((k - k0) % 8, (k0 - k) % 8)
+            for gap in (15, 21):
+                bx = mini_label_box(p, lw, lh, side, gap)
+                c = rank * 12 + (gap - 15)
+                c += sum(1000 for i, mk in enumerate(marks) if stations[i] != sid and _box_hit(bx, mk, 4))
+                c += sum(600 for a, b in segs if D._seg_box(a, b, (bx[0] - 4, bx[1] - 4, bx[2] + 4, bx[3] + 4)))
+                opts.append((c, side, bx, lines))
+        opts.sort(key=lambda o: o[0])
+        options.append(opts[:8])
+    best = None
+    for combo in itertools.product(*options):
+        c = sum(o[0] for o in combo)
+        for i in range(len(combo)):
+            for j in range(i + 1, len(combo)):
+                if _box_hit(combo[i][2], combo[j][2], 5):
+                    c += 1000
+        x0 = min([base[0]] + [o[2][0] for o in combo])
+        x1 = max([base[2]] + [o[2][2] for o in combo])
+        c += w_pen * ((x1 - x0) - (base[2] - base[0]))
+        if best is None or c < best[0]:
+            best = (c, combo)
+    return [(sid, o[3], o[1], o[2]) for sid, o in zip(stations, best[1])]
+
+
 def _miniature(L, lid, scale, names, pad, ink, ground, view, line_w, attempt):
     tr, bb = lifted(L, lid, scale, pitch=5.0)
     lp = LOOPS[lid]
-    names_w = {}
     pad = pad or (8, 8, 8, 8)
-    # first pass: label boxes, to size the drawing
     stations = [s["code"] for s in lp["stations"]]
     spx = {sid: L.station_px(sid) for sid in stations}
     w0 = (bb[2] - bb[0]) * scale
     h0 = (bb[3] - bb[1]) * scale
-    lab_specs = []
-    for sid in stations:
-        name = M["nodes"][sid]["short"]
-        lines = D.wrap_to(name, 112 if attempt < 2 else 92, 13, 600)
-        lw = max(D.text_w(x, 13, 600) for x in lines)
-        lh = 16 * len(lines)
-        side = MINI_SIDES.get((lid, sid)) or mini_side(L, lid, sid)
-        if attempt >= 1:
-            side = {"e": "n", "w": "s", "se": "s", "sw": "s", "ne": "n", "nw": "n"}.get(side, side)
-        lab_specs.append((sid, lines, lw, lh, side))
-    # place in a provisional frame to measure
     ext = [0, 0, w0, h0]
+    for sid in stations:                       # the station marks, so an end capsule never meets the edge
+        x, y = _xf(spx[sid], bb, scale, 0, 0)
+        ext = [min(ext[0], x - 10), min(ext[1], y - 7), max(ext[2], x + 10), max(ext[3], y + 7)]
     placed = []
-    for sid, lines, lw, lh, side in lab_specs:
-        p = _xf(spx[sid], bb, scale, 0, 0)
-        bx = mini_label_box(p, lw, lh, side)
-        placed.append((sid, lines, lw, lh, side, bx))
-        if names:
+    if names:
+        for sid, lines, side, bx in place_mini_names(L, lid, scale, bb, tr, stations, spx, attempt):
+            placed.append((sid, lines, 0, 0, side, bx))
             ext = [min(ext[0], bx[0]), min(ext[1], bx[1]), max(ext[2], bx[2]), max(ext[3], bx[3])]
     ox, oy = pad[3] - ext[0], pad[0] - ext[1]
     W = ext[2] - ext[0] + pad[1] + pad[3]
@@ -307,6 +355,10 @@ def _card_drawing(L, lid, reform, width, height, phone, labels, k=1.0, dx=0, dy=
     for sid in stations:
         p = X(spx[sid])
         occupied.append((p[0] - ring_r - 10, p[1] - ring_r, p[0] + ring_r + 10, p[1] + ring_r))
+    for st, d, p0, p1, nn in step_info:          # each step's sign tag sits at the middle of its run
+        m = ((p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2)
+        occupied.append((m[0] - 16, m[1] - 16, m[0] + 16, m[1] + 16))
+    WF = 1.06                                    # Inter renders a little wider than the layout estimate
     # step label blocks
     body_steps, body_labels = [], []
     for st, d, p0, p1, nn in step_info:
@@ -317,7 +369,8 @@ def _card_drawing(L, lid, reform, width, height, phone, labels, k=1.0, dx=0, dy=
         gtxt = f"{gw}. {D.DELAY_WORD[st['delay']].capitalize()}."
         extra_line = link in set(lp["weakest"])
         h = 18 + 18 * len(lines) + 18 + (18 if extra_line else 0)
-        w = max([D.text_w(x, 15, 600) for x in lines] + [D.text_w(gtxt, 13, 400) + 14, 40])
+        w = max([D.text_w(x, 15, 600) for x in lines] + [D.text_w(gtxt, 13, 400) + 14, 40]
+                + ([D.text_w("Least certain step", 13, 700)] if extra_line else [])) * WF
         uu = G.unit(p1[0] - p0[0], p1[1] - p0[1])
         Lr = math.hypot(p1[0] - p0[0], p1[1] - p0[1])
         cands = []
@@ -325,13 +378,15 @@ def _card_drawing(L, lid, reform, width, height, phone, labels, k=1.0, dx=0, dy=
             m = (p0[0] + uu[0] * Lr * f, p0[1] + uu[1] * Lr * f)
             for side, pref in ((1, 0), (-1, 40)):
                 n2 = (nn[0] * side, nn[1] * side)
-                off = 22 + (sep if (lp["n"] == 2 and side < 0) else 0)
-                c = (m[0] + n2[0] * off, m[1] + n2[1] * off)
-                if abs(n2[0]) < 0.45:
-                    anchor, ty = "middle", (c[1] - h if n2[1] < 0 else c[1])
-                else:
-                    anchor, ty = ("start" if n2[0] > 0 else "end"), c[1] - h / 2
-                cands.append((anchor, c[0], ty, pref + abs(f - 0.5) * 60))
+                for push in (0, 14, 28, 44, 62):
+                    # the block steps away from the line until its nearest corner clears it
+                    off = 22 + push + (sep if (lp["n"] == 2 and side < 0) else 0)
+                    c = (m[0] + n2[0] * off, m[1] + n2[1] * off)
+                    if abs(n2[0]) < 0.45:
+                        anchor, ty = "middle", (c[1] - h if n2[1] < 0 else c[1])
+                    else:
+                        anchor, ty = ("start" if n2[0] > 0 else "end"), c[1] - h / 2
+                    cands.append((anchor, c[0], ty, pref + abs(f - 0.5) * 60 + push * 1.2))
         best, bs = None, 1e18
         for anchor, ax, ty, pref in cands:
             bx = _block_box(ax, ty, anchor, w, h)
@@ -369,7 +424,7 @@ def _card_drawing(L, lid, reform, width, height, phone, labels, k=1.0, dx=0, dy=
         nm = M["nodes"][sid]["short"]
         lines = D.wrap_to(nm, blk_w, name_size, 700)
         rule = D.wrap_to(higher_rule(sid), blk_w, rule_size, 400)
-        w = max([D.text_w(x, name_size, 700, True) for x in lines] + [D.text_w(x, rule_size, 400) for x in rule])
+        w = max([D.text_w(x, name_size, 700, True) for x in lines] + [D.text_w(x, rule_size, 400) for x in rule]) * WF
         h = name_size * 1.15 * len(lines) + (rule_size + 4) * len(rule) + 6
         gap = ring_r + 14
         if lp["n"] == 2:

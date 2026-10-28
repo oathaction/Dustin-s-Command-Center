@@ -21,7 +21,7 @@ DISTRICT_NAME_AT = {  # cells: the district letter's left baseline
 # on L06 between its tag and D3; the plus tag on the C1 to D7 pair (L55) moves up toward C1, away from R4a's bullet
 TAG_SHIFT = {"L56": 30.0, "L06": 18.0, "L55": -20.0}
 # the letter alone in a district's smaller patch: B's patch under the hub and E's hub strip
-PATCH_LETTER_AT = {("B", "b1"): (1.15, 12.55), ("E", "main"): (-1.45, -3.45)}
+PATCH_LETTER_AT = {("B", "b1"): (1.15, 12.55), ("E", "main"): (-1.45, -2.95)}
 DISTRICT_WRAP = {"A": False, "B": False, "C": True, "D": True, "E": False}
 DISTRICT_TITLE = {"A": "Economic structure", "B": "Political inputs", "C": "Electoral competition",
                   "D": "Governing institutions", "E": "Legitimacy"}
@@ -218,13 +218,14 @@ def poster(L=None, theme_name="prussian", lit_loop=None, reform=None, view="c-po
         body.append(T(x, y, dct, 40, 800, soft, "start", "d", extra=f' data-district-name="{dct}"'))
         if DISTRICT_WRAP[dct]:
             l1, l2 = D.wrap2(name, 19, 800)
-            body.append(T(x + letter_w + 8, y - 22, l1, 19, 800, soft, "start", "d"))
+            # 24 px between the two lines, so their rendered boxes (about 23 px at 19 px) never overlap
+            body.append(T(x + letter_w + 8, y - 25, l1, 19, 800, soft, "start", "d"))
             body.append(T(x + letter_w + 8, y - 1, l2, 19, 800, soft, "start", "d"))
             nw = max(D.text_w(l1, 19, 800), D.text_w(l2, 19, 800))
         else:
             body.append(T(x + letter_w + 8, y - 3, name, 19, 800, soft, "start", "d"))
             nw = D.text_w(name, 19, 800)
-        avoid.append((x - 2, y - 32, x + letter_w + 8 + nw + 2, y + 6))
+        avoid.append((x - 2, y - 46 if DISTRICT_WRAP[dct] else y - 32, x + letter_w + 8 + nw + 2, y + 6))
     for (dct, part), (cx, cy) in PATCH_LETTER_AT.items():
         x, y = L.px((cx, cy))
         body.append(T(x, y, dct, 40, 800, soft, "start", "d", extra=f' data-district-letter="{dct}" data-part="{part}"'))
@@ -313,7 +314,7 @@ def legend(th, theme_name, L, x=72, y=730, lit=False, print_=False):
     sub = D.NEWS if theme_name == "prussian" else D.DEEP
     line_ink = D.CHARCOAL if lit else (th.line if theme_name != "newsprint" else D.CHARCOAL)
     lw = D.LIT_W if lit else D.LINE_W
-    c2 = 258
+    c2 = 272
     out = [T(x, y, "HOW TO READ IT", 13, 700, ink, "start", extra=' letter-spacing="1.2"')]
     rows = [[("documented", "Documented or well supported"), ("plausible", "Plausible")],
             [("plausible_contested", "Contested"), ("hypothesis", "Hypothesis")]]

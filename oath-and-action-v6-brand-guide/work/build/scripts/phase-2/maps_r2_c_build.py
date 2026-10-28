@@ -65,15 +65,20 @@ def main():
                                label="Loop Lines reform view on White: Reform R-01 acts on L25, L08 and C2, marked in red; "
                                      "the three loops it touches stay in Charcoal and the rest drop to Stone")
     save("Loop-Lines-Reform-View-R-01", reform, "svg")
-    save("Loop-Lines-Poster", P.view_page("Loop Lines Poster", poster, "prussian", "The Loop Lines poster at 1440 px", text=True), "html")
-    save("Loop-Lines-Poster-Print", P.print_page(poster), "html")
-    save("Loop-Lines-Working-Map", P.view_page("Loop Lines Working Map", working, "", "Working map with R10 lit"), "html")
-    rpage = P.page("Reform View R-01", P.CARD_CSS + P.VIEW_CSS,
-                   f'<main style="background:#fff;width:1440px"><div style="padding:0">{reform}</div>'
-                   f'<div class="pw" style="padding-top:8px">{P.reform_panel("R-01")}<p class="src">{P.esc(P.SRC)}</p></div></main>',
-                   desc="Reform R-01 on the whole map, on White")
-    rpage = rpage.replace("<body>", '<body class="white">', 1)
-    save("Loop-Lines-Reform-View-R-01", rpage, "html")
+    printed, _, _, _ = V.poster(L, print_=True, view="c-poster-print",
+                                label="Loop Lines poster for print at 24 by 36 inches: the 20 numbered loops of Atlas V7 as closed lines, "
+                                      "each line bullet carrying its kind glyph")
+    save("Loop-Lines-Poster-Print", printed, "svg")
+    cap = lambda n: f"{PFX}Loop-Lines-{n}-Capture.png"
+    save("Loop-Lines-Poster", P.view_page("Loop Lines Poster", poster, "prussian", "The Loop Lines poster, 1440 px and fit to a phone",
+                                          cap("Poster"), "The Loop Lines poster: the 20 numbered loops of Atlas V7 as closed lines through 25 variables in five areas."), "html")
+    save("Loop-Lines-Poster-Print", P.print_page(printed), "html")
+    save("Loop-Lines-Working-Map", P.view_page("Loop Lines Working Map", working, "", "Working map with R10 lit, 1440 px and fit to a phone",
+                                               cap("Working-Map"), "The working map on Newsprint with Loop R10 lit in Charcoal and every other line in Stone."), "html")
+    save("Loop-Lines-Reform-View-R-01", P.view_page("Reform View R-01", reform, "white", "Reform R-01 on the whole map, on White",
+                                                    cap("Reform-View-R-01"), "The reform view on White: Reform R-01 marked in red where it acts, "
+                                                    "the three loops it touches in Charcoal and the rest in Stone.",
+                                                    panel=P.reform_panel("R-01", responsive=True)), "html")
     # 2. catalog pages
     written = []
     cat, order = P.catalog_page(L, written=written)

@@ -1,0 +1,67 @@
+{
+ "widths": {
+  "390": {
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflow": [],
+   "widows": [],
+   "tabular": {
+    "cells": 110,
+    "ok": 110
+   },
+   "asciiMinus": [],
+   "small": 0,
+   "smallSamples": [],
+   "images": 388,
+   "broken": [],
+   "fonts": [
+    "Inter 400",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800",
+    "Material Symbols Outlined 400"
+   ],
+   "height": 34136,
+   "failedRequests": [],
+   "capture": "../../../boards/phase-2/icons-r2/overprint/screens/20261028_Icon-Concept-1-Overprint-Board-390.png"
+  },
+  "1440": {
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflow": [],
+   "widows": [],
+   "tabular": {
+    "cells": 110,
+    "ok": 110
+   },
+   "asciiMinus": [],
+   "small": 0,
+   "smallSamples": [],
+   "images": 388,
+   "broken": [],
+   "fonts": [
+    "Inter 400",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800",
+    "Material Symbols Outlined 400"
+   ],
+   "height": 19444,
+   "failedRequests": [],
+   "capture": "../../../boards/phase-2/icons-r2/overprint/screens/20261028_Icon-Concept-1-Overprint-Board-1440.png"
+  }
+ },
+ "summary": [
+  "390 px: page 390 px wide in a 390 px viewport; 0 elements outside the viewport, not counting tables that scroll on purpose.",
+  "390 px: 388 images, 0 failed to load; 0 local requests failed.",
+  "390 px: 0 text elements set under 13 px.",
+  "390 px: 0 headings end on a single word.",
+  "390 px: 110 of 110 numeric cells use tabular figures; 0 use a hyphen for minus.",
+  "1440 px: page 1440 px wide in a 1440 px viewport; 0 elements outside the viewport, not counting tables that scroll on purpose.",
+  "1440 px: 388 images, 0 failed to load; 0 local requests failed.",
+  "1440 px: 0 text elements set under 13 px.",
+  "1440 px: 0 headings end on a single word.",
+  "1440 px: 110 of 110 numeric cells use tabular figures; 0 use a hyphen for minus.",
+  "Web fonts loaded in the check: Inter 400, Inter 700, Inter Tight 600, Inter Tight 800, Material Symbols Outlined 400."
+ ]
+}
