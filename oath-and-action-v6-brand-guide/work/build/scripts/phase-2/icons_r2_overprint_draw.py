@@ -1,26 +1,32 @@
-"""Concept 1, Overprint: the ten round-two test icons as display masters (design director, Phase 2,
-round two, October 28, 2026).
+"""Concept 1, Overprint: the ten round-two test icons (design director, Phase 2, round two,
+October 28, 2026). Stage 2: the display masters redrawn after the creative director's stage 1
+notes, and the 24 and 16 px masters drawn on whole pixels.
 
 Idea. A fine Charcoal line drawing printed over one solid Pillar Red plane set off register, the way
 a second ink lands on a newspaper page. The red sits under the part of the subject the story is
 about. The line drawing is whole without it.
 
 Grid. Round one's 24-unit grid (icons_draw.py): 2-unit padding, live area 2 to 22; keylines circle 20,
-square 18, portrait 16 by 20, landscape 20 by 16. Every drawing here is written as center lines.
+square 18, portrait 16 by 20, landscape 20 by 16. Straight edges stay inside the live area; round
+forms overshoot it by 0.25 units at most. The 16 px masters are separate drawings on a 16-unit grid
+with 1-unit padding, live area 1 to 15. Every drawing is written as center lines.
 
-Display master (48 px and up). Center lines stroked at 1.5 units with round caps and round joins.
-Rectangles take a 2-unit outer radius, so a center-line radius of 1.25. The pillar marks carry the
-node as a solid ink disc 3 units across.
+Line. Round caps and round joins. Display master (48 px and up): 1.5 units. 24 and 16 px masters:
+2 px, with straight center lines on whole pixels so both edges land on pixel boundaries.
+Rectangles take a 2-unit outer radius in the display master (center-line radius 1.25) and 1 px at
+24 px. The pillar marks carry the node as a solid ink disc 3 units across.
 
-The red plane. One solid primitive (disc, rounded square, quarter disc or stadium). Each icon names
-where the plane would sit in register, under the subject's focus; the plane then prints at one
-fixed offset, OFFSET, toward the lower left. The offset is the same in every icon.
+The red plane. It fills one shape of the drawing, to the line's center, and prints off register at
+one fixed offset toward the lower left: 1.5 units left and 1.5 down in the display master, 2 px at
+24 px and 1 px at 16 px. Ballot's mark covers its printed oval to the outer edge, as a pen mark
+does. Connect is the one exception (Rule 01.1): its plane centers on the gap and prints straight
+down, clear of both halves.
 
 Every drawing returns layers:
   ink     the line drawing and any ink nodes, as one filled outline
-  accent  the red plane, already moved by OFFSET
-  lines   the center-line paths (for the board's construction views)
-  reg     the red plane in register, before the offset (construction only)
+  accent  the red plane, already moved by its offset
+  lines   the center-line paths (construction views)
+  reg     the red plane in register, before the offset (construction views)
 Run with python3 -I. Imports round one's shared helpers and changes none of them.
 """
 import math
@@ -46,22 +52,26 @@ CLASS = {"explain": "Pillar mark", "track": "Pillar mark", "connect": "Pillar ma
          "money": "Topic symbol", "loop": "Atlas symbol"}
 # One line per icon: why its red sits where it does. The drawing has to show this without the caption.
 REASON = {
-    "explain": "Red fills the lifted corner and falls into the opening, the inside you now get to see.",
-    "track": "Red sits under the top stage, where the decision is headed.",
-    "connect": "Red is the ground in the gap where the two halves meet.",
-    "act": "Red is the light falling through the open door.",
+    "explain": "Red fills the inside the open lid reveals.",
+    "track": "Red fills the top stage, where the decision is headed.",
+    "connect": "Red is the ground in the gap between the two halves, clear of both.",
+    "act": "Red is the light on the floor of the open doorway.",
     "ballot": "Red is the filled oval, the mark a voter makes.",
     "bill": "Red highlights the one line of the bill the story is about.",
-    "testify": "Red sits behind the microphone, where a voice goes on the record.",
+    "testify": "Red fills the microphone, where a voice goes on the record.",
     "housing": "Red fills the doorway, the way into a home.",
-    "money": "Red is the coin, the money passing from the hand.",
-    "loop": "Red sits under the node where a reform acts on the loop.",
+    "money": "Red fills the banknote's center disc, the money itself.",
+    "loop": "Red fills the node the return arrives at, where the feedback acts.",
 }
 
 W = 1.5                  # display stroke, in grid units
 R_RECT = 1.25            # center-line corner radius for rectangles (2-unit outer radius)
 NODE_R = 1.5             # pillar-mark node, a solid ink disc 3 units across
-OFFSET = (-1.5, 1.5)     # the red plane's fixed off-register shift, toward the lower left (2.1 units)
+OFFSET = (-1.5, 1.5)     # the red plane's off-register shift in the display master (2.1 units)
+SIZES = ("display", 24, 16)
+SPEC = {"display": {"w": 1.5, "off": (-1.5, 1.5), "grid": 24},
+        24: {"w": 2.0, "off": (-2.0, 2.0), "grid": 24},
+        16: {"w": 2.0, "off": (-1.0, 1.0), "grid": 16}}
 
 
 # ------------------------------------------------------------------ center-line construction
@@ -294,52 +304,84 @@ def shifted(path, d=None):
     return g.transform(path, 1.0, d[0], d[1])
 
 
-def build(lines, discs=(), reg=None, w=W):
-    ink = union(*[stroke(p, w) for p in lines], *[circle(*d) for d in discs])
-    return {"ink": ink, "accent": shifted(reg) if reg is not None else g.empty(), "reg": reg,
-            "lines": lines, "discs": list(discs)}
+def build(lines, discs=(), reg=None, size="display", off=None, accent=None, extra_ink=()):
+    """Stroke the center lines at the size's width, add ink discs and any filled ink shapes, and
+    print the red plane at the size's offset (or at off, for Connect's exception)."""
+    sp = SPEC[size]
+    parts = [stroke(p, sp["w"]) for p in lines] + [circle(*d) for d in discs] + list(extra_ink)
+    ink = union(*parts)
+    if accent is None:
+        accent = shifted(reg, off or sp["off"]) if reg is not None else g.empty()
+    return {"ink": ink, "accent": accent, "reg": reg, "lines": lines, "discs": list(discs), "size": size}
 
 
-# ------------------------------------------------------------------ the ten display masters
-# Coordinates are center lines on the 24-unit grid.
+def rotate_pen(pen, deg, cx, cy):
+    """The same center-line path turned deg degrees (clockwise on screen) about (cx, cy)."""
+    t = math.radians(deg)
+    c, s_ = math.cos(t), math.sin(t)
 
-def explain(var=None):
-    # A square broken open: the body keeps three quarters; its top-right quarter is lifted up and
-    # right as a closed lid. The node sits at the body's inner corner, where the lid lifted from.
-    body = rpoly([(3, 7), (10, 7), (10, 14), (17, 14), (17, 21), (3, 21)], [R_RECT, R_RECT, 0, R_RECT, R_RECT, R_RECT])
-    lid = rrect_c(14, 3, 21, 10)
-    reg = rrect(14, 3, 7, 7, R_RECT)          # in register: the lid's fill
-    return build([body, lid], [(10, 14, NODE_R)], reg)
+    def f(x, y):
+        x, y = x - cx, y - cy
+        return cx + x * c - y * s_, cy + x * s_ + y * c
+    out = Pen()
+    for op in pen.ops:
+        if op[0] == "M":
+            out.M(*f(op[1], op[2]))
+        elif op[0] == "L":
+            out.L(*f(op[1], op[2]))
+        elif op[0] == "A":
+            x, y = f(op[1], op[2])
+            out.A(x, y, op[3], op[4] + deg, op[5] + deg)
+        else:
+            out.Z()
+    return out
 
 
-def track(var=None):
-    # Three stages on a rising stair, drawn as one closed block. The node sits on the nose of the
-    # middle stage, where the decision steps up.
-    st = rpoly([(3, 20), (3, 16), (9, 16), (9, 12), (15, 12), (15, 8), (21, 8), (21, 20)],
-               [R_RECT, R_RECT, 0, R_RECT, 0, R_RECT, R_RECT, R_RECT])
-    reg = rrect(15, 8, 6, 6, R_RECT)          # in register: the top stage
-    node = (9, 12) if var != "mid" else (12, 12)
-    return build([st], [(*node, NODE_R)], reg)
+def rotate_path(path, deg, cx, cy):
+    return g.rot(path, deg, cx, cy)
+
+
+# ------------------------------------------------------------------ the ten icons
+# Each function takes size: "display" (24-unit grid, 1.5-unit line), 24 or 16 (2 px line).
+
+DRAW = {}
+
+
+def icon(fn):
+    DRAW[fn.__name__] = fn
+    return fn
+
+
+def display(name, var=None):
+    return DRAW[name]("display", var)
+
+
+def master(name, size):
+    return DRAW[name](size, None)
+
+
+def draw(name, size, var=None):
+    return DRAW[name](size, var)
 
 
 def half_pen(cx, cy, R, gap, side, rf=1.0):
-    """One half of a circle of radius R cut by a chord gap/2 from the center (side -1 left,
-    +1 right), as a center line whose two corners take fillets of radius rf, tangent to the chord
-    and to the circle."""
-    xc_rel = gap / 2                           # chord distance from the center
-    fx = xc_rel + rf                           # fillet center distance from the center, in x
+    """One half of a circle of radius R cut by a chord gap/2 from the center (side -1 left, +1
+    right), as a center line whose two corners take fillets of radius rf, tangent to the chord and
+    to the circle."""
+    xc = gap / 2
+    fx = xc + rf
     fy = math.sqrt((R - rf) ** 2 - fx ** 2)
-    phi = math.degrees(math.atan2(-fy, -fx))   # direction from the center to the top-left fillet
+    phi = math.degrees(math.atan2(-fy, -fx))
     pen = Pen()
     if side < 0:
-        x = cx - xc_rel
+        x = cx - xc
         pen.M(x, cy + fy).L(x, cy - fy)
-        pen.A(cx - fx, cy - fy, rf, 0, phi)            # top fillet
-        pen.A(cx, cy, R, phi, -360 - phi)               # the round side
-        pen.A(cx - fx, cy + fy, rf, -phi, 0)            # bottom fillet
+        pen.A(cx - fx, cy - fy, rf, 0, phi)
+        pen.A(cx, cy, R, phi, -360 - phi)
+        pen.A(cx - fx, cy + fy, rf, -phi, 0)
     else:
         th = 180 + phi
-        x = cx + xc_rel
+        x = cx + xc
         pen.M(x, cy - fy).L(x, cy + fy)
         pen.A(cx + fx, cy + fy, rf, 180, th)
         pen.A(cx, cy, R, th, -th)
@@ -347,117 +389,188 @@ def half_pen(cx, cy, R, gap, side, rf=1.0):
     return pen.Z()
 
 
-def connect(var=None):
-    # One circle in two halves held apart; the node sits in the gap on the center line.
-    R, gap = 9.25, 8.0
-    left = half_pen(12, 12, R, gap, -1, 1.0)
-    right = half_pen(12, 12, R, gap, +1, 1.0)
-    if var == "low":
-        reg = circle(12, 16, 3.0)             # in register: low in the gap, the ground under the node
-    elif var == "small":
-        reg = circle(12, 12, 2.6)
-    else:
-        reg = circle(12, 12, 3.0)             # in register: a disc centered in the gap
-    return build([left, right], [(12, 12, NODE_R)], reg)
+def tilted_stadium(cx, cy, w, length, deg):
+    """A stadium w wide and length long, centered on (cx, cy), its long axis turned deg degrees
+    from vertical (clockwise on screen)."""
+    return rotate_path(rrect(cx - w / 2, cy - length / 2, w, length, w / 2), deg, cx, cy)
 
 
-def act(var=None):
-    # A door swung open on its floor. The leaf, hinged at the doorway's left side, comes toward the
-    # reader in perspective; the frame runs over the opening only and down the far jamb, held
-    # apart from the leaf as Direction A draws it. The node is the handle.
-    floor = line_c((2.5, 21), (21.5, 21))
-    leaf = rpoly([(4, 21), (4, 2.75), (10.5, 5), (10.5, 21)], [0, 1.0, 0.6, 0], closed=False)
-    frame = rpoly([(13.25, 5), (19.5, 5), (19.5, 21)], [0, R_RECT, 0], closed=False)
-    reg = rrect(14, 13.5, 5, 6.5, R_RECT)     # in register: light on the floor of the doorway
-    return build([leaf, frame, floor], [(7.25, 12.5, NODE_R)], reg)
+def tilted_stadium_pen(cx, cy, w, length, deg):
+    r = w / 2
+    pen = rpoly([(cx - r, cy - length / 2), (cx + r, cy - length / 2), (cx + r, cy + length / 2), (cx - r, cy + length / 2)], r)
+    return rotate_pen(pen, deg, cx, cy)
 
 
-def ballot(var=None):
-    # A box with a paper going in at its top. The paper carries a printed oval; the red is the
-    # voter's mark, which covers the oval to its outer edge and prints off register.
-    top = 12.5
-    box = rrect_c(3.5, top, 20.5, 21)
-    paper = rpoly([(7, top), (7, 2.75), (17, 2.75), (17, top)], [0, 1.0, 1.0, 0], closed=False)
-    ox0, oy0, ox1, oy1 = 9.5, 5.0, 14.5, 8.25
-    oval = rpoly([(ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)], (oy1 - oy0) / 2)
-    reg = stadium(ox0 - 0.75, oy0 - 0.75, ox1 + 0.75, oy1 + 0.75)   # in register: the oval, edge to edge
-    return build([box, paper, oval], [], reg)
+@icon
+def explain(size, var=None):
+    """A square broken open: its top-right quarter is a lid, lifted clear and turned on its hinge
+    corner. The red fills the open quarter and slides toward the node at the inner corner."""
+    if size == "display":
+        s_, x0, y0, turn = 12.0, 5.0, 6.0, -15.0
+        dx, dy = 0.75, -2.0                      # the lid lifts 2 and moves 0.75 toward its hinge side
+        r = R_RECT
+        q = s_ / 2
+        body = rpoly([(x0, y0), (x0 + q, y0), (x0 + q, y0 + q), (x0 + s_, y0 + q), (x0 + s_, y0 + s_), (x0, y0 + s_)],
+                     [r, r, 0, r, r, r])
+        hx, hy = x0 + q + dx, y0 + dy
+        lid = rotate_pen(rrect_c(hx, hy, hx + q, hy + q, r), turn, hx, hy)
+        k = 5.25 if var is None else float(var)
+        reg = rrect(x0 + s_ - 0.25 - k, y0 + 0.25, k, k, r)
+        return build([body, lid], [(x0 + q, y0 + q, NODE_R)], reg, size)
+    raise KeyError(size)
 
 
-def bill(var=None):
-    # A page with a folded corner and lines of text; the red is a highlight under the last line.
-    page = rpoly([(5, 3), (14, 3), (19, 8), (19, 21), (5, 21)], [R_RECT, 0, 0, R_RECT, R_RECT])
-    fold = rpoly([(14, 3), (14, 8), (19, 8)], [0, 1.0, 0], closed=False)
-    t1 = line_c((8.5, 9.5), (11, 9.5))
-    t2 = line_c((8.5, 12.5), (15.5, 12.5))
-    t3 = line_c((8.5, 15.5), (15.5, 15.5))
-    reg = stadium(8.75, 13.25, 17.25, 17.75)  # in register: a highlight over the last line
-    return build([page, fold, t1, t2, t3], [], reg)
+@icon
+def track(size, var=None):
+    """Three equal stages climbing from the bottom left of the landscape keyline to its top right,
+    drawn as one closed block. The node sits on the riser between the first and second stages, on
+    the center line; the red fills the top stage."""
+    if size == "display":
+        xs = [2.75 + i * (18.5 / 3) for i in range(4)]
+        ys = [19.25 - i * (14.5 / 3) for i in range(4)]
+        r = R_RECT
+        st = rpoly([(xs[0], ys[0]), (xs[0], ys[1]), (xs[1], ys[1]), (xs[1], ys[2]), (xs[2], ys[2]), (xs[2], ys[3]),
+                    (xs[3], ys[3]), (xs[3], ys[0])], [r, r, 0, r, 0, r, r, r])
+        reg = rrect(xs[2], ys[3], xs[3] - xs[2], ys[2] - ys[3], r)
+        return build([st], [(xs[1], 12, NODE_R)], reg, size)
+    raise KeyError(size)
 
 
-def testify(var=None):
-    # A person at a witness table speaking into a microphone on a short stand.
-    head = ring_c(15, 7, 3.0)
-    shoulders = arc_c(15, 19.5, 5.5, 180, 360)
-    table = line_c((2.75, 19.5), (21.25, 19.5))
-    mic = rpoly([(5.5, 7), (8.5, 7), (8.5, 12.5), (5.5, 12.5)], 1.5)
-    stem = line_c((7, 12.5), (7, 19.5))
-    reg = circle(7, 9.75, 3.25)               # in register: behind the microphone head
-    return build([head, shoulders, table, mic, stem], [], reg)
+@icon
+def connect(size, var=None):
+    """One circle in two halves held apart; the node sits in the gap on the center line. The red
+    centers on the gap and prints straight down, clear of both halves (Rule 01.1)."""
+    if size == "display":
+        R, gap = 9.25, 8.0
+        left = half_pen(12, 12, R, gap, -1, 1.0)
+        right = half_pen(12, 12, R, gap, +1, 1.0)
+        wr = 4.5
+        reg = rrect(12 - wr / 2, 9.25, wr, 5.5, R_RECT)
+        return build([left, right], [(12, 12, NODE_R)], reg, size, off=(0.0, 1.5))
+    raise KeyError(size)
 
 
-def housing(var=None):
-    # A house with a pitched roof and a door; the door opens the base line.
-    house = rpoly([(9.5, 20), (4, 20), (4, 11), (12, 3), (20, 11), (20, 20), (14.5, 20)],
-                  [0, R_RECT, 0.6, 1.0, 0.6, R_RECT, 0], closed=False)
-    door = rpoly([(9.5, 20), (9.5, 13.5), (14.5, 13.5), (14.5, 20)], [0, 1.0, 1.0, 0], closed=False)
-    reg = rrect(9.5, 13.5, 5, 6.5, 1.0)       # in register: the doorway
-    return build([house, door], [], reg)
+@icon
+def act(size, var=None):
+    """A door swung open on its floor: the leaf comes toward the reader in perspective, the frame
+    runs over the opening only and down the far jamb, held apart from the leaf as Direction A
+    draws it. The node is the handle. The red lights the lower half of the doorway."""
+    if size == "display":
+        floor = line_c((2.75, 21), (21.25, 21))
+        leaf = rpoly([(4, 21), (4, 2.75), (10.5, 5), (10.5, 21)], [0, 1.0, 0.6, 0], closed=False)
+        frame = rpoly([(14, 5), (19.5, 5), (19.5, 21)], [0, R_RECT, 0], closed=False)
+        wr = 4.5
+        reg = rrect(14.5, 10.5, wr, 9.0, R_RECT)
+        return build([leaf, frame, floor], [(7.25, 12, NODE_R)], reg, size)
+    raise KeyError(size)
 
 
-def money(var=None):
-    # An open hand, palm up, with a coin lifting off it; the red is the coin, printed off register.
-    # A cuff at the wrist; the thumb lies forward along the top of the hand and steps down to the
-    # palm; the fingers end in one round tip.
-    cuff = rpoly([(2.5, 12.5), (5, 12.5), (5, 21.5), (2.5, 21.5)], 0.75)
-    hand = rpoly([(5, 13.5), (10.75, 13.5), (10.75, 15.5), (20.25, 15.5), (20.25, 20), (5, 20)],
-                 [0, 1.5, 0.5, 2.25, 2.25, 0], closed=False)
-    coin = ring_c(15, 7, 3.25)
-    reg = circle(15, 7, 3.25)                 # in register: the coin's fill
-    return build([cuff, hand, coin], [], reg)
+@icon
+def ballot(size, var=None):
+    """A ballot box with a slot across its top face; the paper's lower third sinks into the slot.
+    The paper carries a printed oval; the red is the voter's mark, which covers the oval to its
+    outer edge and prints off register."""
+    if size == "display":
+        top, slot = 10.5, 13.5
+        p0, p1 = 7.25, 16.75
+        box = rpoly([(p0, top), (4.75, top), (4.75, 19.75), (19.25, 19.75), (19.25, top), (p1, top)],
+                    [0, R_RECT, R_RECT, R_RECT, R_RECT, 0], closed=False)
+        slot_l = line_c((6.75, slot), (17.25, slot))
+        paper = rpoly([(p0, slot), (p0, 4.25), (p1, 4.25), (p1, slot)], [0, 1.0, 1.0, 0], closed=False)
+        ox0, oy0, ox1, oy1 = 9.625, 6.5, 14.375, 9.5
+        oval = rpoly([(ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)], (oy1 - oy0) / 2)
+        reg = stadium(ox0 - 0.75, oy0 - 0.75, ox1 + 0.75, oy1 + 0.75)
+        return build([box, slot_l, paper, oval], [], reg, size)
+    raise KeyError(size)
+
+
+@icon
+def bill(size, var=None):
+    """A page with a folded corner and lines of text; the red highlights the last line."""
+    if size == "display":
+        page = rpoly([(5.25, 3), (14, 3), (18.75, 7.75), (18.75, 21), (5.25, 21)], [R_RECT, 0, 0, R_RECT, R_RECT])
+        fold = rpoly([(14, 3), (14, 7.75), (18.75, 7.75)], [0, 1.0, 0], closed=False)
+        t1 = line_c((8.5, 8.5), (10.5, 8.5))
+        t2 = line_c((8.5, 11.5), (14.75, 11.5))
+        t3 = line_c((8.5, 14.5), (14.75, 14.5))
+        reg = stadium(8.75, 12.25, 17.25, 16.75)
+        return build([page, fold, t1, t2, t3], [], reg, size)
+    raise KeyError(size)
+
+
+@icon
+def testify(size, var=None):
+    """A person at a witness table speaking into a microphone; the capsule sits at mouth height on
+    a short gooseneck, angled toward the face. The red fills the capsule."""
+    if size == "display":
+        head = ring_c(15.5, 7, 2.75)
+        shoulders = arc_c(15.5, 19.5, 5.25, 180, 360)
+        table = line_c((2.75, 19.5), (21.25, 19.5))
+        cx, cy, cw, cl, ang = 9.25, 11.75, 3.75, 5.5, 45
+        cap = tilted_stadium_pen(cx, cy, cw, cl, ang)
+        u = (math.sin(math.radians(ang)), -math.cos(math.radians(ang)))
+        foot = (cx - u[0] * cl / 2, cy - u[1] * cl / 2)
+        bend = (foot[0] - u[0] * 1.25, foot[1] - u[1] * 1.25)
+        neck = rpoly([foot, (bend[0], bend[1]), (bend[0], 19.5)], [0, 1.25, 0], closed=False)
+        reg = tilted_stadium(cx, cy, cw, cl, ang)
+        return build([head, shoulders, table, cap, neck], [], reg, size)
+    raise KeyError(size)
+
+
+@icon
+def housing(size, var=None):
+    """A house with a pitched roof; its door opens the base line. The red fills the doorway."""
+    if size == "display":
+        house = rpoly([(9.5, 20), (4, 20), (4, 11), (12, 3), (20, 11), (20, 20), (14.5, 20)],
+                      [0, R_RECT, 0.6, 1.0, 0.6, R_RECT, 0], closed=False)
+        door = rpoly([(9.5, 20), (9.5, 13.5), (14.5, 13.5), (14.5, 20)], [0, 1.0, 1.0, 0], closed=False)
+        reg = rrect(9.5, 13.5, 4, 6.5, 1.0)
+        return build([house, door], [], reg, size)
+    raise KeyError(size)
+
+
+@icon
+def money(size, var=None):
+    """A banknote: a landscape rounded rectangle with a disc at its center and a short bar in two
+    opposite corners. The red fills the center disc."""
+    if size == "display":
+        note = rrect_c(3, 6.5, 21, 17.5)
+        disc = ring_c(12, 12, 2.75)
+        b1 = line_c((5.75, 9.25), (7.25, 9.25))
+        b2 = line_c((16.75, 14.75), (18.25, 14.75))
+        reg = circle(12, 12, 2.75)
+        return build([note, disc, b1, b2], [], reg, size)
+    raise KeyError(size)
+
+
+@icon
+def loop(size, var=None):
+    """Two nodes on the center line. The forward link runs straight along the top, its arrowhead
+    arriving at the right node; the return comes back below as a deep arc, its arrowhead at the
+    bottom, and runs into the left node. The red fills that node."""
+    if size == "display":
+        v = [float(t) for t in var.split("/")] if var else [5.75, 19.0, 2.25, 0.25, 2.75]
+        lx, rx, rn, drop, arm = v
+        cy = 12.0
+        cxa, cya = (lx + rx) / 2, cy + drop
+        R = math.hypot(rx - cxa, cy - cya)
+        tip_f = rx - rn - 1.25
+        link = line_c((lx, cy), (tip_f, cy))
+        heads = chevron((tip_f, cy), 0, arm)
+        a_right = math.degrees(math.atan2(cy - cya, rx - cxa))
+        a_left = 180 - a_right
+        ret = arc_c(cxa, cya, R, a_right, a_left)
+        heads += _arrow_on_arc((cxa, cya), R, 90 + 3, +1, arm)
+        reg = circle(lx, cy, rn)
+        return build([link, ret] + heads, [(lx, cy, rn), (rx, cy, rn)], reg, size)
+    raise KeyError(size)
+
 
 def _arrow_on_arc(c, R, ang, sense, arm):
     """A chevron sitting on an arc at angle ang, pointing along the arc (+1 clockwise on screen)."""
     t = math.radians(ang)
     tip = (c[0] + R * math.cos(t), c[1] + R * math.sin(t))
     return chevron(tip, ang + 90 * sense, arm)
-
-
-def loop(var=None):
-    # Two nodes joined by two arcs into one closed loop, as a systems map draws a feedback loop;
-    # an arrowhead on each arc gives the direction of travel.
-    cy, lx, rx = 12, 5.0, 19.0
-    half = (rx - lx) / 2
-    sg = 4.5
-    R = (half * half + sg * sg) / (2 * sg)
-    top_c, bot_c = (12, cy + R - sg), (12, cy - R + sg)
-    a = math.degrees(math.asin(half / R))
-    top = arc_c(top_c[0], top_c[1], R, -90 - a, -90 + a)
-    bot = arc_c(bot_c[0], bot_c[1], R, 90 - a, 90 + a)
-    arm = 2.0
-    heads = _arrow_on_arc(top_c, R, -90 + 4, +1, arm) + _arrow_on_arc(bot_c, R, 90 + 4, +1, arm)
-    rn = 1.75
-    reg = circle(rx, cy, 3.25)                # in register: under the right node
-    return build([top, bot] + heads, [(lx, cy, rn), (rx, cy, rn)], reg)
-
-
-DRAW = {"explain": explain, "track": track, "connect": connect, "act": act, "ballot": ballot, "bill": bill,
-        "testify": testify, "housing": housing, "money": money, "loop": loop}
-
-
-def display(name, var=None):
-    return DRAW[name](var)
-
 
 # ------------------------------------------------------------------ SVG
 
