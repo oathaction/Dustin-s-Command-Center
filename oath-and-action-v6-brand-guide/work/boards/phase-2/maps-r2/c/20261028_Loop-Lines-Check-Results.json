@@ -1,9 +1,9 @@
 {
- "run": "2026-10-28T21:30:52.860Z",
+ "run": "2026-10-28T21:32:56.276Z",
  "pages": {
   "Poster": {
-   "texts": 180,
-   "svgTexts": 180,
+   "texts": 181,
+   "svgTexts": 181,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -28,8 +28,8 @@
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Grayscale.png"
   },
   "Working-Map": {
-   "texts": 180,
-   "svgTexts": 180,
+   "texts": 181,
+   "svgTexts": 181,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -54,8 +54,8 @@
    "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Grayscale.png"
   },
   "Reform-View-R-01": {
-   "texts": 227,
-   "svgTexts": 182,
+   "texts": 228,
+   "svgTexts": 183,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -245,7 +245,7 @@
  "board": {},
  "pdf": {
   "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf",
-  "bytes": 216768
+  "bytes": 216640
  },
  "summary": [
   "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",

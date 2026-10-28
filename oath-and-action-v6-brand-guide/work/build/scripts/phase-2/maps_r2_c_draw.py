@@ -255,8 +255,8 @@ def station_label(L, sid, theme, box, lit=True, size=15):
 
 def sign_tag(p, u, sign, theme, bundle_w=0.0, lit=True, extra=""):
     """The sign of one connection, at the middle of its run, in a tag that points the way the step runs."""
-    hw = max(8.0, bundle_w / 2 + 5)
-    L0, L1 = 11.0, 6.5
+    hw = max(7.0, bundle_w / 2 + 4)
+    L0, L1 = 9.0, 5.5
     nx, ny = -u[1], u[0]
     cx, cy = p
     back = (cx - u[0] * L0, cy - u[1] * L0)
@@ -269,7 +269,7 @@ def sign_tag(p, u, sign, theme, bundle_w=0.0, lit=True, extra=""):
     poly = " ".join(f"{a:.1f},{b:.1f}" for a, b in pts)
     g = sign_glyph(sign)
     return (f'<g class="sign"{extra}><polygon points="{poly}" fill="{fill}" stroke="{fill}" stroke-width="2" stroke-linejoin="round"/>'
-            f'{T(cx, cy + 4.8, g, 14, 700, tc, "middle", extra=" data-sign-glyph=\"1\"")}</g>')
+            f'{T(cx, cy + 4.6, g, 13, 700, tc, "middle", extra=" data-sign-glyph=\"1\"")}</g>')
 
 
 def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=True, show_bullets=True,
@@ -333,8 +333,8 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
                 on = (lit_loop is None) or any(t["loop"] == lit_loop for t in group)
                 tags.append((1 if on else 0, sign_tag(p, u, l["polarity"], theme, bw, lit=on,
                                                      extra=f' data-for="{link}" data-sign="{l["polarity"]}"')))
-                hw = max(8.0, bw / 2 + 5) + 2
-                ext = 19
+                hw = max(7.0, bw / 2 + 4) + 2
+                ext = 16
                 tag_boxes.append((p[0] - ext, p[1] - ext, p[0] + ext, p[1] + ext) if abs(u[0]) > 0.3 and abs(u[1]) > 0.3 else
                                  (p[0] - (ext if abs(u[0]) > 0.5 else hw), p[1] - (ext if abs(u[1]) > 0.5 else hw),
                                   p[0] + (ext if abs(u[0]) > 0.5 else hw), p[1] + (ext if abs(u[1]) > 0.5 else hw)))
@@ -423,6 +423,19 @@ def bullet_candidates(L, lid):
             bis = G.unit(u1[0] + u2[0], u1[1] + u2[1])
             for dist in (64, 80, 96, 112, 128, 150):
                 out.append(((S[0] + bis[0] * dist, S[1] + bis[1] * dist), i * 10 + dist / 40))
+        for st in lp["steps"]:
+            a, b = sorted((st["from"], st["to"]))
+            base = L.corridor_px(a, b)
+            Lp = G.plen(base)
+            for f in (0.3, 0.5, 0.7):
+                p, u = G.point_at(base, Lp * f)
+                n = (-u[1], u[0])
+                trs = L.tracks[(a, b)]
+                half = ((len(trs) - 1) * L.pitch + LINE_W) / 2
+                ext = abs(n[0]) * w / 2 + abs(n[1]) * h / 2
+                for side in (1, -1):
+                    dd = half + 8 + ext
+                    out.append(((p[0] + n[0] * dd * side, p[1] + n[1] * dd * side), 60 + abs(f - 0.5) * 20))
     return out
 
 

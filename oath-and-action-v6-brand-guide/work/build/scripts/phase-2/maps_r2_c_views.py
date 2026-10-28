@@ -355,7 +355,7 @@ def legend(th, theme_name, L, x=72, y=730):
     return '<g class="legend">' + "".join(out) + "</g>"
 
 
-def sketched_box(th, theme_name, x=1012, y=62, w=362):
+def sketched_box(th, theme_name, x=1084, y=58, w=292):
     """The note in the frame, and the three sketched loops listed in words (they have no stations to draw)."""
     ink = th.label
     sub = D.NEWS if theme_name == "prussian" else D.DEEP
