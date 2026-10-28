@@ -279,7 +279,7 @@ def sign_tag(p, u, sign, theme, bundle_w=0.0, lit=True, extra="", strong=False):
 
 
 def _tag_poly(p, u, bw):
-    """The sign tag's outline (as sign_tag draws it, with its 2 px stroke) centred at p, pointing along u."""
+    """The sign tag's outline (as sign_tag draws it, with its 2 px stroke) centered at p, pointing along u."""
     hw = max(7.0, bw / 2 + 4) + 1
     nx, ny = -u[1], u[0]
     cx, cy = p
@@ -351,7 +351,7 @@ def _place_tag(pts, pref, lo, hi, mo, bw, obstacles, placed_tags):
 
 
 def _place_tag_pair(L, a, b, by_link, links_here, base, line_w, lit, lit_w, dim_w, obstacles, placed_tags):
-    """Both tags of a two-step loop's corridor, placed together: centre and separation chosen by the least cost."""
+    """Both tags of a two-step loop's corridor, placed together: center and separation chosen by the least cost."""
     Lp = G.plen(base)
     runs = G.straight_runs(base)
     longest = max(runs, key=lambda r: r[2])
@@ -546,7 +546,7 @@ def own_corridors(L, lid):
 
 
 def _box_entry(q0, c, box):
-    """Where the segment from q0 (outside the box) to c (its centre) enters the box."""
+    """Where the segment from q0 (outside the box) to c (its center) enters the box."""
     t_in = 0.0
     for k in (0, 1):
         d = c[k] - q0[k]
@@ -559,8 +559,8 @@ def _box_entry(q0, c, box):
 
 
 def bullet_candidates(L, lid, glyph=False):
-    """Places for a loop's bullet, as (centre, preference, corridor, leader). First choice: on a corridor only this
-    loop rides, centred on its track or tracks, on the straight part of a run, nearest the loop's first station.
+    """Places for a loop's bullet, as (center, preference, corridor, leader). First choice: on a corridor only this
+    loop rides, centered on its track or tracks, on the straight part of a run, nearest the loop's first station.
     Second choice: beside such a corridor, joined to its track by a 1 px leader."""
     first = LOOPS[lid]["stations"][0]["code"]
     w, h = bullet_size(lid, glyph)
@@ -587,7 +587,7 @@ def bullet_candidates(L, lid, glyph=False):
                 if abs(u[0]) > 0.3 and abs(u[1]) > 0.3:
                     dirs += [(1, 0), (-1, 0), (0, 1), (0, -1)]
                 for dvec in dirs:
-                    # distance along dvec from the centreline to the outer edge of the bundle
+                    # distance along dvec from the centerline to the outer edge of the bundle
                     cross = abs(dvec[0] * n[0] + dvec[1] * n[1])
                     edge = hw_c / max(cross, 0.3)
                     ext_d = abs(dvec[0]) * w / 2 + abs(dvec[1]) * h / 2
@@ -628,7 +628,7 @@ def _seg_near_seg(p, q, a, b, d):
 def place_bullets(L, boxes, tag_polys, glyph=False, avoid=()):
     """Choose each bullet's place by a collision score against stations, names, sign tags (their true outlines),
     other corridors, the view's fixed text and the bullets already placed. The loops with the fewest clear places
-    go first. Returns {loop: (centre, score, corridor, leader)}."""
+    go first. Returns {loop: (center, score, corridor, leader)}."""
     chosen = {}
     stations_first = [b for k, _, b in boxes if k == "station"]
     n_station = len(stations_first)

@@ -188,8 +188,10 @@ def main():
                             "red_px": int(acc_m.sum()), "ink_px": int(ink_m.sum())}
         f96, i96, a96 = cov(f"full-{n}-d96"), cov(f"ink-{n}-d96"), cov(f"accent-{n}-d96")
         tot = sum(map(sum, f96))
-        red_only = np.clip(np.array(a96) - np.array(i96) * (0 if n in M.RED_ON_INK else 1), 0, 1)
-        red_px = float(red_only.sum()) if n not in M.RED_ON_INK else float(np.array(a96).sum())
+        # The display SVG paints the accent over the ink, so the red a reader sees is the whole
+        # accent; the share of it lying over ink is reported beside it.
+        red_px = float(np.array(a96).sum())
+        red_over_ink = float(np.minimum(np.array(a96), np.array(i96)).sum())
         cx = sum(f96[y][x] * x for y in range(96) for x in range(96)) / tot
         cy = sum(f96[y][x] * y for y in range(96) for x in range(96)) / tot
         wid = RM.ridge_widths(i96)
@@ -199,6 +201,7 @@ def main():
         b = allp.bounds
         xs, ys = straight_edges(allp)
         row["d96"] = {"density": round(tot / 9216, 3), "red_share": round(red_px / tot, 3),
+                      "red_over_ink_share": round(red_over_ink / red_px, 3) if red_px else 0.0,
                       "centroid": [round((cx + .5) / 96 - .5, 3), round((cy + .5) / 96 - .5, 3)],
                       "stroke_median_units": round(float(np.median(arr)), 2),
                       "stroke_share_at_bar": round(float(np.mean((arr >= 2.5) & (arr <= 3.6))), 3),

@@ -119,7 +119,7 @@ def inside(pt, poly):
 
 def district_fields(L, rect, gap=8.0, round_r=14.0):
     """Fields A to E, drawn from the field table on the same grid as the stations, clipped to the core, inset by
-    half the gap and rounded by a same-colour stroke."""
+    half the gap and rounded by a same-color stroke."""
     x0, y0, x1, y1 = rect
     parts = []
     for f in read_fields():

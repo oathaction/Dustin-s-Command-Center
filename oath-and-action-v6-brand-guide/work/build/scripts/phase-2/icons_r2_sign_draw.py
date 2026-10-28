@@ -128,7 +128,7 @@ def ballot():
     long right arm at 45 degrees, short left arm, 7 units across on an 8-unit paper. The box is low
     and wide, so the ballot's silhouette stays apart from Bill's page."""
     bx = minus(box(3.0, 14.0, 18.0, 7.0), rect(6.5, 13.0, 11.0, 5.0))
-    paper = minus(box(8.0, 3.0, 8.0, 15.0, 1.5), rect(0, 18.0, 24, 10))
+    paper = minus(box(8.0, 4.0, 8.0, 14.0, 1.5), rect(0, 18.0, 24, 10))
     acc = bar((10.0, 10.0), (11.25, 11.25), (14.0, 8.5))
     return {"ink": union(bx, paper), "accent": acc}
 
@@ -211,6 +211,7 @@ def display(name):
 #   loop   the fitted arrowheads become a diamond and a red block; the forward head is drawn as a
 #          stepped pixel triangle (7, 5, 3, 1 px) and the red return head as a 45 degree pixel
 #          triangle with its right angle at the tip, pointing down and left at node A
+#   housing the walls start lower, so the 1.5-unit gap under the roof keeps a pixel at 24 px
 #   bill   the text bars take square ends (as the red line already does in the masters module)
 #   money  the 3-unit disc on a whole-pixel center fits as a lopsided blob, and a 2, 4, 2 px
 #          oval reads as a plus; it is drawn as a 4 by 3 px block on the note's center
@@ -245,7 +246,17 @@ def bill24():
     return {"ink": union(page, flap, lines), "accent": bill()["accent"]}
 
 
-DRAW24 = {"loop": loop24, "money": money24, "bill": bill24}
+def housing24():
+    """The walls start 1.5 units lower, so a pixel of gap stays between their tops and the roof;
+    fitted as drawn, the walls' round tops land on the roof's bottom row and join it."""
+    d = housing()
+    walls = union(bar((6.5, 15.0), (6.5, 20.5)), bar((16.5, 15.0), (16.5, 20.5)))
+    roof = bar((3.5, 12.0), (11.5, 4.0), (19.5, 12.0))
+    chimney = bar((15.5, 8.0), (15.5, 3.5))
+    return {"ink": union(roof, chimney, walls), "accent": d["accent"]}
+
+
+DRAW24 = {"loop": loop24, "money": money24, "bill": bill24, "housing": housing24}
 
 
 def draw24(name):
@@ -313,7 +324,7 @@ def act16():
 def ballot16():
     # The display master's proportions: a low wide box and a narrow paper, its lower part in the box.
     bx = minus(box(1.0, 10.0, 14.0, 5.0, 1.0), rect(3.0, 9.0, 10.0, 4.0))
-    paper = minus(box(5.0, 1.0, 6.0, 11.0, 1.0), rect(0, 12.0, 16, 4))
+    paper = minus(box(5.0, 1.0, 6.0, 12.0, 1.0), rect(0, 13.0, 16, 4))
     acc = _bar16((6.0, 5.5), (7.0, 6.5), (9.5, 4.0))
     return {"ink": union(bx, paper), "accent": acc}
 
@@ -355,7 +366,7 @@ def loop16():
     nodes = union(disc(3.0, 10.0, 4.0), disc(13.0, 10.0, 4.0))
     link = rect(6, 9, 4, 2)
     ret = g.sector(8, 10.5, 6.5, 4.5, 245, 315)
-    acc = _px(*[(3 + i, 6 - j) for i in range(3) for j in range(3 - i)])
+    acc = _px(*[(3 + i, 6 - j) for i in range(4) for j in range(4 - i)])
     return {"ink": union(nodes, link, ret), "accent": acc}
 
 

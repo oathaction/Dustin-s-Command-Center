@@ -182,3 +182,67 @@ Created, board and notes:
 Regenerable screenshots: `work/boards/screens/phase-2-maps-r2-c/` (gitignored).
 
 Modified: none. `maps_model.py`, `verify_maps_data.py`, `check_maps_board.js`, `work/extract/atlas-v7-data.json`, `source/` and the ledgers are unchanged.
+
+## 13. Fix pass after the round-two review
+
+The creative director's round-two review (`work/handoffs/phase-2/20261028_CD-Review-Of-Map-Round-Two.md`) picked this poster as the whole-system map, with the Newsprint working map and the R-01 reform view, and Direction A's catalog and cards joined by this map's locator inset. This pass makes the review's section 4 fixes 1 to 6 and 10, the appendix items, and the main session's added request on the reform view's district names. The board opens on a new "Fix pass" section.
+
+**No station moved.** The 25-row station table is unchanged, and the stations and corridors in `20261028_Loop-Lines-Network-Data.json` match round two exactly (same keys, same station records, same routes and track offsets). Direction A's maker can rebuild the locators from it as before. One layout table changed: in `20261028_Loop-Lines-District-Fields.csv` the E2 island grew from 4 by 4 cells to 5.5 by 4.5, with its lower left corner cut at 45 degrees, so it holds the E name and clears the B1 to D3 line. The locator does not draw fields.
+
+### What changed
+
+1. **Every bullet on its own line.** A bullet now sits on a stretch that only its loop rides, centered on its track or tracks, on the straight part of the run. Where that stretch has no room, the bullet sits beside it on a 1 px leader drawn square to the run, or level or plumb from a diagonal run. On the screen poster 11 bullets sit on their track and 9 on a leader: R2, R3, R7, R8, R13, R16, R18, B1a and B5, all two-step shuttles whose short stretch also holds two tags. The print poster, with its wider bullets, puts R5 on a leader too. Bullets are placed by a collision score against stations (7 px berth), names, sign tag outlines, other corridors, the legend, title, register note and district names, with the loops that have the fewest clear places placed first. Sign tags are now placed after the stations and names: each slides along its run by the least distance that clears them, and the two tags of a two-step shuttle are placed together, 21 to 48 px apart. Two tags carry a layout shift to leave room for a bullet (`TAG_SHIFT` in `maps_r2_c_views.py`): L56 moves toward C4 so R4a's bullet sits on L56 between its tag and D7, and L06 moves toward C4 so R12's bullet sits between its tag and D3. The plus tag on the C1 to D7 pair (L55) moves 20 px toward C1, clear of R4a.
+2. **Kind glyph off the screen bullets.** On screen the bullet is the outlined code alone, and the legend's kind row reads "R: feeds itself. B: pushes back." The print poster is now its own drawing, `20261028_Loop-Lines-Poster-Print.svg`: its bullets add a 20 px ink cell with the glyph, about 12 px drawn and 30 px printed, and its legend draws the glyph beside each line. The card head and the catalog chips and strip draw the glyph at 24 px.
+3. **The lit line reads.** On the working map, the reform view and the locator the lit loops draw at 6 px Charcoal (red at the named reform's targets), every other loop at 2 px Stone, with dash lengths scaled to each weight. Stations on a lit loop fill Charcoal with Newsprint IDs; lit sign tags and bullets turn Charcoal. The locator keeps the same three-to-one ratio at its scale (3.75 and 1.25 px). The lit legend shows the textures at 6 px and adds a 2 px Stone row, "Every other loop, in Stone, for place." The grayscale proofs show the lit loops by weight alone.
+4. **The frame in words.** The ticks, "5 to A" and the vertical side text are gone. The top band and the two bottom lines each read as one horizontal line: "Outside drivers, 5 variables. 12 connections reach areas A to E: 5 into area A, 4 into area B and 1 each into areas C, D and E." The economy layer reads 12 variables and 15 connections (11 into A, 3 into D, 1 into E); the technology layer 8 variables and 8 connections (5 into D, 2 into B, 1 into A). The text says "areas A to E" in place of the review's "the loops" because two of those connections, T06 and LE06, reach A3, which sits in area A on no numbered loop.
+5. **The areas read as territories.** I proofed the round-two tint, #2C3B64 (1.21:1 against Prussian), and one stronger step, #39476D (Prussian mixed 16 percent toward Newsprint in OKLab, 1.45:1), in grayscale at 25 percent size: `20261028_Loop-Lines-Field-Tint-Current-Gray-25.png` and `-Stronger-Gray-25.png`. The five areas read as blocks only at the stronger step, so the poster now uses #39476D. White names on it measure 9.15:1 and Newsprint 6.49:1. B's patch under the hub and E's hub strip carry their letters at 40 px, and the E island holds "E Legitimacy." A 22 percent step (#435075, 1.67:1) also separates the areas and drops the Newsprint lines on the field from 6.49:1 to 5.64:1, so I kept the smaller step that reads.
+6. **A 390 px form for the three views.** Each view page is one responsive page. At 1440 the drawing sits inline at full size. Below 1200 px the page shows the drawing's capture fit to the screen width inside a focusable region (role region, tabindex 0, a label), a link to the full-size image, the reform panel on the reform page (routes as a list), then "The lines in words" as a list. The 390 renders have no sideways scroll.
+10. **A's label audit in C's check.** `maps_r2_c_check.js` now carries `labelAudit()`, ported from the text check in `maps_r2_a_check.js` and extended to this map's marks: text past the drawing's edge; label against label (overlap beyond 1.5 px both ways); label against mark (sign tags, line bullets and station shapes, a mark's own text excepted); and label against line (every step path, leader and ghost stub sampled every 2 px in screen space; texts that sit on lines by design, inside a tag, bullet or station, excepted). It runs on every page render, the print drawing and the board. A self-test plants five faults in a copy of the poster (a duplicate label, a label on a tag, a label on a line, a label past the edge, an 11 px text) and catches all five.
+- **The reform view's district names.** A's audit found 4 overlapping district names on the R-01 reform view. Run on the round-two reform view from git, my port finds the overlaps in the two-line names: "Electoral" against "competition" and "Governing" against "institutions", whose 19 px lines sat 21 px apart and so overlapped by about 2 px as rendered boxes. They now sit 24 px apart, on every view. The audit finds 0 overlaps on the reform view now. I could not see A's list, so I cannot confirm that its four are these two pairs counted at A's embedded scale.
+- **Appendix items.** Miniature names are placed by a search over every name's eight sides, keeping each off the other names, the stations and the line, so the R10 and R12 tiles no longer collide; the frame also keeps end stations inside the drawing. The card's step labels step away from their own line until they clear it, and the label box counts the "Least certain step" line, so it clears L53's dashed line. The phone card lists its routes ("Feasibility medium. Checked October 15, 2026.") in place of the four-column table, so no cell runs past the card. The phone step list no longer repeats "Documented on the public record."
+
+### Checks, rerun on October 28, 2026
+
+**Data check** (`maps_r2_c_verify.py`): 0 mismatches across 60 drawings. New checks: each of 80 bullets sits on a stretch that only its loop rides (from V7's links between the two stations) and touches its own drawn track, directly within 6.5 px or through a leader that starts within 4.5 px of the track and ends on the bullet; screen bullets carry no kind glyph and print bullets carry the right one; the legend's kind line; 60 frame counts in words against V7, with the variable counts and totals; 318 steps and 150 stations on the lit views (6 px Charcoal or red, 2 px Stone, Charcoal stations with Newsprint IDs; the locator at three to one). The rest as before: 648 steps and textures, 196 sign glyphs and directions, 250 station positions against the table, 100 stations inside their field, 13 red marks.
+
+**Mutation test**: eight plants, each caught. The five from round two, plus R4a's bullet moved onto the shared C1 to D7 stretch, "5 into area A" changed to "4 into area A" on the poster frame, and one lit line on the working map drawn at 4 px.
+
+**Rendered checks** (`maps_r2_c_check.js`): 12 page renders (poster, working map and reform view at 1440 and 390; catalog, R8 card and R10 card at 1440 and 390) and the board at 1440 and 390. No sideways scroll, smallest text 13 px with none under 13, no contrast failures, axe-core 4.10.2 with WCAG 2.2 AA tags: 0 violations, all images load (26 of 26 on the board). Label audit: 0 collisions across 726 labels on the pages and 175 in the print drawing. Poster PDF: one page, 2592 by 1728 points; I rendered it with pdftoppm and viewed it.
+
+**2x review**: I looked at nine 2x tiles of the poster, 3x crops of the E1 hub, C3 and the C4 square, the working map and reform view in grayscale, every miniature, and the R8 and R10 cards.
+
+### Tested and not tested in this pass
+
+Tested: everything listed under the checks above, by script, plus my own look at the crops and proofs named there.
+
+Not tested:
+- How a first-time reader finds a bullet on its leader; the leaders are 1 px and short, and I judged them at 1x and 2x only.
+- The tint step on a printed proof or another display; the 25 percent proofs are screen captures.
+- Direction A's audit on A's own board after this pass; I ran my port of it.
+- Screen readers, keyboard order, Firefox and Safari, forced colors and 200 percent zoom, as before.
+
+`label_overlaps_poster` in the network data still comes from the coarse box estimate in `maps_r2_c_draw.overlaps()`. It lists one pair, R5's bullet against a sign tag's bounding box; tested against the tag's outline they clear, and the rendered audit finds 0.
+
+### Decisions in this pass (one line each, for the decision log)
+
+- Bullets sit on a stretch only their loop rides, or on a 1 px leader from it. The review asked for it, and no bullet now floats in open field.
+- The screen bullet carries no kind glyph; the print bullet does. At 12 px the glyph read as a 6, and it prints at about 30 px.
+- Sign tags are placed after stations and names by a collision score. Tags at the middle of short runs fell under the hub and beside names.
+- Lit views draw 6 px Charcoal against 2 px Stone, with Charcoal stations. The lit line has to hold in grayscale.
+- The frame says its counts in words, one line per band, and says "areas A to E". Two counted connections reach A3, which is on no loop.
+- The field tint moves to #39476D (16 percent). Only that step reads as five areas at 25 percent in grayscale.
+- The E2 island grows to hold the E name, with a 45 degree corner. The name sat outside the patch it labels.
+- Two-line district names take 24 px leading. At 21 px their rendered boxes overlapped.
+- View pages fit the drawing to a phone as its capture, with a link to full size. Scaling the SVG would draw its text at 3.5 px.
+
+### Change log for this pass
+
+Modified, scripts (`work/build/scripts/phase-2/`): `maps_r2_c_draw.py`, `maps_r2_c_views.py`, `maps_r2_c_cards.py`, `maps_r2_c_pages.py`, `maps_r2_c_board.py`, `maps_r2_c_build.py`, `maps_r2_c_verify.py`, `maps_r2_c_check.js`.
+
+Modified, layout data: `work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-District-Fields.csv` (the E2 island row only). The station table is unchanged.
+
+Created (`work/boards/phase-2/maps-r2/c/`): `20261028_Loop-Lines-Poster-Print.svg`; `20261028_Loop-Lines-Field-Tint-Current-Gray-25.png` and `-Stronger-Gray-25.png`; captures and grayscale proofs of the poster, working map and reform view at 390 (`*-Phone-Capture.png`, `*-Phone-Grayscale.png`).
+
+Regenerated: every drawing, page, capture and proof in that folder, the PDF, the network data, the verify and check results, and the board `work/boards/20261028_Map-Direction-C-Loop-Lines.html`.
+
+Unchanged: `maps_model.py`, `verify_maps_data.py`, `check_maps_board.js`, `work/extract/atlas-v7-data.json`, `source/` and the ledgers.
