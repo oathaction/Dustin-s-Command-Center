@@ -72,6 +72,34 @@ def sign_disc(cx, cy, step, r, size, bg, red=False, record=False, extra=""):
     return f'<g class="pill"{extra}>' + "".join(out) + "</g>"
 
 
+def sign_tag(cx, cy, u, step, size, red=False, record=False, extra=""):
+    """Direction C's pointing tag, for the sign-mark decision (CD round two, fix 11): a Charcoal tag that points the
+    way the step runs, with the sign in White. Geometry is C's (maps_r2_c_draw.sign_tag) scaled from its 13 px glyph
+    to the card's 15 px. A documented step adds the record square inside the tag. The tag stays Charcoal on a red
+    line, as the disc's glyph does."""
+    g = GLYPH.get(step.get("polarity"), "")
+    k = size / 13.0
+    doc = record and step.get("evidence") == "documented"
+    hw, L0, L1 = 7.0 * k + 1, (9.0 + (6 if doc else 0)) * k, 5.5 * k
+    nx, ny = -u[1], u[0]
+    back = (cx - u[0] * L0, cy - u[1] * L0)
+    front = (cx + u[0] * L0, cy + u[1] * L0)
+    tip = (cx + u[0] * (L0 + L1), cy + u[1] * (L0 + L1))
+    pts = [(back[0] + nx * hw, back[1] + ny * hw), (front[0] + nx * hw, front[1] + ny * hw), tip,
+           (front[0] - nx * hw, front[1] - ny * hw), (back[0] - nx * hw, back[1] - ny * hw)]
+    poly = " ".join(f"{a:.1f},{b:.1f}" for a, b in pts)
+    gx = cx + (4.5 * k if doc else 0) * (1 if u[0] >= 0 else -1) if abs(u[0]) > 0.5 else cx
+    out = [f'<polygon points="{poly}" fill="{D.INK}" stroke="{D.INK}" stroke-width="2" stroke-linejoin="round"/>']
+    if doc:
+        sx = cx - (5.5 * k) * (1 if u[0] >= 0 else -1) if abs(u[0]) > 0.5 else cx - 3
+        sy = cy if abs(u[0]) > 0.5 else cy - 9
+        out.append(f'<rect x="{sx - 3:.1f}" y="{sy - 3:.1f}" width="6" height="6" fill="{D.WHITE}" data-record="1"/>')
+        if abs(u[0]) <= 0.5:
+            gx = cx
+    out.append(T(gx, cy + size * 0.36 + (4 if doc and abs(u[0]) <= 0.5 else 0), g, size, 700, D.WHITE, "middle", extra=' data-sign-glyph="1"'))
+    return (f'<g class="pill" data-sign-style="tag" data-dir="{u[0]:.0f} {u[1]:.0f}"{extra}>' + "".join(out) + "</g>")
+
+
 def rounded(points, r):
     """Orthogonal polyline with one corner radius at every bend, sampled densely for textures and ticks."""
     pts = [points[0]]
@@ -104,7 +132,7 @@ def line(poly, step, width, color, bg, red, ticks, head=8):
     """A step's line: V7 texture (M1), arrowhead, and delay ticks on the card (M4)."""
     if red:
         color = D.RED
-    base = D.trim(poly, 0, head - 0.5)
+    base = D.trim(poly, 0, head - 0.5) if head else poly
     if step.get("conceptual"):
         body = (f'<path d="{D.path_d(base)}" fill="none" stroke="{color}" stroke-width="{width + 3:.1f}" data-texture="hollow"/>'
                 f'<path d="{D.path_d(base)}" fill="none" stroke="{bg}" stroke-width="{max(1.5, width - 0.5):.1f}"/>')
@@ -113,7 +141,8 @@ def line(poly, step, width, color, bg, red, ticks, head=8):
         da = f' stroke-dasharray="{dash}"' if dash else ""
         body = (f'<path d="{D.path_d(base)}" fill="none" stroke="{color}" stroke-width="{width}"{da} data-texture="{dash or "solid"}"'
                 + (' data-red="1"' if red else "") + "/>")
-    body += D.arrow_at(poly, head, head * 0.5, color)
+    if head:
+        body += D.arrow_at(poly, head, head * 0.5, color)
     if ticks and step.get("delay"):
         body += D.ticks_on(poly, D.TICKS[step["delay"]], start=10, step=5, length=11, color=color)
     return body
@@ -189,6 +218,16 @@ def layout(loop, sc, texts, has_id, x0=0, y0=0):
     return boxes, routes, orient
 
 
+def run_dir(route):
+    """Unit direction of the step's longest straight run, in travel order."""
+    best, bl = (1.0, 0.0), -1
+    for p, q in zip(route, route[1:]):
+        L = D.dist(p, q)
+        if L > bl:
+            best, bl = ((q[0] - p[0]) / L, (q[1] - p[1]) / L), L
+    return best
+
+
 def disc_point(route, orient):
     """Where the sign disc sits: the middle of the step's longest straight run."""
     best, bl = None, -1
@@ -201,7 +240,7 @@ def disc_point(route, orient):
 
 # ------------------------------------------------------------------ the drawing
 
-def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, markers=None, margin=None):
+def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, markers=None, margin=None, sign_style="disc"):
     """One loop as a Field Guide specimen. scale: mini, lead or card. Returns (svg, meta) where meta carries the
     geometry the page needs, such as marker points for the catalog head's callouts."""
     sc = dict(SCALES[scale])
@@ -236,11 +275,15 @@ def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, ma
     for st, rt, orn in zip(loop["steps"], routes, orient):
         red = bool(st["id"] and st["id"] in red_targets)
         poly = rounded(rt, 10 if card else 6)
+        tag = sign_style == "tag"
         lines_.append(f'<g class="step"{D.step_attrs(st)}>' + line(poly, st, stroke, D.INK, bg, red, ticks=card,
-                                                                    head=10 if card else 8) + "</g>")
+                                                                    head=0 if tag else (10 if card else 8)) + "</g>")
         dx, dy = disc_point(rt, orn)
-        discs.append(sign_disc(dx, dy, st, sc["disc"], sc["glyph"], bg, red=red, record=card,
-                               extra=f' data-for="{st["id"] or "concept-" + str(st["index"])}"'))
+        fid = f' data-for="{st["id"] or "concept-" + str(st["index"])}"'
+        if tag:
+            discs.append(sign_tag(dx, dy, run_dir(rt), st, sc["glyph"], red=red, record=card, extra=fid))
+        else:
+            discs.append(sign_disc(dx, dy, st, sc["disc"], sc["glyph"], bg, red=red, record=card, extra=fid))
         marks[st["id"] or f"s{st['index']}"] = (dx, dy, orn)
         if card:
             labels.append(step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id))
@@ -336,9 +379,12 @@ def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
 
 # ------------------------------------------------------------------ the phone card: boxes stacked, return up the left
 
-def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-phone", markers=None, with_meta=False):
+PH_RET = 20  # x of the phone card's return line: a documented step's 36 px capsule then clears the card edge by 2 px
+
+
+def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-phone", markers=None, with_meta=False, sign_style="disc"):
     sc = dict(SCALES["card"])
-    left = 40
+    left = PH_RET + 28
     bw = w - left
     sc["bw"] = bw
     texts = box_texts(loop, model, sc, with_rules=True)
@@ -373,8 +419,8 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-
             first = boxes[0]
             ya = a[1] + a[3] / 2
             yb = first[1] + min(first[3] / 2, 40)
-            rt = [(left, ya), (10, ya), (10, yb), (left, yb)]
-            dx, dy = 10, (ya + yb) / 2
+            rt = [(left, ya), (PH_RET, ya), (PH_RET, yb), (left, yb)]
+            dx, dy = PH_RET, (ya + yb) / 2
             rows = [(st["id"] + "  ·  the return line" + ("  ·  least certain" if st["id"] in loop["weakest"] else ""), 13, 700, D.INK)] + \
                    [(l, 15, 600, D.INK) for l in TX.balanced_wrap(st["name"], w - left - 4, 15, 600)] + \
                    [(D.GRADE_WORD[st["evidence"]] + "  ·  " + D.DELAY_WORD[st["delay"]], 13, 400, D.DEEP)]
@@ -385,8 +431,12 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-
                 T(left, ly + 20 * k, t, s, wt, c) for k, (t, s, wt, c) in enumerate(rows)) + "</g>")
             total = max(total, ly + 20 * len(rows) + 10)
         poly = rounded(rt, 10)
-        lines_.append(f'<g class="step"{D.step_attrs(st)}>' + line(poly, st, 2.5, D.INK, bg, red, ticks=True, head=10) + "</g>")
-        discs.append(sign_disc(dx, dy, st, 12, 15, bg, red=red, record=True, extra=f' data-for="{st["id"]}"'))
+        tag = sign_style == "tag"
+        lines_.append(f'<g class="step"{D.step_attrs(st)}>' + line(poly, st, 2.5, D.INK, bg, red, ticks=True, head=0 if tag else 10) + "</g>")
+        if tag:
+            discs.append(sign_tag(dx, dy, (0, -1) if st["closing"] else (0, 1), st, 15, red=red, record=True, extra=f' data-for="{st["id"]}"'))
+        else:
+            discs.append(sign_disc(dx, dy, st, 12, 15, bg, red=red, record=True, extra=f' data-for="{st["id"]}"'))
     for s, (x, y, w_, h), (lab, rule) in zip(loop["stations"], boxes, texts):
         red = s["code"] in red_targets
         g = [f'<g class="var"{D.node_attrs(s["code"], s["label"])}' + (f' data-red="1" data-target="{reform_id}"' if red else "") + ">",

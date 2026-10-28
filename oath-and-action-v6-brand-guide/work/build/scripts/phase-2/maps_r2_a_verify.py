@@ -16,7 +16,9 @@ Red anywhere else in a drawing, by color, is a mismatch. A mutation test breaks 
 drawing in memory and confirms the checks catch it.
 """
 import copy
+import csv
 import json
+import math
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -30,6 +32,13 @@ ROOT = VM.ROOT
 ASSETS = ROOT / "work/boards/phase-2/maps-r2/a"
 BOARD = ROOT / "work/boards/20261028_Map-Direction-A-Field-Guide.html"
 CATALOG = ASSETS / "20261028_A-Loop-Catalog.html"
+CIRCUIT_PAGE = ASSETS / "20261028_A-Circuit-Page.html"      # retired in round two; kept for the appendix
+REFORM_PAGE = ASSETS / "20261028_A-R-01-Reform-View.html"
+C_DIR = ROOT / "work/boards/phase-2/maps-r2/c"
+C_NETWORK = C_DIR / "20261028_Loop-Lines-Network-Data.json"
+C_TABLE = C_DIR / "20261028_Loop-Lines-Station-Table.csv"
+C_REFORM = C_DIR / "20261028_Loop-Lines-Reform-View-R-01.svg"
+CHARCOAL, STONE = "#121212", "#5D636D"
 OUT = ASSETS / "20261028_A-Verify-Results.json"
 NS = VM.NS
 N, L, LOOPS, REF = VM.N, VM.L, VM.LOOPS, VM.REF
@@ -41,7 +50,8 @@ DELAY_WORDS = {"S": "under 2 years", "M": "2 to 10 years", "L": "over 10 years"}
 problems = VM.problems          # the shared list, so check_step reports land here
 counts = VM.counts
 counts.update({"captions_checked": 0, "bundles_checked": 0, "bundled_links": 0, "red_color_elements": 0,
-               "record_squares_absent_checked": 0, "ticks_absent_checked": 0})
+               "record_squares_absent_checked": 0, "ticks_absent_checked": 0, "locators": 0, "locator_tracks": 0,
+               "locator_stations": 0, "tag_directions_checked": 0, "arrowheads_checked": 0})
 
 
 def fail(f, msg):
@@ -164,6 +174,32 @@ def check_loop(f, root, view):
             fail(f, f"{lid} variable {c} does not print its V7 label")
         if view in ("fg-card", "fg-card-phone", "fg-head", "fg-head-phone", "fg-lead") and c not in shown:
             fail(f, f"{lid} variable {c} does not print its ID")
+    # sign style: the circled sign keeps an arrowhead on every step; C's pointing tag replaces it and must point
+    # the way the step runs
+    if full and not conceptual:
+        tags = {p.get("data-for"): p for p in root.iter(NS + "g") if p.get("class") == "pill" and p.get("data-sign-style") == "tag"}
+        for g in steps:
+            k = g.get("data-link")
+            heads = [x for x in g.iter(NS + "polygon")]
+            counts["arrowheads_checked"] += 1
+            if tags and heads:
+                fail(f, f"{k} carries an arrowhead beside a pointing tag")
+            if not tags and len(heads) != 1:
+                fail(f, f"{k} has {len(heads)} arrowheads with the circled sign")
+            if tags:
+                t = tags.get(k)
+                if t is None:
+                    fail(f, f"{k} has no pointing tag")
+                    continue
+                counts["tag_directions_checked"] += 1
+                want = travel_dir(g, tag_center(t))
+                got = tuple(float(v) for v in (t.get("data-dir") or "0 0").split())
+                if want is None or (round(want[0]), round(want[1])) != (round(got[0]), round(got[1])):
+                    fail(f, f"{k} tag points {got}, its line runs {want}")
+                tip = tag_tip(t)
+                c = tag_center(t)
+                if tip is None or (tip[0] - c[0]) * got[0] + (tip[1] - c[1]) * got[1] <= 0:
+                    fail(f, f"{k} tag's point is not on its leading side")
     # weakest step: cards and the head mark it; miniatures leave it to the caption
     if full:
         counts["weakest_checked"] += 1
@@ -185,6 +221,170 @@ def check_loop(f, root, view):
         if not tg <= allowed:
             fail(f, f"data-target marks {sorted(tg - allowed)} are not {rid} targets")
     return lid
+
+
+def path_points(d):
+    nums = [float(x) for x in re.findall(r"-?\d+(?:\.\d+)?", d or "")]
+    return list(zip(nums[0::2], nums[1::2])) if not re.search(r"[AaCcQq]", d or "") else None
+
+
+def tag_poly(t):
+    poly = t.find(NS + "polygon")
+    if poly is None:
+        return None
+    return [tuple(float(v) for v in xy.split(",")) for xy in poly.get("points").split()]
+
+
+def tag_center(t):
+    pts = tag_poly(t)
+    if not pts:
+        return (0.0, 0.0)
+    body = [pts[0], pts[1], pts[3], pts[4]]
+    return (sum(x for x, _ in body) / 4, sum(y for _, y in body) / 4)
+
+
+def tag_tip(t):
+    pts = tag_poly(t)
+    return pts[2] if pts and len(pts) == 5 else None
+
+
+def travel_dir(g, c):
+    """Direction of the step's line at the point nearest c, in drawing order (from the source box to the target)."""
+    best, out = None, None
+    for p in g.iter(NS + "path"):
+        pts = path_points(p.get("d"))
+        if not pts:
+            continue
+        for a, b in zip(pts, pts[1:]):
+            L = math.hypot(b[0] - a[0], b[1] - a[1])
+            if L < 1e-6:
+                continue
+            t = max(0.0, min(1.0, ((c[0] - a[0]) * (b[0] - a[0]) + (c[1] - a[1]) * (b[1] - a[1])) / L ** 2))
+            q = (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+            dd = math.hypot(q[0] - c[0], q[1] - c[1])
+            if best is None or dd < best:
+                best, out = dd, ((b[0] - a[0]) / L, (b[1] - a[1]) / L)
+    return out
+
+
+def check_locator(f, root):
+    """C's working map as drawn on A's pages: every numbered loop's tracks with V7's values, stations at C's grid
+    cells, the lit loops in Charcoal at the stated weight and every other line in Stone, and no red."""
+    counts["locators"] += 1
+    net = json.loads(C_NETWORK.read_text(encoding="utf-8"))
+    table = {}
+    with open(C_TABLE, newline="", encoding="utf-8") as fh:
+        for r in csv.DictReader(fh):
+            table[r["id"]] = (int(r["col"]), int(r["row"]))
+    if root.get("data-source") != C_NETWORK.name:
+        fail(f, f"locator names source {root.get('data-source')!r}")
+    cell, ox, oy = float(root.get("data-cell")), float(root.get("data-ox")), float(root.get("data-oy"))
+    pitch = float(root.get("data-pitch"))
+    lit = (root.get("data-lit") or "").split()
+    w_lit, w_other = float(root.get("data-lit-width")), float(root.get("data-other-width"))
+    numbered = [lid for lid, lp in LOOPS.items() if lp["closure"].startswith("closed")]
+    for lid in lit:
+        if lid not in numbered:
+            fail(f, f"locator lights {lid}, which has no numbered chain")
+    want = {(lid, k) for lid in numbered for k in LOOPS[lid]["links"]}
+    drawn = {}
+    pos = {k: (ox + c * cell, oy + r * cell) for k, (c, r) in table.items()}
+    for g in root.iter(NS + "g"):
+        if g.get("class") != "step":
+            continue
+        key = (g.get("data-loop"), g.get("data-link"))
+        if key in drawn:
+            fail(f, f"track {key} drawn twice")
+        drawn[key] = g
+        counts["locator_tracks"] += 1
+        k = key[1]
+        if k not in L:
+            fail(f, f"track {key} is not a V7 connection")
+            continue
+        l = L[k]
+        for attr, val in (("data-from", l["from"]), ("data-to", l["to"]), ("data-sign", l["polarity"] or "none"),
+                          ("data-grade", l["evidence"]), ("data-delay", l["delay"]), ("data-type", l["type"])):
+            if g.get(attr) != val:
+                fail(f, f"{k} on {key[0]} {attr} drawn {g.get(attr)!r}, V7 {val!r}")
+        path = g.find(NS + "path")
+        tex = VM.DASH[l["evidence"]]
+        if path.get("data-texture") != tex:
+            fail(f, f"{k} on {key[0]} texture {path.get('data-texture')}, V7 grade needs {tex}")
+        da = path.get("stroke-dasharray")
+        if tex == "solid":
+            if da:
+                fail(f, f"{k} on {key[0]} is dashed, V7 grade is solid")
+        else:
+            a = [float(x) for x in (da or "").split()]
+            b = [float(x) for x in tex.split()]
+            if len(a) != len(b) or not a or len({round(x / y, 3) for x, y in zip(a, b)}) != 1:
+                fail(f, f"{k} on {key[0]} dashes {da!r} are not V7's {tex!r} pattern")
+        on = key[0] in lit
+        if bool(g.get("data-lit")) != on:
+            fail(f, f"{k} on {key[0]} lit flag {g.get('data-lit')!r}, lit loops {lit}")
+        col, w = path.get("stroke"), float(path.get("stroke-width"))
+        if on and (col != CHARCOAL or abs(w - w_lit) > 1e-6):
+            fail(f, f"{k} on lit {key[0]} drawn {col} at {w} px, needs Charcoal at {w_lit}")
+        if not on and (col != STONE or abs(w - w_other) > 1e-6):
+            fail(f, f"{k} on {key[0]} drawn {col} at {w} px, needs Stone at {w_other}")
+        # the track runs between its two stations, offset by at most one and a half pitches
+        nums = [float(x) for x in re.findall(r"-?\d+(?:\.\d+)?", path.get("d"))]
+        ends = [(nums[0], nums[1]), (nums[-2], nums[-1])]
+        a, b = pos.get(l["from"]), pos.get(l["to"])
+        if a is None or b is None:
+            fail(f, f"{k} joins a station missing from C's table")
+            continue
+        tol = 1.5 * pitch + 0.6
+        ok = (math.dist(ends[0], a) <= tol and math.dist(ends[1], b) <= tol) or (math.dist(ends[0], b) <= tol and math.dist(ends[1], a) <= tol)
+        if not ok:
+            fail(f, f"{k} on {key[0]} ends at {ends}, its stations sit at {a} and {b}")
+    if set(drawn) != want:
+        fail(f, f"locator draws {len(drawn)} tracks, V7's numbered loops ride {len(want)}; missing {sorted(want - set(drawn))[:4]}, extra {sorted(set(drawn) - want)[:4]}")
+    # tracks follow C's corridors exactly
+    c_tracks = {(t["loop"], t["link"]) for co in net["corridors"] for t in co["tracks"]}
+    if c_tracks != want:
+        fail(f, f"C's network data holds {len(c_tracks)} tracks, V7 gives {len(want)}")
+    lit_st = {c for lid in lit for c, _ in LOOPS[lid]["chain"] if c in N}
+    seen = set()
+    for g in root.iter(NS + "g"):
+        if g.get("class") != "var":
+            continue
+        k = g.get("data-node")
+        seen.add(k)
+        counts["locator_stations"] += 1
+        if k not in table:
+            fail(f, f"station {k} is not in C's table")
+            continue
+        x, y = pos[k]
+        if abs(float(g.get("data-cx")) - x) > 0.01 or abs(float(g.get("data-cy")) - y) > 0.01:
+            fail(f, f"station {k} at {g.get('data-cx')}, {g.get('data-cy')}; C's cell gives {x:.2f}, {y:.2f}")
+        shape = next(iter([e for e in g if e.tag in (NS + "circle", NS + "rect")]), None)
+        if shape is None:
+            fail(f, f"station {k} has no shape")
+            continue
+        if shape.tag == NS + "circle":
+            sx, sy = float(shape.get("cx")), float(shape.get("cy"))
+        else:
+            sx = float(shape.get("x")) + float(shape.get("width")) / 2
+            sy = float(shape.get("y")) + float(shape.get("height")) / 2
+        if abs(sx - x) > 0.05 or abs(sy - y) > 0.05:
+            fail(f, f"station {k} drawn at {sx:.2f}, {sy:.2f}, not at its cell")
+        on = k in lit_st
+        if bool(g.get("data-lit")) != on:
+            fail(f, f"station {k} lit flag {g.get('data-lit')!r}, lit loops {lit}")
+        if on and shape.get("fill") != CHARCOAL:
+            fail(f, f"lit station {k} filled {shape.get('fill')}, needs Charcoal")
+        if on and root.get("data-size") in ("rail", "phone"):
+            t = g.find(NS + "text")
+            if t is None or (t.text or "").strip() != k or float(t.get("font-size")) < 13:
+                fail(f, f"lit station {k} does not print its ID at 13 px or more")
+    want_st = {c for lid in numbered for c, _ in LOOPS[lid]["chain"] if c in N}
+    if seen != want_st or set(table) != want_st:
+        fail(f, f"locator draws {len(seen)} stations, C's table holds {len(table)}, V7's numbered loops have {len(want_st)}")
+    if red_marks(root):
+        fail(f, "locator carries red marks")
+    red_color_ok(f, root, set())
+    return lit
 
 
 def check_circuit(f, root):
@@ -282,12 +482,19 @@ def check_captions(html):
     return len(seen)
 
 
+def view_of(raw):
+    m = re.search(r'data-view="([^"]+)"', raw)
+    return m.group(1) if m else None
+
+
 def run_file(f, root):
     view = root.get("data-view")
     if view in ("fg-mini", "fg-mini-phone", "fg-lead", "fg-card", "fg-card-phone", "fg-head", "fg-head-phone"):
         return view, check_loop(f, root, view)
     if view == "circuit-map":
         return view, check_circuit(f, root)
+    if view == "fg-locator":
+        return view, check_locator(f, root)
     fail(f, f"unknown view {view}")
     return view, None
 
@@ -377,20 +584,57 @@ def mutation_test():
     attempt("red paint outside the targets", "20261028_A-Card-R10.svg", paint_red)
     attempt("one loop wire removed", "20261028_A-Circuit.svg", drop_wire)
     attempt("bundle count off by one", "20261028_A-Circuit.svg", miscount)
-    attempt("red on a non-target variable", "20261028_A-Reform-R-01-Circuit.svg", add_red)
+    def move_station(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "var":
+                for e in g:
+                    if e.tag == NS + "circle":
+                        e.set("cx", str(float(e.get("cx")) + 6))
+                        return r
+        return r
+
+    def unlight(r):
+        for g in r.iter(NS + "g"):
+            if g.get("class") == "step" and g.get("data-lit"):
+                del g.attrib["data-lit"]
+                break
+        return r
+
+    def flip_tag(r):
+        for g in r.iter(NS + "g"):
+            if g.get("data-sign-style") == "tag":
+                a, b = (g.get("data-dir") or "0 0").split()
+                g.set("data-dir", f"{-float(a):.0f} {-float(b):.0f}")
+                break
+        return r
+
+    attempt("station moved off its cell", "20261028_A-Locator-Card-R8.svg", move_station)
+    attempt("lit track unlit", "20261028_A-Locator-Card-R10.svg", unlight)
+    attempt("red on a locator station", "20261028_A-Locator-Plate-B.svg", add_red)
+    attempt("pointing tag turned around", "20261028_A-Card-R8-Tag.svg", flip_tag)
     return cases
 
 
 def main():
     files = sorted(ASSETS.glob("20261028_A-*.svg"))
     board = BOARD.read_text(encoding="utf-8") if BOARD.exists() else ""
-    views, catalogs, maps = {}, {}, {}
+    circuit_page = CIRCUIT_PAGE.read_text(encoding="utf-8")
+    views, catalogs, maps, locs = {}, {}, {}, {}
+    # Direction C's reform view is embedded unchanged on the R-01 page and the board (fix 8); C's verifier checks
+    # its data
+    c_raw = C_REFORM.read_text(encoding="utf-8")
+    c_body = c_raw.split("?>", 1)[1].strip() if c_raw.startswith("<?xml") else c_raw.strip()
+    c_embeds = {name: (c_body in text) for name, text in (("R-01 page", REFORM_PAGE.read_text(encoding="utf-8")), ("board", board))}
+    for name, ok in c_embeds.items():
+        if not ok:
+            fail(name, "Direction C's reform view is missing or differs from C's file")
     for path in files:
         f = path.name
         raw = path.read_text(encoding="utf-8")
         body = raw.split("?>", 1)[1].strip() if raw.startswith("<?xml") else raw
-        if body not in board:
-            fail(f, "drawing file differs from every copy on the Direction A board")
+        home = circuit_page if view_of(raw) == "circuit-map" else board
+        if body not in home:
+            fail(f, "drawing file differs from every copy on " + ("the retired circuit page" if home is circuit_page else "the Direction A board"))
         root = ET.fromstring(raw)
         counts["svg_files"] += 1
         view, res = run_file(f, root)
@@ -401,6 +645,8 @@ def main():
             catalogs.setdefault("fg-mini-phone", set()).add(res)
         if view == "circuit-map":
             maps[f] = res
+        if view == "fg-locator":
+            locs[f] = res
     for k, s in catalogs.items():
         if s != set(LOOPS):
             fail(k, f"catalog draws {len(s)} loops, V7 has {len(LOOPS)}; missing {sorted(set(LOOPS) - s)}")
@@ -425,6 +671,10 @@ def main():
             "; ".join(f"{'the R-01 circuit' if 'Reform' in k else 'The circuit'} draws {v[0]} wires and counts {v[1]} connections in bundles" for k, v in maps.items()) + "; "
             f"{counts['bundles_checked']} bundle groups checked for count and V7 areas.",
             f"Checked {counts['red_marks_checked']} red marks, {counts['red_color_elements']} red-painted elements and {counts['weakest_checked']} weakest-step markings.",
+            f"Locators: {counts['locators']} insets from Direction C's network data and station table; {counts['locator_tracks']} tracks checked against V7 and C's corridors, "
+            f"{counts['locator_stations']} stations against C's grid cells, lit loops in Charcoal and every other line in Stone, no red.",
+            f"Sign marks: {counts['arrowheads_checked']} steps checked for an arrowhead with the circled sign or none with the pointing tag; {counts['tag_directions_checked']} pointing tags point the way their step runs.",
+            f"Direction C's reform view is embedded byte for byte on the R-01 page and the board ({sum(c_embeds.values())} of 2); its data is C's verifier's to check. The retired circuit is checked on its own page.",
             f"Mutation test: {len(cases) - len(missed)} of {len(cases)} deliberate breaks caught.",
         ],
     }

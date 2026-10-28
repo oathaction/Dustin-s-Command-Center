@@ -15,7 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
-import icons_r2_moving_draw as D  # noqa: E402
+import icons_r2_moving_draw_stage1 as D  # noqa: E402  (the stage 1 drawings, as reviewed)
 
 ROOT = HERE.parents[3]
 DATE = "20261028"

@@ -21,6 +21,7 @@ import maps_draw as D  # noqa: E402
 import maps_model as MM  # noqa: E402
 import maps_r2_a_circuit as C  # noqa: E402
 import maps_r2_a_fg as FG  # noqa: E402
+import maps_r2_a_locator as LOC  # noqa: E402
 import maps_r2_a_text as TX  # noqa: E402
 
 ROOT = HERE.parents[3]
@@ -48,6 +49,14 @@ HEADLINES = {
     "R-01": "Where all-party primaries with ranked general elections may act",
 }
 LEADS = {}  # filled by plate_order
+C_ASSETS = ROOT / "work/boards/phase-2/maps-r2/c"
+C_REFORM = C_ASSETS / "20261028_Loop-Lines-Reform-View-R-01.svg"
+# links from a fragment: a standalone page sits in maps-r2/a/, the board in work/boards/
+CTX = {"a": "", "c": "../c/"}
+
+
+def set_ctx(board):
+    CTX.update({"a": REL, "c": "phase-2/maps-r2/c/"} if board else {"a": "", "c": "../c/"})
 
 
 def save(name, svg):
@@ -130,17 +139,18 @@ def plate_order():
             # the loop with the most live reforms V7 lists; ties go to the loop first in V7's order
             lead = max(ids, key=lambda k: (len(LP[k]["reforms"]), -M["loop_order"].index(k)))
         rest = [k for k in ids if k != lead]
-        span = None
-        if lead:
-            span = "lead3" if len(rest) % 3 == 0 else "lead2"
-        plates.append({"id": g["id"], "title": g["title"], "lead": lead, "rest": rest, "span": span})
+        span = "lead3" if lead else None
+        # rows of three; a remainder of two shares its row half and half, a remainder of one takes two pairs
+        r = len(rest)
+        halves = rest[-2:] if r % 3 == 2 else (rest[-4:] if r % 3 == 1 and r >= 4 else [])
+        plates.append({"id": g["id"], "title": g["title"], "lead": lead, "rest": rest, "span": span, "halves": halves})
         LEADS[g["id"]] = lead
     return plates
 
 
 def tile(lid, kind="single"):
     lp = LP[lid]
-    if kind == "single":
+    if kind in ("single", "half"):
         d_svg, _ = FG.drawing(lp, M, "mini")
         save(f"Mini-{lid}", d_svg)
     else:
@@ -148,8 +158,8 @@ def tile(lid, kind="single"):
         save(f"Lead-{lid}", d_svg)
     p_svg = save(f"Mini-Phone-{lid}", FG.phone_mini(lp, M))
     kind_word = lp["kind_word"]
-    read = f'<p class="fga-read">“{esc(lp["how_to_read"])}”</p>' if kind != "single" else ""
-    cls = {"single": "fga-tile", "lead2": "fga-tile lead lead2", "lead3": "fga-tile lead lead3"}[kind]
+    read = f'<p class="fga-read">“{esc(lp["how_to_read"])}”</p>' if kind == "lead3" else ""
+    cls = {"single": "fga-tile", "half": "fga-tile half", "lead3": "fga-tile lead lead3"}[kind]
     return (f'<article class="{cls}" data-loop="{lid}"><div class="fga-tt">'
             f'<div class="fga-th">{chip("Loop", lid)}<span class="fga-kind">{esc(kind_word)}</span></div>'
             f'<h4>{esc(lp["title"])}</h4>{read}<p class="fga-cap">{esc(caption(lp))}</p></div>'
@@ -187,7 +197,7 @@ def teach(view_suffix=""):
         a5, a6 = bx[0], bx[1]
         mid = (a5[1] + a5[3] + a6[1]) / 2
         return [f'<g class="mk"><circle cx="{x:.1f}" cy="{y:.1f}" r="12" fill="{D.INK}"/>' + FG.T(x, y + 4.6, str(n), 13, 700, D.WHITE, "middle") + "</g>"
-                for n, (x, y) in {1: (a5[0] + a5[2] - 16, a5[1] + 16), 2: (xl, a6[1] - 22), 3: (10, a6[1] + a6[3] / 2 - 34),
+                for n, (x, y) in {1: (a5[0] + a5[2] - 16, a5[1] + 16), 2: (xl, a6[1] - 22), 3: (FG.PH_RET, a6[1] + a6[3] / 2 - 34),
                                   4: (xl - 24, mid), 5: (xl, a5[1] + a5[3] + 30)}.items()]
     ph = FG.phone_drawing(lp, M, None, view="fg-head-phone", markers=ph_markers)
     save("Catalog-Head-R8-Phone", ph)
@@ -229,17 +239,26 @@ def catalog_page(hl="h2"):
             deck = next(a["text"] for a in M["areas"] if a["id"] == pl["id"])
         count = len(pl["rest"]) + (1 if pl["lead"] else 0)
         lead_note = f'Lead specimen: Loop {pl["lead"]}' if pl["lead"] else "No lead specimen"
+        plate_loops = ([pl["lead"]] if pl["lead"] else []) + pl["rest"]
+        if letter:
+            l_svg, _ = LOC.build(M, plate_loops, "band", label=f"Locator: area {letter}'s {len(plate_loops)} loops, {', '.join(plate_loops)}, lit in Charcoal on Direction C's working map")
+            save(f"Locator-Plate-{letter}", l_svg)
+            loc = f'<figure class="fga-bandloc">{l_svg}<figcaption>Plate {letter} on the working map</figcaption></figure>'
+        else:
+            loc = '<p class="fga-bandloc none">Not on the working map: a loop with no numbered chain has no stations.</p>'
+
         band = (f'<div class="fga-band"><div class="wrapc fga-bandin">' + (f'<span class="fga-letter" aria-hidden="true">{letter}</span>' if letter else '<span class="fga-letter sk" aria-hidden="true"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="38" fill="none" stroke="#DCD9D2" stroke-width="12"/><circle cx="48" cy="48" r="38" fill="none" stroke="#121212" stroke-width="5"/></svg></span>')
                 + f'<div><h3>{esc(("Area " + letter + ": ") if letter else "")}{esc(name)}</h3><p>{esc(deck)}</p></div>'
-                + f'<p class="fga-count"><b>{count}</b> loops<br><span>{esc(lead_note)}</span></p></div></div>')
+                + f'<p class="fga-count"><b>{count}</b> loops<br><span>{esc(lead_note)}</span></p>{loc}</div></div>')
         tiles = []
         if pl["lead"]:
             tiles.append(tile(pl["lead"], pl["span"]))
-        tiles += [tile(k) for k in pl["rest"]]
+        tiles += [tile(k, "half" if k in pl["halves"] else "single") for k in pl["rest"]]
         out.append(f'<section class="fga-plate" aria-label="{esc(name)}">{band}<div class="wrapc"><div class="fga-grid">{"".join(tiles)}</div></div></section>')
     foot = (f'<div class="wrapc fga-foot"><p>{esc(SRC)} {n_numbered} loops have numbered chains: 11 of two steps, 5 of three and 4 of four; 3 are sketched. '
             f'Names in the boxes are V7’s own chain labels. Plates follow the area holding most of a loop’s variables; each plate’s lead is R8 for area A '
-            f'and otherwise the loop with the most live reforms V7 lists.</p></div>')
+            f'and otherwise the loop with the most live reforms V7 lists. Each band’s locator is Direction C’s working map, drawn by script from C’s '
+            f'network data and station table, with that plate’s loops lit.</p></div>')
     return f'<section class="fga fga-catalog">{"".join(out)}{foot}</section>'
 
 
@@ -330,21 +349,38 @@ def reform_block(rid, loop_id):
 </section>'''
 
 
-def card_page(lid, rid, hl="h2", name=None):
+def locator_fig(lit, name, caption):
+    """The rail's locator: C's working map with the loop lit, at 340 px (326 px on a phone)."""
+    d_svg, meta = LOC.build(M, lit, "rail")
+    p_svg, _ = LOC.build(M, lit, "phone")
+    save(f"Locator-{name}", d_svg)
+    save(f"Locator-{name}-Phone", p_svg)
+    return (f'<figure class="fga-loc"><p class="lab">On the whole system</p><div class="dsk">{d_svg}</div><div class="phn">{p_svg}</div>'
+            f'<figcaption>{caption} <a href="{CTX["c"]}20261028_Loop-Lines-Working-Map.html">Open Direction C’s working map</a>.</figcaption></figure>')
+
+
+def card_page(lid, rid, hl="h2", name=None, sign_style="disc", foot=True):
     lp = LP[lid]
-    d_svg, meta = FG.drawing(lp, M, "card", reform_id=rid)
-    save(f"Card-{lid}", d_svg)
-    p_svg = save(f"Card-{lid}-Phone", FG.phone_drawing(lp, M, rid))
+    sfx = "" if sign_style == "disc" else "-Tag"
+    d_svg, meta = FG.drawing(lp, M, "card", reform_id=rid, sign_style=sign_style)
+    save(f"Card-{lid}{sfx}", d_svg)
+    p_svg = save(f"Card-{lid}{sfx}-Phone", FG.phone_drawing(lp, M, rid, sign_style=sign_style))
     layout = "side" if lp["n"] == 2 else "below"
-    return f'''<section class="fga fga-cardpage"><div class="wrapc"><article class="fga-card" aria-labelledby="fga-{lid}-h">
+    sts = [s["code"] for s in lp["stations"] if s["is_variable"]]
+    others = sum(1 for l in LP.values() if not l["conceptual"]) - 1
+    loc = locator_fig([lid], f"Card-{lid}", f"Loop {lid} in Charcoal, with its stations {', '.join(sts[:-1])} and {sts[-1]}; the other {others} loop lines in Stone.")
+    hid = f"fga-{lid}{sfx.lower()}{('-' + name) if name else ''}-h"
+    return f'''<section class="fga fga-cardpage"><div class="wrapc"><article class="fga-card" aria-labelledby="{hid}">
 <div class="fga-mast"><span>Who Do They Answer To? {DOT} Systems Atlas</span><span>Loop card {DOT} {esc(lid)}</span></div>
-<{hl} class="fga-hl" id="fga-{lid}-h">{esc(HEADLINES[lid])}</{hl}>
+<div class="fga-headgrid"><div>
+<{hl} class="fga-hl" id="{hid}">{esc(HEADLINES[lid])}</{hl}>
 <p class="fga-title">{chip("Loop", lid)}<span>{esc(lp["title"])}</span></p>
 <p class="fga-say"><span class="lab">Read it aloud</span><span class="q">“{esc(lp["how_to_read"])}”</span></p>
+</div>{loc}</div>
 <div class="fga-body {layout}"><figure class="fga-cfig"><div class="dsk">{d_svg}</div><div class="phn">{p_svg}</div>
 <figcaption class="vh">Loop {esc(lid)} drawing. {esc(lp["how_to_read"])}</figcaption></figure>
 <aside class="fga-rail" aria-label="How loop {esc(lid)} behaves">{rail(lp, rid)}</aside></div>
-{reform_block(rid, lid)}
+{reform_block(rid, lid) if foot else ""}
 <p class="fga-src">{esc(SRC)} Loop {esc(lid)}, connections {", ".join(s["id"] for s in lp["steps"])}; reform {esc(rid)}. The headline is studio-written from V7’s how_to_read for the editor’s review; every other word on the card is V7’s or names a V7 field.</p>
 </article></div></section>'''
 
@@ -378,6 +414,7 @@ def map_section(hl="h2"):
     return f'''<section class="fga fga-mappage"><div class="wrapw">
 <p class="fga-eyebrow ink">Who Do They Answer To? {DOT} Systems Atlas {DOT} The whole system</p>
 <{hl} class="fga-hl">The circuit: 51 variables and 118 connections</{hl}>
+<p class="fga-deckd"><b>Retired in round two.</b> The creative director's review of round two (fix 8) gives the whole system to Direction C's poster and working map. This page stays as a record for the appendix.</p>
 <p class="fga-deckd">Read the five areas from left to right, in the order effects mostly travel. The 46 connections that sit on a named loop are drawn as wires you can follow from box to box; the other 72 are counted in Stone bundles. Steps that skip an area run over the top, and steps that come back run under the cards along the return line.</p>
 {legend()}
 <figure class="fga-map"><div class="dsk">{svg}</div><div class="phn"><img src="{png}" width="{iw}" height="{ih}" alt="The circuit map reduced to fit a phone screen. Open the page on a screen 1440 px wide to read it."><p>The circuit is drawn for a screen 1440 px wide or a printed page. On a phone this reduced copy shows its shape, and the loop cards carry each loop in full.</p></div></figure>
@@ -386,6 +423,16 @@ def map_section(hl="h2"):
 
 
 # ------------------------------------------------------------------ the reform view
+
+def c_reform_view():
+    """Direction C's reform view, embedded as C wrote it (CD round two, fix 8). Read from C's folder at build time,
+    so a rebuild picks up C's latest drawing; the verifier checks the copy against C's file byte for byte."""
+    raw = C_REFORM.read_text(encoding="utf-8")
+    body = raw.split("?>", 1)[1].strip() if raw.startswith("<?xml") else raw.strip()
+    w = int(float(re.search(r'<svg[^>]*\swidth="([\d.]+)"', body).group(1)))
+    h = int(float(re.search(r'<svg[^>]*\sheight="([\d.]+)"', body).group(1)))
+    return body, w, h
+
 
 def reform_page(hl="h2"):
     rid = "R-01"
@@ -404,25 +451,30 @@ def reform_page(hl="h2"):
         touched.append(f'<article class="fga-tile" data-loop="{lid}"><div class="fga-tt"><div class="fga-th">{chip("Loop", lid)}<span class="fga-kind">{esc(LP[lid]["kind_word"])}</span></div>'
                        f'<h4>{esc(LP[lid]["title"])}</h4><p class="fga-cap">V7 lists this loop as touched by {rid}, and none of {rid}’s targets sits on it. It shares C3 with Loop R10, where {rid} acts on L25, the step into C3.</p></div>'
                        f'<div class="fga-fig"><div class="dsk">{m_svg}</div><div class="phn">{ph}</div></div></article>')
-    map_svg, st = C.build(M, bg=D.WHITE, reform_id=rid)
-    save("Reform-R-01-Circuit", map_svg)
-    iw, ih = int(st["W"]), int(st["H"])
+    c_svg, cw, ch = c_reform_view()
     targets = "; ".join(f'{t}, {M["links"][t]["name"] if t in M["links"] else M["nodes"][t]["title"]}' for t in r["targets"])
     eff = "".join(f'<tr><th scope="row">{esc(M["families"][k])}</th><td>{pips(v)}</td><td>{esc(tm(v))} ({esc(M["effect_codes"].get(v, v))})</td></tr>' for k, v in r["effects"].items())
+    loc = locator_fig(["R10"], "Reform-R-01", "Loop R10, which holds all three of R-01’s targets, in Charcoal. B4 and R11, which V7 lists as touched, stay in Stone; Direction C’s reform view below shows all three.")
+    c_page = f'{CTX["c"]}20261028_Loop-Lines-Reform-View-R-01.html'
     return f'''<section class="fga fga-reformpage"><div class="wrapw"><article class="fga-rvpage" aria-labelledby="fga-r01-h">
 <div class="fga-mast"><span>Who Do They Answer To? {DOT} Systems Atlas</span><span>Reform view {DOT} {rid}</span></div>
+<div class="fga-headgrid"><div>
 <{hl} class="fga-hl" id="fga-r01-h">{esc(HEADLINES["R-01"])}</{hl}>
 <p class="fga-title">{chip("Reform", rid)}<span>{esc(r["title"])}</span></p>
 <p class="fga-deckd">Red marks its three targets and nothing else: {esc(targets)}. All three sit on Loop R10. V7 also lists Loops B4 and R11 as touched by it. V7 never adds a reform’s effects into one score, so this view gives none.</p>
+</div>{loc}</div>
 <div class="fga-rv"><figure class="fga-cfig"><div class="dsk">{d_svg}</div><div class="phn">{p_svg}</div><figcaption class="cap">Loop R10, {esc(lp["title"])}. The red line is L25 and L08; the red keyline is C2.</figcaption></figure>
 <div class="fga-touch">{"".join(touched)}</div></div>
 <div class="dsk"><div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Confidence, in V7’s words: “{esc(r["effects_confidence"])}”</caption><thead><tr><th scope="col">Outcome family</th><th scope="col">Mark</th><th scope="col">V7 value</th></tr></thead><tbody>{eff}</tbody></table></div>
 <div class="fga-tw" tabindex="0" role="region" aria-label="Routes for {rid}"><table><caption>Routes to change. Remedy evidence: {esc(D.GRADE_WORD[r["remedy_grade"]])}; problem evidence: {esc(D.GRADE_WORD[r["problem_grade"]])}</caption><thead><tr><th scope="col">Route</th><th scope="col">Who acts</th><th scope="col">Feasibility</th><th scope="col">Checked</th></tr></thead><tbody>{route_rows(r)}</tbody></table></div></div></div>
 {phone_lists(r, "Expected effect by outcome family. Confidence, in V7’s words: “" + esc(r["effects_confidence"]) + "”", "Routes to change. Remedy evidence: " + esc(D.GRADE_WORD[r["remedy_grade"]]) + "; problem evidence: " + esc(D.GRADE_WORD[r["problem_grade"]]))}
 <h3 class="fga-sub">{rid} on the whole system</h3>
-<figure class="fga-map"><div class="dsk">{map_svg}</div><div class="phn"><img src="20261028_A-Reform-R-01-Circuit-Reduced.png" width="{iw}" height="{ih}" alt="The circuit on White, reduced to fit a phone, with L25, L08 and C2 in red"><p>Reduced to fit. Open the page on a wide screen to read the circuit.</p></div></figure>
-<p class="fga-src">{esc(SRC)} Reform R-01 targets, loops, effects and routes read by script.</p>
-</article></div></section>'''
+<p class="fga-deckd">Direction C’s reform view, embedded as C drew it: R-01’s three targets in red on C’s working map, the three loops it touches in Charcoal, every other line in Stone. <a href="{c_page}">Open it on C’s page</a>.</p>
+</article></div>
+<figure class="fga-cview" aria-label="Direction C’s reform view for R-01"><div class="dsk fga-cscroll" tabindex="0" role="region" aria-label="Direction C’s reform view, {cw} px wide">{c_svg}</div>
+<div class="phn wrapw"><img src="{CTX["a"]}20261028_A-C-Reform-View-R-01-Reduced.png" width="{cw}" height="{ch}" alt="Direction C’s reform view for R-01, reduced to fit a phone: its three targets in red on the working map"><p class="cap">Reduced to fit. <a href="{c_page}">Open C’s reform view</a> on a wide screen to read it.</p></div></figure>
+<div class="wrapw"><p class="fga-src">{esc(SRC)} Reform R-01 targets, loops, effects and routes read by script. The whole-system view is Direction C’s file {C_REFORM.name}, unchanged.</p></div>
+</section>'''
 
 
 # ------------------------------------------------------------------ styles
@@ -455,7 +507,10 @@ CSS = """
 /* plates */
 .fga-plate{margin-top:56px}
 .fga-band{background:var(--ink);color:var(--news)}
-.fga-bandin{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end}
+.fga-bandin{display:grid;grid-template-columns:140px 1fr auto 196px;gap:28px;align-items:end}
+.fga-bandloc{margin:0}
+.fga-bandloc figcaption{font:400 13px/1.4 Inter;color:var(--dim);margin-top:6px}
+.fga-bandloc.none{font:400 14px/1.45 Inter;color:var(--dim)}
 .fga .fga-bandin{padding-top:30px;padding-bottom:26px}
 .fga-letter{font:800 120px/0.8 'Inter Tight',Arial,sans-serif;letter-spacing:-0.04em;color:var(--news)}
 .fga-letter.sk{font-size:96px}
@@ -464,7 +519,10 @@ CSS = """
 .fga-count{text-align:right;font:400 15px/1.35 Inter !important}
 .fga-count b{font:800 44px/1 'Inter Tight',Arial,sans-serif}
 .fga-count span{color:var(--dim)}
-.fga-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px}
+.fga-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px;margin-top:24px}
+.fga-grid > .fga-tile{grid-column:span 2}
+.fga-grid > .fga-tile.half{grid-column:span 3}
+.fga-grid > .fga-tile.lead3{grid-column:span 6}
 .fga-tile{background:var(--white);padding:18px 12px 16px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .fga-tile .fga-tt{padding:0 8px}
 .fga-th{display:flex;align-items:center;gap:2px}
@@ -473,11 +531,9 @@ CSS = """
 .fga-cap{font:400 14px/1.45 Inter;color:var(--deep);margin:6px 0 0}
 .fga-read{font:italic 400 18px/1.45 Lora,Georgia,serif;margin:10px 0 0;color:var(--ink)}
 .fga-fig{margin-top:auto;display:flex;justify-content:center;align-items:center;min-height:176px}
-.fga-tile.lead2 .fga-fig{flex:1;margin-top:0}
 .fga-tile.lead{padding:24px 20px}
 .fga-tile.lead h4{font:800 26px/1.15 'Inter Tight',Arial,sans-serif;letter-spacing:-0.01em}
-.fga-tile.lead2{grid-column:span 2;grid-row:span 2}
-.fga-tile.lead3{grid-column:span 3;display:grid;grid-template-columns:minmax(0,1fr) 380px;align-items:center}
+.fga-tile.lead3{display:grid;grid-template-columns:minmax(0,1fr) 380px;align-items:center}
 .fga-tile.lead3 .fga-tt{order:2}
 .fga-tile.lead3 .fga-fig{order:1}
 .fga-foot{margin:28px auto 0;font:400 14px/1.5 Inter;color:var(--deep)}
@@ -493,7 +549,8 @@ CSS = """
  .fga-band h3{font-size:26px}
  .fga-count{text-align:left}
  .fga-grid{grid-template-columns:1fr;gap:16px}
- .fga-tile.lead2,.fga-tile.lead3{grid-column:auto;grid-row:auto;display:flex}
+ .fga-grid > .fga-tile,.fga-grid > .fga-tile.half,.fga-grid > .fga-tile.lead3{grid-column:auto}
+ .fga-tile.lead3{display:flex}
  .fga-tile.lead3 .fga-tt,.fga-tile.lead3 .fga-fig{order:initial}
  .fga-fig{min-height:0}
 }
@@ -507,6 +564,11 @@ CSS = """
 .fga-say .lab{display:block;font:700 13px/1.4 Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--deep);margin-bottom:4px}
 .fga-say .q{font:italic 400 20px/1.5 Lora,Georgia,serif}
 .fga-body{display:grid;gap:32px;margin-top:16px}
+.fga-headgrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start}
+.fga-loc{margin:26px 0 0}
+.fga-loc .lab{font:700 13px/1.4 Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--deep);margin:0 0 6px}
+.fga-loc figcaption{font:400 14px/1.45 Inter;color:var(--deep);margin-top:8px}
+.fga-loc a,.fga-deckd a,.fga .cap a{color:var(--ink)}
 .fga-body.side{grid-template-columns:minmax(0,1fr) 340px}
 .fga-body.below .fga-rail{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;border-top:1px solid var(--ink);padding-top:18px}
 .fga-cfig{margin:0}
@@ -547,6 +609,8 @@ CSS = """
  .fga-title{font-size:16px}
  .fga-say .q{font-size:18px}
  .fga-body.side,.fga-body.below .fga-rail{grid-template-columns:1fr}
+ .fga-headgrid{grid-template-columns:1fr;gap:8px}
+ .fga-loc{margin:8px 0 0}
  .fga-rail{border-left:0;padding-left:0;border-top:1px solid var(--ink);padding-top:16px}
  .fga-reform h3{font-size:22px}
 }
@@ -566,6 +630,11 @@ CSS = """
 .fga-touch .fga-tile{border:1px solid var(--stone)}
 .fga-sub{font:800 24px/1.2 'Inter Tight',Arial,sans-serif;margin:28px 0 12px}
 .fga .cap{font:400 14px/1.45 Inter;color:var(--deep)}
+.fga-cview{margin:8px 0 0}
+.fga-cscroll{overflow-x:auto;max-width:100%}
+.fga-cscroll svg{margin:0 auto}
+.fga-cscroll:focus-visible{outline:3px solid #4A7C74;outline-offset:2px}
+.fga-cview .phn img{width:100%;height:auto;border:1px solid var(--stone);display:block}
 @media (max-width:1099px){.fga-rv{grid-template-columns:1fr}.fga-touch{grid-template-columns:1fr}.fga-mappage{padding:16px 0}.fga-rvpage{padding:16px 0}}
 """
 
@@ -608,6 +677,8 @@ body{margin:0;background:#DCD9D2}
 .bd-index b{font:700 17px/1.3 Inter}
 .bd-index a{margin-top:auto;color:#121212;font-weight:600}
 .bd a{color:#121212}
+.bd.bd-tight{padding-top:8px;padding-bottom:8px}
+#sign .fga-cardpage{padding:16px 0}
 .bd-tests h4,.bd-tests .h4{font:700 17px/1.3 Inter,Arial,sans-serif;margin:16px 0 6px}
 """
 
@@ -637,9 +708,9 @@ def standalone(name, title, fragment):
 
 SPECS = {
     "catalog": [
-        ("Grid", "Content 1248 px at 1440, three columns of 400 px tiles with 24 px gutters on a Newsprint ground. Every row fills: a plate whose other loops divide by three gets a lead three columns wide; otherwise the lead spans two columns and two rows. At 390 px one column of 358 px tiles."),
+        ("Grid", "Content 1248 px at 1440 on a Newsprint ground: three columns of 400 px tiles with 24 px gutters. Every lead runs the full width with its drawing beside its text. The other loops fill rows of three, and a final pair splits its row half and half, so no row holds one card alone. At 390 px one column of 358 px tiles."),
         ("Head", "Charcoal band. Eyebrow 13 px caps, Inter Tight 800 at 96 px (56 px at 390), deck Inter 22 px. R8 at full card size on a White panel with five numbered callouts; the key runs beside it at 1440 and under it at 390."),
-        ("Plates", "One per area, in V7's order A to D, then the sketched loops. A Charcoal band holds the area letter in Inter Tight 800 at 120 px (72 at 390), the area's name at 34 px, V7's area text and the count. The lead is R8 for A and otherwise the loop with the most live reforms V7 lists."),
+        ("Plates", "One per area, in V7's order A to D, then the sketched loops. A Charcoal band holds the area letter in Inter Tight 800 at 120 px (72 at 390), the area's name at 34 px, V7's area text, the count and a 196 px locator: Direction C's working map with the plate's loops in Charcoal at 3.5 px, stations as Charcoal dots, every other line in Stone at 1.25 px. The lead is R8 for A and otherwise the loop with the most live reforms V7 lists. The sketched plate has no locator, since its loops have no stations."),
         ("Miniature", "The card's drawing at a little over half size: boxes 158 px wide in Newsprint with a 5 px Charcoal spine, V7's chain label in Inter 13 semibold wrapped to at most two balanced lines. Two steps side by side with the return underneath; three as two over one; four as two over two, clockwise from top left. Lines 2 px Charcoal in V7's texture, each with its sign in a 16 px disc. At 390 the boxes stack and the return runs up the left."),
         ("Caption", "Kind in words, one turn in words, least certain step by ID and V7's grade word. No ticks, record squares, pointers or red: they belong on the card (CD notation budget)."),
         ("Type", "Inter Tight 800 for display and area letters, Inter 13 to 22 px for text, Lora Italic 18 px for V7's read-aloud sentence on lead tiles. Nothing under 13 px."),
@@ -648,9 +719,10 @@ SPECS = {
         ("Surface", "White card on Newsprint, 48 px padding at 1440 and 16 px at 390. Pillar Red marks the targets of the one reform the card names: the line and its disc outline for a step, a 3 px keyline for a box (4.17:1 on White)."),
         ("Headline", "Inter Tight 800 at 44 px (30 at 390), studio-written from V7's how_to_read for the editor, with the verb matched to the least certain grade. Then V7's title with the Loop chip, then the read-aloud sentence quoting how_to_read in Lora Italic 20 px."),
         ("Drawing", "The catalog geometry at full size: boxes 264 px wide with a 222 px gap for two steps, 280 px with a 200 px gap for three or four, with the ID in Inter Tight 800 16 px, V7's chain label in Inter 16 semibold and its “Higher:” rule from increase_means in Inter 16. Lines 2.5 px with V7's texture, delay ticks at the start, signs in 24 px discs with the record square on documented steps. Step labels give the ID, V7's name, the grade and the delay in words, set outside the line."),
+        ("Locator", "Beside the headline: Direction C's working map at 340 px (326 at 390), drawn by script from C's network data and station table. The card's loop runs in Charcoal at 6 px with Charcoal stations and 13 px Newsprint IDs; the other 19 loop lines run in Stone at 2 px on Newsprint, each in its M1 texture. No red: the locator finds the loop, and the card marks the reform."),
         ("Rail", "Concept 08's order: feeds itself or pushes back with V7's glossary definition; what the return line means, from the closing connection's plain text; the least certain step, quoting V7's evidence summary; one turn; now, with V7's series. The rail sits beside a two-step drawing and under a three- or four-step one."),
         ("Foot", "The reform's chip and title, where it acts, problem and remedy grades, V7's confidence text, the effect pips with no total, and the routes with V7's check dates or “no check date in V7”."),
-        ("Phone", "The boxes stack in chain order; forward steps run down a line at the left of the boxes; the return line runs up the left edge into the first box. Step labels sit beside the line."),
+        ("Phone", "The boxes stack in chain order; forward steps run down a line at the left of the boxes; the return line runs up the left side, 20 px in from the card edge so a documented step's 36 px capsule stays whole, into the first box. Step labels sit beside the line."),
     ],
     "map": [
         ("Grid", "1392 px wide at 1440. Five White area cards on Newsprint, A to E left to right; the outside drivers as Charcoal tabs on the top edge; the economy and technology layers in a lower band."),
@@ -661,21 +733,21 @@ SPECS = {
         ("Live atlas", "One loop lights in Charcoal and every other wire drops to Stone. A reform view moves to White, with red at that reform's targets."),
     ],
     "reform": [
-        ("Surface", "White. Red marks R-01's three targets, L25, L08 and C2, on the R10 card drawing and on the circuit, and nothing else."),
-        ("Order", "Headline, R-01's chip and V7 title, where it acts, the R10 drawing with the two loops V7 lists as touched beside it, the effects and routes, then the reform on the whole circuit."),
+        ("Surface", "White. Red marks R-01's three targets, L25, L08 and C2, on the R10 card drawing and in C's reform view, and nothing else. The locator carries no red."),
+        ("Order", "Headline, R-01's chip and V7 title, where it acts, the locator with R10 lit, the R10 drawing with the two loops V7 lists as touched, the effects and routes, then Direction C's reform view for the whole system, embedded as C drew it at 1440 px."),
         ("Honesty", "No total and no ranking: V7 never adds effects into one score. B4 and R11 carry no red, because none of R-01's targets sits on them, and their captions say so."),
-        ("Phone", "The R10 drawing stacks, the touched loops follow as tiles, the two tables become lists, and the circuit appears reduced with a note."),
+        ("Phone", "The R10 drawing stacks, the touched loops follow as tiles, the two tables become lists, and C's reform view appears reduced, with a link to C's page."),
     ],
 }
 
 TESTS = {
     "catalog": [
         ("Wall test", "Pinned beside a Tufte small-multiples plate, the first draft read as a grid of equal cells. Changes: plates with Charcoal bands and 120 px letters, a lead specimen at double size on every plate, and three columns, where four left orphan rows and could not hold V7's longest chain label on two lines."),
-        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px. A second pass at 2x found captions listing tied steps one by one and the band letters touching the band's top edge; tied steps now read “L02 and L31, both plausible”, and the bands gained 30 px of air above the letter."),
+        ("2x test", "Checked every miniature at 2x for collisions and truncation. Changes: real font metrics for every wrap (round one estimated widths), balanced two-line labels so no word sits alone, box outlines removed in favor of the spine, and a stacked phone miniature, because the 376 px drawing cannot fit a 358 px phone tile without shrinking text under 13 px. A second pass at 2x found captions listing tied steps one by one and the band letters touching the band's top edge; tied steps now read “L02 and L31, both plausible”, and the bands gained 30 px of air above the letter. After the creative director's round-two review: R15's lead held about 120 px of blank White above and below its drawing; every lead now runs the full width with the drawing centered beside its text, and a final pair of tiles shares its row."),
     ],
     "card": [
         ("Wall test", "Beside Concept 08, the round-one card had gained little. Changes: an editorial headline, the read-aloud sentence in Lora Italic, Concept 08's rail order restored, and the return line and A5's keyline carrying the one red."),
-        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has. A second pass found “under 2 years” broken across lines and a line starting with its separator dot; no-break spaces now hold each phrase whole, and the R8 gap widened from 170 to 222 px so L38's name takes two lines. On a phone the effect and route tables became lists, since their columns clipped at 358 px."),
+        ("2x test", "At 2x the first draft set R10's grade line for L08 into the C2 box. Changes: the grade and delay now join the label block above a top step and wrap within the gap; every step label is measured against the space it has. A second pass found “under 2 years” broken across lines and a line starting with its separator dot; no-break spaces now hold each phrase whole, and the R8 gap widened from 170 to 222 px so L38's name takes two lines. On a phone the effect and route tables became lists, since their columns clipped at 358 px. The round-two review found the phone R10 card's L42 capsule cut in half by the card edge; the return line moved from 10 to 20 px, and the rendered check now also fails any sign mark that leaves its drawing."),
     ],
     "map": [
         ("Wall test", "Beside the Vignelli diagram, a first route put the top bus through the bundle tracks and set a bus label on the wires. Changes: drivers, bundles and the top bus each got their own band, and the three bus labels sit on a background halo where a wire crosses them."),
@@ -683,7 +755,7 @@ TESTS = {
     ],
     "reform": [
         ("Wall test", "Round one's reform view ran the C2 row red across the full fabric. Here red touches only two wires and one box. The first draft also sat the view inside a card frame that ran 24 px past a 1440 px screen; the view is now a White page of its own."),
-        ("2x test", "Checked the three loop drawings and the circuit on White at 2x; the touched-loop captions were rewritten to say exactly why they carry no red."),
+        ("2x test", "Checked the three loop drawings and the circuit on White at 2x; the touched-loop captions were rewritten to say exactly why they carry no red. The circuit then retired (CD round two, fix 8), and C's reform view took its place."),
     ],
 }
 
@@ -714,44 +786,49 @@ def checks_html():
 
 
 DECISIONS = [
-    ("Direction A as built", "Take A forward; keep it as the fallback behind C; return to the current system (G1-11)",
-     "Hold A as the safe path while C reports", "It meets Dustin's literal ask and keeps Concept 08's card; its beauty depends on finish, as the brief warned."),
+    ("Direction", "The studio's pick (A's loops with C's poster); C throughout; A throughout with its circuit; the current system (G1-11)",
+     "The studio's pick", "A's catalog and cards are the shrunken R8 card Dustin pointed to; C's poster carries the whole system on a wall, which A's circuit could not."),
+    ("One sign mark everywhere (decision 3)", "The circled sign with arrowheads; C's pointing tag", "The pointing tag",
+     "One mark carries the sign and the step's direction on the cards and on the map; both options are set at true size above."),
     ("Three columns on the catalog", "Three columns; four columns with three-line labels", "Three columns",
      "Four columns cannot hold V7's longest chain label on two lines without shrinking text, and three fill every row with no filler."),
     ("Editorial headlines", "Keep the studio's lines for the editor to revise; use V7's titles as headlines", "Keep them for the editor",
      "They name the mechanism the way Concept 08 did, with verbs matched to the least certain grade."),
-    ("The circuit's 72 bundled connections", "Counted bundles; draw all 118 as wires", "Counted bundles",
-     "All 118 as wires would bury the loops; the register keeps every connection one step away."),
+    ("The locator on every card", "C's working map with the loop lit, on every card and catalog band; no locator", "The locator",
+     "A reader sees the loop on its card and finds it on the map, which holds the two drawing styles together as one system."),
 ]
 
 
 def board():
     sections = [("idea", "The idea"), ("spec-catalog", "Catalog page"), ("spec-r8", "R8 card"), ("spec-r10", "R10 card"),
-                ("spec-map", "Circuit"), ("spec-reform", "R-01 view"), ("checks", "Checks"), ("decide", "Decisions")]
+                ("spec-reform", "R-01 view"), ("sign", "Sign mark"), ("checks", "Checks"), ("decide", "Decisions")]
     toc = "".join(f'<a href="#{a}">{esc(b)}</a>' for a, b in sections)
-    index = "".join(f'<li><span class="n">{n}</span><b>{t}</b><span>{d}</span><a href="{REL}20261028_A-{f}.html">Open the {t.replace("Loop catalog", "catalog").replace("Circuit", "circuit")}</a></li>'
-                    for n, (f, t, d) in enumerate((("Loop-Catalog", "Loop catalog", "All 23 loops, R8 taught at full size, one plate per area."),
-                                                    ("R8-Loop-Card", "R8 card", "Two steps on White, with R-30's targets in red."),
+    index = "".join(f'<li><span class="n">{n}</span><b>{t}</b><span>{d}</span><a href="{REL}20261028_A-{f}.html">Open the {t.replace("Loop catalog", "catalog")}</a></li>'
+                    for n, (f, t, d) in enumerate((("Loop-Catalog", "Loop catalog", "All 23 loops, R8 taught at full size, one plate per area, each band with its locator."),
+                                                    ("R8-Loop-Card", "R8 card", "Two steps on White, with R-30's targets in red and R8 lit on the locator."),
                                                     ("R10-Loop-Card", "R10 card", "The stress test: four steps, R-01 in red."),
-                                                    ("Circuit-Page", "Circuit", "51 variables and 118 connections, Concept 09 redrawn."),
-                                                    ("R-01-Reform-View", "R-01 view", "One reform on its loop and on the whole system.")), 1))
+                                                    ("R-01-Reform-View", "R-01 view", "One reform on its loop, and on the whole system in Direction C's reform view.")), 1))
     intro = f'''<div class="bd"><p class="eyebrow">Phase 2 {DOT} Systems maps, round two {DOT} October 28, 2026 {DOT} Direction A</p>
 <h1>Field Guide</h1>
 <p class="lede">Dustin's reference card came from Concept 08, the Loop Field Guide. This direction takes the name at its word: every loop is a specimen card drawn one way, and the catalog is a set of plates where each card is the R8 card at a smaller size. The head of the catalog teaches one card at full size, and a reader then reads all 23 the way a birder reads a guide.</p>
 <div class="bd-sum"><p><b>What a first-time reader grasps without a key:</b> boxes are things that change; the line across the top runs forward; the line underneath, or up the left side, brings the last change back to the first box.</p>
 <p><b>Built to the creative director's brief</b> (<span>work/handoffs/phase-2/20261028_CD-Review-Of-Map-Directions.md</span>, section 4): the notation budget by scale, Rule 05.3, the 13 px floor, Lora Italic only for V7's read-aloud sentence, constant stroke weight within a view, no truncated label and no row with one card alone. Every page below is shown first as a page at its true composition, then at 390 px and in grayscale, then its spec and what the wall and 2x tests changed.</p></div>
 <nav class="bd-toc" aria-label="Board sections">{toc}</nav>
-<section class="bd-spec" id="idea"><p class="eyebrow">Specimens</p><h2>Five pages</h2><p>Each is a real page. The board shows it at its true composition, then at 390 px and in grayscale, then its spec and what the wall and 2x tests changed. Open any page on its own here.</p>
-<ol class="bd-index">{index}</ol></section></div>'''
+<section class="bd-spec" id="idea"><p class="eyebrow">Specimens</p><h2>Four pages</h2><p>Each is a real page. The board shows it at its true composition, then at 390 px and in grayscale, then its spec and what the wall and 2x tests changed. Open any page on its own here.</p>
+<ol class="bd-index">{index}</ol>
+<p><b>Changed after the creative director's round-two review</b> (<span>work/handoffs/phase-2/20261028_CD-Review-Of-Map-Round-Two.md</span>, section 4): the studio's pick pairs Direction C's poster for the whole system with these pages for the loops. Fix 7 adds C's working map as a locator to every card, the R-01 view and each catalog band. Fix 8 replaces the circuit with C's reform view and retires the circuit page, kept at <a href="{REL}20261028_A-Circuit-Page.html">20261028_A-Circuit-Page.html</a> for the appendix. Fix 9 moves the phone card's return line in from the edge and sets every lead across the full width. Fix 11 sets the R8 card twice, below, for decision 3.</p></section></div>'''
 
     def spec_section(sid, num, title, lede, fragment, name, key, phone=True):
         return (f'<section id="{sid}" aria-label="{esc(title)}"><div class="bd"><div class="bd-spec"><p class="eyebrow">Specimen {num}</p><h2>{esc(title)}</h2><p>{esc(lede)}</p></div></div>'
                 f'{fragment}<div class="bd">{proofs(name, phone)}{spec_html(key)}</div></section>')
+    set_ctx(True)
     cat = catalog_page("h2")
     r8 = card_page("R8", "R-30", "h2")
     r10 = card_page("R10", "R-01", "h2")
-    mp = map_section("h2")
     rv = reform_page("h2")
+    opt1 = card_page("R8", "R-30", "h3", name="opt1", foot=False)
+    opt2 = card_page("R8", "R-30", "h3", name="opt2", sign_style="tag", foot=False)
+    set_ctx(False)
     for name, title, frag in (("Loop-Catalog", "Twenty-Three Loops", catalog_page("h1")), ("R8-Loop-Card", "Loop R8 Card", card_page("R8", "R-30", "h1")),
                               ("R10-Loop-Card", "Loop R10 Card", card_page("R10", "R-01", "h1")), ("Circuit-Page", "The Circuit", map_section("h1")),
                               ("R-01-Reform-View", "Reform R-01 View", reform_page("h1"))):
@@ -760,8 +837,12 @@ def board():
             + spec_section("spec-catalog", 1, "The loop catalog", "A Charcoal head that teaches R8 at full size, then one plate per area. Every miniature is drawn from its loop's own steps.", cat, "Loop-Catalog", "catalog")
             + spec_section("spec-r8", 2, "The R8 card", "The R8 card at full size on White, with R-30's targets in red: the return line L39 and A5's keyline.", r8, "R8-Loop-Card", "card")
             + spec_section("spec-r10", 3, "The R10 card, the stress test", "Four steps from documented to plausible, with R-01's targets in red. The rail moves under the drawing.", r10, "R10-Loop-Card", "card")
-            + spec_section("spec-map", 4, "The whole system: the circuit", "Concept 09 redrawn: every loop connection a wire, every other connection counted.", mp.replace(f'src="{""}20261028_A-Circuit-Reduced.png"', f'src="{REL}20261028_A-Circuit-Reduced.png"'), "Circuit-Page", "map", phone=False)
-            + spec_section("spec-reform", 5, "The R-01 reform view", "One reform's targets in red, on White, on the loop card and on the whole circuit.", rv.replace('src="20261028_A-Reform-R-01-Circuit-Reduced.png"', f'src="{REL}20261028_A-Reform-R-01-Circuit-Reduced.png"'), "R-01-Reform-View", "reform")
+            + spec_section("spec-reform", 4, "The R-01 reform view", "One reform's targets in red, on White: on the R10 card drawing here, and on the whole system in Direction C's reform view.", rv, "R-01-Reform-View", "reform")
+            + '<section id="sign" aria-label="One sign mark everywhere"><div class="bd"><div class="bd-spec"><p class="eyebrow">For decision 3</p><h2>One sign mark everywhere</h2>'
+            + '<p>The R8 card twice, at true size, so the sign mark can be judged where it lives. Option 1 is the circled sign from Concept 08, with an arrowhead on every step. Option 2 is Direction C’s pointing tag: one Charcoal tag that carries the sign and points the way the step runs, so the arrowheads go. Everything else on the two cards is the same, and the reform foot is left off both.</p></div>'
+            + '<h3>Option 1: the circled sign, with arrowheads</h3></div>' + opt1
+            + '<div class="bd bd-tight"><h3>Option 2: Direction C’s pointing tag</h3></div>' + opt2
+            + '<div class="bd bd-tight"><p>The studio recommends the pointing tag (CD round two, section 5, decision 3): one mark then carries both the sign and the direction on the cards and on C’s map. On a documented step the tag holds the record square, as the circled sign’s capsule does. The tag stays Charcoal on a red line, so the sign never reads in red.</p></div></section>'
             + f'<div class="bd">{checks_html()}'
             + '<section class="bd-dec" id="decide"><p class="eyebrow" style="color:#DCD9D2">Decisions for Dustin</p><h2>What you decide for Direction A</h2>'
             + '<div class="bd-wrapt" tabindex="0" role="region" aria-label="Decisions for Dustin"><table><thead><tr><th scope="col">Decision</th><th scope="col">Options</th><th scope="col">Studio recommendation</th><th scope="col">Why</th></tr></thead><tbody>'

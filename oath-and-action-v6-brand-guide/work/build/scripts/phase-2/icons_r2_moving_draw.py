@@ -1,20 +1,23 @@
-"""Concept 2, Moving part: the ten display masters (design director, Phase 2 round two).
+"""Concept 2, Moving part: the ten display masters, stage 2 (design director, Phase 2 round two).
 
-Each subject is built from two to four solid pieces held apart by one constant cut. The red piece
-is the one that moves: the ballot paper entering the box, the door leaf, the lifted corner, the coin
-leaving the hand. The Charcoal pieces hold the structure around it.
+Each subject is built from two to four solid pieces held apart by one constant cut. The red piece is
+the one that moves: the lid lifting, the top stage rising, the door leaf swinging, the ballot going in,
+the second banknote changing hands. The Charcoal pieces hold the structure around it. The stage 1
+drawings, as the creative director reviewed them, are kept in icons_r2_moving_draw_stage1.py.
 
 Grid: round one's 24-unit grid, 2-unit padding, live area 2 to 22; keylines circle 20, square 18,
-portrait 16 by 20, landscape 20 by 16.
+portrait 16 by 20, landscape 20 by 16. Straight edges stay inside the live area; round forms
+overshoot by 0.25 units at most.
 Display master: cut 1.5 units; convex corners 1-unit radius; concave corners square; counters 3
-units or more; one 2-unit bar where the subject needs a line.
+units or more. The red piece is the one piece allowed off the 90 degree grid, turned up to 20 degrees.
 
-The pillar node is 3 units across. With the 1.5-unit cut around it, its clear zone is 6 units across,
-the same footprint as Direction A's 4-unit node in its 1-unit seat.
+The pillar node is 3 units across; with the cut around it, its clear zone is 6 units, Direction A's
+seat. In Explain, Act and Track the node is the hinge or joint the red piece moves about.
 
-pieces(name, step) returns a list of (role, d): role "ink" or "accent", d one piece as SVG path data.
-step moves the red piece along its path (0 for the standalone master; the row state uses STEP).
-Every coordinate below was placed by hand and judged at 2x.
+pieces(name, step) returns [(role, d)] with role "ink" or "accent" and d one piece as SVG path data.
+step moves the red piece along its path: 0 for the standalone master, STEP (2 units) for the current
+item in a row. CUT and R1 are read at call time, so the hinting script can redraw a subject with the
+24 px cut (2 px) and square corners.
 """
 import math
 import sys
@@ -29,8 +32,12 @@ from icons_r2_moving_geom import circle_d, contour_d, ellipse_d, pt_on, rect, re
 CUT = 1.5
 R1 = 1.0           # outer corner radius in the display master
 NODE_R = 1.5       # the pillar node, 3 units across
-CLEAR = NODE_R + CUT
 STEP = 2.0         # how far the red piece moves for the current item in a row
+
+
+def clear():
+    return NODE_R + CUT
+
 
 ICONS = ["explain", "track", "connect", "act", "ballot", "bill", "testify", "housing", "money", "loop"]
 LABELS = {"explain": "Explain", "track": "Track", "connect": "Connect", "act": "Act", "ballot": "Ballot",
@@ -41,145 +48,214 @@ CLASS = {"explain": "Pillar mark", "track": "Pillar mark", "connect": "Pillar ma
          "ballot": "Topic symbol", "bill": "Topic symbol", "testify": "Topic symbol", "housing": "Topic symbol",
          "money": "Topic symbol", "loop": "Atlas symbol"}
 REASON = {
-    "explain": "The lifted corner is red: it is the part you raise to see inside.",
+    "explain": "The lid is red: it is the part you lift to see inside, turning on its hinge.",
     "track": "The top stage is red: it is the stage the decision rises to next.",
-    "connect": "The bridge is red: it is the ground that spans the gap between two halves.",
-    "act": "The door leaf is red: it is the part you push to walk through.",
+    "connect": "The bridge is red: it is the ground that spans the gap and joins the two halves.",
+    "act": "The door leaf is red: it is the part you push to walk through. The node is its hinge.",
     "ballot": "The paper is red: it is your marked vote, on its way into the box.",
     "bill": "The folded corner is red: it is the page being turned, the bill in motion.",
     "testify": "The sound is red: it is the testimony leaving the speaker. The person stays Charcoal.",
     "housing": "The door is red: it is the way in, the part a resident opens.",
-    "money": "The rising coin is red: it is the money leaving the hand.",
-    "loop": "One arc is red: it is the link where a reform acts on the loop.",
+    "money": "The second note is red: it is the money changing hands, sliding out from behind.",
+    "loop": "The return is red: it is the feedback, the link that brings the effect back to its cause.",
+}
+STORY = {
+    "explain": "We open the workings of a decision so you can see inside.",
+    "track": "We follow a decision as it moves up through its stages.",
+    "connect": "We build the ground between people and the officials who serve them.",
+    "act": "We give you a door you can walk through and a practical way to take part.",
 }
 
 
 def _y_on(c, r, x, sign):
     """The y where the circle (c, r) crosses the vertical line x; sign -1 for the upper crossing."""
-    return c[1] + sign * math.sqrt(r * r - (x - c[0]) ** 2)
+    return c[1] + sign * math.sqrt(max(0.0, r * r - (x - c[0]) ** 2))
 
 
 def _x_on(c, r, y, sign):
-    return c[0] + sign * math.sqrt(r * r - (y - c[1]) ** 2)
+    return c[0] + sign * math.sqrt(max(0.0, r * r - (y - c[1]) ** 2))
+
+
+def _line_circle(p, q, c, r):
+    """Parameters t in [0, 1] where the segment pq crosses the circle (c, r)."""
+    dx, dy = q[0] - p[0], q[1] - p[1]
+    fx, fy = p[0] - c[0], p[1] - c[1]
+    a = dx * dx + dy * dy
+    b = 2 * (fx * dx + fy * dy)
+    cc = fx * fx + fy * fy - r * r
+    disc = b * b - 4 * a * cc
+    if disc < 0:
+        return []
+    s = math.sqrt(disc)
+    return [t for t in ((-b - s) / (2 * a), (-b + s) / (2 * a)) if 0 <= t <= 1]
+
+
+def _rot(pts, piv, deg):
+    """Rotate points about piv; negative degrees turn counterclockwise on screen."""
+    a = math.radians(deg)
+    ca, sa = math.cos(a), math.sin(a)
+    return [(piv[0] + (x - piv[0]) * ca - (y - piv[1]) * sa, piv[1] + (x - piv[0]) * sa + (y - piv[1]) * ca) for x, y in pts]
 
 
 # ====================================================================== pillar marks
 
 def explain(step=0.0):
-    """A square broken open, its top-right quarter lifted out. The node sits at the hinge, exactly
-    between the L's inner corner and the lid's corner, and both pieces wrap it across the cut."""
-    x0, y0, S = 3.5, 7.0, 13.5
+    """A square broken open, its top-right quarter a lid. The lid turns 20 degrees on the corner it
+    shares with the square's top edge, so the gaps along its hinge side open as wedges from 1.5 units,
+    and it wraps the node across the cut where it passes over the open corner."""
+    x0, y0, S = 3.5, 7.5, 13.0
     q = S / 2
-    ic = (x0 + S - q, y0 + q)                       # the L's inner corner, (10.25, 13.75)
-    nc = (12.0, 12.0)
-    L = [(x0, y0, R1), (ic[0], y0, R1), (ic[0], _y_on(nc, CLEAR, ic[0], -1), R1), ("arc", *nc, False),
-         (_x_on(nc, CLEAR, ic[1], +1), ic[1], R1), (x0 + S, ic[1], R1), (x0 + S, y0 + S, R1), (x0, y0 + S, R1)]
-    D = 3.5 + step / math.sqrt(2)
-    lx, ly = ic[0] + D, y0 - D
-    if math.dist((lx, ly + q), nc) < CLEAR:
-        lid = [(lx, ly, R1), (lx + q, ly, R1), (lx + q, ly + q, R1), (_x_on(nc, CLEAR, ly + q, +1), ly + q, R1),
-               ("arc", *nc, False), (lx, _y_on(nc, CLEAR, lx, -1), R1)]
+    ic = (x0 + S - q, y0 + q)                          # the L's inner corner
+    nc = (ic[0] + 1.75, ic[1] - 1.75)                   # the node, at the hinge of the open corner
+    C = clear()
+    L = [(x0, y0, R1), (ic[0], y0, R1), (ic[0], _y_on(nc, C, ic[0], -1), R1), ("arc", *nc, False),
+         (_x_on(nc, C, ic[1], +1), ic[1], R1), (x0 + S, ic[1], R1), (x0 + S, y0 + S, R1), (x0, y0 + S, R1)]
+    lift = 0.75
+    hinge = (ic[0] + CUT, y0 - lift)
+    ang = 20.0 + math.degrees(step / (q * math.sqrt(2)))   # the far corner moves `step` units further open
+    A, B, Cc, Dd = _rot([(hinge[0], hinge[1]), (hinge[0] + q, hinge[1]), (hinge[0] + q, hinge[1] + q), (hinge[0], hinge[1] + q)], hinge, -ang)
+    sq = contour_d([(*A, R1), (*B, R1), (*Cc, R1), (*Dd, R1)])
+    t1 = _line_circle(Cc, Dd, nc, C)
+    t2 = _line_circle(Dd, A, nc, C)
+    if math.dist(Dd, nc) < C and t1 and t2:
+        P1 = (Cc[0] + (Dd[0] - Cc[0]) * t1[0], Cc[1] + (Dd[1] - Cc[1]) * t1[0])
+        P2 = (Dd[0] + (A[0] - Dd[0]) * t2[-1], Dd[1] + (A[1] - Dd[1]) * t2[-1])
+        lid = contour_d([(*A, R1), (*B, R1), (*Cc, R1), (*P1, R1), ("arc", *nc, False), (*P2, R1)])
     else:
-        lid = rect(lx, ly, q, q, R1)
-    return [("ink", contour_d(L)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(lid))]
+        import pathops
+        from icons_geom import d_of
+        lid = d_of(pathops.simplify(pathops.op(G.to_pathops(sq), G.to_pathops(circle_d(*nc, C)), pathops.PathOp.DIFFERENCE), clockwise=True))
+    return [("ink", contour_d(L)), ("ink", circle_d(*nc, NODE_R)), ("accent", lid)]
 
 
 def track(step=0.0):
-    """Direction A's stair (stages 2-8, 8-16, 16-22), raised to a base of 20. The node keeps Direction
-    A's seat on tread 2, on the center line, moved half a unit right so both lips of the seat are 1.5 units. The top stage is a red block resting on the stair across the
-    cut; it rises."""
-    xs = (2.0, 8.0, 16.0, 22.0)
-    base, h = 20.0, 4.0
-    t1, t2 = base - h, base - 2 * h
-    nc = (12.5, t2)
-    stair = [(xs[0], base, R1), (xs[0], t1, R1), (xs[1], t1, 0), (xs[1], t2, R1), (nc[0] - CLEAR, t2, R1),
-             ("arc", *nc, False), (nc[0] + CLEAR, t2, R1), (xs[3], t2, R1), (xs[3], base, R1)]
-    rb = t2 - CUT - step
-    top = rect(xs[2], rb - h, xs[3] - xs[2], h, R1)
-    return [("ink", contour_d(stair)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(top))]
+    """Three stages of equal rise and run, climbing from bottom left to top right on the landscape
+    keyline. The node rests in the joint between the first and second stages. The top stage is a red
+    block resting on the stair across the cut; it rises."""
+    x0, x1, top, base = 3.5, 20.5, 4.0, 20.0
+    u, r = (x1 - x0) / 3, (base - top) / 3
+    xs = [x0 + u * i for i in range(4)]
+    t1, t2 = base - r, base - 2 * r
+    nc = (xs[1] - clear(), t1 - clear())
+    stair = [(xs[0], base, R1), (xs[0], t1, R1), (xs[1], t1, 0), (xs[1], t2, R1), (xs[3], t2, R1), (xs[3], base, R1)]
+    red = rect(xs[2], top - step, u, t2 - CUT - top, R1)
+    return [("ink", contour_d(stair)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(red))]
 
 
 def connect(step=0.0):
-    """One circle in two halves held apart. A red bridge spans the gap from flat face to flat face,
-    one cut from each, with the node knocked out of its middle."""
+    """One circle in two halves, held 5 units apart. A red bar bridges the gap, its ends resting in
+    shallow slots in both halves across the cut, with the node knocked out at its center. In the
+    row state the bridge slides 2 units down into place."""
     c = (12.0, 12.0)
-    R = 10.25                      # the 20-unit circle keyline plus overshoot
-    g = 4.5                        # half the gap
+    R = 9.75
+    g = 2.5                         # half the gap
+    bar, reach = 4.5, 1.5
     hy = math.sqrt(R * R - g * g)
-    left = [(c[0] - g, c[1] + hy, R1), ("arc", *c, True), (c[0] - g, c[1] - hy, R1)]
-    right = [(c[0] + g, c[1] - hy, R1), ("arc", *c, True), (c[0] + g, c[1] + hy, R1)]
-    w = g - CUT
-    bh = 6.0
-    by = c[1] - bh / 2 - step
-    bridge = contour_d(rect(c[0] - w, by, 2 * w, bh, R1)) + circle_d(c[0], c[1] - step, NODE_R, hole=True)
-    return [("ink", contour_d(left)), ("ink", contour_d(right)), ("accent", bridge)]
+    hb = bar / 2
+    bx = g + reach
+    cy = c[1] + step
+
+    def seat(side):
+        s = -1 if side == "L" else 1
+        fx = c[0] + s * g
+        ex = c[0] + s * (bx + CUT)
+        y0, y1 = cy - hb - CUT, cy + hb + CUT
+        if side == "L":
+            return [(fx, y0, R1), (ex, y0, 0), (ex, y1, 0), (fx, y1, R1)]
+        return [(fx, y1, R1), (ex, y1, 0), (ex, y0, 0), (fx, y0, R1)]
+
+    L = [(c[0] - g, c[1] + hy, R1), ("arc", *c, True), (c[0] - g, c[1] - hy, R1)] + seat("L")
+    Rr = [(c[0] + g, c[1] - hy, R1), ("arc", *c, True), (c[0] + g, c[1] + hy, R1)] + seat("R")
+    bridge = contour_d(rect(c[0] - bx, cy - hb, 2 * bx, bar, R1)) + circle_d(c[0], cy, NODE_R, hole=True)
+    return [("ink", contour_d(L)), ("ink", contour_d(Rr)), ("accent", bridge)]
 
 
 def act(step=0.0):
-    """A door swung open toward you. The frame holds still: a full lintel and the far jamb. The leaf
-    is red, with its handle knocked out on the center line; it swings further open."""
+    """A door swung well open toward you. The Charcoal frame carries the structure: a full lintel,
+    the far jamb and a floor bar. The red leaf is narrow, as a door swung far open looks from the
+    front, and the node is its hinge pin on the center line. In the row state the leaf swings 2 units
+    further."""
     lint = (2.0, 4.5)
     jx = 19.0
-    frame = [(2.5, lint[0], R1), (21.5, lint[0], R1), (21.5, 22, R1), (jx, 22, R1), (jx, lint[1], 0), (2.5, lint[1], R1)]
-    hx = 10.5                      # the leaf's hinge edge
-    fx = 4.5 - step                # its free edge, nearer the viewer
-    tf = lint[1] + CUT - 0.6           # the fillet pulls the leaf's top corner down; this keeps the cut at 1.5
-    leaf = [(fx, tf, R1), (hx, tf + 3.0, R1), (hx, 22, R1), (fx, 22, R1)]
-    handle = circle_d(fx + 3.0, 12.0, NODE_R, hole=True)
-    return [("ink", contour_d(frame)), ("accent", contour_d(leaf) + handle)]
+    floor_t = 20.0
+    frame = [(2.5, lint[0], R1), (21.5, lint[0], R1), (21.5, floor_t - CUT, R1), (jx, floor_t - CUT, R1), (jx, lint[1], 0), (2.5, lint[1], R1)]
+    flo = rect(2.5, floor_t, 19.0, 22.0 - floor_t, R1)
+    hx = 10.0
+    fx = hx - 3.5 - step
+    tf = lint[1] + CUT - 0.6 + 0.15 * step
+    nc = (hx + 1.5, 12.0)
+    C = clear()
+    leaf = [(fx, tf, R1), (hx, tf + 2.5, R1), (hx, _y_on(nc, C, hx, -1), R1), ("arc", *nc, False), (hx, _y_on(nc, C, hx, +1), R1),
+            (hx, floor_t - CUT, R1), (fx, floor_t - CUT, R1)]
+    return [("ink", contour_d(frame)), ("ink", contour_d(flo)), ("ink", circle_d(*nc, NODE_R)), ("accent", contour_d(leaf))]
 
 
 # ====================================================================== topic and atlas symbols
 
 def ballot(step=0.0):
-    """A box with a slot and a marked paper going in. The paper is red; its mark, a filled bubble of the
-    kind many US paper ballots ask for, is knocked out with the same 1.5-unit walls as the node."""
-    bx0, bx1, top, bot = 4.0, 20.0, 11.5, 21.0
-    box = contour_d(rect(bx0, top, bx1 - bx0, bot - top, R1)) + contour_d(rect_hole(6.5, top + CUT, 11.0, CUT))
-    px0, px1, ptop = 9.0, 15.0, 2.5
-    pb = top - CUT
-    paper = contour_d(rect(px0, ptop + step, px1 - px0, pb - ptop, R1))
-    mark = circle_d(12.0, ptop + step + CUT + 1.5, 1.5, hole=True)
-    return [("ink", box), ("accent", paper + mark)]
+    """A box with a slot in its top edge and a marked paper going in. The paper is red, its mark a
+    ballot oval knocked out. Its lower third sinks into the slot and behind the box's face; in the row
+    state it sinks 2 units deeper."""
+    bx0, bx1, top, bot = 3.5, 20.5, 11.0, 20.5
+    pw = 5.5
+    depth = 2.75
+    sx0, sx1 = 12 - pw / 2 - CUT, 12 + pw / 2 + CUT
+    floor = top + depth
+    box = [(bx0, top, R1), (sx0, top, R1), (sx0, floor, 0), (sx1, floor, 0), (sx1, top, R1), (bx1, top, R1), (bx1, bot, R1), (bx0, bot, R1)]
+    ptop = 3.0 + step
+    pb = floor - CUT
+    paper = contour_d(rect(12 - pw / 2, ptop, pw, pb - ptop, R1))
+    mark = ellipse_d(12.0, ptop + CUT + 1.1, 1.75, 1.1, hole=True)
+    return [("ink", contour_d(box)), ("accent", paper + mark)]
 
 
 def bill(step=0.0):
-    """A page with a folded corner and lines of text. The fold is red and nests in the page's notch."""
-    x0, x1, y0, y1 = 5.5, 18.5, 2.5, 21.5
-    f = 7.0
-    fx, fy = x1 - f, y0 + f                         # the fold's inner corner
+    """A page with a folded corner and lines of text. The fold is red and nests in the page's notch
+    across the cut. Its top point stays 1.5 units below the page's top edge, so it reads as a fold and
+    never as a bookmark flag. In the row state the corner peels 2 units outward."""
+    x0, x1, y0, y1 = 5.5, 18.75, 2.25, 22.0
+    f = 7.75
+    fx, fy = x1 - f, y0 + f
     page = [(x0, y0, R1), (fx - CUT, y0, R1), (fx - CUT, fy + CUT, 0), (x1, fy + CUT, R1), (x1, y1, R1), (x0, y1, R1)]
     lines = ""
-    for ly, lx1 in ((12.5, 15.5), (15.5, 15.5), (18.5, 12.5)):
-        lines += contour_d(rect_hole(8.5, ly, lx1 - 8.5, CUT))
-    s = step / math.sqrt(2)
-    fold = [(fx + s, y0 - s, R1), (x1 + s, fy - s, R1), (fx + s, fy - s, R1)]
+    first = fy + CUT + CUT
+    for i, lx1 in enumerate((16.0, 16.0, 12.0)):
+        lines += contour_d(rect_hole(8.0, first + 3 * i, lx1 - 8.0, CUT))
+    fold = [(fx + step, y0 + CUT, R1), (x1 + step, fy, R1), (fx + step, fy, R1)]
     return [("ink", contour_d(page) + lines), ("accent", contour_d(fold))]
 
 
 def testify(step=0.0):
     """A person speaking at a microphone. The person is Charcoal. The sound is a red quarter ring
-    before the mouth, nested around the head across the cut; it moves outward."""
-    hc, hr = (7.5, 10.5), 3.5
+    before the mouth, nested around the head across the cut; the microphone stands close, its head
+    at mouth height. In the row state the sound turns upward along its ring."""
+    sc, sr = (6.75, 21.25), 5.0
+    hr = 3.75
+    hc = (6.75, sc[1] - sr - CUT - hr)
     head = circle_d(*hc, hr)
-    sc, sr = (7.5, 21.0), 5.5
     shoulders = [(sc[0] - sr, sc[1], R1), ("arc", *sc, True), (sc[0] + sr, sc[1], R1)]
-    r_in = hr + CUT + step
-    sound = ring_sector(*hc, r_in + 2.25, r_in, -45, 45, R1)
-    # microphone on a floor stand: a capsule on a 2-unit stem with a foot, one piece
-    mx0, mx1, mt, mb = 16.25, 19.75, 4.5, 12.0
-    mr = (mx1 - mx0) / 2
+    r_in = hr + CUT
+    ring_w = 2.0
+    rot = math.degrees(step / (r_in + ring_w / 2))
+    sound = ring_sector(*hc, r_in + ring_w, r_in, -45 - rot, 45 - rot, R1)
+    mw = 4.0
+    mr = mw / 2
+    mx0 = hc[0] + r_in + ring_w + CUT
+    mt = hc[1] - 2.25
+    mb = mt + 7.0
     cx = mx0 + mr
-    sx0, sx1 = cx - 1.0, cx + 1.0
-    mic = [(mx0, mt + mr, 0), ("arc", cx, mt + mr, True), (mx1, mt + mr, 0), (mx1, mb - mr, 0), ("arc", cx, mb - mr, True),
-           (sx1, mb - mr + math.sqrt(mr * mr - 1.0), 0), (sx1, 19.0, 0), (21.0, 19.0, R1), (21.0, 21.0, R1),
-           (15.0, 21.0, R1), (15.0, 19.0, R1), (sx0, 19.0, 0), (sx0, mb - mr + math.sqrt(mr * mr - 1.0), 0),
+    sx0, sx1 = cx - 1.25, cx + 1.25
+    yj = mb - mr + math.sqrt(mr * mr - 1.25 ** 2)
+    mic = [(mx0, mt + mr, 0), ("arc", cx, mt + mr, True), (mx0 + mw, mt + mr, 0), (mx0 + mw, mb - mr, 0), ("arc", cx, mb - mr, True),
+           (sx1, yj, 0), (sx1, 19.0, 0), (cx + 2.75, 19.0, R1), (cx + 2.75, 21.0, R1),
+           (cx - 2.5, 21.0, R1), (cx - 2.5, 19.0, R1), (sx0, 19.0, 0), (sx0, yj, 0),
            ("arc", cx, mb - mr, True), (mx0, mb - mr, 0)]
     return [("ink", head), ("ink", contour_d(shoulders)), ("ink", contour_d(mic)), ("accent", contour_d(sound))]
 
 
 def housing(step=0.0):
-    """A house with a pitched roof and a door. The door is red; a window keeps it a house."""
+    """A house with a pitched roof and a door. The door is red; a window keeps it a house. In the row
+    state the door swings open, its free edge moving 2 units toward its hinge."""
     rx0, rx1, eave = 3.0, 21.0, 11.5
     apex = (12.0, eave - (rx1 - rx0) / 2)
     roof = [(rx0, eave, R1), (*apex, R1), (rx1, eave, R1)]
@@ -188,50 +264,30 @@ def housing(step=0.0):
     body = [(bx0, by0, R1), (bx1, by0, R1), (bx1, by1, R1), (dx1 + CUT, by1, R1), (dx1 + CUT, dy0 - CUT, 0),
             (dx0 - CUT, dy0 - CUT, 0), (dx0 - CUT, by1, R1), (bx0, by1, R1)]
     window = rect_hole(15.25, 15.25, 3.0, 3.0)
-    door = rect(dx0 - step, dy0, dx1 - dx0, by1 - dy0, R1)
+    door = rect(dx0, dy0, dx1 - dx0 - step, by1 - dy0, R1)
     return [("ink", contour_d(roof)), ("ink", contour_d(body) + contour_d(window)), ("accent", contour_d(door))]
 
 
-def _circle_bitten(c, r, b, rb, rr=R1):
-    """Contour of the disc (c, r) minus the disc (b, rb), as one clockwise contour: the long arc of c
-    between the two crossings, then the bite along b. Fillets of rr at both junctions."""
-    d = math.dist(c, b)
-    a = (r * r - rb * rb + d * d) / (2 * d)
-    h = math.sqrt(r * r - a * a)
-    ex, ey = (b[0] - c[0]) / d, (b[1] - c[1]) / d
-    mx, my = c[0] + ex * a, c[1] + ey * a
-    p1 = (mx - ey * h, my + ex * h)
-    p2 = (mx + ey * h, my - ex * h)
-    # go clockwise around c from p1 to p2 the long way (away from b), then back along b counterclockwise
-    a1 = math.atan2(p1[1] - c[1], p1[0] - c[0])
-    a2 = math.atan2(p2[1] - c[1], p2[0] - c[0])
-    ab = math.atan2(b[1] - c[1], b[0] - c[0])
-    # choose start so that the clockwise sweep from start to end avoids the direction of b
-    def cw_contains(s, e, t):
-        span = (e - s) % (2 * math.pi)
-        return (t - s) % (2 * math.pi) < span
-    if cw_contains(a1, a2, ab):
-        p1, p2 = p2, p1
-    return [(*p1, rr), ("arc", *c, True), (*p2, rr), ("arc", *b, False)]
+def _note(cx, cy, w, h, ang, r):
+    a = math.radians(ang)
+    ca, sa = math.cos(a), math.sin(a)
+    return [(cx + x * ca - y * sa, cy + x * sa + y * ca, r) for x, y in ((-w / 2, -h / 2), (w / 2, -h / 2), (w / 2, h / 2), (-w / 2, h / 2))]
 
 
 def money(step=0.0):
-    """A hand and a coin. An open hand, palm up, with the thumb raised as a quarter disc; a Charcoal coin
-    rests above the palm and a second coin, red, rises from behind it, leaving the hand."""
-    cuff = rect(2.0, 14.0, 2.75, 7.5, R1)
-    x0, top, bot, tr = 6.25, 17.0, 21.5, 3.75
-    hand = [(x0, top - tr, 0), ("arc", x0, top, True), (x0 + tr, top, 0), (19.75, top, 0),
-            ("arc", 19.75, (top + bot) / 2, True), (19.75, bot, 0), (x0, bot, R1)]
-    ic, ir = (13.0, 12.25), 3.0
-    ang = math.atan2(-3.75, 3.75)
-    dist = math.hypot(3.75, 3.75) + step
-    rc = (ic[0] + dist * math.cos(ang), ic[1] + dist * math.sin(ang))
-    rr = 3.0
-    if math.dist(rc, ic) < rr + ir + CUT:
-        red = contour_d(_circle_bitten(rc, rr, ic, ir + CUT))
-    else:
-        red = circle_d(*rc, rr)
-    return [("ink", contour_d(cuff)), ("ink", contour_d(hand)), ("ink", circle_d(*ic, ir)), ("accent", red)]
+    """Campaign money as banknotes. A Charcoal landscape note with its center disc and two corner
+    marks knocked out; a second note in red slides up and out from behind it across the cut, turned
+    12 degrees. The red note is the money changing hands."""
+    import pathops
+    from icons_geom import d_of
+    w, h, cy = 16.0, 9.5, 14.75
+    front = contour_d(_note(12.0, cy, w, h, 0, R1)) + circle_d(12.0, cy, 2.75, hole=True)
+    front += contour_d(rect_hole(12 - w / 2 + 1.75, cy - h / 2 + 1.75, 2.5, CUT))
+    front += contour_d(rect_hole(12 + w / 2 - 1.75 - 2.5, cy + h / 2 - 1.75 - CUT, 2.5, CUT))
+    back = contour_d(_note(12.25, cy - 3.25 - step, w, h, -12.0, R1))
+    grown = G.to_pathops(contour_d(_note(12.0, cy, w + 2 * CUT, h + 2 * CUT, 0, R1 + CUT)))
+    red = pathops.simplify(pathops.op(G.to_pathops(back), grown, pathops.PathOp.DIFFERENCE), clockwise=True)
+    return [("ink", front), ("accent", d_of(red))]
 
 
 def _seg_dist(p, a, b):
@@ -256,16 +312,16 @@ def _solve(f, lo, hi, target, n=60):
 
 
 def _arrow_arm(c, Rm, w, hl, hh, tail_node, head_node, nr, a_from, a_to):
-    """One arrowed arc of the loop, clockwise from a_from to a_to (degrees). Its tail and its tip are
-    placed exactly one cut from the two nodes. The arrowhead is a triangle whose base is radial and
-    whose tip runs along the tangent, so its two sides are mirror images. Its three corners take a
-    half-unit radius, an optical correction: a 1-unit radius blunts an acute point."""
-    clear = nr + CUT
+    """One arrowed arc, clockwise from a_from to a_to (degrees). Its tail and its tip sit exactly one
+    cut from the two nodes. The arrowhead is a triangle whose base is radial and whose tip runs along
+    the tangent, so its two sides are mirror images. Its three corners take a half-unit radius, an
+    optical correction: a 1-unit radius blunts an acute point."""
+    clear_ = nr + CUT
 
     def tail_gap(a):
         return _seg_dist(tail_node, pt_on(*c, Rm - w / 2, a), pt_on(*c, Rm + w / 2, a))
 
-    a_tail = _solve(tail_gap, a_from, a_from + 90, clear)
+    a_tail = _solve(tail_gap, a_from, a_from + 90, clear_)
 
     def head_pts(a):
         t = math.radians(a)
@@ -278,26 +334,39 @@ def _arrow_arm(c, Rm, w, hl, hh, tail_node, head_node, nr, a_from, a_to):
         bo, tip, bi = head_pts(a)
         return min(_seg_dist(head_node, bo, tip), _seg_dist(head_node, tip, bi))
 
-    a_base = _solve(head_gap, a_to - 90, a_to, clear)
+    a_base = _solve(head_gap, a_to - 90, a_to, clear_)
     bo, tip, bi = head_pts(a_base)
     to, ti = pt_on(*c, Rm + w / 2, a_base), pt_on(*c, Rm - w / 2, a_base)
     p_o, p_i = pt_on(*c, Rm + w / 2, a_tail), pt_on(*c, Rm - w / 2, a_tail)
-    return contour_d([(*p_o, R1), ("arc", *c, True), (*to, 0), (*bo, 0.5), (*tip, 0.5), (*bi, 0.5), (*ti, 0),
+    r_ = min(R1, 0.5) if R1 else 0
+    return contour_d([(*p_o, R1), ("arc", *c, True), (*to, 0), (*bo, r_), (*tip, r_), (*bi, r_), (*ti, 0),
                       ("arc", *c, False), (*p_i, R1)])
 
 
 def loop(step=0.0):
-    """Two nodes joined by two arrowed arcs into a loop, read top to bottom. The right arc and its
-    arrowhead are red: it runs from the top node down into the bottom node. In the row state it
-    pulls back from the top node along its path."""
-    c = (12.0, 12.0)
-    Rm, w, nr = 7.0, 2.75, 3.25
-    hl, hh = 4.75, 2.75
-    top, bottom = pt_on(*c, Rm, 270), pt_on(*c, Rm, 90)
-    red = _arrow_arm(c, Rm, w, hl, hh, top, bottom, nr + step, 270, 450)
-    ink_arc = _arrow_arm(c, Rm, w, hl, hh, bottom, top, nr, 90, 270)
-    nodes = circle_d(*top, nr) + circle_d(*bottom, nr)
-    return [("ink", nodes), ("ink", ink_arc), ("accent", red)]
+    """A feedback loop that is not a half-turn: two nodes on the vertical center line, a straight
+    Charcoal forward link with a solid arrowhead down the axis, and the return as a red arc with its
+    arrowhead bowing out to the left and back up into the first node. The return is the feedback. In
+    the row state the return bows 2 units further out."""
+    cx, ty, by = 13.0, 4.75, 19.25
+    nr = 3.0
+    top, bot = (cx, ty), (cx, by)
+    bar, hl, hh = 3.0, 3.25, 3.25
+    y_from, y_tip = ty + nr + CUT, by - nr - CUT
+    y_base = y_tip - hl
+    r_ = min(R1, 0.5) if R1 else 0
+    fw = [(cx + bar / 2, y_from, R1), (cx + bar / 2, y_base, 0), (cx + hh, y_base, r_), (cx, y_tip, r_), (cx - hh, y_base, r_),
+          (cx - bar / 2, y_base, 0), (cx - bar / 2, y_from, R1)]
+    half = (by - ty) / 2
+    sag = hh + CUT + 1.25 + step                                   # how far the return bows out from the axis
+    k = (half * half - sag * sag) / (2 * sag)           # center offset to the right of the axis
+    Rm = sag + k
+    c = (cx + k, (ty + by) / 2)
+    a_bot = math.degrees(math.atan2(bot[1] - c[1], bot[0] - c[0]))
+    a_top = math.degrees(math.atan2(top[1] - c[1], top[0] - c[0])) % 360
+    ret = _arrow_arm(c, Rm, 2.0, 3.5, 2.5, bot, top, nr, a_bot, a_top)
+    nodes = circle_d(*top, nr) + circle_d(*bot, nr)
+    return [("ink", nodes), ("ink", contour_d(fw)), ("accent", ret)]
 
 
 DRAW = {"explain": explain, "track": track, "connect": connect, "act": act, "ballot": ballot, "bill": bill,
@@ -306,3 +375,22 @@ DRAW = {"explain": explain, "track": track, "connect": connect, "act": act, "bal
 
 def pieces(name, step=0.0):
     return DRAW[name](step)
+
+
+class spec:
+    """Context manager that redraws with another cut and corner radius, for the hinted masters."""
+
+    def __init__(self, cut, r1, node_r=None):
+        self.cut, self.r1, self.node_r = cut, r1, node_r
+
+    def __enter__(self):
+        global CUT, R1, NODE_R
+        self.old = (CUT, R1, NODE_R)
+        CUT, R1 = self.cut, self.r1
+        if self.node_r is not None:
+            NODE_R = self.node_r
+        return self
+
+    def __exit__(self, *a):
+        global CUT, R1, NODE_R
+        CUT, R1, NODE_R = self.old

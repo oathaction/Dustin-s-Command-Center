@@ -47,7 +47,8 @@ def arc(cx, cy, r, a0, a1, w=BAR):
 
 
 def path(segs, w=BAR):
-    """Mixed straight and arc segments as one bar: ("M", x, y), ("L", x, y), ("A", cx, cy, r, a0, a1)."""
+    """Mixed straight and arc segments as one bar: ("M", x, y), ("L", x, y), ("A", cx, cy, r, a0, a1),
+    ("Z",)."""
     return stroke_path(segs, w, "round", "round")
 
 

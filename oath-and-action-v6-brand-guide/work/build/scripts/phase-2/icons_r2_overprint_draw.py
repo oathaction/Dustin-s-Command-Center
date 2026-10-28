@@ -341,6 +341,208 @@ def rotate_path(path, deg, cx, cy):
     return g.rot(path, deg, cx, cy)
 
 
+# ------------------------------------------------------------------ the 16 px masters
+# Drawn by hand, pixel by pixel, on the 16-unit grid (live area 1 to 14). "#" is ink, "r" is the red
+# plane, "R" is ink printed over the red plane, "." is the surface. Every edge sits on a whole pixel.
+
+BM16 = {
+    "explain": """
+................
+.........######.
+.........######.
+.........##..##.
+.........######.
+.........######.
+.#####..........
+.####Rrrr.......
+.##.#Rrrr.......
+.####RRRR#......
+.####RRRR#......
+.##.##..##......
+.##.....##......
+.#########......
+.#########......
+................""",
+    "track": """
+................
+................
+................
+.........######.
+.........######.
+.........RRrr##.
+.....####RRrr##.
+....#####RRrr##.
+....####.rrrr##.
+.######......##.
+.######......##.
+.##..........##.
+.##############.
+.##############.
+................
+................""",
+    "connect": """
+................
+................
+....##....##....
+...###....###...
+..####....####..
+.##.##....##.##.
+.##.##....##.##.
+.##.##.##.##.##.
+.##.##rRRr##.##.
+.##.##rrrr##.##.
+.##.##rrrr##.##.
+..####rrrr####..
+...###....###...
+....##....##....
+................
+................""",
+    "act": """
+................
+.###............
+.#####....#####.
+.##.#####.#####.
+.##...###....##.
+.##....##....##.
+.##....##....##.
+.##.##.##.rr.##.
+.##.##.##.rr.##.
+.##....##.rr.##.
+.##....##.rr.##.
+.##....##.rr.##.
+.##....##.rr.##.
+.#########RR###.
+.##############.
+................""",
+    "ballot": """
+................
+....########....
+....########....
+....#Rrrr.##....
+....#Rrrr.##....
+....#Rrrr.##....
+....#Rrrr.##....
+....##....##....
+.##############.
+.##############.
+.##..........##.
+.##..........##.
+.##..........##.
+.##############.
+.##############.
+................""",
+    "bill": """
+................
+..#######.......
+..########......
+..##....###.....
+..##....####....
+..##....######..
+..##....######..
+..##........##..
+..##........##..
+..##.rrrrrr.##..
+..##.rrrrrr.##..
+..##........##..
+..##........##..
+..############..
+..############..
+................""",
+    "testify": """
+................
+................
+.........###....
+........##.##...
+........##.##...
+.....##..###....
+....rr#.........
+...rr##.........
+..rr##...###....
+..r##...##.##...
+...##..##...##..
+...##..##...##..
+.##############.
+.##############.
+................
+................""",
+    "housing": """
+................
+.......##.......
+......####......
+.....######.....
+....###..###....
+...###....###...
+..###......###..
+..##........##..
+..##.######.##..
+..##.######.##..
+..##.RRrr##.##..
+..##.RRrr##.##..
+..###RRrr#####..
+..###RRrr#####..
+.....rrrr.......
+................""",
+    "money": """
+................
+................
+................
+.##############.
+.##############.
+.##...####...##.
+.##..######..##.
+.##..RRr.##..##.
+.##.rRRrr##..##.
+.##.rRRRR##..##.
+.##.rrRRR#...##.
+.####RRR#######.
+.##############.
+................
+................
+................""",
+    "loop": """
+................
+................
+................
+................
+................
+......##........
+...##..##...##..
+..RRR##########.
+.rRRRR#########.
+.rrRRr.##...##..
+.rrRRr##....##..
+..rRR.......##..
+....##.....##...
+.....#######....
+................
+................""",
+}
+
+
+def _runs(rows, chars):
+    out = []
+    for y, row in enumerate(rows):
+        x = 0
+        while x < len(row):
+            if row[x] in chars:
+                x1 = x
+                while x1 + 1 < len(row) and row[x1 + 1] in chars:
+                    x1 += 1
+                out.append(rect(x, y, x1 - x + 1, 1))
+                x = x1 + 1
+            else:
+                x += 1
+    return out
+
+
+def from_bitmap(name):
+    rows = BM16[name].strip("\n").split("\n")
+    ink = _runs(rows, "#R")
+    acc = _runs(rows, "rR")
+    return {"ink": union(*ink) if ink else g.empty(), "accent": union(*acc) if acc else g.empty(), "reg": None,
+            "lines": [], "discs": [], "size": 16, "rows": rows}
+
+
 # ------------------------------------------------------------------ the ten icons
 # Each function takes size: "display" (24-unit grid, 1.5-unit line), 24 or 16 (2 px line).
 
@@ -357,11 +559,11 @@ def display(name, var=None):
 
 
 def master(name, size):
-    return DRAW[name](size, None)
+    return from_bitmap(name) if size == 16 else DRAW[name](size, None)
 
 
 def draw(name, size, var=None):
-    return DRAW[name](size, var)
+    return from_bitmap(name) if size == 16 else DRAW[name](size, var)
 
 
 def half_pen(cx, cy, R, gap, side, rf=1.0):
@@ -417,6 +619,12 @@ def explain(size, var=None):
         k = 5.25 if var is None else float(var)
         reg = rrect(x0 + s_ - 0.25 - k, y0 + 0.25, k, k, r)
         return build([body, lid], [(x0 + q, y0 + q, NODE_R)], reg, size)
+    if size == 24:
+        body = rpoly([(5, 6), (11, 6), (11, 12), (17, 12), (17, 18), (5, 18)], 0)
+        hx, hy, q = 13, 4, 5
+        lid = rotate_pen(rrect_c(hx, hy, hx + q, hy + q, 0), -15, hx, hy)
+        reg = rrect(12, 7, 5, 5, 1)
+        return build([body, lid], [(11, 12, 2)], reg, size)
     raise KeyError(size)
 
 
@@ -433,6 +641,10 @@ def track(size, var=None):
                     (xs[3], ys[3]), (xs[3], ys[0])], [r, r, 0, r, 0, r, r, r])
         reg = rrect(xs[2], ys[3], xs[3] - xs[2], ys[2] - ys[3], r)
         return build([st], [(xs[1], 12, NODE_R)], reg, size)
+    if size == 24:
+        st = rpoly([(3, 20), (3, 15), (9, 15), (9, 10), (15, 10), (15, 5), (21, 5), (21, 20)], 0)
+        reg = rrect(15, 5, 6, 5, 1)
+        return build([st], [(9, 12, 2)], reg, size)
     raise KeyError(size)
 
 
@@ -447,6 +659,11 @@ def connect(size, var=None):
         wr = 4.5
         reg = rrect(12 - wr / 2, 9.25, wr, 5.5, R_RECT)
         return build([left, right], [(12, 12, NODE_R)], reg, size, off=(0.0, 1.5))
+    if size == 24:
+        left = half_pen(12, 12, 9, 8, -1, 1.0)
+        right = half_pen(12, 12, 9, 8, +1, 1.0)
+        reg = rrect(10, 9, 4, 5, 1)
+        return build([left, right], [(12, 12, 2)], reg, size, off=(0.0, 2.0))
     raise KeyError(size)
 
 
@@ -462,6 +679,12 @@ def act(size, var=None):
         wr = 4.5
         reg = rrect(14.5, 10.5, wr, 9.0, R_RECT)
         return build([leaf, frame, floor], [(7.25, 12, NODE_R)], reg, size)
+    if size == 24:
+        floor = line_c((3, 21), (21, 21))
+        leaf = rpoly([(3, 21), (3, 3), (10, 5), (10, 21)], 0, closed=False)
+        frame = rpoly([(13, 5), (19, 5), (19, 21)], 0, closed=False)
+        reg = rrect(14, 10, 4, 9, 1)
+        return build([leaf, frame, floor], [(6.5, 12, 2)], reg, size)
     raise KeyError(size)
 
 
@@ -481,6 +704,13 @@ def ballot(size, var=None):
         oval = rpoly([(ox0, oy0), (ox1, oy0), (ox1, oy1), (ox0, oy1)], (oy1 - oy0) / 2)
         reg = stadium(ox0 - 0.75, oy0 - 0.75, ox1 + 0.75, oy1 + 0.75)
         return build([box, slot_l, paper, oval], [], reg, size)
+    if size == 24:
+        box = rpoly([(7, 11), (3, 11), (3, 20), (21, 20), (21, 11), (17, 11)], 0, closed=False)
+        slot_l = line_c((5, 14), (19, 14))
+        paper = rpoly([(7, 14), (7, 3), (17, 3), (17, 14)], 0, closed=False)
+        oval = rpoly([(10, 6), (14, 6), (14, 9), (10, 9)], 1.5)
+        reg = rrect(9, 5, 6, 5, 2.5)
+        return build([box, slot_l, paper, oval], [], reg, size)
     raise KeyError(size)
 
 
@@ -494,6 +724,14 @@ def bill(size, var=None):
         t2 = line_c((8.5, 11.5), (14.75, 11.5))
         t3 = line_c((8.5, 14.5), (14.75, 14.5))
         reg = stadium(8.75, 12.25, 17.25, 16.75)
+        return build([page, fold, t1, t2, t3], [], reg, size)
+    if size == 24:
+        page = rpoly([(5, 3), (14, 3), (19, 8), (19, 21), (5, 21)], 0)
+        fold = rpoly([(14, 3), (14, 8), (19, 8)], 0, closed=False)
+        t1 = line_c((8, 9), (10, 9))
+        t2 = line_c((8, 12), (15, 12))
+        t3 = line_c((8, 15), (15, 15))
+        reg = rrect(9, 12, 8, 4, 2)
         return build([page, fold, t1, t2, t3], [], reg, size)
     raise KeyError(size)
 
@@ -514,6 +752,17 @@ def testify(size, var=None):
         neck = rpoly([foot, (bend[0], bend[1]), (bend[0], 19.5)], [0, 1.25, 0], closed=False)
         reg = tilted_stadium(cx, cy, cw, cl, ang)
         return build([head, shoulders, table, cap, neck], [], reg, size)
+    if size == 24:
+        head = ring_c(16, 7, 3)
+        shoulders = arc_c(16, 20, 5, 180, 360)
+        table = line_c((3, 20), (21, 20))
+        cx, cy, cw, cl, ang = 8.5, 12.5, 4.0, 5.5, 45
+        cap = tilted_stadium_pen(cx, cy, cw, cl, ang)
+        u = (math.sin(math.radians(ang)), -math.cos(math.radians(ang)))
+        foot = (cx - u[0] * cl / 2, cy - u[1] * cl / 2)
+        neck = rpoly([foot, (6, 15.25), (6, 20)], [0, 1.0, 0], closed=False)
+        reg = tilted_stadium(cx, cy, cw, cl, ang)
+        return build([head, shoulders, table, cap, neck], [], reg, size)
     raise KeyError(size)
 
 
@@ -525,6 +774,11 @@ def housing(size, var=None):
                       [0, R_RECT, 0.6, 1.0, 0.6, R_RECT, 0], closed=False)
         door = rpoly([(9.5, 20), (9.5, 13.5), (14.5, 13.5), (14.5, 20)], [0, 1.0, 1.0, 0], closed=False)
         reg = rrect(9.5, 13.5, 4, 6.5, 1.0)
+        return build([house, door], [], reg, size)
+    if size == 24:
+        house = rpoly([(9, 20), (4, 20), (4, 11), (12, 3), (20, 11), (20, 20), (15, 20)], 0, closed=False)
+        door = rpoly([(9, 20), (9, 14), (15, 14), (15, 20)], 0, closed=False)
+        reg = rrect(9, 14, 5, 6, 1)
         return build([house, door], [], reg, size)
     raise KeyError(size)
 
@@ -540,30 +794,40 @@ def money(size, var=None):
         b2 = line_c((16.75, 14.75), (18.25, 14.75))
         reg = circle(12, 12, 2.75)
         return build([note, disc, b1, b2], [], reg, size)
+    if size == 24:
+        note = rrect_c(3, 6, 21, 18, 0)
+        disc = ring_c(12, 12, 3)
+        b1 = line_c((6, 9), (7, 9))
+        b2 = line_c((17, 15), (18, 15))
+        reg = circle(12, 12, 3)
+        return build([note, disc, b1, b2], [], reg, size)
     raise KeyError(size)
 
 
 @icon
 def loop(size, var=None):
-    """Two nodes on the center line. The forward link runs straight along the top, its arrowhead
-    arriving at the right node; the return comes back below as a deep arc, its arrowhead at the
-    bottom, and runs into the left node. The red fills that node."""
+    """Two nodes on the center line. The forward link runs straight along the top with its
+    arrowhead at its middle, pointing on; the return comes back below as an arc, its arrowhead at
+    the bottom pointing back. The arc runs into both nodes. The red fills the left node, where the
+    return arrives."""
     if size == "display":
-        v = [float(t) for t in var.split("/")] if var else [5.75, 19.0, 2.25, 0.25, 2.75]
-        lx, rx, rn, drop, arm = v
+        lx, rx, rn, drop, arm = 5.75, 19.0, 2.25, 0.25, 2.75
         cy = 12.0
-        cxa, cya = (lx + rx) / 2, cy + drop
-        R = math.hypot(rx - cxa, cy - cya)
-        tip_f = rx - rn - 1.25
-        link = line_c((lx, cy), (tip_f, cy))
-        heads = chevron((tip_f, cy), 0, arm)
-        a_right = math.degrees(math.atan2(cy - cya, rx - cxa))
-        a_left = 180 - a_right
-        ret = arc_c(cxa, cya, R, a_right, a_left)
-        heads += _arrow_on_arc((cxa, cya), R, 90 + 3, +1, arm)
-        reg = circle(lx, cy, rn)
-        return build([link, ret] + heads, [(lx, cy, rn), (rx, cy, rn)], reg, size)
-    raise KeyError(size)
+    elif size == 24:
+        lx, rx, rn, drop, arm = 6.0, 18.0, 2.0, 0.0, 2.0
+        cy = 12.0
+    else:
+        raise KeyError(size)
+    cxa, cya = (lx + rx) / 2, cy + drop
+    R = math.hypot(rx - cxa, cy - cya)
+    link = line_c((lx, cy), (rx, cy))
+    tip = (cxa + arm * 0.6, cy)
+    heads = chevron(tip, 0, arm)
+    a_right = math.degrees(math.atan2(cy - cya, rx - cxa))
+    ret = arc_c(cxa, cya, R, a_right, 180 - a_right)
+    heads += _arrow_on_arc((cxa, cya), R, 90 - math.degrees(arm * 0.6 / R), +1, arm)
+    reg = circle(lx, cy, rn)
+    return build([link, ret] + heads, [(lx, cy, rn), (rx, cy, rn)], reg, size)
 
 
 def _arrow_on_arc(c, R, ang, sense, arm):

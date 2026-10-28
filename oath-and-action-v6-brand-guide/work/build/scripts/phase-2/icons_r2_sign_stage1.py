@@ -1,7 +1,7 @@
 """Concept 3, Public sign, stage 1: the ten display masters and the 2x review sheet.
 
 Run: python3 -I icons_r2_sign_stage1.py
-Writes, in work/boards/phase-2/icons-r2/public-sign/:
+Writes, in work/boards/phase-2/icons-r2/public-sign/stage-1/ (moved there when stage 2 began):
   20261028_Public-Sign-<Name>-Display.svg   ten display masters, paths "ink" (Charcoal) and "accent" (Pillar Red)
   20261028_Public-Sign-Stage-1-Sheet.png    the review sheet, Chromium at device scale 2
 The sheet's HTML is written to the scratchpad and rendered with icons_r2_sign_shot.js.
@@ -13,12 +13,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
-import icons_r2_sign_draw as D  # noqa: E402
+import icons_r2_sign_draw_s1 as D  # noqa: E402  (the stage 1 drawings, kept as drawn)
 from icons_r2_sign_geom import d_of  # noqa: E402
 
 ROOT = HERE.parents[3]
 DATE = "20261028"
-OUT = ROOT / "work/boards/phase-2/icons-r2/public-sign"
+OUT = ROOT / "work/boards/phase-2/icons-r2/public-sign/stage-1"
 SCRATCH = Path("/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/sign-build")
 SHOT = HERE / "icons_r2_sign_shot.js"
 NEWS, CHAR, RED, STONE = "#DCD9D2", "#121212", "#E63946", "#5D636D"

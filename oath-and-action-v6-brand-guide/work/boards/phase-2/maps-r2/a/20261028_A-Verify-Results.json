@@ -1,30 +1,36 @@
 {
  "run_note": "Checked against work/extract/atlas-v7-data.json, independently of maps_model.py and the drawing code",
  "counts": {
-  "svg_files": 60,
-  "steps_checked": 158,
-  "links_checked": 92,
-  "nodes_checked": 246,
+  "svg_files": 71,
+  "steps_checked": 162,
+  "links_checked": 46,
+  "nodes_checked": 199,
   "targets_checked": 0,
-  "red_marks_checked": 19,
-  "weakest_checked": 8,
-  "ticks_checked": 24,
-  "textures_checked": 234,
-  "glyphs_checked": 234,
+  "red_marks_checked": 20,
+  "weakest_checked": 10,
+  "ticks_checked": 28,
+  "textures_checked": 192,
+  "glyphs_checked": 192,
   "captions_checked": 23,
-  "bundles_checked": 60,
-  "bundled_links": 144,
-  "red_color_elements": 57,
+  "bundles_checked": 30,
+  "bundled_links": 72,
+  "red_color_elements": 60,
   "record_squares_absent_checked": 118,
-  "ticks_absent_checked": 118
+  "ticks_absent_checked": 118,
+  "locators": 10,
+  "locator_tracks": 530,
+  "locator_stations": 250,
+  "tag_directions_checked": 4,
+  "arrowheads_checked": 28
  },
  "views": {
-  "fg-card-phone": 3,
-  "fg-card": 3,
+  "fg-card-phone": 4,
+  "fg-card": 4,
   "fg-head-phone": 1,
   "fg-head": 1,
-  "circuit-map": 2,
+  "circuit-map": 1,
   "fg-lead": 4,
+  "fg-locator": 10,
   "fg-mini": 21,
   "fg-mini-phone": 25
  },
@@ -97,20 +103,41 @@
     "reports": 1
    },
    {
-    "break": "red on a non-target variable",
-    "file": "20261028_A-Reform-R-01-Circuit.svg",
+    "break": "station moved off its cell",
+    "file": "20261028_A-Locator-Card-R8.svg",
     "caught": true,
     "reports": 1
+   },
+   {
+    "break": "lit track unlit",
+    "file": "20261028_A-Locator-Card-R10.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "red on a locator station",
+    "file": "20261028_A-Locator-Plate-B.svg",
+    "caught": true,
+    "reports": 1
+   },
+   {
+    "break": "pointing tag turned around",
+    "file": "20261028_A-Card-R8-Tag.svg",
+    "caught": true,
+    "reports": 2
    }
   ],
   "all_caught": true
  },
  "summary": [
-  "Data check against V7: 0 mismatches across 60 Direction A drawings and 23 catalog captions.",
+  "Data check against V7: 0 mismatches across 71 Direction A drawings and 23 catalog captions.",
   "All 23 loops drawn in the catalog: 23 as miniatures and leads at 1440, 23 as phone miniatures at 390.",
-  "Checked 158 drawn loop steps and 92 circuit wires for link, from, to, sign, type, delay and grade; 234 line textures, 24 delay-tick sets and 234 sign glyphs; 118 miniature sign discs carry no record square and 118 miniature steps carry no ticks.",
-  "The circuit draws 46 wires and counts 72 connections in bundles; the R-01 circuit draws 46 wires and counts 72 connections in bundles; 60 bundle groups checked for count and V7 areas.",
-  "Checked 19 red marks, 57 red-painted elements and 8 weakest-step markings.",
-  "Mutation test: 11 of 11 deliberate breaks caught."
+  "Checked 162 drawn loop steps and 46 circuit wires for link, from, to, sign, type, delay and grade; 192 line textures, 28 delay-tick sets and 192 sign glyphs; 118 miniature sign discs carry no record square and 118 miniature steps carry no ticks.",
+  "The circuit draws 46 wires and counts 72 connections in bundles; 30 bundle groups checked for count and V7 areas.",
+  "Checked 20 red marks, 60 red-painted elements and 10 weakest-step markings.",
+  "Locators: 10 insets from Direction C's network data and station table; 530 tracks checked against V7 and C's corridors, 250 stations against C's grid cells, lit loops in Charcoal and every other line in Stone, no red.",
+  "Sign marks: 28 steps checked for an arrowhead with the circled sign or none with the pointing tag; 4 pointing tags point the way their step runs.",
+  "Direction C's reform view is embedded byte for byte on the R-01 page and the board (2 of 2); its data is C's verifier's to check. The retired circuit is checked on its own page.",
+  "Mutation test: 14 of 14 deliberate breaks caught."
  ]
 }

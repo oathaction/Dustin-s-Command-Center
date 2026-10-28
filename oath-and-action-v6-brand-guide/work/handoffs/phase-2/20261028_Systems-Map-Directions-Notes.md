@@ -204,3 +204,52 @@ Created:
 Modified (round-one fixes): `work/build/scripts/phase-2/build_maps_board.py`, `maps_draw.py` (comment only), `check_maps_board.js` (not-checked text), `work/boards/20261028_Systems-Map-Directions-Board.html`, `work/boards/phase-2/maps/20261028_Maps-Verify-Results.json` and `20261028_Maps-Check-Results.json`, and this file.
 
 Untouched: `maps_model.py`, `verify_maps_data.py`, V7 data, `source/`, every ledger, and the B and C makers' files.
+
+### Round two, second pass: fixes 7, 8, 9 and 11 from the CD's round-two review
+
+The review (`work/handoffs/phase-2/20261028_CD-Review-Of-Map-Round-Two.md`) picks Direction C's poster for the whole system and this direction's catalog and cards for the loops. It also retires the circuit. This pass makes the four fixes it gives Direction A.
+
+| Decision | Reason |
+|---|---|
+| Fix 7: a locator built by script (`maps_r2_a_locator.py`) from C's `20261028_Loop-Lines-Network-Data.json` and `20261028_Loop-Lines-Station-Table.csv`, read at every build | A station C moves then moves here on the next build, and the verifier compares every station with C's table |
+| C's track geometry (offset to the right of travel, concentric corners) is written again in the locator module, without importing C's scripts | C's maker is editing those scripts in parallel |
+| The rail locator is 340 px at 1440 and 326 px at 390. It puts the card's loop in Charcoal at 6 px, with Charcoal stations and 13 px Newsprint IDs, and every other line in Stone at 2 px, in M1 textures | Fix 3's styling. In grayscale the 3-to-1 weight still separates the lit line |
+| The locator sits beside the headline on the R8 and R10 cards and on the R-01 view | Beside R8's two-step drawing the rail column is 316 px, too narrow for station IDs at 13 px |
+| Band locators are 196 px. Plate loops are drawn at 3.5 px with Charcoal dots, the rest at 1.25 px, and there are no IDs. The sketched plate has no locator and says why | IDs would fall under 13 px. Sketched loops have no stations |
+| No locator carries red | The locator finds the loop; the card marks the reform, so red stays at one place per view |
+| Fix 8: the circuit is gone from the board. C's R-01 reform view is embedded byte for byte on the R-01 page, with a reduced capture and a link on phones. The circuit page stays as a record, marked retired | The CD's brief: C's views carry the whole system |
+| Fix 9: on phone cards the return line now runs at 20 px instead of 10 | L42's 36 px capsule now clears the card edge |
+| Fix 9: every lead tile runs the full width with its drawing beside its text. A final pair of tiles splits its row half and half | R15's and R7's two-row leads left 110 to 196 px of blank White, as measured in the browser |
+| Fix 11: the board sets the R8 card twice at true size, with the circled sign and with C's pointing tag. The tag drops the arrowheads, holds the record square on documented steps, and stays Charcoal on a red line | This is decision 3. Both versions of the card come from the same drawing code |
+
+**Tested (this pass):**
+- The verifier finds 0 mismatches across 71 drawings and 23 captions.
+- It checks 10 locators: 530 tracks against V7 and C's corridors, and 250 stations against C's grid cells. Lit and unlit weights and colors are correct, and no locator carries red.
+- On the 28 steps of the circled-sign and pointing-tag cards, the circled sign keeps its arrowheads and the tag version has none. The 4 tags each point the way their step runs.
+- C's reform view matches C's file on both the page and the board.
+- The mutation test broke 14 things on purpose, including a moved station, an unlit track and a reversed tag, and all 14 were caught.
+- I ran the rendered checks on the board, four pages and the retired circuit page at 1440 and 390 px:
+  - No page scrolls sideways.
+  - No text is under 13 px or below WCAG AA contrast.
+  - All 22 images load.
+  - axe reports 0 violations.
+- In A's drawings, none of the 1,518 labels collides, and every sign mark and station sits inside its drawing. That second check is new, and it caught locator stations at the edge before I fixed the margins. The self-test caught all 6 planted faults.
+- I viewed the R8, R10 and R-01 views in grayscale.
+
+**Not tested:**
+- Labels crossing lines.
+- The data in C's embedded view, which is C's verifier's job.
+- My label test finds 4 overlapping pairs in C's embedded view: the two-line district names "Electoral competition" and "Governing institutions", which overlap at tight leading. These are C's to fix (fix 10).
+- Whether C's in-progress poster fixes change the embedded view or the network data. Rebuilding picks up the change, and the verifier fails until the copies match.
+- Screen readers, other browsers, print and zoom.
+
+**Change log (this pass):**
+- Created:
+  - `work/build/scripts/phase-2/maps_r2_a_locator.py`
+  - in `work/boards/phase-2/maps-r2/a/`: 10 locator SVGs (`20261028_A-Locator-*`), `20261028_A-Card-R8-Tag.svg` and `-Phone.svg`, and `20261028_A-C-Reform-View-R-01-Reduced.png`
+- Modified:
+  - `maps_r2_a_build.py`, `maps_r2_a_fg.py`, `maps_r2_a_verify.py` and `maps_r2_a_check.js`
+  - the Direction A board, its pages, drawings and results
+  - this file
+- Deleted (retired with the circuit on the R-01 view): `20261028_A-Reform-R-01-Circuit.svg`, `20261028_A-Reform-R-01-Circuit-Reduced.png`, `20261028_A-Circuit-Page-Grayscale.png`
+- Untouched: C's files, `maps_model.py`, `verify_maps_data.py`, V7, `source/` and every ledger.

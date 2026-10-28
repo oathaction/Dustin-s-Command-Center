@@ -1,10 +1,10 @@
 {
  "board": "work/boards/20261028_Map-Direction-A-Field-Guide.html",
- "run": "2026-10-28T20:31:36.826Z",
+ "run": "2026-10-28T22:13:47.641Z",
  "widths": {
   "390": {
-   "texts": 797,
-   "svgTexts": 271,
+   "texts": 905,
+   "svgTexts": 329,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -12,14 +12,21 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 29,
-    "labels": 262,
+    "drawings": 40,
+    "labels": 322,
     "outside": [],
     "outOfBox": [],
     "overlaps": [],
-    "discOverlaps": []
+    "discOverlaps": [],
+    "marksOutside": []
    },
-   "height": 47534,
+   "cDrawings": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": []
+   },
+   "height": 53695,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -53,15 +60,7 @@
      "ok": true
     },
     {
-     "src": "phase-2/maps-r2/a/20261028_A-Circuit-Reduced.png",
-     "ok": true
-    },
-    {
-     "src": "phase-2/maps-r2/a/20261028_A-Circuit-Page-Grayscale.png",
-     "ok": true
-    },
-    {
-     "src": "phase-2/maps-r2/a/20261028_A-Reform-R-01-Circuit-Reduced.png",
+     "src": "phase-2/maps-r2/a/20261028_A-C-Reform-View-R-01-Reduced.png",
      "ok": true
     },
     {
@@ -73,7 +72,7 @@
      "ok": true
     }
    ],
-   "svgs": 60,
+   "svgs": 77,
    "axe": {
     "violations": [],
     "passes": 31,
@@ -95,12 +94,14 @@
     "work/boards/screens/phase-2-maps-r2-a/board-390-12.png",
     "work/boards/screens/phase-2-maps-r2-a/board-390-13.png",
     "work/boards/screens/phase-2-maps-r2-a/board-390-14.png",
-    "work/boards/screens/phase-2-maps-r2-a/board-390-15.png"
+    "work/boards/screens/phase-2-maps-r2-a/board-390-15.png",
+    "work/boards/screens/phase-2-maps-r2-a/board-390-16.png",
+    "work/boards/screens/phase-2-maps-r2-a/board-390-17.png"
    ]
   },
   "1440": {
-   "texts": 1345,
-   "svgTexts": 789,
+   "texts": 1160,
+   "svgTexts": 554,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -108,14 +109,30 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 31,
-    "labels": 780,
+    "drawings": 40,
+    "labels": 366,
     "outside": [],
     "outOfBox": [],
     "overlaps": [],
-    "discOverlaps": []
+    "discOverlaps": [],
+    "marksOutside": []
    },
-   "height": 28332,
+   "cDrawings": {
+    "drawings": 1,
+    "labels": 181,
+    "outside": [],
+    "overlaps": [
+     {
+      "a": "Electoral",
+      "b": "competition"
+     },
+     {
+      "a": "Governing",
+      "b": "institutions"
+     }
+    ]
+   },
+   "height": 28412,
    "fonts": [
     "Inter 400 normal",
     "Inter 600 normal",
@@ -149,15 +166,7 @@
      "ok": true
     },
     {
-     "src": "phase-2/maps-r2/a/20261028_A-Circuit-Reduced.png",
-     "ok": true
-    },
-    {
-     "src": "phase-2/maps-r2/a/20261028_A-Circuit-Page-Grayscale.png",
-     "ok": true
-    },
-    {
-     "src": "phase-2/maps-r2/a/20261028_A-Reform-R-01-Circuit-Reduced.png",
+     "src": "phase-2/maps-r2/a/20261028_A-C-Reform-View-R-01-Reduced.png",
      "ok": true
     },
     {
@@ -169,7 +178,7 @@
      "ok": true
     }
    ],
-   "svgs": 60,
+   "svgs": 77,
    "axe": {
     "violations": [],
     "passes": 31,
@@ -192,7 +201,7 @@
  "pages": {
   "Loop-Catalog": {
    "390": {
-    "texts": 315,
+    "texts": 320,
     "svgTexts": 148,
     "minSize": 13,
     "under13": [],
@@ -201,14 +210,21 @@
     "clientWidth": 390,
     "overflowing": [],
     "textCheck": {
-     "drawings": 24,
+     "drawings": 28,
      "labels": 148,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 12781,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 13552,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -217,7 +233,7 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 48,
+    "svgs": 52,
     "axe": {
      "violations": [],
      "passes": 19,
@@ -232,7 +248,7 @@
     ]
    },
    "1440": {
-    "texts": 352,
+    "texts": 357,
     "svgTexts": 185,
     "minSize": 13,
     "under13": [],
@@ -241,14 +257,21 @@
     "clientWidth": 1440,
     "overflowing": [],
     "textCheck": {
-     "drawings": 24,
+     "drawings": 28,
      "labels": 185,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 6135,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 6312,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -257,7 +280,7 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 48,
+    "svgs": 52,
     "axe": {
      "violations": [],
      "passes": 19,
@@ -272,8 +295,8 @@
   },
   "R8-Loop-Card": {
    "390": {
-    "texts": 75,
-    "svgTexts": 25,
+    "texts": 80,
+    "svgTexts": 27,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -281,14 +304,21 @@
     "clientWidth": 390,
     "overflowing": [],
     "textCheck": {
-     "drawings": 1,
-     "labels": 22,
+     "drawings": 2,
+     "labels": 24,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 3137,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 3472,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -297,10 +327,10 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 2,
+    "svgs": 4,
     "axe": {
      "violations": [],
-     "passes": 20,
+     "passes": 23,
      "incomplete": 1
     },
     "screens": [
@@ -309,8 +339,8 @@
     ]
    },
    "1440": {
-    "texts": 83,
-    "svgTexts": 23,
+    "texts": 88,
+    "svgTexts": 25,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -318,14 +348,21 @@
     "clientWidth": 1440,
     "overflowing": [],
     "textCheck": {
-     "drawings": 1,
-     "labels": 20,
+     "drawings": 2,
+     "labels": 22,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 1693,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 1781,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -334,10 +371,10 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 2,
+    "svgs": 4,
     "axe": {
      "violations": [],
-     "passes": 20,
+     "passes": 23,
      "incomplete": 1
     },
     "screens": [
@@ -347,8 +384,8 @@
   },
   "R10-Loop-Card": {
    "390": {
-    "texts": 96,
-    "svgTexts": 42,
+    "texts": 104,
+    "svgTexts": 47,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -356,14 +393,21 @@
     "clientWidth": 390,
     "overflowing": [],
     "textCheck": {
-     "drawings": 1,
-     "labels": 40,
+     "drawings": 2,
+     "labels": 45,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 4121,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 4477,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -372,10 +416,10 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 2,
+    "svgs": 4,
     "axe": {
      "violations": [],
-     "passes": 20,
+     "passes": 23,
      "incomplete": 1
     },
     "screens": [
@@ -384,8 +428,8 @@
     ]
    },
    "1440": {
-    "texts": 113,
-    "svgTexts": 48,
+    "texts": 120,
+    "svgTexts": 52,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -393,14 +437,21 @@
     "clientWidth": 1440,
     "overflowing": [],
     "textCheck": {
-     "drawings": 1,
-     "labels": 46,
+     "drawings": 2,
+     "labels": 50,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 2132,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 2160,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -409,10 +460,10 @@
      "Lora 400 italic"
     ],
     "images": [],
-    "svgs": 2,
+    "svgs": 4,
     "axe": {
      "violations": [],
-     "passes": 20,
+     "passes": 23,
      "incomplete": 1
     },
     "screens": [
@@ -422,7 +473,7 @@
   },
   "Circuit-Page": {
    "390": {
-    "texts": 13,
+    "texts": 15,
     "svgTexts": 2,
     "minSize": 13,
     "under13": [],
@@ -436,9 +487,16 @@
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 1128,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 1272,
     "fonts": [
      "Inter 400 normal",
      "Inter 700 normal",
@@ -461,7 +519,7 @@
     ]
    },
    "1440": {
-    "texts": 246,
+    "texts": 248,
     "svgTexts": 236,
     "minSize": 13,
     "under13": [],
@@ -475,9 +533,16 @@
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 2041,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 2108,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -503,8 +568,8 @@
   },
   "R-01-Reform-View": {
    "390": {
-    "texts": 101,
-    "svgTexts": 54,
+    "texts": 112,
+    "svgTexts": 59,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -512,14 +577,21 @@
     "clientWidth": 390,
     "overflowing": [],
     "textCheck": {
-     "drawings": 3,
-     "labels": 52,
+     "drawings": 4,
+     "labels": 57,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 4226,
+    "cDrawings": {
+     "drawings": 0,
+     "labels": 0,
+     "outside": [],
+     "overlaps": []
+    },
+    "height": 4623,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -528,14 +600,14 @@
     ],
     "images": [
      {
-      "src": "20261028_A-Reform-R-01-Circuit-Reduced.png",
+      "src": "20261028_A-C-Reform-View-R-01-Reduced.png",
       "ok": true
      }
     ],
-    "svgs": 7,
+    "svgs": 9,
     "axe": {
      "violations": [],
-     "passes": 20,
+     "passes": 23,
      "incomplete": 1
     },
     "screens": [
@@ -544,8 +616,8 @@
     ]
    },
    "1440": {
-    "texts": 354,
-    "svgTexts": 297,
+    "texts": 310,
+    "svgTexts": 248,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -554,13 +626,29 @@
     "overflowing": [],
     "textCheck": {
      "drawings": 4,
-     "labels": 295,
+     "labels": 65,
      "outside": [],
      "outOfBox": [],
      "overlaps": [],
-     "discOverlaps": []
+     "discOverlaps": [],
+     "marksOutside": []
     },
-    "height": 3487,
+    "cDrawings": {
+     "drawings": 1,
+     "labels": 181,
+     "outside": [],
+     "overlaps": [
+      {
+       "a": "Electoral",
+       "b": "competition"
+      },
+      {
+       "a": "Governing",
+       "b": "institutions"
+      }
+     ]
+    },
+    "height": 3030,
     "fonts": [
      "Inter 400 normal",
      "Inter 600 normal",
@@ -569,14 +657,14 @@
     ],
     "images": [
      {
-      "src": "20261028_A-Reform-R-01-Circuit-Reduced.png",
+      "src": "20261028_A-C-Reform-View-R-01-Reduced.png",
       "ok": true
      }
     ],
-    "svgs": 7,
+    "svgs": 9,
     "axe": {
      "violations": [],
-     "passes": 19,
+     "passes": 22,
      "incomplete": 1
     },
     "screens": [
@@ -588,14 +676,13 @@
  },
  "captures": [
   "20261028_A-Circuit-Reduced.png",
-  "20261028_A-Reform-R-01-Circuit-Reduced.png",
+  "20261028_A-C-Reform-View-R-01-Reduced.png",
   "20261028_A-Loop-Catalog-390.png",
   "20261028_A-Loop-Catalog-Grayscale.png",
   "20261028_A-R8-Loop-Card-390.png",
   "20261028_A-R8-Loop-Card-Grayscale.png",
   "20261028_A-R10-Loop-Card-390.png",
   "20261028_A-R10-Loop-Card-Grayscale.png",
-  "20261028_A-Circuit-Page-Grayscale.png",
   "20261028_A-R-01-Reform-View-390.png",
   "20261028_A-R-01-Reform-View-Grayscale.png"
  ],
@@ -604,23 +691,26 @@
   "outOfBox": true,
   "under13": true,
   "discOverlap": true,
-  "outside": true
+  "outside": true,
+  "markOutside": true
  },
  "summary": [
-  "Rendered in Chromium (Playwright) at 1440 and 390 px on October 28, 2026: the board and its five pages, 12 renders in all, with 5 Google Fonts faces loaded; 60 drawings inline on the board.",
+  "Rendered in Chromium (Playwright) at 1440 and 390 px on October 28, 2026: the board, its four pages and the retired circuit page, 12 renders in all, with 5 Google Fonts faces loaded; 77 drawings inline on the board.",
   "Horizontal page scroll: none in any render; the board at 390 measures 390 of 390.",
   "Smallest rendered text, counting SVG text at its drawing's rendered scale: 13 px at 1440 and 13 px at 390; text elements under 13 px across all renders: 0.",
   "Text below WCAG AA contrast, from rendered colors: 0 across all renders.",
-  "Images loaded: 26 of 26 across all renders.",
+  "Images loaded: 22 of 22 across all renders.",
   "axe-core 4.10 with WCAG 2.2 AA tags: 0 violating nodes across all renders (board 0 at 1440, 0 at 390).",
-  "Text inside drawings: 2084 rendered labels in 120 drawings checked; 0 outside their drawing, 0 outside their box, 0 overlapping another label, 0 overlapping a sign disc.",
-  "Captured 11 images for the board and the phone pages: 4 pages at 390 px, 5 grayscale proofs and 2 reduced circuits.",
-  "Self-test of the text check on a planted copy of the R8 card: 5 of 5 planted faults caught (overlapping label, label outside its box, label outside the drawing, label on a sign disc, 11 px text)."
+  "Text inside Direction A's drawings: 1518 rendered labels in 153 drawings checked; 0 outside their drawing, 0 outside their box, 0 overlapping another label, 0 overlapping a sign disc; 0 sign marks or stations outside their drawing.",
+  "Direction C's reform view as embedded here, with the same label test: 362 labels in 2 renders, 4 overlapping pairs, 0 outside the drawing. These are C's to fix (CD round two, fix 10).",
+  "Captured 10 images for the board and the phone pages: 4 pages at 390 px, 4 grayscale proofs, and reduced copies of the retired circuit and of C's reform view.",
+  "Self-test of the text check on a planted copy of the R8 card: 6 of 6 planted faults caught (overlapping label, label outside its box, label outside the drawing, label on a sign disc, 11 px text, sign mark off the edge)."
  ],
  "not_checked": [
   "Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.",
   "Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 4.17:1 on White, Charcoal 18.1:1 on White).",
-  "Labels crossing wires on the circuit. The three bus labels carry a background halo; the check above covers label against label and label against sign disc, not label against line.",
+  "Labels crossing lines. The check covers label against label and label against sign mark, not label against line.",
+  "The data in Direction C's embedded reform view. It is C's drawing; C's verifier checks it, and this board checks only that the copy matches C's file.",
   "The live atlas renderer; these are specimens only (G1-08)."
  ]
 }

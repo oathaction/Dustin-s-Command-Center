@@ -18,6 +18,7 @@ const BOARD = path.join(ROOT, 'work/boards/20261028_Map-Direction-A-Field-Guide.
 const ASSETS = path.join(ROOT, 'work/boards/phase-2/maps-r2/a');
 const PAGES = ['Loop-Catalog', 'R8-Loop-Card', 'R10-Loop-Card', 'Circuit-Page', 'R-01-Reform-View'];
 const NO_PHONE_CAPTURE = new Set(['Circuit-Page']);
+const RETIRED = new Set(['Circuit-Page']);   // retired in round two (CD fix 8): audited, but the board shows no proofs
 const OUTJSON = path.join(ASSETS, '20261028_A-Check-Results.json');
 const SHOTS = path.join(ROOT, 'work/boards/screens/phase-2-maps-r2-a');
 const AXE = path.join(ROOT, 'work/build/node_modules/axe-core/axe.min.js');
@@ -128,10 +129,21 @@ async function audit(page) {
     }
     out.overflowing = out.overflowing.slice(0, 20);
     // text inside drawings: containment and collisions, from rendered boxes
-    const tx = { drawings: 0, labels: 0, outside: [], outOfBox: [], overlaps: [], discOverlaps: [] };
+    const tx = { drawings: 0, labels: 0, outside: [], outOfBox: [], overlaps: [], discOverlaps: [], marksOutside: [] };
+    const cx = { drawings: 0, labels: 0, outside: [], overlaps: [] };   // Direction C's embedded drawings, reported apart
     const inter = (a, b, pad) => Math.min(a.right, b.right) - Math.max(a.left, b.left) > pad && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > pad;
     for (const svg of document.querySelectorAll('svg[data-view]')) {
       if (!visible(svg)) continue;
+      if ((svg.getAttribute('data-view') || '').startsWith('c-')) {
+        // C's drawing, embedded unchanged: label against label and labels inside the drawing, kept apart from A's
+        const sr = svg.getBoundingClientRect();
+        const ts = [...svg.querySelectorAll('text')].filter(t => t.textContent.trim() && visible(t));
+        const rs = ts.map(t => t.getBoundingClientRect());
+        cx.drawings++; cx.labels += ts.length;
+        ts.forEach((t, i) => { const r = rs[i]; if (r.left < sr.left - 0.5 || r.right > sr.right + 0.5 || r.top < sr.top - 0.5 || r.bottom > sr.bottom + 0.5) cx.outside.push(t.textContent.slice(0, 40)); });
+        for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) if (inter(rs[i], rs[j], 1.5)) cx.overlaps.push({ a: ts[i].textContent.slice(0, 30), b: ts[j].textContent.slice(0, 30) });
+        continue;
+      }
       tx.drawings++;
       const sr = svg.getBoundingClientRect();
       const name = (svg.getAttribute('data-view') || '') + ' ' + (svg.getAttribute('data-loop') || '') + (svg.getAttribute('data-reform') ? ' ' + svg.getAttribute('data-reform') : '');
@@ -159,6 +171,11 @@ async function audit(page) {
           if (inter(rects[i], rects[j], 1.5)) tx.overlaps.push({ svg: name, a: texts[i].textContent.slice(0, 30), b: texts[j].textContent.slice(0, 30) });
         }
       }
+      // every sign mark and station inside its drawing (round two: the phone R10 card's L42 capsule ran off the edge)
+      for (const mk of svg.querySelectorAll('g.pill, g.var > rect, g.var > circle')) {
+        const r = mk.getBoundingClientRect();
+        if (r.left < sr.left - 0.5 || r.right > sr.right + 0.5 || r.top < sr.top - 0.5 || r.bottom > sr.bottom + 0.5) tx.marksOutside.push({ svg: name, mark: mk.getAttribute('data-for') || (mk.parentElement && mk.parentElement.getAttribute('data-node')) });
+      }
       // label against sign disc: a disc's own glyph excepted
       const discs = [...svg.querySelectorAll('g.pill')];
       for (const d of discs) {
@@ -170,6 +187,7 @@ async function audit(page) {
       }
     }
     out.textCheck = tx;
+    out.cDrawings = cx;
     out.height = document.documentElement.scrollHeight;
     out.fonts = [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family + ' ' + f.weight + ' ' + f.style))];
     out.images = [...document.images].map(i => ({ src: i.getAttribute('src'), ok: i.complete && i.naturalWidth > 0 }));
@@ -215,9 +233,10 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
   const results = { board: path.relative(ROOT, BOARD), run: new Date().toISOString(), widths: {}, pages: {}, captures: [] };
 
   // 1. captures. The reduced circuits come first, since the phone pages show them.
-  for (const [pg, out] of [['Circuit-Page', '20261028_A-Circuit-Reduced.png'], ['R-01-Reform-View', '20261028_A-Reform-R-01-Circuit-Reduced.png']]) {
+  for (const [pg, out, sel] of [['Circuit-Page', '20261028_A-Circuit-Reduced.png', '.dsk svg[data-view="circuit-map"]'],
+                                 ['R-01-Reform-View', '20261028_A-C-Reform-View-R-01-Reduced.png', '.fga-cview svg[data-view="c-reform"]']]) {
     const { ctx, page } = await open(browser, pageFile(pg), 1440, 1);
-    const el = await page.$('.dsk svg[data-view="circuit-map"]');
+    const el = await page.$(sel);
     await el.screenshot({ path: path.join(ASSETS, out) });
     results.captures.push(out);
     await ctx.close();
@@ -230,6 +249,7 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
       results.captures.push(out);
       await ctx.close();
     }
+    if (RETIRED.has(pg)) continue;
     const g = await open(browser, pageFile(pg), 1440, 1, 900);
     await g.page.addStyleTag({ content: 'html{filter:grayscale(1)}' });
     await g.page.waitForTimeout(200);
@@ -273,18 +293,19 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
       const disc = svg.querySelector('g.pill'); const r = disc.querySelector('rect,circle');
       const onDisc = document.createElementNS(ns, 'text'); onDisc.setAttribute('x', r.getAttribute('x') || r.getAttribute('cx')); onDisc.setAttribute('y', +(r.getAttribute('y') || r.getAttribute('cy')) + 8); onDisc.setAttribute('font-size', '14'); onDisc.textContent = 'on the disc'; svg.appendChild(onDisc);
       const out = document.createElementNS(ns, 'text'); out.setAttribute('x', svg.viewBox.baseVal.width - 10); out.setAttribute('y', 40); out.setAttribute('font-size', '14'); out.textContent = 'past the edge'; svg.appendChild(out);
+      const pill = svg.querySelector('g.pill').cloneNode(true); pill.setAttribute('transform', 'translate(-2000 0)'); pill.setAttribute('data-for', 'planted'); svg.appendChild(pill);
     });
     const a = await audit(page);
     results.selfTest = {
       overlap: a.textCheck.overlaps.length > 0, outOfBox: a.textCheck.outOfBox.length > 0, under13: a.under13.length > 0,
-      discOverlap: a.textCheck.discOverlaps.length > 0, outside: a.textCheck.outside.length > 0,
+      discOverlap: a.textCheck.discOverlaps.length > 0, outside: a.textCheck.outside.length > 0, markOutside: a.textCheck.marksOutside.length > 0,
     };
     await ctx.close();
   }
   await browser.close();
 
   const axeN = (w) => (w.axe ? w.axe.violations.reduce((n, v) => n + v.nodes, 0) : 'not run');
-  const txN = (w) => w.textCheck.outside.length + w.textCheck.outOfBox.length + w.textCheck.overlaps.length + w.textCheck.discOverlaps.length;
+  const txN = (w) => w.textCheck.outside.length + w.textCheck.outOfBox.length + w.textCheck.overlaps.length + w.textCheck.discOverlaps.length + w.textCheck.marksOutside.length;
   const runs = [['board', '1440', results.widths[1440]], ['board', '390', results.widths[390]]];
   for (const pg of PAGES) for (const w of ['1440', '390']) runs.push([pg, w, results.pages[pg][w]]);
   const w14 = results.widths[1440], w39 = results.widths[390];
@@ -292,20 +313,22 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
   const maxScroll = runs.filter(([, w, a]) => a.scrollWidth > a.clientWidth);
   const imgs = runs.reduce((acc, [, , a]) => acc.concat(a.images), []);
   results.summary = [
-    `Rendered in Chromium (Playwright) at 1440 and 390 px on ${new Date(results.run).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}: the board and its five pages, ${runs.length} renders in all, with ${w14.fonts.length} Google Fonts faces loaded; ${w14.svgs} drawings inline on the board.`,
+    `Rendered in Chromium (Playwright) at 1440 and 390 px on ${new Date(results.run).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}: the board, its four pages and the retired circuit page, ${runs.length} renders in all, with ${w14.fonts.length} Google Fonts faces loaded; ${w14.svgs} drawings inline on the board.`,
     `Horizontal page scroll: ${maxScroll.length ? maxScroll.map(([n, w, a]) => `${n} at ${w} (${a.scrollWidth})`).join(', ') : 'none in any render'}; the board at 390 measures ${w39.scrollWidth} of ${w39.clientWidth}.`,
     `Smallest rendered text, counting SVG text at its drawing's rendered scale: ${Math.min(...runs.map(([, w, a]) => w === '1440' ? a.minSize : 99))} px at 1440 and ${Math.min(...runs.map(([, w, a]) => w === '390' ? a.minSize : 99))} px at 390; text elements under 13 px across all renders: ${sum(a => a.under13.length)}.`,
     `Text below WCAG AA contrast, from rendered colors: ${sum(a => a.lowContrast.length)} across all renders.`,
     `Images loaded: ${imgs.filter(i => i.ok).length} of ${imgs.length} across all renders.`,
     `axe-core 4.10 with WCAG 2.2 AA tags: ${sum(a => (a.axe ? a.axe.violations.reduce((n, v) => n + v.nodes, 0) : 0))} violating nodes across all renders (board ${axeN(w14)} at 1440, ${axeN(w39)} at 390).`,
-    `Text inside drawings: ${sum(a => a.textCheck.labels)} rendered labels in ${sum(a => a.textCheck.drawings)} drawings checked; ${sum(a => a.textCheck.outside.length)} outside their drawing, ${sum(a => a.textCheck.outOfBox.length)} outside their box, ${sum(a => a.textCheck.overlaps.length)} overlapping another label, ${sum(a => a.textCheck.discOverlaps.length)} overlapping a sign disc.`,
-    `Captured ${results.captures.length} images for the board and the phone pages: ${results.captures.length - 2 - PAGES.length} pages at 390 px, ${PAGES.length} grayscale proofs and 2 reduced circuits.`,
-    `Self-test of the text check on a planted copy of the R8 card: ${Object.values(results.selfTest).filter(Boolean).length} of ${Object.keys(results.selfTest).length} planted faults caught (overlapping label, label outside its box, label outside the drawing, label on a sign disc, 11 px text).`,
+    `Text inside Direction A's drawings: ${sum(a => a.textCheck.labels)} rendered labels in ${sum(a => a.textCheck.drawings)} drawings checked; ${sum(a => a.textCheck.outside.length)} outside their drawing, ${sum(a => a.textCheck.outOfBox.length)} outside their box, ${sum(a => a.textCheck.overlaps.length)} overlapping another label, ${sum(a => a.textCheck.discOverlaps.length)} overlapping a sign disc; ${sum(a => a.textCheck.marksOutside.length)} sign marks or stations outside their drawing.`,
+    `Direction C's reform view as embedded here, with the same label test: ${sum(a => a.cDrawings.labels)} labels in ${sum(a => a.cDrawings.drawings)} renders, ${sum(a => a.cDrawings.overlaps.length)} overlapping pairs, ${sum(a => a.cDrawings.outside.length)} outside the drawing. These are C's to fix (CD round two, fix 10).`,
+    `Captured ${results.captures.length} images for the board and the phone pages: ${PAGES.length - NO_PHONE_CAPTURE.size} pages at 390 px, ${PAGES.length - RETIRED.size} grayscale proofs, and reduced copies of the retired circuit and of C's reform view.`,
+    `Self-test of the text check on a planted copy of the R8 card: ${Object.values(results.selfTest).filter(Boolean).length} of ${Object.keys(results.selfTest).length} planted faults caught (overlapping label, label outside its box, label outside the drawing, label on a sign disc, 11 px text, sign mark off the edge).`,
   ];
   results.not_checked = [
     'Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.',
     'Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 4.17:1 on White, Charcoal 18.1:1 on White).',
-    'Labels crossing wires on the circuit. The three bus labels carry a background halo; the check above covers label against label and label against sign disc, not label against line.',
+    'Labels crossing lines. The check covers label against label and label against sign mark, not label against line.',
+    'The data in Direction C\'s embedded reform view. It is C\'s drawing; C\'s verifier checks it, and this board checks only that the copy matches C\'s file.',
     'The live atlas renderer; these are specimens only (G1-08).',
   ];
   fs.writeFileSync(OUTJSON, JSON.stringify(results, null, 1));
@@ -317,6 +340,7 @@ async function open(browser, file, width, dsf = 1, height = 1000) {
     if (a.overflowing.length) console.log(k, 'overflowing', JSON.stringify(a.overflowing.slice(0, 6)));
     if (a.axe && a.axe.violations.length) console.log(k, 'axe', JSON.stringify(a.axe.violations));
     const bad = a.images.filter(i => !i.ok); if (bad.length) console.log(k, 'images', JSON.stringify(bad));
-    if (txN(a)) console.log(k, 'text', JSON.stringify({ outside: a.textCheck.outside.slice(0, 6), outOfBox: a.textCheck.outOfBox.slice(0, 6), overlaps: a.textCheck.overlaps.slice(0, 8), disc: a.textCheck.discOverlaps.slice(0, 8) }));
+    if (txN(a)) console.log(k, 'text', JSON.stringify({ outside: a.textCheck.outside.slice(0, 6), outOfBox: a.textCheck.outOfBox.slice(0, 6), overlaps: a.textCheck.overlaps.slice(0, 8), disc: a.textCheck.discOverlaps.slice(0, 8), marks: a.textCheck.marksOutside.slice(0, 8) }));
+    if (a.cDrawings.overlaps.length || a.cDrawings.outside.length) console.log(k, 'C drawing', JSON.stringify({ overlaps: a.cDrawings.overlaps.slice(0, 8), outside: a.cDrawings.outside.slice(0, 4) }));
   }
 })();
