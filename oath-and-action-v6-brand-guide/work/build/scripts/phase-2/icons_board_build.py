@@ -35,6 +35,11 @@ def num(v, d=2):
     return s.replace("-", "−")
 
 
+def pw(v, d=0):
+    """A share written out for prose, for example 12.5 percent."""
+    return (f"{v * 100:.{d}f}".replace("-", "\u2212")) + " percent"
+
+
 def pct(v, d=0, sign=False):
     s = f"{v * 100:+.{d}f}" if sign else f"{v * 100:.{d}f}"
     return s.replace("-", "−") + "%"
@@ -72,8 +77,11 @@ def tile(c, cut, n, shape, color, size, alt=None):
             f'<img class="i" src="{src(f)}" style="left:{off:g}px;top:{off:g}px" width="{field:g}" height="{field:g}" alt="{e(a)}"></span>')
 
 
-def strip(c, cut, size, colorway="Ink-Charcoal-Red", names=None):
+def strip(c, cut, size, colorway="Ink-Charcoal-Red", names=None, cols=None):
     names = names or D.ICONS
+    if cols:
+        return (f'<div class="igrid" style="grid-template-columns:repeat({cols},{size}px)">'
+                + "".join(icon(c, cut, n, size, colorway) for n in names) + "</div>")
     return '<div class="strip">' + "".join(icon(c, cut, n, size, colorway) for n in names) + "</div>"
 
 
@@ -141,7 +149,21 @@ CSS = """
 .stats span{font-size:.875rem;line-height:1.45;color:var(--muted);display:block}
 .toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;font-weight:600;font-size:.9375rem}
 .toc a{color:var(--fg)}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.igrid{display:grid;gap:14px 22px;align-items:end}
+.igrid img{display:block}
+.bgrid{display:grid;grid-template-columns:repeat(8,56px);gap:10px;align-items:end}
+.bgrid>span{display:flex;justify-content:flex-start;align-items:flex-end;min-height:24px}
+.hrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:10px}
+.hrow>div{background:var(--bg);padding:12px;min-width:0}
+.hrow>div.wh{background:var(--white)}
+.hrow>div.s-charcoal{background:var(--charcoal)}
+.hrow>div.s-prussian{background:var(--prussian)}
+.hrow>div.s-charcoal .cap,.hrow>div.s-prussian .cap{color:#C9C5BC}
+.hrow .cap{margin-bottom:8px}
+.tgrid{display:grid;grid-template-columns:repeat(4,40px);gap:10px 14px}
+.navstack{display:grid;gap:10px}
+.navstack h4{margin:0 0 6px}
 .card{background:var(--surface);border:1px solid var(--rule);padding:18px;min-width:0;display:flex;flex-direction:column;gap:12px}
 .card h3{font-size:1.25rem;font-weight:800;letter-spacing:-.02em}
 .card ul{margin:0;padding-left:18px;font-size:.875rem;line-height:1.5}
@@ -195,15 +217,15 @@ blockquote{margin:16px 0;padding:14px 18px;border-left:3px solid var(--fg);backg
 .legend{padding:12px 14px;border:1px solid var(--rule)}
 .legend .lg{display:flex;gap:10px;align-items:center;font-size:.8125rem;line-height:1.4;margin:4px 0}
 .legend .lg img{flex:none}
-.phone{width:236px;max-width:100%;border:10px solid #121212;border-radius:34px;background:var(--newsprint);padding:26px 14px 22px;margin:0 auto}
-.phone .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 6px;justify-items:center}
+.phone{width:300px;max-width:100%;border:10px solid #121212;border-radius:38px;background:var(--newsprint);padding:30px 16px 26px;margin:0 auto}
+.phone .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 8px;justify-items:center}
 .phone .app{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.8125rem;line-height:1.1;text-align:center;width:100%}
 .phone .app span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .apptile{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
 .pix{image-rendering:pixelated;image-rendering:crisp-edges}
-.pixrow{display:flex;flex-wrap:wrap;gap:10px}
-.pixrow figure{margin:0}
-.pixrow figcaption{font-size:.8125rem;color:var(--muted)}
+.pixrow{display:grid;grid-template-columns:repeat(auto-fill,96px);gap:12px 16px}
+.pixrow figure{margin:0;width:96px}
+.pixrow figcaption{font-size:.8125rem;line-height:1.3;color:var(--muted);margin-top:4px}
 .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td.ok{color:var(--fg)} td.no{color:#121212}
 .pass{display:inline-block;font:700 .8125rem/1.2 var(--body);padding:2px 6px;border:1px solid var(--fg)}
@@ -213,7 +235,8 @@ td.ok{color:var(--fg)} td.no{color:#121212}
 table td small{color:var(--muted);font-size:.8125rem;display:block}
 .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
 .grids{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
-.grids figure{margin:0;max-width:100%}
+.grids figure{margin:0;max-width:100%;width:200px}
+.grids figure.w{width:auto}
 .grids img{max-width:100%;height:auto;display:block}
 .grids figcaption{font-size:.8125rem;color:var(--muted);margin-top:6px;max-width:300px}
 .wideimg{max-width:100%;height:auto;display:block}
@@ -226,12 +249,16 @@ table td small{color:var(--muted);font-size:.8125rem;display:block}
 .cutpair{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px}
 .cutpair>div{display:flex;flex-direction:column;gap:6px;align-items:center;font-size:.8125rem;text-align:center}
 @media (max-width:1000px){.cards,.cmp{grid-template-columns:1fr}.idea{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.igrid{gap:12px 14px}}
 @media (max-width:760px){
  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stats b{font-size:1.25rem}
+ .hrow{grid-template-columns:1fr}
+ .bgrid{grid-template-columns:repeat(4,56px)}
  .stats>div:nth-child(3){border-left:0}
  .stats>div:nth-child(n+3){border-top:1px solid var(--rule)}
  .row{grid-template-columns:1fr;gap:8px}
- .surf{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .surf{grid-template-columns:1fr}
  .holders{grid-template-columns:1fr}
  .holders>div.hd{padding-bottom:0}
  .idea{grid-template-columns:1fr}
@@ -303,13 +330,13 @@ def sec_base():
     def cell(key, size):
         if key in BASE:
             return f'<img src="{src(C.BASELINE / BASE[key])}" width="{size}" height="{size}" alt="">'
-        return f'<span class="cap" style="display:inline-block;width:{size}px">None</span>'
+        return '<span class="cap">None</span>'
     rows = []
     for label, pre, note in (("V5 today", "v5", "From the V5 Polished sprite. V5 has no loop symbol."),
                              ("Direction A, Gate 1", "a", "Phase 1 sketches you approved (Y1). Loop and Search were not drawn.")):
-        s24 = "".join(f'<figure style="margin:0">{cell(f"{pre}|{n}", 24)}</figure>' for n in D.ICONS)
-        s48 = "".join(f'<figure style="margin:0">{cell(f"{pre}|{n}", 48)}</figure>' for n in D.ICONS)
-        rows.append(f'<div class="row"><div class="lab">{label}<small>{note}</small></div><div><div class="strip">{s24}</div><div class="strip" style="margin-top:10px">{s48}</div></div></div>')
+        s24 = "".join(f'<span>{cell(f"{pre}|{n}", 24)}</span>' for n in D.ICONS)
+        s48 = "".join(f'<span>{cell(f"{pre}|{n}", 48)}</span>' for n in D.ICONS)
+        rows.append(f'<div class="row"><div class="lab">{label}<small>{note}</small></div><div><div class="bgrid">{s24}</div><div class="bgrid" style="margin-top:12px">{s48}</div></div></div>')
     names = " · ".join(D.LABELS[n] for n in D.ICONS)
     return f"""<section id="s-base"><h2>2. Where the concepts start</h2>
 <p>V5's marks today and Direction A as you approved it, at 24 and 48 px, in the order used throughout: {e(names)}.</p>
@@ -322,29 +349,29 @@ def concept_card(cname):
                 "<li>Lines stop at the node's 1 px seat, so the red sits just off the line.</li>"
                 "<li>At 16 px the line stays 2 px. A counter narrower than 2 px closes into a solid.</li>"
                 f"<li>Red share {pct(sset('A', 'line', 24)['red_share_vector'][0])} to {pct(sset('A', 'line', 24)['red_share_vector'][1])} of the ink at 24 px.</li></ul>")
-        rows = (f'<div class="cap">48 px</div>{strip("A", "line", 48)}<div class="cap">24 and 16 px masters</div>'
+        rows = (f'<div class="cap">48 px</div>{strip("A", "line", 48, cols=4)}<div class="cap">24 and 16 px masters</div>'
                 f'{strip("A", "line", 24)}{strip("A", "line", 16)}')
-        idea = "Line and node. Premium line icons in the manner of the blue and orange set you sent, with the node as the one red shape."
+        idea = "Premium line icons in the manner of the blue and orange set you sent, with the node as the one red shape."
         ref = "Refined: the red shape is the node in every icon, so all eight carry one red form."
     elif cname == "B":
         body = ("<ul><li>Solid pieces from a small kit: square, bar, disc, half disc, quarter ring, triangle.</li>"
                 "<li>Square corners. Pieces sit apart by 1 px cuts, as the ballot sits in its slot.</li>"
                 "<li>The node is one solid piece in a 1 px seat.</li>"
                 f"<li>Red share {pct(sset('B', 'flat', 24)['red_share_vector'][0])} to {pct(sset('B', 'flat', 24)['red_share_vector'][1])} of the ink at 24 px.</li></ul>")
-        rows = (f'<div class="cap">48 px</div>{strip("B", "flat", 48)}<div class="cap">24 and 16 px masters</div>'
+        rows = (f'<div class="cap">48 px</div>{strip("B", "flat", 48, cols=4)}<div class="cap">24 and 16 px masters</div>'
                 f'{strip("B", "flat", 24)}{strip("B", "flat", 16)}')
-        idea = "Flat kit. Built from a few geometric pieces, in the manner of the purple and the pink and gold sets."
+        idea = "Built from a few geometric pieces, in the manner of the purple and the pink and gold sets."
         ref = "Refined: the red piece is the node, so the kit's red is always the same disc."
     else:
         body = ("<ul><li>Direction A's geometry drawn once, as closed outlines with square corners.</li>"
                 "<li>Line cut: each outline as a 2 px wall. Flat cut: each outline filled.</li>"
                 "<li>Both cuts share one silhouette, so a product can swap them by size or by state.</li>"
                 f"<li>Red share {pct(sset('C', 'flat', 24)['red_share_vector'][0])} to {pct(sset('C', 'line', 24)['red_share_vector'][1])} of the ink at 24 px.</li></ul>")
-        rows = (f'<div class="cap">Line cut, 48 px</div>{strip("C", "line", 48)}<div class="cap">Flat cut, 48 px</div>{strip("C", "flat", 48)}'
+        rows = (f'<div class="cap">Line cut, 48 px</div>{strip("C", "line", 48, cols=4)}<div class="cap">Flat cut, 48 px</div>{strip("C", "flat", 48, cols=4)}'
                 f'<div class="cap">Line cut 24 px; flat cut 24 and 16 px</div>{strip("C", "line", 24)}{strip("C", "flat", 24)}{strip("C", "flat", 16)}')
-        idea = "One drawing, two cuts. The Line and Flat pairing from the collage you sent, built on the skeletons you approved."
+        idea = "The Line and Flat pairing from the collage you sent, built on the skeletons you approved."
         ref = ("Refined: 16 px always uses the flat cut, since Y4 starts the line companion at 24 px. Open lines keep 2 px, "
-               "except the loop's arc and the lens handle, which grow inward to 3 px in the flat cut.")
+               "except the loop's arc and the lens handle, which carry a whole subject and double inward to 4 px in the flat cut.")
     title = {"A": "A. Line and node", "B": "B. Flat kit", "C": "C. One drawing, two cuts"}[cname]
     rec = ' <span class="tag rec">Recommended</span>' if cname == "C" else ""
     return f"""<div class="card"><div><span class="tag">Option</span>{rec}</div><h3>{title}</h3><p style="margin:0">{e(idea)}</p>{body}{rows}<p class="cap" style="margin:0">{e(ref)}</p></div>"""
@@ -358,7 +385,7 @@ def sec_glance():
 <h3 style="margin-top:22px">Two refinements to the approved skeletons</h3>
 <ul class="note">
 <li><strong>Act gains a lintel.</strong> The frame now runs across the top of the door. At 16 px the Phase 1 frame read close to the chapter number 01: against Inter Tight 800 "01" the flat Act scored {num(OLD01['B-flat'])}, and with the lintel it scores {num(a01['B-flat'])}. In A it falls from {num(OLD01['A-line'])} to {num(a01['A-line'])}. The node stays on the center line.</li>
-<li><strong>Track rises.</strong> Y2 asked for a raised stair. The base moves up from 22 to 20, which brings the flat stair's center of mass from 17 percent below center to {pct(m('B', 'flat', 'track', 24)['centroid96'][1])}.</li>
+<li><strong>Track rises.</strong> Y2 asked for a raised stair. The base moves up from 22 to 20, which brings the flat stair's center of mass from 17 percent of the field below center to {pw(m('B', 'flat', 'track', 24)['centroid96'][1], 1)}.</li>
 </ul></section>"""
 
 
@@ -378,6 +405,7 @@ def sec_grid():
         ("Curves", "Circles and quarter arcs only", "Discs, half discs, quarter rings", "Circles and quarter arcs only"),
         ("How the node sits", "Off the line, lines stop at its seat", "Seated in a piece or between pieces", "In a counter, clear of shapes, or in a flat-ended gap"),
         ("Arrowhead", "Open chevron, as the hinge diagram's arcs", "Solid triangle", "Chevron in the line cut, the same triangle filled in the flat cut"),
+        ("Open lines", "2 px", "None; bars are solid pieces", "2 px in both cuts; the loop arc and lens handle double inward to 4 px in the flat cut"),
     ]
     trs = "".join(f"<tr><th scope=\"row\">{e(a)}</th><td>{e(b)}</td></tr>" for a, b in shared)
     trp = "".join(f"<tr><th scope=\"row\">{e(a)}</th><td>{e(b)}</td><td>{e(c)}</td><td>{e(d)}</td></tr>" for a, b, c, d in per)
@@ -389,12 +417,12 @@ def sec_grid():
         (C.CONTEXT / f"{C.DATE}_Concept-C-Line-Ballot-On-Grid.svg", "Ballot, concept C line cut."),
         (C.CONTEXT / f"{C.DATE}_Concept-C-Flat-Ballot-On-Grid.svg", "Ballot, concept C flat cut."),
     ]
-    fg = "".join(f'<figure><img src="{src(p)}" width="220" height="220" alt="{e(c)}"><figcaption>{e(c)}</figcaption></figure>' for p, c in figs)
+    fg = "".join(f'<figure><img src="{src(p)}" width="200" height="200" alt="{e(c)}"><figcaption>{e(c)}</figcaption></figure>' for p, c in figs)
     return f"""<section id="s-grid"><h2>4. Grid and craft rules</h2>
 <p>One grid serves all three concepts. Ballot is drawn on it in each concept below, its node on the ballot paper as the vote cue Y5 asked for.</p>
 <div class="grids">{fg}</div>
-<div class="two" style="margin-top:20px"><div><h3>Shared by every concept</h3><table><tbody>{trs}</tbody></table></div>
-<div class="tblwrap"><h3>By concept</h3><table><thead><tr><th scope="col">Rule</th><th scope="col">A, line</th><th scope="col">B, flat kit</th><th scope="col">C, two cuts</th></tr></thead><tbody>{trp}</tbody></table></div></div></section>"""
+<h3 style="margin-top:22px">Shared by every concept</h3><table><tbody>{trs}</tbody></table>
+<h3 style="margin-top:22px">By concept</h3><div class="tblwrap"><table><thead><tr><th scope="col">Rule</th><th scope="col">A, line</th><th scope="col">B, flat kit</th><th scope="col">C, two cuts</th></tr></thead><tbody>{trp}</tbody></table></div></section>"""
 
 
 def sec_sizes():
@@ -422,13 +450,14 @@ def sec_pixels():
     rows = []
     for c, cut in SHOW:
         s = 16 if 16 in C.sizes(c, cut) else 24
+        k = 6 if s == 16 else 4
         figs = "".join(
-            f'<figure><img class="pix" src="{src(C.PX / (A.file_stem(c, cut, n, f"{s}px") + "-Newsprint.png"))}" width="{s * 6}" height="{s * 6}" alt="{e(D.LABELS[n])}, {s} px master at 6x"><figcaption>{e(D.LABELS[n])}</figcaption></figure>'
+            f'<figure><img class="pix" src="{src(C.PX / (A.file_stem(c, cut, n, f"{s}px") + "-Newsprint.png"))}" width="{s * k}" height="{s * k}" alt="{e(D.LABELS[n])}, {s} px master at {k}x"><figcaption>{e(D.LABELS[n])}</figcaption></figure>'
             for n in D.ICONS)
-        lab = DRAW_LABEL[(c, cut)] + (f"<small>{s} px at 6x</small>")
+        lab = DRAW_LABEL[(c, cut)] + (f"<small>{s} px at {k}x</small>")
         rows.append(f'<div class="row"><div class="lab">{lab}</div><div class="pixrow">{figs}</div></div>')
     return f"""<section id="s-pixels"><h2>6. The 16 px masters, magnified without smoothing</h2>
-<p>Each image is the master rendered by Chromium at 1x, then enlarged six times with no smoothing, so every pixel shows. C's line cut has no 16 px master, so its 24 px master stands in.</p>
+<p>Each image is the master rendered by Chromium at 1x, then enlarged with no smoothing, so every pixel shows: the 16 px masters six times, and C's line cut, which has no 16 px master, at 24 px four times.</p>
 <div class="rows">{''.join(rows)}</div></section>"""
 
 
@@ -439,7 +468,7 @@ def sec_surfaces():
         for sname, label, bg in C.SURFACES:
             cw = {"newsprint": "Ink-Charcoal-Red", "white": "Ink-Charcoal-Red", "charcoal": "Ink-Newsprint-Red", "prussian": "Ink-White"}[sname]
             note = {"newsprint": "Charcoal, red node", "white": "Charcoal, red node", "charcoal": "Newsprint, red node", "prussian": "White, no red"}[sname]
-            cells.append(f'<div class="s-{sname}"><div class="cap">{label} · {note}</div>{strip(c, cut, 24, cw)}<div style="height:10px"></div>{strip(c, cut, 48, cw, names=D.ICONS[:4])}</div>')
+            cells.append(f'<div class="s-{sname}"><div class="cap">{label} · {note}</div>{strip(c, cut, 24, cw, cols=4)}<div style="height:14px"></div>{strip(c, cut, 48, cw, names=D.ICONS[:4], cols=4)}</div>')
         rows.append(f'<h3 style="margin:18px 0 8px">{DRAW_LABEL[(c, cut)]}</h3><div class="surf">{"".join(cells)}</div>')
     return f"""<section id="s-surfaces"><h2>7. On all four surfaces</h2>
 <p>The eight at 24 px and the four pillar marks at 48 px on Newsprint, White, Charcoal and Prussian. Red never sits on Prussian, so there the icons go White.</p>
@@ -449,8 +478,8 @@ def sec_surfaces():
 def sec_holders():
     out = [f"""<section id="s-holders"><h2>8. Bare and in three holders</h2>
 <p>The holders are a square, a rounded square and a circle. The rounded square is a true superellipse, |x|<sup>5</sup> + |y|<sup>5</sup> = 1, so its curvature changes without a step all the way around. It comes close to the corner of Apple's app icons; Apple does not publish its own mask. The SVG master draws it with 96 cubic segments that stay within 0.16 px of the exact curve at 1024 px.</p>
-<div class="grids"><figure><img class="wideimg" src="{src(C.HOLDERS / f'{C.DATE}_Holder-Construction.svg')}" width="760" height="320" alt="The three holders with the icon field at 60 percent and the live area at 50 percent of the side"></figure>
-<figure><img class="wideimg" src="{src(C.HOLDERS / f'{C.DATE}_Holder-Superellipse-Corner.svg')}" width="760" height="330" alt="The superellipse corner against a plain border radius, with a curvature plot"></figure></div>
+<div class="grids"><figure class="w"><img class="wideimg" src="{src(C.HOLDERS / f'{C.DATE}_Holder-Construction.svg')}" width="760" height="220" alt="The three holders with the icon field at 60 percent and the live area at 50 percent of the side"><figcaption style="max-width:70ch">Square, rounded square (the superellipse) and circle. Green: the 24-unit icon field, 60 percent of the side. Blue: the 20-unit live area, 50 percent of the side, where ink sits; in the circle, ink also stays inside the blue circle, 80 percent of the diameter.</figcaption></figure>
+<figure class="w"><img class="wideimg" src="{src(C.HOLDERS / f'{C.DATE}_Holder-Superellipse-Corner.svg')}" width="760" height="262" alt="The superellipse corner against a plain border radius, with a curvature plot"><figcaption style="max-width:70ch">Left: the top right corner at 2.2x, the superellipse in black over a plain border radius of 22.37 percent in gray. Right: curvature from the middle of the top edge to the middle of the right edge. Gray steps from straight to full curve; black changes without a step.</figcaption></figure></div>
 <h3 style="margin-top:12px">Safe area</h3>
 <ul class="note"><li>The icon's 20-unit live area is half the holder's side, and its 24-unit field is 60 percent. A 24 px master sits in a 40 px holder and a 16 px master in a 28 px holder, both on whole pixels. Larger tiles scale the display master.</li>
 <li>In the circle, ink also stays within 80 percent of the diameter.</li>
@@ -458,20 +487,23 @@ def sec_holders():
 <li>Tiles and avatars use concept C's flat cut, since a tile is a standalone mark.</li></ul>"""]
     for cname in ("A", "B", "C"):
         c, cut = TILE_CUT[cname]
-        cells = ['<div class="hd"></div>'] + [f'<div class="hd">{col} tile<br><span class="cap">{note}</span></div>' for col, note in (
-            ("Charcoal", "Newsprint icon, red node"), ("Newsprint", "Charcoal icon, red node"), ("Prussian", "White icon, no red"))]
-        cells.append('<div class="hd">Bare</div>')
-        for sname, cw in (("charcoal", "Ink-Newsprint-Red"), ("newsprint", "Ink-Charcoal-Red"), ("prussian", "Ink-White")):
-            bg = {"charcoal": C.CHAR, "newsprint": C.NEWS, "prussian": C.PRUS}[sname]
-            cells.append(f'<div style="background:{bg}"><div class="strip">{"".join(icon(c, cut, n, 24, cw) for n in D.ICONS)}</div></div>')
+        rows = []
+        bare = []
+        for sname, cw, lab in (("charcoal", "Ink-Newsprint-Red", "Bare on Charcoal"), ("newsprint", "Ink-Charcoal-Red", "Bare on Newsprint"), ("prussian", "Ink-White", "Bare on Prussian")):
+            cls = f"s-{sname}"
+            bare.append(f'<div class="{cls}"><div class="cap">{lab}</div><div class="tgrid">{"".join(icon(c, cut, n, 24, cw) for n in D.ICONS)}</div></div>')
+        rows.append(f'<div class="hrow">{"".join(bare)}</div>')
         for shape in C.HOLDER_SHAPES:
-            cells.append(f'<div class="hd">{shape.replace("-", " ")}</div>')
-            for color in ("Charcoal", "Newsprint", "Prussian"):
-                cells.append(f'<div><div class="strip">{"".join(tile(c, cut, n, shape, color, 40) for n in D.ICONS)}</div></div>')
-        out.append(f'<h3 style="margin:22px 0 8px">{DRAW_LABEL[(c, cut)]}, 40 px tiles</h3><div class="holders">{"".join(cells)}</div>')
+            cells = []
+            for color, note in (("Charcoal", "Newsprint icon, red node"), ("Newsprint", "Charcoal icon, red node, on a White page"), ("Prussian", "White icon, no red")):
+                wh = " wh" if color == "Newsprint" else ""
+                cells.append(f'<div class="{wh.strip()}"><div class="cap"><strong>{shape.replace("-", " ")}, {color} tile.</strong> {note}</div>'
+                             f'<div class="tgrid">{"".join(tile(c, cut, n, shape, color, 40) for n in D.ICONS)}</div></div>')
+            rows.append(f'<div class="hrow">{"".join(cells)}</div>')
+        out.append(f'<h3 style="margin:22px 0 8px">{DRAW_LABEL[(c, cut)]}, bare and in 40 px tiles</h3>{"".join(rows)}')
     big = "".join(tile(TILE_CUT[k][0], TILE_CUT[k][1], "connect", shape, color, 96)
                   for k in ("A", "B", "C") for shape in ("Rounded-Square",) for color in ("Charcoal", "Newsprint"))
-    out.append(f'<h3 style="margin:22px 0 8px">Connect at 96 px in the rounded square, Charcoal and Newsprint, concepts A, B and C</h3><div class="strip">{big}</div>')
+    out.append(f'<h3 style="margin:22px 0 8px">Connect at 96 px in the rounded square, concepts A, B and C</h3><div class="strip" style="background:var(--white);padding:14px;gap:14px">{big}</div>')
     out.append("</section>")
     return "".join(out)
 
@@ -527,26 +559,29 @@ def legend(cname):
 
 def phone(cname):
     c, cut = TILE_CUT[cname]
-    apps = "".join(f'<div class="app">{tile(c, cut, n, "Rounded-Square", "Charcoal" if i % 2 == 0 else "Newsprint", 44)}<span>{e(D.LABELS[n].split()[0])}</span></div>'
-                   for i, n in enumerate(D.ICONS))
+    short = {"explain": "Explain", "track": "Track", "connect": "Connect", "act": "Act", "ballot": "Ballot", "money": "Money", "loop": "Loops", "search": "Search"}
+    apps = "".join(f'<div class="app">{tile(c, cut, n, "Rounded-Square", "Charcoal", 48)}<span>{short[n]}</span></div>' for n in D.ICONS)
     return f'<div class="phone"><div class="grid4">{apps}</div></div>'
 
 
 def sec_use():
     blocks = []
+    navs = []
+    for title, dark, note in (("A menu row, on Newsprint", False, "Track is current: its red keeps a 1 px Charcoal keyline and its label sets in bold. A hairline joins the four nodes on one line."),
+                              ("The same row on Charcoal", True, "On Charcoal the current red needs no keyline; red on Charcoal measures 4.49:1.")):
+        rows = "".join(f'<div><h4>{({"A": "A, line", "B": "B, flat kit", "C": "C, two cuts"})[k]}</h4>{navrow(k, dark=dark)}</div>' for k in ("A", "B", "C"))
+        navs.append(f'<h3 style="margin:24px 0 6px">{title}</h3><p class="cap" style="margin:0 0 10px">{e(note)}</p><div class="navstack">{rows}</div>')
     for title, fn, note in (
-            ("A menu row, on Newsprint", lambda k: navrow(k), "Track is current: its red keeps a 1 px Charcoal keyline and its label sets in bold. A hairline joins the four nodes on one line."),
-            ("The same row on Charcoal", lambda k: navrow(k, dark=True), "On Charcoal the current red needs no keyline; red on Charcoal measures 4.49:1."),
             ("A topic list with labels", lambda k: topics(k), "Campaign money is current. Labels are example copy."),
             ("A social avatar", lambda k: avatar(k), "The circle holder in Charcoal. The series name is example copy."),
             ("An atlas legend line, at 16 px", lambda k: legend(k), "The loop at its 16 px master beside 13 px legend text."),
-            ("A phone home screen", lambda k: phone(k), "Tiles at 44 px in both tile colors. App names are illustrative; these are not real apps.")):
+            ("A phone home screen", lambda k: phone(k), "Charcoal tiles at 48 px, the default proposed in decision 8. App names are illustrative; these are not real apps.")):
         cols = "".join(f'<div><h4>{"A, line" if k == "A" else ("B, flat kit" if k == "B" else "C, two cuts")}</h4>{fn(k)}</div>' for k in ("A", "B", "C"))
-        tag = ' <span class="tag ill">Illustrative</span>' if title in ("A topic list with labels", "A social avatar", "A phone home screen") else ""
-        blocks.append(f'<h3 style="margin:24px 0 6px">{title}{tag}</h3><p class="cap" style="margin:0 0 10px">{e(note)}</p><div class="cmp">{cols}</div>')
+        tag = '<span class="tag ill">Illustrative</span> ' if title in ("A topic list with labels", "A social avatar", "A phone home screen") else ""
+        blocks.append(f'<h3 style="margin:24px 0 6px">{title}</h3><p class="cap" style="margin:0 0 10px">{tag}{e(note)}</p><div class="cmp">{cols}</div>')
     return f"""<section id="s-use"><h2>9. In use, the same contexts for each concept</h2>
 <p>Every row applies Rule 05.3: a row or a menu goes one color, and only the current icon keeps its red. In concept C the current item also switches from the line cut to the flat cut, so the state changes shape as well as color.</p>
-{''.join(blocks)}</section>"""
+{''.join(navs)}{''.join(blocks)}</section>"""
 
 
 def sec_cuts():
@@ -560,11 +595,38 @@ def sec_cuts():
 <h3 style="margin-top:20px">The switch by state, at 24 px</h3>
 <p class="note">Default: line cut, one color. Current: flat cut, with its red. At 16 px both states use the flat cut, and the current one keeps its red and its bold label.</p>
 <div class="cutpair">{''.join(st)}</div>
-<p class="cap" style="margin-top:10px">Feedback loop changes least between cuts: its arc thickens from 2 to 3 px and its arrowhead fills. Its state change rests mostly on the red and the label.</p></section>"""
+<p class="cap" style="margin-top:10px">Feedback loop changes least between cuts: its arc doubles from 2 to 4 px and its arrowhead fills.</p></section>"""
 
 
 def status(ok):
     return '<span class="pass">Pass</span>' if ok else '<span class="fail">Fail</span>'
+
+
+def failure_notes():
+    out = []
+    for c, cut in SHOW:
+        st = sset(c, cut, 24)
+        med = st["density96"][2]
+        hi = [n for n in D.ICONS if m(c, cut, n, 24)["density96"] / med - 1 > 0.20]
+        lo = [n for n in D.ICONS if m(c, cut, n, 24)["density96"] / med - 1 < -0.20]
+        bits = []
+        if hi:
+            bits.append(", ".join(f"{D.LABELS[n]} {pct(m(c, cut, n, 24)['density96'] / med - 1, 0, True)}" for n in hi) + " over the median")
+        if lo:
+            bits.append(", ".join(f"{D.LABELS[n]} {pct(m(c, cut, n, 24)['density96'] / med - 1, 0, True)}" for n in lo) + " under it")
+        if bits:
+            out.append(f"<li><strong>Balance in {DRAW_LABEL[(c, cut)]}.</strong> " + "; ".join(bits) + ". " + BALANCE_WHY[(c, cut)] + "</li>")
+    out.append("<li><strong>Standalone red on Newsprint measures 2.96:1.</strong> Rule 05.3 treats it as signature red, like the wordmark's ampersand. Decision 3 below asks whether to keep that or add the keyline everywhere on Newsprint.</li>")
+    out.append(f"<li><strong>Center of mass.</strong> Track sits low in every concept, the stair's nature: {pw(m('A', 'line', 'track', 24)['centroid96'][1], 1)} of the field in A and {pw(m('B', 'flat', 'track', 24)['centroid96'][1], 1)} in B and C's flat cut, against Phase 1's 12 percent. It was 17 to 18 percent in Phase 1. The brief's balance check is ink area, so this row carries no pass mark.</li>")
+    return "".join(out)
+
+
+BALANCE_WHY = {
+    ("A", "line"): "A door carries a frame and a leaf, and the leaf needs a 6-unit counter for its handle. The full-set pass can narrow the door toward the portrait keyline.",
+    ("B", "flat"): "",
+    ("C", "line"): "Open drawings carry less ink than outlined solids at the same stroke. Each sits 1 to 3 points past the line; a small enlargement in the full-set pass would bring them in.",
+    ("C", "flat"): "",
+}
 
 
 def sec_checks():
@@ -592,7 +654,7 @@ def sec_checks():
         if cut == "flat":
             if c == "B":
                 return None, "Solid pieces; every cut between pieces is 1 px"
-            return None, "Solid shapes; open lines 2 px, the loop arc and lens handle 3 px"
+            return None, "Solid shapes; open lines 2 px, the loop arc and lens handle 4 px"
         vals = [m(c, cut, n, 24)["stroke"] for n in D.ICONS]
         med = sorted(v["median_units"] for v in vals)
         share = min(v["share_at_2"] for v in vals)
@@ -675,18 +737,13 @@ def sec_checks():
 <p>All numbers come from Chromium renders at device scale 1 and from the vector masters. Similarity uses the Phase 1 measure: the mean of filled-silhouette overlap and correlation after a 3 by 3 blur.</p>
 <div class="tblwrap"><table><thead><tr><th scope="col">Check</th>{head_}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <h3 style="margin-top:18px">What the failures say</h3>
-<ul class="note">
-<li><strong>Act runs heavy in A and in C's line cut.</strong> A door carries a frame and a leaf, and the leaf needs a 6-unit counter for its handle. The full-set pass can narrow the door to the portrait keyline.</li>
-<li><strong>Feedback loop runs light in C's flat cut.</strong> An open arc has little to fill. A 4 px arc in the flat cut would bring it inside 20 percent, at the cost of one more exception to the cut rule.</li>
-<li><strong>Line icons fail the Phase 1 silhouette test at 16 px.</strong> The test asks for ink on a quarter of the field, which suits filled marks. This is why Gate 1 started the line companion at 24 px, and why C uses its flat cut at 16 px.</li>
-<li><strong>Standalone red on Newsprint measures 2.96:1.</strong> Rule 05.3 treats it as signature red, like the wordmark's ampersand. Decision 3 below asks whether to keep that or add the keyline everywhere on Newsprint.</li>
-</ul></section>"""
+<ul class="note">{failure_notes()}</ul></section>"""
 
 
 RUBRIC = {
-    "A": (4, 4, 3, 3, 5, 4, "Clean line and pixel fit, but Act and Explain sit far apart in weight, line icons are the most familiar genre, and a product gets no shape change for state. Under 4 on brand fidelity and usefulness."),
+    "A": (4, 4, 3, 3, 5, 4, "Clean line and pixel fit. Act runs a third over the set's median weight, line icons are the most familiar genre, and a product gets no shape change for state. Under 4 on brand fidelity and usefulness."),
     "B": (4, 4, 4, 4, 5, 4, "Most even weight of the three and strong at 16 px. It drops the line companion Gate 1 approved (Y4), and its kit cuts move a step away from Direction A."),
-    "C": (4, 4, 5, 5, 5, 4, "Direction A's geometry with the line companion Gate 1 approved, drawn so both cuts share one silhouette. States change shape as well as color. Two balance outliers to fix in the full set."),
+    "C": (4, 4, 5, 5, 5, 4, "Direction A's geometry with the line companion Gate 1 approved, drawn so both cuts share one silhouette. States change shape as well as color. Three line-cut icons sit just under the balance band."),
 }
 
 
@@ -698,7 +755,7 @@ def sec_rubric():
 <div class="tblwrap"><table><thead><tr><th scope="col">Concept</th>{''.join(f'<th scope="col" class="n">{c}</th>' for c in crit)}<th scope="col">Reason</th></tr></thead><tbody>{rows}</tbody></table></div>
 <h3 style="margin-top:18px">Recommendation: concept C</h3>
 <p>C keeps the filled geometry you approved at Gate 1 and gives it the line companion Y4 already set to start at 24 px. Because both cuts share one silhouette, a menu can show the current item in the flat cut and the rest in line, which meets the state rule in section 10 of the Master Brief with a change of shape. At 16 px, in tiles and in avatars it is the flat cut, which passes every 16 px test here.</p>
-<p><strong>What it costs.</strong> Every icon is drawn twice at 24 px and once at 16 px, so the full set of about 60 icons (20 topics, the atlas symbols, status marks and utility icons) means about 180 masters, plus a display master per cut. A script has to check on every rebuild that the two cuts share their outer edges. The flat loop and the heavy Act need one more drawing pass. If you prefer one cut only, B costs about a third less and loses the line companion.</p></section>"""
+<p><strong>What it costs.</strong> Every icon is drawn twice at 24 px and once at 16 px, so the full set of about 60 icons (20 topics, the atlas symbols, status marks and utility icons) means about 180 masters, plus a display master per cut. A script has to check on every rebuild that the two cuts share their outer edges. Track, Feedback loop and Search in the line cut need a small enlargement to sit inside the balance band. If you prefer one cut only, B costs about a third less and loses the line companion.</p></section>"""
 
 
 def sec_decide():

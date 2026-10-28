@@ -24,8 +24,8 @@ Concepts
      into a piece or between pieces.
   C  One drawing in two cuts. Direction A's geometry as closed outlines with square corners.
      Line cut: each outline as a 2 px wall inside its edge. Flat cut: each outline filled. A part
-     with no inside keeps 2 px in both cuts, except the loop arc and the lens handle, which grow
-     inward to 3 px in the flat cut. The node never bites a wall: it sits in a counter, clear of
+     with no inside keeps 2 px in both cuts, except the loop arc and the lens handle, which double
+     inward to 4 px in the flat cut. The node never bites a wall: it sits in a counter, clear of
      every shape, or in a flat-ended gap in a wall.
      The line cut starts at 24 px; 16 px uses the flat cut.
 """
@@ -344,8 +344,8 @@ def B_16(name, var=None):
 def _C24(name, cut):
     """Closed outlines, open parts for this cut, node center, and the flat-ended gap the line cut
     needs where the node sits in a wall. Both cuts share one silhouette: the flat cut fills each
-    outline. Open lines keep 2 px, except the loop's arc and the lens handle, which carry the whole
-    subject and grow inward to 3 px in the flat cut, so their outer edges stay put."""
+    outline. Open lines keep 2 px, except the two that carry a whole subject, the loop's arc and the
+    lens handle, which double to 4 px in the flat cut, growing inward so their outer edges stay put."""
     flat = cut == "flat"
     if name == "explain":
         L = minus(rect(3, 8, 14, 14), rect(10, 8, 7, 7))
@@ -372,7 +372,7 @@ def _C24(name, cut):
         return [front, back], [], (15, 10), None
     if name == "loop":
         end = 450 - 33
-        arc = sector(12, 11, 9, 6 if flat else 7, 90 + 25, end)
+        arc = sector(12, 11, 9, 5 if flat else 7, 90 + 25, end)
         head = chevron(12, 11, 8, end, 4.6)
         if flat:
             (px, py), (tx, ty), (nx, ny) = _tangent(12, 11, 8, end)
@@ -381,7 +381,7 @@ def _C24(name, cut):
         return [], [arc, head], (12, 19), None
     if name == "search":
         lens = circle(10, 10, 8)
-        handle = _ln([(15.3, 15.3), (20.9, 20.9)], 3 if flat else 2)
+        handle = _ln([(15.3, 15.3), (20.5, 20.5)], 4) if flat else _ln([(15.3, 15.3), (20.9, 20.9)], 2)
         return [lens], [handle], (10, 10), None
     raise ValueError(name)
 

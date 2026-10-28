@@ -91,7 +91,7 @@ def write_holders():
                 f'<title>{shape.replace("-", " ")} holder, {color}</title><path d="{g.d_of(p)}" fill="{fill}"/></svg>')
     # construction drawing: the three holders with the field and live area, the smoothed corner
     # against a plain rounded corner, and their curvature
-    W, H = 760, 300 + 20
+    W, H = 760, 220
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="Inter, Arial, sans-serif">',
              "<title>Holder construction: field, live area and the smoothed corner</title>"]
     S = 200
@@ -106,16 +106,13 @@ def write_holders():
         if shape == "Circle":
             parts.append(f'<circle cx="{x0 + S / 2}" cy="{10 + S / 2}" r="{C.CIRCLE_SAFE * S}" fill="none" stroke="#1F2D5A" stroke-width="1.2"/>')
         lab = {"Square": "Square", "Rounded-Square": "Rounded square, superellipse", "Circle": "Circle"}[shape]
-        parts.append(f'<text x="{x0}" y="{10 + S + 26}" font-size="14" font-weight="600" fill="#121212">{lab}</text>')
-    parts.append(f'<text x="10" y="{10 + S + 50}" font-size="13" fill="#45494F">Green: the 24-unit icon field, 60 percent of the side. Blue: the 20-unit live area, 50 percent of the side.</text>')
-    parts.append(f'<text x="10" y="{10 + S + 68}" font-size="13" fill="#45494F">In the circle, ink also stays inside the blue circle, 80 percent of the diameter.</text>')
     parts.append("</svg>")
     (C.HOLDERS / f"{C.DATE}_Holder-Construction.svg").write_text("".join(parts))
     # corner comparison and curvature plot
     S2 = 240
     se = C.holder_path("Rounded-Square", S2)
     pl = g.plain_rounded(0, 0, S2, C.CORNER_RADIUS)
-    W2, H2 = 760, 330
+    W2, H2 = 760, 262
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W2}" height="{H2}" viewBox="0 0 {W2} {H2}" font-family="Inter, Arial, sans-serif">',
              "<title>Superellipse corner against a plain rounded corner, with curvature along one quarter</title>"]
     z = 2.2
@@ -123,8 +120,6 @@ def write_holders():
     parts.append('<clipPath id="cc"><rect x="10" y="10" width="242" height="242"/></clipPath>')
     parts.append(f'<g clip-path="url(#cc)"><path d="{g.d_of(corner(pl))}" fill="none" stroke="#8A8F96" stroke-width="2"/>'
                  f'<path d="{g.d_of(corner(se))}" fill="none" stroke="#121212" stroke-width="2.5"/></g>')
-    parts.append('<text x="10" y="280" font-size="13" fill="#45494F">Top right corner at 2.2x. Black: the superellipse.</text>')
-    parts.append('<text x="10" y="298" font-size="13" fill="#45494F">Gray: a plain border radius, 22.37 percent of the side.</text>')
     px0, py0, pw, ph = 300, 20, 430, 200
     parts.append(f'<rect x="{px0}" y="{py0}" width="{pw}" height="{ph}" fill="none" stroke="#5D636D" stroke-width="1"/>')
     for pts, col, wdt in ((g.plain_corner_curvature(S2, C.CORNER_RADIUS), "#8A8F96", 2), (g.superellipse_curvature(S2, C.SUPERELLIPSE_N), "#121212", 2.5)):
@@ -132,8 +127,6 @@ def write_holders():
         kmax = 1.6 / (C.CORNER_RADIUS * S2)
         d = " ".join(f"{'M' if i == 0 else 'L'}{px0 + p[0] / smax * pw:.1f} {py0 + ph - min(p[1], kmax) / kmax * (ph - 10):.1f}" for i, p in enumerate(pts))
         parts.append(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{wdt}"/>')
-    parts.append(f'<text x="{px0}" y="{py0 + ph + 22}" font-size="13" fill="#45494F">Curvature from the middle of the top edge to the middle of the right edge.</text>')
-    parts.append(f'<text x="{px0}" y="{py0 + ph + 40}" font-size="13" fill="#45494F">Gray steps from straight to full curve. Black changes without a step.</text>')
     parts.append("</svg>")
     (C.HOLDERS / f"{C.DATE}_Holder-Superellipse-Corner.svg").write_text("".join(parts))
 

@@ -26,7 +26,7 @@ SCALES = {
     # box width, box height floor, horizontal gap, vertical gap, return depth, label size, id size, line width, disc r
     "mini": dict(bw=158, bh=48, hg=60, vg=60, depth=34, ls=13, lw=600, ids=0, stroke=2.0, disc=8, glyph=13, pad=9),
     "lead": dict(bw=300, bh=84, hg=150, vg=96, depth=58, ls=18, lw=600, ids=15, stroke=2.5, disc=11, glyph=15, pad=14),
-    "card": dict(bw=300, bh=0, hg=240, vg=150, depth=118, ls=16, lw=600, ids=16, stroke=2.5, disc=12, glyph=15, pad=16),
+    "card": dict(bw=300, bh=0, hg=220, vg=150, depth=110, ls=16, lw=600, ids=16, stroke=2.5, disc=12, glyph=15, pad=16),
 }
 
 
@@ -211,7 +211,7 @@ def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, ma
     # margins: room for step labels on the card
     if margin is None:
         if card:
-            margin = {"l": 220 if n >= 3 else 24, "r": 220 if n >= 3 else 24, "t": 110 if n >= 2 else 24, "b": 120}
+            margin = {"l": 200 if n >= 3 else 8, "r": 200 if n >= 3 else 8, "t": 150, "b": 116}
         elif scale == "lead":
             margin = {"l": 12, "r": 12, "t": 12, "b": 22}
         else:
@@ -239,9 +239,9 @@ def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, ma
         red = bool(s["code"] and s["code"] in red_targets)
         if s["is_variable"]:
             g = [f'<g class="var"{D.node_attrs(s["code"], s["label"])}' + (f' data-red="1" data-target="{reform_id}"' if red else "") + ">"]
-            g.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="3" fill="{D.NEWS}" '
-                     + (f'stroke="{D.RED}" stroke-width="3"' if red else f'stroke="{D.INK}" stroke-width="1"') + "/>")
-            g.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="4" height="{h:.1f}" fill="{D.INK}"/>')
+            g.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="{D.NEWS}"'
+                     + (f' stroke="{D.RED}" stroke-width="3"' if red else "") + "/>")
+            g.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="5" height="{h:.1f}" fill="{D.INK}"/>')
             ty = y + sc["pad"]
             if has_id:
                 g.append(T(x + 4 + sc["pad"], ty + sc["ids"] * 0.78, s["code"], sc["ids"], 800, D.INK, family="tight"))
@@ -289,12 +289,12 @@ def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
         (x1, y), (x2, _) = rt[0], rt[-1]
         mx = (x1 + x2) / 2
         lines = TX.balanced_wrap(st["name"], (x2 - x1) - 24, 16, 600)
-        rows = [(head, 13, 700, D.INK)] + [(l, 16, 600, D.INK) for l in lines]
+        tails = TX.balanced_wrap(gw + "  ·  " + tail, (x2 - x1) - 24, 13, 400)
+        rows = [(head, 13, 700, D.INK)] + [(l, 16, 600, D.INK) for l in lines] + [(t, 13, 400, D.DEEP) for t in tails]
         y_end = y - 26
         blk = []
         for i, (t, s, wgt, col) in enumerate(reversed(rows)):
             blk.append(T(mx, y_end - i * 21, t, s, wgt, col, "middle"))
-        blk.append(T(mx, y + 36, gw + "  ·  " + tail, 13, 400, D.DEEP, "middle"))
     elif orn == "under":
         yb = rt[1][1]
         mx = (rt[1][0] + rt[2][0]) / 2
@@ -325,7 +325,7 @@ def step_label(st, rt, orn, sc, loop, boxes, margin, width, red, reform_id):
 
 # ------------------------------------------------------------------ the phone card: boxes stacked, return up the left
 
-def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326):
+def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326, view="fg-card-phone", markers=None, with_meta=False):
     sc = dict(SCALES["card"])
     left = 40
     bw = w - left
@@ -379,9 +379,9 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326):
     for s, (x, y, w_, h), (lab, rule) in zip(loop["stations"], boxes, texts):
         red = s["code"] in red_targets
         g = [f'<g class="var"{D.node_attrs(s["code"], s["label"])}' + (f' data-red="1" data-target="{reform_id}"' if red else "") + ">",
-             f'<rect x="{x:.1f}" y="{y:.1f}" width="{w_:.1f}" height="{h:.1f}" rx="3" fill="{D.NEWS}" '
-             + (f'stroke="{D.RED}" stroke-width="3"' if red else f'stroke="{D.INK}" stroke-width="1"') + "/>",
-             f'<rect x="{x:.1f}" y="{y:.1f}" width="4" height="{h:.1f}" fill="{D.INK}"/>',
+             f'<rect x="{x:.1f}" y="{y:.1f}" width="{w_:.1f}" height="{h:.1f}" rx="2" fill="{D.NEWS}"'
+             + (f' stroke="{D.RED}" stroke-width="3"' if red else "") + "/>",
+             f'<rect x="{x:.1f}" y="{y:.1f}" width="5" height="{h:.1f}" fill="{D.INK}"/>',
              T(x + 20, y + 16 + 13, s["code"], 16, 800, D.INK, family="tight")]
         ty = y + 16 + 22
         for i, ln in enumerate(lab):
@@ -393,4 +393,54 @@ def phone_drawing(loop, model, reform_id=None, bg=D.WHITE, w=326):
         boxes_svg.append("".join(g))
     label = f'Loop {loop["id"]}, Field Guide phone drawing. {loop["how_to_read"]}'
     attrs = f' data-loop="{loop["id"]}" data-direction="field-guide"' + (f' data-reform="{reform_id}"' if reform_id else "")
-    return svg_doc(w, total, "".join(lines_) + "".join(boxes_svg) + "".join(discs) + "".join(labels), label, "fg-card-phone", attrs)
+    marker_svg = "".join(markers({"boxes": boxes, "xl": xl, "left": left})) if markers else ""
+    svg = svg_doc(w, total, "".join(lines_) + "".join(boxes_svg) + "".join(discs) + "".join(labels) + marker_svg, label, view, attrs)
+    return (svg, {"boxes": boxes, "xl": xl, "h": total}) if with_meta else svg
+
+
+def phone_mini(loop, model, w=326):
+    """The catalog miniature on a phone: the phone card's stacked drawing at catalog size, names only."""
+    left = 30
+    bw = w - left
+    gap = 34
+    bh = 40
+    lab_w = bw - 5 - 2 * 10
+    texts = [TX.balanced_wrap(s["label"], lab_w, 13, 600) for s in loop["stations"]]
+    y = 4
+    boxes = []
+    for lab in texts:
+        h = max(bh, 16 * len(lab) + 18)
+        boxes.append((left, y, bw, h))
+        y += h + gap
+    total = boxes[-1][1] + boxes[-1][3] + 8
+    lines_, discs, boxes_svg = [], [], []
+    xl = left + 40
+    for i, st in enumerate(loop["steps"]):
+        a = boxes[i]
+        if not st["closing"]:
+            b = boxes[i + 1]
+            rt = [(xl, a[1] + a[3]), (xl, b[1])]
+            dx, dy = xl, (a[1] + a[3] + b[1]) / 2
+        else:
+            first = boxes[0]
+            ya = a[1] + a[3] / 2
+            yb = first[1] + first[3] / 2
+            rt = [(left, ya), (8, ya), (8, yb), (left, yb)]
+            dx, dy = 8, (ya + yb) / 2
+        poly = rounded(rt, 6)
+        lines_.append(f'<g class="step"{D.step_attrs(st)}>' + line(poly, st, 2.0, D.INK, D.WHITE, False, ticks=False, head=8) + "</g>")
+        discs.append(sign_disc(dx, dy, st, 8, 13, D.WHITE, extra=f' data-for="{st["id"] or "concept-" + str(st["index"])}"'))
+    for s, (x, y, w_, h), lab in zip(loop["stations"], boxes, texts):
+        if s["is_variable"]:
+            g = [f'<g class="var"{D.node_attrs(s["code"], s["label"])}>', f'<rect x="{x:.1f}" y="{y:.1f}" width="{w_:.1f}" height="{h:.1f}" rx="2" fill="{D.NEWS}"/>',
+                 f'<rect x="{x:.1f}" y="{y:.1f}" width="5" height="{h:.1f}" fill="{D.INK}"/>']
+        else:
+            g = [f'<g class="sketch" data-concept-label="{D.esc(s["label"])}">', f'<rect x="{x:.1f}" y="{y:.1f}" width="{w_:.1f}" height="{h:.1f}" rx="2" fill="{D.WHITE}" stroke="{D.INK}" stroke-width="1.25"/>']
+        ty = y + (h - 16 * len(lab)) / 2
+        for i, ln in enumerate(lab):
+            g.append(T(x + 15, ty + 16 * i + 11, ln, 13, 600, D.INK))
+        g.append("</g>")
+        boxes_svg.append("".join(g))
+    label = f'Loop {loop["id"]}, Field Guide phone miniature. {loop["how_to_read"]}'
+    return svg_doc(w, total, "".join(lines_) + "".join(boxes_svg) + "".join(discs), label, "fg-mini-phone",
+                   f' data-loop="{loop["id"]}" data-direction="field-guide"')

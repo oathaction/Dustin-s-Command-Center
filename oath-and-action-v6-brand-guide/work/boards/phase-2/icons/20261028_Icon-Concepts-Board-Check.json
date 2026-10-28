@@ -1,0 +1,67 @@
+{
+ "widths": {
+  "390": {
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflow": [],
+   "widows": [],
+   "tabular": {
+    "cells": 24,
+    "ok": 24
+   },
+   "asciiMinus": [],
+   "small": 0,
+   "smallSamples": [],
+   "images": 1134,
+   "broken": [],
+   "fonts": [
+    "Inter 400",
+    "Inter 600",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800"
+   ],
+   "height": 40314,
+   "failedRequests": [],
+   "capture": "work/boards/phase-2/icons/screens/20261028_Icon-Concepts-Board-390.jpg"
+  },
+  "1440": {
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflow": [],
+   "widows": [],
+   "tabular": {
+    "cells": 24,
+    "ok": 24
+   },
+   "asciiMinus": [],
+   "small": 0,
+   "smallSamples": [],
+   "images": 1134,
+   "broken": [],
+   "fonts": [
+    "Inter 400",
+    "Inter 600",
+    "Inter 700",
+    "Inter Tight 600",
+    "Inter Tight 800"
+   ],
+   "height": 18987,
+   "failedRequests": [],
+   "capture": "work/boards/phase-2/icons/screens/20261028_Icon-Concepts-Board-1440.jpg"
+  }
+ },
+ "summary": [
+  "390 px: page 390 px wide in a 390 px viewport; 0 elements outside the viewport, not counting tables that scroll on purpose.",
+  "390 px: 1134 images, 0 failed to load; 0 local requests failed.",
+  "390 px: 0 text elements set under 13 px.",
+  "390 px: 0 headings end on a single word.",
+  "390 px: 24 of 24 numeric cells use tabular figures; 0 use a hyphen for minus.",
+  "1440 px: page 1440 px wide in a 1440 px viewport; 0 elements outside the viewport, not counting tables that scroll on purpose.",
+  "1440 px: 1134 images, 0 failed to load; 0 local requests failed.",
+  "1440 px: 0 text elements set under 13 px.",
+  "1440 px: 0 headings end on a single word.",
+  "1440 px: 24 of 24 numeric cells use tabular figures; 0 use a hyphen for minus.",
+  "Web fonts loaded in the check: Inter 400, Inter 600, Inter 700, Inter Tight 600, Inter Tight 800."
+ ]
+}
