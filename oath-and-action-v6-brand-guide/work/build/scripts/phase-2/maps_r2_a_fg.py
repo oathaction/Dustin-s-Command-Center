@@ -202,16 +202,23 @@ def disc_point(route, orient):
 def drawing(loop, model, scale="mini", reform_id=None, bg=D.WHITE, view=None, markers=None, margin=None):
     """One loop as a Field Guide specimen. scale: mini, lead or card. Returns (svg, meta) where meta carries the
     geometry the page needs, such as marker points for the catalog head's callouts."""
-    sc = SCALES[scale]
+    sc = dict(SCALES[scale])
     card = scale == "card"
+    n = loop["n"]
+    if card:
+        # two steps sit beside the rail; three and four steps take the card's full width
+        sc.update(dict(bw=290, hg=170) if n == 2 else dict(bw=280, hg=200))
     has_id = sc["ids"] > 0
     texts = box_texts(loop, model, sc, with_rules=card)
     red_targets = set(model["reforms"][reform_id]["targets"]) if reform_id else set()
-    n = loop["n"]
-    # margins: room for step labels on the card
+    # margins: room for step labels on the card, measured from the top step's label block
     if margin is None:
         if card:
-            margin = {"l": 200 if n >= 3 else 8, "r": 200 if n >= 3 else 8, "t": 150, "b": 116}
+            st0 = loop["steps"][0]
+            rows = 1 + len(TX.balanced_wrap(st0["name"] or "", sc["hg"] - 24, 16, 600)) + 2
+            h1 = max(box_height(l, r, sc, has_id) for l, r in texts[:2])
+            top = max(24, rows * 21 + 40 - h1 / 2)
+            margin = {"l": 186 if n >= 3 else 8, "r": 186 if n >= 3 else 8, "t": top, "b": 116}
         elif scale == "lead":
             margin = {"l": 12, "r": 12, "t": 12, "b": 22}
         else:

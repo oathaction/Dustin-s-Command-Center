@@ -59,6 +59,11 @@ def inner(svg):
     return body.split("</title>", 1)[1] if "</title>" in body else body
 
 
+def nbh(text):
+    """Keep reform IDs such as R-06 on one line."""
+    return re.sub(r"\bR-(\d\d)\b", "R\u2011\\1", text)
+
+
 def chip(kind, code):
     return f'<span class="chip"><span class="k">{esc(kind)}</span><span class="c">{esc(code)}</span></span>'
 
@@ -86,9 +91,17 @@ def caption(lp):
 
 
 def v7_sentence(text, word):
-    for snt in re.split(r"(?<=[.;])\s+", text):
-        if word in snt.lower():
-            return snt.strip()
+    """The clause of V7's evidence summary that names the weak step, with the step it is about."""
+    for snt in re.split(r"(?<=\.)\s+", text):
+        if word not in snt.lower():
+            continue
+        for c in [c.strip() for c in snt.split(";")]:
+            if word in c.lower():
+                ids = re.findall(r"\b(L\d\d|LE\d\d|LT\d\d|LX\d|T\d\d)\b", snt)
+                quote = "\u201c" + c.rstrip(".") + ".\u201d"
+                if c[0].islower() and ids:
+                    return f"on {ids[0]}, {quote}"
+                return quote
     return None
 
 
@@ -145,7 +158,7 @@ def teach(view_suffix=""):
         1: (a6[0] + a6[2] - 18, a6[1] + 18),
         2: (fx1 + 0.82 * (fx2 - fx1), fy),
         3: (under[2][0] + 0.18 * (under[1][0] - under[2][0]), under[1][1]),
-        4: (dx + 22, dy - 22),
+        4: (dx + 24, dy + 24),
         5: (fx1 + 0.28 * (fx2 - fx1), fy),
     }
     marker = "".join(
@@ -205,7 +218,7 @@ def catalog_page(hl="h2"):
             deck = next(a["text"] for a in M["areas"] if a["id"] == pl["id"])
         count = len(pl["rest"]) + (1 if pl["lead"] else 0)
         lead_note = f'Lead specimen: Loop {pl["lead"]}' if pl["lead"] else "No lead specimen"
-        band = (f'<div class="fga-band"><div class="wrapc fga-bandin">' + (f'<span class="fga-letter" aria-hidden="true">{letter}</span>' if letter else '<span class="fga-letter sk" aria-hidden="true">~</span>')
+        band = (f'<div class="fga-band"><div class="wrapc fga-bandin">' + (f'<span class="fga-letter" aria-hidden="true">{letter}</span>' if letter else '<span class="fga-letter sk" aria-hidden="true"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="38" fill="none" stroke="#DCD9D2" stroke-width="12"/><circle cx="48" cy="48" r="38" fill="none" stroke="#121212" stroke-width="5"/></svg></span>')
                 + f'<div><h3>{esc(("Area " + letter + ": ") if letter else "")}{esc(name)}</h3><p>{esc(deck)}</p></div>'
                 + f'<p class="fga-count"><b>{count}</b> loops<br><span>{esc(lead_note)}</span></p></div></div>')
         tiles = []
@@ -230,7 +243,7 @@ def rail(lp, rid=None):
     w_lead = least_certain(lp).replace("Least certain: ", "")
     w = w_lead[0].upper() + w_lead[1:]
     if weak_v7:
-        w += f" V7: “{weak_v7}”"
+        w += (" V7, " + weak_v7) if weak_v7.startswith("on ") else (" V7: " + weak_v7)
     rows = [
         (kind_h, f"{'Reinforcing' if lp['type'] == 'R' else 'Balancing'} loop. V7: “{gl}”"),
         ("What the return line means", f"{closing['id']}, {closing['name']}. {ret_plain}" if ret_plain else ""),
@@ -283,7 +296,7 @@ def reform_block(rid, loop_id):
     return f'''<section class="fga-reform" aria-label="Where reform {rid} acts">
 <p class="fga-eyebrow ink">Where a reform acts</p>
 <h3>{chip("Reform", rid)} {esc(r["title"])}</h3>
-<p><span class="fga-redkey" aria-hidden="true"></span>Red marks where {rid} acts in this loop: {esc("; ".join(nm(t) for t in inside))}.{(" It also acts outside this loop on " + esc("; ".join(nm(t) for t in outside)) + ".") if outside else ""}{esc(also)}</p>
+<p><span class="fga-redkey" aria-hidden="true"></span>{nbh(f"Red marks where {rid} acts in this loop: ")}{esc("; ".join(nm(t) for t in inside))}.{(" It also acts outside this loop on " + esc("; ".join(nm(t) for t in outside)) + ".") if outside else ""}{nbh(esc(also))}</p>
 <p>Evidence that the problem exists: <b>{esc(D.GRADE_WORD[r["problem_grade"]])}</b>. Evidence that the remedy works: <b>{esc(D.GRADE_WORD[r["remedy_grade"]])}</b>. Confidence in the effects, in V7’s words: “{esc(r["effects_confidence"])}”.</p>
 <div class="fga-tables"><div class="fga-tw" tabindex="0" role="region" aria-label="Expected effects of {rid}"><table><caption>Expected effect by outcome family. Ordinal marks, never added up.</caption>
 <thead><tr><th scope="col">Outcome family</th><th scope="col">Mark</th><th scope="col">V7 value</th></tr></thead><tbody>{eff}</tbody></table></div>
@@ -371,7 +384,7 @@ def reform_page(hl="h2"):
     iw, ih = int(st["W"]), int(st["H"])
     targets = "; ".join(f'{t}, {M["links"][t]["name"] if t in M["links"] else M["nodes"][t]["title"]}' for t in r["targets"])
     eff = "".join(f'<tr><th scope="row">{esc(M["families"][k])}</th><td>{pips(v)}</td><td>{esc(tm(v))} ({esc(M["effect_codes"].get(v, v))})</td></tr>' for k, v in r["effects"].items())
-    return f'''<section class="fga fga-reformpage"><div class="wrapw"><article class="fga-card wide" aria-labelledby="fga-r01-h">
+    return f'''<section class="fga fga-reformpage"><div class="wrapw"><article class="fga-rvpage" aria-labelledby="fga-r01-h">
 <div class="fga-mast"><span>Who Do They Answer To? {DOT} Systems Atlas</span><span>Reform view {DOT} {rid}</span></div>
 <{hl} class="fga-hl" id="fga-r01-h">{esc(HEADLINES["R-01"])}</{hl}>
 <p class="fga-title">{chip("Reform", rid)}<span>{esc(r["title"])}</span></p>
@@ -406,7 +419,7 @@ CSS = """
 .fga-display{font:800 96px/0.98 'Inter Tight',Inter,Arial,sans-serif;letter-spacing:-0.035em;margin:14px 0 18px;color:var(--news)}
 .fga-deck{font:400 22px/1.4 Inter;margin:0 0 40px;max-width:44ch;color:var(--news)}
 .fga-teach{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
-.fga-panel{background:var(--white);padding:28px;border-radius:2px;overflow:hidden}
+.fga-panel{background:var(--white);padding:20px 28px;border-radius:2px;overflow:hidden}
 .fga-panel svg{margin:0 auto}
 .fga-key{list-style:none;margin:0;padding:0;display:grid;gap:20px;counter-reset:k}
 .fga-key li{display:grid;grid-template-columns:34px 1fr;gap:12px;font:400 16px/1.45 Inter;color:var(--news)}
@@ -416,7 +429,7 @@ CSS = """
 /* plates */
 .fga-plate{margin-top:56px}
 .fga-band{background:var(--ink);color:var(--news)}
-.fga-bandin{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end;padding-top:22px;padding-bottom:22px}
+.fga-bandin{display:grid;grid-template-columns:140px 1fr auto;gap:28px;align-items:end;padding-top:34px;padding-bottom:24px}
 .fga-letter{font:800 120px/0.8 'Inter Tight',Arial,sans-serif;letter-spacing:-0.04em;color:var(--news)}
 .fga-letter.sk{font-size:96px}
 .fga-band h3{font:800 34px/1.05 'Inter Tight',Arial,sans-serif;letter-spacing:-0.02em;margin:0 0 8px;color:var(--news)}
@@ -433,6 +446,7 @@ CSS = """
 .fga-cap{font:400 14px/1.45 Inter;color:var(--deep);margin:6px 0 0}
 .fga-read{font:italic 400 18px/1.45 Lora,Georgia,serif;margin:10px 0 0;color:var(--ink)}
 .fga-fig{margin-top:auto;display:flex;justify-content:center;align-items:center;min-height:176px}
+.fga-tile.lead2 .fga-fig{flex:1;margin-top:0}
 .fga-tile.lead{padding:24px 20px}
 .fga-tile.lead h4{font:800 26px/1.15 'Inter Tight',Arial,sans-serif;letter-spacing:-0.01em}
 .fga-tile.lead2{grid-column:span 2;grid-row:span 2}
@@ -509,12 +523,14 @@ CSS = """
 .fga-map{margin:0}
 .fga-map .phn img{width:100%;height:auto;border:1px solid var(--stone)}
 .fga-map .phn p{font:400 14px/1.5 Inter;color:var(--deep)}
-.fga-rv{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:28px;align-items:start;margin:18px 0}
-.fga-touch{display:grid;gap:16px}
+.fga-reformpage{background:var(--white)}
+.fga-rvpage{padding:40px 0 24px}
+.fga-rv{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;margin:18px 0}
+.fga-touch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .fga-touch .fga-tile{border:1px solid var(--stone)}
 .fga-sub{font:800 24px/1.2 'Inter Tight',Arial,sans-serif;margin:28px 0 12px}
 .fga .cap{font:400 14px/1.45 Inter;color:var(--deep)}
-@media (max-width:1099px){.fga-rv{grid-template-columns:1fr}.fga-mappage{padding:16px 0}}
+@media (max-width:1099px){.fga-rv{grid-template-columns:1fr}.fga-touch{grid-template-columns:1fr}.fga-mappage{padding:16px 0}.fga-rvpage{padding:16px 0}}
 """
 
 BOARD_CSS = """
