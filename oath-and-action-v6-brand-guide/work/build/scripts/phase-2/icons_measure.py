@@ -252,7 +252,17 @@ def measure_watch():
     jp = C.SCRATCH / "watch-jobs.json"
     jp.write_text(json.dumps(jobs))
     subprocess.run(["node", str(C.RENDER_JS), str(jp), str(R)], check=True)
+    # the Phase 1 Act frame (a head over the opening only), redrawn in each 16 px grammar, as the baseline
+    from icons_geom import poly, rect, union, wall_poly
+    old = {"A-line": D.hinted(D.layers(union(wall_poly([(1, 1), (10, 4.375), (10, 15), (1, 15)]), D._ln([(12, 2), (14, 2), (14, 15)])), 5.5, 8.5, 16), 16),
+           "B-flat": D.hinted(D.layers(union(poly((1, 1), (9, 4), (9, 15), (1, 15)), rect(10, 1, 5, 2), rect(13, 1, 2, 14)), 4.5, 8.5, 16), 16)}
+    jobs2 = [{"id": f"oldact-{k}", "w": 16, "h": 16, "bg": C.WHITE, "html": mono_svg(v, 16, 16)} for k, v in old.items()]
+    jp2 = C.SCRATCH / "watch-old.json"
+    jp2.write_text(json.dumps(jobs2))
+    subprocess.run(["node", str(C.RENDER_JS), str(jp2), str(R)], check=True)
     out = {}
+    for k in old:
+        out[f"phase1-frame|{k}|act|chapter number 01|16"] = M.sim(cov(f"oldact-{k}"), cov("ref-chapter-number-01-16"))
     for (c, cut) in C.DRAWINGS:
         sz = 16 if 16 in C.sizes(c, cut) else 24
         for n in D.ICONS:
@@ -276,6 +286,7 @@ def main():
                 jobs.append({"id": f"n-{k}", "w": s, "h": s, "bg": C.WHITE, "html": mono_svg(lay, s, s, only="node")})
                 jobs.append({"id": f"mn-{k}", "w": s, "h": s, "bg": C.NEWS, "html": mono_svg(lay, s, s, ink=C.CHAR)})
                 jobs.append({"id": f"k-{k}", "w": s, "h": s, "bg": C.CHAR, "html": mono_svg(lay, s, s, ink=C.NEWS)})
+                jobs.append({"id": f"u-{k}", "w": s, "h": s, "bg": C.WHITE, "html": mono_svg(D.draw(c, cut, n, s), s, s)})
             lay24 = D.display(c, cut, n)
             k24 = key(c, cut, n, 24)
             jobs.append({"id": f"w96-{k24}", "w": 96, "h": 96, "bg": C.WHITE, "html": mono_svg(lay24, 24, 96)})
@@ -293,7 +304,7 @@ def main():
         sil_d = sum(map(sum, sil)) / (s * s)
         ink_c, node_c = cov(f"i-{k}"), cov(f"n-{k}")
         si, sn = sum(map(sum, ink_c)), sum(map(sum, node_c))
-        row = {"crisp": cr, "density": dens, "silhouette_fill": round(sil_d, 3), "pixel_fit": pixel_fit(lay),
+        row = {"crisp": cr, "crisp_unhinted": M.crisp(cov(f"u-{k}"))[0], "density": dens, "silhouette_fill": round(sil_d, 3), "pixel_fit": pixel_fit(lay),
                "red_share_px": round(sn / (si + sn), 3) if si + sn else None,
                "node_separate": node_separate(lay, s, f"mn-{k}", f"k-{k}")}
         a_ink, a_node = g.area(lay["ink"]), g.area(lay["node"])

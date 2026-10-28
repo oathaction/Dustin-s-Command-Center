@@ -224,7 +224,7 @@ def stroke(poly, grade, conceptual=False, width=2, color=INK, bg=NEWS, red=False
     da = f' stroke-dasharray="{dash}"' if dash else ""
     tex = dash or "solid"
     if red and bg == WHITE:
-        # Pillar Red on White measures 3.99:1, above the 3:1 floor for informative graphics
+        # Pillar Red on White measures 4.17:1, above the 3:1 floor for informative graphics
         return f'<path d="{d}" fill="none" stroke="{RED}" stroke-width="{width + 1}"{da} data-texture="{tex}" data-red="1"/>'
     if red:
         return (f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="{width + 3}"{da} data-texture="{tex}" data-red="1"/>'

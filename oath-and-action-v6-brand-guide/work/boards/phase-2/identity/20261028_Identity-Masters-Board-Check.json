@@ -30,7 +30,7 @@
    "scrollWidth": 390,
    "innerWidth": 390,
    "horizontalScroll": false,
-   "height": 93372,
+   "height": 93397,
    "images": 2390,
    "broken": 0,
    "textUnder13": 0,
@@ -43,7 +43,7 @@
    "scrollWidth": 390,
    "innerWidth": 390,
    "horizontalScroll": false,
-   "height": 285609,
+   "height": 285634,
    "images": 2390,
    "broken": 0,
    "textUnder13": 0,
@@ -54,14 +54,14 @@
   }
  },
  "red_near_prussian_px": {
-  "1440_closed": 3674,
-  "1440_open": 3903,
-  "390_closed": 1531,
-  "390_open": 2248
+  "1440_closed": 1902,
+  "1440_open": 1902,
+  "390_closed": 587,
+  "390_open": 587
  },
  "red_near_prussian_px_specimens_hidden": {
-  "1440_open": 1910,
-  "390_open": 1661
+  "1440_open": 0,
+  "390_open": 0
  },
  "check_specimens_hidden": {
   "1440_open": {
@@ -82,7 +82,7 @@
    "scrollWidth": 390,
    "innerWidth": 390,
    "horizontalScroll": false,
-   "height": 285367,
+   "height": 285392,
    "images": 2390,
    "broken": 0,
    "brokenList": [],

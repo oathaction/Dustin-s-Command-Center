@@ -1,6 +1,6 @@
 {
  "board": "work/boards/20261028_Systems-Map-Directions-Board.html",
- "run": "2026-10-28T19:27:54.952Z",
+ "run": "2026-10-28T19:50:50.341Z",
  "widths": {
   "390": {
    "texts": 2022,
@@ -11,7 +11,7 @@
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
-   "height": 67563,
+   "height": 67614,
    "fonts": [
     "Inter 400 italic",
     "Inter 400 normal",
@@ -87,7 +87,7 @@
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
-   "height": 32990,
+   "height": 33015,
    "fonts": [
     "Inter 400 italic",
     "Inter 400 normal",
@@ -139,7 +139,8 @@
     "work/boards/screens/phase-2-maps/board-1440-07.png",
     "work/boards/screens/phase-2-maps/board-1440-08.png",
     "work/boards/screens/phase-2-maps/board-1440-09.png",
-    "work/boards/screens/phase-2-maps/board-1440-10.png"
+    "work/boards/screens/phase-2-maps/board-1440-10.png",
+    "work/boards/screens/phase-2-maps/board-1440-11.png"
    ],
    "grayScreens": [
     "work/boards/screens/phase-2-maps/board-grayscale-1440-00.png",
@@ -152,7 +153,8 @@
     "work/boards/screens/phase-2-maps/board-grayscale-1440-07.png",
     "work/boards/screens/phase-2-maps/board-grayscale-1440-08.png",
     "work/boards/screens/phase-2-maps/board-grayscale-1440-09.png",
-    "work/boards/screens/phase-2-maps/board-grayscale-1440-10.png"
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-10.png",
+    "work/boards/screens/phase-2-maps/board-grayscale-1440-11.png"
    ]
   }
  },
@@ -225,7 +227,7 @@
  ],
  "not_checked": [
   "Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.",
-  "Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 3.99:1 on White, Charcoal 18.1:1 on White).",
+  "Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 4.17:1 on White, Charcoal 18.1:1 on White).",
   "The live atlas renderer; these are specimens only (G1-08)."
  ]
 }

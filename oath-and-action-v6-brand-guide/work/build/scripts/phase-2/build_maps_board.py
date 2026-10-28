@@ -348,7 +348,7 @@ def map_block(d, title, caption):
 
 def baseline():
     return f'''<section id="baseline"><p class="eyebrow">Baseline</p><h2>The current system</h2>
-<p>Concepts V2 is the system Dustin likes and the fallback if no direction gets there (G1-11). Its loop catalog draws all 23 loops on one ring, so a two-step loop and a four-step loop look alike and the plate reads as one ring repeated. Its R8 card is the drawing Dustin singled out: two boxes, a step named in words, a return line underneath. Both came before Gate 1, so they still use board-written short names and the plain grade words ("some evidence") that Gate 1 replaced with V7's words (M2).</p>
+<p>Concepts V2 is the system Dustin likes and the fallback if no direction gets there (G1-11). Its loop catalog draws its 20 numbered loops on one ring and leaves the 3 sketched loops out, so a two-step loop and a four-step loop look alike and the plate reads as one ring repeated. Its R8 card is the drawing Dustin singled out: two boxes, a step named in words, a return line underneath. Both came before Gate 1, so they still use board-written short names and the plain grade words ("some evidence") that Gate 1 replaced with V7's words (M2).</p>
 <div class="basegrid">
  <figure><img src="../research/chat-references/20261028_Ref-Atlas-Loop-Catalog-Current.png" width="1579" height="1587" alt="The current loop catalog from Concepts V2: 23 loops, each drawn on the same ring with ID circles, grouped by area A to D"><figcaption>Current loop catalog, Concepts V2 (Dustin's reference image, October 28). The same ring 20 times; three sketched loops left out.</figcaption></figure>
  <figure><img src="../research/chat-references/20261028_Ref-Atlas-Loop-R8-Concept-08.webp" width="2000" height="1333" alt="Concept 08 loop card for R8: Housing scarcity and Owner home equity as boxes, a forward arrow, and a red return line marking where reform R-30 enters"><figcaption>The R8 card Dustin likes, Concept 08. Built on an earlier model: its remedy grade reads "Well supported", where V7 grades R-30's remedy plausible.</figcaption></figure>
@@ -374,7 +374,7 @@ def brief():
 <li><b>Loop card:</b> one loop in full. R8 is the worked example.</li>
 <li><b>Whole-system map:</b> {c["variables"]} variables and {c["connections"]} connections, for orientation.</li>
 <li><b>Reform view:</b> one reform's targets, red where it acts.</li></ol>
-<h3>What the data holds</h3><p>{len(LP)} loops: {sum(1 for l in LP.values() if l["n"] == 2)} of two steps, {sum(1 for l in LP.values() if l["n"] == 3)} of three, {sum(1 for l in LP.values() if l["n"] == 4)} of four. {sum(1 for l in LP.values() if l["type"] == "R")} reinforcing, {sum(1 for l in LP.values() if l["type"] == "B")} balancing. Every step carries a sign, a type, a delay class and an evidence grade. {nloop} of the 118 connections sit on a named loop.</p>
+<h3>What the data holds</h3><p>{len(LP)} loops. {sum(1 for l in LP.values() if not l["conceptual"])} have numbered chains: {sum(1 for l in LP.values() if not l["conceptual"] and l["n"] == 2)} of two steps, {sum(1 for l in LP.values() if not l["conceptual"] and l["n"] == 3)} of three and {sum(1 for l in LP.values() if not l["conceptual"] and l["n"] == 4)} of four; {sum(1 for l in LP.values() if l["conceptual"])} are sketched with no numbered chain. {sum(1 for l in LP.values() if l["type"] == "R")} reinforcing, {sum(1 for l in LP.values() if l["type"] == "B")} balancing. Every step carries a sign, a type, a delay class and an evidence grade. {nloop} of the 118 connections sit on a named loop.</p>
 <h3>Quirks the drawings work around</h3><ul>
 <li>Three loops (B2, B3, R9) have no numbered chain, and two (R2, R16) close through a hypothesized step. Each says so in words, and sketched steps take the hollow line.</li>
 <li>B2 to B5 name both a variable and a loop, so every loop ID sits in a typed chip (M3) and variables never do.</li>
@@ -404,7 +404,7 @@ def direction_section(d, num, name, why, map_title, map_caption):
 <p class="cap">Catalog view, Newsprint, ink only. The catalog names no single reform, so it carries no working red (Rule 05.3); ink pointers show where each loop's own reforms act. Groups follow the area holding most of a loop's variables, with ties going to the area first in V7's order.</p>
 {catalog(d)}
 <h3 class="vh">Loop card: R8 at full size</h3>
-<p class="cap">The R8 miniature above is this drawing at a smaller {"radius" if d == "orbit" else "pitch"}. The card sits on White: Pillar Red on White measures 3.99:1, above the 3:1 floor for informative graphics, while on Newsprint it measures 2.96:1.</p>
+<p class="cap">The R8 miniature above is this drawing at a smaller {"radius" if d == "orbit" else "pitch"}. The card sits on White: Pillar Red on White measures 4.17:1, above the 3:1 floor for informative graphics, while on Newsprint it measures 2.96:1.</p>
 {r8_card(d)}
 <h3 class="vh">Whole-system map</h3>
 {map_block(d, map_title, map_caption)}

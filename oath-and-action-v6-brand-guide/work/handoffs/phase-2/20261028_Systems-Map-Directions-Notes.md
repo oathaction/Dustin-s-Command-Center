@@ -12,7 +12,7 @@ The research lead's brief, `work/research/20261028_Systems-Map-References.md`, a
 
 **Views.** Loop catalog (all 23); loop card (R8 as the worked example); whole-system map (51 variables, 118 connections); reform view (one reform's targets, red where it acts).
 
-**Data.** 23 loops: 12 of two steps, 7 of three, 4 of four; 18 reinforcing, 5 balancing. Each numbered step carries a sign, a type, a delay class and a grade. 46 of the 118 connections sit on a named loop; six sit on more than one (L42 on three).
+**Data.** 23 loops: 20 with numbered chains (11 of two steps, 5 of three, 4 of four) and 3 sketched loops with no numbered chain; 18 reinforcing, 5 balancing. Each numbered step carries a sign, a type, a delay class and a grade. 46 of the 118 connections sit on a named loop; six sit on more than one (L42 on three).
 
 **Quirks worked around** (V7.1 issue list numbers): B2, B3 and R9 have no numbered chain and R2 and R16 close through a hypothesized step, so each says so and sketched steps take the hollow line (16, 17); B2 to B5 name a variable and a loop, so loop IDs always sit in a typed chip (12); grades are read from `links[].evidence` only (1, 2); no bare S, M or L appears outside a table (22); `spine` is undefined and unused.
 
@@ -104,7 +104,7 @@ Costs: four new marks to approve; one new sentence for readers ("the slower the 
 
 | # | Decision | Reason |
 |---|---|---|
-| Proposed 1 | Views that carry working red sit on White; catalog and map views on Newsprint carry none | Pillar Red measures 2.96:1 on Newsprint and 3.99:1 on White, and a Charcoal-edged red line looks like the hollow line for sketched steps |
+| Proposed 1 | Views that carry working red sit on White; catalog and map views on Newsprint carry none | Pillar Red measures 2.96:1 on Newsprint and 4.17:1 on White, and a Charcoal-edged red line looks like the hollow line for sketched steps |
 | Proposed 2 | The catalog shows reform targets as ink pointers, only for reforms V7 lists on the loop, minus rejected R-35 | The catalog names no single reform, so Rule 05.3 gives it no working red, and marking every reform's targets would cover most loops |
 | Proposed 3 | Weakest step is the lowest V7 rank (renderer `GRADES[].n`); ties are shown as ties, and when every step ties none is marked | Computable for every loop; V7's prose is quoted on the card where it names a weaker step, as for R8's L39 |
 | Proposed 4 | Catalog groups follow the area holding most of a loop's variables, ties to the area first in V7's order; sketched loops form their own group | A rule a reader can hear in one sentence; Concepts V2's grouping was not in V7 |

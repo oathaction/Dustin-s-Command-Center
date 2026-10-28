@@ -2092,92 +2092,110 @@
   "L1 orig": {
    "w": 120,
    "h": 14,
-   "crisp": 0.546
+   "crisp": 0.546,
+   "open_counters": 7
   },
   "L1 prop": {
    "w": 152,
    "h": 16,
-   "crisp": 0.691
+   "crisp": 0.691,
+   "open_counters": 6
   },
   "L1C orig": {
    "w": 120,
    "h": 14,
-   "crisp": 0.546
+   "crisp": 0.546,
+   "open_counters": 7
   },
   "L1C prop": {
    "w": 120,
    "h": 16,
-   "crisp": 0.768
+   "crisp": 0.768,
+   "open_counters": 6
   },
   "L2 orig": {
    "w": 72,
    "h": 25,
-   "crisp": 0.533
+   "crisp": 0.533,
+   "open_counters": 6
   },
   "L2 prop": {
    "w": 90,
    "h": 31,
-   "crisp": 0.579
+   "crisp": 0.579,
+   "open_counters": 6
   },
   "L3 orig": {
    "w": 192,
    "h": 37,
-   "crisp": 0.529
+   "crisp": 0.529,
+   "open_counters": 10
   },
   "L3 prop": {
    "w": 196,
    "h": 37,
-   "crisp": 0.598
+   "crisp": 0.598,
+   "open_counters": 10
   },
   "L8 orig": {
    "w": 48,
    "h": 18,
-   "crisp": 0.616
+   "crisp": 0.616,
+   "open_counters": 4
   },
   "L8 prop": {
    "w": 48,
    "h": 18,
-   "crisp": 0.595
+   "crisp": 0.595,
+   "open_counters": 4
   },
   "AMP orig": {
    "w": 15,
    "h": 16,
-   "crisp": 0.478
+   "crisp": 0.478,
+   "open_counters": 3
   },
   "AMP prop": {
    "w": 14,
    "h": 16,
-   "crisp": 0.662
+   "crisp": 0.662,
+   "open_counters": 2
   },
   "LOCK orig": {
    "w": 16,
    "h": 16,
-   "crisp": 0.51
+   "crisp": 0.51,
+   "open_counters": 4
   },
   "LOCK prop": {
    "w": 16,
    "h": 16,
-   "crisp": 0.605
+   "crisp": 0.605,
+   "open_counters": 4
   },
   "HINGE orig": {
    "w": 245,
    "h": 73,
-   "crisp": 0.67
+   "crisp": 0.67,
+   "open_counters": 7
   },
   "HINGE prop": {
    "w": 245,
    "h": 60,
-   "crisp": 0.546
+   "crisp": 0.546,
+   "open_counters": 9
   },
   "BADGE orig": {
    "w": 16,
    "h": 16,
-   "crisp": 1.0
+   "crisp": 1.0,
+   "open_counters": 3
   },
   "BADGE prop": {
    "w": 16,
    "h": 16,
-   "crisp": 1.0
+   "crisp": 1.0,
+   "open_counters": 3
   }
  },
  "prussian": {

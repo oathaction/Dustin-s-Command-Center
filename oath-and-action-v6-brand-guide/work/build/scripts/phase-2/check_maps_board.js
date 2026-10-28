@@ -208,7 +208,7 @@ async function open(browser, file, width, dsf = 1) {
   ];
   results.not_checked = [
     'Screen readers, keyboard order, Firefox and Safari, print, forced colors and 200 percent zoom.',
-    'Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 3.99:1 on White, Charcoal 18.1:1 on White).',
+    'Pixel contrast of strokes and marks. Mark colors are the locked palette values, measured by formula (Pillar Red 4.17:1 on White, Charcoal 18.1:1 on White).',
     'The live atlas renderer; these are specimens only (G1-08).',
   ];
   fs.writeFileSync(OUTJSON, JSON.stringify(results, null, 1));

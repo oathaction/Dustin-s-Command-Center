@@ -243,6 +243,31 @@ def write_px():
     return len(jobs)
 
 
+APP_TILE = [("A", "line"), ("B", "flat"), ("C", "flat")]
+
+
+def app_tile_file(c, cut):
+    cc = f"Concept-{c}" + (f"-{cut.title()}" if c == "C" else "")
+    return C.CONTEXT / f"{C.DATE}_{cc}-App-Tile-1024.svg"
+
+
+def write_app_tiles():
+    """A 1024 px app tile per concept: the superellipse holder in Charcoal with the Act display
+    master in Newsprint and its red node, the icon's live area at half the side."""
+    S = 1024
+    off = S * (1 - C.FIELD_FRACTION) / 2
+    sc = S * C.FIELD_FRACTION / 24
+    for c, cut in APP_TILE:
+        lay = D.display(c, cut, "act")
+        hp = C.holder_path("Rounded-Square", S)
+        app_tile_file(c, cut).write_text(
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{S}" height="{S}" viewBox="0 0 {S} {S}">'
+            f"<title>Act as a 1024 px app tile, Concept {c} {cut}. Superellipse holder, exponent 5. Proposal only.</title>"
+            f'<path d="{g.d_of(hp)}" fill="{C.CHAR}"/>'
+            f'<path d="{g.d_of(g.transform(lay["ink"], sc, off, off))}" fill="{C.NEWS}"/>'
+            f'<path d="{g.d_of(g.transform(lay["node"], sc, off, off))}" fill="{C.RED}"/></svg>')
+
+
 def main():
     if C.VARIANTS.exists():
         shutil.rmtree(C.VARIANTS)
@@ -252,6 +277,7 @@ def main():
     write_holders()
     write_grid()
     write_baseline()
+    write_app_tiles()
     p = write_px()
     print("icons", n, "px", p)
 

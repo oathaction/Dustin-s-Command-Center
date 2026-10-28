@@ -309,7 +309,7 @@ def s_i4():
     pages = "".join(f'<figure><img src="phase-2/identity/04-amp-b/proof-page-{n}.png" width="510" height="660" alt="Print proof page {n} of {pp["pages"]}, reduced" loading="lazy" class="fit"><figcaption>Page {n}, reduced to 60 dpi</figcaption></figure>' for n in range(1, pp["pages"] + 1))
     b += "<h3>Print proof</h3>" + P_(
         f'<a href="phase-2/identity/04-amp-b/20261028_Ampersand-B-Print-Proof.pdf">Open the print proof (PDF, {pp["pages"]} pages, US Letter)</a>. It sets B from 3 to 70 mm tall in Pillar Red and in Charcoal, on paper and on a Newsprint field; the wordmark at both widths from its 1.20 in print minimum to 5 in; the main lockups, badge, lockmark and hinge diagram at their print minimums; V5, the first drawing and the refinement side by side; and a calibration item.',
-        f"<b>It has not been printed on paper.</b> I generated it as a true-size PDF and checked its scale on a 300 dpi render: the 100 mm bar measures {pp['bar_mm']:.2f} mm and the 50 mm calibration ampersand {pp['calibration_amp_height_mm']:.2f} mm. Press gain, paper color and ink density need a real print. At 3 mm the counters stay open in the 300 dpi render.")
+        f"<b>It has not been printed on paper.</b> I generated it as a true-size PDF and checked its scale on a 300 dpi render: the 100 mm bar measures {pp['bar_mm']:.2f} mm and the 50 mm calibration ampersand {pp['calibration_amp_height_mm']:.2f} mm. Press gain, paper color and ink density need a real print. At 3 mm both counters stay open in the 300 dpi render, checked by eye.")
     b += f'<div class="three">{pages}</div>'
     b += checks_html([
         ("1 Silhouette at 16 px", "Pass", f"Two open counters at 16 px in the 16 px master, three in V5's stroked drawing (its notch closes); the narrow 16 px master keeps {mk['i4-narrow']['prop']['open_counters_16']} with the beak dropped"),
@@ -457,7 +457,7 @@ def s_i8():
     b += table(["Lockup", "V5 minimum", "Screen minimum", "Print minimum", "Below the minimum"], rows, label="Minimum sizes")
     b += f'<h3>Each mark at its minimum, V5 against Phase 2, at 1x</h3><div class="scroll matrix" tabindex="0" role="region" aria-label="Minimum sizes">{"".join(rows9)}</div>'
     b += checks_html([
-        ("1 Silhouette at the minimum", "Pass", "Every mark at its minimum keeps its counters open in the renders above"),
+        ("1 Silhouette at the minimum", "Pass", f"Enclosed counters at each minimum, one color on Newsprint: the Phase 2 L1 keeps {MEAS['minimums']['L1 prop']['open_counters']} and the ampersand {MEAS['minimums']['AMP prop']['open_counters']}, as at display size. V5's L1 and ampersand close a notch at their minimums ({MEAS['minimums']['L1 orig']['open_counters']} and {MEAS['minimums']['AMP orig']['open_counters']})"),
         ("2 Pixel fit (D1-17)", "Pass for pixel masters", "The 16 px masters used at each minimum pass; L2, L3, L8 and the hinge are display masters, 0.55 to 0.60 crisp, for the record"),
         ("3 Consistency", "Pass", "One rule for every lockup; no size range without a named mark"),
         ("6 One color per surface", "Pass", "Every minimum shown in one color on all four surfaces"),
@@ -495,7 +495,7 @@ def s_s9():
     mk = MEAS["pairs"]["s9-badge"]
     b = P_("The hinge-circle badge, approved at Gate 1 with three conditions: ampersand B in the hinge diagram's ring, with no words. This is a new mark, so the comparison below sets it beside its Phase 1 drawing; V5 has no badge.",
            "<b>Condition 1, Rule 05.3 names it.</b> Met: decision D2-01 puts the badge's ampersand among the signature reds, so it does not spend a view's working red. It is signature red on Newsprint, White and Charcoal and White on Prussian.",
-           "<b>Condition 2, it keeps to its jobs.</b> An article's end mark, a report's back cover and events. It never serves as an avatar or favicon, never appears near a candidate or a ballot, and never sits beside the wordmark or the hinge diagram. It never carries words or a date. The guide's identity chapter carries these lines with the mark.",
+           "<b>Condition 2, it keeps to its jobs.</b> An article's end mark, a report's back cover and events. It never serves as an avatar or favicon, never appears near a candidate or a ballot, and never sits beside the wordmark or the hinge diagram. It never carries words or a date. These lines belong beside the mark in the guide's identity chapter.",
            f"<b>Condition 3, its 16 px master is redrawn from B's own 16 px master.</b> Met. I sampled B's 16 px master onto the badge's 10 by 10 px inner field by area, then corrected the pixels by hand: the loop keeps its three-row counter, the crossing sits on the badge's center line, and the tail's foot stays on the baseline, clear of the ring. "
            f"The ink's center of mass sits {abs(M['badge_16']['amp_centroid_offset_px'][0]):.2f} px from the center across and {M['badge_16']['amp_centroid_offset_px'][1]:.2f} px below it. The arm has no beak at this size, as in the Phase 1 drawing. "
            "The 24 px master is B's 16 px master inside a 1 px ring, and the display master is B's display drawing in the V2 ring, the ring raised to 4.6 units so it reaches 1 px at 48 px.")
@@ -608,7 +608,8 @@ blockquote{margin:12px 0;padding:12px 16px;border-left:4px solid var(--prussian)
 .decision h2,.decision .eyebrow{color:var(--newsprint)}
 .tested{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 code{font-size:.8125rem;overflow-wrap:anywhere}
-td{overflow-wrap:anywhere}
+.scroll>table{min-width:640px}.scroll>table.nums{min-width:720px}
+p code{overflow-wrap:anywhere}
 @media (max-width:760px){.mrow{grid-template-columns:1fr}}
 """
 
