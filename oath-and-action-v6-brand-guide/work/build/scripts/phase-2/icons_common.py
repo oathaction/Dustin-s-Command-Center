@@ -102,8 +102,8 @@ HOLDER_SHAPES = ["Square", "Rounded-Square", "Circle"]
 HOLDER_COLORS = {"Charcoal": (CHAR, "Ink-Newsprint-Red"), "Newsprint": (NEWS, "Ink-Charcoal-Red"), "Prussian": (PRUS, "Ink-White")}
 LIVE_FRACTION = 0.5          # live area side as a share of the holder side
 FIELD_FRACTION = 0.6         # the 24-unit icon field as a share of the holder side
-CORNER_RADIUS = 0.2237       # smoothed-corner radius as a share of the side
-CORNER_SMOOTHING = 0.6
+CORNER_RADIUS = 0.2237       # plain border radius used only for comparison, as a share of the side
+SUPERELLIPSE_N = 5.0         # the rounded square is a true superellipse, |x|^5 + |y|^5 = 1
 CIRCLE_SAFE = 0.40           # ink stays within this share of the diameter from the center
 
 
@@ -111,7 +111,7 @@ def holder_path(shape, size):
     if shape == "Square":
         return g.rect(0, 0, size, size)
     if shape == "Rounded-Square":
-        return g.smoothed_square(0, 0, size, CORNER_RADIUS, CORNER_SMOOTHING)
+        return g.superellipse(0, 0, size, SUPERELLIPSE_N)
     if shape == "Circle":
         return g.circle(size / 2, size / 2, size / 2)
     raise ValueError(shape)

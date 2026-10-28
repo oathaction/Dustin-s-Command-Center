@@ -91,7 +91,7 @@ def write_holders():
                 f'<title>{shape.replace("-", " ")} holder, {color}</title><path d="{g.d_of(p)}" fill="{fill}"/></svg>')
     # construction drawing: the three holders with the field and live area, the smoothed corner
     # against a plain rounded corner, and their curvature
-    W, H = 760, 300
+    W, H = 760, 300 + 20
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="Inter, Arial, sans-serif">',
              "<title>Holder construction: field, live area and the smoothed corner</title>"]
     S = 200
@@ -105,71 +105,40 @@ def write_holders():
         parts.append(f'<rect x="{x0 + (S - l) / 2}" y="{10 + (S - l) / 2}" width="{l}" height="{l}" fill="none" stroke="#1F2D5A" stroke-width="1.2"/>')
         if shape == "Circle":
             parts.append(f'<circle cx="{x0 + S / 2}" cy="{10 + S / 2}" r="{C.CIRCLE_SAFE * S}" fill="none" stroke="#1F2D5A" stroke-width="1.2"/>')
-        lab = {"Square": "Square", "Rounded-Square": "Rounded square, smoothed corner", "Circle": "Circle"}[shape]
+        lab = {"Square": "Square", "Rounded-Square": "Rounded square, superellipse", "Circle": "Circle"}[shape]
         parts.append(f'<text x="{x0}" y="{10 + S + 26}" font-size="14" font-weight="600" fill="#121212">{lab}</text>')
-    parts.append(f'<text x="10" y="{10 + S + 50}" font-size="13" fill="#45494F">Green: the 24-unit icon field, 60 percent of the side. Blue: the 20-unit live area, 50 percent, where ink sits. Circle: ink also stays inside 80 percent of the diameter.</text>')
+    parts.append(f'<text x="10" y="{10 + S + 50}" font-size="13" fill="#45494F">Green: the 24-unit icon field, 60 percent of the side. Blue: the 20-unit live area, 50 percent of the side.</text>')
+    parts.append(f'<text x="10" y="{10 + S + 68}" font-size="13" fill="#45494F">In the circle, ink also stays inside the blue circle, 80 percent of the diameter.</text>')
     parts.append("</svg>")
     (C.HOLDERS / f"{C.DATE}_Holder-Construction.svg").write_text("".join(parts))
     # corner comparison and curvature plot
     S2 = 240
-    sm = C.holder_path("Rounded-Square", S2)
+    se = C.holder_path("Rounded-Square", S2)
     pl = g.plain_rounded(0, 0, S2, C.CORNER_RADIUS)
-    W2, H2 = 760, 300
+    W2, H2 = 760, 330
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W2}" height="{H2}" viewBox="0 0 {W2} {H2}" font-family="Inter, Arial, sans-serif">',
-             "<title>Smoothed corner against a plain rounded corner, with curvature along the corner</title>"]
-    # zoom into the top right corner: show the corner region 0..110 scaled 2x
+             "<title>Superellipse corner against a plain rounded corner, with curvature along one quarter</title>"]
     z = 2.2
     corner = lambda p: g.transform(p, z, -(S2 - 110) * z + 10, 10)  # noqa: E731
     parts.append('<clipPath id="cc"><rect x="10" y="10" width="242" height="242"/></clipPath>')
-    parts.append(f'<g clip-path="url(#cc)"><path d="{g.d_of(corner(pl))}" fill="none" stroke="#5D636D" stroke-width="2" stroke-dasharray="0"/>'
-                 f'<path d="{g.d_of(corner(sm))}" fill="none" stroke="#121212" stroke-width="2.5"/></g>')
-    parts.append('<text x="10" y="276" font-size="13" fill="#45494F">Top right corner at 2.2x. Black: smoothed corner. Gray: plain border radius of the same size.</text>')
-    # curvature plot
-    def prof(path):
-        pts = g.curvature_profile(path)
-        # take the top right corner: arc length from the start of the path (top edge right end)
-        return pts
+    parts.append(f'<g clip-path="url(#cc)"><path d="{g.d_of(corner(pl))}" fill="none" stroke="#8A8F96" stroke-width="2"/>'
+                 f'<path d="{g.d_of(corner(se))}" fill="none" stroke="#121212" stroke-width="2.5"/></g>')
+    parts.append('<text x="10" y="280" font-size="13" fill="#45494F">Top right corner at 2.2x. Black: the superellipse.</text>')
+    parts.append('<text x="10" y="298" font-size="13" fill="#45494F">Gray: a plain border radius, 22.37 percent of the side.</text>')
     px0, py0, pw, ph = 300, 20, 430, 200
     parts.append(f'<rect x="{px0}" y="{py0}" width="{pw}" height="{ph}" fill="none" stroke="#5D636D" stroke-width="1"/>')
-    for path, col, wdt in ((pl, "#5D636D", 2), (sm, "#121212", 2.5)):
-        pts = corner_curvature(path, S2)
+    for path, col, wdt in ((pl, "#8A8F96", 2), (se, "#121212", 2.5)):
+        pts = g.outline_curvature(path, S2)
         if not pts:
             continue
-        smax = max(p[0] for p in pts) or 1
-        kmax = 1 / (C.CORNER_RADIUS * S2 * 0.62)
+        smax = pts[-1][0] or 1
+        kmax = 1.15 / (C.CORNER_RADIUS * S2)
         d = " ".join(f"{'M' if i == 0 else 'L'}{px0 + p[0] / smax * pw:.1f} {py0 + ph - min(p[1], kmax) / kmax * (ph - 10):.1f}" for i, p in enumerate(pts))
         parts.append(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{wdt}"/>')
-    parts.append(f'<text x="{px0}" y="{py0 + ph + 22}" font-size="13" fill="#45494F">Curvature along one corner, edge to edge. The plain corner jumps from straight to full curve.</text>')
-    parts.append(f'<text x="{px0}" y="{py0 + ph + 40}" font-size="13" fill="#45494F">The smoothed corner ramps up and back down, so the edge never kinks.</text>')
+    parts.append(f'<text x="{px0}" y="{py0 + ph + 22}" font-size="13" fill="#45494F">Curvature from the middle of the top edge to the middle of the right edge.</text>')
+    parts.append(f'<text x="{px0}" y="{py0 + ph + 40}" font-size="13" fill="#45494F">Gray steps from straight to full curve. Black changes without a step.</text>')
     parts.append("</svg>")
-    (C.HOLDERS / f"{C.DATE}_Holder-Smoothed-Corner.svg").write_text("".join(parts))
-
-
-def corner_curvature(path, S):
-    """Curvature samples along the top right corner of a holder, by arc length from where the
-    corner leaves the top edge to where it meets the right edge."""
-    from icons_geom import _bez_d, flatten_segments
-    pts = []
-    s = 0.0
-    prev = None
-    for seg in flatten_segments(path):
-        if seg[0] != "C":
-            continue
-        p0, c1, c2, p1 = seg[1], seg[2], seg[3], seg[4]
-        if not (p0[0] >= S * 0.5 and p0[1] <= S * 0.5 and p1[0] >= S * 0.5 and p1[1] <= S * 0.5):
-            continue
-        for i in range(41):
-            t = i / 40
-            x, y, dx, dy, ddx, ddy = _bez_d((p0, c1, c2, p1), t)
-            sp = (dx * dx + dy * dy) ** 0.5
-            k = abs(dx * ddy - dy * ddx) / sp ** 3 if sp > 1e-9 else 0
-            if prev is not None:
-                s += ((x - prev[0]) ** 2 + (y - prev[1]) ** 2) ** 0.5
-            prev = (x, y)
-            pts.append((s, k))
-    if pts:
-        pts = [(0.0, 0.0)] + pts + [(pts[-1][0], 0.0)]
-    return pts
+    (C.HOLDERS / f"{C.DATE}_Holder-Superellipse-Corner.svg").write_text("".join(parts))
 
 
 # ---------------------------------------------------------------- grid construction drawings

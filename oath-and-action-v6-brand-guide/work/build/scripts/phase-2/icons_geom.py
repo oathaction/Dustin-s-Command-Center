@@ -257,16 +257,64 @@ def smoothed_square(x, y, size, radius_frac=0.2237, smoothing=0.6):
     return pth
 
 
-def superellipse(cx, cy, half, n=5.0, steps=256):
-    """A true superellipse |x|^n + |y|^n = half^n, sampled as a polygon (for comparison only)."""
+def superellipse(x, y, size, n=5.0, per_quadrant=24):
+    """A true superellipse |u|^n + |v|^n = 1 filling the square (x, y, size), as smooth cubic
+    Bezier segments through points sampled by angle (Catmull-Rom tangents, so the outline keeps
+    one tangent everywhere). Curvature changes continuously all the way around."""
+    a = size / 2
+    cx, cy = x + a, y + a
+    N = 4 * per_quadrant
     pts = []
-    for i in range(steps):
-        t = 2 * math.pi * i / steps
+    for i in range(N):
+        t = 2 * math.pi * i / N
         ct, st = math.cos(t), math.sin(t)
-        x = half * math.copysign(abs(ct) ** (2 / n), ct)
-        y = half * math.copysign(abs(st) ** (2 / n), st)
-        pts.append((cx + x, cy + y))
-    return poly(*pts)
+        pts.append((cx + a * math.copysign(abs(ct) ** (2 / n), ct), cy + a * math.copysign(abs(st) ** (2 / n), st)))
+    p = pathops.Path()
+    p.moveTo(*pts[0])
+    for i in range(N):
+        p0, p1, p2, p3 = pts[i - 1], pts[i], pts[(i + 1) % N], pts[(i + 2) % N]
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
+        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+        p.cubicTo(c1[0], c1[1], c2[0], c2[1], p2[0], p2[1])
+    p.close()
+    return p
+
+
+def outline_curvature(path, S, steps=48):
+    """Menger curvature along the top right quarter of an outline in the square (0, 0, S): from
+    the middle of the top edge to the middle of the right edge. Returns (arc length, curvature)."""
+    pts = []
+    for contour in _contours(path, steps):
+        pts = contour
+        break
+    # keep points in the top right quarter, in path order starting at the top edge
+    q = [i for i, (px, py) in enumerate(pts) if px >= S / 2 - 1e-6 and py <= S / 2 + 1e-6]
+    if not q:
+        return []
+    # rotate so the run is contiguous
+    n = len(pts)
+    start = next(i for i in q if (i - 1) % n not in q)
+    run = []
+    i = start
+    while i in q:
+        run.append(pts[i])
+        i = (i + 1) % n
+        if i == start:
+            break
+    if run[0][1] > run[-1][1]:
+        run = run[::-1]
+    out = []
+    s = 0.0
+    for j in range(1, len(run) - 1):
+        (x0, y0), (x1, y1), (x2, y2) = run[j - 1], run[j], run[j + 1]
+        a_ = math.hypot(x1 - x0, y1 - y0)
+        b_ = math.hypot(x2 - x1, y2 - y1)
+        c_ = math.hypot(x2 - x0, y2 - y0)
+        area2 = abs((x1 - x0) * (y2 - y0) - (y1 - y0) * (x2 - x0))
+        k = 2 * area2 / (a_ * b_ * c_) if a_ * b_ * c_ > 1e-12 else 0.0
+        s += a_
+        out.append((s, k))
+    return out
 
 
 def plain_rounded(x, y, size, radius_frac=0.2237):

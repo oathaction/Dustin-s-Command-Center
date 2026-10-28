@@ -243,7 +243,7 @@ def A_16(name, var=None):
         frame = _ln([(12, 2), (14, 2), (14, 15)])
         return layers(union(leaf, frame), 5.5, 8.5, 16)
     if name == "ballot":
-        box = _ln([(3, 10), (2, 10), (2, 14), (15, 14), (15, 10), (14, 10)])
+        box = _ln([(3, 10), (3, 14), (14, 14), (14, 10)])
         paper = _ln([(5, 9), (5, 2), (12, 2), (12, 9)])
         return layers(union(box, paper), 8.5, 5.5, 16)
     if name == "money":
@@ -294,7 +294,7 @@ def B_24(name, var=None):
     if name == "loop":
         end = 450 - 64
         band = sector(12, 11, 9, 5, 90 + 26, end)
-        head = arrowhead(12, 11, 7, end, 5.0, 4.6)
+        head = intersect(arrowhead(12, 11, 7, end, 5.0, 4.6), rect(2, 2, 20, 20))
         return layers(union(band, head), 12, 18, 24)
     if name == "search":
         lens = ring(10, 10, 8, 4)
@@ -329,11 +329,11 @@ def B_16(name, var=None):
     if name == "loop":
         end = 450 - 52
         band = sector(7.5, 7.5, 6.5, 4.5, 90 + 32, end)
-        head = arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2)
+        head = intersect(arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2), rect(1, 1, 14, 14))
         return layers(union(band, head), 7.5, 12.5, 16)
     if name == "search":
         lens = ring(6.5, 6.5, 5.5, 2.5)
-        handle = pixel_diag(11, 11, 3, 3)
+        handle = pixel_diag(10, 10, 3, 3)
         return layers(union(lens, handle), 6.5, 6.5, 16)
     raise ValueError(name)
 
@@ -379,7 +379,7 @@ def _C24(name, cut):
         return [], [arc, head], (12, 19), None
     if name == "search":
         lens = circle(10, 10, 8)
-        handle = _ln([(15.3, 15.3), (21, 21)], 3 if flat else 2)
+        handle = _ln([(15.3, 15.3), (20.9, 20.9)], 3 if flat else 2)
         return [lens], [handle], (10, 10), None
     raise ValueError(name)
 
@@ -415,7 +415,7 @@ def C_16(name, cut="flat", var=None):
     if name == "loop":
         end = 450 - 52
         arc = sector(7.5, 7.5, 6.5, 4.5, 90 + 32, end)
-        head = arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2)
+        head = intersect(arrowhead(7.5, 7.5, 5.5, end, 3.8, 3.2), rect(1, 1, 14, 14))
         return layers(union(arc, head), 7.5, 12.5, 16)
     if name == "search":
         return layers(union(circle(6.5, 6.5, 5.5), pixel_diag(10, 10, 4)), 6.5, 6.5, 16)
