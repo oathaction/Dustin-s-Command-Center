@@ -46,7 +46,7 @@ def _xf(p, bb, scale, ox, oy):
     return (ox + (p[0] - bb[0]) * scale, oy + (p[1] - bb[1]) * scale)
 
 
-def ghost_stubs(L, lid, scale, bb, ox, oy, length=1.15):
+def ghost_stubs(L, lid, scale, bb, ox, oy, length=0.85):
     """Short Stone stubs for the corridors that leave each shared station, so a miniature keeps its context."""
     lp = LOOPS[lid]
     own = {tuple(sorted((st["from"], st["to"]))) for st in lp["steps"]}
@@ -64,18 +64,28 @@ def ghost_stubs(L, lid, scale, bb, ox, oy, length=1.15):
             p1 = (p0[0] + u[0] * L.cell * length, p0[1] + u[1] * L.cell * length)
             q0, q1 = _xf(p0, bb, scale, ox, oy), _xf(p1, bb, scale, ox, oy)
             links = " ".join(t["link"] for t in L.tracks[(a, b)])
-            out.append(f'<path d="M{q0[0]:.1f} {q0[1]:.1f} L{q1[0]:.1f} {q1[1]:.1f}" stroke="{D.STONE}" stroke-width="2" '
+            out.append(f'<path d="M{q0[0]:.1f} {q0[1]:.1f} L{q1[0]:.1f} {q1[1]:.1f}" stroke="{D.STONE}" stroke-width="1.6" '
                        f'stroke-linecap="round" fill="none" data-ghost="{esc(links)}" data-at="{sid}"/>')
     return out
 
 
-def miniature(L, lid, scale=MINI_SCALE, names=True, pad=None, ink=D.CHARCOAL, ground=D.WHITE, view="c-mini", line_w=3.0):
+def miniature(L, lid, scale=MINI_SCALE, names=True, pad=None, ink=D.CHARCOAL, ground=D.WHITE, view="c-mini", line_w=3.0,
+              max_w=276):
     """Catalog miniature: the loop's own line lifted from the poster at one shared scale, station names in Inter
-    13, ghost stubs in Stone. Notation budget for a miniature: texture and the hollow line only."""
+    13, ghost stubs in Stone. Notation budget for a miniature: texture and the hollow line only. When the names
+    would make it wider than its card, the end names move above and below the line."""
+    for attempt in range(3):
+        svg, W, H = _miniature(L, lid, scale, names, pad, ink, ground, view, line_w, attempt)
+        if W <= max_w or not names:
+            break
+    return svg, W, H
+
+
+def _miniature(L, lid, scale, names, pad, ink, ground, view, line_w, attempt):
     tr, bb = lifted(L, lid, scale, pitch=5.0)
     lp = LOOPS[lid]
     names_w = {}
-    pad = pad or (12, 12, 12, 12)
+    pad = pad or (8, 8, 8, 8)
     # first pass: label boxes, to size the drawing
     stations = [s["code"] for s in lp["stations"]]
     spx = {sid: L.station_px(sid) for sid in stations}
@@ -84,10 +94,12 @@ def miniature(L, lid, scale=MINI_SCALE, names=True, pad=None, ink=D.CHARCOAL, gr
     lab_specs = []
     for sid in stations:
         name = M["nodes"][sid]["short"]
-        lines = D.wrap_to(name, 112, 13, 600)
+        lines = D.wrap_to(name, 112 if attempt < 2 else 92, 13, 600)
         lw = max(D.text_w(x, 13, 600) for x in lines)
         lh = 16 * len(lines)
         side = MINI_SIDES.get((lid, sid)) or mini_side(L, lid, sid)
+        if attempt >= 1:
+            side = {"e": "ne", "w": "sw", "se": "s", "sw": "s", "ne": "n", "nw": "n"}.get(side, side)
         lab_specs.append((sid, lines, lw, lh, side))
     # place in a provisional frame to measure
     ext = [0, 0, w0, h0]
@@ -154,7 +166,7 @@ def mini_side(L, lid, sid):
     return "n"
 
 
-def mini_label_box(p, lw, lh, side, gap=10):
+def mini_label_box(p, lw, lh, side, gap=15):
     x, y = p
     if side == "e":
         return (x + gap, y - lh / 2, x + gap + lw, y + lh / 2)
@@ -182,7 +194,7 @@ def sketched_tile(lid, ink=D.CHARCOAL, ground=D.WHITE, w=260, h=120):
     body = []
     cx, cy = w / 2, h / 2 + 4
     if n == 2:
-        pts = [(cx - 70, cy), (cx + 70, cy)]
+        pts = [(cx - 36, cy), (cx + 36, cy)]
     else:
         pts = [(cx - 70, cy + 22), (cx, cy - 28), (cx + 70, cy + 22)]
     for i in range(n):
@@ -221,6 +233,19 @@ def _block_box(ax, ty, anchor, w, h):
 
 
 def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels=None):
+    """Try a few scales and offsets for the drawing and keep the one whose labels collide least."""
+    best = None
+    tries = [(1.0, 0, 0)]
+    if LOOPS[lid]["n"] > 2 and (labels or (labels is None and not phone)):
+        tries = [(k, dx, dy) for k in (1.0, 0.9, 0.8, 0.7) for dx in (-240, -160, -80, 0, 80, 160) for dy in (-60, -20, 20, 60)]
+    for k, dx, dy in tries:
+        sc, svg = _card_drawing(L, lid, reform, width, height, phone, labels, k, dx, dy)
+        if best is None or sc < best[0]:
+            best = (sc, svg)
+    return best[1]
+
+
+def _card_drawing(L, lid, reform, width, height, phone, labels, k=1.0, dx=0, dy=0):
     """The loop card's drawing: the loop's own line at full size, with the shape it has on the map. A two-step loop
     is a closed shuttle whose line turns around each station; a longer loop keeps the map's polygon. Each step
     carries its ID and V7 name, its sign tag, its grade word (with the record square when documented) and its delay
@@ -237,17 +262,17 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
     sep = 34 if not phone else 24
     name_size = 22 if not phone else 18
     rule_size = 15 if not phone else 14
-    blk_w = 236 if not phone else 150
+    blk_w = 212 if not phone else 150
     if lp["n"] == 2:
         span = width - (2 * (blk_w / 2 + 16) if labels else 2 * (ring_r + sep + 14))
         scale = span / max(bw, bh)
         ox = (width - max(bw, bh) * scale) / 2
         oy = height / 2 - (bh * scale) / 2
     else:
-        mx, my = (300, 170) if labels else (40, 40)
-        scale = min((width - 2 * mx) / bw, (height - 2 * my) / bh)
-        ox = (width - bw * scale) / 2
-        oy = (height - bh * scale) / 2
+        mx, my = (230, 150) if labels else (40, 40)
+        scale = min((width - 2 * mx) / bw, (height - 2 * my) / bh) * k
+        ox = (width - bw * scale) / 2 + dx
+        oy = (height - bh * scale) / 2 + dy
     X = lambda p: (ox + (p[0] - bb[0]) * scale, oy + (p[1] - bb[1]) * scale)
     paths, segs, step_info = [], [], []
     if lp["n"] == 2:
@@ -278,6 +303,7 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
             for i in range(len(q) - 1):
                 segs.append((q[i], q[i + 1]))
     occupied = []
+    total = 0.0
     for sid in stations:
         p = X(spx[sid])
         occupied.append((p[0] - ring_r - 10, p[1] - ring_r, p[0] + ring_r + 10, p[1] + ring_r))
@@ -317,10 +343,11 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
                     sc += 1000
             for (a, b) in segs:
                 if D._seg_box(a, b, (bx[0] - 8, bx[1] - 8, bx[2] + 8, bx[3] + 8)):
-                    sc += 800
+                    sc += 1500
             if sc < bs:
                 best, bs = (anchor, ax, ty, bx), sc
         anchor, ax, ty, bx = best
+        total += bs
         occupied.append(bx)
         lab = [T(ax, ty + 13, link, 13, 700, D.CHARCOAL, anchor)]
         for i, ln in enumerate(lines):
@@ -349,12 +376,13 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
             gap += sep
         cands = []
         for side, pref in (("s", 0), ("n", 5), ("e", 10), ("w", 10), ("se", 20), ("sw", 20), ("ne", 25), ("nw", 25)):
-            dx = {"e": 1, "w": -1, "n": 0, "s": 0, "ne": 0.7, "nw": -0.7, "se": 0.7, "sw": -0.7}[side]
-            dy = {"e": 0, "w": 0, "n": -1, "s": 1, "ne": -0.7, "nw": -0.7, "se": 0.7, "sw": 0.7}[side]
-            cx, cy = p[0] + dx * gap, p[1] + dy * gap
-            anchor = "middle" if abs(dx) < 0.1 else ("start" if dx > 0 else "end")
-            ty = cy - h if dy < -0.1 else (cy if dy > 0.1 else cy - h / 2)
-            cands.append((anchor, cx, ty, pref))
+            ux = {"e": 1, "w": -1, "n": 0, "s": 0, "ne": 0.7, "nw": -0.7, "se": 0.7, "sw": -0.7}[side]
+            uy = {"e": 0, "w": 0, "n": -1, "s": 1, "ne": -0.7, "nw": -0.7, "se": 0.7, "sw": 0.7}[side]
+            for extra, pe in ((0, 0), (26, 15)):
+                cx, cy = p[0] + ux * (gap + extra), p[1] + uy * (gap + extra)
+                anchor = "middle" if abs(ux) < 0.1 else ("start" if ux > 0 else "end")
+                ty = cy - h if uy < -0.1 else (cy if uy > 0.1 else cy - h / 2)
+                cands.append((anchor, cx, ty, pref + pe))
         best, bs = None, 1e18
         for anchor, ax, ty, pref in cands:
             bx = _block_box(ax, ty, anchor, w, h)
@@ -366,10 +394,11 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
                     sc += 1000
             for (a, b) in segs:
                 if D._seg_box(a, b, (bx[0] - 8, bx[1] - 8, bx[2] + 8, bx[3] + 8)):
-                    sc += 800
+                    sc += 1500
             if sc < bs:
                 best, bs = (anchor, ax, ty, bx), sc
         anchor, ax, ty, bx = best
+        total += bs
         occupied.append(bx)
         out = []
         for i, ln in enumerate(lines):
@@ -388,8 +417,8 @@ def card_drawing(L, lid, reform=None, width=980, height=440, phone=False, labels
         body.append(card_station(sid, X(spx[sid]), ring_r, sid in targets, phone))
     label = f"Loop {lid} at full size: {lp['title']}"
     extra = f' data-loop="{lid}"' + (f' data-reform="{reform}"' if reform else "")
-    return D.svg_doc(width, height, "".join(body) + "".join(body_labels), label,
-                     "c-card" if not phone else "c-card-phone", D.WHITE, extra=extra)
+    return total, D.svg_doc(width, height, "".join(body) + "".join(body_labels), label,
+                            "c-card" if not phone else "c-card-phone", D.WHITE, extra=extra)
 
 
 def card_step(lid, st, d, p0, p1, targets):
@@ -435,10 +464,22 @@ def higher_rule(sid):
     return "Higher: " + s
 
 
+def locator_layout(L, w, h, margin=10):
+    """The poster layout scaled to fit an inset of w by h px, same routes."""
+    cs = [c for cells in L.routes_cells.values() for c in cells]
+    c0, c1 = min(c[0] for c in cs), max(c[0] for c in cs)
+    r0, r1 = min(c[1] for c in cs), max(c[1] for c in cs)
+    cell = min((w - 2 * margin) / (c1 - c0), (h - 2 * margin) / (r1 - r0))
+    ox = (w - (c1 - c0) * cell) / 2 - c0 * cell
+    oy = (h - (r1 - r0) * cell) / 2 - r0 * cell
+    return L.scaled(cell, ox, oy, pitch=cell * 0.28, radius=cell * 0.6)
+
+
 def locator(L_small, lid, w, h):
     """The locator inset: the working map on Newsprint, the loop lit in Charcoal and every other line in Stone."""
     th = D.Theme("newsprint")
     net, _ = D.network(L_small, th, lit_loop=lid, show_labels=False, show_signs=False, show_bullets=False,
                        line_w=2.5, show_ids=False, station_scale=0.42, hub_names=False)
     label = f"Locator: Loop {lid} lit on the whole map"
-    return D.svg_doc(w, h, net, label, "c-locator", D.NEWS, extra=f' data-loop="{lid}"')
+    return D.svg_doc(w, h, net, label, "c-locator", D.NEWS,
+                     extra=f' data-loop="{lid}" data-lit="{lid}" data-cell="{L_small.cell}" data-ox="{L_small.ox}" data-oy="{L_small.oy}"')

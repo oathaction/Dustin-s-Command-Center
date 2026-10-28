@@ -1,0 +1,408 @@
+{
+ "run": "2026-10-28T21:29:34.360Z",
+ "pages": {
+  "Poster": {
+   "texts": 180,
+   "svgTexts": 180,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 960,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 1,
+   "axe": {
+    "violations": [],
+    "passes": 15,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-Grayscale.png"
+  },
+  "Working-Map": {
+   "texts": 180,
+   "svgTexts": 180,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 960,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 1,
+   "axe": {
+    "violations": [],
+    "passes": 15,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Working-Map-Grayscale.png"
+  },
+  "Reform-View-R-01": {
+   "texts": 227,
+   "svgTexts": 182,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 1609,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 1,
+   "axe": {
+    "violations": [],
+    "passes": 21,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Reform-View-R-01-Grayscale.png"
+  },
+  "Catalog": {
+   "texts": 287,
+   "svgTexts": 141,
+   "minSize": 11.77,
+   "under13": [
+    {
+     "text": "Housing scarcity",
+     "size": 12.42,
+     "tag": "text"
+    },
+    {
+     "text": "Owner home",
+     "size": 12.42,
+     "tag": "text"
+    },
+    {
+     "text": "equity",
+     "size": 12.42,
+     "tag": "text"
+    },
+    {
+     "text": "Safe seats",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "Primary",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "decisiveness",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "Electoral",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "pressure",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "Incumbent",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "control of",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "election rules",
+     "size": 12.82,
+     "tag": "text"
+    },
+    {
+     "text": "Doctrine favoring",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "the appointing",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "coalition",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "Incumbent",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "control of",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "election rules",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "Safe seats",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "Entrenched",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "majority control",
+     "size": 12.51,
+     "tag": "text"
+    },
+    {
+     "text": "Congressional",
+     "size": 11.77,
+     "tag": "text"
+    },
+    {
+     "text": "capacity",
+     "size": 11.77,
+     "tag": "text"
+    },
+    {
+     "text": "Executive",
+     "size": 11.77,
+     "tag": "text"
+    },
+    {
+     "text": "unilateralism",
+     "size": 11.77,
+     "tag": "text"
+    },
+    {
+     "text": "Policy tilt to",
+     "size": 12.33,
+     "tag": "text"
+    },
+    {
+     "text": "insiders",
+     "size": 12.33,
+     "tag": "text"
+    },
+    {
+     "text": "Oversight and",
+     "size": 12.33,
+     "tag": "text"
+    },
+    {
+     "text": "enforcement",
+     "size": 12.33,
+     "tag": "text"
+    }
+   ],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 3451,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 24,
+   "axe": {
+    "violations": [],
+    "passes": 18,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Grayscale.png"
+  },
+  "Catalog-Phone": {
+   "texts": 194,
+   "svgTexts": 25,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 7076,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal"
+   ],
+   "images": [],
+   "svgs": 24,
+   "axe": {
+    "violations": [],
+    "passes": 18,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Catalog-Phone-Grayscale.png"
+  },
+  "Card-R8": {
+   "texts": 83,
+   "svgTexts": 24,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 1654,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal",
+    "Lora 400 italic"
+   ],
+   "images": [],
+   "svgs": 2,
+   "axe": {
+    "violations": [],
+    "passes": 21,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Grayscale.png"
+  },
+  "Card-R8-Phone": {
+   "texts": 78,
+   "svgTexts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 3397,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 700 normal",
+    "Inter Tight 800 normal",
+    "Lora 400 italic"
+   ],
+   "images": [],
+   "svgs": 2,
+   "axe": {
+    "violations": [],
+    "passes": 24,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R8-Phone-Grayscale.png"
+  },
+  "Card-R10": {
+   "texts": 107,
+   "svgTexts": 43,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "height": 1770,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 800 normal",
+    "Lora 400 italic"
+   ],
+   "images": [],
+   "svgs": 2,
+   "axe": {
+    "violations": [],
+    "passes": 21,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Grayscale.png"
+  },
+  "Card-R10-Phone": {
+   "texts": 96,
+   "svgTexts": 10,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "height": 4245,
+   "fonts": [
+    "Inter 400 normal",
+    "Inter 600 normal",
+    "Inter 700 normal",
+    "Inter Tight 700 normal",
+    "Inter Tight 800 normal",
+    "Lora 400 italic"
+   ],
+   "images": [],
+   "svgs": 2,
+   "axe": {
+    "violations": [],
+    "passes": 24,
+    "incomplete": 1
+   },
+   "capture": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Capture.png",
+   "grayscale": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Card-R10-Phone-Grayscale.png"
+  }
+ },
+ "board": {},
+ "pdf": {
+  "file": "work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf",
+  "bytes": 216768
+ },
+ "summary": [
+  "Poster at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Working-Map at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Reform-View-R-01 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Catalog at 1440 px: scrollWidth 1440 of 1440, smallest text 11.77 px (28 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Catalog-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Card-R8 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Card-R8-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Card-R10 at 1440 px: scrollWidth 1440 of 1440, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Card-R10-Phone at 390 px: scrollWidth 390 of 390, smallest text 13 px (0 under 13), 0 low-contrast texts, images 0/0, axe 0 violating nodes.",
+  "Poster PDF: work/boards/phase-2/maps-r2/c/20261028_Loop-Lines-Poster-24x36.pdf, 212 KB, page size 36 by 24 inches."
+ ],
+ "not_checked": [
+  "Screen readers, keyboard order, Firefox and Safari, forced colors and 200 percent zoom.",
+  "Pixel contrast of strokes and marks. Mark colors are locked palette values, measured by formula.",
+  "A printed proof of the PDF; the PDF was checked for page size and rendering in Chromium only."
+ ]
+}

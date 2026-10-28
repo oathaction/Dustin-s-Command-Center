@@ -358,7 +358,8 @@ def network(L, theme, lit_loop=None, reform=None, show_labels=True, show_signs=T
             if theme.name == "newsprint" and on and lit_loop:
                 ink = CHARCOAL
             first = LOOPS[lid]["stations"][0]["code"]
-            bullet_svgs.append((1 if on else 0, bullet_svg(cx, cy, lid, ink, theme.bg, extra=f' data-first="{first}" data-score="{score:.0f}"')))
+            bullet_svgs.append((1 if on else 0, bullet_svg(cx, cy, lid, ink, theme.bg, extra=f' data-first="{first}" data-score="{score:.0f}"',
+                                                           text_ink=(DEEP if (not on and theme.name == "newsprint") else None))))
             w, h = bullet_size(lid)
             boxes.append(("bullet", lid, (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)))
     body = ("".join(s for _, s in sorted(lines, key=lambda x: x[0]))
@@ -377,7 +378,7 @@ def bullet_size(lid):
     return 24 + text_w(lid, 14, 700) + 14, BULLET_H
 
 
-def bullet_svg(cx, cy, lid, ink, ground, extra=""):
+def bullet_svg(cx, cy, lid, ink, ground, extra="", text_ink=None):
     """The loop's line bullet: the typed chip (M3) in its bullet form. The ink cell holds the loop's kind glyph in
     place of the word Loop; the outlined cell holds the code."""
     w, h = bullet_size(lid)
@@ -386,7 +387,7 @@ def bullet_svg(cx, cy, lid, ink, ground, extra=""):
     out = [f'<rect x="{x:.1f}" y="{y:.1f}" width="24" height="{h}" fill="{ink}"/>',
            kind_glyph(x + 12, y + h / 2, kind, 16, ground, 1.8),
            f'<rect x="{x + 24:.1f}" y="{y + 0.75:.1f}" width="{w - 24.75:.1f}" height="{h - 1.5}" fill="{ground}" stroke="{ink}" stroke-width="1.5"/>',
-           T(x + 24 + (w - 24) / 2, y + h / 2 + 5, lid, 14, 700, ink, "middle")]
+           T(x + 24 + (w - 24) / 2, y + h / 2 + 5, lid, 14, 700, text_ink or ink, "middle")]
     return f'<g class="bullet" data-bullet="{lid}" data-kind="{kind}"{extra}>' + "".join(out) + "</g>"
 
 

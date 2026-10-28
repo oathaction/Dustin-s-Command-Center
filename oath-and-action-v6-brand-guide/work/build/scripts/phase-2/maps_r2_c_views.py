@@ -228,6 +228,7 @@ def poster(L=None, theme_name="prussian", lit_loop=None, reform=None, view="c-po
     lab = label or "Loop Lines poster: the 20 numbered loops of Atlas V7 drawn as closed lines through 25 shared variables"
     extra = f' data-reform="{reform}"' if reform else ""
     extra += f' data-lit="{lit_loop}"' if lit_loop else ""
+    extra += f' data-cell="{L.cell}" data-ox="{L.ox}" data-oy="{L.oy}"'
     svg = D.svg_doc(W, H, "".join(body), lab, view, th.bg, extra=extra)
     return svg, L, boxes, fields
 

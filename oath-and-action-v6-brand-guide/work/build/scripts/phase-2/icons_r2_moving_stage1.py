@@ -86,7 +86,7 @@ def sheet_html(px=192):
     <h1>Concept 2, Moving part. Stage 1 display masters</h1>
     <p class="sub">Each subject is built from a few solid pieces held apart by one 1.5-unit cut. The red piece is the one that
     moves. Display masters on the 24-unit grid, shown at 192 px, twice their 96 px size, on Newsprint. Drawn by hand and
-    judged by eye; nothing here is hinted or measured yet. Proposal for the creative director's review, October 28, 2026.</p>
+    judged by eye. Only two rough vector checks have run, area and cut width; nothing is hinted yet. Proposal for the creative director's review, October 28, 2026.</p>
     <div class="grid">{''.join(cells)}</div></div></body></html>"""
 
 

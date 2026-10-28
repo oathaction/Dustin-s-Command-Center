@@ -255,10 +255,17 @@ def gap_between(d1, d2, step=0.05):
         from fontTools.pens.recordingPen import RecordingPen
         rec = RecordingPen()
         p.draw(rec)
-        pts, cur = [], None
+        pts, cur, start = [], None, None
         for op, args in rec.value:
+            if op == "closePath" and cur is not None and start is not None:
+                a = start
+                n = max(2, int(math.dist(cur, a) / step))
+                pts += [(cur[0] + (a[0] - cur[0]) * k / n, cur[1] + (a[1] - cur[1]) * k / n) for k in range(1, n + 1)]
+                cur = a
+                continue
             if op == "moveTo":
                 cur = args[0]
+                start = cur
                 pts.append(cur)
             elif op == "lineTo":
                 a = args[0]

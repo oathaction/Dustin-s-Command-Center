@@ -1,0 +1,135 @@
+{
+ "run_note": "Checked against work/extract/atlas-v7-data.json through verify_maps_data.py, independently of the Direction C drawing modules",
+ "counts": {
+  "svg_files": 59,
+  "steps_checked": 595,
+  "textures_checked": 595,
+  "signs_checked": 150,
+  "ticks_checked": 12,
+  "records_checked": 6,
+  "stations_checked": 331,
+  "positions_checked": 225,
+  "bullets_checked": 60,
+  "red_marks_checked": 13,
+  "weakest_checked": 2,
+  "ghosts_checked": 240,
+  "entries_checked": 18,
+  "fields_checked": 75,
+  "sketched_steps_checked": 16,
+  "pages_checked": 2,
+  "catalog_cards_checked": 46
+ },
+ "numbered_loops": [
+  "R1",
+  "R1b",
+  "R2",
+  "R3",
+  "R4a",
+  "R4b",
+  "R5",
+  "R6",
+  "R7",
+  "R8",
+  "R10",
+  "R11",
+  "R12",
+  "R13",
+  "R15",
+  "R16",
+  "R18",
+  "B1a",
+  "B4",
+  "B5"
+ ],
+ "sketched_loops": [
+  "B2",
+  "B3",
+  "R9"
+ ],
+ "loop_variables": [
+  "A1",
+  "A2",
+  "A4",
+  "A5",
+  "A6",
+  "B1",
+  "B2",
+  "B3",
+  "B4",
+  "B5",
+  "B6",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "D5",
+  "D6",
+  "D7",
+  "E1",
+  "E2"
+ ],
+ "loop_connections": 46,
+ "mismatches": 0,
+ "problems": [],
+ "summary": [
+  "Data check against V7: 0 mismatches across 59 drawings.",
+  "All 20 numbered loops drawn on every network view and as miniatures; sketched loops listed: B2, B3, R9.",
+  "Checked 595 drawn steps for link, from, to, sign, type, delay, grade and loop; 595 line textures; 150 sign glyphs and their direction; 12 delay-tick sets; 6 record squares.",
+  "Checked 331 stations and 225 station positions against the 25-row station table, 75 stations inside their district field, 60 line bullets and 18 frame entry counts.",
+  "Checked 13 red marks and 2 weakest-step markings; red sits only at the targets of the reform each view names, never on Prussian.",
+  "Checked 46 catalog cards for district order, width by reach and full rows, and that every drawing file sits unchanged on a page."
+ ],
+ "mutation_test": [
+  {
+   "planted": "texture",
+   "file": "20261028_Loop-Lines-Poster.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Poster.svg: L02 texture solid/18 8, V7 grade plausible needs 9 4 scaled to 18 8"
+   ]
+  },
+  {
+   "planted": "sign glyph",
+   "file": "20261028_Loop-Lines-Poster.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Poster.svg: L25 sign glyph '+', V7 sign '-'"
+   ]
+  },
+  {
+   "planted": "delay ticks",
+   "file": "20261028_Loop-Lines-Card-R10.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Card-R10.svg: L08 draws 1 delay ticks, V7 delay S needs 1"
+   ]
+  },
+  {
+   "planted": "station position",
+   "file": "20261028_Loop-Lines-Station-Table.csv",
+   "changed": true,
+   "caught": 9,
+   "first": [
+    "20261028_Loop-Lines-Catalog-Band-Phone.svg: C3 drawn at (259.1, 409.5), station table puts it at (259.2, 419.0)",
+    "20261028_Loop-Lines-Catalog-Band.svg: C3 drawn at (1184.0, 318.0), station table puts it at (1184.0, 336.0)"
+   ]
+  },
+  {
+   "planted": "red mark",
+   "file": "20261028_Loop-Lines-Reform-View-R-01.svg",
+   "changed": true,
+   "caught": 1,
+   "first": [
+    "20261028_Loop-Lines-Reform-View-R-01.svg: red at ['C2', 'C3', 'L08', 'L25'], expected ['C2', 'L08', 'L25']"
+   ]
+  }
+ ]
+}

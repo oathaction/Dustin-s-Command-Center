@@ -324,12 +324,21 @@ def straight_runs(pts):
 class Layout:
     """One placement of the network at one scale: grid cell size, origin, line pitch and corner radius."""
 
-    def __init__(self, cell, ox, oy, pitch=9.0, radius=22.0, table=None, keepout_fn=None):
+    def __init__(self, cell, ox, oy, pitch=9.0, radius=22.0, table=None, keepout_fn=None, routes=None):
         self.table = table or read_table()
         self.cell, self.ox, self.oy, self.pitch, self.radius = cell, ox, oy, pitch, radius
-        self.keepout = keepout_fn(self) if keepout_fn else set()
-        self.routes_cells, self.ports = route_all(self.table, self.keepout)
+        if routes is not None:
+            self.keepout, (self.routes_cells, self.ports) = set(), routes
+        else:
+            self.keepout = keepout_fn(self) if keepout_fn else set()
+            self.routes_cells, self.ports = route_all(self.table, self.keepout)
         self.tracks = tracks(self.table, pitch)
+
+    def scaled(self, cell, ox, oy, pitch=None, radius=None):
+        """The same network, the same routes, at another grid size: one layout serves every view."""
+        k = cell / self.cell
+        return Layout(cell, ox, oy, pitch if pitch is not None else self.pitch * k, radius if radius is not None else self.radius * k,
+                      table=self.table, routes=(self.routes_cells, self.ports))
 
     def px(self, c):
         return (self.ox + c[0] * self.cell, self.oy + c[1] * self.cell)

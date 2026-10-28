@@ -1,0 +1,1407 @@
+{
+ "source": "work/extract/atlas-v7-data.json via maps_model.py",
+ "cell_px": 36,
+ "origin_px": [
+  506,
+  452
+ ],
+ "pitch_px": 9.0,
+ "corner_radius_px": 22.0,
+ "stations": {
+  "A1": {
+   "col": -6,
+   "row": 6,
+   "px": [
+    290,
+    668
+   ],
+   "district": "A",
+   "label_side": "w",
+   "loops": [
+    "R1",
+    "R6"
+   ],
+   "name": "Wealth concentration"
+  },
+  "A2": {
+   "col": -6,
+   "row": 0,
+   "px": [
+    290,
+    452
+   ],
+   "district": "A",
+   "label_side": "w",
+   "loops": [
+    "R6",
+    "R15"
+   ],
+   "name": "Worker bargaining power"
+  },
+  "A4": {
+   "col": -3,
+   "row": -3,
+   "px": [
+    398,
+    344
+   ],
+   "district": "A",
+   "label_side": "w",
+   "loops": [
+    "R5"
+   ],
+   "name": "Household security"
+  },
+  "A5": {
+   "col": -12,
+   "row": 3,
+   "px": [
+    74,
+    560
+   ],
+   "district": "A",
+   "label_side": "ne",
+   "loops": [
+    "R8"
+   ],
+   "name": "Housing scarcity"
+  },
+  "A6": {
+   "col": -8,
+   "row": 3,
+   "px": [
+    218,
+    560
+   ],
+   "district": "A",
+   "label_side": "s",
+   "loops": [
+    "R8"
+   ],
+   "name": "Owner home equity"
+  },
+  "B1": {
+   "col": 0,
+   "row": 6,
+   "px": [
+    506,
+    668
+   ],
+   "district": "B",
+   "label_side": "sw",
+   "loops": [
+    "R1",
+    "R1b",
+    "R6"
+   ],
+   "name": "Money in politics"
+  },
+  "B2": {
+   "col": 15,
+   "row": -1,
+   "px": [
+    1046,
+    416
+   ],
+   "district": "B",
+   "label_side": "n",
+   "loops": [
+    "R16"
+   ],
+   "name": "Local news supply"
+  },
+  "B3": {
+   "col": -6,
+   "row": -6,
+   "px": [
+    290,
+    236
+   ],
+   "district": "B",
+   "label_side": "w",
+   "loops": [
+    "R15"
+   ],
+   "name": "Cross-cutting civic ties"
+  },
+  "B4": {
+   "col": 13,
+   "row": -3,
+   "px": [
+    974,
+    344
+   ],
+   "district": "B",
+   "label_side": "ne",
+   "loops": [
+    "R3",
+    "R11"
+   ],
+   "name": "Affective polarization"
+  },
+  "B5": {
+   "col": 0,
+   "row": -6,
+   "px": [
+    506,
+    236
+   ],
+   "district": "B",
+   "label_side": "nw",
+   "loops": [
+    "R4b",
+    "R5",
+    "R15"
+   ],
+   "name": "Turnout equality"
+  },
+  "B6": {
+   "col": 10,
+   "row": -6,
+   "px": [
+    866,
+    236
+   ],
+   "district": "B",
+   "label_side": "n",
+   "loops": [
+    "R3"
+   ],
+   "name": "Hostile-content exposure"
+  },
+  "C1": {
+   "col": 15,
+   "row": 6,
+   "px": [
+    1046,
+    668
+   ],
+   "district": "C",
+   "label_side": "sw",
+   "loops": [
+    "R4a",
+    "R10",
+    "R12"
+   ],
+   "name": "Safe seats"
+  },
+  "C2": {
+   "col": 13,
+   "row": 4,
+   "px": [
+    974,
+    596
+   ],
+   "district": "C",
+   "label_side": "sw",
+   "loops": [
+    "R10"
+   ],
+   "name": "Primary decisiveness"
+  },
+  "C3": {
+   "col": 13,
+   "row": 1,
+   "px": [
+    974,
+    488
+   ],
+   "district": "C",
+   "label_side": "e",
+   "loops": [
+    "R10",
+    "R11",
+    "R16",
+    "B4"
+   ],
+   "name": "Electoral pressure"
+  },
+  "C4": {
+   "col": 18,
+   "row": 6,
+   "px": [
+    1154,
+    668
+   ],
+   "district": "C",
+   "label_side": "e",
+   "loops": [
+    "R4a",
+    "R4b",
+    "R10",
+    "R12"
+   ],
+   "name": "Incumbent control of election rules"
+  },
+  "C5": {
+   "col": 9,
+   "row": 1,
+   "px": [
+    830,
+    488
+   ],
+   "district": "C",
+   "label_side": "n",
+   "loops": [
+    "B4"
+   ],
+   "name": "Sanction applied"
+  },
+  "D1": {
+   "col": 3,
+   "row": -3,
+   "px": [
+    614,
+    344
+   ],
+   "district": "D",
+   "label_side": "n",
+   "loops": [
+    "R2",
+    "R13"
+   ],
+   "name": "Congressional capacity"
+  },
+  "D2": {
+   "col": 9,
+   "row": -3,
+   "px": [
+    830,
+    344
+   ],
+   "district": "D",
+   "label_side": "n",
+   "loops": [
+    "R11",
+    "R13",
+    "R18"
+   ],
+   "name": "Executive unilateralism"
+  },
+  "D3": {
+   "col": 18,
+   "row": 9,
+   "px": [
+    1154,
+    776
+   ],
+   "district": "D",
+   "label_side": "e",
+   "loops": [
+    "R1b",
+    "R12"
+   ],
+   "name": "Doctrine favoring the appointing coalition"
+  },
+  "D4": {
+   "col": 6,
+   "row": 0,
+   "px": [
+    722,
+    452
+   ],
+   "district": "D",
+   "label_side": "s",
+   "loops": [
+    "R18",
+    "B1a"
+   ],
+   "name": "Oversight and enforcement"
+  },
+  "D5": {
+   "col": 9,
+   "row": 5,
+   "px": [
+    830,
+    632
+   ],
+   "district": "D",
+   "label_side": "nw",
+   "loops": [
+    "R7",
+    "B4"
+   ],
+   "name": "Public service quality"
+  },
+  "D6": {
+   "col": 3,
+   "row": 3,
+   "px": [
+    614,
+    560
+   ],
+   "district": "D",
+   "label_side": "s",
+   "loops": [
+    "B5"
+   ],
+   "name": "State and local experimentation"
+  },
+  "D7": {
+   "col": 15,
+   "row": 9,
+   "px": [
+    1046,
+    776
+   ],
+   "district": "D",
+   "label_side": "w",
+   "loops": [
+    "R4a",
+    "R12"
+   ],
+   "name": "Entrenched majority control"
+  },
+  "E1": {
+   "col": 0,
+   "row": 0,
+   "px": [
+    506,
+    452
+   ],
+   "district": "E",
+   "label_side": "inside",
+   "loops": [
+    "R1",
+    "R2",
+    "R5",
+    "R6",
+    "R15",
+    "B1a",
+    "B5"
+   ],
+   "name": "Policy tilt to insiders"
+  },
+  "E2": {
+   "col": 6,
+   "row": 8,
+   "px": [
+    722,
+    740
+   ],
+   "district": "E",
+   "label_side": "s",
+   "loops": [
+    "R7"
+   ],
+   "name": "Warranted trust"
+  }
+ },
+ "corridors": [
+  {
+   "stations": [
+    "A1",
+    "B1"
+   ],
+   "route_cells": [
+    [
+     -6,
+     6
+    ],
+    [
+     0,
+     6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L01",
+     "loop": "R1",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L01",
+     "loop": "R6",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B1",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L02",
+     "loop": "R1",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L02",
+     "loop": "R6",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A1",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     -6,
+     6
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L03",
+     "loop": "R1",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B1",
+    "D3"
+   ],
+   "route_cells": [
+    [
+     0,
+     6
+    ],
+    [
+     5,
+     11
+    ],
+    [
+     16,
+     11
+    ],
+    [
+     18,
+     9
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L04",
+     "loop": "R1b",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L05",
+     "loop": "R1b",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D1",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     3,
+     -3
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L18",
+     "loop": "R2",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L19",
+     "loop": "R2",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B4",
+    "B6"
+   ],
+   "route_cells": [
+    [
+     13,
+     -3
+    ],
+    [
+     10,
+     -6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L46",
+     "loop": "R3",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L47",
+     "loop": "R3",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C1",
+    "C4"
+   ],
+   "route_cells": [
+    [
+     15,
+     6
+    ],
+    [
+     18,
+     6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L42",
+     "loop": "R10",
+     "offset_px": -9.0
+    },
+    {
+     "link": "L42",
+     "loop": "R12",
+     "offset_px": 0.0
+    },
+    {
+     "link": "L42",
+     "loop": "R4a",
+     "offset_px": 9.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C1",
+    "D7"
+   ],
+   "route_cells": [
+    [
+     15,
+     6
+    ],
+    [
+     15,
+     9
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L55",
+     "loop": "R4a",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L55",
+     "loop": "R12",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C4",
+    "D7"
+   ],
+   "route_cells": [
+    [
+     18,
+     6
+    ],
+    [
+     15,
+     9
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L56",
+     "loop": "R4a",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B5",
+    "C4"
+   ],
+   "route_cells": [
+    [
+     0,
+     -6
+    ],
+    [
+     2,
+     -8
+    ],
+    [
+     13,
+     -8
+    ],
+    [
+     18,
+     -3
+    ],
+    [
+     18,
+     6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L45",
+     "loop": "R4b",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L44",
+     "loop": "R4b",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A4",
+    "B5"
+   ],
+   "route_cells": [
+    [
+     -3,
+     -3
+    ],
+    [
+     0,
+     -6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L35",
+     "loop": "R5",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B5",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     0,
+     -6
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L36",
+     "loop": "R15",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L36",
+     "loop": "R5",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A4",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     -3,
+     -3
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L37",
+     "loop": "R5",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A1",
+    "A2"
+   ],
+   "route_cells": [
+    [
+     -6,
+     6
+    ],
+    [
+     -6,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L30",
+     "loop": "R6",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A2",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     -6,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L31",
+     "loop": "R15",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L31",
+     "loop": "R6",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D5",
+    "E2"
+   ],
+   "route_cells": [
+    [
+     9,
+     5
+    ],
+    [
+     6,
+     8
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L20",
+     "loop": "R7",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L21",
+     "loop": "R7",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A5",
+    "A6"
+   ],
+   "route_cells": [
+    [
+     -12,
+     3
+    ],
+    [
+     -8,
+     3
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L38",
+     "loop": "R8",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L39",
+     "loop": "R8",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C1",
+    "C2"
+   ],
+   "route_cells": [
+    [
+     15,
+     6
+    ],
+    [
+     13,
+     4
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L08",
+     "loop": "R10",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C2",
+    "C3"
+   ],
+   "route_cells": [
+    [
+     13,
+     4
+    ],
+    [
+     13,
+     1
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L25",
+     "loop": "R10",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C3",
+    "C4"
+   ],
+   "route_cells": [
+    [
+     13,
+     1
+    ],
+    [
+     18,
+     6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L53",
+     "loop": "R10",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B4",
+    "C3"
+   ],
+   "route_cells": [
+    [
+     13,
+     -3
+    ],
+    [
+     13,
+     1
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L50",
+     "loop": "R11",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C3",
+    "D2"
+   ],
+   "route_cells": [
+    [
+     13,
+     1
+    ],
+    [
+     9,
+     -3
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L51",
+     "loop": "R11",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B4",
+    "D2"
+   ],
+   "route_cells": [
+    [
+     13,
+     -3
+    ],
+    [
+     9,
+     -3
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L52",
+     "loop": "R11",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C4",
+    "D3"
+   ],
+   "route_cells": [
+    [
+     18,
+     6
+    ],
+    [
+     18,
+     9
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L06",
+     "loop": "R12",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D3",
+    "D7"
+   ],
+   "route_cells": [
+    [
+     18,
+     9
+    ],
+    [
+     15,
+     9
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L57",
+     "loop": "R12",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D1",
+    "D2"
+   ],
+   "route_cells": [
+    [
+     3,
+     -3
+    ],
+    [
+     9,
+     -3
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L11",
+     "loop": "R13",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L12",
+     "loop": "R13",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "A2",
+    "B3"
+   ],
+   "route_cells": [
+    [
+     -6,
+     0
+    ],
+    [
+     -6,
+     -6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L32",
+     "loop": "R15",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B3",
+    "B5"
+   ],
+   "route_cells": [
+    [
+     -6,
+     -6
+    ],
+    [
+     0,
+     -6
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L34",
+     "loop": "R15",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "B2",
+    "C3"
+   ],
+   "route_cells": [
+    [
+     15,
+     -1
+    ],
+    [
+     13,
+     1
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L26",
+     "loop": "R16",
+     "offset_px": -4.5
+    },
+    {
+     "link": "T01",
+     "loop": "R16",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D2",
+    "D4"
+   ],
+   "route_cells": [
+    [
+     9,
+     -3
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L14",
+     "loop": "R18",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L15",
+     "loop": "R18",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D4",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     6,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L16",
+     "loop": "B1a",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L17",
+     "loop": "B1a",
+     "offset_px": 4.5
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C3",
+    "D5"
+   ],
+   "route_cells": [
+    [
+     13,
+     1
+    ],
+    [
+     9,
+     5
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L23",
+     "loop": "B4",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C3",
+    "C5"
+   ],
+   "route_cells": [
+    [
+     13,
+     1
+    ],
+    [
+     9,
+     1
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L24",
+     "loop": "B4",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "C5",
+    "D5"
+   ],
+   "route_cells": [
+    [
+     9,
+     1
+    ],
+    [
+     9,
+     5
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L54",
+     "loop": "B4",
+     "offset_px": 0.0
+    }
+   ]
+  },
+  {
+   "stations": [
+    "D6",
+    "E1"
+   ],
+   "route_cells": [
+    [
+     3,
+     3
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "tracks": [
+    {
+     "link": "L49",
+     "loop": "B5",
+     "offset_px": -4.5
+    },
+    {
+     "link": "L48",
+     "loop": "B5",
+     "offset_px": 4.5
+    }
+   ]
+  }
+ ],
+ "catalog_order_1440": [
+  "R8",
+  "R3",
+  "R4b",
+  "R10",
+  "R16",
+  "R1b",
+  "R4a",
+  "R12",
+  "R11",
+  "R13",
+  "R18",
+  "B4",
+  "R1",
+  "R2",
+  "R5",
+  "R6",
+  "R7",
+  "R15",
+  "B1a",
+  "B5",
+  "B2",
+  "B3",
+  "R9"
+ ],
+ "catalog_order_390": [
+  "R8",
+  "R3",
+  "R4b",
+  "R10",
+  "R16",
+  "R1b",
+  "R4a",
+  "R12",
+  "R11",
+  "R13",
+  "R18",
+  "B4",
+  "R2",
+  "R1",
+  "R5",
+  "R6",
+  "R7",
+  "B1a",
+  "R15",
+  "B5",
+  "B2",
+  "B3",
+  "R9"
+ ],
+ "label_overlaps_poster": [
+  [
+   "label",
+   "C3",
+   "bullet",
+   "R16"
+  ],
+  [
+   "label",
+   "C3",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "R4a",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "R8",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "R12",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "R13",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "R18",
+   "sign",
+   ""
+  ],
+  [
+   "bullet",
+   "B1a",
+   "sign",
+   ""
+  ]
+ ]
+}
