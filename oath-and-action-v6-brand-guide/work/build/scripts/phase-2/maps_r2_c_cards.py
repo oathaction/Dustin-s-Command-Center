@@ -8,7 +8,7 @@ import maps_r2_c_geom as G
 
 M, LOOPS = G.M, G.LOOPS
 T, esc = D.T, D.esc
-MINI_SCALE = 0.4       # one shared scale for every miniature: 0.4 of the poster's 36 px grid cell
+MINI_SCALE = 0.38      # one shared scale for every miniature: 0.38 of the poster's 36 px grid cell
 # miniature name sides that keep a long loop's names inside its own drawing (layout data, like the station table)
 MINI_SIDES = {("R4b", "B5"): "se", ("R4b", "C4"): "w", ("R1b", "B1"): "e", ("R1b", "D3"): "nw"}
 
@@ -99,7 +99,7 @@ def _miniature(L, lid, scale, names, pad, ink, ground, view, line_w, attempt):
         lh = 16 * len(lines)
         side = MINI_SIDES.get((lid, sid)) or mini_side(L, lid, sid)
         if attempt >= 1:
-            side = {"e": "ne", "w": "sw", "se": "s", "sw": "s", "ne": "n", "nw": "n"}.get(side, side)
+            side = {"e": "n", "w": "s", "se": "s", "sw": "s", "ne": "n", "nw": "n"}.get(side, side)
         lab_specs.append((sid, lines, lw, lh, side))
     # place in a provisional frame to measure
     ext = [0, 0, w0, h0]
