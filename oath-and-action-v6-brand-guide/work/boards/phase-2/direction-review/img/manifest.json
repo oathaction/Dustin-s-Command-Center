@@ -1,0 +1,83 @@
+{
+ "r8-card.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#spec-r8",
+  "selector": "#spec-r8 article.fga-card",
+  "scale": 2,
+  "cssWidth": 1248,
+  "cssHeight": 1701,
+  "bytes": 683058,
+  "info": {}
+ },
+ "r8-tile.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#spec-catalog",
+  "selector": "#spec-catalog article.fga-tile[data-loop=\"R8\"]",
+  "scale": 2,
+  "cssWidth": 1248,
+  "cssHeight": 280,
+  "bytes": 95040,
+  "info": {}
+ },
+ "catalog-1440.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#spec-catalog",
+  "selector": "#spec-catalog header.fga-head to #spec-catalog section.fga-plate",
+  "scale": 2,
+  "cssWidth": 1440,
+  "cssHeight": 1894,
+  "bytes": 641601,
+  "info": {}
+ },
+ "sign-1.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#sign",
+  "selector": "#sign article.fga-card",
+  "scale": 2,
+  "cssWidth": 1248,
+  "cssHeight": 1183,
+  "bytes": 448422,
+  "info": {
+   "option": "Option 1: the circled sign, with arrowheads"
+  }
+ },
+ "sign-2.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#sign",
+  "selector": "#sign article.fga-card (2)",
+  "scale": 2,
+  "cssWidth": 1248,
+  "cssHeight": 1183,
+  "bytes": 452214,
+  "info": {
+   "option": "Option 2: Direction C’s pointing tag"
+  }
+ },
+ "catalog-390.jpg": {
+  "source": "20261028_Map-Direction-A-Field-Guide.html#spec-catalog at 390 px",
+  "selector": "#spec-catalog header.fga-head to #spec-catalog section.fga-plate",
+  "scale": 2,
+  "cssWidth": 390,
+  "cssHeight": 3793,
+  "bytes": 562855,
+  "info": {}
+ },
+ "menu-row-1.png": {
+  "source": "20261028_Icon-Concept-1-Overprint.html#s-contexts",
+  "selector": "#s-contexts .navrow",
+  "scale": 2,
+  "cssWidth": 828,
+  "cssHeight": 61,
+  "bytes": 11306,
+  "info": {
+   "dark": false,
+   "caption": "1. The four pillars in a menu row on Newsprint and on Charcoal, with Track current: its plane returns, its label goes bold, a rule runs under it."
+  }
+ },
+ "menu-row-2.png": {
+  "source": "20261028_Icon-Concept-1-Overprint.html#s-contexts",
+  "selector": "#s-contexts .navrow (2)",
+  "scale": 2,
+  "cssWidth": 828,
+  "cssHeight": 61,
+  "bytes": 11165,
+  "info": {
+   "dark": true
+  }
+ }
+}

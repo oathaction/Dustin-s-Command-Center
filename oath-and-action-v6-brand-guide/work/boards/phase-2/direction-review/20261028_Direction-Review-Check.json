@@ -1,0 +1,385 @@
+{
+ "board": "work/boards/20261028_Direction-Review-Board.html",
+ "checked": "2026-10-29T00:24:26.054Z",
+ "bytes": 4977997,
+ "megabytes": 4.75,
+ "underTenMegabytes": true,
+ "startsWithTitle": true,
+ "hasSkeletonTags": false,
+ "externalScripts": 0,
+ "stylesheetLinks": [
+  "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap"
+ ],
+ "nonDataImageSources": 0,
+ "axeVersion": "4.10.2",
+ "renderedIn": "Chromium chromium, wrapped in a standard skeleton with lang=\"en\"",
+ "views": [
+  {
+   "width": 1440,
+   "scheme": "light",
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "horizontalScroll": false,
+   "images": 107,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 2,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 8,
+    "h3": 19,
+    "h4": 7
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 145,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 11,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 0,
+   "pageHeight": 23136,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to decide",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Systems maps",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Icons",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Scores and the name test",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 31,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 187
+    }
+   ],
+   "pageErrors": [],
+   "screenshots": [
+    "work/boards/screens/direction-review/review-1440-light-01.png",
+    "work/boards/screens/direction-review/review-1440-light-02.png",
+    "work/boards/screens/direction-review/review-1440-light-03.png",
+    "work/boards/screens/direction-review/review-1440-light-04.png",
+    "work/boards/screens/direction-review/review-1440-light-05.png",
+    "work/boards/screens/direction-review/review-1440-light-06.png",
+    "work/boards/screens/direction-review/review-1440-light-07.png",
+    "work/boards/screens/direction-review/review-1440-light-08.png",
+    "work/boards/screens/direction-review/review-1440-light-09.png",
+    "work/boards/screens/direction-review/review-1440-light-10.png",
+    "work/boards/screens/direction-review/review-1440-light-11.png",
+    "work/boards/screens/direction-review/review-1440-light-12.png"
+   ]
+  },
+  {
+   "width": 1440,
+   "scheme": "dark",
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "horizontalScroll": false,
+   "images": 107,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 2,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 8,
+    "h3": 19,
+    "h4": 7
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 145,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 11,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 0,
+   "pageHeight": 23136,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to decide",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Systems maps",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Icons",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Scores and the name test",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 31,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 187
+    }
+   ],
+   "pageErrors": [],
+   "screenshots": [
+    "work/boards/screens/direction-review/review-1440-dark-01.png",
+    "work/boards/screens/direction-review/review-1440-dark-02.png",
+    "work/boards/screens/direction-review/review-1440-dark-03.png",
+    "work/boards/screens/direction-review/review-1440-dark-04.png",
+    "work/boards/screens/direction-review/review-1440-dark-05.png",
+    "work/boards/screens/direction-review/review-1440-dark-06.png",
+    "work/boards/screens/direction-review/review-1440-dark-07.png",
+    "work/boards/screens/direction-review/review-1440-dark-08.png",
+    "work/boards/screens/direction-review/review-1440-dark-09.png",
+    "work/boards/screens/direction-review/review-1440-dark-10.png",
+    "work/boards/screens/direction-review/review-1440-dark-11.png",
+    "work/boards/screens/direction-review/review-1440-dark-12.png"
+   ]
+  },
+  {
+   "width": 390,
+   "scheme": "light",
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "horizontalScroll": false,
+   "images": 107,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 2,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 8,
+    "h3": 19,
+    "h4": 7
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 145,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 11,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 0,
+   "pageHeight": 25012,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to decide",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Systems maps",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Icons",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Scores and the name test",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 31,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 199
+    }
+   ],
+   "pageErrors": [],
+   "screenshots": [
+    "work/boards/screens/direction-review/review-390-light-01.png",
+    "work/boards/screens/direction-review/review-390-light-02.png",
+    "work/boards/screens/direction-review/review-390-light-03.png",
+    "work/boards/screens/direction-review/review-390-light-04.png",
+    "work/boards/screens/direction-review/review-390-light-05.png",
+    "work/boards/screens/direction-review/review-390-light-06.png",
+    "work/boards/screens/direction-review/review-390-light-07.png",
+    "work/boards/screens/direction-review/review-390-light-08.png",
+    "work/boards/screens/direction-review/review-390-light-09.png",
+    "work/boards/screens/direction-review/review-390-light-10.png",
+    "work/boards/screens/direction-review/review-390-light-11.png",
+    "work/boards/screens/direction-review/review-390-light-12.png",
+    "work/boards/screens/direction-review/review-390-light-13.png"
+   ]
+  },
+  {
+   "width": 390,
+   "scheme": "dark",
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "horizontalScroll": false,
+   "images": 107,
+   "imagesBroken": [],
+   "imagesWithoutAlt": 0,
+   "inlineSvgs": 2,
+   "svgsWithoutName": 0,
+   "svgsUnlabeledVisible": 0,
+   "textUnder13px": [],
+   "smallestTextPx": 13,
+   "headingCounts": {
+    "h1": 1,
+    "h2": 8,
+    "h3": 19,
+    "h4": 7
+   },
+   "h1Count": 1,
+   "headingSkips": [],
+   "redOutsideSpecimens": [],
+   "tableCells": 145,
+   "cellsWithoutTabularFigures": 0,
+   "scrollRegions": 11,
+   "scrollRegionsNotFocusable": 0,
+   "scrollBehavior": "smooth",
+   "tokenRows": 0,
+   "pageHeight": 25012,
+   "tokenMismatches": 0,
+   "tokenBelowMinimum": 0,
+   "focusSample": [
+    {
+     "tag": "A",
+     "text": "What you are asked to decide",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Systems maps",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Icons",
+     "outline": "solid 2px"
+    },
+    {
+     "tag": "A",
+     "text": "Scores and the name test",
+     "outline": "solid 2px"
+    }
+   ],
+   "focusVisible": true,
+   "copyStatus": "Copied. Paste it into your reply and edit it.",
+   "copyWorked": true,
+   "axeViolations": [],
+   "axeViolationCount": 0,
+   "axePassedRules": 31,
+   "axeIncomplete": [
+    {
+     "id": "aria-prohibited-attr",
+     "nodes": 1
+    },
+    {
+     "id": "color-contrast",
+     "nodes": 199
+    }
+   ],
+   "pageErrors": [],
+   "screenshots": [
+    "work/boards/screens/direction-review/review-390-dark-01.png",
+    "work/boards/screens/direction-review/review-390-dark-02.png",
+    "work/boards/screens/direction-review/review-390-dark-03.png",
+    "work/boards/screens/direction-review/review-390-dark-04.png",
+    "work/boards/screens/direction-review/review-390-dark-05.png",
+    "work/boards/screens/direction-review/review-390-dark-06.png",
+    "work/boards/screens/direction-review/review-390-dark-07.png",
+    "work/boards/screens/direction-review/review-390-dark-08.png",
+    "work/boards/screens/direction-review/review-390-dark-09.png",
+    "work/boards/screens/direction-review/review-390-dark-10.png",
+    "work/boards/screens/direction-review/review-390-dark-11.png",
+    "work/boards/screens/direction-review/review-390-dark-12.png",
+    "work/boards/screens/direction-review/review-390-dark-13.png"
+   ]
+  }
+ ],
+ "chromium": "141.0.7390.37",
+ "reducedMotion": {
+  "scrollBehaviorWhenReduced": "auto",
+  "animations": 0
+ },
+ "summary": {
+  "noHorizontalScroll": true,
+  "allImagesLoad": true,
+  "noTextUnder13px": true,
+  "oneH1NoSkips": true,
+  "axeZeroViolations": true,
+  "noRedOutsideSpecimens": true,
+  "allImagesHaveAlt": true,
+  "tabularFiguresInTables": true,
+  "scrollRegionsFocusable": true,
+  "focusVisible": true,
+  "copyControlResponds": true,
+  "tokenRatiosMatchWcag": true,
+  "reducedMotionRespected": true,
+  "underTenMegabytes": true
+ }
+}

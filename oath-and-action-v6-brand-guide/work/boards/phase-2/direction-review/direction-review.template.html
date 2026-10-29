@@ -1,0 +1,329 @@
+<title>Edition 06 Direction Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;600;700&family=Lora:ital,wght@1,400&display=swap">
+<style>
+/* Direction review page. Built by work/build/scripts/phase-2/build_direction_review.py from this template and the report.
+   Layout: a 1248 px column, so the Field Guide pages show at true size; full-bleed bands for the poster and the 1440 px pages.
+   Specimen frames keep their own surfaces in both themes. Pillar Red appears only inside specimens and marks. */
+:root {
+  --bg: #DCD9D2; --surface: #E6E3DD; --fg: #121212; --muted: #45494F; --rule: #5D636D; --hair: #B9B6AF;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --ok-bg: #C9D6D2; --mid-bg: #CFCCC5; --low-bg: #BFBAB1; --focus: #121212;
+  --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --quote: "Lora", Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E; --hair: #34363A;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40; --focus: #DCD9D2; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121212; --surface: #1C1D1F; --fg: #DCD9D2; --muted: #B4B1AA; --rule: #6E747E; --hair: #34363A;
+  --deep: #1F2D5A; --on-deep: #DCD9D2; --ok-bg: #22332F; --mid-bg: #26272A; --low-bg: #3B3C40; --focus: #DCD9D2; color-scheme: dark }
+@media (prefers-reduced-motion: no-preference) { :root { scroll-behavior: smooth } }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 400 1rem/1.6 var(--body); margin: 0; -webkit-text-size-adjust: 100% }
+.page { overflow-x: clip }
+.wrap { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); overflow-wrap: break-word }
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px }
+p { margin: 0 0 12px; max-width: 70ch }
+h1, h2, h3, h4 { font-family: var(--display); letter-spacing: -0.02em; text-wrap: balance; margin: 0 }
+h1 { font-weight: 800; font-size: clamp(2.25rem, 5.6vw, 4.25rem); line-height: 1.02; margin-top: 10px; max-width: 18ch }
+h2 { font-weight: 800; font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.08; margin-bottom: 14px }
+h3 { font-weight: 800; font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.15; margin: 44px 0 12px }
+h4 { font-weight: 600; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -0.01em; margin: 28px 0 10px }
+code { font: 0.875rem/1.4 ui-monospace, Menlo, Consolas, monospace; background: var(--surface); padding: 1px 4px; overflow-wrap: anywhere }
+.eyebrow { font: 700 0.8125rem/1.4 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px }
+.small { font-size: 0.875rem; line-height: 1.5 }
+.muted { color: var(--muted) }
+.sec-intro { max-width: 70ch }
+.cap { font-size: 0.875rem; line-height: 1.5; color: var(--muted); margin: 8px 0 0; max-width: 76ch }
+.cap b { color: var(--fg) }
+figure { margin: 0; min-width: 0 }
+.fit { max-width: 100%; height: auto }
+img { display: block }
+img.px { image-rendering: pixelated; image-rendering: crisp-edges; max-width: none }
+.edge { border: 1px solid var(--rule) }
+.scroll { overflow-x: auto; max-width: 100% }
+.scroll:focus-visible, .table:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px }
+.tag { display: inline-block; font: 700 0.8125rem/1.2 var(--body); letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid currentColor; padding: 3px 6px; white-space: nowrap; vertical-align: 1px }
+.tag.solid { background: var(--fg); color: var(--bg); border-color: var(--fg) }
+.tag.rec { background: var(--deep); color: #DCD9D2; border-color: var(--deep) }
+.tag.out { border-style: dashed }
+.spec .tag.rec { background: #1F2D5A; color: #DCD9D2 }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; padding-block: 28px 20px; border-bottom: 1px solid var(--rule) }
+.top .mark { font: 800 1.125rem/1 var(--display); letter-spacing: -0.02em; margin: 0 }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 600 0.875rem/1 var(--body); border: 1px solid var(--fg); padding: 8px 12px; margin: 0 }
+.status::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--fg) }
+.intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; align-items: end; margin-top: 32px }
+.meta { font: 600 0.9375rem/1.4 var(--body); color: var(--muted); margin: 14px 0 0 }
+.lede { font-size: 1.1875rem; line-height: 1.55; max-width: 58ch; margin: 0 }
+@media (max-width: 860px) { .intro { grid-template-columns: minmax(0, 1fr) } }
+.toc { margin-top: 28px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0 }
+.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; counter-reset: toc }
+.toc li { counter-increment: toc; font-size: 0.9375rem }
+.toc li::before { content: counter(toc, decimal-leading-zero); font: 600 0.8125rem/1 var(--body); color: var(--muted); margin-right: 6px; font-variant-numeric: tabular-nums }
+.toc a { font-weight: 600 }
+.ask { background: var(--deep); color: var(--on-deep); padding: clamp(20px, 3vw, 32px); margin-top: 28px; --focus: #DCD9D2 }
+.ask h2 { color: var(--on-deep) }
+.ask .eyebrow { color: var(--on-deep) }
+.ask ol { margin: 0 0 20px; padding-left: 22px; display: grid; gap: 8px; max-width: 76ch }
+.ask a { color: var(--on-deep) }
+.reply { background: #DCD9D2; color: #121212; padding: 16px; display: grid; gap: 12px; --focus: #121212 }
+.reply-label { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: #45494F }
+.reply-text { font: 400 1rem/1.55 ui-monospace, Menlo, Consolas, monospace; margin: 0; max-width: none; user-select: all; -webkit-user-select: all; padding: 10px 12px; background: #FFFFFF; border: 1px solid #5D636D }
+.reply-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center }
+.btn { font: 700 0.9375rem/1 var(--body); background: #121212; color: #DCD9D2; border: 2px solid #121212; padding: 12px 18px; min-height: 44px; cursor: pointer }
+.btn:hover { background: #2A2B2E }
+.copy-status { font-size: 0.875rem; color: #121212; min-height: 1.4em }
+.ask .after { margin: 16px 0 0 }
+
+/* Sections and bands */
+.sec-top { border-top: 2px solid var(--fg); padding-top: 44px; margin-top: 56px }
+.band { margin-top: 24px }
+.band.prussian { background: #1F2D5A; color: #DCD9D2; padding-block: 36px 24px; --focus: #DCD9D2 }
+.band-in { max-width: 1440px; margin: 0 auto }
+.band-in > h3, .band-in > p, .band-in > figure > figcaption { max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+.bandline { font: 800 clamp(1.5rem, 3.2vw, 2.5rem)/1.1 var(--display); letter-spacing: -0.02em; color: #DCD9D2; margin: 0 0 24px; max-width: 30ch }
+.band svg.poster, .band-in > figure > img { display: block; width: 100%; height: auto; max-width: 1440px; margin: 0 auto }
+.band-cap { font-size: 0.875rem; line-height: 1.5; color: #DCD9D2; margin: 14px 0 0; max-width: 90ch }
+.hubframe { width: 1248px; background: #1F2D5A }
+.hubframe svg { display: block }
+.truesize img { width: 100%; max-width: 1248px; height: auto }
+.ba-label { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px }
+.stack-lg { display: grid; gap: 32px }
+figure.phone { max-width: 392px; margin-top: 24px }
+.tall { max-height: 780px; overflow-y: auto; border: 1px solid var(--rule) }
+.tall img { width: 390px; max-width: 100%; height: auto }
+
+/* Specimen frames */
+.spec { background: #DCD9D2; color: #121212; border: 1px solid var(--rule); padding: 16px }
+.spec.white { background: #FFFFFF }
+.spec .lab, .spec figcaption { font: 600 0.8125rem/1.35 var(--body); color: #45494F; margin: 6px 0 0 }
+.tname { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 4px }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px }
+@media (max-width: 960px) { .two { grid-template-columns: minmax(0, 1fr) } }
+.two > *, .stack > *, .others > *, .fix-dl > *, .intro > * { min-width: 0 }
+.idea { font: italic 400 clamp(1.125rem, 2vw, 1.375rem)/1.5 var(--quote); max-width: 60ch; margin: 0 0 20px }
+.hrow { display: flex; align-items: center; gap: 16px; margin-top: 14px }
+.hrow .lname { flex: 0 0 120px; font: 700 0.875rem/1.35 var(--body); margin: 0; color: #121212 }
+.marks { display: flex; flex-wrap: wrap; gap: 12px }
+.tenrow { display: flex; flex-wrap: wrap; gap: 14px }
+@media (max-width: 600px) { .hrow { flex-wrap: wrap } .hrow .lname { flex-basis: 100% } .marks { display: grid; grid-template-columns: repeat(2, 96px) } }
+.tenrow .icon { display: grid; gap: 6px; justify-items: start; align-content: start; width: 106px }
+.tag.open { text-transform: none; letter-spacing: 0 }
+.tenrow .icon .lab { display: grid; gap: 4px; justify-items: start; white-space: normal }
+.lrow { display: flex; flex-wrap: nowrap; align-items: flex-end; gap: 18px }
+.lrow > img, .lrow > svg { flex: 0 0 auto }
+.cell { display: grid; justify-items: start; gap: 4px; flex: 0 0 auto }
+.cell .lab { margin: 0; white-space: nowrap }
+.stack { display: grid; gap: 16px }
+.stack .item { display: grid; gap: 6px; justify-items: start }
+.stack .item > .lab { margin: 0 }
+.others { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px }
+@media (max-width: 960px) { .others { grid-template-columns: minmax(0, 1fr) } }
+.oname { font: 800 1.125rem/1.2 var(--display); margin: 0 0 8px }
+.other .small { margin: 10px 0 0 }
+
+/* Tables */
+.table { overflow-x: auto; border: 1px solid var(--rule); margin-top: 12px; max-width: 100% }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; line-height: 1.45; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--hair); vertical-align: top; font-variant-numeric: tabular-nums }
+thead th { font: 700 0.8125rem/1.3 var(--body); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--surface); border-bottom: 1px solid var(--rule) }
+tbody th { font-weight: 700 }
+tbody tr:last-child > * { border-bottom: 0 }
+th.n { text-align: center }
+td.id { font-weight: 700; white-space: nowrap }
+td.s { text-align: center; font-weight: 700; width: 3.2em }
+td.s1, td.s2 { background: var(--low-bg) }
+td.s3 { background: var(--mid-bg) }
+td.s4, td.s5 { background: var(--ok-bg) }
+table.settable { table-layout: fixed; min-width: 520px }
+.key { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.875rem; color: var(--muted); margin-top: 10px }
+.key i { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--rule) }
+
+/* Decisions */
+article.choice { border-top: 1px solid var(--rule); padding-top: 24px; margin-top: 28px }
+article.choice h4 { font-weight: 800; font-size: clamp(1.125rem, 2vw, 1.375rem); margin: 0 0 12px }
+.prose p { max-width: 72ch }
+.verdict-line { background: var(--surface); border: 1px solid var(--rule); box-shadow: inset 4px 0 0 var(--deep); padding: 12px 16px; max-width: none }
+.fixes { display: grid; gap: 16px }
+article.fix { border: 1px solid var(--rule); background: var(--surface); padding: clamp(16px, 2.4vw, 22px) }
+.fix-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; margin-bottom: 10px }
+.fix-head h4 { margin: 0; font-weight: 800; font-size: 1.1875rem }
+.fix-id { font: 800 1.25rem/1 var(--display); font-variant-numeric: tabular-nums }
+.fix-dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; margin: 0 }
+.fix-dl dt { font: 700 0.8125rem/1.3 var(--body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted) }
+.fix-dl dd { margin: 0 }
+@media (max-width: 760px) { .fix-dl { grid-template-columns: minmax(0, 1fr) } }
+.list { display: grid; gap: 10px; padding-left: 22px; margin: 0 }
+.list li { max-width: 76ch }
+.prose ol, .next ol { padding-left: 22px; display: grid; gap: 8px; max-width: 76ch }
+.foot { margin-top: 56px; padding-block: 16px 48px; border-top: 1px solid var(--rule); font-size: 0.875rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between }
+</style>
+
+<div class="page">
+<div class="wrap">
+  <header class="top">
+    <p class="mark">Oath &amp; Action · Edition 06</p>
+    <p class="status">Waiting for your choices</p>
+  </header>
+</div>
+
+<main id="main">
+<div class="wrap">
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Phase 2 · Direction review</p>
+      <h1>{{title}}</h1>
+      <p class="meta"><time datetime="2026-10-28">October 28, 2026</time> · An interim review, not a gate</p>
+    </div>
+    <p class="lede">You asked to see the systems maps and the icons before the studio builds out the full icon set and the map chapters. This page shows the studio's pick for each, the alternatives beside it, and what each choice costs.</p>
+  </div>
+
+  <nav class="toc" aria-label="On this page">
+    <ol>
+      <li><a href="#decide">What you are asked to decide</a></li>
+      <li><a href="#maps">Systems maps</a></li>
+      <li><a href="#icons">Icons</a></li>
+      <li><a href="#scores">Scores and the name test</a></li>
+      <li><a href="#choices">Your decisions</a></li>
+      <li><a href="#risks">Risks</a></li>
+      <li><a href="#next">What happens next</a></li>
+      <li><a href="#files">Files</a></li>
+    </ol>
+  </nav>
+
+  <section class="ask" id="decide" aria-labelledby="decide-h">
+    <p class="eyebrow">From the direction review report</p>
+    <h2 id="decide-h">What you are asked to decide</h2>
+    <ol>{{decide_items}}</ol>
+    <div class="reply">
+      <p class="reply-label" id="reply-label">{{reply_intro}}</p>
+      <p class="reply-text" id="reply-text" tabindex="0" aria-labelledby="reply-label">{{reply}}</p>
+      <div class="reply-row">
+        <button type="button" class="btn" id="copy-btn">Copy the sample reply</button>
+        <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+    <p class="after">{{reply_after}}</p>
+  </section>
+</div>
+
+<section id="maps" aria-labelledby="maps-h">
+  <div class="wrap"><div class="sec-top">
+    <p class="eyebrow">Choice 1 and choice 3</p>
+    <h2 id="maps-h">Systems maps: the studio's pick</h2>
+    <p class="sec-intro">Loop Lines draws the whole system as a transit map on Prussian. The Field Guide draws every loop as a card. A small copy of the transit map, with the loop lit, sits on every card.</p>
+  </div></div>
+  {{poster}}
+  <div class="wrap">
+    {{hub}}
+    {{r8}}
+    {{catalog}}
+    {{sign}}
+    {{current}}
+  </div>
+</section>
+
+<section id="icons" aria-labelledby="icons-h">
+  <div class="wrap"><div class="sec-top">
+    <p class="eyebrow">Choice 2</p>
+    <h2 id="icons-h">Icons: Overprint</h2>
+    <p class="sec-intro">Black with a bit of Pillar Red, in a square, a rounded square like an iOS app icon, or a circle.</p>
+    {{holders}}
+    {{tile_menu}}
+    {{small}}
+    {{others}}
+  </div></div>
+</section>
+
+<section id="scores" aria-labelledby="scores-h">
+  <div class="wrap"><div class="sec-top">
+    <p class="eyebrow">Report section 3</p>
+    <h2 id="scores-h">Scores and the name test</h2>
+    {{scores}}
+  </div></div>
+</section>
+
+<section id="choices" aria-labelledby="choices-h">
+  <div class="wrap"><div class="sec-top">
+    <p class="eyebrow">Report sections 4 to 7</p>
+    <h2 id="choices-h">Your decisions</h2>
+    <h3 id="choices-3">Three choices</h3>
+    {{choices}}
+    <h3 id="calls">{{calls_count}} calls that need your approval by name</h3>
+    <p class="sec-intro">Each changes approved geometry or the wording of Rule 05.3.</p>
+    <div class="fixes">{{calls}}</div>
+    <h3 id="set">{{set_count}} studio recommendations, approved as a set</h3>
+    <p class="sec-intro">Approve them as one set, and name any you would change.</p>
+    {{set}}
+    <h3 id="q13">A question for you</h3>
+    <div class="prose">{{q13}}</div>
+  </div></div>
+</section>
+
+<section id="risks" aria-labelledby="risks-h">
+  <div class="wrap"><div class="sec-top">
+    <p class="eyebrow">Report section 8</p>
+    <h2 id="risks-h">Risks</h2>
+    {{risks}}
+  </div></div>
+</section>
+
+<section id="next" aria-labelledby="next-h">
+  <div class="wrap"><div class="sec-top next">
+    <p class="eyebrow">Report section 9</p>
+    <h2 id="next-h">What happens after your answers</h2>
+    {{next}}
+  </div></div>
+</section>
+
+<section id="files" aria-labelledby="files-h">
+  <div class="wrap"><div class="sec-top">
+    <h2 id="files-h">Files</h2>
+    <ul class="list">{{files}}</ul>
+    <h3 id="appendix">Appendix: the direction and concept boards</h3>
+    <p class="sec-intro">Each board holds the full evidence for its direction or concept. They sit in <code>work/boards/</code>.</p>
+    <ul class="list">{{appendix}}</ul>
+    <h3 id="notes">The reviews and notes</h3>
+    <ul class="list">{{notes}}</ul>
+  </div></div>
+</section>
+</main>
+
+<div class="wrap">
+  <footer class="foot"><span>Oath &amp; Action · Brand Guide Edition 06 · Direction review</span><span>Built from the direction review report. No master has changed.</span></footer>
+</div>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-btn');
+  var src = document.getElementById('reply-text');
+  var status = document.getElementById('copy-status');
+  if (!btn || !src || !status) return;
+  function fallback() {
+    var range = document.createRange();
+    range.selectNodeContents(src);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    status.textContent = ok ? 'Copied. Paste it into your reply and edit it.' : 'The reply is selected. Press Ctrl+C, or Command+C on a Mac, to copy it.';
+  }
+  btn.addEventListener('click', function () {
+    var text = src.textContent.trim();
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () { status.textContent = 'Copied. Paste it into your reply and edit it.'; }, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
