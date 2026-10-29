@@ -2,7 +2,7 @@
 
 Oath & Action Brand Guide, Edition 06. Phase 2, October 28, 2026. Status: waiting for Dustin's choices. This is the interim review Dustin asked for on October 28, before the studio builds out the full icon set and the map chapters. It is not a gate.
 
-Open the review page: `work/boards/20261028_Direction-Review-Board.html`, also published as a private page at REVIEW_URL.
+Open the review page: `work/boards/20261028_Direction-Review-Board.html`, also published as a private page at https://claude.ai/artifact/1nNZZqQDESFYWRcbSnyR8B.
 
 ## What you are asked to decide
 
