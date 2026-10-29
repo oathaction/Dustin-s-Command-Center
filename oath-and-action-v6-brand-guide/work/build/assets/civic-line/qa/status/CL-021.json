@@ -1,0 +1,115 @@
+{
+  "id": "CL-021",
+  "label": "Connect",
+  "state": "reviewed",
+  "tracer": "oa-engineer (pilot)",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T05:39:55+00:00",
+      "state": "traced",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T05:40:44+00:00",
+      "state": "traced",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T05:47:21+00:00",
+      "state": "traced",
+      "kind": "rebuild",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T05:51:40+00:00",
+      "state": "traced",
+      "kind": "rebuild",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T05:54:46+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T05:54:56+00:00",
+      "state": "reviewed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T05:57:31+00:00",
+      "state": "reviewed",
+      "kind": "rebuild",
+      "silhouette_iou_1x": 0.8582,
+      "red_iou_1x": 0.8339,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T05:54:56+00:00",
+      "by": "oa-engineer (pilot)",
+      "note": "Overlay and zooms checked: black arcs over both crossings as on the red sheet; residual edge offset on the left ring's sides is the logged true-circle correction."
+    }
+  ],
+  "last_build": "2026-10-29T05:57:31+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8582,
+    "red_iou_1x": 0.8339,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9429,
+    "edge_mean_px": 0.408,
+    "edge_p95_px": 1.118,
+    "edge_max_px": 1.904,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made both rings true circles with one radius, 49.64 px",
+      "why": "DR-03. Circle fits to the ring centrelines give 49.53 and 49.76 px; the left ring's raster is about 1 px wider than tall. The catalogue calls for two equal circles."
+    },
+    {
+      "what": "Put both centres on one baseline, y 60.69",
+      "why": "DR-03 and the catalogue ('their centres share a baseline'). Fitted centres sit at y 60.88 and 60.49."
+    },
+    {
+      "what": "Drew the rings at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's own strokes measure 5.77 px, 5 percent heavier."
+    }
+  ],
+  "source_notes": "Centres kept at the fitted x positions (60.86 and 132.64), so the overlap width matches the sheet. Layering follows the red sheet: black outer arcs over both crossings."
+}

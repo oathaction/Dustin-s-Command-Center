@@ -1,0 +1,27 @@
+{
+  "id": "CL-001",
+  "tracer": "oa-engineer (pilot)",
+  "corrections": [
+    {
+      "what": "Gave both lid slants one slope (dx/dy 0.9015, 47.98 deg), each rising from a top corner of the box front",
+      "why": "DR-03. The sheet's slants measure 46.96 deg (left) and 49.0 deg (right); the box front is symmetric, so the lid is drawn symmetric. The top-left lid corner moves about 1.2 px left and the right slant about 1 px."
+    },
+    {
+      "what": "Put the lid top on one line, y 40.9, on both sides of the ballot",
+      "why": "DR-03 straight lines. The left part of the lid top measures y 40.64 and the short right stub about 41.3."
+    },
+    {
+      "what": "Made the ballot's two long edges parallel at 131.6 deg and straightened the left edge into one line from the slot to the top corner",
+      "why": "DR-03. The long edges measure 131.8 and 131.4 deg, and the lowest 8 px of the left edge bend to 128 deg. The top edge keeps its drawn 36.3 deg, so the ballot keeps its slight 95 deg corner."
+    },
+    {
+      "what": "Drew the box at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon measures 5.62 px overall; the slot and the ballot's right edge run near 6 px."
+    },
+    {
+      "what": "Placed the two red-to-black splits from the red sheet's red ink extents (left edge 2.9 px below the top corner, right edge at y 50.05) and cut them square to the stroke",
+      "why": "The red sheet shows each colour change as a cut across a continuing stroke; a round cap would push red 2.75 px past the split."
+    }
+  ],
+  "notes": "Kept: the open separation between the ballot's right edge and the right lid contour (about 5 px of clear ground at y 40), the short stub of lid top before the right slant, the box front's square corners with round joins, no lettering or check. Red follows the red sheet: it starts 2.9 px down the ballot's left edge, wraps the top corner, runs along the top edge and down the right edge to y 50.05; from there to the slot the right edge stays black. Both ends of the red are colour splits on a continuing stroke, so the accent uses flat (butt) caps; the rounded corners come from round joins. The accent group is drawn last so the red covers the black ends beneath it."
+}

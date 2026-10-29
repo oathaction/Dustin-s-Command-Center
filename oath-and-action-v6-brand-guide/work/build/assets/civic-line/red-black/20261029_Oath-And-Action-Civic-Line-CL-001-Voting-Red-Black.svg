@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-001" data-id="CL-001" width="128" height="128" viewBox="0 0 128 128">
+  <title>Voting</title>
+  <desc>Oath &amp; Action Civic Line CL-001 Voting. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="30.311" y="66.564" width="67.075" height="24.248" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="30.311,66.564 43.651,51.766 59.321,51.766" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="83.057,51.766 84.047,51.766 97.387,66.564" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.79" y1="59.126" x2="72.105" y2="37.374" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="73.563" y1="56.226" x2="70.989" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.744" y1="59.126" x2="77.71" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="71.155,38.446 72.105,37.374 83.125,45.455 73.563,56.226" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+</svg>

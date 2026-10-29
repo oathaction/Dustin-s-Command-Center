@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-021" viewBox="0 0 193 121">
+  <!-- Connect. Two equal rings, centres (60.86, 60.69) and (132.64, 60.69), r 49.64.
+       They cross at (96.75, 26.38) and (96.75, 94.99). Each ring is split there:
+       the inner arcs (the lens) are the accent, the outer arcs are base.
+       Accent is drawn first so the black arcs sit over both crossings, as on the red sheet. -->
+  <g data-role="accent">
+    <path id="left-inner" d="M96.75 26.38 A49.64 49.64 0 0 1 96.75 94.99"/>
+    <path id="right-inner" d="M96.75 26.38 A49.64 49.64 0 0 0 96.75 94.99"/>
+  </g>
+  <g data-role="base">
+    <path id="left-outer" d="M96.75 26.38 A49.64 49.64 0 1 0 96.75 94.99"/>
+    <path id="right-outer" d="M96.75 26.38 A49.64 49.64 0 1 1 96.75 94.99"/>
+  </g>
+</svg>

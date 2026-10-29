@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-001" viewBox="0 0 159 132">
+  <!-- Voting. Box front 10.38..148 x 71.26..121.01; lid slants rise from the front's
+       top corners at one slope to the lid top at y 40.9; the right lid contour stops
+       short of the ballot (open separation). Ballot long edges at 131.6 deg. -->
+  <g data-role="base">
+    <rect id="front" x="10.38" y="71.26" width="137.62" height="49.75"/>
+    <polyline id="lid-left" points="10.38,71.26 37.75,40.9 69.9,40.9"/>
+    <polyline id="lid-right" points="118.6,40.9 120.63,40.9 148,71.26"/>
+    <line id="ballot-left" x1="56.5" y1="56" x2="96.13" y2="11.37"/>
+    <line id="ballot-right-low" x1="99.12" y1="50.05" x2="93.84" y2="56"/>
+    <line id="slot" x1="50.25" y1="56" x2="107.63" y2="56"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="ballot-top-right" class="butt" points="94.18,13.57 96.13,11.37 118.74,27.95 99.12,50.05"/>
+  </g>
+</svg>

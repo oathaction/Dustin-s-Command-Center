@@ -1,0 +1,19 @@
+{
+  "id": "CL-021",
+  "tracer": "oa-engineer (pilot)",
+  "corrections": [
+    {
+      "what": "Made both rings true circles with one radius, 49.64 px",
+      "why": "DR-03. Circle fits to the ring centrelines give 49.53 and 49.76 px; the left ring's raster is about 1 px wider than tall. The catalogue calls for two equal circles."
+    },
+    {
+      "what": "Put both centres on one baseline, y 60.69",
+      "why": "DR-03 and the catalogue ('their centres share a baseline'). Fitted centres sit at y 60.88 and 60.49."
+    },
+    {
+      "what": "Drew the rings at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's own strokes measure 5.77 px, 5 percent heavier."
+    }
+  ],
+  "notes": "Centres kept at the fitted x positions (60.86 and 132.64), so the overlap width matches the sheet. Layering follows the red sheet: black outer arcs over both crossings."
+}
