@@ -1,9 +1,9 @@
 {
   "id": "CL-046",
   "label": "AI Infrastructure",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T3",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9299,
       "edge_mean_px": 0.362,
       "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:31:12+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8592,
+      "red_iou_1x": 0.9299,
+      "edge_mean_px": 0.362,
+      "edge_p95_px": 1.0
     }
   ],
   "notes": [
@@ -51,9 +61,14 @@
       "time": "2026-10-29T06:23:24+00:00",
       "by": "T3",
       "note": "overlay checked; tray notches, legs, 12 pins and red core match; chip kept 4 percent taller than wide as drawn"
+    },
+    {
+      "time": "2026-10-29T08:31:12+00:00",
+      "by": "T3",
+      "note": "review fix: chip 62.04 and core 21.72 px made true squares; pins at one 14.65 px pitch, all 17.5 px long"
     }
   ],
-  "last_build": "2026-10-29T08:30:44+00:00",
+  "last_build": "2026-10-29T08:31:12+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.8592,
     "red_iou_1x": 0.9299,

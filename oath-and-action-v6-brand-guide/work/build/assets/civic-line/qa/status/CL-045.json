@@ -1,9 +1,9 @@
 {
   "id": "CL-045",
   "label": "Pricing Algorithms",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T3",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9167,
       "edge_mean_px": 0.238,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:31:10+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9244,
+      "red_iou_1x": 0.9167,
+      "edge_mean_px": 0.238,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -51,9 +61,14 @@
       "time": "2026-10-29T06:19:45+00:00",
       "by": "T3",
       "note": "overlay checked; tag junction, back-tag gap and lean, circuit nodes and red S match"
+    },
+    {
+      "time": "2026-10-29T08:31:10+00:00",
+      "by": "T3",
+      "note": "review fix: string ends 2 px shorter at (42.96, 30.16); knob gone, clean V notch"
     }
   ],
-  "last_build": "2026-10-29T08:30:43+00:00",
+  "last_build": "2026-10-29T08:31:10+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.9244,
     "red_iou_1x": 0.9167,
