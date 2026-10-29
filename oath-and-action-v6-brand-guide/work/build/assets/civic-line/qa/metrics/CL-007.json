@@ -1,54 +1,54 @@
 {
   "id": "CL-007",
   "label": "Turnout Equality",
-  "built": "2026-10-29T08:18:13+00:00",
+  "built": "2026-10-29T08:32:33+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.95,
-  "silhouette_iou_4x": 0.9324,
-  "red_iou_1x": 0.9708,
-  "red_iou_4x": 0.9359,
+  "silhouette_iou_1x": 0.9276,
+  "silhouette_iou_4x": 0.9176,
+  "red_iou_1x": 0.7351,
+  "red_iou_4x": 0.8132,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.186,
-      "p95": 0.559,
+      "mean": 0.225,
+      "p95": 0.75,
       "max": 1.118
     },
     "trace_to_reference": {
-      "mean": 0.187,
-      "p95": 0.559,
+      "mean": 0.225,
+      "p95": 0.75,
       "max": 1.25
     },
     "symmetric": {
-      "mean": 0.186,
-      "p95": 0.559,
+      "mean": 0.225,
+      "p95": 0.75,
       "max": 1.25
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.173,
-      "p95": 0.5,
-      "max": 0.707
+      "mean": 0.496,
+      "p95": 1.0,
+      "max": 1.0
     },
     "trace_to_reference": {
-      "mean": 0.175,
-      "p95": 0.5,
-      "max": 0.707
+      "mean": 0.487,
+      "p95": 1.0,
+      "max": 1.0
     },
     "symmetric": {
-      "mean": 0.174,
-      "p95": 0.5,
-      "max": 0.707
+      "mean": 0.491,
+      "p95": 1.0,
+      "max": 1.0
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.95
+    "iou": 0.9276
   },
-  "ink_area_ratio_trace_over_reference": 1.0098,
+  "ink_area_ratio_trace_over_reference": 0.9907,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 8,
+  "corrections_logged": 6,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

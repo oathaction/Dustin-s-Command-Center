@@ -1,9 +1,9 @@
 {
   "id": "CL-016",
   "label": "Lobbying",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T1",
-  "iterations": 6,
+  "iterations": 7,
   "history": [
     {
       "iteration": 1,
@@ -64,6 +64,16 @@
       "red_iou_1x": 0.8719,
       "edge_mean_px": 0.191,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T08:32:37+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9185,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.219,
+      "edge_p95_px": 0.5
     }
   ],
   "notes": [
@@ -71,19 +81,25 @@
       "time": "2026-10-29T07:06:57+00:00",
       "by": "T1",
       "note": "T1: overlay checked; people, table, chairs and document match; stray mark kept for review (logged)"
+    },
+    {
+      "time": "2026-10-29T08:32:37+00:00",
+      "by": "T1",
+      "note": "T1 review fix: stray tick beside the left shoulder deleted"
     }
   ],
-  "last_build": "2026-10-29T07:06:57+00:00",
+  "last_build": "2026-10-29T08:32:37+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9213,
+    "silhouette_iou_1x": 0.9185,
     "red_iou_1x": 0.8719,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0175,
-    "edge_mean_px": 0.191,
+    "ink_area_ratio_trace_over_reference": 1.0085,
+    "edge_mean_px": 0.219,
     "edge_p95_px": 0.5,
-    "edge_max_px": 2.462,
+    "edge_max_px": 7.766,
     "best_offset": [
       0,
       0
@@ -109,7 +125,11 @@
     {
       "what": "Drew every stroke at the set line weight W, 5.5 px",
       "why": "DR-03 one line weight. The icon measures 5.25 to 6.25 px."
+    },
+    {
+      "what": "Review fix: deleted mark-left, the short tick from (57.65, 44.4) to (59.25, 47.4) beside the left person's shoulder",
+      "why": "Reviewer's decision on the open call: it floats off one shoulder, attaches to nothing and has no partner on the mirrored figure, so it is a generation accident."
     }
   ],
-  "source_notes": "Judgement for review: a short black mark stands just right of the left person's shoulder curve (a dot about 6 px across with a fading tail, centre near (58, 44)). Both sheets draw it in the same place and the right person has none, so it is kept as a short stroke rather than dropped; it may be the catalogue's 'inward-bending forearm' or a generation accident. Kept: each person's inner shoulder curving wider than the outer one and running down to the table top (the lean toward the table), the outer sides ending open below the table top, the heads sitting slightly toward the table from the shoulder centre, the document drawn as a leaning parallelogram (not a symmetric trapezoid) that opens onto the table, the chair seats running from the chair backs to the table legs. Red is the document's three sides only. The document is drawn first so the black table top covers the feet of its sides, as on the red sheet."
+  "source_notes": "Both sheets draw a small dot with a fading tail just right of the left person's shoulder (centre near (58, 44)); the reviewer ruled it a generation accident and it is left out. Kept: each person's inner shoulder curving wider than the outer one and running down to the table top (the lean toward the table), the outer sides ending open below the table top, the heads sitting slightly toward the table from the shoulder centre, the document drawn as a leaning parallelogram (not a symmetric trapezoid) that opens onto the table, the chair seats running from the chair backs to the table legs. Red is the document's three sides only. The document is drawn first so the black table top covers the feet of its sides, as on the red sheet."
 }

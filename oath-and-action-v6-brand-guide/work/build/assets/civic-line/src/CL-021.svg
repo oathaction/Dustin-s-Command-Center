@@ -2,13 +2,15 @@
   <!-- Connect. Two equal rings, centres (60.86, 60.69) and (132.64, 60.69), r 49.64.
        They cross at (96.75, 26.38) and (96.75, 94.99). Each ring is split there:
        the inner arcs (the lens) are the accent, the outer arcs are base.
-       Accent is drawn first so the black arcs sit over both crossings, as on the red sheet. -->
+       Accent is drawn first so the black arcs sit over both crossings, as on the red sheet.
+       Each black outer arc runs 2.75 px (3.17 deg) past its crossing and stops with a square (butt) end,
+       so the black finishes in a sharp V pointing into the lens at both crossings. -->
   <g data-role="accent">
     <path id="left-inner" d="M96.75 26.38 A49.64 49.64 0 0 1 96.75 94.99"/>
     <path id="right-inner" d="M96.75 26.38 A49.64 49.64 0 0 0 96.75 94.99"/>
   </g>
   <g data-role="base">
-    <path id="left-outer" d="M96.75 26.38 A49.64 49.64 0 1 0 96.75 94.99"/>
-    <path id="right-outer" d="M96.75 26.38 A49.64 49.64 0 1 1 96.75 94.99"/>
+    <path id="left-outer" class="butt" d="M98.59 28.43 A49.64 49.64 0 1 0 98.59 92.95"/>
+    <path id="right-outer" class="butt" d="M94.91 28.43 A49.64 49.64 0 1 1 94.91 92.95"/>
   </g>
 </svg>

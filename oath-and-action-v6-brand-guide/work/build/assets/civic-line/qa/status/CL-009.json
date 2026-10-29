@@ -1,9 +1,9 @@
 {
   "id": "CL-009",
   "label": "Safe Seats",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T1",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9742,
       "edge_mean_px": 0.11,
       "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:32:35+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9562,
+      "red_iou_1x": 0.9742,
+      "edge_mean_px": 0.11,
+      "edge_p95_px": 0.354
     }
   ],
   "notes": [
@@ -51,13 +61,19 @@
       "time": "2026-10-29T06:34:28+00:00",
       "by": "T1",
       "note": "T1: overlay checked; stepped perimeter, spur, chair and red fill match"
+    },
+    {
+      "time": "2026-10-29T08:32:35+00:00",
+      "by": "T1",
+      "note": "T1 review fix: zero-length segment removed from the district path"
     }
   ],
-  "last_build": "2026-10-29T06:34:28+00:00",
+  "last_build": "2026-10-29T08:32:35+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.9562,
     "red_iou_1x": 0.9742,
-    "bake_check_iou_1x": 1.0,
+    "bake_check_iou_4x": 1.0,
+    "bake_check_iou_1x": 0.9998,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
     "ink_area_ratio_trace_over_reference": 0.9897,
@@ -89,6 +105,10 @@
     {
       "what": "Drew every stroke at the set line weight W, 5.5 px",
       "why": "DR-03 one line weight. The icon measures 5.25 to 5.75 px."
+    },
+    {
+      "what": "Review fix: deleted the zero-length segment 'L69.3 137.66' in the district path, between the two fillets that meet at (69.3, 137.66)",
+      "why": "The short step at x 69.3 is exactly two fillets long, so the filleting left a segment of no length; it drew nothing but is untidy path data."
     }
   ],
   "source_notes": "Kept: the stepped district with its 6 chamfered steps and every orthogonal step as drawn, including the acute spur at the left notch where the horizontal run at y 59.57 overshoots the diagonal by 2.2 px (the contour starts at that spur and closes into it); the chair centred low in the district with its tall rounded back, U-shaped seat and arms, and two short legs that hang from the seat line. Red follows the red sheet: a fill across the inside of the chair back from y 62.3 down over the back's bottom stroke (to y 86.75), between the inner edges of the back's sides, with 5.5 px rounded bottom corners so the black side strokes still show at the back's lower corners. In the black edition the fill and the back merge into the solid lower back the black sheet shows."

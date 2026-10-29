@@ -14,8 +14,8 @@
     <rect x="82.3017" y="65.7936" width="23.1415" height="20.5583" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="29.8044" y1="73.7479" x2="38.8212" y2="73.7479" fill="none" stroke="#E63946" stroke-width="3.4118" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="59.5842" y1="73.7479" x2="68.601" y2="73.7479" fill="none" stroke="#E63946" stroke-width="3.4118" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="89.364" y1="73.7479" x2="98.3808" y2="73.7479" fill="none" stroke="#E63946" stroke-width="3.4118" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.4388" y1="73.7479" x2="39.1867" y2="73.7479" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.2187" y1="73.7479" x2="68.9666" y2="73.7479" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.9985" y1="73.7479" x2="98.7464" y2="73.7479" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

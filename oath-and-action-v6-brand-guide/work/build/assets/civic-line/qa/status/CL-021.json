@@ -1,9 +1,9 @@
 {
   "id": "CL-021",
   "label": "Connect",
-  "state": "reviewed",
-  "tracer": "oa-engineer (pilot)",
-  "iterations": 4,
+  "state": "fixed",
+  "tracer": "T1",
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -72,6 +72,16 @@
       "red_iou_1x": 0.8339,
       "edge_mean_px": 0.408,
       "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:32:41+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8576,
+      "red_iou_1x": 0.8355,
+      "edge_mean_px": 0.408,
+      "edge_p95_px": 1.118
     }
   ],
   "notes": [
@@ -79,19 +89,25 @@
       "time": "2026-10-29T05:54:56+00:00",
       "by": "oa-engineer (pilot)",
       "note": "Overlay and zooms checked: black arcs over both crossings as on the red sheet; residual edge offset on the left ring's sides is the logged true-circle correction."
+    },
+    {
+      "time": "2026-10-29T08:32:41+00:00",
+      "by": "T1",
+      "note": "T1 review fix: outer arcs end square 2.75 px past each crossing for a sharp V"
     }
   ],
-  "last_build": "2026-10-29T05:57:31+00:00",
+  "last_build": "2026-10-29T08:32:41+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8582,
-    "red_iou_1x": 0.8339,
+    "silhouette_iou_1x": 0.8576,
+    "red_iou_1x": 0.8355,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9429,
+    "ink_area_ratio_trace_over_reference": 0.9418,
     "edge_mean_px": 0.408,
     "edge_p95_px": 1.118,
-    "edge_max_px": 1.904,
+    "edge_max_px": 1.953,
     "best_offset": [
       0,
       0
@@ -109,7 +125,11 @@
     {
       "what": "Drew the rings at the set line weight W, 5.5 px",
       "why": "DR-03 one line weight. This icon's own strokes measure 5.77 px, 5 percent heavier."
+    },
+    {
+      "what": "Review fix: ended the four black outer-arc ends with square (butt) caps 2.75 px (3.17 deg of arc) past each crossing, instead of round caps at the crossings",
+      "why": "The red sheet finishes the black in a sharp V pointing into the lens at both crossings; the round caps pushed a soft blob 2.75 px into the red and blunted the lens points."
     }
   ],
-  "source_notes": "Centres kept at the fitted x positions (60.86 and 132.64), so the overlap width matches the sheet. Layering follows the red sheet: black outer arcs over both crossings."
+  "source_notes": "Centres kept at the fitted x positions (60.86 and 132.64), so the overlap width matches the sheet. Layering follows the red sheet: black outer arcs over both crossings. At each crossing the two black arcs overrun the crossing by half a line weight and end square over the red, which gives the V."
 }

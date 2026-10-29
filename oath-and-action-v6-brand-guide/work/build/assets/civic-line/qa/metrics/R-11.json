@@ -1,54 +1,54 @@
 {
   "id": "R-11",
   "label": "Election Enforcement",
-  "built": "2026-10-29T08:19:25+00:00",
+  "built": "2026-10-29T08:33:10+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.94,
-  "silhouette_iou_4x": 0.9437,
-  "red_iou_1x": 0.8433,
-  "red_iou_4x": 0.8638,
+  "silhouette_iou_1x": 0.9421,
+  "silhouette_iou_4x": 0.9432,
+  "red_iou_1x": 0.8383,
+  "red_iou_4x": 0.8535,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.164,
-      "p95": 0.707,
-      "max": 3.4
+      "mean": 0.155,
+      "p95": 0.559,
+      "max": 1.768
     },
     "trace_to_reference": {
-      "mean": 0.159,
+      "mean": 0.17,
       "p95": 0.707,
-      "max": 2.358
+      "max": 3.816
     },
     "symmetric": {
-      "mean": 0.161,
+      "mean": 0.162,
       "p95": 0.707,
-      "max": 3.4
+      "max": 3.816
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.452,
-      "p95": 2.016,
+      "mean": 0.458,
+      "p95": 1.953,
       "max": 6.6
     },
     "trace_to_reference": {
-      "mean": 0.36,
-      "p95": 1.458,
-      "max": 2.658
+      "mean": 0.436,
+      "p95": 2.006,
+      "max": 4.301
     },
     "symmetric": {
-      "mean": 0.406,
-      "p95": 1.521,
+      "mean": 0.447,
+      "p95": 2.0,
       "max": 6.6
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.94
+    "iou": 0.9421
   },
-  "ink_area_ratio_trace_over_reference": 0.9977,
+  "ink_area_ratio_trace_over_reference": 0.9883,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 0.9998,
@@ -57,7 +57,7 @@
   "export_drawn_bounds": [
     23.376,
     40.415,
-    104.384,
+    104.404,
     87.273
   ],
   "export_inside_0_128": true,
@@ -68,7 +68,7 @@
     "base"
   ],
   "masks": [],
-  "corrections_logged": 6,
+  "corrections_logged": 8,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

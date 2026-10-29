@@ -1,7 +1,7 @@
 {
   "id": "CL-009",
   "label": "Safe Seats",
-  "built": "2026-10-29T08:18:14+00:00",
+  "built": "2026-10-29T08:32:35+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 5,
+  "corrections_logged": 6,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

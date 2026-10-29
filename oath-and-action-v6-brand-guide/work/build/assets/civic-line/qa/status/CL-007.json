@@ -1,9 +1,9 @@
 {
   "id": "CL-007",
   "label": "Turnout Equality",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T1",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9708,
       "edge_mean_px": 0.186,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:32:33+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9276,
+      "red_iou_1x": 0.7351,
+      "edge_mean_px": 0.225,
+      "edge_p95_px": 0.75
     }
   ],
   "notes": [
@@ -51,18 +61,24 @@
       "time": "2026-10-29T06:23:03+00:00",
       "by": "T1",
       "note": "T1: overlay checked; equal units, card tops aligned; marks keep their heavier drawn weight via data-w 7 (logged judgement)"
+    },
+    {
+      "time": "2026-10-29T08:32:33+00:00",
+      "by": "T1",
+      "note": "T1 review fix: marks back to W at 25.5 px ink, data-w removed"
     }
   ],
-  "last_build": "2026-10-29T06:23:03+00:00",
+  "last_build": "2026-10-29T08:32:33+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.95,
-    "red_iou_1x": 0.9708,
+    "silhouette_iou_1x": 0.9276,
+    "red_iou_1x": 0.7351,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0098,
-    "edge_mean_px": 0.186,
-    "edge_p95_px": 0.559,
+    "ink_area_ratio_trace_over_reference": 0.9907,
+    "edge_mean_px": 0.225,
+    "edge_p95_px": 0.75,
     "edge_max_px": 1.25,
     "best_offset": [
       0,
@@ -70,21 +86,6 @@
     ]
   },
   "corrections": [
-    {
-      "element": "mark-1",
-      "what": "data-w 7 on the card mark",
-      "why": "The three card marks are drawn deliberately heavier than the rest of the drawing: 7.0 px on the black sheet and 6.75 px on the red sheet in every unit, against 5.5 px for the cards, shoulders and heads. At W they read as noticeably lighter dashes than the sheet shows and the red IoU drops to 0.74."
-    },
-    {
-      "element": "mark-2",
-      "what": "data-w 7 on the card mark",
-      "why": "As mark-1."
-    },
-    {
-      "element": "mark-3",
-      "what": "data-w 7 on the card mark",
-      "why": "As mark-1."
-    },
     {
       "what": "Made the three person-and-card units identical and spaced them at one pitch, 61.1 px (centres x 34.59, 95.69, 156.79)",
       "why": "DR-03 equal repeats; the catalogue asks for equal proportions across the row. Card centres measure 34.62, 95.62 and 156.82 (pitches 61.0 and 61.2); card widths 47.5, 47.5 and 47.37."
@@ -102,9 +103,13 @@
       "why": "DR-03 straight lines; the catalogue says the card top edges align. Measured tops 60.05 to 60.32, bottoms 102.24 to 102.55."
     },
     {
-      "what": "Gave the three marks one length (18.5 px between cap centres, 25.5 px of ink with the 7 px caps) centred in each card at y 76.5",
+      "what": "Gave the three marks one length, 20 px between cap centres (25.5 px of ink at W), centred in each card at y 76.5",
       "why": "DR-03 equal repeats. Measured ink lengths 25.0 to 26.0 px on the black sheet and 25.1 to 25.6 px on the red sheet."
+    },
+    {
+      "what": "Review fix: took the three red marks from data-w 7 back to W (5.5 px) and kept their 25.5 px ink length (cap centres x 24.59-44.59, 85.69-105.69, 146.79-166.79)",
+      "why": "Reviewer's decision on the open call: the marks read at W and nothing closes, so one line weight holds. The sheet draws them at 6.75 to 7.0 px."
     }
   ],
-  "source_notes": "Kept: square card corners with round stroke joins (the sheet's inner corners are square); the shoulder sides running straight down into the card top; each mark as one short horizontal stroke in the card's upper-middle area; the marks' heavier drawn weight (see data-w entries; judgement for the reviewer, since the set rule is one weight). Red is the three marks only; both sheets agree on placement."
+  "source_notes": "Kept: square card corners with round stroke joins (the sheet's inner corners are square); the shoulder sides running straight down into the card top; each mark as one short horizontal stroke in the card's upper-middle area. The marks are drawn at W by the reviewer's decision, though the sheet draws them heavier. Red is the three marks only; both sheets agree on placement."
 }

@@ -1,62 +1,62 @@
 {
   "id": "CL-022",
   "label": "Act",
-  "built": "2026-10-29T08:18:20+00:00",
+  "built": "2026-10-29T08:32:43+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.8672,
-  "silhouette_iou_4x": 0.8907,
-  "red_iou_1x": 0.8855,
-  "red_iou_4x": 0.8685,
+  "silhouette_iou_1x": 0.7955,
+  "silhouette_iou_4x": 0.8167,
+  "red_iou_1x": 0.6809,
+  "red_iou_4x": 0.6743,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.297,
-      "p95": 0.901,
-      "max": 1.953
+      "mean": 0.545,
+      "p95": 1.953,
+      "max": 2.55
     },
     "trace_to_reference": {
-      "mean": 0.297,
-      "p95": 0.901,
-      "max": 1.953
+      "mean": 0.538,
+      "p95": 1.904,
+      "max": 2.55
     },
     "symmetric": {
-      "mean": 0.297,
-      "p95": 0.901,
-      "max": 1.953
+      "mean": 0.542,
+      "p95": 1.904,
+      "max": 2.55
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.344,
-      "p95": 1.458,
-      "max": 1.953
+      "mean": 0.992,
+      "p95": 2.121,
+      "max": 2.5
     },
     "trace_to_reference": {
-      "mean": 0.338,
-      "p95": 1.458,
-      "max": 1.953
+      "mean": 0.978,
+      "p95": 2.062,
+      "max": 2.305
     },
     "symmetric": {
-      "mean": 0.341,
-      "p95": 1.458,
-      "max": 1.953
+      "mean": 0.985,
+      "p95": 2.121,
+      "max": 2.5
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.8672
+    "iou": 0.7955
   },
-  "ink_area_ratio_trace_over_reference": 0.9054,
+  "ink_area_ratio_trace_over_reference": 0.9053,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 0.9997,
-  "bake_check_max_diff_levels_4x": 7,
+  "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     40.381,
-    30.875,
+    31.138,
     87.761,
     97.084
   ],
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 6,
+  "corrections_logged": 8,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

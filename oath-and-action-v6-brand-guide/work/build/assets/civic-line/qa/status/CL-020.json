@@ -1,9 +1,9 @@
 {
   "id": "CL-020",
   "label": "Track",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T1",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.8445,
       "edge_mean_px": 0.323,
       "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:32:39+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.845,
+      "red_iou_1x": 0.8451,
+      "edge_mean_px": 0.452,
+      "edge_p95_px": 1.118
     }
   ],
   "notes": [
@@ -56,19 +66,25 @@
       "time": "2026-10-29T07:22:43+00:00",
       "by": "T1",
       "note": "T1: semicircle radii set to exact half-chords (bake check)"
+    },
+    {
+      "time": "2026-10-29T08:32:39+00:00",
+      "by": "T1",
+      "note": "T1 review fix: handle upper side joined under the ring; both U-turns r 14.5"
     }
   ],
-  "last_build": "2026-10-29T07:22:43+00:00",
+  "last_build": "2026-10-29T08:32:39+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8784,
-    "red_iou_1x": 0.8445,
+    "silhouette_iou_1x": 0.845,
+    "red_iou_1x": 0.8451,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 0.9997,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9178,
-    "edge_mean_px": 0.323,
-    "edge_p95_px": 1.0,
-    "edge_max_px": 2.5,
+    "ink_area_ratio_trace_over_reference": 0.9091,
+    "edge_mean_px": 0.452,
+    "edge_p95_px": 1.118,
+    "edge_max_px": 2.574,
     "best_offset": [
       0,
       0
@@ -90,7 +106,15 @@
     {
       "what": "Drew every stroke at the set line weight W, 5.5 px",
       "why": "DR-03 one line weight. This icon runs heavier: median 5.9 px, the pin 6.4 to 6.6, the lens 6.0 to 6.25 and the handle 6.2 to 6.3 px. That is why the silhouette IoU (0.87) and ink ratio (0.92) sit low while the centrelines match."
+    },
+    {
+      "what": "Review fix: extended the handle's upper-right side 3.73 px along its own line, from (160.04, 104.45) to (157.47, 101.74) on the lens centreline, so the ring covers its square end as it covers the lower-left side",
+      "why": "The black sheet shows the handle joined to the ring on both sides; the thin gap the red sheet shows on the upper-right side is a raster accident at the colour boundary."
+    },
+    {
+      "what": "Review fix: gave both U-turns of the route one radius, 14.5 px: straight runs at y 52.63, 81.63 and 110.63, right U centred at y 67.13, left U at 96.13. The middle run moves 0.95 px down and the left U's outer edge 0.5 px right",
+      "why": "DR-03 equal repeats, by the reviewer's call for an identity mark: the sheet's loops measure r 14.03 and 15.0, which reads as uneven loops."
     }
   ],
-  "source_notes": "Kept: the route as one open stroke with two U-turns of their own sizes (r 14.03 on the right, r 15.0 on the left, so the lower loop is 2 px taller, as drawn), no dotted segments; the pin hollow; the handle as an open U whose slot opens toward the lens. The handle's axis passes 3.2 px off the lens centre, so its two sides meet the lens differently on both sheets: the lower-left side runs into the lens ring (drawn under it, so the ring's edge cuts it), while the upper-right side stops with a square end about 2 px short of the ring, leaving a thin gap; the trace keeps both. Red is the pin outline and the handle; the route and lens stay black."
+  "source_notes": "Kept: the route as one open stroke with two equal U-turns and no dotted segments; the pin hollow; the handle as an open U whose slot opens toward the lens. The handle's axis passes 3.2 px off the lens centre; both sides run under the lens ring (drawn first), so the ring's outer edge cuts their tops and the slot opens into the ring. Red is the pin outline and the handle; the route and lens stay black."
 }
