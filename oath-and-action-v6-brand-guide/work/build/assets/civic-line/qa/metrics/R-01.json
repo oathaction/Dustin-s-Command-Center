@@ -1,10 +1,10 @@
 {
   "id": "R-01",
   "label": "All-Party Primaries",
-  "built": "2026-10-29T10:44:47+00:00",
+  "built": "2026-10-29T20:12:01+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9277,
   "silhouette_iou_4x": 0.8952,
   "red_iou_1x": 0.8883,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 7,
+  "bake_check_max_diff_levels_4x": 13,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    22.688,
-    38.236,
-    105.414,
-    89.106
+    12.361,
+    31.795,
+    115.767,
+    95.382
   ],
   "export_inside_0_128": true,
   "elements": 14,

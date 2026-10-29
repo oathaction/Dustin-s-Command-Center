@@ -1,10 +1,10 @@
 {
   "id": "R-17",
   "label": "Civil Service",
-  "built": "2026-10-29T10:44:54+00:00",
+  "built": "2026-10-29T20:12:08+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9578,
   "silhouette_iou_4x": 0.9447,
   "red_iou_1x": 0.8787,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 33,
+  "bake_check_max_diff_levels_4x": 25,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    22.693,
-    38.563,
-    105.453,
-    89.695
+    12.367,
+    32.204,
+    115.816,
+    96.119
   ],
   "export_inside_0_128": true,
   "elements": 9,

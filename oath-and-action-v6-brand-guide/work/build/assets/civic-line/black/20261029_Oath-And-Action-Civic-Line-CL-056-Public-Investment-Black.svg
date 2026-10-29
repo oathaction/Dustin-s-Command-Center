@@ -3,24 +3,24 @@
   <title>Public Investment</title>
   <desc>Oath &amp; Action Civic Line CL-056 Public Investment. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <line x1="33.1723" y1="52.5462" x2="33.1723" y2="92.0008" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="94.7303" y1="52.5462" x2="94.7303" y2="92.0008" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="17.6487" y1="77.8761" x2="110.2538" y2="77.8761" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.1723 53.4771 A30.779 19.646896 0 0 0 94.7303 53.4771" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.1723 53.4723 C33.1723 58.2829 29.8823 67.5092 18.4529 73.2118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M94.7303 53.4723 C94.7303 58.2829 98.0202 67.5092 109.4496 73.2118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M41.9746 91.1528 C43.0615 91.0553 44.1484 90.4899 45.2353 89.8953 C46.4538 89.2276 47.6723 88.6183 48.8908 88.6183 C50.1092 88.6183 51.3277 89.2276 52.5462 89.8953 C53.7647 90.563 54.9832 91.1723 56.2017 91.1723 C57.4202 91.1723 58.6387 90.563 59.8571 89.8953 C61.0756 89.2276 62.2941 88.6183 63.5126 88.6183 C64.7311 88.6183 65.9496 89.2276 67.1681 89.8953 C68.3866 90.563 69.605 91.1723 70.8235 91.1723 C72.042 91.1723 73.2605 90.563 74.479 89.8953 C75.6975 89.2276 76.916 88.6183 78.1345 88.6183 C79.3529 88.6183 80.5714 89.2276 81.7899 89.8953 C82.8768 90.4899 83.9637 91.0553 85.0506 91.1528" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M41.9746 100.0136 C43.0615 99.9161 44.1484 99.3508 45.2353 98.7561 C46.4538 98.0884 47.6723 97.4792 48.8908 97.4792 C50.1092 97.4792 51.3277 98.0884 52.5462 98.7561 C53.7647 99.4239 54.9832 100.0331 56.2017 100.0331 C57.4202 100.0331 58.6387 99.4239 59.8571 98.7561 C61.0756 98.0884 62.2941 97.4792 63.5126 97.4792 C64.7311 97.4792 65.9496 98.0884 67.1681 98.7561 C68.3866 99.4239 69.605 100.0331 70.8235 100.0331 C72.042 100.0331 73.2605 99.4239 74.479 98.7561 C75.6975 98.0884 76.916 97.4792 78.1345 97.4792 C79.3529 97.4792 80.5714 98.0884 81.7899 98.7561 C82.8768 99.3508 83.9637 99.9161 85.0506 100.0136" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="60.2958" y="55.6168" width="7.3109" height="4.5084" rx="0.7311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="63.9513" cy="61.2218" rx="2.437" ry="1.5597" fill="#121212"/>
+    <line x1="26.5663" y1="50.0918" x2="26.5663" y2="98.001" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="101.3153" y1="50.0918" x2="101.3153" y2="98.001" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.7163" y1="80.8496" x2="120.1653" y2="80.8496" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.5663 51.2222 A37.3745 23.856945 0 0 0 101.3153 51.2222" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.5663 51.2163 C26.5663 57.0578 22.5714 68.2612 8.6928 75.1857" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.3153 51.2163 C101.3153 57.0578 105.3102 68.2612 119.1888 75.1857" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.2549 96.9712 C38.5747 96.8529 39.8945 96.1663 41.2143 95.4443 C42.6939 94.6335 44.1735 93.8937 45.6531 93.8937 C47.1326 93.8937 48.6122 94.6335 50.0918 95.4443 C51.5714 96.2551 53.051 96.9949 54.5306 96.9949 C56.0102 96.9949 57.4898 96.2551 58.9694 95.4443 C60.449 94.6335 61.9286 93.8937 63.4082 93.8937 C64.8878 93.8937 66.3673 94.6335 67.8469 95.4443 C69.3265 96.2551 70.8061 96.9949 72.2857 96.9949 C73.7653 96.9949 75.2449 96.2551 76.7245 95.4443 C78.2041 94.6335 79.6837 93.8937 81.1633 93.8937 C82.6429 93.8937 84.1225 94.6335 85.6021 95.4443 C86.9218 96.1663 88.2416 96.8529 89.5614 96.9712" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.2549 107.7308 C38.5747 107.6125 39.8945 106.9259 41.2143 106.2039 C42.6939 105.3931 44.1735 104.6533 45.6531 104.6533 C47.1326 104.6533 48.6122 105.3931 50.0918 106.2039 C51.5714 107.0147 53.051 107.7545 54.5306 107.7545 C56.0102 107.7545 57.4898 107.0147 58.9694 106.2039 C60.449 105.3931 61.9286 104.6533 63.4082 104.6533 C64.8878 104.6533 66.3673 105.3931 67.8469 106.2039 C69.3265 107.0147 70.8061 107.7545 72.2857 107.7545 C73.7653 107.7545 75.2449 107.0147 76.7245 106.2039 C78.2041 105.3931 79.6837 104.6533 81.1633 104.6533 C82.6429 104.6533 84.1225 105.3931 85.6021 106.2039 C86.9218 106.9259 88.2416 107.6125 89.5614 107.7308" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="59.502" y="53.8204" width="8.8776" height="5.4745" rx="0.8878" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="63.9408" cy="60.6265" rx="2.9592" ry="1.8939" fill="#121212"/>
   </g>
   <g id="accent">
-    <path d="M60.2958 55.6168 V50.8257 A7.944533 7.944533 0 1 1 67.6067 50.8257 V55.6168" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <rect x="58.9555" y="54.2765" width="9.9916" height="1.3403" fill="#121212"/>
-    <line x1="63.9513" y1="27.8109" x2="63.9513" y2="30.5501" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="52.595" y1="31.4908" x2="55.3" y2="34.1958" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="75.3076" y1="31.4908" x2="72.6025" y2="34.1958" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.184" y1="41.5457" x2="50.7429" y2="41.5457" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="77.1597" y1="41.5457" x2="79.7185" y2="41.5457" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M59.502 53.8204 V48.0026 A9.646953 9.646953 0 1 1 68.3796 48.0026 V53.8204" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="butt" stroke-linejoin="round"/>
+    <rect x="57.8745" y="52.1929" width="12.1327" height="1.6276" fill="#121212"/>
+    <line x1="63.9408" y1="20.0561" x2="63.9408" y2="23.3822" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="50.151" y1="24.5245" x2="53.4357" y2="27.8092" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.7306" y1="24.5245" x2="74.4459" y2="27.8092" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.7949" y1="36.7341" x2="47.902" y2="36.7341" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.9796" y1="36.7341" x2="83.0867" y2="36.7341" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

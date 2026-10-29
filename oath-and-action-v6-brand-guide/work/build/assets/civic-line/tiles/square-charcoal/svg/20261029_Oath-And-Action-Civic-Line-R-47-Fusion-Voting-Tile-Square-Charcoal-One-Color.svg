@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-47-tile-square-charcoal-one-color" data-id="R-47" width="128" height="128" viewBox="0 0 128 128">
+  <title>Fusion Voting</title>
+  <desc>Oath &amp; Action Civic Line R-47 Fusion Voting: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <rect x="7.2295" y="41.2214" width="30.8441" height="38.394" rx="2.4786" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="22.6515" cy="51.5721" r="3.8766" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.7262 64.9419 V62.2501 A6.925303 5.477781 0 0 1 22.6515 56.7723 A6.925303 5.477781 0 0 1 29.5768 62.2501 V64.9419" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="89.4307" y="41.2214" width="30.8441" height="38.394" rx="2.4786" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.8528" cy="51.5721" r="3.8766" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M97.9275 64.9419 V62.2501 A6.925303 5.477781 0 0 1 104.8528 56.7723 A6.925303 5.477781 0 0 1 111.7781 62.2501 V64.9419" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="63.7026" cy="68.2038" r="5.9388" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.0282 86.7538 V84.0769 A6.444444 6.444444 0 0 1 58.4727 77.6325 H68.9325 A6.444419 6.444419 0 0 1 75.3769 84.0769 V86.7538" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M46.253 44.3395 A28.038267 28.038267 0 0 1 58.8296 55.9395" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="14.006" y1="71.421" x2="31.297" y2="71.421" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.2073" y1="71.421" x2="113.4982" y2="71.421" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M81.1521 44.3395 A28.038256 28.038256 0 0 0 68.5756 55.9395" fill="none" stroke="#DCD9D2" stroke-width="2.7265" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

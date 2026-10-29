@@ -1,10 +1,10 @@
 {
   "id": "CL-001",
   "label": "Voting",
-  "built": "2026-10-29T10:43:36+00:00",
+  "built": "2026-10-29T20:10:41+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9328,
   "silhouette_iou_4x": 0.9368,
   "red_iou_1x": 0.8797,
@@ -54,11 +54,12 @@
   "bake_check_iou_1x": 1.0,
   "bake_check_max_diff_levels_4x": 4,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    28.971,
-    36.033,
-    98.727,
-    92.152
+    20.214,
+    29.042,
+    107.409,
+    99.19
   ],
   "export_inside_0_128": true,
   "elements": 7,

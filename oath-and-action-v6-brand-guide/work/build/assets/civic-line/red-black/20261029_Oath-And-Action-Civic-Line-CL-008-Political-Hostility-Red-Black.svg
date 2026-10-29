@@ -3,10 +3,10 @@
   <title>Political Hostility</title>
   <desc>Oath &amp; Action Civic Line CL-008 Political Hostility. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M55.0076 45.1134 A2.573462 2.573462 0 0 0 53.0092 44.1581 H27.1773 A5.410092 5.410092 0 0 0 21.7672 49.5682 V67.5141 A5.410092 5.410092 0 0 0 27.1773 72.9242 H29.9116 L29.6971 81.9508 L38.9479 72.9242 H50.9134 A5.410092 5.410092 0 0 0 56.3235 67.5141 V62.2308" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M72.9437 47.9891 A2.573442 2.573442 0 0 1 74.942 47.0338 H100.774 A5.410067 5.410067 0 0 1 106.184 52.4439 V70.3897 A5.410067 5.410067 0 0 1 100.774 75.7998 H98.0397 L98.2541 84.8264 L89.0034 75.7998 H77.0378 A5.410092 5.410092 0 0 1 71.6277 70.3897 V62.6012" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.7594 40.3918 A3.216807 3.216807 0 0 0 50.2615 39.1977 H17.9716 A6.762604 6.762604 0 0 0 11.209 45.9603 V68.3926 A6.762629 6.762629 0 0 0 17.9716 75.1553 H21.3895 L21.1214 86.4385 L32.6849 75.1553 H47.6418 A6.762629 6.762629 0 0 0 54.4044 68.3926 V61.7884" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M75.1796 43.9863 A3.216807 3.216807 0 0 1 77.6775 42.7922 H109.9675 A6.762604 6.762604 0 0 1 116.7301 49.5548 V71.9872 A6.762604 6.762604 0 0 1 109.9675 78.7498 H106.5496 L106.8177 90.033 L95.2542 78.7498 H80.2973 A6.762604 6.762604 0 0 1 73.5347 71.9872 V62.2515" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polygon points="64.9017,43.5635 58.3657,55.1245 66.2274,55.1245 62.9521,66.0129 69.4881,54.4519 61.6264,54.4519" fill="#E63946" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="65.1271,38.4544 56.9571,52.9057 66.7842,52.9057 62.6901,66.5162 70.8601,52.0649 61.033,52.0649" fill="#E63946" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

@@ -1,0 +1,288 @@
+{
+  "board_icons": [
+    "R-44",
+    "R-49",
+    "R-46",
+    "R-42",
+    "R-40",
+    "CL-014",
+    "R-03",
+    "CL-001",
+    "CL-019",
+    "CL-020",
+    "CL-021",
+    "CL-022",
+    "R-35",
+    "CL-071",
+    "CL-012",
+    "CL-069",
+    "CL-038",
+    "CL-057",
+    "R-02",
+    "R-18"
+  ],
+  "candidates": {
+    "square": [
+      0.66,
+      0.68,
+      0.7
+    ],
+    "rounded": [
+      0.64,
+      0.66,
+      0.68
+    ],
+    "circle": [
+      0.6,
+      0.62,
+      0.64
+    ]
+  },
+  "chosen": {
+    "square": 0.68,
+    "rounded": 0.66,
+    "circle": 0.62
+  },
+  "rows": [
+    {
+      "shape": "square",
+      "factor": 0.66,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.7,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 22.41,
+      "min_margin_all": 22.41,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 48,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 48,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 96,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 192,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "square",
+      "factor": 0.68,
+      "px": 192,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.64,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 25.98,
+      "min_margin_all": 25.98,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.68,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 23.6,
+      "min_margin_all": 23.6,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 48,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 48,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 96,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 192,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "rounded",
+      "factor": 0.66,
+      "px": 192,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 24.79,
+      "min_margin_all": 24.79,
+      "min_margin_id": "R-46"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.6,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 24.75,
+      "min_margin_all": 21.67,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.64,
+      "px": 96,
+      "tile": "charcoal",
+      "status": "candidate",
+      "min_margin_board": 22.14,
+      "min_margin_all": 18.85,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 48,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 48,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 96,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 192,
+      "tile": "charcoal",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    },
+    {
+      "shape": "circle",
+      "factor": 0.62,
+      "px": 192,
+      "tile": "newsprint",
+      "status": "chosen",
+      "min_margin_board": 23.45,
+      "min_margin_all": 20.26,
+      "min_margin_id": "CL-059"
+    }
+  ]
+}

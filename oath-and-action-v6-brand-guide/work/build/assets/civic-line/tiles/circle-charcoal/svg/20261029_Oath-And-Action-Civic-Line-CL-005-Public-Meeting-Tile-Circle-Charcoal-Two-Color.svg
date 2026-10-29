@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-005-tile-circle-charcoal-two-color" data-id="CL-005" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Meeting</title>
+  <desc>Oath &amp; Action Civic Line CL-005 Public Meeting: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <circle cx="25.8126" cy="66.2908" r="6.1534" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.6834 93.4691 V86.9076 A9.595597 9.595597 0 0 1 22.279 77.312 H29.3462 A9.595597 9.595597 0 0 1 38.9418 86.9076 V93.4691" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="102.1874" cy="66.2908" r="6.1534" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.0582 93.4691 V86.9076 A9.595597 9.595597 0 0 1 98.6538 77.312 H105.721 A9.595597 9.595597 0 0 1 115.3166 86.9076 V93.4691" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.5227 57.8466 V53.9475 A6.579843 6.579843 0 0 1 58.1025 47.3676 H69.8975 A6.579843 6.579843 0 0 1 76.4773 53.9475 V57.8466" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.2727" y1="57.8466" x2="83.7273" y2="57.8466" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="44.9307,57.8466 46.6365,64.0305 50.0483,64.0305 50.0483,82.0093" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="83.0693,57.8466 81.3635,64.0305 77.9517,64.0305 77.9517,82.0093" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64" cy="76.8733" r="6.0254" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.084 98.3614 V95.4065 A7.859249 7.859249 0 0 1 58.9433 87.5473 H69.0567 A7.859249 7.859249 0 0 1 76.916 95.4065 V98.3614" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="64" cy="36.2794" r="6.3971" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

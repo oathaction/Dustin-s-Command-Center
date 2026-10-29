@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-027" data-id="CL-027" width="128" height="128" viewBox="0 0 128 128">
+  <title>Court Alignment</title>
+  <desc>Oath &amp; Action Civic Line CL-027 Court Alignment. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <line x1="49.2563" y1="29.2731" x2="49.2563" y2="35.4265" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="21.6088" y1="40.5441" x2="76.9038" y2="40.5441" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.2563" y1="40.5441" x2="49.2563" y2="98.6051" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="9.8199,73.1082 23.4243,45.0769 37.0288,73.1082" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.6867 73.1082 H38.162 A15.712438 15.712438 0 0 1 8.6867 73.1082 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="61.4838,73.1082 75.0882,45.0769 88.6927,73.1082" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60.3506 73.1082 H89.8259 A15.712438 15.712438 0 0 1 60.3506 73.1082 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38.8565 98.6051 V98.1177 C38.8565 93.6397 41.9758 91.7206 49.2563 91.7206 C56.5368 91.7206 59.6561 93.6397 59.6561 98.1177 V98.6051" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6937" y1="98.6051" x2="61.8189" y2="98.6051" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.1513 54.3983 H117.8633 A1.218494 1.218494 0 0 1 119.0818 55.6168 V97.5876 A1.218494 1.218494 0 0 1 117.8633 98.8061 H78.7742 A1.218494 1.218494 0 0 1 77.5557 97.5876 V89.4359" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.8992" y1="63.6527" x2="110.6498" y2="63.6527" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.8992" y1="71.5546" x2="110.6498" y2="71.5546" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="105.4895" cy="85.4759" r="5.4832" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

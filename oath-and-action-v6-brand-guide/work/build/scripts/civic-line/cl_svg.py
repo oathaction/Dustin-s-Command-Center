@@ -773,6 +773,20 @@ def export_pair(src, inv_row, W):
     return rb, bk
 
 
+def derive_editions(rb):
+    """The four bare editions from one red-black serialisation, by swapping ink
+    colours only. Mask colours (#FFFFFF, #000000) never change."""
+    bk = rb.replace(C.PILLAR_RED, C.CHARCOAL)
+    rn = rb.replace(C.CHARCOAL, C.NEWSPRINT)
+    nw = rn.replace(C.PILLAR_RED, C.NEWSPRINT)
+    return {"red-black": rb, "black": bk, "red-newsprint": rn, "newsprint": nw}
+
+
+def export_editions(src, inv_row, W):
+    rb, _ = export_pair(src, inv_row, W)
+    return derive_editions(rb)
+
+
 def crop_space_svg(src, W, colors, z=1):
     """Render-ready SVG in crop coordinates at z times the crop size."""
     return emit(src, Mapping(), W, colors, src.vb_w * z, src.vb_h * z, f"0 0 {src.vb_w} {src.vb_h}",

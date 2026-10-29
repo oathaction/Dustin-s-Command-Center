@@ -3,12 +3,12 @@
   <title>Energy &amp; Emissions</title>
   <desc>Oath &amp; Action Civic Line CL-066 Energy &amp; Emissions. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M23.7899 52.4487 V59.2333 A11.812009 11.812009 0 0 0 35.5995 71.0477 A11.81199 11.81199 0 0 0 47.4139 59.2333 V52.4487 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="30.9692" y1="42.3353" x2="30.9692" y2="52.4487" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.2297" y1="42.3353" x2="40.2297" y2="52.4487" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M35.5995 71.0477 V81.2197 A8.022511 8.022511 0 0 0 43.622 89.2422 A8.022511 8.022511 0 0 0 51.6445 81.2197 V80.4252 A8.661007 8.661007 0 0 1 62.9131 72.1639 A8.875469 8.875469 0 0 1 71.2768 61.178 A9.070427 9.070427 0 0 1 79.8891 47.9696 A9.094787 9.094787 0 0 1 97.5669 44.7235 A8.851086 8.851086 0 0 1 99.4434 61.4655 A8.9096 8.9096 0 0 1 88.516 75.3758 A10.015979 10.015979 0 0 1 73.0168 79.7672 L71.6375 83.4422 A8.807225 8.807225 0 0 1 57.1765 86.6249" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.7374 49.5609 V58.0416 A14.765039 14.765039 0 0 0 28.4994 72.8097 A14.765016 14.765016 0 0 0 43.2674 58.0416 V49.5609 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="22.7115" y1="36.9191" x2="22.7115" y2="49.5609" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.2872" y1="36.9191" x2="34.2872" y2="49.5609" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.4994 72.8097 V85.5246 A10.028128 10.028128 0 0 0 38.5275 95.5527 A10.028153 10.028153 0 0 0 48.5557 85.5246 V84.5315 A10.826262 10.826262 0 0 1 62.6414 74.2048 A11.094308 11.094308 0 0 1 73.096 60.4725 A11.33804 11.33804 0 0 1 83.8614 43.962 A11.368457 11.368457 0 0 1 105.9586 39.9044 A11.063857 11.063857 0 0 1 108.3042 60.8319 A11.136995 11.136995 0 0 1 94.645 78.2198 A12.51997 12.51997 0 0 1 75.271 83.709 L73.5469 88.3027 A11.009055 11.009055 0 0 1 55.4706 92.2811" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M87.6192 59.399 A12.608928 12.608928 0 0 1 76.643 71.3402" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.524 58.2487 A15.761153 15.761153 0 0 1 79.8038 73.1752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

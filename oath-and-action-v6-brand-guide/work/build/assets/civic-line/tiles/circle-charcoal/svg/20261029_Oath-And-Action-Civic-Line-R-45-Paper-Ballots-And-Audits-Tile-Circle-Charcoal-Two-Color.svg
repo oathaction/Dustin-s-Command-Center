@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-45-tile-circle-charcoal-two-color" data-id="R-45" width="128" height="128" viewBox="0 0 128 128">
+  <title>Paper Ballots &amp; Audits</title>
+  <desc>Oath &amp; Action Civic Line R-45 Paper Ballots &amp; Audits: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <path d="M39.9349 81.729 H27.7195 A1.218494 1.218494 0 0 1 26.501 80.5105 V34.7319 A2.436988 2.436988 0 0 1 28.938 32.2949 H67.8809 A3.960093 3.960093 0 0 1 71.841 36.255 V37.8025" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.501 38.4483 H21.3834 A1.827716 1.827716 0 0 0 19.5557 40.276 V86.3593 A1.523105 1.523105 0 0 0 21.0788 87.8824 H66.8939" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.5557 43.8767 H14.3162 A1.827741 1.827741 0 0 0 12.4884 45.7044 V92.9391 A1.523105 1.523105 0 0 0 14.0115 94.4622 H60.1313 A1.523105 1.523105 0 0 0 61.6544 92.9391 V87.8824" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.3708" y1="55.4523" x2="55.4706" y2="55.4523" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.3708" y1="64.3168" x2="55.4706" y2="64.3168" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.3708" y1="73.1813" x2="55.4706" y2="73.1813" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="83.374" cy="62.7815" r="21.0798" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.8401 76.0813 L114.0677 88.3088 A4.295181 4.295181 0 0 1 114.0677 94.3769 A4.295183 4.295183 0 0 1 107.9935 94.383 L94.3769 80.7664" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="44.0473" y1="44.0473" x2="54.4775" y2="44.0473" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="73.9916,63.2384 80.4008,69.6477 93.0183,57.0302" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

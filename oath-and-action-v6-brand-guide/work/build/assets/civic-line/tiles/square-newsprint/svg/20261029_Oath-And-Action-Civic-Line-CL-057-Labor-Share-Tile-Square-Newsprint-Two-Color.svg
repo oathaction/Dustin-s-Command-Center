@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-057-tile-square-newsprint-two-color" data-id="CL-057" width="128" height="128" viewBox="0 0 128 128">
+  <title>Labor Share</title>
+  <desc>Oath &amp; Action Civic Line CL-057 Labor Share: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <defs>
+    <mask id="cl-057-person-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+      <circle cx="84.4706" cy="37.3029" r="5.4466" fill="#000000"/>
+      <circle cx="84.4706" cy="55.166" r="10.5399" fill="#000000"/>
+      <rect x="73.9307" y="55.166" width="21.0798" height="3.3143" fill="#000000"/>
+      <rect x="71.0063" y="58.4802" width="27.416" height="9.7479" fill="#FFFFFF"/>
+    </mask>
+  </defs>
+  <g id="base">
+    <path d="M103.7227 67.0462 A40.374605 40.374605 0 1 1 63.4882 23.2903 V63.6649 L96.759 86.5359" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="miter"/>
+  </g>
+  <g id="accent">
+    <path d="M69.2151 60.7649 V23.4792 A1.675426 1.675426 0 0 1 71.0246 21.8099 A39.284024 39.284024 0 0 1 107.1649 60.7588 A1.675412 1.675412 0 0 1 105.4895 62.4403 H70.8905 A1.675411 1.675411 0 0 1 69.2151 60.7649 Z" fill="#E63946" mask="url(#cl-057-person-cut)"/>
+  </g>
+  </g>
+</svg>

@@ -1,19 +1,22 @@
-"""Part F: the review package.
+"""Part G: the final Civic Line package, in deliverables/ (DR-07).
 
     python3 -I make_package.py
 
-Writes work/build/packages/<date>_Oath-And-Action-Civic-Line-Icons_REVIEW.zip
-with one top folder, oath-and-action-civic-line-icons/, holding red-black/,
-black/, png-256/, png-512/, contact-sheets/, reference-crops/, the inventory
-(JSON and CSV), the fidelity metrics CSV and a short readme. Entries are
-sorted and stamped with the package date, so a rerun on the same files gives
-the same archive. After writing, the script reopens the archive, tests it,
-counts every folder and compares each entry's bytes with its source file.
-The package stays out of deliverables/ until Dustin approves it.
+Builds deliverables/<date>_Oath-And-Action-Civic-Line-Icons.zip with
+everything under one top folder, oath-and-action-civic-line-icons/: the four
+bare editions as SVG and PNG, the tiles, the contact and tile sheets, the
+reference crops, the catalog page, the inventory, the fidelity and contrast
+tables and a readme. If that archive would pass 90 MB (90,000,000 bytes), it writes two instead,
+<date>_Oath-And-Action-Civic-Line-Icons-SVG.zip (vectors, catalog and data)
+and <date>_Oath-And-Action-Civic-Line-Icons-PNG.zip (rasters and reference
+crops), each with the readme and data files and the same top folder, so
+unpacking both gives one tree. Entries are sorted and stamped with the package
+date. After writing, the script reopens each archive, tests it, counts every
+folder and compares each entry's bytes with its source. The earlier _REVIEW
+zip in work/build/packages/ is left where it is.
 """
 import csv
 import hashlib
-import io
 import os
 import statistics
 import sys
@@ -22,75 +25,89 @@ import zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cl_common as C  # noqa: E402
 
-PKG_DIR = os.path.join(C.ROOT, "work", "build", "packages")
-ZIP = os.path.join(PKG_DIR, f"{C.DATE}_Oath-And-Action-Civic-Line-Icons_REVIEW.zip")
+DELIV = os.path.join(C.ROOT, "deliverables")
+BASE = f"{C.DATE}_Oath-And-Action-Civic-Line-Icons"
 TOP = "oath-and-action-civic-line-icons"
 README = f"{C.DATE}_Civic-Line-Readme.md"
 FIDELITY = os.path.join(C.QA, f"{C.DATE}_Civic-Line-Fidelity-Metrics.csv")
+CONTRAST = os.path.join(C.QA, f"{C.DATE}_Civic-Line-Contrast-Table.md")
+VERIFY = os.path.join(C.QA, f"{C.DATE}_Civic-Line-Verify-Report.json")
+CATALOG = os.path.join(C.ASSETS, f"{C.DATE}_Civic-Line-Icon-Catalog.html")
+LIMIT = 90_000_000   # bytes: under 90 MB in decimal and binary units alike
 STAMP = (2026, 10, 29, 0, 0, 0)
-EXPECT = {"red-black": 122, "black": 122, "png-256/red-black": 122, "png-256/black": 122,
-          "png-512/red-black": 122, "png-512/black": 122, "contact-sheets": 30, "reference-crops": 244}
 
 
-def readme_text():
+def readme_text(split):
     sc = C.read_json(C.SCALE_JSON)
+    inv = C.load_inventory()
+    vr = C.read_json(VERIFY) or {}
     rows = list(csv.DictReader(open(FIDELITY, encoding="utf-8")))
+    med = lambda k: statistics.median([float(r[k]) for r in rows if r[k]])  # noqa: E731
+    lo, hi = inv["stroke_width_units"]
+    f = C.TILE_FACTORS
+    m = vr.get("tile_margins", {})
+    red_np = next((c["ratio"] for c in vr.get("contrast", []) if c["ink_hex"] == C.PILLAR_RED and c["ground_hex"] == C.NEWSPRINT), None)
+    red_ch = next((c["ratio"] for c in vr.get("contrast", []) if c["ink_hex"] == C.PILLAR_RED and c["ground_hex"] == C.CHARCOAL), None)
+    ok = vr.get("errors") == [] and vr.get("edition_trees_identical") == 122 and vr.get("tiles_matching_bare_geometry") == 1464
+    check_line = ("A script parsed every file: the four editions of each icon share the same elements and attributes apart from ink color, "
+                  "and every tile holds its bare export's geometry unchanged under one transform." if ok else
+                  f"The verification report lists {len(vr.get('errors', []))} problems to fix before release.")
+    packing = ("The package comes as two archives that unpack into the same folder: the SVG archive holds the vectors, the catalog page and the data files, "
+               "and the PNG archive holds the rasters and the reference crops. Each carries this readme." if split else
+               "The package is one archive.")
+    return f"""# Oath & Action Civic Line icons
 
-    def med(k):
-        v = [float(r[k]) for r in rows if r[k]]
-        return statistics.median(v) if v else float("nan")
-    states = {}
-    for r in rows:
-        states[r["state"]] = states.get(r["state"], 0) + 1
-    st_txt = ", ".join(f"{n} {s}" for s, n in sorted(states.items()))
-    u = sc["stroke_width_units"]
-    vr = C.read_json(os.path.join(C.QA, f"{C.DATE}_Civic-Line-Verify-Report.json")) or {}
-    n_tree = vr.get("edition_trees_identical", 0)
-    if n_tree == 122 and not vr.get("errors"):
-        tree_txt = "A script parsed all 122 pairs and found the same elements and attributes in each, with colour as the only difference."
-    else:
-        tree_txt = (f"A script parsed the pairs and found {n_tree} of 122 identical apart from colour; "
-                    f"the verification report lists {len(vr.get('errors', []))} problems to fix before approval.")
-    return f"""# Oath & Action Civic Line icons: review package
-
-Prepared on October 29, 2026 for Dustin Cathcart's review. This is a review copy. It moves to `deliverables/` once Dustin approves it.
+Released on October 29, 2026, after Dustin Cathcart approved the set (DR-07) and its variants (DR-08 to DR-10). {packing}
 
 ## What the package holds
 
-- `red-black/` and `black/`: 122 SVG masters in each edition, 244 in all.
-- `png-256/` and `png-512/`: transparent PNGs of every SVG at 256 and 512 px, each with `red-black/` and `black/` folders, 488 in all.
-- `contact-sheets/`: the five catalogue sheets in both editions, each as SVG, PNG and a 2x PNG.
-- `reference-crops/`: 244 untouched crops of the supplied reference sheets, one from the black sheet and one from the red sheet per icon.
-- `{os.path.basename(C.INVENTORY_JSON)}` and `.csv`: one row per icon with its ID, name, sheet, row, column, crop rectangle, file names and status.
-- `{os.path.basename(FIDELITY)}`: the measurements of each trace against its reference.
+- Four bare editions of all 122 icons: `red-black/`, `black/`, `red-newsprint/` and `newsprint/`, 488 SVGs, with transparent PNGs at 256 and 512 px in `png-256/` and `png-512/` (976 PNGs).
+- Tiles: twelve per icon in `tiles/<shape>-<tile>/`, each with `svg/`, `png-256/` and `png-512/` (1,464 SVGs and 2,928 PNGs).
+- `contact-sheets/`: the five catalogue sheets in all four editions, as SVG, PNG and 2x PNG, and `contact-sheets/tiles/`: twelve overview sheets with all 122 tiles of each kind.
+- `reference-crops/`: 244 untouched crops of the supplied reference sheets.
+- `{os.path.basename(CATALOG)}`: a searchable page with every icon, edition and tile.
+- The inventory (`{os.path.basename(C.INVENTORY_JSON)}` and `.csv`), the fidelity measurements (`{os.path.basename(FIDELITY)}`) and the contrast table (`{os.path.basename(CONTRAST)}`).
 
-## The two editions
+## The four editions
 
-The red-black edition draws each icon in Charcoal (#121212) and the parts the catalogue names in Pillar Red (#E63946). It is drawn for Newsprint (#DCD9D2) and White grounds. The black edition draws every part in Charcoal. Each black file is its red-black file with Pillar Red swapped for Charcoal, so the two share every coordinate. {tree_txt}
+| Edition | Lines | Accent | Ground it is drawn for |
+|---|---|---|---|
+| Red-black | Charcoal #121212 | Pillar Red #E63946 | Newsprint #DCD9D2 and White |
+| Black | Charcoal #121212 | Charcoal | Newsprint, White and any light ground |
+| Red-newsprint | Newsprint #DCD9D2 | Pillar Red #E63946 | Charcoal |
+| Newsprint | Newsprint #DCD9D2 | Newsprint | Charcoal and Prussian #1F2D5A, where red never sits |
 
-Inside each SVG the main drawing sits in a group with the id `base` and the coloured parts in a group with the id `accent`.
+Each edition is the red-black file with its ink colours swapped, so all four share every coordinate. {check_line} Inside each SVG the main drawing sits in the group `base` and the coloured parts in the group `accent`.
 
 ## Size, scale and stroke
 
-Every file has a transparent background. The SVGs contain no background shape, and the PNGs are transparent outside the drawing.
+Every bare file has a transparent background and a 128 by 128 viewBox. Each icon grows toward 116 of the 128 units by at most 1.25 times the set's shared scale of {sc['s_units_per_source_px']} units per source pixel (DR-08), so strokes run from {lo:.2f} to {hi:.2f} units and every icon sits centred on its own drawing.
 
-Every SVG uses a 128 by 128 viewBox with one stroke width of {u:.2f} units, measured from the sheets as {sc['W_source_px']} source pixels. One scale serves the whole set, {sc['s_units_per_source_px']} units per source pixel, so each icon keeps its size relative to the others, as on the sheets. The widest icon, {sc['largest_extent_id']}, spans 116 units, and each icon is centred on its own drawing.
+The icons read best from 48 px up. At 24 px the stroke is half a pixel wide ({lo * 24 / 128:.2f} to {hi * 24 / 128:.2f} px), and at 32 px {lo * 32 / 128:.2f} to {hi * 32 / 128:.2f} px, so fine details soften. Use below 32 px would need its own small-size drawings.
 
-The icons read best from 48 px up. At 24 px the stroke is half a pixel wide ({u * 24 / 128:.2f} px), and at 32 px it is {u * 32 / 128:.2f} px, so fine details soften. Use below 32 px would need its own small-size drawings.
+## Tiles
+
+Each icon comes in a square, a rounded square and a circle (DR-10). The rounded square is the superellipse |x|^5 + |y|^5 = 1 drawn with 96 cubic curves whose curvature runs on without a step at every join, the continuous corner of an app icon rather than a plain rounded corner. A Charcoal tile carries the Newsprint editions and a Newsprint tile the Charcoal editions, each in two-color and one-color. Names end in `-Tile-<Shape>-<Tile>-Two-Color` or `-One-Color`.
+
+In a tile the bare icon scales about the centre by {f['square']:g} (square), {f['rounded']:g} (rounded) or {f['circle']:g} (circle), chosen on a calibration board of twenty varied icons at 48, 96 and 192 px. One factor per shape keeps the line weights within the set's 25 percent spread. Every icon keeps a clear margin from every tile edge; the smallest are {m.get('square', {}).get('min_margin', 0):.1f} units on the square ({m.get('square', {}).get('min_margin_id', '')}), {m.get('rounded', {}).get('min_margin', 0):.1f} on the rounded square ({m.get('rounded', {}).get('min_margin_id', '')}) and {m.get('circle', {}).get('min_margin', 0):.1f} on the circle ({m.get('circle', {}).get('min_margin_id', '')}), out of 128.
+
+## Contrast
+
+Charcoal and Newsprint lines meet their grounds at 13.29:1. Pillar Red meets Charcoal at {red_ch:.2f}:1 and White at 4.17:1. On Newsprint it measures {red_np:.2f}:1, under the 3:1 guideline for graphics, so on the red-black edition and the Newsprint two-color tiles the red adds emphasis to a shape that the one-color editions also carry. The full table is in `{os.path.basename(CONTRAST)}`.
 
 ## Traced reconstructions and reference crops
 
-The SVGs are traced reconstructions. Each was drawn as clean vector geometry over its reference and measured against it, with one line weight across the set and true circles and straight lines where the drawing means them (decision DR-03). They are not pixel copies of the sheets. The fidelity CSV records each trace's silhouette overlap with its reference (median {med('silhouette_iou'):.3f}, where 1 means identical), the overlap of the red parts (median {med('red_iou'):.3f}) and how far its edges sit from the reference's (median of the per-icon means {med('edge_mean_px'):.2f} source pixels). Status today: {st_txt}.
+The SVGs are traced reconstructions. Each was drawn as clean vector geometry over its reference and measured against it, with one line weight across the set and true circles and straight lines where the drawing means them (DR-03). They are not pixel copies of the sheets. The fidelity table records each trace's silhouette overlap with its reference (median {med('silhouette_iou'):.3f}, where 1 means identical), the overlap of the red parts (median {med('red_iou'):.3f}) and how far its edges sit from the reference's (median of the per-icon means {med('edge_mean_px'):.2f} source pixels).
 
 The reference crops are untouched source pixels: exact copies of each icon's rectangle on the supplied sheets, kept for comparison.
 
 ## R-35
 
-R-35 is named "Term Limits · Rejected". It records an option the atlas rejected, and it keeps that name in its file names, the inventory and the contact sheets.
+R-35 is named "Term Limits · Rejected". It records an option the atlas rejected, and it keeps that name in its file names, the inventory, the sheets and the catalog.
 
 ## Contact sheets
 
-The contact sheets repeat the layout of the supplied sheets cell for cell, with the traced icons in place of the raster ones. They carry the approved Edition 06 wordmark (decision DR-05). Their text is set in Inter and converted to outlines, so the sheets need no font files.
+The contact sheets repeat the layout of the supplied sheets cell for cell, with the traced icons in place of the raster ones and the approved Edition 06 wordmark (DR-05). Their text is set in Inter and converted to outlines, so no font files are needed.
 
 ## Rights
 
@@ -98,55 +115,100 @@ Dustin Cathcart supplied the ten Civic Line reference sheets. The studio traced 
 """
 
 
-def entries():
-    """(arcname, source path or None, bytes or None) in sorted order."""
-    out = []
-    for folder in ("red-black", "black", "png-256/red-black", "png-256/black", "png-512/red-black", "png-512/black",
-                   "contact-sheets", "reference-crops"):
+def collect():
+    """(arcname, source path) for every file, grouped as vector or raster."""
+    vec, ras = [], []
+
+    def add(lst, folder, ext):
         d = os.path.join(C.ASSETS, folder)
         for f in sorted(os.listdir(d)):
             p = os.path.join(d, f)
-            if os.path.isfile(p):
-                out.append((f"{TOP}/{folder}/{f}", p, None))
-    for p in (C.INVENTORY_JSON, C.INVENTORY_CSV, FIDELITY):
-        out.append((f"{TOP}/{os.path.basename(p)}", p, None))
-    out.append((f"{TOP}/{README}", None, readme_text().encode("utf-8")))
-    return sorted(out, key=lambda e: e[0])
+            if os.path.isfile(p) and f.endswith(ext):
+                lst.append((f"{TOP}/{folder}/{f}", p))
+    for ed in C.EDITIONS:
+        add(vec, ed, ".svg")
+        for px in (256, 512):
+            add(ras, f"png-{px}/{ed}", ".png")
+    for sh in C.TILE_SHAPES:
+        for tl in C.TILE_COLOURS:
+            add(vec, f"tiles/{sh}-{tl}/svg", ".svg")
+            for px in (256, 512):
+                add(ras, f"tiles/{sh}-{tl}/png-{px}", ".png")
+    for folder in ("contact-sheets", "contact-sheets/tiles"):
+        add(vec, folder, ".svg")
+        add(ras, folder, ".png")
+    add(ras, "reference-crops", ".png")
+    vec.append((f"{TOP}/{os.path.basename(CATALOG)}", CATALOG))
+    data = [(f"{TOP}/{os.path.basename(p)}", p) for p in (C.INVENTORY_JSON, C.INVENTORY_CSV, FIDELITY, CONTRAST)]
+    return vec, ras, data
 
 
-def main():
-    os.makedirs(PKG_DIR, exist_ok=True)
-    if "—" in readme_text():
-        raise SystemExit("em dash in the readme")
-    es = entries()
-    tmp = ZIP + ".tmp"
+def write_zip(path, entries, readme):
+    tmp = path + ".tmp"
+    items = sorted(entries + [(f"{TOP}/{README}", None)], key=lambda e: e[0])
     with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
-        for arc, src, data in es:
+        for arc, src in items:
             zi = zipfile.ZipInfo(arc, date_time=STAMP)
             zi.compress_type = zipfile.ZIP_DEFLATED
             zi.external_attr = 0o644 << 16
-            z.writestr(zi, data if data is not None else open(src, "rb").read())
-    os.replace(tmp, ZIP)
-    # reopen and check
+            z.writestr(zi, readme.encode("utf-8") if src is None else open(src, "rb").read())
+    os.replace(tmp, path)
     problems = []
-    with zipfile.ZipFile(ZIP) as z:
+    with zipfile.ZipFile(path) as z:
         bad = z.testzip()
         if bad:
-            problems.append(f"corrupt entry {bad}")
-        names = z.namelist()
-        for arc, src, data in es:
-            want = data if data is not None else open(src, "rb").read()
+            problems.append(f"{os.path.basename(path)}: corrupt entry {bad}")
+        for arc, src in items:
+            want = readme.encode("utf-8") if src is None else open(src, "rb").read()
             if hashlib.sha256(z.read(arc)).digest() != hashlib.sha256(want).digest():
                 problems.append(f"{arc} differs from its source")
-    counts = {k: sum(1 for n in names if n.startswith(f"{TOP}/{k}/") and n.count("/") == k.count("/") + 2) for k in EXPECT}
-    for k, n in EXPECT.items():
-        if counts[k] != n:
-            problems.append(f"{k}: {counts[k]} files, expected {n}")
-    top_files = sorted(n.split("/", 1)[1] for n in names if n.count("/") == 1)
-    size = os.path.getsize(ZIP)
-    print(f"wrote {os.path.relpath(ZIP, C.ROOT)}: {len(names)} entries, {size / 1024 / 1024:.2f} MB")
-    print("  folders:", ", ".join(f"{k} {v}" for k, v in counts.items()))
-    print("  top level:", ", ".join(top_files))
+        names = z.namelist()
+    return names, problems
+
+
+def folder_counts(names):
+    out = {}
+    for n in names:
+        parts = n.split("/")[1:-1]
+        key = "/".join(parts) or "."
+        out[key] = out.get(key, 0) + 1
+    return out
+
+
+def main():
+    os.makedirs(DELIV, exist_ok=True)
+    vec, ras, data = collect()
+    single = os.path.join(DELIV, BASE + ".zip")
+    svg_zip, png_zip = os.path.join(DELIV, BASE + "-SVG.zip"), os.path.join(DELIV, BASE + "-PNG.zip")
+    names, problems = write_zip(single, vec + ras + data, readme_text(False))
+    outputs = [single]
+    if os.path.getsize(single) > LIMIT:
+        os.remove(single)
+        readme = readme_text(True)
+        n1, p1 = write_zip(svg_zip, vec + data, readme)
+        n2, p2 = write_zip(png_zip, ras + data, readme)
+        names, problems, outputs = n1 + n2, p1 + p2, [svg_zip, png_zip]
+    else:
+        for p in (svg_zip, png_zip):
+            if os.path.exists(p):
+                os.remove(p)
+    if "—" in readme_text(True):
+        problems.append("em dash in the readme")
+    for p in outputs:
+        size = os.path.getsize(p)
+        mb = size / 1e6
+        print(f"wrote {os.path.relpath(p, C.ROOT)}: {mb:.2f} MB ({size:,} bytes)" + ("  (OVER 90 MB)" if size > LIMIT else ""))
+        if size > LIMIT:
+            problems.append(f"{os.path.basename(p)} is over 90 MB")
+    counts = folder_counts(names)
+    expect = {ed: 122 for ed in C.EDITIONS}
+    expect.update({f"png-{px}/{ed}": 122 for px in (256, 512) for ed in C.EDITIONS})
+    expect.update({f"tiles/{sh}-{tl}/{sub}": 244 for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS for sub in ("svg", "png-256", "png-512")})
+    expect.update({"contact-sheets": 60, "contact-sheets/tiles": 36, "reference-crops": 244})
+    for k, v in expect.items():
+        if counts.get(k) != v:
+            problems.append(f"{k}: {counts.get(k)} files, expected {v}")
+    print("  folders: " + ", ".join(f"{k} {counts.get(k)}" for k in sorted(expect)))
     for p in problems:
         print("PROBLEM:", p)
     sys.exit(1 if problems else 0)

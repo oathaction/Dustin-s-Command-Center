@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-056-tile-square-newsprint-two-color" data-id="CL-056" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Investment</title>
+  <desc>Oath &amp; Action Civic Line CL-056 Public Investment: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <line x1="26.5663" y1="50.0918" x2="26.5663" y2="98.001" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="101.3153" y1="50.0918" x2="101.3153" y2="98.001" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.7163" y1="80.8496" x2="120.1653" y2="80.8496" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.5663 51.2222 A37.3745 23.856945 0 0 0 101.3153 51.2222" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.5663 51.2163 C26.5663 57.0578 22.5714 68.2612 8.6928 75.1857" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.3153 51.2163 C101.3153 57.0578 105.3102 68.2612 119.1888 75.1857" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.2549 96.9712 C38.5747 96.8529 39.8945 96.1663 41.2143 95.4443 C42.6939 94.6335 44.1735 93.8937 45.6531 93.8937 C47.1326 93.8937 48.6122 94.6335 50.0918 95.4443 C51.5714 96.2551 53.051 96.9949 54.5306 96.9949 C56.0102 96.9949 57.4898 96.2551 58.9694 95.4443 C60.449 94.6335 61.9286 93.8937 63.4082 93.8937 C64.8878 93.8937 66.3673 94.6335 67.8469 95.4443 C69.3265 96.2551 70.8061 96.9949 72.2857 96.9949 C73.7653 96.9949 75.2449 96.2551 76.7245 95.4443 C78.2041 94.6335 79.6837 93.8937 81.1633 93.8937 C82.6429 93.8937 84.1225 94.6335 85.6021 95.4443 C86.9218 96.1663 88.2416 96.8529 89.5614 96.9712" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.2549 107.7308 C38.5747 107.6125 39.8945 106.9259 41.2143 106.2039 C42.6939 105.3931 44.1735 104.6533 45.6531 104.6533 C47.1326 104.6533 48.6122 105.3931 50.0918 106.2039 C51.5714 107.0147 53.051 107.7545 54.5306 107.7545 C56.0102 107.7545 57.4898 107.0147 58.9694 106.2039 C60.449 105.3931 61.9286 104.6533 63.4082 104.6533 C64.8878 104.6533 66.3673 105.3931 67.8469 106.2039 C69.3265 107.0147 70.8061 107.7545 72.2857 107.7545 C73.7653 107.7545 75.2449 107.0147 76.7245 106.2039 C78.2041 105.3931 79.6837 104.6533 81.1633 104.6533 C82.6429 104.6533 84.1225 105.3931 85.6021 106.2039 C86.9218 106.9259 88.2416 107.6125 89.5614 107.7308" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="59.502" y="53.8204" width="8.8776" height="5.4745" rx="0.8878" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="63.9408" cy="60.6265" rx="2.9592" ry="1.8939" fill="#121212"/>
+  </g>
+  <g id="accent">
+    <path d="M59.502 53.8204 V48.0026 A9.646953 9.646953 0 1 1 68.3796 48.0026 V53.8204" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="butt" stroke-linejoin="round"/>
+    <rect x="57.8745" y="52.1929" width="12.1327" height="1.6276" fill="#E63946"/>
+    <line x1="63.9408" y1="20.0561" x2="63.9408" y2="23.3822" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="50.151" y1="24.5245" x2="53.4357" y2="27.8092" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.7306" y1="24.5245" x2="74.4459" y2="27.8092" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.7949" y1="36.7341" x2="47.902" y2="36.7341" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.9796" y1="36.7341" x2="83.0867" y2="36.7341" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

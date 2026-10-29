@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-016-tile-circle-newsprint-one-color" data-id="CL-016" width="128" height="128" viewBox="0 0 128 128">
+  <title>Lobbying</title>
+  <desc>Oath &amp; Action Civic Line CL-016 Lobbying: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="accent">
+    <path d="M54.0571 68.4353 L55.2695 62.2454 A1.827744 1.827744 0 0 1 57.0607 60.771 L74.4546 60.771 A1.827739 1.827739 0 0 1 76.2458 62.9521 L75.1735 68.4353" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base">
+    <circle cx="32.3498" cy="39.5693" r="7.0611" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.3813" cy="39.5693" r="7.0611" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.6523 73.9916 V60.0277 A8.791395 8.791395 0 0 1 29.4437 51.2363 H30.7536 A11.25884 11.25884 0 0 1 42.0124 62.4952 V68.4353" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M108.0788 73.9916 V60.0277 A8.791395 8.791395 0 0 0 99.2874 51.2363 H97.9775 A11.25884 11.25884 0 0 0 86.7187 62.4952 V68.4353" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32.6605" y="68.4353" width="63.4101" height="6.0315" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.779" y1="74.4668" x2="36.779" y2="95.9244" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.9521" y1="74.4668" x2="91.9521" y2="95.9244" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14.8035" y1="60.4237" x2="14.8035" y2="95.8635" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="113.9275" y1="60.4237" x2="113.9275" y2="95.8635" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14.8035" y1="81.924" x2="36.779" y2="81.924" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.9521" y1="81.924" x2="113.9275" y2="81.924" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

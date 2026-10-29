@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-22" data-id="R-22" width="128" height="128" viewBox="0 0 128 128">
+  <title>Wage Boards</title>
+  <desc>Oath &amp; Action Civic Line R-22 Wage Boards. Traced vector reconstruction from the Civic Line reference sheet 04, row 5, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base-1">
+    <circle cx="19.8961" cy="56.0773" r="6.2903" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.4171 92.4618 L7.4171 76.8258 A12.054445 10.320423 0 0 1 19.4716 66.5054 A12.05442 10.320401 0 0 1 31.526 76.8258 L31.526 78.6196" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="108.2833" cy="56.0773" r="6.2903" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.6534 78.6196 L96.6534 76.8258 A12.05442 10.320401 0 0 1 108.7078 66.5054 A12.054445 10.320423 0 0 1 120.7623 76.8258 L120.7623 92.4618" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64.0897" cy="41.38" r="6.4876" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M47.3175 68.3052 L47.3175 64.6039 A16.772153 12.598548 0 0 1 64.0897 52.0054 A16.772153 12.598548 0 0 1 80.8619 64.6039 L80.8619 68.3052" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.6134" y1="63.4918" x2="74.6134" y2="68.3351" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="36.3454,84.6289 43.6821,73.5192 84.4973,73.5192 91.834,84.6289" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base-2">
+    <line x1="24.5481" y1="84.6289" x2="103.6313" y2="84.6289" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.2584" y1="84.6289" x2="30.2584" y2="93.0897" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.921" y1="84.6289" x2="97.921" y2="93.0897" fill="none" stroke="#DCD9D2" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

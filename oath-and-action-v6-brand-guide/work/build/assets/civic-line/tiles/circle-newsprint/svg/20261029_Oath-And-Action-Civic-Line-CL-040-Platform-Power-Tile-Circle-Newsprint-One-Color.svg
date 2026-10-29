@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-040-tile-circle-newsprint-one-color" data-id="CL-040" width="128" height="128" viewBox="0 0 128 128">
+  <title>Platform Power</title>
+  <desc>Oath &amp; Action Civic Line CL-040 Platform Power: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <circle cx="64.0609" cy="38.4118" r="12.8246" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.776 47.2641 L30.4428 59.0529 A3.960087 3.960087 0 0 0 28.2069 62.617 L28.2069 68.9166" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M73.3458 47.2641 L97.679 59.0529 A3.960087 3.960087 0 0 1 99.9149 62.617 L99.9149 68.9166" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.0609" y1="51.2363" x2="64.0609" y2="70.3179" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="28.1338" cy="81.8996" r="6.3361" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.9907 100.9263 A11.191839 11.191839 0 1 1 39.2769 100.9263" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64.0609" cy="83.3435" r="6.3361" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.9179 102.3032 A11.19179 11.19179 0 1 1 75.204 102.3032" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="99.988" cy="81.8996" r="6.3361" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M88.845 100.9263 A11.19179 11.19179 0 1 1 111.1311 100.9263" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="64.0609" cy="38.4422" r="4.813" fill="#121212"/>
+  </g>
+  </g>
+</svg>

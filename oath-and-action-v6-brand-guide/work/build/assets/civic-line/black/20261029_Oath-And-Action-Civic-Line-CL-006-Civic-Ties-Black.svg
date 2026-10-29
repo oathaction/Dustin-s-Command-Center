@@ -3,16 +3,16 @@
   <title>Civic Ties</title>
   <desc>Oath &amp; Action Civic Line CL-006 Civic Ties. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <circle cx="64.3509" cy="41.4434" r="5.4442" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M53.1555 63.576 V58.4437 A7.822695 7.822695 0 0 1 60.9782 50.621 H67.7237 A7.822695 7.822695 0 0 1 75.5464 58.4437 V63.576" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="38.4313" cy="69.8682" r="5.1761" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M27.6696 91.6353 V86.5176 A7.603331 7.603331 0 0 1 35.2729 78.9143 H41.5896 A7.603331 7.603331 0 0 1 49.1929 86.5176 V91.6353" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="90.2706" cy="69.8682" r="5.1761" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M79.5089 91.6353 V86.5176 A7.603356 7.603356 0 0 1 87.1123 78.9143 H93.4289 A7.603356 7.603356 0 0 1 101.0323 86.5176 V91.6353" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64.4387" cy="35.8042" r="6.8053" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50.4443 63.47 V57.0546 A9.778358 9.778358 0 0 1 60.2227 47.2763 H68.6546 A9.778358 9.778358 0 0 1 78.433 57.0546 V63.47" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32.0391" cy="71.3353" r="6.4702" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.587 98.5441 V92.1471 A9.504203 9.504203 0 0 1 28.0912 82.6429 H35.987 A9.504203 9.504203 0 0 1 45.4912 92.1471 V98.5441" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.8383" cy="71.3353" r="6.4702" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M83.3861 98.5441 V92.1471 A9.504228 9.504228 0 0 1 92.8904 82.6429 H100.7862 A9.504203 9.504203 0 0 1 110.2904 92.1471 V98.5441" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M38.7286 59.5306 A23.346219 23.346219 0 0 1 50.0264 46.7511" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M78.6755 46.7511 A23.346219 23.346219 0 0 1 89.9733 59.5306" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M74.2597 85.5819 A24.369754 24.369754 0 0 1 54.4422 85.5819" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.4107 58.4132 A29.18278 29.18278 0 0 1 46.533 42.4389" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.3443 42.4389 A29.18278 29.18278 0 0 1 96.4666 58.4132" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.8246 90.9773 A30.462208 30.462208 0 0 1 52.0527 90.9773" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

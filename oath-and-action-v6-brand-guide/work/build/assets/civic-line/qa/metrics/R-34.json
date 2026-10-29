@@ -1,10 +1,10 @@
 {
   "id": "R-34",
   "label": "Participatory Budgeting",
-  "built": "2026-10-29T10:45:20+00:00",
+  "built": "2026-10-29T20:12:39+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.908,
   "silhouette_iou_4x": 0.9147,
   "red_iou_1x": 0.793,
@@ -54,11 +54,12 @@
   "bake_check_iou_1x": 1.0,
   "bake_check_max_diff_levels_4x": 10,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    18.097,
-    38.714,
-    109.708,
-    89.369
+    6.621,
+    32.392,
+    121.135,
+    95.711
   ],
   "export_inside_0_128": true,
   "elements": 16,

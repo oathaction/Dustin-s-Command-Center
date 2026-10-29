@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-001-tile-circle-newsprint-two-color" data-id="CL-001" width="128" height="128" viewBox="0 0 128 128">
+  <title>Voting</title>
+  <desc>Oath &amp; Action Civic Line CL-001 Voting: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <rect x="21.8891" y="67.2046" width="83.8442" height="30.3099" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="21.8891,67.2046 38.5641,48.708 58.1513,48.708" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="87.8214,48.708 89.0582,48.708 105.7332,67.2046" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.9874" y1="57.9076" x2="74.1317" y2="30.717" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.9534" y1="54.2826" x2="72.7366" y2="57.9076" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46.1796" y1="57.9076" x2="81.138" y2="57.9076" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="72.9437,32.0573 74.1317,30.717 87.9067,40.8183 75.9534,54.2826" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

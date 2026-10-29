@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-06-tile-circle-charcoal-one-color" data-id="R-06" width="128" height="128" viewBox="0 0 128 128">
+  <title>On-Cycle Elections</title>
+  <desc>Oath &amp; Action Civic Line R-06 On-Cycle Elections: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <rect x="7.4082" y="47.4633" width="41.965" height="38.5606" rx="1.8884" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.4082" y1="58.0112" x2="49.3732" y2="58.0112" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="17.3464" y1="41.7981" x2="17.3464" y2="51.8605" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.435" y1="41.7981" x2="39.435" y2="51.8605" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="78.5728" y="47.4633" width="41.965" height="38.5606" rx="1.8884" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.5728" y1="58.0112" x2="120.5379" y2="58.0112" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.5111" y1="41.7981" x2="88.5111" y2="51.8605" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="110.5996" y1="41.7981" x2="110.5996" y2="51.8605" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="14.843" y="64.8902" width="4.4781" height="6.0967" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="37.4603" y="64.8902" width="4.4781" height="6.0967" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="15.0588" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="37.6761" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="86.0076" y="64.8902" width="4.4781" height="6.0967" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="108.6249" y="64.8902" width="4.4781" height="6.0967" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="86.2234" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="108.8408" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#DCD9D2"/>
+  </g>
+  <g id="accent">
+    <rect x="23.9395" y="64.6474" width="8.9023" height="6.5823" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="24.9646" y="74.2674" width="6.8521" height="5.3684" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="95.1042" y="64.6474" width="8.9023" height="6.5823" rx="1.0791" fill="#DCD9D2"/>
+    <rect x="96.1293" y="74.2674" width="6.8521" height="5.3684" rx="1.0791" fill="#DCD9D2"/>
+    <line x1="56.3116" y1="66.2768" x2="71.9851" y2="66.2768" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.4765,60.1531 71.9851,66.2768 66.4765,72.4006" fill="none" stroke="#DCD9D2" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

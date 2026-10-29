@@ -1,10 +1,10 @@
 {
   "id": "R-49",
   "label": "Cross-Party Civic Work",
-  "built": "2026-10-29T10:45:29+00:00",
+  "built": "2026-10-29T20:12:48+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.520179,
+  "stroke_units": 2.861,
   "silhouette_iou_1x": 0.8336,
   "silhouette_iou_4x": 0.8396,
   "red_iou_1x": 0.7431,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 6,
+  "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    9.456,
-    41.57,
-    117.813,
-    86.235
+    5.787,
+    40.061,
+    121.433,
+    87.731
   ],
   "export_inside_0_128": true,
   "elements": 19,

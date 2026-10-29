@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-013-tile-square-newsprint-one-color" data-id="CL-013" width="128" height="128" viewBox="0 0 128 128">
+  <title>Incumbent Defeat</title>
+  <desc>Oath &amp; Action Civic Line CL-013 Incumbent Defeat: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M29.0903 68.1855 V33.9643 A6.518905 6.518905 0 0 1 35.6092 27.4454 H56.9328 A6.518905 6.518905 0 0 1 63.4517 33.9643 V68.1855 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.0903 61.8676 A3.04621 3.04621 0 0 0 26.0441 58.8214 H21.9378 V74.0099 A3.655457 3.655457 0 0 0 25.5933 77.6653 H66.9487 A3.655457 3.655457 0 0 0 70.6042 74.0099 V58.8214 H66.4979 A3.04621 3.04621 0 0 0 63.4517 61.8676" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46.271" y1="77.6653" x2="46.271" y2="100.3719" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M30.388 100.3719 V95.7294 A2.741599 2.741599 0 0 1 33.1296 92.9878 H59.4124 A2.741599 2.741599 0 0 1 62.154 95.7294 V100.3719" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="80.5288" y1="59.2601" x2="106.0378" y2="59.2601" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="97.3256,50.3712 106.0378,59.2601 97.3256,68.149" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

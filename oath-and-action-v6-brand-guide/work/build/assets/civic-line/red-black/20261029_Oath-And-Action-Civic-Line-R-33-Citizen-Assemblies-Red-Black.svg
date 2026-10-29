@@ -3,20 +3,20 @@
   <title>Citizen Assemblies</title>
   <desc>Oath &amp; Action Civic Line R-33 Citizen Assemblies. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="accent">
-    <circle cx="63.8782" cy="45.0891" r="5.3613" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M54.4276 66.7928 V60.442 A9.450586 7.910418 0 0 1 63.8782 52.5316 A9.450561 7.910397 0 0 1 73.3287 60.442 V66.7928" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="63.8477" cy="40.3613" r="6.7017" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.0344 67.491 V59.5525 A11.813247 9.888035 0 0 1 63.8477 49.6645 A11.813222 9.888014 0 0 1 75.6609 59.5525 V67.491" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="base">
-    <circle cx="39.6205" cy="51.5081" r="5.1176" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.6012 59.0822 A9.133759 6.097296 0 0 1 48.379 63.3176" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="88.1358" cy="51.5081" r="5.1176" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M94.1551 59.0822 A9.133759 6.097296 0 0 0 79.3773 63.3176" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="30.6378" cy="68.9227" r="5.3613" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20.4415 87.858 V84.1538 A10.196316 8.914466 0 0 1 30.6378 75.2393 A10.196316 8.914466 0 0 1 40.8341 84.1538 V87.858" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="97.1185" cy="68.9227" r="5.3613" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M86.9222 87.858 V84.1538 A10.196316 8.914466 0 0 1 97.1185 75.2393 A10.196316 8.914466 0 0 1 107.3148 84.1538 V87.858" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="63.8782" cy="71.1306" rx="21.2748" ry="4.8496" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.764" y1="74.5277" x2="47.955" y2="85.9815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="78.9923" y1="74.5277" x2="79.8013" y2="85.9815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="33.5256" cy="48.3851" r="6.3971" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.0015 57.8527 A11.417219 7.621633 0 0 1 44.4737 63.1471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="94.1698" cy="48.3851" r="6.3971" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.6939 57.8527 A11.41726 7.621661 0 0 0 83.2216 63.1471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="22.2972" cy="70.1534" r="6.7017" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.5519 93.8225 V89.1922 A12.745343 11.143036 0 0 1 22.2972 78.0492 A12.745368 11.143058 0 0 1 35.0426 89.1922 V93.8225" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="105.3981" cy="70.1534" r="6.7017" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.6527 93.8225 V89.1922 A12.745368 11.143058 0 0 1 105.3981 78.0492 A12.745368 11.143058 0 0 1 118.1435 89.1922 V93.8225" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="63.8477" cy="72.9132" rx="26.5935" ry="6.062" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.955" y1="77.1597" x2="43.9437" y2="91.4769" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="82.7403" y1="77.1597" x2="83.7517" y2="91.4769" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

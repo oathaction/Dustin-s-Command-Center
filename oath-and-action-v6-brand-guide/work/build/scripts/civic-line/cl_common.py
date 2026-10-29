@@ -31,6 +31,30 @@ NEWSPRINT = "#DCD9D2"
 VIEW = 128.0          # export viewBox size
 FILL_EXTENT = 116.0   # the largest pictogram extent maps to this many units
 CROP_MARGIN = 8       # source px around the pictogram ink box
+FRAMING_CAP = 1.25    # DR-08: an icon grows toward FILL_EXTENT by at most this times the shared scale
+
+# The four bare editions (DR-07, DR-09). Each is the red-black file with its ink
+# colours swapped; mask colours (#FFFFFF, #000000) are mask semantics and stay.
+EDITIONS = {
+    "red-black": {"suffix": "Red-Black", "ink": "#121212", "accent": "#E63946", "ground": "light"},
+    "black": {"suffix": "Black", "ink": "#121212", "accent": "#121212", "ground": "light"},
+    "red-newsprint": {"suffix": "Red-Newsprint", "ink": "#DCD9D2", "accent": "#E63946", "ground": "dark"},
+    "newsprint": {"suffix": "Newsprint", "ink": "#DCD9D2", "accent": "#DCD9D2", "ground": "dark"},
+}
+EDITION_COLOURS = {k: sorted({v["ink"], v["accent"]}) for k, v in EDITIONS.items()}
+
+# Tiles (DR-10): three shapes, two tile colours, two colour modes. A Charcoal
+# tile carries the light editions, a Newsprint tile the dark ones.
+TILE_SHAPES = ["square", "rounded", "circle"]
+TILE_COLOURS = ["charcoal", "newsprint"]
+TILE_MODES = ["two-color", "one-color"]
+TILE_EDITION = {("charcoal", "two-color"): "red-newsprint", ("charcoal", "one-color"): "newsprint",
+                ("newsprint", "two-color"): "red-black", ("newsprint", "one-color"): "black"}
+TILE_FILL = {"charcoal": "#121212", "newsprint": "#DCD9D2"}
+# One uniform factor per shape, applied to the option-3 icon box; chosen on the
+# calibration board (qa/<date>_Civic-Line-Tile-Calibration.png).
+TILE_FACTORS = {"square": 0.68, "rounded": 0.66, "circle": 0.62}
+TILE_SAFE_MARGIN = 12.0   # units of 128: the least clearance ink may keep from any tile edge
 
 SHEETS = {
     "01": {"black": f"{DATE}_Oath-And-Action-Civic-Line-01-Participation-Black.png",
@@ -108,14 +132,40 @@ def parse_catalog(path=CATALOG):
 
 def export_names(icon_id, slug):
     base = f"{DATE}_Oath-And-Action-Civic-Line-{icon_id}-{slug}"
-    return {
-        "svg_red_black": f"{base}-Red-Black.svg",
-        "svg_black": f"{base}-Black.svg",
-        "png_red_black": f"{base}-Red-Black.png",
-        "png_black": f"{base}-Black.png",
-        "ref_black": f"{base}-Reference-Black.png",
-        "ref_red": f"{base}-Reference-Red.png",
-    }
+    out = {"ref_black": f"{base}-Reference-Black.png", "ref_red": f"{base}-Reference-Red.png"}
+    for ed, e in EDITIONS.items():
+        key = ed.replace("-", "_")
+        out[f"svg_{key}"] = f"{base}-{e['suffix']}.svg"
+        out[f"png_{key}"] = f"{base}-{e['suffix']}.png"
+    return out
+
+
+def edition_file(row, edition, kind="svg", size=None):
+    """Path of a bare export: kind 'svg', or 'png' with size 256 or 512."""
+    key = f"{kind}_{edition.replace('-', '_')}"
+    name = export_names(row["id"], row["slug"])[key]
+    if kind == "svg":
+        return os.path.join(ASSETS, edition, name)
+    return os.path.join(ASSETS, f"png-{size}", edition, name)
+
+
+def tile_name(icon_id, slug, shape, tile, mode):
+    sh = {"square": "Square", "rounded": "Rounded", "circle": "Circle"}[shape]
+    md = {"two-color": "Two-Color", "one-color": "One-Color"}[mode]
+    return f"{DATE}_Oath-And-Action-Civic-Line-{icon_id}-{slug}-Tile-{sh}-{tile.capitalize()}-{md}"
+
+
+def tile_file(row, shape, tile, mode, kind="svg", size=None):
+    base = tile_name(row["id"], row["slug"], shape, tile, mode)
+    folder = os.path.join(ASSETS, "tiles", f"{shape}-{tile}")
+    if kind == "svg":
+        return os.path.join(folder, "svg", base + ".svg")
+    return os.path.join(folder, f"png-{size}", base + ".png")
+
+
+def framed_scale(extent_px, s_shared):
+    """DR-08 capped fit: grow toward FILL_EXTENT, by at most FRAMING_CAP times the shared scale."""
+    return min(FILL_EXTENT / extent_px, FRAMING_CAP * s_shared)
 
 
 # ---------------------------------------------------------------- pixel rules

@@ -3,18 +3,18 @@
   <title>Drug-Pricing Rules</title>
   <desc>Oath &amp; Action Civic Line R-19 Drug-Pricing Rules. Traced vector reconstruction from the Civic Line reference sheet 04, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base-1">
-    <path d="M27.9913 68.4207 L53.2481 43.4271 A11.161337 11.161337 0 0 1 69.0348 43.5099 A11.161337 11.161337 0 0 1 68.9519 59.2966 L43.6951 84.2903 A11.161337 11.161337 0 0 1 27.9084 84.2074 A11.161337 11.161337 0 0 1 27.9913 68.4207 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="39.406" y1="57.1229" x2="45.4741" y2="63.2592" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M18.9891 69.5258 L50.5601 38.2838 A13.951683 13.951683 0 0 1 70.2935 38.3874 A13.951683 13.951683 0 0 1 70.1899 58.1208 L38.6189 89.3628 A13.951683 13.951683 0 0 1 18.8855 89.2593 A13.951718 13.951718 0 0 1 18.9891 69.5258 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.2575" y1="55.4036" x2="40.8426" y2="63.0739" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="45.4741" y1="63.2592" x2="54.1692" y2="72.0371" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M85.7134 53.8524 L93.463 53.8524 L103.2255 62.5866 L103.2255 84.2318 A1.462168 1.462168 0 0 1 101.7634 85.694 L77.4277 85.694 A1.462193 1.462193 0 0 1 75.9655 84.2318 L75.9655 62.5866 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M92.6588 67.1973 A3.338646 3.241167 0 1 0 89.5639 71.6521 A3.338669 3.24119 0 1 1 86.4689 76.1069" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="89.5639" y1="60.5882" x2="89.5639" y2="65.1697" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="89.5639" y1="78.1345" x2="89.5639" y2="80.3034" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.8426" y1="63.0739" x2="51.7115" y2="74.0464" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M91.1418 51.3155 L100.8288 51.3155 L113.032 62.2332 L113.032 89.2897 A1.827766 1.827766 0 0 1 111.2042 91.1175 L80.7847 91.1175 A1.827766 1.827766 0 0 1 78.9569 89.2897 L78.9569 62.2332 Z" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M99.8235 67.9966 A4.173325 4.051476 0 1 0 95.9548 73.5651 A4.173325 4.051476 0 1 1 92.0861 79.1336" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.9548" y1="59.7353" x2="95.9548" y2="65.4622" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.9548" y1="81.6681" x2="95.9548" y2="84.3792" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="base-2">
-    <path d="M72.0713 47.063 A11.853449 11.853449 0 0 1 85.0506 54.1303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="89.559" cy="59.9449" r="1.9788" fill="#121212"/>
+    <path d="M74.0891 42.8288 A14.81679 14.81679 0 0 1 90.3132 51.6628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="95.9488" cy="58.9311" r="2.4735" fill="#121212"/>
   </g>
 </svg>

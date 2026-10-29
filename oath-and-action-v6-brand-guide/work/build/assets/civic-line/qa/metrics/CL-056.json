@@ -1,10 +1,10 @@
 {
   "id": "CL-056",
   "label": "Public Investment",
-  "built": "2026-10-29T10:44:19+00:00",
+  "built": "2026-10-29T20:11:29+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.591837,
+  "stroke_units": 3.2551,
   "silhouette_iou_1x": 0.923,
   "silhouette_iou_4x": 0.9181,
   "red_iou_1x": 0.898,
@@ -49,16 +49,17 @@
     "iou": 0.923
   },
   "ink_area_ratio_trace_over_reference": 0.968,
-  "bake_check_iou_4x": 1.0,
-  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_4x": 0.9999,
+  "bake_check_iou_4x_raw": 0.9999,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 9,
+  "bake_check_max_diff_levels_4x": 44,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    16.308,
-    26.471,
-    111.594,
-    101.373
+    6.089,
+    18.429,
+    121.793,
+    109.382
   ],
   "export_inside_0_128": true,
   "elements": 17,

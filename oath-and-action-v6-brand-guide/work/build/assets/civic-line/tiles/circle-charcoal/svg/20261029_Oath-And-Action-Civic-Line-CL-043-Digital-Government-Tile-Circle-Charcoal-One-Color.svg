@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-043-tile-circle-charcoal-one-color" data-id="CL-043" width="128" height="128" viewBox="0 0 128 128">
+  <title>Digital Government</title>
+  <desc>Oath &amp; Action Civic Line CL-043 Digital Government: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <polygon points="29.2566,45.1571 51.5795,29.3131 73.9024,45.1571" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.5005" y1="45.1571" x2="33.5005" y2="93.0849" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69.8" y1="45.1571" x2="69.8" y2="49.7971" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="33.5005,60.2088 12.1112,60.2088 12.1112,93.0849" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.4146" y1="93.0849" x2="58.7376" y2="93.0849" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45.6833 93.0849 V77.241 A2.263408 2.263408 0 0 1 47.9467 74.9776 H54.9237 A2.263408 2.263408 0 0 1 57.1871 77.241 V93.0849" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.3083" y1="54.8615" x2="44.3083" y2="61.199" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.1922" y1="54.8615" x2="53.1922" y2="61.199" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="23.7961" y1="70.5073" x2="23.7961" y2="76.8449" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="63.4907" y="54.3126" width="56.7325" height="44.4026" rx="2.7727" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="102.2517" cy="60.254" r="2.122" fill="#DCD9D2"/>
+    <circle cx="111.1922" cy="60.254" r="2.122" fill="#DCD9D2"/>
+    <line x1="71.0732" y1="65.6693" x2="114.361" y2="65.6693" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.0732" y1="75.0342" x2="94.839" y2="75.0342" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.0732" y1="82.1922" x2="88.1054" y2="82.1922" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.0732" y1="89.3503" x2="83.5785" y2="89.3503" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="96.7912" y="82.6449" width="14.8254" height="7.0166" fill="#DCD9D2" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-15-tile-circle-newsprint-two-color" data-id="R-15" width="128" height="128" viewBox="0 0 128 128">
+  <title>Watchdog Remedies</title>
+  <desc>Oath &amp; Action Civic Line R-15 Watchdog Remedies: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <circle cx="48.7933" cy="56.7926" r="22.871" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.0147" y1="72.3588" x2="26.9823" y2="77.3912" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.9928 79.4017 A1.218467 1.218467 0 0 1 28.9928 81.1258 L17.5878 92.5309 A4.064627 4.064627 0 0 1 11.8365 86.7857 L23.2477 75.3746 A1.218467 1.218467 0 0 1 24.9718 75.3746 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.7027 42.6338 L115.6091 42.6338 A2.010503 2.010503 0 0 1 117.6196 44.6443 L117.6196 81.6803 A2.010503 2.010503 0 0 1 115.6091 83.6908 L62.5683 83.6908" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.145" y1="53.2956" x2="107.5305" y2="53.2956" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.145" y1="63.0618" x2="107.5305" y2="63.0618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.4964" y1="72.7487" x2="95.6807" y2="72.7487" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="38.1071,56.6221 45.9237,64.6641 59.4916,49.2868" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

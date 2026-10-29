@@ -3,17 +3,17 @@
   <title>Stock Ownership</title>
   <desc>Oath &amp; Action Civic Line CL-058 Stock Ownership. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="accent">
-    <rect x="100.2476" y="47.4529" width="5.1176" height="34.2151" fill="#121212" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="55.2025" cy="70.8966" r="4.9714" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="109.1671" y="43.3811" width="6.377" height="42.6346" fill="#121212" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="53.0377" cy="72.5937" r="6.1948" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="base">
-    <path d="M52.1076 81.2294 H20.7291 A1.754636 1.754636 0 0 1 18.9744 79.4748 V43.4855 A1.754636 1.754636 0 0 1 20.7291 41.7309 H65.0333 A1.754611 1.754611 0 0 1 66.7879 43.4855 V79.4748 A1.754611 1.754611 0 0 1 65.0333 81.2294 H58.2975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="27.8694" y1="50.5382" x2="57.9807" y2="50.5382" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="27.8694" y1="59.0724" x2="57.9807" y2="59.0724" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="27.8694" y1="67.6067" x2="41.5798" y2="67.6067" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="52.1076,81.2294 52.1076,86.1765 55.2025,84.1294 58.2975,86.1765 58.2975,81.2294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="72.5538" y1="83.0084" x2="109.1328" y2="83.0084" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="76.0484,83.0084 76.0484,66.0958 81.8825,66.0958 81.8825,83.0084" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="87.9701,83.0084 87.9701,58.7849 93.7993,58.7849 93.7993,83.0084" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M49.1811 85.4691 H10.0812 A2.186369 2.186369 0 0 1 7.8949 83.2827 V38.4375 A2.186369 2.186369 0 0 1 10.0812 36.2511 H65.2875 A2.186394 2.186394 0 0 1 67.4739 38.4375 V83.2827 A2.186394 2.186394 0 0 1 65.2875 85.4691 H56.8942" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.9786" y1="47.2255" x2="56.4995" y2="47.2255" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.9786" y1="57.8599" x2="56.4995" y2="57.8599" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.9786" y1="68.4942" x2="36.0628" y2="68.4942" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="49.1811,85.4691 49.1811,91.6335 53.0377,89.0827 56.8942,91.6335 56.8942,85.4691" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.6586" y1="87.6859" x2="120.2388" y2="87.6859" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="79.0132,87.6859 79.0132,66.6115 86.2829,66.6115 86.2829,87.6859" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="93.8685,87.6859 93.8685,57.5016 101.1322,57.5016 101.1322,87.6859" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

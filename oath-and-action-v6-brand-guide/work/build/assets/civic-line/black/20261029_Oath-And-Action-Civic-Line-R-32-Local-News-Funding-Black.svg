@@ -3,23 +3,23 @@
   <title>Local-News Funding</title>
   <desc>Oath &amp; Action Civic Line R-32 Local-News Funding. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M28.0156 46.3076 H24.1945 A2.563699 2.563699 0 0 0 21.6308 48.8713 V82.5113 A3.119314 3.119314 0 0 0 24.7501 85.6306 H72.3198 A2.436988 2.436988 0 0 0 74.7568 83.1936 V44.6845 A2.436963 2.436963 0 0 0 72.3198 42.2476 H30.4039 A2.388243 2.388243 0 0 0 28.0156 44.6358 V85.6306" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.5849" y1="49.963" x2="67.2168" y2="49.963" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.5849" y1="57.001" x2="67.2168" y2="57.001" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.5849" y1="64.039" x2="48.5496" y2="64.039" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.5849" y1="71.077" x2="48.5496" y2="71.077" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.5849" y1="78.115" x2="48.5496" y2="78.115" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.2487 69.142 A7.798332 2.57345 0 0 0 74.9664 71.2476 A7.79827 2.573429 0 0 0 87.2487 73.3531" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M74.9664 77.1938 A7.79827 2.573429 0 0 0 87.2487 79.2993" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M74.9664 83.14 A7.79827 2.573429 0 0 0 87.2487 85.2455" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="96.8017" cy="61.602" rx="9.5529" ry="3.7237" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="87.2487,61.602 87.2487,81.9703" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="106.3546,61.602 106.3546,81.9703" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.2487 68.3914 A9.55295 3.723701 0 0 0 106.3546 68.3914" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.2487 75.1808 A9.55295 3.723701 0 0 0 106.3546 75.1808" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.2487 81.9703 A9.55295 3.723701 0 0 0 106.3546 81.9703" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.0195 41.8844 H14.243 A3.204637 3.204637 0 0 0 11.0384 45.0891 V87.1391 A3.899156 3.899156 0 0 0 14.9376 91.0382 H74.3998 A3.04621 3.04621 0 0 0 77.446 87.992 V39.8557 A3.046235 3.046235 0 0 0 74.3998 36.8094 H22.0048 A2.985298 2.985298 0 0 0 19.0195 39.7947 V91.0382" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.4811" y1="46.4538" x2="68.021" y2="46.4538" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.4811" y1="55.2513" x2="68.021" y2="55.2513" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.4811" y1="64.0487" x2="44.687" y2="64.0487" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.4811" y1="72.8462" x2="44.687" y2="72.8462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.4811" y1="81.6437" x2="44.687" y2="81.6437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.0609 70.4275 A9.747926 3.216816 0 0 0 77.708 73.0595 A9.747864 3.216795 0 0 0 93.0609 75.6914" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.708 80.4922 A9.747926 3.216816 0 0 0 93.0609 83.1242" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.708 87.925 A9.747864 3.216795 0 0 0 93.0609 90.5569" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="105.0021" cy="61.0025" rx="11.9412" ry="4.6546" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="93.0609,61.0025 93.0609,86.4628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="116.9433,61.0025 116.9433,86.4628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.0609 69.4893 A11.941199 4.654631 0 0 0 116.9433 69.4893" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.0609 77.9761 A11.941199 4.654631 0 0 0 116.9433 77.9761" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.0609 86.4628 A11.941199 4.654631 0 0 0 116.9433 86.4628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <rect x="54.1546" y="61.9286" width="14.4269" height="12.9793" rx="0.9748" fill="#121212"/>
+    <rect x="51.6933" y="61.4107" width="18.0336" height="16.2242" rx="1.2185" fill="#121212"/>
   </g>
 </svg>

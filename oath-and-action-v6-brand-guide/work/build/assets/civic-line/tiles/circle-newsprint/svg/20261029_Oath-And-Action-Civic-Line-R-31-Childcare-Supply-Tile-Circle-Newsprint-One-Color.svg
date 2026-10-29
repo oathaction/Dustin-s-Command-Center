@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-31-tile-circle-newsprint-one-color" data-id="R-31" width="128" height="128" viewBox="0 0 128 128">
+  <title>Childcare Supply</title>
+  <desc>Oath &amp; Action Civic Line R-31 Childcare Supply: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="accent">
+    <path d="M50.6868 93.5651 V78.8599 A8.851699 8.851699 0 0 1 68.3902 78.8599 V93.5651 Z" fill="#121212"/>
+  </g>
+  <g id="base">
+    <line x1="7.6359" y1="93.5651" x2="83.4821" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="8.4568,64.0357 28.7538,64.0357" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10.3723" y1="64.0357" x2="10.3723" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.754" y1="73.2205" x2="18.754" y2="78.7231" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.0513" y1="73.2205" x2="29.0513" y2="78.7231" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.0933" y1="61.1863" x2="38.0933" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.9836" y1="61.1863" x2="80.9836" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="52.8045,44.976 33.5485,57.3077 33.5485,61.1863 85.5284,61.1863 85.5284,57.3077 66.2724,44.976" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="59.5385" cy="41.96" r="7.3764" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="105.641" cy="58.9436" r="7.2574" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M90.5908 93.5651 V82.1436 A11.927192 11.927192 0 0 1 102.518 70.2164 H108.7641 A11.927192 11.927192 0 0 1 120.6913 82.1436 V93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.64" y1="83.958" x2="97.64" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="113.6421" y1="83.958" x2="113.6421" y2="93.5651" fill="none" stroke="#121212" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

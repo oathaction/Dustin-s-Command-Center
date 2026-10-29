@@ -3,28 +3,28 @@
   <title>Assets &amp; Debt</title>
   <desc>Oath &amp; Action Civic Line CL-062 Assets &amp; Debt. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <ellipse cx="30.5428" cy="64.5264" rx="9.2386" ry="3.9966" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21.3042 71.1321 A9.23855 4.000851 0 0 0 39.7813 71.1321" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21.3042 77.7377 A9.23855 4.000851 0 0 0 39.7813 77.7377" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21.3042 84.3434 A9.23855 4.000851 0 0 0 39.7813 84.3434" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="21.3042" y1="64.5264" x2="21.3042" y2="84.3434" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="49.9557" cy="46.366" rx="10.1744" ry="3.9966" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 52.9288 A10.174399 4.000483 0 0 0 60.1301 52.9288" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 59.4916 A10.174399 4.000483 0 0 0 60.1301 59.4916" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 66.0544 A10.174399 4.000483 0 0 0 60.1301 66.0544" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 72.6171 A10.174399 4.000483 0 0 0 60.1301 72.6171" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 79.1799 A10.174399 4.000483 0 0 0 60.1301 79.1799" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.7813 85.7427 A10.174399 4.000483 0 0 0 60.1301 85.7427" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="39.7813" y1="46.366" x2="39.7813" y2="85.7427" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="60.1301" y1="46.366" x2="60.1301" y2="85.7427" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M106.9492 65.584 V40.0397 A1.803356 1.803356 0 0 0 105.1459 38.2363 H69.7659 A1.803381 1.803381 0 0 0 67.9625 40.0397 V80.2692 A1.803381 1.803381 0 0 0 69.7659 82.0726 H85.3723" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.4286" y1="47.2141" x2="98.4832" y2="47.2141" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.4286" y1="55.7045" x2="98.4832" y2="55.7045" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.4286" y1="64.1901" x2="85.0798" y2="64.1901" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.4286" y1="72.6805" x2="80.6933" y2="72.6805" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="22.1784" cy="64.658" rx="11.5482" ry="4.9958" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.6302 72.9151 A11.54825 5.001091 0 0 0 33.7267 72.9151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.6302 81.1722 A11.54825 5.001091 0 0 0 33.7267 81.1722" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.6302 89.4292 A11.54825 5.001091 0 0 0 33.7267 89.4292" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10.6302" y1="64.658" x2="10.6302" y2="89.4292" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="46.4446" cy="41.9576" rx="12.718" ry="4.9958" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 50.161 A12.717949 5.000584 0 0 0 59.1626 50.161" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 58.3645 A12.717949 5.000584 0 0 0 59.1626 58.3645" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 66.568 A12.717949 5.000584 0 0 0 59.1626 66.568" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 74.7714 A12.717949 5.000584 0 0 0 59.1626 74.7714" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 82.9749 A12.717949 5.000584 0 0 0 59.1626 82.9749" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7267 91.1784 A12.717949 5.000584 0 0 0 59.1626 91.1784" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.7267" y1="41.9576" x2="33.7267" y2="91.1784" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.1626" y1="41.9576" x2="59.1626" y2="91.1784" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M117.6866 65.98 V34.0496 A2.254201 2.254201 0 0 0 115.4324 31.7954 H71.2074 A2.254201 2.254201 0 0 0 68.9532 34.0496 V84.3366 A2.254201 2.254201 0 0 0 71.2074 86.5908 H90.7153" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.5357" y1="43.0176" x2="107.104" y2="43.0176" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.5357" y1="53.6307" x2="107.104" y2="53.6307" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.5357" y1="64.2376" x2="90.3498" y2="64.2376" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.5357" y1="74.8506" x2="84.8666" y2="74.8506" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="97.3719" cy="73.6455" r="8.8218" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="93.5703" y1="73.6455" x2="101.1736" y2="73.6455" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="105.7149" cy="76.0569" r="11.0273" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.9628" y1="76.0569" x2="110.467" y2="76.0569" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

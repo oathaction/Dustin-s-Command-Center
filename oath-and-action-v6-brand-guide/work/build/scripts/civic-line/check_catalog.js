@@ -87,7 +87,10 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
         return { title: d.querySelector('h2').textContent, imgNatural: [img.naturalWidth, img.naturalHeight],
           imgShown: [Math.round(r1.width), Math.round(r1.height)], svgShown: [Math.round(r2.width), Math.round(r2.height)],
           dialogScroll: d.scrollWidth - d.clientWidth, raised: getComputedStyle(d).backgroundColor,
-          corrections: d.querySelectorAll('ol.corr li').length };
+          corrections: d.querySelectorAll('ol.corr li').length,
+          specimens: d.querySelectorAll('.spec').length,
+          specSizes: [...new Set([...d.querySelectorAll('.spec svg')].map((v) => Math.round(v.getBoundingClientRect().width)))],
+          tileStages: [...d.querySelectorAll('.spec.on-stage .stage')].slice(0, 4).map((v) => getComputedStyle(v).backgroundColor) };
       });
       const scrollDetail = await hscroll(page);
       await page.screenshot({ path: path.join(outDir, `${tag}-detail.png`) });
@@ -123,10 +126,45 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
       const el = document.querySelector('[data-id="CL-021"] svg [id$="accent"] path');
       return getComputedStyle(el).stroke;
     });
-    F.accentRedBlack = await accentStroke();
-    await page.click('label:has(#ed-bk)');
-    F.accentBlack = await accentStroke();
+    const look = () => page.evaluate(() => {
+      const acc = document.querySelector('[data-id="CL-021"] svg [id$="accent"] path');
+      const base = document.querySelector('[data-id="CL-021"] svg [id$="base"] path');
+      return { accent: getComputedStyle(acc).stroke, ink: getComputedStyle(base).stroke,
+        tile: getComputedStyle(document.querySelector('[data-id="CL-021"] .tile')).backgroundColor };
+    });
+    F.editions = {};
+    for (const [id, ed] of [['ed-rb', 'red-black'], ['ed-bk', 'black'], ['ed-rn', 'red-newsprint'], ['ed-nw', 'newsprint']]) {
+      await page.click(`label:has(#${id})`);
+      F.editions[ed] = await look();
+    }
+    F.accentRedBlack = F.editions['red-black'].accent;
+    F.accentBlack = F.editions['black'].accent;
+    // holders: the chosen shape shows, the glyph scales by its factor, the stage takes the opposite colour
+    const glyphBox = () => page.evaluate(() => {
+      const g = document.querySelector('[data-id="CL-021"] .glyph').getBoundingClientRect();
+      const shown = [...document.querySelectorAll('[data-id="CL-021"] .hold')].filter((u) => getComputedStyle(u).display !== 'none').map((u) => u.getAttribute('href'));
+      const fill = shown.length ? getComputedStyle(document.querySelector('[data-id="CL-021"] .hold[href="' + shown[0] + '"]')).fill : null;
+      return { w: g.width, shown, fill, stage: getComputedStyle(document.querySelector('[data-id="CL-021"] .tile')).backgroundColor };
+    });
+    await page.click('label:has(#ed-rn)');
+    await page.click('label:has(#ho-none)');
+    F.holderNone = await glyphBox();
+    F.holders = {};
+    for (const h of ['square', 'rounded', 'circle']) {
+      await page.click(`label:has(#ho-${h})`);
+      F.holders[h] = await glyphBox();
+    }
+    await page.click('label:has(#ho-rounded)');
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: path.join(outDir, '1440-light-red-newsprint-rounded.png') });
+    await page.click('[data-open="CL-021"]');
+    await page.waitForSelector('dialog[open] .spec');
+    await page.evaluate(() => { const v = document.querySelector('dialog[open] .variants'); v.scrollIntoView(); });
+    await page.screenshot({ path: path.join(outDir, '1440-light-detail-variants.png') });
+    await page.keyboard.press('Escape');
     await page.click('label:has(#ed-rb)');
+    F.holderRoundedRedBlack = (await (async () => { await page.click('label:has(#ho-rounded)'); return glyphBox(); })());
+    await page.click('label:has(#ho-none)');
     await page.click('.seg label:has(input[value="128"])');
     F.size128 = await page.evaluate(() => document.querySelector('.ic').getBoundingClientRect().width);
     await page.click('.seg label:has(input[value="24"])');
@@ -139,7 +177,7 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
       F.firstTab = await k.page.evaluate(() => ({ id: document.activeElement.id, outline: getComputedStyle(document.activeElement).outlineStyle,
         width: getComputedStyle(document.activeElement).outlineWidth }));
       const stops = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         await k.page.keyboard.press('Tab');
         stops.push(await k.page.evaluate(() => document.activeElement.id || document.activeElement.name || document.activeElement.getAttribute('data-open')));
       }

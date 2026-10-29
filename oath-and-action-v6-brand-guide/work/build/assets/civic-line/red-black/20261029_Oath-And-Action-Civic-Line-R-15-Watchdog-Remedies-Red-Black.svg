@@ -3,15 +3,15 @@
   <title>Watchdog Remedies</title>
   <desc>Oath &amp; Action Civic Line R-15 Watchdog Remedies. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <circle cx="51.8346" cy="58.2341" r="18.2968" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="38.4118" y1="70.6871" x2="34.3859" y2="74.7129" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M35.9943 76.3213 A0.974816 0.974816 0 0 1 35.9943 77.7007 L26.8702 86.8247 A3.251666 3.251666 0 0 1 22.2692 82.2286 L31.3981 73.0997 A0.974816 0.974816 0 0 1 32.7775 73.0997 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M74.1622 46.9071 L105.2872 46.9071 A1.608402 1.608402 0 0 1 106.8956 48.5155 L106.8956 78.1442 A1.608402 1.608402 0 0 1 105.2872 79.7526 L62.8546 79.7526" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.916" y1="55.4365" x2="98.8244" y2="55.4365" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.916" y1="63.2494" x2="98.8244" y2="63.2494" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="73.1971" y1="70.999" x2="89.3445" y2="70.999" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="48.7933" cy="56.7926" r="22.871" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.0147" y1="72.3588" x2="26.9823" y2="77.3912" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.9928 79.4017 A1.218467 1.218467 0 0 1 28.9928 81.1258 L17.5878 92.5309 A4.064627 4.064627 0 0 1 11.8365 86.7857 L23.2477 75.3746 A1.218467 1.218467 0 0 1 24.9718 75.3746 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.7027 42.6338 L115.6091 42.6338 A2.010503 2.010503 0 0 1 117.6196 44.6443 L117.6196 81.6803 A2.010503 2.010503 0 0 1 115.6091 83.6908 L62.5683 83.6908" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.145" y1="53.2956" x2="107.5305" y2="53.2956" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.145" y1="63.0618" x2="107.5305" y2="63.0618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.4964" y1="72.7487" x2="95.6807" y2="72.7487" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="43.2857,58.0976 49.539,64.5313 60.3933,52.2294" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="38.1071,56.6221 45.9237,64.6641 59.4916,49.2868" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

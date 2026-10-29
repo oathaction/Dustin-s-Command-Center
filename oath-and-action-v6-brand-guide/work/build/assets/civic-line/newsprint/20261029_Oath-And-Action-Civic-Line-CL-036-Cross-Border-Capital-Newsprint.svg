@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-036" data-id="CL-036" width="128" height="128" viewBox="0 0 128 128">
+  <title>Cross-Border Capital</title>
+  <desc>Oath &amp; Action Civic Line CL-036 Cross-Border Capital. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <polygon points="10.5693,52.729 36.0357,52.729 36.0357,73.9124 10.5693,73.9124" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="10.5693,52.729 19.2876,44.0107 43.4928,44.0107 36.0357,52.729" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="43.4928,44.0107 43.4928,66.4553 36.0357,73.9124" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="23.1624" y1="52.729" x2="31.8136" y2="44.0107" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="23.662" y1="52.729" x2="23.662" y2="60.3445" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="84.5315,52.729 109.9979,52.729 109.9979,73.9124 87.1513,73.9124 87.1513,68.1611 84.5315,62.1905" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5315,52.729 93.2498,44.0107 117.4551,44.0107 109.9979,52.729" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="117.4551,44.0107 117.4551,66.4553 109.9979,73.9124" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.1246" y1="52.729" x2="105.7759" y2="44.0107" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.6242" y1="52.729" x2="97.6242" y2="60.3445" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64.6519" cy="74.3876" r="17.1198" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.4973" y1="87.4254" x2="29.4254" y2="87.4254" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="34.8477,81.8813 29.4254,87.4254 34.8477,92.9696" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="50.9013" y1="40.5928" x2="74.9969" y2="40.5928" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="69.5746,35.0487 74.9969,40.5928 69.5746,46.137" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M67.7164 69.7269 A3.289926 3.289926 0 1 0 64.7311 74.4181 A3.289926 3.289926 0 1 1 61.7458 79.1093" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.7311" y1="65.8277" x2="64.7311" y2="67.9601" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.7311" y1="80.9979" x2="64.7311" y2="82.8074" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

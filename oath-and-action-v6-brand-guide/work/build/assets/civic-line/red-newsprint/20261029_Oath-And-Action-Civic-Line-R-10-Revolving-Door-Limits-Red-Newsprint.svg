@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-10" data-id="R-10" width="128" height="128" viewBox="0 0 128 128">
+  <title>Revolving-Door Limits</title>
+  <desc>Oath &amp; Action Civic Line R-10 Revolving-Door Limits. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <polyline points="7.8078,89.0842 7.8078,35.0883 46.2762,35.0883 46.2762,89.1726" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.8078" y1="89.0842" x2="22.9996" y2="89.0842" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="34.8175" cy="47.7011" r="4.3809" fill="#DCD9D2"/>
+    <line x1="32.8508" y1="56.8162" x2="28.9056" y2="70.2416" fill="none" stroke="#DCD9D2" stroke-width="5.5939" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="19.4843,67.8863 23.0467,58.8595 29.5533,56.2863 32.8508,56.8162" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="33.4396,57.1107 37.8559,64.3533 46.2762,68.375" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="28.3168,70.3594 25.5552,77.8788 17.2585,89.0842" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="29.6122,70.4183 35.9127,78.6972 36.7547,89.2432" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="80.5226,69.6528 80.5226,43.8148 97.0806,35.1708 113.6385,43.8148 113.6385,82.1066" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.5228" y1="82.1066" x2="120.0862" y2="82.1066" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.8282" y1="75.1113" x2="91.8282" y2="82.1066" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="102.333" y1="75.1113" x2="102.333" y2="82.1066" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="88.042" y="47.9543" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+    <rect x="95.2552" y="47.9543" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+    <rect x="102.4684" y="47.9543" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+    <rect x="88.042" y="60.7909" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+    <rect x="95.2552" y="60.7909" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+    <rect x="102.4684" y="60.7909" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
+  </g>
+  <g id="accent">
+    <line x1="53.1066" y1="61.8802" x2="69.8883" y2="61.8802" fill="none" stroke="#E63946" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="63.5878,55.1675 69.8883,61.8802 63.2934,67.2975" fill="none" stroke="#E63946" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M69.6292 69.1935 A12.589239 12.589239 0 0 1 82.2185 81.7827 A12.589264 12.589264 0 0 1 69.6292 94.372 A12.589239 12.589239 0 0 1 57.04 81.7827 A12.589214 12.589214 0 0 1 69.6292 69.1935 Z M62.4455 79.4274 H76.813 A0.471058 0.471058 0 0 1 77.284 79.8985 V83.667 A0.471058 0.471058 0 0 1 76.813 84.1381 H62.4455 A0.471083 0.471083 0 0 1 61.9744 83.667 V79.8985 A0.471083 0.471083 0 0 1 62.4455 79.4274 Z" fill="#E63946" fill-rule="evenodd"/>
+  </g>
+</svg>

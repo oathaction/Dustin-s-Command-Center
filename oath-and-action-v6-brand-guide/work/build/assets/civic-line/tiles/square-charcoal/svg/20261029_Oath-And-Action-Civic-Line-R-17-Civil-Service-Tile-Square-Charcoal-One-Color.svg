@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-17-tile-square-charcoal-one-color" data-id="R-17" width="128" height="128" viewBox="0 0 128 128">
+  <title>Civil Service</title>
+  <desc>Oath &amp; Action Civic Line R-17 Civil Service: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <rect x="14.042" y="43.633" width="79.0372" height="50.8109" rx="1.9496" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M49.1954 43.633 L49.1954 34.9452 A1.066164 1.066164 0 0 1 50.2615 33.879 L56.8597 33.879 A1.066164 1.066164 0 0 1 57.9258 34.9452 L57.9258 43.633" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="38.1681" cy="59.3393" r="7.0063" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 85.2931 L25.1302 83.1912 A13.068292 14.439092 0 0 1 38.1985 68.7521 A13.068292 14.439092 0 0 1 51.2668 83.1912 L51.2668 85.2931 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.5525" y1="56.0616" x2="82.8256" y2="56.0616" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.5525" y1="65.1637" x2="82.8256" y2="65.1637" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.5525" y1="74.2658" x2="74.5095" y2="74.2658" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M100.6765 37.772 A6.701708 6.427547 0 0 1 107.3782 44.1996 L107.3782 58.2122 Q107.3782 61.0147 111.2773 64.6702 Q107.3782 68.3256 107.3782 71.1282 L107.3782 85.1408 A6.701682 6.427522 0 0 1 100.6765 91.5683" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="111.2773" y1="64.6702" x2="114.1408" y2="64.6702" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

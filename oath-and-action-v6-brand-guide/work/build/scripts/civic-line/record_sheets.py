@@ -71,7 +71,7 @@ def render(jobs):
 def pillar_record():
     inv = C.inventory_by_id()
     fonts = CS.Fonts()
-    rows = [("Gate 1 pillar marks, Direction A (Y1), one colour", "a"),
+    rows = [("Gate 1 pillar marks, Direction A (Y1), one color", "a"),
             ("Civic Line, black edition", "black"),
             ("Civic Line, red-black edition (DR-04)", "red-black")]
     pad, label_h, row_gap, col_gap, group_gap = 40, 26, 34, 24, 64
@@ -143,7 +143,7 @@ def size_ladder():
            f'font-family="Inter, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="{C.NEWSPRINT}"/>',
            f'<text x="20" y="30" font-size="18" font-weight="600" fill="{C.CHARCOAL}">Civic Line size ladder: red-black exports at 24, 32, 48 and 64 px, actual size</text>',
-           f'<text x="20" y="50" font-size="12" fill="{C.CHARCOAL}">Catalogue order, left to right. Each icon keeps the shared scale, so smaller drawings stay smaller; stroke 2.68 of 128 units.</text>']
+           f'<text x="20" y="50" font-size="12" fill="{C.CHARCOAL}">Catalogue order, left to right. Capped fit (DR-08): each icon grows toward 116 of 128 units by at most 1.25 times the shared scale; strokes run 2.68 to 3.35 units.</text>']
     missing = []
     for i, r in enumerate(inv):
         p = os.path.join(C.ASSETS, "red-black", r["exports"]["svg_red_black"])

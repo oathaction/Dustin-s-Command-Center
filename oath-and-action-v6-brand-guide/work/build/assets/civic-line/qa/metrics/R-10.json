@@ -1,10 +1,10 @@
 {
   "id": "R-10",
   "label": "Revolving-Door Limits",
-  "built": "2026-10-29T10:44:50+00:00",
+  "built": "2026-10-29T20:12:04+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.588832,
+  "stroke_units": 3.2386,
   "silhouette_iou_1x": 0.9246,
   "silhouette_iou_4x": 0.9321,
   "red_iou_1x": 0.9544,
@@ -54,11 +54,12 @@
   "bake_check_iou_1x": 1.0,
   "bake_check_max_diff_levels_4x": 13,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    16.148,
-    38.729,
-    111.765,
-    89.14
+    6.189,
+    33.469,
+    121.706,
+    94.372
   ],
   "export_inside_0_128": true,
   "elements": 21,

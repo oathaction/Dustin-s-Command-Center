@@ -3,22 +3,22 @@
   <title>Feed Ranking</title>
   <desc>Oath &amp; Action Civic Line CL-039 Feed Ranking. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M27.2748 47.8672 V33.0748 A2.193289 2.193289 0 0 1 29.4681 30.8815 H75.7706 A2.193289 2.193289 0 0 1 77.9639 33.0748 V47.8672" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="33.6109" y="36.9739" width="7.2622" height="7.2622" rx="0.7311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="38.0608" x2="68.8983" y2="38.0608" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="43.8803" x2="58.663" y2="43.8803" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="27.2748" y="52.595" width="50.6891" height="19.3008" rx="2.1933" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="27.2748" y="77.6617" width="50.6891" height="19.3008" rx="2.1933" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="33.6109" y="83.7346" width="7.2622" height="7.2622" rx="0.7311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="84.8215" x2="68.8983" y2="84.8215" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="90.641" x2="58.663" y2="90.641" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="95.4126" y1="30.8571" x2="95.4126" y2="47.1605" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="95.4126" y1="57.2008" x2="95.4126" y2="86.9076" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.0935 43.834 V25.3435 A2.741599 2.741599 0 0 1 20.8351 22.6019 H78.7132 A2.741599 2.741599 0 0 1 81.4548 25.3435 V43.834" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26.0136" y="30.2174" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="31.576" x2="70.1229" y2="31.576" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="38.8504" x2="57.3288" y2="38.8504" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="18.0935" y="49.7437" width="63.3614" height="24.1261" rx="2.7416" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="18.0935" y="81.0771" width="63.3614" height="24.1261" rx="2.7416" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26.0136" y="88.6683" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="90.0269" x2="70.1229" y2="90.0269" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="97.3013" x2="57.3288" y2="97.3013" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.2658" y1="22.5714" x2="103.2658" y2="42.9506" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.2658" y1="55.501" x2="103.2658" y2="92.6345" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <rect x="33.6109" y="58.7264" width="7.2622" height="7.2622" rx="0.7311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="59.8133" x2="68.8983" y2="59.8133" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.0134" y1="65.6328" x2="58.663" y2="65.6328" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="95.4126" cy="52.1807" r="5.0202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26.0136" y="57.408" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="58.7666" x2="70.1229" y2="58.7666" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="66.041" x2="57.3288" y2="66.041" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="103.2658" cy="49.2258" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

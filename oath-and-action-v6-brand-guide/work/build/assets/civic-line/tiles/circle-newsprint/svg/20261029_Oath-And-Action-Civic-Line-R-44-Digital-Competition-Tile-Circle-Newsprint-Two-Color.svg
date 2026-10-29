@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-44-tile-circle-newsprint-two-color" data-id="R-44" width="128" height="128" viewBox="0 0 128 128">
+  <title>Digital Competition</title>
+  <desc>Oath &amp; Action Civic Line R-44 Digital Competition: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <rect x="7.8131" y="46.7584" width="42.6178" height="35.0632" rx="3.5336" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.8131" y1="55.2488" x2="50.4309" y2="55.2488" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12.2923" cy="51.0231" r="1.2429" fill="#121212"/>
+    <circle cx="16.786" cy="51.0231" r="1.2429" fill="#121212"/>
+    <circle cx="21.2798" cy="51.0231" r="1.2429" fill="#121212"/>
+    <rect x="78.5146" y="46.7584" width="42.6178" height="35.0632" rx="3.5336" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.5146" y1="55.2488" x2="121.1324" y2="55.2488" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="83.9686" cy="51.0231" r="1.2429" fill="#121212"/>
+    <circle cx="88.4624" cy="51.0231" r="1.2429" fill="#121212"/>
+    <circle cx="92.9561" cy="51.0231" r="1.2429" fill="#121212"/>
+    <line x1="58.0538" y1="70.9697" x2="71.5303" y2="70.9697" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="62.2697,66.9244 58.0538,70.9697 62.2697,75.0151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="28.2934" cy="67.7018" r="6.0924" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.5581" y1="72.0542" x2="35.8481" y2="75.4172" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="98.995" cy="67.7018" r="6.0924" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.2597" y1="72.0542" x2="106.5496" y2="75.4172" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="58.0538" y1="55.1782" x2="71.5303" y2="55.1782" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="67.3143,51.1328 71.5303,55.1782 67.3143,59.2235" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

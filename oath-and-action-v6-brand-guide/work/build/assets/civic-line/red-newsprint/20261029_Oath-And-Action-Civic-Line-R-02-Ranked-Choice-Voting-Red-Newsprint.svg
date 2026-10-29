@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-02" data-id="R-02" width="128" height="128" viewBox="0 0 128 128">
+  <title>Ranked-Choice Voting</title>
+  <desc>Oath &amp; Action Civic Line R-02 Ranked-Choice Voting. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="28.1704" y="34.6771" width="71.3486" height="58.786" rx="1.2185" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.1565" y1="46.8802" x2="90.0756" y2="46.8802" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.1565" y1="63.805" x2="90.0756" y2="63.805" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.1565" y1="80.7298" x2="90.0756" y2="80.7298" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.2752 58.0294 H37.9244 A0.913883 0.913883 0 0 0 37.0105 58.9433 V69.2212 A0.913883 0.913883 0 0 0 37.9244 70.1351 H49.6218 A0.913883 0.913883 0 0 0 50.5357 69.2212 V58.9433 A0.913883 0.913883 0 0 0 49.6218 58.0294 H46.5147" fill="none" stroke="#DCD9D2" stroke-width="2.437" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M41.2752 74.9542 H37.9244 A0.913883 0.913883 0 0 0 37.0105 75.8681 V86.146 A0.913883 0.913883 0 0 0 37.9244 87.0599 H41.5189" fill="none" stroke="#DCD9D2" stroke-width="2.437" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M46.5147 74.9542 H49.6218 A0.913883 0.913883 0 0 1 50.5357 75.8681 V86.146 A0.913883 0.913883 0 0 1 49.6218 87.0599 H46.0273" fill="none" stroke="#DCD9D2" stroke-width="2.437" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M41.8844 62.1723 C42.0063 61.1975 42.7983 60.771 43.7731 60.771 C44.9307 60.771 45.6618 61.3193 45.6618 62.416 C45.6618 63.2689 45.2353 63.9391 44.5651 64.4874 L41.8844 67.4118 H45.7836" fill="none" stroke="#DCD9D2" stroke-width="1.584" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.7017 78.5609 V77.708 H44.4433 Q45.3571 77.708 45.3571 78.5609 V79.5966 Q45.3571 80.7542 44.1996 80.7542 H43.2248 M44.1996 80.7542 Q45.6618 80.7542 45.6618 82.0945 V83.1303 Q45.6618 84.2878 44.4433 84.2878 H41.8844 Q41.5189 84.2878 41.5189 83.8614 V83.2521" fill="none" stroke="#DCD9D2" stroke-width="1.584" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M37.6197 39.8861 H49.9265 A1.827741 1.827741 0 0 1 51.7542 41.7139 V52.595 A1.827716 1.827716 0 0 1 49.9265 54.4227 H37.6197 A1.827716 1.827716 0 0 1 35.792 52.595 V41.7139 A1.827741 1.827741 0 0 1 37.6197 39.8861 Z M42.7374 42.5546 H44.9916 V51.48 H42.8288 V45.2962 H41.0924 V44.1996 Z" fill="#E63946" fill-rule="evenodd"/>
+  </g>
+</svg>

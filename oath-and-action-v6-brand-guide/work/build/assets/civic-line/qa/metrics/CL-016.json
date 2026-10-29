@@ -1,10 +1,10 @@
 {
   "id": "CL-016",
   "label": "Lobbying",
-  "built": "2026-10-29T10:43:42+00:00",
+  "built": "2026-10-29T20:10:47+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9185,
   "silhouette_iou_4x": 0.9264,
   "red_iou_1x": 0.8719,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 6,
+  "bake_check_max_diff_levels_4x": 7,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    23.303,
-    37.466,
-    105.282,
-    90.88
+    13.128,
+    30.833,
+    115.603,
+    97.6
   ],
   "export_inside_0_128": true,
   "elements": 12,

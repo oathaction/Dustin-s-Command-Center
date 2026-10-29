@@ -1,5 +1,5 @@
 {
-  "checked": "2026-10-29T10:46:53+00:00",
+  "checked": "2026-10-29T20:19:46+00:00",
   "ids": 122,
   "counts_by_sheet": {
     "01": 24,
@@ -9,14 +9,137 @@
     "05": 25
   },
   "order_matches_catalog": true,
-  "svgs": 244,
-  "pngs": 488,
-  "pairs_identical_after_swap": 122,
+  "svgs": 488,
+  "pngs": 976,
+  "tile_svgs": 1464,
+  "tile_pngs": 2928,
+  "editions_derived_by_swap": 122,
   "edition_trees_identical": 122,
-  "edition_tree_elements_compared": 2241,
-  "edition_tree_colour_swaps": 342,
+  "edition_tree_elements_compared": 6723,
+  "edition_tree_colour_swaps": 3172,
+  "tiles_matching_bare_geometry": 1464,
+  "tile_margins": {
+    "square": {
+      "factor": 0.68,
+      "min_margin": 23.602,
+      "min_margin_id": "R-46"
+    },
+    "rounded": {
+      "factor": 0.66,
+      "min_margin": 24.79,
+      "min_margin_id": "R-46"
+    },
+    "circle": {
+      "factor": 0.62,
+      "min_margin": 20.263,
+      "min_margin_id": "CL-059"
+    }
+  },
   "reference_crops": 244,
-  "contact_sheets": 10,
+  "contact_sheets_dark": 10,
+  "contact_sheets_light": 10,
+  "tile_sheets": 12,
+  "contrast": [
+    {
+      "ink": "Charcoal lines",
+      "ink_hex": "#121212",
+      "ground": "Newsprint tile",
+      "ground_hex": "#DCD9D2",
+      "ratio": 13.29,
+      "meets_3_to_1": true,
+      "use": "red-black, black; Newsprint tiles"
+    },
+    {
+      "ink": "Pillar Red accent",
+      "ink_hex": "#E63946",
+      "ground": "Newsprint tile",
+      "ground_hex": "#DCD9D2",
+      "ratio": 2.96,
+      "meets_3_to_1": false,
+      "use": "red-black; Newsprint two-color tiles"
+    },
+    {
+      "ink": "Newsprint lines",
+      "ink_hex": "#DCD9D2",
+      "ground": "Charcoal tile",
+      "ground_hex": "#121212",
+      "ratio": 13.29,
+      "meets_3_to_1": true,
+      "use": "red-newsprint, newsprint; Charcoal tiles"
+    },
+    {
+      "ink": "Pillar Red accent",
+      "ink_hex": "#E63946",
+      "ground": "Charcoal tile",
+      "ground_hex": "#121212",
+      "ratio": 4.49,
+      "meets_3_to_1": true,
+      "use": "red-newsprint; Charcoal two-color tiles"
+    },
+    {
+      "ink": "Charcoal lines",
+      "ink_hex": "#121212",
+      "ground": "White ground",
+      "ground_hex": "#FFFFFF",
+      "ratio": 18.73,
+      "meets_3_to_1": true,
+      "use": "red-black, black on White"
+    },
+    {
+      "ink": "Pillar Red accent",
+      "ink_hex": "#E63946",
+      "ground": "White ground",
+      "ground_hex": "#FFFFFF",
+      "ratio": 4.17,
+      "meets_3_to_1": true,
+      "use": "red-black on White"
+    },
+    {
+      "ink": "Newsprint lines",
+      "ink_hex": "#DCD9D2",
+      "ground": "Prussian ground",
+      "ground_hex": "#1F2D5A",
+      "ratio": 9.42,
+      "meets_3_to_1": true,
+      "use": "newsprint on Prussian (red never sits on Prussian)"
+    },
+    {
+      "ink": "Charcoal tile",
+      "ink_hex": "#121212",
+      "ground": "White page",
+      "ground_hex": "#FFFFFF",
+      "ratio": 18.73,
+      "meets_3_to_1": true,
+      "use": "tile edge"
+    },
+    {
+      "ink": "Newsprint tile",
+      "ink_hex": "#DCD9D2",
+      "ground": "White page",
+      "ground_hex": "#FFFFFF",
+      "ratio": 1.41,
+      "meets_3_to_1": false,
+      "use": "tile edge"
+    },
+    {
+      "ink": "Newsprint tile",
+      "ink_hex": "#DCD9D2",
+      "ground": "Charcoal page",
+      "ground_hex": "#121212",
+      "ratio": 13.29,
+      "meets_3_to_1": true,
+      "use": "tile edge"
+    },
+    {
+      "ink": "Charcoal tile",
+      "ink_hex": "#121212",
+      "ground": "Newsprint page",
+      "ground_hex": "#DCD9D2",
+      "ratio": 13.29,
+      "meets_3_to_1": true,
+      "use": "tile edge"
+    }
+  ],
   "states": {
     "todo": 0,
     "traced": 0,

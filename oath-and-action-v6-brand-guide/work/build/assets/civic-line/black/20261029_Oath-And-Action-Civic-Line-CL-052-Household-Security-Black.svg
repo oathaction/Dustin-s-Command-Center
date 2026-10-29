@@ -3,18 +3,18 @@
   <title>Household Security</title>
   <desc>Oath &amp; Action Civic Line CL-052 Household Security. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <polyline points="20.6511,60.983 49.115,38.0413 77.5788,60.983" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="60.8807,41.7504 60.8807,36.7741 69.5563,36.7741 69.5563,46.9168" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M25.9832 62.1723 V89.2714 A1.218494 1.218494 0 0 0 27.2017 90.4899 H70.8723 A1.218494 1.218494 0 0 0 72.0908 89.2714 V62.1723" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M35.6726 90.4899 V70.1266 A0.974795 0.974795 0 0 1 36.6474 69.1518 H43.856 A0.974795 0.974795 0 0 1 44.8308 70.1266 V90.4899" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="55.3731" y="66.3297" width="9.163" height="11.5513" rx="0.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M76.0387 91.3282 H106.1353 A1.462168 1.462168 0 0 0 107.5975 89.8661 V50.8891 A1.462193 1.462193 0 0 0 106.1353 49.4269 H73.5529 A1.462168 1.462168 0 0 0 72.0908 50.8891 V56.5624" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="80.0109" y1="76.6138" x2="99.921" y2="76.6138" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="80.0109" y1="83.4958" x2="99.921" y2="83.4958" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="9.8138,60.2288 45.3937,31.5517 80.9735,60.2288" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="60.1008,36.188 60.1008,29.9676 70.9454,29.9676 70.9454,42.646" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.479 61.7153 V95.5893 A1.523105 1.523105 0 0 0 18.0021 97.1124 H72.5903 A1.52313 1.52313 0 0 0 74.1135 95.5893 V61.7153" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.5907 97.1124 V71.6582 A1.218494 1.218494 0 0 1 29.8092 70.4397 H38.8199 A1.218494 1.218494 0 0 1 40.0384 71.6582 V97.1124" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="53.2164" y="66.9122" width="11.4538" height="14.4391" rx="1.2185" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M79.0483 98.1603 H116.6691 A1.827741 1.827741 0 0 0 118.4969 96.3326 V47.6113 A1.827741 1.827741 0 0 0 116.6691 45.7836 H75.9412 A1.827716 1.827716 0 0 0 74.1135 47.6113 V54.7029" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="84.0137" y1="79.7672" x2="108.9013" y2="79.7672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="84.0137" y1="88.3698" x2="108.9013" y2="88.3698" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="90.2462" y1="55.763" x2="90.2462" y2="57.4202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M93.6824 59.0286 A3.65547 3.021855 0 0 0 90.2706 57.4202 A3.289903 2.875619 0 0 0 86.9807 60.2958 A3.289903 2.875619 0 0 0 90.2706 63.1714 A3.289932 2.875644 0 0 1 93.5605 66.0471 A3.289903 2.875619 0 0 1 90.2706 68.9227 A3.65547 3.021855 0 0 1 86.8588 67.3143" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="90.2462" y1="68.9227" x2="90.2462" y2="70.5798" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.8078" y1="53.7038" x2="96.8078" y2="55.7752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.103 57.7857 A4.569327 3.77731 0 0 0 96.8383 55.7752 A4.112386 3.59453 0 0 0 92.7259 59.3697 A4.112415 3.594555 0 0 0 96.8383 62.9643 A4.112361 3.594508 0 0 1 100.9506 66.5588 A4.11239 3.594533 0 0 1 96.8383 70.1534 A4.569351 3.77733 0 0 1 92.5735 68.1429" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.8078" y1="70.1534" x2="96.8078" y2="72.2248" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

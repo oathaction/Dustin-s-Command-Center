@@ -1,10 +1,10 @@
 {
   "id": "R-19",
   "label": "Drug-Pricing Rules",
-  "built": "2026-10-29T10:45:13+00:00",
+  "built": "2026-10-29T20:12:33+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9347,
   "silhouette_iou_4x": 0.9382,
   "red_iou_1x": 0.8511,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 15,
+  "bake_check_max_diff_levels_4x": 14,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    23.339,
-    38.858,
-    104.566,
-    88.859
+    13.174,
+    32.572,
+    114.707,
+    95.074
   ],
   "export_inside_0_128": true,
   "elements": 9,

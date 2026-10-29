@@ -5,11 +5,12 @@
 Writes assets/civic-line/<date>_Civic-Line-Icon-Catalog.html, following the
 Artifact page contract: no doctype, html, head or body tags; the file opens
 with its <title>, the viewport-fit-sides meta and the <style>. Colours exist
-only as CSS tokens. Icons are inlined from the red-black exports with their
-colours turned into tokens, so one copy serves both editions: the black edition
-sets the accent token to Charcoal, which is the same swap the black export
-files make. Reference crops are the untouched PNG files, embedded byte for byte
-as data URIs.
+only as CSS tokens. Icons are inlined once, from the red-black exports, with
+their colours turned into tokens, so one copy serves all four editions: each
+edition sets the ink and accent tokens to the colours its export files carry
+(DR-09). The three tile shapes are drawn once as SVG symbols and referenced by
+every card (DR-10). Reference crops are the untouched PNG files, embedded byte
+for byte as data URIs.
 """
 import base64
 import html
@@ -38,6 +39,7 @@ LIGHT = {
     "accent": "var(--prussian)", "on-accent": "var(--white)", "focus": "var(--prussian)",
     "chip": "var(--newsprint)", "on-chip": "var(--charcoal)",
     "icon-ink": "var(--charcoal)", "icon-red": "var(--pillar-red)", "icon-accent": "var(--icon-red)",
+    "card-ground": "var(--newsprint)", "holder-fill": "var(--newsprint)", "stage": "var(--charcoal)",
     "mask-keep": "#FFFFFF", "mask-cut": "#000000",
     "scrim": "rgb(18 18 18 / 0.55)",
 }
@@ -54,8 +56,8 @@ def tokens(d, indent="  "):
 
 
 def tokenise_colours(svg):
-    """Move each element's fill and stroke colours into one style attribute that
-    reads the colour tokens."""
+    """Move each element's fill and stroke colors into one style attribute that
+    reads the color tokens."""
     def fix(m):
         tag = m.group(0)
         style = []
@@ -65,7 +67,7 @@ def tokenise_colours(svg):
                 continue
             v = mm.group(1).upper()
             if v not in COLOR_TOKENS:
-                raise SystemExit(f"unexpected colour {v} in an export")
+                raise SystemExit(f"unexpected color {v} in an export")
             style.append(f"{prop}:{COLOR_TOKENS[v]}")
             tag = tag.replace(mm.group(0), "", 1)
         if style:
@@ -132,8 +134,24 @@ def gather():
     return inv, icons
 
 
+HOLDERS = '<use class="hold h-square" href="#h-square" x="0" y="0" width="128" height="128"/>' \
+          '<use class="hold h-rounded" href="#h-rounded" x="0" y="0" width="128" height="128"/>' \
+          '<use class="hold h-circle" href="#h-circle" x="0" y="0" width="128" height="128"/>'
+
+
+def sprite():
+    """The three tile shapes, drawn once (DR-10)."""
+    import cl_tiles as T
+    return ('<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>'
+            '<symbol id="h-square" viewBox="0 0 128 128"><rect x="0" y="0" width="128" height="128"/></symbol>'
+            f'<symbol id="h-rounded" viewBox="0 0 128 128"><path d="{T.ROUNDED_D}"/></symbol>'
+            '<symbol id="h-circle" viewBox="0 0 128 128"><circle cx="64" cy="64" r="64"/></symbol>'
+            '</defs></svg>')
+
+
 def card(ic):
-    tile = (f'<svg class="ic" viewBox="0 0 128 128" aria-hidden="true" focusable="false">{ic["svg"].replace("__P__", "g-" + ic["id"].lower() + "-")}</svg>'
+    tile = (f'<svg class="ic" viewBox="0 0 128 128" aria-hidden="true" focusable="false">{HOLDERS}'
+            f'<g class="glyph">{ic["svg"].replace("__P__", "g-" + ic["id"].lower() + "-")}</g></svg>'
             if ic["svg"] else '<span class="pending">Not traced yet</span>')
     label = html.escape(ic["label"])
     hay = html.escape(f'{ic["id"]} {ic["label"]} {ic["slug"]}'.lower())
@@ -145,7 +163,7 @@ def card(ic):
 
 CSS = """
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap");
-/* Layout: a masthead, then a sticky tool bar over the five source sheets as sections of Newsprint tiles; a dialog shows one icon at review scale. */
+/* Layout: a masthead, then a sticky tool bar over the five source sheets as sections of specimen tiles; a dialog shows one icon at review scale with its editions and tiles. */
 :root {
 __LIGHT__  --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -214,17 +232,40 @@ input[type="search"] { width: min(280px, 100%); }
 }
 .card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .tile {
-  display: grid; place-items: center; background: var(--tile); border-radius: 6px;
+  display: grid; place-items: center; background: var(--card-ground); border-radius: 6px;
   height: calc(var(--icon-size) + 40px); max-width: 100%; margin-bottom: 6px;
 }
-.card:hover .tile { box-shadow: inset 0 0 0 2px var(--icon-ink); }
-.ic { width: var(--icon-size); height: var(--icon-size); display: block; }
+main:not([data-holder="none"]) .tile { background: var(--stage); }
+.card:hover .tile { box-shadow: inset 0 0 0 2px var(--focus); }
+.ic { width: var(--icon-size); height: var(--icon-size); display: block; overflow: visible; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.hold { display: none; fill: var(--holder-fill); }
+main[data-holder="square"] .h-square, main[data-holder="rounded"] .h-rounded, main[data-holder="circle"] .h-circle { display: inline; }
+.glyph { transform-origin: 64px 64px; transform: scale(var(--f, 1)); }
+main[data-holder="square"] { --f: __F_SQUARE__; }
+main[data-holder="rounded"] { --f: __F_ROUNDED__; }
+main[data-holder="circle"] { --f: __F_CIRCLE__; }
+.ed-red-black, main[data-edition="red-black"], dialog[data-edition="red-black"] { --icon-ink: var(--charcoal); --icon-accent: var(--pillar-red); --card-ground: var(--newsprint); --holder-fill: var(--newsprint); --stage: var(--charcoal); }
+.ed-black, main[data-edition="black"], dialog[data-edition="black"] { --icon-ink: var(--charcoal); --icon-accent: var(--charcoal); --card-ground: var(--newsprint); --holder-fill: var(--newsprint); --stage: var(--charcoal); }
+.ed-red-newsprint, main[data-edition="red-newsprint"], dialog[data-edition="red-newsprint"] { --icon-ink: var(--newsprint); --icon-accent: var(--pillar-red); --card-ground: var(--charcoal); --holder-fill: var(--charcoal); --stage: var(--newsprint); }
+.ed-newsprint, main[data-edition="newsprint"], dialog[data-edition="newsprint"] { --icon-ink: var(--newsprint); --icon-accent: var(--newsprint); --card-ground: var(--charcoal); --holder-fill: var(--charcoal); --stage: var(--newsprint); }
+.variants { display: grid; gap: 12px; }
+.variants h3 { font-size: 14px; font-weight: 600; margin: 0; }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 14px 12px; margin: 0; padding: 0; list-style: none; }
+.spec-grid.four { grid-template-columns: repeat(auto-fill, 140px); }
+.tile-row { display: grid; gap: 6px; }
+.row-label { font-size: 13px; font-weight: 600; margin: 0; color: var(--text); }
+.spec { margin: 0; display: grid; gap: 6px; justify-items: start; min-width: 0; }
+.spec .stage { width: 120px; height: 120px; display: grid; place-items: center; border-radius: 6px; background: var(--card-ground); }
+.spec.on-stage .stage { background: var(--stage); }
+.spec svg { width: 96px; height: 96px; display: block; }
+.spec .hold { display: inline; }
+.spec figcaption { font-size: 13px; color: var(--muted); line-height: 1.35; }
 .pending { font-size: 13px; color: var(--charcoal); padding: 8px; text-align: center; }
 .cid { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--muted); }
 .cname { font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
 .empty { margin: 40px 0; font-size: 15px; }
 .empty button { font: inherit; color: var(--text); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
-main[data-edition="black"], dialog[data-edition="black"] { --icon-accent: var(--icon-ink); }
 .notes { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hair); display: grid; gap: 12px; max-width: 72ch; font-size: 14px; }
 .notes h2 { font-family: var(--font-display); font-size: 18px; margin: 0; }
 .notes p { margin: 0; }
@@ -245,6 +286,7 @@ dialog::backdrop { background: var(--scrim); }
 figure { margin: 0; display: grid; gap: 6px; min-width: 0; }
 figcaption { font-size: 13px; color: var(--muted); }
 .view { width: min(100%, var(--vw)); aspect-ratio: var(--ar); background: var(--tile); border-radius: 4px; overflow: hidden; }
+.view.trace { background: var(--card-ground); }
 .view img, .view svg { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
 .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px 28px; }
 .facts-grid h3 { font-size: 14px; font-weight: 600; margin: 0 0 8px; }
@@ -286,6 +328,7 @@ JS = r"""
     main.setAttribute('data-edition', v); dlg.setAttribute('data-edition', v); store('edition', v);
     if (dlg.open && current) render(current);
   }
+  function setHolder(v) { main.setAttribute('data-holder', v); store('holder', v); }
   function setSize(v) {
     main.style.setProperty('--icon-size', v + 'px');
     main.style.setProperty('--card-min', (sizes[v] || 104) + 'px');
@@ -309,12 +352,41 @@ JS = r"""
   }
   function fmt(v, d) { return v === null || v === undefined ? 'not measured' : Number(v).toFixed(d); }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var EDS = [['red-black', 'Red-black'], ['black', 'Black'], ['red-newsprint', 'Red-newsprint'], ['newsprint', 'Newsprint']];
+  var TILES = [['charcoal', 'two-color', 'red-newsprint'], ['charcoal', 'one-color', 'newsprint'],
+               ['newsprint', 'two-color', 'red-black'], ['newsprint', 'one-color', 'black']];
+  var SHAPES = [['square', 'Square'], ['rounded', 'Rounded square'], ['circle', 'Circle']];
+  function edName(ed) { for (var i = 0; i < EDS.length; i++) if (EDS[i][0] === ed) return EDS[i][1]; return ed; }
+  function glyph(ic, pre) { return ic.svg.split('__P__').join(pre); }
+  function variants(ic) {
+    if (!ic.svg) return '';
+    var base = ic.id.toLowerCase(), out = '<section class="variants"><h3>The four editions, 96 px, each on its ground</h3><ul class="spec-grid">';
+    EDS.forEach(function (e) {
+      out += '<li><figure class="spec ed-' + e[0] + '"><div class="stage"><svg viewBox="0 0 128 128" role="img" aria-label="' + esc(ic.label) + ', ' + e[1] + ' edition">' +
+        glyph(ic, 'v-' + e[0] + '-' + base + '-') + '</svg></div><figcaption>' + e[1] + '</figcaption></figure></li>';
+    });
+    out += '</ul><h3>The twelve tiles, 96 px</h3>';
+    SHAPES.forEach(function (sh) {
+      var f = data.factors[sh[0]], t = (64 * (1 - f)).toFixed(4);
+      out += '<div class="tile-row"><p class="row-label">' + sh[1] + ', icon at ' + f + '</p><ul class="spec-grid four">';
+      TILES.forEach(function (tl) {
+        var cap = (tl[0] === 'charcoal' ? 'Charcoal' : 'Newsprint') + ', ' + tl[1];
+        out += '<li><figure class="spec on-stage ed-' + tl[2] + '"><div class="stage"><svg viewBox="0 0 128 128" role="img" aria-label="' + esc(ic.label) + ' tile: ' + sh[1] + ', ' + cap + '">' +
+          '<use class="hold" href="#h-' + sh[0] + '" x="0" y="0" width="128" height="128"/>' +
+          '<g transform="matrix(' + f + ' 0 0 ' + f + ' ' + t + ' ' + t + ')">' + glyph(ic, 't-' + sh[0] + '-' + tl[0] + '-' + tl[1] + '-' + base + '-') + '</g></svg></div>' +
+          '<figcaption>' + cap + '</figcaption></figure></li>';
+      });
+      out += '</ul></div>';
+    });
+    return out + '</section>';
+  }
   function render(ic) {
     current = ic;
     var ed = edition(), z = ic.w * 3 <= 520 ? 3 : 2;
+    var two = ed === 'red-black' || ed === 'red-newsprint';
     var m = ic.m || {};
     var trace = ic.svg
-      ? '<svg viewBox="' + ic.vb + '" role="img" aria-label="Trace of ' + esc(ic.label) + ', ' + (ed === 'black' ? 'black' : 'red-black') + ' edition">' + ic.svg.split('__P__').join('d-' + ic.id.toLowerCase() + '-') + '</svg>'
+      ? '<svg viewBox="' + ic.vb + '" role="img" aria-label="Trace of ' + esc(ic.label) + ', ' + edName(ed) + ' edition">' + glyph(ic, 'd-' + ic.id.toLowerCase() + '-') + '</svg>'
       : '<p class="pending">Not traced yet</p>';
     var corr = ic.corr.length
       ? '<ol class="corr">' + ic.corr.map(function (c) { return '<li>' + esc(c.what) + (c.el ? ' (element ' + esc(c.el) + ')' : '') + '<span class="why">' + esc(c.why) + '</span></li>'; }).join('') + '</ol>'
@@ -327,9 +399,10 @@ JS = r"""
       '<button type="button" class="btn" data-step="1"' + (pos < 0 || pos >= visibleIds.length - 1 ? ' disabled' : '') + '>Next</button>' +
       '<button type="button" class="btn" data-close>Close</button></div></div>' +
       '<div class="compare" style="--vw:' + (ic.w * z) + 'px;--ar:' + ic.w + ' / ' + ic.h + '">' +
-      '<figure><div class="view"><img alt="Reference crop of ' + esc(ic.label) + ' from the ' + (ed === 'black' ? 'black' : 'red-black') + ' sheet" src="' + (ed === 'black' ? ic.refBlack : ic.refRed) + '"></div>' +
-      '<figcaption>Reference crop, ' + (ed === 'black' ? 'black' : 'red') + ' sheet: untouched source pixels</figcaption></figure>' +
-      '<figure><div class="view">' + trace + '</div><figcaption>Trace, ' + (ed === 'black' ? 'black' : 'red-black') + ' edition, at the same scale</figcaption></figure></div>' +
+      '<figure><div class="view"><img alt="Reference crop of ' + esc(ic.label) + ' from the ' + (two ? 'red' : 'black') + ' sheet" src="' + (two ? ic.refRed : ic.refBlack) + '"></div>' +
+      '<figcaption>Reference crop, ' + (two ? 'red' : 'black') + ' sheet: untouched source pixels</figcaption></figure>' +
+      '<figure><div class="view trace">' + trace + '</div><figcaption>Trace, ' + edName(ed) + ' edition, at the same scale</figcaption></figure></div>' +
+      variants(ic) +
       '<div class="facts-grid"><section><h3>Measurements against the reference</h3><dl class="metrics">' +
       '<dt>Silhouette IoU</dt><dd>' + fmt(m.sil, 3) + '</dd>' +
       '<dt>Red IoU</dt><dd>' + fmt(m.red, 3) + '</dd>' +
@@ -373,11 +446,14 @@ JS = r"""
   document.getElementById('clear').addEventListener('click', function () { q.value = ''; sheetSel.value = ''; apply(); q.focus(); });
   document.querySelectorAll('input[name="edition"]').forEach(function (r) { r.addEventListener('change', function () { setEdition(r.value); }); });
   document.querySelectorAll('input[name="size"]').forEach(function (r) { r.addEventListener('change', function () { setSize(r.value); }); });
-  var e0 = recall('edition'), s0 = recall('size');
+  document.querySelectorAll('input[name="holder"]').forEach(function (r) { r.addEventListener('change', function () { setHolder(r.value); }); });
+  var e0 = recall('edition'), s0 = recall('size'), h0 = recall('holder');
+  if (h0 && document.querySelector('input[name="holder"][value="' + h0 + '"]')) document.querySelector('input[name="holder"][value="' + h0 + '"]').checked = true;
   if (e0 && document.querySelector('input[name="edition"][value="' + e0 + '"]')) document.querySelector('input[name="edition"][value="' + e0 + '"]').checked = true;
   if (s0 && document.querySelector('input[name="size"][value="' + s0 + '"]')) document.querySelector('input[name="size"][value="' + s0 + '"]').checked = true;
   setEdition(edition());
   setSize(document.querySelector('input[name="size"]:checked').value);
+  setHolder(document.querySelector('input[name="holder"]:checked').value);
   apply();
   function fromHash() {
     var h = (location.hash || '').slice(1).toUpperCase();
@@ -391,8 +467,10 @@ JS = r"""
 
 def build():
     inv, icons = gather()
-    sc = C.read_json(C.SCALE_JSON)
     css = CSS.replace("__LIGHT__", tokens(LIGHT)).replace("__DARK__", tokens(DARK, "    ")).replace("__DARKROOT__", tokens(DARK))
+    for k, v in C.TILE_FACTORS.items():
+        css = css.replace(f"__F_{k.upper()}__", f"{v:g}")
+    lo, hi = inv["stroke_width_units"]
     built = sum(1 for ic in icons if ic["svg"])
     reviewed = sum(1 for ic in icons if ic["svg"] and ic.get("state") == "reviewed")
     sections = []
@@ -404,7 +482,7 @@ def build():
             f'<ul class="grid">{"".join(card(ic) for ic in cells)}</ul></section>')
     sheet_opts = "".join(f'<option value="{k}">{k} {html.escape(v)}</option>' for k, v in SHEET_NAMES.items())
     size_opts = "".join(f'<label><input type="radio" name="size" value="{s}"{" checked" if s == 64 else ""}><span>{s}</span></label>' for s in (24, 32, 48, 64, 128))
-    payload = json.dumps({"icons": icons}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    payload = json.dumps({"icons": icons, "factors": C.TILE_FACTORS}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     body = f"""<title>Civic Line Icons</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>{css}</style>
@@ -412,12 +490,12 @@ def build():
 <header class="masthead">
 <p class="eyebrow">Oath &amp; Action, Edition 06</p>
 <h1>Civic Line icons</h1>
-<p class="lead">All {len(icons)} Civic Line icons, traced as vector masters from the reference sheets you sent on October 29. Search by ID or name, switch between the red-black and black editions, and open any icon to see its untouched reference crop beside the trace, its measurements and the tracer's corrections.</p>
+<p class="lead">All {len(icons)} Civic Line icons, traced as vector masters from the reference sheets you sent on October 29. Search by ID or name, pick an edition and a holder, and open any icon to see its untouched reference crop beside the trace, its four editions, its twelve tiles, its measurements and the tracer's corrections.</p>
 <ul class="facts">
 <li><b>{len(icons)}</b> icons in five sheets</li>
-<li><b>2</b> editions from one drawing</li>
-<li><b>128</b>-unit viewBox, one shared scale</li>
-<li>stroke <b>{sc["stroke_width_units"]:.2f}</b> units ({sc["W_source_px"]} source px)</li>
+<li><b>4</b> editions from one drawing</li>
+<li><b>12</b> tiles per icon</li>
+<li>128-unit box, capped fit; stroke <b>{lo:.2f}</b> to <b>{hi:.2f}</b> units</li>
 <li><b>{reviewed}</b> of {len(icons)} passed the independent review</li>
 </ul>
 </header>
@@ -425,24 +503,33 @@ def build():
 <label class="field search"><span>Search ID or name</span><input type="search" id="q" placeholder="R-35 or term limits" autocomplete="off"></label>
 <fieldset class="field"><legend>Edition</legend><div class="seg">
 <label><input type="radio" name="edition" id="ed-rb" value="red-black" checked><span>Red-black</span></label>
-<label><input type="radio" name="edition" id="ed-bk" value="black"><span>Black</span></label></div></fieldset>
+<label><input type="radio" name="edition" id="ed-bk" value="black"><span>Black</span></label>
+<label><input type="radio" name="edition" id="ed-rn" value="red-newsprint"><span>Red-newsprint</span></label>
+<label><input type="radio" name="edition" id="ed-nw" value="newsprint"><span>Newsprint</span></label></div></fieldset>
+<fieldset class="field"><legend>Holder</legend><div class="seg">
+<label><input type="radio" name="holder" id="ho-none" value="none" checked><span>None</span></label>
+<label><input type="radio" name="holder" id="ho-square" value="square"><span>Square</span></label>
+<label><input type="radio" name="holder" id="ho-rounded" value="rounded"><span>Rounded</span></label>
+<label><input type="radio" name="holder" id="ho-circle" value="circle"><span>Circle</span></label></div></fieldset>
 <label class="field"><span>Sheet</span><select id="sheet"><option value="">All sheets</option>{sheet_opts}</select></label>
 <fieldset class="field"><legend>Size in px</legend><div class="seg">{size_opts}</div></fieldset>
 <p class="count" id="count" aria-live="polite">Showing {len(icons)} of {len(icons)} icons</p>
 </div>
-<main id="catalog" data-edition="red-black">
+<main id="catalog" data-edition="red-black" data-holder="none">
 {"".join(sections)}
 <p class="empty" id="empty" hidden>No icon matches <span id="empty-term"></span>. <button type="button" id="clear">Clear the search and sheet filter</button></p>
 </main>
 <footer class="notes">
 <h2>About these files</h2>
 <p>Each icon is a traced reconstruction: a clean vector drawing measured against the source sheet, with one line weight across the set. It is not a pixel copy. The reference crops in the detail view are the untouched source pixels, shown for comparison.</p>
-<p>The red-black edition draws its accent in Pillar Red and is made for Newsprint and White grounds. The black edition draws the same shapes in Charcoal. R-35 records an option the atlas rejected, so its name stays "Term Limits · Rejected".</p>
-<p>The icons read best from 48 px up. At 24 px the stroke is about half a pixel wide.</p>
+<p>Four editions share every coordinate. Red-black and black draw in Charcoal for Newsprint and White grounds; red-newsprint and newsprint draw in Newsprint for Charcoal grounds, and newsprint alone also serves Prussian, where red never sits. Pillar Red on Newsprint measures 2.96:1, under the 3:1 guideline for graphics, so the red parts carry emphasis and never the only meaning.</p>
+<p>The holders are a square, a rounded square drawn as a continuous-curvature superellipse, and a circle. A Charcoal tile carries the light editions and a Newsprint tile the dark ones. In a tile the icon scales by {C.TILE_FACTORS["square"]:g} (square), {C.TILE_FACTORS["rounded"]:g} (rounded) or {C.TILE_FACTORS["circle"]:g} (circle).</p>
+<p>The icons read best from 48 px up. At 24 px the stroke is about half a pixel wide. R-35 records an option the atlas rejected, so its name stays "Term Limits · Rejected".</p>
 <p>The sheets were supplied by Dustin Cathcart, and the studio traced them under decision DR-02.</p>
 </footer>
 </div>
 <dialog id="detail" aria-labelledby="dlg-title" data-edition="red-black"><div class="dlg" id="dlg-body"></div></dialog>
+{sprite()}
 <script type="application/json" id="cl-data">{payload}</script>
 <script>{JS}</script>
 """

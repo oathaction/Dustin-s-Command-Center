@@ -1,10 +1,10 @@
 {
   "id": "CL-019",
   "label": "Explain",
-  "built": "2026-10-29T10:43:44+00:00",
+  "built": "2026-10-29T20:10:49+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9239,
   "silhouette_iou_4x": 0.9328,
   "red_iou_1x": 0.8368,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 7,
+  "bake_check_max_diff_levels_4x": 6,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    23.083,
-    33.026,
-    104.917,
-    95.364
+    12.854,
+    25.283,
+    115.146,
+    103.205
   ],
   "export_inside_0_128": true,
   "elements": 8,

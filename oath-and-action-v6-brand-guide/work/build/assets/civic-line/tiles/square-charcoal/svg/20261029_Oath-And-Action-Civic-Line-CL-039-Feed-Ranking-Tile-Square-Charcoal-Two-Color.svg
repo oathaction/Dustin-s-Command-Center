@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-039-tile-square-charcoal-two-color" data-id="CL-039" width="128" height="128" viewBox="0 0 128 128">
+  <title>Feed Ranking</title>
+  <desc>Oath &amp; Action Civic Line CL-039 Feed Ranking: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M18.0935 43.834 V25.3435 A2.741599 2.741599 0 0 1 20.8351 22.6019 H78.7132 A2.741599 2.741599 0 0 1 81.4548 25.3435 V43.834" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26.0136" y="30.2174" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="31.576" x2="70.1229" y2="31.576" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="38.8504" x2="57.3288" y2="38.8504" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="18.0935" y="49.7437" width="63.3614" height="24.1261" rx="2.7416" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="18.0935" y="81.0771" width="63.3614" height="24.1261" rx="2.7416" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26.0136" y="88.6683" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="90.0269" x2="70.1229" y2="90.0269" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="97.3013" x2="57.3288" y2="97.3013" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.2658" y1="22.5714" x2="103.2658" y2="42.9506" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.2658" y1="55.501" x2="103.2658" y2="92.6345" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="26.0136" y="57.408" width="9.0777" height="9.0777" rx="0.9139" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="58.7666" x2="70.1229" y2="58.7666" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="66.041" x2="57.3288" y2="66.041" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="103.2658" cy="49.2258" r="6.2752" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

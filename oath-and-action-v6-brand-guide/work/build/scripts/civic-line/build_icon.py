@@ -213,10 +213,10 @@ def blink_gif(ref_black, ref_red, tr_black4, tr_rb4, path):
 
 
 def size_strip(files, path, title):
-    """files: list of (label, png path). Each size sits in a slot at least 96 px wide."""
+    """files: list of (label, png path). Each size sits in a slot at least 124 px wide."""
     ims = [(lab, Image.open(p).convert("RGB")) for lab, p in files]
     gap = 20
-    slot = [max(96, im.width) for _, im in ims]
+    slot = [max(124, im.width) for _, im in ims]
     top = 34
     base = top + max(im.height for _, im in ims)
     H = base + 40
@@ -266,7 +266,8 @@ def build(ids, tracer=None, state=None, note=None, rebuild=False):
         row = inv[icon_id]
         mp = row["mask_params"]
         bg_b, bg_r = rgb_hex(mp["bg_black_rgb"]), rgb_hex(mp["bg_red_rgb"])
-        rb, bk = S.export_pair(src, row, W)
+        eds = S.export_editions(src, row, W)
+        rb, bk = eds["red-black"], eds["black"]
         black_cols = {"base": C.CHARCOAL, "accent": C.CHARCOAL}
         rb_cols = {"base": C.CHARCOAL, "accent": C.PILLAR_RED}
         d = os.path.join(tmp, icon_id)
@@ -290,13 +291,15 @@ def build(ids, tracer=None, state=None, note=None, rebuild=False):
             f = os.path.join(d, f"bk_{px}.png")
             jobs.append({"svg": sized(strip_decl(bk), px), "w": px, "h": px, "bg": C.NEWSPRINT, "out": f})
             sizes.append((f"black {px} px", f))
-        ex = row["exports"]
-        for px in (256, 512):
-            jobs.append({"svg": sized(strip_decl(rb), px), "w": px, "h": px, "bg": None,
-                         "out": os.path.join(C.ASSETS, f"png-{px}", "red-black", ex["png_red_black"])})
-            jobs.append({"svg": sized(strip_decl(bk), px), "w": px, "h": px, "bg": None,
-                         "out": os.path.join(C.ASSETS, f"png-{px}", "black", ex["png_black"])})
-        plan[icon_id] = {"src": src, "row": row, "rb": rb, "bk": bk, "p": p, "sizes": sizes}
+        for px in (24, 64):   # the light edition on its Charcoal ground
+            f = os.path.join(d, f"rn_{px}.png")
+            jobs.append({"svg": sized(strip_decl(eds["red-newsprint"]), px), "w": px, "h": px, "bg": C.CHARCOAL, "out": f})
+            sizes.append((f"red-newsprint {px} px", f))
+        for ed, text in eds.items():
+            for px in (256, 512):
+                jobs.append({"svg": sized(strip_decl(text), px), "w": px, "h": px, "bg": None,
+                             "out": C.edition_file(row, ed, "png", px)})
+        plan[icon_id] = {"src": src, "row": row, "rb": rb, "bk": bk, "eds": eds, "p": p, "sizes": sizes}
     if jobs:
         jp = os.path.join(tmp, "jobs.json")
         with open(jp, "w", encoding="utf-8") as fh:
@@ -316,11 +319,13 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
     row, src, p = P["row"], P["src"], P["p"]
     ex = row["exports"]
     # exports
-    with open(os.path.join(C.ASSETS, "red-black", ex["svg_red_black"]), "w", encoding="utf-8") as fh:
-        fh.write(P["rb"])
-    with open(os.path.join(C.ASSETS, "black", ex["svg_black"]), "w", encoding="utf-8") as fh:
-        fh.write(P["bk"])
+    for ed, text in P["eds"].items():
+        path = C.edition_file(row, ed)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(text)
     pair_ok = P["rb"].replace(C.PILLAR_RED, C.CHARCOAL) == P["bk"]
+    editions_ok = S.derive_editions(P["rb"]) == P["eds"]
     bounds, _ = S.drawn_bounds(strip_decl(P["rb"]))
     # references
     refc = os.path.join(C.ASSETS, "reference-crops")
@@ -357,6 +362,7 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
         "bake_check_iou_1x": round(iou(b_ink1, t_ink1), 4),
         "bake_check_max_diff_levels_4x": bake_max_diff(p["bake4"], p["cs4_black"]),
         "pair_identical_after_swap": pair_ok,
+        "editions_identical_after_swap": editions_ok,
         "export_drawn_bounds": [round(v, 3) for v in bounds] if bounds else None,
         "export_inside_0_128": bool(bounds and bounds[0] >= 0 and bounds[1] >= 0 and bounds[2] <= 128 and bounds[3] <= 128),
         "elements": sum(len(g.elems) for g in src.groups),
@@ -380,7 +386,7 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
                    os.path.join(C.QA, "overlays", f"{icon_id}.png"))
     blink_gif(ref_black, ref_red, tr_black4, tr_rb4, os.path.join(C.QA, "blink", f"{icon_id}.gif"))
     size_strip(P["sizes"], os.path.join(C.QA, "sizes", f"{icon_id}.png"),
-               f"{icon_id} {row['label']}  |  exports on Newsprint at 1x; stroke {W * row['transform']['s']:.2f} of 128 units")
+               f"{icon_id} {row['label']}  |  exports at 1x: dark editions on Newsprint, light edition on Charcoal; stroke {W * row['transform']['s']:.2f} of 128 units (DR-08)")
     summary = {k: metrics[k] for k in ("silhouette_iou_1x", "red_iou_1x", "bake_check_iou_4x", "bake_check_iou_1x", "pair_identical_after_swap",
                                        "export_inside_0_128", "ink_area_ratio_trace_over_reference")}
     summary["edge_mean_px"] = edges["symmetric"]["mean"] if edges else None

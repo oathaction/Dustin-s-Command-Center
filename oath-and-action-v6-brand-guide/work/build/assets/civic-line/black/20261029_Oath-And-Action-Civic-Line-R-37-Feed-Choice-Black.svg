@@ -3,17 +3,17 @@
   <title>Feed Choice</title>
   <desc>Oath &amp; Action Civic Line R-37 Feed Choice. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="19.9005" y="42.9981" width="57.5272" height="41.4724" rx="3.7773" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="19.9005" y1="52.7509" x2="77.4277" y2="52.7509" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="25.8857" cy="47.916" r="1.3647" fill="#121212"/>
-    <circle cx="31.6126" cy="47.916" r="1.3647" fill="#121212"/>
-    <circle cx="37.3395" cy="47.916" r="1.3647" fill="#121212"/>
-    <line x1="27.8694" y1="61.0171" x2="69.2639" y2="61.0171" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="27.8694" y1="72.3832" x2="53.7403" y2="72.3832" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="67.0121" y1="72.3832" x2="69.2639" y2="72.3832" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M94.8765 69.644 V66.9439 L92.8245 64.7945 A8.870595 8.870595 0 1 1 105.9988 64.3363 L101.5928 68.0454 V85.1529 H95.8074 L91.5866 79.9817 L94.0333 76.7795 L91.5817 73.7576 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="8.8756" y="37.7477" width="71.9091" height="51.8406" rx="4.7216" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="8.8756" y1="49.9386" x2="80.7847" y2="49.9386" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16.3571" cy="43.8949" r="1.7059" fill="#121212"/>
+    <circle cx="23.5157" cy="43.8949" r="1.7059" fill="#121212"/>
+    <circle cx="30.6744" cy="43.8949" r="1.7059" fill="#121212"/>
+    <line x1="18.8367" y1="60.2714" x2="70.5798" y2="60.2714" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.8367" y1="74.479" x2="51.1754" y2="74.479" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.7651" y1="74.479" x2="70.5798" y2="74.479" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M102.5956 71.055 V67.6798 L100.0307 64.9931 A11.088254 11.088254 0 1 1 116.4986 64.4204 L110.991 69.0567 V90.4412 H103.7593 L98.4832 83.9771 L101.5416 79.9744 L98.4771 76.1971 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="62.5963" cy="72.3832" r="4.4158" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="62.2454" cy="74.479" r="5.5198" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

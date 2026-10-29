@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-072-tile-circle-newsprint-one-color" data-id="CL-072" width="128" height="128" viewBox="0 0 128 128">
+  <title>Reform</title>
+  <desc>Oath &amp; Action Civic Line CL-072 Reform: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <path d="M55.2269 102.1387 V73.0168 A22.542014 22.542014 0 0 0 32.6849 50.4748 H18.459" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M63.7563 102.0168 V89.6918 A21.427106 21.427106 0 0 1 85.1834 68.2647 H93.2376" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="101.5112" cy="68.2647" r="8.2735" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M63.0557 65.8277 V53.4418 A18.868293 18.868293 0 0 1 81.924 34.5735 H94.2185" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="85.6891,26.1659 94.2185,34.5735 85.6891,42.9811" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

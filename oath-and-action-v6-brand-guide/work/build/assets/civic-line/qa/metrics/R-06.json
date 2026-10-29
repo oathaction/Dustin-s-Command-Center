@@ -1,10 +1,10 @@
 {
   "id": "R-06",
   "label": "On-Cycle Elections",
-  "built": "2026-10-29T10:44:49+00:00",
+  "built": "2026-10-29T20:12:03+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.539535,
+  "stroke_units": 2.9674,
   "silhouette_iou_1x": 0.9132,
   "silhouette_iou_4x": 0.9159,
   "red_iou_1x": 0.884,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 12,
+  "bake_check_max_diff_levels_4x": 9,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    11.537,
-    42.603,
-    116.414,
-    85.236
+    5.925,
+    40.314,
+    122.022,
+    87.508
   ],
   "export_inside_0_128": true,
   "elements": 22,

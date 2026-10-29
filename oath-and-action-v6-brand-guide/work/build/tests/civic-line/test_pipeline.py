@@ -16,6 +16,7 @@ real exports, QA files and status files are never touched.
    and the supplied sheets are unchanged against git.
 """
 import json
+import re
 import os
 import shutil
 import sys
@@ -177,8 +178,8 @@ def feature_build_test():
     tmp = tempfile.mkdtemp(prefix="civic-line-test-")
     try:
         assets = os.path.join(tmp, "assets")
-        for sub in ["src", "red-black", "black", "png-256/red-black", "png-256/black", "png-512/red-black", "png-512/black",
-                    "reference-crops", "qa/masks", "qa/metrics", "qa/overlays", "qa/blink", "qa/sizes", "qa/status"]:
+        for sub in ["src", "reference-crops", "qa/masks", "qa/metrics", "qa/overlays", "qa/blink", "qa/sizes", "qa/status"] + \
+                [ed for ed in C.EDITIONS] + [f"png-{px}/{ed}" for px in (256, 512) for ed in C.EDITIONS]:
             os.makedirs(os.path.join(assets, sub), exist_ok=True)
         inv = C.load_inventory()
         row = [r for r in inv["icons"] if r["id"] == "R-35"][0]
@@ -237,8 +238,41 @@ def feature_build_test():
         B.build(["R-35"], state="reviewed", note="looked at overlay")
         st = C.read_json(os.path.join(C.QA, "status", "R-35.json"))
         check("feature: --state and --note update the status", st["state"] == "reviewed" and st["iterations"] == 2 and st["notes"])
-        # verify_set on the temporary tree
+        # the four editions carry exactly their ink colours
+        import re as _re
+        for ed, want in C.EDITION_COLOURS.items():
+            text = open(C.edition_file(row, ed)).read()
+            used = {h.upper() for h in _re.findall(r"#[0-9A-Fa-f]{6}", text)} - {"#FFFFFF", "#000000"}
+            check(f"editions: {ed} uses exactly {want}", used == set(want), str(sorted(used)))
+        # tiles for the feature icon
+        import build_tiles as BT
+        import cl_tiles as T
+        BT.build(["R-35"])
+        tiles = [C.tile_file(row, sh, tl, md) for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS for md in C.TILE_MODES]
+        check("tiles: 12 SVGs and 24 PNGs written", all(os.path.exists(p) for p in tiles) and
+              all(os.path.exists(C.tile_file(row, sh, tl, md, "png", px)) for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS
+                  for md in C.TILE_MODES for px in (256, 512)))
         import verify_set as V
+        import xml.etree.ElementTree as ET
+        errs = []
+        ok_all = True
+        for sh in C.TILE_SHAPES:
+            for tl in C.TILE_COLOURS:
+                for md in C.TILE_MODES:
+                    bare_root = ET.parse(C.edition_file(row, C.TILE_EDITION[(tl, md)])).getroot()
+                    bare_tree = [k for k in bare_root if V.strip(k.tag) not in ("title", "desc")]
+                    ok_all &= V.check_tile(C.tile_file(row, sh, tl, md), row, sh, tl, md, bare_tree, errs)
+        check("tiles: every tile's icon tree equals its bare export, shape first, one transform", ok_all and not errs, "; ".join(errs)[:200])
+        cpng = np.asarray(Image.open(C.tile_file(row, "circle", "charcoal", "two-color", "png", 512)))
+        check("tiles: circle PNG transparent at the corner, Charcoal at the rim", cpng[2, 2, 3] == 0 and tuple(cpng[256, 6, :3]) == C.hex_rgb(C.CHARCOAL),
+              f"{cpng[2, 2]}, {cpng[256, 6]}")
+        f = C.TILE_FACTORS["circle"]
+        t = row["transform"]
+        xc = int(round((64 + f * (t["s"] * (136 - t["cx"]))) * 4))
+        yc = int(round((64 + f * (t["s"] * (87 - t["cy"]))) * 4))
+        check("tiles: the X knockout shows the Charcoal tile through it", tuple(cpng[yc, xc, :3]) == C.hex_rgb(C.CHARCOAL) and cpng[yc, xc, 3] == 255,
+              f"{tuple(cpng[yc, xc])}")
+        # verify_set on the temporary tree
         V.LEDGER = os.path.join(C.QA, "ledger.md")
         V.REPORT = os.path.join(C.QA, "report.json")
         code = run_verify(V)
@@ -250,7 +284,7 @@ def feature_build_test():
         tamper(V, bk, orig.replace('r="', 'r="1', 1), "tampered black geometry", "is not the red-black file")
         tamper(V, bk, orig.replace(C.CHARCOAL, C.PILLAR_RED, 1), "red token in the black file", "red value")
         sw = 'stroke-width="' + S.fmt4(5.5 * row["transform"]["s"]) + '"'
-        tamper(V, bk, orig.replace(sw, 'stroke-width="3"', 1), "a stroke width changed in the black tree", "edition trees differ")
+        tamper(V, bk, orig.replace(sw, 'stroke-width="3"', 1), "a stroke width changed in the black tree", "tree differs from red-black")
         rbp = os.path.join(assets, "red-black", row["exports"]["svg_red_black"])
         rb_orig = open(rbp).read()
         bg = rb_orig.replace('<g id="base-1">', '<rect x="0" y="0" width="128" height="128" fill="#121212"/><g id="base-1">')
@@ -261,6 +295,13 @@ def feature_build_test():
         tamper(V, rbp, tx, "text element in an export", "forbidden <text>", also=(bk, tx.replace(C.PILLAR_RED, C.CHARCOAL)))
         open(bk, "w").write(orig)
         open(rbp, "w").write(rb_orig)
+        tp = C.tile_file(row, "rounded", "charcoal", "two-color")
+        torig = open(tp).read()
+        tamper(V, tp, torig.replace('stroke="#DCD9D2"', 'stroke="#121212"', 1), "Charcoal ink in a Charcoal tile", "not an allowed ink")
+        head, tail = torig.split('<g id="icon"', 1)
+        moved = head + '<g id="icon"' + re.sub(r'cx="([0-9.]+)"', lambda m: f'cx="{float(m.group(1)) + 0.5:g}"', tail, count=1)
+        tamper(V, tp, moved, "a moved coordinate in a tile's icon", "icon geometry differs")
+        tamper(V, tp, torig.replace('fill="#121212"/>', 'fill="#1F2D5A"/>', 1), "a Prussian tile in a Charcoal file", "first shape is not")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -288,10 +329,30 @@ def tamper(V, path, text, name, needle, also=None):
         open(also[0], "w").write(keep2)
 
 
+def tile_shape_tests():
+    import cl_tiles as T
+    r = T.curvature_report(T.ROUNDED_D)
+    check("rounded square: curvature steps at the joins under 0.2 percent of peak", r["max_jump_vs_peak_curvature"] < 0.002,
+          f"{r['max_jump_vs_peak_curvature'] * 100:.3f} percent over {r['segments']} cubics")
+    check("rounded square: no concave stretch and no sign flips", r["concave_samples"] == 0 and r["sign_flips_at_joins"] == 0)
+    dev = T.deviation_from_exact(T.ROUNDED_D)
+    check("rounded square: within 0.002 units of |x|^5 + |y|^5 = 1", dev < 0.002, f"{dev:.5f} units")
+    nums = [float(v) for v in re.findall(r"-?\d+\.?\d*", T.ROUNDED_D)]
+    check("rounded square: outline inside 0..128", min(nums) >= 0 and max(nums) <= 128, f"{min(nums)}..{max(nums)}")
+    pts = np.array([[64, 64], [64, 1], [10, 10], [0.5, 64], [127, 127]], float)
+    d = T.inside_distance("rounded", pts)
+    check("margins: inside distance positive inside, negative at the cut corner", d[0] > 60 and d[1] > 0 and d[2] > 0 and d[4] < 0,
+          str(np.round(d, 2)))
+    sq = T.inside_distance("square", pts)
+    ci = T.inside_distance("circle", pts)
+    check("margins: square and circle distances", abs(sq[3] - 0.5) < 1e-9 and abs(ci[0] - 64) < 1e-9 and ci[2] < 0)
+
+
 def main():
     reference_tests()
     validator_tests()
     bake_tests()
+    tile_shape_tests()
     feature_build_test()
     n_fail = sum(1 for r in RESULTS if not r[1])
     print(f"\n{len(RESULTS) - n_fail} passed, {n_fail} failed")

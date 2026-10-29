@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-29-tile-square-charcoal-two-color" data-id="R-29" width="128" height="128" viewBox="0 0 128 128">
+  <title>Baby Bonds</title>
+  <desc>Oath &amp; Action Civic Line R-29 Baby Bonds: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <circle cx="33.0321" cy="60.6857" r="7.7008" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.5714 82.8256 C21.3407 83.6908 18.8246 85.5733 17.0882 83.2521 C16.5216 82.4966 15.9611 79.1824 17.5451 77.8908 C23.0283 73.4189 23.0405 70.2448 33.0321 70.2448 C43.0237 70.2448 43.0359 73.4189 48.5191 77.8908 C50.1031 79.1824 49.5426 82.4966 48.976 83.2521 C47.2397 85.5733 44.7235 83.6908 43.4928 82.8256" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.3565" y1="80.9065" x2="24.3565" y2="95.6015" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.7078" y1="80.9065" x2="41.7078" y2="95.6015" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.0321" y1="92.6345" x2="33.0321" y2="95.5284" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M55.5315 70.1229 L59.3941 68.9166 C60.0582 69.142 63.8233 60.9233 63.6954 60.3445 C62.8059 56.3174 61.0634 55.367 62.416 52.4853 C68.6851 49.695 72.1639 54.9771 74.7836 54.6176 L77.2815 54.2216 L93.5483 54.2216 C93.9992 54.2216 103.9116 57.6212 105.3067 59.0042 C109.2851 62.9338 112.0511 67.3204 111.6429 73.4433 C111.0519 82.3687 107.366 83.441 103.7105 88.9181 L103.7105 95.6319 L95.3273 95.6319 L92.3603 90.4046 L79.688 90.4046 L76.721 95.6319 L68.3378 95.6319 L68.3378 88.5525 C67.2534 86.609 65.3282 86.5298 63.4517 84.0441 C57.9563 76.7698 62.5134 80.4557 59.0651 79.3834 L55.7387 78.7254 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.2815 54.2216 L91.416 54.2216 A2.132352 2.132352 0 0 1 93.5483 56.354 L93.5483 56.9328 A2.132327 2.132327 0 0 1 91.416 59.0651 L77.2815 59.0651 A2.132327 2.132327 0 0 1 75.1492 56.9328 L75.1492 56.354 A2.132352 2.132352 0 0 1 77.2815 54.2216 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="105.4895" y1="59.126" x2="109.4496" y2="53.6429" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="82.7708" cy="40.1603" r="7.4023" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

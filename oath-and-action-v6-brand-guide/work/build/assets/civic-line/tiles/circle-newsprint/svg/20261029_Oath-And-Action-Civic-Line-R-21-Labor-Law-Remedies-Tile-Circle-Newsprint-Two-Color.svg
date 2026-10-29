@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-21-tile-circle-newsprint-two-color" data-id="R-21" width="128" height="128" viewBox="0 0 128 128">
+  <title>Labor-Law Remedies</title>
+  <desc>Oath &amp; Action Civic Line R-21 Labor-Law Remedies: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <path d="M16.6983 53.8865 A12.233604 13.707973 0 0 1 25.4897 39.8435" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.3254 39.8435 A12.233604 13.707973 0 0 1 41.1168 53.8865" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.4897 48.3424 L25.4897 39.1428 A1.218469 1.218469 0 0 1 26.7082 37.9244 L31.1069 37.9244 A1.218469 1.218469 0 0 1 32.3254 39.1428 L32.3254 48.3424" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14.9741" y1="53.8865" x2="42.841" y2="53.8865" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.3372 53.8865 A10.978586 11.734049 0 0 0 28.9075 68.7948 A10.97861 11.734075 0 0 0 39.4779 53.8865" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.9678 93.6275 L7.9678 85.6708 A20.939707 13.768908 0 0 1 28.9075 71.9019 A20.939732 13.768925 0 0 1 49.8473 85.6708 L49.8473 93.6275" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16.7592" y1="86.1582" x2="16.7592" y2="93.396" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.0559" y1="86.1582" x2="41.0559" y2="93.396" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M49.9386 72.6208 L49.9386 35.6458 A1.644979 1.644979 0 0 1 51.5836 34.0008 L102.1204 34.0008 A1.644979 1.644979 0 0 1 103.7654 35.6458 L103.7654 53.7038" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.6561" y1="44.2605" x2="94.1576" y2="44.2605" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.6561" y1="53.655" x2="86.2374" y2="53.655" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.6561" y1="63.0435" x2="81.0588" y2="63.0435" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.6561" y1="72.438" x2="74.2779" y2="72.438" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.5237" y1="92.0252" x2="84.0441" y2="92.0252" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="102.7784" cy="77.5922" r="16.7786" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="95.7294,77.3912 100.7983,82.3382 109.9126,72.2553" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

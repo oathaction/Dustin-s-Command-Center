@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-16-tile-square-newsprint-two-color" data-id="R-16" width="128" height="128" viewBox="0 0 128 128">
+  <title>Court Terms &amp; Ethics</title>
+  <desc>Oath &amp; Action Civic Line R-16 Court Terms &amp; Ethics: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <line x1="61.0147" y1="28.475" x2="61.0147" y2="35.658" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="61.0147" cy="40.4771" r="4.8191" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="61.0147" y1="45.2962" x2="61.0147" y2="57.3592" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.668 43.7122 A255.882482 255.882482 0 0 1 56.1956 41.0132" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.8338 41.0132 A255.882482 255.882482 0 0 1 98.3614 43.7122" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="11.0323,74.1135 25.313,44.9611 39.5937,74.1135" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="11.0323" y1="74.1135" x2="39.5937" y2="74.1135" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.0323 74.1135 A14.500028 14.500028 0 0 0 39.5937 74.1135" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="82.4357,74.1135 96.7164,44.9611 110.3086,72.7122" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="82.4357" y1="74.1135" x2="100.0672" y2="74.1135" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.4357 74.1135 A14.500012 14.500012 0 0 0 89.0948 83.9345" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="61.0147" cy="75.8193" r="13.1536" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="61.0147,69.2395 61.0147,75.8193 63.2994,77.9212" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="106.4582" cy="88.8815" r="10.7836" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="102.6261,89.2227 105.3677,91.7815 111.0336,85.8719" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

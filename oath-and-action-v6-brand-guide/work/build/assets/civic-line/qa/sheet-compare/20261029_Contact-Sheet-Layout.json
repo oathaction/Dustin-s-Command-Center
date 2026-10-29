@@ -272,6 +272,22 @@
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
           "source_wordmark_width_px": 243
+        },
+        "red-newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Red-Newsprint.svg",
+          "footer_size_px": 12.57,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Newsprint.svg",
+          "footer_size_px": 12.57,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
         }
       }
     },
@@ -540,6 +556,22 @@
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
           "source_wordmark_width_px": 243
+        },
+        "red-newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Red-Newsprint.svg",
+          "footer_size_px": 13.283,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Newsprint.svg",
+          "footer_size_px": 13.283,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
         }
       }
     },
@@ -803,6 +835,22 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.svg",
+          "footer_size_px": 12.829,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "red-newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Red-Newsprint.svg",
+          "footer_size_px": 12.829,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Newsprint.svg",
           "footer_size_px": 12.829,
           "missing_icons": [],
           "wordmark_scale": 0.22,
@@ -1210,6 +1258,22 @@
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
           "source_wordmark_width_px": 244
+        },
+        "red-newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Red-Newsprint.svg",
+          "footer_size_px": 12.505,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 244
+        },
+        "newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Newsprint.svg",
+          "footer_size_px": 12.505,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 244
         }
       }
     },
@@ -1607,6 +1671,22 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.svg",
+          "footer_size_px": 12.7,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "red-newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red-Newsprint.svg",
+          "footer_size_px": 12.7,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "newsprint": {
+          "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Newsprint.svg",
           "footer_size_px": 12.7,
           "missing_icons": [],
           "wordmark_scale": 0.22,

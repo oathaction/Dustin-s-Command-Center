@@ -1,10 +1,10 @@
 {
   "id": "CL-023",
   "label": "Evidence",
-  "built": "2026-10-29T10:43:45+00:00",
+  "built": "2026-10-29T20:10:50+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.958,
   "silhouette_iou_4x": 0.9468,
   "red_iou_1x": 0.8986,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 8,
+  "bake_check_max_diff_levels_4x": 10,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    24.852,
-    31.954,
-    102.927,
-    95.615
+    15.066,
+    23.942,
+    112.658,
+    103.519
   ],
   "export_inside_0_128": true,
   "elements": 9,

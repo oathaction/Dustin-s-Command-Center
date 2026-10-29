@@ -58,8 +58,12 @@ TITLES = {
     "04": [("Inter-700", "04 / Reforms R-01–R-25")],
     "05": [("Inter-400", "05 / "), ("Inter-700", "Reforms"), ("Inter-400", " R-26–R-50")],
 }
-EDITIONS = {"red-black": {"label": "Red-Black", "accent": C.PILLAR_RED, "src": "red"},
-            "black": {"label": "Black", "accent": C.CHARCOAL, "src": "black"}}
+# Dark editions sit on Newsprint and are compared with their source sheet; the
+# light editions (DR-09) sit on Charcoal and have no source sheet to compare.
+EDITIONS = {"red-black": {"label": "Red-Black", "accent": C.PILLAR_RED, "src": "red", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
+            "black": {"label": "Black", "accent": C.CHARCOAL, "src": "black", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
+            "red-newsprint": {"label": "Red-Newsprint", "accent": C.PILLAR_RED, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT},
+            "newsprint": {"label": "Newsprint", "accent": C.NEWSPRINT, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT}}
 RULE_T = 1.2   # rule thickness in px: median of the five source rules (1.02 to 1.5)
 
 
@@ -180,13 +184,13 @@ def text_path(fonts, chars, size, dx, baseline, shaped_size=100.0):
 
 # ------------------------------------------------------------------ sheet assembly
 
-def wordmark_group(meas, accent):
+def wordmark_group(meas, accent, ink=C.CHARCOAL):
     s = open(WORDMARK, encoding="utf-8").read()
     paths = re.findall(r"<path\b[^>]*/>", s)
     k = (meas["baseline"] - meas["cap_top"]) / (WM_BASELINE - WM_CAP_TOP)
     out = []
     for p in paths:
-        p = p.replace('fill="currentColor"', f'fill="{C.CHARCOAL}"')
+        p = p.replace('fill="currentColor"', f'fill="{ink}"')
         p = re.sub(r'fill="var\(--amp,[^)]*\)"', f'fill="{accent}"', p)
         out.append("    " + p)
     tx = meas["x0"]
@@ -196,8 +200,7 @@ def wordmark_group(meas, accent):
 
 
 def icon_block(row, edition):
-    ex = row["exports"]
-    p = os.path.join(C.ASSETS, edition, ex["svg_red_black"] if edition == "red-black" else ex["svg_black"])
+    p = C.edition_file(row, edition)
     if not os.path.exists(p):
         return None
     s = open(p, encoding="utf-8").read()
@@ -267,18 +270,18 @@ def build():
                      f"  <title>Oath &amp; Action Civic Line, sheet {key}, {ed['label']} edition</title>",
                      f"  <desc>Contact sheet rebuilt from the traced Civic Line masters at the source sheet's layout. "
                      f"Text is Inter converted to outlines. The wordmark is the Edition 06 display master (DR-05).</desc>",
-                     f'  <rect id="newsprint" x="0" y="0" width="1536" height="1024" fill="{C.NEWSPRINT}"/>']
-            wm, k, wmw = wordmark_group(m["wordmark"], ed["accent"])
+                     f'  <rect id="ground" x="0" y="0" width="1536" height="1024" fill="{ed["ground"]}"/>']
+            wm, k, wmw = wordmark_group(m["wordmark"], ed["accent"], ed["ink"])
             parts.append(wm)
             ru = m["rule"]
             parts.append(f'  <rect id="rule" x="{ru["x0"]}" y="{n2(ru["cy"] - RULE_T / 2)}" width="{ru["x1"] - ru["x0"]}" '
-                         f'height="{n2(RULE_T)}" fill="{C.CHARCOAL}"/>')
+                         f'height="{n2(RULE_T)}" fill="{ed["ink"]}"/>')
             a, b = ink_extent(fonts, shaped[f"{key}-title"]["chars"], title_size)
             dx = m["title"]["x1"] - b
-            parts.append(f'  <path id="title" fill="{C.CHARCOAL}" d="{text_path(fonts, shaped[f"{key}-title"]["chars"], title_size, dx, m["title"]["baseline"])}"/>')
+            parts.append(f'  <path id="title" fill="{ed["ink"]}" d="{text_path(fonts, shaped[f"{key}-title"]["chars"], title_size, dx, m["title"]["baseline"])}"/>')
             a, b = ink_extent(fonts, shaped[fid]["chars"], fsz)
             dx = m["footer"]["x1"] - b
-            parts.append(f'  <path id="footer" fill="{C.CHARCOAL}" d="{text_path(fonts, shaped[fid]["chars"], fsz, dx, m["footer"]["baseline"])}"/>')
+            parts.append(f'  <path id="footer" fill="{ed["ink"]}" d="{text_path(fonts, shaped[fid]["chars"], fsz, dx, m["footer"]["baseline"])}"/>')
             missing = []
             for r in rows:
                 cm = cells[(r["row"], r["column"])]
@@ -290,12 +293,12 @@ def build():
                 ch = shaped[f"{r['id']}-cap"]["chars"]
                 a, b = ink_extent(fonts, ch, cap_size)
                 dx = (cm["cap"]["x0"] + cm["cap"]["x1"]) / 2.0 - (a + b) / 2.0
-                parts.append(f'  <path id="caption-{r["id"].lower()}" fill="{C.CHARCOAL}" d="{text_path(fonts, ch, cap_size, dx, cm["cap"]["baseline"])}"/>')
+                parts.append(f'  <path id="caption-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, cap_size, dx, cm["cap"]["baseline"])}"/>')
                 if id_size:
                     ch = shaped[f"{r['id']}-id"]["chars"]
                     a, b = ink_extent(fonts, ch, id_size)
                     dx = (cm["id"]["x0"] + cm["id"]["x1"]) / 2.0 - (a + b) / 2.0
-                    parts.append(f'  <path id="id-{r["id"].lower()}" fill="{C.CHARCOAL}" d="{text_path(fonts, ch, id_size, dx, cm["id"]["baseline"])}"/>')
+                    parts.append(f'  <path id="id-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, id_size, dx, cm["id"]["baseline"])}"/>')
             parts.append("</svg>")
             svg = "\n".join(parts) + "\n"
             name = f"{C.DATE}_Oath-And-Action-Civic-Line-{key}-{SHEET_SLUG[key]}-{ed['label']}"
@@ -323,7 +326,8 @@ def build():
         for suf in ("", "-2x"):
             p = os.path.join(OUT, name + suf + ".png")
             Image.open(p).convert("RGB").save(p, optimize=True)
-        compare(key, ed_key, name)
+        if EDITIONS[ed_key]["src"]:
+            compare(key, ed_key, name)
     C.write_json(os.path.join(CMP, f"{C.DATE}_Contact-Sheet-Layout.json"), layout)
     for key, lay in layout["sheets"].items():
         e = lay["editions"]["red-black"]

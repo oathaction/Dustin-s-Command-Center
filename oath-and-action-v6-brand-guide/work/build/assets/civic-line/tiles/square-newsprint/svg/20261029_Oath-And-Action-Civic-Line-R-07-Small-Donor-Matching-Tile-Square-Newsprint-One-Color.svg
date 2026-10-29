@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-07-tile-square-newsprint-one-color" data-id="R-07" width="128" height="128" viewBox="0 0 128 128">
+  <title>Small-Donor Matching</title>
+  <desc>Oath &amp; Action Civic Line R-07 Small-Donor Matching: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M86.7065 42.4876 A30.157591 30.157591 0 0 0 115.2801 42.4876" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 50.2798 A30.157591 30.157591 0 0 0 115.2801 50.2798" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 58.0721 A30.157591 30.157591 0 0 0 115.2801 58.0721" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 65.8643 A30.157591 30.157591 0 0 0 115.2801 65.8643" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 73.6565 A30.157591 30.157591 0 0 0 115.2801 73.6565" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 81.4487 A30.157591 30.157591 0 0 0 115.2801 81.4487" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.7065 39.9958 V89.241 A30.157591 30.157591 0 0 0 115.2801 89.241 V39.9958" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21.2372 65.9252 A26.98951 26.98951 0 0 0 47.5931 65.9252" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21.2372 63.2994 A13.177923 4.739909 0 0 1 34.4151 58.5595 A13.177948 4.739918 0 0 1 47.5931 63.2994 V73.7235 A26.98951 26.98951 0 0 1 21.2372 73.7235 V63.2994" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.0916 81.0284 A31.497908 31.497908 0 0 0 43.7731 81.0284" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.8445 72.6513 C15.1386 73.7479 13.0916 75.0882 13.0916 79.2311 V89.7406 A31.497908 31.497908 0 0 0 43.7731 89.7406 V80.4496" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M86.7065 45.4181 V39.9958 A14.286801 6.074175 0 0 1 100.9933 33.9216 A14.286801 6.074175 0 0 1 115.2801 39.9958 V45.4181" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M86.7065 42.4876 A30.157579 30.157579 0 0 0 90.0269 44.0229" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M111.9597 44.0229 A30.157579 30.157579 0 0 0 115.2801 42.4876" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <line x1="56.0006" y1="67.0036" x2="78.9874" y2="67.0036" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.9758,59.1443 78.9874,67.0036 70.9758,74.8628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

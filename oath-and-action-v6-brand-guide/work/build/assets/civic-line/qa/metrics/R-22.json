@@ -1,10 +1,10 @@
 {
   "id": "R-22",
   "label": "Wage Boards",
-  "built": "2026-10-29T10:45:14+00:00",
+  "built": "2026-10-29T20:12:34+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.597938,
+  "stroke_units": 3.2887,
   "silhouette_iou_1x": 0.8286,
   "silhouette_iou_4x": 0.8199,
   "red_iou_1x": 0.8574,
@@ -54,11 +54,12 @@
   "bake_check_iou_1x": 1.0,
   "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    16.537,
-    38.933,
-    111.609,
-    89.052
+    5.773,
+    33.248,
+    122.407,
+    94.734
   ],
   "export_inside_0_128": true,
   "elements": 11,

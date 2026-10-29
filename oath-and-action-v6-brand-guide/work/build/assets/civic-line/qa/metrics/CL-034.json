@@ -1,10 +1,10 @@
 {
   "id": "CL-034",
   "label": "New Technology",
-  "built": "2026-10-29T10:44:08+00:00",
+  "built": "2026-10-29T20:11:19+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.9277,
   "silhouette_iou_4x": 0.9502,
   "red_iou_1x": 0.9123,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 7,
+  "bake_check_max_diff_levels_4x": 38,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    27.811,
-    33.294,
-    99.726,
-    94.56
+    18.764,
+    25.618,
+    108.658,
+    102.2
   ],
   "export_inside_0_128": true,
   "elements": 11,

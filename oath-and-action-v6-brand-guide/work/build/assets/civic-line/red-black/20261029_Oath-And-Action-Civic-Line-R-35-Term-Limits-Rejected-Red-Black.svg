@@ -5,21 +5,21 @@
   <defs>
     <mask id="r-35-x-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <line x1="87.7166" y1="70.2387" x2="96.714" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="96.714" y1="70.2387" x2="87.7166" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="93.6458" y1="71.7983" x2="104.8925" y2="83.045" fill="none" stroke="#000000" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="104.8925" y1="71.7983" x2="93.6458" y2="83.045" fill="none" stroke="#000000" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     </mask>
   </defs>
   <g id="base">
-    <circle cx="47.2482" cy="44.86" r="5.3808" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.5136 64.8919 V58.7508 A9.265407 7.53515 0 0 0 47.2482 51.2156 A9.265382 7.535129 0 0 0 37.9829 58.7508 V58.9311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.2308 64.8919 L33.5329 61.8555 A2.924385 2.924385 0 0 1 36.4573 58.9311 H40.5612 A2.92436 2.92436 0 0 1 43.4855 61.8555 L43.7877 64.8919" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M57.9076 64.8919 H28.0546 A2.388243 2.388243 0 0 0 25.6664 67.2802 V68.4353 A2.388218 2.388218 0 0 0 28.0546 70.8235 H59.6134" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="29.975" y1="70.8235" x2="29.975" y2="88.4185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="61.3924" y1="75.2588" x2="61.3924" y2="88.4185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M91.2941 60.5882 A14.134456 14.134456 0 1 0 78.0467 74.864" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <polyline points="77.1597,53.521 77.1597,60.7588 82.3992,60.7588" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="43.0603" cy="40.075" r="6.7261" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.642 65.1149 V57.4384 A11.581718 9.418904 0 0 0 43.0603 48.0195 A11.581718 9.418904 0 0 0 31.4786 57.4384 V57.6639" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.5384 65.1149 L25.9162 61.3193 A3.655432 3.655432 0 0 1 29.5716 57.6639 H34.7015 A3.655432 3.655432 0 0 1 38.3569 61.3193 L38.7347 65.1149" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.3845 65.1149 H19.0683 A2.985298 2.985298 0 0 0 16.083 68.1002 V69.5441 A2.985298 2.985298 0 0 0 19.0683 72.5294 H58.5168" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="21.4687" y1="72.5294" x2="21.4687" y2="94.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="60.7405" y1="78.0735" x2="60.7405" y2="94.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98.1177 59.7353 A17.668073 17.668073 0 1 0 81.5584 77.58" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <polyline points="80.4496,50.9013 80.4496,59.9485 86.999,59.9485" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="92.2153" cy="74.7373" r="11.3807" fill="#E63946" mask="url(#r-35-x-cut)"/>
+    <circle cx="99.2691" cy="77.4216" r="14.2258" fill="#E63946" mask="url(#r-35-x-cut)"/>
   </g>
 </svg>

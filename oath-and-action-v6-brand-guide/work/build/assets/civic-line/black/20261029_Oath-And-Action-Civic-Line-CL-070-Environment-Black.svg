@@ -3,10 +3,10 @@
   <title>Environment</title>
   <desc>Oath &amp; Action Civic Line CL-070 Environment. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M31.442 94.0966 V80.084 C23.2805 71.8994 25.8969 59.4469 29.1854 53.3212 C30.0393 51.7305 31.9412 48.6989 35.3454 45.6418 C45.1344 36.8512 59.0157 35.3285 71.0672 34.3664 C71.964 57.9563 64.9943 79.7672 38.2314 84.0319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
-    <path d="M31.442 80.084 C35.9845 67.5872 41.2192 57.6249 53.3748 50.5966" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.3025 101.6208 V84.1051 C13.1006 73.8742 16.3711 58.3086 20.4817 50.6515 C21.5491 48.6631 23.9264 44.8736 28.1818 41.0522 C40.4179 30.064 57.7696 28.1606 72.834 26.958 C73.955 56.4454 65.2429 83.709 31.7893 89.0399" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="miter"/>
+    <path d="M23.3025 84.1051 C28.9807 68.484 35.5239 56.0311 50.7185 47.2458" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M87.2244 47.7697 C81.9556 56.2114 72.2321 66.8756 72.6805 77.7835 A14.543883 14.543883 0 0 0 87.2244 92.3274 A14.543858 14.543858 0 0 0 101.7682 77.7835 C102.2166 66.8756 92.498 56.2114 87.2244 47.7697 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.0305 43.7122 C86.4445 54.2643 74.2901 67.5945 74.8506 81.2294 A18.17987 18.17987 0 0 0 93.0305 99.4093 A18.179845 18.179845 0 0 0 111.2103 81.2294 C111.7708 67.5945 99.6225 54.2643 93.0305 43.7122 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

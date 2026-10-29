@@ -3,15 +3,15 @@
   <title>Watchdogs</title>
   <desc>Oath &amp; Action Civic Line CL-028 Watchdogs. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M71.5059 45.1134 V37.8074 A1.218494 1.218494 0 0 0 70.2874 36.5889 H32.9334 A1.218469 1.218469 0 0 0 31.715 37.8074 V84.6802 A1.218469 1.218469 0 0 0 32.9334 85.8987 H70.2874 A1.218494 1.218494 0 0 0 71.5059 84.6802 V83.5689" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.3126" y1="46.366" x2="62.9034" y2="46.366" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.3126" y1="55.4755" x2="54.0084" y2="55.4755" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.3126" y1="64.5849" x2="51.8639" y2="64.5849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.3126" y1="73.6943" x2="51.8639" y2="73.6943" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="71.9543" cy="64.5946" r="14.3392" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="81.3415" y1="75.4489" x2="84.5681" y2="78.5244" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M73.3824 40.3918 V31.2592 A1.52313 1.52313 0 0 0 71.8592 29.7361 H25.1668 A1.523105 1.523105 0 0 0 23.6437 31.2592 V89.8502 A1.523105 1.523105 0 0 0 25.1668 91.3733 H71.8592 A1.52313 1.52313 0 0 0 73.3824 89.8502 V88.4611" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.3907" y1="41.9576" x2="62.6292" y2="41.9576" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.3907" y1="53.3443" x2="51.5105" y2="53.3443" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.3907" y1="64.7311" x2="48.8298" y2="64.7311" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.3907" y1="76.1179" x2="48.8298" y2="76.1179" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="73.9429" cy="64.7433" r="17.924" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="85.6769" y1="78.3111" x2="89.7101" y2="82.1555" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M88.7792 79.1092 L95.2956 85.6452 A2.988058 2.988058 0 0 1 91.065 89.8661 L84.5486 83.3301 A2.988058 2.988058 0 0 1 88.7792 79.1092 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M94.974 82.8866 L103.1196 91.0565 A3.735081 3.735081 0 0 1 97.8313 96.3326 L89.6857 88.1626 A3.735046 3.735046 0 0 1 94.974 82.8866 Z" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

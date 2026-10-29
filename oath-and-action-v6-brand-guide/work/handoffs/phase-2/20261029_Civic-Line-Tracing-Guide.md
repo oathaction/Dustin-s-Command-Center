@@ -13,7 +13,7 @@ Paths below are relative to `work/build/`. Run every command from `work/build/sc
 ## Fixed numbers
 
 - Line weight W = 5.5 source px for every stroke. The build applies it; you never write a width.
-- Scale s = 0.487395 viewBox units per source px, one value for the set. Strokes export at 2.6807 units.
+- Scale: since DR-08 (October 29) each icon exports at s_i = min(116 / extent, 1.25 x 0.487395) viewBox units per source px, the capped fit, so strokes export at 2.68 to 3.35 units. `apply_framing.py` writes it into the inventory; nothing in `src/` changes.
 - The build maps each icon's ink-box centre to (64, 64). You draw in crop pixels and never think about the 128 grid.
 
 ## The loop

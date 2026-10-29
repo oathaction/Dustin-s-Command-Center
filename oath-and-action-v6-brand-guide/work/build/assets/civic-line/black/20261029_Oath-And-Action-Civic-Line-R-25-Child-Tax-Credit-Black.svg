@@ -3,23 +3,23 @@
   <title>Child Tax Credit</title>
   <desc>Oath &amp; Action Civic Line R-25 Child Tax Credit. Traced vector reconstruction from the Civic Line reference sheet 04, row 5, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M36.199 53.5161 L39.1087 53.4771 L38.48 56.1383 A6.306892 6.306892 0 1 1 36.199 53.5161 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M19.2718 83.5445 A12.876962 15.30906 0 0 1 32.1244 69.2054 A12.876962 15.30906 0 0 1 44.977 83.5445" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="24.5308" y1="81.4487" x2="24.5308" y2="90.1244" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="39.718" y1="81.4487" x2="39.718" y2="90.1244" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.4308 59.6622 L56.4308 40.6538 A2.485707 2.485707 0 0 1 58.9165 38.1681 L93.9504 38.1681 A2.485707 2.485707 0 0 1 96.4361 40.6538 L96.4361 54.6176" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.4308 79.1092 L56.4308 81.7412 A2.485707 2.485707 0 0 0 58.9165 84.2269 L82.4235 84.2269" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="64.0487" y1="47.7064" x2="89.1008" y2="47.7064" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="64.0487" y1="56.343" x2="84.2903" y2="56.343" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="66.0471" y1="64.9748" x2="78.8655" y2="64.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="66.0471" y1="73.6114" x2="76.4286" y2="73.6114" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.3579 50.9363 L32.9837 50.8877 L32.2002 54.2038 A7.858857 7.858857 0 1 1 29.3579 50.9363 Z" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.2653 88.3539 A16.045651 19.076226 0 0 1 24.2806 70.4863 A16.045651 19.076226 0 0 1 40.2959 88.3539" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14.8184" y1="85.7424" x2="14.8184" y2="96.5529" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.7428" y1="85.7424" x2="33.7428" y2="96.5529" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.5682 58.5948 L54.5682 34.9089 A3.097367 3.097367 0 0 1 57.6655 31.8115 L101.3204 31.8115 A3.097392 3.097392 0 0 1 104.4178 34.9089 L104.4178 52.3089" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.5682 82.8272 L54.5682 86.1068 A3.097367 3.097367 0 0 0 57.6655 89.2042 L86.9571 89.2042" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.0607" y1="43.697" x2="95.2775" y2="43.697" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.0607" y1="54.4588" x2="89.2831" y2="54.4588" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.5508" y1="65.2147" x2="82.5236" y2="65.2147" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.5508" y1="75.9765" x2="79.4869" y2="75.9765" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="46.6487" y1="69.7025" x2="61.8067" y2="69.7025" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="52.1563,63.6345 46.6487,69.7025 52.1563,75.7706" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="96.2802" cy="72.9145" r="12.9306" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M99.034 70.1217 A2.77817 2.071443 0 1 0 96.4605 72.9681 A2.778139 2.68066 0 1 1 93.8871 76.6528" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="96.4605" y1="66.3639" x2="96.4605" y2="68.8252" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="96.4605" y1="78.3294" x2="96.4605" y2="79.8403" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="42.3791" y1="71.1058" x2="61.267" y2="71.1058" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="49.2419,63.5445 42.3791,71.1058 49.2419,78.667" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.2235" cy="75.1081" r="16.1125" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M107.6549 71.6281 A3.461777 2.58115 0 1 0 104.4482 75.1749 A3.461775 3.340309 0 1 1 101.2415 79.7663" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="104.4482" y1="66.9456" x2="104.4482" y2="70.0126" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="104.4482" y1="81.8555" x2="104.4482" y2="83.7382" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

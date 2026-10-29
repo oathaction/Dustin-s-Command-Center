@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-050-tile-square-newsprint-two-color" data-id="CL-050" width="128" height="128" viewBox="0 0 128 128">
+  <title>Worker Bargaining</title>
+  <desc>Oath &amp; Action Civic Line CL-050 Worker Bargaining: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <circle cx="29.4071" cy="39.7826" r="7.3109" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="98.2883" cy="39.7826" r="7.3109" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.7678 81.1319 L15.1691 61.8676 A10.052513 10.052513 0 0 1 25.2216 51.8151 H25.9222 C39.0454 51.8151 40.1055 61.3071 40.6355 64.8529" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M113.9275 81.1319 L112.5263 61.8676 A10.052513 10.052513 0 0 0 102.4738 51.8151 H101.7731 C88.65 51.8151 87.5899 61.3071 87.0599 64.8529" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="29.2244,64 29.2244,71.4023 98.471,71.4023 98.471,64" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.6449" y1="81.1319" x2="120.0504" y2="81.1319" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="19.7689" y1="81.1319" x2="19.7689" y2="95.5588" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.458" y1="81.1319" x2="41.458" y2="95.5588" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.2374" y1="81.1319" x2="86.2374" y2="95.5588" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="107.9265" y1="81.1319" x2="107.9265" y2="95.5588" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="47.855" y1="54.4836" x2="80.145" y2="54.4836" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="52.4853,49.3355 47.855,54.4836 52.4853,59.6317" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="75.5147,49.3355 80.145,54.4836 75.5147,59.6317" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

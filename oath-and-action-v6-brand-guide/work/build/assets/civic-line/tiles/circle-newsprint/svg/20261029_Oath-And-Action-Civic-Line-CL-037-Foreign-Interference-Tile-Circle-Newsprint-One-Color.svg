@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-037-tile-circle-newsprint-one-color" data-id="CL-037" width="128" height="128" viewBox="0 0 128 128">
+  <title>Foreign Interference</title>
+  <desc>Oath &amp; Action Civic Line CL-037 Foreign Interference: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <circle cx="29.0804" cy="48.5732" r="20.9278" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="29.0804" cy="48.5732" rx="8.2216" ry="20.9278" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="9.4441" y1="41.3381" x2="48.7167" y2="41.3381" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="9.4441" y1="55.8082" x2="48.7167" y2="55.8082" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="87.3196,56.2268 79.5942,56.2268 73.4713,66.9179 120.0208,66.9179 113.8979,56.2268 111.835,56.2268" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="120.0208" y1="66.9179" x2="120.0208" y2="89.4124" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="73.4713,66.9179 73.4713,97.1497 82.6138,97.1497" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="89.3526" y1="61.3691" x2="94.3753" y2="54.0742" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.0752" y1="59.934" x2="101.9093" y2="61.5485" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M57.7934 42.2351 A24.216474 24.216474 0 0 1 52.986 68.1736" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.6144 37.5711 A31.601029 31.601029 0 0 1 58.8577 75.3608" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="94.3753,54.0742 100.4144,45.0155 109.8618,49.7093 103.0752,59.934" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M101.5804 75.2711 A2.272171 2.272171 0 0 1 105.5866 75.2711 L117.5633 97.5025 A2.272142 2.272142 0 0 1 115.5662 100.8509 L91.6008 100.8509 A2.272142 2.272142 0 0 1 89.6037 97.5025 Z" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.5835" y1="84.3299" x2="103.5835" y2="90.7577" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="103.5835" cy="95.3917" r="1.8536" fill="#121212"/>
+  </g>
+  </g>
+</svg>

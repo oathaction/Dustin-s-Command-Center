@@ -3,17 +3,17 @@
   <title>Filibuster Reform</title>
   <desc>Oath &amp; Action Civic Line R-12 Filibuster Reform. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M29.8141 42.4571 L46.6585 42.4571 A5.848745 5.848745 0 0 1 52.5072 48.3059 L52.5072 54.3301 A5.84872 5.84872 0 0 1 46.6585 60.1788 L29.8141 60.1788 A5.84872 5.84872 0 0 1 23.9654 54.3301 L23.9654 48.3059 A5.848745 5.848745 0 0 1 29.8141 42.4571 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="42.0672,60.1788 38.6067,64.6824 38.6067,60.1788" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M81.0003 41.2094 L97.8447 41.2094 A5.84872 5.84872 0 0 1 103.6934 47.0581 L103.6934 53.0824 A5.84872 5.84872 0 0 1 97.8447 58.9311 L89.5395 58.9311 L83.4471 64.6824 L82.6185 58.9311 L81.0003 58.9311 A5.84872 5.84872 0 0 1 75.1516 53.0824 L75.1516 47.0581 A5.84872 5.84872 0 0 1 81.0003 41.2094 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.4655" y1="86.5371" x2="95.0958" y2="86.5371" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="36.1308,86.5371 36.1308,71.6813 51.4496,71.6813" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="44.5286" y1="71.6813" x2="44.5286" y2="86.5371" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="91.4306,86.5371 91.4306,71.6813 76.1118,71.6813" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.0328" y1="71.6813" x2="83.0328" y2="86.5371" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21.2676 37.0714 L42.3231 37.0714 A7.310914 7.310914 0 0 1 49.634 44.3823 L49.634 51.9126 A7.310914 7.310914 0 0 1 42.3231 59.2235 L21.2676 59.2235 A7.310914 7.310914 0 0 1 13.9567 51.9126 L13.9567 44.3823 A7.310914 7.310914 0 0 1 21.2676 37.0714 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="36.584,59.2235 32.2584,64.8529 32.2584,59.2235" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M85.2504 35.5118 L106.3059 35.5118 A7.310914 7.310914 0 0 1 113.6168 42.8227 L113.6168 50.3529 A7.310939 7.310939 0 0 1 106.3059 57.6639 L95.9244 57.6639 L88.3088 64.8529 L87.2731 57.6639 L85.2504 57.6639 A7.310939 7.310939 0 0 1 77.9395 50.3529 L77.9395 42.8227 A7.310914 7.310914 0 0 1 85.2504 35.5118 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.5819" y1="92.1714" x2="102.8698" y2="92.1714" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="29.1634,92.1714 29.1634,73.6017 48.312,73.6017" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.6607" y1="73.6017" x2="39.6607" y2="92.1714" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="98.2883,92.1714 98.2883,73.6017 79.1397,73.6017" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="87.791" y1="73.6017" x2="87.791" y2="92.1714" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M58.4924 66.2176 L58.4924 64.1462 A5.38575 5.38575 0 0 1 69.2639 64.1462 L69.2639 71.0672" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M56.1529 69.1176 L71.0672 69.1176 A0.974795 0.974795 0 0 1 72.042 70.0924 L72.042 80.6933 A0.974795 0.974795 0 0 1 71.0672 81.6681 L56.1529 81.6681 A0.97477 0.97477 0 0 1 55.1782 80.6933 L55.1782 70.0924 A0.97477 0.97477 0 0 1 56.1529 69.1176 Z M62.4355 79.2555 L62.4355 75.6 A1.852082 1.852082 0 1 1 64.7067 75.6 L64.7067 79.2555 Z" fill="#E63946" fill-rule="evenodd"/>
+    <path d="M57.1155 66.7721 L57.1155 64.1828 A6.73215 6.73215 0 0 1 70.5798 64.1828 L70.5798 72.834" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M54.1912 70.3971 L72.834 70.3971 A1.218469 1.218469 0 0 1 74.0525 71.6155 L74.0525 84.8666 A1.218494 1.218494 0 0 1 72.834 86.0851 L54.1912 86.0851 A1.218494 1.218494 0 0 1 52.9727 84.8666 L52.9727 71.6155 A1.218469 1.218469 0 0 1 54.1912 70.3971 Z M62.0443 83.0693 L62.0443 78.5 A2.315134 2.315134 0 1 1 64.8834 78.5 L64.8834 83.0693 Z" fill="#E63946" fill-rule="evenodd"/>
   </g>
 </svg>

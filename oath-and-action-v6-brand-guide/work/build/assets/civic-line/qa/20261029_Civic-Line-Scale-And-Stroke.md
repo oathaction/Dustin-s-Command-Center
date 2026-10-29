@@ -42,3 +42,7 @@ The brief's starting estimate was 3 to 4 units of stroke in the 128-unit box. Th
 ## Placement
 
 Each icon's ink-box centre in its crop maps to (64, 64): X = s * (x - cx) + 64 and Y = s * (y - cy) + 64. The inventory stores cx, cy and the matrix per icon.
+
+## Framing in the 128 box (DR-08)
+
+Dustin approved the capped fit on October 29 (DR-08). Each icon grows toward 116 units by at most 1.25 times the shared scale: s_i = min(116 / extent_i, 1.25 x 0.487395). The stroke grows with it, so it runs from 2.68 to 3.35 units across the set, a spread of 25 percent at most. 90 icons stop at the cap and 32 fill 116 units. Centring stays on each icon's ink box. The shared scale above still governs the contact sheets, which repeat the source layout.

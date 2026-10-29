@@ -3,17 +3,17 @@
   <title>Petition</title>
   <desc>Oath &amp; Action Civic Line CL-004 Petition. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M76.2824 54.2521 V41.3118 A3.533657 3.533657 0 0 0 72.7487 37.7781 H37.3249 A3.533632 3.533632 0 0 0 33.7913 41.3118 V86.4787 A3.533607 3.533607 0 0 0 37.3249 90.0123 H72.7487 A3.533632 3.533632 0 0 0 76.2824 86.4787 V82.097" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="43.3832" y1="47.877" x2="65.121" y2="47.877" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="43.3832" y1="57.6297" x2="65.121" y2="57.6297" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="43.3832" y1="67.3825" x2="60.0375" y2="67.3825" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="43.3832" y1="77.1304" x2="54.0718" y2="77.1304" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.7054" y1="52.0881" x2="88.9351" y2="55.9044" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M90.1682 54.2131 A2.382637 2.382637 0 0 1 94.0187 57.0205 L85.7768 68.3183" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="65.9788,76.3798 64.1706,84.5193 71.2086,80.1961" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M79.3529 51.8151 V35.6397 A4.41701 4.41701 0 0 0 74.9359 31.2227 H30.6561 A4.41701 4.41701 0 0 0 26.2391 35.6397 V92.0983 A4.417035 4.417035 0 0 0 30.6561 96.5154 H74.9359 A4.417035 4.417035 0 0 0 79.3529 92.0983 V86.6212" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.229" y1="43.8462" x2="65.4013" y2="43.8462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.229" y1="56.0372" x2="65.4013" y2="56.0372" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.229" y1="68.2282" x2="59.0468" y2="68.2282" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.229" y1="80.413" x2="51.5897" y2="80.413" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.6317" y1="49.1101" x2="95.1689" y2="53.8805" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.7103 51.7664 A2.978231 2.978231 0 0 1 101.5233 55.2756 L91.221 69.3979" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.4735,79.4748 64.2132,89.6492 73.0107,84.2452" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M65.9788 76.3798 L87.6825 46.639 A3.235109 3.235109 0 0 1 92.9074 50.4553 L71.2086 80.1961" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <line x1="68.0746" y1="73.5091" x2="73.3044" y2="77.3205" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66.4735 79.4748 L93.6032 42.2987 A4.043883 4.043883 0 0 1 100.1343 47.0691 L73.0107 84.2452" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <line x1="69.0933" y1="75.8864" x2="75.6305" y2="80.6506" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

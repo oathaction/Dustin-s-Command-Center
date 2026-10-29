@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-020-tile-circle-newsprint-one-color" data-id="CL-020" width="128" height="128" viewBox="0 0 128 128">
+  <title>Track</title>
+  <desc>Oath &amp; Action Civic Line CL-020 Track: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="accent">
+    <path d="M94.6511 85.2565 L110.0528 101.5172 A3.744945 3.744945 0 0 0 115.4872 96.363 L100.841 80.9004" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M27.092 48.0378 L33.5012 37.5954 A7.524123 7.524123 0 1 0 20.6828 37.5954 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base">
+    <path d="M35.7494 50.9805 H58.2975 A8.834 8.834 0 0 1 58.2975 68.6485 H20.8412 A8.834049 8.834049 0 0 0 20.8412 86.3166 H71.841" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="89.9355" cy="71.9628" r="14.104" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

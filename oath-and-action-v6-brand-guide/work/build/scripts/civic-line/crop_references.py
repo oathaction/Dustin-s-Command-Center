@@ -543,8 +543,9 @@ def main():
 def write_csv(rows):
     fields = ["id", "label", "slug", "sheet", "row", "column", "sheet_black", "sheet_red",
               "crop_x0", "crop_y0", "crop_x1", "crop_y1", "reg_dx", "reg_dy", "sheet_iou",
-              "construction", "red_text", "svg_red_black", "svg_black", "png_red_black", "png_black",
-              "ref_black", "ref_red", "status", "scale_s", "transform", "stroke_median_px", "flags"]
+              "construction", "red_text", "svg_red_black", "svg_black", "svg_red_newsprint", "svg_newsprint",
+              "png_red_black", "png_black", "png_red_newsprint", "png_newsprint",
+              "ref_black", "ref_red", "status", "scale_s", "transform", "stroke_units", "stroke_median_px", "tiles", "flags"]
     with open(C.INVENTORY_CSV, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(fields)
@@ -555,10 +556,12 @@ def write_csv(rows):
                         r["registration"]["dx"], r["registration"]["dy"], r["sheet_iou"],
                         r["construction"], r["red_text"],
                         r["exports"]["svg_red_black"], r["exports"]["svg_black"],
+                        r["exports"].get("svg_red_newsprint", ""), r["exports"].get("svg_newsprint", ""),
                         r["exports"]["png_red_black"], r["exports"]["png_black"],
+                        r["exports"].get("png_red_newsprint", ""), r["exports"].get("png_newsprint", ""),
                         r["reference_crops"]["black"], r["reference_crops"]["red"], r["status"],
-                        t.get("s", ""), t.get("formula", ""), r.get("stroke_median_px", ""),
-                        ";".join(r.get("flags", []))])
+                        t.get("s", ""), t.get("formula", ""), r.get("stroke_units", ""), r.get("stroke_median_px", ""),
+                        len(r.get("tiles", [])), ";".join(r.get("flags", []))])
 
 
 if __name__ == "__main__":

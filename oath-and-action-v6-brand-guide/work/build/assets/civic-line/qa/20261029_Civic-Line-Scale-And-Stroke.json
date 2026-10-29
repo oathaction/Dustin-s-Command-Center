@@ -2337,5 +2337,14 @@
       "cx": 105.5,
       "cy": 64.5
     }
-  ]
+  ],
+  "framing": {
+    "decision": "DR-08",
+    "rule": "s_i = min(116 / extent_i, 1.25 * s)",
+    "cap": 1.25,
+    "stroke_units_min": 2.6807,
+    "stroke_units_max": 3.3508,
+    "icons_at_cap": 90,
+    "icons_filling_116": 32
+  }
 }

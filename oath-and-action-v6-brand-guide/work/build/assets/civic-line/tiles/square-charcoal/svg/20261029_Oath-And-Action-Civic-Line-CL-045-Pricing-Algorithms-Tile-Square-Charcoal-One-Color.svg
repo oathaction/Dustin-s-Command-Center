@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-045-tile-square-charcoal-one-color" data-id="CL-045" width="128" height="128" viewBox="0 0 128 128">
+  <title>Pricing Algorithms</title>
+  <desc>Oath &amp; Action Civic Line CL-045 Pricing Algorithms: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <polygon points="10.3865,96.0462 10.3865,54.4958 22.8638,41.6103 29.2244,41.6103 41.7017,54.4958 41.7017,96.0462" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="46.3319,52.333 54.0693,43.5903 61.4412,43.4076 73.3214,57.9685 71.3109,96.7773 43.8949,95.7051" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.0441" y1="53.0336" x2="30.1626" y2="42.7739" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="28.8466,41.6407 39.9958,31.0399 54.0693,43.5903" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="26.0441" cy="53.0336" r="3.3508" fill="#DCD9D2"/>
+    <circle cx="57.7248" cy="55.1964" r="3.3508" fill="#DCD9D2"/>
+    <line x1="98.7878" y1="56.0798" x2="98.7878" y2="75.2223" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M107.0431 75.2223 H90.1061 A4.691189 4.691189 0 0 0 85.4149 79.9135 V86.2983" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="112.1912" cy="75.2223" r="5.1481" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="85.4149" cy="91.4464" r="5.1481" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="26.0441" y1="64.9139" x2="26.0441" y2="67.4727" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M30.7353 69.7269 A4.752107 3.960089 0 0 0 26.105 67.5032 A4.264685 3.807754 0 0 0 21.8403 71.3109 A4.264723 3.838251 0 0 0 26.105 75.1492 A4.508393 3.838226 0 0 1 30.6134 78.9874 A4.508393 3.838226 0 0 1 26.105 82.8256 A4.752101 3.960084 0 0 1 21.5966 80.5714" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.0441" y1="82.8256" x2="26.0441" y2="85.0189" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="98.7878" cy="50.9317" r="5.1481" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

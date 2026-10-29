@@ -3,14 +3,19 @@
     python3 -I export_all.py [--keep-going]
 
 Runs, in order:
-  1. build_all.py               every icon with a source: exports, PNGs, QA, metrics
-  2. contact_sheets.py          ten contact sheets and the sheet-compare images
-  3. record_sheets.py           pillar side by side (DR-04) and the size ladder
-  4. build_catalog.py           the catalog page
-  5. check_catalog.py           axe-core, scroll, screenshots and controls on the page
-  6. verify_set.py --sync-inventory   set checks, edition trees, counts, ledger
-  7. write_fidelity.py          the fidelity metrics CSV
-  8. make_package.py            the review zip
+   1. apply_framing.py            DR-08 capped fit into the inventory, with export and tile names
+   2. build_all.py                every icon: four bare editions as SVG and PNG, QA images, metrics
+   3. build_tiles.py              DR-10 tiles: 1,464 SVGs and 2,928 PNGs, ink margins
+   4. contact_sheets.py           ten dark and ten light contact sheets, sheet compares
+   5. tile_sheets.py              twelve tile overview sheets
+   6. tile_calibration.py         the tile factor calibration board
+   7. record_sheets.py            pillar side by side (DR-04) and the size ladder
+   8. build_catalog.py            the catalog page
+   9. check_catalog.py            axe-core, scroll, screenshots and controls on the page
+  10. verify_set.py --sync-inventory   editions, tiles, sheets, counts, contrast, ledger
+  11. write_fidelity.py           the fidelity metrics CSV
+  12. tests/civic-line/test_pipeline.py   the pipeline tests, in a temporary tree
+  13. make_package.py             the final package in deliverables/
 It stops at the first failing step unless --keep-going is given, and prints a
 summary with each step's exit code. It never edits src/ or the status files.
 """
@@ -20,8 +25,10 @@ import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-STEPS = [["build_all.py"], ["contact_sheets.py"], ["record_sheets.py"], ["build_catalog.py"], ["check_catalog.py"],
-         ["verify_set.py", "--sync-inventory"], ["write_fidelity.py"], ["make_package.py"]]
+TESTS = os.path.abspath(os.path.join(HERE, "..", "..", "tests", "civic-line", "test_pipeline.py"))
+STEPS = [["apply_framing.py"], ["build_all.py"], ["build_tiles.py"], ["contact_sheets.py"], ["tile_sheets.py"],
+         ["tile_calibration.py"], ["record_sheets.py"], ["build_catalog.py"], ["check_catalog.py"],
+         ["verify_set.py", "--sync-inventory"], ["write_fidelity.py"], [TESTS], ["make_package.py"]]
 
 
 def main():
@@ -29,9 +36,11 @@ def main():
     summary = []
     for step in STEPS:
         t = time.time()
-        print(f"\n=== {' '.join(step)} ===", flush=True)
-        r = subprocess.run([sys.executable, "-I", os.path.join(HERE, step[0])] + step[1:], cwd=HERE)
-        summary.append((" ".join(step), r.returncode, time.time() - t))
+        script = step[0] if os.path.isabs(step[0]) else os.path.join(HERE, step[0])
+        name = " ".join([os.path.basename(step[0])] + step[1:])
+        print(f"\n=== {name} ===", flush=True)
+        r = subprocess.run([sys.executable, "-I", script] + step[1:], cwd=HERE)
+        summary.append((name, r.returncode, time.time() - t))
         if r.returncode and not keep:
             break
     print("\n=== summary ===")

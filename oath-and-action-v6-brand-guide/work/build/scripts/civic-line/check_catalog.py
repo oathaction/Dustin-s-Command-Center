@@ -45,6 +45,8 @@ def main():
         ck(f"{t}: opens with all 122 cards visible", run["info"]["cards"] == 122, str(run["info"]["cards"]))
         ck(f"{t}: icon tiles are Newsprint", run["info"]["tileBg"] == "rgb(220, 217, 210)", run["info"]["tileBg"])
         d = run["detail"]
+        ck(f"{t}: detail shows the 4 editions and 12 tiles at 96 px", d["specimens"] == 16 and d["specSizes"] == [96],
+           f"{d['specimens']} specimens, sizes {d['specSizes']}, first tile stages {d['tileStages']}")
         ck(f"{t}: detail shows the reference crop and the trace at one scale",
            d["imgShown"] == d["svgShown"] and d["imgNatural"][0] > 0, f"img {d['imgShown']} svg {d['svgShown']}, natural {d['imgNatural']}")
         ck(f"{t}: Escape closes the detail view and focus returns to its card",
@@ -57,13 +59,25 @@ def main():
     ck("search 'cl-021' finds CL-021 only", F["searchCL021"] == ["CL-021"], str(F["searchCL021"]))
     ck("no match shows the empty state", F["emptyState"]["visible"] == 0 and F["emptyState"]["emptyShown"], F["emptyState"]["text"])
     ck("sheet filter 04 shows 25", F["sheet04"]["visible"] == 25, F["sheet04"]["count"])
-    ck("edition toggle: accent Pillar Red, then Charcoal", F["accentRedBlack"] == "rgb(230, 57, 70)" and F["accentBlack"] == "rgb(18, 18, 18)",
-       f"{F['accentRedBlack']} then {F['accentBlack']}")
+    RED, CH, NW = "rgb(230, 57, 70)", "rgb(18, 18, 18)", "rgb(220, 217, 210)"
+    want = {"red-black": (RED, CH, NW), "black": (CH, CH, NW), "red-newsprint": (RED, NW, CH), "newsprint": (NW, NW, CH)}
+    for ed, (acc, ink, tile) in want.items():
+        got = F["editions"][ed]
+        ck(f"edition {ed}: accent, ink and tile colours", (got["accent"], got["ink"], got["tile"]) == (acc, ink, tile), json.dumps(got))
+    base_w = F["holderNone"]["w"]
+    for h, fac in (("square", 0.68), ("rounded", 0.66), ("circle", 0.62)):
+        g = F["holders"][h]
+        ck(f"holder {h}: shape shown, glyph at {fac}, Charcoal tile on a Newsprint stage",
+           g["shown"] == [f"#h-{h}"] and abs(g["w"] / base_w - fac) < 0.01 and g["fill"] == CH and g["stage"] == NW,
+           f"shown {g['shown']}, scale {g['w'] / base_w:.3f}, fill {g['fill']}, stage {g['stage']}")
+    g = F["holderRoundedRedBlack"]
+    ck("holder with a dark edition: Newsprint tile on a Charcoal stage", g["fill"] == NW and g["stage"] == CH, json.dumps(g))
+    ck("holder None hides every shape", F["holderNone"]["shown"] == [], str(F["holderNone"]["shown"]))
     ck("size control: 128 and 24 px", round(F["size128"]) == 128 and round(F["size24"]) == 24, f"{F['size128']}, {F['size24']}")
     ck("first Tab reaches the search field with a visible outline", F["firstTab"]["id"] == "q" and F["firstTab"]["outline"] != "none",
        json.dumps(F["firstTab"]))
-    ck("keyboard order: search, edition, sheet, size, then the first card, which shows a focus outline",
-       F["tabOrder"] == ["ed-rb", "sheet", "size", "CL-001"] and F["cardFocus"]["card"] == "CL-001" and F["cardFocus"]["outline"] != "none",
+    ck("keyboard order: search, edition, holder, sheet, size, then the first card, which shows a focus outline",
+       F["tabOrder"] == ["ed-rb", "ho-none", "sheet", "size", "CL-001"] and F["cardFocus"]["card"] == "CL-001" and F["cardFocus"]["outline"] != "none",
        f"{F['tabOrder']}, {json.dumps(F['cardFocus'])}")
     ck("Enter opens the detail view; Next steps on; Escape closes", bool(F["enterOpens"]) and F["nextGoesTo"].startswith("CL-002")
        and F["escapeCloses"], f"{F['enterOpens']} -> {F['nextGoesTo']}, hash {F['hash']}")

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-032" data-id="CL-032" width="128" height="128" viewBox="0 0 128 128">
+  <title>Local Reporting</title>
+  <desc>Oath &amp; Action Civic Line CL-032 Local Reporting. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M35.2498 44.1386 V36.0966 A2.741599 2.741599 0 0 1 37.9914 33.355 H105.4042 A2.741599 2.741599 0 0 1 108.1458 36.0966 V91.9338 A2.741599 2.741599 0 0 1 105.4042 94.6754 H24.2468 A4.264704 4.264704 0 0 1 19.9821 90.4107 V47.7941 A3.655482 3.655482 0 0 1 23.6376 44.1386 H35.2498 V87.1939 A7.481508 7.481508 0 0 1 27.7683 94.6754" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.2498" y1="87.1939" x2="35.2498" y2="94.6754" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27.7865" y1="44.1386" x2="27.7865" y2="87.3036" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.7227" y1="43.834" x2="97.8922" y2="43.834" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.7227" y1="53.7708" x2="97.8922" y2="53.7708" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.7227" y1="63.7076" x2="68.874" y2="63.7076" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.7227" y1="73.6443" x2="68.874" y2="73.6443" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.7227" y1="83.5811" x2="68.874" y2="83.5811" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="77.5557" y="62.1113" width="22.146" height="24.0347" rx="1.8277" fill="#E63946"/>
+  </g>
+</svg>

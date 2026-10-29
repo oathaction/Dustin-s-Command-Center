@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-048-tile-circle-charcoal-two-color" data-id="CL-048" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Records</title>
+  <desc>Oath &amp; Action Civic Line CL-048 Public Records: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <path d="M29.6386 52.3025 V47.9769 A2.558837 2.558837 0 0 1 32.1975 45.4181 H39.7947" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.3021 51.9857 H104.2162 A2.924386 2.924386 0 0 1 107.1406 54.9101 V68.5389" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39.7947 59.4916 V31.5334 A2.376076 2.376076 0 0 1 42.1708 29.1573 H93.9261 A2.376051 2.376051 0 0 1 96.3021 31.5334 V68.5389" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34.9086 52.3025 H17.6975 A2.254201 2.254201 0 0 0 15.4433 54.5567 V96.9662 A2.254201 2.254201 0 0 0 17.6975 99.2204 H110.3025 A2.254201 2.254201 0 0 0 112.5567 96.9662 V70.7931 A2.254201 2.254201 0 0 0 110.3025 68.5389 H48.8176 A5.483182 5.483182 0 0 1 44.2727 66.1324 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.1502" y1="51.0536" x2="84.4401" y2="51.0536" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.1502" y1="59.0468" x2="71.4632" y2="59.0468" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="52.1502" y1="40.6355" x2="84.4401" y2="40.6355" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

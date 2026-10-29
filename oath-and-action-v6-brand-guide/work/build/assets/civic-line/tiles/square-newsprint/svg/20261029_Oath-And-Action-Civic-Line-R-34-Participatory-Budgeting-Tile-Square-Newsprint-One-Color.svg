@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-34-tile-square-newsprint-one-color" data-id="R-34" width="128" height="128" viewBox="0 0 128 128">
+  <title>Participatory Budgeting</title>
+  <desc>Oath &amp; Action Civic Line R-34 Participatory Budgeting: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M36.6815 73.4433 V36.8094 A2.741599 2.741599 0 0 1 39.4231 34.0678 H97.0027 A2.741599 2.741599 0 0 1 99.7443 36.8094 V54.9832" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="45.9481" y="60.0034" width="10.6618" height="10.6618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.1393" y1="44.3945" x2="89.8624" y2="44.3945" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.1393" y1="52.8508" x2="83.8796" y2="52.8508" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.1393" y1="64" x2="89.8624" y2="64" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.1393" y1="75.5391" x2="72.1029" y2="75.5391" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="21.292" cy="67.424" r="6.8845" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.2968 92.8477 V87.6387 A12.995202 11.423349 0 0 1 21.292 76.2153 A12.995202 11.423349 0 0 1 34.2872 87.6387 V92.8477" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="106.4643" cy="67.424" r="6.8845" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.4691 92.8477 V87.6387 A12.995202 11.423349 0 0 1 106.4643 76.2153 A12.995202 11.423349 0 0 1 119.4595 87.6387 V92.8477" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="49.4634" cy="83.9406" r="4.9836" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.2996 94.0357 Q49.4634 85.2626 57.6273 94.0357" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="78.2929" cy="83.9406" r="4.9836" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70.129 94.0357 Q78.2929 85.2626 86.4567 94.0357" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="45.9481" y="42.7557" width="10.6618" height="10.6618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="46.6365,46.5147 51.2059,49.1344 55.2269,44.7174" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

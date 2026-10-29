@@ -3,15 +3,15 @@
   <title>Automatic Funding</title>
   <desc>Oath &amp; Action Civic Line R-14 Automatic Funding. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M93.3607 63.3908 L93.3607 46.795 A2.680686 2.680686 0 0 0 90.68 44.1143 L25.5933 44.1143 A2.680686 2.680686 0 0 0 22.9126 46.795 L22.9126 81.6437 A2.680686 2.680686 0 0 0 25.5933 84.3244 L88.7938 84.3244" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M39.2793 54.9393 A3.777326 3.411778 0 1 0 35.7311 59.516 A3.777288 3.411744 0 1 1 32.1829 64.0926" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.7311" y1="50.4504" x2="35.7311" y2="52.6924" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.7311" y1="66.3395" x2="35.7311" y2="68.5815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="47.8185" y1="54.486" x2="85.421" y2="54.486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="47.8185" y1="63.9025" x2="85.421" y2="63.9025" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M100.7009 63.2384 L100.7009 42.4937 A3.350871 3.350871 0 0 0 97.35 39.1428 L15.9916 39.1428 A3.350871 3.350871 0 0 0 12.6407 42.4937 L12.6407 86.0546 A3.350871 3.350871 0 0 0 15.9916 89.4055 L94.9922 89.4055" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.0991 52.6742 A4.721641 4.264708 0 1 0 28.6638 58.395 A4.721618 4.264687 0 1 1 24.2286 64.1158" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.6638" y1="47.063" x2="28.6638" y2="49.8655" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="28.6638" y1="66.9244" x2="28.6638" y2="69.7269" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.7731" y1="52.1076" x2="90.7763" y2="52.1076" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.7731" y1="63.8782" x2="90.7763" y2="63.8782" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="31.4664" y1="76.0143" x2="105.0387" y2="76.0143" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="97.7765,68.7521 105.0387,76.0143 97.7765,83.2765" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="23.333" y1="79.0179" x2="115.2983" y2="79.0179" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="106.2206,69.9401 115.2983,79.0179 106.2206,88.0956" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

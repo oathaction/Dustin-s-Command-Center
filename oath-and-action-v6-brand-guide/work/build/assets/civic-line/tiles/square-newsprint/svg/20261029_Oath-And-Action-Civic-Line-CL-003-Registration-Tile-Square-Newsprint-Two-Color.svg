@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-003-tile-square-newsprint-two-color" data-id="CL-003" width="128" height="128" viewBox="0 0 128 128">
+  <title>Registration</title>
+  <desc>Oath &amp; Action Civic Line CL-003 Registration: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M75.9595 85.9632 H20.701 A3.838219 3.838219 0 0 1 16.8628 82.125 V38.1376 A3.838219 3.838219 0 0 1 20.701 34.2994 H101.5904 A3.838219 3.838219 0 0 1 105.4286 38.1376 V59.2784" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="38.8504" cy="52.9179" r="6.8174" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27.5794 76.855 V72.4807 A7.737399 7.737399 0 0 1 35.3168 64.7433 H42.384 A7.737399 7.737399 0 0 1 50.1214 72.4807 V76.855" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.583" y1="45.7531" x2="92.7137" y2="45.7531" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.583" y1="56.1286" x2="88.5952" y2="56.1286" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.583" y1="66.4979" x2="76.4103" y2="66.4979" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="96.5032" cy="79.1093" r="14.6462" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="90.1061,79.2311 94.4317,83.4958 103.0525,74.4181" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

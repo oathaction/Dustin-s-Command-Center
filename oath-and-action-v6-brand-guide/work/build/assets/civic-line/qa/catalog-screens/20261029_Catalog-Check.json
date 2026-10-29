@@ -1,6 +1,6 @@
 {
   "file": "20261029_Civic-Line-Icon-Catalog.html",
-  "bytes": 9367497,
+  "bytes": 9412820,
   "runs": [
     {
       "tag": "1440-light",
@@ -41,7 +41,17 @@
         ],
         "dialogScroll": 0,
         "raised": "rgb(255, 255, 255)",
-        "corrections": 7
+        "corrections": 7,
+        "specimens": 16,
+        "specSizes": [
+          96
+        ],
+        "tileStages": [
+          "rgb(220, 217, 210)",
+          "rgb(220, 217, 210)",
+          "rgb(18, 18, 18)",
+          "rgb(18, 18, 18)"
+        ]
       },
       "scrollDetail": {
         "docScroll": 0,
@@ -96,7 +106,17 @@
         ],
         "dialogScroll": 0,
         "raised": "rgb(31, 45, 90)",
-        "corrections": 7
+        "corrections": 7,
+        "specimens": 16,
+        "specSizes": [
+          96
+        ],
+        "tileStages": [
+          "rgb(220, 217, 210)",
+          "rgb(220, 217, 210)",
+          "rgb(18, 18, 18)",
+          "rgb(18, 18, 18)"
+        ]
       },
       "scrollDetail": {
         "docScroll": 0,
@@ -151,7 +171,17 @@
         ],
         "dialogScroll": 0,
         "raised": "rgb(255, 255, 255)",
-        "corrections": 7
+        "corrections": 7,
+        "specimens": 16,
+        "specSizes": [
+          96
+        ],
+        "tileStages": [
+          "rgb(220, 217, 210)",
+          "rgb(220, 217, 210)",
+          "rgb(18, 18, 18)",
+          "rgb(18, 18, 18)"
+        ]
       },
       "scrollDetail": {
         "docScroll": 0,
@@ -206,7 +236,17 @@
         ],
         "dialogScroll": 0,
         "raised": "rgb(31, 45, 90)",
-        "corrections": 7
+        "corrections": 7,
+        "specimens": 16,
+        "specSizes": [
+          96
+        ],
+        "tileStages": [
+          "rgb(220, 217, 210)",
+          "rgb(220, 217, 210)",
+          "rgb(18, 18, 18)",
+          "rgb(18, 18, 18)"
+        ]
       },
       "scrollDetail": {
         "docScroll": 0,
@@ -243,8 +283,70 @@
       "visible": 25,
       "count": "Showing 25 of 122 icons"
     },
+    "editions": {
+      "red-black": {
+        "accent": "rgb(230, 57, 70)",
+        "ink": "rgb(18, 18, 18)",
+        "tile": "rgb(220, 217, 210)"
+      },
+      "black": {
+        "accent": "rgb(18, 18, 18)",
+        "ink": "rgb(18, 18, 18)",
+        "tile": "rgb(220, 217, 210)"
+      },
+      "red-newsprint": {
+        "accent": "rgb(230, 57, 70)",
+        "ink": "rgb(220, 217, 210)",
+        "tile": "rgb(18, 18, 18)"
+      },
+      "newsprint": {
+        "accent": "rgb(220, 217, 210)",
+        "ink": "rgb(220, 217, 210)",
+        "tile": "rgb(18, 18, 18)"
+      }
+    },
     "accentRedBlack": "rgb(230, 57, 70)",
     "accentBlack": "rgb(18, 18, 18)",
+    "holderNone": {
+      "w": 52.10760498046875,
+      "shown": [],
+      "fill": null,
+      "stage": "rgb(18, 18, 18)"
+    },
+    "holders": {
+      "square": {
+        "w": 35.43316650390625,
+        "shown": [
+          "#h-square"
+        ],
+        "fill": "rgb(18, 18, 18)",
+        "stage": "rgb(220, 217, 210)"
+      },
+      "rounded": {
+        "w": 34.39105224609375,
+        "shown": [
+          "#h-rounded"
+        ],
+        "fill": "rgb(18, 18, 18)",
+        "stage": "rgb(220, 217, 210)"
+      },
+      "circle": {
+        "w": 32.30670166015625,
+        "shown": [
+          "#h-circle"
+        ],
+        "fill": "rgb(18, 18, 18)",
+        "stage": "rgb(220, 217, 210)"
+      }
+    },
+    "holderRoundedRedBlack": {
+      "w": 34.39105224609375,
+      "shown": [
+        "#h-rounded"
+      ],
+      "fill": "rgb(220, 217, 210)",
+      "stage": "rgb(18, 18, 18)"
+    },
     "size128": 128,
     "size24": 24,
     "scroll24": {
@@ -258,6 +360,7 @@
     },
     "tabOrder": [
       "ed-rb",
+      "ho-none",
       "sheet",
       "size",
       "CL-001"
@@ -294,7 +397,7 @@
     {
       "check": "file under 12 MB",
       "pass": true,
-      "detail": "8.93 MB"
+      "detail": "8.98 MB"
     },
     {
       "check": "1440-light: axe 4.10.2 on the grid, no violations",
@@ -320,6 +423,11 @@
       "check": "1440-light: icon tiles are Newsprint",
       "pass": true,
       "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "1440-light: detail shows the 4 editions and 12 tiles at 96 px",
+      "pass": true,
+      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
     },
     {
       "check": "1440-light: detail shows the reference crop and the trace at one scale",
@@ -367,6 +475,11 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
+      "check": "1440-dark: detail shows the 4 editions and 12 tiles at 96 px",
+      "pass": true,
+      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
       "check": "1440-dark: detail shows the reference crop and the trace at one scale",
       "pass": true,
       "detail": "img [358, 246] svg [358, 246], natural [179, 123]"
@@ -410,6 +523,11 @@
       "check": "390-light: icon tiles are Newsprint",
       "pass": true,
       "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "390-light: detail shows the 4 editions and 12 tiles at 96 px",
+      "pass": true,
+      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
     },
     {
       "check": "390-light: detail shows the reference crop and the trace at one scale",
@@ -457,6 +575,11 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
+      "check": "390-dark: detail shows the 4 editions and 12 tiles at 96 px",
+      "pass": true,
+      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
       "check": "390-dark: detail shows the reference crop and the trace at one scale",
       "pass": true,
       "detail": "img [320, 220] svg [320, 220], natural [179, 123]"
@@ -502,9 +625,49 @@
       "detail": "Showing 25 of 122 icons"
     },
     {
-      "check": "edition toggle: accent Pillar Red, then Charcoal",
+      "check": "edition red-black: accent, ink and tile colours",
       "pass": true,
-      "detail": "rgb(230, 57, 70) then rgb(18, 18, 18)"
+      "detail": "{\"accent\": \"rgb(230, 57, 70)\", \"ink\": \"rgb(18, 18, 18)\", \"tile\": \"rgb(220, 217, 210)\"}"
+    },
+    {
+      "check": "edition black: accent, ink and tile colours",
+      "pass": true,
+      "detail": "{\"accent\": \"rgb(18, 18, 18)\", \"ink\": \"rgb(18, 18, 18)\", \"tile\": \"rgb(220, 217, 210)\"}"
+    },
+    {
+      "check": "edition red-newsprint: accent, ink and tile colours",
+      "pass": true,
+      "detail": "{\"accent\": \"rgb(230, 57, 70)\", \"ink\": \"rgb(220, 217, 210)\", \"tile\": \"rgb(18, 18, 18)\"}"
+    },
+    {
+      "check": "edition newsprint: accent, ink and tile colours",
+      "pass": true,
+      "detail": "{\"accent\": \"rgb(220, 217, 210)\", \"ink\": \"rgb(220, 217, 210)\", \"tile\": \"rgb(18, 18, 18)\"}"
+    },
+    {
+      "check": "holder square: shape shown, glyph at 0.68, Charcoal tile on a Newsprint stage",
+      "pass": true,
+      "detail": "shown ['#h-square'], scale 0.680, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+    },
+    {
+      "check": "holder rounded: shape shown, glyph at 0.66, Charcoal tile on a Newsprint stage",
+      "pass": true,
+      "detail": "shown ['#h-rounded'], scale 0.660, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+    },
+    {
+      "check": "holder circle: shape shown, glyph at 0.62, Charcoal tile on a Newsprint stage",
+      "pass": true,
+      "detail": "shown ['#h-circle'], scale 0.620, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+    },
+    {
+      "check": "holder with a dark edition: Newsprint tile on a Charcoal stage",
+      "pass": true,
+      "detail": "{\"w\": 34.39105224609375, \"shown\": [\"#h-rounded\"], \"fill\": \"rgb(220, 217, 210)\", \"stage\": \"rgb(18, 18, 18)\"}"
+    },
+    {
+      "check": "holder None hides every shape",
+      "pass": true,
+      "detail": "[]"
     },
     {
       "check": "size control: 128 and 24 px",
@@ -517,9 +680,9 @@
       "detail": "{\"id\": \"q\", \"outline\": \"solid\", \"width\": \"3px\"}"
     },
     {
-      "check": "keyboard order: search, edition, sheet, size, then the first card, which shows a focus outline",
+      "check": "keyboard order: search, edition, holder, sheet, size, then the first card, which shows a focus outline",
       "pass": true,
-      "detail": "['ed-rb', 'sheet', 'size', 'CL-001'], {\"card\": \"CL-001\", \"outline\": \"solid\", \"width\": \"3px\"}"
+      "detail": "['ed-rb', 'ho-none', 'sheet', 'size', 'CL-001'], {\"card\": \"CL-001\", \"outline\": \"solid\", \"width\": \"3px\"}"
     },
     {
       "check": "Enter opens the detail view; Next steps on; Escape closes",

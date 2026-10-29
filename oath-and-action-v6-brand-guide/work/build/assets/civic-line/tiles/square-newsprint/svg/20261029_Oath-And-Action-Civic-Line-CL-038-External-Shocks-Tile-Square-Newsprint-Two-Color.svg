@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-038-tile-square-newsprint-two-color" data-id="CL-038" width="128" height="128" viewBox="0 0 128 128">
+  <title>External Shocks</title>
+  <desc>Oath &amp; Action Civic Line CL-038 External Shocks: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M73.4677 22.4374 C72.4746 25.2582 71.3719 27.1103 69.3004 28.6943 C66.0836 31.1557 61.8798 32.1426 58.0355 33.1235 C49.0004 35.4265 34.7502 38.7164 30.6195 48.1475 C29.5229 50.6393 29.3462 53.7099 30.1565 56.3357 C34.0678 69.0445 54.9832 65.5901 55.562 76.124 C55.6777 78.2441 54.7882 80.3338 53.4113 81.9179 C49.7985 86.0729 42.0916 89.1435 37.1994 91.9643 C32.959 94.4013 28.9258 97.216 25.1241 100.2866" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.9513 22.5836 C92.1227 28.3166 89.7345 32.1548 85.2322 35.3107 C82.7403 37.0592 80.2485 38.1741 77.3851 39.1672 C72.2431 40.9523 56.884 43.6573 57.3105 50.4748 C57.4445 52.5828 58.9616 54.1668 60.6857 55.1842 C64.6397 57.5176 71.579 58.4802 76.2214 60.2288" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45.15 48.5008 C44.0716 50.6515 43.9376 51.9248 44.7723 54.2155" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M84.8361 86.7248 L83.1303 89.771 L84.8971 92.6954 L82.7647 95.9853 Q81.9118 97.021 80.145 97.0819 L75.271 97.2647 Q74.0525 97.3866 73.1387 98.3004 L65.7668 105.8551" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="75.3929,83.9893 66.1872,79.2616 75.009,78.3477 71.049,68.1855 79.2311,73.1996 84.6534,55.5498 90.0756,73.1996 98.2578,68.1855 94.2977,78.3477 103.1196,79.2616 93.9139,83.9893" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-017-tile-circle-newsprint-two-color" data-id="CL-017" width="128" height="128" viewBox="0 0 128 128">
+  <title>Policy Favoritism</title>
+  <desc>Oath &amp; Action Civic Line CL-017 Policy Favoritism: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <rect x="14.6512" y="38.7956" width="44.554" height="50.4088" rx="3.0462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.5515" y1="48.1718" x2="46.3746" y2="48.1718" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.5515" y1="57.9685" x2="46.3746" y2="57.9685" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.5515" y1="67.7651" x2="46.3746" y2="67.7651" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.5515" y1="77.5618" x2="37.2725" y2="77.5618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66.2847 52.266 L71.2927 52.266 A5.014064 5.014064 0 0 0 76.3067 47.2519 L76.3067 42.1038 A6.09247 6.09247 0 0 1 82.3992 36.0113 L92.2689 36.0113" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.437" y1="63.4517" x2="92.2689" y2="63.4517" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66.2847 74.6374 L71.2927 74.6374 A5.014064 5.014064 0 0 1 76.3067 79.6515 L76.3067 84.7996 A6.092445 6.092445 0 0 0 82.3992 90.892 L92.2689 90.892" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.8011" cy="30.7353" r="4.0941" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.2534 45.8628 V43.6208 A4.934888 4.934888 0 0 1 101.1883 38.6859 H108.4139 A4.934888 4.934888 0 0 1 113.3488 43.6208 V45.8628" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.8011" cy="85.616" r="4.0941" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.2534 100.7435 V98.5015 A4.934888 4.934888 0 0 1 101.1883 93.5666 H108.4139 A4.934888 4.934888 0 0 1 113.3488 98.5015 V100.7435" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="104.8011" cy="58.1756" r="4.0941" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.2534 73.3032 V71.0611 A4.934863 4.934863 0 0 1 101.1883 66.1263 H108.4139 A4.934863 4.934863 0 0 1 113.3488 71.0611 V73.3032" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

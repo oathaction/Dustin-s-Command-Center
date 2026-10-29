@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-010-tile-circle-charcoal-two-color" data-id="CL-010" width="128" height="128" viewBox="0 0 128 128">
+  <title>Decisive Primaries</title>
+  <desc>Oath &amp; Action Civic Line CL-010 Decisive Primaries: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 39.1855 L44.5895 39.1855 A3.533608 3.533608 0 0 1 48.1231 42.7191 L48.1231 50.7855 A3.533608 3.533608 0 0 0 51.6567 54.3191 L62.9947 54.3191 A3.472694 3.472694 0 0 1 66.4674 57.7857 L66.4674 61.2584 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.1302" y1="64.2437" x2="44.1204" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 89.3019 L44.5895 89.3019 A3.533608 3.533608 0 0 0 48.1231 85.7683 L48.1231 77.7019 A3.533608 3.533608 0 0 1 51.6567 74.1683 L62.9947 74.1683 A3.472694 3.472694 0 0 0 66.4674 70.7017 L66.4674 67.229 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

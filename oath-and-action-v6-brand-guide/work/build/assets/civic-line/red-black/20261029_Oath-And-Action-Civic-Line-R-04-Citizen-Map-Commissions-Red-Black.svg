@@ -3,16 +3,16 @@
   <title>Citizen Map Commissions</title>
   <desc>Oath &amp; Action Civic Line R-04 Citizen Map Commissions. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <polyline points="31.0667,78.5585 31.0667,52.0539 34.1422,51.6348 35.2778,48.9492 37.7587,48.1353 37.7587,37.0666 48.7494,37.0666 48.7494,45.7276 53.3358,45.7276 54.7834,43.0225 71.4571,43.0225 74.0403,41.0924 74.8202,38.8407 79.7916,38.8407 80.5227,40.605 85.0603,45.6983 87.5899,45.9225 90.4655,48.7202 90.4655,51.6982 96.5824,52.0247 96.5824,78.6706" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="45.4059" cy="78.9533" r="3.7822" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M38.7773 90.6849 V89.5882 A6.628561 6.628561 0 0 1 45.4059 82.9597 A6.628561 6.628561 0 0 1 52.0345 89.5882 V90.6849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="63.805" cy="72.2418" r="4.2598" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.7866 88.0773 V84.3731 A7.018469 7.018469 0 0 1 63.805 77.3546 A7.018494 7.018494 0 0 1 70.8235 84.3731 V88.0773" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="82.2042" cy="78.9533" r="3.7822" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M75.5756 90.6849 V89.5882 A6.628561 6.628561 0 0 1 82.2042 82.9597 A6.628561 6.628561 0 0 1 88.8328 89.5882 V90.6849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="22.8334,82.1981 22.8334,49.0674 26.6777,48.5435 28.0973,45.1865 31.1983,44.1691 31.1983,30.3332 44.9368,30.3332 44.9368,41.1594 50.6697,41.1594 52.4792,37.7781 73.3214,37.7781 76.5504,35.3655 77.5252,32.5508 83.7395,32.5508 84.6534,34.7563 90.3254,41.1229 93.4874,41.4031 97.0819,44.9002 97.0819,48.6227 104.728,49.0309 104.728,82.3382" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="40.7573" cy="82.6916" r="4.7277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.4716 97.3561 V95.9853 A8.285709 8.285709 0 0 1 40.7573 87.6996 A8.285734 8.285734 0 0 1 49.0431 95.9853 V97.3561" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="63.7563" cy="74.3023" r="5.3248" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.9832 94.0967 V89.4664 A8.773107 8.773107 0 0 1 63.7563 80.6933 A8.773107 8.773107 0 0 1 72.5294 89.4664 V94.0967" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="86.7553" cy="82.6916" r="4.7277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.4695 97.3561 V95.9853 A8.285734 8.285734 0 0 1 86.7553 87.6996 A8.285709 8.285709 0 0 1 95.041 95.9853 V97.3561" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="29.7264,66.5783 44.4993,65.8813 49.1978,60.1301 57.9076,60.1301 60.2471,57.5908 64.2145,57.5664 67.7676,57.8539 70.1655,60.3202 74.2987,60.559 76.838,57.6346 83.2131,57.6346 84.0417,68.8496 97.9227,68.8496" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <polyline points="60.2617,41.6822 60.2617,48.1255 64.2145,50.7331 64.2145,57.5664" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <polyline points="21.158,67.2229 39.6241,66.3517 45.4973,59.1626 56.3845,59.1626 59.3088,55.9884 64.2681,55.958 68.7095,56.3174 71.7069,59.4002 76.8733,59.6987 80.0475,56.0433 88.0164,56.0433 89.0521,70.062 106.4034,70.062" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
+    <polyline points="59.3271,36.1027 59.3271,44.1569 64.2681,47.4164 64.2681,55.958" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
 </svg>

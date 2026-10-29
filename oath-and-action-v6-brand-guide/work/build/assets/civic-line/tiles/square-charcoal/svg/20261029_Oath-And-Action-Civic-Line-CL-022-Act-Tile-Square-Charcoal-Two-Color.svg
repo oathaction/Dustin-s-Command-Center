@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-022-tile-square-charcoal-two-color" data-id="CL-022" width="128" height="128" viewBox="0 0 128 128">
+  <title>Act</title>
+  <desc>Oath &amp; Action Civic Line CL-022 Act: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M60.8319 68.4901 V41.0559 A5.096299 5.096299 0 0 0 50.6393 41.0559 V80.5105" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60.8319 63.5126 A4.60895 4.60895 0 0 1 70.0498 63.5126 V69.867" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70.0498 67.0462 A4.60895 4.60895 0 0 1 79.2677 67.0462 V71.9994" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M79.2677 71.5546 A4.608899 4.608899 0 0 1 88.4855 71.5546 L88.4855 87.2 A14.012616 14.012616 0 0 1 87.1025 93.2681 L82.1555 103.5704" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50.6393 77.7141 L44.3763 69.6538 A4.599829 4.599829 0 0 0 36.6571 74.5826 L51.6323 103.6801" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M67.4788 52.595 A16.461773 16.461773 0 1 0 44.5103 53.0945" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.3225" y1="32.4107" x2="85.2261" y2="28.7491" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="81.2111" y1="41.4945" x2="92.0252" y2="41.4945" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.3225" y1="50.5784" x2="85.2261" y2="54.2399" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

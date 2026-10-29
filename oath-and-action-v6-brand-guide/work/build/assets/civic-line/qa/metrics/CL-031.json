@@ -1,10 +1,10 @@
 {
   "id": "CL-031",
   "label": "Local Government",
-  "built": "2026-10-29T10:44:07+00:00",
+  "built": "2026-10-29T20:11:18+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.609244,
+  "stroke_units": 3.3508,
   "silhouette_iou_1x": 0.8808,
   "silhouette_iou_4x": 0.8938,
   "red_iou_1x": 0.8722,
@@ -54,11 +54,12 @@
   "bake_check_iou_1x": 1.0,
   "bake_check_max_diff_levels_4x": 7,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    19.16,
-    35.575,
-    108.109,
-    92.113
+    7.95,
+    28.469,
+    119.137,
+    99.141
   ],
   "export_inside_0_128": true,
   "elements": 13,

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-48-tile-square-newsprint-two-color" data-id="R-48" width="128" height="128" viewBox="0 0 128 128">
+  <title>Agency Independence</title>
+  <desc>Oath &amp; Action Civic Line R-48 Agency Independence: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <polyline points="12.3472,53.4396 32.2094,38.4745 52.0717,53.4396" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="7.6415" y="53.4396" width="49.1359" height="6.4949" rx="1.6415" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="12.2924" y="59.9345" width="9.9585" height="21.8485" rx="2.7359" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="22.2509" y="59.9345" width="9.9585" height="21.8485" rx="2.7359" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32.2094" y="59.9345" width="9.9585" height="21.8485" rx="2.7359" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="42.1679" y="59.9345" width="9.9585" height="21.8485" rx="2.7359" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="9.3924,81.783 55.0811,81.783 57.3245,85.066 57.3245,88.5898 7.2585,88.5898 7.2585,85.066" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.7094" cy="47.5685" r="5.2309" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M95.0519 63.4802 V58.4079 A2.18869 2.18869 0 0 1 97.2406 56.2192 H112.1783 A2.18869 2.18869 0 0 1 114.367 58.4079 V63.4802" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="88.8962,63.4802 120.5227,63.4802 119.1547,69.8055 90.2642,69.8055" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="92.1245" y1="69.8055" x2="92.1245" y2="88.4859" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="117.2944" y1="69.8055" x2="117.2944" y2="88.4859" fill="none" stroke="#121212" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="68.4321,38.179 74.0679,38.179 74.0679,89.4434 68.4321,89.4434" fill="none" stroke="#E63946" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.0679" y1="64.2189" x2="75.4632" y2="64.2189" fill="none" stroke="#E63946" stroke-width="3.0094" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="80.716" cy="64.1915" r="1.8604" fill="#E63946"/>
+  </g>
+  </g>
+</svg>

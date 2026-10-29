@@ -5,29 +5,29 @@
   <defs>
     <mask id="cl-068-page-end-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <rect x="57.1765" y="58.395" width="13.5983" height="11.6975" fill="#000000"/>
-      <rect x="53.521" y="66.437" width="20.958" height="3.8992" fill="#000000"/>
+      <rect x="55.4706" y="56.9937" width="16.9979" height="14.6219" fill="#000000"/>
+      <rect x="50.9013" y="67.0462" width="26.1975" height="4.874" fill="#000000"/>
     </mask>
     <mask id="cl-068-fork-top-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <rect x="53.521" y="62.2941" width="20.958" height="4.874" fill="#000000"/>
+      <rect x="50.9013" y="61.8676" width="26.1975" height="6.0924" fill="#000000"/>
     </mask>
   </defs>
   <g id="base">
-    <path d="M57.6151 66.9244 C54.1059 57.7565 38.1729 53.2237 29.5412 54.4178 V88.1261 A41.355468 41.355468 0 0 1 58.395 93.4923 L63.9756 96.8992" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-page-end-cut)"/>
-    <path d="M70.3361 66.9244 C73.8454 57.7565 89.7783 53.2237 98.4101 54.4178 V88.1261 A41.355468 41.355468 0 0 0 69.5563 93.4923 L63.9756 96.8992" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-page-end-cut)"/>
-    <polyline points="57.3714,65.2185 63.9756,72.2711 70.5798,65.2185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-fork-top-cut)"/>
-    <line x1="63.9756" y1="72.2711" x2="63.9756" y2="96.8992" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M29.5412 58.2 L25.0084 58.6387 Q22.8639 58.8336 22.8639 60.9782 V96.1193 A51.83932 51.83932 0 0 1 61.3193 100.5546 L63.9756 101.4319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M98.4101 58.2 L102.9429 58.6387 Q105.0874 58.8336 105.0874 60.9782 V96.1193 A51.839339 51.839339 0 0 0 66.6319 100.5546 L63.9756 101.4319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.0189 67.6555 C51.6323 56.1956 31.7162 50.5296 20.9264 52.0223 V94.1576 A51.694364 51.694364 0 0 1 56.9937 100.8654 L63.9695 105.124" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-page-end-cut)"/>
+    <path d="M71.9202 67.6555 C76.3067 56.1956 96.2229 50.5296 107.0126 52.0223 V94.1576 A51.694346 51.694346 0 0 0 70.9454 100.8654 L63.9695 105.124" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-page-end-cut)"/>
+    <polyline points="55.7143,65.5231 63.9695,74.3389 72.2248,65.5231" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round" mask="url(#cl-068-fork-top-cut)"/>
+    <line x1="63.9695" y1="74.3389" x2="63.9695" y2="105.124" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.9264 56.75 L15.2605 57.2983 Q12.5798 57.542 12.5798 60.2227 V104.1492 A64.7992 64.7992 0 0 1 60.6492 109.6933 L63.9695 110.7899" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M107.0126 56.75 L112.6786 57.2983 Q115.3593 57.542 115.3593 60.2227 V104.1492 A64.7992 64.7992 0 0 0 67.2899 109.6933 L63.9695 110.7899" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M59.784 54.1059 L56.4892 50.2896 A8.480684 8.480684 0 1 1 71.462 50.2896 L68.1672 54.1059 L67.6798 58.8824 H60.2714 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="61.758" y1="64.0487" x2="66.1933" y2="64.0487" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="63.9756" y1="26.6412" x2="63.9756" y2="32.3924" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="48.6324" y1="32.4899" x2="52.7412" y2="37.1933" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="79.3188" y1="32.4899" x2="75.2101" y2="37.1933" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="40.6538" y1="45.016" x2="47.8672" y2="47.4773" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="87.2975" y1="45.016" x2="80.084" y2="47.4773" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M58.73 51.6323 L54.6115 46.862 A10.600856 10.600856 0 1 1 73.3275 46.862 L69.209 51.6323 L68.5998 57.6029 H59.3393 Z" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="61.1975" y1="64.0609" x2="66.7416" y2="64.0609" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.9695" y1="17.3014" x2="63.9695" y2="24.4905" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.7905" y1="24.6124" x2="49.9265" y2="30.4916" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.1485" y1="24.6124" x2="78.0126" y2="30.4916" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.8172" y1="40.2699" x2="43.834" y2="43.3466" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.1219" y1="40.2699" x2="84.1051" y2="43.3466" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

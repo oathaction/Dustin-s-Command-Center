@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-41-tile-square-charcoal-two-color" data-id="R-41" width="128" height="128" viewBox="0 0 128 128">
+  <title>Grid Cost Allocation</title>
+  <desc>Oath &amp; Action Civic Line R-41 Grid Cost Allocation: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <path d="M7.416 41.3773 A3.812204 3.812204 0 0 1 11.2282 37.5651 H41.7803 A3.812204 3.812204 0 0 1 45.5925 41.3773 V83.6329 A6.644116 6.644116 0 0 1 38.9484 90.277 H14.0601 A6.644116 6.644116 0 0 1 7.416 83.6329 Z" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.416" y1="52.095" x2="45.5925" y2="52.095" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.416" y1="66.625" x2="45.5925" y2="66.625" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="7.416" y1="81.1549" x2="45.5925" y2="81.1549" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="14.5884" cy="44.83" r="1.4977" fill="#DCD9D2"/>
+    <circle cx="14.5884" cy="59.36" r="1.4977" fill="#DCD9D2"/>
+    <circle cx="14.5884" cy="73.89" r="1.4977" fill="#DCD9D2"/>
+    <line x1="27.1033" y1="44.83" x2="38.431" y2="44.83" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27.1033" y1="59.36" x2="38.431" y2="59.36" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27.1033" y1="73.89" x2="38.431" y2="73.89" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45.5925 55.6131 H48.5878 A4.90143 4.90143 0 0 1 53.4892 60.5146 V78.8676 A8.768088 8.768088 0 0 0 62.2573 87.6357 A8.768088 8.768088 0 0 0 71.0254 78.8676 V74.6197" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9157" y1="57.3286" x2="67.9157" y2="64.3268" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.135" y1="57.3286" x2="74.135" y2="64.3268" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.6338 64.3268 H76.4169 V69.7183 A5.391535 4.901395 0 0 1 71.0254 74.6197 A5.39156 4.901418 0 0 1 65.6338 69.7183 Z" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="86.8188" y="43.071" width="33.8742" height="47.2332" rx="2.723" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.3942" y1="51.9153" x2="113.1176" y2="51.9153" fill="none" stroke="#DCD9D2" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M107.8513 65.1219 A4.482071 3.730521 0 1 0 102.4706 70.2139 L105.0411 70.8565 A4.482051 3.730504 0 1 1 99.6278 75.8886" fill="none" stroke="#E63946" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.7559" y1="59.7793" x2="103.7559" y2="81.498" fill="none" stroke="#E63946" stroke-width="2.9953" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

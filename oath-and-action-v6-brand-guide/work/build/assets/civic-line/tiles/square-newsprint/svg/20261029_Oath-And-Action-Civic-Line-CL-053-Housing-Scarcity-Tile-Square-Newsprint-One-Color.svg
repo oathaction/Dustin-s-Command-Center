@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-053-tile-square-newsprint-one-color" data-id="CL-053" width="128" height="128" viewBox="0 0 128 128">
+  <title>Housing Scarcity</title>
+  <desc>Oath &amp; Action Civic Line CL-053 Housing Scarcity: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
+  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="base">
+    <polygon points="7.5861,87.709 7.5861,56.3357 24.6606,40.2496 41.7351,56.3357 41.7351,87.709" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="86.1939,87.709 86.1939,56.3357 103.2684,40.2496 120.3429,56.3357 120.3429,87.709" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.9494" y1="61.751" x2="18.9494" y2="68.1429" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.3718" y1="61.751" x2="30.3718" y2="68.1429" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.5572" y1="61.751" x2="97.5572" y2="68.1429" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="108.9796" y1="61.751" x2="108.9796" y2="68.1429" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="49.1153" y1="56.2292" x2="49.1153" y2="61.9641" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.1153" y1="69.3265" x2="49.1153" y2="76.0202" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.1153" y1="83.2761" x2="49.1153" y2="87.709" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.8551" y1="56.2292" x2="78.8551" y2="61.9641" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.8551" y1="69.3265" x2="78.8551" y2="76.0202" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.8551" y1="83.2761" x2="78.8551" y2="87.709" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.9622" y1="51.2755" x2="57.7561" y2="46.4816" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="70.2143" y1="46.4816" x2="75.0082" y2="51.2755" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="61.8812,42.4275 63.9852,40.3265 66.0892,42.4275" fill="none" stroke="#121212" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

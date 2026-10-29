@@ -1,10 +1,10 @@
 {
   "id": "CL-011",
   "label": "Electoral Pressure",
-  "built": "2026-10-29T10:43:40+00:00",
+  "built": "2026-10-29T20:10:45+00:00",
   "W_source_px": 5.5,
-  "s": 0.487395,
-  "stroke_units": 2.6807,
+  "s": 0.60733,
+  "stroke_units": 3.3403,
   "silhouette_iou_1x": 0.9368,
   "silhouette_iou_4x": 0.9181,
   "red_iou_1x": 0.9747,
@@ -52,13 +52,14 @@
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 25,
+  "bake_check_max_diff_levels_4x": 42,
   "pair_identical_after_swap": true,
+  "editions_identical_after_swap": true,
   "export_drawn_bounds": [
-    17.181,
-    38.543,
-    110.473,
-    89.076
+    5.66,
+    32.279,
+    121.909,
+    95.247
   ],
   "export_inside_0_128": true,
   "elements": 13,

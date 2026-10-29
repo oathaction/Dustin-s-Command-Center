@@ -1,10 +1,12 @@
 # Civic Line completion ledger
 
-Compiled by `verify_set.py` from the per-icon status files on 2026-10-29T10:46:53+00:00. Rerun it to refresh; do not edit by hand.
+Compiled by `verify_set.py` from the per-icon status files on 2026-10-29T20:19:46+00:00. Rerun it to refresh; do not edit by hand.
 
 Done: 122 of 122 traced (0 traced, 122 reviewed, 0 fixed). To do: 0.
-Files: 244 of 244 SVGs, 488 of 488 PNGs, 244 of 244 reference crops, 10 of 10 contact sheets.
-Edition pairs identical after the token swap: 122. Parsed element trees identical apart from colour: 122 (2241 elements, 342 Pillar Red to Charcoal swaps).
+Bare exports: 488 of 488 SVGs and 976 of 976 PNGs in four editions. Tiles: 1464 of 1,464 SVGs and 2928 of 2,928 PNGs.
+Reference crops: 244 of 244. Sheets: 10 of 10 dark, 10 of 10 light, 12 of 12 tile sheets.
+Editions derived from red-black by ink swap: 122. Parsed trees identical apart from ink color: 122 (6723 elements, 3172 color swaps). Tiles whose icon geometry matches its bare export: 1464.
+Smallest ink-to-edge margins: square 23.60 units (R-46); rounded 24.79 units (R-46); circle 20.26 units (CL-059).
 Verification errors: 0.
 
 ## Remaining IDs

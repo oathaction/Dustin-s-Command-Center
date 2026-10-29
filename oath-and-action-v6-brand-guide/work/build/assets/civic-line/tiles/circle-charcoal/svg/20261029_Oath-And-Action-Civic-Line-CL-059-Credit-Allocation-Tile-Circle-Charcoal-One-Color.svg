@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-059-tile-circle-charcoal-one-color" data-id="CL-059" width="128" height="128" viewBox="0 0 128 128">
+  <title>Credit Allocation</title>
+  <desc>Oath &amp; Action Civic Line CL-059 Credit Allocation: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
+  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="base">
+    <polygon points="38.8991,33.946 61.8676,19.0987 84.8361,33.946" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.0168" y1="40.3918" x2="44.0168" y2="56.6038" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55.9153" y1="40.3918" x2="55.9153" y2="56.6038" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.82" y1="40.3918" x2="67.82" y2="56.6038" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.7185" y1="40.3918" x2="79.7185" y2="56.6038" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="38.5031" y1="56.6038" x2="85.2322" y2="56.6038" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="11.7939,108.1702 11.7939,93.6397 26.8239,81.1807 41.854,93.6397 41.854,108.1702" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="23.2842,108.1702 23.2842,99.5798 30.3636,99.5798 30.3636,108.1702" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="73.3945,94.5231 82.3078,88.3088 82.3078,95.0105 93.1706,88.3088 93.1706,95.0105 104.0273,88.3088 104.0273,95.0105 105.4286,95.0105 109.2059,81.1441 116.4376,81.1441 116.4376,108.6454 73.3945,108.6454" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M58.1452 63.3908 V68.2221 A1.523105 1.523105 0 0 1 56.6221 69.7452 H30.9546 A1.523105 1.523105 0 0 0 29.4315 71.2683 V76.6723" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.5901 63.3908 V68.2221 A1.523105 1.523105 0 0 0 67.1132 69.7452 H92.7807 A1.523105 1.523105 0 0 1 94.3038 71.2683 V81.2111" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

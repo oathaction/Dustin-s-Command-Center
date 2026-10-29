@@ -3,9 +3,9 @@
   <title>Healthcare</title>
   <desc>Oath &amp; Action Civic Line CL-067 Healthcare. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M50.9086 32.4899 H76.9647 A1.218494 1.218494 0 0 1 78.1832 33.7084 V50.1287 H94.6035 A1.218494 1.218494 0 0 1 95.822 51.3472 V77.4034 A1.218469 1.218469 0 0 1 94.6035 78.6218 H78.1832 V95.0422 A1.218494 1.218494 0 0 1 76.9647 96.2607 H50.9086 A1.218494 1.218494 0 0 1 49.6901 95.0422 V78.6218 H33.2697 A1.218444 1.218444 0 0 1 32.0513 77.4034 V51.3472 A1.218469 1.218469 0 0 1 33.2697 50.1287 H49.6901 V33.7084 A1.218494 1.218494 0 0 1 50.9086 32.4899 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M47.6357 24.6124 H80.2059 A1.523105 1.523105 0 0 1 81.729 26.1355 V46.6609 H102.2544 A1.523105 1.523105 0 0 1 103.7775 48.184 V80.7542 A1.523105 1.523105 0 0 1 102.2544 82.2773 H81.729 V102.8028 A1.523105 1.523105 0 0 1 80.2059 104.3259 H47.6357 A1.523105 1.523105 0 0 1 46.1126 102.8028 V82.2773 H25.5872 A1.523105 1.523105 0 0 1 24.0641 80.7542 V48.184 A1.523105 1.523105 0 0 1 25.5872 46.6609 H46.1126 V26.1355 A1.523105 1.523105 0 0 1 47.6357 24.6124 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="41.5165,64.6336 54.5445,64.6336 54.8857,67.2168 60.5639,50.5479 66.0471,78.3782 71.6034,61.0269 73.7479,64.6336 86.4835,64.6336" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="35.8956,64.792 52.1807,64.792 52.6071,68.021 59.7048,47.1849 66.5588,81.9727 73.5042,60.2836 76.1849,64.792 92.1044,64.792" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>
