@@ -66,6 +66,7 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
       const tag = `${w}-${scheme}`;
       const info = await page.evaluate(() => ({
         cards: document.querySelectorAll('.cell:not([hidden])').length,
+        dupIds: (() => { const ids = [...document.querySelectorAll('[id]')].map((e) => e.id); return ids.length - new Set(ids).size; })(),
         bg: getComputedStyle(document.body).backgroundColor,
         fontsLoaded: [...document.fonts].filter((f) => f.status === 'loaded').map((f) => `${f.family} ${f.weight}`),
         interTight: document.fonts.check('700 30px "Inter Tight"'),
@@ -89,6 +90,8 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
           dialogScroll: d.scrollWidth - d.clientWidth, raised: getComputedStyle(d).backgroundColor,
           corrections: d.querySelectorAll('ol.corr li').length,
           specimens: d.querySelectorAll('.spec').length,
+          prussian: (() => { const e = d.querySelector('.spec.on-prussian .stage'); return e ? getComputedStyle(e).backgroundColor : null; })(),
+          dupIds: (() => { const ids = [...document.querySelectorAll('[id]')].map((e) => e.id); return ids.length - new Set(ids).size; })(),
           specSizes: [...new Set([...d.querySelectorAll('.spec svg')].map((v) => Math.round(v.getBoundingClientRect().width)))],
           tileStages: [...d.querySelectorAll('.spec.on-stage .stage')].slice(0, 4).map((v) => getComputedStyle(v).backgroundColor) };
       });
@@ -123,12 +126,12 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
       count: document.getElementById('count').textContent }));
     await page.selectOption('#sheet', '');
     const accentStroke = () => page.evaluate(() => {
-      const el = document.querySelector('[data-id="CL-021"] svg [id$="accent"] path');
+      const el = document.querySelector('[data-id="CL-021"] svg [data-part="accent"] path');
       return getComputedStyle(el).stroke;
     });
     const look = () => page.evaluate(() => {
-      const acc = document.querySelector('[data-id="CL-021"] svg [id$="accent"] path');
-      const base = document.querySelector('[data-id="CL-021"] svg [id$="base"] path');
+      const acc = document.querySelector('[data-id="CL-021"] svg [data-part="accent"] path');
+      const base = document.querySelector('[data-id="CL-021"] svg [data-part="base"] path');
       return { accent: getComputedStyle(acc).stroke, ink: getComputedStyle(base).stroke,
         tile: getComputedStyle(document.querySelector('[data-id="CL-021"] .tile')).backgroundColor };
     });
@@ -139,12 +142,15 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
     }
     F.accentRedBlack = F.editions['red-black'].accent;
     F.accentBlack = F.editions['black'].accent;
-    // holders: the chosen shape shows, the glyph scales by its factor, the stage takes the opposite colour
+    // holders: the chosen shape shows, the glyph scales by its factor, the stage takes the opposite color
     const glyphBox = () => page.evaluate(() => {
       const g = document.querySelector('[data-id="CL-021"] .glyph').getBoundingClientRect();
+      const g10 = document.querySelector('[data-id="CL-010"] .glyph');
+      const p22 = document.querySelector('[data-id="CL-022"] [data-part="base"] path, [data-id="CL-022"] [data-part="base"] circle, [data-id="CL-022"] [data-part="base"] line');
       const shown = [...document.querySelectorAll('[data-id="CL-021"] .hold')].filter((u) => getComputedStyle(u).display !== 'none').map((u) => u.getAttribute('href'));
       const fill = shown.length ? getComputedStyle(document.querySelector('[data-id="CL-021"] .hold[href="' + shown[0] + '"]')).fill : null;
-      return { w: g.width, shown, fill, stage: getComputedStyle(document.querySelector('[data-id="CL-021"] .tile')).backgroundColor };
+      return { w: g.width, shown, fill, stage: getComputedStyle(document.querySelector('[data-id="CL-021"] .tile')).backgroundColor,
+        cl010: getComputedStyle(g10).transform, cl022Stroke: parseFloat(getComputedStyle(p22).strokeWidth) };
     });
     await page.click('label:has(#ed-rn)');
     await page.click('label:has(#ho-none)');
@@ -161,15 +167,45 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
     await page.waitForSelector('dialog[open] .spec');
     await page.evaluate(() => { const v = document.querySelector('dialog[open] .variants'); v.scrollIntoView(); });
     await page.screenshot({ path: path.join(outDir, '1440-light-detail-variants.png') });
+    const tileStrokes = () => page.evaluate(() => [...document.querySelectorAll('dialog[open] .spec.on-stage svg [data-part="base"] > *')]
+      .map((e) => parseFloat(getComputedStyle(e).strokeWidth)).filter((v) => !Number.isNaN(v)));
+    F.detailTileStrokesCL021 = [...new Set(await tileStrokes())];
+    await page.keyboard.press('Escape');
+    await page.click('[data-open="CL-022"]');
+    await page.waitForSelector('dialog[open] .spec');
+    F.detailTileStrokesCL022 = [...new Set(await tileStrokes())];
     await page.keyboard.press('Escape');
     await page.click('label:has(#ed-rb)');
     F.holderRoundedRedBlack = (await (async () => { await page.click('label:has(#ho-rounded)'); return glyphBox(); })());
+    // M-1: cards below the tile minimum are marked
+    const marked = () => page.evaluate(() => ({ n: document.querySelectorAll('.cell.below-min').length,
+      notes: document.querySelectorAll('.cell .minnote:not([hidden])').length,
+      sample: (document.querySelector('.cell.below-min .minnote') || {}).textContent || '',
+      ids: [...document.querySelectorAll('.cell.below-min')].map((c) => c.dataset.id) }));
+    F.minMarks = {};
+    await page.click('.seg label:has(input[value="24"])');
+    F.minMarks.rbRounded24 = await marked();
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: path.join(outDir, '1440-light-24-rounded.png') });
+    await page.click('.seg label:has(input[value="128"])');
+    F.minMarks.rbRounded128 = await marked();
+    await page.click('label:has(#ed-bk)');
+    await page.click('label:has(#ho-square)');
+    await page.click('.seg label:has(input[value="64"])');
+    F.minMarks.bkSquare64 = await marked();
+    await page.click('label:has(#ho-none)');
+    await page.click('.seg label:has(input[value="24"])');
+    F.minMarks.none24 = await marked();
+    await page.click('label:has(#ed-rb)');
+    await page.click('.seg label:has(input[value="64"])');
     await page.click('label:has(#ho-none)');
     await page.click('.seg label:has(input[value="128"])');
     F.size128 = await page.evaluate(() => document.querySelector('.ic').getBoundingClientRect().width);
     await page.click('.seg label:has(input[value="24"])');
     F.size24 = await page.evaluate(() => document.querySelector('.ic').getBoundingClientRect().width);
     F.scroll24 = await hscroll(page);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: path.join(outDir, '1440-light-24.png') });
     // keyboard: on a fresh page the first Tab lands on the search field with a visible outline
     {
       const k = await newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' });
@@ -197,6 +233,47 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
     F.escapeCloses = await page.evaluate(() => !document.querySelector('dialog[open]'));
     F.errors = errors;
     await ctx.close();
+  }
+  // S-7: card labels never break inside a word, and R-35's separator stays with "Rejected"
+  {
+    results.functional.labels = [];
+    for (const w of [1440, 1024, 390, 360]) {
+      const { ctx, page } = await newPage({ viewport: { width: w, height: 900 }, colorScheme: 'light' });
+      for (const sz of ['24', '32', '48', '64', '128']) {
+        await page.click(`.seg label:has(input[value="${sz}"])`);
+        const r = await page.evaluate(() => {
+          const broken = [], over = [];
+          document.querySelectorAll('.cell:not([hidden]) .cname').forEach((el) => {
+            const t = el.firstChild; if (!t) return;
+            const text = t.textContent, re = /[^\s\u00a0]+/g; let m;
+            while ((m = re.exec(text))) {
+              const rg = document.createRange(); rg.setStart(t, m.index); rg.setEnd(t, m.index + m[0].length);
+              const tops = new Set([...rg.getClientRects()].filter((q) => q.width > 0).map((q) => Math.round(q.top)));
+              if (tops.size > 1) broken.push(el.closest('.cell').dataset.id + ' ' + m[0]);
+            }
+            const card = el.closest('.card').getBoundingClientRect(), b = el.getBoundingClientRect();
+            if (el.scrollWidth > el.clientWidth + 1 || b.right > card.right + 1) over.push(el.closest('.cell').dataset.id);
+          });
+          const el = document.querySelector('[data-id="R-35"] .cname'), t = el.firstChild, text = t.textContent;
+          const top = (a, n) => { const rg = document.createRange(); rg.setStart(t, a); rg.setEnd(t, a + n); return Math.round(rg.getClientRects()[0].top); };
+          const dot = top(text.indexOf('\u00b7'), 1), rej = top(text.indexOf('Rejected'), 8), lim = top(text.indexOf('Limits'), 6);
+          return { broken, over, r35: { wraps: dot !== lim || rej !== lim, dotWithRejected: dot === rej, dotStartsLine2: dot > lim,
+            cardWidth: Math.round(el.closest('.card').getBoundingClientRect().width) } };
+        });
+        const sc = await hscroll(page);
+        const seg = await page.evaluate(() => [...document.querySelectorAll('.seg')].map((g) => {
+          const spans = [...g.querySelectorAll('span')];
+          return { lines: new Set(spans.map((x) => Math.round(x.getBoundingClientRect().top))).size,
+            wrapped: spans.filter((x) => x.getClientRects().length > 1 || x.getBoundingClientRect().height > 44).map((x) => x.textContent) };
+        }));
+        results.functional.labels.push({ width: w, size: sz, scroll: sc, seg, ...r });
+      }
+      if (w === 390) {
+        await page.click('.seg label:has(input[value="24"])');
+        await page.screenshot({ path: path.join(outDir, '390-light-24.png') });
+      }
+      await ctx.close();
+    }
   }
   // hash opens a detail view
   {

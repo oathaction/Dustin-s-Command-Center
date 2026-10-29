@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-23-tile-circle-newsprint-two-color" data-id="R-23" width="128" height="128" viewBox="0 0 128 128">
   <title>Indexed Minimum Wage</title>
-  <desc>Oath &amp; Action Civic Line R-23 Indexed Minimum Wage: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-23 Indexed Minimum Wage: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-23-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-23-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-23-tile-circle-newsprint-two-color-base" data-part="base">
     <path d="M46.4111 92.6954 L24.4418 92.6954 A2.132377 2.132377 0 0 1 22.3094 90.563 L22.3094 36.6998 A2.132377 2.132377 0 0 1 24.4418 34.5674 L103.2353 34.5674 A2.132377 2.132377 0 0 1 105.3677 36.6998 L105.3677 93.0914" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M42.78 48.9273 A4.417025 4.13068 0 1 0 38.7468 54.7395 A4.417025 4.13068 0 1 1 34.7136 60.5517" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="38.7468" y1="44.0777" x2="38.7468" y2="46.4781" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -18,7 +18,7 @@
     <line x1="81.6072" y1="81.9727" x2="81.6072" y2="93.0914" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="93.9139" y1="75.4233" x2="93.9139" y2="93.0914" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-23-tile-circle-newsprint-two-color-accent" data-part="accent">
     <path d="M62.355 77.641 C80.4313 75.9046 87.2731 66.2603 94.5962 55.4097" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="86.0059,59.3149 94.5962,55.4097 94.188,64.8347" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

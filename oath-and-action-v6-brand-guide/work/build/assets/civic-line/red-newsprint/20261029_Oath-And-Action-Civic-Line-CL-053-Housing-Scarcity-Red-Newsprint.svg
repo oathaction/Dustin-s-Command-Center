@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-053" data-id="CL-053" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-053-red-newsprint" data-id="CL-053" width="128" height="128" viewBox="0 0 128 128">
   <title>Housing Scarcity</title>
-  <desc>Oath &amp; Action Civic Line CL-053 Housing Scarcity. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-053 Housing Scarcity. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 5. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-053-red-newsprint-base" data-part="base">
     <polygon points="7.5861,87.709 7.5861,56.3357 24.6606,40.2496 41.7351,56.3357 41.7351,87.709" fill="none" stroke="#DCD9D2" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
     <polygon points="86.1939,87.709 86.1939,56.3357 103.2684,40.2496 120.3429,56.3357 120.3429,87.709" fill="none" stroke="#DCD9D2" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="18.9494" y1="61.751" x2="18.9494" y2="68.1429" fill="none" stroke="#DCD9D2" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
@@ -10,7 +10,7 @@
     <line x1="97.5572" y1="61.751" x2="97.5572" y2="68.1429" fill="none" stroke="#DCD9D2" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="108.9796" y1="61.751" x2="108.9796" y2="68.1429" fill="none" stroke="#DCD9D2" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-053-red-newsprint-accent" data-part="accent">
     <line x1="49.1153" y1="56.2292" x2="49.1153" y2="61.9641" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="49.1153" y1="69.3265" x2="49.1153" y2="76.0202" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="49.1153" y1="83.2761" x2="49.1153" y2="87.709" fill="none" stroke="#E63946" stroke-width="3.2551" stroke-linecap="round" stroke-linejoin="round"/>

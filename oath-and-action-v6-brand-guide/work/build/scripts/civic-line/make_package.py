@@ -40,6 +40,7 @@ STAMP = (2026, 10, 29, 0, 0, 0)
 def readme_text(split):
     sc = C.read_json(C.SCALE_JSON)
     inv = C.load_inventory()
+    inv_by = {r["id"]: r for r in inv["icons"]}
     vr = C.read_json(VERIFY) or {}
     rows = list(csv.DictReader(open(FIDELITY, encoding="utf-8")))
     med = lambda k: statistics.median([float(r[k]) for r in rows if r[k]])  # noqa: E731
@@ -49,9 +50,27 @@ def readme_text(split):
     red_np = next((c["ratio"] for c in vr.get("contrast", []) if c["ink_hex"] == C.PILLAR_RED and c["ground_hex"] == C.NEWSPRINT), None)
     red_ch = next((c["ratio"] for c in vr.get("contrast", []) if c["ink_hex"] == C.PILLAR_RED and c["ground_hex"] == C.CHARCOAL), None)
     ok = vr.get("errors") == [] and vr.get("edition_trees_identical") == 122 and vr.get("tiles_matching_bare_geometry") == 1464
-    check_line = ("A script parsed every file: the four editions of each icon share the same elements and attributes apart from ink color, "
-                  "and every tile holds its bare export's geometry unchanged under one transform." if ok else
+    audit = vr.get("id_audit", {})
+    check_line = ("A script parsed every file: the four editions of each icon share the same elements and attributes apart from ink color "
+                  "and the root of each id, and every tile holds its bare export's geometry under one transform per icon, with its strokes "
+                  f"held at the set's heaviest line. No id repeats across the {audit.get('files', 0):,} SVG files." if ok else
                   f"The verification report lists {len(vr.get('errors', []))} problems to fix before release.")
+    n48 = len(C.BARE_FLOOR_48_IDS)
+    t_lo = min(r["tile_stroke_units"] for r in inv["icons"])
+    t_hi = max(r["tile_stroke_units"] for r in inv["icons"])
+    offs = [abs(v) * f["rounded"] for v in C.TILE_OFFSET_X.values()]
+    shifted = ", ".join(sorted(C.TILE_OFFSET_X)[:-1]) + " and " + sorted(C.TILE_OFFSET_X)[-1]
+    at_min = [(r["tile_stroke_units"] * C.TILE_FACTORS[sh] * r["tile_min_px"]["two-color"][sh] / 128, r["id"])
+              for r in inv["icons"] for sh in C.TILE_SHAPES]
+    full = [v for v, i in at_min if inv_by[i]["tile_stroke_units"] >= C.TILE_STROKE_CAP - 1e-4]
+    thin = min(at_min)
+    mins = {k: C.tile_min_px(k) for k in ("R-35", C.BARE_FLOOR_48_IDS[0])}
+    one, one48, two = mins["R-35"]["one-color"], mins[C.BARE_FLOOR_48_IDS[0]]["one-color"], mins["R-35"]["two-color"]
+    min_table = "\n".join([
+        "| Tile | Square | Rounded | Circle |", "|---|---:|---:|---:|",
+        f"| One-color, the {122 - n48} icons that read at 32 px bare | {one['square']} px | {one['rounded']} px | {one['circle']} px |",
+        f"| One-color, the {n48} icons that need 48 px bare | {one48['square']} px | {one48['rounded']} px | {one48['circle']} px |",
+        f"| Two-color, all 122 icons | {two['square']} px | {two['rounded']} px | {two['circle']} px |"])
     packing = ("The package comes as two archives that unpack into the same folder: the SVG archive holds the vectors, the catalog page and the data files, "
                "and the PNG archive holds the rasters and the reference crops. Each carries this readme." if split else
                "The package is one archive.")
@@ -63,7 +82,7 @@ Released on October 29, 2026, after Dustin Cathcart approved the set (DR-07) and
 
 - Four bare editions of all 122 icons: `red-black/`, `black/`, `red-newsprint/` and `newsprint/`, 488 SVGs, with transparent PNGs at 256 and 512 px in `png-256/` and `png-512/` (976 PNGs).
 - Tiles: twelve per icon in `tiles/<shape>-<tile>/`, each with `svg/`, `png-256/` and `png-512/` (1,464 SVGs and 2,928 PNGs).
-- `contact-sheets/`: the five catalogue sheets in all four editions, as SVG, PNG and 2x PNG, and `contact-sheets/tiles/`: twelve overview sheets with all 122 tiles of each kind.
+- `contact-sheets/`: the five catalog sheets in all four editions, as SVG, PNG and 2x PNG, and `contact-sheets/tiles/`: twelve overview sheets with all 122 tiles of each kind.
 - `reference-crops/`: 244 untouched crops of the supplied reference sheets.
 - `{os.path.basename(CATALOG)}`: a searchable page with every icon, edition and tile.
 - The inventory (`{os.path.basename(C.INVENTORY_JSON)}` and `.csv`), the fidelity measurements (`{os.path.basename(FIDELITY)}`) and the contrast table (`{os.path.basename(CONTRAST)}`).
@@ -77,11 +96,11 @@ Released on October 29, 2026, after Dustin Cathcart approved the set (DR-07) and
 | Red-newsprint | Newsprint #DCD9D2 | Pillar Red #E63946 | Charcoal |
 | Newsprint | Newsprint #DCD9D2 | Newsprint | Charcoal and Prussian #1F2D5A, where red never sits |
 
-Each edition is the red-black file with its ink colours swapped, so all four share every coordinate. {check_line} Inside each SVG the main drawing sits in the group `base` and the coloured parts in the group `accent`.
+Each edition is the red-black file with its ink colors swapped, so all four share every coordinate. {check_line} Inside each SVG the main drawing sits in the group marked `data-part="base"` and the colored parts in the group marked `data-part="accent"`; in a tile the shape carries `data-part="tile"` and the icon group `data-part="icon"`. Every id inside a file starts with that file's root id, such as `oa-civic-line-cl-057-red-black` or `oa-civic-line-cl-057-tile-rounded-charcoal-two-color`, so any number of files can be inlined on one page, hidden or shown, without one file's mask reaching into another.
 
 ## Size, scale and stroke
 
-Every bare file has a transparent background and a 128 by 128 viewBox. Each icon grows toward 116 of the 128 units by at most 1.25 times the set's shared scale of {sc['s_units_per_source_px']} units per source pixel (DR-08), so strokes run from {lo:.2f} to {hi:.2f} units and every icon sits centred on its own drawing.
+Every bare file has a transparent background and a 128 by 128 viewBox. Each icon grows toward 116 of the 128 units by at most 1.25 times the set's shared scale of {sc['s_units_per_source_px']} units per source pixel (DR-08), so strokes run from {lo:.2f} to {hi:.2f} units and every icon sits centered on its own drawing.
 
 The icons read best from 48 px up. At 24 px the stroke is half a pixel wide ({lo * 24 / 128:.2f} to {hi * 24 / 128:.2f} px), and at 32 px {lo * 32 / 128:.2f} to {hi * 32 / 128:.2f} px, so fine details soften. Use below 32 px would need its own small-size drawings.
 
@@ -89,7 +108,23 @@ The icons read best from 48 px up. At 24 px the stroke is half a pixel wide ({lo
 
 Each icon comes in a square, a rounded square and a circle (DR-10). The rounded square is the superellipse |x|^5 + |y|^5 = 1 drawn with 96 cubic curves whose curvature runs on without a step at every join, the continuous corner of an app icon rather than a plain rounded corner. A Charcoal tile carries the Newsprint editions and a Newsprint tile the Charcoal editions, each in two-color and one-color. Names end in `-Tile-<Shape>-<Tile>-Two-Color` or `-One-Color`.
 
-In a tile the bare icon scales about the centre by {f['square']:g} (square), {f['rounded']:g} (rounded) or {f['circle']:g} (circle), chosen on a calibration board of twenty varied icons at 48, 96 and 192 px. One factor per shape keeps the line weights within the set's 25 percent spread. Every icon keeps a clear margin from every tile edge; the smallest are {m.get('square', {}).get('min_margin', 0):.1f} units on the square ({m.get('square', {}).get('min_margin_id', '')}), {m.get('rounded', {}).get('min_margin', 0):.1f} on the rounded square ({m.get('rounded', {}).get('min_margin_id', '')}) and {m.get('circle', {}).get('min_margin', 0):.1f} on the circle ({m.get('circle', {}).get('min_margin_id', '')}), out of 128.
+In a tile the bare icon scales about the center by {f['square']:g} (square), {f['rounded']:g} (rounded) or {f['circle']:g} (circle), chosen on a calibration board of twenty varied icons at 96 and 192 px; the 48 px rows sit below the tile minimum and are kept for reference. Measured against the side of a square with the tile's area, the icon spans 0.680 of the square, 0.677 of the rounded square and 0.700 of the circle, whose edge closes in at the corners, so the three shapes hold one icon size.
+
+On top of the shape factor, {vr.get('icons_with_optical_scale', len(C.TILE_OPTICAL_SCALE))} icons carry an optical scale between {min(C.TILE_OPTICAL_SCALE.values()):.2f} and {max(C.TILE_OPTICAL_SCALE.values()):.2f}: the dense, squarish drawings come down a little and the compact or thin ones go up, and the four pillar marks are set as one group so they read as equals in a row. Where the larger size would make a line heavier than the set's heaviest stroke, every stroke width in that tile is multiplied down to {C.TILE_STROKE_CAP:.2f} units, so tile lines run from {t_lo:.2f} to {t_hi:.2f} units. {len(C.TILE_OFFSET_X)} icons whose subject is heavy on one side ({shifted}) move {min(offs):.1f} to {max(offs):.1f} units toward their light side in the rounded tile, and in proportion in the other two. The inventory records each icon's optical scale (`tile_optical_scale`), offset (`tile_offset_x`), scale per shape (`tile_scale`) and line weight in the tile (`tile_stroke_units`). The bare editions stay centered on their ink box. Every icon keeps a clear margin from every tile edge; the smallest are {m.get('square', {}).get('min_margin', 0):.1f} units on the square ({m.get('square', {}).get('min_margin_id', '')}), {m.get('rounded', {}).get('min_margin', 0):.1f} on the rounded square ({m.get('rounded', {}).get('min_margin_id', '')}) and {m.get('circle', {}).get('min_margin', 0):.1f} on the circle ({m.get('circle', {}).get('min_margin_id', '')}), out of 128.
+
+### Minimum tile sizes
+
+A tile shrinks its icon, so each tile has a smallest size, recorded per icon in the inventory as `tile_min_px`:
+
+{min_table}
+
+Each minimum is the bare icon's floor (32 px, or 48 px for the {n48} icons listed in the inventory) divided by the shape factor and rounded up to a multiple of 4 px; a two-color tile takes the 48 px floor for every icon, so its Pillar Red reaches its true value. At the two-color minimum the line is {min(full):.2f} to {max(full):.2f} px for the icons at the set's full stroke, and {thin[0]:.2f} px at the least ({thin[1]}, whose tile line is the thinnest in the set).
+
+### Using the tiles
+
+- A two-color tile is for an icon that stands alone: an app tile, an avatar or a single feature icon. In a row or a menu, use one-color tiles and give the red to the current item only (rule 05.3, D2-01).
+- A Newsprint tile on a White page has a soft edge (1.41:1). On White, use the Charcoal tile or a bare red-black or black icon.
+- For an iOS or Android app icon, supply the square tile at full bleed and let the platform apply its own corner. Never submit the rounded or circle tile, which would round the corner twice. The square tile PNGs carry an alpha channel today; the App Store's icon size and alpha rules and Android's adaptive-icon safe zone get checked on the platforms' own pages in the applications phase (Master Brief section 18).
 
 ## Contrast
 
@@ -107,7 +142,7 @@ R-35 is named "Term Limits · Rejected". It records an option the atlas rejected
 
 ## Contact sheets
 
-The contact sheets repeat the layout of the supplied sheets cell for cell, with the traced icons in place of the raster ones and the approved Edition 06 wordmark (DR-05). Their text is set in Inter and converted to outlines, so no font files are needed.
+The contact sheets repeat the layout of the supplied sheets cell for cell, with the traced icons in place of the raster ones and the approved Edition 06 wordmark (DR-05). All 32 sheets share one header and footer: the wordmark, a rule from x = 49 to 1487, and the title and footer set flush right at x = 1487. The captions in each row share one baseline. Their text is set in Inter and converted to outlines, so no font files are needed.
 
 ## Rights
 

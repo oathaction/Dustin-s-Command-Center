@@ -249,17 +249,53 @@
           }
         ]
       },
+      "template": {
+        "wordmark": {
+          "x0": 49,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "rule": {
+          "x0": 49,
+          "x1": 1487,
+          "cy": 66.25
+        },
+        "title": {
+          "x1": 1487,
+          "baseline": 46.0,
+          "size": 20.6
+        },
+        "footer": {
+          "x1": 1487,
+          "top": 989.4,
+          "size": 12.6
+        }
+      },
       "caption_size_px": 21.359,
       "caption_size_spread": [
         20.8,
         21.85
       ],
+      "caption_baselines_by_row": {
+        "1": 262.0,
+        "2": 479.0,
+        "3": 697.5,
+        "4": 924.0
+      },
+      "caption_baseline_spread_in_source_by_row": {
+        "1": 1.0,
+        "2": 2.0,
+        "3": 4.0,
+        "4": 3.0
+      },
+      "id_baselines_by_row": {},
       "id_size_px": null,
-      "title_size_px": 21.073,
+      "title_size_px": 20.6,
       "editions": {
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Red-Black.svg",
-          "footer_size_px": 12.57,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -267,7 +303,8 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Black.svg",
-          "footer_size_px": 12.57,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -275,7 +312,8 @@
         },
         "red-newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Red-Newsprint.svg",
-          "footer_size_px": 12.57,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -283,7 +321,8 @@
         },
         "newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Newsprint.svg",
-          "footer_size_px": 12.57,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -533,17 +572,53 @@
           }
         ]
       },
+      "template": {
+        "wordmark": {
+          "x0": 49,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "rule": {
+          "x0": 49,
+          "x1": 1487,
+          "cy": 66.25
+        },
+        "title": {
+          "x1": 1487,
+          "baseline": 46.0,
+          "size": 20.6
+        },
+        "footer": {
+          "x1": 1487,
+          "top": 989.4,
+          "size": 12.6
+        }
+      },
       "caption_size_px": 21.058,
       "caption_size_spread": [
         20.51,
         21.85
       ],
+      "caption_baselines_by_row": {
+        "1": 263.0,
+        "2": 474.0,
+        "3": 703.0,
+        "4": 926.0
+      },
+      "caption_baseline_spread_in_source_by_row": {
+        "1": 1.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0
+      },
+      "id_baselines_by_row": {},
       "id_size_px": null,
-      "title_size_px": 19.224,
+      "title_size_px": 20.6,
       "editions": {
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Red-Black.svg",
-          "footer_size_px": 13.283,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -551,7 +626,8 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Black.svg",
-          "footer_size_px": 13.283,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -559,7 +635,8 @@
         },
         "red-newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Red-Newsprint.svg",
-          "footer_size_px": 13.283,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -567,7 +644,8 @@
         },
         "newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Newsprint.svg",
-          "footer_size_px": 13.283,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -817,17 +895,53 @@
           }
         ]
       },
+      "template": {
+        "wordmark": {
+          "x0": 49,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "rule": {
+          "x0": 49,
+          "x1": 1487,
+          "cy": 66.25
+        },
+        "title": {
+          "x1": 1487,
+          "baseline": 46.0,
+          "size": 20.6
+        },
+        "footer": {
+          "x1": 1487,
+          "top": 989.4,
+          "size": 12.6
+        }
+      },
       "caption_size_px": 19.899,
       "caption_size_spread": [
         19.14,
         20.37
       ],
+      "caption_baselines_by_row": {
+        "1": 266.0,
+        "2": 485.0,
+        "3": 693.5,
+        "4": 929.0
+      },
+      "caption_baseline_spread_in_source_by_row": {
+        "1": 0.0,
+        "2": 1.0,
+        "3": 4.0,
+        "4": 0.0
+      },
+      "id_baselines_by_row": {},
       "id_size_px": null,
-      "title_size_px": 20.197,
+      "title_size_px": 20.6,
       "editions": {
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Red-Black.svg",
-          "footer_size_px": 12.829,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -835,7 +949,8 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.svg",
-          "footer_size_px": 12.829,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -843,7 +958,8 @@
         },
         "red-newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Red-Newsprint.svg",
-          "footer_size_px": 12.829,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -851,7 +967,8 @@
         },
         "newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Newsprint.svg",
-          "footer_size_px": 12.829,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1235,17 +1352,61 @@
           }
         ]
       },
+      "template": {
+        "wordmark": {
+          "x0": 49,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "rule": {
+          "x0": 49,
+          "x1": 1487,
+          "cy": 66.25
+        },
+        "title": {
+          "x1": 1487,
+          "baseline": 46.0,
+          "size": 20.6
+        },
+        "footer": {
+          "x1": 1487,
+          "top": 989.4,
+          "size": 12.6
+        }
+      },
       "caption_size_px": 18.676,
       "caption_size_spread": [
         18.15,
         19.29
       ],
+      "caption_baselines_by_row": {
+        "1": 240.0,
+        "2": 417.0,
+        "3": 594.0,
+        "4": 772.0,
+        "5": 959.0
+      },
+      "caption_baseline_spread_in_source_by_row": {
+        "1": 1.0,
+        "2": 2.0,
+        "3": 2.0,
+        "4": 3.0,
+        "5": 1.0
+      },
+      "id_baselines_by_row": {
+        "1": 216.0,
+        "2": 394.0,
+        "3": 570.0,
+        "4": 748.0,
+        "5": 934.0
+      },
       "id_size_px": 14.678,
-      "title_size_px": 20.589,
+      "title_size_px": 20.6,
       "editions": {
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Red-Black.svg",
-          "footer_size_px": 12.505,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1253,7 +1414,8 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Black.svg",
-          "footer_size_px": 12.505,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1261,7 +1423,8 @@
         },
         "red-newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Red-Newsprint.svg",
-          "footer_size_px": 12.505,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1269,7 +1432,8 @@
         },
         "newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Newsprint.svg",
-          "footer_size_px": 12.505,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1653,17 +1817,61 @@
           }
         ]
       },
+      "template": {
+        "wordmark": {
+          "x0": 49,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "rule": {
+          "x0": 49,
+          "x1": 1487,
+          "cy": 66.25
+        },
+        "title": {
+          "x1": 1487,
+          "baseline": 46.0,
+          "size": 20.6
+        },
+        "footer": {
+          "x1": 1487,
+          "top": 989.4,
+          "size": 12.6
+        }
+      },
       "caption_size_px": 18.731,
       "caption_size_spread": [
         18.3,
         19.83
       ],
+      "caption_baselines_by_row": {
+        "1": 239.0,
+        "2": 416.0,
+        "3": 593.0,
+        "4": 776.0,
+        "5": 960.0
+      },
+      "caption_baseline_spread_in_source_by_row": {
+        "1": 1.0,
+        "2": 0.0,
+        "3": 1.0,
+        "4": 3.0,
+        "5": 1.0
+      },
+      "id_baselines_by_row": {
+        "1": 215.0,
+        "2": 393.0,
+        "3": 570.0,
+        "4": 752.0,
+        "5": 936.0
+      },
       "id_size_px": 15.033,
-      "title_size_px": 20.686,
+      "title_size_px": 20.6,
       "editions": {
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red-Black.svg",
-          "footer_size_px": 12.7,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1671,7 +1879,8 @@
         },
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.svg",
-          "footer_size_px": 12.7,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1679,7 +1888,8 @@
         },
         "red-newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red-Newsprint.svg",
-          "footer_size_px": 12.7,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
@@ -1687,7 +1897,8 @@
         },
         "newsprint": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Newsprint.svg",
-          "footer_size_px": 12.7,
+          "footer_size_px": 12.6,
+          "footer_baseline": 998.998,
           "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,

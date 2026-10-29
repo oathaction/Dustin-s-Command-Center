@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-32-tile-square-charcoal-two-color" data-id="R-32" width="128" height="128" viewBox="0 0 128 128">
   <title>Local-News Funding</title>
-  <desc>Oath &amp; Action Civic Line R-32 Local-News Funding: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-32 Local-News Funding: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-32-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-r-32-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-32-tile-square-charcoal-two-color-base" data-part="base">
     <path d="M19.0195 41.8844 H14.243 A3.204637 3.204637 0 0 0 11.0384 45.0891 V87.1391 A3.899156 3.899156 0 0 0 14.9376 91.0382 H74.3998 A3.04621 3.04621 0 0 0 77.446 87.992 V39.8557 A3.046235 3.046235 0 0 0 74.3998 36.8094 H22.0048 A2.985298 2.985298 0 0 0 19.0195 39.7947 V91.0382" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.4811" y1="46.4538" x2="68.021" y2="46.4538" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.4811" y1="55.2513" x2="68.021" y2="55.2513" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -21,7 +21,7 @@
     <path d="M93.0609 77.9761 A11.941199 4.654631 0 0 0 116.9433 77.9761" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M93.0609 86.4628 A11.941199 4.654631 0 0 0 116.9433 86.4628" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-32-tile-square-charcoal-two-color-accent" data-part="accent">
     <rect x="51.6933" y="61.4107" width="18.0336" height="16.2242" rx="1.2185" fill="#E63946"/>
   </g>
   </g>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-046-tile-circle-charcoal-one-color" data-id="CL-046" width="128" height="128" viewBox="0 0 128 128">
   <title>AI Infrastructure</title>
-  <desc>Oath &amp; Action Civic Line CL-046 AI Infrastructure: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-046 AI Infrastructure: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.589 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-046-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-046-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.589 0 0 0.589 26.304 26.304)">
+  <g id="oa-civic-line-cl-046-tile-circle-charcoal-one-color-base" data-part="base">
     <rect x="8.2237" y="34.2506" width="45.8639" height="16.9065" rx="3.5336" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="8.2237" y="51.1571" width="45.8639" height="16.9065" rx="3.5336" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="8.2237" y="68.0637" width="45.8639" height="16.9065" rx="3.5336" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -27,7 +27,7 @@
     <line x1="110.5036" y1="62.7328" x2="121.1654" y2="62.7328" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="110.5036" y1="71.6582" x2="121.1654" y2="71.6582" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-046-tile-circle-charcoal-one-color-accent" data-part="accent">
     <circle cx="46.0273" cy="43.3466" r="2.1324" fill="#DCD9D2"/>
     <circle cx="46.0273" cy="59.9607" r="2.1324" fill="#DCD9D2"/>
     <circle cx="46.0273" cy="76.8672" r="2.1324" fill="#DCD9D2"/>

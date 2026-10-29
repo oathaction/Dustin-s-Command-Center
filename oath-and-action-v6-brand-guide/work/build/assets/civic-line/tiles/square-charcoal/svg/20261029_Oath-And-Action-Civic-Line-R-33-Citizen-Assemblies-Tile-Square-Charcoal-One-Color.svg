@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-33-tile-square-charcoal-one-color" data-id="R-33" width="128" height="128" viewBox="0 0 128 128">
   <title>Citizen Assemblies</title>
-  <desc>Oath &amp; Action Civic Line R-33 Citizen Assemblies: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line R-33 Citizen Assemblies: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-33-tile-square-charcoal-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-r-33-tile-square-charcoal-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-33-tile-square-charcoal-one-color-accent" data-part="accent">
     <circle cx="63.8477" cy="40.3613" r="6.7017" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M52.0344 67.491 V59.5525 A11.813247 9.888035 0 0 1 63.8477 49.6645 A11.813222 9.888014 0 0 1 75.6609 59.5525 V67.491" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-r-33-tile-square-charcoal-one-color-base" data-part="base">
     <circle cx="33.5256" cy="48.3851" r="6.3971" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M26.0015 57.8527 A11.417219 7.621633 0 0 1 44.4737 63.1471" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="94.1698" cy="48.3851" r="6.3971" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

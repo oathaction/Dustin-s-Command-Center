@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-014-tile-square-newsprint-two-color" data-id="CL-014" width="128" height="128" viewBox="0 0 128 128">
   <title>Entrenched Power</title>
-  <desc>Oath &amp; Action Civic Line CL-014 Entrenched Power: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-014 Entrenched Power: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.646 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-014-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-014-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.646 0 0 0.646 22.656 22.656)">
+  <g id="oa-civic-line-cl-014-tile-square-newsprint-two-color-base" data-part="base">
     <line x1="63.9086" y1="23.4061" x2="63.9086" y2="29.858" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="60.3872,35.1828 60.3872,29.858 67.43,29.858 67.43,35.1828" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M47.0386 50.1397 A16.949202 16.949202 0 0 1 80.7786 50.1397" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -36,7 +36,7 @@
     <line x1="49.9813" y1="78.3172" x2="49.9813" y2="104.4355" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="77.8359" y1="78.3172" x2="77.8359" y2="104.4355" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-014-tile-square-newsprint-two-color-accent" data-part="accent">
     <rect x="57.8466" y="78.2807" width="12.124" height="25.3933" rx="2.3151" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

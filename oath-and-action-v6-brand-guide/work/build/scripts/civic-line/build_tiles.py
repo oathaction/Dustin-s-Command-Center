@@ -2,14 +2,18 @@
 
     python3 -I build_tiles.py [--no-png]
 
-For every icon, shape (square, rounded, circle), tile colour (charcoal,
-newsprint) and colour mode (two-color, one-color): the tile shape comes first,
-then the icon's bare export of the matching edition, copied verbatim inside one
-group with one uniform transform (the shape's factor about the centre). A
-Charcoal tile carries the light editions (red-newsprint, newsprint); a
-Newsprint tile the dark ones (red-black, black). Writes
-tiles/<shape>-<tile>/svg/, png-256/ and png-512/, and qa/<date>_Civic-Line-Tile-Margins.json
-with every icon's smallest ink-to-edge margin per shape.
+For every icon, shape (square, rounded, circle), tile color (charcoal,
+newsprint) and color mode (two-color, one-color): the tile shape comes first,
+then the icon's bare export of the matching edition inside one group with one
+uniform transform per tile. The transform scales by the shape's factor times
+the icon's optical scale about the center and moves the icon by its optical
+offset (variant review S-1 and S-2); where the scale would lift the line above
+the set's heaviest stroke, every stroke width is multiplied down to that cap.
+All ids are renamed under the tile's own root id (M-2). A Charcoal tile carries
+the light editions (red-newsprint, newsprint); a Newsprint tile the dark ones
+(red-black, black). Writes tiles/<shape>-<tile>/svg/, png-256/ and png-512/,
+and qa/<date>_Civic-Line-Tile-Margins.json with every icon's smallest
+ink-to-edge margin per shape.
 """
 import json
 import os
@@ -43,12 +47,13 @@ def build(ids=None, png=True):
     n_svg = 0
     for r in inv:
         bare = {ed: open(C.edition_file(r, ed), encoding="utf-8").read() for ed in C.EDITIONS}
+        a, dx, k = C.tile_optics(r["id"], r["stroke_units"])
         for sh in C.TILE_SHAPES:
             f = C.TILE_FACTORS[sh]
-            margins[sh][r["id"]] = round(T.icon_margin(bare["red-black"], sh, f), 3)
+            margins[sh][r["id"]] = round(T.icon_margin(bare["red-black"], sh, f, a, dx, k), 3)
             for tl in C.TILE_COLOURS:
                 for md in C.TILE_MODES:
-                    svg = T.tile_svg(bare[C.TILE_EDITION[(tl, md)]], r["id"], r["label"], sh, tl, md, f)
+                    svg = T.tile_svg(bare[C.TILE_EDITION[(tl, md)]], r, sh, tl, md)
                     p = C.tile_file(r, sh, tl, md)
                     os.makedirs(os.path.dirname(p), exist_ok=True)
                     with open(p, "w", encoding="utf-8") as fh:
@@ -66,9 +71,11 @@ def build(ids=None, png=True):
                 rr = subprocess.run(["node", C.RENDER_JS, jp], capture_output=True, text=True)
                 if rr.returncode:
                     raise SystemExit("render failed:\n" + rr.stderr[-2000:])
-        for j in jobs:   # one mode for every tile PNG (RGBA), recompressed: tiles are flat colour
+        for j in jobs:   # one mode for every tile PNG (RGBA), recompressed: tiles are flat color
             Image.open(j["out"]).convert("RGBA").save(j["out"], optimize=True)
-    report = {"factors": C.TILE_FACTORS, "safe_margin_units": C.TILE_SAFE_MARGIN, "shapes": {}}
+    report = {"factors": C.TILE_FACTORS, "safe_margin_units": C.TILE_SAFE_MARGIN,
+              "optical_scale": C.TILE_OPTICAL_SCALE, "offset_x_units": C.TILE_OFFSET_X, "stroke_cap_units": C.TILE_STROKE_CAP,
+              "note": "Margins include each icon's optical scale and offset and its capped stroke.", "shapes": {}}
     for sh, m in margins.items():
         worst = sorted(m.items(), key=lambda kv: kv[1])[:5]
         report["shapes"][sh] = {"factor": C.TILE_FACTORS[sh], "min_margin": worst[0][1], "min_margin_id": worst[0][0],

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-023-tile-square-newsprint-one-color" data-id="CL-023" width="128" height="128" viewBox="0 0 128 128">
   <title>Evidence</title>
-  <desc>Oath &amp; Action Civic Line CL-023 Evidence: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-023 Evidence: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-023-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-023-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-023-tile-square-newsprint-one-color-base" data-part="base">
     <path d="M81.2416 39.4779 V27.1407 A1.523105 1.523105 0 0 0 79.7185 25.6176 H18.2641 A1.52313 1.52313 0 0 0 16.7409 27.1407 V92.6345 A1.52313 1.52313 0 0 0 18.2641 94.1576 H79.7185 A1.523105 1.523105 0 0 0 81.2416 92.6345 V91.9034" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.0241" y1="38.6981" x2="66.3761" y2="38.6981" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.0241" y1="49.0857" x2="55.1355" y2="49.0857" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <circle cx="78.9752" cy="65.9861" r="20.3975" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M97.6668 82.9048 L110.0162 95.5406 A3.777294 3.777294 0 0 1 104.6183 100.8166 L92.2689 88.1809 A3.777329 3.777329 0 0 1 97.6668 82.9048 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-023-tile-square-newsprint-one-color-accent" data-part="accent">
     <polyline points="70.7992,66.7721 76.3737,72.1456 88.1565,59.9424" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

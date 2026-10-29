@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-066-tile-circle-newsprint-two-color" data-id="CL-066" width="128" height="128" viewBox="0 0 128 128">
   <title>Energy &amp; Emissions</title>
-  <desc>Oath &amp; Action Civic Line CL-066 Energy &amp; Emissions: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-066 Energy &amp; Emissions: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-066-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-066-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-066-tile-circle-newsprint-two-color-base" data-part="base">
     <path d="M13.7374 49.5609 V58.0416 A14.765039 14.765039 0 0 0 28.4994 72.8097 A14.765016 14.765016 0 0 0 43.2674 58.0416 V49.5609 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="22.7115" y1="36.9191" x2="22.7115" y2="49.5609" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="34.2872" y1="36.9191" x2="34.2872" y2="49.5609" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M28.4994 72.8097 V85.5246 A10.028128 10.028128 0 0 0 38.5275 95.5527 A10.028153 10.028153 0 0 0 48.5557 85.5246 V84.5315 A10.826262 10.826262 0 0 1 62.6414 74.2048 A11.094308 11.094308 0 0 1 73.096 60.4725 A11.33804 11.33804 0 0 1 83.8614 43.962 A11.368457 11.368457 0 0 1 105.9586 39.9044 A11.063857 11.063857 0 0 1 108.3042 60.8319 A11.136995 11.136995 0 0 1 94.645 78.2198 A12.51997 12.51997 0 0 1 75.271 83.709 L73.5469 88.3027 A11.009055 11.009055 0 0 1 55.4706 92.2811" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-066-tile-circle-newsprint-two-color-accent" data-part="accent">
     <path d="M93.524 58.2487 A15.761153 15.761153 0 0 1 79.8038 73.1752" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

@@ -1,5 +1,5 @@
 {
-  "checked": "2026-10-29T20:19:46+00:00",
+  "checked": "2026-10-29T21:43:44+00:00",
   "ids": 122,
   "counts_by_sheet": {
     "01": 24,
@@ -21,19 +21,29 @@
   "tile_margins": {
     "square": {
       "factor": 0.68,
-      "min_margin": 23.602,
-      "min_margin_id": "R-46"
+      "min_margin": 21.455,
+      "min_margin_id": "R-44"
     },
     "rounded": {
       "factor": 0.66,
-      "min_margin": 24.79,
-      "min_margin_id": "R-46"
+      "min_margin": 22.703,
+      "min_margin_id": "R-44"
     },
     "circle": {
       "factor": 0.62,
-      "min_margin": 20.263,
-      "min_margin_id": "CL-059"
+      "min_margin": 21.892,
+      "min_margin_id": "CL-051"
     }
+  },
+  "icons_with_optical_scale": 36,
+  "icons_with_optical_offset": 8,
+  "icons_with_capped_tile_stroke": 16,
+  "id_audit": {
+    "files": 1985,
+    "ids": 16141,
+    "references": 1912,
+    "repeated_ids": 0,
+    "unresolved_references": 0
   },
   "reference_crops": 244,
   "contact_sheets_dark": 10,

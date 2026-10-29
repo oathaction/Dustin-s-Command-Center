@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-007-tile-circle-newsprint-one-color" data-id="CL-007" width="128" height="128" viewBox="0 0 128 128">
   <title>Turnout Equality</title>
-  <desc>Oath &amp; Action Civic Line CL-007 Turnout Equality: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-007 Turnout Equality: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-007-tile-circle-newsprint-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-007-tile-circle-newsprint-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-007-tile-circle-newsprint-one-color-base" data-part="base">
     <circle cx="26.8909" cy="42.2561" r="6.2204" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.3206 66.242 V61.8067 A8.255228 8.255228 0 0 1 24.5758 53.5515 H29.2061 A8.255228 8.255228 0 0 1 37.4613 61.8067 V66.242" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="12.4275" y="66.242" width="28.9269" height="25.6979" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -15,7 +15,7 @@
     <path d="M90.7702 66.242 V61.8067 A8.255228 8.255228 0 0 1 99.0254 53.5515 H103.6557 A8.255228 8.255228 0 0 1 111.9109 61.8067 V66.242" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="86.8771" y="66.242" width="28.9269" height="25.6979" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-007-tile-circle-newsprint-one-color-accent" data-part="accent">
     <line x1="20.7985" y1="76.1849" x2="32.9834" y2="76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="58.0233" y1="76.1849" x2="70.2082" y2="76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="95.2481" y1="76.1849" x2="107.433" y2="76.1849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

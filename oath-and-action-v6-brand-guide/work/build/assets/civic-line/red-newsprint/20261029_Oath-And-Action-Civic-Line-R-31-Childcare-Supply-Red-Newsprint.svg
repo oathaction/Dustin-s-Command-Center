@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-31" data-id="R-31" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-31-red-newsprint" data-id="R-31" width="128" height="128" viewBox="0 0 128 128">
   <title>Childcare Supply</title>
-  <desc>Oath &amp; Action Civic Line R-31 Childcare Supply. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line R-31 Childcare Supply. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 1. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-31-red-newsprint-accent" data-part="accent">
     <path d="M50.6868 93.5651 V78.8599 A8.851699 8.851699 0 0 1 68.3902 78.8599 V93.5651 Z" fill="#E63946"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-r-31-red-newsprint-base" data-part="base">
     <line x1="7.6359" y1="93.5651" x2="83.4821" y2="93.5651" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="8.4568,64.0357 28.7538,64.0357" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="10.3723" y1="64.0357" x2="10.3723" y2="93.5651" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>

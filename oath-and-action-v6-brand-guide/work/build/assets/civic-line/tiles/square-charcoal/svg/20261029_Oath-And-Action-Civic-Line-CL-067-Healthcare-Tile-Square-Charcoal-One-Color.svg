@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-067-tile-square-charcoal-one-color" data-id="CL-067" width="128" height="128" viewBox="0 0 128 128">
   <title>Healthcare</title>
-  <desc>Oath &amp; Action Civic Line CL-067 Healthcare: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-067 Healthcare: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-067-tile-square-charcoal-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-067-tile-square-charcoal-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-067-tile-square-charcoal-one-color-base" data-part="base">
     <path d="M47.6357 24.6124 H80.2059 A1.523105 1.523105 0 0 1 81.729 26.1355 V46.6609 H102.2544 A1.523105 1.523105 0 0 1 103.7775 48.184 V80.7542 A1.523105 1.523105 0 0 1 102.2544 82.2773 H81.729 V102.8028 A1.523105 1.523105 0 0 1 80.2059 104.3259 H47.6357 A1.523105 1.523105 0 0 1 46.1126 102.8028 V82.2773 H25.5872 A1.523105 1.523105 0 0 1 24.0641 80.7542 V48.184 A1.523105 1.523105 0 0 1 25.5872 46.6609 H46.1126 V26.1355 A1.523105 1.523105 0 0 1 47.6357 24.6124 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-067-tile-square-charcoal-one-color-accent" data-part="accent">
     <polyline points="35.8956,64.792 52.1807,64.792 52.6071,68.021 59.7048,47.1849 66.5588,81.9727 73.5042,60.2836 76.1849,64.792 92.1044,64.792" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

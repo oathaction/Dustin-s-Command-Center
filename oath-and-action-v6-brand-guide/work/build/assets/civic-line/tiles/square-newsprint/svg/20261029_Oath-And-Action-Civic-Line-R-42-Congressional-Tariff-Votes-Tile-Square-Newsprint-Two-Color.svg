@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-42-tile-square-newsprint-two-color" data-id="R-42" width="128" height="128" viewBox="0 0 128 128">
   <title>Congressional Tariff Votes</title>
-  <desc>Oath &amp; Action Civic Line R-42 Congressional Tariff Votes: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-42 Congressional Tariff Votes: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-42-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-42-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-42-tile-square-newsprint-two-color-base" data-part="base">
     <line x1="35.925" y1="35.825" x2="35.925" y2="38.5" fill="none" stroke="#121212" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="33.55,42.95 33.55,38.5 38.3,38.5 38.3,42.95" fill="none" stroke="#121212" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M26.35 51.04 A9.575 8.59 0 0 1 45.5 51.04" fill="none" stroke="#121212" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
@@ -35,7 +35,7 @@
     <line x1="114.64" y1="69.735" x2="114.64" y2="88.5" fill="none" stroke="#121212" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="105.85" y1="65.5" x2="105.85" y2="69.735" fill="none" stroke="#121212" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-42-tile-square-newsprint-two-color-accent" data-part="accent">
     <polygon points="52.89,70.4 60.75,61.03 65.155,64.725 60.395,70.4" fill="none" stroke="#E63946" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="107.56" y1="59.75" x2="120.7" y2="59.75" fill="none" stroke="#E63946" stroke-width="2.75" stroke-linecap="butt" stroke-linejoin="round"/>
     <polyline points="116.3,55.35 120.7,59.75 116.3,64.15" fill="none" stroke="#E63946" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>

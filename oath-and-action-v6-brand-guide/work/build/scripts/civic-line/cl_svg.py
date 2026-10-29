@@ -158,11 +158,11 @@ def arc_radii(p0, p1, rx, ry, phi, S, q0, q1):
     """Output radii for an arc whose source runs p0 -> p1 and whose output, as a
     renderer reads the rounded numbers, runs q0 -> q1.
 
-    An arc's centre sits off its chord by d = sqrt(r^2 - h^2), which is very
+    An arc's center sits off its chord by d = sqrt(r^2 - h^2), which is very
     sensitive to rounding when h is close to r: a half circle whose rounded
-    chord comes out a hair shorter than its diameter gets its centre pushed
+    chord comes out a hair shorter than its diameter gets its center pushed
     off the chord, and the arc shifts by up to a pixel. So the exporter keeps
-    the centre, not the radius: it measures d in the source and writes
+    the center, not the radius: it measures d in the source and writes
     r = sqrt(h_out^2 + (s d)^2) for the rounded chord. A source half circle
     (d = 0, including radii a renderer would scale up) gets r rounded down to
     at most half its chord, so renderers draw an exact half circle."""
@@ -701,9 +701,11 @@ def fmt4(v):
 
 
 def emit(src, M, W, colors, width_px, height_px, viewbox, root_id=None, title=None, desc=None,
-         data_id=True, mask_prefix=""):
-    """Serialise the source with mapping M. colors = {'base': hex, 'accent': hex}.
-    W is the stroke width in source px; it is scaled by M.s."""
+         data_id=True, mask_prefix="", group_prefix=""):
+    """Serialize the source with mapping M. colors = {'base': hex, 'accent': hex}.
+    W is the stroke width in source px; it is scaled by M.s. Mask ids take
+    mask_prefix and group ids group_prefix; each group also carries its role
+    as data-part="base" or data-part="accent"."""
     lines = []
     attrs = [("xmlns", SVG_NS)]
     if root_id:
@@ -741,7 +743,7 @@ def emit(src, M, W, colors, width_px, height_px, viewbox, root_id=None, title=No
     for g in src.groups:
         seen[g.role] += 1
         gid = g.role if counts[g.role] == 1 else f"{g.role}-{seen[g.role]}"
-        ga = [("id", gid)]
+        ga = [("id", f"{group_prefix}{gid}"), ("data-part", g.role)]
         if g.mask:
             ga.append(("mask", f"url(#{mids[g.mask]})"))
         lines.append("  <g " + " ".join(f"{k}={quoteattr(v)}" for k, v in ga) + ">")
@@ -757,28 +759,45 @@ def emit(src, M, W, colors, width_px, height_px, viewbox, root_id=None, title=No
 
 
 def export_pair(src, inv_row, W):
-    """Red-black and black export strings from one in-memory serialisation.
+    """Red-black and black export strings from one in-memory serialization.
     The black string is the red-black string with Pillar Red swapped for
     Charcoal, so the pair is identical byte for byte after the swap."""
     M = Mapping.bake(inv_row["transform"])
     title = inv_row["label"]
     desc = (f"Oath & Action Civic Line {src.id} {inv_row['label']}. Traced vector reconstruction from the Civic Line "
             f"reference sheet {inv_row['sheet']}, row {inv_row['row']}, column {inv_row['column']}. "
-            f"Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.")
-    rid = "oa-civic-line-" + src.id.lower()
+            f"The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent "
+            f"parts named in the catalog. Every id in the file starts with the file's root id.")
+    rid = C.bare_root(src.id, "red-black")
     rb = emit(src, M, W, {"base": C.CHARCOAL, "accent": C.PILLAR_RED}, 128, 128, "0 0 128 128",
-              root_id=rid, title=title, desc=desc, mask_prefix=src.id.lower() + "-")
+              root_id=rid, title=title, desc=desc, mask_prefix=rid + "-", group_prefix=rid + "-")
     rb = '<?xml version="1.0" encoding="UTF-8"?>\n' + rb
-    bk = rb.replace(C.PILLAR_RED, C.CHARCOAL)
-    return rb, bk
+    return rb, derive_editions(rb)["black"]
+
+
+ROOT_ID_RE = re.compile(r'<svg\b[^>]*?\sid="([^"]+)"')
+
+
+def root_id_of(svg_text):
+    m = ROOT_ID_RE.search(svg_text)
+    return m.group(1) if m else None
 
 
 def derive_editions(rb):
-    """The four bare editions from one red-black serialisation, by swapping ink
-    colours only. Mask colours (#FFFFFF, #000000) never change."""
-    bk = rb.replace(C.PILLAR_RED, C.CHARCOAL)
-    rn = rb.replace(C.CHARCOAL, C.NEWSPRINT)
-    nw = rn.replace(C.PILLAR_RED, C.NEWSPRINT)
+    """The four bare editions from one red-black serialization, by swapping ink
+    colors and the root id only. Every internal id starts with the root id, so
+    renaming the root gives each edition its own ids. Mask colors (#FFFFFF,
+    #000000) never change."""
+    root = root_id_of(rb)
+    if not root or not root.endswith("-red-black"):
+        raise ValueError(f"red-black export has no '-red-black' root id: {root}")
+    stem = root[:-len("red-black")]
+
+    def rename(text, ed):
+        return text.replace(root, stem + ed)
+    bk = rename(rb.replace(C.PILLAR_RED, C.CHARCOAL), "black")
+    rn = rename(rb.replace(C.CHARCOAL, C.NEWSPRINT), "red-newsprint")
+    nw = rename(rb.replace(C.CHARCOAL, C.NEWSPRINT).replace(C.PILLAR_RED, C.NEWSPRINT), "newsprint")
     return {"red-black": rb, "black": bk, "red-newsprint": rn, "newsprint": nw}
 
 

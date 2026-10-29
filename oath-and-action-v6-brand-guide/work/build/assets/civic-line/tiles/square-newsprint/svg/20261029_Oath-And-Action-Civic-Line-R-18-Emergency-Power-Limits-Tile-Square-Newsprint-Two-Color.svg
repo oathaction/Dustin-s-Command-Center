@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-18-tile-square-newsprint-two-color" data-id="R-18" width="128" height="128" viewBox="0 0 128 128">
   <title>Emergency-Power Limits</title>
-  <desc>Oath &amp; Action Civic Line R-18 Emergency-Power Limits: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
-    <path d="M82.7221 52.8813 L82.7221 38.4483 A1.827741 1.827741 0 0 0 80.8943 36.6206 L29.4863 36.6206 A1.827716 1.827716 0 0 0 27.6586 38.4483 L27.6586 89.6187 A1.827716 1.827716 0 0 0 29.4863 91.4464 L70.4275 91.4464" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.9548" y1="46.6853" x2="72.042" y2="46.6853" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.9548" y1="55.3061" x2="72.042" y2="55.3061" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.9548" y1="63.9269" x2="61.959" y2="63.9269" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.9548" y1="72.5538" x2="61.959" y2="72.5538" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.9548" y1="81.1746" x2="51.8943" y2="81.1746" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="71.1952" y1="76.8672" x2="74.1317" y2="76.8672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.5973" y1="76.8672" x2="97.6607" y2="76.8672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  <desc>Oath &amp; Action Civic Line R-18 Emergency-Power Limits: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.7412 about the center of the 128 box, with every stroke width multiplied by 0.9174 so its line stays at 3.3508 units or less. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-18-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-18-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.7412 0 0 0.7412 16.5632 16.5632)">
+  <g id="oa-civic-line-r-18-tile-square-newsprint-two-color-base" data-part="base">
+    <path d="M82.7221 52.8813 L82.7221 38.4483 A1.827741 1.827741 0 0 0 80.8943 36.6206 L29.4863 36.6206 A1.827716 1.827716 0 0 0 27.6586 38.4483 L27.6586 89.6187 A1.827716 1.827716 0 0 0 29.4863 91.4464 L70.4275 91.4464" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.9548" y1="46.6853" x2="72.042" y2="46.6853" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.9548" y1="55.3061" x2="72.042" y2="55.3061" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.9548" y1="63.9269" x2="61.959" y2="63.9269" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.9548" y1="72.5538" x2="61.959" y2="72.5538" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.9548" y1="81.1746" x2="51.8943" y2="81.1746" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.1952" y1="76.8672" x2="74.1317" y2="76.8672" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.5973" y1="76.8672" x2="97.6607" y2="76.8672" fill="none" stroke="#121212" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
-    <circle cx="85.8962" cy="76.8672" r="14.7011" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="79.4078" y1="63.6771" x2="78.0126" y2="60.8502" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="92.3847" y1="63.6771" x2="93.7798" y2="60.8502" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="85.8719,69.4223 85.8719,77.4034 87.8214,79.3529" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="oa-civic-line-r-18-tile-square-newsprint-two-color-accent" data-part="accent">
+    <circle cx="85.8962" cy="76.8672" r="14.7011" fill="none" stroke="#E63946" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.4078" y1="63.6771" x2="78.0126" y2="60.8502" fill="none" stroke="#E63946" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="92.3847" y1="63.6771" x2="93.7798" y2="60.8502" fill="none" stroke="#E63946" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="85.8719,69.4223 85.8719,77.4034 87.8214,79.3529" fill="none" stroke="#E63946" stroke-width="3.0741" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>
 </svg>

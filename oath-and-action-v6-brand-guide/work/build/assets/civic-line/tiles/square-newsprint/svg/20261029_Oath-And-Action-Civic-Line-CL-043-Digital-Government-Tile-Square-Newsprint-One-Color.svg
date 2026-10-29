@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-043-tile-square-newsprint-one-color" data-id="CL-043" width="128" height="128" viewBox="0 0 128 128">
   <title>Digital Government</title>
-  <desc>Oath &amp; Action Civic Line CL-043 Digital Government: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-043 Digital Government: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-043-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-043-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-043-tile-square-newsprint-one-color-base" data-part="base">
     <polygon points="29.2566,45.1571 51.5795,29.3131 73.9024,45.1571" fill="none" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="33.5005" y1="45.1571" x2="33.5005" y2="93.0849" fill="none" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="69.8" y1="45.1571" x2="69.8" y2="49.7971" fill="none" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,7 +22,7 @@
     <line x1="71.0732" y1="82.1922" x2="88.1054" y2="82.1922" fill="none" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="71.0732" y1="89.3503" x2="83.5785" y2="89.3503" fill="none" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-043-tile-square-newsprint-one-color-accent" data-part="accent">
     <rect x="96.7912" y="82.6449" width="14.8254" height="7.0166" fill="#121212" stroke="#121212" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

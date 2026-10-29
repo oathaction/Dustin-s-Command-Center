@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-01" data-id="R-01" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-01-black" data-id="R-01" width="128" height="128" viewBox="0 0 128 128">
   <title>All-Party Primaries</title>
-  <desc>Oath &amp; Action Civic Line R-01 All-Party Primaries. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-01 All-Party Primaries. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 1. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-01-black-base" data-part="base">
     <circle cx="24.917" cy="38.0462" r="4.5754" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.6861 48.775 A8.651278 8.651278 0 0 1 33.1479 48.775" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="22.2668" cy="60.5151" r="4.5754" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,7 +11,7 @@
     <path d="M16.6861 93.7067 A8.651278 8.651278 0 0 1 33.1479 93.7067" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="81.004" y="42.8958" width="33.088" height="42.8603" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-01-black-accent" data-part="accent">
     <path d="M36.4317 38.5641 C53.1676 38.296 60.3506 45.2901 71.9811 55.5315" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="71.9811,50.1397 71.9811,55.5315 66.5893,55.5315" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="34.604" y1="63.8964" x2="72.9863" y2="63.8964" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

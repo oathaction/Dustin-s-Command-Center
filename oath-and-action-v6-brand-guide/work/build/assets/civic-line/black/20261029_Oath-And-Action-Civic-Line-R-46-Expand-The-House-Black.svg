@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-46" data-id="R-46" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-46-black" data-id="R-46" width="128" height="128" viewBox="0 0 128 128">
   <title>Expand the House</title>
-  <desc>Oath &amp; Action Civic Line R-46 Expand the House. Traced vector reconstruction from the Civic Line reference sheet 05, row 5, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-46 Expand the House. Traced vector reconstruction from the Civic Line reference sheet 05, row 5, column 1. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-46-black-base" data-part="base">
     <polyline points="59.0804,38.2625 59.0804,36.6313 69.3339,36.6313 69.3339,38.2625" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M56.4755 48.2986 V44.6943 A2.589293 2.589293 0 0 1 59.0648 42.105 H69.3495 A2.589268 2.589268 0 0 1 71.9387 44.6943 V48.2986" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="50.8309" y="48.2986" width="26.7525" height="5.6187" rx="1.2946" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,7 +28,7 @@
     <path d="M31.8411 57.9773 L29.1223 58.837 A1.035705 1.035705 0 0 1 27.8225 58.1638 L26.0255 52.488 A1.035728 1.035728 0 0 1 26.6988 51.183 L29.4123 50.3234 A1.035736 1.035736 0 0 1 30.7122 50.9966 L32.5143 56.6775 A1.035705 1.035705 0 0 1 31.8411 57.9773 Z" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M40.2511 55.2068 L37.4547 55.7454 A1.03572 1.03572 0 0 1 36.2429 54.922 L35.1139 49.0754 A1.03572 1.03572 0 0 1 35.9373 47.8636 L38.7338 47.325 A1.03569 1.03569 0 0 1 39.9455 48.1484 L41.0745 53.995 A1.03572 1.03572 0 0 1 40.2511 55.2068 Z" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-46-black-accent" data-part="accent">
     <path d="M119.5453 80.4212 L116.7541 79.8464 A1.03571 1.03571 0 0 1 115.9462 78.6243 L117.1425 72.788 A1.035686 1.035686 0 0 1 118.3646 71.9854 L121.1559 72.555 A1.03569 1.03569 0 0 1 121.9637 73.7771 L120.7675 79.6134 A1.03572 1.03572 0 0 1 119.5453 80.4212 Z" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M113.0721 69.3961 L111.0628 67.3712 A1.035702 1.035702 0 0 1 111.0732 65.9057 L115.2989 61.7163 A1.035701 1.035701 0 0 1 116.7644 61.7214 L118.7686 63.7463 A1.035694 1.035694 0 0 1 118.7634 65.2066 L114.5377 69.4012 A1.035737 1.035737 0 0 1 113.0721 69.3961 Z" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M106.8371 63.2802 L104.3928 61.8146 A1.035703 1.035703 0 0 1 104.0355 60.3957 L107.0909 55.2845 A1.035718 1.035718 0 0 1 108.515 54.9271 L110.9593 56.3927 A1.035701 1.035701 0 0 1 111.3114 57.8116 L108.2561 62.9229 A1.035737 1.035737 0 0 1 106.8371 63.2802 Z" fill="none" stroke="#121212" stroke-width="2.8482" stroke-linecap="round" stroke-linejoin="round"/>

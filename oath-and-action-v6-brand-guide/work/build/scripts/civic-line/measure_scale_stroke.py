@@ -4,7 +4,7 @@ W: per icon, the median medial-axis width of the black-sheet ink mask (8x
 estimator, see stroke_width.py); W is the median of those medians, rounded to
 0.25 source px. s: 128-unit viewBox units per source px, set so the largest
 pictogram extent (ink box width or height, stroke included) fills 116 units.
-Placement: each icon's ink-box centre maps to (64, 64).
+Placement: each icon's ink-box center maps to (64, 64).
 
 Run with:  python3 -I measure_scale_stroke.py
 Writes the scale JSON and note in qa/ and adds the transform to the inventory.
@@ -81,7 +81,7 @@ def main():
             "W": "median of the 122 per-icon medians, rounded to the nearest 0.25 source px",
             "extent": "1x midpoint ink mask bounding box, width or height, stroke included",
             "s": "116 / largest extent, so the largest pictogram spans 116 units and keeps 6 units of clear space in the 128-unit viewBox",
-            "placement": "X = s * (x - cx) + 64, Y = s * (y - cy) + 64, with (cx, cy) the ink-box centre in crop pixel coordinates (pixel i covers [i, i+1])",
+            "placement": "X = s * (x - cx) + 64, Y = s * (y - cy) + 64, with (cx, cy) the ink-box center in crop pixel coordinates (pixel i covers [i, i+1])",
         },
         "estimator_calibration": SW.calibration_summary(),
         "per_icon": per,
@@ -152,7 +152,7 @@ def write_note(r):
         "",
         "## Placement",
         "",
-        "Each icon's ink-box centre in its crop maps to (64, 64): X = s * (x - cx) + 64 and Y = s * (y - cy) + 64. The inventory stores cx, cy and the matrix per icon.",
+        "Each icon's ink-box center in its crop maps to (64, 64): X = s * (x - cx) + 64 and Y = s * (y - cy) + 64. The inventory stores cx, cy and the matrix per icon.",
         "",
     ]
     with open(C.SCALE_JSON.replace(".json", ".md"), "w", encoding="utf-8") as fh:

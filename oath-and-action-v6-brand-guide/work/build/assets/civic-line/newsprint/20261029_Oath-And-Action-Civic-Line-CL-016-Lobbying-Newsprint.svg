@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-016" data-id="CL-016" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-016-newsprint" data-id="CL-016" width="128" height="128" viewBox="0 0 128 128">
   <title>Lobbying</title>
-  <desc>Oath &amp; Action Civic Line CL-016 Lobbying. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-016 Lobbying. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-016-newsprint-accent" data-part="accent">
     <path d="M54.0571 68.4353 L55.2695 62.2454 A1.827744 1.827744 0 0 1 57.0607 60.771 L74.4546 60.771 A1.827739 1.827739 0 0 1 76.2458 62.9521 L75.1735 68.4353" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-016-newsprint-base" data-part="base">
     <circle cx="32.3498" cy="39.5693" r="7.0611" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="96.3813" cy="39.5693" r="7.0611" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M20.6523 73.9916 V60.0277 A8.791395 8.791395 0 0 1 29.4437 51.2363 H30.7536 A11.25884 11.25884 0 0 1 42.0124 62.4952 V68.4353" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

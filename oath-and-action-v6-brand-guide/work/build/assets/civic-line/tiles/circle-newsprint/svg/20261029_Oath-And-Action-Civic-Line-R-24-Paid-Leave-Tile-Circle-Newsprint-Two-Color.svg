@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-24-tile-circle-newsprint-two-color" data-id="R-24" width="128" height="128" viewBox="0 0 128 128">
   <title>Paid Leave</title>
-  <desc>Oath &amp; Action Civic Line R-24 Paid Leave: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-24 Paid Leave: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.589 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-24-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-24-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.589 0 0 0.589 26.304 26.304)">
+  <g id="oa-civic-line-r-24-tile-circle-newsprint-two-color-base" data-part="base">
     <circle cx="23.9621" cy="51.3835" r="7.247" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M7.7041 88.1388 L9.3664 72.9691 A14.380409 11.253193 0 0 1 23.7468 61.7159 A14.380405 11.25319 0 0 1 38.1272 72.8495" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="14.8136" y1="77.8303" x2="14.8136" y2="97.4845" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
@@ -21,7 +21,7 @@
     <rect x="81.2983" y="66.7744" width="4.3649" height="6.1887" rx="1.1959" fill="#121212"/>
     <line x1="67.5577" y1="80.8798" x2="85.6454" y2="80.8798" fill="none" stroke="#121212" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-24-tile-circle-newsprint-two-color-accent" data-part="accent">
     <rect x="78.0994" y="55.1027" width="10.7629" height="7.8509" rx="1.1959" fill="#E63946"/>
     <path d="M92.3662 81.0233 L92.3662 67.7132 C95.6249 68.2573 101.7777 66.3858 106.3699 62.5052 C110.9621 66.3858 117.1148 68.2573 120.3736 67.7132 L120.3736 81.0233 C120.3736 82.4882 119.3392 91.9895 106.3699 97.6938 C93.4006 91.9895 92.3662 82.4882 92.3662 81.0233 Z" fill="none" stroke="#E63946" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M109.1742 75.9408 A2.900017 2.840223 0 1 0 106.4835 79.8454 A2.899982 2.840189 0 1 1 103.7928 83.7499" fill="none" stroke="#E63946" stroke-width="3.2887" stroke-linecap="round" stroke-linejoin="round"/>

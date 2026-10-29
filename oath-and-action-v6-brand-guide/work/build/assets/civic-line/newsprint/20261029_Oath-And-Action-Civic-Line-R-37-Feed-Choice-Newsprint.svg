@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-37" data-id="R-37" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-37-newsprint" data-id="R-37" width="128" height="128" viewBox="0 0 128 128">
   <title>Feed Choice</title>
-  <desc>Oath &amp; Action Civic Line R-37 Feed Choice. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-37 Feed Choice. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-37-newsprint-base" data-part="base">
     <rect x="8.8756" y="37.7477" width="71.9091" height="51.8406" rx="4.7216" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="8.8756" y1="49.9386" x2="80.7847" y2="49.9386" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="16.3571" cy="43.8949" r="1.7059" fill="#DCD9D2"/>
@@ -13,7 +13,7 @@
     <line x1="67.7651" y1="74.479" x2="70.5798" y2="74.479" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M102.5956 71.055 V67.6798 L100.0307 64.9931 A11.088254 11.088254 0 1 1 116.4986 64.4204 L110.991 69.0567 V90.4412 H103.7593 L98.4832 83.9771 L101.5416 79.9744 L98.4771 76.1971 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-37-newsprint-accent" data-part="accent">
     <circle cx="62.2454" cy="74.479" r="5.5198" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

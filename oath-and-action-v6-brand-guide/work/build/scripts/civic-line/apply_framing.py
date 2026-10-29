@@ -4,10 +4,12 @@
 
 Per icon, s_i = min(116 / extent_i, 1.25 * s), with s the shared scale from
 the scale file (0.487395). The stroke becomes W * s_i, so it runs from 2.68 to
-3.35 units. Centring stays on the ink box. The script also writes each icon's
-export names for the four editions and its twelve tile names, and records the
-framing in the scale file and its note. It reads the shared scale every time,
-so a rerun gives the same numbers.
+3.35 units. Centering stays on the ink box. The script also writes each icon's
+export names for the four editions and its twelve tile names, its tile optics
+(the optical scale and offset from the variant review, S-1 and S-2, the stroke
+multiplier that holds the 3.3508-unit cap, the resulting scale per shape) and
+its minimum tile sizes (M-1), and records the framing in the scale file and its
+note. It reads the shared scale every time, so a rerun gives the same numbers.
 """
 import os
 import sys
@@ -15,6 +17,17 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cl_common as C  # noqa: E402
 from crop_references import write_csv  # noqa: E402
+
+
+def tile_fields(r):
+    """Write one icon's tile optics and minimum sizes into its inventory row."""
+    a, dx, k = C.tile_optics(r["id"], r["stroke_units"])
+    r["tile_optical_scale"] = a
+    r["tile_offset_x"] = dx
+    r["tile_stroke_scale"] = round(k, 6)
+    r["tile_stroke_units"] = round(min(r["stroke_units"] * a, C.TILE_STROKE_CAP), 4)
+    r["tile_scale"] = {sh: round(f * a, 6) for sh, f in C.TILE_FACTORS.items()}
+    r["tile_min_px"] = C.tile_min_px(r["id"])
 
 
 def main():
@@ -48,7 +61,15 @@ def main():
         r["exports"] = ex
         r["tiles"] = [f"tiles/{sh}-{tl}/svg/{C.tile_name(r['id'], r['slug'], sh, tl, md)}.svg"
                       for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS for md in C.TILE_MODES]
+        tile_fields(r)
         strokes.append(W * si)
+    inv["tiles_rule"] = {
+        "factors": C.TILE_FACTORS, "decision": "DR-10, variant review M-1, S-1 and S-2",
+        "transform": "matrix(f*a 0 0 f*a 64(1 - f*a) + f*dx 64(1 - f*a)), f the shape factor, a tile_optical_scale, dx tile_offset_x",
+        "stroke": f"every stroke-width times tile_stroke_scale = min(1, {C.TILE_STROKE_CAP} / (stroke_units * a))",
+        "min_px": "bare floor (32 px, or 48 px for the 28 icons that stop reading at 32 px; 48 px for every two-color tile) "
+                  "divided by the shape factor, rounded up to a multiple of 4 px",
+        "pillar_group": C.PILLAR_GROUP}
     inv["framing"] = {"rule": "s_i = min(116 / extent_i, 1.25 * s)", "s_shared": s0, "cap": C.FRAMING_CAP,
                       "stroke_units_range": [round(min(strokes), 4), round(max(strokes), 4)], "decision": "DR-08"}
     inv["stroke_width_units"] = [round(min(strokes), 4), round(max(strokes), 4)]
@@ -65,7 +86,7 @@ def main():
         f"\nDustin approved the capped fit on October 29 (DR-08). Each icon grows toward 116 units by at most "
         f"{C.FRAMING_CAP} times the shared scale: s_i = min(116 / extent_i, {C.FRAMING_CAP} x {s0}). The stroke grows with it, "
         f"so it runs from {min(strokes):.2f} to {max(strokes):.2f} units across the set, a spread of 25 percent at most. "
-        f"{capped} icons stop at the cap and {len(strokes) - capped} fill 116 units. Centring stays on each icon's ink box. "
+        f"{capped} icons stop at the cap and {len(strokes) - capped} fill 116 units. Centering stays on each icon's ink box. "
         f"The shared scale above still governs the contact sheets, which repeat the source layout.\n")
     with open(note, "w", encoding="utf-8") as fh:
         fh.write(text)

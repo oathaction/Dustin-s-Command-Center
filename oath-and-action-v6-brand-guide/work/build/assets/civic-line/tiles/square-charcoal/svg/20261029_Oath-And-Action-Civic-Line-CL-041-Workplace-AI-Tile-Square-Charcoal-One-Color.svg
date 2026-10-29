@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-041-tile-square-charcoal-one-color" data-id="CL-041" width="128" height="128" viewBox="0 0 128 128">
   <title>Workplace AI</title>
-  <desc>Oath &amp; Action Civic Line CL-041 Workplace AI: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-041 Workplace AI: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-041-tile-square-charcoal-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-041-tile-square-charcoal-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-041-tile-square-charcoal-one-color-base" data-part="base">
     <circle cx="41.5372" cy="43.1882" r="10.4303" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M19.3729 87.3645 V71.774 A12.489501 12.489501 0 0 1 31.8624 59.2845 H53.2164 A6.701667 6.701667 0 0 1 59.9181 65.9861" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M39.6181 87.3645 L45.4546 67.363 A1.827714 1.827714 0 0 1 47.2092 66.0471 L70.5616 66.0471 A1.827728 1.827728 0 0 1 72.3162 68.3866 L66.7721 87.3645" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,7 +17,7 @@
     <path d="M96.8078 65.7059 A5.483185 5.483185 0 0 0 101.1943 65.7059" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M84.0198 90.7458 V85.5794 A5.787809 5.787809 0 0 1 89.8076 79.7916 H108.0118 A5.787809 5.787809 0 0 1 113.7996 85.5794 V90.7458" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-041-tile-square-charcoal-one-color-accent" data-part="accent">
     <line x1="98.9097" y1="32.3985" x2="98.9097" y2="40.2029" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="85.9084" y1="36.8886" x2="89.8685" y2="41.7626" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="111.9109" y1="36.8886" x2="107.9509" y2="41.7626" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

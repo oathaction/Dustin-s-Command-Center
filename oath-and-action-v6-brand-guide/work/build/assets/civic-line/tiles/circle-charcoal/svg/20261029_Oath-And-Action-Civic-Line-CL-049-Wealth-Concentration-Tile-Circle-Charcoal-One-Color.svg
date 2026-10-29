@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-049-tile-circle-charcoal-one-color" data-id="CL-049" width="128" height="128" viewBox="0 0 128 128">
   <title>Wealth Concentration</title>
-  <desc>Oath &amp; Action Civic Line CL-049 Wealth Concentration: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-049 Wealth Concentration: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the center of the 128 box and moved 1.86 units left. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-049-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-049-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 22.46 24.32)">
+  <g id="oa-civic-line-cl-049-tile-circle-charcoal-one-color-base" data-part="base">
     <ellipse cx="28.8162" cy="76.849" rx="12.3372" ry="5.2395" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.479 84.894 A12.3372 5.239502 0 0 0 41.1534 84.894" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.479 92.9391 A12.3372 5.239502 0 0 0 41.1534 92.9391" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,7 +28,7 @@
     <line x1="81.6072" y1="37.1933" x2="81.6072" y2="92.9391" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="111.4296" y1="37.1933" x2="111.4296" y2="92.9391" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-049-tile-circle-charcoal-one-color-accent" data-part="accent">
     <path d="M81.6072 37.1933 V34.9269 A14.911199 5.239482 0 0 1 111.4296 34.9269 V37.1933" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
   </g>

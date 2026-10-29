@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-10-tile-circle-charcoal-one-color" data-id="R-10" width="128" height="128" viewBox="0 0 128 128">
   <title>Revolving-Door Limits</title>
-  <desc>Oath &amp; Action Civic Line R-10 Revolving-Door Limits: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-10 Revolving-Door Limits: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-10-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-r-10-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-10-tile-circle-charcoal-one-color-base" data-part="base">
     <polyline points="7.8078,89.0842 7.8078,35.0883 46.2762,35.0883 46.2762,89.1726" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7.8078" y1="89.0842" x2="22.9996" y2="89.0842" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="34.8175" cy="47.7011" r="4.3809" fill="#DCD9D2"/>
@@ -24,7 +24,7 @@
     <rect x="95.2552" y="60.7909" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
     <rect x="102.4684" y="60.7909" width="3.6508" height="8.0081" rx="1.8254" fill="#DCD9D2"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-10-tile-circle-charcoal-one-color-accent" data-part="accent">
     <line x1="53.1066" y1="61.8802" x2="69.8883" y2="61.8802" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="63.5878,55.1675 69.8883,61.8802 63.2934,67.2975" fill="none" stroke="#DCD9D2" stroke-width="3.2386" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M69.6292 69.1935 A12.589239 12.589239 0 0 1 82.2185 81.7827 A12.589264 12.589264 0 0 1 69.6292 94.372 A12.589239 12.589239 0 0 1 57.04 81.7827 A12.589214 12.589214 0 0 1 69.6292 69.1935 Z M62.4455 79.4274 H76.813 A0.471058 0.471058 0 0 1 77.284 79.8985 V83.667 A0.471058 0.471058 0 0 1 76.813 84.1381 H62.4455 A0.471083 0.471083 0 0 1 61.9744 83.667 V79.8985 A0.471083 0.471083 0 0 1 62.4455 79.4274 Z" fill="#DCD9D2" fill-rule="evenodd"/>

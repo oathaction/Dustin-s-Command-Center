@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-071" data-id="CL-071" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-071-red-newsprint" data-id="CL-071" width="128" height="128" viewBox="0 0 128 128">
   <title>Policy</title>
-  <desc>Oath &amp; Action Civic Line CL-071 Policy. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-071 Policy. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 5. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-071-red-newsprint-base" data-part="base">
     <path d="M90.2462 69.1786 V30.3393 A2.436963 2.436963 0 0 0 87.8093 27.9023 H22.8273 A2.436988 2.436988 0 0 0 20.3903 30.3393 V97.7034 A2.436988 2.436988 0 0 0 22.8273 100.1404 H54.709" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="33.3855" y1="41.5494" x2="77.7689" y2="41.5494" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="33.3855" y1="55.1842" x2="77.7689" y2="55.1842" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -10,7 +10,7 @@
     <line x1="33.3855" y1="83.2277" x2="59.8876" y2="83.2277" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="90.8859" y1="83.2277" x2="107.8656" y2="83.2277" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-071-red-newsprint-accent" data-part="accent">
     <circle cx="75.2101" cy="83.1912" r="8.5111" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

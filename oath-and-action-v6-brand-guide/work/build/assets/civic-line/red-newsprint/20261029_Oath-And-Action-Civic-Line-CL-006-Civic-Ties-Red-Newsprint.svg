@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-006" data-id="CL-006" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-006-red-newsprint" data-id="CL-006" width="128" height="128" viewBox="0 0 128 128">
   <title>Civic Ties</title>
-  <desc>Oath &amp; Action Civic Line CL-006 Civic Ties. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-006 Civic Ties. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 6. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-006-red-newsprint-base" data-part="base">
     <circle cx="64.4387" cy="35.8042" r="6.8053" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M50.4443 63.47 V57.0546 A9.778358 9.778358 0 0 1 60.2227 47.2763 H68.6546 A9.778358 9.778358 0 0 1 78.433 57.0546 V63.47" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="32.0391" cy="71.3353" r="6.4702" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -10,7 +10,7 @@
     <circle cx="96.8383" cy="71.3353" r="6.4702" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M83.3861 98.5441 V92.1471 A9.504228 9.504228 0 0 1 92.8904 82.6429 H100.7862 A9.504203 9.504203 0 0 1 110.2904 92.1471 V98.5441" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-006-red-newsprint-accent" data-part="accent">
     <path d="M32.4107 58.4132 A29.18278 29.18278 0 0 1 46.533 42.4389" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M82.3443 42.4389 A29.18278 29.18278 0 0 1 96.4666 58.4132" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M76.8246 90.9773 A30.462208 30.462208 0 0 1 52.0527 90.9773" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-017-tile-circle-newsprint-one-color" data-id="CL-017" width="128" height="128" viewBox="0 0 128 128">
   <title>Policy Favoritism</title>
-  <desc>Oath &amp; Action Civic Line CL-017 Policy Favoritism: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-017 Policy Favoritism: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.589 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-017-tile-circle-newsprint-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-017-tile-circle-newsprint-one-color-icon" data-part="icon" transform="matrix(0.589 0 0 0.589 26.304 26.304)">
+  <g id="oa-civic-line-cl-017-tile-circle-newsprint-one-color-base" data-part="base">
     <rect x="14.6512" y="38.7956" width="44.554" height="50.4088" rx="3.0462" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="24.5515" y1="48.1718" x2="46.3746" y2="48.1718" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="24.5515" y1="57.9685" x2="46.3746" y2="57.9685" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -18,7 +18,7 @@
     <circle cx="104.8011" cy="85.616" r="4.0941" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M96.2534 100.7435 V98.5015 A4.934888 4.934888 0 0 1 101.1883 93.5666 H108.4139 A4.934888 4.934888 0 0 1 113.3488 98.5015 V100.7435" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-017-tile-circle-newsprint-one-color-accent" data-part="accent">
     <circle cx="104.8011" cy="58.1756" r="4.0941" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M96.2534 73.3032 V71.0611 A4.934863 4.934863 0 0 1 101.1883 66.1263 H108.4139 A4.934863 4.934863 0 0 1 113.3488 71.0611 V73.3032" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-34-tile-square-newsprint-two-color" data-id="R-34" width="128" height="128" viewBox="0 0 128 128">
   <title>Participatory Budgeting</title>
-  <desc>Oath &amp; Action Civic Line R-34 Participatory Budgeting: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-34 Participatory Budgeting: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-34-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-34-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-34-tile-square-newsprint-two-color-base" data-part="base">
     <path d="M36.6815 73.4433 V36.8094 A2.741599 2.741599 0 0 1 39.4231 34.0678 H97.0027 A2.741599 2.741599 0 0 1 99.7443 36.8094 V54.9832" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="45.9481" y="60.0034" width="10.6618" height="10.6618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="65.1393" y1="44.3945" x2="89.8624" y2="44.3945" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -20,7 +20,7 @@
     <circle cx="78.2929" cy="83.9406" r="4.9836" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M70.129 94.0357 Q78.2929 85.2626 86.4567 94.0357" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-34-tile-square-newsprint-two-color-accent" data-part="accent">
     <rect x="45.9481" y="42.7557" width="10.6618" height="10.6618" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="46.6365,46.5147 51.2059,49.1344 55.2269,44.7174" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

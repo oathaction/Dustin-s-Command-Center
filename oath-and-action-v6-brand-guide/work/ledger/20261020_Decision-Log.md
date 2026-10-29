@@ -161,3 +161,15 @@ Dustin confirmed the Civic Line icons in both editions, approved the studio's re
 | DR-09 | Light editions for dark grounds: lines in Newsprint, in two versions, Newsprint with Pillar Red (for Charcoal grounds) and Newsprint alone (for Charcoal and Prussian; red never sits on Prussian) | Dustin, October 29 |
 | DR-10 | Tiles for all 122 icons: square, rounded square (a continuous superellipse corner) and circle; a Charcoal tile carries the light editions and a Newsprint tile the dark editions, each in two-color and one-color, 12 tiles per icon | Dustin, October 29 |
 | DR-11 | Order of work after the variants: the visual system for the atlas and systems maps, then the other open items of the direction review, then the rest of the brand finalization | Dustin, October 29 |
+
+### Civic Line variants, studio decisions, October 29, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-40 | Icon size in tiles: one factor per shape, square 0.68, rounded 0.66, circle 0.62, chosen on the calibration board; every icon keeps at least 21 units of margin to the tile edge | One consistent size across the three shapes; the circle cuts into the corners of wide marks, so it takes a smaller factor |
+| D2-41 | The rounded square is a superellipse of exponent 5, drawn as a 96-piece spline with continuous curvature | The Phase 2 holder path had curvature jumps and concave samples |
+| D2-42 | Minimum tile sizes: two-color 72, 76 and 80 px (square, rounded, circle); one-color 48, 52 and 52 px, or 72, 76 and 80 px for the 28 icons that need 48 px on their own | Below these sizes the line falls under a pixel and the red stops reading as Pillar Red (variant review M-1) |
+| D2-43 | Every id inside an SVG starts with its file's own root, and every group carries `data-part` | Repeated mask ids broke CL-057's knockout when two files shared a page (variant review M-2) |
+| D2-44 | In tiles, 36 icons take an optical scale from 0.94 to 1.09 with the line capped at 3.35 units, and 8 asymmetric icons move up to 3.8 units toward their light side; bare files keep ink-box centering | Narrows the size spread in tiles from 1.44 to 1.24 times (variant review S-1, S-2) |
+| D2-45 | All 32 sheets share one header and footer geometry, each row's captions share one baseline, and the package text uses American spelling | Variant review S-3, S-4, S-6 |
+| D2-46 | The light editions keep the dark editions' stroke | The design director found no visible gain in apparent weight from Newsprint on Charcoal |

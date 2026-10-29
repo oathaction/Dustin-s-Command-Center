@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-07" data-id="R-07" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-07-red-black" data-id="R-07" width="128" height="128" viewBox="0 0 128 128">
   <title>Small-Donor Matching</title>
-  <desc>Oath &amp; Action Civic Line R-07 Small-Donor Matching. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-07 Small-Donor Matching. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-07-red-black-base" data-part="base">
     <path d="M86.7065 42.4876 A30.157591 30.157591 0 0 0 115.2801 42.4876" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M86.7065 50.2798 A30.157591 30.157591 0 0 0 115.2801 50.2798" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M86.7065 58.0721 A30.157591 30.157591 0 0 0 115.2801 58.0721" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -15,7 +15,7 @@
     <path d="M13.0916 81.0284 A31.497908 31.497908 0 0 0 43.7731 81.0284" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.8445 72.6513 C15.1386 73.7479 13.0916 75.0882 13.0916 79.2311 V89.7406 A31.497908 31.497908 0 0 0 43.7731 89.7406 V80.4496" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-07-red-black-accent" data-part="accent">
     <path d="M86.7065 45.4181 V39.9958 A14.286801 6.074175 0 0 1 100.9933 33.9216 A14.286801 6.074175 0 0 1 115.2801 39.9958 V45.4181" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
     <path d="M86.7065 42.4876 A30.157579 30.157579 0 0 0 90.0269 44.0229" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
     <path d="M111.9597 44.0229 A30.157579 30.157579 0 0 0 115.2801 42.4876" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>

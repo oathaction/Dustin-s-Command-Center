@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-39" data-id="R-39" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-39-red-black" data-id="R-39" width="128" height="128" viewBox="0 0 128 128">
   <title>Digital Service Teams</title>
-  <desc>Oath &amp; Action Civic Line R-39 Digital Service Teams. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-39 Digital Service Teams. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-39-red-black-base" data-part="base">
     <rect x="7.3384" y="41.2776" width="62.9969" height="39.5712" rx="3.3068" fill="none" stroke="#121212" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="38.8369" y1="80.8489" x2="38.8369" y2="87.095" fill="none" stroke="#121212" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="32.8322" y1="87.095" x2="44.8416" y2="87.095" fill="none" stroke="#121212" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,7 +17,7 @@
     <circle cx="97.4248" cy="61.2496" r="5.9417" fill="none" stroke="#121212" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M87.6829 85.7041 V79.6574 A9.741905 8.88109 0 0 1 97.4248 70.7763 A9.741905 8.88109 0 0 1 107.1667 79.6574 V85.7041" fill="none" stroke="#121212" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-39-red-black-accent" data-part="accent">
     <line x1="44.5109" y1="60.8822" x2="61.2443" y2="60.8822" fill="none" stroke="#E63946" stroke-width="2.8869" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-050-tile-circle-charcoal-one-color" data-id="CL-050" width="128" height="128" viewBox="0 0 128 128">
   <title>Worker Bargaining</title>
-  <desc>Oath &amp; Action Civic Line CL-050 Worker Bargaining: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-050 Worker Bargaining: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.5952 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-050-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-050-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.5952 0 0 0.5952 25.9072 25.9072)">
+  <g id="oa-civic-line-cl-050-tile-circle-charcoal-one-color-base" data-part="base">
     <circle cx="29.4071" cy="39.7826" r="7.3109" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="98.2883" cy="39.7826" r="7.3109" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M13.7678 81.1319 L15.1691 61.8676 A10.052513 10.052513 0 0 1 25.2216 51.8151 H25.9222 C39.0454 51.8151 40.1055 61.3071 40.6355 64.8529" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -16,7 +16,7 @@
     <line x1="86.2374" y1="81.1319" x2="86.2374" y2="95.5588" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="107.9265" y1="81.1319" x2="107.9265" y2="95.5588" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-050-tile-circle-charcoal-one-color-accent" data-part="accent">
     <line x1="47.855" y1="54.4836" x2="80.145" y2="54.4836" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="52.4853,49.3355 47.855,54.4836 52.4853,59.6317" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="75.5147,49.3355 80.145,54.4836 75.5147,59.6317" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

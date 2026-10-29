@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-03" data-id="R-03" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-03-red-newsprint" data-id="R-03" width="128" height="128" viewBox="0 0 128 128">
   <title>Proportional Elections</title>
-  <desc>Oath &amp; Action Civic Line R-03 Proportional Elections. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-03 Proportional Elections. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 3. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-03-red-newsprint-base" data-part="base">
     <circle cx="34.4212" cy="52.8204" r="3.7469" fill="#DCD9D2"/>
     <circle cx="93.6641" cy="52.8204" r="3.7469" fill="#DCD9D2"/>
     <circle cx="42.847" cy="59.9912" r="3.5032" fill="#DCD9D2"/>
@@ -26,7 +26,7 @@
     <circle cx="41.3422" cy="85.7013" r="3.7347" fill="#DCD9D2"/>
     <circle cx="86.737" cy="85.7013" r="3.7347" fill="#DCD9D2"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-03-red-newsprint-accent" data-part="accent">
     <circle cx="58.5168" cy="42.646" r="4.1124" fill="#E63946"/>
     <circle cx="69.5624" cy="42.646" r="4.1124" fill="#E63946"/>
     <circle cx="47.3737" cy="45.3937" r="3.8139" fill="#E63946"/>

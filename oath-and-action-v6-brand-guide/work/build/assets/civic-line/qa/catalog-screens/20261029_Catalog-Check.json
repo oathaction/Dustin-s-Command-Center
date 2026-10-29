@@ -1,11 +1,12 @@
 {
   "file": "20261029_Civic-Line-Icon-Catalog.html",
-  "bytes": 9412820,
+  "bytes": 9508325,
   "runs": [
     {
       "tag": "1440-light",
       "info": {
         "cards": 122,
+        "dupIds": 0,
         "bg": "rgb(255, 255, 255)",
         "fontsLoaded": [
           "Inter 400",
@@ -26,7 +27,7 @@
         "violations": []
       },
       "detail": {
-        "title": "R-35 Term Limits · Rejected",
+        "title": "R-35 Term Limits · Rejected",
         "imgNatural": [
           179,
           123
@@ -42,7 +43,9 @@
         "dialogScroll": 0,
         "raised": "rgb(255, 255, 255)",
         "corrections": 7,
-        "specimens": 16,
+        "specimens": 17,
+        "prussian": "rgb(31, 45, 90)",
+        "dupIds": 0,
         "specSizes": [
           96
         ],
@@ -71,6 +74,7 @@
       "tag": "1440-dark",
       "info": {
         "cards": 122,
+        "dupIds": 0,
         "bg": "rgb(18, 18, 18)",
         "fontsLoaded": [
           "Inter 400",
@@ -91,7 +95,7 @@
         "violations": []
       },
       "detail": {
-        "title": "R-35 Term Limits · Rejected",
+        "title": "R-35 Term Limits · Rejected",
         "imgNatural": [
           179,
           123
@@ -107,7 +111,9 @@
         "dialogScroll": 0,
         "raised": "rgb(31, 45, 90)",
         "corrections": 7,
-        "specimens": 16,
+        "specimens": 17,
+        "prussian": "rgb(31, 45, 90)",
+        "dupIds": 0,
         "specSizes": [
           96
         ],
@@ -136,6 +142,7 @@
       "tag": "390-light",
       "info": {
         "cards": 122,
+        "dupIds": 0,
         "bg": "rgb(255, 255, 255)",
         "fontsLoaded": [
           "Inter 400",
@@ -156,7 +163,7 @@
         "violations": []
       },
       "detail": {
-        "title": "R-35 Term Limits · Rejected",
+        "title": "R-35 Term Limits · Rejected",
         "imgNatural": [
           179,
           123
@@ -172,7 +179,9 @@
         "dialogScroll": 0,
         "raised": "rgb(255, 255, 255)",
         "corrections": 7,
-        "specimens": 16,
+        "specimens": 17,
+        "prussian": "rgb(31, 45, 90)",
+        "dupIds": 0,
         "specSizes": [
           96
         ],
@@ -201,6 +210,7 @@
       "tag": "390-dark",
       "info": {
         "cards": 122,
+        "dupIds": 0,
         "bg": "rgb(18, 18, 18)",
         "fontsLoaded": [
           "Inter 400",
@@ -221,7 +231,7 @@
         "violations": []
       },
       "detail": {
-        "title": "R-35 Term Limits · Rejected",
+        "title": "R-35 Term Limits · Rejected",
         "imgNatural": [
           179,
           123
@@ -237,7 +247,9 @@
         "dialogScroll": 0,
         "raised": "rgb(31, 45, 90)",
         "corrections": 7,
-        "specimens": 16,
+        "specimens": 17,
+        "prussian": "rgb(31, 45, 90)",
+        "dupIds": 0,
         "specSizes": [
           96
         ],
@@ -311,41 +323,235 @@
       "w": 52.10760498046875,
       "shown": [],
       "fill": null,
-      "stage": "rgb(18, 18, 18)"
+      "stage": "rgb(18, 18, 18)",
+      "cl010": "matrix(1, 0, 0, 1, 0, 0)",
+      "cl022Stroke": 3.3508
     },
     "holders": {
       "square": {
-        "w": 35.43316650390625,
+        "w": 34.724517822265625,
         "shown": [
           "#h-square"
         ],
         "fill": "rgb(18, 18, 18)",
-        "stage": "rgb(220, 217, 210)"
+        "stage": "rgb(220, 217, 210)",
+        "cl010": "matrix(0.714, 0, 0, 0.714, 2.584, 0)",
+        "cl022Stroke": 3.10259
       },
       "rounded": {
-        "w": 34.39105224609375,
+        "w": 33.70318603515625,
         "shown": [
           "#h-rounded"
         ],
         "fill": "rgb(18, 18, 18)",
-        "stage": "rgb(220, 217, 210)"
+        "stage": "rgb(220, 217, 210)",
+        "cl010": "matrix(0.693, 0, 0, 0.693, 2.508, 0)",
+        "cl022Stroke": 3.10259
       },
       "circle": {
-        "w": 32.30670166015625,
+        "w": 31.66058349609375,
         "shown": [
           "#h-circle"
         ],
         "fill": "rgb(18, 18, 18)",
-        "stage": "rgb(220, 217, 210)"
+        "stage": "rgb(220, 217, 210)",
+        "cl010": "matrix(0.651, 0, 0, 0.651, 2.356, 0)",
+        "cl022Stroke": 3.10259
       }
     },
+    "detailTileStrokesCL021": [
+      3.3508
+    ],
+    "detailTileStrokesCL022": [
+      3.10259
+    ],
     "holderRoundedRedBlack": {
-      "w": 34.39105224609375,
+      "w": 33.70318603515625,
       "shown": [
         "#h-rounded"
       ],
       "fill": "rgb(220, 217, 210)",
-      "stage": "rgb(18, 18, 18)"
+      "stage": "rgb(18, 18, 18)",
+      "cl010": "matrix(0.693, 0, 0, 0.693, 2.508, 0)",
+      "cl022Stroke": 3.10259
+    },
+    "minMarks": {
+      "rbRounded24": {
+        "n": 122,
+        "notes": 122,
+        "sample": "Below the tile minimum (76 px)",
+        "ids": [
+          "CL-001",
+          "CL-002",
+          "CL-003",
+          "CL-004",
+          "CL-005",
+          "CL-006",
+          "CL-007",
+          "CL-008",
+          "CL-009",
+          "CL-010",
+          "CL-011",
+          "CL-012",
+          "CL-013",
+          "CL-014",
+          "CL-015",
+          "CL-016",
+          "CL-017",
+          "CL-018",
+          "CL-019",
+          "CL-020",
+          "CL-021",
+          "CL-022",
+          "CL-023",
+          "CL-024",
+          "CL-025",
+          "CL-026",
+          "CL-027",
+          "CL-028",
+          "CL-029",
+          "CL-030",
+          "CL-031",
+          "CL-032",
+          "CL-033",
+          "CL-034",
+          "CL-035",
+          "CL-036",
+          "CL-037",
+          "CL-038",
+          "CL-039",
+          "CL-040",
+          "CL-041",
+          "CL-042",
+          "CL-043",
+          "CL-044",
+          "CL-045",
+          "CL-046",
+          "CL-047",
+          "CL-048",
+          "CL-049",
+          "CL-050",
+          "CL-051",
+          "CL-052",
+          "CL-053",
+          "CL-054",
+          "CL-055",
+          "CL-056",
+          "CL-057",
+          "CL-058",
+          "CL-059",
+          "CL-060",
+          "CL-061",
+          "CL-062",
+          "CL-063",
+          "CL-064",
+          "CL-065",
+          "CL-066",
+          "CL-067",
+          "CL-068",
+          "CL-069",
+          "CL-070",
+          "CL-071",
+          "CL-072",
+          "R-01",
+          "R-02",
+          "R-03",
+          "R-04",
+          "R-05",
+          "R-06",
+          "R-07",
+          "R-08",
+          "R-09",
+          "R-10",
+          "R-11",
+          "R-12",
+          "R-13",
+          "R-14",
+          "R-15",
+          "R-16",
+          "R-17",
+          "R-18",
+          "R-19",
+          "R-20",
+          "R-21",
+          "R-22",
+          "R-23",
+          "R-24",
+          "R-25",
+          "R-26",
+          "R-27",
+          "R-28",
+          "R-29",
+          "R-30",
+          "R-31",
+          "R-32",
+          "R-33",
+          "R-34",
+          "R-35",
+          "R-36",
+          "R-37",
+          "R-38",
+          "R-39",
+          "R-40",
+          "R-41",
+          "R-42",
+          "R-43",
+          "R-44",
+          "R-45",
+          "R-46",
+          "R-47",
+          "R-48",
+          "R-49",
+          "R-50"
+        ]
+      },
+      "rbRounded128": {
+        "n": 0,
+        "notes": 0,
+        "sample": "",
+        "ids": []
+      },
+      "bkSquare64": {
+        "n": 28,
+        "notes": 28,
+        "sample": "Below the tile minimum (72 px)",
+        "ids": [
+          "CL-009",
+          "CL-014",
+          "CL-017",
+          "CL-035",
+          "CL-036",
+          "CL-037",
+          "CL-038",
+          "CL-041",
+          "CL-045",
+          "CL-046",
+          "CL-056",
+          "CL-063",
+          "CL-064",
+          "CL-065",
+          "R-01",
+          "R-04",
+          "R-12",
+          "R-13",
+          "R-16",
+          "R-24",
+          "R-34",
+          "R-36",
+          "R-40",
+          "R-42",
+          "R-43",
+          "R-46",
+          "R-49",
+          "R-50"
+        ]
+      },
+      "none24": {
+        "n": 0,
+        "notes": 0,
+        "sample": "",
+        "ids": []
+      }
     },
     "size128": 128,
     "size24": 24,
@@ -375,7 +581,609 @@
     "hash": "#cl-002",
     "escapeCloses": true,
     "errors": [],
-    "hashOpens": "R-35 Term Limits · Rejected",
+    "labels": [
+      {
+        "width": 1440,
+        "size": "24",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 132
+        }
+      },
+      {
+        "width": 1440,
+        "size": "32",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 132
+        }
+      },
+      {
+        "width": 1440,
+        "size": "48",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 132
+        }
+      },
+      {
+        "width": 1440,
+        "size": "64",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 132
+        }
+      },
+      {
+        "width": 1440,
+        "size": "128",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 174
+        }
+      },
+      {
+        "width": 1024,
+        "size": "24",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 131
+        }
+      },
+      {
+        "width": 1024,
+        "size": "32",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 131
+        }
+      },
+      {
+        "width": 1024,
+        "size": "48",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 131
+        }
+      },
+      {
+        "width": 1024,
+        "size": "64",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": true,
+          "dotWithRejected": true,
+          "dotStartsLine2": true,
+          "cardWidth": 131
+        }
+      },
+      {
+        "width": 1024,
+        "size": "128",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 189
+        }
+      },
+      {
+        "width": 390,
+        "size": "24",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 173
+        }
+      },
+      {
+        "width": 390,
+        "size": "32",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 173
+        }
+      },
+      {
+        "width": 390,
+        "size": "48",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 173
+        }
+      },
+      {
+        "width": 390,
+        "size": "64",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 173
+        }
+      },
+      {
+        "width": 390,
+        "size": "128",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 173
+        }
+      },
+      {
+        "width": 360,
+        "size": "24",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 158
+        }
+      },
+      {
+        "width": 360,
+        "size": "32",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 158
+        }
+      },
+      {
+        "width": 360,
+        "size": "48",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 158
+        }
+      },
+      {
+        "width": 360,
+        "size": "64",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 158
+        }
+      },
+      {
+        "width": 360,
+        "size": "128",
+        "scroll": {
+          "docScroll": 0,
+          "bodyScroll": 0
+        },
+        "seg": [
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          },
+          {
+            "lines": 1,
+            "wrapped": []
+          }
+        ],
+        "broken": [],
+        "over": [],
+        "r35": {
+          "wraps": false,
+          "dotWithRejected": true,
+          "dotStartsLine2": false,
+          "cardWidth": 328
+        }
+      }
+    ],
+    "hashOpens": "R-35 Term Limits · Rejected",
     "os-light-theme-dark": {
       "bg": "rgb(18, 18, 18)",
       "text": "rgb(255, 255, 255)",
@@ -397,7 +1205,7 @@
     {
       "check": "file under 12 MB",
       "pass": true,
-      "detail": "8.98 MB"
+      "detail": "9.07 MB"
     },
     {
       "check": "1440-light: axe 4.10.2 on the grid, no violations",
@@ -425,9 +1233,14 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
-      "check": "1440-light: detail shows the 4 editions and 12 tiles at 96 px",
+      "check": "1440-light: detail shows the 4 editions, Newsprint on Prussian and 12 tiles at 96 px",
       "pass": true,
-      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+      "detail": "17 specimens, sizes [96], Prussian stage rgb(31, 45, 90), first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
+      "check": "1440-light: no id repeats on the page, grid and open detail view",
+      "pass": true,
+      "detail": "0 on the grid, 0 with the detail open"
     },
     {
       "check": "1440-light: detail shows the reference crop and the trace at one scale",
@@ -475,9 +1288,14 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
-      "check": "1440-dark: detail shows the 4 editions and 12 tiles at 96 px",
+      "check": "1440-dark: detail shows the 4 editions, Newsprint on Prussian and 12 tiles at 96 px",
       "pass": true,
-      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+      "detail": "17 specimens, sizes [96], Prussian stage rgb(31, 45, 90), first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
+      "check": "1440-dark: no id repeats on the page, grid and open detail view",
+      "pass": true,
+      "detail": "0 on the grid, 0 with the detail open"
     },
     {
       "check": "1440-dark: detail shows the reference crop and the trace at one scale",
@@ -525,9 +1343,14 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
-      "check": "390-light: detail shows the 4 editions and 12 tiles at 96 px",
+      "check": "390-light: detail shows the 4 editions, Newsprint on Prussian and 12 tiles at 96 px",
       "pass": true,
-      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+      "detail": "17 specimens, sizes [96], Prussian stage rgb(31, 45, 90), first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
+      "check": "390-light: no id repeats on the page, grid and open detail view",
+      "pass": true,
+      "detail": "0 on the grid, 0 with the detail open"
     },
     {
       "check": "390-light: detail shows the reference crop and the trace at one scale",
@@ -575,9 +1398,14 @@
       "detail": "rgb(220, 217, 210)"
     },
     {
-      "check": "390-dark: detail shows the 4 editions and 12 tiles at 96 px",
+      "check": "390-dark: detail shows the 4 editions, Newsprint on Prussian and 12 tiles at 96 px",
       "pass": true,
-      "detail": "16 specimens, sizes [96], first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+      "detail": "17 specimens, sizes [96], Prussian stage rgb(31, 45, 90), first tile stages ['rgb(220, 217, 210)', 'rgb(220, 217, 210)', 'rgb(18, 18, 18)', 'rgb(18, 18, 18)']"
+    },
+    {
+      "check": "390-dark: no id repeats on the page, grid and open detail view",
+      "pass": true,
+      "detail": "0 on the grid, 0 with the detail open"
     },
     {
       "check": "390-dark: detail shows the reference crop and the trace at one scale",
@@ -625,44 +1453,119 @@
       "detail": "Showing 25 of 122 icons"
     },
     {
-      "check": "edition red-black: accent, ink and tile colours",
+      "check": "edition red-black: accent, ink and tile colors",
       "pass": true,
       "detail": "{\"accent\": \"rgb(230, 57, 70)\", \"ink\": \"rgb(18, 18, 18)\", \"tile\": \"rgb(220, 217, 210)\"}"
     },
     {
-      "check": "edition black: accent, ink and tile colours",
+      "check": "edition black: accent, ink and tile colors",
       "pass": true,
       "detail": "{\"accent\": \"rgb(18, 18, 18)\", \"ink\": \"rgb(18, 18, 18)\", \"tile\": \"rgb(220, 217, 210)\"}"
     },
     {
-      "check": "edition red-newsprint: accent, ink and tile colours",
+      "check": "edition red-newsprint: accent, ink and tile colors",
       "pass": true,
       "detail": "{\"accent\": \"rgb(230, 57, 70)\", \"ink\": \"rgb(220, 217, 210)\", \"tile\": \"rgb(18, 18, 18)\"}"
     },
     {
-      "check": "edition newsprint: accent, ink and tile colours",
+      "check": "edition newsprint: accent, ink and tile colors",
       "pass": true,
       "detail": "{\"accent\": \"rgb(220, 217, 210)\", \"ink\": \"rgb(220, 217, 210)\", \"tile\": \"rgb(18, 18, 18)\"}"
     },
     {
-      "check": "holder square: shape shown, glyph at 0.68, Charcoal tile on a Newsprint stage",
+      "check": "holder square: shape shown, CL-021 at 0.68 times its optical scale 0.98, Charcoal tile on a Newsprint stage",
       "pass": true,
-      "detail": "shown ['#h-square'], scale 0.680, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+      "detail": "shown ['#h-square'], scale 0.6664 against 0.6664, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
     },
     {
-      "check": "holder rounded: shape shown, glyph at 0.66, Charcoal tile on a Newsprint stage",
+      "check": "holder square: CL-010 scaled by 0.68 times 1.05 and moved 2.584 units right, as its tile files",
       "pass": true,
-      "detail": "shown ['#h-rounded'], scale 0.660, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+      "detail": "matrix(0.714, 0, 0, 0.714, 2.584, 0) against [0.714, 0, 0, 0.714, 2.584, 0]"
     },
     {
-      "check": "holder circle: shape shown, glyph at 0.62, Charcoal tile on a Newsprint stage",
+      "check": "holder square: CL-022 stroke held at the cap (3.1026 px in the 128 box)",
       "pass": true,
-      "detail": "shown ['#h-circle'], scale 0.620, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+      "detail": "3.10259"
+    },
+    {
+      "check": "holder rounded: shape shown, CL-021 at 0.66 times its optical scale 0.98, Charcoal tile on a Newsprint stage",
+      "pass": true,
+      "detail": "shown ['#h-rounded'], scale 0.6468 against 0.6468, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+    },
+    {
+      "check": "holder rounded: CL-010 scaled by 0.66 times 1.05 and moved 2.508 units right, as its tile files",
+      "pass": true,
+      "detail": "matrix(0.693, 0, 0, 0.693, 2.508, 0) against [0.693, 0, 0, 0.693, 2.508, 0]"
+    },
+    {
+      "check": "holder rounded: CL-022 stroke held at the cap (3.1026 px in the 128 box)",
+      "pass": true,
+      "detail": "3.10259"
+    },
+    {
+      "check": "holder circle: shape shown, CL-021 at 0.62 times its optical scale 0.98, Charcoal tile on a Newsprint stage",
+      "pass": true,
+      "detail": "shown ['#h-circle'], scale 0.6076 against 0.6076, fill rgb(18, 18, 18), stage rgb(220, 217, 210)"
+    },
+    {
+      "check": "holder circle: CL-010 scaled by 0.62 times 1.05 and moved 2.356 units right, as its tile files",
+      "pass": true,
+      "detail": "matrix(0.651, 0, 0, 0.651, 2.356, 0) against [0.651, 0, 0, 0.651, 2.356, 0]"
+    },
+    {
+      "check": "holder circle: CL-022 stroke held at the cap (3.1026 px in the 128 box)",
+      "pass": true,
+      "detail": "3.10259"
+    },
+    {
+      "check": "detail tiles draw their strokes as the tile files do (CL-021 3.3508, CL-022 held at the cap)",
+      "pass": true,
+      "detail": "CL-021 [3.3508], CL-022 [3.10259]"
+    },
+    {
+      "check": "holder None: CL-022 stroke at its bare width",
+      "pass": true,
+      "detail": "3.3508"
+    },
+    {
+      "check": "tile minimum: every two-color rounded tile at 24 px is marked",
+      "pass": true,
+      "detail": "122 marked, note 'Below the tile minimum (76 px)'"
+    },
+    {
+      "check": "tile minimum: no tile at 128 px is marked",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "tile minimum: one-color square tiles at 64 px mark the 28 icons that need 72 px",
+      "pass": true,
+      "detail": "28 marked"
+    },
+    {
+      "check": "tile minimum: no card is marked without a holder",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "card labels never break inside a word or overflow, at 1440, 1024, 390 and 360 px and all five sizes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no horizontal scroll at 1440, 1024, 390 and 360 px, and no control label wraps inside its segment",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R-35's middle dot stays with 'Rejected' and starts the second line when the label wraps",
+      "pass": true,
+      "detail": "1440/24 card 132 px wraps True; 1440/32 card 132 px wraps True; 1440/48 card 132 px wraps True; 1440/64 card 132 px wraps True; 1024/24 card 131 px wraps True; 1024/32 card 131 px wraps True; 1024/48 card 131 px wraps True; 1024/64 card 131 px wraps True"
     },
     {
       "check": "holder with a dark edition: Newsprint tile on a Charcoal stage",
       "pass": true,
-      "detail": "{\"w\": 34.39105224609375, \"shown\": [\"#h-rounded\"], \"fill\": \"rgb(220, 217, 210)\", \"stage\": \"rgb(18, 18, 18)\"}"
+      "detail": "{\"w\": 33.70318603515625, \"shown\": [\"#h-rounded\"], \"fill\": \"rgb(220, 217, 210)\", \"stage\": \"rgb(18, 18, 18)\", \"cl010\": \"matrix(0.693, 0, 0, 0.693, 2.508, 0)\", \"cl022Stroke\": 3.10259}"
     },
     {
       "check": "holder None hides every shape",
@@ -692,7 +1595,7 @@
     {
       "check": "a #r-35 link opens R-35",
       "pass": true,
-      "detail": "R-35 Term Limits · Rejected"
+      "detail": "R-35 Term Limits · Rejected"
     },
     {
       "check": "data-theme dark wins over a light OS",

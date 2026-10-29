@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-025-tile-circle-newsprint-two-color" data-id="CL-025" width="128" height="128" viewBox="0 0 128 128">
   <title>Congress</title>
-  <desc>Oath &amp; Action Civic Line CL-025 Congress: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-025 Congress: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-025-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-025-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-025-tile-circle-newsprint-two-color-accent" data-part="accent">
     <line x1="68.9836" y1="81.8508" x2="68.9836" y2="102.0778" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-025-tile-circle-newsprint-two-color-base" data-part="base">
     <line x1="63.8172" y1="25.313" x2="63.8172" y2="33.5987" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="59.6134" y="33.5987" width="8.4076" height="5.9279" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M45.9115 56.2321 A17.948347 17.948347 0 0 1 81.6437 55.3853 L81.6437 61.6849" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

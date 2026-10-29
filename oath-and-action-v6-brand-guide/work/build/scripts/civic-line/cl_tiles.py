@@ -135,13 +135,15 @@ def deviation_from_exact(d):
 ROUNDED_D = rounded_path()
 
 
-def shape_element(shape, color):
+def shape_element(shape, color, rid=None):
+    """The tile shape as one element. With rid, it carries id="<rid>-tile" and data-part="tile"."""
+    ida = f' id="{rid}-tile" data-part="tile"' if rid else ""
     if shape == "square":
-        return f'<rect id="tile" x="0" y="0" width="128" height="128" fill="{color}"/>'
+        return f'<rect{ida} x="0" y="0" width="128" height="128" fill="{color}"/>'
     if shape == "circle":
-        return f'<circle id="tile" cx="64" cy="64" r="64" fill="{color}"/>'
+        return f'<circle{ida} cx="64" cy="64" r="64" fill="{color}"/>'
     if shape == "rounded":
-        return f'<path id="tile" d="{ROUNDED_D}" fill="{color}"/>'
+        return f'<path{ida} d="{ROUNDED_D}" fill="{color}"/>'
     raise ValueError(shape)
 
 
@@ -204,12 +206,40 @@ def ink_samples(svg_text):
     return np.array(out)
 
 
-def icon_margin(bare_svg_text, shape, factor):
+def scale_strokes(svg_text, k):
+    """Every stroke-width in the markup multiplied by k (S-1: the tile's stroke cap)."""
+    if abs(k - 1.0) < 1e-12:
+        return svg_text
+    return re.sub(r'stroke-width="([0-9.]+)"', lambda m: f'stroke-width="{S.fmt4(float(m.group(1)) * k)}"', svg_text)
+
+
+def icon_margin(bare_svg_text, shape, factor, a=1.0, dx=0.0, k=1.0):
     """Smallest clearance (units, in the 128 tile) between the icon's ink and the
-    tile edge when the bare export is scaled by `factor` about the centre."""
+    tile edge when the bare export is scaled by factor * a about the center,
+    shifted by factor * dx and drawn with its strokes multiplied by k."""
+    s = ink_samples(scale_strokes(bare_svg_text.split("?>", 1)[-1], k))
+    fa = factor * a
+    pts = HALF + fa * (s[:, :2] - HALF)
+    pts[:, 0] += factor * dx
+    return float((inside_distance(shape, pts) - fa * s[:, 2]).min())
+
+
+def hull_size(bare_svg_text):
+    """Square root of the area inside the convex outline around all the ink
+    (outline points widened by half the stroke in 16 directions), in box units,
+    and the hull centroid's offset from the ink box center (x, y)."""
+    from scipy.spatial import ConvexHull
     s = ink_samples(bare_svg_text.split("?>", 1)[-1])
-    pts = HALF + factor * (s[:, :2] - HALF)
-    return float((inside_distance(shape, pts) - factor * s[:, 2]).min())
+    ang = np.linspace(0, 2 * np.pi, 16, endpoint=False)
+    P = np.vstack([s[:, :2]] + [s[:, :2] + np.c_[np.cos(t) * s[:, 2], np.sin(t) * s[:, 2]] for t in ang])
+    V = P[ConvexHull(P).vertices]
+    x, y = V[:, 0], V[:, 1]
+    x2, y2 = np.roll(x, -1), np.roll(y, -1)
+    cr = x * y2 - x2 * y
+    area = cr.sum() / 2
+    hx = ((x + x2) * cr).sum() / (6 * area)
+    hy = ((y + y2) * cr).sum() / (6 * area)
+    return float(np.sqrt(abs(area))), float(hx - (P[:, 0].min() + P[:, 0].max()) / 2), float(hy - (P[:, 1].min() + P[:, 1].max()) / 2)
 
 
 # ------------------------------------------------------------------ composition
@@ -223,18 +253,36 @@ def bare_inner(bare_svg_text):
     return inner.strip("\n")
 
 
-def tile_svg(bare_svg_text, icon_id, label, shape, tile, colour_mode, factor):
+def transform_attr(shape, a=1.0, dx=0.0, factor=None):
+    f = C.TILE_FACTORS[shape] if factor is None else factor
+    fa = f * a
+    return f"matrix({S.fmt(fa, 6)} 0 0 {S.fmt(fa, 6)} {S.fmt(64 * (1 - fa) + f * dx)} {S.fmt(64 * (1 - fa))})"
+
+
+def tile_svg(bare_svg_text, row, shape, tile, colour_mode, factor=None, optics=None):
+    """One tile: the shape first, then the bare export's inner markup in one group
+    with one uniform transform. optics = (a, dx, k) overrides the icon's own
+    optical scale, offset and stroke multiplier (the calibration board uses it)."""
+    icon_id, label = row["id"], row["label"]
+    f = C.TILE_FACTORS[shape] if factor is None else factor
+    a, dx, k = C.tile_optics(icon_id, row["stroke_units"]) if optics is None else optics
     ground = C.CHARCOAL if tile == "charcoal" else C.NEWSPRINT
-    t = HALF * (1 - factor)
     shape_name = {"square": "square", "rounded": "rounded square (superellipse, exponent 5)", "circle": "circle"}[shape]
     ink = ("Newsprint lines with a Pillar Red accent" if colour_mode == "two-color" else "Newsprint lines") if tile == "charcoal" else \
           ("Charcoal lines with a Pillar Red accent" if colour_mode == "two-color" else "Charcoal lines")
-    rid = f"oa-civic-line-{icon_id.lower()}-tile-{shape}-{tile}-{colour_mode}"
-    desc = escape(f"Oath & Action Civic Line {icon_id} {label}: {shape_name} tile in {tile.capitalize()}, {ink}. "
-                  f"The icon is its bare export scaled by {factor:g} about the centre of the 128 box.")
+    rid = C.tile_root(icon_id, shape, tile, colour_mode)
+    broot = S.root_id_of(bare_svg_text)
+    inner = scale_strokes(bare_inner(bare_svg_text), k).replace(broot, rid)
+    how = f"The icon is its bare export scaled by {S.fmt(f * a, 6)} about the center of the 128 box"
+    if dx:
+        how += f" and moved {S.fmt(abs(f * dx), 4)} units {'right' if dx > 0 else 'left'}"
+    if k < 1:
+        how += f", with every stroke width multiplied by {S.fmt(k, 4)} so its line stays at {S.fmt(C.TILE_STROKE_CAP, 4)} units or less"
+    desc = escape(f"Oath & Action Civic Line {icon_id} {label}: {shape_name} tile in {tile.capitalize()}, {ink}. {how}. "
+                  f"The tile shape has data-part 'tile' and the icon group data-part 'icon'.")
     label = escape(label)
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             f'<svg xmlns="http://www.w3.org/2000/svg" id="{rid}" data-id="{icon_id}" width="128" height="128" viewBox="0 0 128 128">\n'
-            f"  <title>{label}</title>\n  <desc>{desc}</desc>\n  {shape_element(shape, ground)}\n"
-            f'  <g id="icon" transform="matrix({factor:g} 0 0 {factor:g} {S.fmt(t)} {S.fmt(t)})">\n'
-            f"{bare_inner(bare_svg_text)}\n  </g>\n</svg>\n")
+            f"  <title>{label}</title>\n  <desc>{desc}</desc>\n  {shape_element(shape, ground, rid)}\n"
+            f'  <g id="{rid}-icon" data-part="icon" transform="{transform_attr(shape, a, dx, f)}">\n'
+            f"{inner}\n  </g>\n</svg>\n")

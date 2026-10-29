@@ -34,7 +34,7 @@ CROP_MARGIN = 8       # source px around the pictogram ink box
 FRAMING_CAP = 1.25    # DR-08: an icon grows toward FILL_EXTENT by at most this times the shared scale
 
 # The four bare editions (DR-07, DR-09). Each is the red-black file with its ink
-# colours swapped; mask colours (#FFFFFF, #000000) are mask semantics and stay.
+# colors and root id swapped; mask colors (#FFFFFF, #000000) are mask semantics and stay.
 EDITIONS = {
     "red-black": {"suffix": "Red-Black", "ink": "#121212", "accent": "#E63946", "ground": "light"},
     "black": {"suffix": "Black", "ink": "#121212", "accent": "#121212", "ground": "light"},
@@ -43,7 +43,7 @@ EDITIONS = {
 }
 EDITION_COLOURS = {k: sorted({v["ink"], v["accent"]}) for k, v in EDITIONS.items()}
 
-# Tiles (DR-10): three shapes, two tile colours, two colour modes. A Charcoal
+# Tiles (DR-10): three shapes, two tile colors, two color modes. A Charcoal
 # tile carries the light editions, a Newsprint tile the dark ones.
 TILE_SHAPES = ["square", "rounded", "circle"]
 TILE_COLOURS = ["charcoal", "newsprint"]
@@ -55,6 +55,77 @@ TILE_FILL = {"charcoal": "#121212", "newsprint": "#DCD9D2"}
 # calibration board (qa/<date>_Civic-Line-Tile-Calibration.png).
 TILE_FACTORS = {"square": 0.68, "rounded": 0.66, "circle": 0.62}
 TILE_SAFE_MARGIN = 12.0   # units of 128: the least clearance ink may keep from any tile edge
+
+# Optical size in tiles (variant review S-1). An icon's tile scale is the shape
+# factor times a, about the center. Rule: a = clamp((74.4 / hull size) ** 0.5,
+# 0.94, 1.10), used only where a differs from 1 by 0.04 or more, with hull size
+# the square root of the area inside the convex outline of the icon's ink and
+# 74.4 the set's median; the four pillar marks are set as one group. Values as
+# the review's table gives them
+# (work/handoffs/phase-2/20261029_Civic-Line-Variant-Review.md, S-1).
+TILE_OPTICAL_SCALE = {
+    "CL-039": 0.94, "CL-056": 0.94, "CL-059": 0.94, "CL-065": 0.94, "CL-068": 0.94,
+    "CL-014": 0.95, "CL-017": 0.95, "CL-033": 0.95, "CL-046": 0.95, "CL-052": 0.95, "R-24": 0.95,
+    "CL-009": 0.96, "CL-048": 0.96, "CL-050": 0.96, "CL-055": 0.96,
+    "CL-019": 0.97, "CL-021": 0.98, "CL-020": 1.02,
+    "CL-004": 1.04, "CL-013": 1.04, "R-11": 1.04, "R-19": 1.04,
+    "CL-010": 1.05, "R-02": 1.05, "R-13": 1.05, "R-49": 1.05,
+    "CL-018": 1.06, "CL-034": 1.06, "CL-072": 1.06, "R-08": 1.06, "R-27": 1.06, "R-43": 1.06,
+    "R-44": 1.07, "CL-022": 1.08, "R-03": 1.09, "R-18": 1.09,
+}
+PILLAR_GROUP = ["CL-019", "CL-020", "CL-021", "CL-022"]
+# Horizontal optical shift in tiles (S-2), in units of the 128 box, applied after
+# the scale (f * dx in the tile transform). Positive moves right. Rule: 0.35 times
+# the hull-centroid offset toward the light side, capped at 2.5 tile units, used
+# only where it reaches 1.5 tile units. Bare editions stay centered on their ink box.
+TILE_OFFSET_X = {"CL-010": 3.8, "CL-013": 3.0, "CL-051": 3.0, "R-11": 3.0, "CL-071": 2.3, "R-08": 2.3,
+                 "CL-049": -3.0, "R-07": -2.3}
+# A tile's stroke stays inside the set's spread: min(stroke * a, TILE_STROKE_CAP)
+# units, so every stroke-width in the icon is multiplied by min(1, cap / (stroke * a)).
+TILE_STROKE_CAP = 3.3508
+
+# Minimum tile sizes (M-1). The bare icon's floor is 32 px, or 48 px for the 28
+# icons that stop reading at 32 px (work/handoffs/phase-2/20261029_Civic-Line-Review.md,
+# section 6). A tile's floor is that floor divided by the shape factor, rounded up
+# to a multiple of 4 px; a two-color tile takes the 48 px floor for every icon, so
+# its line stays at about 1.25 px or more.
+BARE_FLOOR_PX = 32
+BARE_FLOOR_48_IDS = ["CL-009", "CL-014", "CL-017", "CL-035", "CL-036", "CL-037", "CL-038", "CL-041", "CL-045",
+                     "CL-046", "CL-056", "CL-063", "CL-064", "CL-065", "R-01", "R-04", "R-12", "R-13", "R-16",
+                     "R-24", "R-34", "R-36", "R-40", "R-42", "R-43", "R-46", "R-49", "R-50"]
+
+
+def tile_min_px(icon_id):
+    """{'one-color': {shape: px}, 'two-color': {shape: px}} for one icon."""
+    def up4(v):
+        return int(-(-round(v, 6) // 4) * 4)
+    one = 48 if icon_id in BARE_FLOOR_48_IDS else BARE_FLOOR_PX
+    return {"one-color": {sh: up4(one / f) for sh, f in TILE_FACTORS.items()},
+            "two-color": {sh: up4(48 / f) for sh, f in TILE_FACTORS.items()}}
+
+
+def tile_optics(icon_id, stroke_units):
+    """(a, dx, k): optical scale, horizontal offset in box units and stroke multiplier."""
+    a = TILE_OPTICAL_SCALE.get(icon_id, 1.0)
+    dx = TILE_OFFSET_X.get(icon_id, 0.0)
+    k = min(1.0, TILE_STROKE_CAP / (stroke_units * a))
+    return a, dx, k
+
+
+def tile_transform(shape, a, dx):
+    """(scale, tx, ty) of the icon group in a tile: matrix(f*a 0 0 f*a 64(1-f*a)+f*dx 64(1-f*a))."""
+    f = TILE_FACTORS[shape]
+    fa = f * a
+    return fa, 64 * (1 - fa) + f * dx, 64 * (1 - fa)
+
+
+def bare_root(icon_id, edition):
+    """Root id of a bare export; every internal id in the file starts with it."""
+    return f"oa-civic-line-{icon_id.lower()}-{edition}"
+
+
+def tile_root(icon_id, shape, tile, mode):
+    return f"oa-civic-line-{icon_id.lower()}-tile-{shape}-{tile}-{mode}"
 
 SHEETS = {
     "01": {"black": f"{DATE}_Oath-And-Action-Civic-Line-01-Participation-Black.png",

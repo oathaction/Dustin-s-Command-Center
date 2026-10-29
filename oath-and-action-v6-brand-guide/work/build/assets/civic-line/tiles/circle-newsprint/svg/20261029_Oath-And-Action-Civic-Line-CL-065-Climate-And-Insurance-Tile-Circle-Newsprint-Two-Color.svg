@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-065-tile-circle-newsprint-two-color" data-id="CL-065" width="128" height="128" viewBox="0 0 128 128">
   <title>Climate &amp; Insurance</title>
-  <desc>Oath &amp; Action Civic Line CL-065 Climate &amp; Insurance: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-065 Climate &amp; Insurance: circle tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.5828 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-065-tile-circle-newsprint-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-065-tile-circle-newsprint-two-color-icon" data-part="icon" transform="matrix(0.5828 0 0 0.5828 26.7008 26.7008)">
+  <g id="oa-civic-line-cl-065-tile-circle-newsprint-two-color-base" data-part="base">
     <polyline points="7.891,78.7054 34.9577,57.1729 62.0244,78.7054" fill="none" stroke="#121212" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="14.851,73.1652 14.851,103.8025 55.0644,103.8025 55.0644,73.1652" fill="none" stroke="#121212" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="30.1123,103.8025 30.1123,82.2458 39.8031,82.2458 39.8031,103.8025" fill="none" stroke="#121212" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <line x1="71.534" y1="49.1375" x2="67.3471" y2="57.3542" fill="none" stroke="#121212" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <polygon points="82.5358,56.9615 119.819,56.9615 119.819,92.0152 108.7627,104.8296 82.5358,104.8296" fill="none" stroke="#121212" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-065-tile-circle-newsprint-two-color-accent" data-part="accent">
     <path d="M90.6136 78.7779 A10.452083 10.452083 0 1 1 111.4211 78.7779" fill="none" stroke="#E63946" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="90.7646" y1="77.4729" x2="111.27" y2="77.4729" fill="none" stroke="#E63946" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="101.0173" y1="67.3229" x2="101.0173" y2="66.1146" fill="none" stroke="#E63946" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-010" data-id="CL-010" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-010-black" data-id="CL-010" width="128" height="128" viewBox="0 0 128 128">
   <title>Decisive Primaries</title>
-  <desc>Oath &amp; Action Civic Line CL-010 Decisive Primaries. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-010 Decisive Primaries. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-010-black-base" data-part="base">
     <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,7 +12,7 @@
     <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-010-black-accent" data-part="accent">
     <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

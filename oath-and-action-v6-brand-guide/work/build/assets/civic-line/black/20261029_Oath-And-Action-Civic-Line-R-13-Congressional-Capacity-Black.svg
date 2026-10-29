@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-13" data-id="R-13" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-13-black" data-id="R-13" width="128" height="128" viewBox="0 0 128 128">
   <title>Congressional Capacity</title>
-  <desc>Oath &amp; Action Civic Line R-13 Congressional Capacity. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-13 Congressional Capacity. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 3. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-13-black-base" data-part="base">
     <circle cx="14.0689" cy="75.5438" r="3.1632" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M7.4564 88.8097 L7.4564 85.437 A6.310999 6.310999 0 0 1 20.0784 85.437 L20.0784 88.8097" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="30.8353" cy="72.7332" r="4.0115" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,7 +26,7 @@
     <line x1="101.1762" y1="69.8766" x2="101.1762" y2="82.9586" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M81.865 70.7709 L81.865 88.7841 L90.8282 88.7841 Q95.2484 88.7841 101.1762 92.4123 Q107.1039 88.7841 111.5242 88.7841 L120.4874 88.7841 L120.4874 70.7709" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-13-black-accent" data-part="accent">
     <path d="M85.9327 84.1339 L89.8062 84.1339 Q95.4784 84.1339 101.1762 87.6599 Q106.874 84.1339 112.5462 84.1339 L116.4197 84.1339" fill="none" stroke="#121212" stroke-width="2.8106" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-21-tile-square-newsprint-two-color" data-id="R-21" width="128" height="128" viewBox="0 0 128 128">
   <title>Labor-Law Remedies</title>
-  <desc>Oath &amp; Action Civic Line R-21 Labor-Law Remedies: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-21 Labor-Law Remedies: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-21-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-21-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-21-tile-square-newsprint-two-color-base" data-part="base">
     <path d="M16.6983 53.8865 A12.233604 13.707973 0 0 1 25.4897 39.8435" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M32.3254 39.8435 A12.233604 13.707973 0 0 1 41.1168 53.8865" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M25.4897 48.3424 L25.4897 39.1428 A1.218469 1.218469 0 0 1 26.7082 37.9244 L31.1069 37.9244 A1.218469 1.218469 0 0 1 32.3254 39.1428 L32.3254 48.3424" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -20,7 +20,7 @@
     <line x1="59.6561" y1="72.438" x2="74.2779" y2="72.438" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="57.5237" y1="92.0252" x2="84.0441" y2="92.0252" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-21-tile-square-newsprint-two-color-accent" data-part="accent">
     <circle cx="102.7784" cy="77.5922" r="16.7786" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="95.7294,77.3912 100.7983,82.3382 109.9126,72.2553" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

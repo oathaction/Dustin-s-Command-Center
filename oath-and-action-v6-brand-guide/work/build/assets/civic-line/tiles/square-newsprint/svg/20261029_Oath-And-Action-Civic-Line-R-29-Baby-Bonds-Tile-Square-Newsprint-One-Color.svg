@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-29-tile-square-newsprint-one-color" data-id="R-29" width="128" height="128" viewBox="0 0 128 128">
   <title>Baby Bonds</title>
-  <desc>Oath &amp; Action Civic Line R-29 Baby Bonds: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-29 Baby Bonds: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-29-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-29-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-29-tile-square-newsprint-one-color-base" data-part="base">
     <circle cx="33.0321" cy="60.6857" r="7.7008" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M22.5714 82.8256 C21.3407 83.6908 18.8246 85.5733 17.0882 83.2521 C16.5216 82.4966 15.9611 79.1824 17.5451 77.8908 C23.0283 73.4189 23.0405 70.2448 33.0321 70.2448 C43.0237 70.2448 43.0359 73.4189 48.5191 77.8908 C50.1031 79.1824 49.5426 82.4966 48.976 83.2521 C47.2397 85.5733 44.7235 83.6908 43.4928 82.8256" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="24.3565" y1="80.9065" x2="24.3565" y2="95.6015" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <path d="M77.2815 54.2216 L91.416 54.2216 A2.132352 2.132352 0 0 1 93.5483 56.354 L93.5483 56.9328 A2.132327 2.132327 0 0 1 91.416 59.0651 L77.2815 59.0651 A2.132327 2.132327 0 0 1 75.1492 56.9328 L75.1492 56.354 A2.132352 2.132352 0 0 1 77.2815 54.2216 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="105.4895" y1="59.126" x2="109.4496" y2="53.6429" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-29-tile-square-newsprint-one-color-accent" data-part="accent">
     <circle cx="82.7708" cy="40.1603" r="7.4023" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

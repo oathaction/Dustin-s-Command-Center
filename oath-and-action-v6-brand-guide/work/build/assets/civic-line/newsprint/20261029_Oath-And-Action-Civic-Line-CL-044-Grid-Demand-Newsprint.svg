@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-044" data-id="CL-044" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-044-newsprint" data-id="CL-044" width="128" height="128" viewBox="0 0 128 128">
   <title>Grid Demand</title>
-  <desc>Oath &amp; Action Civic Line CL-044 Grid Demand. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-044 Grid Demand. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-044-newsprint-base" data-part="base">
     <rect x="18.1849" y="28.7552" width="50.4454" height="22.7979" rx="3.7773" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="18.1849" y="51.5531" width="50.4454" height="22.7979" rx="3.7773" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="18.1849" y="74.3511" width="50.4454" height="22.7979" rx="3.7773" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,7 +17,7 @@
     <path d="M80.6933 67.3508 V50.1092 H110.1198 V67.3508 A14.713261 14.195403 0 0 1 95.4065 81.5462 A14.713236 14.195379 0 0 1 80.6933 67.3508 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="95.4065" y1="81.5462" x2="95.4065" y2="99.5798" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-044-newsprint-accent" data-part="accent">
     <rect x="57.5725" y="36.8886" width="4.3256" height="6.7017" rx="2.1628" fill="#DCD9D2"/>
     <rect x="57.5725" y="59.6866" width="4.3256" height="6.7017" rx="2.1628" fill="#DCD9D2"/>
     <rect x="57.5725" y="82.4845" width="4.3256" height="6.7017" rx="2.1628" fill="#DCD9D2"/>

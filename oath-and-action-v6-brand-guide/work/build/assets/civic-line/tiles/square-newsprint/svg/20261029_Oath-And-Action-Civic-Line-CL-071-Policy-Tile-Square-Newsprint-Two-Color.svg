@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-071-tile-square-newsprint-two-color" data-id="CL-071" width="128" height="128" viewBox="0 0 128 128">
   <title>Policy</title>
-  <desc>Oath &amp; Action Civic Line CL-071 Policy: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-071 Policy: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box and moved 1.564 units right. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-071-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-071-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 22.044 20.48)">
+  <g id="oa-civic-line-cl-071-tile-square-newsprint-two-color-base" data-part="base">
     <path d="M90.2462 69.1786 V30.3393 A2.436963 2.436963 0 0 0 87.8093 27.9023 H22.8273 A2.436988 2.436988 0 0 0 20.3903 30.3393 V97.7034 A2.436988 2.436988 0 0 0 22.8273 100.1404 H54.709" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="33.3855" y1="41.5494" x2="77.7689" y2="41.5494" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="33.3855" y1="55.1842" x2="77.7689" y2="55.1842" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,7 +12,7 @@
     <line x1="33.3855" y1="83.2277" x2="59.8876" y2="83.2277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="90.8859" y1="83.2277" x2="107.8656" y2="83.2277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-071-tile-square-newsprint-two-color-accent" data-part="accent">
     <circle cx="75.2101" cy="83.1912" r="8.5111" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

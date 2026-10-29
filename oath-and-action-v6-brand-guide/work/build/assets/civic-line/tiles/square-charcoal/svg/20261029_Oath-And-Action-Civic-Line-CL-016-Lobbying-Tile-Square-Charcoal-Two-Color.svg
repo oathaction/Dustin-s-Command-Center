@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-016-tile-square-charcoal-two-color" data-id="CL-016" width="128" height="128" viewBox="0 0 128 128">
   <title>Lobbying</title>
-  <desc>Oath &amp; Action Civic Line CL-016 Lobbying: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-016 Lobbying: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-016-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-016-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-016-tile-square-charcoal-two-color-accent" data-part="accent">
     <path d="M54.0571 68.4353 L55.2695 62.2454 A1.827744 1.827744 0 0 1 57.0607 60.771 L74.4546 60.771 A1.827739 1.827739 0 0 1 76.2458 62.9521 L75.1735 68.4353" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-016-tile-square-charcoal-two-color-base" data-part="base">
     <circle cx="32.3498" cy="39.5693" r="7.0611" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="96.3813" cy="39.5693" r="7.0611" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M20.6523 73.9916 V60.0277 A8.791395 8.791395 0 0 1 29.4437 51.2363 H30.7536 A11.25884 11.25884 0 0 1 42.0124 62.4952 V68.4353" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

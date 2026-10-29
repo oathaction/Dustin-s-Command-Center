@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-025" data-id="CL-025" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-025-newsprint" data-id="CL-025" width="128" height="128" viewBox="0 0 128 128">
   <title>Congress</title>
-  <desc>Oath &amp; Action Civic Line CL-025 Congress. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-025 Congress. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 1. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-025-newsprint-accent" data-part="accent">
     <line x1="68.9836" y1="81.8508" x2="68.9836" y2="102.0778" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-025-newsprint-base" data-part="base">
     <line x1="63.8172" y1="25.313" x2="63.8172" y2="33.5987" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="59.6134" y="33.5987" width="8.4076" height="5.9279" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M45.9115 56.2321 A17.948347 17.948347 0 0 1 81.6437 55.3853 L81.6437 61.6849" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

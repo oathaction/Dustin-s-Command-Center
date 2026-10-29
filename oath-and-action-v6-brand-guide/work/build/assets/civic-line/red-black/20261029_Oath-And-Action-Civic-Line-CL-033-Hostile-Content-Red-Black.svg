@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-033" data-id="CL-033" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-033-red-black" data-id="CL-033" width="128" height="128" viewBox="0 0 128 128">
   <title>Hostile Content</title>
-  <desc>Oath &amp; Action Civic Line CL-033 Hostile Content. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-033 Hostile Content. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 3. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-033-red-black-base" data-part="base">
     <path d="M31.6552 60.8624 L33.1296 69.7817 L42.8531 60.8624 L59.9242 60.8624 A7.493701 7.493701 0 0 0 67.4179 53.3687 L67.4179 36.2002 A7.493701 7.493701 0 0 0 59.9242 28.7065 L25.8613 28.7065 A7.493701 7.493701 0 0 0 18.3676 36.2002 L18.3676 53.3687 A7.493701 7.493701 0 0 0 25.8613 60.8624 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M73.5956 37.1567 L102.8576 37.1567 A3.655457 3.655457 0 0 1 106.513 40.8122 L106.513 91.3429" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="21.5418" y1="66.5284" x2="21.5418" y2="91.3429" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M54.2521 91.3429 L14.6512 91.3429 L14.6512 94.4256 A5.026282 5.026282 0 0 0 19.6775 99.4519 L108.3834 99.4519 A5.026282 5.026282 0 0 0 113.4097 94.4256 L113.4097 91.3429 L73.8088 91.3429 L71.4632 94.2185 L56.5977 94.2185 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-033-red-black-accent" data-part="accent">
     <line x1="35.201" y1="37.437" x2="32.8737" y2="51.876" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="41.854" y1="37.4674" x2="39.5389" y2="51.8151" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="30.8328" y1="41.5798" x2="44.2361" y2="41.5798" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

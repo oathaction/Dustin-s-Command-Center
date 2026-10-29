@@ -6,16 +6,17 @@ Runs, in order:
    1. apply_framing.py            DR-08 capped fit into the inventory, with export and tile names
    2. build_all.py                every icon: four bare editions as SVG and PNG, QA images, metrics
    3. build_tiles.py              DR-10 tiles: 1,464 SVGs and 2,928 PNGs, ink margins
-   4. contact_sheets.py           ten dark and ten light contact sheets, sheet compares
-   5. tile_sheets.py              twelve tile overview sheets
-   6. tile_calibration.py         the tile factor calibration board
-   7. record_sheets.py            pillar side by side (DR-04) and the size ladder
-   8. build_catalog.py            the catalog page
-   9. check_catalog.py            axe-core, scroll, screenshots and controls on the page
-  10. verify_set.py --sync-inventory   editions, tiles, sheets, counts, contrast, ledger
-  11. write_fidelity.py           the fidelity metrics CSV
-  12. tests/civic-line/test_pipeline.py   the pipeline tests, in a temporary tree
-  13. make_package.py             the final package in deliverables/
+   4. check_inline_ids.py         the inline-id test in Chromium (M-2) for every masked icon
+   5. contact_sheets.py           ten dark and ten light contact sheets, sheet compares
+   6. tile_sheets.py              twelve tile overview sheets
+   7. tile_calibration.py         the tile factor calibration board
+   8. record_sheets.py            pillar side by side (DR-04) and the size ladder
+   9. build_catalog.py            the catalog page
+  10. check_catalog.py            axe-core, scroll, screenshots and controls on the page
+  11. verify_set.py --sync-inventory   editions, tiles, ids, sheets, counts, contrast, ledger
+  12. write_fidelity.py           the fidelity metrics CSV
+  13. tests/civic-line/test_pipeline.py   the pipeline tests, in a temporary tree
+  14. make_package.py             the final package in deliverables/
 It stops at the first failing step unless --keep-going is given, and prints a
 summary with each step's exit code. It never edits src/ or the status files.
 """
@@ -26,7 +27,7 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TESTS = os.path.abspath(os.path.join(HERE, "..", "..", "tests", "civic-line", "test_pipeline.py"))
-STEPS = [["apply_framing.py"], ["build_all.py"], ["build_tiles.py"], ["contact_sheets.py"], ["tile_sheets.py"],
+STEPS = [["apply_framing.py"], ["build_all.py"], ["build_tiles.py"], ["check_inline_ids.py"], ["contact_sheets.py"], ["tile_sheets.py"],
          ["tile_calibration.py"], ["record_sheets.py"], ["build_catalog.py"], ["check_catalog.py"],
          ["verify_set.py", "--sync-inventory"], ["write_fidelity.py"], [TESTS], ["make_package.py"]]
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-026" data-id="CL-026" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-026-red-black" data-id="CL-026" width="128" height="128" viewBox="0 0 128 128">
   <title>Executive Power</title>
-  <desc>Oath &amp; Action Civic Line CL-026 Executive Power. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-026 Executive Power. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-026-red-black-base" data-part="base">
     <circle cx="67.82" cy="36.4622" r="8.0359" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M49.4147 66.9244 V59.2723 A10.028178 10.028178 0 0 1 59.4429 49.2441 H76.459 A8.919355 8.919355 0 0 1 84.1843 53.7038 L84.562 55.6534" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="26.2878,74.1135 26.2878,66.9244 59.2479,66.9244 59.2479,74.1135" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,7 +12,7 @@
     <line x1="91.416" y1="63.1471" x2="104.4355" y2="63.1471" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="91.416" y1="69.8244" x2="104.4355" y2="69.8244" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-026-red-black-accent" data-part="accent">
     <path d="M65.8582 52.1807 C66.1933 51.876 69.4832 51.876 69.8183 52.1807 L70.2448 53.7647 L69.605 55.7143 L71.7374 66.1933 L71.4328 67.3508 L70.1534 68.5693 L68.874 69.7269 L67.8382 70.3971 L66.8025 69.7269 L65.5231 68.5693 L64.2437 67.3508 L63.9391 66.1933 L66.0714 55.7143 L65.4317 53.7647 Z" fill="#E63946"/>
     <polyline points="90.6849,84.4706 94.4622,78.6219 96.4727,84.6534 99.0925,82.2773 104.6975,82.2773" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

@@ -4,13 +4,17 @@
 
 Writes assets/civic-line/<date>_Civic-Line-Icon-Catalog.html, following the
 Artifact page contract: no doctype, html, head or body tags; the file opens
-with its <title>, the viewport-fit-sides meta and the <style>. Colours exist
+with its <title>, the viewport-fit-sides meta and the <style>. Colors exist
 only as CSS tokens. Icons are inlined once, from the red-black exports, with
-their colours turned into tokens, so one copy serves all four editions: each
-edition sets the ink and accent tokens to the colours its export files carry
-(DR-09). The three tile shapes are drawn once as SVG symbols and referenced by
-every card (DR-10). Reference crops are the untouched PNG files, embedded byte
-for byte as data URIs.
+their colors turned into tokens, so one copy serves all four editions: each
+edition sets the ink and accent tokens to the colors its export files carry
+(DR-09). Stroke widths read a --k token (1 by default), so a tile can hold its
+line at the set's cap the way the tile files do (variant review S-1). The
+three tile shapes are drawn once as SVG symbols and referenced by every card
+(DR-10); in a holder each card scales its icon by the shape factor times its
+optical scale and moves it by its optical offset (S-1, S-2), and a card whose
+tile sits below the icon's minimum tile size says so (M-1). Reference crops
+are the untouched PNG files, embedded byte for byte as data URIs.
 """
 import base64
 import html
@@ -57,7 +61,7 @@ def tokens(d, indent="  "):
 
 def tokenise_colours(svg):
     """Move each element's fill and stroke colors into one style attribute that
-    reads the color tokens."""
+    reads the color tokens, and its stroke width into a calc() that reads --k."""
     def fix(m):
         tag = m.group(0)
         style = []
@@ -70,6 +74,10 @@ def tokenise_colours(svg):
                 raise SystemExit(f"unexpected color {v} in an export")
             style.append(f"{prop}:{COLOR_TOKENS[v]}")
             tag = tag.replace(mm.group(0), "", 1)
+        mm = re.search(r' stroke-width="([^"]+)"', tag)
+        if mm:
+            style.append(f"stroke-width:calc({mm.group(1)}px * var(--k, 1))")
+            tag = tag.replace(mm.group(0), "", 1)
         if style:
             tag = re.sub(r"(/?>)$", f' style="{";".join(style)}"\\1', tag, count=1)
         return tag
@@ -77,17 +85,25 @@ def tokenise_colours(svg):
 
 
 def icon_inner(row):
-    """Inner markup of the red-black export with ids prefixed by a __P__ marker."""
+    """Inner markup of the red-black export with the file's root id replaced by
+    a __P__ marker, so each inline copy can take its own prefix."""
     p = os.path.join(C.ASSETS, "red-black", row["exports"]["svg_red_black"])
     if not os.path.exists(p):
         return None
     s = open(p, encoding="utf-8").read().split("?>", 1)[-1]
     s = re.sub(r"<title>.*?</title>|<desc>.*?</desc>", "", s, flags=re.S)
     inner = s[s.index(">", s.index("<svg")) + 1:s.rindex("</svg>")].strip()
-    inner = re.sub(r'id="([^"]+)"', r'id="__P__\1"', inner)
-    inner = inner.replace("url(#", "url(#__P__")
+    inner = inner.replace(C.bare_root(row["id"], "red-black") + "-", "__P__")
+    if re.search(r'id="(?!__P__)', inner) or re.search(r"url\(#(?!__P__)", inner):
+        raise SystemExit(f"{row['id']}: an id in the export does not start with its root id")
     inner = re.sub(r">\s+<", "><", inner)
     return tokenise_colours(inner)
+
+
+def nb(label):
+    """Keep a middle-dot separator with the word after it, so a wrapped label
+    starts its second line with the separator (variant review S-7)."""
+    return label.replace(" · ", " ·\u00a0")
 
 
 def data_uri(path):
@@ -112,8 +128,10 @@ def gather():
         t = r["transform"]
         sc = t["s"]
         ed = (m.get("edge_distance_px") or {}).get("symmetric") or {}
+        a, dx, kk = C.tile_optics(i, r["stroke_units"])
         icons.append({
-            "id": i, "label": r["label"], "slug": r["slug"], "sheet": r["sheet"], "row": r["row"], "col": r["column"],
+            "id": i, "label": r["label"], "labelNb": nb(r["label"]), "slug": r["slug"], "sheet": r["sheet"], "row": r["row"], "col": r["column"],
+            "a": a, "dx": dx, "sk": round(kk, 6), "min": C.tile_min_px(i),
             "w": r["crop"]["w"], "h": r["crop"]["h"],
             "vb": f"{64 - sc * t['cx']:.4f} {64 - sc * t['cy']:.4f} {r['crop']['w'] * sc:.4f} {r['crop']['h'] * sc:.4f}",
             "svg": inner,
@@ -154,11 +172,14 @@ def card(ic):
             f'<g class="glyph">{ic["svg"].replace("__P__", "g-" + ic["id"].lower() + "-")}</g></svg>'
             if ic["svg"] else '<span class="pending">Not traced yet</span>')
     label = html.escape(ic["label"])
+    shown = html.escape(ic["labelNb"])
     hay = html.escape(f'{ic["id"]} {ic["label"]} {ic["slug"]}'.lower())
-    return (f'<li class="cell" data-id="{ic["id"]}" data-sheet="{ic["sheet"]}" data-hay="{hay}">'
+    optics = f'--a:{ic["a"]:g};--dx:{ic["dx"]:g};--tk:{ic["sk"]:g}'
+    return (f'<li class="cell" data-id="{ic["id"]}" data-sheet="{ic["sheet"]}" data-hay="{hay}" style="{optics}">'
             f'<button type="button" class="card" data-open="{ic["id"]}" aria-label="{ic["id"]} {label}, open details">'
             f'<span class="tile">{tile}</span>'
-            f'<span class="cid">{ic["id"]}</span><span class="cname">{label}</span></button></li>')
+            f'<span class="cid">{ic["id"]}</span><span class="cname">{shown}</span>'
+            f'<span class="minnote" hidden></span></button></li>')
 
 
 CSS = """
@@ -215,7 +236,8 @@ input[type="search"] { width: min(280px, 100%); }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 .seg label { position: relative; }
 .seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.seg span { display: block; padding: 8px 12px; min-height: 38px; font-size: 14px; font-variant-numeric: tabular-nums; color: var(--text); border-left: 1px solid var(--line); cursor: pointer; }
+.seg span { display: block; padding: 8px 12px; min-height: 38px; font-size: 14px; font-variant-numeric: tabular-nums; color: var(--text); border-left: 1px solid var(--line); cursor: pointer; white-space: nowrap; }
+.seg { max-width: 100%; flex-wrap: wrap; }
 .seg label:first-child span { border-left: 0; }
 .seg input:checked + span { background: var(--accent); color: var(--on-accent); }
 .seg input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: -3px; }
@@ -242,6 +264,7 @@ main:not([data-holder="none"]) .tile { background: var(--stage); }
 .hold { display: none; fill: var(--holder-fill); }
 main[data-holder="square"] .h-square, main[data-holder="rounded"] .h-rounded, main[data-holder="circle"] .h-circle { display: inline; }
 .glyph { transform-origin: 64px 64px; transform: scale(var(--f, 1)); }
+main:not([data-holder="none"]) .glyph { --k: var(--tk, 1); transform: translate(calc(var(--f) * var(--dx, 0) * 1px), 0px) scale(calc(var(--f) * var(--a, 1))); }
 main[data-holder="square"] { --f: __F_SQUARE__; }
 main[data-holder="rounded"] { --f: __F_ROUNDED__; }
 main[data-holder="circle"] { --f: __F_CIRCLE__; }
@@ -258,12 +281,15 @@ main[data-holder="circle"] { --f: __F_CIRCLE__; }
 .spec { margin: 0; display: grid; gap: 6px; justify-items: start; min-width: 0; }
 .spec .stage { width: 120px; height: 120px; display: grid; place-items: center; border-radius: 6px; background: var(--card-ground); }
 .spec.on-stage .stage { background: var(--stage); }
+.spec.on-prussian .stage { background: var(--prussian); }
 .spec svg { width: 96px; height: 96px; display: block; }
 .spec .hold { display: inline; }
 .spec figcaption { font-size: 13px; color: var(--muted); line-height: 1.35; }
 .pending { font-size: 13px; color: var(--charcoal); padding: 8px; text-align: center; }
 .cid { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--muted); }
-.cname { font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
+.cname { font-size: 14px; line-height: 1.3; overflow-wrap: normal; hyphens: manual; }
+.minnote { font-size: 12px; line-height: 1.3; color: var(--muted); }
+.minnote[hidden] { display: none; }
 .empty { margin: 40px 0; font-size: 15px; }
 .empty button { font: inherit; color: var(--text); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 .notes { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--hair); display: grid; gap: 12px; max-width: 72ch; font-size: 14px; }
@@ -305,6 +331,9 @@ ol.corr .why { color: var(--muted); display: block; }
   .count { margin-left: 0; width: 100%; }
   .seg span { padding: 8px 10px; }
 }
+@media (max-width: 400px) {
+  .seg span { padding: 8px 8px; font-size: 13px; }
+}
 """
 
 JS = r"""
@@ -318,7 +347,7 @@ JS = r"""
   var countEl = document.getElementById('count');
   var empty = document.getElementById('empty');
   var cells = Array.prototype.slice.call(document.querySelectorAll('.cell'));
-  var sizes = { '24': 96, '32': 100, '48': 104, '64': 128, '128': 168 };
+  var sizes = { '24': 124, '32': 124, '48': 124, '64': 128, '128': 168 };   // 124 px holds the widest label word, Emergency-Power, on one line
   var lastOpener = null, current = null, visibleIds = [];
 
   function store(k, v) { try { localStorage.setItem('civic-line-' + k, v); } catch (e) {} }
@@ -326,13 +355,31 @@ JS = r"""
   function edition() { return document.querySelector('input[name="edition"]:checked').value; }
   function setEdition(v) {
     main.setAttribute('data-edition', v); dlg.setAttribute('data-edition', v); store('edition', v);
+    markMin();
     if (dlg.open && current) render(current);
   }
-  function setHolder(v) { main.setAttribute('data-holder', v); store('holder', v); }
+  function setHolder(v) { main.setAttribute('data-holder', v); store('holder', v); markMin(); }
   function setSize(v) {
     main.style.setProperty('--icon-size', v + 'px');
-    main.style.setProperty('--card-min', (sizes[v] || 104) + 'px');
+    main.style.setProperty('--card-min', (sizes[v] || 112) + 'px');
     store('size', v);
+    markMin();
+  }
+  // M-1: a tile shown below the icon's minimum tile size says so on its card
+  function markMin() {
+    var hEl = document.querySelector('input[name="holder"]:checked'), sEl = document.querySelector('input[name="size"]:checked');
+    if (!hEl || !sEl) return;
+    var h = hEl.value, px = Number(sEl.value), ed = edition();
+    var mode = (ed === 'red-black' || ed === 'red-newsprint') ? 'two-color' : 'one-color';
+    cells.forEach(function (c) {
+      var ic = byId[c.getAttribute('data-id')], note = c.querySelector('.minnote'), b = c.querySelector('.card');
+      var min = h === 'none' || !ic ? 0 : ic.min[mode][h];
+      var below = min > 0 && px < min;
+      c.classList.toggle('below-min', below);
+      note.hidden = !below;
+      note.textContent = below ? 'Below the tile minimum (' + min + ' px)' : '';
+      b.setAttribute('aria-label', ic.id + ' ' + ic.label + (below ? ', tile below its ' + min + ' px minimum' : '') + ', open details');
+    });
   }
   function apply() {
     var term = q.value.trim().toLowerCase(), sh = sheetSel.value, n = 0;
@@ -360,20 +407,24 @@ JS = r"""
   function glyph(ic, pre) { return ic.svg.split('__P__').join(pre); }
   function variants(ic) {
     if (!ic.svg) return '';
-    var base = ic.id.toLowerCase(), out = '<section class="variants"><h3>The four editions, 96 px, each on its ground</h3><ul class="spec-grid">';
-    EDS.forEach(function (e) {
-      out += '<li><figure class="spec ed-' + e[0] + '"><div class="stage"><svg viewBox="0 0 128 128" role="img" aria-label="' + esc(ic.label) + ', ' + e[1] + ' edition">' +
-        glyph(ic, 'v-' + e[0] + '-' + base + '-') + '</svg></div><figcaption>' + e[1] + '</figcaption></figure></li>';
+    var base = ic.id.toLowerCase(), out = '<section class="variants"><h3>The four editions, 96 px, each on its ground, and Newsprint on Prussian</h3><ul class="spec-grid">';
+    EDS.concat([['newsprint', 'Newsprint on Prussian', 'prussian']]).forEach(function (e) {
+      var cls = 'spec ed-' + e[0] + (e[2] ? ' on-prussian' : ''), key = e[2] || e[0];
+      out += '<li><figure class="' + cls + '"><div class="stage"><svg viewBox="0 0 128 128" role="img" aria-label="' + esc(ic.label) + ', ' + e[1] + (e[2] ? '' : ' edition') + '">' +
+        glyph(ic, 'v-' + key + '-' + base + '-') + '</svg></div><figcaption>' + e[1] + '</figcaption></figure></li>';
     });
     out += '</ul><h3>The twelve tiles, 96 px</h3>';
     SHAPES.forEach(function (sh) {
-      var f = data.factors[sh[0]], t = (64 * (1 - f)).toFixed(4);
-      out += '<div class="tile-row"><p class="row-label">' + sh[1] + ', icon at ' + f + '</p><ul class="spec-grid four">';
+      var f = data.factors[sh[0]], fa = f * ic.a, tx = (64 * (1 - fa) + f * ic.dx).toFixed(4), t = (64 * (1 - fa)).toFixed(4);
+      var at = ic.a === 1 ? String(f) : (Math.round(fa * 1000) / 1000) + ' (' + f + ' times optical scale ' + ic.a + ')';
+      var mins = ic.min['two-color'][sh[0]] + ' px two-color, ' + ic.min['one-color'][sh[0]] + ' px one-color';
+      out += '<div class="tile-row"><p class="row-label">' + sh[1] + ', icon at ' + at + (ic.dx ? ', moved ' + Math.abs(Math.round(f * ic.dx * 100) / 100) + ' units ' + (ic.dx > 0 ? 'right' : 'left') : '') +
+        '. Smallest size ' + mins + '.</p><ul class="spec-grid four">';
       TILES.forEach(function (tl) {
         var cap = (tl[0] === 'charcoal' ? 'Charcoal' : 'Newsprint') + ', ' + tl[1];
         out += '<li><figure class="spec on-stage ed-' + tl[2] + '"><div class="stage"><svg viewBox="0 0 128 128" role="img" aria-label="' + esc(ic.label) + ' tile: ' + sh[1] + ', ' + cap + '">' +
           '<use class="hold" href="#h-' + sh[0] + '" x="0" y="0" width="128" height="128"/>' +
-          '<g transform="matrix(' + f + ' 0 0 ' + f + ' ' + t + ' ' + t + ')">' + glyph(ic, 't-' + sh[0] + '-' + tl[0] + '-' + tl[1] + '-' + base + '-') + '</g></svg></div>' +
+          '<g transform="matrix(' + fa + ' 0 0 ' + fa + ' ' + tx + ' ' + t + ')" style="--k:' + ic.sk + '">' + glyph(ic, 't-' + sh[0] + '-' + tl[0] + '-' + tl[1] + '-' + base + '-') + '</g></svg></div>' +
           '<figcaption>' + cap + '</figcaption></figure></li>';
       });
       out += '</ul></div>';
@@ -393,7 +444,7 @@ JS = r"""
       : '<p class="small">No corrections logged.</p>';
     var pos = visibleIds.indexOf(ic.id);
     document.getElementById('dlg-body').innerHTML =
-      '<div class="dlg-head"><div><h2 id="dlg-title">' + ic.id + ' ' + esc(ic.label) + '</h2>' +
+      '<div class="dlg-head"><div><h2 id="dlg-title">' + ic.id + ' ' + esc(ic.labelNb) + '</h2>' +
       '<p>Sheet ' + ic.sheet + ', row ' + ic.row + ', column ' + ic.col + ' &middot; crop ' + ic.w + ' &times; ' + ic.h + ' px &middot; shown at ' + z + 'x &middot; <span class="chip">' + ic.state + '</span></p></div>' +
       '<div class="dlg-nav"><button type="button" class="btn" data-step="-1"' + (pos <= 0 ? ' disabled' : '') + '>Previous</button>' +
       '<button type="button" class="btn" data-step="1"' + (pos < 0 || pos >= visibleIds.length - 1 ? ' disabled' : '') + '>Next</button>' +
@@ -415,7 +466,7 @@ JS = r"""
       '<dt>Builds</dt><dd>' + ic.builds + '</dd><dt>Tracer</dt><dd>' + (esc(ic.tracer) || 'none yet') + '</dd></dl>' +
       '<p class="small" style="margin-top:8px">IoU compares two shapes: 1 means identical. Edge distance is how far the trace\'s edges sit from the reference\'s, in source pixels.</p></section>' +
       '<section><h3>Corrections logged by the tracer</h3>' + corr + (ic.notes ? '<p class="prose" style="margin-top:8px">' + esc(ic.notes) + '</p>' : '') + '</section>' +
-      '<section><h3>Catalogue description</h3><p class="prose"><b>Construction:</b> ' + esc(ic.construction) + '</p><p class="prose" style="margin-top:8px"><b>Accent:</b> ' + esc(ic.redText) + '</p></section></div>';
+      '<section><h3>Catalog description</h3><p class="prose"><b>Construction:</b> ' + esc(ic.construction) + '</p><p class="prose" style="margin-top:8px"><b>Accent:</b> ' + esc(ic.redText) + '</p></section></div>';
   }
   function open(id, opener) {
     var ic = byId[id]; if (!ic) return;
@@ -523,7 +574,8 @@ def build():
 <h2>About these files</h2>
 <p>Each icon is a traced reconstruction: a clean vector drawing measured against the source sheet, with one line weight across the set. It is not a pixel copy. The reference crops in the detail view are the untouched source pixels, shown for comparison.</p>
 <p>Four editions share every coordinate. Red-black and black draw in Charcoal for Newsprint and White grounds; red-newsprint and newsprint draw in Newsprint for Charcoal grounds, and newsprint alone also serves Prussian, where red never sits. Pillar Red on Newsprint measures 2.96:1, under the 3:1 guideline for graphics, so the red parts carry emphasis and never the only meaning.</p>
-<p>The holders are a square, a rounded square drawn as a continuous-curvature superellipse, and a circle. A Charcoal tile carries the light editions and a Newsprint tile the dark ones. In a tile the icon scales by {C.TILE_FACTORS["square"]:g} (square), {C.TILE_FACTORS["rounded"]:g} (rounded) or {C.TILE_FACTORS["circle"]:g} (circle).</p>
+<p>The holders are a square, a rounded square drawn as a continuous-curvature superellipse, and a circle. A Charcoal tile carries the light editions and a Newsprint tile the dark ones. In a tile the icon scales by {C.TILE_FACTORS["square"]:g} (square), {C.TILE_FACTORS["rounded"]:g} (rounded) or {C.TILE_FACTORS["circle"]:g} (circle), times an optical scale between 0.94 and 1.09 for the {len(C.TILE_OPTICAL_SCALE)} icons that read small or large, and {len(C.TILE_OFFSET_X)} icons move a little toward their light side.</p>
+<p>A two-color tile needs at least 72 px (square), 76 px (rounded) or 80 px (circle). A one-color tile needs 48, 52 or 52 px, or 72, 76 or 80 px for the 28 icons that need 48 px on their own. With a holder on, a card whose tile sits below its minimum says so.</p>
 <p>The icons read best from 48 px up. At 24 px the stroke is about half a pixel wide. R-35 records an option the atlas rejected, so its name stays "Term Limits · Rejected".</p>
 <p>The sheets were supplied by Dustin Cathcart, and the studio traced them under decision DR-02.</p>
 </footer>

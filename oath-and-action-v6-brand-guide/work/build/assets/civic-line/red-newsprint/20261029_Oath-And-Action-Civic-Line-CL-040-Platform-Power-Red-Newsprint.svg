@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-040" data-id="CL-040" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-040-red-newsprint" data-id="CL-040" width="128" height="128" viewBox="0 0 128 128">
   <title>Platform Power</title>
-  <desc>Oath &amp; Action Civic Line CL-040 Platform Power. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-040 Platform Power. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-040-red-newsprint-base" data-part="base">
     <circle cx="64.0609" cy="38.4118" r="12.8246" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M54.776 47.2641 L30.4428 59.0529 A3.960087 3.960087 0 0 0 28.2069 62.617 L28.2069 68.9166" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M73.3458 47.2641 L97.679 59.0529 A3.960087 3.960087 0 0 1 99.9149 62.617 L99.9149 68.9166" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <circle cx="99.988" cy="81.8996" r="6.3361" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M88.845 100.9263 A11.19179 11.19179 0 1 1 111.1311 100.9263" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-040-red-newsprint-accent" data-part="accent">
     <circle cx="64.0609" cy="38.4422" r="4.813" fill="#E63946"/>
   </g>
 </svg>

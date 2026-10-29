@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-049-tile-square-newsprint-two-color" data-id="CL-049" width="128" height="128" viewBox="0 0 128 128">
   <title>Wealth Concentration</title>
-  <desc>Oath &amp; Action Civic Line CL-049 Wealth Concentration: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-049 Wealth Concentration: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box and moved 2.04 units left. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-049-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-049-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 18.44 20.48)">
+  <g id="oa-civic-line-cl-049-tile-square-newsprint-two-color-base" data-part="base">
     <ellipse cx="28.8162" cy="76.849" rx="12.3372" ry="5.2395" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.479 84.894 A12.3372 5.239502 0 0 0 41.1534 84.894" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.479 92.9391 A12.3372 5.239502 0 0 0 41.1534 92.9391" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,7 +28,7 @@
     <line x1="81.6072" y1="37.1933" x2="81.6072" y2="92.9391" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="111.4296" y1="37.1933" x2="111.4296" y2="92.9391" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-049-tile-square-newsprint-two-color-accent" data-part="accent">
     <path d="M81.6072 37.1933 V34.9269 A14.911199 5.239482 0 0 1 111.4296 34.9269 V37.1933" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
   </g>

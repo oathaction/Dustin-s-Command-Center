@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-024-tile-square-charcoal-two-color" data-id="CL-024" width="128" height="128" viewBox="0 0 128 128">
   <title>Feedback Loop</title>
-  <desc>Oath &amp; Action Civic Line CL-024 Feedback Loop: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-024 Feedback Loop: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-024-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-024-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-024-tile-square-charcoal-two-color-base" data-part="base">
     <rect x="18.9921" y="53.2651" width="23.1513" height="23.1513" rx="1.2185" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="85.4667" y="53.2773" width="23.1513" height="23.1513" rx="1.2185" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-024-tile-square-charcoal-two-color-accent" data-part="accent">
     <path d="M33.1113 46.204 A33.25253 33.25253 0 0 1 90.6361 45.3023 L92.0861 46.6975" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="81.8996,46.1248 92.0861,46.6975 93.7433,38.4849" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M91.9704 82.6672 A34.428381 34.428381 0 0 1 33.7815 82.9475" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

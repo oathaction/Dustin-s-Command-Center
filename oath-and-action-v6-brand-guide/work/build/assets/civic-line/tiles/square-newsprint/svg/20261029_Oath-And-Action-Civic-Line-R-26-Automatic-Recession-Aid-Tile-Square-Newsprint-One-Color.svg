@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-26-tile-square-newsprint-one-color" data-id="R-26" width="128" height="128" viewBox="0 0 128 128">
   <title>Automatic Recession Aid</title>
-  <desc>Oath &amp; Action Civic Line R-26 Automatic Recession Aid: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-26 Automatic Recession Aid: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-26-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-26-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-26-tile-square-newsprint-one-color-base" data-part="base">
     <polyline points="12.6407,75.5147 36.7059,54.5567 60.771,75.5147" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="17.4416" y1="71.3353" x2="17.4416" y2="93.5179" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="55.9702" y1="71.3353" x2="55.9702" y2="93.5179" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -17,7 +17,7 @@
     <path d="M95.2847 75.7523 A10.223106 4.264705 0 0 0 105.5078 80.017 A10.223106 4.264705 0 0 0 115.7309 75.7523" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M95.2847 82.6368 A10.223106 4.264705 0 0 0 105.5078 86.9015 A10.223106 4.264705 0 0 0 115.7309 82.6368" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-26-tile-square-newsprint-one-color-accent" data-part="accent">
     <polyline points="26.0015,33.4586 46.8985,53.0702 60.2958,42.4328 82.5027,64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="73.2422,64.2437 82.5027,64.2437 82.5027,54.9832" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

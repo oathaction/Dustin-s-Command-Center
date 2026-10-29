@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-051-tile-square-charcoal-two-color" data-id="CL-051" width="128" height="128" viewBox="0 0 128 128">
   <title>Market Power</title>
-  <desc>Oath &amp; Action Civic Line CL-051 Market Power: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-051 Market Power: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box and moved 2.04 units right. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-051-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-051-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 22.52 20.48)">
+  <g id="oa-civic-line-cl-051-tile-square-charcoal-two-color-base" data-part="base">
     <line x1="10.6912" y1="98.7878" x2="117.3698" y2="98.7878" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="17.4842,98.7878 17.4842,38.5519 56.5124,38.5519 56.5124,98.7878" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="25.0693,38.5519 25.0693,28.6151 41.458,28.6151 41.458,38.5519" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -15,7 +15,7 @@
     <polyline points="91.5927,98.7878 91.5927,75.7158 110.266,75.7158 110.266,98.7878" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="99.2143,83.2521 102.7479,83.2521 102.7479,87.4864" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-051-tile-square-charcoal-two-color-accent" data-part="accent">
     <rect x="25.9101" y="46.6365" width="7.4328" height="7.4328" rx="1.2185" fill="#E63946"/>
     <rect x="40.6538" y="46.6365" width="7.4328" height="7.4328" rx="1.2185" fill="#E63946"/>
     <rect x="25.9101" y="60.0095" width="7.4328" height="7.4328" rx="1.2185" fill="#E63946"/>

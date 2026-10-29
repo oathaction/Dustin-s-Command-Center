@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-058" data-id="CL-058" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-058-black" data-id="CL-058" width="128" height="128" viewBox="0 0 128 128">
   <title>Stock Ownership</title>
-  <desc>Oath &amp; Action Civic Line CL-058 Stock Ownership. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-058 Stock Ownership. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-058-black-accent" data-part="accent">
     <rect x="109.1671" y="43.3811" width="6.377" height="42.6346" fill="#121212" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="53.0377" cy="72.5937" r="6.1948" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-058-black-base" data-part="base">
     <path d="M49.1811 85.4691 H10.0812 A2.186369 2.186369 0 0 1 7.8949 83.2827 V38.4375 A2.186369 2.186369 0 0 1 10.0812 36.2511 H65.2875 A2.186394 2.186394 0 0 1 67.4739 38.4375 V83.2827 A2.186394 2.186394 0 0 1 65.2875 85.4691 H56.8942" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="18.9786" y1="47.2255" x2="56.4995" y2="47.2255" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="18.9786" y1="57.8599" x2="56.4995" y2="57.8599" fill="none" stroke="#121212" stroke-width="3.3403" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-30-tile-circle-newsprint-one-color" data-id="R-30" width="128" height="128" viewBox="0 0 128 128">
   <title>By-Right Housing</title>
-  <desc>Oath &amp; Action Civic Line R-30 By-Right Housing: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="accent-1">
+  <desc>Oath &amp; Action Civic Line R-30 By-Right Housing: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-30-tile-circle-newsprint-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-30-tile-circle-newsprint-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-30-tile-circle-newsprint-one-color-accent-1" data-part="accent">
     <path d="M52.4376 84.982 L52.4376 72.9256 A1.074087 1.074087 0 0 1 53.5117 71.8515 L59.4191 71.8515 A1.074062 1.074062 0 0 1 60.4931 72.9256 L60.4931 84.982 Z" fill="#121212"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-r-30-tile-circle-newsprint-one-color-base" data-part="base">
     <polyline points="11.6228,84.982 11.6228,61.6907 26.6598,46.9544 41.6217,61.6156" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="41.6217,84.982 41.6217,55.9713 56.4654,41.1276 71.3091,55.9713 71.3091,84.982" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7.5413" y1="84.982" x2="72.2167" y2="84.982" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
@@ -20,7 +20,7 @@
     <line x1="85.4815" y1="57.5663" x2="95.0139" y2="57.5663" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="85.4815" y1="65.6111" x2="90.4491" y2="65.6111" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent-2">
+  <g id="oa-civic-line-r-30-tile-circle-newsprint-one-color-accent-2" data-part="accent">
     <circle cx="108.0585" cy="74.2789" r="12.3626" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="102.9889,74.8428 106.7804,77.9522 113.3752,70.713" fill="none" stroke="#121212" stroke-width="2.9537" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-12" data-id="R-12" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-12-newsprint" data-id="R-12" width="128" height="128" viewBox="0 0 128 128">
   <title>Filibuster Reform</title>
-  <desc>Oath &amp; Action Civic Line R-12 Filibuster Reform. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-12 Filibuster Reform. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-12-newsprint-base" data-part="base">
     <path d="M21.2676 37.0714 L42.3231 37.0714 A7.310914 7.310914 0 0 1 49.634 44.3823 L49.634 51.9126 A7.310914 7.310914 0 0 1 42.3231 59.2235 L21.2676 59.2235 A7.310914 7.310914 0 0 1 13.9567 51.9126 L13.9567 44.3823 A7.310914 7.310914 0 0 1 21.2676 37.0714 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="36.584,59.2235 32.2584,64.8529 32.2584,59.2235" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M85.2504 35.5118 L106.3059 35.5118 A7.310914 7.310914 0 0 1 113.6168 42.8227 L113.6168 50.3529 A7.310939 7.310939 0 0 1 106.3059 57.6639 L95.9244 57.6639 L88.3088 64.8529 L87.2731 57.6639 L85.2504 57.6639 A7.310939 7.310939 0 0 1 77.9395 50.3529 L77.9395 42.8227 A7.310914 7.310914 0 0 1 85.2504 35.5118 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,7 +12,7 @@
     <polyline points="98.2883,92.1714 98.2883,73.6017 79.1397,73.6017" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="87.791" y1="73.6017" x2="87.791" y2="92.1714" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-12-newsprint-accent" data-part="accent">
     <path d="M57.1155 66.7721 L57.1155 64.1828 A6.73215 6.73215 0 0 1 70.5798 64.1828 L70.5798 72.834" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
     <path d="M54.1912 70.3971 L72.834 70.3971 A1.218469 1.218469 0 0 1 74.0525 71.6155 L74.0525 84.8666 A1.218494 1.218494 0 0 1 72.834 86.0851 L54.1912 86.0851 A1.218494 1.218494 0 0 1 52.9727 84.8666 L52.9727 71.6155 A1.218469 1.218469 0 0 1 54.1912 70.3971 Z M62.0443 83.0693 L62.0443 78.5 A2.315134 2.315134 0 1 1 64.8834 78.5 L64.8834 83.0693 Z" fill="#DCD9D2" fill-rule="evenodd"/>
   </g>

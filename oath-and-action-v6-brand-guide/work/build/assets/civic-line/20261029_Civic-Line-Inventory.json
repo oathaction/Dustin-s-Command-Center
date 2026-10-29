@@ -153,7 +153,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-001-Voting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-002",
@@ -293,7 +314,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-002-Representation-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-002-Representation-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-002-Representation-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-003",
@@ -433,7 +475,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-003-Registration-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-003-Registration-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-003-Registration-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-004",
@@ -573,7 +636,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-004-Petition-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.04,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.961538,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7072,
+        "rounded": 0.6864,
+        "circle": 0.6448
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-005",
@@ -713,7 +797,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-006",
@@ -853,7 +958,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-007",
@@ -993,7 +1119,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-007-Turnout-Equality-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-007-Turnout-Equality-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-007-Turnout-Equality-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-008",
@@ -1133,7 +1280,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-008-Political-Hostility-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-008-Political-Hostility-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-008-Political-Hostility-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-009",
@@ -1273,7 +1441,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-009-Safe-Seats-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-009-Safe-Seats-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-009-Safe-Seats-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.96,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2168,
+      "tile_scale": {
+        "square": 0.6528,
+        "rounded": 0.6336,
+        "circle": 0.5952
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-010",
@@ -1413,7 +1602,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.05,
+      "tile_offset_x": 3.8,
+      "tile_stroke_scale": 0.952381,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.714,
+        "rounded": 0.693,
+        "circle": 0.651
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-011",
@@ -1553,7 +1763,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-011-Electoral-Pressure-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-011-Electoral-Pressure-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-011-Electoral-Pressure-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3403,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-012",
@@ -1693,7 +1924,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-012-Election-Rules-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-012-Election-Rules-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-012-Election-Rules-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-013",
@@ -1833,7 +2085,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.04,
+      "tile_offset_x": 3.0,
+      "tile_stroke_scale": 0.961538,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7072,
+        "rounded": 0.6864,
+        "circle": 0.6448
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-014",
@@ -1973,7 +2246,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-014-Entrenched-Power-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-014-Entrenched-Power-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-014-Entrenched-Power-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1833,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-015",
@@ -2113,7 +2407,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3229,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-016",
@@ -2253,7 +2568,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-016-Lobbying-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-016-Lobbying-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-016-Lobbying-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-017",
@@ -2393,7 +2729,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-017-Policy-Favoritism-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-017-Policy-Favoritism-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-017-Policy-Favoritism-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1833,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-018",
@@ -2533,7 +2890,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-018-Earned-Trust-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-018-Earned-Trust-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-018-Earned-Trust-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-019",
@@ -2673,7 +3051,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.97,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2503,
+      "tile_scale": {
+        "square": 0.6596,
+        "rounded": 0.6402,
+        "circle": 0.6014
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-020",
@@ -2813,7 +3212,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.02,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.980392,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.6936,
+        "rounded": 0.6732,
+        "circle": 0.6324
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-021",
@@ -2953,7 +3373,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.98,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2838,
+      "tile_scale": {
+        "square": 0.6664,
+        "rounded": 0.6468,
+        "circle": 0.6076
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-022",
@@ -3093,7 +3534,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.08,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.925926,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7344,
+        "rounded": 0.7128,
+        "circle": 0.6696
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-023",
@@ -3233,7 +3695,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-023-Evidence-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-024",
@@ -3373,7 +3856,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-024-Feedback-Loop-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-025",
@@ -3513,7 +4017,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-025-Congress-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-025-Congress-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-025-Congress-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-026",
@@ -3653,7 +4178,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-026-Executive-Power-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-026-Executive-Power-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-026-Executive-Power-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-027",
@@ -3793,7 +4339,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-027-Court-Alignment-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-027-Court-Alignment-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-027-Court-Alignment-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-028",
@@ -3933,7 +4500,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-029",
@@ -4073,7 +4661,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-030",
@@ -4213,7 +4822,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-030-Reform-Tests-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-030-Reform-Tests-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-030-Reform-Tests-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-031",
@@ -4353,7 +4983,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-031-Local-Government-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-032",
@@ -4493,7 +5144,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-033",
@@ -4633,7 +5305,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-033-Hostile-Content-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-033-Hostile-Content-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-033-Hostile-Content-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1833,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-034",
@@ -4773,7 +5466,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-034-New-Technology-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-034-New-Technology-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-034-New-Technology-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-035",
@@ -4913,7 +5627,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-035-Residential-Sorting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-035-Residential-Sorting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-035-Residential-Sorting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2718,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-036",
@@ -5053,7 +5788,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-036-Cross-Border-Capital-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-036-Cross-Border-Capital-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-036-Cross-Border-Capital-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-037",
@@ -5201,7 +5957,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-037-Foreign-Interference-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-037-Foreign-Interference-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-037-Foreign-Interference-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2887,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-038",
@@ -5341,7 +6118,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-038-External-Shocks-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-038-External-Shocks-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-038-External-Shocks-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-039",
@@ -5481,7 +6279,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1498,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-040",
@@ -5621,7 +6440,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-041",
@@ -5761,7 +6601,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-041-Workplace-AI-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-041-Workplace-AI-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-041-Workplace-AI-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-042",
@@ -5901,7 +6762,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-042-AI-Concentration-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-042-AI-Concentration-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-042-AI-Concentration-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-043",
@@ -6041,7 +6923,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-043-Digital-Government-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-043-Digital-Government-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-043-Digital-Government-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1122,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-044",
@@ -6181,7 +7084,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-044-Grid-Demand-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-044-Grid-Demand-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-044-Grid-Demand-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-045",
@@ -6321,7 +7245,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-045-Pricing-Algorithms-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-045-Pricing-Algorithms-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-045-Pricing-Algorithms-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-046",
@@ -6461,7 +7406,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-046-AI-Infrastructure-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-046-AI-Infrastructure-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-046-AI-Infrastructure-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1833,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-047",
@@ -6609,7 +7575,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-047-Data-Rights-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-048",
@@ -6749,7 +7736,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-048-Public-Records-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.96,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2168,
+      "tile_scale": {
+        "square": 0.6528,
+        "rounded": 0.6336,
+        "circle": 0.5952
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-049",
@@ -6889,7 +7897,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-049-Wealth-Concentration-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-049-Wealth-Concentration-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-049-Wealth-Concentration-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": -3.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-050",
@@ -7029,7 +8058,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.96,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2168,
+      "tile_scale": {
+        "square": 0.6528,
+        "rounded": 0.6336,
+        "circle": 0.5952
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-051",
@@ -7169,7 +8219,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 3.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-052",
@@ -7309,7 +8380,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-052-Household-Security-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-052-Household-Security-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-052-Household-Security-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1833,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-053",
@@ -7449,7 +8541,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2551,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-054",
@@ -7589,7 +8702,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-055",
@@ -7729,7 +8863,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-055-Productivity-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-055-Productivity-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-055-Productivity-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.96,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.19,
+      "tile_scale": {
+        "square": 0.6528,
+        "rounded": 0.6336,
+        "circle": 0.5952
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-056",
@@ -7869,7 +9024,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-056-Public-Investment-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-056-Public-Investment-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-056-Public-Investment-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.0598,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-057",
@@ -8009,7 +9185,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-058",
@@ -8149,7 +9346,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-058-Stock-Ownership-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-058-Stock-Ownership-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-058-Stock-Ownership-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3403,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-059",
@@ -8289,7 +9507,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-059-Credit-Allocation-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-059-Credit-Allocation-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-059-Credit-Allocation-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1498,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-060",
@@ -8429,7 +9668,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-061",
@@ -8569,7 +9829,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-062",
@@ -8709,7 +9990,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-062-Assets-And-Debt-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-062-Assets-And-Debt-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-062-Assets-And-Debt-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-063",
@@ -8849,7 +10151,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-064",
@@ -8989,7 +10312,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-064-Trade-Costs-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-064-Trade-Costs-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-064-Trade-Costs-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1122,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-065",
@@ -9129,7 +10473,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-065-Climate-And-Insurance-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-065-Climate-And-Insurance-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-065-Climate-And-Insurance-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1235,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-066",
@@ -9269,7 +10634,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-066-Energy-And-Emissions-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-066-Energy-And-Emissions-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-066-Energy-And-Emissions-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-067",
@@ -9409,7 +10795,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-067-Healthcare-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-068",
@@ -9549,7 +10956,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-068-Education-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.94,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1498,
+      "tile_scale": {
+        "square": 0.6392,
+        "rounded": 0.6204,
+        "circle": 0.5828
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-069",
@@ -9691,7 +11119,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-069-Childcare-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-069-Childcare-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-069-Childcare-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-070",
@@ -9833,7 +11282,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-070-Environment-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-071",
@@ -9975,7 +11445,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-071-Policy-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 2.3,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "CL-072",
@@ -10117,7 +11608,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-CL-072-Reform-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-01",
@@ -10257,7 +11769,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-01-All-Party-Primaries-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-01-All-Party-Primaries-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-01-All-Party-Primaries-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-02",
@@ -10397,7 +11930,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.05,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.952381,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.714,
+        "rounded": 0.693,
+        "circle": 0.651
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-03",
@@ -10539,7 +12093,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-03-Proportional-Elections-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-03-Proportional-Elections-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-03-Proportional-Elections-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.09,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.917431,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7412,
+        "rounded": 0.7194,
+        "circle": 0.6758
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-04",
@@ -10687,7 +12262,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-04-Citizen-Map-Commissions-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-04-Citizen-Map-Commissions-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-04-Citizen-Map-Commissions-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-05",
@@ -10827,7 +12423,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-05-Automatic-Registration-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-06",
@@ -10967,7 +12584,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-06-On-Cycle-Elections-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.9674,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-07",
@@ -11107,7 +12745,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-07-Small-Donor-Matching-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-07-Small-Donor-Matching-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-07-Small-Donor-Matching-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": -2.3,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-08",
@@ -11247,7 +12906,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-08-Donor-Disclosure-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 2.3,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-09",
@@ -11387,7 +13067,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-09-Stock-Trading-Ban-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-10",
@@ -11535,7 +13236,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-10-Revolving-Door-Limits-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-10-Revolving-Door-Limits-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-10-Revolving-Door-Limits-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2386,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-11",
@@ -11675,7 +13397,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.04,
+      "tile_offset_x": 3.0,
+      "tile_stroke_scale": 0.961538,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7072,
+        "rounded": 0.6864,
+        "circle": 0.6448
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-12",
@@ -11823,7 +13566,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-12-Filibuster-Reform-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-12-Filibuster-Reform-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-12-Filibuster-Reform-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-13",
@@ -11963,7 +13727,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-13-Congressional-Capacity-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-13-Congressional-Capacity-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-13-Congressional-Capacity-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.05,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.9511,
+      "tile_scale": {
+        "square": 0.714,
+        "rounded": 0.693,
+        "circle": 0.651
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-14",
@@ -12103,7 +13888,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-14-Automatic-Funding-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-15",
@@ -12243,7 +14049,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-15-Watchdog-Remedies-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-16",
@@ -12391,7 +14218,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-16-Court-Terms-And-Ethics-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-16-Court-Terms-And-Ethics-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-16-Court-Terms-And-Ethics-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-17",
@@ -12531,7 +14379,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-17-Civil-Service-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-18",
@@ -12671,7 +14540,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-18-Emergency-Power-Limits-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-18-Emergency-Power-Limits-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-18-Emergency-Power-Limits-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.09,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.917431,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7412,
+        "rounded": 0.7194,
+        "circle": 0.6758
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-19",
@@ -12819,7 +14709,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-19-Drug-Pricing-Rules-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.04,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.961538,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7072,
+        "rounded": 0.6864,
+        "circle": 0.6448
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-20",
@@ -12959,7 +14870,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1275,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-21",
@@ -13107,7 +15039,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-21-Labor-Law-Remedies-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-21-Labor-Law-Remedies-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-21-Labor-Law-Remedies-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-22",
@@ -13247,7 +15200,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-22-Wage-Boards-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-22-Wage-Boards-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-22-Wage-Boards-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2887,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-23",
@@ -13387,7 +15361,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-23-Indexed-Minimum-Wage-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-24",
@@ -13527,7 +15522,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-24-Paid-Leave-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-24-Paid-Leave-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-24-Paid-Leave-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 0.95,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.1243,
+      "tile_scale": {
+        "square": 0.646,
+        "rounded": 0.627,
+        "circle": 0.589
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-25",
@@ -13667,7 +15683,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-25-Child-Tax-Credit-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-25-Child-Tax-Credit-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-25-Child-Tax-Credit-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3403,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-26",
@@ -13807,7 +15844,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-26-Automatic-Recession-Aid-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-26-Automatic-Recession-Aid-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-26-Automatic-Recession-Aid-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-27",
@@ -13947,7 +16005,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-27-Tax-Enforcement-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-28",
@@ -14087,7 +16166,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-29",
@@ -14231,7 +16331,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-29-Baby-Bonds-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-29-Baby-Bonds-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-29-Baby-Bonds-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-30",
@@ -14371,7 +16492,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-30-By-Right-Housing-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-30-By-Right-Housing-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-30-By-Right-Housing-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.9537,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-31",
@@ -14511,7 +16653,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-31-Childcare-Supply-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-31-Childcare-Supply-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-31-Childcare-Supply-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2718,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-32",
@@ -14651,7 +16814,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-32-Local-News-Funding-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-32-Local-News-Funding-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-32-Local-News-Funding-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-33",
@@ -14791,7 +16975,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-33-Citizen-Assemblies-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-33-Citizen-Assemblies-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-33-Citizen-Assemblies-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-34",
@@ -14931,7 +17136,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-34-Participatory-Budgeting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-34-Participatory-Budgeting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-34-Participatory-Budgeting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-35",
@@ -15071,7 +17297,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-36",
@@ -15211,7 +17458,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-36-Public-Investment-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-36-Public-Investment-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-36-Public-Investment-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.9266,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-37",
@@ -15351,7 +17619,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-37-Feed-Choice-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-38",
@@ -15491,7 +17780,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-38-Pricing-Data-Limits-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-38-Pricing-Data-Limits-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-38-Pricing-Data-Limits-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2386,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-39",
@@ -15631,7 +17941,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-39-Digital-Service-Teams-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-39-Digital-Service-Teams-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-39-Digital-Service-Teams-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.8869,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-40",
@@ -15771,7 +18102,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-40-Worker-Voice-On-AI-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-40-Worker-Voice-On-AI-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-40-Worker-Voice-On-AI-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.0094,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-41",
@@ -15911,7 +18263,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-41-Grid-Cost-Allocation-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-41-Grid-Cost-Allocation-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-41-Grid-Cost-Allocation-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.9953,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-42",
@@ -16051,7 +18424,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-42-Congressional-Tariff-Votes-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-42-Congressional-Tariff-Votes-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-42-Congressional-Tariff-Votes-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.75,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-43",
@@ -16191,7 +18585,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-43-Disaster-Mitigation-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-43-Disaster-Mitigation-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-43-Disaster-Mitigation-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.06,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 0.943396,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.7208,
+        "rounded": 0.6996,
+        "circle": 0.6572
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-44",
@@ -16331,7 +18746,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-44-Digital-Competition-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-44-Digital-Competition-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-44-Digital-Competition-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.07,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.8683,
+      "tile_scale": {
+        "square": 0.7276,
+        "rounded": 0.7062,
+        "circle": 0.6634
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-45",
@@ -16471,7 +18907,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-45-Paper-Ballots-And-Audits-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.3508,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-46",
@@ -16611,7 +19068,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-46-Expand-The-House-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-46-Expand-The-House-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-46-Expand-The-House-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.8482,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-47",
@@ -16751,7 +19229,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-47-Fusion-Voting-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-47-Fusion-Voting-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-47-Fusion-Voting-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 2.7265,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-48",
@@ -16891,7 +19390,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-48-Agency-Independence-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-48-Agency-Independence-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-48-Agency-Independence-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.0094,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 48,
+          "rounded": 52,
+          "circle": 52
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-49",
@@ -17031,7 +19551,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.05,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.0041,
+      "tile_scale": {
+        "square": 0.714,
+        "rounded": 0.693,
+        "circle": 0.651
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     },
     {
       "id": "R-50",
@@ -17173,7 +19714,28 @@
         "tiles/circle-charcoal/svg/20261029_Oath-And-Action-Civic-Line-R-50-Popular-Vote-Options-Tile-Circle-Charcoal-One-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-50-Popular-Vote-Options-Tile-Circle-Newsprint-Two-Color.svg",
         "tiles/circle-newsprint/svg/20261029_Oath-And-Action-Civic-Line-R-50-Popular-Vote-Options-Tile-Circle-Newsprint-One-Color.svg"
-      ]
+      ],
+      "tile_optical_scale": 1.0,
+      "tile_offset_x": 0.0,
+      "tile_stroke_scale": 1.0,
+      "tile_stroke_units": 3.2718,
+      "tile_scale": {
+        "square": 0.68,
+        "rounded": 0.66,
+        "circle": 0.62
+      },
+      "tile_min_px": {
+        "one-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        },
+        "two-color": {
+          "square": 72,
+          "rounded": 76,
+          "circle": 80
+        }
+      }
     }
   ],
   "W_source_px": 5.5,
@@ -17191,5 +19753,22 @@
       3.3508
     ],
     "decision": "DR-08"
+  },
+  "tiles_rule": {
+    "factors": {
+      "square": 0.68,
+      "rounded": 0.66,
+      "circle": 0.62
+    },
+    "decision": "DR-10, variant review M-1, S-1 and S-2",
+    "transform": "matrix(f*a 0 0 f*a 64(1 - f*a) + f*dx 64(1 - f*a)), f the shape factor, a tile_optical_scale, dx tile_offset_x",
+    "stroke": "every stroke-width times tile_stroke_scale = min(1, 3.3508 / (stroke_units * a))",
+    "min_px": "bare floor (32 px, or 48 px for the 28 icons that stop reading at 32 px; 48 px for every two-color tile) divided by the shape factor, rounded up to a multiple of 4 px",
+    "pillar_group": [
+      "CL-019",
+      "CL-020",
+      "CL-021",
+      "CL-022"
+    ]
   }
 }

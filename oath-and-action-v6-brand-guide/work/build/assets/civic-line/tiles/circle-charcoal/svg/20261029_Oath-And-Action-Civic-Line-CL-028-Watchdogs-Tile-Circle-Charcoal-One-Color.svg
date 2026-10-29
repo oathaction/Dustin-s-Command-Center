@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-028-tile-circle-charcoal-one-color" data-id="CL-028" width="128" height="128" viewBox="0 0 128 128">
   <title>Watchdogs</title>
-  <desc>Oath &amp; Action Civic Line CL-028 Watchdogs: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-028 Watchdogs: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-028-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-028-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-028-tile-circle-charcoal-one-color-base" data-part="base">
     <path d="M73.3824 40.3918 V31.2592 A1.52313 1.52313 0 0 0 71.8592 29.7361 H25.1668 A1.523105 1.523105 0 0 0 23.6437 31.2592 V89.8502 A1.523105 1.523105 0 0 0 25.1668 91.3733 H71.8592 A1.52313 1.52313 0 0 0 73.3824 89.8502 V88.4611" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="34.3907" y1="41.9576" x2="62.6292" y2="41.9576" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="34.3907" y1="53.3443" x2="51.5105" y2="53.3443" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -13,7 +13,7 @@
     <circle cx="73.9429" cy="64.7433" r="17.924" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="85.6769" y1="78.3111" x2="89.7101" y2="82.1555" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-028-tile-circle-charcoal-one-color-accent" data-part="accent">
     <path d="M94.974 82.8866 L103.1196 91.0565 A3.735081 3.735081 0 0 1 97.8313 96.3326 L89.6857 88.1626 A3.735046 3.735046 0 0 1 94.974 82.8866 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

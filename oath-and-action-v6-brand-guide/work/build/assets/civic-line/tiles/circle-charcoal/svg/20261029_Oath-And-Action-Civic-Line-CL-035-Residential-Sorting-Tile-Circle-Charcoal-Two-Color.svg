@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-035-tile-circle-charcoal-two-color" data-id="CL-035" width="128" height="128" viewBox="0 0 128 128">
   <title>Residential Sorting</title>
-  <desc>Oath &amp; Action Civic Line CL-035 Residential Sorting: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-035 Residential Sorting: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-035-tile-circle-charcoal-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-035-tile-circle-charcoal-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-035-tile-circle-charcoal-two-color-base" data-part="base">
     <path d="M7.7073 64.4224 L22.5612 49.5684 A0.773346 0.773346 0 0 1 23.6558 49.5684 L37.0523 62.9649 L37.0523 85.2369" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="9.1528" y1="62.9768" x2="9.1528" y2="85.2369" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="18.6589" y1="68.4021" x2="18.6589" y2="73.7559" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
@@ -25,7 +25,7 @@
     <line x1="109.0616" y1="67.0101" x2="109.0616" y2="71.4716" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="109.0616" y1="79.5024" x2="109.0616" y2="83.9639" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-035-tile-circle-charcoal-two-color-accent" data-part="accent">
     <path d="M77.1467 91.4236 L77.1467 78.9908 L86.5338 69.5621 A0.773311 0.773311 0 0 1 87.6283 69.5621 L97.0154 78.9908 L97.0154 91.4236" fill="none" stroke="#E63946" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="87.081" y1="84.0055" x2="87.081" y2="88.9846" fill="none" stroke="#E63946" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

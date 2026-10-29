@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-070-tile-circle-charcoal-two-color" data-id="CL-070" width="128" height="128" viewBox="0 0 128 128">
   <title>Environment</title>
-  <desc>Oath &amp; Action Civic Line CL-070 Environment: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-070 Environment: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-070-tile-circle-charcoal-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-070-tile-circle-charcoal-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-070-tile-circle-charcoal-two-color-base" data-part="base">
     <path d="M23.3025 101.6208 V84.1051 C13.1006 73.8742 16.3711 58.3086 20.4817 50.6515 C21.5491 48.6631 23.9264 44.8736 28.1818 41.0522 C40.4179 30.064 57.7696 28.1606 72.834 26.958 C73.955 56.4454 65.2429 83.709 31.7893 89.0399" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="miter"/>
     <path d="M23.3025 84.1051 C28.9807 68.484 35.5239 56.0311 50.7185 47.2458" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-070-tile-circle-charcoal-two-color-accent" data-part="accent">
     <path d="M93.0305 43.7122 C86.4445 54.2643 74.2901 67.5945 74.8506 81.2294 A18.17987 18.17987 0 0 0 93.0305 99.4093 A18.179845 18.179845 0 0 0 111.2103 81.2294 C111.7708 67.5945 99.6225 54.2643 93.0305 43.7122 Z" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

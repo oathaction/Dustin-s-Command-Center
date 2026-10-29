@@ -271,7 +271,7 @@ def iou(a, b):
 
 def scale_probe(black_crop_mask, red_rgb_full, rect, dx, dy, thr_g):
     """Diagnostic only, run for icons below 0.90: can a fractional shift or a
-    small uniform scale about the crop centre beat integer translation?
+    small uniform scale about the crop center beat integer translation?
     Returns (best_iou, scale, fdx, fdy) with fractional offsets in px."""
     x0, y0, x1, y1 = rect
     h, w = y1 - y0, x1 - x0
@@ -409,8 +409,8 @@ def main():
                 full_bmask_rect = sh.ink[y0:y1, x0:x1]
                 reg_iou, dx, dy = register(full_bmask_rect, red, rect)
                 # Red-sheet check: red lenient components that touch the black sheet's
-                # foreign ink (captions, IDs, neighbours; grown by 3 px and shifted by
-                # the registration) are the red sheet's own captions and neighbours.
+                # foreign ink (captions, IDs, neighbors; grown by 3 px and shifted by
+                # the registration) are the red sheet's own captions and neighbors.
                 def red_foreign_map(dx, dy):
                     fb = ndi.binary_dilation(foreign, iterations=3)
                     fb = np.roll(np.roll(fb, dy, axis=0), dx, axis=1)
@@ -501,9 +501,9 @@ def main():
                 if flags:
                     report["flags"].append({"id": ids, "flags": flags, "notes": notes, "sheet_iou": row["sheet_iou"],
                                             "crossing": crossing})
-    # Independent check that each catalogue label sits in its cell: the caption's
+    # Independent check that each catalog label sits in its cell: the caption's
     # glyph components should number one per character (two for i and j), less
-    # one or two where neighbouring glyphs touch.
+    # one or two where neighboring glyphs touch.
     cap_bad = []
     for r in rows_out:
         got = report["sheets"][r["sheet"]]["caption_glyph_counts"][r["row"] - 1][r["column"] - 1]
@@ -545,7 +545,11 @@ def write_csv(rows):
               "crop_x0", "crop_y0", "crop_x1", "crop_y1", "reg_dx", "reg_dy", "sheet_iou",
               "construction", "red_text", "svg_red_black", "svg_black", "svg_red_newsprint", "svg_newsprint",
               "png_red_black", "png_black", "png_red_newsprint", "png_newsprint",
-              "ref_black", "ref_red", "status", "scale_s", "transform", "stroke_units", "stroke_median_px", "tiles", "flags"]
+              "ref_black", "ref_red", "status", "scale_s", "transform", "stroke_units", "stroke_median_px", "tiles",
+              "tile_optical_scale", "tile_offset_x", "tile_stroke_units",
+              "tile_scale_square", "tile_scale_rounded", "tile_scale_circle",
+              "tile_min_px_one_color_square", "tile_min_px_one_color_rounded", "tile_min_px_one_color_circle",
+              "tile_min_px_two_color_square", "tile_min_px_two_color_rounded", "tile_min_px_two_color_circle", "flags"]
     with open(C.INVENTORY_CSV, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(fields)
@@ -561,7 +565,12 @@ def write_csv(rows):
                         r["exports"].get("png_red_newsprint", ""), r["exports"].get("png_newsprint", ""),
                         r["reference_crops"]["black"], r["reference_crops"]["red"], r["status"],
                         t.get("s", ""), t.get("formula", ""), r.get("stroke_units", ""), r.get("stroke_median_px", ""),
-                        len(r.get("tiles", [])), ";".join(r.get("flags", []))])
+                        len(r.get("tiles", [])),
+                        r.get("tile_optical_scale", ""), r.get("tile_offset_x", ""), r.get("tile_stroke_units", ""),
+                        *[(r.get("tile_scale") or {}).get(sh, "") for sh in ("square", "rounded", "circle")],
+                        *[((r.get("tile_min_px") or {}).get(md) or {}).get(sh, "") for md in ("one-color", "two-color")
+                          for sh in ("square", "rounded", "circle")],
+                        ";".join(r.get("flags", []))])
 
 
 if __name__ == "__main__":

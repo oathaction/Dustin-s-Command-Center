@@ -9,10 +9,10 @@ C. qa/<date>_Pillar-Marks-Side-By-Side.svg and .png: the Gate 1 pillar marks
    drew them. Its latest drawings are the Phase 1 sketch file
    work/boards/phase-1/symbols/20261021_Pillar-Sketches-Direction-A.svg. The
    record uses its filled cut, the approved geometric solid, drawn from the 24 px
-   master at every size (a vector scale), in one colour as marks sit in a row
+   master at every size (a vector scale), in one color as marks sit in a row
    (G1-07). Labels are Inter outlines, so the SVG carries no font data.
 D. qa/<date>_Civic-Line-Size-Ladder.png: all 122 red-black exports at 24, 32,
-   48 and 64 px on Newsprint, in catalogue order, labelled by ID.
+   48 and 64 px on Newsprint, in catalog order, labeled by ID.
 Both render in Chromium at device scale 1, so every icon shows at its true
 pixel size.
 """
@@ -40,23 +40,20 @@ def direction_a_symbol(name):
     if not m:
         raise SystemExit(f"Direction A filled {name} 24 px not found in {DIR_A}")
     body = re.sub(r"<title>.*?</title>", "", m.group(1), flags=re.S)
-    # one colour: body and node in Charcoal, seat clear (the sketch's own defaults)
+    # one color: body and node in Charcoal, seat clear (the sketch's own defaults)
     body = body.replace('fill="currentColor"', f'fill="{C.CHARCOAL}"')
     body = body.replace('fill="var(--seat,none)"', 'fill="none"')
     body = body.replace('fill="var(--node,currentColor)"', f'fill="{C.CHARCOAL}"')
     return body.strip()
 
 
-def export_body(row, edition):
-    ex = row["exports"]
-    p = os.path.join(C.ASSETS, edition, ex["svg_red_black"] if edition == "red-black" else ex["svg_black"])
-    s = open(p, encoding="utf-8").read().split("?>", 1)[-1]
+def export_body(row, edition, new_root):
+    """Inner markup of a bare export with its ids moved under new_root, so
+    every copy in one record file has its own ids."""
+    s = open(C.edition_file(row, edition), encoding="utf-8").read().split("?>", 1)[-1]
     s = re.sub(r"<title>.*?</title>|<desc>.*?</desc>", "", s, flags=re.S)
     inner = s[s.index(">", s.index("<svg")) + 1:s.rindex("</svg>")]
-    pre = f"{row['id'].lower()}-{edition}-"
-    inner = re.sub(r'id="([^"]+)"', lambda m: f'id="{pre}{m.group(1)}"', inner)
-    inner = inner.replace("url(#", f"url(#{pre}")
-    return inner.strip()
+    return inner.replace(C.bare_root(row["id"], edition), new_root).strip()
 
 
 def render(jobs):
@@ -95,7 +92,8 @@ def pillar_record():
         a, b = CS.ink_extent(fonts, sh[lid]["chars"], size)
         dx = x - a if anchor == "start" else x - (a + b) / 2
         return f'<path fill="{fill}" d="{CS.text_path(fonts, sh[lid]["chars"], size, dx, base)}"/>'
-    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+    rid = "oa-civic-line-pillar-marks-side-by-side"
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" id="{rid}" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
            "<title>Pillar marks side by side, Gate 1 Direction A and Civic Line</title>",
            "<desc>Record for decision DR-04. Labels are Inter converted to outlines.</desc>",
            f'<rect width="{W}" height="{H}" fill="{C.NEWSPRINT}"/>',
@@ -115,7 +113,7 @@ def pillar_record():
                 if kind == "a":
                     out.append(f'<svg x="{x}" y="{y}" width="{s}" height="{s}" viewBox="0 0 24 24">{direction_a_symbol(name)}</svg>')
                 else:
-                    out.append(f'<svg x="{x}" y="{y}" width="{s}" height="{s}" viewBox="0 0 128 128">{export_body(inv[iid], kind)}</svg>')
+                    out.append(f'<svg x="{x}" y="{y}" width="{s}" height="{s}" viewBox="0 0 128 128">{export_body(inv[iid], kind, f"{rid}-{iid.lower()}-{kind}-{s}")}</svg>')
                 if k == len(rows) - 1:
                     out.append(txt(f"s{s}", 12, x + s / 2, base_y + 22, anchor="middle"))
                 x += s + col_gap
@@ -143,7 +141,7 @@ def size_ladder():
            f'font-family="Inter, sans-serif">',
            f'<rect width="{W}" height="{H}" fill="{C.NEWSPRINT}"/>',
            f'<text x="20" y="30" font-size="18" font-weight="600" fill="{C.CHARCOAL}">Civic Line size ladder: red-black exports at 24, 32, 48 and 64 px, actual size</text>',
-           f'<text x="20" y="50" font-size="12" fill="{C.CHARCOAL}">Catalogue order, left to right. Capped fit (DR-08): each icon grows toward 116 of 128 units by at most 1.25 times the shared scale; strokes run 2.68 to 3.35 units.</text>']
+           f'<text x="20" y="50" font-size="12" fill="{C.CHARCOAL}">Catalog order, left to right. Capped fit (DR-08): each icon grows toward 116 of 128 units by at most 1.25 times the shared scale; strokes run 2.68 to 3.35 units.</text>']
     missing = []
     for i, r in enumerate(inv):
         p = os.path.join(C.ASSETS, "red-black", r["exports"]["svg_red_black"])
@@ -154,11 +152,11 @@ def size_ladder():
             missing.append(r["id"])
             out.append(f'<text x="{cx + cell_pad}" y="{cy + cell_pad + label_h + 40}" font-size="12" fill="{C.CHARCOAL}">not built yet</text>')
             continue
-        body = export_body(r, "red-black")
         x = cx + cell_pad
         base = cy + cell_pad + label_h + 64
         for s in sizes:
-            out.append(f'<svg x="{x}" y="{base - s}" width="{s}" height="{s}" viewBox="0 0 128 128">{body.replace(r["id"].lower() + "-red-black-", f"{r["id"].lower()}-{s}-")}</svg>')
+            body = export_body(r, "red-black", f"ladder-{r['id'].lower()}-{s}")
+            out.append(f'<svg x="{x}" y="{base - s}" width="{s}" height="{s}" viewBox="0 0 128 128">{body}</svg>')
             x += s + gap
     out.append("</svg>")
     svg = "\n".join(out) + "\n"

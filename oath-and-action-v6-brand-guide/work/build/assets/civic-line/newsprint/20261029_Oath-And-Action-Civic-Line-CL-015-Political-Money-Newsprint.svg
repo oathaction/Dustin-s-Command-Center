@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-015" data-id="CL-015" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-015-newsprint" data-id="CL-015" width="128" height="128" viewBox="0 0 128 128">
   <title>Political Money</title>
-  <desc>Oath &amp; Action Civic Line CL-015 Political Money. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="accent-1">
+  <desc>Oath &amp; Action Civic Line CL-015 Political Money. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 3. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-015-newsprint-accent-1" data-part="accent">
     <path d="M49.3187 68.4708 H58.6652 A5.377093 5.377093 0 0 0 64.0423 63.0937 V50.9198 A5.377093 5.377093 0 0 1 69.4194 45.5427 H96.4559" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-015-newsprint-base" data-part="base">
     <circle cx="28.4146" cy="66.9302" r="20.9646" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="74.6877" y="64.2417" width="45.669" height="26.5592" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="74.6877,64.2417 81.7383,52.7625 84.4148,52.7625" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <line x1="87.5565" y1="57.4146" x2="102.9084" y2="36.9454" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="105.7298" y1="53.4875" x2="102.7936" y2="57.4146" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent-2">
+  <g id="oa-civic-line-cl-015-newsprint-accent-2" data-part="accent">
     <path d="M32.6075 61.1544 A4.410403 4.410403 0 1 0 28.4146 66.9302 A4.410426 4.410426 0 1 1 24.2216 72.706" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.4146" y1="55.4631" x2="28.4146" y2="58.1094" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="28.4146" y1="75.751" x2="28.4146" y2="78.651" fill="none" stroke="#DCD9D2" stroke-width="3.3229" stroke-linecap="round" stroke-linejoin="round"/>

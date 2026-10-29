@@ -4,16 +4,26 @@
 
 Checks, for the four bare editions (DR-07, DR-09): membership and counts
 (122 IDs, 488 SVGs, 976 PNGs), each edition's exact ink colors, that every
-edition is the red-black file with its ink colours swapped and that the parsed
-element trees of all four are identical apart from ink colour, SVG structure,
-viewBox, drawn bounds, PNG sizes and transparency.
+edition is the red-black file with its ink colors and root id swapped and that
+the parsed element trees of all four are identical apart from ink color and
+the root of each id, SVG structure, viewBox, drawn bounds, PNG sizes and
+transparency.
 
 For the tiles (DR-10): 1,464 SVGs and 2,928 PNGs; each tile's shape comes
 first and is the exact square, superellipse or circle; one group with one
-uniform transform holds the icon, whose parsed tree equals its bare export of
-the matching edition; Charcoal tiles carry only Newsprint and Pillar Red ink,
-Newsprint tiles only Charcoal and Pillar Red; every icon keeps the safe margin
-from every tile edge; PNGs are RGBA with the right transparency.
+uniform transform per tile holds the icon, whose parsed tree equals its bare
+export of the matching edition apart from the id root and the stroke widths,
+which carry the stated stroke multiplier; the transform is the shape factor
+times the icon's optical scale, with its optical offset (variant review S-1,
+S-2), and the tile's line stays at or under the 3.3508-unit cap; Charcoal
+tiles carry only Newsprint and Pillar Red ink, Newsprint tiles only Charcoal
+and Pillar Red; every icon keeps the safe margin from every tile edge; PNGs are
+RGBA with the right transparency; the inventory carries each icon's optics and
+minimum tile sizes (M-1).
+
+Ids (M-2): no id repeats within or across the bare files, tiles, contact
+sheets, tile sheets and the pillar record, and every url(#...) and href="#..."
+resolves inside its own file.
 
 Also: reference crops (244), contact sheets (10 dark, 10 light), tile sheets
 (12), and a contrast table for every ink and ground pair. Icons without a
@@ -89,8 +99,11 @@ def colour_walk(node, name, allowed, errs, in_mask=False, in_defs=False, bare=Tr
         colour_walk(ch, name, allowed, errs, in_mask or t == "mask", in_defs or t == "defs", bare)
 
 
-def check_svg(path, edition, errs):
-    """Structure, colors, viewBox and bounds of one bare export."""
+REF_RE = re.compile(r'url\(#([^)\s]+)\)|href="#([^"]+)"')
+
+
+def check_svg(path, edition, errs, icon_id=None):
+    """Structure, colors, ids, viewBox and bounds of one bare export."""
     data = open(path, "rb").read()
     text = data.decode("utf-8")
     name = os.path.basename(path)
@@ -115,9 +128,23 @@ def check_svg(path, edition, errs):
         for hx in used:
             if hx == C.PILLAR_RED or is_reddish(hx):
                 errs.append(f"{name}: red value {hx} in the {edition} edition")
-    groups = [g.attrib.get("id") for g in root if strip(g.tag) == "g"]
-    if not any(g and g.startswith("base") for g in groups):
-        errs.append(f"{name}: no base group")
+    groups = [g for g in root if strip(g.tag) == "g"]
+    if not any(g.attrib.get("data-part") == "base" for g in groups):
+        errs.append(f"{name}: no group with data-part 'base'")
+    for g in groups:
+        part = g.attrib.get("data-part")
+        if part not in ("base", "accent"):
+            errs.append(f"{name}: group {g.attrib.get('id')} has data-part {part!r}")
+        elif not re.fullmatch(re.escape(f"{root.attrib.get('id')}-{part}") + r"(-\d+)?", g.attrib.get("id", "")):
+            errs.append(f"{name}: group id {g.attrib.get('id')} is not <root id>-{part}")
+    if icon_id is not None:
+        want_root = C.bare_root(icon_id, edition)
+        if root.attrib.get("id") != want_root:
+            errs.append(f"{name}: root id {root.attrib.get('id')}, expected {want_root}")
+        for el in root.iter():
+            i = el.attrib.get("id")
+            if i is not None and el is not root and not i.startswith(want_root + "-"):
+                errs.append(f"{name}: id {i} does not start with the file's root id")
     b, _ = S.drawn_bounds(text.split("?>", 1)[-1])
     if b is None:
         errs.append(f"{name}: draws nothing")
@@ -130,11 +157,13 @@ def tree_identity(rb_path, other_path, edition):
     """Compare the parsed element trees of the red-black file and another edition:
     same tags in the same order, same attributes with the same values
     (coordinates, masks, ids, fill and stroke assignments, text), except a
-    color attribute that carries the edition's ink swap. Returns
+    color attribute that carries the edition's ink swap and the root of every
+    id and reference, which names the file. Returns
     (ok, elements compared, color swaps, first difference)."""
     swap = SWAPS[edition]
     a = ET.parse(rb_path).getroot()
     b = ET.parse(other_path).getroot()
+    ra, rb_ = a.attrib.get("id", ""), b.attrib.get("id", "")
     ea, eb = list(a.iter()), list(b.iter())
     if len(ea) != len(eb):
         return False, 0, 0, f"{len(ea)} elements against {len(eb)}"
@@ -146,6 +175,8 @@ def tree_identity(rb_path, other_path, edition):
             return False, k, swaps, f"element {k} <{strip(x.tag)}>: attributes {sorted(set(x.attrib) ^ set(y.attrib))} differ"
         for key, va in x.attrib.items():
             vb = y.attrib[key]
+            if ra and rb_:   # ids and references differ only by the file's root id
+                va, vb = va.replace(ra, "<root>"), vb.replace(rb_, "<root>")
             if va == vb and not (key in COLOR_ATTRS and va.upper() in swap):
                 continue
             if key in COLOR_ATTRS and swap.get(va.upper()) == vb.upper():
@@ -192,7 +223,7 @@ def check_png(path, size, errs, opaque_corners=False, centre_opaque=False):
         if a.min() != 0 or max(corners) != 0:
             errs.append(f"{name}: background is not transparent")
     if centre_opaque and a[size // 2, size // 2] != 255:
-        errs.append(f"{name}: tile centre is not opaque")
+        errs.append(f"{name}: tile center is not opaque")
     if a.max() == 0:
         errs.append(f"{name}: image is empty")
     if not opaque_corners and not centre_opaque:
@@ -203,12 +234,37 @@ def check_png(path, size, errs, opaque_corners=False, centre_opaque=False):
 
 # ------------------------------------------------------------------ tiles
 
-def expected_shape(shape, fill):
-    el = ET.fromstring(f'<svg xmlns="{S.SVG_NS}">' + T.shape_element(shape, fill) + "</svg>")[0]
+def expected_shape(shape, fill, rid=None):
+    el = ET.fromstring(f'<svg xmlns="{S.SVG_NS}">' + T.shape_element(shape, fill, rid) + "</svg>")[0]
     return el
 
 
-def check_tile(path, row, shape, tile, mode, bare_tree, errs):
+MATRIX_RE = re.compile(r"^matrix\(([-0-9.e]+) ([-0-9.e]+) ([-0-9.e]+) ([-0-9.e]+) ([-0-9.e]+) ([-0-9.e]+)\)$")
+
+
+def same_tree_mapped(a, b, root_a, root_b, k):
+    """Tile icon tree a against bare tree b: identical apart from the id root
+    (root_a in the tile, root_b in the bare file) and stroke widths, which in
+    the tile are the bare widths times k. Returns '' or the first difference."""
+    if len(a) != len(b):
+        return f"{len(a)} children against {len(b)}"
+    for x, y in zip(a, b):
+        if x.tag != y.tag or set(x.attrib) != set(y.attrib) or (x.text or "").strip() != (y.text or "").strip():
+            return f"<{strip(x.tag)} {x.attrib.get('id', '')}> differs"
+        for key, va in x.attrib.items():
+            vb = y.attrib[key]
+            if key == "stroke-width":
+                if abs(float(va) - float(vb) * k) > 6e-5:
+                    return f"<{strip(x.tag)}> stroke-width {va}, expected {float(vb) * k:.5f} ({vb} times {k:.6f})"
+            elif va.replace(root_a, "<root>") != vb.replace(root_b, "<root>"):
+                return f"<{strip(x.tag)} {x.attrib.get('id', '')}> {key} differs"
+        why = same_tree_mapped(list(x), list(y), root_a, root_b, k)
+        if why:
+            return why
+    return ""
+
+
+def check_tile(path, row, shape, tile, mode, bare_tree, bare_root, errs):
     name = os.path.basename(path)
     try:
         root = ET.parse(path).getroot()
@@ -217,28 +273,104 @@ def check_tile(path, row, shape, tile, mode, bare_tree, errs):
         return False
     if root.attrib.get("viewBox") != "0 0 128 128" or root.attrib.get("width") != "128":
         errs.append(f"{name}: viewBox or size is not 128")
+    rid = C.tile_root(row["id"], shape, tile, mode)
+    if root.attrib.get("id") != rid:
+        errs.append(f"{name}: root id {root.attrib.get('id')}, expected {rid}")
+    for el in root.iter():
+        i = el.attrib.get("id")
+        if i is not None and el is not root and not i.startswith(rid + "-"):
+            errs.append(f"{name}: id {i} does not start with the tile's root id")
     kids = [k for k in root if strip(k.tag) not in ("title", "desc")]
     if len(kids) != 2:
         errs.append(f"{name}: expected the tile shape and one icon group, found {len(kids)} elements")
         return False
     tile_el, grp = kids
-    want = expected_shape(shape, C.TILE_FILL[tile])
+    want = expected_shape(shape, C.TILE_FILL[tile], rid)
     if tile_el.tag != want.tag or tile_el.attrib != want.attrib:
         errs.append(f"{name}: the first shape is not the {shape} tile in {C.TILE_FILL[tile]}")
     f = C.TILE_FACTORS[shape]
-    t = 64 * (1 - f)
-    if strip(grp.tag) != "g" or grp.attrib.get("id") != "icon" or grp.attrib.get("transform") != f"matrix({f:g} 0 0 {f:g} {S.fmt(t)} {S.fmt(t)})":
-        errs.append(f"{name}: icon group or its transform is not the {shape} factor {f:g} about the centre")
-    if set(grp.attrib) - {"id", "transform"}:
+    a, dx, k = C.tile_optics(row["id"], row["stroke_units"])
+    m = MATRIX_RE.match(grp.attrib.get("transform", ""))
+    ok_t = False
+    if m:
+        v = [float(t) for t in m.groups()]
+        fa = f * a
+        ok_t = (v[1] == 0 and v[2] == 0 and v[0] == v[3] and abs(v[0] - fa) < 1e-6
+                and abs(v[4] - (64 * (1 - fa) + f * dx)) < 1e-4 and abs(v[5] - 64 * (1 - fa)) < 1e-4)
+    if strip(grp.tag) != "g" or grp.attrib.get("id") != f"{rid}-icon" or grp.attrib.get("data-part") != "icon" or not ok_t:
+        errs.append(f"{name}: icon group or its transform is not matrix(f*a 0 0 f*a ...) with f {f:g}, a {a:g}, dx {dx:g}: "
+                    f"{grp.attrib.get('transform')}")
+    if set(grp.attrib) - {"id", "data-part", "transform"}:
         errs.append(f"{name}: icon group carries extra attributes")
-    why = same_tree(list(grp), bare_tree)
+    why = same_tree_mapped(list(grp), bare_tree, rid, bare_root, k)
     if why:
         errs.append(f"{name}: icon geometry differs from its bare export: {why}")
+    line = row["stroke_units"] * a * k
+    if line > C.TILE_STROKE_CAP + 1e-4 or abs(line - row.get("tile_stroke_units", line)) > 1e-4:
+        errs.append(f"{name}: tile line {line:.4f} units against the cap {C.TILE_STROKE_CAP} and the inventory's {row.get('tile_stroke_units')}")
     colour_walk(grp, name, TILE_INK[(tile, mode)], errs, bare=False)
     text = open(path, encoding="utf-8").read()
     if text.count("transform=") != 1:
         errs.append(f"{name}: more than one transform")
-    return not why
+    return not why and ok_t
+
+
+# The minimum tile sizes the review's M-1 table gives, per shape: square, rounded, circle.
+REVIEW_MIN = {"one-color": (48, 52, 52), "one-color-48": (72, 76, 80), "two-color": (72, 76, 80)}
+
+
+def check_inventory_tiles(row, errs):
+    i = row["id"]
+    a, dx, k = C.tile_optics(i, row["stroke_units"])
+    want = {"tile_optical_scale": a, "tile_offset_x": dx, "tile_stroke_scale": round(k, 6),
+            "tile_stroke_units": round(min(row["stroke_units"] * a, C.TILE_STROKE_CAP), 4),
+            "tile_scale": {sh: round(f * a, 6) for sh, f in C.TILE_FACTORS.items()}, "tile_min_px": C.tile_min_px(i)}
+    for key, v in want.items():
+        if row.get(key) != v:
+            errs.append(f"{i}: inventory {key} is {row.get(key)}, expected {v}")
+    mins = C.tile_min_px(i)
+    one = REVIEW_MIN["one-color-48" if i in C.BARE_FLOOR_48_IDS else "one-color"]
+    if tuple(mins["one-color"][sh] for sh in C.TILE_SHAPES) != one or tuple(mins["two-color"][sh] for sh in C.TILE_SHAPES) != REVIEW_MIN["two-color"]:
+        errs.append(f"{i}: minimum tile sizes {mins} differ from the review's table")
+
+
+def id_audit(paths, errs):
+    """M-2: no id repeats within a file or across files, and every url(#...)
+    and href="#..." resolves inside its own file."""
+    seen = {}
+    n_ids = n_refs = dup = unresolved = 0
+    for p in paths:
+        name = os.path.relpath(p, C.ASSETS)
+        text = open(p, encoding="utf-8").read()
+        try:
+            root = ET.fromstring(text.encode("utf-8"))
+        except ET.ParseError as e:
+            errs.append(f"{name}: XML parse error {e}")
+            continue
+        here = set()
+        for el in root.iter():
+            i = el.attrib.get("id")
+            if i is None:
+                continue
+            n_ids += 1
+            if i in here:
+                dup += 1
+                errs.append(f"{name}: id {i} appears twice in the file")
+            elif i in seen:
+                dup += 1
+                if dup <= 40:
+                    errs.append(f"{name}: id {i} also appears in {seen[i]}")
+            here.add(i)
+            seen.setdefault(i, name)
+        for m in REF_RE.finditer(text):
+            n_refs += 1
+            ref = m.group(1) or m.group(2)
+            if ref not in here:
+                unresolved += 1
+                errs.append(f"{name}: reference #{ref} does not resolve inside the file")
+    if dup > 40:
+        errs.append(f"{dup} repeated ids in all (first 40 listed)")
+    return {"files": len(paths), "ids": n_ids, "references": n_refs, "repeated_ids": dup, "unresolved_references": unresolved}
 
 
 def contrast_ratio(a, b):
@@ -304,7 +436,7 @@ def main():
         errs.append(f"sheet counts {counts}, expected {expect}")
     cat = [e["id"] for e in C.parse_catalog()]
     if cat != ids:
-        errs.append("inventory order differs from the catalogue")
+        errs.append("inventory order differs from the catalog")
     # stray files in the export folders
     for ed in C.EDITIONS:
         for folder, kind, size in [(ed, "svg", None), (f"png-256/{ed}", "png", 256), (f"png-512/{ed}", "png", 512)]:
@@ -324,6 +456,7 @@ def main():
     per = []
     n_svg = n_png = n_tile_svg = n_tile_png = 0
     derived_ok = trees_ok = tree_elements = tree_swaps = tiles_ok = 0
+    optics_n = offsets_n = capped_n = 0
     margins = {sh: {} for sh in C.TILE_SHAPES}
     for r in rows:
         i = r["id"]
@@ -340,13 +473,13 @@ def main():
             if not missing:
                 n_svg += 4
                 for ed, p in paths.items():
-                    check_svg(p, ed, errs)
+                    check_svg(p, ed, errs, i)
                 rb_text = open(paths["red-black"], encoding="utf-8").read()
                 want = S.derive_editions(rb_text)
                 if all(open(paths[ed], encoding="utf-8").read() == want[ed] for ed in C.EDITIONS):
                     derived_ok += 1
                 else:
-                    errs.append(f"{i}: an edition file is not the red-black file with its ink colors swapped")
+                    errs.append(f"{i}: an edition file is not the red-black file with its ink colors and root id swapped")
                 for ed in ("black", "red-newsprint", "newsprint"):
                     ok, n_el, n_sw, why = tree_identity(paths["red-black"], paths[ed], ed)
                     if not ok:
@@ -357,12 +490,18 @@ def main():
                 if not any(e.startswith(f"{i}: ") and "tree differs" in e for e in errs[e0:]):
                     trees_ok += 1
                 # tiles
-                bare_trees = {}
+                bare_trees, bare_roots = {}, {}
                 for ed, p in paths.items():
                     root = ET.parse(p).getroot()
                     bare_trees[ed] = [k for k in root if strip(k.tag) not in ("title", "desc")]
+                    bare_roots[ed] = root.attrib.get("id", "")
+                check_inventory_tiles(r, errs)
+                a_i, dx_i, k_i = C.tile_optics(i, r["stroke_units"])
+                optics_n += a_i != 1.0
+                offsets_n += dx_i != 0.0
+                capped_n += k_i < 1.0
                 for sh in C.TILE_SHAPES:
-                    margins[sh][i] = round(T.icon_margin(rb_text, sh, C.TILE_FACTORS[sh]), 3)
+                    margins[sh][i] = round(T.icon_margin(rb_text, sh, C.TILE_FACTORS[sh], a_i, dx_i, k_i), 3)
                     if margins[sh][i] < C.TILE_SAFE_MARGIN:
                         errs.append(f"{i}: ink comes within {margins[sh][i]:.2f} units of the {sh} tile edge (safe margin {C.TILE_SAFE_MARGIN})")
                     for tl in C.TILE_COLOURS:
@@ -372,7 +511,8 @@ def main():
                                 errs.append(f"{i}: {os.path.relpath(tp, C.ASSETS)} is missing; run build_tiles.py")
                                 continue
                             n_tile_svg += 1
-                            if check_tile(tp, r, sh, tl, md, bare_trees[C.TILE_EDITION[(tl, md)]], errs):
+                            ed_t = C.TILE_EDITION[(tl, md)]
+                            if check_tile(tp, r, sh, tl, md, bare_trees[ed_t], bare_roots[ed_t], errs):
                                 tiles_ok += 1
                             for px in (256, 512):
                                 pp = C.tile_file(r, sh, tl, md, "png", px)
@@ -445,6 +585,11 @@ def main():
                 errs.append(f"{got_counts[k]} {k.replace('_', ' ')}, expected {v}")
     else:
         notes.append(f"set incomplete: {states['todo']} icons todo")
+    audit_paths = [C.edition_file(r, ed) for r in rows for ed in C.EDITIONS]
+    audit_paths += [C.tile_file(r, sh, tl, md) for r in rows for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS for md in C.TILE_MODES]
+    audit_paths += [os.path.join(cs_dir, n + ".svg") for n in dark + light] + [os.path.join(cs_dir, "tiles", n + ".svg") for n in tile_sheets]
+    audit_paths += [os.path.join(C.QA, f) for f in sorted(os.listdir(C.QA)) if f.endswith(".svg")]
+    audit = id_audit([p for p in audit_paths if os.path.exists(p)], errs)
     margin_summary = {sh: {"factor": C.TILE_FACTORS[sh], "min_margin": min(m.values()) if m else None,
                            "min_margin_id": min(m, key=m.get) if m else None} for sh, m in margins.items()}
     contrast = contrast_table()
@@ -454,6 +599,8 @@ def main():
               "editions_derived_by_swap": derived_ok, "edition_trees_identical": trees_ok,
               "edition_tree_elements_compared": tree_elements, "edition_tree_colour_swaps": tree_swaps,
               "tiles_matching_bare_geometry": tiles_ok, "tile_margins": margin_summary,
+              "icons_with_optical_scale": optics_n, "icons_with_optical_offset": offsets_n,
+              "icons_with_capped_tile_stroke": capped_n, "id_audit": audit,
               "reference_crops": n_refs, "contact_sheets_dark": len(done["dark"]), "contact_sheets_light": len(done["light"]),
               "tile_sheets": len(done["tiles"]), "contrast": contrast, "states": states,
               "complete": complete, "errors": errs, "notes": notes, "icons": per}
@@ -470,7 +617,10 @@ def main():
     print(f"IDs {len(ids)} ({counts}); bare SVGs {n_svg}/488, PNGs {n_png}/976; tile SVGs {n_tile_svg}/1464, PNGs {n_tile_png}/2928; "
           f"reference crops {n_refs}/244; sheets dark {len(done['dark'])}/10, light {len(done['light'])}/10, tiles {len(done['tiles'])}/12")
     print(f"editions derived by swap {derived_ok}; edition trees identical {trees_ok} ({tree_elements} elements, {tree_swaps} color swaps); "
-          f"tiles matching bare geometry {tiles_ok}; states {states}")
+          f"tiles matching bare geometry under their own transform {tiles_ok}; states {states}")
+    print(f"tile optics: {optics_n} icons with an optical scale, {offsets_n} with an offset, {capped_n} with a capped stroke")
+    print(f"ids: {audit['ids']} ids in {audit['files']} SVG files, {audit['repeated_ids']} repeated; "
+          f"{audit['references']} references, {audit['unresolved_references']} unresolved")
     for sh, v in margin_summary.items():
         print(f"  {sh} tile, factor {v['factor']:g}: smallest margin {v['min_margin']:.2f} units ({v['min_margin_id']})")
     for c in contrast:
@@ -495,7 +645,10 @@ def write_ledger(rep):
          f"Bare exports: {rep['svgs']} of 488 SVGs and {rep['pngs']} of 976 PNGs in four editions. Tiles: {rep['tile_svgs']} of 1,464 SVGs and {rep['tile_pngs']} of 2,928 PNGs.",
          f"Reference crops: {rep['reference_crops']} of 244. Sheets: {rep['contact_sheets_dark']} of 10 dark, {rep['contact_sheets_light']} of 10 light, {rep['tile_sheets']} of 12 tile sheets.",
          f"Editions derived from red-black by ink swap: {rep['editions_derived_by_swap']}. Parsed trees identical apart from ink color: {rep['edition_trees_identical']} "
-         f"({rep['edition_tree_elements_compared']} elements, {rep['edition_tree_colour_swaps']} color swaps). Tiles whose icon geometry matches its bare export: {rep['tiles_matching_bare_geometry']}.",
+         f"({rep['edition_tree_elements_compared']} elements, {rep['edition_tree_colour_swaps']} color swaps). Tiles whose icon geometry matches its bare export "
+         f"under one uniform transform per tile, with the stated stroke cap: {rep['tiles_matching_bare_geometry']}.",
+         f"Ids: {rep['id_audit']['ids']} ids in {rep['id_audit']['files']} SVG files, {rep['id_audit']['repeated_ids']} repeated, "
+         f"{rep['id_audit']['unresolved_references']} of {rep['id_audit']['references']} references unresolved.",
          "Smallest ink-to-edge margins: " + "; ".join(f"{sh} {v['min_margin']:.2f} units ({v['min_margin_id']})" for sh, v in rep["tile_margins"].items()) + ".",
          f"Verification errors: {len(rep['errors'])}.", ""]
     if rep["errors"]:

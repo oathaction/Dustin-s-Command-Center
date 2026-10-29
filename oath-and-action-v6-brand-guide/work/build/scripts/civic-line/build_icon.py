@@ -182,7 +182,7 @@ def overlay_panels(ref_black, tr_rb4, ref_ink4, ref_red4, t_ink4, t_red4, d_to_t
         paint(ed, ndi.binary_dilation(tbd & (d_to_ref > tol)), (0, 80, 255))
     p4 = Image.fromarray(ed)
     panels = [label_strip(p1, "reference (black sheet)"), label_strip(p2, "trace (red-black)"),
-              label_strip(p3, "overlay: ref ink grey, trace edge blue, red mask: ref red / trace green"),
+              label_strip(p3, "overlay: ref ink gray, trace edge blue, red mask: ref red / trace green"),
               label_strip(p4, f"edge diff >{tol} px: reference-only orange, trace-only blue")]
     gap = 10
     W = sum(p.width for p in panels) + gap * (len(panels) + 1)
@@ -324,7 +324,9 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(text)
-    pair_ok = P["rb"].replace(C.PILLAR_RED, C.CHARCOAL) == P["bk"]
+    # the black file is the red-black file with Pillar Red swapped for Charcoal and its root id renamed
+    pair_ok = (P["rb"].replace(C.PILLAR_RED, C.CHARCOAL).replace(C.bare_root(icon_id, "red-black"), C.bare_root(icon_id, "black"))
+               == P["bk"])
     editions_ok = S.derive_editions(P["rb"]) == P["eds"]
     bounds, _ = S.drawn_bounds(strip_decl(P["rb"]))
     # references

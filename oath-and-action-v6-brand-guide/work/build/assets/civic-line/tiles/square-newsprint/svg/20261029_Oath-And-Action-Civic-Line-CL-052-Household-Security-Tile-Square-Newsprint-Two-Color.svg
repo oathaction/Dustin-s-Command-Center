@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-052-tile-square-newsprint-two-color" data-id="CL-052" width="128" height="128" viewBox="0 0 128 128">
   <title>Household Security</title>
-  <desc>Oath &amp; Action Civic Line CL-052 Household Security: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-052 Household Security: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.646 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-052-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-052-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.646 0 0 0.646 22.656 22.656)">
+  <g id="oa-civic-line-cl-052-tile-square-newsprint-two-color-base" data-part="base">
     <polyline points="9.8138,60.2288 45.3937,31.5517 80.9735,60.2288" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="60.1008,36.188 60.1008,29.9676 70.9454,29.9676 70.9454,42.646" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.479 61.7153 V95.5893 A1.523105 1.523105 0 0 0 18.0021 97.1124 H72.5903 A1.52313 1.52313 0 0 0 74.1135 95.5893 V61.7153" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,7 +14,7 @@
     <line x1="84.0137" y1="79.7672" x2="108.9013" y2="79.7672" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="84.0137" y1="88.3698" x2="108.9013" y2="88.3698" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-052-tile-square-newsprint-two-color-accent" data-part="accent">
     <line x1="96.8078" y1="53.7038" x2="96.8078" y2="55.7752" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M101.103 57.7857 A4.569327 3.77731 0 0 0 96.8383 55.7752 A4.112386 3.59453 0 0 0 92.7259 59.3697 A4.112415 3.594555 0 0 0 96.8383 62.9643 A4.112361 3.594508 0 0 1 100.9506 66.5588 A4.11239 3.594533 0 0 1 96.8383 70.1534 A4.569351 3.77733 0 0 1 92.5735 68.1429" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="96.8078" y1="70.1534" x2="96.8078" y2="72.2248" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

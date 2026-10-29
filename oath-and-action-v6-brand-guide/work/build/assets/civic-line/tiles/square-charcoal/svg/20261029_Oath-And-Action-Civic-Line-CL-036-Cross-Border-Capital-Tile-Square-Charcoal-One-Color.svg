@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-036-tile-square-charcoal-one-color" data-id="CL-036" width="128" height="128" viewBox="0 0 128 128">
   <title>Cross-Border Capital</title>
-  <desc>Oath &amp; Action Civic Line CL-036 Cross-Border Capital: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-036 Cross-Border Capital: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-036-tile-square-charcoal-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-cl-036-tile-square-charcoal-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-036-tile-square-charcoal-one-color-base" data-part="base">
     <polygon points="10.5693,52.729 36.0357,52.729 36.0357,73.9124 10.5693,73.9124" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="10.5693,52.729 19.2876,44.0107 43.4928,44.0107 36.0357,52.729" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="43.4928,44.0107 43.4928,66.4553 36.0357,73.9124" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,7 +19,7 @@
     <line x1="45.4973" y1="87.4254" x2="29.4254" y2="87.4254" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="34.8477,81.8813 29.4254,87.4254 34.8477,92.9696" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-036-tile-square-charcoal-one-color-accent" data-part="accent">
     <line x1="50.9013" y1="40.5928" x2="74.9969" y2="40.5928" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="69.5746,35.0487 74.9969,40.5928 69.5746,46.137" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M67.7164 69.7269 A3.289926 3.289926 0 1 0 64.7311 74.4181 A3.289926 3.289926 0 1 1 61.7458 79.1093" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

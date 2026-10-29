@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-008-tile-square-newsprint-two-color" data-id="CL-008" width="128" height="128" viewBox="0 0 128 128">
   <title>Political Hostility</title>
-  <desc>Oath &amp; Action Civic Line CL-008 Political Hostility: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-008 Political Hostility: square tile in Newsprint, Charcoal lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-cl-008-tile-square-newsprint-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-cl-008-tile-square-newsprint-two-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-cl-008-tile-square-newsprint-two-color-base" data-part="base">
     <path d="M52.7594 40.3918 A3.216807 3.216807 0 0 0 50.2615 39.1977 H17.9716 A6.762604 6.762604 0 0 0 11.209 45.9603 V68.3926 A6.762629 6.762629 0 0 0 17.9716 75.1553 H21.3895 L21.1214 86.4385 L32.6849 75.1553 H47.6418 A6.762629 6.762629 0 0 0 54.4044 68.3926 V61.7884" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M75.1796 43.9863 A3.216807 3.216807 0 0 1 77.6775 42.7922 H109.9675 A6.762604 6.762604 0 0 1 116.7301 49.5548 V71.9872 A6.762604 6.762604 0 0 1 109.9675 78.7498 H106.5496 L106.8177 90.033 L95.2542 78.7498 H80.2973 A6.762604 6.762604 0 0 1 73.5347 71.9872 V62.2515" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-008-tile-square-newsprint-two-color-accent" data-part="accent">
     <polygon points="65.1271,38.4544 56.9571,52.9057 66.7842,52.9057 62.6901,66.5162 70.8601,52.0649 61.033,52.0649" fill="#E63946" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

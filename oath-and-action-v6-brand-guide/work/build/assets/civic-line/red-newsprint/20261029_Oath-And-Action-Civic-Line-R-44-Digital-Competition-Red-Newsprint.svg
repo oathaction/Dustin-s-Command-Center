@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-44" data-id="R-44" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-44-red-newsprint" data-id="R-44" width="128" height="128" viewBox="0 0 128 128">
   <title>Digital Competition</title>
-  <desc>Oath &amp; Action Civic Line R-44 Digital Competition. Traced vector reconstruction from the Civic Line reference sheet 05, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-44 Digital Competition. Traced vector reconstruction from the Civic Line reference sheet 05, row 4, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-44-red-newsprint-base" data-part="base">
     <rect x="7.8131" y="46.7584" width="42.6178" height="35.0632" rx="3.5336" fill="none" stroke="#DCD9D2" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7.8131" y1="55.2488" x2="50.4309" y2="55.2488" fill="none" stroke="#DCD9D2" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="12.2923" cy="51.0231" r="1.2429" fill="#DCD9D2"/>
@@ -16,7 +16,7 @@
     <line x1="58.0538" y1="70.9697" x2="71.5303" y2="70.9697" fill="none" stroke="#DCD9D2" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="62.2697,66.9244 58.0538,70.9697 62.2697,75.0151" fill="none" stroke="#DCD9D2" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-44-red-newsprint-accent" data-part="accent">
     <circle cx="28.2934" cy="67.7018" r="6.0924" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="32.5581" y1="72.0542" x2="35.8481" y2="75.4172" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="98.995" cy="67.7018" r="6.0924" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-05" data-id="R-05" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-05-black" data-id="R-05" width="128" height="128" viewBox="0 0 128 128">
   <title>Automatic Registration</title>
-  <desc>Oath &amp; Action Civic Line R-05 Automatic Registration. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-05 Automatic Registration. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 5. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-05-black-base" data-part="base">
     <path d="M99.4397 53.259 V40.3491 A3.04621 3.04621 0 0 0 96.3935 37.3029 H20.043 A3.04621 3.04621 0 0 0 16.9968 40.3491 V81.0893 A3.04621 3.04621 0 0 0 20.043 84.1355 H75.1492" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="72.834" y1="90.5021" x2="80.2668" y2="90.5021" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="37.0105" cy="51.413" r="5.6842" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,7 +12,7 @@
     <line x1="56.4637" y1="65.9008" x2="71.7679" y2="65.9008" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="56.4637" y1="74.3754" x2="66.967" y2="74.3754" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-05-black-accent" data-part="accent">
     <circle cx="95.4675" cy="75.1857" r="15.7794" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="88.8998,75.3624 93.4935,79.8586 102.4433,70.5677" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

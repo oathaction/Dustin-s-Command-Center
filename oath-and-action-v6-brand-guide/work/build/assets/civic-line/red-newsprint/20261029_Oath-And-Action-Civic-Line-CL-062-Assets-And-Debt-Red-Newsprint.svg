@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-062" data-id="CL-062" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-062-red-newsprint" data-id="CL-062" width="128" height="128" viewBox="0 0 128 128">
   <title>Assets &amp; Debt</title>
-  <desc>Oath &amp; Action Civic Line CL-062 Assets &amp; Debt. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-062 Assets &amp; Debt. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 2. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-cl-062-red-newsprint-base" data-part="base">
     <ellipse cx="22.1784" cy="64.658" rx="11.5482" ry="4.9958" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M10.6302 72.9151 A11.54825 5.001091 0 0 0 33.7267 72.9151" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M10.6302 81.1722 A11.54825 5.001091 0 0 0 33.7267 81.1722" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -23,7 +23,7 @@
     <line x1="79.5357" y1="64.2376" x2="90.3498" y2="64.2376" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="79.5357" y1="74.8506" x2="84.8666" y2="74.8506" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-062-red-newsprint-accent" data-part="accent">
     <circle cx="105.7149" cy="76.0569" r="11.0273" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="100.9628" y1="76.0569" x2="110.467" y2="76.0569" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>

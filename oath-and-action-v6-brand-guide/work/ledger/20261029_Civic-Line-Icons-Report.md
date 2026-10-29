@@ -1,16 +1,14 @@
 # Civic Line icons: delivery and fidelity report
 
-Oath & Action Brand Guide, Edition 06. October 29, 2026. Status: delivered for Dustin's review. This report covers the Civic Line reconstruction Dustin asked for on October 29, under decisions DR-01 to DR-06.
+Oath & Action Brand Guide, Edition 06. October 29, 2026. Status: approved by Dustin on October 29 (DR-07); variants built and delivered the same day. This report covers the Civic Line reconstruction Dustin asked for on October 29, under decisions DR-01 to DR-06.
 
 Open the catalog: `work/build/assets/civic-line/20261029_Civic-Line-Icon-Catalog.html`, also published as a private page at https://claude.ai/artifact/XWvZnx86mnKkoVFV9PCcgD.
 
 ## What you are asked to decide
 
-1. **Framing (Q-15).** Choose how each icon sits in its 128 square: 1, 2 or 3. The comparison is `work/build/assets/civic-line/qa/20261029_Civic-Line-Framing-Options.png`. The files are built with option 1 for now. The studio recommends option 3. Switching takes one rebuild.
-2. **The set.** Approve the 122 traced icons, or name any you would change. On approval the package moves from `work/build/packages/` to `deliverables/`.
-3. **Rights (Q-16).** Which tool made the sheets, and under what terms. This is for the rights ledger only and holds nothing up.
+Dustin approved the set, framing option 3, the light editions and the tiles on October 29 (DR-07 to DR-11). Section 8 covers the variants. One item stays open:
 
-A reply can be this short: "Framing 3. Set approved. Made in ChatGPT."
+1. **Rights (Q-16).** Which tool made the sheets, and under what terms. This is for the rights ledger only and holds nothing up.
 
 ## 1. What was done
 
@@ -151,3 +149,22 @@ Paths are relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/` ch
 - `work/ledger/20261020_Change-Ledger.md`: C-016 to C-018
 - `work/ledger/20261020_Open-Questions.md`: Q-15 and Q-16
 - `work/research/20261020_Rights-Ledger.md`: the October 29 sheets
+
+## 8. Variants, built after approval (DR-07 to DR-11)
+
+Dustin approved the set and the studio's recommendations and asked for tiles and light versions. The catalog at the same link now shows them.
+
+- **Framing.** Every standalone file uses the capped fit, option 3 (DR-08). 90 icons stop at the 1.25 cap and 32 fill to 116 units. Strokes run 2.68 to 3.35 units.
+- **Four editions from one drawing.** Red-black and black for Newsprint and White grounds; red-newsprint and newsprint for Charcoal grounds. Newsprint alone serves Prussian, where red never sits. All four share every coordinate; verify confirms identical element trees with only ink colors swapped.
+- **Tiles.** Square, rounded square and circle, on a Charcoal tile with the light editions and a Newsprint tile with the dark editions, each in two-color and one-color: 12 per icon, 1,464 SVGs and 2,928 PNGs. The rounded square is a superellipse of exponent 5 with continuous curvature (D2-41). Icons sit at 0.68, 0.66 and 0.62 of the tile, with an optical scale for 36 icons and a small sideways shift for 8 (D2-40, D2-44). The smallest margin to a tile edge is 21.45 units of 128 (R-44, square).
+- **Minimum tile sizes (D2-42).** Two-color tiles: 72 px square, 76 px rounded, 80 px circle. One-color tiles: 48, 52 and 52 px, or 72, 76 and 80 px for the 28 icons that need 48 px on their own. The inventory records them per icon, and the catalog marks any card shown below its minimum.
+- **Sheets.** Ten light contact sheets on Charcoal and twelve tile overview sheets, with one header and footer geometry across all 32 sheets.
+- **Contrast.** Charcoal on Newsprint and Newsprint on Charcoal 13.29:1; Pillar Red on Charcoal 4.49:1, on White 4.17:1, on Newsprint 2.96:1; Newsprint on Prussian 9.42:1. Red on Newsprint sits under the 3:1 guideline for graphics, so the red parts carry emphasis while the shapes carry the meaning. The full table is `work/build/assets/civic-line/qa/20261029_Civic-Line-Contrast-Table.md`.
+- **Usage rules in the readme.** Two-color tiles only where an icon stands alone (Rule 05.3); no Newsprint tile on a White page, where its edge measures 1.41:1; give app platforms the square tile and let them apply their own mask.
+- **Review.** The design director reviewed the variants and raised two musts and eight shoulds; all ten are applied (`work/handoffs/phase-2/20261029_Civic-Line-Variant-Review.md`).
+
+**Checks.** Verify: 0 errors, including an audit of 16,141 ids across 1,985 files with none repeated. Pipeline tests: 85 of 85. Catalog checks: 84 of 84, axe 0 violations at 1440 and 390 px in light and dark. A Chromium test with two files on one page shows 0 changed pixels after the id fix, against 16 broken pairs before.
+
+**Not tested.** Safari, Firefox and design tools; app-store and Android icon specifications; most of the 2,928 tile PNGs one by one (the 12 overview sheets and samples were viewed); any human observer.
+
+**Package.** `deliverables/20261029_Oath-And-Action-Civic-Line-Icons-SVG.zip` (14.2 MB) and `deliverables/20261029_Oath-And-Action-Civic-Line-Icons-PNG.zip` (77.9 MB). One zip came to 92 MB, so it is split in two.

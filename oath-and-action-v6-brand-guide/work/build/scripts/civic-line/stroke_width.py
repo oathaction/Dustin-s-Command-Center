@@ -31,7 +31,7 @@ def skeleton_widths(mask, scale=1):
 
 
 def upsampled(gray, z=4, sigma=1.5):
-    """Bilinear upsample of a single-channel crop to z times, pixel-centre aligned,
+    """Bilinear upsample of a single-channel crop to z times, pixel-center aligned,
     then a light Gaussian of sigma (in upsampled px)."""
     h, w = gray.shape
     yy = (np.arange(h * z) + 0.5) / z - 0.5

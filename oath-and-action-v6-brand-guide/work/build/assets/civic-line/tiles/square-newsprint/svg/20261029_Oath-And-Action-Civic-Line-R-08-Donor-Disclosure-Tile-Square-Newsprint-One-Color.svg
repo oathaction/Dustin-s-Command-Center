@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-08-tile-square-newsprint-one-color" data-id="R-08" width="128" height="128" viewBox="0 0 128 128">
   <title>Donor Disclosure</title>
-  <desc>Oath &amp; Action Civic Line R-08 Donor Disclosure: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
-    <path d="M76.1544 44.7296 V37.8817 A3.04621 3.04621 0 0 0 73.1082 34.8355 H23.4243 A3.04621 3.04621 0 0 0 20.3781 37.8817 V85.0311 A3.04621 3.04621 0 0 0 23.4243 88.0773 H73.1082 A3.04621 3.04621 0 0 0 76.1544 85.0311 V85.0981" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M38.9601 47.4286 C38.229 45.9664 36.7668 45.1744 35.0609 45.1744 C32.7458 45.1744 30.8571 46.6365 30.8571 48.708 C30.8571 50.9013 32.8676 51.876 35.0609 52.729 C37.2542 53.5819 39.3256 54.5567 39.3256 56.8718 C39.3256 59.0042 37.437 60.2836 35.0609 60.2836 C33.2332 60.2836 31.7101 59.4307 30.979 57.8466" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.0609" y1="42.5973" x2="35.0609" y2="45.1744" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.0609" y1="60.2836" x2="35.0609" y2="62.2515" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="47.0935" y1="47.4712" x2="65.7485" y2="47.4712" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="47.0935" y1="55.8483" x2="58.8214" y2="55.8483" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="30.4124" y1="69.2943" x2="55.5498" y2="69.2943" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="30.4124" y1="77.5252" x2="51.8943" y2="77.5252" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="78.4452" cy="65.255" r="14.9569" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="89.1801" y1="75.667" x2="92.9391" y2="79.3408" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  <desc>Oath &amp; Action Civic Line R-08 Donor Disclosure: square tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.7208 about the center of the 128 box and moved 1.564 units right, with every stroke width multiplied by 0.9434 so its line stays at 3.3508 units or less. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-08-tile-square-newsprint-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-08-tile-square-newsprint-one-color-icon" data-part="icon" transform="matrix(0.7208 0 0 0.7208 19.4328 17.8688)">
+  <g id="oa-civic-line-r-08-tile-square-newsprint-one-color-base" data-part="base">
+    <path d="M76.1544 44.7296 V37.8817 A3.04621 3.04621 0 0 0 73.1082 34.8355 H23.4243 A3.04621 3.04621 0 0 0 20.3781 37.8817 V85.0311 A3.04621 3.04621 0 0 0 23.4243 88.0773 H73.1082 A3.04621 3.04621 0 0 0 76.1544 85.0311 V85.0981" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38.9601 47.4286 C38.229 45.9664 36.7668 45.1744 35.0609 45.1744 C32.7458 45.1744 30.8571 46.6365 30.8571 48.708 C30.8571 50.9013 32.8676 51.876 35.0609 52.729 C37.2542 53.5819 39.3256 54.5567 39.3256 56.8718 C39.3256 59.0042 37.437 60.2836 35.0609 60.2836 C33.2332 60.2836 31.7101 59.4307 30.979 57.8466" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.0609" y1="42.5973" x2="35.0609" y2="45.1744" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.0609" y1="60.2836" x2="35.0609" y2="62.2515" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="47.0935" y1="47.4712" x2="65.7485" y2="47.4712" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="47.0935" y1="55.8483" x2="58.8214" y2="55.8483" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.4124" y1="69.2943" x2="55.5498" y2="69.2943" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.4124" y1="77.5252" x2="51.8943" y2="77.5252" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="78.4452" cy="65.255" r="14.9569" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="89.1801" y1="75.667" x2="92.9391" y2="79.3408" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
-    <path d="M97.7643 79.292 L106.2937 87.6387 A3.411762 3.411762 0 0 1 106.3425 92.4639 A3.411797 3.411797 0 0 1 101.5172 92.5126 L92.9878 84.166 A3.411762 3.411762 0 0 1 92.9391 79.3408 A3.411762 3.411762 0 0 1 97.7643 79.292 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="oa-civic-line-r-08-tile-square-newsprint-one-color-accent" data-part="accent">
+    <path d="M97.7643 79.292 L106.2937 87.6387 A3.411762 3.411762 0 0 1 106.3425 92.4639 A3.411797 3.411797 0 0 1 101.5172 92.5126 L92.9878 84.166 A3.411762 3.411762 0 0 1 92.9391 79.3408 A3.411762 3.411762 0 0 1 97.7643 79.292 Z" fill="none" stroke="#121212" stroke-width="3.1611" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>
 </svg>

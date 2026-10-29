@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-009-tile-circle-charcoal-two-color" data-id="CL-009" width="128" height="128" viewBox="0 0 128 128">
   <title>Safe Seats</title>
-  <desc>Oath &amp; Action Civic Line CL-009 Safe Seats: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line CL-009 Safe Seats: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.5952 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-009-tile-circle-charcoal-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-009-tile-circle-charcoal-two-color-icon" data-part="icon" transform="matrix(0.5952 0 0 0.5952 25.9072 25.9072)">
+  <g id="oa-civic-line-cl-009-tile-circle-charcoal-two-color-base" data-part="base">
     <path d="M38.7164 53.6855 L21.2189 53.6855 A2.436988 2.436988 0 0 0 18.7819 56.1225 L18.7819 62.9643 L15.3762 66.37 L15.3762 78.5366 A2.436963 2.436963 0 0 0 17.8132 80.9735 L23.4853 80.9735 L27.4515 84.9397 L27.4515 94.2063 A2.436963 2.436963 0 0 0 29.8884 96.6433 L33.355 96.6433 A2.436988 2.436988 0 0 1 35.792 99.0803 L35.792 101.2248 A2.436988 2.436988 0 0 0 38.229 103.6618 L48.379 103.6618 A2.400411 2.400411 0 0 0 50.7794 101.2614 A2.400432 2.400432 0 0 1 53.1737 98.867 L97.7704 98.867 A2.436963 2.436963 0 0 0 100.2074 96.4301 L100.2074 81.8082 L104.6488 77.3668 L110.4914 77.3668 A2.436988 2.436988 0 0 0 112.9284 74.9298 L112.9284 56.7134 A2.436963 2.436963 0 0 0 110.4914 54.2765 L103.9481 54.2765 L99.458 49.7863 L99.458 40.8122 L93.8347 35.1889 L86.0485 35.1889 A2.436963 2.436963 0 0 1 83.6116 32.7519 L83.6116 26.3426 A2.436963 2.436963 0 0 0 81.1746 23.9057 L50.1945 23.9057 A2.436938 2.436938 0 0 0 47.7576 26.3426 L47.7576 29.8458 A2.436988 2.436988 0 0 1 45.3206 32.2828 L40.9218 32.2828 A2.004406 2.004406 0 0 0 38.9174 34.2872 L38.9174 36.2916 L34.6893 40.5197 L34.6893 49.2928 L37.3639 53.6855" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M54.6055 68.5693 V48.3912 A4.447466 4.447466 0 0 1 59.0529 43.9437 H71.5729 A4.447491 4.447491 0 0 1 76.0204 48.3912 V68.5693 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M48.2937 61.2584 L47.5626 62.7815 V73.2605 A3.59452 3.59452 0 0 0 51.1571 76.855 H79.4626 A3.594545 3.594545 0 0 0 83.0572 73.2605 V62.7815 L82.3261 61.2584" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="53.3504" y1="76.855" x2="53.3504" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="77.2693" y1="76.855" x2="77.2693" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-cl-009-tile-circle-charcoal-two-color-accent" data-part="accent">
     <path d="M56.2809 55.3487 H74.345 V66.8939 A3.350871 3.350871 0 0 1 70.9941 70.2448 H59.6317 A3.350846 3.350846 0 0 1 56.2809 66.8939 Z" fill="#E63946"/>
   </g>
   </g>

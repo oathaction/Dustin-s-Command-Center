@@ -1,5 +1,5 @@
 """Start a source: write src/<ID>.svg and src/<ID>.json skeletons with the
-right viewBox, data-id and catalogue text. Refuses to overwrite.
+right viewBox, data-id and catalog text. Refuses to overwrite.
 
     python3 -I new_source.py <ID> [--tracer NAME]
 """

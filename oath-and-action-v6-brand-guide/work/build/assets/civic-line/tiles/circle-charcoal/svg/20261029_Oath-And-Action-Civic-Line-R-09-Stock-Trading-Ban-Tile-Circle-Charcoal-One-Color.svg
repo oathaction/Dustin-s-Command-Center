@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-09-tile-circle-charcoal-one-color" data-id="R-09" width="128" height="128" viewBox="0 0 128 128">
   <title>Stock-Trading Ban</title>
-  <desc>Oath &amp; Action Civic Line R-09 Stock-Trading Ban: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-09 Stock-Trading Ban: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-09-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-r-09-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-09-tile-circle-charcoal-one-color-base" data-part="base">
     <path d="M20.5122 75.271 V39.8861 A5.117625 5.117625 0 0 0 25.6298 34.7685 H94.7059" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M20.5122 75.271 V83.7395 A5.11765 5.11765 0 0 1 25.6298 88.8572 H38.4118" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M107.6523 40.3613 V83.7395 A5.11765 5.11765 0 0 0 102.5347 88.8572 H54.6725" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -16,7 +16,7 @@
     <polyline points="38.491,69.9462 43.1029,69.6782 50.7246,58.395 56.9328,65.7059 64.5788,55.105 68.021,59.4916" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="83.9223,63.4517 88.5099,68.3866 90.0452,68.3866" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-09-tile-circle-charcoal-one-color-accent" data-part="accent">
     <polygon points="101.0359,35 105.6175,35 44.8393,92.9391 40.2578,92.9391" fill="#DCD9D2" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   </g>

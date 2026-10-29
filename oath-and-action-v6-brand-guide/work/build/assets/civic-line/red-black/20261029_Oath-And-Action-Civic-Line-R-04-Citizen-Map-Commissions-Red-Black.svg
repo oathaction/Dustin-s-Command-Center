@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-04" data-id="R-04" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-04-red-black" data-id="R-04" width="128" height="128" viewBox="0 0 128 128">
   <title>Citizen Map Commissions</title>
-  <desc>Oath &amp; Action Civic Line R-04 Citizen Map Commissions. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-04 Citizen Map Commissions. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 4. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-04-red-black-base" data-part="base">
     <polyline points="22.8334,82.1981 22.8334,49.0674 26.6777,48.5435 28.0973,45.1865 31.1983,44.1691 31.1983,30.3332 44.9368,30.3332 44.9368,41.1594 50.6697,41.1594 52.4792,37.7781 73.3214,37.7781 76.5504,35.3655 77.5252,32.5508 83.7395,32.5508 84.6534,34.7563 90.3254,41.1229 93.4874,41.4031 97.0819,44.9002 97.0819,48.6227 104.728,49.0309 104.728,82.3382" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="40.7573" cy="82.6916" r="4.7277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M32.4716 97.3561 V95.9853 A8.285709 8.285709 0 0 1 40.7573 87.6996 A8.285734 8.285734 0 0 1 49.0431 95.9853 V97.3561" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,7 +11,7 @@
     <circle cx="86.7553" cy="82.6916" r="4.7277" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M78.4695 97.3561 V95.9853 A8.285734 8.285734 0 0 1 86.7553 87.6996 A8.285709 8.285709 0 0 1 95.041 95.9853 V97.3561" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-04-red-black-accent" data-part="accent">
     <polyline points="21.158,67.2229 39.6241,66.3517 45.4973,59.1626 56.3845,59.1626 59.3088,55.9884 64.2681,55.958 68.7095,56.3174 71.7069,59.4002 76.8733,59.6987 80.0475,56.0433 88.0164,56.0433 89.0521,70.062 106.4034,70.062" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
     <polyline points="59.3271,36.1027 59.3271,44.1569 64.2681,47.4164 64.2681,55.958" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>

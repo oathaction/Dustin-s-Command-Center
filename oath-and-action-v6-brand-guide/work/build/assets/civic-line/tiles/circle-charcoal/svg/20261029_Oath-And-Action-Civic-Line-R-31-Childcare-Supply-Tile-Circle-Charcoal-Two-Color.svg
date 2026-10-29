@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-31-tile-circle-charcoal-two-color" data-id="R-31" width="128" height="128" viewBox="0 0 128 128">
   <title>Childcare Supply</title>
-  <desc>Oath &amp; Action Civic Line R-31 Childcare Supply: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line R-31 Childcare Supply: circle tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-31-tile-circle-charcoal-two-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-r-31-tile-circle-charcoal-two-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-31-tile-circle-charcoal-two-color-accent" data-part="accent">
     <path d="M50.6868 93.5651 V78.8599 A8.851699 8.851699 0 0 1 68.3902 78.8599 V93.5651 Z" fill="#E63946"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-r-31-tile-circle-charcoal-two-color-base" data-part="base">
     <line x1="7.6359" y1="93.5651" x2="83.4821" y2="93.5651" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="8.4568,64.0357 28.7538,64.0357" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="10.3723" y1="64.0357" x2="10.3723" y2="93.5651" fill="none" stroke="#DCD9D2" stroke-width="3.2718" stroke-linecap="round" stroke-linejoin="round"/>

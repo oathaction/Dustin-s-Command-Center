@@ -2,12 +2,18 @@
 
     python3 -I contact_sheets.py
 
-Each sheet is a 1536 x 1024 Newsprint canvas that repeats its source sheet
-cell for cell: every traced icon sits at its own crop rectangle, and the
-captions, reform IDs, sheet title, header rule and footer sit at the
-positions measured on the source. The upper left carries the approved
-Edition 06 wordmark master (DR-05), scaled to the source wordmark's cap
-height, with its ampersand in Pillar Red (red-black) or Charcoal (black).
+Each sheet is a 1536 x 1024 canvas, Newsprint for the dark editions and
+Charcoal for the light ones, that repeats its source sheet cell for cell:
+every traced icon sits at its own crop rectangle, and each caption and reform
+ID keeps the horizontal center measured on the source. The header and footer
+follow one template on every sheet (variant review S-3): the wordmark at
+x = 49, the rule from x = 49 to 1487 centered on y = 66.25, the title and the
+footer right-aligned to x = 1487, the footer's top at y = 989.4. The captions
+in each row share one baseline, the row's median (S-4). The upper left carries
+the approved Edition 06 wordmark master (DR-05), scaled to the source
+wordmark's cap height, with its ampersand in Pillar Red on the two-color
+sheets and in the ink color on the one-color sheets. Every id in a sheet
+starts with the sheet's root id (M-2).
 
 Text is set in Inter from work/extract/v5-polished/fonts (OFL 1.1, no
 Reserved Font Name; rights ledger font-01 to font-03), shaped by Chromium
@@ -60,11 +66,19 @@ TITLES = {
 }
 # Dark editions sit on Newsprint and are compared with their source sheet; the
 # light editions (DR-09) sit on Charcoal and have no source sheet to compare.
-EDITIONS = {"red-black": {"label": "Red-Black", "accent": C.PILLAR_RED, "src": "red", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
-            "black": {"label": "Black", "accent": C.CHARCOAL, "src": "black", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
-            "red-newsprint": {"label": "Red-Newsprint", "accent": C.PILLAR_RED, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT},
-            "newsprint": {"label": "Newsprint", "accent": C.NEWSPRINT, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT}}
+# "label" names the files; "name" is the edition as the readme writes it, used in the footer.
+EDITIONS = {"red-black": {"label": "Red-Black", "name": "Red-black", "accent": C.PILLAR_RED, "src": "red", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
+            "black": {"label": "Black", "name": "Black", "accent": C.CHARCOAL, "src": "black", "ground": C.NEWSPRINT, "ink": C.CHARCOAL},
+            "red-newsprint": {"label": "Red-Newsprint", "name": "Red-newsprint", "accent": C.PILLAR_RED, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT},
+            "newsprint": {"label": "Newsprint", "name": "Newsprint", "accent": C.NEWSPRINT, "src": None, "ground": C.CHARCOAL, "ink": C.NEWSPRINT}}
 RULE_T = 1.2   # rule thickness in px: median of the five source rules (1.02 to 1.5)
+# One header and footer geometry for every contact and tile sheet (S-3). The
+# wordmark keeps sheet 01's measured placement; the title and footer sizes are
+# the tile sheets' (about the median of the five source fits).
+TEMPLATE = {"wordmark": {"x0": 49, "cap_top": 27.0, "baseline": 49.0},
+            "rule": {"x0": 49, "x1": 1487, "cy": 66.25},
+            "title": {"x1": 1487, "baseline": 46.0, "size": 20.6},
+            "footer": {"x1": 1487, "top": 989.4, "size": 12.6}}
 
 
 def n2(v):
@@ -133,6 +147,13 @@ class Fonts:
             return None
         return gl.xMin, gl.xMax, F["upm"]
 
+    def ybounds(self, fam, ch):
+        F = self.f[fam]
+        gl = F["glyf"][F["cmap"][ord(ch)]]
+        if not hasattr(gl, "yMax") or gl.numberOfContours == 0:
+            return None
+        return gl.yMin, gl.yMax, F["upm"]
+
     def path(self, fam, ch, x, baseline, size):
         F = self.f[fam]
         name = F["cmap"][ord(ch)]
@@ -172,6 +193,12 @@ def ink_extent(fonts, chars, size, shaped_size=100.0):
     return min(xs0), max(xs1)
 
 
+def baseline_for_top(fonts, chars, size, top):
+    """The baseline that puts the line's highest ink at y = top."""
+    ys = [fonts.ybounds(c["family"], c["ch"]) for c in chars if c["ch"] != " "]
+    return top + max(b[1] * size / b[2] for b in ys if b)
+
+
 def text_path(fonts, chars, size, dx, baseline, shaped_size=100.0):
     k = size / shaped_size
     parts = []
@@ -184,7 +211,7 @@ def text_path(fonts, chars, size, dx, baseline, shaped_size=100.0):
 
 # ------------------------------------------------------------------ sheet assembly
 
-def wordmark_group(meas, accent, ink=C.CHARCOAL):
+def wordmark_group(meas, accent, ink=C.CHARCOAL, gid="wordmark"):
     s = open(WORDMARK, encoding="utf-8").read()
     paths = re.findall(r"<path\b[^>]*/>", s)
     k = (meas["baseline"] - meas["cap_top"]) / (WM_BASELINE - WM_CAP_TOP)
@@ -196,14 +223,18 @@ def wordmark_group(meas, accent, ink=C.CHARCOAL):
     tx = meas["x0"]
     ty = meas["baseline"] - WM_BASELINE * k
     width = 978.31 * k
-    return (f'  <g id="wordmark" transform="translate({n2(tx)} {n2(ty)}) scale({k:.6f})">\n' + "\n".join(out) + "\n  </g>"), k, width
+    return (f'  <g id="{gid}" transform="translate({n2(tx)} {n2(ty)}) scale({k:.6f})">\n' + "\n".join(out) + "\n  </g>"), k, width
 
 
-def icon_block(row, edition):
+def icon_block(row, edition, sheet_root):
+    """The bare export as a nested <svg> at its crop rectangle. Its ids move
+    under the sheet's root: <sheet root>-<icon id>, then the bare file's own
+    suffixes (-base, -accent, mask names)."""
     p = C.edition_file(row, edition)
     if not os.path.exists(p):
         return None
     s = open(p, encoding="utf-8").read()
+    s = s.replace(C.bare_root(row["id"], edition), f"{sheet_root}-{row['id'].lower()}")
     s = s.split("?>", 1)[-1].strip()
     s = re.sub(r"\s*<title>.*?</title>", "", s, flags=re.S)
     s = re.sub(r"\s*<desc>.*?</desc>", "", s, flags=re.S)
@@ -213,8 +244,6 @@ def icon_block(row, edition):
     vb = f"{64 - sc * t['cx']:.4f} {64 - sc * t['cy']:.4f} {c['w'] * sc:.4f} {c['h'] * sc:.4f}"
     s = s.replace('width="128" height="128" viewBox="0 0 128 128"',
                   f'x="{c["x0"]}" y="{c["y0"]}" width="{c["w"]}" height="{c["h"]}" viewBox="{vb}" overflow="visible"', 1)
-    pre = row["id"].lower()
-    s = re.sub(r'<g id="(base|accent)((?:-\d+)?)"', lambda m: f'<g id="{pre}-{m.group(1)}{m.group(2)}"', s)
     s = s.replace('xmlns="http://www.w3.org/2000/svg" ', "", 1)
     return "  " + s.replace("\n", "\n  ")
 
@@ -235,7 +264,7 @@ def build():
         lines.append({"id": f"{key}-title", "size": 100, "runs": [{"family": f, "text": t} for f, t in TITLES[key]]})
         for ed in EDITIONS.values():
             lines.append({"id": f"{key}-footer-{ed['label']}", "size": 100,
-                          "runs": [{"family": "Inter-400", "text": f"Oath & Action / Civic Line / {ed['label']}"}]})
+                          "runs": [{"family": "Inter-400", "text": f"Oath & Action / Civic Line / {ed['name']}"}]})
         for r in by_sheet[key]:
             lines.append({"id": f"{r['id']}-cap", "size": 100, "runs": [{"family": "Inter-400", "text": r["label"]}]})
             if C.SHEETS[key]["reform"]:
@@ -256,36 +285,49 @@ def build():
         if C.SHEETS[key]["reform"]:
             id_size = float(np.median([fit(f"{r['id']}-id", cells[(r['row'], r['column'])]["id"]["x0"],
                                            cells[(r['row'], r['column'])]["id"]["x1"]) for r in rows]))
-        title_size = fit(f"{key}-title", m["title"]["x0"], m["title"]["x1"])
-        footer_sizes = {}
-        lay = {"measured": m, "caption_size_px": round(cap_size, 3), "caption_size_spread": [round(min(cap_sizes), 2), round(max(cap_sizes), 2)],
-               "id_size_px": round(id_size, 3) if id_size else None, "title_size_px": round(title_size, 3), "editions": {}}
+        T_ = TEMPLATE
+        title_size, fsz = T_["title"]["size"], T_["footer"]["size"]
+        # S-4: one baseline per row, the row's median, for the captions and for the reform IDs
+        cap_base, id_base = {}, {}
+        for rr in sorted({c["row"] for c in m["cells"]}):
+            rc = [c for c in m["cells"] if c["row"] == rr]
+            cap_base[rr] = float(np.median([c["cap"]["baseline"] for c in rc]))
+            if all("id" in c for c in rc):
+                id_base[rr] = float(np.median([c["id"]["baseline"] for c in rc]))
+        lay = {"measured": m, "template": TEMPLATE, "caption_size_px": round(cap_size, 3),
+               "caption_size_spread": [round(min(cap_sizes), 2), round(max(cap_sizes), 2)],
+               "caption_baselines_by_row": {str(k_): round(v, 2) for k_, v in cap_base.items()},
+               "caption_baseline_spread_in_source_by_row": {str(rr): round(max(c["cap"]["baseline"] for c in m["cells"] if c["row"] == rr)
+                                                                          - min(c["cap"]["baseline"] for c in m["cells"] if c["row"] == rr), 2)
+                                                             for rr in cap_base},
+               "id_baselines_by_row": {str(k_): round(v, 2) for k_, v in id_base.items()},
+               "id_size_px": round(id_size, 3) if id_size else None, "title_size_px": title_size, "editions": {}}
         for ed_key, ed in EDITIONS.items():
             fid = f"{key}-footer-{ed['label']}"
-            # the footer face is fitted on the black sheet's footer; both editions share that size
-            footer_sizes[ed_key] = fit(f"{key}-footer-Black", m["footer"]["x0"], m["footer"]["x1"])
-            fsz = footer_sizes[ed_key]
+            rid = f"oa-civic-line-sheet-{key}-{ed_key}"
             parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" '
-                     f'id="oa-civic-line-sheet-{key}-{ed_key}">',
-                     f"  <title>Oath &amp; Action Civic Line, sheet {key}, {ed['label']} edition</title>",
-                     f"  <desc>Contact sheet rebuilt from the traced Civic Line masters at the source sheet's layout. "
-                     f"Text is Inter converted to outlines. The wordmark is the Edition 06 display master (DR-05).</desc>",
-                     f'  <rect id="ground" x="0" y="0" width="1536" height="1024" fill="{ed["ground"]}"/>']
-            wm, k, wmw = wordmark_group(m["wordmark"], ed["accent"], ed["ink"])
+                     f'id="{rid}">',
+                     f"  <title>Oath &amp; Action Civic Line, sheet {key}, {ed['name']} edition</title>",
+                     f"  <desc>Contact sheet rebuilt from the traced Civic Line masters at the source sheet's layout, with the "
+                     f"Civic Line sheet header and footer. Text is Inter converted to outlines. The wordmark is the Edition 06 "
+                     f"display master (DR-05). Every id starts with the sheet's root id.</desc>",
+                     f'  <rect id="{rid}-ground" x="0" y="0" width="1536" height="1024" fill="{ed["ground"]}"/>']
+            wm, k, wmw = wordmark_group(T_["wordmark"], ed["accent"], ed["ink"], f"{rid}-wordmark")
             parts.append(wm)
-            ru = m["rule"]
-            parts.append(f'  <rect id="rule" x="{ru["x0"]}" y="{n2(ru["cy"] - RULE_T / 2)}" width="{ru["x1"] - ru["x0"]}" '
+            ru = T_["rule"]
+            parts.append(f'  <rect id="{rid}-rule" x="{ru["x0"]}" y="{n2(ru["cy"] - RULE_T / 2)}" width="{ru["x1"] - ru["x0"]}" '
                          f'height="{n2(RULE_T)}" fill="{ed["ink"]}"/>')
             a, b = ink_extent(fonts, shaped[f"{key}-title"]["chars"], title_size)
-            dx = m["title"]["x1"] - b
-            parts.append(f'  <path id="title" fill="{ed["ink"]}" d="{text_path(fonts, shaped[f"{key}-title"]["chars"], title_size, dx, m["title"]["baseline"])}"/>')
+            dx = T_["title"]["x1"] - b
+            parts.append(f'  <path id="{rid}-title" fill="{ed["ink"]}" d="{text_path(fonts, shaped[f"{key}-title"]["chars"], title_size, dx, T_["title"]["baseline"])}"/>')
             a, b = ink_extent(fonts, shaped[fid]["chars"], fsz)
-            dx = m["footer"]["x1"] - b
-            parts.append(f'  <path id="footer" fill="{ed["ink"]}" d="{text_path(fonts, shaped[fid]["chars"], fsz, dx, m["footer"]["baseline"])}"/>')
+            dx = T_["footer"]["x1"] - b
+            f_base = baseline_for_top(fonts, shaped[fid]["chars"], fsz, T_["footer"]["top"])
+            parts.append(f'  <path id="{rid}-footer" fill="{ed["ink"]}" d="{text_path(fonts, shaped[fid]["chars"], fsz, dx, f_base)}"/>')
             missing = []
             for r in rows:
                 cm = cells[(r["row"], r["column"])]
-                blk = icon_block(r, ed_key)
+                blk = icon_block(r, ed_key, rid)
                 if blk is None:
                     missing.append(r["id"])
                 else:
@@ -293,19 +335,20 @@ def build():
                 ch = shaped[f"{r['id']}-cap"]["chars"]
                 a, b = ink_extent(fonts, ch, cap_size)
                 dx = (cm["cap"]["x0"] + cm["cap"]["x1"]) / 2.0 - (a + b) / 2.0
-                parts.append(f'  <path id="caption-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, cap_size, dx, cm["cap"]["baseline"])}"/>')
+                parts.append(f'  <path id="{rid}-caption-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, cap_size, dx, cap_base[r["row"]])}"/>')
                 if id_size:
                     ch = shaped[f"{r['id']}-id"]["chars"]
                     a, b = ink_extent(fonts, ch, id_size)
                     dx = (cm["id"]["x0"] + cm["id"]["x1"]) / 2.0 - (a + b) / 2.0
-                    parts.append(f'  <path id="id-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, id_size, dx, cm["id"]["baseline"])}"/>')
+                    parts.append(f'  <path id="{rid}-id-{r["id"].lower()}" fill="{ed["ink"]}" d="{text_path(fonts, ch, id_size, dx, id_base[r["row"]])}"/>')
             parts.append("</svg>")
             svg = "\n".join(parts) + "\n"
             name = f"{C.DATE}_Oath-And-Action-Civic-Line-{key}-{SHEET_SLUG[key]}-{ed['label']}"
             with open(os.path.join(OUT, name + ".svg"), "w", encoding="utf-8") as fh:
                 fh.write(svg)
             pending.append((key, ed_key, name, svg))
-            lay["editions"][ed_key] = {"file": name + ".svg", "footer_size_px": round(fsz, 3), "missing_icons": missing,
+            lay["editions"][ed_key] = {"file": name + ".svg", "footer_size_px": round(fsz, 3), "footer_baseline": round(f_base, 3),
+                                       "missing_icons": missing,
                                        "wordmark_scale": round(k, 6), "wordmark_width_px": round(wmw, 2),
                                        "source_wordmark_width_px": m["wordmark"]["x1"] - m["wordmark"]["x0"]}
         layout["sheets"][key] = lay
@@ -321,7 +364,7 @@ def build():
         r = subprocess.run(["node", C.RENDER_JS, jp], capture_output=True, text=True)
         if r.returncode:
             raise SystemExit("render failed:\n" + r.stderr[-2000:])
-    # PNG files carry no alpha: the Newsprint canvas fills them
+    # PNG files carry no alpha: the canvas fills them
     for key, ed_key, name, svg in pending:
         for suf in ("", "-2x"):
             p = os.path.join(OUT, name + suf + ".png")
@@ -343,8 +386,8 @@ def compare(key, ed_key, name):
     out = Image.new("RGB", (src.width * 2 + gap * 3, src.height + top + gap), (255, 255, 255))
     d = ImageDraw.Draw(out)
     f = C.font(20, True)
-    d.text((gap, 10), f"Source sheet {key}, {EDITIONS[ed_key]['label']} (supplied raster)", fill=(0, 0, 0), font=f)
-    d.text((gap * 2 + src.width, 10), f"Rebuilt sheet {key}, {EDITIONS[ed_key]['label']} (traced masters, Edition 06 wordmark)",
+    d.text((gap, 10), f"Source sheet {key}, {EDITIONS[ed_key]['name']} (supplied raster)", fill=(0, 0, 0), font=f)
+    d.text((gap * 2 + src.width, 10), f"Rebuilt sheet {key}, {EDITIONS[ed_key]['name']} (traced masters, Edition 06 wordmark)",
            fill=(0, 0, 0), font=f)
     out.paste(src, (gap, top))
     out.paste(reb, (gap * 2 + src.width, top))

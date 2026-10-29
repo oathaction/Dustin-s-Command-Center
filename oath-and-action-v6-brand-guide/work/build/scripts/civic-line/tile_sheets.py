@@ -2,11 +2,14 @@
 
     python3 -I tile_sheets.py
 
-Each sheet shows all 122 tiles in catalogue order with their IDs, on the ground
+Each sheet shows all 122 tiles in catalog order with their IDs, on the ground
 opposite to the tile (Charcoal tiles on Newsprint, Newsprint tiles on
-Charcoal), under the Edition 06 wordmark and a title in the contact sheets'
-header layout. Text is Inter converted to outlines. The tile outline is drawn
-once in <defs> and referenced, so each sheet stays small. Writes
+Charcoal), under the Edition 06 wordmark and a title in the sheet template the
+contact sheets share (variant review S-3); the footer repeats the title's
+words. Each tile is its tile file's icon group, transform included, so the
+optical scale and offset show (S-1, S-2). Text is Inter converted to outlines.
+The tile outline is drawn once in <defs> and referenced, so each sheet stays
+small. Every id starts with the sheet's root id (M-2). Writes
 contact-sheets/tiles/<date>_Oath-And-Action-Civic-Line-Tiles-<Shape>-<Tile>-<Mode>.svg,
 .png and -2x.png.
 """
@@ -28,6 +31,7 @@ OUT = os.path.join(C.ASSETS, "contact-sheets", "tiles")
 SHAPE_TITLE = {"square": "Square", "rounded": "Rounded square", "circle": "Circle"}
 SHAPE_FILE = {"square": "Square", "rounded": "Rounded", "circle": "Circle"}
 W, COLS, TILE, PITCH_X, PITCH_Y, TOP = 1536, 12, 88, 120, 132, 104
+FOOTER_TOP = 1574.4   # the tile sheets' footer top, kept (S-3)
 
 
 def sheet_name(shape, tile, mode):
@@ -35,20 +39,20 @@ def sheet_name(shape, tile, mode):
     return f"{C.DATE}_Oath-And-Action-Civic-Line-Tiles-{SHAPE_FILE[shape]}-{tile.capitalize()}-{md}"
 
 
-def tile_body(row, shape, tile, mode, prefix):
-    """The tile's icon group, ids prefixed; the shape itself is referenced from <defs>."""
-    bare = open(C.edition_file(row, C.TILE_EDITION[(tile, mode)]), encoding="utf-8").read()
-    inner = T.bare_inner(bare).replace('id="', f'id="{prefix}').replace("url(#", f"url(#{prefix}")
-    f = C.TILE_FACTORS[shape]
-    t = 64 * (1 - f)
-    return f'<use href="#tile-shape"/><g transform="matrix({f:g} 0 0 {f:g} {t:.4f} {t:.4f})">{inner}</g>'
+def tile_body(row, shape, tile, mode, sheet_root):
+    """The tile file's icon group, with its ids moved under <sheet root>-<icon id>;
+    the shape itself is referenced from <defs>."""
+    t = open(C.tile_file(row, shape, tile, mode), encoding="utf-8").read()
+    start = re.search(r'<g id="[^"]+-icon" data-part="icon"', t).start()
+    g = t[start:t.rindex("</g>") + 4]
+    g = g.replace(C.tile_root(row["id"], shape, tile, mode), f"{sheet_root}-{row['id'].lower()}")
+    return f'<use href="#{sheet_root}-tile-shape"/>{g}'
 
 
 def main():
     os.makedirs(OUT, exist_ok=True)
     inv = C.load_inventory()["icons"]
     fonts = CS.Fonts()
-    meas = CS.measure_sheet("01")
     rows_n = (len(inv) + COLS - 1) // COLS
     H = TOP + rows_n * PITCH_Y + 56
     lines = []
@@ -58,7 +62,7 @@ def main():
             {"family": "Inter-600", "text": "Tiles"},
             {"family": "Inter-400", "text": f" / {SHAPE_TITLE[sh]} / {tl.capitalize()}, {md}"}]})
         lines.append({"id": f"f-{sh}-{tl}-{md}", "size": 100, "runs": [
-            {"family": "Inter-400", "text": f"Oath & Action / Civic Line / Tiles / {SHAPE_FILE[sh]} / {tl.capitalize()} / {md.replace('-', ' ').title().replace(' ', '-')}"}]})
+            {"family": "Inter-400", "text": f"Oath & Action / Civic Line / Tiles / {SHAPE_TITLE[sh]} / {tl.capitalize()}, {md}"}]})
     for r in inv:
         lines.append({"id": f"id-{r['id']}", "size": 100, "runs": [{"family": "Inter-400", "text": r["id"]}]})
     shaped = CS.shape(lines)
@@ -68,33 +72,39 @@ def main():
         ink = C.CHARCOAL if tl == "charcoal" else C.NEWSPRINT
         accent = C.PILLAR_RED if md == "two-color" else ink
         fill = C.TILE_FILL[tl]
-        shape_el = T.shape_element(sh, fill).replace(' id="tile"', ' id="tile-shape"')
-        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" id="oa-civic-line-tiles-{sh}-{tl}-{md}">',
+        rid = f"oa-civic-line-tiles-{sh}-{tl}-{md}"
+        shape_el = T.shape_element(sh, fill, rid).replace(f'id="{rid}-tile" data-part="tile"', f'id="{rid}-tile-shape"')
+        TP = CS.TEMPLATE
+        parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" id="{rid}">',
                  f"  <title>Oath &amp; Action Civic Line tiles: {SHAPE_TITLE[sh].lower()}, {tl.capitalize()}, {md}</title>",
-                 "  <desc>All 122 Civic Line tiles in catalogue order. Each tile is its tile file's geometry; text is Inter converted to outlines.</desc>",
+                 "  <desc>All 122 Civic Line tiles in catalog order. Each tile is its tile file's geometry, transform included; "
+                 "text is Inter converted to outlines. Every id starts with the sheet's root id.</desc>",
                  f"  <defs>{shape_el}</defs>",
-                 f'  <rect id="ground" x="0" y="0" width="{W}" height="{H}" fill="{ground}"/>']
-        wm, _, _ = CS.wordmark_group(meas["wordmark"], accent, ink)
+                 f'  <rect id="{rid}-ground" x="0" y="0" width="{W}" height="{H}" fill="{ground}"/>']
+        wm, _, _ = CS.wordmark_group(TP["wordmark"], accent, ink, f"{rid}-wordmark")
         parts.append(wm)
-        parts.append(f'  <rect id="rule" x="{meas["rule"]["x0"]}" y="{CS.n2(meas["rule"]["cy"] - CS.RULE_T / 2)}" '
-                     f'width="{meas["rule"]["x1"] - meas["rule"]["x0"]}" height="{CS.n2(CS.RULE_T)}" fill="{ink}"/>')
+        ru = TP["rule"]
+        parts.append(f'  <rect id="{rid}-rule" x="{ru["x0"]}" y="{CS.n2(ru["cy"] - CS.RULE_T / 2)}" '
+                     f'width="{ru["x1"] - ru["x0"]}" height="{CS.n2(CS.RULE_T)}" fill="{ink}"/>')
         tid = f"t-{sh}-{tl}-{md}"
-        size = 20.6
+        size = TP["title"]["size"]
         a, b = CS.ink_extent(fonts, shaped[tid]["chars"], size)
-        parts.append(f'  <path id="title" fill="{ink}" d="{CS.text_path(fonts, shaped[tid]["chars"], size, meas["title"]["x1"] - b, meas["title"]["baseline"])}"/>')
+        parts.append(f'  <path id="{rid}-title" fill="{ink}" d="{CS.text_path(fonts, shaped[tid]["chars"], size, TP["title"]["x1"] - b, TP["title"]["baseline"])}"/>')
         grid_w = COLS * PITCH_X
         x_left = (W - grid_w) / 2
         for k, r in enumerate(inv):
             cx = x_left + (k % COLS) * PITCH_X + PITCH_X / 2
             y = TOP + (k // COLS) * PITCH_Y
             parts.append(f'  <svg x="{cx - TILE / 2:.2f}" y="{y}" width="{TILE}" height="{TILE}" viewBox="0 0 128 128">'
-                         f'{tile_body(r, sh, tl, md, f"{r["id"].lower()}-")}</svg>')
+                         f'{tile_body(r, sh, tl, md, rid)}</svg>')
             ch = shaped[f"id-{r['id']}"]["chars"]
             a, b = CS.ink_extent(fonts, ch, 11.5)
             parts.append(f'  <path fill="{ink}" d="{CS.text_path(fonts, ch, 11.5, cx - (a + b) / 2, y + TILE + 19)}"/>')
         fid = f"f-{sh}-{tl}-{md}"
-        a, b = CS.ink_extent(fonts, shaped[fid]["chars"], 12.6)
-        parts.append(f'  <path id="footer" fill="{ink}" d="{CS.text_path(fonts, shaped[fid]["chars"], 12.6, meas["footer"]["x1"] - b, H - 28)}"/>')
+        fs = TP["footer"]["size"]
+        a, b = CS.ink_extent(fonts, shaped[fid]["chars"], fs)
+        f_base = CS.baseline_for_top(fonts, shaped[fid]["chars"], fs, FOOTER_TOP)
+        parts.append(f'  <path id="{rid}-footer" fill="{ink}" d="{CS.text_path(fonts, shaped[fid]["chars"], fs, TP["footer"]["x1"] - b, f_base)}"/>')
         parts.append("</svg>")
         svg = "\n".join(parts) + "\n"
         name = sheet_name(sh, tl, md)

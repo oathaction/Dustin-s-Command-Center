@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-064-tile-circle-charcoal-one-color" data-id="CL-064" width="128" height="128" viewBox="0 0 128 128">
   <title>Trade Costs</title>
-  <desc>Oath &amp; Action Civic Line CL-064 Trade Costs: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#121212"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="accent">
+  <desc>Oath &amp; Action Civic Line CL-064 Trade Costs: circle tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-cl-064-tile-circle-charcoal-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#121212"/>
+  <g id="oa-civic-line-cl-064-tile-circle-charcoal-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-cl-064-tile-circle-charcoal-one-color-accent" data-part="accent">
     <path d="M55.5688 66.32 L65.4146 63.502 M58.3415 65.5278 L55.5122 72.7142 L65.4146 70.96" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M72.3746 61.9233 L86.9171 59.4449 L86.9171 65.8673 L72.5444 68.7871 M77.8068 61.0293 L75.5661 68.1873" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <polygon points="85.361,61.1707 85.361,65.0185 82.2771,65.4712" fill="#DCD9D2"/>
   </g>
-  <g id="base">
+  <g id="oa-civic-line-cl-064-tile-circle-charcoal-one-color-base" data-part="base">
     <rect x="7.5108" y="59.9259" width="32.463" height="30.0638" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="7.5108,59.9259 16.5022,51.438 48.9653,51.438 39.9738,59.9259" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="48.9653,51.438 48.9653,81.5019 39.9738,89.9897" fill="none" stroke="#DCD9D2" stroke-width="3.1122" stroke-linecap="round" stroke-linejoin="round"/>

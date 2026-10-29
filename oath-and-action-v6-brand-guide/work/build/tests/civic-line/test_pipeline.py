@@ -11,7 +11,12 @@ real exports, QA files and status files are never touched.
    holes in the transparent PNG, the pair is identical after the swap, the
    bake check is near 1 and verify_set passes on the tree.
 4. verify_set catches a tampered black file, a red value in a black file, a
-   background rect, a drawing outside 0..128 and a text element.
+   background rect, a drawing outside 0..128 and a text element; in the tiles,
+   a wrong ink, a moved coordinate, a stroke left at its bare width, a missing
+   optical scale, ids outside the root, ids shared with another file and a
+   reference that resolves nowhere; and a wrong minimum tile size in the
+   inventory. The feature icon takes a test optical scale and offset, so the
+   tile transform and the stroke cap are exercised.
 5. All 244 reference crops are exact pixel copies of their sheet rectangles,
    and the supplied sheets are unchanged against git.
 """
@@ -60,7 +65,7 @@ def validator_tests():
     expect_error("wrong viewBox", rep('viewBox="0 0 179 123"', 'viewBox="0 0 128 128"'), "viewBox must be")
     expect_error("wrong data-id", rep('data-id="R-35"', 'data-id="R-36"'), "data-id must be")
     expect_error("transform", rep('<line ', '<line transform="rotate(5)" '), "transforms are not supported")
-    expect_error("fill colour", rep('<line ', '<line fill="#E63946" '), "colors and stroke style come from")
+    expect_error("fill color", rep('<line ', '<line fill="#E63946" '), "colors and stroke style come from")
     expect_error("style attribute", rep('<line ', '<line style="stroke:red" '), "attribute 'style' is not allowed")
     expect_error("text element", rep('<line x1="10" y1="10" x2="50" y2="10"/>', '<text x="1" y="1">A</text>'), "<text> is not allowed")
     expect_error("image element", rep('<line x1="10" y1="10" x2="50" y2="10"/>', '<image href="a.png"/>'), "<image> is not allowed")
@@ -87,7 +92,7 @@ def validator_tests():
     src = S.parse_source(keep, "R-35", 179, 123, CORR)
     out = S.crop_space_svg(src, 5.5, {"base": C.CHARCOAL, "accent": C.PILLAR_RED})
     check("mask: cut shapes paint black, data-mask keep paints white, group gets the mask",
-          'r="9" fill="#000000"' in out and 'r="3" fill="#FFFFFF"' in out and '<g id="base" mask="url(#m-m)">' in out)
+          'r="9" fill="#000000"' in out and 'r="3" fill="#FFFFFF"' in out and '<g id="base" data-part="base" mask="url(#m-m)">' in out)
 
 
 def bake_tests():
@@ -104,12 +109,12 @@ def bake_tests():
     txt = S.path_string(baked)
     back = [p for poly in S.flatten_path(S.tokenize_path(txt, "t")) for p in poly]
     err2 = max(max(abs(X - x2), abs(Y - y2)) for (X, Y), (x2, y2) in zip(b, back))
-    check("bake: serialised path re-reads within the output rounding", err2 < 5e-4, f"max error {err2:.5f} units")
+    check("bake: serialized path re-reads within the output rounding", err2 < 5e-4, f"max error {err2:.5f} units")
     arc_centre_test()
 
 
 def svg_arc_centre(x1, y1, rx, ry, fa, fs, x2, y2):
-    """Centre a renderer computes for an unrotated arc (SVG 1.1 F.6.5, with radius scaling)."""
+    """Center a renderer computes for an unrotated arc (SVG 1.1 F.6.5, with radius scaling)."""
     import math
     dx, dy = (x1 - x2) / 2, (y1 - y2) / 2
     lam = (dx / rx) ** 2 + (dy / ry) ** 2
@@ -125,7 +130,7 @@ def svg_arc_centre(x1, y1, rx, ry, fa, fs, x2, y2):
 
 def arc_centre_test():
     """Half circles whose ends sit a diameter apart, and near-half circles, keep
-    their centre through the bake within 0.01 source px."""
+    their center through the bake within 0.01 source px."""
     import math
     import random
     rnd = random.Random(7)
@@ -144,7 +149,7 @@ def arc_centre_test():
         (_, m), (_, a) = S.transform_path([("M", [x1, y1]), ("A", [r, r, 0, 0, fs, x2, y2])], X, Y, s)
         got = svg_arc_centre(m[0], m[1], a[0], a[1], 0, fs, a[5], a[6])
         worst = max(worst, math.hypot(got[0] - want[0], got[1] - want[1]) / s)
-    check("bake: 4000 half and near-half arcs keep their centre within 0.01 source px", worst < 0.01, f"worst {worst:.5f} px")
+    check("bake: 4000 half and near-half arcs keep their center within 0.01 source px", worst < 0.01, f"worst {worst:.5f} px")
 
 
 FEATURE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" data-id="R-35" viewBox="0 0 179 123">
@@ -189,6 +194,7 @@ def feature_build_test():
             shutil.copy(os.path.join(C.QA, "masks", f"R-35-{suf}.png"), os.path.join(assets, "qa", "masks"))
         shutil.copy(C.SCALE_JSON, os.path.join(assets, "qa"))
         shutil.copy(C.INVENTORY_JSON, assets)
+        C.INVENTORY_CSV = os.path.join(assets, os.path.basename(C.INVENTORY_CSV))
         with open(os.path.join(assets, "src", "R-35.svg"), "w") as fh:
             fh.write(FEATURE_SVG)
         with open(os.path.join(assets, "src", "R-35.json"), "w") as fh:
@@ -213,11 +219,11 @@ def feature_build_test():
         png = np.asarray(Image.open(os.path.join(assets, "png-512", "red-black", rb_name)))
         t = row["transform"]
         to_px = lambda x, y: (int(round((t["s"] * (x - t["cx"]) + 64) * 4)), int(round((t["s"] * (y - t["cy"]) + 64) * 4)))  # noqa: E731
-        xc, yc = to_px(136, 87)      # centre of the X knockout
+        xc, yc = to_px(136, 87)      # center of the X knockout
         xd, yd = to_px(136, 72)      # inside the disc, clear of the X
-        xh, yh = to_px(70, 90)       # centre of the evenodd hole
+        xh, yh = to_px(70, 90)       # center of the evenodd hole
         xf, yf = to_px(62, 82)       # inside the evenodd frame
-        check("feature: mask knockout is a real hole (alpha 0 at the X centre)", png[yc, xc, 3] == 0, f"alpha {png[yc, xc, 3]}")
+        check("feature: mask knockout is a real hole (alpha 0 at the X center)", png[yc, xc, 3] == 0, f"alpha {png[yc, xc, 3]}")
         check("feature: disc around the knockout is Pillar Red", png[yd, xd, 3] == 255 and tuple(png[yd, xd, :3]) == C.hex_rgb(C.PILLAR_RED),
               f"{tuple(png[yd, xd])}")
         check("feature: evenodd hole is transparent", png[yh, xh, 3] == 0, f"alpha {png[yh, xh, 3]}")
@@ -226,7 +232,14 @@ def feature_build_test():
         bkp = np.asarray(Image.open(os.path.join(assets, "png-512", "black", row["exports"]["png_black"])))
         check("feature: black edition keeps the knockout open", bkp[yc, xc, 3] == 0 and tuple(bkp[yd, xd, :3]) == C.hex_rgb(C.CHARCOAL))
         txt = open(os.path.join(assets, "red-black", row["exports"]["svg_red_black"])).read()
-        check("feature: two base groups numbered, accent single", 'id="base-1"' in txt and 'id="base-2"' in txt and 'id="accent"' in txt)
+        root = C.bare_root("R-35", "red-black")
+        check("feature: two base groups numbered under the root id, accent single, each with its data-part",
+              f'id="{root}-base-1" data-part="base"' in txt and f'id="{root}-base-2" data-part="base"' in txt
+              and f'id="{root}-accent" data-part="accent"' in txt)
+        check("feature: the mask id starts with the root id", f'<mask id="{root}-x-cut"' in txt and f'url(#{root}-x-cut)' in txt)
+        bk_txt = open(C.edition_file(row, "black")).read()
+        check("editions: the black file carries its own root id and no red-black id",
+              f'id="{C.bare_root("R-35", "black")}"' in bk_txt and "red-black" not in bk_txt)
         check("feature: mask region set in user space over the canvas",
               'maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128"' in txt)
         check("feature: data-w scaled into the export", f'stroke-width="{S.fmt4(8 * t["s"])}"' in txt)
@@ -238,15 +251,27 @@ def feature_build_test():
         B.build(["R-35"], state="reviewed", note="looked at overlay")
         st = C.read_json(os.path.join(C.QA, "status", "R-35.json"))
         check("feature: --state and --note update the status", st["state"] == "reviewed" and st["iterations"] == 2 and st["notes"])
-        # the four editions carry exactly their ink colours
+        # the four editions carry exactly their ink colors
         import re as _re
         for ed, want in C.EDITION_COLOURS.items():
             text = open(C.edition_file(row, ed)).read()
             used = {h.upper() for h in _re.findall(r"#[0-9A-Fa-f]{6}", text)} - {"#FFFFFF", "#000000"}
             check(f"editions: {ed} uses exactly {want}", used == set(want), str(sorted(used)))
-        # tiles for the feature icon
+        # tiles for the feature icon, with a test optical scale and offset so the
+        # scale, the shift and the stroke cap all take part
         import build_tiles as BT
         import cl_tiles as T
+        import apply_framing as AF
+        C.TILE_OPTICAL_SCALE["R-35"] = 1.06
+        C.TILE_OFFSET_X["R-35"] = 2.0
+        inv_t = C.load_inventory()
+        for rr in inv_t["icons"]:
+            AF.tile_fields(rr)
+        C.write_json(C.INVENTORY_JSON, inv_t)
+        row = [r for r in inv_t["icons"] if r["id"] == "R-35"][0]
+        a35, dx35, k35 = C.tile_optics("R-35", row["stroke_units"])
+        check("tiles: the test optics cap the stroke", k35 < 1 and abs(row["stroke_units"] * a35 * k35 - C.TILE_STROKE_CAP) < 1e-6,
+              f"a {a35}, k {k35:.4f}, stroke {row['stroke_units']}")
         BT.build(["R-35"])
         tiles = [C.tile_file(row, sh, tl, md) for sh in C.TILE_SHAPES for tl in C.TILE_COLOURS for md in C.TILE_MODES]
         check("tiles: 12 SVGs and 24 PNGs written", all(os.path.exists(p) for p in tiles) and
@@ -261,15 +286,22 @@ def feature_build_test():
                 for md in C.TILE_MODES:
                     bare_root = ET.parse(C.edition_file(row, C.TILE_EDITION[(tl, md)])).getroot()
                     bare_tree = [k for k in bare_root if V.strip(k.tag) not in ("title", "desc")]
-                    ok_all &= V.check_tile(C.tile_file(row, sh, tl, md), row, sh, tl, md, bare_tree, errs)
-        check("tiles: every tile's icon tree equals its bare export, shape first, one transform", ok_all and not errs, "; ".join(errs)[:200])
+                    ok_all &= V.check_tile(C.tile_file(row, sh, tl, md), row, sh, tl, md, bare_tree, bare_root.attrib["id"], errs)
+        check("tiles: every tile's icon tree equals its bare export with the stated stroke multiplier, shape first, one transform",
+              ok_all and not errs, "; ".join(errs)[:200])
+        tt = open(C.tile_file(row, "square", "newsprint", "two-color")).read()
+        check("tiles: the transform is f times a with the offset", 'transform="' + T.transform_attr("square", a35, dx35) + '"' in tt
+              and T.transform_attr("square", a35, dx35) == f"matrix({S.fmt(0.68 * 1.06, 6)} 0 0 {S.fmt(0.68 * 1.06, 6)} "
+              f"{S.fmt(64 * (1 - 0.68 * 1.06) + 0.68 * 2.0)} {S.fmt(64 * (1 - 0.68 * 1.06))})", T.transform_attr("square", a35, dx35))
+        check("tiles: every id starts with the tile's root id", all(i.startswith(C.tile_root("R-35", "square", "newsprint", "two-color"))
+                                                                     for i in re.findall(r'(?<![-\w])id="([^"]+)"', tt)))
         cpng = np.asarray(Image.open(C.tile_file(row, "circle", "charcoal", "two-color", "png", 512)))
         check("tiles: circle PNG transparent at the corner, Charcoal at the rim", cpng[2, 2, 3] == 0 and tuple(cpng[256, 6, :3]) == C.hex_rgb(C.CHARCOAL),
               f"{cpng[2, 2]}, {cpng[256, 6]}")
-        f = C.TILE_FACTORS["circle"]
+        fa, tx, ty = C.tile_transform("circle", a35, dx35)
         t = row["transform"]
-        xc = int(round((64 + f * (t["s"] * (136 - t["cx"]))) * 4))
-        yc = int(round((64 + f * (t["s"] * (87 - t["cy"]))) * 4))
+        xc = int(round((fa * (t["s"] * (136 - t["cx"]) + 64) + tx) * 4))
+        yc = int(round((fa * (t["s"] * (87 - t["cy"]) + 64) + ty) * 4))
         check("tiles: the X knockout shows the Charcoal tile through it", tuple(cpng[yc, xc, :3]) == C.hex_rgb(C.CHARCOAL) and cpng[yc, xc, 3] == 255,
               f"{tuple(cpng[yc, xc])}")
         # verify_set on the temporary tree
@@ -285,9 +317,12 @@ def feature_build_test():
         tamper(V, bk, orig.replace(C.CHARCOAL, C.PILLAR_RED, 1), "red token in the black file", "red value")
         sw = 'stroke-width="' + S.fmt4(5.5 * row["transform"]["s"]) + '"'
         tamper(V, bk, orig.replace(sw, 'stroke-width="3"', 1), "a stroke width changed in the black tree", "tree differs from red-black")
+        tamper(V, bk, orig.replace(C.bare_root("R-35", "black"), C.bare_root("R-35", "red-black")), "the black file reusing the red-black ids",
+               "is not the red-black file")
         rbp = os.path.join(assets, "red-black", row["exports"]["svg_red_black"])
         rb_orig = open(rbp).read()
-        bg = rb_orig.replace('<g id="base-1">', '<rect x="0" y="0" width="128" height="128" fill="#121212"/><g id="base-1">')
+        g1 = f'<g id="{root}-base-1" data-part="base">'
+        bg = rb_orig.replace(g1, '<rect x="0" y="0" width="128" height="128" fill="#121212"/>' + g1)
         tamper(V, rbp, bg, "background rect", "background-sized", also=(bk, bg.replace(C.PILLAR_RED, C.CHARCOAL)))
         out = rb_orig.replace('<circle cx="', '<circle cx="1', 1)
         tamper(V, rbp, out, "drawing outside 0..128", "outside 0..128", also=(bk, out.replace(C.PILLAR_RED, C.CHARCOAL)))
@@ -298,11 +333,29 @@ def feature_build_test():
         tp = C.tile_file(row, "rounded", "charcoal", "two-color")
         torig = open(tp).read()
         tamper(V, tp, torig.replace('stroke="#DCD9D2"', 'stroke="#121212"', 1), "Charcoal ink in a Charcoal tile", "not an allowed ink")
-        head, tail = torig.split('<g id="icon"', 1)
-        moved = head + '<g id="icon"' + re.sub(r'cx="([0-9.]+)"', lambda m: f'cx="{float(m.group(1)) + 0.5:g}"', tail, count=1)
+        head, tail = torig.split('data-part="icon"', 1)
+        moved = head + 'data-part="icon"' + re.sub(r'cx="([0-9.]+)"', lambda m: f'cx="{float(m.group(1)) + 0.5:g}"', tail, count=1)
         tamper(V, tp, moved, "a moved coordinate in a tile's icon", "icon geometry differs")
+        troot = C.tile_root("R-35", "rounded", "charcoal", "two-color")
+        sw_t = re.search(r'stroke-width="([0-9.]+)"', tail).group(0)
+        unscaled = head + 'data-part="icon"' + tail.replace(sw_t, f'stroke-width="{S.fmt4(float(sw_t[14:-1]) / k35)}"', 1)
+        tamper(V, tp, unscaled, "a tile stroke left at its bare width", "stroke-width")
+        tamper(V, tp, re.sub(r'transform="matrix\([^)]*\)"', 'transform="' + T.transform_attr("rounded") + '"', torig),
+               "a tile transform without its optical scale", "transform is not")
+        tamper(V, tp, torig.replace(f'{troot}-x-cut', 'x-cut'), "a tile mask id outside its root", "does not start with the tile's root id")
+        other = C.tile_file(row, "square", "charcoal", "two-color")
+        oroot = C.tile_root("R-35", "square", "charcoal", "two-color")
+        tamper(V, tp, torig.replace(troot, oroot), "a tile reusing another tile's ids", "also appears in")
+        tamper(V, tp, torig.replace(f'url(#{troot}-x-cut)', 'url(#nowhere)'), "a reference that resolves nowhere", "does not resolve")
+        invp = C.INVENTORY_JSON
+        inv_keep = open(invp).read()
+        inv_bad = json.loads(inv_keep)
+        next(r for r in inv_bad["icons"] if r["id"] == "R-35")["tile_min_px"]["two-color"]["circle"] = 64
+        tamper(V, invp, json.dumps(inv_bad), "a wrong minimum tile size in the inventory", "tile_min_px")
         tamper(V, tp, torig.replace('fill="#121212"/>', 'fill="#1F2D5A"/>', 1), "a Prussian tile in a Charcoal file", "first shape is not")
     finally:
+        C.TILE_OPTICAL_SCALE.pop("R-35", None)
+        C.TILE_OFFSET_X.pop("R-35", None)
         shutil.rmtree(tmp, ignore_errors=True)
 
 

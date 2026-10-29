@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-03-tile-square-charcoal-two-color" data-id="R-03" width="128" height="128" viewBox="0 0 128 128">
   <title>Proportional Elections</title>
-  <desc>Oath &amp; Action Civic Line R-03 Proportional Elections: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-03 Proportional Elections: square tile in Charcoal, Newsprint lines with a Pillar Red accent. The icon is its bare export scaled by 0.7412 about the center of the 128 box, with every stroke width multiplied by 0.9174 so its line stays at 3.3508 units or less. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-03-tile-square-charcoal-two-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-r-03-tile-square-charcoal-two-color-icon" data-part="icon" transform="matrix(0.7412 0 0 0.7412 16.5632 16.5632)">
+  <g id="oa-civic-line-r-03-tile-square-charcoal-two-color-base" data-part="base">
     <circle cx="34.4212" cy="52.8204" r="3.7469" fill="#DCD9D2"/>
     <circle cx="93.6641" cy="52.8204" r="3.7469" fill="#DCD9D2"/>
     <circle cx="42.847" cy="59.9912" r="3.5032" fill="#DCD9D2"/>
@@ -28,7 +28,7 @@
     <circle cx="41.3422" cy="85.7013" r="3.7347" fill="#DCD9D2"/>
     <circle cx="86.737" cy="85.7013" r="3.7347" fill="#DCD9D2"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-03-tile-square-charcoal-two-color-accent" data-part="accent">
     <circle cx="58.5168" cy="42.646" r="4.1124" fill="#E63946"/>
     <circle cx="69.5624" cy="42.646" r="4.1124" fill="#E63946"/>
     <circle cx="47.3737" cy="45.3937" r="3.8139" fill="#E63946"/>

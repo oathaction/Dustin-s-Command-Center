@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-06-tile-circle-newsprint-one-color" data-id="R-06" width="128" height="128" viewBox="0 0 128 128">
   <title>On-Cycle Elections</title>
-  <desc>Oath &amp; Action Civic Line R-06 On-Cycle Elections: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the centre of the 128 box.</desc>
-  <circle id="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
-  <g id="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-06 On-Cycle Elections: circle tile in Newsprint, Charcoal lines. The icon is its bare export scaled by 0.62 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <circle id="oa-civic-line-r-06-tile-circle-newsprint-one-color-tile" data-part="tile" cx="64" cy="64" r="64" fill="#DCD9D2"/>
+  <g id="oa-civic-line-r-06-tile-circle-newsprint-one-color-icon" data-part="icon" transform="matrix(0.62 0 0 0.62 24.32 24.32)">
+  <g id="oa-civic-line-r-06-tile-circle-newsprint-one-color-base" data-part="base">
     <rect x="7.4082" y="47.4633" width="41.965" height="38.5606" rx="1.8884" fill="none" stroke="#121212" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="7.4082" y1="58.0112" x2="49.3732" y2="58.0112" fill="none" stroke="#121212" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="17.3464" y1="41.7981" x2="17.3464" y2="51.8605" fill="none" stroke="#121212" stroke-width="2.9674" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,7 +22,7 @@
     <rect x="86.2234" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#121212"/>
     <rect x="108.8408" y="74.2943" width="4.0465" height="5.3144" rx="1.0791" fill="#121212"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-06-tile-circle-newsprint-one-color-accent" data-part="accent">
     <rect x="23.9395" y="64.6474" width="8.9023" height="6.5823" rx="1.0791" fill="#121212"/>
     <rect x="24.9646" y="74.2674" width="6.8521" height="5.3684" rx="1.0791" fill="#121212"/>
     <rect x="95.1042" y="64.6474" width="8.9023" height="6.5823" rx="1.0791" fill="#121212"/>

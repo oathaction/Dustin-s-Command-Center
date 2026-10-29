@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-01-tile-square-charcoal-one-color" data-id="R-01" width="128" height="128" viewBox="0 0 128 128">
   <title>All-Party Primaries</title>
-  <desc>Oath &amp; Action Civic Line R-01 All-Party Primaries: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the centre of the 128 box.</desc>
-  <rect id="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
-  <g id="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-01 All-Party Primaries: square tile in Charcoal, Newsprint lines. The icon is its bare export scaled by 0.68 about the center of the 128 box. The tile shape has data-part 'tile' and the icon group data-part 'icon'.</desc>
+  <rect id="oa-civic-line-r-01-tile-square-charcoal-one-color-tile" data-part="tile" x="0" y="0" width="128" height="128" fill="#121212"/>
+  <g id="oa-civic-line-r-01-tile-square-charcoal-one-color-icon" data-part="icon" transform="matrix(0.68 0 0 0.68 20.48 20.48)">
+  <g id="oa-civic-line-r-01-tile-square-charcoal-one-color-base" data-part="base">
     <circle cx="24.917" cy="38.0462" r="4.5754" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M16.6861 48.775 A8.651278 8.651278 0 0 1 33.1479 48.775" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="22.2668" cy="60.5151" r="4.5754" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -13,7 +13,7 @@
     <path d="M16.6861 93.7067 A8.651278 8.651278 0 0 1 33.1479 93.7067" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <rect x="81.004" y="42.8958" width="33.088" height="42.8603" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-01-tile-square-charcoal-one-color-accent" data-part="accent">
     <path d="M36.4317 38.5641 C53.1676 38.296 60.3506 45.2901 71.9811 55.5315" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="71.9811,50.1397 71.9811,55.5315 66.5893,55.5315" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="34.604" y1="63.8964" x2="72.9863" y2="63.8964" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-15" data-id="R-15" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-15-red-black" data-id="R-15" width="128" height="128" viewBox="0 0 128 128">
   <title>Watchdog Remedies</title>
-  <desc>Oath &amp; Action Civic Line R-15 Watchdog Remedies. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
-  <g id="base">
+  <desc>Oath &amp; Action Civic Line R-15 Watchdog Remedies. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 5. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
+  <g id="oa-civic-line-r-15-red-black-base" data-part="base">
     <circle cx="48.7933" cy="56.7926" r="22.871" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="32.0147" y1="72.3588" x2="26.9823" y2="77.3912" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M28.9928 79.4017 A1.218467 1.218467 0 0 1 28.9928 81.1258 L17.5878 92.5309 A4.064627 4.064627 0 0 1 11.8365 86.7857 L23.2477 75.3746 A1.218467 1.218467 0 0 1 24.9718 75.3746 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,7 +11,7 @@
     <line x1="80.145" y1="63.0618" x2="107.5305" y2="63.0618" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="75.4964" y1="72.7487" x2="95.6807" y2="72.7487" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
+  <g id="oa-civic-line-r-15-red-black-accent" data-part="accent">
     <polyline points="38.1071,56.6221 45.9237,64.6641 59.4916,49.2868" fill="none" stroke="#E63946" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

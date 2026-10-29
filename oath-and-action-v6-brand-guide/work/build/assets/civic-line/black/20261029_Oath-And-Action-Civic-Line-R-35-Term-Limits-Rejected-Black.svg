@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-35" data-id="R-35" width="128" height="128" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-35-black" data-id="R-35" width="128" height="128" viewBox="0 0 128 128">
   <title>Term Limits · Rejected</title>
-  <desc>Oath &amp; Action Civic Line R-35 Term Limits · Rejected. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <desc>Oath &amp; Action Civic Line R-35 Term Limits · Rejected. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 5. The group with data-part 'base' is the main drawing; the group with data-part 'accent' holds the accent parts named in the catalog. Every id in the file starts with the file's root id.</desc>
   <defs>
-    <mask id="r-35-x-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <mask id="oa-civic-line-r-35-black-x-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
       <line x1="93.6458" y1="71.7983" x2="104.8925" y2="83.045" fill="none" stroke="#000000" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
       <line x1="104.8925" y1="71.7983" x2="93.6458" y2="83.045" fill="none" stroke="#000000" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     </mask>
   </defs>
-  <g id="base">
+  <g id="oa-civic-line-r-35-black-base" data-part="base">
     <circle cx="43.0603" cy="40.075" r="6.7261" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M54.642 65.1149 V57.4384 A11.581718 9.418904 0 0 0 43.0603 48.0195 A11.581718 9.418904 0 0 0 31.4786 57.4384 V57.6639" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M25.5384 65.1149 L25.9162 61.3193 A3.655432 3.655432 0 0 1 29.5716 57.6639 H34.7015 A3.655432 3.655432 0 0 1 38.3569 61.3193 L38.7347 65.1149" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,7 +19,7 @@
     <path d="M98.1177 59.7353 A17.668073 17.668073 0 1 0 81.5584 77.58" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="butt" stroke-linejoin="round"/>
     <polyline points="80.4496,50.9013 80.4496,59.9485 86.999,59.9485" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-  <g id="accent">
-    <circle cx="99.2691" cy="77.4216" r="14.2258" fill="#121212" mask="url(#r-35-x-cut)"/>
+  <g id="oa-civic-line-r-35-black-accent" data-part="accent">
+    <circle cx="99.2691" cy="77.4216" r="14.2258" fill="#121212" mask="url(#oa-civic-line-r-35-black-x-cut)"/>
   </g>
 </svg>

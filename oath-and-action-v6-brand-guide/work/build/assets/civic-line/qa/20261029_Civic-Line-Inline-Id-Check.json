@@ -1,0 +1,178 @@
+{
+  "test": "two files inlined on one page in Chromium, the first inside display:none; the visible one must render as it does alone",
+  "masked_icons": [
+    "CL-029",
+    "CL-057",
+    "CL-068",
+    "R-11",
+    "R-20",
+    "R-28",
+    "R-35",
+    "R-49"
+  ],
+  "cases": [
+    {
+      "id": "CL-029",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 49,
+      "survives": true
+    },
+    {
+      "id": "CL-029",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 110,
+      "survives": true
+    },
+    {
+      "id": "CL-057",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 730,
+      "survives": true
+    },
+    {
+      "id": "CL-057",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 1478,
+      "survives": true
+    },
+    {
+      "id": "CL-068",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-068-Education-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-068-Education-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 349,
+      "survives": true
+    },
+    {
+      "id": "CL-068",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-CL-068-Education-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-CL-068-Education-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 259,
+      "survives": true
+    },
+    {
+      "id": "R-11",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 87,
+      "survives": true
+    },
+    {
+      "id": "R-11",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-11-Election-Enforcement-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 107,
+      "survives": true
+    },
+    {
+      "id": "R-20",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 12,
+      "survives": true
+    },
+    {
+      "id": "R-20",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-20-Merger-Enforcement-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 22,
+      "survives": true
+    },
+    {
+      "id": "R-28",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 115,
+      "survives": true
+    },
+    {
+      "id": "R-28",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-28-Capital-Income-Tax-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 221,
+      "survives": true
+    },
+    {
+      "id": "R-35",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 307,
+      "survives": true
+    },
+    {
+      "id": "R-35",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-35-Term-Limits-Rejected-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 593,
+      "survives": true
+    },
+    {
+      "id": "R-49",
+      "pair": "tile",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Tile-Rounded-Charcoal-Two-Color.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Tile-Square-Newsprint-Two-Color.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 151,
+      "survives": true
+    },
+    {
+      "id": "R-49",
+      "pair": "bare",
+      "hidden": "20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Red-Black.svg",
+      "visible": "20261029_Oath-And-Action-Civic-Line-R-49-Cross-Party-Civic-Work-Red-Newsprint.svg",
+      "current_pixels_changed": 0,
+      "before_fix_pixels_changed": 171,
+      "survives": true
+    }
+  ],
+  "cl_057_probe": {
+    "head_center_box_units": [
+      84.4706,
+      37.3029
+    ],
+    "pixel": [
+      156,
+      92
+    ],
+    "current_alone": "#DCD9D2",
+    "current_with_hidden": "#DCD9D2",
+    "before_fix_alone": "#DCD9D2",
+    "before_fix_with_hidden": "#E63946",
+    "knockout_shows_tile_now": true,
+    "knockout_lost_before_fix": true
+  },
+  "all_survive": true,
+  "pairs_broken_before_fix": 16,
+  "failures": []
+}
