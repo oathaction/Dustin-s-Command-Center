@@ -122,3 +122,16 @@ Dustin's words: "I accept all your recommendations." He asked in the same messag
 | D2-28 | Identity masters: Keep masters on currentColor with the --amp, --lever, --link and --line hooks | One file serves every surface; explicit color only where a surface demands it |
 | D2-29 | Identity masters: Draw the board's construction annotations in Charcoal and White | Keeps red off Prussian on the board |
 | D2-30 | Identity masters: Recommend today's width at Gate 2, and L8 at today's width if Dustin picks the condensed | The condensed drawing passes the craft checks but gains only height, sits near campaign lettering, and its monogram reads as 0&A |
+
+## Direction review answers, October 29, 2026
+
+Dustin sent the Civic Line catalog, 122 icons on five sheets in red-black and black, and asked the studio to reconstruct it as the icon set. The maps and the rest of the direction review wait until the icons are final. His answers to the studio's five questions follow.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-01 | Civic Line is the icon family. It replaces Overprint and Moving part, which closes Choice 2 of the direction review. P1 and P2 fall away, since both concerned Overprint drawings. The Overprint and Moving part files stay where they are | Dustin, October 29: "yes civic line is the winner. please proceed." |
+| DR-02 | Named exception to the Master Brief's rights rule for references (section 2, "Never trace, copy, embed or ship them"): the studio traces the ten Civic Line sheets into vector masters. The exception covers these sheets only | Dustin, October 29: "i grant the exception. please trace." |
+| DR-03 | The tracing cleans each drawing to its evident intent: one measured line weight across the set, true circles and straight lines where the drawing plainly means them, and every feature, count, gap and red placement kept as drawn. Each correction is logged by icon ID | Dustin, October 29: "i want my logos to look exactly like these, but cleaner, more polished" and "clean them up as needed." |
+| DR-04 | Named approval of a change to identity geometry: Civic Line's Explain (CL-019), Track (CL-020), Connect (CL-021) and Act (CL-022) replace the Gate 1 pillar marks (Direction A, Y1). The side by side at actual size goes in the delivery report for the record | Dustin, October 29: "use these new pillar marks." |
+| DR-05 | The Civic Line contact sheets carry the approved Edition 06 wordmark master in place of the wordmark drawn on the reference sheets | Dustin, October 29: "use approved edition 06" |
+| DR-06 | Order of work: the Civic Line icons first, then the visual system for the atlas and systems maps, then the other open items of the direction review (Choice 1, Choice 3, P3, R1 to R14, Q-13) | Dustin, October 29 |

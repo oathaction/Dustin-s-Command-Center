@@ -399,3 +399,15 @@ Five images Dustin sent as inspiration for the icons and the atlas, copied to `w
 | `20261028_Ref-Icon-Set-Geometric-Pink-Gold.jpg` | Geometric marks in black, pink and gold | Third-party stock look; source unknown. Study only |
 | `20261028_Ref-Atlas-Loop-Catalog-Current.png` | The current loop catalog board (23 loops drawn as uniform rings) | Oath & Action's own atlas work (Q-03) |
 | `20261028_Ref-Atlas-Loop-R8-Concept-08.webp` | Atlas Concept 08, the R8 housing scarcity loop card | Oath & Action's own atlas work (Q-03) |
+
+## October 29, 2026: the Civic Line catalog
+
+Dustin sent ten sheets on October 29 as the approved Civic Line icon catalog. They are saved in `work/research/chat-references/civic-line/`. The sheets show signs of image generation, such as uneven seat shapes in R-46 and a warped letter in the caption "Disaster Mitigation". Dustin has not yet confirmed the tool. Under decision DR-02 the studio traces them into vector masters, which is an exception to the rule that references are never traced.
+
+| File | Content | Rights and use |
+|---|---|---|
+| `20261029_Oath-And-Action-Civic-Line-01-Participation-Black.png` and `-Red.png` | Sheet 01, Participation & Accountability, 24 icons | Supplied by Dustin. Tool and terms to confirm. Traced under DR-02; the sheet itself does not ship |
+| `20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Black.png` and `-Red.png` | Sheet 02, Government, Information & Technology, 24 icons | As above |
+| `20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.png` and `-Red.png` | Sheet 03, Economy & Public Issues, 24 icons | As above |
+| `20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Black.png` and `-Red.png` | Sheet 04, Reforms R-01 to R-25 | As above |
+| `20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.png` and `-Red.png` | Sheet 05, Reforms R-26 to R-50 | As above |
