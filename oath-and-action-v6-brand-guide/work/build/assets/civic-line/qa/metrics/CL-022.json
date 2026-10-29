@@ -1,0 +1,77 @@
+{
+  "id": "CL-022",
+  "label": "Act",
+  "built": "2026-10-29T07:27:09+00:00",
+  "W_source_px": 5.5,
+  "s": 0.487395,
+  "stroke_units": 2.6807,
+  "silhouette_iou_1x": 0.8669,
+  "silhouette_iou_4x": 0.8907,
+  "red_iou_1x": 0.8855,
+  "red_iou_4x": 0.8685,
+  "edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.297,
+      "p95": 0.901,
+      "max": 1.953
+    },
+    "trace_to_reference": {
+      "mean": 0.297,
+      "p95": 0.901,
+      "max": 1.953
+    },
+    "symmetric": {
+      "mean": 0.297,
+      "p95": 0.901,
+      "max": 1.953
+    }
+  },
+  "red_edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.344,
+      "p95": 1.458,
+      "max": 1.953
+    },
+    "trace_to_reference": {
+      "mean": 0.338,
+      "p95": 1.458,
+      "max": 1.953
+    },
+    "symmetric": {
+      "mean": 0.341,
+      "p95": 1.458,
+      "max": 1.953
+    }
+  },
+  "best_offset_1x": {
+    "dx": 0,
+    "dy": 0,
+    "iou": 0.8669
+  },
+  "ink_area_ratio_trace_over_reference": 0.9054,
+  "bake_check_iou_1x": 0.9993,
+  "bake_check_iou_4x": 0.9993,
+  "pair_identical_after_swap": true,
+  "export_drawn_bounds": [
+    40.383,
+    30.876,
+    87.76,
+    97.084
+  ],
+  "export_inside_0_128": true,
+  "elements": 9,
+  "groups": [
+    "base",
+    "accent"
+  ],
+  "masks": [],
+  "corrections_logged": 6,
+  "rules": {
+    "reference_ink": "green below the crop's midpoint (local background to full ink)",
+    "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",
+    "trace_ink": "black-edition render on the crop's own background; green below the midpoint between that background and Charcoal",
+    "trace_red": "red-black render on the red crop's background; redness above the midpoint between that background and Pillar Red",
+    "4x_reference": "reference channel upsampled 4x (bilinear, 1.5 px Gaussian) and thresholded with the same midpoint",
+    "edge_distance": "boundary pixels of each 4x mask; distance transform to the other mask's boundary; reported in source px"
+  }
+}

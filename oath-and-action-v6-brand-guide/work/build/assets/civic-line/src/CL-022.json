@@ -1,6 +1,19 @@
 {
   "id": "CL-022",
   "tracer": "T1",
-  "corrections": [],
-  "notes": ""
+  "corrections": [
+    {"what": "Gave the three knuckles one radius (7.565 px) at one 15.13 px pitch, so each knuckle's right side is the next one's left side and the last becomes the hand's right edge; each keeps its own drawn height (tops y 67.6, 73.4 and 80.8)",
+     "why": "DR-03 equal repeats. Knuckle fits give r 7.5 to 7.7 and centre pitches of 15.1 and 15.0 px."},
+    {"what": "Drew the fingertip as a true semicircle (r 8.36) on two straight parallel sides, x 34.57 and 51.3",
+     "why": "DR-03 true circles and straight lines. The tip fits r 8.56 on the sheet; the sides are plumb."},
+    {"what": "Drew the control ring as one true circle arc (centre 41.15, 37.8, r 27.02), open at the bottom between 44.5 and 133 deg",
+     "why": "DR-03 true circles; the ring fits a circle within 0.17 px rms on both sheets."},
+    {"what": "Built the thumb from its two fitted straight sides (62.7 and 52.2 deg) joined by a hook arc of r 7.55 tangent to both",
+     "why": "DR-03. The hook fits r 7.55 with 0.28 px rms; the tangent construction keeps both sides where the sheet puts them."},
+    {"what": "Moved the finger's right side and the first knuckle's left side 0.05 px right (x 51.3)",
+     "why": "At the measured 51.25 the stroke edges fell on pixel midlines and the 1x bake check flipped edge pixels (IoU 0.986); the nudge is invisible."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon is the heaviest of its row: median 6.04 px, the ring 6.2 to 6.3 px. That is why the silhouette IoU (0.87) and ink ratio (0.90) sit low while the centrelines match."}
+  ],
+  "notes": "Pillar mark (DR-04). Kept: the long upright index finger inside the ring, its right side ending open at y 83.4 below the first knuckle; the knuckle count of three, stepping down to the right; the bent thumb hooking up and back to meet the finger's left side at y 98.5, with the finger's side running on to a small point at y 103.1; both wrist ends open (x 36.2 and 86.3 at y 141). The ring stays off-centre from the fingertip by 1.8 px, as drawn. The three rays keep their drawn angles and lengths (upper -30 deg, middle level, lower 33.6 deg; the lower ray sits a little further from the middle one than the upper). Red is the ring and the three rays; the finger and hand stay black; both sheets agree."
 }

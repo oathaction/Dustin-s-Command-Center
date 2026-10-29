@@ -1,0 +1,95 @@
+{
+  "id": "CL-061",
+  "label": "Household Income",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:25:10+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8853,
+      "red_iou_1x": 0.9507,
+      "edge_mean_px": 0.239,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:25:49+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8853,
+      "red_iou_1x": 0.9507,
+      "edge_mean_px": 0.239,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:26:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8993,
+      "red_iou_1x": 0.9507,
+      "edge_mean_px": 0.194,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:26:20+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8993,
+      "red_iou_1x": 0.9507,
+      "edge_mean_px": 0.194,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:26:20+00:00",
+      "by": "T3",
+      "note": "overlay checked; open arch body, off-centre head kept, envelope gap and flap, red arrow match"
+    }
+  ],
+  "last_build": "2026-10-29T07:26:20+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8993,
+    "red_iou_1x": 0.9507,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9508,
+    "edge_mean_px": 0.194,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 2.136,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The black strokes measure 5.75 to 6.0 px; the red arrow 5.25 to 5.5 px."
+    },
+    {
+      "what": "Drew the body as a symmetric open arch: sides on x 10.6 and 71.7, two quarter circles r 24.35 joined by a 12.4 px flat top at y 50.6, both sides ending at y 105.7",
+      "why": "DR-03 true circles and symmetry. The two shoulders fit circles r 24.11 and 24.57 with rms 0.04 px, centred 12.4 px apart; the sides measure x 10.69 and 71.8."
+    },
+    {
+      "what": "Drew the envelope's flap as a V with equal arm angles (42.6 deg) and its point at (144.35, 66.45), meeting the sides at y 38.21 and 37.33",
+      "why": "DR-03. The arms measure 42.44 and 42.8 deg and meet at (143.9, 66.47), 0.95 px left of the envelope's centre; the trace splits that offset, moving the point 0.45 px. Near the top-right corner the sheet's flap runs into the corner 1 px higher, which gives the edge max of 2.1 px."
+    },
+    {
+      "what": "Gave the arrowhead's arms one length and angle, ending 10.35 px back and 10.9 px either side of the shaft, with the tip at x 113.0",
+      "why": "DR-03 symmetry. The arms measure 48.7 and 46.4 deg; the tip sits 3.6 px inside the red ink's end, since the sheet's tip is sharper than a round join."
+    },
+    {
+      "what": "Set the envelope's corner radius to 2.1 px on the centreline",
+      "why": "Measured from the outer edge along each corner's diagonal (outer radius 4.5 to 5.1 px)."
+    }
+  ],
+  "source_notes": "Kept as drawn: the head (r 16.02) sits 4.2 px right of the arch's centre line on both sheets; I read that as part of the drawing, not a raster accident, and left it for review. The envelope's left edge is open between y 45.75 and 78.75, where the arrow's tip enters; the small triangles between the flap and the top corners stay open. The arrow points right, toward the envelope, as the catalogue asks. Red: the arrow only."
+}

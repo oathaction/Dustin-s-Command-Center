@@ -3,7 +3,19 @@
        Construction: an outline hand seen frontally with a long upright index finger touching a round control. The other fingers fold down as small rounded knuckles on the right; a thumb branches diagonally left. A broad open-ended circular ring surrounds the index fingertip. Short rays extend upward-right/right from that ring.
        Red: the control ring and its short action rays. The finger and hand contour remain black. Preserve the source’s bent thumb, knuckle count and open wrist. -->
   <g data-role="base">
+    <!-- Index finger: one U, tip r 8.34. Three equal knuckles (r 7.565) step down to the right at one 15.13 px pitch;
+         the last becomes the hand's right edge. The thumb hooks over (r 7.55) and meets the finger's left side; both wrist ends stay open. -->
+    <path id="finger" d="M51.3 83.37 V38.34 A8.355 8.355 0 0 0 34.57 38.34 V103.1"/>
+    <path id="knuckle-1" d="M51.30 75.2 A7.565 7.565 0 0 1 66.43 75.2 V85.63"/>
+    <path id="knuckle-2" d="M66.43 81.0 A7.565 7.565 0 0 1 81.56 81.0 V89.13"/>
+    <path id="knuckle-3-and-edge" d="M81.56 88.4 A7.565 7.565 0 0 1 96.69 88.4 L96.69 114.08 A23 23 0 0 1 94.42 124.04 L86.3 140.95"/>
+    <path id="thumb" d="M34.57 98.51 L24.29 85.28 A7.55 7.55 0 0 0 11.62 93.37 L36.2 141.13"/>
   </g>
   <g data-role="accent">
+    <!-- Control ring, open at the bottom where the finger enters, and three short action rays. -->
+    <path id="ring" d="M60.42 56.74 A27.02 27.02 0 1 0 22.72 57.56"/>
+    <line id="ray-upper" x1="82.5" y1="25" x2="92.25" y2="19.37"/>
+    <line id="ray-middle" x1="84.75" y1="39.06" x2="102.5" y2="39.06"/>
+    <line id="ray-lower" x1="80.75" y1="54.75" x2="90.37" y2="61.13"/>
   </g>
 </svg>

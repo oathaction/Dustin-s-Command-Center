@@ -1,9 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" data-id="R-46" viewBox="0 0 240 128">
   <!-- R-46 Expand the House. Crop 240 x 128 px; ink box x 8..232, y 8..120.
        Construction: a broad semicircular legislative chamber viewed schematically from above. A curved outer boundary contains multiple small outlined seat rectangles that follow its arc. More seats form inner curved rows. A small raised dais/podium stands near the top centre, with a short roof/cap-like detail.
-       Red: the small group of newly added seats along the chamber’s upper-right outer arc. Other seats, curved framing and dais stay black. Count and position the seat rectangles directly from the enlarged reference. -->
+       Red: the small group of newly added seats along the chamber's upper-right outer arc. Other seats, curved framing and dais stay black. Count and position the seat rectangles directly from the enlarged reference.
+       Counts from the sheet: 22 seats. Outside the chamber line, five per side on one elliptical arc
+       (centre (120.4, 84.54), rx 103.8, ry 50.46), the right five red; inside, two rows of three per side
+       on circular arcs. Every seat is one rounded rectangle, 13.8 x 9.6 px on the centreline, corner r 2,
+       evenly spaced along its arc. Outer seats keep their drawn tilts (mirror-averaged); inner seats lie
+       along their arcs. Mirror axis x 120.4. The chamber line is a half-ellipse (rx 89.3, ry 47.21) on
+       vertical feet, stopping at the dais legs. -->
   <g data-role="base">
+    <polyline id="dais-cap" points="110.5,14.3 110.5,11.15 130.3,11.15 130.3,14.3"/>
+    <path id="dais-dome" d="M105.47 33.68 V26.72 A5 5 0 0 1 110.47 21.72 H130.33 A5 5 0 0 1 135.33 26.72 V33.68"/>
+    <rect id="dais-base" x="94.57" y="33.68" width="51.66" height="10.85" rx="2.5"/>
+    <line id="dais-leg-left" x1="98.1" y1="44.53" x2="98.1" y2="65.63"/>
+    <line id="dais-leg-right" x1="142.7" y1="44.53" x2="142.7" y2="65.63"/>
+    <path id="chamber-left" d="M98.1 50.7 A89.3 47.21 0 0 0 31.1 96.41 V117.6"/>
+    <path id="chamber-right" d="M142.7 50.7 A89.3 47.21 0 0 1 209.7 96.41 V117.6"/>
+    <path id="outer-left-1" d="M20.11 91.01 L14.54 91.6 A2 2 0 0 1 12.34 89.82 L11.31 80.07 A2 2 0 0 1 13.09 77.88 L18.66 77.29 A2 2 0 0 1 20.86 79.07 L21.89 88.82 A2 2 0 0 1 20.11 91.01 Z"/>
+    <path id="outer-left-2" d="M27.97 72.78 L22.86 75.06 A2 2 0 0 1 20.22 74.05 L16.23 65.1 A2 2 0 0 1 17.25 62.45 L22.36 60.18 A2 2 0 0 1 25 61.19 L28.99 70.14 A2 2 0 0 1 27.97 72.78 Z"/>
+    <path id="outer-left-3" d="M41.68 59.89 L36.82 62.66 A2 2 0 0 1 34.09 61.92 L29.23 53.4 A2 2 0 0 1 29.98 50.67 L34.84 47.9 A2 2 0 0 1 37.57 48.65 L42.43 57.16 A2 2 0 0 1 41.68 59.89 Z"/>
+    <path id="outer-left-4" d="M56.6 52.36 L51.28 54.1 A2 2 0 0 1 48.76 52.82 L45.71 43.5 A2 2 0 0 1 46.99 40.98 L52.32 39.24 A2 2 0 0 1 54.84 40.52 L57.88 49.84 A2 2 0 0 1 56.6 52.36 Z"/>
+    <path id="outer-left-5" d="M72.91 47.02 L67.39 48 A2 2 0 0 1 65.07 46.37 L63.37 36.72 A2 2 0 0 1 65 34.41 L70.51 33.43 A2 2 0 0 1 72.83 35.06 L74.53 44.71 A2 2 0 0 1 72.91 47.02 Z"/>
+    <path id="inner-upper-left-1" d="M75.63 80.95 L71.69 84.93 A2 2 0 0 1 68.86 84.94 L61.9 78.04 A2 2 0 0 1 61.89 75.21 L65.84 71.24 A2 2 0 0 1 68.66 71.22 L75.62 78.12 A2 2 0 0 1 75.63 80.95 Z"/>
+    <path id="inner-upper-right-1" d="M169.11 84.93 L165.17 80.95 A2 2 0 0 1 165.18 78.12 L172.14 71.22 A2 2 0 0 1 174.96 71.24 L178.91 75.21 A2 2 0 0 1 178.9 78.04 L171.94 84.94 A2 2 0 0 1 169.11 84.93 Z"/>
+    <path id="inner-upper-left-2" d="M88.8 87.67 L86.3 92.68 A2 2 0 0 1 83.62 93.59 L74.85 89.22 A2 2 0 0 1 73.95 86.54 L76.44 81.53 A2 2 0 0 1 79.12 80.63 L87.89 84.99 A2 2 0 0 1 88.8 87.67 Z"/>
+    <path id="inner-upper-right-2" d="M154.5 92.68 L152 87.67 A2 2 0 0 1 152.91 84.99 L161.68 80.63 A2 2 0 0 1 164.36 81.53 L166.85 86.54 A2 2 0 0 1 165.95 89.22 L157.18 93.59 A2 2 0 0 1 154.5 92.68 Z"/>
+    <path id="inner-upper-left-3" d="M103.4 89.91 L102.61 95.45 A2 2 0 0 1 100.35 97.15 L90.65 95.77 A2 2 0 0 1 88.95 93.51 L89.74 87.96 A2 2 0 0 1 92 86.26 L101.7 87.64 A2 2 0 0 1 103.4 89.91 Z"/>
+    <path id="inner-upper-right-3" d="M138.19 95.45 L137.4 89.91 A2 2 0 0 1 139.1 87.64 L148.8 86.26 A2 2 0 0 1 151.06 87.96 L151.85 93.51 A2 2 0 0 1 150.15 95.77 L140.45 97.15 A2 2 0 0 1 138.19 95.45 Z"/>
+    <path id="inner-lower-left-1" d="M60.16 98.67 L56.86 103.19 A2 2 0 0 1 54.06 103.63 L46.15 97.85 A2 2 0 0 1 45.71 95.05 L49.02 90.53 A2 2 0 0 1 51.81 90.1 L59.73 95.88 A2 2 0 0 1 60.16 98.67 Z"/>
+    <path id="inner-lower-right-1" d="M183.94 103.19 L180.64 98.67 A2 2 0 0 1 181.07 95.88 L188.99 90.1 A2 2 0 0 1 191.78 90.53 L195.09 95.05 A2 2 0 0 1 194.65 97.85 L186.74 103.63 A2 2 0 0 1 183.94 103.19 Z"/>
+    <path id="inner-lower-left-2" d="M79.62 107.12 L77.64 112.35 A2 2 0 0 1 75.06 113.51 L65.89 110.04 A2 2 0 0 1 64.73 107.46 L66.72 102.23 A2 2 0 0 1 69.3 101.06 L78.46 104.54 A2 2 0 0 1 79.62 107.12 Z"/>
+    <path id="inner-lower-right-2" d="M163.16 112.35 L161.18 107.12 A2 2 0 0 1 162.34 104.54 L171.5 101.06 A2 2 0 0 1 174.08 102.23 L176.07 107.46 A2 2 0 0 1 174.91 110.04 L165.74 113.51 A2 2 0 0 1 163.16 112.35 Z"/>
+    <path id="inner-lower-left-3" d="M100.62 110.1 L100.1 115.67 A2 2 0 0 1 97.92 117.47 L88.16 116.56 A2 2 0 0 1 86.36 114.38 L86.88 108.8 A2 2 0 0 1 89.06 107 L98.82 107.92 A2 2 0 0 1 100.62 110.1 Z"/>
+    <path id="inner-lower-right-3" d="M140.7 115.67 L140.18 110.1 A2 2 0 0 1 141.98 107.92 L151.74 107 A2 2 0 0 1 153.92 108.8 L154.44 114.38 A2 2 0 0 1 152.64 116.56 L142.88 117.47 A2 2 0 0 1 140.7 115.67 Z"/>
   </g>
   <g data-role="accent">
+    <path id="outer-right-1" d="M226.26 91.6 L220.69 91.01 A2 2 0 0 1 218.91 88.82 L219.94 79.07 A2 2 0 0 1 222.14 77.29 L227.71 77.88 A2 2 0 0 1 229.49 80.07 L228.46 89.82 A2 2 0 0 1 226.26 91.6 Z"/>
+    <path id="outer-right-2" d="M217.94 75.06 L212.83 72.78 A2 2 0 0 1 211.81 70.14 L215.8 61.19 A2 2 0 0 1 218.44 60.18 L223.55 62.45 A2 2 0 0 1 224.57 65.1 L220.58 74.05 A2 2 0 0 1 217.94 75.06 Z"/>
+    <path id="outer-right-3" d="M203.98 62.66 L199.12 59.89 A2 2 0 0 1 198.37 57.16 L203.23 48.65 A2 2 0 0 1 205.96 47.9 L210.82 50.67 A2 2 0 0 1 211.57 53.4 L206.71 61.92 A2 2 0 0 1 203.98 62.66 Z"/>
+    <path id="outer-right-4" d="M189.52 54.1 L184.2 52.36 A2 2 0 0 1 182.92 49.84 L185.96 40.52 A2 2 0 0 1 188.48 39.24 L193.81 40.98 A2 2 0 0 1 195.09 43.5 L192.04 52.82 A2 2 0 0 1 189.52 54.1 Z"/>
+    <path id="outer-right-5" d="M173.41 48 L167.89 47.02 A2 2 0 0 1 166.27 44.71 L167.97 35.06 A2 2 0 0 1 170.29 33.43 L175.8 34.41 A2 2 0 0 1 177.43 36.72 L175.73 46.37 A2 2 0 0 1 173.41 48 Z"/>
   </g>
 </svg>
