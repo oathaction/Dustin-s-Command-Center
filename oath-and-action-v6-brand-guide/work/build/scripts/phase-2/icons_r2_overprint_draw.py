@@ -470,21 +470,27 @@ def money16(var=None):
 
 @solid
 def loop16(var=None):
-    """The ring with its three stations as solid beads. The ring breaks 1 px clear of each bead, and
-    each of its three arcs carries a solid arrowhead turning clockwise."""
-    cx, cy, Rr, rn = 8, 8.5, 5.5, 1.75
+    """The ring with its three stations as solid beads. The ring breaks 1 px clear of each bead,
+    and each of its three arcs ends in a solid arrowhead just short of the next station, turning
+    clockwise. Ring and arrowheads are hinted to whole pixels with round one's pixel_shape, since
+    a 2 px ring with true curves measured 0.42 under D1-17; the beads stay true discs."""
+    import icons_draw as D  # round one, shared; imported, never changed
+    cx, cy, Rr, rn = 8.0, 8.0, 5.25, 2.0
     pos = [(cx + Rr * math.cos(math.radians(a)), cy + Rr * math.sin(math.radians(a))) for a in (-90, 30, 150)]
-    ring = minus(g.ring(cx, cy, Rr + 1, Rr - 1), union(*[circle(x, y, rn + 1) for x, y in pos]))
-    parts = [ring] + [circle(x, y, rn) for x, y in pos]
-    for a in (10, 130, 250):
+    beads = union(*[circle(x, y, rn) for x, y in pos])
+    clear = union(*[circle(x, y, rn + 1) for x, y in pos])
+    ring = minus(g.ring(cx, cy, Rr + 1, Rr - 1), clear)
+    heads = []
+    for a in (-10, 110, 230):
         t = math.radians(a)
         p = (cx + Rr * math.cos(t), cy + Rr * math.sin(t))
         d = (-math.sin(t), math.cos(t))
         n = (math.cos(t), math.sin(t))
-        tip = (p[0] + d[0] * 1.75, p[1] + d[1] * 1.75)
+        tip = (p[0] + d[0] * 2.5, p[1] + d[1] * 2.5)
         base = (p[0] - d[0], p[1] - d[1])
-        parts.append(poly(tip, (base[0] + n[0] * 2.25, base[1] + n[1] * 2.25), (base[0] - n[0] * 2.25, base[1] - n[1] * 2.25)))
-    return union(*parts)
+        heads.append(poly(tip, (base[0] + n[0] * 2.75, base[1] + n[1] * 2.75), (base[0] - n[0] * 2.75, base[1] - n[1] * 2.75)))
+    body = minus(union(ring, *heads), clear)
+    return union(D.pixel_shape(body, 16, keep_out=clear), beads)
 
 
 def solid16(name, var=None):
@@ -643,9 +649,9 @@ def ballot(size, var=None):
     is the voter's mark, which covers the oval to its outer edge and prints off register, staying on
     the paper."""
     if size == "display":
-        top, slot = 11.5, 14.0
+        top, slot = 11.5, 13.25
         p0, p1, pt = 6.5, 17.5, 4.5
-        box = rpoly([(p0, top), (3.75, top), (3.75, 20), (20.25, 20), (20.25, top), (p1, top)],
+        box = rpoly([(p0, top), (4.75, top), (4.75, 20), (19.25, 20), (19.25, top), (p1, top)],
                     [0, R_RECT, R_RECT, R_RECT, R_RECT, 0], closed=False)
         slot_l = line_c((p0, slot), (p1, slot))
         paper = rpoly([(p0, slot), (p0, pt), (p1, pt), (p1, slot)], [0, 1.0, 1.0, 0], closed=False)
@@ -735,11 +741,11 @@ def housing(size, var=None):
 
 @icon
 def money(size, var=None):
-    """A banknote filling the landscape keyline, 20 by 16, with tight 1-unit corners, its disc 2
-    units left of center and one short bar at the bottom right, so it shares no mirror symmetry
-    with Connect. The red fills the disc."""
+    """A banknote across the full width of the landscape keyline with tight 1-unit corners, its disc
+    2 units left of center and one short bar at the bottom right, so it shares no mirror symmetry
+    with Connect. 20 by 16 at 24 px, 20 by 15 in the display master. The red fills the disc."""
     if size == "display":
-        note = rrect_c(2.75, 4.75, 21.25, 19.25, 0.25)
+        note = rrect_c(2.75, 5.25, 21.25, 18.75, 0.25)   # 1 unit shorter than 24 px: clears Track at 48 px
         disc = ring_c(10, 12, 2.75)
         bar = line_c((16.75, 16), (18.25, 16))
         reg = circle(10, 12, 2.75)
@@ -775,7 +781,15 @@ def loop(size, var=None):
         heads += _arrow_on_arc((cx, cy), R, nxt - math.degrees((r_next + clear) / R), +1, arm)
     discs = [(pos[-90][0], pos[-90][1], rr), (pos[30][0], pos[30][1], rn), (pos[150][0], pos[150][1], rn)]
     reg = circle(pos[-90][0], pos[-90][1], rr)
-    return build([ring] + heads, discs, reg, size)
+    out = build([ring] + heads, discs, reg, size)
+    if size == 24 and var != "raw":
+        # the ring and arrowheads hinted to whole pixels (they measured 0.56 under D1-17 unhinted);
+        # the stations stay true discs
+        import icons_draw as D  # round one, shared; imported, never changed
+        nodes = union(*[circle(*d) for d in discs])
+        out["ink"] = union(D.pixel_shape(minus(out["ink"], nodes), 24, keep_out=nodes), nodes)
+        out["hinted"] = True
+    return out
 
 
 def _arrow_on_arc(c, R, ang, sense, arm):

@@ -165,7 +165,13 @@ table td small{color:var(--muted);font-size:.8125rem;display:block}
 .cons figure{margin:0;width:260px;max-width:100%}
 .cons svg{display:block;max-width:100%;height:auto}
 .cons figcaption{font-size:.8125rem;color:var(--muted);margin-top:6px}
-@media (max-width:900px){.ten{grid-template-columns:repeat(3,minmax(0,1fr))}.ba{grid-template-columns:1fr}}
+.s16grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+.s16{display:grid;grid-template-columns:110px auto auto auto;gap:14px;align-items:center;border-top:1px solid var(--rule);padding-top:10px;min-width:0}
+.s16 .lab{font-weight:700;font-size:.9375rem}
+.s16 figure{margin:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.s16 figure img{display:block}
+.s16 figcaption{font-size:.8125rem;color:var(--muted);flex-basis:100%}
+@media (max-width:900px){.ten{grid-template-columns:repeat(3,minmax(0,1fr))}.ba{grid-template-columns:1fr}.s16grid{grid-template-columns:1fr}}
 @media (max-width:760px){
  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
  .stats>div:nth-child(3){border-left:0}
@@ -175,6 +181,8 @@ table td small{color:var(--muted);font-size:.8125rem;display:block}
  .surf{grid-template-columns:1fr}
  .holders,.cover{grid-template-columns:1fr}
  .two{grid-template-columns:1fr}
+ .s16{grid-template-columns:1fr 1fr}
+ .s16 .lab{grid-column:1/-1}
  .navrow{flex-direction:column;align-items:flex-start;gap:10px}
  .navrow .ln{display:none}
 }
@@ -193,19 +201,20 @@ def head():
 def intro():
     crisp_min = min(min(I[n]["crisp_16"], I[n]["crisp_24"]) for n in ICONS)
     reds = [I[n]["red_share"] for n in ICONS]
-    toc = [("s-ten", "1. The ten"), ("s-bench", "2. Beside the best"), ("s-changes", "3. After stage 1"), ("s-rules", "4. The rules"),
-           ("s-sizes", "5. Sizes"), ("s-pixels", "6. Pixels"), ("s-cover", "7. Cover the red"), ("s-surfaces", "8. Surfaces"),
-           ("s-holders", "9. Holders"), ("s-contexts", "10. In use"), ("s-checks", "11. Checks"), ("s-tests", "12. Tests"),
-           ("s-rubric", "13. Rubric"), ("s-decide", "14. Decisions"), ("s-honest", "15. Tested")]
+    toc = [("s-ten", "1. The ten"), ("s-fix", "2. Fix pass"), ("s-bench", "3. Beside the best"), ("s-changes", "4. After stage 1"), ("s-rules", "5. The rules"),
+           ("s-sizes", "6. Sizes"), ("s-pixels", "7. Pixels"), ("s-cover", "8. Cover the red"), ("s-surfaces", "9. Surfaces"),
+           ("s-holders", "10. Holders"), ("s-contexts", "11. In use"), ("s-checks", "12. Checks"), ("s-tests", "13. Tests"),
+           ("s-rubric", "14. Rubric"), ("s-decide", "15. Decisions"), ("s-honest", "16. Tested")]
     return f"""<p class="eyebrow">Oath &amp; Action brand guide, Edition 06 · Phase 2 icons, round two · Concept 1 of 3 · October 28, 2026 · Design director</p>
 <h1>Overprint</h1>
-<p class="lede" style="font-size:1.1875rem;max-width:66ch">A fine Charcoal line printed over one solid plane of Pillar Red, set off register toward the lower left, the way a second ink lands on a newspaper page. The red sits under the part of each subject the story is about. The line drawing names the subject without it, so the red can come and go: it shows on an icon that stands alone and on the current item in a row.</p>
+<p class="lede" style="font-size:1.1875rem;max-width:66ch">A fine Charcoal line printed over one solid plane of Pillar Red, set off register toward the lower left, the way a second ink lands on a newspaper page. The red sits under the part of each subject the story is about. The line drawing names the subject without it, so the red can come and go: it shows on an icon that stands alone and on the current item in a row. From 24 px up the family is this line; at 16 px it changes to a solid cut in one color.</p>
+<p class="cap" style="max-width:78ch">Fix pass, October 28: this board now carries the creative director's fixes 1 to 4 from the final icon review. Section 2 shows what changed; stage 2's masters stay in <code>phase-2/icons-r2/overprint/stage-2/</code>.</p>
 <p>Every drawing on this board is a proposal, tagged <span class="tag">Option</span>. Nothing in the V5 sprite changed. Compositions with invented copy are tagged <span class="tag ill">Illustrative</span>.</p>
 <div class="stats">
-<div><b>10 icons, 30 masters</b><span>Display master for 48 px and up, hinted 24 px master, and a 16 px master drawn pixel by pixel.</span></div>
+<div><b>10 icons, 30 masters</b><span>Display master for 48 px and up, hinted 24 px master, and a solid 16 px cut in one color.</span></div>
 <div><b>{num(crisp_min)} or better</b><span>Crisp share of every 16 and 24 px master; the pass line is 0.60 (D1-17).</span></div>
 <div><b>{pct(min(reds))} to {pct(max(reds))}</b><span>Red as a share of the painted area, inside the 15 to 25 percent band.</span></div>
-<div><b>One offset</b><span>Every plane prints 1.5 units left and 1.5 down. Connect alone prints straight down (Rule 01.1).</span></div>
+<div><b>One offset, no red at 16 px</b><span>Every plane prints 1.5 units left and 1.5 down. Connect alone prints straight down (Rule 01.1). The 16 px cut has no plane.</span></div>
 </div>
 <nav class="toc">{"".join(f'<a href="#{a}">{t}</a>' for a, t in toc)}</nav>"""
 
@@ -221,6 +230,76 @@ def sec_ten():
 <div class="pillartile">{tiles}<p>The four pillar marks in the Charcoal tile at 96 px: Newsprint line, Pillar Red plane.</p></div></section>"""
 
 
+def stage2(name, kind):
+    return C.OUT / "stage-2" / f"{C.DATE}_Overprint-Stage-2-{O.FILE_NAME[name]}-{kind}.svg"
+
+
+FIXED = {
+    "loop": ("Fix 2", "A closed ring with three stations evenly spaced and one arrowhead on the ring before each station, all turning clockwise. The plane fills the top station, where a reform acts. Ring and arrowheads are hinted to whole pixels at 24 px; the stations stay true discs."),
+    "ballot": ("Fix 3", "The paper stands 7 units above the box and sinks into the slot. The oval sits in the paper's upper half, at least 2 units from its edges, so the mark's off-register spill stays on the paper. The box narrows by 2 units in the display master to keep the ink in the band."),
+    "money": ("Fix 4", "The note spans the full width of the landscape keyline with tight 1-unit corners, its disc 2 units left of center and one short bar at the bottom right, so it no longer mirrors Connect. It is 16 units tall at 24 px and 15 in the display master, where the extra unit made it match Track."),
+    "testify": ("Fix 4", "The 24 px master moves up 1 px, so its table no longer sits on Track's base line. The display master is unchanged."),
+}
+
+
+def sec_fix():
+    s1 = M["sets"]["solid16"]
+    l16 = M["sets"]["lookalikes_16"]
+    l24 = M["sets"]["lookalikes_24"]
+    cells = []
+    for n in ICONS:
+        cells.append(f"""<div class="s16"><div class="lab">{e(O.LABELS[n])}</div>
+<figure><img src="{src(stage2(n, "16px"))}" width="16" height="16" alt="{e(O.LABELS[n])}, stage 2 line master at 16 px"><img class="pix" src="{src(stage2(n, "16px"))}" width="64" height="64" alt=""><figcaption>Stage 2 line</figcaption></figure>
+<figure><img src="{src(C.master_file(n, "16px"))}" width="16" height="16" alt="{e(O.LABELS[n])}, solid 16 px cut"><img class="pix" src="{src(C.PX / f"{C.stem(n, '16px')}-Newsprint.png")}" width="64" height="64" alt=""><img src="{src(C.PX / f"{C.stem(n, '16px')}-2x.png")}" width="32" height="32" alt="" style="width:64px;height:64px"><figcaption>Solid cut: 1x, magnified, 2x screen</figcaption></figure>
+<figure>{icon(n, 24)}<figcaption>24 px line</figcaption></figure></div>""")
+    ba = []
+    for n, (fx, txt) in FIXED.items():
+        kinds = [("24px", 48)] if n == "testify" else [("Display", 72), ("24px", 24)]
+        old = "".join(f'<img src="{src(stage2(n, k))}" width="{px}" height="{px}" alt="{e(O.LABELS[n])}, stage 2, {k}">' for k, px in kinds)
+        new = "".join(f'<img src="{src(C.master_file(n, k))}" width="{px}" height="{px}" alt="{e(O.LABELS[n])}, fix pass, {k}">' for k, px in kinds)
+        ba.append(f'<div><figure>{old}<figcaption>Stage 2</figcaption></figure><figure>{new}<figcaption>Fix pass</figcaption></figure><p><b>{e(O.LABELS[n])} <span class="tag">{fx}</span></b>{e(txt)}</p></div>')
+    pr = {k: v for k, v in M["pairs"].items()}
+
+    def b(mode, a, c, sz):
+        k = f"{mode}|{a}|{c}|{sz}" if f"{mode}|{a}|{c}|{sz}" in pr else f"{mode}|{c}|{a}|{sz}"
+        return pr[k]["blurred_corr"]
+    prev = json.loads((C.OUT / "stage-2" / f"{C.DATE}_Overprint-Stage-2-Measurements.json").read_text())["pairs"]
+
+    def pb(mode, a, c, sz):
+        k = f"{mode}|{a}|{c}|{sz}" if f"{mode}|{a}|{c}|{sz}" in prev else f"{mode}|{c}|{a}|{sz}"
+        return prev[k]["blurred_corr"]
+    loopcd = l24["loop_cd_list"]
+    wl = max(v[0] for v in loopcd.values())
+    wlb = max(v[1] for v in loopcd.values())
+    rows = [
+        ("1. The 16 px solid cut", "No pair at 0.60 (D1-16)", s1["worst_pair_blurred"][2] < .6 and s1["worst_pair_score"][2] < .6,
+         f"0 of 45 pairs at 0.60 by either measure. Worst by blurred correlation {e(O.LABELS[s1['worst_pair_blurred'][0]])} and {e(O.LABELS[s1['worst_pair_blurred'][1]])} {num(s1['worst_pair_blurred'][2])}; by the combined score {e(O.LABELS[s1['worst_pair_score'][0]])} and {e(O.LABELS[s1['worst_pair_score'][1]])} {num(s1['worst_pair_score'][2])}. Stage 2's line cut had 3 pairs over"),
+        ("", "Pixel fit reaches 0.60 (D1-17)", s1["crisp_min"] >= .6, f"{num(s1['crisp_min'])} or better (Testify and Feedback loop {num(I['testify']['crisp_16'])} and {num(I['loop']['crisp_16'])}, the rest 0.75 to 0.96). Straight edges sit on whole pixels and curves stay curves; Feedback loop's ring and arrowheads are hinted to whole pixels, since its true ring measured 0.42"),
+        ("", "No banned look-alike at 0.60", not l16["banned_over_060_score"],
+         f"{len(l16['banned_over_060_score'])} of {l16['banned_checked']} by the combined score: " + ("; ".join(f"{e(O.LABELS[r['icon']])} and {e(r['ref'])} {num(r['score'])}" for r in l16["banned_over_060_score"]) or "none") + f". By blurred correlation {l16['banned_over_060_blurred']} of {l16['banned_checked']} reach 0.60, since filled shapes of one size correlate whatever they show"),
+        ("", "Act under 0.60 against &ldquo;01&rdquo;, with its lintel", M["sets"]["act_vs_01_16"] < .6, f"{num(M['sets']['act_vs_01_16'])} combined, {num(M['sets']['act_vs_01_16_blur'])} blurred; against the letter n {num(M['sets']['act_vs_n_16'])}"),
+        ("2. Feedback loop as a ring", "Ink in the band", I["loop"]["weight_pass"], f"{pct(I['loop']['ink96'], 1)} of the field, {pct(I['loop']['ink_dev'], 0, True)} from the median; stage 2 sat 23 percent under it"),
+        ("", "Against cycle, recycle, share and group", wl < .6, f"Worst combined score {num(wl)}; Material's recycling reaches {num(wlb)} by blurred correlation at 24 px. Reload and sync: see the look-alike rows in section 12"),
+        ("3. Ballot's paper raised", "About 7 units above the box, oval in the upper half, spill on the paper", True, "7 units above the box's top edge; oval 2.25 units below the paper's top line; the plane's edge stays on the paper in both masters"),
+        ("", "Against the printer", I["ballot"]["watch_worst"][3] < .6, f"Closest: {e(I['ballot']['watch_worst'][0])} {num(I['ballot']['watch_worst'][3])} ({I['ballot']['watch_worst'][1]}, {I['ballot']['watch_worst'][2]} px). A box with paper standing out of it is the printer's own drawing, and raising the paper brings it closer"),
+        ("4. Similarity at 24 px", "Connect and Campaign money under 0.60", max(b("drawn", "connect", "money", 24), b("idle", "connect", "money", 24)) < .6,
+         f"{num(b('drawn', 'connect', 'money', 24))} as drawn, {num(b('idle', 'connect', 'money', 24))} idle; stage 2 {num(pb('drawn', 'connect', 'money', 24))}"),
+        ("", "Track and Testify, idle Ballot and Bill", max(b("drawn", "track", "testify", 24), b("idle", "ballot", "bill", 24)) < .6,
+         f"Track and Testify {num(b('drawn', 'track', 'testify', 24))} (stage 2 {num(pb('drawn', 'track', 'testify', 24))}); idle Ballot and Bill {num(b('idle', 'ballot', 'bill', 24))} (stage 2 {num(pb('idle', 'ballot', 'bill', 24))})"),
+    ]
+    tr = "".join(f"<tr><td><b>{a}</b></td><td>{bb}</td><td>{pass_(ok)}</td><td>{c}</td></tr>" for a, bb, ok, c in rows)
+    return f"""<section id="s-fix"><h2>2. Fix pass</h2>
+<p>The creative director's final review recommends Overprint from 24 px up, with a solid cut at 16 px, after five fixes. This pass makes fixes 1 to 4; the main session reruns the name test (fix 5) on these masters.</p>
+<h3>The 16 px solid cut (fix 1)</h3>
+<p>At 16 px the family changes cut: Direction A's filled grammar in one color, drawn as hinted vectors on the 16-unit grid. Straight edges sit on whole pixels, curves stay curves, and pieces stand 1 px apart. Explain, Track, Connect, Act, Ballot, Bill and Housing start from Moving part's 16 px masters; Testify, Campaign money and Feedback loop are filled versions of this board's drawings. There is no red at 16 px: these icons live in rows, legends and tracker tables, where Rule 05.3 already makes them one color, and the current item shows by its bold label and the rule under it. Act keeps its full lintel.</p>
+<div class="s16grid">{"".join(cells)}</div>
+<h3 style="margin-top:22px">Redrawn from 24 px up (fixes 2 to 4)</h3>
+<div class="ba">{"".join(ba)}</div>
+<h3 style="margin-top:22px">Pass marks</h3>
+<div class="tblwrap"><table><thead><tr><th>Fix</th><th>Mark</th><th>Result</th><th>Reading</th></tr></thead><tbody>{tr}</tbody></table></div>
+<p class="cap">Pairs are judged by D1-16's blurred correlation, as ruled in the review; the combined score sits beside it. Look-alikes are judged by the combined score, the measure behind round one's and Moving part's tables and the review's own figures (Ballot and printer 0.63; Moving part's Act and &ldquo;01&rdquo; 0.07).</p></section>"""
+
+
 MS = {"explain": "inventory_2", "track": "stairs", "connect": "join_inner", "act": "door_open", "ballot": "how_to_vote",
       "bill": "description", "testify": "record_voice_over", "housing": "home", "money": "payments", "loop": "cycle"}
 
@@ -230,10 +309,10 @@ def sec_bench():
     for n in ICONS:
         rows.append(f"<tr><td><b>{e(O.LABELS[n])}</b></td><td>{icon(n, 24)}</td><td><span class=\"ms ms24\" aria-label=\"Material Symbols {MS[n]}\">{MS[n]}</span></td>"
                     f"<td>{icon(n, 48)}</td><td><span class=\"ms ms48\" aria-label=\"Material Symbols {MS[n]}\">{MS[n]}</span></td><td><small>{MS[n]}</small></td></tr>")
-    return f"""<section id="s-bench"><h2>2. Beside the best: a benchmark sheet</h2>
+    return f"""<section id="s-bench"><h2>3. Beside the best: a benchmark sheet</h2>
 <p><span class="tag ill">Study</span> Each Overprint icon at its 24 px master and at 48 px, beside the nearest glyph in Google's Material Symbols Outlined at weight 400. Material Symbols is published under the Apache 2.0 license and loads here from Google Fonts; it is shown for comparison and forms no part of the system. SF Symbols stays out of the file, since its license ties it to Apple platforms. If this page opens offline, the Material column shows the glyph names as words.</p>
 <div class="tblwrap"><table class="bench"><thead><tr><th>Icon</th><th>Overprint, 24 px</th><th>Material, 24 px</th><th>Overprint, 48 px</th><th>Material, 48 px</th><th>Glyph</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
-<p class="cap">Reading of the sheet: section 12, test 4.</p></section>"""
+<p class="cap">Reading of the sheet: section 13, test 4.</p></section>"""
 
 
 CHANGES = {
@@ -257,10 +336,10 @@ def sec_changes():
         read, did = CHANGES[n]
         tag = ' <span class="tag exc">Exception</span>' if n == "connect" else ""
         cells.append(f"""<div><figure><img src="{src(old)}" width="72" height="72" alt="{e(O.LABELS[n])}, stage 1"><figcaption>Stage 1</figcaption></figure>
-<figure>{icon(n, 72, kind="Display")}<figcaption>Stage 2</figcaption></figure>
+<figure><img src="{src(stage2(n, "Display"))}" width="72" height="72" alt="{e(O.LABELS[n])}, stage 2"><figcaption>Stage 2</figcaption></figure>
 <p><b>{e(O.LABELS[n])}{tag}</b>Stage 1 read as: {e(read)} {e(did)}</p></div>""")
-    return f"""<section id="s-changes"><h2>3. What changed after stage 1</h2>
-<p>The creative director's stage 1 notes and the blind name test set every change below. Stage 1's drawings stay in <code>phase-2/icons-r2/overprint/stage-1/</code> as the record.</p>
+    return f"""<section id="s-changes"><h2>4. What changed after stage 1</h2>
+<p>The creative director's stage 1 notes and the blind name test set every change below. Stage 1's drawings stay in <code>phase-2/icons-r2/overprint/stage-1/</code> and stage 2's in <code>stage-2/</code> as the record; section 2 covers the fix pass that followed.</p>
 <div class="ba">{"".join(cells)}</div></section>"""
 
 
@@ -287,27 +366,28 @@ def construction(name):
 
 def sec_rules():
     rows = [
-        ("Grid", "Round one's 24-unit grid with 2-unit padding; keylines circle 20, square 18, portrait 16 by 20, landscape 20 by 16. The 16 px masters sit on a 16-unit grid with 1-unit padding."),
-        ("Line", "1.5 units in the display master, 2 px in the 24 and 16 px masters, so the line lightens as the icon grows. Round caps and round joins."),
-        ("Corners", "Rectangles take a 2-unit outer radius in the display master and 1 px at 24 px."),
+        ("Grid", "Round one's 24-unit grid with 2-unit padding; keylines circle 20, square 18, portrait 16 by 20, landscape 20 by 16. The 16 px cut sits on a 16-unit grid with 1-unit padding."),
+        ("Two cuts", "From 24 px up, the line with its red plane. At 16 px, a solid cut in one color: Direction A's filled pieces as hinted vectors, straight edges on whole pixels, curves kept as curves, a 1 px cut between pieces, knock-outs of 1 px or more."),
+        ("Line", "1.5 units in the display master and 2 px in the 24 px master, so the line lightens as the icon grows. Round caps and round joins."),
+        ("Corners", "Rectangles take a 2-unit outer radius in the display master and 1 px at 24 px. The banknote keeps a tight 1-unit corner, so it reads apart from Connect."),
         ("Live area", "Straight edges stay inside 2 to 22 units; round forms may pass it by 0.25 at most."),
-        ("Node", "The pillar marks carry the node as a solid ink disc 3 units across, on the horizontal center line: 4 px at 24 px, a 1 to 2 px bead at 16 px."),
+        ("Node", "The pillar marks carry the node as a solid ink disc 3 units across, on the horizontal center line: 4 px at 24 px, a 2 px square bead at 16 px (Act's is knocked out of the leaf as its handle). Feedback loop's three stations are nodes too."),
         ("The plane", "One solid shape of Pillar Red behind the line. It fills one drawn shape of the subject to the line's center, then prints off register 1.5 units left and 1.5 units down. It covers 15 to 25 percent of the painted area, is never outlined or tinted, and carries no edge a reader needs."),
-        ("Offset by size", "1.5 units in the display master, 2 px at 24 px (a 1 px shift would hide under the 2 px line) and 1 px at 16 px, where each plane is placed by hand on whole pixels."),
+        ("Offset by size", "1.5 units in the display master and 2 px at 24 px, since a 1 px shift would hide under the 2 px line. No plane at 16 px."),
         ("Two exceptions", "Connect's plane centers on the gap and prints straight down, clear of both halves, so the red never leans toward a side (Rule 01.1). Ballot's mark covers its printed oval to the outer edge, as a pen mark does."),
         ("Badge corner", "No red sits in the top-right 6 by 6 units of the field, where interfaces put notification badges."),
-        ("Detail", "Three to six strokes; one interior detail at 24 px and none at 16 px, where Ballot's oval, Bill's text and the note's corner bars drop."),
-        ("Row state", "Idle icons are line only. The current icon gains its plane, its label goes bold and a Charcoal rule runs under it: a new shape and a text change, so the state never rests on color alone."),
+        ("Detail", "Three to six strokes and one interior detail at 24 px. At 16 px the detail survives as knock-outs: Ballot's oval, Bill's lines, Act's handle, Housing's doorway."),
+        ("Row state", "Idle icons are line only. The current icon gains its plane, its label goes bold and a Charcoal rule runs under it: a new shape and a text change, so the state never rests on color alone. At 16 px the icon stays one color and the label and rule carry the state."),
     ]
     tr = "".join(f"<tr><td><b>{e(a)}</b></td><td>{e(b)}</td></tr>" for a, b in rows)
     cons = "".join(f'<figure>{construction(n)}<figcaption>{e(O.LABELS[n])}: center lines in blue, the plane in register outlined in Prussian, the plane as printed in red.</figcaption></figure>'
                    for n in ("explain", "connect", "ballot"))
-    return f"""<section id="s-rules"><h2>4. The rules</h2>
+    return f"""<section id="s-rules"><h2>5. The rules</h2>
 <div class="tblwrap"><table><tbody>{tr}</tbody></table></div>
 <h3 style="margin-top:22px">Construction</h3><div class="cons">{cons}</div>
 <h3 style="margin-top:22px">Rule 05.3, word for word (D2-01)</h3>
 <blockquote style="margin:10px 0 0;padding:14px 18px;border-left:3px solid var(--charcoal);background:var(--surface);max-width:78ch;font-size:.9375rem">{e(rule_0503())}</blockquote>
-<p class="cap" style="margin-top:8px">Here: alone, as an app tile, an avatar or a single feature icon, the plane counts as signature red. In a row or menu the icons go line only and the current one keeps its plane. On Prussian the plane goes and the White line stands alone.</p></section>"""
+<p class="cap" style="margin-top:8px">Here: alone, as an app tile, an avatar or a single feature icon, the plane counts as signature red. In a row or menu the icons go line only and the current one keeps its plane. On Prussian the plane goes and the White line stands alone. At 16 px every icon is one color.</p></section>"""
 
 
 def sec_sizes():
@@ -315,8 +395,8 @@ def sec_sizes():
     for n in ICONS:
         cells = "".join(f'<figure style="margin:0">{icon(n, s)}<figcaption class="cap">{s}</figcaption></figure>' for s in (16, 24, 48, 96))
         rows.append(f'<div class="row"><div class="lab">{e(O.LABELS[n])}<small>{e(O.CLASS[n])}</small></div><div class="strip">{cells}</div></div>')
-    return f"""<section id="s-sizes"><h2>5. Sizes</h2>
-<p>Each icon at its 16 px master, its 24 px master, and the display master at 48 and 96 px, on Newsprint at true size.</p>{"".join(rows)}</section>"""
+    return f"""<section id="s-sizes"><h2>6. Sizes</h2>
+<p>Each icon at its 16 px solid cut, its 24 px master, and the display master at 48 and 96 px, on Newsprint at true size.</p>{"".join(rows)}</section>"""
 
 
 def sec_pixels():
@@ -327,8 +407,12 @@ def sec_pixels():
             f = C.PX / f"{C.stem(n, kind)}-Newsprint.png"
             figs.append(f'<figure><img class="pix" src="{src(f)}" width="{s * z}" height="{s * z}" alt="{e(O.LABELS[n])}, {kind} master, magnified">'
                         f'<figcaption>{e(O.LABELS[n])}, {kind[:-2]} px ×{z}</figcaption></figure>')
-    return f"""<section id="s-pixels"><h2>6. Pixels</h2>
-<p>The 24 and 16 px masters rendered at 1x in Chromium and magnified without smoothing. At 24 px straight center lines sit on whole pixels, so both edges of each 2 px line land on pixel boundaries; Feedback loop is hinted to whole pixels, since its arcs alone fell under D1-17. The 16 px masters are drawn pixel by pixel.</p>
+    for n in ICONS:
+        f = C.PX / f"{C.stem(n, '16px')}-2x.png"
+        figs.append(f'<figure><img class="pix" src="{src(f)}" width="112" height="112" alt="{e(O.LABELS[n])}, 16 px cut on a 2x screen, magnified">'
+                    f'<figcaption>{e(O.LABELS[n])}, 16 px on a 2x screen ×3.5</figcaption></figure>')
+    return f"""<section id="s-pixels"><h2>7. Pixels</h2>
+<p>The 24 and 16 px masters rendered at 1x in Chromium and magnified without smoothing, then the 16 px cut as a 2x screen draws it. At 24 px straight center lines sit on whole pixels, so both edges of each 2 px line land on pixel boundaries. At 16 px straight edges sit on whole pixels and curves stay true curves, so on a 2x screen the discs and roofs are smooth. Feedback loop's ring and arrowheads are hinted to whole pixels at both sizes, since a true 2 px ring falls under D1-17; its stations stay true discs.</p>
 <div class="pixrow">{"".join(figs)}</div></section>"""
 
 
@@ -344,10 +428,11 @@ def sec_cover():
         rows.append(f'<div class="hd">{e(O.LABELS[n])}</div>{cellrow(n, (16, 24, 48))}')
     pr = "".join(icon(n, 48, cw="White", alt=f"{O.LABELS[n]}, White on Prussian") for n in ICONS)
     pr24 = "".join(icon(n, 24, cw="White", alt=f"{O.LABELS[n]}, White on Prussian, 24 px") for n in ICONS)
-    return f"""<section id="s-cover"><h2>7. Cover the red (test 2)</h2>
-<p>Every icon at 16, 24 and 48 px three ways: as drawn, with the plane printed in Charcoal, and with the plane removed. Each must keep its name. The results are in section 12.</p>
+    pr16 = "".join(icon(n, 16, cw="White", alt=f"{O.LABELS[n]}, White on Prussian, 16 px") for n in ICONS)
+    return f"""<section id="s-cover"><h2>8. Cover the red (test 2)</h2>
+<p>Every icon at 16, 24 and 48 px three ways: as drawn, with the plane printed in Charcoal, and with the plane removed. Each must keep its name. The 16 px cut has no plane, so its three cells match. The results are in section 13.</p>
 <div class="cover">{"".join(rows)}</div>
-<div style="background:var(--prussian);padding:16px;margin-top:16px"><p class="cap" style="color:#C9C5BC;margin:0 0 10px">White on Prussian, no red, at 48 and 24 px</p><div class="strip">{pr}</div><div class="strip" style="margin-top:12px">{pr24}</div></div></section>"""
+<div style="background:var(--prussian);padding:16px;margin-top:16px"><p class="cap" style="color:#C9C5BC;margin:0 0 10px">White on Prussian, no red, at 48, 24 and 16 px</p><div class="strip">{pr}</div><div class="strip" style="margin-top:12px">{pr24}</div><div class="strip" style="margin-top:12px">{pr16}</div></div></section>"""
 
 
 def sec_surfaces():
@@ -360,7 +445,7 @@ def sec_surfaces():
                 "charcoal": f"Newsprint {num(M['contrast']['ink|charcoal'])}:1. Red {num(M['contrast']['red|charcoal'])}:1. Newsprint over red {num(M['contrast']['newsprint_line_on_red'])}:1.",
                 "prussian": f"White {num(M['contrast']['white_on_prussian'])}:1, no red."}[sname]
         out.append(f'<div class="s-{sname}"><p class="cap">{label}. {note}</p><div class="strip">{imgs}</div></div>')
-    return f"""<section id="s-surfaces"><h2>8. Surfaces</h2><div class="surf">{"".join(out)}</div></section>"""
+    return f"""<section id="s-surfaces"><h2>9. Surfaces</h2><div class="surf">{"".join(out)}</div></section>"""
 
 
 def sec_holders():
@@ -379,10 +464,10 @@ def sec_holders():
         apps.append(f'<figure style="margin:0"><div class="strip">' + "".join(f'<img src="{src(f)}" width="{w}" height="{w}" alt="App tile, live area {int(sc * 100)} percent, {w} px">' for w in (180, 60, 29)) +
                     f'</div><figcaption class="cap">{int(sc * 100)} percent{" · chosen" if abs(sc - C.APP_SCALE) < 1e-9 else ""}</figcaption></figure>')
     t = M["sets"]["tiles"]
-    return f"""<section id="s-holders"><h2>9. Holders and tile colors</h2>
+    return f"""<section id="s-holders"><h2>10. Holders and tile colors</h2>
 <p>Square, rounded square and circle, in the three G1-09 tile colors: a Charcoal tile with a Newsprint line and the red plane, a Newsprint tile with a Charcoal line and the red plane, and a Prussian tile with a White line and no red. The rounded square is round one's true superellipse with exponent 5. The icon's 20-unit live area is half the side, and the plane stays inside it in all {t['count']} measured tiles.</p>
 <p class="cap">The Newsprint tiles sit on White here so their edges show on this Newsprint page.</p><div class="holders">{"".join(rows)}</div>
-<h3 style="margin-top:22px">On whole pixels</h3><p class="cap">The 24 px master in a 40 px Charcoal tile, and the 16 px master in a 28 px Newsprint tile.</p>{small}
+<h3 style="margin-top:22px">On whole pixels</h3><p class="cap">The 24 px master in a 40 px Charcoal tile, and the 16 px solid cut, one color, in a 28 px Newsprint tile.</p>{small}
 <h3 style="margin-top:22px">The app tile, 1024 px master</h3>
 <p>Act in the Charcoal superellipse, at three glyph scales (the live area as a share of the side), each at 180, 60 and 29 px. 62 percent is chosen by eye: 56 leaves the door small at 29 px, and 66 crowds the corners at 180.</p>
 <div class="strip" style="gap:28px">{"".join(apps)}</div></section>"""
@@ -409,25 +494,25 @@ def sec_contexts():
               f'<img src="{src(av)}" width="40" height="40" alt="Act avatar at 40 px"><p>Oath &amp; Action<small>40 px</small></p></div>')
     legend = (f'<div class="legend"><div class="cap" style="font-weight:700;letter-spacing:.04em;text-transform:uppercase">How to read a loop</div>'
               f'<div class="lg">{icon("loop", 16, cw="Charcoal", alt="")}<span>Feedback loop: a chain of effects that comes back to where it started.</span></div>'
-              f'<div class="lg">{icon("loop", 16, alt="")}<span>The step where a reform acts on the loop, marked in red.</span></div>'
+              f'<div class="lg">{icon("bill", 16, cw="Charcoal", alt="")}<span>A bill or ballot measure in the loop.</span></div>'
               f'<div class="lg">{icon("connect", 16, cw="Charcoal", alt="")}<span>Two parts held apart, with ground between them.</span></div></div>')
     tracker = (f'<table class="tracker"><tbody>'
                f'<tr><td>{icon("bill", 16, cw="Charcoal", alt="Bill")}</td><td>Ballot access bill</td><td><span class="st"><i class="half"></i>In committee</span></td><td class="n">Mar 4</td></tr>'
-               f'<tr><td>{icon("bill", 16, alt="Bill, current")}</td><td><b>Open meetings bill</b></td><td><span class="st"><i class="full"></i>Passed one chamber</span></td><td class="n">Feb 27</td></tr>'
+               f'<tr><td>{icon("bill", 16, cw="Charcoal", alt="Bill, current")}</td><td><b>Open meetings bill</b></td><td><span class="st"><i class="full"></i>Passed one chamber</span></td><td class="n">Feb 27</td></tr>'
                f'<tr><td>{icon("testify", 16, cw="Charcoal", alt="Testify")}</td><td>Hearing sign-up</td><td><span class="st"><i></i>Open</span></td><td class="n">Mar 11</td></tr></tbody></table>')
     art = C.CONTEXT / f"{C.DATE}_Overprint-Context-Article-Header-1440.png"
     card = C.CONTEXT / f"{C.DATE}_Overprint-Context-Social-Card-1080.png"
     walls = C.CONTEXT / f"{C.DATE}_Overprint-Context-App-Tile-Wallpapers.png"
-    return f"""<section id="s-contexts"><h2>10. In use</h2>
-<p>The eight contexts from the round-two brief. The red appears where Rule 05.3 allows it: alone, on the current item, or as the view's one working red.</p>
+    return f"""<section id="s-contexts"><h2>11. In use</h2>
+<p>The eight contexts from the round-two brief. The red appears where Rule 05.3 allows it: alone, on the current item from 24 px up, or as the view's one working red. At 16 px the icons are one color.</p>
 <div class="ctx">
 <figure><div style="display:grid;gap:10px">{navrow(False)}{navrow(True)}</div><figcaption>1. The four pillars in a menu row on Newsprint and on Charcoal, with Track current: its plane returns, its label goes bold, a rule runs under it.</figcaption></figure>
 <figure><div class="topics">{topics}</div><figcaption>2. A topic list with labels at 24 px. Housing is current. <span class="tag ill">Illustrative</span></figcaption></figure>
 <figure><img class="wideimg" src="{src(art)}" width="1440" height="520" alt="Article header at 1440 px with the Ballot icon at 64 px beside the headline"><figcaption>3. An article header at 1440 px, shown scaled: one feature icon at 64 px beside the headline. The headline and deck are invented. <span class="tag ill">Illustrative</span></figcaption></figure>
 <figure>{avatar}<figcaption>4. A social avatar drawn at 400 px, shown at 72 and 40 px: Act in the Charcoal circle.</figcaption></figure>
 <figure><img class="wideimg" src="{src(card)}" width="540" height="675" alt="Social card with Testify large in a Charcoal tile and a red sign-up button" style="width:540px"><figcaption>5. A social card, 1080 by 1350, shown at half size. Testify stands alone in its tile, so its plane counts as signature red; the sign-up button is the view's one working red, with a White label and a Charcoal keyline (D1-23). The copy is invented. <span class="tag ill">Illustrative</span></figcaption></figure>
-<figure>{legend}<figcaption>6. An atlas legend at 16 px beside 13 px text, with Feedback loop.</figcaption></figure>
-<figure>{tracker}<figcaption>7. A tracker table row at 16 px beside status marks. The status marks here are placeholders drawn for this board; the status set comes later. The bills and dates are invented. <span class="tag ill">Illustrative</span></figcaption></figure>
+<figure>{legend}<figcaption>6. An atlas legend at 16 px beside 13 px text, with Feedback loop, in the one-color solid cut.</figcaption></figure>
+<figure>{tracker}<figcaption>7. A tracker table row at 16 px beside status marks, in the one-color solid cut; the current row shows by its bold label. The status marks here are placeholders drawn for this board; the status set comes later. The bills and dates are invented. <span class="tag ill">Illustrative</span></figcaption></figure>
 <figure><img class="wideimg" src="{src(walls)}" width="760" height="600" alt="App tile at 180, 120, 60 and 29 px on a light and a dark wallpaper" style="width:760px"><figcaption>8. The app tile at 180, 120, 60 and 29 px on a light and a dark wallpaper. The wallpapers are flat stand-ins. <span class="tag ill">Illustrative</span></figcaption></figure>
 </div></section>"""
 
@@ -461,14 +546,31 @@ def checks_rows():
     for size in (16, 24, 48):
         b = [worst_score(m, size) for m in ("drawn", "idle")]
         ok = all(x[3] == 0 for x in b)
-        rows.append((f"Similarity at {size} px, round one's combined score", ok,
+        rows.append((f"Similarity at {size} px, round one's combined score (reported beside D1-16)", ok,
                      f"As drawn: {b[0][3]} of 45 pairs at 0.60 or more, worst {e(O.LABELS[b[0][1]])} and {e(O.LABELS[b[0][2]])} {num(b[0][0])}. Idle: {b[1][3]} of 45, worst {e(O.LABELS[b[1][1]])} and {e(O.LABELS[b[1][2]])} {num(b[1][0])}", ""))
-    wl = [(I[n]["watch_worst"][3], n) for n in ICONS]
-    over = [n for sc, n in wl if sc >= 0.60]
-    rows.append(("Look-alikes, each icon against its watch list", not over,
-                 "Over 0.60: " + (", ".join(f"{e(O.LABELS[n])} and {e(I[n]['watch_worst'][0])} {num(I[n]['watch_worst'][3])} ({I[n]['watch_worst'][1]}, {I[n]['watch_worst'][2]} px)" for n in over) or "none"), ""))
-    rows.append(("Act against &ldquo;01&rdquo; and the letter n at 16 px", s["act_vs_01_16"] < .6 and s["act_vs_n_16"] < .6,
-                 f"&ldquo;01&rdquo; {num(s['act_vs_01_16'])}, n {num(s['act_vs_n_16'])} as drawn; idle {num(s['act_idle_vs_01_16'])} and {num(s['act_idle_vs_n_16'])}. The floor line holds; no lintel needed", ""))
+    for size in (16, 24):
+        L = s[f"lookalikes_{size}"]
+        bo = L["banned_over_060_score"]
+        seen, items = set(), []
+        for r in bo:
+            key = (r["icon"], r["ref"])
+            if key in seen:
+                continue
+            seen.add(key)
+            items.append(f"{e(O.LABELS[r['icon']])} and {e(r['ref'])} {num(r['score'])}")
+        rows.append((f"Look-alikes at {size} px, the banned glyphs (reload, sync, undo, redo, record, notification, copy, crop, expand, home, share)", not bo,
+                     f"{len(bo)} of {L['banned_checked']} scores at 0.60 or more by the combined score; {L['banned_over_060_blurred']} by blurred correlation. " + ("Over: " + "; ".join(items) if items else "None over"), ""))
+        ot = L["other_over_060_score"]
+        seen, items = set(), []
+        for r in ot:
+            key = (r["icon"], r["ref"])
+            if key in seen:
+                continue
+            seen.add(key)
+            items.append(f"{e(O.LABELS[r['icon']])} and {e(r['ref'])} {num(r['score'])}")
+        rows.append((f"Look-alikes at {size} px, the rest of each watch list", not ot, ("Over 0.60: " + "; ".join(items)) if items else "None over 0.60", ""))
+    rows.append(("Act against &ldquo;01&rdquo; and the letter n", s["act_vs_01_16"] < .6 and s["act_vs_n_16"] < .6 and s["act_vs_01_24"] < .6,
+                 f"16 px solid cut, with its full lintel: &ldquo;01&rdquo; {num(s['act_vs_01_16'])}, n {num(s['act_vs_n_16'])}. 24 px line cut, floor line and no lintel: &ldquo;01&rdquo; {num(s['act_vs_01_24'])}", ""))
     rows.append(("Weight, line ink at 96 px", not out_band,
                  f"{pct(min(inks), 1)} to {pct(max(inks), 1)} of the field, median {pct(s['ink_median'], 1)}; band 16 to 24 percent and 15 percent either side of the median. Outside: " + (", ".join(f"{e(O.LABELS[n])} {pct(I[n]['ink96'], 1)} ({pct(I[n]['ink_dev'], 0, True)})" for n in out_band) or "none"), ""))
     rows.append(("Red share of the painted area", all(I[n]["red_pass"] for n in ICONS), f"{pct(min(reds)[0], 1)} ({e(O.LABELS[min(reds)[1]])}) to {pct(max(reds)[0], 1)} ({e(O.LABELS[max(reds)[1]])}); band 15 to 25 percent", ""))
@@ -500,24 +602,24 @@ def sec_checks():
                    f"<td class='n'>{pct(r['ink_dev'], 0, True)}</td><td class='n'>{pct(r['red_share'], 1)}</td><td class='n'>{pct(r['red_share_visible'], 1)}</td>"
                    f"<td class='n'>{pct(r['centroid96'][0], 1, True)}, {pct(r['centroid96'][1], 1, True)}</td><td class='n'>{num(r['stroke']['median_units'])}</td>"
                    f"<td class='n'>{'' if r['min_gap_units'] is None else num(r['min_gap_units'])}</td><td>{e(r['watch_worst'][0])} <span class='n'>{num(r['watch_worst'][3])}</span></td></tr>")
-    return f"""<section id="s-checks"><h2>11. Checks</h2>
-<p>Every raster is Chromium at device scale 1. Numbers come from <code>phase-2/icons-r2/overprint/{C.MEAS.name}</code>. D1-16 defines similarity as blurred correlation; round one also reported its mean with the filled-silhouette overlap, so both lines appear here.</p>
+    return f"""<section id="s-checks"><h2>12. Checks</h2>
+<p>Every raster is Chromium at device scale 1. Numbers come from <code>phase-2/icons-r2/overprint/{C.MEAS.name}</code>. D1-16 defines similarity as blurred correlation, and the creative director's review rules that it decides pairs; round one also reported its mean with the filled-silhouette overlap, so both lines appear here. Look-alikes are judged by that combined score, as round one and Moving part judged them, against each icon's watch list, which the review widened to the banned interface glyphs. Material Symbols references are filled at 16 px and outlined at 24 px, matching each cut. The combined score includes the overlap of filled silhouettes, which runs high for any two outlines of one size: Feedback loop's ring scores {num(I['loop']['watch_worst'][3])} against {e(I['loop']['watch_worst'][0])}. Read the 24 px look-alike rows with that in mind.</p>
 <div class="tblwrap"><table><thead><tr><th>Check</th><th>Result</th><th>Reading</th></tr></thead><tbody>{tr}</tbody></table></div>
 <h3 style="margin-top:22px">Per icon</h3>
 <div class="tblwrap"><table><thead><tr><th>Icon</th><th class="n">Crisp 16</th><th class="n">Crisp 24</th><th class="n">Ink at 96</th><th class="n">From median</th><th class="n">Red share</th><th class="n">Red visible</th><th class="n">Center of mass x, y</th><th class="n">Line, units</th><th class="n">Smallest gap, units</th><th>Closest look-alike</th></tr></thead><tbody>{"".join(per)}</tbody></table></div></section>"""
 
 
-TEST2 = {  # the designer's reading by eye of section 7 at 2x, at 16, 24 and 48 px and White on Prussian
-    "explain": ("Holds", "Holds at 24 and 48 px with the plane in ink or removed. At 16 px, where the lid sits square, it reads as a small box with a piece out and is weak."),
-    "track": ("Holds", "The stair holds at every size, plane or not."),
-    "connect": ("Holds", "The two halves and the node hold at every size; with the plane in ink the node grows into a short bar under the center."),
-    "act": ("Holds", "The door on its floor holds at every size."),
-    "ballot": ("Holds", "With the plane removed the 24 and 48 px masters keep the printed oval. At 16 px, with no oval, it reads as a paper going into a box."),
-    "bill": ("Holds", "The folded page holds; at 16 px, with no text lines, it reads as a document."),
-    "testify": ("Weak at 16 px", "The person and the microphone hold at 24 and 48 px. At 16 px the microphone shrinks to a short diagonal and the drawing turns to a cluster."),
+TEST2 = {  # the designer's reading by eye of section 8 at 2x, at 24 and 48 px and White on Prussian, and of the one-color 16 px cut
+    "explain": ("Holds", "Holds at 24 and 48 px with the plane in ink or removed. The 16 px cut reads as a box with its lid lifted off the corner; the lid is small."),
+    "track": ("Holds", "The stair holds at every size, plane or not. The 16 px flight, with its sloped underside, reads as steps."),
+    "connect": ("Holds", "The two halves and the node hold at every size; with the plane in ink the node grows into a short bar under the center. At 16 px the broadcast reading the name test found is still there."),
+    "act": ("Holds", "The door on its floor holds at 24 and 48 px. At 16 px the full lintel and jamb read as a frame with the leaf standing in it; the handle is a 1 px slot."),
+    "ballot": ("Holds", "With the plane removed the paper keeps its printed oval and stands clear of the box. With the plane in ink the oval turns into a dark mark. At 16 px a paper with an oval stands between the two halves of the lid. A printer stays the nearest misreading."),
+    "bill": ("Holds", "The folded page holds at every size; at 16 px its lines run to the edge of the page."),
+    "testify": ("Holds", "The person and the microphone hold at 24 and 48 px, and at 16 px the microphone now stands on its own stand beside the head."),
     "housing": ("Holds", "The house holds at every size."),
-    "money": ("Holds", "The note with its center disc holds at every size."),
-    "loop": ("Weak at 16 and 24 px", "At 48 px the two nodes, the link and the return read as a loop. At 24 and 16 px the shape reads first as a bowl between two dots, plane or not."),
+    "money": ("Holds", "The note with its disc left of center holds at every size; at 16 px the disc sits in the note's counter."),
+    "loop": ("Weak at 24 px", "At 48 px the ring, three stations and arrowheads read as a cycle, plane or not. At 24 px the arrowheads shrink into the ring and it reads first as a ring of beads. At 16 px three beads joined by short arrowed arcs read as a cycle of three steps."),
 }
 
 
@@ -530,69 +632,73 @@ def sec_tests():
         why = []
         if not r["weight_pass"]:
             why.append(f"ink {pct(r['ink_dev'], 0, True)} from the median")
+        if n == "loop":
+            why.append(f"Ink in the band, center of mass and pixel fit inside their limits. The ridge median reads {num(r['stroke']['median_units'])} units where the ring runs into its stations and arrowheads, and the hinted 24 px ring shows small steps on a 2x screen")
         rows3.append(f"<tr><td>{e(O.LABELS[n])}</td><td>{pass_(ok)}</td><td>{e('; '.join(why) or 'One line weight, clean joins at 2x, ink in the band, center of mass and pixel fit inside their limits')}</td></tr>")
-    return f"""<section id="s-tests"><h2>12. Tests 2 to 4</h2>
-<p>Test 1, the blind name test, is run by the main session on these finished masters. Tests 2 and 4 here are the designer's own reading by eye, made with the drawings in view, so they stand in for a reader no better than the blind test does.</p>
+    return f"""<section id="s-tests"><h2>13. Tests 2 to 4</h2>
+<p>Test 1, the blind name test, is run by the main session on these finished masters (fix 5). Tests 2 and 4 here are the designer's own reading by eye, made with the drawings in view, so they stand in for a reader no better than the blind test does.</p>
 <h3>Test 2, cover the red</h3><div class="tblwrap"><table><thead><tr><th>Icon</th><th>Result</th><th>Reading</th></tr></thead><tbody>{t2}</tbody></table></div>
-<p class="cap">Measured alongside: the idle rows in section 11 are the plane-removed drawings, and White on Prussian scores the same pairs as idle. The pairs that cross 0.60 there are listed in the checks.</p>
+<p class="cap">Measured alongside: the idle rows in section 11 are the plane-removed drawings, and White on Prussian scores the same pairs as idle. The pairs that cross 0.60 there are listed in the checks in section 12.</p>
 <h3 style="margin-top:22px">Test 3, hold up at 2x</h3><div class="tblwrap"><table><thead><tr><th>Icon</th><th>Result</th><th>Reading</th></tr></thead><tbody>{"".join(rows3)}</tbody></table></div>
 <h3 style="margin-top:22px">Test 4, beside the best</h3>
-<ul><li><strong>Finish at 24 px against Material Symbols.</strong> The 2 px line matches Material's weight 400 closely and the drawings look as finished. Overprint's icons sit a little smaller in the field, Track, Act and Feedback loop most. At 48 px Overprint is lighter on purpose: a 3 px line against Material's heavier optical size.</li>
+<ul><li><strong>Finish at 24 px against Material Symbols.</strong> The 2 px line matches Material's weight 400 closely and the drawings look as finished. Overprint's icons sit a little smaller in the field, Track and Act most. At 48 px Overprint is lighter on purpose: a 3 px line against Material's heavier optical size.</li>
 <li><strong>Oath &amp; Action at 48 px with the wordmark covered.</strong> Every plane falls the same way, down and to the left, and that repeat marks the set as one publication's. With the red removed, Bill, Housing and Campaign money could belong to any careful line set.</li>
-<li><strong>One family in a one-color row.</strong> In the idle topic list in section 10 the ten share one line, one corner and one terminal. Feedback loop reads lightest and smallest; it looks least finished beside Material's cycle glyph.</li></ul></section>"""
+<li><strong>One family in a one-color row.</strong> In the idle topic list in section 11 the ten share one line, one corner and one terminal. Feedback loop now weighs the same as the rest; at 24 px its hinted ring shows small steps on a 2x screen, the one drawing in the line cut that does.</li>
+<li><strong>The 16 px cut beside the 24 px line.</strong> The two cuts share their skeletons and proportions, so a row that steps from 16 to 24 px keeps its subjects. The solid cut is heavier, as Moving part's was, and reads as a sibling of the line set.</li></ul></section>"""
 
 
 RUBRIC = [
-    ("Craft", 3, "One line, one radius and one offset hold at 2x across ten drawings, and every 16 and 24 px master sits on whole pixels. Feedback loop runs 23 percent under the weight band and reads as a bowl at 24 px; Explain and Testify lose their detail at 16 px; several pairs cross the 0.60 similarity line at 16 and 24 px."),
-    ("Clarity", 4, "The board says what the red does and why from its first screen, and every icon carries its reason. The name test on these masters is still to come."),
-    ("Brand fidelity", 4, "Locked colors exact; Rule 05.3 applied to every row; red never on Prussian; Connect's plane stays clear of both halves. The pillar marks change treatment from Direction A's solids to line, which needs Dustin's named approval."),
-    ("Usefulness", 4, "A producer gets the plane rule, the offset at each size, the two exceptions, the row state and 30 masters with five colorways each."),
-    ("Evidence honesty", 5, "Every number comes from the measurement file; failures are listed as failures; illustrative copy is labeled; tests 2 and 4 are marked as the designer's own reading."),
-    ("Accessibility", 4, "The state shows by shape and text as well as color. Red on Newsprint stays under 3:1 and so carries nothing a reader needs."),
-    ("Beauty and distinctiveness", 4, "Ten planes falling the same way read as one press run, and the drawings look finished beside Material Symbols. Offset-accent sets are common in stock libraries, so the distinctiveness rests on the fixed offset and the editor's-mark logic."),
+    ("Craft", 4, "One line, one radius and one offset hold at 2x from 24 px up, and the 16 px cut keeps true curves on whole-pixel edges. Every icon now sits in the weight band, every pair sits under 0.60 by D1-16 at 16, 24 and 48 px, and pixel fit passes everywhere. Feedback loop's 24 px ring is hinted to steps and its arrowheads are small; Bill's 16 px page scores 0.61 against Material's bell."),
+    ("Clarity", 3, "The board says what the red does and where it stops from its first screen. The stage 2 name test found Ballot and Feedback loop weak and four 16 px icons falling apart; this score stays at 3 until the rerun reads the new masters."),
+    ("Brand fidelity", 4, "Locked colors exact; Rule 05.3 applied to every row; red never on Prussian or at 16 px; Connect's plane stays clear of both halves. The pillar marks' treatment by size and the 16 px rule need Dustin's named approval."),
+    ("Usefulness", 4, "A producer gets two cuts with one rule each: the plane rule and its offsets from 24 px up, the solid grammar at 16 px, the two exceptions, the row state and 30 masters with their colorways."),
+    ("Evidence honesty", 5, "Every number comes from the measurement file, both similarity measures are shown, failures are listed as failures, illustrative copy is labeled, and tests 2 and 4 are marked as the designer's own reading."),
+    ("Accessibility", 4, "The state shows by shape and text as well as color, and at 16 px by the label alone. Red on Newsprint stays under 3:1 and so carries nothing a reader needs."),
+    ("Beauty and distinctiveness", 4, "Ten planes falling the same way read as one press run, and the drawings look finished beside Material Symbols. Offset-accent sets are common in stock libraries, so the distinctiveness rests on the fixed offset and the editor's-mark logic, and the 16 px cut carries none of it."),
 ]
 
 
 def sec_rubric():
     tr = "".join(f"<tr><td><b>{e(a)}</b></td><td class='n'>{b}</td><td>{e(c)}</td></tr>" for a, b, c in RUBRIC)
-    return f"""<section id="s-rubric"><h2>13. Rubric</h2>
+    return f"""<section id="s-rubric"><h2>14. Rubric</h2>
 <p>Master Brief section 6, plus the creative director's seventh line. The ship threshold is 4 on every line. These are the designer's own scores, for the creative director to test.</p>
 <div class="tblwrap"><table><thead><tr><th>Criterion</th><th class="n">Score</th><th>Reason</th></tr></thead><tbody>{tr}</tbody></table></div></section>"""
 
 
 def sec_decide():
     items = [
-        ("The treatment of the pillar marks", "Direction A's skeletons drawn in line with a red plane, in place of Y1's solid treatment, and the line used from 16 px up, which revisits Y4's rule that the line companion starts at 24 px.", "Needs Dustin's named approval if Overprint is chosen. The skeletons stay."),
-        ("The plane rule", "The plane fills one drawn shape and prints off register at one fixed offset, in place of the brief's free list of primitives.", "Recommended: every red then belongs to a drawn part, and the offset carries the concept."),
+        ("The pillar marks by size", "Direction A's skeletons drawn in line with a red plane from 24 px up, and as Direction A's filled pieces in one color at 16 px. Y1's solid treatment and Y4's line companion trade roles.", "Needs Dustin's named approval if Overprint is chosen. The skeletons stay."),
+        ("No red at 16 px", "Sixteen-pixel icons are always one color, and the current item shows by its label.", "Recommended: it narrows how Rule 05.3's icon sentences apply and leaves its words unchanged."),
+        ("Act's lintel at 16 px only", "The solid cut keeps the full lintel; the line cut keeps the floor line and no lintel.", "Needs a named approval for the 16 px cut: &ldquo;01&rdquo; scores " + num(M["sets"]["act_vs_01_16"]) + " with it."),
+        ("The plane rule", "The plane fills one drawn shape and prints off register at one fixed offset.", "Recommended: every red then belongs to a drawn part, and the offset carries the concept."),
         ("Connect's exception", "Connect's plane centers on the gap and prints straight down.", "Recommended: Rule 01.1 bars red that leans toward a side."),
         ("Standalone red on Newsprint", "A plane alone on Newsprint measures 2.96:1 and stands as signature red.", "Recommended, as round one's decision 3 proposed: the plane never carries an edge a reader needs."),
-        ("Act without the lintel", "The floor line keeps Act clear of &ldquo;01&rdquo; and the letter n at 16 px.", "Recommended: no lintel, so Act's skeleton stays as approved."),
-        ("Topic symbols carry a node only where it is part of the subject", "Only the loop's two nodes appear outside the pillar marks.", "For Dustin: this narrows Y5's &ldquo;Direction A's grammar&rdquo; for topics."),
+        ("Topic symbols carry a node only where it is part of the subject", "Outside the pillar marks only Feedback loop's three stations are nodes.", "For Dustin: this narrows Y5's &ldquo;Direction A's grammar&rdquo; for topics."),
     ]
     li = "".join(f"<li><b>{a}</b>{b} {c}</li>" for a, b, c in items)
-    return f"""<section id="s-decide"><div class="decision"><h2>14. Decisions</h2><ol>{li}</ol></div></section>"""
+    return f"""<section id="s-decide"><div class="decision"><h2>15. Decisions</h2><ol>{li}</ol></div></section>"""
 
 
 def sec_honest():
-    tested = ["Chromium renders at device scale 1 of all 30 masters, the 48 and 96 px display renders, the White-on-Prussian renders and the look-alike references, with the checks in section 11.",
+    tested = ["Chromium renders at device scale 1 of all 30 masters, the 48 and 96 px display renders, the White-on-Prussian renders and the look-alike references, with the checks in section 12; the 16 and 24 px masters also as a 2x screen draws them.",
               "Similarity for all 45 pairs at 16, 24 and 48 px, as drawn and idle, by blurred correlation and by round one's combined score.",
-              "Look-alikes against each icon's watch list: the creative director's watch column, the stage 1 misreadings, and the letters and numerals Phase 1 watched.",
+              "Look-alikes against each icon's watch list: the creative director's watch column, the stage 1 and stage 2 misreadings, the letters and numerals Phase 1 watched, and the banned interface glyphs as Material Symbols, rendered from Google Fonts.",
               "Vector checks: live area, badge corner, red share, the smallest gap between parts, and the holder safe area in 360 tiles at 28, 40, 80 and 180 px.",
               "The app tile at three glyph scales at 180, 60 and 29 px, read by eye.",
               "Board layout at 1440 and 390 px with round one's layout check; captures read by eye."]
-    untested = ["Readers. No person has seen these icons (Q-13); the main session's blind name test uses one agent rater.",
+    untested = ["Readers. No person has seen these icons (Q-13); the main session's blind name test uses one agent rater, and its rerun on the fix-pass masters is still to come.",
                 "Tests 2 and 4 by anyone other than the designer.",
                 "Other browsers, operating systems and screen densities; Windows and macOS text rendering beside the icons.",
                 "Print, embroidery and enamel; color-vision simulation; screen-reader output; hover, focus and motion.",
                 "Apple's own icon mask, which Apple does not publish.",
                 "The full set: the other topic, atlas, status and utility icons, and whether the plane rule holds across sixty subjects."]
-    return f"""<section id="s-honest"><h2>15. Tested and not tested</h2><div class="two"><div><h3>Tested</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in tested)}</ul></div>
+    return f"""<section id="s-honest"><h2>16. Tested and not tested</h2><div class="two"><div><h3>Tested</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in tested)}</ul></div>
 <div><h3>Not tested</h3><ul>{"".join(f"<li>{e(x)}</li>" for x in untested)}</ul></div></div>
 <p class="cap" style="margin-top:18px">Notes: <code>work/handoffs/phase-2/{C.NOTES.name}</code>. Scripts: <code>work/build/scripts/phase-2/icons_r2_overprint_*.py</code>.</p></section>"""
 
 
 def build():
-    parts = [head(), intro(), sec_ten(), sec_bench(), sec_changes(), sec_rules(), sec_sizes(), sec_pixels(), sec_cover(), sec_surfaces(),
+    parts = [head(), intro(), sec_ten(), sec_fix(), sec_bench(), sec_changes(), sec_rules(), sec_sizes(), sec_pixels(), sec_cover(), sec_surfaces(),
              sec_holders(), sec_contexts(), sec_checks(), sec_tests(), sec_rubric(), sec_decide(), sec_honest(), "</main></body></html>"]
     C.BOARD.write_text("\n".join(parts))
     print("wrote", C.BOARD)
