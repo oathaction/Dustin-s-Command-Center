@@ -1,29 +1,29 @@
 {
   "id": "R-27",
   "label": "Tax Enforcement",
-  "built": "2026-10-29T08:19:52+00:00",
+  "built": "2026-10-29T08:35:10+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9051,
-  "silhouette_iou_4x": 0.9401,
+  "silhouette_iou_1x": 0.9032,
+  "silhouette_iou_4x": 0.9375,
   "red_iou_1x": 0.841,
   "red_iou_4x": 0.8228,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.147,
-      "p95": 0.5,
-      "max": 2.236
+      "mean": 0.159,
+      "p95": 0.559,
+      "max": 2.475
     },
     "trace_to_reference": {
-      "mean": 0.149,
-      "p95": 0.5,
-      "max": 2.136
+      "mean": 0.152,
+      "p95": 0.559,
+      "max": 2.25
     },
     "symmetric": {
-      "mean": 0.148,
-      "p95": 0.5,
-      "max": 2.236
+      "mean": 0.156,
+      "p95": 0.559,
+      "max": 2.475
     }
   },
   "red_edge_distance_px": {
@@ -46,13 +46,13 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9051
+    "iou": 0.9032
   },
-  "ink_area_ratio_trace_over_reference": 1.0327,
+  "ink_area_ratio_trace_over_reference": 1.0373,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 23,
+  "bake_check_max_diff_levels_4x": 15,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     31.588,

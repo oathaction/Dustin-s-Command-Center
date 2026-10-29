@@ -9,7 +9,7 @@
     <line x1="40.9706" y1="64.5069" x2="52.3025" y2="64.5069" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="40.9706" y1="72.9924" x2="53.3407" y2="72.9924" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="73.5529" cy="66.398" r="14.1637" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.741 77.1889 L94.3062 83.5787 A2.914591 2.914591 0 0 1 94.3647 87.6971 A2.914626 2.914626 0 0 1 90.2462 87.7556 L82.6965 80.4155" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.0595 75.5561 L94.3062 83.5787 A2.914591 2.914591 0 0 1 94.3647 87.6971 A2.914626 2.914626 0 0 1 90.2462 87.7556 L81.7899 79.5333" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
     <path d="M65.0187 67.7968 A8.646363 8.646363 0 0 1 73.5529 57.7516 A8.646403 8.646403 0 0 1 82.0775 64.9553" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>

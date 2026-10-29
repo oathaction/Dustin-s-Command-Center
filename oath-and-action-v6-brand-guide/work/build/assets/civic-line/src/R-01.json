@@ -2,16 +2,26 @@
   "id": "R-01",
   "tracer": "T4",
   "corrections": [
-    {"what": "Made the three busts equal: heads true circles of r 7.51, shoulders true arcs of r 14.2 centred under each head, spaced evenly (head centres y 17.9, 54.78, 91.65); the top and bottom busts share one x (28.35), the middle one keeps its drawn offset to the left (x 24.0)",
-     "why": "DR-03 equal repeats. Heads fit r 7.53, 7.56 and 7.44; shoulders r 14.65, 13.97 and 14.01, sitting 0.1 to 0.5 px left of their heads; head centres x 28.01, 23.99 and 28.70, y steps 37.1 and 36.65. The top bust moves right up to 0.9 px (its shoulders) and the bottom one left 0.35 px."},
-    {"what": "Drew the ballot card as a true rectangle (x 120.41 to 174.72, y 25.86 to 96.21)",
-     "why": "DR-03 straight lines and right angles. Its sides fit within 0.06 deg of plumb and level."},
-    {"what": "Made the upper and lower arrowheads mirror images about y 60.5: each a square corner (arms 8.6 and 9.1 px) with its point at x 105.6, set square to the page so it points along the route's 45 deg arrival",
-     "why": "DR-03 symmetry. The sheet draws both heads as right-angled corners; their points sit at y 46.6 and 74.4."},
-    {"what": "Kept the middle route level at y 60.33 and its chevron symmetric about it",
-     "why": "DR-03 straight lines and symmetry. The route fits at 0.17 deg."},
-    {"what": "Drew every stroke at the set line weight W, 5.5 px",
-     "why": "DR-03 one line weight. Sheet 04 draws lighter: this icon measures 5.06 px (busts 4.7 to 5.2 px), so the trace's ink area is about 7 percent above the sheet's."}
+    {
+      "what": "Made the three busts equal: heads true circles of r 7.51, shoulders true arcs of r 14.2 centred under each head, spaced evenly (head centres y 17.9, 54.78, 91.65); the top and bottom busts share one x (28.35), the middle one keeps its drawn offset to the left (x 24.0)",
+      "why": "DR-03 equal repeats. Heads fit r 7.53, 7.56 and 7.44; shoulders r 14.65, 13.97 and 14.01, sitting 0.1 to 0.5 px left of their heads; head centres x 28.01, 23.99 and 28.70, y steps 37.1 and 36.65. The top bust moves right up to 0.9 px (its shoulders) and the bottom one left 0.35 px."
+    },
+    {
+      "what": "Drew the ballot card as a true rectangle (x 120.41 to 174.72, y 25.86 to 96.21)",
+      "why": "DR-03 straight lines and right angles. Its sides fit within 0.06 deg of plumb and level."
+    },
+    {
+      "what": "Review fix: gave all three arrowheads one shape, a 90 deg open corner with 8.85 px arms: upper and lower heads square to the page with points at (105.6, 46.6) and (105.6, 74.4), mirror images about y 60.5; the middle head turned 45 deg to point along its level route, point at (107.25, 60.33)",
+      "why": "DR-03 equal repeats (reviewer, must). The sheet draws the outer heads as right-angled corners with arms of 8.6 to 9.1 px and the middle head as a flatter chevron of about 80 deg; the set reads them as one arrow form, so all three now match."
+    },
+    {
+      "what": "Kept the middle route level at y 60.33 and its chevron symmetric about it",
+      "why": "DR-03 straight lines and symmetry. The route fits at 0.17 deg."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. Sheet 04 draws lighter: this icon measures 5.06 px (busts 4.7 to 5.2 px), so the trace's ink area is about 7 percent above the sheet's."
+    }
   ],
-  "notes": "Kept as drawn: three inputs, each with a right-pointing head; the upper route starts level with its bust's head and the lower one level with its bust's shoulders, so the two curves are not mirror images and are traced separately; the middle route is straight; the middle head is a flatter chevron than the two square corner heads, as drawn; the large check sits in clear space inside the card. Red: all three routes with their heads, and the check. Black and red sheets agree within a fringe."
+  "notes": "Kept as drawn: three inputs, each with a right-pointing head; the upper route starts level with its bust's head and the lower one level with its bust's shoulders, so the two curves are not mirror images and are traced separately; the middle route is straight; the large check sits in clear space inside the card. Red: all three routes with their heads, and the check. Black and red sheets agree within a fringe."
 }

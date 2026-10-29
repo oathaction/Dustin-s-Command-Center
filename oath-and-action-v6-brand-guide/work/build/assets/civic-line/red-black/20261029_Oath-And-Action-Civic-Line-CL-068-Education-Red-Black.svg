@@ -10,7 +10,7 @@
     </mask>
     <mask id="cl-068-fork-top-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <rect x="53.521" y="62.2941" width="20.958" height="4.3866" fill="#000000"/>
+      <rect x="53.521" y="62.2941" width="20.958" height="4.874" fill="#000000"/>
     </mask>
   </defs>
   <g id="base">

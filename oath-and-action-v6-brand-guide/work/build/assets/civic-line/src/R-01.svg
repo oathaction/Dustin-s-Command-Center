@@ -4,7 +4,7 @@
        Red: the three routes with their arrowheads and the large check inside the card. People and card border remain black. Preserve the three inputs and the blank area around the check. -->
   <!-- T4 trace. Three equal busts (head r 7.51, shoulder arc r 14.2), the middle one set 4.35 px left as drawn.
        Three red routes: the upper and lower curves end in square heads at (105.6, 46.6) and (105.6, 74.4),
-       mirror images about y 60.5; the straight middle route ends in a chevron at (107.25, 60.33). -->
+       mirror images about y 60.5; the straight middle route ends at (107.25, 60.33); all three heads are one 90 deg corner with 8.85 px arms. -->
   <g data-role="base">
     <circle id="head-1" cx="28.35" cy="17.9" r="7.51"/>
     <path id="shoulders-1" d="M14.84 35.51 A14.2 14.2 0 0 1 41.86 35.51"/>
@@ -16,11 +16,11 @@
   </g>
   <g data-role="accent">
     <path id="route-upper" d="M47.25 18.75 C74.72 18.31 86.51 29.79 105.6 46.6"/>
-    <polyline id="head-upper" points="105.6,37.5 105.6,46.6 97,46.6"/>
+    <polyline id="head-upper" points="105.6,37.75 105.6,46.6 96.75,46.6"/>
     <line id="route-middle" x1="44.25" y1="60.33" x2="107.25" y2="60.33"/>
-    <polyline id="head-middle" points="99.6,54 107.25,60.33 99.6,66.66"/>
+    <polyline id="head-middle" points="100.99,54.07 107.25,60.33 100.99,66.59"/>
     <path id="route-lower" d="M50.6 102.5 C74.68 102.73 89.91 90.2 105.6 74.4"/>
-    <polyline id="head-lower" points="105.6,83.5 105.6,74.4 97,74.4"/>
+    <polyline id="head-lower" points="105.6,83.25 105.6,74.4 96.75,74.4"/>
     <polyline id="check" points="134.75,59.9 143.9,69.4 160.5,50.5"/>
   </g>
 </svg>

@@ -2,6 +2,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-11" data-id="R-11" width="128" height="128" viewBox="0 0 128 128">
   <title>Election Enforcement</title>
   <desc>Oath &amp; Action Civic Line R-11 Election Enforcement. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <defs>
+    <mask id="r-11-handle-slit" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+      <path d="M95.9146 77.6714 L101.2467 81.2684 A0.365551 0.365551 0 0 1 101.3442 81.7753 A0.365551 0.365551 0 0 1 100.8373 81.8728 L95.5052 78.2758 A0.365546 0.365546 0 0 1 95.4029 77.7689 A0.365525 0.365525 0 0 1 95.9146 77.6714 Z" fill="#000000"/>
+    </mask>
+  </defs>
   <g id="base-1">
     <path d="M61.1731 61.836 L61.1731 43.9486 A2.193289 2.193289 0 0 0 58.9798 41.7553 L26.9092 41.7553 A2.193264 2.193264 0 0 0 24.716 43.9486 L24.716 83.7395 A2.193264 2.193264 0 0 0 26.9092 85.9328 L51.6007 85.9328" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="32.5143" y1="50.0264" x2="53.4966" y2="50.0264" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
@@ -9,7 +15,7 @@
     <line x1="57.5128" y1="84.144" x2="81.6388" y2="84.144" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="74.1086" y1="55.495" x2="66.3151" y2="67.0511" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="82.4918" y1="61.1487" x2="74.6983" y2="72.7049" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M79.2067 66.0178 L93.9455 75.4002 C94.7692 75.9266 95.7782 76.1703 96.5872 76.7113 L102.5578 80.742 A1.53529 1.53529 0 0 1 102.9721 82.8719 A1.53529 1.53529 0 0 1 100.8422 83.2862 L94.8716 79.2603 C94.0625 78.7145 93.4582 77.8664 92.6637 77.301 L78.4464 67.1534" fill="none" stroke="#121212" stroke-width="2.3395" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M79.1141 66.1592 L102.4701 80.9175 A1.340321 1.340321 0 0 1 102.8308 82.7793 A1.340347 1.340347 0 0 1 100.9738 83.14 L78.539 67.0121" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round" mask="url(#r-11-handle-slit)"/>
   </g>
   <g id="accent">
     <rect x="32.4168" y="65.0235" width="13.5983" height="13.5983" rx="0.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>

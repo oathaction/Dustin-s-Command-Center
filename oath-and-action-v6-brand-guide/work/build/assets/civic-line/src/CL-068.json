@@ -2,20 +2,39 @@
   "id": "CL-068",
   "tracer": "T4",
   "corrections": [
-    {"what": "Made the book, bulb and rays mirror-symmetric about one axis, x 95.45",
-     "why": "DR-03 symmetry. Measured centres: spine 95.1, page sides 95.55, covers 95.47, bulb circle 95.4, neck 95.6. The spine moves 0.35 px; nothing else moves more than 0.5 px."},
-    {"what": "Drew each mirrored pair from the average of its two fits: page tops as one cubic curve each, page bottoms as arcs (r 84.85) that straighten into the foot of the spine, cover bottoms as arcs (r 106.36), side rays and corner rays as equal pairs",
-     "why": "DR-03 symmetry. Left and right fits differ by up to 1.5 px in curve centre (page tops) and 0.3 px at the ray ends."},
-    {"what": "Drew the page sides, cover sides and spine plumb and the top ray plumb",
-     "why": "DR-03 straight lines. They fit within 0.1 deg of plumb away from junctions."},
-    {"what": "Drew the bulb as a true circle (r 17.4) with straight shoulders into a neck that tapers evenly on both sides, closed by a level bottom at y 77",
-     "why": "DR-03. The circle fits with rms 0.07 px; the neck sides fit at 83.6 and 93.8 deg, about 0.5 px out of mirror."},
-    {"what": "Drew the small base rule at the set line weight W, 5.5 px, at the sheet's ink length",
-     "why": "DR-03 one line weight. The sheet draws this rule thinner, 4.75 px; its cap ends keep the sheet's ink extent, x 88.15 to 102.75."},
-    {"what": "Drew every other stroke at the set line weight W, 5.5 px",
-     "why": "DR-03 one line weight. This icon measures 5.94 px."},
-    {"element": "page-end-cut", "what": "Cut the page tops with a mask: a clear box round the bulb's base (x 81.5 to 109.4) and a level cut at y 92.5; the fork arms start at a second level cut at y 93",
-     "why": "Both sheets stop the page tops short of the base: their ends are cut plumb at x 81.5 and 109.4 and level at y 92.5, and the fork arms begin flat at y 93. Occlusion is a gap in the line, so the trace cuts the strokes."}
+    {
+      "what": "Made the book, bulb and rays mirror-symmetric about one axis, x 95.45",
+      "why": "DR-03 symmetry. Measured centres: spine 95.1, page sides 95.55, covers 95.47, bulb circle 95.4, neck 95.6. The spine moves 0.35 px; nothing else moves more than 0.5 px."
+    },
+    {
+      "what": "Drew each mirrored pair from the average of its two fits: page tops as one cubic curve each, page bottoms as arcs (r 84.85) that straighten into the foot of the spine, cover bottoms as arcs (r 106.36), side rays and corner rays as equal pairs",
+      "why": "DR-03 symmetry. Left and right fits differ by up to 1.5 px in curve centre (page tops) and 0.3 px at the ray ends."
+    },
+    {
+      "what": "Drew the page sides, cover sides and spine plumb and the top ray plumb",
+      "why": "DR-03 straight lines. They fit within 0.1 deg of plumb away from junctions."
+    },
+    {
+      "what": "Drew the bulb as a true circle (r 17.4) with straight shoulders into a neck that tapers evenly on both sides, closed by a level bottom at y 77",
+      "why": "DR-03. The circle fits with rms 0.07 px; the neck sides fit at 83.6 and 93.8 deg, about 0.5 px out of mirror."
+    },
+    {
+      "what": "Drew the small base rule at the set line weight W, 5.5 px, at the sheet's ink length",
+      "why": "DR-03 one line weight. The sheet draws this rule thinner, 4.75 px; its cap ends keep the sheet's ink extent, x 88.15 to 102.75."
+    },
+    {
+      "what": "Drew every other stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon measures 5.94 px."
+    },
+    {
+      "element": "page-end-cut",
+      "what": "Cut the page tops with a mask: a clear box round the bulb's base (x 81.5 to 109.4) and a level cut at y 92.5; the fork arms start at a second level cut at y 93",
+      "why": "Both sheets stop the page tops short of the base: their ends are cut plumb at x 81.5 and 109.4 and level at y 92.5, and the fork arms begin flat at y 93. Occlusion is a gap in the line, so the trace cuts the strokes."
+    },
+    {
+      "what": "Review fix: moved the fork arms' level cut from y 93 to y 94, so the gap under the page tops (which end at y 92.5) opens from a 0.5 px hairline to 1.5 px",
+      "why": "Reviewer (should): the 0.5 px hairline read as a defect; the red sheet shows a clear gap of about 1.5 px here."
+    }
   ],
-  "notes": "Kept as drawn: the bulb rising from the book's central valley, much smaller than the book; five rays round its upper half; the separate short base rule below the neck; the open book's two curved page blocks, the Y fork into the spine, and the doubled lower contour (page bottoms meeting the spine in one V, covers meeting in a second V below). Sheet disagreement: the red sheet opens the gap between page ends and fork arms to about 1.5 to 2 px, while the black sheet leaves only a hairline; the trace follows the black sheet's cut positions. Red: bulb outline, base rule and all five rays (the red sheet colours the base rule red)."
+  "notes": "Kept as drawn: the bulb rising from the book's central valley, much smaller than the book; five rays round its upper half; the separate short base rule below the neck; the open book's two curved page blocks, the Y fork into the spine, and the doubled lower contour (page bottoms meeting the spine in one V, covers meeting in a second V below). Sheet disagreement: the red sheet opens the gap between page ends and fork arms to about 1.5 to 2 px, while the black sheet leaves only a hairline; after review the trace takes the red sheet's 1.5 px gap. Red: bulb outline, base rule and all five rays (the red sheet colours the base rule red)."
 }

@@ -4,7 +4,7 @@
        Red: the bulb outline and radiating strokes, following the source’s treatment of its tiny base. The book remains black. Distinguish this from Explain, which has rays without an actual bulb. -->
   <!-- T4 trace. Everything symmetric about x 95.45. Pages: top edges are arcs (r 69) that run into the
        straight fork arms; bottoms are arcs (r 84.85) that straighten into the spine's foot. Covers: arcs (r 106.36)
-       meeting in a second V below. A clear box round the bulb base (x 81.5 to 109.4, down to y 92.5) cuts the page tops, and the fork arms start at a level cut at y 93, as on both sheets.
+       meeting in a second V below. A clear box round the bulb base (x 81.5 to 109.4, down to y 92.5) cuts the page tops, and the fork arms start at a level cut at y 94, leaving the red sheet's clear 1.5 px gap.
        Bulb: circle r 17.4 about (95.45, 51.2), straight shoulders into a tapered neck; separate short base rule. -->
   <defs>
     <mask id="page-end-cut">
@@ -12,7 +12,7 @@
       <rect class="fill" x="74" y="92.5" width="43" height="8"/>
     </mask>
     <mask id="fork-top-cut">
-      <rect class="fill" x="74" y="84" width="43" height="9"/>
+      <rect class="fill" x="74" y="84" width="43" height="10"/>
     </mask>
   </defs>
   <g data-role="base">

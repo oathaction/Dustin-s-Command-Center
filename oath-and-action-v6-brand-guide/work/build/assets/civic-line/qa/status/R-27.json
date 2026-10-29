@@ -1,9 +1,9 @@
 {
   "id": "R-27",
   "label": "Tax Enforcement",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T5",
-  "iterations": 3,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -34,6 +34,26 @@
       "red_iou_1x": 0.841,
       "edge_mean_px": 0.148,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T08:34:40+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9032,
+      "red_iou_1x": 0.841,
+      "edge_mean_px": 0.156,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:35:10+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9032,
+      "red_iou_1x": 0.841,
+      "edge_mean_px": 0.156,
+      "edge_p95_px": 0.559
     }
   ],
   "notes": [
@@ -41,19 +61,25 @@
       "time": "2026-10-29T07:12:01+00:00",
       "by": "T5",
       "note": "overlay checked; gauge concentric with lens, tilt kept, open-ended handle as drawn"
+    },
+    {
+      "time": "2026-10-29T08:35:10+00:00",
+      "by": "T5",
+      "note": "both handle sides now run onto the ring's outer edge (120.27, 84.71) and (111.5, 92.87), merging as on the black sheet"
     }
   ],
-  "last_build": "2026-10-29T07:12:01+00:00",
+  "last_build": "2026-10-29T08:35:10+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9051,
+    "silhouette_iou_1x": 0.9032,
     "red_iou_1x": 0.841,
-    "bake_check_iou_1x": 0.9998,
+    "bake_check_iou_4x": 1.0,
+    "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0327,
-    "edge_mean_px": 0.148,
-    "edge_p95_px": 0.5,
-    "edge_max_px": 2.236,
+    "ink_area_ratio_trace_over_reference": 1.0373,
+    "edge_mean_px": 0.156,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 2.475,
     "best_offset": [
       0,
       0
@@ -69,8 +95,8 @@
       "why": "Feature as drawn. Both ends turn the same way by about 9.5 deg, so the arc reads as a rotated semicircle rather than a raster wobble; levelling it would move the ends about 3 px."
     },
     {
-      "what": "Drew the handle as a straight outline on a 44.2 deg axis: parallel sides 11.95 px apart and a round far end; the near end stays open toward the lens, with the upper side stopping short of the rim and the lower side meeting it",
-      "why": "DR-03 straight lines. The sides measure 11.95 px apart with slopes under 0.013; profiles show a 2.3 px gap between the upper side and the rim and a narrow bridge where the lower side meets it."
+      "what": "Drew the handle as a straight outline on a 44.2 deg axis: parallel sides 11.95 px apart, a round far end, and a near end open toward the lens with both sides running onto the ring's outer edge",
+      "why": "DR-03 straight lines and review fix (must). The sides measure 11.95 px apart with slopes under 0.013. The black sheet shows both sides merged with the ring; the first trace left a 2.3 px gap on the upper side and only a tangent touch on the lower. The ends now sit on the ring's outer edge: upper start (120.27, 84.71), lower end (111.5, 92.87)."
     },
     {
       "what": "Spaced the four rules evenly, 17.41 px apart from y 27.22 to 79.45, from one left end at x 27.75",
@@ -85,5 +111,5 @@
       "why": "DR-03 one line weight. Strokes measure 5.25 to 5.5 px; the ink area ratio is about 1.03."
     }
   ],
-  "source_notes": "Kept: the record as an open contour behind the magnifier (its right edge stops at y 26.3 above the lens and turns up only a short stub at the lower right), four rules of different lengths, the empty lens apart from the gauge arc, and the handle running down-right. Red is only the inner gauge arc; this keeps it distinct from Donor Disclosure (red handle) and Watchdog Remedies (red check). Both sheets agree."
+  "source_notes": "Kept: the record as an open contour behind the magnifier (its right edge stops at y 26.3 above the lens and turns up only a short stub at the lower right), four rules of different lengths, the empty lens apart from the gauge arc, and the handle running down-right and merging into the ring on both sides. Red is only the inner gauge arc; this keeps it distinct from Donor Disclosure (red handle) and Watchdog Remedies (red check). Both sheets agree."
 }

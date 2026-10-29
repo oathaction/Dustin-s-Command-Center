@@ -1,29 +1,29 @@
 {
   "id": "R-11",
   "label": "Election Enforcement",
-  "built": "2026-10-29T08:33:10+00:00",
+  "built": "2026-10-29T08:34:38+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9421,
+  "silhouette_iou_1x": 0.9399,
   "silhouette_iou_4x": 0.9432,
   "red_iou_1x": 0.8383,
   "red_iou_4x": 0.8535,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.155,
+      "mean": 0.157,
       "p95": 0.559,
       "max": 1.768
     },
     "trace_to_reference": {
-      "mean": 0.17,
+      "mean": 0.16,
       "p95": 0.707,
-      "max": 3.816
+      "max": 1.82
     },
     "symmetric": {
-      "mean": 0.162,
+      "mean": 0.159,
       "p95": 0.707,
-      "max": 3.816
+      "max": 1.82
     }
   },
   "red_edge_distance_px": {
@@ -46,7 +46,7 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9421
+    "iou": 0.9399
   },
   "ink_area_ratio_trace_over_reference": 0.9883,
   "bake_check_iou_4x": 1.0,
@@ -57,7 +57,7 @@
   "export_drawn_bounds": [
     23.376,
     40.415,
-    104.404,
+    104.401,
     87.273
   ],
   "export_inside_0_128": true,
@@ -67,8 +67,10 @@
     "accent",
     "base"
   ],
-  "masks": [],
-  "corrections_logged": 8,
+  "masks": [
+    "handle-slit"
+  ],
+  "corrections_logged": 7,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

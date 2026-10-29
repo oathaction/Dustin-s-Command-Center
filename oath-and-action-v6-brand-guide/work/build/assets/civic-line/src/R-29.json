@@ -3,12 +3,12 @@
   "tracer": "T5",
   "corrections": [
     {
-      "what": "Made the child symmetric about x 37.67: head, shoulder arch with its two hooked hands, legs 14.24 px either side and the short centre stroke",
-      "why": "DR-03 symmetry. Mirrored sample pairs along the arms agree within 0.3 px about x 37.55 to 37.75; the legs sit at 23.43 and 51.9."
+      "what": "Made the child symmetric about x 37.67 and rebuilt its arms as three cubics per side (hook, hand side, arm into the shoulder top, horizontal at the centre), mirrored; head, legs 14.24 px either side and the short centre stroke unchanged",
+      "why": "DR-03 symmetry and review polish (should). The first trace ran a 34-segment spline through raster samples, with 26 curvature reversals. The three-cubic fit stays within 0.15 px of the sampled centreline; mirrored sample pairs agree within 0.3 px about x 37.55 to 37.75."
     },
     {
-      "what": "Drew the pig's outline as one closed path: a smooth spline through the sampled centreline for the forehead, ear, back and rear, straight runs for the snout, legs, feet and belly",
-      "why": "DR-03. The freehand curves have no true-circle reading, so they follow the sheet's centreline (spline through 0.2 px samples); the straight parts are drawn straight."
+      "what": "Rebuilt the pig's outline from a few fitted cubics: forehead and ear as three (corners kept at the forehead notch and the ear point), back and rear as three, belly front as two; snout, legs, feet and belly line stay straight",
+      "why": "DR-03 and review polish (should). The first trace used splines through raster samples (forehead 18 cubics with 20 reversals, back 21 with 8, belly 8 with 6). The new curves stay within 0.32 px (forehead and ear), 0.26 px (back) and 0.1 px (belly) of the sampled centreline."
     },
     {
       "what": "Made the two feet mirror images about x 124.65: outer legs 29.03 px, foot bottoms at y 114.42, inner sides slanting from 15.27 px at the foot to 10.4 px at the belly line (y 105.84)",

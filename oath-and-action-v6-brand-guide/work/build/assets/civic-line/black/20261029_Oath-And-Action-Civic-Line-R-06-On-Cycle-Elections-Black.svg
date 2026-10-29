@@ -26,6 +26,6 @@
     <rect x="92.0983" y="64.5849" width="8.042" height="5.9462" rx="0.9748" fill="#121212"/>
     <rect x="93.0244" y="73.2751" width="6.1899" height="4.8496" rx="0.9748" fill="#121212"/>
     <line x1="57.0546" y1="66.0568" x2="71.2134" y2="66.0568" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="66.2371,60.5249 71.2134,66.0568 66.2371,71.5887" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+    <polyline points="66.2371,60.5249 71.2134,66.0568 66.2371,71.5887" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

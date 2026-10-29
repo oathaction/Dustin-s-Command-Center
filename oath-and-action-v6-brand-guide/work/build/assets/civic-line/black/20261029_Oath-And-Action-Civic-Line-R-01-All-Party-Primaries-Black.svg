@@ -13,11 +13,11 @@
   </g>
   <g id="accent">
     <path d="M41.9454 43.6513 C55.3341 43.4368 61.0805 49.0321 70.3849 57.2252" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="70.3849,52.7899 70.3849,57.2252 66.1933,57.2252" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.3849,52.9118 70.3849,57.2252 66.0714,57.2252" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="40.4832" y1="63.9171" x2="71.1891" y2="63.9171" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="67.4605,60.8319 71.1891,63.9171 67.4605,67.0024" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="68.138,60.8661 71.1891,63.9171 68.138,66.9682" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M43.5781 84.4706 C55.3146 84.5827 62.7376 78.4756 70.3849 70.7748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="70.3849,75.2101 70.3849,70.7748 66.1933,70.7748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.3849,75.0882 70.3849,70.7748 66.0714,70.7748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="84.5924,63.7076 89.0521,68.3378 97.1429,59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

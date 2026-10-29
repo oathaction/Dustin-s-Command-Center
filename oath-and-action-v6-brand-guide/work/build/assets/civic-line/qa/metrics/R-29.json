@@ -1,29 +1,29 @@
 {
   "id": "R-29",
   "label": "Baby Bonds",
-  "built": "2026-10-29T08:19:52+00:00",
+  "built": "2026-10-29T08:38:58+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9329,
-  "silhouette_iou_4x": 0.9342,
+  "silhouette_iou_1x": 0.931,
+  "silhouette_iou_4x": 0.9313,
   "red_iou_1x": 0.947,
   "red_iou_4x": 0.9666,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.164,
-      "p95": 0.5,
-      "max": 1.581
+      "mean": 0.172,
+      "p95": 0.559,
+      "max": 1.25
     },
     "trace_to_reference": {
-      "mean": 0.162,
-      "p95": 0.5,
-      "max": 1.581
+      "mean": 0.171,
+      "p95": 0.559,
+      "max": 1.414
     },
     "symmetric": {
-      "mean": 0.163,
-      "p95": 0.5,
-      "max": 1.581
+      "mean": 0.171,
+      "p95": 0.559,
+      "max": 1.414
     }
   },
   "red_edge_distance_px": {
@@ -46,18 +46,18 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9329
+    "iou": 0.931
   },
-  "ink_area_ratio_trace_over_reference": 1.0348,
+  "ink_area_ratio_trace_over_reference": 1.035,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 0.9999,
-  "bake_check_iou_1x": 0.9997,
-  "bake_check_max_diff_levels_4x": 43,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_max_diff_levels_4x": 32,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    24.651,
+    24.668,
     37.666,
-    103.46,
+    103.484,
     90.646
   ],
   "export_inside_0_128": true,

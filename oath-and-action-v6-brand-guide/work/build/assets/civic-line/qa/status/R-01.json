@@ -1,9 +1,9 @@
 {
   "id": "R-01",
   "label": "All-Party Primaries",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T4",
-  "iterations": 2,
+  "iterations": 4,
   "history": [
     {
       "iteration": 1,
@@ -24,6 +24,26 @@
       "red_iou_1x": 0.8932,
       "edge_mean_px": 0.259,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T08:34:30+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9277,
+      "red_iou_1x": 0.8883,
+      "edge_mean_px": 0.27,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T08:38:25+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9277,
+      "red_iou_1x": 0.8883,
+      "edge_mean_px": 0.27,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -31,17 +51,23 @@
       "time": "2026-10-29T06:50:08+00:00",
       "by": "T4",
       "note": "overlay checked; equal busts, three red routes with heads, card and check match"
+    },
+    {
+      "time": "2026-10-29T08:38:25+00:00",
+      "by": "T4",
+      "note": "review fix: all three arrowheads one 90 deg shape with 8.85 px arms (points as specified)"
     }
   ],
-  "last_build": "2026-10-29T06:50:08+00:00",
+  "last_build": "2026-10-29T08:38:25+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9306,
-    "red_iou_1x": 0.8932,
+    "silhouette_iou_1x": 0.9277,
+    "red_iou_1x": 0.8883,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0751,
-    "edge_mean_px": 0.259,
+    "ink_area_ratio_trace_over_reference": 1.0732,
+    "edge_mean_px": 0.27,
     "edge_p95_px": 0.707,
     "edge_max_px": 1.581,
     "best_offset": [
@@ -59,8 +85,8 @@
       "why": "DR-03 straight lines and right angles. Its sides fit within 0.06 deg of plumb and level."
     },
     {
-      "what": "Made the upper and lower arrowheads mirror images about y 60.5: each a square corner (arms 8.6 and 9.1 px) with its point at x 105.6, set square to the page so it points along the route's 45 deg arrival",
-      "why": "DR-03 symmetry. The sheet draws both heads as right-angled corners; their points sit at y 46.6 and 74.4."
+      "what": "Review fix: gave all three arrowheads one shape, a 90 deg open corner with 8.85 px arms: upper and lower heads square to the page with points at (105.6, 46.6) and (105.6, 74.4), mirror images about y 60.5; the middle head turned 45 deg to point along its level route, point at (107.25, 60.33)",
+      "why": "DR-03 equal repeats (reviewer, must). The sheet draws the outer heads as right-angled corners with arms of 8.6 to 9.1 px and the middle head as a flatter chevron of about 80 deg; the set reads them as one arrow form, so all three now match."
     },
     {
       "what": "Kept the middle route level at y 60.33 and its chevron symmetric about it",
@@ -71,5 +97,5 @@
       "why": "DR-03 one line weight. Sheet 04 draws lighter: this icon measures 5.06 px (busts 4.7 to 5.2 px), so the trace's ink area is about 7 percent above the sheet's."
     }
   ],
-  "source_notes": "Kept as drawn: three inputs, each with a right-pointing head; the upper route starts level with its bust's head and the lower one level with its bust's shoulders, so the two curves are not mirror images and are traced separately; the middle route is straight; the middle head is a flatter chevron than the two square corner heads, as drawn; the large check sits in clear space inside the card. Red: all three routes with their heads, and the check. Black and red sheets agree within a fringe."
+  "source_notes": "Kept as drawn: three inputs, each with a right-pointing head; the upper route starts level with its bust's head and the lower one level with its bust's shoulders, so the two curves are not mirror images and are traced separately; the middle route is straight; the large check sits in clear space inside the card. Red: all three routes with their heads, and the check. Black and red sheets agree within a fringe."
 }

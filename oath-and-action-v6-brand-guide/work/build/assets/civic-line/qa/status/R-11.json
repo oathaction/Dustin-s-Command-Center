@@ -1,9 +1,9 @@
 {
   "id": "R-11",
   "label": "Election Enforcement",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T5",
-  "iterations": 5,
+  "iterations": 8,
   "history": [
     {
       "iteration": 1,
@@ -54,6 +54,36 @@
       "red_iou_1x": 0.8383,
       "edge_mean_px": 0.162,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T08:33:55+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9426,
+      "red_iou_1x": 0.8383,
+      "edge_mean_px": 0.152,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T08:34:19+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9399,
+      "red_iou_1x": 0.8383,
+      "edge_mean_px": 0.159,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T08:34:38+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9399,
+      "red_iou_1x": 0.8383,
+      "edge_mean_px": 0.159,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -61,20 +91,25 @@
       "time": "2026-10-29T06:12:06+00:00",
       "by": "T5",
       "note": "overlay checked; bands squared to one axis, lower band moved up to 1.05 px; handle slit shorter than sheet"
+    },
+    {
+      "time": "2026-10-29T08:34:38+00:00",
+      "by": "T5",
+      "note": "red bands now cover the black body ends (body under bands, butt inner edge between corner arcs); handle slit cut as a constant 1.5 px over the last 20 px, outer edges within 0.3 px"
     }
   ],
-  "last_build": "2026-10-29T08:33:10+00:00",
+  "last_build": "2026-10-29T08:34:38+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9421,
+    "silhouette_iou_1x": 0.9399,
     "red_iou_1x": 0.8383,
     "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 0.9998,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
     "ink_area_ratio_trace_over_reference": 0.9883,
-    "edge_mean_px": 0.162,
+    "edge_mean_px": 0.159,
     "edge_p95_px": 0.707,
-    "edge_max_px": 3.816,
+    "edge_max_px": 1.82,
     "best_offset": [
       0,
       0
@@ -86,13 +121,8 @@
       "why": "DR-03 symmetry and right angles. On the sheet the head is a slight parallelogram: band long edges run at 33 to 34 deg while the line through the band centres sits 2.8 deg off square, so the lower band sits about 1.2 px left of the upper one. Band ends measured at u -15.6/9.05 (upper) and -16.55/7.7 (lower) in the 34 deg frame; both are now -15.75/8.75. The lower band's right end moves 1.05 px and its left end 0.8 px."
     },
     {
-      "what": "Kept the handle as a closed outline that tapers from 7.6 px wide at the head and opens to a slit of a constant 1.5 px over its last 20 px (from u 46 in the head frame, about crop (149, 84), to the round tip), with outer edges within 0.5 px of the sheet",
-      "why": "Review fix (should). The sheet's handle is an outline whose inside shows as a slit near the tip; its side strokes there measure 4.8 to 5.05 px. The first trace kept W and so opened only a hairline, shorter than the sheet's."
-    },
-    {
-      "element": "handle",
-      "what": "data-w 4.8",
-      "why": "W would close the slit the sheet keeps open. At W the 1.5 px slit needs a 12.5 px handle, 0.5 to 1.1 px wider than the sheet each side; at 4.8 px (the sheet's measured side weight) the handle is 11.1 px wide, matching the sheet within 0.45 px. The handle is the only element off W."
+      "what": "Kept the handle as a closed outline at W whose outer edges follow the sheet (11.1 px wide at the tip, 7.6 px at the head), and cut its slit as a constant 1.5 px stadium over the last 20 px before the tip (u 48.2 to 62.9 in the head frame, from about crop (151, 85)) with a mask",
+      "why": "Review fix (should). The sheet's handle is an outline whose inside shows as a slit near the tip; at W the strokes alone open only a sub-pixel hairline. Widening the sides to open a 1.5 px slit would push the outer edges 0.5 to 1.1 px past the sheet and leave a shoulder where the slit starts, so the slit is a real cut instead. Outer edges stay within 0.3 px of the sheet; the sides stop just short of opening on their own (2.75 px from the axis at the tip), so the cut alone shapes the slit."
     },
     {
       "what": "Drew both body sides and the handle before the bands, and shortened the upper band's black inner edge to a butt-capped segment between the band's corner arcs, (111.6, 38.46) to (128.59, 49.92)",

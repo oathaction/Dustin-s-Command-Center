@@ -1,9 +1,9 @@
 {
   "id": "CL-068",
   "label": "Education",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T4",
-  "iterations": 6,
+  "iterations": 8,
   "history": [
     {
       "iteration": 1,
@@ -64,6 +64,26 @@
       "red_iou_1x": 0.9037,
       "edge_mean_px": 0.229,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T08:34:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9318,
+      "red_iou_1x": 0.9037,
+      "edge_mean_px": 0.228,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T08:38:30+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9318,
+      "red_iou_1x": 0.9037,
+      "edge_mean_px": 0.228,
+      "edge_p95_px": 0.559
     }
   ],
   "notes": [
@@ -71,19 +91,25 @@
       "time": "2026-10-29T06:38:18+00:00",
       "by": "T4",
       "note": "overlay checked; symmetric book and bulb, base clearance cuts kept, doubled lower contour"
+    },
+    {
+      "time": "2026-10-29T08:38:30+00:00",
+      "by": "T4",
+      "note": "review fix: fork-top-cut height 10, fork starts at y 94, 1.5 px gap under the page tops"
     }
   ],
-  "last_build": "2026-10-29T06:38:18+00:00",
+  "last_build": "2026-10-29T08:38:30+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9331,
+    "silhouette_iou_1x": 0.9318,
     "red_iou_1x": 0.9037,
-    "bake_check_iou_1x": 0.9995,
+    "bake_check_iou_4x": 1.0,
+    "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9377,
-    "edge_mean_px": 0.229,
+    "ink_area_ratio_trace_over_reference": 0.9353,
+    "edge_mean_px": 0.228,
     "edge_p95_px": 0.559,
-    "edge_max_px": 2.016,
+    "edge_max_px": 1.75,
     "best_offset": [
       0,
       0
@@ -118,7 +144,11 @@
       "element": "page-end-cut",
       "what": "Cut the page tops with a mask: a clear box round the bulb's base (x 81.5 to 109.4) and a level cut at y 92.5; the fork arms start at a second level cut at y 93",
       "why": "Both sheets stop the page tops short of the base: their ends are cut plumb at x 81.5 and 109.4 and level at y 92.5, and the fork arms begin flat at y 93. Occlusion is a gap in the line, so the trace cuts the strokes."
+    },
+    {
+      "what": "Review fix: moved the fork arms' level cut from y 93 to y 94, so the gap under the page tops (which end at y 92.5) opens from a 0.5 px hairline to 1.5 px",
+      "why": "Reviewer (should): the 0.5 px hairline read as a defect; the red sheet shows a clear gap of about 1.5 px here."
     }
   ],
-  "source_notes": "Kept as drawn: the bulb rising from the book's central valley, much smaller than the book; five rays round its upper half; the separate short base rule below the neck; the open book's two curved page blocks, the Y fork into the spine, and the doubled lower contour (page bottoms meeting the spine in one V, covers meeting in a second V below). Sheet disagreement: the red sheet opens the gap between page ends and fork arms to about 1.5 to 2 px, while the black sheet leaves only a hairline; the trace follows the black sheet's cut positions. Red: bulb outline, base rule and all five rays (the red sheet colours the base rule red)."
+  "source_notes": "Kept as drawn: the bulb rising from the book's central valley, much smaller than the book; five rays round its upper half; the separate short base rule below the neck; the open book's two curved page blocks, the Y fork into the spine, and the doubled lower contour (page bottoms meeting the spine in one V, covers meeting in a second V below). Sheet disagreement: the red sheet opens the gap between page ends and fork arms to about 1.5 to 2 px, while the black sheet leaves only a hairline; after review the trace takes the red sheet's 1.5 px gap. Red: bulb outline, base rule and all five rays (the red sheet colours the base rule red)."
 }

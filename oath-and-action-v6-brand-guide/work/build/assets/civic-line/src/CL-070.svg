@@ -6,7 +6,7 @@
        (103.5, 11.7) and returns down the right side to an open round end at (36.13, 113.6), clear of the stem.
        Droplet: mirror-symmetric about x 136.65, round bottom a true arc r 29.84, pointed top at y 39.2. -->
   <g data-role="base">
-    <path id="leaf-outline" class="miter" d="M22.2 134.25 V105.5 C8.66 90.99 7.38 67.12 17.57 50.59 C27.07 35.17 43.19 22.53 60 19.1 C72.94 16.47 89.96 12.17 103.5 11.7 C105.34 60.1 91.04 104.85 36.13 113.6"/>
+    <path id="leaf-outline" class="miter" d="M22.2 134.25 V105.5 C8.66 90.99 7.38 67.12 17.57 50.59 C19.12 48.08 25.4 38.49 30.57 33.87 C36.96 28.15 50.65 21.99 58.43 19.51 C70.35 15.72 98.7 10.97 103.5 11.7 C105.34 60.1 91.04 104.85 36.13 113.6"/>
     <path id="vein" d="M22.2 105.5 C31.52 79.86 42.26 59.42 67.2 45"/>
   </g>
   <g data-role="accent">

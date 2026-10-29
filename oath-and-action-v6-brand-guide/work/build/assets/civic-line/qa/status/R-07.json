@@ -1,9 +1,9 @@
 {
   "id": "R-07",
   "label": "Small-Donor Matching",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T4",
-  "iterations": 6,
+  "iterations": 9,
   "history": [
     {
       "iteration": 1,
@@ -64,6 +64,36 @@
       "red_iou_1x": 0.9339,
       "edge_mean_px": 0.244,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T08:34:30+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9082,
+      "red_iou_1x": 0.9339,
+      "edge_mean_px": 0.253,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T08:35:12+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9096,
+      "red_iou_1x": 0.9339,
+      "edge_mean_px": 0.249,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 9,
+      "time": "2026-10-29T08:38:28+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9096,
+      "red_iou_1x": 0.9339,
+      "edge_mean_px": 0.249,
+      "edge_p95_px": 0.559
     }
   ],
   "notes": [
@@ -81,17 +111,23 @@
       "time": "2026-10-29T07:09:58+00:00",
       "by": "T4",
       "note": "rebuild: back stack base returned to its drawn position"
+    },
+    {
+      "time": "2026-10-29T08:38:28+00:00",
+      "by": "T4",
+      "note": "review fix: rear stack hook now meets its wall with a vertical tangent (C14.8 76 11.44 78.2 11.44 85); knee and dent gone"
     }
   ],
-  "last_build": "2026-10-29T07:09:58+00:00",
+  "last_build": "2026-10-29T08:38:28+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9113,
+    "silhouette_iou_1x": 0.9096,
     "red_iou_1x": 0.9339,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0306,
-    "edge_mean_px": 0.244,
+    "ink_area_ratio_trace_over_reference": 1.0299,
+    "edge_mean_px": 0.249,
     "edge_p95_px": 0.559,
     "edge_max_px": 2.305,
     "best_offset": [
@@ -123,6 +159,10 @@
     {
       "what": "Drew every stroke at the set line weight W, 5.5 px",
       "why": "DR-03 one line weight. This icon measures 5.27 px."
+    },
+    {
+      "what": "Review fix: rebuilt the rear stack's top-left hook so it reaches its plumb wall with a vertical tangent at (11.44, 85)",
+      "why": "Reviewer (must): the hook arrived 27 deg off vertical, which left a knee and an inner dent at about (12 to 15, 83 to 88)."
     }
   ],
   "source_notes": "Kept as drawn: the height contrast between the small and tall stacks; the tall stack's seven coins; the small group drawn as one front coin with a second, partly hidden stack behind and below it, whose top-left end and right wall stop short of the front coin with clear ground; the short rightward arrow between the groups. Red: the arrow and the tall stack's upper rim. Black and red sheets agree within a fringe."

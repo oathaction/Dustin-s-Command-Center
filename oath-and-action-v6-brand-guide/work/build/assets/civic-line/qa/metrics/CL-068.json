@@ -1,29 +1,29 @@
 {
   "id": "CL-068",
   "label": "Education",
-  "built": "2026-10-29T08:19:20+00:00",
+  "built": "2026-10-29T08:38:30+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9331,
+  "silhouette_iou_1x": 0.9318,
   "silhouette_iou_4x": 0.9135,
   "red_iou_1x": 0.9037,
   "red_iou_4x": 0.8932,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.227,
+      "mean": 0.228,
       "p95": 0.559,
       "max": 1.458
     },
     "trace_to_reference": {
-      "mean": 0.231,
-      "p95": 0.559,
-      "max": 2.016
-    },
-    "symmetric": {
       "mean": 0.229,
       "p95": 0.559,
-      "max": 2.016
+      "max": 1.75
+    },
+    "symmetric": {
+      "mean": 0.228,
+      "p95": 0.559,
+      "max": 1.75
     }
   },
   "red_edge_distance_px": {
@@ -46,9 +46,9 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9331
+    "iou": 0.9318
   },
-  "ink_area_ratio_trace_over_reference": 0.9377,
+  "ink_area_ratio_trace_over_reference": 0.9353,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
@@ -70,7 +70,7 @@
     "page-end-cut",
     "fork-top-cut"
   ],
-  "corrections_logged": 7,
+  "corrections_logged": 8,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

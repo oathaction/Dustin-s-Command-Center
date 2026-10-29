@@ -1,28 +1,28 @@
 {
   "id": "CL-070",
   "label": "Environment",
-  "built": "2026-10-29T08:19:21+00:00",
+  "built": "2026-10-29T08:38:22+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.8678,
-  "silhouette_iou_4x": 0.8791,
+  "silhouette_iou_1x": 0.8731,
+  "silhouette_iou_4x": 0.8833,
   "red_iou_1x": 0.8778,
   "red_iou_4x": 0.8688,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.325,
-      "p95": 0.707,
+      "mean": 0.31,
+      "p95": 0.559,
       "max": 1.521
     },
     "trace_to_reference": {
-      "mean": 0.324,
-      "p95": 0.707,
+      "mean": 0.31,
+      "p95": 0.559,
       "max": 1.521
     },
     "symmetric": {
-      "mean": 0.324,
-      "p95": 0.707,
+      "mean": 0.31,
+      "p95": 0.559,
       "max": 1.521
     }
   },
@@ -46,17 +46,17 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.8678
+    "iou": 0.8731
   },
-  "ink_area_ratio_trace_over_reference": 0.8852,
+  "ink_area_ratio_trace_over_reference": 0.8846,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 7,
+  "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     24.576,
-    32.965,
+    32.991,
     103.113,
     95.437
   ],
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 4,
+  "corrections_logged": 5,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

@@ -1,9 +1,9 @@
 {
   "id": "CL-070",
   "label": "Environment",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T4",
-  "iterations": 6,
+  "iterations": 8,
   "history": [
     {
       "iteration": 1,
@@ -64,6 +64,26 @@
       "red_iou_1x": 0.8778,
       "edge_mean_px": 0.324,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T08:38:06+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8731,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.31,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T08:38:23+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8731,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.31,
+      "edge_p95_px": 0.559
     }
   ],
   "notes": [
@@ -71,18 +91,24 @@
       "time": "2026-10-29T06:45:26+00:00",
       "by": "T4",
       "note": "overlay checked; leaf open end, Y junction, vein, droplet symmetry and gap kept"
+    },
+    {
+      "time": "2026-10-29T08:38:23+00:00",
+      "by": "T4",
+      "note": "review fix: leaf top edge rebuilt as three G2-joined cubics, no knee or inflection, within 0.60 px of the sheet, tip fixed"
     }
   ],
-  "last_build": "2026-10-29T06:45:26+00:00",
+  "last_build": "2026-10-29T08:38:23+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8678,
+    "silhouette_iou_1x": 0.8731,
     "red_iou_1x": 0.8778,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.8852,
-    "edge_mean_px": 0.324,
-    "edge_p95_px": 0.707,
+    "ink_area_ratio_trace_over_reference": 0.8846,
+    "edge_mean_px": 0.31,
+    "edge_p95_px": 0.559,
     "edge_max_px": 1.521,
     "best_offset": [
       0,
@@ -105,6 +131,10 @@
     {
       "what": "Gave the leaf outline square (miter) joins",
       "why": "The sheet's leaf tip is a sharp corner; a round join leaves it about 1 px blunter than drawn. The outline's other joins are smooth or shallow, so the setting changes nothing else."
+    },
+    {
+      "what": "Review fix: rebuilt the leaf's top edge from (17.57, 50.59) to the tip (103.5, 11.7) as three cubics with matched tangents and curvature at every joint, curving one way only, tip fixed",
+      "why": "Reviewer (must): the edge had a knee at (60, 19.1), where the curvature radius jumped from 48 to 317 px, and an inflection near (68, 17.4). The new edge also matches the incoming left side's curvature at (17.57, 50.59) (radius 41.5 px); it sits within 0.60 px of the sheet's centreline (rms 0.22, p95 0.50) away from the tip."
     }
   ],
   "source_notes": "Kept as drawn: the leaf tilted up to the right with its tip at (103.5, 11.7); its outline returns down the right side to an open round end at (36.13, 113.6) that stays clear of the stem; the vein sweeps from the same Y as the outline, at (22.2, 105.5), to a round end inside the leaf; the open gap between leaf and droplet. The droplet's half-round bottom is written as two quarter arcs so every renderer draws it the same (a single half-circle arc is numerically fragile and shifted 0.8 px in the bake check). Red: the whole droplet outline. Black and red sheets agree on the droplet within 0.2 px."

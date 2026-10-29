@@ -1,17 +1,17 @@
 {
   "id": "R-06",
   "label": "On-Cycle Elections",
-  "built": "2026-10-29T08:19:23+00:00",
+  "built": "2026-10-29T08:38:32+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9134,
-  "silhouette_iou_4x": 0.9161,
-  "red_iou_1x": 0.885,
-  "red_iou_4x": 0.8926,
+  "silhouette_iou_1x": 0.9132,
+  "silhouette_iou_4x": 0.9159,
+  "red_iou_1x": 0.884,
+  "red_iou_4x": 0.8914,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.236,
+      "mean": 0.237,
       "p95": 0.75,
       "max": 1.82
     },
@@ -28,17 +28,17 @@
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.321,
+      "mean": 0.326,
       "p95": 1.031,
       "max": 2.5
     },
     "trace_to_reference": {
-      "mean": 0.343,
-      "p95": 1.462,
+      "mean": 0.347,
+      "p95": 1.479,
       "max": 2.61
     },
     "symmetric": {
-      "mean": 0.332,
+      "mean": 0.337,
       "p95": 1.25,
       "max": 2.61
     }
@@ -46,9 +46,9 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9134
+    "iou": 0.9132
   },
-  "ink_area_ratio_trace_over_reference": 1.0059,
+  "ink_area_ratio_trace_over_reference": 1.0057,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,

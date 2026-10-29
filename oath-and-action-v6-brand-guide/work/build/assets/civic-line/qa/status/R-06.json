@@ -1,9 +1,9 @@
 {
   "id": "R-06",
   "label": "On-Cycle Elections",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T4",
-  "iterations": 3,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -34,6 +34,26 @@
       "red_iou_1x": 0.885,
       "edge_mean_px": 0.24,
       "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T08:34:30+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9132,
+      "red_iou_1x": 0.884,
+      "edge_mean_px": 0.24,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:38:32+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9132,
+      "red_iou_1x": 0.884,
+      "edge_mean_px": 0.24,
+      "edge_p95_px": 0.75
     }
   ],
   "notes": [
@@ -41,16 +61,22 @@
       "time": "2026-10-29T07:02:20+00:00",
       "by": "T4",
       "note": "overlay checked; identical calendars, six cells each, middle column red, arrow point matches"
+    },
+    {
+      "time": "2026-10-29T08:38:32+00:00",
+      "by": "T4",
+      "note": "review fix: removed miter class from arrow-head; round joins like the rest of the set"
     }
   ],
-  "last_build": "2026-10-29T07:02:20+00:00",
+  "last_build": "2026-10-29T08:38:32+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9134,
-    "red_iou_1x": 0.885,
+    "silhouette_iou_1x": 0.9132,
+    "red_iou_1x": 0.884,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0059,
+    "ink_area_ratio_trace_over_reference": 1.0057,
     "edge_mean_px": 0.24,
     "edge_p95_px": 0.75,
     "edge_max_px": 1.904,
@@ -73,8 +99,8 @@
       "why": "DR-03 equal repeats where the drawing plainly means them. The sheet's upper-left cells measure 7.0 to 7.4 px wide and the upper-right ones 9.5 px; the middle column, the highlighted date, is drawn wider on purpose in both rows and both calendars. Cell edges move up to 1.2 px."
     },
     {
-      "what": "Gave the arrowhead a square (miter) point, symmetric about the level shaft (y 56.22)",
-      "why": "The sheet's arrowhead is pointed; a round join leaves its tip about 1.2 px short. The barbs fit at 49.4 and 49.9 deg."
+      "what": "Made the arrowhead symmetric about the level shaft (y 56.22) with round joins, as on every other level arrow in the set",
+      "why": "DR-03 symmetry. The barbs fit at 49.4 and 49.9 deg. A miter point was tried and removed at review: the sheet draws this tip as it draws R-07's, and the set's arrows use round joins; the tip sits about 1 px behind the sheet's sharper point, as elsewhere in the set."
     },
     {
       "what": "Drew every stroke at the set line weight W, 5.5 px; date cells are filled shapes",
