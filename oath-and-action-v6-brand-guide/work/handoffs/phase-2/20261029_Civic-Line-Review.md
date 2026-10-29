@@ -284,3 +284,60 @@ Created:
 Scratchpad only, outside the project: review composites, zooms and `tile.py` with its tiles under `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/review/`.
 
 Modified: none.
+
+## 10. Fix verification
+
+October 29, 2026, second pass. I checked all 22 icons marked `fixed` against my instruction and both sheets, using fresh 2 by 2 composites, close zooms, the sheet pixels at each join, and curvature checks where a curve was rebuilt. Result: 21 VERIFIED, 1 STILL OPEN (CL-070).
+
+| ID | Result | What I checked |
+|---|---|---|
+| CL-007 | VERIFIED | Marks at W, x 24.59 to 44.59, 85.69 to 105.69 and 146.79 to 166.79 at y 76.5; `data-w` gone from the source. |
+| CL-009 | VERIFIED | The zero-length segment after the arc ending at (69.3, 137.66) is gone. |
+| CL-016 | VERIFIED | `mark-left` is gone; the left shoulder stands clean. |
+| CL-020 | VERIFIED | The handle's upper side reaches (157.47, 101.74) under the ring, so both sides join it alike. Both U-turns run at r 14.5 with runs at y 52.63, 81.63 and 110.63. |
+| CL-021 | VERIFIED | The black arcs end in butt cuts 2.75 px past each crossing and finish in a sharp V into the red lens, top and bottom, as on the red sheet. |
+| CL-022 | VERIFIED | The ring is concentric with the fingertip at (42.94, 38.34), r 27.02. The outer rays mirror about y 39.06. |
+| CL-024 | VERIFIED | `head-lower` is the upper head turned 180 deg; the two heads now match. |
+| CL-045 | VERIFIED | The string ends at (42.96, 30.16); the knob is gone and the notch at the shoulder is clean. |
+| CL-046 | VERIFIED | Chip 62.04 square and core 21.72 square, pins at pitch 14.65, all 17.5 long. |
+| CL-054 | VERIFIED | The arrowhead takes the round join and now matches R-26 and its sheet. |
+| CL-060 | VERIFIED | The five rules sit at an even 18.97 px pitch, rule 4 at y 87.91. |
+| CL-068 | VERIFIED | The fork starts at y 94, leaving a clear 1.5 px under the page tops at y 92.5, as on the red sheet. |
+| CL-070 | STILL OPEN | The knee at (60, 19.1) is softer but the edge still tightens and relaxes. See the instruction below. |
+| R-01 | VERIFIED | All three heads are 90 deg with 8.85 px arms, on the coordinates given. |
+| R-06 | VERIFIED | The arrowhead takes the round join. |
+| R-07 | VERIFIED | The rear-stack hook meets its wall with a vertical tangent at (11.44, 85); the knee and dent are gone, and the hook stays within about 0.75 px of the sheet. |
+| R-11 | VERIFIED | No black cap shows past any red band corner. The black inner edge of the upper band runs butt-capped between the corners. The handle slit runs a constant 1.5 px wide for 14.7 px before the tip. That is about 3 px shorter than the sheet's open run (about 17 to 19 px), which does not show at that width. |
+| R-27 | VERIFIED | Both handle ends sit on the ring's outer edge and merge with it. |
+| R-29 | VERIFIED | The child's arms are 6 cubics and the pig 8. The remaining curvature turns are the hooked hands, ear point, forehead notch and snout; the outlines run clean. |
+| R-44 | VERIFIED | Both window tops sit at y 12.625 and the contents moved with them. |
+| R-45 | VERIFIED | The upper handle side starts at (157.61, 82.33) on the ring and merges with it. |
+| R-46 | VERIFIED | Two seat types: ten outer seats at 15.5 by 9.5 and twelve inner at 12.5 by 11, mirrored. The upper inner rows read as chains with three open windows, as drawn. |
+
+### CL-070 Environment, still open
+
+- Must. Rebuild the leaf's top edge from (17.57, 50.59) to the tip (103.5, 11.7) so that its curvature radius grows steadily along the edge and never tightens again. Measured on the sheet's centreline, the radius runs about 47 at the start, 64 at (31, 34), 86 at (48, 24), 121 at (62, 18), 204 at (74, 16) and 450 at (82, 14), then the edge runs nearly straight into the tip. The three new cubics tighten to r 24 at (31, 34) and r 58 at (58, 20), between stretches of r 124 to 138 and r 324. At 4x that shows as two soft knuckles where the sheet draws one even sweep. The last 3 px also curl into the tip at r 4. Keep the curvature match at the left-side join (r 41.5), no inflection, the tip fixed, and stay within 0.75 px of the sheet. Two cubics are enough. Sample the radius at about 20 points per segment and check that it rises the whole way before handing back.
+
+### The coordinator's two decisions
+
+- R-46, one outer seat size along the whole row, the two lowest included, with the sheet's centreline spacing and gaps of about 2.4 px at W: I agree. On both sheets the two lowest outer seats come out squarer, with larger windows, but the five per side read as one row of seats fanning round the chamber. One size keeps them a row, as DR-03 asks for repeated parts. The spacing reads even at 4x and at 128 px.
+- R-44, both window tops at y 12.625 although the overlay metrics drop: I agree. Two equal windows with a 2.7 px height offset read as an error, the arrows stay centred between them, and the metrics only point at what the eye then decides.
+
+### A correction to my first pass
+
+For R-27 and R-45 I wrote that the black sheet shows the upper handle side merged with the ring. The sheet pixels say otherwise. The black sheet leaves a light seam of about 1 px between the ring and the upper side on both icons. The red sheet merges it on R-45 and half-merges it on R-27. The lower sides merge on both sheets. I keep the merge as the drawing: a 1 px seam sits far below any gap the set draws, and the set treats lines that thin as raster noise (R-20, R-03). The traces before the fix had neither a seam nor a merge (a 2.3 px gap with a tangent touch on R-27, a 1.4 px gap on R-45), so the fix still stands.
+
+### Pillar marks re-tiled
+
+I rendered the current red-black exports of CL-019 to CL-022 at 24, 48, 96 and 192 px on Newsprint (`pillars.py` in my scratchpad).
+
+- CL-019 Explain: ready. It holds from 192 down to 24 px; the rays stay three separate strokes at 48 px.
+- CL-020 Track: ready. The handle joins the ring on both sides, and the two loops now read equal at 96 and 192 px.
+- CL-021 Connect: ready. The red lens keeps its two sharp points at every size, and the rings stay true and equal.
+- CL-022 Act: ready. The ring now sits round the fingertip, and the rays fan evenly.
+
+All four are ready as identity marks. For information only: at 24 px the fixed export scale leaves CL-022's hand about 11 by 15 px, so its fingers and ring close up. Below 48 px the marks would need their own small masters, and that falls outside this review.
+
+### Change log for this pass
+
+Modified: `work/handoffs/phase-2/20261029_Civic-Line-Review.md`, with this section appended. The fixes JSON is unchanged. No source, export, script or status file changed. Scratchpad only: `pillars.py` and its tiles, fresh composites and zooms under `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/review/`.
