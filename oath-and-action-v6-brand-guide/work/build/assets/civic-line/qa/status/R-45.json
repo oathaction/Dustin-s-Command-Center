@@ -1,7 +1,7 @@
 {
   "id": "R-45",
   "label": "Paper Ballots & Audits",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 6,
   "history": [
@@ -64,6 +64,11 @@
       "red_iou_1x": 0.9056,
       "edge_mean_px": 0.23,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -76,6 +81,11 @@
       "time": "2026-10-29T08:41:36+00:00",
       "by": "T6",
       "note": "Handle upper side now starts on the lens ring's outer edge at (157.61, 82.33), merged as the black sheet draws it"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:41:36+00:00",

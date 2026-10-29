@@ -1,7 +1,7 @@
 {
   "id": "R-02",
   "label": "Ranked-Choice Voting",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T4",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.9488,
       "edge_mean_px": 0.165,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:53:26+00:00",
       "by": "T4",
       "note": "overlay checked; 1 cut out, lighter cell frames and numerals logged, frame gaps kept"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:53:26+00:00",

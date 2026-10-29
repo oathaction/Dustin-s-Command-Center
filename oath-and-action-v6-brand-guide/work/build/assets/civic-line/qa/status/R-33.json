@@ -1,7 +1,7 @@
 {
   "id": "R-33",
   "label": "Citizen Assemblies",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 3,
   "history": [
@@ -34,6 +34,11 @@
       "red_iou_1x": 0.9505,
       "edge_mean_px": 0.13,
       "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -41,6 +46,11 @@
       "time": "2026-10-29T06:16:08+00:00",
       "by": "T6",
       "note": "overlay checked; five figures, shoulder ends, table and legs match"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:16:08+00:00",

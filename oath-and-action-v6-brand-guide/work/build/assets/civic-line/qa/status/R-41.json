@@ -1,7 +1,7 @@
 {
   "id": "R-41",
   "label": "Grid Cost Allocation",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 3,
   "history": [
@@ -34,6 +34,11 @@
       "red_iou_1x": 0.9255,
       "edge_mean_px": 0.191,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -41,6 +46,11 @@
       "time": "2026-10-29T06:56:07+00:00",
       "by": "T6",
       "note": "overlay checked; trays evened, cable loop and plug match, dollar with full bar"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:56:07+00:00",

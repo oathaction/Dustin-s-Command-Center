@@ -1,7 +1,7 @@
 {
   "id": "R-44",
   "label": "Digital Competition",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 5,
   "history": [
@@ -54,6 +54,11 @@
       "red_iou_1x": 0.7834,
       "edge_mean_px": 0.986,
       "edge_p95_px": 1.75
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -66,6 +71,11 @@
       "time": "2026-10-29T08:41:38+00:00",
       "by": "T6",
       "note": "Windows aligned: both tops at y 12.625, each window and its contents moved 1.345 px; arrows unchanged"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:41:38+00:00",

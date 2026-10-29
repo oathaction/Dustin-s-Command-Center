@@ -1,7 +1,7 @@
 {
   "id": "CL-034",
   "label": "New Technology",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T2",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.9123,
       "edge_mean_px": 0.12,
       "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:48:39+00:00",
       "by": "T2",
       "note": "T2: overlay checked; four rays, open right neck kept"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:48:39+00:00",

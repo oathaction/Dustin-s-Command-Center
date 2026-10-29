@@ -1,7 +1,7 @@
 {
   "id": "R-07",
   "label": "Small-Donor Matching",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T4",
   "iterations": 9,
   "history": [
@@ -94,6 +94,11 @@
       "red_iou_1x": 0.9339,
       "edge_mean_px": 0.249,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 9,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -116,6 +121,11 @@
       "time": "2026-10-29T08:38:28+00:00",
       "by": "T4",
       "note": "review fix: rear stack hook now meets its wall with a vertical tangent (C14.8 76 11.44 78.2 11.44 85); knee and dent gone"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:38:28+00:00",

@@ -1,7 +1,7 @@
 {
   "id": "R-03",
   "label": "Proportional Elections",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T4",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.8715,
       "edge_mean_px": 0.114,
       "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:54:41+00:00",
       "by": "T4",
       "note": "overlay checked; 30 seats (22 black, 8 red), symmetric pairs; red-sheet blob and bridges dropped"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:54:41+00:00",

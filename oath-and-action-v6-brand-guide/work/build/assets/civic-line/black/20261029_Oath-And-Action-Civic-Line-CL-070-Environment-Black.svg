@@ -3,7 +3,7 @@
   <title>Environment</title>
   <desc>Oath &amp; Action Civic Line CL-070 Environment. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M31.442 94.0966 V80.084 C24.8427 73.0119 24.2188 61.3778 29.1854 53.3212 C29.9408 52.0978 33.0017 47.4237 35.5215 45.1719 C38.636 42.384 45.3084 39.3817 49.1003 38.1729 C54.9101 36.3257 68.7277 34.0106 71.0672 34.3664 C71.964 57.9563 64.9943 79.7672 38.2314 84.0319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+    <path d="M31.442 94.0966 V80.084 C23.2805 71.8994 25.8969 59.4469 29.1854 53.3212 C30.0393 51.7305 31.9412 48.6989 35.3454 45.6418 C45.1344 36.8512 59.0157 35.3285 71.0672 34.3664 C71.964 57.9563 64.9943 79.7672 38.2314 84.0319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
     <path d="M31.442 80.084 C35.9845 67.5872 41.2192 57.6249 53.3748 50.5966" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">

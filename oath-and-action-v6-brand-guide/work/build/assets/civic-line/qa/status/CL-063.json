@@ -1,7 +1,7 @@
 {
   "id": "CL-063",
   "label": "Essential Costs",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T4",
   "iterations": 7,
   "history": [
@@ -74,6 +74,11 @@
       "red_iou_1x": 0.875,
       "edge_mean_px": 0.2,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -81,6 +86,11 @@
       "time": "2026-10-29T06:14:18+00:00",
       "by": "T4",
       "note": "overlay checked; roof, tag tip, bottle under bag rule, dollar match; 5 builds"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:14:18+00:00",

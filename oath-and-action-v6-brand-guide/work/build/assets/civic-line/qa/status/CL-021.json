@@ -1,7 +1,7 @@
 {
   "id": "CL-021",
   "label": "Connect",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T1",
   "iterations": 5,
   "history": [
@@ -82,6 +82,11 @@
       "red_iou_1x": 0.8355,
       "edge_mean_px": 0.408,
       "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -94,6 +99,11 @@
       "time": "2026-10-29T08:32:41+00:00",
       "by": "T1",
       "note": "T1 review fix: outer arcs end square 2.75 px past each crossing for a sharp V"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:32:41+00:00",

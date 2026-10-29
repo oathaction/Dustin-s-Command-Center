@@ -1,7 +1,7 @@
 {
   "id": "R-27",
   "label": "Tax Enforcement",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T5",
   "iterations": 5,
   "history": [
@@ -54,6 +54,11 @@
       "red_iou_1x": 0.841,
       "edge_mean_px": 0.156,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -66,6 +71,11 @@
       "time": "2026-10-29T08:35:10+00:00",
       "by": "T5",
       "note": "both handle sides now run onto the ring's outer edge (120.27, 84.71) and (111.5, 92.87), merging as on the black sheet"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:35:10+00:00",

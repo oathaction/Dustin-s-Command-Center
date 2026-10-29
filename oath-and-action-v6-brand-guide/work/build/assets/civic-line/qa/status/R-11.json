@@ -1,7 +1,7 @@
 {
   "id": "R-11",
   "label": "Election Enforcement",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T5",
   "iterations": 8,
   "history": [
@@ -84,6 +84,11 @@
       "red_iou_1x": 0.8383,
       "edge_mean_px": 0.159,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -96,6 +101,11 @@
       "time": "2026-10-29T08:34:38+00:00",
       "by": "T5",
       "note": "red bands now cover the black body ends (body under bands, butt inner edge between corner arcs); handle slit cut as a constant 1.5 px over the last 20 px, outer edges within 0.3 px"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:34:38+00:00",

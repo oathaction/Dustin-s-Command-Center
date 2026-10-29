@@ -1,7 +1,7 @@
 {
   "id": "R-09",
   "label": "Stock-Trading Ban",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T4",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.9348,
       "edge_mean_px": 0.275,
       "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -51,6 +56,11 @@
       "time": "2026-10-29T07:17:41+00:00",
       "by": "T4",
       "note": "overlay checked; notched border, gaps round the slash, chart line and filled slash match"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T07:17:41+00:00",

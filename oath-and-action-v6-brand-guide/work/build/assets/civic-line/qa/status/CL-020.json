@@ -1,7 +1,7 @@
 {
   "id": "CL-020",
   "label": "Track",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T1",
   "iterations": 5,
   "history": [
@@ -54,6 +54,11 @@
       "red_iou_1x": 0.8451,
       "edge_mean_px": 0.452,
       "edge_p95_px": 1.118
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -71,6 +76,11 @@
       "time": "2026-10-29T08:32:39+00:00",
       "by": "T1",
       "note": "T1 review fix: handle upper side joined under the ring; both U-turns r 14.5"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:32:39+00:00",

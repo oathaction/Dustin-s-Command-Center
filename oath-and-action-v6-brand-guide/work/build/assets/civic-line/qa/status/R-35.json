@@ -1,7 +1,7 @@
 {
   "id": "R-35",
-  "label": "Term Limits · Rejected",
-  "state": "traced",
+  "label": "Term Limits \u00b7 Rejected",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.9725,
       "edge_mean_px": 0.184,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:26:54+00:00",
       "by": "T6",
       "note": "overlay checked; X is a mask cutout, clock flat cuts and gaps match; hands centred"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:26:54+00:00",
@@ -79,5 +89,5 @@
       "why": "DR-03. Leg ends measure 111.4 and 111.9; the icon measures 5.30 px."
     }
   ],
-  "source_notes": "Kept: the body's left side stopping on the desk item's top (the item stands in front), the open right ends of both desk lines, the right leg detached below the desk, the L-shaped hands, the clock passing behind the badge with flat-cut ends, and the badge as a solid disc with the X as a true cutout. Label stays 'Term Limits · Rejected'. Black and red sheets agree."
+  "source_notes": "Kept: the body's left side stopping on the desk item's top (the item stands in front), the open right ends of both desk lines, the right leg detached below the desk, the L-shaped hands, the clock passing behind the badge with flat-cut ends, and the badge as a solid disc with the X as a true cutout. Label stays 'Term Limits \u00b7 Rejected'. Black and red sheets agree."
 }

@@ -1,7 +1,7 @@
 {
   "id": "CL-046",
   "label": "AI Infrastructure",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T3",
   "iterations": 5,
   "history": [
@@ -54,6 +54,11 @@
       "red_iou_1x": 0.9299,
       "edge_mean_px": 0.362,
       "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -66,6 +71,11 @@
       "time": "2026-10-29T08:31:12+00:00",
       "by": "T3",
       "note": "review fix: chip 62.04 and core 21.72 px made true squares; pins at one 14.65 px pitch, all 17.5 px long"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:31:12+00:00",

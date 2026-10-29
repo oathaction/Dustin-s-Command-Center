@@ -1,7 +1,7 @@
 {
   "id": "R-46",
   "label": "Expand the House",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 8,
   "history": [
@@ -84,6 +84,11 @@
       "red_iou_1x": 0.6261,
       "edge_mean_px": 0.722,
       "edge_p95_px": 2.062
+    },
+    {
+      "iteration": 8,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -101,6 +106,11 @@
       "time": "2026-10-29T08:42:35+00:00",
       "by": "T6",
       "note": "Outer gaps 2.4 px at W (sheet centreline spacing) per coordinator; one outer size incl. lowest seats; end seats now move 2.1-2.7 px"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:42:35+00:00",

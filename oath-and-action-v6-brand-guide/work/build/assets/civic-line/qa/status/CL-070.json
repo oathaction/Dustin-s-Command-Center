@@ -1,9 +1,9 @@
 {
   "id": "CL-070",
   "label": "Environment",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T4",
-  "iterations": 8,
+  "iterations": 12,
   "history": [
     {
       "iteration": 1,
@@ -84,6 +84,51 @@
       "red_iou_1x": 0.8778,
       "edge_mean_px": 0.31,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 9,
+      "time": "2026-10-29T10:17:09+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8674,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.323,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 10,
+      "time": "2026-10-29T10:17:17+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8673,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.318,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 11,
+      "time": "2026-10-29T10:41:18+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8707,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.318,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 12,
+      "time": "2026-10-29T10:42:27+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8707,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.318,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 12,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -96,19 +141,29 @@
       "time": "2026-10-29T08:38:23+00:00",
       "by": "T4",
       "note": "review fix: leaf top edge rebuilt as three G2-joined cubics, no knee or inflection, within 0.60 px of the sheet, tip fixed"
+    },
+    {
+      "time": "2026-10-29T10:42:27+00:00",
+      "by": "T4",
+      "note": "review fix 2: leaf top edge rebuilt as two G2 cubics (joint (30.21, 34.83), r 65.4); radius rises 41.5 to 1088 at every sample, no knuckles, no inflection, no tip curl, tip fixed; left join tangent -58.35 to -61.77 deg with r 41.5 kept; within 0.70 px of the sheet centreline"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Second pass on the leaf's top edge; checked by the main session against the reviewer's profile"
     }
   ],
-  "last_build": "2026-10-29T08:38:23+00:00",
+  "last_build": "2026-10-29T10:42:27+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8731,
+    "silhouette_iou_1x": 0.8707,
     "red_iou_1x": 0.8778,
     "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
     "ink_area_ratio_trace_over_reference": 0.8846,
-    "edge_mean_px": 0.31,
-    "edge_p95_px": 0.559,
+    "edge_mean_px": 0.318,
+    "edge_p95_px": 0.707,
     "edge_max_px": 1.521,
     "best_offset": [
       0,
@@ -133,8 +188,12 @@
       "why": "The sheet's leaf tip is a sharp corner; a round join leaves it about 1 px blunter than drawn. The outline's other joins are smooth or shallow, so the setting changes nothing else."
     },
     {
-      "what": "Review fix: rebuilt the leaf's top edge from (17.57, 50.59) to the tip (103.5, 11.7) as three cubics with matched tangents and curvature at every joint, curving one way only, tip fixed",
-      "why": "Reviewer (must): the edge had a knee at (60, 19.1), where the curvature radius jumped from 48 to 317 px, and an inflection near (68, 17.4). The new edge also matches the incoming left side's curvature at (17.57, 50.59) (radius 41.5 px); it sits within 0.60 px of the sheet's centreline (rms 0.22, p95 0.50) away from the tip."
+      "what": "Review fix (second pass): rebuilt the leaf's top edge from (17.57, 50.59) to the tip (103.5, 11.7) as two cubics, joined at (30.21, 34.83) with matched tangent (-41.92 deg) and curvature (r 65.4), so the curvature radius grows steadily along the whole edge and never tightens again; tip fixed, no curl into it. This replaces the first pass's three cubics.",
+      "why": "Reviewer (must): the three cubics tightened to r 24 at (31, 34) and r 58 at (58, 20) between looser stretches, and the last 3 px curled into the tip at r 4. The sheet's radius runs about 47, 64 at (31, 34), 86 at (48, 24), 121 at (62, 18), 204 at (74, 16) and 450 at (82, 14), then nearly straight. The new edge, sampled at 20 points per segment, runs 41.5 at the join, 47 at (18.2, 49.5), 66 at (31, 34), 83 at (48, 24), 114 at (62, 18), 159 at (74, 16), 208 at (82, 14), 414 at (95.6, 12.4) and 1088 at the tip; it rises at every sample (and at 10,000), with no inflection. Past (74, 16) it stays tighter than the sheet's profile because the fixed tip sits about 0.7 px below the line of the sheet's own centreline; a straighter run leaves the sheet by 0.78 px about 4 px before the tip. The edge sits within 0.70 px of the sheet's centreline everywhere (skeleton: rms 0.34, p95 0.50) and within 0.68 px of the midline between the sheet's two ink edges outside the 2.5 px tip corner (rms 0.32, p95 0.45)."
+    },
+    {
+      "what": "Turned the leaf's left side into the top-edge join more steeply: its end tangent at (17.57, 50.59) is now -61.77 deg (was -58.35), with its inner control points moved from (8.66, 90.99) and (7.38, 67.12) to (5.45, 88.71) and (10.82, 63.16) so its end radius stays 41.5 px",
+      "why": "Needed for the top-edge fix. The sheet's centreline runs at about -62 deg through the join. From the old -58.35 deg start, no top edge whose radius grows from 41.5 px gets closer than about 0.9 px to the sheet near (29, 36). The left side now sits within 0.53 px of the sheet's centreline (rms 0.31; it was 0.07)."
     }
   ],
   "source_notes": "Kept as drawn: the leaf tilted up to the right with its tip at (103.5, 11.7); its outline returns down the right side to an open round end at (36.13, 113.6) that stays clear of the stem; the vein sweeps from the same Y as the outline, at (22.2, 105.5), to a round end inside the leaf; the open gap between leaf and droplet. The droplet's half-round bottom is written as two quarter arcs so every renderer draws it the same (a single half-circle arc is numerically fragile and shifted 0.8 px in the bake check). Red: the whole droplet outline. Black and red sheets agree on the droplet within 0.2 px."

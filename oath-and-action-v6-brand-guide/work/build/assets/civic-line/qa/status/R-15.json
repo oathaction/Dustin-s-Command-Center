@@ -1,7 +1,7 @@
 {
   "id": "R-15",
   "label": "Watchdog Remedies",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T5",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.8736,
       "edge_mean_px": 0.132,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:26:25+00:00",
       "by": "T5",
       "note": "overlay checked; true-circle lens, down-left handle, check in lens"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:26:25+00:00",

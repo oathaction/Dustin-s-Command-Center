@@ -1,7 +1,7 @@
 {
   "id": "R-13",
   "label": "Congressional Capacity",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T5",
   "iterations": 2,
   "history": [
@@ -24,6 +24,11 @@
       "red_iou_1x": 0.7843,
       "edge_mean_px": 0.248,
       "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -31,6 +36,11 @@
       "time": "2026-10-29T06:22:04+00:00",
       "by": "T5",
       "note": "overlay checked; building and book symmetric, base rule centred (1.45 px)"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:22:04+00:00",

@@ -1,7 +1,7 @@
 {
   "id": "CL-054",
   "label": "Home Equity",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T3",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.9264,
       "edge_mean_px": 0.221,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -56,6 +61,11 @@
       "time": "2026-10-29T08:31:14+00:00",
       "by": "T3",
       "note": "review fix: arrowhead miter removed; tip takes the set's round join"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:31:14+00:00",

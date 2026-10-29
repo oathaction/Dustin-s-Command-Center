@@ -149,8 +149,8 @@ CSS = """
 :root {
 __LIGHT__  --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --icon-size: 48px;
-  --card-min: 104px;
+  --icon-size: 64px;
+  --card-min: 128px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -394,6 +394,7 @@ def build():
     sc = C.read_json(C.SCALE_JSON)
     css = CSS.replace("__LIGHT__", tokens(LIGHT)).replace("__DARK__", tokens(DARK, "    ")).replace("__DARKROOT__", tokens(DARK))
     built = sum(1 for ic in icons if ic["svg"])
+    reviewed = sum(1 for ic in icons if ic["svg"] and ic.get("state") == "reviewed")
     sections = []
     for key, name in SHEET_NAMES.items():
         cells = [ic for ic in icons if ic["sheet"] == key]
@@ -402,7 +403,7 @@ def build():
             f'<small data-shown>{len(cells)} icons</small></h2>'
             f'<ul class="grid">{"".join(card(ic) for ic in cells)}</ul></section>')
     sheet_opts = "".join(f'<option value="{k}">{k} {html.escape(v)}</option>' for k, v in SHEET_NAMES.items())
-    size_opts = "".join(f'<label><input type="radio" name="size" value="{s}"{" checked" if s == 48 else ""}><span>{s}</span></label>' for s in (24, 32, 48, 64, 128))
+    size_opts = "".join(f'<label><input type="radio" name="size" value="{s}"{" checked" if s == 64 else ""}><span>{s}</span></label>' for s in (24, 32, 48, 64, 128))
     payload = json.dumps({"icons": icons}, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     body = f"""<title>Civic Line Icons</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -417,7 +418,7 @@ def build():
 <li><b>2</b> editions from one drawing</li>
 <li><b>128</b>-unit viewBox, one shared scale</li>
 <li>stroke <b>{sc["stroke_width_units"]:.2f}</b> units ({sc["W_source_px"]} source px)</li>
-<li><b>{built}</b> of {len(icons)} traced so far</li>
+<li><b>{reviewed}</b> of {len(icons)} passed the independent review</li>
 </ul>
 </header>
 <div class="toolbar" role="search" aria-label="Filter icons">

@@ -1,7 +1,7 @@
 {
   "id": "R-43",
   "label": "Disaster Mitigation",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T6",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.8902,
       "edge_mean_px": 0.225,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -51,6 +56,11 @@
       "time": "2026-10-29T07:12:44+00:00",
       "by": "T6",
       "note": "overlay checked; band layering, cloud lobes, rain and waves match"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T07:12:44+00:00",

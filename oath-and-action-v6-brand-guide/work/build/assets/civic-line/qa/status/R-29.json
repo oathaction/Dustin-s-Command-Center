@@ -1,7 +1,7 @@
 {
   "id": "R-29",
   "label": "Baby Bonds",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T5",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.947,
       "edge_mean_px": 0.171,
       "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -56,6 +61,11 @@
       "time": "2026-10-29T08:38:59+00:00",
       "by": "T5",
       "note": "arms rebuilt as 3 cubics per side, pig forehead/ear 3, back 3, belly 2; ear point, notch, snout, feet, tail and hooks kept; within 0.32 px of sampled centreline"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:38:59+00:00",

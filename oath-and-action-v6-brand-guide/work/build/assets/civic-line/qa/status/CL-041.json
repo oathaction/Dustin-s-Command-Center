@@ -1,7 +1,7 @@
 {
   "id": "CL-041",
   "label": "Workplace AI",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T2",
   "iterations": 3,
   "history": [
@@ -34,6 +34,11 @@
       "red_iou_1x": 0.8476,
       "edge_mean_px": 0.214,
       "edge_p95_px": 0.791
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -41,6 +46,11 @@
       "time": "2026-10-29T07:18:26+00:00",
       "by": "T2",
       "note": "T2: overlay checked; robot face and asymmetric ears kept; robot symmetrised"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T07:18:26+00:00",

@@ -2,7 +2,7 @@
 
 Factual, rights and model questions only Dustin can answer, ranked by how much later work depends on them. Each carries the default the studio follows until he answers. Design choices with recommendations go to the gate where boards show them, listed at the end.
 
-Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 2026.
+Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 2026. Q-15 and Q-16 added October 29, 2026.
 
 ## Open
 
@@ -12,6 +12,8 @@ Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 20
 | Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
 | Q-13 | Can you show a one-page sheet of the 16 px marks to five or more people before Gate 2? | The Act mark, the similarity limit and the pixel-fit limit are studio thresholds that no reader has checked | Studio thresholds only, marked untested | Creative director, Gate 1 |
 | Q-14 | Who made page 14 of `pics_i_like.pdf`, the rendered data visualization study? | It is the only page whose maker the rights review couldn't trace | Study only | Research lead, Gate 1 |
+| Q-15 | How should each Civic Line icon sit in its 128 square: (1) one shared scale, (2) fill each square, or (3) grow with a 1.25x limit? | It sets the size and line weight of every standalone SVG and PNG; the contact sheets and the drawings do not change | Option 1, the shared scale (D2-32). The studio recommends option 3 | Studio, October 29 |
+| Q-16 | Which tool made the Civic Line sheets, and under what terms? | The rights ledger records tool, date and terms for every generated asset | Supplied by Dustin; tool and terms not recorded | Studio, October 29 |
 
 ## Answered
 

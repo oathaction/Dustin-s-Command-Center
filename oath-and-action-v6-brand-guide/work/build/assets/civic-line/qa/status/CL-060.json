@@ -1,7 +1,7 @@
 {
   "id": "CL-060",
   "label": "Taxes & Benefits",
-  "state": "fixed",
+  "state": "reviewed",
   "tracer": "T3",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.9521,
       "edge_mean_px": 0.232,
       "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -56,6 +61,11 @@
       "time": "2026-10-29T08:31:16+00:00",
       "by": "T3",
       "note": "review fix: rule-4 moved from y 87.6 to 87.91 onto the rule rhythm"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Review fix verified by the independent reviewer (creative director)"
     }
   ],
   "last_build": "2026-10-29T08:31:16+00:00",

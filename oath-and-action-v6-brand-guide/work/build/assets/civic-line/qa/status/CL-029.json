@@ -1,7 +1,7 @@
 {
   "id": "CL-029",
   "label": "Public Services",
-  "state": "traced",
+  "state": "reviewed",
   "tracer": "T2",
   "iterations": 4,
   "history": [
@@ -44,6 +44,11 @@
       "red_iou_1x": 0.8484,
       "edge_mean_px": 0.081,
       "edge_p95_px": 0.25
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T10:43:17+00:00",
+      "state": "reviewed"
     }
   ],
   "notes": [
@@ -51,6 +56,11 @@
       "time": "2026-10-29T06:31:18+00:00",
       "by": "T2",
       "note": "T2: overlay checked; window cut by mask gap at the visitor's shoulder"
+    },
+    {
+      "time": "2026-10-29T10:43:17+00:00",
+      "by": "review",
+      "note": "Passed the independent review (creative director) on first reading"
     }
   ],
   "last_build": "2026-10-29T06:31:18+00:00",
