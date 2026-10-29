@@ -1,0 +1,122 @@
+[
+  {
+    "id": "CL-007",
+    "instruction": "Take the three red marks from data-w 7 to W and keep their 25.5 px ink length: mark-1 x 24.59 to 44.59, mark-2 x 85.69 to 105.69, mark-3 x 146.79 to 166.79, all at y 76.5. Remove data-w and its log entries.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-009",
+    "instruction": "In district, delete the zero-length 'L69.3 137.66' that repeats the end point of the arc ending at (69.3, 137.66).",
+    "severity": "should"
+  },
+  {
+    "id": "CL-016",
+    "instruction": "Delete mark-left, the tick from (57.65, 44.4) to (59.25, 47.4). It floats off the left shoulder, attaches to nothing and has no partner on the mirrored right figure.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-020",
+    "instruction": "Extend the handle's upper-right side from (160.04, 104.45) 3.73 px along its own line to (157.47, 101.74), on the lens centreline, so the ring covers its butt end as it covers the lower-left side. The black sheet shows the handle joined on both sides.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-020",
+    "instruction": "Give both U-turns one radius, 14.5: straight runs at y 52.63, 81.63 and 110.63, right U centred at y 67.13, left U centred at y 96.13 (now r 14 and r 14.99).",
+    "severity": "must"
+  },
+  {
+    "id": "CL-021",
+    "instruction": "At the crossings (96.75, 26.38) and (96.75, 94.99), end the four black outer arcs with butt caps 2.75 px (3.17 deg of arc) past the crossing, so the black finishes in a sharp V pointing into the lens as on the red sheet. The round caps now push a soft blob 2.75 px into the red.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-022",
+    "instruction": "Make the ring concentric with the fingertip: centre (42.94, 38.34), r 27.02, same gap, path 'M62.21 57.28 A27.02 27.02 0 1 0 24.51 58.10'. Mirror the outer rays about y 39.06 from the fan origin (57.6, 39.06) at plus and minus 31.8 deg, inner radius 28.3, length 11.4: upper (81.65, 24.15) to (91.34, 18.14), lower (81.65, 53.97) to (91.34, 59.98). Leave the middle ray as it is.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-024",
+    "instruction": "Make head-lower the upper head turned 180 deg: points '51.62,100.04 34.9,99.1 32.18,112.58'.",
+    "severity": "should"
+  },
+  {
+    "id": "CL-045",
+    "instruction": "The string's round end makes a lumpy knob at crop (42 to 47, 25 to 31). End the string 2 px shorter, at (42.96, 30.16), so its cap sits inside the front tag's right shoulder and leaves a clean V notch.",
+    "severity": "must"
+  },
+  {
+    "id": "CL-046",
+    "instruction": "Square the chip and core. Chip 62.04 px centred on (148.31, 60.92): x 117.29 to 179.33, y 29.9 to 91.94. Core 21.72 px: x 137.45 to 159.17, y 50.065 to 71.785. Pins at one pitch, 14.65 (x 133.66, 148.31, 162.96; y 46.27, 60.92, 75.57), all 17.5 long: top y 12.4 to 29.9, bottom y 91.94 to 109.44, left x 99.79 to 117.29, right x 179.33 to 196.83.",
+    "severity": "should"
+  },
+  {
+    "id": "CL-054",
+    "instruction": "Remove class 'miter' from arrow-head so its corner takes the round join used by 27 of the set's 29 arrowheads, including R-26's matching rising chart arrow.",
+    "severity": "should"
+  },
+  {
+    "id": "CL-060",
+    "instruction": "Move rule-4 from y 87.6 to y 87.91 to sit on the rule rhythm.",
+    "severity": "should"
+  },
+  {
+    "id": "CL-068",
+    "instruction": "Set the fork-top-cut rect to y 84, height 10, so the fork starts at y 94 and the 0.5 px hairline under the page tops (y 92.5) becomes the red sheet's clear 1.5 px gap.",
+    "severity": "should"
+  },
+  {
+    "id": "CL-070",
+    "instruction": "The leaf's top edge has a knee at (60, 19.1): curvature radius jumps from 48 to 317 and the curve inflects near (68, 17.4). Rebuild the edge from (17.57, 50.59) to the tip (103.5, 11.7) with continuous curvature and no inflection, within 0.75 px of the sheet, tip fixed.",
+    "severity": "must"
+  },
+  {
+    "id": "R-01",
+    "instruction": "Give the three arrowheads one shape, 90 deg with 8.85 px arms: head-upper '105.6,37.75 105.6,46.6 96.75,46.6'; head-lower '105.6,83.25 105.6,74.4 96.75,74.4'; head-middle '100.99,54.07 107.25,60.33 100.99,66.59' (now a 79 deg chevron).",
+    "severity": "must"
+  },
+  {
+    "id": "R-06",
+    "instruction": "Remove class 'miter' from arrow-head. The sheet draws this tip as it draws R-07's, and every other level arrow in the set uses round joins.",
+    "severity": "should"
+  },
+  {
+    "id": "R-07",
+    "instruction": "The rear stack's hook arrives 27 deg off vertical at (11.44, 85), leaving a knee and an inner dent at crop (12 to 15, 83 to 88). Rebuild it to arrive with a vertical tangent at the join, for example 'C15.8 77.2 11.44 79.2 11.44 85', and check it against the sheet.",
+    "severity": "must"
+  },
+  {
+    "id": "R-11",
+    "instruction": "Black round caps poke out past the red band corners at crop (108 to 112, 35 to 39), (129 to 134, 49 to 54) and (110 to 115, 71 to 76). Draw body-left and body-right before both bands so the red covers their caps. Replace band-upper-inner-edge with a butt-capped segment from (111.6, 38.46) to (128.59, 49.92), drawn after band-upper. Let the lower band's red sit over the end of body-right, as the red sheet shows.",
+    "severity": "must"
+  },
+  {
+    "id": "R-11",
+    "instruction": "Open the handle's slit to a constant 1.5 px over the last 20 px before the tip, from about (149, 84), keeping the outer edges within 0.5 px of the sheet.",
+    "severity": "should"
+  },
+  {
+    "id": "R-27",
+    "instruction": "Move both handle ends onto the ring's outer edge: upper start (123.71, 88.06) to (120.27, 84.71), lower end (113.36, 94.68) to (111.5, 92.87). The black sheet shows both sides merged with the ring; the trace leaves a 2.3 px gap and a tangent touch.",
+    "severity": "must"
+  },
+  {
+    "id": "R-29",
+    "instruction": "Rebuild the child's arms (34 cubics, 26 curvature reversals) and the pig's forehead (18 cubics, 20 reversals), back (21, 8) and belly (8, 6) with a few clean curves each, keeping the ear point, forehead notch, snout, feet, tail and hooked hands, within 0.5 px of the sheet.",
+    "severity": "should"
+  },
+  {
+    "id": "R-44",
+    "instruction": "Align the two browser windows: move each 1.35 px so both tops sit at y 12.625, with their contents moving with them.",
+    "severity": "should"
+  },
+  {
+    "id": "R-45",
+    "instruction": "The handle's upper side stops 1.4 px clear of the ring; the black sheet shows it merged. Start it at (157.61, 82.33), 5.1 px further along its line, on the ring's outer edge (r 37.35).",
+    "severity": "must"
+  },
+  {
+    "id": "R-46",
+    "instruction": "Replace the single seat size (13.6 by 8.8), which shrinks inner windows to 3.3 px slots, with the sheet's two seat types: ten outer seats at 15.5 by 9.5 on the centreline and twelve inner seats at 12.5 by 11, all rx 2, equal within each group, mirrored, with the sheet's gaps (about 3 px outer, about 3.5 px inner lower). Sheet ink: outer 20.5 by 14.4 with a 10.8 by 4.6 window; inner lower 17 to 18.5 by 16 with a 7.5 to 8.5 by 6 to 7 window. This overrides the earlier one-size instruction.",
+    "severity": "must"
+  }
+]
