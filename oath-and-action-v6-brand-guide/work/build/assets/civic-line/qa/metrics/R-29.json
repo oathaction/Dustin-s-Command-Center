@@ -1,7 +1,7 @@
 {
   "id": "R-29",
   "label": "Baby Bonds",
-  "built": "2026-10-29T07:18:11+00:00",
+  "built": "2026-10-29T07:53:07+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,8 +49,10 @@
     "iou": 0.9329
   },
   "ink_area_ratio_trace_over_reference": 1.0348,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 0.9999,
   "bake_check_iou_1x": 0.9997,
-  "bake_check_iou_4x": 0.9996,
+  "bake_check_max_diff_levels_4x": 43,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     24.651,

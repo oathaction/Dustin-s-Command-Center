@@ -1,6 +1,27 @@
 {
   "id": "R-49",
   "tracer": "T6",
-  "corrections": [],
-  "notes": ""
+  "corrections": [
+    {"element": "arc", "what": "Centred the red arc on the composition axis x 118.75: circle centre x 121.05 -> 118.75 (2.3 px left), r 102.27, ends at x 60.02 and 177.48 (sheet 61.75 and 179.2)",
+     "why": "DR-03 symmetry. The people sit symmetric about x 118.75 and the bridge within 0.8 px of it, while the sheet's arc is symmetric about its own centre 2.3 px to the right, so its right end came 1.6 px closer to the right head than the left end to the left head. Now both ends clear the heads by 8.1 px. This costs red IoU (about 0.74)."},
+    {"element": "head-left", "what": "Moved the left head 1.33 px left (cx 39.63 -> 38.3) to sit centred over its body",
+     "why": "DR-03 symmetry: the body (fit centre 38.35, sides 10.7 / 65.8) and the arms (centre 38.55) agree; only the head was off."},
+    {"what": "Gave both heads one radius, 12.18 (fits 12.12 and 12.24), at cy 42.69",
+     "why": "DR-03 equal repeats."},
+    {"what": "Gave both bodies one half-ellipse arch, rx 27.96, ry 22.88, centre y 83.15, top 60.27 (fits rx 27.45 / 28.47, tops 59.96 / 60.57), sides ending at y 96.37; edges move up to 0.65 px",
+     "why": "DR-03 equal repeats: the two people are a pair. Each arch is drawn as two quarter arcs so the export keeps its centre."},
+    {"what": "Arms at 14.08 px either side of each body's centre (sheet 13.5 / 13.9 and 14.55 / 14.35), tops at y 84.45",
+     "why": "DR-03 equal repeats; moves under 0.6 px."},
+    {"element": "arm-right-2", "what": "The right figure's hooked arm keeps its drawn 1.9 px gap to the body side; its end moves with the narrowed body to x 219.76",
+     "why": "Keep the gap as drawn."},
+    {"element": "collar-right", "what": "Drew the right figure's collar at W: flat top on the head's bottom tangent (y 54.87), corners r 9.3 centred 9.07 px either side of the axis, sides ending inside the shoulders",
+     "why": "Both sheets show the collar. The sheet's collar runs about 4.6 px thick; DR-03 draws every stroke at W. Its outer edge follows the sheet within 0.5 px."},
+    {"what": "Bridge moved onto the composition axis (posts +0.75 px, centre post +0.97, legs +0.45, deck +0.4) with one roof slope, 0.525, from the peak (118.75, 46.45) to eaves 43.55 px out at y 69.31",
+     "why": "DR-03 symmetry. The sheet's slopes measure 0.533 (left) and 0.515 (right), so its right eave reached 1.5 px further out."},
+    {"element": "left-shoulder-gap-cut", "what": "Mask cut data-w 13.1: the left shoulder arch widened by a 3.8 px gap on each side, cutting the bottom of the left head",
+     "why": "Occlusion is a gap. The sheet cuts the head ring 3.7 to 4.1 px above the shoulders' top edge, leaving a thin bar under the head; the trace keeps that bar."},
+    {"element": "right-shoulder-gap-cut", "what": "Mask cut data-w 8.5, butt ends, along the middle 22 px of the right shoulder arch: a 1.5 px gap under the collar and head",
+     "why": "Occlusion is a gap. The sheet cuts the collar's lower edge flat at y 56.4, 1.7 px above the shoulders; toward the sides the collar meets the shoulders with no gap, so the cut stops where the natural gap takes over."}
+  ],
+  "notes": "Kept as drawn: the right figure's collar and hooked right arm (the left figure has neither), the thin bar that closes the bottom of the left head, the bridge legs set 2.1 px outside the outer posts above the deck, five posts, the deck overhanging the legs by 3.7 px, the roof overhanging the outer posts, round caps on the arc. The red sheet shows the same parts as the black sheet; only the arc is red. No sheet disagreement."
 }

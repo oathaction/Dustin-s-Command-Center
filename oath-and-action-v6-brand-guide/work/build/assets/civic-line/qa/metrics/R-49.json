@@ -1,0 +1,82 @@
+{
+  "id": "R-49",
+  "label": "Cross-Party Civic Work",
+  "built": "2026-10-29T07:58:57+00:00",
+  "W_source_px": 5.5,
+  "s": 0.487395,
+  "stroke_units": 2.6807,
+  "silhouette_iou_1x": 0.8336,
+  "silhouette_iou_4x": 0.8396,
+  "red_iou_1x": 0.7431,
+  "red_iou_4x": 0.7579,
+  "edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.429,
+      "p95": 1.118,
+      "max": 1.82
+    },
+    "trace_to_reference": {
+      "mean": 0.43,
+      "p95": 1.118,
+      "max": 1.904
+    },
+    "symmetric": {
+      "mean": 0.43,
+      "p95": 1.118,
+      "max": 1.904
+    }
+  },
+  "red_edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.681,
+      "p95": 1.25,
+      "max": 1.953
+    },
+    "trace_to_reference": {
+      "mean": 0.685,
+      "p95": 1.25,
+      "max": 2.016
+    },
+    "symmetric": {
+      "mean": 0.683,
+      "p95": 1.25,
+      "max": 2.016
+    }
+  },
+  "best_offset_1x": {
+    "dx": 0,
+    "dy": 0,
+    "iou": 0.8336
+  },
+  "ink_area_ratio_trace_over_reference": 1.0498,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_max_diff_levels_4x": 6,
+  "pair_identical_after_swap": true,
+  "export_drawn_bounds": [
+    9.456,
+    41.57,
+    117.813,
+    86.235
+  ],
+  "export_inside_0_128": true,
+  "elements": 19,
+  "groups": [
+    "base",
+    "accent"
+  ],
+  "masks": [
+    "left-shoulder-gap",
+    "right-shoulder-gap"
+  ],
+  "corrections_logged": 10,
+  "rules": {
+    "reference_ink": "green below the crop's midpoint (local background to full ink)",
+    "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",
+    "trace_ink": "black-edition render on the crop's own background; green below the midpoint between that background and Charcoal",
+    "trace_red": "red-black render on the red crop's background; redness above the midpoint between that background and Pillar Red",
+    "4x_reference": "reference channel upsampled 4x (bilinear, 1.5 px Gaussian) and thresholded with the same midpoint",
+    "edge_distance": "boundary pixels of each 4x mask; distance transform to the other mask's boundary; reported in source px"
+  }
+}

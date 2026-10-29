@@ -3,14 +3,14 @@
   <title>Voting</title>
   <desc>Oath &amp; Action Civic Line CL-001 Voting. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="30.311" y="66.564" width="67.075" height="24.248" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="30.311,66.564 43.651,51.766 59.321,51.766" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="83.057,51.766 84.047,51.766 97.387,66.564" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="52.79" y1="59.126" x2="72.105" y2="37.374" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="73.563" y1="56.226" x2="70.989" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="49.744" y1="59.126" x2="77.71" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="30.3113" y="66.5637" width="67.0753" height="24.2479" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="30.3113,66.5637 43.6513,51.7664 59.321,51.7664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="83.0571,51.7664 84.0466,51.7664 97.3866,66.5637" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.7899" y1="59.126" x2="72.1054" y2="37.3736" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="73.5627" y1="56.226" x2="70.9892" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.7437" y1="59.126" x2="77.7104" y2="59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="71.155,38.446 72.105,37.374 83.125,45.455 73.563,56.226" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <polyline points="71.155,38.4459 72.1054,37.3736 83.1254,45.4546 73.5627,56.226" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
 </svg>

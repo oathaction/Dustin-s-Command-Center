@@ -1,0 +1,29 @@
+{
+  "id": "R-50",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Drew every stroke at W 5.5; the sheet's strokes measure 4.4 to 4.6 px on the map and rules, 4.75 on the card frames and 5.0 on the brace",
+     "why": "DR-03: one line weight. Strokes grow evenly about the sheet's centrelines, except where noted below; area ratio 1.17 follows from this."},
+    {"what": "Gave the four cards one size, 37.87 x 40.3 px (sheet widths 37.6 to 38.18), centred 50.79 px apart (sheet 50.7 to 50.91), with rx 1.5 so the outer corners keep the sheet's r 4.25 and the inner corners stay square",
+     "why": "DR-03 equal repeats and even spacing."},
+    {"what": "Rules: one length, 21.3 px end to end (sheet 20.8 to 21.6), centred on each card (moves up to 0.3 px); rules and lower marks on one 9.3 px rhythm at y 21.9, 31.2, 40.5",
+     "why": "DR-03 equal repeats. Rule ends keep the sheet's outer ends, so the gap to the frame stays as drawn."},
+    {"what": "Dots in cards 1, 2 and 4: r 2.75, centred on each card (sheet 5.1 to 6.0 px across, up to 0.2 px off centre)",
+     "why": "DR-03 equal repeats."},
+    {"element": "card-3-mark", "what": "Kept card 3's lower mark as a short dash, 13.4 px end to end, its left end aligned with the rules (moved 0.6 px)",
+     "why": "Both sheets draw a dash in card 3 where the other cards have a dot. The catalogue's 'small lower mark' covers both."},
+    {"element": "brace", "what": "Brace symmetric about x 105.1: hooks at x 29.7 and 180.5 rising to y 60, corners r 5.65 (outer r 8.4 as drawn), bar at y 66.93; stem x 104.85 -> 105.1, from y 62.4 to 74.1",
+     "why": "DR-03 symmetry; the sheet's hooks, corners and stem agree within 0.3 px. The stem rises 4.5 px and drops 7.2 px as drawn and ends 2.5 px clear of the map."},
+    {"element": "check", "what": "Made the check a right angle with its bisector vertical: vertex (100.27, 102.53) from the arm-line intersection, arms 8.07 and 15.14 px at 45 degrees (sheet 46.5 and 47.4 degrees, 86 degrees between them)",
+     "why": "DR-03 right angle where plainly meant; ends move up to 0.63 px."},
+    {"element": "map", "what": "Map drawn as one closed path on the sheet's centreline (medial axis ordered around the outline, smoothed over 1.2 px), with sharp turns at the north-west corner, both ends of the northern-border step, the Great Lakes notch, the Florida tip and the Texas point; the northern border west of the step is one straight line",
+     "why": "DR-03: cleaner line, same silhouette. The hand wobble is gone; every drawn bump stays (Maine, the Arizona border step, the Louisiana hump)."},
+    {"element": "map", "what": "Closed the pinch where the two halves of the northern border meet at x 104 (sheet stroke thins to 2.1 px there); the step now runs at full weight",
+     "why": "DR-03 one line weight. This is the largest edge difference, 2.0 px."},
+    {"element": "map", "what": "Florida drawn as a narrow V: the east coast straight down at x 124.6 to the tip (124.6, 118.13), the west coast back up to the Gulf; the two coasts merge into one stroke as on the sheet",
+     "why": "The sheet's peninsula is one 6.3 px stroke whose lower-left side slants into the Gulf coast. The tip keeps the sheet's ink bottom (120.9)."},
+    {"element": "map", "what": "Texas point at (100.05, 118.5), keeping the sheet's ink bottom at 121.25",
+     "why": "The medial axis stops short of the V's vertex (117.9); the ink bottom fixes it."}
+  ],
+  "notes": "Kept as drawn: four cards; card 3's dash; the brace stem extending both above and below the bar; the gap between the stem and the map; the small notch inside the Maine loop (W makes it about 1 px narrower and 1 px shorter than the sheet's, still open); the step in the northern border. The red sheet places red on the brace with its stem and on the check only, as the catalogue says. No sheet disagreement."
+}

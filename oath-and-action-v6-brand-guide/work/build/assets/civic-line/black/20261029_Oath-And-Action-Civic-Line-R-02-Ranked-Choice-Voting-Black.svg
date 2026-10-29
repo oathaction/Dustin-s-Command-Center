@@ -3,17 +3,17 @@
   <title>Ranked-Choice Voting</title>
   <desc>Oath &amp; Action Civic Line R-02 Ranked-Choice Voting. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="35.336" y="40.542" width="57.079" height="47.029" rx="0.975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="60.125" y1="50.304" x2="84.861" y2="50.304" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="60.125" y1="63.844" x2="84.861" y2="63.844" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="60.125" y1="77.384" x2="84.861" y2="77.384" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M45.82 59.224 H43.139 A0.731 0.731 0 0 0 42.408 59.955 V68.177 A0.731 0.731 0 0 0 43.139 68.908 H52.497 A0.731 0.731 0 0 0 53.229 68.177 V59.955 A0.731 0.731 0 0 0 52.497 59.224 H50.012" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M45.82 72.763 H43.139 A0.731 0.731 0 0 0 42.408 73.494 V81.717 A0.731 0.731 0 0 0 43.139 82.448 H46.015" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M50.012 72.763 H52.497 A0.731 0.731 0 0 1 53.229 73.494 V81.717 A0.731 0.731 0 0 1 52.497 82.448 H49.622" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M46.308 62.538 C46.405 61.758 47.039 61.417 47.818 61.417 C48.745 61.417 49.329 61.855 49.329 62.733 C49.329 63.415 48.988 63.951 48.452 64.39 L46.308 66.729 H49.427" fill="none" stroke="#121212" stroke-width="1.2672" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M46.161 75.649 V74.966 H48.355 Q49.086 74.966 49.086 75.649 V76.477 Q49.086 77.403 48.16 77.403 H47.38 M48.16 77.403 Q49.329 77.403 49.329 78.476 V79.304 Q49.329 80.23 48.355 80.23 H46.308 Q46.015 80.23 46.015 79.889 V79.402" fill="none" stroke="#121212" stroke-width="1.2672" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="35.3363" y="40.5417" width="57.0788" height="47.0287" rx="0.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="60.1252" y1="50.3042" x2="84.8605" y2="50.3042" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="60.1252" y1="63.844" x2="84.8605" y2="63.844" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="60.1252" y1="77.3839" x2="84.8605" y2="77.3839" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45.8202 59.2235 H43.1395 A0.731096 0.731096 0 0 0 42.4084 59.9546 V68.177 A0.731096 0.731096 0 0 0 43.1395 68.9081 H52.4975 A0.731096 0.731096 0 0 0 53.2286 68.177 V59.9546 A0.731096 0.731096 0 0 0 52.4975 59.2235 H50.0118" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M45.8202 72.7634 H43.1395 A0.731096 0.731096 0 0 0 42.4084 73.4945 V81.7168 A0.731096 0.731096 0 0 0 43.1395 82.4479 H46.0151" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M50.0118 72.7634 H52.4975 A0.731096 0.731096 0 0 1 53.2286 73.4945 V81.7168 A0.731096 0.731096 0 0 1 52.4975 82.4479 H49.6218" fill="none" stroke="#121212" stroke-width="1.9496" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M46.3076 62.5378 C46.405 61.758 47.0387 61.4168 47.8185 61.4168 C48.7445 61.4168 49.3294 61.8555 49.3294 62.7328 C49.3294 63.4151 48.9882 63.9513 48.4521 64.3899 L46.3076 66.7294 H49.4269" fill="none" stroke="#121212" stroke-width="1.2672" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M46.1613 75.6487 V74.9664 H48.3546 Q49.0857 74.9664 49.0857 75.6487 V76.4773 Q49.0857 77.4034 48.1597 77.4034 H47.3798 M48.1597 77.4034 Q49.3294 77.4034 49.3294 78.4756 V79.3042 Q49.3294 80.2303 48.3546 80.2303 H46.3076 Q46.0151 80.2303 46.0151 79.8891 V79.4017" fill="none" stroke="#121212" stroke-width="1.2672" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M42.896 44.709 H52.741 A1.462 1.462 0 0 1 54.203 46.171 V54.876 A1.462 1.462 0 0 1 52.741 56.338 H42.896 A1.462 1.462 0 0 1 41.434 54.876 V46.171 A1.462 1.462 0 0 1 42.896 44.709 Z M46.99 46.844 H48.793 V53.984 H47.063 V49.037 H45.674 V48.16 Z" fill="#121212" fill-rule="evenodd"/>
+    <path d="M42.8958 44.7089 H52.7412 A1.462193 1.462193 0 0 1 54.2034 46.1711 V54.876 A1.462193 1.462193 0 0 1 52.7412 56.3382 H42.8958 A1.462193 1.462193 0 0 1 41.4336 54.876 V46.1711 A1.462193 1.462193 0 0 1 42.8958 44.7089 Z M46.9899 46.8437 H48.7933 V53.984 H47.063 V49.037 H45.6739 V48.1597 Z" fill="#121212" fill-rule="evenodd"/>
   </g>
 </svg>

@@ -5,16 +5,16 @@
   <defs>
     <mask id="cl-057-person-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <circle cx="80.376" cy="42.642" r="4.357" fill="#000000"/>
-      <circle cx="80.376" cy="56.933" r="8.432" fill="#000000"/>
-      <rect x="71.945" y="56.933" width="16.864" height="2.651" fill="#000000"/>
-      <rect x="69.605" y="59.584" width="21.933" height="7.798" fill="#FFFFFF"/>
+      <circle cx="80.3765" cy="42.6424" r="4.3573" fill="#000000"/>
+      <circle cx="80.3765" cy="56.9328" r="8.4319" fill="#000000"/>
+      <rect x="71.9445" y="56.9328" width="16.8639" height="2.6514" fill="#000000"/>
+      <rect x="69.605" y="59.5842" width="21.9328" height="7.7983" fill="#FFFFFF"/>
     </mask>
   </defs>
   <g id="base">
-    <path d="M95.778 66.437 A32.3 32.3 0 1 1 63.591 31.432 V63.732 L90.207 82.029" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+    <path d="M95.7782 66.437 A32.299673 32.299673 0 1 1 63.5906 31.4323 V63.7319 L90.2072 82.0287" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
   </g>
   <g id="accent">
-    <path d="M68.172 61.412 V31.583 A1.34 1.34 0 0 1 69.62 30.248 A31.427 31.427 0 0 1 98.532 61.407 A1.34 1.34 0 0 1 97.192 62.752 H69.512 A1.34 1.34 0 0 1 68.172 61.412 Z" fill="#E63946" mask="url(#cl-057-person-cut)"/>
+    <path d="M68.1721 61.4119 V31.5834 A1.340356 1.340356 0 0 1 69.6197 30.2479 A31.427223 31.427223 0 0 1 98.5319 61.4071 A1.340325 1.340325 0 0 1 97.1916 62.7523 H69.5124 A1.340343 1.340343 0 0 1 68.1721 61.4119 Z" fill="#E63946" mask="url(#cl-057-person-cut)"/>
   </g>
 </svg>

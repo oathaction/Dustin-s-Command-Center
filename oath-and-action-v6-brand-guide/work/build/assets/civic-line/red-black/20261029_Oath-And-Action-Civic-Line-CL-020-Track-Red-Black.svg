@@ -3,11 +3,11 @@
   <title>Track</title>
   <desc>Oath &amp; Action Civic Line CL-020 Track. Traced vector reconstruction from the Civic Line reference sheet 01, row 4, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="accent">
-    <path d="M88.521 81.005 L100.842 94.014 A2.993 2.993 0 0 0 105.19 89.89 L94.725 78.841" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <path d="M34.474 51.23 L39.601 42.876 A6.019 6.019 0 1 0 29.346 42.876 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M88.5208 81.0052 L100.8422 94.0138 A2.995999 2.995999 0 0 0 105.1898 89.8904 L94.7254 78.8412" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M34.4736 51.2303 L39.601 42.8763 A6.019332 6.019332 0 1 0 29.3462 42.8763 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="base">
-    <path d="M41.399 53.584 H59.438 A6.824 6.824 0 0 1 59.438 67.256 H29.473 A7.306 7.306 0 0 0 29.473 81.878 H70.273" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="84.748" cy="70.37" r="11.283" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.3995 53.5844 H59.438 A6.835699 6.835699 0 0 1 59.438 67.2558 H29.4729 A7.3109 7.3109 0 0 0 29.4729 81.8776 H70.2728" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="84.7484" cy="70.3703" r="11.2832" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

@@ -1,9 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" data-id="R-49" viewBox="0 0 239 107">
   <!-- R-49 Cross-Party Civic Work. Crop 239 x 107 px; ink box x 8..231, y 8..99.
        Construction: two outline people stand at left and right with hollow heads and rounded shoulders. A small bridge spans between their lower/middle bodies, with a central peaked/arched structural contour and short vertical supports. One broad shallow connecting arc rises over the people and bridge, ending near the outside heads/shoulders.
-       Red: the overhead connecting arc. People and bridge stay black. Preserve the open gap beneath the arc and the shared bridge between the two figures. -->
+       Red: the overhead connecting arc. People and bridge stay black. Preserve the open gap beneath the arc and the shared bridge between the two figures.
+       One axis, x 118.75, for the people, the bridge and the arc. Both bodies share one half-ellipse
+       (rx 27.96, ry 22.88) and both heads one circle (r 12.18), each head centred over its body.
+       The shoulders stand in front of each head with a gap, as drawn: a 3.8 px gap on the left, which
+       leaves the thin bar under the left head, and a 1.5 px gap under the right figure's collar.
+       The right figure keeps its collar line under the head and its hooked right arm. -->
+  <defs>
+    <mask id="left-shoulder-gap">
+      <path id="left-shoulder-gap-cut" data-w="13.1" d="M10.34 83.15 A27.96 22.88 0 0 1 38.3 60.27 A27.96 22.88 0 0 1 66.26 83.15"/>
+    </mask>
+    <mask id="right-shoulder-gap">
+      <path id="right-shoulder-gap-cut" class="butt" data-w="8.5" d="M188.2 62.12 A27.96 22.88 0 0 1 199.2 60.27 A27.96 22.88 0 0 1 210.2 62.12"/>
+    </mask>
+  </defs>
   <g data-role="base">
+    <circle id="head-left" cx="38.3" cy="42.69" r="12.18" mask="url(#left-shoulder-gap)"/>
+    <path id="body-left" d="M10.34 96.37 V83.15 A27.96 22.88 0 0 1 38.3 60.27 A27.96 22.88 0 0 1 66.26 83.15 V96.37"/>
+    <line id="arm-left-1" x1="24.22" y1="84.45" x2="24.22" y2="96.37"/>
+    <line id="arm-left-2" x1="52.38" y1="84.45" x2="52.38" y2="96.37"/>
+    <circle id="head-right" cx="199.2" cy="42.69" r="12.18" mask="url(#right-shoulder-gap)"/>
+    <path id="collar-right" d="M180.83 65.9 V64.17 A9.3 9.3 0 0 1 190.13 54.87 H208.27 A9.3 9.3 0 0 1 217.57 64.17 V65.9" mask="url(#right-shoulder-gap)"/>
+    <path id="body-right" d="M171.24 96.37 V83.15 A27.96 22.88 0 0 1 199.2 60.27 A27.96 22.88 0 0 1 227.16 83.15 V96.37"/>
+    <line id="arm-right-1" x1="185.12" y1="84.45" x2="185.12" y2="96.37"/>
+    <polyline id="arm-right-2" points="213.28,96.37 213.28,84.45 219.76,84.45"/>
+    <polyline id="roof" points="75.2,69.31 118.75,46.45 162.3,69.31"/>
+    <line id="post-1" x1="82.57" y1="65.44" x2="82.57" y2="84.05"/>
+    <line id="post-2" x1="98.35" y1="57.16" x2="98.35" y2="84.05"/>
+    <line id="post-3" x1="118.75" y1="46.45" x2="118.75" y2="84.05"/>
+    <line id="post-4" x1="139.15" y1="57.16" x2="139.15" y2="84.05"/>
+    <line id="post-5" x1="154.93" y1="65.44" x2="154.93" y2="84.05"/>
+    <line id="deck" x1="76.75" y1="84.05" x2="160.75" y2="84.05"/>
+    <line id="leg-left" x1="80.45" y1="84.05" x2="80.45" y2="96.37"/>
+    <line id="leg-right" x1="157.05" y1="84.05" x2="157.05" y2="96.37"/>
   </g>
   <g data-role="accent">
+    <path id="arc" d="M60.02 28.77 A102.27 102.27 0 0 1 118.75 10.23 A102.27 102.27 0 0 1 177.48 28.77"/>
   </g>
 </svg>

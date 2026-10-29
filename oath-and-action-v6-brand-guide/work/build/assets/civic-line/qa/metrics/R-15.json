@@ -1,12 +1,12 @@
 {
   "id": "R-15",
   "label": "Watchdog Remedies",
-  "built": "2026-10-29T06:26:25+00:00",
+  "built": "2026-10-29T07:52:42+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
   "silhouette_iou_1x": 0.9564,
-  "silhouette_iou_4x": 0.9488,
+  "silhouette_iou_4x": 0.9489,
   "red_iou_1x": 0.8736,
   "red_iou_4x": 0.8483,
   "edge_distance_px": {
@@ -49,8 +49,10 @@
     "iou": 0.9564
   },
   "ink_area_ratio_trace_over_reference": 0.9734,
+  "bake_check_iou_4x": 0.9999,
+  "bake_check_iou_4x_raw": 0.9998,
   "bake_check_iou_1x": 0.9998,
-  "bake_check_iou_4x": 0.9998,
+  "bake_check_max_diff_levels_4x": 51,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     19.978,

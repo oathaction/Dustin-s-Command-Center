@@ -3,20 +3,20 @@
   <title>Automatic Recession Aid</title>
   <desc>Oath &amp; Action Civic Line R-26 Automatic Recession Aid. Traced vector reconstruction from the Civic Line reference sheet 05, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <polyline points="22.913,73.212 42.165,56.445 61.417,73.212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="26.753" y1="69.868" x2="26.753" y2="87.614" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="57.576" y1="69.868" x2="57.576" y2="87.614" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.617" y1="72.773" x2="37.617" y2="77.223" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="46.712" y1="72.773" x2="46.712" y2="77.223" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="75.468" cy="77.905" rx="8.178" ry="3.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M67.29 77.905 L67.29 84.422 A8.178 3.412 0 0 0 75.468 87.834 A8.178 3.412 0 0 0 83.647 84.422 L83.647 77.905" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="97.206" cy="67.889" rx="8.178" ry="3.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.028 67.889 L89.028 84.422 A8.178 3.412 0 0 0 97.206 87.834 A8.178 3.412 0 0 0 105.385 84.422 L105.385 67.889" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.028 73.402 A8.178 3.412 0 0 0 97.206 76.814 A8.178 3.412 0 0 0 105.385 73.402" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.028 78.909 A8.178 3.412 0 0 0 97.206 82.321 A8.178 3.412 0 0 0 105.385 78.909" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="22.9126,73.2118 42.1647,56.4454 61.4168,73.2118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.7533" y1="69.8682" x2="26.7533" y2="87.6143" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.5761" y1="69.8682" x2="57.5761" y2="87.6143" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.6173" y1="72.7731" x2="37.6173" y2="77.223" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46.7121" y1="72.7731" x2="46.7121" y2="77.223" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="75.4684" cy="77.9054" rx="8.1785" ry="3.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M67.2899 77.9054 L67.2899 84.4219 A8.178452 3.41175 0 0 0 75.4684 87.8336 A8.178452 3.41175 0 0 0 83.6469 84.4219 L83.6469 77.9054" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="97.2062" cy="67.8894" rx="8.1785" ry="3.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.0277 67.8894 L89.0277 84.4219 A8.178452 3.41175 0 0 0 97.2062 87.8336 A8.178452 3.41175 0 0 0 105.3847 84.4219 L105.3847 67.8894" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.0277 73.4018 A8.178512 3.411775 0 0 0 97.2062 76.8136 A8.178512 3.411775 0 0 0 105.3847 73.4018" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.0277 78.9094 A8.178512 3.411775 0 0 0 97.2062 82.3212 A8.178512 3.411775 0 0 0 105.3847 78.9094" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="33.601,39.567 50.319,55.256 61.037,46.746 78.802,64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="71.394,64.195 78.802,64.195 78.802,56.787" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="33.6012,39.5669 50.3188,55.2561 61.0366,46.7462 78.8022,64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="71.3938,64.195 78.8022,64.195 78.8022,56.7866" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

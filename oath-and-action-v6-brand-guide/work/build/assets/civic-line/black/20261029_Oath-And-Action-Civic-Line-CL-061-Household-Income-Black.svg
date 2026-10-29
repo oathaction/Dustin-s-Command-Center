@@ -3,13 +3,13 @@
   <title>Household Income</title>
   <desc>Oath &amp; Action Civic Line CL-061 Household Income. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <circle cx="40.542" cy="48.433" r="7.808" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M23.595 87.005 V72.018 A11.868 11.868 0 0 1 35.463 60.15 H41.507 A11.868 11.868 0 0 1 53.375 72.018 V87.005" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M73.821 57.786 V53.848 A1.024 1.024 0 0 1 74.845 52.824 H103.187 A1.024 1.024 0 0 1 104.21 53.848 V76.526 A1.024 1.024 0 0 1 103.187 77.55 H74.845 A1.024 1.024 0 0 1 73.821 76.526 V73.87" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="73.821,54.111 88.784,67.875 104.21,53.682" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="40.5417" cy="48.4326" r="7.8081" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.595 87.005 V72.0176 A11.868034 11.868034 0 0 1 35.463 60.1496 H41.5067 A11.868059 11.868059 0 0 1 53.3748 72.0176 V87.005" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M73.821 57.7857 V53.8476 A1.02354 1.02354 0 0 1 74.8445 52.824 H103.1866 A1.02354 1.02354 0 0 1 104.2101 53.8476 V76.5261 A1.023515 1.023515 0 0 1 103.1866 77.5496 H74.8445 A1.023515 1.023515 0 0 1 73.821 76.5261 V73.8697" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="73.821,54.1108 88.784,67.8748 104.2101,53.6818" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="57.908" y1="65.94" x2="73.504" y2="65.94" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="68.46,60.627 73.504,65.94 68.46,71.252" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.9076" y1="65.9398" x2="73.5042" y2="65.9398" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="68.4597,60.6272 73.5042,65.9398 68.4597,71.2524" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

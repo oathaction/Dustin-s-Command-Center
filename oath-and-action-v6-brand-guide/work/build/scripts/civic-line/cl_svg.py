@@ -44,9 +44,9 @@ class SourceError(Exception):
 
 # ------------------------------------------------------------------ numbers
 
-def fmt(v):
-    """Compact number: 3 decimals, no trailing zeros, no '-0'."""
-    s = f"{v:.3f}".rstrip("0").rstrip(".")
+def fmt(v, nd=4):
+    """Compact number: nd decimals (4 by default), no trailing zeros, no '-0'."""
+    s = f"{v:.{nd}f}".rstrip("0").rstrip(".")
     if s in ("-0", ""):
         s = "0"
     return s
@@ -142,34 +142,101 @@ def tokenize_path(d, what):
     return out
 
 
+ND = 4      # decimals for exported coordinates and lengths (0.0001 unit = 0.0002 source px)
+ND_R = 6    # decimals for arc radii
+
+
+def _half_chord(p0, p1, rx, ry, phi):
+    """Half the chord from p0 to p1 in the frame where the ellipse is a circle of radius rx."""
+    c, s = math.cos(math.radians(phi)), math.sin(math.radians(phi))
+    dx, dy = (p1[0] - p0[0]) / 2.0, (p1[1] - p0[1]) / 2.0
+    x1, y1 = c * dx + s * dy, -s * dx + c * dy
+    return math.hypot(x1, y1 * rx / ry)
+
+
+def arc_radii(p0, p1, rx, ry, phi, S, q0, q1):
+    """Output radii for an arc whose source runs p0 -> p1 and whose output, as a
+    renderer reads the rounded numbers, runs q0 -> q1.
+
+    An arc's centre sits off its chord by d = sqrt(r^2 - h^2), which is very
+    sensitive to rounding when h is close to r: a half circle whose rounded
+    chord comes out a hair shorter than its diameter gets its centre pushed
+    off the chord, and the arc shifts by up to a pixel. So the exporter keeps
+    the centre, not the radius: it measures d in the source and writes
+    r = sqrt(h_out^2 + (s d)^2) for the rounded chord. A source half circle
+    (d = 0, including radii a renderer would scale up) gets r rounded down to
+    at most half its chord, so renderers draw an exact half circle."""
+    rx, ry = abs(rx), abs(ry)
+    if rx == 0 or ry == 0:
+        return round(rx * S, ND_R), round(ry * S, ND_R)
+    h = _half_chord(p0, p1, rx, ry, phi)
+    if h == 0:
+        return round(rx * S, ND_R), round(ry * S, ND_R)
+    ho = _half_chord(q0, q1, rx, ry, phi)
+    if h >= rx * (1 - 1e-12):
+        r = math.floor(ho * 10 ** ND_R) / 10 ** ND_R
+    else:
+        d = math.sqrt(rx * rx - h * h) * S
+        r = round(math.sqrt(ho * ho + d * d), ND_R)
+    return r, round(r * ry / rx, ND_R)
+
+
 def transform_path(segs, X, Y, S):
-    """Bake the affine into path segments. Absolute coordinates go through X/Y,
-    relative ones are scaled by S; arc radii scale, rotation and flags stay.
-    A leading 'm' is absolute by the SVG rules."""
+    """Bake the affine into path segments and round the output.
+
+    Absolute coordinates go through X/Y, relative ones are scaled by S. A
+    leading 'm' is absolute by the SVG rules. The function tracks the current
+    point twice: in the source, and in the output as a renderer accumulates
+    the rounded numbers, so arc radii can be fitted to the chord the renderer
+    will actually see (see arc_radii). Arc rotation and flags stay."""
+    q = lambda v: round(v, ND)  # noqa: E731
     out = []
+    sx = sy = ox = oy = 0.0           # current point: source, output
+    ssx = ssy = osx = osy = 0.0       # subpath start: source, output
     for idx, (c, a) in enumerate(segs):
         u = c.upper()
         rel = c.islower() and not (idx == 0 and c == "m")
         if u == "Z":
             out.append((c, []))
+            sx, sy, ox, oy = ssx, ssy, osx, osy
             continue
-        if u == "H":
-            out.append((c, [a[0] * S if rel else X(a[0])]))
-            continue
-        if u == "V":
-            out.append((c, [a[0] * S if rel else Y(a[0])]))
+        if u in "HV":
+            if rel:
+                v = q(a[0] * S)
+                ns, no = (sx + a[0], ox + v) if u == "H" else (sy + a[0], oy + v)
+            else:
+                v = q(X(a[0]) if u == "H" else Y(a[0]))
+                ns, no = a[0], v
+            if u == "H":
+                sx, ox = ns, no
+            else:
+                sy, oy = ns, no
+            out.append((c, [v]))
             continue
         if u == "A":
             rx, ry, rot, la, sw, x, y = a
-            px, py = (x * S, y * S) if rel else (X(x), Y(y))
-            out.append((c, [rx * S, ry * S, rot, la, sw, px, py]))
+            if rel:
+                ex, ey = q(x * S), q(y * S)
+                tsx, tsy, tox, toy = sx + x, sy + y, ox + ex, oy + ey
+            else:
+                ex, ey = q(X(x)), q(Y(y))
+                tsx, tsy, tox, toy = x, y, ex, ey
+            rxo, ryo = arc_radii((sx, sy), (tsx, tsy), rx, ry, rot, S, (ox, oy), (tox, toy))
+            out.append((c, [rxo, ryo, rot, la, sw, ex, ey]))
+            sx, sy, ox, oy = tsx, tsy, tox, toy
             continue
         b = []
         for j in range(0, len(a), 2):
             if rel:
-                b += [a[j] * S, a[j + 1] * S]
+                b += [q(a[j] * S), q(a[j + 1] * S)]
             else:
-                b += [X(a[j]), Y(a[j + 1])]
+                b += [q(X(a[j])), q(Y(a[j + 1]))]
+        if rel:
+            sx, sy, ox, oy = sx + a[-2], sy + a[-1], ox + b[-2], oy + b[-1]
+        else:
+            sx, sy, ox, oy = a[-2], a[-1], b[-2], b[-1]
+        if u == "M":
+            ssx, ssy, osx, osy = sx, sy, ox, oy
         out.append((c, b))
     return out
 
@@ -179,7 +246,7 @@ def path_string(segs):
     for c, a in segs:
         if c.upper() == "A":
             rx, ry, rot, la, sw, x, y = a
-            parts.append(f"{c}{fmt(rx)} {fmt(ry)} {fmt(rot)} {int(la)} {int(sw)} {fmt(x)} {fmt(y)}")
+            parts.append(f"{c}{fmt(rx, ND_R)} {fmt(ry, ND_R)} {fmt(rot)} {int(la)} {int(sw)} {fmt(x)} {fmt(y)}")
         elif a:
             parts.append(c + " ".join(fmt(v) for v in a))
         else:

@@ -1,7 +1,7 @@
 {
   "id": "CL-069",
   "label": "Childcare",
-  "built": "2026-10-29T06:40:56+00:00",
+  "built": "2026-10-29T07:52:34+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,11 +49,13 @@
     "iou": 0.8648
   },
   "ink_area_ratio_trace_over_reference": 0.8832,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 0.9997,
-  "bake_check_iou_4x": 0.9996,
+  "bake_check_max_diff_levels_4x": 12,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    32.047,
+    32.046,
     30.102,
     95.69,
     97.874

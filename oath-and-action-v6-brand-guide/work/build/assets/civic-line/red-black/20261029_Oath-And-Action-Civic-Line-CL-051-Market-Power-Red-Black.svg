@@ -3,22 +3,22 @@
   <title>Market Power</title>
   <desc>Oath &amp; Action Civic Line CL-051 Market Power. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <line x1="21.353" y1="91.83" x2="106.696" y2="91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="26.787,91.83 26.787,43.642 58.01,43.642 58.01,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="32.855,43.642 32.855,35.692 45.966,35.692 45.966,43.642" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="39.947,91.83 39.947,83.739 44.918,83.739 44.918,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="64.526,91.83 64.526,65.253 79.694,65.253 79.694,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="70.58,71.945 73.407,71.945 73.407,75.332" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="70.555,79.402 73.382,79.402 73.382,82.789" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="86.074,91.83 86.074,73.373 101.013,73.373 101.013,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="92.171,79.402 94.998,79.402 94.998,82.789" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="21.3529" y1="91.8303" x2="106.6958" y2="91.8303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="26.7874,91.8303 26.7874,43.6415 58.0099,43.6415 58.0099,91.8303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="32.8555,43.6415 32.8555,35.6921 45.9664,35.6921 45.9664,43.6415" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="39.9471,91.8303 39.9471,83.7395 44.9185,83.7395 44.9185,91.8303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64.5264,91.8303 64.5264,65.2526 79.6941,65.2526 79.6941,91.8303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.5798,71.9445 73.4067,71.9445 73.4067,75.3319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.5555,79.4017 73.3824,79.4017 73.3824,82.7891" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="86.0741,91.8303 86.0741,73.3726 101.0128,73.3726 101.0128,91.8303" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="92.1714,79.4017 94.9983,79.4017 94.9983,82.7891" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <rect x="33.528" y="50.109" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
-    <rect x="45.323" y="50.109" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
-    <rect x="33.528" y="60.808" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
-    <rect x="45.323" y="60.808" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
-    <rect x="33.528" y="71.506" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
-    <rect x="45.323" y="71.506" width="5.946" height="5.946" rx="0.975" fill="#E63946"/>
+    <rect x="33.5281" y="50.1092" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
+    <rect x="45.323" y="50.1092" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
+    <rect x="33.5281" y="60.8076" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
+    <rect x="45.323" y="60.8076" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
+    <rect x="33.5281" y="71.5059" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
+    <rect x="45.323" y="71.5059" width="5.9462" height="5.9462" rx="0.9748" fill="#E63946"/>
   </g>
 </svg>

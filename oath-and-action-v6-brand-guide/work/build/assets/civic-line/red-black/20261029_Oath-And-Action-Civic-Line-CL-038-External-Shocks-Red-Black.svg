@@ -3,12 +3,12 @@
   <title>External Shocks</title>
   <desc>Oath &amp; Action Civic Line CL-038 External Shocks. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M71.574 30.75 C70.78 33.007 69.897 34.488 68.24 35.755 C65.667 37.725 62.304 38.514 59.228 39.299 C52 41.141 40.6 43.773 37.296 51.318 C36.418 53.311 36.277 55.768 36.925 57.869 C40.054 68.036 56.787 65.272 57.25 73.699 C57.342 75.395 56.631 77.067 55.529 78.334 C52.639 81.658 46.473 84.115 42.559 86.371 C39.167 88.321 35.941 90.573 32.899 93.029" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M87.161 30.867 C86.498 35.453 84.588 38.524 80.986 41.049 C78.992 42.447 76.999 43.339 74.708 44.134 C70.594 45.562 58.307 47.726 58.648 53.18 C58.756 54.866 59.969 56.133 61.349 56.947 C64.512 58.814 70.063 59.584 73.777 60.983" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M48.92 51.601 C48.057 53.321 47.95 54.34 48.618 56.172" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M80.669 82.18 L79.304 84.617 L80.718 86.956 L79.012 89.588 Q78.329 90.417 76.916 90.466 L73.017 90.612 Q72.042 90.709 71.311 91.44 L65.413 97.484" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M71.5741 30.7499 C70.7797 33.0066 69.8975 34.4882 68.2403 35.7555 C65.6669 37.7245 62.3039 38.5141 59.2284 39.2988 C52.0003 41.1412 40.6002 43.7731 37.2956 51.318 C36.4183 53.3114 36.277 55.7679 36.9252 57.8686 C40.0543 68.0356 56.7866 65.2721 57.2496 73.6992 C57.3422 75.3953 56.6306 77.0671 55.5291 78.3343 C52.6388 81.6583 46.4733 84.1148 42.5595 86.3714 C39.1672 88.321 35.9407 90.5728 32.8993 93.0292" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.161 30.8669 C86.4982 35.4533 84.5876 38.5239 80.9857 41.0486 C78.9923 42.4474 76.9988 43.3393 74.7081 44.1338 C70.5945 45.5618 58.3072 47.7259 58.6484 53.1798 C58.7556 54.8662 59.9692 56.1334 61.3486 56.9474 C64.5118 58.8141 70.0632 59.5842 73.7771 60.983" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.92 51.6007 C48.0573 53.3212 47.9501 54.3398 48.6178 56.1724" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80.6689 82.1798 L79.3042 84.6168 L80.7176 86.9563 L79.0118 89.5882 Q78.3294 90.4168 76.916 90.4655 L73.0168 90.6118 Q72.042 90.7092 71.3109 91.4403 L65.4134 97.484" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polyline points="73.114,79.991 65.75,76.209 72.807,75.478 69.639,67.348 76.185,71.36 80.523,57.24 84.861,71.36 91.406,67.348 88.238,75.478 95.296,76.209 87.931,79.991" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="73.1143,79.9914 65.7497,76.2092 72.8072,75.4782 69.6392,67.3484 76.1849,71.3597 80.5227,57.2398 84.8605,71.3597 91.4062,67.3484 88.2382,75.4782 95.2956,76.2092 87.9311,79.9914" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

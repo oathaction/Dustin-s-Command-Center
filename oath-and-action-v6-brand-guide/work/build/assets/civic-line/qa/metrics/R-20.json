@@ -1,7 +1,7 @@
 {
   "id": "R-20",
   "label": "Merger Enforcement",
-  "built": "2026-10-29T06:45:03+00:00",
+  "built": "2026-10-29T07:53:03+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.9482
   },
   "ink_area_ratio_trace_over_reference": 0.9871,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_iou_4x": 0.9998,
+  "bake_check_max_diff_levels_4x": 13,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     14.164,
-    35.208,
-    113.597,
-    92.78
+    35.207,
+    113.596,
+    92.779
   ],
   "export_inside_0_128": true,
   "elements": 21,

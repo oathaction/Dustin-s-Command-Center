@@ -5,21 +5,21 @@
   <defs>
     <mask id="r-35-x-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <line x1="87.717" y1="70.239" x2="96.714" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-      <line x1="96.714" y1="70.239" x2="87.717" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="87.7166" y1="70.2387" x2="96.714" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="96.714" y1="70.2387" x2="87.7166" y2="79.236" fill="none" stroke="#000000" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     </mask>
   </defs>
   <g id="base">
-    <circle cx="47.248" cy="44.86" r="5.381" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.514 64.892 V58.751 A9.265 7.535 0 0 0 47.248 51.216 A9.265 7.535 0 0 0 37.983 58.751 V58.931" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.231 64.892 L33.533 61.855 A2.924 2.924 0 0 1 36.457 58.931 H40.561 A2.924 2.924 0 0 1 43.486 61.855 L43.788 64.892" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M57.908 64.892 H28.055 A2.388 2.388 0 0 0 25.666 67.28 V68.435 A2.388 2.388 0 0 0 28.055 70.824 H59.613" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="29.975" y1="70.824" x2="29.975" y2="88.418" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="61.392" y1="75.259" x2="61.392" y2="88.418" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M91.294 60.588 A14.134 14.134 0 1 0 78.047 74.864" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
-    <polyline points="77.16,53.521 77.16,60.759 82.399,60.759" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="47.2482" cy="44.86" r="5.3808" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.5136 64.8919 V58.7508 A9.265407 7.53515 0 0 0 47.2482 51.2156 A9.265382 7.535129 0 0 0 37.9829 58.7508 V58.9311" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.2308 64.8919 L33.5329 61.8555 A2.924385 2.924385 0 0 1 36.4573 58.9311 H40.5612 A2.92436 2.92436 0 0 1 43.4855 61.8555 L43.7877 64.8919" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M57.9076 64.8919 H28.0546 A2.388243 2.388243 0 0 0 25.6664 67.2802 V68.4353 A2.388218 2.388218 0 0 0 28.0546 70.8235 H59.6134" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.975" y1="70.8235" x2="29.975" y2="88.4185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="61.3924" y1="75.2588" x2="61.3924" y2="88.4185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M91.2941 60.5882 A14.134456 14.134456 0 1 0 78.0467 74.864" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <polyline points="77.1597,53.521 77.1597,60.7588 82.3992,60.7588" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="92.215" cy="74.737" r="11.381" fill="#121212" mask="url(#r-35-x-cut)"/>
+    <circle cx="92.2153" cy="74.7373" r="11.3807" fill="#121212" mask="url(#r-35-x-cut)"/>
   </g>
 </svg>

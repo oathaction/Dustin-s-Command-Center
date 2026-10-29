@@ -3,18 +3,18 @@
   <title>Stock-Trading Ban</title>
   <desc>Oath &amp; Action Civic Line R-09 Stock-Trading Ban. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M29.21 73.017 V44.709 A4.094 4.094 0 0 0 33.304 40.615 H88.565" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M29.21 73.017 V79.792 A4.094 4.094 0 0 1 33.304 83.886 H43.529" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M98.922 45.089 V79.792 A4.094 4.094 0 0 0 94.828 83.886 H56.538" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="39.752" y1="46.98" x2="81.883" y2="46.98" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.366" y1="51.035" x2="35.366" y2="73.358" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="93.21" y1="51.035" x2="93.21" y2="73.309" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="39.694" y1="77.486" x2="50.402" y2="77.486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="64.244" y1="77.486" x2="89.037" y2="77.486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="43.593,68.757 47.282,68.543 53.38,59.516 58.346,65.365 64.463,56.884 67.217,60.393" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="79.938,63.561 83.608,67.509 84.836,67.509" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.2097 73.0168 V44.7089 A4.094134 4.094134 0 0 0 33.3039 40.6148 H88.5647" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.2097 73.0168 V79.7916 A4.094134 4.094134 0 0 1 33.3039 83.8857 H43.5294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98.9219 45.0891 V79.7916 A4.094134 4.094134 0 0 0 94.8277 83.8857 H56.538" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.7521" y1="46.9802" x2="81.8825" y2="46.9802" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.3655" y1="51.0353" x2="35.3655" y2="73.358" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.2096" y1="51.0353" x2="93.2096" y2="73.3092" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.6936" y1="77.4862" x2="50.4017" y2="77.4862" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.2437" y1="77.4862" x2="89.0375" y2="77.4862" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="43.5928,68.757 47.2824,68.5425 53.3797,59.516 58.3462,65.3647 64.463,56.884 67.2168,60.3933" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="79.9378,63.5613 83.6079,67.5092 84.8361,67.5092" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polygon points="93.629,40.8 97.294,40.8 48.671,87.151 45.006,87.151" fill="#121212" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="93.6287,40.8 97.294,40.8 48.6714,87.1513 45.0062,87.1513" fill="#121212" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

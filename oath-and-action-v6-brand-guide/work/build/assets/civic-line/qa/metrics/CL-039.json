@@ -1,7 +1,7 @@
 {
   "id": "CL-039",
   "label": "Feed Ranking",
-  "built": "2026-10-29T07:12:56+00:00",
+  "built": "2026-10-29T07:52:02+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,11 +49,13 @@
     "iou": 0.9159
   },
   "ink_area_ratio_trace_over_reference": 0.9675,
-  "bake_check_iou_1x": 0.9999,
   "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 0.9999,
+  "bake_check_max_diff_levels_4x": 7,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    25.935,
+    25.934,
     29.517,
     101.773,
     98.303

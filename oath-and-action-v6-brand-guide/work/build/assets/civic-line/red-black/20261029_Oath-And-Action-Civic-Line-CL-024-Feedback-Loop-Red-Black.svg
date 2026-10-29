@@ -3,13 +3,13 @@
   <title>Feedback Loop</title>
   <desc>Oath &amp; Action Civic Line CL-024 Feedback Loop. Traced vector reconstruction from the Civic Line reference sheet 01, row 4, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="27.994" y="55.412" width="18.521" height="18.521" rx="0.975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="81.173" y="55.422" width="18.521" height="18.521" rx="0.975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="27.9937" y="55.4121" width="18.521" height="18.521" rx="0.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="81.1734" y="55.4218" width="18.521" height="18.521" rx="0.9748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M39.289 49.763 A26.602 26.602 0 0 1 85.309 49.042 L86.469 50.158" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="78.32,49.7 86.469,50.158 87.795,43.588" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M86.376 78.934 A27.543 27.543 0 0 1 39.825 79.158" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="47.477,79.621 39.825,79.158 38.733,85.689" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39.2891 49.7632 A26.602004 26.602004 0 0 1 85.3089 49.0418 L86.4689 50.158" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="78.3197,49.6998 86.4689,50.158 87.7946,43.5879" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M86.3763 78.9338 A27.542693 27.542693 0 0 1 39.8252 79.158" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="47.4773,79.621 39.8252,79.158 38.7334,85.6891" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

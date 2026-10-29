@@ -3,21 +3,21 @@
   <title>Pricing Algorithms</title>
   <desc>Oath &amp; Action Civic Line CL-045 Pricing Algorithms. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <polygon points="21.109,89.637 21.109,56.397 31.091,46.088 36.179,46.088 46.161,56.397 46.161,89.637" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="49.866,54.666 56.055,47.672 61.953,47.526 71.457,59.175 69.849,90.222 47.916,89.364" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="33.635" y1="55.227" x2="37.291" y2="46.113" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="35.877,46.113 44.797,37.632 56.055,47.672" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="33.635" cy="55.227" r="2.681" fill="#121212"/>
-    <circle cx="58.98" cy="56.957" r="2.681" fill="#121212"/>
-    <line x1="91.83" y1="57.664" x2="91.83" y2="72.978" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M98.434 72.978 H84.885 A3.753 3.753 0 0 0 81.132 76.731 V81.839" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="102.553" cy="72.978" r="4.118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="81.132" cy="85.957" r="4.118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="21.1092,89.637 21.1092,56.3966 31.0911,46.0882 36.1795,46.0882 46.1613,56.3966 46.1613,89.637" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="49.8655,54.6664 56.0555,47.6723 61.9529,47.526 71.4571,59.1748 69.8487,90.2219 47.916,89.364" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.6353" y1="55.2269" x2="37.2908" y2="46.1126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="35.8773,46.1126 44.7966,37.6319 56.0555,47.6723" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="33.6353" cy="55.2269" r="2.6807" fill="#121212"/>
+    <circle cx="58.9798" cy="56.9571" r="2.6807" fill="#121212"/>
+    <line x1="91.8303" y1="57.6639" x2="91.8303" y2="72.9778" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98.4345 72.9778 H84.8849 A3.752971 3.752971 0 0 0 81.1319 76.7308 V81.8387" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="102.5529" cy="72.9778" r="4.1185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="81.1319" cy="85.9571" r="4.1185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="33.635" y1="64.731" x2="33.635" y2="66.778" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M37.388 68.582 A3.802 3.168 0 0 0 33.684 66.803 A3.412 3.046 0 0 0 30.272 69.849 A3.412 3.071 0 0 0 33.684 72.919 A3.607 3.071 0 0 1 37.291 75.99 A3.607 3.071 0 0 1 33.684 79.061 A3.802 3.168 0 0 1 30.077 77.257" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="33.635" y1="79.061" x2="33.635" y2="80.815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="91.83" cy="53.545" r="4.118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.6353" y1="64.7311" x2="33.6353" y2="66.7782" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.3882 68.5815 A3.801682 3.168068 0 0 0 33.684 66.8025 A3.411744 3.0462 0 0 0 30.2723 69.8487 A3.411752 3.070577 0 0 0 33.684 72.9193 A3.606746 3.070608 0 0 1 37.2908 75.9899 A3.606746 3.070608 0 0 1 33.684 79.0605 A3.801682 3.168068 0 0 1 30.0773 77.2571" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.6353" y1="79.0605" x2="33.6353" y2="80.8151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="91.8303" cy="53.5454" r="4.1185" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

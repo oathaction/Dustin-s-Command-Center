@@ -3,12 +3,12 @@
   <title>Reform</title>
   <desc>Oath &amp; Action Civic Line CL-072 Reform. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M56.982 94.511 V71.213 A18.034 18.034 0 0 0 38.948 53.18 H27.567" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M63.805 94.413 V84.553 A17.142 17.142 0 0 1 80.947 67.412 H87.39" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="94.009" cy="67.412" r="6.619" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.9815 94.5109 V71.2134 A18.033608 18.033608 0 0 0 38.9479 53.1798 H27.5672" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M63.805 94.4134 V84.5534 A17.141666 17.141666 0 0 1 80.9467 67.4118 H87.3901" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="94.0089" cy="67.4118" r="6.6188" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M63.245 65.462 V55.553 A15.095 15.095 0 0 1 78.339 40.459 H88.175" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="81.351,33.733 88.175,40.459 81.351,47.185" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M63.2445 65.4622 V55.5534 A15.094637 15.094637 0 0 1 78.3392 40.4588 H88.1748" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="81.3513,33.7328 88.1748,40.4588 81.3513,47.1849" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

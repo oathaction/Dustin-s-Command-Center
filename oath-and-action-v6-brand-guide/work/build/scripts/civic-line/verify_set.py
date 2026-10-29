@@ -193,7 +193,13 @@ def main():
             for p in [rb, bk] + [q for q, _ in pngs]:
                 if os.path.exists(p):
                     errs.append(f"{i}: {os.path.relpath(p, C.ASSETS)} exists without a source")
-        lm = st.get("last_metrics", {}) if has_src else {}
+        mj = C.read_json(os.path.join(C.QA, "metrics", f"{i}.json")) if has_src else None
+        lm = {}
+        if mj:  # qa/metrics is refreshed by every build, including build_all
+            ed = mj.get("edge_distance_px") or {}
+            lm = {"silhouette_iou_1x": mj["silhouette_iou_1x"], "red_iou_1x": mj["red_iou_1x"],
+                  "edge_mean_px": (ed.get("symmetric") or {}).get("mean"), "edge_p95_px": (ed.get("symmetric") or {}).get("p95"),
+                  "bake_4x": mj.get("bake_check_iou_4x")}
         per.append({"id": i, "label": r["label"], "sheet": r["sheet"], "row": r["row"], "column": r["column"],
                     "state": state, "tracer": st.get("tracer") if has_src else None,
                     "iterations": st.get("iterations", 0) if has_src else 0,

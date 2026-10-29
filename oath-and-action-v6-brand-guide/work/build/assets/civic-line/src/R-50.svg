@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-50" viewBox="0 0 211 129">
+  <!-- R-50 Popular-Vote Options. Crop 211 x 129 px; ink box x 8..203, y 8..121.
+       Construction: four small upright ballot/record cards align across the top, each with short black horizontal rules and a small lower mark. A broad collecting brace runs beneath all four. Below it sits a compact outline map of the contiguous United States, with a small check inside.
+       Red: the collecting brace and the check inside the US outline. Cards, their rules and the map perimeter stay black. Preserve four cards and the specific simplified mainland silhouette.
+       Drawn at W 5.5; the sheet's strokes run 4.4 to 5.0 px.
+       Cards: one size (37.87 x 40.3, rx 1.5: outer corners r 4.25 as drawn, square inner corners), evenly spaced 50.79 px apart, each with
+       two rules and a lower mark on one rhythm (y 21.9, 31.2, 40.5). Cards 1, 2 and 4 end in a dot;
+       card 3 ends in a short dash that starts under the rules, as drawn.
+       Brace: hooks up at both ends, a centre stem rising 4.5 px above the bar and dropping 7.2 px
+       below it, short of the map. Map: the sheet's centreline, smoothed, with sharp turns kept at the
+       north-west corner, the step in the northern border, the Great Lakes notch, the Florida tip and
+       the Texas point. Florida is a narrow V whose two coasts merge into one stroke. -->
+  <g data-role="base">
+    <rect id="card-1" x="10" y="10.8" width="37.87" height="40.3" rx="1.5"/>
+    <line id="card-1-rule-1" x1="21.03" y1="21.9" x2="36.83" y2="21.9"/>
+    <line id="card-1-rule-2" x1="21.03" y1="31.2" x2="36.83" y2="31.2"/>
+    <circle id="card-1-mark" class="fill" cx="28.93" cy="40.5" r="2.75"/>
+    <rect id="card-2" x="60.78" y="10.8" width="37.87" height="40.3" rx="1.5"/>
+    <line id="card-2-rule-1" x1="71.82" y1="21.9" x2="87.62" y2="21.9"/>
+    <line id="card-2-rule-2" x1="71.82" y1="31.2" x2="87.62" y2="31.2"/>
+    <circle id="card-2-mark" class="fill" cx="79.72" cy="40.5" r="2.75"/>
+    <rect id="card-3" x="111.57" y="10.8" width="37.87" height="40.3" rx="1.5"/>
+    <line id="card-3-rule-1" x1="122.61" y1="21.9" x2="138.41" y2="21.9"/>
+    <line id="card-3-rule-2" x1="122.61" y1="31.2" x2="138.41" y2="31.2"/>
+    <line id="card-3-mark" x1="122.61" y1="40.5" x2="130.49" y2="40.5"/>
+    <rect id="card-4" x="162.37" y="10.8" width="37.87" height="40.3" rx="1.5"/>
+    <line id="card-4-rule-1" x1="173.4" y1="21.9" x2="189.2" y2="21.9"/>
+    <line id="card-4-rule-2" x1="173.4" y1="31.2" x2="189.2" y2="31.2"/>
+    <circle id="card-4-mark" class="fill" cx="181.3" cy="40.5" r="2.75"/>
+    <path id="map" d="M71.2 77.4 L99.9 80.3 L102.6 82.4 C103.92 82.3 105.24 82.13 106.55 82.11 C107.87 82.1 109.19 82.13 110.5 82.3 C111.8 82.47 113.2 82.62 114.37 83.15 C115.54 83.68 116.55 84.6 117.49 85.47 C118.43 86.35 119.16 87.42 120 88.4 C121.07 87.69 122.14 86.99 123.2 86.27 C124.27 85.55 125.34 84.81 126.41 84.08 C127.49 83.35 128.61 82.69 129.63 81.89 C130.66 81.1 131.51 79.55 132.55 79.33 C133.59 79.11 135.23 79.77 135.87 80.59 C136.5 81.41 136.57 83.05 136.36 84.24 C136.16 85.43 135.23 86.58 134.62 87.72 C134.01 88.86 133.4 90.01 132.71 91.1 C132.01 92.19 130.92 93.08 130.42 94.24 C129.93 95.4 129.95 96.78 129.75 98.06 C129.55 99.33 129.7 100.75 129.22 101.89 C128.74 103.04 127.62 103.93 126.85 104.94 C126.08 105.96 125.35 106.98 124.6 108 L124.6 118.13 C123.84 116.92 123.26 115.55 122.33 114.51 C121.39 113.46 120.25 112.42 118.99 111.87 C117.74 111.33 116.2 111.15 114.81 111.25 C113.43 111.34 112.1 112.11 110.71 112.43 C109.32 112.74 107.78 112.64 106.49 113.13 C105.2 113.62 104.04 114.48 102.97 115.38 C101.89 116.27 101.02 117.46 100.05 118.5 C99.22 117.46 98.47 116.35 97.57 115.39 C96.67 114.42 95.76 113.36 94.63 112.7 C93.51 112.05 92.03 112.05 90.84 111.47 C89.66 110.89 88.74 109.77 87.54 109.23 C86.35 108.69 84.95 108.63 83.67 108.25 C82.39 107.87 81.12 107.47 79.89 106.97 C78.66 106.46 77.47 105.83 76.3 105.2 C75.12 104.57 73.91 103.97 72.84 103.2 C71.77 102.42 70.6 101.64 69.88 100.58 C69.16 99.51 68.89 98.1 68.52 96.83 C68.14 95.55 67.7 94.24 67.62 92.93 C67.55 91.62 67.82 90.28 68.08 88.98 C68.33 87.68 68.8 86.41 69.16 85.12 C69.52 83.84 69.91 82.56 70.25 81.28 C70.59 79.99 70.88 78.69 71.2 77.4 Z"/>
+  </g>
+  <g data-role="accent">
+    <path id="brace" d="M29.7 60 V61.28 A5.65 5.65 0 0 0 35.35 66.93 H174.85 A5.65 5.65 0 0 0 180.5 61.28 V60"/>
+    <line id="brace-stem" x1="105.1" y1="62.4" x2="105.1" y2="74.1"/>
+    <polyline id="check" points="94.56,96.82 100.27,102.53 110.98,91.82"/>
+  </g>
+</svg>

@@ -3,37 +3,37 @@
   <title>Proportional Elections</title>
   <desc>Oath &amp; Action Civic Line R-03 Proportional Elections. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <circle cx="40.337" cy="55.056" r="2.997" fill="#121212"/>
-    <circle cx="87.731" cy="55.056" r="2.997" fill="#121212"/>
-    <circle cx="47.078" cy="60.793" r="2.803" fill="#121212"/>
-    <circle cx="80.986" cy="60.793" r="2.803" fill="#121212"/>
-    <circle cx="33.728" cy="62.094" r="2.963" fill="#121212"/>
-    <circle cx="94.34" cy="62.094" r="2.963" fill="#121212"/>
-    <circle cx="41.95" cy="65.852" r="2.876" fill="#121212"/>
-    <circle cx="86.118" cy="65.852" r="2.876" fill="#121212"/>
-    <circle cx="51.513" cy="68.83" r="2.851" fill="#121212"/>
-    <circle cx="76.555" cy="68.83" r="2.851" fill="#121212"/>
-    <circle cx="29.405" cy="70.58" r="3.051" fill="#121212"/>
-    <circle cx="98.664" cy="70.58" r="3.051" fill="#121212"/>
-    <circle cx="38.3" cy="72.934" r="2.968" fill="#121212"/>
-    <circle cx="89.764" cy="72.934" r="2.968" fill="#121212"/>
-    <circle cx="47.078" cy="74.615" r="2.929" fill="#121212"/>
-    <circle cx="80.986" cy="74.615" r="2.929" fill="#121212"/>
-    <circle cx="27.46" cy="79.977" r="3.105" fill="#121212"/>
-    <circle cx="100.608" cy="79.977" r="3.105" fill="#121212"/>
-    <circle cx="36.677" cy="80.815" r="3.027" fill="#121212"/>
-    <circle cx="91.387" cy="80.815" r="3.027" fill="#121212"/>
-    <circle cx="45.874" cy="81.361" r="2.988" fill="#121212"/>
-    <circle cx="82.19" cy="81.361" r="2.988" fill="#121212"/>
+    <circle cx="40.337" cy="55.0563" r="2.9975" fill="#121212"/>
+    <circle cx="87.7313" cy="55.0563" r="2.9975" fill="#121212"/>
+    <circle cx="47.0776" cy="60.7929" r="2.8025" fill="#121212"/>
+    <circle cx="80.9857" cy="60.7929" r="2.8025" fill="#121212"/>
+    <circle cx="33.7279" cy="62.0943" r="2.9634" fill="#121212"/>
+    <circle cx="94.3403" cy="62.0943" r="2.9634" fill="#121212"/>
+    <circle cx="41.9503" cy="65.8521" r="2.8756" fill="#121212"/>
+    <circle cx="86.118" cy="65.8521" r="2.8756" fill="#121212"/>
+    <circle cx="51.5129" cy="68.8301" r="2.8513" fill="#121212"/>
+    <circle cx="76.5553" cy="68.8301" r="2.8513" fill="#121212"/>
+    <circle cx="29.4047" cy="70.5798" r="3.0511" fill="#121212"/>
+    <circle cx="98.6635" cy="70.5798" r="3.0511" fill="#121212"/>
+    <circle cx="38.2997" cy="72.934" r="2.9682" fill="#121212"/>
+    <circle cx="89.7637" cy="72.934" r="2.9682" fill="#121212"/>
+    <circle cx="47.0776" cy="74.6155" r="2.9292" fill="#121212"/>
+    <circle cx="80.9857" cy="74.6155" r="2.9292" fill="#121212"/>
+    <circle cx="27.46" cy="79.9768" r="3.1047" fill="#121212"/>
+    <circle cx="100.6082" cy="79.9768" r="3.1047" fill="#121212"/>
+    <circle cx="36.6766" cy="80.8151" r="3.0267" fill="#121212"/>
+    <circle cx="91.3867" cy="80.8151" r="3.0267" fill="#121212"/>
+    <circle cx="45.8738" cy="81.361" r="2.9877" fill="#121212"/>
+    <circle cx="82.1896" cy="81.361" r="2.9877" fill="#121212"/>
   </g>
   <g id="accent">
-    <circle cx="59.613" cy="46.917" r="3.29" fill="#E63946"/>
-    <circle cx="68.45" cy="46.917" r="3.29" fill="#E63946"/>
-    <circle cx="50.699" cy="49.115" r="3.051" fill="#E63946"/>
-    <circle cx="77.369" cy="49.115" r="3.051" fill="#E63946"/>
-    <circle cx="59.633" cy="55.168" r="3.275" fill="#E63946"/>
-    <circle cx="68.435" cy="55.168" r="3.275" fill="#E63946"/>
-    <circle cx="59.687" cy="64.102" r="3.222" fill="#E63946"/>
-    <circle cx="68.382" cy="64.102" r="3.222" fill="#E63946"/>
+    <circle cx="59.6134" cy="46.9168" r="3.2899" fill="#E63946"/>
+    <circle cx="68.4499" cy="46.9168" r="3.2899" fill="#E63946"/>
+    <circle cx="50.699" cy="49.115" r="3.0511" fill="#E63946"/>
+    <circle cx="77.3692" cy="49.115" r="3.0511" fill="#E63946"/>
+    <circle cx="59.6329" cy="55.1684" r="3.2753" fill="#E63946"/>
+    <circle cx="68.4353" cy="55.1684" r="3.2753" fill="#E63946"/>
+    <circle cx="59.6866" cy="64.1024" r="3.2217" fill="#E63946"/>
+    <circle cx="68.3817" cy="64.1024" r="3.2217" fill="#E63946"/>
   </g>
 </svg>

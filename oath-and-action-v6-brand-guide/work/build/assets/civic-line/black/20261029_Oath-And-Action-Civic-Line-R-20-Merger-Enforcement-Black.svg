@@ -5,32 +5,32 @@
   <defs>
     <mask id="r-20-lens-clear" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
-      <circle cx="93.351" cy="70.824" r="14.183" fill="#000000"/>
+      <circle cx="93.3509" cy="70.8235" r="14.1832" fill="#000000"/>
     </mask>
   </defs>
   <g id="base">
-    <path d="M41.127 46.849 A19.413 19.413 0 0 1 75.41 46.849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="25.959,86.566 25.959,52.098 49.364,52.098 49.364,86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="25.959,64.132 18.053,64.132 18.053,86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="15.504" y1="86.566" x2="51.937" y2="86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="66.671,86.566 66.671,52.098 95.486,52.098 95.486,55.865" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="63.82" y1="86.566" x2="95.071" y2="86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="32.158" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="32.158" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="32.158" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="40.006" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="40.006" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="40.006" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="73.153" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="73.153" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="73.153" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
-    <rect x="80.269" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212" mask="url(#r-20-lens-clear)"/>
-    <circle cx="81.034" cy="79.743" r="1.413" fill="#121212"/>
-    <path d="M106.135 81.151 L111.541 86.951 A2.671 2.671 0 0 1 111.409 90.724 A2.671 2.671 0 0 1 107.636 90.592 L102.226 84.792" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M41.1266 46.8486 A19.412914 19.412914 0 0 1 75.4099 46.8486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="25.9588,86.5664 25.9588,52.0978 49.3635,52.0978 49.3635,86.5664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="25.9588,64.1316 18.0533,64.1316 18.0533,86.5664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="15.5042" y1="86.5664" x2="51.937" y2="86.5664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.6709,86.5664 66.6709,52.0978 95.4857,52.0978 95.4857,55.8654" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.8197" y1="86.5664" x2="95.0714" y2="86.5664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32.1585" y="57.2252" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="32.1585" y="66.1933" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="32.1585" y="75.1613" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="40.0055" y="57.2252" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="40.0055" y="66.1933" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="40.0055" y="75.1613" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="73.1533" y="57.2252" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="73.1533" y="66.1933" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="73.1533" y="75.1613" width="3.1437" height="5.9462" rx="1.5743" fill="#121212"/>
+    <rect x="80.2692" y="57.2252" width="3.1437" height="5.9462" rx="1.5743" fill="#121212" mask="url(#r-20-lens-clear)"/>
+    <circle cx="81.0345" cy="79.7429" r="1.4134" fill="#121212"/>
+    <path d="M106.1353 81.1514 L111.5405 86.9514 A2.670947 2.670947 0 0 1 111.4089 90.7239 A2.670911 2.670911 0 0 1 107.6365 90.5923 L102.2264 84.7923" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="93.351" cy="70.824" r="10.469" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.482" y1="78.578" x2="103.323" y2="81.624" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M106.135 81.151 L105.726 80.718 A0.975 0.975 0 0 0 104.351 80.669 L101.871 82.984 A0.975 0.975 0 0 0 101.822 84.358 L102.226 84.792" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <circle cx="93.3509" cy="70.8235" r="10.4692" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.4815" y1="78.578" x2="103.323" y2="81.6242" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M106.1353 81.1514 L105.7259 80.7176 A0.974806 0.974806 0 0 0 104.3514 80.6689 L101.8706 82.984 A0.974806 0.974806 0 0 0 101.8219 84.3585 L102.2264 84.7923" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
 </svg>

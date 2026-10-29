@@ -1,0 +1,1623 @@
+{
+  "date": "20261029",
+  "fonts": {
+    "Inter-400": "work/extract/v5-polished/fonts/Inter-400-normal.ttf",
+    "Inter-600": "work/extract/v5-polished/fonts/Inter-600-normal.ttf",
+    "Inter-700": "work/extract/v5-polished/fonts/Inter-700-normal.ttf"
+  },
+  "text": "Inter outlines (fontTools), shaped in Chromium with kerning, contextual alternates off",
+  "sheets": {
+    "01": {
+      "measured": {
+        "rule": {
+          "x0": 45,
+          "x1": 1496,
+          "cy": 66.85
+        },
+        "wordmark": {
+          "x0": 49,
+          "x1": 292,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "title": {
+          "x0": 1158,
+          "x1": 1490,
+          "baseline": 46.0
+        },
+        "footer": {
+          "x0": 1301,
+          "x1": 1495,
+          "baseline": 999.0
+        },
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "cap": {
+              "x0": 106,
+              "x1": 168,
+              "baseline": 261.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "cap": {
+              "x0": 319,
+              "x1": 471,
+              "baseline": 262.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "cap": {
+              "x0": 592,
+              "x1": 709,
+              "baseline": 262.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "cap": {
+              "x0": 856,
+              "x1": 929,
+              "baseline": 262.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "cap": {
+              "x0": 1069,
+              "x1": 1215,
+              "baseline": 262.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 6,
+            "cap": {
+              "x0": 1348,
+              "x1": 1442,
+              "baseline": 262.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "cap": {
+              "x0": 57,
+              "x1": 220,
+              "baseline": 478.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "cap": {
+              "x0": 316,
+              "x1": 477,
+              "baseline": 479.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "cap": {
+              "x0": 598,
+              "x1": 704,
+              "baseline": 479.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "cap": {
+              "x0": 810,
+              "x1": 991,
+              "baseline": 479.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "cap": {
+              "x0": 1065,
+              "x1": 1241,
+              "baseline": 479.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 6,
+            "cap": {
+              "x0": 1337,
+              "x1": 1474,
+              "baseline": 480.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "cap": {
+              "x0": 49,
+              "x1": 229,
+              "baseline": 695.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "cap": {
+              "x0": 302,
+              "x1": 486,
+              "baseline": 696.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "cap": {
+              "x0": 575,
+              "x1": 725,
+              "baseline": 698.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "cap": {
+              "x0": 851,
+              "x1": 940,
+              "baseline": 697.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "cap": {
+              "x0": 1064,
+              "x1": 1231,
+              "baseline": 698.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 6,
+            "cap": {
+              "x0": 1340,
+              "x1": 1467,
+              "baseline": 699.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "cap": {
+              "x0": 104,
+              "x1": 173,
+              "baseline": 922.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "cap": {
+              "x0": 367,
+              "x1": 421,
+              "baseline": 923.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "cap": {
+              "x0": 607,
+              "x1": 692,
+              "baseline": 924.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "cap": {
+              "x0": 877,
+              "x1": 910,
+              "baseline": 924.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "cap": {
+              "x0": 1099,
+              "x1": 1188,
+              "baseline": 924.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 6,
+            "cap": {
+              "x0": 1327,
+              "x1": 1481,
+              "baseline": 925.0
+            }
+          }
+        ]
+      },
+      "caption_size_px": 21.359,
+      "caption_size_spread": [
+        20.8,
+        21.85
+      ],
+      "id_size_px": null,
+      "title_size_px": 21.073,
+      "editions": {
+        "red-black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Red-Black.svg",
+          "footer_size_px": 12.57,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-01-Participation-Black.svg",
+          "footer_size_px": 12.57,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        }
+      }
+    },
+    "02": {
+      "measured": {
+        "rule": {
+          "x0": 48,
+          "x1": 1489,
+          "cy": 67.14
+        },
+        "wordmark": {
+          "x0": 49,
+          "x1": 292,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "title": {
+          "x0": 1091,
+          "x1": 1488,
+          "baseline": 48.0
+        },
+        "footer": {
+          "x0": 1283,
+          "x1": 1488,
+          "baseline": 987.0
+        },
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "cap": {
+              "x0": 93,
+              "x1": 188,
+              "baseline": 263.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "cap": {
+              "x0": 312,
+              "x1": 478,
+              "baseline": 263.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "cap": {
+              "x0": 559,
+              "x1": 725,
+              "baseline": 263.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "cap": {
+              "x0": 842,
+              "x1": 955,
+              "baseline": 264.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "cap": {
+              "x0": 1069,
+              "x1": 1220,
+              "baseline": 263.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 6,
+            "cap": {
+              "x0": 1336,
+              "x1": 1463,
+              "baseline": 263.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "cap": {
+              "x0": 51,
+              "x1": 231,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "cap": {
+              "x0": 319,
+              "x1": 471,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "cap": {
+              "x0": 569,
+              "x1": 720,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "cap": {
+              "x0": 816,
+              "x1": 979,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "cap": {
+              "x0": 1053,
+              "x1": 1236,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 6,
+            "cap": {
+              "x0": 1295,
+              "x1": 1499,
+              "baseline": 474.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "cap": {
+              "x0": 43,
+              "x1": 239,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "cap": {
+              "x0": 319,
+              "x1": 476,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "cap": {
+              "x0": 578,
+              "x1": 709,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "cap": {
+              "x0": 822,
+              "x1": 973,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "cap": {
+              "x0": 1079,
+              "x1": 1211,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 6,
+            "cap": {
+              "x0": 1316,
+              "x1": 1481,
+              "baseline": 703.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "cap": {
+              "x0": 50,
+              "x1": 236,
+              "baseline": 926.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "cap": {
+              "x0": 330,
+              "x1": 459,
+              "baseline": 926.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "cap": {
+              "x0": 555,
+              "x1": 731,
+              "baseline": 926.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "cap": {
+              "x0": 817,
+              "x1": 975,
+              "baseline": 926.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "cap": {
+              "x0": 1090,
+              "x1": 1202,
+              "baseline": 926.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 6,
+            "cap": {
+              "x0": 1329,
+              "x1": 1471,
+              "baseline": 926.0
+            }
+          }
+        ]
+      },
+      "caption_size_px": 21.058,
+      "caption_size_spread": [
+        20.51,
+        21.85
+      ],
+      "id_size_px": null,
+      "title_size_px": 19.224,
+      "editions": {
+        "red-black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Red-Black.svg",
+          "footer_size_px": 13.283,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Black.svg",
+          "footer_size_px": 13.283,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        }
+      }
+    },
+    "03": {
+      "measured": {
+        "rule": {
+          "x0": 45,
+          "x1": 1492,
+          "cy": 66.08
+        },
+        "wordmark": {
+          "x0": 49,
+          "x1": 292,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "title": {
+          "x0": 1201,
+          "x1": 1486,
+          "baseline": 46.0
+        },
+        "footer": {
+          "x0": 1293,
+          "x1": 1491,
+          "baseline": 989.0
+        },
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "cap": {
+              "x0": 38,
+              "x1": 238,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "cap": {
+              "x0": 301,
+              "x1": 472,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "cap": {
+              "x0": 580,
+              "x1": 708,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "cap": {
+              "x0": 801,
+              "x1": 982,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "cap": {
+              "x0": 1070,
+              "x1": 1222,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 6,
+            "cap": {
+              "x0": 1342,
+              "x1": 1460,
+              "baseline": 266.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "cap": {
+              "x0": 86,
+              "x1": 197,
+              "baseline": 484.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "cap": {
+              "x0": 310,
+              "x1": 476,
+              "baseline": 485.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "cap": {
+              "x0": 583,
+              "x1": 695,
+              "baseline": 484.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "cap": {
+              "x0": 811,
+              "x1": 971,
+              "baseline": 485.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "cap": {
+              "x0": 1067,
+              "x1": 1221,
+              "baseline": 485.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 6,
+            "cap": {
+              "x0": 1322,
+              "x1": 1475,
+              "baseline": 485.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "cap": {
+              "x0": 57,
+              "x1": 228,
+              "baseline": 692.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "cap": {
+              "x0": 316,
+              "x1": 450,
+              "baseline": 693.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "cap": {
+              "x0": 566,
+              "x1": 708,
+              "baseline": 693.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "cap": {
+              "x0": 834,
+              "x1": 946,
+              "baseline": 694.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "cap": {
+              "x0": 1051,
+              "x1": 1239,
+              "baseline": 696.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 6,
+            "cap": {
+              "x0": 1308,
+              "x1": 1492,
+              "baseline": 696.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "cap": {
+              "x0": 91,
+              "x1": 189,
+              "baseline": 929.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "cap": {
+              "x0": 342,
+              "x1": 432,
+              "baseline": 929.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "cap": {
+              "x0": 596,
+              "x1": 683,
+              "baseline": 929.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "cap": {
+              "x0": 835,
+              "x1": 949,
+              "baseline": 929.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "cap": {
+              "x0": 1119,
+              "x1": 1172,
+              "baseline": 929.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 6,
+            "cap": {
+              "x0": 1368,
+              "x1": 1433,
+              "baseline": 929.0
+            }
+          }
+        ]
+      },
+      "caption_size_px": 19.899,
+      "caption_size_spread": [
+        19.14,
+        20.37
+      ],
+      "id_size_px": null,
+      "title_size_px": 20.197,
+      "editions": {
+        "red-black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Red-Black.svg",
+          "footer_size_px": 12.829,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.svg",
+          "footer_size_px": 12.829,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        }
+      }
+    },
+    "04": {
+      "measured": {
+        "rule": {
+          "x0": 45,
+          "x1": 1492,
+          "cy": 65.12
+        },
+        "wordmark": {
+          "x0": 49,
+          "x1": 293,
+          "cap_top": 26.0,
+          "baseline": 48.0
+        },
+        "title": {
+          "x0": 1249,
+          "x1": 1487,
+          "baseline": 45.0
+        },
+        "footer": {
+          "x0": 1308,
+          "x1": 1501,
+          "baseline": 1001.0
+        },
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "cap": {
+              "x0": 90,
+              "x1": 254,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 156,
+              "x1": 185,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "cap": {
+              "x0": 370,
+              "x1": 565,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 452,
+              "x1": 483,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "cap": {
+              "x0": 674,
+              "x1": 864,
+              "baseline": 240.0
+            },
+            "id": {
+              "x0": 753,
+              "x1": 784,
+              "baseline": 216.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "cap": {
+              "x0": 957,
+              "x1": 1179,
+              "baseline": 240.0
+            },
+            "id": {
+              "x0": 1052,
+              "x1": 1083,
+              "baseline": 216.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "cap": {
+              "x0": 1264,
+              "x1": 1468,
+              "baseline": 240.0
+            },
+            "id": {
+              "x0": 1352,
+              "x1": 1384,
+              "baseline": 216.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "cap": {
+              "x0": 89,
+              "x1": 254,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 156,
+              "x1": 188,
+              "baseline": 392.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "cap": {
+              "x0": 370,
+              "x1": 565,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 452,
+              "x1": 483,
+              "baseline": 393.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "cap": {
+              "x0": 695,
+              "x1": 842,
+              "baseline": 417.0
+            },
+            "id": {
+              "x0": 753,
+              "x1": 784,
+              "baseline": 394.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "cap": {
+              "x0": 987,
+              "x1": 1147,
+              "baseline": 418.0
+            },
+            "id": {
+              "x0": 1052,
+              "x1": 1083,
+              "baseline": 394.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "cap": {
+              "x0": 1270,
+              "x1": 1467,
+              "baseline": 418.0
+            },
+            "id": {
+              "x0": 1352,
+              "x1": 1384,
+              "baseline": 394.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "cap": {
+              "x0": 78,
+              "x1": 267,
+              "baseline": 593.0
+            },
+            "id": {
+              "x0": 156,
+              "x1": 185,
+              "baseline": 569.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "cap": {
+              "x0": 393,
+              "x1": 543,
+              "baseline": 594.0
+            },
+            "id": {
+              "x0": 452,
+              "x1": 483,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "cap": {
+              "x0": 662,
+              "x1": 875,
+              "baseline": 594.0
+            },
+            "id": {
+              "x0": 753,
+              "x1": 784,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "cap": {
+              "x0": 985,
+              "x1": 1150,
+              "baseline": 595.0
+            },
+            "id": {
+              "x0": 1052,
+              "x1": 1083,
+              "baseline": 571.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "cap": {
+              "x0": 1276,
+              "x1": 1459,
+              "baseline": 595.0
+            },
+            "id": {
+              "x0": 1352,
+              "x1": 1384,
+              "baseline": 571.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "cap": {
+              "x0": 79,
+              "x1": 264,
+              "baseline": 770.0
+            },
+            "id": {
+              "x0": 156,
+              "x1": 187,
+              "baseline": 746.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "cap": {
+              "x0": 414,
+              "x1": 521,
+              "baseline": 772.0
+            },
+            "id": {
+              "x0": 452,
+              "x1": 483,
+              "baseline": 748.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "cap": {
+              "x0": 659,
+              "x1": 879,
+              "baseline": 770.0
+            },
+            "id": {
+              "x0": 753,
+              "x1": 784,
+              "baseline": 746.5
+            }
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "cap": {
+              "x0": 987,
+              "x1": 1148,
+              "baseline": 773.0
+            },
+            "id": {
+              "x0": 1052,
+              "x1": 1083,
+              "baseline": 749.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "cap": {
+              "x0": 1275,
+              "x1": 1455,
+              "baseline": 773.0
+            },
+            "id": {
+              "x0": 1352,
+              "x1": 1383,
+              "baseline": 749.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 1,
+            "cap": {
+              "x0": 81,
+              "x1": 264,
+              "baseline": 959.0
+            },
+            "id": {
+              "x0": 156,
+              "x1": 185,
+              "baseline": 934.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 2,
+            "cap": {
+              "x0": 409,
+              "x1": 525,
+              "baseline": 958.0
+            },
+            "id": {
+              "x0": 452,
+              "x1": 483,
+              "baseline": 933.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 3,
+            "cap": {
+              "x0": 665,
+              "x1": 874,
+              "baseline": 958.0
+            },
+            "id": {
+              "x0": 753,
+              "x1": 784,
+              "baseline": 934.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 4,
+            "cap": {
+              "x0": 1021,
+              "x1": 1114,
+              "baseline": 959.0
+            },
+            "id": {
+              "x0": 1052,
+              "x1": 1083,
+              "baseline": 935.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 5,
+            "cap": {
+              "x0": 1300,
+              "x1": 1435,
+              "baseline": 959.0
+            },
+            "id": {
+              "x0": 1352,
+              "x1": 1383,
+              "baseline": 935.0
+            }
+          }
+        ]
+      },
+      "caption_size_px": 18.676,
+      "caption_size_spread": [
+        18.15,
+        19.29
+      ],
+      "id_size_px": 14.678,
+      "title_size_px": 20.589,
+      "editions": {
+        "red-black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Red-Black.svg",
+          "footer_size_px": 12.505,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 244
+        },
+        "black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Black.svg",
+          "footer_size_px": 12.505,
+          "missing_icons": [],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 244
+        }
+      }
+    },
+    "05": {
+      "measured": {
+        "rule": {
+          "x0": 45,
+          "x1": 1492,
+          "cy": 65.92
+        },
+        "wordmark": {
+          "x0": 49,
+          "x1": 292,
+          "cap_top": 27.0,
+          "baseline": 49.0
+        },
+        "title": {
+          "x0": 1250,
+          "x1": 1489,
+          "baseline": 46.0
+        },
+        "footer": {
+          "x0": 1303,
+          "x1": 1499,
+          "baseline": 1000.0
+        },
+        "cells": [
+          {
+            "row": 1,
+            "column": 1,
+            "cap": {
+              "x0": 58,
+              "x1": 277,
+              "baseline": 238.0
+            },
+            "id": {
+              "x0": 151,
+              "x1": 183,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "cap": {
+              "x0": 390,
+              "x1": 540,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 449,
+              "x1": 481,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 3,
+            "cap": {
+              "x0": 683,
+              "x1": 854,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 752,
+              "x1": 785,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 4,
+            "cap": {
+              "x0": 1014,
+              "x1": 1117,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 1049,
+              "x1": 1082,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 1,
+            "column": 5,
+            "cap": {
+              "x0": 1297,
+              "x1": 1449,
+              "baseline": 239.0
+            },
+            "id": {
+              "x0": 1354,
+              "x1": 1387,
+              "baseline": 215.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "cap": {
+              "x0": 94,
+              "x1": 243,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 153,
+              "x1": 181,
+              "baseline": 392.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "cap": {
+              "x0": 376,
+              "x1": 556,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 449,
+              "x1": 481,
+              "baseline": 393.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 3,
+            "cap": {
+              "x0": 684,
+              "x1": 850,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 752,
+              "x1": 784,
+              "baseline": 393.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 4,
+            "cap": {
+              "x0": 971,
+              "x1": 1179,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 1050,
+              "x1": 1083,
+              "baseline": 393.0
+            }
+          },
+          {
+            "row": 2,
+            "column": 5,
+            "cap": {
+              "x0": 1274,
+              "x1": 1470,
+              "baseline": 416.0
+            },
+            "id": {
+              "x0": 1354,
+              "x1": 1387,
+              "baseline": 393.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 1,
+            "cap": {
+              "x0": 91,
+              "x1": 244,
+              "baseline": 593.0
+            },
+            "id": {
+              "x0": 151,
+              "x1": 183,
+              "baseline": 569.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 2,
+            "cap": {
+              "x0": 414,
+              "x1": 520,
+              "baseline": 593.0
+            },
+            "id": {
+              "x0": 449,
+              "x1": 482,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 3,
+            "cap": {
+              "x0": 685,
+              "x1": 853,
+              "baseline": 593.0
+            },
+            "id": {
+              "x0": 752,
+              "x1": 785,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 4,
+            "cap": {
+              "x0": 981,
+              "x1": 1169,
+              "baseline": 593.0
+            },
+            "id": {
+              "x0": 1053,
+              "x1": 1086,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 3,
+            "column": 5,
+            "cap": {
+              "x0": 1290,
+              "x1": 1456,
+              "baseline": 594.0
+            },
+            "id": {
+              "x0": 1354,
+              "x1": 1387,
+              "baseline": 570.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 1,
+            "cap": {
+              "x0": 82,
+              "x1": 253,
+              "baseline": 773.0
+            },
+            "id": {
+              "x0": 152,
+              "x1": 181,
+              "baseline": 749.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 2,
+            "cap": {
+              "x0": 353,
+              "x1": 580,
+              "baseline": 775.0
+            },
+            "id": {
+              "x0": 449,
+              "x1": 482,
+              "baseline": 752.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 3,
+            "cap": {
+              "x0": 683,
+              "x1": 854,
+              "baseline": 776.0
+            },
+            "id": {
+              "x0": 752,
+              "x1": 785,
+              "baseline": 752.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 4,
+            "cap": {
+              "x0": 988,
+              "x1": 1156,
+              "baseline": 776.0
+            },
+            "id": {
+              "x0": 1053,
+              "x1": 1087,
+              "baseline": 752.0
+            }
+          },
+          {
+            "row": 4,
+            "column": 5,
+            "cap": {
+              "x0": 1277,
+              "x1": 1468,
+              "baseline": 776.0
+            },
+            "id": {
+              "x0": 1354,
+              "x1": 1387,
+              "baseline": 752.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 1,
+            "cap": {
+              "x0": 89,
+              "x1": 248,
+              "baseline": 960.0
+            },
+            "id": {
+              "x0": 149,
+              "x1": 183,
+              "baseline": 936.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 2,
+            "cap": {
+              "x0": 403,
+              "x1": 522,
+              "baseline": 960.0
+            },
+            "id": {
+              "x0": 449,
+              "x1": 482,
+              "baseline": 936.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 3,
+            "cap": {
+              "x0": 670,
+              "x1": 865,
+              "baseline": 959.0
+            },
+            "id": {
+              "x0": 752,
+              "x1": 785,
+              "baseline": 935.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 4,
+            "cap": {
+              "x0": 971,
+              "x1": 1174,
+              "baseline": 959.0
+            },
+            "id": {
+              "x0": 1053,
+              "x1": 1086,
+              "baseline": 935.0
+            }
+          },
+          {
+            "row": 5,
+            "column": 5,
+            "cap": {
+              "x0": 1280,
+              "x1": 1464,
+              "baseline": 960.0
+            },
+            "id": {
+              "x0": 1354,
+              "x1": 1387,
+              "baseline": 936.0
+            }
+          }
+        ]
+      },
+      "caption_size_px": 18.731,
+      "caption_size_spread": [
+        18.3,
+        19.83
+      ],
+      "id_size_px": 15.033,
+      "title_size_px": 20.686,
+      "editions": {
+        "red-black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red-Black.svg",
+          "footer_size_px": 12.7,
+          "missing_icons": [
+            "R-50"
+          ],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        },
+        "black": {
+          "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.svg",
+          "footer_size_px": 12.7,
+          "missing_icons": [
+            "R-50"
+          ],
+          "wordmark_scale": 0.22,
+          "wordmark_width_px": 215.23,
+          "source_wordmark_width_px": 243
+        }
+      }
+    }
+  }
+}

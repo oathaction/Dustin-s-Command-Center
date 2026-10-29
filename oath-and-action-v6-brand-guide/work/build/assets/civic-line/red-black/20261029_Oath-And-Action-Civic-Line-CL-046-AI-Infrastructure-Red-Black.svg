@@ -3,32 +3,32 @@
   <title>AI Infrastructure</title>
   <desc>Oath &amp; Action Civic Line CL-046 AI Infrastructure. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="19.379" y="40.201" width="36.691" height="13.525" rx="2.827" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="19.379" y="53.726" width="36.691" height="13.525" rx="2.827" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="19.379" y="67.251" width="36.691" height="13.525" rx="2.827" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="21.655" y1="80.571" x2="21.655" y2="89.345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="53.794" y1="80.571" x2="53.794" y2="89.345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="25.52" y1="47.477" x2="49.622" y2="47.477" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="25.52" y1="60.769" x2="36.121" y2="60.769" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="25.52" y1="74.294" x2="36.121" y2="74.294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="71.311" y="47.521" width="29.546" height="30.93" rx="4.143" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="79.119" y1="38.529" x2="79.119" y2="47.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="86.084" y1="38.529" x2="86.084" y2="47.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="93.049" y1="38.529" x2="93.049" y2="47.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="79.119" y1="78.451" x2="79.119" y2="87.444" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="86.084" y1="78.451" x2="86.084" y2="87.444" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="93.049" y1="78.451" x2="93.049" y2="87.444" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="63.245" y1="55.666" x2="71.311" y2="55.666" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="63.245" y1="62.986" x2="71.311" y2="62.986" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="63.245" y1="70.307" x2="71.311" y2="70.307" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.857" y1="55.666" x2="108.923" y2="55.666" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.857" y1="62.986" x2="108.923" y2="62.986" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.857" y1="70.307" x2="108.923" y2="70.307" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="19.379" y="40.2005" width="36.6911" height="13.5252" rx="2.8269" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="19.379" y="53.7257" width="36.6911" height="13.5252" rx="2.8269" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="19.379" y="67.2509" width="36.6911" height="13.5252" rx="2.8269" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="21.6551" y1="80.5714" x2="21.6551" y2="89.3445" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.7939" y1="80.5714" x2="53.7939" y2="89.3445" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.5202" y1="47.4773" x2="49.6218" y2="47.4773" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.5202" y1="60.7686" x2="36.121" y2="60.7686" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.5202" y1="74.2938" x2="36.121" y2="74.2938" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="71.3109" y="47.5212" width="29.5459" height="30.9301" rx="4.1429" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.119" y1="38.5287" x2="79.119" y2="47.5212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.0839" y1="38.5287" x2="86.0839" y2="47.5212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.0487" y1="38.5287" x2="93.0487" y2="47.5212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.119" y1="78.4513" x2="79.119" y2="87.4437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.0839" y1="78.4513" x2="86.0839" y2="87.4437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.0487" y1="78.4513" x2="93.0487" y2="87.4437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.2445" y1="55.6655" x2="71.3109" y2="55.6655" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.2445" y1="62.9862" x2="71.3109" y2="62.9862" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.2445" y1="70.3069" x2="71.3109" y2="70.3069" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.8568" y1="55.6655" x2="108.9232" y2="55.6655" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.8568" y1="62.9862" x2="108.9232" y2="62.9862" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.8568" y1="70.3069" x2="108.9232" y2="70.3069" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="49.622" cy="47.477" r="1.706" fill="#E63946"/>
-    <circle cx="49.622" cy="60.769" r="1.706" fill="#E63946"/>
-    <circle cx="49.622" cy="74.294" r="1.706" fill="#E63946"/>
-    <rect x="80.893" y="57.591" width="10.382" height="10.796" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="49.6218" cy="47.4773" r="1.7059" fill="#E63946"/>
+    <circle cx="49.6218" cy="60.7686" r="1.7059" fill="#E63946"/>
+    <circle cx="49.6218" cy="74.2938" r="1.7059" fill="#E63946"/>
+    <rect x="80.8931" y="57.5908" width="10.3815" height="10.7958" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

@@ -3,10 +3,10 @@
   <title>Political Hostility</title>
   <desc>Oath &amp; Action Civic Line CL-008 Political Hostility. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M55.008 45.113 A2.573 2.573 0 0 0 53.009 44.158 H27.177 A5.41 5.41 0 0 0 21.767 49.568 V67.514 A5.41 5.41 0 0 0 27.177 72.924 H29.912 L29.697 81.951 L38.948 72.924 H50.913 A5.41 5.41 0 0 0 56.324 67.514 V62.231" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M72.944 47.989 A2.573 2.573 0 0 1 74.942 47.034 H100.774 A5.41 5.41 0 0 1 106.184 52.444 V70.39 A5.41 5.41 0 0 1 100.774 75.8 H98.04 L98.254 84.826 L89.003 75.8 H77.038 A5.41 5.41 0 0 1 71.628 70.39 V62.601" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M55.0076 45.1134 A2.573462 2.573462 0 0 0 53.0092 44.1581 H27.1773 A5.410092 5.410092 0 0 0 21.7672 49.5682 V67.5141 A5.410092 5.410092 0 0 0 27.1773 72.9242 H29.9116 L29.6971 81.9508 L38.9479 72.9242 H50.9134 A5.410092 5.410092 0 0 0 56.3235 67.5141 V62.2308" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M72.9437 47.9891 A2.573442 2.573442 0 0 1 74.942 47.0338 H100.774 A5.410067 5.410067 0 0 1 106.184 52.4439 V70.3897 A5.410067 5.410067 0 0 1 100.774 75.7998 H98.0397 L98.2541 84.8264 L89.0034 75.7998 H77.0378 A5.410092 5.410092 0 0 1 71.6277 70.3897 V62.6012" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <polygon points="64.902,43.564 58.366,55.125 66.227,55.125 62.952,66.013 69.488,54.452 61.626,54.452" fill="#E63946" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="64.9017,43.5635 58.3657,55.1245 66.2274,55.1245 62.9521,66.0129 69.4881,54.4519 61.6264,54.4519" fill="#E63946" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

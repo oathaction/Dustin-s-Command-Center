@@ -1,11 +1,11 @@
 {
   "id": "CL-022",
   "label": "Act",
-  "built": "2026-10-29T07:27:09+00:00",
+  "built": "2026-10-29T07:51:35+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.8669,
+  "silhouette_iou_1x": 0.8672,
   "silhouette_iou_4x": 0.8907,
   "red_iou_1x": 0.8855,
   "red_iou_4x": 0.8685,
@@ -46,16 +46,18 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.8669
+    "iou": 0.8672
   },
   "ink_area_ratio_trace_over_reference": 0.9054,
-  "bake_check_iou_1x": 0.9993,
-  "bake_check_iou_4x": 0.9993,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 0.9997,
+  "bake_check_max_diff_levels_4x": 7,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    40.383,
-    30.876,
-    87.76,
+    40.381,
+    30.875,
+    87.761,
     97.084
   ],
   "export_inside_0_128": true,

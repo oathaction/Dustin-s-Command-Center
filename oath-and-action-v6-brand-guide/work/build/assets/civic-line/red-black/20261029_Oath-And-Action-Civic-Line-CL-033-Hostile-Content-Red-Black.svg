@@ -3,20 +3,20 @@
   <title>Hostile Content</title>
   <desc>Oath &amp; Action Civic Line CL-033 Hostile Content. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M38.124 61.49 L39.304 68.625 L47.083 61.49 L60.739 61.49 A5.995 5.995 0 0 0 66.734 55.495 L66.734 41.76 A5.995 5.995 0 0 0 60.739 35.765 L33.489 35.765 A5.995 5.995 0 0 0 27.494 41.76 L27.494 55.495 A5.995 5.995 0 0 0 33.489 61.49 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M71.676 42.525 L95.086 42.525 A2.924 2.924 0 0 1 98.01 45.45 L98.01 85.874" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="30.033" y1="66.023" x2="30.033" y2="85.874" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M56.202 85.874 L24.521 85.874 L24.521 88.341 A4.021 4.021 0 0 0 28.542 92.362 L99.507 92.362 A4.021 4.021 0 0 0 103.528 88.341 L103.528 85.874 L71.847 85.874 L69.971 88.175 L58.078 88.175 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M38.1242 61.4899 L39.3037 68.6254 L47.0825 61.4899 L60.7393 61.4899 A5.994954 5.994954 0 0 0 66.7343 55.495 L66.7343 41.7602 A5.994979 5.994979 0 0 0 60.7393 35.7652 L33.4891 35.7652 A5.994979 5.994979 0 0 0 27.4941 41.7602 L27.4941 55.495 A5.994954 5.994954 0 0 0 33.4891 61.4899 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M71.6765 42.5254 L95.0861 42.5254 A2.924335 2.924335 0 0 1 98.0104 45.4497 L98.0104 85.8743" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.0334" y1="66.0227" x2="30.0334" y2="85.8743" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.2017 85.8743 L24.521 85.8743 L24.521 88.3405 A4.021004 4.021004 0 0 0 28.542 92.3615 L99.5067 92.3615 A4.021004 4.021004 0 0 0 103.5277 88.3405 L103.5277 85.8743 L71.8471 85.8743 L69.9706 88.1748 L58.0782 88.1748 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="40.961" y1="42.75" x2="39.099" y2="54.301" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="46.283" y1="42.774" x2="44.431" y2="54.252" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="37.466" y1="46.064" x2="48.189" y2="46.064" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.979" y1="51.084" x2="47.702" y2="51.084" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="55.865" y1="42.735" x2="55.865" y2="50.29" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="55.865" cy="54.252" r="1.56" fill="#E63946"/>
-    <path d="M76.37 57.196 A1.462 1.462 0 0 1 78.924 57.196 L89.31 75.897 A1.462 1.462 0 0 1 88.033 78.071 L67.261 78.071 A1.462 1.462 0 0 1 65.984 75.897 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="77.647" y1="64.668" x2="77.647" y2="70.029" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="77.647" cy="73.719" r="1.56" fill="#E63946"/>
+    <line x1="40.9608" y1="42.7496" x2="39.099" y2="54.3008" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46.2832" y1="42.7739" x2="44.4311" y2="54.2521" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="37.4662" y1="46.0639" x2="48.1889" y2="46.0639" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.9788" y1="51.084" x2="47.7015" y2="51.084" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55.8654" y1="42.735" x2="55.8654" y2="50.2896" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="55.8654" cy="54.2521" r="1.5597" fill="#E63946"/>
+    <path d="M76.3701 57.196 A1.462163 1.462163 0 0 1 78.924 57.196 L89.3104 75.8973 A1.462197 1.462197 0 0 1 88.0334 78.0711 L67.2607 78.0711 A1.462197 1.462197 0 0 1 65.9837 75.8973 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.6471" y1="64.6677" x2="77.6471" y2="70.0291" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="77.6471" cy="73.7187" r="1.5597" fill="#E63946"/>
   </g>
 </svg>

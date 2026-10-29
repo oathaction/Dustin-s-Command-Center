@@ -1,7 +1,7 @@
 {
   "id": "CL-018",
   "label": "Earned Trust",
-  "built": "2026-10-29T07:12:29+00:00",
+  "built": "2026-10-29T07:51:33+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,13 +49,15 @@
     "iou": 0.9066
   },
   "ink_area_ratio_trace_over_reference": 0.9638,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 0.9999,
   "bake_check_iou_1x": 0.9997,
-  "bake_check_iou_4x": 0.9998,
+  "bake_check_max_diff_levels_4x": 9,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    25.74,
-    39.743,
-    102.406,
+    25.739,
+    39.742,
+    102.407,
     88.004
   ],
   "export_inside_0_128": true,

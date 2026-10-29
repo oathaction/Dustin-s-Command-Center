@@ -3,16 +3,16 @@
   <title>Act</title>
   <desc>Oath &amp; Action Civic Line CL-022 Act. Traced vector reconstruction from the Civic Line reference sheet 01, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M61.466 67.592 V45.645 A4.072 4.072 0 0 0 53.311 45.645 V77.208" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M61.466 63.61 A3.687 3.687 0 0 1 68.84 63.61 V68.694" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M68.84 66.437 A3.687 3.687 0 0 1 76.214 66.437 V70.399" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M76.214 70.044 A3.687 3.687 0 0 1 83.588 70.044 L83.588 82.56 A11.21 11.21 0 0 1 82.482 87.414 L78.524 95.656" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M53.311 74.971 L48.301 68.523 A3.68 3.68 0 0 0 42.126 72.466 L54.106 95.744" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M61.4655 67.5921 V45.6447 A4.07705 4.07705 0 0 0 53.3114 45.6447 V77.2084" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M61.4655 63.6101 A3.687149 3.687149 0 0 1 68.8398 63.6101 V68.6936" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68.8398 66.437 A3.68715 3.68715 0 0 1 76.2141 66.437 V70.3995" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.2141 70.0437 A3.687149 3.687149 0 0 1 83.5884 70.0437 L83.5884 82.56 A11.21009 11.21009 0 0 1 82.482 87.4145 L78.5244 95.6563" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M53.3114 74.9713 L48.301 68.523 A3.679854 3.679854 0 0 0 42.1257 72.4661 L54.1059 95.744" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M65.911 54.613 A13.169 13.169 0 1 0 47.536 55.012" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.672" y1="39.143" x2="81.424" y2="36.399" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="77.769" y1="45.996" x2="86.42" y2="45.996" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="75.819" y1="53.643" x2="80.508" y2="56.752" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.9106 54.6128 A13.169415 13.169415 0 1 0 47.5358 55.0124" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.6723" y1="39.1429" x2="81.4244" y2="36.3988" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.7689" y1="45.9956" x2="86.4202" y2="45.9956" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.8193" y1="53.6429" x2="80.5081" y2="56.7524" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

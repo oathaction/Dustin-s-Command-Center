@@ -1,11 +1,11 @@
 {
   "id": "CL-049",
   "label": "Wealth Concentration",
-  "built": "2026-10-29T06:33:08+00:00",
+  "built": "2026-10-29T07:52:06+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9085,
+  "silhouette_iou_1x": 0.909,
   "silhouette_iou_4x": 0.8976,
   "red_iou_1x": 0.8564,
   "red_iou_4x": 0.8766,
@@ -46,11 +46,13 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9085
+    "iou": 0.909
   },
-  "ink_area_ratio_trace_over_reference": 0.9672,
-  "bake_check_iou_1x": 0.9994,
-  "bake_check_iou_4x": 0.9997,
+  "ink_area_ratio_trace_over_reference": 0.9673,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 0.9999,
+  "bake_check_iou_1x": 0.9993,
+  "bake_check_max_diff_levels_4x": 53,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     24.643,

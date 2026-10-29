@@ -1,7 +1,7 @@
 {
   "id": "R-46",
   "label": "Expand the House",
-  "built": "2026-10-29T07:32:41+00:00",
+  "built": "2026-10-29T07:53:15+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.7652
   },
   "ink_area_ratio_trace_over_reference": 1.078,
-  "bake_check_iou_1x": 1.0,
-  "bake_check_iou_4x": 0.9998,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 0.9999,
+  "bake_check_iou_1x": 0.9999,
+  "bake_check_max_diff_levels_4x": 16,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     10.094,
     36.901,
-    118.295,
-    91.464
+    118.296,
+    91.465
   ],
   "export_inside_0_128": true,
   "elements": 29,

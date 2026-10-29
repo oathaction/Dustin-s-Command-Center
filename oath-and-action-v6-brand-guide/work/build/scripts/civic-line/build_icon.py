@@ -8,6 +8,13 @@ it with the reference masks, write the metrics, overlay, blink GIF, size strip,
 256 and 512 px PNGs and the per-icon status file. One Chromium launch serves the
 whole batch. An ID that fails validation is reported and skipped; the others
 still build; the exit code is 1 if any failed.
+
+The bake check renders the baked export back at crop scale and compares it
+with the crop-space render. The 4x number is the main one; it leaves out the
+pixels within 2 levels of the threshold in either render, because an edge
+that lands exactly on a half pixel renders at coverage one half and rounds
+either way. The raw 4x and 1x numbers are kept beside it, along with the
+largest per-pixel difference between the two 4x renders.
 """
 import argparse
 import datetime as dt
@@ -116,6 +123,28 @@ def render_masks(png_path, bg_rgb, kind):
         return C.green(rgb) < thr, rgb
     bg_r = float(bg_rgb[0]) - max(float(bg_rgb[1]), float(bg_rgb[2]))
     return C.redness(rgb) > (bg_r + PILLAR_REDNESS) / 2.0, rgb
+
+
+BAKE_BAND = 2   # levels either side of the threshold left out of the main bake IoU
+
+
+def bake_banded(a_png, b_png, bg_rgb):
+    """Main bake metric: IoU of the two 4x ink masks over the pixels that sit
+    more than BAKE_BAND levels from the threshold in both renders. A pixel whose
+    edge coverage is exactly one half (an edge on a half pixel) rounds to 119
+    in one render and 120 in the other; it says nothing about the geometry."""
+    thr = (float(bg_rgb[1]) + CHARCOAL_G) / 2.0
+    ga = C.green(np.asarray(Image.open(a_png).convert("RGB")))
+    gb = C.green(np.asarray(Image.open(b_png).convert("RGB")))
+    ok = (np.abs(ga - thr) > BAKE_BAND) & (np.abs(gb - thr) > BAKE_BAND)
+    return iou((ga < thr) & ok, (gb < thr) & ok)
+
+
+def bake_max_diff(a_png, b_png):
+    """Largest per-pixel green difference between the two 4x renders, in levels."""
+    ga = C.green(np.asarray(Image.open(a_png).convert("RGB")))
+    gb = C.green(np.asarray(Image.open(b_png).convert("RGB")))
+    return int(np.abs(ga - gb).max())
 
 
 # ------------------------------------------------------------------ images
@@ -323,8 +352,10 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
         "red_edge_distance_px": red_edges,
         "best_offset_1x": best_offset(t_ink1, ref_ink1, 3),
         "ink_area_ratio_trace_over_reference": round(float(t_ink4.sum()) / max(1, ref_ink4.sum()), 4),
+        "bake_check_iou_4x": round(bake_banded(p["bake4"], p["cs4_black"], mp["bg_black_rgb"]), 4),
+        "bake_check_iou_4x_raw": round(iou(b_ink4, t_ink4), 4),
         "bake_check_iou_1x": round(iou(b_ink1, t_ink1), 4),
-        "bake_check_iou_4x": round(iou(b_ink4, t_ink4), 4),
+        "bake_check_max_diff_levels_4x": bake_max_diff(p["bake4"], p["cs4_black"]),
         "pair_identical_after_swap": pair_ok,
         "export_drawn_bounds": [round(v, 3) for v in bounds] if bounds else None,
         "export_inside_0_128": bool(bounds and bounds[0] >= 0 and bounds[1] >= 0 and bounds[2] <= 128 and bounds[3] <= 128),
@@ -350,19 +381,21 @@ def finish(icon_id, P, W, sc, tracer, state, note, rebuild=False):
     blink_gif(ref_black, ref_red, tr_black4, tr_rb4, os.path.join(C.QA, "blink", f"{icon_id}.gif"))
     size_strip(P["sizes"], os.path.join(C.QA, "sizes", f"{icon_id}.png"),
                f"{icon_id} {row['label']}  |  exports on Newsprint at 1x; stroke {W * row['transform']['s']:.2f} of 128 units")
-    summary = {k: metrics[k] for k in ("silhouette_iou_1x", "red_iou_1x", "bake_check_iou_1x", "pair_identical_after_swap",
+    summary = {k: metrics[k] for k in ("silhouette_iou_1x", "red_iou_1x", "bake_check_iou_4x", "bake_check_iou_1x", "pair_identical_after_swap",
                                        "export_inside_0_128", "ink_area_ratio_trace_over_reference")}
     summary["edge_mean_px"] = edges["symmetric"]["mean"] if edges else None
     summary["edge_p95_px"] = edges["symmetric"]["p95"] if edges else None
     summary["edge_max_px"] = edges["symmetric"]["max"] if edges else None
     summary["best_offset"] = [metrics["best_offset_1x"]["dx"], metrics["best_offset_1x"]["dy"]]
-    update_status(icon_id, row, src, summary, tracer, state, note, rebuild)
+    if not rebuild:
+        update_status(icon_id, row, src, summary, tracer, state, note)
     return summary
 
 
 def update_status(icon_id, row, src, summary, tracer, state, note, rebuild=False):
-    """Per-icon status. A tracer build counts one iteration; a whole-set rebuild
-    (build_all.py) refreshes the metrics without counting one."""
+    """Per-icon status, the tracer's record: every tracer build counts one
+    iteration. A whole-set rebuild (build_all.py) never calls this; it leaves
+    the status files as the tracers wrote them and refreshes qa/metrics only."""
     path = os.path.join(C.QA, "status", f"{icon_id}.json")
     st = C.read_json(path) or {"id": icon_id, "label": row["label"], "state": "todo", "tracer": None,
                                "iterations": 0, "history": [], "notes": []}
@@ -397,7 +430,7 @@ def main():
         print(f"{icon_id}: silhouette IoU {s['silhouette_iou_1x']:.4f}  red IoU {s['red_iou_1x']:.4f}  "
               f"edge mean {s['edge_mean_px']:.3f} px  p95 {s['edge_p95_px']:.3f} px  max {s['edge_max_px']:.2f} px  "
               f"offset {tuple(s['best_offset'])}  area ratio {s['ink_area_ratio_trace_over_reference']:.3f}  "
-              f"bake IoU {s['bake_check_iou_1x']:.4f}  pair ok {s['pair_identical_after_swap']}  inside 0-128 {s['export_inside_0_128']}")
+              f"bake IoU 4x {s['bake_check_iou_4x']:.4f} (1x {s['bake_check_iou_1x']:.4f})  pair ok {s['pair_identical_after_swap']}  inside 0-128 {s['export_inside_0_128']}")
         print(f"    view: qa/overlays/{icon_id}.png  qa/blink/{icon_id}.gif  qa/sizes/{icon_id}.png")
     for icon_id, msg in failures.items():
         print(f"FAILED {msg}", file=sys.stderr)

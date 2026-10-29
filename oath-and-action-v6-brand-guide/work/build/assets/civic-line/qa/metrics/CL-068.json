@@ -1,7 +1,7 @@
 {
   "id": "CL-068",
   "label": "Education",
-  "built": "2026-10-29T06:38:18+00:00",
+  "built": "2026-10-29T07:52:34+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,13 +49,15 @@
     "iou": 0.9331
   },
   "ink_area_ratio_trace_over_reference": 0.9377,
-  "bake_check_iou_1x": 0.9995,
-  "bake_check_iou_4x": 0.9999,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_max_diff_levels_4x": 10,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     21.524,
     25.301,
-    106.427,
+    106.428,
     102.772
   ],
   "export_inside_0_128": true,

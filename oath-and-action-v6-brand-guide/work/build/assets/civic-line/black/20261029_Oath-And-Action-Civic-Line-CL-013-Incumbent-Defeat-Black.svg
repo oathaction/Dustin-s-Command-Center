@@ -3,13 +3,13 @@
   <title>Incumbent Defeat</title>
   <desc>Oath &amp; Action Civic Line CL-013 Incumbent Defeat. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M36.072 67.348 V39.971 A5.215 5.215 0 0 1 41.287 34.756 H58.346 A5.215 5.215 0 0 1 63.561 39.971 V67.348 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M36.072 62.294 A2.437 2.437 0 0 0 33.635 59.857 H30.35 V72.008 A2.924 2.924 0 0 0 33.275 74.932 H66.359 A2.924 2.924 0 0 0 69.283 72.008 V59.857 H65.998 A2.437 2.437 0 0 0 63.561 62.294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="49.817" y1="74.932" x2="49.817" y2="93.097" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M37.11 93.097 V89.384 A2.193 2.193 0 0 1 39.304 87.19 H60.33 A2.193 2.193 0 0 1 62.523 89.384 V93.097" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36.0723 67.3484 V39.9714 A5.215113 5.215113 0 0 1 41.2874 34.7563 H58.3462 A5.215113 5.215113 0 0 1 63.5613 39.9714 V67.3484 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36.0723 62.2941 A2.436988 2.436988 0 0 0 33.6353 59.8571 H30.3502 V72.0079 A2.924385 2.924385 0 0 0 33.2746 74.9323 H66.359 A2.924385 2.924385 0 0 0 69.2834 72.0079 V59.8571 H65.9983 A2.436988 2.436988 0 0 0 63.5613 62.2941" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.8168" y1="74.9323" x2="49.8168" y2="93.0975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.1104 93.0975 V89.3835 A2.193264 2.193264 0 0 1 39.3037 87.1903 H60.3299 A2.193264 2.193264 0 0 1 62.5232 89.3835 V93.0975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="77.223" y1="60.208" x2="97.63" y2="60.208" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="90.661,53.097 97.63,60.208 90.661,67.319" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.223" y1="60.2081" x2="97.6303" y2="60.2081" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="90.6605,53.097 97.6303,60.2081 90.6605,67.3192" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

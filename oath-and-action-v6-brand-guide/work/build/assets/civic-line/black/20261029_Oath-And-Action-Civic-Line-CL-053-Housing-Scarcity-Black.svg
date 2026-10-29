@@ -3,22 +3,22 @@
   <title>Housing Scarcity</title>
   <desc>Oath &amp; Action Civic Line CL-053 Housing Scarcity. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <polygon points="17.542,83.525 17.542,57.688 31.603,44.441 45.664,57.688 45.664,83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polygon points="82.277,83.525 82.277,57.688 96.339,44.441 110.4,57.688 110.4,83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="26.899" y1="62.148" x2="26.899" y2="67.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.306" y1="62.148" x2="36.306" y2="67.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="91.635" y1="62.148" x2="91.635" y2="67.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="101.042" y1="62.148" x2="101.042" y2="67.412" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="17.5415,83.525 17.5415,57.6882 31.6029,44.4408 45.6642,57.6882 45.6642,83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="82.2773,83.525 82.2773,57.6882 96.3387,44.4408 110.4,57.6882 110.4,83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.8995" y1="62.1479" x2="26.8995" y2="67.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.3062" y1="62.1479" x2="36.3062" y2="67.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.6353" y1="62.1479" x2="91.6353" y2="67.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="101.042" y1="62.1479" x2="101.042" y2="67.4118" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="51.742" y1="57.601" x2="51.742" y2="62.323" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="51.742" y1="68.387" x2="51.742" y2="73.899" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="51.742" y1="79.874" x2="51.742" y2="83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.234" y1="57.601" x2="76.234" y2="62.323" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.234" y1="68.387" x2="76.234" y2="73.899" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="76.234" y1="79.874" x2="76.234" y2="83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="54.91" y1="53.521" x2="58.858" y2="49.573" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="69.118" y1="49.573" x2="73.066" y2="53.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="62.255,46.234 63.988,44.504 65.721,46.234" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="51.742" y1="57.6005" x2="51.742" y2="62.3234" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="51.742" y1="68.3866" x2="51.742" y2="73.899" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="51.742" y1="79.8745" x2="51.742" y2="83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.2336" y1="57.6005" x2="76.2336" y2="62.3234" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.2336" y1="68.3866" x2="76.2336" y2="73.899" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.2336" y1="79.8745" x2="76.2336" y2="83.525" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="54.9101" y1="53.521" x2="58.858" y2="49.5731" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69.1176" y1="49.5731" x2="73.0655" y2="53.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="62.2551,46.2345 63.9878,44.5042 65.7205,46.2345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

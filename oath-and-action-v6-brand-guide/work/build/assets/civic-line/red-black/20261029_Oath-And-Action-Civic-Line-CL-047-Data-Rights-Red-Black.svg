@@ -3,16 +3,16 @@
   <title>Data Rights</title>
   <desc>Oath &amp; Action Civic Line CL-047 Data Rights. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M73.309 88.652 H37.768 A2.534 2.534 0 0 1 35.234 86.118 V36.711 A2.534 2.534 0 0 1 37.768 34.176 H80.23 A2.534 2.534 0 0 1 82.765 36.711 V52.424" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="44.992" y1="44.68" x2="73.309" y2="44.68" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="44.992" y1="54.778" x2="73.309" y2="54.778" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="44.992" y1="64.877" x2="65.487" y2="64.877" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="44.992" y1="74.976" x2="65.487" y2="74.976" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M73.3092 88.6524 H37.7684 A2.534452 2.534452 0 0 1 35.2339 86.118 V36.7108 A2.534477 2.534477 0 0 1 37.7684 34.1763 H80.2303 A2.534452 2.534452 0 0 1 82.7647 36.7108 V52.4244" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.9916" y1="44.6797" x2="73.3092" y2="44.6797" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.9916" y1="54.7785" x2="73.3092" y2="54.7785" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.9916" y1="64.8773" x2="65.4866" y2="64.8773" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.9916" y1="74.9761" x2="65.4866" y2="74.9761" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="83.764" cy="67.095" r="8.773" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.764" y1="75.868" x2="83.764" y2="93.585" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.764" y1="84.519" x2="89.734" y2="84.519" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.764" y1="91.148" x2="89.734" y2="91.148" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="83.7639" cy="67.095" r="8.7731" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.7639" y1="75.8681" x2="83.7639" y2="93.5849" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.7639" y1="84.5193" x2="89.7345" y2="84.5193" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.7639" y1="91.1479" x2="89.7345" y2="91.1479" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

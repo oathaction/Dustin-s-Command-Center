@@ -1,7 +1,7 @@
 {
   "id": "CL-058",
   "label": "Stock Ownership",
-  "built": "2026-10-29T07:15:29+00:00",
+  "built": "2026-10-29T07:52:10+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.9225
   },
   "ink_area_ratio_trace_over_reference": 0.9335,
-  "bake_check_iou_1x": 1.0,
   "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_max_diff_levels_4x": 42,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     17.634,
     40.391,
     110.473,
-    87.516
+    87.517
   ],
   "export_inside_0_128": true,
   "elements": 10,

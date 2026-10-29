@@ -3,8 +3,10 @@
     python3 -I build_all.py [--chunk 30]
 
 Builds in chunks (one Chromium launch per chunk). A whole-set rebuild refreshes
-exports, QA images, metrics and status without counting a tracer iteration.
-Icons without a source stay 'todo'. Exit code 1 if any source fails validation.
+exports, PNGs, QA images and qa/metrics. It does not touch src/ or the status
+files, which stay the tracers' record. Icons without a source stay 'todo'.
+Prints every bake check below 0.999 (4x is the main number). Exit code 1 if
+any source fails validation.
 """
 import argparse
 import os
@@ -26,6 +28,7 @@ def main():
     if stray:
         print(f"ignored, not in the inventory: {', '.join(stray)}")
     failed = {}
+    allres = {}
     done = 0
     for k in range(0, len(ids), a.chunk):
         res, fail = build(ids[k:k + a.chunk], rebuild=True)
@@ -33,8 +36,12 @@ def main():
         done += len(res)
         for i, s in res.items():
             print(f"{i}: IoU {s['silhouette_iou_1x']:.3f}  red {s['red_iou_1x']:.3f}  edge mean {s['edge_mean_px']:.2f} px  "
-                  f"p95 {s['edge_p95_px']:.2f} px  bake {s['bake_check_iou_1x']:.4f}")
+                  f"p95 {s['edge_p95_px']:.2f} px  bake 4x {s['bake_check_iou_4x']:.4f} (1x {s['bake_check_iou_1x']:.4f})")
+            allres[i] = s
     print(f"built {done}, failed {len(failed)}")
+    low = [(i, s["bake_check_iou_4x"], s["bake_check_iou_1x"]) for i, s in allres.items()
+           if s["bake_check_iou_4x"] < 0.999 or s["bake_check_iou_1x"] < 0.999]
+    print(f"bake checks below 0.999: {len(low)}" + "".join(f"\n  {i}: 4x {a:.4f}, 1x {b:.4f}" for i, a, b in low))
     for i, m in failed.items():
         print(f"FAILED {m}", file=sys.stderr)
     sys.exit(1 if failed else 0)

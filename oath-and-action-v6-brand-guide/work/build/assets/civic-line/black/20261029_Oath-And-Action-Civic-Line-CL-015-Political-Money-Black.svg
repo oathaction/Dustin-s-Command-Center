@@ -3,22 +3,22 @@
   <title>Political Money</title>
   <desc>Oath &amp; Action Civic Line CL-015 Political Money. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="accent-1">
-    <path d="M52.156 67.607 H59.696 A4.338 4.338 0 0 0 64.034 63.269 V53.448 A4.338 4.338 0 0 1 68.372 49.11 H90.183" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.1563 67.6067 H59.6963 A4.337808 4.337808 0 0 0 64.0341 63.2689 V53.4479 A4.337808 4.337808 0 0 1 68.3719 49.1101 H90.1829" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="base">
-    <circle cx="35.292" cy="66.364" r="16.913" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="72.622" y="64.195" width="36.842" height="21.426" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="72.622,64.195 78.31,54.934 80.469,54.934" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="109.464,64.195 103.776,54.934 102.558,54.934" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.008" y1="58.687" x2="98.785" y2="58.687" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="83.004" y1="58.687" x2="95.388" y2="42.174" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="97.664" y1="55.519" x2="95.296" y2="58.687" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="35.2924" cy="66.3639" r="16.9126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="72.622" y="64.195" width="36.8422" height="21.4259" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="72.622,64.195 78.3099,54.9345 80.4691,54.9345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="109.4642,64.195 103.7763,54.9345 102.5578,54.9345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.0084" y1="58.6874" x2="98.7854" y2="58.6874" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.0035" y1="58.6874" x2="95.3882" y2="42.1745" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.6644" y1="55.5193" x2="95.2956" y2="58.6874" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent-2">
-    <path d="M38.675 61.704 A3.558 3.558 0 1 0 35.292 66.364 A3.558 3.558 0 1 1 31.91 71.023" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.292" y1="57.113" x2="35.292" y2="59.248" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="35.292" y1="73.48" x2="35.292" y2="75.819" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="95.388" y1="42.174" x2="103.806" y2="47.312" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="103.806" y1="47.312" x2="97.664" y2="55.519" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M38.675 61.7044 A3.558003 3.558003 0 1 0 35.2924 66.3639 A3.55798 3.55798 0 1 1 31.9099 71.0234" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.2924" y1="57.1131" x2="35.2924" y2="59.2479" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.2924" y1="73.4798" x2="35.2924" y2="75.8193" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.3882" y1="42.1745" x2="103.8055" y2="47.3116" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.8055" y1="47.3116" x2="97.6644" y2="55.5193" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
   </g>
 </svg>

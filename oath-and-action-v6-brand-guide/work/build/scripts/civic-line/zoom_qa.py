@@ -4,14 +4,19 @@
 
 panel: reference | trace | overlay | diff  (from qa/overlays/<ID>.png)
        black | red                         (the untouched reference crops)
-The overlay panels are already 4x; --scale enlarges further (nearest
-neighbour). The default output is a file in the system temp folder; nothing
-is written under assets/.
+
+--scale is the enlargement on top of the 4x QA panels, so every panel comes
+out at the same final magnification of 4 x scale crop px (12x by default).
+The overlay panels are already 4x, so they are enlarged by scale; the raw
+black and red crops are 1x, so they are enlarged by 4 x scale. The tool
+prints the final magnification.
+
+The default output folder is the session scratchpad zoom/ folder (SCRATCH
+below); nothing is written under assets/.
 """
 import argparse
 import os
 import sys
-import tempfile
 
 from PIL import Image
 
@@ -19,6 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cl_common as C  # noqa: E402
 
 PANELS = ["reference", "trace", "overlay", "diff"]
+SCRATCH = "/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/zoom"
 
 
 def main():
@@ -26,8 +32,8 @@ def main():
     ap.add_argument("id")
     ap.add_argument("panel", choices=PANELS + ["black", "red"])
     ap.add_argument("box")
-    ap.add_argument("--scale", type=int, default=3)
-    ap.add_argument("--out")
+    ap.add_argument("--scale", type=int, default=3, help="enlargement on top of the 4x panels (final = 4 x scale)")
+    ap.add_argument("--out", help=f"output PNG path (default {SCRATCH}/<ID>-<panel>.png)")
     a = ap.parse_args()
     row = C.inventory_by_id()[a.id]
     x0, y0, x1, y1 = [float(v) for v in a.box.split(",")]
@@ -45,11 +51,15 @@ def main():
         oy = top + strip
     box = (int(ox + x0 * z), int(oy + y0 * z), int(ox + x1 * z), int(oy + y1 * z))
     part = im.crop(box)
-    s = a.scale * (4 if z == 1 else 1)
+    s = a.scale * (4 if z == 1 else 1)   # raw crops catch up with the 4x panels
     part = part.resize((part.width * s, part.height * s), Image.NEAREST)
-    out = a.out or os.path.join(tempfile.gettempdir(), f"civic-line-zoom-{a.id}-{a.panel}.png")
+    if a.out:
+        out = a.out
+    else:
+        os.makedirs(SCRATCH, exist_ok=True)
+        out = os.path.join(SCRATCH, f"{a.id}-{a.panel}.png")
     part.save(out)
-    print(out)
+    print(f"{out}  ({4 * a.scale}x crop px)")
 
 
 if __name__ == "__main__":

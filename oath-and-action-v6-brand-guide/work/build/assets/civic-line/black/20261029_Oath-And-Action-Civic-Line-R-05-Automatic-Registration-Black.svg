@@ -3,17 +3,17 @@
   <title>Automatic Registration</title>
   <desc>Oath &amp; Action Civic Line R-05 Automatic Registration. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M92.352 55.407 V45.079 A2.437 2.437 0 0 0 89.915 42.642 H28.834 A2.437 2.437 0 0 0 26.397 45.079 V77.671 A2.437 2.437 0 0 0 28.834 80.108 H72.919" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="71.067" y1="85.202" x2="77.013" y2="85.202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="42.408" cy="53.93" r="4.547" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M33.733 73.07 V70.463 A8.676 8.676 0 0 1 42.408 61.787 A8.676 8.676 0 0 1 51.084 70.463 V73.07 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="57.971" y1="51.961" x2="84.047" y2="51.961" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="57.971" y1="58.741" x2="75.088" y2="58.741" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="57.971" y1="65.521" x2="70.214" y2="65.521" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="57.971" y1="72.3" x2="66.374" y2="72.3" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.3518 55.4072 V45.0793 A2.436963 2.436963 0 0 0 89.9148 42.6424 H28.8345 A2.436963 2.436963 0 0 0 26.3975 45.0793 V77.6714 A2.436988 2.436988 0 0 0 28.8345 80.1084 H72.9193" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.0672" y1="85.2017" x2="77.0134" y2="85.2017" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="42.4084" cy="53.9304" r="4.5474" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.7328 73.0704 V70.4629 A8.675641 8.675641 0 0 1 42.4084 61.7872 A8.675641 8.675641 0 0 1 51.084 70.4629 V73.0704 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.9709" y1="51.9613" x2="84.0466" y2="51.9613" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.9709" y1="58.741" x2="75.0882" y2="58.741" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.9709" y1="65.5207" x2="70.2143" y2="65.5207" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.9709" y1="72.3003" x2="66.3736" y2="72.3003" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="89.174" cy="72.949" r="12.624" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="83.92,73.09 87.595,76.687 94.755,69.254" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="89.174" cy="72.9486" r="12.6235" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="83.9198,73.0899 87.5948,76.6869 94.7546,69.2541" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

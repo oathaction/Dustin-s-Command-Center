@@ -126,7 +126,8 @@ def analyse_sheet(key):
                 text_labels.add(b["lab"])
             cell = {"cap_x0": min(b["x0"] for b in g), "cap_x1": max(b["x1"] for b in g),
                     "cap_y0": min(b["y0"] for b in g), "cap_y1": max(b["y1"] for b in g),
-                    "cap_glyphs": len(g)}
+                    "cap_glyphs": len(g),
+                    "cap_glyph_boxes": [(b["x0"], b["y0"], b["x1"], b["y1"]) for b in sorted(g, key=lambda b: b["x0"])]}
             cell["cap_cx"] = (cell["cap_x0"] + cell["cap_x1"]) / 2.0
             row["cells"].append(cell)
         rows.append(row)
@@ -153,6 +154,7 @@ def analyse_sheet(key):
             cell["id_x0"] = min(b["x0"] for b in ids)
             cell["id_x1"] = max(b["x1"] for b in ids)
             cell["id_glyphs"] = len(ids)
+            cell["id_glyph_boxes"] = [(b["x0"], b["y0"], b["x1"], b["y1"]) for b in sorted(ids, key=lambda b: b["x0"])]
     footer = [b for b in boxes if b["y0"] > rows[-1]["cells"][0]["cap_y1"] + 4 and b["lab"] not in text_labels]
     for b in footer:
         text_labels.add(b["lab"])

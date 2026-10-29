@@ -3,17 +3,17 @@
   <title>Taxes &amp; Benefits</title>
   <desc>Oath &amp; Action Civic Line CL-060 Taxes &amp; Benefits. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <path d="M76.282 44.382 V38.314 A2.583 2.583 0 0 0 73.699 35.731 H29.931 A2.583 2.583 0 0 0 27.348 38.314 V89.686 A2.583 2.583 0 0 0 29.931 92.269 H73.699 A2.583 2.583 0 0 0 76.282 89.686 V84.29" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.643" y1="45.479" x2="63.05" y2="45.479" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.643" y1="54.725" x2="63.05" y2="54.725" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.643" y1="63.971" x2="63.05" y2="63.971" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.643" y1="73.066" x2="59.102" y2="73.066" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="36.643" y1="82.463" x2="54.739" y2="82.463" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="100.798" y1="72.451" x2="69.069" y2="72.451" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="75.21,66.237 69.069,72.451 75.21,78.666" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.2824 44.3824 V38.3143 A2.583197 2.583197 0 0 0 73.6992 35.7311 H29.9311 A2.583197 2.583197 0 0 0 27.3479 38.3143 V89.6857 A2.583197 2.583197 0 0 0 29.9311 92.2689 H73.6992 A2.583197 2.583197 0 0 0 76.2824 89.6857 V84.2903" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6425" y1="45.479" x2="63.0496" y2="45.479" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6425" y1="54.7249" x2="63.0496" y2="54.7249" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6425" y1="63.9708" x2="63.0496" y2="63.9708" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6425" y1="73.0655" x2="59.1017" y2="73.0655" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.6425" y1="82.4625" x2="54.7395" y2="82.4625" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.7983" y1="72.4514" x2="69.0689" y2="72.4514" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="75.2101,66.2371 69.0689,72.4514 75.2101,78.6657" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <line x1="71.618" y1="50.855" x2="100.603" y2="50.855" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="94.462,44.641 100.603,50.855 94.462,57.069" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.618" y1="50.855" x2="100.6034" y2="50.855" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="94.4622,44.6407 100.6034,50.855 94.4622,57.0692" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

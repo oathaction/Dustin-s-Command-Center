@@ -3,16 +3,16 @@
   <title>Decisive Primaries</title>
   <desc>Oath &amp; Action Civic Line CL-010 Decisive Primaries. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <circle cx="27.884" cy="44.148" r="5.02" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="27.884" cy="64.195" r="5.02" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="27.884" cy="84.242" r="5.02" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M32.904 44.148 L48.472 44.148 A2.827 2.827 0 0 1 51.298 46.975 L51.298 53.428 A2.827 2.827 0 0 0 54.125 56.255 L63.196 56.255 A2.778 2.778 0 0 1 65.974 59.029 L65.974 61.807 L67.144 64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.904" y1="64.195" x2="48.096" y2="64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M32.904 84.242 L48.472 84.242 A2.827 2.827 0 0 0 51.298 81.415 L51.298 74.962 A2.827 2.827 0 0 1 54.125 72.135 L63.196 72.135 A2.778 2.778 0 0 0 65.974 69.361 L65.974 66.583 L67.144 64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="67.144" y1="64.195" x2="84.714" y2="64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="80.474,59.613 84.714,64.195 80.474,68.776" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="27.884" cy="44.1484" r="5.0202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="27.884" cy="64.195" r="5.0202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="27.884" cy="84.2415" r="5.0202" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.9042 44.1484 L48.4716 44.1484 A2.826896 2.826896 0 0 1 51.2985 46.9753 L51.2985 53.4284 A2.826896 2.826896 0 0 0 54.1254 56.2553 L63.1958 56.2553 A2.778144 2.778144 0 0 1 65.9739 59.0286 L65.9739 61.8067 L67.1437 64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.9042" y1="64.195" x2="48.0963" y2="64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M32.9042 84.2415 L48.4716 84.2415 A2.826896 2.826896 0 0 0 51.2985 81.4146 L51.2985 74.9615 A2.826896 2.826896 0 0 1 54.1254 72.1346 L63.1958 72.1346 A2.778144 2.778144 0 0 0 65.9739 69.3613 L65.9739 66.5832 L67.1437 64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.1437" y1="64.195" x2="84.7143" y2="64.195" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="80.474,59.6134 84.7143,64.195 80.474,68.7765" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="97.036" cy="64.195" r="8.071" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="97.0356" cy="64.195" r="8.0713" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

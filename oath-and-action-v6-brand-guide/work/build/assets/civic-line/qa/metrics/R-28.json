@@ -1,7 +1,7 @@
 {
   "id": "R-28",
   "label": "Capital-Income Tax",
-  "built": "2026-10-29T07:15:00+00:00",
+  "built": "2026-10-29T07:53:29+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.8952
   },
   "ink_area_ratio_trace_over_reference": 1.0446,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_iou_4x": 0.9999,
+  "bake_check_max_diff_levels_4x": 58,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     25.618,
     38.402,
     102.962,
-    89.568
+    89.569
   ],
   "export_inside_0_128": true,
   "elements": 16,

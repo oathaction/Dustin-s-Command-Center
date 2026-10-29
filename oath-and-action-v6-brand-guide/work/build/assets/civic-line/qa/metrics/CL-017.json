@@ -1,7 +1,7 @@
 {
   "id": "CL-017",
   "label": "Policy Favoritism",
-  "built": "2026-10-29T07:09:48+00:00",
+  "built": "2026-10-29T07:51:33+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,8 +49,10 @@
     "iou": 0.933
   },
   "ink_area_ratio_trace_over_reference": 1.0193,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
-  "bake_check_iou_4x": 0.9999,
+  "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     23.181,

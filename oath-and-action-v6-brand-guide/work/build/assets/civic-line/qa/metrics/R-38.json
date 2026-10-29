@@ -1,7 +1,7 @@
 {
   "id": "R-38",
   "label": "Pricing-Data Limits",
-  "built": "2026-10-29T06:45:10+00:00",
+  "built": "2026-10-29T07:53:11+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.8696
   },
   "ink_area_ratio_trace_over_reference": 1.0263,
-  "bake_check_iou_1x": 0.9995,
-  "bake_check_iou_4x": 0.9998,
+  "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_max_diff_levels_4x": 20,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     15.753,
     44.202,
-    111.808,
-    83.505
+    111.809,
+    83.506
   ],
   "export_inside_0_128": true,
   "elements": 16,

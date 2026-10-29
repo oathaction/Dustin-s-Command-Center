@@ -1,7 +1,7 @@
 {
   "id": "CL-032",
   "label": "Local Reporting",
-  "built": "2026-10-29T06:39:54+00:00",
+  "built": "2026-10-29T07:51:58+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
@@ -49,14 +49,16 @@
     "iou": 0.9321
   },
   "ink_area_ratio_trace_over_reference": 0.98,
-  "bake_check_iou_1x": 1.0,
   "bake_check_iou_4x": 1.0,
+  "bake_check_iou_4x_raw": 1.0,
+  "bake_check_iou_1x": 0.9894,
+  "bake_check_max_diff_levels_4x": 10,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    27.446,
+    27.445,
     38.144,
     100.657,
-    89.88
+    89.881
   ],
   "export_inside_0_128": true,
   "elements": 9,

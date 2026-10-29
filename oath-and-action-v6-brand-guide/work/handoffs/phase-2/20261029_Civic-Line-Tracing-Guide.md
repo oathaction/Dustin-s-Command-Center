@@ -28,7 +28,7 @@ Paths below are relative to `work/build/`. Run every command from `work/build/sc
    Put one stroke in a `line` box and one arc in a `circle` box, away from junctions. End points are centreline ends; a round cap adds 2.75 px beyond them.
 4. Draw in `src/<ID>.svg`.
 5. `python3 -I build_icon.py <ID> --tracer <your-name>`. It prints the metrics and the files to view.
-6. View `qa/overlays/<ID>.png`, then `qa/sizes/<ID>.png`. For detail, run `python3 -I zoom_qa.py <ID> diff x0,y0,x1,y1`. The panels are `reference`, `trace`, `overlay`, `diff`, `black` and `red`. It prints the path of an enlarged crop, which you then open.
+6. View `qa/overlays/<ID>.png`, then `qa/sizes/<ID>.png`. For detail, run `python3 -I zoom_qa.py <ID> diff x0,y0,x1,y1`. The panels are `reference`, `trace`, `overlay`, `diff`, `black` and `red`. Every panel comes out at 4 x `--scale` crop px (12x by default): the overlay panels are already 4x, and the raw `black` and `red` crops get the extra factor of 4. The tool saves to the session scratchpad's `zoom/` folder and prints the path; open it from there. Keep other scratch files there too, never in `scripts/`.
 7. Correct, log the correction, build again. Repeat until the overlay and the metrics look right. Then mark the icon reviewed (see Status).
 
 The overlay has four panels. The first is the black reference, the second your red-black trace on the same background. The third shows reference ink in light grey with your edges in blue, and the red masks outlined: reference in red, yours in green. The fourth shows edge differences over 0.5 px, orange where only the reference has an edge and blue where only yours does. `qa/blink/<ID>.gif` alternates reference and trace.
@@ -145,7 +145,9 @@ These targets guide the visual review; they are not pass marks. The two supplied
 | Silhouette IoU | 0.92 or more where drawn as is; 0.85 or more with circle or symmetry corrections | CL-001 0.933, CL-021 0.858 |
 | Red IoU | 0.85 or more for stroked accents; small dots and short marks score lower, so read their outlines | CL-001 0.880, CL-021 0.834 |
 | Ink area ratio, trace over reference | about 0.95 to 1.05; sheet 03 near 0.92 and sheet 05 near 1.05, since W differs from their drawn weight | CL-001 0.986, CL-021 0.943 |
-| Bake check IoU, pair identity, inside 0 to 128 | 0.999 or more, true, true (automatic) | 0.9992 and 1.0000; true; true |
+| Bake check IoU at 4x (the main number), pair identity, inside 0 to 128 | 0.999 or more, true, true (automatic) | 0.9999 and 0.9997; true; true |
+
+The bake check renders the baked export back at crop scale and compares it with your crop-space drawing. Read the 4x number. It leaves out pixels within 2 levels of the threshold, because an edge that lands exactly on a half pixel renders at coverage one half and can round either way in two renders of the same geometry. The raw 4x and 1x numbers are still printed, and the 1x one flips at half pixels, so do not nudge geometry to move it. `qa/metrics/<ID>.json` also records the largest pixel difference between the two 4x renders. Across the set it reaches 58 levels of 255 at most, in a handful of isolated pixels on curves; a real shift shows along a whole edge and pulls the 4x IoU down. Since October 29 the exporter writes 4 decimals and fits each arc's radius to keep its centre, so half circles whose ends sit a diameter apart bake cleanly; there is no need to split them.
 
 CL-021's higher numbers come from its logged correction: the sheet's left ring is about 1 px wider than tall, and the trace draws a true circle. A non-zero offset means your drawing has shifted. A ratio far outside the range means a missing part, an extra part or a wrong width. Every number passing does not prove a match: look at corners, crossings, end gaps and the small features the catalogue names.
 

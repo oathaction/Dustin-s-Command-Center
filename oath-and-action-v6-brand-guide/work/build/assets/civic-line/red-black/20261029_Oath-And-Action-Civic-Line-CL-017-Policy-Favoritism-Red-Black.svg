@@ -3,21 +3,21 @@
   <title>Policy Favoritism</title>
   <desc>Oath &amp; Action Civic Line CL-017 Policy Favoritism. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
   <g id="base">
-    <rect x="24.521" y="43.836" width="35.643" height="40.327" rx="2.437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.441" y1="51.337" x2="49.9" y2="51.337" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.441" y1="59.175" x2="49.9" y2="59.175" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.441" y1="67.012" x2="49.9" y2="67.012" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="32.441" y1="74.849" x2="42.618" y2="74.849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M65.828 54.613 L69.834 54.613 A4.011 4.011 0 0 0 73.845 50.602 L73.845 46.483 A4.874 4.874 0 0 1 78.719 41.609 L86.615 41.609" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="65.95" y1="63.561" x2="86.615" y2="63.561" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M65.828 72.51 L69.834 72.51 A4.011 4.011 0 0 1 73.845 76.521 L73.845 80.64 A4.874 4.874 0 0 0 78.719 85.514 L86.615 85.514" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="96.641" cy="37.388" r="3.275" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.803 49.49 V47.697 A3.948 3.948 0 0 1 93.751 43.749 H99.531 A3.948 3.948 0 0 1 103.479 47.697 V49.49" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="96.641" cy="81.293" r="3.275" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.803 93.395 V91.601 A3.948 3.948 0 0 1 93.751 87.653 H99.531 A3.948 3.948 0 0 1 103.479 91.601 V93.395" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="24.521" y="43.8365" width="35.6432" height="40.3271" rx="2.437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.4412" y1="51.3375" x2="49.8997" y2="51.3375" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.4412" y1="59.1748" x2="49.8997" y2="59.1748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.4412" y1="67.0121" x2="49.8997" y2="67.0121" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.4412" y1="74.8494" x2="42.618" y2="74.8494" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.8277 54.6128 L69.8341 54.6128 A4.01128 4.01128 0 0 0 73.8454 50.6015 L73.8454 46.483 A4.873925 4.873925 0 0 1 78.7193 41.6091 L86.6151 41.6091" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.9496" y1="63.5613" x2="86.6151" y2="63.5613" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.8277 72.5099 L69.8341 72.5099 A4.01128 4.01128 0 0 1 73.8454 76.5212 L73.8454 80.6397 A4.873925 4.873925 0 0 0 78.7193 85.5136 L86.6151 85.5136" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.6408" cy="37.3882" r="3.2753" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.8027 49.4903 V47.6966 A3.9479 3.9479 0 0 1 93.7506 43.7487 H99.5311 A3.9479 3.9479 0 0 1 103.479 47.6966 V49.4903" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.6408" cy="81.2928" r="3.2753" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.8027 93.3948 V91.6012 A3.9479 3.9479 0 0 1 93.7506 87.6533 H99.5311 A3.9479 3.9479 0 0 1 103.479 91.6012 V93.3948" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <circle cx="96.641" cy="59.341" r="3.275" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M89.803 71.443 V69.649 A3.948 3.948 0 0 1 93.751 65.701 H99.531 A3.948 3.948 0 0 1 103.479 69.649 V71.443" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.6408" cy="59.3405" r="3.2753" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.8027 71.4425 V69.6489 A3.9479 3.9479 0 0 1 93.7506 65.701 H99.5311 A3.9479 3.9479 0 0 1 103.479 69.6489 V71.4425" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>
