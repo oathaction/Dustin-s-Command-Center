@@ -106,6 +106,36 @@ def check_svg(path, edition, errs):
     return b
 
 
+def tree_identity(rb_path, bk_path):
+    """Compare the parsed element trees of an edition pair: same tags in the same
+    order, same attributes with the same values (coordinates, transforms, masks,
+    ids, fill and stroke assignments, text), with one exception: a colour
+    attribute may read Pillar Red in red-black where black reads Charcoal.
+    Returns (ok, elements compared, red-to-charcoal swaps, first difference)."""
+    a = ET.parse(rb_path).getroot()
+    b = ET.parse(bk_path).getroot()
+    ea, eb = list(a.iter()), list(b.iter())
+    if len(ea) != len(eb):
+        return False, 0, 0, f"{len(ea)} elements against {len(eb)}"
+    swaps = 0
+    for k, (x, y) in enumerate(zip(ea, eb)):
+        if x.tag != y.tag:
+            return False, k, swaps, f"element {k}: <{strip(x.tag)}> against <{strip(y.tag)}>"
+        if set(x.attrib) != set(y.attrib):
+            return False, k, swaps, f"element {k} <{strip(x.tag)}>: attributes {sorted(set(x.attrib) ^ set(y.attrib))} differ"
+        for key, va in x.attrib.items():
+            vb = y.attrib[key]
+            if va == vb:
+                continue
+            if key in COLOR_ATTRS and va.upper() == C.PILLAR_RED and vb.upper() == C.CHARCOAL:
+                swaps += 1
+                continue
+            return False, k, swaps, f"element {k} <{strip(x.tag)}> {key}: '{va}' against '{vb}'"
+        if (x.text or "").strip() != (y.text or "").strip():
+            return False, k, swaps, f"element {k} <{strip(x.tag)}>: text differs"
+    return True, len(ea), swaps, ""
+
+
 def check_png(path, size, errs):
     name = os.path.relpath(path, C.ASSETS)
     try:
@@ -158,6 +188,7 @@ def main():
     per = []
     n_svg = n_png = 0
     pairs_ok = 0
+    trees_ok = tree_elements = tree_swaps = 0
     for r in rows:
         i = r["id"]
         has_src = os.path.exists(os.path.join(C.SRC, f"{i}.svg"))
@@ -181,6 +212,15 @@ def main():
                     errs.append(f"{i}: black file is not the red-black file with {C.PILLAR_RED} swapped for {C.CHARCOAL}")
                 else:
                     pairs_ok += 1
+                ok, n_el, n_sw, why = tree_identity(rb, bk)
+                if not ok:
+                    errs.append(f"{i}: edition trees differ: {why}")
+                else:
+                    trees_ok += 1
+                    tree_elements += n_el
+                    tree_swaps += n_sw
+                    if n_sw == 0:
+                        notes.append(f"{i}: the red-black file has no Pillar Red element")
             for p, px in pngs:
                 if not os.path.exists(p):
                     errs.append(f"{i}: {os.path.relpath(p, C.ASSETS)} is missing")
@@ -209,6 +249,24 @@ def main():
                     "last_build": st.get("last_build") if has_src else None, "errors": len(errs) - e0})
     states = {s: sum(1 for p in per if p["state"] == s) for s in ("todo", "traced", "reviewed", "fixed")}
     complete = states["todo"] == 0
+    # package counts: reference crops and contact sheets
+    want_refs = {r["reference_crops"][k] for r in rows for k in ("black", "red")}
+    have_refs = set(os.listdir(os.path.join(C.ASSETS, "reference-crops")))
+    n_refs = len(want_refs & have_refs)
+    if n_refs != 244 or len(want_refs) != 244:
+        errs.append(f"reference crops: {n_refs} of 244 present")
+    for x in sorted(have_refs - want_refs):
+        errs.append(f"reference-crops/{x}: not an inventory reference name")
+    cs_dir = os.path.join(C.ASSETS, "contact-sheets")
+    sheet_slugs = {"01": "Participation", "02": "Government-Tech", "03": "Economy-Issues", "04": "Reforms-01-25", "05": "Reforms-26-50"}
+    want_cs = [f"{C.DATE}_Oath-And-Action-Civic-Line-{k}-{v}-{ed}" for k, v in sheet_slugs.items() for ed in ("Red-Black", "Black")]
+    have_cs = set(os.listdir(cs_dir)) if os.path.isdir(cs_dir) else set()
+    cs_complete = [n for n in want_cs if all(f"{n}{x}" in have_cs for x in (".svg", ".png", "-2x.png"))]
+    if len(cs_complete) != 10:
+        missing_cs = [n for n in want_cs if n not in cs_complete]
+        (errs if complete else notes).append(f"contact sheets: {len(cs_complete)} of 10 complete (SVG, PNG and 2x PNG); missing {missing_cs}")
+    for x in sorted(have_cs - {f"{n}{e}" for n in want_cs for e in (".svg", ".png", "-2x.png")}):
+        errs.append(f"contact-sheets/{x}: unexpected file")
     if complete:
         if n_svg != 244:
             errs.append(f"{n_svg} SVGs, expected 244")
@@ -218,7 +276,10 @@ def main():
         notes.append(f"set incomplete: {states['todo']} icons todo; totals so far {n_svg} of 244 SVGs and {n_png} of 488 PNGs")
     report = {"checked": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
               "ids": len(ids), "counts_by_sheet": counts, "order_matches_catalog": cat == ids,
-              "svgs": n_svg, "pngs": n_png, "pairs_identical_after_swap": pairs_ok, "states": states,
+              "svgs": n_svg, "pngs": n_png, "pairs_identical_after_swap": pairs_ok,
+              "edition_trees_identical": trees_ok, "edition_tree_elements_compared": tree_elements,
+              "edition_tree_colour_swaps": tree_swaps, "reference_crops": n_refs, "contact_sheets": len(cs_complete),
+              "states": states,
               "complete": complete, "errors": errs, "notes": notes, "icons": per}
     C.write_json(REPORT, report)
     write_ledger(report)
@@ -230,7 +291,9 @@ def main():
         C.write_json(C.INVENTORY_JSON, inv)
         write_csv(rows)
         print("inventory status synced from qa/status")
-    print(f"IDs {len(ids)} ({counts}); SVGs {n_svg}/244; PNGs {n_png}/488; pairs identical {pairs_ok}; states {states}")
+    print(f"IDs {len(ids)} ({counts}); SVGs {n_svg}/244; PNGs {n_png}/488; reference crops {n_refs}/244; "
+          f"contact sheets {len(cs_complete)}/10; pairs identical after swap {pairs_ok}; edition trees identical {trees_ok} "
+          f"({tree_elements} elements, {tree_swaps} colour swaps); states {states}")
     for n in notes:
         print("note:", n)
     for e in errs:
@@ -248,7 +311,8 @@ def write_ledger(rep):
     L = ["# Civic Line completion ledger", "",
          f"Compiled by `verify_set.py` from the per-icon status files on {rep['checked']}. Rerun it to refresh; do not edit by hand.", "",
          f"Done: {s['traced'] + s['reviewed'] + s['fixed']} of 122 traced ({s['traced']} traced, {s['reviewed']} reviewed, {s['fixed']} fixed). To do: {s['todo']}.",
-         f"Files: {rep['svgs']} of 244 SVGs, {rep['pngs']} of 488 PNGs. Edition pairs identical after the token swap: {rep['pairs_identical_after_swap']}.",
+         f"Files: {rep['svgs']} of 244 SVGs, {rep['pngs']} of 488 PNGs, {rep['reference_crops']} of 244 reference crops, {rep['contact_sheets']} of 10 contact sheets.",
+         f"Edition pairs identical after the token swap: {rep['pairs_identical_after_swap']}. Parsed element trees identical apart from colour: {rep['edition_trees_identical']} ({rep['edition_tree_elements_compared']} elements, {rep['edition_tree_colour_swaps']} Pillar Red to Charcoal swaps).",
          f"Verification errors: {len(rep['errors'])}.", ""]
     if rep["errors"]:
         L += ["## Errors", ""] + [f"- {e}" for e in rep["errors"]] + [""]

@@ -132,14 +132,24 @@ const SKELETON_HEAD = '<!doctype html><html lang="en"><head><meta charset="utf-8
     await page.click('.seg label:has(input[value="24"])');
     F.size24 = await page.evaluate(() => document.querySelector('.ic').getBoundingClientRect().width);
     F.scroll24 = await hscroll(page);
-    // keyboard: first Tab lands on the search field with a visible outline
-    await page.evaluate(() => { document.activeElement && document.activeElement.blur(); window.scrollTo(0, 0); });
-    await page.keyboard.press('Tab');
-    F.firstTab = await page.evaluate(() => ({ id: document.activeElement.id, outline: getComputedStyle(document.activeElement).outlineStyle,
-      width: getComputedStyle(document.activeElement).outlineWidth }));
+    // keyboard: on a fresh page the first Tab lands on the search field with a visible outline
+    {
+      const k = await newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' });
+      await k.page.keyboard.press('Tab');
+      F.firstTab = await k.page.evaluate(() => ({ id: document.activeElement.id, outline: getComputedStyle(document.activeElement).outlineStyle,
+        width: getComputedStyle(document.activeElement).outlineWidth }));
+      const stops = [];
+      for (let i = 0; i < 4; i++) {
+        await k.page.keyboard.press('Tab');
+        stops.push(await k.page.evaluate(() => document.activeElement.id || document.activeElement.name || document.activeElement.getAttribute('data-open')));
+      }
+      F.tabOrder = stops;
+      F.cardFocus = await k.page.evaluate(() => ({ card: document.activeElement.getAttribute('data-open'),
+        outline: getComputedStyle(document.activeElement).outlineStyle, width: getComputedStyle(document.activeElement).outlineWidth }));
+      await k.ctx.close();
+    }
     // tab to a card, open with Enter, step with Next, close with Escape
     await page.focus('[data-open="CL-001"]');
-    F.cardFocus = await page.evaluate(() => ({ outline: getComputedStyle(document.activeElement).outlineStyle }));
     await page.keyboard.press('Enter');
     F.enterOpens = await page.evaluate(() => !!document.querySelector('dialog[open]') && document.querySelector('dialog h2').textContent);
     await page.click('dialog [data-step="1"]');

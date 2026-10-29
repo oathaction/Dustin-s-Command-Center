@@ -62,7 +62,9 @@ def main():
     ck("size control: 128 and 24 px", round(F["size128"]) == 128 and round(F["size24"]) == 24, f"{F['size128']}, {F['size24']}")
     ck("first Tab reaches the search field with a visible outline", F["firstTab"]["id"] == "q" and F["firstTab"]["outline"] != "none",
        json.dumps(F["firstTab"]))
-    ck("cards show a focus outline", F["cardFocus"]["outline"] != "none", json.dumps(F["cardFocus"]))
+    ck("keyboard order: search, edition, sheet, size, then the first card, which shows a focus outline",
+       F["tabOrder"] == ["ed-rb", "sheet", "size", "CL-001"] and F["cardFocus"]["card"] == "CL-001" and F["cardFocus"]["outline"] != "none",
+       f"{F['tabOrder']}, {json.dumps(F['cardFocus'])}")
     ck("Enter opens the detail view; Next steps on; Escape closes", bool(F["enterOpens"]) and F["nextGoesTo"].startswith("CL-002")
        and F["escapeCloses"], f"{F['enterOpens']} -> {F['nextGoesTo']}, hash {F['hash']}")
     ck("a #r-35 link opens R-35", F["hashOpens"] and F["hashOpens"].startswith("R-35"), str(F["hashOpens"]))

@@ -1,6 +1,6 @@
 {
   "file": "20261029_Civic-Line-Icon-Catalog.html",
-  "bytes": 9364848,
+  "bytes": 9364930,
   "runs": [
     {
       "tag": "1440-light",
@@ -252,12 +252,20 @@
       "bodyScroll": 0
     },
     "firstTab": {
-      "id": "",
+      "id": "q",
       "outline": "solid",
       "width": "3px"
     },
+    "tabOrder": [
+      "ed-rb",
+      "sheet",
+      "size",
+      "CL-001"
+    ],
     "cardFocus": {
-      "outline": "solid"
+      "card": "CL-001",
+      "outline": "solid",
+      "width": "3px"
     },
     "enterOpens": "CL-001 Voting",
     "nextGoesTo": "CL-002 Representation",
@@ -505,13 +513,13 @@
     },
     {
       "check": "first Tab reaches the search field with a visible outline",
-      "pass": false,
-      "detail": "{\"id\": \"\", \"outline\": \"solid\", \"width\": \"3px\"}"
+      "pass": true,
+      "detail": "{\"id\": \"q\", \"outline\": \"solid\", \"width\": \"3px\"}"
     },
     {
-      "check": "cards show a focus outline",
+      "check": "keyboard order: search, edition, sheet, size, then the first card, which shows a focus outline",
       "pass": true,
-      "detail": "{\"outline\": \"solid\"}"
+      "detail": "['ed-rb', 'sheet', 'size', 'CL-001'], {\"card\": \"CL-001\", \"outline\": \"solid\", \"width\": \"3px\"}"
     },
     {
       "check": "Enter opens the detail view; Next steps on; Escape closes",

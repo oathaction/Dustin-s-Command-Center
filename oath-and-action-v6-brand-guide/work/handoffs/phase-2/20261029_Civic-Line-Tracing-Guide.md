@@ -145,7 +145,7 @@ These targets guide the visual review; they are not pass marks. The two supplied
 | Silhouette IoU | 0.92 or more where drawn as is; 0.85 or more with circle or symmetry corrections | CL-001 0.933, CL-021 0.858 |
 | Red IoU | 0.85 or more for stroked accents; small dots and short marks score lower, so read their outlines | CL-001 0.880, CL-021 0.834 |
 | Ink area ratio, trace over reference | about 0.95 to 1.05; sheet 03 near 0.92 and sheet 05 near 1.05, since W differs from their drawn weight | CL-001 0.986, CL-021 0.943 |
-| Bake check IoU at 4x (the main number), pair identity, inside 0 to 128 | 0.999 or more, true, true (automatic) | 0.9999 and 0.9997; true; true |
+| Bake check IoU at 4x (the main number), pair identity, inside 0 to 128 | 0.999 or more, true, true (automatic) | 1.0000 and 1.0000; true; true |
 
 The bake check renders the baked export back at crop scale and compares it with your crop-space drawing. Read the 4x number. It leaves out pixels within 2 levels of the threshold, because an edge that lands exactly on a half pixel renders at coverage one half and can round either way in two renders of the same geometry. The raw 4x and 1x numbers are still printed, and the 1x one flips at half pixels, so do not nudge geometry to move it. `qa/metrics/<ID>.json` also records the largest pixel difference between the two 4x renders. Across the set it reaches 58 levels of 255 at most, in a handful of isolated pixels on curves; a real shift shows along a whole edge and pulls the 4x IoU down. Since October 29 the exporter writes 4 decimals and fits each arc's radius to keep its centre, so half circles whose ends sit a diameter apart bake cleanly; there is no need to split them.
 

@@ -98,11 +98,52 @@ def bake_tests():
     a = [p for poly in S.flatten_path(segs) for p in poly]
     b = [p for poly in S.flatten_path(baked) for p in poly]
     err = max(max(abs(M.X(x) - X), abs(M.Y(y) - Y)) for (x, y), (X, Y) in zip(a, b))
-    check("bake: relative commands, arcs and a leading m map point for point", len(a) == len(b) and err < 1e-9, f"max error {err:.2e}")
+    check("bake: relative commands, arcs and a leading m map point for point (4-decimal output)", len(a) == len(b) and err < 5e-4,
+          f"max error {err:.2e} units")
     txt = S.path_string(baked)
     back = [p for poly in S.flatten_path(S.tokenize_path(txt, "t")) for p in poly]
     err2 = max(max(abs(X - x2), abs(Y - y2)) for (X, Y), (x2, y2) in zip(b, back))
-    check("bake: serialised path re-reads within the 0.001-unit rounding", err2 < 0.005, f"max error {err2:.4f} units")
+    check("bake: serialised path re-reads within the output rounding", err2 < 5e-4, f"max error {err2:.5f} units")
+    arc_centre_test()
+
+
+def svg_arc_centre(x1, y1, rx, ry, fa, fs, x2, y2):
+    """Centre a renderer computes for an unrotated arc (SVG 1.1 F.6.5, with radius scaling)."""
+    import math
+    dx, dy = (x1 - x2) / 2, (y1 - y2) / 2
+    lam = (dx / rx) ** 2 + (dy / ry) ** 2
+    if lam > 1:
+        rx, ry = rx * math.sqrt(lam), ry * math.sqrt(lam)
+    num = rx * rx * ry * ry - rx * rx * dy * dy - ry * ry * dx * dx
+    den = rx * rx * dy * dy + ry * ry * dx * dx
+    co = math.sqrt(max(0.0, num / den))
+    if fa == fs:
+        co = -co
+    return co * rx * dy / ry + (x1 + x2) / 2, -co * ry * dx / rx + (y1 + y2) / 2
+
+
+def arc_centre_test():
+    """Half circles whose ends sit a diameter apart, and near-half circles, keep
+    their centre through the bake within 0.01 source px."""
+    import math
+    import random
+    rnd = random.Random(7)
+    s = 0.487395
+    worst = 0.0
+    for _ in range(4000):
+        cx, cy, r, th = rnd.uniform(20, 150), rnd.uniform(20, 110), rnd.uniform(3, 50), rnd.uniform(0, 2 * math.pi)
+        dt = 0.0 if rnd.random() < 0.5 else rnd.uniform(0.0005, 0.05)
+        x1, y1 = cx + r * math.cos(th), cy + r * math.sin(th)
+        x2, y2 = cx + r * math.cos(th + math.pi - dt), cy + r * math.sin(th + math.pi - dt)
+        fs = rnd.randint(0, 1)
+        tcx, tcy = rnd.uniform(60, 120), rnd.uniform(40, 80)
+        X = lambda v: s * (v - tcx) + 64  # noqa: E731
+        Y = lambda v: s * (v - tcy) + 64  # noqa: E731
+        want = svg_arc_centre(X(x1), Y(y1), r * s, r * s, 0, fs, X(x2), Y(y2))
+        (_, m), (_, a) = S.transform_path([("M", [x1, y1]), ("A", [r, r, 0, 0, fs, x2, y2])], X, Y, s)
+        got = svg_arc_centre(m[0], m[1], a[0], a[1], 0, fs, a[5], a[6])
+        worst = max(worst, math.hypot(got[0] - want[0], got[1] - want[1]) / s)
+    check("bake: 4000 half and near-half arcs keep their centre within 0.01 source px", worst < 0.01, f"worst {worst:.5f} px")
 
 
 FEATURE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" data-id="R-35" viewBox="0 0 179 123">
@@ -141,8 +182,8 @@ def feature_build_test():
             os.makedirs(os.path.join(assets, sub), exist_ok=True)
         inv = C.load_inventory()
         row = [r for r in inv["icons"] if r["id"] == "R-35"][0]
-        for k in ("black", "red"):
-            shutil.copy(os.path.join(C.ASSETS, "reference-crops", row["reference_crops"][k]), os.path.join(assets, "reference-crops"))
+        for f in os.listdir(os.path.join(C.ASSETS, "reference-crops")):   # all 244, so the package count can pass
+            shutil.copy(os.path.join(C.ASSETS, "reference-crops", f), os.path.join(assets, "reference-crops"))
         for suf in ("ink", "red"):
             shutil.copy(os.path.join(C.QA, "masks", f"R-35-{suf}.png"), os.path.join(assets, "qa", "masks"))
         shutil.copy(C.SCALE_JSON, os.path.join(assets, "qa"))
@@ -163,7 +204,7 @@ def feature_build_test():
         if fail:
             return
         m = C.read_json(os.path.join(C.QA, "metrics", "R-35.json"))
-        check("feature: bake check IoU at 1x and 4x near 1", m["bake_check_iou_1x"] > 0.995 and m["bake_check_iou_4x"] > 0.995,
+        check("feature: bake check IoU at 4x (main) and 1x near 1", m["bake_check_iou_4x"] > 0.999 and m["bake_check_iou_1x"] > 0.995,
               f"{m['bake_check_iou_1x']}, {m['bake_check_iou_4x']}")
         check("feature: pair identical after the token swap", m["pair_identical_after_swap"])
         check("feature: drawing inside 0..128 with stroke", m["export_inside_0_128"], str(m["export_drawn_bounds"]))
@@ -208,6 +249,8 @@ def feature_build_test():
         orig = open(bk).read()
         tamper(V, bk, orig.replace('r="', 'r="1', 1), "tampered black geometry", "is not the red-black file")
         tamper(V, bk, orig.replace(C.CHARCOAL, C.PILLAR_RED, 1), "red token in the black file", "red value")
+        sw = 'stroke-width="' + S.fmt4(5.5 * row["transform"]["s"]) + '"'
+        tamper(V, bk, orig.replace(sw, 'stroke-width="3"', 1), "a stroke width changed in the black tree", "edition trees differ")
         rbp = os.path.join(assets, "red-black", row["exports"]["svg_red_black"])
         rb_orig = open(rbp).read()
         bg = rb_orig.replace('<g id="base-1">', '<rect x="0" y="0" width="128" height="128" fill="#121212"/><g id="base-1">')

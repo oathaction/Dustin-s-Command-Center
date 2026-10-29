@@ -1600,9 +1600,7 @@
         "red-black": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red-Black.svg",
           "footer_size_px": 12.7,
-          "missing_icons": [
-            "R-50"
-          ],
+          "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
           "source_wordmark_width_px": 243
@@ -1610,9 +1608,7 @@
         "black": {
           "file": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.svg",
           "footer_size_px": 12.7,
-          "missing_icons": [
-            "R-50"
-          ],
+          "missing_icons": [],
           "wordmark_scale": 0.22,
           "wordmark_width_px": 215.23,
           "source_wordmark_width_px": 243

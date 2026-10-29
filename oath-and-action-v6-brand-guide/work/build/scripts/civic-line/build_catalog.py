@@ -150,7 +150,7 @@ CSS = """
 __LIGHT__  --font-display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --icon-size: 48px;
-  --card-min: 128px;
+  --card-min: 104px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -215,7 +215,7 @@ input[type="search"] { width: min(280px, 100%); }
 .card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .tile {
   display: grid; place-items: center; background: var(--tile); border-radius: 6px;
-  aspect-ratio: 1 / 1; max-width: 100%; margin-bottom: 6px;
+  height: calc(var(--icon-size) + 40px); max-width: 100%; margin-bottom: 6px;
 }
 .card:hover .tile { box-shadow: inset 0 0 0 2px var(--icon-ink); }
 .ic { width: var(--icon-size); height: var(--icon-size); display: block; }
@@ -259,6 +259,7 @@ ol.corr .why { color: var(--muted); display: block; }
   .tile { transition: box-shadow 120ms ease-out; }
 }
 @media (max-width: 560px) {
+  .toolbar { position: static; gap: 12px; }
   .count { margin-left: 0; width: 100%; }
   .seg span { padding: 8px 10px; }
 }
@@ -275,7 +276,7 @@ JS = r"""
   var countEl = document.getElementById('count');
   var empty = document.getElementById('empty');
   var cells = Array.prototype.slice.call(document.querySelectorAll('.cell'));
-  var sizes = { '24': 104, '32': 112, '48': 128, '64': 140, '128': 168 };
+  var sizes = { '24': 96, '32': 100, '48': 104, '64': 128, '128': 168 };
   var lastOpener = null, current = null, visibleIds = [];
 
   function store(k, v) { try { localStorage.setItem('civic-line-' + k, v); } catch (e) {} }
@@ -287,7 +288,7 @@ JS = r"""
   }
   function setSize(v) {
     main.style.setProperty('--icon-size', v + 'px');
-    main.style.setProperty('--card-min', (sizes[v] || 128) + 'px');
+    main.style.setProperty('--card-min', (sizes[v] || 104) + 'px');
     store('size', v);
   }
   function apply() {
@@ -341,7 +342,7 @@ JS = r"""
       '<dt>Builds</dt><dd>' + ic.builds + '</dd><dt>Tracer</dt><dd>' + (esc(ic.tracer) || 'none yet') + '</dd></dl>' +
       '<p class="small" style="margin-top:8px">IoU compares two shapes: 1 means identical. Edge distance is how far the trace\'s edges sit from the reference\'s, in source pixels.</p></section>' +
       '<section><h3>Corrections logged by the tracer</h3>' + corr + (ic.notes ? '<p class="prose" style="margin-top:8px">' + esc(ic.notes) + '</p>' : '') + '</section>' +
-      '<section><h3>Catalogue description</h3><p class="prose">' + esc(ic.construction) + '</p><p class="prose" style="margin-top:8px"><b>Accent:</b> ' + esc(ic.redText) + '</p></section></div>';
+      '<section><h3>Catalogue description</h3><p class="prose"><b>Construction:</b> ' + esc(ic.construction) + '</p><p class="prose" style="margin-top:8px"><b>Accent:</b> ' + esc(ic.redText) + '</p></section></div>';
   }
   function open(id, opener) {
     var ic = byId[id]; if (!ic) return;
