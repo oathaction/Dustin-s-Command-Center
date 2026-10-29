@@ -1,27 +1,27 @@
 {
   "id": "CL-045",
   "label": "Pricing Algorithms",
-  "built": "2026-10-29T08:18:50+00:00",
+  "built": "2026-10-29T08:30:43+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9246,
-  "silhouette_iou_4x": 0.9147,
+  "silhouette_iou_1x": 0.9244,
+  "silhouette_iou_4x": 0.9144,
   "red_iou_1x": 0.9167,
   "red_iou_4x": 0.9215,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.237,
+      "mean": 0.238,
       "p95": 0.707,
       "max": 2.475
     },
     "trace_to_reference": {
-      "mean": 0.236,
+      "mean": 0.237,
       "p95": 0.707,
       "max": 2.475
     },
     "symmetric": {
-      "mean": 0.237,
+      "mean": 0.238,
       "p95": 0.707,
       "max": 2.475
     }
@@ -46,12 +46,12 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9246
+    "iou": 0.9244
   },
-  "ink_area_ratio_trace_over_reference": 0.9687,
+  "ink_area_ratio_trace_over_reference": 0.9684,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
-  "bake_check_iou_1x": 1.0,
+  "bake_check_iou_1x": 0.9998,
   "bake_check_max_diff_levels_4x": 8,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 6,
+  "corrections_logged": 7,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

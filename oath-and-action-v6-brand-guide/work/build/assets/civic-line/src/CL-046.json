@@ -23,9 +23,13 @@
       "why": "The lower rules measure 0.4 px below their dots; the rule and dot share one line once cleaned up. Moves are 0.3 px or less."
     },
     {
-      "what": "Spaced the chip's pins evenly and centred them on the chip body: top and bottom pins at x 134.02, 148.31 and 162.6, side pins at y 45.9, 60.92 and 75.94, all pins on a side one length (18.45 px top and bottom, 16.55 px at the sides)",
-      "why": "DR-03 equal repeats and symmetry. Measured top pins sit at 133.93, 148.62 and 162.5; side pins at 45.4, 60.42 and 75.44, 0.5 px above the body's centre."
+      "what": "Spaced the chip's pins at one pitch, 14.65 px, centred on the chip (148.31, 60.92): top and bottom pins at x 133.66, 148.31 and 162.96, side pins at y 46.27, 60.92 and 75.57, all 17.5 px long",
+      "why": "DR-03 equal repeats and the review fix. Measured top pins sit at 133.93, 148.62 and 162.5; side pins at 45.4, 60.42 and 75.44."
+    },
+    {
+      "what": "Squared the chip and its core about (148.31, 60.92): chip 62.04 x 62.04 px (x 117.29 to 179.33, y 29.9 to 91.94), core 21.72 x 21.72 px (x 137.45 to 159.17, y 50.065 to 71.785)",
+      "why": "Review fix (should). The catalogue says square; the sheet draws both 4 percent taller than wide (chip 60.62 x 63.46, core 21.3 x 22.15). Each side moves about 0.7 px, the side with the most movement being the chip's top and bottom."
     }
   ],
-  "notes": "Pin count from the sheet: three per side, twelve in all. Kept the chip body (60.62 x 63.46 px, corner radius 8.5) and the inner square (21.3 x 22.15 px) at the sheet's proportion, about 4 percent taller than wide. The catalogue says 'square', but both squares carry the same proportion while the round dots in the same crop are true circles, so the proportion is in the drawing, not a stretch of the raster. Squaring them would move the top and bottom edges about 1.4 px each; I left that for review. The inner square keeps the round joins, as drawn."
+  "notes": "Pin count from the sheet: three per side, twelve in all. The chip and core are now true squares (review decision); the sheet draws both about 4 percent taller than wide. The inner square keeps the round joins, as drawn; the chip keeps corner radius 8.5."
 }

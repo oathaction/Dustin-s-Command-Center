@@ -2,11 +2,26 @@
   "id": "R-44",
   "tracer": "T6",
   "corrections": [
-    {"what": "Gave both browser windows one size, 87.44 by 71.94 px on the centreline, each on its own measured centre: the left window narrows 0.85 px at each side and the right one widens 0.85 px at each side", "why": "The catalogue asks for equal window dimensions, and the sheet's windows differ: the left measures 89.13 by 71.38 px, the right 85.74 by 72.5. This is the largest edge change in the icon and most of the gap in silhouette IoU."},
-    {"what": "Kept the right window 2.7 px higher than the left, as drawn", "why": "Aligning them would move each whole window 1.35 px and pull silhouette IoU to 0.68. The catalogue asks only for equal dimensions, so the offset stays."},
-    {"what": "Gave both windows one internal layout: header line 17.42 px below the top, dots 8.75 px below the top (r 2.55, 9.22 px apart), lens r 12.5 at (-1.7, +7.0) from the window centre with its handle at 45.6 degrees", "why": "DR-03 equal repeats. The two windows' measurements agree to 0.3 px (headers 17.3 and 17.53 below the tops, dots 8.75 and 8.74, lens offsets -1.39 and -2.0, lens radii 12.5 both, dot spacing 9.27 and 9.17). Dots keep their measured x positions."},
-    {"what": "Drew the two arrows as one shape mirrored: shafts from x 114.8 to 142.45, heads 8.65 px deep and 16.6 px tall, on their drawn lines y 29.9 and 62.3", "why": "DR-03 equal repeats. The upper arrow measures 27.97 px long with arms at 8.8 by 8.15 px; the lower one 27.25 px with arms at 8.5 by 8.5."},
-    {"what": "Gave all eight window corners one radius, 7.25 px, and drew every stroke at W, 5.5 px", "why": "DR-03. Corner fits read 6.36 to 8.09 px; the icon measures 5.25 px."}
+    {
+      "what": "Gave both browser windows one size, 87.44 by 71.94 px on the centreline, each on its own measured centre: the left window narrows 0.85 px at each side and the right one widens 0.85 px at each side",
+      "why": "The catalogue asks for equal window dimensions, and the sheet's windows differ: the left measures 89.13 by 71.38 px, the right 85.74 by 72.5. This is the largest edge change in the icon and most of the gap in silhouette IoU."
+    },
+    {
+      "what": "Review fix: aligned the two windows with both tops at y 12.625, moving the left window and its contents up 1.345 px and the right window and its contents down 1.345 px (sheet tops 13.97 and 11.28); the arrows stay on their drawn lines",
+      "why": "DR-03 equal repeats. Beside two equal windows the sheet's 2.7 px height offset reads as a mistake (review should fix). Both move by the same amount, so the ink-box centre is unchanged."
+    },
+    {
+      "what": "Gave both windows one internal layout: header line 17.42 px below the top, dots 8.75 px below the top (r 2.55, 9.22 px apart), lens r 12.5 at (-1.7, +7.0) from the window centre with its handle at 45.6 degrees",
+      "why": "DR-03 equal repeats. The two windows' measurements agree to 0.3 px (headers 17.3 and 17.53 below the tops, dots 8.75 and 8.74, lens offsets -1.39 and -2.0, lens radii 12.5 both, dot spacing 9.27 and 9.17). Dots keep their measured x positions."
+    },
+    {
+      "what": "Drew the two arrows as one shape mirrored: shafts from x 114.8 to 142.45, heads 8.65 px deep and 16.6 px tall, on their drawn lines y 29.9 and 62.3",
+      "why": "DR-03 equal repeats. The upper arrow measures 27.97 px long with arms at 8.8 by 8.15 px; the lower one 27.25 px with arms at 8.5 by 8.5."
+    },
+    {
+      "what": "Gave all eight window corners one radius, 7.25 px, and drew every stroke at W, 5.5 px",
+      "why": "DR-03. Corner fits read 6.36 to 8.09 px; the icon measures 5.25 px."
+    }
   ],
   "notes": "Kept: three header dots in each window, one magnifier per window with its handle down-right, the upper arrow pointing right and the lower one pointing left, both clear of the window edges. Red: both magnifiers and the upper arrow, as the catalogue and red sheet agree."
 }

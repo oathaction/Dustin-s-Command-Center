@@ -2,28 +2,28 @@
   <!-- R-44 Digital Competition. Crop 254 x 96 px; ink box x 8..246, y 8..88.
        Construction: two matching small browser windows at left and right. Each has a top header band with small dots and a large magnifier symbol inside its content area. Between the windows, an upper arrow points right and a lower arrow points left. Keep the two arrows detached from the window edges.
        Red: both in-window magnifiers and the upper right-pointing arrow. Browser framing and lower left-pointing arrow remain black. Preserve equal window dimensions and the opposing-arrow arrangement.
-       Both windows share one size (87.44 x 71.94) and one internal layout, each window keeping its drawn height on the sheet
-       (the right one sits 2.7 px higher).
+       Both windows share one size (87.44 x 71.94) and one internal layout, with both tops level at y 12.625
+       (the sheet sets the right one 2.7 px higher; review fix aligns them).
        The arrows are one shape mirrored: shafts x 114.8 to 142.45, heads 8.65 px deep and 16.6 px tall. -->
   <g data-role="base">
-    <rect id="window-left" x="11.72" y="13.97" width="87.44" height="71.94" rx="7.25"/>
-    <line id="header-left" x1="11.72" y1="31.39" x2="99.16" y2="31.39"/>
-    <circle id="dot-left-1" class="fill" cx="20.91" cy="22.72" r="2.55"/>
-    <circle id="dot-left-2" class="fill" cx="30.13" cy="22.72" r="2.55"/>
-    <circle id="dot-left-3" class="fill" cx="39.35" cy="22.72" r="2.55"/>
-    <rect id="window-right" x="156.78" y="11.28" width="87.44" height="71.94" rx="7.25"/>
-    <line id="header-right" x1="156.78" y1="28.70" x2="244.22" y2="28.70"/>
-    <circle id="dot-right-1" class="fill" cx="167.97" cy="20.03" r="2.55"/>
-    <circle id="dot-right-2" class="fill" cx="177.19" cy="20.03" r="2.55"/>
-    <circle id="dot-right-3" class="fill" cx="186.41" cy="20.03" r="2.55"/>
+    <rect id="window-left" x="11.72" y="12.625" width="87.44" height="71.94" rx="7.25"/>
+    <line id="header-left" x1="11.72" y1="30.045" x2="99.16" y2="30.045"/>
+    <circle id="dot-left-1" class="fill" cx="20.91" cy="21.375" r="2.55"/>
+    <circle id="dot-left-2" class="fill" cx="30.13" cy="21.375" r="2.55"/>
+    <circle id="dot-left-3" class="fill" cx="39.35" cy="21.375" r="2.55"/>
+    <rect id="window-right" x="156.78" y="12.625" width="87.44" height="71.94" rx="7.25"/>
+    <line id="header-right" x1="156.78" y1="30.045" x2="244.22" y2="30.045"/>
+    <circle id="dot-right-1" class="fill" cx="167.97" cy="21.375" r="2.55"/>
+    <circle id="dot-right-2" class="fill" cx="177.19" cy="21.375" r="2.55"/>
+    <circle id="dot-right-3" class="fill" cx="186.41" cy="21.375" r="2.55"/>
     <line id="arrow-left-shaft" x1="114.8" y1="62.3" x2="142.45" y2="62.3"/>
     <polyline id="arrow-left-head" points="123.45,54 114.8,62.3 123.45,70.6"/>
   </g>
   <g data-role="accent">
-    <circle id="lens-left" cx="53.74" cy="56.94" r="12.5"/>
-    <line id="handle-left" x1="62.49" y1="65.87" x2="69.24" y2="72.77"/>
-    <circle id="lens-right" cx="198.80" cy="54.25" r="12.5"/>
-    <line id="handle-right" x1="207.55" y1="63.18" x2="214.30" y2="70.08"/>
+    <circle id="lens-left" cx="53.74" cy="55.595" r="12.5"/>
+    <line id="handle-left" x1="62.49" y1="64.525" x2="69.24" y2="71.425"/>
+    <circle id="lens-right" cx="198.80" cy="55.595" r="12.5"/>
+    <line id="handle-right" x1="207.55" y1="64.525" x2="214.30" y2="71.425"/>
     <line id="arrow-right-shaft" x1="114.8" y1="29.9" x2="142.45" y2="29.9"/>
     <polyline id="arrow-right-head" points="133.8,21.6 142.45,29.9 133.8,38.2"/>
   </g>

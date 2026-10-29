@@ -1,27 +1,27 @@
 {
   "id": "R-45",
   "label": "Paper Ballots & Audits",
-  "built": "2026-10-29T08:20:00+00:00",
+  "built": "2026-10-29T08:30:16+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9212,
-  "silhouette_iou_4x": 0.9126,
+  "silhouette_iou_1x": 0.9191,
+  "silhouette_iou_4x": 0.9111,
   "red_iou_1x": 0.9056,
   "red_iou_4x": 0.9227,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.232,
-      "p95": 0.707,
+      "mean": 0.237,
+      "p95": 0.75,
       "max": 3.75
     },
     "trace_to_reference": {
-      "mean": 0.221,
+      "mean": 0.224,
       "p95": 0.707,
       "max": 3.4
     },
     "symmetric": {
-      "mean": 0.226,
+      "mean": 0.23,
       "p95": 0.707,
       "max": 3.75
     }
@@ -46,9 +46,9 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9212
+    "iou": 0.9191
   },
-  "ink_area_ratio_trace_over_reference": 1.0293,
+  "ink_area_ratio_trace_over_reference": 1.0324,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,

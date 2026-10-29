@@ -1,54 +1,54 @@
 {
   "id": "CL-054",
   "label": "Home Equity",
-  "built": "2026-10-29T08:18:54+00:00",
+  "built": "2026-10-29T08:30:44+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9055,
-  "silhouette_iou_4x": 0.9187,
-  "red_iou_1x": 0.9243,
-  "red_iou_4x": 0.9254,
+  "silhouette_iou_1x": 0.9056,
+  "silhouette_iou_4x": 0.9189,
+  "red_iou_1x": 0.9264,
+  "red_iou_4x": 0.9278,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.222,
+      "mean": 0.221,
       "p95": 0.5,
       "max": 0.791
     },
     "trace_to_reference": {
-      "mean": 0.222,
+      "mean": 0.221,
       "p95": 0.5,
       "max": 0.901
     },
     "symmetric": {
-      "mean": 0.222,
+      "mean": 0.221,
       "p95": 0.5,
       "max": 0.901
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.17,
-      "p95": 0.5,
+      "mean": 0.164,
+      "p95": 0.354,
       "max": 0.75
     },
     "trace_to_reference": {
-      "mean": 0.172,
-      "p95": 0.5,
-      "max": 1.061
+      "mean": 0.164,
+      "p95": 0.354,
+      "max": 0.75
     },
     "symmetric": {
-      "mean": 0.171,
-      "p95": 0.5,
-      "max": 1.061
+      "mean": 0.164,
+      "p95": 0.354,
+      "max": 0.75
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9055
+    "iou": 0.9056
   },
-  "ink_area_ratio_trace_over_reference": 0.9297,
+  "ink_area_ratio_trace_over_reference": 0.9295,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,

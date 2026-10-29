@@ -3,7 +3,7 @@
   "label": "Digital Competition",
   "state": "traced",
   "tracer": "T6",
-  "iterations": 3,
+  "iterations": 4,
   "history": [
     {
       "iteration": 1,
@@ -34,6 +34,16 @@
       "red_iou_1x": 0.907,
       "edge_mean_px": 0.372,
       "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T08:30:42+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.6835,
+      "red_iou_1x": 0.7834,
+      "edge_mean_px": 0.986,
+      "edge_p95_px": 1.75
     }
   ],
   "notes": [
@@ -43,17 +53,18 @@
       "note": "overlay checked; windows equalised per catalogue (0.85 px per side), layouts and arrows matched"
     }
   ],
-  "last_build": "2026-10-29T07:16:03+00:00",
+  "last_build": "2026-10-29T08:30:42+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8588,
-    "red_iou_1x": 0.907,
-    "bake_check_iou_1x": 1.0,
+    "silhouette_iou_1x": 0.6835,
+    "red_iou_1x": 0.7834,
+    "bake_check_iou_4x": 1.0,
+    "bake_check_iou_1x": 0.998,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0373,
-    "edge_mean_px": 0.372,
-    "edge_p95_px": 1.0,
-    "edge_max_px": 1.601,
+    "ink_area_ratio_trace_over_reference": 1.0395,
+    "edge_mean_px": 0.986,
+    "edge_p95_px": 1.75,
+    "edge_max_px": 2.475,
     "best_offset": [
       0,
       0
@@ -65,8 +76,8 @@
       "why": "The catalogue asks for equal window dimensions, and the sheet's windows differ: the left measures 89.13 by 71.38 px, the right 85.74 by 72.5. This is the largest edge change in the icon and most of the gap in silhouette IoU."
     },
     {
-      "what": "Kept the right window 2.7 px higher than the left, as drawn",
-      "why": "Aligning them would move each whole window 1.35 px and pull silhouette IoU to 0.68. The catalogue asks only for equal dimensions, so the offset stays."
+      "what": "Review fix: aligned the two windows with both tops at y 12.625, moving the left window and its contents up 1.345 px and the right window and its contents down 1.345 px (sheet tops 13.97 and 11.28); the arrows stay on their drawn lines",
+      "why": "DR-03 equal repeats. Beside two equal windows the sheet's 2.7 px height offset reads as a mistake (review should fix). Both move by the same amount, so the ink-box centre is unchanged."
     },
     {
       "what": "Gave both windows one internal layout: header line 17.42 px below the top, dots 8.75 px below the top (r 2.55, 9.22 px apart), lens r 12.5 at (-1.7, +7.0) from the window centre with its handle at 45.6 degrees",

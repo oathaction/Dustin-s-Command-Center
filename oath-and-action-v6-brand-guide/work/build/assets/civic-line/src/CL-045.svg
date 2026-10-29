@@ -8,7 +8,7 @@
   <g data-role="base">
     <polygon id="front-tag" points="10.5,117.6 10.5,49.4 30.98,28.25 41.42,28.25 61.9,49.4 61.9,117.6"/>
     <polyline id="back-tag" points="69.5,45.85 82.2,31.5 94.3,31.2 113.8,55.1 110.5,118.8 65.5,117.04"/>
-    <line id="string" x1="36.2" y1="47.0" x2="43.7" y2="28.3"/>
+    <line id="string" x1="36.2" y1="47.0" x2="42.96" y2="30.16"/>
     <polyline id="loop" points="40.8,28.3 59.1,10.9 82.2,31.5"/>
     <circle id="front-hole" class="fill" cx="36.2" cy="47.0" r="5.5"/>
     <circle id="back-hole" class="fill" cx="88.2" cy="50.55" r="5.5"/>

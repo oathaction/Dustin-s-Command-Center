@@ -4,7 +4,7 @@
        Red: the upward-right zigzag arrow. House, chart perimeter and bars remain black. Keep this chart drawing distinct from Household Security’s dollar-sign ledger.
        Trace: the roof (apex x 67.68) runs into the chart panel's left edge, which also closes the house
        at right; the house walls stop short below the roof and the chimney is an open outline above it.
-       Arrow: one zigzag with parallel rising legs, and an L-shaped head with a square tip. -->
+       Arrow: one zigzag with parallel rising legs, and an L-shaped head with a round-joined tip. -->
   <g data-role="base">
     <polyline id="roof" points="11.3,58.53 67.68,12.3 110.87,47.72"/>
     <polyline id="chimney" points="94.95,23.55 94.95,11.31 112.92,11.31 112.92,29.45"/>
@@ -17,6 +17,6 @@
   </g>
   <g data-role="accent">
     <polyline id="arrow-zigzag" points="129.86,85.75 141.17,69.99 150.08,75.92 166.65,53.1"/>
-    <polyline id="arrow-head" class="miter" points="158.15,53.1 167.5,53.1 167.5,61.85"/>
+    <polyline id="arrow-head" points="158.15,53.1 167.5,53.1 167.5,61.85"/>
   </g>
 </svg>

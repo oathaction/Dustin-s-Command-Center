@@ -4,7 +4,7 @@
        Red: the front page's top information rule and the check inside the lens. Paper contours, other rules, lens border and handle stay black. Preserve the visible offset sheet edges.
        Each sheet shows its top edge (stopping at the sheet in front), its left side and its bottom edge.
        The back sheet's right side rises to the middle sheet's bottom edge. The lens is a circle r 34.6;
-       the handle is an open-ended capsule outline 14.1 px wide whose upper side starts just clear of the lens ring and whose lower side joins it. -->
+       the handle is an open-ended capsule outline 14.1 px wide whose two sides both join the lens ring; the upper side starts on the ring's outer edge (r 37.35). -->
   <g data-role="base">
     <path id="front-sheet" d="M56 91.6 H35.95 A2 2 0 0 1 33.95 89.6 V14.46 A4 4 0 0 1 37.95 10.46 H101.87 A6.5 6.5 0 0 1 108.37 16.96 V19.5"/>
     <path id="middle-sheet" d="M33.95 20.56 H25.55 A3 3 0 0 0 22.55 23.56 V99.2 A2.5 2.5 0 0 0 25.05 101.7 H100.25"/>
@@ -13,7 +13,7 @@
     <line id="rule-3" x1="50.15" y1="63.02" x2="81.5" y2="63.02"/>
     <line id="rule-4" x1="50.15" y1="77.57" x2="81.5" y2="77.57"/>
     <circle id="lens" cx="127.3" cy="60.5" r="34.6"/>
-    <path id="handle" d="M161.2 85.92 L177.68 102.4 A7.05 7.05 0 0 1 177.68 112.36 A7.05 7.05 0 0 1 167.71 112.37 L145.36 90.02"/>
+    <path id="handle" d="M157.61 82.33 L177.68 102.4 A7.05 7.05 0 0 1 177.68 112.36 A7.05 7.05 0 0 1 167.71 112.37 L145.36 90.02"/>
   </g>
   <g data-role="accent">
     <line id="rule-1" x1="62.75" y1="29.75" x2="79.87" y2="29.75"/>

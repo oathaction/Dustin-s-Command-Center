@@ -5,7 +5,7 @@
   <g id="base">
     <polygon points="21.1092,89.637 21.1092,56.3966 31.0911,46.0882 36.1795,46.0882 46.1613,56.3966 46.1613,89.637" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="49.8655,54.6664 56.0555,47.6723 61.9529,47.526 71.4571,59.1748 69.8487,90.2219 47.916,89.364" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="33.6353" y1="55.2269" x2="37.2908" y2="46.1126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.6353" y1="55.2269" x2="36.9301" y2="47.0192" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="35.8773,46.1126 44.7966,37.6319 56.0555,47.6723" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="33.6353" cy="55.2269" r="2.6807" fill="#121212"/>
     <circle cx="58.9798" cy="56.9571" r="2.6807" fill="#121212"/>

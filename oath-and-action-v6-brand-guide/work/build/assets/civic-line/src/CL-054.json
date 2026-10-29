@@ -15,8 +15,8 @@
       "why": "DR-03. They measure 125.71 and 125.86 deg."
     },
     {
-      "what": "Drew the arrowhead as an L of two short strokes with a square (mitred) tip at (167.5, 53.1), the top arm ending at x 158.15 and the right arm at y 61.85",
-      "why": "The red sheet shows a square outer corner at the tip and round ends on both arms; the shaft runs into the inside of the corner."
+      "what": "Drew the arrowhead as an L of two short strokes with a round-joined tip at (167.5, 53.1), the top arm ending at x 158.15 and the right arm at y 61.85",
+      "why": "Review fix (should): the tip takes the round join used by 27 of the set's 29 arrowheads, including R-26's matching rising chart arrow. The red sheet's tip is squarer, so the corner's outer edge now sits about 1 px inside it. The shaft runs into the inside of the corner."
     },
     {
       "what": "Spaced the three bars evenly, 16.135 px apart (x 131.5, 147.63, 163.77), on one base, y 110.25",

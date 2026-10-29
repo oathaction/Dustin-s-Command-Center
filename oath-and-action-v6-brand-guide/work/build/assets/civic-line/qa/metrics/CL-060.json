@@ -1,28 +1,28 @@
 {
   "id": "CL-060",
   "label": "Taxes & Benefits",
-  "built": "2026-10-29T08:18:57+00:00",
+  "built": "2026-10-29T08:30:44+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9323,
-  "silhouette_iou_4x": 0.9142,
+  "silhouette_iou_1x": 0.9423,
+  "silhouette_iou_4x": 0.9171,
   "red_iou_1x": 0.9521,
   "red_iou_4x": 0.9244,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.239,
-      "p95": 0.559,
+      "mean": 0.231,
+      "p95": 0.354,
       "max": 1.0
     },
     "trace_to_reference": {
-      "mean": 0.241,
-      "p95": 0.559,
+      "mean": 0.233,
+      "p95": 0.354,
       "max": 1.346
     },
     "symmetric": {
-      "mean": 0.24,
-      "p95": 0.559,
+      "mean": 0.232,
+      "p95": 0.354,
       "max": 1.346
     }
   },
@@ -46,9 +46,9 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9323
+    "iou": 0.9423
   },
-  "ink_area_ratio_trace_over_reference": 0.9192,
+  "ink_area_ratio_trace_over_reference": 0.9217,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,

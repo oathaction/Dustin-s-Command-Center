@@ -25,7 +25,11 @@
     {
       "what": "Drew the dollar sign as an S of six elliptical arcs, point-symmetric about (36.3, 83.3), with short bars above and below on x 36.2",
       "why": "Fitted to the red sheet's centreline: bowls about 7.0 to 7.4 px wide and 6.3 px tall, terminals flaring slightly past the bowls. The bars stop at the S, as drawn."
+    },
+    {
+      "what": "Ended the string 2 px shorter along its own line, at (42.96, 30.16), so its round cap sits inside the front tag's right shoulder",
+      "why": "Review fix (must). The cap at (43.7, 28.3) stood out of the shoulder as a lumpy knob at crop (42 to 47, 25 to 31); the shorter string leaves a clean V notch where the string, the loop and the shoulder meet."
     }
   ],
-  "notes": "Kept as drawn: the string from the front hole to the front tag's top, and the peaked loop that rises from that corner to the back tag's top-left corner; the three strokes meet in one blob at about (42, 28) and the trace keeps their fitted end points there. The back tag's left shoulder stops about 2 px short of the front tag's right side (occlusion gap), and its bottom edge runs into the front tag's bottom-right corner with the small notch the sheet shows. The circuit keeps one stem, one rounded elbow down to the lower terminal and one branch right; the red top ring lies over the black stem, as on the red sheet. Red placement follows the red sheet."
+  "notes": "Kept as drawn: the string from the front hole to the front tag's top, and the peaked loop that rises from that corner to the back tag's top-left corner; the three strokes meet at about (42, 28); the loop and shoulder keep their fitted end points there, and the string ends 2 px short of its fitted end (review fix). The back tag's left shoulder stops about 2 px short of the front tag's right side (occlusion gap), and its bottom edge runs into the front tag's bottom-right corner with the small notch the sheet shows. The circuit keeps one stem, one rounded elbow down to the lower terminal and one branch right; the red top ring lies over the black stem, as on the red sheet. Red placement follows the red sheet."
 }

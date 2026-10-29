@@ -1,44 +1,44 @@
 {
   "id": "CL-024",
   "label": "Feedback Loop",
-  "built": "2026-10-29T08:18:21+00:00",
+  "built": "2026-10-29T08:30:29+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9085,
-  "silhouette_iou_4x": 0.9148,
-  "red_iou_1x": 0.8777,
-  "red_iou_4x": 0.8644,
+  "silhouette_iou_1x": 0.9075,
+  "silhouette_iou_4x": 0.9131,
+  "red_iou_1x": 0.8719,
+  "red_iou_4x": 0.8613,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.237,
+      "mean": 0.242,
       "p95": 0.707,
-      "max": 1.25
+      "max": 1.346
     },
     "trace_to_reference": {
-      "mean": 0.255,
-      "p95": 0.707,
+      "mean": 0.261,
+      "p95": 0.75,
       "max": 2.926
     },
     "symmetric": {
-      "mean": 0.246,
+      "mean": 0.251,
       "p95": 0.707,
       "max": 2.926
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.378,
+      "mean": 0.387,
       "p95": 0.791,
       "max": 1.25
     },
     "trace_to_reference": {
-      "mean": 0.403,
+      "mean": 0.413,
       "p95": 0.901,
       "max": 2.795
     },
     "symmetric": {
-      "mean": 0.391,
+      "mean": 0.401,
       "p95": 0.901,
       "max": 2.795
     }
@@ -46,13 +46,13 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9085
+    "iou": 0.9075
   },
-  "ink_area_ratio_trace_over_reference": 0.9165,
+  "ink_area_ratio_trace_over_reference": 0.9185,
   "bake_check_iou_4x": 1.0,
-  "bake_check_iou_4x_raw": 0.9949,
+  "bake_check_iou_4x_raw": 0.995,
   "bake_check_iou_1x": 1.0,
-  "bake_check_max_diff_levels_4x": 18,
+  "bake_check_max_diff_levels_4x": 6,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     26.653,
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 4,
+  "corrections_logged": 5,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

@@ -14,6 +14,6 @@
   </g>
   <g id="accent">
     <polyline points="80.0158,72.6513 85.5282,64.9699 89.8709,67.8602 97.9471,56.7378" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="93.8042,56.7378 98.3613,56.7378 98.3613,61.0025" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+    <polyline points="93.8042,56.7378 98.3613,56.7378 98.3613,61.0025" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

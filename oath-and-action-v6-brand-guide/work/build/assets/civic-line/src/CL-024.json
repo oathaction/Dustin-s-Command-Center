@@ -2,14 +2,26 @@
   "id": "CL-024",
   "tracer": "T2",
   "corrections": [
-    {"what": "Drew both curved arrows at the set weight W, 5.5 px",
-     "why": "DR-03 one line weight. The arrows measure 6.4 to 6.5 px on both sheets, against 5.5 to 5.75 px for the nodes. The thinner arrows lower the ink area ratio to 0.92 and leave a 0.4 to 0.5 px fringe along each arc; the arc centrelines follow the fits."},
-    {"what": "Made the two nodes equal squares, 38 x 38 px, with a 2 px centreline corner radius, keeping each node's measured centre",
-     "why": "DR-03 equal repeats; the catalogue calls them two equal square nodes. The nodes measure 38.15 x 37.88 and 38.09 x 37.88 px; the sheet's outer corners round at about 4.5 px."},
-    {"what": "Drew each arrow shaft as one true circular arc: upper centre (81.44, 65.42) r 54.58, lower centre (82.65, 68.44) r 56.51",
-     "why": "DR-03. Arc fits have 0.05 to 0.10 px rms. The two arcs are not mirror images on the sheet (the upper rises 58.6 px above the node centreline, the lower dips 55.6 px), and the trace keeps that difference."},
-    {"what": "Ended the upper shaft with a 3.3 px straight run into the arrowhead corner at (130.6, 39.6)",
-     "why": "The sheet's head corner sits about 1 px outside the shaft's circle; ending the arc on the circle left the head's outer corner 1.5 px short. The short run hides inside the head strokes."}
+    {
+      "what": "Drew both curved arrows at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The arrows measure 6.4 to 6.5 px on both sheets, against 5.5 to 5.75 px for the nodes. The thinner arrows lower the ink area ratio to 0.92 and leave a 0.4 to 0.5 px fringe along each arc; the arc centrelines follow the fits."
+    },
+    {
+      "what": "Made the two nodes equal squares, 38 x 38 px, with a 2 px centreline corner radius, keeping each node's measured centre",
+      "why": "DR-03 equal repeats; the catalogue calls them two equal square nodes. The nodes measure 38.15 x 37.88 and 38.09 x 37.88 px; the sheet's outer corners round at about 4.5 px."
+    },
+    {
+      "what": "Drew each arrow shaft as one true circular arc: upper centre (81.44, 65.42) r 54.58, lower centre (82.65, 68.44) r 56.51",
+      "why": "DR-03. Arc fits have 0.05 to 0.10 px rms. The two arcs are not mirror images on the sheet (the upper rises 58.6 px above the node centreline, the lower dips 55.6 px), and the trace keeps that difference."
+    },
+    {
+      "what": "Ended the upper shaft with a 3.3 px straight run into the arrowhead corner at (130.6, 39.6)",
+      "why": "The sheet's head corner sits about 1 px outside the shaft's circle; ending the arc on the circle left the head's outer corner 1.5 px short. The short run hides inside the head strokes."
+    },
+    {
+      "what": "Made the lower arrowhead the upper one turned 180 deg about its tip (34.9, 99.1): barb ends (51.62, 100.04) and (32.18, 112.58)",
+      "why": "Review fix (should): the two heads differed. DR-03 equal repeats; the barbs move up to 1 px (horizontal barb 1 px longer, lower barb 0.5 px)."
+    }
   ],
   "notes": "Kept: clockwise circulation; the open L-shaped arrowheads with one near-horizontal barb and one near-vertical barb, as drawn (they sit at the sheet's angles, not square to the shaft); the clear space between every arrow end and the nodes; the unequal tail positions. Red covers both arrows in full, shafts and heads; the nodes stay black. The two sheets agree on the arrow geometry; the red sheet's lower arc fits 0.4 px larger in radius, a raster shift, so the geometry follows the black sheet."
 }

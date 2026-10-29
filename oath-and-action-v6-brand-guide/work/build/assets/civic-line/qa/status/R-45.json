@@ -3,7 +3,7 @@
   "label": "Paper Ballots & Audits",
   "state": "traced",
   "tracer": "T6",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9056,
       "edge_mean_px": 0.226,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:30:16+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9191,
+      "red_iou_1x": 0.9056,
+      "edge_mean_px": 0.23,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -53,15 +63,16 @@
       "note": "overlay checked; sheets, lens, capsule handle and check match; taper and wedge normalised to W"
     }
   ],
-  "last_build": "2026-10-29T07:21:16+00:00",
+  "last_build": "2026-10-29T08:30:16+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9212,
+    "silhouette_iou_1x": 0.9191,
     "red_iou_1x": 0.9056,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.0293,
-    "edge_mean_px": 0.226,
+    "ink_area_ratio_trace_over_reference": 1.0324,
+    "edge_mean_px": 0.23,
     "edge_p95_px": 0.707,
     "edge_max_px": 3.75,
     "best_offset": [
@@ -83,8 +94,8 @@
       "why": "DR-03. Lens ink extents give radii 34.31 (across) and 34.87 (down); the capsule's sides measure 5.25 and 5.5 px thick at a constant 14.1 px apart from t 45 to 65 along the handle."
     },
     {
-      "what": "Kept the handle's upper side starting about 1.4 px clear of the lens ring while its lower side joins the ring",
-      "why": "The sheet shows that small gap on the upper side only; it is drawn, so it is kept."
+      "what": "Review fix: started the handle's upper side on the lens ring's outer edge (r 37.35) at (157.61, 82.33), 5.1 px further back along its 45-degree line, so it merges with the ring like the lower side",
+      "why": "The black sheet shows the upper side merged with the ring; the 1.4 px gap the first trace kept was a misreading (review must fix)."
     },
     {
       "what": "Set the check's two arms at a right angle on the 45-degree diagonals, vertex (122.42, 71.77)",

@@ -4,7 +4,7 @@
        Red: all three small server indicator dots and the chip's inner square outline. Chip body, pins and server framing remain black. Count pins from the reference rather than using a generic chip.
        Trace: three equal rounded trays (27.75 px) stacked edge to edge, notched at the junctions, on two legs.
        Top tray: a long rule whose right end sits under the red dot. Chip: 3 pins per side (12), centred on
-       (148.31, 60.92); body 60.62 x 63.46 and inner square 21.3 x 22.15 keep the sheet's slightly tall proportion. -->
+       (148.31, 60.92); body and inner square are true squares (62.04 and 21.72 px), per review. -->
   <g data-role="base">
     <rect id="tray-1" x="11.45" y="14.17" width="75.28" height="27.75" rx="5.8"/>
     <rect id="tray-2" x="11.45" y="41.92" width="75.28" height="27.75" rx="5.8"/>
@@ -14,24 +14,24 @@
     <line id="rule-1" x1="24.05" y1="29.1" x2="73.5" y2="29.1"/>
     <line id="rule-2" x1="24.05" y1="56.37" x2="45.8" y2="56.37"/>
     <line id="rule-3" x1="24.05" y1="84.12" x2="45.8" y2="84.12"/>
-    <rect id="chip" x="118.0" y="29.19" width="60.62" height="63.46" rx="8.5"/>
-    <line id="pin-top-1" x1="134.02" y1="10.74" x2="134.02" y2="29.19"/>
-    <line id="pin-top-2" x1="148.31" y1="10.74" x2="148.31" y2="29.19"/>
-    <line id="pin-top-3" x1="162.6" y1="10.74" x2="162.6" y2="29.19"/>
-    <line id="pin-bottom-1" x1="134.02" y1="92.65" x2="134.02" y2="111.1"/>
-    <line id="pin-bottom-2" x1="148.31" y1="92.65" x2="148.31" y2="111.1"/>
-    <line id="pin-bottom-3" x1="162.6" y1="92.65" x2="162.6" y2="111.1"/>
-    <line id="pin-left-1" x1="101.45" y1="45.9" x2="118.0" y2="45.9"/>
-    <line id="pin-left-2" x1="101.45" y1="60.92" x2="118.0" y2="60.92"/>
-    <line id="pin-left-3" x1="101.45" y1="75.94" x2="118.0" y2="75.94"/>
-    <line id="pin-right-1" x1="178.62" y1="45.9" x2="195.17" y2="45.9"/>
-    <line id="pin-right-2" x1="178.62" y1="60.92" x2="195.17" y2="60.92"/>
-    <line id="pin-right-3" x1="178.62" y1="75.94" x2="195.17" y2="75.94"/>
+    <rect id="chip" x="117.29" y="29.9" width="62.04" height="62.04" rx="8.5"/>
+    <line id="pin-top-1" x1="133.66" y1="12.4" x2="133.66" y2="29.9"/>
+    <line id="pin-top-2" x1="148.31" y1="12.4" x2="148.31" y2="29.9"/>
+    <line id="pin-top-3" x1="162.96" y1="12.4" x2="162.96" y2="29.9"/>
+    <line id="pin-bottom-1" x1="133.66" y1="91.94" x2="133.66" y2="109.44"/>
+    <line id="pin-bottom-2" x1="148.31" y1="91.94" x2="148.31" y2="109.44"/>
+    <line id="pin-bottom-3" x1="162.96" y1="91.94" x2="162.96" y2="109.44"/>
+    <line id="pin-left-1" x1="99.79" y1="46.27" x2="117.29" y2="46.27"/>
+    <line id="pin-left-2" x1="99.79" y1="60.92" x2="117.29" y2="60.92"/>
+    <line id="pin-left-3" x1="99.79" y1="75.57" x2="117.29" y2="75.57"/>
+    <line id="pin-right-1" x1="179.33" y1="46.27" x2="196.83" y2="46.27"/>
+    <line id="pin-right-2" x1="179.33" y1="60.92" x2="196.83" y2="60.92"/>
+    <line id="pin-right-3" x1="179.33" y1="75.57" x2="196.83" y2="75.57"/>
   </g>
   <g data-role="accent">
     <circle id="indicator-1" class="fill" cx="73.5" cy="29.1" r="3.5"/>
     <circle id="indicator-2" class="fill" cx="73.5" cy="56.37" r="3.5"/>
     <circle id="indicator-3" class="fill" cx="73.5" cy="84.12" r="3.5"/>
-    <rect id="core" x="137.66" y="49.85" width="21.3" height="22.15"/>
+    <rect id="core" x="137.45" y="50.065" width="21.72" height="21.72"/>
   </g>
 </svg>

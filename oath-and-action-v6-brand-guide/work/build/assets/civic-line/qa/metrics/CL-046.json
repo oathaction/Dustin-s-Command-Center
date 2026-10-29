@@ -1,44 +1,44 @@
 {
   "id": "CL-046",
   "label": "AI Infrastructure",
-  "built": "2026-10-29T08:18:50+00:00",
+  "built": "2026-10-29T08:30:43+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.9007,
-  "silhouette_iou_4x": 0.9185,
-  "red_iou_1x": 0.9331,
-  "red_iou_4x": 0.9041,
+  "silhouette_iou_1x": 0.8592,
+  "silhouette_iou_4x": 0.8756,
+  "red_iou_1x": 0.9299,
+  "red_iou_4x": 0.8898,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.228,
-      "p95": 0.559,
-      "max": 1.414
+      "mean": 0.361,
+      "p95": 1.0,
+      "max": 2.016
     },
     "trace_to_reference": {
-      "mean": 0.228,
-      "p95": 0.559,
-      "max": 1.414
+      "mean": 0.363,
+      "p95": 1.0,
+      "max": 2.016
     },
     "symmetric": {
-      "mean": 0.228,
-      "p95": 0.559,
-      "max": 1.414
+      "mean": 0.362,
+      "p95": 1.0,
+      "max": 2.016
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.223,
+      "mean": 0.262,
       "p95": 1.031,
       "max": 1.904
     },
     "trace_to_reference": {
-      "mean": 0.268,
+      "mean": 0.303,
       "p95": 1.25,
       "max": 1.904
     },
     "symmetric": {
-      "mean": 0.246,
+      "mean": 0.283,
       "p95": 1.118,
       "max": 1.904
     }
@@ -46,9 +46,9 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.9007
+    "iou": 0.8592
   },
-  "ink_area_ratio_trace_over_reference": 0.9621,
+  "ink_area_ratio_trace_over_reference": 0.9634,
   "bake_check_iou_4x": 1.0,
   "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 1.0,
@@ -56,8 +56,8 @@
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     18.039,
-    37.188,
-    110.264,
+    37.997,
+    111.073,
     90.685
   ],
   "export_inside_0_128": true,
@@ -67,7 +67,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 6,
+  "corrections_logged": 7,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",

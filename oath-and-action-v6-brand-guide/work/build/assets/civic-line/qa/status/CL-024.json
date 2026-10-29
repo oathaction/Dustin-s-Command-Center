@@ -1,9 +1,9 @@
 {
   "id": "CL-024",
   "label": "Feedback Loop",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T2",
-  "iterations": 3,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -34,6 +34,26 @@
       "red_iou_1x": 0.8777,
       "edge_mean_px": 0.246,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T08:30:14+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9075,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.251,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:30:29+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9075,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.251,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -41,17 +61,23 @@
       "time": "2026-10-29T06:10:51+00:00",
       "by": "T2",
       "note": "T2: overlay checked; arrows drawn at W (sheet 6.4 px); heads and node gaps match"
+    },
+    {
+      "time": "2026-10-29T08:30:29+00:00",
+      "by": "T2",
+      "note": "T2 review fix: lower arrowhead is now the upper head turned 180 deg about its tip (barb ends 51.62,100.04 and 32.18,112.58)"
     }
   ],
-  "last_build": "2026-10-29T06:10:51+00:00",
+  "last_build": "2026-10-29T08:30:29+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.9085,
-    "red_iou_1x": 0.8777,
+    "silhouette_iou_1x": 0.9075,
+    "red_iou_1x": 0.8719,
+    "bake_check_iou_4x": 1.0,
     "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9165,
-    "edge_mean_px": 0.246,
+    "ink_area_ratio_trace_over_reference": 0.9185,
+    "edge_mean_px": 0.251,
     "edge_p95_px": 0.707,
     "edge_max_px": 2.926,
     "best_offset": [
@@ -75,6 +101,10 @@
     {
       "what": "Ended the upper shaft with a 3.3 px straight run into the arrowhead corner at (130.6, 39.6)",
       "why": "The sheet's head corner sits about 1 px outside the shaft's circle; ending the arc on the circle left the head's outer corner 1.5 px short. The short run hides inside the head strokes."
+    },
+    {
+      "what": "Made the lower arrowhead the upper one turned 180 deg about its tip (34.9, 99.1): barb ends (51.62, 100.04) and (32.18, 112.58)",
+      "why": "Review fix (should): the two heads differed. DR-03 equal repeats; the barbs move up to 1 px (horizontal barb 1 px longer, lower barb 0.5 px)."
     }
   ],
   "source_notes": "Kept: clockwise circulation; the open L-shaped arrowheads with one near-horizontal barb and one near-vertical barb, as drawn (they sit at the sheet's angles, not square to the shaft); the clear space between every arrow end and the nodes; the unequal tail positions. Red covers both arrows in full, shafts and heads; the nodes stay black. The two sheets agree on the arrow geometry; the red sheet's lower arc fits 0.4 px larger in radius, a raster shift, so the geometry follows the black sheet."
