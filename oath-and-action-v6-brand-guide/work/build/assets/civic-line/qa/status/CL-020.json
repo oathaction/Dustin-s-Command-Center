@@ -3,7 +3,7 @@
   "label": "Track",
   "state": "traced",
   "tracer": "T1",
-  "iterations": 3,
+  "iterations": 4,
   "history": [
     {
       "iteration": 1,
@@ -34,6 +34,16 @@
       "red_iou_1x": 0.8445,
       "edge_mean_px": 0.333,
       "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:22:43+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8784,
+      "red_iou_1x": 0.8445,
+      "edge_mean_px": 0.323,
+      "edge_p95_px": 1.0
     }
   ],
   "notes": [
@@ -41,17 +51,22 @@
       "time": "2026-10-29T07:21:49+00:00",
       "by": "T1",
       "note": "T1: overlay checked; route, hollow pin, lens and open handle match; lens made a true circle; sheet strokes run heavier than W"
+    },
+    {
+      "time": "2026-10-29T07:22:43+00:00",
+      "by": "T1",
+      "note": "T1: semicircle radii set to exact half-chords (bake check)"
     }
   ],
-  "last_build": "2026-10-29T07:21:49+00:00",
+  "last_build": "2026-10-29T07:22:43+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8729,
+    "silhouette_iou_1x": 0.8784,
     "red_iou_1x": 0.8445,
-    "bake_check_iou_1x": 0.9984,
+    "bake_check_iou_1x": 0.9997,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9171,
-    "edge_mean_px": 0.333,
+    "ink_area_ratio_trace_over_reference": 0.9178,
+    "edge_mean_px": 0.323,
     "edge_p95_px": 1.0,
     "edge_max_px": 2.5,
     "best_offset": [

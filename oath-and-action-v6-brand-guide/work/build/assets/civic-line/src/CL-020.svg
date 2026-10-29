@@ -4,12 +4,12 @@
        Red: the map-pin outline and the magnifier handle. The route and lens circle stay black. Keep the pin hollow and the route free of dotted segments. -->
   <g data-role="accent">
     <!-- Drawn first: the handle runs up under the lens ring, so the ring's outer edge cuts its open top, as on the red sheet. -->
-    <path id="handle" class="butt" d="M147.31 108.89 L172.59 135.58 A6.145 6.145 0 0 0 181.51 127.12 L160.04 104.45"/>
+    <path id="handle" class="butt" d="M147.31 108.89 L172.59 135.58 A6.14 6.14 0 0 0 181.51 127.12 L160.04 104.45"/>
     <!-- Hollow pin: a circle with two tangent sides meeting at the tip. -->
     <path id="pin" d="M36.42 47.80 L46.94 30.66 A12.35 12.35 0 1 0 25.90 30.66 Z"/>
   </g>
   <g data-role="base">
-    <path id="route" d="M50.63 52.63 H87.64 A14.03 14.03 0 0 1 87.64 80.68 H26.16 A15 15 0 0 0 26.16 110.68 H109.87"/>
+    <path id="route" d="M50.63 52.63 H87.64 A14 14 0 0 1 87.64 80.68 H26.16 A14.99 14.99 0 0 0 26.16 110.68 H109.87"/>
     <circle id="lens" cx="139.57" cy="87.07" r="23.15"/>
   </g>
 </svg>

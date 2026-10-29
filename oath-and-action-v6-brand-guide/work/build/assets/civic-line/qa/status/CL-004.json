@@ -3,7 +3,7 @@
   "label": "Petition",
   "state": "traced",
   "tracer": "T1",
-  "iterations": 2,
+  "iterations": 3,
   "history": [
     {
       "iteration": 1,
@@ -24,6 +24,16 @@
       "red_iou_1x": 0.875,
       "edge_mean_px": 0.226,
       "edge_p95_px": 1.25
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:22:45+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8836,
+      "red_iou_1x": 0.8786,
+      "edge_mean_px": 0.225,
+      "edge_p95_px": 1.25
     }
   ],
   "notes": [
@@ -31,17 +41,22 @@
       "time": "2026-10-29T06:14:31+00:00",
       "by": "T1",
       "note": "T1: overlay checked; page opening, nib counter, clip hook and red splits match; page right side aligned (logged)"
+    },
+    {
+      "time": "2026-10-29T07:22:45+00:00",
+      "by": "T1",
+      "note": "T1: semicircle radii set to exact half-chords (bake check); geometry unchanged"
     }
   ],
-  "last_build": "2026-10-29T06:14:31+00:00",
+  "last_build": "2026-10-29T07:22:45+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.8827,
-    "red_iou_1x": 0.875,
-    "bake_check_iou_1x": 0.9997,
+    "silhouette_iou_1x": 0.8836,
+    "red_iou_1x": 0.8786,
+    "bake_check_iou_1x": 0.9995,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 0.9653,
-    "edge_mean_px": 0.226,
+    "ink_area_ratio_trace_over_reference": 0.966,
+    "edge_mean_px": 0.225,
     "edge_p95_px": 1.25,
     "edge_max_px": 2.475,
     "best_offset": [

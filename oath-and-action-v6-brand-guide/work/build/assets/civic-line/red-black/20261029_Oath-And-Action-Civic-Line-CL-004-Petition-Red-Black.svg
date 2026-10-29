@@ -9,11 +9,11 @@
     <line x1="43.383" y1="67.383" x2="60.037" y2="67.383" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="43.383" y1="77.13" x2="54.072" y2="77.13" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <line x1="83.705" y1="52.088" x2="88.935" y2="55.904" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M90.168 54.213 A2.383 2.383 0 0 1 94.019 57.021 L85.777 68.318" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M90.168 54.213 A2.378 2.378 0 0 1 94.019 57.021 L85.777 68.318" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
     <polyline points="65.979,76.38 64.171,84.519 71.209,80.196" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g id="accent">
-    <path d="M65.979 76.38 L87.683 46.639 A3.236 3.236 0 0 1 92.907 50.455 L71.209 80.196" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M65.979 76.38 L87.683 46.639 A3.231 3.231 0 0 1 92.907 50.455 L71.209 80.196" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
     <line x1="68.075" y1="73.509" x2="73.304" y2="77.321" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

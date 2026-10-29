@@ -1,44 +1,44 @@
 {
   "id": "CL-004",
   "label": "Petition",
-  "built": "2026-10-29T06:14:31+00:00",
+  "built": "2026-10-29T07:22:45+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.8827,
-  "silhouette_iou_4x": 0.9172,
-  "red_iou_1x": 0.875,
-  "red_iou_4x": 0.8873,
+  "silhouette_iou_1x": 0.8836,
+  "silhouette_iou_4x": 0.9176,
+  "red_iou_1x": 0.8786,
+  "red_iou_4x": 0.8892,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.228,
+      "mean": 0.226,
       "p95": 1.25,
       "max": 2.475
     },
     "trace_to_reference": {
-      "mean": 0.225,
+      "mean": 0.224,
       "p95": 1.25,
       "max": 2.462
     },
     "symmetric": {
-      "mean": 0.226,
+      "mean": 0.225,
       "p95": 1.25,
       "max": 2.475
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.282,
+      "mean": 0.277,
       "p95": 0.707,
       "max": 1.118
     },
     "trace_to_reference": {
-      "mean": 0.299,
+      "mean": 0.295,
       "p95": 0.75,
       "max": 1.458
     },
     "symmetric": {
-      "mean": 0.291,
+      "mean": 0.286,
       "p95": 0.707,
       "max": 1.458
     }
@@ -46,11 +46,11 @@
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.8827
+    "iou": 0.8836
   },
-  "ink_area_ratio_trace_over_reference": 0.9653,
-  "bake_check_iou_1x": 0.9997,
-  "bake_check_iou_4x": 0.9995,
+  "ink_area_ratio_trace_over_reference": 0.966,
+  "bake_check_iou_1x": 0.9995,
+  "bake_check_iou_4x": 0.9999,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     32.451,
