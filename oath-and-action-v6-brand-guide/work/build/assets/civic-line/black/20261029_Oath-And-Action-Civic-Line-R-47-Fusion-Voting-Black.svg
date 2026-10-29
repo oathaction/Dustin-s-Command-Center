@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-47" data-id="R-47" width="128" height="128" viewBox="0 0 128 128">
+  <title>Fusion Voting</title>
+  <desc>Oath &amp; Action Civic Line R-47 Fusion Voting. Traced vector reconstruction from the Civic Line reference sheet 05, row 5, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="8.184" y="41.604" width="30.326" height="37.749" rx="2.437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="23.346" cy="51.781" r="3.811" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.537 64.926 V62.279 A6.809 5.386 0 0 1 23.346 56.894 A6.809 5.386 0 0 1 30.155 62.279 V64.926" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="89.003" y="41.604" width="30.326" height="37.749" rx="2.437" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="104.166" cy="51.781" r="3.811" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M97.357 64.926 V62.279 A6.809 5.386 0 0 1 104.166 56.894 A6.809 5.386 0 0 1 110.975 62.279 V64.926" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="63.708" cy="68.133" r="5.839" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.229 86.371 V83.739 A6.336 6.336 0 0 1 58.566 77.403 H68.85 A6.336 6.336 0 0 1 75.186 83.739 V86.371" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M46.551 44.67 A27.567 27.567 0 0 1 58.916 56.075" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="14.846" y1="71.296" x2="31.847" y2="71.296" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.666" y1="71.296" x2="112.666" y2="71.296" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80.864 44.67 A27.567 27.567 0 0 0 68.499 56.075" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

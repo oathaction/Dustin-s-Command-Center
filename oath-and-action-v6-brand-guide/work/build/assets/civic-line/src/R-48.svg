@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-48" viewBox="0 0 228 115">
+  <!-- R-48 Agency Independence. Crop 228 x 115 px; ink box x 8..220, y 8..107.
+       Construction: a small classical public-agency building at left, with triangular pediment, repeated columns and doubled baseline. An official stands behind a lectern at right, with hollow head and shoulders. Between them is a tall brace-like vertical separation mark with short curved/stepped ends and a middle elbow.
+       Red: the full separating brace. Agency and official remain black. Preserve the visual separation and the particular brace contour rather than inserting a wall, shield or padlock.
+       Building mirrored about x 55.9: pediment, entablature band, five columns 18.2 px apart drawn as four
+       rounded bays (their shared sides are the columns), and a base band whose sides step out and drop vertically.
+       The brace is a bracket with a small nub at mid-height; the dot beside it is red on the
+       red sheet, so it belongs to the brace. Official and lectern mirrored about x 188.4. -->
+  <g data-role="base">
+    <polyline id="pediment" points="19.6,38.2 55.9,10.85 92.2,38.2"/>
+    <rect id="entablature" x="11" y="38.2" width="89.8" height="11.87" rx="3"/>
+    <rect id="bay-1" x="19.50" y="50.07" width="18.2" height="39.93" rx="5"/>
+    <rect id="bay-2" x="37.70" y="50.07" width="18.2" height="39.93" rx="5"/>
+    <rect id="bay-3" x="55.90" y="50.07" width="18.2" height="39.93" rx="5"/>
+    <rect id="bay-4" x="74.10" y="50.07" width="18.2" height="39.93" rx="5"/>
+    <polygon id="base" points="14.2,90 97.7,90 101.8,96 101.8,102.44 10.3,102.44 10.3,96"/>
+    <circle id="official-head" cx="188.4" cy="27.47" r="9.56"/>
+    <path id="official-body" d="M170.75 56.55 V47.28 A4 4 0 0 1 174.75 43.28 H202.05 A4 4 0 0 1 206.05 47.28 V56.55"/>
+    <polygon id="lectern-top" points="159.5,56.55 217.3,56.55 214.8,68.11 162,68.11"/>
+    <line id="lectern-leg-left" x1="165.4" y1="68.11" x2="165.4" y2="102.25"/>
+    <line id="lectern-leg-right" x1="211.4" y1="68.11" x2="211.4" y2="102.25"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="brace" points="122.1,10.31 132.4,10.31 132.4,104 122.1,104"/>
+    <line id="brace-nub" x1="132.4" y1="57.9" x2="134.95" y2="57.9"/>
+    <circle id="brace-dot" class="fill" cx="144.55" cy="57.85" r="3.4"/>
+  </g>
+</svg>

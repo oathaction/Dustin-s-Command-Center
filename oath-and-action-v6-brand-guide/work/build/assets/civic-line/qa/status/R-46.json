@@ -3,7 +3,7 @@
   "label": "Expand the House",
   "state": "traced",
   "tracer": "T6",
-  "iterations": 2,
+  "iterations": 4,
   "history": [
     {
       "iteration": 1,
@@ -24,25 +24,76 @@
       "red_iou_1x": 0.7313,
       "edge_mean_px": 0.645,
       "edge_p95_px": 1.768
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:31:54+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.7652,
+      "red_iou_1x": 0.6902,
+      "edge_mean_px": 0.646,
+      "edge_p95_px": 1.803
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:32:41+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.7652,
+      "red_iou_1x": 0.6902,
+      "edge_mean_px": 0.646,
+      "edge_p95_px": 1.803
     }
   ],
-  "notes": [],
-  "last_build": "2026-10-29T07:30:49+00:00",
+  "notes": [
+    {
+      "time": "2026-10-29T07:32:41+00:00",
+      "by": "T6",
+      "note": "overlay checked; 22 seats normalised to one size with even spacing; remaining shape differences are the normalisation"
+    }
+  ],
+  "last_build": "2026-10-29T07:32:41+00:00",
   "last_metrics": {
-    "silhouette_iou_1x": 0.7669,
-    "red_iou_1x": 0.7313,
-    "bake_check_iou_1x": 0.9996,
+    "silhouette_iou_1x": 0.7652,
+    "red_iou_1x": 0.6902,
+    "bake_check_iou_1x": 1.0,
     "pair_identical_after_swap": true,
     "export_inside_0_128": true,
-    "ink_area_ratio_trace_over_reference": 1.089,
-    "edge_mean_px": 0.645,
-    "edge_p95_px": 1.768,
-    "edge_max_px": 4.0,
+    "ink_area_ratio_trace_over_reference": 1.078,
+    "edge_mean_px": 0.646,
+    "edge_p95_px": 1.803,
+    "edge_max_px": 3.64,
     "best_offset": [
       0,
       0
     ]
   },
-  "corrections": [],
-  "source_notes": ""
+  "corrections": [
+    {
+      "what": "Drew all 22 seats as one rounded rectangle, 13.6 by 8.8 px on the centreline with 2 px corners",
+      "why": "The caller's instruction for this icon, and DR-03 equal repeats. On the sheet the outer seats measure about 15 by 8.8 px, the two lowest outer seats on each side are skewed squarish shapes (about 12 by 13), and the inner seats are squarish (11.2 to 13.7 by 9.2 to 12.9). The one size sits between them. Outer seats lose about 0.7 px at each end; inner seats grow about 0.6 px along their length and narrow about 0.85 px at each side; the four lowest outer seats change most, since their trapezoids become rectangles."
+    },
+    {
+      "what": "Placed the outer row's five seats per side on one ellipse through their centres (centre (120.4, 84.54), rx 103.8, ry 50.46), spaced so the gaps between neighbours are equal (1.5 px), each keeping its drawn tilt, mirror-averaged (88, 63, 60.3, 71.9 and 80 degrees from the bottom up)",
+      "why": "DR-03 even spacing. Measured centre spacing along the arc runs 20.07, 18.17, 17.31 and 17.57 px. Because the lowest seats stand along the arc while the upper ones stand across it, equal centre spacing makes the lowest two seats overlap; equal gaps keep them apart. Seats move 0.36 to 1.97 px (the second-lowest most). Radial tilts for every seat would lay the lowest seat flat, which the sheet does not draw."
+    },
+    {
+      "what": "Placed each inner row's three seats on the circle through them at equal angles, lying along the arc, mirrored across the axis",
+      "why": "DR-03 even spacing and symmetry. The rows' arcs bow down from centres above the chamber (r 48.7 and 81.7); the middle seats move under 0.35 px along their rows. The upper rows' seats touch each other, as on the sheet."
+    },
+    {
+      "what": "Mirrored the whole drawing about x 120.4 and drew the chamber line as a half-ellipse (rx 89.3, ry 47.21) on vertical feet at x 31.1 and 209.7, stopping at the dais legs",
+      "why": "DR-03 symmetry. Seat pairs centre on 120.17 to 120.58; the dais on 120.06 to 120.5; the chamber feet measure 31.37 and 210.12. The arch fit has rms 0.55 px."
+    },
+    {
+      "what": "Drew the dais as a cap, a rounded-top box (r 5) with vertical sides, a base rectangle and two vertical legs, all on the axis",
+      "why": "DR-03 straight lines. The box sides lean 3.7 degrees and the legs 2 to 3 degrees; all now stand vertical."
+    },
+    {
+      "what": "Drew every stroke at W, 5.5 px",
+      "why": "DR-03 one line weight. The icon measures 5.0 px, so the trace's ink area runs about 8 percent heavier."
+    }
+  ],
+  "source_notes": "Count kept: 22 seats (five outer and six inner per side), with the five right-hand outer seats red, as catalogue and red sheet agree. The seat normalisation is the largest change in the icon and accounts for most of the drop in silhouette and red IoU; the gaps between outer seats are 1.5 px against the sheet's 2.6 to 3.4 px, and between inner lower seats 1.7 px against 3.3 to 4.1 px, because the one seat size is longer along those arcs than the sheet's squarish seats. Kept: the chamber line stopping at the dais legs, the dais cap, box and base, and the inner seats lying along their rows."
 }

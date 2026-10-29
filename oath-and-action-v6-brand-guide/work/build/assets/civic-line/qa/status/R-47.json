@@ -1,0 +1,95 @@
+{
+  "id": "R-47",
+  "label": "Fusion Voting",
+  "state": "traced",
+  "tracer": "T6",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:34:55+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9146,
+      "red_iou_1x": 0.7707,
+      "edge_mean_px": 0.318,
+      "edge_p95_px": 0.791
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:35:56+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9129,
+      "red_iou_1x": 0.7855,
+      "edge_mean_px": 0.312,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:36:12+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9313,
+      "red_iou_1x": 0.7855,
+      "edge_mean_px": 0.263,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:36:33+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9365,
+      "red_iou_1x": 0.7868,
+      "edge_mean_px": 0.252,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:36:33+00:00",
+      "by": "T6",
+      "note": "overlay checked; connectors mirrored at the red sheet's length; centre head gap kept"
+    }
+  ],
+  "last_build": "2026-10-29T07:36:33+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9365,
+    "red_iou_1x": 0.7868,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0363,
+    "edge_mean_px": 0.252,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 6.329,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Gave the right (red) connector the same length as the left one, ending at (159.6, 16.84), the mirror of the left connector's top end",
+      "why": "Sheet disagreement. The black sheet draws the right connector about 4.5 px longer than the left (ink to x 168); the red sheet ends it at x 162.4, which matches the left connector mirrored. The two connectors are otherwise mirror images, so equal length is the clearly intended shape and the red sheet's end is kept. This leaves up to 6.3 px of black-sheet ink untraced beyond the end."
+    },
+    {
+      "what": "Drew both connectors as one mirrored circular arc, r 56.56, about x 124.4",
+      "why": "DR-03 symmetry. A circle fit to both connectors (right one mirrored) has rms 0.36 px."
+    },
+    {
+      "what": "Gave the two cards one size (62.22 by 77.45 px, corner r 5) with matching portraits (head r 7.82, shoulder arch rx 13.97 ry 11.05) and captions (34.88 px) centred in each card",
+      "why": "DR-03 equal repeats. Card widths measure 62.15 and 62.29 px; heads 7.78 and 7.86; shoulder arches agree to 0.1 px; captions measure 34.88 px each. Corner fits read 5.9 to 6.5 px with rms 0.4; 5 px matches the overlay better."
+    },
+    {
+      "what": "Drew the centre figure on the axis x 124.4 with its head (r 11.98) clear of its body by a 1.5 px gap, and its body as a flat top with 13 px corners on vertical sides",
+      "why": "The sheet leaves a gap of about 1.8 px between head and body here (unlike the card portraits). The body's top is flat from x 113.5 to 134.6; corner points fit r 13 to 0.4 px. The figure moves 0.45 px right to the cards' axis."
+    },
+    {
+      "what": "Drew every stroke at W, 5.5 px",
+      "why": "DR-03 one line weight. The icon measures 5.25 px."
+    }
+  ],
+  "source_notes": "Kept: two cards with portrait and caption each, the centre figure below and between them with open feet, two connectors approaching the centre from the upper inner sides with open ends. Red: both captions and the right connector, as catalogue and red sheet agree."
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-47" viewBox="0 0 250 113">
+  <!-- R-47 Fusion Voting. Crop 250 x 113 px; ink box x 8..242, y 8..105.
+       Construction: two upright candidate portrait cards stand at left and right. Each contains a hollow head, shoulders and a short lower caption rule. Between and below them is one larger outline person bust. Two short inward-sloping connector strokes approach the central area from the upper-inner sides of the cards.
+       Red: both cards' lower caption rules and the right-hand inward-sloping connector. Cards, portraits, central person and left connector stay black. Preserve the shared central-person arrangement.
+       Mirror axis x 124.4. The connectors are mirrored circular arcs (r 56.56) of one length;
+       the black sheet draws the right one about 4.5 px longer than the left and the red sheet about 1.9 px
+       shorter, so both take the left one's length.
+       The centre figure's head stands clear of its body by a 1.5 px gap, as drawn. -->
+  <g data-role="base">
+    <rect id="card-left" x="10.48" y="10.55" width="62.22" height="77.45" rx="5"/>
+    <circle id="head-left" cx="41.59" cy="31.43" r="7.82"/>
+    <path id="shoulders-left" d="M27.62 58.4 V52.97 A13.97 11.05 0 0 1 41.59 41.92 A13.97 11.05 0 0 1 55.56 52.97 V58.4"/>
+    <rect id="card-right" x="176.3" y="10.55" width="62.22" height="77.45" rx="5"/>
+    <circle id="head-right" cx="207.41" cy="31.43" r="7.82"/>
+    <path id="shoulders-right" d="M193.44 58.4 V52.97 A13.97 11.05 0 0 1 207.41 41.92 A13.97 11.05 0 0 1 221.38 52.97 V58.4"/>
+    <circle id="centre-head" cx="124.4" cy="64.98" r="11.98"/>
+    <path id="centre-body" d="M100.85 102.4 V97 A13 13 0 0 1 113.85 84 H134.95 A13 13 0 0 1 147.95 97 V102.4"/>
+    <path id="connector-left" d="M89.2 16.84 A56.56 56.56 0 0 1 114.57 40.24"/>
+  </g>
+  <g data-role="accent">
+    <line id="caption-left" x1="24.15" y1="71.47" x2="59.03" y2="71.47"/>
+    <line id="caption-right" x1="189.97" y1="71.47" x2="224.85" y2="71.47"/>
+    <path id="connector-right" d="M159.6 16.84 A56.56 56.56 0 0 0 134.23 40.24"/>
+  </g>
+</svg>

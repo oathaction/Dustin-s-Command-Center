@@ -1,61 +1,61 @@
 {
   "id": "R-46",
   "label": "Expand the House",
-  "built": "2026-10-29T07:30:48+00:00",
+  "built": "2026-10-29T07:32:41+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.7669,
-  "silhouette_iou_4x": 0.7741,
-  "red_iou_1x": 0.7313,
-  "red_iou_4x": 0.7396,
+  "silhouette_iou_1x": 0.7652,
+  "silhouette_iou_4x": 0.7736,
+  "red_iou_1x": 0.6902,
+  "red_iou_4x": 0.7002,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.661,
-      "p95": 1.953,
-      "max": 4.0
+      "mean": 0.669,
+      "p95": 2.0,
+      "max": 3.64
     },
     "trace_to_reference": {
-      "mean": 0.629,
+      "mean": 0.623,
       "p95": 1.75,
-      "max": 3.553
+      "max": 3.354
     },
     "symmetric": {
-      "mean": 0.645,
-      "p95": 1.768,
-      "max": 4.0
+      "mean": 0.646,
+      "p95": 1.803,
+      "max": 3.64
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.76,
-      "p95": 1.953,
-      "max": 4.25
+      "mean": 0.893,
+      "p95": 2.358,
+      "max": 4.039
     },
     "trace_to_reference": {
-      "mean": 0.647,
-      "p95": 1.601,
-      "max": 2.5
+      "mean": 0.782,
+      "p95": 2.121,
+      "max": 3.4
     },
     "symmetric": {
-      "mean": 0.705,
-      "p95": 1.75,
-      "max": 4.25
+      "mean": 0.84,
+      "p95": 2.25,
+      "max": 4.039
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.7669
+    "iou": 0.7652
   },
-  "ink_area_ratio_trace_over_reference": 1.089,
-  "bake_check_iou_1x": 0.9996,
-  "bake_check_iou_4x": 0.9997,
+  "ink_area_ratio_trace_over_reference": 1.078,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_iou_4x": 0.9998,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    8.827,
+    10.094,
     36.901,
-    119.563,
+    118.295,
     91.464
   ],
   "export_inside_0_128": true,
@@ -65,7 +65,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 0,
+  "corrections_logged": 6,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",
