@@ -1,0 +1,38 @@
+{
+  "id": "CL-062",
+  "label": "Assets & Debt",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 1,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:28:53+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.924,
+      "red_iou_1x": 0.924,
+      "edge_mean_px": 0.222,
+      "edge_p95_px": 1.0
+    }
+  ],
+  "notes": [],
+  "last_build": "2026-10-29T07:28:53+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.924,
+    "red_iou_1x": 0.924,
+    "bake_check_iou_1x": 0.9949,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9407,
+    "edge_mean_px": 0.222,
+    "edge_p95_px": 1.0,
+    "edge_max_px": 2.0,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [],
+  "source_notes": ""
+}
