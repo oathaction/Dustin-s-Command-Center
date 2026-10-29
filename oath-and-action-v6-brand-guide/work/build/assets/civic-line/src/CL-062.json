@@ -1,6 +1,31 @@
 {
   "id": "CL-062",
   "tracer": "T3",
-  "corrections": [],
-  "notes": ""
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, the badge ring included",
+      "why": "DR-03 one line weight. The outlines measure 5.4 to 6.0 px. The sheets disagree on the badge ring: the red sheet's ring is 5.76 px wide (r 14.9 to 20.85), the black sheet's 7.08 px (r 14.9 to 22.3). I took the red sheet's weight, which matches the other strokes, with the centreline at r 18.1 so the outer edge matches the red sheet; on the black sheet the ring's outer edge sits up to 1.5 px further out."
+    },
+    {
+      "what": "Drew every rim and band as the same ellipse shape per stack, ry 8.2, with rx equal to the stack's half-width (18.955 short, 20.875 tall); bands are lower half-ellipses",
+      "why": "DR-03 true ellipses and equal repeats. With rx fixed at the half-width, the bands fit ry 7.4 to 8.8 (short) and 8.0 to 8.6 px (tall) with rms 0.06 to 0.34 px; the rims fit ry 7.88 and 8.18."
+    },
+    {
+      "what": "Spaced the bands evenly within each stack: 13.55 px (short) and 13.465 px (tall)",
+      "why": "DR-03 equal repeats. Measured spacings run 13.37 to 13.88 (short) and 13.24 to 13.88 px (tall); no band moves more than 0.45 px."
+    },
+    {
+      "what": "Spaced the four rules evenly, 17.417 px apart (y 29.06 to 81.31), all starting at x 124.5",
+      "why": "DR-03 equal repeats. Spacings measure 17.44, 17.44 and 17.37 px."
+    },
+    {
+      "what": "Centred the minus on the badge, y 83.29, x 159.67 to 175.27",
+      "why": "The minus measures y 83.45 and is centred on x 167.45; the badge centre is (167.47, 83.29)."
+    },
+    {
+      "what": "Set the page's corner radius to 3.7 px on the centreline",
+      "why": "Measured from the outer edge along each corner's diagonal (outer radius 6.3 to 6.6 px)."
+    }
+  ],
+  "notes": "Kept as drawn: the two stacks stand side by side and share one vertical edge (x 49.31); the short stack's base sits about 3 px above the tall one's (113.44 against 116.31); counts below the rims are 3 arcs (short) and 6 (tall). The page's right edge stops at y 66.75 and its bottom edge at x 142.85, both just short of the badge, so the badge covers the page's corner without a painted cover. Tool note: half-ellipse arcs whose radius equals exactly half the chord moved by a fraction of a pixel after the export's 3-decimal rounding and the bake check fell to 0.9949; radii 0.02 px short of half the chord (the renderer scales them up to fit) bring it to 1.0."
 }

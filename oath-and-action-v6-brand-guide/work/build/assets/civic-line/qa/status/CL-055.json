@@ -3,7 +3,7 @@
   "label": "Productivity",
   "state": "traced",
   "tracer": "T3",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.9068,
       "edge_mean_px": 0.136,
       "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T07:29:51+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9472,
+      "red_iou_1x": 0.9068,
+      "edge_mean_px": 0.136,
+      "edge_p95_px": 0.5
     }
   ],
   "notes": [
@@ -51,9 +61,14 @@
       "time": "2026-10-29T06:59:03+00:00",
       "by": "T3",
       "note": "overlay checked; worker outline, desk slab, laptop, arrow and red rim crescent match"
+    },
+    {
+      "time": "2026-10-29T07:29:51+00:00",
+      "by": "T3",
+      "note": "log text corrected (crescent radius 20.35); geometry unchanged"
     }
   ],
-  "last_build": "2026-10-29T06:59:03+00:00",
+  "last_build": "2026-10-29T07:29:51+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.9472,
     "red_iou_1x": 0.9068,
@@ -79,7 +94,7 @@
       "why": "DR-03 true circles. Quadrant fits give r 31.38 to 32.05 with centres within 1 px of each other; the hands' corner measures (166.4, 42.3). The hour hand is drawn level (it measures 175.6 deg)."
     },
     {
-      "what": "Drew the rim's red accent as a filled crescent bounded by the rim's inner edge (r 28.55 about the clock centre) and a second circle, r 20.65, centred 13.7 px from the clock centre toward 1:30; it meets the inner edge at about 12 and 3 o'clock",
+      "what": "Drew the rim's red accent as a filled crescent bounded by the rim's inner edge (r 28.55 about the clock centre) and a second circle, r 20.35, centred 13.7 px from the clock centre toward 1:30; it meets the inner edge at about 12 and 3 o'clock",
       "why": "The red sheet's red is not a constant-width arc: its inner edge follows the rim's inner edge (r 28.0 to 28.3) while its outer edge rises from the inner edge at -80 deg to the rim's outer edge (r 34.0) at -55 to -30 deg and falls back by +5 deg, leaving the outer part of the rim black near both ends. Two true circles reproduce that taper; the black rim runs underneath."
     },
     {

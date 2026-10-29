@@ -1,17 +1,17 @@
 {
   "id": "CL-062",
   "label": "Assets & Debt",
-  "built": "2026-10-29T07:28:53+00:00",
+  "built": "2026-10-29T07:29:37+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
   "silhouette_iou_1x": 0.924,
-  "silhouette_iou_4x": 0.924,
+  "silhouette_iou_4x": 0.9241,
   "red_iou_1x": 0.924,
   "red_iou_4x": 0.928,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.222,
+      "mean": 0.221,
       "p95": 1.0,
       "max": 1.75
     },
@@ -21,7 +21,7 @@
       "max": 2.0
     },
     "symmetric": {
-      "mean": 0.222,
+      "mean": 0.221,
       "p95": 1.0,
       "max": 2.0
     }
@@ -48,15 +48,15 @@
     "dy": 0,
     "iou": 0.924
   },
-  "ink_area_ratio_trace_over_reference": 0.9407,
-  "bake_check_iou_1x": 0.9949,
-  "bake_check_iou_4x": 0.997,
+  "ink_area_ratio_trace_over_reference": 0.9412,
+  "bake_check_iou_1x": 1.0,
+  "bake_check_iou_4x": 0.9999,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
     19.964,
     36.896,
     108.289,
-    91.081
+    91.084
   ],
   "export_inside_0_128": true,
   "elements": 21,
@@ -65,7 +65,7 @@
     "accent"
   ],
   "masks": [],
-  "corrections_logged": 0,
+  "corrections_logged": 6,
   "rules": {
     "reference_ink": "green below the crop's midpoint (local background to full ink)",
     "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",
