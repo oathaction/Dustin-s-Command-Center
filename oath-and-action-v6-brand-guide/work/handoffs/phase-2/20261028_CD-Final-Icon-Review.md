@@ -126,6 +126,50 @@ Explain's skeleton needs no decision. Overprint's lidded drawing matched at medi
 
 Lead with his own request answered: "black with a bit of pillar red", "in a square, rounded square (like iOS app icons) or a circle." The first screen shows the four Overprint pillar marks in all three holders, in the Charcoal and the Newsprint tiles, at 96 px, with the ten icons bare beneath them and one sentence of idea. Next come the app tile at 180, 60 and 29 px and the menu row with Track current, so he sees the red come and go. Then one panel on small sizes: the 16 px solid cut beside the 24 px line, at true size and magnified. Then a strip with the other two concepts, each with one line on why it ranks lower and its name-test row. Then the decisions in section 6, each with the studio's default. Measurement tables go below, under the evidence heading, and on a phone they stack into rows.
 
+## 8. After the fix pass
+
+Added October 29, 2026, after the designer's fix pass (fixes 1 to 4, in `20261028_Icon-Concept-1-Overprint-Notes.md`) and the third name test (`20261029_Icon-Blind-Name-Test-3.md`, four agent raters). These scores replace section 1's for the two concepts still in play. I rendered the new 16 and 24 px masters at device scale 1 and 2. The 16 px cut now keeps true curves, and on a 2x screen its shapes read as small, dense blocks.
+
+### Final rubric
+
+| Criterion | Overprint | Moving part |
+|---|---|---|
+| Craft | 3 | 3 |
+| Clarity | 3 | 3 |
+| Brand fidelity | 4 | 4 |
+| Usefulness | 4 | 4 |
+| Evidence honesty | 5 | 5 |
+| Accessibility | 4 | 4 |
+| Beauty and distinctiveness: would a renowned studio show this? | 4 | 3 |
+
+- **Overprint.** Craft reaches 4 from 24 px up: every icon sits in the weight band, no pair reaches 0.60 under D1-16 at any size, and the loop ring holds. The 16 px cut keeps it at 3, coarse at 2x and still falling apart for several raters. On clarity, the raters named Housing and Bill every time and Feedback loop three times in four. Testify was named once in four. Ballot and Campaign money were never named first; they read as a printer and a camera. Beauty stays at 4: all four raters who compared the families chose it as more finished and better for civic news.
+- **Moving part.** No change since stage 2. It holds better at 16 px. At 24 px Feedback loop was never named, and raters saw its other subjects as stock objects: a camera, a sofa, a factory.
+
+### Does Overprint go to Dustin now?
+
+Yes, as the studio's recommendation. The decision in front of Dustin is the concept (G1-10), and on that the evidence agrees: every comparison favored Overprint's style, and its weak subjects, Ballot and Campaign money, are just as weak in Moving part. The review page shows the ten as drawn and labels three items as drawing work still open: the 16 px cut, Ballot and Campaign money, and Testify.
+
+### Decision rows for the review page
+
+- **P1, the pillar marks' drawing.** The four pillar marks keep their approved shapes and change how they are drawn: Overprint's fine line with its red plane from 24 px up, and a solid, one-color drawing at 16 px. All four AI raters who compared the families chose the line as more finished, and a line this fine breaks apart at 16 px, where solid shapes hold.
+- **P2, Act's lintel.** In the 16 px drawing only, Act gains a lintel, a bar across the top of the doorway; the larger drawing keeps its frame and floor line. Without it the small solid door reads close to the number 01 (it scored at the studio's 0.60 limit in round one), and with it the score falls to 0.23.
+
+### One more studio recommendation
+
+Give the 16 px cut its own pass before the full build-out, and draw Ballot, Campaign money and Testify first in that build-out. For the 16 px cut, fill the live area from 1 to 15, keep every feature and gap at 2 px or more, give each icon one idea, and judge it in its real places: an atlas legend line and a tracker row, with the 24 px line beside it. For the three subjects:
+- **Ballot.** Tilt the paper into the slot. A box with paper standing straight up is a printer's drawing (0.75 against Material's print glyph).
+- **Campaign money.** Drop the corner bar and shrink the center disc, the two parts that make it a camera.
+- **Testify.** Take Moving part's composition, a person, one sound arc and a microphone on a stand, which raters named twice as often.
+
+### Risks after the fix pass
+
+- Every reader so far is an AI agent. No person has named an icon (Q-13).
+- Atlas legends and tracker rows run at 16 px, and that cut is the least finished part of the family.
+- At 16 px the family loses its line and its red, and it looks like any careful solid set.
+- Two marks still fail the designer's look-alike checks: Bill's 16 px page against a bell (0.61) and Ballot against a printer (0.75).
+- P1 reverses the roles Gate 1 gave the solid and the line (Y1, Y4). A yes means building two cuts for every icon, about 60 icons with three masters each.
+- Overprint's distinctiveness rests on the fixed offset, and offset-accent sets are common in stock libraries.
+
 ## Risks for Dustin to weigh
 
 - Offset-accent icon sets are common in stock libraries, his own reference among them. Overprint's distinctiveness rests on the fixed offset and on the plane filling a drawn shape, and both have to hold across sixty icons.
@@ -150,4 +194,4 @@ Lead with his own request answered: "black with a bit of pillar red", "in a squa
 
 - **Created:** `work/handoffs/phase-2/20261028_CD-Final-Icon-Review.md` (this file).
 - **Scratch files, outside the project:** board captures, master renders and the scripts that made them, in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/c42d0deb-36cd-5cae-968f-07f59acdce92/scratchpad/cd-icons/final/`.
-- **Modified:** none.
+- **Modified:** this file, on October 29, to add section 8. No drawing, board, note or ledger changed.

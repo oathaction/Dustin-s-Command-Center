@@ -11,7 +11,7 @@ Open the review page: `work/boards/20261028_Direction-Review-Board.html`, also p
 3. **Fourteen studio recommendations** in section 6, approved as a set. Name any you would change.
 4. **One question** in section 7: whether to run the reader check before Gate 2.
 
-A reply can be this short: "Maps: the pick. Icons: Overprint. Sign mark: the pointing tag. Approve P1, P2, P3. Set: approved. Reader check: yes."
+A reply can be this short: "Maps: the pick. Icons: Overprint. Sign mark: the pointing tag. Approve P1, P2, P3. Set: approved. Reader check: yes." Name anything you would change.
 
 ## 1. What was done
 
@@ -63,7 +63,29 @@ Ship threshold 4 on each line. Cr craft, Cl clarity, BF brand fidelity, U useful
 
 **Icons**
 
-ICON_SCORES_PENDING
+The creative director's final scores, after Overprint's fix pass:
+
+| Concept | Cr | Cl | BF | U | EH | A | B |
+|---|---|---|---|---|---|---|---|
+| Overprint (craft reaches 4 from 24 px up; the 16 px cut holds it at 3) | 3 | 3 | 4 | 4 | 5 | 4 | 4 |
+| Moving part | 3 | 3 | 4 | 4 | 5 | 4 | 3 |
+| Public sign, stopped by the name test | 3 | 2 | 3 | 4 | 5 | 4 | 2 |
+| Round one's best (concept C) | 3 | 3 | 3 | 4 | 4 | 4 | 2 |
+
+**Name test, at 24 px**, four agent readings per concept (`work/handoffs/phase-2/20261029_Icon-Blind-Name-Test-3.md`). "Named" means the subject was the rater's first guess.
+
+| Subject | Overprint | Moving part |
+|---|---|---|
+| Housing | Named 4 of 4 | Named 4 of 4 |
+| Bill | Named 4 of 4 | Named 2 of 4 |
+| Feedback loop | Named 3 of 4 | Named 0 of 4 (swap, sort, a menu) |
+| Testify | Named 1 of 4 | Named 2 of 4 |
+| Ballot | Named 0 of 4 (printer, inbox) | Named 0 of 4 (tray, sofa) |
+| Campaign money | Named 0 of 4 (camera, card) | Named 0 of 4 (camera) |
+| Pillar marks, matched to their stories | All four, by every rater | All four, by every rater; Explain and Track at low confidence |
+| Chosen as the more finished family, and for civic news | Every rater asked, 4 of 4 | None |
+
+Public sign stopped after stage 2 under the creative director's rule, with Testify, Campaign money and Feedback loop failing.
 
 ## 4. Three choices
 
@@ -77,7 +99,11 @@ The cost: a reader meets two drawings, boxes on the cards and lines on the map. 
 
 ### Choice 2. The icon concept
 
-ICON_CHOICE_PENDING
+Overprint draws each icon as a fine Charcoal line over one solid plane of Pillar Red, set slightly off register toward the lower left, the way a second ink lands on a newspaper page. The red sits under the part of the subject the story is about: the opening of the door, the top stage, the gap where two halves meet. It answers your words, "premium simple line" with "a bit of pillar red in each one", and every rater who compared the families chose it. From 24 px up it is line with red; at 16 px it switches to a solid, one-color cut.
+
+Options: Overprint (recommended); Moving part, solid pieces where the red piece is the one that moves, which holds up better at 16 px. Public sign stopped.
+
+The cost: three drawings are still open and get done first in the build-out, the 16 px cut, Ballot and Campaign money (read as a printer and a camera in both concepts), and Testify. Two marks still fail the designer's look-alike checks: Bill's 16 px page against a bell, and Ballot against a printer.
 
 ### Choice 3. One sign mark everywhere
 
@@ -87,8 +113,8 @@ A step's sign (+ when the two variables move the same way, − when they move op
 
 | ID | Call | What changes | Why |
 |---|---|---|---|
-| P1 | The pillar marks' treatment | ICON_P1_PENDING | ICON_P1_WHY_PENDING |
-| P2 | Act's lintel | ICON_P2_PENDING | ICON_P2_WHY_PENDING |
+| P1 | The pillar marks' drawing | The four pillar marks keep their approved shapes and change how they are drawn: Overprint's fine line with its red plane from 24 px up, and a solid, one-color drawing at 16 px. This reverses the roles Gate 1 gave the solid and the line (Y1, Y4) | Every rater who compared the families chose the line as more finished, and a line this fine breaks apart at 16 px, where solid shapes hold |
+| P2 | Act's lintel, at 16 px only | In the 16 px drawing, Act gains a lintel, a bar across the top of the doorway. The larger drawing keeps its frame and floor line | Without it the small solid door reads close to the number 01, at the studio's 0.60 limit; with it the score falls to 0.23 |
 | P3 | Rule 05.3, the current icon in a menu | The sentence "In a row or a menu, icons go one color and only the current one keeps its red." gains ", and that red counts as signature red." | Without it, a menu's current icon spends the view's one working red, so a page could not show a menu and an ask button together |
 
 ## 6. Studio recommendations, approved as a set
@@ -108,7 +134,7 @@ A step's sign (+ when the two variables move the same way, − when they move op
 | R11 | A standalone icon's red sits bare on Newsprint as signature red, at 2.96:1 |
 | R12 | The rounded-square holder is a true superellipse, the corner iOS uses |
 | R13 | Charcoal is the default tile for the app icon and avatars |
-| R14 | ICON_R14_PENDING |
+| R14 | Give the 16 px cut its own pass before the full build-out, then draw Ballot, Campaign money and Testify first: tilt the ballot's paper into the slot, drop the banknote's corner bar and shrink its disc, and take Testify's composition from Moving part (a person, one sound arc and a microphone on a stand) |
 
 ## 7. A question for you
 
@@ -120,7 +146,11 @@ A step's sign (+ when the two variables move the same way, − when they move op
 - Two drawing styles carry the maps. Readers may expect the cards to look like the poster; the reader check will show it.
 - The catalog scores 3 on beauty. A further pass on the catalog alone can follow your choice.
 - The station table and the district table need review whenever V7.1 changes a loop. The verifiers fail on any mismatch, so the risk is time.
-- ICON_RISKS_PENDING
+- Every icon reader so far is an AI agent. No person has named an icon (Q-13).
+- Atlas legends and tracker rows run at 16 px, and that cut is the least finished part of the icon family. At 16 px the family loses its line and its red, and looks like any careful solid set.
+- P1 means two drawings of every icon, about 60 icons with three masters each.
+- Overprint's distinctiveness rests on the fixed offset and on the red filling a drawn shape. Offset-accent sets are common in stock libraries, your own reference among them, so both rules have to hold across the whole set.
+- Signature reds stack: a social card can show the wordmark's ampersand, an icon's plane and the button's working red in one view. Rule 05.3 allows it, and it is more red than Phase 1 showed.
 
 ## 9. What happens after your answers
 
@@ -130,4 +160,22 @@ A step's sign (+ when the two variables move the same way, − when they move op
 
 ## 10. Change log
 
-CHANGE_LOG_PENDING
+Since your Gate 1 approval on October 28. Paths are relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/` or `work/extract/` changed, and no V5 master changed.
+
+**Created**
+
+- `work/ledger/20261028_Direction-Review-Report.md` (this report)
+- `work/research/20261028_Systems-Map-References.md`; `work/research/chat-references/` with the five images you sent on October 28
+- `work/boards/`: the round-one map board, the three round-two map direction boards, the round-one icon board, the three round-two icon concept boards, the identity masters board, and `20261028_Direction-Review-Board.html`
+- `work/boards/phase-2/`: maps (117 files), maps-r2 (271, with the 24 by 36 inch poster PDF), icons (679), icons-r2 (1,838, with the three blind test kits), identity (1,688)
+- `work/build/assets/identity/`: 60 identity masters with ampersand B refined
+- `work/build/scripts/phase-2/`: 94 build, render, verify and check scripts
+- `work/handoffs/phase-2/`: 20 files, the makers' notes, the creative director's reviews and the name test results
+
+**Modified**
+
+- `work/ledger/20261020_Decision-Log.md`: G1-01 to G1-11 (your Gate 1 approval and October 28 answers), D2-01 (Rule 05.3's current wording) to D2-30
+- `work/ledger/20261020_Change-Ledger.md`: C-005 to C-015
+- `work/ledger/20261021_Gate-1-Report.md`: status set to approved
+- `work/research/20261020_Rights-Ledger.md`: the October 28 references
+- `brief/phase-prompts/`: the Phase 2, 3 and 4 prompts' chapter lists, renumbered to the architecture map (D1-11)
