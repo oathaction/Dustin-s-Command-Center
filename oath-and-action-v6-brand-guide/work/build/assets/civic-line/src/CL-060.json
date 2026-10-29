@@ -1,6 +1,23 @@
 {
   "id": "CL-060",
   "tracer": "T3",
-  "corrections": [],
-  "notes": ""
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.85 to 6.0 px (the fourth rule 6.7 px); the trace's ink area is 0.92 of the sheet's."
+    },
+    {
+      "what": "Spaced the five rules evenly, 18.97 px apart (y 31.0 to 106.88), all starting at x 30.37",
+      "why": "DR-03 equal repeats. Measured rows: 31.0, 50.0, 69.0, 87.6 and 106.88; the fourth rule moves 0.3 px."
+    },
+    {
+      "what": "Gave both arrows the same open chevron head: arms 12.6 px back and 12.75 px either side of the shaft",
+      "why": "DR-03 equal repeats. The heads measure 12.1 and 13.1 px back. Each tip sits 3.4 px inside the ink's end (x 161.6 and 96.9), since the sheet's tips are sharper than a round join. The lower arrow's upper arm is drawn at 45 deg; the sheet bends it to 51 deg near the tip, a difference of up to 1 px along the arm."
+    },
+    {
+      "what": "Set the page's corner radius to 5.3 px on the centreline",
+      "why": "Measured from the outer edge along each corner's diagonal (outer radius 7.5 to 8.15 px)."
+    }
+  ],
+  "notes": "Kept as drawn: the page's right edge is open between y 28.75 and 110.63, with two short stubs from the right-hand corners; the rules shorten downward (54.2, 54.2, 54.2, 46.1 and 37.1 px); the two shafts keep their drawn lengths (59.5 px upper, 65.1 px lower), so the lower arrow's tip reaches into the page's open side while the upper arrow starts just outside it. Neither arrow crosses a rule. Red: the upper, right-pointing arrow only."
 }
