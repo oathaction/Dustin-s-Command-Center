@@ -1,0 +1,552 @@
+{
+  "file": "20261029_Civic-Line-Icon-Catalog.html",
+  "bytes": 9364848,
+  "runs": [
+    {
+      "tag": "1440-light",
+      "info": {
+        "cards": 122,
+        "bg": "rgb(255, 255, 255)",
+        "fontsLoaded": [
+          "Inter 400",
+          "Inter 500",
+          "Inter 600",
+          "Inter Tight 600",
+          "Inter Tight 700"
+        ],
+        "interTight": true,
+        "tileBg": "rgb(220, 217, 210)"
+      },
+      "scroll": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axe": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "detail": {
+        "title": "R-35 Term Limits · Rejected",
+        "imgNatural": [
+          179,
+          123
+        ],
+        "imgShown": [
+          358,
+          246
+        ],
+        "svgShown": [
+          358,
+          246
+        ],
+        "dialogScroll": 0,
+        "raised": "rgb(255, 255, 255)",
+        "corrections": 7
+      },
+      "scrollDetail": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axeDetail": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "afterClose": {
+        "open": false,
+        "focus": "R-35"
+      },
+      "errors": []
+    },
+    {
+      "tag": "1440-dark",
+      "info": {
+        "cards": 122,
+        "bg": "rgb(18, 18, 18)",
+        "fontsLoaded": [
+          "Inter 400",
+          "Inter 500",
+          "Inter 600",
+          "Inter Tight 600",
+          "Inter Tight 700"
+        ],
+        "interTight": true,
+        "tileBg": "rgb(220, 217, 210)"
+      },
+      "scroll": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axe": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "detail": {
+        "title": "R-35 Term Limits · Rejected",
+        "imgNatural": [
+          179,
+          123
+        ],
+        "imgShown": [
+          358,
+          246
+        ],
+        "svgShown": [
+          358,
+          246
+        ],
+        "dialogScroll": 0,
+        "raised": "rgb(31, 45, 90)",
+        "corrections": 7
+      },
+      "scrollDetail": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axeDetail": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "afterClose": {
+        "open": false,
+        "focus": "R-35"
+      },
+      "errors": []
+    },
+    {
+      "tag": "390-light",
+      "info": {
+        "cards": 122,
+        "bg": "rgb(255, 255, 255)",
+        "fontsLoaded": [
+          "Inter 400",
+          "Inter 500",
+          "Inter 600",
+          "Inter Tight 600",
+          "Inter Tight 700"
+        ],
+        "interTight": true,
+        "tileBg": "rgb(220, 217, 210)"
+      },
+      "scroll": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axe": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "detail": {
+        "title": "R-35 Term Limits · Rejected",
+        "imgNatural": [
+          179,
+          123
+        ],
+        "imgShown": [
+          320,
+          220
+        ],
+        "svgShown": [
+          320,
+          220
+        ],
+        "dialogScroll": 0,
+        "raised": "rgb(255, 255, 255)",
+        "corrections": 7
+      },
+      "scrollDetail": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axeDetail": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "afterClose": {
+        "open": false,
+        "focus": "R-35"
+      },
+      "errors": []
+    },
+    {
+      "tag": "390-dark",
+      "info": {
+        "cards": 122,
+        "bg": "rgb(18, 18, 18)",
+        "fontsLoaded": [
+          "Inter 400",
+          "Inter 500",
+          "Inter 600",
+          "Inter Tight 600",
+          "Inter Tight 700"
+        ],
+        "interTight": true,
+        "tileBg": "rgb(220, 217, 210)"
+      },
+      "scroll": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axe": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "detail": {
+        "title": "R-35 Term Limits · Rejected",
+        "imgNatural": [
+          179,
+          123
+        ],
+        "imgShown": [
+          320,
+          220
+        ],
+        "svgShown": [
+          320,
+          220
+        ],
+        "dialogScroll": 0,
+        "raised": "rgb(31, 45, 90)",
+        "corrections": 7
+      },
+      "scrollDetail": {
+        "docScroll": 0,
+        "bodyScroll": 0
+      },
+      "axeDetail": {
+        "version": "4.10.2",
+        "violations": []
+      },
+      "afterClose": {
+        "open": false,
+        "focus": "R-35"
+      },
+      "errors": []
+    }
+  ],
+  "functional": {
+    "initialVisible": 122,
+    "searchTermLimits": [
+      "R-35"
+    ],
+    "searchR35": [
+      "R-35"
+    ],
+    "searchCL021": [
+      "CL-021"
+    ],
+    "emptyState": {
+      "visible": 0,
+      "emptyShown": true,
+      "text": "No icon matches \"zzzz\". Clear the search and sheet filter"
+    },
+    "sheet04": {
+      "visible": 25,
+      "count": "Showing 25 of 122 icons"
+    },
+    "accentRedBlack": "rgb(230, 57, 70)",
+    "accentBlack": "rgb(18, 18, 18)",
+    "size128": 128,
+    "size24": 24,
+    "scroll24": {
+      "docScroll": 0,
+      "bodyScroll": 0
+    },
+    "firstTab": {
+      "id": "",
+      "outline": "solid",
+      "width": "3px"
+    },
+    "cardFocus": {
+      "outline": "solid"
+    },
+    "enterOpens": "CL-001 Voting",
+    "nextGoesTo": "CL-002 Representation",
+    "hash": "#cl-002",
+    "escapeCloses": true,
+    "errors": [],
+    "hashOpens": "R-35 Term Limits · Rejected",
+    "os-light-theme-dark": {
+      "bg": "rgb(18, 18, 18)",
+      "text": "rgb(255, 255, 255)",
+      "tile": "rgb(220, 217, 210)"
+    },
+    "os-dark-theme-light": {
+      "bg": "rgb(255, 255, 255)",
+      "text": "rgb(18, 18, 18)",
+      "tile": "rgb(220, 217, 210)"
+    },
+    "reducedMotionTransition": "0s",
+    "normalMotionTransition": "0.12s",
+    "storageBlocked": 122,
+    "storageBlockedEditionWorks": "black",
+    "storageBlockedErrors": []
+  },
+  "failedRequests": [],
+  "checks": [
+    {
+      "check": "file under 12 MB",
+      "pass": true,
+      "detail": "8.93 MB"
+    },
+    {
+      "check": "1440-light: axe 4.10.2 on the grid, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-light: axe on the open detail view, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-light: no horizontal scroll",
+      "pass": true,
+      "detail": "{\"docScroll\": 0, \"bodyScroll\": 0}"
+    },
+    {
+      "check": "1440-light: opens with all 122 cards visible",
+      "pass": true,
+      "detail": "122"
+    },
+    {
+      "check": "1440-light: icon tiles are Newsprint",
+      "pass": true,
+      "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "1440-light: detail shows the reference crop and the trace at one scale",
+      "pass": true,
+      "detail": "img [358, 246] svg [358, 246], natural [179, 123]"
+    },
+    {
+      "check": "1440-light: Escape closes the detail view and focus returns to its card",
+      "pass": true,
+      "detail": "{\"open\": false, \"focus\": \"R-35\"}"
+    },
+    {
+      "check": "1440-light: no script errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-light: Inter Tight available",
+      "pass": true,
+      "detail": "Inter 400, Inter 500, Inter 600, Inter Tight 600, Inter Tight 700"
+    },
+    {
+      "check": "1440-dark: axe 4.10.2 on the grid, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-dark: axe on the open detail view, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-dark: no horizontal scroll",
+      "pass": true,
+      "detail": "{\"docScroll\": 0, \"bodyScroll\": 0}"
+    },
+    {
+      "check": "1440-dark: opens with all 122 cards visible",
+      "pass": true,
+      "detail": "122"
+    },
+    {
+      "check": "1440-dark: icon tiles are Newsprint",
+      "pass": true,
+      "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "1440-dark: detail shows the reference crop and the trace at one scale",
+      "pass": true,
+      "detail": "img [358, 246] svg [358, 246], natural [179, 123]"
+    },
+    {
+      "check": "1440-dark: Escape closes the detail view and focus returns to its card",
+      "pass": true,
+      "detail": "{\"open\": false, \"focus\": \"R-35\"}"
+    },
+    {
+      "check": "1440-dark: no script errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1440-dark: Inter Tight available",
+      "pass": true,
+      "detail": "Inter 400, Inter 500, Inter 600, Inter Tight 600, Inter Tight 700"
+    },
+    {
+      "check": "390-light: axe 4.10.2 on the grid, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-light: axe on the open detail view, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-light: no horizontal scroll",
+      "pass": true,
+      "detail": "{\"docScroll\": 0, \"bodyScroll\": 0}"
+    },
+    {
+      "check": "390-light: opens with all 122 cards visible",
+      "pass": true,
+      "detail": "122"
+    },
+    {
+      "check": "390-light: icon tiles are Newsprint",
+      "pass": true,
+      "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "390-light: detail shows the reference crop and the trace at one scale",
+      "pass": true,
+      "detail": "img [320, 220] svg [320, 220], natural [179, 123]"
+    },
+    {
+      "check": "390-light: Escape closes the detail view and focus returns to its card",
+      "pass": true,
+      "detail": "{\"open\": false, \"focus\": \"R-35\"}"
+    },
+    {
+      "check": "390-light: no script errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-light: Inter Tight available",
+      "pass": true,
+      "detail": "Inter 400, Inter 500, Inter 600, Inter Tight 600, Inter Tight 700"
+    },
+    {
+      "check": "390-dark: axe 4.10.2 on the grid, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-dark: axe on the open detail view, no violations",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-dark: no horizontal scroll",
+      "pass": true,
+      "detail": "{\"docScroll\": 0, \"bodyScroll\": 0}"
+    },
+    {
+      "check": "390-dark: opens with all 122 cards visible",
+      "pass": true,
+      "detail": "122"
+    },
+    {
+      "check": "390-dark: icon tiles are Newsprint",
+      "pass": true,
+      "detail": "rgb(220, 217, 210)"
+    },
+    {
+      "check": "390-dark: detail shows the reference crop and the trace at one scale",
+      "pass": true,
+      "detail": "img [320, 220] svg [320, 220], natural [179, 123]"
+    },
+    {
+      "check": "390-dark: Escape closes the detail view and focus returns to its card",
+      "pass": true,
+      "detail": "{\"open\": false, \"focus\": \"R-35\"}"
+    },
+    {
+      "check": "390-dark: no script errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "390-dark: Inter Tight available",
+      "pass": true,
+      "detail": "Inter 400, Inter 500, Inter 600, Inter Tight 600, Inter Tight 700"
+    },
+    {
+      "check": "search 'term limits' finds R-35 only",
+      "pass": true,
+      "detail": "['R-35']"
+    },
+    {
+      "check": "search 'r-35' finds R-35 only",
+      "pass": true,
+      "detail": "['R-35']"
+    },
+    {
+      "check": "search 'cl-021' finds CL-021 only",
+      "pass": true,
+      "detail": "['CL-021']"
+    },
+    {
+      "check": "no match shows the empty state",
+      "pass": true,
+      "detail": "No icon matches \"zzzz\". Clear the search and sheet filter"
+    },
+    {
+      "check": "sheet filter 04 shows 25",
+      "pass": true,
+      "detail": "Showing 25 of 122 icons"
+    },
+    {
+      "check": "edition toggle: accent Pillar Red, then Charcoal",
+      "pass": true,
+      "detail": "rgb(230, 57, 70) then rgb(18, 18, 18)"
+    },
+    {
+      "check": "size control: 128 and 24 px",
+      "pass": true,
+      "detail": "128, 24"
+    },
+    {
+      "check": "first Tab reaches the search field with a visible outline",
+      "pass": false,
+      "detail": "{\"id\": \"\", \"outline\": \"solid\", \"width\": \"3px\"}"
+    },
+    {
+      "check": "cards show a focus outline",
+      "pass": true,
+      "detail": "{\"outline\": \"solid\"}"
+    },
+    {
+      "check": "Enter opens the detail view; Next steps on; Escape closes",
+      "pass": true,
+      "detail": "CL-001 Voting -> CL-002 Representation, hash #cl-002"
+    },
+    {
+      "check": "a #r-35 link opens R-35",
+      "pass": true,
+      "detail": "R-35 Term Limits · Rejected"
+    },
+    {
+      "check": "data-theme dark wins over a light OS",
+      "pass": true,
+      "detail": "{\"bg\": \"rgb(18, 18, 18)\", \"text\": \"rgb(255, 255, 255)\", \"tile\": \"rgb(220, 217, 210)\"}"
+    },
+    {
+      "check": "data-theme light wins over a dark OS",
+      "pass": true,
+      "detail": "{\"bg\": \"rgb(255, 255, 255)\", \"text\": \"rgb(18, 18, 18)\", \"tile\": \"rgb(220, 217, 210)\"}"
+    },
+    {
+      "check": "reduced motion removes the tile transition",
+      "pass": true,
+      "detail": "reduce 0s, normal 0.12s"
+    },
+    {
+      "check": "page works when localStorage throws",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no external request failed",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
