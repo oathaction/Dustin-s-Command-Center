@@ -149,3 +149,15 @@ Dustin sent the Civic Line catalog, 122 icons on five sheets in red-black and bl
 | D2-37 | R-46 draws the sheet's two seat types, one size per row; the outer row takes the sheet's centreline spacing (about 2.4 px gaps at W). This overturns the studio's first one-size instruction | The sheet draws two seat types; centreline spacing keeps the end seats within about 2.7 px of the sheet |
 | D2-38 | R-44's two windows share one top line, a 1.35 px move each | The sheet's 2.7 px height difference reads as an accident of generation |
 | D2-39 | The exporter writes 4 decimals and fits each arc so its centre stays exact; the main bake metric ignores pixels sitting on the threshold | Tracers found half-circle shifts of up to 0.8 px and render flips at half pixels |
+
+## Civic Line variants, October 29, 2026
+
+Dustin confirmed the Civic Line icons in both editions, approved the studio's recommendations, and asked for tiles and light versions: "I love these icons. I just want to put them in the rounded square circle and possibly square. I approve your recommendations. We also want to do the light variations as well."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-07 | The 122 Civic Line icons are approved in both editions, red-black and black. The package moves to `deliverables/` once the variants below are built and checked | Dustin, October 29 |
+| DR-08 | Framing option 3 (Q-15): each icon grows toward 116 of 128 units by at most 1.25 times the shared scale, so strokes run 2.68 to 3.35 units | Dustin, October 29: "I approve your recommendations" |
+| DR-09 | Light editions for dark grounds: lines in Newsprint, in two versions, Newsprint with Pillar Red (for Charcoal grounds) and Newsprint alone (for Charcoal and Prussian; red never sits on Prussian) | Dustin, October 29 |
+| DR-10 | Tiles for all 122 icons: square, rounded square (a continuous superellipse corner) and circle; a Charcoal tile carries the light editions and a Newsprint tile the dark editions, each in two-color and one-color, 12 tiles per icon | Dustin, October 29 |
+| DR-11 | Order of work after the variants: the visual system for the atlas and systems maps, then the other open items of the direction review, then the rest of the brand finalization | Dustin, October 29 |
