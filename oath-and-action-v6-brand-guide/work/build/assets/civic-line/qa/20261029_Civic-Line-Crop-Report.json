@@ -1,0 +1,438 @@
+{
+  "sheets": {
+    "01": {
+      "black": "20261029_Oath-And-Action-Civic-Line-01-Participation-Black.png",
+      "red": "20261029_Oath-And-Action-Civic-Line-01-Participation-Red.png",
+      "rule_y": 66,
+      "caption_centers": [
+        251,
+        467,
+        687,
+        913
+      ],
+      "column_centers": [
+        138.5,
+        394.5,
+        650.2,
+        894.5,
+        1145.5,
+        1403.8
+      ],
+      "column_bounds": [
+        0,
+        266,
+        522,
+        772,
+        1020,
+        1275,
+        1536
+      ],
+      "full_ink_g_black": 7.0,
+      "full_ink_g_red": 7.0,
+      "full_red": 183.0,
+      "specks_ignored": 33,
+      "caption_glyph_counts": [
+        [
+          7,
+          15,
+          14,
+          10,
+          15,
+          12
+        ],
+        [
+          16,
+          22,
+          9,
+          21,
+          17,
+          14
+        ],
+        [
+          15,
+          15,
+          16,
+          9,
+          19,
+          11
+        ],
+        [
+          8,
+          5,
+          7,
+          3,
+          9,
+          12
+        ]
+      ]
+    },
+    "02": {
+      "black": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Black.png",
+      "red": "20261029_Oath-And-Action-Civic-Line-02-Government-Tech-Red.png",
+      "rule_y": 67,
+      "caption_centers": [
+        251,
+        463,
+        691,
+        913
+      ],
+      "column_centers": [
+        141.0,
+        395.0,
+        643.2,
+        897.5,
+        1144.8,
+        1399.0
+      ],
+      "column_bounds": [
+        0,
+        268,
+        519,
+        770,
+        1021,
+        1272,
+        1536
+      ],
+      "full_ink_g_black": 7.0,
+      "full_ink_g_red": 7.0,
+      "full_red": 194.0,
+      "specks_ignored": 4,
+      "caption_glyph_counts": [
+        [
+          8,
+          15,
+          15,
+          9,
+          16,
+          11
+        ],
+        [
+          15,
+          15,
+          15,
+          13,
+          20,
+          20
+        ],
+        [
+          19,
+          14,
+          12,
+          13,
+          11,
+          16
+        ],
+        [
+          19,
+          11,
+          20,
+          16,
+          11,
+          14
+        ]
+      ]
+    },
+    "03": {
+      "black": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.png",
+      "red": "20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Red.png",
+      "rule_y": 66,
+      "caption_centers": [
+        255,
+        473,
+        685,
+        917
+      ],
+      "column_centers": [
+        140.8,
+        386.8,
+        639.2,
+        891.2,
+        1145.2,
+        1400.2
+      ],
+      "column_bounds": [
+        0,
+        264,
+        513,
+        765,
+        1018,
+        1273,
+        1536
+      ],
+      "full_ink_g_black": 9.0,
+      "full_ink_g_red": 11.0,
+      "full_red": 187.0,
+      "specks_ignored": 6,
+      "caption_glyph_counts": [
+        [
+          20,
+          17,
+          11,
+          18,
+          17,
+          11
+        ],
+        [
+          14,
+          17,
+          10,
+          15,
+          18,
+          15
+        ],
+        [
+          15,
+          11,
+          14,
+          10,
+          18,
+          18
+        ],
+        [
+          10,
+          10,
+          10,
+          12,
+          7,
+          6
+        ]
+      ]
+    },
+    "04": {
+      "black": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Black.png",
+      "red": "20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Red.png",
+      "rule_y": 65,
+      "caption_centers": [
+        229,
+        407,
+        583,
+        761,
+        947
+      ],
+      "column_centers": [
+        172.0,
+        467.5,
+        769.0,
+        1067.5,
+        1367.5
+      ],
+      "column_bounds": [
+        0,
+        320,
+        618,
+        918,
+        1218,
+        1536
+      ],
+      "full_ink_g_black": 7.0,
+      "full_ink_g_red": 9.0,
+      "full_red": 191.0,
+      "specks_ignored": 11,
+      "caption_glyph_counts": [
+        [
+          20,
+          21,
+          22,
+          24,
+          24
+        ],
+        [
+          18,
+          20,
+          16,
+          16,
+          23
+        ],
+        [
+          20,
+          18,
+          23,
+          17,
+          16
+        ],
+        [
+          18,
+          15,
+          23,
+          19,
+          17
+        ],
+        [
+          18,
+          10,
+          20,
+          10,
+          15
+        ]
+      ]
+    },
+    "05": {
+      "black": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.png",
+      "red": "20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Red.png",
+      "rule_y": 65,
+      "caption_centers": [
+        229,
+        405,
+        581,
+        765,
+        949
+      ],
+      "column_centers": [
+        167.5,
+        466.0,
+        768.5,
+        1072.5,
+        1372.5
+      ],
+      "column_bounds": [
+        0,
+        317,
+        617,
+        920,
+        1222,
+        1536
+      ],
+      "full_ink_g_black": 7.0,
+      "full_ink_g_red": 8.0,
+      "full_red": 174.0,
+      "specks_ignored": 8,
+      "caption_glyph_counts": [
+        [
+          24,
+          14,
+          18,
+          9,
+          16
+        ],
+        [
+          16,
+          18,
+          20,
+          25,
+          21
+        ],
+        [
+          17,
+          11,
+          22,
+          22,
+          16
+        ],
+        [
+          20,
+          25,
+          22,
+          21,
+          20
+        ],
+        [
+          14,
+          14,
+          18,
+          22,
+          20
+        ]
+      ]
+    }
+  },
+  "flags": [
+    {
+      "id": "CL-037",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8927,
+      "crossing": []
+    },
+    {
+      "id": "CL-047",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8982,
+      "crossing": []
+    },
+    {
+      "id": "R-04",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8949,
+      "crossing": []
+    },
+    {
+      "id": "R-10",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8919,
+      "crossing": []
+    },
+    {
+      "id": "R-12",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8956,
+      "crossing": []
+    },
+    {
+      "id": "R-16",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8962,
+      "crossing": []
+    },
+    {
+      "id": "R-19",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.8699,
+      "crossing": []
+    },
+    {
+      "id": "R-21",
+      "flags": [
+        "sheet-iou-below-0.90"
+      ],
+      "notes": [],
+      "sheet_iou": 0.887,
+      "crossing": []
+    },
+    {
+      "id": "R-29",
+      "flags": [
+        "crop-clamp-note"
+      ],
+      "notes": [
+        "rectangle shrunk for red-sheet ink from [972, 79, 1149, 204] to [972, 79, 1149, 203]"
+      ],
+      "sheet_iou": 0.9606,
+      "crossing": []
+    }
+  ],
+  "caption_check": {
+    "rule": "detected caption glyph components vs one per label character (two for i and j); touching glyphs may merge",
+    "exact": 108,
+    "one_short": 14,
+    "mismatch": []
+  },
+  "counts": {
+    "01": 24,
+    "02": 24,
+    "03": 24,
+    "04": 25,
+    "05": 25
+  },
+  "order_matches_catalog": true,
+  "total": 122
+}

@@ -1,0 +1,2341 @@
+{
+  "date": "20261029",
+  "W_source_px": 5.5,
+  "W_raw_median_source_px": 5.551,
+  "s_units_per_source_px": 0.487395,
+  "stroke_width_units": 2.6807,
+  "largest_extent_source_px": 238,
+  "largest_extent_id": "R-44",
+  "fill_extent_units": 116.0,
+  "clear_space_units": 6.0,
+  "largest_more_than_15pct_beyond_next": false,
+  "ten_largest_extents": [
+    {
+      "id": "R-44",
+      "extent_px": 238,
+      "w": 238,
+      "h": 80,
+      "extent_units": 116.0
+    },
+    {
+      "id": "R-47",
+      "extent_px": 234,
+      "w": 234,
+      "h": 97,
+      "extent_units": 114.05
+    },
+    {
+      "id": "R-42",
+      "extent_px": 232,
+      "w": 232,
+      "h": 118,
+      "extent_units": 113.08
+    },
+    {
+      "id": "R-13",
+      "extent_px": 227,
+      "w": 227,
+      "h": 117,
+      "extent_units": 110.64
+    },
+    {
+      "id": "R-46",
+      "extent_px": 224,
+      "w": 224,
+      "h": 112,
+      "extent_units": 109.18
+    },
+    {
+      "id": "R-49",
+      "extent_px": 223,
+      "w": 223,
+      "h": 91,
+      "extent_units": 108.69
+    },
+    {
+      "id": "R-39",
+      "extent_px": 221,
+      "w": 221,
+      "h": 93,
+      "extent_units": 107.71
+    },
+    {
+      "id": "R-36",
+      "extent_px": 218,
+      "w": 218,
+      "h": 111,
+      "extent_units": 106.25
+    },
+    {
+      "id": "R-30",
+      "extent_px": 216,
+      "w": 216,
+      "h": 89,
+      "extent_units": 105.28
+    },
+    {
+      "id": "R-06",
+      "extent_px": 215,
+      "w": 215,
+      "h": 88,
+      "extent_units": 104.79
+    }
+  ],
+  "stroke_distribution": {
+    "count": 122,
+    "min": 4.75,
+    "p10": 5.25,
+    "p25": 5.3545,
+    "median": 5.551,
+    "p75": 5.75,
+    "p90": 6.0,
+    "max": 9.419,
+    "mean": 5.6187868852459015,
+    "std": 0.45271644998861965,
+    "histogram_0.25px": [
+      {
+        "from": 4.75,
+        "to": 5.0,
+        "n": 1
+      },
+      {
+        "from": 5.0,
+        "to": 5.25,
+        "n": 5
+      },
+      {
+        "from": 5.25,
+        "to": 5.5,
+        "n": 28
+      },
+      {
+        "from": 5.5,
+        "to": 5.75,
+        "n": 44
+      },
+      {
+        "from": 5.75,
+        "to": 6.0,
+        "n": 25
+      },
+      {
+        "from": 6.0,
+        "to": 6.25,
+        "n": 16
+      },
+      {
+        "from": 6.25,
+        "to": 6.5,
+        "n": 2
+      },
+      {
+        "from": 6.5,
+        "to": 6.75,
+        "n": 0
+      },
+      {
+        "from": 6.75,
+        "to": 7.0,
+        "n": 0
+      },
+      {
+        "from": 7.0,
+        "to": 7.25,
+        "n": 0
+      },
+      {
+        "from": 7.25,
+        "to": 7.5,
+        "n": 0
+      },
+      {
+        "from": 7.5,
+        "to": 7.75,
+        "n": 0
+      },
+      {
+        "from": 7.75,
+        "to": 8.0,
+        "n": 0
+      },
+      {
+        "from": 8.0,
+        "to": 8.25,
+        "n": 0
+      },
+      {
+        "from": 8.25,
+        "to": 8.5,
+        "n": 0
+      },
+      {
+        "from": 8.5,
+        "to": 8.75,
+        "n": 0
+      },
+      {
+        "from": 8.75,
+        "to": 9.0,
+        "n": 0
+      },
+      {
+        "from": 9.0,
+        "to": 9.25,
+        "n": 0
+      },
+      {
+        "from": 9.25,
+        "to": 9.5,
+        "n": 1
+      }
+    ]
+  },
+  "stroke_distribution_1x_reference_only": {
+    "median": 6.0,
+    "p25": 6.0,
+    "p75": 6.0
+  },
+  "outliers_over_12pct": [
+    {
+      "id": "CL-069",
+      "median": 6.185,
+      "diff_pct": 12.5
+    },
+    {
+      "id": "CL-070",
+      "median": 6.185,
+      "diff_pct": 12.5
+    },
+    {
+      "id": "CL-071",
+      "median": 6.25,
+      "diff_pct": 13.6
+    },
+    {
+      "id": "CL-072",
+      "median": 6.25,
+      "diff_pct": 13.6
+    },
+    {
+      "id": "R-03",
+      "median": 9.419,
+      "diff_pct": 71.3
+    },
+    {
+      "id": "R-50",
+      "median": 4.75,
+      "diff_pct": -13.6
+    }
+  ],
+  "outlier_notes": {
+    "R-03": "R-03 is drawn entirely as filled seat dots, so its reading is the dot diameter; it has no stroke to measure."
+  },
+  "per_sheet_median": {
+    "01": 5.618,
+    "02": 5.75,
+    "03": 6.0,
+    "04": 5.5,
+    "05": 5.25
+  },
+  "method": {
+    "stroke": "Per icon: black-sheet crop, green channel, bilinear 8x upsample with a 3 px Gaussian (at 8x), threshold at the crop's midpoint (local background to full ink); skimage medial_axis with distance; width = 2 * distance / 8 at skeleton points; samples above 2.5x the raw median dropped (fills, junctions); median.",
+    "W": "median of the 122 per-icon medians, rounded to the nearest 0.25 source px",
+    "extent": "1x midpoint ink mask bounding box, width or height, stroke included",
+    "s": "116 / largest extent, so the largest pictogram spans 116 units and keeps 6 units of clear space in the 128-unit viewBox",
+    "placement": "X = s * (x - cx) + 64, Y = s * (y - cy) + 64, with (cx, cy) the ink-box centre in crop pixel coordinates (pixel i covers [i, i+1])"
+  },
+  "estimator_calibration": {
+    "1x": {
+      "mean_error": 0.203,
+      "sd": 0.508,
+      "max_abs_error": 1.461
+    },
+    "4x": {
+      "mean_error": 0.022,
+      "sd": 0.121,
+      "max_abs_error": 0.321
+    },
+    "8x": {
+      "mean_error": 0.009,
+      "sd": 0.048,
+      "max_abs_error": 0.157
+    },
+    "cases": 45
+  },
+  "per_icon": [
+    {
+      "id": "CL-001",
+      "stroke_8x": 5.618,
+      "stroke_1x": 6.0,
+      "samples": 4955,
+      "ink_box": [
+        8,
+        8,
+        151,
+        124
+      ],
+      "w": 143,
+      "h": 116,
+      "extent": 143,
+      "cx": 79.5,
+      "cy": 66.0
+    },
+    {
+      "id": "CL-002",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 5263,
+      "ink_box": [
+        8,
+        8,
+        178,
+        124
+      ],
+      "w": 170,
+      "h": 116,
+      "extent": 170,
+      "cx": 93.0,
+      "cy": 66.0
+    },
+    {
+      "id": "CL-003",
+      "stroke_8x": 5.64,
+      "stroke_1x": 6.0,
+      "samples": 6176,
+      "ink_box": [
+        8,
+        8,
+        168,
+        112
+      ],
+      "w": 160,
+      "h": 104,
+      "extent": 160,
+      "cx": 88.0,
+      "cy": 60.0
+    },
+    {
+      "id": "CL-004",
+      "stroke_8x": 5.618,
+      "stroke_1x": 6.0,
+      "samples": 5566,
+      "ink_box": [
+        8,
+        8,
+        137,
+        121
+      ],
+      "w": 129,
+      "h": 113,
+      "extent": 129,
+      "cx": 72.5,
+      "cy": 64.5
+    },
+    {
+      "id": "CL-005",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5356,
+      "ink_box": [
+        8,
+        8,
+        182,
+        127
+      ],
+      "w": 174,
+      "h": 119,
+      "extent": 174,
+      "cx": 95.0,
+      "cy": 67.5
+    },
+    {
+      "id": "CL-006",
+      "stroke_8x": 5.59,
+      "stroke_1x": 6.0,
+      "samples": 4183,
+      "ink_box": [
+        8,
+        8,
+        164,
+        128
+      ],
+      "w": 156,
+      "h": 120,
+      "extent": 156,
+      "cx": 86.0,
+      "cy": 68.0
+    },
+    {
+      "id": "CL-007",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 7447,
+      "ink_box": [
+        8,
+        8,
+        183,
+        105
+      ],
+      "w": 175,
+      "h": 97,
+      "extent": 175,
+      "cx": 95.5,
+      "cy": 56.5
+    },
+    {
+      "id": "CL-008",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 4068,
+      "ink_box": [
+        8,
+        8,
+        187,
+        98
+      ],
+      "w": 179,
+      "h": 90,
+      "extent": 179,
+      "cx": 97.5,
+      "cy": 53.0
+    },
+    {
+      "id": "CL-009",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5806,
+      "ink_box": [
+        8,
+        8,
+        174,
+        145
+      ],
+      "w": 166,
+      "h": 137,
+      "extent": 166,
+      "cx": 91.0,
+      "cy": 76.5
+    },
+    {
+      "id": "CL-010",
+      "stroke_8x": 5.618,
+      "stroke_1x": 6.0,
+      "samples": 4408,
+      "ink_box": [
+        8,
+        8,
+        182,
+        117
+      ],
+      "w": 174,
+      "h": 109,
+      "extent": 174,
+      "cx": 95.0,
+      "cy": 62.5
+    },
+    {
+      "id": "CL-011",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6410,
+      "ink_box": [
+        8,
+        8,
+        199,
+        112
+      ],
+      "w": 191,
+      "h": 104,
+      "extent": 191,
+      "cx": 103.5,
+      "cy": 60.0
+    },
+    {
+      "id": "CL-012",
+      "stroke_8x": 5.64,
+      "stroke_1x": 6.0,
+      "samples": 6301,
+      "ink_box": [
+        8,
+        8,
+        126,
+        133
+      ],
+      "w": 118,
+      "h": 125,
+      "extent": 125,
+      "cx": 67.0,
+      "cy": 70.5
+    },
+    {
+      "id": "CL-013",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 4493,
+      "ink_box": [
+        8,
+        8,
+        152,
+        133
+      ],
+      "w": 144,
+      "h": 125,
+      "extent": 144,
+      "cx": 80.0,
+      "cy": 70.5
+    },
+    {
+      "id": "CL-014",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 10272,
+      "ink_box": [
+        8,
+        8,
+        194,
+        146
+      ],
+      "w": 186,
+      "h": 138,
+      "extent": 186,
+      "cx": 101.0,
+      "cy": 77.0
+    },
+    {
+      "id": "CL-015",
+      "stroke_8x": 5.523,
+      "stroke_1x": 6.0,
+      "samples": 5945,
+      "ink_box": [
+        8,
+        8,
+        200,
+        102
+      ],
+      "w": 192,
+      "h": 94,
+      "extent": 192,
+      "cx": 104.0,
+      "cy": 55.0
+    },
+    {
+      "id": "CL-016",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6614,
+      "ink_box": [
+        8,
+        8,
+        176,
+        118
+      ],
+      "w": 168,
+      "h": 110,
+      "extent": 168,
+      "cx": 92.0,
+      "cy": 63.0
+    },
+    {
+      "id": "CL-017",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6615,
+      "ink_box": [
+        8,
+        8,
+        176,
+        135
+      ],
+      "w": 168,
+      "h": 127,
+      "extent": 168,
+      "cx": 92.0,
+      "cy": 71.5
+    },
+    {
+      "id": "CL-018",
+      "stroke_8x": 5.706,
+      "stroke_1x": 6.0,
+      "samples": 4601,
+      "ink_box": [
+        8,
+        8,
+        165,
+        107
+      ],
+      "w": 157,
+      "h": 99,
+      "extent": 157,
+      "cx": 86.5,
+      "cy": 57.5
+    },
+    {
+      "id": "CL-019",
+      "stroke_8x": 5.385,
+      "stroke_1x": 6.0,
+      "samples": 6653,
+      "ink_box": [
+        8,
+        8,
+        177,
+        136
+      ],
+      "w": 169,
+      "h": 128,
+      "extent": 169,
+      "cx": 92.5,
+      "cy": 72.0
+    },
+    {
+      "id": "CL-020",
+      "stroke_8x": 5.9,
+      "stroke_1x": 6.0,
+      "samples": 4414,
+      "ink_box": [
+        8,
+        8,
+        186,
+        140
+      ],
+      "w": 178,
+      "h": 132,
+      "extent": 178,
+      "cx": 97.0,
+      "cy": 74.0
+    },
+    {
+      "id": "CL-021",
+      "stroke_8x": 5.772,
+      "stroke_1x": 6.0,
+      "samples": 4502,
+      "ink_box": [
+        8,
+        8,
+        185,
+        113
+      ],
+      "w": 177,
+      "h": 105,
+      "extent": 177,
+      "cx": 96.5,
+      "cy": 60.5
+    },
+    {
+      "id": "CL-022",
+      "stroke_8x": 6.042,
+      "stroke_1x": 6.0,
+      "samples": 3973,
+      "ink_box": [
+        8,
+        8,
+        105,
+        144
+      ],
+      "w": 97,
+      "h": 136,
+      "extent": 136,
+      "cx": 56.5,
+      "cy": 76.0
+    },
+    {
+      "id": "CL-023",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 6773,
+      "ink_box": [
+        8,
+        8,
+        169,
+        139
+      ],
+      "w": 161,
+      "h": 131,
+      "extent": 161,
+      "cx": 88.5,
+      "cy": 73.5
+    },
+    {
+      "id": "CL-024",
+      "stroke_8x": 5.884,
+      "stroke_1x": 6.0,
+      "samples": 4317,
+      "ink_box": [
+        8,
+        8,
+        161,
+        128
+      ],
+      "w": 153,
+      "h": 120,
+      "extent": 153,
+      "cx": 84.5,
+      "cy": 68.0
+    },
+    {
+      "id": "CL-025",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 7437,
+      "ink_box": [
+        8,
+        8,
+        174,
+        141
+      ],
+      "w": 166,
+      "h": 133,
+      "extent": 166,
+      "cx": 91.0,
+      "cy": 74.5
+    },
+    {
+      "id": "CL-026",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6185,
+      "ink_box": [
+        8,
+        8,
+        172,
+        130
+      ],
+      "w": 164,
+      "h": 122,
+      "extent": 164,
+      "cx": 90.0,
+      "cy": 69.0
+    },
+    {
+      "id": "CL-027",
+      "stroke_8x": 5.551,
+      "stroke_1x": 6.0,
+      "samples": 7554,
+      "ink_box": [
+        8,
+        8,
+        195,
+        128
+      ],
+      "w": 187,
+      "h": 120,
+      "extent": 187,
+      "cx": 101.5,
+      "cy": 68.0
+    },
+    {
+      "id": "CL-028",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5134,
+      "ink_box": [
+        8,
+        8,
+        147,
+        125
+      ],
+      "w": 139,
+      "h": 117,
+      "extent": 139,
+      "cx": 77.5,
+      "cy": 66.5
+    },
+    {
+      "id": "CL-029",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5885,
+      "ink_box": [
+        8,
+        8,
+        174,
+        121
+      ],
+      "w": 166,
+      "h": 113,
+      "extent": 166,
+      "cx": 91.0,
+      "cy": 64.5
+    },
+    {
+      "id": "CL-030",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 6603,
+      "ink_box": [
+        8,
+        8,
+        166,
+        126
+      ],
+      "w": 158,
+      "h": 118,
+      "extent": 158,
+      "cx": 87.0,
+      "cy": 67.0
+    },
+    {
+      "id": "CL-031",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6005,
+      "ink_box": [
+        8,
+        8,
+        191,
+        124
+      ],
+      "w": 183,
+      "h": 116,
+      "extent": 183,
+      "cx": 99.5,
+      "cy": 66.0
+    },
+    {
+      "id": "CL-032",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 7341,
+      "ink_box": [
+        8,
+        8,
+        159,
+        115
+      ],
+      "w": 151,
+      "h": 107,
+      "extent": 151,
+      "cx": 83.5,
+      "cy": 61.5
+    },
+    {
+      "id": "CL-033",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 8144,
+      "ink_box": [
+        8,
+        8,
+        176,
+        130
+      ],
+      "w": 168,
+      "h": 122,
+      "extent": 168,
+      "cx": 92.0,
+      "cy": 69.0
+    },
+    {
+      "id": "CL-034",
+      "stroke_8x": 5.551,
+      "stroke_1x": 6.0,
+      "samples": 4129,
+      "ink_box": [
+        8,
+        8,
+        156,
+        134
+      ],
+      "w": 148,
+      "h": 126,
+      "extent": 148,
+      "cx": 82.0,
+      "cy": 71.0
+    },
+    {
+      "id": "CL-035",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 4704,
+      "ink_box": [
+        8,
+        8,
+        203,
+        112
+      ],
+      "w": 195,
+      "h": 104,
+      "extent": 195,
+      "cx": 105.5,
+      "cy": 60.0
+    },
+    {
+      "id": "CL-036",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 7005,
+      "ink_box": [
+        8,
+        8,
+        189,
+        109
+      ],
+      "w": 181,
+      "h": 101,
+      "extent": 181,
+      "cx": 98.5,
+      "cy": 58.5
+    },
+    {
+      "id": "CL-037",
+      "stroke_8x": 5.755,
+      "stroke_1x": 6.0,
+      "samples": 7941,
+      "ink_box": [
+        8,
+        8,
+        202,
+        136
+      ],
+      "w": 194,
+      "h": 128,
+      "extent": 194,
+      "cx": 105.0,
+      "cy": 72.0
+    },
+    {
+      "id": "CL-038",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 4087,
+      "ink_box": [
+        8,
+        8,
+        142,
+        151
+      ],
+      "w": 134,
+      "h": 143,
+      "extent": 143,
+      "cx": 75.0,
+      "cy": 79.5
+    },
+    {
+      "id": "CL-039",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 9874,
+      "ink_box": [
+        8,
+        8,
+        165,
+        149
+      ],
+      "w": 157,
+      "h": 141,
+      "extent": 157,
+      "cx": 86.5,
+      "cy": 78.5
+    },
+    {
+      "id": "CL-040",
+      "stroke_8x": 5.618,
+      "stroke_1x": 6.0,
+      "samples": 4661,
+      "ink_box": [
+        8,
+        8,
+        169,
+        139
+      ],
+      "w": 161,
+      "h": 131,
+      "extent": 161,
+      "cx": 88.5,
+      "cy": 73.5
+    },
+    {
+      "id": "CL-041",
+      "stroke_8x": 5.59,
+      "stroke_1x": 6.0,
+      "samples": 6029,
+      "ink_box": [
+        8,
+        8,
+        190,
+        118
+      ],
+      "w": 182,
+      "h": 110,
+      "extent": 182,
+      "cx": 99.0,
+      "cy": 63.0
+    },
+    {
+      "id": "CL-042",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 8076,
+      "ink_box": [
+        8,
+        8,
+        177,
+        141
+      ],
+      "w": 169,
+      "h": 133,
+      "extent": 169,
+      "cx": 92.5,
+      "cy": 74.5
+    },
+    {
+      "id": "CL-043",
+      "stroke_8x": 5.963,
+      "stroke_1x": 6.0,
+      "samples": 8528,
+      "ink_box": [
+        8,
+        8,
+        213,
+        137
+      ],
+      "w": 205,
+      "h": 129,
+      "extent": 205,
+      "cx": 110.5,
+      "cy": 72.5
+    },
+    {
+      "id": "CL-044",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 7693,
+      "ink_box": [
+        8,
+        8,
+        165,
+        130
+      ],
+      "w": 157,
+      "h": 122,
+      "extent": 157,
+      "cx": 86.5,
+      "cy": 69.0
+    },
+    {
+      "id": "CL-045",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 6068,
+      "ink_box": [
+        8,
+        8,
+        189,
+        122
+      ],
+      "w": 181,
+      "h": 114,
+      "extent": 181,
+      "cx": 98.5,
+      "cy": 65.0
+    },
+    {
+      "id": "CL-046",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 8681,
+      "ink_box": [
+        8,
+        8,
+        198,
+        118
+      ],
+      "w": 190,
+      "h": 110,
+      "extent": 190,
+      "cx": 103.0,
+      "cy": 63.0
+    },
+    {
+      "id": "CL-047",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 5439,
+      "ink_box": [
+        8,
+        8,
+        132,
+        137
+      ],
+      "w": 124,
+      "h": 129,
+      "extent": 129,
+      "cx": 70.0,
+      "cy": 72.5
+    },
+    {
+      "id": "CL-048",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6724,
+      "ink_box": [
+        8,
+        8,
+        174,
+        129
+      ],
+      "w": 166,
+      "h": 121,
+      "extent": 166,
+      "cx": 91.0,
+      "cy": 68.5
+    },
+    {
+      "id": "CL-049",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 9622,
+      "ink_box": [
+        8,
+        8,
+        170,
+        126
+      ],
+      "w": 162,
+      "h": 118,
+      "extent": 162,
+      "cx": 89.0,
+      "cy": 67.0
+    },
+    {
+      "id": "CL-050",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 6494,
+      "ink_box": [
+        8,
+        8,
+        198,
+        117
+      ],
+      "w": 190,
+      "h": 109,
+      "extent": 190,
+      "cx": 103.0,
+      "cy": 62.5
+    },
+    {
+      "id": "CL-051",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6997,
+      "ink_box": [
+        8,
+        8,
+        189,
+        129
+      ],
+      "w": 181,
+      "h": 121,
+      "extent": 181,
+      "cx": 98.5,
+      "cy": 68.5
+    },
+    {
+      "id": "CL-052",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 7320,
+      "ink_box": [
+        8,
+        8,
+        192,
+        125
+      ],
+      "w": 184,
+      "h": 117,
+      "extent": 184,
+      "cx": 100.0,
+      "cy": 66.5
+    },
+    {
+      "id": "CL-053",
+      "stroke_8x": 5.836,
+      "stroke_1x": 6.0,
+      "samples": 4608,
+      "ink_box": [
+        8,
+        8,
+        204,
+        94
+      ],
+      "w": 196,
+      "h": 86,
+      "extent": 196,
+      "cx": 106.0,
+      "cy": 51.0
+    },
+    {
+      "id": "CL-054",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6382,
+      "ink_box": [
+        8,
+        8,
+        186,
+        128
+      ],
+      "w": 178,
+      "h": 120,
+      "extent": 178,
+      "cx": 97.0,
+      "cy": 68.0
+    },
+    {
+      "id": "CL-055",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 7015,
+      "ink_box": [
+        8,
+        8,
+        200,
+        137
+      ],
+      "w": 192,
+      "h": 129,
+      "extent": 192,
+      "cx": 104.0,
+      "cy": 72.5
+    },
+    {
+      "id": "CL-056",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 7101,
+      "ink_box": [
+        8,
+        8,
+        204,
+        162
+      ],
+      "w": 196,
+      "h": 154,
+      "extent": 196,
+      "cx": 106.0,
+      "cy": 85.0
+    },
+    {
+      "id": "CL-057",
+      "stroke_8x": 5.831,
+      "stroke_1x": 6.0,
+      "samples": 4252,
+      "ink_box": [
+        8,
+        8,
+        149,
+        146
+      ],
+      "w": 141,
+      "h": 138,
+      "extent": 141,
+      "cx": 78.5,
+      "cy": 77.0
+    },
+    {
+      "id": "CL-058",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6767,
+      "ink_box": [
+        8,
+        8,
+        199,
+        106
+      ],
+      "w": 191,
+      "h": 98,
+      "extent": 191,
+      "cx": 103.5,
+      "cy": 57.0
+    },
+    {
+      "id": "CL-059",
+      "stroke_8x": 5.831,
+      "stroke_1x": 6.0,
+      "samples": 6636,
+      "ink_box": [
+        8,
+        8,
+        186,
+        160
+      ],
+      "w": 178,
+      "h": 152,
+      "extent": 178,
+      "cx": 97.0,
+      "cy": 84.0
+    },
+    {
+      "id": "CL-060",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 6086,
+      "ink_box": [
+        8,
+        8,
+        165,
+        130
+      ],
+      "w": 157,
+      "h": 122,
+      "extent": 157,
+      "cx": 86.5,
+      "cy": 69.0
+    },
+    {
+      "id": "CL-061",
+      "stroke_8x": 5.9,
+      "stroke_1x": 6.0,
+      "samples": 4289,
+      "ink_box": [
+        8,
+        8,
+        179,
+        109
+      ],
+      "w": 171,
+      "h": 101,
+      "extent": 171,
+      "cx": 93.5,
+      "cy": 58.5
+    },
+    {
+      "id": "CL-062",
+      "stroke_8x": 5.75,
+      "stroke_1x": 6.0,
+      "samples": 9683,
+      "ink_box": [
+        8,
+        8,
+        190,
+        119
+      ],
+      "w": 182,
+      "h": 111,
+      "extent": 182,
+      "cx": 99.0,
+      "cy": 63.5
+    },
+    {
+      "id": "CL-063",
+      "stroke_8x": 5.836,
+      "stroke_1x": 6.0,
+      "samples": 6743,
+      "ink_box": [
+        8,
+        8,
+        182,
+        140
+      ],
+      "w": 174,
+      "h": 132,
+      "extent": 174,
+      "cx": 95.0,
+      "cy": 74.0
+    },
+    {
+      "id": "CL-064",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 7106,
+      "ink_box": [
+        8,
+        8,
+        213,
+        106
+      ],
+      "w": 205,
+      "h": 98,
+      "extent": 205,
+      "cx": 110.5,
+      "cy": 57.0
+    },
+    {
+      "id": "CL-065",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 7191,
+      "ink_box": [
+        8,
+        8,
+        200,
+        150
+      ],
+      "w": 192,
+      "h": 142,
+      "extent": 192,
+      "cx": 104.0,
+      "cy": 79.0
+    },
+    {
+      "id": "CL-066",
+      "stroke_8x": 6.01,
+      "stroke_1x": 6.0,
+      "samples": 4689,
+      "ink_box": [
+        8,
+        8,
+        180,
+        118
+      ],
+      "w": 172,
+      "h": 110,
+      "extent": 172,
+      "cx": 94.0,
+      "cy": 63.0
+    },
+    {
+      "id": "CL-067",
+      "stroke_8x": 6.0,
+      "stroke_1x": 6.0,
+      "samples": 5314,
+      "ink_box": [
+        8,
+        8,
+        146,
+        143
+      ],
+      "w": 138,
+      "h": 135,
+      "extent": 138,
+      "cx": 77.0,
+      "cy": 75.5
+    },
+    {
+      "id": "CL-068",
+      "stroke_8x": 5.942,
+      "stroke_1x": 6.0,
+      "samples": 7991,
+      "ink_box": [
+        8,
+        8,
+        183,
+        167
+      ],
+      "w": 175,
+      "h": 159,
+      "extent": 175,
+      "cx": 95.5,
+      "cy": 87.5
+    },
+    {
+      "id": "CL-069",
+      "stroke_8x": 6.185,
+      "stroke_1x": 6.0,
+      "samples": 4281,
+      "ink_box": [
+        8,
+        8,
+        139,
+        148
+      ],
+      "w": 131,
+      "h": 140,
+      "extent": 140,
+      "cx": 73.5,
+      "cy": 78.0
+    },
+    {
+      "id": "CL-070",
+      "stroke_8x": 6.185,
+      "stroke_1x": 6.325,
+      "samples": 4546,
+      "ink_box": [
+        8,
+        8,
+        170,
+        137
+      ],
+      "w": 162,
+      "h": 129,
+      "extent": 162,
+      "cx": 89.0,
+      "cy": 72.5
+    },
+    {
+      "id": "CL-071",
+      "stroke_8x": 6.25,
+      "stroke_1x": 6.0,
+      "samples": 5533,
+      "ink_box": [
+        8,
+        8,
+        158,
+        132
+      ],
+      "w": 150,
+      "h": 124,
+      "extent": 150,
+      "cx": 83.0,
+      "cy": 70.0
+    },
+    {
+      "id": "CL-072",
+      "stroke_8x": 6.25,
+      "stroke_1x": 6.325,
+      "samples": 3175,
+      "ink_box": [
+        8,
+        8,
+        164,
+        138
+      ],
+      "w": 156,
+      "h": 130,
+      "extent": 156,
+      "cx": 86.0,
+      "cy": 73.0
+    },
+    {
+      "id": "R-01",
+      "stroke_8x": 5.056,
+      "stroke_1x": 6.0,
+      "samples": 5527,
+      "ink_box": [
+        8,
+        8,
+        177,
+        113
+      ],
+      "w": 169,
+      "h": 105,
+      "extent": 169,
+      "cx": 92.5,
+      "cy": 60.5
+    },
+    {
+      "id": "R-02",
+      "stroke_8x": 5.0,
+      "stroke_1x": 6.0,
+      "samples": 6435,
+      "ink_box": [
+        8,
+        8,
+        131,
+        110
+      ],
+      "w": 123,
+      "h": 102,
+      "extent": 123,
+      "cx": 69.5,
+      "cy": 59.0
+    },
+    {
+      "id": "R-03",
+      "stroke_8x": 9.419,
+      "stroke_1x": 8.944,
+      "samples": 260,
+      "ink_box": [
+        8,
+        8,
+        171,
+        91
+      ],
+      "w": 163,
+      "h": 83,
+      "extent": 163,
+      "cx": 89.5,
+      "cy": 49.5
+    },
+    {
+      "id": "R-04",
+      "stroke_8x": 5.148,
+      "stroke_1x": 5.657,
+      "samples": 6063,
+      "ink_box": [
+        8,
+        8,
+        148,
+        124
+      ],
+      "w": 140,
+      "h": 116,
+      "extent": 140,
+      "cx": 78.0,
+      "cy": 66.0
+    },
+    {
+      "id": "R-05",
+      "stroke_8x": 5.483,
+      "stroke_1x": 6.0,
+      "samples": 6386,
+      "ink_box": [
+        8,
+        8,
+        168,
+        102
+      ],
+      "w": 160,
+      "h": 94,
+      "extent": 160,
+      "cx": 88.0,
+      "cy": 55.0
+    },
+    {
+      "id": "R-06",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 7571,
+      "ink_box": [
+        8,
+        8,
+        223,
+        96
+      ],
+      "w": 215,
+      "h": 88,
+      "extent": 215,
+      "cx": 115.5,
+      "cy": 52.0
+    },
+    {
+      "id": "R-07",
+      "stroke_8x": 5.274,
+      "stroke_1x": 6.0,
+      "samples": 7241,
+      "ink_box": [
+        8,
+        8,
+        182,
+        112
+      ],
+      "w": 174,
+      "h": 104,
+      "extent": 174,
+      "cx": 95.0,
+      "cy": 60.0
+    },
+    {
+      "id": "R-08",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5463,
+      "ink_box": [
+        8,
+        8,
+        157,
+        109
+      ],
+      "w": 149,
+      "h": 101,
+      "extent": 149,
+      "cx": 82.5,
+      "cy": 58.5
+    },
+    {
+      "id": "R-09",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 6743,
+      "ink_box": [
+        8,
+        8,
+        157,
+        109
+      ],
+      "w": 149,
+      "h": 101,
+      "extent": 149,
+      "cx": 82.5,
+      "cy": 58.5
+    },
+    {
+      "id": "R-10",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6424,
+      "ink_box": [
+        8,
+        8,
+        205,
+        112
+      ],
+      "w": 197,
+      "h": 104,
+      "extent": 197,
+      "cx": 106.5,
+      "cy": 60.0
+    },
+    {
+      "id": "R-11",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6003,
+      "ink_box": [
+        8,
+        8,
+        174,
+        104
+      ],
+      "w": 166,
+      "h": 96,
+      "extent": 166,
+      "cx": 91.0,
+      "cy": 56.0
+    },
+    {
+      "id": "R-12",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6042,
+      "ink_box": [
+        8,
+        8,
+        177,
+        107
+      ],
+      "w": 169,
+      "h": 99,
+      "extent": 169,
+      "cx": 92.5,
+      "cy": 57.5
+    },
+    {
+      "id": "R-13",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7949,
+      "ink_box": [
+        8,
+        8,
+        235,
+        125
+      ],
+      "w": 227,
+      "h": 117,
+      "extent": 227,
+      "cx": 121.5,
+      "cy": 66.5
+    },
+    {
+      "id": "R-14",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6373,
+      "ink_box": [
+        8,
+        8,
+        182,
+        96
+      ],
+      "w": 174,
+      "h": 88,
+      "extent": 174,
+      "cx": 95.0,
+      "cy": 52.0
+    },
+    {
+      "id": "R-15",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5493,
+      "ink_box": [
+        8,
+        8,
+        190,
+        112
+      ],
+      "w": 182,
+      "h": 104,
+      "extent": 182,
+      "cx": 99.0,
+      "cy": 60.0
+    },
+    {
+      "id": "R-16",
+      "stroke_8x": 5.368,
+      "stroke_1x": 5.657,
+      "samples": 6185,
+      "ink_box": [
+        8,
+        8,
+        188,
+        130
+      ],
+      "w": 180,
+      "h": 122,
+      "extent": 180,
+      "cx": 98.0,
+      "cy": 69.0
+    },
+    {
+      "id": "R-17",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6818,
+      "ink_box": [
+        8,
+        8,
+        178,
+        113
+      ],
+      "w": 170,
+      "h": 105,
+      "extent": 170,
+      "cx": 93.0,
+      "cy": 60.5
+    },
+    {
+      "id": "R-18",
+      "stroke_8x": 5.701,
+      "stroke_1x": 6.0,
+      "samples": 5308,
+      "ink_box": [
+        8,
+        8,
+        133,
+        104
+      ],
+      "w": 125,
+      "h": 96,
+      "extent": 125,
+      "cx": 70.5,
+      "cy": 56.0
+    },
+    {
+      "id": "R-19",
+      "stroke_8x": 5.657,
+      "stroke_1x": 6.0,
+      "samples": 4727,
+      "ink_box": [
+        8,
+        8,
+        175,
+        110
+      ],
+      "w": 167,
+      "h": 102,
+      "extent": 167,
+      "cx": 91.5,
+      "cy": 59.0
+    },
+    {
+      "id": "R-20",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6814,
+      "ink_box": [
+        8,
+        8,
+        212,
+        126
+      ],
+      "w": 204,
+      "h": 118,
+      "extent": 204,
+      "cx": 110.0,
+      "cy": 67.0
+    },
+    {
+      "id": "R-21",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 7233,
+      "ink_box": [
+        8,
+        8,
+        197,
+        113
+      ],
+      "w": 189,
+      "h": 105,
+      "extent": 189,
+      "cx": 102.5,
+      "cy": 60.5
+    },
+    {
+      "id": "R-22",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5644,
+      "ink_box": [
+        8,
+        8,
+        202,
+        110
+      ],
+      "w": 194,
+      "h": 102,
+      "extent": 194,
+      "cx": 105.0,
+      "cy": 59.0
+    },
+    {
+      "id": "R-23",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 5592,
+      "ink_box": [
+        8,
+        8,
+        150,
+        110
+      ],
+      "w": 142,
+      "h": 102,
+      "extent": 142,
+      "cx": 79.0,
+      "cy": 59.0
+    },
+    {
+      "id": "R-24",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 7106,
+      "ink_box": [
+        8,
+        8,
+        202,
+        127
+      ],
+      "w": 194,
+      "h": 119,
+      "extent": 194,
+      "cx": 105.0,
+      "cy": 67.5
+    },
+    {
+      "id": "R-25",
+      "stroke_8x": 5.5,
+      "stroke_1x": 6.0,
+      "samples": 6458,
+      "ink_box": [
+        8,
+        8,
+        199,
+        120
+      ],
+      "w": 191,
+      "h": 112,
+      "extent": 191,
+      "cx": 103.5,
+      "cy": 64.0
+    },
+    {
+      "id": "R-26",
+      "stroke_8x": 5.25,
+      "stroke_1x": 5.657,
+      "samples": 5401,
+      "ink_box": [
+        8,
+        8,
+        183,
+        113
+      ],
+      "w": 175,
+      "h": 105,
+      "extent": 175,
+      "cx": 95.5,
+      "cy": 60.5
+    },
+    {
+      "id": "R-27",
+      "stroke_8x": 5.35,
+      "stroke_1x": 6.0,
+      "samples": 5390,
+      "ink_box": [
+        8,
+        8,
+        142,
+        114
+      ],
+      "w": 134,
+      "h": 106,
+      "extent": 134,
+      "cx": 75.0,
+      "cy": 61.0
+    },
+    {
+      "id": "R-28",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7637,
+      "ink_box": [
+        8,
+        8,
+        168,
+        112
+      ],
+      "w": 160,
+      "h": 104,
+      "extent": 160,
+      "cx": 88.0,
+      "cy": 60.0
+    },
+    {
+      "id": "R-29",
+      "stroke_8x": 5.274,
+      "stroke_1x": 6.0,
+      "samples": 4799,
+      "ink_box": [
+        8,
+        8,
+        169,
+        117
+      ],
+      "w": 161,
+      "h": 109,
+      "extent": 161,
+      "cx": 88.5,
+      "cy": 62.5
+    },
+    {
+      "id": "R-30",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 6717,
+      "ink_box": [
+        8,
+        8,
+        224,
+        97
+      ],
+      "w": 216,
+      "h": 89,
+      "extent": 216,
+      "cx": 116.0,
+      "cy": 52.5
+    },
+    {
+      "id": "R-31",
+      "stroke_8x": 5.297,
+      "stroke_1x": 6.0,
+      "samples": 6075,
+      "ink_box": [
+        8,
+        8,
+        203,
+        113
+      ],
+      "w": 195,
+      "h": 105,
+      "extent": 195,
+      "cx": 105.5,
+      "cy": 60.5
+    },
+    {
+      "id": "R-32",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 8503,
+      "ink_box": [
+        8,
+        8,
+        187,
+        102
+      ],
+      "w": 179,
+      "h": 94,
+      "extent": 179,
+      "cx": 97.5,
+      "cy": 55.0
+    },
+    {
+      "id": "R-33",
+      "stroke_8x": 5.274,
+      "stroke_1x": 6.0,
+      "samples": 6327,
+      "ink_box": [
+        8,
+        8,
+        192,
+        112
+      ],
+      "w": 184,
+      "h": 104,
+      "extent": 184,
+      "cx": 100.0,
+      "cy": 60.0
+    },
+    {
+      "id": "R-34",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7090,
+      "ink_box": [
+        8,
+        8,
+        196,
+        112
+      ],
+      "w": 188,
+      "h": 104,
+      "extent": 188,
+      "cx": 102.0,
+      "cy": 60.0
+    },
+    {
+      "id": "R-35",
+      "stroke_8x": 5.303,
+      "stroke_1x": 6.0,
+      "samples": 4827,
+      "ink_box": [
+        8,
+        8,
+        171,
+        115
+      ],
+      "w": 163,
+      "h": 107,
+      "extent": 163,
+      "cx": 89.5,
+      "cy": 61.5
+    },
+    {
+      "id": "R-36",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7487,
+      "ink_box": [
+        8,
+        8,
+        226,
+        119
+      ],
+      "w": 218,
+      "h": 111,
+      "extent": 218,
+      "cx": 117.0,
+      "cy": 63.5
+    },
+    {
+      "id": "R-37",
+      "stroke_8x": 5.256,
+      "stroke_1x": 6.0,
+      "samples": 7016,
+      "ink_box": [
+        8,
+        8,
+        194,
+        100
+      ],
+      "w": 186,
+      "h": 92,
+      "extent": 186,
+      "cx": 101.0,
+      "cy": 54.0
+    },
+    {
+      "id": "R-38",
+      "stroke_8x": 5.297,
+      "stroke_1x": 6.0,
+      "samples": 5511,
+      "ink_box": [
+        8,
+        8,
+        205,
+        89
+      ],
+      "w": 197,
+      "h": 81,
+      "extent": 197,
+      "cx": 106.5,
+      "cy": 48.5
+    },
+    {
+      "id": "R-39",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7379,
+      "ink_box": [
+        8,
+        8,
+        229,
+        101
+      ],
+      "w": 221,
+      "h": 93,
+      "extent": 221,
+      "cx": 118.5,
+      "cy": 54.5
+    },
+    {
+      "id": "R-40",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7113,
+      "ink_box": [
+        8,
+        8,
+        220,
+        108
+      ],
+      "w": 212,
+      "h": 100,
+      "extent": 212,
+      "cx": 114.0,
+      "cy": 58.0
+    },
+    {
+      "id": "R-41",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 9641,
+      "ink_box": [
+        8,
+        8,
+        221,
+        110
+      ],
+      "w": 213,
+      "h": 102,
+      "extent": 213,
+      "cx": 114.5,
+      "cy": 59.0
+    },
+    {
+      "id": "R-42",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 10008,
+      "ink_box": [
+        8,
+        8,
+        240,
+        126
+      ],
+      "w": 232,
+      "h": 118,
+      "extent": 232,
+      "cx": 124.0,
+      "cy": 67.0
+    },
+    {
+      "id": "R-43",
+      "stroke_8x": 5.0,
+      "stroke_1x": 5.657,
+      "samples": 4983,
+      "ink_box": [
+        8,
+        8,
+        144,
+        131
+      ],
+      "w": 136,
+      "h": 123,
+      "extent": 136,
+      "cx": 76.0,
+      "cy": 69.5
+    },
+    {
+      "id": "R-44",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 8319,
+      "ink_box": [
+        8,
+        8,
+        246,
+        88
+      ],
+      "w": 238,
+      "h": 80,
+      "extent": 238,
+      "cx": 127.0,
+      "cy": 48.0
+    },
+    {
+      "id": "R-45",
+      "stroke_8x": 5.274,
+      "stroke_1x": 6.0,
+      "samples": 7529,
+      "ink_box": [
+        8,
+        8,
+        183,
+        117
+      ],
+      "w": 175,
+      "h": 109,
+      "extent": 175,
+      "cx": 95.5,
+      "cy": 62.5
+    },
+    {
+      "id": "R-46",
+      "stroke_8x": 5.006,
+      "stroke_1x": 5.657,
+      "samples": 10084,
+      "ink_box": [
+        8,
+        8,
+        232,
+        120
+      ],
+      "w": 224,
+      "h": 112,
+      "extent": 224,
+      "cx": 120.0,
+      "cy": 64.0
+    },
+    {
+      "id": "R-47",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 7964,
+      "ink_box": [
+        8,
+        8,
+        242,
+        105
+      ],
+      "w": 234,
+      "h": 97,
+      "extent": 234,
+      "cx": 125.0,
+      "cy": 56.5
+    },
+    {
+      "id": "R-48",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 8518,
+      "ink_box": [
+        8,
+        8,
+        220,
+        107
+      ],
+      "w": 212,
+      "h": 99,
+      "extent": 212,
+      "cx": 114.0,
+      "cy": 57.5
+    },
+    {
+      "id": "R-49",
+      "stroke_8x": 5.25,
+      "stroke_1x": 6.0,
+      "samples": 6798,
+      "ink_box": [
+        8,
+        8,
+        231,
+        99
+      ],
+      "w": 223,
+      "h": 91,
+      "extent": 223,
+      "cx": 119.5,
+      "cy": 53.5
+    },
+    {
+      "id": "R-50",
+      "stroke_8x": 4.75,
+      "stroke_1x": 6.0,
+      "samples": 9007,
+      "ink_box": [
+        8,
+        8,
+        203,
+        121
+      ],
+      "w": 195,
+      "h": 113,
+      "extent": 195,
+      "cx": 105.5,
+      "cy": 64.5
+    }
+  ]
+}

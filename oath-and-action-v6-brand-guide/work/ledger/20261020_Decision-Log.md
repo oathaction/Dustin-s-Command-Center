@@ -135,3 +135,12 @@ Dustin sent the Civic Line catalog, 122 icons on five sheets in red-black and bl
 | DR-04 | Named approval of a change to identity geometry: Civic Line's Explain (CL-019), Track (CL-020), Connect (CL-021) and Act (CL-022) replace the Gate 1 pillar marks (Direction A, Y1). The side by side at actual size goes in the delivery report for the record | Dustin, October 29: "use these new pillar marks." |
 | DR-05 | The Civic Line contact sheets carry the approved Edition 06 wordmark master in place of the wordmark drawn on the reference sheets | Dustin, October 29: "use approved edition 06" |
 | DR-06 | Order of work: the Civic Line icons first, then the visual system for the atlas and systems maps, then the other open items of the direction review (Choice 1, Choice 3, P3, R1 to R14, Q-13) | Dustin, October 29 |
+
+### Civic Line pipeline, October 29, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-31 | One line weight for the whole Civic Line set: W = 5.5 source px, the median of the per-icon medians (5.55), read at 8x | DR-03; the sheets range from 4.75 to 6.0 px by accident of generation |
+| D2-32 | One uniform scale for the set, s = 0.487395 viewBox units per source px, so the widest icon (R-44, 238 px) fills 116 of 128 units and strokes export at 2.68 units; each icon's ink-box center maps to (64, 64) | Keeps the source's relative sizes and one stroke across the set. Tracers draw in crop pixels, so the export scale can change later without retracing |
+| D2-33 | Where a stroke changes from red to black, the red ends with a square cut and the black continues | Matches the sheets, where the color change has no cap |
+| D2-34 | Six tracers work in parallel on about 20 icons each, with one status file per icon and the completion ledger compiled from them; an independent reviewer marks icons reviewed | Parallel work without write conflicts; an interrupted run resumes from the status files |
