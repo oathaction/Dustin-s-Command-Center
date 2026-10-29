@@ -1,9 +1,9 @@
 {
   "id": "R-44",
   "label": "Digital Competition",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T6",
-  "iterations": 4,
+  "iterations": 5,
   "history": [
     {
       "iteration": 1,
@@ -44,6 +44,16 @@
       "red_iou_1x": 0.7834,
       "edge_mean_px": 0.986,
       "edge_p95_px": 1.75
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T08:41:38+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.6835,
+      "red_iou_1x": 0.7834,
+      "edge_mean_px": 0.986,
+      "edge_p95_px": 1.75
     }
   ],
   "notes": [
@@ -51,9 +61,14 @@
       "time": "2026-10-29T07:16:03+00:00",
       "by": "T6",
       "note": "overlay checked; windows equalised per catalogue (0.85 px per side), layouts and arrows matched"
+    },
+    {
+      "time": "2026-10-29T08:41:38+00:00",
+      "by": "T6",
+      "note": "Windows aligned: both tops at y 12.625, each window and its contents moved 1.345 px; arrows unchanged"
     }
   ],
-  "last_build": "2026-10-29T08:30:42+00:00",
+  "last_build": "2026-10-29T08:41:38+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.6835,
     "red_iou_1x": 0.7834,

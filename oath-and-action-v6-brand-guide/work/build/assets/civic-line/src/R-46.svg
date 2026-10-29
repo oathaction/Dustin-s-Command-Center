@@ -2,11 +2,12 @@
   <!-- R-46 Expand the House. Crop 240 x 128 px; ink box x 8..232, y 8..120.
        Construction: a broad semicircular legislative chamber viewed schematically from above. A curved outer boundary contains multiple small outlined seat rectangles that follow its arc. More seats form inner curved rows. A small raised dais/podium stands near the top centre, with a short roof/cap-like detail.
        Red: the small group of newly added seats along the chamber's upper-right outer arc. Other seats, curved framing and dais stay black. Count and position the seat rectangles directly from the enlarged reference.
-       Counts from the sheet: 22 seats. Outside the chamber line, five per side on one elliptical arc
-       (centre (120.4, 84.54), rx 103.8, ry 50.46), the right five red; inside, two rows of three per side
-       on circular arcs. Every seat is one rounded rectangle, 13.6 x 8.8 px on the centreline, corner r 2.
-       Outer seats keep their drawn tilts (mirror-averaged) and are spaced along the arc with equal gaps;
-       inner seats lie along their arcs at equal angles. Mirror axis x 120.4. The chamber line is a half-ellipse (rx 89.3, ry 47.21) on
+       Counts from the sheet: 22 seats in two types. Outside the chamber line, five outer seats per side,
+       15.5 x 9.5 px on the centreline, on one ellipse (centre (120.4, 88.76), rx 106.63, ry 55.72) with
+       equal 3 px gaps, each at its drawn tilt (78.4, 44.75, 59.1, 72.4, 79.1 deg from the bottom up,
+       mirror-averaged); the right five red. Inside, two rows of three inner seats per side, 12.5 x 11 px,
+       lying along circular arcs at equal angles: the upper row overlaps into a chain as drawn, the lower
+       row stands apart with 3.5 px gaps. All corners r 2. Mirror axis x 120.4. The chamber line is a half-ellipse (rx 89.3, ry 47.21) on
        vertical feet, stopping at the dais legs. -->
   <g data-role="base">
     <polyline id="dais-cap" points="110.5,14.3 110.5,11.15 130.3,11.15 130.3,14.3"/>
@@ -16,29 +17,29 @@
     <line id="dais-leg-right" x1="142.7" y1="44.53" x2="142.7" y2="65.63"/>
     <path id="chamber-left" d="M98.1 50.7 A89.3 47.21 0 0 0 31.1 96.41 V117.6"/>
     <path id="chamber-right" d="M142.7 50.7 A89.3 47.21 0 0 1 209.7 96.41 V117.6"/>
-    <path id="inner-lower-left-1" d="M59.84 98.94 L57.01 102.81 A2 2 0 0 1 54.22 103.25 L46.47 97.58 A2 2 0 0 1 46.03 94.79 L48.86 90.91 A2 2 0 0 1 51.66 90.48 L59.41 96.14 A2 2 0 0 1 59.84 98.94 Z"/>
-    <path id="inner-lower-left-2" d="M79.39 107.46 L77.68 111.94 A2 2 0 0 1 75.1 113.11 L66.13 109.7 A2 2 0 0 1 64.97 107.12 L66.67 102.63 A2 2 0 0 1 69.25 101.47 L78.22 104.88 A2 2 0 0 1 79.39 107.46 Z"/>
-    <path id="inner-lower-left-3" d="M100.49 110.48 L100.04 115.26 A2 2 0 0 1 97.86 117.07 L88.3 116.17 A2 2 0 0 1 86.5 113.99 L86.95 109.21 A2 2 0 0 1 89.12 107.41 L98.68 108.31 A2 2 0 0 1 100.49 110.48 Z"/>
-    <path id="inner-lower-right-1" d="M183.79 102.81 L180.96 98.94 A2 2 0 0 1 181.39 96.14 L189.14 90.48 A2 2 0 0 1 191.94 90.91 L194.77 94.79 A2 2 0 0 1 194.33 97.58 L186.58 103.25 A2 2 0 0 1 183.79 102.81 Z"/>
-    <path id="inner-lower-right-2" d="M163.12 111.94 L161.41 107.46 A2 2 0 0 1 162.58 104.88 L171.55 101.47 A2 2 0 0 1 174.13 102.63 L175.83 107.12 A2 2 0 0 1 174.67 109.7 L165.7 113.11 A2 2 0 0 1 163.12 111.94 Z"/>
-    <path id="inner-lower-right-3" d="M140.76 115.26 L140.31 110.48 A2 2 0 0 1 142.12 108.31 L151.68 107.41 A2 2 0 0 1 153.85 109.21 L154.3 113.99 A2 2 0 0 1 152.5 116.17 L142.94 117.07 A2 2 0 0 1 140.76 115.26 Z"/>
-    <path id="inner-upper-left-1" d="M75.28 81.17 L71.9 84.57 A2 2 0 0 1 69.07 84.59 L62.26 77.83 A2 2 0 0 1 62.24 75 L65.62 71.59 A2 2 0 0 1 68.45 71.58 L75.27 78.34 A2 2 0 0 1 75.28 81.17 Z"/>
-    <path id="inner-upper-left-2" d="M88.53 87.98 L86.39 92.28 A2 2 0 0 1 83.71 93.18 L75.11 88.91 A2 2 0 0 1 74.21 86.23 L76.35 81.93 A2 2 0 0 1 79.03 81.03 L87.63 85.3 A2 2 0 0 1 88.53 87.98 Z"/>
-    <path id="inner-upper-left-3" d="M103.25 90.29 L102.57 95.04 A2 2 0 0 1 100.31 96.74 L90.8 95.39 A2 2 0 0 1 89.11 93.13 L89.78 88.37 A2 2 0 0 1 92.04 86.67 L101.55 88.03 A2 2 0 0 1 103.25 90.29 Z"/>
-    <path id="inner-upper-right-1" d="M168.9 84.57 L165.52 81.17 A2 2 0 0 1 165.53 78.34 L172.35 71.58 A2 2 0 0 1 175.18 71.59 L178.56 75 A2 2 0 0 1 178.54 77.83 L171.73 84.59 A2 2 0 0 1 168.9 84.57 Z"/>
-    <path id="inner-upper-right-2" d="M154.41 92.28 L152.27 87.98 A2 2 0 0 1 153.17 85.3 L161.77 81.03 A2 2 0 0 1 164.45 81.93 L166.59 86.23 A2 2 0 0 1 165.69 88.91 L157.09 93.18 A2 2 0 0 1 154.41 92.28 Z"/>
-    <path id="inner-upper-right-3" d="M138.23 95.04 L137.55 90.29 A2 2 0 0 1 139.25 88.03 L148.76 86.67 A2 2 0 0 1 151.02 88.37 L151.69 93.13 A2 2 0 0 1 150 95.39 L140.49 96.74 A2 2 0 0 1 138.23 95.04 Z"/>
-    <path id="outer-left-1" d="M19.35 93.64 L14.56 93.81 A2 2 0 0 1 12.49 91.88 L12.15 82.28 A2 2 0 0 1 14.08 80.22 L18.88 80.05 A2 2 0 0 1 20.95 81.98 L21.28 91.57 A2 2 0 0 1 19.35 93.64 Z"/>
-    <path id="outer-left-2" d="M29.53 70.43 L25.25 72.61 A2 2 0 0 1 22.56 71.74 L18.2 63.19 A2 2 0 0 1 19.08 60.5 L23.35 58.32 A2 2 0 0 1 26.04 59.19 L30.4 67.74 A2 2 0 0 1 29.53 70.43 Z"/>
-    <path id="outer-left-3" d="M42.19 59.39 L38.02 61.77 A2 2 0 0 1 35.29 61.02 L30.54 52.68 A2 2 0 0 1 31.28 49.95 L35.45 47.58 A2 2 0 0 1 38.18 48.32 L42.94 56.66 A2 2 0 0 1 42.19 59.39 Z"/>
-    <path id="outer-left-4" d="M56.27 52.36 L51.7 53.85 A2 2 0 0 1 49.18 52.57 L46.2 43.44 A2 2 0 0 1 47.48 40.92 L52.04 39.43 A2 2 0 0 1 54.56 40.71 L57.55 49.84 A2 2 0 0 1 56.27 52.36 Z"/>
-    <path id="outer-left-5" d="M71.23 47.35 L66.51 48.18 A2 2 0 0 1 64.19 46.56 L62.52 37.11 A2 2 0 0 1 64.14 34.79 L68.87 33.96 A2 2 0 0 1 71.19 35.58 L72.86 45.03 A2 2 0 0 1 71.23 47.35 Z"/>
+    <path id="inner-lower-left-1" d="M59.65 97.48 L55.49 103.11 A2 2 0 0 1 52.69 103.53 L45.86 98.47 A2 2 0 0 1 45.44 95.67 L49.61 90.05 A2 2 0 0 1 52.4 89.63 L59.24 94.68 A2 2 0 0 1 59.65 97.48 Z"/>
+    <path id="inner-lower-left-2" d="M79.26 106.23 L76.78 112.78 A2 2 0 0 1 74.2 113.94 L66.25 110.93 A2 2 0 0 1 65.09 108.35 L67.57 101.8 A2 2 0 0 1 70.15 100.64 L78.1 103.65 A2 2 0 0 1 79.26 106.23 Z"/>
+    <path id="inner-lower-left-3" d="M100.51 109.34 L99.89 116.32 A2 2 0 0 1 97.72 118.13 L89.26 117.39 A2 2 0 0 1 87.44 115.22 L88.05 108.25 A2 2 0 0 1 90.22 106.43 L98.69 107.17 A2 2 0 0 1 100.51 109.34 Z"/>
+    <path id="inner-lower-right-1" d="M185.31 103.11 L181.15 97.48 A2 2 0 0 1 181.56 94.68 L188.4 89.63 A2 2 0 0 1 191.19 90.05 L195.36 95.67 A2 2 0 0 1 194.94 98.47 L188.11 103.53 A2 2 0 0 1 185.31 103.11 Z"/>
+    <path id="inner-lower-right-2" d="M164.02 112.78 L161.54 106.23 A2 2 0 0 1 162.7 103.65 L170.65 100.64 A2 2 0 0 1 173.23 101.8 L175.71 108.35 A2 2 0 0 1 174.55 110.93 L166.6 113.94 A2 2 0 0 1 164.02 112.78 Z"/>
+    <path id="inner-lower-right-3" d="M140.91 116.32 L140.29 109.34 A2 2 0 0 1 142.11 107.17 L150.58 106.43 A2 2 0 0 1 152.75 108.25 L153.36 115.22 A2 2 0 0 1 151.54 117.39 L143.08 118.13 A2 2 0 0 1 140.91 116.32 Z"/>
+    <path id="inner-upper-left-1" d="M75.67 80 L70.74 84.97 A2 2 0 0 1 67.91 84.98 L61.87 79 A2 2 0 0 1 61.86 76.17 L66.79 71.2 A2 2 0 0 1 69.62 71.18 L75.65 77.17 A2 2 0 0 1 75.67 80 Z"/>
+    <path id="inner-upper-left-2" d="M88.52 86.75 L85.41 93.02 A2 2 0 0 1 82.73 93.92 L75.12 90.14 A2 2 0 0 1 74.22 87.46 L77.33 81.19 A2 2 0 0 1 80.01 80.29 L87.62 84.07 A2 2 0 0 1 88.52 86.75 Z"/>
+    <path id="inner-upper-left-3" d="M102.86 89.12 L101.87 96.05 A2 2 0 0 1 99.61 97.75 L91.19 96.55 A2 2 0 0 1 89.5 94.29 L90.48 87.36 A2 2 0 0 1 92.74 85.66 L101.16 86.86 A2 2 0 0 1 102.86 89.12 Z"/>
+    <path id="inner-upper-right-1" d="M170.06 84.97 L165.13 80 A2 2 0 0 1 165.15 77.17 L171.18 71.18 A2 2 0 0 1 174.01 71.2 L178.94 76.17 A2 2 0 0 1 178.93 79 L172.89 84.98 A2 2 0 0 1 170.06 84.97 Z"/>
+    <path id="inner-upper-right-2" d="M155.39 93.02 L152.28 86.75 A2 2 0 0 1 153.18 84.07 L160.79 80.29 A2 2 0 0 1 163.47 81.19 L166.58 87.46 A2 2 0 0 1 165.68 90.14 L158.07 93.92 A2 2 0 0 1 155.39 93.02 Z"/>
+    <path id="inner-upper-right-3" d="M138.93 96.05 L137.94 89.12 A2 2 0 0 1 139.64 86.86 L148.06 85.66 A2 2 0 0 1 150.32 87.36 L151.3 94.29 A2 2 0 0 1 149.61 96.55 L141.19 97.75 A2 2 0 0 1 138.93 96.05 Z"/>
+    <path id="outer-left-1" d="M18.03 95.33 L12.64 96.43 A2 2 0 0 1 10.28 94.88 L7.97 83.61 A2 2 0 0 1 9.53 81.25 L14.91 80.14 A2 2 0 0 1 17.28 81.7 L19.59 92.97 A2 2 0 0 1 18.03 95.33 Z"/>
+    <path id="outer-left-2" d="M29.43 70.82 L25.56 74.73 A2 2 0 0 1 22.73 74.74 L14.56 66.64 A2 2 0 0 1 14.55 63.81 L18.42 59.91 A2 2 0 0 1 21.25 59.9 L29.42 67.99 A2 2 0 0 1 29.43 70.82 Z"/>
+    <path id="outer-left-3" d="M42.74 59.68 L38.02 62.51 A2 2 0 0 1 35.27 61.82 L29.37 51.95 A2 2 0 0 1 30.06 49.21 L34.78 46.38 A2 2 0 0 1 37.52 47.07 L43.42 56.94 A2 2 0 0 1 42.74 59.68 Z"/>
+    <path id="outer-left-4" d="M58.34 51.98 L53.1 53.65 A2 2 0 0 1 50.58 52.35 L47.11 41.38 A2 2 0 0 1 48.41 38.87 L53.65 37.21 A2 2 0 0 1 56.16 38.51 L59.64 49.47 A2 2 0 0 1 58.34 51.98 Z"/>
+    <path id="outer-left-5" d="M75.15 46.48 L69.75 47.52 A2 2 0 0 1 67.4 45.93 L65.23 34.64 A2 2 0 0 1 66.82 32.3 L72.22 31.26 A2 2 0 0 1 74.56 32.84 L76.73 44.14 A2 2 0 0 1 75.15 46.48 Z"/>
   </g>
   <g data-role="accent">
-    <path id="outer-right-1" d="M226.24 93.81 L221.45 93.64 A2 2 0 0 1 219.52 91.57 L219.85 81.98 A2 2 0 0 1 221.92 80.05 L226.72 80.22 A2 2 0 0 1 228.65 82.28 L228.31 91.88 A2 2 0 0 1 226.24 93.81 Z"/>
-    <path id="outer-right-2" d="M215.55 72.61 L211.27 70.43 A2 2 0 0 1 210.4 67.74 L214.76 59.19 A2 2 0 0 1 217.45 58.32 L221.72 60.5 A2 2 0 0 1 222.6 63.19 L218.24 71.74 A2 2 0 0 1 215.55 72.61 Z"/>
-    <path id="outer-right-3" d="M202.78 61.77 L198.61 59.39 A2 2 0 0 1 197.86 56.66 L202.62 48.32 A2 2 0 0 1 205.35 47.58 L209.52 49.95 A2 2 0 0 1 210.26 52.68 L205.51 61.02 A2 2 0 0 1 202.78 61.77 Z"/>
-    <path id="outer-right-4" d="M189.1 53.85 L184.53 52.36 A2 2 0 0 1 183.25 49.84 L186.24 40.71 A2 2 0 0 1 188.76 39.43 L193.32 40.92 A2 2 0 0 1 194.6 43.44 L191.62 52.57 A2 2 0 0 1 189.1 53.85 Z"/>
-    <path id="outer-right-5" d="M174.29 48.18 L169.57 47.35 A2 2 0 0 1 167.94 45.03 L169.61 35.58 A2 2 0 0 1 171.93 33.96 L176.66 34.79 A2 2 0 0 1 178.28 37.11 L176.61 46.56 A2 2 0 0 1 174.29 48.18 Z"/>
+    <path id="outer-right-1" d="M228.16 96.43 L222.77 95.33 A2 2 0 0 1 221.21 92.97 L223.52 81.7 A2 2 0 0 1 225.89 80.14 L231.27 81.25 A2 2 0 0 1 232.83 83.61 L230.52 94.88 A2 2 0 0 1 228.16 96.43 Z"/>
+    <path id="outer-right-2" d="M215.24 74.73 L211.37 70.82 A2 2 0 0 1 211.38 67.99 L219.55 59.9 A2 2 0 0 1 222.38 59.91 L226.25 63.81 A2 2 0 0 1 226.24 66.64 L218.07 74.74 A2 2 0 0 1 215.24 74.73 Z"/>
+    <path id="outer-right-3" d="M202.78 62.51 L198.06 59.68 A2 2 0 0 1 197.38 56.94 L203.28 47.07 A2 2 0 0 1 206.02 46.38 L210.74 49.21 A2 2 0 0 1 211.43 51.95 L205.53 61.82 A2 2 0 0 1 202.78 62.51 Z"/>
+    <path id="outer-right-4" d="M187.7 53.65 L182.46 51.98 A2 2 0 0 1 181.16 49.47 L184.64 38.51 A2 2 0 0 1 187.15 37.21 L192.39 38.87 A2 2 0 0 1 193.69 41.38 L190.22 52.35 A2 2 0 0 1 187.7 53.65 Z"/>
+    <path id="outer-right-5" d="M171.05 47.52 L165.65 46.48 A2 2 0 0 1 164.07 44.14 L166.24 32.84 A2 2 0 0 1 168.58 31.26 L173.98 32.3 A2 2 0 0 1 175.57 34.64 L173.4 45.93 A2 2 0 0 1 171.05 47.52 Z"/>
   </g>
 </svg>

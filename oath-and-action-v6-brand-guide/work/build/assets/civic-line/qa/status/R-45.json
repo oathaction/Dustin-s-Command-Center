@@ -1,9 +1,9 @@
 {
   "id": "R-45",
   "label": "Paper Ballots & Audits",
-  "state": "traced",
+  "state": "fixed",
   "tracer": "T6",
-  "iterations": 5,
+  "iterations": 6,
   "history": [
     {
       "iteration": 1,
@@ -54,6 +54,16 @@
       "red_iou_1x": 0.9056,
       "edge_mean_px": 0.23,
       "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T08:41:36+00:00",
+      "state": "fixed",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9191,
+      "red_iou_1x": 0.9056,
+      "edge_mean_px": 0.23,
+      "edge_p95_px": 0.707
     }
   ],
   "notes": [
@@ -61,9 +71,14 @@
       "time": "2026-10-29T07:21:16+00:00",
       "by": "T6",
       "note": "overlay checked; sheets, lens, capsule handle and check match; taper and wedge normalised to W"
+    },
+    {
+      "time": "2026-10-29T08:41:36+00:00",
+      "by": "T6",
+      "note": "Handle upper side now starts on the lens ring's outer edge at (157.61, 82.33), merged as the black sheet draws it"
     }
   ],
-  "last_build": "2026-10-29T08:30:16+00:00",
+  "last_build": "2026-10-29T08:41:36+00:00",
   "last_metrics": {
     "silhouette_iou_1x": 0.9191,
     "red_iou_1x": 0.9056,

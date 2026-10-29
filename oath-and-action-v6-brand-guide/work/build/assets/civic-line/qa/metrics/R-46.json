@@ -1,64 +1,64 @@
 {
   "id": "R-46",
   "label": "Expand the House",
-  "built": "2026-10-29T08:20:01+00:00",
+  "built": "2026-10-29T08:41:34+00:00",
   "W_source_px": 5.5,
   "s": 0.487395,
   "stroke_units": 2.6807,
-  "silhouette_iou_1x": 0.7652,
-  "silhouette_iou_4x": 0.7736,
-  "red_iou_1x": 0.6902,
-  "red_iou_4x": 0.7002,
+  "silhouette_iou_1x": 0.7035,
+  "silhouette_iou_4x": 0.7074,
+  "red_iou_1x": 0.5293,
+  "red_iou_4x": 0.5371,
   "edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.669,
-      "p95": 2.0,
-      "max": 3.64
+      "mean": 0.768,
+      "p95": 2.25,
+      "max": 4.854
     },
     "trace_to_reference": {
-      "mean": 0.623,
-      "p95": 1.75,
-      "max": 3.354
+      "mean": 0.818,
+      "p95": 2.305,
+      "max": 6.129
     },
     "symmetric": {
-      "mean": 0.646,
-      "p95": 1.803,
-      "max": 3.64
+      "mean": 0.794,
+      "p95": 2.264,
+      "max": 6.129
     }
   },
   "red_edge_distance_px": {
     "reference_to_trace": {
-      "mean": 0.893,
-      "p95": 2.358,
-      "max": 4.039
+      "mean": 1.181,
+      "p95": 2.5,
+      "max": 4.562
     },
     "trace_to_reference": {
-      "mean": 0.782,
-      "p95": 2.121,
-      "max": 3.4
+      "mean": 1.315,
+      "p95": 3.5,
+      "max": 6.255
     },
     "symmetric": {
-      "mean": 0.84,
-      "p95": 2.25,
-      "max": 4.039
+      "mean": 1.25,
+      "p95": 3.25,
+      "max": 6.255
     }
   },
   "best_offset_1x": {
     "dx": 0,
     "dy": 0,
-    "iou": 0.7652
+    "iou": 0.7035
   },
-  "ink_area_ratio_trace_over_reference": 1.078,
+  "ink_area_ratio_trace_over_reference": 1.1447,
   "bake_check_iou_4x": 1.0,
-  "bake_check_iou_4x_raw": 0.9999,
+  "bake_check_iou_4x_raw": 1.0,
   "bake_check_iou_1x": 0.9999,
-  "bake_check_max_diff_levels_4x": 16,
+  "bake_check_max_diff_levels_4x": 39,
   "pair_identical_after_swap": true,
   "export_drawn_bounds": [
-    10.094,
+    8.037,
     36.901,
-    118.296,
-    91.465
+    120.353,
+    91.727
   ],
   "export_inside_0_128": true,
   "elements": 29,
