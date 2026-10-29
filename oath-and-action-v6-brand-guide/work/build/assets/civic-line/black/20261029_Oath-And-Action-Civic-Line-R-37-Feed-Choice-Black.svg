@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-37" data-id="R-37" width="128" height="128" viewBox="0 0 128 128">
+  <title>Feed Choice</title>
+  <desc>Oath &amp; Action Civic Line R-37 Feed Choice. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="19.901" y="42.998" width="57.527" height="41.472" rx="3.777" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="19.901" y1="52.751" x2="77.428" y2="52.751" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="25.886" cy="47.916" r="1.365" fill="#121212"/>
+    <circle cx="31.613" cy="47.916" r="1.365" fill="#121212"/>
+    <circle cx="37.339" cy="47.916" r="1.365" fill="#121212"/>
+    <line x1="27.869" y1="61.017" x2="69.264" y2="61.017" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27.869" y1="72.383" x2="53.74" y2="72.383" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.012" y1="72.383" x2="69.264" y2="72.383" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M94.876 69.644 V66.944 L92.825 64.794 A8.871 8.871 0 1 1 105.999 64.336 L101.593 68.045 V85.153 H95.807 L91.587 79.982 L94.033 76.779 L91.582 73.758 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="62.596" cy="72.383" r="4.416" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

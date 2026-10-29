@@ -1,0 +1,75 @@
+{
+  "id": "CL-030",
+  "label": "Reform Tests",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:33:48+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9486,
+      "red_iou_1x": 0.9107,
+      "edge_mean_px": 0.149,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:34:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9486,
+      "red_iou_1x": 0.9107,
+      "edge_mean_px": 0.149,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:34:05+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; connector drawn at W (sheet 7 px), layout symmetric"
+    }
+  ],
+  "last_build": "2026-10-29T06:34:05+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9486,
+    "red_iou_1x": 0.9107,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9799,
+    "edge_mean_px": 0.149,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the connector between the panels at W, centred on y 41.24",
+      "why": "DR-03 one line weight. On both sheets the connector runs about 7 px thick (6.1 px at its middle, where its lower edge sags 1 px), against 5.5 to 5.75 px elsewhere. Its lower edge moves up by up to 1 px."
+    },
+    {
+      "what": "Made the two panels one size, 60.54 x 53.65 px with a 2.5 px corner radius, and set the layout symmetric about x 87.15: panels and branches 45.73 px either side, badge on the axis",
+      "why": "DR-03 equal repeats and symmetry. Panels measure 60.43 x 53.67 and 60.64 x 53.62 px; panel centres 41.42 and 132.87, branches 41.77 and 133.2, badge 86.83. Nothing moves more than 0.35 px."
+    },
+    {
+      "what": "Gave both branch elbows one radius, 10 px, and one horizontal run, y 99.88, ending on the badge circle",
+      "why": "DR-03. Elbow fits give r 9.69 and 10.28 px; runs measure y 99.79 and 99.56 to 99.97."
+    },
+    {
+      "what": "Made the badge a true circle, centre (87.15, 102.22), r 20.6",
+      "why": "DR-03. The sheet's badge is about 0.3 px taller than wide (upper arc r 20.69, lower 20.41)."
+    },
+    {
+      "what": "Stood the three bars on one baseline, y 51.33, spaced evenly at 11.875 px, with tops stepping evenly (y 40.9, 33.08, 25.25)",
+      "why": "DR-03 equal repeats. Bar bottoms measure 51.13, 51.63, 51.25; spacings 12.07 and 11.68; top steps 8.0 and 7.62."
+    }
+  ],
+  "source_notes": "Kept: one short vertical mark and two equal rules in the left panel; three ascending bars in the right panel; the branches dropping from the panel bottoms and running into the badge from both sides at the same height; the check's own angles (left arm about 43 deg, right arm about 135 deg). Red: the left panel's mark, the middle bar and the check, as on the red sheet."
+}

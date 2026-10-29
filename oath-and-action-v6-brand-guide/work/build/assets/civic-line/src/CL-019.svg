@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-019" viewBox="0 0 185 144">
+  <!-- CL-019 Explain. Crop 185 x 144 px; ink box x 8..177, y 8..136.
+       Construction: a large open book with two curved page blocks, a central vertical spine and a second outer lower cover contour. Its upper page edges bow gently upward toward the outside and meet in a central valley. Three short rays rise above the central valley: one vertical and two diagonal.
+       Red: the three rays above the book. Book contours remain black. Preserve the hollow page areas, doubled lower edge and the absence of page text. -->
+  <g data-role="base">
+    <!-- Axis x 92.5. Page blocks: flat near the outer corners, bowing down into the valley (cubic fits to the sheet, mirrored). -->
+    <path id="pages-left" d="M92.5 69 C70.83 47.84 53.19 43.73 23.94 45 V106.87 C51.32 104.96 70.21 106.35 92.5 124.5"/>
+    <path id="pages-right" d="M92.5 69 C114.17 47.84 131.81 43.73 161.06 45 V106.87 C133.68 104.96 114.79 106.35 92.5 124.5"/>
+    <path id="cover-left" d="M23.94 57 H11.3 V122.3 C42.85 120.97 63.08 117.12 92.5 133.6"/>
+    <path id="cover-right" d="M161.06 57 H173.7 V122.3 C142.15 120.97 121.92 117.12 92.5 133.6"/>
+    <line id="spine" x1="92.5" y1="69" x2="92.5" y2="133.6"/>
+  </g>
+  <g data-role="accent">
+    <line id="ray-centre" x1="92.5" y1="11.2" x2="92.5" y2="34.9"/>
+    <line id="ray-left" x1="64.31" y1="21.07" x2="75.81" y2="38.13"/>
+    <line id="ray-right" x1="120.69" y1="21.07" x2="109.19" y2="38.13"/>
+  </g>
+</svg>

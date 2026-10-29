@@ -1,0 +1,17 @@
+{
+  "id": "CL-016",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Mirrored the two people, the table, the legs and the chairs about one axis, x 92.6",
+     "why": "DR-03 symmetry. The heads centre on 92.95 and the table, legs and chair backs on 92.35; one axis moves each group by 0.35 px or less (tested 92.75 too, which matched worse)."},
+    {"what": "Gave both people one head radius (11.59, both fits), one outer shoulder corner (r 14.43; fits 14.23 and 14.63), one inner shoulder curve (r 18.48) and one shoulder-top height, y 42.05; the outer sides end at one height, y 79.4",
+     "why": "DR-03 equal repeats. The outer sides sit 19.58 and 18.81 px from their heads; both now sit 19.2 px out."},
+    {"what": "Squared the table's corners (round stroke joins only)",
+     "why": "The sheet's table slab reads square at its outer corners; rounded corners left visible edge differences."},
+    {"what": "Made the document's two sides parallel (lean 0.195 px per px), each turned about its midpoint",
+     "why": "DR-03. The sides lean 0.17 and 0.22 px per px."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The icon measures 5.25 to 6.25 px."}
+  ],
+  "notes": "Judgement for review: a short black mark stands just right of the left person's shoulder curve (a dot about 6 px across with a fading tail, centre near (58, 44)). Both sheets draw it in the same place and the right person has none, so it is kept as a short stroke rather than dropped; it may be the catalogue's 'inward-bending forearm' or a generation accident. Kept: each person's inner shoulder curving wider than the outer one and running down to the table top (the lean toward the table), the outer sides ending open below the table top, the heads sitting slightly toward the table from the shoulder centre, the document drawn as a leaning parallelogram (not a symmetric trapezoid) that opens onto the table, the chair seats running from the chair backs to the table legs. Red is the document's three sides only. The document is drawn first so the black table top covers the feet of its sides, as on the red sheet."
+}

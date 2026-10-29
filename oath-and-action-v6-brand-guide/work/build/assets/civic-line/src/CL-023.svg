@@ -3,7 +3,16 @@
        Construction: an upright page with a partial open right edge and four short horizontal information rules. A large magnifier overlaps its lower-right portion. The lens contains a simple checkmark; its handle descends diagonally to lower right. Keep the page visually behind the lens.
        Red: the checkmark inside the lens. Page, circular lens and handle remain black. This differs from Watchdogs, whose handle is the red part. -->
   <g data-role="base">
+    <path id="page" d="M116.8 33.25 V13 A2.5 2.5 0 0 0 114.3 10.5 H13.43 A2.5 2.5 0 0 0 10.93 13 V120.5 A2.5 2.5 0 0 0 13.43 123 H114.3 A2.5 2.5 0 0 0 116.8 120.5 V119.3"/>
+    <line id="rule-1" x1="29.45" y1="31.97" x2="92.4" y2="31.97"/>
+    <line id="rule-2" x1="29.45" y1="49.02" x2="73.95" y2="49.02"/>
+    <line id="rule-3" x1="29.45" y1="66.07" x2="62.35" y2="66.07"/>
+    <line id="rule-4" x1="29.45" y1="83.12" x2="62.35" y2="83.12"/>
+    <line id="rule-5" x1="29.45" y1="100.17" x2="62.35" y2="100.17"/>
+    <circle id="lens" cx="113.08" cy="76.76" r="33.48"/>
+    <path id="handle" d="M143.76 104.53 L164.03 125.27 A6.2 6.2 0 0 1 155.17 133.93 L134.9 113.19 A6.2 6.2 0 0 1 143.76 104.53 Z"/>
   </g>
   <g data-role="accent">
+    <polyline id="check" points="99.66,78.05 108.81,86.87 128.15,66.84"/>
   </g>
 </svg>

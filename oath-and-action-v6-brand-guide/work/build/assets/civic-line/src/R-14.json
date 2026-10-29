@@ -1,0 +1,27 @@
+{
+  "id": "R-14",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Drew the dollar sign's S as two equal elliptical bowls (7.75 x 7.0 px radii) stacked on one vertical axis at x 37, point-symmetric about their meeting point (37, 42.8), with equal 4.6 px bar stubs above and below",
+      "why": "DR-03 symmetry. The bowls measure about 7.8 x 6.95 and 7.7 x 7.0 px; the stubs 4.4 and 4.8 px. The sheet's bar shows only above and below the S, so it is not drawn through it."
+    },
+    {
+      "what": "Made the arrowhead a symmetric right-angle chevron, arms 14.9 px at 45 deg either side of the shaft, vertex at (179.2, 76.65)",
+      "why": "DR-03 symmetry. The arms measure 45.5 to 47.1 deg and 134.3 to 134.7 deg."
+    },
+    {
+      "what": "Made the two information rules equal, x 61.8 to 138.95",
+      "why": "DR-03 equal repeats. They measure 61.75 to 138.87 and 61.87 to 139.0."
+    },
+    {
+      "what": "Gave the card one corner radius, 5.5 px",
+      "why": "DR-03. Diagonal profiles give 5.4 to 5.9 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The card's left edge measures 6.0 px, the arrowhead arms 6.0 to 6.5 px and the bottom edge 5.0 px."
+    }
+  ],
+  "notes": "Kept: the card open at its lower right, with the right edge stopping at y 50.75 and the bottom edge at x 145.87, so the red funding arrow runs out through the opening and its arrowhead sits wholly outside the card. The arrow shaft starts inside the card at x 28.25. Red is the whole arrow: shaft and both arrowhead arms. Both sheets agree."
+}

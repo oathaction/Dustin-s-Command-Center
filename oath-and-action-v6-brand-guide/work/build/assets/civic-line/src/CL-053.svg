@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-053" viewBox="0 0 212 102">
+  <!-- CL-053 Housing Scarcity. Crop 212 x 102 px; ink box x 8..204, y 8..94.
+       Construction: three house positions in a horizontal row. The left and right homes have solid black pitched-roof/wall outlines and paired narrow windows. The middle position is a missing/ghost house drawn only with separated dash-like roof and wall segments. Leave the central ghost home’s interior empty.
+       Red: every dashed segment of the middle house outline. Outer houses remain black. Preserve the absence of a solid central building; a red door in a complete centre house would be a different icon.
+       Trace: the outer houses are one closed pentagon each, identical (the right is the left moved 132.82 px).
+       The ghost house is nine red dashes: three per wall, one per roof slope and a chevron over the apex;
+       it is mirror-symmetric about x 105.975, has no base line and an empty interior. -->
+  <g data-role="base">
+    <polygon id="house-left" points="10.68,91.06 10.68,38.05 39.53,10.87 68.38,38.05 68.38,91.06"/>
+    <polygon id="house-right" points="143.5,91.06 143.5,38.05 172.35,10.87 201.2,38.05 201.2,91.06"/>
+    <line id="window-left-1" x1="29.88" y1="47.2" x2="29.88" y2="58.0"/>
+    <line id="window-left-2" x1="49.18" y1="47.2" x2="49.18" y2="58.0"/>
+    <line id="window-right-1" x1="162.7" y1="47.2" x2="162.7" y2="58.0"/>
+    <line id="window-right-2" x1="182.0" y1="47.2" x2="182.0" y2="58.0"/>
+  </g>
+  <g data-role="accent">
+    <line id="ghost-wall-left-1" x1="80.85" y1="37.87" x2="80.85" y2="47.56"/>
+    <line id="ghost-wall-left-2" x1="80.85" y1="60.0" x2="80.85" y2="71.31"/>
+    <line id="ghost-wall-left-3" x1="80.85" y1="83.57" x2="80.85" y2="91.06"/>
+    <line id="ghost-wall-right-1" x1="131.1" y1="37.87" x2="131.1" y2="47.56"/>
+    <line id="ghost-wall-right-2" x1="131.1" y1="60.0" x2="131.1" y2="71.31"/>
+    <line id="ghost-wall-right-3" x1="131.1" y1="83.57" x2="131.1" y2="91.06"/>
+    <line id="ghost-roof-left" x1="87.35" y1="29.5" x2="95.45" y2="21.4"/>
+    <line id="ghost-roof-right" x1="116.5" y1="21.4" x2="124.6" y2="29.5"/>
+    <polyline id="ghost-apex" points="102.42,14.55 105.975,11.0 109.53,14.55"/>
+  </g>
+</svg>

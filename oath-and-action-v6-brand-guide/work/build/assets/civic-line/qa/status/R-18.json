@@ -1,0 +1,85 @@
+{
+  "id": "R-18",
+  "label": "Emergency-Power Limits",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:35:21+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9399,
+      "red_iou_1x": 0.867,
+      "edge_mean_px": 0.156,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:36:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9399,
+      "red_iou_1x": 0.8677,
+      "edge_mean_px": 0.156,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:36:21+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9399,
+      "red_iou_1x": 0.8677,
+      "edge_mean_px": 0.156,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:36:21+00:00",
+      "by": "T5",
+      "note": "overlay checked; true-circle clock, ears red, side ticks black per red sheet"
+    }
+  ],
+  "last_build": "2026-10-29T06:36:21+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9399,
+    "red_iou_1x": 0.8677,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9943,
+    "edge_mean_px": 0.156,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.061,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the clock as a true circle, centre (106.44, 77.12), r 24.13, from the black sheet",
+      "why": "DR-03 true circles. The annulus fit has rms 0.28 px (ellipse 24.09 x 24.16). The red sheet's ring fits r 23.76, its stroke running thinner."
+    },
+    {
+      "what": "Mirrored the two top ears about the clock's vertical axis, each a short radial stroke 26.2 deg from vertical reaching r 29.3",
+      "why": "DR-03 symmetry. Profiles put the left ear 27.5 deg and the right ear 24.9 deg from vertical; each moves about 0.6 px."
+    },
+    {
+      "what": "Put the two side ticks on the clock's horizontal centre line, y 77.12, each showing 19.31 px from the centre",
+      "why": "DR-03 symmetry. They measure y 76.92 and 76.87 and end 19.31 px either side of the centre."
+    },
+    {
+      "what": "Spaced the five information rules evenly, 14.15 px apart from y 27.58 to 84.19, gave them one left end (x 27.75), and made rules 1 and 2 equal (to x 83.7) and rules 3 and 4 equal (to x 67.15)",
+      "why": "DR-03 equal repeats. Gaps measure 14.34, 14.2, 14.33 and 13.74 px, so rule 4 moves 0.41 px. Rules 3 and 4 end at 67.95 and 66.35. The pattern of two long, two medium and one short rule is kept."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The page measures 5.25 to 5.85 px; the side ticks only about 4 px, so they read slightly bolder in the trace."
+    }
+  ],
+  "source_notes": "Kept: the page as an open contour whose right edge stops at y 37.75 and bottom edge at x 81.05, well clear of the clock (the clock overlaps by occlusion, so the page lines simply stop), the five rules, the short vertical hand with its short diagonal foot, the two ears and the two side ticks. Red is the ring, the two ears and the hands. Judgement between the catalogue and the red sheet: the catalogue says 'small associated clock accents visible in the source'; on the red sheet the ears are red but the side ticks are black, so the ticks are base and sit under the red ring."
+}

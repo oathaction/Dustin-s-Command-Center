@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-040" viewBox="0 0 177 147">
+  <!-- CL-040 Platform Power. Crop 177 x 147 px; ink box x 8..169, y 8..139.
+       Construction: a large hollow circle at the top contains a small filled central dot. A three-way organisational tree descends from it: branches angle toward left and right while one stem drops centrally. Three smaller outline people align below those branches, with equal head sizes and open-bottom shoulders.
+       Red: only the filled dot inside the top circle. All branches and people are black. Retain the empty ring around the dot and the hierarchy from one platform to three people. -->
+  <g data-role="base">
+    <circle id="platform" cx="88.6" cy="31.5" r="21.05"/>
+    <path id="branch-left" d="M73.36 46.03 L33.42 65.38 A6.5 6.5 0 0 0 29.75 71.23 L29.75 81.57"/>
+    <path id="branch-right" d="M103.84 46.03 L143.78 65.38 A6.5 6.5 0 0 1 147.45 71.23 L147.45 81.57"/>
+    <line id="branch-centre" x1="88.6" y1="52.55" x2="88.6" y2="83.87"/>
+    <circle id="person-left-head" cx="29.63" cy="102.88" r="10.4"/>
+    <path id="person-left-shoulders" d="M11.34 134.11 A18.37 18.37 0 1 1 47.92 134.11"/>
+    <circle id="person-middle-head" cx="88.6" cy="105.25" r="10.4"/>
+    <path id="person-middle-shoulders" d="M70.31 136.37 A18.37 18.37 0 1 1 106.89 136.37"/>
+    <circle id="person-right-head" cx="147.57" cy="102.88" r="10.4"/>
+    <path id="person-right-shoulders" d="M129.28 134.11 A18.37 18.37 0 1 1 165.86 134.11"/>
+  </g>
+  <g data-role="accent">
+    <circle id="platform-dot" class="fill" cx="88.6" cy="31.55" r="7.9"/>
+  </g>
+</svg>

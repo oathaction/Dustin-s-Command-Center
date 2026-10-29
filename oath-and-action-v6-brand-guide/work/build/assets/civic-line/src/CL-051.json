@@ -1,0 +1,27 @@
+{
+  "id": "CL-051",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.5 to 6.0 px."
+    },
+    {
+      "what": "Lengthened the down-stroke of the upper window mark in the middle building from 3.45 to 6.95 px, so all three window marks are one shape (5.8 px across, 6.95 px down)",
+      "why": "DR-03 equal repeats. The lower mark and the right building's mark measure 6.85 and 7.05 px down and 5.65 and 5.95 px across; only the upper mark is short, on both sheets. I read the short one as a raster accident of a repeated window glyph. This moves its end 3.5 px, the edge max of 3.4 px."
+    },
+    {
+      "what": "Gave the six windows one size, 12.2 x 12.2 px with 2 px corners, set in two columns symmetric about the tower's centre line (x 42.08 and 66.28) and three rows 21.95 px apart",
+      "why": "DR-03 equal repeats and symmetry. Measured windows are 12.1 to 12.4 px; their columns sit 0.2 px right of the tower's centre line (x 54.18). Rows measure 21.95 px apart."
+    },
+    {
+      "what": "Put the two lower window marks on one line, y 100.1",
+      "why": "DR-03. They measure y 100.0 and 100.2."
+    },
+    {
+      "what": "Straightened the baseline to one line, y 125.6, from x 11.0 to 186.1",
+      "why": "DR-03 straight lines. The sheet's baseline wavers 0.6 px rms where the walls meet it."
+    }
+  ],
+  "notes": "Kept as drawn: the rooftop block sits left of the tower's centre (centre x 48.05 against 54.18); the door is a narrow outlined doorway centred on the tower; the middle building's two marks sit left of its centre while the right building's mark is centred. All corners are square with round joins, as the sheet shows. The six tower windows are the red accent; every other part is black."
+}

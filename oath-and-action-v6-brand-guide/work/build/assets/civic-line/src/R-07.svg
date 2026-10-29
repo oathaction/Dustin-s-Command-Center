@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-07" viewBox="0 0 190 120">
+  <!-- R-07 Small-Donor Matching. Crop 190 x 120 px; ink box x 8..182, y 8..112.
+       Construction: a short cylindrical coin stack at left and a much taller stack at right. Each uses an elliptical top rim, vertical sides and curved horizontal band lines. A short arrow between them points right from the small stack toward the tall one. Align their lower edges as in the reference.
+       Red: the rightward arrow and the tallest stack’s upper elliptical rim. Remaining coin outlines are black. Preserve the height contrast and the actual number of stacked bands. -->
+  <!-- T4 trace. Tall stack: rim an upper half-ellipse (rx 23.45, ry 9.97) on plumb walls x 132.27 and 179.17; seven coins,
+       their front edges equal circular arcs (r 49.5) on even steps of 12.79 px. Small stack: one coin on the same plan.
+       Behind it, a lower stack whose top is hidden; its walls stop short of the small stack. Arrow level at y 64.93. -->
+  <!-- T4 trace. Tall stack: rim an upper half-ellipse (rx 23.45, ry 9.97) on plumb walls x 132.27 and 179.17; seven coins,
+       their front edges equal circular arcs (r 49.5) on even steps of 12.79 px. Small stack: one coin on the same plan.
+       Behind it, a lower stack whose top is hidden; its walls stop short of the small stack. Arrow level at y 64.93. -->
+  <!-- T4 trace. Tall stack: rim an upper half-ellipse (rx 23.45, ry 9.97) on plumb walls x 132.27 and 179.17; seven coins,
+       their front edges equal circular arcs (r 49.5) on even steps of 12.79 px. Small stack: one coin on the same plan.
+       Behind it, a lower stack whose top is hidden; its walls stop short of the small stack. Arrow level at y 64.93. -->
+  <g data-role="base">
+    <path id="tall-rim-front" d="M132.27 24.69 A49.5 49.5 0 0 0 179.17 24.69"/>
+    <path id="tall-band-1" d="M132.27 37.48 A49.5 49.5 0 0 0 179.17 37.48"/>
+    <path id="tall-band-2" d="M132.27 50.27 A49.5 49.5 0 0 0 179.17 50.27"/>
+    <path id="tall-band-3" d="M132.27 63.06 A49.5 49.5 0 0 0 179.17 63.06"/>
+    <path id="tall-band-4" d="M132.27 75.85 A49.5 49.5 0 0 0 179.17 75.85"/>
+    <path id="tall-band-5" d="M132.27 88.64 A49.5 49.5 0 0 0 179.17 88.64"/>
+    <path id="tall-body" d="M132.27 20.6 V101.43 A49.5 49.5 0 0 0 179.17 101.43 V20.6"/>
+    <path id="small-rim-front" d="M24.81 63.16 A44.3 44.3 0 0 0 68.07 63.16"/>
+    <path id="small-body" d="M24.81 58.85 A21.63 7.78 0 0 1 46.44 51.07 A21.63 7.78 0 0 1 68.07 58.85 V75.96 A44.3 44.3 0 0 1 24.81 75.96 V58.85"/>
+    <path id="low-band" d="M11.44 87.95 A51.7 51.7 0 0 0 61.80 87.95"/>
+    <path id="low-body" d="M17.6 74.2 C15.8 77.2 8.51 79.27 11.44 85 V102.25 A51.7 51.7 0 0 0 61.80 102.25 V87"/>
+  </g>
+  <g data-role="accent">
+    <path id="tall-rim" class="butt" d="M132.27 29.5 V20.6 A23.45 9.97 0 0 1 155.72 10.63 A23.45 9.97 0 0 1 179.17 20.6 V29.5"/>
+    <path id="tall-rim-front-left" class="butt" d="M132.27 24.69 A49.5 49.5 0 0 0 137.72 27.21"/>
+    <path id="tall-rim-front-right" class="butt" d="M173.72 27.21 A49.5 49.5 0 0 0 179.17 24.69"/>
+    <line id="arrow-shaft" x1="81.87" y1="64.93" x2="119.6" y2="64.93"/>
+    <polyline id="arrow-head" points="106.45,52.03 119.6,64.93 106.45,77.83"/>
+  </g>
+</svg>

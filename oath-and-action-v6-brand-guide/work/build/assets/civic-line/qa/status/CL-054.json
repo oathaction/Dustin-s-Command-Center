@@ -1,0 +1,79 @@
+{
+  "id": "CL-054",
+  "label": "Home Equity",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:50:39+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9055,
+      "red_iou_1x": 0.9243,
+      "edge_mean_px": 0.222,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:50:57+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9055,
+      "red_iou_1x": 0.9243,
+      "edge_mean_px": 0.222,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:50:57+00:00",
+      "by": "T3",
+      "note": "overlay checked; roof into panel edge, open chimney, three bars and red zigzag arrow with square tip match"
+    }
+  ],
+  "last_build": "2026-10-29T06:50:57+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9055,
+    "red_iou_1x": 0.9243,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9297,
+    "edge_mean_px": 0.222,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 0.901,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The black strokes measure 5.75 to 6.0 px; the red arrow 4.9 to 5.3 px."
+    },
+    {
+      "what": "Gave both roof slopes one gradient (0.82, 39.4 deg) from the apex (67.68, 12.3)",
+      "why": "DR-03 symmetry. The slopes measure 39.4 deg (left) and 39.6 and 38.8 deg (right, either side of the chimney)."
+    },
+    {
+      "what": "Made the arrow's two rising legs parallel (125.8 deg) through the measured peak (141.17, 69.99) and valley (150.08, 75.92)",
+      "why": "DR-03. They measure 125.71 and 125.86 deg."
+    },
+    {
+      "what": "Drew the arrowhead as an L of two short strokes with a square (mitred) tip at (167.5, 53.1), the top arm ending at x 158.15 and the right arm at y 61.85",
+      "why": "The red sheet shows a square outer corner at the tip and round ends on both arms; the shaft runs into the inside of the corner."
+    },
+    {
+      "what": "Spaced the three bars evenly, 16.135 px apart (x 131.5, 147.63, 163.77), on one base, y 110.25",
+      "why": "DR-03 equal repeats. Spacings measure 16.22 and 16.05 px; bar ends measure 110.06 to 110.19 on the centreline."
+    },
+    {
+      "what": "Set corner radii on the centreline from each corner's outer edge: 4.6 (panel), 3.9 (house), square joins for the door and chimney",
+      "why": "Medial-axis circle fits overstate these radii; the outer edge along each corner's diagonal gives 4.2 to 4.8 (panel), 3.9 (house) and about 1.2 px (door, chimney)."
+    }
+  ],
+  "source_notes": "Kept as drawn: the roof's right slope stops on the chart panel's left edge, which also closes the house on the right (the house's right eave is hidden behind the panel); the walls stop about 4 px below the roof; the chimney is an open outline whose legs stop above the roof and above the panel. The bars rise in unequal steps (9.25, then 11.25 px), as drawn, and are not centred in the panel. The zigzag arrow and its head are the red accent; the panel, bars, house and door are black."
+}

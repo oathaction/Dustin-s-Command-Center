@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-20" data-id="R-20" width="128" height="128" viewBox="0 0 128 128">
+  <title>Merger Enforcement</title>
+  <desc>Oath &amp; Action Civic Line R-20 Merger Enforcement. Traced vector reconstruction from the Civic Line reference sheet 04, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <defs>
+    <mask id="r-20-lens-clear" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+      <circle cx="93.351" cy="70.824" r="14.183" fill="#000000"/>
+    </mask>
+  </defs>
+  <g id="base">
+    <path d="M41.127 46.849 A19.413 19.413 0 0 1 75.41 46.849" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="25.959,86.566 25.959,52.098 49.364,52.098 49.364,86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="25.959,64.132 18.053,64.132 18.053,86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="15.504" y1="86.566" x2="51.937" y2="86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.671,86.566 66.671,52.098 95.486,52.098 95.486,55.865" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="63.82" y1="86.566" x2="95.071" y2="86.566" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="32.158" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="32.158" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="32.158" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="40.006" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="40.006" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="40.006" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="73.153" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="73.153" y="66.193" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="73.153" y="75.161" width="3.144" height="5.946" rx="1.574" fill="#121212"/>
+    <rect x="80.269" y="57.225" width="3.144" height="5.946" rx="1.574" fill="#121212" mask="url(#r-20-lens-clear)"/>
+    <circle cx="81.034" cy="79.743" r="1.413" fill="#121212"/>
+    <path d="M106.135 81.151 L111.541 86.951 A2.671 2.671 0 0 1 111.409 90.724 A2.671 2.671 0 0 1 107.636 90.592 L102.226 84.792" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="93.351" cy="70.824" r="10.469" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.482" y1="78.578" x2="103.323" y2="81.624" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M106.135 81.151 L105.726 80.718 A0.975 0.975 0 0 0 104.351 80.669 L101.871 82.984 A0.975 0.975 0 0 0 101.822 84.358 L102.226 84.792" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+</svg>

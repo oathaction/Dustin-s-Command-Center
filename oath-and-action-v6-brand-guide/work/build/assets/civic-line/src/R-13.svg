@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-13" viewBox="0 0 243 133">
+  <!-- R-13 Congressional Capacity. Crop 243 x 133 px; ink box x 8..235, y 8..125.
+       Construction: a small cluster of outline staff members stands at lower left. Behind/centre rises a simplified domed legislative building with façade uprights. An open book occupies the right foreground, partly overlapping the building. Its two page blocks curve toward a central valley and have a doubled lower cover edge.
+       Red: the lower inner page-edge curve running through the open book. Staff, building and outer book contours remain black. Preserve all three subject groups and their overlapping scale. -->
+  <!-- Trace notes: building symmetric about x 114.75; book symmetric about x 194.25; staff heads as drawn. -->
+  <g data-role="base">
+    <circle id="staff-left-head" cx="23.79" cy="89.09" r="6.19"/>
+    <path id="staff-left-body" d="M10.85 115.05 L10.85 108.45 A12.35 12.35 0 0 1 35.55 108.45 L35.55 115.05"/>
+    <circle id="staff-right-head" cx="56.6" cy="83.59" r="7.85"/>
+    <path id="staff-right-body" d="M44.49 115.05 L44.49 108.45 A12.35 12.35 0 0 1 69.19 108.45 L69.19 115.05"/>
+    <line id="finial-stem" x1="114.75" y1="10.65" x2="114.75" y2="19"/>
+    <rect id="finial-base" class="fill-stroke" x="112.9" y="19.45" width="3.7" height="3.5"/>
+    <path id="dome-left" d="M104.42 26.53 A20.24 20.24 0 0 0 92.25 45.09 L92.25 49.5 L87.33 49.5 L87.33 69.58"/>
+    <path id="dome-right" d="M125.08 26.53 A20.24 20.24 0 0 1 137.25 45.09 L137.25 49.5 L142.17 49.5 L142.17 69.58"/>
+    <line id="drum-top" x1="92.25" y1="43.92" x2="137.25" y2="43.92"/>
+    <line id="drum-col-1" x1="101.15" y1="55.5" x2="101.15" y2="69.58"/>
+    <line id="drum-col-2" x1="114.75" y1="55.5" x2="114.75" y2="69.58"/>
+    <line id="drum-col-3" x1="128.35" y1="55.5" x2="128.35" y2="69.58"/>
+    <line id="entablature" x1="77.44" y1="69.58" x2="152.06" y2="69.58"/>
+    <line id="wall-left" x1="81.65" y1="69.58" x2="81.65" y2="103.1"/>
+    <line id="wall-right" x1="147.85" y1="69.58" x2="147.85" y2="103.1"/>
+    <line id="col-1" x1="97.75" y1="84" x2="97.75" y2="101.1"/>
+    <line id="col-2" x1="114.75" y1="84" x2="114.75" y2="101.1"/>
+    <line id="col-3" x1="131.75" y1="84" x2="131.75" y2="101.1"/>
+    <line id="base" x1="81.31" y1="115.05" x2="148.19" y2="115.05"/>
+    <path id="book-pages" d="M164.42 105.9 L164.42 69.55 L170 69.55 Q181.25 69.55 194.25 78 Q207.25 69.55 218.5 69.55 L224.08 69.55 L224.08 105.9"/>
+    <line id="book-spine" x1="194.25" y1="78" x2="194.25" y2="103.6"/>
+    <path id="book-cover" d="M156.46 79.75 L156.46 115 L174 115 Q182.65 115 194.25 122.1 Q205.85 115 214.5 115 L232.04 115 L232.04 79.75"/>
+  </g>
+  <g data-role="accent">
+    <path id="page-edge-lower" d="M164.42 105.9 L172 105.9 Q183.1 105.9 194.25 112.8 Q205.4 105.9 216.5 105.9 L224.08 105.9"/>
+  </g>
+</svg>

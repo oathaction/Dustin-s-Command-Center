@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-09" data-id="R-09" width="128" height="128" viewBox="0 0 128 128">
+  <title>Stock-Trading Ban</title>
+  <desc>Oath &amp; Action Civic Line R-09 Stock-Trading Ban. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M29.21 73.017 V44.709 A4.094 4.094 0 0 0 33.304 40.615 H88.565" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.21 73.017 V79.792 A4.094 4.094 0 0 1 33.304 83.886 H43.529" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M98.922 45.089 V79.792 A4.094 4.094 0 0 0 94.828 83.886 H56.538" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.752" y1="46.98" x2="81.883" y2="46.98" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.366" y1="51.035" x2="35.366" y2="73.358" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.21" y1="51.035" x2="93.21" y2="73.309" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.694" y1="77.486" x2="50.402" y2="77.486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.244" y1="77.486" x2="89.037" y2="77.486" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="43.593,68.757 47.282,68.543 53.38,59.516 58.346,65.365 64.463,56.884 67.217,60.393" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="79.938,63.561 83.608,67.509 84.836,67.509" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polygon points="93.629,40.8 97.294,40.8 48.671,87.151 45.006,87.151" fill="#E63946" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

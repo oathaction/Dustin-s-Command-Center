@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-28" viewBox="0 0 176 120">
+  <!-- R-28 Capital-Income Tax. Crop 176 x 120 px; ink box x 8..168, y 8..112.
+       Construction: unequal cylindrical asset stacks occupy the left, one shorter/front and one taller/back, with elliptical rims and repeated curved bands. A tall tax record overlaps behind/right. Its upper area has short information rules; a dollar sign occupies the right-middle/lower area, followed by small rules below as visible.
+       Red: the dollar sign on the tax record. Stacks, page and other information marks remain black. Preserve the stack-to-page overlap and distinct heights. -->
+  <!-- Trace notes: tall stack in front; short stack cut by a mask at the tall stack's left wall; record open at right where the dollar sits. -->
+  <defs>
+    <mask id="behind-tall">
+      <rect class="fill" x="34.9" y="0" width="160" height="101.37"/>
+      <ellipse class="fill" cx="55.35" cy="101.37" rx="20.45" ry="7.93"/>
+    </mask>
+  </defs>
+  <g data-role="base">
+    <ellipse id="stack-short-top" cx="27" cy="80.47" rx="15" ry="5.22" mask="url(#behind-tall)"/>
+    <path id="stack-short-body" d="M12 80.47 L12 104.38 A15 5.22 0 0 0 27 109.6 A15 5.22 0 0 0 42 104.38 L42 80.47" mask="url(#behind-tall)"/>
+    <path id="stack-short-band" d="M12 92.43 A15 5.22 0 0 0 27 97.65 A15 5.22 0 0 0 42 92.43" mask="url(#behind-tall)"/>
+    <ellipse id="stack-tall-top" cx="55.35" cy="46.65" rx="20.45" ry="7.93"/>
+    <path id="stack-tall-body" d="M34.9 46.65 L34.9 101.37 A20.45 7.93 0 0 0 55.35 109.3 A20.45 7.93 0 0 0 75.8 101.37 L75.8 46.65"/>
+    <path id="stack-tall-band-1" d="M34.9 60.32 A20.45 7.93 0 0 0 55.35 68.25 A20.45 7.93 0 0 0 75.8 60.32"/>
+    <path id="stack-tall-band-2" d="M34.9 74 A20.45 7.93 0 0 0 55.35 81.94 A20.45 7.93 0 0 0 75.8 74"/>
+    <path id="stack-tall-band-3" d="M34.9 87.69 A20.45 7.93 0 0 0 55.35 95.62 A20.45 7.93 0 0 0 75.8 87.69"/>
+    <path id="record" d="M165.19 44 L165.19 14.08 A3.85 3.85 0 0 0 161.34 10.23 L92.95 10.23 A3.85 3.85 0 0 0 89.1 14.08 L89.1 105.86 A3.85 3.85 0 0 0 92.95 109.71 L161.34 109.71 A3.85 3.85 0 0 0 165.19 105.86 L165.19 91.37"/>
+    <line id="rule-1" x1="105.2" y1="28.24" x2="149.13" y2="28.24"/>
+    <line id="rule-2" x1="105.2" y1="45.65" x2="132.25" y2="45.65"/>
+    <line id="rule-3" x1="105.2" y1="63.07" x2="123.5" y2="63.07"/>
+    <line id="rule-4" x1="105.2" y1="80.48" x2="125.25" y2="80.48"/>
+  </g>
+  <g data-role="accent">
+    <path id="dollar-s" d="M158.19 57.89 A8.4 7.68 0 1 0 150.4 68.45 A8.4 7.68 0 1 1 142.61 79.01"/>
+    <line id="dollar-bar-top" x1="150.4" y1="47.3" x2="150.4" y2="53.09"/>
+    <line id="dollar-bar-bottom" x1="150.4" y1="83.81" x2="150.4" y2="89.2"/>
+  </g>
+</svg>

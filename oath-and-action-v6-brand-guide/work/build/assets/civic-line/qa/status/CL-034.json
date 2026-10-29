@@ -1,0 +1,71 @@
+{
+  "id": "CL-034",
+  "label": "New Technology",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:48:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9277,
+      "red_iou_1x": 0.9123,
+      "edge_mean_px": 0.12,
+      "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:48:39+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9277,
+      "red_iou_1x": 0.9123,
+      "edge_mean_px": 0.12,
+      "edge_p95_px": 0.354
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:48:39+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; four rays, open right neck kept"
+    }
+  ],
+  "last_build": "2026-10-29T06:48:39+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9277,
+    "red_iou_1x": 0.9123,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9893,
+    "edge_mean_px": 0.12,
+    "edge_p95_px": 0.354,
+    "edge_max_px": 1.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the bulb crown as one true circular arc, centre (64.24, 65.44), r 32.48, with each neck a single smooth curve fitted to the sheet's centreline",
+      "why": "DR-03. The crown holds the circle within 0.15 px from 130 deg round to 42 deg; the neck curves fit at 0.14 and 0.07 px rms."
+    },
+    {
+      "what": "Mirrored the four rays' fan about x 64.7: top ray upright, the upper pair at 51 deg either side",
+      "why": "DR-03 symmetry. The upper rays measure 51.3 and 129.0 deg (black) and their ends mirror about 64.69 to 64.75."
+    },
+    {
+      "what": "Gave the wire's three bends true arcs (r 9.1, 6.3, 7.7) between straight runs at y 112.27, x 113.44, y 88.41 and x 143.64",
+      "why": "DR-03 straight lines and true curves. Runs fit at 0.0 to 0.09 px rms; the bends keep their drawn sizes."
+    },
+    {
+      "what": "Placed the terminal ring at centre (143.95, 54.05), r 8.6",
+      "why": "Black and red sheets disagree by 0.4 px in radius (black r 8.81, red 8.38) and 0.3 px in centre; the trace takes the middle."
+    }
+  ],
+  "source_notes": "Kept: four rays, none on the right where the terminal sits; the bulb's right neck stopping short at y 103.9 while the left neck runs down into the base line; the base line continuing as the wire, so bulb and terminal form one connected symbol; the Y filament with its left arm taller than its right, as drawn; the collar whose right side stops just under the base line, and the cup below it. Red: the four rays and the hollow terminal ring; the red sheet shows the ring whole over the wire's end, so the accent group is drawn last."
+}

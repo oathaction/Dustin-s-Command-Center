@@ -1,0 +1,14 @@
+{
+  "id": "R-45",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Drew the front sheet's bottom edge at W, ending at x 56", "why": "DR-03 one line weight. The sheet's stroke tapers from full width at x 40 to a point at x 60 (the red sheet adds a faint smear to x 90), a brush-like raster accident. Ending a W stroke at 56 keeps the edge's apparent length; the taper's last 2 to 4 px of thin ink are not drawn."},
+    {"what": "Drew the middle sheet's bottom edge level at W, y 101.7, from its corner to x 100.25", "why": "DR-03 one line weight and straight lines. The sheet's edge is wedge-shaped: its lower boundary is level at y 104.5 while its upper boundary rises from 98.6 (x 30) to 96 (x 88), up to 3 px heavier than W at the right end. The level W stroke keeps the lower boundary and the end point."},
+    {"what": "Made the lens a true circle, centre (127.3, 60.5), r 34.6, and the handle an open-ended capsule outline 14.1 px wide with a semicircular end, its sides parallel to the 45-degree diagonal and offset 1.05 px from the lens centre, as drawn", "why": "DR-03. Lens ink extents give radii 34.31 (across) and 34.87 (down); the capsule's sides measure 5.25 and 5.5 px thick at a constant 14.1 px apart from t 45 to 65 along the handle."},
+    {"what": "Kept the handle's upper side starting about 1.4 px clear of the lens ring while its lower side joins the ring", "why": "The sheet shows that small gap on the upper side only; it is drawn, so it is kept."},
+    {"what": "Set the check's two arms at a right angle on the 45-degree diagonals, vertex (122.42, 71.77)", "why": "DR-03 right angles. The arms measure 43.7 and 45.8 degrees (89.5 between them); their ends move under 0.4 px."},
+    {"what": "Gave rules 2 to 4 one span (x 50.15 to 81.5) and spaced them evenly, 14.55 px apart", "why": "DR-03 equal repeats. Their ends vary from 80.44 to 81.69 and their gaps measure 14.33 and 14.76 px. Rule 1, the red top rule, stays as drawn: shorter and set apart."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.27 px."}
+  ],
+  "notes": "Kept: three offset sheets, each with its top edge stopping at the sheet in front, its left side and its bottom edge; the front sheet's top-right corner turning down and stopping above the lens; the back sheet's right side rising to the middle sheet's bottom edge; the check inside the lens; four rules. Red: the top rule and the check, as catalogue and red sheet agree. The two weight normalisations above are the largest edge differences here (up to 3.75 px at the wedge's right end)."
+}

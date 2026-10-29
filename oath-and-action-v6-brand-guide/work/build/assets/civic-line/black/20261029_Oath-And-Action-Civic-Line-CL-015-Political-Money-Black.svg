@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-015" data-id="CL-015" width="128" height="128" viewBox="0 0 128 128">
+  <title>Political Money</title>
+  <desc>Oath &amp; Action Civic Line CL-015 Political Money. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="accent-1">
+    <path d="M52.156 67.607 H59.696 A4.338 4.338 0 0 0 64.034 63.269 V53.448 A4.338 4.338 0 0 1 68.372 49.11 H90.183" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base">
+    <circle cx="35.292" cy="66.364" r="16.913" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="72.622" y="64.195" width="36.842" height="21.426" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="72.622,64.195 78.31,54.934 80.469,54.934" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="109.464,64.195 103.776,54.934 102.558,54.934" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.008" y1="58.687" x2="98.785" y2="58.687" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.004" y1="58.687" x2="95.388" y2="42.174" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="97.664" y1="55.519" x2="95.296" y2="58.687" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent-2">
+    <path d="M38.675 61.704 A3.558 3.558 0 1 0 35.292 66.364 A3.558 3.558 0 1 1 31.91 71.023" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.292" y1="57.113" x2="35.292" y2="59.248" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.292" y1="73.48" x2="35.292" y2="75.819" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.388" y1="42.174" x2="103.806" y2="47.312" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="103.806" y1="47.312" x2="97.664" y2="55.519" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+</svg>

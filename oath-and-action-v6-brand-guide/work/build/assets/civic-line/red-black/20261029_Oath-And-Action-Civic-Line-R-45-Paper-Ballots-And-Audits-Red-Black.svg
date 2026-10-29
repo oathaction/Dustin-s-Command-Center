@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-45" data-id="R-45" width="128" height="128" viewBox="0 0 128 128">
+  <title>Paper Ballots &amp; Audits</title>
+  <desc>Oath &amp; Action Civic Line R-45 Paper Ballots &amp; Audits. Traced vector reconstruction from the Civic Line reference sheet 05, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M44.748 78.183 H34.976 A0.975 0.975 0 0 1 34.001 77.208 V40.586 A1.95 1.95 0 0 1 35.95 38.636 H67.105 A3.168 3.168 0 0 1 70.273 41.804 V43.042" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M34.001 43.559 H29.907 A1.462 1.462 0 0 0 28.445 45.021 V81.887 A1.218 1.218 0 0 0 29.663 83.106 H66.315" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.445 47.901 H24.253 A1.462 1.462 0 0 0 22.791 49.364 V87.151 A1.218 1.218 0 0 0 24.009 88.37 H60.905 A1.218 1.218 0 0 0 62.124 87.151 V83.106" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.897" y1="57.162" x2="57.176" y2="57.162" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.897" y1="64.253" x2="57.176" y2="64.253" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.897" y1="71.345" x2="57.176" y2="71.345" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="79.499" cy="63.025" r="16.864" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M96.022 75.415 L104.054 83.447 A3.436 3.436 0 0 1 104.054 88.302 A3.436 3.436 0 0 1 99.195 88.306 L88.302 77.413" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="48.038" y1="48.038" x2="56.382" y2="48.038" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="71.993,63.391 77.121,68.518 87.215,58.424" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

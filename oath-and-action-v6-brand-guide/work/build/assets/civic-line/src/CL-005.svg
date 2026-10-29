@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-005" viewBox="0 0 190 135">
+  <!-- CL-005 Public Meeting. Crop 190 x 135 px; ink box x 8..182, y 8..127.
+       Construction: a tall central speaker behind a rectangular lectern, with a small circular head above rounded shoulders. A simple outlined circular emblem appears on the lectern front. Two shorter audience members stand in front, one left and one right, each drawn with a hollow head and open-bottom shoulders. The arrangement forms a compact pyramid of people.
+       Red: the central speaker’s head outline. Keep the lectern emblem black and hollow. Match the audience overlap with the lectern rather than separating everyone into independent columns. -->
+  <g data-role="base">
+    <!-- Axis x 95.0. Side audience: head r 10.1, shoulders half-width 21.55, corner r 15.75.
+         Front audience member stands inside the lectern legs: head r 9.89, shoulders corner r 12.9. -->
+    <circle id="left-head" cx="32.32" cy="71.26" r="10.1"/>
+    <path id="left-shoulders" d="M10.77 115.87 V105.10 A15.75 15.75 0 0 1 26.52 89.35 H38.12 A15.75 15.75 0 0 1 53.87 105.10 V115.87"/>
+    <circle id="right-head" cx="157.68" cy="71.26" r="10.1"/>
+    <path id="right-shoulders" d="M136.13 115.87 V105.10 A15.75 15.75 0 0 1 151.88 89.35 H163.48 A15.75 15.75 0 0 1 179.23 105.10 V115.87"/>
+    <path id="speaker-shoulders" d="M74.52 57.4 V51.00 A10.8 10.8 0 0 1 85.32 40.2 H104.68 A10.8 10.8 0 0 1 115.48 51.00 V57.4"/>
+    <line id="lectern-top" x1="62.62" y1="57.4" x2="127.38" y2="57.4"/>
+    <polyline id="lectern-left" points="63.7,57.4 66.5,67.55 72.1,67.55 72.1,97.06"/>
+    <polyline id="lectern-right" points="126.3,57.4 123.5,67.55 117.9,67.55 117.9,97.06"/>
+    <circle id="front-head" cx="95" cy="88.63" r="9.89"/>
+    <path id="front-shoulders" d="M73.80 123.9 V119.05 A12.9 12.9 0 0 1 86.70 106.15 H103.30 A12.9 12.9 0 0 1 116.20 119.05 V123.9"/>
+  </g>
+  <g data-role="accent">
+    <circle id="speaker-head" cx="95" cy="22.0" r="10.5"/>
+  </g>
+</svg>

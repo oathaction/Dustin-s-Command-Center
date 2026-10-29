@@ -1,0 +1,39 @@
+{
+  "id": "CL-056",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The black strokes measure 5.75 to 6.0 px; the red rays 5.1 to 5.5 px."
+    },
+    {
+      "what": "Made the whole icon symmetric about x 105.9: towers at 42.75 and 169.05, deck ends at 10.9 and 200.9, side cables mirror images, bulb and rays centred",
+      "why": "DR-03 symmetry. Measured axes: towers 105.73, deck 105.87, bulb 106.22 (red sheet) and 105.95 (black base). The left side cable reaches 2 px further from its tower than the right one (31.25 against 29.2 px); both now end 30.2 px out, so each end moves about 1 px."
+    },
+    {
+      "what": "Drew the main cable as one half-ellipse, rx 63.15 (centre to tower) and ry 40.31, hanging from the tower tops at y 63.41",
+      "why": "With the centre and rx fixed at the towers, the cable's lower run fits an ellipse with rms 0.12 px; near each tower the cable runs into the tower, as on the sheet."
+    },
+    {
+      "what": "Drew the two water lines as identical sine waves, period 30 px, amplitude 2.62 px, crests at x 75, 105 and 135, ends at x 60.81 and 149.19",
+      "why": "DR-03 equal repeats. Measured: crests at 75, 105, 135 on both lines; amplitudes 2.72 and 2.53 px; ends at 60.25 and 148.63 (moved 0.56 px each to sit symmetric about the middle crest)."
+    },
+    {
+      "what": "Drew the bulb as a three-quarter circle, r 16.3 centred 43.5, meeting a straight vertical neck 15 px wide",
+      "why": "DR-03 true circles. The two sides are symmetric to 0.1 px; the radial profile reads r 16.5 at the sides and 16.1 at the top. The sheet's profile follows the circle down to the neck within 0.4 px."
+    },
+    {
+      "what": "Split the neck's closing bar along its length: the upper half (y 65.05 to 67.8) red, the lower half black, with the red neck sides cut square at y 67.8",
+      "why": "The red sheet's red ends at y 67.5 across the bar while the black sheet's bar spans y 65.0 to 70.6; the base below the split is black, as the catalogue asks."
+    },
+    {
+      "what": "Drew the black base as a small rounded rectangle (15 x 9.25 px, corner radius 1.5) with its window open, and the tip below as a filled half-ellipse (rx 5, ry 3.2)",
+      "why": "Matches the sheet's base outline. The sheet's window has a 1 px dip in the middle of its lower edge, which the trace does not reproduce; it gives the 1.9 px edge max nearby."
+    },
+    {
+      "what": "Made the rays symmetric pairs: diagonals at 45 deg, 7.85 px long; horizontals 5.25 px long on y 38.93; the top ray 5.6 px long",
+      "why": "DR-03 symmetry. Measured pairs agree within 0.6 px. The rays keep their drawn lengths, which differ by type."
+    }
+  ],
+  "notes": "Kept as drawn: five rays; no vertical hangers on the bridge (the catalogue mentions short vertical supports, but the sheet has none, and the image controls); the side cables end in the air above the deck; three crests per water line. Red: the bulb outline, its upper collar half and the five rays, from the red sheet."
+}

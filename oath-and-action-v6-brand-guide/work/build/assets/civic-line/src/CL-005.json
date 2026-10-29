@@ -1,0 +1,15 @@
+{
+  "id": "CL-005",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Mirrored the drawing about one vertical axis, x 95.0: speaker head (red fit x 95.40, black fit 95.10), front audience head (95.31), lectern, and the two side audience members",
+     "why": "DR-03 symmetry. The lectern legs centre on 94.99, the bar on 94.88, the speaker's shoulders on 94.83 and the side audience pair on 94.87; the head offsets are raster drift."},
+    {"what": "Gave the two side audience members one head radius (10.1; fits 10.06 and 10.15), one shoulder half-width (21.55; 21.5 and 21.6) and one shoulder corner radius (15.75; 15.6 to 15.9), with heads centred over the shoulders",
+     "why": "DR-03 equal repeats."},
+    {"what": "Gave both lectern slants one slope (dx/dy 0.275) and one step height (y 67.55)",
+     "why": "DR-03 symmetry; the two sides measure the same slope and steps 0.1 px apart."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The icon measures 5.5 to 5.75 px."}
+  ],
+  "notes": "The catalogue's 'circular emblem on the lectern front' is, on both sheets, a third audience member: a hollow head (r 9.89) inside the lectern legs with its own open-bottom shoulders below the lectern. The image controls, so the trace draws four people: the speaker, two side audience members and this front member. The front member keeps its own smaller head and tighter shoulder corners (r 12.9 against 15.75), as drawn. Kept: the lectern legs ending open at y 97 with no base line and a 3.6 px gap above the front member's shoulders; the speaker's shoulders meeting the lectern bar; the bar running past both slants. Red is the speaker's head ring only; both sheets agree."
+}

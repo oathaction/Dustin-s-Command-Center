@@ -1,0 +1,78 @@
+{
+  "id": "R-43",
+  "label": "Disaster Mitigation",
+  "built": "2026-10-29T07:12:43+00:00",
+  "W_source_px": 5.5,
+  "s": 0.487395,
+  "stroke_units": 2.6807,
+  "silhouette_iou_1x": 0.9075,
+  "silhouette_iou_4x": 0.9114,
+  "red_iou_1x": 0.8902,
+  "red_iou_4x": 0.8967,
+  "edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.224,
+      "p95": 0.5,
+      "max": 1.0
+    },
+    "trace_to_reference": {
+      "mean": 0.225,
+      "p95": 0.559,
+      "max": 1.0
+    },
+    "symmetric": {
+      "mean": 0.225,
+      "p95": 0.559,
+      "max": 1.0
+    }
+  },
+  "red_edge_distance_px": {
+    "reference_to_trace": {
+      "mean": 0.77,
+      "p95": 4.75,
+      "max": 5.25
+    },
+    "trace_to_reference": {
+      "mean": 0.392,
+      "p95": 1.75,
+      "max": 4.301
+    },
+    "symmetric": {
+      "mean": 0.589,
+      "p95": 3.25,
+      "max": 5.25
+    }
+  },
+  "best_offset_1x": {
+    "dx": 0,
+    "dy": 0,
+    "iou": 0.9075
+  },
+  "ink_area_ratio_trace_over_reference": 1.0778,
+  "bake_check_iou_1x": 0.9988,
+  "bake_check_iou_4x": 0.9997,
+  "pair_identical_after_swap": true,
+  "export_drawn_bounds": [
+    30.628,
+    33.819,
+    97.191,
+    93.862
+  ],
+  "export_inside_0_128": true,
+  "elements": 19,
+  "groups": [
+    "base",
+    "accent",
+    "base"
+  ],
+  "masks": [],
+  "corrections_logged": 6,
+  "rules": {
+    "reference_ink": "green below the crop's midpoint (local background to full ink)",
+    "reference_red": "redness R - max(G, B) above the crop's midpoint (local background to full red)",
+    "trace_ink": "black-edition render on the crop's own background; green below the midpoint between that background and Charcoal",
+    "trace_red": "red-black render on the red crop's background; redness above the midpoint between that background and Pillar Red",
+    "4x_reference": "reference channel upsampled 4x (bilinear, 1.5 px Gaussian) and thresholded with the same midpoint",
+    "edge_distance": "boundary pixels of each 4x mask; distance transform to the other mask's boundary; reported in source px"
+  }
+}

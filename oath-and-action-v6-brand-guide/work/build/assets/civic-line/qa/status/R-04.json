@@ -1,0 +1,71 @@
+{
+  "id": "R-04",
+  "label": "Citizen Map Commissions",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:57:52+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8834,
+      "red_iou_1x": 0.7144,
+      "edge_mean_px": 0.284,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:58:18+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8834,
+      "red_iou_1x": 0.7144,
+      "edge_mean_px": 0.284,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:58:18+00:00",
+      "by": "T4",
+      "note": "overlay checked; map shape, boundary network over the outline, residents match; boundary weight judgement noted"
+    }
+  ],
+  "last_build": "2026-10-29T06:58:18+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8834,
+    "red_iou_1x": 0.7144,
+    "bake_check_iou_1x": 0.9993,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.1024,
+    "edge_mean_px": 0.284,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.904,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Traced the map outline and district boundaries as straight runs between the sheet's corners, keeping every step and short slant; only runs within 1 deg of level or plumb were set exactly level or plumb (outer sides, top edges, the boundaries' level runs)",
+      "why": "DR-03 straight lines, while keeping the catalogue's 'particular abstract map shape'. Corners are the crossings of the fitted runs; slants of 2 to 6 deg (for example the left boundary's lowest run, 2.7 deg) stay as drawn."
+    },
+    {
+      "what": "Ended both red boundaries flat at the outline's outer edge, painted over the black outline where they meet it",
+      "why": "The red sheet shows the red boundary lines crossing the full width of the black outline at all three meeting points (left side, right side, top edge)."
+    },
+    {
+      "what": "Made the residents symmetric about x 77.6: the two side residents equal (head r 7.76, shoulders a half-round of r 13.6 into short plumb sides) and the middle resident larger and higher (head r 8.74, shoulders r 14.4)",
+      "why": "DR-03 equal repeats and symmetry. Side heads fit r 7.75 and 7.77 at x 39.89 and 115.25; the middle head fits r 8.74 at x 77.64. Shoulder fits are rough (rms 0.4 px) because each is a half-round on plumb sides, which the trace now draws exactly. Each half-round is written as two quarter arcs so every renderer draws it the same."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, including the district boundaries",
+      "why": "DR-03 one line weight. The sheet draws the outline at 4.75 to 5.5 px and the interior boundaries lighter, 3.9 to 4.5 px; W closes no gap here, so no data-w is set. This widens the red lines by about 1.2 px, which is most of why red IoU sits at 0.71 and the ink area at 1.10."
+    }
+  ],
+  "source_notes": "Kept as drawn: the map's open bottom (both sides stop at y 96, above the residents); the boundary network meeting at one junction (78.44, 52.8), its left arm reaching the left side and its right arm stepping down to the right side; three residents overlapping the map's lower edge, the middle one standing higher and larger; residents' open bottoms. Judgement for the reviewer: the interior boundaries read as a lighter weight on both sheets; if that is wanted as a deliberate map hierarchy, data-w of about 4.7 on the two red lines would restore it."
+}

@@ -1,0 +1,133 @@
+{
+  "id": "CL-063",
+  "label": "Essential Costs",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 7,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:09:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9144,
+      "red_iou_1x": 0.8531,
+      "edge_mean_px": 0.265,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:11:13+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9265,
+      "red_iou_1x": 0.8857,
+      "edge_mean_px": 0.233,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:11:44+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.931,
+      "red_iou_1x": 0.8873,
+      "edge_mean_px": 0.227,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:12:07+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9318,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.22,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T06:12:41+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9306,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.22,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T06:13:43+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9364,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.2,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 7,
+      "time": "2026-10-29T06:14:18+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9364,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.2,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:14:18+00:00",
+      "by": "T4",
+      "note": "overlay checked; roof, tag tip, bottle under bag rule, dollar match; 5 builds"
+    }
+  ],
+  "last_build": "2026-10-29T06:14:18+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9364,
+    "red_iou_1x": 0.875,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9582,
+    "edge_mean_px": 0.2,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.768,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the roof symmetric about its apex (74.08, 11.59): both slants at 37.37 deg, ends at x 10.33 and 137.83 on one height, y 60.27",
+      "why": "DR-03 symmetry. The slants measure 37.57 deg (left) and 37.17 deg (right); the fitted ends sit near x 10.8 and 138.3 at y 60.6 and 59.9. The left end moves about 0.45 px and the right end about 0.5 px."
+    },
+    {
+      "what": "Put the right-wall stub under the roof at x 126.06, the mirror of the left wall (x 22.1) about the apex",
+      "why": "DR-03 symmetry. The stub measures x 126.25."
+    },
+    {
+      "what": "Drew the chimney sides plumb (x 100.7 and 118.7) and its top level (y 11.05)",
+      "why": "DR-03 straight lines and right angles. The sides fit at 90.76 and 90.51 deg, the top at 1.7 deg."
+    },
+    {
+      "what": "Drew the bag as a true rectangle, x 52.42 to 112.12, y 85.2 to 137.12, with a 3 px corner radius, and centred the bottle's cap and body on one axis, x 82.7",
+      "why": "DR-03. Bag sides fit at 90.0 and 89.98 deg. The cap measures x 76.94 to 88.94 and the body x 75.2 to 90.0; each moves 0.25 px or less."
+    },
+    {
+      "what": "Made the tag's two long edges parallel at 47.5 deg with the end edge square to them, and drew the clipped tip's top edge level (y 79.2) with the left edge at 92.5 deg",
+      "why": "DR-03. The long edges fit at 47.71 and 47.36 deg, the end edge at 137.85 and 137.46 deg, the top edge at -1.2 deg, the left edge at 93.0 deg. A fully symmetric tip (top edge at 2.5 deg) was tried and rejected: it lifted the tip about 1 px off the sheet. The rounded tip follows the sheet's broad curve (radius 12.5)."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon measures 5.84 px."
+    },
+    {
+      "what": "Ended the red bottle's body lines flat at the bag's top rule and drew the bag last",
+      "why": "The red sheet shows the bag's black top rule over the foot of the red bottle; a round cap would push red below the rule."
+    }
+  ],
+  "source_notes": "Kept as drawn: the gap between the house's left wall top and the roof; the right wall showing only as a short stub below the roof, the rest hidden behind bag, string and tag; the floor line running into the bag's left side; three groceries (two leaning cartons with trapezoid windows, the red bottle between them). The cartons are not mirror images on the sheet (the right one stands about 2 px higher and leans differently), so each is traced as drawn. The tag string rises from the right carton's top corner and lands on the tag's top edge; the attachment hole is a filled dot (r 3.45). The dollar is the sheet's compact squared S, traced from the black sheet; the red sheet's S runs about 0.5 px wider on its right bowl, read as raster fringe. Red: the whole bottle (cap and body) and the dollar."
+}

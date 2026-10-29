@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-054" data-id="CL-054" width="128" height="128" viewBox="0 0 128 128">
+  <title>Home Equity</title>
+  <desc>Oath &amp; Action Civic Line CL-054 Home Equity. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <polyline points="22.23,59.384 49.71,36.852 70.76,54.116" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="63.001,42.335 63.001,36.37 71.759,36.37 71.759,45.211" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.176 59.492 V82.584 A1.901 1.901 0 0 0 30.077 84.485 H70.76" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="43.032,84.485 43.032,67.183 56.202,67.183 56.202,84.485" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M70.76 51.474 A2.242 2.242 0 0 1 73.002 49.232 H103.498 A2.242 2.242 0 0 1 105.741 51.474 V89.374 A2.242 2.242 0 0 1 103.498 91.616 H73.002 A2.242 2.242 0 0 1 70.76 89.374 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.815" y1="80.084" x2="80.815" y2="84.592" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="88.677" y1="75.576" x2="88.677" y2="84.592" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.543" y1="70.092" x2="96.543" y2="84.592" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="80.016,72.651 85.528,64.97 89.871,67.86 97.947,56.738" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="93.804,56.738 98.361,56.738 98.361,61.003" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+  </g>
+</svg>

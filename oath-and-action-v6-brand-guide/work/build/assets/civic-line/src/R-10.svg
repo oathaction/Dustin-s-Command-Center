@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-10" viewBox="0 0 213 120">
+  <!-- R-10 Revolving-Door Limits. Crop 213 x 120 px; ink box x 8..205, y 8..112.
+       Construction: at left, a walking figure passes through a tall rectangular doorway. The figure has a small filled head, angular bent arms and diagonal legs. At right stands an office-like building with a pitched upper contour and rows of small black windows. Between them, a short arrow points right above a filled circular restriction badge with a horizontal knockout bar.
+       Red: that right-pointing arrow and the restriction disc; the disc’s horizontal bar is negative space. Doorway, person and building remain black. -->
+  <!-- T4 trace. Doorway (plumb sides x 11.07 and 76.4, level head y 10.9) with a floor stub; walking figure with a
+       filled head, a heavier torso (data-w), bent arms (the right hand meets the door frame) and diagonal legs.
+       Red: the arrow (its lower barb shorter, clear of the disc) and a filled disc with the bar cut out (evenodd).
+       Building symmetric about x 162.68: pitched roof, six equal capsule windows, two door posts, a base rule. -->
+  <g data-role="base">
+    <polyline id="doorway" points="11.07,102.6 11.07,10.9 76.4,10.9 76.4,102.75"/>
+    <line id="floor" x1="11.07" y1="102.6" x2="36.87" y2="102.6"/>
+    <circle id="head" class="fill" cx="56.94" cy="32.32" r="7.44"/>
+    <line id="torso" data-w="9.5" x1="53.6" y1="47.8" x2="46.9" y2="70.6"/>
+    <polyline id="arm-back" points="30.9,66.6 36.95,51.27 48,46.9 53.6,47.8"/>
+    <polyline id="arm-front" points="54.6,48.3 62.1,60.6 76.4,67.43"/>
+    <polyline id="leg-back" points="45.9,70.8 41.21,83.57 27.12,102.6"/>
+    <polyline id="leg-front" points="48.1,70.9 58.8,84.96 60.23,102.87"/>
+    <polyline id="building" points="134.56,69.6 134.56,25.72 162.68,11.04 190.8,25.72 190.8,90.75"/>
+    <line id="base" x1="144.75" y1="90.75" x2="201.75" y2="90.75"/>
+    <line id="post-left" x1="153.76" y1="78.87" x2="153.76" y2="90.75"/>
+    <line id="post-right" x1="171.60" y1="78.87" x2="171.60" y2="90.75"/>
+    <rect id="window-11" class="fill" x="147.33" y="32.75" width="6.2" height="13.6" rx="3.1"/>
+    <rect id="window-12" class="fill" x="159.58" y="32.75" width="6.2" height="13.6" rx="3.1"/>
+    <rect id="window-13" class="fill" x="171.83" y="32.75" width="6.2" height="13.6" rx="3.1"/>
+    <rect id="window-21" class="fill" x="147.33" y="54.55" width="6.2" height="13.6" rx="3.1"/>
+    <rect id="window-22" class="fill" x="159.58" y="54.55" width="6.2" height="13.6" rx="3.1"/>
+    <rect id="window-23" class="fill" x="171.83" y="54.55" width="6.2" height="13.6" rx="3.1"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="88" y1="56.4" x2="116.5" y2="56.4"/>
+    <polyline id="arrow-head" points="105.8,45 116.5,56.4 105.3,65.6"/>
+    <path id="disc" class="fill" fill-rule="evenodd" d="M116.06 68.82 A21.38 21.38 0 0 1 137.44 90.2 A21.38 21.38 0 0 1 116.06 111.58 A21.38 21.38 0 0 1 94.68 90.2 A21.38 21.38 0 0 1 116.06 68.82 Z M103.86 86.2 H128.26 A0.8 0.8 0 0 1 129.06 87 V93.4 A0.8 0.8 0 0 1 128.26 94.2 H103.86 A0.8 0.8 0 0 1 103.06 93.4 V87 A0.8 0.8 0 0 1 103.86 86.2 Z"/>
+  </g>
+</svg>

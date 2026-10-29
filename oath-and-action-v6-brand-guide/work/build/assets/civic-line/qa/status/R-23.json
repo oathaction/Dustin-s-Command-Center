@@ -1,0 +1,95 @@
+{
+  "id": "R-23",
+  "label": "Indexed Minimum Wage",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:53:47+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9007,
+      "red_iou_1x": 0.871,
+      "edge_mean_px": 0.207,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:54:19+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9044,
+      "red_iou_1x": 0.8128,
+      "edge_mean_px": 0.188,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:54:38+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.906,
+      "red_iou_1x": 0.8165,
+      "edge_mean_px": 0.184,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:55:02+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.906,
+      "red_iou_1x": 0.8165,
+      "edge_mean_px": 0.184,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:55:02+00:00",
+      "by": "T5",
+      "note": "overlay checked; four bars as drawn (catalogue says three), arrow curve from black sheet"
+    }
+  ],
+  "last_build": "2026-10-29T06:55:02+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.906,
+    "red_iou_1x": 0.8165,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9923,
+    "edge_mean_px": 0.184,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 2.512,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the rising arrow as one smooth cubic curve ending in a symmetric open chevron (arms about 15.5 px, 31 deg either side of the curve's end direction)",
+      "why": "DR-03. The cubic follows the black sheet's sampled centreline within 0.36 px. In a frame along the arrow's end direction the arm ends sit at v -7.85 and +8.35 about the axis, so they were mirrored."
+    },
+    {
+      "what": "Spaced the four bars evenly, 20.2 px apart, with one common foot at y 106.75",
+      "why": "DR-03 equal repeats. Bar spacing measures 20.1, 20.3 and 20.2 px. Their rising heights (tops at y 98.13, 95.13, 88.5 and 77.75) are kept as drawn."
+    },
+    {
+      "what": "Drew the dollar sign's S as two equal elliptical bowls (7.25 x 6.78 px), point-symmetric about (37.55, 43.8), with bars on the same axis",
+      "why": "DR-03 symmetry. The bowls measure within 0.1 px of each other."
+    },
+    {
+      "what": "Gave the ledger one corner radius, 3.5 px",
+      "why": "DR-03. Diagonal profiles give 3.45 and 3.6 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The ledger's left edge and the arrow measure 6.0 px; the rules 5.0 to 5.25 px."
+    }
+  ],
+  "source_notes": "Kept: the ledger as an open contour (its bottom edge stops at x 50.13 and its right edge runs down to y 106.75 with a free end), the dollar sign at upper left, two short rules beside it and two lower-left rules of their own lengths, the arrow kept clear of the bars. Count: the sheet shows four ascending bars, not the three the catalogue names; the image controls, so four are drawn. Red is the whole arrow, curve and head. Sheet difference: the red sheet's curve sits about 0.5 to 0.8 px below and right of the black sheet's in its middle third; geometry follows the black sheet, which costs about 0.05 of red IoU."
+}

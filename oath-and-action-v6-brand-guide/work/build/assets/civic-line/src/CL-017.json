@@ -1,0 +1,17 @@
+{
+  "id": "CL-017",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Made the three busts identical and evenly stacked at a 45.04 px pitch: one head radius (6.72; fits 6.62 to 6.77), heads at y 16.9, 61.94 and 106.98, one shoulder shape (half-width 14.03, corner r 8.1, top 13.05 px below the head, ends 11.78 px below the top)",
+     "why": "DR-03 equal repeats. Head pitches measure 44.99 and 45.1; the middle bust's shoulders sit 0.6 px closer to its head than the others; shoulder corner fits run 7.6 to 8.7 px."},
+    {"what": "Mirrored the top and bottom routes about the middle route (y 70.6), with their far ends on the busts' 45.04 px pitch, their starts 18.36 px either side, one vertical run at x 112.2 and one bend radius, 10 px",
+     "why": "DR-03 symmetry and equal repeats. The routes' far ends measure y 26.06, 70.5 and 115.81 and their starts 52.35, 70.5 and 89.06; their vertical runs sit at 112.0 and 112.4. The top route's far end moves 0.5 px. A 10 px bend matched the sheet better than 6 to 8.5 px."},
+    {"what": "Spaced the four rules evenly at a 16.08 px pitch from y 45.52, from one left end, x 27.25",
+     "why": "DR-03 equal repeats. Measured pitches 16.12, 15.94 and 16.19."},
+    {"what": "Gave the document one corner radius, 5 px",
+     "why": "DR-03 one consistent corner. Corner fits give 6.8 (top) and 6.0 (bottom) but read squarer at the outer edge; 5 px matched the outline best."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The icon measures 5.1 to 5.5 px."}
+  ],
+  "notes": "Red follows the red sheet, which differs from the catalogue: the catalogue names 'the middle person's head/shoulder strokes and the adjoining highlighted central access stroke', but the red sheet draws the middle route black and only the middle bust red. The trace keeps the middle route black. Kept: three separate routes that do not merge, each ending short of its bust; the middle route straight; the fourth rule shorter; open shoulder bottoms."
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-22" viewBox="0 0 210 118">
+  <!-- R-22 Wage Boards. Crop 210 x 118 px; ink box x 8..202, y 8..110.
+       Construction: three outline people sit/stand around a long straight table. A taller central person is behind, with two shorter participants at left and right. Their arms point inward above the tabletop. A low trapezoidal tabletop/negotiation shape sits at the centre, with a flat short top and slanting side strokes.
+       Red: the central low trapezoidal tabletop stroke. People, main table surface and legs remain black. Preserve the three-person triangular composition. -->
+  <!-- Trace notes: composition symmetric about x 105.15; red trapezoid ends pass under the black table line. -->
+  <g data-role="base">
+    <circle id="head-left" cx="31.24" cy="45.75" r="10.52"/>
+    <path id="body-left" d="M10.37 106.6 L10.37 80.45 A20.16 17.26 0 0 1 30.53 63.19 A20.16 17.26 0 0 1 50.69 80.45 L50.69 83.45"/>
+    <circle id="head-right" cx="179.06" cy="45.75" r="10.52"/>
+    <path id="body-right" d="M159.61 83.45 L159.61 80.45 A20.16 17.26 0 0 1 179.77 63.19 A20.16 17.26 0 0 1 199.93 80.45 L199.93 106.6"/>
+    <circle id="head-centre" cx="105.15" cy="21.17" r="10.85"/>
+    <path id="body-centre" d="M77.1 66.2 L77.1 60.01 A28.05 21.07 0 0 1 105.15 38.94 A28.05 21.07 0 0 1 133.2 60.01 L133.2 66.2"/>
+    <line id="arm-centre" x1="122.75" y1="58.15" x2="122.75" y2="66.25"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="table-centre" points="58.75,93.5 71.02,74.92 139.28,74.92 151.55,93.5"/>
+  </g>
+  <g data-role="base">
+    <line id="table" x1="39.02" y1="93.5" x2="171.28" y2="93.5"/>
+    <line id="leg-left" x1="48.57" y1="93.5" x2="48.57" y2="107.65"/>
+    <line id="leg-right" x1="161.73" y1="93.5" x2="161.73" y2="107.65"/>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+{
+  "id": "CL-055",
+  "label": "Productivity",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:57:03+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9428,
+      "red_iou_1x": 0.9068,
+      "edge_mean_px": 0.155,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:57:53+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9469,
+      "red_iou_1x": 0.9068,
+      "edge_mean_px": 0.142,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:58:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9472,
+      "red_iou_1x": 0.9068,
+      "edge_mean_px": 0.136,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:59:03+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9472,
+      "red_iou_1x": 0.9068,
+      "edge_mean_px": 0.136,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:59:03+00:00",
+      "by": "T3",
+      "note": "overlay checked; worker outline, desk slab, laptop, arrow and red rim crescent match"
+    }
+  ],
+  "last_build": "2026-10-29T06:59:03+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9472,
+    "red_iou_1x": 0.9068,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9737,
+    "edge_mean_px": 0.136,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 2.305,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The black strokes measure 5.4 to 6.0 px; the red arrow 5.0 to 5.3 px."
+    },
+    {
+      "what": "Drew the clock rim as one true circle, centre (166.3, 42.4), r 31.3, with the hands meeting at its centre",
+      "why": "DR-03 true circles. Quadrant fits give r 31.38 to 32.05 with centres within 1 px of each other; the hands' corner measures (166.4, 42.3). The hour hand is drawn level (it measures 175.6 deg)."
+    },
+    {
+      "what": "Drew the rim's red accent as a filled crescent bounded by the rim's inner edge (r 28.55 about the clock centre) and a second circle, r 20.65, centred 13.7 px from the clock centre toward 1:30; it meets the inner edge at about 12 and 3 o'clock",
+      "why": "The red sheet's red is not a constant-width arc: its inner edge follows the rim's inner edge (r 28.0 to 28.3) while its outer edge rises from the inner edge at -80 deg to the rim's outer edge (r 34.0) at -55 to -30 deg and falls back by +5 deg, leaving the outer part of the rim black near both ends. Two true circles reproduce that taper; the black rim runs underneath."
+    },
+    {
+      "what": "Drew the desk as one rounded outline, x 10.75 to 147.31 and y 94.92 to 105.07, corner radius 2.5",
+      "why": "The sheet's desk ends are short straight verticals with tight corners, not semicircles; a full-round end left 1.5 px of ink uncovered at each corner."
+    },
+    {
+      "what": "Drew the worker's outline as one path: a straight outer side leaning 8.5 deg, a cubic over the shoulder (rms 0.06 px), a cubic down the back (rms 0.14 px), a small corner into the level forearm (y 79.9), and a curve down to the desk beside the laptop; a short fillet stroke fills the forearm's foot as the sheet shows",
+      "why": "Fitted to the black sheet's centreline. The forearm's descending part sits on x 92.4 so it closes against the laptop's left side as on the sheet; the sheet's forearm is about 1.5 px wider there, which the trace does not copy."
+    },
+    {
+      "what": "Placed the arrow's tip at (122.4, 44.4), with straight arms at 45 deg ending at (114.6, 36.6) and (114.6, 52.2)",
+      "why": "The arms' skeletons bend near the caps; the tip sits 2.9 px inside the red ink's end, matching the sheet's sharp join."
+    }
+  ],
+  "source_notes": "Kept as drawn: the head stands just clear of the shoulder; the near arm is a short stroke from inside the body down into the desk top; the laptop is a three-sided screen standing on the desk; the two legs splay outward (5.1 and 3.8 deg, as measured); the arrow stands clear of both the worker and the clock. Red: the arrow and the rim crescent, from the red sheet."
+}

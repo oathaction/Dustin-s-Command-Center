@@ -1,0 +1,19 @@
+{
+  "id": "CL-064",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Gave every receding edge of the parcel one vector, (15.89, -15): the top face's left and right edges, the tape line across the top, and the side face's bottom edge",
+     "why": "DR-03. The box is drawn in oblique view, so its receding edges are parallel. They fit at 46.8, 46.0, 44.4 and 42.1 deg. The side face's bottom edge moves about 1 px (it met the back edge at y 89.1 on the sheet; now 87.93)."},
+    {"what": "Drew the parcel's front as a true rectangle (x 10.67 to 68.04, y 49.8 to 102.93), the top face's back edge level at y 34.8 and the back edge plumb at x 83.93",
+     "why": "DR-03 straight lines and right angles. The front top edge fits at 1.2 to 1.5 deg; the back edge at 0.8 to 2.6 deg."},
+    {"what": "Drew the gate square: posts plumb at x 114.33 and 164.86, band rules level at y 10.7 and 23.8, feet level at y 102.7 and centred on their posts, 24 px long each",
+     "why": "DR-03. The feet measure 24.0 and 24.1 px, centred within 0.1 px."},
+    {"what": "Made the outgoing arrowhead symmetric about the shaft (y 54) with both barbs at 45 deg",
+     "why": "DR-03 symmetry. The barbs fit at 44.95 and 47.1 deg; the lower barb moves up to 0.75 px."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px, including the two barrier marks",
+     "why": "DR-03 one line weight. The icon measures 6.0 px overall; the marks' own bars measure 5.0 to 5.5 px."},
+    {"element": "mark-right-wedge", "what": "Added a small filled triangle inside the right mark's lower right corner",
+     "why": "The catalogue asks to keep the marks' unusual parallelogram-like stroke shapes. On both sheets the right mark's outer right side is plumb while its window's right side slants, so the stroke thickens toward the lower right corner. A stroke at W alone leaves a square window there."}
+  ],
+  "notes": "Kept as drawn: the tape line on the parcel's front stops short at y 67.75 with a round end; the gate's band is a closed strip between two rules; the outgoing arrow is detached. Both red marks keep their drawn construction: a slanted window whose top and bottom bars run past its left side to rounded ends. The left mark's right ends run under the left post, as on the red sheet, where the black post covers the red; the accent group is drawn first so the post paints over it. Black and red sheets agree on both marks within a fringe."
+}

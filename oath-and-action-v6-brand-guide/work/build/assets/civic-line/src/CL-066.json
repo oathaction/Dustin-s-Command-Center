@@ -1,0 +1,19 @@
+{
+  "id": "CL-066",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Drew the plug body as a level top (y 39.3), plumb sides (x 11.5 and 59.97) and a true half-round bottom about (35.73, 53.22)",
+     "why": "DR-03. The sides fit within 0.1 deg of plumb; the bottom fits a circle of r 24.22 about (35.70, 53.22)."},
+    {"what": "Made the two pins plumb, equal (tops at y 18.55) and symmetric about the plug's axis, at x 26.23 and 45.23",
+     "why": "DR-03 symmetry. The left pin leans 2.1 deg (x 25.6 to 26.3); pin centres sat at 26.06 and 45.0."},
+    {"what": "Dropped the cable from the plug's axis (x 35.73) and turned it with a true half-circle (r 16.46) whose right side meets the first cloud lobe at that lobe's leftmost point",
+     "why": "DR-03. The cable fits plumb at x 35.9 and the turn a circle of r 16.15; the change moves the cable at most 0.3 px."},
+    {"what": "Drew each cloud lobe as a true arc from its own circle fit, meeting its neighbours at cusps placed where the two circles cross; the last lobe leaves its cusp along a short straight run, as on the sheet",
+     "why": "DR-03 true circles. Lobe fits have rms 0.04 to 0.06 px. The cusps keep the sheet's notched outline; the round joins leave each notch's outer point up to 0.8 px less sharp than the raster."},
+    {"what": "Drew the plume as one true arc (r 25.87)",
+     "why": "DR-03. It fits a circle with rms 0.05 px on the black sheet."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 6.0 px, so the trace's ink area runs about 8 percent below the sheet's."}
+  ],
+  "notes": "Kept as drawn: one continuous line from the plug's foot through the cable into the cloud, ending open at the cloud's lower left (x 80, y 109.4) with a round end; the cloud has eight lobes of slightly different sizes; the plug's top bar and pins are square to each other; no bolt. Red: the inner plume arc only. Black and red sheets agree on the plume within 0.4 px."
+}

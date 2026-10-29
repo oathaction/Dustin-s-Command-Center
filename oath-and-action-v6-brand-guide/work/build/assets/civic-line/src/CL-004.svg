@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-004" viewBox="0 0 145 129">
+  <!-- CL-004 Petition. Crop 145 x 129 px; ink box x 8..137, y 8..121.
+       Construction: an upright document with four horizontal rules and a largely open right side where a writing pen overlaps it. The pen runs diagonally from lower left to upper right, with a long narrow barrel, rounded upper end, parallel inner line/clip detail and a pointed lower nib. Its tip falls near the document’s lower-right interior. Preserve the separate narrow black pen-clip stroke.
+       Red: the pen’s long outer barrel contour and upper rounded end as shown. Its nib and small clip/detail retain black. The document and text rules are black. -->
+  <g data-role="base">
+    <!-- Page: one open contour, corner r 7.25, right side at x 97.7; it opens between y 44.5 and 101.63 where the pen crosses.
+         Pen axis direction (-0.5894, 0.8078); barrel edges a = 114.84 and 128.12 along n = (0.8078, 0.5894). -->
+    <path id="page" d="M97.7 44.5 V17.95 A7.25 7.25 0 0 0 90.45 10.7 H17.77 A7.25 7.25 0 0 0 10.52 17.95 V110.62 A7.25 7.25 0 0 0 17.77 117.87 H90.45 A7.25 7.25 0 0 0 97.7 110.62 V101.63"/>
+    <line id="rule-1" x1="30.2" y1="31.42" x2="74.8" y2="31.42"/>
+    <line id="rule-2" x1="30.2" y1="51.43" x2="74.8" y2="51.43"/>
+    <line id="rule-3" x1="30.2" y1="71.44" x2="64.37" y2="71.44"/>
+    <line id="rule-4" x1="30.2" y1="91.44" x2="52.13" y2="91.44"/>
+    <line id="clip-band" x1="112.93" y1="40.06" x2="123.66" y2="47.89"/>
+    <path id="clip" d="M126.19 44.42 A4.890 4.890 0 0 1 134.09 50.18 L117.18 73.36"/>
+    <polyline id="nib" points="76.56,89.90 72.85,106.60 87.29,97.73"/>
+  </g>
+  <g data-role="accent">
+    <path id="barrel" class="butt" d="M76.56 89.90 L121.09 28.88 A6.64 6.64 0 0 1 131.81 36.71 L87.29 97.73"/>
+    <line id="ferrule" x1="80.86" y1="84.01" x2="91.59" y2="91.83"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-057" data-id="CL-057" width="128" height="128" viewBox="0 0 128 128">
+  <title>Labor Share</title>
+  <desc>Oath &amp; Action Civic Line CL-057 Labor Share. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <defs>
+    <mask id="cl-057-person-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+      <circle cx="80.376" cy="42.642" r="4.357" fill="#000000"/>
+      <circle cx="80.376" cy="56.933" r="8.432" fill="#000000"/>
+      <rect x="71.945" y="56.933" width="16.864" height="2.651" fill="#000000"/>
+      <rect x="69.605" y="59.584" width="21.933" height="7.798" fill="#FFFFFF"/>
+    </mask>
+  </defs>
+  <g id="base">
+    <path d="M95.778 66.437 A32.3 32.3 0 1 1 63.591 31.432 V63.732 L90.207 82.029" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+  </g>
+  <g id="accent">
+    <path d="M68.172 61.412 V31.583 A1.34 1.34 0 0 1 69.62 30.248 A31.427 31.427 0 0 1 98.532 61.407 A1.34 1.34 0 0 1 97.192 62.752 H69.512 A1.34 1.34 0 0 1 68.172 61.412 Z" fill="#121212" mask="url(#cl-057-person-cut)"/>
+  </g>
+</svg>

@@ -1,0 +1,89 @@
+{
+  "id": "CL-052",
+  "label": "Household Security",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:43:18+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9171,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.227,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:43:46+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9259,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.2,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:44:07+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9259,
+      "red_iou_1x": 0.875,
+      "edge_mean_px": 0.2,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:44:07+00:00",
+      "by": "T3",
+      "note": "overlay checked; roof over record edge, wall gaps, open chimney, record gap, red dollar match"
+    }
+  ],
+  "last_build": "2026-10-29T06:44:07+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9259,
+    "red_iou_1x": 0.875,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9388,
+    "edge_mean_px": 0.2,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.118,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.75 to 6.25 px."
+    },
+    {
+      "what": "Made the roof symmetric about its apex (69.46, 13.24), both slopes at one angle (38.9 deg) down to eave ends at x 11.06 and 127.86, y 60.31",
+      "why": "DR-03 symmetry. The slopes measure 38.77 and 38.97 deg; the eave ends measure y 60.14 and about 60.6. The walls are already symmetric about the apex (x 22.0 and 116.6)."
+    },
+    {
+      "what": "Started both walls at one height, y 62.75, below the roof",
+      "why": "DR-03 symmetry. The wall tops measure 63.15 (left) and 62.35 (right)."
+    },
+    {
+      "what": "Made the house's bottom edge level at y 120.85",
+      "why": "DR-03 straight lines. It measures 120.54 at the left and 120.99 at the right."
+    },
+    {
+      "what": "Set the corner radii on the centreline to 2.0 (door, window), 2.5 (house) and 3.0 (record)",
+      "why": "Medial-axis circle fits give 3.4 to 6.4 px, but at these corners the sheet's inner corner is nearly square and the outer corner tight; the overlay matches with these smaller radii."
+    },
+    {
+      "what": "Made the chimney's left leg vertical at x 93.6",
+      "why": "DR-03 straight lines. It measures 92.1 deg."
+    }
+  ],
+  "source_notes": "Kept as drawn: the roof's right slope runs on over the record's left edge to its eave at x 127.86; the record's left edge is the house's right wall line, which above the roof comes down to the roof line and below it starts again at y 62.75; the record's bottom edge stops short of the house's bottom-right corner (gap about 1.5 px). The chimney is an open three-sided outline whose legs stop above the roof (the left at y 20.85, the right at 31.45), as on both sheets. The dollar sign is an S of elliptical arcs with short bars above and below, from the red sheet; it sits at x 153.85, 0.85 px right of the record's centre, as drawn. Two rules, as drawn."
+}

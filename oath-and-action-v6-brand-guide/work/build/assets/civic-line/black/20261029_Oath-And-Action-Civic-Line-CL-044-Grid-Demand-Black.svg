@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-044" data-id="CL-044" width="128" height="128" viewBox="0 0 128 128">
+  <title>Grid Demand</title>
+  <desc>Oath &amp; Action Civic Line CL-044 Grid Demand. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="27.348" y="35.804" width="40.356" height="18.238" rx="3.022" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="27.348" y="54.043" width="40.356" height="18.238" rx="3.022" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="27.348" y="72.281" width="40.356" height="18.238" rx="3.022" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="42.238" x2="45.235" y2="42.238" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="47.989" x2="45.235" y2="47.989" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="60.476" x2="45.235" y2="60.476" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="66.227" x2="45.235" y2="66.227" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="78.714" x2="45.235" y2="78.714" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="33.562" y1="84.466" x2="45.235" y2="84.466" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.447" y1="43.408" x2="83.447" y2="52.887" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.803" y1="43.408" x2="94.803" y2="52.887" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.355 66.681 V52.887 H100.896 V66.681 A11.771 11.356 0 0 1 89.125 78.037 A11.771 11.356 0 0 1 77.355 66.681 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="89.125" y1="78.037" x2="89.125" y2="92.464" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="58.858" y="42.311" width="3.461" height="5.361" rx="1.73" fill="#121212"/>
+    <rect x="58.858" y="60.549" width="3.461" height="5.361" rx="1.73" fill="#121212"/>
+    <rect x="58.858" y="78.788" width="3.461" height="5.361" rx="1.73" fill="#121212"/>
+    <polyline points="90.661,59.175 86.128,64.999 92.074,64.999 87.224,71.408" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

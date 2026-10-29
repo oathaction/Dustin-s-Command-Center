@@ -1,0 +1,15 @@
+{
+  "id": "CL-028",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Spaced the four rules evenly at 18.69 px (y 30.32 to 86.39), started them all at x 28.9, and gave the two lowest rules one end, x 52.6",
+     "why": "DR-03 equal repeats. Spacings measure 18.59, 18.65, 18.83 px; the two short rules end at 52.0 and 53.25 (each moves 0.6 px). The long top rule (75.25) and the medium second rule (57.0) keep their drawn lengths."},
+    {"what": "Made the lens a true circle, centre (93.82, 67.72), r 29.42",
+     "why": "DR-03. The sheet's lower half runs about 0.5 px wider than its upper half; the fit balances both."},
+    {"what": "Drew the handle as one straight stadium outline, sides parallel at 45.15 deg, 12.26 px apart, end radius 6.13 px",
+     "why": "DR-03. Both sides measure 45.15 deg on the black sheet; end arc fits r 6.35 (black) and 6.10 (red)."},
+    {"what": "Put the page's right-edge stubs, top and bottom, on one line, x 92.9, and gave the page corners a 2.5 px centreline radius",
+     "why": "DR-03 straight lines. The top stub measures x 93.15 and the bottom stub 92.65."}
+  ],
+  "notes": "Kept: four rules (long, medium, short, short), the empty lens, and the short black neck from the lens ring to the handle, as both sheets show; the handle stands off the ring by that neck rather than touching it. Kept the open page edge: the right side stops at y 27.75 above the lens and only a short upturned stub shows at the bottom right, so the page reads behind the lens. Red: the handle outline only; the neck stays black, and the red handle sits over the neck's end as on the red sheet."
+}

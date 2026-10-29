@@ -1,0 +1,15 @@
+{
+  "id": "CL-072",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Built each route from a plumb stem, one true quarter arc and a level run, the arc tangent to both",
+     "why": "DR-03 straight lines and true circles. Stems fit within 0.2 deg of plumb, runs within 1.1 deg of level, and the arcs as circles with rms 0.04 to 0.08 px (r 37.05, 30.97, 35.17). The left route's run moves up 0.3 px to meet its arc's top."},
+    {"what": "Made the arrowhead symmetric about the middle route's run (y 24.7), both barbs 14 px back from the tip at 44.6 deg",
+     "why": "DR-03 symmetry. The barbs fit at 46.3 and 47.4 deg on the black sheet (46.7 and 49.2 on the red); the barb ends move up to 0.6 px."},
+    {"what": "Drew the terminal as a true circle, r 13.58 about (147.57, 80.0), touched by the right route's run at its leftmost point",
+     "why": "DR-03 true circles. The fit has rms 0.05 px."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon is a heavy outlier at 6.25 px (6.4 to 6.5 px on the red route), so the trace's ink area is about 11 percent below the sheet's."}
+  ],
+  "notes": "Kept as drawn: the three close, parallel lower stems (x 71.6, 84.45 and 85.6), the middle stem stopping short at y 76 above the right route's bend; three different ends: a plain round end at left, an open arrowhead pointing right, a hollow circle at right. Red: the whole middle route and its arrowhead. Black and red sheets agree within a fringe."
+}

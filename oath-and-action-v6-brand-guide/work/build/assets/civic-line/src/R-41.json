@@ -1,0 +1,15 @@
+{
+  "id": "R-41",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Gave the three server trays one height, 26.68 px, by spacing the dividers evenly (y 37.14, 63.82, 90.5), and centred each tray's indicator dot and rule in its tray", "why": "DR-03 equal repeats. Tray heights measure 26.94, 26.77 and 26.33 px; dividers move up to 0.35 px and the top dot and rule 0.37 px."},
+    {"what": "Gave the three tray rules one span (x 46.75 to 67.55) and the three indicator dots one size (filled, r 2.75) on one column, x 23.77", "why": "DR-03 equal repeats. Rule ends vary by up to 0.4 px; dots measure 5.3 to 5.7 px across."},
+    {"what": "Kept the rack's lower corners rounder (r 12.2) than its upper corners (r 7)", "why": "Both lower corners fit r 11.9 and 12.4 against 8.2 to 8.5 above (the overlay matches the upper pair at 7), so the difference is drawn on purpose, not a raster accident."},
+    {"what": "Drew the cable as a straight run from the rack, a 9 px corner, a vertical drop at x 95.2 and a true semicircle (r 16.1) up into the plug's cord on the plug axis, x 127.4", "why": "DR-03 circles. The loop's points fit a semicircle of r 16.25 to 16.4 within 0.4 px; the cord measures x 127.7, 0.3 px off the plug's axis."},
+    {"what": "Drew the plug symmetric about x 127.4: prongs at 121.69 and 133.11, flat top at y 59.6, vertical sides, and a half-ellipse base (rx 9.9, ry 9)", "why": "DR-03 symmetry. Prongs and sides already share the axis to 0.05 px."},
+    {"what": "Built the dollar sign from two equal ellipses (rx 8.23, ry 6.85) joined by their internal tangent, with one continuous bar through the S, on the bill's axis x 187.5", "why": "This sheet's dollar is wider than R-36's and its bar runs unbroken from y 51 to 91 through the S, so the bar is drawn whole. The tangent spine's slope, 0.25, matches the measured spine."},
+    {"what": "Gave the bill one corner radius, 5 px, and centred its top rule on the bill's axis", "why": "DR-03. Corner fits read 5.6 to 6.8 px with rms up to 0.43; the overlay matches at 5. The rule centres 0.44 px right of the bill's axis."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.25 px."}
+  ],
+  "notes": "Kept: three trays each with a dot and a rule, the empty base compartment below them, the cable's single loop, two prongs, and the bill's single top rule. The three-part servers, plug, bill sequence is unchanged. Black and red sheets agree."
+}

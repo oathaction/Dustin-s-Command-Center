@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-039" data-id="CL-039" width="128" height="128" viewBox="0 0 128 128">
+  <title>Feed Ranking</title>
+  <desc>Oath &amp; Action Civic Line CL-039 Feed Ranking. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M27.275 47.867 V33.075 A2.193 2.193 0 0 1 29.468 30.882 H75.771 A2.193 2.193 0 0 1 77.964 33.075 V47.867" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="33.611" y="36.974" width="7.262" height="7.262" rx="0.731" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="38.061" x2="68.898" y2="38.061" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="43.88" x2="58.663" y2="43.88" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="27.275" y="52.595" width="50.689" height="19.301" rx="2.193" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="27.275" y="77.662" width="50.689" height="19.301" rx="2.193" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="33.611" y="83.735" width="7.262" height="7.262" rx="0.731" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="84.822" x2="68.898" y2="84.822" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="90.641" x2="58.663" y2="90.641" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.413" y1="30.857" x2="95.413" y2="47.161" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="95.413" y1="57.201" x2="95.413" y2="86.908" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="33.611" y="58.726" width="7.262" height="7.262" rx="0.731" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="59.813" x2="68.898" y2="59.813" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="65.633" x2="58.663" y2="65.633" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="95.413" cy="52.181" r="5.02" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

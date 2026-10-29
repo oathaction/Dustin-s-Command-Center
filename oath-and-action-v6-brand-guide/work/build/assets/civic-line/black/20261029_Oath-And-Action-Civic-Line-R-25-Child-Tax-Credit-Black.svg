@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-25" data-id="R-25" width="128" height="128" viewBox="0 0 128 128">
+  <title>Child Tax Credit</title>
+  <desc>Oath &amp; Action Civic Line R-25 Child Tax Credit. Traced vector reconstruction from the Civic Line reference sheet 04, row 5, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M36.199 53.516 L39.109 53.477 L38.48 56.138 A6.307 6.307 0 1 1 36.199 53.516 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.272 83.545 A12.877 15.309 0 0 1 32.124 69.205 A12.877 15.309 0 0 1 44.977 83.545" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.531" y1="81.449" x2="24.531" y2="90.124" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.718" y1="81.449" x2="39.718" y2="90.124" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.431 59.662 L56.431 40.654 A2.486 2.486 0 0 1 58.916 38.168 L93.95 38.168 A2.486 2.486 0 0 1 96.436 40.654 L96.436 54.618" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.431 79.109 L56.431 81.741 A2.486 2.486 0 0 0 58.916 84.227 L82.424 84.227" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.049" y1="47.706" x2="89.101" y2="47.706" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="64.049" y1="56.343" x2="84.29" y2="56.343" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="64.975" x2="78.866" y2="64.975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="73.611" x2="76.429" y2="73.611" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="46.649" y1="69.703" x2="61.807" y2="69.703" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="52.156,63.634 46.649,69.703 52.156,75.771" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.28" cy="72.914" r="12.931" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M99.034 70.122 A2.778 2.071 0 1 0 96.461 72.968 A2.778 2.681 0 1 1 93.887 76.653" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.461" y1="66.364" x2="96.461" y2="68.825" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="96.461" y1="78.329" x2="96.461" y2="79.84" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

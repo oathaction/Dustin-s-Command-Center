@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-070" data-id="CL-070" width="128" height="128" viewBox="0 0 128 128">
+  <title>Environment</title>
+  <desc>Oath &amp; Action Civic Line CL-070 Environment. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M31.442 94.097 V80.084 C24.843 73.012 24.219 61.378 29.185 53.321 C33.816 45.806 41.672 39.645 49.866 37.973 C56.172 36.691 64.468 34.595 71.067 34.366 C71.964 57.956 64.994 79.767 38.231 84.032" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+    <path d="M31.442 80.084 C35.985 67.587 41.219 57.625 53.375 50.597" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M87.224 47.77 C81.956 56.211 72.232 66.876 72.681 77.784 A14.544 14.544 0 0 0 87.224 92.327 A14.544 14.544 0 0 0 101.768 77.784 C102.217 66.876 92.498 56.211 87.224 47.77 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

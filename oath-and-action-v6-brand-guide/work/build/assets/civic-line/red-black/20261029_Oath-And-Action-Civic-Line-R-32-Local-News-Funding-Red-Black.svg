@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-32" data-id="R-32" width="128" height="128" viewBox="0 0 128 128">
+  <title>Local-News Funding</title>
+  <desc>Oath &amp; Action Civic Line R-32 Local-News Funding. Traced vector reconstruction from the Civic Line reference sheet 05, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M28.016 46.308 H24.194 A2.564 2.564 0 0 0 21.631 48.871 V82.511 A3.119 3.119 0 0 0 24.75 85.631 H72.32 A2.437 2.437 0 0 0 74.757 83.194 V44.685 A2.437 2.437 0 0 0 72.32 42.248 H30.404 A2.388 2.388 0 0 0 28.016 44.636 V85.631" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.585" y1="49.963" x2="67.217" y2="49.963" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.585" y1="57.001" x2="67.217" y2="57.001" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.585" y1="64.039" x2="48.55" y2="64.039" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.585" y1="71.077" x2="48.55" y2="71.077" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.585" y1="78.115" x2="48.55" y2="78.115" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.249 69.142 A7.798 2.573 0 0 0 74.966 71.248 A7.798 2.573 0 0 0 87.249 73.353" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M74.966 77.194 A7.798 2.573 0 0 0 87.249 79.299" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M74.966 83.14 A7.798 2.573 0 0 0 87.249 85.246" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="96.802" cy="61.602" rx="9.553" ry="3.724" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="87.249,61.602 87.249,81.97" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="106.355,61.602 106.355,81.97" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.249 68.391 A9.553 3.724 0 0 0 106.355 68.391" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.249 75.181 A9.553 3.724 0 0 0 106.355 75.181" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.249 81.97 A9.553 3.724 0 0 0 106.355 81.97" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="54.155" y="61.929" width="14.427" height="12.979" rx="0.975" fill="#E63946"/>
+  </g>
+</svg>

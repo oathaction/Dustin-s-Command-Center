@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-11" viewBox="0 0 182 112">
+  <!-- R-11 Election Enforcement. Crop 182 x 112 px; ink box x 8..174, y 8..104.
+       Construction: an upright ballot/record at left with several short horizontal rules above a small square check cell. A gavel occupies the right, with its head near upper right and a long handle sloping diagonally down-right. The gavel head has short cap/band details at both ends. There is no separate sound block.
+       Red: the square check-cell outline/check and the gavel head’s short end-band strokes. Page, text rules, handle and remaining gavel contour stay black. -->
+  <!-- Trace notes: gavel drawn in a frame at 34 deg about (115, 58); bands, body and handle share one axis. -->
+  <g data-role="base">
+    <path id="page" d="M85.2 51.56 L85.2 14.86 A4.5 4.5 0 0 0 80.7 10.36 L14.9 10.36 A4.5 4.5 0 0 0 10.4 14.86 L10.4 96.5 A4.5 4.5 0 0 0 14.9 101 L65.56 101"/>
+    <line id="rule-1" x1="26.4" y1="27.33" x2="69.45" y2="27.33"/>
+    <line id="rule-2" x1="26.4" y1="42.7" x2="69.45" y2="42.7"/>
+    <line id="rule-base" x1="77.69" y1="97.33" x2="127.19" y2="97.33"/>
+    <line id="body-left" x1="111.74" y1="38.55" x2="95.75" y2="62.26"/>
+  </g>
+  <g data-role="accent">
+    <rect id="check-cell" x="26.2" y="58.1" width="27.9" height="27.9" rx="2"/>
+    <polyline id="check" points="32.6,69.1 38.6,76.9 55.1,57.2"/>
+    <path id="band-upper" d="M117.26 30.07 L134.25 41.53 A2 2 0 0 1 134.79 44.31 L131.37 49.38 A2 2 0 0 1 128.59 49.92 L111.6 38.46 A2 2 0 0 1 111.06 35.68 L114.48 30.61 A2 2 0 0 1 117.26 30.07 Z"/>
+    <path id="band-lower" d="M95.6 62.17 L112.6 73.63 A2 2 0 0 1 113.14 76.41 L109.72 81.48 A2 2 0 0 1 106.94 82.02 L89.95 70.56 A2 2 0 0 1 89.41 67.78 L92.83 62.71 A2 2 0 0 1 95.6 62.17 Z"/>
+  </g>
+  <g data-role="base">
+    <line id="band-upper-inner-edge" x1="109.94" y1="37.34" x2="130.25" y2="51.04"/>
+    <line id="band-lower-outer-edge" class="butt" x1="89.95" y1="70.56" x2="106.94" y2="82.02"/>
+    <line id="body-right" x1="128.94" y1="50.15" x2="112.95" y2="73.86"/>
+    <path id="handle" d="M121.92 60.57 L169.72 89.9 A3.3 3.3 0 0 1 166.03 95.37 L120.92 62.04"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "id": "R-38",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Centred the link group (prohibition ring, slash and both dashes) on the tags' mirror axis, x 106.05, with equal gaps each side: the ring moves 1.57 px left and the dashes up to 0.7 px", "why": "DR-03 symmetry. The two tags mirror each other about x 106.05 (strings 35.05 and 177.1, sides 10.45/59.02 and 152.67/202.04), while the ring sits at 107.6 and the dashes centre on 106.73, so the sheet's gaps run 7.4 and 6.1 px on the left against 5.8 and 4.6 px on the right. Moving the tags instead shifts the whole drawing (best offset turns to -1 px); this keeps offset (0, 0). The gaps are now 6.7 px tag to dash and 5.4 px dash to ring on both sides."},
+    {"what": "Made the two tags exact mirror images with one size: half-width 24.49, foot at y 85.77, foot corners r 6.5", "why": "DR-03 equal repeats. The right tag measures 0.8 px wider and 1.3 px deeper than the left (feet at 85.12 and 86.42). Each foot moves 0.65 px."},
+    {"what": "Kept each tag's flat top offset 1.78 px toward the centre, so the outer shoulder (48.7 degrees, meeting the side at y 35.6) is longer than the inner one (46.9 degrees, at y 30.5)", "why": "The offset appears mirrored in both tags (1.9 and 1.66 px toward the centre), so it is the drawing's facing gesture, not a raster accident."},
+    {"what": "Drew both dollar signs as one glyph: two ellipses rx 6.28, ry 6.04 on the bar axis joined by their internal tangent (spine slope 0.21), terminals at -22 and 162 degrees", "why": "DR-03 equal repeats. The left dollar's bowls measure 6.3 px either side of its bar; the right one's 6.0 and 6.5. The spine measures slope 0.19."},
+    {"what": "Drew the attachment holes as filled discs r 5 on the strings, and the prohibition ring as a true circle r 16.1 with its slash on the 135-degree diameter", "why": "DR-03 circles. Hole ink spans 9.7 px across; ring fits give r 16.06 to 16.12."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.30 px."}
+  ],
+  "notes": "Kept: the clipped shoulders and flat tops, the strings rising above each tag into a black hole, two short dashes (not one continuous link), the slash running upper right to lower left, and the link interrupted by the ring. The two dollars are not mirrored; a dollar sign reads one way. Black and red sheets agree. The ring's move is the largest edge change here and accounts for most of the drop in red IoU against a trace drawn in place."
+}

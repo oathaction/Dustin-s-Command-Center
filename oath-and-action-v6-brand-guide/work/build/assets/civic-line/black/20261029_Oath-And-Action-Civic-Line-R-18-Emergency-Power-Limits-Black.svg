@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-18" data-id="R-18" width="128" height="128" viewBox="0 0 128 128">
+  <title>Emergency-Power Limits</title>
+  <desc>Oath &amp; Action Civic Line R-18 Emergency-Power Limits. Traced vector reconstruction from the Civic Line reference sheet 04, row 4, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M78.978 55.105 L78.978 43.559 A1.462 1.462 0 0 0 77.515 42.096 L36.389 42.096 A1.462 1.462 0 0 0 34.927 43.559 L34.927 84.495 A1.462 1.462 0 0 0 36.389 85.957 L69.142 85.957" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.164" y1="50.148" x2="70.434" y2="50.148" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.164" y1="57.045" x2="70.434" y2="57.045" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.164" y1="63.942" x2="62.367" y2="63.942" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.164" y1="70.843" x2="62.367" y2="70.843" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.164" y1="77.74" x2="54.315" y2="77.74" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69.756" y1="74.294" x2="72.105" y2="74.294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="93.278" y1="74.294" x2="90.929" y2="74.294" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="81.517" cy="74.294" r="11.761" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.326" y1="63.742" x2="75.21" y2="61.48" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.708" y1="63.742" x2="87.824" y2="61.48" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="81.497,68.338 81.497,74.723 83.057,76.282" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

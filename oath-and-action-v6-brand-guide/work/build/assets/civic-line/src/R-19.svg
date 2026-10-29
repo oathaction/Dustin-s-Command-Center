@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-19" viewBox="0 0 183 118">
+  <!-- R-19 Drug-Pricing Rules. Crop 183 x 118 px; ink box x 8..175, y 8..110.
+       Construction: two overlapping oblong medicine capsules tilt up-right. The front capsule has rounded ends and a clear diagonal dividing seam around its middle. Behind/right is a large upright price tag with clipped shoulders, a small black attachment hole and a dollar sign. Keep the capsule shapes hollow.
+       Red: the front capsule’s short dividing seam and the price tag’s outline/dollar sign. Capsule outer contours and tag hole remain black. Preserve the staggered pair of capsules. -->
+  <!-- Trace notes: front capsule drawn in a frame at -44.7 deg about (59.64, 58.71); back capsule shows only its top arc; tag symmetric about x 144. -->
+  <g data-role="base">
+    <path id="capsule-front" d="M17.62 68.07 L69.44 16.79 A22.9 22.9 0 0 1 101.83 16.96 A22.9 22.9 0 0 1 101.66 49.35 L49.84 100.63 A22.9 22.9 0 0 1 17.45 100.46 A22.9 22.9 0 0 1 17.62 68.07 Z"/>
+    <line id="seam-upper" class="butt" x1="41.04" y1="44.89" x2="53.49" y2="57.48"/>
+  </g>
+  <g data-role="accent">
+    <line id="seam-lower" class="butt" x1="53.49" y1="57.48" x2="71.33" y2="75.49"/>
+    <path id="tag" d="M136.05 38.18 L151.95 38.18 L171.98 56.1 L171.98 100.51 A3.0 3.0 0 0 1 168.98 103.51 L119.05 103.51 A3.0 3.0 0 0 1 116.05 100.51 L116.05 56.1 Z"/>
+    <path id="dollar-s" d="M150.3 65.56 A6.85 6.65 0 1 0 143.95 74.7 A6.85 6.65 0 1 1 137.6 83.84"/>
+    <line id="dollar-bar-top" x1="143.95" y1="52" x2="143.95" y2="61.4"/>
+    <line id="dollar-bar-bottom" x1="143.95" y1="88" x2="143.95" y2="92.45"/>
+  </g>
+  <g data-role="base">
+    <path id="capsule-back-edge" d="M108.06 24.25 A24.32 24.32 0 0 1 134.69 38.75"/>
+    <circle id="tag-hole" class="fill" cx="143.94" cy="50.68" r="4.06"/>
+  </g>
+</svg>

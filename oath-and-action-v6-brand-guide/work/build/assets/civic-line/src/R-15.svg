@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-15" viewBox="0 0 198 120">
+  <!-- R-15 Watchdog Remedies. Crop 198 x 120 px; ink box x 8..190, y 8..112.
+       Construction: a large magnifier dominates the left foreground. Its circular lens contains a checkmark and its handle slopes down-left. A ruled upright document stands behind it to the right, with several short information strokes. The lens overlaps and obscures the page’s left portion.
+       Red: the check inside the lens. Lens border, handle, page and rules remain black. Preserve the down-left handle orientation, distinct from the down-right handle used in several other icons. -->
+  <!-- Trace notes: lens a true circle about (74.04, 48.17); handle drawn in a frame at 135 deg from the lens centre. -->
+  <g data-role="base">
+    <circle id="lens" cx="74.04" cy="48.17" r="37.54"/>
+    <line id="neck" x1="46.5" y1="73.72" x2="38.24" y2="81.98"/>
+    <path id="handle" d="M41.54 85.28 A2.0 2.0 0 0 1 41.54 88.11 L22.82 106.83 A6.67 6.67 0 0 1 13.38 97.4 L32.11 78.67 A2.0 2.0 0 0 1 34.94 78.67 Z"/>
+    <path id="page" d="M119.85 24.93 L183.71 24.93 A3.3 3.3 0 0 1 187.01 28.23 L187.01 89.02 A3.3 3.3 0 0 1 183.71 92.32 L96.65 92.32"/>
+    <line id="rule-1" x1="125.5" y1="42.43" x2="170.45" y2="42.43"/>
+    <line id="rule-2" x1="125.5" y1="58.46" x2="170.45" y2="58.46"/>
+    <line id="rule-3" x1="117.87" y1="74.36" x2="151" y2="74.36"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="check" points="56.5,47.89 69.33,61.09 91.6,35.85"/>
+  </g>
+</svg>

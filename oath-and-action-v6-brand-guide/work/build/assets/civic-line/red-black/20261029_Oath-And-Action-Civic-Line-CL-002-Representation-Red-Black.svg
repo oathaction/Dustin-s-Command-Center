@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-002" data-id="CL-002" width="128" height="128" viewBox="0 0 128 128">
+  <title>Representation</title>
+  <desc>Oath &amp; Action Civic Line CL-002 Representation. Traced vector reconstruction from the Civic Line reference sheet 01, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="35.088" cy="57.903" r="5.712" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.956 82.667 V75.722 A7.993 7.993 0 0 1 31.949 67.729 H38.227 A7.993 7.993 0 0 1 46.22 75.722 V82.667" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="92.688" cy="57.903" r="5.712" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M81.556 82.667 V75.722 A7.993 7.993 0 0 1 89.549 67.729 H95.827 A7.993 7.993 0 0 1 103.82 75.722 V82.667" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.774 55.861 A2.12 2.12 0 0 1 56.894 53.74 H70.882 A2.12 2.12 0 0 1 73.002 55.861" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.217" y1="59.735" x2="78.558" y2="59.735" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="49.729,59.735 51.659,65.097 54.608,65.097 54.608,90.685" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="78.047,59.735 76.117,65.097 73.168,65.097 73.168,90.685" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="51.752" y1="90.685" x2="76.024" y2="90.685" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="63.888" cy="43.378" r="5.936" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

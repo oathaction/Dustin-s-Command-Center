@@ -1,0 +1,75 @@
+{
+  "id": "CL-039",
+  "label": "Feed Ranking",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:12:38+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9159,
+      "red_iou_1x": 0.8657,
+      "edge_mean_px": 0.285,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:12:57+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9159,
+      "red_iou_1x": 0.8657,
+      "edge_mean_px": 0.285,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:12:57+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; top card open bottom kept, repeats equalised"
+    }
+  ],
+  "last_build": "2026-10-29T07:12:57+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9159,
+    "red_iou_1x": 0.8657,
+    "bake_check_iou_1x": 0.9999,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9675,
+    "edge_mean_px": 0.285,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.414,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Kept the top card open at the bottom: its sides stop at y 45.4 and it has no bottom edge",
+      "why": "Both sheets draw it so; the image controls over the catalogue's three closed cards. The cards' vertical positions stay as drawn too (gaps of about 9 and 12 px), since equalising them would move a whole card by 3.5 px."
+    },
+    {
+      "what": "Gave the cards one width, 104 px (x 11.15 to 115.15), the two closed cards one height, 39.6 px, and all corners a 4.5 px radius",
+      "why": "DR-03 equal repeats. Widths measure 103.8 to 104.1 px; the middle card measures 40.4 px tall and the bottom card 38.85 px, so each closed card's top and bottom edges move about 0.8 px."
+    },
+    {
+      "what": "Made the three thumbnails one size, a 14.9 px square with slightly rounded corners, on one column (x 31.6)",
+      "why": "DR-03 equal repeats. The top and bottom thumbnails measure 20.1 x 19.8 px of ink; the red middle one runs about 1.3 px larger each way, which reads as raster drift, not emphasis (the red already marks it). Its edges move up to 0.7 px."
+    },
+    {
+      "what": "Set each card's two rules 11.94 px apart, 0.75 px below its thumbnail's centre, all starting at x 53.7, long rules ending at 96.55 and short ones at 75.55",
+      "why": "DR-03 equal repeats. Rule spacings measure 11.66 to 12.25 px; ends agree to 0.3 px."
+    },
+    {
+      "what": "Made the rail knob a true circle, centre (150.95, 54.25), r 10.3, with the rail stopping at the ring above and below",
+      "why": "DR-03. Black and red fits give r 10.63 and 10.20; the inner hollow measures 15 px across. Both sheets show the rail meeting the ring, not crossing its hollow."
+    }
+  ],
+  "source_notes": "Kept: three separate cards, each with a square thumbnail and two rules (long over short); the detached rail on the right, visible above and below its knob. Red: the middle card's thumbnail outline and both its rules, and the rail knob; the middle card's outline stays black."
+}

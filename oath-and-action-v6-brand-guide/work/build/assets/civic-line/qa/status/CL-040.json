@@ -1,0 +1,67 @@
+{
+  "id": "CL-040",
+  "label": "Platform Power",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:14:25+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9238,
+      "red_iou_1x": 0.9397,
+      "edge_mean_px": 0.176,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:14:46+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9255,
+      "red_iou_1x": 0.9397,
+      "edge_mean_px": 0.17,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:14:46+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; symmetric tree, middle person kept lower as drawn"
+    }
+  ],
+  "last_build": "2026-10-29T07:14:46+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9255,
+    "red_iou_1x": 0.9397,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9788,
+    "edge_mean_px": 0.17,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.0,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Set the tree symmetric about x 88.6: the platform ring and dot move 0.37 px left, the stem, branches and people up to 0.3 px",
+      "why": "DR-03 symmetry. The ring and dot centre at 88.97; the stem at 88.48; the branch verticals and outer people mirror about 88.4 to 88.5."
+    },
+    {
+      "what": "Made the ring and dot true concentric circles (r 21.05 and 7.9) and gave the two branches one pitch (25.85 deg) with 6.5 px rounded elbows",
+      "why": "DR-03. Ring fit 0.07 px rms; dot 15.9 x 15.75 px; branch slopes measure 25.75 and 25.93 deg."
+    },
+    {
+      "what": "Drew the three people as one figure: heads r 10.4, open shoulder arcs r 18.37 ending 1.7 px below their centres, the outer pair 58.97 px either side of the axis",
+      "why": "DR-03 equal repeats; the catalogue calls for equal heads. Head fits give r 10.28 to 10.53, shoulder fits r 18.30 to 18.49; spacings measure 58.9 and 59.07 px."
+    }
+  ],
+  "source_notes": "Kept: the middle person 2.3 px lower than the outer two, with its stem running correspondingly longer, as both sheets draw it; each head touching its shoulders; open-bottom shoulders; the stem and both branch ends stopping short of the heads. Red: only the filled dot inside the platform ring; the empty ring around it stays black."
+}

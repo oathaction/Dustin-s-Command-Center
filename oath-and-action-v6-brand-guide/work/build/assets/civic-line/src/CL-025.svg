@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-025" viewBox="0 0 182 149">
+  <!-- CL-025 Congress. Crop 182 x 149 px; ink box x 8..174, y 8..141.
+       Construction: a symmetrical domed legislative building. From top down: a short finial, small square cupola, rounded dome, two horizontal cornice lines, short upper supports, a central rectangular façade with repeated vertical divisions, low wings and outer vertical supports. The whole drawing is wider than it is tall. Keep the line gaps beneath the wings and the source’s exact column rhythm.
+       Red: one central vertical façade division/column. All other architectural strokes are black. The red accent is a single upright stroke, not a filled dome or a red group of columns. -->
+  <g data-role="accent">
+    <line id="column-red" x1="99.18" y1="103.8" x2="99.18" y2="137"/>
+  </g>
+  <g data-role="base">
+    <line id="finial" x1="90.7" y1="11" x2="90.7" y2="24.6"/>
+    <rect id="cupola" x="83.8" y="24.6" width="13.8" height="9.73"/>
+    <path id="dome" d="M61.31 61.75 A29.46 29.46 0 0 1 119.96 60.36 L119.96 70.7"/>
+    <line id="dome-base" x1="61.44" y1="60.36" x2="119.96" y2="60.36"/>
+    <line id="cornice-upper" x1="52.45" y1="70.7" x2="128.95" y2="70.7"/>
+    <line id="support-1" x1="57.01" y1="70.7" x2="57.01" y2="91"/>
+    <line id="support-2" x1="73.86" y1="70.7" x2="73.86" y2="91"/>
+    <line id="support-3" x1="90.7" y1="70.7" x2="90.7" y2="91"/>
+    <line id="support-4" x1="107.54" y1="70.7" x2="107.54" y2="91"/>
+    <line id="support-5" x1="124.39" y1="70.7" x2="124.39" y2="91"/>
+    <polyline id="facade" points="46.85,138.56 46.85,91 134.55,91 134.55,138.56"/>
+    <line id="column-1" x1="65.26" y1="103.8" x2="65.26" y2="138.56"/>
+    <line id="column-2" x1="82.22" y1="103.8" x2="82.22" y2="138.56"/>
+    <line id="column-4" x1="116.14" y1="103.8" x2="116.14" y2="138.56"/>
+    <line id="wing-left" x1="10.57" y1="102.05" x2="46.85" y2="102.05"/>
+    <line id="wing-right" x1="134.55" y1="102.05" x2="170.83" y2="102.05"/>
+    <line id="wing-support-1" x1="15.52" y1="114.1" x2="15.52" y2="138.1"/>
+    <line id="wing-support-2" x1="31.17" y1="114.1" x2="31.17" y2="138.1"/>
+    <line id="wing-support-3" x1="150.23" y1="114.1" x2="150.23" y2="138.1"/>
+    <line id="wing-support-4" x1="165.88" y1="114.1" x2="165.88" y2="138.1"/>
+    <line id="base" x1="42.77" y1="138.56" x2="138.63" y2="138.56"/>
+  </g>
+</svg>

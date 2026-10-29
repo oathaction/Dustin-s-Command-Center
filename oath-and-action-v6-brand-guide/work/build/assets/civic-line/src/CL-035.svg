@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-035" viewBox="0 0 211 120">
+  <!-- CL-035 Residential Sorting. Crop 211 x 120 px; ink box x 8..203, y 8..112.
+       Construction: two clusters of overlapping pitched-roof homes, separated by a vertical dashed boundary. The left cluster has black roof/wall contours and short upright windows. The right contains taller black homes behind a smaller foreground home. Preserve the reference’s differing house positions and roof heights on the two sides.
+       Red: the small foreground home’s roof-and-wall outline in the right cluster. Boundary dashes and other homes remain black. Trace the visible house count and overlaps from the crop. -->
+  <g data-role="base">
+    <path id="house-a" d="M10.87 60.71 L35.84 35.74 A1.3 1.3 0 0 1 37.68 35.74 L60.2 58.26 L60.2 95.7"/>
+    <line id="house-a-wall" x1="13.3" y1="58.28" x2="13.3" y2="95.7"/>
+    <line id="house-a-window-1" x1="29.28" y1="67.4" x2="29.28" y2="76.4"/>
+    <line id="house-a-window-2" x1="44.22" y1="67.4" x2="44.22" y2="76.4"/>
+    <path id="house-b-roof" d="M50.42 48.48 L71.37 27.53 A1.3 1.3 0 0 1 73.21 27.53 L95.13 49.45"/>
+    <polyline id="house-b-walls" points="93.3,47.62 93.3,81.63 60.2,81.63"/>
+    <line id="house-b-window" x1="73.44" y1="54.13" x2="73.44" y2="62.63"/>
+    <line id="boundary-1" x1="109.7" y1="11.13" x2="109.7" y2="19.57"/>
+    <line id="boundary-2" x1="109.7" y1="28.97" x2="109.7" y2="37.41"/>
+    <line id="boundary-3" x1="109.7" y1="46.81" x2="109.7" y2="55.25"/>
+    <line id="boundary-4" x1="109.7" y1="64.65" x2="109.7" y2="73.09"/>
+    <line id="boundary-5" x1="109.7" y1="82.49" x2="109.7" y2="90.93"/>
+    <line id="boundary-6" x1="109.7" y1="100.33" x2="109.7" y2="108.77"/>
+    <path id="house-c" d="M133.13 63.13 L133.13 40.27 L149.78 23.62 A1.3 1.3 0 0 1 151.62 23.62 L167.25 39.25"/>
+    <line id="house-c-window" x1="150.75" y1="47.75" x2="150.75" y2="55.37"/>
+    <path id="house-d" d="M163.45 75.6 L163.45 57.2 L180.33 40.32 A1.3 1.3 0 0 1 182.17 40.32 L200.37 58.52"/>
+    <line id="house-d-wall" x1="199.05" y1="57.2" x2="199.05" y2="100.87"/>
+    <line id="house-d-window-1" x1="181.25" y1="65.06" x2="181.25" y2="72.56"/>
+    <line id="house-d-window-2" x1="181.25" y1="86.06" x2="181.25" y2="93.56"/>
+  </g>
+  <g data-role="accent">
+    <path id="house-e" d="M127.6 106.1 L127.6 85.2 L143.38 69.35 A1.3 1.3 0 0 1 145.22 69.35 L161 85.2 L161 106.1"/>
+    <line id="house-e-window" x1="144.3" y1="93.63" x2="144.3" y2="102"/>
+  </g>
+</svg>

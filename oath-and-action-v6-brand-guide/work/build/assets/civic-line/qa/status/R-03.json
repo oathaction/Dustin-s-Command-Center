@@ -1,0 +1,71 @@
+{
+  "id": "R-03",
+  "label": "Proportional Elections",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:54:21+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9554,
+      "red_iou_1x": 0.8715,
+      "edge_mean_px": 0.114,
+      "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:54:41+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9554,
+      "red_iou_1x": 0.8715,
+      "edge_mean_px": 0.114,
+      "edge_p95_px": 0.354
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:54:41+00:00",
+      "by": "T4",
+      "note": "overlay checked; 30 seats (22 black, 8 red), symmetric pairs; red-sheet blob and bridges dropped"
+    }
+  ],
+  "last_build": "2026-10-29T06:54:41+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9554,
+    "red_iou_1x": 0.8715,
+    "bake_check_iou_1x": 0.9994,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.996,
+    "edge_mean_px": 0.114,
+    "edge_p95_px": 0.354,
+    "edge_max_px": 1.75,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew all 30 seats as filled true circles: 22 black (11 in each side cluster) and 8 red in the central upper cluster, counted from the black sheet",
+      "why": "The catalogue asks for filled seat dots counted from the enlarged crop; connected-component counts on the black sheet give 30 separate dots. Filled dots take no stroke, so W does not apply (sheet stroke measure 9.4 px is the dots' width)."
+    },
+    {
+      "what": "Made the chamber mirror-symmetric about x 89.57: each left dot and its right partner share one height and one radius (pair averages)",
+      "why": "DR-03 symmetry. The 15 pairs centre between x 89.24 and 89.84; no dot moves more than 0.4 px. Radii still vary across the chamber as drawn, from 5.75 px (inner middle row) to 6.75 px (central cluster)."
+    },
+    {
+      "what": "Left out the hairline bridges that join the central dots on the sheets (x 80.6 on the black sheet; x 80.6 and 98.6 on the red sheet)",
+      "why": "DR-03 raster accidents. The bridges are under 2 px wide, differ between the two sheets and join seats the catalogue describes as separate dots."
+    },
+    {
+      "what": "Left out a small extra red blob at about (70, 28) that appears on the red sheet only",
+      "why": "Black and red sheets disagree here. The black sheet has clear ground at this point, the blob is half a seat's size and fused to its neighbour, and the catalogue's central cluster is a set of whole seats, so the black sheet's count is the intended shape."
+    }
+  ],
+  "source_notes": "Kept as drawn: no chamber bands, only dots; the staggered rows and uneven spacing of each side cluster; the central cluster's two columns of three (x 80.6 and 98.6, rows y 14.45, 31.38, 49.71) with one more dot either side at y 18.96 (x 62.4 and 116.8), all red. Red IoU (0.87) is held down by the red sheet's bridges and extra blob, which the trace omits on purpose."
+}

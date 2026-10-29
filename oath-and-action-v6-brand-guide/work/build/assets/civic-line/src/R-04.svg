@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-04" viewBox="0 0 156 124">
+  <!-- R-04 Citizen Map Commissions. Crop 156 x 124 px; ink box x 8..148, y 8..124.
+       Construction: an irregular geographic/district outline spans the upper part, using angular steps and short slanted boundary segments. A network of interior district boundaries divides it. Three frontal outline residents overlap its lower edge, with circular hollow heads and simple shoulders. The middle resident sits slightly lower or forward.
+       Red: the interior district-boundary polylines. Exterior map perimeter and all people remain black. Preserve the particular abstract map shape and boundary network rather than drawing a US outline. -->
+  <!-- T4 trace. Map outline traced as drawn (angular steps and short slants kept); its sides end open at y 96.
+       Red district boundaries: one line from the left side to the right side through the junction (78.44, 52.8),
+       and one from the top edge down to that junction. They paint over the outline where they meet it, ending flat
+       at its outer edge, as on the red sheet. Residents symmetric about x 77.6; the middle one larger and higher. -->
+  <g data-role="base">
+    <polyline id="outline" points="10.43,95.87 10.43,41.49 16.74,40.63 19.07,35.12 24.16,33.45 24.16,10.74 46.71,10.74 46.71,28.51 56.12,28.51 59.09,22.96 93.3,22.96 98.6,19 100.2,14.38 110.4,14.38 111.9,18 121.21,28.45 126.4,28.91 132.3,34.65 132.3,40.76 144.85,41.43 144.85,96.1"/>
+    <circle id="head-1" cx="39.85" cy="96.68" r="7.76"/>
+    <path id="shoulders-1" d="M26.25 120.75 V118.5 A13.6 13.6 0 0 1 39.85 104.90 A13.6 13.6 0 0 1 53.45 118.5 V120.75"/>
+    <circle id="head-2" cx="77.6" cy="82.91" r="8.74"/>
+    <path id="shoulders-2" d="M63.20 115.4 V107.8 A14.4 14.4 0 0 1 77.6 93.40 A14.4 14.4 0 0 1 92.00 107.8 V115.4"/>
+    <circle id="head-3" cx="115.35" cy="96.68" r="7.76"/>
+    <path id="shoulders-3" d="M101.75 120.75 V118.5 A13.6 13.6 0 0 1 115.35 104.90 A13.6 13.6 0 0 1 128.95 118.5 V120.75"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="boundary-across" class="butt" points="7.68,71.29 37.99,69.86 47.63,58.06 65.5,58.06 70.3,52.85 78.44,52.8 85.73,53.39 90.65,58.45 99.13,58.94 104.34,52.94 117.42,52.94 119.12,75.95 147.6,75.95"/>
+    <polyline id="boundary-down" class="butt" points="70.33,20.21 70.33,33.43 78.44,38.78 78.44,52.8"/>
+  </g>
+</svg>

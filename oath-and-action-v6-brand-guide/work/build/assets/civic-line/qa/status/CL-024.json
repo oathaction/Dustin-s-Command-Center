@@ -1,0 +1,81 @@
+{
+  "id": "CL-024",
+  "label": "Feedback Loop",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:09:42+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8969,
+      "red_iou_1x": 0.8594,
+      "edge_mean_px": 0.284,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:10:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9085,
+      "red_iou_1x": 0.8777,
+      "edge_mean_px": 0.246,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:10:51+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9085,
+      "red_iou_1x": 0.8777,
+      "edge_mean_px": 0.246,
+      "edge_p95_px": 0.707
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:10:51+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; arrows drawn at W (sheet 6.4 px); heads and node gaps match"
+    }
+  ],
+  "last_build": "2026-10-29T06:10:51+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9085,
+    "red_iou_1x": 0.8777,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9165,
+    "edge_mean_px": 0.246,
+    "edge_p95_px": 0.707,
+    "edge_max_px": 2.926,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew both curved arrows at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The arrows measure 6.4 to 6.5 px on both sheets, against 5.5 to 5.75 px for the nodes. The thinner arrows lower the ink area ratio to 0.92 and leave a 0.4 to 0.5 px fringe along each arc; the arc centrelines follow the fits."
+    },
+    {
+      "what": "Made the two nodes equal squares, 38 x 38 px, with a 2 px centreline corner radius, keeping each node's measured centre",
+      "why": "DR-03 equal repeats; the catalogue calls them two equal square nodes. The nodes measure 38.15 x 37.88 and 38.09 x 37.88 px; the sheet's outer corners round at about 4.5 px."
+    },
+    {
+      "what": "Drew each arrow shaft as one true circular arc: upper centre (81.44, 65.42) r 54.58, lower centre (82.65, 68.44) r 56.51",
+      "why": "DR-03. Arc fits have 0.05 to 0.10 px rms. The two arcs are not mirror images on the sheet (the upper rises 58.6 px above the node centreline, the lower dips 55.6 px), and the trace keeps that difference."
+    },
+    {
+      "what": "Ended the upper shaft with a 3.3 px straight run into the arrowhead corner at (130.6, 39.6)",
+      "why": "The sheet's head corner sits about 1 px outside the shaft's circle; ending the arc on the circle left the head's outer corner 1.5 px short. The short run hides inside the head strokes."
+    }
+  ],
+  "source_notes": "Kept: clockwise circulation; the open L-shaped arrowheads with one near-horizontal barb and one near-vertical barb, as drawn (they sit at the sheet's angles, not square to the shaft); the clear space between every arrow end and the nodes; the unequal tail positions. Red covers both arrows in full, shafts and heads; the nodes stay black. The two sheets agree on the arrow geometry; the red sheet's lower arc fits 0.4 px larger in radius, a raster shift, so the geometry follows the black sheet."
+}

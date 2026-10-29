@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-31" viewBox="0 0 211 121">
+  <!-- R-31 Childcare Supply. Crop 211 x 121 px; ink box x 8..203, y 8..113.
+       Construction: a small childcare building occupies the left. It has a low wing, taller central block, triangular roof, sparse windows and a large arched doorway. A hollow circular head is positioned above the roof peak as part of the child-centred building motif. A separate larger outline adult stands at right.
+       Red: the building’s filled arched doorway. All other outlines stay black. Preserve the small head above the roof and the separate right-hand adult.
+       Building axis x 98 (walls, roof, head, door). Adult axis x 175.5. Ground y 110.2.
+       Roof slopes 32.63 deg, ending on the head circle; short verticals at the eave ends.
+       The door is drawn first so the black ground line lies over its foot, as on the red sheet. -->
+  <g data-role="accent">
+    <path id="door" class="fill" d="M83.12 110.2 V85.48 A14.88 14.88 0 0 1 112.88 85.48 V110.2 Z"/>
+  </g>
+  <g data-role="base">
+    <line id="ground" x1="10.75" y1="110.2" x2="138.25" y2="110.2"/>
+    <polyline id="wing" points="12.13,60.56 46.25,60.56"/>
+    <line id="wing-wall" x1="15.35" y1="60.56" x2="15.35" y2="110.2"/>
+    <line id="window-1" x1="29.44" y1="76" x2="29.44" y2="85.25"/>
+    <line id="window-2" x1="46.75" y1="76" x2="46.75" y2="85.25"/>
+    <line id="wall-left" x1="61.95" y1="55.77" x2="61.95" y2="110.2"/>
+    <line id="wall-right" x1="134.05" y1="55.77" x2="134.05" y2="110.2"/>
+    <polyline id="roof" points="86.68,28.52 54.31,49.25 54.31,55.77 141.69,55.77 141.69,49.25 109.32,28.52"/>
+    <circle id="head" cx="98" cy="23.45" r="12.4"/>
+    <circle id="adult-head" cx="175.5" cy="52" r="12.2"/>
+    <path id="adult-body" d="M150.2 110.2 V91 A20.05 20.05 0 0 1 170.25 70.95 H180.75 A20.05 20.05 0 0 1 200.8 91 V110.2"/>
+    <line id="adult-arm-left" x1="162.05" y1="94.05" x2="162.05" y2="110.2"/>
+    <line id="adult-arm-right" x1="188.95" y1="94.05" x2="188.95" y2="110.2"/>
+  </g>
+</svg>

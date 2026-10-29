@@ -1,0 +1,85 @@
+{
+  "id": "CL-031",
+  "label": "Local Government",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:36:07+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8802,
+      "red_iou_1x": 0.8601,
+      "edge_mean_px": 0.342,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:36:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8808,
+      "red_iou_1x": 0.8722,
+      "edge_mean_px": 0.339,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:36:37+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8808,
+      "red_iou_1x": 0.8722,
+      "edge_mean_px": 0.339,
+      "edge_p95_px": 1.0
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:36:37+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; symmetrised about x 98.75; door radius from rows"
+    }
+  ],
+  "last_build": "2026-10-29T06:36:37+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8808,
+    "red_iou_1x": 0.8722,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9623,
+    "edge_mean_px": 0.339,
+    "edge_p95_px": 1.0,
+    "edge_max_px": 1.768,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the hall symmetric about one axis, x 98.75: the central block, pediment, central windows and door move 0.5 to 0.7 px right; the wings, wing windows and baseline move 0.5 to 0.65 px left",
+      "why": "DR-03 symmetry; the catalogue calls for a symmetrical hall. The sheet's central block centres at 98.14 (walls), 98.22 (windows), 98.56 (apex) and 98.07 (door), while the wings, their windows and the baseline centre at 99.2 to 99.4."
+    },
+    {
+      "what": "Gave the two roof slopes one pitch, 35.2 deg, rising from eaves 38.11 px either side of the apex",
+      "why": "DR-03 symmetry. Slopes measure 34.8 and 35.5 deg; the left eave run measures 38.6 px and the right 37.6."
+    },
+    {
+      "what": "Placed the wing windows as two mirrored pairs, 46.48 and 62.43 px out, all four on y 79.55 to 90.25",
+      "why": "DR-03 equal repeats. Inner offsets measure 46.61 and 46.34, outer 62.43 and 62.42."
+    },
+    {
+      "what": "Drew the door as a filled round-topped shape 23.63 px wide with 7.5 px top corners, its foot under the baseline",
+      "why": "The sheet's door is a flat-topped arch with wide rounded corners; the rows fit a 7.5 to 8 px radius."
+    },
+    {
+      "what": "Drew all strokes at W, 5.5 px",
+      "why": "DR-03 one line weight. This icon measures 5.75 to 6.0 px, so the ink area ratio is 0.96."
+    }
+  ],
+  "source_notes": "Kept: the central block taller than the wings, with its walls rising to the pediment's base; the hollow triangle under the roof peak; the eaves overhanging the walls by 7 px; two narrow windows in the hall and two in each wing; the baseline running past both wings. Red: the filled doorway only; the red sheet shows the black baseline over the door's foot, so the accent group is drawn first."
+}

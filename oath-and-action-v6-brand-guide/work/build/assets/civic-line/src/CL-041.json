@@ -1,0 +1,17 @@
+{
+  "id": "CL-041",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Set the robot symmetric about x 156.3: head, ears, eyes, mouth and rays move 0.4 px or less; the shoulder arch moves 1.1 px left",
+     "why": "DR-03 symmetry. Head, ears and eyes centre at 156.3 to 156.6 and the rays at 155.94, but the shoulder arch's sides (132.98 and 181.86) centre at 157.42."},
+    {"what": "Drew the robot head as a rounded rectangle 46 x 41.28 px with 8.3 px corners, the shoulder arch with 9.5 px corners, and the eyes as two equal filled dots, r 3.8, 10.04 px either side of the axis",
+     "why": "DR-03. Corner fits give r 8.02 to 8.61 (head) and 9.43 to 9.58 (arch); the eyes measure 7.1 to 7.6 px across."},
+    {"what": "Drew the mouth as a shallow arc (r 9) at W",
+     "why": "The sheet's mouth is a short thick smile, 13.4 px wide and about 6.5 px tall; a shallow arc at W matches its outline within about 0.5 px."},
+    {"what": "Gave the laptop screen's two slanted sides one slope (16.3 deg from upright) and 3 px top corners",
+     "why": "DR-03 parallel lines. The sides measure 15.96 and 16.56 deg."},
+    {"what": "Drew the worker's head as a true circle, r 17.12, and the shoulders with a 20.5 px corner and an 11 px bend down to the laptop",
+     "why": "DR-03. Head fit 0.10 px rms; the shoulder arcs fit r 20.55 and 9.86 px."}
+  ],
+  "notes": "Kept: the two different ears, as both sheets draw them: the left one a closed tab, the right one a hook open at the top; the robot face with two dot eyes and a short smile; the gap between the robot's head and its shoulder arch (no neck line on either sheet); the robot shorter than the seated worker; the worker's shoulder running down into the laptop screen's top edge; the desk with one leg at each end. Red: the three rays above the robot only."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "CL-044",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The tray walls measure 6.25 to 6.5 px and the plug 5.7 to 6.25 px, so the trace's ink area is 0.92 of the sheet's."
+    },
+    {
+      "what": "Drew the stack as three equal rounded trays, each 82.8 x 37.42 px with corner radius 6.2, stacked edge to edge (shared edges at y 48.57 and 85.99)",
+      "why": "DR-03 equal repeats, and the catalogue's 'three separate server trays'. The sheet's tray heights measure 37.4, 37.3 and 37.55 px. On the left the sheet shows a notch at each junction where two rounded corners meet; the trace keeps those notches and gives the right side the same ones."
+    },
+    {
+      "what": "Removed two right-side raster accidents: a round bump that pushes the first junction about 2.5 px past the right wall, and a 3 px tail where the right wall runs past the bottom edge with a square bottom-right corner",
+      "why": "DR-03. Both sheets show them, but they break the tray drawing: the top-right and both left corners are rounded, the second junction has no bump, and the bottom-left corner has no tail. The bottom-right corner is now rounded like the others. This change gives the edge max of 4.95 px."
+    },
+    {
+      "what": "Placed the two vent rules at the same offsets in every tray (13.2 and 25.0 px below the tray top) and the indicators at 18.85 px; all rules run x 24.05 to 48.0",
+      "why": "DR-03 equal repeats. Measured rule rows differ from these by 0.4 px at most."
+    },
+    {
+      "what": "Drew the indicators as equal filled capsules, 7.1 x 11.0 px, centred on x 79.5",
+      "why": "The sheets draw each indicator as a short upright capsule with straight sides, wider than the line weight. The red sheet's centre is x 79.5, the black sheet's 79.9; the red sheet places red."
+    },
+    {
+      "what": "Centred the plug on x 138.05: body sides 113.9 and 162.2, pins 126.4 and 149.7, cable 138.05",
+      "why": "DR-03 symmetry. Measured: sides 113.8 and 162.2, pins 126.57 and 149.92, cable 137.1. The cable moves 0.95 px right to sit under the body's centre."
+    },
+    {
+      "what": "Drew the plug's lower body as a half ellipse, rx 24.15 and ry 23.3, centred at (138.05, 74.5), below straight sides",
+      "why": "The sheet's U is flatter than a semicircle: its bottom sits at y 97.8, 23.3 px below where the sides start to curve. Single circle fits leave 1.1 to 1.6 px rms."
+    },
+    {
+      "what": "Drew the bolt as one polyline with a level middle bar at y 71.05 running from x 131.9 to 144.1, and diagonals from (141.2, 59.1) and to (134.15, 84.2)",
+      "why": "The bar's ends overshoot the diagonals' fitted lines by about 1.5 px on the sheet; the vertices sit at the bar ends so the outer corners match, and the diagonals run 4 to 5 deg steeper than their fitted mid-sections. Red-mask outline matches within 0.5 px."
+    }
+  ],
+  "notes": "Kept: two rules and one indicator per tray, the pins' height, the plug's square top corners with round joins, and the bolt's level middle bar. The pin and indicator counts match the sheet. Judgement between the two sheets: the red sheet's indicators sit 0.4 px left of the black sheet's dark capsules, and the trace follows the red sheet."
+}

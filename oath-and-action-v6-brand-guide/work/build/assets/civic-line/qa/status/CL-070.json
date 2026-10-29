@@ -1,0 +1,111 @@
+{
+  "id": "CL-070",
+  "label": "Environment",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 6,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:43:03+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8593,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.355,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:43:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8591,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.356,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:43:42+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8588,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.356,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:44:35+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8588,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.356,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T06:45:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8676,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.325,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T06:45:26+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8678,
+      "red_iou_1x": 0.8778,
+      "edge_mean_px": 0.324,
+      "edge_p95_px": 0.707
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:45:26+00:00",
+      "by": "T4",
+      "note": "overlay checked; leaf open end, Y junction, vein, droplet symmetry and gap kept"
+    }
+  ],
+  "last_build": "2026-10-29T06:45:26+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8678,
+    "red_iou_1x": 0.8778,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.8852,
+    "edge_mean_px": 0.324,
+    "edge_p95_px": 0.707,
+    "edge_max_px": 1.521,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the droplet mirror-symmetric about x 136.65, with a true round bottom (arc r 29.84 about (136.65, 100.78)) and both sides as one mirrored curve pair meeting at the top point (136.65, 39.2)",
+      "why": "DR-03 symmetry and true circles. The bottom fits a circle with rms 0.06 px; the two sides fit at 57.65 and 57.67 deg in their straight middle runs. The point sits 1.45 px below where the sides' straight runs would meet, as the sheet's point does."
+    },
+    {
+      "what": "Drew the stem plumb at x 22.2",
+      "why": "DR-03 straight lines. It fits at 90.9 deg (x 22.4 to 22.0)."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon is a heavy outlier at 6.19 px (6.3 px on the droplet), so the trace's ink area is about 12 percent below the sheet's and its edges fall evenly inside the sheet's on both sides of each stroke."
+    },
+    {
+      "what": "Gave the leaf outline square (miter) joins",
+      "why": "The sheet's leaf tip is a sharp corner; a round join leaves it about 1 px blunter than drawn. The outline's other joins are smooth or shallow, so the setting changes nothing else."
+    }
+  ],
+  "source_notes": "Kept as drawn: the leaf tilted up to the right with its tip at (103.5, 11.7); its outline returns down the right side to an open round end at (36.13, 113.6) that stays clear of the stem; the vein sweeps from the same Y as the outline, at (22.2, 105.5), to a round end inside the leaf; the open gap between leaf and droplet. The droplet's half-round bottom is written as two quarter arcs so every renderer draws it the same (a single half-circle arc is numerically fragile and shifted 0.8 px in the bake check). Red: the whole droplet outline. Black and red sheets agree on the droplet within 0.2 px."
+}

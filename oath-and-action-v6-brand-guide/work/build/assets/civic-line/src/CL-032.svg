@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-032" viewBox="0 0 167 123">
+  <!-- CL-032 Local Reporting. Crop 167 x 123 px; ink box x 8..159, y 8..115.
+       Construction: a newspaper represented by a large rounded rectangular front sheet and a rolled/stacked return sheet visible down the left and along the bottom. The front page has several horizontal rules near the top and left. A solid rectangular article/image block occupies its lower-right quadrant.
+       Red: the lower-right filled article block. Keep page rules black. Trace this paper’s outer return curl and the source’s exact line lengths; avoid replacing it with the differently composed R-32 newspaper-and-coins drawing. -->
+  <g data-role="base">
+    <path id="paper" d="M36.31 28.9 V15.7 A4.5 4.5 0 0 1 40.81 11.2 H151.46 A4.5 4.5 0 0 1 155.96 15.7 V107.35 A4.5 4.5 0 0 1 151.46 111.85 H18.25 A7 7 0 0 1 11.25 104.85 V34.9 A6 6 0 0 1 17.25 28.9 H36.31 V99.57 A12.28 12.28 0 0 1 24.03 111.85"/>
+    <line id="front-foot" x1="36.31" y1="99.57" x2="36.31" y2="111.85"/>
+    <line id="return-fold" x1="24.06" y1="28.9" x2="24.06" y2="99.75"/>
+    <line id="rule-1" x1="53.5" y1="28.4" x2="139.13" y2="28.4"/>
+    <line id="rule-2" x1="53.5" y1="44.71" x2="139.13" y2="44.71"/>
+    <line id="rule-3" x1="53.5" y1="61.02" x2="91.5" y2="61.02"/>
+    <line id="rule-4" x1="53.5" y1="77.33" x2="91.5" y2="77.33"/>
+    <line id="rule-5" x1="53.5" y1="93.64" x2="91.5" y2="93.64"/>
+  </g>
+  <g data-role="accent">
+    <rect id="article" class="fill" x="105.75" y="58.4" width="36.35" height="39.45" rx="3"/>
+  </g>
+</svg>

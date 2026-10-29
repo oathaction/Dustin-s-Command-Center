@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-041" data-id="CL-041" width="128" height="128" viewBox="0 0 128 128">
+  <title>Workplace AI</title>
+  <desc>Oath &amp; Action Civic Line CL-041 Workplace AI. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="46.03" cy="47.351" r="8.344" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28.298 82.692 V70.219 A9.992 9.992 0 0 1 38.29 60.228 H55.373 A5.361 5.361 0 0 1 60.734 65.589" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44.494 82.692 L49.164 66.69 A1.462 1.462 0 0 1 50.567 65.638 L69.249 65.638 A1.462 1.462 0 0 1 70.653 67.509 L66.218 82.692" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="21.173,89.588 21.173,82.692 72.978,82.692 72.978,89.588" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="80.718" y="51.498" width="22.42" height="20.12" rx="4.045" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80.718 57.055 H78.476 A1.462 1.462 0 0 0 77.013 58.517 V64.122 A1.462 1.462 0 0 0 78.476 65.584 H80.718" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M103.138 65.584 H105.38 A1.462 1.462 0 0 0 106.842 64.122 V58.2" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="87.034" cy="59.906" r="1.852" fill="#121212"/>
+    <circle cx="96.821" cy="59.906" r="1.852" fill="#121212"/>
+    <path d="M90.246 65.365 A4.387 4.387 0 0 0 93.755 65.365" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80.016 85.397 V81.264 A4.63 4.63 0 0 1 84.646 76.633 H99.209 A4.63 4.63 0 0 1 103.84 81.264 V85.397" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="91.928" y1="38.719" x2="91.928" y2="44.962" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="81.527" y1="42.311" x2="84.695" y2="46.21" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="102.329" y1="42.311" x2="99.161" y2="46.21" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

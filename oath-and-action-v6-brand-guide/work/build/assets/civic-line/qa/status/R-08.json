@@ -1,0 +1,95 @@
+{
+  "id": "R-08",
+  "label": "Donor Disclosure",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:12:53+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9397,
+      "red_iou_1x": 0.924,
+      "edge_mean_px": 0.172,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:13:53+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9328,
+      "red_iou_1x": 0.8824,
+      "edge_mean_px": 0.25,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:14:07+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9497,
+      "red_iou_1x": 0.8824,
+      "edge_mean_px": 0.139,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:14:28+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9497,
+      "red_iou_1x": 0.8824,
+      "edge_mean_px": 0.139,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:14:28+00:00",
+      "by": "T4",
+      "note": "overlay checked; page break round lens, dollar, neck and red handle match"
+    }
+  ],
+  "last_build": "2026-10-29T07:14:28+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9497,
+    "red_iou_1x": 0.8824,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9922,
+    "edge_mean_px": 0.139,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.414,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the page square (plumb sides x 10.9 and 102.45, level top y 10.63 and bottom y 98.02) with four rounded corners (centreline radius 5)",
+      "why": "DR-03 straight lines and right angles. Sides fit within 0.3 deg."
+    },
+    {
+      "what": "Set the information rules level with shared left ends: the two upper rules from x 54.75, the two lower rules from x 27.37",
+      "why": "DR-03 straight lines and equal repeats. Rule ends fit within 0.25 px of each other."
+    },
+    {
+      "what": "Drew the lens as one true circle, r 24.55 about (106.21, 60.56)",
+      "why": "DR-03 true circles. Arc fits round the ring give radii 23.8 to 25.0 px; an ellipse fit gives rx 24.70 and ry 24.41, so the sheet's lens is about 0.3 px wider than tall."
+    },
+    {
+      "what": "Drew the handle as a straight stadium outline (two parallel sides, true half-round ends of r 5.6) on one axis at 44.4 deg, joined to the lens by a short neck on the same axis",
+      "why": "DR-03 straight lines and true circles. The handle's sides fit at 44.4 and 45.3 deg; each end is written as two quarter arcs so every renderer draws it the same."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, including the dollar sign",
+      "why": "DR-03 one line weight. This icon measures 5.5 px."
+    }
+  ],
+  "source_notes": "Kept as drawn: the dollar sign at upper left (an S with short plumb ticks above and below) that distinguishes this page from the general Watchdogs page; the page's right side broken round the lens, stopping at y 26.87 above it and resuming at y 93.13 below it, so the lens obscures the page edge; the empty lens; the short black neck between lens and handle. Red: the handle outline only; the neck, lens, page, rules and dollar stay black. Sheet difference: the red sheet's handle sits up to 0.5 px further up-left at its upper end than the black sheet's; the trace takes the handle's geometry from the black sheet."
+}

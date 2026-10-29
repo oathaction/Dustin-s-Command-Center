@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-039" viewBox="0 0 173 157">
+  <!-- CL-039 Feed Ranking. Crop 173 x 157 px; ink box x 8..165, y 8..149.
+       Construction: three compact horizontal rounded content cards stacked vertically with equal spacing. Each card contains a small square thumbnail at left and two short rules to the right. A thin vertical ranking rail stands detached on the far right, with a hollow circular knob around the height of the middle card.
+       Red: the middle card’s thumbnail outline and information rules, plus the circular rail knob. The middle card perimeter remains black. Keep the three cards separate and the right rail visible above and below its knob. -->
+  <g data-role="base">
+    <path id="card-top" d="M11.15 45.4 V15.05 A4.5 4.5 0 0 1 15.65 10.55 H110.65 A4.5 4.5 0 0 1 115.15 15.05 V45.4"/>
+    <rect id="card-top-thumb" x="24.15" y="23.05" width="14.9" height="14.9" rx="1.5"/>
+    <line id="card-top-rule-long" x1="53.7" y1="25.28" x2="96.55" y2="25.28"/>
+    <line id="card-top-rule-short" x1="53.7" y1="37.22" x2="75.55" y2="37.22"/>
+    <rect id="card-middle" x="11.15" y="55.1" width="104" height="39.6" rx="4.5"/>
+    <rect id="card-bottom" x="11.15" y="106.53" width="104" height="39.6" rx="4.5"/>
+    <rect id="card-bottom-thumb" x="24.15" y="118.99" width="14.9" height="14.9" rx="1.5"/>
+    <line id="card-bottom-rule-long" x1="53.7" y1="121.22" x2="96.55" y2="121.22"/>
+    <line id="card-bottom-rule-short" x1="53.7" y1="133.16" x2="75.55" y2="133.16"/>
+    <line id="rail-upper" x1="150.95" y1="10.5" x2="150.95" y2="43.95"/>
+    <line id="rail-lower" x1="150.95" y1="64.55" x2="150.95" y2="125.5"/>
+  </g>
+  <g data-role="accent">
+    <rect id="card-middle-thumb" x="24.15" y="67.68" width="14.9" height="14.9" rx="1.5"/>
+    <line id="card-middle-rule-long" x1="53.7" y1="69.91" x2="96.55" y2="69.91"/>
+    <line id="card-middle-rule-short" x1="53.7" y1="81.85" x2="75.55" y2="81.85"/>
+    <circle id="rail-knob" cx="150.95" cy="54.25" r="10.3"/>
+  </g>
+</svg>

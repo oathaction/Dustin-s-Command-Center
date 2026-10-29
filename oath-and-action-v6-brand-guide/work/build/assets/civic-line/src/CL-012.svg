@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-012" viewBox="0 0 134 141">
+  <!-- CL-012 Election Rules. Crop 134 x 141 px; ink box x 8..126, y 8..133.
+       Construction: upright rounded rectangular page. Two horizontal text rules occupy the upper part. Two adjustment rails occupy the lower part; each has a small hollow circular knob. Upper rail’s knob lies right of centre; lower rail’s knob lies left of centre. Both rails extend visibly past their knobs.
+       Red: the upper adjustment rail and its circular knob. The page, text rules and lower slider remain black. Preserve the sliders’ opposite knob offsets. -->
+  <g data-role="base">
+    <rect id="page" x="11.1" y="11.25" width="111.68" height="118.75" rx="5.5"/>
+    <line id="rule-1" x1="29.35" y1="31.37" x2="99.44" y2="31.37"/>
+    <line id="rule-2" x1="29.35" y1="50.57" x2="99.44" y2="50.57"/>
+    <!-- Upper rail: black from its left end to the colour change at x 54.25, read from the red sheet. -->
+    <line id="upper-rail-left" x1="29.35" y1="77.12" x2="54.25" y2="77.12"/>
+    <!-- Rails stop at their knob rings, so each knob's hole stays open. -->
+    <line id="lower-rail-left" x1="29.35" y1="104.6" x2="46.97" y2="104.6"/>
+    <line id="lower-rail-right" x1="60.43" y1="104.6" x2="105.19" y2="104.6"/>
+    <circle id="lower-knob" cx="53.7" cy="104.6" r="6.73"/>
+  </g>
+  <g data-role="accent">
+    <!-- Red part of the upper rail: cut square at the colour change; the cut end at the ring hides under it. -->
+    <line id="upper-rail-mid" class="butt" x1="54.25" y1="77.12" x2="68.12" y2="77.12"/>
+    <line id="upper-rail-right" x1="81.58" y1="77.12" x2="105.19" y2="77.12"/>
+    <circle id="upper-knob" cx="74.85" cy="77.12" r="6.73"/>
+  </g>
+</svg>

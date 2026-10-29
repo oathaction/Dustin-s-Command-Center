@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-40" viewBox="0 0 228 116">
+  <!-- R-40 Worker Voice on AI. Crop 228 x 116 px; ink box x 8..220, y 8..108.
+       Construction: an outline worker bust at left with hollow head and rounded open shoulders. A rounded rectangular speech bubble floats above/right of the worker and contains three horizontal message strokes. A large square microchip occupies the right, with short pins on all sides and the uppercase letters AI centred inside.
+       Red: the three message strokes and the AI lettering. Person, bubble outline, chip outline and pins remain black. Match the reference's letter shapes and pin count.
+       Counts from the sheet: two message strokes (not three), sixteen pins (four per side).
+       The A is drawn geometry: two legs leaning 0.333 px per px (fitted on their outer edges), joined across a short flat apex
+       (round joins give the sheet's flat top 8.2 px wide), and a crossbar. The I is one vertical stroke. -->
+  <g data-role="base">
+    <circle id="head" cx="35.96" cy="51.63" r="12.8"/>
+    <path id="body" d="M11.13 105.25 V90.39 A24.83 20.4 0 0 1 35.96 69.99 A24.83 20.4 0 0 1 60.79 90.39 V105.25"/>
+    <path id="bubble" d="M87.42 57.35 H110.3 A7.45 7.45 0 0 0 117.75 49.9 V17.64 A7.45 7.45 0 0 0 110.3 10.19 H69.3 A7.45 7.45 0 0 0 61.85 17.64 V49.9 A7.45 7.45 0 0 0 69.3 57.35 H73.5 V69.39 Z"/>
+    <rect id="chip" x="146.5" y="26.5" width="59.68" height="59.68" rx="5"/>
+    <line id="pin-top-1" x1="158.44" y1="15.93" x2="158.44" y2="26.5"/>
+    <line id="pin-top-2" x1="170.38" y1="15.93" x2="170.38" y2="26.5"/>
+    <line id="pin-top-3" x1="182.32" y1="15.93" x2="182.32" y2="26.5"/>
+    <line id="pin-top-4" x1="194.26" y1="15.93" x2="194.26" y2="26.5"/>
+    <line id="pin-bottom-1" x1="158.44" y1="86.18" x2="158.44" y2="96.74"/>
+    <line id="pin-bottom-2" x1="170.38" y1="86.18" x2="170.38" y2="96.74"/>
+    <line id="pin-bottom-3" x1="182.32" y1="86.18" x2="182.32" y2="96.74"/>
+    <line id="pin-bottom-4" x1="194.26" y1="86.18" x2="194.26" y2="96.74"/>
+    <line id="pin-left-1" x1="136.15" y1="37.56" x2="146.5" y2="37.56"/>
+    <line id="pin-left-2" x1="136.15" y1="50.08" x2="146.5" y2="50.08"/>
+    <line id="pin-left-3" x1="136.15" y1="62.6" x2="146.5" y2="62.6"/>
+    <line id="pin-left-4" x1="136.15" y1="75.12" x2="146.5" y2="75.12"/>
+    <line id="pin-right-1" x1="206.18" y1="37.56" x2="216.5" y2="37.56"/>
+    <line id="pin-right-2" x1="206.18" y1="50.08" x2="216.5" y2="50.08"/>
+    <line id="pin-right-3" x1="206.18" y1="62.6" x2="216.5" y2="62.6"/>
+    <line id="pin-right-4" x1="206.18" y1="75.12" x2="216.5" y2="75.12"/>
+  </g>
+  <g data-role="accent">
+    <line id="message-1" x1="75.6" y1="26.41" x2="104" y2="26.41"/>
+    <line id="message-2" x1="75.6" y1="40.37" x2="104" y2="40.37"/>
+    <polyline id="letter-a" points="161.89,67.7 169.68,44.3 171.2,44.3 178.99,67.7"/>
+    <line id="letter-a-bar" x1="164.12" y1="61" x2="176.76" y2="61"/>
+    <line id="letter-i" x1="189.85" y1="44.3" x2="189.85" y2="67.7"/>
+  </g>
+</svg>

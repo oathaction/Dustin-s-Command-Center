@@ -1,0 +1,71 @@
+{
+  "id": "R-15",
+  "label": "Watchdog Remedies",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:26:09+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9564,
+      "red_iou_1x": 0.8736,
+      "edge_mean_px": 0.132,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:26:25+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9564,
+      "red_iou_1x": 0.8736,
+      "edge_mean_px": 0.132,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:26:25+00:00",
+      "by": "T5",
+      "note": "overlay checked; true-circle lens, down-left handle, check in lens"
+    }
+  ],
+  "last_build": "2026-10-29T06:26:25+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9564,
+    "red_iou_1x": 0.8736,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9734,
+    "edge_mean_px": 0.132,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.275,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the lens as a true circle, centre (74.04, 48.17), r 37.54",
+      "why": "DR-03 true circles. An annulus fit gives r 37.54 with rms 0.13 px; an ellipse fit gives 37.64 x 37.44."
+    },
+    {
+      "what": "Drew the handle as a straight rounded outline on the lens's 135 deg diagonal: parallel sides 13.3 px apart, a flat end with 2 px corners next to the lens and a round far end",
+      "why": "DR-03 straight lines and parallels. The sides measure 13.34 px apart with slopes under 0.001; the handle's centre line sits 1.4 px off the lens diagonal, as drawn."
+    },
+    {
+      "what": "Made the first two information rules equal, x 125.5 to 170.45",
+      "why": "DR-03 equal repeats. They measure 125.75 to 170.37 and 125.25 to 170.5. The third rule stays shorter and further left, as drawn."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px, including the check and the neck",
+      "why": "DR-03 one line weight. The check measures 6.4 to 6.5 px and the short neck between lens and handle 7.3 px; both are thinner in the trace by up to 0.9 px a side."
+    }
+  ],
+  "source_notes": "Kept: the handle sloping down-left, the hollow handle with its visible inner slot, the short neck joining it to the rim, the page with no left edge (the lens covers it): its top edge starts at x 119.85 clear of the lens and its bottom edge at x 96.65 below it, three rules with the last one shorter. Red is the check only; lens, handle, page and rules are black. Both sheets agree."
+}

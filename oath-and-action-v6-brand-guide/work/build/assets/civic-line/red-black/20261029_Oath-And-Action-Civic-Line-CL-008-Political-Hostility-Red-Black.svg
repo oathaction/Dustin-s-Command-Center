@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-008" data-id="CL-008" width="128" height="128" viewBox="0 0 128 128">
+  <title>Political Hostility</title>
+  <desc>Oath &amp; Action Civic Line CL-008 Political Hostility. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M55.008 45.113 A2.573 2.573 0 0 0 53.009 44.158 H27.177 A5.41 5.41 0 0 0 21.767 49.568 V67.514 A5.41 5.41 0 0 0 27.177 72.924 H29.912 L29.697 81.951 L38.948 72.924 H50.913 A5.41 5.41 0 0 0 56.324 67.514 V62.231" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M72.944 47.989 A2.573 2.573 0 0 1 74.942 47.034 H100.774 A5.41 5.41 0 0 1 106.184 52.444 V70.39 A5.41 5.41 0 0 1 100.774 75.8 H98.04 L98.254 84.826 L89.003 75.8 H77.038 A5.41 5.41 0 0 1 71.628 70.39 V62.601" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polygon points="64.902,43.564 58.366,55.125 66.227,55.125 62.952,66.013 69.488,54.452 61.626,54.452" fill="#E63946" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

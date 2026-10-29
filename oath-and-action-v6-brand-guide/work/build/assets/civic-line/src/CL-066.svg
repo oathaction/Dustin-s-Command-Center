@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-066" viewBox="0 0 188 126">
+  <!-- CL-066 Energy & Emissions. Crop 188 x 126 px; ink box x 8..180, y 8..118.
+       Construction: a large two-pin electrical plug stands at upper left, its body a rounded U with an open top joined by the pin base. A thin cable drops and curls right into the lower part of a cloud-like emissions shape. The cloud rises at right with several rounded lobes. One short curved plume line sits within it.
+       Red: the inner curved plume line. Plug, cable and outer emissions cloud remain black. Preserve the continuous cable-to-cloud composition and avoid adding a bolt. -->
+  <!-- T4 trace. Plug body: level top at y 39.3, plumb sides x 11.5 and 59.97, half-round bottom about (35.73, 53.22);
+       pins plumb at x 26.23 and 45.23. One continuous path runs from the plug's foot down the cable, round the
+       U-turn and up into the cloud; each lobe is a true arc, lobes meet at cusps, and the path ends open at lower left. -->
+  <g data-role="base">
+    <path id="plug-body" d="M11.5 39.3 V53.22 A24.235 24.235 0 0 0 35.73 77.46 A24.235 24.235 0 0 0 59.97 53.22 V39.3 Z"/>
+    <line id="pin-left" x1="26.23" y1="18.55" x2="26.23" y2="39.3"/>
+    <line id="pin-right" x1="45.23" y1="18.55" x2="45.23" y2="39.3"/>
+    <path id="cable-cloud" d="M35.73 77.46 V98.33 A16.46 16.46 0 0 0 52.19 114.79 A16.46 16.46 0 0 0 68.65 98.33 V96.7 A17.77 17.77 0 0 1 91.77 79.75 A18.21 18.21 0 0 1 108.93 57.21 A18.61 18.61 0 0 1 126.6 30.11 A18.66 18.66 0 0 1 162.87 23.45 A18.16 18.16 0 0 1 166.72 57.8 A18.28 18.28 0 0 1 144.3 86.34 A20.55 20.55 0 0 1 112.5 95.35 L109.67 102.89 A18.07 18.07 0 0 1 80 109.42"/>
+  </g>
+  <g data-role="accent">
+    <path id="plume" d="M142.46 53.56 A25.87 25.87 0 0 1 119.94 78.06"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "id": "R-07",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Drew the tall stack as seven equal coins: plumb walls (x 132.27 and 179.17), a rim that is a true upper half-ellipse (rx 23.45, ry 9.97), and every coin edge below it (rim front, five bands, base) as one circular arc of r 49.5, on even steps of 12.79 px from y 30.6 to 107.34",
+     "why": "DR-03 equal repeats. The coin edges fit circles of r 47.8 to 51.9 px; their steps measure 12.6 to 13.05 px. Edges move up to 0.25 px vertically. The sheet's coin edges are flatter than half-ellipses near the walls, so circular arcs follow them better."},
+    {"what": "Drew the small front stack on the same plan: plumb walls (x 24.81 and 68.07), rim a true upper half-ellipse (rx 21.63, ry 7.78), front edge and base as circular arcs of r 44.3",
+     "why": "DR-03. Its walls fit at x 24.81 and 68.06; its two coin edges fit r 45.65 and 42.94."},
+    {"what": "Drew the stack behind it with plumb walls (x 11.44 and 61.8), one band and a base as circular arcs of r 51.7",
+     "why": "DR-03. Its band and base fit r 48.2 and 55.3; its left wall leans 4 deg on the sheet. Its base stays where drawn, 1.46 px below the tall stack's: levelling it was tried and rejected, since it moved the whole base arc off the sheet (edge p95 1.27 px) for a difference the eye reads as aligned."},
+    {"what": "Split the red rim from the black stack at the sheet's colour changes: the red runs down both walls to y 29.5 and along the rim's front edge to 18 px either side of centre, with flat ends",
+     "why": "The red sheet colours the rim's upper half and the start of its front edge; the middle of the front edge and the walls below stay black."},
+    {"what": "Made the arrow level (y 64.93) with a symmetric head",
+     "why": "DR-03 straight lines and symmetry. The shaft fits at 0.07 deg; the barbs at 43.5 and 49 deg."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 5.27 px."}
+  ],
+  "notes": "Kept as drawn: the height contrast between the small and tall stacks; the tall stack's seven coins; the small group drawn as one front coin with a second, partly hidden stack behind and below it, whose top-left end and right wall stop short of the front coin with clear ground; the short rightward arrow between the groups. Red: the arrow and the tall stack's upper rim. Black and red sheets agree within a fringe."
+}

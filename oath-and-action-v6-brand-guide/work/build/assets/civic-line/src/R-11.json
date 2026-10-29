@@ -1,0 +1,31 @@
+{
+  "id": "R-11",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Drew the gavel head as one true rectangle system on a single axis at 34 deg: two equal bands (rounded rectangles 24.5 x 10.1 px on the centreline, corner radius 2) centred on the head, body sides straight, parallel and square to the bands",
+      "why": "DR-03 symmetry and right angles. On the sheet the head is a slight parallelogram: band long edges run at 33 to 34 deg while the line through the band centres sits 2.8 deg off square, so the lower band sits about 1.2 px left of the upper one. Band ends measured at u -15.6/9.05 (upper) and -16.55/7.7 (lower) in the 34 deg frame; both are now -15.75/8.75. The lower band's right end moves 1.05 px and its left end 0.8 px."
+    },
+    {
+      "what": "Kept the handle as a closed outline that tapers from 7.3 px wide at the head to 12.1 px at the round tip, so the inside closes near the head and opens to a hairline slit over the last 13 px",
+      "why": "Feature as drawn. The sheet's handle is an outline whose inside only shows near the tip (a light slit 1 to 1.7 px wide from about 20 px before the tip). At W the slit starts about 7 px later and is under 1 px wide; widening the sides further would push the handle's outer edges more than 0.5 px past the sheet. The handle stays 0.85 px off the head's centre line, as drawn."
+    },
+    {
+      "what": "Made the check cell a square, 27.9 px on the centreline with corner radius 2",
+      "why": "DR-03 right angles. It measures 27.7 x 28.1 px; fitted corner radii 1.8 to 2.6."
+    },
+    {
+      "what": "Gave the page one corner radius, 4.5 px, at its three corners",
+      "why": "DR-03. Diagonal profiles give centreline radii of 4.1, 4.6 and 4.7 px."
+    },
+    {
+      "what": "Made the two upper information rules equal, x 26.4 to 69.45",
+      "why": "DR-03 equal repeats. They measure 26.31 to 69.56 and 26.56 to 69.31."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The page and bands measure 5.5 to 5.9 px; the handle-side strokes near the tip 4.9 px."
+    }
+  ],
+  "notes": "Kept: the page as an open contour (right edge stops at y 51.6, well above the gavel; bottom edge stops at x 65.6), the separate base rule under the gavel, the check whose long arm pokes just past the cell's top-right corner, the hollow slots inside both bands, and no sound block. Red follows the red sheet: each band is red on its upper long edge and both short ends, while the long edge nearer the lower left (the upper band's inner edge, which is also the body's end, and the lower band's outer edge) is black on the red sheet. The catalogue only says 'short end-band strokes', so the red sheet decided. Layering also follows the red sheet: the body's left side passes under the lower band's red edge and its right side and the handle sit over it."
+}

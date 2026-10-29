@@ -1,0 +1,17 @@
+{
+  "id": "CL-002",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Mirrored the whole drawing about one vertical axis, x 92.77, and moved the centre head onto it (measured centre x 93.01)",
+     "why": "DR-03 symmetry; the catalogue says the central head, lectern and side people share a clear vertical symmetry. The side shoulders measure symmetric about 92.77, the lectern legs about 92.72."},
+    {"what": "Centred each side head over its shoulders: left head x 34.56 to 33.68 (0.88 px), right head x 151.60 to 151.86",
+     "why": "DR-03. Both side heads sit slightly inward of their shoulders by unequal amounts (0.89 and 0.26 px), a raster accident rather than a drawn offset."},
+    {"what": "Gave the side people one head radius, 11.72 px, one shoulder half-width, 22.84 px, and one shoulder corner radius, 16.4 px",
+     "why": "DR-03 equal repeats. Fits: head r 11.68 and 11.76; half-width 22.72 and 22.95; corner r 16.18 to 16.55."},
+    {"what": "Gave both lectern slants one slope (dx/dy 0.36) from the top bar down to the step at y 68.25",
+     "why": "DR-03 symmetry. The slants measure 0.33 (left) and 0.39 (right)."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 5.66 px overall; the centre head runs 5.85 px."}
+  ],
+  "notes": "Kept: the larger centre head (r 12.18 against 11.72 for the side heads), the short flat-topped centre shoulder arc with its tight rounded ends, the lectern's wide top bar that runs about 1 px past the slants on each side, the inward step from each slant to its leg, the base line that runs past both legs, the side people's lower height and open shoulder bottoms. Red is the centre head ring only; both sheets agree."
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-12" viewBox="0 0 185 115">
+  <!-- R-12 Filibuster Reform. Crop 185 x 115 px; ink box x 8..177, y 8..107.
+       Construction: two blank rounded speech bubbles float side by side above a low debate/chamber rail. The low rail has a long horizontal base and several short vertical divisions. A padlock occupies the gap between the bubbles and rail. Its shackle is visibly open, with one end lifted/free; the body contains a small keyhole.
+       Red: the open shackle and lock body, with keyhole retained as light/negative space. Bubbles and chamber rail remain black. Preserve the source’s open-lock state. -->
+  <!-- Trace notes: two equal bubbles, tails as drawn; rail symmetric about x 92.05; keyhole is an evenodd hole in the red body. -->
+  <g data-role="base">
+    <path id="bubble-left" d="M22.36 13.3 L56.92 13.3 A12.0 12.0 0 0 1 68.92 25.3 L68.92 37.66 A12.0 12.0 0 0 1 56.92 49.66 L22.36 49.66 A12.0 12.0 0 0 1 10.36 37.66 L10.36 25.3 A12.0 12.0 0 0 1 22.36 13.3 Z"/>
+    <polyline id="bubble-left-tail" points="47.5,49.66 40.4,58.9 40.4,49.66"/>
+    <path id="bubble-right" d="M127.38 10.74 L161.94 10.74 A12.0 12.0 0 0 1 173.94 22.74 L173.94 35.1 A12.0 12.0 0 0 1 161.94 47.1 L144.9 47.1 L132.4 58.9 L130.7 47.1 L127.38 47.1 A12.0 12.0 0 0 1 115.38 35.1 L115.38 22.74 A12.0 12.0 0 0 1 127.38 10.74 Z"/>
+    <line id="rail-base" x1="27.8" y1="103.74" x2="156.3" y2="103.74"/>
+    <polyline id="desk-left" points="35.32,103.74 35.32,73.26 66.75,73.26"/>
+    <line id="post-left" x1="52.55" y1="73.26" x2="52.55" y2="103.74"/>
+    <polyline id="desk-right" points="148.78,103.74 148.78,73.26 117.35,73.26"/>
+    <line id="post-right" x1="131.55" y1="73.26" x2="131.55" y2="103.74"/>
+  </g>
+  <g data-role="accent">
+    <path id="shackle" class="butt" d="M81.2 62.05 L81.2 57.8 A11.05 11.05 0 0 1 103.3 57.8 L103.3 72"/>
+    <path id="lock-body" class="fill" fill-rule="evenodd" d="M76.4 68 L107 68 A2.0 2.0 0 0 1 109 70 L109 91.75 A2.0 2.0 0 0 1 107 93.75 L76.4 93.75 A2.0 2.0 0 0 1 74.4 91.75 L74.4 70 A2.0 2.0 0 0 1 76.4 68 Z M89.29 88.8 L89.29 81.3 A3.8 3.8 0 1 1 93.95 81.3 L93.95 88.8 Z"/>
+  </g>
+</svg>

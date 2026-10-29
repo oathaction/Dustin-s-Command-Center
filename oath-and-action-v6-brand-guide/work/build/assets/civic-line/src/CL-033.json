@@ -1,0 +1,19 @@
+{
+  "id": "CL-033",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Drew the speech bubble as a rounded rectangle with four equal 12.3 px corners and a straight-sided tail meeting at a point (41.33, 78.49)",
+     "why": "DR-03 equal repeats. Corner arc fits give r 12.03 to 12.55 px (0.04 to 0.09 px rms)."},
+    {"what": "Drew the hashtag as two parallel bars leaning 9.2 deg, 10.93 px apart, crossed by two level bars of one length, 22 px",
+     "why": "DR-03. The uprights lean 8.9 and 9.5 deg; the crossbars measure 21.9 and 22.1 px. The lower crossbar keeps its 1 px shift to the left, as drawn."},
+    {"what": "Made the warning triangle isosceles about x 120 (apex y 50.32, base y 97.87, half-base 26.41) with 3 px rounded corners",
+     "why": "DR-03 symmetry. The side lines meet at x 120.22 and the base corners sit at 93.34 and 146.16. The sheet's corners round wider than a plain round join: the apex ink stops 3.5 px below the sharp vertex."},
+    {"what": "Gave both exclamation dots one size, r 3.2, as filled circles",
+     "why": "DR-03 equal repeats. The dots measure 6.6 px (bubble) and 6.1 px (warning) across, both wider than W, so they are drawn as fills."},
+    {"what": "Made the laptop base symmetric about x 92.05: one top line at y 113.88, a centred notch with slanted walls dropping to y 118.6, and bottom corners of 8.25 px",
+     "why": "DR-03 symmetry. Base ends measure x 11.0 and 173.25, notch walls centre at 91.9 to 92.0; the screen sides (22.31 and 161.78) centre at 92.05."},
+    {"what": "Gave the screen top-right corner a 6 px centreline radius",
+     "why": "Fits give 8.07 px with 0.4 px rms (the corner stroke runs 6 px thick); 6 px matches both the outer and inner edge best in the overlay (7.5 and 9 px tried)."}
+  ],
+  "notes": "Kept: the screen's open top-left, where the top edge starts at x 107.75 clear of the bubble and the left side rises only to y 73.15 below it, so the bubble reads in front of the screen; the two separate message and warning regions; the bubble's exclamation longer than the warning's, as drawn. Red: the hashtag and the bubble's exclamation with its dot, and the warning triangle with its exclamation and dot. Laptop and bubble outlines stay black."
+}

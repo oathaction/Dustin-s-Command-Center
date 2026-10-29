@@ -1,0 +1,95 @@
+{
+  "id": "R-09",
+  "label": "Stock-Trading Ban",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:16:28+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9206,
+      "red_iou_1x": 0.9348,
+      "edge_mean_px": 0.321,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:17:00+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9435,
+      "red_iou_1x": 0.9348,
+      "edge_mean_px": 0.277,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:17:16+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9451,
+      "red_iou_1x": 0.9348,
+      "edge_mean_px": 0.271,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:17:41+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9442,
+      "red_iou_1x": 0.9348,
+      "edge_mean_px": 0.275,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:17:41+00:00",
+      "by": "T4",
+      "note": "overlay checked; notched border, gaps round the slash, chart line and filled slash match"
+    }
+  ],
+  "last_build": "2026-10-29T07:17:41+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9442,
+    "red_iou_1x": 0.9348,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0684,
+    "edge_mean_px": 0.275,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 2.5,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the certificate's outer border square (plumb sides x 11.12 and 154.15, level top y 10.52 and bottom y 99.3) with each visible corner notch a true concave quarter-circle of r 8.4 centred on the corner point",
+      "why": "DR-03 straight lines and true circles. The notch points fit radii of 8.1 to 8.8 px about the corner points; sides and edges fit within 0.1 deg."
+    },
+    {
+      "what": "Drew the inner border as four level or plumb rules (y 23.58 and 86.17, x 23.75 and 142.43)",
+      "why": "DR-03 straight lines. They fit within 0.1 deg."
+    },
+    {
+      "what": "Drew the slash as one filled band: a parallelogram with parallel sides at 43.6 deg, level-cut ends at y 8.15 and 108.75, filled and stroked so its corners round like the strokes",
+      "why": "The catalogue asks for a broad diagonal restriction stroke without a circle, extending slightly outside the certificate. The sheet's band is about 10.7 px across (twice W) with level ends; its two long edges fit slopes within 0.12 percent of each other."
+    },
+    {
+      "what": "Placed the chart line's corners where its fitted runs cross, rounding the two upper peaks and the valley down to the sheet's tips (up to 0.8 px)",
+      "why": "DR-03 straight lines. Each run fits with rms 0.03 to 0.16 px; the raw crossings sit up to 0.8 px beyond the sheet's rounded tips."
+    },
+    {
+      "what": "Drew every line at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The outer border measures 5.25 to 5.5 px, the inner border and chart lighter (4.25 to 4.5 px and 5.3 px); W closes no gap, so no data-w is set. The trace's ink area is 7 percent above the sheet's for this reason."
+    }
+  ],
+  "source_notes": "Kept as drawn: every line that meets the slash stops short of it with clear ground (outer top edge, both outer bottom pieces, the inner top rule, both inner bottom pieces, both parts of the chart line) and the slash extends past the certificate at both ends; the outer border's right side starts below the slash at y 19.7, so its top-right notch is hidden; the inner border's corners stay open; the chart line's two parts differ (the left one rises in two peaks, the right one falls and levels). Red: the slash only. Black and red sheets agree on the slash within 0.4 px (the red sheet's band runs about 0.4 px narrower)."
+}

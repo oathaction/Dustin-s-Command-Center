@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-36" viewBox="0 0 234 126">
+  <!-- R-36 Public Investment. Crop 234 x 126 px; ink box x 8..226, y 8..118.
+       Construction: three clearly separated subjects: a tall bulb at left, a small suspension bridge in the middle and an upright funding ledger at right. The bulb has rays, a short base and an inner filament. The bridge has two upright towers and curved suspension cables. The ledger has a dollar sign and a few black information rules.
+       Red: bulb contour/rays and the ledger's dollar sign. Preserve any tiny black bulb-base/filament details visible in the reference. Bridge and ledger framing stay black. This differs from CL-056's bulb-over-bridge layout.
+       Bulb axis x 40.9: glass is a circle r 23.34 about (40.9, 55.88) running into cubic tapers that
+       turn vertical at the neck. The red sheet shows the filament T red too; red ends at the base's top edge,
+       so the accent group is drawn first and the black base covers the feet of the red strokes.
+       Bridge axis x 114.2: central mast with a short tip above the cable apex, cables kinked at the hangers
+       and flattened past the piers, deck at y 95.1. -->
+  <g data-role="accent">
+    <path id="bulb" d="M30.75 91.65 V89.5 C30.75 73.89 22.2 76.25 18.36 61.92 A23.34 23.34 0 1 1 63.44 61.92 C59.6 76.25 51.05 73.89 51.05 89.5 V91.65"/>
+    <line id="ray-top" x1="40.9" y1="10.5" x2="40.9" y2="20.6"/>
+    <line id="ray-left" x1="10.8" y1="25.23" x2="16.5" y2="30.93"/>
+    <line id="ray-right" x1="71" y1="25.23" x2="65.3" y2="30.93"/>
+    <line id="filament-bar" x1="35.46" y1="62.65" x2="46.34" y2="62.65"/>
+    <line id="filament-stem" x1="40.9" y1="62.65" x2="40.9" y2="91.65"/>
+    <path id="dollar-s" d="M214.43 82.48 A5.85 5.85 0 1 0 207.8 90.78 L210.6 91.47 A5.85 5.85 0 1 1 203.65 98.99"/>
+    <line id="dollar-bar-top" x1="209.2" y1="75" x2="209.2" y2="79.25"/>
+    <line id="dollar-bar-bottom" x1="209.2" y1="103" x2="209.2" y2="106.5"/>
+  </g>
+  <g data-role="base">
+    <rect id="bulb-base" x="31" y="91.65" width="19.8" height="11.25"/>
+    <rect id="bulb-cap" x="36.15" y="104.55" width="9.5" height="8.45" rx="2.5"/>
+    <line id="mast" x1="114.2" y1="47.9" x2="114.2" y2="112.9"/>
+    <polyline id="cable" points="74.05,86.15 80.9,85.54 98.8,74.32 114.2,52.62 129.6,74.32 147.5,85.54 154.35,86.15"/>
+    <line id="hanger-left" x1="98.8" y1="74.32" x2="98.8" y2="95.1"/>
+    <line id="hanger-right" x1="129.6" y1="74.32" x2="129.6" y2="95.1"/>
+    <line id="pier-left" x1="80.9" y1="85.54" x2="80.9" y2="112.9"/>
+    <line id="pier-right" x1="147.5" y1="85.54" x2="147.5" y2="112.9"/>
+    <line id="deck" x1="74.5" y1="95.1" x2="153.9" y2="95.1"/>
+    <path id="ledger" d="M222.95 72.7 V45.17 A4 4 0 0 0 218.95 41.17 H169.55 A4 4 0 0 0 165.55 45.17 V112.68 A4 4 0 0 0 169.55 116.68 H216.37"/>
+    <line id="rule-1" x1="178.87" y1="56.57" x2="209.13" y2="56.57"/>
+    <line id="rule-2" x1="178.87" y1="70.52" x2="192.75" y2="70.52"/>
+    <line id="rule-3" x1="178.87" y1="84.47" x2="187.37" y2="84.47"/>
+    <line id="rule-4" x1="178.87" y1="98.41" x2="187.37" y2="98.41"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-17" viewBox="0 0 186 121">
+  <!-- R-17 Civil Service. Crop 186 x 121 px; ink box x 8..178, y 8..113.
+       Construction: a horizontal employee ID card with a small centred top tab. Its left half contains an outline person portrait; its right half has three horizontal rules. To the card’s right, a tall curly-brace-like protection boundary runs from near its top to its bottom. The brace has a central inward/outward elbow.
+       Red: the full right-hand curly brace. Card, top tab, portrait and information rules remain black. Copy the brace’s exact curvature and separation from the card. -->
+  <!-- Trace notes: brace symmetric about y 61.6; tab centred on the card. -->
+  <g data-role="base">
+    <rect id="card" x="11" y="27.07" width="129.73" height="83.4" rx="3.2"/>
+    <path id="tab" d="M68.7 27.07 L68.7 12.81 A1.75 1.75 0 0 1 70.45 11.06 L81.28 11.06 A1.75 1.75 0 0 1 83.03 12.81 L83.03 27.07"/>
+    <circle id="head" cx="50.6" cy="52.85" r="11.5"/>
+    <path id="body" d="M29.2 95.45 L29.2 92 A21.45 23.7 0 0 1 50.65 68.3 A21.45 23.7 0 0 1 72.1 92 L72.1 95.45 Z"/>
+    <line id="rule-1" x1="85.7" y1="47.47" x2="123.9" y2="47.47"/>
+    <line id="rule-2" x1="85.7" y1="62.41" x2="123.9" y2="62.41"/>
+    <line id="rule-3" x1="85.7" y1="77.35" x2="110.25" y2="77.35"/>
+  </g>
+  <g data-role="accent">
+    <path id="brace" d="M153.2 17.45 A11 10.55 0 0 1 164.2 28 L164.2 51 Q164.2 55.6 170.6 61.6 Q164.2 67.6 164.2 72.2 L164.2 95.2 A11 10.55 0 0 1 153.2 105.75"/>
+    <line id="brace-point" x1="170.6" y1="61.6" x2="175.3" y2="61.6"/>
+  </g>
+</svg>

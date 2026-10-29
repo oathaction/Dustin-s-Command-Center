@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-020" data-id="CL-020" width="128" height="128" viewBox="0 0 128 128">
+  <title>Track</title>
+  <desc>Oath &amp; Action Civic Line CL-020 Track. Traced vector reconstruction from the Civic Line reference sheet 01, row 4, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="accent">
+    <path d="M88.521 81.005 L100.842 94.014 A2.995 2.995 0 0 0 105.19 89.89 L94.725 78.841" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M34.474 51.23 L39.601 42.876 A6.019 6.019 0 1 0 29.346 42.876 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base">
+    <path d="M41.399 53.584 H59.438 A6.838 6.838 0 0 1 59.438 67.256 H29.473 A7.311 7.311 0 0 0 29.473 81.878 H70.273" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="84.748" cy="70.37" r="11.283" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

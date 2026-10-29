@@ -1,0 +1,75 @@
+{
+  "id": "CL-058",
+  "label": "Stock Ownership",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:15:10+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9225,
+      "red_iou_1x": 0.9748,
+      "edge_mean_px": 0.253,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:15:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9225,
+      "red_iou_1x": 0.9748,
+      "edge_mean_px": 0.253,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:15:29+00:00",
+      "by": "T3",
+      "note": "overlay checked; open-bottom certificate with swallowtail ribbon, red seal ring, outlined bars and red filled bar match"
+    }
+  ],
+  "last_build": "2026-10-29T07:15:29+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9225,
+    "red_iou_1x": 0.9748,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9335,
+    "edge_mean_px": 0.253,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, the seal ring included",
+      "why": "DR-03 one line weight. The outlines measure 5.75 to 6.0 px. The sheets disagree on the seal: the red sheet's ring is 5.9 px wide (r 6.95 to 12.9), the black sheet's 7.1 px (r 6.9 to 14.0). I took the red sheet's weight, which matches the other strokes, and set the centreline at r 10.2 between the two, so the outer edge matches the red sheet and sits 1 px inside the black sheet's."
+    },
+    {
+      "what": "Spaced the three rules evenly, 17.51 px apart (y 29.38, 46.89, 64.4), all starting at x 29.37",
+      "why": "DR-03 equal repeats. Spacings measure 17.62 and 17.4 px."
+    },
+    {
+      "what": "Spaced the three bars evenly on centres 24.46 px apart (x 134.2, 158.66, 183.12) and gave the two outlined bars one width, 11.97 px between side centrelines",
+      "why": "DR-03 equal repeats. Centre spacings measure 24.67 and 24.25 px; outline widths 11.87 and 12.04 px. The middle bar moves 0.2 px."
+    },
+    {
+      "what": "Drew the ribbon as one stroke: two tails hanging from the certificate's bottom edge on x 79.1 and 91.8, joined by a swallowtail whose notch peaks at (85.45, 98.3); the certificate's bottom edge stops at the two tails",
+      "why": "On both sheets the bottom edge is open between the tails and the tails end in a V notch; the ribbon is centred under the seal (measured x 85.4 and 85.55)."
+    },
+    {
+      "what": "Set the certificate's corner radius to 3.6 px on the centreline",
+      "why": "Measured from the outer edge along each corner's diagonal (outer radius 6.3 px)."
+    }
+  ],
+  "source_notes": "Kept as drawn: the tall bar is filled and narrower (16 px) than the two outlined bars (about 18 px outside), the outlined bars are open at the baseline, and the baseline runs under all three. Layering follows the red sheet: the black baseline crosses the foot of the red bar, so the accent group comes first. The seal does not touch the rules or the certificate's edges."
+}

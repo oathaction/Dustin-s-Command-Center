@@ -1,0 +1,21 @@
+{
+  "id": "CL-004",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Put the page's two right-side stubs on one vertical line, x 97.7: the upper stub moves 1.43 px right (measured x 96.27) and the lower stub 1.43 px left (measured x 99.13)",
+     "why": "DR-03 straight lines. The left side is one straight vertical; both right stubs are vertical but stand 2.9 px apart across the gap the pen opens, which is a raster accident in an upright rectangular page. This is the largest edge move in the icon and the main source of its p95 and max edge distance."},
+    {"what": "Gave all four page corners one radius, 7.25 px",
+     "why": "DR-03 equal repeats. Corner fits give 7.17 to 7.48 px."},
+    {"what": "Spaced the four rules evenly at a 20.01 px pitch (y 31.42 to 91.44) from one left end, x 30.2, and gave rules 1 and 2 one length (right end x 74.8, measured 74.5 and 75.13)",
+     "why": "DR-03 equal repeats. Measured pitches 20.13, 19.97 and 19.97. Rules 3 and 4 keep their drawn shorter lengths (64.37 and 52.13)."},
+    {"what": "Made the barrel's two long edges parallel at 126.1 deg, 13.28 px apart, closed by a true semicircle of radius 6.64 at the top",
+     "why": "DR-03. Edge fits give 126.18 and 126.05 deg. The sheet's top end fits a radius of 7.03 px, slightly bulbous; the clean semicircle keeps the end's tip in place and moves the top-right edge about 0.4 px inward."},
+    {"what": "Drew the ferrule and the clip band square to the barrel axis",
+     "why": "DR-03 right angles: both are cross lines on a cylinder. They measure 31.7 and 33.3 deg against a square 36.1 deg, which moves their ends by about 0.5 px."},
+    {"what": "Ran the clip parallel to the barrel, 9.78 px outside its right edge, with a semicircular hook of radius 4.89 at the top",
+     "why": "The catalogue calls it a parallel clip detail. It measures 124.2 deg against the barrel's 126.1, so its spacing runs from about 9.3 px at the top to 10.3 px at the bottom; the parallel line moves each end about 0.5 px."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The pen measures 6.0 to 6.3 px on both sheets; the page and rules measure 5.5 to 5.75 px."}
+  ],
+  "notes": "Kept: the page as one open contour whose right side stops at y 44.5 and restarts at y 101.63 around the pen; the four rules with the two short lower rules; the barrel's sides running about 7 px past the ferrule before the nib's two sides turn to the tip, which leaves a triangular counter in the nib; the black clip band inside the top of the barrel; the clip as a separate black hook that leaves the barrel's right edge and ends with a round cap at y 73.4; the nib tip at (72.85, 106.6). Red follows the red sheet: the barrel outline from the left nib corner over the round top to the right nib corner, plus the ferrule line. The red ends where the nib's sides begin (t 27.5 along the axis, y about 89 on the left and 97 on the right); those ends are colour splits cut square with butt caps, and the black nib meets them with its round caps hidden under the red. The black band and clip sit under the red barrel."
+}

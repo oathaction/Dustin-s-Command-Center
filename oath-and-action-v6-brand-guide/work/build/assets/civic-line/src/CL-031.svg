@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-031" viewBox="0 0 199 132">
+  <!-- CL-031 Local Government. Crop 199 x 132 px; ink box x 8..191, y 8..124.
+       Construction: a compact symmetrical municipal hall. A triangular pediment tops the taller central block; low rectangular wings extend left and right. There are narrow upright window marks in the central block and wings. A horizontal baseline runs under the whole building. The centre has a tall round-topped doorway.
+       Red: the filled central doorway. All roof, wall, baseline and window strokes stay black. Preserve the central block’s greater height and the small gap under the roof peak. -->
+  <g data-role="accent">
+    <path id="door" class="fill" d="M86.93 120.93 V93.6 A7.5 7.5 0 0 1 94.43 86.1 H103.07 A7.5 7.5 0 0 1 110.57 93.6 V120.93 Z"/>
+  </g>
+  <g data-role="base">
+    <polygon id="pediment" points="60.64,37.29 98.75,10.43 136.86,37.29"/>
+    <line id="hall-left" x1="67.81" y1="37.29" x2="67.81" y2="120.93"/>
+    <line id="hall-right" x1="129.69" y1="37.29" x2="129.69" y2="120.93"/>
+    <polyline id="wing-left" points="67.81,59.24 20.07,59.24 20.07,120.93"/>
+    <polyline id="wing-right" points="129.69,59.24 177.43,59.24 177.43,120.93"/>
+    <line id="window-hall-1" x1="89.47" y1="54.9" x2="89.47" y2="65.75"/>
+    <line id="window-hall-2" x1="108.03" y1="54.9" x2="108.03" y2="65.75"/>
+    <line id="window-wing-1" x1="36.32" y1="79.55" x2="36.32" y2="90.25"/>
+    <line id="window-wing-2" x1="52.27" y1="79.55" x2="52.27" y2="90.25"/>
+    <line id="window-wing-3" x1="145.23" y1="79.55" x2="145.23" y2="90.25"/>
+    <line id="window-wing-4" x1="161.18" y1="79.55" x2="161.18" y2="90.25"/>
+    <line id="baseline" x1="10.25" y1="120.93" x2="187.25" y2="120.93"/>
+  </g>
+</svg>

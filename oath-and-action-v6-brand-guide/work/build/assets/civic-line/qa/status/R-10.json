@@ -1,0 +1,90 @@
+{
+  "id": "R-10",
+  "label": "Revolving-Door Limits",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:20:52+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9162,
+      "red_iou_1x": 0.9465,
+      "edge_mean_px": 0.239,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:21:26+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9246,
+      "red_iou_1x": 0.9544,
+      "edge_mean_px": 0.209,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:21:47+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9246,
+      "red_iou_1x": 0.9544,
+      "edge_mean_px": 0.209,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:21:47+00:00",
+      "by": "T4",
+      "note": "overlay checked; figure, doorway, building symmetry, arrow and disc with cut-out bar match"
+    }
+  ],
+  "last_build": "2026-10-29T07:21:47+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9246,
+    "red_iou_1x": 0.9544,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9907,
+    "edge_mean_px": 0.209,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 2.016,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the doorway square (plumb sides x 11.07 and 76.4, level head y 10.9) with its level floor stub (y 102.6)",
+      "why": "DR-03 straight lines and right angles. Sides fit within 0.05 deg."
+    },
+    {
+      "what": "Drew the walking figure's limbs as straight runs between the sheet's joints (elbows, knees) found where the fitted runs cross; the head is a filled true circle (r 7.44)",
+      "why": "DR-03 straight lines. Each run fits with rms 0.03 to 0.19 px."
+    },
+    {
+      "element": "torso",
+      "what": "data-w 9.5",
+      "why": "The sheet draws the figure's torso as a heavier body mass, 9.9 px across, against 6.0 to 6.3 px for its limbs; at W the torso would read as a fifth limb and the figure's silhouette would thin."
+    },
+    {
+      "what": "Made the building symmetric about x 162.68: roof slants at one slope (27.56 deg) from the apex (162.68, 11.04), walls plumb (x 134.56 and 190.8), six equal capsule windows (6.2 x 13.6 px) on even columns (12.25 px), and the two door posts centred on the axis (x 153.76 and 171.6)",
+      "why": "DR-03 symmetry and equal repeats. The roof fits 27.4 and 27.7 deg; windows measure 6.0 to 6.4 px wide and 13.2 to 13.9 px tall on columns 150.5, 163 and 175.1. The posts sat 1.1 px right of the axis (x 154.86 and 172.7) and move by that much."
+    },
+    {
+      "what": "Drew the restriction disc as a filled true circle (r 21.38 about (116.06, 90.2)) with the bar cut out as a real hole (evenodd), the bar 26.0 x 8.0 px and centred on the disc",
+      "why": "DR-03 true circles and symmetry. The disc fits r 21.3 to 21.4 px; the bar measures 26.0 x 8.0 px and sat 0.6 px above the disc's centre."
+    },
+    {
+      "what": "Drew every other stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The doorway and building measure 5.0 to 5.5 px, the figure's limbs 6.0 to 6.3 px."
+    }
+  ],
+  "source_notes": "Kept as drawn: the figure's right hand meets the door frame; its back foot meets the floor stub; the doorway's right side and the building's left wall stop short (y 102.75 and 69.6), and the base rule starts right of the building's left wall and runs past its right wall, as on the sheet; the arrow is level, pointing right, above the disc, its lower barb shorter than the upper so it stays clear of the disc. Red: the arrow and the disc; the disc's bar is negative space in both editions. Black and red sheets agree on the disc within 0.2 px (sheet IoU 0.892 comes from edge fringe)."
+}

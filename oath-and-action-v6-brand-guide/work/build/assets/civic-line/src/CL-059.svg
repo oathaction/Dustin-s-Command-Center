@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-059" viewBox="0 0 194 168">
+  <!-- CL-059 Credit Allocation. Crop 194 x 168 px; ink box x 8..186, y 8..160.
+       Construction: a small classical bank sits upper centre, with triangular pediment, three column-like uprights and horizontal base. A vertical stem descends into a branching allocation route. The left branch turns toward a small home at lower left; the right branch turns toward a sawtooth-roof factory at lower right. Both lower buildings have simple black outlines.
+       Red: the branching connector below the bank, including its central stem and both elbow branches. Bank, home and factory remain black. Preserve the branch direction from bank to two uses.
+       Trace: bank and branches symmetric about x 93.5. As drawn, there is no single stem: two red L-shaped
+       branches start side by side under the bank, run out level and drop toward the house (stopping
+       above its roof) and the factory. Factory roof: three equal sawteeth with vertical drops. -->
+  <g data-role="base">
+    <polygon id="pediment" points="55.8,34.67 93.5,10.3 131.2,34.67"/>
+    <line id="column-1" x1="64.2" y1="45.25" x2="64.2" y2="71.86"/>
+    <line id="column-2" x1="83.73" y1="45.25" x2="83.73" y2="71.86"/>
+    <line id="column-3" x1="103.27" y1="45.25" x2="103.27" y2="71.86"/>
+    <line id="column-4" x1="122.8" y1="45.25" x2="122.8" y2="71.86"/>
+    <line id="bank-base" x1="55.15" y1="71.86" x2="131.85" y2="71.86"/>
+    <polyline id="house" points="11.31,156.5 11.31,132.65 35.98,112.2 60.65,132.65 60.65,156.5"/>
+    <polyline id="house-door" points="30.17,156.5 30.17,142.4 41.79,142.4 41.79,156.5"/>
+    <polygon id="factory" points="112.42,134.1 127.05,123.9 127.05,134.9 144.88,123.9 144.88,134.9 162.7,123.9 162.7,134.9 165.0,134.9 171.2,112.14 183.07,112.14 183.07,157.28 112.42,157.28"/>
+  </g>
+  <g data-role="accent">
+    <path id="branch-left" d="M87.39 83.0 V90.93 A2.5 2.5 0 0 1 84.89 93.43 H42.76 A2.5 2.5 0 0 0 40.26 95.93 V104.8"/>
+    <path id="branch-right" d="M99.61 83.0 V90.93 A2.5 2.5 0 0 0 102.11 93.43 H144.24 A2.5 2.5 0 0 1 146.74 95.93 V112.25"/>
+  </g>
+</svg>

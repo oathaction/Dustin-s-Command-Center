@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-22" data-id="R-22" width="128" height="128" viewBox="0 0 128 128">
+  <title>Wage Boards</title>
+  <desc>Oath &amp; Action Civic Line R-22 Wage Boards. Traced vector reconstruction from the Civic Line reference sheet 04, row 5, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base-1">
+    <circle cx="28.05" cy="57.542" r="5.127" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.878 87.2 L17.878 74.455 A9.826 8.412 0 0 1 27.704 66.042 A9.826 8.412 0 0 1 37.53 74.455 L37.53 75.917" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="100.096" cy="57.542" r="5.127" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M90.617 75.917 L90.617 74.455 A9.826 8.412 0 0 1 100.443 66.042 A9.826 8.412 0 0 1 110.268 74.455 L110.268 87.2" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64.073" cy="45.562" r="5.288" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50.402 67.509 L50.402 64.492 A13.671 10.269 0 0 1 64.073 54.223 A13.671 10.269 0 0 1 77.745 64.492 L77.745 67.509" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="72.651" y1="63.586" x2="72.651" y2="67.534" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="41.458,80.815 47.438,71.759 80.708,71.759 86.688,80.815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base-2">
+    <line x1="31.842" y1="80.815" x2="96.305" y2="80.815" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="36.496" y1="80.815" x2="36.496" y2="87.712" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="91.65" y1="80.815" x2="91.65" y2="87.712" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

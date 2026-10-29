@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-003" viewBox="0 0 176 120">
+  <!-- CL-003 Registration. Crop 176 x 120 px; ink box x 8..168, y 8..112.
+       Construction: a horizontal ID card with softly rounded corners. Left half: small outline circular head over an open shoulder/torso outline. Right half: three short horizontal information rules at staggered lengths. The card contour opens or is visually occluded at lower right by a circular verification badge extending outside the card. Put a simple check inside that badge.
+       Red: the exterior verification circle and its checkmark. The ID portrait, card perimeter and information rules remain black. Maintain the badge’s overlap and the generous blank areas within the ID. -->
+  <g data-role="base">
+    <!-- Card: one open contour, corner r 6.3; it stops short of the badge at lower right
+         (bottom edge ends x 107.63, right edge ends y 52.25), as the sheet occludes it. -->
+    <path id="card" d="M107.63 96.05 H16.93 A6.3 6.3 0 0 1 10.63 89.75 V17.55 A6.3 6.3 0 0 1 16.93 11.25 H149.7 A6.3 6.3 0 0 1 156 17.55 V52.25"/>
+    <circle id="head" cx="46.72" cy="41.81" r="11.19"/>
+    <path id="shoulders" d="M28.22 81.1 V73.92 A12.7 12.7 0 0 1 40.92 61.22 H52.52 A12.7 12.7 0 0 1 65.22 73.92 V81.1"/>
+    <line id="rule-1" x1="80.75" y1="30.05" x2="135.13" y2="30.05"/>
+    <line id="rule-2" x1="80.75" y1="47.08" x2="128.37" y2="47.08"/>
+    <line id="rule-3" x1="80.75" y1="64.1" x2="108.37" y2="64.1"/>
+  </g>
+  <g data-role="accent">
+    <circle id="badge" cx="141.35" cy="84.8" r="24.04"/>
+    <polyline id="check" points="130.85,85.0 137.95,92.0 152.1,77.1"/>
+  </g>
+</svg>

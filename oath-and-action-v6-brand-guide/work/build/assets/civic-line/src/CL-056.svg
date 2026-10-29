@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-056" viewBox="0 0 212 170">
+  <!-- CL-056 Public Investment. Crop 212 x 170 px; ink box x 8..204, y 8..162.
+       Construction: a suspension bridge stretches across the lower part. It has two upright towers, a level deck, curved suspension cables and short vertical supports. Two short water-wave lines sit below. A compact lightbulb floats above the bridge’s central span, with a short base and small radiating strokes.
+       Red: the bulb contour and its rays, preserving its small black base where visible. Bridge and water stay black. Keep this version’s bulb centred above the bridge; R-36 has a different three-part layout.
+       Trace: everything symmetric about x 105.9. Main cable: half-ellipse (rx 63.15, ry 40.31) hanging
+       between the tower tops; side cables are mirror cubics. No vertical hangers on the sheet. Two identical
+       sine waves (period 30, three crests). Bulb: a 3/4 circle (r 16.3) closing onto a straight neck; the
+       neck's bottom bar is split along its length, red above and black below; black base and tip below. -->
+  <g data-role="base">
+    <line id="tower-left" x1="42.75" y1="61.5" x2="42.75" y2="142.45"/>
+    <line id="tower-right" x1="169.05" y1="61.5" x2="169.05" y2="142.45"/>
+    <line id="deck" x1="10.9" y1="113.47" x2="200.9" y2="113.47"/>
+    <path id="cable-main" d="M42.75 63.41 A63.15 40.31 0 0 0 169.05 63.41"/>
+    <path id="cable-side-left" d="M42.75 63.4 C42.75 73.27 36.0 92.2 12.55 103.9"/>
+    <path id="cable-side-right" d="M169.05 63.4 C169.05 73.27 175.8 92.2 199.25 103.9"/>
+    <path id="wave-upper" d="M60.81 140.71 C63.04 140.51 65.27 139.35 67.5 138.13 C70 136.76 72.5 135.51 75 135.51 C77.5 135.51 80 136.76 82.5 138.13 C85 139.5 87.5 140.75 90 140.75 C92.5 140.75 95 139.5 97.5 138.13 C100 136.76 102.5 135.51 105 135.51 C107.5 135.51 110 136.76 112.5 138.13 C115 139.5 117.5 140.75 120 140.75 C122.5 140.75 125 139.5 127.5 138.13 C130 136.76 132.5 135.51 135 135.51 C137.5 135.51 140 136.76 142.5 138.13 C144.73 139.35 146.96 140.51 149.19 140.71"/>
+    <path id="wave-lower" d="M60.81 158.89 C63.04 158.69 65.27 157.53 67.5 156.31 C70 154.94 72.5 153.69 75 153.69 C77.5 153.69 80 154.94 82.5 156.31 C85 157.68 87.5 158.93 90 158.93 C92.5 158.93 95 157.68 97.5 156.31 C100 154.94 102.5 153.69 105 153.69 C107.5 153.69 110 154.94 112.5 156.31 C115 157.68 117.5 158.93 120 158.93 C122.5 158.93 125 157.68 127.5 156.31 C130 154.94 132.5 153.69 135 153.69 C137.5 153.69 140 154.94 142.5 156.31 C144.73 157.53 146.96 158.69 149.19 158.89"/>
+    <rect id="bulb-base" x="98.4" y="67.8" width="15" height="9.25" rx="1.5"/>
+    <ellipse id="bulb-tip" class="fill" cx="105.9" cy="79.3" rx="5" ry="3.2"/>
+  </g>
+  <g data-role="accent">
+    <path id="bulb" class="butt" d="M98.4 67.8 V57.97 A16.3 16.3 0 1 1 113.4 57.97 V67.8"/>
+    <rect id="bulb-collar" class="fill" x="95.65" y="65.05" width="20.5" height="2.75"/>
+    <line id="ray-top" x1="105.9" y1="10.75" x2="105.9" y2="16.37"/>
+    <line id="ray-upper-left" x1="82.6" y1="18.3" x2="88.15" y2="23.85"/>
+    <line id="ray-upper-right" x1="129.2" y1="18.3" x2="123.65" y2="23.85"/>
+    <line id="ray-left" x1="73.55" y1="38.93" x2="78.8" y2="38.93"/>
+    <line id="ray-right" x1="133" y1="38.93" x2="138.25" y2="38.93"/>
+  </g>
+</svg>

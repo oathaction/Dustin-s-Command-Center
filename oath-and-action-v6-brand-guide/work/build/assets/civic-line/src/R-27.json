@@ -1,0 +1,31 @@
+{
+  "id": "R-27",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Drew the lens as a true circle, centre (94.6, 65.92), r 29.06, and made the red gauge arc concentric with it, r 17.74",
+      "why": "DR-03 true circles. The lens fits with rms 0.07 px. The gauge arc fits r 17.7 to 17.78 about a centre 0.8 px lower than the lens's; it moves up 0.8 px to share the lens centre."
+    },
+    {
+      "what": "Kept the gauge as a half-circle tilted as drawn, from 170.7 deg (left end, below the centre line) to -9.6 deg (right end, above it)",
+      "why": "Feature as drawn. Both ends turn the same way by about 9.5 deg, so the arc reads as a rotated semicircle rather than a raster wobble; levelling it would move the ends about 3 px."
+    },
+    {
+      "what": "Drew the handle as a straight outline on a 44.2 deg axis: parallel sides 11.95 px apart and a round far end; the near end stays open toward the lens, with the upper side stopping short of the rim and the lower side meeting it",
+      "why": "DR-03 straight lines. The sides measure 11.95 px apart with slopes under 0.013; profiles show a 2.3 px gap between the upper side and the rim and a narrow bridge where the lower side meets it."
+    },
+    {
+      "what": "Spaced the four rules evenly, 17.41 px apart from y 27.22 to 79.45, from one left end at x 27.75",
+      "why": "DR-03 equal repeats. Gaps measure 17.22, 17.27 and 17.74 px. Each rule keeps its own right end."
+    },
+    {
+      "what": "Gave the record's three full corners one radius, 4.2 px",
+      "why": "DR-03. Diagonal profiles give 4.0 to 4.5 px. The lower-right corner turns up into a 3.3 px stub, as drawn."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. Strokes measure 5.25 to 5.5 px; the ink area ratio is about 1.03."
+    }
+  ],
+  "notes": "Kept: the record as an open contour behind the magnifier (its right edge stops at y 26.3 above the lens and turns up only a short stub at the lower right), four rules of different lengths, the empty lens apart from the gauge arc, and the handle running down-right. Red is only the inner gauge arc; this keeps it distinct from Donor Disclosure (red handle) and Watchdog Remedies (red check). Both sheets agree."
+}

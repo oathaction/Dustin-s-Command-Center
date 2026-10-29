@@ -1,0 +1,115 @@
+{
+  "id": "CL-016",
+  "label": "Lobbying",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 6,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:05:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9136,
+      "red_iou_1x": 0.8545,
+      "edge_mean_px": 0.215,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:05:38+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9138,
+      "red_iou_1x": 0.8344,
+      "edge_mean_px": 0.204,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:05:54+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9186,
+      "red_iou_1x": 0.8344,
+      "edge_mean_px": 0.199,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:06:08+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9213,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.191,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T07:06:37+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9191,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.214,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T07:06:57+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9213,
+      "red_iou_1x": 0.8719,
+      "edge_mean_px": 0.191,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:06:57+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; people, table, chairs and document match; stray mark kept for review (logged)"
+    }
+  ],
+  "last_build": "2026-10-29T07:06:57+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9213,
+    "red_iou_1x": 0.8719,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0175,
+    "edge_mean_px": 0.191,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 2.462,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Mirrored the two people, the table, the legs and the chairs about one axis, x 92.6",
+      "why": "DR-03 symmetry. The heads centre on 92.95 and the table, legs and chair backs on 92.35; one axis moves each group by 0.35 px or less (tested 92.75 too, which matched worse)."
+    },
+    {
+      "what": "Gave both people one head radius (11.59, both fits), one outer shoulder corner (r 14.43; fits 14.23 and 14.63), one inner shoulder curve (r 18.48) and one shoulder-top height, y 42.05; the outer sides end at one height, y 79.4",
+      "why": "DR-03 equal repeats. The outer sides sit 19.58 and 18.81 px from their heads; both now sit 19.2 px out."
+    },
+    {
+      "what": "Squared the table's corners (round stroke joins only)",
+      "why": "The sheet's table slab reads square at its outer corners; rounded corners left visible edge differences."
+    },
+    {
+      "what": "Made the document's two sides parallel (lean 0.195 px per px), each turned about its midpoint",
+      "why": "DR-03. The sides lean 0.17 and 0.22 px per px."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The icon measures 5.25 to 6.25 px."
+    }
+  ],
+  "source_notes": "Judgement for review: a short black mark stands just right of the left person's shoulder curve (a dot about 6 px across with a fading tail, centre near (58, 44)). Both sheets draw it in the same place and the right person has none, so it is kept as a short stroke rather than dropped; it may be the catalogue's 'inward-bending forearm' or a generation accident. Kept: each person's inner shoulder curving wider than the outer one and running down to the table top (the lean toward the table), the outer sides ending open below the table top, the heads sitting slightly toward the table from the shoulder centre, the document drawn as a leaning parallelogram (not a symmetric trapezoid) that opens onto the table, the chair seats running from the chair backs to the table legs. Red is the document's three sides only. The document is drawn first so the black table top covers the feet of its sides, as on the red sheet."
+}

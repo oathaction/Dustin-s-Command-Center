@@ -1,0 +1,27 @@
+{
+  "id": "CL-049",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.4 to 5.9 px along the arcs; the junctions read heavier where bands meet the sides."
+    },
+    {
+      "what": "Drew every rim and band as the same ellipse shape, ry 8.6 px with rx equal to the stack's half-width (20.25, 21.35 and 24.475 px); bands are the lower halves, ending on the sides",
+      "why": "DR-03 true ellipses and equal repeats. With rx fixed at the half-width, each band fits a half-ellipse with rms 0.04 to 0.08 px and ry 8.05 to 9.26 px; the rims fit ry 8.3, 8.46 and 8.84. Rim tops and bottoms move 0.1 to 0.35 px."
+    },
+    {
+      "what": "Made the sides straight verticals at x 11.0 and 51.5, 63.15 and 105.85, 117.9 and 166.85",
+      "why": "DR-03 straight lines. Short fits between bands lean 4 to 9 deg alternately because the raster bulges where each band joins a side; the outer edges stay on one line."
+    },
+    {
+      "what": "Spaced the bands evenly within each stack (13.2, 14.0 and 13.6 px between band bottoms) and put all three stacks' lowest arcs on one base line, y 123.1",
+      "why": "DR-03 equal repeats and the catalogue's shared lower level. Measured base lines are 123.0, 122.99 and 123.31. In the right stack the measured spacings run 13.1 to 14.0 px, so its fifth band moves 1.1 px up and its sixth 0.7 px up; the left stack's middle band moves 0.5 px down. I kept each stack's own spacing rather than one coin thickness for all three, so no stack changes height by more than 0.35 px."
+    },
+    {
+      "what": "Ended the red upper rim with square cuts at y 23.0 on both sides, 3.7 px below the rim's widest point; the black sides continue from there",
+      "why": "Decision D2-33. The red sheet's red runs down each side to y 24.3 with a tapered end; a square cut at 23.0 matches its area."
+    }
+  ],
+  "notes": "Counts kept from the sheet: below each rim the left stack has 3 arcs (rim's lower half, one band, base), the middle 5, the right 8. The stacks stand apart with clear ground between them, as drawn; the catalogue's 'overlapping slightly' does not match the sheet, and the image controls. Widths differ by stack (40.5, 42.7 and 48.95 px between side centrelines) as drawn."
+}

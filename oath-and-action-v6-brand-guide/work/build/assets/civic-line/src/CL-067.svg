@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-067" viewBox="0 0 154 151">
+  <!-- CL-067 Healthcare. Crop 154 x 151 px; ink box x 8..146, y 8..143.
+       Construction: a large hollow medical cross with equal rectangular arms and rounded stroke joins. A single electrocardiogram-like pulse runs horizontally across its centre: flat entry, a small rise, sharp higher peak/valley sequence and flat exit. The pulse stays inside or just within the cross’s horizontal arms as shown.
+       Red: the full pulse line. Medical-cross outline stays black. Preserve the source’s exact rhythm of peaks, troughs and flat segments. -->
+  <!-- T4 trace. Cross with four equal arms about (76.87, 76.27): arm half-width 29.23, reach 65.42;
+       outer corners rounded (centreline radius 2.5), inner corners square. Pulse baseline y 76.8. -->
+  <g data-role="base">
+    <path id="cross" d="M50.14 10.85 H103.6 A2.5 2.5 0 0 1 106.1 13.35 V47.04 H139.79 A2.5 2.5 0 0 1 142.29 49.54 V103 A2.5 2.5 0 0 1 139.79 105.5 H106.1 V139.19 A2.5 2.5 0 0 1 103.6 141.69 H50.14 A2.5 2.5 0 0 1 47.64 139.19 V105.5 H13.95 A2.5 2.5 0 0 1 11.45 103 V49.54 A2.5 2.5 0 0 1 13.95 47.04 H47.64 V13.35 A2.5 2.5 0 0 1 50.14 10.85 Z"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="pulse" points="30.87,76.8 57.6,76.8 58.3,82.1 69.95,47.9 81.2,105 92.6,69.4 97,76.8 123.13,76.8"/>
+  </g>
+</svg>

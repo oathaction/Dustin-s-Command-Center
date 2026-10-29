@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-032" data-id="CL-032" width="128" height="128" viewBox="0 0 128 128">
+  <title>Local Reporting</title>
+  <desc>Oath &amp; Action Civic Line CL-032 Local Reporting. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M41 48.111 V41.677 A2.193 2.193 0 0 1 43.193 39.484 H97.123 A2.193 2.193 0 0 1 99.317 41.677 V86.347 A2.193 2.193 0 0 1 97.123 88.54 H32.197 A3.412 3.412 0 0 1 28.786 85.129 V51.035 A2.924 2.924 0 0 1 31.71 48.111 H41 V82.555 A5.985 5.985 0 0 1 35.015 88.54" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41" y1="82.555" x2="41" y2="88.54" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.029" y1="48.111" x2="35.029" y2="82.643" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.378" y1="47.867" x2="91.114" y2="47.867" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.378" y1="55.817" x2="91.114" y2="55.817" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.378" y1="63.766" x2="67.899" y2="63.766" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.378" y1="71.715" x2="67.899" y2="71.715" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="49.378" y1="79.665" x2="67.899" y2="79.665" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="74.845" y="62.489" width="17.717" height="19.228" rx="1.462" fill="#E63946"/>
+  </g>
+</svg>

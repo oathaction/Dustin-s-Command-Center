@@ -1,0 +1,17 @@
+{
+  "id": "R-06",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Made the two calendars identical: the right one is the left one moved 131.9 px, with one frame width (77.78 px), one header rule height and one binding spacing",
+     "why": "DR-03 equal repeats and the catalogue ('two equal small calendars'). The sheet's frames measure 78.26 and 77.28 px wide; their parts sit 131.4 to 132.5 px apart. Edges move up to 0.5 px."},
+    {"what": "Centred each calendar's bindings and date grid on its frame and put the three date columns on even steps (20.96 px)",
+     "why": "DR-03 symmetry and equal repeats. Column centres fit at 28.25, 49.07 and 70.18 (left calendar's frame); the lower middle cell sat about 1 px left of the axis on both calendars and now sits on it."},
+    {"what": "Made each row's two side cells one size (upper row 8.3 x 11.3 px, lower row 7.5 x 9.85 px), keeping the wider middle cells (16.5 x 12.2 and 12.7 x 9.95 px) and the upper row's larger cells",
+     "why": "DR-03 equal repeats where the drawing plainly means them. The sheet's upper-left cells measure 7.0 to 7.4 px wide and the upper-right ones 9.5 px; the middle column, the highlighted date, is drawn wider on purpose in both rows and both calendars. Cell edges move up to 1.2 px."},
+    {"what": "Gave the arrowhead a square (miter) point, symmetric about the level shaft (y 56.22)",
+     "why": "The sheet's arrowhead is pointed; a round join leaves its tip about 1.2 px short. The barbs fit at 49.4 and 49.9 deg."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px; date cells are filled shapes",
+     "why": "DR-03 one line weight. This icon measures 5.5 px."}
+  ],
+  "notes": "Kept as drawn: six date cells per calendar in two rows of three (counted on both sheets); the same position highlighted in both calendars, the middle column of each row; bindings crossing the frame's top edge; the detached arrow between the calendars, pointing right. Red: the four middle date cells and the arrow. Black and red sheets agree within a fringe (sheet IoU 0.911)."
+}

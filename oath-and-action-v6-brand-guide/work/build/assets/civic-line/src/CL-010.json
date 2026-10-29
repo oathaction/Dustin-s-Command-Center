@@ -1,0 +1,17 @@
+{
+  "id": "CL-010",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Gave the three input circles one radius, 10.3 px (fits 10.30, 10.34, 10.27), on one column, x 20.9, spaced evenly 41.13 px apart, each on the same line as its route",
+     "why": "DR-03 equal repeats. Circle centres measure y 21.57, 62.77 and 104.02; route lines y 21.74, 62.95 and 103.82."},
+    {"what": "Mirrored the top and bottom routes about the shaft line, y 62.9",
+     "why": "DR-03 symmetry. The routes' bends match within 0.2 px in x; their horizontal runs sit 0.12 px off a mirror."},
+    {"what": "Gave every route bend one radius, 5.8 px",
+     "why": "DR-03 one consistent corner. The first bend of each outer route measures 6.7 and 7.2 px and the other bends 4.7 to 5.2 px; one radius moves each bend's midpoint by 0.4 to 0.5 px."},
+    {"what": "Mirrored the arrowhead's arms about the shaft (ends at x 128.8, 9.4 px above and below; tip at x 137.5)",
+     "why": "DR-03 symmetry. The arms measure 47.0 and 48.3 deg and their ends sit 9.5 and 9.25 px from the shaft."},
+    {"what": "Drew the output circle at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The red circle measures 6.0 px on both sheets; its fitted centreline (r 16.56) is kept, so its edges sit about 0.25 px inside the sheet's."}
+  ],
+  "notes": "Kept: the middle route as an open line that stops at x 62.37, well short of the merger; the small rightward point where the top and bottom routes meet the shaft (each turns 2.4 px right over its last 5 px), which the sheet draws as a brace-like notch; the separate black arrowhead clear of the output circle. Red is the output circle only; both sheets agree within 0.1 px."
+}

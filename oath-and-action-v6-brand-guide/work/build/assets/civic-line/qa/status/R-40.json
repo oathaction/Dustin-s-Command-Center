@@ -1,0 +1,99 @@
+{
+  "id": "R-40",
+  "label": "Worker Voice on AI",
+  "state": "traced",
+  "tracer": "T6",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:51:10+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9047,
+      "red_iou_1x": 0.87,
+      "edge_mean_px": 0.237,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:52:15+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9151,
+      "red_iou_1x": 0.9075,
+      "edge_mean_px": 0.202,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:52:43+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9178,
+      "red_iou_1x": 0.9075,
+      "edge_mean_px": 0.193,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:52:59+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9178,
+      "red_iou_1x": 0.9075,
+      "edge_mean_px": 0.193,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:52:59+00:00",
+      "by": "T6",
+      "note": "overlay checked; AI letters matched on outer edges, 16 pins, 2 message strokes per sheet"
+    }
+  ],
+  "last_build": "2026-10-29T06:52:59+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9178,
+    "red_iou_1x": 0.9075,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0477,
+    "edge_mean_px": 0.193,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the A as drawn geometry: two straight legs leaning 0.333 px per px, joined across a 1.5 px flat apex at y 44.3 (round joins), a crossbar at y 61, mirrored about x 170.44; the I as one vertical stroke at x 189.85; both letters share top (44.3) and foot (67.7) lines",
+      "why": "Fitted on the letters' outer ink edges, which run straight at 0.333 px per px on both sides (the medial axis is unreliable where the legs merge at the apex and crossbar). The apex construction reproduces the sheet's flat top, 4.4 px wide at y 42 and 8.2 px at its widest. The sheet's legs run about 5.2 px thick against W 5.5."
+    },
+    {
+      "what": "Made the chip a square, 59.68 px on the centreline, centred (176.34, 56.34), with one corner radius, 5 px",
+      "why": "DR-03. The chip measures 59.45 by 59.9 px; its top corners read about 4 px and its bottom corners about 6 px, which is not a deliberate difference in a square chip."
+    },
+    {
+      "what": "Spaced the pins evenly on each side (top and bottom 11.94 px apart, left and right 12.52 px), all 10.45 px long",
+      "why": "DR-03 equal repeats. Top pins measure 11.96, 11.95 and 11.9 px apart; side pins 12.56, 12.19 and 12.81; pin lengths 10.21 to 10.75 px. The two spacings differ by 0.6 px on the sheet and stay different."
+    },
+    {
+      "what": "Made the speech bubble a rounded rectangle with one corner radius, 7.45 px, levelled its bottom edge at y 57.35, and drew its tail as a vertical left edge and a 40.8-degree right edge meeting at the tip (73.5, 69.39)",
+      "why": "DR-03. Corner fits read 7.09 to 7.79 px; the bottom edge tilts 0.3 px; the tail's right edge fits at rms 0.05 px."
+    },
+    {
+      "what": "Drew the worker as a true circle head (r 12.8) over a half-ellipse arch body (rx 24.83, ry 20.4) on one axis, x 35.96",
+      "why": "Head and body fit centres agree to 0.03 px; the arch fit has rms 0.07 px."
+    },
+    {
+      "what": "Drew every stroke at W, 5.5 px",
+      "why": "DR-03 one line weight. The icon measures 5.25 px."
+    }
+  ],
+  "source_notes": "Counts from the sheet: two message strokes in the bubble (the catalogue says three; the image controls), sixteen pins (four per side). The letters are geometry, not text. Red covers the two message strokes and the AI letters, as both the catalogue and the red sheet show. Black and red sheets agree."
+}

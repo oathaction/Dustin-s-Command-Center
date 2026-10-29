@@ -1,0 +1,13 @@
+{
+  "id": "R-43",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Gave the eight rain streaks one length (10.4 px) and two angles (two leaning left at 118 degrees, six leaning right at 57.5 degrees), each kept at its measured midpoint; the two drops one size (1.85 px streaks) at 57.5 degrees", "why": "DR-03 equal repeats. Streak lengths measure 8.9 to 11.9 px and the right-leaning angles 54 to 60 degrees; no streak end moves more than 1 px. The rain is a scatter, so positions stay as drawn."},
+    {"what": "Drew the cloud as four true circular lobes (r 6.34, 9.96, 13.25, 9.39) meeting at cusps over a level base at y 35.1", "why": "DR-03 circles. Lobe fits have rms 0.06 to 0.2 px."},
+    {"what": "Drew the flood lines as two equal cosine waves: period 28 px, amplitude 2.05 px, in phase, 13.45 px apart, one span (x 10.28 to 141.35)", "why": "DR-03 equal repeats. The waves' crests and troughs fall every 14 px at the same x on both lines; amplitudes measure 1.92 and 2.25 px."},
+    {"what": "Drew the red roof band as one filled shape with stroke-rounded corners: level top at the peak, edges parallel at slope 1.03 down to the eave, with its top-left corner formed by the left slope's outer edge", "why": "Band edge fits give slopes 1.025 and 1.035. The red sheet shows the band over the top of the left slope at the peak and the black eave over the band's foot, so the base drawing is split into two groups around the accent."},
+    {"what": "Straightened the left roof slope at slope 1.04 from (18.35, 91.2) into the peak, levelled the eave at y 91 and rounded its outer corner (r 3)", "why": "DR-03 straight lines. Row-by-row centres fall on one line from y 60 to 90."},
+    {"what": "Gave the two door strokes one span (y 90.5 to 98.8) and drew every stroke at W, 5.5 px", "why": "DR-03 equal repeats and one line weight. The doors measure 90.6 to 98.6 and 90.4 to 99.0; the icon measures 5.0 px, so the trace's ink area runs about 8 percent heavier, as the guide expects for sheet 05."}
+  ],
+  "notes": "Kept: the four-lobed cloud, eight streaks and two drops at their drawn places, the open gap between the left wall and the roof slope, the two door strokes, the band on the right-facing slope ending at the eave, the vertical under the band, the right wall, and two flood waves. The catalogue's 'simple doorway/window' is the pair of short strokes. Black and red sheets agree on the band's extent; the red sheet's band foot reads dark where the black eave crosses it, which the layering reproduces."
+}

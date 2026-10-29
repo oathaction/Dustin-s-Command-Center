@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-38" viewBox="0 0 213 97">
+  <!-- R-38 Pricing-Data Limits. Crop 213 x 97 px; ink box x 8..205, y 8..89.
+       Construction: two upright price tags face each other left and right. Each has clipped upper shoulders, a black attachment hole and a dollar sign inside. A short dashed horizontal data link crosses the gap between tags. A circular prohibition symbol sits centrally on that link, with a diagonal slash.
+       Red: both dollar signs and the central prohibition circle/slash. Tag contours, holes and short dashed link strokes stay black. Preserve the circle as an explicit interrupted-link marker.
+       The two tags are mirror images about x 106.05: each tag's flat top sits 1.78 px toward the centre,
+       so its outer shoulder is longer than its inner one, as drawn on the sheet. The dollars are one glyph
+       (not mirrored): two ellipses rx 6.28, ry 6.04 joined by their internal tangent.
+       The link group (dashes, ring and slash) is centred on the same axis, with equal gaps each side. -->
+  <g data-role="base">
+    <path id="tag-left" d="M28.89 14.4 H44.16 L59.23 30.52 V79.27 A6.5 6.5 0 0 1 52.73 85.77 H16.76 A6.5 6.5 0 0 1 10.26 79.27 V35.63 Z"/>
+    <path id="tag-right" d="M183.21 14.4 H167.94 L152.87 30.52 V79.27 A6.5 6.5 0 0 0 159.37 85.77 H195.34 A6.5 6.5 0 0 0 201.84 79.27 V35.63 Z"/>
+    <line id="string-left" x1="35" y1="10.63" x2="35" y2="23.9"/>
+    <circle id="hole-left" class="fill" cx="35" cy="23.9" r="5"/>
+    <line id="string-right" x1="177.1" y1="10.63" x2="177.1" y2="23.9"/>
+    <circle id="hole-right" class="fill" cx="177.1" cy="23.9" r="5"/>
+    <line id="dash-left" x1="71.4" y1="45.5" x2="79.05" y2="45.5"/>
+    <line id="dash-right" x1="133.05" y1="45.5" x2="140.7" y2="45.5"/>
+  </g>
+  <g data-role="accent">
+    <path id="dollar-left-s" d="M40.82 48.33 A6.28 6.04 0 1 0 33.65 56.49 L36.35 57.06 A6.28 6.04 0 1 1 29.03 64.83"/>
+    <line id="dollar-left-bar-top" x1="35" y1="40.31" x2="35" y2="44.55"/>
+    <line id="dollar-left-bar-bottom" x1="35" y1="69" x2="35" y2="72.19"/>
+    <path id="dollar-right-s" d="M182.92 48.33 A6.28 6.04 0 1 0 175.75 56.49 L178.45 57.06 A6.28 6.04 0 1 1 171.13 64.83"/>
+    <line id="dollar-right-bar-top" x1="177.1" y1="40.31" x2="177.1" y2="44.55"/>
+    <line id="dollar-right-bar-bottom" x1="177.1" y1="69" x2="177.1" y2="72.19"/>
+    <circle id="no-ring" cx="106.05" cy="45.5" r="16.1"/>
+    <line id="no-slash" x1="117.43" y1="34.12" x2="94.67" y2="56.88"/>
+  </g>
+</svg>

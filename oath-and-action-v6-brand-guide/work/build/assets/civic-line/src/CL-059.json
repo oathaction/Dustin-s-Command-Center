@@ -1,0 +1,31 @@
+{
+  "id": "CL-059",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.75 to 6.0 px; the trace's ink area is 0.95 of the sheet's."
+    },
+    {
+      "what": "Made the bank and the two branches symmetric about x 93.5: pediment apex (93.5, 10.3) with base corners 37.7 px either side, four columns 19.53 px apart, base line 38.35 px either side",
+      "why": "DR-03 symmetry and equal repeats. Measured: pediment slopes 33.26 and 33.23 deg meeting at x 93.3; column spacings 19.59, 19.66 and 19.35 px; branch pairs centred on x 93.7. Moves are 0.3 px or less."
+    },
+    {
+      "what": "Made the house symmetric about x 35.98 (walls 11.31 and 60.65, apex 112.2, eaves 132.65) and levelled the door's top at y 142.4",
+      "why": "DR-03. The roof slopes measure 39.3 and 39.9 deg; the door's top tilts 6.6 deg (1 px over its width)."
+    },
+    {
+      "what": "Drew the factory roof as three teeth with vertical drops at x 127.05, 144.88 and 162.7 (17.83 px apart), peaks at y 123.9 and valleys at 134.9; the first tooth rises from the left wall's top",
+      "why": "DR-03 equal repeats. The drops measure x 127.05, 145.6 and 162.7; the rises measure 34.4, 32.8 and 31.2 deg; peaks 123.35 to 124.15, valleys 134.85 to 134.95. The middle drop moves 0.7 px. The third valley keeps its short flat foot where the tall block's diagonal starts (x 162.7 to 165.0)."
+    },
+    {
+      "what": "Ended the left branch at y 104.8, above the house's roof",
+      "why": "Judgement between the sheets. The black sheet's branch ends there; the red sheet adds a faint pink smear (under half strength) from y 107 to 113 toward the roof's apex, which reads as a raster ghost, not a stroke."
+    },
+    {
+      "what": "Gave the branches' corners a 2.5 px radius on the centreline",
+      "why": "Measured from the outer edge along each corner's diagonal (outer radius 5.1 to 5.4 px)."
+    }
+  ],
+  "notes": "Kept as drawn: there is no single central stem; two red L-shaped branches start side by side under the bank (x 87.4 and 99.6), run out level at y 93.43 and drop toward the two buildings, the left one stopping well above the house's apex and the right one above the factory's middle tooth. The catalogue describes a stem that branches; the sheet shows two separate branches, and the image controls. The house has no ground line; its walls and door end open at y 156.5. The factory's tall block and the three teeth are one closed outline."
+}

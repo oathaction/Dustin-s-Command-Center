@@ -1,0 +1,71 @@
+{
+  "id": "CL-003",
+  "label": "Registration",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:06:51+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9513,
+      "red_iou_1x": 0.903,
+      "edge_mean_px": 0.12,
+      "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:07:07+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9513,
+      "red_iou_1x": 0.903,
+      "edge_mean_px": 0.12,
+      "edge_p95_px": 0.354
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:07:07+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; card opening at the badge, rule lengths and check angles match"
+    }
+  ],
+  "last_build": "2026-10-29T06:07:07+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9513,
+    "red_iou_1x": 0.903,
+    "bake_check_iou_1x": 0.9996,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9707,
+    "edge_mean_px": 0.12,
+    "edge_p95_px": 0.354,
+    "edge_max_px": 0.707,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the verification badge ring and check at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The badge ring measures 6.0 to 6.25 px and the check's short arm 6.2 px on both sheets; the card and rules measure 5.5 px. The ring keeps its fitted centreline (centre 141.35, 84.8, r 24.04), so its outer edge sits about 0.3 px inside the sheet's."
+    },
+    {
+      "what": "Gave all four card corners one radius, 6.3 px",
+      "why": "DR-03 equal repeats. Corner fits give 6.1 to 6.5 px."
+    },
+    {
+      "what": "Spaced the three information rules evenly at y 30.05, 47.08 and 64.1, with one shared left end, x 80.75",
+      "why": "DR-03 equal spacing. Measured centrelines at 30.06, 47.13 and 64.07; the staggered right ends stay as drawn (135.13, 128.37, 108.37)."
+    },
+    {
+      "what": "Centred the head over the shoulders at x 46.72",
+      "why": "DR-03. The head measures x 46.82 and the shoulders 46.63."
+    }
+  ],
+  "source_notes": "Kept: the card as one open contour that stops short of the badge on its bottom edge (x 107.63) and right edge (y 52.25), with clear ground between each end and the ring; the badge drawn as a whole circle outside the card corner; the check's own angles (short arm 45 deg, long arm 133.5 deg, about 88 deg at the vertex, not squared); the open shoulder bottoms. Both sheets place the ring within 0.25 px of each other; red is the ring and check only."
+}

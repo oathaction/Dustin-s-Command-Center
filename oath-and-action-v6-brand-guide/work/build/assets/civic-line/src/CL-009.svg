@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-009" viewBox="0 0 182 153">
+  <!-- CL-009 Safe Seats. Crop 182 x 153 px; ink box x 8..174, y 8..145.
+       Construction: an irregular, approximately square district boundary made of orthogonal stair-step contours. Inside it is a small office/legislative chair: tall rounded-rectangle back, short arm supports, a seat baseline and two short downward supports. The chair occupies the central lower portion of the district shape. Preserve the distinctive stepped perimeter.
+       Red: the filled lower part of the chair’s back/seat area visible inside its black outline. The district and chair framing remain black. This is the chair-within-a-district drawing shown in the source. -->
+  <g data-role="base">
+    <!-- District: one stepped contour, orthogonal corners filleted r 4.0, chamfers at 45 deg.
+         It starts at the spur tip (49.5, 59.57) and closes by running down x 42.89 and diagonally into the spur. -->
+    <path id="district" d="M49.5 59.57 L20.78 59.57 A4 4 0 0 0 16.78 63.57 L16.78 74.8 L11.19 80.39 L11.19 100.36 A4 4 0 0 0 15.19 104.36 L24.5 104.36 L31.01 110.87 L31.01 126.08 A4 4 0 0 0 35.01 130.08 L40.7 130.08 A4 4 0 0 1 44.7 134.08 L44.7 137.6 A4 4 0 0 0 48.7 141.6 L65.36 141.6 A3.94 3.94 0 0 0 69.3 137.66 L69.3 137.66 A3.94 3.94 0 0 1 73.23 133.73 L146.43 133.73 A4 4 0 0 0 150.43 129.73 L150.43 105.73 L157.72 98.44 L167.31 98.44 A4 4 0 0 0 171.31 94.44 L171.31 64.54 A4 4 0 0 0 167.31 60.54 L156.57 60.54 L149.2 53.17 L149.2 38.44 L139.97 29.21 L127.19 29.21 A4 4 0 0 1 123.19 25.21 L123.19 14.69 A4 4 0 0 0 119.19 10.69 L68.34 10.69 A4 4 0 0 0 64.34 14.69 L64.34 20.44 A4 4 0 0 1 60.34 24.44 L53.12 24.44 A3.29 3.29 0 0 0 49.83 27.73 L49.83 31.02 L42.89 37.96 L42.89 52.36 L47.28 59.57"/>
+    <!-- Chair, axis x 93.15. -->
+    <path id="back" d="M75.58 84 V50.88 A7.3 7.3 0 0 1 82.88 43.58 H103.43 A7.3 7.3 0 0 1 110.73 50.88 V84 Z"/>
+    <path id="seat" d="M65.22 72 L64.02 74.5 V91.7 A5.9 5.9 0 0 0 69.92 97.6 H116.38 A5.9 5.9 0 0 0 122.28 91.7 V74.5 L121.08 72"/>
+    <line id="leg-left" x1="73.52" y1="97.6" x2="73.52" y2="114.25"/>
+    <line id="leg-right" x1="112.78" y1="97.6" x2="112.78" y2="114.25"/>
+  </g>
+  <g data-role="accent">
+    <!-- Red fill of the chair back's lower part, between the inner edges of the back's sides, over the back's bottom stroke. -->
+    <path id="seat-fill" class="fill" d="M78.33 62.3 H107.98 V81.25 A5.5 5.5 0 0 1 102.48 86.75 H83.83 A5.5 5.5 0 0 1 78.33 81.25 Z"/>
+  </g>
+</svg>

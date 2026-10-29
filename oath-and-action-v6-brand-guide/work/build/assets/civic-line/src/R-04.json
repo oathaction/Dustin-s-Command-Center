@@ -1,0 +1,15 @@
+{
+  "id": "R-04",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Traced the map outline and district boundaries as straight runs between the sheet's corners, keeping every step and short slant; only runs within 1 deg of level or plumb were set exactly level or plumb (outer sides, top edges, the boundaries' level runs)",
+     "why": "DR-03 straight lines, while keeping the catalogue's 'particular abstract map shape'. Corners are the crossings of the fitted runs; slants of 2 to 6 deg (for example the left boundary's lowest run, 2.7 deg) stay as drawn."},
+    {"what": "Ended both red boundaries flat at the outline's outer edge, painted over the black outline where they meet it",
+     "why": "The red sheet shows the red boundary lines crossing the full width of the black outline at all three meeting points (left side, right side, top edge)."},
+    {"what": "Made the residents symmetric about x 77.6: the two side residents equal (head r 7.76, shoulders a half-round of r 13.6 into short plumb sides) and the middle resident larger and higher (head r 8.74, shoulders r 14.4)",
+     "why": "DR-03 equal repeats and symmetry. Side heads fit r 7.75 and 7.77 at x 39.89 and 115.25; the middle head fits r 8.74 at x 77.64. Shoulder fits are rough (rms 0.4 px) because each is a half-round on plumb sides, which the trace now draws exactly. Each half-round is written as two quarter arcs so every renderer draws it the same."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px, including the district boundaries",
+     "why": "DR-03 one line weight. The sheet draws the outline at 4.75 to 5.5 px and the interior boundaries lighter, 3.9 to 4.5 px; W closes no gap here, so no data-w is set. This widens the red lines by about 1.2 px, which is most of why red IoU sits at 0.71 and the ink area at 1.10."}
+  ],
+  "notes": "Kept as drawn: the map's open bottom (both sides stop at y 96, above the residents); the boundary network meeting at one junction (78.44, 52.8), its left arm reaching the left side and its right arm stepping down to the right side; three residents overlapping the map's lower edge, the middle one standing higher and larger; residents' open bottoms. Judgement for the reviewer: the interior boundaries read as a lighter weight on both sheets; if that is wanted as a deliberate map hierarchy, data-w of about 4.7 on the two red lines would restore it."
+}

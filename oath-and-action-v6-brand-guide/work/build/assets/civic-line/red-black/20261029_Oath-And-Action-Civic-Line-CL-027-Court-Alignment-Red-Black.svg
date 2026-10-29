@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-027" data-id="CL-027" width="128" height="128" viewBox="0 0 128 128">
+  <title>Court Alignment</title>
+  <desc>Oath &amp; Action Civic Line CL-027 Court Alignment. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <line x1="52.205" y1="36.218" x2="52.205" y2="41.141" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.087" y1="45.235" x2="74.323" y2="45.235" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.205" y1="45.235" x2="52.205" y2="91.684" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="20.656,71.287 31.539,48.862 42.423,71.287" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.749 71.287 H43.33 A12.57 12.57 0 0 1 19.749 71.287 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="61.987,71.287 72.871,48.862 83.754,71.287" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M61.081 71.287 H84.661 A12.57 12.57 0 0 1 61.081 71.287 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M43.885 91.684 V91.294 C43.885 87.712 46.381 86.176 52.205 86.176 C58.029 86.176 60.525 87.712 60.525 91.294 V91.684" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="42.155" y1="91.684" x2="62.255" y2="91.684" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.521 56.319 H107.091 A0.975 0.975 0 0 1 108.065 57.293 V90.87 A0.975 0.975 0 0 1 107.091 91.845 H75.819 A0.975 0.975 0 0 1 74.845 90.87 V84.349" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="90.319" y1="63.722" x2="101.32" y2="63.722" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="90.319" y1="70.044" x2="101.32" y2="70.044" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="97.192" cy="81.181" r="4.387" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

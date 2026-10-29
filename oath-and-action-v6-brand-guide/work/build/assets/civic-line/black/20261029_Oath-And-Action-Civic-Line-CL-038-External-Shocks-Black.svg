@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-038" data-id="CL-038" width="128" height="128" viewBox="0 0 128 128">
+  <title>External Shocks</title>
+  <desc>Oath &amp; Action Civic Line CL-038 External Shocks. Traced vector reconstruction from the Civic Line reference sheet 02, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M71.574 30.75 C70.78 33.007 69.897 34.488 68.24 35.755 C65.667 37.725 62.304 38.514 59.228 39.299 C52 41.141 40.6 43.773 37.296 51.318 C36.418 53.311 36.277 55.768 36.925 57.869 C40.054 68.036 56.787 65.272 57.25 73.699 C57.342 75.395 56.631 77.067 55.529 78.334 C52.639 81.658 46.473 84.115 42.559 86.371 C39.167 88.321 35.941 90.573 32.899 93.029" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.161 30.867 C86.498 35.453 84.588 38.524 80.986 41.049 C78.992 42.447 76.999 43.339 74.708 44.134 C70.594 45.562 58.307 47.726 58.648 53.18 C58.756 54.866 59.969 56.133 61.349 56.947 C64.512 58.814 70.063 59.584 73.777 60.983" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.92 51.601 C48.057 53.321 47.95 54.34 48.618 56.172" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80.669 82.18 L79.304 84.617 L80.718 86.956 L79.012 89.588 Q78.329 90.417 76.916 90.466 L73.017 90.612 Q72.042 90.709 71.311 91.44 L65.413 97.484" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="73.114,79.991 65.75,76.209 72.807,75.478 69.639,67.348 76.185,71.36 80.523,57.24 84.861,71.36 91.406,67.348 88.238,75.478 95.296,76.209 87.931,79.991" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

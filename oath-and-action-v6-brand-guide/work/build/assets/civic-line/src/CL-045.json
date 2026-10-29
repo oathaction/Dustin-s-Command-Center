@@ -1,0 +1,31 @@
+{
+  "id": "CL-045",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.5 to 6.0 px."
+    },
+    {
+      "what": "Made the front tag upright and symmetric about x 36.2: sides x 10.5 and 61.9, shoulders at one slope meeting the flat top at x 30.98 and 41.42 (y 28.25) and the sides at y 49.4",
+      "why": "DR-03 symmetry. The right side leans 0.78 deg (x 62.3 at the top, 61.5 at the bottom) and the right shoulder sits about 0.7 px right of the left shoulder's mirror image. The right shoulder moves up to 1.2 px left at y 35."
+    },
+    {
+      "what": "Kept the back tag's lean as drawn, about 3 deg clockwise: bottom at 2.24 deg, right side at 92.99 deg, each a straight line from the fits",
+      "why": "The catalogue says the tags 'lean or offset slightly', and both long edges of the back tag tilt the same way. The short top edge measures -2.6 deg on a 12 px run and is drawn from its fitted end points."
+    },
+    {
+      "what": "Gave the two tag holes one radius, 5.5 px",
+      "why": "DR-03 equal repeats. The filled holes measure 11.1 and 11.0 px across."
+    },
+    {
+      "what": "Gave the three circuit terminals one radius, 8.45 px, and put the right terminal's centre on the branch line, y 83.42",
+      "why": "DR-03. Ring fits give 8.69 (top), 8.48 (right) and 8.17 px (lower); the right ring's fitted centre sits 0.65 px above the branch it closes."
+    },
+    {
+      "what": "Drew the dollar sign as an S of six elliptical arcs, point-symmetric about (36.3, 83.3), with short bars above and below on x 36.2",
+      "why": "Fitted to the red sheet's centreline: bowls about 7.0 to 7.4 px wide and 6.3 px tall, terminals flaring slightly past the bowls. The bars stop at the S, as drawn."
+    }
+  ],
+  "notes": "Kept as drawn: the string from the front hole to the front tag's top, and the peaked loop that rises from that corner to the back tag's top-left corner; the three strokes meet in one blob at about (42, 28) and the trace keeps their fitted end points there. The back tag's left shoulder stops about 2 px short of the front tag's right side (occlusion gap), and its bottom edge runs into the front tag's bottom-right corner with the small notch the sheet shows. The circuit keeps one stem, one rounded elbow down to the lower terminal and one branch right; the red top ring lies over the black stem, as on the red sheet. Red placement follows the red sheet."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "R-14",
+  "label": "Automatic Funding",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:23:27+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.925,
+      "red_iou_1x": 0.9475,
+      "edge_mean_px": 0.162,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:23:51+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.925,
+      "red_iou_1x": 0.9475,
+      "edge_mean_px": 0.162,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:23:51+00:00",
+      "by": "T5",
+      "note": "overlay checked; open card corner and arrow exit match"
+    }
+  ],
+  "last_build": "2026-10-29T06:23:51+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.925,
+    "red_iou_1x": 0.9475,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9762,
+    "edge_mean_px": 0.162,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 2.062,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the dollar sign's S as two equal elliptical bowls (7.75 x 7.0 px radii) stacked on one vertical axis at x 37, point-symmetric about their meeting point (37, 42.8), with equal 4.6 px bar stubs above and below",
+      "why": "DR-03 symmetry. The bowls measure about 7.8 x 6.95 and 7.7 x 7.0 px; the stubs 4.4 and 4.8 px. The sheet's bar shows only above and below the S, so it is not drawn through it."
+    },
+    {
+      "what": "Made the arrowhead a symmetric right-angle chevron, arms 14.9 px at 45 deg either side of the shaft, vertex at (179.2, 76.65)",
+      "why": "DR-03 symmetry. The arms measure 45.5 to 47.1 deg and 134.3 to 134.7 deg."
+    },
+    {
+      "what": "Made the two information rules equal, x 61.8 to 138.95",
+      "why": "DR-03 equal repeats. They measure 61.75 to 138.87 and 61.87 to 139.0."
+    },
+    {
+      "what": "Gave the card one corner radius, 5.5 px",
+      "why": "DR-03. Diagonal profiles give 5.4 to 5.9 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The card's left edge measures 6.0 px, the arrowhead arms 6.0 to 6.5 px and the bottom edge 5.0 px."
+    }
+  ],
+  "source_notes": "Kept: the card open at its lower right, with the right edge stopping at y 50.75 and the bottom edge at x 145.87, so the red funding arrow runs out through the opening and its arrowhead sits wholly outside the card. The arrow shaft starts inside the card at x 28.25. Red is the whole arrow: shaft and both arrowhead arms. Both sheets agree."
+}

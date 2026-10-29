@@ -1,0 +1,23 @@
+{
+  "id": "R-15",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Drew the lens as a true circle, centre (74.04, 48.17), r 37.54",
+      "why": "DR-03 true circles. An annulus fit gives r 37.54 with rms 0.13 px; an ellipse fit gives 37.64 x 37.44."
+    },
+    {
+      "what": "Drew the handle as a straight rounded outline on the lens's 135 deg diagonal: parallel sides 13.3 px apart, a flat end with 2 px corners next to the lens and a round far end",
+      "why": "DR-03 straight lines and parallels. The sides measure 13.34 px apart with slopes under 0.001; the handle's centre line sits 1.4 px off the lens diagonal, as drawn."
+    },
+    {
+      "what": "Made the first two information rules equal, x 125.5 to 170.45",
+      "why": "DR-03 equal repeats. They measure 125.75 to 170.37 and 125.25 to 170.5. The third rule stays shorter and further left, as drawn."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px, including the check and the neck",
+      "why": "DR-03 one line weight. The check measures 6.4 to 6.5 px and the short neck between lens and handle 7.3 px; both are thinner in the trace by up to 0.9 px a side."
+    }
+  ],
+  "notes": "Kept: the handle sloping down-left, the hollow handle with its visible inner slot, the short neck joining it to the rim, the page with no left edge (the lens covers it): its top edge starts at x 119.85 clear of the lens and its bottom edge at x 96.65 below it, three rules with the last one shorter. Red is the check only; lens, handle, page and rules are black. Both sheets agree."
+}

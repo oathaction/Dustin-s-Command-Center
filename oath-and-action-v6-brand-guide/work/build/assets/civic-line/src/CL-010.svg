@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-010" viewBox="0 0 190 125">
+  <!-- CL-010 Decisive Primaries. Crop 190 x 125 px; ink box x 8..182, y 8..117.
+       Construction: three small hollow circular inputs vertically aligned at left. Each has a rightward path with rounded orthogonal bends; these paths converge into one narrow central outlet. A single short rightward arrow emerges from that outlet and points toward a larger hollow output circle at right. The top path descends and bottom path ascends into the merger.
+       Red: the larger right-hand output circle. Preserve the three black inputs, the three-to-one route geometry and the separate black arrowhead before the output circle. -->
+  <g data-role="base">
+    <!-- Inputs: three equal circles r 10.3 at x 20.9, 41.13 px apart. Routes leave each circle's right side;
+         the top and bottom routes mirror about y 62.9 and meet in a small point at (101.45, 62.9); the middle route stops short at x 62.37. -->
+    <circle id="input-top" cx="20.9" cy="21.77" r="10.3"/>
+    <circle id="input-middle" cx="20.9" cy="62.9" r="10.3"/>
+    <circle id="input-bottom" cx="20.9" cy="104.03" r="10.3"/>
+    <path id="route-top" d="M31.2 21.77 L63.14 21.77 A5.8 5.8 0 0 1 68.94 27.57 L68.94 40.81 A5.8 5.8 0 0 0 74.74 46.61 L93.35 46.61 A5.7 5.7 0 0 1 99.05 52.3 L99.05 58 L101.45 62.9"/>
+    <line id="route-middle" x1="31.2" y1="62.9" x2="62.37" y2="62.9"/>
+    <path id="route-bottom" d="M31.2 104.03 L63.14 104.03 A5.8 5.8 0 0 0 68.94 98.23 L68.94 84.99 A5.8 5.8 0 0 1 74.74 79.19 L93.35 79.19 A5.7 5.7 0 0 0 99.05 73.5 L99.05 67.8 L101.45 62.9"/>
+    <line id="shaft" x1="101.45" y1="62.9" x2="137.5" y2="62.9"/>
+    <polyline id="arrowhead" points="128.8,53.5 137.5,62.9 128.8,72.3"/>
+  </g>
+  <g data-role="accent">
+    <circle id="output" cx="162.78" cy="62.9" r="16.56"/>
+  </g>
+</svg>

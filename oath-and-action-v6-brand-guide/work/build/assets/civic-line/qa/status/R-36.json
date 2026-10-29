@@ -1,0 +1,101 @@
+{
+  "id": "R-36",
+  "label": "Public Investment",
+  "state": "traced",
+  "tracer": "T6",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:34:31+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8914,
+      "red_iou_1x": 0.9157,
+      "edge_mean_px": 0.252,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:35:51+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8966,
+      "red_iou_1x": 0.9157,
+      "edge_mean_px": 0.244,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:36:31+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8966,
+      "red_iou_1x": 0.9157,
+      "edge_mean_px": 0.244,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:36:31+00:00",
+      "by": "T6",
+      "note": "overlay checked; bulb taper, base, bridge kinks and dollar match; rules evened"
+    }
+  ],
+  "last_build": "2026-10-29T06:36:31+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8966,
+    "red_iou_1x": 0.9157,
+    "bake_check_iou_1x": 0.9989,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.042,
+    "edge_mean_px": 0.244,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.768,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the bulb symmetric about x 40.9: a true circle (r 23.34, centre y 55.88) for the glass, then mirrored cubic tapers that turn vertical at the neck (x 30.75 and 51.05)",
+      "why": "DR-03 circles and symmetry. The glass's circle fit has rms 0.06 px; the taper fit (both sides mirrored onto one) has rms 0.14 px. Rays, filament and base share the axis, which moves the top ray and filament stem 0.25 px."
+    },
+    {
+      "what": "Placed the two diagonal rays at exactly 45 degrees and mirrored, on radial lines through the glass centre",
+      "why": "DR-03 symmetry. They measure 45.1 and 135.1 degrees; ends differ by up to 0.3 px between sides."
+    },
+    {
+      "what": "Drew the bridge symmetric about the mast, x 114.2: cables as one mirrored polyline (apex at y 52.62, kinks at the hangers 15.4 px out, pier tops, then flat end stubs), piers 33.3 px out, deck level at y 95.1",
+      "why": "DR-03 symmetry. Measured axes differ by part: cables 114.43, mast 114.2, piers 113.79, ends 114.0. The kinks fit 15.97 and 15.65 px out while the hangers stand 14.93 and 15.05 px out, so both now meet at 15.4. Cable edges move up to 0.5 px and the hangers up to 0.5 px."
+    },
+    {
+      "what": "Kept the mast's short tip above the point where the cables meet",
+      "why": "The sheet's peak rises 3.2 px above the cables' meeting point (cable centrelines cross the axis at y 52.6 to 53.0; ink top 45.1), which is the mast's own round end."
+    },
+    {
+      "what": "Spaced the four ledger rules evenly, 13.95 px apart from y 56.57",
+      "why": "DR-03 equal repeats. Measured 57.05, 69.94, 84.15 and 98.81 (gaps 12.89 to 14.66); no rule moves more than 0.58 px. Rule lengths stay as drawn: long, medium and two short."
+    },
+    {
+      "what": "Gave the ledger's three corners one radius, 4 px",
+      "why": "DR-03. Corner fits read 5.4 to 5.65 px with rms up to 0.4 px; the overlay shows the sheet's corners squarer than 5.5, and 4 px matches them."
+    },
+    {
+      "what": "Built the dollar sign from two equal circles (r 5.85, on x 209.2) joined by their internal tangent, with bar stubs above and below",
+      "why": "DR-03. Fits to the S centreline give bowl radii 5.75 to 5.8 and a spine slope of 0.26, which the internal tangent of these circles reproduces (0.25). Terminals keep their drawn angles, -26.6 and 161.7 degrees. The bar shifts 0.2 px right to the S's axis."
+    },
+    {
+      "what": "Drew the bulb base as a W rectangle (x 31 to 50.8, y 91.65 to 102.9) and the cap below it as a small rounded rectangle whose opening is the screw slot",
+      "why": "DR-03 one line weight. The sheet's cap reads about 6 px thick round a 4 by 3.4 px slot; at W the slot is 4 by 3.2 px."
+    },
+    {
+      "what": "Drew every stroke at W, 5.5 px",
+      "why": "DR-03 one line weight. The icon measures 5.25 px."
+    }
+  ],
+  "source_notes": "Kept: three separate subjects; the bulb's three rays; the filament T; the base box and slotted cap in black; the bridge's single mast, two hangers, two piers, deck and flattened cable ends past the piers; the ledger's open frame (right side stops at y 72.7, bottom line stops short of the right side); four rules; the dollar. Red follows the red sheet: glass, rays and filament are red, and red stops at the base's top edge (y 89.2), so the accent group is drawn first and the black base covers the feet of the red strokes. Black and red sheets agree."
+}

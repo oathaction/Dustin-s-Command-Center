@@ -1,0 +1,13 @@
+{
+  "id": "R-33",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Mirrored the whole group about x 99.75: centre figure, table, mid figures (heads at 49.98 and 149.52) and foreground figures (31.55 and 167.95)", "why": "DR-03 symmetry. Measured axes: table 99.72, centre head 99.68, mid heads 49.85 and 149.38, foreground bodies 31.52 and 167.93. No part moves more than 0.25 px."},
+    {"what": "Gave each pair of matching heads one radius: centre 11.0, mid 10.5, foreground 11.0 px", "why": "DR-03 equal repeats. Fits give 10.96; 10.58 and 10.37; 10.96 and 11.02."},
+    {"what": "Drew the foreground bodies as one mirrored half-ellipse arch (rx 20.92, ry 18.29) on vertical sides, and the centre body as a half-ellipse arch (rx 19.39, ry 16.23) on vertical sides", "why": "DR-03. Arch fits give rx 20.85 and 20.99, ry 18.52 and 18.06 (rms 0.06 px) for the foreground pair, and rx 19.39, ry 16.23 (rms 0.09 px) for the centre. The apparent 2 to 4 degree outward lean of the lower sides in a straight-line fit is the ellipse's own curve above its centre line, so vertical sides below it match."},
+    {"what": "Drew both mid figures' shoulders as one mirrored open elliptical arc (rx 18.74, ry 12.51), from a short stub end under the outer side of the head to an end turned down toward the table", "why": "DR-03 symmetry. The left arc fits rx 18.74, ry 12.51 at rms 0.09 px; the right one sits up to 0.3 px higher on its descent. The stub ends measure 12.6 and 12.1 px from their heads' axes; both now sit 12.35 px out."},
+    {"what": "Drew the table as a true ellipse, centre (99.75, 74.63), rx 43.65, ry 9.95, with its two legs splayed 4 degrees outward and mirrored", "why": "DR-03. A least-squares ellipse fit gives rx 43.59, ry 9.94; the legs measure 4.1 and 3.9 degrees of splay with straight centrelines (rms 0.07 px), so the splay is drawn and kept."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.27 px."}
+  ],
+  "notes": "Kept: five figures (one centre, two mid, two foreground), the mid figures' open shoulder ends and the gap between those ends and the table, the foreground figures' open feet, and the table's two splayed legs. The red figure is drawn before the base group so the black table top lies over the feet of its sides, matching the red sheet where red stops at the table's top edge. Half-ellipse arches are written as two quarter arcs so the exported arc centres stay exact. Black and red sheets agree."
+}

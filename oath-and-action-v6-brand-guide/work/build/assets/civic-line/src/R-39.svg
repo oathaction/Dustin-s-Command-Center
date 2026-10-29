@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-39" viewBox="0 0 237 109">
+  <!-- R-39 Digital Service Teams. Crop 237 x 109 px; ink box x 8..229, y 8..101.
+       Construction: a landscape monitor/service screen occupies the left. Inside is an outline ID portrait at left and several horizontal interface rules at right. A small stand descends below the screen. Two small outline people stand together outside the screen at right, their shoulders partially overlapping.
+       Red: the horizontal interface rules to the right of the portrait. Screen, portrait, stand and the two team members remain black. Preserve the portrait-in-screen plus people-outside composition.
+       The sheet shows three people outside the screen: a taller centre figure and two smaller figures
+       behind it, whose inner shoulders stop short of the centre figure's body. Group mirrored about x 182.18,
+       all feet on y 95.85. Only the middle interface rule is red on the red sheet; the others stay black. -->
+  <g data-role="base">
+    <rect id="screen" x="10.55" y="11.21" width="120.02" height="75.39" rx="6.3"/>
+    <line id="stand" x1="70.56" y1="86.6" x2="70.56" y2="98.5"/>
+    <line id="stand-base" x1="59.12" y1="98.5" x2="82" y2="98.5"/>
+    <circle id="portrait-head" cx="46.86" cy="35.55" r="9.55"/>
+    <path id="portrait-body" d="M29.36 71.37 V63.17 A17.5 14.44 0 0 1 46.86 48.73 A17.5 14.44 0 0 1 64.36 63.17 V71.37"/>
+    <line id="rule-1" x1="81.37" y1="33.49" x2="113.25" y2="33.49"/>
+    <line id="rule-3" x1="81.37" y1="63.63" x2="113.25" y2="63.63"/>
+    <circle id="left-head" cx="152.28" cy="60.38" r="8.77"/>
+    <path id="left-body" d="M138.2 95.85 V89 A12 12 0 0 1 150.2 77 H154.75"/>
+    <circle id="right-head" cx="212.08" cy="60.38" r="8.77"/>
+    <path id="right-body" d="M226.16 95.85 V89 A12 12 0 0 0 214.16 77 H209.61"/>
+    <circle id="centre-head" cx="182.18" cy="49.26" r="11.32"/>
+    <path id="centre-body" d="M163.62 95.85 V84.33 A18.56 16.92 0 0 1 182.18 67.41 A18.56 16.92 0 0 1 200.74 84.33 V95.85"/>
+  </g>
+  <g data-role="accent">
+    <line id="rule-2" x1="81.37" y1="48.56" x2="113.25" y2="48.56"/>
+  </g>
+</svg>

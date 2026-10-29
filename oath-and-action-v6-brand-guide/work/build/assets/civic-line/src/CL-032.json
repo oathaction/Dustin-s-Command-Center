@@ -1,0 +1,17 @@
+{
+  "id": "CL-032",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Put the return sheet's top edge on one line, y 28.9, from its corner to the front sheet's edge",
+     "why": "DR-03 straight lines. The sheet steps it: y 29.55 left of the fold line and y 28.4 (and about 1 px heavier) right of it. Each part moves about 0.6 px."},
+    {"what": "Spaced the five rules evenly at 16.31 px (y 28.4 to 93.64), started all at x 53.5, and gave the long pair one end (139.13) and the short three one end (91.5)",
+     "why": "DR-03 equal repeats. Spacings measure 16.25, 16.49, 16.12, 16.37 px; ends agree to 0.1 px."},
+    {"what": "Drew the return curl at the foot of the front sheet as a true quarter arc, r 12.28, centred on the fold line's lower end, with the front edge also running straight down to the bottom line",
+     "why": "The sheet bends the front edge's lower end left into the bottom line around the fold line's rounded end. The straight run keeps the front sheet's inner corner; the sheet softens that corner by about 1.5 px, which is the edge max."},
+    {"what": "Rounded the corners: front sheet 4.5 px, return top 6 px, return bottom 7 px (centreline)",
+     "why": "The sheet's outer corners round at about 7 to 9 px on the return and 7 px on the front, wider than a plain round join."},
+    {"what": "Drew the article block as a filled rounded rectangle, 36.35 x 39.45 px, corner radius 3",
+     "why": "Taken from the black sheet's ink edges (x 105.75 to 142.12, y 58.38 to 97.88); the red sheet's block is 0.4 px smaller on the right and bottom."}
+  ],
+  "notes": "Kept: the newspaper's outer return down the left and along the bottom, the single fold line inside it with a free rounded lower end, the light pocket between that end and the curl, two long rules across the top and three short rules beside the block, the block's right edge in line with the long rules' ends. No coin stack: that belongs to R-32. Red: the filled article block only."
+}

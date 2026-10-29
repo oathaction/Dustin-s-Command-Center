@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-18" viewBox="0 0 141 112">
+  <!-- R-18 Emergency-Power Limits. Crop 141 x 112 px; ink box x 8..133, y 8..104.
+       Construction: a tall order/document with several horizontal rules. A large alarm-clock-like circle overlaps its lower-right area. The clock has a short top nub, small upper side projections where visible and two simple hands. The page’s right/lower edges disappear behind the clock.
+       Red: the clock’s circular perimeter, hands and small associated clock accents visible in the source. Document and text rules stay black. Preserve the clock’s overlap and scale. -->
+  <!-- Trace notes: clock a true circle about (106.44, 77.12); ears mirrored at 26.2 deg either side of vertical; ticks black under the ring. -->
+  <g data-role="base">
+    <path id="page" d="M101.23 37.75 L101.23 14.06 A3.0 3.0 0 0 0 98.23 11.06 L13.85 11.06 A3.0 3.0 0 0 0 10.85 14.06 L10.85 98.05 A3.0 3.0 0 0 0 13.85 101.05 L81.05 101.05"/>
+    <line id="rule-1" x1="27.75" y1="27.58" x2="83.7" y2="27.58"/>
+    <line id="rule-2" x1="27.75" y1="41.73" x2="83.7" y2="41.73"/>
+    <line id="rule-3" x1="27.75" y1="55.88" x2="67.15" y2="55.88"/>
+    <line id="rule-4" x1="27.75" y1="70.04" x2="67.15" y2="70.04"/>
+    <line id="rule-5" x1="27.75" y1="84.19" x2="50.63" y2="84.19"/>
+    <line id="tick-left" x1="82.31" y1="77.12" x2="87.13" y2="77.12"/>
+    <line id="tick-right" x1="130.57" y1="77.12" x2="125.75" y2="77.12"/>
+  </g>
+  <g data-role="accent">
+    <circle id="clock" cx="106.44" cy="77.12" r="24.13"/>
+    <line id="nub-left" x1="95.79" y1="55.47" x2="93.5" y2="50.83"/>
+    <line id="nub-right" x1="117.09" y1="55.47" x2="119.38" y2="50.83"/>
+    <polyline id="hands" points="106.4,64.9 106.4,78 109.6,81.2"/>
+  </g>
+</svg>

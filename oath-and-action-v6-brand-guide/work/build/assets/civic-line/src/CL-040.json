@@ -1,0 +1,13 @@
+{
+  "id": "CL-040",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Set the tree symmetric about x 88.6: the platform ring and dot move 0.37 px left, the stem, branches and people up to 0.3 px",
+     "why": "DR-03 symmetry. The ring and dot centre at 88.97; the stem at 88.48; the branch verticals and outer people mirror about 88.4 to 88.5."},
+    {"what": "Made the ring and dot true concentric circles (r 21.05 and 7.9) and gave the two branches one pitch (25.85 deg) with 6.5 px rounded elbows",
+     "why": "DR-03. Ring fit 0.07 px rms; dot 15.9 x 15.75 px; branch slopes measure 25.75 and 25.93 deg."},
+    {"what": "Drew the three people as one figure: heads r 10.4, open shoulder arcs r 18.37 ending 1.7 px below their centres, the outer pair 58.97 px either side of the axis",
+     "why": "DR-03 equal repeats; the catalogue calls for equal heads. Head fits give r 10.28 to 10.53, shoulder fits r 18.30 to 18.49; spacings measure 58.9 and 59.07 px."}
+  ],
+  "notes": "Kept: the middle person 2.3 px lower than the outer two, with its stem running correspondingly longer, as both sheets draw it; each head touching its shoulders; open-bottom shoulders; the stem and both branch ends stopping short of the heads. Red: only the filled dot inside the platform ring; the empty ring around it stays black."
+}

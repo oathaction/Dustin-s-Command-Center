@@ -1,0 +1,75 @@
+{
+  "id": "R-16",
+  "label": "Court Terms & Ethics",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:29:11+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9141,
+      "red_iou_1x": 0.8978,
+      "edge_mean_px": 0.215,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:29:36+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9141,
+      "red_iou_1x": 0.8978,
+      "edge_mean_px": 0.215,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:29:36+00:00",
+      "by": "T5",
+      "note": "overlay checked; symmetric scale, true circles, right pan cut short around badge as drawn"
+    }
+  ],
+  "last_build": "2026-10-29T06:29:36+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9141,
+    "red_iou_1x": 0.8978,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0241,
+    "edge_mean_px": 0.215,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the scale symmetric about x 93.1: post, pivot ring, beam, clock and the two hanging pans, which now sit 58.6 px either side of the axis",
+      "why": "DR-03 symmetry. Post, ring and beam centre at 93.12 to 93.18; the pans sit 59.2 px left and 58.0 px right of that line, so each pan moves about 0.6 px."
+    },
+    {
+      "what": "Drew the beam as one shallow arc (radius 420 px, top at y 31.2) split by the pivot ring, with ends 61.3 px either side of the axis",
+      "why": "DR-03. The sampled centreline follows y = 31.2 + 0.00119 dx squared within 0.1 px on both halves. The ends measure 62.1 px left and 60.4 px right of the axis; each moves about 0.8 px."
+    },
+    {
+      "what": "Gave both pans one shape: hangers from an apex at y 37.75 to a base 46.9 px wide at y 85.6, and a bowl arc of radius 23.8 px centred 4.13 px above the base",
+      "why": "DR-03 equal repeats. Hanger angles measure 63.5, 64.2, 63.6 and 64.3 deg (now 63.9 deg each); the left bowl fits r 23.8 about (33.89, 81.47)."
+    },
+    {
+      "what": "Drew the pivot ring, clock and badge as true circles from the black sheet: r 7.91, 21.59 and 17.7",
+      "why": "DR-03 true circles. Annulus fits have rms 0.06 to 0.13 px. The red sheet's clock and badge fit 0.3 to 0.35 px smaller, its strokes running thinner; geometry follows the black sheet."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The hangers and pan rims measure 5.0 to 5.25 px, the circles 5.4 to 5.7 px."
+    }
+  ],
+  "source_notes": "Kept: the post's gap above the clock (about 3.3 px of clear ground), the clock's short vertical hand and shorter diagonal hand, the badge's check, and the right pan as drawn around the badge: its base stops at x 157.2, its bowl stops partway round, and its right hanger stops at y 83.3, so clear ground surrounds the badge with no overlap. The clock is larger than the badge, as drawn. Red is the clock (circle and hands) and the badge (circle and check); the scale stays black. This is one of the eight icons with low sheet-to-sheet agreement; the difference is the red sheet's thinner strokes, with no feature missing from either sheet."
+}

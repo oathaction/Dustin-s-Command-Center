@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-071" data-id="CL-071" width="128" height="128" viewBox="0 0 128 128">
+  <title>Policy</title>
+  <desc>Oath &amp; Action Civic Line CL-071 Policy. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M84.997 68.143 V37.071 A1.95 1.95 0 0 0 83.047 35.122 H31.062 A1.95 1.95 0 0 0 29.112 37.071 V90.963 A1.95 1.95 0 0 0 31.062 92.912 H56.567" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.508" y1="46.039" x2="75.015" y2="46.039" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.508" y1="56.947" x2="75.015" y2="56.947" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.508" y1="67.855" x2="63.269" y2="67.855" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.508" y1="79.382" x2="60.71" y2="79.382" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="85.509" y1="79.382" x2="99.092" y2="79.382" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="72.968" cy="79.353" r="6.809" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-026" data-id="CL-026" width="128" height="128" viewBox="0 0 128 128">
+  <title>Executive Power</title>
+  <desc>Oath &amp; Action Civic Line CL-026 Executive Power. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="67.056" cy="41.97" r="6.429" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M52.332 66.339 V60.218 A8.023 8.023 0 0 1 60.354 52.195 H73.967 A7.135 7.135 0 0 1 80.147 55.763 L80.45 57.323" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="33.83,72.091 33.83,66.339 60.198,66.339 60.198,72.091" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.721 72.091 H26.373 A0.975 0.975 0 0 0 25.398 73.066 V76.477 A0.975 0.975 0 0 0 26.373 77.452 H74.82" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.556" y1="77.452" x2="29.556" y2="92.464" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M79.416 56.991 V85.553 A0.975 0.975 0 0 0 80.391 86.527 H101.447 A0.975 0.975 0 0 0 102.421 85.553 V57.966 A0.975 0.975 0 0 0 101.447 56.991 H84.349" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="85.933" y1="63.318" x2="96.348" y2="63.318" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="85.933" y1="68.659" x2="96.348" y2="68.659" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M65.487 54.545 C65.755 54.301 68.387 54.301 68.655 54.545 L68.996 55.812 L68.484 57.371 L70.19 65.755 L69.946 66.681 L68.923 67.655 L67.899 68.582 L67.071 69.118 L66.242 68.582 L65.218 67.655 L64.195 66.681 L63.951 65.755 L65.657 57.371 L65.145 55.812 Z" fill="#E63946"/>
+    <polyline points="85.348,80.376 88.37,75.697 89.978,80.523 92.074,78.622 96.558,78.622" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

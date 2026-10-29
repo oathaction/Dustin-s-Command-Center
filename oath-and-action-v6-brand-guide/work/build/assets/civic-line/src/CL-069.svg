@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-069" viewBox="0 0 147 156">
+  <!-- CL-069 Childcare. Crop 147 x 156 px; ink box x 8..139, y 8..148.
+       Construction: one large adult figure at left and a smaller child at right, both with hollow circular heads and rounded open-bottom bodies. The adult’s right arm sweeps down and right in a broad embracing curve, meeting the child’s upper body. Their bodies overlap gently rather than standing as isolated generic people.
+       Red: the adult’s embracing arm stroke. Heads, remaining shoulders and body contours stay black. Preserve the height difference and the low curved meeting point. -->
+  <!-- T4 trace. One contour runs from the adult's left foot over the shoulder, down the adult's right side to a
+       V at (84.9, 102.6), up across the child's shoulder and down the child's right side. Heads are true circles.
+       The red arm is one arc (r 37.27) into a level run; the child's left side shows below it as a short plumb stroke. -->
+  <g data-role="base">
+    <circle id="adult-head" cx="50.5" cy="29" r="17.8"/>
+    <circle id="child-head" cx="111.61" cy="74.19" r="12.68"/>
+    <path id="bodies" d="M10.69 141.63 V80 C12.1 60.38 26.24 53.23 45 55.7 C75.65 59.74 81.51 77.1 84.9 102.6 C98.5 95.8 101 94.72 114.8 94.72 A20.97 20.97 0 0 1 135.77 115.69 V144.75"/>
+    <line id="child-left" x1="85.1" y1="127.5" x2="85.1" y2="144.63"/>
+  </g>
+  <g data-role="accent">
+    <path id="arm" d="M32.62 81.87 A37.27 37.27 0 0 0 69.61 114.6 H101.5"/>
+  </g>
+</svg>

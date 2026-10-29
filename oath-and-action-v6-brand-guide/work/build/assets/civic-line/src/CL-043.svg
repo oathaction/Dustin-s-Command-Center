@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-043" viewBox="0 0 221 145">
+  <!-- CL-043 Digital Government. Crop 221 x 145 px; ink box x 8..213, y 8..137.
+       Construction: a small municipal building forms the left/back layer, with triangular roof, central tall wall, low left wing, window marks and doorway. A landscape browser/service panel overlaps it at lower right. The panel has a top bar, small circular controls, horizontal content rules and a small lower-right rectangular interface element.
+       Red: that small filled rectangular interface element on the service panel. All architecture and browser framing remain black. Preserve the foreground panel obscuring part of the building.
+       Trace: roof is a closed symmetric triangle, apex x 88.55; the tall wall's right edge is a stub
+       that stops short of the panel, and the baseline stops short of the panel's left edge (occlusion gaps). -->
+  <g data-role="base">
+    <polygon id="roof" points="49.1,39.2 88.55,11.2 128.0,39.2"/>
+    <line id="wall-left" x1="56.6" y1="39.2" x2="56.6" y2="123.9"/>
+    <line id="wall-right-stub" x1="120.75" y1="39.2" x2="120.75" y2="47.4"/>
+    <polyline id="wing" points="56.6,65.8 18.8,65.8 18.8,123.9"/>
+    <line id="baseline" x1="10.5" y1="123.9" x2="101.2" y2="123.9"/>
+    <path id="door" d="M78.13 123.9 V95.9 A4 4 0 0 1 82.13 91.9 H94.46 A4 4 0 0 1 98.46 95.9 V123.9"/>
+    <line id="window-1" x1="75.7" y1="56.35" x2="75.7" y2="67.55"/>
+    <line id="window-2" x1="91.4" y1="56.35" x2="91.4" y2="67.55"/>
+    <line id="window-wing" x1="39.45" y1="84.0" x2="39.45" y2="95.2"/>
+    <rect id="panel" x="109.6" y="55.38" width="100.26" height="78.47" rx="4.9"/>
+    <circle id="control-1" class="fill" cx="178.1" cy="65.88" r="3.75"/>
+    <circle id="control-2" class="fill" cx="193.9" cy="65.88" r="3.75"/>
+    <line id="rule-1" x1="123.0" y1="75.45" x2="199.5" y2="75.45"/>
+    <line id="rule-2" x1="123.0" y1="92.0" x2="165.0" y2="92.0"/>
+    <line id="rule-3" x1="123.0" y1="104.65" x2="153.1" y2="104.65"/>
+    <line id="rule-4" x1="123.0" y1="117.3" x2="145.1" y2="117.3"/>
+  </g>
+  <g data-role="accent">
+    <rect id="interface-element" class="fill-stroke" x="168.45" y="105.45" width="26.2" height="12.4"/>
+  </g>
+</svg>

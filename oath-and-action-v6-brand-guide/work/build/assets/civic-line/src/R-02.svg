@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-02" viewBox="0 0 139 118">
+  <!-- R-02 Ranked-Choice Voting. Crop 139 x 118 px; ink box x 8..131, y 8..110.
+       Construction: a broad rectangular ballot/document, slightly wider than tall. Inside, three small rounded rank cells stack down the left, displaying 1, 2 and 3. Each rank has one long horizontal candidate rule to its right. The top rank cell is filled, while the lower two are outlined. Copy the reference numerals’ compact drawn appearance.
+       Red: the top rank cell’s filled background; its numeral 1 is a light/negative-space cutout. Lower cell outlines/numerals, candidate rules and page remain black. Preserve the three preferences. -->
+  <!-- T4 trace. Page x 10.69..127.8, y 10.87..107.36. Three equal rank cells (x 23.2..49.4 ink, 23.87 tall) on
+       equal steps of 27.78 px, each centred 0.45 px below its candidate rule. Cell 1 is a filled rounded square with
+       the numeral 1 cut out (evenodd). Cells 2 and 3 are lighter frames (data-w 4) broken where their numerals
+       reach the frame: cell 2 at the top, cell 3 top and bottom. Numerals 2 and 3 are drawn at data-w 2.6. -->
+  <g data-role="base">
+    <rect id="page" x="10.69" y="10.87" width="117.11" height="96.49" rx="2"/>
+    <line id="rule-1" x1="61.55" y1="30.9" x2="112.3" y2="30.9"/>
+    <line id="rule-2" x1="61.55" y1="58.68" x2="112.3" y2="58.68"/>
+    <line id="rule-3" x1="61.55" y1="86.46" x2="112.3" y2="86.46"/>
+    <path id="cell-2" class="butt" data-w="4" d="M32.2 49.2 H26.7 A1.5 1.5 0 0 0 25.2 50.70 V67.57 A1.5 1.5 0 0 0 26.7 69.07 H45.9 A1.5 1.5 0 0 0 47.4 67.57 V50.70 A1.5 1.5 0 0 0 45.9 49.2 H40.8"/>
+    <path id="cell-3-left" class="butt" data-w="4" d="M32.2 76.98 H26.7 A1.5 1.5 0 0 0 25.2 78.48 V95.35 A1.5 1.5 0 0 0 26.7 96.85 H32.6"/>
+    <path id="cell-3-right" class="butt" data-w="4" d="M40.8 76.98 H45.9 A1.5 1.5 0 0 1 47.4 78.48 V95.35 A1.5 1.5 0 0 1 45.9 96.85 H40.0"/>
+    <path id="numeral-2" data-w="2.6" d="M33.2 56 C33.4 54.4 34.7 53.7 36.3 53.7 C38.2 53.7 39.4 54.6 39.4 56.4 C39.4 57.8 38.7 58.9 37.6 59.8 L33.2 64.6 H39.6"/>
+    <path id="numeral-3" data-w="2.6" d="M32.9 82.9 V81.5 H37.4 Q38.9 81.5 38.9 82.9 V84.6 Q38.9 86.5 37 86.5 H35.4 M37 86.5 Q39.4 86.5 39.4 88.7 V90.4 Q39.4 92.3 37.4 92.3 H33.2 Q32.6 92.3 32.6 91.6 V90.6"/>
+  </g>
+  <g data-role="accent">
+    <path id="cell-1" class="fill" fill-rule="evenodd" d="M26.2 19.42 H46.4 A3 3 0 0 1 49.4 22.42 V40.28 A3 3 0 0 1 46.4 43.28 H26.2 A3 3 0 0 1 23.2 40.28 V22.42 A3 3 0 0 1 26.2 19.42 Z M34.6 23.8 H38.3 V38.45 H34.75 V28.3 H31.9 V26.5 Z"/>
+  </g>
+</svg>

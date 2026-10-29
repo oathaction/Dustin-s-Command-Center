@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-07" data-id="R-07" width="128" height="128" viewBox="0 0 128 128">
+  <title>Small-Donor Matching</title>
+  <desc>Oath &amp; Action Civic Line R-07 Small-Donor Matching. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M82.165 46.79 A24.126 24.126 0 0 0 105.024 46.79" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 53.024 A24.126 24.126 0 0 0 105.024 53.024" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 59.258 A24.126 24.126 0 0 0 105.024 59.258" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 65.491 A24.126 24.126 0 0 0 105.024 65.491" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 71.725 A24.126 24.126 0 0 0 105.024 71.725" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 77.959 A24.126 24.126 0 0 0 105.024 77.959" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M82.165 44.797 V84.193 A24.126 24.126 0 0 0 105.024 84.193 V44.797" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.79 65.54 A21.592 21.592 0 0 0 50.874 65.54" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29.79 63.439 A10.542 3.792 0 0 1 40.332 59.648 A10.542 3.792 0 0 1 50.874 63.439 V71.779 A21.592 21.592 0 0 1 29.79 71.779 V63.439" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.273 77.623 A25.198 25.198 0 0 0 47.818 77.623" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.276 70.921 C25.398 72.383 21.845 73.392 23.273 76.185 V84.592 A25.198 25.198 0 0 0 47.818 84.592 V77.16" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M82.165 49.134 V44.797 A11.429 4.859 0 0 1 93.595 39.937 A11.429 4.859 0 0 1 105.024 44.797 V49.134" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M82.165 46.79 A24.126 24.126 0 0 0 84.822 48.018" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M102.368 48.018 A24.126 24.126 0 0 0 105.024 46.79" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <line x1="57.601" y1="66.403" x2="75.99" y2="66.403" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="69.581,60.115 75.99,66.403 69.581,72.69" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-056" data-id="CL-056" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Investment</title>
+  <desc>Oath &amp; Action Civic Line CL-056 Public Investment. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <line x1="33.172" y1="52.546" x2="33.172" y2="92.001" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.73" y1="52.546" x2="94.73" y2="92.001" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="17.649" y1="77.876" x2="110.254" y2="77.876" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.172 53.477 A30.779 19.647 0 0 0 94.73 53.477" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.172 53.472 C33.172 58.283 29.882 67.509 18.453 73.212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M94.73 53.472 C94.73 58.283 98.02 67.509 109.45 73.212" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.975 91.153 C43.062 91.055 44.148 90.49 45.235 89.895 C46.454 89.228 47.672 88.618 48.891 88.618 C50.109 88.618 51.328 89.228 52.546 89.895 C53.765 90.563 54.983 91.172 56.202 91.172 C57.42 91.172 58.639 90.563 59.857 89.895 C61.076 89.228 62.294 88.618 63.513 88.618 C64.731 88.618 65.95 89.228 67.168 89.895 C68.387 90.563 69.605 91.172 70.824 91.172 C72.042 91.172 73.261 90.563 74.479 89.895 C75.697 89.228 76.916 88.618 78.134 88.618 C79.353 88.618 80.571 89.228 81.79 89.895 C82.877 90.49 83.964 91.055 85.051 91.153" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41.975 100.014 C43.062 99.916 44.148 99.351 45.235 98.756 C46.454 98.088 47.672 97.479 48.891 97.479 C50.109 97.479 51.328 98.088 52.546 98.756 C53.765 99.424 54.983 100.033 56.202 100.033 C57.42 100.033 58.639 99.424 59.857 98.756 C61.076 98.088 62.294 97.479 63.513 97.479 C64.731 97.479 65.95 98.088 67.168 98.756 C68.387 99.424 69.605 100.033 70.824 100.033 C72.042 100.033 73.261 99.424 74.479 98.756 C75.697 98.088 76.916 97.479 78.134 97.479 C79.353 97.479 80.571 98.088 81.79 98.756 C82.877 99.351 83.964 99.916 85.051 100.014" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="60.296" y="55.617" width="7.311" height="4.508" rx="0.731" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="63.951" cy="61.222" rx="2.437" ry="1.56" fill="#121212"/>
+  </g>
+  <g id="accent">
+    <path d="M60.296 55.617 V50.826 A7.945 7.945 0 1 1 67.607 50.826 V55.617" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <rect x="58.955" y="54.276" width="9.992" height="1.34" fill="#E63946"/>
+    <line x1="63.951" y1="27.811" x2="63.951" y2="30.55" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="52.595" y1="31.491" x2="55.3" y2="34.196" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="75.308" y1="31.491" x2="72.603" y2="34.196" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.184" y1="41.546" x2="50.743" y2="41.546" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.16" y1="41.546" x2="79.718" y2="41.546" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

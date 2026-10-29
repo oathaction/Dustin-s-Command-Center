@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-026" viewBox="0 0 180 138">
+  <!-- CL-026 Executive Power. Crop 180 x 138 px; ink box x 8..172, y 8..130.
+       Construction: a frontal official behind a desk at left, with hollow circular head and rounded shoulders. A short rectangular paper lies flat on the desktop. A tall upright order/document overlaps the desk’s right side, containing two small horizontal rules and a signature-like zigzag near its bottom. Two legs descend from the broad horizontal desk.
+       Red: the official’s narrow filled necktie and the signature squiggle on the upright document. Preserve both separate accents. Keep the paper on the desk, the face-free head and the upright document’s overlap. -->
+  <g data-role="base">
+    <circle id="head" cx="96.27" cy="23.8" r="13.19"/>
+    <path id="shoulders" d="M66.06 73.8 V61.24 A16.46 16.46 0 0 1 82.52 44.78 H110.45 A14.64 14.64 0 0 1 123.13 52.1 L123.75 55.3"/>
+    <polyline id="desk-paper" points="28.1,85.6 28.1,73.8 82.2,73.8 82.2,85.6"/>
+    <path id="desk" d="M116.1 85.6 H12.8 A2 2 0 0 0 10.8 87.6 V94.6 A2 2 0 0 0 12.8 96.6 H112.2"/>
+    <line id="leg" x1="19.33" y1="96.6" x2="19.33" y2="127.4"/>
+    <path id="order" d="M121.63 54.62 V113.22 A2 2 0 0 0 123.63 115.22 H166.83 A2 2 0 0 0 168.83 113.22 V56.62 A2 2 0 0 0 166.83 54.62 H131.75"/>
+    <line id="order-rule-1" x1="135" y1="67.6" x2="156.37" y2="67.6"/>
+    <line id="order-rule-2" x1="135" y1="78.56" x2="156.37" y2="78.56"/>
+  </g>
+  <g data-role="accent">
+    <path id="tie" class="fill" d="M93.05 49.6 C93.6 49.1 99 49.1 99.55 49.6 L100.25 52.2 L99.2 55.4 L102.7 72.6 L102.2 74.5 L100.1 76.5 L98 78.4 L96.3 79.5 L94.6 78.4 L92.5 76.5 L90.4 74.5 L89.9 72.6 L93.4 55.4 L92.35 52.2 Z"/>
+    <polyline id="signature" points="133.8,102.6 140,93 143.3,102.9 147.6,99 156.8,99"/>
+  </g>
+</svg>

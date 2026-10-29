@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-064" viewBox="0 0 221 114">
+  <!-- CL-064 Trade Costs. Crop 221 x 114 px; ink box x 8..213, y 8..106.
+       Construction: an outlined parcel/cube at left, with visible top and right side. A rectangular customs/tariff gate stands in the middle-right: two upright posts, short feet and an overhead horizontal band. Two short slanted barrier/tariff marks cross the gate’s middle area. A detached arrow at far right points right.
+       Red: the two small slanted barrier marks across the gate. Parcel, gate and outgoing arrow remain black. Preserve their unusual parallelogram-like stroke shapes from the reference. -->
+  <!-- T4 trace. Parcel in oblique view: front 10.67..68.04 x 49.8..102.93; every receding edge uses one
+       vector (15.89, -15). Gate posts x 114.33 and 164.86, band y 10.7..23.8, feet y 102.7 (12 px each side).
+       The red marks sit under the gate group, so the left post covers the left mark's right ends. -->
+  <g data-role="accent">
+    <path id="mark-left" d="M95.6 61.1 L113 56.12 M100.5 59.7 L95.5 72.4 L113 69.3"/>
+    <path id="mark-right" d="M125.3 53.33 L151 48.95 L151 60.3 L125.6 65.46 M134.9 51.75 L130.94 64.4"/>
+    <polygon id="mark-right-wedge" class="fill" points="148.25,52 148.25,58.8 142.8,59.6"/>
+  </g>
+  <g data-role="base">
+    <rect id="parcel-front" x="10.67" y="49.8" width="57.37" height="53.13"/>
+    <polyline id="parcel-top" points="10.67,49.8 26.56,34.8 83.93,34.8 68.04,49.8"/>
+    <polyline id="parcel-side" points="83.93,34.8 83.93,87.93 68.04,102.93"/>
+    <polyline id="parcel-tape" points="55.39,34.8 39.5,49.8 39.5,67.75"/>
+    <polyline id="gate" points="114.33,102.7 114.33,10.7 164.86,10.7 164.86,102.7"/>
+    <line id="gate-band" x1="114.33" y1="23.8" x2="164.86" y2="23.8"/>
+    <line id="foot-left" x1="102.33" y1="102.7" x2="126.33" y2="102.7"/>
+    <line id="foot-right" x1="152.86" y1="102.7" x2="176.86" y2="102.7"/>
+    <line id="arrow-shaft" x1="177.87" y1="54" x2="210.5" y2="54"/>
+    <polyline id="arrow-head" points="197,40.5 210.5,54 197,67.5"/>
+  </g>
+</svg>

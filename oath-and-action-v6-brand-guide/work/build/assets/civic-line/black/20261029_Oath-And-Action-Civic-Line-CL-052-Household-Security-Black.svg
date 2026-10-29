@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-052" data-id="CL-052" width="128" height="128" viewBox="0 0 128 128">
+  <title>Household Security</title>
+  <desc>Oath &amp; Action Civic Line CL-052 Household Security. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <polyline points="20.651,60.983 49.115,38.041 77.579,60.983" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="60.881,41.75 60.881,36.774 69.556,36.774 69.556,46.917" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.983 62.172 V89.271 A1.218 1.218 0 0 0 27.202 90.49 H70.872 A1.218 1.218 0 0 0 72.091 89.271 V62.172" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35.673 90.49 V70.127 A0.975 0.975 0 0 1 36.647 69.152 H43.856 A0.975 0.975 0 0 1 44.831 70.127 V90.49" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="55.373" y="66.33" width="9.163" height="11.551" rx="0.975" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M76.039 91.328 H106.135 A1.462 1.462 0 0 0 107.597 89.866 V50.889 A1.462 1.462 0 0 0 106.135 49.427 H73.553 A1.462 1.462 0 0 0 72.091 50.889 V56.562" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.011" y1="76.614" x2="99.921" y2="76.614" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.011" y1="83.496" x2="99.921" y2="83.496" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="90.246" y1="55.763" x2="90.246" y2="57.42" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M93.682 59.029 A3.655 3.022 0 0 0 90.271 57.42 A3.29 2.876 0 0 0 86.981 60.296 A3.29 2.876 0 0 0 90.271 63.171 A3.29 2.876 0 0 1 93.561 66.047 A3.29 2.876 0 0 1 90.271 68.923 A3.655 3.022 0 0 1 86.859 67.314" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="90.246" y1="68.923" x2="90.246" y2="70.58" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

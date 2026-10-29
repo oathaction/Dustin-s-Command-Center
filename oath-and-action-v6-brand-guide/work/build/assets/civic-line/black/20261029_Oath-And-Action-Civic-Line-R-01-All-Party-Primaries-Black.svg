@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-01" data-id="R-01" width="128" height="128" viewBox="0 0 128 128">
+  <title>All-Party Primaries</title>
+  <desc>Oath &amp; Action Civic Line R-01 All-Party Primaries. Traced vector reconstruction from the Civic Line reference sheet 04, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="32.734" cy="43.237" r="3.66" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.149 51.82 A6.921 6.921 0 0 1 39.318 51.82" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="30.613" cy="61.212" r="3.66" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24.029 69.795 A6.921 6.921 0 0 1 37.198 69.795" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32.734" cy="79.182" r="3.66" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.149 87.765 A6.921 6.921 0 0 1 39.318 87.765" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="77.603" y="47.117" width="26.47" height="34.288" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M41.945 43.651 C55.334 43.437 61.081 49.032 70.385 57.225" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.385,52.79 70.385,57.225 66.193,57.225" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.483" y1="63.917" x2="71.189" y2="63.917" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="67.461,60.832 71.189,63.917 67.461,67.002" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M43.578 84.471 C55.315 84.583 62.738 78.476 70.385 70.775" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.385,75.21 70.385,70.775 66.193,70.775" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.592,63.708 89.052,68.338 97.143,59.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

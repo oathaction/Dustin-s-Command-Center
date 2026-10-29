@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-018" data-id="CL-018" width="128" height="128" viewBox="0 0 128 128">
+  <title>Earned Trust</title>
+  <desc>Oath &amp; Action Civic Line CL-018 Earned Trust. Traced vector reconstruction from the Civic Line reference sheet 01, row 3, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="64.073" cy="47.112" r="6.029" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50.426 72.529 C50.246 71.735 50.085 70.902 50.031 70.053 C49.978 69.205 49.978 68.313 50.099 67.446 C50.226 66.578 50.441 65.677 50.777 64.853 C51.108 64.029 51.576 63.215 52.117 62.494 C52.658 61.777 53.326 61.124 54.018 60.549 C54.715 59.974 55.49 59.462 56.289 59.048 C57.089 58.634 57.951 58.322 58.809 58.073 C59.667 57.825 60.559 57.669 61.436 57.566 C62.314 57.459 63.196 57.449 64.073 57.449 C64.95 57.449 65.833 57.459 66.71 57.566 C67.587 57.669 68.479 57.825 69.337 58.073 C70.195 58.322 71.057 58.634 71.857 59.048 C72.656 59.462 73.431 59.974 74.128 60.549 C74.82 61.124 75.488 61.777 76.029 62.494 C76.57 63.215 77.038 64.029 77.369 64.853 C77.706 65.677 77.92 66.578 78.047 67.446 C78.169 68.313 78.169 69.205 78.115 70.053 C78.061 70.902 77.901 71.735 77.72 72.529 C77.545 73.324 77.306 74.084 77.048 74.815 C76.794 75.551 76.502 76.253 76.185 76.94 C75.868 77.623 75.532 78.286 75.152 78.924 C74.771 79.563 74.357 80.182 73.904 80.776 C73.446 81.371 72.963 81.951 72.427 82.487 C71.891 83.023 71.316 83.535 70.692 83.998 C70.073 84.456 69.405 84.899 68.703 85.246 C67.997 85.596 67.236 85.899 66.461 86.084 C65.691 86.269 64.868 86.362 64.073 86.362 C63.279 86.362 62.455 86.269 61.685 86.084 C60.91 85.899 60.15 85.596 59.443 85.246 C58.741 84.899 58.073 84.456 57.454 83.998 C56.83 83.535 56.255 83.023 55.719 82.487 C55.183 81.951 54.701 81.371 54.242 80.776 C53.789 80.182 53.375 79.563 52.995 78.924 C52.614 78.286 52.278 77.623 51.961 76.94 C51.645 76.253 51.352 75.551 51.099 74.815 C50.84 74.084 50.602 73.324 50.426 72.529 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="38.256" cy="59.321" r="5.361" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27.08 84.934 V77.208 A8.286 8.286 0 0 1 35.366 68.923 H38.412 A8.286 8.286 0 0 1 46.697 77.208 V86.664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="89.89" cy="59.321" r="5.361" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.066 84.934 V77.208 A8.286 8.286 0 0 0 92.781 68.923 H89.734 A8.286 8.286 0 0 0 81.449 77.208 V86.664" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="58.088,71.813 62.294,75.844 70.76,66.744" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

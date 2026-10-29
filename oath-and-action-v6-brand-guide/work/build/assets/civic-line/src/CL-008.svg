@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-008" viewBox="0 0 195 106">
+  <!-- CL-008 Political Hostility. Crop 195 x 106 px; ink box x 8..187, y 8..98.
+       Construction: two opposed rounded rectangular speech bubbles, left and right. Their tails descend toward the outer lower corners: the left tail points down-left and the right tail down-right. Their inward-facing contours remain open around a central lightning-bolt stroke. The bolt leans diagonally and separates the bubbles. Preserve the bubbles’ near-mirror arrangement and the negative space around the bolt.
+       Red: the central lightning bolt only. The speech-bubble outlines are black. Keep both bubbles blank and retain the inward gap. -->
+  <g data-role="base">
+    <!-- Bubbles: one shape (corner r 11.1, 70.9 x 59.02) mirrored about x 97.45; the right bubble sits 5.9 px lower.
+         Each opens on its inward side: a short hook (r 5.28) ends the top edge, and the inward side restarts lower down. -->
+    <path id="bubble-left" d="M79.05 14.25 A5.28 5.28 0 0 0 74.95 12.29 H21.95 A11.1 11.1 0 0 0 10.85 23.39 V60.21 A11.1 11.1 0 0 0 21.95 71.31 H27.56 L27.12 89.83 L46.1 71.31 H70.65 A11.1 11.1 0 0 0 81.75 60.21 V49.37"/>
+    <path id="bubble-right" d="M115.85 20.15 A5.28 5.28 0 0 1 119.95 18.19 H172.95 A11.1 11.1 0 0 1 184.05 29.29 V66.11 A11.1 11.1 0 0 1 172.95 77.21 H167.34 L167.78 95.73 L148.8 77.21 H124.25 A11.1 11.1 0 0 1 113.15 66.11 V50.13"/>
+  </g>
+  <g data-role="accent">
+    <!-- Bolt: filled and stroked, point-symmetric about (97.35, 34.1). -->
+    <polygon id="bolt" class="fill-stroke" points="99.35,11.07 85.94,34.79 102.07,34.79 95.35,57.13 108.76,33.41 92.63,33.41"/>
+  </g>
+</svg>

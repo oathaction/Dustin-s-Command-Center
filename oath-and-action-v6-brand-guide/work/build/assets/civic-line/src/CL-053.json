@@ -1,0 +1,23 @@
+{
+  "id": "CL-053",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The solid houses measure 5.75 to 6.0 px; the red dashes 5.5 px."
+    },
+    {
+      "what": "Made each solid house symmetric about its centre line and the two houses identical: walls 57.7 px apart, apex 27.18 px above the eaves at y 38.05, base y 91.06",
+      "why": "DR-03 symmetry and equal repeats. The roof slopes measure 136.5 and 43.1 deg (left house) and 136.2 and 43.35 deg (right house); the eave points measure y 37.9 to 38.2; the house widths 57.7 and 57.8 px."
+    },
+    {
+      "what": "Made the four windows equal vertical strokes, 10.8 px long, 9.65 px either side of each house's centre line",
+      "why": "DR-03. Two of the windows lean 4.5 deg on the sheet; their offsets from the centre lines measure 9.3 to 10.0 px."
+    },
+    {
+      "what": "Made the ghost house mirror-symmetric about x 105.975: both walls on verticals (x 80.85 and 131.1) with the same three dashes, the two roof dashes at 45 deg, and the apex chevron centred",
+      "why": "DR-03 symmetry. The two walls' dash ends agree within 0.25 px; two dashes lean 4 to 6 deg on the sheet; the chevron's arms measure 3.2 and 3.9 px either side of the apex and now run 3.55 px each."
+    }
+  ],
+  "notes": "Kept as drawn: nine separate red dashes (three per wall, one per roof slope, one chevron over the apex), no base line and an empty interior for the ghost house. The wall dashes keep their drawn lengths (9.7, 11.3 and 7.5 px from top to bottom, the bottom one ending at the base line): the sheet's dash pattern is not periodic around the outline, so I did not impose one. The ghost house is narrower than the solid houses (50.25 against 57.7 px) and its roof is steeper (45 against 43.3 deg), as drawn."
+}

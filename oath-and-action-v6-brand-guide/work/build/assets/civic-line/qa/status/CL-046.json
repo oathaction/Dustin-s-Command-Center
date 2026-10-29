@@ -1,0 +1,89 @@
+{
+  "id": "CL-046",
+  "label": "AI Infrastructure",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:22:38+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8905,
+      "red_iou_1x": 0.9286,
+      "edge_mean_px": 0.257,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:23:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9007,
+      "red_iou_1x": 0.9331,
+      "edge_mean_px": 0.228,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:23:24+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9007,
+      "red_iou_1x": 0.9331,
+      "edge_mean_px": 0.228,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:23:24+00:00",
+      "by": "T3",
+      "note": "overlay checked; tray notches, legs, 12 pins and red core match; chip kept 4 percent taller than wide as drawn"
+    }
+  ],
+  "last_build": "2026-10-29T06:23:24+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9007,
+    "red_iou_1x": 0.9331,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9621,
+    "edge_mean_px": 0.228,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.414,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.5 to 6.25 px."
+    },
+    {
+      "what": "Drew the stack as three equal rounded trays, 75.28 x 27.75 px, corner radius 5.8, stacked edge to edge (shared edges at y 41.92 and 69.67)",
+      "why": "DR-03 equal repeats. Tray heights measure 28.1, 27.65 and 27.5 px; the first junction moves 0.35 px up. The sheet notches both sides at each junction, which separate rounded trays produce. Corner fits give 6.0 to 6.8 px, but the outer corners are squarer than a circular arc; 5.8 matches the outer edge."
+    },
+    {
+      "what": "Set the two legs symmetric about the stack's centre line, x 16.12 and 82.06, both ending at y 115.0",
+      "why": "DR-03 symmetry. Measured legs sit at x 15.45 and 81.33, 4.0 and 5.3 px inside the walls; each moves 0.7 px."
+    },
+    {
+      "what": "Gave the three indicators one radius, 3.5 px, on x 73.5; in the top tray the indicator sits on the right end of the long rule, which stops under it",
+      "why": "DR-03 equal repeats. The red sheet shows the top tray's indicator as a red dot over the rule's end (red from x 70.5 to 77); the black sheet shows the same place as a slight swelling at the rule's end. The lower two dots measure 6.8 to 7.3 px across."
+    },
+    {
+      "what": "Put each lower tray's rule and dot on one line (y 56.37 and 84.12), and the top tray's rule and dot on y 29.1",
+      "why": "The lower rules measure 0.4 px below their dots; the rule and dot share one line once cleaned up. Moves are 0.3 px or less."
+    },
+    {
+      "what": "Spaced the chip's pins evenly and centred them on the chip body: top and bottom pins at x 134.02, 148.31 and 162.6, side pins at y 45.9, 60.92 and 75.94, all pins on a side one length (18.45 px top and bottom, 16.55 px at the sides)",
+      "why": "DR-03 equal repeats and symmetry. Measured top pins sit at 133.93, 148.62 and 162.5; side pins at 45.4, 60.42 and 75.44, 0.5 px above the body's centre."
+    }
+  ],
+  "source_notes": "Pin count from the sheet: three per side, twelve in all. Kept the chip body (60.62 x 63.46 px, corner radius 8.5) and the inner square (21.3 x 22.15 px) at the sheet's proportion, about 4 percent taller than wide. The catalogue says 'square', but both squares carry the same proportion while the round dots in the same crop are true circles, so the proportion is in the drawing, not a stretch of the raster. Squaring them would move the top and bottom edges about 1.4 px each; I left that for review. The inner square keeps the round joins, as drawn."
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-015" viewBox="0 0 208 110">
+  <!-- CL-015 Political Money. Crop 208 x 110 px; ink box x 8..200, y 8..102.
+       Construction: a large outlined coin with a dollar sign at left. To its right is a ballot box with shallow trapezoid lid and slanted blank ballot. An orthogonal, rounded-corner connector rises from the coin’s right edge, travels across and enters the ballot area. The connector is a plain path without a separate arrowhead.
+       Red: the dollar sign, the raised connecting path and the ballot’s upper/right accent edge. Retain their particular separate red portions. Coin and box framing remain black. -->
+  <g data-role="accent">
+    <!-- Connector first, so the coin ring and the ballot's black left edge lie over its two ends. -->
+    <path id="connector" d="M79.7 62.4 H95.17 A8.9 8.9 0 0 0 104.07 53.5 V33.35 A8.9 8.9 0 0 1 112.97 24.45 H157.72"/>
+  </g>
+  <g data-role="base">
+    <circle id="coin" cx="45.1" cy="59.85" r="34.7"/>
+    <rect id="box-front" x="121.69" y="55.4" width="75.59" height="43.96"/>
+    <polyline id="lid-left" points="121.69,55.4 133.36,36.4 137.79,36.4"/>
+    <polyline id="lid-right" points="197.28,55.4 185.61,36.4 183.11,36.4"/>
+    <line id="slot" x1="143" y1="44.1" x2="175.37" y2="44.1"/>
+    <line id="ballot-left" x1="142.99" y1="44.1" x2="168.4" y2="10.22"/>
+    <line id="ballot-right-lower" x1="173.07" y1="37.6" x2="168.21" y2="44.1"/>
+  </g>
+  <g data-role="accent">
+    <path id="dollar-s" d="M52.04 50.29 A7.3 7.3 0 1 0 45.10 59.85 A7.3 7.3 0 1 1 38.16 69.41"/>
+    <line id="dollar-stem-top" x1="45.1" y1="40.87" x2="45.1" y2="45.25"/>
+    <line id="dollar-stem-bottom" x1="45.1" y1="74.45" x2="45.1" y2="79.25"/>
+    <line id="ballot-top" x1="168.4" y1="10.22" x2="185.67" y2="20.76"/>
+    <line id="ballot-right-upper" class="butt" x1="185.67" y1="20.76" x2="173.07" y2="37.6"/>
+  </g>
+</svg>

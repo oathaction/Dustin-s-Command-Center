@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-05" viewBox="0 0 176 110">
+  <!-- R-05 Automatic Registration. Crop 176 x 110 px; ink box x 8..168, y 8..102.
+       Construction: a horizontal ID card. Its left side contains a hollow circular head above a small shoulder/torso outline; the right contains staggered short information rules. A circular check badge overlaps and extends beyond the card’s lower-right corner, obscuring part of its border. Trace this reform cell independently from CL-003.
+       Red: the overlapping badge’s circular outline and check. Card, portrait and rules stay black. Preserve the reform drawing’s own proportions and badge size. -->
+  <!-- T4 trace. Card x 10.85..146.17, y 11.18..88.05 with rounded corners; its right side stops at y 37.37 and its
+       bottom edge at x 106.3, short of the badge. A short separate dash sits below at y 98.5. Portrait centred on
+       x 43.7. Four rules on equal steps, staggered lengths. Badge: true circle r 25.9 about (139.65, 73.36). -->
+  <g data-role="base">
+    <path id="card" d="M146.17 37.37 V16.18 A5 5 0 0 0 141.17 11.18 H15.85 A5 5 0 0 0 10.85 16.18 V83.05 A5 5 0 0 0 15.85 88.05 H106.3"/>
+    <line id="dash" x1="102.5" y1="98.5" x2="114.7" y2="98.5"/>
+    <circle id="head" cx="43.7" cy="34.34" r="9.33"/>
+    <path id="body" d="M25.90 73.61 V68.26 A17.8 17.8 0 0 1 43.7 50.46 A17.8 17.8 0 0 1 61.50 68.26 V73.61 Z"/>
+    <line id="rule-1" x1="75.63" y1="30.3" x2="129.13" y2="30.3"/>
+    <line id="rule-2" x1="75.63" y1="44.21" x2="110.75" y2="44.21"/>
+    <line id="rule-3" x1="75.63" y1="58.12" x2="100.75" y2="58.12"/>
+    <line id="rule-4" x1="75.63" y1="72.03" x2="92.87" y2="72.03"/>
+  </g>
+  <g data-role="accent">
+    <circle id="badge" cx="139.65" cy="73.36" r="25.9"/>
+    <polyline id="check" points="128.87,73.65 136.41,81.03 151.1,65.78"/>
+  </g>
+</svg>

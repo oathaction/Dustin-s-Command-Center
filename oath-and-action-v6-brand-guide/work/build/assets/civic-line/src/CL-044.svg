@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-044" viewBox="0 0 173 138">
+  <!-- CL-044 Grid Demand. Crop 173 x 138 px; ink box x 8..165, y 8..130.
+       Construction: three horizontal rounded server trays stack at left. Each tray contains short information/vent rules and a small round indicator near its right end. A large electrical plug stands at right with two upright pins, a rounded U-like body and a short cable descending from its base. A zigzag bolt lies inside the plug.
+       Red: the three server indicator dots and the bolt inside the plug. Main server outlines, plug and cable remain black. Retain all three separate server trays.
+       Trace: three equal rounded trays (37.42 px tall) stacked edge to edge, so their rounded corners
+       leave a small notch at each junction. Plug centred on x 138.05; its U is a half ellipse (rx 24.15, ry 23.3). -->
+  <g data-role="base">
+    <rect id="tray-1" x="11.3" y="11.15" width="82.8" height="37.42" rx="6.2"/>
+    <rect id="tray-2" x="11.3" y="48.57" width="82.8" height="37.42" rx="6.2"/>
+    <rect id="tray-3" x="11.3" y="85.99" width="82.8" height="37.42" rx="6.2"/>
+    <line id="rule-1a" x1="24.05" y1="24.35" x2="48.0" y2="24.35"/>
+    <line id="rule-1b" x1="24.05" y1="36.15" x2="48.0" y2="36.15"/>
+    <line id="rule-2a" x1="24.05" y1="61.77" x2="48.0" y2="61.77"/>
+    <line id="rule-2b" x1="24.05" y1="73.57" x2="48.0" y2="73.57"/>
+    <line id="rule-3a" x1="24.05" y1="99.19" x2="48.0" y2="99.19"/>
+    <line id="rule-3b" x1="24.05" y1="110.99" x2="48.0" y2="110.99"/>
+    <line id="pin-left" x1="126.4" y1="26.75" x2="126.4" y2="46.2"/>
+    <line id="pin-right" x1="149.7" y1="26.75" x2="149.7" y2="46.2"/>
+    <path id="plug-body" d="M113.9 74.5 V46.2 H162.2 V74.5 A24.15 23.3 0 0 1 138.05 97.8 A24.15 23.3 0 0 1 113.9 74.5 Z"/>
+    <line id="cable" x1="138.05" y1="97.8" x2="138.05" y2="127.4"/>
+  </g>
+  <g data-role="accent">
+    <rect id="indicator-1" class="fill" x="75.95" y="24.5" width="7.1" height="11.0" rx="3.55"/>
+    <rect id="indicator-2" class="fill" x="75.95" y="61.92" width="7.1" height="11.0" rx="3.55"/>
+    <rect id="indicator-3" class="fill" x="75.95" y="99.34" width="7.1" height="11.0" rx="3.55"/>
+    <polyline id="bolt" points="141.2,59.1 131.9,71.05 144.1,71.05 134.15,84.2"/>
+  </g>
+</svg>

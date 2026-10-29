@@ -1,0 +1,77 @@
+{
+  "id": "CL-038",
+  "label": "External Shocks",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:09:16+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9112,
+      "red_iou_1x": 0.8295,
+      "edge_mean_px": 0.179,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:10:19+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9308,
+      "red_iou_1x": 0.8826,
+      "edge_mean_px": 0.133,
+      "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:10:36+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9323,
+      "red_iou_1x": 0.8826,
+      "edge_mean_px": 0.128,
+      "edge_p95_px": 0.354
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:10:36+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; burst symmetrised, routes fitted as Beziers"
+    }
+  ],
+  "last_build": "2026-10-29T07:10:36+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9323,
+    "red_iou_1x": 0.8826,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9731,
+    "edge_mean_px": 0.128,
+    "edge_p95_px": 0.354,
+    "edge_max_px": 2.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the two route curves and the centre dash as smooth cubic Bezier paths fitted to the sheet's centreline (8, 5 and 1 segments, within 0.35 px)",
+      "why": "DR-03. The sheet's curves are freehand; the fit keeps the broad S-shaped route, its entry at the upper right and its sweep to the lower left, and removes raster wobble."
+    },
+    {
+      "what": "Made the impact burst symmetric about x 108.9: one jagged polyline of eleven points with five outer tips (top, two upper, two side) and two open lower ends",
+      "why": "DR-03 symmetry. The sheet's burst is plainly mirrored: tip, inner-vertex and end pairs centre at 108.7 to 108.94; each point moves 0.4 px or less."
+    },
+    {
+      "what": "Drew the broken route end below the burst as a zigzag polyline with two small rounded bends",
+      "why": "The sheet draws it as a jagged, broken stroke; the corners keep that character rather than smoothing it into a curve."
+    }
+  ],
+  "source_notes": "Kept: the two separate route curves and the short centre dash in the upper channel; the jagged burst rather than a lightning bolt, with its lower side open where the broken black route end comes up beneath it; the side chevrons as drawn, each with a near-level upper arm and a steeper lower arm. Red: the burst only; both sheets agree on its shape to the usual sub-pixel fringe."
+}

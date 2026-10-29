@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-068" viewBox="0 0 191 175">
+  <!-- CL-068 Education. Crop 191 x 175 px; ink box x 8..183, y 8..167.
+       Construction: an open book with two curved page blocks, central spine and doubled lower cover contour. A small lightbulb rises out of the book’s central valley. It has a round upper contour, short neck/base and multiple short rays around its upper half. The bulb is much smaller than the book.
+       Red: the bulb outline and radiating strokes, following the source’s treatment of its tiny base. The book remains black. Distinguish this from Explain, which has rays without an actual bulb. -->
+  <!-- T4 trace. Everything symmetric about x 95.45. Pages: top edges are arcs (r 69) that run into the
+       straight fork arms; bottoms are arcs (r 84.85) that straighten into the spine's foot. Covers: arcs (r 106.36)
+       meeting in a second V below. A clear box round the bulb base (x 81.5 to 109.4, down to y 92.5) cuts the page tops, and the fork arms start at a level cut at y 93, as on both sheets.
+       Bulb: circle r 17.4 about (95.45, 51.2), straight shoulders into a tapered neck; separate short base rule. -->
+  <defs>
+    <mask id="page-end-cut">
+      <rect class="fill" x="81.5" y="76" width="27.9" height="24"/>
+      <rect class="fill" x="74" y="92.5" width="43" height="8"/>
+    </mask>
+    <mask id="fork-top-cut">
+      <rect class="fill" x="74" y="84" width="43" height="9"/>
+    </mask>
+  </defs>
+  <g data-role="base">
+    <path id="page-left" d="M82.4 93.5 C75.2 74.69 42.51 65.39 24.8 67.84 V137 A84.85 84.85 0 0 1 84 148.01 L95.45 155" mask="url(#page-end-cut)"/>
+    <path id="page-right" d="M108.5 93.5 C115.7 74.69 148.39 65.39 166.1 67.84 V137 A84.85 84.85 0 0 0 106.9 148.01 L95.45 155" mask="url(#page-end-cut)"/>
+    <polyline id="fork" points="81.9,90 95.45,104.47 109.0,90" mask="url(#fork-top-cut)"/>
+    <line id="spine" x1="95.45" y1="104.47" x2="95.45" y2="155"/>
+    <path id="cover-left" d="M24.8 75.6 L15.5 76.5 Q11.1 76.9 11.1 81.3 V153.4 A106.36 106.36 0 0 1 90.0 162.5 L95.45 164.3"/>
+    <path id="cover-right" d="M166.1 75.6 L175.4 76.5 Q179.8 76.9 179.8 81.3 V153.4 A106.36 106.36 0 0 0 100.9 162.5 L95.45 164.3"/>
+  </g>
+  <g data-role="accent">
+    <path id="bulb" d="M86.85 67.2 L80.09 59.37 A17.4 17.4 0 1 1 110.81 59.37 L104.05 67.2 L103.05 77 H87.85 Z"/>
+    <line id="bulb-base" x1="90.9" y1="87.6" x2="100.0" y2="87.6"/>
+    <line id="ray-top" x1="95.45" y1="10.85" x2="95.45" y2="22.65"/>
+    <line id="ray-upper-left" x1="63.97" y1="22.85" x2="72.4" y2="32.5"/>
+    <line id="ray-upper-right" x1="126.93" y1="22.85" x2="118.5" y2="32.5"/>
+    <line id="ray-left" x1="47.6" y1="48.55" x2="62.4" y2="53.6"/>
+    <line id="ray-right" x1="143.3" y1="48.55" x2="128.5" y2="53.6"/>
+  </g>
+</svg>

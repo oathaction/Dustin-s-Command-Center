@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-050" viewBox="0 0 206 125">
+  <!-- CL-050 Worker Bargaining. Crop 206 x 125 px; ink box x 8..198, y 8..117.
+       Construction: two hollow-headed people face inward over a long narrow table. Their rounded shoulder contours bend into forearms near the tabletop. A horizontal double-headed arrow is suspended between them at shoulder height. The table is a simple black top with two or three visible downward supports as shown.
+       Red: the complete double-headed arrow between the people. Keep figures and table black. This differs from Lobbying, which highlights a small object on the table rather than an arrow above it.
+       Trace: mirror-symmetric about x 102.75. Each body: outer side leaning slightly out down to the table
+       top, outer shoulder a quarter circle (r 16.5), inner shoulder a
+       long curve (cubic) into the forearm, inner end stopping open above the forearm bar. The forearm bar is
+       one U from x 45.92 to 159.58. Four table legs. -->
+  <g data-role="base">
+    <circle id="head-left" cx="46.22" cy="22.75" r="12"/>
+    <circle id="head-right" cx="159.28" cy="22.75" r="12"/>
+    <path id="body-left" d="M20.55 90.62 L22.85 59.0 A16.5 16.5 0 0 1 39.35 42.5 H40.5 C62.04 42.5 63.78 58.08 64.65 63.9"/>
+    <path id="body-right" d="M184.95 90.62 L182.65 59.0 A16.5 16.5 0 0 0 166.15 42.5 H165.0 C143.46 42.5 141.72 58.08 140.85 63.9"/>
+    <polyline id="forearms" points="45.92,62.5 45.92,74.65 159.58,74.65 159.58,62.5"/>
+    <line id="table-top" x1="10.5" y1="90.62" x2="195.0" y2="90.62"/>
+    <line id="leg-1" x1="30.4" y1="90.62" x2="30.4" y2="114.3"/>
+    <line id="leg-2" x1="66.0" y1="90.62" x2="66.0" y2="114.3"/>
+    <line id="leg-3" x1="139.5" y1="90.62" x2="139.5" y2="114.3"/>
+    <line id="leg-4" x1="175.1" y1="90.62" x2="175.1" y2="114.3"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="76.5" y1="46.88" x2="129.5" y2="46.88"/>
+    <polyline id="arrowhead-left" points="84.1,38.43 76.5,46.88 84.1,55.33"/>
+    <polyline id="arrowhead-right" points="121.9,38.43 129.5,46.88 121.9,55.33"/>
+  </g>
+</svg>

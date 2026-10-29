@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-43" data-id="R-43" width="128" height="128" viewBox="0 0 128 128">
+  <title>Disaster Mitigation</title>
+  <desc>Oath &amp; Action Civic Line R-43 Disaster Mitigation. Traced vector reconstruction from the Civic Line reference sheet 05, row 4, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base-1">
+    <path d="M47.57 47.234 H73.124 A4.577 4.577 0 0 0 68.435 39.45 A6.458 6.458 0 0 0 56.582 38.709 A4.854 4.854 0 0 0 50.748 41.979 A3.09 3.09 0 0 0 47.57 47.234 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.129" y1="55.783" x2="46.507" y2="51.308" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.465" y1="64.556" x2="41.843" y2="60.081" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="65.516" y1="51.771" x2="68.235" y2="56.051" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="71.457" y1="51.508" x2="74.177" y2="55.787" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.978" y1="52" x2="80.698" y2="56.28" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="73.49" y1="59.877" x2="76.209" y2="64.156" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="80.079" y1="62.104" x2="82.799" y2="66.383" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="85.996" y1="62.163" x2="88.716" y2="66.442" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="59.033" y1="51.386" x2="59.521" y2="52.147" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="84.744" y1="69.532" x2="85.231" y2="70.292" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35.902" y1="74.576" x2="54.886" y2="56.324" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="39.484" y1="76.087" x2="39.484" y2="80.718" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="50.972" y1="74.235" x2="50.972" y2="78.281" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.971" y1="74.235" x2="57.971" y2="78.281" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M31.968 85.494 C33.46 84.909 34.898 83.969 36.584 83.969 C39.041 83.969 40.951 85.967 43.408 85.967 C45.864 85.967 47.775 83.969 50.231 83.969 C52.688 83.969 54.598 85.967 57.055 85.967 C59.511 85.967 61.422 83.969 63.878 83.969 C66.335 83.969 68.245 85.967 70.702 85.967 C73.158 85.967 75.069 83.969 77.525 83.969 C79.982 83.969 81.892 85.967 84.349 85.967 C86.805 85.967 88.716 83.969 91.172 83.969 C92.893 83.969 94.335 84.934 95.851 85.518" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M31.968 92.05 C33.46 91.465 34.898 90.524 36.584 90.524 C39.041 90.524 40.951 92.522 43.408 92.522 C45.864 92.522 47.775 90.524 50.231 90.524 C52.688 90.524 54.598 92.522 57.055 92.522 C59.511 92.522 61.422 90.524 63.878 90.524 C66.335 90.524 68.245 92.522 70.702 92.522 C73.158 92.522 75.069 90.524 77.525 90.524 C79.982 90.524 81.892 92.522 84.349 92.522 C86.805 92.522 88.716 90.524 91.172 90.524 C92.893 90.524 94.335 91.489 95.851 92.074" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polygon points="54.545,56.324 61.807,56.324 80.508,74.479 72.466,74.479 55.899,58.395" fill="#121212" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base-2">
+    <path d="M70.092 81.595 V74.479 H88.15 A1.462 1.462 0 0 1 89.613 75.941 V80.206" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

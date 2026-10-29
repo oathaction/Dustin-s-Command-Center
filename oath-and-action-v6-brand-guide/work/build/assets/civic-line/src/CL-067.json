@@ -1,0 +1,15 @@
+{
+  "id": "CL-067",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Made the cross four equal arms about one centre (76.87, 76.27): every arm 58.46 px wide, every arm end 65.42 px from the centre, all sides plumb or level",
+     "why": "DR-03 symmetry and the catalogue ('equal rectangular arms'). The sheet's vertical arm measures 59.45 px wide and its horizontal arm 57.48 px; the arm ends reach 64.7 px (up), 64.3 px (down), 66.0 px (left) and 66.3 px (right) from that centre. This is the least-squares fit of a symmetric cross to the eight fitted sides; sides move 0.1 to 1.2 px (largest: the bottom edge, measured y 140.53, now 141.69; the left arm's top edge, measured y 47.94, now 47.04). Edge mean and p95 rise to 0.52 and 1.25 px for this reason."},
+    {"what": "Rounded the cross's eight outer corners with a 2.5 px centreline radius and kept the four inner corners square",
+     "why": "The sheet shows soft outer corners and tight inner corners."},
+    {"what": "Put the pulse's flat entry and exit on one baseline, y 76.8, and placed its peaks and valley at the sheet's centreline tips",
+     "why": "DR-03 straight lines. Entry and exit fit at y 76.81 and 76.77. The fitted slant lines meet about 1.5 px inside the sheet's pointed tips, so the vertices follow the tips: peak (69.95, 47.9), valley (81.2, 105), second peak (92.6, 69.4)."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 6.0 px."}
+  ],
+  "notes": "Kept the pulse's exact rhythm: flat entry, a short dip just below the baseline at x 58.3, the tall sharp peak, the deep valley reaching below the cross's centre, the smaller second peak, then a short fall back to the flat exit. The pulse stays inside the horizontal arms. Red: the whole pulse. Black and red sheets agree on the pulse within a fringe; the sheet-to-sheet IoU of this icon is 0.919, from edge fringe only."
+}

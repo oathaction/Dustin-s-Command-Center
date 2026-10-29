@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-051" data-id="CL-051" width="128" height="128" viewBox="0 0 128 128">
+  <title>Market Power</title>
+  <desc>Oath &amp; Action Civic Line CL-051 Market Power. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <line x1="21.353" y1="91.83" x2="106.696" y2="91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="26.787,91.83 26.787,43.642 58.01,43.642 58.01,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="32.855,43.642 32.855,35.692 45.966,35.692 45.966,43.642" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="39.947,91.83 39.947,83.739 44.918,83.739 44.918,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="64.526,91.83 64.526,65.253 79.694,65.253 79.694,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.58,71.945 73.407,71.945 73.407,75.332" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="70.555,79.402 73.382,79.402 73.382,82.789" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="86.074,91.83 86.074,73.373 101.013,73.373 101.013,91.83" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="92.171,79.402 94.998,79.402 94.998,82.789" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <rect x="33.528" y="50.109" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="45.323" y="50.109" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="33.528" y="60.808" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="45.323" y="60.808" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="33.528" y="71.506" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="45.323" y="71.506" width="5.946" height="5.946" rx="0.975" fill="#121212"/>
+  </g>
+</svg>

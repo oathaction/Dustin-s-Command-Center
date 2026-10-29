@@ -1,0 +1,18 @@
+{
+  "id": "R-02",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Made the three rank cells equal (x 23.2 to 49.4 at the ink edge, 23.87 px tall) and put cells and candidate rules on equal steps of 27.78 px, each cell centred 0.45 px below its rule",
+     "why": "DR-03 equal repeats. Cell tops step 27.88 and 27.87 px, rules 28.0 and 27.56 px; cell 1 measures 0.6 px shorter than the other two. Moves are 0.6 px or less."},
+    {"what": "Drew the page as a true rectangle with lightly rounded corners and the three candidate rules level, equal in length (x 61.55 to 112.3)",
+     "why": "DR-03 straight lines and equal repeats. Rule ends fit within 0.1 px of each other."},
+    {"element": "cell-2", "what": "data-w 4", "why": "The sheet draws the rank-cell frames at 3.5 to 4.25 px against 5.0 to 5.5 px for the page and rules, on every side of both outlined cells. At W the frame would close the clear space round the numerals: the 2's foot would touch the frame's bottom side."},
+    {"element": "cell-3-left", "what": "data-w 4", "why": "Same lighter frame weight as cell 2, measured 3.75 to 4.0 px."},
+    {"element": "cell-3-right", "what": "data-w 4", "why": "Same lighter frame weight as cell 2, measured 3.75 to 4.0 px."},
+    {"element": "numeral-2", "what": "data-w 2.6", "why": "The preference numerals are drawn as compact glyphs about 2.6 px thick; at W the 2 would fill its counter and lose its shape."},
+    {"element": "numeral-3", "what": "data-w 2.6", "why": "As for the 2: the sheet's 3 is about 2.6 px thick, and W would fill its counters."},
+    {"what": "Drew the page and rules at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. Sheet 04 draws this icon at 5.0 px, so the trace's ink area is about 4 percent above the sheet's."}
+  ],
+  "notes": "Kept as drawn: three preferences; cell 1 is a filled rounded square with the numeral 1 cut out as a real hole (evenodd), flag and stem as on the sheet; cell 2's frame opens at the top where the 2's arc reaches it (gap x 32.2 to 40.8, flat ends); cell 3 is two brackets, open at top (x 32.2 to 40.8) and bottom (x 32.6 to 40.0) where the 3 reaches the frame; the numerals keep the sheet's squared, compact shapes. Red: cell 1's filled background only; its 1 is the cutout. Black and red sheets agree within a fringe."
+}

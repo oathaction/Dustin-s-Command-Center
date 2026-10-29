@@ -1,0 +1,75 @@
+{
+  "id": "CL-025",
+  "label": "Congress",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:15:03+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8303,
+      "red_iou_1x": 0.7325,
+      "edge_mean_px": 0.517,
+      "edge_p95_px": 1.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:16:10+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8303,
+      "red_iou_1x": 0.7325,
+      "edge_mean_px": 0.517,
+      "edge_p95_px": 1.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:16:10+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; symmetrised about x 90.7 (logged), counts and gaps kept"
+    }
+  ],
+  "last_build": "2026-10-29T06:16:10+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8303,
+    "red_iou_1x": 0.7325,
+    "bake_check_iou_1x": 0.9996,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9976,
+    "edge_mean_px": 0.517,
+    "edge_p95_px": 1.75,
+    "edge_max_px": 2.062,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the building symmetric about one vertical axis, x 90.7. The finial, cupola and dome move 1.4 to 1.5 px left; the facade walls and top cornice move 1.75 px right; the facade columns 0.55 px and the base line 0.76 px right; the upper cornice and supports 0.5 px left; the wings and wing supports 0.2 px left",
+      "why": "DR-03 symmetry; the catalogue calls for a symmetrical building. The sheet's parts drift from one centre: finial and cupola at x 92.2, dome 92.14, upper cornice and supports 91.15 to 91.6, facade columns 90.15, base 89.94, wings and wing supports 90.9, facade walls 88.95. The facade's left wall sat 19.6 px from the first column and the right wall 17.3 px from the last. The axis is the length-weighted mean of the upright strokes. This shift is why silhouette IoU sits at 0.83 and the edge p95 at 1.75 px."
+    },
+    {
+      "what": "Spaced the five upper supports evenly at 16.84 px and the four facade columns evenly at 16.96 px, each set centred on the axis",
+      "why": "DR-03 equal repeats. Upper supports measure 16.28, 17.65, 16.87, 16.16 px apart; facade columns 16.83, 17.28, 16.65 px. The 5-over-4 column rhythm is kept."
+    },
+    {
+      "what": "Drew the dome as a true circular arc, r 29.46, centre 63.79 px down (below its baseline at y 60.36)",
+      "why": "DR-03. The whole-arc fit has 0.07 px rms; the dome is less than a half circle, so its feet meet the baseline almost upright."
+    },
+    {
+      "what": "Mirrored the wing and wing-support offsets about the axis: wings end 80.13 px out, supports at 59.53 and 75.18 px out, all supports from y 114.1 to 138.1",
+      "why": "DR-03 symmetry and equal repeats. Measured offsets agree to 0.1 px; support top ends measure y 113.8 to 114.3."
+    },
+    {
+      "what": "Placed the red column at the inner-right facade column position on the symmetric grid, x 99.18",
+      "why": "Black and red sheets disagree on this column by 0.76 px (black 98.83, red 98.07); the symmetric spacing sets it 0.35 px right of the black sheet. This and the symmetry shift give red IoU 0.73."
+    }
+  ],
+  "source_notes": "Kept as drawn: the dome's left foot stops just below the dome baseline with a gap above the upper cornice, while its right side runs straight down to the cornice (both sheets show this); the cupola as a small hollow rectangle sitting on the dome's crown; the gaps under the wings, where the wing supports start 12 px below the wing line and stand free of the base line; the base line overhanging the facade on both sides; facade columns rising from the base line with free round tops. Red: one facade column only, the third from the left. The red sheet shows the black base line over the column's foot, so the accent group is drawn first and the base line covers it."
+}

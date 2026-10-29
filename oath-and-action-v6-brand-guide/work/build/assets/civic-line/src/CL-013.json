@@ -1,0 +1,19 @@
+{
+  "id": "CL-013",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Mirrored the chair about one axis, x 50.9, and made the back's left side vertical at x 22.7",
+     "why": "DR-03 symmetry and straight lines. The back's left side leans from x 23.48 at the top to 22.40 at the bottom while its right side stands at 79.42; the stem measures 50.7, the seat 50.94 and the foot 50.69. The top of the left side moves up to 0.8 px."},
+    {"what": "Gave the back's two top corners one radius, 10.7 px",
+     "why": "DR-03 symmetry. Fits give 11.1 (left) and 10.5 (right)."},
+    {"what": "Gave the seat's two lower corners one radius (6 px) and its arm tops one height, y 62.0, with a 5 px fillet where each arm top meets the back's side",
+     "why": "DR-03 symmetry. Arm tops measure y 62.1 and 61.9; the sheet rounds the inside of both junctions."},
+    {"what": "Gave the foot's two corners one radius, 4.5 px, and its tips one length, ending at y 130.2 with the stem",
+     "why": "DR-03 symmetry. Corner fits give 5.2 to 6.0 px but the sheet's outer corners read squarer; 4.5 px matched the outline better."},
+    {"what": "Made the arrow shaft level at y 62.72 and mirrored its arms about it",
+     "why": "DR-03 straight lines and symmetry. The arm ends sit 14.6 px either side of the shaft on both sheets."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The chair measures 5.25 to 5.75 px; the arrow 6.0 px."}
+  ],
+  "notes": "Kept: the empty chair with its tall back closed at the bottom, the seat's square arm-top corners, the stem running from the seat line through the foot bar to the same depth as the foot tips, and the detached arrow at seat height with its open gap to the chair (16 px). Red is the arrow only; both sheets agree."
+}

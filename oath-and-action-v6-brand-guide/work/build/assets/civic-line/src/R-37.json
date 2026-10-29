@@ -1,0 +1,12 @@
+{
+  "id": "R-37",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Made the browser window a true rounded rectangle: vertical sides at x 10.52 and 128.55, one corner radius 7.75 px", "why": "DR-03 straight lines and right angles. The sides lean outward 0.6 px over their height (10.83 to 10.21 and 128.2 to 128.89); corner fits give 7.53 to 7.96 px."},
+    {"what": "Spaced the three header dots evenly, 11.75 px apart, as filled circles r 2.8 on y 21", "why": "DR-03 equal repeats. Centres measure 22.75, 34.75 and 46.3 (gaps 11.95 and 11.55)."},
+    {"what": "Gave the content rule and the slider's right stub one right end, x 111.8", "why": "DR-03. They end at 111.75 and 111.87."},
+    {"what": "Drew the key's left side as straight legs at plus and minus 51 degrees meeting at sharp vertices, with both teeth reaching x 157.6", "why": "Line fits to the four legs give 128.7, 50.9, 127.3 and 50.7 degrees (rms 0.03 to 0.11 px); their intersections put both tooth points at x 157.6 and the notch at 162.62."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.26 px."}
+  ],
+  "notes": "Kept: the open bottom of the key's bow ring where the shank joins, the straight necks from the ring into the shank (the right one shallower than the left, as drawn), two teeth, a flat foot, and the key detached from the browser. Sheet disagreement: the black sheet leaves a clear 3.6 px gap between the left rail's end and the knob; the red sheet fills that gap with a pale, half-strength red tint. The gap is the clearly intended shape, so the rail stops short and the knob alone is red; the tint accounts for most of the shortfall in red IoU. The right stub runs from the ring outward and is drawn under the red ring."
+}

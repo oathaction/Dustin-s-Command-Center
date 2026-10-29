@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-007" viewBox="0 0 191 113">
+  <!-- CL-007 Turnout Equality. Crop 191 x 113 px; ink box x 8..183, y 8..105.
+       Construction: three matching frontal person-and-ballot combinations in a horizontal row. Each hollow circular head sits over a short rounded shoulder arc. In front of each torso is the same rectangular ballot/card, with one short horizontal mark around its upper-middle area. Card top edges align and all three people are equal in height.
+       Red: the three short horizontal marks, one inside each card. Every card outline and figure contour stays black. Preserve equal proportions across the row. -->
+  <g data-role="base">
+    <!-- Three equal units at a 61.1 px pitch, centres x 34.59, 95.69, 156.79. Shoulders meet the card top. -->
+    <circle id="head-1" cx="34.59" cy="20.81" r="10.21"/>
+    <path id="shoulders-1" d="M17.24 60.18 V52.90 A13.55 13.55 0 0 1 30.79 39.35 H38.39 A13.55 13.55 0 0 1 51.94 52.90 V60.18"/>
+    <rect id="card-1" x="10.85" y="60.18" width="47.48" height="42.18"/>
+    <circle id="head-2" cx="95.69" cy="20.81" r="10.21"/>
+    <path id="shoulders-2" d="M78.34 60.18 V52.90 A13.55 13.55 0 0 1 91.89 39.35 H99.49 A13.55 13.55 0 0 1 113.04 52.90 V60.18"/>
+    <rect id="card-2" x="71.95" y="60.18" width="47.48" height="42.18"/>
+    <circle id="head-3" cx="156.79" cy="20.81" r="10.21"/>
+    <path id="shoulders-3" d="M139.44 60.18 V52.90 A13.55 13.55 0 0 1 152.99 39.35 H160.59 A13.55 13.55 0 0 1 174.14 52.90 V60.18"/>
+    <rect id="card-3" x="133.05" y="60.18" width="47.48" height="42.18"/>
+  </g>
+  <g data-role="accent">
+    <line id="mark-1" data-w="7" x1="25.34" y1="76.5" x2="43.84" y2="76.5"/>
+    <line id="mark-2" data-w="7" x1="86.44" y1="76.5" x2="104.94" y2="76.5"/>
+    <line id="mark-3" data-w="7" x1="147.54" y1="76.5" x2="166.04" y2="76.5"/>
+  </g>
+</svg>

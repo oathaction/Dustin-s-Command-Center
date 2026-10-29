@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-32" viewBox="0 0 195 110">
+  <!-- R-32 Local-News Funding. Crop 195 x 110 px; ink box x 8..187, y 8..102.
+       Construction: a large newspaper at left with a rounded front sheet, rolled/stacked return contour at its left edge, multiple horizontal information rules and one rectangular image/article block on the lower-right of the front page. A cylindrical coin stack sits separately at lower right, overlapping or closely meeting the paper's side.
+       Red: the newspaper's rectangular article block. Coin stack, newspaper contours and information rules stay black. Preserve the funding stack absent from CL-032.
+       Paper: front sheet x 23.67..119.57, y 10.37..99.38; the return's outer edge at x 10.57, top at y 18.7.
+       Rules evenly spaced at 14.44 px from y 26.2. Short stack (centre x 136) sits between the paper's
+       right edge (its left side) and the tall stack, which hides its right part: its arcs stop at x 145.2. -->
+  <g data-role="base">
+    <path id="paper" d="M23.67 18.7 H15.83 A5.26 5.26 0 0 0 10.57 23.96 V92.98 A6.4 6.4 0 0 0 16.97 99.38 H114.57 A5 5 0 0 0 119.57 94.38 V15.37 A5 5 0 0 0 114.57 10.37 H28.57 A4.9 4.9 0 0 0 23.67 15.27 V99.38"/>
+    <line id="rule-1" x1="39.2" y1="26.2" x2="104.1" y2="26.2"/>
+    <line id="rule-2" x1="39.2" y1="40.64" x2="104.1" y2="40.64"/>
+    <line id="rule-3" x1="39.2" y1="55.08" x2="65.8" y2="55.08"/>
+    <line id="rule-4" x1="39.2" y1="69.52" x2="65.8" y2="69.52"/>
+    <line id="rule-5" x1="39.2" y1="83.96" x2="65.8" y2="83.96"/>
+    <path id="short-top" d="M145.2 65.55 A16 5.28 0 0 0 120 69.87 A16 5.28 0 0 0 145.2 74.19"/>
+    <path id="short-band-1" d="M120 82.07 A16 5.28 0 0 0 145.2 86.39"/>
+    <path id="short-band-2" d="M120 94.27 A16 5.28 0 0 0 145.2 98.59"/>
+    <ellipse id="tall-top" cx="164.8" cy="50.08" rx="19.6" ry="7.64"/>
+    <polyline id="tall-left" points="145.2,50.08 145.2,91.87"/>
+    <polyline id="tall-right" points="184.4,50.08 184.4,91.87"/>
+    <path id="tall-band-1" d="M145.2 64.01 A19.6 7.64 0 0 0 184.4 64.01"/>
+    <path id="tall-band-2" d="M145.2 77.94 A19.6 7.64 0 0 0 184.4 77.94"/>
+    <path id="tall-band-3" d="M145.2 91.87 A19.6 7.64 0 0 0 184.4 91.87"/>
+  </g>
+  <g data-role="accent">
+    <rect id="article" class="fill" x="77.3" y="50.75" width="29.6" height="26.63" rx="2"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "id": "CL-006",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Mirrored the two upper arcs about the axis x 86.72 and gave them one radius, 47.9 px, through averaged mirrored end points",
+     "why": "DR-03 symmetry. Arc fits give r 49.8 (left) and 46.0 (right) with end points that mirror within 0.5 px; on chords of 35 px the radius change moves the arc midpoints by about 0.15 px."},
+    {"what": "Centred the lower arc and the top person on the axis (top head measured x 87.12) and mirrored the side people (heads 33.51 and 139.97, shoulders 33.4 and 139.75)",
+     "why": "DR-03 symmetry; the catalogue's triangular arrangement is plainly symmetric."},
+    {"what": "Gave the side people one head radius (10.62; fits 10.65 and 10.60), one shoulder half-width (22.08; 22.15 and 22.0) and one shoulder corner radius (15.6; 15.3 to 16.0)",
+     "why": "DR-03 equal repeats."},
+    {"what": "Drew the arcs at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The three arcs measure 6.15 to 6.5 px on both sheets, heavier than the 5.5 px people; this lowers the red IoU to 0.84 though the arc centrelines match."}
+  ],
+  "notes": "Kept: three separate open arcs with clear gaps to every figure; the lower arc's smile curve (r 50); the top person drawn slightly larger than the side people (head r 11.17, shoulders half-width 22.97) as on the sheet; open shoulder bottoms. Red is the three arcs only; both sheets agree."
+}

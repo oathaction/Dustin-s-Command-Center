@@ -1,0 +1,85 @@
+{
+  "id": "CL-035",
+  "label": "Residential Sorting",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:52:35+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9206,
+      "red_iou_1x": 0.9296,
+      "edge_mean_px": 0.16,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:54:55+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9218,
+      "red_iou_1x": 0.9514,
+      "edge_mean_px": 0.16,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:55:11+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9218,
+      "red_iou_1x": 0.9514,
+      "edge_mean_px": 0.16,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:55:11+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; window in red home made red per red sheet (logged)"
+    }
+  ],
+  "last_build": "2026-10-29T06:55:11+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9218,
+    "red_iou_1x": 0.9514,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9642,
+    "edge_mean_px": 0.16,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Coloured the foreground home's window red as well as its roof-and-wall outline",
+      "why": "The catalogue's Red text names only the outline, but the red sheet shows the small window inside that home in red too. The prompt makes the reference image control over the description, so the window joins the accent group; the black edition is unchanged."
+    },
+    {
+      "what": "Set every roof at 45 deg and each house symmetric about its own apex (A x 36.76, B 72.29, C 150.7, D 181.25, E 144.3)",
+      "why": "DR-03 straight lines and symmetry. The ten roof slopes measure 42.7 to 45.4 deg. House D's walls (163.7, 199.3) and apex (180.95) are brought onto one axis, each moving 0.25 to 0.3 px; house E's walls sit at 127.6 and 161.0 (measured 127.4 and 160.9)."
+    },
+    {
+      "what": "Spaced the six boundary dashes evenly: 17.84 px apart, each 8.44 px long between round caps, on x 109.7",
+      "why": "DR-03 equal repeats. Dash lengths measure 13.0 to 14.9 px of ink with gaps of 3.75 to 4.25 px; centres move up to 0.6 px."
+    },
+    {
+      "what": "Drew the windows at W and equalised the pairs: house A's two windows mirrored about its axis (29.28, 44.22), house D's two stacked windows one length, 7.5 px",
+      "why": "DR-03 one line weight and equal repeats. The right cluster's windows run 6.5 to 7.25 px wide on the sheet, so they draw thinner here; D's windows measure 7.12 and 7.88 px long."
+    },
+    {
+      "what": "Rounded each roof apex with a 1.3 px centreline radius",
+      "why": "The sheet's apex tops sit 0.3 to 0.6 px below a plain round join on the fitted slopes."
+    }
+  ],
+  "source_notes": "Kept: the house count (two on the left, three on the right) and every overlap: house B's roof starts on house A's roof and its floor line stops at A's wall; house C's roof stops 4 px short of house D's roof; C's and D's left walls stop above the red foreground home. Kept the small eave overhangs on the outer sides only (A left, B right, D right) and the differing roof heights. Window counts as drawn: two in A, one in B, one in C, two stacked in D, one in E. House E's walls were moved 0.05 px from the first fitted values because Chromium rasterised the exact 45 deg roof differently in crop space and in the baked export (bake IoU 0.997); at x 127.6 and 161.0 both match (bake IoU 1.0)."
+}

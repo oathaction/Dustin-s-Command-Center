@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-42" viewBox="0 0 248 134">
+  <!-- R-42 Congressional Tariff Votes. Crop 248 x 134 px; ink box x 8..240, y 8..126.
+       Construction: a small domed legislative building stands at left. A compact ballot box overlaps the centre foreground, with a shallow lid and a slanted ballot. At right is a small rising bar chart on a common baseline. A detached horizontal arrow above the chart points right.
+       Red: the ballot's upper/right accent edge and the right-pointing arrow above the chart. Building, box and chart bars remain black. Preserve the actual chart in the source rather than substituting goods or a shipping box.
+       Building upper part mirrored about x 67.85 (finial, lantern, elliptical dome rx 19.15 ry 17.18, drum, cornice, columns,
+       three short pillars, base line). The lower part keeps its drawn asymmetry: an annex with a slot,
+       two pillars, ground line; its right side is hidden behind the ballot box.
+       The sheet's right-hand subject is a ribbed box with a top handle (five bays) beside an L-shaped line
+       whose short crossbar sits low on its vertical; the arrow runs off the L's top. Traced as drawn.
+       Red on the red sheet: the whole ballot outline, and the arrow from x 211.12 to its head. -->
+  <g data-role="base">
+    <line id="finial" x1="67.85" y1="10.65" x2="67.85" y2="16"/>
+    <polyline id="lantern" points="63.1,24.9 63.1,16 72.6,16 72.6,24.9"/>
+    <path id="dome" d="M48.7 41.08 A19.15 17.18 0 0 1 87 41.08"/>
+    <line id="drum-top" x1="44.45" y1="41.08" x2="91.25" y2="41.08"/>
+    <line id="drum-left" x1="45.73" y1="41.08" x2="45.73" y2="50.54"/>
+    <line id="drum-right" x1="89.97" y1="41.08" x2="89.97" y2="50.54"/>
+    <line id="cornice" x1="37.73" y1="50.54" x2="97.97" y2="50.54"/>
+    <line id="column-left" x1="42.72" y1="50.54" x2="42.72" y2="60.3"/>
+    <line id="column-right" x1="92.98" y1="50.54" x2="92.98" y2="60.3"/>
+    <line id="pillar-1" x1="55.35" y1="57" x2="55.35" y2="60.3"/>
+    <line id="pillar-2" x1="67.85" y1="57" x2="67.85" y2="60.3"/>
+    <line id="pillar-3" x1="80.35" y1="57" x2="80.35" y2="60.3"/>
+    <line id="base-line" x1="35.4" y1="68.16" x2="98.8" y2="68.16"/>
+    <polyline id="annex" points="11.87,76.73 37.56,76.73 37.56,113.17"/>
+    <line id="annex-wall" x1="13.67" y1="76.73" x2="13.67" y2="113.17"/>
+    <line id="annex-slot" x1="25.6" y1="88.63" x2="25.6" y2="101.25"/>
+    <line id="pillar-low-1" x1="52.76" y1="81.8" x2="52.76" y2="101.3"/>
+    <line id="pillar-low-2" x1="67.72" y1="81.8" x2="67.72" y2="101.3"/>
+    <line id="ground" x1="10.5" y1="113.17" x2="76.75" y2="113.17"/>
+    <path id="box" d="M92.84 77.2 L86.23 89.19 V120.3 A3.5 3.5 0 0 0 89.73 123.8 H132.4 A3.5 3.5 0 0 0 135.9 120.3 V89.19 L129.29 77.2"/>
+    <line id="box-top" x1="86.23" y1="89.19" x2="135.9" y2="89.19"/>
+    <polyline id="axis-line" points="162.94,103.25 162.94,58.5 213,58.5"/>
+    <line id="axis-tick" x1="147.5" y1="94.56" x2="167.87" y2="94.56"/>
+    <rect id="ribbed-box" x="177.93" y="78.47" width="59.19" height="37.53"/>
+    <line id="rib-1" x1="189.77" y1="78.47" x2="189.77" y2="116"/>
+    <line id="rib-2" x1="201.61" y1="78.47" x2="201.61" y2="116"/>
+    <line id="rib-3" x1="213.44" y1="78.47" x2="213.44" y2="116"/>
+    <line id="rib-4" x1="225.28" y1="78.47" x2="225.28" y2="116"/>
+    <line id="handle" x1="207.7" y1="70" x2="207.7" y2="78.47"/>
+  </g>
+  <g data-role="accent">
+    <polygon id="ballot" points="101.78,79.8 117.5,61.06 126.31,68.45 116.79,79.8"/>
+    <line id="arrow-shaft" class="butt" x1="211.12" y1="58.5" x2="237.4" y2="58.5"/>
+    <polyline id="arrow-head" points="228.6,49.7 237.4,58.5 228.6,67.3"/>
+  </g>
+</svg>

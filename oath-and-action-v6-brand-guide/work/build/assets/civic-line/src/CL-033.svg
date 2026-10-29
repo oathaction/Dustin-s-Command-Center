@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-033" viewBox="0 0 184 138">
+  <!-- CL-033 Hostile Content. Crop 184 x 138 px; ink box x 8..176, y 8..130.
+       Construction: a laptop base with a large open screen above. A rounded speech bubble overlaps the screen’s upper-left area and contains a hashtag and exclamation mark. A triangular warning sign occupies the screen’s right side, with a separate vertical exclamation stroke and dot. The laptop base has a shallow centred notch.
+       Red: the hashtag/exclamation characters in the speech bubble, plus the warning triangle and its exclamation. Laptop and speech-bubble outlines remain black. Preserve the two overlapping message/warning regions. -->
+  <g data-role="base">
+    <path id="bubble" d="M38.91 63.85 L41.33 78.49 L57.29 63.85 L85.31 63.85 A12.3 12.3 0 0 0 97.61 51.55 L97.61 23.37 A12.3 12.3 0 0 0 85.31 11.07 L29.4 11.07 A12.3 12.3 0 0 0 17.1 23.37 L17.1 51.55 A12.3 12.3 0 0 0 29.4 63.85 Z"/>
+    <path id="screen-top-right" d="M107.75 24.94 L155.78 24.94 A6 6 0 0 1 161.78 30.94 L161.78 113.88"/>
+    <line id="screen-left" x1="22.31" y1="73.15" x2="22.31" y2="113.88"/>
+    <path id="base" d="M76 113.88 L11 113.88 L11 118.94 A8.25 8.25 0 0 0 19.25 127.19 L164.85 127.19 A8.25 8.25 0 0 0 173.1 118.94 L173.1 113.88 L108.1 113.88 L104.25 118.6 L79.85 118.6 Z"/>
+  </g>
+  <g data-role="accent">
+    <line id="hash-v1" x1="44.73" y1="25.4" x2="40.91" y2="49.1"/>
+    <line id="hash-v2" x1="55.65" y1="25.45" x2="51.85" y2="49"/>
+    <line id="hash-h1" x1="37.56" y1="32.2" x2="59.56" y2="32.2"/>
+    <line id="hash-h2" x1="36.56" y1="42.5" x2="58.56" y2="42.5"/>
+    <line id="bubble-bang" x1="75.31" y1="25.37" x2="75.31" y2="40.87"/>
+    <circle id="bubble-bang-dot" class="fill" cx="75.31" cy="49" r="3.2"/>
+    <path id="warning" d="M117.38 55.04 A3 3 0 0 1 122.62 55.04 L143.93 93.41 A3 3 0 0 1 141.31 97.87 L98.69 97.87 A3 3 0 0 1 96.07 93.41 Z"/>
+    <line id="warning-bang" x1="120" y1="70.37" x2="120" y2="81.37"/>
+    <circle id="warning-bang-dot" class="fill" cx="120" cy="88.94" r="3.2"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "id": "R-08",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Drew the page square (plumb sides x 10.9 and 102.45, level top y 10.63 and bottom y 98.02) with four rounded corners (centreline radius 5)",
+     "why": "DR-03 straight lines and right angles. Sides fit within 0.3 deg."},
+    {"what": "Set the information rules level with shared left ends: the two upper rules from x 54.75, the two lower rules from x 27.37",
+     "why": "DR-03 straight lines and equal repeats. Rule ends fit within 0.25 px of each other."},
+    {"what": "Drew the lens as one true circle, r 24.55 about (106.21, 60.56)",
+     "why": "DR-03 true circles. Arc fits round the ring give radii 23.8 to 25.0 px; an ellipse fit gives rx 24.70 and ry 24.41, so the sheet's lens is about 0.3 px wider than tall."},
+    {"what": "Drew the handle as a straight stadium outline (two parallel sides, true half-round ends of r 5.6) on one axis at 44.4 deg, joined to the lens by a short neck on the same axis",
+     "why": "DR-03 straight lines and true circles. The handle's sides fit at 44.4 and 45.3 deg; each end is written as two quarter arcs so every renderer draws it the same."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px, including the dollar sign",
+     "why": "DR-03 one line weight. This icon measures 5.5 px."}
+  ],
+  "notes": "Kept as drawn: the dollar sign at upper left (an S with short plumb ticks above and below) that distinguishes this page from the general Watchdogs page; the page's right side broken round the lens, stopping at y 26.87 above it and resuming at y 93.13 below it, so the lens obscures the page edge; the empty lens; the short black neck between lens and handle. Red: the handle outline only; the neck, lens, page, rules and dollar stay black. Sheet difference: the red sheet's handle sits up to 0.5 px further up-left at its upper end than the black sheet's; the trace takes the handle's geometry from the black sheet."
+}

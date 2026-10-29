@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-047" data-id="CL-047" width="128" height="128" viewBox="0 0 128 128">
+  <title>Data Rights</title>
+  <desc>Oath &amp; Action Civic Line CL-047 Data Rights. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M73.309 88.652 H37.768 A2.534 2.534 0 0 1 35.234 86.118 V36.711 A2.534 2.534 0 0 1 37.768 34.176 H80.23 A2.534 2.534 0 0 1 82.765 36.711 V52.424" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.992" y1="44.68" x2="73.309" y2="44.68" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.992" y1="54.778" x2="73.309" y2="54.778" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.992" y1="64.877" x2="65.487" y2="64.877" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.992" y1="74.976" x2="65.487" y2="74.976" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <circle cx="83.764" cy="67.095" r="8.773" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.764" y1="75.868" x2="83.764" y2="93.585" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.764" y1="84.519" x2="89.734" y2="84.519" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.764" y1="91.148" x2="89.734" y2="91.148" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

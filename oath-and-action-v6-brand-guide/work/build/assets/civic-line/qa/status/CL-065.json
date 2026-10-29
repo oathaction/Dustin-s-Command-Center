@@ -1,0 +1,99 @@
+{
+  "id": "CL-065",
+  "label": "Climate & Insurance",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:23:04+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8919,
+      "red_iou_1x": 0.8988,
+      "edge_mean_px": 0.267,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:24:09+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8925,
+      "red_iou_1x": 0.8768,
+      "edge_mean_px": 0.269,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:24:53+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8936,
+      "red_iou_1x": 0.8768,
+      "edge_mean_px": 0.262,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:25:32+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8949,
+      "red_iou_1x": 0.8739,
+      "edge_mean_px": 0.259,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:25:32+00:00",
+      "by": "T4",
+      "note": "overlay checked; house symmetric, drops equal, cloud open base and notches kept, umbrella red"
+    }
+  ],
+  "last_build": "2026-10-29T06:25:32+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8949,
+    "red_iou_1x": 0.8739,
+    "bake_check_iou_1x": 0.9998,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9216,
+    "edge_mean_px": 0.259,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 2.062,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the house symmetric about x 55.93, the axis of its walls: apex (55.93, 67.7), both roof slants at 38.5 deg, eaves ends at x 11.13 and 100.73 on y 103.34, and the door centred (x 47.91 to 63.95)",
+      "why": "DR-03 symmetry. The slants fit at 37.3 deg (left) and 39.7 deg (right) and meet 0.8 px right of the wall axis; the right slant's lower end moves up to 0.7 px. The door measured x 48.03 to 64.07."
+    },
+    {
+      "what": "Drew the walls and door sides plumb and the floor and door head level",
+      "why": "DR-03 straight lines. Fits are within 0.1 deg of plumb and level."
+    },
+    {
+      "what": "Made the three raindrops equal (15.3 px between end centres), parallel at 117 deg and evenly spaced (14.25 px), tops on y 54.4 and bottoms on y 68",
+      "why": "DR-03 equal repeats. The drops fit at 118.5, 117.3 and 115.3 deg; the first ends about 1.5 px higher than the others."
+    },
+    {
+      "what": "Drew the page as a rectangle (x 134.68 to 196.39, y 67.35 to 146.58) with its lower-right corner clipped by one straight cut",
+      "why": "DR-03 straight lines and right angles. The sides fit within 0.02 deg of plumb and level."
+    },
+    {
+      "what": "Centred the umbrella on x 165.27: canopy a true arc (r 17.3) about (165.27, 101.8), its rim a level line at y 101.3, the shaft plumb, the hook a true half-turn (r 4.9)",
+      "why": "DR-03. The canopy fits r 16.9 to 17.1 with a slight outward flare at the tips; the rim's centreline dips about 1.5 px at the shaft, where the raster fills the T-junction's inner corners."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon measures 6.0 px, so the trace's ink area is about 8 percent below the sheet's."
+    }
+  ],
+  "source_notes": "Kept as drawn: the cloud's base stays open between x 76 and 126.8, with both ends rounded; the cloud's two notches where the big top arc meets the small left and right lobes; the small left lobe and the larger, squarer right lobe are different on the sheet and stay different. The weather and house group stays clear of the page. The umbrella keeps its short finial stub above the canopy and its hook turning left. Red: the whole umbrella (canopy, rim, finial, shaft, hook). Black and red sheets agree within a fringe."
+}

@@ -1,0 +1,109 @@
+{
+  "id": "R-24",
+  "label": "Paid Leave",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 5,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:58:25+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9337,
+      "red_iou_1x": 0.8915,
+      "edge_mean_px": 0.202,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:59:57+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9453,
+      "red_iou_1x": 0.8933,
+      "edge_mean_px": 0.164,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:00:28+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9526,
+      "red_iou_1x": 0.9143,
+      "edge_mean_px": 0.146,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:00:43+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9528,
+      "red_iou_1x": 0.9146,
+      "edge_mean_px": 0.143,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T07:01:01+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9528,
+      "red_iou_1x": 0.9146,
+      "edge_mean_px": 0.143,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:01:01+00:00",
+      "by": "T5",
+      "note": "overlay checked; shield kept and made symmetric, date cells on even columns, one red selected cell"
+    }
+  ],
+  "last_build": "2026-10-29T07:01:01+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9528,
+    "red_iou_1x": 0.9146,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0091,
+    "edge_mean_px": 0.143,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 2.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the calendar symmetric about x 138: sides at 95.4 and 180.6 ending at one height (y 57.35), binding uprights 22.05 px either side of the centre, top corners of radius 7.3 px",
+      "why": "DR-03 symmetry. The sides end at y 57.9 and 56.8, the uprights centre at 138.2, and the corner radii read 7.6 and 7.1 px."
+    },
+    {
+      "what": "Put the date cells on three evenly spaced columns (x 114.45, 137.58, 160.7) and two rows (y 58.1, 77.31), with the plain cells one size, 7.3 x 10.35 px",
+      "why": "DR-03 equal repeats. The plain cells measure 7.1 to 8.6 px wide. The second cell of the lower row moves 1.4 px right onto the middle column and narrows from 8.6 to 7.3 px. The selected cell keeps its larger drawn size, 18 x 13.13 px."
+    },
+    {
+      "what": "Made the shield symmetric about x 175.86: vertical sides at 152.44 and 199.28, a top edge of two mirrored curves rising to a point at y 65.0, and lower sides of two mirrored curves meeting at the bottom point (175.86, 123.85)",
+      "why": "DR-03 symmetry. Cubic fits to the sampled centreline have residuals under 0.1 px (top) and 0.23 px (lower sides) with the two halves pooled."
+    },
+    {
+      "what": "Drew the shield's dollar sign as two equal elliptical bowls (4.85 x 4.75 px), point-symmetric about (176.05, 94.0), with bars on the same axis",
+      "why": "DR-03 symmetry. The strokes here measure about 4.7 px, so at W the bowls are drawn slightly smaller than the centreline fit (5.15 x 4.95) to keep the drawn outer size."
+    },
+    {
+      "what": "Drew the adult's and child's shoulders as half-ellipses (24.05 x 18.82 px and 21.1 x 19.76 px) with straight lower sides",
+      "why": "DR-03. Ellipse fits away from the necks have rms 0.15 and 0.12 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. Strokes measure 5.0 to 5.75 px, the shield dollar 4.7 px."
+    }
+  ],
+  "source_notes": "Kept: the larger adult and smaller child in front, each with a hollow head touching an open-bottom body and one inner arm stroke, the adult's right shoulder ending short of the child's head, the slight outward flare of the adult's left side and the child's right side, the calendar behind them with its open lower sides, a separate rule under the date cells, and the shield (the approved quirk) overlapping the calendar's lower right with clear ground between them. Red is the selected date cell (the only highlighted cell on the red sheet) and the shield outline and dollar sign. Both sheets agree."
+}

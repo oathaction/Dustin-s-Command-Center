@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-029" viewBox="0 0 182 129">
+  <!-- CL-029 Public Services. Crop 182 x 129 px; ink box x 8..174, y 8..121.
+       Construction: an open service counter with a horizontal top, a rectangular front and a small block at its left end. A staff member appears behind it inside a three-sided rectangular service window. The staff figure has a hollow circular head and a curved shoulder arc. A larger visiting person’s hollow head and open torso stand outside at right.
+       Red: a short horizontal rule on the counter’s front, slightly right of centre. The people and window stay black. Preserve the counter/window/visitor depth order. -->
+  <defs>
+    <mask id="visitor-gap">
+      <line id="visitor-gap-cut" data-w="10" x1="114.4" y1="78.9" x2="132.6" y2="55"/>
+    </mask>
+  </defs>
+  <g data-role="base">
+    <path id="window" d="M37.37 69 V14.94 A4.5 4.5 0 0 1 41.87 10.44 H115.1 A4.5 4.5 0 0 1 119.6 14.94 V72" mask="url(#visitor-gap)"/>
+    <path id="counter" d="M111.37 81.78 H12.95 A2 2 0 0 0 10.95 83.78 V118.4"/>
+    <path id="counter-block" d="M19.3 81.78 V71 A2 2 0 0 1 21.3 69 H38.15 A2 2 0 0 1 40.15 71 V81.78"/>
+    <circle id="staff-head" cx="79.89" cy="40.05" r="11.5"/>
+    <path id="staff-shoulders" d="M57.82 73.25 V70.9 A16.7 16.7 0 0 1 74.52 54.2 H85.18 A16.7 16.7 0 0 1 101.88 70.9 V73.25"/>
+    <circle id="visitor-head" cx="146.89" cy="39.89" r="11.83"/>
+    <path id="visitor-torso" d="M122.66 118.25 V78.07 A17.45 17.45 0 0 1 140.11 60.62 H153.62 A17.45 17.45 0 0 1 171.07 78.07 V118.25"/>
+  </g>
+  <g data-role="accent">
+    <line id="counter-rule" x1="73.95" y1="96.3" x2="110.6" y2="96.3"/>
+  </g>
+</svg>

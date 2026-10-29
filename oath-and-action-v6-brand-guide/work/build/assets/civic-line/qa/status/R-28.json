@@ -1,0 +1,103 @@
+{
+  "id": "R-28",
+  "label": "Capital-Income Tax",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:14:01+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8929,
+      "red_iou_1x": 0.91,
+      "edge_mean_px": 0.224,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:14:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8952,
+      "red_iou_1x": 0.91,
+      "edge_mean_px": 0.218,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:14:49+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8952,
+      "red_iou_1x": 0.91,
+      "edge_mean_px": 0.218,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:15:01+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8952,
+      "red_iou_1x": 0.91,
+      "edge_mean_px": 0.218,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:14:49+00:00",
+      "by": "T5",
+      "note": "overlay checked; tall stack in front as drawn (catalogue says back), short stack masked"
+    }
+  ],
+  "last_build": "2026-10-29T07:15:01+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8952,
+    "red_iou_1x": 0.91,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0446,
+    "edge_mean_px": 0.218,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.25,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew each stack from one ellipse size: the tall stack 20.45 x 7.93 px (sides at x 34.9 and 75.8) and the short stack 15.0 x 5.22 px",
+      "why": "DR-03 true ellipses and equal repeats within each stack. The rims and bands of the sheet's stacks vary in curvature by up to about 1 px; each stack's size comes from its side positions and its top rim's height."
+    },
+    {
+      "what": "Spaced the tall stack's three bands and bottom evenly, 13.68 px apart, and the short stack's band midway between its rim and bottom",
+      "why": "DR-03 equal repeats. Tall-stack spacings measure 13.55, 13.58, 13.77 and 13.83 px; the short stack's 11.78 and 12.12 px."
+    },
+    {
+      "what": "Cut the short stack where the tall stack stands in front of it, with a mask shaped to the tall stack's outline",
+      "why": "Occlusion as a gap. On the sheet the tall stack's left wall runs unbroken from rim to base and the short stack's rim, band and base stop at it, so the tall stack is the front one."
+    },
+    {
+      "what": "Spaced the four record rules evenly, 17.41 px apart from y 28.24 to 80.48, from one left end at x 105.2",
+      "why": "DR-03 equal repeats. Gaps measure 17.21, 17.26 and 17.77 px. Each rule keeps its own right end."
+    },
+    {
+      "what": "Drew the dollar sign's S as two equal elliptical bowls (8.4 x 7.68 px), point-symmetric about (150.4, 68.45)",
+      "why": "DR-03 symmetry. The bowls measure about 8.1 x 7.5 and 8.7 x 7.85 px."
+    },
+    {
+      "what": "Gave the record one corner radius, 3.85 px",
+      "why": "DR-03. Diagonal profiles give 3.65 to 4.0 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon runs light: strokes measure 5.25 to 5.5 px and the ink area ratio is about 1.05."
+    }
+  ],
+  "source_notes": "Kept: two stacks of different heights side by side with the taller one standing in front, both clear of the record (about 10 px of ground between the tall stack and the record's left edge); the record's right edge broken around the dollar sign (upper part stops at y 44, lower part starts at y 91.37); four rules of different lengths; the dollar sign with bars above and below. Judgement: the catalogue calls the shorter stack 'front' and the taller 'back', but the sheet's lines show the taller stack in front; the image controls, so the trace follows it. Red is the dollar sign only. Both sheets agree."
+}

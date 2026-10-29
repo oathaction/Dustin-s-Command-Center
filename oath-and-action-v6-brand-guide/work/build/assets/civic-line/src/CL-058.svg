@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-058" viewBox="0 0 207 114">
+  <!-- CL-058 Stock Ownership. Crop 207 x 114 px; ink box x 8..199, y 8..106.
+       Construction: a stock certificate at left is an upright rectangular page with several short rules. A small round seal overlaps its lower-right area, with two tiny ribbon tails below. To the right of the page sit three narrow ascending vertical bars on a shared short baseline. The tallest bar is at far right.
+       Red: the seal’s hollow circular outline and the tallest rightmost bar’s fill. Certificate, ribbon tails, other bars and baseline stay black. Preserve the certificate-plus-chart composition.
+       Trace: accent group first so the black baseline crosses the foot of the red bar, as on the red sheet.
+       The certificate's bottom edge is open between the two ribbon tails, which hang below it and end in a
+       swallowtail. The seal is a stroked ring; the two short bars are open outlines, the tall bar is filled. -->
+  <g data-role="accent">
+    <rect id="bar-3" class="fill-stroke" x="177.87" y="23.05" width="10.5" height="70.2"/>
+    <circle id="seal" cx="85.45" cy="71.15" r="10.2"/>
+  </g>
+  <g data-role="base">
+    <path id="certificate" d="M79.1 92.35 H14.72 A3.6 3.6 0 0 1 11.12 88.75 V14.91 A3.6 3.6 0 0 1 14.72 11.31 H105.62 A3.6 3.6 0 0 1 109.22 14.91 V88.75 A3.6 3.6 0 0 1 105.62 92.35 H91.8"/>
+    <line id="rule-1" x1="29.37" y1="29.38" x2="91.15" y2="29.38"/>
+    <line id="rule-2" x1="29.37" y1="46.89" x2="91.15" y2="46.89"/>
+    <line id="rule-3" x1="29.37" y1="64.4" x2="57.5" y2="64.4"/>
+    <polyline id="ribbon" points="79.1,92.35 79.1,102.5 85.45,98.3 91.8,102.5 91.8,92.35"/>
+    <line id="baseline" x1="121.05" y1="96.0" x2="196.1" y2="96.0"/>
+    <polyline id="bar-1" points="128.22,96.0 128.22,61.3 140.19,61.3 140.19,96.0"/>
+    <polyline id="bar-2" points="152.68,96.0 152.68,46.3 164.64,46.3 164.64,96.0"/>
+  </g>
+</svg>

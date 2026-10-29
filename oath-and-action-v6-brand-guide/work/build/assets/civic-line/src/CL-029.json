@@ -1,0 +1,15 @@
+{
+  "id": "CL-029",
+  "tracer": "T2",
+  "corrections": [
+    {"element": "visitor-gap-cut", "what": "Mask cut data-w 10: a straight band at -52.75 deg that ends the window's right side 4.8 px clear of the visitor's shoulder",
+     "why": "Both sheets stop the window's right side on a slanted cut (x 118.5 at y 65.25 to x 120.5 at y 62.62) parallel to the visitor's shoulder. The band reproduces that gap as a true hole; a cut following the shoulder's own curve sat 1 px low at the line's left edge."},
+    {"what": "Made both heads true circles: staff (79.89, 40.05) r 11.5, visitor (146.89, 39.89) r 11.83",
+     "why": "DR-03. Fits with the shoulder junction left out have 0.04 px rms. The visitor's larger head is kept."},
+    {"what": "Drew the staff shoulders and the visitor's torso as symmetric arches: straight sides, a short straight top and two equal true corner arcs (staff r 16.7, visitor r 17.45)",
+     "why": "DR-03 symmetry. The sheet's corners fit r 16.62 and 16.75 (staff) and r 18.29 and 16.64 (visitor); both arches are squarer than a half circle. Staff arch centre x 79.85 matches its head (79.89); visitor arch centre 146.87 matches its head (146.89)."},
+    {"what": "Rounded the window's top corners at 4.5 px and the counter and block corners at 2 px (centreline)",
+     "why": "The sheet's outer corners round wider than a plain round join."}
+  ],
+  "notes": "Kept: the three-sided window standing on the counter block, its left side landing on the block's top; the block's right side 2.8 px right of the window's side, as drawn; the staff shoulders stopping 3 px above the counter top; the head touching the shoulders; the counter's single left leg and the counter top running out to x 111.4 short of the visitor; the visitor in front of the window, shown by the window's cut end. Red: the short rule on the counter front, right of centre."
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-09" viewBox="0 0 165 117">
+  <!-- R-09 Stock-Trading Ban. Crop 165 x 117 px; ink box x 8..157, y 8..109.
+       Construction: a horizontal stock certificate with an outer rectangular border and a second inset border. The border has small stepped/notched corner details. A jagged black market-price line crosses the interior. A thick diagonal restriction stroke runs from lower left to upper right across the whole certificate and extends slightly outside it.
+       Red: the broad diagonal restriction stroke. Certificate framing and chart line stay black. Preserve the slash without adding a surrounding prohibition circle. -->
+  <!-- T4 trace. Certificate: outer border with concave notched corners (r 8.4 about each corner point), inner border
+       of four separate rules; both borders and the chart line stop short of the slash with clear ground. The slash is a
+       filled band (about 10.7 px across) at 43.6 deg with level-cut ends, drawn as a filled and stroked polygon. -->
+  <g data-role="base">
+    <path id="border-top-left" d="M11.12 77 V18.92 A8.4 8.4 0 0 0 19.52 10.52 H132.9"/>
+    <path id="border-bottom-left" d="M11.12 77 V90.90 A8.4 8.4 0 0 1 19.52 99.3 H40.5"/>
+    <path id="border-right" d="M154.15 19.7 V90.90 A8.4 8.4 0 0 0 145.75 99.3 H67.19"/>
+    <line id="inner-top" x1="32.75" y1="23.58" x2="119.19" y2="23.58"/>
+    <line id="inner-left" x1="23.75" y1="31.9" x2="23.75" y2="77.7"/>
+    <line id="inner-right" x1="142.43" y1="31.9" x2="142.43" y2="77.6"/>
+    <line id="inner-bottom-left" x1="32.63" y1="86.17" x2="54.6" y2="86.17"/>
+    <line id="inner-bottom-right" x1="83" y1="86.17" x2="133.87" y2="86.17"/>
+    <polyline id="chart-left" points="40.63,68.26 48.20,67.82 60.71,49.3 70.9,61.3 83.45,43.9 89.1,51.1"/>
+    <polyline id="chart-right" points="115.2,57.6 122.73,65.7 125.25,65.7"/>
+  </g>
+  <g data-role="accent">
+    <polygon id="slash" class="fill-stroke" points="143.29,10.9 150.81,10.9 51.05,106 43.53,106"/>
+  </g>
+</svg>

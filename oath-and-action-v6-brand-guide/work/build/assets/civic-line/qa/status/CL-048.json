@@ -1,0 +1,120 @@
+{
+  "id": "CL-048",
+  "label": "Public Records",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 6,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:27:26+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.866,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.316,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:27:43+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8658,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.317,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:28:20+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8689,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.302,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:28:45+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8689,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.302,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T06:45:33+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8751,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.283,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 6,
+      "time": "2026-10-29T06:45:47+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8751,
+      "red_iou_1x": 0.8593,
+      "edge_mean_px": 0.283,
+      "edge_p95_px": 1.0
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:28:45+00:00",
+      "by": "T3",
+      "note": "overlay checked; folder front occludes document by stopping its sides, tab and rear edge match; red rule drawn at W though sheet draws it 1.2x heavier"
+    },
+    {
+      "time": "2026-10-29T06:45:47+00:00",
+      "by": "T3",
+      "note": "corner radii re-measured from the outer edge"
+    }
+  ],
+  "last_build": "2026-10-29T06:45:47+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8751,
+    "red_iou_1x": 0.8593,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9058,
+    "edge_mean_px": 0.283,
+    "edge_p95_px": 1.0,
+    "edge_max_px": 1.904,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, the red top rule included",
+      "why": "DR-03 one line weight. The outlines measure 5.75 to 6.25 px. The red top rule measures 7.25 px on the black sheet and 7.07 on the red sheet, about 1.2 times its black neighbours (6.0 to 6.25). That is heavier than the sheet's noise but far from the 2x the guide treats as a deliberate second weight, so the rule is drawn at W and its edges sit up to 0.9 px inside the sheet's. A reviewer may prefer data-w 6.5 here."
+    },
+    {
+      "what": "Drew the folder front as one closed outline: corners r 5.2, top edge y 49.3 from the left corner to x 43.25, a straight diagonal at 55.9 deg down to a rounded turn (r 9) into the lower top edge y 75.95",
+      "why": "The diagonal's lower half fits a straight line at 55.9 deg (rms 0.04 px); near the top the sheet's ink thickens where the document's left side, the tab and the diagonal meet, which the straight diagonal keeps within 0.6 px."
+    },
+    {
+      "what": "Made the tab's top edge level at y 38.0",
+      "why": "DR-03 straight lines. It measures 37.8 at its right end and 38.3 at its left, a 2.7 deg tilt over 11 px."
+    },
+    {
+      "what": "Set the corner radii on the centreline to 3.9 (document), 3.7 (folder front), 4.2 (tab) and 4.8 (rear edge)",
+      "why": "Medial-axis circle fits give 5.5 to 7.0 px, but they overstate a corner whose inner edge is tight; the outer edge along each corner's diagonal gives outer radii of 6.3 to 7.5 px, which these radii at W match."
+    },
+    {
+      "what": "Gave the top two rules one length, x 71.55 to 124.55",
+      "why": "DR-03 equal repeats. Both measure x 71.5 to 124.75 on the black sheet; the red sheet's red rule runs 71.63 to 124.37."
+    }
+  ],
+  "source_notes": "Kept as drawn: the document's left side stops on the folder's diagonal at (51.27, 61.1) and its right side on the front's top edge, so the front hides the document's lower part with no painted cover. The back of the folder shows only as the small tab at left and the rear edge at right. The three rules keep the sheet's uneven spacing (17.15 px, then 13.1 px): the gap below the red rule is plainly wider on both sheets. The second rule is as long as the red one, as drawn, although the catalogue calls the rules below 'shorter'."
+}

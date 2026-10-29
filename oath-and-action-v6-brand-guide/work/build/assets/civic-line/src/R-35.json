@@ -1,0 +1,14 @@
+{
+  "id": "R-35",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Made the clock a true circle, r 29, centred on the hands' pivot at (116.5, 54.85)", "why": "DR-03. The sheet's ring is 0.5 px wider than tall (top 25.75, bottom 83.25, left 87.5, right 146.0 on the centreline; free circle fit (116.52, 54.75) r 29.02), and the hands meet 1.3 px away at (116.0, 55.55). A clock's hands pivot at its centre, so ring and pivot now share one centre, each moving part way: ring edges move up to 0.6 px (near the bottom cut), the minute hand 0.5 px right and the hour hand 0.7 px up. Hand tips keep their measured positions."},
+    {"what": "Ended the clock ring with flat cuts at the right horizontal and just past the bottom (class butt)", "why": "The sheet cuts both ends square to the stroke, leaving an even 5.7 px gap between each end and the badge; a round cap would close that gap by 2.75 px."},
+    {"what": "Cut the X from the disc with two W strokes in a mask, on the disc's diagonals through its centre (147.39, 83.53), arms reaching 15.8 px from the centre", "why": "Negative-space rule: the X is a real hole in both editions. The sheet's X arms measure 5.0 px across, drawn at W (5.5 px), so the hole is 0.25 px wider on each side; its ends and centre match."},
+    {"what": "Aligned head and body on one axis, x 55.13; body is a half-ellipse arch (rx 19.01, ry 15.46) with a vertical right side down to the desk top", "why": "DR-03 symmetry. Head fit centre x 55.45, arch fit 54.82 (rms 0.08 px); each moves 0.3 px."},
+    {"what": "Levelled the desk top at y 63.33 and gave both rounded corners of the desk's left end one radius, 4.9 px", "why": "DR-03 straight lines. The top line falls 0.44 px over its length; corner fits give 4.92 and 4.84 px. The sheet's top-left corner reads up to 0.7 px squarer than the bottom-left one."},
+    {"what": "Drew the desk item as a symmetric shape about x 37.2: sides leaning 5.75 degrees outward, 6 px top corners, flat top at y 51.1", "why": "DR-03 symmetry. Its sides measure 7.2 and 4.3 degrees of lean; the top bows 0.6 px."},
+    {"what": "Gave both legs one bottom, y 111.6, and drew every stroke at W, 5.5 px", "why": "DR-03. Leg ends measure 111.4 and 111.9; the icon measures 5.30 px."}
+  ],
+  "notes": "Kept: the body's left side stopping on the desk item's top (the item stands in front), the open right ends of both desk lines, the right leg detached below the desk, the L-shaped hands, the clock passing behind the badge with flat-cut ends, and the badge as a solid disc with the X as a true cutout. Label stays 'Term Limits · Rejected'. Black and red sheets agree."
+}

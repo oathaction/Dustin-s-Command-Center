@@ -1,0 +1,75 @@
+{
+  "id": "CL-036",
+  "label": "Cross-Border Capital",
+  "state": "traced",
+  "tracer": "T2",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:59:59+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9331,
+      "red_iou_1x": 0.8646,
+      "edge_mean_px": 0.189,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:00:32+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9331,
+      "red_iou_1x": 0.8646,
+      "edge_mean_px": 0.189,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:00:32+00:00",
+      "by": "T2",
+      "note": "T2: overlay checked; matching parcels, coin jog kept"
+    }
+  ],
+  "last_build": "2026-10-29T07:00:32+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9331,
+    "red_iou_1x": 0.8646,
+    "bake_check_iou_1x": 0.9992,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9777,
+    "edge_mean_px": 0.189,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.275,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew both parcels from one shape, the right one 121.4 px to the right of the left one, with corners averaged from both",
+      "why": "DR-03 equal repeats; the catalogue calls them matching parcels. The two parcels' edges agree to 0.2 px after the shift (front widths 41.91 and 41.69 px)."
+    },
+    {
+      "what": "Kept the right parcel's front-left edge jog: it runs down at x 132.2, steps right along a straight slant to x 136.5 between y 55.5 and 65.3, and continues to the bottom corner",
+      "why": "Both sheets bend that edge away from the coin, keeping a 3.3 px gap. The sheet softens the two bends; the trace uses straight runs with round joins."
+    },
+    {
+      "what": "Made the coin a true circle, centre (99.57, 75.55), r 28.1",
+      "why": "DR-03. The sheet's coin is 1.9 px taller than wide (upper arc fits r 27.36 at centre y 74.32, lower arc r 27.47 at 76.62); the circle stays within 0.5 px of every side."
+    },
+    {
+      "what": "Drew the dollar sign as two equal true loops (r 5.4) on one vertical axis, x 99.7, with short bars above and below",
+      "why": "DR-03. The red sheet's loops measure about 5.3 to 5.7 px; its two terminals flare out about 0.8 px past the loops, which the trace leaves out."
+    },
+    {
+      "what": "Gave both arrowheads one size: barbs 8.9 px back from the tip and 9.1 px either side of the shaft, symmetric about the shaft",
+      "why": "DR-03 equal repeats and symmetry. The upper head measures 8.85 x 9.31 px and the lower 8.88 x 8.88 px."
+    }
+  ],
+  "source_notes": "Kept: the top-face tape seams at the sheet's own 45 deg angle, starting 0.8 px left of the front seam (the start sits inside the front edge's stroke); the parcels' slight perspective, with the top-back edge narrower than the front and the side face's back edge ending at y 62.5; the upper arrow pointing right across the gap and the lower one pointing left, vertically apart; the lower arrow stopping short of the coin. Red: the upper right-pointing arrow and the dollar sign; boxes, coin outline and the lower arrow stay black."
+}

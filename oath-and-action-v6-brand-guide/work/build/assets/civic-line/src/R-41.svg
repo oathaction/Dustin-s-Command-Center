@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-41" viewBox="0 0 229 118">
+  <!-- R-41 Grid Cost Allocation. Crop 229 x 118 px; ink box x 8..221, y 8..110.
+       Construction: a vertical stack of three rounded server trays at left, with small indicators and short rules. A narrow electrical plug with two upright pins and a curling short cable occupies the centre. An upright electricity-cost record stands at right, containing a small top rule and a large dollar sign.
+       Red: the dollar sign on the right-hand record. Servers, plug, cable and paper remain black. Retain the three-part servers/plug/bill sequence.
+       Rack: three equal trays (26.68 px) over a shallower base compartment; the rack's lower corners are
+       drawn rounder (r 12.2) than its upper ones (r 7), as on the sheet. The cable leaves the rack's
+       right side, drops, and loops up in a semicircle into the plug's cord. This dollar's bar runs
+       through the S, unlike R-36 and R-38. -->
+  <g data-role="base">
+    <path id="rack" d="M10.6 17.46 A7 7 0 0 1 17.6 10.46 H73.7 A7 7 0 0 1 80.7 17.46 V95.05 A12.2 12.2 0 0 1 68.5 107.25 H22.8 A12.2 12.2 0 0 1 10.6 95.05 Z"/>
+    <line id="divider-1" x1="10.6" y1="37.14" x2="80.7" y2="37.14"/>
+    <line id="divider-2" x1="10.6" y1="63.82" x2="80.7" y2="63.82"/>
+    <line id="divider-3" x1="10.6" y1="90.5" x2="80.7" y2="90.5"/>
+    <circle id="led-1" class="fill" cx="23.77" cy="23.8" r="2.75"/>
+    <circle id="led-2" class="fill" cx="23.77" cy="50.48" r="2.75"/>
+    <circle id="led-3" class="fill" cx="23.77" cy="77.16" r="2.75"/>
+    <line id="tray-rule-1" x1="46.75" y1="23.8" x2="67.55" y2="23.8"/>
+    <line id="tray-rule-2" x1="46.75" y1="50.48" x2="67.55" y2="50.48"/>
+    <line id="tray-rule-3" x1="46.75" y1="77.16" x2="67.55" y2="77.16"/>
+    <path id="cable" d="M80.7 43.6 H86.2 A9 9 0 0 1 95.2 52.6 V86.3 A16.1 16.1 0 0 0 111.3 102.4 A16.1 16.1 0 0 0 127.4 86.3 V78.5"/>
+    <line id="prong-left" x1="121.69" y1="46.75" x2="121.69" y2="59.6"/>
+    <line id="prong-right" x1="133.11" y1="46.75" x2="133.11" y2="59.6"/>
+    <path id="plug-body" d="M117.5 59.6 H137.3 V69.5 A9.9 9 0 0 1 127.4 78.5 A9.9 9 0 0 1 117.5 69.5 Z"/>
+    <rect id="bill" x="156.4" y="20.57" width="62.2" height="86.73" rx="5"/>
+    <line id="bill-rule" x1="170.31" y1="36.81" x2="204.69" y2="36.81"/>
+  </g>
+  <g data-role="accent">
+    <path id="dollar-s" d="M195.02 61.06 A8.23 6.85 0 1 0 185.14 70.41 L189.86 71.59 A8.23 6.85 0 1 1 179.92 80.83"/>
+    <line id="dollar-bar" x1="187.5" y1="51.25" x2="187.5" y2="91.13"/>
+  </g>
+</svg>

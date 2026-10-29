@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-059" data-id="CL-059" width="128" height="128" viewBox="0 0 128 128">
+  <title>Credit Allocation</title>
+  <desc>Oath &amp; Action Civic Line CL-059 Credit Allocation. Traced vector reconstruction from the Civic Line reference sheet 03, row 2, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <polygon points="43.919,39.957 62.294,28.079 80.669,39.957" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.013" y1="45.113" x2="48.013" y2="58.083" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="57.532" y1="45.113" x2="57.532" y2="58.083" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.056" y1="45.113" x2="67.056" y2="58.083" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.575" y1="45.113" x2="76.575" y2="58.083" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.603" y1="58.083" x2="80.986" y2="58.083" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="22.235,99.336 22.235,87.712 34.259,77.745 46.283,87.712 46.283,99.336" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="31.427,99.336 31.427,92.464 37.091,92.464 37.091,99.336" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="71.516,88.418 78.646,83.447 78.646,88.808 87.336,83.447 87.336,88.808 96.022,83.447 96.022,88.808 97.143,88.808 100.165,77.715 105.95,77.715 105.95,99.716 71.516,99.716" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M59.316 63.513 V67.378 A1.218 1.218 0 0 1 58.098 68.596 H37.564 A1.218 1.218 0 0 0 36.345 69.815 V74.138" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M65.272 63.513 V67.378 A1.218 1.218 0 0 0 66.491 68.596 H87.025 A1.218 1.218 0 0 1 88.243 69.815 V77.769" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

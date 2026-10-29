@@ -1,0 +1,35 @@
+{
+  "id": "R-21",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Made the worker symmetric about x 44.9: hat dome, crest, brim, face, shoulders and inner arm lines",
+      "why": "DR-03 symmetry. The parts centre between x 44.5 (brim) and 45.24 (crest); every move is under 0.5 px."
+    },
+    {
+      "what": "Drew the hard hat as a half-elliptical dome (20.08 x 22.5 px about y 42.45) meeting a raised crest, an inverted U with 2 px corners whose sides run down inside the dome to y 34.8, over a straight brim at y 43.9",
+      "why": "DR-03. A fit to the dome's centreline away from the crest has rms 0.13 px. The crest top sits at y 17.7 and steps up from the dome at both sides, as on the sheet."
+    },
+    {
+      "what": "Drew the face and the shoulders as half-ellipses (18.02 x 19.26 px and 34.37 x 22.6 px)",
+      "why": "DR-03. Ellipse fits have rms 0.20 px each; a circle fits the shoulders with rms 1.6 px."
+    },
+    {
+      "what": "Spaced the four page rules evenly, 15.42 px apart from y 28.1 to 74.35, from one left end at x 95.37",
+      "why": "DR-03 equal repeats. Gaps measure 15.23, 15.25 and 15.77 px. Their stepped lengths (to 152, 139, 130.5 and 119.37) are kept as drawn."
+    },
+    {
+      "what": "Gave the document's two top corners one radius, 2.7 px",
+      "why": "DR-03. Diagonal profiles give about 1.5 px (left) and 3.9 px (right)."
+    },
+    {
+      "what": "Drew the badge as a true circle, centre (166.15, 82.81), r 27.54, from the black sheet",
+      "why": "DR-03 true circles. The annulus fit has rms 0.08 px; the red sheet fits r 27.09 with thinner strokes."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The badge and check measure 6.0 to 6.1 px; other strokes 5.25 to 5.9 px."
+    }
+  ],
+  "notes": "Kept: the faceless head under a clear hard-hat silhouette (dome, raised crest with its two inner strokes, brim reaching past the head on both sides), the head merging into the shoulders, two short inner arm strokes, the document behind the worker as an open contour (left edge stops at y 74.65 above the shoulder, right edge at y 43.6 above the badge), four stepped rules plus a separate lower rule, and the badge overlapping the document's lower-right corner with clear ground between them. Red is the badge circle and check only. This is one of the eight icons with low sheet-to-sheet agreement; the difference is the red sheet's thinner strokes."
+}

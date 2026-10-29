@@ -1,0 +1,27 @@
+{
+  "id": "R-22",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Centred the central figure (head, shoulders and its one inner arm stroke) and the top of the red trapezoid on the composition's axis, x 105.15",
+      "why": "DR-03 symmetry. The table, its legs, the trapezoid's feet and the two side figures all centre at x 104.9 to 105.6, but the central figure sits at x 103.0 and the trapezoid's top edge at 103.2. Both move 2.15 px right (about 1.1 units of 128). This lowers silhouette IoU to 0.83 and raises edge mean to 0.52 px; nothing else in the icon is off by more than 0.6 px."
+    },
+    {
+      "what": "Made the trapezoid's two slanted sides mirror images at 50.4 deg, from a 68.3 px top edge at y 74.92 down to the table line",
+      "why": "DR-03 symmetry. The sides measure 54.2 deg (left) and 47.0 deg (right), a result of the top edge's 2 px offset."
+    },
+    {
+      "what": "Mirrored the two side figures about the axis: equal heads (r 10.52 at y 45.75, each 0.71 px inward of its body), equal half-elliptical shoulders (20.16 x 17.26 px), outer legs ending at y 106.6 and inner legs at y 83.45",
+      "why": "DR-03 equal repeats and symmetry. Heads fit r 10.61 and 10.44; shoulders 20.31 x 17.2 and 20.01 x 17.32 px; leg ends differ by 0.15 px or less."
+    },
+    {
+      "what": "Straightened the table line to y 93.5 and centred it with its legs on the axis",
+      "why": "DR-03 straight lines. The line drops from y 93.74 to 93.27 across its length (0.3 deg); ends and legs move under 0.2 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. Strokes measure 5.25 to 6.0 px."
+    }
+  ],
+  "notes": "Kept: three people in a triangle with the taller central figure behind the table, the side figures' inner legs stopping above the table (their outer legs reach lower), the central figure's single short arm stroke on its right, the long straight table with two legs, and the low trapezoid sitting on the table's top edge. Red is the trapezoid only; its feet pass under the black table line, as on the red sheet. Both sheets agree."
+}

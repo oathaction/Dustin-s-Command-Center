@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-013" viewBox="0 0 160 141">
+  <!-- CL-013 Incumbent Defeat. Crop 160 x 141 px; ink box x 8..152, y 8..133.
+       Construction: a vacant office chair at left, with tall rounded back, wide seat and short armrests. One central stem descends to a horizontal foot with short downward tips. To its right, at seat/back mid-height, is a detached horizontal arrow pointing right. Preserve the open gap between chair and arrow.
+       Red: the detached right-pointing arrow. Keep the chair entirely black and empty. The source uses a chair rather than an illustrated departing person. -->
+  <g data-role="base">
+    <!-- Chair on the axis x 50.9: back, seat with arm tops meeting the back's sides, stem through the foot bar. -->
+    <path id="back" d="M22.7 77.37 V21.2 A10.7 10.7 0 0 1 33.4 10.5 H68.4 A10.7 10.7 0 0 1 79.1 21.2 V77.37 Z"/>
+    <path id="seat" d="M22.7 67 A5 5 0 0 0 17.7 62 H10.96 V86.93 A6 6 0 0 0 16.96 92.93 H84.84 A6 6 0 0 0 90.84 86.93 V62 H84.1 A5 5 0 0 0 79.1 67"/>
+    <line id="stem" x1="50.9" y1="92.93" x2="50.9" y2="130.2"/>
+    <path id="foot" d="M24.83 130.2 V122.58 A4.5 4.5 0 0 1 29.33 118.08 H72.47 A4.5 4.5 0 0 1 76.97 122.58 V130.2"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="107.13" y1="62.72" x2="149" y2="62.72"/>
+    <polyline id="arrow-head" points="134.7,48.13 149,62.72 134.7,77.31"/>
+  </g>
+</svg>

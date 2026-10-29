@@ -1,0 +1,71 @@
+{
+  "id": "CL-069",
+  "label": "Childcare",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:40:35+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8648,
+      "red_iou_1x": 0.793,
+      "edge_mean_px": 0.357,
+      "edge_p95_px": 0.791
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:40:56+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8648,
+      "red_iou_1x": 0.793,
+      "edge_mean_px": 0.357,
+      "edge_p95_px": 0.791
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:40:56+00:00",
+      "by": "T4",
+      "note": "overlay checked; contour, V meeting point, short child stroke and arm match; heavier sheet weight logged"
+    }
+  ],
+  "last_build": "2026-10-29T06:40:56+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8648,
+    "red_iou_1x": 0.793,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.8832,
+    "edge_mean_px": 0.357,
+    "edge_p95_px": 0.791,
+    "edge_max_px": 1.5,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon is one of the heavy outliers: it measures 6.19 px overall and the red arm 6.6 px. The trace's ink area is about 12 percent below the sheet's and its red IoU (0.79) sits low for that reason; the overlay shows the edges falling evenly inside the sheet's on both sides of each stroke."
+    },
+    {
+      "what": "Made both heads true circles: adult r 17.8 about (50.5, 29.0), child r 12.68 about (111.61, 74.19)",
+      "why": "DR-03 true circles. The adult head fits r 17.89 with rms 0.30 px; it reads about 0.35 px wider than tall."
+    },
+    {
+      "what": "Drew the adult's left side, the child's right side and the child's short left stroke plumb",
+      "why": "DR-03 straight lines. They fit within 0.2 deg of plumb."
+    },
+    {
+      "what": "Drew the red arm as one true arc (r 37.27) running into a level run at y 114.6",
+      "why": "DR-03. The arc fits with rms 0.06 to 0.09 px; the run fits at 0.9 deg, about 0.5 px of rise over its length."
+    }
+  ],
+  "source_notes": "Kept as drawn: the height difference between adult and child; the single contour that runs down the adult's right side into a low V at (84.9, 102.6) and rises across the child's shoulder; the child's left side shows only as a short plumb stroke below the arm, with clear ground between them; open-bottom bodies whose ends sit where the sheet puts them (adult's left foot at y 141.6, the child's two at y 144.6 and 144.75); the clear gap between the adult's head and shoulders. Red: the embracing arm only. Black and red sheets agree within a fringe."
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-063" data-id="CL-063" width="128" height="128" viewBox="0 0 128 128">
+  <title>Essential Costs</title>
+  <desc>Oath &amp; Action Civic Line CL-063 Essential Costs. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base-1">
+    <polyline points="22.732,57.308 53.804,33.582 84.875,57.308" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.778,43.49 66.778,33.318 75.551,33.318 75.551,50.187" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="28.469,58.029 28.469,82.692 43.247,82.692" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="79.138" y1="52.79" x2="79.138" y2="55.763" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="46.147,69.459 44.558,63.05 49.524,61.563 53.521,69.459" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="62.05,69.459 66.876,60.783 72.481,62.294 70.239,69.459" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M72.481 62.294 L72.261 61.222 A7.896 7.896 0 0 1 84.276 66.534" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M84.422 66.534 L90.349 66.534 A2.924 2.924 0 0 1 92.503 67.485 L104.605 80.688 A2.193 2.193 0 0 1 104.468 83.788 L93.736 93.619 A2.193 2.193 0 0 1 90.636 93.483 L78.831 80.606 A2.924 2.924 0 0 1 78.066 78.495 L78.334 72.364 A6.092 6.092 0 0 1 84.422 66.534 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="83.798" cy="72.135" r="1.682" fill="#121212"/>
+  </g>
+  <g id="accent">
+    <rect x="55.081" y="57.42" width="5.849" height="4.021" rx="0.731" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="54.374,69.459 54.374,61.441 61.636,61.441 61.636,69.459" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M90.929 76.477 L88.906 76.575 Q88.004 76.575 88.004 77.598 V79.304 Q88.004 80.913 89.588 80.961 C91.05 81.01 91.782 79.938 93.439 79.889 Q95.681 79.889 95.681 81.741 V82.765 Q95.681 84.861 93.439 84.861 L92.464 84.812" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base-2">
+    <rect x="43.247" y="69.459" width="29.097" height="25.306" rx="1.462" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-072" viewBox="0 0 172 146">
+  <!-- CL-072 Reform. Crop 172 x 146 px; ink box x 8..164, y 8..138.
+       Construction: three routes rise from a close set of stems near the lower centre. The left black route bends outward to the left and ends in a plain rounded line cap. The middle route rises and then bends up-right to an open arrowhead. The right black route bends right to a small hollow circular terminal.
+       Red: the complete middle redirected route and its arrowhead. Outer routes and right terminal remain black. Preserve the close, parallel lower stems and the three different terminations. -->
+  <!-- T4 trace. Three routes, each a plumb stem, one true quarter arc and a level run:
+       left x 71.6 / r 37 / y 50.8 to a plain round end; middle x 84.45 / r 30.97 / y 24.7 to an open arrowhead;
+       right x 85.6 / r 35.17 / y 80 into a hollow circle terminal (r 13.58). -->
+  <g data-role="base">
+    <path id="route-left" d="M71.6 135.6 V87.8 A37 37 0 0 0 34.6 50.8 H11.25"/>
+    <path id="route-right" d="M85.6 135.4 V115.17 A35.17 35.17 0 0 1 120.77 80 H133.99"/>
+    <circle id="terminal" cx="147.57" cy="80" r="13.58"/>
+  </g>
+  <g data-role="accent">
+    <path id="route-middle" d="M84.45 76 V55.67 A30.97 30.97 0 0 1 115.42 24.7 H135.6"/>
+    <polyline id="arrowhead" points="121.6,10.9 135.6,24.7 121.6,38.5"/>
+  </g>
+</svg>

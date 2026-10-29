@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-002" viewBox="0 0 186 132">
+  <!-- CL-002 Representation. Crop 186 x 132 px; ink box x 8..178, y 8..124.
+       Construction: three frontal, faceless outline people. A larger central circular head sits above a shallow shoulder arc and a prominent tapered lectern. The lectern has a wide flat top, narrows toward its lower part and ends at a short baseline. Smaller people stand left and right with circular heads and open-bottom rounded shoulder shapes. Central head, lectern and side people share a clear vertical symmetry.
+       Red: only the central head’s circular outline. Keep the centre head hollow. Preserve the lectern’s taper and the side people’s lower height. -->
+  <g data-role="base">
+    <!-- Axis x 92.77. Side people: rounded-top shoulders (corner r 16.4), heads centred over them. -->
+    <circle id="left-head" cx="33.68" cy="53.49" r="11.72"/>
+    <path id="left-shoulders" d="M10.84 104.3 V90.05 A16.4 16.4 0 0 1 27.24 73.65 H40.12 A16.4 16.4 0 0 1 56.52 90.05 V104.3"/>
+    <circle id="right-head" cx="151.86" cy="53.49" r="11.72"/>
+    <path id="right-shoulders" d="M129.02 104.3 V90.05 A16.4 16.4 0 0 1 145.42 73.65 H158.3 A16.4 16.4 0 0 1 174.7 90.05 V104.3"/>
+    <path id="centre-shoulders" d="M74.07 49.3 A4.35 4.35 0 0 1 78.42 44.95 H107.12 A4.35 4.35 0 0 1 111.47 49.3"/>
+    <line id="lectern-top" x1="62.67" y1="57.25" x2="122.87" y2="57.25"/>
+    <polyline id="lectern-left" points="63.72,57.25 67.68,68.25 73.73,68.25 73.73,120.75"/>
+    <polyline id="lectern-right" points="121.82,57.25 117.86,68.25 111.81,68.25 111.81,120.75"/>
+    <line id="lectern-base" x1="67.87" y1="120.75" x2="117.67" y2="120.75"/>
+  </g>
+  <g data-role="accent">
+    <circle id="centre-head" cx="92.77" cy="23.69" r="12.18"/>
+  </g>
+</svg>

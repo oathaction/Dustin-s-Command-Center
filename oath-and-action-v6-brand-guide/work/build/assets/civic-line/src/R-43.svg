@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-43" viewBox="0 0 152 137">
+  <!-- R-43 Disaster Mitigation. Crop 152 x 137 px; ink box x 8..144, y 8..129.
+       Construction: a pitched-roof home stands beneath a rounded storm cloud. Short diagonal rain strokes fall around its roof. Several wavy horizontal flood lines run beneath and across its lower area. The house has a simple doorway/window and a reinforced-looking broad roof segment on one slope.
+       Red: the broad diagonal roof segment on the house's right-facing roof slope. House remainder, rain, cloud and flood waves stay black. Preserve the source's specific reinforced roof orientation.
+       Cloud: four circular lobes meeting at cusps over a flat base. Rain: eight streaks (two leaning left
+       at 118 degrees, six leaning right at 57.5 degrees) and two short drops, each kept at its drawn place.
+       Layering follows the red sheet: the red roof band lies over the top of the left slope at the peak,
+       and the black eave and wall lie over the band's foot, so the base is split into two groups.
+       Flood: two equal cosine waves, period 28 px, in phase, 13.45 px apart. -->
+  <g data-role="base">
+    <path id="cloud" d="M42.29 35.1 H94.72 A9.39 9.39 0 0 0 85.1 19.13 A13.25 13.25 0 0 0 60.78 17.61 A9.96 9.96 0 0 0 48.81 24.32 A6.34 6.34 0 0 0 42.29 35.1 Z"/>
+    <line id="rain-1" x1="35.23" y1="52.64" x2="40.11" y2="43.46"/>
+    <line id="rain-2" x1="25.66" y1="70.64" x2="30.54" y2="61.46"/>
+    <line id="rain-3" x1="79.11" y1="44.41" x2="84.69" y2="53.19"/>
+    <line id="rain-4" x1="91.3" y1="43.87" x2="96.88" y2="52.65"/>
+    <line id="rain-5" x1="104.68" y1="44.88" x2="110.26" y2="53.66"/>
+    <line id="rain-6" x1="95.47" y1="61.04" x2="101.05" y2="69.82"/>
+    <line id="rain-7" x1="108.99" y1="65.61" x2="114.57" y2="74.39"/>
+    <line id="rain-8" x1="121.13" y1="65.73" x2="126.71" y2="74.51"/>
+    <line id="drop-1" x1="65.81" y1="43.62" x2="66.81" y2="45.18"/>
+    <line id="drop-2" x1="118.56" y1="80.85" x2="119.56" y2="82.41"/>
+    <line id="roof-left" x1="18.35" y1="91.2" x2="57.3" y2="53.75"/>
+    <line id="wall-left" x1="25.7" y1="94.3" x2="25.7" y2="103.8"/>
+    <line id="door-left" x1="49.27" y1="90.5" x2="49.27" y2="98.8"/>
+    <line id="door-right" x1="63.63" y1="90.5" x2="63.63" y2="98.8"/>
+    <path id="wave-1" d="M10.28 113.6 C13.34 112.4 16.29 110.47 19.75 110.47 C24.79 110.47 28.71 114.57 33.75 114.57 C38.79 114.57 42.71 110.47 47.75 110.47 C52.79 110.47 56.71 114.57 61.75 114.57 C66.79 114.57 70.71 110.47 75.75 110.47 C80.79 110.47 84.71 114.57 89.75 114.57 C94.79 114.57 98.71 110.47 103.75 110.47 C108.79 110.47 112.71 114.57 117.75 114.57 C122.79 114.57 126.71 110.47 131.75 110.47 C135.28 110.47 138.24 112.45 141.35 113.65"/>
+    <path id="wave-2" d="M10.28 127.05 C13.34 125.85 16.29 123.92 19.75 123.92 C24.79 123.92 28.71 128.02 33.75 128.02 C38.79 128.02 42.71 123.92 47.75 123.92 C52.79 123.92 56.71 128.02 61.75 128.02 C66.79 128.02 70.71 123.92 75.75 123.92 C80.79 123.92 84.71 128.02 89.75 128.02 C94.79 128.02 98.71 123.92 103.75 123.92 C108.79 123.92 112.71 128.02 117.75 128.02 C122.79 128.02 126.71 123.92 131.75 123.92 C135.28 123.92 138.24 125.9 141.35 127.1"/>
+  </g>
+  <g data-role="accent">
+    <polygon id="roof-band" class="fill-stroke" points="56.6,53.75 71.5,53.75 109.87,91 93.37,91 59.38,58"/>
+  </g>
+  <g data-role="base">
+    <path id="eave-and-walls" d="M88.5 105.6 V91 H125.55 A3 3 0 0 1 128.55 94 V102.75"/>
+  </g>
+</svg>

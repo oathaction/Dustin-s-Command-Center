@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-006" viewBox="0 0 172 136">
+  <!-- CL-006 Civic Ties. Crop 172 x 136 px; ink box x 8..164, y 8..128.
+       Construction: three outline people in a triangular arrangement, one high at centre and two lower at left and right. Each has a hollow circular head and an open-bottom shoulder arch. Three separate curved links suggest an enclosing triangle/circle: upper-left arc, upper-right arc and a shallow smile-shaped arc between the lower people. Leave clear gaps between the arcs and the figures.
+       Red: all three curved connecting arcs. People remain black. The connectors are open arcs, not a continuous circle or arrow loop. -->
+  <g data-role="base">
+    <!-- Axis x 86.72. Top person: head r 11.17, shoulders half-width 22.97, corner r 16.05.
+         Side people: head r 10.62, shoulders half-width 22.08, corner r 15.6. -->
+    <circle id="top-head" cx="86.72" cy="21.72" r="11.17"/>
+    <path id="top-shoulders" d="M63.75 67.13 V56.60 A16.05 16.05 0 0 1 79.80 40.55 H93.64 A16.05 16.05 0 0 1 109.69 56.60 V67.13"/>
+    <circle id="left-head" cx="33.54" cy="80.04" r="10.62"/>
+    <path id="left-shoulders" d="M11.46 124.7 V114.20 A15.6 15.6 0 0 1 27.06 98.6 H40.02 A15.6 15.6 0 0 1 55.62 114.20 V124.7"/>
+    <circle id="right-head" cx="139.9" cy="80.04" r="10.62"/>
+    <path id="right-shoulders" d="M117.82 124.7 V114.20 A15.6 15.6 0 0 1 133.42 98.6 H146.38 A15.6 15.6 0 0 1 161.98 114.20 V124.7"/>
+  </g>
+  <g data-role="accent">
+    <!-- Three open arcs, mirrored pair r 47.9 and a lower arc r 50.0 centred on the axis. -->
+    <path id="arc-upper-left" d="M34.15 58.83 A47.9 47.9 0 0 1 57.33 32.61"/>
+    <path id="arc-upper-right" d="M116.11 32.61 A47.9 47.9 0 0 1 139.29 58.83"/>
+    <path id="arc-lower" d="M107.05 112.28 A50 50 0 0 1 66.39 112.28"/>
+  </g>
+</svg>

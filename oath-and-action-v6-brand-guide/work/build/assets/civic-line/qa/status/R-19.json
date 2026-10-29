@@ -1,0 +1,85 @@
+{
+  "id": "R-19",
+  "label": "Drug-Pricing Rules",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:39:26+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9126,
+      "red_iou_1x": 0.8528,
+      "edge_mean_px": 0.229,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:40:18+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9347,
+      "red_iou_1x": 0.8511,
+      "edge_mean_px": 0.153,
+      "edge_p95_px": 0.354
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:40:40+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9347,
+      "red_iou_1x": 0.8511,
+      "edge_mean_px": 0.153,
+      "edge_p95_px": 0.354
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:40:40+00:00",
+      "by": "T5",
+      "note": "overlay checked; capsule true stadium, tag symmetric, seam red split from red sheet"
+    }
+  ],
+  "last_build": "2026-10-29T06:40:40+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9347,
+    "red_iou_1x": 0.8511,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.986,
+    "edge_mean_px": 0.153,
+    "edge_p95_px": 0.354,
+    "edge_max_px": 1.5,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the front capsule as a true stadium on one axis at -44.7 deg: straight parallel sides 45.8 px apart and two semicircular ends of radius 22.9 px",
+      "why": "DR-03 straight lines and true arcs. Side segments measure 22.35 to 23.4 px either side of the axis at 135.3 deg; the ends were read from axial profiles (the upper-right end sits about 1.1 px shorter than the lower-left, so the capsule's centre is placed to fit both)."
+    },
+    {
+      "what": "Made the price tag symmetric about x 144: top edge 15.9 px wide at y 38.18, shoulders at 41.9 deg down to y 56.1 on both sides, sides at x 116.05 and 171.98, bottom at y 103.51",
+      "why": "DR-03 symmetry. Corner fits give a top edge from 136.11 to 151.95 and shoulder feet at y 55.75 (left) and 56.41 (right). Edges move under 0.6 px."
+    },
+    {
+      "what": "Drew the tag's dollar sign as two equal elliptical bowls (6.85 x 6.65 px), point-symmetric about (143.95, 74.7), with its bars on the same axis as the tag hole",
+      "why": "DR-03 symmetry. The bowls measure 6.85 x 6.65 px within 0.3 px; bar, hole and tag centres all sit at x 143.9 to 144.0."
+    },
+    {
+      "what": "Drew the visible edge of the back capsule as one circular arc, r 24.32 about (112.28, 48.2), from inside the front capsule's outline to the tag's top-left corner",
+      "why": "DR-03 true arcs. A circle fit to the sampled centreline has residuals under 0.2 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The capsule measures 5.5 to 5.85 px, the tag 5.1 to 6.0 px and the dollar's top bar only 3.6 px."
+    }
+  ],
+  "source_notes": "Kept: the staggered pair (the back capsule appears only as its top arc between the front capsule and the tag, hidden elsewhere), both capsules hollow, the seam square to the capsule axis and slightly left of centre, the tag's filled black hole, and the dollar sign's bars above and below the S. Red follows the red sheet: the seam is red only from 5.2 px above the capsule axis down to the lower side, and black above that; the change is a square cut. The catalogue calls it 'the short dividing seam', which matches that red part. The red seam stops at the inner edge of the black lower side, which lies over it, as on the red sheet. The tag outline and dollar sign are red; the hole is black and sits over the top of the dollar bar; the back capsule's arc is black and passes over the red tag corner. This is one of the eight icons with low sheet-to-sheet agreement; the difference is the red sheet's thinner strokes."
+}

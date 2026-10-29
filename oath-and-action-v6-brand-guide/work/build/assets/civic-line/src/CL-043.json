@@ -1,0 +1,27 @@
+{
+  "id": "CL-043",
+  "tracer": "T3",
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon's strokes measure 5.75 to 6.2 px."
+    },
+    {
+      "what": "Made the roof a symmetric closed triangle: apex (88.55, 11.2), eaves (49.1, 39.2) and (128.0, 39.2), on the beam line y 39.2",
+      "why": "DR-03 symmetry. The fitted slopes measure 145.1 and 34.9 deg and meet at (88.67, 11.17); the sheet rounds both acute eave corners about 1.2 px inside the fitted lines, so the eave vertices sit between the fitted lines and the sheet's ink ends."
+    },
+    {
+      "what": "Gave the three content rules below the header one start, x 123.0, and one spacing, 12.65 px (y 92.0, 104.65, 117.3); the header rule starts at the same x",
+      "why": "DR-03 equal repeats. The rules' left ends measure 122.0 (header) and about 123.1 (the other three); the spacings measure 12.6 and 12.75. The header rule's start moves 1.0 px right."
+    },
+    {
+      "what": "Gave the three window strokes one length, 11.2 px, and the two control dots one radius, 3.75 px, on one line y 65.88",
+      "why": "DR-03 equal repeats. Window lengths measure 11.25, 11.0 and 11.4; dot centres sit at y 65.94 and 65.81."
+    },
+    {
+      "what": "Set the panel corner radius to 4.9 px on the centreline",
+      "why": "Circle fits give 5.2 to 5.8 px, but the sheet's outer corners are squarer than a circular arc; 4.9 matches the outer edge to within 0.5 px without pinching the inner corner."
+    }
+  ],
+  "notes": "Kept: the tall wall's right edge as a short stub from the beam that stops about 2 px above the panel, and the baseline that stops about 2 px before the panel's left edge (both are the occlusion gaps where the panel covers the building). Kept the door's flat top with rounded corners, the windows' off-centre placement and the absence of a separator line under the panel's control dots; the catalogue's 'top bar' is the strip that holds the two dots. The red interface element is a filled rounded rectangle taken from the red sheet (x 165.7 to 197.4, y 102.7 to 120.5 at the outer edge); the black sheet's dark rectangle runs 0.5 px lower at the bottom, which I treat as a raster fringe."
+}

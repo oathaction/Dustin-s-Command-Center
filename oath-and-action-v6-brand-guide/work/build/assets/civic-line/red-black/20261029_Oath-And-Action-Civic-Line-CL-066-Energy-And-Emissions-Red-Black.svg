@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-066" data-id="CL-066" width="128" height="128" viewBox="0 0 128 128">
+  <title>Energy &amp; Emissions</title>
+  <desc>Oath &amp; Action Civic Line CL-066 Energy &amp; Emissions. Traced vector reconstruction from the Civic Line reference sheet 03, row 3, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M23.79 52.449 V59.233 A11.812 11.812 0 0 0 35.599 71.048 A11.812 11.812 0 0 0 47.414 59.233 V52.449 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30.969" y1="42.335" x2="30.969" y2="52.449" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.23" y1="42.335" x2="40.23" y2="52.449" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35.599 71.048 V81.22 A8.023 8.023 0 0 0 43.622 89.242 A8.023 8.023 0 0 0 51.645 81.22 V80.425 A8.661 8.661 0 0 1 62.913 72.164 A8.875 8.875 0 0 1 71.277 61.178 A9.07 9.07 0 0 1 79.889 47.97 A9.095 9.095 0 0 1 97.567 44.724 A8.851 8.851 0 0 1 99.443 61.466 A8.91 8.91 0 0 1 88.516 75.376 A10.016 10.016 0 0 1 73.017 79.767 L71.637 83.442 A8.807 8.807 0 0 1 57.176 86.625" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M87.619 59.399 A12.609 12.609 0 0 1 76.643 71.34" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

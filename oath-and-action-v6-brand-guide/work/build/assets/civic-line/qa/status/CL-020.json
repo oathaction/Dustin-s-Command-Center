@@ -1,0 +1,81 @@
+{
+  "id": "CL-020",
+  "label": "Track",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:19:15+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8723,
+      "red_iou_1x": 0.8451,
+      "edge_mean_px": 0.337,
+      "edge_p95_px": 1.031
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:21:22+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8729,
+      "red_iou_1x": 0.8445,
+      "edge_mean_px": 0.333,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:21:49+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8729,
+      "red_iou_1x": 0.8445,
+      "edge_mean_px": 0.333,
+      "edge_p95_px": 1.0
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:21:49+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; route, hollow pin, lens and open handle match; lens made a true circle; sheet strokes run heavier than W"
+    }
+  ],
+  "last_build": "2026-10-29T07:21:49+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8729,
+    "red_iou_1x": 0.8445,
+    "bake_check_iou_1x": 0.9984,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9171,
+    "edge_mean_px": 0.333,
+    "edge_p95_px": 1.0,
+    "edge_max_px": 2.5,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the lens as a true circle, centre (139.57, 87.07), r 23.15",
+      "why": "DR-03 true circles. The sheet's lens is slightly oval on a diagonal: its centreline radius runs from 22.3 px (lower right, by the handle) to 23.8 px (upper right and lower left); the circle moves those edges up to 0.75 px."
+    },
+    {
+      "what": "Drew the map pin as one circle (r 12.35, centre x 36.42) with two straight sides tangent to it, meeting at the tip (36.42, 47.8)",
+      "why": "DR-03 symmetry and true circles. The pin's circle fits r 12.32 to 12.42; its sides measure 58.8 and 58.9 deg, which the tangent construction gives exactly (58.4 deg)."
+    },
+    {
+      "what": "Made the handle's two sides parallel at 46.6 deg, 12.29 px apart, closed by a true semicircle at the far end",
+      "why": "DR-03. The sides measure 46.3 and 47.1 deg."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon runs heavier: median 5.9 px, the pin 6.4 to 6.6, the lens 6.0 to 6.25 and the handle 6.2 to 6.3 px. That is why the silhouette IoU (0.87) and ink ratio (0.92) sit low while the centrelines match."
+    }
+  ],
+  "source_notes": "Kept: the route as one open stroke with two U-turns of their own sizes (r 14.03 on the right, r 15.0 on the left, so the lower loop is 2 px taller, as drawn), no dotted segments; the pin hollow; the handle as an open U whose slot opens toward the lens. The handle's axis passes 3.2 px off the lens centre, so its two sides meet the lens differently on both sheets: the lower-left side runs into the lens ring (drawn under it, so the ring's edge cuts it), while the upper-right side stops with a square end about 2 px short of the ring, leaving a thin gap; the trace keeps both. Red is the pin outline and the handle; the route and lens stay black."
+}

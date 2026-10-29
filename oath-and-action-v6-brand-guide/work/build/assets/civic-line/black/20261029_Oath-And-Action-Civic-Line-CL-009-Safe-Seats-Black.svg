@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-009" data-id="CL-009" width="128" height="128" viewBox="0 0 128 128">
+  <title>Safe Seats</title>
+  <desc>Oath &amp; Action Civic Line CL-009 Safe Seats. Traced vector reconstruction from the Civic Line reference sheet 01, row 2, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M43.773 55.748 L29.775 55.748 A1.95 1.95 0 0 0 27.826 57.698 L27.826 63.171 L25.101 65.896 L25.101 75.629 A1.95 1.95 0 0 0 27.051 77.579 L31.588 77.579 L34.761 80.752 L34.761 88.165 A1.95 1.95 0 0 0 36.711 90.115 L39.484 90.115 A1.95 1.95 0 0 1 41.434 92.064 L41.434 93.78 A1.95 1.95 0 0 0 43.383 95.729 L51.503 95.729 A1.92 1.92 0 0 0 53.424 93.809 L53.424 93.809 A1.92 1.92 0 0 1 55.339 91.894 L91.016 91.894 A1.95 1.95 0 0 0 92.966 89.944 L92.966 78.247 L96.519 74.693 L101.193 74.693 A1.95 1.95 0 0 0 103.143 72.744 L103.143 58.171 A1.95 1.95 0 0 0 101.193 56.221 L95.958 56.221 L92.366 52.629 L92.366 45.45 L87.868 40.951 L81.639 40.951 A1.95 1.95 0 0 1 79.689 39.002 L79.689 33.874 A1.95 1.95 0 0 0 77.74 31.925 L52.956 31.925 A1.95 1.95 0 0 0 51.006 33.874 L51.006 36.677 A1.95 1.95 0 0 1 49.056 38.626 L45.537 38.626 A1.604 1.604 0 0 0 43.934 40.23 L43.934 41.833 L40.551 45.216 L40.551 52.234 L42.691 55.748" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56.484 67.655 V51.513 A3.558 3.558 0 0 1 60.042 47.955 H70.058 A3.558 3.558 0 0 1 73.616 51.513 V67.655 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.435 61.807 L50.85 63.025 V71.408 A2.876 2.876 0 0 0 53.726 74.284 H76.37 A2.876 2.876 0 0 0 79.246 71.408 V63.025 L78.661 61.807" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55.48" y1="74.284" x2="55.48" y2="82.399" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="74.615" y1="74.284" x2="74.615" y2="82.399" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M57.825 57.079 H72.276 V66.315 A2.681 2.681 0 0 1 69.595 68.996 H60.505 A2.681 2.681 0 0 1 57.825 66.315 Z" fill="#121212"/>
+  </g>
+</svg>

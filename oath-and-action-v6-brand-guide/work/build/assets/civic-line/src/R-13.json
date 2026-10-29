@@ -1,0 +1,39 @@
+{
+  "id": "R-13",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Made the building symmetric about one axis, x 114.75: finial, both dome arcs, drum sides, drum columns, entablature, walls, lower columns and base",
+      "why": "DR-03 symmetry. The measured pairs centre between x 114.4 (walls, entablature) and 115.3 (finial, columns). Most parts move 0.6 px or less."
+    },
+    {
+      "what": "Centred the base rule on the building axis: x 81.31 to 148.19 at y 115.05",
+      "why": "DR-03 symmetry. The sheet's base runs 79.87 to 146.75, so it sits 1.5 px left of the building; both ends move 1.45 px right."
+    },
+    {
+      "what": "Gave the two dome arcs one radius, 20.24 px, about mirrored centres (112.49 and 117.01, y 45.09), with mirrored top ends 10.3 px either side of the axis",
+      "why": "DR-03 symmetry. Circle fits give r 20.28 about (112.65, 44.98) and r 20.20 about (117.17, 45.2). The sheet's right arc stops about 1.5 px further from the finial than the left; both now leave the same gap, so the right arc's end moves about 0.8 px and the left arc's about 0.7 px."
+    },
+    {
+      "what": "Spaced the drum columns evenly 13.6 px apart and the lower columns 17.0 px apart; equal drum-column and lower-column lengths",
+      "why": "DR-03 equal repeats. Drum spacing measures 13.88 and 13.33 px; lower spacing 17.1 and 16.9 px."
+    },
+    {
+      "what": "Ended both walls at the same height, y 103.1",
+      "why": "DR-03 equal repeats. The left wall ends at 103.87 and the right at 102.37; each moves 0.75 px."
+    },
+    {
+      "what": "Gave both staff bodies one arch radius, 12.35 px, with leg ends at y 115.05",
+      "why": "DR-03 equal repeats. The arches measure r 12.10 and 12.59. The heads keep their drawn sizes (r 6.19 and 7.85) and heights: the right figure's larger, higher head is a plain difference in the drawing, so it stays."
+    },
+    {
+      "what": "Made the open book symmetric about x 194.25, with each page edge and the lower cover edge drawn as a straight run into one quadratic curve meeting its mirror at the valley",
+      "why": "DR-03 symmetry. Page sides measure 164.3 and 223.95, cover sides 156.49 and 232.06, spine 194.38. The fitted curves follow the sampled centrelines within 0.3 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon runs light: most strokes measure 5.0 to 5.25 px and the right wall 4.0 px, so the ink area ratio rises to about 1.05."
+    }
+  ],
+  "notes": "Kept: two staff figures, the domed building with its finial (a stem over a wider block), the gaps between the dome's top ends and the finial, the stepped joint where each dome arc meets its drum side, three drum columns and three free-standing lower columns, walls that stop short of the separate base rule, and the open book's doubled lower cover edge with its own valley. The spine stops just above the red page-edge valley, leaving the small light notch the sheet shows. Red is only the lower inner page edge, from page corner to page corner, drawn over the black page sides. Sheet difference: the red sheet's red stroke measures 4.85 px and sits about 0.3 px higher than the black sheet's 5.35 px stroke; geometry follows the black sheet, which keeps red IoU near 0.78."
+}

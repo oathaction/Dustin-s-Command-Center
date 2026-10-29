@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-057" viewBox="0 0 157 154">
+  <!-- CL-057 Labor Share. Crop 157 x 154 px; ink box x 8..149, y 8..146.
+       Construction: a large circular pie-like form has a black outline around its left and lower portion. A radial black divider extends from its centre toward the lower right. A separate upper-right quarter-sector sits slightly apart from the rest of the circle. Within that sector is a person silhouette cut out as negative space: circular head and rounded shoulders.
+       Red: the separate quarter-sector, filled solid. The person within it remains a transparent/negative-space cutout. Preserve the small separation at the circle’s top and right and the source’s wedge shape.
+       Trace: the pie is one true circle (centre (77.66, 76.45), r 66.27) open from 12 o'clock to just
+       below 3 o'clock, with square corners where it meets the vertical radius and the radius meets the
+       lower divider. The red sector is drawn as found: arc centre (84.87, 72.02), outer r 64.48, straight
+       edges at x 87.06 and y 74.44, corners rounded r 2.75; the person is a mask cut:
+       head r 8.94, shoulders a half-disc r 17.3 on a short straight base, painted back below y 67.94. -->
+  <defs>
+    <mask id="person-cut">
+      <circle class="fill" cx="112.1" cy="33.18" r="8.94"/>
+      <circle class="fill" cx="112.1" cy="62.5" r="17.3"/>
+      <rect class="fill" x="94.8" y="62.5" width="34.6" height="5.44"/>
+      <rect class="fill" data-mask="keep" x="90" y="67.94" width="45" height="16"/>
+    </mask>
+  </defs>
+  <g data-role="base">
+    <path id="pie" class="miter" d="M143.7 82 A66.27 66.27 0 1 1 77.66 10.18 V76.45 L132.27 113.99"/>
+  </g>
+  <g data-role="accent">
+    <path id="sector" class="fill" mask="url(#person-cut)" d="M87.06 71.69 V10.49 A2.75 2.75 0 0 1 90.03 7.75 A64.48 64.48 0 0 1 149.35 71.68 A2.75 2.75 0 0 1 146.6 74.44 H89.81 A2.75 2.75 0 0 1 87.06 71.69 Z"/>
+  </g>
+</svg>

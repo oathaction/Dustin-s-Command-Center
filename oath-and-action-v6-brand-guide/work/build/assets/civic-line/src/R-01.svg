@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-01" viewBox="0 0 185 118">
+  <!-- R-01 All-Party Primaries. Crop 185 x 118 px; ink box x 8..177, y 8..113.
+       Construction: three small outline person busts stack vertically down the left. Three separate routes extend rightward from them toward one upright rectangular ballot/check card. The middle route is straight; the upper and lower routes curve toward the common destination. All three arrowheads point right. A large check sits centrally inside the right-hand card.
+       Red: the three routes with their arrowheads and the large check inside the card. People and card border remain black. Preserve the three inputs and the blank area around the check. -->
+  <!-- T4 trace. Three equal busts (head r 7.51, shoulder arc r 14.2), the middle one set 4.35 px left as drawn.
+       Three red routes: the upper and lower curves end in square heads at (105.6, 46.6) and (105.6, 74.4),
+       mirror images about y 60.5; the straight middle route ends in a chevron at (107.25, 60.33). -->
+  <g data-role="base">
+    <circle id="head-1" cx="28.35" cy="17.9" r="7.51"/>
+    <path id="shoulders-1" d="M14.84 35.51 A14.2 14.2 0 0 1 41.86 35.51"/>
+    <circle id="head-2" cx="24.0" cy="54.78" r="7.51"/>
+    <path id="shoulders-2" d="M10.49 72.39 A14.2 14.2 0 0 1 37.51 72.39"/>
+    <circle id="head-3" cx="28.35" cy="91.65" r="7.51"/>
+    <path id="shoulders-3" d="M14.84 109.26 A14.2 14.2 0 0 1 41.86 109.26"/>
+    <rect id="card" x="120.41" y="25.86" width="54.31" height="70.35"/>
+  </g>
+  <g data-role="accent">
+    <path id="route-upper" d="M47.25 18.75 C74.72 18.31 86.51 29.79 105.6 46.6"/>
+    <polyline id="head-upper" points="105.6,37.5 105.6,46.6 97,46.6"/>
+    <line id="route-middle" x1="44.25" y1="60.33" x2="107.25" y2="60.33"/>
+    <polyline id="head-middle" points="99.6,54 107.25,60.33 99.6,66.66"/>
+    <path id="route-lower" d="M50.6 102.5 C74.68 102.73 89.91 90.2 105.6 74.4"/>
+    <polyline id="head-lower" points="105.6,83.5 105.6,74.4 97,74.4"/>
+    <polyline id="check" points="134.75,59.9 143.9,69.4 160.5,50.5"/>
+  </g>
+</svg>

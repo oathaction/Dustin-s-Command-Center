@@ -1,0 +1,19 @@
+{
+  "id": "CL-037",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Built the globe on one centre, (46.6, 46.2): a true circle r 35, the two meridians as the halves of one ellipse (rx 13.75, ry 35), and two latitude lines 12.1 px either side of the centre",
+     "why": "DR-03 true curves and symmetry. The outline measures centre (46.38, 46.15); the meridians centre at x 46.8 and follow a half-ellipse better than an arc (0.4 px vs 1.3 px at y 25); the latitudes sit at y 34.63 and 58.84, 0.5 px low against the circle, and move 0.5 px."},
+    {"what": "Drew the two signal arcs as true arcs from the black sheet: inner centre (57.2, 51.1) r 40.5, outer centre (60.6, 51.5) r 52.85",
+     "why": "Black and red sheets disagree on these arcs' curvature (red: r 41.64 and 55.0 with centres 1.6 to 3 px further left). Over the arcs' short spans the two fits lie within about 0.8 px; geometry follows the black sheet, as the guide sets."},
+    {"what": "Gave the lid's two slants one slope (60.2 deg), each rising from a top corner of the box",
+     "why": "DR-03 symmetry, as in CL-001. The slants measure 58.7 and 61.7 deg; each top corner moves about 0.9 px."},
+    {"what": "Made the warning triangle isosceles about x 171.2 (apex y 84.64, base y 133.63, half-base 26.4) with 3.8 px rounded corners, and set its exclamation on the same axis",
+     "why": "DR-03 symmetry. The sides measure 60.6 and 62.4 deg; this axis fits both sides at y 124.5 to 0.2 px. The exclamation sat at 171.44. The sheet's corners round wider than a plain round join (apex ink 4.5 px below a sharp vertex)."},
+    {"what": "Placed the ballot's two red-to-black splits from the red sheet (left edge at y 55.4, right edge at y 65.2) and cut them square",
+     "why": "The red sheet shows each colour change as a cut across a continuing stroke, as in CL-001."},
+    {"what": "Drew all strokes at W, 5.5 px",
+     "why": "DR-03 one line weight. The black sheet's strokes here measure 5.8 to 6.25 px; this is one of the eight icons whose red sheet runs thinner, so the trace sits between the two sheets."}
+  ],
+  "notes": "Kept: two signal arcs; the ballot slanting up out of the open lid with its long edges ending free above the box top, and its 99 deg top corners as drawn; the gap in the lid where the ballot rises; the warning badge in front of the box, shown by the box's bottom edge stopping at x 136 and its right side at y 114.5. Red: both signal arcs, the ballot's upper edges, the warning triangle and its exclamation; the globe and the ballot-box body stay black."
+}

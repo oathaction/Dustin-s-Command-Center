@@ -1,0 +1,110 @@
+{
+  "id": "CL-047",
+  "label": "Data Rights",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 5,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:24:52+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8764,
+      "red_iou_1x": 0.8391,
+      "edge_mean_px": 0.333,
+      "edge_p95_px": 1.0
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:25:09+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8802,
+      "red_iou_1x": 0.8391,
+      "edge_mean_px": 0.323,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:25:27+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8802,
+      "red_iou_1x": 0.8391,
+      "edge_mean_px": 0.323,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:45:33+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8831,
+      "red_iou_1x": 0.8391,
+      "edge_mean_px": 0.313,
+      "edge_p95_px": 0.901
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T06:45:44+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.8831,
+      "red_iou_1x": 0.8391,
+      "edge_mean_px": 0.313,
+      "edge_p95_px": 0.901
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:25:27+00:00",
+      "by": "T3",
+      "note": "overlay checked; open page edges, four rules, vertical key with two teeth match; key drawn at W though sheet key runs heavier"
+    },
+    {
+      "time": "2026-10-29T06:45:44+00:00",
+      "by": "T3",
+      "note": "corner radii re-measured from the outer edge (5.2 px)"
+    }
+  ],
+  "last_build": "2026-10-29T06:45:44+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.8831,
+    "red_iou_1x": 0.8391,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.895,
+    "edge_mean_px": 0.313,
+    "edge_p95_px": 0.901,
+    "edge_max_px": 1.346,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px, the key included",
+      "why": "DR-03 one line weight. The page and rules measure 6.0 px; the key runs heavier on both sheets (bow 6.4 to 6.5 px, stem 6.75 to 7.0, teeth 6.25 to 6.5), so the key's edges sit up to 0.75 px inside the sheet's and the ink area ratio is 0.89. I read the key's extra weight as generation noise, not a deliberate second weight."
+    },
+    {
+      "what": "Made the key stem vertical on x 110.55 and centred the bow on the same line",
+      "why": "Catalogue: 'the stem is vertical'. The stem measures 88.96 deg (x 109.9 at y 100 to 110.5 at y 130); the bow centre measures x 110.77. The stem's lower end moves about 0.3 px."
+    },
+    {
+      "what": "Gave the two teeth one length, ending at x 122.8, at y 114.6 and 128.2",
+      "why": "DR-03 equal repeats. Tooth ends measure 122.7 and 122.7 on the black sheet and 122.0 to 122.2 on the red sheet; the upper tooth sits at y 114.31 (black) and 114.8 (red)."
+    },
+    {
+      "what": "Spaced the four rules evenly, 20.72 px apart (y 32.86 to 95.02), all starting at x 31.0, and gave the two short rules one end, x 73.05",
+      "why": "DR-03 equal repeats. Spacings measure 20.51, 20.83 and 20.82 px. The short rules end at 74.05 and 72.05; each moves 1.0 px."
+    },
+    {
+      "what": "Set the page's three corner radii to 5.2 px on the centreline",
+      "why": "Medial-axis circle fits give 6.85 to 7.65 px, but they overstate a corner whose inner edge is tight; the outer edge along each corner's diagonal gives outer radii of 7.85 to 8.15 px, which 5.2 px at W matches."
+    }
+  ],
+  "source_notes": "Kept: the page outline open at the lower right, its right edge stopping at y 48.75 about 7 px above the bow, and its bottom edge stopping at x 89.1 well short of the stem; the lower two rules end before the bow. The key bow is hollow, r 18.0 (fits 18.18 black, 17.88 red). This is one of the icons whose sheets disagree most (sheet-to-sheet IoU below 0.90); the red sheet's key strokes run about 0.3 px thinner and its upper tooth 0.5 px lower. I took the shape from the black sheet, the tooth row from between the two, and confirmed the red covers the whole key and nothing else."
+}

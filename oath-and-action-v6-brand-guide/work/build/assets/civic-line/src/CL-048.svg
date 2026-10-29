@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-048" viewBox="0 0 182 137">
+  <!-- CL-048 Public Records. Crop 182 x 137 px; ink box x 8..174, y 8..129.
+       Construction: an open rectangular file folder forms the foreground, with a raised shoulder/tab on its left edge and a tall rear edge at right. A single upright rounded document projects above the folder. It contains a longer top rule followed by several shorter black rules. Folder front occludes the document's lower part.
+       Red: the document's top horizontal information rule. Folder, document perimeter and remaining rules are black. Preserve the clearly visible page rising out of the folder.
+       Trace: folder front is one closed outline whose top edge steps down along a diagonal (55.9 deg from horizontal) to y 75.95; the document's sides stop where they meet the front.
+       The back shows only as a small tab at left and a rear edge at right. -->
+  <g data-role="base">
+    <path id="folder-back-tab" d="M34.6 49.3 V42.2 A4.2 4.2 0 0 1 38.8 38.0 H51.27"/>
+    <path id="folder-back-right" d="M144.02 48.78 H157.01 A4.8 4.8 0 0 1 161.81 53.58 V75.95"/>
+    <path id="document" d="M51.27 61.1 V15.21 A3.9 3.9 0 0 1 55.17 11.31 H140.12 A3.9 3.9 0 0 1 144.02 15.21 V75.95"/>
+    <path id="folder-front" d="M43.25 49.3 H15.0 A3.7 3.7 0 0 0 11.3 53.0 V122.61 A3.7 3.7 0 0 0 15.0 126.31 H167.0 A3.7 3.7 0 0 0 170.7 122.61 V79.65 A3.7 3.7 0 0 0 167.0 75.95 H66.08 A9 9 0 0 1 58.62 72.0 Z"/>
+    <line id="rule-2" x1="71.55" y1="47.25" x2="124.55" y2="47.25"/>
+    <line id="rule-3" x1="71.55" y1="60.37" x2="103.25" y2="60.37"/>
+  </g>
+  <g data-role="accent">
+    <line id="rule-1" x1="71.55" y1="30.15" x2="124.55" y2="30.15"/>
+  </g>
+</svg>

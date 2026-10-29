@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-049" data-id="CL-049" width="128" height="128" viewBox="0 0 128 128">
+  <title>Wealth Concentration</title>
+  <desc>Oath &amp; Action Civic Line CL-049 Wealth Concentration. Traced vector reconstruction from the Civic Line reference sheet 03, row 1, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <ellipse cx="35.853" cy="74.279" rx="9.87" ry="4.192" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.983 80.715 A9.87 4.192 0 0 0 45.723 80.715" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.983 87.151 A9.87 4.192 0 0 0 45.723 87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.983" y1="74.279" x2="25.983" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="45.723" y1="74.279" x2="45.723" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="61.807" cy="59.857" rx="10.406" ry="4.192" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.401 66.681 A10.406 4.192 0 0 0 72.213 66.681" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.401 73.504 A10.406 4.192 0 0 0 72.213 73.504" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.401 80.328 A10.406 4.192 0 0 0 72.213 80.328" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.401 87.151 A10.406 4.192 0 0 0 72.213 87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="51.401" y1="59.857" x2="51.401" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="72.213" y1="59.857" x2="72.213" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 40.742 A11.929 4.192 0 0 0 101.944 40.742" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 47.372 A11.929 4.192 0 0 0 101.944 47.372" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 54.002 A11.929 4.192 0 0 0 101.944 54.002" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 60.632 A11.929 4.192 0 0 0 101.944 60.632" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 67.262 A11.929 4.192 0 0 0 101.944 67.262" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 73.892 A11.929 4.192 0 0 0 101.944 73.892" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 80.522 A11.929 4.192 0 0 0 101.944 80.522" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M78.086 87.151 A11.929 4.192 0 0 0 101.944 87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.086" y1="42.555" x2="78.086" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="101.944" y1="42.555" x2="101.944" y2="87.151" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M78.086 42.555 V40.742 A11.929 4.192 0 0 1 101.944 40.742 V42.555" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+  </g>
+</svg>

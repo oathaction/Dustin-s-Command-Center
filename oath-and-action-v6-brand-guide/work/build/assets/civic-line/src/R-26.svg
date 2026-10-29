@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-26" viewBox="0 0 191 121">
+  <!-- R-26 Automatic Recession Aid. Crop 191 x 121 px; ink box x 8..183, y 8..113.
+       Construction: a home at lower left, with pitched roof, simple walls and narrow interior uprights/door. Unequal coin stacks sit lower right, using elliptical tops and curved bands. A large declining zigzag arrow spans the upper area: it descends, briefly rises and then descends to an open arrowhead toward the upper-right coin area.
+       Red: the full downward-trending zigzag arrow. Home and coin stacks stay black. Preserve the source’s short upward interruption within the overall downward trend. -->
+  <!-- Trace notes: home symmetric about x 50.7; stacks share coin size and ground line; zigzag vertices as measured. -->
+  <g data-role="base">
+    <polyline id="roof" points="11.2,79.4 50.7,45 90.2,79.4"/>
+    <line id="wall-left" x1="19.08" y1="72.54" x2="19.08" y2="108.95"/>
+    <line id="wall-right" x1="82.32" y1="72.54" x2="82.32" y2="108.95"/>
+    <line id="upright-left" x1="41.37" y1="78.5" x2="41.37" y2="87.63"/>
+    <line id="upright-right" x1="60.03" y1="78.5" x2="60.03" y2="87.63"/>
+    <ellipse id="stack-small-top" cx="119.03" cy="89.03" rx="16.78" ry="7.0"/>
+    <path id="stack-small-body" d="M102.25 89.03 L102.25 102.4 A16.78 7.0 0 0 0 119.03 109.4 A16.78 7.0 0 0 0 135.81 102.4 L135.81 89.03"/>
+    <ellipse id="stack-tall-top" cx="163.63" cy="68.48" rx="16.78" ry="7.0"/>
+    <path id="stack-tall-body" d="M146.85 68.48 L146.85 102.4 A16.78 7.0 0 0 0 163.63 109.4 A16.78 7.0 0 0 0 180.41 102.4 L180.41 68.48"/>
+    <path id="stack-tall-band-1" d="M146.85 79.79 A16.78 7.0 0 0 0 163.63 86.79 A16.78 7.0 0 0 0 180.41 79.79"/>
+    <path id="stack-tall-band-2" d="M146.85 91.09 A16.78 7.0 0 0 0 163.63 98.09 A16.78 7.0 0 0 0 180.41 91.09"/>
+  </g>
+  <g data-role="accent">
+    <polyline id="trend" points="33.13,10.37 67.43,42.56 89.42,25.1 125.87,60.9"/>
+    <polyline id="trend-head" points="110.67,60.9 125.87,60.9 125.87,45.7"/>
+  </g>
+</svg>

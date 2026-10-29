@@ -1,0 +1,15 @@
+{
+  "id": "CL-012",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Gave the page one corner radius, 5.5 px",
+     "why": "DR-03 one consistent corner. Corner fits run 6.5 to 7.25 px but are pulled by the straight sides; 5.5 px removes the corner differences seen at 6.9 px (edge p95 0.50 to 0.25 px)."},
+    {"what": "Gave both rules and both rails one left end, x 29.35",
+     "why": "DR-03 alignment. The rules start at 29.25 and the rails at 29.44."},
+    {"what": "Gave both knobs one radius, 6.73 px, centred on their rails (lower knob measured y 104.85 against its rail at 104.58)",
+     "why": "DR-03 equal repeats. Knob fits give r 6.79 and 6.67."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The upper knob measures 5.8 px; everything else 5.25 to 5.75 px."}
+  ],
+  "notes": "Red follows the red sheet, which differs from the catalogue's 'the upper adjustment rail' in one place: the upper rail's left part, from its left end to x 54.25, is black on the red sheet, and the red starts there (a soft gradient on the sheet between about x 52 and 58; the split sits where the red crosses the sheet's midpoint) and runs through the knob to the rail's right end. The split is cut square (butt) with the red on top. Each rail stops at its knob ring, so both knob holes stay open as on the sheets. Kept: the opposite knob offsets (upper right of centre at x 74.85, lower left at 53.7), the rails running past their knobs on both sides, the rules ending shorter than the rails (x 99.44 against 105.19), and the uneven spacing between the rule pair and the rail pair."
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-14" viewBox="0 0 190 104">
+  <!-- R-14 Automatic Funding. Crop 190 x 104 px; ink box x 8..182, y 8..96.
+       Construction: a broad rounded financial record/card, with a dollar sign at upper left and two short information rules to its right. A long horizontal funding arrow runs along its lower interior and continues out through the open right edge. The arrowhead points right, outside the record.
+       Red: the full lower funding arrow, including its arrowhead. Record, dollar sign and information rules stay black. Keep the arrow’s continuous relationship to the card’s open right boundary. -->
+  <!-- Trace notes: card open at lower right; arrow exits through the opening. -->
+  <g data-role="base">
+    <path id="card" d="M155.24 50.75 L155.24 16.7 A5.5 5.5 0 0 0 149.74 11.2 L16.2 11.2 A5.5 5.5 0 0 0 10.7 16.7 L10.7 88.2 A5.5 5.5 0 0 0 16.2 93.7 L145.87 93.7"/>
+    <path id="dollar-s" d="M44.28 33.41 A7.75 7 0 1 0 37 42.8 A7.75 7 0 1 1 29.72 52.19"/>
+    <line id="dollar-bar-top" x1="37" y1="24.2" x2="37" y2="28.8"/>
+    <line id="dollar-bar-bottom" x1="37" y1="56.8" x2="37" y2="61.4"/>
+    <line id="rule-1" x1="61.8" y1="32.48" x2="138.95" y2="32.48"/>
+    <line id="rule-2" x1="61.8" y1="51.8" x2="138.95" y2="51.8"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="28.25" y1="76.65" x2="179.2" y2="76.65"/>
+    <polyline id="arrow-head" points="164.3,61.75 179.2,76.65 164.3,91.55"/>
+  </g>
+</svg>

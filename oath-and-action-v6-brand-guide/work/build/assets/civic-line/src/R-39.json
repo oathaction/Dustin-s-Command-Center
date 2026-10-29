@@ -1,0 +1,13 @@
+{
+  "id": "R-39",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Coloured only the middle interface rule red; the top and bottom rules stay black", "why": "The catalogue's Red text says 'the horizontal interface rules' (plural), but the red sheet shows only the middle rule in Pillar Red: the top rule is plain black and the bottom rule black with a faint maroon cast (RGB about 25, 8, 8), below the red threshold. The reference image controls, so the trace follows the red sheet."},
+    {"what": "Mirrored the outside group about x 182.18, with both small figures' heads at r 8.77 and bodies as one mirrored shape (side, 12 px corner, short flat top ending before the centre figure), and stood all three on y 95.85", "why": "DR-03 symmetry and equal repeats. Small heads fit r 8.75 and 8.79 at 29.92 and 29.88 px from the centre figure's axis; their outer sides sit 43.98 and 43.72 px out; feet measure 95.65 (small) and 96.0 (centre)."},
+    {"what": "Spaced the three interface rules evenly, 15.07 px apart, with one length (x 81.37 to 113.25), and levelled the top rule", "why": "DR-03 equal repeats. Rules measure y 33.45, 48.56 and 63.6; the top rule tilts 0.45 px over its length."},
+    {"what": "Drew the screen as a rounded rectangle with one corner radius, 6.3 px, and centred the stand and its base on the screen's axis, x 70.56", "why": "DR-03. Corner fits read 7.1 to 7.6 px with rms 0.3 to 0.4; the overlay matches the sheet's corners at 6.3. The stand measures x 70.6 and the base centres on 70.69."},
+    {"what": "Drew the portrait and the centre figure as half-ellipse arches on vertical sides (rx 17.5, ry 14.44 and rx 18.56, ry 16.92), each on its head's axis", "why": "Arch fits have rms 0.05 px; heads fit r 9.55 and 11.32."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.25 px."}
+  ],
+  "notes": "The catalogue describes two people outside the screen; the sheet shows three (one taller centre figure in front, two smaller ones behind whose inner shoulders stop with a gap at the centre figure's body). The image controls, so all three are drawn, with the occlusion as open gaps. Kept: three interface rules of equal length, the portrait inside the screen, the stand and base. Sheet disagreement: see the first correction on which rules are red."
+}

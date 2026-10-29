@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-27" data-id="R-27" width="128" height="128" viewBox="0 0 128 128">
+  <title>Tax Enforcement</title>
+  <desc>Oath &amp; Action Civic Line R-27 Tax Enforcement. Traced vector reconstruction from the Civic Line reference sheet 05, row 1, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M73.602 47.087 L73.602 41.614 A2.047 2.047 0 0 0 71.555 39.567 L34.976 39.567 A2.047 2.047 0 0 0 32.929 41.614 L32.929 85.202 A2.047 2.047 0 0 0 34.976 87.249 L71.979 87.249 A1.623 1.623 0 0 0 73.602 85.626" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.971" y1="47.536" x2="64.95" y2="47.536" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.971" y1="56.021" x2="54.803" y2="56.021" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.971" y1="64.507" x2="52.303" y2="64.507" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.971" y1="72.992" x2="53.341" y2="72.992" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="73.553" cy="66.398" r="14.164" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M87.741 77.189 L94.306 83.579 A2.915 2.915 0 0 1 94.365 87.697 A2.915 2.915 0 0 1 90.246 87.756 L82.696 80.415" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M65.019 67.797 A8.646 8.646 0 0 1 73.553 57.752 A8.646 8.646 0 0 1 82.077 64.955" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

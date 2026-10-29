@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-16" viewBox="0 0 196 132">
+  <!-- R-16 Court Terms & Ethics. Crop 196 x 132 px; ink box x 8..188, y 8..130.
+       Construction: a wide balance scale across the upper portion, with horizontal beam, central pivot, triangular suspension lines and two curved pans. A small clock hangs or sits beneath the beam’s centre, containing two simple hands. A separate smaller circular check badge occupies the lower-right area.
+       Red: the central clock’s circular contour/hands and the lower-right verification circle/check. The main scales stay black. Preserve both supplementary circular symbols and their unequal sizes. -->
+  <!-- Trace notes: scale symmetric about x 93.1; beam is one shallow arc (r 420) split at the pivot ring; pans equal. -->
+  <g data-role="base">
+    <line id="post-top" x1="93.1" y1="10.69" x2="93.1" y2="22.48"/>
+    <circle id="pivot" cx="93.1" cy="30.39" r="7.91"/>
+    <line id="post-low" x1="93.1" y1="38.3" x2="93.1" y2="58.1"/>
+    <path id="beam-left" d="M31.8 35.7 A420 420 0 0 1 85.19 31.27"/>
+    <path id="beam-right" d="M101.01 31.27 A420 420 0 0 1 154.4 35.7"/>
+    <polyline id="hangers-left" points="11.06,85.6 34.5,37.75 57.94,85.6"/>
+    <line id="pan-left-top" x1="11.06" y1="85.6" x2="57.94" y2="85.6"/>
+    <path id="pan-left-bowl" d="M11.06 85.6 A23.8 23.8 0 0 0 57.94 85.6"/>
+    <polyline id="hangers-right" points="128.26,85.6 151.7,37.75 174.01,83.3"/>
+    <line id="pan-right-top" x1="128.26" y1="85.6" x2="157.2" y2="85.6"/>
+    <path id="pan-right-bowl" d="M128.26 85.6 A23.8 23.8 0 0 0 139.19 101.72"/>
+  </g>
+  <g data-role="accent">
+    <circle id="clock" cx="93.1" cy="88.4" r="21.59"/>
+    <polyline id="clock-hands" points="93.1,77.6 93.1,88.4 96.85,91.85"/>
+    <circle id="badge" cx="167.69" cy="109.84" r="17.7"/>
+    <polyline id="badge-check" points="161.4,110.4 165.9,114.6 175.2,104.9"/>
+  </g>
+</svg>

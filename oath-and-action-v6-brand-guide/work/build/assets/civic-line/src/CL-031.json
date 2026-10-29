@@ -1,0 +1,17 @@
+{
+  "id": "CL-031",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Made the hall symmetric about one axis, x 98.75: the central block, pediment, central windows and door move 0.5 to 0.7 px right; the wings, wing windows and baseline move 0.5 to 0.65 px left",
+     "why": "DR-03 symmetry; the catalogue calls for a symmetrical hall. The sheet's central block centres at 98.14 (walls), 98.22 (windows), 98.56 (apex) and 98.07 (door), while the wings, their windows and the baseline centre at 99.2 to 99.4."},
+    {"what": "Gave the two roof slopes one pitch, 35.2 deg, rising from eaves 38.11 px either side of the apex",
+     "why": "DR-03 symmetry. Slopes measure 34.8 and 35.5 deg; the left eave run measures 38.6 px and the right 37.6."},
+    {"what": "Placed the wing windows as two mirrored pairs, 46.48 and 62.43 px out, all four on y 79.55 to 90.25",
+     "why": "DR-03 equal repeats. Inner offsets measure 46.61 and 46.34, outer 62.43 and 62.42."},
+    {"what": "Drew the door as a filled round-topped shape 23.63 px wide with 7.5 px top corners, its foot under the baseline",
+     "why": "The sheet's door is a flat-topped arch with wide rounded corners; the rows fit a 7.5 to 8 px radius."},
+    {"what": "Drew all strokes at W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 5.75 to 6.0 px, so the ink area ratio is 0.96."}
+  ],
+  "notes": "Kept: the central block taller than the wings, with its walls rising to the pediment's base; the hollow triangle under the roof peak; the eaves overhanging the walls by 7 px; two narrow windows in the hall and two in each wing; the baseline running past both wings. Red: the filled doorway only; the red sheet shows the black baseline over the door's foot, so the accent group is drawn first."
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-041" viewBox="0 0 198 126">
+  <!-- CL-041 Workplace AI. Crop 198 x 126 px; ink box x 8..190, y 8..118.
+       Construction: a human worker on the left sits at a desk/laptop, with a hollow round head, shoulder contour and diagonal laptop screen. To the right stands a friendly small robot bust: rounded-square head, side ear tabs, two dark dot eyes, a short curved mouth, narrow neck and simple shoulder arch. Three short activation rays sit above the robot.
+       Red: those rays above the robot. Both figures and the laptop are black. Preserve the robot face and relative human/robot heights shown in the source. -->
+  <g data-role="base">
+    <circle id="worker-head" cx="62.13" cy="28.84" r="17.12"/>
+    <path id="worker-shoulders" d="M25.75 101.35 V75.76 A20.5 20.5 0 0 1 46.25 55.26 H81.3 A11 11 0 0 1 92.3 66.26"/>
+    <path id="laptop-screen" d="M58.98 101.35 L68.56 68.52 A3 3 0 0 1 71.44 66.36 L109.77 66.36 A3 3 0 0 1 112.65 70.2 L103.55 101.35"/>
+    <polyline id="desk" points="11.13,115.5 11.13,101.35 117.42,101.35 117.42,115.5"/>
+    <rect id="robot-head" x="133.3" y="37.35" width="46" height="41.28" rx="8.3"/>
+    <path id="robot-ear-left" d="M133.3 48.75 H128.7 A3 3 0 0 0 125.7 51.75 V63.25 A3 3 0 0 0 128.7 66.25 H133.3"/>
+    <path id="robot-ear-right" d="M179.3 66.25 H183.9 A3 3 0 0 0 186.9 63.25 V51.1"/>
+    <circle id="robot-eye-left" class="fill" cx="146.26" cy="54.6" r="3.8"/>
+    <circle id="robot-eye-right" class="fill" cx="166.34" cy="54.6" r="3.8"/>
+    <path id="robot-mouth" d="M152.85 65.8 A9 9 0 0 0 160.05 65.8"/>
+    <path id="robot-shoulders" d="M131.86 106.9 V98.42 A9.5 9.5 0 0 1 141.36 88.92 H171.24 A9.5 9.5 0 0 1 180.74 98.42 V106.9"/>
+  </g>
+  <g data-role="accent">
+    <line id="ray-top" x1="156.3" y1="11.13" x2="156.3" y2="23.94"/>
+    <line id="ray-left" x1="134.96" y1="18.5" x2="141.46" y2="26.5"/>
+    <line id="ray-right" x1="177.64" y1="18.5" x2="171.14" y2="26.5"/>
+  </g>
+</svg>

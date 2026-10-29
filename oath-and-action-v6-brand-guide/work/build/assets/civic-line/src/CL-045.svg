@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-045" viewBox="0 0 197 130">
+  <!-- CL-045 Pricing Algorithms. Crop 197 x 130 px; ink box x 8..189, y 8..122.
+       Construction: two overlapping upright price tags lean or offset slightly, with clipped upper shoulders and small circular holes. The foreground tag contains a dollar sign. A small circuit-tree motif stands separately to the right: one vertical stem, short horizontal elbow/branch and several hollow circular terminals.
+       Red: the foreground dollar sign and the circuit tree's upper terminal ring. Tag contours, holes and other circuit nodes remain black. Preserve the asymmetric two-tags-plus-circuit composition.
+       Trace: front tag upright and symmetric about x 36.2; back tag leans about 3 deg clockwise as drawn,
+       its left shoulder stops short of the front tag. A string runs from the front hole to the front tag's
+       top, and a peaked loop rises from there to the back tag's top-left corner. -->
+  <g data-role="base">
+    <polygon id="front-tag" points="10.5,117.6 10.5,49.4 30.98,28.25 41.42,28.25 61.9,49.4 61.9,117.6"/>
+    <polyline id="back-tag" points="69.5,45.85 82.2,31.5 94.3,31.2 113.8,55.1 110.5,118.8 65.5,117.04"/>
+    <line id="string" x1="36.2" y1="47.0" x2="43.7" y2="28.3"/>
+    <polyline id="loop" points="40.8,28.3 59.1,10.9 82.2,31.5"/>
+    <circle id="front-hole" class="fill" cx="36.2" cy="47.0" r="5.5"/>
+    <circle id="back-hole" class="fill" cx="88.2" cy="50.55" r="5.5"/>
+    <line id="stem" x1="155.6" y1="52.0" x2="155.6" y2="83.42"/>
+    <path id="branch" d="M169.15 83.42 H141.35 A7.7 7.7 0 0 0 133.65 91.12 V101.6"/>
+    <circle id="node-right" cx="177.6" cy="83.42" r="8.45"/>
+    <circle id="node-low" cx="133.65" cy="110.05" r="8.45"/>
+  </g>
+  <g data-role="accent">
+    <line id="dollar-bar-top" x1="36.2" y1="66.5" x2="36.2" y2="70.7"/>
+    <path id="dollar-s" d="M43.9 74.4 A7.8 6.5 0 0 0 36.3 70.75 A7.0 6.25 0 0 0 29.3 77.0 A7.0 6.3 0 0 0 36.3 83.3 A7.4 6.3 0 0 1 43.7 89.6 A7.4 6.3 0 0 1 36.3 95.9 A7.8 6.5 0 0 1 28.9 92.2"/>
+    <line id="dollar-bar-low" x1="36.2" y1="95.9" x2="36.2" y2="99.5"/>
+    <circle id="node-top" cx="155.6" cy="43.55" r="8.45"/>
+  </g>
+</svg>

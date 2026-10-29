@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-33" viewBox="0 0 200 120">
+  <!-- R-33 Citizen Assemblies. Crop 200 x 120 px; ink box x 8..192, y 8..112.
+       Construction: five outline people encircle a small oval deliberation table. A taller central person stands behind the table; two mid-level people sit farther left/right, and two lower foreground figures frame the table's sides. The table has an elliptical top and short vertical legs.
+       Red: the central upper person's head circle and shoulder/torso outline. The other four people and table remain black. Match the five-person spacing and the oval table's overlap.
+       Mirror axis x 99.75 for the whole group. Bodies are half-ellipse arches with vertical sides;
+       the mid figures' shoulders are open elliptical arcs (left stub end, right end turned down toward the table).
+       The red figure is drawn first so the black table top lies over the feet of its sides, as on the red sheet. -->
+  <g data-role="accent">
+    <circle id="centre-head" cx="99.75" cy="21.2" r="11"/>
+    <path id="centre-body" d="M80.36 65.73 V52.7 A19.39 16.23 0 0 1 99.75 36.47 A19.39 16.23 0 0 1 119.14 52.7 V65.73"/>
+  </g>
+  <g data-role="base">
+    <circle id="mid-left-head" cx="49.98" cy="34.37" r="10.5"/>
+    <path id="mid-left-shoulders" d="M37.63 49.91 A18.74 12.51 0 0 1 67.95 58.6"/>
+    <circle id="mid-right-head" cx="149.52" cy="34.37" r="10.5"/>
+    <path id="mid-right-shoulders" d="M161.87 49.91 A18.74 12.51 0 0 0 131.55 58.6"/>
+    <circle id="front-left-head" cx="31.55" cy="70.1" r="11"/>
+    <path id="front-left-body" d="M10.63 108.95 V101.35 A20.92 18.29 0 0 1 31.55 83.06 A20.92 18.29 0 0 1 52.47 101.35 V108.95"/>
+    <circle id="front-right-head" cx="167.95" cy="70.1" r="11"/>
+    <path id="front-right-body" d="M147.03 108.95 V101.35 A20.92 18.29 0 0 1 167.95 83.06 A20.92 18.29 0 0 1 188.87 101.35 V108.95"/>
+    <ellipse id="table" cx="99.75" cy="74.63" rx="43.65" ry="9.95"/>
+    <line id="leg-left" x1="68.74" y1="81.6" x2="67.08" y2="105.1"/>
+    <line id="leg-right" x1="130.76" y1="81.6" x2="132.42" y2="105.1"/>
+  </g>
+</svg>

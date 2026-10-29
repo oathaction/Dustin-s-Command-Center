@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-028" data-id="CL-028" width="128" height="128" viewBox="0 0 128 128">
+  <title>Watchdogs</title>
+  <desc>Oath &amp; Action Civic Line CL-028 Watchdogs. Traced vector reconstruction from the Civic Line reference sheet 02, row 1, column 4. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M71.506 45.113 V37.807 A1.218 1.218 0 0 0 70.287 36.589 H32.933 A1.218 1.218 0 0 0 31.715 37.807 V84.68 A1.218 1.218 0 0 0 32.933 85.899 H70.287 A1.218 1.218 0 0 0 71.506 84.68 V83.569" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.313" y1="46.366" x2="62.903" y2="46.366" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.313" y1="55.475" x2="54.008" y2="55.475" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.313" y1="64.585" x2="51.864" y2="64.585" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="40.313" y1="73.694" x2="51.864" y2="73.694" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="71.954" cy="64.595" r="14.339" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="81.342" y1="75.449" x2="84.568" y2="78.524" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M88.779 79.109 L95.296 85.645 A2.988 2.988 0 0 1 91.065 89.866 L84.549 83.33 A2.988 2.988 0 0 1 88.779 79.109 Z" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

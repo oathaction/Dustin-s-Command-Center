@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-034" viewBox="0 0 164 142">
+  <!-- CL-034 New Technology. Crop 164 x 142 px; ink box x 8..156, y 8..134.
+       Construction: a hollow lightbulb on the left, with round crown, tapered neck, short base and simple internal filament. From its lower-right region a thin elbow-like circuit wire travels right and upward to a hollow circular terminal. Several short rays sit above and to the upper sides of the bulb.
+       Red: the bulb’s external rays and the hollow circuit terminal. Bulb contour, filament, screw base and connecting wire stay black. Keep the bulb and terminal as one connected symbol. -->
+  <g data-role="base">
+    <path id="bulb" d="M49.5 112.27 C49.5 98.89 44.23 91.05 43.36 90.32 A32.48 32.48 0 1 1 88.38 87.17 C80.67 95.73 80.73 102.92 80.55 103.9"/>
+    <path id="wire" d="M49.5 112.27 H104.34 A9.1 9.1 0 0 0 113.44 103.17 V94.71 A6.3 6.3 0 0 1 119.74 88.41 H135.94 A7.7 7.7 0 0 0 143.64 80.71 V62.65"/>
+    <polyline id="filament" points="59.6,81 64.65,97 70.3,84.9"/>
+    <line id="filament-stem" x1="64.65" y1="97" x2="64.65" y2="112.27"/>
+    <path id="collar" d="M50.7 112.27 V118.9 A3 3 0 0 0 53.7 121.9 H75.9 A3 3 0 0 0 78.9 118.9 V117.3"/>
+    <path id="cup" d="M55.06 121.9 V126.45 A4.5 4.5 0 0 0 59.56 130.95 H70.2 A4.5 4.5 0 0 0 74.7 126.45 V121.9"/>
+  </g>
+  <g data-role="accent">
+    <line id="ray-top" x1="64.7" y1="10.75" x2="64.7" y2="22.5"/>
+    <line id="ray-upper-left" x1="30.15" y1="21.75" x2="37.85" y2="31.3"/>
+    <line id="ray-upper-right" x1="99.25" y1="21.75" x2="91.55" y2="31.3"/>
+    <line id="ray-left" x1="10.5" y1="50.96" x2="22.4" y2="54.47"/>
+    <circle id="terminal" cx="143.95" cy="54.05" r="8.6"/>
+  </g>
+</svg>

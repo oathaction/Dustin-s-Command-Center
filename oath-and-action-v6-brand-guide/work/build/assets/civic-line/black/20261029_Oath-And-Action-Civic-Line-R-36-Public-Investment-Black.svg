@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-36" data-id="R-36" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Investment</title>
+  <desc>Oath &amp; Action Civic Line R-36 Public Investment. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="accent">
+    <path d="M21.962 77.72 V76.672 C21.962 69.064 17.795 70.214 15.923 63.23 A11.376 11.376 0 1 1 37.895 63.23 C36.024 70.214 31.856 69.064 31.856 76.672 V77.72" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.909" y1="38.168" x2="26.909" y2="43.091" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="12.239" y1="45.347" x2="15.017" y2="48.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.58" y1="45.347" x2="38.802" y2="48.126" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24.258" y1="63.586" x2="29.561" y2="63.586" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.909" y1="63.586" x2="26.909" y2="77.72" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M111.487 73.251 A2.851 2.851 0 1 0 108.255 77.296 L109.62 77.632 A2.851 2.851 0 1 1 106.233 81.298" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="108.938" y1="69.605" x2="108.938" y2="71.676" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="108.938" y1="83.252" x2="108.938" y2="84.958" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="base">
+    <rect x="22.084" y="77.72" width="9.65" height="5.483" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="24.594" y="84.008" width="4.63" height="4.118" rx="1.218" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="62.635" y1="56.397" x2="62.635" y2="88.077" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="43.066,75.039 46.405,74.742 55.129,69.274 62.635,58.697 70.141,69.274 78.866,74.742 82.204,75.039" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55.129" y1="69.274" x2="55.129" y2="79.402" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="70.141" y1="69.274" x2="70.141" y2="79.402" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="46.405" y1="74.742" x2="46.405" y2="88.077" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="78.866" y1="74.742" x2="78.866" y2="88.077" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="43.286" y1="79.402" x2="81.985" y2="79.402" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M115.64 68.484 V55.066 A1.95 1.95 0 0 0 113.69 53.116 H89.613 A1.95 1.95 0 0 0 87.663 55.066 V87.97 A1.95 1.95 0 0 0 89.613 89.92 H112.432" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.155" y1="60.622" x2="108.904" y2="60.622" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.155" y1="67.422" x2="100.92" y2="67.422" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.155" y1="74.221" x2="98.298" y2="74.221" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="94.155" y1="81.015" x2="98.298" y2="81.015" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

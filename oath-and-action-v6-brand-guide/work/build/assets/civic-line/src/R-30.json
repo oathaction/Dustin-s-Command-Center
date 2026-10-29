@@ -1,0 +1,31 @@
+{
+  "id": "R-30",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Gave each home a symmetric 44.4 to 45 deg gable: the smaller one about its peak (46.47, 20.76), the larger one about (101.97, 9.91) with walls 27.64 px either side",
+      "why": "DR-03 symmetry. Roof slopes measure 44.6 and 44.3 deg (small) and 44.85 and 45.2 deg (large); every move is under 0.5 px."
+    },
+    {
+      "what": "Made the windows equal filled pills, 5.3 x 14.6 px, placed symmetrically about each home's centre (10.0 and 9.97 px out)",
+      "why": "DR-03 equal repeats. Window widths measure 5.24 to 5.37 px and heights 14.4 to 14.9 px."
+    },
+    {
+      "what": "Centred the door on the larger home's axis and straightened the ground rule to y 91.57",
+      "why": "DR-03 symmetry and straight lines. The door's red extent centres at x 102.25; the ground rule drops 0.5 px across its length."
+    },
+    {
+      "what": "Spaced the three document rules evenly, 14.99 px apart, from one left end at x 156",
+      "why": "DR-03 equal repeats. Gaps measure 14.89 and 15.08 px. Each rule keeps its own right end."
+    },
+    {
+      "what": "Gave the document one corner radius, 4.0 px, and drew the badge as a true circle, centre (198.04, 71.64), r 23.02",
+      "why": "DR-03. Corner profiles give 3.1 to 5.4 px; both sheets fit the badge at r 23.02 to 23.04."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. Strokes measure 5.0 to 5.5 px; the ink area ratio is about 1.04."
+    }
+  ],
+  "notes": "Kept: two homes of different sizes, the smaller one's right roof slope ending on the larger one's left wall (they share that wall), one ground rule under both with its longer overhang at the left, two windows in each home, the larger home's door, the document behind as an open contour (right edge stops at y 38.2 above the badge, bottom edge at x 171), three rules, and the badge overlapping the document's lower right and reaching outside it. Red is the larger home's filled door and the badge circle and check. The door sits under the black ground rule, as on the red sheet. Both sheets agree."
+}

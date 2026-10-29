@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-051" viewBox="0 0 197 137">
+  <!-- CL-051 Market Power. Crop 197 x 137 px; ink box x 8..189, y 8..129.
+       Construction: one tall rectangular building at left dominates two shorter buildings to its right. The tall building has a short rooftop block, six small square windows arranged in two columns and three rows, and a small black doorway. The shorter buildings have sparse black window marks. All sit on one continuous baseline.
+       Red: the tall building’s six window squares. Remaining architecture and smaller-building windows are black. Preserve the descending rightward skyline and the dominant building’s rectangular shape.
+       Trace: square corners with round joins; the tower and the two low buildings stand on one baseline.
+       Tower windows: 2 columns x 3 rows of filled squares, symmetric about the tower (x 54.18), as is the door.
+       The rooftop block sits left of centre, as drawn. Window marks: two in the middle building, one at right. -->
+  <g data-role="base">
+    <line id="baseline" x1="11.0" y1="125.6" x2="186.1" y2="125.6"/>
+    <polyline id="tower" points="22.15,125.6 22.15,26.73 86.21,26.73 86.21,125.6"/>
+    <polyline id="tower-roof-block" points="34.6,26.73 34.6,10.42 61.5,10.42 61.5,26.73"/>
+    <polyline id="tower-door" points="49.15,125.6 49.15,109.0 59.35,109.0 59.35,125.6"/>
+    <polyline id="middle-building" points="99.58,125.6 99.58,71.07 130.7,71.07 130.7,125.6"/>
+    <polyline id="middle-mark-1" points="112.0,84.8 117.8,84.8 117.8,91.75"/>
+    <polyline id="middle-mark-2" points="111.95,100.1 117.75,100.1 117.75,107.05"/>
+    <polyline id="right-building" points="143.79,125.6 143.79,87.73 174.44,87.73 174.44,125.6"/>
+    <polyline id="right-mark" points="156.3,100.1 162.1,100.1 162.1,107.05"/>
+  </g>
+  <g data-role="accent">
+    <rect id="window-1a" class="fill" x="35.98" y="40.0" width="12.2" height="12.2" rx="2"/>
+    <rect id="window-1b" class="fill" x="60.18" y="40.0" width="12.2" height="12.2" rx="2"/>
+    <rect id="window-2a" class="fill" x="35.98" y="61.95" width="12.2" height="12.2" rx="2"/>
+    <rect id="window-2b" class="fill" x="60.18" y="61.95" width="12.2" height="12.2" rx="2"/>
+    <rect id="window-3a" class="fill" x="35.98" y="83.9" width="12.2" height="12.2" rx="2"/>
+    <rect id="window-3b" class="fill" x="60.18" y="83.9" width="12.2" height="12.2" rx="2"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-035" data-id="CL-035" width="128" height="128" viewBox="0 0 128 128">
+  <title>Residential Sorting</title>
+  <desc>Oath &amp; Action Civic Line CL-035 Residential Sorting. Traced vector reconstruction from the Civic Line reference sheet 02, row 2, column 5. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M17.878 64.346 L30.048 52.176 A0.634 0.634 0 0 1 30.945 52.176 L41.921 63.152 L41.921 81.4" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="19.062" y1="63.162" x2="19.062" y2="81.4" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26.851" y1="67.607" x2="26.851" y2="71.993" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34.132" y1="67.607" x2="34.132" y2="71.993" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M37.154 58.385 L47.365 48.174 A0.634 0.634 0 0 1 48.262 48.174 L58.946 58.858" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="58.054,57.966 58.054,74.542 41.921,74.542" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="48.374" y1="61.139" x2="48.374" y2="65.282" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="40.181" x2="66.047" y2="44.295" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="48.876" x2="66.047" y2="52.99" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="57.571" x2="66.047" y2="61.685" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="66.266" x2="66.047" y2="70.38" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="74.962" x2="66.047" y2="79.075" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="66.047" y1="83.657" x2="66.047" y2="87.77" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M77.467 65.526 L77.467 54.384 L85.582 46.269 A0.634 0.634 0 0 1 86.479 46.269 L94.097 53.887" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.055" y1="58.029" x2="86.055" y2="61.743" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M92.245 71.603 L92.245 62.635 L100.472 54.408 A0.634 0.634 0 0 1 101.369 54.408 L110.239 63.279" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="109.596" y1="62.635" x2="109.596" y2="83.92" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.92" y1="66.466" x2="100.92" y2="70.122" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="100.92" y1="76.702" x2="100.92" y2="80.357" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M74.771 86.469 L74.771 76.282 L82.463 68.557 A0.634 0.634 0 0 1 83.359 68.557 L91.05 76.282 L91.05 86.469" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="82.911" y1="80.391" x2="82.911" y2="84.471" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

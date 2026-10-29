@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-069" data-id="CL-069" width="128" height="128" viewBox="0 0 128 128">
+  <title>Childcare</title>
+  <desc>Oath &amp; Action Civic Line CL-069 Childcare. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <circle cx="52.79" cy="40.118" r="8.676" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="82.575" cy="62.143" r="6.18" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M33.387 95.013 V64.975 C34.074 55.412 40.966 51.927 50.109 53.131 C65.048 55.1 67.904 63.561 69.556 75.99 C76.185 72.676 77.403 72.149 84.129 72.149 A10.221 10.221 0 0 1 94.35 82.37 V96.534" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69.654" y1="88.126" x2="69.654" y2="96.475" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M44.075 65.886 A18.165 18.165 0 0 0 62.104 81.839 H77.647" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

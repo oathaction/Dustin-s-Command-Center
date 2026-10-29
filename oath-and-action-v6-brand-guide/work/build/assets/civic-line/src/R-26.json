@@ -1,0 +1,27 @@
+{
+  "id": "R-26",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Made the home symmetric about x 50.7: one roof pitch, 41.05 deg, on both sides from the peak at y 45.0 to eaves 39.5 px either side, walls 31.62 px either side and the two interior uprights 9.33 px either side",
+      "why": "DR-03 symmetry. The roof centreline runs at 40.7 deg (left) and 41.4 deg (right); walls sit at 19.06 and 82.31; the uprights at 41.25 and 59.9, the right one leaning 4.6 deg, now vertical."
+    },
+    {
+      "what": "Gave both coin stacks one coin size (16.78 x 7.0 px ellipses) and one ground line, y 109.4",
+      "why": "DR-03 equal repeats. The small stack measures 16.93 x 7.1 px with its bottom at y 109.05; the tall stack 16.62 x 6.91 px with its bottom at 109.73."
+    },
+    {
+      "what": "Spaced the tall stack's two bands and bottom evenly, 11.31 px apart below the top rim",
+      "why": "DR-03 equal repeats. The spacings measure 11.18, 11.27 and 11.98 px."
+    },
+    {
+      "what": "Made the arrowhead a symmetric right-angle L, both arms 15.2 px",
+      "why": "DR-03 symmetry. The arms measure 14.6 px (level) and 15.75 px (upright) about the 45 deg final segment."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. This icon runs light: strokes measure 5.1 to 5.35 px, so the ink area ratio is about 1.05."
+    }
+  ],
+  "notes": "Kept: the zigzag's short upward interruption (down from top left, briefly up, then down to the head), with its three segments at their measured angles (43.2, 38.4 and 44.1 deg) and its open L-shaped head pointing down-right toward the tall stack; the home's wide roof with eaves past the walls, walls that end at the ground without a base line, and two short interior uprights; the small stack's top rim over a plain body and the tall stack's rim and two bands. Red is the whole zigzag and its head; home and stacks are black. Both sheets agree."
+}

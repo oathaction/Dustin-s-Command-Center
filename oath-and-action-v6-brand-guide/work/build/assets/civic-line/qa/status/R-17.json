@@ -1,0 +1,85 @@
+{
+  "id": "R-17",
+  "label": "Civil Service",
+  "state": "traced",
+  "tracer": "T5",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:31:19+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9578,
+      "red_iou_1x": 0.8787,
+      "edge_mean_px": 0.152,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:32:45+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9578,
+      "red_iou_1x": 0.8787,
+      "edge_mean_px": 0.152,
+      "edge_p95_px": 0.5
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:33:00+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9578,
+      "red_iou_1x": 0.8787,
+      "edge_mean_px": 0.152,
+      "edge_p95_px": 0.5
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:33:00+00:00",
+      "by": "T5",
+      "note": "overlay checked; brace symmetric, tab centred, rules evened"
+    }
+  ],
+  "last_build": "2026-10-29T06:33:00+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9578,
+    "red_iou_1x": 0.8787,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9843,
+    "edge_mean_px": 0.152,
+    "edge_p95_px": 0.5,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the curly brace mirror-symmetric about y 61.6: equal quarter-ellipse hooks (11 x 10.55 px), straight vertical runs at x 164.2, and two equal quadratic bends meeting at the point, which ends in a short level stub",
+      "why": "DR-03 symmetry. The hook ends measure y 17.9 and 106.2 and the point y 61.2, so the ends move 0.45 px and the point 0.4 px. The vertical runs measure x 164.13 and 164.25."
+    },
+    {
+      "what": "Centred the top tab on the card, x 68.71 to 83.04",
+      "why": "DR-03 symmetry. The tab measures 68.95 to 83.28, 0.24 px right of the card's centre."
+    },
+    {
+      "what": "Made the two long information rules equal (x 85.7 to 123.9) and spaced all three rules evenly, 14.94 px apart",
+      "why": "DR-03 equal repeats. The rules sit at y 47.5, 62.35 and 77.38 (gaps 14.85 and 15.03). The third rule stays short, ending at x 110.25, as drawn."
+    },
+    {
+      "what": "Drew the portrait's shoulders as a half-ellipse (21.45 x 23.7 px) over short vertical sides and a flat base",
+      "why": "DR-03. A circle fits the shoulders poorly (rms 1.3 px); the half-ellipse follows the sampled centreline within about 0.5 px."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. Strokes measure 5.5 to 6.1 px."
+    }
+  ],
+  "source_notes": "Kept: the small three-sided tab standing on the card's top edge, the head joined to the shoulders, three rules with the last one short, the brace's separation from the card (about 18 px of clear ground) and its pointed middle with a short stub. Red is the full brace only. Both sheets agree. The shoulder arc is written as two quarter arcs: a single exact half-arc baked with a 0.25 px shift in the export (bake IoU 0.997), and the split brings it to 1.000."
+}

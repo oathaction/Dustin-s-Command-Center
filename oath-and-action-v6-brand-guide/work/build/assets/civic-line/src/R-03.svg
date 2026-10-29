@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-03" viewBox="0 0 179 99">
+  <!-- R-03 Proportional Elections. Crop 179 x 99 px; ink box x 8..171, y 8..91.
+       Construction: a legislative hemicycle made entirely from many small filled circular seat dots. Black dots form two broad curved clusters at left and right. A smaller central upper cluster bridges the two sides, following the same arched seating arrangement. Keep all dot spacing, staggered rows and slight size differences visible in the source.
+       Red: the central upper cluster of seat dots. All other dots remain black. Count and position the dots from the enlarged crop; avoid replacing this with solid curved chamber bands. -->
+  <!-- T4 trace. 30 filled seat dots, mirror-symmetric about x 89.57: 22 black in two side clusters, 8 red in the
+       central upper cluster. Each mirrored pair shares one size; sizes still vary across the chamber as drawn. -->
+  <g data-role="base">
+    <circle id="seat-1" class="fill" cx="40.95" cy="31.15" r="6.15"/>
+    <circle id="seat-2" class="fill" cx="138.19" cy="31.15" r="6.15"/>
+    <circle id="seat-3" class="fill" cx="54.78" cy="42.92" r="5.75"/>
+    <circle id="seat-4" class="fill" cx="124.35" cy="42.92" r="5.75"/>
+    <circle id="seat-5" class="fill" cx="27.39" cy="45.59" r="6.08"/>
+    <circle id="seat-6" class="fill" cx="151.75" cy="45.59" r="6.08"/>
+    <circle id="seat-7" class="fill" cx="44.26" cy="53.30" r="5.90"/>
+    <circle id="seat-8" class="fill" cx="134.88" cy="53.30" r="5.90"/>
+    <circle id="seat-9" class="fill" cx="63.88" cy="59.41" r="5.85"/>
+    <circle id="seat-10" class="fill" cx="115.26" cy="59.41" r="5.85"/>
+    <circle id="seat-11" class="fill" cx="18.52" cy="63.00" r="6.26"/>
+    <circle id="seat-12" class="fill" cx="160.62" cy="63.00" r="6.26"/>
+    <circle id="seat-13" class="fill" cx="36.77" cy="67.83" r="6.09"/>
+    <circle id="seat-14" class="fill" cx="142.36" cy="67.83" r="6.09"/>
+    <circle id="seat-15" class="fill" cx="54.78" cy="71.28" r="6.01"/>
+    <circle id="seat-16" class="fill" cx="124.35" cy="71.28" r="6.01"/>
+    <circle id="seat-17" class="fill" cx="14.53" cy="82.28" r="6.37"/>
+    <circle id="seat-18" class="fill" cx="164.61" cy="82.28" r="6.37"/>
+    <circle id="seat-19" class="fill" cx="33.44" cy="84.00" r="6.21"/>
+    <circle id="seat-20" class="fill" cx="145.69" cy="84.00" r="6.21"/>
+    <circle id="seat-21" class="fill" cx="52.31" cy="85.12" r="6.13"/>
+    <circle id="seat-22" class="fill" cx="126.82" cy="85.12" r="6.13"/>
+  </g>
+  <g data-role="accent">
+    <circle id="centre-1" class="fill" cx="80.50" cy="14.45" r="6.75"/>
+    <circle id="centre-2" class="fill" cx="98.63" cy="14.45" r="6.75"/>
+    <circle id="centre-3" class="fill" cx="62.21" cy="18.96" r="6.26"/>
+    <circle id="centre-4" class="fill" cx="116.93" cy="18.96" r="6.26"/>
+    <circle id="centre-5" class="fill" cx="80.54" cy="31.38" r="6.72"/>
+    <circle id="centre-6" class="fill" cx="98.60" cy="31.38" r="6.72"/>
+    <circle id="centre-7" class="fill" cx="80.65" cy="49.71" r="6.61"/>
+    <circle id="centre-8" class="fill" cx="98.49" cy="49.71" r="6.61"/>
+  </g>
+</svg>

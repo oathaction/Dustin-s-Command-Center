@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-067" data-id="CL-067" width="128" height="128" viewBox="0 0 128 128">
+  <title>Healthcare</title>
+  <desc>Oath &amp; Action Civic Line CL-067 Healthcare. Traced vector reconstruction from the Civic Line reference sheet 03, row 4, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M50.909 32.49 H76.965 A1.218 1.218 0 0 1 78.183 33.708 V50.129 H94.604 A1.218 1.218 0 0 1 95.822 51.347 V77.403 A1.218 1.218 0 0 1 94.604 78.622 H78.183 V95.042 A1.218 1.218 0 0 1 76.965 96.261 H50.909 A1.218 1.218 0 0 1 49.69 95.042 V78.622 H33.27 A1.218 1.218 0 0 1 32.051 77.403 V51.347 A1.218 1.218 0 0 1 33.27 50.129 H49.69 V33.708 A1.218 1.218 0 0 1 50.909 32.49 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <polyline points="41.516,64.634 54.545,64.634 54.886,67.217 60.564,50.548 66.047,78.378 71.603,61.027 73.748,64.634 86.484,64.634" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

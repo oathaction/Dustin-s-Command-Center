@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-12" data-id="R-12" width="128" height="128" viewBox="0 0 128 128">
+  <title>Filibuster Reform</title>
+  <desc>Oath &amp; Action Civic Line R-12 Filibuster Reform. Traced vector reconstruction from the Civic Line reference sheet 04, row 3, column 2. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M29.814 42.457 L46.658 42.457 A5.849 5.849 0 0 1 52.507 48.306 L52.507 54.33 A5.849 5.849 0 0 1 46.658 60.179 L29.814 60.179 A5.849 5.849 0 0 1 23.965 54.33 L23.965 48.306 A5.849 5.849 0 0 1 29.814 42.457 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="42.067,60.179 38.607,64.682 38.607,60.179" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M81 41.209 L97.845 41.209 A5.849 5.849 0 0 1 103.693 47.058 L103.693 53.082 A5.849 5.849 0 0 1 97.845 58.931 L89.539 58.931 L83.447 64.682 L82.618 58.931 L81 58.931 A5.849 5.849 0 0 1 75.152 53.082 L75.152 47.058 A5.849 5.849 0 0 1 81 41.209 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32.466" y1="86.537" x2="95.096" y2="86.537" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="36.131,86.537 36.131,71.681 51.45,71.681" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="44.529" y1="71.681" x2="44.529" y2="86.537" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="91.431,86.537 91.431,71.681 76.112,71.681" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="83.033" y1="71.681" x2="83.033" y2="86.537" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M58.492 66.218 L58.492 64.146 A5.386 5.386 0 0 1 69.264 64.146 L69.264 71.067" fill="none" stroke="#E63946" stroke-width="2.6807" stroke-linecap="butt" stroke-linejoin="round"/>
+    <path d="M56.153 69.118 L71.067 69.118 A0.975 0.975 0 0 1 72.042 70.092 L72.042 80.693 A0.975 0.975 0 0 1 71.067 81.668 L56.153 81.668 A0.975 0.975 0 0 1 55.178 80.693 L55.178 70.092 A0.975 0.975 0 0 1 56.153 69.118 Z M62.435 79.255 L62.435 75.6 A1.852 1.852 0 1 1 64.707 75.6 L64.707 79.255 Z" fill="#E63946" fill-rule="evenodd"/>
+  </g>
+</svg>

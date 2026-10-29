@@ -1,0 +1,17 @@
+{
+  "id": "CL-027",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Hung the two pans symmetrically about one scale axis, x 77.3, at 42.4 px either side; the stem, finial and beam move 0.45 to 0.6 px left and the pans 0.4 to 0.5 px right",
+     "why": "DR-03 symmetry; a balance is plainly symmetric. The sheet's stem and beam centre at 77.75 to 77.9, the foot at 77.1 to 77.25, and the pans sit 43.2 and 41.65 px out, so their midpoint is 76.95."},
+    {"what": "Drew both pans as one repeated shape: hanger apex at y 36.94, legs landing 22.33 px either side on the rim at y 82.95, rim 48.38 px wide, bowl a true arc r 25.79",
+     "why": "DR-03 equal repeats. Left and right measure: apex y 37.12 and 36.75; leg spread 22.32 and 22.33; bowl r 25.91 and 25.67 (fits 0.08 to 0.09 px rms); legs at 64.0 and 64.4 deg."},
+    {"what": "Drew the foot as a symmetric rounded mound (two cubic quarters, half-width 17.07, top y 113.5) over a straight base line",
+     "why": "DR-03 symmetry. The mound is squarer than an ellipse on the sheet; the curve follows its centreline to about 0.3 px."},
+    {"what": "Gave the two document rules one length, x 155.5 to 178.07, and the document corners a 2 px centreline radius",
+     "why": "DR-03 equal repeats. Rules measure 155.25 to 178.13 and 155.75 to 178.0."},
+    {"what": "Placed the seal at centre (169.6, 103.25), r 9.0",
+     "why": "Black and red sheets disagree by 0.3 px in radius (black r 9.12, red r 8.83) and 0.2 px in centre; the trace takes the middle."}
+  ],
+  "notes": "Kept: the finial's free top mark with a 2.9 px gap above the beam; the stem running through the foot to its base line; the base line overhanging the mound on both sides; the document behind the right pan, shown by its open edges: the top edge stops at x 139.5, 6 px clear of the pan's leg, and the left edge rises only to y 109.75, 5 px below the bowl. Red: the hollow seal only."
+}

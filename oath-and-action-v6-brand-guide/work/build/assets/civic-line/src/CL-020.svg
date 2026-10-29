@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-020" viewBox="0 0 194 148">
+  <!-- CL-020 Track. Crop 194 x 148 px; ink box x 8..186, y 8..140.
+       Construction: an open, rounded S-shaped route starts near upper left, bends right, returns left through the middle and extends right along the lower section. A hollow pointed map pin floats above its upper-left start. A magnifier overlaps the route’s lower-right area, with a black circular lens and a narrow handle descending diagonally right.
+       Red: the map-pin outline and the magnifier handle. The route and lens circle stay black. Keep the pin hollow and the route free of dotted segments. -->
+  <g data-role="accent">
+    <!-- Drawn first: the handle runs up under the lens ring, so the ring's outer edge cuts its open top, as on the red sheet. -->
+    <path id="handle" class="butt" d="M147.31 108.89 L172.59 135.58 A6.145 6.145 0 0 0 181.51 127.12 L160.04 104.45"/>
+    <!-- Hollow pin: a circle with two tangent sides meeting at the tip. -->
+    <path id="pin" d="M36.42 47.80 L46.94 30.66 A12.35 12.35 0 1 0 25.90 30.66 Z"/>
+  </g>
+  <g data-role="base">
+    <path id="route" d="M50.63 52.63 H87.64 A14.03 14.03 0 0 1 87.64 80.68 H26.16 A15 15 0 0 0 26.16 110.68 H109.87"/>
+    <circle id="lens" cx="139.57" cy="87.07" r="23.15"/>
+  </g>
+</svg>

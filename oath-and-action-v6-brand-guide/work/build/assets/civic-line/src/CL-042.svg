@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-042" viewBox="0 0 185 149">
+  <!-- CL-042 AI Concentration. Crop 185 x 149 px; ink box x 8..177, y 8..141.
+       Construction: three narrow upright server/document panels line up across the top. Each contains a small stack of horizontal rules. Three connecting paths descend and converge on a larger hollow circle below the middle panel. The outer branches angle inward; the middle branch is vertical. A dollar sign sits inside the lower circle.
+       Red: the dollar sign within the convergence circle. Keep all panels, rules, connectors and the circle border black. Match the top panels’ equal dimensions and fan-in geometry. -->
+  <g data-role="base">
+    <rect id="panel-1" x="10.75" y="11.2" width="40.16" height="50.2" rx="3"/>
+    <line id="panel-1-rule-1" x1="22.6" y1="24.06" x2="39.06" y2="24.06"/>
+    <line id="panel-1-rule-2" x1="22.6" y1="36.47" x2="39.06" y2="36.47"/>
+    <line id="panel-1-rule-3" x1="22.6" y1="48.88" x2="39.06" y2="48.88"/>
+    <rect id="panel-2" x="72.37" y="11.2" width="40.16" height="50.2" rx="3"/>
+    <line id="panel-2-rule-1" x1="84.22" y1="24.06" x2="100.68" y2="24.06"/>
+    <line id="panel-2-rule-2" x1="84.22" y1="36.47" x2="100.68" y2="36.47"/>
+    <line id="panel-2-rule-3" x1="84.22" y1="48.88" x2="100.68" y2="48.88"/>
+    <rect id="panel-3" x="133.99" y="11.2" width="40.16" height="50.2" rx="3"/>
+    <line id="panel-3-rule-1" x1="145.84" y1="24.06" x2="162.3" y2="24.06"/>
+    <line id="panel-3-rule-2" x1="145.84" y1="36.47" x2="162.3" y2="36.47"/>
+    <line id="panel-3-rule-3" x1="145.84" y1="48.88" x2="162.3" y2="48.88"/>
+    <line id="path-middle" x1="92.45" y1="61.4" x2="92.45" y2="83.6"/>
+    <path id="path-left" d="M30.95 69.4 L30.95 84.09 A6 6 0 0 0 33.87 89.25 L65.55 108.16"/>
+    <path id="path-right" d="M153.95 69.4 L153.95 84.09 A6 6 0 0 1 151.03 89.25 L119.35 108.16"/>
+    <circle id="hub" cx="92.45" cy="110.65" r="27.05"/>
+  </g>
+  <g data-role="accent">
+    <path id="dollar-s" d="M97.33 103.51 A5.1 5.1 0 1 0 92.45 110.1 A5.1 5.1 0 1 1 87.52 116.52"/>
+    <line id="dollar-bar-top" x1="92.45" y1="96.9" x2="92.45" y2="100"/>
+    <line id="dollar-bar-bottom" x1="92.45" y1="120.3" x2="92.45" y2="123.5"/>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-37" viewBox="0 0 202 108">
+  <!-- R-37 Feed Choice. Crop 202 x 108 px; ink box x 8..194, y 8..100.
+       Construction: a rounded browser window at left with three small top-bar dots, a horizontal header divider and several content/selector rules. A horizontal slider near its lower area has a hollow circular knob. At right stands a large upright key with hollow round bow, vertical stem and two short side teeth.
+       Red: the slider's circular knob. Browser, content rules, rail and separate key remain black. Keep the large key detached from the browser.
+       The key is one closed contour: bow ring r 18.2 open at the bottom, straight necks into the shank,
+       a vertical right side, flat foot, and a left side zigzagging at +-51 degrees into two teeth.
+       The left rail stops 3.6 px short of the knob, as on the black sheet; the right stub meets the ring. -->
+  <g data-role="base">
+    <rect id="window" x="10.52" y="10.91" width="118.03" height="85.09" rx="7.75"/>
+    <line id="header-divider" x1="10.52" y1="30.92" x2="128.55" y2="30.92"/>
+    <circle id="dot-1" class="fill" cx="22.8" cy="21" r="2.8"/>
+    <circle id="dot-2" class="fill" cx="34.55" cy="21" r="2.8"/>
+    <circle id="dot-3" class="fill" cx="46.3" cy="21" r="2.8"/>
+    <line id="rule" x1="26.87" y1="47.88" x2="111.8" y2="47.88"/>
+    <line id="rail-left" x1="26.87" y1="71.2" x2="79.95" y2="71.2"/>
+    <line id="rail-right" x1="107.18" y1="71.2" x2="111.8" y2="71.2"/>
+    <path id="key" d="M164.35 65.58 V60.04 L160.14 55.63 A18.2 18.2 0 1 1 187.17 54.69 L178.13 62.3 V97.4 H166.26 L157.6 86.79 L162.62 80.22 L157.59 74.02 Z"/>
+  </g>
+  <g data-role="accent">
+    <circle id="knob" cx="98.12" cy="71.2" r="9.06"/>
+  </g>
+</svg>

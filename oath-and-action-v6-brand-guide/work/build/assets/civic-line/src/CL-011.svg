@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-011" viewBox="0 0 207 120">
+  <!-- CL-011 Electoral Pressure. Crop 207 x 120 px; ink box x 8..199, y 8..112.
+       Construction: on the left, a person with hollow head and rounded shoulders sits behind a narrow desk/lectern. The desk has a horizontal surface and two vertical supports. On the right is a small ballot box with trapezoidal lid and a slanted blank ballot. A horizontal arrow above the space between them points right, from the officeholder toward the ballot box.
+       Red: that right-pointing arrow. Keep the officeholder, desk, ballot box and ballot black. Preserve the two subjects’ separate baselines and the arrow’s elevated placement. -->
+  <g data-role="base">
+    <!-- Officeholder and desk share the axis x 60.2. -->
+    <circle id="head" cx="60.2" cy="23.54" r="13.02"/>
+    <path id="shoulders" d="M30.00 71.33 V61.29 A16.35 16.35 0 0 1 46.35 44.94 H74.05 A16.35 16.35 0 0 1 90.40 61.29 V71.33"/>
+    <line id="hand-left" x1="42.71" y1="63.45" x2="42.71" y2="71.33"/>
+    <line id="hand-right" x1="77.69" y1="63.45" x2="77.69" y2="71.33"/>
+    <rect id="desk" x="10.19" y="71.33" width="100.02" height="12.79" rx="4.6"/>
+    <line id="leg-left" x1="19.86" y1="84.12" x2="19.86" y2="108.7"/>
+    <line id="leg-right" x1="100.54" y1="84.12" x2="100.54" y2="108.7"/>
+    <!-- Ballot box: front 130.64..196.1 x 65.6..100.85; its top edge breaks between the ballot's right corner and a short stub to the right corner. -->
+    <path id="box-front" d="M174.25 65.6 H130.64 V100.85 H196.1 V65.6 H182.25"/>
+    <line id="lid-left" x1="131.66" y1="65.6" x2="139.35" y2="56.33"/>
+    <line id="lid-right" x1="193.29" y1="65.6" x2="185.89" y2="56.69"/>
+    <polyline id="ballot" points="144.90,65.60 163.96,30.43 188.96,34.80 172.27,65.60"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="106.75" y1="33.85" x2="143.13" y2="33.85"/>
+    <polyline id="arrow-head" points="129.75,20.5 143.13,33.85 129.75,47.2"/>
+  </g>
+</svg>

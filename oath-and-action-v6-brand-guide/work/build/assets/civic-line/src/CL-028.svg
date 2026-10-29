@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-028" viewBox="0 0 155 133">
+  <!-- CL-028 Watchdogs. Crop 155 x 133 px; ink box x 8..147, y 8..125.
+       Construction: an upright record page with a partially open lower-right contour and three or four short horizontal rules. A large magnifier overlaps the page’s lower-right area. Its lens is an empty hollow circle; the handle extends diagonally down-right as a narrow rounded rectangle.
+       Red: the magnifier handle outline. Keep the lens empty and black. This drawing has no check inside the lens; its silhouette is distinct from Evidence and Watchdog Remedies. -->
+  <g data-role="base">
+    <path id="page" d="M92.9 27.75 V12.76 A2.5 2.5 0 0 0 90.4 10.26 H13.76 A2.5 2.5 0 0 0 11.26 12.76 V108.93 A2.5 2.5 0 0 0 13.76 111.43 H90.4 A2.5 2.5 0 0 0 92.9 108.93 V106.65"/>
+    <line id="rule-1" x1="28.9" y1="30.32" x2="75.25" y2="30.32"/>
+    <line id="rule-2" x1="28.9" y1="49.01" x2="57" y2="49.01"/>
+    <line id="rule-3" x1="28.9" y1="67.7" x2="52.6" y2="67.7"/>
+    <line id="rule-4" x1="28.9" y1="86.39" x2="52.6" y2="86.39"/>
+    <circle id="lens" cx="93.82" cy="67.72" r="29.42"/>
+    <line id="neck" x1="113.08" y1="89.99" x2="119.7" y2="96.3"/>
+  </g>
+  <g data-role="accent">
+    <path id="handle" d="M128.34 97.5 L141.71 110.91 A6.13 6.13 0 0 1 133.03 119.57 L119.66 106.16 A6.13 6.13 0 0 1 128.34 97.5 Z"/>
+  </g>
+</svg>

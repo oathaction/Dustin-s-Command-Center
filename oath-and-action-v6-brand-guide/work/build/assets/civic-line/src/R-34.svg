@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-34" viewBox="0 0 204 120">
+  <!-- R-34 Participatory Budgeting. Crop 204 x 120 px; ink box x 8..196, y 8..112.
+       Construction: a large upright budget/checklist page stands behind a row of residents. The page has a left column of checkbox squares and black horizontal choice rules to their right. Several hollow-headed outline residents overlap its bottom edge, with different heights. Preserve the source's actual resident and checkbox counts.
+       Red: the selected checkbox cells/check marks near the checklist's upper-left area, including their filled-versus-outlined treatment. Page, information rules and residents remain black. Retain the residents in front of the document.
+       Counts from the sheet: two checkboxes (upper checked and red, lower empty and black), four rules,
+       four residents (two tall outside, two small inside). The page's sides stop short above the residents,
+       so the residents stand in front of it with no drawn page bottom.
+       Resident row mirrored about x 101.8. -->
+  <g data-role="base">
+    <path id="page" d="M57.16 75.5 V15.37 A4.5 4.5 0 0 1 61.66 10.87 H156.17 A4.5 4.5 0 0 1 160.67 15.37 V45.2"/>
+    <rect id="box-empty" x="72.37" y="53.44" width="17.5" height="17.5"/>
+    <line id="rule-1" x1="103.87" y1="27.82" x2="144.45" y2="27.82"/>
+    <line id="rule-2" x1="103.87" y1="41.7" x2="134.63" y2="41.7"/>
+    <line id="rule-3" x1="103.87" y1="60" x2="144.45" y2="60"/>
+    <line id="rule-4" x1="103.87" y1="78.94" x2="115.3" y2="78.94"/>
+    <circle id="tall-left-head" cx="31.9" cy="65.62" r="11.3"/>
+    <path id="tall-left-body" d="M10.57 107.35 V98.8 A21.33 18.75 0 0 1 31.9 80.05 A21.33 18.75 0 0 1 53.23 98.8 V107.35"/>
+    <circle id="tall-right-head" cx="171.7" cy="65.62" r="11.3"/>
+    <path id="tall-right-body" d="M150.37 107.35 V98.8 A21.33 18.75 0 0 1 171.7 80.05 A21.33 18.75 0 0 1 193.03 98.8 V107.35"/>
+    <circle id="small-left-head" cx="78.14" cy="92.73" r="8.18"/>
+    <path id="small-left-shoulders" d="M64.74 109.3 Q78.14 94.9 91.54 109.3"/>
+    <circle id="small-right-head" cx="125.46" cy="92.73" r="8.18"/>
+    <path id="small-right-shoulders" d="M112.06 109.3 Q125.46 94.9 138.86 109.3"/>
+  </g>
+  <g data-role="accent">
+    <rect id="box-checked" x="72.37" y="25.13" width="17.5" height="17.5"/>
+    <polyline id="check" points="73.5,31.3 81,35.6 87.6,28.35"/>
+  </g>
+</svg>

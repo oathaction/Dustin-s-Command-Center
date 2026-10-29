@@ -1,6 +1,19 @@
 {
   "id": "CL-023",
   "tracer": "T2",
-  "corrections": [],
-  "notes": ""
+  "corrections": [
+    {"what": "Kept five information rules on the page, not the four the catalogue text names",
+     "why": "The image controls the count. Both sheets show five rules at y 32, 49, 66, 83 and 100."},
+    {"what": "Spaced the five rules evenly at 17.05 px (y 31.97 to 100.17), started all of them at x 29.45 and gave the three short rules one end, x 62.35",
+     "why": "DR-03 equal repeats. Measured spacings 17.09, 17.11, 16.93, 17.07 px; left ends 29.3 to 29.7; short-rule ends 62.19 to 62.44. No edge moves more than 0.2 px."},
+    {"what": "Made the lens a true circle, centre (113.08, 76.76), r 33.48",
+     "why": "DR-03. Separate arc fits give r 33.07 to 33.56 px; the whole-ring fit has 0.14 px rms."},
+    {"what": "Drew the handle as one straight stadium outline, sides parallel at 45.65 deg, 12.4 px apart, end radius 6.2 px; its upper end sits inside the lens ring",
+     "why": "DR-03. The two sides measure 45.34 and 45.95 deg. The sheet fills the two crotches where the handle meets the ring with small raster fillets and pinches the top of the handle's hollow; the trace leaves those fillets out, which is the 2.1 px edge max at the junction."},
+    {"what": "Gave the page corners a 2.5 px centreline radius and put the right edge's top and bottom stubs on one line, x 116.8",
+     "why": "The sheet's outer corners round at about 5 px, wider than a plain round join. The top stub measures x 116.9 and the bottom stub 116.2 to 116.7."},
+    {"what": "Drew the checkmark as a 90 deg tick (arms at 44 and 134 deg) at W",
+     "why": "DR-03 one line weight; the check measures 6.2 px on both sheets. Arms measure 43.8 to 44.3 and 133.2 to 133.7 deg. The left end sits 0.4 px further out so the lighter stroke keeps the drawn reach."}
+  ],
+  "notes": "Kept: the open right edge of the page (it stops at y 33, above the lens) and the short upturned stub at the bottom right, so the page reads behind the lens with no occluding shape; rule lengths long, medium, short, short, short as drawn; the handle's position, which runs about 4 px below a radial line from the lens centre on the sheet. Red: the checkmark only, as on the red sheet. The two sheets agree on the check's position to 0.1 px."
 }

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-063" viewBox="0 0 190 148">
+  <!-- CL-063 Essential Costs. Crop 190 x 148 px; ink box x 8..182, y 8..140.
+       Construction: a broad home outline forms the back layer. In front is an open grocery bag, with several projecting groceries including a narrow bottle. A large angled price tag hangs to the lower right, with clipped shoulder, small attachment hole and dollar sign. Preserve how the bag and tag obscure the house’s lower section.
+       Red: the small upright bottle/cap detail among the groceries and the dollar sign on the tag. House, bag, other groceries and tag outline remain black. -->
+  <!-- T4 trace. Roof symmetric about the apex (74.08, 11.59), slope 37.37 deg; house walls at x 22.1 and 126.06
+       (right wall shows only as a stub under the roof). Bag 52.42..112.12 x 85.2..137.12. Tag long edges parallel at 47.5 deg;
+       clipped tip keeps the sheet's horizontal top edge. Bag drawn last so its top rule covers the foot of the red bottle. -->
+  <g data-role="base">
+    <polyline id="roof" points="10.33,60.27 74.08,11.59 137.83,60.27"/>
+    <polyline id="chimney" points="100.7,31.92 100.7,11.05 118.7,11.05 118.7,45.66"/>
+    <polyline id="wall-left" points="22.1,61.75 22.1,112.35 52.42,112.35"/>
+    <line id="wall-right-stub" x1="126.06" y1="51.0" x2="126.06" y2="57.1"/>
+    <polyline id="item-left" points="58.37,85.2 55.11,72.05 65.3,69.0 73.5,85.2"/>
+    <polyline id="item-right" points="91.0,85.2 100.9,67.4 112.4,70.5 107.8,85.2"/>
+    <path id="tag-string" d="M112.4 70.5 L111.95 68.3 A16.2 16.2 0 0 1 136.6 79.2"/>
+    <path id="tag" d="M136.9 79.2 L149.06 79.2 A6 6 0 0 1 153.48 81.15 L178.31 108.24 A4.5 4.5 0 0 1 178.03 114.6 L156.01 134.77 A4.5 4.5 0 0 1 149.65 134.49 L125.43 108.07 A6 6 0 0 1 123.86 103.74 L124.41 91.16 A12.5 12.5 0 0 1 136.9 79.2 Z"/>
+    <circle id="tag-hole" class="fill" cx="135.62" cy="90.69" r="3.45"/>
+  </g>
+  <g data-role="accent">
+    <rect id="bottle-cap" x="76.7" y="60.5" width="12" height="8.25" rx="1.5"/>
+    <polyline id="bottle-body" class="butt" points="75.25,85.2 75.25,68.75 90.15,68.75 90.15,85.2"/>
+    <path id="dollar" d="M150.25 99.6 L146.1 99.8 Q144.25 99.8 144.25 101.9 V105.4 Q144.25 108.7 147.5 108.8 C150.5 108.9 152 106.7 155.4 106.6 Q160 106.6 160 110.4 V112.5 Q160 116.8 155.4 116.8 L153.4 116.7"/>
+  </g>
+  <g data-role="base">
+    <rect id="bag" x="52.42" y="85.2" width="59.7" height="51.92" rx="3"/>
+  </g>
+</svg>

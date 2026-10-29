@@ -1,0 +1,17 @@
+{
+  "id": "CL-009",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Made every straight run of the district outline exactly horizontal or vertical at its fitted position, and every chamfer exactly 45 deg through its fitted midpoint",
+     "why": "DR-03 straight lines and right angles. The orthogonal runs measure within 0.6 deg of level or plumb (the bottom run 1.9 deg over 14 px); the six chamfers measure 38.6 to 45.9 deg. The steepest change, the short chamfer at the upper-left step (38.6 deg), moves its ends about 0.7 px."},
+    {"what": "Rounded every orthogonal corner of the district with one fillet radius, 4 px at the centreline",
+     "why": "DR-03 one consistent corner. The sheet's corners are all softly rounded by similar amounts; 4 px gave the closest overall edge match (p95 0.35 px against 0.50 at 3 and 5 px)."},
+    {"what": "Mirrored the chair about x 93.15 (back measured centre 93.19, arms 93.2, legs 93.01) and squared the back's bottom corners",
+     "why": "DR-03 symmetry. The back keeps its top corner radius 7.3 px (fits 7.2 to 7.4); its bottom corners measure square with round joins."},
+    {"what": "Mirrored the arms' small inward-turned tops: each arm ends with a 2.8 px stroke turned 25 deg inward",
+     "why": "DR-03 symmetry. The sheet's arm tops bulge inward by 1.3 px (left) and 1.7 px (right)."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The icon measures 5.25 to 5.75 px."}
+  ],
+  "notes": "Kept: the stepped district with its 6 chamfered steps and every orthogonal step as drawn, including the acute spur at the left notch where the horizontal run at y 59.57 overshoots the diagonal by 2.2 px (the contour starts at that spur and closes into it); the chair centred low in the district with its tall rounded back, U-shaped seat and arms, and two short legs that hang from the seat line. Red follows the red sheet: a fill across the inside of the chair back from y 62.3 down over the back's bottom stroke (to y 86.75), between the inner edges of the back's sides, with 5.5 px rounded bottom corners so the black side strokes still show at the back's lower corners. In the black edition the fill and the back merge into the solid lower back the black sheet shows."
+}

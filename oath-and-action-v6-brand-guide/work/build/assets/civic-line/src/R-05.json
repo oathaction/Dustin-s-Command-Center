@@ -1,0 +1,17 @@
+{
+  "id": "R-05",
+  "tracer": "T4",
+  "corrections": [
+    {"what": "Drew the card square (plumb sides x 10.85 and 146.17, level top y 11.18 and bottom y 88.05) with three rounded corners (centreline radius 5)",
+     "why": "DR-03 straight lines and right angles. The sides fit within 0.05 deg."},
+    {"what": "Put the four information rules on equal steps of 13.91 px (y 30.3 to 72.03) with one shared left end (x 75.63), keeping their four staggered lengths",
+     "why": "DR-03 equal repeats. The rules fit at y 30.3, 44.44, 58.62 and 72.02, steps 14.14, 14.18 and 13.4 px; the second and third rules move 0.23 and 0.5 px."},
+    {"what": "Centred the portrait on x 43.7: head a true circle (r 9.33), shoulders a true half-round (r 17.8) on short plumb sides, closed by a level base at y 73.61",
+     "why": "DR-03 symmetry and true circles. Head and shoulders fit centres at x 43.77 and 43.65 with rms 0.05 to 0.08 px."},
+    {"what": "Drew the badge as one true circle, r 25.9 about (139.65, 73.36)",
+     "why": "DR-03 true circles. Arc fits on four sides give radii 25.3 to 26.3 px about centres within 0.7 px of each other; the sheet's ring reads 0.5 px taller than wide."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. This icon measures 5.48 px; the card's bottom edge and the short dash are drawn lighter on the sheet (4.5 to 4.75 px)."}
+  ],
+  "notes": "Kept as drawn: the badge overlaps and extends beyond the card's lower-right corner, and the card border stops short of it on both sides (right side ends at y 37.37, bottom edge at x 106.3), leaving clear ground round the badge; the short separate dash below the card at y 98.5 (x 102.5 to 114.7), present on both sheets; the portrait's closed, flat-based shoulders; four staggered rules. Traced independently of CL-003. Red: the badge ring and its check. Black and red sheets agree within a fringe."
+}

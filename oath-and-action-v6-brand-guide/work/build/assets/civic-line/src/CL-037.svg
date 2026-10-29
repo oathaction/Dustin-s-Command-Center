@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-037" viewBox="0 0 210 144">
+  <!-- CL-037 Foreign Interference. Crop 210 x 144 px; ink box x 8..202, y 8..136.
+       Construction: an outlined globe at left, made from an outer circle, vertical curved meridians and horizontal latitude lines. Two outward-bowing signal arcs stand to its right. A small ballot box sits further right with a slanted ballot projecting upward. A triangular warning badge overlaps the box’s front/lower-right area.
+       Red: the signal arcs, upper accent edges of the slanted ballot, warning triangle and its exclamation. Globe and ballot-box body stay black. Preserve the warning badge in front of the box. -->
+  <g data-role="base">
+    <circle id="globe" cx="46.6" cy="46.2" r="35.0"/>
+    <ellipse id="meridians" cx="46.6" cy="46.2" rx="13.75" ry="35.0"/>
+    <line id="latitude-north" x1="13.76" y1="34.1" x2="79.44" y2="34.1"/>
+    <line id="latitude-south" x1="13.76" y1="58.3" x2="79.44" y2="58.3"/>
+    <polyline id="box" points="144,59 131.08,59 120.84,76.88 198.69,76.88 188.45,59 185,59"/>
+    <line id="box-right" x1="198.69" y1="76.88" x2="198.69" y2="114.5"/>
+    <polyline id="box-left" points="120.84,76.88 120.84,127.44 136.13,127.44"/>
+    <line id="ballot-left-low" x1="147.4" y1="67.6" x2="155.8" y2="55.4"/>
+    <line id="ballot-right-low" x1="170.35" y1="65.2" x2="168.4" y2="67.9"/>
+  </g>
+  <g data-role="accent">
+    <path id="signal-inner" d="M94.62 35.6 A40.5 40.5 0 0 1 86.58 78.98"/>
+    <path id="signal-outer" d="M107.7 27.8 A52.85 52.85 0 0 1 96.4 91"/>
+    <polyline id="ballot-top" class="butt" points="155.8,55.4 165.9,40.25 181.7,48.1 170.35,65.2"/>
+    <path id="warning" d="M167.85 90.85 A3.8 3.8 0 0 1 174.55 90.85 L194.58 128.03 A3.8 3.8 0 0 1 191.24 133.63 L151.16 133.63 A3.8 3.8 0 0 1 147.82 128.03 Z"/>
+    <line id="warning-bang" x1="171.2" y1="106" x2="171.2" y2="116.75"/>
+    <circle id="warning-bang-dot" class="fill" cx="171.2" cy="124.5" r="3.1"/>
+  </g>
+</svg>

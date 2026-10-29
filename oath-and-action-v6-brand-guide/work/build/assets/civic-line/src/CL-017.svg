@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-017" viewBox="0 0 184 143">
+  <!-- CL-017 Policy Favoritism. Crop 184 x 143 px; ink box x 8..176, y 8..135.
+       Construction: an upright document on the left with three horizontal rules. Three separate short elbow-like routes extend from its right toward three small person busts stacked vertically on the right. Each bust has a circular hollow head and an open-bottom curved shoulder shape. The middle bust and its route form the focal access channel.
+       Red: the middle person’s head/shoulder strokes and the adjoining highlighted central access stroke as shown. Top and bottom people, page and remaining routes are black. Trace each branch rather than merging them. -->
+  <g data-role="base">
+    <rect id="document" x="11" y="30.13" width="73.13" height="82.74" rx="5"/>
+    <line id="rule-1" x1="27.25" y1="45.52" x2="63.07" y2="45.52"/>
+    <line id="rule-2" x1="27.25" y1="61.6" x2="63.07" y2="61.6"/>
+    <line id="rule-3" x1="27.25" y1="77.68" x2="63.07" y2="77.68"/>
+    <line id="rule-4" x1="27.25" y1="93.76" x2="48.13" y2="93.76"/>
+    <!-- Three separate routes, mirrored about the middle one (y 70.6); their far ends sit at the busts' 45.04 px pitch. -->
+    <path id="route-top" d="M95.75 52.24 L103.97 52.24 A8.23 8.23 0 0 0 112.2 44.01 L112.2 35.56 A10 10 0 0 1 122.2 25.56 L138.4 25.56"/>
+    <line id="route-middle" x1="96" y1="70.6" x2="138.4" y2="70.6"/>
+    <path id="route-bottom" d="M95.75 88.96 L103.97 88.96 A8.23 8.23 0 0 1 112.2 97.19 L112.2 105.64 A10 10 0 0 0 122.2 115.64 L138.4 115.64"/>
+    <circle id="head-1" cx="158.97" cy="16.9" r="6.72"/>
+    <path id="shoulders-1" d="M144.94 41.73 V38.05 A8.1 8.1 0 0 1 153.04 29.95 H164.9 A8.1 8.1 0 0 1 173 38.05 V41.73"/>
+    <circle id="head-3" cx="158.97" cy="106.98" r="6.72"/>
+    <path id="shoulders-3" d="M144.94 131.81 V128.13 A8.1 8.1 0 0 1 153.04 120.03 H164.9 A8.1 8.1 0 0 1 173 128.13 V131.81"/>
+  </g>
+  <g data-role="accent">
+    <circle id="head-2" cx="158.97" cy="61.94" r="6.72"/>
+    <path id="shoulders-2" d="M144.94 86.77 V83.09 A8.1 8.1 0 0 1 153.04 74.99 H164.9 A8.1 8.1 0 0 1 173 83.09 V86.77"/>
+  </g>
+</svg>

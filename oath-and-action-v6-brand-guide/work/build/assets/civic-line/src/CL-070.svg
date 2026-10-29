@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-070" viewBox="0 0 178 145">
+  <!-- CL-070 Environment. Crop 178 x 145 px; ink box x 8..170, y 8..137.
+       Construction: a large pointed leaf on the left, tilted slightly up-right, with a sweeping inner vein rising from its lower-left stem. A separate large hollow water droplet stands at right, pointed at top and round at bottom. Leaf and droplet have comparable visual height.
+       Red: the complete water-droplet outline. Leaf contour, stem and inner vein stay black. Retain the open gap between leaf and droplet. -->
+  <!-- T4 trace. Leaf: plumb stem into a Y at (22.2, 105.5); the outline climbs left and over to a pointed tip at
+       (103.5, 11.7) and returns down the right side to an open round end at (36.13, 113.6), clear of the stem.
+       Droplet: mirror-symmetric about x 136.65, round bottom a true arc r 29.84, pointed top at y 39.2. -->
+  <g data-role="base">
+    <path id="leaf-outline" class="miter" d="M22.2 134.25 V105.5 C8.66 90.99 7.38 67.12 17.57 50.59 C27.07 35.17 43.19 22.53 60 19.1 C72.94 16.47 89.96 12.17 103.5 11.7 C105.34 60.1 91.04 104.85 36.13 113.6"/>
+    <path id="vein" d="M22.2 105.5 C31.52 79.86 42.26 59.42 67.2 45"/>
+  </g>
+  <g data-role="accent">
+    <path id="droplet" d="M136.65 39.2 C125.84 56.52 105.89 78.4 106.81 100.78 A29.84 29.84 0 0 0 136.65 130.62 A29.84 29.84 0 0 0 166.49 100.78 C167.41 78.4 147.47 56.52 136.65 39.2 Z"/>
+  </g>
+</svg>

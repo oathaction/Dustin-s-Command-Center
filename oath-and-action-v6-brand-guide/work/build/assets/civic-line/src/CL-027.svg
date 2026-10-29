@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-027" viewBox="0 0 203 136">
+  <!-- CL-027 Court Alignment. Crop 203 x 136 px; ink box x 8..195, y 8..128.
+       Construction: a large balance scale at left, with straight horizontal beam, central vertical stem, two triangular suspension shapes and two shallow curved pans. A short vertical mark rises above the beam’s centre. A small rounded baseline supports the central stem. Behind the right pan is a narrow upright legal document with two horizontal rules and a hollow round seal near its lower part.
+       Red: the hollow circular seal on the document. All scale components and page rules remain black. Retain the document behind the right side of the scales. -->
+  <g data-role="base">
+    <line id="finial" x1="77.3" y1="11" x2="77.3" y2="21.1"/>
+    <line id="beam" x1="31.92" y1="29.5" x2="122.68" y2="29.5"/>
+    <line id="stem" x1="77.3" y1="29.5" x2="77.3" y2="124.8"/>
+    <polyline id="hanger-left" points="12.57,82.95 34.9,36.94 57.23,82.95"/>
+    <path id="pan-left" d="M10.71 82.95 H59.09 A25.79 25.79 0 0 1 10.71 82.95 Z"/>
+    <polyline id="hanger-right" points="97.37,82.95 119.7,36.94 142.03,82.95"/>
+    <path id="pan-right" d="M95.51 82.95 H143.89 A25.79 25.79 0 0 1 95.51 82.95 Z"/>
+    <path id="foot" d="M60.23 124.8 V124 C60.23 116.65 65.35 113.5 77.3 113.5 C89.25 113.5 94.37 116.65 94.37 124 V124.8"/>
+    <line id="foot-base" x1="56.68" y1="124.8" x2="97.92" y2="124.8"/>
+    <path id="document" d="M139.5 52.24 H189.91 A2 2 0 0 1 191.91 54.24 V123.13 A2 2 0 0 1 189.91 125.13 H125.75 A2 2 0 0 1 123.75 123.13 V109.75"/>
+    <line id="doc-rule-1" x1="155.5" y1="67.43" x2="178.07" y2="67.43"/>
+    <line id="doc-rule-2" x1="155.5" y1="80.4" x2="178.07" y2="80.4"/>
+  </g>
+  <g data-role="accent">
+    <circle id="seal" cx="169.6" cy="103.25" r="9"/>
+  </g>
+</svg>

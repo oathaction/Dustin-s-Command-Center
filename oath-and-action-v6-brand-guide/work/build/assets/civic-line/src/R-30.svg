@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-30" viewBox="0 0 232 105">
+  <!-- R-30 By-Right Housing. Crop 232 x 105 px; ink box x 8..224, y 8..97.
+       Construction: two pitched-roof homes stand at left/centre, one smaller and one larger. The larger central home has a prominent doorway. Behind/right is an upright approval document with short black rules. A large round check badge overlaps the document’s lower-right region, extending outside its perimeter.
+       Red: the larger home’s filled doorway and the approval badge’s circular border/check. Other architecture, document and rules stay black. Retain the two different house sizes. -->
+  <!-- Trace notes: two symmetric gabled homes sharing a wall; door filled red; badge a true circle. -->
+  <g data-role="accent">
+    <path id="door" class="fill" d="M94.47 91.57 L94.47 69.12 A2.0 2.0 0 0 1 96.47 67.12 L107.47 67.12 A2.0 2.0 0 0 1 109.47 69.12 L109.47 91.57 Z"/>
+  </g>
+  <g data-role="base">
+    <polyline id="house-small" points="18.47,91.57 18.47,48.2 46.47,20.76 74.33,48.06"/>
+    <polyline id="house-big" points="74.33,91.57 74.33,37.55 101.97,9.91 129.61,37.55 129.61,91.57"/>
+    <line id="ground" x1="10.87" y1="91.57" x2="131.3" y2="91.57"/>
+    <rect id="win-small-1" class="fill" x="33.82" y="54.55" width="5.3" height="14.6" rx="2.65"/>
+    <rect id="win-small-2" class="fill" x="53.82" y="54.55" width="5.3" height="14.6" rx="2.65"/>
+    <rect id="win-big-1" class="fill" x="89.35" y="43.5" width="5.3" height="14.6" rx="2.65"/>
+    <rect id="win-big-2" class="fill" x="109.29" y="43.5" width="5.3" height="14.6" rx="2.65"/>
+    <path id="document" d="M202.16 38.2 L202.16 14.31 A4.0 4.0 0 0 0 198.16 10.31 L146.43 10.31 A4.0 4.0 0 0 0 142.43 14.31 L142.43 88.12 A4.0 4.0 0 0 0 146.43 92.12 L171 92.12"/>
+    <line id="rule-1" x1="156" y1="25.53" x2="188.25" y2="25.53"/>
+    <line id="rule-2" x1="156" y1="40.52" x2="173.75" y2="40.52"/>
+    <line id="rule-3" x1="156" y1="55.5" x2="165.25" y2="55.5"/>
+  </g>
+  <g data-role="accent">
+    <circle id="badge" cx="198.04" cy="71.64" r="23.02"/>
+    <polyline id="badge-check" points="188.6,72.69 195.66,78.48 207.94,65"/>
+  </g>
+</svg>

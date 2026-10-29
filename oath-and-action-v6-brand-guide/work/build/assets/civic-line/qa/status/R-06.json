@@ -1,0 +1,85 @@
+{
+  "id": "R-06",
+  "label": "On-Cycle Elections",
+  "state": "traced",
+  "tracer": "T4",
+  "iterations": 3,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:01:38+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9091,
+      "red_iou_1x": 0.8615,
+      "edge_mean_px": 0.249,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:02:01+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9122,
+      "red_iou_1x": 0.8768,
+      "edge_mean_px": 0.243,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:02:20+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9134,
+      "red_iou_1x": 0.885,
+      "edge_mean_px": 0.24,
+      "edge_p95_px": 0.75
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:02:20+00:00",
+      "by": "T4",
+      "note": "overlay checked; identical calendars, six cells each, middle column red, arrow point matches"
+    }
+  ],
+  "last_build": "2026-10-29T07:02:20+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9134,
+    "red_iou_1x": 0.885,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0059,
+    "edge_mean_px": 0.24,
+    "edge_p95_px": 0.75,
+    "edge_max_px": 1.904,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Made the two calendars identical: the right one is the left one moved 131.9 px, with one frame width (77.78 px), one header rule height and one binding spacing",
+      "why": "DR-03 equal repeats and the catalogue ('two equal small calendars'). The sheet's frames measure 78.26 and 77.28 px wide; their parts sit 131.4 to 132.5 px apart. Edges move up to 0.5 px."
+    },
+    {
+      "what": "Centred each calendar's bindings and date grid on its frame and put the three date columns on even steps (20.96 px)",
+      "why": "DR-03 symmetry and equal repeats. Column centres fit at 28.25, 49.07 and 70.18 (left calendar's frame); the lower middle cell sat about 1 px left of the axis on both calendars and now sits on it."
+    },
+    {
+      "what": "Made each row's two side cells one size (upper row 8.3 x 11.3 px, lower row 7.5 x 9.85 px), keeping the wider middle cells (16.5 x 12.2 and 12.7 x 9.95 px) and the upper row's larger cells",
+      "why": "DR-03 equal repeats where the drawing plainly means them. The sheet's upper-left cells measure 7.0 to 7.4 px wide and the upper-right ones 9.5 px; the middle column, the highlighted date, is drawn wider on purpose in both rows and both calendars. Cell edges move up to 1.2 px."
+    },
+    {
+      "what": "Gave the arrowhead a square (miter) point, symmetric about the level shaft (y 56.22)",
+      "why": "The sheet's arrowhead is pointed; a round join leaves its tip about 1.2 px short. The barbs fit at 49.4 and 49.9 deg."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px; date cells are filled shapes",
+      "why": "DR-03 one line weight. This icon measures 5.5 px."
+    }
+  ],
+  "source_notes": "Kept as drawn: six date cells per calendar in two rows of three (counted on both sheets); the same position highlighted in both calendars, the middle column of each row; bindings crossing the frame's top edge; the detached arrow between the calendars, pointing right. Red: the four middle date cells and the arrow. Black and red sheets agree within a fringe (sheet IoU 0.911)."
+}

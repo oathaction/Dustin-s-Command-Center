@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-047" viewBox="0 0 140 145">
+  <!-- CL-047 Data Rights. Crop 140 x 145 px; ink box x 8..132, y 8..137.
+       Construction: an upright page with a partial open right edge and three or four horizontal information rules in its upper/left area. A large key overlaps its lower-right portion. The key has a hollow circular bow, a vertical stem dropping below it and two short teeth pointing right near the stem's lower end.
+       Red: the entire key outline/stem/teeth. Page and information rules stay black. The key bow remains hollow and the stem is vertical.
+       Trace: the page outline is open: its right edge stops above the bow and its bottom edge stops
+       short of the key. Four rules, evenly spaced; the lower two are shorter. Key on x 110.55. -->
+  <g data-role="base">
+    <path id="page" d="M89.1 123.08 H16.18 A5.2 5.2 0 0 1 10.98 117.88 V16.51 A5.2 5.2 0 0 1 16.18 11.31 H103.3 A5.2 5.2 0 0 1 108.5 16.51 V48.75"/>
+    <line id="rule-1" x1="31.0" y1="32.86" x2="89.1" y2="32.86"/>
+    <line id="rule-2" x1="31.0" y1="53.58" x2="89.1" y2="53.58"/>
+    <line id="rule-3" x1="31.0" y1="74.3" x2="73.05" y2="74.3"/>
+    <line id="rule-4" x1="31.0" y1="95.02" x2="73.05" y2="95.02"/>
+  </g>
+  <g data-role="accent">
+    <circle id="key-bow" cx="110.55" cy="78.85" r="18.0"/>
+    <line id="key-stem" x1="110.55" y1="96.85" x2="110.55" y2="133.2"/>
+    <line id="key-tooth-upper" x1="110.55" y1="114.6" x2="122.8" y2="114.6"/>
+    <line id="key-tooth-lower" x1="110.55" y1="128.2" x2="122.8" y2="128.2"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-25" viewBox="0 0 207 128">
+  <!-- R-25 Child Tax Credit. Crop 207 x 128 px; ink box x 8..199, y 8..120.
+       Construction: a small child-like outline figure stands at left, with hollow round head, a tiny hair/curl detail visible at its upper edge and rounded open torso. A ruled tax record rises behind/right. A large outlined coin with a dollar sign overlaps the record’s lower-right area. Between record and child, a short arrow points left toward the child.
+       Red: the left-pointing support arrow and the coin’s dollar sign. Child, record, rules and coin border remain black. Follow the source’s small head detail closely. -->
+  <!-- Trace notes: child body centred on x 38.1; head ring drawn with its pointed hair tuft at upper right; record open where the arrow passes. -->
+  <g data-role="base">
+    <path id="child-head" d="M46.46 42.49 L52.43 42.41 L51.14 47.87 A12.94 12.94 0 1 1 46.46 42.49 Z"/>
+    <path id="child-body" d="M11.73 104.1 A26.42 31.41 0 0 1 38.1 74.68 A26.42 31.41 0 0 1 64.47 104.1"/>
+    <line id="child-arm-left" x1="22.52" y1="99.8" x2="22.52" y2="117.6"/>
+    <line id="child-arm-right" x1="53.68" y1="99.8" x2="53.68" y2="117.6"/>
+    <path id="record" d="M87.97 55.1 L87.97 16.1 A5.1 5.1 0 0 1 93.07 11 L164.95 11 A5.1 5.1 0 0 1 170.05 16.1 L170.05 44.75"/>
+    <path id="record-foot" d="M87.97 95.0 L87.97 100.4 A5.1 5.1 0 0 0 93.07 105.5 L141.3 105.5"/>
+    <line id="rule-1" x1="103.6" y1="30.57" x2="155" y2="30.57"/>
+    <line id="rule-2" x1="103.6" y1="48.29" x2="145.13" y2="48.29"/>
+    <line id="rule-3" x1="107.7" y1="66" x2="134" y2="66"/>
+    <line id="rule-4" x1="107.7" y1="83.72" x2="129" y2="83.72"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-shaft" x1="67.9" y1="75.7" x2="99" y2="75.7"/>
+    <polyline id="arrow-head" points="79.2,63.25 67.9,75.7 79.2,88.15"/>
+    <circle id="coin" cx="169.73" cy="82.29" r="26.53"/>
+    <path id="coin-dollar" d="M175.38 76.56 A5.7 4.25 0 1 0 170.1 82.4 A5.7 5.5 0 1 1 164.82 89.96"/>
+    <line id="coin-dollar-top" x1="170.1" y1="68.85" x2="170.1" y2="73.9"/>
+    <line id="coin-dollar-bottom" x1="170.1" y1="93.4" x2="170.1" y2="96.5"/>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+{
+  "id": "CL-015",
+  "label": "Political Money",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:02:05+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9323,
+      "red_iou_1x": 0.929,
+      "edge_mean_px": 0.169,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:02:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9323,
+      "red_iou_1x": 0.929,
+      "edge_mean_px": 0.169,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:02:29+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; three red parts, connector ends, lid stubs and slot match"
+    }
+  ],
+  "last_build": "2026-10-29T07:02:29+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9323,
+    "red_iou_1x": 0.929,
+    "bake_check_iou_1x": 0.9995,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9845,
+    "edge_mean_px": 0.169,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the coin as a true circle (centre 45.1, 59.85, r 34.7) and centred the dollar sign in it",
+      "why": "DR-03 true circles. A circle fits the coin with 0.18 px rms; the dollar sign's centre measures (45.3, 59.7), 0.2 px off the coin's."
+    },
+    {
+      "what": "Built the dollar sign's S from two equal tangent bowls (r 7.3), point-symmetric, with stem stubs above and below",
+      "why": "DR-03. Bowl fits give 7.0 to 7.2 px (top) and 7.2 to 7.55 px (bottom); the ends sit 18 deg past horizontal at opposite corners."
+    },
+    {
+      "what": "Gave both connector bends one radius, 8.9 px",
+      "why": "DR-03 one consistent corner. They measure 9.23 px (lower) and about 8.5 px (upper)."
+    },
+    {
+      "what": "Gave the lid slants one slope, 58.45 deg, rising from the front's top corners to one height, y 36.4; each keeps its drawn short top stub (4.43 px left, 2.5 px right)",
+      "why": "DR-03 symmetry. The slants measure 57.9 and 59.0 deg. The stub ends stay within 0.5 px of the sheet."
+    },
+    {
+      "what": "Levelled the slot line at y 44.1",
+      "why": "DR-03 straight lines. It tilts 1.5 deg on the sheet."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The dollar sign and the ballot's red edges measure 5.9 to 6.2 px; the rest 5.25 to 5.75 px."
+    }
+  ],
+  "source_notes": "Kept: the connector as a plain path without an arrowhead, leaving the coin's right side at y 62.4, rising at x 104.07 and entering the ballot at y 24.45; the ballot's long edges parallel (both measure 53.1 deg) with its 84.5 deg top-left corner as drawn; the slot running 7 px past the ballot's lower right; the open lid with short stubs. Red follows the red sheet in three separate parts: the dollar sign; the connector, which ends at the black left edge of the ballot (drawn first, so the coin ring and that edge lie over its ends); and the ballot's top edge plus the upper part of its right edge down to y 37.6, where it is cut square and the right edge continues black to the slot. The ballot's left edge and the box stay black."
+}

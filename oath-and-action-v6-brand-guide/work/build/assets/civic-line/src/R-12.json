@@ -1,0 +1,27 @@
+{
+  "id": "R-12",
+  "tracer": "T5",
+  "corrections": [
+    {
+      "what": "Made the two speech bubbles equal: 58.57 x 36.36 px on the centreline with one corner radius, 12 px, each kept at its own drawn centre",
+      "why": "DR-03 equal repeats. The left bubble measures 58.1 x 36.1 px with soft corners (diagonal profiles give radii near 14 px); the right one 59.0 x 36.7 px with tighter top corners (near 10 px) and bottom corners near 12 px. Corner edges move up to about 0.9 px; the right bubble stays 2.6 px higher than the left, as drawn."
+    },
+    {
+      "what": "Made the rail symmetric about x 92.05: base 27.8 to 156.3 at y 103.74, desk legs at 35.32 and 148.78, posts at 52.55 and 131.55, desk tops at y 73.26 ending at 66.75 and 117.35",
+      "why": "DR-03 symmetry. The measured pairs mirror about x 91.9 to 92.2 (legs 35.18 and 148.65, posts 52.4 and 131.39, top ends 66.87 and 117.5, base 27.94 and 156.44). Every move is under 0.4 px."
+    },
+    {
+      "what": "Drew the shackle as a true semicircle, radius 11.05 px about (92.25, 57.8), with straight vertical legs at x 81.2 and 103.3",
+      "why": "DR-03 true circles. Circle fits give r 11.5 (black sheet) and 11.21 (red sheet); the legs sit 22.1 px apart, so the radius that meets both legs tangentially is used."
+    },
+    {
+      "what": "Gave the free end of the shackle a flat (butt) end at y 62.05",
+      "why": "Both sheets show that end cut flat, not rounded (ink stops at y 62.38 black and 61.75 red)."
+    },
+    {
+      "what": "Drew every stroke at the set weight W, 5.5 px",
+      "why": "DR-03 one line weight. The strokes measure 5.25 to 5.9 px."
+    }
+  ],
+  "notes": "Kept: the open lock (left shackle leg lifted and free, about 6 px above the body), the keyhole as a real hole (an evenodd subpath of the red body: a 3.8 px round head over a 4.66 px slot to y 88.8), both bubble tails as drawn and different from each other (the left tail is a narrow closed wedge under an unbroken bottom edge; the right tail is wider and opens into the bubble, so its small inner notch stays visible), and the lock body's slight off-centre position (centre x 91.7). Red is the shackle and the filled body only; bubbles and rail are black. Both sheets agree on every part."
+}

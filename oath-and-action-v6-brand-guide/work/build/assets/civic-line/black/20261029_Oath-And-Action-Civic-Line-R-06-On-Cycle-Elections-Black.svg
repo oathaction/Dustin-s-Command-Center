@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-06" data-id="R-06" width="128" height="128" viewBox="0 0 128 128">
+  <title>On-Cycle Elections</title>
+  <desc>Oath &amp; Action Civic Line R-06 On-Cycle Elections. Traced vector reconstruction from the Civic Line reference sheet 04, row 2, column 1. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <rect x="12.877" y="49.061" width="37.91" height="34.834" rx="1.706" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="12.877" y1="58.59" x2="50.787" y2="58.59" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="21.855" y1="43.944" x2="21.855" y2="53.034" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41.809" y1="43.944" x2="41.809" y2="53.034" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="77.165" y="49.061" width="37.91" height="34.834" rx="1.706" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.165" y1="58.59" x2="115.074" y2="58.59" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="86.142" y1="43.944" x2="86.142" y2="53.034" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="106.096" y1="43.944" x2="106.096" y2="53.034" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="19.593" y="64.804" width="4.045" height="5.508" rx="0.975" fill="#121212"/>
+    <rect x="40.025" y="64.804" width="4.045" height="5.508" rx="0.975" fill="#121212"/>
+    <rect x="19.788" y="73.299" width="3.655" height="4.801" rx="0.975" fill="#121212"/>
+    <rect x="40.22" y="73.299" width="3.655" height="4.801" rx="0.975" fill="#121212"/>
+    <rect x="83.881" y="64.804" width="4.045" height="5.508" rx="0.975" fill="#121212"/>
+    <rect x="104.312" y="64.804" width="4.045" height="5.508" rx="0.975" fill="#121212"/>
+    <rect x="84.076" y="73.299" width="3.655" height="4.801" rx="0.975" fill="#121212"/>
+    <rect x="104.507" y="73.299" width="3.655" height="4.801" rx="0.975" fill="#121212"/>
+  </g>
+  <g id="accent">
+    <rect x="27.811" y="64.585" width="8.042" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="28.737" y="73.275" width="6.19" height="4.85" rx="0.975" fill="#121212"/>
+    <rect x="92.098" y="64.585" width="8.042" height="5.946" rx="0.975" fill="#121212"/>
+    <rect x="93.024" y="73.275" width="6.19" height="4.85" rx="0.975" fill="#121212"/>
+    <line x1="57.055" y1="66.057" x2="71.213" y2="66.057" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="66.237,60.525 71.213,66.057 66.237,71.589" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="miter"/>
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-21" viewBox="0 0 205 121">
+  <!-- R-21 Labor-Law Remedies. Crop 205 x 121 px; ink box x 8..197, y 8..113.
+       Construction: an outline worker in a hard hat stands at left. The hat has a rounded crown, short top detail and horizontal brim; the faceless head and shoulders are visible below. A tall ruled labor document stands behind/right. A large circular verification badge overlaps its lower-right corner.
+       Red: the verification circle and its check. Worker, hat, page and information rules remain black. Preserve the clear hard-hat silhouette and the document’s back-layer placement. -->
+  <!-- Trace notes: worker symmetric about x 44.9: elliptical hard-hat dome with a raised crest, elliptical face, elliptical shoulders. -->
+  <g data-role="base">
+    <path id="hat-dome-left" d="M24.86 43.9 A20.08 22.5 0 0 1 39.29 20.85"/>
+    <path id="hat-dome-right" d="M50.51 20.85 A20.08 22.5 0 0 1 64.94 43.9"/>
+    <path id="hat-crest" d="M39.29 34.8 L39.29 19.7 A2.0 2.0 0 0 1 41.29 17.7 L48.51 17.7 A2.0 2.0 0 0 1 50.51 19.7 L50.51 34.8"/>
+    <line id="hat-brim" x1="22.03" y1="43.9" x2="67.77" y2="43.9"/>
+    <path id="face" d="M27.55 43.9 A18.02 19.26 0 0 0 44.9 68.37 A18.02 19.26 0 0 0 62.25 43.9"/>
+    <path id="shoulders" d="M10.53 109.13 L10.53 96.07 A34.37 22.6 0 0 1 44.9 73.47 A34.37 22.6 0 0 1 79.27 96.07 L79.27 109.13"/>
+    <line id="arm-left" x1="24.96" y1="96.87" x2="24.96" y2="108.75"/>
+    <line id="arm-right" x1="64.84" y1="96.87" x2="64.84" y2="108.75"/>
+    <path id="document" d="M79.42 74.65 L79.42 13.96 A2.7 2.7 0 0 1 82.12 11.26 L165.07 11.26 A2.7 2.7 0 0 1 167.77 13.96 L167.77 43.6"/>
+    <line id="rule-1" x1="95.37" y1="28.1" x2="152" y2="28.1"/>
+    <line id="rule-2" x1="95.37" y1="43.52" x2="139" y2="43.52"/>
+    <line id="rule-3" x1="95.37" y1="58.93" x2="130.5" y2="58.93"/>
+    <line id="rule-4" x1="95.37" y1="74.35" x2="119.37" y2="74.35"/>
+    <line id="rule-base" x1="91.87" y1="106.5" x2="135.4" y2="106.5"/>
+  </g>
+  <g data-role="accent">
+    <circle id="badge" cx="166.15" cy="82.81" r="27.54"/>
+    <polyline id="badge-check" points="154.58,82.48 162.9,90.6 177.86,74.05"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-016" viewBox="0 0 184 126">
+  <!-- CL-016 Lobbying. Crop 184 x 126 px; ink box x 8..176, y 8..118.
+       Construction: two equal-size hollow-headed people face each other across a narrow rectangular table. Each has a rounded shoulder outline and an inward-bending forearm. A small low trapezoidal document/meeting object lies on the table between their hands. The table surface is a long horizontal bar with two downward legs.
+       Red: the small central object/short trapezoidal stroke on the tabletop. People and table stay black. Keep the paired forearms above the table and the open central space. -->
+  <g data-role="accent">
+    <!-- Document first, so the black table top lies over the feet of its sides. A leaning parallelogram, as drawn. -->
+    <path id="document" d="M75.68 70.28 L77.67 60.12 A3 3 0 0 1 80.61 57.7 L109.16 57.7 A3 3 0 0 1 112.1 61.28 L110.34 70.28"/>
+  </g>
+  <g data-role="base">
+    <!-- Axis x 92.6. Each person's inner shoulder curves wider (r 18.48) than the outer one (r 14.43), leaning toward the table. -->
+    <circle id="head-left" cx="40.05" cy="22.9" r="11.59"/>
+    <circle id="head-right" cx="145.15" cy="22.9" r="11.59"/>
+    <path id="shoulders-left" d="M20.85 79.4 V56.48 A14.43 14.43 0 0 1 35.28 42.05 H37.43 A18.48 18.48 0 0 1 55.91 60.53 V70.28"/>
+    <path id="shoulders-right" d="M164.35 79.4 V56.48 A14.43 14.43 0 0 0 149.92 42.05 H147.77 A18.48 18.48 0 0 0 129.29 60.53 V70.28"/>
+    <!-- The short mark beside the left person's shoulder, drawn on both sheets. -->
+    <line id="mark-left" x1="57.65" y1="44.4" x2="59.25" y2="47.4"/>
+    <rect id="table" x="40.56" y="70.28" width="104.08" height="9.9"/>
+    <line id="leg-left" x1="47.32" y1="80.18" x2="47.32" y2="115.4"/>
+    <line id="leg-right" x1="137.88" y1="80.18" x2="137.88" y2="115.4"/>
+    <line id="chair-back-left" x1="11.25" y1="57.13" x2="11.25" y2="115.3"/>
+    <line id="chair-back-right" x1="173.95" y1="57.13" x2="173.95" y2="115.3"/>
+    <line id="seat-left" x1="11.25" y1="92.42" x2="47.32" y2="92.42"/>
+    <line id="seat-right" x1="137.88" y1="92.42" x2="173.95" y2="92.42"/>
+  </g>
+</svg>

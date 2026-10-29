@@ -1,0 +1,105 @@
+{
+  "id": "CL-057",
+  "label": "Labor Share",
+  "state": "traced",
+  "tracer": "T3",
+  "iterations": 5,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:10:00+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9282,
+      "red_iou_1x": 0.983,
+      "edge_mean_px": 0.186,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:10:34+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9205,
+      "red_iou_1x": 0.9661,
+      "edge_mean_px": 0.211,
+      "edge_p95_px": 0.75
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T07:11:15+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9286,
+      "red_iou_1x": 0.985,
+      "edge_mean_px": 0.186,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T07:11:54+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.928,
+      "red_iou_1x": 0.9846,
+      "edge_mean_px": 0.186,
+      "edge_p95_px": 0.707
+    },
+    {
+      "iteration": 5,
+      "time": "2026-10-29T07:12:18+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.928,
+      "red_iou_1x": 0.9846,
+      "edge_mean_px": 0.186,
+      "edge_p95_px": 0.707
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:12:18+00:00",
+      "by": "T3",
+      "note": "overlay checked; true-circle pie with open end, dividers at centre, red sector and person mask cut match"
+    }
+  ],
+  "last_build": "2026-10-29T07:12:18+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.928,
+    "red_iou_1x": 0.9846,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.979,
+    "edge_mean_px": 0.186,
+    "edge_p95_px": 0.707,
+    "edge_max_px": 1.82,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the pie outline at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. It measures 5.75 to 6.0 px."
+    },
+    {
+      "what": "Drew the pie as one true circle, centre (77.66, 76.45), r 66.27, from 12 o'clock round the left and bottom to an open end at 4.8 deg below 3 o'clock",
+      "why": "DR-03 true circles. The ring fits r 66.27 with rms 0.13 px over most of its length, but its last 35 deg drift outward, reaching 1.8 px outside the circle at the open end; the end moves about 1.7 px in."
+    },
+    {
+      "what": "Met both dividers at the circle's centre: the vertical radius on x 77.66 and the lower divider at 34.5 deg to where it meets the ring",
+      "why": "DR-03. On the sheet the two dividers meet at (77.9, 77.6), 1.2 px below the fitted centre; the lower divider measures 33.56 deg and moves up to 0.7 px. Both corners are square (mitred), as drawn."
+    },
+    {
+      "what": "Drew the red sector as found rather than as a quarter-disc centred on its corner: arc centre (84.87, 72.02), outer radius 64.48, straight edges at x 87.06 and y 74.44, corners rounded r 2.75",
+      "why": "A circle through the sector's outer edge fits with rms 0.03 px about a centre 2.2 px left of and 2.4 px above the sector's corner, so the slice is drawn that way on both sheets. Its gaps from the pie (6.65 px from the vertical radius, about 3.3 px above the ring's open end) are kept."
+    },
+    {
+      "what": "Cut the person out of the sector with a mask: head a true circle r 8.94 at (112.1, 33.18), shoulders a half-disc r 17.3 at (112.1, 62.5) on straight sides down to a flat base at y 67.94",
+      "why": "Negative space must be a real hole. The holes measure: head r 8.88 (red sheet) and 9.0 (black); shoulders 34.6 px wide and 22.75 px tall with a flat base. Head and shoulders are put on one centre line (measured x 112.26 and 111.95)."
+    }
+  ],
+  "source_notes": "Kept as drawn: the ring is open between 12 o'clock and the open end below 3 o'clock, where the red sector sits apart; the 3 px red band between the head and the shoulders; the red band below the shoulders. Tool note: with the shoulders drawn as a path arc (an evenodd hole or a mask path), the bake check fell to 0.9975 because the arc flattens differently at export scale; built from circle and rect mask shapes, the bake check reads 1.0."
+}

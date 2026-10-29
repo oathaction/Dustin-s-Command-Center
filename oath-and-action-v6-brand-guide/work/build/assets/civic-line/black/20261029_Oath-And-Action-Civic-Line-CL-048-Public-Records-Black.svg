@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-cl-048" data-id="CL-048" width="128" height="128" viewBox="0 0 128 128">
+  <title>Public Records</title>
+  <desc>Oath &amp; Action Civic Line CL-048 Public Records. Traced vector reconstruction from the Civic Line reference sheet 02, row 4, column 6. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M36.511 54.642 V51.182 A2.047 2.047 0 0 1 38.558 49.134 H44.636" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M89.842 54.389 H96.173 A2.339 2.339 0 0 1 98.512 56.728 V67.631" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44.636 60.393 V38.027 A1.901 1.901 0 0 1 46.537 36.126 H87.941 A1.901 1.901 0 0 1 89.842 38.027 V67.631" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40.727 54.642 H26.958 A1.803 1.803 0 0 0 25.155 56.445 V90.373 A1.803 1.803 0 0 0 26.958 92.176 H101.042 A1.803 1.803 0 0 0 102.845 90.373 V69.434 A1.803 1.803 0 0 0 101.042 67.631 H51.854 A4.387 4.387 0 0 1 48.218 65.706 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="54.52" y1="53.643" x2="80.352" y2="53.643" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="54.52" y1="60.037" x2="69.971" y2="60.037" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <line x1="54.52" y1="45.308" x2="80.352" y2="45.308" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

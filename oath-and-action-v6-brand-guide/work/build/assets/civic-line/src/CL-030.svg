@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-030" viewBox="0 0 174 134">
+  <!-- CL-030 Reform Tests. Crop 174 x 134 px; ink box x 8..166, y 8..126.
+       Construction: two small square test-result panels sit side by side near the top. The left contains one short vertical mark and two information rules; the right contains three ascending vertical bars. A short horizontal connector joins the panels. Curved branches descend from them and merge behind a circular verification badge below the gap.
+       Red: the left panel’s short vertical mark, the middle bar in the right panel and the check inside the lower badge. Badge circle and connectors remain black. -->
+  <g data-role="base">
+    <rect id="panel-left" x="11.15" y="11.07" width="60.54" height="53.65" rx="2.5"/>
+    <rect id="panel-right" x="102.61" y="11.07" width="60.54" height="53.65" rx="2.5"/>
+    <line id="connector" x1="71.69" y1="41.24" x2="102.61" y2="41.24"/>
+    <line id="rule-1" x1="40.8" y1="32.19" x2="56.05" y2="32.19"/>
+    <line id="rule-2" x1="40.8" y1="44.6" x2="56.05" y2="44.6"/>
+    <line id="bar-1" x1="121.13" y1="40.9" x2="121.13" y2="51.33"/>
+    <line id="bar-3" x1="144.88" y1="25.25" x2="144.88" y2="51.33"/>
+    <path id="branch-left" d="M41.42 64.72 V89.88 A10 10 0 0 0 51.42 99.88 H66.68"/>
+    <path id="branch-right" d="M132.88 64.72 V89.88 A10 10 0 0 1 122.88 99.88 H107.62"/>
+    <circle id="badge" cx="87.15" cy="102.22" r="20.6"/>
+  </g>
+  <g data-role="accent">
+    <line id="mark" x1="27.29" y1="25" x2="27.29" y2="51.5"/>
+    <line id="bar-2" x1="133" y1="33.08" x2="133" y2="51.33"/>
+    <polyline id="check" points="78.87,101.4 85.1,107.1 95.75,96.4"/>
+  </g>
+</svg>

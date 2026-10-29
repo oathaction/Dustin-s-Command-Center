@@ -1,0 +1,15 @@
+{
+  "id": "CL-042",
+  "tracer": "T2",
+  "corrections": [
+    {"what": "Made the three panels one size (40.16 x 50.2 px, 3 px corners), spaced evenly at 61.62 px about x 92.45, each with three equal rules (16.46 px long) spaced evenly at 12.41 px",
+     "why": "DR-03 equal repeats; the catalogue asks for equal panels. Panel widths measure 39.81 to 40.37 px, spacings 61.65 and 61.6 px; rule spacings 12.26 and 12.56 px; rule lengths 16.3 to 16.6 px."},
+    {"what": "Mirrored the two outer paths about the axis: uprights 61.5 px out, elbows at y 87.5 with a 6 px radius, diagonals at 30.84 deg running into the hub",
+     "why": "DR-03 symmetry. The uprights sit 61.13 and 61.88 px out, the diagonals measure 30.23 and 31.45 deg."},
+    {"what": "Made the hub a true circle on the axis, centre (92.45, 110.65), r 27.05",
+     "why": "DR-03. The sheet's ring is 0.65 px taller than wide and centres at x 91.94, 0.5 px left of the panels' axis; the trace keeps the hub under the middle panel, which leaves a 0.8 px fringe on its right side."},
+    {"what": "Drew the dollar sign as two equal true loops (r 5.1) on the axis with short bars above and below",
+     "why": "DR-03. The black sheet's loops measure 5.0 to 5.3 px across their radii; the sheet's bars are drawn thinner than W (about 3.4 px), and the trace draws them at W."}
+  ],
+  "notes": "Kept: the outer paths' free upper ends, which stop 3 px below their panels while the middle path joins its panel; the fan-in with the outer branches angled inward and the middle one upright; the dollar sign inside the hub. Red: the dollar sign only; panels, rules, paths and the hub border stay black."
+}

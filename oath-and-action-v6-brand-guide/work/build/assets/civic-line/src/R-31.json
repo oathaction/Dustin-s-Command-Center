@@ -1,0 +1,13 @@
+{
+  "id": "R-31",
+  "tracer": "T6",
+  "corrections": [
+    {"what": "Levelled the wing's top line at y 60.56", "why": "DR-03 straight lines. The sheet's line falls from 61.24 at the left to 60.25 at the right, a 1 px tilt in a line the drawing means level."},
+    {"what": "Drew the roof symmetric about the building axis x 98: both slopes at 32.63 deg, eave ends at x 54.31 and 141.69, short verticals from y 49.25 to the eave at 55.77", "why": "DR-03 symmetry. Slopes measure 32.62 and 32.64 deg; eave ends 54.13 and 141.5 (axis 97.8, while walls, head and door share x 98). Edges move under 0.2 px."},
+    {"what": "Gave the adult's body one shoulder radius, 20.05 px, mirrored about x 175.5, with a short flat top at y 70.95", "why": "DR-03 symmetry. Shoulder fits give radii 20.65 (left) and 19.46 (right); sides at 150.18 and 200.76 and arms at 162.04 and 188.9 already share the axis."},
+    {"what": "Made both heads true circles (r 12.4 and 12.2) and gave the two windows one length, y 76 to 85.25", "why": "DR-03 circles and equal repeats. Window ends measure 76.0 to 85.1 and 76.0 to 85.4."},
+    {"what": "Drew the door as a rectangle with a true semicircular top, r 14.88, centred on x 98", "why": "DR-03. Door ink spans x 83.12 to 112.88 with its top at 70.6, which a semicircle of that width meets exactly."},
+    {"what": "Drew every stroke at W, 5.5 px", "why": "DR-03 one line weight. The icon measures 5.30 px."}
+  ],
+  "notes": "Kept: the wing line's overhang past the wing wall at left, the roof slopes ending on the head circle, the head above the peak, the separate adult with two short arm strokes, and the open bottom ends of the adult. The door is drawn before the base group, so the black ground line lies over its foot as on the red sheet (red stops at y 108, the ground line's top edge). Black and red sheets agree here."
+}

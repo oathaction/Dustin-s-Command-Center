@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-r-38" data-id="R-38" width="128" height="128" viewBox="0 0 128 128">
+  <title>Pricing-Data Limits</title>
+  <desc>Oath &amp; Action Civic Line R-38 Pricing-Data Limits. Traced vector reconstruction from the Civic Line reference sheet 05, row 3, column 3. Group 'base' is the main drawing; group 'accent' holds the accent parts named in the catalogue.</desc>
+  <g id="base">
+    <path d="M26.173 47.38 H33.616 L40.961 55.237 V78.997 A3.168 3.168 0 0 1 37.793 82.165 H20.261 A3.168 3.168 0 0 1 17.093 78.997 V57.727 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.388 47.38 H93.946 L86.601 55.237 V78.997 A3.168 3.168 0 0 0 89.769 82.165 H107.3 A3.168 3.168 0 0 0 110.468 78.997 V57.727 Z" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.151" y1="45.542" x2="29.151" y2="52.01" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="29.151" cy="52.01" r="2.437" fill="#121212"/>
+    <line x1="98.41" y1="45.542" x2="98.41" y2="52.01" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="98.41" cy="52.01" r="2.437" fill="#121212"/>
+    <line x1="46.892" y1="62.538" x2="50.621" y2="62.538" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="76.94" y1="62.538" x2="80.669" y2="62.538" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="accent">
+    <path d="M31.988 63.917 A3.061 2.944 0 1 0 28.493 67.894 L29.809 68.172 A3.061 2.944 0 1 1 26.242 71.959" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.151" y1="60.008" x2="29.151" y2="62.075" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="29.151" y1="73.992" x2="29.151" y2="75.546" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M101.247 63.917 A3.061 2.944 0 1 0 97.752 67.894 L99.068 68.172 A3.061 2.944 0 1 1 95.5 71.959" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="98.41" y1="60.008" x2="98.41" y2="62.075" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="98.41" y1="73.992" x2="98.41" y2="75.546" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="63.781" cy="62.538" r="7.847" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69.327" y1="56.991" x2="58.234" y2="68.084" fill="none" stroke="#121212" stroke-width="2.6807" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

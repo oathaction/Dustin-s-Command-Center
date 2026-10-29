@@ -1,0 +1,103 @@
+{
+  "id": "CL-011",
+  "label": "Electoral Pressure",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 4,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T06:40:49+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9359,
+      "red_iou_1x": 0.9747,
+      "edge_mean_px": 0.225,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T06:41:44+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9374,
+      "red_iou_1x": 0.9747,
+      "edge_mean_px": 0.222,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 3,
+      "time": "2026-10-29T06:42:08+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9368,
+      "red_iou_1x": 0.9747,
+      "edge_mean_px": 0.221,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 4,
+      "time": "2026-10-29T06:42:23+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9368,
+      "red_iou_1x": 0.9747,
+      "edge_mean_px": 0.221,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T06:42:23+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; desk group centred, ballot and lid openings, top-edge break and arrow match"
+    }
+  ],
+  "last_build": "2026-10-29T06:42:23+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9368,
+    "red_iou_1x": 0.9747,
+    "bake_check_iou_1x": 1.0,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 1.0075,
+    "edge_mean_px": 0.221,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.458,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Centred the officeholder over the desk on one axis, x 60.2: the person moves 0.4 px right (head, shoulders and hands measure x 59.8 to 59.85) and the desk and legs 0.15 to 0.27 px left (desk 60.35, legs 60.47)",
+      "why": "DR-03 symmetry; the person, desk and legs are plainly drawn as one symmetric group."
+    },
+    {
+      "what": "Made the shoulder sides vertical (x 30.0 and 90.4 after centring) with one corner radius, 16.35 px",
+      "why": "DR-03 straight lines and symmetry. The sides splay 0.5 to 0.7 px over their 12 px length; corner fits give 16.0 to 16.7 px."
+    },
+    {
+      "what": "Drew the desk as one rectangle with one corner radius, 4.6 px",
+      "why": "DR-03 equal repeats. Corner fits give 4.9 and 4.5 px at the top and 4.3 to 4.5 px at the bottom."
+    },
+    {
+      "what": "Made the ballot's two long edges parallel at 118.45 deg, each turned about its own midpoint",
+      "why": "DR-03, as in CL-001. They measure 120.0 and 116.9 deg; each end moves about 0.5 px. The top edge keeps its drawn 9.9 deg tilt, so the ballot stays a slanted parallelogram."
+    },
+    {
+      "what": "Gave both lid slants one slope, 50.3 deg, through their measured open ends",
+      "why": "DR-03. They measure 52.2 deg (left) and 48.45 deg (right). Their open ends stay where the sheet puts them; their feet move about 0.5 px along the front's top edge."
+    },
+    {
+      "what": "Made the arrow shaft level at y 33.85 with both head arms at 45 deg, mirrored about it",
+      "why": "DR-03 straight lines and symmetry. The shaft tilts 0.6 to 0.9 deg; the arms measure 50.5 and 45.6 deg on the red sheet with ends 13.35 px either side of the shaft."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The person, desk and arrow measure 5.5 to 5.75 px; the ballot box runs lighter, 4.75 to 5.25 px."
+    }
+  ],
+  "source_notes": "Kept: the two short hand strokes standing on the desk top; the desk drawn as an outlined slab with two legs; the subjects' separate baselines (desk legs end at y 108.7, the box at y 100.85); the arrow raised between the two; the lid slants rising from just inside the front's top corners to open ends that stop short of the ballot; the break in the front's top edge between the ballot's lower-right corner (the edge runs 2 px past it to x 174.25) and the short stub that runs to the right corner. Red is the arrow only; both sheets agree."
+}

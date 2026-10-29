@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="R-27" viewBox="0 0 150 122">
+  <!-- R-27 Tax Enforcement. Crop 150 x 122 px; ink box x 8..142, y 8..114.
+       Construction: an upright tax record with several short horizontal rules at left. A large magnifier overlaps its lower-right portion; its handle runs diagonally down-right. Within the lens is a short gauge-like semicircular arch near the upper half. The rest of the lens remains empty.
+       Red: only that inner semicircular gauge arc. Magnifier border/handle, page and rules are black. This is not the red-handle Donor Disclosure icon or the check-in-lens Watchdog Remedies icon. -->
+  <!-- Trace notes: lens and gauge concentric about (94.6, 65.92); handle an open-ended outline on a 44.2 deg axis. -->
+  <g data-role="base">
+    <path id="record" d="M94.7 26.3 L94.7 15.07 A4.2 4.2 0 0 0 90.5 10.87 L15.45 10.87 A4.2 4.2 0 0 0 11.25 15.07 L11.25 104.5 A4.2 4.2 0 0 0 15.45 108.7 L91.37 108.7 A3.33 3.33 0 0 0 94.7 105.37"/>
+    <line id="rule-1" x1="27.75" y1="27.22" x2="76.95" y2="27.22"/>
+    <line id="rule-2" x1="27.75" y1="44.63" x2="56.13" y2="44.63"/>
+    <line id="rule-3" x1="27.75" y1="62.04" x2="51" y2="62.04"/>
+    <line id="rule-4" x1="27.75" y1="79.45" x2="53.13" y2="79.45"/>
+    <circle id="lens" cx="94.6" cy="65.92" r="29.06"/>
+    <path id="handle" d="M123.71 88.06 L137.18 101.17 A5.98 5.98 0 0 1 137.3 109.62 A5.98 5.98 0 0 1 128.85 109.74 L113.36 94.68"/>
+  </g>
+  <g data-role="accent">
+    <path id="gauge" d="M77.09 68.79 A17.74 17.74 0 0 1 94.6 48.18 A17.74 17.74 0 0 1 112.09 62.96"/>
+  </g>
+</svg>

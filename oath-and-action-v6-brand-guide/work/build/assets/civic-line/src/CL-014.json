@@ -1,0 +1,19 @@
+{
+  "id": "CL-014",
+  "tracer": "T1",
+  "corrections": [
+    {"what": "Put the whole drawing on one vertical axis, x 100.85, and mirrored every pair about it. The largest moves: the dome 0.48 px right (its circle fits centre x 100.37), the inner column pair 0.6 px right (measured 94.65 and 105.85, centred on 100.25), the spire and cupola 0.1 px",
+     "why": "DR-03 symmetry; the domed building and its fence are plainly symmetric. The facade measures centre 100.93, the door 100.95, the fence posts 100.94 and the six picket pairs 100.94 to 101.2."},
+    {"what": "Drew the dome as one true circle, r 27.82, standing on the cornice top line",
+     "why": "DR-03 true circles. A circle fits the dome's centreline with 0.09 px rms; its right half bulges slightly (a fit to that half alone gives r 25.0)."},
+    {"what": "Drew the upper fence rail as two arcs of one ellipse (centre y 88.40, rx 88.32, ry 21.14) and the lower rail as two arcs of a second ellipse (centre y 91.77, rx 85.90, ry 23.66), mirrored",
+     "why": "DR-03 and the catalogue's ellipse-like rails. The two rails are drawn as different curves on the sheet, and one ellipse for both misfits by up to 3 px, so each keeps its own; each fits its rail within 0.17 px (upper) and 0.5 px (lower) rms away from the posts."},
+    {"what": "Gave each mirrored pair of pickets one x offset from the axis and one pair of end heights, and made every picket vertical",
+     "why": "DR-03 equal repeats and straight lines. Pair positions agree within 0.4 px and their ends within 0.6 px; the two short outer pickets on the upper rail lean about 2 to 4 deg inward on the sheet."},
+    {"what": "Gave the cornice its two top corners at one radius, 3.75 px; the door one corner radius, 3.8 px",
+     "why": "DR-03. The cornice corners read 3.75 px from the outer edge; door corner fits give 4.8 to 5.0 px on a 6 px stroke, and 3.8 px at W keeps the sheet's squarer outer corners."},
+    {"what": "Drew every stroke at the set line weight W, 5.5 px",
+     "why": "DR-03 one line weight. The door measures 6.0 px; the inner columns 4.4 to 5.0 px; the rest 5.25 to 5.75 px."}
+  ],
+  "notes": "Count kept from the crop: 6 colonnade columns (the outer and inner pairs reach the facade, the middle pair stops short at y 76.5); 2 corner posts; 12 pickets, of which 4 cross the upper rail (two each side) and 8 cross the lower rail (four each side), with the door between the innermost pair. Kept: the spire, the square cupola with its small open window, the cornice band whose lower bar runs past its sides, the facade sides ending on the lower rail, the upper rail stopping short of the building on both sides (open ends at x 54.74 and 146.96), the lower rail broken at the door, each post's top leaning into the upper rail, and the rails meeting each post as the sheet's pointed ends. Foreground pickets overlap the facade's lower area as drawn. Red is the door outline only; both sheets agree."
+}

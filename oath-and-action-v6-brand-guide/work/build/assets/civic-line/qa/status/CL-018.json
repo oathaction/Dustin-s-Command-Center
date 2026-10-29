@@ -1,0 +1,71 @@
+{
+  "id": "CL-018",
+  "label": "Earned Trust",
+  "state": "traced",
+  "tracer": "T1",
+  "iterations": 2,
+  "history": [
+    {
+      "iteration": 1,
+      "time": "2026-10-29T07:12:03+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9066,
+      "red_iou_1x": 0.8972,
+      "edge_mean_px": 0.197,
+      "edge_p95_px": 0.559
+    },
+    {
+      "iteration": 2,
+      "time": "2026-10-29T07:12:29+00:00",
+      "state": "traced",
+      "kind": "build",
+      "silhouette_iou_1x": 0.9066,
+      "red_iou_1x": 0.8972,
+      "edge_mean_px": 0.197,
+      "edge_p95_px": 0.559
+    }
+  ],
+  "notes": [
+    {
+      "time": "2026-10-29T07:12:29+00:00",
+      "by": "T1",
+      "note": "T1: overlay checked; badge kept as the sheet's shield-like shape (logged), people mirrored, check matches"
+    }
+  ],
+  "last_build": "2026-10-29T07:12:29+00:00",
+  "last_metrics": {
+    "silhouette_iou_1x": 0.9066,
+    "red_iou_1x": 0.8972,
+    "bake_check_iou_1x": 0.9997,
+    "pair_identical_after_swap": true,
+    "export_inside_0_128": true,
+    "ink_area_ratio_trace_over_reference": 0.9638,
+    "edge_mean_px": 0.197,
+    "edge_p95_px": 0.559,
+    "edge_max_px": 1.118,
+    "best_offset": [
+      0,
+      0
+    ]
+  },
+  "corrections": [
+    {
+      "what": "Drew the badge as a smooth closed spline through the sheet's own outline, mirrored about x 86.65, instead of a true circle",
+      "why": "Judgement between the catalogue and the image: the catalogue calls it a circle, but its centreline radius from (86.65, 75) runs from 26.2 px (lower diagonals) to 32.1 px (upper diagonals), 30.9 px at the top and 28.4 px at the bottom, the same on both sides and on both sheets. That is a deliberate rounded shield-like shape, not a raster accident, so the image controls. The left and right halves agree within 0.3 px and are averaged."
+    },
+    {
+      "what": "Mirrored the side people about the same axis: one head radius (11.0; fits 10.9 and 11.09), heads 2.75 px toward the centre from their shoulders (measured 3.2 and 2.3), one shoulder corner radius (17.0; fits 16.8 to 17.05), one top height (y 67.6)",
+      "why": "DR-03 symmetry and equal repeats. The left head moves 0.44 px and the right 0.43 px."
+    },
+    {
+      "what": "Made the side people's inner shoulder sides vertical",
+      "why": "DR-03 straight lines. They lean toward the badge by 0.4 px (left) and 1 px (right) over their lower 15 px."
+    },
+    {
+      "what": "Drew every stroke at the set line weight W, 5.5 px",
+      "why": "DR-03 one line weight. The check measures 6.0 to 6.2 px; the rest 5.6 to 5.75 px."
+    }
+  ],
+  "source_notes": "Kept: the central person as a head above the badge, whose top serves as the shoulders (3.3 px gap between head and badge); the badge frontmost and clear of the side people (about 2.3 px gaps); each side person's inner side running lower (to y 104) than the outer side (to y 100.45), open at the bottom; the check's own proportions (short arm 43.8 deg, long arm 46.5 deg, nearly square vertex). Red is the check only; both sheets agree."
+}

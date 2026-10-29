@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-id="CL-036" viewBox="0 0 197 117">
+  <!-- CL-036 Cross-Border Capital. Crop 197 x 117 px; ink box x 8..189, y 8..109.
+       Construction: one outlined three-dimensional parcel at upper left and a matching parcel at upper right, each with visible top and side edges and a short tape seam. Between and below them sits an outlined coin containing a dollar sign. A detached upper arrow points right across the central gap; a lower arrow points left.
+       Red: the upper right-pointing arrow and the coin’s dollar sign. Boxes, coin outline and returning lower arrow stay black. Preserve the diagonal parcel edges and vertically separated opposing arrows. -->
+  <g data-role="base">
+    <polygon id="parcel-left-front" points="10.8,40 52.6,40 52.6,74.77 10.8,74.77"/>
+    <polyline id="parcel-left-top" points="10.8,40 25.11,25.69 64.84,25.69 52.6,40"/>
+    <polyline id="parcel-left-side" points="64.84,25.69 64.84,62.53 52.6,74.77"/>
+    <line id="parcel-left-tape-top" x1="31.47" y1="40" x2="45.67" y2="25.69"/>
+    <line id="parcel-left-tape-front" x1="32.29" y1="40" x2="32.29" y2="52.5"/>
+    <polygon id="parcel-right-front" points="132.2,40 174,40 174,74.77 136.5,74.77 136.5,65.33 132.2,55.53"/>
+    <polyline id="parcel-right-top" points="132.2,40 146.51,25.69 186.24,25.69 174,40"/>
+    <polyline id="parcel-right-side" points="186.24,25.69 186.24,62.53 174,74.77"/>
+    <line id="parcel-right-tape-top" x1="152.87" y1="40" x2="167.07" y2="25.69"/>
+    <line id="parcel-right-tape-front" x1="153.69" y1="40" x2="153.69" y2="52.5"/>
+    <circle id="coin" cx="99.57" cy="75.55" r="28.1"/>
+    <line id="arrow-return-shaft" x1="68.13" y1="96.95" x2="41.75" y2="96.95"/>
+    <polyline id="arrow-return-head" points="50.65,87.85 41.75,96.95 50.65,106.05"/>
+  </g>
+  <g data-role="accent">
+    <line id="arrow-out-shaft" x1="77" y1="20.08" x2="116.55" y2="20.08"/>
+    <polyline id="arrow-out-head" points="107.65,10.98 116.55,20.08 107.65,29.18"/>
+    <path id="dollar-s" d="M104.6 67.9 A5.4 5.4 0 1 0 99.7 75.6 A5.4 5.4 0 1 1 94.8 83.3"/>
+    <line id="dollar-bar-top" x1="99.7" y1="61.5" x2="99.7" y2="65"/>
+    <line id="dollar-bar-bottom" x1="99.7" y1="86.4" x2="99.7" y2="89.37"/>
+  </g>
+</svg>
