@@ -1,0 +1,21 @@
+{
+ "file": "work/boards/phase-2/atlas-concepts/12-editorial-desk/20261030_Concept-12-Editorial-Desk.html",
+ "model": "work/boards/phase-2/maps/20261028_Maps-Model-Data.json",
+ "items_checked": {
+  "nodes": 118,
+  "links": 115,
+  "loops": 80,
+  "reforms": 3,
+  "names": 50,
+  "counts": 34,
+  "strips": 1
+ },
+ "distinct_ids": {
+  "node": 25,
+  "link": 50,
+  "loop": 23,
+  "reform": 3
+ },
+ "errors": [],
+ "pass": true
+}
