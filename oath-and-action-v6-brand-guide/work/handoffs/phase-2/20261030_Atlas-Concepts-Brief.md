@@ -114,4 +114,9 @@ Grounds (DR-17): at least four dark and four light across the twelve.
 
 ## 9. Frame from the Stage 1 memos
 
-To be added after the civic education, data visualization, interaction and design memos and the ideation pitch.
+Shown to Dustin on Board 1 (`work/boards/20261030_Atlas-Concepts-Ideas-Board.html`) for approval as a set. Every maker reads all four memos before building.
+
+- **Reader and levels:** `work/handoffs/phase-2/20261030_Atlas-Civic-Education-Memo.md`. Print "raises" or "lowers" beside every sign a first-time reader meets; build each loop's read-aloud line from its signs by script; show the weakest step and the reforms on the loop's own view.
+- **Loops as routes and the overview:** `work/handoffs/phase-2/20261030_Atlas-Dataviz-Memo.md`, with the shared plan in `shared/20261030_Loop-Route-Geometry.json`. A concept may restyle the thumbnails, and each must stay the loop's real route (DR-15). The memo's overview advice: the core ring with printed counts, and the 23 loops as the way in.
+- **Navigation:** `work/handoffs/phase-2/20261030_Atlas-Interaction-Memo.md`, with `shared/atlas-kit.js` and `shared/atlas-kit.css` to inline. Views with a panel; Back moves by level.
+- **Type, lines and grounds:** `work/handoffs/phase-2/20261030_Atlas-Design-Frame-Memo.md` and the specimen in `shared/`. One stroke family (D2-60); the pointing tag as the default sign mark (D2-56).

@@ -1,5 +1,5 @@
 // Rendered checks for one atlas concept page (October 30, 2026; brief section 8, D2-49 to D2-51).
-// Usage: node work/build/scripts/phase-2/atlas_concepts_check.js <concept.html> [--no-captures]
+// Usage: node work/build/scripts/phase-2/atlas_concepts_check.js <concept.html> [--no-captures] [--board]
 //
 // The page lists its views in <meta name="atlas-views" content="overview area-c loop-r10">, and each view's root
 // element carries data-view-root="<view>". For every view at 1440 and 390 px the script checks:
@@ -26,6 +26,7 @@ const ALLOWED_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 const file = path.resolve(process.argv[2] || '');
 const captures = !process.argv.includes('--no-captures');
+const BOARD = process.argv.includes('--board');   // a review board: one view, no close-up navigation to test
 if (!fs.existsSync(file)) { console.error('usage: node atlas_concepts_check.js <concept.html>'); process.exit(2); }
 const dir = path.dirname(file);
 const stem = path.basename(file, '.html');
@@ -204,7 +205,7 @@ async function focusAudit(page) {
         }
       }
     }
-    if (width === 1440) {
+    if (width === 1440 && !BOARD) {
       // navigation: the first link into a close-up, then back
       await page.goto('file://' + file + '#overview', { waitUntil: 'networkidle' });
       await page.waitForTimeout(400);
