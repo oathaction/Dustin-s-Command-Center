@@ -411,3 +411,19 @@ Dustin sent ten sheets on October 29 as the approved Civic Line icon catalog. Th
 | `20261029_Oath-And-Action-Civic-Line-03-Economy-Issues-Black.png` and `-Red.png` | Sheet 03, Economy & Public Issues, 24 icons | As above |
 | `20261029_Oath-And-Action-Civic-Line-04-Reforms-01-25-Black.png` and `-Red.png` | Sheet 04, Reforms R-01 to R-25 | As above |
 | `20261029_Oath-And-Action-Civic-Line-05-Reforms-26-50-Black.png` and `-Red.png` | Sheet 05, Reforms R-26 to R-50 | As above |
+
+## Added October 30, 2026: references for the atlas visual system
+
+Dustin sent ten images on October 30 as inspiration for the atlas and systems map concepts. Nine are unique; the eighth repeats the fourth byte for byte and was not saved again. They are saved in `work/research/chat-references/atlas-concepts/`. All are study only and never ship. The five generated boards carry signs of image generation (invented variable names such as "Housing supply", soft text edges), and Dustin has not named the tool; they are recorded as supplied by Dustin, tool not recorded, as with Q-16.
+
+| File | What it shows | Rights and use |
+|---|---|---|
+| `20261030_Ref-Atlas-Concept-09-The-Circuit.png` | Atlas Concepts V2, Concept 09 The Circuit, "How the whole system is wired." | Oath & Action's own atlas work (Q-03). Study only; rebuild from V7 |
+| `20261030_Ref-Atlas-Concept-07-Loop-Card-R10.png` | Atlas Concept 07 Loop Card, R10 "How safe seats keep themselves safe." | Oath & Action's own atlas work (Q-03). Study only; rebuild from V7 |
+| `20261030_Ref-Atlas-Loop-Overviews-Annotated.webp` | Two loop overview boards side by side with Dustin's notes: he likes loop icons that show the actual loop, and dislikes a catalog where every loop looks the same while liking its extra text | Oath & Action's own atlas work, annotated by Dustin. Study only |
+| `20261030_Ref-Atlas-Decision-Grid.webp` | "How power becomes public outcomes", a light grid with an R8 mechanism panel, labeled Concept 05 Decision Grid | Supplied by Dustin; likely generated; tool not recorded. Study only |
+| `20261030_Ref-Atlas-Fine-Structure-Dark.webp` | "The structure behind the outcomes", dark wireframe boxes with an R8 panel, labeled Concept 07 Fine Structure | As above |
+| `20261030_Ref-Atlas-Civic-Architecture-R8-Loop.webp` | "How housing scarcity sustains itself", an R8 loop page with connection L39's detail and sources | As above |
+| `20261030_Ref-Atlas-Civic-Architecture-Layers.webp` | "The architecture of accountability", areas as stacked floors with line icons and a selected-component panel | As above |
+| `20261030_Ref-Atlas-Civic-Landscape.webp` | "Find your place in the system", areas as rounded territories with a housing panel | As above |
+| `20261030_Ref-Atlas-Civic-Circuit-Grouped-Overview.webp` | "How the system connects", a dark grouped overview with bracket trees and an R8 panel | As above |

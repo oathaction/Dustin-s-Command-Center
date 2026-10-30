@@ -1,0 +1,828 @@
+{
+ "date": "20261030",
+ "note": "Every V7 variable and reform mapped to its Civic Line icon. Labels on the page use the V7 label or title, never the icon name.",
+ "variables": [
+  {
+   "variable": "A1",
+   "area": "A",
+   "v7_label": "Wealth concentration",
+   "v7_title": "Concentration of household wealth",
+   "icon": "CL-049",
+   "icon_name": "Wealth Concentration",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-049-Wealth-Concentration-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-049-Wealth-Concentration-Red-Black.svg"
+  },
+  {
+   "variable": "A2",
+   "area": "A",
+   "v7_label": "Worker bargaining power",
+   "v7_title": "Workers' bargaining power",
+   "icon": "CL-050",
+   "icon_name": "Worker Bargaining",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-050-Worker-Bargaining-Red-Black.svg"
+  },
+  {
+   "variable": "A3",
+   "area": "A",
+   "v7_label": "Market concentration",
+   "v7_title": "Market concentration",
+   "icon": "CL-051",
+   "icon_name": "Market Power",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-051-Market-Power-Red-Black.svg"
+  },
+  {
+   "variable": "A4",
+   "area": "A",
+   "v7_label": "Household security",
+   "v7_title": "Households' financial security",
+   "icon": "CL-052",
+   "icon_name": "Household Security",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-052-Household-Security-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-052-Household-Security-Red-Black.svg"
+  },
+  {
+   "variable": "A5",
+   "area": "A",
+   "v7_label": "Housing scarcity",
+   "v7_title": "Housing scarcity",
+   "icon": "CL-053",
+   "icon_name": "Housing Scarcity",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-053-Housing-Scarcity-Red-Black.svg"
+  },
+  {
+   "variable": "A6",
+   "area": "A",
+   "v7_label": "Owner home equity",
+   "v7_title": "Homeowners' equity",
+   "icon": "CL-054",
+   "icon_name": "Home Equity",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-054-Home-Equity-Red-Black.svg"
+  },
+  {
+   "variable": "B1",
+   "area": "B",
+   "v7_label": "Money in politics",
+   "v7_title": "Money spent to influence politics",
+   "icon": "CL-015",
+   "icon_name": "Political Money",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Red-Black.svg"
+  },
+  {
+   "variable": "B2",
+   "area": "B",
+   "v7_label": "Local news supply",
+   "v7_title": "Availability of local reporting",
+   "icon": "CL-032",
+   "icon_name": "Local Reporting",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Red-Black.svg"
+  },
+  {
+   "variable": "B3",
+   "area": "B",
+   "v7_label": "Cross-cutting civic ties",
+   "v7_title": "Civic ties across social and political groups",
+   "icon": "CL-006",
+   "icon_name": "Civic Ties",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-006-Civic-Ties-Red-Black.svg"
+  },
+  {
+   "variable": "B4",
+   "area": "B",
+   "v7_label": "Affective polarization",
+   "v7_title": "Hostility toward the other political party",
+   "icon": "CL-008",
+   "icon_name": "Political Hostility",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-008-Political-Hostility-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-008-Political-Hostility-Red-Black.svg"
+  },
+  {
+   "variable": "B5",
+   "area": "B",
+   "v7_label": "Turnout equality",
+   "v7_title": "Equality of voter turnout",
+   "icon": "CL-007",
+   "icon_name": "Turnout Equality",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-007-Turnout-Equality-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-007-Turnout-Equality-Red-Black.svg"
+  },
+  {
+   "variable": "B6",
+   "area": "B",
+   "v7_label": "Hostile-content exposure",
+   "v7_title": "Exposure to hostile political content",
+   "icon": "CL-033",
+   "icon_name": "Hostile Content",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-033-Hostile-Content-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-033-Hostile-Content-Red-Black.svg"
+  },
+  {
+   "variable": "C1",
+   "area": "C",
+   "v7_label": "Safe seats",
+   "v7_title": "Seats with little electoral competition",
+   "icon": "CL-009",
+   "icon_name": "Safe Seats",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-009-Safe-Seats-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-009-Safe-Seats-Red-Black.svg"
+  },
+  {
+   "variable": "C2",
+   "area": "C",
+   "v7_label": "Primary decisiveness",
+   "v7_title": "How often the primary decides the winner",
+   "icon": "CL-010",
+   "icon_name": "Decisive Primaries",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-010-Decisive-Primaries-Red-Black.svg"
+  },
+  {
+   "variable": "C3",
+   "area": "C",
+   "v7_label": "Electoral pressure",
+   "v7_title": "Risk of losing office",
+   "icon": "CL-011",
+   "icon_name": "Electoral Pressure",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-011-Electoral-Pressure-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-011-Electoral-Pressure-Red-Black.svg"
+  },
+  {
+   "variable": "C4",
+   "area": "C",
+   "v7_label": "Incumbent control of election rules",
+   "v7_title": "Officeholders' control over election rules",
+   "icon": "CL-012",
+   "icon_name": "Election Rules",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-012-Election-Rules-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-012-Election-Rules-Red-Black.svg"
+  },
+  {
+   "variable": "C5",
+   "area": "C",
+   "v7_label": "Sanction applied",
+   "v7_title": "Incumbents defeated or pushed into retirement",
+   "icon": "CL-013",
+   "icon_name": "Incumbent Defeat",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-013-Incumbent-Defeat-Red-Black.svg"
+  },
+  {
+   "variable": "D1",
+   "area": "D",
+   "v7_label": "Congressional capacity",
+   "v7_title": "Congress's ability to write and check policy",
+   "icon": "CL-025",
+   "icon_name": "Congress",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-025-Congress-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-025-Congress-Red-Black.svg"
+  },
+  {
+   "variable": "D2",
+   "area": "D",
+   "v7_label": "Executive unilateralism",
+   "v7_title": "Presidential action without new legislation",
+   "icon": "CL-026",
+   "icon_name": "Executive Power",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-026-Executive-Power-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-026-Executive-Power-Red-Black.svg"
+  },
+  {
+   "variable": "D3",
+   "area": "D",
+   "v7_label": "Doctrine favoring the appointing coalition",
+   "v7_title": "Court rulings favoring the appointing coalition",
+   "icon": "CL-027",
+   "icon_name": "Court Alignment",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-027-Court-Alignment-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-027-Court-Alignment-Red-Black.svg"
+  },
+  {
+   "variable": "D4",
+   "area": "D",
+   "v7_label": "Oversight and enforcement",
+   "v7_title": "Ability to investigate and enforce the rules",
+   "icon": "CL-028",
+   "icon_name": "Watchdogs",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-028-Watchdogs-Red-Black.svg"
+  },
+  {
+   "variable": "D5",
+   "area": "D",
+   "v7_label": "Public service quality",
+   "v7_title": "Quality of public services",
+   "icon": "CL-029",
+   "icon_name": "Public Services",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-029-Public-Services-Red-Black.svg"
+  },
+  {
+   "variable": "D6",
+   "area": "D",
+   "v7_label": "State and local experimentation",
+   "v7_title": "State and local testing of reforms",
+   "icon": "CL-030",
+   "icon_name": "Reform Tests",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-030-Reform-Tests-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-030-Reform-Tests-Red-Black.svg"
+  },
+  {
+   "variable": "D7",
+   "area": "D",
+   "v7_label": "Entrenched majority control",
+   "v7_title": "Entrenched control of rule-setting institutions",
+   "icon": "CL-014",
+   "icon_name": "Entrenched Power",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-014-Entrenched-Power-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-014-Entrenched-Power-Red-Black.svg"
+  },
+  {
+   "variable": "E1",
+   "area": "E",
+   "v7_label": "Policy tilt to insiders",
+   "v7_title": "Policy advantages for wealthy and organized interests",
+   "icon": "CL-017",
+   "icon_name": "Policy Favoritism",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-017-Policy-Favoritism-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-017-Policy-Favoritism-Red-Black.svg"
+  },
+  {
+   "variable": "E2",
+   "area": "E",
+   "v7_label": "Warranted trust",
+   "v7_title": "Trust earned through performance",
+   "icon": "CL-018",
+   "icon_name": "Earned Trust",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-018-Earned-Trust-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-018-Earned-Trust-Red-Black.svg"
+  },
+  {
+   "variable": "X1",
+   "area": "X",
+   "v7_label": "What new technology can do",
+   "v7_title": "What new technology can do",
+   "icon": "CL-034",
+   "icon_name": "New Technology",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-034-New-Technology-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-034-New-Technology-Red-Black.svg"
+  },
+  {
+   "variable": "X2",
+   "area": "X",
+   "v7_label": "Population patterns and residential sorting",
+   "v7_title": "Population patterns and residential sorting",
+   "icon": "CL-035",
+   "icon_name": "Residential Sorting",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-035-Residential-Sorting-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-035-Residential-Sorting-Red-Black.svg"
+  },
+  {
+   "variable": "X3",
+   "area": "X",
+   "v7_label": "Trade and the movement of capital",
+   "v7_title": "Trade and the movement of capital",
+   "icon": "CL-036",
+   "icon_name": "Cross-Border Capital",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-036-Cross-Border-Capital-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-036-Cross-Border-Capital-Red-Black.svg"
+  },
+  {
+   "variable": "X4",
+   "area": "X",
+   "v7_label": "Foreign interference",
+   "v7_title": "Foreign interference",
+   "icon": "CL-037",
+   "icon_name": "Foreign Interference",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-037-Foreign-Interference-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-037-Foreign-Interference-Red-Black.svg"
+  },
+  {
+   "variable": "X5",
+   "area": "X",
+   "v7_label": "Major external shocks",
+   "v7_title": "Major external shocks",
+   "icon": "CL-038",
+   "icon_name": "External Shocks",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-038-External-Shocks-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-038-External-Shocks-Red-Black.svg"
+  },
+  {
+   "variable": "EC1",
+   "area": "EC",
+   "v7_label": "Output produced per hour of work",
+   "v7_title": "Output produced per hour of work",
+   "icon": "CL-055",
+   "icon_name": "Productivity",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-055-Productivity-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-055-Productivity-Red-Black.svg"
+  },
+  {
+   "variable": "EC2",
+   "area": "EC",
+   "v7_label": "Public investment in research and infrastructure",
+   "v7_title": "Public investment in research and infrastructure",
+   "icon": "CL-056",
+   "icon_name": "Public Investment",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-056-Public-Investment-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-056-Public-Investment-Red-Black.svg"
+  },
+  {
+   "variable": "EC3",
+   "area": "EC",
+   "v7_label": "Workers' share of income",
+   "v7_title": "Workers' share of income",
+   "icon": "CL-057",
+   "icon_name": "Labor Share",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-057-Labor-Share-Red-Black.svg"
+  },
+  {
+   "variable": "EC4",
+   "area": "EC",
+   "v7_label": "Concentration of stock ownership",
+   "v7_title": "Concentration of stock ownership",
+   "icon": "CL-058",
+   "icon_name": "Stock Ownership",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-058-Stock-Ownership-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-058-Stock-Ownership-Red-Black.svg"
+  },
+  {
+   "variable": "EC6",
+   "area": "EC",
+   "v7_label": "Net support from taxes and public benefits",
+   "v7_title": "Net support from taxes and public benefits",
+   "icon": "CL-060",
+   "icon_name": "Taxes & Benefits",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-060-Taxes-And-Benefits-Red-Black.svg"
+  },
+  {
+   "variable": "EC7",
+   "area": "EC",
+   "v7_label": "Household income",
+   "v7_title": "Household income",
+   "icon": "CL-061",
+   "icon_name": "Household Income",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-061-Household-Income-Red-Black.svg"
+  },
+  {
+   "variable": "EC8",
+   "area": "EC",
+   "v7_label": "Household assets and debts",
+   "v7_title": "Household assets and debts",
+   "icon": "CL-062",
+   "icon_name": "Assets & Debt",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-062-Assets-And-Debt-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-062-Assets-And-Debt-Red-Black.svg"
+  },
+  {
+   "variable": "EC9",
+   "area": "EC",
+   "v7_label": "Cost of essentials",
+   "v7_title": "Cost of essentials",
+   "icon": "CL-063",
+   "icon_name": "Essential Costs",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Red-Black.svg"
+  },
+  {
+   "variable": "EC5",
+   "area": "EC",
+   "v7_label": "Where newly created credit goes",
+   "v7_title": "Where newly created credit goes",
+   "icon": "CL-059",
+   "icon_name": "Credit Allocation",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-059-Credit-Allocation-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-059-Credit-Allocation-Red-Black.svg"
+  },
+  {
+   "variable": "EC10",
+   "area": "EC",
+   "v7_label": "Costs of tariffs and trade rules",
+   "v7_title": "Costs of tariffs and trade rules",
+   "icon": "CL-064",
+   "icon_name": "Trade Costs",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-064-Trade-Costs-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-064-Trade-Costs-Red-Black.svg"
+  },
+  {
+   "variable": "EC11",
+   "area": "EC",
+   "v7_label": "Climate hazards and insurance costs",
+   "v7_title": "Climate hazards and insurance costs",
+   "icon": "CL-065",
+   "icon_name": "Climate & Insurance",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-065-Climate-And-Insurance-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-065-Climate-And-Insurance-Red-Black.svg"
+  },
+  {
+   "variable": "EC12",
+   "area": "EC",
+   "v7_label": "Energy demand and emissions",
+   "v7_title": "Energy demand and emissions",
+   "icon": "CL-066",
+   "icon_name": "Energy & Emissions",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-066-Energy-And-Emissions-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-066-Energy-And-Emissions-Red-Black.svg"
+  },
+  {
+   "variable": "TC1",
+   "area": "TC",
+   "v7_label": "How platforms rank feeds and seek attention",
+   "v7_title": "How platforms rank feeds and seek attention",
+   "icon": "CL-039",
+   "icon_name": "Feed Ranking",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-039-Feed-Ranking-Red-Black.svg"
+  },
+  {
+   "variable": "TC2",
+   "area": "TC",
+   "v7_label": "Concentration of platforms and digital advertising",
+   "v7_title": "Concentration of platforms and digital advertising",
+   "icon": "CL-040",
+   "icon_name": "Platform Power",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-040-Platform-Power-Red-Black.svg"
+  },
+  {
+   "variable": "TC3",
+   "area": "TC",
+   "v7_label": "Use of AI at work",
+   "v7_title": "Use of AI at work",
+   "icon": "CL-041",
+   "icon_name": "Workplace AI",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-041-Workplace-AI-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-041-Workplace-AI-Red-Black.svg"
+  },
+  {
+   "variable": "TC4",
+   "area": "TC",
+   "v7_label": "Concentration of AI funding and computing power",
+   "v7_title": "Concentration of AI funding and computing power",
+   "icon": "CL-042",
+   "icon_name": "AI Concentration",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-042-AI-Concentration-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-042-AI-Concentration-Red-Black.svg"
+  },
+  {
+   "variable": "TC5",
+   "area": "TC",
+   "v7_label": "Government's ability to build and run digital services",
+   "v7_title": "Government's ability to build and run digital services",
+   "icon": "CL-043",
+   "icon_name": "Digital Government",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-043-Digital-Government-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-043-Digital-Government-Red-Black.svg"
+  },
+  {
+   "variable": "TC6",
+   "area": "TC",
+   "v7_label": "Data centers' demand on the electricity grid",
+   "v7_title": "Data centers' demand on the electricity grid",
+   "icon": "CL-044",
+   "icon_name": "Grid Demand",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-044-Grid-Demand-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-044-Grid-Demand-Red-Black.svg"
+  },
+  {
+   "variable": "TC7",
+   "area": "TC",
+   "v7_label": "Use of pricing algorithms",
+   "v7_title": "Use of pricing algorithms",
+   "icon": "CL-045",
+   "icon_name": "Pricing Algorithms",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-045-Pricing-Algorithms-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-045-Pricing-Algorithms-Red-Black.svg"
+  },
+  {
+   "variable": "TC8",
+   "area": "TC",
+   "v7_label": "Computing capacity built for AI",
+   "v7_title": "Computing capacity built for AI",
+   "icon": "CL-046",
+   "icon_name": "AI Infrastructure",
+   "black": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-046-AI-Infrastructure-Black.svg",
+   "red_black": "work/build/assets/civic-line/red-black/20261029_Oath-And-Action-Civic-Line-CL-046-AI-Infrastructure-Red-Black.svg"
+  }
+ ],
+ "reforms": [
+  {
+   "reform": "R-01",
+   "title": "All-party primaries with ranked general elections",
+   "icon": "R-01",
+   "icon_name": "All-Party Primaries"
+  },
+  {
+   "reform": "R-02",
+   "title": "Ranked-choice voting for single-winner races",
+   "icon": "R-02",
+   "icon_name": "Ranked-Choice Voting"
+  },
+  {
+   "reform": "R-03",
+   "title": "Proportional elections in multi-seat House districts",
+   "icon": "R-03",
+   "icon_name": "Proportional Elections"
+  },
+  {
+   "reform": "R-04",
+   "title": "Independent citizen commissions draw election maps",
+   "icon": "R-04",
+   "icon_name": "Citizen Map Commissions"
+  },
+  {
+   "reform": "R-05",
+   "title": "Automatic voter registration",
+   "icon": "R-05",
+   "icon_name": "Automatic Registration"
+  },
+  {
+   "reform": "R-06",
+   "title": "Hold local elections alongside November races",
+   "icon": "R-06",
+   "icon_name": "On-Cycle Elections"
+  },
+  {
+   "reform": "R-07",
+   "title": "Public matching for small donations and vouchers",
+   "icon": "R-07",
+   "icon_name": "Small-Donor Matching"
+  },
+  {
+   "reform": "R-08",
+   "title": "Disclose the original funders of political spending",
+   "icon": "R-08",
+   "icon_name": "Donor Disclosure"
+  },
+  {
+   "reform": "R-09",
+   "title": "Ban stock trading by members of Congress",
+   "icon": "R-09",
+   "icon_name": "Stock-Trading Ban"
+  },
+  {
+   "reform": "R-10",
+   "title": "Limits on lobbying and the revolving door",
+   "icon": "R-10",
+   "icon_name": "Revolving-Door Limits"
+  },
+  {
+   "reform": "R-11",
+   "title": "A Federal Election Commission able to act",
+   "icon": "R-11",
+   "icon_name": "Election Enforcement"
+  },
+  {
+   "reform": "R-12",
+   "title": "Senate filibuster reform",
+   "icon": "R-12",
+   "icon_name": "Filibuster Reform"
+  },
+  {
+   "reform": "R-13",
+   "title": "Rebuild Congress's own staff and experts",
+   "icon": "R-13",
+   "icon_name": "Congressional Capacity"
+  },
+  {
+   "reform": "R-14",
+   "title": "Automatic funding to prevent government shutdowns",
+   "icon": "R-14",
+   "icon_name": "Automatic Funding"
+  },
+  {
+   "reform": "R-15",
+   "title": "Inspectors general with remedies that work",
+   "icon": "R-15",
+   "icon_name": "Watchdog Remedies"
+  },
+  {
+   "reform": "R-16",
+   "title": "Supreme Court 18-year terms and enforceable ethics",
+   "icon": "R-16",
+   "icon_name": "Court Terms & Ethics"
+  },
+  {
+   "reform": "R-17",
+   "title": "Protect the career civil service",
+   "icon": "R-17",
+   "icon_name": "Civil Service"
+  },
+  {
+   "reform": "R-18",
+   "title": "Expiring emergency powers and enforced spending law",
+   "icon": "R-18",
+   "icon_name": "Emergency-Power Limits"
+  },
+  {
+   "reform": "R-19",
+   "title": "Rules for drug-pricing middlemen (PBMs)",
+   "icon": "R-19",
+   "icon_name": "Drug-Pricing Rules"
+  },
+  {
+   "reform": "R-20",
+   "title": "Merger enforcement for consumers and workers",
+   "icon": "R-20",
+   "icon_name": "Merger Enforcement"
+  },
+  {
+   "reform": "R-21",
+   "title": "Faster labor-law remedies and first-contract arbitration",
+   "icon": "R-21",
+   "icon_name": "Labor-Law Remedies"
+  },
+  {
+   "reform": "R-22",
+   "title": "Industry-wide wage boards and sector bargaining",
+   "icon": "R-22",
+   "icon_name": "Wage Boards"
+  },
+  {
+   "reform": "R-23",
+   "title": "Minimum wage that rises with an index",
+   "icon": "R-23",
+   "icon_name": "Indexed Minimum Wage"
+  },
+  {
+   "reform": "R-24",
+   "title": "Paid family and medical leave insurance",
+   "icon": "R-24",
+   "icon_name": "Paid Leave"
+  },
+  {
+   "reform": "R-25",
+   "title": "Full child tax credit for low-earning families",
+   "icon": "R-25",
+   "icon_name": "Child Tax Credit"
+  },
+  {
+   "reform": "R-26",
+   "title": "Recession aid that starts automatically",
+   "icon": "R-26",
+   "icon_name": "Automatic Recession Aid"
+  },
+  {
+   "reform": "R-27",
+   "title": "IRS enforcement of taxes already owed",
+   "icon": "R-27",
+   "icon_name": "Tax Enforcement"
+  },
+  {
+   "reform": "R-28",
+   "title": "Taxing inherited gains and capital income",
+   "icon": "R-28",
+   "icon_name": "Capital-Income Tax"
+  },
+  {
+   "reform": "R-29",
+   "title": "Baby bonds: publicly funded child accounts",
+   "icon": "R-29",
+   "icon_name": "Baby Bonds"
+  },
+  {
+   "reform": "R-30",
+   "title": "More homes allowed by right near jobs",
+   "icon": "R-30",
+   "icon_name": "By-Right Housing"
+  },
+  {
+   "reform": "R-31",
+   "title": "Childcare supply and pay for care workers",
+   "icon": "R-31",
+   "icon_name": "Childcare Supply"
+  },
+  {
+   "reform": "R-32",
+   "title": "Public and philanthropic funding for local news",
+   "icon": "R-32",
+   "icon_name": "Local-News Funding"
+  },
+  {
+   "reform": "R-33",
+   "title": "Citizen assemblies that officials must answer",
+   "icon": "R-33",
+   "icon_name": "Citizen Assemblies"
+  },
+  {
+   "reform": "R-34",
+   "title": "Participatory budgeting: residents decide spending",
+   "icon": "R-34",
+   "icon_name": "Participatory Budgeting"
+  },
+  {
+   "reform": "R-35",
+   "title": "Rejected option: term limits for legislators",
+   "icon": "R-35",
+   "icon_name": "Term Limits \u00b7 Rejected"
+  },
+  {
+   "reform": "R-36",
+   "title": "Lasting public investment in research and infrastructure",
+   "icon": "R-36",
+   "icon_name": "Public Investment"
+  },
+  {
+   "reform": "R-37",
+   "title": "Feed choice and data access for researchers",
+   "icon": "R-37",
+   "icon_name": "Feed Choice"
+  },
+  {
+   "reform": "R-38",
+   "title": "Limits on pricing software using rivals' data",
+   "icon": "R-38",
+   "icon_name": "Pricing-Data Limits"
+  },
+  {
+   "reform": "R-39",
+   "title": "Government teams that build digital services",
+   "icon": "R-39",
+   "icon_name": "Digital Service Teams"
+  },
+  {
+   "reform": "R-40",
+   "title": "Notice and a voice for workers on AI",
+   "icon": "R-40",
+   "icon_name": "Worker Voice on AI"
+  },
+  {
+   "reform": "R-41",
+   "title": "Large power users pay their grid costs",
+   "icon": "R-41",
+   "icon_name": "Grid Cost Allocation"
+  },
+  {
+   "reform": "R-42",
+   "title": "Congress votes on lasting tariffs",
+   "icon": "R-42",
+   "icon_name": "Congressional Tariff Votes"
+  },
+  {
+   "reform": "R-43",
+   "title": "Building codes and mitigation against disaster losses",
+   "icon": "R-43",
+   "icon_name": "Disaster Mitigation"
+  },
+  {
+   "reform": "R-44",
+   "title": "Competition remedies for search and ad markets",
+   "icon": "R-44",
+   "icon_name": "Digital Competition"
+  },
+  {
+   "reform": "R-45",
+   "title": "Verifiable elections with paper records and audits",
+   "icon": "R-45",
+   "icon_name": "Paper Ballots & Audits"
+  },
+  {
+   "reform": "R-46",
+   "title": "Expand the House of Representatives",
+   "icon": "R-46",
+   "icon_name": "Expand the House"
+  },
+  {
+   "reform": "R-47",
+   "title": "Fusion voting and public funding for parties",
+   "icon": "R-47",
+   "icon_name": "Fusion Voting"
+  },
+  {
+   "reform": "R-48",
+   "title": "Agency independence after the Slaughter ruling",
+   "icon": "R-48",
+   "icon_name": "Agency Independence"
+  },
+  {
+   "reform": "R-49",
+   "title": "Civic work that crosses party lines",
+   "icon": "R-49",
+   "icon_name": "Cross-Party Civic Work"
+  },
+  {
+   "reform": "R-50",
+   "title": "Popular-vote compact and constitutional amendment options",
+   "icon": "R-50",
+   "icon_name": "Popular-Vote Options"
+  }
+ ],
+ "concepts": {
+  "feedback_loop": "CL-024",
+  "evidence": "CL-023",
+  "policy": "CL-071",
+  "reform": "CL-072",
+  "explain": "CL-019",
+  "track": "CL-020",
+  "connect": "CL-021",
+  "act": "CL-022"
+ }
+}

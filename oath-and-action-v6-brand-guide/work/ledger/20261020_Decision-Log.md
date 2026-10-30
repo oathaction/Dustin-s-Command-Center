@@ -173,3 +173,34 @@ Dustin confirmed the Civic Line icons in both editions, approved the studio's re
 | D2-44 | In tiles, 36 icons take an optical scale from 0.94 to 1.09 with the line capped at 3.35 units, and 8 asymmetric icons move up to 3.8 units toward their light side; bare files keep ink-box centering | Narrows the size spread in tiles from 1.44 to 1.24 times (variant review S-1, S-2) |
 | D2-45 | All 32 sheets share one header and footer geometry, each row's captions share one baseline, and the package text uses American spelling | Variant review S-3, S-4, S-6 |
 | D2-46 | The light editions keep the dark editions' stroke | The design director found no visible gain in apparent weight from Newsprint on Charcoal |
+
+## Atlas visual system, October 30, 2026
+
+Dustin sent ten reference images, asked for a higher number of one-to-two-page concepts (the whole system plus one close-up each) built partly from his references and partly from scratch by a fresh agent, with civic education, visual design, data visualization and interaction experts where they add value. The studio asked eight questions and named two defaults. His answer: "yes i agree with all defaults. please proceed."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-12 | Twelve concepts: five grown from Dustin's boards, one from the October 28 studio pick (Loop Lines with the Field Guide), six from scratch. Each is an overview, one close-up and a strip of all 23 loops, at 1440 and 390 px | Dustin, October 30 |
+| DR-13 | Like-for-like close-ups: R10 for the loop and area C for the sub-system in every concept. R8 still appears in each loop strip | Dustin, October 30 |
+| DR-14 | No invented tier between area and variable. The levels are the system, an area with all its variables, a loop or variable, and a reform | Dustin, October 30 |
+| DR-15 | Each loop thumbnail is the loop's own route across its concept's system map, with each step's sign and evidence texture, so loops of the same length still look different | Dustin, October 30 |
+| DR-16 | Interaction: a working click from the overview into the close-up and back, with hover where wires are dense, in plain HTML. No app | Dustin, October 30 |
+| DR-17 | Grounds: a spread, at least four dark (Charcoal or Prussian) and four light (Newsprint or White) | Dustin, October 30 |
+| DR-18 | Reading of Rule 05.3 for interactive atlas views: with no reform in view, the selected item is "the one point the headline names" and may take the working red; with a reform in view, the reform's targets take it and selection goes to Charcoal, Newsprint or White. The rule's wording does not change | Dustin, October 30 (studio reading, no objection) |
+| DR-19 | The overview is written for a first-time public reader, with the evidence one click down | Dustin, October 30 |
+| DR-20 | The concepts are built from the committed model export, `work/boards/phase-2/maps/20261028_Maps-Model-Data.json`, generated from Atlas V7 on October 28. The raw V7 file stays on Dustin's machine and is not in this cloud container | Dustin, October 30 (default) |
+| DR-21 | The five generated reference boards are recorded as supplied by Dustin, study only, tool not recorded, as with Q-16 | Dustin, October 30 (default) |
+
+### Atlas concepts, studio decisions, October 30, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-47 | Atlas concept work lives in `work/boards/phase-2/atlas-concepts/`, with one folder per concept, and its notes in `work/handoffs/phase-2/` | One place per stage, matching D2-02 |
+| D2-48 | The tenth reference image repeats the fourth byte for byte (SHA-256 fd4f8073...), so nine images are saved | No duplicate files |
+| D2-49 | Every concept is one self-contained HTML file with hash views (`#overview`, `#area-c`, `#loop-r10`), Google Fonts for Inter, Inter Tight and Lora, and no other outside requests | The shared check script can open every view the same way, and the pages publish as private artifacts |
+| D2-50 | Every drawn V7 item carries data attributes (`data-node`, `data-link`, `data-loop`, `data-reform` with `data-sign`, `data-grade`, `data-name`), and one script checks them all against the model export | The October 28 verifiers caught every planted error this way; one verifier for twelve concepts keeps the test equal |
+| D2-51 | Every Pillar Red mark carries `data-red` ("signature" or "working") and working reds carry `data-red-job`; the check fails on unmarked red, on more than one working job in a view, and on red over Prussian | Rule 05.3 as read in DR-18, checked by script |
+| D2-52 | Civic Line icons may appear on maps and cards exactly as drawn, copied from the approved package with their ids rewritten to stay unique on the page (D2-43). No concept redraws or recolors one beyond its approved editions | The set is approved and closed (DR-07) |
+| D2-53 | The studio agent role files sit in the project's `.claude/agents/`, outside this session's roster, so each studio role runs as a general-purpose agent briefed to read and adopt its file, as in D0-02. The civic education expert and the from-scratch ideation agent have no role file and work from written briefs | Same constraint as Phase 0 |
+| D2-54 | The from-scratch ideation agent sees only the model export, the locked palette and type, Rule 05.3 and the problem statement. It reads no earlier board, review or reference | Dustin asked for an approach without prior knowledge |
+| D2-55 | axe-core 4.10.2 reinstalled in `work/build/node_modules/` for the checks (not committed, per D0-05) | The container started without it |
