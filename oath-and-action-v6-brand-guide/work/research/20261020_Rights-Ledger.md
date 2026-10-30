@@ -427,3 +427,13 @@ Dustin sent ten images on October 30 as inspiration for the atlas and systems ma
 | `20261030_Ref-Atlas-Civic-Architecture-Layers.webp` | "The architecture of accountability", areas as stacked floors with line icons and a selected-component panel | As above |
 | `20261030_Ref-Atlas-Civic-Landscape.webp` | "Find your place in the system", areas as rounded territories with a housing panel | As above |
 | `20261030_Ref-Atlas-Civic-Circuit-Grouped-Overview.webp` | "How the system connects", a dark grouped overview with bracket trees and an R8 panel | As above |
+
+## Added October 30, 2026: references for the data visualization system
+
+Dustin sent three images and four links on October 30 as references for an Oath & Action data visualization system (charts, graphs, maps, tables). The images are saved in `work/research/chat-references/data-viz/`. All are study only and never ship. The links are logged in `work/research/20261030_Data-Viz-System-References.md` with the date each page was read.
+
+| File | What it shows | Rights and use |
+|---|---|---|
+| `20261030_Ref-Data-Viz-Chart-Collage-Blue-Teal.webp` | A collage of chart forms in navy and teal: bars, donuts, streamgraph, waffle, Sankey, parliament chart, maps | Third-party; source unknown. Study only |
+| `20261030_Ref-Data-Viz-Utilitarian-Graphic-Assets.webp` | A commercial pack of "utilitarian" vector chart and diagram assets on grey paper, credited "Designed by Vanzyst" | Third-party commercial asset pack. Study only; never trace or use its assets |
+| `20261030_Ref-Data-Viz-Economist-Chart-Montage.webp` | A montage of The Economist's charts around its logo | Third-party; The Economist's trademark and charts. Study only |

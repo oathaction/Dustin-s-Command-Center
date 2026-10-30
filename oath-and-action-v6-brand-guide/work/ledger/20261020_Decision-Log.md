@@ -209,3 +209,16 @@ Dustin sent ten reference images, asked for a higher number of one-to-two-page c
 | D2-58 | Until Dustin decides P3, the current icon's red in a row or menu counts as the view's working red; a standalone icon's red stays signature. The `icon_svg()` docstring says so | Keeps one working job per view under Rule 05.3 as worded today |
 | D2-59 | Dim Newsprint #A3A19C, adopted at Gate 1 under T4, joins the atlas palette for secondary text on Charcoal and Prussian | The brief and the shared palette had left it out |
 | D2-60 | One stroke family for atlas drawings: 1, 1.5, 2, 3 and 6 px, with evidence patterns drawn in multiples of the line width; interaction states use 2, 3 and 6 px | A texture keeps its shape from overview to lit route (design frame memo) |
+
+## Data visualization references, October 30, 2026
+
+Dustin sent three images and four links (J. Albert Gagnier's New York Times case study, the Carbon Design System, BBC GEL, and The New York Times graphics page) for "a cool oath & action brand system for data visualizations, charts, graphs, maps, tables, and displaying data different ways", with "pay particular attention to nytimes. i like their visual style. not sure when this info will be appropriate."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-22 | The research lead reviews the four sites and three images now and writes a reference brief. The data visualization system itself is chapter 14 (Phase 3) and is built under its own plan, which goes to Dustin first | Dustin, October 30 |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-61 | The research runs in parallel with the atlas Stage 1 work and edits none of its files | Independent inputs; no conflict |
+| D2-62 | Network check, October 30: page fetches now reach most sites through the session proxy (Q-11), but nytimes.com refuses automated requests (HTTP 403). The studio respects that refusal and makes no attempt to get around it. The research lead reads about the Times's graphics only through material published openly elsewhere (the Gagnier case study, the Times's public code repositories, talks and write-ups on other sites, search results) and marks every claim it could not read first hand | Honesty rule; brief section 2; the site's own access choice |
