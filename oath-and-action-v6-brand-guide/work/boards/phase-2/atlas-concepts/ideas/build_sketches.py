@@ -454,7 +454,7 @@ def header(svg, headline, dark=False, x=16, y=26, width=88):
     ink = NEWS if dark else CHAR
     sub = NEWS if dark else STONE
     svg.add(R(x, y - 14, 58, 19, fill="none", stroke=ink, sw=1, rx=2),
-            T(x + 29, y, "SKETCH", 13, ink, 600, "middle", ls=1.2))
+            T(x + 29, y, "Sketch", 13, ink, 600, "middle", ls=0.6))
     lines = wrap(headline, width)
     svg.add(TL(x + 70, y, lines, 13, 17, fill=ink, weight=500))
     return len(lines)
@@ -555,7 +555,7 @@ def gc_loop_layout(lid):
     touched = {AREA_OF[c] for c in codes}
     if not codes:
         return GC_ANG, GC_SPAN
-    ang, sp = gc_layout({a: 3.5 for a in touched})
+    ang, sp = gc_layout({a: 6.0 for a in touched})
     rot = cmean(GC_ANG, codes) - cmean(ang, codes)
     return {n: a + rot for n, a in ang.items()}, {a: (s0 + rot, s1 + rot) for a, (s0, s1) in sp.items()}
 
@@ -639,7 +639,7 @@ def sketch_great_circle():
     for l in LINKS.values():
         if AREA_OF[l["from"]] == "X" and AREA_OF[l["to"]] in CORE_AREAS:
             xt[l["from"]].append(l)
-    discs = {"EC": (34, 222, ["Economy", "layer"], 12), "TC": (34, 356, ["Technology"], 8)}
+    discs = {"EC": (40, 222, ["Economy", "layer"], 12), "TC": (40, 346, ["Technology"], 8)}
     for g, (dx, dy, name, cnt) in discs.items():
         for l in LINKS.values():
             fa, ta = AREA_OF[l["from"]], AREA_OF[l["to"]]
@@ -673,7 +673,7 @@ def sketch_great_circle():
     for n in CORE:
         x, y = gc_pt(n, cx, cy, r)
         s.add(C(x, y, 3.6, fill=CHAR if LOOPCOUNT[n] else WHITE, stroke=CHAR, w=1))
-    xpos = {"X1": (176, 80), "X3": (112, 112), "X4": (334, 80), "X2": (396, 142), "X5": (120, 346)}
+    xpos = {"X1": (176, 80), "X3": (112, 112), "X4": (334, 80), "X2": (396, 142), "X5": (156, 372)}
     for xid, ls_ in xt.items():
         bx, by = xpos[xid]
         for l in ls_:
@@ -689,7 +689,7 @@ def sketch_great_circle():
         if g == "EC":
             s.add(TL(dx, dy + 33, name, 13, 15, fill=CHAR, weight=500, anchor="middle", halo=NEWS))
         else:
-            s.add(T(dx + 22, dy + 4.5, name[0], 13, CHAR, 500, halo=NEWS))
+            s.add(T(dx, dy + 33, name[0], 13, CHAR, 500, "middle", halo=NEWS))
     for a in CORE_AREAS:
         a0, a1 = GC_SPAN[a]
         mid = (a0 + a1) / 2
@@ -704,8 +704,8 @@ def sketch_great_circle():
         yy = y + 4 - (len(lines) - 1) * 7.5 + (9 if sn > 0.8 else 0) - (3 if sn < -0.8 else 0)
         s.add(TL(x, yy, lines, 13, 15, fill=CHAR, weight=600, anchor=anchor, halo=NEWS, fam="tight"))
     mx, my = qpt(p0, c42, p1, 0.5)
-    s.add(L(mx, my, 372, 338, CHAR, 0.7), C(mx, my, 2, fill=CHAR, stroke=None))
-    s.add(TL(342, 354, ["L42, in R4a, R10, R12.", "R-03 and R-04 act here."], 13, 15, fill=CHAR, weight=500, halo=NEWS))
+    s.add(L(mx, my, 436, 292, CHAR, 0.7), C(mx, my, 2, fill=CHAR, stroke=None))
+    s.add(TL(462, 306, ["L42 sits in", "three loops.", "R-03 and R-04", "act here."], 13, 15, fill=CHAR, weight=500, anchor="end", halo=NEWS))
     px = 482
     s.add(L(px - 12, 66, px - 12, 390, STONE, 0.6))
     s.add(T(px, 82, "R10, magnified", 13, CHAR, 700))
@@ -737,11 +737,11 @@ def star_layout():
     XA = {"X1": (36, 190), "X2": (448, 78), "X3": (232, 382), "X4": (300, 76), "X5": (448, 384)}
     for n in ORDER:
         a = AREA_OF[n]
-        anchors[n] = (*XA[n], 4.0) if a == "X" else (*A_[a], 2.2)
-    edges = [(l["from"], l["to"], 1.0 if l["loops"] else 0.25) for l in LINKS.values()]
+        anchors[n] = (*XA[n], 4.0) if a == "X" else (*A_[a], 3.0)
+    edges = [(l["from"], l["to"], 0.55 if l["loops"] else 0.12) for l in LINKS.values()]
     radii = {n: 5 + 0.38 * DEG[n] for n in ORDER}
-    return force_layout(ORDER, edges, anchors, STAR_BOX, iters=900, seed=11, kscale=0.7,
-                        grav=0.06, radii=radii)
+    return force_layout(ORDER, edges, anchors, STAR_BOX, iters=900, seed=11, kscale=0.62,
+                        grav=0.08, radii=radii)
 
 
 STAR = star_layout()
@@ -824,13 +824,44 @@ def sketch_star_atlas():
     cent = defaultdict(list)
     for (gx, gy), a in grid.items():
         cent[a].append((box[0] + (gx + 0.5) * cell, box[1] + (gy + 0.5) * cell))
-    names = {"A": ["ECONOMIC", "STRUCTURE"], "B": ["POLITICAL INPUTS"], "C": ["ELECTORAL", "COMPETITION"],
-             "D": ["GOVERNING", "INSTITUTIONS"], "E": ["LEGITIMACY"], "TC": ["TECHNOLOGY"], "EC": ["ECONOMY LAYER"]}
-    lpos = {"A": (70, 214), "B": (236, 82), "C": (398, 82), "D": (408, 372), "E": (262, 322),
-            "TC": (86, 82), "EC": (110, 384)}
+    names = {"A": ["ECONOMIC", "STRUCTURE"], "B": ["POLITICAL", "INPUTS"], "C": ["ELECTORAL", "COMPETITION"],
+             "D": ["GOVERNING", "INSTITUTIONS"], "E": ["LEGITIMACY"], "TC": ["TECHNOLOGY"], "EC": ["ECONOMY", "LAYER"]}
+    x2, y2 = STAR["C2"]
+    c2_right = x2 < 330
+    c2w = 150
+    obstacles = [((x2 + 8, y2 - 30, x2 + 8 + c2w, y2 + 2) if c2_right else (x2 - 8 - c2w, y2 - 30, x2 - 8, y2 + 2))]
+    for n in ORDER:
+        obstacles.append((STAR[n][0] - 7, STAR[n][1] - 7, STAR[n][0] + 7, STAR[n][1] + 7))
+    obstacles.append((STAR["E1"][0] - 76, STAR["E1"][1] + 8, STAR["E1"][0] + 76, STAR["E1"][1] + 27))
+
+    def region_at(x, y):
+        gx, gy = int((x - box[0]) / cell), int((y - box[1]) / cell)
+        return grid.get((gx, gy))
+
     for a, nm in names.items():
-        x, y = lpos[a]
-        s.add(TL(x, y, nm, 13, STONE, 600, anchor="middle", lh=15, ls=1.1, halo=CHAR))
+        cells = cent.get(a, [])
+        if not cells:
+            continue
+        mx = sum(p[0] for p in cells) / len(cells)
+        my = sum(p[1] for p in cells) / len(cells)
+        wdt = max(len(t) for t in nm) * 8.6
+        hgt = 15 * len(nm)
+        best = None
+        for (x, y) in cells:
+            rect = (x - wdt / 2, y - 12, x + wdt / 2, y - 12 + hgt)
+            if rect[0] < box[0] + 3 or rect[2] > box[2] - 3 or rect[1] < box[1] + 3 or rect[3] > box[3] - 3:
+                continue
+            if region_at(x, y) != a:
+                continue
+            if any(not (rect[2] < o[0] or rect[0] > o[2] or rect[3] < o[1] or rect[1] > o[3]) for o in obstacles):
+                continue
+            dist = (x - mx) ** 2 + (y - my) ** 2
+            if best is None or dist < best[0]:
+                best = (dist, x, y, rect)
+        if best:
+            _, x, y, rect = best
+            obstacles.append(rect)
+            s.add(TL(x, y, nm, 13, 15, fill=STONE, weight=600, anchor="middle", ls=1.1, halo=CHAR))
     order_loops = sorted([x for x in LOOP_ORDER if not is_sketch(x)], key=lambda x: LOOPS[x]["type"] == "B")
     for lid in order_loops:
         star_loop(s, lid, STAR, star_r, 1.15 if LOOPS[lid]["type"] == "R" else 1.6, True)
@@ -846,7 +877,7 @@ def sketch_star_atlas():
     x, y = STAR["E1"]
     s.add(T(x, y + 22, "Policy tilt to insiders", 13, NEWS, 500, "middle", halo=CHAR))
     x, y = STAR["C2"]
-    right = x < 360
+    right = x < 330
     s.add(TL(x + (10 if right else -10), y - 16, ["Primary decisiveness", "R-01 acts here"], 13, 15,
              fill=NEWS, weight=500, anchor="start" if right else "end", halo=CHAR))
     pts = [STAR[c] for c in ("C1", "C2", "C3", "C4")]
@@ -1137,17 +1168,17 @@ def sketch_honeycomb():
     s = Svg("s4", bg=NEWS, title="Honeycomb sketch")
     header(s, "Fifty-one equal tiles in ten territories. Two reforms, R-03 and R-46, act on safe seats.", width=84)
     c0, c1, r0, r1 = hex_bounds()
-    r = 16.8
+    r = 18.4
     w = math.sqrt(3) * r
-    x0 = 20 + w / 2 - c0 * w
-    y0 = 96 - r0 * 1.5 * r
+    x0 = 22 + w / 2 - c0 * w
+    y0 = 90 - r0 * 1.5 * r
     for n in ORDER:
         x, y = hex_center(HEX[n], x0, y0, r)
         s.add(poly(hex_pts(x, y, r - 0.6), WHITE, STONE, 0.5))
-        s.add(s.icon(n, "black", x - 10.5, y - 13, 21))
+        s.add(s.icon(n, "black", x - 12, y - 14.5, 24))
         k = LOOPCOUNT[n]
         for i in range(k):
-            s.add(C(x - (k - 1) * 2.1 + i * 4.2, y + 10.5, 1.5, fill=PRU, stroke=None))
+            s.add(C(x - (k - 1) * 2.2 + i * 4.4, y + 11.8, 1.6, fill=PRU, stroke=None))
     for n in ORDER:
         x, y = hex_center(HEX[n], x0, y0, r)
         for a, b in hex_edges(n, x, y, r - 0.6):
@@ -1155,47 +1186,53 @@ def sketch_honeycomb():
     x, y = hex_center(HEX["C1"], x0, y0, r)
     s.add(poly(hex_pts(x, y, r - 2.4), "none", RED, 2.6))
 
-    def at(col, row):
-        return x0 + w * (col + 0.5 * (int(round(row)) & 1)), y0 + 1.5 * r * row
-
-    labels = [("Technology", 1.6, -0.95, "middle"), ("Economic structure", 2.1, 4.0, "middle"),
-              ("Political inputs", 6.7, 4.0, "middle"), ("Legitimacy", 10.3, 4.0, "middle"),
-              ("Electoral competition", 11.3, -0.95, "middle"), ("Governing institutions", 11.0, 7.0, "middle"),
-              ("Production", 1.6, 7.0, "middle"), ("Households", 4.4, 8.0, "middle"),
-              ("Credit, trade and environment", 8.1, 8.0, "start"), ("Outside drivers", 6.9, 6.0, "middle")]
-    for nm, col, row, an in labels:
-        x, y = at(col, row)
-        s.add(T(x, y + 4.5, nm, 13, CHAR, 600, an, fam="tight", halo=NEWS))
-    ix, iy = 466, 64
-    s.add(R(ix - 8, iy, 172, 326, fill=WHITE, stroke=STONE, sw=0.6))
-    s.add(T(ix + 2, iy + 22, "Area C opened", 13, CHAR, 700))
+    obstacles = []
+    for n in ORDER:
+        x, y = hex_center(HEX[n], x0, y0, r)
+        obstacles.append((x - r * 0.8, y - r * 0.62, x + r * 0.8, y + r * 0.62))
+    for a in LEDGER_AREAS:
+        members = AREA_NODES[a] if a != "X" else []
+        groups_ = [members] if members else [[n] for n in AREA_NODES["X"]]
+        for grp in groups_:
+            pts = sorted((hex_center(HEX[n], x0, y0, r) for n in grp), key=lambda p: (round(p[1]), p[0]))
+            x, y = pts[0]
+            bx, by = x - r * 0.62, y - r * 0.9
+            code = LEDGER_CODES[a]
+            s.add(R(bx - 8, by - 8, 16, 16, fill=CHAR, rx=2), T(bx, by + 4.6, code, 13, WHITE, 700, "middle"))
+    key = [("A", "Economic structure"), ("B", "Political inputs"), ("C", "Electoral competition"),
+           ("D", "Governing institutions"), ("E", "Legitimacy"), ("X", "Outside drivers"),
+           ("P", "Production and income"), ("H", "Household budgets"), ("M", "Credit, trade, environment"),
+           ("T", "Technology")]
+    for i, (c, nm) in enumerate(key):
+        kx, ky = (22, 198, 370)[i // 4], 350 + (i % 4) * 15
+        s.add(T(kx, ky, c, 13, CHAR, 700), T(kx + 15, ky, nm, 13, CHAR))
+    ix, iy = 492, 62
+    s.add(R(ix, iy, 140, 236, fill=WHITE, stroke=STONE, sw=0.6))
+    s.add(T(ix + 10, iy + 22, "Area C opened", 13, CHAR, 700))
     cn = AREA_NODES["C"]
-    rr = 26
+    rr = 22
     cxs = [hex_center(HEX[n], 0, 0, rr) for n in cn]
-    ox = ix + 78 - (min(p[0] for p in cxs) + max(p[0] for p in cxs)) / 2
+    ox = ix + 70 - (min(p[0] for p in cxs) + max(p[0] for p in cxs)) / 2
     oy = iy + 62 - min(p[1] for p in cxs)
     cpos = {}
     for n in cn:
         x, y = hex_center(HEX[n], 0, 0, rr)
         x, y = x + ox, y + oy
         cpos[n] = (x, y)
-        s.add(poly(hex_pts(x, y, rr - 1), NEWS, CHAR, 1.2))
-        s.add(s.icon(n, "black", x - 12, y - 16, 24))
-        s.add(T(x, y + 19, n, 13, CHAR, 600, "middle"))
+        s.add(poly(hex_pts(x, y, rr - 0.8), NEWS, CHAR, 1.1))
+        s.add(s.icon(n, "black", x - 11, y - 14, 22))
+        s.add(T(x, y + 16, n, 13, CHAR, 600, "middle"))
     for l in LINKS.values():
         if l["from"] in cn and l["to"] in cn:
             p0, p1 = cpos[l["from"]], cpos[l["to"]]
             dx, dy = p1[0] - p0[0], p1[1] - p0[1]
-            cc = ((p0[0] + p1[0]) / 2 - dy * 0.2, (p0[1] + p1[1]) / 2 + dx * 0.2)
-            a, q, b = qtrim(p0, cc, p1, 10, 10)
+            cc = ((p0[0] + p1[0]) / 2 - dy * 0.25, (p0[1] + p1[1]) / 2 + dx * 0.25)
+            a_, q, b_ = qtrim(p0, cc, p1, 8, 8)
             col = VERD if l["loops"] == ["B4"] else PRU
-            s.add(P(f"M{f1(a[0])} {f1(a[1])}Q{f1(q[0])} {f1(q[1])} {f1(b[0])} {f1(b[1])}", col, 2.0, l["evidence"]))
-            s.add(AH(b[0], b[1], qtan(a, q, b, 1), 6, col))
+            s.add(P(f"M{f1(a_[0])} {f1(a_[1])}Q{f1(q[0])} {f1(q[1])} {f1(b_[0])} {f1(b_[1])}", col, 2.0, l["evidence"]))
+            s.add(AH(b_[0], b_[1], qtan(a_, q, b_, 1), 5.5, col))
     ky = max(p[1] for p in cpos.values()) + rr + 18
-    lines = []
-    for n in cn:
-        lines += wrap(f"{n} {label(n)}", 23)
-    s.add(TL(ix + 2, ky, lines, 13, 15, fill=CHAR))
+    s.add(TL(ix + 10, ky, ["R10 runs C1, C2, C3,", "C4. B4 leaves C3", "for C5 in Verdigris."], 13, 15, fill=CHAR))
     return s.render()
 
 
@@ -1240,48 +1277,60 @@ def kt_parent(n):
 
 def kt_thumb(lid, size=76):
     def draw(s):
-        cx = cy = size / 2
-        r1, dr = 7.0, 5.6
         codes = [st["code"] for st in loop_stations(lid) if st["code"]]
         touched = {AREA_OF[c] for c in codes}
-        base, _ = kt_positions(cx, cy, r1, dr)
-        pos, _ = kt_positions(cx, cy, r1, dr, {a: 4.0 for a in touched})
-        if codes and any(c != HOME for c in codes):
-            cc = [c for c in codes if c != HOME]
-            want = cmean({c: math.atan2(base[c][1] - cy, base[c][0] - cx) for c in cc}, cc)
-            have = cmean({c: math.atan2(pos[c][1] - cy, pos[c][0] - cx) for c in cc}, cc)
+        base, _ = kt_positions(0, 0, 1.0, 1.0)
+        pos, _ = kt_positions(0, 0, 1.0, 1.0, {a: 4.0 for a in touched})
+        cc = [c for c in codes if c != HOME]
+        if cc:
+            want = cmean({c: math.atan2(base[c][1], base[c][0]) for c in cc}, cc)
+            have = cmean({c: math.atan2(pos[c][1], pos[c][0]) for c in cc}, cc)
             rot = want - have
-            pos = {n: (cx + (x - cx) * math.cos(rot) - (y - cy) * math.sin(rot),
-                       cy + (x - cx) * math.sin(rot) + (y - cy) * math.cos(rot)) for n, (x, y) in pos.items()}
-        for k in range(1, 7):
-            s.add(C(cx, cy, r1 + dr * (k - 1), fill="none", stroke=STONE, w=0.4))
-        s.add(C(cx, cy, 2.4, fill=CHAR, stroke=None))
+            pos = {n: (x * math.cos(rot) - y * math.sin(rot), x * math.sin(rot) + y * math.cos(rot))
+                   for n, (x, y) in pos.items()}
+        pts_box = [(0.0, 0.0)] + [pos[c] for c in codes]
+        if is_sketch(lid) or not codes:
+            pts_box += [(-6.2, -6.2), (6.2, 6.2)]
+        xs = [p[0] for p in pts_box]
+        ys = [p[1] for p in pts_box]
+        span = max(max(xs) - min(xs), max(ys) - min(ys)) + 1.6
+        span = max(span, 4.0)
+        k = (size - 4) / span
+        mx, my = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+        tr = lambda p: (size / 2 + (p[0] - mx) * k, size / 2 + (p[1] - my) * k)
+        cx, cy = tr((0, 0))
+        cid = f"ktclip-{lid}"
+        s.add(f'<clipPath id="{cid}"><rect x="1" y="1" width="{size-2}" height="{size-2}"/></clipPath><g clip-path="url(#{cid})">')
+        for ring in range(1, 7):
+            s.add(C(cx, cy, ring * k, fill="none", stroke=STONE, w=0.5))
+        s.add(C(cx, cy, max(2.4, 0.35 * k), fill=CHAR, stroke=None))
         col = loop_color(lid)
         sts = loop_stations(lid)
         if is_sketch(lid):
             pts = []
             for i, st in enumerate(sts):
                 if st["code"]:
-                    pts.append(pos[st["code"]])
+                    pts.append(tr(pos[st["code"]]))
                 else:
                     a = -math.pi / 2 + 2 * math.pi * i / len(sts)
-                    pts.append((cx + 16 * math.cos(a), cy + 16 * math.sin(a)))
+                    pts.append((size / 2 + 16 * math.cos(a), size / 2 + 16 * math.sin(a)))
             s.add(draw_loop(lid, pts, col, 1.1, WHITE, arrows=False, bow=0.25))
             for p, st in zip(pts, sts):
                 s.add(C(p[0], p[1], 1.8, fill=CHAR if st["code"] else WHITE, stroke=STONE if not st["code"] else None, w=0.9))
-            return
-        pts = [pos[st["code"]] for st in sts]
-        s.add(draw_loop(lid, pts, col, 1.6, WHITE, ah=3.2, bow=0.22))
-        for p in pts:
-            s.add(C(p[0], p[1], 1.9, fill=CHAR, stroke=None))
+        else:
+            pts = [tr(pos[st["code"]]) for st in sts]
+            s.add(draw_loop(lid, pts, col, 1.7, WHITE, ah=3.4, bow=0.22))
+            for p in pts:
+                s.add(C(p[0], p[1], 2.0, fill=CHAR, stroke=None))
+        s.add("</g>")
     return thumb_svg(f"kt-{lid}", WHITE, draw, size)
 
 
 def sketch_kitchen_table():
     s = Svg("s5", bg=WHITE, title="Kitchen Table sketch")
     header(s, "Every variable in the model reaches households' financial security within six steps.", width=84)
-    cx, cy, r1, dr = 246, 226, 28, 24
-    pos, ang = kt_positions(cx, cy, r1, dr, start=math.radians(-140))
+    cx, cy, r1, dr = 246, 222, 27, 23
+    pos, ang = kt_positions(cx, cy, r1, dr, start=math.radians(-146))
     for k in range(1, 7):
         s.add(C(cx, cy, r1 + dr * (k - 1), fill="none", stroke=STONE, w=0.6))
     for a in KT_SECTORS:
@@ -1351,7 +1400,7 @@ def spine_thumb(lid, size=76):
         x0, x1 = 5, size - 5
         codes = [st["code"] for st in loop_stations(lid) if st["code"]]
         touched = {AREA_OF[c] for c in codes}
-        pos, tot = weighted_line(SPINE_ORDER, lambda n: 7.0 if AREA_OF[n] in touched else 1.0)
+        pos, tot = weighted_line(SPINE_ORDER, lambda n: 18.0 if AREA_OF[n] in touched else 1.0)
         k = (x1 - x0) / tot
         X = {n: x0 + (pos[n][0] + pos[n][1]) / 2 * k for n in SPINE_ORDER}
         s.add(L(x0, y, x1, y, STONE, 0.8))
@@ -1417,7 +1466,7 @@ def sketch_spine():
     s.add(T(x0, 96, "forward", 13, STONE, 600), T(x0, 390, "back", 13, STONE, 600))
     s.add(TL(352, 368, ["L03, Policy advantages", "add to wealth at the top"], 13, 15, fill=CHAR, weight=500,
              anchor="middle", halo=NEWS))
-    fx, fy, fw, fh = 492, 66, 122, 260
+    fx, fy, fw, fh = 494, 62, 118, 252
     s.add(R(fx, fy, fw, fh, fill=WHITE, stroke=CHAR, sw=1.4, rx=16))
     s.add(R(fx + fw / 2 - 14, fy + 7, 28, 4, fill=CHAR, rx=2))
     vx, vy0, vy1 = fx + fw / 2, fy + 22, fy + fh - 14
@@ -1434,7 +1483,7 @@ def sketch_spine():
             s.add(P(f"M{f1(vx)} {f1(ya)}A{f1(rx)} {f1(ry)} 0 0 1 {f1(vx)} {f1(yb2)}",
                     PRU if inl else STONE, 0.8 if inl else 0.4, None))
     s.add(L(vx, vy0, vx, vy1, CHAR, 1.1))
-    s.add(TL(fx - 2, fy + fh + 22, ["On a phone the line runs", "down the screen. Feedback", "sits on the left."], 13, 15, fill=CHAR))
+    s.add(TL(fx - 2, fy + fh + 20, ["On a phone the line", "runs down the screen.", "Feedback sits on", "the left."], 13, 15, fill=CHAR))
     return s.render()
 
 
@@ -1617,7 +1666,11 @@ def sketch_flywheels():
         s.add(R(px - sz / 2, py - sz / 2, sz, sz, fill=CHAR))
     for n, (px, py) in pins.items():
         if LOOPCOUNT[n] >= 3:
-            s.add(T(px + 8, py - 6, n, 13, CHAR, 700, halo=NEWS))
+            near = min(LOOP_ORDER, key=lambda w: math.hypot(FLY[w][0] - px, FLY[w][1] - py))
+            vx, vy = px - FLY[near][0], py - FLY[near][1]
+            right = vx >= 0 and px < 420
+            s.add(T(px + (9 if right else -9), py + (16 if vy > 0 else -7), n, 13, CHAR, 700,
+                    "start" if right else "end", halo=NEWS))
     for lid in LOOP_ORDER:
         cx, cy = FLY[lid]
         r = wheel_radius(lid)
@@ -1657,6 +1710,7 @@ def cross_anchor():
 
 
 CROSS_ANCHOR = cross_anchor()
+CROSS_ANCHOR["R10"] = "C4"  # tie between C3 and C4; C4 also roots R4a, R4b and R12
 
 
 def petal_geom(lid):
@@ -1725,16 +1779,44 @@ def draw_petal(s, lid, hx, hy, ang, scale, bg, ink=WHITE, w=1.3, labels=False, h
     return spots, sts, tip
 
 
+CROSS_HUBS = {"E1": (150, 238, 0.85, -2.62, None), "C4": (366, 140, 0.64, -2.5, None),
+              "C3": (376, 290, 0.7, -0.35, None), "D2": (532, 236, 0.8, -1.95, [-1.95, 0.25]),
+              "B1": (470, 384, 0.42, -1.75, None), "B4": (512, 384, 0.42, -1.65, None),
+              "D5": (554, 384, 0.42, -1.55, None), "E2": (596, 384, 0.42, -1.45, None),
+              "A5": (38, 380, 0.55, -1.0, None)}
+CROSS_SEEDS = {"B2": (452, 84, 0.45, 0.0), "B3": (452, 120, 0.45, 0.0)}
+
+
+def cross_layout():
+    by_hub = defaultdict(list)
+    for lid in LOOP_ORDER:
+        if CROSS_ANCHOR[lid]:
+            by_hub[CROSS_ANCHOR[lid]].append(lid)
+    place = {}
+    for hub, lids in by_hub.items():
+        hx, hy, sc, a0, fixed = CROSS_HUBS[hub]
+        for i, lid in enumerate(lids):
+            a = fixed[i] if fixed else a0 + 2 * math.pi * i / len(lids)
+            place[lid] = (hx, hy, a, sc)
+    for lid, (x, y, sc, a) in CROSS_SEEDS.items():
+        place[lid] = (x, y, a, sc)
+    return place
+
+
+CROSS_PLACE = cross_layout()
+
+
 def cross_thumb(lid, size=76):
     def draw(s):
         hub = CROSS_ANCHOR[lid]
         L_, W_ = petal_geom(lid)
-        sc = min(1.0, (size - 18) / (L_ + 4))
-        ang = -math.pi / 4
-        hx, hy = 13, size - 13
-        draw_petal(s, lid, hx, hy, ang, sc, PRU, w=1.3)
+        ang = CROSS_PLACE[lid][2]
+        sc = min(1.05, (size - 22) / (L_ + 2))
+        hx = size / 2 - math.cos(ang) * L_ * sc / 2
+        hy = size / 2 - math.sin(ang) * L_ * sc / 2
+        draw_petal(s, lid, hx, hy, ang, sc, PRU, w=1.4)
         if hub:
-            s.add(C(hx, hy, 8, fill=NEWS, stroke=None), s.icon(hub, "black", hx - 6, hy - 6, 12))
+            s.add(C(hx, hy, 8.5, fill=NEWS, stroke=None), s.icon(hub, "black", hx - 6.5, hy - 6.5, 13))
         else:
             s.add(C(hx, hy, 3, fill=PRU, stroke=NEWS, w=1))
     return thumb_svg(f"cr-{lid}", PRU, draw, size)
@@ -1743,53 +1825,39 @@ def cross_thumb(lid, size=76):
 def sketch_crossroads():
     s = Svg("s8", bg=PRU, title="Crossroads sketch")
     header(s, "Seven loops grow from policy tilt to insiders.", dark=True)
-    hubs = {"E1": (178, 236), "C4": (420, 160), "C3": (408, 318), "D2": (548, 268),
-            "B1": (300, 100), "B4": (288, 362), "D5": (566, 120), "A5": (56, 352), "E2": (596, 368)}
-    by_hub = defaultdict(list)
+    spots_of = {}
     for lid in LOOP_ORDER:
-        by_hub[CROSS_ANCHOR[lid]].append(lid)
-    start = {"E1": -2.5, "C4": -2.2, "C3": 0.2, "D2": -0.9, "B1": 0.25, "B4": -0.3, "D5": 0.6, "A5": -1.1, "E2": -2.2}
-    spread = {"C4": 2 * math.pi, "C3": 2 * math.pi * 0.62, "D2": 1.6}
-    scale = {"E1": 0.95, "C4": 0.72, "C3": 0.8, "D2": 0.9}
-    for hub, lids in by_hub.items():
-        if hub is None:
-            continue
-        hx, hy = hubs[hub]
-        k = len(lids)
-        sp = spread.get(hub, 2 * math.pi)
-        for i, lid in enumerate(lids):
-            a = start[hub] + (sp * i / k if sp >= 2 * math.pi - 0.01 else (sp * i / max(1, k - 1)))
-            draw_petal(s, lid, hx, hy, a, scale.get(hub, 0.75), PRU)
-            L_, _ = petal_geom(lid)
-            sc = scale.get(hub, 0.75)
-            tx, ty = hx + (L_ * sc + 12) * math.cos(a), hy + (L_ * sc + 12) * math.sin(a)
-            s.add(T(tx, ty + 4.5, lid, 13, NEWS, 600, "middle", halo=PRU))
-    # seeds
-    for i, lid in enumerate(["B2", "B3"]):
-        sx, sy = 486 + i * 52, 60 + 8
-        draw_petal(s, lid, sx, sy + 26, -math.pi / 2 + 0.5, 0.5, PRU)
-        s.add(C(sx, sy + 26, 3, fill=PRU, stroke=NEWS, w=1))
-        s.add(T(sx + 16, sy + 40, lid, 13, NEWS, 600, "middle", halo=PRU))
-    # thread between the two C3 appearances (C3 on the R10 petal and the C3 hub)
-    lids = by_hub["C4"]
-    for hub, (hx, hy) in hubs.items():
-        r = 14 if hub == "E1" else 11
+        hx, hy, a, sc = CROSS_PLACE[lid]
+        spots, sts, tip = draw_petal(s, lid, hx, hy, a, sc, PRU)
+        spots_of[lid] = (spots, sts)
+        L_, _ = petal_geom(lid)
+        tx, ty = hx + (L_ * sc + 11) * math.cos(a), hy + (L_ * sc + 11) * math.sin(a)
+        if lid in CROSS_SEEDS:
+            tx, ty = hx + L_ * sc + 16, hy
+        s.add(T(tx, ty + 4.5, lid, 13, NEWS, 600, "middle", halo=PRU))
+    spots, sts = spots_of["R10"]
+    k = next(i for i, st in enumerate(sts) if st["code"] == "C3")
+    cx3, cy3 = CROSS_HUBS["C3"][:2]
+    s.add(L(spots[k][0], spots[k][1], cx3, cy3 - 12, NEWS, 0.7))
+    for lid, (x, y, sc, a) in CROSS_SEEDS.items():
+        s.add(C(x, y, 3, fill=PRU, stroke=NEWS, w=1))
+    for hub, (hx, hy, sc, a0, fx) in CROSS_HUBS.items():
+        r = 14 if hub == "E1" else 11 if sc > 0.5 else 9
         s.add(C(hx, hy, r, fill=NEWS, stroke=None), s.icon(hub, "black", hx - r * 0.72, hy - r * 0.72, r * 1.44))
-    names = {"E1": "Policy tilt to insiders · 7", "C4": "Incumbent control of election rules · 4",
-             "C3": "Electoral pressure · 3", "D2": "Executive unilateralism · 2"}
-    pos = {"E1": (178, 268, "middle"), "C4": (420, 196, "middle"), "C3": (408, 350, "middle"), "D2": (548, 304, "middle")}
-    for h, nm in names.items():
-        x, y, an = pos[h]
-        s.add(TL(x, y, wrap(nm, 22), 13, 15, fill=WHITE, weight=600, anchor=an, halo=PRU))
-    # no-loop margin
+    s.add(TL(292, 104, ["Incumbent control", "of election rules · 4"], 13, 15, fill=WHITE, weight=600, anchor="end", halo=PRU))
+    s.add(T(376, 372, "Electoral pressure · 3", 13, WHITE, 600, "middle", halo=PRU))
+    s.add(TL(528, 280, ["Executive", "unilateralism · 2"], 13, 15, fill=WHITE, weight=600, anchor="middle", halo=PRU))
+    s.add(T(450, 389, "Single petals", 13, NEWS, 500, "end", halo=PRU))
+    s.add(T(452, 62, "Sketched seeds", 13, NEWS, 500, halo=PRU))
     nl = [n for n in ORDER if LOOPCOUNT[n] == 0]
-    # tag
-    tx, ty = 16, 48
-    s.add(L(tx + 150, ty + 52, 172, 222, NEWS, 0.9))
-    s.add(R(tx, ty, 186, 58, fill=NEWS, rx=2))
-    s.add(R(tx, ty, 6, 58, fill=RED))
-    s.add(TL(tx + 14, ty + 20, ["Policy tilt to insiders", "R-09 and R-27 act here"], 13, 16, fill=CHAR, weight=500))
-    s.add(T(tx + 14, ty + 52, "", 13, CHAR))
+    s.add(T(632, 50, f"{len(nl)} in no loop", 13, NEWS, 500, "end", halo=PRU))
+    for i, n in enumerate(nl):
+        y = 62 + i * 11.6
+        s.add(C(622, y + 5, 5.6, fill=NEWS, stroke=None), s.icon(n, "black", 617.5, y + 0.5, 9))
+    tx, ty = 16, 44
+    s.add(L(tx + 120, ty + 54, 150, 222, NEWS, 0.9))
+    s.add(R(tx, ty, 190, 54, fill=NEWS, rx=2), R(tx, ty, 6, 54, fill=RED))
+    s.add(TL(tx + 16, ty + 21, ["Policy tilt to insiders · 7", "R-09 and R-27 act here"], 13, 17, fill=CHAR, weight=500))
     return s.render()
 
 
@@ -1797,23 +1865,21 @@ def sketch_crossroads():
 # 9. OPEN ATLAS
 # ==========================================================================
 def atlas_positions():
-    P_ = {}
-    # left page (economy): x 28..300
-    grid = {
-        "A1": (268, 132), "A2": (268, 188), "A3": (222, 160), "A6": (222, 246), "A4": (268, 300), "A5": (222, 330),
-        "EC1": (150, 132), "EC2": (96, 132), "EC3": (176, 182), "EC4": (176, 236),
-        "EC6": (176, 300), "EC7": (124, 286), "EC8": (124, 236), "EC9": (150, 346),
-        "EC5": (62, 236), "EC10": (62, 300), "EC11": (88, 346), "EC12": (52, 182),
-        "B1": (372, 132), "B2": (424, 120), "B3": (372, 196), "B4": (424, 180), "B5": (372, 252), "B6": (470, 140),
-        "E1": (372, 318), "E2": (436, 346),
-        "C1": (536, 120), "C2": (588, 132), "C3": (520, 178), "C4": (580, 192), "C5": (514, 234),
-        "D1": (438, 252), "D2": (488, 286), "D3": (566, 252), "D4": (500, 340), "D5": (446, 300), "D6": (556, 318), "D7": (590, 352),
+    P_ = {
+        "EC2": (66, 146), "EC1": (116, 146), "EC3": (166, 146), "EC4": (216, 146), "A1": (266, 146),
+        "EC5": (66, 200), "EC7": (116, 200), "A3": (216, 200), "A2": (266, 200),
+        "EC12": (66, 254), "EC8": (116, 254), "EC6": (166, 254), "A6": (216, 254),
+        "EC11": (66, 306), "EC9": (116, 306), "A5": (216, 320), "A4": (266, 300),
+        "EC10": (90, 344),
+        "B1": (370, 146), "B2": (420, 152), "B6": (470, 176), "B3": (370, 200), "B4": (420, 208), "B5": (370, 254),
+        "E1": (372, 318), "E2": (430, 344),
+        "C1": (522, 146), "C2": (578, 152), "C3": (522, 204), "C4": (580, 212), "C5": (536, 256),
+        "D1": (440, 262), "D2": (488, 290), "D3": (586, 270), "D4": (500, 340), "D5": (446, 304),
+        "D6": (560, 318), "D7": (590, 352),
     }
-    P_.update(grid)
     for i, n in enumerate(AREA_NODES["TC"]):
-        P_[n] = (320, 128 + i * 30)
-    xs = {"X1": (300, 50), "X3": (196, 50), "X2": (548, 50), "X4": (450, 50), "X5": (378, 50)}
-    P_.update(xs)
+        P_[n] = (320, 152 + i * 28)
+    P_.update({"X1": (300, 48), "X3": (196, 48), "X2": (548, 48), "X4": (450, 48), "X5": (378, 48)})
     return P_
 
 
@@ -1822,26 +1888,41 @@ ATLAS = atlas_positions()
 
 def atlas_thumb(lid, size=76):
     def draw(s):
-        k = (size - 8) / 600
-        ox, oy = 4 - 16 * k, (size - 330 * k) / 2 - 60 * k
-        s.add(R(ox + 28 * k, oy + 64 * k, 272 * k, 320 * k, fill=WHITE, stroke=STONE, sw=0.5))
-        s.add(R(ox + 340 * k, oy + 64 * k, 272 * k, 320 * k, fill=WHITE, stroke=STONE, sw=0.5))
         col = loop_color(lid)
+        codes = [st["code"] for st in loop_stations(lid) if st["code"]]
+        if codes:
+            xs = [ATLAS[c][0] for c in codes]
+            ys = [ATLAS[c][1] for c in codes]
+            mx, my = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+            span = max(max(xs) - min(xs) + 70, max(ys) - min(ys) + 70, 150)
+        else:
+            mx, my, span = 320, 220, 340
+        k = (size - 4) / span
+        ox, oy = size / 2 - mx * k, size / 2 - my * k
+        cid = f"oaclip-{lid}"
+        s.add(f'<clipPath id="{cid}"><rect x="2" y="2" width="{size-4}" height="{size-4}"/></clipPath><g clip-path="url(#{cid})">')
+        s.add(R(ox + 28 * k, oy + 64 * k, 272 * k, 328 * k, fill=WHITE, stroke=STONE, sw=0.6))
+        s.add(R(ox + 340 * k, oy + 64 * k, 272 * k, 328 * k, fill=WHITE, stroke=STONE, sw=0.6))
+        for n in ORDER:
+            if AREA_OF[n] in ("X",):
+                continue
+            x, y = ox + ATLAS[n][0] * k, oy + ATLAS[n][1] * k
+            s.add(C(x, y, 1.3, fill=STONE, stroke=None))
         if is_sketch(lid):
-            s.add(band(f"M{size*0.7:.1f} {size/2:.1f}a7 7 0 1 1 0.1 0", WHITE, 0.9))
-            return
-        pts = [(ox + ATLAS[st["code"]][0] * k, oy + ATLAS[st["code"]][1] * k) for st in loop_stations(lid)]
-        s.add(draw_loop(lid, pts, col, 1.5, WHITE, ah=3, bow=0.22))
-        for p in pts:
-            s.add(C(p[0], p[1], 1.8, fill=CHAR, stroke=None))
+            s.add(band(f"M{size/2-12} {size/2}a12 8 0 1 1 24 0a12 8 0 1 1 -24 0", WHITE, 0.9))
+        else:
+            pts = [(ox + ATLAS[c][0] * k, oy + ATLAS[c][1] * k) for c in codes]
+            s.add(draw_loop(lid, pts, col, 1.6, WHITE, ah=3.2, bow=0.22))
+            for p in pts:
+                s.add(C(p[0], p[1], 2.1, fill=CHAR, stroke=None))
+        s.add("</g>")
     return thumb_svg(f"oa-{lid}", NEWS, draw, size)
 
 
 def sketch_open_atlas():
     s = Svg("s9", bg=NEWS, title="Open Atlas sketch")
     header(s, "Twelve connections cross the fold between the economy and democracy pages.", width=90)
-    s.add(R(28, 64, 272, 320, fill=WHITE, stroke=STONE, sw=0.7), R(340, 64, 272, 320, fill=WHITE, stroke=STONE, sw=0.7))
-    s.add(L(320, 64, 320, 384, STONE, 0.6))
+    s.add(R(28, 64, 272, 328, fill=WHITE, stroke=STONE, sw=0.7), R(340, 64, 272, 328, fill=WHITE, stroke=STONE, sw=0.7))
     s.add(T(40, 88, "Economy", 17, CHAR, 700, fam="tight"), T(352, 88, "Democracy", 17, CHAR, 700, fam="tight"))
     s.add(T(40, 106, "A and the economy layer · 18", 13, STONE), T(352, 106, "B, C, D and E · 20", 13, STONE))
     cross_loops = {"R1", "R5", "R6", "R15"}
@@ -1849,38 +1930,40 @@ def sketch_open_atlas():
 
     def curve(a, b):
         (x0, y0), (x1, y1) = ATLAS[a], ATLAS[b]
-        if abs(x1 - x0) > 60:
-            return f"M{x0} {y0}C{(x0 + x1) / 2:.1f} {y0} {(x0 + x1) / 2:.1f} {y1} {x1} {y1}", math.atan2(0, x1 - x0)
+        if abs(x1 - x0) > 60 and (AREA_OF[a] != "X"):
+            return f"M{x0} {y0}C{(x0 + x1) / 2:.1f} {y0} {(x0 + x1) / 2:.1f} {y1} {x1} {y1}"
         dx, dy = x1 - x0, y1 - y0
         c = ((x0 + x1) / 2 - dy * 0.15, (y0 + y1) / 2 + dx * 0.15)
-        return f"M{x0} {y0}Q{c[0]:.1f} {c[1]:.1f} {x1} {y1}", qtan((x0, y0), c, (x1, y1), 1)
+        return f"M{x0} {y0}Q{c[0]:.1f} {c[1]:.1f} {x1} {y1}"
 
     order = sorted(LINKS.values(), key=lambda l: (l["id"] in cross_ids, bool(set(l["loops"]) & cross_loops), l["id"] == "L31"))
     for l in order:
-        d, ang = curve(l["from"], l["to"])
+        d = curve(l["from"], l["to"])
         if l["id"] == "L31":
-            s.add(P(d, RED, 2.4, l["evidence"]))
+            s.add(P(d, RED, 2.6, l["evidence"]))
         elif set(l["loops"]) & cross_loops:
-            s.add(P(d, PRU, 1.6, l["evidence"]))
+            s.add(P(d, PRU, 1.7, l["evidence"]))
         elif l["id"] in cross_ids:
             s.add(P(d, CHAR, 1.4, l["evidence"]))
         else:
-            s.add(P(d, STONE, 0.55, l["evidence"]))
+            s.add(P(d, STONE, 0.5, l["evidence"]))
     for n in ORDER:
         x, y = ATLAS[n]
         if AREA_OF[n] == "X":
             s.add(R(x - 5, y - 5, 10, 10, fill=NEWS, stroke=CHAR, sw=1))
             s.add(T(x + 8, y + 4.5, n, 13, CHAR, 500, halo=NEWS))
         elif AREA_OF[n] == "TC":
-            s.add(C(x, y, 9, fill=NEWS, stroke=CHAR, w=0.9), s.icon(n, "black", x - 7, y - 7, 14))
+            s.add(C(x, y, 9.5, fill=NEWS, stroke=CHAR, w=0.9), s.icon(n, "black", x - 7, y - 7, 14))
         else:
-            s.add(C(x, y, 9.5, fill=WHITE, stroke=None), s.icon(n, "black", x - 9, y - 9, 18))
-    lab = {"E1": (372, 344, "middle"), "A2": (290, 214, "end"), "A1": (290, 116, "end"), "A4": (290, 326, "end"),
-           "B1": (372, 116, "middle"), "B5": (352, 272, "start")}
+            s.add(C(x, y, 10.5, fill=WHITE, stroke=None), s.icon(n, "black", x - 9.5, y - 9.5, 19))
+    lab = {"E1": (372, 344, "middle"), "A2": (266, 224, "middle"),
+           "A4": (266, 324, "middle"), "B5": (370, 278, "middle")}
     for n, (x, y, an) in lab.items():
         s.add(T(x, y, n, 13, CHAR, 700, an, halo=WHITE))
-    s.add(T(320, 396, "Technology in the fold", 13, CHAR, 600, "middle", halo=NEWS))
-    s.add(TL(36, 376, ["L31 in red: insider-tilted labor rules", "weaken worker bargaining · R-21 acts here"], 13, 15, fill=CHAR, weight=500, halo=WHITE))
+    s.add(T(320, 126, "Technology in the fold", 13, CHAR, 600, "middle", halo=WHITE))
+    s.add(TL(40, 370, ["Red: L31, insider-tilted labor rules", "weaken worker bargaining. R-21 acts here."],
+             13, 15, fill=CHAR, weight=500, halo=WHITE))
+    s.add(TL(352, 370, ["Charcoal: the twelve crossings.", "Prussian: R1, R5, R6 and R15."], 13, 15, fill=CHAR, halo=WHITE))
     return s.render()
 
 
@@ -1892,8 +1975,8 @@ COS30 = math.cos(math.radians(30))
 
 def table_plan():
     plan = {}
-    spec = [("TC", 0, 0, 4), ("B", 5, 0, 3), ("C", 9.4, 0, 3), ("A", 0, 3.4, 3), ("E", 5, 3.4, 2),
-            ("D", 8.4, 3.4, 4), ("X", 5.2, 6.8, 5)]
+    spec = [("TC", 0, 0, 4), ("B", 6, 0, 3), ("C", 11, 0, 3), ("A", 0, 4.6, 3), ("E", 6, 4.6, 2),
+            ("D", 10, 4.6, 4), ("X", 6, 9.2, 5)]
     plinths = []
     for a, gx, gy, cols in spec:
         ns = AREA_NODES[a]
@@ -1902,9 +1985,9 @@ def table_plan():
         for i, n in enumerate(ns):
             plan[n] = (gx + 0.5 + i % cols, gy + 0.5 + i // cols)
     ec = AREA_NODES["production"] + AREA_NODES["household"] + AREA_NODES["money"]
-    plinths.append(("EC", 0, 6.8, 4, 3))
+    plinths.append(("EC", 0, 9.2, 4, 3))
     for i, n in enumerate(ec):
-        plan[n] = (0.5 + i % 4, 6.8 + 0.5 + i // 4)
+        plan[n] = (0.5 + i % 4, 9.2 + 0.5 + i // 4)
     return plan, plinths
 
 
@@ -1968,20 +2051,26 @@ def table_arcs(svg, lid, ox, oy, s_, base, lw=1.4, ah=4):
 def table_thumb(lid, size=76):
     def draw(s):
         if is_sketch(lid):
-            s.add(band(f"M{size/2-16} {size/2+6}a16 9 0 1 1 32 0a16 9 0 1 1 -32 0", WHITE, 1.0))
+            s.add(band(f"M{size/2-16} {size/2+10}a16 9 0 1 1 32 0a16 9 0 1 1 -32 0", WHITE, 1.0))
             for st in loop_stations(lid):
                 if st["code"]:
-                    gx, gy = TPLAN[st["code"]]
-                    draw_block(s, 0, 0, block_h(st["code"]), size / 2, size / 2 + 6, 11, top=WHITE)
+                    draw_block(s, 0, 0, block_h(st["code"]), size / 2, size / 2 + 10, 11, top=WHITE)
             return
         codes = [st["code"] for st in loop_stations(lid)]
         xs = [TPLAN[c][0] - TPLAN[c][1] for c in codes]
         ys = [TPLAN[c][0] + TPLAN[c][1] for c in codes]
-        sp = max(max(xs) - min(xs), (max(ys) - min(ys)) * 0.6, 2.5)
-        s_ = min(13, (size - 26) / (sp * COS30 + 1))
+        hmax = max(block_h(c) for c in codes)
+        best = None
+        for s_ in [x / 2 for x in range(10, 30)]:
+            w = (max(xs) - min(xs) + 0.9) * COS30 * s_
+            h = ((max(ys) - min(ys)) * 0.5 + 0.9) * s_ + (hmax + 1.0) * s_
+            if w <= size - 10 and h <= size - 10:
+                best = s_
+        s_ = best or 5
         cxp = (max(xs) + min(xs)) / 2 * COS30 * s_
-        cyp = (max(ys) + min(ys)) / 2 * 0.5 * s_
-        ox, oy = size / 2 - cxp, size / 2 + 16 - cyp
+        top = min(ys) * 0.5 * s_ - (hmax + 1.0) * s_
+        bot = (max(ys) * 0.5 + 0.45) * s_
+        ox, oy = size / 2 - cxp, size / 2 - (top + bot) / 2
         for n in sorted(codes, key=lambda n: TPLAN[n][0] + TPLAN[n][1]):
             gx, gy = TPLAN[n]
             draw_block(s, gx, gy, block_h(n), ox, oy, s_, half=0.4)
@@ -1992,29 +2081,34 @@ def table_thumb(lid, size=76):
 def sketch_tabletop():
     s = Svg("s10", bg=WHITE, title="Tabletop Model sketch")
     header(s, "Feedback piles up on a few variables. Electoral pressure sits in four loops, and three reforms aim at it.", width=86)
-    ox, oy, s_ = 218, 104, 19.5
+    ox, oy, s_ = 224, 84, 18.0
     table_scene(s, ox, oy, s_, red="C3")
     for lid in LOOP_ORDER:
         if not is_sketch(lid):
             table_arcs(s, lid, ox, oy, s_, 0.22, lw=1.1, ah=3.4)
-    labels = {"TC": "Technology", "B": "Political inputs", "C": "Electoral competition", "A": "Economic structure",
-              "E": "Legitimacy", "D": "Governing institutions", "X": "Outside drivers", "EC": "Economy layer"}
+    codes = {"TC": "T", "B": "B", "C": "C", "A": "A", "E": "E", "D": "D", "X": "X", "EC": "EC"}
     for a, gx, gy, cols, rows in TPLINTHS:
         x, y = iso(gx, gy + rows, 0, ox, oy, s_)
-        s.add(T(x - 4, y + 14, labels[a], 13, CHAR, 600, "end", fam="tight", halo=WHITE))
+        s.add(T(x - 5, y + 9, codes[a], 13, CHAR, 700, "end", fam="tight", halo=WHITE))
     x, y = iso(*TPLAN["E1"], 0.22 + block_h("E1"), ox, oy, s_)
-    s.add(L(x, y - 4, x, 70, CHAR, 0.7), T(x + 4, 72, "Policy tilt to insiders · 7 loops", 13, CHAR, 500, halo=WHITE))
+    s.add(L(x, y - 4, x, 74, CHAR, 0.7), T(x + 4, 72, "Policy tilt to insiders · 7 loops", 13, CHAR, 500, halo=WHITE))
     x, y = iso(*TPLAN["C3"], 0.22 + block_h("C3"), ox, oy, s_)
-    s.add(L(x, y - 6, x + 30, y - 40, CHAR, 0.7), TL(x + 32, y - 52, ["Electoral pressure · 4 loops", "R-02, R-07, R-47 act here"], 13, 15, fill=CHAR, weight=500, halo=WHITE))
-    # scale
-    px = 520
-    s.add(T(px, 240, "Block height", 13, CHAR, 700), T(px, 256, "= loops through it", 13, CHAR))
+    s.add(L(x, y - 6, x + 24, y - 34, CHAR, 0.7),
+          TL(x + 26, y - 50, ["Electoral pressure · 4 loops", "R-02, R-07, R-47 act here"], 13, 15, fill=CHAR, weight=500, halo=WHITE))
+    px = 450
+    key = [("A", "Economic structure"), ("B", "Political inputs"), ("C", "Electoral competition"),
+           ("D", "Governing institutions"), ("E", "Legitimacy"), ("X", "Outside drivers"),
+           ("EC", "Economy layer"), ("T", "Technology")]
+    s.add(T(px, 236, "Plinths", 13, CHAR, 700))
+    for i, (c, nm) in enumerate(key):
+        s.add(T(px, 254 + i * 16, c, 13, CHAR, 700), T(px + 26, 254 + i * 16, nm, 13, CHAR))
+    s.add(T(24, 286, "Block height counts the", 13, CHAR, 700), T(24, 302, "loops through a variable", 13, CHAR, 700))
     for i, k in enumerate([0, 1, 2, 4, 7]):
         h = 0.28 + 0.42 * k
-        bx = 0.6 + i * 1.25
-        draw_block(s, bx, 0, h, px - 4, 340, 14, half=0.34)
-        xx, yy = iso(bx, 0, 0, px - 4, 340, 14)
-        s.add(T(xx + 1, yy + 22, str(k), 13, CHAR, 600, "middle"))
+        bx = 0.6 + i * 0.95
+        draw_block(s, bx, -bx, h, 34, 372, 14, half=0.34)
+        xx, yy = iso(bx, -bx, 0, 34, 372, 14)
+        s.add(T(xx, yy + 22, str(k), 13, CHAR, 600, "middle"))
     return s.render()
 
 
@@ -2022,6 +2116,8 @@ def sketch_tabletop():
 # Directions: the prose (one source for the board and the handoff)
 # ==========================================================================
 F = FACTS
+WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine",
+        10: "ten", 11: "eleven", 12: "twelve"}
 DIRECTIONS = [
     {
         "key": "great-circle", "name": "Great Circle", "ground_name": "Newsprint",
@@ -2029,7 +2125,7 @@ DIRECTIONS = [
         "line": "The five core areas drawn as one ring, because influence in the model travels around a circle.",
         "idea": (
             f"Take the connections between neighboring core areas in the order A, B, C, D, E and back to A. "
-            f"{F['forward']} of them run forward around that circle and {F['backward']} run back. In the model, money "
+            f"Of these, {F['forward']} run forward around that circle and {F['backward']} run back. In the model, money "
             "and organized interests bear on elections, and elections decide who governs. What government does then "
             "shapes whose interests policy favors, and that tilt feeds back into who holds wealth. A ring shows this "
             "circle before the reader learns a single variable name. Each of the 26 core variables gets a fixed place "
@@ -2052,9 +2148,11 @@ DIRECTIONS = [
             "each step's sentence along its chord and puts the delay outside the rim: under two years for the first two "
             "steps, 2 to 10 years for the last two."),
         "thumbs": (
-            "Each thumbnail is the ring in miniature with one loop drawn on it. Variables never move, so the data sets "
-            "the shape. R8 is a pair of chords inside area A. R10 is a small four-sided figure inside C, and R12 is a "
-            "long kite from the courts in D to safe seats in C. R1 is a triangle spanning A, B and E. Balancing loops "
+            "Each thumbnail is the ring in miniature with one loop drawn on it. The areas the loop touches widen, as "
+            "under a magnifier, and the ring turns so the loop keeps the direction it has on the full map. Variables keep "
+            "their order, so the data sets the shape. R8 is a lens inside area A. R10 is a four-sided figure filling the "
+            "widened C arc, and R12 is a long kite from the courts in D to safe seats in C. R1 is a triangle spanning A, "
+            "B and E. Balancing loops "
             "draw in Verdigris and reinforcing loops in Prussian. The three sketched loops have no numbered chain, so "
             "they appear as a hollow band near the center with open points. On the all-loops page the 23 rings sit in a "
             "grid, and a reader tells them apart by where the shape sits on the rim and how far across it reaches."),
@@ -2068,7 +2166,7 @@ DIRECTIONS = [
             "related when no connection joins them. The two discs hide 20 variables behind a tap, and readers may take "
             "them as minor. On a phone the ring fits at about 340 pixels across. Arcs and loop shapes survive at that "
             "size; names move to a list under the ring."),
-        "why": "It shows the circle the core areas form in one shape, and every loop thumbnail is a true miniature of the map.",
+        "why": "It shows the circle the core areas form in one shape, and every loop thumbnail is that loop drawn on the same ring.",
     },
     {
         "key": "star-atlas", "name": "Star Atlas", "ground_name": "Charcoal",
@@ -2138,8 +2236,9 @@ DIRECTIONS = [
             "one dashed step sits in the cell for L53, \"Officials safe from defeat write rules for themselves\". The R10 "
             "page lists the four cells as four sentences in reading order."),
         "thumbs": (
-            "Each thumbnail is the core table in miniature with one staircase on it. The corners sit at real cells, so the "
-            "outline depends on which variables the loop visits and in what order. Loops inside one area make small steps "
+            "Each thumbnail is the core table in miniature with one staircase on it, and the blocks for the areas the loop "
+            "touches widen so short loops stay readable. The corners sit at real cells, so the outline depends on which "
+            "variables the loop visits and in what order. Loops inside one area make small steps "
             "near the diagonal. R1 and R5 make large steps between A and E, and R12 climbs from D to C and back. "
             "Two-step loops draw as rectangles, longer loops as stairs with more turns."),
         "ground": (
@@ -2150,7 +2249,7 @@ DIRECTIONS = [
             "staircase is exact but needs a sentence of teaching before it reads as a loop. The full 51 by 51 table cannot "
             "fit a phone, so phones get one block at a time. Empty cells dominate: 118 connections fill under 5 percent "
             "of the 2,601 cells."),
-        "why": "The most exact drawing of the model and the least inviting first screen; keep it as the expert view.",
+        "why": "The most exact drawing of the model, best kept as an expert view because its first screen asks a lot of a new reader.",
     },
     {
         "key": "honeycomb", "name": "Honeycomb", "ground_name": "Newsprint",
@@ -2163,7 +2262,8 @@ DIRECTIONS = [
             "puts connected variables side by side wherever it can. The overview draws no lines. It reads like a map of a "
             "country made of islands, and each tile opens its own page."),
         "overview": (
-            f"All 51 tiles show at once, grouped into territories labeled with area titles. Each tile carries its icon and "
+            f"All 51 tiles show at once, grouped into territories that each carry a letter tab named in a key. Each tile "
+            f"carries its icon and "
             f"a row of small beads, one per loop that passes through it, so policy tilt to insiders carries "
             f"{F['e1_loops']}. Connections stay hidden until a tile is chosen; then its links draw as short arrows to "
             "neighbors and longer arcs to tiles farther off. The overview leaves out every line and every sign. The "
@@ -2175,10 +2275,10 @@ DIRECTIONS = [
             "Verdigris for the balancing loop B4. Arrows from other territories enter at the border with their source "
             "tile named. The R10 page keeps the four tiles and draws each arrow in its evidence texture."),
         "thumbs": (
-            "Each thumbnail is the whole honeycomb in miniature with the loop's tiles filled and a line through their "
-            "centers. The silhouette of the filled tiles and its place in the map identify the loop. R8 fills two tiles "
-            "of A, R10 four tiles of C, and R6 a bent run from A into B and E. A reader who has seen the honeycomb once "
-            "knows where each thumbnail points."),
+            "Each thumbnail crops the honeycomb around one loop, with the loop's tiles filled and a line through their "
+            "centers. The silhouette of the filled tiles and the territories around it identify the loop. R8 fills two "
+            "tiles of A, R10 four tiles of C, and R6 a bent run from A into B and E. Balancing loops fill in Verdigris. "
+            "A reader who has seen the honeycomb once knows where each thumbnail points."),
         "ground": (
             "Newsprint ground, White tiles, Charcoal icons and borders, Prussian beads. The one red outlines a tile. In "
             "the sketch it is C1, safe seats, where R-03 (proportional elections) and R-46 (expand the House) act."),
@@ -2196,14 +2296,14 @@ DIRECTIONS = [
         "idea": (
             "A first-time reader asks first how any of this touches their own life. The model gives an exact answer. "
             "Follow connections backward from households' financial security and every one of the 51 variables reaches "
-            f"it within {F['home_max']} steps. {F['home_direct']} act on it directly. This direction puts that household "
+            f"it within {WORD[F['home_max']]} steps, and {WORD[F['home_direct']]} act on it directly. This direction puts that household "
             "at the center and draws a ring for each step out to six. Each variable sits on its ring inside a wedge for "
             "its area. Distance on the page then means one thing, and the reader can see that the courts sit three steps "
             "from the kitchen table and safe seats five."),
         "overview": (
             "Six rings, ten wedges and 51 points. Each point links to one variable on the next ring inward through the "
-            "connection that carries it closer, so a reader can trace any variable home. The model ranks those links by "
-            "loop membership first and evidence second. All other connections stay hidden. Ring numbers read one to six. "
+            "connection that carries it closer, so a reader can trace any variable home. Where several links qualify, the "
+            "drawing picks one in a loop first and then the best evidence grade. All other connections stay hidden. Ring numbers read one to six. "
             "The center disc holds the household icon. Readers click a wedge to open an area or a ring to list everything "
             "at that distance."),
         "closeups": (
@@ -2214,10 +2314,10 @@ DIRECTIONS = [
             "rings behind the loop so the reader sees how far it sits from home, and it names the shortest route from the "
             "loop to the household."),
         "thumbs": (
-            "Each thumbnail shows the six rings faintly with the loop drawn at its true ring distances and wedge angles. "
-            "Loops close to home hug the center, and R5 passes through the household itself. Loops in government and "
-            "elections float on the outer rings, and loops that cross areas stretch across wedges. Each loop gets its own "
-            "radial profile."),
+            "Each thumbnail crops the rings to the stretch between the household and the loop, with the loop drawn at its "
+            "true ring distances. The wedges the loop touches widen so short loops stay readable. Loops close to home sit "
+            "beside the center dot, and R5 passes through it. Loops in government and elections float on the outer rings, "
+            "and loops that cross areas stretch across wedges. Each loop gets its own radial profile."),
         "ground": (
             "White ground, Stone rings, Charcoal points, Prussian loops. The one red rings the center, households' "
             "financial security, the point the headline names. Five reforms act on it directly: R-23, R-24, R-25, R-26 "
@@ -2249,7 +2349,8 @@ DIRECTIONS = [
             "to C2, C2 to C3 and C3 to C4, and one backward arc, C4 to C1. The R10 page turns the segment into a column and "
             "keeps the backward step on its own side."),
         "thumbs": (
-            "Each thumbnail draws the line short and plain with one loop's arcs. Which segment the arcs sit over, how wide "
+            "Each thumbnail draws the line short and plain with one loop's arcs, and widens the segments the loop touches. "
+            "Which segment the arcs sit over, how wide "
             "they span and how many sit above or below give each loop its signature. Loops inside one area make small "
             "humps. R1, R5, R6 and R15 throw a long backward arc from legitimacy back to the economic structure."),
         "ground": (
@@ -2272,7 +2373,7 @@ DIRECTIONS = [
             "pushed, as a reinforcing loop keeps a change going up or down. A governor, the pair of spinning weights on a "
             "steam engine, pushes back harder the faster the engine runs, as a balancing loop does. This direction makes "
             "loops the main objects. Each of the 23 loops is a wheel, and wheels that share a variable connect through a "
-            f"pin named for it. The machine shows how loops lock together: {F['e1_loops']} turn on the pin for policy tilt "
+            f"pin named for it. The machine shows how loops lock together: {WORD[F['e1_loops']]} turn on the pin for policy tilt "
             "to insiders, and four on each of the pins for electoral pressure and incumbent control of election rules."),
         "overview": (
             f"The overview shows 23 wheels and {len(SHARED)} pins, one pin for each variable that sits in two or more "
@@ -2300,8 +2401,8 @@ DIRECTIONS = [
         "risks": (
             "Machines suggest fixed ratios and certain outcomes, and the model claims neither. Readers may take spin as "
             "speed or meshing as cause, so the drawing uses pins and rods and avoids gear teeth. The view leaves out the "
-            f"{F['no_loop']} variables in no loop and the 72 connections outside loops, so it shows the system's feedback "
-            "and hides its inputs. On a phone the wheel thumbnails hold up well, and the full machine needs pinch zoom."),
+            f"{F['no_loop']} variables in no loop and the 72 connections outside loops, so inputs from outside the loops "
+            "wait one click down. On a phone the wheel thumbnails hold up well, and the full machine needs pinch zoom."),
         "why": "It teaches the difference between feeding itself and pushing back through objects people already know.",
     },
     {
@@ -2318,8 +2419,9 @@ DIRECTIONS = [
             "Each loop draws once, anchored at the station it shares with the most loops. That gives seven petals at "
             "policy tilt to insiders, four at incumbent control of election rules, three at electoral pressure and two at "
             "executive unilateralism, plus five single petals and two sketched seeds without a hub. Petal length follows "
-            "the loop's total delay and its width the number of steps. Variables in no loop sit as small icons around the "
-            "margin with arrows toward the hubs they push. Readers click a hub to open its rosette or a petal to open a loop."),
+            "the loop's total delay and its width the number of steps. The 26 variables in no loop stand as a column of small "
+            "icons in the margin, and a tap on one draws its lines to the hubs it pushes. Readers click a hub to open its "
+            "rosette or a petal to open a loop."),
         "closeups": (
             "Clicking area C opens the two rosettes rooted there. Incumbent control of election rules carries R4a, R4b, "
             "R10 and R12, and electoral pressure carries R11, R16 and B4. R10 grows from the first as a four-station petal "
@@ -2327,7 +2429,8 @@ DIRECTIONS = [
             "also roots its own rosette, so a fine thread joins the two places it appears. The R10 page lifts the petal "
             "free and labels each station with icon and name."),
         "thumbs": (
-            "Each thumbnail is one petal with its hub icon at the base. Length, width, station count and edge textures "
+            "Each thumbnail is one petal with its hub icon at the base, turned to the angle it takes in its rosette. "
+            "Length, width, station count and edge textures "
             "come from the loop, and balancing petals fill with Verdigris. R13 is short and narrow, R6 long and wide, and "
             "R2 is dotted along both edges because both its steps are hypotheses. Petals from the same hub share a base "
             "icon, which groups them on the all-loops page."),
@@ -2351,8 +2454,8 @@ DIRECTIONS = [
             "left page holds economic structure and the economy layer, 18 variables. The right page holds political "
             "inputs, electoral competition, governing institutions and legitimacy, 20 variables. Technology touches both "
             "and sits in the fold, and the outside drivers sit in the top margin. "
-            f"{F['crossings']} connections cross the fold, {F['to_dem']} toward democracy and {F['to_econ']} toward the "
-            f"economy, and {F['to_econ_e1']} of those {F['to_econ']} start at policy tilt to insiders. The crossings carry "
+            f"{WORD[F['crossings']].capitalize()} connections cross the fold, {WORD[F['to_dem']]} toward democracy and {WORD[F['to_econ']]} toward the "
+            f"economy, and {WORD[F['to_econ_e1']]} of those {WORD[F['to_econ']]} start at policy tilt to insiders. The crossings carry "
             "the atlas's argument, and the spread puts them in the middle of the page."),
         "overview": (
             "Each page shows its variables as icons in small groups by area. Connections within a page draw thin and "
@@ -2366,8 +2469,9 @@ DIRECTIONS = [
             "their far end. R10 sits wholly on this page. The R10 page shows the loop as a closed circuit in the middle of "
             "the right-hand page, with a note that none of its steps crosses to the economy."),
         "thumbs": (
-            "Each thumbnail is a tiny spread, two page rectangles and a fold, with the loop drawn at its stations' "
-            "positions. Loops that cross the fold read at once: R1, R5, R6 and R15 cross twice each. R8 sits alone on the "
+            "Each thumbnail crops the spread around one loop, showing page edges and the fold wherever the loop reaches "
+            "them, with the loop drawn at its stations' positions. Loops that cross the fold read at once: R1, R5, R6 and "
+            "R15 cross twice each. R8 sits alone on the "
             "left page. The rest sit on the right in different places, with R10 and R4a high in the elections group and "
             "R13 and R18 lower down in government."),
         "ground": (
@@ -2394,7 +2498,8 @@ DIRECTIONS = [
         "overview": (
             "Eight plinths sit on the table: the five core areas, the outside drivers, the economy layer and technology. "
             "The overview shows all 51 blocks with icons on their tops and the loop arcs between them. Connections outside "
-            "loops stay out until a block is chosen. Plinth labels sit along the front edges. Readers click a plinth to "
+            "loops stay out until a block is chosen. Each plinth carries a letter at its corner, keyed beside the table. "
+            "Readers click a plinth to "
             "lift it from the table or a block to open the variable."),
         "closeups": (
             "Clicking C lifts its plinth forward and turns it to face the reader. Its five blocks stand three, one, four, "
@@ -2445,17 +2550,17 @@ for d in DIRECTIONS:
 # Page
 # --------------------------------------------------------------------------
 def legend_svg():
-    s = Svg("lg", 560, 54, WHITE)
+    s = Svg("lg", 700, 54, WHITE)
     items = [("documented or well-supported", "documented"), ("plausible", "plausible"),
              ("contested", "plausible_contested"), ("hypothesis", "hypothesis")]
     x = 0
     for name, ev in items:
         s.add(L(x + 2, 18, x + 44, 18, CHAR, 1.8, ev, extra=' stroke-linecap="round"' if ev in ("documented",) else ""))
         s.add(T(x + 52, 22.5, name, 13, CHAR))
-        x += 60 + len(name) * 6.9
+        x += 64 + len(name) * 6.8
     s.add(L(2, 44, 44, 44, PRU, 2.2), T(52, 48.5, "reinforcing loop, feeds itself", 13, CHAR))
     s.add(L(262, 44, 304, 44, VERD, 2.2), T(312, 48.5, "balancing loop, pushes back", 13, CHAR))
-    return s.render(size='width="560" height="54"')
+    return s.render(size='width="700" height="54"')
 
 
 def build():
@@ -2482,7 +2587,8 @@ def build():
     .fact b{display:block;font-family:'Inter Tight',Inter,sans-serif;font-size:44px;line-height:1;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
     .fact span{font-size:13px;line-height:1.45;display:block}
     .legend{display:flex;align-items:center;gap:28px;background:var(--white);padding:16px 18px;margin:12px 0 0}
-    .legend p{margin:0;font-size:13px;max-width:560px}
+    .legend p{margin:0;font-size:13px;max-width:520px}
+    .legend svg{flex:none}
     .legend .red{display:inline-block;width:22px;height:4px;background:var(--red);vertical-align:middle;margin-right:6px}
     .card{background:var(--white);margin:44px 0 0;padding:34px 38px 36px;border-top:3px solid var(--char)}
     .top{display:grid;grid-template-columns:1fr 680px;gap:36px;align-items:start}
@@ -2634,7 +2740,9 @@ def build():
               "spread, a dial centered on the household, a machine of loops and a tiled map.\n")
     md.append("## Notes on method\n")
     md.append("- Every label, sign, grade, delay and count in the sketches and in this text comes from the model file. "
-              "The script asserts the reach figure and computes the others at build time.\n"
+              "The script computes the headline counts from the model at build time and asserts the reach figure. I "
+              "checked the hand-written counts (loop lengths, shared loop pairs, reform targets) against the model with "
+              "separate queries.\n"
               "- Star Atlas, Flywheels and Governors and Honeycomb place things with seeded layout routines. Positions in "
               "those sketches carry no meaning beyond what each pitch states.\n"
               "- The loop record for R10 lists three reforms (R-01, R-02, R-03). Two more, R-46 and R-47, name R10 among "

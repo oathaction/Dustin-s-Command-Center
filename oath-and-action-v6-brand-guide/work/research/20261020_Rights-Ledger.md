@@ -437,3 +437,30 @@ Dustin sent three images and four links on October 30 as references for an Oath 
 | `20261030_Ref-Data-Viz-Chart-Collage-Blue-Teal.webp` | A collage of chart forms in navy and teal: bars, donuts, streamgraph, waffle, Sankey, parliament chart, maps | Third-party; source unknown. Study only |
 | `20261030_Ref-Data-Viz-Utilitarian-Graphic-Assets.webp` | A commercial pack of "utilitarian" vector chart and diagram assets on grey paper, credited "Designed by Vanzyst" | Third-party commercial asset pack. Study only; never trace or use its assets |
 | `20261030_Ref-Data-Viz-Economist-Chart-Montage.webp` | A montage of The Economist's charts around its logo | Third-party; The Economist's trademark and charts. Study only |
+
+
+## Added October 30, 2026: data visualization system references (research lead)
+
+The research lead read these sources for `work/research/20261030_Data-Viz-System-References.md` (DR-22). No nytimes.com page was requested (D2-62). Rows as the research lead wrote them in section 7 of that brief.
+
+All references in this brief are study only and never ship (Master Brief V2 section 2). Rows follow the main table in `work/research/20261020_Rights-Ledger.md`. "T-TP" means no license held and copyright stays with the maker. Two new codes are proposed: T-BBCGEL for the GEL infographic asset licence on S21 (read on October 30: free use without attribution, no redistribution of the assets, no implied BBC endorsement), and T-OWID upgraded from a search snippet to a page read on S28.
+
+| # | File or reference | Set | Likely origin | Evidence | Permitted use | Notes |
+|---|---|---|---|---|---|---|
+| dvs-01 | S01, S02: Jalbert-Gagnier case study and slides | data-viz-system | third-party screenshot | Page and slide files read October 30, 2026 | study only | T-TP. Page by David Jalbert-Gagnier and Objective Subject; slides show pages of a New York Times Company brand book and the Times's trademarks |
+| dvs-02 | S03, S04: ai2html repository and documentation | data-viz-system | third-party screenshot | README states "Copyright (c) 2011-2021 The New York Times Company" | study only | T-TP. License file not read; read it before any code reuse |
+| dvs-03 | S05: Archie Tse, Malofiej 2016 slides | data-viz-system | third-party screenshot | PDF in archietse/malofiej-2016, cloned read-only | study only | T-TP. Archie Tse; slides credit The New York Times |
+| dvs-04 | S06: swoopy-drag | data-viz-system | third-party screenshot | README and demo page | study only | T-TP. Adam Pearce; license not checked |
+| dvs-05 | S07: "In Defense of Interactive Graphics" | data-viz-system | third-party screenshot | Blog post dated March 31, 2017 | study only | T-TP. Gregor Aisch |
+| dvs-06 | S08: Marco Hernandez interview | data-viz-system | third-party screenshot | Nightingale, April 25, 2023 | study only | T-TP. Data Visualization Society and interviewer TK Sajeev Kumar; first published by NewspaperDesign.in |
+| dvs-07 | S09, S10, S11: Datawrapper blog posts | data-viz-system | third-party screenshot | Three posts by Lisa Charlotte Muth | study only | T-TP. Datawrapper GmbH |
+| dvs-08 | Times charts reproduced on S09 and S11 (2015 Arctic ice, 2018 immigration scatter, 2022 jobs, 2022 heat map, Times hue wheel on S10) | data-viz-system | third-party screenshot | Images on kirby.datawrapper.de | study only | T-TP. The New York Times Company; never reproduce or trace |
+| dvs-09 | S12 to S19: Carbon Design System pages | data-viz-system | third-party screenshot | Pages read October 30, 2026 | study only | T-TP. IBM; site terms not checked |
+| dvs-10 | S20 to S25: BBC GEL and Mobile Accessibility Guidelines | data-viz-system | third-party screenshot | Pages read October 30, 2026 | study only | T-BBCGEL for the GEL infographic assets, which were not downloaded; BBC |
+| dvs-11 | S26, S27: bbplot and the R cookbook, including the bbplot example sheet | data-viz-system | third-party screenshot | GitHub files and cookbook page | study only | T-TP. BBC; license file not read |
+| dvs-12 | S28, S29: OWID redesign article and life expectancy data page | data-viz-system | third-party screenshot | Pages and live views read October 30, 2026 | study only | T-OWID. Global Change Data Lab. Its charts and data are CC BY; third-party data keeps its own license; code license conflicts between article and footer |
+| dvs-13 | S30: The Economist design system and maps style guide v1.2 | data-viz-system | third-party screenshot | PDF dated 5 May 2017 | study only | T-TP. The Economist |
+| dvs-14 | `20261030_Ref-Data-Viz-Chart-Collage-Blue-Teal.webp` | data-viz | third-party screenshot | Already in the ledger | study only | No change; source unknown |
+| dvs-15 | `20261030_Ref-Data-Viz-Utilitarian-Graphic-Assets.webp` | data-viz | stock preview | Already in the ledger; credit "Designed by Vanzyst" | study only | No change; commercial asset pack |
+| dvs-16 | `20261030_Ref-Data-Viz-Economist-Chart-Montage.webp` | data-viz | third-party screenshot | Already in the ledger | study only | No change; The Economist's charts and trademark |
+| dvs-17 | 13 captures in `work/research/data-viz-references/` (listed in the change log) | data-viz-system | third-party screenshot | Taken October 30, 2026 at 1,440 px | study only | Studio captures of third-party pages for the board; the Gagnier capture shows Times brand book pages |
