@@ -1203,29 +1203,30 @@ def sketch_honeycomb():
 # 5. KITCHEN TABLE
 # ==========================================================================
 KT_SECTORS = ["A", "household", "production", "money", "TC", "X", "B", "C", "D", "E"]
+KT_GAP = 0.9
 
 
-def kt_positions(cx, cy, r1, dr):
-    tot = len(ORDER) - 1
-    per = 2 * math.pi / (tot + len(KT_SECTORS) * 0.9)
-    th = -math.pi / 2 - per * 3.5
+def kt_positions(cx, cy, r1, dr, weights=None, start=None):
+    weights = weights or {}
+    units = sum(len([n for n in AREA_NODES[a] if n != HOME]) * weights.get(a, 1.0) for a in KT_SECTORS)
+    per = 2 * math.pi / (units + len(KT_SECTORS) * KT_GAP)
+    th = start if start is not None else -math.pi / 2 - per * 3.5
     pos = {HOME: (cx, cy)}
     ang = {}
     for a in KT_SECTORS:
         ns = [n for n in AREA_NODES[a] if n != HOME]
-        span = per * len(ns)
+        span = per * len(ns) * weights.get(a, 1.0)
         a0 = th
-        th += span + per * 0.9
+        th += span + per * KT_GAP
         rings = defaultdict(list)
         for n in ns:
             rings[HOME_DIST[n]].append(n)
         for k, lst in rings.items():
             for i, n in enumerate(lst):
                 t = a0 + span * (i + 0.5) / len(lst)
-                ang[n] = t
                 rr = r1 + dr * (k - 1)
                 pos[n] = (cx + rr * math.cos(t), cy + rr * math.sin(t))
-        ang[a] = (a0, a0 + span)
+        ang[a] = (a0, a0 + span, per)
     return pos, ang
 
 
@@ -1240,8 +1241,18 @@ def kt_parent(n):
 def kt_thumb(lid, size=76):
     def draw(s):
         cx = cy = size / 2
-        r1, dr = 6.5, 5.6
-        pos, _ = kt_positions(cx, cy, r1, dr)
+        r1, dr = 7.0, 5.6
+        codes = [st["code"] for st in loop_stations(lid) if st["code"]]
+        touched = {AREA_OF[c] for c in codes}
+        base, _ = kt_positions(cx, cy, r1, dr)
+        pos, _ = kt_positions(cx, cy, r1, dr, {a: 4.0 for a in touched})
+        if codes and any(c != HOME for c in codes):
+            cc = [c for c in codes if c != HOME]
+            want = cmean({c: math.atan2(base[c][1] - cy, base[c][0] - cx) for c in cc}, cc)
+            have = cmean({c: math.atan2(pos[c][1] - cy, pos[c][0] - cx) for c in cc}, cc)
+            rot = want - have
+            pos = {n: (cx + (x - cx) * math.cos(rot) - (y - cy) * math.sin(rot),
+                       cy + (x - cx) * math.sin(rot) + (y - cy) * math.cos(rot)) for n, (x, y) in pos.items()}
         for k in range(1, 7):
             s.add(C(cx, cy, r1 + dr * (k - 1), fill="none", stroke=STONE, w=0.4))
         s.add(C(cx, cy, 2.4, fill=CHAR, stroke=None))
@@ -1269,22 +1280,22 @@ def kt_thumb(lid, size=76):
 def sketch_kitchen_table():
     s = Svg("s5", bg=WHITE, title="Kitchen Table sketch")
     header(s, "Every variable in the model reaches households' financial security within six steps.", width=84)
-    cx, cy, r1, dr = 222, 226, 37, 27
-    pos, ang = kt_positions(cx, cy, r1, dr)
+    cx, cy, r1, dr = 246, 226, 28, 24
+    pos, ang = kt_positions(cx, cy, r1, dr, start=math.radians(-140))
     for k in range(1, 7):
         s.add(C(cx, cy, r1 + dr * (k - 1), fill="none", stroke=STONE, w=0.6))
     for a in KT_SECTORS:
-        a0, a1 = ang[a]
-        g = a0 - (2 * math.pi / 60) * 0.45
-        rr0, rr1 = r1 - 10, r1 + dr * 5 + 8
-        s.add(L(cx + rr0 * math.cos(g), cy + rr0 * math.sin(g), cx + rr1 * math.cos(g), cy + rr1 * math.sin(g), NEWS, 1.2))
+        a0, a1, per = ang[a]
+        g = a0 - per * KT_GAP / 2
+        rr0, rr1 = r1 - 8, r1 + dr * 5 + 8
+        s.add(L(cx + rr0 * math.cos(g), cy + rr0 * math.sin(g), cx + rr1 * math.cos(g), cy + rr1 * math.sin(g), NEWS, 1.4))
     for n in ORDER:
         if n == HOME:
             continue
         l = kt_parent(n)
         p0, p1 = pos[n], pos[l["to"]]
         d = math.hypot(p1[0] - p0[0], p1[1] - p0[1])
-        tr = 22 if l["to"] == HOME else 4.5
+        tr = 21 if l["to"] == HOME else 4.5
         ux, uy = (p1[0] - p0[0]) / d, (p1[1] - p0[1]) / d
         a = (p0[0] + ux * 4, p0[1] + uy * 4)
         b = (p1[0] - ux * tr, p1[1] - uy * tr)
@@ -1299,32 +1310,35 @@ def sketch_kitchen_table():
             continue
         x, y = pos[n]
         s.add(C(x, y, 3.4, fill=CHAR if LOOPCOUNT[n] else WHITE, stroke=CHAR, w=1))
-    s.add(C(cx, cy, 21, fill=WHITE, stroke=RED, w=2.6), s.icon(HOME, "black", cx - 14, cy - 14, 28))
+    s.add(C(cx, cy, 20, fill=WHITE, stroke=RED, w=2.6), s.icon(HOME, "black", cx - 13, cy - 13, 26))
+    a0, a1, per = ang["A"]
+    g = a0 - per * KT_GAP / 2
     for k in range(1, 7):
-        s.add(T(cx + 3, cy - (r1 + dr * (k - 1)) + 4.5, str(k), 13, STONE, 600, "start", halo=WHITE))
-    s.add(T(cx, 62, "steps to the household", 13, STONE, 500, "middle", halo=WHITE))
-    short = {"A": "Economic structure", "household": "Households", "production": "Production",
+        rr = r1 + dr * (k - 1)
+        s.add(T(cx + rr * math.cos(g), cy + rr * math.sin(g) + 4.5, str(k), 13, STONE, 700, "middle", halo=WHITE))
+    names = {"A": "Economic structure", "household": "Households", "production": "Production",
              "money": "Credit and trade", "TC": "Technology", "X": "Outside drivers", "B": "Political inputs",
              "C": "Electoral competition", "D": "Governing institutions", "E": "Legitimacy"}
     for a in KT_SECTORS:
-        a0, a1 = ang[a]
+        a0, a1, per = ang[a]
         m = (a0 + a1) / 2
-        rr = r1 + dr * 5 + 16
+        rr = r1 + dr * 5 + 15
         x, y = cx + rr * math.cos(m), cy + rr * math.sin(m)
-        cs = math.cos(m)
-        anchor = "start" if cs > 0.3 else "end" if cs < -0.3 else "middle"
-        lines = wrap(short[a], 12)
-        y += 4 - (len(lines) - 1) * 7 + (6 if math.sin(m) > 0.7 else 0) - (4 if math.sin(m) < -0.7 else 0)
+        cs, sn = math.cos(m), math.sin(m)
+        anchor = "start" if cs > 0.35 else "end" if cs < -0.35 else "middle"
+        lines = wrap(names[a], 12) if abs(cs) > 0.35 else [names[a]]
+        y += 4 - (len(lines) - 1) * 7 + (8 if sn > 0.8 else 0) - (2 if sn < -0.8 else 0)
         s.add(TL(x, y, lines, 13, 14, fill=CHAR, weight=600, anchor=anchor, fam="tight", halo=WHITE))
-    s.add(L(cx + 18, cy + 14, 404, 372, CHAR, 0.7))
-    s.add(TL(404, 368, ["Households' financial security", "Five reforms act on it directly"], 13, 15, fill=CHAR, weight=500, halo=WHITE))
-    px = 478
-    s.add(T(px, 96, "Loops by distance", 13, CHAR, 700))
-    picks = ["R5", "R1", "R10", "R12", "R7", "B4"]
+    px = 494
+    s.add(L(px - 12, 66, px - 12, 390, STONE, 0.6))
+    s.add(T(px, 82, "Loops by distance", 13, CHAR, 700))
+    picks = ["R5", "R10", "R1", "B4"]
     for i, lid in enumerate(picks):
-        gx, gy = px + (i % 2) * 74, 112 + (i // 2) * 82
-        s.add(f'<g transform="translate({gx},{gy})">' + re.sub(r'^<svg[^>]*>|</svg>$', '', kt_thumb(lid, 64)) + "</g>")
-        s.add(T(gx + 32, gy + 76, lid, 13, CHAR, 600, "middle"))
+        gx, gy = px + (i % 2) * 70, 94 + (i // 2) * 84
+        s.add(f'<g transform="translate({gx},{gy})">' + re.sub(r'^<svg[^>]*>|</svg>$', '', kt_thumb(lid, 62)) + "</g>")
+        s.add(T(gx + 31, gy + 76, lid, 13, CHAR, 600, "middle"))
+    s.add(TL(px, 282, ["Rings count the steps", "to the center.", "", "Center: households'", "financial security.",
+                       "Five reforms act on", "it directly."], 13, 15, fill=CHAR))
     return s.render()
 
 
@@ -1335,23 +1349,28 @@ def spine_thumb(lid, size=76):
     def draw(s):
         y = size / 2
         x0, x1 = 5, size - 5
-        sp = (x1 - x0) / (len(SPINE_ORDER) - 1)
+        codes = [st["code"] for st in loop_stations(lid) if st["code"]]
+        touched = {AREA_OF[c] for c in codes}
+        pos, tot = weighted_line(SPINE_ORDER, lambda n: 7.0 if AREA_OF[n] in touched else 1.0)
+        k = (x1 - x0) / tot
+        X = {n: x0 + (pos[n][0] + pos[n][1]) / 2 * k for n in SPINE_ORDER}
         s.add(L(x0, y, x1, y, STONE, 0.8))
+        for a in touched:
+            ns = AREA_NODES[a]
+            s.add(L(x0 + pos[ns[0]][0] * k + 1, y, x0 + pos[ns[-1]][1] * k - 1, y, CHAR, 2.2))
         col = loop_color(lid)
         if is_sketch(lid):
             s.add(band(f"M{size/2-14} {y-8}a14 8 0 1 1 28 0a14 8 0 1 1 -28 0", NEWS, 1.0))
-            for st in loop_stations(lid):
-                if st["code"]:
-                    s.add(C(x0 + SPINE_IX[st["code"]] * sp, y, 2, fill=CHAR, stroke=None))
+            for c in codes:
+                s.add(C(X[c], y, 2, fill=CHAR, stroke=None))
             return
         for st in loop_steps(lid):
-            a, b = SPINE_IX[st["from"]], SPINE_IX[st["to"]]
-            xa, xb = x0 + a * sp, x0 + b * sp
+            xa, xb = X[st["from"]], X[st["to"]]
             rx = abs(xb - xa) / 2
             ry = min(rx, size / 2 - 6)
-            s.add(P(f"M{f1(xa)} {f1(y)}A{f1(rx)} {f1(ry)} 0 0 1 {f1(xb)} {f1(y)}", col, 1.4, st["evidence"]))
-        for st in loop_stations(lid):
-            s.add(C(x0 + SPINE_IX[st["code"]] * sp, y, 1.8, fill=CHAR, stroke=None))
+            s.add(P(f"M{f1(xa)} {f1(y)}A{f1(rx)} {f1(ry)} 0 0 1 {f1(xb)} {f1(y)}", col, 1.5, st["evidence"]))
+        for c in codes:
+            s.add(C(X[c], y, 2.0, fill=CHAR, stroke=NEWS, w=0.6))
     return thumb_svg(f"sp-{lid}", NEWS, draw, size)
 
 
@@ -1395,27 +1414,27 @@ def sketch_spine():
         xa, xb = X[ns[0]], X[ns[-1]]
         s.add(L(xa, y + 3, xb, y + 3, CHAR, 2.4))
         s.add(T((xa + xb) / 2, y + 15.5, nm, 13, CHAR, 600, "middle", fam="tight"))
-    s.add(T(x0, 92, "forward", 13, STONE, 600))
-    s.add(T(x0, 392, "back", 13, STONE, 600))
-    mx = (X["E1"] + X["A1"]) / 2
-    s.add(TL(mx + 18, 372, ["L03, Policy advantages add", "to wealth at the top"], 13, 15, fill=CHAR, weight=500, halo=NEWS))
-    # phone
-    fx, fy, fw, fh = 492, 78, 122, 262
+    s.add(T(x0, 96, "forward", 13, STONE, 600), T(x0, 390, "back", 13, STONE, 600))
+    s.add(TL(352, 368, ["L03, Policy advantages", "add to wealth at the top"], 13, 15, fill=CHAR, weight=500,
+             anchor="middle", halo=NEWS))
+    fx, fy, fw, fh = 492, 66, 122, 260
     s.add(R(fx, fy, fw, fh, fill=WHITE, stroke=CHAR, sw=1.4, rx=16))
     s.add(R(fx + fw / 2 - 14, fy + 7, 28, 4, fill=CHAR, rx=2))
     vx, vy0, vy1 = fx + fw / 2, fy + 22, fy + fh - 14
     vs = (vy1 - vy0) / (len(SPINE_ORDER) - 1)
     Y = {n: vy0 + i * vs for i, n in enumerate(SPINE_ORDER)}
-    for l in LINKS.values():
-        ya, yb2 = Y[l["from"]], Y[l["to"]]
-        ry = abs(yb2 - ya) / 2
-        rx = min(ry, 52)
-        inl = bool(l["loops"])
-        col = RED if l["id"] == "L03" else (PRU if inl else STONE)
-        sweep = 1 if yb2 > ya else 1
-        s.add(P(f"M{f1(vx)} {f1(ya)}A{f1(rx)} {f1(ry)} 0 0 {1 if yb2 > ya else 1} {f1(vx)} {f1(yb2)}", col if l["id"] != "L03" else PRU, 0.9 if inl else 0.45, None))
-    s.add(L(vx, vy0, vx, vy1, CHAR, 1))
-    s.add(TL(fx - 4, fy + fh + 22, ["On a phone the line", "runs down the screen"], 13, 15, fill=CHAR))
+    for layer in (0, 1):
+        for l in LINKS.values():
+            inl = bool(l["loops"])
+            if inl != bool(layer):
+                continue
+            ya, yb2 = Y[l["from"]], Y[l["to"]]
+            ry = abs(yb2 - ya) / 2
+            rx = min(ry, 50)
+            s.add(P(f"M{f1(vx)} {f1(ya)}A{f1(rx)} {f1(ry)} 0 0 1 {f1(vx)} {f1(yb2)}",
+                    PRU if inl else STONE, 0.8 if inl else 0.4, None))
+    s.add(L(vx, vy0, vx, vy1, CHAR, 1.1))
+    s.add(TL(fx - 2, fy + fh + 22, ["On a phone the line runs", "down the screen. Feedback", "sits on the left."], 13, 15, fill=CHAR))
     return s.render()
 
 
@@ -1510,26 +1529,55 @@ def wheel_phi(lid, cx, cy, targets):
     return best
 
 
+def separate(pos, radii, box, rounds=300, margin=6):
+    pos = {k: list(v) for k, v in pos.items()}
+    keys = list(pos)
+    x0, y0, x1, y1 = box
+    for _ in range(rounds):
+        moved = False
+        for a, b in combinations(keys, 2):
+            dx, dy = pos[b][0] - pos[a][0], pos[b][1] - pos[a][1]
+            d = math.hypot(dx, dy) or 0.01
+            need = radii[a] + radii[b] + margin
+            if d < need:
+                push = (need - d) / 2
+                pos[a][0] -= dx / d * push
+                pos[a][1] -= dy / d * push
+                pos[b][0] += dx / d * push
+                pos[b][1] += dy / d * push
+                moved = True
+        for k in keys:
+            r = radii[k]
+            pos[k][0] = min(max(pos[k][0], x0 + r), x1 - r)
+            pos[k][1] = min(max(pos[k][1], y0 + r), y1 - r)
+        if not moved:
+            break
+    return {k: tuple(v) for k, v in pos.items()}
+
+
 def fly_layout():
     groups = {}
     for g in M["groups"]:
         for lid in g["loops"]:
             groups[lid] = g["id"]
-    GA = {"A": (95, 175), "B": (230, 115), "C": (370, 150), "D": (255, 320), "SK": (420, 350)}
+    GA = {"A": (90, 175), "B": (215, 120), "C": (370, 135), "D": (240, 300), "SK": (300, 360)}
     ids = list(LOOP_ORDER) + ["p:" + n for n in SHARED]
     anchors = {lid: (*GA[groups[lid]], 1.0) for lid in LOOP_ORDER}
-    anchors["R8"] = (60, 330, 3.0)
-    anchors["B2"] = (390, 360, 3.0)
-    anchors["B3"] = (440, 300, 3.0)
+    anchors["R8"] = (48, 350, 4.0)
+    anchors["B2"] = (400, 352, 4.0)
+    anchors["B3"] = (440, 300, 4.0)
+    anchors["R9"] = (330, 360, 1.0)
     edges = []
     for lid in LOOP_ORDER:
         for st in loop_stations(lid):
             if st["code"] in SHARED:
                 edges.append((lid, "p:" + st["code"], 1.0))
-    radii = {lid: wheel_radius(lid) + 4 for lid in LOOP_ORDER}
-    radii.update({"p:" + n: 6 for n in SHARED})
-    return force_layout(ids, edges, anchors, (22, 70, 458, 392), iters=900, seed=4, kscale=0.55,
-                        grav=0.03, radii=radii, edge_k=1.4)
+    radii = {lid: wheel_radius(lid) + 8 for lid in LOOP_ORDER}
+    radii.update({"p:" + n: 7 for n in SHARED})
+    box = (24, 70, 452, 384)
+    pos = force_layout(ids, edges, anchors, box, iters=900, seed=4, kscale=0.62,
+                       grav=0.03, radii=radii, edge_k=1.2)
+    return separate(pos, radii, box, margin=4)
 
 
 FLY = fly_layout()
@@ -1577,21 +1625,20 @@ def sketch_flywheels():
     # inset
     px = 470
     s.add(R(px - 6, 66, 176, 322, fill=WHITE, stroke=STONE, sw=0.6))
-    s.add(T(px + 4, 88, "R10, a four-spoke flywheel", 13, CHAR, 700))
-    wx, wy, wr = 552, 186, 50
+    s.add(T(px + 4, 88, "R10 as a flywheel", 13, CHAR, 700))
+    wx, wy, wr = 548, 170, 46
     pts = draw_wheel(s, "R10", wx, wy, wr, -math.pi / 2, WHITE, lw=4, dot=3.2)
     for p, st in zip(pts, loop_stations("R10")):
         ang = math.atan2(p[1] - wy, p[0] - wx)
         ix, iy = wx + (wr + 20) * math.cos(ang), wy + (wr + 20) * math.sin(ang)
         s.add(s.icon(st["code"], "black", ix - 11, iy - 11, 22))
-    s.add(TL(px + 4, 282, ["Arcs sized by delay:", "S, S, M, M", "Dashed arc: C3 to C4,", "plausible"], 13, 16, fill=CHAR))
+    s.add(TL(px + 4, 248, ["Arcs sized by delay,", "S, S, M, M. Dashed arc:", "C3 to C4, plausible"], 13, 15, fill=CHAR))
     # legend
-    lx, ly = px + 22, 362
-    tmp = Svg("x")
+    lx, ly = px + 16, 318
     draw_wheel(s, "R13", lx, ly, 12, -math.pi / 2, WHITE, lw=2.2, dot=1.8)
-    s.add(T(lx + 18, ly + 4.5, "feeds itself", 13, CHAR))
-    draw_wheel(s, "B5", lx + 102, ly, 12, -math.pi / 2, WHITE, lw=2, dot=1.8)
-    s.add(T(lx + 118, ly - 6, "pushes", 13, CHAR), T(lx + 118, ly + 9, "back", 13, CHAR))
+    s.add(T(lx + 20, ly - 2, "flywheel", 13, CHAR, 600), T(lx + 20, ly + 13, "feeds itself", 13, CHAR))
+    draw_wheel(s, "B5", lx, ly + 40, 12, -math.pi / 2, WHITE, lw=2, dot=1.8)
+    s.add(T(lx + 20, ly + 38, "governor", 13, CHAR, 600), T(lx + 20, ly + 53, "pushes back", 13, CHAR))
     return s.render()
 
 

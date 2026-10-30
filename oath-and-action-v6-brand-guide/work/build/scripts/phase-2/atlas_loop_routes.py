@@ -1348,6 +1348,10 @@ footer p{margin:0 0 6px;max-width:1000px}
 """
 
 
+def pair_score(res, a, b):
+    return next(p['score'] for p in res['pairs'] if {p['a'], p['b']} == {a, b})
+
+
 def page(pl, routes, floors, sim, con):
     order = M['loop_order']
     C = M['generated']['counts']
@@ -1542,7 +1546,7 @@ def page(pl, routes, floors, sim, con):
   <div class="sec-body"><div class="col notes">
     <p>The sign mark is the pointing tag, the studio's recommendation in Choice 3 of the October 28 review, which Dustin has not yet decided. If he picks the circled sign, each step needs an arrowhead as well, and the floor rises.</p>
     <p>The plan is a proposal for every concept to adapt. A concept may stretch a tier or redraw the outlines; the ring order and the slot of each variable are what keep its thumbnails comparable with the others.</p>
-    <p>Two-step loops make small rings. Their size and place on the plan carry the difference between them. R13 and R18 both sit in area D and share D2, and they still read apart because their second stations sit in different directions.</p>
+    <p>Two-step loops make small rings. Their size and place on the plan carry the difference between them. R13 and R18 both sit in area D and share D2. From D2, R13's other station (D1) sits straight below and R18's (D4) below and to the left, and the pair scores {pair_score(study, "R13", "R18"):.2f} at {CARD_W} px.</p>
     <p>No reader has seen these thumbnails. The ten-second test and a blind matching test (five readers, a thumbnail and three titles) would show whether the measured distinctness holds for people.</p>
     <p>The sketched loops sit beside the variables their reforms target. That placement comes from the reforms, not from a connection in the model, and each card says so.</p>
     <p>The faint outlines of the areas a loop does not visit are context. They are drawn in Stone at {MARKS["plan_w"]} px; the outlines of the areas it visits are {MARKS["plan_visited"]} px.</p>

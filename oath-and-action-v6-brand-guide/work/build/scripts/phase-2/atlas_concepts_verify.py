@@ -119,17 +119,17 @@ def verify(html):
                 seen['node'].add(v); stats['nodes'] += 1
         if 'data-name' in a:
             stats['names'] += 1
-            v = a.get('data-node') or a.get('data-loop') or a.get('data-reform') or a.get('data-link')
+            # resolve by the attribute present, since loop IDs B2 to B5 also name variables (V7.1 issue list)
             name = a['data-name']
-            ok = set()
-            if v in NODES:
-                n = NODES[v]; ok = {n['label'], n['title']} | ({n['short']} if n.get('short') else set())
-            elif v in LOOPS:
-                ok = {LOOPS[v]['title']}
-            elif v in REFORMS:
-                ok = {REFORMS[v]['title']}
-            elif v in LINKS:
-                ok = {LINKS[v]['name']}
+            ok, v = set(), None
+            if 'data-node' in a and a['data-node'] in NODES:
+                v = a['data-node']; n = NODES[v]; ok = {n['label'], n['title']} | ({n['short']} if n.get('short') else set())
+            elif 'data-loop' in a and a['data-loop'] in LOOPS:
+                v = a['data-loop']; ok = {LOOPS[v]['title']}
+            elif 'data-reform' in a and a['data-reform'] in REFORMS:
+                v = a['data-reform']; ok = {REFORMS[v]['title']}
+            elif 'data-link' in a and a['data-link'] in LINKS:
+                v = a['data-link']; ok = {LINKS[v]['name']}
             if name not in ok:
                 errs.append(f'{v}: data-name "{name}" is not a V7 name ({sorted(ok)})')
             if text and name not in text:
