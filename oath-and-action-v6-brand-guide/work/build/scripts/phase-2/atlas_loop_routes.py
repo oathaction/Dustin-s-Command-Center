@@ -1292,6 +1292,7 @@ section{padding-top:72px;padding-bottom:8px}
 .steps th{text-align:left;font-size:13px;font-weight:600;color:var(--deep);border-bottom:1px solid var(--char);padding:6px 10px 6px 0}
 .steps td{border-bottom:1px solid var(--stone);padding:8px 10px 8px 0;vertical-align:top}
 .steps td:first-child{font-weight:700;white-space:nowrap}
+@media (max-width:720px){.steps{font-size:13px}.steps th,.steps td{padding-right:6px}}
 .sheet{padding-top:56px;padding-bottom:64px;margin-top:64px}
 .sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:28px}
 .sheet-head h3{font-family:var(--disp);font-weight:800;font-size:28px;letter-spacing:-.01em;margin:0}
@@ -1367,12 +1368,13 @@ def page(pl, routes, floors, sim, con):
     # R10 at twice size
     r10 = thumb_svg('R10', routes['R10'], pl, CARD_W, uid='big-R10', view='loop-route-2x')
     hpx = frame(pl)['h'] * CARD_W / frame(pl)['w']
-    r10 = r10.replace(f'width="{_f(CARD_W)}" height="{_f(hpx)}"', f'width="{CARD_W * 2}" height="{_f(hpx * 2)}"', 1)
+    r10 = r10.replace(f'width="{_f(CARD_W)}" height="{_f(hpx)}"', f'width="{CARD_W * 2}" height="{_f(hpx * 2)}" style="max-width:100%;height:auto"', 1)
     step_rows = ''.join(
         f'<tr data-link="{s["id"]}" data-sign="{s["polarity"]}" data-grade="{s["evidence"]}" data-delay="{s["delay"]}">'
-        f'<td>{s["id"]}</td><td>{esc(s["from_label"])} {"raises" if s["polarity"] == "+" else "lowers"} {esc(s["to_label"])}</td>'
+        f'<td>{s["id"]}</td><td>{esc(s["from_label"])} {"raises" if s["polarity"] == "+" else "lowers"} {esc(s["to_label"])}'
+        f'{". This step closes the loop." if s["closing"] else ""}</td>'
         f'<td>{"+" if s["polarity"] == "+" else MINUS}</td><td>{acc.GRADES[s["evidence"]][0]}, {acc.GRADES[s["evidence"]][2]}</td>'
-        f'<td>{acc.DELAYS[s["delay"]]}</td><td>{"Closes the loop" if s["closing"] else ""}</td></tr>'
+        f'<td>{acc.DELAYS[s["delay"]]}</td></tr>'
         for s in LOOPS['R10']['steps'])
     legend = ''.join(f'<dt>{_mini(k)}</dt><dd>{v}</dd>' for k, v in (
         ('documented', '<b>Solid:</b> documented (on the public record) or well supported (strong research evidence)'),
@@ -1488,8 +1490,8 @@ def page(pl, routes, floors, sim, con):
   <div class="sec-body"><div class="col">
     <p class="lede">R10, &ldquo;{esc(LOOPS["R10"]["title"])}&rdquo;, at twice catalog size. Each step is an arc between two stations. Arcs bow outward from the middle of the loop, so a route always reads as a closed circuit. A two-station loop becomes a small ring.</p>
     <div class="read">
-      <div><div class="scroll" role="region" tabindex="0" aria-label="R10 at twice catalog size">{r10}</div>
-        <table class="steps" aria-label="R10 in words"><thead><tr><th>Step</th><th>What it says</th><th>Sign</th><th>Evidence and line</th><th>Delay</th><th></th></tr></thead><tbody>{step_rows}</tbody></table>
+      <div><div class="figure">{r10}</div>
+        <table class="steps" aria-label="R10 in words"><thead><tr><th>Step</th><th>What it says</th><th>Sign</th><th>Evidence and line</th><th>Delay</th></tr></thead><tbody>{step_rows}</tbody></table>
         <p class="facts">{esc(_weakest("R10"))}. Delay stays out of the thumbnail; the loop card carries it.</p>
       </div>
       <dl class="legend">{legend}</dl>
