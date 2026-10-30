@@ -240,3 +240,17 @@ Dustin's words: "Yes do editorial - clean, clear, great design like the New York
 | D2-63 | Twelve makers build in parallel, one per concept, each a general-purpose agent briefed with the shared maker brief and its own concept section | One maker per concept keeps each idea whole; parallel work keeps the wait short |
 | D2-64 | Every concept carries `#overview` and `#loop-r10`; `#area-c` is the middle level wherever the concept's idea has one, so R10 is reached through area C | DR-13 asks for like-for-like close-ups; the interaction memo makes area C the step between the system and the loop |
 | D2-65 | Editorial Desk takes the Times's editorial habits (finding titles, notes inside the drawing, gray context with one dark route, generous white space) and none of its marks: no Times typefaces, wordmark, colors or layouts are copied | Rights rule, brief section 2; DR-23 asks for the quality, and the brand stays Oath & Action's |
+
+## Course correction, October 30, 2026
+
+Dustin, after the twelve makers started: "when we said editorial, I thought maybe you were talking about the Atlas too. I did not like any of the Atlas concepts that you made. I liked all my original inspiration photos more. But I thought we were going to do like a New York Times style for data, charts, and the Atlas."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-26 | The studio's own atlas directions are set aside: the October 28 directions (Field Guide, Snowball and Thermostat, Loop Lines) and the ten from-scratch directions of Board 1. Dustin prefers his own inspiration boards | Dustin, October 30 |
+| DR-27 | Dustin's intent: one New York Times-style editorial treatment for data, charts and the atlas together. The plan that follows goes to him before any new build | Dustin, October 30 |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-66 | Eleven makers stopped mid-build (concepts 01 to 11). Their unfinished build scripts moved to `work/boards/phase-2/atlas-concepts/_archive/20261030-stopped-makers/`; no page was finished. Concept 12, Editorial Desk, keeps running, since it is the editorial atlas Dustin describes | Stop work Dustin does not want; keep what matches DR-27 |
+| D2-67 | The studio misread "editorial" as one concept among twelve. Board 1 called it "a newspaper-graphics treatment" for concept 12 only and did not ask whether the treatment should cover the whole atlas | Record of the error, so the next plan asks the scope question first |
