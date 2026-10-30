@@ -1,0 +1,156 @@
+/* atlas-kit.css: shared interaction styles for the twelve atlas concepts.
+   Oath & Action Edition 06, Phase 2, October 30, 2026. Spec: work/handoffs/phase-2/20261030_Atlas-Interaction-Memo.md
+   Inline this before the concept's own styles. Locked palette only; Inter loads from Google Fonts in the page.
+   The concept owns its drawing. The kit owns states: focus, hover, related, selected, reform target, step, muted.
+   Draw marks with stroke="currentColor" and give the stroke you want lit class "ak-mark"; labels never change color. */
+
+:root {
+  /* Locked palette (Master Brief section 3) */
+  --ak-newsprint: #DCD9D2; --ak-charcoal: #121212; --ak-pillar-red: #E63946; --ak-prussian: #1F2D5A;
+  --ak-stone: #5D636D; --ak-verdigris: #4A7C74; --ak-white: #FFFFFF;
+  /* Motion tokens (Token Architecture, section 5): 120, 200, 320 ms; draw 560 ms */
+  --ak-fast: 120ms; --ak-mid: 200ms; --ak-slow: 320ms;
+  --ak-ease: cubic-bezier(.2, 0, 0, 1); --ak-ease-in: cubic-bezier(0, 0, .2, 1); --ak-ease-out: cubic-bezier(.4, 0, 1, 1);
+  --ak-panel-w: 380px; --ak-sheet-h: 48vh;
+}
+
+/* Surfaces. Each sets ground, ink, muted context marks, focus ring, selection ink and the working red.
+   Ratios against the ground: focus Verdigris 3.37 on Newsprint and 4.74 on White, Newsprint 13.29 on Charcoal
+   and 9.42 on Prussian. Muted Stone 4.29, 6.05 and 3.10. Red never sits on Prussian, so it resolves to White there. */
+:root, [data-surface="newsprint"] {
+  --ak-ground: var(--ak-newsprint); --ak-ink: var(--ak-charcoal); --ak-muted: var(--ak-stone);
+  --ak-focus: var(--ak-verdigris); --ak-sel: var(--ak-charcoal); --ak-red: var(--ak-pillar-red);
+  --ak-keyline: var(--ak-charcoal);   /* red on Newsprint is 2.96:1, so a red wire carries a 1 px Charcoal keyline */
+}
+[data-surface="white"] {
+  --ak-ground: var(--ak-white); --ak-ink: var(--ak-charcoal); --ak-muted: var(--ak-stone);
+  --ak-focus: var(--ak-verdigris); --ak-sel: var(--ak-charcoal); --ak-red: var(--ak-pillar-red); --ak-keyline: none;
+}
+[data-surface="charcoal"] {
+  --ak-ground: var(--ak-charcoal); --ak-ink: var(--ak-newsprint); --ak-muted: var(--ak-stone);
+  --ak-focus: var(--ak-newsprint); --ak-sel: var(--ak-white); --ak-red: var(--ak-pillar-red); --ak-keyline: none;
+}
+[data-surface="prussian"] {
+  --ak-ground: var(--ak-prussian); --ak-ink: var(--ak-newsprint); --ak-muted: var(--ak-newsprint);
+  --ak-focus: var(--ak-newsprint); --ak-sel: var(--ak-white); --ak-red: var(--ak-white); --ak-keyline: none;
+}
+[data-surface] { background: var(--ak-ground); color: var(--ak-ink); }
+
+[hidden] { display: none !important; }          /* also hides SVG elements, which the UA rule skips */
+.ak-vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Focus: a 2 px ring with a 2 px gap, shown at once. Nothing else in an atlas view draws a ring with a gap. */
+:focus-visible { outline: 2px solid var(--ak-focus); outline-offset: 2px; }
+[data-ak-heading]:focus, [data-ak-panel-title]:focus { outline: none; }   /* headings take focus only to move the reader */
+.ak-scroll:focus-visible { outline-offset: -2px; }
+
+/* Levels. Views change by hash; the new view lands with a short zoom from the item that opened it. */
+.ak-stage { overflow-x: clip; }
+@keyframes ak-zoom-in { from { transform: scale(.92); opacity: 0; } }
+@keyframes ak-zoom-out { from { transform: scale(1.06); opacity: 0; } }
+[data-view-root].ak-in { animation: ak-zoom-in var(--ak-slow) var(--ak-ease-in); }
+[data-view-root].ak-out { animation: ak-zoom-out var(--ak-slow) var(--ak-ease-in); }
+
+/* Breadcrumb */
+.ak-crumbs ol { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; font: 500 14px/1.5 Inter, sans-serif; }
+.ak-crumbs li + li::before { content: "/" / ""; margin: 0 8px; }
+.ak-crumbs a { display: inline-block; padding: 3px 0; color: inherit; text-underline-offset: 3px; }
+.ak-crumbs a:hover { text-decoration-thickness: 2px; }
+.ak-crumbs [aria-current] { font-weight: 700; }
+
+/* Locator: the concept draws a small map; the kit marks where the reader is. Ink, never red. */
+[data-locate] { color: var(--ak-muted); }
+[data-locate].ak-here { color: var(--ak-ink); }
+[data-locate].ak-here .ak-mark { stroke-width: 3px; }
+
+/* Items in a drawing. --ak-hi is the color a lit mark takes; it is unset on every item, so nothing inherits it. */
+[data-select], [data-ak-roving] a { cursor: pointer; --ak-hi: initial; }
+.ak-mark { stroke: var(--ak-hi, currentColor); transition: stroke var(--ak-fast) var(--ak-ease), stroke-width var(--ak-fast) var(--ak-ease); }
+.ak-case { stroke: none; }                             /* drawn under a wire's .ak-mark with the same path and dashes */
+[data-red="working"] .ak-case { stroke: var(--ak-keyline, none); stroke-width: var(--ak-w-case, 6px); }
+.ak-hit { fill: none; stroke: transparent; stroke-width: 18px; pointer-events: stroke; }
+
+/* Hover and related: weight and underline, never red. Related marks stay in ink; other marks step to muted. */
+[data-select]:hover .ak-mark, [data-ak-roving] a:hover .ak-mark, .ak-rel .ak-mark { stroke-width: var(--ak-w-hi, 3px); }
+[data-select]:hover .ak-label, [data-ak-roving] a:hover .ak-label { text-decoration: underline; text-underline-offset: 3px; }
+.ak-dim [data-select]:not(.ak-rel):not([data-ak-sel]):not(.ak-target) .ak-mark,
+.ak-dim [data-ak-roving] a:not(.ak-rel) .ak-mark { stroke: var(--ak-muted); stroke-width: var(--ak-w-lo, 1px); }
+
+/* Selected: heavier mark and bold label in every case. The mark takes the working red only when the kit sets
+   data-red="working" on it (no reform in view, not on Prussian); otherwise it takes the surface's selection ink. */
+[data-ak-sel] { --ak-hi: var(--ak-sel); }
+[data-ak-sel][data-red="working"] { --ak-hi: var(--ak-red); }
+[data-select][data-ak-sel] .ak-mark { stroke-width: var(--ak-w-sel, 4px); }   /* outranks hover */
+[data-ak-sel] .ak-label { font-weight: 700; }
+.ak-mark:not(svg *) { border: 1px solid var(--ak-hi, currentColor); }      /* HTML items: chips and cards */
+[data-ak-sel].ak-mark:not(svg *), .ak-target.ak-mark:not(svg *) { box-shadow: inset 4px 0 0 var(--ak-hi); }
+
+/* Reform targets: the one working-red job when a reform is in view (DR-18). */
+.ak-target { --ak-hi: var(--ak-red); }
+[data-select].ak-target .ak-mark { stroke-width: var(--ak-w-sel, 4px); }
+
+/* Loop step-through: the current step in heavy ink, earlier steps in ink, later steps muted. Texture is kept:
+   the kit changes weight and color only, so a dashed (plausible) step stays dashed while it is lit. */
+.ak-stepping [data-select]:not(.ak-now):not(.ak-done):not(.ak-target) .ak-mark { stroke: var(--ak-muted); }
+[data-select].ak-now .ak-mark { stroke-width: var(--ak-w-sel, 4px); }
+.ak-now .ak-label { font-weight: 700; }
+.ak-runner { fill: var(--ak-ground); stroke: var(--ak-ink); stroke-width: 2px; pointer-events: none; }
+[data-ak-step-list] li[aria-current="step"] { font-weight: 700; box-shadow: inset 4px 0 0 var(--ak-ink); }
+[data-ak-step-list] li { padding: 4px 0 4px 14px; }
+
+/* Readout: one line under a drawing that says what the pointer or focus is on. Same text as the item's name. */
+.ak-readout { min-height: 1.5em; margin: 8px 0 0; font: 400 15px/1.5 Inter, sans-serif; }
+
+/* Buttons */
+.ak-btn { min-height: 32px; min-width: 32px; padding: 4px 12px; border: 1px solid var(--ak-ink); border-radius: 0;
+  background: var(--ak-ground); color: var(--ak-ink); font: 600 14px/1.2 Inter, sans-serif; cursor: pointer; }
+.ak-btn:hover { text-decoration: underline; text-underline-offset: 3px; box-shadow: inset 0 0 0 1px var(--ak-ink); }
+.ak-btn[aria-pressed="true"] { box-shadow: inset 0 -4px 0 var(--ak-ink); }
+
+/* Wide drawings: a focusable scroll region (role="region", tabindex="0", aria-label) with a full-size button. */
+.ak-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+.ak-scroll > svg { display: block; width: 100%; min-width: var(--ak-min, 0px); height: auto; }
+.ak-full { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 16px; border: 0;
+  background: var(--ak-ground); color: var(--ak-ink); overflow: auto; }
+.ak-full::backdrop { background: var(--ak-ground); }
+.ak-full > svg { display: block; width: var(--ak-full-w, 1200px); max-width: none; height: auto; margin-top: 12px; }
+
+/* The panel. A column beside the drawing from 900 px; a bottom sheet below 900 px. */
+.ak-panel { box-sizing: border-box; background: var(--ak-ground); color: var(--ak-ink); padding: 20px 24px 24px;
+  font: 400 15px/1.5 Inter, sans-serif; }
+.ak-panel-bar { display: flex; align-items: center; gap: 8px; }
+.ak-panel-bar [data-ak-panel-kind] { flex: 1; margin: 0; font: 600 13px/1.4 Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.ak-panel h2 { margin: 8px 0 12px; font: 700 24px/1.2 Inter, sans-serif; }
+.ak-panel h3 { margin: 20px 0 6px; font: 600 13px/1.4 Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.ak-panel dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0; }
+.ak-panel dt { font-weight: 600; }
+.ak-panel dd { margin: 0; }
+.ak-panel ul, .ak-panel ol { margin: 0; padding-left: 20px; }
+@keyframes ak-panel-in { from { transform: translateX(16px); opacity: 0; } }
+@keyframes ak-sheet-in { from { transform: translateY(24px); opacity: 0; } }
+@media (min-width: 900px) {
+  .ak-panel { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto;
+    border-left: 1px solid var(--ak-ink); animation: ak-panel-in var(--ak-mid) var(--ak-ease-in); }
+  [data-ak-sheet-toggle] { display: none; }
+}
+@media (max-width: 899.98px) {
+  .ak-panel { position: fixed; inset: auto 0 0 0; z-index: 90; max-height: var(--ak-sheet-h); overflow: auto;
+    border-top: 2px solid var(--ak-ink); padding: 12px 16px 20px; animation: ak-sheet-in var(--ak-mid) var(--ak-ease-in); }
+  .ak-panel.ak-tall { max-height: 88vh; }
+  .ak-panel h2 { font-size: 20px; }
+  .ak-btn { min-height: 44px; min-width: 44px; }
+  html.ak-sheet { scroll-padding-bottom: calc(var(--ak-sheet-h) + 16px); }   /* focus never lands under the sheet */
+  html.ak-sheet body { padding-bottom: var(--ak-sheet-h); }
+}
+
+/* Reduced motion: every duration resolves to 0 and the final state shows at once. Nothing loops. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .ak-runner { display: none; }
+}
+
+/* Forced colors: keep rings and lit marks visible with system colors. */
+@media (forced-colors: active) {
+  :focus-visible { outline-color: Highlight; }
+  [data-ak-sel] .ak-mark, .ak-target .ak-mark, .ak-now .ak-mark { stroke: Highlight; }
+}
