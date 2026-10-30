@@ -520,26 +520,48 @@ def force_layout(ids, edges, anchors, box, iters=900, seed=5, kscale=0.8, grav=0
 # 1. GREAT CIRCLE
 # ==========================================================================
 GC_GAP = 1.7
-GC_STEP = 2 * math.pi / (len(CORE) + 5 * GC_GAP)
 
 
-def gc_angles():
-    cslot = 6 + 6 + 2 + 2 * GC_GAP
-    th = -cslot * GC_STEP + math.radians(8)
-    ang = {}
+def gc_layout(weights=None):
+    """Angles for the 26 core variables around the ring. Weights widen chosen areas."""
+    weights = weights or {}
+    total, pos, spans = 0.0, {}, {}
     for a in CORE_AREAS:
+        w = weights.get(a, 1.0)
+        start = total
         for n in AREA_NODES[a]:
-            ang[n] = th
-            th += GC_STEP
-        th += GC_GAP * GC_STEP
-    return ang
+            pos[n] = total + w / 2
+            total += w
+        spans[a] = (start + 0.12, total - 0.12)
+        total += GC_GAP
+    k = 2 * math.pi / total
+    return {n: v * k for n, v in pos.items()}, {a: (s0 * k, s1 * k) for a, (s0, s1) in spans.items()}
 
 
-GC_ANG = gc_angles()
+_A0, _S0 = gc_layout()
+_ROT = math.radians(8) - _A0["C3"]
+GC_ANG = {n: a + _ROT for n, a in _A0.items()}
+GC_SPAN = {a: (s0 + _ROT, s1 + _ROT) for a, (s0, s1) in _S0.items()}
 
 
-def gc_pt(n, cx, cy, r):
-    a = GC_ANG[n]
+def cmean(ang, codes):
+    return math.atan2(sum(math.sin(ang[c]) for c in codes), sum(math.cos(ang[c]) for c in codes))
+
+
+def gc_loop_layout(lid):
+    """Magnified ring for one loop: the areas it touches widen, and the ring turns
+    so the loop keeps the direction it has on the full map."""
+    codes = [st["code"] for st in loop_stations(lid) if st["code"]]
+    touched = {AREA_OF[c] for c in codes}
+    if not codes:
+        return GC_ANG, GC_SPAN
+    ang, sp = gc_layout({a: 3.5 for a in touched})
+    rot = cmean(GC_ANG, codes) - cmean(ang, codes)
+    return {n: a + rot for n, a in ang.items()}, {a: (s0 + rot, s1 + rot) for a, (s0, s1) in sp.items()}
+
+
+def gc_pt(n, cx, cy, r, ang=None):
+    a = (ang or GC_ANG)[n]
     return (cx + r * math.cos(a), cy + r * math.sin(a))
 
 
@@ -550,24 +572,26 @@ def gc_chord(p0, p1, cx, cy, r):
     return (cx + (mx - cx) * k, cy + (my - cy) * k)
 
 
-def gc_ring_base(s, cx, cy, r, bg, ticks=True, arcs=True, aw=1.4):
+def gc_ring_base(s, cx, cy, r, bg, ticks=True, arcs=True, aw=1.4, ang=None, spans=None):
+    ang, spans = ang or GC_ANG, spans or GC_SPAN
     out = [C(cx, cy, r, fill="none", stroke=STONE, w=0.6)]
     if arcs:
+        rr = r + max(2.5, r * 0.07)
         for a in CORE_AREAS:
-            ns = AREA_NODES[a]
-            a0, a1 = GC_ANG[ns[0]] - GC_STEP * 0.45, GC_ANG[ns[-1]] + GC_STEP * 0.45
-            rr = r + max(2.5, r * 0.07)
+            a0, a1 = spans[a]
+            large = 1 if a1 - a0 > math.pi else 0
             out.append(P(f"M{f1(cx + rr * math.cos(a0))} {f1(cy + rr * math.sin(a0))}"
-                         f"A{f1(rr)} {f1(rr)} 0 0 1 {f1(cx + rr * math.cos(a1))} {f1(cy + rr * math.sin(a1))}",
+                         f"A{f1(rr)} {f1(rr)} 0 {large} 1 {f1(cx + rr * math.cos(a1))} {f1(cy + rr * math.sin(a1))}",
                          CHAR, aw))
     if ticks:
         for n in CORE:
-            x, y = gc_pt(n, cx, cy, r)
+            x, y = gc_pt(n, cx, cy, r, ang)
             out.append(C(x, y, max(0.8, r * 0.022), fill=STONE, stroke=None))
     s.add(*out)
 
 
-def gc_loop(s, lid, cx, cy, r, bg, w=1.6, ah=3.6, dot=2.0):
+def gc_loop(s, lid, cx, cy, r, bg, w=1.6, ah=3.6, dot=2.0, ang=None):
+    ang = ang or GC_ANG
     col = loop_color(lid)
     sts = loop_stations(lid)
     if is_sketch(lid):
@@ -575,7 +599,7 @@ def gc_loop(s, lid, cx, cy, r, bg, w=1.6, ah=3.6, dot=2.0):
         pts = []
         for i, st in enumerate(sts):
             if st["code"]:
-                pts.append(gc_pt(st["code"], cx, cy, r))
+                pts.append(gc_pt(st["code"], cx, cy, r, ang))
             else:
                 a = -math.pi / 2 + 2 * math.pi * i / k
                 pts.append((cx + r * 0.32 * math.cos(a), cy + r * 0.32 * math.sin(a)))
@@ -584,35 +608,38 @@ def gc_loop(s, lid, cx, cy, r, bg, w=1.6, ah=3.6, dot=2.0):
             s.add(C(p[0], p[1], dot, fill=bg if not st["code"] else CHAR, stroke=STONE if not st["code"] else None, w=1))
         return
     for st in loop_steps(lid):
-        p0, p1 = gc_pt(st["from"], cx, cy, r), gc_pt(st["to"], cx, cy, r)
+        p0, p1 = gc_pt(st["from"], cx, cy, r, ang), gc_pt(st["to"], cx, cy, r, ang)
         c = gc_chord(p0, p1, cx, cy, r)
         a, q, b = qtrim(p0, c, p1, dot + 0.5, dot + 0.5)
         s.add(P(f"M{f1(a[0])} {f1(a[1])}Q{f1(q[0])} {f1(q[1])} {f1(b[0])} {f1(b[1])}", col, w, st["evidence"]))
-        (mx, my), ang = qpt(a, q, b, 0.55), qtan(a, q, b, 0.55)
-        s.add(AH(mx, my, ang, ah, col))
+        (mx, my), an = qpt(a, q, b, 0.55), qtan(a, q, b, 0.55)
+        s.add(AH(mx, my, an, ah, col))
     for st in sts:
-        x, y = gc_pt(st["code"], cx, cy, r)
+        x, y = gc_pt(st["code"], cx, cy, r, ang)
         s.add(C(x, y, dot, fill=CHAR, stroke=None))
+
+
+def gc_mini(s, lid, cx, cy, r, w, ah, dot, aw):
+    ang, sp = gc_loop_layout(lid)
+    gc_ring_base(s, cx, cy, r, NEWS, aw=aw, ang=ang, spans=sp)
+    gc_loop(s, lid, cx, cy, r, NEWS, w=w, ah=ah, dot=dot, ang=ang)
 
 
 def gc_thumb(lid):
     def draw(s):
-        gc_ring_base(s, 38, 38, 27, NEWS, aw=1.2)
-        gc_loop(s, lid, 38, 38, 27, NEWS, w=1.5, ah=3.4, dot=1.9)
+        gc_mini(s, lid, 38, 38, 27, 1.5, 3.4, 1.9, 1.2)
     return thumb_svg(f"gc-{lid}", NEWS, draw)
 
 
 def sketch_great_circle():
     s = Svg("s1", bg=NEWS, title="Great Circle sketch")
-    cx, cy, r = 228, 226, 122
+    cx, cy, r = 254, 226, 118
     header(s, "One connection sits in three loops: incumbent-drawn maps create safe seats (L42).")
-    # outside drivers
     xt = defaultdict(list)
     for l in LINKS.values():
         if AREA_OF[l["from"]] == "X" and AREA_OF[l["to"]] in CORE_AREAS:
             xt[l["from"]].append(l)
-    # discs for the economy layer and the technology group
-    discs = {"EC": (62, 92, "Economy layer", 12), "TC": (60, 360, "Technology", 8)}
+    discs = {"EC": (34, 222, ["Economy", "layer"], 12), "TC": (34, 356, ["Technology"], 8)}
     for g, (dx, dy, name, cnt) in discs.items():
         for l in LINKS.values():
             fa, ta = AREA_OF[l["from"]], AREA_OF[l["to"]]
@@ -623,7 +650,6 @@ def sketch_great_circle():
                 px, py = gc_pt(other, cx, cy, r)
                 s.add(L(dx, dy, px, py, STONE, 0.6, l["evidence"]))
     gc_ring_base(s, cx, cy, r, NEWS, ticks=False, aw=3.2)
-    # chords, non-loop first
     for layer in (0, 1):
         for l in CORE_CHORDS:
             if (l["id"] in LOOP_LINKS) != bool(layer) or l["id"] == "L42":
@@ -640,88 +666,99 @@ def sketch_great_circle():
                 s.add(AH(b[0], b[1], qtan(a, q, b, 1), 4.2, col))
     l = LINKS["L42"]
     p0, p1 = gc_pt("C4", cx, cy, r), gc_pt("C1", cx, cy, r)
-    c = gc_chord(p0, p1, cx, cy, r)
-    a, q, b = qtrim(p0, c, p1, 4.5, 5.5)
+    c42 = gc_chord(p0, p1, cx, cy, r)
+    a, q, b = qtrim(p0, c42, p1, 4.5, 5.5)
     s.add(P(f"M{f1(a[0])} {f1(a[1])}Q{f1(q[0])} {f1(q[1])} {f1(b[0])} {f1(b[1])}", RED, 2.6, l["evidence"]),
           AH(b[0], b[1], qtan(a, q, b, 1), 6, RED))
     for n in CORE:
         x, y = gc_pt(n, cx, cy, r)
         s.add(C(x, y, 3.6, fill=CHAR if LOOPCOUNT[n] else WHITE, stroke=CHAR, w=1))
-    # drivers
+    xpos = {"X1": (176, 80), "X3": (112, 112), "X4": (334, 80), "X2": (396, 142), "X5": (120, 346)}
     for xid, ls_ in xt.items():
-        vx = sum(math.cos(GC_ANG[l["to"]]) for l in ls_)
-        vy = sum(math.sin(GC_ANG[l["to"]]) for l in ls_)
-        a = math.atan2(vy, vx)
-        rx = r + 44
-        bx, by = cx + rx * math.cos(a), cy + rx * math.sin(a)
+        bx, by = xpos[xid]
         for l in ls_:
             px, py = gc_pt(l["to"], cx, cy, r + 6)
             s.add(L(bx, by, px, py, CHAR, 0.8, l["evidence"]))
             s.add(AH(px, py, math.atan2(py - by, px - bx), 3.6, CHAR))
+    for xid, (bx, by) in xpos.items():
+        right = bx > cx
         s.add(R(bx - 5, by - 5, 10, 10, fill=NEWS, stroke=CHAR, sw=1.1))
-        s.add(T(bx + (9 if math.cos(a) >= 0 else -9), by + 4.5, xid, 13, CHAR, 500,
-                "start" if math.cos(a) >= 0 else "end", halo=NEWS))
+        s.add(T(bx + (9 if right else -9), by + 4.5, xid, 13, CHAR, 500, "start" if right else "end", halo=NEWS))
     for g, (dx, dy, name, cnt) in discs.items():
-        s.add(C(dx, dy, 17, fill=WHITE, stroke=CHAR, w=1.2),
-              T(dx, dy + 4.6, str(cnt), 13, CHAR, 700, "middle"),
-              T(dx, dy + (31 if dy < 200 else -24), name, 13, CHAR, 500, "middle", halo=NEWS))
-    # area labels
+        s.add(C(dx, dy, 16, fill=WHITE, stroke=CHAR, w=1.2), T(dx, dy + 4.6, str(cnt), 13, CHAR, 700, "middle"))
+        if g == "EC":
+            s.add(TL(dx, dy + 33, name, 13, 15, fill=CHAR, weight=500, anchor="middle", halo=NEWS))
+        else:
+            s.add(T(dx + 22, dy + 4.5, name[0], 13, CHAR, 500, halo=NEWS))
     for a in CORE_AREAS:
-        ns = AREA_NODES[a]
-        mid = (GC_ANG[ns[0]] + GC_ANG[ns[-1]]) / 2
-        rr = r + 22
+        a0, a1 = GC_SPAN[a]
+        mid = (a0 + a1) / 2
+        rr = r + 20
         x, y = cx + rr * math.cos(mid), cy + rr * math.sin(mid)
-        cs = math.cos(mid)
-        anchor = "start" if cs > 0.25 else "end" if cs < -0.25 else "middle"
+        cs, sn = math.cos(mid), math.sin(mid)
+        anchor = "start" if cs > 0.3 else "end" if cs < -0.3 else "middle"
         words = AREA_TITLE[a].split()
-        lines = [" ".join(words[:1]), " ".join(words[1:])] if len(words) > 1 else words
-        if math.sin(mid) < -0.6:
+        lines = [words[0], " ".join(words[1:])] if len(words) > 1 else words
+        if abs(sn) > 0.8:
             lines = [AREA_TITLE[a]]
-            y -= 4
-        yy = y + 4 - (len(lines) - 1) * 8 + (6 if math.sin(mid) > 0.6 else 0)
-        s.add(T(x, yy - 15, a, 13, STONE, 700, anchor, halo=NEWS) if False else "")
+        yy = y + 4 - (len(lines) - 1) * 7.5 + (9 if sn > 0.8 else 0) - (3 if sn < -0.8 else 0)
         s.add(TL(x, yy, lines, 13, 15, fill=CHAR, weight=600, anchor=anchor, halo=NEWS, fam="tight"))
-    # red callout
-    mx, my = qpt(a_ := gc_pt("C4", cx, cy, r), gc_chord(a_, gc_pt("C1", cx, cy, r), cx, cy, r), gc_pt("C1", cx, cy, r), 0.5)
-    s.add(L(mx, my, 300, 108, CHAR, 0.7), C(mx, my, 2, fill=CHAR, stroke=None))
-    s.add(TL(256, 82, ["L42 · in R4a, R10, R12", "R-03 and R-04 act here"], 13, 15, fill=CHAR, weight=500, halo=NEWS))
-    # right panel: R10 on the ring + thumbnails
-    px = 470
-    s.add(L(px - 14, 70, px - 14, 388, STONE, 0.6))
-    s.add(T(px, 82, "R10 on the ring", 13, CHAR, 700))
-    gc_ring_base(s, 548, 150, 52, NEWS, aw=2)
-    gc_loop(s, "R10", 548, 150, 52, NEWS, w=2.1, ah=5, dot=2.6)
-    s.add(TL(px, 226, wrap(LOOPS["R10"]["title"], 26), 13, 16, fill=CHAR))
+    mx, my = qpt(p0, c42, p1, 0.5)
+    s.add(L(mx, my, 372, 338, CHAR, 0.7), C(mx, my, 2, fill=CHAR, stroke=None))
+    s.add(TL(342, 354, ["L42, in R4a, R10, R12.", "R-03 and R-04 act here."], 13, 15, fill=CHAR, weight=500, halo=NEWS))
+    px = 482
+    s.add(L(px - 12, 66, px - 12, 390, STONE, 0.6))
+    s.add(T(px, 82, "R10, magnified", 13, CHAR, 700))
+    gc_mini(s, "R10", 554, 148, 50, 2.1, 5, 2.6, 2)
+    s.add(TL(px, 224, wrap(LOOPS["R10"]["title"], 24), 13, 15, fill=CHAR))
     picks = ["R12", "R4a", "R1", "R6", "B4", "R8"]
     for i, lid in enumerate(picks):
-        gx, gy = px + (i % 3) * 54, 290 + (i // 3) * 58
-        gc_ring_base(s, gx + 22, gy + 18, 18, NEWS, aw=1.1)
-        gc_loop(s, lid, gx + 22, gy + 18, 18, NEWS, w=1.3, ah=3, dot=1.6)
-        s.add(T(gx + 22, gy + 52, lid, 13, CHAR, 600, "middle"))
+        gx, gy = px + (i % 3) * 52, 286 + (i // 3) * 56
+        gc_mini(s, lid, gx + 21, gy + 18, 17, 1.3, 3, 1.6, 1.1)
+        s.add(T(gx + 21, gy + 52, lid, 13, CHAR, 600, "middle"))
     return s.render()
 
 
 # ==========================================================================
 # 2. STAR ATLAS
 # ==========================================================================
+STAR_BOX = (14, 58, 462, 394)
+
+
+def star_group(n):
+    a = AREA_OF[n]
+    return "EC" if a in ("production", "household", "money") else a
+
+
 def star_layout():
     anchors = {}
-    A_ = {"TC": (90, 115), "A": (165, 245), "production": (80, 325), "household": (190, 340),
-          "money": (60, 250), "B": (250, 135), "C": (395, 130), "D": (370, 285), "E": (270, 265)}
-    XA = {"X1": (45, 175), "X2": (440, 70), "X3": (130, 380), "X4": (300, 72), "X5": (445, 385)}
+    A_ = {"TC": (80, 118), "A": (120, 255), "production": (70, 350), "household": (165, 360),
+          "money": (40, 300), "B": (235, 125), "C": (395, 115), "D": (380, 300), "E": (255, 265)}
+    XA = {"X1": (36, 190), "X2": (448, 78), "X3": (232, 382), "X4": (300, 76), "X5": (448, 384)}
     for n in ORDER:
         a = AREA_OF[n]
-        if a == "X":
-            anchors[n] = (*XA[n], 3.0)
-        else:
-            anchors[n] = (*A_[a], 1.2)
-    edges = [(l["from"], l["to"], 1.6 if l["loops"] else 0.5) for l in LINKS.values()]
-    radii = {n: 3 + 0.38 * DEG[n] for n in ORDER}
-    return force_layout(ORDER, edges, anchors, (22, 62, 458, 392), iters=800, seed=11, kscale=0.62,
-                        grav=0.04, radii=radii)
+        anchors[n] = (*XA[n], 4.0) if a == "X" else (*A_[a], 2.2)
+    edges = [(l["from"], l["to"], 1.0 if l["loops"] else 0.25) for l in LINKS.values()]
+    radii = {n: 5 + 0.38 * DEG[n] for n in ORDER}
+    return force_layout(ORDER, edges, anchors, STAR_BOX, iters=900, seed=11, kscale=0.7,
+                        grav=0.06, radii=radii)
 
 
 STAR = star_layout()
+
+
+def star_regions(cell=12, sigma=30.0):
+    x0, y0, x1, y1 = STAR_BOX
+    grid = {}
+    for gx in range(int((x1 - x0) / cell)):
+        for gy in range(int((y1 - y0) / cell)):
+            x, y = x0 + (gx + 0.5) * cell, y0 + (gy + 0.5) * cell
+            score = defaultdict(float)
+            for n in ORDER:
+                d2 = (STAR[n][0] - x) ** 2 + (STAR[n][1] - y) ** 2
+                score[star_group(n)] += math.exp(-d2 / (2 * sigma * sigma))
+            grid[(gx, gy)] = max(score, key=score.get)
+    return grid, cell
 
 
 def star_r(n):
@@ -731,11 +768,9 @@ def star_r(n):
 def star_loop(s, lid, pos, rad, w, dark_bg, ah=3.6, scale=1.0):
     col = loop_color(lid, dark=True)
     pts = [pos[st["code"]] for st in loop_stations(lid)]
-    segs = []
     for st in loop_steps(lid):
         p0, p1 = pos[st["from"]], pos[st["to"]]
         dx, dy = p1[0] - p0[0], p1[1] - p0[1]
-        d = math.hypot(dx, dy) or 1
         c = ((p0[0] + p1[0]) / 2 - dy * 0.12, (p0[1] + p1[1]) / 2 + dx * 0.12)
         a, q, b = qtrim(p0, c, p1, rad(st["from"]) + 2.2 * scale, rad(st["to"]) + 2.2 * scale)
         s.add(P(f"M{f1(a[0])} {f1(a[1])}Q{f1(q[0])} {f1(q[1])} {f1(b[0])} {f1(b[1])}", col, w, st["evidence"]))
@@ -774,14 +809,8 @@ def star_thumb(lid, size=76, bg=CHAR):
 
 def sketch_star_atlas():
     s = Svg("s2", bg=CHAR, title="Star Atlas sketch")
-    box = (14, 56, 462, 394)
-    cell = 9
-    grid = {}
-    for gx in range(int((box[2] - box[0]) / cell)):
-        for gy in range(int((box[3] - box[1]) / cell)):
-            x, y = box[0] + (gx + 0.5) * cell, box[1] + (gy + 0.5) * cell
-            best = min(ORDER, key=lambda n: (STAR[n][0] - x) ** 2 + (STAR[n][1] - y) ** 2)
-            grid[(gx, gy)] = AREA_OF[best] if AREA_OF[best] not in ("production", "household", "money") else "EC"
+    box = STAR_BOX
+    grid, cell = star_regions()
     segs = []
     for (gx, gy), a in grid.items():
         x, y = box[0] + gx * cell, box[1] + gy * cell
@@ -789,55 +818,48 @@ def sketch_star_atlas():
             segs.append(f"M{f1(x + cell)} {f1(y)}v{cell}")
         if (gx, gy + 1) in grid and grid[(gx, gy + 1)] != a:
             segs.append(f"M{f1(x)} {f1(y + cell)}h{cell}")
-    s.add(P("".join(segs), STONE, 0.8))
-    s.add(R(box[0], box[1], box[2] - box[0], box[3] - box[1], fill="none", stroke=STONE, sw=0.8))
+    s.add(P("".join(segs), STONE, 0.9))
+    s.add(R(box[0], box[1], box[2] - box[0], box[3] - box[1], fill="none", stroke=STONE, sw=0.9))
     header(s, "Each loop is a figure in the sky. All-party primaries (R-01) act on the red star, primary decisiveness.", dark=True, width=82)
-    # faint non-loop connections
-    for l in LINKS.values():
-        if l["loops"]:
-            continue
+    cent = defaultdict(list)
+    for (gx, gy), a in grid.items():
+        cent[a].append((box[0] + (gx + 0.5) * cell, box[1] + (gy + 0.5) * cell))
+    names = {"A": ["ECONOMIC", "STRUCTURE"], "B": ["POLITICAL INPUTS"], "C": ["ELECTORAL", "COMPETITION"],
+             "D": ["GOVERNING", "INSTITUTIONS"], "E": ["LEGITIMACY"], "TC": ["TECHNOLOGY"], "EC": ["ECONOMY LAYER"]}
+    lpos = {"A": (70, 214), "B": (236, 82), "C": (398, 82), "D": (408, 372), "E": (262, 322),
+            "TC": (86, 82), "EC": (110, 384)}
+    for a, nm in names.items():
+        x, y = lpos[a]
+        s.add(TL(x, y, nm, 13, STONE, 600, anchor="middle", lh=15, ls=1.1, halo=CHAR))
     order_loops = sorted([x for x in LOOP_ORDER if not is_sketch(x)], key=lambda x: LOOPS[x]["type"] == "B")
     for lid in order_loops:
         star_loop(s, lid, STAR, star_r, 1.15 if LOOPS[lid]["type"] == "R" else 1.6, True)
     for n in ORDER:
         x, y = STAR[n]
-        fill = NEWS if LOOPCOUNT[n] else STONE
         if n == "C2":
-            s.add(C(x, y, star_r(n) + 2.2, fill=RED, stroke=None))
+            s.add(C(x, y, star_r(n) + 2.4, fill=RED, stroke=None))
         else:
-            s.add(C(x, y, star_r(n), fill=fill, stroke=None))
-    # region names
-    cent = defaultdict(list)
-    for (gx, gy), a in grid.items():
-        cent[a].append((box[0] + (gx + 0.5) * cell, box[1] + (gy + 0.5) * cell))
-    names = {"A": "ECONOMIC STRUCTURE", "B": "POLITICAL INPUTS", "C": "ELECTORAL COMPETITION",
-             "D": "GOVERNING INSTITUTIONS", "E": "LEGITIMACY", "TC": "TECHNOLOGY", "EC": "ECONOMY LAYER"}
-    offs = {"A": (0, 52), "B": (-6, -42), "C": (8, -40), "D": (20, 62), "E": (0, 40), "TC": (0, -40), "EC": (8, 36)}
-    for a, nm in names.items():
-        if a not in cent:
-            continue
-        ns = [STAR[n] for n in ORDER if (AREA_OF[n] if AREA_OF[n] not in ("production", "household", "money") else "EC") == a]
-        mx = sum(p[0] for p in ns) / len(ns) + offs[a][0]
-        my = sum(p[1] for p in ns) / len(ns) + offs[a][1]
-        s.add(T(mx, my, nm, 13, STONE, 600, "middle", ls=1.1, halo=CHAR))
-    # labels
+            s.add(C(x, y, star_r(n), fill=NEWS if LOOPCOUNT[n] else STONE, stroke=None))
+    for n in AREA_NODES["X"]:
+        x, y = STAR[n]
+        s.add(T(x + (8 if x < 300 else -8), y + 4.5, n, 13, STONE, 600, "start" if x < 300 else "end", halo=CHAR))
     x, y = STAR["E1"]
-    s.add(T(x + 10, y + 18, "Policy tilt to insiders", 13, NEWS, 500, halo=CHAR))
+    s.add(T(x, y + 22, "Policy tilt to insiders", 13, NEWS, 500, "middle", halo=CHAR))
     x, y = STAR["C2"]
-    s.add(TL(x + 9, y - 14, ["Primary decisiveness", "R-01 acts here"], 13, 15, fill=NEWS, weight=500, halo=CHAR))
-    xs = [STAR[c][0] for c in ("C1", "C2", "C3", "C4")]
-    ys = [STAR[c][1] for c in ("C1", "C2", "C3", "C4")]
-    s.add(T(min(xs) - 8, max(ys) + 20, "R10", 13, WHITE, 700, halo=CHAR))
-    # right column: figures
-    px = 474
+    right = x < 360
+    s.add(TL(x + (10 if right else -10), y - 16, ["Primary decisiveness", "R-01 acts here"], 13, 15,
+             fill=NEWS, weight=500, anchor="start" if right else "end", halo=CHAR))
+    pts = [STAR[c] for c in ("C1", "C2", "C3", "C4")]
+    s.add(T(sum(p[0] for p in pts) / 4, sum(p[1] for p in pts) / 4 + 4.5, "R10", 13, WHITE, 700, "middle", halo=CHAR))
+    px = 476
     s.add(T(px, 82, "FIGURES", 13, NEWS, 700, ls=1.2))
     s.add(TL(px, 100, ["Cropped from the sky,", "true to position"], 13, 15, fill=STONE))
     picks = ["R10", "R12", "R6", "R1", "B4", "R13"]
     for i, lid in enumerate(picks):
-        gx, gy = px + (i % 2) * 80, 128 + (i // 2) * 88
-        sub = Svg(f"s2t{i}", 70, 70, CHAR)
+        gx, gy = px + (i % 2) * 80, 126 + (i // 2) * 90
         s.add(f'<g transform="translate({gx},{gy})">' + re.sub(r'^<svg[^>]*>|</svg>$', '', star_thumb(lid, 70)) + "</g>")
-        s.add(T(gx + 35, gy + 82, lid, 13, NEWS, 600, "middle"))
+        s.add(R(gx, gy, 70, 70, fill="none", stroke=STONE, sw=0.6))
+        s.add(T(gx + 35, gy + 84, lid, 13, NEWS, 600, "middle"))
     return s.render()
 
 
@@ -847,97 +869,100 @@ def sketch_star_atlas():
 LEDGER_AREAS = ["A", "B", "C", "D", "E", "X", "production", "household", "money", "TC"]
 LEDGER_CODES = {"A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "X": "X", "production": "P",
                 "household": "H", "money": "M", "TC": "T"}
-CORE_IX = {n: i for i, n in enumerate(CORE)}
+
+
+def weighted_line(seq, weights):
+    """Cumulative positions on a line where each item has a width; returns centers and total."""
+    pos, t = {}, 0.0
+    for n in seq:
+        w = weights(n)
+        pos[n] = (t, t + w)
+        t += w
+    return pos, t
 
 
 def ledger_thumb(lid, size=76):
     def draw(s):
-        n = len(CORE)
-        x0, y0 = 7, 7
-        c = (size - 14) / n
-        s.add(R(x0, y0, n * c, n * c, fill=WHITE, stroke=STONE, sw=0.6))
-        i = 0
+        codes = [st["code"] for st in loop_stations(lid) if st["code"]]
+        touched = {AREA_OF[c] for c in codes}
+        pos, tot = weighted_line(CORE, lambda n: 3.2 if AREA_OF[n] in touched else 1.0)
+        x0 = y0 = 7
+        k = (size - 14) / tot
+        s.add(R(x0, y0, tot * k, tot * k, fill=WHITE, stroke=STONE, sw=0.6))
         for a in CORE_AREAS:
-            k = len(AREA_NODES[a])
-            s.add(R(x0 + i * c, y0 + i * c, k * c, k * c, fill=NEWS, stroke=STONE, sw=0.5))
-            i += k
+            a0, a1 = pos[AREA_NODES[a][0]][0], pos[AREA_NODES[a][-1]][1]
+            s.add(R(x0 + a0 * k, y0 + a0 * k, (a1 - a0) * k, (a1 - a0) * k,
+                    fill=NEWS, stroke=STONE, sw=0.5))
         col = loop_color(lid)
         if is_sketch(lid):
             s.add(band(f"M{size/2-9} {size/2-9}h18v18h-18z", WHITE, 1.1))
             return
+        cen = {n: x0 + (pos[n][0] + pos[n][1]) / 2 * k for n in CORE}
         for st in loop_steps(lid):
-            a, b = CORE_IX[st["from"]], CORE_IX[st["to"]]
-            ax, ay = x0 + (a + 0.5) * c, y0 + (a + 0.5) * c
-            bx = x0 + (b + 0.5) * c
-            by = y0 + (b + 0.5) * c
-            s.add(P(f"M{f1(ax)} {f1(ay)}H{f1(bx)}V{f1(by)}", col, 1.5, st["evidence"]))
-            s.add(C(bx, ay, 1.9, fill=CHAR, stroke=None))
+            a, b = st["from"], st["to"]
+            s.add(P(f"M{f1(cen[a])} {f1(cen[a])}H{f1(cen[b])}V{f1(cen[b])}", col, 1.6, st["evidence"]))
+            s.add(C(cen[b], cen[a], 2.0, fill=CHAR, stroke=None))
     return thumb_svg(f"lg-{lid}", WHITE, draw, size)
 
 
 def sketch_ledger():
     s = Svg("s3", bg=WHITE, title="Ledger Grid sketch")
     header(s, "R10 as a staircase. All-party primaries (R-01) act on the cell where decisive primaries reduce general-election pressure.", width=84)
-    x0, y0, c = 46, 88, 22
+    x0, y0, c = 46, 98, 21
     n = len(LEDGER_AREAS)
-    s.add(T(x0, y0 - 24, "Areas: rows cause, columns respond", 13, CHAR, 700))
+    s.add(T(x0 - 30, y0 - 26, "Areas: rows cause, columns respond", 13, CHAR, 700))
     for i, a in enumerate(LEDGER_AREAS):
         s.add(T(x0 + (i + 0.5) * c, y0 - 6, LEDGER_CODES[a], 13, CHAR, 600, "middle"))
         s.add(T(x0 - 7, y0 + (i + 0.5) * c + 4.5, LEDGER_CODES[a], 13, CHAR, 600, "end"))
     for i, a in enumerate(LEDGER_AREAS):
         for j, b in enumerate(LEDGER_AREAS):
-            fill = NEWS if i == j else WHITE
-            s.add(R(x0 + j * c, y0 + i * c, c, c, fill=fill, stroke=STONE, sw=0.5))
+            s.add(R(x0 + j * c, y0 + i * c, c, c, fill=NEWS if i == j else WHITE, stroke=STONE, sw=0.5))
             cnt, inl = APC[(a, b)], APC_LOOP[(a, b)]
             for k in range(cnt):
-                dx, dy = (k % 3) * 6 - 6, (k // 3) * 6 - 6
-                s.add(C(x0 + (j + 0.5) * c + dx, y0 + (i + 0.5) * c + dy, 2.0,
+                dx, dy = (k % 3) * 5.8 - 5.8, (k // 3) * 5.8 - 5.8
+                s.add(C(x0 + (j + 0.5) * c + dx, y0 + (i + 0.5) * c + dy, 1.9,
                         fill=PRU if k < inl else STONE, stroke=None))
     for a, b in zip(CORE_AREAS, CORE_AREAS[1:] + CORE_AREAS[:1]):
         i, j = LEDGER_AREAS.index(a), LEDGER_AREAS.index(b)
         s.add(R(x0 + j * c + 1, y0 + i * c + 1, c - 2, c - 2, fill="none", stroke=CHAR, sw=1.6))
     ci = LEDGER_AREAS.index("C")
     s.add(R(x0 + ci * c - 1.5, y0 + ci * c - 1.5, c + 3, c + 3, fill="none", stroke=PRU, sw=2.2))
-    s.add(L(x0 + (ci + 1) * c + 2, y0 + (ci + 0.5) * c, 352, 118, PRU, 1.0))
-    ky = y0 + n * c + 22
+    zx, zy, zc = 352, 112, 36
+    s.add(L(x0 + (ci + 1) * c + 2, y0 + (ci + 0.5) * c, zx - 32, zy + 2, PRU, 1.0))
+    ky = y0 + n * c + 20
     s.add(TL(x0 - 30, ky, ["Outlined: the forward circle, A to B,", "B to C, C to D, D to E and E to A.",
                           "P production, H household, M credit,", "trade and environment, T technology."],
-             13, 16, fill=CHAR))
-    s.add(C(x0 - 26, ky + 70, 2.2, fill=PRU, stroke=None), T(x0 - 18, ky + 74.5, "in a loop", 13, CHAR),
-          C(x0 + 62, ky + 70, 2.2, fill=STONE, stroke=None), T(x0 + 70, ky + 74.5, "outside loops", 13, CHAR))
-    # zoom C
-    zx, zy, zc = 402, 118, 38
+             13, 15, fill=CHAR))
+    s.add(C(x0 - 26, ky + 63, 2.2, fill=PRU, stroke=None), T(x0 - 18, ky + 67.5, "in a loop", 13, CHAR),
+          C(x0 + 62, ky + 63, 2.2, fill=STONE, stroke=None), T(x0 + 70, ky + 67.5, "outside loops", 13, CHAR))
     cn = AREA_NODES["C"]
-    s.add(T(zx - 50, zy - 24, "Inside C, variable by variable", 13, CHAR, 700))
+    s.add(T(zx - 30, zy - 26, "Inside C, variable by variable", 13, CHAR, 700))
     for i, nid in enumerate(cn):
         s.add(T(zx + (i + 0.5) * zc, zy - 7, nid, 13, CHAR, 600, "middle"))
         s.add(T(zx - 8, zy + (i + 0.5) * zc + 4.5, nid, 13, CHAR, 600, "end"))
     for i, a in enumerate(cn):
         for j, b in enumerate(cn):
             s.add(R(zx + j * zc, zy + i * zc, zc, zc, fill=NEWS if i == j else WHITE, stroke=STONE, sw=0.6))
-    for i, a in enumerate(cn):
-        s.add(s.icon(a, "black", zx + i * zc + 7, zy + i * zc + 7, zc - 14))
-    # staircase for R10 under cell marks
-    pts = []
+    for l in LINKS.values():
+        if l["from"] in cn and l["to"] in cn:
+            i, j = cn.index(l["from"]), cn.index(l["to"])
+            x, y = zx + j * zc, zy + i * zc
+            s.add(T(x + 5, y + 14, "+" if l["polarity"] == "+" else "−", 14, CHAR, 700))
+            s.add(L(x + 6, y + zc - 5, x + zc - 6, y + zc - 5, CHAR, 1.6, l["evidence"]))
     for st in loop_steps("R10"):
         a, b = cn.index(st["from"]), cn.index(st["to"])
         ax, ay = zx + (a + 0.5) * zc, zy + (a + 0.5) * zc
         bx, by = zx + (b + 0.5) * zc, zy + (b + 0.5) * zc
         s.add(P(f"M{f1(ax)} {f1(ay)}H{f1(bx)}V{f1(by)}", PRU, 2.4, st["evidence"]))
-    for l in LINKS.values():
-        if l["from"] in cn and l["to"] in cn:
-            i, j = cn.index(l["from"]), cn.index(l["to"])
-            x, y = zx + j * zc, zy + i * zc
-            s.add(R(x + 9, y + 6, 20, 17, fill=WHITE, stroke=None))
-            s.add(T(x + zc / 2, y + 20, "+" if l["polarity"] == "+" else "−", 16, CHAR, 600, "middle"))
-            s.add(L(x + 7, y + zc - 7, x + zc - 7, y + zc - 7, CHAR, 1.6, l["evidence"]))
-            if l["id"] == "L25":
-                s.add(R(x + 1.5, y + 1.5, zc - 3, zc - 3, fill="none", stroke=RED, sw=2.6))
+        s.add(C(bx, ay, 3, fill=PRU, stroke=None))
+    for i, a in enumerate(cn):
+        s.add(R(zx + i * zc + 6, zy + i * zc + 6, zc - 12, zc - 12, fill=NEWS))
+        s.add(s.icon(a, "black", zx + i * zc + 7, zy + i * zc + 7, zc - 14))
     i, j = cn.index("C2"), cn.index("C3")
-    s.add(TL(zx + 5 * zc + 8, zy + i * zc + 14, ["L25", "R-01 acts", "here"], 13, 15, fill=CHAR, weight=500))
-    ky = zy + 5 * zc + 20
-    keys = [f"{n} {label(n)}" for n in cn]
-    s.add(TL(zx - 50, ky, keys, 13, 16, fill=CHAR))
+    s.add(R(zx + j * zc + 1.5, zy + i * zc + 1.5, zc - 3, zc - 3, fill="none", stroke=RED, sw=2.6))
+    s.add(TL(zx + 5 * zc + 10, zy + i * zc + 14, ["L25: R-01", "acts here"], 13, 15, fill=CHAR, weight=500))
+    ky = zy + 5 * zc + 22
+    s.add(TL(zx - 30, ky, [f"{n} {label(n)}" for n in cn], 13, 15, fill=CHAR))
     return s.render()
 
 
@@ -1057,22 +1082,32 @@ def hex_bounds():
 
 def hex_thumb(lid, size=76):
     def draw(s):
-        c0, c1, r0, r1 = hex_bounds()
-        r = (size - 8) / ((c1 - c0 + 1.5) * math.sqrt(3))
-        r = min(r, (size - 8) / ((r1 - r0) * 1.5 + 2))
-        w = math.sqrt(3) * r
-        x0 = (size - (c1 - c0 + 1.5) * w) / 2 + w / 2 - c0 * w
-        y0 = (size - ((r1 - r0) * 1.5 * r)) / 2 - r0 * 1.5 * r
         codes = [st["code"] for st in loop_stations(lid) if st["code"]]
         col = loop_color(lid)
-        for n, cr in HEX.items():
-            x, y = hex_center(cr, x0, y0, r)
-            s.add(poly(hex_pts(x, y, r * 0.92), col if n in codes else WHITE))
-        if is_sketch(lid):
-            s.add(band(f"M{size/2-10} {size-12}h20", NEWS, 1.0))
-            return
-        pts = [hex_center(HEX[st["code"]], x0, y0, r) for st in loop_stations(lid)]
-        s.add(draw_loop(lid, pts, CHAR, 0.9, NEWS, arrows=False, bow=0.18))
+        cen = {n: hex_center(HEX[n], 0, 0, 1) for n in ORDER}
+        if codes:
+            xs = [cen[c][0] for c in codes]
+            ys = [cen[c][1] for c in codes]
+            mx, my = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
+            span = max(max(xs) - min(xs) + 4.2, max(ys) - min(ys) + 4.2, 6.5)
+        else:
+            mx, my, span = 6.5, 6.0, 14.0
+        k = (size - 4) / span
+        ox, oy = size / 2 - mx * k, size / 2 - my * k
+        cid = f"hxclip-{lid}"
+        s.add(f'<clipPath id="{cid}"><rect x="2" y="2" width="{size-4}" height="{size-4}"/></clipPath><g clip-path="url(#{cid})">')
+        for n in ORDER:
+            x, y = ox + cen[n][0] * k, oy + cen[n][1] * k
+            if -k * 2 < x < size + k * 2 and -k * 2 < y < size + k * 2:
+                s.add(poly(hex_pts(x, y, k * 0.94), col if n in codes else WHITE, STONE if n not in codes else None, 0.4))
+        if not is_sketch(lid):
+            pts = [(ox + cen[st["code"]][0] * k, oy + cen[st["code"]][1] * k) for st in loop_stations(lid)]
+            segs = loop_curves(pts, 0.18)
+            for sg, st in zip(segs, loop_steps(lid)):
+                s.add(P(seg_d(sg), WHITE, 3.2), P(seg_d(sg), CHAR, 1.3, st["evidence"]))
+        else:
+            s.add(band(f"M{size/2-14} {size/2}a14 9 0 1 1 28 0a14 9 0 1 1 -28 0", NEWS, 1.1))
+        s.add("</g>")
     return thumb_svg(f"hx-{lid}", NEWS, draw, size)
 
 
@@ -1101,71 +1136,66 @@ def hex_edges(n, x, y, r):
 def sketch_honeycomb():
     s = Svg("s4", bg=NEWS, title="Honeycomb sketch")
     header(s, "Fifty-one equal tiles in ten territories. Two reforms, R-03 and R-46, act on safe seats.", width=84)
-    r = 16.2
     c0, c1, r0, r1 = hex_bounds()
+    r = 16.8
     w = math.sqrt(3) * r
-    x0 = 26 - c0 * w + w / 2
-    y0 = 74 - r0 * 1.5 * r
+    x0 = 20 + w / 2 - c0 * w
+    y0 = 96 - r0 * 1.5 * r
     for n in ORDER:
         x, y = hex_center(HEX[n], x0, y0, r)
         s.add(poly(hex_pts(x, y, r - 0.6), WHITE, STONE, 0.5))
-        s.add(s.icon(n, "black", x - 10, y - 12, 20))
+        s.add(s.icon(n, "black", x - 10.5, y - 13, 21))
         k = LOOPCOUNT[n]
         for i in range(k):
-            bx = x - (k - 1) * 2.1 + i * 4.2
-            s.add(C(bx, y + 10.5, 1.5, fill=PRU, stroke=None))
+            s.add(C(x - (k - 1) * 2.1 + i * 4.2, y + 10.5, 1.5, fill=PRU, stroke=None))
     for n in ORDER:
         x, y = hex_center(HEX[n], x0, y0, r)
         for a, b in hex_edges(n, x, y, r - 0.6):
             s.add(L(a[0], a[1], b[0], b[1], CHAR, 1.6, extra=' stroke-linecap="round"'))
     x, y = hex_center(HEX["C1"], x0, y0, r)
-    s.add(poly(hex_pts(x, y, r - 2.2), "none", RED, 2.6))
-    # territory labels
-    names = {"A": "Economic structure", "B": "Political inputs", "C": "Electoral competition",
-             "D": "Governing institutions", "E": "Legitimacy", "TC": "Technology",
-             "production": "Production", "household": "Households", "money": "Credit, trade, environment"}
-    for a, nm in names.items():
-        pts = [hex_center(HEX[n], x0, y0, r) for n in AREA_NODES[a]]
-        mx = sum(p[0] for p in pts) / len(pts)
-        top = min(p[1] for p in pts)
-        bot = max(p[1] for p in pts)
-        yy = top - r - 5 if a not in ("production", "household", "money", "D") else bot + r + 15
-        s.add(T(mx, yy, nm, 13, CHAR, 600, "middle", fam="tight", halo=NEWS))
-    xs = [hex_center(HEX[n], x0, y0, r) for n in AREA_NODES["X"]]
-    for (x, y), n in zip(xs, AREA_NODES["X"]):
-        pass
-    # inset: area C
-    ix, iy = 470, 64
-    s.add(R(ix - 8, iy, 172, 324, fill=WHITE, stroke=STONE, sw=0.6))
+    s.add(poly(hex_pts(x, y, r - 2.4), "none", RED, 2.6))
+
+    def at(col, row):
+        return x0 + w * (col + 0.5 * (int(round(row)) & 1)), y0 + 1.5 * r * row
+
+    labels = [("Technology", 1.6, -0.95, "middle"), ("Economic structure", 2.1, 4.0, "middle"),
+              ("Political inputs", 6.7, 4.0, "middle"), ("Legitimacy", 10.3, 4.0, "middle"),
+              ("Electoral competition", 11.3, -0.95, "middle"), ("Governing institutions", 11.0, 7.0, "middle"),
+              ("Production", 1.6, 7.0, "middle"), ("Households", 4.4, 8.0, "middle"),
+              ("Credit, trade and environment", 8.1, 8.0, "start"), ("Outside drivers", 6.9, 6.0, "middle")]
+    for nm, col, row, an in labels:
+        x, y = at(col, row)
+        s.add(T(x, y + 4.5, nm, 13, CHAR, 600, an, fam="tight", halo=NEWS))
+    ix, iy = 466, 64
+    s.add(R(ix - 8, iy, 172, 326, fill=WHITE, stroke=STONE, sw=0.6))
     s.add(T(ix + 2, iy + 22, "Area C opened", 13, CHAR, 700))
     cn = AREA_NODES["C"]
-    cs = [HEX[n] for n in cn]
-    rr = 27
-    cminx = min(hex_center(q, 0, 0, rr)[0] for q in cs)
-    cmaxx = max(hex_center(q, 0, 0, rr)[0] for q in cs)
-    cminy = min(hex_center(q, 0, 0, rr)[1] for q in cs)
-    ox = ix + 78 - (cminx + cmaxx) / 2
-    oy = iy + 70 - cminy
+    rr = 26
+    cxs = [hex_center(HEX[n], 0, 0, rr) for n in cn]
+    ox = ix + 78 - (min(p[0] for p in cxs) + max(p[0] for p in cxs)) / 2
+    oy = iy + 62 - min(p[1] for p in cxs)
     cpos = {}
     for n in cn:
         x, y = hex_center(HEX[n], 0, 0, rr)
         x, y = x + ox, y + oy
         cpos[n] = (x, y)
         s.add(poly(hex_pts(x, y, rr - 1), NEWS, CHAR, 1.2))
-        s.add(s.icon(n, "black", x - 13, y - 17, 26))
+        s.add(s.icon(n, "black", x - 12, y - 16, 24))
         s.add(T(x, y + 19, n, 13, CHAR, 600, "middle"))
     for l in LINKS.values():
         if l["from"] in cn and l["to"] in cn:
             p0, p1 = cpos[l["from"]], cpos[l["to"]]
             dx, dy = p1[0] - p0[0], p1[1] - p0[1]
-            cc = ((p0[0] + p1[0]) / 2 - dy * 0.18, (p0[1] + p1[1]) / 2 + dx * 0.18)
-            a, q, b = qtrim(p0, cc, p1, 11, 11)
+            cc = ((p0[0] + p1[0]) / 2 - dy * 0.2, (p0[1] + p1[1]) / 2 + dx * 0.2)
+            a, q, b = qtrim(p0, cc, p1, 10, 10)
             col = VERD if l["loops"] == ["B4"] else PRU
             s.add(P(f"M{f1(a[0])} {f1(a[1])}Q{f1(q[0])} {f1(q[1])} {f1(b[0])} {f1(b[1])}", col, 2.0, l["evidence"]))
             s.add(AH(b[0], b[1], qtan(a, q, b, 1), 6, col))
-    ky = iy + 70 + max(p[1] for p in cpos.values()) - min(p[1] for p in cpos.values()) + 48
-    s.add(TL(ix + 2, ky, [f"{n} {label(n)}" if len(label(n)) < 20 else f"{n} {label(n)[:18].rstrip()}…" for n in cn], 13, 16, fill=CHAR))
-    s.add(TL(ix + 2, ky + 90, ["R10 in Prussian,", "B4 in Verdigris"], 13, 16, fill=STONE))
+    ky = max(p[1] for p in cpos.values()) + rr + 18
+    lines = []
+    for n in cn:
+        lines += wrap(f"{n} {label(n)}", 23)
+    s.add(TL(ix + 2, ky, lines, 13, 15, fill=CHAR))
     return s.render()
 
 

@@ -1062,8 +1062,8 @@ def _weakest(lid):
     ids = lp['weakest']
     grades = {LINKS[i]['evidence'] for i in ids}
     word = ' or '.join(acc.GRADES[g][0].lower() for g in sorted(grades, key=GRADE_ORDER.index))
-    names = ' and '.join(ids)
-    return f'Weakest step: {names}, {word}'
+    names = ids[0] if len(ids) == 1 else ', '.join(ids[:-1]) + ' and ' + ids[-1]
+    return f'Weakest step{"s" if len(ids) > 1 else ""}: {names}, {word}'
 
 
 def disclosure(lid, rt):
