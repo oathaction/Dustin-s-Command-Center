@@ -81,11 +81,12 @@
     history.replaceState(history.state, '', '#' + S.view + (S.sel ? '/' + S.sel : ''));
   }
   // One working red per view. A reform in view (selected, or named by data-ak-reform) gives it to the reform's targets
-  // and sends selection to ink; with no reform in view the selected item may take it. Never on a Prussian surface.
+  // and sends selection to ink; with no reform in view the selected item may take it. On Prussian nothing takes red.
   function paint(root) {
     $$('[data-ak-red]').forEach((x) => { x.classList.remove('ak-target'); ['data-red', 'data-red-job', 'data-ak-red'].forEach((a) => x.removeAttribute(a)); });
-    if (!root || (root.closest('[data-surface]') || { dataset: {} }).dataset.surface === 'prussian') return;
-    const mark = (x, job) => { x.setAttribute('data-red', 'working'); x.setAttribute('data-red-job', job); x.setAttribute('data-ak-red', ''); };
+    if (!root) return;
+    const pru = (root.closest('[data-surface]') || { dataset: {} }).dataset.surface === 'prussian';   // targets still light, in White
+    const mark = (x, job) => { x.setAttribute('data-ak-red', ''); if (!pru) { x.setAttribute('data-red', 'working'); x.setAttribute('data-red-job', job); } };
     const reform = S.sel && S.sel.startsWith('reform-') ? S.sel : root.dataset.akReform;
     const r = reform && ($(`[data-select="${reform}"]`, root) || $(`[data-select="${reform}"]`));
     if (r) (r.dataset.targets || '').split(/\s+/).filter(Boolean).forEach((t) =>

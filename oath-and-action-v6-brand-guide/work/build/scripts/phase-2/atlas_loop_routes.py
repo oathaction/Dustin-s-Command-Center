@@ -734,8 +734,10 @@ def measure(pl, routes, widths):
     img = render_pngs(groups)
     results = {}
     for w in widths:
-        drawn = {lid: ink_map(img[f'a-{lid}-{w}']) for lid in order}
-        route_ink = {lid: ink_map(img[f'r-{lid}-{w}']) for lid in order}
+        hh = min(min(img[f'a-{lid}-{w}'].shape[0], img[f'r-{lid}-{w}'].shape[0]) for lid in order)
+        ww = min(min(img[f'a-{lid}-{w}'].shape[1], img[f'r-{lid}-{w}'].shape[1]) for lid in order)
+        drawn = {lid: ink_map(img[f'a-{lid}-{w}'][:hh, :ww]) for lid in order}
+        route_ink = {lid: ink_map(img[f'r-{lid}-{w}'][:hh, :ww]) for lid in order}
         sil = {lid: filled(route_ink[lid] > 0.5) for lid in order}
         blur = {lid: box3(drawn[lid]) for lid in order}
         r = max(2, round(w / 40))
@@ -927,3 +929,728 @@ def contract(pl):
         'overview_options': options,
     }
     return out
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# 5. The study page
+# ---------------------------------------------------------------------------------------------------------------
+CARD_W = 318                      # four columns at 1440 px: 48 px margins, 24 px gutters
+GRADE_ORDER = ['documented', 'well-supported', 'plausible', 'plausible_contested', 'hypothesis']
+
+
+def _tw(text, size=13, weight=600):
+    """Rough advance width of Inter, for placing SVG labels; the browser check measures the real boxes."""
+    narrow = sum(1 for ch in text if ch in "il.,:;'|()!fjtI1 ")
+    wide = sum(1 for ch in text if ch in 'MWmw')
+    caps = sum(1 for ch in text if ch.isupper() and ch not in 'IMW')
+    per = 0.56 if weight < 600 else 0.59
+    return size * (per * (len(text) - narrow - wide - caps) + 0.3 * narrow + 0.88 * wide + 0.7 * caps)
+
+
+def _wrap(text, width, size=13, weight=600):
+    words, lines, cur = text.split(), [], ''
+    for w in words:
+        t = (cur + ' ' + w).strip()
+        if _tw(t, size, weight) <= width or not cur:
+            cur = t
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def key_plan_svg(pl, width=800):
+    """The plan at reading size: every area named, every variable at its slot with its ID."""
+    fr = frame(pl)
+    pad_t, pad_b = 30, 54
+    k = width / fr['w']
+    H = fr['h'] * k + pad_t + pad_b
+    ink, stone, deep = P['charcoal'], P['stone'], P['deep_stone']
+
+    def X(p):
+        return ((p[0] - fr['x0']) * k, (p[1] - fr['y0']) * k + pad_t)
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" data-view="plan-key" width="{width}" height="{_f(H)}" viewBox="0 0 {width} {_f(H)}" '
+         f'role="img" aria-labelledby="plan-t plan-d"><title id="plan-t">The canonical plan</title>'
+         f'<desc id="plan-d">Outside drivers X1 to X5 across the top. The civic core as a ring: A Economic structure, B Political '
+         f'inputs and C Electoral competition across the top row; E Legitimacy under A and D Governing institutions under B and C. '
+         f'Along the bottom, the economy layer ({", ".join(AREAS[a]["title"] for a in pl["ground_order"] if a != "TC")}) and the technology layer. '
+         f'A margin on the left holds the three sketched loops, which are not on the map.</desc>']
+    core = set('ABCDE')
+    for a, (x0, y0, x1, y1) in pl['boxes'].items():
+        p0, p1 = X((x0, y0)), X((x1, y1))
+        strong = a in core
+        o.append(f'<rect data-area="{a}" x="{_f(p0[0])}" y="{_f(p0[1])}" width="{_f(p1[0] - p0[0])}" height="{_f(p1[1] - p0[1])}" '
+                 f'rx="8" fill="none" stroke="{ink if strong else stone}" stroke-width="{1.2 if strong else 1}"/>')
+        title = AREAS[a]['title']
+        if a in core:
+            o.append(f'<text x="{_f(p0[0] + 12)}" y="{_f(p0[1] + 22)}" class="pk-area"><tspan class="pk-letter">{a}</tspan> {esc(title)}</text>')
+        elif a == 'X':
+            o.append(f'<text x="{_f(p0[0])}" y="{_f(p0[1] - 10)}" class="pk-area"><tspan class="pk-letter">X</tspan> {esc(title)}</text>')
+        else:
+            lines = _wrap(title, p1[0] - p0[0] + 18)
+            for i, ln in enumerate(lines):
+                o.append(f'<text x="{_f(p0[0])}" y="{_f(p1[1] + 18 + 16 * i)}" class="pk-small">{esc(ln)}</text>')
+    for v, (x, y) in pl['pos'].items():
+        px, py = X((x, y))
+        big = AREA_OF[v] in core
+        r = 4.5 if big else 3.2
+        ground = AREA_OF[v] not in core and AREA_OF[v] != 'X'
+        lab = (f'<text x="{_f(px)}" y="{_f(py + 17)}" text-anchor="middle" class="pk-id-s">{v}</text>' if ground else
+               f'<text x="{_f(px + r + 4)}" y="{_f(py + 4.6)}" class="{"pk-id" if big else "pk-id-s"}">{v}</text>')
+        o.append(f'<g data-node="{v}"><circle cx="{_f(px)}" cy="{_f(py - (6 if ground else 0))}" r="{r}" fill="{ink if big else stone}"/>{lab}</g>')
+    # the margin
+    mx = 8
+    my = X((0, pl['boxes']['A'][1]))[1] + 6
+    o.append(f'<text x="{mx}" y="{_f(my + 14)}" class="pk-small">Off the map</text>'
+             f'<text x="{mx}" y="{_f(my + 30)}" class="pk-small">(sketches)</text>')
+    o.append('</svg>')
+    return ''.join(o)
+
+
+def _mini(kind, theme='newsprint'):
+    """Small specimens for the key, drawn with the thumbnails' own marks."""
+    th = THEMES[theme]
+    ink, ground = th['ink'], th['ground']
+    w = MARKS['weight']
+    if kind in DASH:
+        da = dash(kind, w)
+        return (f'<svg width="76" height="16" viewBox="0 0 76 16" aria-hidden="true"><path d="M2 8H74" stroke="{ink}" stroke-width="{w}"'
+                + (f' stroke-dasharray="{da}"' if da else '') + '/></svg>')
+    if kind == 'sketch':
+        return (f'<svg width="76" height="16" viewBox="0 0 76 16" aria-hidden="true"><path d="M2 8H64" stroke="{ink}" stroke-width="{w + 1.6}"/>'
+                f'<path d="M2 8H64" stroke="{ground}" stroke-width="{w - 0.9}"/><circle cx="69" cy="8" r="3.9" fill="{ground}" stroke="{ink}" stroke-width="1.5"/></svg>')
+    if kind in ('+', '-'):
+        tb, tp, h = MARKS['tag_body'], MARKS['tag_point'], MARKS['tag_h'] / 2
+        x0 = 40
+        poly = f'{x0},{8 - h} {x0 + tb},{8 - h} {x0 + tb + tp},8 {x0 + tb},{8 + h} {x0},{8 + h}'
+        gx = x0 + tb / 2
+        a = MARKS['sign_arm']
+        gl = f'M{gx - a} 8H{gx + a}' + (f'M{gx} {8 - a}V{8 + a}' if kind == '+' else '')
+        return (f'<svg width="76" height="16" viewBox="0 0 76 16" aria-hidden="true"><path d="M2 8H{x0 + 4}" stroke="{ink}" stroke-width="{w}"/>'
+                f'<polygon points="{poly}" fill="{ink}"/><path d="{gl}" stroke="{ground}" stroke-width="{MARKS["sign_w"]}"/>'
+                f'<circle cx="{x0 + tb + tp + 6}" cy="8" r="{MARKS["station"]}" fill="{ink}"/></svg>')
+    if kind == 'start':
+        return (f'<svg width="76" height="16" viewBox="0 0 76 16" aria-hidden="true"><path d="M2 8H20" stroke="{ink}" stroke-width="{w}"/>'
+                f'<path d="M23.5 3.2V12.8" stroke="{ink}" stroke-width="2.2"/>'
+                f'<polygon points="{26.5},{3} {35.5},{3} {40},8 {35.5},{13} {26.5},{13}" fill="{ink}"/><path d="M28.2 8H33.8M31 5.2V10.8" stroke="{ground}" stroke-width="1.7"/>'
+                f'<circle cx="47.5" cy="8" r="{MARKS["start"]}" fill="{ground}" stroke="{ink}" stroke-width="2"/><circle cx="47.5" cy="8" r="2" fill="{ink}"/>'
+                f'<path d="M53 8H74" stroke="{ink}" stroke-width="{w}"/></svg>')
+    if kind == 'area':
+        return (f'<svg width="76" height="16" viewBox="0 0 76 16" aria-hidden="true"><rect x="2" y="2" width="32" height="12" rx="3" fill="none" stroke="{th["plan"]}" stroke-width="{MARKS["plan_visited"]}"/>'
+                f'<rect x="42" y="2" width="32" height="12" rx="3" fill="none" stroke="{th["plan"]}" stroke-width="{MARKS["plan_w"]}"/></svg>')
+    raise ValueError(kind)
+
+
+WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve']
+
+
+def nw(n, cap=False):
+    w = WORDS[n] if 0 <= n < len(WORDS) else str(n)
+    return w[0].upper() + w[1:] if cap else w
+
+
+def _station_words(lid):
+    return ', '.join((f'{s["code"]} ' if s['code'] else '') + s['label'] for s in LOOPS[lid]['stations'])
+
+
+def _weakest(lid):
+    lp = LOOPS[lid]
+    if not lp['weakest']:
+        return None
+    ids = lp['weakest']
+    grades = {LINKS[i]['evidence'] for i in ids}
+    word = ' or '.join(acc.GRADES[g][0].lower() for g in sorted(grades, key=GRADE_ORDER.index))
+    names = ' and '.join(ids)
+    return f'Weakest step: {names}, {word}'
+
+
+def disclosure(lid, rt):
+    """The plain disclosure for the two loops closed through a hypothesis and the three sketches."""
+    lp = LOOPS[lid]
+    if lp['hypothesized']:
+        close = next(s for s in lp['steps'] if s['closing'])
+        others = [s['id'] for s in lp['steps'] if s['evidence'] == 'hypothesis' and not s['closing']]
+        t = (f'Closed with a hypothesized step. {close["id"]}, the step that closes it, is graded hypothesis '
+             f'(untested), so the loop is complete only if that step holds.')
+        if others:
+            t += f' {", ".join(others)} is a hypothesis too.'
+        return t
+    if lp['conceptual']:
+        sk = rt['sketch']
+        on = [s for s in lp['stations'] if s['is_variable']]
+        if on:
+            v = on[0]
+            return (f'A sketch. No step is a numbered connection. Only {v["code"]} {v["label"]} is a variable in the model, '
+                    f'so the route touches the map there and its other {nw(len(lp["stations"]) - len(on))} stations sit off the map beside it.')
+        names = ' and '.join(f'{v} {NODES[v]["label"]}' for v in sk['anchors'])
+        return (f'A sketch. No step is a numbered connection and no station is a variable in the model, so the route sits '
+                f'off the map, beside {names}, which its reforms target.')
+    return None
+
+
+def card(lid, rt, pl, theme, uid):
+    lp = LOOPS[lid]
+    svg = thumb_svg(lid, rt, pl, CARD_W, theme=theme, uid=uid)
+    disc = disclosure(lid, rt)
+    weak = _weakest(lid)
+    meta = f'{lp["kind_word"]}, {lp["kind_gloss"]}'
+    steps_word = f'{lp["n"]} steps'
+    parts = [f'<article class="card" aria-labelledby="{uid}-h">',
+             f'<div class="card-head"><span class="card-id">{lid}</span><span class="card-kind">{esc(meta)}<br>{steps_word}</span></div>',
+             f'<div class="card-fig">{svg}</div>',
+             f'<h3 id="{uid}-h" class="card-title">{esc(lp["title"])}</h3>',
+             f'<p class="card-stations">{esc(_station_words(lid))}</p>']
+    if weak:
+        parts.append(f'<p class="card-meta">{esc(weak)}</p>')
+    if disc:
+        parts.append(f'<p class="card-note"><span class="note-mark" aria-hidden="true"></span>{esc(disc)}</p>')
+    parts.append('</article>')
+    return ''.join(parts)
+
+
+def separation(a, b, routes):
+    """What tells two loops apart, in words, from the model."""
+    la, lb = LOOPS[a], LOOPS[b]
+    sa = [s['code'] for s in la['stations'] if s['code']]
+    sb = [s['code'] for s in lb['stations'] if s['code']]
+    ka = [s['id'] for s in la['steps'] if s['id']]
+    kb = [s['id'] for s in lb['steps'] if s['id']]
+    shared_s = [v for v in sa if v in sb]
+    shared_k = [k for k in ka if k in kb]
+    out = []
+    if shared_s:
+        txt = f'They share {nw(len(shared_s))} station{"s" if len(shared_s) > 1 else ""} ({", ".join(shared_s)})'
+        txt += (f' and {nw(len(shared_k))} connection{"s" if len(shared_k) > 1 else ""} ({", ".join(shared_k)})' if shared_k
+                else ' and no connection') + '.'
+        out.append(txt)
+    else:
+        out.append('They share no station.')
+    only_a = [v for v in sa if v not in sb]
+    only_b = [v for v in sb if v not in sa]
+    bits = []
+    def names(vs):
+        t = [f'{v} {NODES[v]["label"]}' for v in vs]
+        return t[0] if len(t) == 1 else ', '.join(t[:-1]) + ' and ' + t[-1]
+    if only_a:
+        bits.append(f'only {a} stops at {names(only_a)}')
+    if only_b:
+        bits.append(f'only {b} stops at {names(only_b)}')
+    if bits:
+        out.append(bits[0][0].upper() + bits[0][1:] + ('; ' + bits[1] if len(bits) > 1 else '') + '.')
+    ca = next(s for s in la['steps'] if s['closing'])
+    cb = next(s for s in lb['steps'] if s['closing'])
+    if ca['id'] != cb['id'] and ca['id'] and cb['id']:
+        out.append(f'{a} closes through {ca["id"]} ({acc.GRADES[ca["evidence"]][0].lower()}, {acc.GRADES[ca["evidence"]][2]}); '
+                   f'{b} closes through {cb["id"]} ({acc.GRADES[cb["evidence"]][0].lower()}, {acc.GRADES[cb["evidence"]][2]}).')
+    if la['n'] != lb['n']:
+        out.append(f'{a} has {nw(la["n"])} steps and {b} has {nw(lb["n"])}.')
+    return ' '.join(out)
+
+
+def strip_plot(res_by_size, key, label_n=3, width=1000):
+    """All 253 pair scores on one axis per size, as a rug of ticks, the D1-16 limit marked."""
+    rows = list(res_by_size)
+    row_h, top, left, right = 78, 40, 210, 30
+    H = top + row_h * len(rows) + 30
+    plot_w = width - left - right
+    ink, stone = P['charcoal'], P['stone']
+
+    def X(v):
+        return left + v * plot_w
+    word = 'score' if key == 'd116' else 'correlation'
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" data-view="similarity-{key}" width="{width}" height="{H}" viewBox="0 0 {width} {H}" role="img" '
+         f'aria-labelledby="sp-{key}-t sp-{key}-d"><title id="sp-{key}-t">Similarity of all 253 pairs of loop thumbnails</title>'
+         f'<desc id="sp-{key}-d">' + esc(' '.join(f'At {r["label"]}, the highest {word} is {r["pairs"][0]["a"]} with {r["pairs"][0]["b"]} at '
+                                                   f'{max(p["v"] for p in r["pairs"]):.2f}.' for r in rows)) + '</desc>']
+    axis_y = top + row_h * len(rows) - 14
+    for t in (0, 0.2, 0.4, 0.6, 0.8, 1.0):
+        o.append(f'<path d="M{_f(X(t))} {axis_y}v6" stroke="{stone}" stroke-width="1"/>'
+                 f'<text x="{_f(X(t))}" y="{axis_y + 22}" text-anchor="middle" class="sp-tick">{t:.1f}</text>')
+    o.append(f'<path d="M{left} {axis_y}H{left + plot_w}" stroke="{stone}" stroke-width="1"/>')
+    if key == 'd116':
+        o.append(f'<path d="M{_f(X(0.6))} {top - 18}V{axis_y}" stroke="{ink}" stroke-width="2"/>'
+                 f'<text x="{_f(X(0.6) + 8)}" y="{top - 6}" class="sp-limit">Limit 0.60 (D1-16)</text>')
+    for i, r in enumerate(rows):
+        y0 = top + i * row_h + row_h / 2 + 8
+        o.append(f'<text x="0" y="{_f(y0 - 2)}" class="sp-row">{esc(r["label"])}</text>'
+                 f'<text x="0" y="{_f(y0 + 16)}" class="sp-sub">{esc(r["sub"])}</text>')
+        o.append(f'<path d="M{left} {_f(y0)}H{left + plot_w}" stroke="{stone}" stroke-width="0.5"/>')
+        o.append(''.join(f'<path d="M{_f(X(pr["v"]))} {_f(y0 - 8)}v16" stroke="{ink}" stroke-width="1"/>' for pr in r['pairs']))
+        occupied = {0: [], 1: []}
+        for pr in sorted(r['pairs'], key=lambda p: -p['v'])[:label_n]:
+            x = X(pr['v'])
+            txt_w = _tw(f'{pr["a"]}, {pr["b"]} {pr["v"]:.2f}', 13, 600)
+            right_side = key == 'd116' and pr['v'] >= 0.6
+            x0, x1 = (x + 5, x + 5 + txt_w) if right_side else (x - 5 - txt_w, x - 5)
+            lvl = next((L for L in (0, 1) if all(x1 + 8 < a or x0 - 8 > b for a, b in occupied[L])), None)
+            if lvl == 1 and any(a - 3 <= x <= b + 3 for a, b in occupied[0]):
+                lvl = None                       # its leader would cut through a label below it
+            if lvl is None:
+                continue
+            occupied[lvl].append((x0, x1))
+            ty = y0 - 13 - 16 * lvl
+            anchor = 'start' if right_side else 'end'
+            if lvl:
+                o.append(f'<path d="M{_f(x)} {_f(y0 - 9)}V{_f(ty - 4)}" stroke="{stone}" stroke-width="0.8"/>')
+            o.append(f'<text x="{_f(x + 5 if right_side else x - 5)}" y="{_f(ty)}" text-anchor="{anchor}" class="sp-lab">'
+                     f'{esc(pr["a"])}, {esc(pr["b"])} <tspan class="sp-num">{pr["v"]:.2f}</tspan></text>')
+    o.append('</svg>')
+    return ''.join(o)
+
+
+def floors_plot(floors, width=1000):
+    """Per loop, the narrowest width for the full and the compact form."""
+    order = sorted(M['loop_order'], key=lambda l: (-floors[l]['full'], M['loop_order'].index(l)))
+    left, right, top, rh = 70, 150, 36, 22
+    H = top + rh * len(order) + 40
+    lo, hi = 70, 340
+    plot_w = width - left - right
+    ink, stone = P['charcoal'], P['stone']
+
+    def X(v):
+        return left + (v - lo) / (hi - lo) * plot_w
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" data-view="size-floors" width="{width}" height="{H}" viewBox="0 0 {width} {H}" role="img" '
+         f'aria-labelledby="fl-t fl-d"><title id="fl-t">Narrowest readable width for each loop</title><desc id="fl-d">'
+         + esc(' '.join(f'{l}: full form from {floors[l]["full"]} px, compact from {floors[l]["compact"]} px.' for l in order)) + '</desc>']
+    axis_y = top + rh * len(order) + 4
+    o.append(f'<path d="M{left} {axis_y}H{left + plot_w}" stroke="{stone}" stroke-width="1"/>')
+    for t in range(80, 341, 40):
+        o.append(f'<path d="M{_f(X(t))} {axis_y}v6" stroke="{stone}" stroke-width="1"/>'
+                 f'<text x="{_f(X(t))}" y="{axis_y + 22}" text-anchor="middle" class="sp-tick">{t} px</text>')
+    for v in (SIZE['full'], SIZE['compact'], CARD_W):
+        o.append(f'<path d="M{_f(X(v))} {top - 16}V{axis_y}" stroke="{ink if v != CARD_W else stone}" stroke-width="{2 if v == SIZE["full"] else 1.2}"/>')
+    o.append(f'<text x="{_f(X(SIZE["full"]) - 6)}" y="{top - 4}" text-anchor="end" class="sp-limit">Full form from {SIZE["full"]} px</text>')
+    o.append(f'<text x="{_f(X(SIZE["compact"]) - 6)}" y="{top - 4}" text-anchor="end" class="sp-limit">Compact from {SIZE["compact"]} px</text>')
+    o.append(f'<text x="{_f(X(CARD_W) + 6)}" y="{top - 4}" class="sp-sub">Catalog, {CARD_W} px</text>')
+    for i, l in enumerate(order):
+        y = top + i * rh + rh / 2
+        f, c = floors[l]['full'], floors[l]['compact']
+        o.append(f'<g data-loop="{l}"><text x="0" y="{_f(y + 4.5)}" class="sp-row-s">{l}</text>'
+                 f'<path d="M{_f(X(c))} {_f(y)}H{_f(X(f))}" stroke="{stone}" stroke-width="2"/>'
+                 f'<circle cx="{_f(X(c))}" cy="{_f(y)}" r="4.5" fill="{P["newsprint"]}" stroke="{ink}" stroke-width="1.6"/>'
+                 f'<circle cx="{_f(X(f))}" cy="{_f(y)}" r="4.5" fill="{ink}"/></g>')
+    o.append('</svg>')
+    return ''.join(o)
+
+
+CSS = r"""
+:root{--news:#DCD9D2;--char:#121212;--prus:#1F2D5A;--stone:#5D636D;--verd:#4A7C74;--white:#FFFFFF;--deep:#4E535B;
+--ui:Inter,"Helvetica Neue",Arial,sans-serif;--disp:"Inter Tight",Inter,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--news)}
+body{margin:0;background:var(--news);color:var(--char);font-family:var(--ui);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--prus);outline-offset:3px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:48px;padding-right:48px}
+.mast{padding-top:40px;padding-bottom:56px}
+.mast-rule{border:0;border-top:2px solid var(--char);margin:0}
+.mast-top{display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--deep)}
+.chip{display:inline-block;background:var(--prus);color:var(--white);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px 4px;border-radius:2px}
+.mast h1{font-family:var(--disp);font-weight:800;font-size:76px;line-height:.98;letter-spacing:-.025em;margin:40px 0 0;max-width:1000px}
+.dek{font-size:21px;line-height:1.45;max-width:880px;margin:24px 0 0}
+.draft{font-size:13px;color:var(--deep);margin:14px 0 0}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:44px 0 0;border-top:1px solid var(--char)}
+.stat{padding:14px 16px 0 0}
+.stat b{display:block;font-family:var(--disp);font-weight:800;font-size:40px;line-height:1;letter-spacing:-.02em}
+.stat span{display:block;font-size:13px;line-height:1.35;color:var(--deep);margin-top:8px;max-width:180px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px 28px;padding-top:18px;padding-bottom:18px;font-size:14px;font-weight:600}
+nav.toc a{text-decoration:none;padding:2px 0}
+nav.toc a span{color:var(--deep);font-weight:500;margin-right:6px}
+section{padding-top:72px;padding-bottom:8px}
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:0 24px;align-items:baseline;border-top:1px solid var(--char);padding-top:14px}
+.sec-num{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.04em;color:var(--deep)}
+.sec-head h2{font-family:var(--disp);font-weight:800;font-size:40px;line-height:1.05;letter-spacing:-.02em;margin:0}
+.sec-body{display:grid;grid-template-columns:120px 1fr;gap:0 24px;margin-top:20px}
+.sec-body>.col{grid-column:2;min-width:0}
+.two>*,.read>*,.pair>*,.sec-head>*{min-width:0}
+.lede{font-size:18px;line-height:1.5;max-width:820px;margin:0 0 12px}
+.two{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:48px;align-items:start}
+.rules p,.rules li{font-size:15px;line-height:1.55;margin:0 0 12px}
+.rules ol{padding-left:20px;margin:0}
+.rules h3{font-family:var(--disp);font-weight:700;font-size:17px;margin:22px 0 8px}
+.figure{background:var(--news)}
+.scroll{overflow-x:auto;max-width:100%}
+.pk-area{font:600 15px var(--ui);fill:var(--char)}
+.pk-letter{font-family:var(--disp);font-weight:800}
+.pk-small{font:500 13px var(--ui);fill:var(--deep)}
+.pk-id{font:600 13px var(--ui);fill:var(--char)}
+.pk-id-s{font:500 13px var(--ui);fill:var(--deep)}
+.index{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 24px;margin-top:28px;border-top:1px solid var(--stone);padding-top:18px}
+.index h4{font-family:var(--disp);font-size:14px;font-weight:800;margin:0 0 6px}
+.index ul{list-style:none;margin:0;padding:0}
+.index li{display:grid;grid-template-columns:40px 1fr;font-size:13px;line-height:1.4;color:var(--char);margin-bottom:3px}
+.index li b{font-weight:600}
+.facts{font-size:13px;color:var(--deep);margin-top:14px;line-height:1.5}
+.read{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:56px;align-items:start}
+.legend{display:grid;grid-template-columns:84px 1fr;gap:12px 14px;align-items:center;margin:0}
+.legend dt{line-height:0}
+.legend dd{margin:0;font-size:14px;line-height:1.4}
+.legend dd b{font-weight:600}
+.steps{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
+.steps th{text-align:left;font-size:13px;font-weight:600;color:var(--deep);border-bottom:1px solid var(--char);padding:6px 10px 6px 0}
+.steps td{border-bottom:1px solid var(--stone);padding:8px 10px 8px 0;vertical-align:top}
+.steps td:first-child{font-weight:700;white-space:nowrap}
+.sheet{padding-top:56px;padding-bottom:64px;margin-top:64px}
+.sheet-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:28px}
+.sheet-head h3{font-family:var(--disp);font-weight:800;font-size:28px;letter-spacing:-.01em;margin:0}
+.sheet-head p{font-size:14px;margin:0;max-width:600px}
+.grid{display:grid;grid-template-columns:repeat(4,318px);gap:44px 24px;justify-content:space-between}
+.card{border-top:2px solid currentColor;padding-top:10px;min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.card-id{font-family:var(--disp);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.02em}
+.card-kind{font-size:13px;line-height:1.3;text-align:right;color:var(--deep);font-weight:500}
+.card-fig{line-height:0;margin:0 0 8px}
+.card-title{font-family:var(--ui);font-weight:600;font-size:16px;line-height:1.3;margin:0 0 8px}
+.card-stations{font-size:13px;line-height:1.45;margin:0 0 6px;color:var(--deep)}
+.card-meta{font-size:13px;line-height:1.4;margin:0 0 6px;color:var(--deep)}
+.card-note{position:relative;font-size:13px;line-height:1.45;margin:10px 0 0;padding:8px 0 0 16px;border-top:1px solid var(--stone)}
+.note-mark{position:absolute;left:0;top:13px;width:8px;height:8px;background:var(--prus)}
+.dark{background:var(--char);color:var(--news)}
+.dark .card-kind,.dark .card-stations,.dark .card-meta,.dark .sheet-head p{color:var(--news)}
+.dark .card-note{border-top-color:var(--stone)}
+.dark .note-mark{background:var(--news)}
+.dark a:focus-visible{outline-color:var(--news)}
+.ladder{display:flex;flex-wrap:wrap;gap:28px 32px;align-items:flex-end}
+.rung{line-height:0}
+.rung p{line-height:1.35;font-size:13px;margin:8px 0 0;max-width:318px}
+.rung p b{font-weight:700}
+.tiers{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 28px}
+.tiers th{text-align:left;font-size:13px;font-weight:600;color:var(--deep);border-bottom:1px solid var(--char);padding:6px 12px 6px 0}
+.tiers td{border-bottom:1px solid var(--stone);padding:9px 12px 9px 0;vertical-align:top}
+.tiers td:first-child{font-weight:700;white-space:nowrap}
+.sp-tick{font:500 13px var(--ui);fill:var(--deep)}
+.sp-limit{font:700 13px var(--ui);fill:var(--char)}
+.sp-row{font:700 14px var(--ui);fill:var(--char)}
+.sp-row-s{font:600 13px var(--ui);fill:var(--char)}
+.sp-sub{font:500 13px var(--ui);fill:var(--deep)}
+.sp-lab{font:600 13px var(--ui);fill:var(--char)}
+.sp-num{font-weight:500;fill:var(--deep)}
+.pairs{display:grid;grid-template-columns:1fr;gap:40px;margin-top:40px}
+.pair{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;align-items:start;border-top:1px solid var(--stone);padding-top:16px}
+.pair-figs{display:flex;gap:24px;flex-wrap:wrap}
+.pair h4{font-family:var(--disp);font-weight:800;font-size:22px;margin:0 0 4px}
+.pair .score{font-size:13px;color:var(--deep);margin:0 0 12px}
+.pair p.sep{font-size:14px;line-height:1.5;margin:14px 0 0;max-width:660px}
+.pair-fig{line-height:0}
+.pair-fig span{display:block;line-height:1.3;font-size:13px;font-weight:700;margin-bottom:6px}
+.notes{columns:2;column-gap:56px;font-size:15px;line-height:1.55}
+.notes p{margin:0 0 12px;break-inside:avoid}
+footer{padding-top:28px;padding-bottom:56px;margin-top:72px;font-size:13px;line-height:1.5;color:var(--deep)}
+footer .rule{border-top:2px solid var(--char);padding-top:28px}
+footer p{margin:0 0 6px;max-width:1000px}
+@media (max-width:1380px){.grid{grid-template-columns:repeat(3,318px)}}
+@media (max-width:1060px){.grid{grid-template-columns:repeat(2,318px);justify-content:start}.two,.read,.pair{grid-template-columns:1fr}.index{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:720px){.wrap{padding:0 16px}.mast h1{font-size:44px}.dek{font-size:18px}.stats{grid-template-columns:repeat(2,1fr)}.sec-head,.sec-body{grid-template-columns:1fr}.sec-body>.col{grid-column:1}.sec-num{margin-bottom:4px}.sec-head h2{font-size:30px}
+.grid{grid-template-columns:318px;justify-content:center}.index{grid-template-columns:repeat(2,minmax(0,1fr))}.notes{columns:1}.sheet-head{display:block}.sheet-head p{margin-top:8px}.mast-top{flex-wrap:wrap}}
+"""
+
+
+def page(pl, routes, floors, sim, con):
+    order = M['loop_order']
+    C = M['generated']['counts']
+    n_two = sum(1 for l in LOOPS.values() if l['n'] == 2)
+    n_three = sum(1 for l in LOOPS.values() if l['n'] == 3)
+    n_four = sum(1 for l in LOOPS.values() if l['n'] == 4)
+    study = sim[str(CARD_W)]
+    top = study['pairs'][0]
+    full_floor, compact_floor = SIZE['full'], SIZE['compact']
+    binding = max(floors, key=lambda l: floors[l]['full'])
+    second = sorted(floors.values(), key=lambda v: -v['full'])[1]['full']
+    loc_floor = max(v['locator'] for v in floors.values())
+    sys_ = con['system']
+    opt = con['overview_options']
+    # cards
+    news_cards = ''.join(card(l, routes[l], pl, 'newsprint', f'n-{l}') for l in order)
+    dark_cards = ''.join(card(l, routes[l], pl, 'charcoal', f'c-{l}') for l in order)
+    # R10 at twice size
+    r10 = thumb_svg('R10', routes['R10'], pl, CARD_W, uid='big-R10', view='loop-route-2x')
+    hpx = frame(pl)['h'] * CARD_W / frame(pl)['w']
+    r10 = r10.replace(f'width="{_f(CARD_W)}" height="{_f(hpx)}"', f'width="{CARD_W * 2}" height="{_f(hpx * 2)}"', 1)
+    step_rows = ''.join(
+        f'<tr data-link="{s["id"]}" data-sign="{s["polarity"]}" data-grade="{s["evidence"]}" data-delay="{s["delay"]}">'
+        f'<td>{s["id"]}</td><td>{esc(s["from_label"])} {"raises" if s["polarity"] == "+" else "lowers"} {esc(s["to_label"])}</td>'
+        f'<td>{"+" if s["polarity"] == "+" else MINUS}</td><td>{acc.GRADES[s["evidence"]][0]}, {acc.GRADES[s["evidence"]][2]}</td>'
+        f'<td>{acc.DELAYS[s["delay"]]}</td><td>{"Closes the loop" if s["closing"] else ""}</td></tr>'
+        for s in LOOPS['R10']['steps'])
+    legend = ''.join(f'<dt>{_mini(k)}</dt><dd>{v}</dd>' for k, v in (
+        ('documented', '<b>Solid:</b> documented (on the public record) or well supported (strong research evidence)'),
+        ('plausible', '<b>Dashed:</b> plausible (some evidence)'),
+        ('plausible_contested', '<b>Dash and dot:</b> contested (evidence disputed)'),
+        ('hypothesis', '<b>Dotted:</b> hypothesis (untested)'),
+        ('+', '<b>Tag with a plus:</b> the two variables move the same way. The tag points the way the step runs. A plus does not mean the change is good.'),
+        ('-', '<b>Tag with a minus:</b> the two variables move opposite ways.'),
+        ('start', '<b>Ring:</b> the loop\'s first station in V7. The bar marks the closing step, the one that returns to the ring.'),
+        ('sketch', '<b>Hollow line and open station:</b> a sketched step with no numbered connection, off the map.'),
+        ('area', '<b>Heavier outline:</b> an area where the loop stops. Lighter outlines are the rest of the system.'),
+    ))
+    # index of variables by area
+    idx = []
+    for a in ['X', 'A', 'B', 'C', 'D', 'E'] + pl['ground_order']:
+        items = ''.join(f'<li data-node="{v}"><b>{v}</b><span data-node="{v}" data-name="{esc(NODES[v]["label"])}">{esc(NODES[v]["label"])}</span></li>'
+                        for v in AREAS[a]['nodes'])
+        idx.append(f'<div><h4>{a if len(a) <= 2 else ""}{" " if len(a) <= 2 else ""}{esc(AREAS[a]["title"])}</h4><ul>{items}</ul></div>')
+    # size ladder
+    ladder_sizes = [CARD_W, full_floor, compact_floor, 200, 140]
+    rungs = []
+    for lid in ('R12', 'R8'):
+        for w in ladder_sizes:
+            t = size_tier(w)
+            svg = thumb_svg(lid, routes[lid], pl, w, uid=f'lad-{lid}-{w}', view='loop-route-ladder')
+            rungs.append(f'<div class="rung">{svg}<p><b>{lid}, {w} px</b><br>{t.capitalize()} form</p></div>')
+    # similarity rows
+    sizes_sorted = sorted(sim, key=lambda k: -int(k))
+
+    def rowset(key):
+        rs = []
+        for k in sizes_sorted:
+            r = sim[k]
+            v = 'score' if key == 'd116' else 'squint_corr'
+            rs.append({'label': f'{r["width"]} px', 'sub': f'{r["tier"]} form' + (f', blur {r["squint_radius_px"]} px' if key != 'd116' else ''),
+                       'pairs': [{'a': p['a'], 'b': p['b'], 'v': p[v]} for p in r['pairs']]})
+        return rs
+    plot_d116 = strip_plot(rowset('d116'), 'd116')
+    plot_sq = strip_plot(rowset('squint'), 'squint')
+    pair_blocks = []
+    for p in study['pairs'][:4]:
+        figs = ''.join(f'<div class="pair-fig"><span>{x}</span>{thumb_svg(x, routes[x], pl, CARD_W, uid=f"pr-{p["a"]}-{p["b"]}-{x}", view="loop-route-pair")}</div>'
+                       for x in (p['a'], p['b']))
+        pair_blocks.append(f'<div class="pair"><div class="pair-figs">{figs}</div><div class="pair-text"><h4>{p["a"]} and {p["b"]}</h4>'
+                           f'<p class="score">D1-16 score {p["score"]:.2f} at {CARD_W} px: silhouette overlap {p["silhouette_iou"]:.2f}, '
+                           f'blurred correlation {p["blurred_corr"]:.2f}. Squint {p["squint_corr"]:.2f}.</p>'
+                           f'<p class="sep">{esc(separation(p["a"], p["b"], routes))}</p></div></div>')
+    over = study['over_limit']
+    sq_top = max(study['pairs'], key=lambda p: p['squint_corr'])
+    worst_small = sim[str(min(int(k) for k in sim))]
+    tiers_rows = ''.join(
+        f'<tr><td>{t.capitalize()}</td><td>{lo}</td><td>{esc(TIERS[t])}</td></tr>' for t, lo in (
+            ('full', f'{full_floor} px and wider'), ('compact', f'{compact_floor} to {full_floor - 2} px'), ('locator', f'under {compact_floor} px')))
+    html_ = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loop Route Thumbnails</title>
+<meta name="description" content="Study: each of the 23 Atlas V7 loops drawn as its own route across one canonical plan of the system, with sign, direction, evidence texture and closure, and a measured test of how distinct the 23 thumbnails are.">
+<meta name="atlas-views" content="study">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>{CSS}</style>
+</head>
+<body>
+<main data-view-root="study">
+<header class="wrap mast">
+  <div class="mast-top"><span>Oath and Action Systems Atlas &middot; Atlas concepts &middot; Shared grammar for all twelve concepts &middot; October 30, 2026</span><span class="chip">Study</span></div>
+  <h1>Every loop draws its own route</h1>
+  <p class="dek">The atlas has <span data-count="loops">{C["loops"]}</span> feedback loops. {nw(n_two, True)} have two steps, {nw(n_three)} have three and {nw(n_four)} have four, so a loop icon drawn by its step count repeats three shapes. This study draws each loop as the path it takes across one shared plan of the system. The plan is the same in every thumbnail, so each one also shows where in the system its loop lives.</p>
+  <p class="draft">Headlines on this page are studio drafts. Every label, sign and grade is read from the Atlas V7 model export by script (DR-20). Decision DR-15.</p>
+  <div class="stats">
+    <div class="stat"><b data-count="loops">{C["loops"]}</b><span>loops, in catalog order</span></div>
+    <div class="stat"><b data-count="loops_numbered">{C["loops_numbered"]}</b><span>with a complete numbered chain</span></div>
+    <div class="stat"><b data-count="loops_sketched">{len(sys_["loops_sketched"])}</b><span>sketches, drawn off the map (B2, B3, R9)</span></div>
+    <div class="stat"><b data-count="variables">{C["variables"]}</b><span>variables placed on the plan by one rule</span></div>
+    <div class="stat"><b>{study["max_score"]:.2f}</b><span>highest similarity of any two thumbnails, against the 0.60 limit</span></div>
+    <div class="stat"><b>{full_floor}</b><span>pixels wide: the narrowest catalog size that carries every mark</span></div>
+  </div>
+</header>
+<div class="wrap"><hr class="mast-rule"></div>
+<nav class="wrap toc" aria-label="Sections">
+  <a href="#plan"><span>01</span>The plan</a><a href="#read"><span>02</span>How to read a route</a><a href="#newsprint"><span>03</span>Catalog on Newsprint</a><a href="#charcoal"><span>04</span>Catalog on Charcoal</a><a href="#size"><span>05</span>Size</a><a href="#distinct"><span>06</span>Distinctness</a><a href="#open"><span>07</span>Open points</a>
+</nav>
+
+<section id="plan" class="wrap">
+  <div class="sec-head"><span class="sec-num">01</span><h2>One plan of the system, shared by every thumbnail</h2></div>
+  <div class="sec-body"><div class="col">
+    <div class="two">
+      <div class="rules">
+        <p>The plan has three tiers. The five outside drivers run across the top. The civic core sits in the middle. The economy and technology layers run along the bottom, where V7 puts them under the core.</p>
+        <p>The core is a ring in V7's letter order. A, B and C run across the top row, then D and E come back along the bottom. The core's <span data-count="custom:core-cross">{sys_["core_cross_area"]}</span> connections between areas join only A and B, B and C, C and D, D and E, E and A, B and D, and B and E, so in the ring every one of them joins two neighbors. In a single row from A to E, {sys_["core_cross_area_jumping_an_area_in_one_row"]} of them would jump over an area.</p>
+        <h3>Where each variable sits</h3>
+        <ol>
+          <li>Each area holds a grid of slots: two columns by three rows for A, B and C, two by two for E, four by two for D, and two rows in each area of the bottom tier.</li>
+          <li>Each variable takes the slot nearest the average place of everything it connects to, counting all {C["connections"]} connections of every type. One assignment per area finds the arrangement with the least total distance.</li>
+          <li>The script repeats the assignments until no variable moves ({pl["rounds"]} rounds), and tries all 24 orders of the bottom tier's four areas. It keeps the order with the shortest total length of connections: {", ".join(AREAS[a]["title"] for a in pl["ground_order"])}.</li>
+        </ol>
+        <h3>The margin</h3>
+        <p>The three sketched loops have stations that are not variables in the model. They sit in a margin on the left, outside every area, beside the variables they are tied to: the station a sketch names (R9 touches E2), or else the variables its reforms target.</p>
+        <p class="facts">Plan size {pl["width"]:.1f} by {pl["height"]:.2f} columns; with the margin, {frame(pl)["w"]:.2f} by {frame(pl)["h"]:.2f}. Positions for all {C["variables"]} variables are in 20261030_Loop-Route-Geometry.json.</p>
+      </div>
+      <div class="figure"><div class="scroll" role="region" tabindex="0" aria-label="The canonical plan, scrolls sideways on small screens">{key_plan_svg(pl)}</div></div>
+    </div>
+    <div class="index">{"".join(idx)}</div>
+  </div></div>
+</section>
+
+<section id="read" class="wrap">
+  <div class="sec-head"><span class="sec-num">02</span><h2>How to read a route</h2></div>
+  <div class="sec-body"><div class="col">
+    <p class="lede">R10, &ldquo;{esc(LOOPS["R10"]["title"])}&rdquo;, at twice catalog size. Each step is an arc between two stations. Arcs bow outward from the middle of the loop, so a route always reads as a closed circuit. A two-station loop becomes a small ring.</p>
+    <div class="read">
+      <div><div class="scroll" role="region" tabindex="0" aria-label="R10 at twice catalog size">{r10}</div>
+        <table class="steps" aria-label="R10 in words"><thead><tr><th>Step</th><th>What it says</th><th>Sign</th><th>Evidence and line</th><th>Delay</th><th></th></tr></thead><tbody>{step_rows}</tbody></table>
+        <p class="facts">{esc(_weakest("R10"))}. Delay stays out of the thumbnail; the loop card carries it.</p>
+      </div>
+      <dl class="legend">{legend}</dl>
+    </div>
+  </div></div>
+</section>
+
+<section id="newsprint" class="sheet">
+  <div class="wrap">
+    <div class="sheet-head"><h3>All {C["loops"]} loops on Newsprint</h3><p>Catalog order from V7 (loop_order). Each thumbnail is {CARD_W} px wide, the full form. Pillar Red is used for nothing here.</p></div>
+    <div class="grid" data-strip="loops">{news_cards}</div>
+  </div>
+</section>
+
+<section id="charcoal" class="sheet dark">
+  <div class="wrap">
+    <div class="sheet-head"><h3>The same sheet on Charcoal</h3><p>Routes and text in Newsprint, the plan in Stone. The marks and sizes do not change.</p></div>
+    <div class="grid" data-strip="loops">{dark_cards}</div>
+  </div>
+</section>
+
+<section id="size" class="wrap">
+  <div class="sec-head"><span class="sec-num">05</span><h2>How small a thumbnail can go</h2></div>
+  <div class="sec-body"><div class="col">
+    <p class="lede">The marks keep their size while the plan shrinks, so short steps run out of room first. The script finds, for each loop, the narrowest width at which every step still holds its tag and one whole repeat of its line pattern. {binding} sets the floor at {full_floor} px through its closing step; every other loop reads at {second} px or less.</p>
+    <table class="tiers"><thead><tr><th>Form</th><th>Width</th><th>What it carries</th></tr></thead><tbody>{tiers_rows}</tbody></table>
+    <div class="ladder">{"".join(rungs)}</div>
+    <p class="facts">Below {compact_floor} px the line patterns, the direction and the signs drop out, and the thumbnail works as a locator only. Its station discs stay apart down to {loc_floor} px; whether a reader still finds the area at that size is untested.</p>
+    <div class="scroll" role="region" tabindex="0" aria-label="Floors for each loop" style="margin-top:28px">{floors_plot(floors)}</div>
+    <p class="facts">Filled dot: the full form's floor. Open dot: the compact form's floor.</p>
+  </div></div>
+</section>
+
+<section id="distinct" class="wrap">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Twenty-three different pictures</h2></div>
+  <div class="sec-body"><div class="col">
+    <p class="lede">Chromium renders every thumbnail, and the script scores all {len(study["pairs"])} pairs with the studio's D1-16 method: the mean of the overlap of the two filled route shapes and the correlation of the two drawings after a 3 by 3 blur. Two marks count as distinct under 0.60. The shared plan is left in, which raises every score.</p>
+    <p class="lede">At {CARD_W} px the highest score is {top["score"]:.2f}, for {top["a"]} and {top["b"]}, and the median is {study["median_score"]:.2f}. {"None" if not over else nw(len(over), True)} of the {len(study["pairs"])} pairs {"reaches" if len(over) <= 1 else "reach"} the limit. At {worst_small["width"]} px, in the {worst_small["tier"]} form, the highest is {worst_small["max_score"]:.2f}, for {worst_small["pairs"][0]["a"]} and {worst_small["pairs"][0]["b"]}, which is over the limit.</p>
+    <div class="scroll" role="region" tabindex="0" aria-label="Scores for all pairs">{plot_d116}</div>
+    <p class="lede" style="margin-top:28px">A stricter squint test blurs each drawing by about a fortieth of its width before correlating. It has no limit in the decision log, so it is reported, not used to pass or fail. The closest pair there is {sq_top["a"]} and {sq_top["b"]} at {sq_top["squint_corr"]:.2f}.</p>
+    <div class="scroll" role="region" tabindex="0" aria-label="Squint correlations for all pairs">{plot_sq}</div>
+    <div class="pairs">{"".join(pair_blocks)}</div>
+  </div></div>
+</section>
+
+<section id="open" class="wrap">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Open points</h2></div>
+  <div class="sec-body"><div class="col notes">
+    <p>The sign mark is the pointing tag, the studio's recommendation in Choice 3 of the October 28 review, which Dustin has not yet decided. If he picks the circled sign, each step needs an arrowhead as well, and the floor rises.</p>
+    <p>The plan is a proposal for every concept to adapt. A concept may stretch a tier or redraw the outlines; the ring order and the slot of each variable are what keep its thumbnails comparable with the others.</p>
+    <p>Two-step loops make small rings. Their size and place on the plan carry the difference between them. R13 and R18 both sit in area D and share D2, and they still read apart because their second stations sit in different directions.</p>
+    <p>No reader has seen these thumbnails. The ten-second test and a blind matching test (five readers, a thumbnail and three titles) would show whether the measured distinctness holds for people.</p>
+    <p>The sketched loops sit beside the variables their reforms target. That placement comes from the reforms, not from a connection in the model, and each card says so.</p>
+    <p>The faint outlines of the areas a loop does not visit are context. They are drawn in Stone at {MARKS["plan_w"]} px; the outlines of the areas it visits are {MARKS["plan_visited"]} px.</p>
+  </div></div>
+</section>
+</main>
+<footer class="wrap"><div class="rule">
+  <p>Data: Atlas V7 model, snapshot October 15, 2026, from the committed export work/boards/phase-2/maps/20261028_Maps-Model-Data.json (DR-20). <span data-count="variables">{C["variables"]}</span> variables, <span data-count="connections">{C["connections"]}</span> connections, <span data-count="loops">{C["loops"]}</span> loops, <span data-count="reforms">{C["reforms"]}</span> reforms.</p>
+  <p>Built by work/build/scripts/phase-2/atlas_loop_routes.py. Geometry for concept makers: work/boards/phase-2/atlas-concepts/shared/20261030_Loop-Route-Geometry.json. Notes: work/handoffs/phase-2/20261030_Atlas-Dataviz-Memo.md.</p>
+  <p>Study for the atlas concepts. Not a concept, and not for publication.</p>
+</div></footer>
+</body>
+</html>
+'''
+    return html_
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------------------------------------------
+NODE_CAPTURE = r"""
+const { chromium } = require('playwright');
+(async () => {
+  const [src, out] = process.argv.slice(1);
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+  await page.goto('file://' + src, { waitUntil: 'networkidle' });
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(400);
+  await page.screenshot({ path: out, fullPage: true });
+  const fonts = await page.evaluate(() => [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family.replace(/"/g, '') + ' ' + f.weight))]);
+  console.log(JSON.stringify({ fonts }));
+  await browser.close();
+})();
+"""
+
+
+def geometry_json(pl, routes, floors, sim, con):
+    fr = frame(pl)
+    var = {}
+    for v, (x, y) in pl['pos'].items():
+        a = AREA_OF[v]
+        var[v] = {'area': a, 'x': round(x, 4), 'y': round(y, 4), 'slot': pl['slots'][a].index((x, y)), 'label': NODES[v]['label']}
+    rts = {}
+    for lid in M['loop_order']:
+        rt = routes[lid]
+        steps = []
+        for s in rt['steps']:
+            a = s['arc']
+            d = (f'M{a["a"][0]:.4f} {a["a"][1]:.4f}A{a["radius"]:.4f} {a["radius"]:.4f} 0 0 {a["sweep"]} {a["b"][0]:.4f} {a["b"][1]:.4f}')
+            steps.append({k: s[k] for k in ('index', 'id', 'from', 'to', 'from_label', 'to_label', 'polarity', 'type', 'delay', 'evidence', 'closing', 'sketch')}
+                         | {'arc': {'from': [round(c, 4) for c in a['a']], 'to': [round(c, 4) for c in a['b']],
+                                    'center': [round(c, 4) for c in a['center']], 'radius': round(a['radius'], 4),
+                                    'sagitta': round(a['sagitta'], 4), 'side': a['side'], 'sweep': a['sweep'], 'apex': [round(c, 4) for c in a['apex']],
+                                    'chord': round(a['chord'], 4), 'd': d}})
+        rts[lid] = {'type': LOOPS[lid]['type'], 'kind_word': LOOPS[lid]['kind_word'], 'title': LOOPS[lid]['title'],
+                    'closure': LOOPS[lid]['closure'], 'steps_attr': 'sketch' if LOOPS[lid]['conceptual'] else ' '.join(s['id'] for s in LOOPS[lid]['steps']),
+                    'stations': [{**s, 'pos': [round(c, 4) for c in s['pos']]} for s in rt['stations']], 'steps': steps,
+                    'inline': rt['inline'], 'sketch_placement': rt['sketch'], 'disclosure': disclosure(lid, rt),
+                    'size_floor_px': floors[lid]}
+    return {
+        'date': '20261030', 'decision': 'DR-15',
+        'model': 'work/boards/phase-2/maps/20261028_Maps-Model-Data.json', 'snapshot': M['generated']['snapshot'],
+        'built_by': 'work/build/scripts/phase-2/atlas_loop_routes.py',
+        'units': 'Plan units: one top-row core column = 1.0; x to the right, y down. The frame adds a margin for the sketched loops. Scale by (thumbnail width / frame.w).',
+        'plan': {'width': round(pl['width'], 4), 'height': round(pl['height'], 4), 'frame': {k: round(v, 4) for k, v in fr.items()},
+                 'margin': MARGIN, 'tiers': {'top': ['X'], 'core_top_row': [a for a, _ in TOP], 'core_bottom_row': [a for a, _ in BOTTOM],
+                                             'ground': pl['ground_order']},
+                 'boxes': {a: [round(c, 4) for c in b] for a, b in pl['boxes'].items()},
+                 'slots': {a: [[round(x, 4), round(y, 4)] for x, y in s] for a, s in pl['slots'].items()},
+                 'variables': var, 'total_connection_length': pl['total_length'], 'rounds': pl['rounds'],
+                 'ground_order_trials': pl['trials'],
+                 'rule': ('Each variable takes the slot of its own area nearest the mean place of all its partners across the 118 '
+                          'connections; one least-squares assignment per area, repeated until no variable moves; the bottom tier '
+                          'order is the one of 24 with the shortest total connection length.')},
+        'grammar': {'marks_px': MARKS, 'line_code': {g: (DASH[g] or 'solid') for g in DASH} | {'sketch': 'hollow line'},
+                    'dash_note': 'Dash lengths are V7 code for a 2 px line, scaled by weight / 2.',
+                    'bulge': {'two_station': BULGE_TWO, 'many': BULGE_MANY, 'inline': BULGE_INLINE, 'cap_columns': BULGE_MAX,
+                              'rule': 'Sagitta = share x chord, capped. Steps bow away from the mean of the loop stations; two-station loops and loops in a line bow to the right of travel.'},
+                    'tiers': TIERS, 'size_floor_px': dict(SIZE), 'catalog_width_px': CARD_W},
+        'routes': rts,
+        'distinctness': {k: {kk: vv for kk, vv in v.items() if kk != 'pairs'} | {'top_pairs': v['pairs'][:12]} for k, v in sim.items()},
+        'distinctness_all_pairs': {k: v['pairs'] for k, v in sim.items()},
+        'contract': con,
+    }
+
+
+def main():
+    pl = plan()
+    routes = {l: route(l, pl) for l in M['loop_order']}
+    floors = size_floors(pl, routes)
+    SIZE['full'] = max(v['full'] for v in floors.values())
+    SIZE['compact'] = max(v['compact'] for v in floors.values())
+    assert CARD_W >= SIZE['full'], 'the catalog would fall below the full form'
+    sim = measure(pl, routes, [CARD_W, SIZE['full'], SIZE['compact'], 200])
+    con = contract(pl)
+    SHARED.mkdir(parents=True, exist_ok=True)
+    OUT_JSON.write_text(json.dumps(geometry_json(pl, routes, floors, sim, con), indent=1, ensure_ascii=False))
+    OUT_HTML.write_text(page(pl, routes, floors, sim, con))
+    res = subprocess.run(['node', '-e', NODE_CAPTURE, str(OUT_HTML), str(OUT_PNG)], capture_output=True, text=True, timeout=300)
+    if res.returncode:
+        raise RuntimeError(res.stderr[-2000:])
+    im = Image.open(OUT_PNG)
+    print('wrote', OUT_JSON.relative_to(ROOT))
+    print('wrote', OUT_HTML.relative_to(ROOT), f'{OUT_HTML.stat().st_size // 1024} KB')
+    print('wrote', OUT_PNG.relative_to(ROOT), im.size, res.stdout.strip())
+    print('floors', SIZE, 'study max', sim[str(CARD_W)]['max_score'], 'over limit', len(sim[str(CARD_W)]['over_limit']))
+    for k, v in sim.items():
+        print(' ', k, v['tier'], 'max', v['max_score'], 'median', round(v['median_score'], 3), 'max squint', v['max_squint'], 'over', len(v['over_limit']))
+
+
+if __name__ == '__main__':
+    main()
