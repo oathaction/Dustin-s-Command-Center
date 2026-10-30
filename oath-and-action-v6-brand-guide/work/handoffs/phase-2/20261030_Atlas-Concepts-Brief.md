@@ -85,17 +85,24 @@ Master Brief section 6, 1 to 5, ship threshold 4 on every line: craft, clarity, 
 
 ## 7. The roster
 
-| # | Concept | Grown from |
-|---|---|---|
-| 01 | The Circuit, refined | Concepts V2, Concept 09 (`work/research/chat-references/atlas-concepts/20261030_Ref-Atlas-Concept-09-The-Circuit.png`) |
-| 02 | The Stack | The Civic Architecture layers and the Decision Grid |
-| 03 | Night Schematic | Fine Structure and the Civic Circuit grouped overview, on a dark ground |
-| 04 | Civic Landscape | The Civic Landscape territories |
-| 05 | Loop Card as the unit | Concept 07 Loop Card (R10) and the Civic Architecture loop page |
-| 06 | Loop Lines with the Field Guide | The October 28 studio pick, with loop-route thumbnails |
-| 07 to 12 | From scratch | Chosen by Dustin from the ideation agent's directions on Board 1 |
+Final after Board 1 (DR-23). Folders sit in `work/boards/phase-2/atlas-concepts/`.
 
-Grounds (DR-17): at least four dark and four light across the twelve.
+| # | Concept | Folder | Ground | Grown from |
+|---|---|---|---|---|
+| 01 | The Circuit, refined | `01-the-circuit/` | Newsprint | Concepts V2, Concept 09 |
+| 02 | The Stack | `02-the-stack/` | White | The Civic Architecture layers and the Decision Grid |
+| 03 | Night Schematic | `03-night-schematic/` | Charcoal | Fine Structure and the grouped overview |
+| 04 | Civic Landscape | `04-civic-landscape/` | Newsprint | The Civic Landscape |
+| 05 | Loop Card as the unit | `05-loop-card/` | Newsprint | Concept 07 Loop Card and the Civic Architecture loop page |
+| 06 | Loop Lines with the Field Guide | `06-loop-lines/` | Prussian overview, Newsprint close-ups | The October 28 studio pick |
+| 07 | Great Circle | `07-great-circle/` | Newsprint | From scratch |
+| 08 | Star Atlas | `08-star-atlas/` | Charcoal | From scratch |
+| 09 | Open Atlas | `09-open-atlas/` | Newsprint with White pages | From scratch |
+| 10 | Kitchen Table | `10-kitchen-table/` | White | From scratch |
+| 11 | Flywheels and Governors | `11-flywheels-and-governors/` | Charcoal | From scratch |
+| 12 | Editorial Desk | `12-editorial-desk/` | White | From scratch, after Dustin's note on the Times (DR-23, D2-65) |
+
+Dark grounds: 03, 06, 08, 11. Light: the other eight (DR-17).
 
 ## 8. Files and the technical contract
 

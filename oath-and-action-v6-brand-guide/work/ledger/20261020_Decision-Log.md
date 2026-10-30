@@ -222,3 +222,21 @@ Dustin sent three images and four links (J. Albert Gagnier's New York Times case
 |---|---|---|
 | D2-61 | The research runs in parallel with the atlas Stage 1 work and edits none of its files | Independent inputs; no conflict |
 | D2-62 | Network check, October 30: page fetches now reach most sites through the session proxy (Q-11), but nytimes.com refuses automated requests (HTTP 403). The studio respects that refusal and makes no attempt to get around it. The research lead reads about the Times's graphics only through material published openly elsewhere (the Gagnier case study, the Times's public code repositories, talks and write-ups on other sites, search results) and marks every claim it could not read first hand | Honesty rule; brief section 2; the site's own access choice |
+
+## Board 1 answers, October 30, 2026
+
+Dustin's words: "Yes do editorial - clean, clear, great design like the New York Times. And yes to all other recs too. Please proceed and thank you."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-23 | The six concepts from scratch are Great Circle, Star Atlas, Open Atlas, Kitchen Table, Flywheels and Governors, and Editorial Desk, which replaces Honeycomb. Editorial Desk aims at "clean, clear, great design like the New York Times", in the brand's own type and palette | Dustin, October 30 |
+| DR-24 | The shared frame is approved as a set: the four levels and reading rules (civic education memo), loops drawn as routes (data visualization memo), views with a panel (interaction memo), and the type, line and ground rules (design frame memo), with D2-56 to D2-60 | Dustin, October 30 |
+| DR-25 | The data visualization system (chapter 14) starts right after Dustin picks an atlas direction, ahead of its Phase 3 slot, so charts, maps and the atlas share one visual language | Dustin, October 30 |
+
+### Stage 2, studio decisions, October 30, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-63 | Twelve makers build in parallel, one per concept, each a general-purpose agent briefed with the shared maker brief and its own concept section | One maker per concept keeps each idea whole; parallel work keeps the wait short |
+| D2-64 | Every concept carries `#overview` and `#loop-r10`; `#area-c` is the middle level wherever the concept's idea has one, so R10 is reached through area C | DR-13 asks for like-for-like close-ups; the interaction memo makes area C the step between the system and the loop |
+| D2-65 | Editorial Desk takes the Times's editorial habits (finding titles, notes inside the drawing, gray context with one dark route, generous white space) and none of its marks: no Times typefaces, wordmark, colors or layouts are copied | Rights rule, brief section 2; DR-23 asks for the quality, and the brand stays Oath & Action's |
