@@ -49,7 +49,7 @@ The subjects:
 
 ## 4. Brand rules that bind every concept
 
-**Palette** (locked, Master Brief section 3): Newsprint #DCD9D2, Charcoal #121212, Pillar Red #E63946, Prussian #1F2D5A, Stone #5D636D, Verdigris #4A7C74, White #FFFFFF. Approved derived: Deep Stone #4E535B for small secondary text on Newsprint (T4). A concept may propose a new tint only with the five conditions of brief section 10 (measured need, derived by a documented OKLab mix, one job, contrast passes, a token name), and it is marked as proposed.
+**Palette** (locked, Master Brief section 3): Newsprint #DCD9D2, Charcoal #121212, Pillar Red #E63946, Prussian #1F2D5A, Stone #5D636D, Verdigris #4A7C74, White #FFFFFF. Approved derived (T4): Deep Stone #4E535B for small secondary text on Newsprint and White, and Dim Newsprint #A3A19C for secondary text on Charcoal (7.26:1) and Prussian (5.14:1). A concept may propose a new tint only with the five conditions of brief section 10 (measured need, derived by a documented OKLab mix, one job, contrast passes, a token name), and it is marked as proposed.
 
 **Type** (locked): Inter Tight for display, Inter for reading and interface, Lora Italic for editorial quotation. Load them from Google Fonts. No other faces.
 

@@ -31,6 +31,7 @@ PALETTE = {
     'verdigris': '#4A7C74',
     'white': '#FFFFFF',
     'deep_stone': '#4E535B',   # T4: 5.49:1 on Newsprint, for small secondary text
+    'dim_newsprint': '#A3A19C',   # T4: 7.26:1 on Charcoal, 5.14:1 on Prussian, secondary text on dark grounds
 }
 
 # V7 grade words (M2) with plain glosses, and the V7 line code (M1)
@@ -87,7 +88,9 @@ def icon_svg(icon_id, edition='black', uid='', size=None, cls='cl-icon', title=N
 
     edition: 'red-black' or 'red-newsprint' carry the signature red accent; 'black' and 'newsprint' are one color.
     In a row or a menu, use the one-color edition, and only the current item keeps its red (Rule 05.3, G1-07).
-    The red in a red edition counts as signature red: mark the wrapper data-red="signature".
+    A standalone icon's red counts as signature red: mark its wrapper data-red="signature". In a row or a menu, the
+    current icon's red counts as the view's working red until Dustin decides P3: mark it data-red="working" with its
+    data-red-job (D2-58).
     """
     src = icon_path(icon_id, edition).read_text()
     src = re.sub(r'<\?xml[^>]*\?>\s*', '', src)

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Type and Line Specimen</title>
+<meta name="description" content="The shared craft layer for the twelve atlas concepts: type scale, ID chips, evidence lines, sign marks, grounds and icons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+:root{--np:#DCD9D2;--ch:#121212;--red:#E63946;--pr:#1F2D5A;--st:#5D636D;--vg:#4A7C74;--wh:#FFFFFF;--ds:#4E535B;
+--disp:"Inter Tight",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--quote:"Lora",Georgia,serif}
+*{box-sizing:border-box}
+.lede>*,.frames>*,.trow>*,.lrow>*,.signgrid>*,.grounds>*,.reds>*,.stepgrid>*,.mast>*,footer>*{min-width:0}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--np);color:var(--ch);font:400 17px/27px var(--body);font-feature-settings:"kern" 1}
+.wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+a{color:inherit}
+a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--vg);outline-offset:2px}
+p,dl,dd,figure{margin:0}
+h1,h2{margin:0}
+/* masthead */
+.mast{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;height:72px;border-bottom:1px solid var(--st)}
+.wm{grid-column:1/4;display:block;width:221px;padding:0;align-self:start;margin-top:24px}
+.wm .wm16{display:none!important}
+.runhead{grid-column:4/8;font:700 13px/18px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--ds)}
+.views{grid-column:8/13;justify-self:end;display:flex;gap:4px}
+.views a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font:600 15px/18px var(--body);text-decoration:none;color:var(--ds);border-bottom:3px solid transparent}
+.views a[aria-current]{color:var(--ch);border-bottom-color:var(--ch)}
+.views a:hover{text-decoration:underline;text-underline-offset:4px}
+.crumbs ol{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:0 8px;font:500 14px/20px var(--body);color:var(--ds)}
+.crumbs li+li::before{content:"/";margin-right:8px;color:var(--ds)}
+.crumbs a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.crumbs [aria-current]{color:var(--ch);font-weight:600}
+.lede{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:24px;padding-bottom:40px;border-bottom:1px solid var(--st)}
+.lede-main{grid-column:1/9}
+.lede-key{grid-column:9/13;padding-top:8px}
+.lede-key li{margin-bottom:6px}
+.lede-key ul{margin:8px 0 0;padding:0;list-style:none}
+/* type styles */
+.t-display{font:800 56px/60px var(--disp);letter-spacing:-.035em;margin-left:-.04em;text-wrap:balance}
+.t-headline,.headline{font:800 40px/44px var(--disp);letter-spacing:-.03em;text-wrap:balance}
+.t-deck{font:400 19px/28px var(--body)}
+.measure{max-width:40rem}
+.t-panel{font:800 22px/26px var(--disp);letter-spacing:-.02em}
+.t-panel-s{font:800 18px/22px var(--disp);letter-spacing:-.015em}
+.t-eyebrow,.eyebrow{font:700 13px/18px var(--body);letter-spacing:.06em;text-transform:uppercase}
+.t-body{font:400 17px/27px var(--body);max-width:42rem}
+.t-ptext{font:400 15px/23px var(--body);max-width:36rem}
+.t-quote{font:italic 400 22px/31px var(--quote);letter-spacing:-.005em;max-width:44rem}
+.t-figure{font:800 40px/40px var(--disp);letter-spacing:-.03em;font-feature-settings:"tnum" 1}
+.t-figure .t-legend{letter-spacing:0;margin-left:6px}
+.t-station{font:700 20px/22px var(--disp);letter-spacing:-.01em}
+.t-map{font:600 15px/18px var(--body)}
+.t-note{font:400 13px/16px var(--body);letter-spacing:.01em}
+.t-caption,.caption{font:400 14px/20px var(--body)}
+.t-legend{font:500 13px/18px var(--body)}
+.t-source{font:400 13px/18px var(--body);color:var(--ds)}
+.dim{color:var(--ds)}
+.mono{font-feature-settings:"tnum" 1;margin-top:4px}
+code{font:500 13px/18px var(--body);font-feature-settings:"tnum" 1}
+/* chips */
+.chip{display:inline-flex;align-items:stretch;min-height:26px;vertical-align:middle;white-space:nowrap;color:var(--ch)}
+.chip .k{display:inline-flex;align-items:center;padding:0 7px;background:var(--ch);color:var(--np);border:1.5px solid var(--ch);font:600 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase}
+.chip .c{display:inline-flex;align-items:center;padding:0 8px;border:1.5px solid var(--ch);border-left:0;font:700 14px/1 var(--body);font-feature-settings:"tnum" 1}
+.chip.compact{min-height:22px}
+.chip.compact .c{font-size:13px;padding:0 7px}
+.chip.on-white .k{color:var(--wh)}
+.chip.on-charcoal .k{background:var(--np);color:var(--ch);border-color:var(--np)}
+.chip.on-charcoal .c{color:var(--np);border-color:var(--np)}
+.chip.on-prussian .k{background:var(--wh);color:var(--pr);border-color:var(--wh)}
+.chip.on-prussian .c{color:var(--wh);border-color:var(--wh)}
+.chips{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.chips+.chips{margin-top:12px}
+/* sections */
+.sec{padding:56px 0;border-bottom:1px solid var(--st)}
+.sec .headline{margin:8px 0 12px}
+.sec .t-deck{margin-bottom:32px}
+.frames{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+.fig-wide{grid-column:1/9}
+.fig-phone{grid-column:9/13}
+.frames figcaption{margin-top:12px;max-width:38rem}
+.frame .z{stroke:var(--st);stroke-width:1}
+.frame .blk2{opacity:1}
+.frame .fold{stroke:var(--ch);stroke-width:1}
+.frame .leader{fill:none;stroke:var(--st);stroke-width:1}
+.frame .lab{font:500 13px/18px var(--body);fill:var(--ch)}
+.frame .lab.in{font-weight:600}
+.scroll{overflow-x:auto;max-width:100%}
+.tlist{border-top:1px solid var(--st)}
+.trow{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:20px 0;border-bottom:1px solid var(--st);align-items:baseline}
+.tspec{grid-column:1/4}
+.tsample{grid-column:4/13}
+.tspec .t-legend{margin-top:4px}
+/* lines */
+.ltable{border-top:1px solid var(--st)}
+.lrow{display:grid;grid-template-columns:3fr 3fr 3fr 3fr;column-gap:24px;padding:16px 0;border-bottom:1px solid var(--st);align-items:center}
+.lrow-head{padding:12px 0}
+.lspec .t-legend{margin-top:4px}
+.lcell svg{display:block}
+.lcell .t-legend{margin-top:2px}
+.rec{display:inline-block;width:7px;height:7px;background:var(--ch);margin-right:7px;vertical-align:2px}
+.tinyrow{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;margin-top:20px}
+.tiny{display:flex;align-items:center;gap:8px}
+/* signs */
+.stepgrid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+.stepwrap{grid-column:1/9;background:var(--wh);padding:20px 24px 12px}
+.stepwrap svg{display:block;margin:0 auto}
+.stepkey{grid-column:9/13;padding-top:4px}
+.stepkey ul{list-style:none;margin:8px 0 16px;padding:0}
+.stepkey li{padding:6px 0;border-top:1px solid var(--st)}
+.stepkey strong{font-weight:700}
+.stepfig .st{font:700 20px/22px var(--disp);letter-spacing:-.01em}
+.stepfig .nd{font:700 14px/1 var(--body);font-feature-settings:"tnum" 1}
+.stepfig .mp{font:600 15px/18px var(--body);paint-order:stroke;stroke:var(--wh);stroke-width:4px;stroke-linejoin:round}
+.stepfig .nt{font:400 13px/16px var(--body);letter-spacing:.01em}
+.svgchip .sc-k{font:600 13px/1 var(--body);letter-spacing:.06em}
+.svgchip .sc-c{font:700 13px/1 var(--body);font-feature-settings:"tnum" 1}
+.signgrid{display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px;row-gap:32px;margin-top:40px}
+.sg .t-legend{margin:4px 0 12px}
+.sg svg{display:block;margin-bottom:8px}
+.arrows{display:flex;flex-direction:column;gap:4px}
+.ar .t-legend{margin:0 0 4px}
+.redrow{margin-top:40px}
+.redrow>.t-legend{margin:4px 0 12px}
+.reds{display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px}
+.redsw svg{display:block;margin-bottom:8px}
+/* grounds */
+.grounds{display:grid;grid-template-columns:repeat(4,1fr);column-gap:24px;row-gap:24px}
+.ground{padding:24px;min-height:100%}
+.g-newsprint{box-shadow:inset 0 0 0 1px var(--st)}
+.ground .gsub{margin:6px 0 16px}
+.ground .chips{margin-bottom:16px}
+.gratios div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;border-top:1px solid currentColor}
+.gratios{margin-bottom:16px}
+.gratios dd{font-feature-settings:"tnum" 1}
+.ground svg{display:block}
+.g-charcoal .t-legend,.g-prussian .t-legend,.g-charcoal .t-ptext,.g-prussian .t-ptext{font-weight:500}
+.g-newsprint .gsub,.g-white .gsub{color:var(--ds)}
+.icons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 4px}
+.ic{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.ic .icw{display:block;width:64px;height:64px}
+.ic.cur .icl{font-weight:700;padding-bottom:4px;border-bottom:3px solid currentColor}
+.ic .icl2{padding-bottom:7px}
+footer{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:16px 0 40px}
+footer .t-source{grid-column:1/9}
+footer .right{grid-column:9/13;text-align:right}
+@media (max-width:1180px){
+ .signgrid{grid-template-columns:repeat(2,1fr)}
+ .grounds,.reds{grid-template-columns:repeat(2,1fr)}
+ .lrow{grid-template-columns:1fr 1fr} .lrow .lspec{grid-column:1/-1} .lrow-head{display:none}
+}
+@media (max-width:600px){
+ .wrap{padding:0 20px}
+ .mast{grid-template-columns:repeat(4,1fr);column-gap:16px;height:auto;padding:20px 0 0;row-gap:16px;border-bottom:0}
+ .wm{grid-column:1/-1;width:152px;margin-top:0}
+ .wm .wm24{display:none!important} .wm .wm16{display:block!important}
+ .runhead{display:none}
+ .views{grid-column:1/-1;justify-self:stretch;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 16px;border-bottom:1px solid var(--st)}
+ .views a{padding:0}
+ .lede{grid-template-columns:1fr;row-gap:24px} .lede-main,.lede-key{grid-column:1/-1}
+ .t-display{font-size:36px;line-height:40px;letter-spacing:-.03em}
+ .t-headline,.headline{font-size:30px;line-height:34px}
+ .t-deck{font-size:17px;line-height:25px}
+ .t-panel{font-size:20px;line-height:24px}
+ .t-body{font-size:16px;line-height:25px}
+ .t-quote{font-size:19px;line-height:27px}
+ .t-figure{font-size:32px;line-height:32px}
+ .t-station{font-size:18px;line-height:20px}
+ .frames,.trow,.stepgrid{grid-template-columns:1fr} .fig-wide,.fig-phone,.tspec,.tsample,.stepwrap,.stepkey{grid-column:1/-1}
+ .stepwrap{padding:16px} .stepkey{margin-top:16px}
+ .fig-phone{margin-top:32px} .tsample{margin-top:12px}
+ .lrow{grid-template-columns:1fr}
+ .signgrid,.grounds,.reds{grid-template-columns:1fr}
+ .sec{padding:40px 0}
+ footer{grid-template-columns:1fr;row-gap:8px} footer .t-source,footer .right{grid-column:1/-1;text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+<header class="mast">
+  <a class="wm" href="#top" data-red="signature"><svg class="wm24" width="221" height="24" role="img" aria-label="Oath &amp; Action" style="color:#121212;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221 24"><path fill="currentColor" d="M10.508 23Q7.29 23 4.919 21.87Q2.548 20.741 1.275 18.478Q0 15.827 0 12.016Q0 8.189 1.275 5.522Q2.548 3.248 4.919 2.124Q7.29 1 10.508 1Q13.71 1 16.075 2.124Q18.44 3.248 19.719 5.522Q21 8.189 21 12.016Q21 15.827 19.719 18.488Q18.44 20.752 16.075 21.876Q13.71 23 10.508 23ZM189.95 23Q186.898 23 184.312 21.87Q181.726 20.741 180.231 18.478Q178.732 15.827 178.732 12.016Q178.732 8.189 180.231 5.522Q181.726 3.248 184.312 2.124Q186.898 1 189.95 1Q192.674 1 194.869 2.124Q197.061 3.248 198.342 5.719Q199.623 8.189 199.623 12.016Q199.623 15.827 198.342 18.488Q197.061 20.752 194.869 21.876Q192.674 23 189.95 23ZM220.763 1V23H216.529L208.24 10.302H208.079V23H202.846V1H207.365L215.598 13.668H215.763V1ZM27.318 23H21.578L28.623 1H36.318L43.579 23H37.579L36.116 18H28.885ZM111.506 23H106.211L113.464 1H120.399L128.217 23H122.219L120.817 18H113.271ZM60.847 23V1H66.029V10H74.847V1H79.847V23H74.847V14H66.029V23ZM138.741 23Q135.714 23 133.325 21.87Q130.933 20.741 129.59 18.414Q128.329 15.437 128.329 11.895Q128.329 8.334 129.602 5.545Q130.965 3.248 133.369 2.124Q135.774 1 138.741 1Q140.764 1 142.488 1.475Q144.212 1.952 145.522 2.866Q146.833 3.781 147.644 5.131Q148.452 6.822 148.662 9H143.207Q143.102 8.089 142.765 7.35Q142.428 6.609 141.865 6.09Q141.305 5.569 140.554 5.283Q139.807 5 138.875 5Q137.259 5 136.089 5.87Q134.921 6.74 134.291 8.373Q133.662 9.875 133.662 11.895Q133.662 13.969 134.298 15.481Q134.935 17.236 136.096 18.118Q137.259 19 138.862 19Q139.746 19 140.481 18.729Q141.213 18.459 141.776 17.943Q142.339 17.428 142.705 16.686Q143.073 15.945 143.207 15H148.662Q148.512 16.731 147.807 18.425Q147.103 19.814 145.853 20.811Q144.6 21.806 142.819 22.404Q141.035 23 138.741 23ZM149.707 5V1H168.016V5H161.362V23H155.977V5ZM40.5 5V1H58.808V5H52.154V23H47.052V5ZM10.508 19Q12.221 19 13.455 18.191Q14.688 17.382 15.344 15.827Q16 14.272 16 12.016Q16 9.745 15.344 8.18Q14.688 6.618 13.455 5.809Q12.221 5 10.508 5Q8.795 5 7.562 5.809Q6.331 6.618 5.666 8.18Q5 9.745 5 12.016Q5 14.272 5.666 15.827Q6.331 17.382 7.562 18.191Q8.795 19 10.508 19ZM189.95 19Q191.408 19 192.457 18.191Q193.507 17.382 194.065 15.827Q194.623 14.272 194.623 12.016Q194.623 9.745 194.065 8.18Q193.507 6.618 192.457 5.809Q191.408 5 189.906 5Q188.404 5 187.17 5.809Q185.937 6.618 185.274 8.18Q184.608 9.745 184.608 12.016Q184.608 14.272 185.274 15.827Q185.937 17.382 187.17 18.191Q188.404 19 189.95 19ZM175.732 1V23H170.732V1ZM119.696 14 117.566 6.4H117.364L114.682 14ZM34.946 14 32.723 6.4H32.521L30.139 14Z"/><path fill="var(--amp,#E63946)" d="M89.6 0H93.6C96 0 97 2 97 4.4V6.6C97 8.8 95.6 10.6 94.3 12L99 16V14.2C99 13.5 98.6 13 98.2 13H98V11H102V14.6Q102 16.7 100.8 18.2C101.6 20 102.6 20.9 104 21V24H102.4C100.6 24 99.2 23 98 21.8C96.6 23.3 94.6 24 92 24H90.4C86 24 83 21.6 83 18.6V17.6C83 14.8 85.6 13.2 89.1 12C87.4 10.6 86 8.6 86 6.6V4.6C86 1.8 87.6 0 89.6 0ZM90.6 14.3C89 14.8 88 15.6 88 16.8V18.6C88 20 88.9 21 90.4 21H92.8C94 21 95 20.8 95.9 20.2ZM91.5 3C90.6 3 90 3.8 90 5V6.4C90 8 91 9.4 92.2 10.4C92.8 9.4 93 8.3 93 7V5C93 3.8 92.4 3 91.5 3Z"/></svg>
+<svg class="wm16" width="152" height="16" role="img" aria-label="Oath &amp; Action" style="color:#121212;display:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 16"><path fill="currentColor" d="M6.505 15Q4.457 15 2.993 14.153Q1.529 13.306 0.765 11.702Q0 10.187 0 8.009Q0 5.823 0.765 4.298Q1.529 2.686 2.993 1.843Q4.457 1 6.505 1Q8.543 1 10.003 1.843Q11.464 2.686 12.231 4.298Q13 5.823 13 8.009Q13 10.187 12.231 11.707Q11.464 13.314 10.003 14.157Q8.543 15 6.505 15ZM131.311 15Q129.667 15 128.227 14.153Q126.787 13.306 125.835 11.702Q124.882 10.187 124.882 8.009Q124.882 5.823 125.835 4.298Q126.787 2.686 128.227 1.843Q129.667 1 131.311 1Q132.945 1 134.262 1.843Q135.577 2.686 136.346 4.254Q137.114 5.823 137.114 8.009Q137.114 10.187 136.346 11.707Q135.577 13.314 134.262 14.157Q132.945 15 131.311 15ZM76.312 15H73.055L77.291 1H81.862L87.074 15H83.076L82.057 12H77.158ZM18.636 15H14.77L19.623 1H23.637L28.772 15H24.772L23.901 12H19.461ZM151.17 1V15H148.629L143.676 6.919H143.584V15H140.456V1H143.175L148.071 9.061H148.17V1ZM42.042 15V1H45.493V6H51.042V1H54.042V15H51.042V9H45.493V15ZM95.06 15Q93.042 15 91.449 14.153Q89.855 13.306 88.932 11.707Q88.008 10.219 88.008 7.93Q88.008 5.667 88.941 4.273Q89.876 2.686 91.479 1.843Q93.082 1 95.06 1Q96.409 1 97.558 1.356Q98.707 1.714 99.581 2.399Q100.455 3.086 100.995 4.065Q101.534 4.911 101.674 6H98.038Q97.968 5.545 97.743 5.175Q97.518 4.804 97.143 4.545Q96.769 4.285 96.269 4.142Q95.77 4 95.15 4Q94.072 4 93.292 4.435Q92.514 4.87 92.094 5.686Q91.674 6.583 91.674 7.93Q91.674 9.313 92.098 10.241Q92.522 11.118 93.297 11.559Q94.072 12 95.141 12Q95.73 12 96.22 11.865Q96.708 11.729 97.083 11.472Q97.458 11.214 97.703 10.843Q97.948 10.472 98.038 10H101.674Q101.574 10.865 101.104 11.712Q100.635 12.61 99.801 13.358Q98.966 14.105 97.779 14.553Q96.589 15 95.06 15ZM103.27 4V1H115.341V4H111.001V15H107.084V4ZM27.846 4V1H38.989V4H34.649V15H31.263V4ZM6.505 12Q7.595 12 8.38 11.538Q9.165 11.075 9.583 10.187Q10 9.298 10 8.009Q10 6.711 9.583 5.817Q9.165 4.925 8.38 4.462Q7.595 4 6.505 4Q5.415 4 4.63 4.462Q3.847 4.925 3.424 5.817Q3 6.711 3 8.009Q3 9.298 3.424 10.187Q3.847 11.075 4.63 11.538Q5.415 12 6.505 12ZM121.33 1V15H118.33V1ZM131.311 12Q132.185 12 132.815 11.538Q133.445 11.075 133.78 10.187Q134.115 9.298 134.115 8.009Q134.115 6.711 133.78 5.817Q133.445 4.925 132.815 4.462Q132.185 4 131.311 4Q130.436 4 129.806 4.462Q129.177 4.925 128.838 5.817Q128.498 6.711 128.498 8.009Q128.498 9.298 128.838 10.187Q129.177 11.075 129.806 11.538Q130.436 12 131.311 12ZM81.038 9 79.449 4.323H79.324L78.005 9ZM23.031 9 21.673 4.323H21.572L20.286 9Z"/><path fill="var(--amp,#E63946)" d="M61.4 0H64.2C65.9 0 67 1.2 67 2.8V4.2C67 5.6 65.9 6.9 64.6 8.1L68 10.9V9.6Q68 9 67.4 9H67V7H70V9.8C70 10.8 69.6 11.5 69.1 12.1C69.6 13.3 70.2 13.9 71 14V16H69.8C68.7 16 67.8 15.3 67.2 14.6C66.2 15.6 64.8 16 63.2 16H61.4C58.8 16 57 14.5 57 12.4V11.6C57 9.8 58.6 8.8 60.8 8C59.7 7.1 59 5.8 59 4.6V3C59 1.2 60 0 61.4 0ZM62.1 9.4C60.8 9.7 60 10.2 60 10.9V12.3C60 13.3 60.6 14 61.6 14H63.5C64.3 14 65.1 13.8 65.7 13.3ZM62.5 2C61.6 2 61 2.6 61 3.5V4.4C61 5.4 61.9 6.3 62.8 7C63.6 6.1 64 5.3 64 4.3V3.5C64 2.6 63.4 2 62.5 2Z"/></svg>
+</a>
+  <p class="runhead">Atlas concepts / Shared frame</p>
+  <nav class="views" aria-label="Sections">
+    <a href="#frame" aria-current="page">Frame</a><a href="#type">Type</a><a href="#lines">Lines</a><a href="#signs">Signs</a><a href="#grounds">Grounds</a>
+  </nav>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="#top">Atlas concepts</a></li><li><a href="#top">Shared frame</a></li><li aria-current="page">Type and line specimen</li></ol></nav>
+<main>
+<div class="lede">
+  <div class="lede-main">
+    <h1 class="t-display">The atlas type and line specimen</h1>
+    <p class="t-deck measure" style="margin-top:16px">Twelve concepts share these sizes, strokes, marks and grounds, so each one differs only in its big idea. Everything here sits at actual size for a 1440 px screen, and the 390 px sizes switch in on a phone. Read it beside the design frame memo of October 30, 2026.</p>
+  </div>
+  <div class="lede-key">
+    <p class="eyebrow">This page holds</p>
+    <ul class="t-legend">
+      <li>The page frame at 1440 and 390 px</li>
+      <li>Sixteen type styles and the ID chip</li>
+      <li>Five grades at 2, 3 and 6 px</li>
+      <li>Sign tags, arrowheads, delay, authority</li>
+      <li>Four grounds with measured ratios</li>
+    </ul>
+  </div>
+</div>
+
+<section id="frame" class="sec" aria-labelledby="h-frame">
+  <p class="eyebrow">01 Page frame</p>
+  <h2 class="headline" id="h-frame">The page frame at 1440 and 390 px</h2>
+  <div class="frames">
+    <figure class="fig-wide"><div class="scroll" role="region" tabindex="0" aria-label="Frame at 1440 px"><svg data-view="frame-1440" class="frame" width="750" height="342" viewBox="0 -1 750 342" role="img" aria-label="Page frame at 1440 px, drawn at one third size: masthead, breadcrumb, headline and key, drawing field, footer."><rect x="0" y="0" width="480.0" height="320.0" fill="#DCD9D2" class="z"/><rect x="21.3" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="58.4" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="95.6" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="132.7" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="169.8" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="206.9" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="244.0" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="281.1" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="318.2" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="355.3" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="392.4" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="429.6" y="0" width="29.1" height="320.0" fill="#FFFFFF"/><rect x="21.3" y="8.0" width="73.7" height="8.0" class="blk" fill="#121212"/><rect x="132.7" y="10.0" width="100.0" height="4.0" class="blk2" fill="#4E535B"/><rect x="344.9" y="9.3" width="113.8" height="5.3" class="blk2" fill="#4E535B"/><rect x="21.3" y="0.0" width="437.3" height="24.0" class="z" fill="none"/><rect x="21.3" y="29.3" width="214.7" height="6.0" class="z" fill="none"/><rect x="21.3" y="40.0" width="288.9" height="60.0" class="z" fill="none"/><rect x="318.2" y="40.0" width="140.4" height="60.0" class="z" fill="none"/><rect x="21.3" y="108.0" width="437.3" height="184.0" class="z" fill="none"/><rect x="21.3" y="302.7" width="437.3" height="13.3" class="z" fill="none"/><line x1="0" x2="480.0" y1="300.0" y2="300.0" class="fold"/><path d="M460.7 12.0H490.0L502.0 12.0H510.0" class="leader"/><text x="514.0" y="12" dominant-baseline="central" class="lab">Masthead, 72 px</text><path d="M460.7 32.3H490.0L502.0 34.0H510.0" class="leader"/><text x="514.0" y="34" dominant-baseline="central" class="lab">Breadcrumb</text><path d="M482.0 300.0H490.0L502.0 300.0H510.0" class="leader"/><text x="514.0" y="300" dominant-baseline="central" class="lab">Fold at 900 px</text><path d="M460.7 309.3H490.0L502.0 324.0H510.0" class="leader"/><text x="514.0" y="324" dominant-baseline="central" class="lab">Footer and source line</text><text x="29.3" y="56.0" class="lab in">Headline and deck</text><text x="29.3" y="74.0" class="lab in">columns 1 to 8</text><text x="326.2" y="56.0" class="lab in">Key, columns 9 to 12</text><text x="29.3" y="124.0" class="lab in">Drawing field, 12 columns</text></svg></div>
+      <figcaption class="caption">1440 px: 12 columns of 87.33 px, 24 px gutters, 64 px margins. White bands are the columns. The Charcoal block is where the wordmark sits; a schematic never draws the mark itself below its minimum.</figcaption></figure>
+    <figure class="fig-phone"><div class="scroll" role="region" tabindex="0" aria-label="Frame at 390 px"><svg data-view="frame-390" class="frame" width="380" height="283" viewBox="0 -1 380 283" role="img" aria-label="Page frame at 390 px, drawn at one third size: masthead, view switch, back link, headline, drawing region, the lines in words."><rect x="0" y="0" width="130.0" height="281.3333333333333" fill="#DCD9D2" class="z"/><rect x="6.7" y="0" width="25.2" height="281.3" fill="#FFFFFF"/><rect x="37.2" y="0" width="25.2" height="281.3" fill="#FFFFFF"/><rect x="67.7" y="0" width="25.2" height="281.3" fill="#FFFFFF"/><rect x="98.2" y="0" width="25.2" height="281.3" fill="#FFFFFF"/><rect x="6.7" y="6.7" width="50.7" height="5.3" class="blk" fill="#121212"/><rect x="6.7" y="0.0" width="116.7" height="18.7" class="z" fill="none"/><rect x="6.7" y="20.0" width="116.7" height="14.7" class="z" fill="none"/><rect x="6.7" y="37.3" width="66.7" height="8.0" class="z" fill="none"/><rect x="6.7" y="49.3" width="116.7" height="50.7" class="z" fill="none"/><rect x="6.7" y="105.3" width="116.7" height="144.0" class="z" fill="none"/><rect x="6.7" y="254.7" width="116.7" height="26.7" class="z" fill="none"/><path d="M125.3 9.3H140.0L152.0 8.0H160.0" class="leader"/><text x="164.0" y="8" dominant-baseline="central" class="lab">Masthead, 56 px</text><path d="M125.3 26.7H140.0L152.0 28.0H160.0" class="leader"/><text x="164.0" y="28" dominant-baseline="central" class="lab">View switch, 44 px targets</text><path d="M125.3 41.3H140.0L152.0 48.0H160.0" class="leader"/><text x="164.0" y="48" dominant-baseline="central" class="lab">Back link</text><path d="M125.3 74.7H140.0L152.0 74.0H160.0" class="leader"/><text x="164.0" y="74" dominant-baseline="central" class="lab">Headline and deck</text><path d="M125.3 177.3H140.0L152.0 177.0H160.0" class="leader"/><text x="164.0" y="177" dominant-baseline="central" class="lab">Drawing region, scrolls inside</text><path d="M125.3 268.0H140.0L152.0 268.0H160.0" class="leader"/><text x="164.0" y="268" dominant-baseline="central" class="lab">The lines in words</text></svg></div>
+      <figcaption class="caption">390 px: 4 columns of 75.5 px, 16 px gutters, 20 px margins. One third scale, like the frame beside it.</figcaption></figure>
+  </div>
+</section>
+
+<section id="type" class="sec" aria-labelledby="h-type">
+  <p class="eyebrow">02 Type scale</p>
+  <h2 class="headline" id="h-type">Type for atlas pages</h2>
+  <p class="t-deck measure">Three faces and sixteen styles. Nothing on the page sets under 13 px, measured at its rendered size, SVG text included. Every sample below is text from the model, except the caption and the eyebrow.</p>
+  <div class="tlist">
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Display</p><p class="t-legend dim">Overview headline</p>
+        <p class="t-legend mono">Inter Tight 800<br>1440: 56/60 px · 390: 36/40 px<br>Tracking −0.035 em</p></div>
+      <div class="tsample"><p class="t-display">Who Do They Answer To?</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Headline</p><p class="t-legend dim">Close-up and section titles</p>
+        <p class="t-legend mono">Inter Tight 800<br>1440: 40/44 px · 390: 30/34 px<br>Tracking −0.03 em</p></div>
+      <div class="tsample"><p class="t-headline">Safe seats shift accountability to small primary electorates</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Deck</p><p class="t-legend dim">Under a headline, 62 characters a line at most</p>
+        <p class="t-legend mono">Inter 400<br>1440: 19/28 px · 390: 17/25 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-deck">Whether officials can lose their seats, and who controls the rules of elections.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Panel head</p><p class="t-legend dim">Cards, panels, the key</p>
+        <p class="t-legend mono">Inter Tight 800<br>1440: 22/26 px · 390: 20/24 px<br>Tracking −0.02 em</p></div>
+      <div class="tsample"><p class="t-panel">Electoral competition</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Eyebrow</p><p class="t-legend dim">Section labels, in capitals</p>
+        <p class="t-legend mono">Inter 700<br>1440: 13/18 px · 390: 13/18 px<br>Tracking +0.06 em</p></div>
+      <div class="tsample"><p class="t-eyebrow">Where a reform acts</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Body</p><p class="t-legend dim">Reading text in panels and notes</p>
+        <p class="t-legend mono">Inter 400<br>1440: 17/27 px · 390: 16/25 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-body">In a safe seat, the primary decides who wins, and few people vote in it. With little threat in November, officeholders answer to that smaller electorate and face less pressure from the wider public. Officials who cannot easily be removed can then write election rules that keep seats safe.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Panel text</p><p class="t-legend dim">Short text inside cards</p>
+        <p class="t-legend mono">Inter 400<br>1440: 15/23 px · 390: 15/23 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-ptext">Seat safety also comes from where voters live, and the claim that primary reform makes legislators more moderate is contested, so the loop concerns accountability more than ideology.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Quote</p><p class="t-legend dim">V7 sentences quoted whole</p>
+        <p class="t-legend mono">Lora Italic 400<br>1440: 22/31 px · 390: 19/27 px<br>Tracking −0.005 em</p></div>
+      <div class="tsample"><p class="t-quote">“Seats with little electoral competition raise how often the primary decides the winner, which lowers the risk of losing office; lower risk raises officeholders&#x27; control over election rules, which raises the number of seats with little electoral competition.”</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Figure</p><p class="t-legend dim">Counts printed from the model</p>
+        <p class="t-legend mono">Inter Tight 800, tabular<br>1440: 40/40 px · 390: 32/32 px<br>Tracking −0.03 em</p></div>
+      <div class="tsample"><p class="t-figure"><span data-count="connections">118</span> <span class="t-legend">connections</span></p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Station label</p><p class="t-legend dim">Diagram size 1: variables in a close-up</p>
+        <p class="t-legend mono">Inter Tight 700<br>1440: 20/22 px · 390: 18/20 px<br>Tracking −0.01 em</p></div>
+      <div class="tsample"><p class="t-station">Primary decisiveness</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Map label</p><p class="t-legend dim">Diagram size 2: variables on a map, connection names</p>
+        <p class="t-legend mono">Inter 600<br>1440: 15/18 px · 390: 15/18 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-map">Decisive primaries reduce general-election pressure</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Note</p><p class="t-legend dim">Diagram size 3: grade, delay, counts on wires</p>
+        <p class="t-legend mono">Inter 400; 500 on dark grounds<br>1440: 13/16 px · 390: 13/16 px<br>Tracking +0.01 em</p></div>
+      <div class="tsample"><p class="t-note">Well supported: strong research evidence. Under 2 years.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Caption</p><p class="t-legend dim">Under a drawing</p>
+        <p class="t-legend mono">Inter 400<br>1440: 14/20 px · 390: 14/20 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-caption">The loop’s own route at full size. Tags show each step’s sign and the way it runs.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Legend</p><p class="t-legend dim">Key entries</p>
+        <p class="t-legend mono">Inter 500<br>1440: 13/18 px · 390: 13/18 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-legend">Dashed: Plausible, some evidence</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">Source line</p><p class="t-legend dim">Footer of every view</p>
+        <p class="t-legend mono">Inter 400, Deep Stone on Newsprint<br>1440: 13/18 px · 390: 13/18 px<br>Tracking 0</p></div>
+      <div class="tsample"><p class="t-source">Who Do They Answer To? Systems Atlas V7, snapshot October 15, 2026. <span data-count="variables">51</span> variables, <span data-count="connections">118</span> connections, <span data-count="loops">23</span> loops, <span data-count="reforms">50</span> reforms.</p></div>
+    </div>
+    <div class="trow">
+      <div class="tspec"><p class="t-panel-s">ID chip</p><p class="t-legend dim">Every ID in text, panels, keys and lists (Gate 1, M3)</p>
+        <p class="t-legend mono">Type word: Inter 600, 13 px, capitals, +0.06 em, in an ink cell<br>Code: Inter 700, 14 px, tabular, in a 1.5 px outlined cell<br>26 px tall; compact 22 px with a 13 px code</p></div>
+      <div class="tsample"><p class="chips"><span class="chip "><span class="k">Variable</span><span class="c">C1</span></span> <span class="chip "><span class="k">Loop</span><span class="c">R10</span></span> <span class="chip "><span class="k">Reform</span><span class="c">R-01</span></span> <span class="chip "><span class="k">Connection</span><span class="c">L25</span></span> <span class="chip "><span class="k">Area</span><span class="c">C</span></span></p><p class="chips"><span class="chip compact"><span class="k">Variable</span><span class="c">C2</span></span> <span class="chip compact"><span class="k">Loop</span><span class="c">B4</span></span> <span class="chip compact"><span class="k">Reform</span><span class="c">R-01</span></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lines" class="sec" aria-labelledby="h-lines">
+  <p class="eyebrow">03 Evidence lines</p>
+  <h2 class="headline" id="h-lines">The V7 evidence code at three weights</h2>
+  <p class="t-deck measure">Each pattern is a multiple of its line’s width, so a texture keeps its shape from the overview to the lit route. The build stretches each pattern a little so every line starts and ends on ink. Charcoal on Newsprint, actual size.</p>
+  <div class="ltable" role="group" aria-label="Evidence line textures">
+    <div class="lrow lrow-head"><div class="lspec"><p class="t-legend dim">Grade, gloss and texture</p></div><div class="lhead"><p class="t-panel-s">2 px</p><p class="t-legend dim">Overview and context lines</p></div><div class="lhead"><p class="t-panel-s">3 px</p><p class="t-legend dim">A step in a close-up</p></div><div class="lhead"><p class="t-panel-s">6 px</p><p class="t-legend dim">The lit route</p></div></div>
+    <div class="lrow"><div class="lspec"><p class="t-map"><span class="rec" aria-hidden="true"></span>Documented</p><p class="t-legend dim">On the public record. Solid. V7 value <code>documented</code></p></div><div class="lcell"><svg data-view="line-documented-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Documented, solid line at 2 px"><path d="M4.00 20H282.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M282.00 16.00L292.00 20L282.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div><div class="lcell"><svg data-view="line-documented-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Documented, solid line at 3 px"><path d="M4.00 20.5H279.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M279.00 15.00L292.00 20.5L279.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div><div class="lcell"><svg data-view="line-documented-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Documented, solid line at 6 px"><path d="M4.00 20H270.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt"/><path d="M270.00 11.00L292.00 20L270.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div></div><div class="lrow"><div class="lspec"><p class="t-map">Well supported</p><p class="t-legend dim">Strong research evidence. Solid. V7 value <code>well-supported</code></p></div><div class="lcell"><svg data-view="line-well-supported-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Well supported, solid line at 2 px"><path d="M4.00 20H282.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M282.00 16.00L292.00 20L282.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div><div class="lcell"><svg data-view="line-well-supported-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Well supported, solid line at 3 px"><path d="M4.00 20.5H279.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M279.00 15.00L292.00 20.5L279.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div><div class="lcell"><svg data-view="line-well-supported-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Well supported, solid line at 6 px"><path d="M4.00 20H270.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt"/><path d="M270.00 11.00L292.00 20L270.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern none</p></div></div><div class="lrow"><div class="lspec"><p class="t-map">Plausible</p><p class="t-legend dim">Some evidence. Dashed. V7 value <code>plausible</code></p></div><div class="lcell"><svg data-view="line-plausible-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Plausible, dashed line at 2 px"><path d="M4.00 20H282.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt" stroke-dasharray="8.176 4.088"/><path d="M282.00 16.00L292.00 20L282.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 8 4</p></div><div class="lcell"><svg data-view="line-plausible-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Plausible, dashed line at 3 px"><path d="M4.00 20.5H279.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt" stroke-dasharray="11.702 5.851"/><path d="M279.00 15.00L292.00 20.5L279.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 12 6</p></div><div class="lcell"><svg data-view="line-plausible-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Plausible, dashed line at 6 px"><path d="M4.00 20H270.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt" stroke-dasharray="23.130 11.565"/><path d="M270.00 11.00L292.00 20L270.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 24 12</p></div></div><div class="lrow"><div class="lspec"><p class="t-map">Contested</p><p class="t-legend dim">Evidence disputed. Dash-dot. V7 value <code>plausible_contested</code></p></div><div class="lcell"><svg data-view="line-plausible_contested-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Contested, dash-dot line at 2 px"><path d="M4.00 20H282.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt" stroke-dasharray="7.943 2.979 1.986 2.979"/><path d="M282.00 16.00L292.00 20L282.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 8 3 2 3</p></div><div class="lcell"><svg data-view="line-plausible_contested-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Contested, dash-dot line at 3 px"><path d="M4.00 20.5H279.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt" stroke-dasharray="11.957 4.484 2.989 4.484"/><path d="M279.00 15.00L292.00 20.5L279.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 12 4.5 3 4.5</p></div><div class="lcell"><svg data-view="line-plausible_contested-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Contested, dash-dot line at 6 px"><path d="M4.00 20H270.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt" stroke-dasharray="24.182 9.068 6.045 9.068"/><path d="M270.00 11.00L292.00 20L270.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 24 9 6 9</p></div></div><div class="lrow"><div class="lspec"><p class="t-map">Hypothesis</p><p class="t-legend dim">Untested. Dotted. V7 value <code>hypothesis</code></p></div><div class="lcell"><svg data-view="line-hypothesis-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Hypothesis, dotted line at 2 px"><path d="M5.00 20H279.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 4.982"/><path d="M282.00 16.00L292.00 20L282.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 0 5, round caps</p></div><div class="lcell"><svg data-view="line-hypothesis-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Hypothesis, dotted line at 3 px"><path d="M5.50 20.5H274.50" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="round" stroke-dasharray="0 7.472"/><path d="M279.00 15.00L292.00 20.5L279.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 0 7.5, round caps</p></div><div class="lcell"><svg data-view="line-hypothesis-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Hypothesis, dotted line at 6 px"><path d="M7.00 20H261.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 14.941"/><path d="M270.00 11.00L292.00 20L270.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">Pattern 0 15, round caps</p></div></div><div class="lrow"><div class="lspec"><p class="t-map">Conceptual step</p><p class="t-legend dim">No numbered connection yet, as in the sketched loops B2, B3 and R9. Hollow line (Gate 1, M1)</p></div><div class="lcell"><svg data-view="line-conceptual-2" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Conceptual step, hollow line at 2 px"><path d="M4 20H282" stroke="#121212" stroke-width="4" fill="none"/><path d="M4 20H282" stroke="#DCD9D2" stroke-width="2" fill="none"/><path d="M282 16.0L292 20L282 24.0Z" fill="#121212"/></svg><p class="t-legend dim">Rails 1 px, gap 2 px</p></div><div class="lcell"><svg data-view="line-conceptual-3" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Conceptual step, hollow line at 3 px"><path d="M4 20.5H279" stroke="#121212" stroke-width="5" fill="none"/><path d="M4 20.5H279" stroke="#DCD9D2" stroke-width="3" fill="none"/><path d="M279 15.0L292 20.5L279 26.0Z" fill="#121212"/></svg><p class="t-legend dim">Rails 1 px, gap 3 px</p></div><div class="lcell"><svg data-view="line-conceptual-6" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Conceptual step, hollow line at 6 px"><path d="M4 20H270" stroke="#121212" stroke-width="10" fill="none"/><path d="M4 20H270" stroke="#DCD9D2" stroke-width="6" fill="none"/><path d="M270 11.0L292 20L270 29.0Z" fill="#121212"/></svg><p class="t-legend dim">Rails 2 px, gap 6 px</p></div></div>
+  </div>
+  <div class="tinyrow"><p class="t-legend dim">The shortest run a texture may take: three full periods, here 56 px at 2 px.</p><div class="tiny"><svg data-view="tiny-well-supported" width="64" height="20" viewBox="0 0 64 20" role="img" aria-label="Well supported at 2 px in a 56 px run"><path d="M2.00 10H52.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M52.00 6.00L62.00 10L52.00 14.00Z" fill="#121212"/></svg><span class="t-legend">Well supported</span></div><div class="tiny"><svg data-view="tiny-plausible" width="64" height="20" viewBox="0 0 64 20" role="img" aria-label="Plausible at 2 px in a 56 px run"><path d="M2.00 10H52.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt" stroke-dasharray="7.143 3.571"/><path d="M52.00 6.00L62.00 10L52.00 14.00Z" fill="#121212"/></svg><span class="t-legend">Plausible</span></div><div class="tiny"><svg data-view="tiny-plausible_contested" width="64" height="20" viewBox="0 0 64 20" role="img" aria-label="Contested at 2 px in a 56 px run"><path d="M2.00 10H52.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt" stroke-dasharray="7.143 2.679 1.786 2.679"/><path d="M52.00 6.00L62.00 10L52.00 14.00Z" fill="#121212"/></svg><span class="t-legend">Contested</span></div><div class="tiny"><svg data-view="tiny-hypothesis" width="64" height="20" viewBox="0 0 64 20" role="img" aria-label="Hypothesis at 2 px in a 56 px run"><path d="M3.00 10H49.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 5.111"/><path d="M52.00 6.00L62.00 10L52.00 14.00Z" fill="#121212"/></svg><span class="t-legend">Hypothesis</span></div></div>
+</section>
+
+<section id="signs" class="sec" aria-labelledby="h-signs">
+  <p class="eyebrow">04 Signs, ends and delay</p>
+  <h2 class="headline" id="h-signs">One step, fully dressed</h2>
+  <p class="t-deck measure">Step 2 of <span class="chip compact"><span class="k">Loop</span><span class="c">R10</span></span>, read from the model. The sign rides the line in a pointing tag; one tick counts the delay; the label sits clear of every stroke.</p>
+  <div class="stepgrid">
+    <div class="stepwrap scroll" role="region" tabindex="0" aria-label="One step of Loop R10"><svg data-view="step" class="stepfig" width="640" height="176" viewBox="0 0 640 176" role="img"
+      aria-label="Variable C2, Primary decisiveness, lowers variable C3, Electoral pressure, over connection L25: Decisive primaries reduce general-election pressure. Well supported: strong research evidence. Under 2 years.">
+      <text x="110.0" y="26" text-anchor="middle" class="st" fill="#121212" data-name="Primary decisiveness">Primary decisiveness</text>
+      <text x="530.0" y="26" text-anchor="middle" class="st" fill="#121212" data-name="Electoral pressure">Electoral pressure</text>
+      <g data-link="L25" data-sign="-" data-grade="well-supported" data-delay="S"><path d="M148.00 70.5H479.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M479.00 65.00L492.00 70.5L479.00 76.00Z" fill="#121212"/><rect x="160.00" y="65.00" width="2" height="11.00" fill="#121212"/><g data-sign="-"><polygon points="310.00,62.00 325.00,62.00 331.00,70.50 325.00,79.00 310.00,79.00" fill="#121212" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="313.00" y="69.00" width="9" height="3" fill="#FFFFFF"/></g></g>
+      <g data-node="C2"><rect x="74" y="54.0" width="72" height="33" rx="16.5" fill="#FFFFFF" stroke="#121212" stroke-width="2"/><text x="110.0" y="70.5" dominant-baseline="central" text-anchor="middle" class="nd" fill="#121212">C2</text></g><g data-node="C3"><rect x="494" y="54.0" width="72" height="33" rx="16.5" fill="#FFFFFF" stroke="#121212" stroke-width="2"/><text x="530.0" y="70.5" dominant-baseline="central" text-anchor="middle" class="nd" fill="#121212">C3</text></g><g transform="translate(244,93)"><g class="svgchip"><rect x="0" y="0" width="111.0" height="22" fill="#121212"/><text x="7" y="11.0" dominant-baseline="central" class="sc-k" fill="#FFFFFF">CONNECTION</text><rect x="111.0" y="0.75" width="41.2" height="20.5" fill="none" stroke="#121212" stroke-width="1.5"/><text x="132.0" y="11.0" dominant-baseline="central" text-anchor="middle" class="sc-c" fill="#121212">L25</text></g></g>
+      <text x="320" y="136" text-anchor="middle" class="mp" fill="#121212">Decisive primaries reduce general-election pressure</text>
+      <text x="320" y="158" text-anchor="middle" class="nt" fill="#4E535B">Well supported: strong research evidence. Under 2 years.</text>
+    </svg></div>
+    <div class="stepkey">
+      <p class="eyebrow">Key</p>
+      <ul class="t-legend">
+        <li><strong>Pill:</strong> a variable. Its code stands alone because this key names the type.</li>
+        <li><strong>Tag:</strong> the step’s sign, pointing the way the step runs.</li>
+        <li><strong>Tick:</strong> one per delay band. One tick: under 2 years.</li>
+        <li><strong>Texture:</strong> the grade. Solid here: well supported.</li>
+      </ul>
+      <p class="caption">A plus sign means the two variables move the same way. It does not mean the change is good.</p>
+    </div>
+  </div>
+  <div class="signgrid">
+    <div class="sg"><p class="t-panel-s">Sign tags</p><p class="t-legend dim">Tags 16 × 20 px on 2 px lines, 17 × 21 px on 3 px lines, 22 × 26 px on the lit route. The sign is drawn, its bars as heavy as the line up to 3 px. Never colored.</p><svg data-view="tags-2" width="300" height="44" viewBox="0 0 300 44" role="img" aria-label="Plus and minus tags on a 2 px line"><path d="M6.00 22H130.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M130.00 18.00L140.00 22L130.00 26.00Z" fill="#121212"/><g data-sign="+"><polygon points="60.00,14.00 74.00,14.00 80.00,22.00 74.00,30.00 60.00,30.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="63.00" y="21.00" width="8" height="2" fill="#DCD9D2"/><rect x="66.00" y="18.00" width="2" height="8" fill="#DCD9D2"/></g><path d="M160.00 22H284.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M284.00 18.00L294.00 22L284.00 26.00Z" fill="#121212"/><g data-sign="-"><polygon points="217.00,14.00 231.00,14.00 237.00,22.00 231.00,30.00 217.00,30.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="220.00" y="21.00" width="8" height="2" fill="#DCD9D2"/></g></svg><svg data-view="tags-3" width="300" height="44" viewBox="0 0 300 44" role="img" aria-label="Plus and minus tags on a 3 px line"><path d="M6.00 22.5H127.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M127.00 17.00L140.00 22.5L127.00 28.00Z" fill="#121212"/><g data-sign="+"><polygon points="60.00,14.00 75.00,14.00 81.00,22.50 75.00,31.00 60.00,31.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="63.00" y="21.00" width="9" height="3" fill="#DCD9D2"/><rect x="66.00" y="18.00" width="3" height="9" fill="#DCD9D2"/></g><path d="M160.00 22.5H281.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M281.00 17.00L294.00 22.5L281.00 28.00Z" fill="#121212"/><g data-sign="-"><polygon points="216.00,14.00 231.00,14.00 237.00,22.50 231.00,31.00 216.00,31.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="219.00" y="21.00" width="9" height="3" fill="#DCD9D2"/></g></svg><svg data-view="tags-6" width="300" height="44" viewBox="0 0 300 44" role="img" aria-label="Plus and minus tags on a 6 px line"><path d="M6.00 22H118.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt"/><path d="M118.00 13.00L140.00 22L118.00 31.00Z" fill="#121212"/><g data-sign="+"><polygon points="57.00,11.00 75.00,11.00 83.00,22.00 75.00,33.00 57.00,33.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="61.00" y="21.00" width="10" height="2" fill="#DCD9D2"/><rect x="65.00" y="17.00" width="2" height="10" fill="#DCD9D2"/></g><path d="M160.00 22H272.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt"/><path d="M272.00 13.00L294.00 22L272.00 31.00Z" fill="#121212"/><g data-sign="-"><polygon points="214.00,11.00 232.00,11.00 240.00,22.00 232.00,33.00 214.00,33.00" fill="#121212" stroke="#DCD9D2" stroke-width="4" stroke-linejoin="round" paint-order="stroke"/><rect x="218.00" y="21.00" width="10" height="2" fill="#DCD9D2"/></g></svg></div>
+    <div class="sg"><p class="t-panel-s">Arrowheads</p><p class="t-legend dim">One closed, filled head, sized by weight. The line stops at the head’s base. Tip 2 px off the target’s edge.</p><div class="arrows"><div class="ar"><svg data-view="arrow-2" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Arrowhead for a 2 px line"><path d="M6.00 20H80.00" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="butt"/><path d="M80.00 16.00L90.00 20L80.00 24.00Z" fill="#121212"/></svg><p class="t-legend dim">2 px line: head 10 × 8 px</p></div><div class="ar"><svg data-view="arrow-3" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Arrowhead for a 3 px line"><path d="M6.00 20.5H77.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M77.00 15.00L90.00 20.5L77.00 26.00Z" fill="#121212"/></svg><p class="t-legend dim">3 px line: head 13 × 11 px</p></div><div class="ar"><svg data-view="arrow-6" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Arrowhead for a 6 px line"><path d="M6.00 20H68.00" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="butt"/><path d="M68.00 11.00L90.00 20L68.00 29.00Z" fill="#121212"/></svg><p class="t-legend dim">6 px line: head 22 × 18 px</p></div></div></div>
+    <div class="sg"><p class="t-panel-s">Delay</p><p class="t-legend dim">Ticks 2 px wide, 5 px apart, 12 px after the tail, with the words in the label.</p><div class="arrows"><div class="ar"><svg data-view="delay-S" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Delay under 2 years: 1 tick"><path d="M6.00 20.5H77.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M77.00 15.00L90.00 20.5L77.00 26.00Z" fill="#121212"/><rect x="20.00" y="15.00" width="2" height="11.00" fill="#121212"/></svg><p class="t-legend dim">Under 2 years: 1 tick</p></div><div class="ar"><svg data-view="delay-M" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Delay 2 to 10 years: 2 ticks"><path d="M6.00 20.5H77.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M77.00 15.00L90.00 20.5L77.00 26.00Z" fill="#121212"/><rect x="20.00" y="15.00" width="2" height="11.00" fill="#121212"/><rect x="25.00" y="15.00" width="2" height="11.00" fill="#121212"/></svg><p class="t-legend dim">2 to 10 years: 2 ticks</p></div><div class="ar"><svg data-view="delay-L" width="96" height="40" viewBox="0 0 96 40" role="img" aria-label="Delay over 10 years: 3 ticks"><path d="M6.00 20.5H77.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M77.00 15.00L90.00 20.5L77.00 26.00Z" fill="#121212"/><rect x="20.00" y="15.00" width="2" height="11.00" fill="#121212"/><rect x="25.00" y="15.00" width="2" height="11.00" fill="#121212"/><rect x="30.00" y="15.00" width="2" height="11.00" fill="#121212"/></svg><p class="t-legend dim">Over 10 years: 3 ticks</p></div></div></div>
+    <div class="sg"><p class="t-panel-s">Authority</p><p class="t-legend dim">An open diamond, no sign, never part of a loop. Example from the model:</p><p class="chips"><span class="chip compact"><span class="k">Connection</span><span class="c">LE02</span></span></p><p class="t-legend" style="margin:6px 0 10px">Congress decides public investment levels</p><svg data-view="authority" width="300" height="40" viewBox="0 0 300 40" role="img" aria-label="Authority connection: open diamond, no sign"><g data-link="LE02" data-sign="none" data-grade="documented" data-delay="M"><path d="M6 20H282" stroke="#121212" stroke-width="3" fill="none"/><path d="M280.00 20L287.00 14.40L294.00 20L287.00 25.60Z" fill="#DCD9D2" stroke="#121212" stroke-width="2" stroke-linejoin="miter"/></g></svg></div>
+  </div>
+  <div class="redrow"><p class="t-panel-s">Working red on each ground</p><p class="t-legend dim">Specimens, which Rule 05.3 does not count.</p><div class="reds"><div class="redsw"><svg data-view="red-newsprint" width="148" height="44" viewBox="0 0 148 44" role="img" aria-label="Working red on Newsprint"><rect width="148" height="44" fill="#DCD9D2"/><g data-red="working" data-red-job="specimen"><path d="M12 22H136" stroke="#121212" stroke-width="5" fill="none"/><path d="M12 22H136" stroke="#E63946" stroke-width="3" fill="none"/></g></svg><p class="t-legend"><strong>Newsprint</strong></p><p class="t-legend dim">Red 2.96:1, so a 1 px Charcoal keyline</p></div><div class="redsw"><svg data-view="red-white" width="148" height="44" viewBox="0 0 148 44" role="img" aria-label="Working red on White"><rect width="148" height="44" fill="#FFFFFF"/><g data-red="working" data-red-job="specimen"><path d="M12 22H136" stroke="#E63946" stroke-width="3" fill="none"/></g></svg><p class="t-legend"><strong>White</strong></p><p class="t-legend dim">Red 4.17:1, bare</p></div><div class="redsw"><svg data-view="red-charcoal" width="148" height="44" viewBox="0 0 148 44" role="img" aria-label="Working red on Charcoal"><rect width="148" height="44" fill="#121212"/><g data-red="working" data-red-job="specimen"><path d="M12 22H136" stroke="#E63946" stroke-width="3" fill="none"/></g></svg><p class="t-legend"><strong>Charcoal</strong></p><p class="t-legend dim">Red 4.49:1, bare</p></div><div class="redsw"><svg data-view="red-prussian" width="148" height="44" viewBox="0 0 148 44" role="img" aria-label="Working red on Prussian"><rect width="148" height="44" fill="#1F2D5A"/><path d="M12 22H136" stroke="#FFFFFF" stroke-width="6" fill="none"/></svg><p class="t-legend"><strong>Prussian</strong></p><p class="t-legend dim">No red. The job moves to a 6 px White line (13.28:1)</p></div></div></div>
+</section>
+
+<section id="grounds" class="sec" aria-labelledby="h-grounds">
+  <p class="eyebrow">05 Grounds and icons</p>
+  <h2 class="headline" id="h-grounds">Four grounds, two Civic Line icons on each</h2>
+  <p class="t-deck measure">Ratios are computed from the locked hex values with the WCAG formula. The row shows Safe seats as the current item, so only its icon keeps the red.</p>
+  <div class="grounds">
+    <div class="ground g-newsprint" style="background:#DCD9D2;color:#121212">
+      <p class="t-panel">Newsprint</p>
+      <p class="t-legend gsub">#DCD9D2 · The brand’s lead ground. Overviews read as a broadsheet, the loop catalog, long reading.</p>
+      <p class="chips"><span class="chip on-newsprint"><span class="k">Variable</span><span class="c">C1</span></span></p>
+      <dl class="gratios">
+        <div><dt class="t-ptext">Primary text</dt><dd class="t-legend">Charcoal 13.29:1</dd></div>
+        <div><dt class="t-ptext" style="color:#4E535B">Secondary text</dt><dd class="t-legend">Deep Stone 5.49:1</dd></div>
+      </dl>
+      <svg data-view="ground-lines-newsprint" width="260" height="64" viewBox="0 0 260 64" role="img" aria-label="Lines on Newsprint"><path d="M0.00 14.5H107.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M107.00 9.00L120.00 14.5L107.00 20.00Z" fill="#121212"/><path d="M136.00 14.5H243.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt" stroke-dasharray="12.588 6.294"/><path d="M243.00 9.00L256.00 14.5L243.00 20.00Z" fill="#121212"/><path d="M0 50H120" stroke="#5D636D" stroke-width="2"/><path d="M136 50.5H256" stroke="#121212" stroke-width="1"/></svg>
+      <p class="t-legend gsub">Top: essential lines, Charcoal 13.29:1. Bottom: context, Stone 4.29:1, 2 px or heavier; hairline 1 px.</p>
+      <div class="icons" role="list">
+        <div class="ic cur" role="listitem"><span class="icw" data-red="working" data-red-job="current item"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g0a-oa-civic-line-cl-009-red-black" data-id="CL-009" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g0a-oa-civic-line-cl-009-red-black-base" data-part="base">
+    <path d="M38.7164 53.6855 L21.2189 53.6855 A2.436988 2.436988 0 0 0 18.7819 56.1225 L18.7819 62.9643 L15.3762 66.37 L15.3762 78.5366 A2.436963 2.436963 0 0 0 17.8132 80.9735 L23.4853 80.9735 L27.4515 84.9397 L27.4515 94.2063 A2.436963 2.436963 0 0 0 29.8884 96.6433 L33.355 96.6433 A2.436988 2.436988 0 0 1 35.792 99.0803 L35.792 101.2248 A2.436988 2.436988 0 0 0 38.229 103.6618 L48.379 103.6618 A2.400411 2.400411 0 0 0 50.7794 101.2614 A2.400432 2.400432 0 0 1 53.1737 98.867 L97.7704 98.867 A2.436963 2.436963 0 0 0 100.2074 96.4301 L100.2074 81.8082 L104.6488 77.3668 L110.4914 77.3668 A2.436988 2.436988 0 0 0 112.9284 74.9298 L112.9284 56.7134 A2.436963 2.436963 0 0 0 110.4914 54.2765 L103.9481 54.2765 L99.458 49.7863 L99.458 40.8122 L93.8347 35.1889 L86.0485 35.1889 A2.436963 2.436963 0 0 1 83.6116 32.7519 L83.6116 26.3426 A2.436963 2.436963 0 0 0 81.1746 23.9057 L50.1945 23.9057 A2.436938 2.436938 0 0 0 47.7576 26.3426 L47.7576 29.8458 A2.436988 2.436988 0 0 1 45.3206 32.2828 L40.9218 32.2828 A2.004406 2.004406 0 0 0 38.9174 34.2872 L38.9174 36.2916 L34.6893 40.5197 L34.6893 49.2928 L37.3639 53.6855" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.6055 68.5693 V48.3912 A4.447466 4.447466 0 0 1 59.0529 43.9437 H71.5729 A4.447491 4.447491 0 0 1 76.0204 48.3912 V68.5693 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.2937 61.2584 L47.5626 62.7815 V73.2605 A3.59452 3.59452 0 0 0 51.1571 76.855 H79.4626 A3.594545 3.594545 0 0 0 83.0572 73.2605 V62.7815 L82.3261 61.2584" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.3504" y1="76.855" x2="53.3504" y2="86.999" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.2693" y1="76.855" x2="77.2693" y2="86.999" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g0a-oa-civic-line-cl-009-red-black-accent" data-part="accent">
+    <path d="M56.2809 55.3487 H74.345 V66.8939 A3.350871 3.350871 0 0 1 70.9941 70.2448 H59.6317 A3.350846 3.350846 0 0 1 56.2809 66.8939 Z" fill="#E63946"/>
+  </g>
+</svg>
+</span><span class="t-map icl" data-node="C1" data-name="Safe seats">Safe seats</span><span class="t-legend">Current</span></div>
+        <div class="ic" role="listitem"><span class="icw"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g0b-oa-civic-line-cl-010-black" data-id="CL-010" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g0b-oa-civic-line-cl-010-black-base" data-part="base">
+    <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 39.1855 L44.5895 39.1855 A3.533608 3.533608 0 0 1 48.1231 42.7191 L48.1231 50.7855 A3.533608 3.533608 0 0 0 51.6567 54.3191 L62.9947 54.3191 A3.472694 3.472694 0 0 1 66.4674 57.7857 L66.4674 61.2584 L67.9296 64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.1302" y1="64.2437" x2="44.1204" y2="64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 89.3019 L44.5895 89.3019 A3.533608 3.533608 0 0 0 48.1231 85.7683 L48.1231 77.7019 A3.533608 3.533608 0 0 1 51.6567 74.1683 L62.9947 74.1683 A3.472694 3.472694 0 0 0 66.4674 70.7017 L66.4674 67.229 L67.9296 64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g0b-oa-civic-line-cl-010-black-accent" data-part="accent">
+    <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+</span><span class="t-map icl2" data-node="C2" data-name="Primary decisiveness">Primary decisiveness</span></div>
+      </div>
+      <p class="t-legend gsub">Current icon keeps its red (2.96:1). Red marks need a 1 px Charcoal keyline here. Icons at 64 px. The floor is 48 px for this icon and for any red edition.</p>
+    </div>
+    <div class="ground g-white" style="background:#FFFFFF;color:#121212">
+      <p class="t-panel">White</p>
+      <p class="t-legend gsub">#FFFFFF · Cards and panels on Newsprint, dense close-ups, plates meant for print.</p>
+      <p class="chips"><span class="chip on-white"><span class="k">Variable</span><span class="c">C1</span></span></p>
+      <dl class="gratios">
+        <div><dt class="t-ptext">Primary text</dt><dd class="t-legend">Charcoal 18.73:1</dd></div>
+        <div><dt class="t-ptext" style="color:#4E535B">Secondary text</dt><dd class="t-legend">Deep Stone 7.74:1</dd></div>
+      </dl>
+      <svg data-view="ground-lines-white" width="260" height="64" viewBox="0 0 260 64" role="img" aria-label="Lines on White"><path d="M0.00 14.5H107.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt"/><path d="M107.00 9.00L120.00 14.5L107.00 20.00Z" fill="#121212"/><path d="M136.00 14.5H243.00" fill="none" stroke="#121212" stroke-width="3" stroke-linecap="butt" stroke-dasharray="12.588 6.294"/><path d="M243.00 9.00L256.00 14.5L243.00 20.00Z" fill="#121212"/><path d="M0 50H120" stroke="#5D636D" stroke-width="2"/><path d="M136 50.5H256" stroke="#121212" stroke-width="1"/></svg>
+      <p class="t-legend gsub">Top: essential lines, Charcoal 18.73:1. Bottom: context, Stone 6.05:1, 2 px or heavier; hairline 1 px.</p>
+      <div class="icons" role="list">
+        <div class="ic cur" role="listitem"><span class="icw" data-red="working" data-red-job="current item"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g1a-oa-civic-line-cl-009-red-black" data-id="CL-009" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g1a-oa-civic-line-cl-009-red-black-base" data-part="base">
+    <path d="M38.7164 53.6855 L21.2189 53.6855 A2.436988 2.436988 0 0 0 18.7819 56.1225 L18.7819 62.9643 L15.3762 66.37 L15.3762 78.5366 A2.436963 2.436963 0 0 0 17.8132 80.9735 L23.4853 80.9735 L27.4515 84.9397 L27.4515 94.2063 A2.436963 2.436963 0 0 0 29.8884 96.6433 L33.355 96.6433 A2.436988 2.436988 0 0 1 35.792 99.0803 L35.792 101.2248 A2.436988 2.436988 0 0 0 38.229 103.6618 L48.379 103.6618 A2.400411 2.400411 0 0 0 50.7794 101.2614 A2.400432 2.400432 0 0 1 53.1737 98.867 L97.7704 98.867 A2.436963 2.436963 0 0 0 100.2074 96.4301 L100.2074 81.8082 L104.6488 77.3668 L110.4914 77.3668 A2.436988 2.436988 0 0 0 112.9284 74.9298 L112.9284 56.7134 A2.436963 2.436963 0 0 0 110.4914 54.2765 L103.9481 54.2765 L99.458 49.7863 L99.458 40.8122 L93.8347 35.1889 L86.0485 35.1889 A2.436963 2.436963 0 0 1 83.6116 32.7519 L83.6116 26.3426 A2.436963 2.436963 0 0 0 81.1746 23.9057 L50.1945 23.9057 A2.436938 2.436938 0 0 0 47.7576 26.3426 L47.7576 29.8458 A2.436988 2.436988 0 0 1 45.3206 32.2828 L40.9218 32.2828 A2.004406 2.004406 0 0 0 38.9174 34.2872 L38.9174 36.2916 L34.6893 40.5197 L34.6893 49.2928 L37.3639 53.6855" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.6055 68.5693 V48.3912 A4.447466 4.447466 0 0 1 59.0529 43.9437 H71.5729 A4.447491 4.447491 0 0 1 76.0204 48.3912 V68.5693 Z" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.2937 61.2584 L47.5626 62.7815 V73.2605 A3.59452 3.59452 0 0 0 51.1571 76.855 H79.4626 A3.594545 3.594545 0 0 0 83.0572 73.2605 V62.7815 L82.3261 61.2584" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.3504" y1="76.855" x2="53.3504" y2="86.999" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.2693" y1="76.855" x2="77.2693" y2="86.999" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g1a-oa-civic-line-cl-009-red-black-accent" data-part="accent">
+    <path d="M56.2809 55.3487 H74.345 V66.8939 A3.350871 3.350871 0 0 1 70.9941 70.2448 H59.6317 A3.350846 3.350846 0 0 1 56.2809 66.8939 Z" fill="#E63946"/>
+  </g>
+</svg>
+</span><span class="t-map icl" data-node="C1" data-name="Safe seats">Safe seats</span><span class="t-legend">Current</span></div>
+        <div class="ic" role="listitem"><span class="icw"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g1b-oa-civic-line-cl-010-black" data-id="CL-010" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g1b-oa-civic-line-cl-010-black-base" data-part="base">
+    <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 39.1855 L44.5895 39.1855 A3.533608 3.533608 0 0 1 48.1231 42.7191 L48.1231 50.7855 A3.533608 3.533608 0 0 0 51.6567 54.3191 L62.9947 54.3191 A3.472694 3.472694 0 0 1 66.4674 57.7857 L66.4674 61.2584 L67.9296 64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.1302" y1="64.2437" x2="44.1204" y2="64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 89.3019 L44.5895 89.3019 A3.533608 3.533608 0 0 0 48.1231 85.7683 L48.1231 77.7019 A3.533608 3.533608 0 0 1 51.6567 74.1683 L62.9947 74.1683 A3.472694 3.472694 0 0 0 66.4674 70.7017 L66.4674 67.229 L67.9296 64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g1b-oa-civic-line-cl-010-black-accent" data-part="accent">
+    <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+</span><span class="t-map icl2" data-node="C2" data-name="Primary decisiveness">Primary decisiveness</span></div>
+      </div>
+      <p class="t-legend gsub">Current icon keeps its red (4.17:1). Red marks sit bare. Icons at 64 px. The floor is 48 px for this icon and for any red edition.</p>
+    </div>
+    <div class="ground g-charcoal" style="background:#121212;color:#DCD9D2">
+      <p class="t-panel">Charcoal</p>
+      <p class="t-legend gsub">#121212 · Night schematics and dense wiring, where light lines separate cleanly.</p>
+      <p class="chips"><span class="chip on-charcoal"><span class="k">Variable</span><span class="c">C1</span></span></p>
+      <dl class="gratios">
+        <div><dt class="t-ptext">Primary text</dt><dd class="t-legend">Newsprint 13.29:1</dd></div>
+        <div><dt class="t-ptext" style="color:#DCD9D2">Secondary text</dt><dd class="t-legend">Newsprint 13.29:1</dd></div>
+      </dl>
+      <svg data-view="ground-lines-charcoal" width="260" height="64" viewBox="0 0 260 64" role="img" aria-label="Lines on Charcoal"><path d="M0.00 14.5H107.00" fill="none" stroke="#DCD9D2" stroke-width="3" stroke-linecap="butt"/><path d="M107.00 9.00L120.00 14.5L107.00 20.00Z" fill="#DCD9D2"/><path d="M136.00 14.5H243.00" fill="none" stroke="#DCD9D2" stroke-width="3" stroke-linecap="butt" stroke-dasharray="12.588 6.294"/><path d="M243.00 9.00L256.00 14.5L243.00 20.00Z" fill="#DCD9D2"/><path d="M0 50H120" stroke="#5D636D" stroke-width="2"/><path d="M136 50.5H256" stroke="#DCD9D2" stroke-width="1"/></svg>
+      <p class="t-legend gsub">Top: essential lines, Newsprint 13.29:1. Bottom: context, Stone 3.10:1, 2 px or heavier; hairline 1 px.</p>
+      <div class="icons" role="list">
+        <div class="ic cur" role="listitem"><span class="icw" data-red="working" data-red-job="current item"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g2a-oa-civic-line-cl-009-red-newsprint" data-id="CL-009" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g2a-oa-civic-line-cl-009-red-newsprint-base" data-part="base">
+    <path d="M38.7164 53.6855 L21.2189 53.6855 A2.436988 2.436988 0 0 0 18.7819 56.1225 L18.7819 62.9643 L15.3762 66.37 L15.3762 78.5366 A2.436963 2.436963 0 0 0 17.8132 80.9735 L23.4853 80.9735 L27.4515 84.9397 L27.4515 94.2063 A2.436963 2.436963 0 0 0 29.8884 96.6433 L33.355 96.6433 A2.436988 2.436988 0 0 1 35.792 99.0803 L35.792 101.2248 A2.436988 2.436988 0 0 0 38.229 103.6618 L48.379 103.6618 A2.400411 2.400411 0 0 0 50.7794 101.2614 A2.400432 2.400432 0 0 1 53.1737 98.867 L97.7704 98.867 A2.436963 2.436963 0 0 0 100.2074 96.4301 L100.2074 81.8082 L104.6488 77.3668 L110.4914 77.3668 A2.436988 2.436988 0 0 0 112.9284 74.9298 L112.9284 56.7134 A2.436963 2.436963 0 0 0 110.4914 54.2765 L103.9481 54.2765 L99.458 49.7863 L99.458 40.8122 L93.8347 35.1889 L86.0485 35.1889 A2.436963 2.436963 0 0 1 83.6116 32.7519 L83.6116 26.3426 A2.436963 2.436963 0 0 0 81.1746 23.9057 L50.1945 23.9057 A2.436938 2.436938 0 0 0 47.7576 26.3426 L47.7576 29.8458 A2.436988 2.436988 0 0 1 45.3206 32.2828 L40.9218 32.2828 A2.004406 2.004406 0 0 0 38.9174 34.2872 L38.9174 36.2916 L34.6893 40.5197 L34.6893 49.2928 L37.3639 53.6855" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.6055 68.5693 V48.3912 A4.447466 4.447466 0 0 1 59.0529 43.9437 H71.5729 A4.447491 4.447491 0 0 1 76.0204 48.3912 V68.5693 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.2937 61.2584 L47.5626 62.7815 V73.2605 A3.59452 3.59452 0 0 0 51.1571 76.855 H79.4626 A3.594545 3.594545 0 0 0 83.0572 73.2605 V62.7815 L82.3261 61.2584" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.3504" y1="76.855" x2="53.3504" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.2693" y1="76.855" x2="77.2693" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g2a-oa-civic-line-cl-009-red-newsprint-accent" data-part="accent">
+    <path d="M56.2809 55.3487 H74.345 V66.8939 A3.350871 3.350871 0 0 1 70.9941 70.2448 H59.6317 A3.350846 3.350846 0 0 1 56.2809 66.8939 Z" fill="#E63946"/>
+  </g>
+</svg>
+</span><span class="t-map icl" data-node="C1" data-name="Safe seats">Safe seats</span><span class="t-legend">Current</span></div>
+        <div class="ic" role="listitem"><span class="icw"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g2b-oa-civic-line-cl-010-newsprint" data-id="CL-010" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g2b-oa-civic-line-cl-010-newsprint-base" data-part="base">
+    <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 39.1855 L44.5895 39.1855 A3.533608 3.533608 0 0 1 48.1231 42.7191 L48.1231 50.7855 A3.533608 3.533608 0 0 0 51.6567 54.3191 L62.9947 54.3191 A3.472694 3.472694 0 0 1 66.4674 57.7857 L66.4674 61.2584 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.1302" y1="64.2437" x2="44.1204" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 89.3019 L44.5895 89.3019 A3.533608 3.533608 0 0 0 48.1231 85.7683 L48.1231 77.7019 A3.533608 3.533608 0 0 1 51.6567 74.1683 L62.9947 74.1683 A3.472694 3.472694 0 0 0 66.4674 70.7017 L66.4674 67.229 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g2b-oa-civic-line-cl-010-newsprint-accent" data-part="accent">
+    <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+</span><span class="t-map icl2" data-node="C2" data-name="Primary decisiveness">Primary decisiveness</span></div>
+      </div>
+      <p class="t-legend gsub">Current icon keeps its red (4.49:1). Red marks sit bare. Icons at 64 px. The floor is 48 px for this icon and for any red edition.</p>
+    </div>
+    <div class="ground g-prussian" style="background:#1F2D5A;color:#FFFFFF">
+      <p class="t-panel">Prussian</p>
+      <p class="t-legend gsub">#1F2D5A · Wall and poster grounds. No red of any kind: weight and fill carry selection.</p>
+      <p class="chips"><span class="chip on-prussian"><span class="k">Variable</span><span class="c">C1</span></span></p>
+      <dl class="gratios">
+        <div><dt class="t-ptext">Primary text</dt><dd class="t-legend">White 13.28:1</dd></div>
+        <div><dt class="t-ptext" style="color:#DCD9D2">Secondary text</dt><dd class="t-legend">Newsprint 9.42:1</dd></div>
+      </dl>
+      <svg data-view="ground-lines-prussian" width="260" height="64" viewBox="0 0 260 64" role="img" aria-label="Lines on Prussian"><path d="M0.00 14.5H107.00" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="butt"/><path d="M107.00 9.00L120.00 14.5L107.00 20.00Z" fill="#FFFFFF"/><path d="M136.00 14.5H243.00" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="butt" stroke-dasharray="12.588 6.294"/><path d="M243.00 9.00L256.00 14.5L243.00 20.00Z" fill="#FFFFFF"/><path d="M0 50H120" stroke="#DCD9D2" stroke-width="2"/><path d="M136 50.5H256" stroke="#FFFFFF" stroke-width="1"/></svg>
+      <p class="t-legend gsub">Top: essential lines, White 13.28:1. Bottom: context, Newsprint 9.42:1, by weight alone; hairline 1 px.</p>
+      <div class="icons" role="list">
+        <div class="ic cur" role="listitem"><span class="icw"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g3a-oa-civic-line-cl-009-newsprint" data-id="CL-009" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g3a-oa-civic-line-cl-009-newsprint-base" data-part="base">
+    <path d="M38.7164 53.6855 L21.2189 53.6855 A2.436988 2.436988 0 0 0 18.7819 56.1225 L18.7819 62.9643 L15.3762 66.37 L15.3762 78.5366 A2.436963 2.436963 0 0 0 17.8132 80.9735 L23.4853 80.9735 L27.4515 84.9397 L27.4515 94.2063 A2.436963 2.436963 0 0 0 29.8884 96.6433 L33.355 96.6433 A2.436988 2.436988 0 0 1 35.792 99.0803 L35.792 101.2248 A2.436988 2.436988 0 0 0 38.229 103.6618 L48.379 103.6618 A2.400411 2.400411 0 0 0 50.7794 101.2614 A2.400432 2.400432 0 0 1 53.1737 98.867 L97.7704 98.867 A2.436963 2.436963 0 0 0 100.2074 96.4301 L100.2074 81.8082 L104.6488 77.3668 L110.4914 77.3668 A2.436988 2.436988 0 0 0 112.9284 74.9298 L112.9284 56.7134 A2.436963 2.436963 0 0 0 110.4914 54.2765 L103.9481 54.2765 L99.458 49.7863 L99.458 40.8122 L93.8347 35.1889 L86.0485 35.1889 A2.436963 2.436963 0 0 1 83.6116 32.7519 L83.6116 26.3426 A2.436963 2.436963 0 0 0 81.1746 23.9057 L50.1945 23.9057 A2.436938 2.436938 0 0 0 47.7576 26.3426 L47.7576 29.8458 A2.436988 2.436988 0 0 1 45.3206 32.2828 L40.9218 32.2828 A2.004406 2.004406 0 0 0 38.9174 34.2872 L38.9174 36.2916 L34.6893 40.5197 L34.6893 49.2928 L37.3639 53.6855" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M54.6055 68.5693 V48.3912 A4.447466 4.447466 0 0 1 59.0529 43.9437 H71.5729 A4.447491 4.447491 0 0 1 76.0204 48.3912 V68.5693 Z" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M48.2937 61.2584 L47.5626 62.7815 V73.2605 A3.59452 3.59452 0 0 0 51.1571 76.855 H79.4626 A3.594545 3.594545 0 0 0 83.0572 73.2605 V62.7815 L82.3261 61.2584" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="53.3504" y1="76.855" x2="53.3504" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="77.2693" y1="76.855" x2="77.2693" y2="86.999" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g3a-oa-civic-line-cl-009-newsprint-accent" data-part="accent">
+    <path d="M56.2809 55.3487 H74.345 V66.8939 A3.350871 3.350871 0 0 1 70.9941 70.2448 H59.6317 A3.350846 3.350846 0 0 1 56.2809 66.8939 Z" fill="#DCD9D2"/>
+  </g>
+</svg>
+</span><span class="t-map icl" data-node="C1" data-name="Safe seats">Safe seats</span><span class="t-legend">Current</span></div>
+        <div class="ic" role="listitem"><span class="icw"><svg class="cl-icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" id="g3b-oa-civic-line-cl-010-newsprint" data-id="CL-010" width="64" height="64" viewBox="0 0 128 128">
+  <g id="g3b-oa-civic-line-cl-010-newsprint-base" data-part="base">
+    <circle cx="18.855" cy="39.1855" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="64.2437" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18.855" cy="89.3019" r="6.2752" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 39.1855 L44.5895 39.1855 A3.533608 3.533608 0 0 1 48.1231 42.7191 L48.1231 50.7855 A3.533608 3.533608 0 0 0 51.6567 54.3191 L62.9947 54.3191 A3.472694 3.472694 0 0 1 66.4674 57.7857 L66.4674 61.2584 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25.1302" y1="64.2437" x2="44.1204" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.1302 89.3019 L44.5895 89.3019 A3.533608 3.533608 0 0 0 48.1231 85.7683 L48.1231 77.7019 A3.533608 3.533608 0 0 1 51.6567 74.1683 L62.9947 74.1683 A3.472694 3.472694 0 0 0 66.4674 70.7017 L66.4674 67.229 L67.9296 64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="67.9296" y1="64.2437" x2="89.8929" y2="64.2437" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="84.5924,58.5168 89.8929,64.2437 84.5924,69.9706" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="g3b-oa-civic-line-cl-010-newsprint-accent" data-part="accent">
+    <circle cx="105.2946" cy="64.2437" r="10.0891" fill="none" stroke="#DCD9D2" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+</span><span class="t-map icl2" data-node="C2" data-name="Primary decisiveness">Primary decisiveness</span></div>
+      </div>
+      <p class="t-legend gsub">Red never sits on Prussian, so both icons go one color. Icons at 64 px. The floor is 48 px for this icon and for any red edition.</p>
+    </div></div>
+</section>
+</main>
+<footer><p class="t-source">Who Do They Answer To? Systems Atlas V7, snapshot October 15, 2026. <span data-count="variables">51</span> variables, <span data-count="connections">118</span> connections, <span data-count="loops">23</span> loops, <span data-count="reforms">50</span> reforms.</p><p class="t-source right">Shared frame specimen. Studio draft, October 30, 2026.</p></footer>
+</div>
+</body>
+</html>
