@@ -22,6 +22,11 @@ from html.parser import HTMLParser
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 MODEL = json.loads((ROOT / 'work/boards/phase-2/maps/20261028_Maps-Model-Data.json').read_text())
 NODES, LINKS, LOOPS, REFORMS = MODEL['nodes'], MODEL['links'], MODEL['loops'], MODEL['reforms']
+# November 5 round: the editorial dataset adds the dark atlas's short labels, plain loop names, part names and issues
+_ED_PATH = ROOT / 'work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json'
+ED = json.loads(_ED_PATH.read_text()) if _ED_PATH.exists() else None
+ISSUES = ED['issues'] if ED else {}
+PARTS = {p['id']: p for p in ED['parts']} if ED else {}
 AREA_OF = {k: v['area'] for k, v in NODES.items()}
 for a in MODEL['areas']:
     for n in a['nodes']:
@@ -67,7 +72,7 @@ class Collect(HTMLParser):
                 self.items.append(rec)
             return
         self.stack.append(rec)
-        if any(k in a for k in ('data-node', 'data-link', 'data-loop', 'data-reform', 'data-count', 'data-strip', 'data-name')):
+        if any(k in a for k in ('data-node', 'data-link', 'data-loop', 'data-reform', 'data-count', 'data-strip', 'data-name', 'data-issue', 'data-part')):
             self.items.append(rec)
         if 'data-loop' in a:
             for r in self.stack[:-1]:
@@ -123,13 +128,17 @@ def verify(html):
             name = a['data-name']
             ok, v = set(), None
             if 'data-node' in a and a['data-node'] in NODES:
-                v = a['data-node']; n = NODES[v]; ok = {n['label'], n['title']} | ({n['short']} if n.get('short') else set())
+                v = a['data-node']; n = NODES[v]; ok = {n['label'], n['title']} | ({n['short']} if n.get('short') else set()) | ({ED['nodes'][v]['label']} if ED else set())
             elif 'data-loop' in a and a['data-loop'] in LOOPS:
-                v = a['data-loop']; ok = {LOOPS[v]['title']}
+                v = a['data-loop']; ok = {LOOPS[v]['title']} | ({ED['loops'][v]['plain_name']} if ED and ED['loops'][v].get('plain_name') else set())
             elif 'data-reform' in a and a['data-reform'] in REFORMS:
                 v = a['data-reform']; ok = {REFORMS[v]['title']}
             elif 'data-link' in a and a['data-link'] in LINKS:
                 v = a['data-link']; ok = {LINKS[v]['name']}
+            elif 'data-issue' in a and a['data-issue'] in ISSUES:
+                v = a['data-issue']; ok = {ISSUES[v]['title']}
+            elif 'data-part' in a and a['data-part'] in PARTS:
+                v = a['data-part']; P = PARTS[v]; ok = {x for x in (P['plain_name'], P['formal_title'], P['chapter']) if x}
             if name not in ok:
                 errs.append(f'{v}: data-name "{name}" is not a V7 name ({sorted(ok)})')
             if text and name not in text:
@@ -198,6 +207,14 @@ def verify(html):
         for v in ('C1', 'C2', 'C3', 'C4', 'C5'):
             if v not in seen['node']:
                 errs.append(f'area C view: {v} is not drawn (DR-13)')
+    if views and 'reform-r01' in views.group(1).split() and 'R-01' not in seen['reform']:
+        errs.append('reform-r01 view: R-01 is not drawn with data-reform')
+    for it in p.items:
+        a = it['attrs']
+        if 'data-issue' in a and ISSUES and a['data-issue'] not in ISSUES:
+            errs.append(f'unknown issue {a["data-issue"]}')
+        if 'data-part' in a and PARTS and a['data-part'] not in PARTS:
+            errs.append(f'unknown part {a["data-part"]}')
     if stats['strips'] == 0:
         errs.append('no data-strip="loops" element (DR-12: a strip of all 23 loops)')
     body = re.sub(r'<(script|style)\b.*?</\1>', '', html, flags=re.S | re.I)
