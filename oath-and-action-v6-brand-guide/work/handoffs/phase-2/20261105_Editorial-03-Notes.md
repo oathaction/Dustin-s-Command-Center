@@ -106,6 +106,18 @@ The idea stays the same: numbered sheets, one set of marks, and the circled sign
   - No undated ballot mention and no off-palette color remain.
 - I viewed every reworked plate at 1440, the phone forms at 390, 360 and 320, and the overview in grayscale.
 
+### Creative director's two must-fixes
+
+1. **"Can feed themselves."** The catalog headline and deck, and overview plate 01.5, now read "18 can feed themselves and 5 can push back". I made the balancing half match so the sentence stays even.
+2. **Sources on figures.** Each sentence in the 16 short answers that prints a figure now ends with its source in small type: title, publisher and year. The script matches each figure to the pathway's V7 claim (`claim_ids` in `work/extract/atlas-v7-data.json`) whose text holds the figure and shares the most words with the sentence. It then prints that claim's sources.
+   - PW01's 29 percent rent rise cites The State of the Nation's Housing 2026 (Harvard Joint Center for Housing Studies, 2026) and the Census Bureau's Quarterly Residential Vacancies and Homeownership, Q2 2026 (CL1109).
+   - PW01's $1,240, $2,420 and 7 percent cite the same Harvard report and Freddie Mac's Primary Mortgage Market Survey (CL1105).
+   - One figure appears in no claim verbatim: PW10's 7.65 percent, the sum of CL1550's 6.2 and 1.45 percent rates. It takes CL1550's source by word match.
+   - PW13 prints no figure.
+   - The build stops with an error if a figure finds no claim.
+
+   Both checks pass again: verify PASS with the self-test, and the browser check 0 failures at 1440, 390 and 360.
+
 ### Fix pass not tested
 
 - Real screen readers and phones, Firefox and Safari, readers on the new first screen.

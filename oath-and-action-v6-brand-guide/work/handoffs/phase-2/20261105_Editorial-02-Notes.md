@@ -63,6 +63,11 @@ Reader panel: counts carry a legend in the circuit and nouns in the example list
 
 Fixes every system makes: items 1 to 13 done; the phone holds all eight parts within two screens with the figures strip folded away there.
 
+Creative director's must-fixes:
+1. The "R-01" tabs on Loop R10 and Reform R-01 are Charcoal wherever they sit beside red; Prussian stays only for reform cards elsewhere.
+2. The overview readout now says each question as "Title: question", so "influence" and "Which" no longer run together.
+3. Every figure in the 16 everyday answers carries its source (title, publisher, date) right after its sentence. The script reads V7's claims from `work/extract/atlas-v7-data.json`, matches each figure to the claim that carries it (the pathway's own claims first, a rounded match where the unit agrees, as with "about 12 cents" and V7's 11.8 cents), and stops the build if any figure has no source. 27 figure sentences in 15 answers matched; PW13 has none. One figure, PW10's 7.65 percent payroll tax, is sourced from a claim filed under PW11 (CL1467), since no PW10 claim states it.
+
 ## Tested
 
 - `atlas_concepts_verify.py --selftest`: PASS; all six planted errors caught.
