@@ -481,3 +481,11 @@ Dustin sent ten images on November 5. The first five are saved in `work/research
 | Not saved: working atlas home, dark | "Who do they answer to? Who does our country work for?", whole system on one page, questions, loop cards, topics | Oath & Action's own atlas work. Study only |
 | Not saved: working atlas, Outside drivers page, dark | Driver cards wired to the variables they push on, with loops, reforms and issues tracked | Oath & Action's own atlas work. Study only |
 | Not saved: working atlas home with Dustin's note, dark | "How the circuit runs" (Your household, Wealth, Voice, Elections, Checks, Policy, The fix) and "How it all connects" | Oath & Action's own atlas work, with Dustin's signed note. Study only |
+
+Added later on November 5, 2026: five more images. Two repeat earlier files byte for byte (the "Architecture of accountability" layers board, saved October 30 as `20261030_Ref-Atlas-Civic-Architecture-Layers.webp`, and the Decision Grid, saved as `20261030_Ref-Atlas-Decision-Grid.webp`). Three are new, saved in `work/research/chat-references/atlas-editorial/`:
+
+| File | What it shows | Rights and use |
+|---|---|---|
+| `20261105_Ref-Atlas-Follow-A-Question-Preview.webp` | "Who do they answer to? Follow a question from your week to the rules behind it.", illustrated question cards and topic tiles, marked "Private design preview"; it counts 193 issue records, 50 reforms and 740 sources | Supplied by Dustin; maker and tool not recorded; illustrations look generated. Study only |
+| `20261105_Ref-Atlas-Concept-03-R8-Diagram-Preview.webp` | "How housing scarcity sustains itself", Concept 03 diagram preview in a serif display, R8 as two boxes with a reform entry; footer says it reproduces "the supplied V4 model" | Supplied by Dustin; maker not recorded. Study only |
+| `20261105_Ref-Atlas-Feedback-Loops-Dark-Grid.webp` | "The feedback loops", six loops as icon box-and-arrow cards on Charcoal, the clean version of the board Dustin marked "I like this design" on October 30 | Generated mockup supplied by Dustin. Study only |

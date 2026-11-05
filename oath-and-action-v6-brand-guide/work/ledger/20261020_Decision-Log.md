@@ -268,3 +268,12 @@ Dustin reviewed concept 12, Editorial Desk: "I like the editorial desk, the dire
 | # | Decision | Reason |
 |---|---|---|
 | D2-68 | Five of the ten November 5 images are saved; the other five arrived inside a running turn and were never written to disk, so the rights ledger describes them | Honesty about what the record holds |
+
+## Dustin's answers, November 5, 2026 (second message)
+
+| # | Decision | Source |
+|---|---|---|
+| DR-31 | Five editorial systems, not four, built from every reference Dustin has said he likes and the Editorial Desk direction, polished and enhanced, thought through as civic educator and as interface designer | Dustin, November 5 |
+| DR-32 | Plain names lead on the overview (Wealth, Voice, Elections, Checks, Policy, Your household), with the formal area titles beneath | Dustin, November 5: "let's go with plain names lead" |
+| DR-33 | The systems map must be full and complete: every area of the latest atlas (the five core areas, the outside drivers, the household economy and technology), with full explanations of the issues and of the reforms | Dustin, November 5 |
+| DR-34 | Dustin will attach the latest atlas HTML once the studio names which images it means. No build starts until the files arrive and Dustin says go | Dustin, November 5 |
