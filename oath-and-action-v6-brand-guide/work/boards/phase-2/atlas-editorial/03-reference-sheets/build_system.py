@@ -1105,8 +1105,8 @@ def mini_circuit():
         q = P_['plain_question'] or P_['text']
         nm = (f'<a href="#area-c">{e(P_["plain_name"])}</a>' if p == 'C' else
               f'<button type="button" class="mc-b" data-select="{part_key(p)}" aria-label="{e(P_["plain_name"])}, {e(P_["formal_title"])}. Opens its record.">{e(P_["plain_name"])}</button>')
-        return (f'<li class="mc-i lay-{LAYER_OF_PART[p]}{" open-frame" if p == "X" else ""}"><p class="mc-n t-phead">{nm}</p>'
-                f'<p class="mc-f t-legend muted">{e(P_["formal_title"])}</p><p class="mc-q">{e(q)}</p></li>')
+        return (f'<li class="mc-i lay-{LAYER_OF_PART[p]}{" open-frame" if p == "X" else ""}"><p class="mc-n"><span class="t-phead">{nm}</span> '
+                f'<span class="mc-f t-legend muted">{e(P_["formal_title"])}</span></p><p class="mc-q">{e(q)}</p></li>')
 
     def conn(text, n, cls=''):
         return f'<li class="mc-c {cls}" aria-hidden="true"><span class="mc-cn">{n}</span>{e(text)}</li>'
@@ -1878,7 +1878,8 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 .mc-i.open-frame{background:transparent;box-shadow:none}
 .mc-n a,.mc-b{all:unset;cursor:pointer;display:inline-flex;align-items:center;min-height:32px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .mc-b:focus-visible,.mc-n a:focus-visible{outline:2px solid var(--ch);outline-offset:2px}
-.mc-q{font:600 15px/20px Inter,sans-serif;margin-top:4px}
+.mc-q{font:600 15px/20px Inter,sans-serif;margin-top:2px}
+.mc-n .t-phead{margin-right:6px}
 .mc-c{display:flex;align-items:center;gap:10px;margin:0 0 0 22px;padding:8px 0 8px 16px;border-left:3px solid var(--ch);font:600 14px/20px Inter,sans-serif}
 .mc-cn{font:800 22px/1 "Inter Tight",sans-serif}
 .mc-c.ret{border-left-color:var(--ch);margin-bottom:8px}
