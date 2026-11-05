@@ -22,11 +22,11 @@ Dustin's dark atlas, kept in its structure and cut to its main lines. The overvi
 - Checks gets a wider card so seven variables fit and the board stays near 900 px tall.
 - Small cycles use the tag as the arrowhead (dataviz memo); boxes carry 48 px icons, since 14 need it.
 - R3 lists no weakest step; the page names L47 by grade, as R3's evidence summary does.
-- Which question each part answers comes from the dark atlas extract (`story.parts[].q`). "Both questions meet" over Policy is studio wording.
-- "Color is the layer" becomes letter and place on Charcoal, because hue keeps one job here. This departs from Concept 00's wording.
-- Selection takes the working red when no reform is in view, as the kit does (DR-18). R-01's view and page start with its targets red.
+- The question band reads the dark atlas extract (`story.parts[].q`).
+- "Color is the layer" becomes letter and place, since hue keeps one job on Charcoal: a departure from Concept 00.
+- With no reform in view, selection takes the red (DR-18).
 - Kit: one line selects the visible copy where a view holds two artboards; the panel is a right drawer.
-- Every reform card and issue panel that names a flagged reform carries its disclosure from the dataset.
+- Every reform card and issue panel naming a flagged reform carries its disclosure.
 - Studio-draft headlines: "Policy that favors insiders adds to the wealth that funds political spending." (rests on L03 and L01, both well supported); "18 of the 23 loops feed themselves. 22 have a reform aimed at them."; "The risk of losing office is where the safe-seat loop meets the loops that hold officials to account."; "Every line says what happens next, and how sure we are." (Concept 00). R10 and R-01 use V7's titles.
 
 ## Self-score
@@ -44,15 +44,14 @@ Dustin's dark atlas, kept in its structure and cut to its main lines. The overvi
 - `atlas_concepts_verify.py`: PASS; the self-test caught all six planted errors.
 - `atlas_concepts_check.js`: PASS, 6 views at 1440 and 390 px, 0 failures, 0 axe violations, text 13 px or larger, one red job per view.
 - My runs: Tab on each view (every stop ringed); arrows walk R10 as C1, L08, C2 and round; Enter and Escape with focus returned; deep links; the step-through; R-04 moving the red; the phone sheet.
-- Color captures of every view at 1440 and 390, and 2x zooms of loop cards, viewed.
-- Text widths measured with Inter against Chromium: within 1 percent.
+- Color captures at 1440 and 390, and 2x zooms of loop cards, viewed.
 
 ## Not tested
 
 - Screen readers, Firefox, Safari, real phones, 200 percent zoom.
 - Widths between 900 and 1339 px, where the board turns into a grid of cards.
 - Reduced motion by eye, print and wall size, and the ten-second test with readers.
-- Note: the check script's grayscale style survives its hash navigation, so its 1440 captures after the overview are gray. Captures ending `-color` show those views in color.
+- Note: the check's grayscale style survives its hash navigation, so its later 1440 captures are gray; `-color` captures show them in color.
 
 ## Change log
 
