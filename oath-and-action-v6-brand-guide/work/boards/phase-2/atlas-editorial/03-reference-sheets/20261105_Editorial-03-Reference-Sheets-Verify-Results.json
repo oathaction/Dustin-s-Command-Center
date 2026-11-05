@@ -1,0 +1,21 @@
+{
+ "file": "work/boards/phase-2/atlas-editorial/03-reference-sheets/20261105_Editorial-03-Reference-Sheets.html",
+ "model": "work/boards/phase-2/maps/20261028_Maps-Model-Data.json",
+ "items_checked": {
+  "nodes": 229,
+  "links": 1041,
+  "loops": 145,
+  "reforms": 30,
+  "names": 812,
+  "counts": 149,
+  "strips": 1
+ },
+ "distinct_ids": {
+  "node": 51,
+  "link": 118,
+  "loop": 23,
+  "reform": 10
+ },
+ "errors": [],
+ "pass": true
+}

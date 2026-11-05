@@ -89,6 +89,16 @@ def build():
             'steps': o.get('steps'), 'stations': o.get('stations'), 'delay_word': o.get('delay_word'),
         }
 
+    # V7's renderer holds the editor's disclosures for eight reform profiles (INTERESTS and INTEREST_TEXT in the
+    # V7 script); the profiles flag them with interest_note. Copied here word for word.
+    interests = {'R-01': 'nomination', 'R-02': 'nomination', 'R-47': 'nomination', 'R-22': 'care', 'R-24': 'care',
+                 'R-31': 'care', 'R-39': 'contracting', 'R-49': 'veteran'}
+    interest_text = {
+        'nomination': "Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign.",
+        'care': "Oath & Action's editor co-founded and led a home care company.",
+        'contracting': "Oath & Action's editor worked as a manager at a large government contractor. This profile proposes building more capacity inside government.",
+        'veteran': "Oath & Action's editor is an Army veteran.",
+    }
     reforms = {}
     for k, r in V7['reforms'].items():
         d = IC['reforms'][k]
@@ -96,7 +106,8 @@ def build():
                              'implementation', 'costs', 'failure_risks', 'problem_evidence', 'remedy_evidence',
                              'tradeoffs', 'success_measures', 'alternatives', 'status', 'rejected', 'interest_note',
                              'targets', 'loops', 'band', 'routes', 'effects', 'effects_confidence', 'complements'),
-                      'short': d.get('short'), 'lead': d.get('lead')}
+                      'short': d.get('short'), 'lead': d.get('lead'),
+                      'disclosure': interest_text[interests[k]] if k in interests else None}
 
     issues = {}
     for k, i in V7['issues'].items():

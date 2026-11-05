@@ -1,0 +1,47 @@
+{
+ "file": "work/boards/phase-2/atlas-editorial/02-economist-register/20261105_Editorial-02-Economist-Register.html",
+ "model": "work/boards/phase-2/maps/20261028_Maps-Model-Data.json",
+ "items_checked": {
+  "nodes": 169,
+  "links": 134,
+  "loops": 157,
+  "reforms": 29,
+  "names": 333,
+  "counts": 96,
+  "strips": 1
+ },
+ "distinct_ids": {
+  "node": 51,
+  "link": 50,
+  "loop": 23,
+  "reform": 17
+ },
+ "errors": [],
+ "pass": true,
+ "selftest": [
+  [
+   "flip a minus sign",
+   "caught"
+  ],
+  [
+   "L53 grade to documented",
+   "caught"
+  ],
+  [
+   "rename a label",
+   "caught"
+  ],
+  [
+   "drop R8 from the strip",
+   "caught"
+  ],
+  [
+   "reorder R10 steps",
+   "caught"
+  ],
+  [
+   "em dash",
+   "caught"
+  ]
+ ]
+}
