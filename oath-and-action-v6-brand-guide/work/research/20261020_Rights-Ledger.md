@@ -473,8 +473,8 @@ Dustin sent ten images on November 5. The first five are saved in `work/research
 |---|---|---|
 | `20261105_Ref-Editorial-Desk-Overview-Needs-Work.png` | The studio's concept 12 overview, which Dustin marked as needing work: unnamed dots, no descriptions | Studio work. Record of feedback |
 | `20261105_Ref-Editorial-Desk-Area-C-And-Strip-Needs-Work.webp` | The studio's concept 12 area C drawing and loop strip, marked as needing work | Studio work. Record of feedback |
-| `20261105_Ref-Atlas-V8-Loop-Explorer-R1.webp` | "What keeps a pattern going?", a loop explorer from Dustin's working atlas ("Design revision V8"): loop list, R1 box-and-arrow, connection cards, responses | Oath & Action's own atlas work (Q-03). Study only |
-| `20261105_Ref-Atlas-V8-Variable-Neighborhood-A3.png` | "What pushes on it and what it pushes on", connections around A3 with incoming and outgoing filters | Oath & Action's own atlas work. Study only |
+| `20261105_Ref-Atlas-V8-Loop-Explorer-R1.webp` | "What keeps a pattern going?", a loop explorer mockup: loop list, R1 box-and-arrow, connection cards, responses. Its footer text reads "Design revision V8" | Generated with ChatGPT and supplied by Dustin; not from a built atlas (Dustin, November 5). Study only |
+| `20261105_Ref-Atlas-V8-Variable-Neighborhood-A3.png` | "What pushes on it and what it pushes on", connections around A3 with incoming and outgoing filters | Generated with ChatGPT and supplied by Dustin; not from a built atlas (Dustin, November 5). Study only |
 | `20261105_Ref-Atlas-Visual-System-Arrow-Conventions.webp` | Atlas Visual System sheets: arrow conventions, R1, R16's untested step, R-28 on its target, working rules | Oath & Action's own work (Q-03). Study only |
 | Not saved: Concept 11 Register | "The whole system on one register", ten domains as rows with an open R10 row and R-01's effects | Oath & Action's own atlas work. Study only |
 | Not saved: Concept 00 Shared Language | "Every line says what happens next, and how sure we are", the line grammar sheet | Oath & Action's own atlas work. Study only |

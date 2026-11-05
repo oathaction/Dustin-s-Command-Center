@@ -40,3 +40,8 @@ Supplied by Dustin in the session. The large files stay out of git (`work/extrac
 | `20260916_Who-Do-They-Answer-To-National-Essay_DRAFT.md` | 201,260 | `2e97682aad99590e685a8bcfee1b88a396c0a20f410256435b9e093043eeaf1a` | `work/extract/supplied-20261105/` |
 | `20261015_Atlas-V7-Editorial-And-QA-Report.md` | 20,688 | `5ea7927a116e89bb8b067d7e47a5ff8c74ee063b3390ad4787bc2e6e2fc00446` | `work/research/atlas-v7-docs/` |
 | `20261015_Atlas-V7-Content-Coverage-Manifest.csv` | 31,051 | `19ae92d033816e6716f74918357d6b9622e888a6dc86cb83e8b4dbf23ef4eea7` | `work/research/atlas-v7-docs/` |
+| `20261019_Oath-And-Action-Atlas-Design-Concepts_V1.html` (matches the October 20 checksum) | 526,992 | `a2f0f0695a893ba370579e6bf6637f82b36c29c94d7bc6842ca698f19bcfd226` | `work/extract/supplied-20261105/` |
+| `20261015_Who-Do-They-Answer-To-Systems-Atlas_V6.html` | 7,070,131 | `c567a6325dc56b6f3d8eb9049f6e0b9a5d3db60b5bffa5e3928848cc402a1468` | `work/extract/supplied-20261105/` |
+| `20261015_Democracy-Issues-And-Reforms-Register_V4.xlsx` | 539,792 | `987529dfa02a66414864c1114968555a40e3ea55ea066dbce2a6c795a7d4f23a` | `work/extract/supplied-20261105/` |
+| `20261015_Evidence-And-Changes-Ledger_V4.xlsx` | 187,226 | `dea97078a809b326e574dbfe4f43ef95df11cdeaa196b07ffc9b8d6fbb9e3105` | `work/extract/supplied-20261105/` |
+| `20260911_Democracy-Atlas-Rigorous-Review-Memo.docx` | 22,915 | `e22bfad3d98a9833deece9fb83b425c652734ae77f69bf9bfa68e516a92e87c3` | `work/extract/supplied-20261105/` |
