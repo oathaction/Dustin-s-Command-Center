@@ -196,13 +196,8 @@ def gloss(term):
 
 
 IMPROVE = sentences(gloss('Reinforcing loop (R)'))[-1]          # "Improvement or decline can reinforce itself."
-DISCLOSURE = None
-for pw in V7['pathways']:
-    for si in pw.get('sub_issues') or []:
-        t = si.get('text') or ''
-        if 'Disclosure:' in t and 'Yes on 3' in t:
-            DISCLOSURE = t[t.index('Disclosure:'):].strip()
-assert DISCLOSURE, 'R-01 disclosure not found in the V7 extract'
+DISCLOSURE = D['reforms']['R-01']['disclosure']   # V7's own words, carried by the shared dataset
+assert DISCLOSURE and 'Yes on 3' in DISCLOSURE
 
 # ------------------------------------------------------------------------------------------- the model's flows
 FLOW = {}
@@ -1434,7 +1429,8 @@ a.lc-name{text-decoration:underline;text-decoration-thickness:1px;text-underline
 .lc-title{color:var(--ds)}
 .lc-draw{margin:6px 0 2px}
 .lc-draw svg{max-width:100%;height:auto}
-.lc-draw .gap,.lcard .draw .sg-ring,.lcard .draw .hollow-core{fill:var(--wh)}
+.lc-draw .gap,.lcard .draw .sg-ring{fill:var(--wh)}
+.draw .hollow-core{fill:none}
 .lcard .draw .hollow-core{stroke:var(--wh)}
 .lcard .draw .sg-ring{fill:var(--wh)}
 .lc-ra .t-eyebrow{display:block;margin-bottom:2px}
@@ -1749,7 +1745,8 @@ def chain_svg(k, width=350, interactive=False, red_targets=(), view='', title_id
         accent = '' if open_ else f'<rect x="0" y="{f(by)}" width="6" height="{f(bh)}" fill="{ACCENT[LAYER_OF_PART[part]]}"/>'
         label = TL(lx, by + 26, lines, 'map', cls='ak-label', attrs=(f' data-node="{code}" data-name="{e(lab)}"' if code else ''))
         codet = T(14, by + 26, code, 'code', cls='muted') if code else ''
-        frame = f'<rect x="0.5" y="{f(by + 0.5)}" width="{f(BW - 1)}" height="{f(bh - 1)}" class="{"box-open" if open_ else "box"} ak-mark" stroke-width="1"/>'
+        frame = (f'<path d="M0.5 {f(by + 0.5)} H{f(BW - 0.5)} V{f(by + bh - 0.5)} H0.5 Z" class="box-open ak-mark" stroke-width="1"/>' if open_ else
+                 f'<rect x="0.5" y="{f(by + 0.5)}" width="{f(BW - 1)}" height="{f(bh - 1)}" class="box ak-mark" stroke-width="1"/>')
         say = var_say(code) if code else f'{lab}, a station in a sketched loop'
         if interactive and code:
             o.append(f'<g role="button" data-select="{var_key(code)}" aria-label="{e(say)}" class="bx">{frame}{accent}{codet}{label}</g>')
@@ -2435,7 +2432,7 @@ def view_reform_r01():
     L = LOOPS['R10']
     icon = acc.icon_svg(rid, 'black', uid='r01-head', size=64)
     deck = (f'<p class="loop-id"><span class="h-icon">{icon}</span>{chip("Reform", rid)} <span data-reform="{rid}" data-targets="{" ".join(R["targets"])}">aims at {", ".join(R["targets"])}</span> · band: {e(R["band"])}</p>'
-            f'<p>{e(R["summary"])}</p><p class="t-cap hd-disc">{e(DISCLOSURE)}</p>')
+            f'<p>{e(R["summary"])}</p><p class="t-cap hd-disc"><b>Disclosure.</b> {e(DISCLOSURE)}</p>')
     side = toc([('r01-problem', '04.1', 'The problem it answers'), ('r01-where', '04.2', 'Where it acts'), ('r01-change', '04.3', 'What it changes'),
                 ('r01-effects', '04.4', 'Expected effects'), ('r01-routes', '04.5', 'Routes and who can act'), ('r01-evidence', '04.6', 'Evidence'),
                 ('r01-risks', '04.7', 'Tradeoffs and risks'), ('r01-status', '04.8', 'Status and disclosure')])
@@ -2506,7 +2503,7 @@ def view_reform_r01():
     p8 = plate('r01-status', '04.8', 'Status and disclosure', '',
                f'<div class="status"><p class="t-eyebrow">Status, checked {e(st["checked"])}</p><p class="t-body">{e(st["text"])}</p>'
                f'<p class="t-cap muted">Sources in V7: {", ".join(st["sources"])}.</p>'
-               f'<div class="disclose"><p class="t-body">{e(DISCLOSURE)}</p></div></div>')
+               f'<div class="disclose"><p class="t-eyebrow">Disclosure</p><p class="t-body">{e(DISCLOSURE)}</p></div></div>')
     return (f'<section data-view-root="reform-r01" data-crumb="Reform R-01" data-parent="overview" aria-labelledby="h-reform-r01">'
             f'{head}{p1}{p2}{p3}{p4}{p5}{p6}{p7}{p8}</section>')
 

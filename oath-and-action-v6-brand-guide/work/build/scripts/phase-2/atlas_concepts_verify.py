@@ -213,7 +213,8 @@ def verify(html):
         a = it['attrs']
         if 'data-issue' in a and ISSUES and a['data-issue'] not in ISSUES:
             errs.append(f'unknown issue {a["data-issue"]}')
-        if 'data-part' in a and PARTS and a['data-part'] not in PARTS:
+        # Civic Line icons mark their own groups data-part="base" and "accent" (D2-43); those are not atlas parts
+        if 'data-part' in a and PARTS and a['data-part'] not in PARTS and a['data-part'] not in ('base', 'accent'):
             errs.append(f'unknown part {a["data-part"]}')
     if stats['strips'] == 0:
         errs.append('no data-strip="loops" element (DR-12: a strip of all 23 loops)')

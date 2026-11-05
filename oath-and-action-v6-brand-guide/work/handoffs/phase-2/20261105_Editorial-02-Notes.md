@@ -23,7 +23,7 @@ The atlas as a register you read across, the way a weekly's data desk sets a tab
 - **Color is the layer, read as layers of meaning.** Charcoal is the system, Stone the context, Prussian the fix, red where a fix acts. Concept 00 is not on disk; this reading needs Dustin's confirmation.
 - **Red only on the loop and reform views.** Both show where R-01 acts, as the brief's section 3 and rule 7 ask. Selection elsewhere goes to ink.
 - **Evidence bars filled with the line textures.** Each grade's bar segment uses its own pattern, so the mix survives grayscale.
-- **Disclosure from V7.** The editorial dataset's R-01 status omits it. The script quotes it in full from the V7 record "Massachusetts Question 3 (November 3, 2026)" and asserts it is present.
+- **Disclosure in full.** The R-01 status prints `reforms['R-01']['disclosure']` from the shared dataset word for word, and the script asserts it is present. Open item: R-02, R-39 and R-47 also carry disclosures and appear on this page (panels, the Elections reform table, Technology's fix card); per the main session's instruction only R-01 changed this round.
 - **Icon metadata renamed.** Civic Line files carry `data-part="base|accent"`, which the November verifier reads as an atlas part. The inline copy renames that attribute to `data-cl-part`; the drawing is unchanged. Other makers who use icons will hit the same failure.
 - **Kit departures.** Three small patches in `atlas-kit.js`: selection never takes red; red marks only on views flagged `data-red-ok`; a view with a wide and a phone drawing selects the copy on screen.
 - **Headlines are studio drafts**, built from model sentences and counts.

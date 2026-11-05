@@ -614,3 +614,11 @@ svg.cyc-lg .ak-target .hd { --hs: 1; }
 @media (max-width: 899.98px) {
   .ak-panel { padding: 12px 20px 24px; }
 }
+
+/* type audit: every style on the frame memo's scale */
+.ak-btn { font: 600 15px/20px Inter, sans-serif; }
+.ak-crumbs ol { line-height: 20px; }
+.fl-open, .lc-open, .rc-open, .kb-go, .words-d summary, .rb-t { font: 600 15px/18px Inter, sans-serif; }
+.idl dt, .p-dl dt { font: 500 13px/18px Inter, sans-serif; color: var(--ds); padding-top: 1px; }
+.lc-flag { font: 700 13px/18px Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.fc-h > svg { width: 944px; min-width: 944px; }

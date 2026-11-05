@@ -7,7 +7,7 @@
   "loops": 106,
   "reforms": 14,
   "names": 336,
-  "counts": 38,
+  "counts": 42,
   "strips": 1
  },
  "distinct_ids": {
@@ -17,5 +17,31 @@
   "reform": 10
  },
  "errors": [],
- "pass": true
+ "pass": true,
+ "selftest": [
+  [
+   "flip a minus sign",
+   "caught"
+  ],
+  [
+   "L53 grade to documented",
+   "caught"
+  ],
+  [
+   "rename a label",
+   "caught"
+  ],
+  [
+   "drop R8 from the strip",
+   "caught"
+  ],
+  [
+   "reorder R10 steps",
+   "caught"
+  ],
+  [
+   "em dash",
+   "caught"
+  ]
+ ]
 }

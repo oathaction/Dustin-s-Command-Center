@@ -1306,7 +1306,12 @@ def view_overview():
     head = (f'<header class="vhead"><div class="vhead-main">'
             f'<p class="eyebrow">{e(D["opening"]["kicker"])}</p>'
             f'<h1 class="display" id="h-overview" data-ak-heading>Policy that favors insiders adds to the wealth that funds political spending.</h1>'
-            f'<p class="deck">{e(D["opening"]["paras"][0])}</p></div>'
+            f'<p class="deck">{e(D["opening"]["paras"][0])}</p>'
+            f'<ul class="figs" aria-label="The atlas in numbers">'
+            f'<li><span class="figi">{cnt("variables", COUNTS["variables"])}</span> variables</li>'
+            f'<li><span class="figi">{cnt("connections", COUNTS["connections"])}</span> connections, each graded</li>'
+            f'<li><span class="figi">{cnt("loops", COUNTS["loops"])}</span> loops</li>'
+            f'<li><span class="figi">{cnt("reforms", COUNTS["reforms"])}</span> reforms</li></ul></div>'
             f'<div class="vhead-side qcards">{qcards}</div></header>')
     howto = (f'<div class="howto"><p><b>How to read the map.</b> Each card is one part, with every variable in it. '
              f'Each arrow bundles the connections from one part to another, and its number counts them. '
@@ -2068,6 +2073,8 @@ def issue_row(k):
 
 EXTRA_CSS += r'''
 .lede{margin-top:10px}
+.figs{list-style:none;display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;padding-top:12px;border-top:1px solid var(--stone);max-width:800px;font:500 15px/23px var(--f-ui);color:var(--dim)}
+.figi{font:800 24px/1 var(--f-disp);letter-spacing:-.02em;color:var(--ink);margin-right:4px;font-variant-numeric:tabular-nums}
 .aloud{border-top:2px solid var(--ink);background:var(--panel);padding:16px 20px 20px}
 .aloud .eyebrow{margin-bottom:8px}
 .aloud-line{font:700 20px/27px var(--f-disp);letter-spacing:-.01em;margin-bottom:14px}
@@ -2349,7 +2356,7 @@ def view_how_to_read():
            f'<p><b>Gray: context.</b> The other large flows between parts.</p></li>'
            f'<li><div>{red}</div><p><b>Red: where a reform acts.</b> One job per view. Red never marks a sign, a grade, a party or harm.</p></li></ul>'
            f'<p class="body mt">The layer is the letter and the place. The core parts, A to E, run across the middle in the order the story moves. '
-           f'Outside forces, X, sit above. Your household, EC, and technology, TC, sit below. On this dark ground, hue keeps one job, so the layer is never a color.</p>')
+           f'Outside forces, X, sit above. Your household, EC, and technology, TC, sit below. On this dark ground, hue keeps one job, and the letter carries the layer.</p>')
     rows.append(('Color is the layer', 'In the Night Edition, color marks attention, and the letter marks the layer.', col))
     body = ''.join(f'<section class="sec hrow" aria-labelledby="hr-{i}"><div class="hr-head"><p class="eyebrow">{i + 1} of {len(rows)}</p>'
                    f'<h2 id="hr-{i}" class="headline">{e(t)}</h2><p class="body dim">{e(sub)}</p></div><div class="hr-body">{content}</div></section>'

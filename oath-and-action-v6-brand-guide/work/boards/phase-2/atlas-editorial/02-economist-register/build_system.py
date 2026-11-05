@@ -8,9 +8,8 @@ fix aimed at it. Charts and tables carry a sentence title, a measure line and a 
 Pillar Red appears only on the loop and reform views, where R-01 acts.
 
 Every label, count, sign, grade, delay, issue, example and reform text is read by script from
-work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json. One sentence comes from the V7
-extract work/extract/atlas-v7-data.json: the editor's Yes on 3 disclosure, which the editorial dataset leaves out of
-R-01's status and which the brief requires on the R-01 view. Headlines, decks and chart titles are studio drafts.
+work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json, including R-01's disclosure in V7's
+own words, which the R-01 view prints in full. Headlines, decks and chart titles are studio drafts.
 
 Run from the project root:
     python3 -I work/boards/phase-2/atlas-editorial/02-economist-register/build_system.py
@@ -33,7 +32,6 @@ acc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(acc)
 
 ED = json.loads((ROOT / 'work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json').read_text())
-V7 = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())
 KIT_JS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.js').read_text()
 KIT_CSS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.css').read_text()
 OUT = HERE / '20261105_Editorial-02-Economist-Register.html'
@@ -1622,8 +1620,8 @@ def reform_r01():
               f'<div><h3 class="sh">How it could fail</h3><p>{e(r["failure_risks"])}</p></div>'
               f'<div><h3 class="sh">How to judge it</h3><ul class="succ">{succ}</ul></div></div>'
             + f'<section class="status" aria-labelledby="h-rfs"><p class="eyebrow">Status</p><h2 class="sh" id="h-rfs">Where it stands, as of {e(date_words(status["checked"]))}</h2>'
-              f'<p>{e(status["text"])}</p><p class="disc"><b>{e(DISCLOSURE[0].split(":", 1)[0])}:</b>{e(DISCLOSURE[0].split(":", 1)[1])}</p>'
-              f'<p class="small">{e(NO_POSITION)} Source of the disclosure: Atlas V7, \u201c{e(DISCLOSURE[1])}\u201d.</p></section>'
+              f'<p>{e(status["text"])}</p><p class="disc"><b>Disclosure:</b> {e(DISCLOSURE)}</p>'
+              f'<p class="small">{e(NO_POSITION)}</p></section>'
             + source_line() + '</section>')
 
 
