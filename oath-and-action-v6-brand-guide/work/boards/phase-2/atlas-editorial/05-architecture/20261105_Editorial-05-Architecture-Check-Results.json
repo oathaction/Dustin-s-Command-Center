@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html",
- "checked": "2026-11-05T22:01:22.813Z",
+ "checked": "2026-11-05T22:30:29.467Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 495,
+   "texts": 493,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -23,7 +23,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 31,
-    "labels": 18,
+    "labels": 16,
     "outside": [],
     "overlaps": []
    },
@@ -201,7 +201,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 8331,
+   "height": 4416,
    "axe": [],
    "focusStops": 14,
    "focusWithoutRing": []
@@ -210,7 +210,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 477,
+   "texts": 475,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -219,7 +219,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 31,
-    "labels": 2,
+    "labels": 0,
     "outside": [],
     "overlaps": []
    },
@@ -308,7 +308,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 137,
+   "texts": 133,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -333,7 +333,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 8955,
+   "height": 8854,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -397,7 +397,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 14115,
+   "height": 8728,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -406,7 +406,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 477,
+   "texts": 475,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -415,7 +415,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 31,
-    "labels": 2,
+    "labels": 0,
     "outside": [],
     "overlaps": []
    },
@@ -429,7 +429,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 14012,
+   "height": 13984,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -504,7 +504,7 @@
    "width": 360,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 137,
+   "texts": 133,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -529,7 +529,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 9406,
+   "height": 9341,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -593,7 +593,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 14351,
+   "height": 9079,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

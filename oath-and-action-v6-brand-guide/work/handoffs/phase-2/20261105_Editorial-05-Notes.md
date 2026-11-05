@@ -40,7 +40,7 @@ Reader panel: the glance answers the first screen; on a phone it comes before th
 
 Left as they are: L23's name and the family name "Democratic quality" are Dustin's calls. The full building stays long; the glance carries the first screen.
 
-Creative director's two must-fixes: the Terms glossary shared the class `gl` with the glance's grid, which squeezed it into 34 and 30 px columns; it now has its own class and sets as two columns, one on phones. The route table stacks on phones, so every check date shows. Each of the 16 question answers now prints a numbered source (title, publisher, year) after every sentence that carries a figure, read by script from V7's pathway claims in `work/extract/atlas-v7-data.json`. Twelve answers carry figures; all are sourced. PW13's "three-quarters" and its 2028 projection are sourced too.
+Creative director's two must-fixes: the Terms glossary shared the class `gl` with the glance's grid, which squeezed it into 34 and 30 px columns; it now has its own class and sets as two columns, one on phones. The route table stacks on phones, so every check date shows. Each of the 16 question answers now prints a numbered source (title, publisher, year) after every sentence that carries a figure, read by script from V7's pathway claims in `work/extract/atlas-v7-data.json`. All 16 answers carry at least one figure, and all 16 now list sources; PW13's "three-quarters" and its 2028 projection included. Both checks pass after these fixes: 6 views at 1440, 390 and 360 px, 0 failures.
 
 ## Self-score
 
