@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html",
- "checked": "2026-11-05T20:47:39.243Z",
+ "checked": "2026-11-05T20:55:28.254Z",
  "views": [
   "overview",
   "area-c",
@@ -38,7 +38,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4068,
+   "height": 4109,
    "axe": [],
    "focusStops": 14,
    "focusWithoutRing": []
@@ -47,7 +47,7 @@
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 581,
+   "texts": 587,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -71,7 +71,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 9513,
+   "height": 9700,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -80,7 +80,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 144,
+   "texts": 146,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -106,7 +106,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 3011,
+   "height": 3078,
    "axe": [],
    "focusStops": 7,
    "focusWithoutRing": []
@@ -141,7 +141,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4376,
+   "height": 4370,
    "axe": [],
    "focusStops": 3,
    "focusWithoutRing": []
@@ -174,7 +174,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8041,
+   "height": 8039,
    "axe": [],
    "focusStops": 1,
    "focusWithoutRing": []
@@ -207,7 +207,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4434,
+   "height": 4422,
    "axe": [],
    "focusStops": 14,
    "focusWithoutRing": []
@@ -240,7 +240,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 11492,
+   "height": 11487,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -249,7 +249,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 574,
+   "texts": 580,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -273,7 +273,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 20847,
+   "height": 21189,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -282,7 +282,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 115,
+   "texts": 117,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -308,7 +308,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5463,
+   "height": 5579,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -343,7 +343,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 7471,
+   "height": 7458,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -376,7 +376,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 14939,
+   "height": 14989,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -409,7 +409,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8776,
+   "height": 8730,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

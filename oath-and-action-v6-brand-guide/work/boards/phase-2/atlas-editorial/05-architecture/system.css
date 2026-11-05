@@ -599,9 +599,10 @@ ol.p-list { counter-reset: s; }
 /* reform targets carry the working red at the hover weight, so short steps stay legible */
 svg [data-select].ak-target .ak-mark { stroke-width: var(--ak-w-hi, 3px); stroke-dasharray: var(--da-hi, none); }
 svg .ak-target .hd { --hs: 1.3; }
-svg.cyc-lg .ak-target .hd { --hs: 1; }
+svg.cyc-lg .ak-target .hd { --hs: 1.7; }
+svg.cyc-lg [data-select].ak-target .ak-mark { stroke-width: 6px; stroke-dasharray: var(--da-sel, none); }
 .stn.ak-target .bx { stroke-width: 3px; }
-.cyc-lg .stn.ak-target .bx { stroke-width: 3px; }
+.cyc-lg .stn.ak-target .bx { stroke-width: 6px; }
 
 .fc-v { display: none; }
 @media (max-width: 899.98px) {
@@ -622,3 +623,7 @@ svg.cyc-lg .ak-target .hd { --hs: 1; }
 .idl dt, .p-dl dt { font: 500 13px/18px Inter, sans-serif; color: var(--ds); padding-top: 1px; }
 .lc-flag { font: 700 13px/18px Inter, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
 .fc-h > svg { width: 944px; min-width: 944px; }
+
+.rc-dc { font: 400 13px/18px Inter, sans-serif; color: var(--ds); margin-top: 6px; border-left: 2px solid var(--ink); padding-left: 8px; }
+.rc-dc strong, .disc-s strong { color: var(--ink); font-weight: 600; }
+.disc-s { font: 400 14px/20px Inter, sans-serif; color: var(--ds); margin: -16px 0 28px; max-width: 46em; border-left: 2px solid var(--ink); padding-left: 10px; }

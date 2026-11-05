@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/03-reference-sheets/20261105_Editorial-03-Reference-Sheets.html",
- "checked": "2026-11-05T20:47:35.757Z",
+ "checked": "2026-11-05T20:55:45.604Z",
  "views": [
   "overview",
   "area-c",
@@ -49,7 +49,7 @@
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 934,
+   "texts": 940,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -75,7 +75,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10905,
+   "height": 11069,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -84,7 +84,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 158,
+   "texts": 179,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -93,7 +93,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 46,
+    "labels": 58,
     "outside": [],
     "overlaps": []
    },
@@ -110,7 +110,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 3957,
+   "height": 4045,
    "axe": [],
    "focusStops": 11,
    "focusWithoutRing": []
@@ -119,7 +119,7 @@
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 224,
+   "texts": 243,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -128,7 +128,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 46,
+    "labels": 58,
     "outside": [],
     "overlaps": []
    },
@@ -145,7 +145,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 6674,
+   "height": 6739,
    "axe": [],
    "focusStops": 14,
    "focusWithoutRing": []
@@ -180,7 +180,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8066,
+   "height": 8002,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -189,7 +189,7 @@
    "width": 1440,
    "view": "how-to-read",
    "rootVisible": true,
-   "texts": 274,
+   "texts": 281,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -245,7 +245,8 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight"
+    "Inter Tight",
+    "Lora"
    ],
    "height": 10350,
    "axe": [],
@@ -256,7 +257,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 832,
+   "texts": 838,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -279,9 +280,10 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight"
+    "Inter Tight",
+    "Lora"
    ],
-   "height": 24642,
+   "height": 24866,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -290,7 +292,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 118,
+   "texts": 122,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -313,9 +315,10 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight"
+    "Inter Tight",
+    "Lora"
    ],
-   "height": 5930,
+   "height": 6138,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -324,7 +327,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 176,
+   "texts": 178,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -347,9 +350,10 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight"
+    "Inter Tight",
+    "Lora"
    ],
-   "height": 11118,
+   "height": 11206,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -384,7 +388,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 17980,
+   "height": 17724,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -393,7 +397,7 @@
    "width": 390,
    "view": "how-to-read",
    "rootVisible": true,
-   "texts": 273,
+   "texts": 280,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -419,7 +423,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10997,
+   "height": 11195,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

@@ -1184,9 +1184,8 @@ def tpl_reform(rid):
 
 # ---------------------------------------------------------------------------------------------------- icons
 def icon_svg(icon_id, edition='black', uid='', size=None):
-    """icon_svg() exactly as drawn. Only the icons' own data-part metadata (base, accent) is renamed data-icon-part,
-    because the atlas contract reads data-part as an atlas part (A to E, X, EC, TC). No path, stroke or color changes."""
-    return acc.icon_svg(icon_id, edition, uid=uid, size=size).replace(' data-part="', ' data-icon-part="')
+    """The approved Civic Line drawing exactly as delivered, through the shared icon_svg() (D2-52)."""
+    return acc.icon_svg(icon_id, edition, uid=uid, size=size)
 
 
 def icon(nid_or_icon, edition='black', uid='', size=48, variable=True):
@@ -1567,7 +1566,9 @@ def reform_card(rid, uid):
             f'<span class="rc-ic">{icon(rid, "black", uid + rid.lower(), 48, variable=False)}</span>'
             f'<span class="rc-b"><span class="rc-id">{rid}</span><span class="rc-t">{e(r["title"])}</span>'
             f'<span class="rc-x">{e(first_sentence(r["what_it_changes"]))}</span>'
-            f'<span class="rc-tg">Targets {e(", ".join(r["targets"]))} · {e(eff)}</span></span></button>{link}</li>')
+            f'<span class="rc-tg">Targets {e(", ".join(r["targets"]))} · {e(eff)}</span>'
+            + (f'<span class="rc-dc"><strong>Disclosure.</strong> {e(DISCLOSE[rid])}</span>' if rid in DISCLOSE else '')
+            + f'</span></button>{link}</li>')
 
 
 def view_area_c():
@@ -1729,6 +1730,15 @@ def reform_buttons(rids, uid):
     return out
 
 
+def disclosure_note(rids):
+    """One note under a row of reform buttons, quoting each disclosure once with the reforms it covers."""
+    groups = {}
+    for rid in rids:
+        if rid in DISCLOSE:
+            groups.setdefault(DISCLOSE[rid], []).append(rid)
+    return ''.join(f'<p class="disc-s"><strong>Disclosure, {e(" and ".join(v))}.</strong> {e(k)}</p>' for k, v in groups.items())
+
+
 def view_loop_r10():
     o = LO['R10']
     big = r10_large()
@@ -1763,6 +1773,7 @@ def view_loop_r10():
     <p class="ak-readout" data-ak-readout>Point at, tap or tab to a box or a step to read it.</p>
     <p class="r10-cap">Red marks where reform R-01, {e(rf["short"])}, acts: on {e(", ".join(rf["targets"]))}. Select another reform to move the red to its targets.</p>
     <ul class="rbtns" data-ak-roving data-ak-nav="sequence">{reform_buttons(o["reforms"], "r10")}</ul>
+    {disclosure_note(o["reforms"])}
     {stepper_r10()}
     <section class="blk" aria-labelledby="h-sd"><div class="sec-head"><h2 id="h-sd" class="t-head2">Step by step</h2></div><ol class="sds">{steps_detail}</ol></section>
     <section class="blk two-col" aria-labelledby="h-ev">

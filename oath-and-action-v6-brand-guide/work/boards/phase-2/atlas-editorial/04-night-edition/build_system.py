@@ -1790,6 +1790,7 @@ def square_drawing(lid, view, interactive=True, extra_c5=False, stepper=True, no
             return [(4, 'back to ' + ('more' if s > 0 else 'less'))]
         return [(i, 'more' if seq[i] > 0 else 'less')]
     rels = {n: ' '.join(f'link-{k.lower()}' for k in steps if n in (LINKS[k]['from'], LINKS[k]['to'])) for n in st}
+    step_svgs = []
     # steps
     yt, yb_ = 64, TH + GAPY + 64
     xl, xr = TW / 2, W - TW / 2
@@ -1817,7 +1818,7 @@ def square_drawing(lid, view, interactive=True, extra_c5=False, stepper=True, no
         else:           # left side, up
             pts = [(xl, TH + GAPY - 2), (xl, TH + 2)]
             lab_svg, _ = label_block(lines, xl + 22, TH + GAPY / 2, 250, 'start', 'middle')
-        out += big_step(k, pts, interactive, lab_svg)
+        step_svgs.append(big_step(k, pts, interactive, lab_svg))
     if extra_c5:
         k = 'L24'
         y = yb_
@@ -1825,11 +1826,12 @@ def square_drawing(lid, view, interactive=True, extra_c5=False, stepper=True, no
         lines = step_label_lines(k, None, [])
         name_svg, _ = label_block(lines[:1], (W + C5_X) / 2, y - 18, C5_X - W - 24, 'middle', 'bottom')
         rest_svg, _ = label_block(lines[1:], (W + C5_X) / 2, y + 34, C5_X - W - 16, 'middle')
-        out += big_step(k, pts, interactive, name_svg + rest_svg)
-    for i, n in enumerate(st):
+        l24_svg = big_step(k, pts, interactive, name_svg + rest_svg)
+    for i, n in enumerate(st):     # document order follows the loop: station, its step, the next station
         x, y = pos[n]
-        out += big_tile(n, x, y, TW, TH, extras[n], rels[n], interactive, state_for(i) if stepper else None)
+        out += big_tile(n, x, y, TW, TH, extras[n], rels[n], interactive, state_for(i) if stepper else None) + step_svgs[i]
     if extra_c5:
+        out += l24_svg
         x, y = pos['C5']
         out += big_tile('C5', x, y, 1312 - C5_X, TH, extras['C5'], 'link-l24', interactive)
     Wt = 1312 if extra_c5 else W
@@ -1855,6 +1857,7 @@ def chain_drawing(lid, view, interactive=True, stepper=True, notes='reforms'):
     ys = [TOP + i * (TH + G) for i in range(len(st))]
     out = ''
     rels = {n: ' '.join(f'link-{k.lower()}' for k in steps if n in (LINKS[k]['from'], LINKS[k]['to'])) for n in st}
+    chain_steps = []
     for i, k in enumerate(steps):
         ex = []
         if k in weak:
@@ -1871,9 +1874,9 @@ def chain_drawing(lid, view, interactive=True, stepper=True, notes='reforms'):
             xr, xe = TW + 34, TW - 40
             pts = [(TW + 2, ys[-1] + TH / 2), (xr, ys[-1] + TH / 2), (xr, 14), (xe, 14), (xe, TOP - 2)]
             lab_svg, _ = label_block(lines, xe - 26, 40, TW - 80, 'end')
-        out += big_step(k, pts, interactive, lab_svg, tag_at=0.5 if i < len(steps) - 1 else 0.9)
+        chain_steps.append(big_step(k, pts, interactive, lab_svg, tag_at=0.5 if i < len(steps) - 1 else 0.9))
     for i, n in enumerate(st):
-        out += big_tile(n, 0, ys[i], TW, TH, extras[n], rels[n], interactive)
+        out += big_tile(n, 0, ys[i], TW, TH, extras[n], rels[n], interactive) + chain_steps[i]
     H = ys[-1] + TH
     role = 'role="group" data-ak-roving data-ak-nav="sequence" data-ak-wrap' if interactive else 'role="img"'
     return (f'<svg class="dr dr-narrow" data-view="{view}" data-loop="{lid}" data-steps="{" ".join(steps)}" viewBox="0 0 {W} {fnum(H)}" '

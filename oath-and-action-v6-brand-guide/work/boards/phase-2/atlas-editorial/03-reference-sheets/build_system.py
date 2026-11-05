@@ -283,16 +283,20 @@ def tw(s, sty):
 
 
 def wrap(s, sty, width):
-    words, out, line = s.split(), [], ''
+    """Greedy line breaks on measured word widths (each word and the space measured once, so one pass settles it)."""
+    words, out, line, lw = s.split(), [], [], 0.0
+    sp = tw('a a', sty) - 2 * tw('a', sty)
     for w in words:
-        trial = (line + ' ' + w).strip()
-        if line and tw(trial, sty) > width:
-            out.append(line)
-            line = w
+        ww = tw(w, sty)
+        trial = lw + (sp if line else 0) + ww
+        if line and trial > width:
+            out.append(' '.join(line))
+            line, lw = [w], ww
         else:
-            line = trial
+            line.append(w)
+            lw = trial
     if line:
-        out.append(line)
+        out.append(' '.join(line))
     return out
 
 
@@ -1540,6 +1544,9 @@ a.lc-name{text-decoration:underline;text-decoration-thickness:1px;text-underline
 .layer .t-cap{margin-top:8px}
 .draw .leader{stroke:var(--st);stroke-width:1;fill:none}
 .anat-wrap{overflow-x:auto}
+.anat-phone{display:none}
+.anat-list{margin:16px 0 0;padding-left:22px}.anat-list li{padding:3px 0}
+@media (max-width:899.98px){.anat-phone{display:block}}
 .gloss{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 24px;margin:0}
 .gloss div{border-top:1px solid var(--st);padding-top:8px}
 .gloss dt{font-weight:600}.gloss dd{margin:4px 0 0}
@@ -1668,7 +1675,7 @@ def build():
 
 
 def main():
-    for i in range(10):
+    for i in range(12):
         out = build()
         if not measure_pending():
             break
@@ -2635,14 +2642,14 @@ def view_how_to_read():
                f'<ul class="layers">{"".join(lay)}</ul>')
     R = REFORMS['R-01']
     rsvg = (f'<svg class="draw spec-svg" width="340" height="112" viewBox="0 0 340 112" aria-hidden="true"><g class="st">{wire([(4, 30), (330, 30)], w=2, tex=tex_of(l25["evidence"]))}</g>'
-            + T(4, 16, f'{l25["id"]} {l25["name"]}', 'noteb')
+            + T(4, 14, f'{l25["id"]}, {grade_word(l25["evidence"]).lower()}', 'noteb')
             + red(bracket_h(100, 140, 30, side=1, depth=10))
             + red('M120 40 V80 H158', w=2)
             + '<g data-red="working" data-red-job="R-01 targets"><rect x="159" y="63" width="176" height="34" class="red-card" stroke-width="2"/></g><rect x="157.5" y="61.5" width="179" height="37" class="red-card-key"/>'
             + T(172, 85, 'Reform R-01 acts here', 'noteb') + '</svg>')
     p6 = plate('h-reform', '00.6', 'A bracket marks where a reform acts',
                '<p>A reform aims at named points: a connection, a condition, or both. A bracket hugs each target, and one line joins the brackets to the reform. '
-               'Red appears only here, once on each sheet, for reform R-01, the worked example. Effects are rated family by family and never added up.</p>',
+               'Red has one job on these sheets: it marks where reform R-01, the worked example, acts. Effects are rated family by family and never added up.</p>',
                f'<div class="conv-wide">{rsvg}<p class="t-cap">On sheets 03 and 04, R-01 takes three brackets, one on each of its targets: {", ".join(R["targets"])}.</p></div>')
     # anatomy of a card: the Elections card at actual size, with callouts
     secs = part_card('C', 0, 0, CARD_W)[1]
@@ -2654,13 +2661,18 @@ def view_how_to_read():
     notes = [(34, 'Plain name, then the formal title'), (82, 'The question this part answers'), (110, 'What it is, in one sentence'),
              (secs[0] + 30, 'Every condition, with its code'), (secs[0] + secs[1] + 24, 'What it passes on along the circuit'),
              (sum(secs[:3]) + 24, 'How many connections stay inside'), (sum(secs[:3]) + 48, 'The loops based here')]
-    callouts = ''
-    for yy, t in notes:
-        callouts += f'<path d="M{f(CARD_W - 8)} {f(yy - 4)} H{f(CARD_W + 40)}" class="leader"/>' + T(CARD_W + 48, yy, t, 'cap')
-    an_svg = (f'<svg class="draw anat" style="width:{f(CARD_W + 330)}px" width="{f(CARD_W + 330)}" height="{f(hc + 2)}" viewBox="0 0 {f(CARD_W + 330)} {f(hc + 2)}" role="img" '
+    callouts, nums = '', ''
+    for i, (yy, t) in enumerate(notes):
+        callouts += (f'<path d="M{f(CARD_W - 8)} {f(yy - 4)} H{f(CARD_W + 40)}" class="leader"/>'
+                     + T(CARD_W + 48, yy, f'{i + 1}', 'noteb') + T(CARD_W + 66, yy, t, 'cap'))
+        nums += f'<path d="M{f(CARD_W - 8)} {f(yy - 4)} H{f(CARD_W + 16)}" class="leader"/>' + T(CARD_W + 22, yy, f'{i + 1}', 'noteb')
+    an_svg = (f'<svg class="draw anat" style="width:{f(CARD_W + 350)}px" width="{f(CARD_W + 350)}" height="{f(hc + 2)}" viewBox="0 0 {f(CARD_W + 350)} {f(hc + 2)}" role="img" '
               f'aria-label="The Elections card from sheet 01, with a note on each section.">{card}{callouts}</svg>')
+    an_phone = (f'<svg class="draw anat" style="width:{f(CARD_W + 40)}px" width="{f(CARD_W + 40)}" height="{f(hc + 2)}" viewBox="0 0 {f(CARD_W + 40)} {f(hc + 2)}" aria-hidden="true">'
+                + card.replace('id="', 'id="ph-') + nums + '</svg>')
+    an_list = '<ol class="anat-list t-cap">' + ''.join(f'<li>{e(t)}</li>' for _, t in notes) + '</ol>'
     p7 = plate('h-card', '00.7', 'How to read a card', '<p>Each part of the system appears on the overview as a card. Every card has the same sections in the same order, so the five read across like a table.</p>',
-               f'<div class="anat-wrap ak-scroll" role="region" tabindex="0" aria-label="How to read a card, drawing">{an_svg}</div>')
+               f'<div class="wide-only"><div class="anat-wrap">{an_svg}</div></div><div class="narrow-only anat-phone">{an_phone}{an_list}</div>')
     terms = ['Variable', 'Connection', 'Feedback loop', 'Reinforcing loop (R)', 'Balancing loop (B)', 'Outside driver', 'Stock', 'Flow', 'Delay',
              'Documented', 'Well-supported', 'Plausible', 'Contested', 'Hypothesis', 'Reform profile', 'Problem evidence', 'Remedy evidence', 'Feasibility']
     gl = ''.join(f'<div><dt>{e(t)}</dt><dd>{e(gloss(t))}</dd></div>' for t in terms)

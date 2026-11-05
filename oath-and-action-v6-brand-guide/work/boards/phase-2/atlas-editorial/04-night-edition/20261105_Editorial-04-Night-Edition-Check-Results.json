@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition.html",
- "checked": "2026-11-05T20:52:02.444Z",
+ "checked": "2026-11-05T20:54:56.988Z",
  "views": [
   "overview",
   "area-c",
@@ -47,7 +47,7 @@
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 681,
+   "texts": 687,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -71,7 +71,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10133,
+   "height": 10293,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -80,7 +80,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 126,
+   "texts": 130,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -106,7 +106,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 2775,
+   "height": 2855,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -251,7 +251,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 686,
+   "texts": 692,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -275,7 +275,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 23490,
+   "height": 23784,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -284,7 +284,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 125,
+   "texts": 129,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -310,7 +310,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 6493,
+   "height": 6689,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
