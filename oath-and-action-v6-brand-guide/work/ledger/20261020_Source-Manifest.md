@@ -28,3 +28,15 @@ All files named in Master Brief section 2 are present. The two zips unpacked to 
 | `brand-mockups/20261021_Mockup-Hinge-Diagram-Newsprint.webp` | 41,446 | `358ebba0caa16e8914768154ad62eabfd9cffb04a6a9c298623d8fd1d15eb459` |
 | `brand-mockups/20261021_Mockup-Hinge-Diagram-Transparent.webp` | 57,480 | `8789088c10658144bc9182f5a9f09043aa24e552bf98f68469abdbf59993453c` |
 | `brand-mockups/20261021_Mockup-Square-Wordmark-Stewards.webp` | 97,478 | `48bb22b80d0b58ba7ee79c406f39ac05d0761e5bb6405de6ecffaab11a0e2218` |
+
+## Added November 5, 2026
+
+Supplied by Dustin in the session. The large files stay out of git (`work/extract/` is ignored); these checksums identify them. The V7 HTML matches the October 20 checksum byte for byte.
+
+| File | Bytes | SHA-256 | Where it sits |
+|---|---|---|---|
+| `20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html` | 3,109,589 | `05e26c6b2dc6031a915847fd3c941772cde50d3eda056fb0a4bc869b80c97649` | `work/extract/supplied-20261105/` |
+| `20261019_Oath-And-Action-Atlas-Interactive-Concept_V2.html` (the dark atlas, an earlier build) | 1,610,295 | `c5b947c550a4dc9094e529be377d914d712fa1ffdfda1d13710c6bc236ad4b4a` | `work/extract/supplied-20261105/` |
+| `20260916_Who-Do-They-Answer-To-National-Essay_DRAFT.md` | 201,260 | `2e97682aad99590e685a8bcfee1b88a396c0a20f410256435b9e093043eeaf1a` | `work/extract/supplied-20261105/` |
+| `20261015_Atlas-V7-Editorial-And-QA-Report.md` | 20,688 | `5ea7927a116e89bb8b067d7e47a5ff8c74ee063b3390ad4787bc2e6e2fc00446` | `work/research/atlas-v7-docs/` |
+| `20261015_Atlas-V7-Content-Coverage-Manifest.csv` | 31,051 | `19ae92d033816e6716f74918357d6b9622e888a6dc86cb83e8b4dbf23ef4eea7` | `work/research/atlas-v7-docs/` |

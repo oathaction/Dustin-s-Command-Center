@@ -277,3 +277,11 @@ Dustin reviewed concept 12, Editorial Desk: "I like the editorial desk, the dire
 | DR-32 | Plain names lead on the overview (Wealth, Voice, Elections, Checks, Policy, Your household), with the formal area titles beneath | Dustin, November 5: "let's go with plain names lead" |
 | DR-33 | The systems map must be full and complete: every area of the latest atlas (the five core areas, the outside drivers, the household economy and technology), with full explanations of the issues and of the reforms | Dustin, November 5 |
 | DR-34 | Dustin will attach the latest atlas HTML once the studio names which images it means. No build starts until the files arrive and Dustin says go | Dustin, November 5 |
+
+### Supplied atlas files, November 5, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-69 | The full V7 dataset is extracted to `work/extract/atlas-v7-data.json` (CLAUDE.md), and the dark atlas's dataset to `work/extract/atlas-interactive-concept-v2-data.json` | The concepts need issues, pathways, claims and sources, which the October 28 export left out |
+| D2-70 | The October 28 export agrees with raw V7: 0 mismatches on from, to, sign, delay and grade across 118 connections | Confirms the round-one concepts read correct data |
+| D2-71 | V7 is the canonical model: 51 variables, 118 connections, 23 loops, 194 issues, 50 reforms, 16 pathways, 433 claims, 1,140 source identifiers. The dark atlas carries the same model (identical IDs and titles) plus a reader layer V7 lacks: plain chapter names and stories for each part, plain loop names, 242 real-world examples for issues, and 14 common mix-ups. The concepts use both, V7 for the model and evidence, the dark atlas for the plain-language layer | Dustin, November 5: "make sure you're using the latest and most robust... it just needs to be complete" |
