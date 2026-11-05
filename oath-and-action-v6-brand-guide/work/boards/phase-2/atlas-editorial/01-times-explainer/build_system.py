@@ -2230,10 +2230,10 @@ def view_r01():
             f'<div><p class="eyebrow">How to judge results</p><ul class="body">{succ}</ul>'
             f'<p class="eyebrow">Other options</p><p class="body">{e(r["alternatives"])}</p></div></div></section>'
             '<section class="sec status" aria-labelledby="r01-st-h"><p class="eyebrow">Status</p>'
-            f'<h2 class="headline" id="r01-st-h">Where it stands, as of {e(chk)}</h2>'
+            f'<h2 class="headline" id="r01-st-h">Where it stands</h2>'
             f'<p class="body">{e(st["text"])}</p><p class="muted">Checked {e(chk)}; {e(st["result"])}. '
             f'Sources in V7: {e(", ".join(st["sources"]))}.</p>'
-            f'<p class="disc big"><strong>Disclosure.</strong> {e(disc)}</p></section></section>')
+            '<p class="muted">The editor\u2019s disclosure sits in the box at the top of this page.</p></section></section>')
 
 
 # ------------------------------------------------------------------------------------------------ loop catalog
