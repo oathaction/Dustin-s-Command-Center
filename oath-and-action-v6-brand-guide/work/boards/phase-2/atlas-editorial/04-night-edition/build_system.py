@@ -5,7 +5,6 @@ Builds one self-contained page with six hash views from the shared editorial dat
 
 Reads   work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json (the dataset, DR-28 to DR-35)
         work/extract/atlas-interactive-concept-v2-data.json (which of the two questions each part answers)
-        work/extract/supplied-20261105/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html (the editor's disclosure text)
         work/build/scripts/phase-2/atlas_concepts_common.py (palette, icon_svg)
         work/boards/phase-2/atlas-concepts/shared/atlas-kit.js and atlas-kit.css (behavior, inlined)
         work/build/assets/identity/wordmark/ (the 24 px and 16 px wordmark masters, inlined as delivered)
@@ -31,7 +30,6 @@ _spec.loader.exec_module(acc)
 
 D = json.loads((ROOT / 'work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json').read_text())
 IC = json.loads((ROOT / 'work/extract/atlas-interactive-concept-v2-data.json').read_text())
-V7_HTML = (ROOT / 'work/extract/supplied-20261105/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html').read_text()
 KIT_JS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.js').read_text()
 KIT_CSS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.css').read_text()
 WORDMARK_24 = (ROOT / 'work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg').read_text()
@@ -52,12 +50,6 @@ COUNTS = D['meta']['counts']
 P = acc.PALETTE
 MINUS = '−'
 SNAP = 'October 15, 2026'
-
-# The editor's disclosure, read from V7's own INTEREST_TEXT table (V7 prints it on R-01 and R-02's profiles)
-_m = re.search(r"var INTERESTS = \{(.*?)\};\s*var INTEREST_TEXT = \{(.*?)\};", V7_HTML, re.S)
-INTEREST_OF = dict(re.findall(r"'(R-\d+)': '(\w+)'", _m.group(1)))
-INTEREST_TEXT = {k: v.replace("\\'", "'") for k, v in re.findall(r"(\w+): '((?:[^'\\]|\\.)*)'", _m.group(2))}
-
 
 def e(s):
     return html.escape(str(s), quote=True)
@@ -1630,7 +1622,7 @@ def build_templates():
                 f'<h3>Evidence</h3><dl><dt>Problem</dt><dd>{grade_word(R["problem_evidence"]["grade"])}</dd>'
                 f'<dt>Remedy</dt><dd>{grade_word(R["remedy_evidence"]["grade"])}</dd></dl>'
                 f'<h3>Status</h3><p>{e(R["status"]["text"])}</p>'
-                + (f'<p><b>Disclosure.</b> {e(INTEREST_TEXT[INTEREST_OF[rid]])}</p>' if rid in INTEREST_OF else '')
+                + (f'<p><b>Disclosure.</b> {e(R["disclosure"])}</p>' if R.get('disclosure') else '')
                 + ('<p><a class="more" href="#reform-r01">Open the full reform</a></p>' if rid == 'R-01' else '')
                 + f'<p class="src">Atlas V7, snapshot {SNAP}.</p>')
         tpl(f'reform-{rid.lower()}', f'Reform {rid}', R['title'], body)
@@ -2006,7 +1998,7 @@ def view_reform_r01():
             f'<p class="deck">{e(R["summary"])}</p></div>'
             f'<div class="vhead-side"><div class="statusbox"><p class="eyebrow">Status, checked {date_words(R["status"]["checked"])}</p>'
             f'<p class="ptext">{e(R["status"]["text"])}</p><p class="note dim mt8">Result of the check: {e(R["status"]["result"])}.</p>'
-            f'<p class="disc"><b>Disclosure.</b> {e(INTEREST_TEXT[INTEREST_OF[rid]])}</p></div></div></header>')
+            f'<p class="disc"><b>Disclosure.</b> {e(R["disclosure"])}</p></div></div></header>')
     problem = (f'<section class="sec" aria-labelledby="h-prob"><div class="sec-head"><h2 id="h-prob">The problem it answers</h2></div>'
                f'<div class="cols2"><div><p class="eyebrow">Evidence for the problem: {e(grade_word(pe["grade"]))}, {e(grade_gloss(pe["grade"]))}</p>'
                f'<p class="body">{e(pe["text"])}</p></div>'
@@ -2051,11 +2043,6 @@ def view_reform_r01():
              f'<div><h3 class="phead">How it could fail</h3><p class="body">{e(R["failure_risks"])}</p>'
              f'<h3 class="phead mt">Carrying it out</h3><p class="body">{e(R["implementation"])}</p>'
              f'<h3 class="phead mt">How to judge results</h3><ul class="blist">{measures}</ul></div></div></section>')
-    status = (f'<section class="sec" aria-labelledby="h-st"><div class="sec-head"><h2 id="h-st">Status</h2>'
-              f'<p>Checked {date_words(R["status"]["checked"])}; result: {e(R["status"]["result"])}.</p></div>'
-              f'<div class="cols2"><div><p class="body">{e(R["status"]["text"])}</p></div>'
-              f'<div><p class="body"><b>Disclosure.</b> {e(INTEREST_TEXT[INTEREST_OF[rid]])}</p>'
-              f'<p class="ptext dim mt">The Atlas takes no position on any ballot question; the summary above says so for Question 3 and Ballot Measure 2.</p></div></div></section>')
     return (f'<section data-view-root="reform-r01" data-crumb="Reform R-01" data-parent="loop-r10" data-ak-reform="reform-r-01" '
             f'aria-labelledby="h-reform"><div class="wrap">{head}{problem}{acts}{effects}{routes}{evid}{risks}</div></section>')
 

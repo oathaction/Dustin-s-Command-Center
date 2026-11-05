@@ -430,7 +430,8 @@ svg[data-view] { overflow: visible; }
 .fz.on { background: var(--ink); border-color: var(--ink); }
 .ev2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .evc { border-top: 1px solid var(--ink); padding-top: 10px; }
-.evc p { margin: 0 0 8px; font: 400 15px/23px Inter, sans-serif; }
+.evc p { margin: 0 0 8px; }
+.evc p:not(.t-eyebrow):not(.ev-g) { font: 400 15px/23px Inter, sans-serif; }
 .ev-g { font: 600 15px/18px Inter, sans-serif !important; }
 .status .st-chk { font: 500 13px/18px Inter, sans-serif; color: var(--ds); margin: 0 0 14px; }
 .disc { font: 400 15px/23px Inter, sans-serif; border: 1px solid var(--ink); padding: 12px 14px; max-width: 46em; margin: 0; }
@@ -451,7 +452,7 @@ svg[data-view] { overflow: visible; }
 .lay { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--ink); }
 .lay > div { padding: 16px; }
 .lay-n { border-left: 3px solid var(--ink); }
-.lay p { margin: 6px 0 0; font: 400 15px/23px Inter, sans-serif; }
+.lay p:not(.t-eyebrow) { margin: 6px 0 0; font: 400 15px/23px Inter, sans-serif; }
 .lay .t-eyebrow { color: var(--ink); }
 .mxs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
 .mx { border-top: 1px solid var(--np); padding: 10px 0; }
