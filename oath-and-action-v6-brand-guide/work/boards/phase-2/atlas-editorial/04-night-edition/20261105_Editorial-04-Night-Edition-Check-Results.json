@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition.html",
- "checked": "2026-11-05T20:44:40.570Z",
+ "checked": "2026-11-05T20:52:02.444Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 281,
+   "texts": 289,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -38,7 +38,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 3574,
+   "height": 3599,
    "axe": [],
    "focusStops": 38,
    "focusWithoutRing": []
@@ -47,7 +47,7 @@
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 680,
+   "texts": 681,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -56,7 +56,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 23,
-    "labels": 95,
+    "labels": 94,
     "outside": [],
     "overlaps": []
    },
@@ -71,7 +71,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10093,
+   "height": 10133,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -80,7 +80,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 124,
+   "texts": 126,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -89,7 +89,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 38,
+    "labels": 39,
     "outside": [],
     "overlaps": []
    },
@@ -106,7 +106,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 2703,
+   "height": 2775,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -115,7 +115,7 @@
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 178,
+   "texts": 176,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -124,7 +124,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 38,
+    "labels": 39,
     "outside": [],
     "overlaps": []
    },
@@ -141,7 +141,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4937,
+   "height": 4502,
    "axe": [],
    "focusStops": 5,
    "focusWithoutRing": []
@@ -218,7 +218,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 288,
+   "texts": 296,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -242,7 +242,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10494,
+   "height": 11257,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -251,7 +251,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 687,
+   "texts": 686,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -260,7 +260,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 24,
-    "labels": 112,
+    "labels": 111,
     "outside": [],
     "overlaps": []
    },
@@ -275,7 +275,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 23434,
+   "height": 23490,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -284,7 +284,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 123,
+   "texts": 125,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -293,7 +293,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 38,
+    "labels": 39,
     "outside": [],
     "overlaps": []
    },
@@ -310,7 +310,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 6461,
+   "height": 6493,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -319,7 +319,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 177,
+   "texts": 175,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -328,7 +328,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 1,
-    "labels": 38,
+    "labels": 39,
     "outside": [],
     "overlaps": []
    },
@@ -345,7 +345,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10868,
+   "height": 9981,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -413,7 +413,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8593,
+   "height": 8618,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

@@ -1673,7 +1673,6 @@ def main():
         if not measure_pending():
             break
         print('measured new text, rebuilding')
-    out = re.sub(r'data-part="(base|accent|[a-z][a-z-]*)"', lambda m: f'data-icon-part="{m.group(1)}"', out)
     OUT.write_text(out)
     print('wrote', OUT.relative_to(ROOT), f'{len(out) / 1e3:.0f} kB')
 
@@ -1944,7 +1943,14 @@ def ring_svg(k='R10', red_on=True, view='loop-r10', title_id='h-loop-r10', refor
         lines.append(T(cx0 + 22, yy, f'Problem evidence: {grade_word(R["problem_evidence"]["grade"]).lower()}', 'note', cls='muted'))
         yy += 18
         lines.append(T(cx0 + 22, yy, f'Remedy evidence: {grade_word(R["remedy_evidence"]["grade"]).lower()}', 'note', cls='muted'))
-        yy += 30
+        if R.get('disclosure'):
+            yy += 28
+            dl = wrap('Disclosure. ' + R['disclosure'], 'note', cw_ - 44)
+            lines.append(f'<path d="M{cx0 + 22} {f(yy - 18)} H{cx0 + cw_ - 22}" class="hair"/>')
+            lines.append(TL(cx0 + 22, yy, dl, 'note'))
+            yy += 16 * (len(dl) - 1) + 30
+        else:
+            yy += 30
         lines.append(f'<a href="#reform-r01" class="cardlink">' + T(cx0 + 22, yy, 'Open sheet 04, the full reform', 'noteb', cls='ak-label') + '</a>')
         ch = yy + 22 - cy0
         red_marks.insert(0, f'<g data-red="working" data-red-job="R-01 targets"><rect x="{cx0 + 1.5}" y="{f(cy0 + 1.5)}" width="{cw_ - 3}" height="{f(ch - 3)}" class="red-card" stroke-width="2"/></g>'

@@ -1643,7 +1643,9 @@ def build_templates():
             where = ', '.join(v for v in [x.get('where'), x.get('when')] if v)
             s_ += f'<p class="dim">{e(where)}. Source: {e(src.get("title", ""))}, {e(src.get("publisher", ""))}, {e(src.get("year", ""))}.</p>'
             return s_
-        rf = ''.join(f'<li>{chip("Reform", r["id"])}{e(REFORMS[r["id"]]["title"])}<br><span class="dim">{e(r["why"])}</span></li>' for r in I['aimed_reforms'])
+        rf = ''.join(f'<li>{chip("Reform", r["id"])}{e(REFORMS[r["id"]]["title"])}<br><span class="dim">{e(r["why"])}</span>'
+                     + (f'<br><span><b>Disclosure.</b> {e(REFORMS[r["id"]]["disclosure"])}</span>' if REFORMS[r['id']].get('disclosure') else '')
+                     + '</li>' for r in I['aimed_reforms'])
         vs = ', '.join(f'{n} {lab(n)}' for n in I.get('nodes') or [])
         body = (f'<p class="dim">{e(DOMAINS[I["domain"]]["title"])}{" · " + e(I["subsystem"]) if I.get("subsystem") else ""} · '
                 f'{grade_word(I["grade"])}: {grade_gloss(I["grade"])}</p>'
