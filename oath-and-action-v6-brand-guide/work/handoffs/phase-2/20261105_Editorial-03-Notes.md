@@ -50,6 +50,66 @@ The atlas as a field guide of numbered sheets on Newsprint. Sheet 00 sets out th
 - Widths between 900 and 1439 px, beyond a check that layouts reflow.
 - First-time readers and the ten-second test. Print or wall size.
 
+## Fix pass, November 5
+
+The idea stays the same: numbered sheets, one set of marks, and the circled sign as a deliberate variant (D2-81). The biggest change is the overview. Its first screen is now a compact circuit with all eight parts, their questions and the main flows. The cards follow with no wiring, and every flow appears in a table. On the loop and reform sheets, red now sits on R-01's targets themselves.
+
+### The thirteen shared fixes
+
+1. **First screen.** At 1440 by 900 the compact circuit (plate 01.1) shows all eight parts with plain name, formal title and question. It also shows 20 of the 27 bundles with counts: the main circuit, the return line, outside forces, and the household and technology links. A note says the seven small bundles that skip a part (14 connections) are in the flow table. On a phone the circuit is a list in circuit order with counts between the parts. Technology ends at 1,507 px at 390 and 1,597 px at 360, inside two 844 px screens.
+2. **Disclosures.** The R-01 sheet has one labelled box, "Where the atlas stands", beside the head. It prints the no-position sentence first and the disclosure second. I removed the no-position sentence from the reform's case so the two stay apart. Every reform card, the R10 reform cards, the R-01 panel record, and each "Reforms aimed at it" line in the issue register carry the dataset's disclosure where one exists (R-01, R-02, R-47, R-49 on these sheets).
+3. **Ballot dates.** A script adds "As of October 15, 2026," to every clause in V7's prose that names the November 3, 2026 ballot. A text scan of the built page finds no undated mention.
+4. **Headlines.** R10's headline now reads "Safe seats can keep themselves safe, through one plausible step." The grade word is built from L53. The overview deck no longer states the chain as fact. It says every connection carries a grade.
+5. **Step direction and "fewer".** Step sentences come from the running product of signs. Countable labels take "fewer" ("fewer incumbents defeated", "fewer watchdogs and enforcement").
+6. **Effects in words.** Effects print in words with V7's qualifiers kept, for example "small positive for entry; small negative for extremity" (R-07). The code glyphs are gone from the R-01 scale head.
+7. **Red.** No working red remains on the overview, Elections, the catalog or sheet 00, whose sample is marked a specimen. On R10 and R-01, red marks only L08, L25 (line and arrowhead, with Charcoal keylines) and the C2 box. The joining wires are gone, and ink tags name R-01, R-02 and R-03 where they aim. Signs stay ink.
+8. **Panel.** On desktop, an open panel pads the page, so the layout gives it a column. The pick scrolls into view inside its drawing. On a phone, the tapped item scrolls above the sheet: C5 ends at 187 px with the sheet top at 439.
+9. **Small phones.** Loop chains are drawn in a 300-unit viewBox with the return line inside. Margins drop to 10 px under 360. There is no sideways scroll and no text under 13 px at 390, 360 and 320.
+10. **Keyboard.** A skip link focuses the view's heading and keeps the hash. A drawing that takes focus writes "Arrow keys move between items. Enter opens one." into its readout. `#area-a` through `#area-tc` open each part's record, `#reform-r-01` opens the reform sheet, and `#loop-r10/reform-r-01` keeps its selection. An unknown hash shows a visible status line.
+11. **Catalog.** Each card prints the first sentence of its summary under the title. R1's card carries its qualification. The return step is labelled at the bottom, where the chain closes.
+12. **Evidence key.** It appears on the overview, Elections, R10, R-01 and the catalog, where it includes the hollow line.
+13. **Palette and wordmark.** The only colors in the page are the locked palette plus Deep Stone. The name appears only as the wordmark master.
+
+### My sections of the reports
+
+- **Civic 1 to 3 (Must):** the deck and evidence key are fixed; the R-01 target is off the overview; Elections leads with the connections in words, and the drawing opens from a button.
+- **Civic 4 to 7 (Should):** each question opens its V7 short answer first, with a link to its loop or part. The R10 red now sits on the targets. The headline is rewritten. Plate 02.3 says R10 and B4 meet at C3 and quotes B4's "works only where seats are competitive".
+- **Civic 8 and 9 (Polish):** codes now follow names in a lighter weight on the cards, the phone stack and the loop chains. "Kind" is off the condition cards, and "auxiliary" is put in plain words in the panels. Return steps sit at the bottom.
+- **Interface M1:** the step-through sits beside the ring at 1440. The controls start at about 650 px, inside the first screen. On a phone they sit under the chain.
+- **Interface M2:** fixed, as in fix 9.
+- **Interface S1:** clicks on the Checks header now land; tested on both drawings.
+- **Interface S2:** loop chips on the phone stack are now 44 by 44 pills.
+- **Interface S3:** the "On this sheet" bar stays in view on desktop.
+- **Interface S4:** fixed, as in fix 10.
+- **Interface P1:** filter buttons are now 15/600 and hub heads 22/800. Headings balance their lines. The empty "()" is gone. The red strokes are now 3 px with 1 px keylines.
+- **Evidence 1 to 10:** 1 (R-49 and other disclosures in issue lines), 2 (dates), 3 (red), 4 (headline), 5 (R-07 wording), 6 ("3 of the 23 are sketches"), 7 ("Checked October 15, 2026"), 8 (V7's "Drawn as" notes trimmed from the glossary), 9 ("an idea with no numbered connection") and 10 ("fewer") are all done.
+- **Reader panel:** the wiring under the cards is gone. The word "Plate" is dropped from plate numbers and "Key plan" now reads "You are here". The two counts on the reform sheet are labelled: the problem evidence counts 2026 seats, and each issue example carries its year.
+
+### Left as is, and why
+
+- **Phone length of Elections** (interface S3): 29 phone screens. The issues are closed rows and the index is at the top. A phone-only regrouping would need its own design pass.
+- **The sheet numbers and IDs:** they are the system's idea. I kept them and moved them after the plain names.
+- **Hollow sketch lines:** these stay 4 and 2 px. Moving them to 3 and 1 px would close the gap that makes them read as hollow.
+- **For Dustin:** whether "Democratic quality" may print as "quality of democracy" (civic report), and L23's name against its sign (red team S4).
+
+### Fix pass tested
+
+- `atlas_concepts_verify.py --selftest`: PASS, and all six planted errors were caught.
+- `atlas_concepts_check.js`: PASS at 1440, 390 and 360 px, with 0 failures and 0 axe violations. The minimum text size is 13 px. There is one red job ("R-01 targets") on R10 and R-01 and none elsewhere.
+- I scripted these checks:
+  - All 8 parts lie inside the first 900 px at 1440, and within two phone screens at 390 and 360.
+  - No sideways scroll or small text at 320.
+  - Every alias and the skip link land where they should, and the unknown-hash status shows.
+  - E1 is not covered by the open panel, and C5 sits above the phone sheet.
+  - Clicks land on the parts.
+  - Step 3's status line reads correctly.
+  - No undated ballot mention and no off-palette color remain.
+- I viewed every reworked plate at 1440, the phone forms at 390, 360 and 320, and the overview in grayscale.
+
+### Fix pass not tested
+
+- Real screen readers and phones, Firefox and Safari, readers on the new first screen.
+
 ## Change log
 
-Created, all in `work/boards/phase-2/atlas-editorial/03-reference-sheets/`: `build_system.py`, `measure_text.js`, `measure_cache.json`, `20261105_Editorial-03-Reference-Sheets.html`, `-Verify-Results.json` and `-Check-Results.json` (written by the checks), and 18 captures in `captures/`. Also `work/handoffs/phase-2/20261105_Editorial-03-Notes.md`. No other file was modified, and nothing was committed.
+Created, all in `work/boards/phase-2/atlas-editorial/03-reference-sheets/`: `build_system.py`, `measure_text.js`, `measure_cache.json`, `20261105_Editorial-03-Reference-Sheets.html`, `-Verify-Results.json` and `-Check-Results.json` (written by the checks), and 18 captures in `captures/`. Also `work/handoffs/phase-2/20261105_Editorial-03-Notes.md`. The fix pass modified `build_system.py`, the page, `measure_cache.json`, both results files, the captures and these notes, all in the same places. No other file was modified, and nothing was committed.

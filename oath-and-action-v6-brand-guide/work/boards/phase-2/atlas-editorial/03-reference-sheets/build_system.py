@@ -1344,6 +1344,11 @@ def tpl(key, kind, title, body):
     return f'<template data-detail="{key}" data-kind="{e(kind)}" data-title="{e(title)}">{body}</template>'
 
 
+def kind_plain(N):
+    """V7's kind of variable, with "auxiliary" put in plain words (civic polish 8)."""
+    return N['kind_plain'].replace('(auxiliary)', '(set by what feeds it; it does not build up over time)')
+
+
 def var_tpl(n):
     N = NODES[n]
     p = N['part']
@@ -1356,7 +1361,7 @@ def var_tpl(n):
             f'<p class="pn-means"><b>{e(N["increase_means"])}</b></p>'
             + (f'<p>{e(N["why"])}</p>' if N.get('why') else '')
             + f'<dl><dt>Part</dt><dd>{e(part_name(p))} ({e(PARTS[p]["formal_title"])})</dd>'
-            f'<dt>Kind</dt><dd>{e(N["kind_plain"])}</dd><dt>Measured by</dt><dd>{e(N["indicator"])}</dd>'
+            f'<dt>Kind</dt><dd>{e(kind_plain(N))}</dd><dt>Measured by</dt><dd>{e(N["indicator"])}</dd>'
             f'<dt>Issues</dt><dd>{len(iss)} tracked here</dd></dl>'
             + (f'<h3>Pushes on ({len(outs)})</h3><ul class="lrows">' + ''.join(link_row(l['id'], show_from=False) for l in outs) + '</ul>' if outs else '')
             + (f'<h3>Pushed by ({len(ins)})</h3><ul class="lrows">' + ''.join(link_row(l['id'], show_to=False) for l in ins) + '</ul>' if ins else '')
@@ -1952,7 +1957,7 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 .lpill{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 8px;margin:6px 6px 0 0;border:1px solid var(--ch);box-sizing:border-box;font:700 13px/1 Inter,sans-serif;text-decoration:none;background:var(--wh)}
 .lpill:hover{box-shadow:inset 0 0 0 1px var(--ch)}
 .sc-loops{margin-top:12px}
-.draw .card,.draw .accent{pointer-events:none}
+.cards .card,.cards .accent{pointer-events:none}
 @media (max-width:1199.98px){.r10-grid{grid-template-columns:1fr}.r10-side{border-left:0;padding-left:0}}
 @media (max-width:899.98px){
  .platebar{position:static;display:block;border-bottom:0;margin-top:16px}
@@ -2984,7 +2989,7 @@ def view_reform_r01():
                f'<p class="ak-readout t-cap" data-ak-readout>Point at, tab to or tap a box or a step to read its record.</p></div>'
                f'<div class="narrow-only phone-chain">{chain}<p class="t-cap r01-note">Red marks where R-01 acts: {", ".join(sorted(R["targets"]))}.</p></div></div>'
                f'<aside class="r10-side"><p class="t-ptext">{e(sentences(R["what_it_changes"])[0])} {e(sentences(R["what_it_changes"])[1])}</p>'
-               f'<div class="loop-keys">{loop_legend()}</div></aside></div>',
+               f'<div class="loop-keys">{loop_legend()}{evidence_key()}</div></aside></div>',
                foot=f'Reform {rid} · targets {", ".join(R["targets"])} · loops {", ".join(R["loops"])}')
     # 04.3 what it changes
     p3 = plate('r01-change', '04.3', 'What it changes', '',
@@ -3148,7 +3153,7 @@ def view_how_to_read():
     rsvg = (f'<svg class="draw spec-svg" width="280" height="96" viewBox="0 0 280 96" aria-hidden="true"><g class="st">{wire([(4, 34), (272, 34)], w=3, tex=tex_of(l25["evidence"]))}'
             + red_wire([(4, 34), (272, 34)], w=3, tex=tex_of(l25['evidence']), kind='specimen') + '</g>'
             + T(4, 16, f'{l25["id"]}, {grade_word(l25["evidence"]).lower()}', 'noteb')
-            + T(4, 64, 'R-01 acts on L25', 'noteb') + T(4, 84, 'Another reform: an ink tag, R-02 aims at C3', 'note', cls='muted') + '</svg>')
+            + T(4, 64, 'Red: R-01 acts on L25', 'noteb') + T(4, 84, 'Ink tag, for any other reform: R-02 aims at C3', 'noteb') + '</svg>')
     p6 = plate('h-reform', '00.6', 'Red marks where a reform acts',
                '<p>A reform aims at named points: a connection, a condition, or both. On the loop and reform sheets, the one working red marks each point where '
                'reform R-01, the worked example, acts: the line and its arrowhead, or the box. An ink tag names each other reform that aims at the loop. '

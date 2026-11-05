@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/03-reference-sheets/20261105_Editorial-03-Reference-Sheets.html",
- "checked": "2026-11-05T21:51:13.898Z",
+ "checked": "2026-11-05T21:55:34.180Z",
  "views": [
   "overview",
   "area-c",
@@ -25,13 +25,7 @@
     "drawings": 2,
     "labels": 222,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "overview",
-      "a": "3",
-      "b": "Policy advantages add to wealt"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 1,
@@ -121,7 +115,7 @@
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 234,
+   "texts": 245,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -323,7 +317,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 194,
+   "texts": 205,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -349,7 +343,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 11803,
+   "height": 11975,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -525,7 +519,7 @@
    "width": 360,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 188,
+   "texts": 199,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -551,7 +545,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 12543,
+   "height": 12715,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -635,8 +629,6 @@
    "visible": true
   }
  },
- "failures": [
-  "1440 overview: 1 overlapping labels"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }
