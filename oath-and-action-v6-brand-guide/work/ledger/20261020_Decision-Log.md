@@ -289,3 +289,14 @@ Dustin reviewed concept 12, Editorial Desk: "I like the editorial desk, the dire
 | D2-73 | The light loop explorer and the A3 neighborhood images are ChatGPT mockups, not pages of a built atlas; the rights ledger now says so | Dustin, November 5 |
 | D2-74 | Design Concepts V2 and the Atlas Visual System were not supplied this round; the makers work from Dustin's images of them ("The Shared Language", "The Circuit", "The whole system on one register", the arrow conventions and R1 sheets) | Dustin sent what he had |
 | DR-35 | The plain names that lead (DR-32), as Dustin's newest atlas home shows them: Wealth (area A, "Who holds the cards?"), Voice (B, "Who pays for influence?"), Elections (C, "Who picks them?"), Checks (D, "Who checks their work?"), Policy (E, "Whose side are the rules on?"), Your household (the economy layer, "Who lives with the results?"), Technology ("Who controls the machines?") and Outside forces (X) | Dustin's image of his newest atlas, November 5; the formal titles sit beneath |
+
+## Editorial round build, November 5, 2026
+
+Dustin: "Looks good. Let's begin... If you need to use multiple agents and red team reviews, you decide what special agents, specialized agents will get us this exceptional product."
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-75 | Five makers, each a specialist matched to one system: a newspaper graphics editor (Times Explainer), a weekly-magazine data design director (Economist Register), a reference information designer (Reference Sheets), a dark-mode editorial product designer (Night Edition), and an architect turned civic interface designer (Architecture) | Each system's idea needs a different craft |
+| D2-76 | Red team after the builds, one lens per reviewer across all five so each lens holds one standard: a civic educator (does it teach), an interface and accessibility lead (does it work), and an evidence and brand auditor (is it true and on brand). A first-time reader panel then sees only screenshots and answers comprehension questions. Findings go back to each maker as one ranked list, and each maker makes one fix pass | Dustin asked for red team reviews; comparing all five under one reviewer per lens keeps the scores fair |
+| D2-77 | The creative director scores the fixed systems and recommends one; Board 2 shows all five side by side | The gate pattern from earlier rounds |
+| D2-78 | The shared dataset lists each variable's loops from the loops' station codes; V7's loop chains hold code and sign pairs | A first build left every variable's loop list empty |
