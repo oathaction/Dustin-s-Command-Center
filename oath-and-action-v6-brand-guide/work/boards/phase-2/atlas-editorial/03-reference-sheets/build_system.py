@@ -1314,7 +1314,7 @@ def overview_view():
                f'<div class="circ-foot">{evidence_key(lead="Bundles are drawn solid. Each connection inside one carries its own grade")}'
                f'<p class="t-cap circ-note">{nw(len(skipped)).capitalize()} smaller bundles that skip a part, {n_sk} connections in all, sit in the <a href="#ov-flows" data-toc>flow table</a>.</p></div>'
                f'<p class="ak-readout t-cap" data-ak-readout>Point at, tab to or tap a part or a line to read its record.</p></div>'
-               f'<div class="narrow-only">{mini_circuit()}{evidence_key()}</div>'
+               f'<div class="narrow-only">{mini_circuit()}<div class="ov-after">{spec}{links}</div>{evidence_key()}</div>'
                f'<details class="words" id="ov-words"><summary class="t-legend">Every flow between parts, in words ({len(words)} bundles)</summary><ol class="t-cap">{"".join(words)}</ol></details></section>')
     cards = plate('ov-cards', '01.2', 'Every part and every condition',
                   '<p>Each card lists every condition its part tracks, what it passes on along the circuit, and the loops based there. Select any name to read its record.</p>',
@@ -1402,6 +1402,20 @@ def link_tpl(k):
             + (f'<h3>Loops</h3><p>' + ', '.join(f'<a href="{loop_href(x)}">{x} {e(LOOPS[x]["plain_name"])}</a>' for x in lp) + '</p>' if lp else '<h3>Loops</h3><p>None. This connection sits on no loop.</p>')
             + f'<p class="pn-src">Atlas V7, snapshot {SNAP}.</p>')
     return tpl(link_key(k), f'Connection {k}', l['name'], f'<div {link_attrs(k)}>{body}</div>')
+
+
+def reform_tpl(rid):
+    r = REFORMS[rid]
+    eff = ''.join(f'<dt>{e(D["families"][fam])}</dt><dd>{e(effect_words(code))}</dd>' for fam, code in r['effects'].items())
+    tg = '; '.join(f'{t} {e(node_label(t) if t in NODES else LINKS[t]["name"])}' for t in r['targets'])
+    body = (f'<p class="pn-lead">{e(sentences(r["summary"])[0])}</p>'
+            + (f'<p><b>Disclosure.</b> {e(r["disclosure"])}</p>' if r.get('disclosure') else '')
+            + f'<dl><dt>Aims at</dt><dd>{tg}</dd><dt>Problem</dt><dd>{grade_word(r["problem_evidence"]["grade"])}</dd>'
+            f'<dt>Remedy</dt><dd>{grade_word(r["remedy_evidence"]["grade"])}</dd></dl>'
+            f'<h3>Expected effects, never added together</h3><dl>{eff}</dl>'
+            + ('<p class="pn-next"><a href="#reform-r01">Open the full reform</a></p>' if rid == 'R-01' else '')
+            + f'<p class="pn-src">Atlas V7, snapshot {SNAP}.</p>')
+    return tpl(f'reform-{rid.lower()}', f'Reform {rid}', r['title'], f'<div data-reform="{rid}" data-targets="{" ".join(r["targets"])}">{body}</div>')
 
 
 def loop_tpl(k):
@@ -1963,7 +1977,7 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 .sh-ov .sh-side{grid-column:9/span 4;gap:10px;padding-top:6px}
 .sh-ov .counts b{font-weight:700}
 .sh-ov .sh-links{margin-top:0}
-@media (max-width:899.98px){.sh-ov .sh-side{margin-top:16px}}
+@media (max-width:899.98px){.sh-ov .sh-side{margin-top:16px}.sh-ov .counts,.sh-ov .sh-links{display:none}.ov-after{margin-top:18px}.ov-after .sh-links{margin-top:8px}}
 
 /* the phone stack of the overview */
 .stack{list-style:none;margin:24px 0 0;padding:0}
@@ -2122,7 +2136,7 @@ def build():
         fn = globals().get('view_' + v.replace('-', '_'))
         views.append(fn() if fn else stub(v, crumb, parent, t))
     templates = ([var_tpl(n) for n in NODES] + [part_tpl(p) for p in PARTS] + [flow_tpl(a, b) for (a, b) in FLOW]
-                 + [link_tpl(k) for k in sorted(LINKS)] + [loop_tpl(k) for k in D['loop_order']])
+                 + [link_tpl(k) for k in sorted(LINKS)] + [loop_tpl(k) for k in D['loop_order']] + [reform_tpl('R-01')])
     return page('\n'.join(views), templates)
 
 
@@ -2410,7 +2424,7 @@ def r01_card(compact=False):
     tg = sorted(R['targets'], key=lambda t: (t not in LINKS, t))
     on = '; '.join(f'{t}, {e(node_label(t) if t in NODES else LINKS[t]["name"])}' for t in tg)
     return (f'<div class="r01c" data-reform="R-01" data-targets="{" ".join(R["targets"])}"><p class="t-eyebrow">Reform R-01 · where it acts, in red</p>'
-            f'<h3 class="t-phead" data-reform="R-01" data-name="{e(R["title"])}">{e(R["title"])}</h3>'
+            f'<h3 class="t-phead"><button type="button" class="vc-name" data-select="reform-r-01" aria-label="Reform R-01, {e(R["title"])}. Opens its record."><span data-reform="R-01" data-name="{e(R["title"])}">{e(R["title"])}</span></button></h3>'
             f'<p class="t-cap">It acts on {on}.</p>'
             f'<p class="t-cap muted">Problem evidence {grade_word(R["problem_evidence"]["grade"]).lower()}; remedy evidence {grade_word(R["remedy_evidence"]["grade"]).lower()}.</p>'
             f'<p class="t-note rc-disc"><b>Disclosure.</b> {e(R["disclosure"])}</p>'

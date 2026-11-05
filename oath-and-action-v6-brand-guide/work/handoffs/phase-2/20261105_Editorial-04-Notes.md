@@ -17,7 +17,7 @@ Dustin's dark atlas, kept in its structure and cut to its main lines. The overvi
 
 ## Decisions
 
-- Proposed tint, Night Panel #1F1F1E: Charcoal with 8 percent Newsprint by OKLab mix, for raised cards and the panel only. Newsprint 11.70:1, Dim Newsprint 6.39:1, Pillar Red 3.96:1. Proposed, not adopted.
+- Cards and the panel are Charcoal with a 1 px Stone rule. The proposed Night Panel tint (#1F1F1E) is withdrawn until Dustin rules on it.
 - Main flows carry 66 connections: circuit, return, back flows, outside forces into A to E, five layer flows. The other 15 are named under the map.
 - Checks gets a wider card so seven variables fit and the board stays near 900 px tall.
 - Small cycles use the tag as the arrowhead (dataviz memo); boxes carry 48 px icons, since 14 need it.
@@ -25,15 +25,15 @@ Dustin's dark atlas, kept in its structure and cut to its main lines. The overvi
 - The question band reads the dark atlas extract (`story.parts[].q`).
 - "Color is the layer" becomes letter and place, since hue keeps one job on Charcoal: a departure from Concept 00.
 - With no reform in view, selection takes the red (DR-18).
-- Kit: one line selects the visible copy where a view holds two artboards; the panel is a right drawer.
+- Kit: selection prefers the copy the reader used, else the visible copy; after the panel opens, the picked item scrolls into view.
 - Every reform card and issue panel naming a flagged reform carries its disclosure.
-- Studio-draft headlines: "Policy that favors insiders adds to the wealth that funds political spending." (rests on L03 and L01, both well supported); "18 of the 23 loops feed themselves. 22 have a reform aimed at them."; "The risk of losing office is where the safe-seat loop meets the loops that hold officials to account."; "Every line says what happens next, and how sure we are." (Concept 00). R10 and R-01 use V7's titles.
+- Studio drafts: the overview leads with the two questions and runs one finding built from the names of L03 and L01; "18 of the 23 loops can feed themselves. 22 have a reform aimed at them."; "4 loops pass through the risk of losing office. Two are drawn here..."; "Every line says what happens next, and how sure we are." (Concept 00).
 
 ## Self-score
 
 - Craft, 4: labels clear at 1x and 2x; some step labels wrap tightly in the Elections drawing.
 - Clarity, 4: one bright circuit and plain names; not yet tested with readers.
-- Brand fidelity, 4: locked type and palette, wordmark as delivered; the Night Panel tint awaits approval.
+- Brand fidelity, 4: locked type and palette only, wordmark as delivered.
 - Usefulness, 5: every part, variable, flow, loop, reform, issue and question opens a full record.
 - Evidence honesty, 5: every word and count from the data; sketches, hypotheses and the disclosure shown.
 - Accessibility, 4: 0 axe violations, full keyboard paths; untested with screen readers.
@@ -42,16 +42,47 @@ Dustin's dark atlas, kept in its structure and cut to its main lines. The overvi
 ## Tested
 
 - `atlas_concepts_verify.py`: PASS; the self-test caught all six planted errors.
-- `atlas_concepts_check.js`: PASS, 6 views at 1440 and 390 px, 0 failures, 0 axe violations, text 13 px or larger, one red job per view.
+- `atlas_concepts_check.js`: PASS, 6 views at 1440, 390 and 360 px, 0 failures, 0 axe violations, text 13 px or larger, one red job per view.
 - My runs: Tab on each view (every stop ringed); arrows walk R10 as C1, L08, C2 and round; Enter and Escape with focus returned; deep links; the step-through; R-04 moving the red; the phone sheet.
 - Color captures at 1440 and 390, and 2x zooms of loop cards, viewed.
 
 ## Not tested
 
 - Screen readers, Firefox, Safari, real phones, 200 percent zoom.
-- Widths between 900 and 1339 px, where the board turns into a grid of cards.
+- Widths between 900 and 1339 px by eye, where the board turns into a grid of cards.
 - Reduced motion by eye, print and wall size, and the ten-second test with readers.
 - Note: the check's grayscale style survives its hash navigation, so its later 1440 captures are gray; `-color` captures show them in color.
+
+## Fix pass
+
+Each finding I was given, what changed, or why it stayed.
+
+**Shared fixes.**
+1. First screen: the overview now opens with "The system at a glance": all eight parts with their questions, the circuit with counts, the return line and both layers, inside 900 px at 1440. On a phone it is a vertical circuit; all eight parts sit in the first two screens at 390 and 360 px.
+2. Disclosures: every reform card, reform panel and issue panel naming a flagged reform prints it. R-01 has one box near the top: "The Atlas takes no position..." first, the disclosure second, apart from the case.
+3. Dates: every sentence naming the November 3, 2026 ballot opens "As of October 15, 2026," by one rule in the build (13 sentences, 0 undated).
+4. Claims: "can feed themselves" in the catalog headline, "can feed itself" for R10 in Elections and at the end of the step-through.
+5. Steps read with the loop; "fewer" for countable things (fewer incumbents defeated, fewer watchdogs and enforcement).
+6. Effects in words, with no glyph or code.
+7. Sign tags stay in ink. On the loop and reform pages red marks only R-01's lines, arrowheads and box; the red swatches and the red rule on R-01's card are gone.
+8. The panel is a column the layout makes room for; the picked item scrolls into view beside it. On a phone the tapped item moves above the sheet.
+9. Phone figures are `width: 100%` on a 320 px viewBox, with labels at 15 px; at 320 px nothing falls under 13 px and nothing clips.
+10. A visible skip link focuses the view's heading and keeps the hash. Drawings write "Arrow keys move between items. Enter opens one." when they take focus. `#area-a` to `#area-tc` open that part; unknown hashes show the status line.
+11. Each catalog card leads with name and kind, then the drawing, the first summary sentence and the read-aloud line. R1 carries its qualification.
+12. The evidence key sits on the overview, Elections, R10, R-01, the catalog and How to read.
+13. Locked palette only; the name appears only as the wordmark.
+
+**Civic education.** "One graded connection at a time" (M1; the dark atlas's paragraph with "documented" and "Rent climbs faster than pay" is no longer printed). The questions lead and the finding runs smaller (M2). Problems come before reforms (S3). Each circuit flow names one connection under the map (S4). R-01's problem opens with the R10 summary (S5). B4 is drawn beside R10 with "The loop works only where seats are competitive." (S6). "Light: the route you are reading." (P7). "Where a reform can interrupt a loop" (P8).
+
+**Interface.** M1 and M2: skip link visible; issues, connections, variables and reforms are plain Tab stops (84 on Elections after the heading). S1: sticky "On this page" index and an `h3` per issue group. S2: panels build on demand from one JSON block, and only the 183 a reader can open ship: 1.49 MB, 220 KB gzipped. S3: the step controls pin above the phone drawing. S4: done. P1: the X badge is gone. P2: section heads 40/44, counts and card names 22/26, headings balanced, the doubled period fixed.
+
+**Evidence and brand.** S1, S2, S3: done. Items 3 (the `fix` note dropped), 4 (tint and shadow gone) and 6 (only R-01's points on R-01's drawing) done. I kept "R-02 aims here" and "R-03 aims here" on the R10 page, which the civic educator asked others to borrow; the red legend now names them.
+
+**Reader panel.** First screen and phone map: fixed as above. The headline no longer leads with the finding.
+
+**For Dustin.** L23's V7 name fights its minus sign (S4). "Democratic quality" may read as a party label. The "one documented connection" line comes from his dark atlas.
+
+**Left.** Dim Newsprint stays the secondary ink (7.26:1). With the panel open, the 1312 px map scrolls sideways inside its region.
 
 ## Change log
 
@@ -59,7 +90,7 @@ Created:
 - `work/boards/phase-2/atlas-editorial/04-night-edition/build_system.py`
 - `work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition.html`
 - `work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition-Verify-Results.json` and `-Check-Results.json`, written by the checks
-- `work/boards/phase-2/atlas-editorial/04-night-edition/captures/`: 18 captures from the check, 5 color captures and 5 interaction states
+- `work/boards/phase-2/atlas-editorial/04-night-edition/captures/`: 18 captures from the check, 5 color captures and 5 interaction states (refreshed after the fix pass)
 - `work/handoffs/phase-2/20261105_Editorial-04-Notes.md`
 
 Modified: none outside the folder. Nothing was committed.
