@@ -4,10 +4,10 @@ Oath & Action Brand Guide, Edition 06. Phase 2, November 5, 2026. Written by the
 
 ## Shared defects
 
-These come from the shared kit or from habits all five share. They count against every score, and most can be fixed once in `atlas-kit.js`.
+These come from the shared kit or from habits all five share, and they count against every score.
 
 - **X1 (S). The phone sheet covers what the reader tapped.** On Elections at 390 by 844, a tap on condition C5 at y 700 opens the 48 percent sheet with its top at y 439, over the item and its lit links, in all five. Fix: scroll the selected item into the band above the sheet before it opens.
-- **X2 (S). Nothing explains the arrow keys.** Each drawing is one Tab stop with arrow keys inside, and only a code comment says so. Fix: when a drawing takes focus, write "Arrow keys move between items. Enter opens one." into its readout line.
+- **X2 (S). Nothing explains the arrow keys.** Each drawing is one Tab stop with arrow keys inside, and no page says so. Fix: when a drawing takes focus, write "Arrow keys move between items. Enter opens one." into its readout line.
 - **X3 (M). Phones narrower than 390 px.** The shared check ran 390 only. At 360, SVG labels fall to 11.9 px, under the 13 px floor: system 1 on Elections (63) and the catalog (109); system 2 on the overview, R10 and R-01 (15 each); system 3 on the catalog (252) and Elections (91); system 4 on Elections (26) and R10 (23). At 320 they fall to 10.4 px. In systems 1, 3 and 5, phone drawings drawn at a fixed 350 px from x 20 run 10 px past the screen at 360 and 50 px at 320, and the overflow is clipped (1.4.10). In system 2 the R-01 effects table overflows by 10 px at 320. Fix: give each phone figure `width: 100%` and a viewBox drawn for 320 px, and redraw any label that would fall under 13 px.
 - **X4 (S). Skip links.** Systems 1 and 3 have none, so every view puts 7 to 10 header stops before the first item in the view. In systems 2, 4 and 5 the skip link writes `#main` into the address: a reload or a shared link then opens the overview with "This page has no view called main", and focus lands on the body. Fix: add one everywhere that prevents the default, focuses the view's `h1` and keeps the view's hash.
 - **X5 (P). A lost reader gets no visible message.** `#area-a`, the memo's hash for Wealth, opens Wealth in the panel only in system 5. Systems 1 to 4 show the overview, and only system 4 shows the status line. Fix: accept `#area-{id}` as an alias for each part key, and show the status.
@@ -26,7 +26,7 @@ Its loop teaching works at both widths: the step controls and the R10 drawing sh
 
 ## 2. Economist Register: 2 of 5
 
-Its compact circuit (723 to 1,101 px) is the only overview drawing short enough to fit one desktop screen, and its locator helps wayfinding. Its step-through teaches the wrong direction at step 3.
+Its compact circuit (723 to 1,101 px) is the only overview drawing short enough to fit one desktop screen, and its locator helps wayfinding.
 
 - **M1. R10, step 3.** The status reads "More risk of losing office means less incumbents control election rules." Step 2 has just said "less risk", the drawing marks step 3 "less", and step 4 starts from "more incumbents control". The L53 panel repeats the sentence; the other four systems chain it correctly. Fix: build each step sentence from the running product of signs: "Less risk of losing office means more incumbents control election rules."
 - **M2. Phone tap targets.** On the overview, 101 of 129 controls are under 44 px and 23 under 24 px (loop links are 350 by 23). On Elections, the variable chips are 22 px tall (2.5.8, and the memo's 44 px phone rule). Fix: set a 44 px minimum height on chips, rows and links under 900 px.
@@ -39,7 +39,7 @@ Its compact circuit (723 to 1,101 px) is the only overview drawing short enough 
 
 ## 3. Reference Sheets: 3 of 5
 
-It scans best: an "On this sheet" index on every view, an index of all 23 loops, issue filters, every issue row a Tab stop, and in-page jumps that keep the view's hash, so a reload stays put. Two drawing defects break the loop page.
+It scans best: an "On this sheet" index on every view, an index of all 23 loops, issue filters, every issue row a Tab stop, and in-page jumps that keep the view's hash, so a reload stays put.
 
 - **M1. R10, step-through.** The controls sit at 2,059 px and the loop drawing at 888 to 1,692 px, so no 1440 by 900 screen shows both; on a phone the gap is 512 px. R10's first screen shows no drawing. Fix: place "Follow one change" under or beside the drawing, and start the drawing by about 500 px.
 - **M2. R10 at 360 px.** The phone drawing runs 20 to 370 px, and the return line L42, which climbs the right edge from C4 to C1, falls off the screen, so the loop no longer closes. R-01 and How to read overflow the same way. Fix: fit the figure to the column (X3) and move the return rail inside it.
@@ -51,7 +51,7 @@ It scans best: an "On this sheet" index on every view, an index of all 23 loops,
 
 ## 4. Night Edition: 2 of 5
 
-It shows the router's status message and gives 44 px stepper and Close buttons on desktop. Keyboard users meet an invisible first stop and an Elections page they can barely enter.
+It shows the router's status message and gives 44 px stepper and Close buttons on desktop.
 
 - **M1. Skip link invisible on focus.** "Skip to the view" is the first stop on every view and stays clipped to 1 by 1 px (`clip-path: inset(50%)`) while focused (2.4.7). Fix: unclip it on `:focus-visible`, and see X4.
 - **M2. Elections, keyboard reach.** The 39 issues and both drawings sit in roving groups, so this 11.4-screen view has 6 Tab stops in its content, and the issues need unexplained arrow keys. Fix: make each issue its own Tab stop.
@@ -98,9 +98,9 @@ Ranking, as a working product:
 - All six views of all five pages in Chromium through Playwright at 1440 by 900, 720 by 450 (the CSS viewport of 200 percent browser zoom; no sideways scroll anywhere), 390 by 844, 360 by 780 and 320 by 640, with touch emulation on phones.
 - Wayfinding: overview to Elections to R10 to R-01 by in-page links; Back three times and Forward, with focus and scroll after each; 10 deep links on fresh loads; an unknown hash; skip links and in-page jumps followed by a reload; a click on each of the eight parts.
 - Keyboard: a full Tab walk of every view, checking each stop for a ring, cover by fixed or sticky elements, and zero size; arrow keys, Home and End in the first drawing on the overview, Elections and R10; Enter, Escape and Close with focus return; Tab out of the panel.
-- Panel and sheet: opened by mouse, keyboard and tap; sheet height at 48 and 88 percent; More, Less and Close sizes; focus; whether the drawer or sheet covers the selected item.
+- Panel and sheet: opened by mouse, keyboard and tap; sheet heights; control sizes; focus; whether the drawer or sheet covers the selected item.
 - Step-through: Next five times, Previous, Reset, Play with its 3,200 ms hold, and leaving the view; each status line against the drawing's marks; reduced motion (no zoom, no runner, no transitions left on); a forced-colors capture of R10.
-- Phone: sideways scroll and clipped overflow, the smallest rendered text including scaled SVG, targets under 44 and 24 px, page length in screens, where the eight parts first appear, and the distance from step controls to drawing.
+- Phone: sideways scroll, clipped overflow, the smallest rendered text including scaled SVG, targets under 44 and 24 px, page length, and where the eight parts first appear.
 - axe-core 4.10.2, WCAG 2.0, 2.1 and 2.2 A and AA tags, at 360 px on every view, at 1440 with the panel open and at 390 with the sheet open: 0 violations in every system.
 - Performance: three cold loads per page (first paint, largest paint, load, DOM nodes, bytes), one load at four times CPU slowdown with a throttled network, and view-switch time (29 to 103 ms everywhere).
 - Finish: computed type against the frame memo's scale, stroke widths against the family, headings that end on one word, card heights in a row (none uneven), the wordmark box (64, 24, 221 by 24 in all five), hover-only CSS (none), the cursor on every clickable (all pointer), and the overview drawing against 324 to 876 px (none fits).
