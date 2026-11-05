@@ -198,8 +198,10 @@ async function focusAudit(page) {
         await page.evaluate(() => window.scrollTo(0, 0));
         if (width === 1440) {
           await page.screenshot({ path: base + '.jpg', fullPage: true, type: 'jpeg', quality: 84 });
-          await page.addStyleTag({ content: 'html{filter:grayscale(1)!important}' });
+          const gray = await page.addStyleTag({ content: 'html{filter:grayscale(1)!important}' });
           await page.screenshot({ path: base + '-grayscale.jpg', fullPage: true, type: 'jpeg', quality: 70 });
+          // the views share one document (hash routing), so the filter must go before the next view's capture
+          await gray.evaluate((el) => el.remove());
         } else {
           await page.screenshot({ path: base + '.jpg', fullPage: true, type: 'jpeg', quality: 80 });
         }
