@@ -1,0 +1,231 @@
+{
+ "deck": "Five designers built the atlas five ways, each with the same six pages and the same Atlas V7 data. A civic educator, an interface and accessibility lead, an evidence and brand auditor and a simulated reader panel reviewed all five; each maker fixed what they found; the creative director then scored the results. Every overview now shows all eight parts and the flows between them on the first screen.",
+ "sample_reply": "A reply can be this short: \"Pick: Times Explainer. Decisions: as recommended.\"",
+ "pick": "01",
+ "runner_up": "03",
+ "rec_text": "It answers your request most directly. The first screen asks \"Who do they answer to?\" and draws all eight parts with the flows between them. The page then walks the circuit part by part, naming each flow in a sentence, with every condition, loop, problem and reform one click down. It grew from the Editorial Desk you liked and fixes the two faults you named in it, and it clears all seven lines of the rubric. Its weakness is recognition: with the wordmark covered it could belong to any good newsroom, so the finishing work gives it the layer rule and the Newsprint ground of your Concepts 07 and 09.",
+ "runner_text": "It is the best-made system of the five and the closest to your Concept 09, and its R10 sheet teaches the rule behind a loop better than any other page. It also clears all seven lines. Codes, sheet numbers and technical words make it read as a manual to a first-time reader, and you set The New York Times and The Economist as the bar.",
+ "systems": {
+  "01": {
+   "idea": "The atlas told like a newspaper explainer: the whole system on the first screen, then a walk through each part in the order its effects travel.",
+   "pick_if": "you want someone new to get how it all fits together on their first visit.",
+   "cd_scores": [
+    4,
+    5,
+    4,
+    5,
+    4,
+    4,
+    4
+   ],
+   "red_team": {
+    "civic": 4,
+    "interface": 3,
+    "evidence": 4,
+    "readers": 28
+   },
+   "best": [
+    "It teaches the way a great newspaper graphic does, in order, with numbers explained in words.",
+    "Its Elections drawing, two loops meeting at risk of losing office, is the best in the set.",
+    "Each flow is named in a sentence: \"5 connections run from Wealth to Voice, such as...\""
+   ],
+   "holds_back": [
+    "With the wordmark covered, nothing says Oath & Action yet.",
+    "The overview runs about eight desktop screens."
+   ]
+  },
+  "02": {
+   "idea": "The atlas as a table you read across, one row per part with its conditions, counts, evidence and main loop.",
+   "pick_if": "you want readers to compare the parts side by side and see the numbers first.",
+   "cd_scores": [
+    4,
+    4,
+    3,
+    5,
+    4,
+    4,
+    4
+   ],
+   "red_team": {
+    "civic": 3,
+    "interface": 2,
+    "evidence": 3,
+    "readers": 26
+   },
+   "best": [
+    "One table compares all eight parts at once, with a textured evidence bar for each.",
+    "A strong first screen and 44 px phone targets."
+   ],
+   "holds_back": [
+    "Prussian reform tabs beside red marks on the R10 and R-01 pages made a red and blue pair (being fixed).",
+    "Twenty-three vertical chains in the catalog grow monotonous."
+   ]
+  },
+  "03": {
+   "idea": "The atlas as numbered reference sheets, with one set of marks explained once and used exactly on every sheet.",
+   "pick_if": "you want the atlas to stand up to experts and double as the rulebook for every map you make next.",
+   "cd_scores": [
+    5,
+    4,
+    4,
+    5,
+    4,
+    4,
+    4
+   ],
+   "red_team": {
+    "civic": 3,
+    "interface": 3,
+    "evidence": 3,
+    "readers": 29
+   },
+   "best": [
+    "The most considered detail: text measured in the browser, crossings minimized by search.",
+    "The clearest circuit and the best loop lesson; issue filters and an index on every sheet.",
+    "It uses the circled sign from your Atlas Visual System, so the board shows both sign marks in use."
+   ],
+   "holds_back": [
+    "A first-time reader meets codes and sheet numbers before stories.",
+    "It reads cool to a household reader."
+   ]
+  },
+  "04": {
+   "idea": "Your dark atlas, finished: the circuit lit up on Charcoal, with an icon card for every loop.",
+   "pick_if": "you want the dark version you built, polished into a striking night edition.",
+   "cd_scores": [
+    4,
+    4,
+    4,
+    5,
+    3,
+    4,
+    5
+   ],
+   "red_team": {
+    "civic": 4,
+    "interface": 2,
+    "evidence": 4,
+    "readers": 24
+   },
+   "best": [
+    "The most striking page of the five; the R10 page and the icon loop cards are portfolio work.",
+    "Every name opens its full record, and problems now come before reforms."
+   ],
+   "holds_back": [
+    "One overview paragraph stated graded links as fact (being fixed).",
+    "Long pages tire on Charcoal, and as the main system it would make every future map dark-first."
+   ]
+  },
+  "05": {
+   "idea": "The system as a building, each part a floor of icon tiles, with a panel that explains whatever you touch.",
+   "pick_if": "you want readers to walk in through their own questions and explore by tapping.",
+   "cd_scores": [
+    3,
+    3,
+    4,
+    5,
+    4,
+    4,
+    4
+   ],
+   "red_team": {
+    "civic": 3,
+    "interface": 3,
+    "evidence": 3,
+    "readers": 25
+   },
+   "best": [
+    "The warmest way in, through 16 everyday questions, and the best side panel.",
+    "Plain glosses such as \"Why it matters\" under each condition; the simulated readers liked it most."
+   ],
+   "holds_back": [
+    "The stack ranks the parts, Wealth at the ground and Policy on the roof, which the model does not claim.",
+    "Its glossary broke one word per line (being fixed)."
+   ]
+  }
+ },
+ "finishing": [
+  "Give it a signature from your own concepts: the layer rule of Concepts 07 and 09 down the left edge of every part and condition box (Prussian for the core parts, Verdigris for Your household, Stone for Technology), and teach \"Color is the layer\" with it.",
+  "Settle the ground: build the overview, R10 and R-01 on Newsprint beside White and choose one; adopt Night Edition's Charcoal treatment as the dark mode.",
+  "Shorten the overview: let the first-screen drawing open in place to every condition, after your dark atlas's \"Main flows / Every connection\" switch, and cut each walk-through stop to its question, two sentences, its conditions and one named flow.",
+  "Borrow from Reference Sheets: the sign arithmetic on loop pages, \"The loop holds only as firmly as this link\", condition filters on problem lists, the loop index, and its conventions sheet as How to read.",
+  "Borrow from Architecture: \"Why it matters\" under each condition, and lighting the parts a question reaches on the first-screen drawing.",
+  "Borrow from Night Edition: \"Built from the signs: start with more, flip at each minus\" beside each read-aloud line, and ink tags for other reforms (\"R-02 aims here\").",
+  "Test one Civic Line icon per part head at 24 px.",
+  "Rename for the guide: the atlas's own name in the header, with no newspaper's name anywhere (D2-65).",
+  "A craft pass at 2x: every drawing label at 13 px or more, no line ending on one word, one rule for boxes and pills.",
+  "Write it into the guide: tokens for the pill, sign tag, ticks and layer rule; the six view templates; the build script as the generator for future maps; a rule for redrawing the first screen when a map has more or fewer parts.",
+  "Test with people and devices: five to eight first-time readers, screen readers, Safari, Firefox, real phones and 200 percent text zoom."
+ ],
+ "decisions": [
+  {
+   "q": "Which system?",
+   "text": "Pick one of the five to finalize as the atlas system and the pattern for your future maps.",
+   "rec": "Times Explainer, finished with the layer rule and ground from your Concepts 07 and 09, with Night Edition as its dark mode and Reference Sheets' best parts borrowed in."
+  },
+  {
+   "q": "The sign mark (Choice 3 from October 28).",
+   "text": "Four systems use the pointing tag, which carries both the sign and the direction a step runs; Reference Sheets uses the circled sign from your Atlas Visual System.",
+   "rec": "the pointing tag, as the studio recommended on October 28."
+  },
+  {
+   "q": "\"Democratic quality\".",
+   "text": "Every reform list opens a row with \"Democratic quality\", often beside \"positive\" and next to reforms the editor campaigns for; a cold reader can take it for the party.",
+   "rec": "print it as \"Quality of democracy\" on atlas pages and in the guide, and keep the code DQ in the data."
+  },
+  {
+   "q": "L23's name.",
+   "text": "V7 names L23 \"Poor service raises incumbents' risk of losing\", but the link runs from public service quality and carries a minus, so every page prints the name beside \"lowers\".",
+   "rec": "add a rename to the V7.1 issue list, for example \"Better service lowers incumbents' risk of losing\", so the name reads with its sign."
+  },
+  {
+   "q": "\"Household\" in two names.",
+   "text": "\"Your household\" is the plain name for the economy part, and \"Households' financial security\" is a condition inside Wealth.",
+   "rec": "keep both and let the overview say that the condition sits inside Wealth; revisit if readers mix them up."
+  },
+  {
+   "q": "A line in your dark atlas.",
+   "text": "Its opening says the atlas traces things \"one documented connection at a time\"; 32 of 118 connections are graded documented. Night Edition now says \"one graded connection at a time\".",
+   "rec": "make the same change in your atlas copy."
+  },
+  {
+   "q": "What comes next.",
+   "text": "After your pick: the finishing pass above, then the data visualization system for charts, maps and tables in the same language (DR-25), then the open direction review items and the rest of Phase 2 through Gate 2.",
+   "rec": "proceed in that order."
+  }
+ ],
+ "process": [
+  "Your references and answers set the brief: plain names leading, every part named on the overview, loops as named box-and-arrow cycles, full problems and solutions (DR-28 to DR-35).",
+  "A shared dataset joined Atlas V7, the master, with your dark atlas's plain names, stories and 242 real-world examples.",
+  "Five specialist makers built one system each, with the same six pages: overview, Elections, loop R10, reform R-01, the loop catalog and How to read.",
+  "Four reviewers looked at all five: a civic educator, an interface and accessibility lead, an evidence and brand auditor, and a panel of five simulated first-time readers who saw only screenshots.",
+  "Each maker made one fix pass against thirteen shared fixes and its own findings; the creative director scored the results and named six last faults, which the makers then fixed.",
+  "The main session wrote the briefs, the dataset and the checks, re-ran every check after each pass, published the five pages and built this board."
+ ],
+ "tested": [
+  "Every page passes the data verifier, which checks every tagged name, sign, grade, delay, loop chain, issue, part and count against Atlas V7 and caught all six planted errors on each page.",
+  "Every page passes the rendered check on all six views at 1440, 390 and 360 px: no sideways scroll, no text under 13 px, text contrast, labels inside drawings and apart, the red rule, 0 axe-core violations, a visible focus ring on every stop, and the click from the overview into a close-up and back.",
+  "The evidence auditor checked about 3,300 tagged facts and 25 or more untagged statements per system against the data before the fix pass.",
+  "The interface lead tested wayfinding, keyboard, the panels, phones at 390, 360 and 320 px, page weight and finish.",
+  "Each maker reports a separate audit at 320 px with nothing under 13 px and nothing clipped."
+ ],
+ "not_tested": [
+  "Real readers. The reader panel was simulated by one model, and the ten-second and wall tests are reviewers' readings.",
+  "Screen readers, Safari, Firefox, real phones and 200 percent text zoom.",
+  "The pages inside the claude.ai viewer beyond the published pages themselves.",
+  "Print."
+ ],
+ "changelog_created": [
+  "<code>work/handoffs/phase-2/20261105_Atlas-Editorial-Brief.md</code>, <code>20261105_Editorial-Fix-Pass-Brief.md</code>, the five makers' notes, the four red team reports and the creative director's review",
+  "<code>work/boards/phase-2/atlas-editorial/</code>: the shared dataset and the five systems, each with its page, build script, captures and check results",
+  "<code>work/build/scripts/phase-2/atlas_editorial_data.py</code>, <code>to_artifact_page.py</code> and <code>atlas_board2_build.py</code>",
+  "<code>work/research/chat-references/atlas-editorial/</code> and <code>work/research/atlas-v7-docs/</code>",
+  "<code>work/boards/20261105_Atlas-Editorial-Systems-Board.html</code>: this board"
+ ],
+ "changelog_modified": [
+  "<code>work/build/scripts/phase-2/atlas_concepts_verify.py</code>: parts, issues, plain names, the reform view, icon markers",
+  "<code>work/build/scripts/phase-2/atlas_concepts_check.js</code>: grayscale capture fix and a 360 px pass",
+  "<code>work/ledger/20261020_Decision-Log.md</code>: DR-28 to DR-35 and D2-68 to D2-84",
+  "<code>work/ledger/20261020_Source-Manifest.md</code> and <code>work/research/20261020_Rights-Ledger.md</code>"
+ ]
+}

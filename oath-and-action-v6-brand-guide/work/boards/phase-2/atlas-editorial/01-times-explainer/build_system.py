@@ -1123,7 +1123,8 @@ def summary_diagram(W=1312):
             rows.append((c, swrap(label(c), width, 'cap')))
         return rows
     core_rows = {pid: box_rows(pid, BW - 28) for pid in CORE}
-    head_h = 74
+    qwrap = {pid: swrap(PARTS[pid]['plain_question'] or '', BW - 28, 'mapr') for pid in CORE}
+    head_h = 74 + 19 * (max(len(r) for r in qwrap.values()) - 1)
     bh = head_h + max(sum(len(r) for _, r in core_rows[pid]) * 18 + (len(core_rows[pid]) - 1) * 2 for pid in CORE) + 18
     for pid in CORE:
         p = PARTS[pid]
@@ -1131,7 +1132,7 @@ def summary_diagram(W=1312):
         q = p['plain_question'] or ''
         g = [f'<rect class="ak-mark bx" x="{x}" y="{y0}" width="{BW}" height="{f(bh)}"/>',
              svg_text(x + 14, y0 + 30, p['plain_name'], 'ph ak-label', 'start', f' data-part="{pid}" data-name="{e(p["plain_name"])}"'),
-             svg_text(x + 14, y0 + 52, q, 'pq', 'start'),
+             svg_lines(x + 14, y0 + 52, qwrap[pid], 'pq', 19),
              f'<path class="hr" d="M{x + 14} {y0 + head_h - 8}H{x + BW - 14}"/>']
         yy = y0 + head_h + 10
         for c, rows in core_rows[pid]:
@@ -1373,6 +1374,77 @@ def loop_ref(k):
 OV_REFORMS = sorted({r for pw in ED['pathways'] for r in pw['model_refs']['reforms']})
 
 
+# Figures in the everyday answers: each sentence with a figure is followed by the source of the V7 claim that states it
+V7 = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())
+V7_PW = {p['id']: p for p in V7['pathways']}
+FIG = re.compile(r'\$\d[\d,]*(?:\.\d+)?(?: (?:million|billion|trillion))?|\d[\d,]*(?:\.\d+)?(?:%| percent)'
+                 r'|\b\d{1,3}(?:,\d{3})+\b|\b\d+(?:\.\d+)?\b')
+FIG_STOP = set('the a an of to in and or for on at by with from that this is are was were be as its it their than more '
+               'less each per who which what'.split())
+
+
+def _figs(snt):
+    return [m.group(0) for m in FIG.finditer(snt) if not re.fullmatch(r'(19|20)\d\d', m.group(0))]
+
+
+def _big(t):
+    return any(ch in t for ch in '%$,.') or 'percent' in t or (t.isdigit() and int(t) >= 100)
+
+
+def _words(t):
+    return {w for w in re.findall(r'[a-z]+', t.lower()) if w not in FIG_STOP and len(w) > 3}
+
+
+def figure_claims(snt, claim_ids):
+    """The V7 claims that state a sentence's figures: each figure is matched in a claim's own text, the pathway's
+    claims first, and a bare small number needs four shared words besides. Dates and law numbers find no claim."""
+    todo, chosen = set(_figs(snt)), []
+    pool = claim_ids + [c for c in V7['claims'] if c not in claim_ids]
+    sw = _words(snt)
+    while todo:
+        best = None
+        for cid in pool:
+            c = V7['claims'][cid]
+            txt = (c['claim'] + ' ' + (c.get('supports') or '')).replace(' percent', '%')
+            hits = [f for f in todo if re.search(r'(?<![\d.,$])' + re.escape(f.replace(' percent', '%')) + r'(?![\d,])', txt)]
+            if not hits:
+                continue
+            ov = len(sw & _words(txt))
+            if not any(_big(h) for h in hits) and ov < 4:
+                continue
+            sc = (sum(100 if _big(h) else 10 for h in hits) + ov, cid in claim_ids)
+            if best is None or sc > best[0]:
+                best = (sc, cid, hits)
+        if not best:
+            break
+        chosen.append(best[1])
+        todo -= set(best[2])
+    return chosen
+
+
+def src_words(sid):
+    s_ = V7['sources'][sid]
+    y = re.search(r'(19|20)\d\d', s_.get('year') or '')
+    return f'{s_["title"]}, {s_["publisher"] or s_.get("author") or ""}, {y.group(0) if y else s_.get("year") or "no year in V7"}'
+
+
+def answer_with_sources(pw):
+    v7 = V7_PW[pw['id']]
+    assert v7['short_answer'] == pw['short_answer'], pw['id']
+    out = []
+    for snt in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9$])', pw['short_answer']):
+        out.append(e(snt))
+        cids = figure_claims(snt, v7['claim_ids']) if _figs(snt) else []
+        sids = []
+        for cid in cids:
+            for sid in V7['claims'][cid]['sources']:
+                if sid not in sids:
+                    sids.append(sid)
+        if sids:
+            out.append(f'<span class="fsrc">(Source: {e("; ".join(src_words(x) for x in sids))}.)</span>')
+    return ' '.join(out)
+
+
 def tpl_pathway(pw):
     refs = pw['model_refs']
     parts_ = []
@@ -1381,7 +1453,7 @@ def tpl_pathway(pw):
         if pp not in parts_:
             parts_.append(pp)
     hub = next(h for h in ED['hubs'] if h['id'] == pw['hub'])
-    body = [f'<p class="muted">{e(hub["title"])} · {e(pw["title"])}</p>', f'<p>{e(pw["short_answer"])}</p>',
+    body = [f'<p class="muted">{e(hub["title"])} · {e(pw["title"])}</p>', f'<p>{answer_with_sources(pw)}</p>',
             '<h3>Where it sits in the atlas</h3><dl>',
             f'<dt>Parts</dt><dd>{list_words([part_ref(x) for x in parts_])}</dd>',
             f'<dt>Conditions</dt><dd>{list_words([pick_ref("var-" + c.lower(), label(c)) for c in refs["nodes"]])}</dd>']
@@ -2802,6 +2874,7 @@ text-align:left;font:400 15px/23px Inter,sans-serif;cursor:pointer;position:rela
 .ak-panel .next{font-weight:600;margin-top:16px}
 .ak-panel .src{margin-top:20px}
 .ak-panel ol.steps{padding-left:20px}.ak-panel ol.steps li{margin-bottom:6px}
+.fsrc{font:400 13px/18px Inter,sans-serif;color:var(--deep)}
 .pk{background:none;border:0;padding:2px 0;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:24px}
 @media (min-width:900px){.ak-panel{position:fixed;top:0;right:0;bottom:0;width:var(--ak-panel-w);max-height:none;z-index:80;
 border-left:1px solid var(--ink);overflow:auto;animation:ak-panel-in var(--ak-mid) var(--ak-ease-in)}}
