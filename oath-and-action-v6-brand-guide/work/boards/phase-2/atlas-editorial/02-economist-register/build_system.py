@@ -1785,6 +1785,7 @@ def reform_r01():
               f'<th scope="col">Note</th><th scope="col">Last checked</th></tr></thead><tbody>{route_rows}</tbody></table>'
             + f'<ul class="feaskey">{feas_key}</ul>' + source_line() + '</section>'
             + f'<section class="howgrid" aria-label="How it would work">{how_html}</section>'
+            + f'<h2 class="sh evhead">The problem is graded {gword(pe["grade"]).lower()}; the remedy, {gword(re_["grade"]).lower()}</h2>'
             + f'<div class="evgrid">{ev_card("Problem evidence", pe)}{ev_card("Remedy evidence", re_)}</div>'
             + f'<div class="r10notes"><div><h3 class="sh">Tradeoffs</h3><p>{e(r["tradeoffs"])}</p></div>'
               f'<div><h3 class="sh">How it could fail</h3><p>{e(r["failure_risks"])}</p></div>'
@@ -1844,7 +1845,7 @@ def how_to_read():
     color_rows = [
         ('ch', 'Charcoal', 'The system: every variable, arrow and count, and the route a headline names.'),
         ('st', 'Stone', 'Context: counts that run back, rules and hairlines.'),
-        ('pr', 'Prussian', 'The fix layer: reform cards and the tab that names a reform where it acts.'),
+        ('pr', 'Prussian, the dark blue', 'The fix layer: reform cards and the tab that names a reform where it acts.'),
         ('rd', 'Pillar Red', 'Where a reform acts, on the loop and reform pages only. One job per view, never on Prussian.'),
     ]
     colors = ''.join(f'<li><span class="sw2 {c}"{" data-red=\"specimen\"" if c == "rd" else ""}></span>'
@@ -2505,6 +2506,9 @@ details.words summary,details.keyfold summary{cursor:pointer;font-weight:600;min
 .mainflows li b{font-weight:600}
 .exg{color:var(--ds)}
 .notdrawn{font:400 14px/20px Inter;color:var(--ds);margin-top:10px}
+.lede + .evkey{margin-top:28px}
+.sh.evhead{margin-top:56px}
+.sh.evhead + .evgrid{margin-top:14px}
 .evkey{margin:0 0 22px;padding:12px 0 10px;border-top:1px solid var(--st);border-bottom:1px solid var(--st)}
 .evkh{font:700 13px/18px Inter;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
 .evkey ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 24px}
