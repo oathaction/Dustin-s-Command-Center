@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html",
- "checked": "2026-11-05T21:00:12.997Z",
+ "checked": "2026-11-05T21:45:36.567Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 420,
+   "texts": 495,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -22,8 +22,8 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 15,
-    "labels": 9,
+    "drawings": 31,
+    "labels": 18,
     "outside": [],
     "overlaps": []
    },
@@ -35,19 +35,18 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 4109,
+   "height": 4509,
    "axe": [],
-   "focusStops": 14,
+   "focusStops": 22,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 587,
+   "texts": 609,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -55,7 +54,7 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 29,
+    "drawings": 35,
     "labels": 74,
     "outside": [],
     "overlaps": []
@@ -68,10 +67,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 9700,
+   "height": 9877,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -80,7 +78,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 146,
+   "texts": 155,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -88,13 +86,13 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 7,
-    "labels": 36,
+    "drawings": 13,
+    "labels": 38,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -103,19 +101,18 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 3078,
+   "height": 2727,
    "axe": [],
-   "focusStops": 7,
+   "focusStops": 8,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 142,
+   "texts": 166,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -123,13 +120,13 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 7,
-    "labels": 35,
+    "drawings": 13,
+    "labels": 37,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 17,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -138,10 +135,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 4370,
+   "height": 5092,
    "axe": [],
    "focusStops": 3,
    "focusWithoutRing": []
@@ -150,7 +146,7 @@
    "width": 1440,
    "view": "loops",
    "rootVisible": true,
-   "texts": 424,
+   "texts": 478,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -158,7 +154,7 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 29,
+    "drawings": 35,
     "labels": 140,
     "outside": [],
     "overlaps": []
@@ -171,12 +167,11 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 8039,
+   "height": 9169,
    "axe": [],
-   "focusStops": 1,
+   "focusStops": 24,
    "focusWithoutRing": []
   },
   {
@@ -204,10 +199,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 4422,
+   "height": 8331,
    "axe": [],
    "focusStops": 14,
    "focusWithoutRing": []
@@ -216,7 +210,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 411,
+   "texts": 477,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -224,7 +218,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 15,
+    "drawings": 31,
     "labels": 2,
     "outside": [],
     "overlaps": []
@@ -237,10 +231,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 11487,
+   "height": 13313,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -249,7 +242,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 580,
+   "texts": 604,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -257,7 +250,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 29,
+    "drawings": 35,
     "labels": 71,
     "outside": [],
     "overlaps": []
@@ -270,10 +263,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 21189,
+   "height": 21923,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -282,7 +274,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 117,
+   "texts": 125,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -290,13 +282,13 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 7,
+    "drawings": 13,
     "labels": 16,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -305,10 +297,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 5579,
+   "height": 5664,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -317,7 +308,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 114,
+   "texts": 137,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -325,13 +316,13 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 7,
+    "drawings": 13,
     "labels": 16,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 17,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -340,10 +331,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 7458,
+   "height": 8955,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -352,7 +342,7 @@
    "width": 390,
    "view": "loops",
    "rootVisible": true,
-   "texts": 423,
+   "texts": 474,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -360,7 +350,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 29,
+    "drawings": 35,
     "labels": 140,
     "outside": [],
     "overlaps": []
@@ -373,10 +363,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 14989,
+   "height": 16682,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -406,10 +395,205 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 8730,
+   "height": 14115,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 477,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 31,
+    "labels": 2,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 14012,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "area-c",
+   "rootVisible": true,
+   "texts": 604,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 35,
+    "labels": 71,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 23292,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "loop-r10",
+   "rootVisible": true,
+   "texts": 125,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 13,
+    "labels": 16,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [
+     "R-01 targets"
+    ],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 5825,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "reform-r01",
+   "rootVisible": true,
+   "texts": 137,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 13,
+    "labels": 16,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [
+     "R-01 targets"
+    ],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 9406,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "loops",
+   "rootVisible": true,
+   "texts": 474,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 35,
+    "labels": 140,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 17012,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "how-to-read",
+   "rootVisible": true,
+   "texts": 144,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 14,
+    "labels": 10,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 14351,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

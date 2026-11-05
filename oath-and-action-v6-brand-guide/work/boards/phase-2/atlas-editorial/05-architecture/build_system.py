@@ -60,8 +60,29 @@ def date_words(iso):
 SNAP_WORDS = date_words(SNAP)
 
 
+BALLOT = 'November 3, 2026'
+OPENERS = {'A', 'An', 'The', 'On', 'In', 'Both', 'Two', 'Its', 'This', 'That', 'These', 'Where', 'When', 'Effects',
+           'Voters', 'Each', 'Legislators', 'Parties', 'Supporters'}
+
+
+def dated(text):
+    """Fix pass item 3: every sentence that names the November 3, 2026 ballot opens with the snapshot date, so no page
+    suggests the vote is still ahead or reports a result. A sentence that already opens "As of" is left as it is."""
+    if BALLOT not in text or len(text) < 60:
+        return text
+    parts = re.split(r'(?<=[.!?])\s+(?=[A-Z])', text)
+    out = []
+    for sent in parts:
+        if BALLOT in sent and not sent.startswith('As of'):
+            first = sent.split()[0]
+            body = sent[0].lower() + sent[1:] if first in OPENERS else sent
+            sent = f'As of {SNAP_WORDS}, {body}'
+        out.append(sent)
+    return ' '.join(out)
+
+
 def e(s):
-    return html.escape(str(s), quote=True)
+    return html.escape(dated(str(s)), quote=True)
 
 
 # ---------------------------------------------------------------------------------------------------- text metrics
@@ -234,7 +255,10 @@ def loops_through(nodes):
     return [lp for lp in DATA['loop_order'] if any(s.get('code') in nodes for s in LO[lp]['stations'] if s.get('is_variable'))]
 
 
-HOME = {g['id']: g['loops'] for g in DATA['loop_groups']}
+HOME = {}
+for _lp in DATA['loop_order']:
+    HOME.setdefault(LO[_lp]['home'] or 'SK', []).append(_lp)
+HOME_ORDER = ['A', 'B', 'C', 'D', 'SK']
 
 
 def flows():
@@ -282,25 +306,37 @@ def part_sentence(pid):
     return t if t.endswith('.') else first_sentence(PARTS[pid]['story'])
 
 
+# Variables whose short labels name countable things take "fewer", not "less" (fix pass item 5, evidence S3).
+# A grammar list for the page's own sentences; the labels themselves come from the data.
+COUNTABLE = {'C1', 'C2', 'C5', 'D3', 'D4', 'D6', 'B3', 'TC7', 'X5'}
+
+
+def amount(state, nid=None):
+    if state > 0:
+        return 'more'
+    return 'fewer' if nid in COUNTABLE else 'less'
+
+
 def read_aloud(lp):
-    """Built from the signs, so it cannot drift: more or less at each station, and back to the start."""
+    """Built from the signs, so it cannot drift: more, less or fewer at each station, and back to the start."""
     o = LO[lp]
     st = o['stations']
-    labels = []
+    labels, ids = [], []
     for s in st:
         if s.get('is_variable') and s.get('code') in N:
             labels.append(low(N[s['code']]['label'], s['code']))
+            ids.append(s['code'])
         else:
             labels.append(low(s['label']))
+            ids.append(None)
     signs = [s['polarity'] for s in o['steps']]
     state, parts = 1, [f'more {labels[0]}']
     for i, sg in enumerate(signs):
         state *= 1 if sg == '+' else -1
-        word = 'more' if state > 0 else 'less'
         if i == len(signs) - 1:
-            parts.append(f'and back to {word} {labels[0]}')
+            parts.append(f'and back to {amount(state, ids[0])} {labels[0]}')
         else:
-            parts.append(f'{word} {labels[i + 1]}')
+            parts.append(f'{amount(state, ids[i + 1])} {labels[i + 1]}')
     s = ', '.join(parts) + '.'
     return s[0].upper() + s[1:]
 
@@ -327,8 +363,8 @@ def weakest_words(lp):
     return ('Weakest step ' if len(ws) == 1 else 'Weakest steps ') + ' and '.join(ws)
 
 
-DIRECTION = {'running_up': 'Running up', 'running_down': 'Running down', 'running': 'Running', 'disabled': 'Disabled',
-             'disabled in concentrated sectors': 'Disabled in concentrated sectors', 'unknown': 'Direction unknown',
+DIRECTION = {'running_up': 'Running up', 'running_down': 'Running down', 'running': 'Running', 'disabled': 'Switched off',
+             'disabled in concentrated sectors': 'Switched off in concentrated sectors', 'unknown': 'Direction unknown',
              'design_target': 'A design target'}
 
 
@@ -561,7 +597,13 @@ def text_lines(x, y, rows, cls, lh, anchor='start', extra=''):
 
 # ---------------------------------------------------------------------------------------------------- loop cycles
 CARD_W = 350
-SM = dict(bw=124, label=15, lh=18, wt=600, pad=10, gap_v=84, diag=70)
+# Two sizes of the same cycle: 350 units for desktop cards, and 280 units for phones, so text stays at 13 px or more
+# down to a 320 px screen (fix pass item 9). Labels: Map label 15/18 on desktop, Legend 13/16 on a phone.
+SIZES = {
+    'd': dict(W=350, bw=124, label=15, lh=18, wt=600, pad=10, gap_v=84, diag=70, cls='bxl', weak='weakest step'),
+    'm': dict(W=280, bw=104, label=13, lh=16, wt=500, pad=6, gap_v=84, diag=56, cls='bxm', weak='weakest'),
+}
+SM = SIZES['d']
 
 
 def box_svg(x, y, w, h, lines, *, lh, cls_lab='bxl', nid=None, concept=False, key=None, rel='', code=None,
@@ -601,7 +643,7 @@ def cycle_geometry(n, W, bw, bh, gap_v, diag):
         routes = [
             [(sx, bh + 2), (sx + diag, bh + 2 + diag)],
             [(W - bw - 2, y1 + bh / 2), (bw + 2, y1 + bh / 2)],
-            [(W - sx, y1 - 2), (W - sx + diag, y1 - 2 - diag)],
+            [(x0 + 22 - diag, y1 - 2), (x0 + 22, y1 - 2 - diag)],
         ]
         return b, routes, y1 + bh
     # four stations
@@ -640,15 +682,16 @@ def step_label_pos(n, i, route, W, bw, bh):
     return (x1 + 16, (y1 + y2) / 2 - 4, 'start', 'stack')
 
 
-def cycle_svg(lp, *, uid, interactive=False, numbered=False, view='loop'):
-    """A loop as a named box-and-arrow cycle at card size (350 px wide, text 13 to 15 px at 1:1)."""
+def cycle_svg(lp, *, uid, interactive=False, numbered=False, view='loop', size='d'):
+    """A loop as a named box-and-arrow cycle at card size (350 units, or 280 for phones), text 13 to 15 px at 1:1."""
     o = LO[lp]
     st = o['stations']
     n = len(st)
-    W, bw = CARD_W, SM['bw']
-    labs = [wrap(station_label(s), bw - 2 * SM['pad'], SM['label'], SM['wt']) for s in st]
-    bh = max(len(x) for x in labs) * SM['lh'] + 22
-    boxes, routes, H = cycle_geometry(n, W, bw, bh, SM['gap_v'], SM['diag'])
+    SZ = SIZES[size]
+    W, bw = SZ['W'], SZ['bw']
+    labs = [wrap(station_label(s), bw - 2 * SZ['pad'], SZ['label'], SZ['wt']) for s in st]
+    bh = max(len(x) for x in labs) * SZ['lh'] + 22
+    boxes, routes, H = cycle_geometry(n, W, bw, bh, SZ['gap_v'], SZ['diag'])
     top = 4
     parts, wires = [], []
     for i, s in enumerate(o['steps']):
@@ -660,12 +703,11 @@ def cycle_svg(lp, *, uid, interactive=False, numbered=False, view='loop'):
         if mode == 'split':
             lab = text_el(lab_x, lab_y, word, 'wl', anchor)
             if weakest:
-                lab += text_el(lab_x, lab_y + 36, 'weakest step', 'wn', anchor)
+                lab += text_el(lab_x, lab_y + 36, SZ['weak'], 'ww', anchor)
         else:
-            rows = [word] + (['weakest step'] if weakest else [])
-            lab = text_lines(lab_x, lab_y, rows, 'wl', 17, anchor)
+            lab = text_el(lab_x, lab_y, word, 'wl', anchor)
             if weakest:
-                lab = (text_el(lab_x, lab_y, word, 'wl', anchor) + text_el(lab_x, lab_y + 17, 'weakest step', 'wn', anchor))
+                lab += text_el(lab_x, lab_y + 17, SZ['weak'], 'ww', anchor)
         if s['conceptual']:
             wires.append(wire(route, 2, None, s['polarity'], None, conceptual=True, labels=lab))
         else:
@@ -679,7 +721,7 @@ def cycle_svg(lp, *, uid, interactive=False, numbered=False, view='loop'):
         rel = ''
         if nid and interactive:
             rel = ' '.join(k_link(x['id']) for x in o['steps'] if x['id'] and nid in (x['from'], x['to']))
-        parts.append(box_svg(bx, by + top, bw, bh, labs[i], lh=SM['lh'], nid=nid, concept=not nid,
+        parts.append(box_svg(bx, by + top, bw, bh, labs[i], lh=SZ['lh'], nid=nid, concept=not nid, cls_lab=SZ['cls'],
                              interactive=interactive and bool(nid), rel=rel))
     Ht = H + top + (50 if n == 2 else 8)
     if n == 2:
@@ -698,15 +740,33 @@ def cycle_svg(lp, *, uid, interactive=False, numbered=False, view='loop'):
         body = ''.join(wires) + ''.join(parts)
     lab = f' role="group" aria-label="{e(lp + ", " + o["plain_name"] + ": " + read_aloud(lp))}"' if not interactive else \
         f' role="group" aria-labelledby="h-{view}"'
-    return (f'<svg class="cyc" data-view="{e(view)}-{uid}" viewBox="0 0 {W} {f(Ht)}" width="{W}" height="{f(Ht)}"'
+    return (f'<svg class="cyc cyc-{size}" data-view="{e(view)}-{uid}" viewBox="0 0 {W} {f(Ht)}" width="{W}" height="{f(Ht)}"'
             f'{lab}{seq} style="--ak-w-lo:2px;--ak-w-hi:3px;--ak-w-sel:6px">{body}</svg>'), steps
+
+
+def cycle_pair(lp, uid, **kw):
+    """The desktop and phone drawings of one loop; CSS shows one. Returns (html, steps)."""
+    d, steps = cycle_svg(lp, uid=uid + 'd', size='d', **kw)
+    m, _ = cycle_svg(lp, uid=uid + 'm', size='m', **kw)
+    return f'<div class="cyc-dw">{d}</div><div class="cyc-mw">{m}</div>', steps
+
+
+# Studio line borrowed from System 3 at the civic red team's suggestion (should fix 6)
+WEAK_LINE = 'The loop holds only as firmly as this link.'
+
+
+def inline_key(prefix):
+    """A one-line evidence key under any drawing that uses line textures (fix pass item 12)."""
+    items = ''.join(f'<li><svg data-view="{prefix}-{gkey(g)}" viewBox="0 0 48 14" width="48" height="14" aria-hidden="true">'
+                    f'{wire([(2, 7), (46, 7)], 2, g, None, None)}</svg>{e(gword(g))}</li>' for g in EVIDENCE_ORDER)
+    return f'<div class="ikey"><p class="ikey-h">Line texture is the evidence</p><ul>{items}</ul></div>'
 
 
 # the R10 loop at full size, with its step labels written out and R-01's targets marked by the kit
 def r10_large(lp='R10', uid='lg', marks=True, view='loop-r10'):
     o = LO[lp]
     st = o['stations']
-    W, bw, bh, gv, top = 880, 280, 0, 212, 40
+    W, bw, bh, gv, top = 880, 280, 0, 184, 40
     # box contents: icon, chip, label, and "a higher value means"
     rows = []
     for s in st:
@@ -753,20 +813,22 @@ def r10_large(lp='R10', uid='lg', marks=True, view='loop-r10'):
         name = wrap(lk['name'], 300 if i in (0, 2) else 250, 15, 600)
         v = f'{sign_char(lk["polarity"])} {verb(lk["polarity"])} · {DELAY[lk["delay"]]}'
         g = gfull(lk['evidence'])
-        tail = ['The weakest step'] if weakest else []
+        tail = [('The weakest step', 'sw'), (WEAK_LINE, 'sv')] if weakest else []
         if i in (0, 2):
             cx = W / 2
             ly = route[0][1]
             above = text_el(cx, ly - 14 - 18 * len(name) - 4, head, 'sh', 'middle') + \
                 text_lines(cx, ly - 14 - 18 * (len(name) - 1), name, 'sn', 18, 'middle')
-            below = text_lines(cx, ly + 30, [v, g] + tail, 'sv', 19, 'middle')
+            below = text_lines(cx, ly + 30, [v, g], 'sv', 19, 'middle')
+            for k, (t, c) in enumerate(tail):
+                below += text_el(cx, ly + 30 + 19 * (2 + k), t, c, 'middle')
             lab = above + below
         else:
             x1 = route[0][0]
             anchor = 'end' if i == 1 else 'start'
             lx = x1 - 22 if i == 1 else x1 + 22
             my = (route[0][1] + route[-1][1]) / 2
-            block = [(head, 'sh', 17)] + [(r, 'sn', 18) for r in name] + [(v, 'sv', 19), (g, 'sv', 19)] + [(t, 'sv', 19) for t in tail]
+            block = [(head, 'sh', 17)] + [(r, 'sn', 18) for r in name] + [(v, 'sv', 19), (g, 'sv', 19)] + [(t, c, 19) for t, c in tail]
             hgt = sum(b[2] for b in block)
             yy = my - hgt / 2 + 13
             lab = ''
@@ -852,16 +914,16 @@ def floor_c_svg(uid='fc'):
 
 
 def floor_c_svg_v(uid='fv'):
-    """The same floor plan for a phone: rooms stacked, the return on the left, the skip on the right, 350 px wide."""
+    """The same floor plan for a phone: rooms stacked, the return on the left, the skip on the right, 280 units wide."""
     nodes = PARTS['C']['nodes']
-    W, x0, bw, bh, gap, top = 350, 44, 238, 72, 76, 6
+    W, x0, bw, bh, gap, top = 280, 38, 218, 76, 76, 6
     inside = [k for k in INSIDE if PART_OF[L[k]['from']] == 'C']
     Y = {n: top + i * (bh + gap) for i, n in enumerate(nodes)}
     parts = []
     for n in nodes:
         y = Y[n]
         rel = ' '.join(k_link(k) for k in inside if n in (L[k]['from'], L[k]['to']))
-        lab = wrap(N[n]['label'], bw - 12 - 48 - 12 - 10, 15, 600)
+        lab = wrap(N[n]['label'], bw - 12 - 48 - 12 - 6, 15, 600)
         ic = icon_svg(acc.VARIABLE_ICON[n], 'black', uid=f'{uid}-{n.lower()}', size=48)
         ic = ic.replace('<svg ', f'<svg x="{x0 + 12}" y="{f(y + (bh - 48) / 2)}" ', 1)
         ty = y + (bh - (16 + len(lab) * 18)) / 2 + 13
@@ -883,13 +945,13 @@ def floor_c_svg_v(uid='fv'):
             route = [(cx, Y[a] + bh + 2), (cx, Y[b] - 2)]
             lab = text_el(cx + 18, Y[a] + bh + gap / 2 + 5, word, 'wl')
         elif ib < ia:
-            xr = 18
+            xr = 16
             ya, yb = Y[a] + bh / 2, Y[b] + bh / 2
             route = [(x0 - 2, ya), (xr, ya), (xr, yb), (x0 - 2, yb)]
             gy = Y[nodes[1]] + bh + gap / 2 + 5
             lab = text_el(xr + 12, gy, word, 'wl')
         else:
-            xr = W - 14
+            xr = W - 11
             ya, yb = Y[a] + bh / 2, Y[b] + bh / 2
             route = [(x0 + bw + 2, ya), (xr, ya), (xr, yb), (x0 + bw + 2, yb)]
             gy = Y[nodes[3]] + bh + gap / 2 + 5
@@ -1061,12 +1123,12 @@ def tpl_flow(a, bb):
             link_li(k) for k in down) + '</ul>'
     else:
         b += h3('Back down') + f'<p>No connection runs from {e(pname(bb))} down to {e(pname(a))}.</p>'
-    b += f'<p class="p-note">{e(GLOSS["Positive sign (+)"])}</p>'
+    b += f'<p class="p-note">{e(acc.SIGN_RULE)}</p>'
     return tpl(f'flow-{a.lower()}-{bb.lower()}', 'Flow between floors', f'{pname(a)} to {pname(bb)}', b)
 
 
 def tpl_return():
-    b = f'<p class="p-quote">{e(DATA["opening"]["return"])}</p>'
+    b = f'<p class="p-formal">{e(DATA["opening"]["return"])}</p>'
     b += (f'<p class="p-lead">{plural(len(RETURN), "connection")} run back down from Policy: '
           f'{len(flow_links("E", "A"))} into Wealth and {len(flow_links("E", "EC"))} into Your household.</p>')
     b += '<ul class="p-list">' + ''.join(link_li(k) for k in RETURN) + '</ul>'
@@ -1152,12 +1214,32 @@ def tpl_loop(lp):
     return tpl(k_loop(lp), f'Loop {lp}', o['plain_name'], b)
 
 
+EFFECT_RE = re.compile(r'^([+-][LMS]|0|\?)\s*(.*)$')
+
+
+def effect_words(v):
+    """A reform effect in words (fix pass item 6). V7's qualified values such as "+S entry; -S extremity" keep
+    their qualifier and lose the code."""
+    if v in DATA['effect_codes']:
+        return DATA['effect_codes'][v]
+    out = []
+    for part in str(v).split(';'):
+        m = EFFECT_RE.match(part.strip())
+        if not m:
+            out.append(part.strip())
+            continue
+        w = DATA['effect_codes'].get(m.group(1), m.group(1))
+        rest = m.group(2)
+        out.append(f'{w} {rest}' if rest.split(' ')[0] in ('if', 'when', 'in', 'on') else (f'{w} for {rest}' if rest else w))
+    return '; '.join(out)
+
+
 def effects_rows(rid):
     r = RF[rid]
     rows = ''
     for fam, name in DATA['families'].items():
         code = r['effects'].get(fam)
-        rows += f'<dt>{e(name)}</dt><dd>{e(DATA["effect_codes"].get(code, code or "not rated").capitalize())}</dd>'
+        rows += f'<dt>{e(name)}</dt><dd>{e(effect_words(code).capitalize() if code else "Not rated")}</dd>'
     return f'<dl class="p-dl">{rows}</dl><p class="p-note">The four families are never added together.</p>'
 
 
@@ -1232,11 +1314,14 @@ def floor_id(pid):
     q = p.get('plain_question')
     say = f'{p["plain_name"]}, {p["formal_title"]}. {q or ""} {part_sentence(pid)}'.replace('  ', ' ')
     qh = f'<span class="fl-q">{e(q)}</span>' if q else ''
+    inner = (f'<span class="fl-mark" aria-hidden="true">{pid}</span><span class="fl-name">{e(p["plain_name"])}</span>'
+             f'<span class="fl-formal">{e(p["formal_title"])}</span>{qh}')
+    if pid == 'C':
+        # the one floor with a close-up moves down a level on the click (interaction memo, red team S3)
+        return (f'<a class="fl-id" href="#area-c" data-part="{pid}" data-name="{e(p["plain_name"])}" data-rel="{e(" ".join(rel))}" '
+                f'data-say="{e(say)} Opens the Elections floor.">{inner}<span class="fl-go">Open the floor <span aria-hidden="true">→</span></span></a>')
     return (f'<button type="button" class="fl-id" data-select="{k_area(pid)}" data-part="{pid}" data-name="{e(p["plain_name"])}" '
-            f'data-rel="{e(" ".join(rel))}" data-say="{e(say)}">'
-            f'<span class="fl-mark" aria-hidden="true">{pid}</span>'
-            f'<span class="fl-name">{e(p["plain_name"])}</span>'
-            f'<span class="fl-formal">{e(p["formal_title"])}</span>{qh}</button>')
+            f'data-rel="{e(" ".join(rel))}" data-say="{e(say)}">{inner}</button>')
 
 
 def floor_html(pid, row):
@@ -1261,8 +1346,6 @@ def floor_html(pid, row):
         bits.append(f'{cnt("custom:reforms-" + pid, c["reforms"])} reforms aimed here')
     counts = ' · '.join(f'<span class="nb">{b}</span>' for b in bits)
     open_c = ''
-    if pid == 'C':
-        open_c = '<a class="fl-open" href="#area-c">Open the Elections floor <span aria-hidden="true">→</span></a>'
     return (f'<div class="floor" data-floor="{pid}" data-xin="{len(X_TO.get(pid, []))}" style="grid-row:{row}"{surface}>'
             f'<div class="fl-head">{floor_id(pid)}{open_c}</div>'
             f'<div class="fl-body">{tiles}<p class="fl-text">{e(part_sentence(pid))} <span class="fl-counts">{counts}</span></p></div>'
@@ -1283,24 +1366,30 @@ def arrow_svg(uid, direction='up', w=3, h=44):
             f'<path class="ak-mark" d="{rounded_d(body, 0)}" fill="none" stroke-width="{w}"/>{head_shape(pts[-1], u, w)}</svg>')
 
 
+def flow_half(a, b, lids, key, direction):
+    """One direction of a joint: arrow, count, and one named connection as its example."""
+    arrow = arrow_svg(f'{key}-{direction}', direction, 3)
+    fig = cnt(f'custom:{key}-{a.lower()}-{b.lower()}', len(lids), 'sl-fig')
+    if not lids:
+        return (f'<span class="sl-h sl-none">{arrow}{fig}<span class="sl-t"><span class="sl-w">from {e(pname(a))} to '
+                f'{e(pname(b))}</span></span></span>')
+    lead = lead_link(lids)
+    return (f'<span class="sl-h">{arrow}{fig}<span class="sl-t"><span class="sl-w">from {e(pname(a))} to {e(pname(b))}, such as</span> '
+            f'<span class="sl-n">{e(L[lead]["name"])}</span></span></span>')
+
+
 def slab_html(lower, upper, row):
+    """The joint between two floors carries influence both ways, each with its count (civic red team, must fix 1)."""
     up, down = flow_links(lower, upper), flow_links(upper, lower)
-    main = (lower, upper) in MAIN
-    lead = lead_link(up)
     key = f'flow-{lower.lower()}-{upper.lower()}'
     rel = ' '.join(sorted({k_var(L[k]['from']) for k in up + down} | {k_var(L[k]['to']) for k in up + down}))
-    say = (f'{len(up)} connections pass up from {pname(lower)} to {pname(upper)}, such as {lead}, {L[lead]["name"]}.'
-           + (f' {len(down)} come back down.' if down else ''))
-    dn = ''
-    if down:
-        dn = (f'<span class="sl-down">{arrow_svg(key + "-d", "down", 2, 28)}'
-              f'{cnt("custom:" + key + "-down", len(down), "sl-fig2")}<span> back down</span></span>')
-    return (f'<div class="slab{" main" if main else ""}" style="grid-row:{row}">'
+    say = (f'{len(up)} connections run from {pname(lower)} to {pname(upper)}'
+           + (f', such as {lead_link(up)}, {L[lead_link(up)]["name"]}' if up else '')
+           + f'. {len(down)} run from {pname(upper)} to {pname(lower)}'
+           + (f', such as {lead_link(down)}, {L[lead_link(down)]["name"]}.' if down else '.'))
+    return (f'<div class="slab" style="grid-row:{row}">'
             f'<button type="button" class="flow" data-select="{key}" data-rel="{e(rel)}" data-say="{e(say)}">'
-            f'<span class="sl-up">{arrow_svg(key, "up", 3 if main else 2)}'
-            f'{cnt("custom:" + key + "-up", len(up), "sl-fig")}'
-            f'<span class="sl-t"><span class="sl-w">pass up to {e(pname(upper))}, such as</span> '
-            f'<span class="sl-n">{e(L[lead]["name"])}</span></span></span>{dn}</button></div>')
+            f'{flow_half(lower, upper, up, key, "up")}{flow_half(upper, lower, down, key, "down")}</button></div>')
 
 
 def outside_html(rows):
@@ -1347,19 +1436,19 @@ def building_html():
             r += 1
     last = r
     ret_rel = ' '.join(sorted({k_var(L[k]['from']) for k in RETURN} | {k_var(L[k]['to']) for k in RETURN}))
-    ret_say = f'Return line. {len(RETURN)} connections run back down from Policy. {DATA["opening"]["return"]}'
+    ret_say = f'Return line. {len(RETURN)} connections run from Policy back to Wealth and Your household. {DATA["opening"]["return"]}'
     roof = (f'<div class="roof" style="grid-row:1">'
             f'<button type="button" class="ret" data-select="flow-return" data-rel="{e(ret_rel)}" data-say="{e(ret_say)}">'
             f'<span class="ret-h">The return line</span>'
-            f'<span class="ret-b">{cnt("custom:return", len(RETURN), "ret-fig")}<span class="ret-t">connections run back down from Policy: '
-            f'{len(flow_links("E", "A"))} into Wealth, {len(flow_links("E", "EC"))} into Your household.</span></span>'
-            f'<span class="ret-q">{e(DATA["opening"]["return"])}</span></button>'
+            f'<span class="ret-b">{cnt("custom:return", len(RETURN), "ret-fig")}<span class="ret-t">connections run from Policy back to '
+            f'Wealth ({len(flow_links("E", "A"))}) and Your household ({len(flow_links("E", "EC"))}), such as '
+            f'{e(L[lead_link(flow_links("E", "A"))]["name"])}.</span></span></button>'
             f'{outside_head()}</div>')
     outside = outside_html(f'{floor_rows["E"]} / {floor_rows["TC"] + 1}')
     census = (f'<p class="census" style="grid-row:{last}">Where the {cnt("connections", COUNTS["connections"])} connections run: '
-              f'{cnt("custom:inside", len(INSIDE))} inside one floor, {cnt("custom:up", len(UP))} up to the next floor, '
-              f'{cnt("custom:down", len(DOWN))} back down one floor, {cnt("custom:return-n", len(RETURN))} on the return line, '
-              f'{cnt("custom:outside-n", len(OUTSIDE))} in from outside forces and {cnt("custom:skip", len(SKIP))} that skip a floor. '
+              f'{cnt("custom:inside", len(INSIDE))} inside one floor, {cnt("custom:between", len(UP) + len(DOWN))} between neighboring floors, '
+              f'{cnt("custom:return-n", len(RETURN))} on the return line from Policy, '
+              f'{cnt("custom:outside-n", len(OUTSIDE))} from outside forces and {cnt("custom:skip", len(SKIP))} between floors that are not neighbors. '
               f'Tap a floor to see all of its own.</p>')
     return (f'<div class="bldg" data-ak-roving data-ak-nav="spatial" role="group" aria-labelledby="h-bldg" '
             f'data-ret-a="{len(flow_links("E", "A"))}" data-ret-ec="{len(flow_links("E", "EC"))}">'
@@ -1375,10 +1464,10 @@ def building_words():
         bits = [f'<strong>{e(p["plain_name"])}, {e(p["formal_title"])}.</strong> {e(part_sentence(pid))} Variables: {e(vs)}.']
         for lo_, up_ in ADJ:
             if lo_ == pid:
-                bits.append(f'{len(flow_links(lo_, up_))} connections pass up to {e(pname(up_))}'
-                            + (f', and {len(flow_links(up_, lo_))} come back down.' if flow_links(up_, lo_) else '.'))
+                bits.append(f'{len(flow_links(lo_, up_))} connections run from {e(pname(lo_))} to {e(pname(up_))}, and '
+                            f'{len(flow_links(up_, lo_))} from {e(pname(up_))} to {e(pname(lo_))}.')
         if pid == 'E':
-            bits.append(f'{len(RETURN)} connections run back down on the return line.')
+            bits.append(f'{len(RETURN)} connections run on the return line to Wealth and Your household.')
         if pid == 'X':
             bits.append(f'{len(OUTSIDE)} connections push into the building.')
         items.append(f'<li>{" ".join(bits)}</li>')
@@ -1410,37 +1499,78 @@ def question_cards():
 
 def loop_index():
     groups = []
-    for g in DATA['loop_groups']:
-        name = pname(g['id']) if g['id'] in PARTS else 'Sketched loops'
-        sub = PARTS[g['id']]['formal_title'] if g['id'] in PARTS else 'Without a complete numbered chain'
+    for gid in HOME_ORDER:
+        name = pname(gid) if gid in PARTS else 'Sketched loops'
+        sub = PARTS[gid]['formal_title'] if gid in PARTS else 'Without a complete numbered chain'
         items = []
-        for lp in g['loops']:
+        for lp in HOME[gid]:
             o = LO[lp]
             steps = 'sketch' if o['conceptual'] else ' '.join(s['id'] for s in o['steps'])
             rel = ' '.join(k_var(s['code']) for s in o['stations'] if s.get('is_variable') and s.get('code') in N)
             items.append(f'<li><span class="li-c">{lp}</span><span class="li-b"><a href="{loop_href(lp)}" data-loop="{lp}" data-steps="{steps}" '
                          f'data-name="{e(o["plain_name"])}" data-rel="{e(rel)}" data-say="{e(lp + ", " + o["plain_name"] + ". " + o["title"])}">'
                          f'{e(o["plain_name"])}</a><span class="li-k">{e(kind_line(lp))}</span></span></li>')
-        groups.append(f'<div class="li-g"><p class="li-h">{e(name)}</p><p class="li-s">{e(sub)}</p><ul>{"".join(items)}</ul></div>')
+        groups.append(f'<div class="li-g"><h3 class="li-h">{e(name)}</h3><p class="li-s">{e(sub)}</p><ul>{"".join(items)}</ul></div>')
     return f'<div class="li-groups" data-ak-roving data-ak-nav="spatial">{"".join(groups)}</div>'
+
+
+EVIDENCE_ORDER = ['documented', 'well-supported', 'plausible', 'plausible_contested', 'hypothesis']
+
+
+def evidence_rows(prefix):
+    return ''.join(f'<li><svg data-view="{prefix}-{gkey(g)}" viewBox="0 0 80 20" width="80" height="20" aria-hidden="true">'
+                   f'{wire([(2, 10), (78, 10)], 2, g, None, None)}</svg><span>{e(gfull(g))}</span></li>' for g in EVIDENCE_ORDER)
 
 
 def key_block():
     """The reading key that holds the panel's place on the overview."""
-    def spec(grade):
-        return wire([(2, 10), (78, 10)], 2, grade, None, None)
-    rows = ''.join(f'<li><svg data-view="key-{gkey(g)}" viewBox="0 0 80 20" width="80" height="20" aria-hidden="true">{spec(g)}</svg>'
-                   f'<span>{e(gfull(g))}</span></li>' for g in ['documented', 'plausible', 'plausible_contested', 'hypothesis'])
     return (f'<div class="idle"><p class="t-eyebrow">How to read the building</p>'
             f'<ol class="kb">'
-            f'<li><strong>Floors</strong> are the parts of the system, roof to foundation. Each names its question.</li>'
+            f'<li><strong>Floors</strong> are the parts of the system. Each names its question.</li>'
             f'<li><strong>Tiles</strong> are variables: {e(GLOSS["Variable"][0].lower() + GLOSS["Variable"][1:])}</li>'
-            f'<li><strong>Arrows between floors</strong> count the connections that pass up. The heavy ones trace the main circuit.</li>'
-            f'<li><strong>The return line</strong> at left carries policy&#8217;s effects back down to Wealth.</li>'
-            f'<li><strong>Below the heavy ground line</strong> sit the economy and technology layers, on Newsprint.</li>'
-            f'</ol><p class="t-eyebrow kb-h">Inside a floor, lines carry their evidence</p><ul class="kg">{rows}</ul>'
-            f'<p class="kb-note">{e(GLOSS["Positive sign (+)"])}</p>'
+            f'<li><strong>Numbers between floors</strong> count the connections that run each way between neighbors, with one named as an example.</li>'
+            f'<li><strong>The return line</strong> at left carries policy&#8217;s effects to Wealth and Your household.</li>'
+            f'<li><strong>The two shaded floors</strong> hold the economy and technology layers. They connect to every core floor, not only their neighbor.</li>'
+            f'</ol><p class="t-eyebrow kb-h">Inside a floor, line texture is the evidence</p><ul class="kg">{evidence_rows("key")}</ul>'
+            f'<p class="kb-note">{e(acc.SIGN_RULE)}</p>'
             f'<p class="kb-go"><a href="#how-to-read">The full key</a></p></div>')
+
+
+def glance_html():
+    """The first screen's building: every part with its plain name and question, the connections between neighbors
+    both ways, the return line and the outside forces beside. A tap jumps to that floor in the full building."""
+    rows, r = [], 1
+    for i, pid in enumerate(STACK):
+        p = PARTS[pid]
+        q = p.get('plain_question') or ''
+        nv = len(p['nodes'])
+        inner = (f'<span class="fl-mark" aria-hidden="true">{pid}</span><span class="gl-n">{e(p["plain_name"])}</span>'
+                 f'<span class="gl-q">{e(q)}</span><span class="gl-c">{cnt("custom:gl-vars-" + pid, nv)} variables</span>')
+        attrs = f'data-floor="{pid}" data-xin="{len(X_TO.get(pid, []))}" style="grid-row:{r}"'
+        surf = ' data-surface="newsprint"' if pid in ('EC', 'TC') else ''
+        if pid == 'C':
+            rows.append(f'<a class="gl-row" href="#area-c" {attrs}{surf}>{inner}</a>')
+        else:
+            rows.append(f'<button type="button" class="gl-row" data-floor-go="{k_area(pid)}" {attrs}{surf}>{inner}</button>')
+        r += 1
+        if i < len(STACK) - 1:
+            lo_, up_ = STACK[i + 1], pid
+            a, b = flow_links(lo_, up_), flow_links(up_, lo_)
+            key = f'gl-{lo_.lower()}-{up_.lower()}'
+            rows.append(f'<p class="gl-j" style="grid-row:{r}">'
+                        f'<span>{arrow_svg(key + "-u", "up", 2, 22)}{cnt("custom:" + key + "-u", len(a), "gl-f")} from {e(pname(lo_))} to {e(pname(up_))}</span>'
+                        f'<span>{arrow_svg(key + "-d", "down", 2, 22)}{cnt("custom:" + key + "-d", len(b), "gl-f")} from {e(pname(up_))} to {e(pname(lo_))}</span></p>')
+            r += 1
+    x = PARTS['X']
+    out = (f'<button type="button" class="gl-out" data-floor-go="area-x" style="grid-row:1 / {r}">'
+           f'<span class="fl-mark" aria-hidden="true">X</span><span class="gl-n">{e(x["plain_name"])}</span>'
+           f'<span class="gl-q">beside the building</span><span class="gl-c">{cnt("custom:gl-x", len(OUTSIDE))} connections into the floors</span></button>')
+    return (f'<figure class="glance" aria-labelledby="h-glance">'
+            f'<figcaption id="h-glance" class="t-eyebrow">The system at a glance</figcaption>'
+            f'<div class="gl" data-ret-a="{len(flow_links("E", "A"))}" data-ret-ec="{len(flow_links("E", "EC"))}">'
+            f'{"".join(rows)}{out}<svg class="bl-lines" data-view="glance-lines" aria-hidden="true"></svg></div>'
+            f'<p class="gl-cap">The line at left is the return line: {cnt("custom:gl-ret", len(RETURN))} connections from Policy back to '
+            f'Wealth and Your household. Tap a floor to see its tiles.</p></figure>')
 
 
 # ---------------------------------------------------------------------------------------------------- views
@@ -1460,32 +1590,32 @@ def slot(idle):
 
 def view_overview():
     q = DATA['questions']['dem']['q']
-    deck = ('The atlas draws democracy and the economy as one building, from your household up to policy. '
-            'Each floor passes something up to the next, and policy sends its effects back down.')
-    howto = ('Each tile is a variable, a condition that can rise or fall. Each arrow between floors counts the connections '
-             'that run that way. Tap any floor, tile or arrow to read it, or start from a question.')
-    entry = GLOSS['Entry document']
+    deck = ('The atlas draws democracy and the economy as one building of seven floors, with outside forces beside it. '
+            'Neighboring floors push on each other both ways, and policy on the top floor reaches back to wealth and your household.')
+    howto = ('Each tile is a variable, a condition that can rise or fall. The numbers between floors count the connections '
+             'that run each way. Tap any floor, tile or number to read it, or start from a question.')
     return f'''<section class="view" data-view-root="overview" data-crumb="Overview" aria-labelledby="h-overview">
-<header class="vhead">
+<header class="vhead ov-head">
   <div class="vh-main">
-    <p class="t-eyebrow">{e(DATA["meta"]["subtitle"])}</p>
+    <p class="t-eyebrow">{e(DATA["opening"]["kicker"])}</p>
     <h1 id="h-overview" class="t-display" data-ak-heading>{e(q)}</h1>
     <p class="t-deck">{e(deck)}</p>
     <p class="howto"><span class="t-eyebrow">How to read this</span> {e(howto)}</p>
+    {counts_block()}
   </div>
-  <div class="vh-side">{counts_block()}</div>
+  {glance_html()}
 </header>
 <section class="qsec" aria-labelledby="h-q">
   <div class="sec-head"><h2 id="h-q" class="t-head2">Follow a question from your week</h2>
-  <p class="sec-deck">Start from an entry document, {e(entry[0].lower() + entry[1:])} Pick a question and the building lights the tiles it reaches.</p></div>
+  <p class="sec-deck">Pick a question about a bill or a notice you already know. The building lights the tiles it reaches.</p></div>
   {question_cards()}
 </section>
-<div class="vbody">
+<div class="vbody ov-body">
   <div class="vmain">
     <div class="sec-head"><h2 id="h-bldg" class="t-head2">The building, floor by floor</h2>
-    <p class="sec-deck">Seven floors stand from the foundation up, and outside forces stand beside them. Every one of the {cnt("variables", COUNTS["variables"])} variables is a tile.</p></div>
+    <p class="sec-deck">Seven floors and the forces beside them. Every one of the {cnt("variables", COUNTS["variables"])} variables is a tile.</p></div>
     {building_html()}
-    <p class="ak-readout" data-ak-readout>Point at, tap or tab to a floor, a tile or an arrow to read it.</p>
+    <p class="ak-readout" data-ak-readout>Point at, tap or tab to a floor, a tile or a number to read it.</p>
     <details class="words-d"><summary>The building in words</summary>{building_words()}</details>
   </div>
   {slot(key_block())}
@@ -1521,7 +1651,7 @@ def conn_rows(lids, direction):
                      f'<span class="cr-name">{chip("Connection", k, True)} {e(l["name"])}</span>'
                      f'<span class="cr-meta">{e(sign)} · {e(gfull(l["evidence"]))} · {e(DELAY[l["delay"]])}</span></button></li>')
         verbw = 'From' if direction == 'in' else 'To'
-        out += f'<div class="cr-g"><p class="cr-h">{verbw} {e(pname(pid))} <span>{len(groups[pid])}</span></p><ul>{rows}</ul></div>'
+        out += f'<div class="cr-g"><h4 class="cr-h">{verbw} {e(pname(pid))} <span>{len(groups[pid])}</span></h4><ul>{rows}</ul></div>'
     return out
 
 
@@ -1537,16 +1667,15 @@ def issue_details(i):
         wh = ' · '.join(t for t in [x.get('where'), x.get('when')] if t)
         return (f'<div class="ex"><p class="ex-l">{label}</p><p class="ex-h">{e(x["headline"])}</p><p>{e(x["text"])}</p>{res}'
                 f'<p class="ex-s">{e(wh)}{" · " if wh and src else ""}Source: {e(src)}</p></div>')
-    reforms = ''.join(f'<li>{chip("Reform", a["id"], True)} {e(RF[a["id"]]["title"])}. {e(a.get("why") or "")}</li>'
-                      for a in (i.get('aimed_reforms') or []) if a['id'] in RF)
+    reforms = ''.join(f'<li>{chip("Reform", a["id"], True)} {e(RF[a["id"]]["title"])}. {e(a.get("why") or "")}'
+                      + (f'<span class="rc-dc"><strong>Disclosure.</strong> {e(DISCLOSE[a["id"]])}</span>' if a['id'] in DISCLOSE else '')
+                      + '</li>' for a in (i.get('aimed_reforms') or []) if a['id'] in RF)
+    facts = [('How it works', 'mechanism'), ('Evidence', 'evidence_note'), ('Response', 'response'), ('Who acts', 'actor'),
+             ('Tradeoff', 'tradeoff'), ('Success looks like', 'success_measure')]
+    dl = ''.join(f'<dt>{t}</dt><dd>{e(i[k])}</dd>' for t, k in facts if (i.get(k) or '').strip())
     body = (f'<p>{e(i["summary"])}</p>'
             f'<div class="ex2">{ex(pe, "The problem, in the real world")}{ex(fe, "A fix, in the real world")}</div>'
-            f'<dl class="idl"><dt>How it works</dt><dd>{e(i.get("mechanism") or "")}</dd>'
-            f'<dt>Evidence</dt><dd>{e(i.get("evidence_note") or "")}</dd>'
-            f'<dt>Response</dt><dd>{e(i.get("response") or "")}</dd>'
-            f'<dt>Who acts</dt><dd>{e(i.get("actor") or "")}</dd>'
-            f'<dt>Tradeoff</dt><dd>{e(i.get("tradeoff") or "")}</dd>'
-            f'<dt>Success looks like</dt><dd>{e(i.get("success_measure") or "")}</dd></dl>'
+            f'<dl class="idl">{dl}</dl>'
             + (f'<p class="ex-l">Reforms aimed at it</p><ul class="irf">{reforms}</ul>' if reforms else ''))
     tex = texture(i['grade'])
     return (f'<li><details class="iss"><summary data-issue="{i["id"]}" data-name="{e(i["title"])}">'
@@ -1565,7 +1694,7 @@ def reform_card(rid, uid):
             f'data-targets="{" ".join(r["targets"])}" data-name="{e(r["title"])}" data-say="{e(say)}">'
             f'<span class="rc-ic">{icon(rid, "black", uid + rid.lower(), 48, variable=False)}</span>'
             f'<span class="rc-b"><span class="rc-id">{rid}</span><span class="rc-t">{e(r["title"])}</span>'
-            f'<span class="rc-x">{e(first_sentence(r["what_it_changes"]))}</span>'
+            f'<span class="rc-x">{e(first_sentence(r["summary"]))}</span>'
             f'<span class="rc-tg">Targets {e(", ".join(r["targets"]))} · {e(eff)}</span>'
             + (f'<span class="rc-dc"><strong>Disclosure.</strong> {e(DISCLOSE[rid])}</span>' if rid in DISCLOSE else '')
             + f'</span></button>{link}</li>')
@@ -1593,9 +1722,13 @@ def view_area_c():
                   f'<p class="rm-d">{e(n.get("description") or "")}</p>'
                   f'<p class="rm-i"><span class="t-eyebrow">A higher value means</span> {e(rest)}</p>'
                   f'<p class="rm-w"><span class="t-eyebrow">Why it matters</span> {e(n.get("why") or "")}</p></li>')
-    loops = ''
-    for lp in thr:
-        loops += loop_card(lp, 'ac', compact=True)
+    order = [x for x in ('R10', 'B4') if x in thr] + [x for x in thr if x not in ('R10', 'B4')]
+    loops = ''.join(loop_card(lp, 'ac', compact=True) for lp in order)
+    home_n = sum(1 for x in thr if LO[x]['home'] == 'C')
+    b4q = first_sentence(LO['B4']['qualification'])
+    b4q = b4q.replace('The loop', f'The {LO["B4"]["plain_name"].lower()}', 1) if b4q.startswith('The loop') else b4q
+    meet = (f'The {LO["R10"]["plain_name"].lower()} (R10) and the {LO["B4"]["plain_name"].lower()} (B4) meet at '
+            f'{low(N["C3"]["label"], "C3")}. {b4q.rstrip(".")}, and the {LO["R10"]["plain_name"].lower()} can make more seats safe.')
     by_dom = {}
     for i in iss:
         by_dom.setdefault(i.get('domain'), []).append(i)
@@ -1603,7 +1736,7 @@ def view_area_c():
     issues_html = ''
     for d in sorted(by_dom, key=lambda d: (-len(by_dom[d]), d or '')):
         rows = ''.join(issue_details(i) for i in by_dom[d])
-        issues_html += f'<div class="iss-g"><p class="cr-h">{e(dom_t.get(d, "Other"))} <span>{len(by_dom[d])}</span></p><ul>{rows}</ul></div>'
+        issues_html += f'<div class="iss-g"><h3 class="cr-h">{e(dom_t.get(d, "Other"))} <span>{len(by_dom[d])}</span></h3><ul>{rows}</ul></div>'
     words = ''.join(f'<li>{e(link_say(k))}</li>' for k in inside)
     loc = locator_svg({'C'}, 'ac', 'You are on the Elections floor, the middle of the five core floors.')
     return f'''<section class="view" data-view-root="area-c" data-crumb="Elections, area C" data-parent="overview" aria-labelledby="h-area-c" hidden>
@@ -1624,6 +1757,7 @@ def view_area_c():
       <div class="ak-scroll fc-h" id="fc-region" role="region" tabindex="0" aria-label="Elections floor plan" style="--ak-min:944px;--ak-full-w:944px">{floor_c_svg()}</div>
       <div class="fc-v">{floor_c_svg_v()}</div>
       <p class="ak-readout" data-ak-readout>Point at, tap or tab to a room or a connection to read it.</p>
+      {inline_key("fck")}
       <details class="words-d"><summary>The floor plan in words</summary><ol class="words">{words}</ol></details>
       <ol class="rooms">{rooms}</ol>
     </section>
@@ -1637,12 +1771,13 @@ def view_area_c():
     </section>
     <section class="blk" aria-labelledby="h-cl">
       <div class="sec-head"><h2 id="h-cl" class="t-head2">The {nw(len(thr))} loops that run through Elections</h2>
-      <p class="sec-deck">Each is a cycle you can read aloud. Four make their home here; three start on other floors and pass through.</p></div>
-      <ol class="lcards two" data-ak-roving data-ak-nav="spatial">{loops}</ol>
+      <p class="sec-deck">Each is a cycle you can read aloud. {nw(home_n).capitalize()} have their home on this floor; {nw(len(thr) - home_n)} have their home on another floor and pass through.</p></div>
+      <p class="meet">{e(meet)}</p>
+      <ol class="lcards two">{loops}</ol>
     </section>
     <section class="blk" aria-labelledby="h-iss">
       <div class="sec-head"><h2 id="h-iss" class="t-head2">The issues tracked here</h2>
-      <p class="sec-deck">{cnt("custom:c-issues", len(iss))} active issue records touch these five variables. Open any one for its real-world problem, a fix tried somewhere, and what the evidence says.</p></div>
+      <p class="sec-deck">{cnt("custom:c-issues", len(iss))} active issue records touch these five variables. Each line shows its real-world example where the record has one. Open any one for its full record.</p></div>
       {issues_html}
     </section>
     <section class="blk" aria-labelledby="h-rf">
@@ -1660,32 +1795,43 @@ def line_key(title):
     def spec(grade):
         return wire([(2, 10), (78, 10)], 2, grade, None, None)
     rows = ''.join(f'<li><svg data-view="lk-{gkey(g)}-{abs(hash(title)) % 997}" viewBox="0 0 80 20" width="80" height="20" aria-hidden="true">{spec(g)}</svg>'
-                   f'<span>{e(gfull(g))}</span></li>' for g in ['documented', 'plausible', 'plausible_contested', 'hypothesis'])
+                   f'<span>{e(gfull(g))}</span></li>' for g in EVIDENCE_ORDER)
     tag = wire([(2, 12), (78, 12)], 2, 'documented', '+', 'M')
     return (f'<div class="idle"><p class="t-eyebrow">{e(title)}</p>'
             f'<div class="lk-ex"><svg data-view="lk-tag-{abs(hash(title)) % 997}" viewBox="0 0 80 24" width="80" height="24" aria-hidden="true">{tag}</svg>'
             f'<p>The tag carries the sign: plus raises, minus lowers. Ticks count the wait: one, under 2 years; two, 2 to 10 years; three, over 10 years.</p></div>'
             f'<p class="t-eyebrow kb-h">Texture is the evidence</p><ul class="kg">{rows}</ul>'
-            f'<p class="kb-note">{e(GLOSS["Positive sign (+)"])}</p>'
+            f'<p class="kb-note">{e(acc.SIGN_RULE)}</p>'
             f'<p class="kb-go">Select anything to read it here.</p></div>')
 
 
+def and_list(items):
+    items = list(items)
+    return items[0] if len(items) == 1 else ', '.join(items[:-1]) + ' and ' + items[-1]
+
+
 def loop_card(lp, uid, compact=False):
+    """A catalog card that teaches on its own: name, V7 title, what happens, the cycle, the read-aloud line, status."""
     o = LO[lp]
-    svg, steps = cycle_svg(lp, uid=f'{uid}-{lp.lower()}', view='cy')
+    svg, steps = cycle_pair(lp, f'{uid}-{lp.lower()}', view='cy')
     note = closure_note(lp)
     flag = f'<p class="lc-flag">{e(note.capitalize())}</p>' if note else ''
     rel = ' '.join(k_var(s['code']) for s in o['stations'] if s.get('is_variable') and s.get('code') in N)
-    nodes = [s['code'] for s in o['stations'] if s.get('is_variable')]
+    nodes = [s['code'] for s in o['stations'] if s.get('is_variable') and s.get('code') in N]
+    floors = [pname(pid) for pid in STACK if pid in {PART_OF[n] for n in nodes}]
+    where = f'<p class="lc-fl">On the {and_list(floors)} {"floor" if len(floors) == 1 else "floors"}</p>' if floors else \
+        '<p class="lc-fl">Outside the numbered model</p>'
     open_r10 = '<a class="lc-open" href="#loop-r10">Walk it step by step <span aria-hidden="true">→</span></a>' if lp == 'R10' else ''
+    qual = (f'<p class="lc-q"><span class="t-eyebrow">Keep in mind</span> {e(o["qualification"])}</p>'
+            if lp == 'R1' and o.get('qualification') else '')
     say = f'{lp}, {o["plain_name"]}. {kind_line(lp)}. {o["title"]}.'
-    return (f'<li class="lcard" id="card-{lp.lower()}"><button type="button" class="lc-btn" data-select="{k_loop(lp)}" data-loop="{lp}" '
-            f'data-steps="{steps}" data-name="{e(o["plain_name"])}" data-rel="{e(rel)}" data-say="{e(say)}">'
-            f'<span class="lc-h"><span class="lc-id">{lp}</span><span class="lc-kind">{e(kind_line(lp))}</span>{mini_floors(nodes, uid + lp)}</span>'
-            f'<span class="lc-name">{e(o["plain_name"])}</span><span class="lc-title">{e(o["title"])}</span></button>'
-            f'{flag}<div class="lc-svg">{svg}</div>'
+    return (f'<li class="lcard" id="card-{lp.lower()}"><h3 class="lc-hd"><button type="button" class="lc-btn" data-select="{k_loop(lp)}" '
+            f'data-loop="{lp}" data-steps="{steps}" data-name="{e(o["plain_name"])}" data-rel="{e(rel)}" data-say="{e(say)}">'
+            f'<span class="lc-h"><span class="lc-id">{lp}</span><span class="lc-kind">{e(kind_line(lp))}</span></span>'
+            f'<span class="lc-name">{e(o["plain_name"])}</span><span class="lc-title">{e(o["title"])}</span></button></h3>'
+            f'<p class="lc-sum">{e(first_sentence(o["summary"]))}</p>{where}{flag}<div class="lc-svg">{svg}</div>'
             f'<p class="lc-read"><span class="t-eyebrow">Read it aloud</span> {e(read_aloud(lp))}</p>'
-            f'<p class="lc-status">{e(status_line(lp))}</p>{open_r10}</li>')
+            f'{qual}<p class="lc-status">{e(status_line(lp))}</p>{open_r10}</li>')
 
 
 def stepper_r10():
@@ -1693,9 +1839,9 @@ def stepper_r10():
     lis = []
     d = 1
     for st in o['steps']:
-        a = 'More' if d > 0 else 'Less'
+        a = amount(d, st['from']).capitalize()
         d2 = d * (1 if st['polarity'] == '+' else -1)
-        b = 'more' if d2 > 0 else 'less'
+        b = amount(d2, st['to'])
         keys = f'{k_link(st["id"])} {k_var(st["to"])}'
         fl = low(N[st['from']]['label'], st['from'])
         tl = low(N[st['to']]['label'], st['to'])
@@ -1742,13 +1888,14 @@ def disclosure_note(rids):
 def view_loop_r10():
     o = LO['R10']
     big = r10_large()
-    small, _ = cycle_svg('R10', uid='sm', interactive=True, numbered=True, view='loop-r10')
+    small, _ = cycle_svg('R10', uid='sm', interactive=True, numbered=True, view='loop-r10', size='m')
     steps_detail = ''
     for st in o['steps']:
         l = L[st['id']]
         weak = st['id'] in o['weakest']
         steps_detail += (f'<li class="sd{" weak" if weak else ""}"><p class="sd-h"><span class="t-eyebrow">Step {st["index"]}</span> '
                          f'{chip("Connection", st["id"], True)}{" <span class=\"sd-w\">The weakest step</span>" if weak else ""}</p>'
+                         + (f'<p class="sd-wl">{e(WEAK_LINE)}</p>' if weak else '') + f''
                          f'<p class="sd-n">{e(l["name"])}</p><p class="sd-p">{e(l.get("plain") or "")}</p>'
                          f'<p class="sd-m">{e(sign_char(l["polarity"]))} {e(verb(l["polarity"]))} · {e(gfull(l["evidence"]))} · {e(DELAY[l["delay"]])}</p>'
                          + (f'<p class="sd-q"><span class="t-eyebrow">Keep in mind</span> {e(l["qualification"])}</p>' if l.get('qualification') else '')
@@ -1767,24 +1914,23 @@ def view_loop_r10():
 </header>
 <div class="vbody">
   <div class="vmain">
-    <p class="sec-deck r10-deck">{e(o["summary"])}</p>
     <div class="r10-lg">{big}</div>
     <div class="r10-sm">{small}</div>
     <p class="ak-readout" data-ak-readout>Point at, tap or tab to a box or a step to read it.</p>
-    <p class="r10-cap">Red marks where reform R-01, {e(rf["short"])}, acts: on {e(", ".join(rf["targets"]))}. Select another reform to move the red to its targets.</p>
+    {inline_key("r10k")}
+    <p class="r10-cap">Red marks where reform R-01, {e(rf["short"])}, acts: on {e(", ".join(rf["targets"]))}. <a href="#reform-r01">Open reform R-01</a>. Select another reform below to move the red to its targets.</p>
     <ul class="rbtns" data-ak-roving data-ak-nav="sequence">{reform_buttons(o["reforms"], "r10")}</ul>
     {disclosure_note(o["reforms"])}
-    {stepper_r10()}
+    <p class="body r10-deck">{e(o["summary"])}</p>
     <section class="blk" aria-labelledby="h-sd"><div class="sec-head"><h2 id="h-sd" class="t-head2">Step by step</h2></div><ol class="sds">{steps_detail}</ol></section>
     <section class="blk two-col" aria-labelledby="h-ev">
       <div><h2 id="h-ev" class="t-eyebrow">The evidence</h2><p>{e(o["evidence_summary"])}</p></div>
       <div><h2 class="t-eyebrow">Keep in mind</h2><p>{e(o["qualification"])}</p></div>
       <div><h2 class="t-eyebrow">In the real world</h2><p>{e(o["case"])}</p></div>
-      <div><h2 class="t-eyebrow">Where it is heading</h2><p>{e(DIRECTION.get(o["direction"], ""))}, {e(o["delay_word"])} a turn. Measured by: {e(o["reference_mode"])}.</p>
-      <p class="lora">{e(GLOSS["Reinforcing loop (R)"].split(". ")[-1])}</p></div>
+      <div><h2 class="t-eyebrow">Where it is heading</h2><p>{e(DIRECTION.get(o["direction"], ""))}, {e(o["delay_word"])} a turn. Measured by: {e(o["reference_mode"])}.</p></div>
     </section>
   </div>
-  {slot(line_key("Reading the loop"))}
+  {slot(stepper_r10() + line_key("Reading the loop"))}
 </div>
 </section>'''
 
@@ -1792,18 +1938,19 @@ def view_loop_r10():
 def view_reform_r01():
     rid = 'R-01'
     r = RF[rid]
-    feature = icon(rid, 'red-black', 'feat', 96, variable=False)
+    feature = icon(rid, 'black', 'feat', 96, variable=False)   # one color: red on this page marks only R-01's targets
     probs = [i for i in ACTIVE.values() if any(a['id'] == rid for a in (i.get('aimed_reforms') or []))]
     prob_html = ''.join(f'<li><p class="pr-t">{e(i["title"])}</p><p>{e(i["summary"])}</p></li>' for i in probs)
     loop_draw = r10_large(uid='rf', marks=False, view='reform-r01')
-    eff = ''
-    for fam, name in DATA['families'].items():
-        code = r['effects'].get(fam)
-        words = DATA['effect_codes'].get(code, code)
-        steps = ['-M', '-S', '0', '+S', '+M', '+L']
-        cells = ''.join(f'<span class="ef-c{" on" if s == code else ""}" title="{e(DATA["effect_codes"].get(s, s))}"></span>' for s in steps)
-        eff += (f'<li><span class="ef-f">{e(name)}</span><span class="ef-s" aria-hidden="true">{cells}</span>'
-                f'<span class="ef-w">{e(words.capitalize())}</span></li>')
+    eff = ''.join(f'<li><span class="ef-f">{e(name)}</span><span class="ef-w">{e(effect_words(r["effects"].get(fam)).capitalize())}</span></li>'
+                  for fam, name in DATA['families'].items())
+    # the stance and the disclosure, together and apart from the reform's case (fix pass item 2)
+    sents = re.split(r'(?<=[.!?])\s+(?=[A-Z])', r['summary'])
+    stance = [x for x in sents if x.startswith('The Atlas takes no position')]
+    case = ' '.join(x for x in sents if x not in stance)
+    box = (f'<aside class="stance" aria-labelledby="h-stance"><h2 id="h-stance" class="t-eyebrow">Stance and disclosure</h2>'
+           f'<p>{e(" ".join(stance))}</p><p><strong>Disclosure.</strong> {e(DISCLOSE[rid])}</p></aside>')
+    measures = ''.join(f'<li>{e(m)}</li>' for m in r['success_measures'])
     routes = ''
     for rt in r['routes']:
         feas = rt['feasibility']
@@ -1819,10 +1966,11 @@ def view_reform_r01():
     return f'''<section class="view" data-view-root="reform-r01" data-crumb="Reform R-01" data-parent="overview" data-ak-reform="reform-r-01" aria-labelledby="h-reform-r01" hidden>
 <header class="vhead">
   <div class="vh-main rf-head">
-    <span class="rf-ic" data-red="signature">{feature}</span>
+    <span class="rf-ic">{feature}</span>
     <div><p class="t-eyebrow">Reform R-01 · {e((r["band"] or "").capitalize())} · {e(r["short"])}</p>
     <h1 id="h-reform-r01" class="t-head" data-ak-heading>{e(r["title"])}</h1>
-    <p class="rf-deck">{e(r["summary"])}</p></div>
+    <p class="rf-deck">{e(case)}</p>
+    {box}</div>
   </div>
   <a class="vh-side locator" href="#overview" aria-label="Back to the overview. This reform acts on the Elections floor.">
     <span class="t-eyebrow">Where it acts</span>{loc}</a>
@@ -1837,12 +1985,12 @@ def view_reform_r01():
     <section class="blk" aria-labelledby="h-rw"><div class="sec-head"><h2 id="h-rw" class="t-head2">Where it acts</h2>
       <p class="sec-deck">On the safe-seat loop, R-01 aims at {e(", ".join(r["targets"]))}, marked in red. It also sits on loops {e(" and ".join(x for x in r["loops"] if x != "R10"))}.</p></div>
       <div class="r10-lg">{loop_draw}</div>
-      <div class="r10-sm">{cycle_svg("R10", uid="rfsm", interactive=True, numbered=True, view="reform-r01")[0]}</div>
+      <div class="r10-sm">{cycle_svg("R10", uid="rfsm", interactive=True, numbered=True, view="reform-r01", size="m")[0]}</div>
       <ul class="rbtns" hidden>{reform_buttons(["R-01"], "rf")}</ul>
-      <p class="ak-readout" data-ak-readout>Point at, tap or tab to a box or a step to read it.</p></section>
+      <p class="ak-readout" data-ak-readout>Point at, tap or tab to a box or a step to read it.</p>
+      {inline_key("rfk")}</section>
     <section class="blk" aria-labelledby="h-re"><div class="sec-head"><h2 id="h-re" class="t-head2">Likely effects, family by family</h2>
       <p class="sec-deck">Each family is rated on its own and never added to the others. Confidence: {e(r["effects_confidence"])}.</p></div>
-      <div class="ef-hd" aria-hidden="true"><span></span><span class="ef-s">{"".join(f'<span>{e(c.replace("-", MINUS))}</span>' for c in ['-M', '-S', '0', '+S', '+M', '+L'])}</span><span></span></div>
       <ul class="effs">{eff}</ul></section>
     <section class="blk" aria-labelledby="h-rr"><div class="sec-head"><h2 id="h-rr" class="t-head2">Routes to adoption</h2>
       <p class="sec-deck">{e(r["who_decides"])}</p></div>
@@ -1850,14 +1998,20 @@ def view_reform_r01():
     <section class="blk" aria-labelledby="h-rv"><div class="sec-head"><h2 id="h-rv" class="t-head2">The evidence, graded twice</h2></div>
       <div class="ev2"><div class="evc"><p class="t-eyebrow">Problem evidence</p><p class="ev-g">{e(gfull(pe["grade"]))}</p><p>{e(pe["text"])}</p></div>
       <div class="evc"><p class="t-eyebrow">Remedy evidence</p><p class="ev-g">{e(gfull(re_["grade"]))}</p><p>{e(re_["text"])}</p></div></div></section>
+    <section class="blk two-col" aria-labelledby="h-rl">
+      <div><h2 id="h-rl" class="t-eyebrow">Legal authority</h2><p>{e(r["legal_authority"])}</p></div>
+      <div><h2 class="t-eyebrow">Carrying it out</h2><p>{e(r["implementation"])}</p></div>
+      <div><h2 class="t-eyebrow">Costs</h2><p>{e(r["costs"])}</p></div>
+      <div><h2 class="t-eyebrow">How to judge results</h2><ul class="msr">{measures}</ul></div>
+    </section>
     <section class="blk two-col" aria-labelledby="h-rt">
       <div><h2 id="h-rt" class="t-eyebrow">Tradeoffs</h2><p>{e(r["tradeoffs"])}</p></div>
       <div><h2 class="t-eyebrow">How it could fail</h2><p>{e(r["failure_risks"])}</p></div>
+      <div><h2 class="t-eyebrow">Alternatives</h2><p>{e(r["alternatives"])}</p></div>
     </section>
     <section class="blk status" aria-labelledby="h-rs"><div class="sec-head"><h2 id="h-rs" class="t-head2">Status</h2></div>
       <p class="body">{e(st["text"])}</p>
-      <p class="st-chk">Checked {e(date_words(st["checked"]))}.</p>
-      <p class="disc"><strong>Disclosure.</strong> {e(DISCLOSE[rid])}</p></section>
+      <p class="st-chk">Checked {e(date_words(st["checked"]))}. The stance and disclosure sit at the top of this page.</p></section>
   </div>
   {slot(line_key("Reading the drawing"))}
 </div>
@@ -1868,11 +2022,12 @@ def view_loops():
     n_r = sum(1 for x in LO.values() if x['type'] == 'R')
     n_b = sum(1 for x in LO.values() if x['type'] == 'B')
     n_ref = sum(1 for x in LO.values() if x['reforms'])
-    headline = f'{n_r} of the {len(LO)} loops feed themselves, and {n_ref} have a reform aimed at them.'
+    headline = f'{n_r} of the {len(LO)} loops can feed themselves, and {n_ref} have a reform aimed at them.'
     groups = ''
-    for g in DATA['loop_groups']:
-        name = pname(g['id']) if g['id'] in PARTS else 'Sketched loops'
-        sub = PARTS[g['id']]['formal_title'] if g['id'] in PARTS else 'Without a complete numbered chain'
+    for gid in HOME_ORDER:
+        g = {'id': gid, 'loops': HOME[gid]}
+        name = pname(gid) if gid in PARTS else 'Sketched loops'
+        sub = PARTS[gid]['formal_title'] if gid in PARTS else 'Without a complete numbered chain'
         kinds = [LO[x]['type'] for x in g['loops']]
         kc = ', '.join(t for t in [f'{kinds.count("R")} reinforcing' if kinds.count('R') else '',
                                    f'{kinds.count("B")} balancing' if kinds.count('B') else ''] if t)
@@ -1886,12 +2041,13 @@ def view_loops():
   <div class="vh-main">
     <p class="t-eyebrow">Loop catalog · {cnt("loops", COUNTS["loops"])} loops</p>
     <h1 id="h-loops" class="t-head" data-ak-heading>{e(headline)}</h1>
-    <p class="t-deck">{cnt("loops_reinforcing", n_r)} reinforcing and {cnt("loops_balancing", n_b)} balancing loops, grouped by the floor each calls home. <span class="lora">{e(GLOSS["Reinforcing loop (R)"].split(". ")[-1])}</span></p>
+    <p class="t-deck">{cnt("loops_reinforcing", n_r)} reinforcing and {cnt("loops_balancing", n_b)} balancing loops, grouped by the floor each calls home. {e(GLOSS["Reinforcing loop (R)"].split(". ")[-1])}</p>
   </div>
 </header>
 <div class="vbody">
   <div class="vmain" data-strip="loops">
-    <div data-ak-roving data-ak-nav="spatial">{groups}</div>
+    {inline_key("lck")}
+    <div>{groups}</div>
   </div>
   {slot(loop_key())}
 </div>
@@ -1902,14 +2058,14 @@ def loop_key():
     tag = wire([(2, 12), (78, 12)], 2, 'documented', '+', 'S')
     hol = wire([(2, 12), (78, 12)], 2, None, '-', None, conceptual=True)
     rows = ''.join(f'<li><svg data-view="lpk-{gkey(g)}" viewBox="0 0 80 20" width="80" height="20" aria-hidden="true">{wire([(2, 10), (78, 10)], 2, g, None, None)}</svg>'
-                   f'<span>{e(gfull(g))}</span></li>' for g in ['documented', 'plausible', 'plausible_contested', 'hypothesis'])
+                   f'<span>{e(gfull(g))}</span></li>' for g in EVIDENCE_ORDER)
     return (f'<div class="idle"><p class="t-eyebrow">Reading a loop card</p>'
             f'<div class="lk-ex"><svg data-view="lpk-tag" viewBox="0 0 80 24" width="80" height="24" aria-hidden="true">{tag}</svg>'
             f'<p>Each arrow says whether it raises or lowers the next box. The tag carries the sign; ticks count the wait.</p></div>'
             f'<ul class="kg">{rows}</ul>'
             f'<div class="lk-ex"><svg data-view="lpk-hol" viewBox="0 0 80 24" width="80" height="24" aria-hidden="true">{hol}</svg>'
             f'<p>An open line is a conceptual step with no numbered connection. Thin boxes are ideas outside the model&#8217;s variables.</p></div>'
-            f'<p class="kb-note">The tiny building on each card shows the floors the loop stands on.</p>'
+            f'<p class="kb-note">{e(acc.SIGN_RULE)}</p>'
             f'<p class="kb-go">Select a card to read the loop here.</p></div>')
 
 
@@ -1923,13 +2079,13 @@ def view_how():
     tex_rows += f'<li>{demo([(4, 20), (216, 20)], None, "+", None, "tc", concept=True)}<p><strong>Conceptual step</strong>, an open line: a step in a sketched loop with no numbered connection.</p></li>'
     tick_rows = ''.join(f'<li>{demo([(4, 20), (216, 20)], "documented", None, d, "d" + d)}<p><strong>{e(DELAY[d].capitalize())}</strong>. {nw(TICKS[d]).capitalize()} tick{"s" if TICKS[d] > 1 else ""}.</p></li>'
                         for d in ['S', 'M', 'L'])
-    sign_rows = (f'<li>{demo([(4, 20), (216, 20)], "documented", "+", None, "sp")}<p><strong>Plus, raises.</strong> {e(GLOSS["Positive sign (+)"])}</p></li>'
+    sign_rows = (f'<li>{demo([(4, 20), (216, 20)], "documented", "+", None, "sp")}<p><strong>Plus, raises.</strong> {e(acc.SIGN_RULE)}</p></li>'
                  f'<li>{demo([(4, 20), (216, 20)], "documented", "-", None, "sm")}<p><strong>Minus, lowers.</strong> {e(GLOSS["Negative sign (−)"])}</p></li>'
                  f'<li>{demo([(4, 20), (216, 20)], "documented", None, None, "sa", auth=True)}<p><strong>Open diamond, decides.</strong> {e(GLOSS["Authority connection"])}</p></li>')
-    r8, _ = cycle_svg('R8', uid='how8', view='how')
-    b4, _ = cycle_svg('B4', uid='howb4', view='how')
-    layers = (f'<div class="lay"><div class="lay-w"><p class="t-eyebrow">White floors</p><p>The core of the model: Wealth, Voice, Elections, Checks and Policy, with outside forces beside them.</p></div>'
-              f'<div class="lay-n" data-surface="newsprint"><p class="t-eyebrow">Newsprint, below the ground line</p><p>{e(PARTS["EC"]["plain_name"])} and {e(PARTS["TC"]["plain_name"])}: the economy and technology layers the core stands on.</p></div></div>')
+    r8, _ = cycle_pair('R8', 'how8', view='how')
+    b4, _ = cycle_pair('B4', 'howb4', view='how')
+    layers = (f'<div class="lay"><div class="lay-w"><p class="t-eyebrow">The five core floors</p><p>{e(and_list([pname(x) for x in CORE]))}, with outside forces beside them.</p></div>'
+              f'<div class="lay-n" data-surface="newsprint"><p class="t-eyebrow">The two shaded floors</p><p>{e(PARTS["EC"]["plain_name"])} and {e(PARTS["TC"]["plain_name"])}: the economy and technology layers. They connect to every core floor, not only their neighbor.</p></div></div>')
     mix = ''.join(f'<li><details class="mx"><summary>{e(m["prompt"])}</summary><p class="mx-a">{e(m["answer"])}</p>'
                   f'<p class="mx-w"><span class="t-eyebrow">The common mistake</span> {e(m["wrong"])}</p></details></li>' for m in DATA['mixups'])
     terms = ['Variable', 'Connection', 'Feedback loop', 'Reinforcing loop (R)', 'Balancing loop (B)', 'Delay', 'Documented',
@@ -2022,11 +2178,11 @@ def page():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="atlas-views" content="overview area-c loop-r10 reform-r01 loops how-to-read">
-<title>Atlas Architecture</title>
+<title>Who Do They Answer To? Architecture</title>
 <meta name="description" content="Atlas system 05, Architecture: the Oath &amp; Action systems atlas drawn as a building a reader can walk through.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{kcss}</style>
 <style>{CSS}</style>
 </head>

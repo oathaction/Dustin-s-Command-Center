@@ -2,12 +2,12 @@
  "file": "work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html",
  "model": "work/boards/phase-2/maps/20261028_Maps-Model-Data.json",
  "items_checked": {
-  "nodes": 157,
-  "links": 120,
+  "nodes": 237,
+  "links": 199,
   "loops": 53,
   "reforms": 14,
-  "names": 272,
-  "counts": 67,
+  "names": 352,
+  "counts": 89,
   "strips": 1
  },
  "distinct_ids": {
@@ -17,5 +17,31 @@
   "reform": 10
  },
  "errors": [],
- "pass": true
+ "pass": true,
+ "selftest": [
+  [
+   "flip a minus sign",
+   "caught"
+  ],
+  [
+   "L53 grade to documented",
+   "caught"
+  ],
+  [
+   "rename a label",
+   "caught"
+  ],
+  [
+   "drop R8 from the strip",
+   "caught"
+  ],
+  [
+   "reorder R10 steps",
+   "caught"
+  ],
+  [
+   "em dash",
+   "caught"
+  ]
+ ]
 }

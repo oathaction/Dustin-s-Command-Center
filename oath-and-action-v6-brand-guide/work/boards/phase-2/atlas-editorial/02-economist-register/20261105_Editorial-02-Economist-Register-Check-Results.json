@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/02-economist-register/20261105_Editorial-02-Economist-Register.html",
- "checked": "2026-11-05T20:58:25.069Z",
+ "checked": "2026-11-05T21:43:26.979Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 533,
+   "texts": 562,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -23,7 +23,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 15,
-    "labels": 69,
+    "labels": 65,
     "outside": [],
     "overlaps": []
    },
@@ -37,7 +37,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5869,
+   "height": 6318,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -46,7 +46,7 @@
    "width": 1440,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 697,
+   "texts": 730,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -54,7 +54,7 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 67,
+    "drawings": 82,
     "labels": 70,
     "outside": [],
     "overlaps": []
@@ -69,16 +69,16 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 8664,
+   "height": 10402,
    "axe": [],
-   "focusStops": 12,
+   "focusStops": 40,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 126,
+   "texts": 148,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -86,13 +86,13 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 2,
+    "drawings": 7,
     "labels": 41,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -104,16 +104,16 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 2511,
+   "height": 3099,
    "axe": [],
-   "focusStops": 7,
+   "focusStops": 8,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 166,
+   "texts": 185,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -121,13 +121,13 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 16,
+    "drawings": 21,
     "labels": 40,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -139,16 +139,16 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4182,
+   "height": 5236,
    "axe": [],
-   "focusStops": 2,
+   "focusStops": 3,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "loops",
    "rootVisible": true,
-   "texts": 562,
+   "texts": 605,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -156,7 +156,7 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 24,
+    "drawings": 29,
     "labels": 201,
     "outside": [],
     "overlaps": []
@@ -172,16 +172,16 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5894,
+   "height": 7464,
    "axe": [],
-   "focusStops": 23,
+   "focusStops": 24,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "how-to-read",
    "rootVisible": true,
-   "texts": 151,
+   "texts": 152,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -197,9 +197,7 @@
    "red": {
     "marks": 2,
     "unmarked": [],
-    "jobs": [
-     "palette swatch"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "fonts": [
@@ -207,7 +205,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 2662,
+   "height": 2757,
    "axe": [],
    "focusStops": 2,
    "focusWithoutRing": []
@@ -216,7 +214,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 492,
+   "texts": 542,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -224,9 +222,14 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 10,
-    "labels": 36,
-    "outside": [],
+    "drawings": 15,
+    "labels": 52,
+    "outside": [
+     {
+      "svg": "circuit-phone",
+      "text": "How the economy reaches a household"
+     }
+    ],
     "overlaps": []
    },
    "red": {
@@ -239,7 +242,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 14051,
+   "height": 16515,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -248,7 +251,7 @@
    "width": 390,
    "view": "area-c",
    "rootVisible": true,
-   "texts": 695,
+   "texts": 728,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -256,7 +259,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 66,
+    "drawings": 81,
     "labels": 70,
     "outside": [],
     "overlaps": []
@@ -271,7 +274,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21506,
+   "height": 24272,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -280,7 +283,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 96,
+   "texts": 119,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -288,13 +291,13 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 1,
+    "drawings": 6,
     "labels": 18,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -306,7 +309,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 4620,
+   "height": 5573,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -315,7 +318,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 132,
+   "texts": 149,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -323,13 +326,13 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 15,
+    "drawings": 20,
     "labels": 18,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 10,
+    "marks": 6,
     "unmarked": [],
     "jobs": [
      "R-01 targets"
@@ -341,7 +344,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 7825,
+   "height": 10079,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -350,7 +353,7 @@
    "width": 390,
    "view": "loops",
    "rootVisible": true,
-   "texts": 560,
+   "texts": 603,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -358,7 +361,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 23,
+    "drawings": 28,
     "labels": 201,
     "outside": [],
     "overlaps": []
@@ -374,7 +377,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 15067,
+   "height": 18973,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -383,7 +386,7 @@
    "width": 390,
    "view": "how-to-read",
    "rootVisible": true,
-   "texts": 149,
+   "texts": 150,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -399,8 +402,110 @@
    "red": {
     "marks": 2,
     "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 5341,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 542,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 15,
+    "labels": 52,
+    "outside": [
+     {
+      "svg": "circuit-phone",
+      "text": "How the economy reaches a household"
+     }
+    ],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 17115,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "area-c",
+   "rootVisible": true,
+   "texts": 728,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 81,
+    "labels": 70,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 25243,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "loop-r10",
+   "rootVisible": true,
+   "texts": 119,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 18,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
     "jobs": [
-     "palette swatch"
+     "R-01 targets"
     ],
     "onPrussian": []
    },
@@ -409,7 +514,108 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5052,
+   "height": 5945,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "reform-r01",
+   "rootVisible": true,
+   "texts": 149,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 20,
+    "labels": 18,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [
+     "R-01 targets"
+    ],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 10669,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "loops",
+   "rootVisible": true,
+   "texts": 603,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 28,
+    "labels": 201,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 18631,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "how-to-read",
+   "rootVisible": true,
+   "texts": 150,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 14,
+    "labels": 21,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 5478,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -427,6 +633,9 @@
    "visible": true
   }
  },
- "failures": [],
- "pass": true
+ "failures": [
+  "390 overview: 1 labels outside their drawing",
+  "360 overview: 1 labels outside their drawing"
+ ],
+ "pass": false
 }

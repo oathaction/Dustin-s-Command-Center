@@ -1,58 +1,68 @@
 # Editorial system 05, Architecture: notes
 
-Oath & Action Brand Guide, Edition 06. Phase 2, November 5, 2026. Page: `work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html`, built by `build_system.py` with `system.css` and `system.js` beside it.
+Oath & Action Brand Guide, Edition 06. Phase 2, November 5, 2026. Page: `work/boards/phase-2/atlas-editorial/05-architecture/20261105_Editorial-05-Architecture.html`, built by `build_system.py` with `system.css` and `system.js` beside it. Updated after the fix pass; the fix pass section below lists each finding and what changed.
 
 ## The idea
 
-The atlas as a building a reader can walk through. Seven floors stack from the foundation up: Technology and Your household sit on Newsprint below a heavy ground line, and Wealth, Voice, Elections, Checks and Policy rise above it on White. Outside forces stand beside the building in their own column, with a stub and a count into each floor they push on. Each of the 51 variables is a room on its floor: a Civic Line tile with its code and short label. Each slab between floors carries an arrow, a count and one real connection as its example, with the count that pushes back down beside it. The return line runs down the left side from Policy into Wealth and Your household. A touch on any floor, tile or slab lights what it connects to and opens its record in the panel. Above it, five topic cards set like documents start from the reader's week.
+The atlas as a building a reader can walk through. Seven floors stack: Technology and Your household are the two shaded floors at the base, and Wealth, Voice, Elections, Checks and Policy stand above them. Outside forces stand beside the building, with a stub and a count into each floor they push on. Each of the 51 variables is a room on its floor: a Civic Line tile with its code and short label. Each joint between neighboring floors carries influence both ways, each direction with its count and one named connection. The return line runs from Policy to Wealth and Your household at the same weight as the joints, so the building reads as a circuit. A touch on any floor, tile or joint lights what it connects to and opens its record in the panel beside the building.
 
 ## The views
 
-- **Overview.** Headline, deck, how-to-read line and the four counts; five question cards holding the 16 everyday questions, each lighting its tiles; the building with its reading key in the panel's place; a census of where all 118 connections run; the 23 loops by home floor.
-- **Elections.** A finding headline and a "You are here" elevation; the floor plan with its five inside connections; room cards; the 15 connections in and out, grouped by far floor and each drawn on its own; seven loop cycles; 39 issues by domain, each showing its real-world headline and opening to problem, fix and evidence; 10 reforms whose targets take the red when selected.
-- **Loop R10.** V7's title, the read-aloud line, the full loop with each step's name, verb, sign, grade with gloss and delay; L53 named weakest; R-01's targets in the working red; a step-through; step cards with qualifications; evidence, the Alaska case and direction.
-- **Reform R-01.** The problem and its issue records, what it changes, the loop with its targets, four effect families never added, routes with feasibility and check dates, both grades, tradeoffs, failure risks, and status with the disclosure in full.
-- **Loop catalog.** All 23 loops by home floor as named cycles with kind, weakest step, read-aloud line, status, reform count and a tiny elevation of their floors. R2 and R16 carry their closure flag; B2, B3 and R9 draw open lines.
+- **Overview.** The first screen pairs the headline with "The system at a glance": all eight parts with plain names and questions, the counts both ways between neighbors, the return line and the outside forces. Then five question cards with the 16 everyday questions, the full building with its key, a census of where all 118 connections run, and the 23 loops by home floor.
+- **Elections.** A finding headline and a "You are here" elevation; the floor plan with an evidence key; room cards; the 15 connections in and out, grouped by far floor; the seven loops, R10 and B4 first, with the sentence that ties them; 39 issues by domain; 10 reforms, each saying what it does.
+- **Loop R10.** V7's title and the read-aloud line, the full loop with the step-through beside it, L53 named the weakest step and what that means, R-01's targets in red, a link to R-01, step cards and the evidence.
+- **Reform R-01.** A stance and disclosure box under the summary, then the problem, what it changes, where it acts, effects in words, routes, legal authority, carrying it out, costs, how to judge results, both grades, tradeoffs, failure risks, alternatives and status.
+- **Loop catalog.** All 23 loops by home floor, each card with its summary's first sentence, the floors it stands on, the cycle, the read-aloud line and status; R1 carries its qualification.
 - **How to read.** Five drawn habits after Concept 00, 14 mix-ups and 21 terms.
 
 ## Decisions
 
 - Plain name, formal title, then question on every floor (DR-32, DR-35).
-- The ground line and Newsprint mark the economy and technology layers, so the layer survives grayscale.
-- Each slab names the connection on the most loops, then the strongest evidence, then V7 order.
-- Down counts print beside up counts, so the building does not read as a ladder (civic memo, misreading 7).
-- Heavier arrows trace the main circuit; the 18 connections that skip a floor are counted, not drawn (DR-29).
-- R-01's 96 px icon stands alone in signature red under Rule 05.3.
+- Joints name both directions with equal arrows; the copy drops "up" and "down".
+- Each joint names the connection on the most loops, then the strongest evidence, then V7 order.
+- The 18 connections between floors that are not neighbors are counted, not drawn (DR-29).
+- Phones get their own 280-unit drawings, so text holds at 13 px down to 320 px.
+- Red marks only a reform's targets or the selected item; sign tags, ticks and the R-01 icon stay in ink.
 - Hub icons are Civic Line icons named for each topic: Essential Costs, Healthcare, Household Income, Local Government, Voting.
-- Every reform shown beyond its title carries its disclosure from `reforms[id]['disclosure']`.
-- Kit departures: a select picks the visible copy when a view holds desktop and phone drawings; the panel moves into each view's right column; hover previews pause while a question scrolls the building.
+- Kit departures: a select picks the visible copy; the panel moves into each view's right column; hover previews pause while the page scrolls to a pick.
 
-Studio drafts: the overview deck and how-to-read line, the Elections headline, the catalog headline (counts from the data), and section titles and decks. The overview headline is V7's question, R10's is V7's title, and How to read uses Dustin's Concept 00 line.
+Studio drafts: the overview deck and how-to-read line, the Elections headline, the catalog headline, the sentence tying R10 to B4, "The loop holds only as firmly as this link." (after System 3), and section titles and decks.
+
+## Fix pass
+
+Civic educator: M1 ladder: two-way joints, equal weights, no "up" or "down" in the copy. M2: reform cards print the summary's first sentence. M3: R-01 gains five sections, and the disclosure moves beside the summary. S4: the glance puts every part on the first screen. S5: the question deck now reads "Pick a question about a bill or a notice you already know." S6: "The weakest step" in bold with its line. S7: the R10 and B4 sentence, cards side by side. P8: the plus-sign line from the shared kit; no palette names. P9: floors named in words.
+
+Interface: M1, M2 as above. S1: h3 per issue group, loop card and index group. S2: each catalog card is a Tab stop. S3: Elections opens its page on the click; R-01 linked under the loop. S4: the step-through sits beside the drawing. S5: 44 px rows for phone links. P1: no 4 px strokes, the atlas named in the page title, empty fields dropped. X1 to X5: phone picks scroll above the sheet, the arrow-key line, the skip link, and a visible router message.
+
+Evidence auditor: disclosures on issue records; 14 ballot mentions open "As of October 15, 2026"; Well supported in every key; "Open any one for its full record"; R4b under Elections; ink sign tags; the return line names Your household; "Switched off"; no Lora; "fewer" for countable things.
+
+Reader panel: the glance answers the first screen; on a phone it comes before the questions, and every joint names both floors.
+
+Left as they are: L23's name and the family name "Democratic quality" are Dustin's calls. The full building stays long; the glance carries the first screen.
 
 ## Self-score
 
-- Craft, 4: on grid, labels clean at 1x; the outside column runs tall below its list.
-- Clarity, 4: floors, counts and the return line read fast; untested with readers.
-- Brand fidelity, 4: locked palette and type, masters inlined, one working red; the red feature icon may draw comment.
+- Craft, 4: on grid at three widths; the outside column runs tall.
+- Clarity, 4: the first screen names every part and both directions; untested with readers.
+- Brand fidelity, 5: locked palette and type, masters inlined, red only where a reform acts or on a pick.
 - Usefulness, 5: every variable, flow, loop, issue and reform is one tap away.
-- Evidence honesty, 5: texture, grades, weakest steps, sketches, undated routes and disclosures come from the data.
-- Accessibility, 4: 0 axe violations and full keyboard paths; no screen reader test.
-- Beauty and distinctiveness, 4: the section drawing reads as architecture; the cards could go further.
+- Evidence honesty, 5: data-built text, dated ballot lines, disclosures wherever a reform is argued.
+- Accessibility, 4: 0 axe violations; no screen reader test.
+- Beauty and distinctiveness, 4: the section drawing reads as architecture.
 
 ## Tested
 
-- `atlas_concepts_verify.py --selftest`: PASS; all six planted errors caught.
-- `atlas_concepts_check.js`: PASS, 6 views at 1440 and 390 px, 0 failures.
-- Every view viewed at 1440 and 390 over three passes, plus the overview as a poster and R10 in grayscale.
-- Selection states, the R10 step-through and the phone sheet.
-- A script audit of every computed text style against the frame memo's scale.
+- `atlas_concepts_verify.py --selftest`: PASS; six planted errors caught.
+- `atlas_concepts_check.js`: PASS, 6 views at 1440, 390 and 360 px, 0 failures.
+- My own audit at 320 and 360 px: no text under 13 px, nothing past the edge, no label overflowing its tile.
+- Every view viewed at 1440 and 390, and the overview as a poster.
+- Skip link, an unknown hash, `#area-a`, the arrow-key line, glance jumps and the phone sheet, by script.
 
 ## Not tested
 
 - Screen readers, Firefox, Safari, real phones and 200 percent zoom.
-- Widths between 391 and 1439 px beyond the layout rules.
-- Reduced motion by eye, print, and the ten-second test with readers.
+- Reduced motion by eye, print, and readers.
 
 ## Change log
 
-Created in `work/boards/phase-2/atlas-editorial/05-architecture/`: `build_system.py`, `system.css`, `system.js`, the page, both results files and 18 captures. Also `work/handoffs/phase-2/20261105_Editorial-05-Notes.md`. Modified: none outside the folder. Nothing was committed.
+Created in `work/boards/phase-2/atlas-editorial/05-architecture/`: `build_system.py`, `system.css`, `system.js`, the page, both results files and the captures. Also `work/handoffs/phase-2/20261105_Editorial-05-Notes.md`. Modified in the fix pass: the same files. Nothing outside the folder; nothing committed.

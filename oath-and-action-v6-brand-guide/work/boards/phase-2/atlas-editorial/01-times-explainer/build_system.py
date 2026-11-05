@@ -21,7 +21,7 @@ import json
 import math
 import pathlib
 import re
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict  # noqa: F401
 
 from PIL import ImageFont
 
@@ -44,7 +44,53 @@ MINUS = '−'
 SNAP = ED['meta']['snapshot']
 assert SNAP == '2026-10-15'
 SNAP_WORDS = 'October 15, 2026'
-e = lambda s: html.escape(str(s), quote=True)
+LOWER_WORDS, CAP_MID = Counter(), Counter()
+
+
+def _collect_words(o):
+    if isinstance(o, dict):
+        for x in o.values():
+            _collect_words(x)
+    elif isinstance(o, list):
+        for x in o:
+            _collect_words(x)
+    elif isinstance(o, str) and not o.startswith('http'):
+        LOWER_WORDS.update(re.findall(r"(?<![A-Za-z/.-])[a-z][a-z']*", o))
+        CAP_MID.update(re.findall(r"[a-z,;] ([A-Z][a-z']+)", o))
+
+
+_collect_words(ED)
+AS_OF = 'As of October 15, 2026,'
+assert ED['meta']['snapshot'] == '2026-10-15'
+
+
+def dated(text):
+    """Every sentence that names the November 3 ballot opens with the snapshot date (fix pass, item 3)."""
+    out = []
+    for snt in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9"\u201c])', text.strip()):
+        if 'November 3' in snt and not snt.startswith('As of'):
+            if ';' in snt:
+                head, tail = snt.split(';', 1)
+                if 'November 3' in tail and 'November 3' not in head:
+                    out.append(head.rstrip() + '.')
+                    snt = tail.strip()
+                    snt = snt[0].upper() + snt[1:]
+            words = snt.split()
+            w, w2 = words[0], (words[1] if len(words) > 1 else '')
+            if w in ('A', 'An', 'The', 'On', 'In'):
+                common = True
+            else:
+                common = LOWER_WORDS[w.lower()] > 3 * CAP_MID[w] and not w2[:1].isupper()
+            snt = f'{AS_OF} ' + (snt[0].lower() + snt[1:] if common else snt)
+        out.append(snt)
+    return ' '.join(out)
+
+
+def e(s):
+    s = str(s)
+    if 'November 3' in s:
+        s = dated(s)
+    return html.escape(s, quote=True)
 
 # Reading order of the circuit (task brief): outside forces press in; Wealth to Policy; back to Your household;
 # Technology underneath. The headline's route is the core circuit and its return line to Wealth.
@@ -55,7 +101,7 @@ PART_OF = {k: v['part'] for k, v in N.items()}
 assert sorted(sum((p['nodes'] for p in ED['parts']), [])) == sorted(N)
 
 # ------------------------------------------------------------------------------------------------ words from the data
-GRADE_KEY = {'well_supported': 'well-supported'}
+GRADE_KEY = {'well_supported': 'well-supported', 'contested': 'plausible_contested'}
 
 
 def gk(g):
@@ -219,11 +265,28 @@ def disclosure(lid):
     return ''
 
 
+CODE = r'([+-][LMS]|\?|0)'
+
+
 def effect_words(v):
-    def rep(m):
-        c = m.group(0)
-        return f'{c.replace("-", MINUS)} ({ED["effect_codes"][c]})'
-    return re.sub(r'(?<![\w])([+-][LMS]|\?|0)(?![\w])', rep, v)
+    """An effect in words, never a plus or minus glyph or a code (fix pass, item 6)."""
+    out = []
+    for seg in v.split(';'):
+        seg = seg.strip()
+        m = re.match(r'^' + CODE + r'(?:\s+to\s+' + CODE + r')?(?:\s*/\s*' + CODE + r')?\s*(.*)$', seg)
+        if not m:
+            out.append(seg)
+            continue
+        a, b, c, rest = m.groups()
+        w = ED['effect_codes'][a]
+        if b:
+            w = f'between {w} and {ED["effect_codes"][b]}'
+        if c:
+            w = f'{w} or {ED["effect_codes"][c]}'
+        if rest:
+            w += (' ' if rest.split()[0] in ('if', 'in', 'over', 'for', 'risk', 'with') else ' for ') + rest
+        out.append(w)
+    return '; '.join(out)
 
 
 def iso_words(d):
@@ -245,20 +308,15 @@ def link_sentence(lid):
     return s + f' Evidence {grade_word(l["evidence"]).lower()}. Delay {delay_words(l["delay"])}.'
 
 
-# The editor's disclosure for nomination reforms, read from Atlas V7's own interest table
-def interest_texts():
-    src = V7_HTML.read_text()
-    m = re.search(r"var INTERESTS = \{(.*?)\};\s*var INTEREST_TEXT = \{(.*?)\};", src, re.S)
-    keys = dict(re.findall(r"'([^']+)':\s*'([^']+)'", m.group(1)))
-    texts = {}
-    for k, v in re.findall(r"(\w+):\s*'((?:[^'\\]|\\.)*)'", m.group(2)):
-        texts[k] = v.replace("\\'", "'")
-    return {r: texts[k] for r, k in keys.items()}
+# The editor's disclosures, read from the dataset's reform records (D2-80)
+INTEREST = {rid: r['disclosure'] for rid, r in RF.items() if r.get('disclosure')}
+assert 'R-01' in INTEREST and 'Yes on 3' in INTEREST['R-01']
 
 
-INTEREST = interest_texts()
-for rid, r in RF.items():
-    assert bool(r['interest_note']) == (rid in INTEREST) or not r['interest_note'], rid
+def disc_html(rid, big=False):
+    if rid not in INTEREST:
+        return ''
+    return f'<p class="disc{" big" if big else ""}"><strong>Disclosure.</strong> {e(INTEREST[rid])}</p>'
 
 # ------------------------------------------------------------------------------------------------ counts
 FLOWS = defaultdict(list)          # (from part, to part) -> link ids
@@ -451,6 +509,24 @@ def rounded_d(pts, r):
     return d
 
 
+def offset_poly(pts, d):
+    """A polyline moved sideways by d, with mitred corners: the two rails of a sketched step."""
+    nrm = []
+    for i in range(len(pts) - 1):
+        ux, uy = unit(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1])
+        nrm.append((-uy, ux))
+    out = []
+    for i, p in enumerate(pts):
+        if i == 0 or i == len(pts) - 1:
+            nx, ny = nrm[0] if i == 0 else nrm[-1]
+            out.append((p[0] + nx * d, p[1] + ny * d))
+        else:
+            (ax, ay), (bx, by) = nrm[i - 1], nrm[i]
+            k = d / max(1 + ax * bx + ay * by, 1e-6)
+            out.append((p[0] + (ax + bx) * k, p[1] + (ay + by) * k))
+    return out
+
+
 def head_shape(tx, ty, ux, uy, w, cls='hd'):
     al, ab = ARROW[w]
     bx, by = tx - ux * al, ty - uy * al
@@ -510,8 +586,9 @@ def wire_marks(pts, grade, sign, delay, w, lit=True, sketch=False, tag_at=None, 
     st = f' style="{style}"' if style and lit else ''
     cap = pattern(tex, w)[1]
     if sketch:
-        marks = (f'<path class="rail-o" d="{d}" fill="none" stroke-width="{w + 2}"/>'
-                 f'<path class="rail-i" d="{d}" fill="none" stroke-width="{w}"/>')
+        off = w / 2 + 0.5
+        marks = ''.join(f'<path class="rail" d="{rounded_d(offset_poly(body, o), BEND[w])}" fill="none" stroke-width="1"/>'
+                        for o in (off, -off))
     else:
         marks = (f'<path class="ak-case" d="{d}" fill="none"{dash}/>'
                  f'<path class="ak-mark" d="{d}" fill="none" stroke-width="{w}" stroke-linecap="{cap}"{dash}{st}/>')
@@ -606,22 +683,22 @@ def station_block(code, lab, cx, cy, pw, style, sketch=False, ghost=False):
     return svg, h
 
 
-def cycle_layout(n, W, pw, hs):
+def cycle_layout(n, W, pw, hs, phone=False):
     """Station centers for a small cycle of n stations, read clockwise from the top left."""
     m = 2
     x1, x2 = m + pw / 2, W - m - pw / 2
     if n == 2:
-        cy = 84 + max(hs) / 2
+        cy = (90 if phone else 84) + max(hs) / 2
         return [(x1, cy), (x2, cy)]
-    y1 = 34 + max(hs[:2]) / 2
+    y1 = (38 if phone else 34) + max(hs[:2]) / 2
     if n == 3:
-        y2 = y1 + max(hs[:2]) / 2 + 96 + hs[2] / 2
+        y2 = y1 + max(hs[:2]) / 2 + (116 if phone else 96) + hs[2] / 2
         return [(x1, y1), (x2, y1), ((x1 + x2) / 2, y2)]
-    y2 = y1 + max(hs[:2]) / 2 + 104 + max(hs[2:]) / 2
+    y2 = y1 + max(hs[:2]) / 2 + (140 if phone else 104) + max(hs[2:]) / 2
     return [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]
 
 
-def cycle_small(lid, W=350, step_numbers=False, interactive=False, view='loops'):
+def cycle_small(lid, W=350, step_numbers=False, interactive=False, view='loops', phone=False):
     """A loop as a named box-and-arrow cycle, small enough for a catalog card. Pills carry the variables' short
     labels; every arrow carries its sign tag with "raises" or "lowers", its evidence texture and its delay ticks; the
     weakest step says so; the loop's ID and character sit in the middle."""
@@ -629,9 +706,11 @@ def cycle_small(lid, W=350, step_numbers=False, interactive=False, view='loops')
     n = len(l['stations'])
     labs, codes = station_labels(lid), station_codes(lid)
     sketch = l['conceptual']
-    pw = {2: 128, 3: 132, 4: 128}[n]
+    # The phone artboard is drawn for 320 px with nothing under 15 px, so it holds 13 px when a 320 px phone shrinks it
+    pw = 120 if phone else {2: 128, 3: 132, 4: 128}[n]
     hs = [max(len(swrap(lab, pw - 28, 'map')) * 18 + 22, 44) for lab in labs]
-    pos = cycle_layout(n, W, pw, hs)
+    pos = cycle_layout(n, W, pw, hs, phone)
+    vcls, lh = ('vbp', 18) if phone else ('vb', 16)
     parts, labels_ = [], []
     weakest = set(l['weakest'] or [])
     for i, st in enumerate(l['steps']):
@@ -690,15 +769,14 @@ def cycle_small(lid, W=350, step_numbers=False, interactive=False, view='loops')
         else:
             parts.append(f'<g class="wire"{attrs}>{marks}</g>')
         (tx, ty), _ = tag_point(pts, 2, st['polarity'])
-        lh = 16
         if side == 'above':
-            labels_.append(svg_lines(tx, ty - 15 - (len(rows) - 1) * lh, rows, 'vb', lh, 'middle'))
+            labels_.append(svg_lines(tx, ty - 15 - (len(rows) - 1) * lh, rows, vcls, lh, 'middle'))
         elif side == 'below':
-            labels_.append(svg_lines(tx, ty + 25, rows, 'vb', lh, 'middle'))
+            labels_.append(svg_lines(tx, ty + (27 if phone else 25), rows, vcls, lh, 'middle'))
         elif side == 'in-right':
-            labels_.append(svg_lines(tx - 14, ty + 4 - (len(rows) - 1) * lh / 2, rows, 'vb', lh, 'end'))
+            labels_.append(svg_lines(tx - 14, ty + 5 - (len(rows) - 1) * lh / 2, rows, vcls, lh, 'end'))
         else:
-            labels_.append(svg_lines(tx + 14, ty + 4 - (len(rows) - 1) * lh / 2, rows, 'vb', lh, 'start'))
+            labels_.append(svg_lines(tx + 14, ty + 5 - (len(rows) - 1) * lh / 2, rows, vcls, lh, 'start'))
     nodes = []
     for i, (lab, code) in enumerate(zip(labs, codes)):
         svg, _ = station_block(code, lab, pos[i][0], pos[i][1], pw, 'map', sketch=(sketch and not code))
@@ -710,15 +788,18 @@ def cycle_small(lid, W=350, step_numbers=False, interactive=False, view='loops')
             nodes.append(f'<g class="node">{svg}</g>')
     if n == 2:
         cx, cy = W / 2, pos[0][1] - 4
-    elif n == 3:
-        cx, cy = W / 2, (pos[0][1] + pos[2][1]) / 2 - 6
+    elif phone:
+        cx, cy = W / 2, pos[0][1] + max(hs[:2]) / 2 + 26
     else:
         cx, cy = W / 2, (pos[0][1] + pos[2][1]) / 2 - 6
-    mid_ = svg_text(cx, cy, lid, 'cid', 'middle') + svg_text(cx, cy + 18, l['kind_gloss'], 'ckind', 'middle')
-    H = max(p[1] + h / 2 for p, h in zip(pos, hs)) + (84 if n == 2 else 4 if n == 3 else 46)
+    mid_ = svg_text(cx, cy + (8 if phone and n == 2 else 0), lid, 'cid', 'middle')
+    if not phone:
+        mid_ += svg_text(cx, cy + 18, l['kind_gloss'], 'ckind', 'middle')
+    H = max(p[1] + h / 2 for p, h in zip(pos, hs)) + ((96 if phone else 84) if n == 2 else 6 if n == 3 else 50)
     title = f'{lid}, {l["plain_name"]}: {read_aloud(lid)}'
     role = 'group' if interactive else 'img'
-    return (f'<svg class="cyc" data-view="{view}" viewBox="0 0 {W} {f(H)}" width="{W}" height="{f(H)}" role="{role}" '
+    size = f'class="cyc ph" width="100%"' if phone else f'class="cyc" width="{W}" height="{f(H)}"'
+    return (f'<svg {size} data-view="{view}" viewBox="0 0 {W} {f(H)}" role="{role}" '
             f'aria-label="{e(title)}">{"".join(parts)}{"".join(nodes)}{"".join(labels_)}{mid_}</svg>')
 
 
@@ -967,12 +1048,12 @@ def area_drawing(W=1312):
             f'{"".join(labs_)}{centre}{note}</svg>')
 
 
-def conn_row(lid, direction, W):
+def conn_row(lid, direction, W, phone=False):
     """One connection as a sentence-shaped drawing: the far variable, the arrow with its texture, sign, verb and
     delay ticks, and the Elections variable at the other end. HTML text below names the connection."""
     ll = L[lid]
     a, b = ll['from'], ll['to']
-    arrow = 150 if W > 400 else 104
+    arrow = 150 if W > 400 else 96
     lab_w = (W - arrow - 20) / 2
     ra = swrap(label(a), lab_w, 'map')
     rb = swrap(label(b), lab_w, 'map')
@@ -989,10 +1070,11 @@ def conn_row(lid, direction, W):
     ta = svg_lines(lab_w, y - (len(ra) - 1) * 9 + 5, ra, cls_a, 18, 'end', f' data-node="{a}" data-name="{e(label(a))}"')
     tb = svg_lines(W - lab_w, y - (len(rb) - 1) * 9 + 5, rb, cls_b, 18, 'start', f' data-node="{b}" data-name="{e(label(b))}"')
     (tx, ty), _ = tag_point(pts, 2, ll['polarity'])
-    vb = svg_text(tx, ty - 13, verb(ll['polarity']), 'vb', 'middle')
+    vb = svg_text(tx, ty - 13, verb(ll['polarity']), 'vbp' if phone else 'vb', 'middle')
     attrs = (f'data-link="{lid}" data-sign="{sign_attr(ll["polarity"])}" data-grade="{ll["evidence"]}" '
              f'data-delay="{ll["delay"]}"')
-    return (f'<svg class="crow" data-view="area-c" viewBox="0 0 {W} {f(h)}" width="{W}" height="{f(h)}" aria-hidden="true">'
+    size = 'width="100%"' if phone else f'width="{W}" height="{f(h)}"'
+    return (f'<svg class="crow" data-view="area-c" viewBox="0 0 {W} {f(h)}" {size} aria-hidden="true">'
             f'<g class="wire" {attrs}>{marks}</g>{ta}{tb}{vb}</svg>')
 
 
@@ -1243,8 +1325,7 @@ def tpl_var(c):
     if ins:
         body.append(f'<h3>Pushed by {len(ins)}</h3><ul>' + ''.join(link_li(k, 'in') for k in ins) + '</ul>')
     if n['loops']:
-        body.append('<h3>Loops it sits on</h3><ul>' + ''.join(
-            f'<li>{e(LO[k]["plain_name"])} ({k})</li>' for k in n['loops']) + '</ul>')
+        body.append('<h3>Loops it sits on</h3><ul>' + ''.join(f'<li>{loop_ref(k)}</li>' for k in n['loops']) + '</ul>')
     if n['part'] == 'C':
         body.append('<p class="next"><a href="#area-c">Open the Elections page</a></p>')
     body.append(src_line())
@@ -1267,12 +1348,29 @@ def tpl_part(pid):
         f'<li><button type="button" class="pk" data-ak-pick="var-{c.lower()}">{e(label(c))}</button></li>'
         for c in p['nodes']) + '</ul>')
     if HOME.get(pid):
-        body.append('<h3>Loops that start here</h3><ul>' + ''.join(
-            f'<li>{e(LO[k]["plain_name"])} ({k})</li>' for k in HOME[pid]) + '</ul>')
+        body.append('<h3>Loops based here</h3><ul>' + ''.join(f'<li>{loop_ref(k)}</li>' for k in HOME[pid]) + '</ul>')
     if pid == 'C':
         body.append('<p class="next"><a href="#area-c">Open the Elections page</a></p>')
     body.append(src_line())
     return tpl(f'part-{pid.lower()}', 'Part of the system', p['plain_name'], ''.join(body))
+
+
+def pick_ref(key, text):
+    return f'<button type="button" class="pk" data-ak-pick="{key}">{e(text)}</button>'
+
+
+def part_ref(pid):
+    if pid == 'C':
+        return f'<a href="#area-c">{e(PARTS[pid]["plain_name"])}</a>'
+    return pick_ref(f'part-{pid.lower()}', PARTS[pid]['plain_name'])
+
+
+def loop_ref(k):
+    href = '#loop-r10' if k == 'R10' else f'#loops/loop-{k.lower()}'
+    return f'<a href="{href}">{e(LO[k]["plain_name"])} ({k})</a>'
+
+
+OV_REFORMS = sorted({r for pw in ED['pathways'] for r in pw['model_refs']['reforms']})
 
 
 def tpl_pathway(pw):
@@ -1285,12 +1383,12 @@ def tpl_pathway(pw):
     hub = next(h for h in ED['hubs'] if h['id'] == pw['hub'])
     body = [f'<p class="muted">{e(hub["title"])} · {e(pw["title"])}</p>', f'<p>{e(pw["short_answer"])}</p>',
             '<h3>Where it sits in the atlas</h3><dl>',
-            f'<dt>Parts</dt><dd>{e(list_words([PARTS[x]["plain_name"] for x in parts_]))}</dd>',
-            f'<dt>Conditions</dt><dd>{e(list_words([label(c) for c in refs["nodes"]]))}</dd>']
+            f'<dt>Parts</dt><dd>{list_words([part_ref(x) for x in parts_])}</dd>',
+            f'<dt>Conditions</dt><dd>{list_words([pick_ref("var-" + c.lower(), label(c)) for c in refs["nodes"]])}</dd>']
     if refs['loops']:
-        body.append(f'<dt>Loops</dt><dd>{e(list_words([LO[k]["plain_name"] + " (" + k + ")" for k in refs["loops"]]))}</dd>')
+        body.append(f'<dt>Loops</dt><dd>{list_words([loop_ref(k) for k in refs["loops"]])}</dd>')
     if refs['reforms']:
-        body.append(f'<dt>Reforms</dt><dd>{e(list_words([RF[r]["title"] + " (" + r + ")" for r in refs["reforms"]]))}</dd>')
+        body.append(f'<dt>Reforms</dt><dd>{list_words([pick_ref("reform-" + r.lower(), RF[r]["title"] + " (" + r + ")") for r in refs["reforms"]])}</dd>')
     body.append(f'<dt>Problems tracked</dt><dd>{len(refs["issues"])}</dd></dl>')
     nexts = []
     if any(PART_OF[c] == 'C' for c in refs['nodes']):
@@ -1305,21 +1403,27 @@ def tpl_pathway(pw):
     return tpl(f'pw-{pw["id"].lower()}', 'Everyday question', pw['question'], ''.join(body))
 
 
+def step_sentence(k, i):
+    """"More X means less Y", from the running product of signs, so it matches the read-aloud line."""
+    mids = station_mids(k)
+    dirs, back = directions(k)
+    n = len(mids)
+    a_up, b_up = dirs[i], (dirs[i + 1] if i + 1 < n else back)
+    t = f'{amount(mids[i], a_up)} means {amount(mids[(i + 1) % n], b_up)}.'
+    return t[0].upper() + t[1:]
+
+
 def steps_list(k):
     l = LO[k]
-    labs = station_labels(k)
-    n = len(labs)
     items = []
     for i, st in enumerate(l['steps']):
-        a, b = labs[i], labs[(i + 1) % n]
         if st['id']:
             ll = L[st['id']]
-            items.append(f'<li><strong>{e(st["id"])}</strong> {e(ll["name"])}. {e(a)} {verb(ll["polarity"])} '
-                         f'{e(mid(b) if b in [label(c) for c in N] else b)} ({sign_char(ll["polarity"])}); '
-                         f'{e(grade_word(ll["evidence"]).lower())}, {e(delay_words(ll["delay"]))}.</li>')
+            items.append(f'<li><strong>{e(st["id"])}</strong> {e(ll["name"])}. {e(step_sentence(k, i))} '
+                         f'Sign {sign_char(ll["polarity"])}; {e(grade_word(ll["evidence"]).lower())}, '
+                         f'{e(delay_words(ll["delay"]))}.</li>')
         else:
-            items.append(f'<li>{e(a)} {verb(st["polarity"])} {e(b[0].lower() + b[1:])} ({sign_char(st["polarity"])}); '
-                         f'a sketched step with no number or grade.</li>')
+            items.append(f'<li>{e(step_sentence(k, i))} A sketched step with no number or grade.</li>')
     return '<ol class="steps">' + ''.join(items) + '</ol>'
 
 
@@ -1369,7 +1473,7 @@ def tpl_link(lid):
 
 
 def effects_dl(r):
-    rows = ''.join(f'<dt>{e(ED["families"][k])}</dt><dd>{e(effect_words(v))}</dd>' for k, v in r['effects'].items())
+    rows = ''.join(f'<dt>{e(ED["families"][k])}</dt><dd>{e(effect_words(v).capitalize())}</dd>' for k, v in r['effects'].items())
     return f'<dl class="fx">{rows}</dl>'
 
 
@@ -1381,8 +1485,7 @@ def tpl_reform(rid):
             f'<dt>Problem evidence</dt><dd>{e(grade_word(r["problem_evidence"]["grade"]))}</dd>'
             f'<dt>Remedy evidence</dt><dd>{e(grade_word(r["remedy_evidence"]["grade"]))}</dd></dl>',
             '<h3>Likely effects, never added together</h3>' + effects_dl(r)]
-    if rid in INTEREST and r['interest_note']:
-        body.append(f'<p class="disc"><strong>Disclosure.</strong> {e(INTEREST[rid])}</p>')
+    body.insert(1, disc_html(rid))
     if rid == 'R-01':
         body.append('<p class="next"><a href="#reform-r01">Open the full profile of R-01</a></p>')
     body.append(src_line())
@@ -1391,40 +1494,175 @@ def tpl_reform(rid):
 
 # ------------------------------------------------------------------------------------------------ the overview
 # Studio drafts (named as such in the notes). Every count inside them is printed from the data.
-OV_HEAD = 'Wealth at the top can shape the rules that add to it.'
+OV_FINDING = 'Wealth at the top can shape the rules that add to it.'
 
 
 def ov_deck():
+    q2 = ED['questions']['eco']['q']
     return (f'This atlas follows {cnt("connections", COUNTS["connections"])} connections among '
-            f'{cnt("variables", COUNTS["variables"])} conditions, from what a household earns to who writes the rules. '
-            f'Read its eight parts in order below. Each one pushes on the next, and policy feeds back into wealth.')
+            f'{cnt("variables", COUNTS["variables"])} conditions in eight parts, from what a household earns to who '
+            f'writes the rules. A second question runs beside the first: {e(q2[0].lower() + q2[1:])}')
+
+
+def evidence_key(cls='ekey'):
+    items = ''.join(f'<li>{grade_glyph(g, 32)}<span><strong>{e(grade_word(g))}</strong>: {e(grade_gloss(g))}</span></li>'
+                    for g in ['documented', 'well-supported', 'plausible', 'plausible_contested', 'hypothesis'])
+    return f'<ul class="{cls}" aria-label="Evidence grades">{items}</ul>'
 
 
 def ov_key():
-    return ('<aside class="key" aria-labelledby="key-h"><h2 id="key-h" class="eyebrow">How to read this page</h2>'
-            '<p>Each part of the system has a plain name, a question and the conditions inside it. A condition is '
-            'something that can rise or fall, such as safe seats or rent.</p>'
-            '<p>Arrows carry the count of connections from one part to the next. The route in black is the circuit the '
-            'headline follows; gray is the rest. Open a part to see each connection and how strong its evidence is.</p>'
-            '<p><a href="#how-to-read">How to read the atlas</a></p></aside>')
+    return ('<div class="keystrip" aria-labelledby="key-h"><p class="kw"><strong id="key-h">How to read.</strong> Each box is '
+            'one part of the system, with its question. Inside it sit conditions, things that can rise or fall, such as the '
+            'cost of essentials. A number on an arrow counts the connections running that way; black marks the main circuit. '
+            '<a href="#how-to-read">How to read the atlas</a></p>'
+            '<div class="kg"><p class="ekh"><strong>Evidence.</strong> Each connection carries a grade, drawn as its line:</p>'
+            + evidence_key('ekey two') + '</div></div>')
 
 
-def ov_chain():
-    items = []
-    for pid in ORDER:
+def system_compact(W=1312):
+    """The first screen: all eight parts by name and question, and the flows between them with their counts."""
+    BX = {'A': 40, 'B': 299, 'C': 558, 'D': 817, 'E': 1076}
+    BW, hx, y0 = 196, 46, 110
+    qrows = {pid: swrap(PARTS[pid]['plain_question'], BW - 26, 'mapr') for pid in CORE}
+    bh = 62 + max(len(r) for r in qrows.values()) * 19
+    out, fl, cnts = [], [], []
+    xs = PARTS['X']
+    rest = [(PARTS[t]['plain_name'], flow_n('X', t)) for t in ORDER if t not in ('X', 'A', 'B') and flow_n('X', t)]
+    by_n = defaultdict(list)
+    for name, n in rest:
+        by_n[n].append(name)
+    x_rest = 'Also ' + list_words([f'{n} {"each " if len(v) > 1 else ""}into {list_words(v)}' for n, v in sorted(by_n.items())]) + '.'
+    nmw = sw(xs['plain_name'], 'head')
+    out.append(f'<g class="pt" role="button" data-select="part-x" aria-label="{e(xs["plain_name"] + ". " + xs["text"])}">'
+               f'<rect class="ak-mark bx2" x="40" y="1" width="1232" height="{hx - 2}"/>'
+               + svg_text(56, 31, xs['plain_name'], 'ph ak-label', 'start', f' data-part="X" data-name="{e(xs["plain_name"])}"')
+               + svg_text(56 + nmw + 14, 31, f'{flow_n_out("X")} connections press in from outside the system', 'pq', 'start')
+               + svg_text(1256, 31, x_rest, 'cp2', 'end') + '</g>')
+    for pid in CORE:
+        p, x = PARTS[pid], BX[pid]
+        g = [f'<rect class="ak-mark bx" x="{x}" y="{y0}" width="{BW}" height="{bh}"/>',
+             svg_text(x + 14, y0 + 22, f'Part {NUM[pid]} · {len(p["nodes"])} conditions'.upper(), 'eb gh', 'start'),
+             svg_text(x + 14, y0 + 48, p['plain_name'], 'ph ak-label', 'start', f' data-part="{pid}" data-name="{e(p["plain_name"])}"'),
+             svg_lines(x + 14, y0 + 70, qrows[pid], 'pq', 19)]
+        say = e(f'{p["plain_name"]}, {p["formal_title"]}. {p["plain_question"]} {len(p["nodes"])} conditions.')
+        if pid == 'C':
+            out.append(f'<a class="pt" href="#area-c" aria-label="{say} Opens the Elections page.">{"".join(g)}</a>')
+        else:
+            out.append(f'<g class="pt" role="button" data-select="part-{pid.lower()}" aria-label="{say}">{"".join(g)}</g>')
+    yb = y0 + bh
+    y3 = yb + 70
+    bh3 = 84
+    for pid, x, w in (('EC', 40, BX['C'] + BW - 40), ('TC', BX['D'], 1272 - BX['D'])):
         p = PARTS[pid]
-        num = str(NUM[pid]) if pid in NUM else ''
-        q = p['plain_question'] or p['chapter']
-        items.append(f'<li><button type="button" class="cj" data-jump="part-{pid.lower()}-block">'
-                     f'<span class="n" aria-hidden="true">{num or "→"}</span><span class="nm">{e(p["plain_name"])}</span>'
-                     f'<span class="q">{e(q)}</span></button></li>')
-    return ('<nav class="chain" aria-label="The eight parts in reading order"><ol>' + ''.join(items) + '</ol></nav>')
+        g = [f'<rect class="ak-mark bx2" x="{x}" y="{y3}" width="{w}" height="{bh3}"/>',
+             svg_text(x + 14, y3 + 22, f'Part {NUM[pid]} · {len(p["nodes"])} conditions'.upper(), 'eb gh', 'start'),
+             svg_text(x + 14, y3 + 48, p['plain_name'], 'ph ak-label', 'start', f' data-part="{pid}" data-name="{e(p["plain_name"])}"'),
+             svg_text(x + 14, y3 + 70, p['plain_question'], 'pq', 'start')]
+        if pid == 'EC':
+            g.append(svg_text(x + w - 14, y3 + 22, f'Also {flow_n("E", "EC")} in from {PARTS["E"]["plain_name"]}.', 'cp2', 'end'))
+        else:
+            tr = [(PARTS[t]['plain_name'], flow_n('TC', t)) for t in ('B', 'A') if flow_n('TC', t)]
+            g.append(svg_text(x + w - 14, y3 + 22, 'Also ' + list_words([f'{n} into {nm}' for nm, n in tr]) + '.', 'cp2', 'end'))
+        say = e(f'{p["plain_name"]}, {p["formal_title"]}. {p["plain_question"]} {len(p["nodes"])} conditions.')
+        out.append(f'<g class="pt" role="button" data-select="part-{pid.lower()}" aria-label="{say}">{"".join(g)}</g>')
+
+    def count(x, y, n, main, anchor='middle'):
+        cnts.append(svg_text(x, y, str(n), 'cn' if main else 'cn2', anchor))
+    fwd, rev = y0 + 34, y0 + 64
+    for a, b in zip(CORE, CORE[1:]):
+        xa, xb = BX[a] + BW, BX[b]
+        fl.append(bundle([(xa + 2, fwd), (xb - 2, fwd)], 3, 'bm'))
+        count((xa + xb) / 2, fwd - 10, flow_n(a, b), True)
+        if flow_n(b, a):
+            fl.append(bundle([(xb - 2, rev), (xa + 2, rev)], 2, 'bs'))
+            count((xa + xb) / 2, rev + 26, flow_n(b, a), False)
+    for t, x in (('A', 120), ('B', 360)):
+        fl.append(bundle([(x, hx + 2), (x, y0 - 2)], 2, 'bs'))
+        count(x + 10, (hx + y0) / 2 + 8, flow_n('X', t), False, 'start')
+    fl.append(bundle([(440, y0 - 2), (440, 68), (BX['E'] + 34, 68), (BX['E'] + 34, y0 - 2)], 2, 'bs'))
+    count(BX['E'] + 46, 98, flow_n('B', 'E'), False, 'start')
+    assert flow_n('B', 'D') == flow_n('D', 'B')
+    fl.append(bundle([(470, y0 - 2), (470, 90), (BX['D'] + 43, 90), (BX['D'] + 43, y0 - 2)], 2, 'bs', ('start', 'end')))
+    cnts.append(svg_text(665, 84, f'{flow_n("B", "D")} each way', 'cn3', 'middle'))
+    fl.append(bundle([(96, yb + 2), (96, y3 - 2)], 2, 'bs'))
+    count(84, (yb + y3) / 2 + 8, flow_n('A', 'EC'), False, 'end')
+    fl.append(bundle([(150, y3 - 2), (150, yb + 2)], 2, 'bs'))
+    count(162, (yb + y3) / 2 + 8, flow_n('EC', 'A'), False, 'start')
+    fl.append(bundle([(880, yb + 2), (880, y3 - 2)], 2, 'bs'))
+    count(868, (yb + y3) / 2 + 8, flow_n('D', 'TC'), False, 'end')
+    fl.append(bundle([(940, y3 - 2), (940, yb + 2)], 2, 'bs'))
+    count(952, (yb + y3) / 2 + 8, flow_n('TC', 'D'), False, 'start')
+    ymid = yb + 30
+    fl.append(bundle([(836, yb + 2), (836, ymid), (700, ymid), (700, y3 - 2)], 2, 'bs'))
+    count(768, ymid + 26, flow_n('D', 'EC'), False)
+    ytc = y3 + 42
+    fl.append(bundle([(BX['D'] - 2, ytc), (BX['C'] + BW + 2, ytc)], 2, 'bs'))
+    count((BX['D'] + BX['C'] + BW) / 2, ytc - 10, flow_n('TC', 'EC'), False)
+    yr = y3 + bh3 + 26
+    ry = fwd + 30
+    fl.append(bundle([(BX['E'] + BW + 2, ry), (W - 14, ry), (W - 14, yr), (14, yr), (14, ry), (BX['A'] - 2, ry)], 3, 'bm'))
+    cnts.append(svg_text(W / 2, yr + 26, f'{flow_n("E", "A")} connections run back. {ED["opening"]["return"]}', 'rt', 'middle'))
+    nrows, nh = layout_rows([('mapr', 'Black marks the main circuit, part to part. Gray marks the other flows.')], 400)
+    note = draw_rows(236 + 44, yb + 14, nrows, 'start', ' rn')
+    lead = f'<path class="leader" d="M{236 + 36} {yb + 24}H268V{fwd + 12}"/>'
+    H = yr + 40
+    return (f'<svg class="sumd" data-view="overview" viewBox="0 0 {W} {f(H)}" width="{W}" role="group" '
+            f'aria-labelledby="sys-h" aria-describedby="sum-words" data-ak-roving data-ak-nav="spatial">'
+            f'{lead}{"".join(fl)}{"".join(out)}{"".join(cnts)}{note}</svg>')
+
+
+def system_phone(W=320):
+    """The same system for a phone: the parts stacked in reading order, the main circuit down the middle and the
+    return line at left. Drawn for 320 px with nothing under 15 px."""
+    order = ['X'] + CORE + ['EC', 'TC']
+    bx, bw, bh, gap = 26, W - 28, 60, 52
+    ys, y = {}, 0
+    for pid in order:
+        ys[pid] = y
+        y += bh + gap
+    H = y - gap + 6
+    out, fl, txt = [], [], []
+    for pid in order:
+        p, y_ = PARTS[pid], ys[pid]
+        q = p['plain_question'] or f'{flow_n_out("X")} connections press in'
+        g = [f'<rect class="ak-mark {"bx" if pid in CORE else "bx2"}" x="{bx}" y="{y_}" width="{bw}" height="{bh}"/>',
+             svg_text(bx + 12, y_ + 26, p['plain_name'], 'ph ak-label', 'start', f' data-part="{pid}" data-name="{e(p["plain_name"])}"'),
+             svg_text(bx + 12, y_ + 48, q, 'pq', 'start')]
+        if pid in NUM:
+            g.append(svg_text(bx + bw - 12, y_ + 26, str(NUM[pid]), 'cn2', 'end'))
+        say = e(f'{p["plain_name"]}. {p["plain_question"] or p["text"]}')
+        if pid == 'C':
+            out.append(f'<a class="pt" href="#area-c" aria-label="{say} Opens the Elections page.">{"".join(g)}</a>')
+        else:
+            out.append(f'<g class="pt" role="button" data-select="part-{pid.lower()}" aria-label="{say}">{"".join(g)}</g>')
+    ax = bx + 30
+
+    def down(a, b, main, words):
+        y1, y2 = ys[a] + bh + 2, ys[b] - 2
+        fl.append(bundle([(ax, y1), (ax, y2)], 3 if main else 2, 'bm' if main else 'bs'))
+        rows = swrap(words, W - ax - 24, 'mapr')
+        txt.append(svg_lines(ax + 14, (y1 + y2) / 2 + 5 - (len(rows) - 1) * 9, rows, 'nr' + ('' if main else ' sn'), 18))
+    xs_ = flow_n_out('X')
+    down('X', 'A', False, f'{flow_n("X", "A")} on Wealth; {xs_ - flow_n("X", "A")} on the other parts')
+    for a, b in zip(CORE, CORE[1:]):
+        r = flow_n(b, a)
+        down(a, b, True, f'{flow_n(a, b)} connections' + (f' · {r} come back' if r else ''))
+    down('E', 'EC', False, f'{flow_n("E", "EC")} on; {flow_n("E", "A")} run back to Wealth at left')
+    y1, y2 = ys['EC'] + bh + 2, ys['TC'] - 2
+    fl.append(bundle([(ax, y2), (ax, y1)], 2, 'bs'))
+    txt.append(svg_text(ax + 14, (y1 + y2) / 2 + 5, f'{flow_n("TC", "EC")} up from Technology', 'nr sn'))
+    rx = 9
+    fl.append(bundle([(bx - 2, ys['EC'] + bh / 2), (rx, ys['EC'] + bh / 2), (rx, ys['E'] + bh / 2)], 2, 'bs', ()))
+    fl.append(bundle([(bx - 2, ys['E'] + bh / 2), (rx, ys['E'] + bh / 2), (rx, ys['A'] + bh / 2), (bx - 2, ys['A'] + bh / 2)], 3, 'bm'))
+    return (f'<svg class="sysp" data-view="overview" viewBox="0 0 {W} {f(H)}" width="100%" role="group" '
+            f'aria-labelledby="sys-h" aria-describedby="sum-words" data-ak-roving data-ak-nav="spatial">'
+            f'{"".join(fl)}{"".join(out)}{"".join(txt)}</svg>')
 
 
 def flow_ex(a, b, k=2):
     ids = flow_examples(a, b, k)
     return '<ul class="ex">' + ''.join(
-        f'<li><span class="lnm">{e(L[x]["name"])}</span> <span class="muted">{x} · '
+        f'<li><span class="lnm">{e(L[x]["name"])}</span> <span class="gx">{grade_glyph(L[x]["evidence"], 24)}'
         f'{e(grade_word(L[x]["evidence"]).lower())}</span></li>' for x in ids) + '</ul>'
 
 
@@ -1446,7 +1684,7 @@ def part_block(pid):
     if INSIDE[pid]:
         meta.append(f'{cnt("custom:part-inside-" + pid, INSIDE[pid])} connections inside')
     if loops_here:
-        meta.append(f'{cnt("custom:part-loops-" + pid, len(loops_here))} {plural(len(loops_here), "loop starts", "loops start")} here')
+        meta.append(f'{cnt("custom:part-loops-" + pid, len(loops_here))} {plural(len(loops_here), "loop", "loops")} based here')
     if pid == 'EC':
         groups = ''.join(f'<li class="grp"><p class="gt">{e(g["title"])}</p><ul class="vlist" data-ak-roving data-ak-nav="sequence">'
                          + ''.join(f'<li>{var_button(c)}</li>' for c in g['nodes']) + '</ul></li>' for g in p['groups'])
@@ -1456,13 +1694,15 @@ def part_block(pid):
                  + ''.join(f'<li>{var_button(c)}</li>' for c in p['nodes']) + '</ul>')
     loops_html = ''
     if loops_here:
-        loops_html = ('<p class="lh"><span class="lbl">Loops that start here:</span> '
+        loops_html = ('<p class="lh"><span class="lbl">Loops based here:</span> '
                       + ', '.join(loop_link(k) for k in loops_here) + '</p>')
     q = p['plain_question']
-    go = ''
     if pid == 'C':
+        r1 = RF['R-01']
         go = (f'<p class="go"><a href="#area-c">Open Elections: its {nw(len(p["nodes"]))} conditions, '
-              f'{nw(len(C_LOOPS))} loops, {len(C_ISSUES)} problems and {len(C_REFORMS)} reforms</a></p>')
+              f'{nw(len(C_LOOPS))} loops, {len(C_ISSUES)} problems and {len(C_REFORMS)} reforms</a></p>'
+              f'<p class="go2"><a class="tl" href="#reform-r01">Reform R-01, {e(r1["short"].lower())}: where it acts and '
+              f'who could adopt it</a></p>')
     else:
         go = (f'<p class="go2"><button type="button" class="tl" data-select="part-{pid.lower()}" '
               f'aria-label="Read all of {e(p["plain_name"])}">Read all of {e(p["plain_name"])}</button></p>')
@@ -1531,35 +1771,49 @@ def circuit():
     sk_note = (f'<p class="sk-note">{nw(len(sk), True)} more loops are sketches, without a complete numbered chain: '
                + ', '.join(loop_link(k) for k in sk) + '. <a href="#loops">See all 23 loops</a>.</p>')
     assert all(flow_n('D', 'TC') == sum(1 for x in FLOWS[('D', 'TC')] if L[x]['type'] == 'authority') for _ in [0])
-    return ('<section class="circuit" aria-labelledby="circ-h"><header class="sec-head"><p class="eyebrow">How the circuit runs</p>'
+    return ('<section class="circuit" aria-labelledby="circ-h"><header class="sec-head"><p class="eyebrow">How the circuit runs, part by part</p>'
             '<h2 id="circ-h" class="headline">Read the system in the order its effects travel.</h2>'
-            '<p class="lede">Outside forces press in from the top. Each part then hands something on to the next, from wealth '
-            'down to policy, and policy lands in your household. The line at left carries part of it back to wealth.</p></header>'
+            '<p class="lede">Outside forces press in. Each part then hands something on to the next in turn, from wealth to '
+            'policy, and policy lands in your household. The line at left carries part of it back to wealth.</p></header>'
             '<div class="cgrid" data-circuit><svg class="spine" data-view="overview" aria-hidden="true" focusable="false"></svg>'
             + ''.join(rows) + '</div>' + sk_note + '</section>')
 
 
-def whole():
-    svg, desc = summary_diagram()
+def flows_in_words():
     words = []
     for (a, b), v in sorted(FLOWS.items(), key=lambda kv: (ORDER.index(kv[0][0]), ORDER.index(kv[0][1]))):
         words.append(f'<li>{e(PARTS[a]["plain_name"])} to {e(PARTS[b]["plain_name"])}: {len(v)} '
                      f'{plural(len(v), "connection", "connections")}</li>')
     inside = ', '.join(f'{e(PARTS[p]["plain_name"])} {INSIDE[p]}' for p in ORDER if INSIDE[p])
+    return (f'<details class="words" id="sum-words"><summary>The flows in words</summary>'
+            f'<p>{cnt("custom:cross-part", CROSS)} connections cross from one part to another, and '
+            f'{cnt("custom:inside-part", sum(INSIDE.values()))} stay inside a part.</p>'
+            f'<ol class="cols">{"".join(words)}</ol><p>Inside each part: {inside}.</p></details>')
+
+
+def system_top():
+    big = max(((a, b) for a, b in {tuple(sorted(k, key=ORDER.index)) for k in FLOWS}),
+              key=lambda ab: flow_n(*ab) + flow_n(ab[1], ab[0]))
+    return ('<section class="sys" aria-labelledby="sys-h"><h2 class="vh2" id="sys-h">The whole system: eight parts and the '
+            'flows between them</h2>'
+            f'<div class="wide-only"><div class="ak-scroll sumwrap" role="region" tabindex="0" aria-label="The whole system, drawing" '
+            f'id="sys-region" style="--ak-min:1312px">{system_compact()}</div></div>'
+            f'<div class="narrow-only">{system_phone()}</div>'
+            '<p class="ak-readout" data-ak-readout>Point at or tab to a part to read its name here. Each part opens below, in order.</p>'
+            + flows_in_words() + '</section>')
+
+
+def whole():
+    svg, desc = summary_diagram()
     big = max(((a, b) for a, b in {tuple(sorted(k, key=ORDER.index)) for k in FLOWS}),
               key=lambda ab: flow_n(*ab) + flow_n(ab[1], ab[0]))
     big_n = flow_n(*big) + flow_n(big[1], big[0])
-    return ('<section class="whole" aria-labelledby="sum-h"><header class="sec-head"><p class="eyebrow">The whole system</p>'
+    return ('<section class="whole wide-only" aria-labelledby="sum-h"><header class="sec-head"><p class="eyebrow">Every condition on one page</p>'
             f'<h2 id="sum-h" class="headline">The busiest exchange runs between {e(PARTS[big[0]]["plain_name"].lower())} '
             f'and {e(PARTS[big[1]]["plain_name"].lower())}: {cnt("custom:biggest-pair", big_n)} connections.</h2>'
-            f'<p class="lede">Here are all eight parts on one page, with only the flows between them. '
-            f'{cnt("custom:cross-part", CROSS)} connections cross from one part to another and '
-            f'{cnt("custom:inside-part", sum(INSIDE.values()))} stay inside a part; tap a part to read it.</p></header>'
-            f'<div class="ak-scroll sumwrap" role="region" tabindex="0" aria-label="The whole system, drawing" id="sum-region" style="--ak-min:1312px">{svg}</div>'
-            '<p class="fullbtn"><button type="button" class="ak-btn" data-ak-full="sum-region">View the drawing full size</button></p>'
-            '<p class="ak-readout" data-ak-readout>Point at or tab to a part to read its name here.</p>'
-            f'<details class="words" id="sum-words"><summary>The flows in words</summary><p>{e(desc.split(". ")[0])}.</p>'
-            f'<ol class="cols">{"".join(words)}</ol><p>Inside each part: {inside}.</p></details></section>')
+            f'<p class="lede">The same eight parts, now with every condition named inside its box. Tap a part to read it.</p></header>'
+            f'<div class="ak-scroll sumwrap" role="region" tabindex="0" aria-label="Every condition, drawing" id="sum-region" style="--ak-min:1312px">{svg}</div>'
+            '<p class="ak-readout" data-ak-readout>Point at or tab to a part to read its name here.</p></section>')
 
 
 def bill():
@@ -1580,16 +1834,30 @@ def bill():
             f'<div class="hubs">{"".join(hubs)}</div></section>')
 
 
+def hidden_reforms():
+    keys = sorted(OV_REFORMS)
+    return ('<ul class="hid" hidden>' + ''.join(
+        f'<li><button type="button" data-select="reform-{r.lower()}" data-reform="{r}" data-targets="{" ".join(RF[r]["targets"])}">'
+        f'{e(RF[r]["title"])}</button></li>' for r in keys) + '</ul>')
+
+
 def view_overview():
     return ('<section class="view" data-view-root="overview" data-crumb="Overview">'
-            '<div class="headblock"><div class="hl">'
+            '<div class="ovtop"><div class="headblock top"><div class="hl">'
             f'<p class="eyebrow">{e(ED["opening"]["kicker"])}</p>'
-            f'<h1 class="display" data-ak-heading>{e(OV_HEAD)}</h1><p class="deck">{ov_deck()}</p></div>{ov_key()}</div>'
-            + ov_chain() + circuit() + whole() + bill() + '</section>')
+            f'<h1 class="display" data-ak-heading>{e(ED["questions"]["dem"]["q"])}</h1><p class="deck">{ov_deck()}</p></div>'
+            f'<aside class="finding" aria-labelledby="fd-h"><p class="eyebrow" id="fd-h">What the map suggests '
+            f'<span class="draft">Studio draft</span></p><p class="fd">{e(OV_FINDING)}</p>'
+            f'<p class="fdn">It says can because some steps on this route are graded plausible.</p></aside></div>'
+            + ov_key() + system_top() + '</div>' + bill() + circuit() + whole() + hidden_reforms() + '</section>')
 
 
 # ------------------------------------------------------------------------------------------------ Elections
 AREA_HEAD = 'When the primary settles a seat, the risk of losing office falls.'
+C3_LOOPS = [k for k in ED['loop_order'] if 'C3' in station_codes(k)]
+
+
+QUALIFY_ON_CARD = {'R1'}   # the civic memo pairs R1's qualification with misreading 3, arrows read as blame
 
 
 def loop_card(k, W=350, view='loops', heading='h3'):
@@ -1606,7 +1874,10 @@ def loop_card(k, W=350, view='loops', heading='h3'):
             f'<p class="lk">{chip("Loop", k, True)}<span>{e(kind_line(k))}</span></p>'
             f'<{heading} class="ln" id="lc-{view}-{k}"><span data-loop="{k}" data-name="{e(l["plain_name"])}">{e(l["plain_name"])}</span></{heading}>'
             f'<p class="lt" data-loop="{k}" data-name="{e(l["title"])}">{e(l["title"])}</p>'
-            f'<div class="cwrap">{cycle_small(k, W, view=view)}</div>'
+            f'<p class="lsum">{e(first_sentence(l["summary"]))}</p>'
+            + (f'<p class="lq"><strong>Keep in mind.</strong> {e(l["qualification"])}</p>' if k in QUALIFY_ON_CARD else '')
+            + f'<div class="cwrap"><div class="wide-only">{cycle_small(k, W, view=view)}</div>'
+            f'<div class="narrow-only">{cycle_small(k, 320, view=view, phone=True)}</div></div>'
             f'<p class="ra">{e(read_aloud(k))}</p>'
             f'<p class="ls">{e(status_line(k))}</p>'
             + (f'<p class="ld">{e(d)}</p>' if d else '') + f'<p class="la">{btn}</p></article>')
@@ -1618,26 +1889,27 @@ def issue_item(i):
     ex = (f'<span class="ie">{e(pe["headline"])} <span class="muted">({e(pe["where"])}, {e(pe["when"])})</span></span>'
           if pe else '<span class="ie muted">No worked example in the record</span>')
     tags = 'Touches ' + list_words([label(c).lower() if not label(c)[1:2].isupper() else label(c) for c in i['nodes'] if c in C_SET])
-    body = [f'<p>{e(i["summary"])}</p>']
+    body = [f'<p>{e(i["summary"])}</p><p class="itag">{e(tags)}.</p>']
     if pe:
         src = pe.get('source') or {}
-        body.append(f'<div class="exm"><p class="eyebrow">The problem, in one place</p><h5>{e(pe["headline"])}</h5>'
+        body.append(f'<div class="exm"><p class="eyebrow">The problem, in one place</p><h4>{e(pe["headline"])}</h4>'
                     f'<p>{e(pe["text"])}</p><p class="muted">{e(pe["where"])}, {e(pe["when"])}. Source: '
                     f'{e(src.get("publisher") or "")}, {e(src.get("title") or "")} ({e(src.get("year") or "")}).</p></div>')
     if fe:
         src = fe.get('source') or {}
-        body.append(f'<div class="exm"><p class="eyebrow">A fix tried somewhere</p><h5>{e(fe["headline"])}</h5>'
+        body.append(f'<div class="exm"><p class="eyebrow">A fix tried somewhere</p><h4>{e(fe["headline"])}</h4>'
                     f'<p>{e(fe["text"])}</p>' + (f'<p><strong>Result.</strong> {e(fe["result"])}</p>' if fe.get('result') else '')
                     + f'<p class="muted">{e(fe["where"])}, {e(fe["when"])}. Source: {e(src.get("publisher") or "")}, '
                     f'{e(src.get("title") or "")} ({e(src.get("year") or "")}).</p></div>')
     body.append(f'<dl><dt>How it works</dt><dd>{e(i["mechanism"])}</dd>'
                 f'<dt>Evidence</dt><dd>{e(i["evidence_note"])}</dd>'
-                f'<dt>Proposed response</dt><dd>{e(i["response"])} <span class="muted">Who acts: {e(i["actor"])}.</span></dd>'
+                f'<dt>Proposed response</dt><dd>{e(i["response"])}'
+                + (f' <span class="muted">Who acts: {e(i["actor"])}.</span>' if i.get('actor') else '') + '</dd>'
                 f'<dt>Tradeoff</dt><dd>{e(i["tradeoff"])}</dd>'
                 f'<dt>How to judge it</dt><dd>{e(i["success_measure"])}</dd></dl>')
     return (f'<li><details class="iss"><summary><span class="it" data-issue="{i["id"]}" data-name="{e(i["title"])}">'
             f'{e(i["title"])}</span>{ex}<span class="ig">{grade_glyph(g, 28)}{e(grade_word(g))}</span>'
-            f'<span class="itag">{e(tags)}</span></summary><div class="ib">{"".join(body)}</div></details></li>')
+            f'</summary><div class="ib">{"".join(body)}</div></details></li>')
 
 
 def effects_sentence(r):
@@ -1658,11 +1930,10 @@ def reform_card(r):
         elif t in L:
             tl.append(f'{L[t]["name"]} ({t})')
     open_ = ('<p class="la"><a class="tl" href="#reform-r01">Open the full profile</a></p>' if r['id'] == 'R-01' else '')
-    disc = (f'<p class="disc"><strong>Disclosure.</strong> {e(INTEREST[r["id"]])}</p>'
-            if r['interest_note'] and r['id'] in INTEREST else '')
+    disc = disc_html(r['id'])
     return (f'<article class="rcard" data-reform="{r["id"]}" data-targets="{" ".join(r["targets"])}">'
-            f'<p class="lk">{chip("Reform", r["id"], True)}<span>{e(r["band"].capitalize())}</span></p>'
-            f'<h4 class="rn" data-reform="{r["id"]}" data-name="{e(r["title"])}">{e(r["title"])}</h4>'
+            f'<p class="lk">{chip("Reform", r["id"], True)}</p>'
+            f'<h3 class="rn" data-reform="{r["id"]}" data-name="{e(r["title"])}">{e(r["title"])}</h3>'
             f'<p><span class="lbl">What it changes.</span> {e(first_sentence(r["summary"]))}</p>'
             f'<p class="muted"><span class="lbl">Acts on</span> {e(list_words(tl))}.</p>'
             f'<p class="fxl">{e(effects_sentence(r))}</p>'
@@ -1675,7 +1946,7 @@ def view_area():
     for c in p['nodes']:
         n = N[c]
         cards.append(f'<li class="vcard">{chip("Variable", c, True)}'
-                     f'<h4 class="vt">{var_button(c, " big")}</h4>'
+                     f'<h3 class="vt">{var_button(c, " big")}</h3>'
                      + (f'<p class="vf">{e(n["title"])}</p>' if n['title'] != n['label'] else '')
                      + f'<p class="vm">{e(n["increase_means"])}</p><p class="vd">{e(n["description"])}</p></li>')
     by_part = lambda lids, side: sorted(lids, key=lambda x: (ORDER.index(PART_OF[L[x]['from' if side == 'in' else 'to']]), x))
@@ -1693,12 +1964,12 @@ def view_area():
                            f'<span data-part="{far}" data-name="{e(fp["plain_name"])}">{e(fp["plain_name"])}</span> '
                            f'<span class="muted">{k}</span></h4><ul class="crows">')
             ll = L[lid]
-            out.append(f'<li class="crw"><div class="cdr">{conn_row(lid, side, 560)}</div><div class="cdn">{conn_row(lid, side, 350)}</div>'
+            out.append(f'<li class="crw"><div class="cdr">{conn_row(lid, side, 560)}</div><div class="cdn">{conn_row(lid, side, 320, phone=True)}</div>'
                        f'<p class="cn"><span class="lnm">{e(ll["name"])}</span> <span class="muted">{lid} · '
                        f'{e(grade_word(ll["evidence"]).lower())} · {e(delay_words(ll["delay"]))}</span></p></li>')
         out.append('</ul></div>')
         return ''.join(out)
-    loops = ''.join(f'<li>{loop_card(k, 350, "area-c", "h4")}</li>' for k in C_LOOPS)
+    loops = ''.join(f'<li>{loop_card(k, 350, "area-c", "h3")}</li>' for k in C_LOOPS)
     groups = defaultdict(list)
     for i in C_ISSUES:
         groups[i['domain']].append(i)
@@ -1706,10 +1977,10 @@ def view_area():
     iss_html = []
     for d_id in sorted(groups, key=lambda d: -len(groups[d])):
         items = sorted(groups[d_id], key=lambda i: i['id'])
-        iss_html.append(f'<section class="igrp" aria-labelledby="ig-{d_id}"><h4 class="igh" id="ig-{d_id}">'
-                        f'{e(dom[d_id]["title"])} <span class="muted">{len(items)}</span></h4>'
-                        f'<p class="igq">{e(dom[d_id]["everyday_question"])}</p>'
-                        f'<ul class="ilist">{"".join(issue_item(i) for i in items)}</ul></section>')
+        iss_html.append(f'<details class="igrp" open><summary><h3 class="igh" id="ig-{d_id}">'
+                        f'{e(dom[d_id]["title"])} <span class="muted">{len(items)}</span></h3>'
+                        f'<p class="igq">{e(dom[d_id]["everyday_question"])}</p></summary>'
+                        f'<ul class="ilist">{"".join(issue_item(i) for i in items)}</ul></details>')
     reforms = ''.join(f'<li>{reform_card(r)}</li>' for r in sorted(C_REFORMS, key=lambda r: r['id']))
     words = ''.join(f'<li>{e(link_sentence(lid))}</li>' for lid in C_INSIDE + ['L23', 'L54'])
     jumps = [('ar-what', 'What it is'), ('ar-draw', 'How it works'), ('ar-flows', 'What pushes on it'),
@@ -1717,7 +1988,7 @@ def view_area():
              ('ar-reforms', f'{len(C_REFORMS)} reforms')]
     jump_html = '<nav class="jumps" aria-label="On this page"><ul>' + ''.join(
         f'<li><button type="button" class="jb" data-jump="{a}">{e(t)}</button></li>' for a, t in jumps) + '</ul></nav>'
-    return ('<section class="view" data-view-root="area-c" data-crumb="Elections" data-parent="overview" hidden>'
+    return ('<section class="view" data-view-root="area-c" data-crumb="Elections" data-parent="overview" hidden>' + locator('C') +
             '<div class="headblock"><div class="hl">'
             f'<p class="eyebrow">Part 3 of the circuit · <span data-part="C" data-name="{e(p["formal_title"])}">{e(p["formal_title"])}</span></p>'
             f'<h1 class="headline xl" data-ak-heading>{e(AREA_HEAD)}</h1>'
@@ -1728,7 +1999,8 @@ def view_area():
             f'<dt>{cnt("custom:c-in", len(C_IN))}</dt><dd>coming in</dd><dt>{cnt("custom:c-out", len(C_OUT))}</dt><dd>going out</dd>'
             f'<dt>{cnt("custom:c-loops", len(C_LOOPS))}</dt><dd>loops run through it</dd>'
             f'<dt>{cnt("custom:c-issues", len(C_ISSUES))}</dt><dd>problems tracked</dd>'
-            f'<dt>{cnt("custom:c-reforms", len(C_REFORMS))}</dt><dd>reforms aimed here</dd></dl></aside></div>'
+            f'<dt>{cnt("custom:c-reforms", len(C_REFORMS))}</dt><dd>reforms aimed here</dd></dl>'
+            f'<p class="eyebrow ek2">Evidence on each line</p>{evidence_key()}</aside></div>'
             + jump_html +
             f'<section class="sec" id="ar-what" aria-labelledby="ar-what-h"><div class="two"><div class="whatq">'
             f'<p class="eyebrow">What it is</p><h2 class="headline" id="ar-what-h"><span data-part="C" data-name="{e(p["plain_name"])}">'
@@ -1736,13 +2008,13 @@ def view_area():
             f'<p class="body">{e(p["story"])}</p></div>'
             f'<ul class="vcards" data-ak-roving data-ak-nav="spatial">{"".join(cards)}</ul></div></section>'
             '<section class="sec" id="ar-draw" aria-labelledby="area-c-draw-h"><p class="eyebrow">How it works</p>'
-            f'<h2 class="headline" id="area-c-draw-h">Two loops meet at {e(label("C3").lower())}.</h2>'
+            f'<h2 class="headline" id="area-c-draw-h">{nw(len(C3_LOOPS), True)} loops pass through {e(label("C3").lower())}; two are drawn here.</h2>'
             f'<p class="lede">Every connection inside Elections is drawn here, with the accountability loop running out to '
             f'{e(PARTS["D"]["plain_name"])} and back. Tap a condition or an arrow to read it.</p>'
             f'<div class="wide-only"><div class="ak-scroll" role="region" tabindex="0" aria-label="Elections drawing" id="area-region" style="--ak-min:1312px">{area_drawing()}</div></div>'
             f'<div class="narrow-only"><div class="pair" data-ak-roving data-ak-nav="sequence">'
-            f'<p class="eyebrow">{e(LO["R10"]["plain_name"])} \u00b7 R10</p>{cycle_small("R10", 350, interactive=True, view="area-c")}'
-            f'<p class="eyebrow">{e(LO["B4"]["plain_name"])} \u00b7 B4</p>{cycle_small("B4", 350, interactive=True, view="area-c")}</div>'
+            f'<p class="eyebrow">{e(LO["R10"]["plain_name"])} \u00b7 R10</p>{cycle_small("R10", 320, interactive=True, view="area-c", phone=True)}'
+            f'<p class="eyebrow">{e(LO["B4"]["plain_name"])} \u00b7 B4</p>{cycle_small("B4", 320, interactive=True, view="area-c", phone=True)}</div>'
             f'<p class="body">Both loops run through {e(label("C3").lower())}. '
             f'{e(re.sub(r"^The loop", "The " + LO["B4"]["plain_name"].lower(), first_sentence(LO["B4"]["qualification"])))}</p></div>'
             '<p class="ak-readout" data-ak-readout>Point at or tab to a condition or an arrow to read it here.</p>'
@@ -1758,7 +2030,8 @@ def view_area():
             '<p class="lede">A loop is a chain of causes that comes back to where it started. Read each one clockwise from the top left.</p>'
             f'<ul class="lgrid" data-ak-roving data-ak-nav="spatial">{loops}</ul></section>'
             '<section class="sec" id="ar-issues" aria-labelledby="ar-issues-h"><p class="eyebrow">Problems</p>'
-            f'<h2 class="headline" id="ar-issues-h">{cnt("custom:c-issues", len(C_ISSUES))} problems tracked here, each with a real case.</h2>'
+            f'<h2 class="headline" id="ar-issues-h">{cnt("custom:c-issues", len(C_ISSUES))} problems tracked here; '
+            f'{cnt("custom:c-issues-cased", sum(1 for i in C_ISSUES if i.get("problem_example")))} with a real case.</h2>'
             '<p class="lede">Each record names a problem, a place where it happened and, where one exists, a place that tried a fix. '
             'Open any record to read it.</p>'
             f'<div class="igrid">{"".join(iss_html)}</div></section>'
@@ -1811,6 +2084,7 @@ def view_r10():
                         f'data-targets="{" ".join(r["targets"])}" aria-label="Reform {rid}, {e(r["title"])}. Acts on {e(tl)}.">'
                         f'{chip("Reform", rid, True)}<span class="rbt">{e(r["title"])}</span>'
                         f'<span class="rba">Acts on {e(tl)}</span></button>'
+                        + disc_html(rid)
                         + ('<a class="tl" href="#reform-r01">Open the full profile of R-01</a>' if rid == 'R-01' else '') + '</li>')
     table = []
     labs = station_labels('R10')
@@ -1823,28 +2097,30 @@ def view_r10():
                      f'<td class="nowrap" data-label="Sign"><strong>{sign_char(ll["polarity"])} {verb(ll["polarity"])}</strong></td>'
                      f'<td data-label="Evidence">{grade_label(ll["evidence"])}' + ('<p class="wk">The weakest step</p>' if st['id'] in l['weakest'] else '')
                      + f'</td><td class="nowrap" data-label="Delay">{e(delay_words(ll["delay"]))}</td></tr>')
-    return ('<section class="view" data-view-root="loop-r10" data-crumb="Loop R10" data-parent="area-c" '
-            'data-ak-reform="reform-r-01" hidden>'
+    return ('<section class="view" data-view-root="loop-r10" data-crumb="Loop R10" data-parent="area-c" data-reform-red '
+            'data-ak-reform="reform-r-01" hidden>' + locator('C') +
             '<div class="headblock"><div class="hl">'
             f'<p class="eyebrow">Loop R10 · <span data-loop="R10" data-name="{e(l["plain_name"])}">{e(l["plain_name"])}</span> '
             f'· {e(kind_line("R10"))}</p>'
             f'<h1 class="headline xl" id="loop-r10-h" data-ak-heading><span data-loop="R10" data-name="{e(l["title"])}">{e(l["title"])}</span></h1>'
             f'<p class="deck">{e(l["summary"])}</p></div>'
             f'<aside class="key"><p class="eyebrow">Read it aloud</p><p class="ral">{e(read_aloud("R10"))}</p>'
-            f'<p class="muted">{e(acc.SIGN_RULE)}</p></aside></div>'
+            f'<p class="muted">{e(acc.SIGN_RULE)}</p>'
+            f'<p class="muted">Red marks where reform R-01 acts. It never marks a problem or a bad step.</p>'
+            f'<p class="eyebrow ek2">Evidence on each line</p>{evidence_key()}</aside></div>'
             '<div class="r10">'
             f'<div class="r10-side"><section class="stepper" data-ak-stepper data-ak-hold="3200" data-ak-end="{e(end)}" aria-label="Step through the loop">'
-            '<p class="eyebrow">Follow one turn</p><div class="sbtn"><button type="button" class="ak-btn" data-ak-step="play">Play</button>'
+            '<h2 class="eyebrow">Follow one turn</h2><div class="sbtn"><button type="button" class="ak-btn" data-ak-step="play">Play</button>'
             '<button type="button" class="ak-btn" data-ak-step="prev">Previous step</button>'
             '<button type="button" class="ak-btn" data-ak-step="next">Next step</button>'
             '<button type="button" class="ak-btn" data-ak-step="reset">Reset</button></div>'
             f'<p class="sstat" data-ak-step-status aria-live="polite">{e(idle)}</p>'
             f'<ol class="slist" data-ak-step-list>{steps}</ol></section>'
-            f'<section class="rfs" aria-labelledby="r10-rf-h"><p class="eyebrow" id="r10-rf-h">Where reforms act</p>'
+            f'<section class="rfs" aria-labelledby="r10-rf-h"><h2 class="eyebrow" id="r10-rf-h">Where reforms act</h2>'
             f'<p class="muted">The red marks show where {e(RF["R-01"]["short"].lower())}, reform R-01, acts. Pick another reform to move them.</p>'
             f'<ul class="rlist" data-ak-roving data-ak-nav="sequence">{"".join(rf_items)}</ul></section></div>'
             f'<div class="r10-draw"><div class="wide-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_large("R10")}</div>'
-            f'<div class="narrow-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_small("R10", 350, step_numbers=True, interactive=True, view="loop-r10")}</div>'
+            f'<div class="narrow-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_small("R10", 320, step_numbers=True, interactive=True, view="loop-r10", phone=True)}</div>'
             '<p class="ak-readout" data-ak-readout>Point at or tab to a step or a condition to read it here.</p></div></div>'
             '<section class="sec" aria-labelledby="r10-steps-h"><p class="eyebrow">Step by step</p>'
             f'<h2 class="headline" id="r10-steps-h">{e(r10_steps_head())}</h2>'
@@ -1852,22 +2128,27 @@ def view_r10():
             '<th scope="col">From and to</th><th scope="col">Sign</th><th scope="col">Evidence</th><th scope="col">Delay</th></tr></thead>'
             f'<tbody>{"".join(table)}</tbody></table></div></section>'
             '<section class="sec two eq" aria-label="Evidence and limits"><div>'
-            f'<p class="eyebrow">How sure is this?</p><p class="body">{e(l["evidence_summary"])}</p>'
-            f'<p class="eyebrow">Keep in mind</p><p class="body">{e(l["qualification"])}</p></div><div>'
-            f'<p class="eyebrow">A real case</p><p class="body">{e(l["case"])}</p>'
+            f'<h2 class="eyebrow">How sure is this?</h2><p class="body">{e(l["evidence_summary"])}</p>'
+            f'<h2 class="eyebrow">Keep in mind</h2><p class="body">{e(l["qualification"])}</p></div><div>'
+            f'<h2 class="eyebrow">A real case</h2><p class="body">{e(l["case"])}</p>'
             f'<dl class="facts"><dt>Now</dt><dd>{e(direction_word("R10"))}: {e(l["reference_mode"])}</dd>'
             f'<dt>One turn</dt><dd>{e(l["delay_word"])}</dd><dt>Closure</dt><dd>{e(l["closure"].capitalize())}</dd></dl>'
             '</div></section></section>')
 
 
 # ------------------------------------------------------------------------------------------------ reform R-01
+V7_RANK = {'documented': 4, 'well-supported': 3, 'plausible': 2, 'plausible_contested': 2, 'hypothesis': 1}
+assert all(V7_RANK[l['evidence']] == l['rank'] for lo in LO.values() for l in lo['steps'] if l['id'])
+
+
 def evidence_head(pg, rg):
-    a, b = RANK[gk(pg)], RANK[gk(rg)]
-    if a < b:
-        return 'The problem is better established than the remedy.'
+    """V7 ranks plausible and contested alike, so the heading compares grades only when V7 does."""
+    a, b = V7_RANK[gk(pg)], V7_RANK[gk(rg)]
     if a > b:
+        return 'The problem is better established than the remedy.'
+    if a < b:
         return 'The remedy is better established than the problem.'
-    return 'The problem and the remedy rest on evidence of the same grade.'
+    return f'The problem is graded {grade_word(pg).lower()}; the remedy, {grade_word(rg).lower()}.'
 
 
 def view_r01():
@@ -1880,8 +2161,7 @@ def view_r01():
                       f'<td data-label="Feasibility"><strong>{e(rt["feasibility"].capitalize())}</strong><p class="muted">{e(ED["feasibility_scale"][rt["feasibility"]])}</p></td>'
                       + (f'<td data-label="Note">{e(rt["note"])}</td>' if rt["note"] else '<td></td>')
                       + f'<td class="nowrap" data-label="Checked">{e("Checked " + chk if chk else "No check date in V7")}</td></tr>')
-    fam = ''.join(f'<li><p class="fam">{e(ED["families"][k])}</p><p class="fv">{e(v.replace("-", MINUS))}</p>'
-                  f'<p class="fw">{e(effect_words(v).split("(", 1)[1].rstrip(")") if "(" in effect_words(v) else effect_words(v))}</p></li>'
+    fam = ''.join(f'<li><p class="fam">{e(ED["families"][k])}</p><p class="fv">{e(effect_words(v).capitalize())}</p></li>'
                   for k, v in r['effects'].items())
     tl = []
     for t in r['targets']:
@@ -1892,28 +2172,39 @@ def view_r01():
     chk = iso_words(st['checked'])
     disc = INTEREST[rid]
     pe, re_ = r['problem_evidence'], r['remedy_evidence']
-    return ('<section class="view" data-view-root="reform-r01" data-crumb="Reform R-01" data-parent="overview" '
-            'data-ak-reform="reform-r-01" hidden>'
+    stance = [x for x in sentences(r['summary']) if 'takes no position' in x]
+    assert len(stance) == 1
+    deck = ' '.join(x for x in sentences(r['summary']) if x not in stance)
+    named = [i for i in ISS.values() if any(a['id'] == rid for a in i['aimed_reforms']) and not i['retired']]
+    named_html = ''.join(
+        f'<li><span class="lnm" data-issue="{i["id"]}" data-name="{e(i["title"])}">{e(i["title"])}</span>'
+        f' <span class="muted">{e(grade_word(i["grade"]))}'
+        + (f'; for example, {e(i["problem_example"]["headline"])}' if i.get('problem_example') else '') + '</span></li>'
+        for i in named)
+    return ('<section class="view" data-view-root="reform-r01" data-crumb="Reform R-01" data-parent="overview" data-reform-red '
+            'data-ak-reform="reform-r-01" hidden>' + locator('C') +
             '<div class="headblock"><div class="hl">'
-            f'<p class="eyebrow">Reform R-01 · {e(r["band"].capitalize())} · {e(r["short"])}</p>'
+            f'<p class="eyebrow">Reform R-01 · {e(r["short"])}</p>'
             f'<h1 class="headline xl" data-ak-heading><span data-reform="R-01" data-targets="{" ".join(r["targets"])}" '
             f'data-name="{e(r["title"])}">{e(r["title"])}</span></h1>'
-            f'<p class="deck">{e(r["summary"])}</p></div>'
-            f'<aside class="key"><p class="eyebrow">Status</p><p>{e(st["text"])}</p>'
-            f'<p class="muted">Checked {e(chk)}; {e(st["result"])}.</p>'
-            f'<p class="disc"><strong>Disclosure.</strong> {e(disc)}</p></aside></div>'
+            f'<p class="deck">{e(deck)}</p></div>'
+            f'<aside class="stance" aria-labelledby="stance-h"><h2 class="eyebrow" id="stance-h">Stance and disclosure</h2>'
+            f'<p class="st1">{e(stance[0])}</p>'
+            f'<p><strong>Disclosure.</strong> {e(disc)}</p></aside></div>'
             '<section class="sec two eq" aria-label="The problem and the change"><div>'
-            f'<p class="eyebrow">The problem it answers</p><p class="gline">{grade_label(pe["grade"])}</p><p class="body">{e(pe["text"])}</p></div>'
-            f'<div><p class="eyebrow">What it changes</p><p class="body">{e(r["what_it_changes"])}</p></div></section>'
+            f'<h2 class="eyebrow">The problem it answers</h2><p class="body">{e(first_sentence(LO["R10"]["summary"]))}</p>'
+            f'<p class="gline">{grade_label(pe["grade"])}</p><p class="body">{e(pe["text"])}</p>'
+            f'<p class="eyebrow">Problems tracked in the atlas that it aims at</p><ul class="named">{named_html}</ul></div>'
+            f'<div><h2 class="eyebrow">What it changes</h2><p class="body">{e(r["what_it_changes"])}</p></div></section>'
             '<section class="sec r10 where" aria-labelledby="r01-where-h"><div class="r10-side"><p class="eyebrow">Where it acts</p>'
             f'<h2 class="headline" id="r01-where-h">It acts on {nw(len(r["targets"]))} marks in the safe-seat loop.</h2>'
             f'<p class="body">The red marks are its {nw(len(r["targets"]))} targets:</p><ul class="tgts">'
             + ''.join(f'<li>{chip("Variable" if t in N else "Connection", t, True)} <span>{e(label(t) if t in N else L[t]["name"])}</span></li>'
                       for t in r['targets'])
             + f'</ul><p class="body">It also sits on {loops}.</p>'
-            f'<p class="body muted">{e(acc.SIGN_RULE)}</p></div><div class="r10-draw">'
+            f'<p class="body muted">{e(acc.SIGN_RULE)}</p><p class="eyebrow ek2">Evidence on each line</p>{evidence_key()}</div><div class="r10-draw">'
             f'<div class="wide-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_large("R10", view="reform-r01")}</div>'
-            f'<div class="narrow-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_small("R10", 350, step_numbers=True, interactive=True, view="reform-r01")}</div>'
+            f'<div class="narrow-only" data-ak-roving data-ak-nav="sequence" data-ak-wrap>{cycle_small("R10", 320, step_numbers=True, interactive=True, view="reform-r01", phone=True)}</div>'
             '<p class="ak-readout" data-ak-readout>Point at or tab to a mark to read it here.</p></div></section>'
             '<section class="sec" aria-labelledby="r01-fx-h"><p class="eyebrow">Likely effects</p>'
             f'<h2 class="headline" id="r01-fx-h">Four families, each rated on its own and never added up.</h2>'
@@ -1946,7 +2237,7 @@ def view_r01():
 
 
 # ------------------------------------------------------------------------------------------------ loop catalog
-LOOPS_HEAD = (f'{N_R} of the {COUNTS["loops"]} loops feed themselves, and {N_WITH_REFORM} have a reform aimed at them.')
+LOOPS_HEAD = (f'{N_R} of the {COUNTS["loops"]} loops can feed themselves, and {N_WITH_REFORM} have a reform aimed at them.')
 
 
 def view_loops():
@@ -1965,7 +2256,7 @@ def view_loops():
             p = PARTS[pid]
             head = (f'<h2 class="gh3"><span data-part="{pid}" data-name="{e(p["plain_name"])}">{e(p["plain_name"])}</span> '
                     f'<span class="muted">{len(ks)}</span></h2><p class="gq"><strong>{e(p["plain_question"])}</strong> '
-                    f'{nw(len(ks), True)} loops start in {e(p["plain_name"])}: {e(kinds)}.</p>')
+                    f'{nw(len(ks), True)} loops are based in {e(p["plain_name"])}: {e(kinds)}.</p>')
         cards = ''.join(f'<li>{loop_card(k, 350, "loops")}</li>' for k in ks)
         groups.append(f'<section class="lgroup" aria-label="{e("Sketches" if pid == "SK" else PARTS[pid]["plain_name"])}">'
                       f'<div class="lgh">{head}</div><ul class="lgrid" data-ak-roving data-ak-nav="spatial">{cards}</ul></section>')
@@ -1974,24 +2265,24 @@ def view_loops():
         minus = sum(1 for s in LO[k]['steps'] if s['polarity'] == '-')
         assert (minus % 2 == 0) == (LO[k]['type'] == 'R'), k
     reinf = glossary['Reinforcing loop (R)']
-    return ('<section class="view" data-view-root="loops" data-crumb="All 23 loops" data-parent="overview" hidden>'
+    return ('<section class="view" data-view-root="loops" data-crumb="All 23 loops" data-parent="overview" hidden>' + locator() +
             '<div class="headblock"><div class="hl"><p class="eyebrow">The loop catalog</p>'
             f'<h1 class="headline xl" data-ak-heading>{cnt("loops_reinforcing", N_R)} of the {cnt("loops", COUNTS["loops"])} '
-            f'loops feed themselves, and {cnt("custom:loops-with-reform", N_WITH_REFORM)} have a reform aimed at them.</h1>'
+            f'loops can feed themselves, and {cnt("custom:loops-with-reform", N_WITH_REFORM)} have a reform aimed at them.</h1>'
             f'<p class="deck">A loop is a chain of causes that comes back to where it started. '
-            f'{cnt("loops_reinforcing", N_R)} feed themselves and {cnt("loops_balancing", N_B)} push back. '
+            f'{cnt("loops_reinforcing", N_R)} can feed themselves and {cnt("loops_balancing", N_B)} can push back. '
             f'<span class="q">“{e(sentences(reinf)[-1])}”</span> Each drawing reads clockwise from the top left.</p></div>'
             '<aside class="key"><p class="eyebrow">In each drawing</p><ul class="kl">'
             '<li>A pill is a condition that can rise or fall.</li>'
             '<li>The tag on each arrow carries its sign, with the word beside it: raises or lowers.</li>'
-            '<li>A solid line is documented or well supported; dashes are plausible; dash and dot contested; dots a hypothesis.</li>'
             '<li>Ticks after the tail count the wait: one under 2 years, two for 2 to 10, three over 10.</li></ul>'
+            f'<p class="eyebrow ek2">Evidence on each line</p>{evidence_key()}'
             f'<p><a href="#how-to-read">How to read the atlas</a></p></aside></div>'
             f'<div data-strip="loops">{"".join(groups)}</div></section>')
 
 
 # ------------------------------------------------------------------------------------------------ how to read
-def lesson_arrow(lid, W=350):
+def lesson_arrow(lid, W=420, phone=False):
     ll = L[lid]
     h = 60
     a, b = ll['from'], ll['to']
@@ -2001,11 +2292,12 @@ def lesson_arrow(lid, W=350):
     pts = [(pw + 6, h / 2 + 18), (W - pw - 6, h / 2 + 18)]
     marks, _, _ = wire_marks(pts, ll['evidence'], ll['polarity'], ll['delay'], 2, lit=False)
     (tx, ty), _ = tag_point(pts, 2, ll['polarity'])
-    vb = svg_text(tx, ty - 15, verb(ll['polarity']), 'vb', 'middle')
+    vb = svg_text(tx, ty - 15, verb(ll['polarity']), 'vbp' if phone else 'vb', 'middle')
     H = max(ha, hb) + 30
     attrs = (f'data-link="{lid}" data-sign="{sign_attr(ll["polarity"])}" data-grade="{ll["evidence"]}" '
              f'data-delay="{ll["delay"]}"')
-    return (f'<svg class="les" data-view="how-to-read" viewBox="0 0 {W} {f(H)}" width="{W}" role="img" '
+    size = 'width="100%"' if phone else f'width="{W}"'
+    return (f'<svg class="les" data-view="how-to-read" viewBox="0 0 {W} {f(H)}" {size} role="img" '
             f'aria-label="{e(link_sentence(lid))}"><g class="wire" {attrs}>{marks}</g>{sa}{sb}{vb}</svg>')
 
 
@@ -2016,7 +2308,7 @@ def sample_line(grade=None, delay=None, W=200, cls='', sketch=False):
             f'<g class="wire">{marks}</g></svg>')
 
 
-def authority_sample(W=350):
+def authority_sample(W=420, phone=False):
     lid = next(k for k, l in L.items() if l['type'] == 'authority')
     ll = L[lid]
     pw = 128
@@ -2024,12 +2316,12 @@ def authority_sample(W=350):
     sb, hb = station_block(ll['to'], label(ll['to']), W - pw / 2 - 2, 40, pw, 'map')
     pts = [(pw + 6, 40), (W - pw - 6, 40)]
     marks, _, _ = wire_marks(pts, ll['evidence'], None, ll['delay'], 2, lit=False, authority=True)
-    vb = svg_text((pts[0][0] + pts[1][0]) / 2, 30, 'decides', 'vb', 'middle')
+    vb = svg_text((pts[0][0] + pts[1][0]) / 2, 30, 'decides', 'vbp' if phone else 'vb', 'middle')
     attrs = f'data-link="{lid}" data-sign="none" data-grade="{ll["evidence"]}" data-delay="{ll["delay"]}"'
     H = max(ha, hb) / 2 + 46
-    return (f'<svg class="les" data-view="how-to-read" viewBox="0 0 {W} {f(H)}" width="{W}" role="img" '
-            f'aria-label="{e(link_sentence(lid))}"><g class="wire" {attrs}>{marks}</g>{sa}{sb}{vb}</svg>'
-            f'<p class="cap">{e(link_sentence(lid))}</p>')
+    size = 'width="100%"' if phone else f'width="{W}"'
+    return (f'<svg class="les" data-view="how-to-read" viewBox="0 0 {W} {f(H)}" {size} role="img" '
+            f'aria-label="{e(link_sentence(lid))}"><g class="wire" {attrs}>{marks}</g>{sa}{sb}{vb}</svg>')
 
 
 def view_read():
@@ -2046,7 +2338,7 @@ def view_read():
     mix = [m for m in ED['mixups'] if any(pl in ('system', 'loop:B4', 'outcomes') for pl in m['places'])]
     mixes = ''.join(f'<li><p class="mq">{e(m["prompt"])}</p><p>{e(m["answer"])}</p></li>' for m in mix)
     n_auth = sum(1 for l in L.values() if l['type'] == 'authority')
-    return ('<section class="view" data-view-root="how-to-read" data-crumb="How to read" data-parent="overview" hidden>'
+    return ('<section class="view" data-view-root="how-to-read" data-crumb="How to read" data-parent="overview" hidden>' + locator() +
             '<div class="headblock"><div class="hl"><p class="eyebrow">How to read the atlas</p>'
             '<h1 class="headline xl" data-ak-heading>Every line says what happens next, and how sure we are.</h1>'
             f'<p class="deck">The atlas uses one small language on every page. Five ideas cover it. '
@@ -2055,10 +2347,13 @@ def view_read():
             '<li class="lesson"><div class="lt2"><p class="ln2">1</p><h2 class="headline">The tip is the effect.</h2>'
             f'<p class="body">An arrow runs from a cause to what it changes. The tag on the line carries the sign, and the word '
             f'beside it says what the sign means: raises or lowers.</p><p class="body strong">{e(acc.SIGN_RULE)}</p></div>'
-            f'<div class="lv">{lesson_arrow("L08")}{lesson_arrow("L25")}'
+            f'<div class="lv"><div class="wide-only">{lesson_arrow("L08")}{lesson_arrow("L25")}</div>'
+            f'<div class="narrow-only">{lesson_arrow("L08", 320, True)}{lesson_arrow("L25", 320, True)}</div>'
             f'<p class="cap">{e(link_sentence("L08"))}</p><p class="cap">{e(link_sentence("L25"))}</p>'
             f'<p class="cap">{cnt("authority_connections", n_auth)} lines of authority carry no sign. They end in an open '
-            f'diamond and name who decides.</p>{authority_sample()}</div></li>'
+            f'diamond and name who decides.</p><div class="wide-only">{authority_sample()}</div>'
+            f'<div class="narrow-only">{authority_sample(320, True)}</div>'
+            f'<p class="cap">{e(link_sentence(next(k for k, l in L.items() if l["type"] == "authority")))}</p></div></li>'
             '<li class="lesson"><div class="lt2"><p class="ln2">2</p><h2 class="headline">Texture is the evidence.</h2>'
             f'<p class="body">The more broken the line, the weaker the evidence behind it. Every connection carries one of five '
             f'grades from Atlas V7.</p></div><div class="lv"><ul class="samples">{grades}</ul></div></li>'
@@ -2068,10 +2363,12 @@ def view_read():
             '<li class="lesson"><div class="lt2"><p class="ln2">4</p><h2 class="headline">Loops have a character.</h2>'
             f'<p class="body">{e(glossary["Feedback loop"])} Count the minus signs around a loop: an even number means it feeds '
             f'itself, an odd number means it pushes back.</p>'
-            f'<p class="body">{cnt("loops_reinforcing", N_R)} loops feed themselves and {cnt("loops_balancing", N_B)} push back. '
+            f'<p class="body">{cnt("loops_reinforcing", N_R)} loops can feed themselves and {cnt("loops_balancing", N_B)} can push back. '
             f'<span class="q">“{e(sentences(glossary["Reinforcing loop (R)"])[-1])}”</span></p></div>'
-            f'<div class="lv two eq"><div>{cycle_small("R10", 350, view="how-to-read")}<p class="cap">{e(read_aloud("R10"))}</p></div>'
-            f'<div>{cycle_small("B4", 350, view="how-to-read")}<p class="cap">{e(read_aloud("B4"))}</p></div></div></li>'
+            f'<div class="lv two eq"><div><div class="wide-only">{cycle_small("R10", 350, view="how-to-read")}</div>'
+            f'<div class="narrow-only">{cycle_small("R10", 320, view="how-to-read", phone=True)}</div><p class="cap">{e(read_aloud("R10"))}</p></div>'
+            f'<div><div class="wide-only">{cycle_small("B4", 350, view="how-to-read")}</div>'
+            f'<div class="narrow-only">{cycle_small("B4", 320, view="how-to-read", phone=True)}</div><p class="cap">{e(read_aloud("B4"))}</p></div></div></li>'
             '<li class="lesson"><div class="lt2"><p class="ln2">5</p><h2 class="headline">Color is the layer you are reading.</h2>'
             '<p class="body">A headline names one route, and the page draws that route in black against the gray of the rest '
             'of the system. Red appears only on the loop and reform pages, on the marks where a reform acts; it never means '
@@ -2084,6 +2381,16 @@ def view_read():
 
 
 # ------------------------------------------------------------------------------------------------ frame
+def locator(cur=None):
+    BXs = {'A': 2, 'B': 28, 'C': 54, 'D': 80, 'E': 106}
+    r = ['<rect class="lc" x="2" y="2" width="126" height="10"/>']
+    for pid, x in BXs.items():
+        r.append(f'<rect class="lc{" on" if pid == cur else ""}" x="{x}" y="18" width="22" height="18"/>')
+    r.append('<rect class="lc" x="2" y="42" width="74" height="16"/><rect class="lc" x="80" y="42" width="48" height="16"/>')
+    return (f'<a class="loc" href="#overview" aria-label="Overview"><svg data-view="locator" width="88" height="41" '
+            f'viewBox="0 0 130 60" aria-hidden="true" focusable="false">{"".join(r)}</svg></a>')
+
+
 def wordmark(height, master, cls):
     src = (ROOT / 'work/build/assets/identity/wordmark' / master).read_text()
     vb = re.search(r'viewBox="([^"]+)"', src).group(1).split()
@@ -2131,7 +2438,7 @@ def templates():
     out += [tpl_pathway(pw) for pw in ED['pathways']]
     out += [tpl_loop(k) for k in ED['loop_order']]
     out += [tpl_link(k) for k in sorted(set(C_INSIDE + ['L23', 'L54'] + [s['id'] for s in LO['R10']['steps']]))]
-    out += [tpl_reform(r) for r in LO['R10']['reforms']]
+    out += [tpl_reform(r) for r in sorted(set(LO['R10']['reforms']) | set(OV_REFORMS) | {x['id'] for x in C_REFORMS})]
     return ''.join(out)
 
 
@@ -2180,6 +2487,47 @@ button{font:inherit;color:inherit}
 .nums{display:grid;grid-template-columns:max-content 1fr;gap:2px 12px;margin:0;align-items:baseline}
 .nums dt{font:800 22px/26px "Inter Tight",sans-serif;font-variant-numeric:tabular-nums;text-align:right}.nums dd{margin:0}
 /* chain */
+.skip{position:absolute;left:16px;top:-200px;z-index:200;padding:10px 14px;background:#FFFFFF;border:2px solid var(--ink);
+font:600 15px/1 Inter,sans-serif;color:var(--ink)}
+.skip:focus{top:12px}
+.status:empty{display:none}
+.status{margin:12px 0 0;padding:8px 12px;border-left:3px solid var(--ink);font:600 15px/23px Inter,sans-serif}
+.view{position:relative}
+.loc{position:absolute;right:0;top:-46px;display:block;line-height:0}
+.loc .lc{fill:#FFFFFF;stroke:var(--stone);stroke-width:1px;vector-effect:non-scaling-stroke}
+.loc .lc.on{fill:var(--ink);stroke:var(--ink)}
+.headblock.top{margin-top:20px;align-items:end}
+.finding{border-top:1px solid var(--ink);padding-top:10px}
+.fd{margin:0;font:800 22px/26px "Inter Tight",sans-serif;letter-spacing:-.02em}
+.fdn{margin:8px 0 0;font:400 14px/20px Inter,sans-serif;color:var(--deep)}
+.draft{display:inline-block;margin-left:6px;padding:0 6px;border:1px solid var(--ink);font:700 13px/18px Inter,sans-serif}
+.keystrip{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:var(--gut);margin-top:18px;padding-top:10px;
+border-top:1px solid var(--news);font:400 15px/23px Inter,sans-serif}
+.keystrip p{margin:0 0 4px}
+.ekey.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 22px}
+.ekh{display:inline}
+.ekey{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0;padding:0;list-style:none;font:400 14px/20px Inter,sans-serif}
+.ekey li{display:inline-flex;gap:8px;align-items:center}
+.key .ekey{flex-direction:column;gap:4px}
+.ek2{margin-top:14px}
+.key .eyebrow.ek2{margin-top:18px}
+.sys{margin-top:14px}
+.vh2{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.sysp{display:block;width:100%;max-width:420px;height:auto;margin-top:8px}
+.gx{display:inline-flex;gap:6px;align-items:center;color:var(--deep);font-size:14px}
+.lsum{margin:8px 0 0;font:400 15px/23px Inter,sans-serif}
+.lq{margin:8px 0 0;font:400 14px/20px Inter,sans-serif;border-left:2px solid var(--ink);padding-left:10px}
+.stance{border:2px solid var(--ink);padding:12px 16px 4px;font:400 15px/23px Inter,sans-serif}
+.stance p{margin:0 0 10px}
+.st1{font:600 17px/25px Inter,sans-serif}
+.named{margin:0 0 12px;padding-left:18px;font:400 15px/23px Inter,sans-serif}
+.named li{margin-bottom:6px}
+.igrp>summary{list-style:none;cursor:pointer;position:relative;padding-left:22px}
+.igrp>summary::-webkit-details-marker{display:none}
+.igrp>summary::before{content:"+";position:absolute;left:0;top:0;font:700 22px/26px Inter,sans-serif}
+.igrp[open]>summary::before{content:"\2212"}
+.exm h4{margin:0 0 4px;font:600 15px/23px Inter,sans-serif}
+.ib .itag{grid-column:1/-1;margin:0}
 .chain{margin:40px 0 0}
 .chain ol{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
 .chain li+li{border-left:1px solid var(--news)}
@@ -2256,11 +2604,13 @@ svg .rt,svg .rn,svg .nr{font:400 15px Inter,sans-serif;fill:var(--ink)}
 svg .nr.sn{fill:var(--deep)}
 svg .eb{font:700 13px Inter,sans-serif;letter-spacing:.06em;fill:var(--ink)}
 svg .eb.gh{fill:var(--deep)}
+svg.sysp .ph{font-size:22px}
 svg .lb{font:600 15px Inter,sans-serif;fill:var(--ink)}
 svg .lb.far{font-weight:400}
 svg .nb{font:600 13px Inter,sans-serif;fill:var(--ink)}
 svg .nt{font:400 13px Inter,sans-serif;fill:var(--deep)}
 svg .vb{font:500 13px Inter,sans-serif;fill:var(--ink)}
+svg .vbp{font:400 15px Inter,sans-serif;fill:var(--ink)}
 svg .cid,svg .cid2{font:800 22px "Inter Tight",sans-serif;fill:var(--ink)}
 svg .ckind{font:400 13px Inter,sans-serif;fill:var(--deep)}
 svg .mk{}.sumd .mk{}
@@ -2282,16 +2632,17 @@ svg .st-station.gh{fill:var(--deep)}
 /* connections and stations */
 .wire{color:var(--ink)}
 .wire .ak-mark{stroke:var(--ak-hi,currentColor)}
-.wire .hd,.wire .tg polygon{fill:var(--ak-hi,currentColor)}
+.wire .hd{fill:var(--ak-hi,currentColor)}
+.wire .tg polygon{fill:currentColor}
 .wire .tg .sg{fill:#FFFFFF}
-.wire .tk{stroke:var(--ak-hi,currentColor);stroke-width:2px}
+.wire .tk{stroke:currentColor;stroke-width:2px}
 .wire .dm{fill:#FFFFFF;stroke:var(--ak-hi,currentColor);stroke-width:2px}
 .wire .hi{display:none}
 .wire[data-ak-sel] .lo,.wire.ak-target .lo,.wire.ak-now .lo{display:none}
 .wire[data-ak-sel] .hi,.wire.ak-target .hi,.wire.ak-now .hi{display:inline}
 .wire[data-ak-sel] .ak-mark,.wire.ak-target .ak-mark,.wire.ak-now .ak-mark{stroke-dasharray:var(--d6,none)}
 .wire.ak-rel:not([data-ak-sel]):not(.ak-target) .ak-mark,.wire:hover:not([data-ak-sel]):not(.ak-target) .ak-mark{stroke-dasharray:var(--d3,none)}
-.rail-o{stroke:currentColor}.rail-i{stroke:#FFFFFF}
+.rail{stroke:var(--ak-hi,currentColor)}
 .pl{fill:#FFFFFF;stroke:var(--ak-hi,currentColor)}
 .pl.gh{stroke:var(--ak-hi,var(--stone))}
 .node{color:var(--ink)}
@@ -2309,6 +2660,7 @@ svg .st-station.gh{fill:var(--deep)}
 .lt{margin:4px 0 0;font:400 15px/23px Inter,sans-serif;color:var(--deep)}
 .cwrap{margin:14px 0 10px}
 .cyc{display:block;max-width:100%;height:auto}
+.cyc.ph,.crow[width="100%"],.les[width="100%"]{width:100%;max-width:420px;height:auto}
 .ra{margin:0 0 8px;font:600 15px/23px Inter,sans-serif}
 .ls{margin:0 0 6px;font:400 14px/20px Inter,sans-serif;color:var(--deep)}
 .ld{margin:0 0 6px;font:400 14px/20px Inter,sans-serif;color:var(--ink);border-left:2px solid var(--ink);padding-left:10px}
@@ -2412,7 +2764,7 @@ table.st td p{margin:0 0 6px}
 .fams{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gut);margin:24px 0 12px;padding:0;list-style:none}
 .fams li{border-top:1px solid var(--ink);padding-top:10px}
 .fam{margin:0;font:600 15px/23px Inter,sans-serif}
-.fv{margin:4px 0;font:800 40px/40px "Inter Tight",sans-serif}
+.fv{margin:4px 0;font:800 22px/26px "Inter Tight",sans-serif;letter-spacing:-.02em}
 .fw{margin:0;font:400 15px/23px Inter,sans-serif;color:var(--deep)}
 .status{max-width:960px}
 /* how to read */
@@ -2457,11 +2809,31 @@ border-left:1px solid var(--ink);overflow:auto;animation:ak-panel-in var(--ak-mi
 .foot{border-top:1px solid var(--stone);margin-top:40px}
 .frow{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--gut);padding-top:16px;padding-bottom:40px}
 .foot .right{text-align:right}
-/* narrower screens */
-@media (max-width:1399.98px){
+/* the page reflows to the width it has: the panel takes a column of its own on wide screens */
+main.ak-stage{container-type:inline-size;container-name:page}
+@media (min-width:900px){
+ html.ak-sheet body{padding-right:var(--ak-panel-w)}
+ html.ak-sheet .run{display:none}
+ .jumps{position:sticky;top:0;z-index:5;background:#FFFFFF}
+}
+@container page (max-width:1250px){
  .r10{grid-template-columns:minmax(0,1fr)}
  .pblock{grid-template-columns:52px minmax(0,260px) minmax(0,1fr);row-gap:12px}
  .pvars{grid-column:3}
+ .hubs{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@container page (max-width:1000px){
+ .headblock,.two,.two.eq,.three,.lesson,.lgh{grid-template-columns:minmax(0,1fr)}
+ .lgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rgrid,.mix{grid-template-columns:minmax(0,1fr)}
+ .fams{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pblock{grid-template-columns:52px minmax(0,1fr)}
+ .pblock>.pname,.pblock>.pstory,.pblock>.pvars{grid-column:2}
+ .iss summary{grid-template-columns:minmax(0,1fr) 140px}
+ .iss summary .ie{grid-column:1;grid-row:2}
+}
+@container page (max-width:720px){
+ .hubs,.lgrid,.fams,.vcards{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:899.98px){
  .wrap{padding:0 20px}
@@ -2475,7 +2847,8 @@ border-left:1px solid var(--ink);overflow:auto;animation:ak-panel-in var(--ak-mi
  .deck{font-size:17px;line-height:25px}
  .body,.fl,.lede{font-size:16px;line-height:25px}
  .ln,.sub,.igh,.rn,.hq,.ak-panel h2{font-size:20px;line-height:24px}
- .fig,.fv,.ln2{font-size:32px;line-height:32px}
+ .fig,.ln2{font-size:32px;line-height:32px}
+ .fv{font-size:20px;line-height:24px}
  .headblock,.two,.two.eq,.three,.lesson,.frow,.lgh{grid-template-columns:minmax(0,1fr)}
  .chain ol{grid-template-columns:repeat(2,minmax(0,1fr))}
  .chain li+li{border-left:0}.chain li{border-bottom:1px solid var(--news)}
@@ -2496,6 +2869,12 @@ border-left:1px solid var(--ink);overflow:auto;animation:ak-panel-in var(--ak-mi
  .words ol.cols{columns:1}
  .cdr{display:none}.cdn{display:block}
  .wide-only{display:none}.narrow-only{display:block}
+ .loc{display:none}
+ .ovtop{display:flex;flex-direction:column}
+ .ovtop>.headblock.top{display:contents}
+ .ovtop .hl{order:1;margin-top:16px}.ovtop .sys{order:2}.ovtop .finding{order:3;margin-top:24px}.ovtop .keystrip{order:4}
+ .keystrip{grid-template-columns:minmax(0,1fr);gap:8px}
+ .ekey.two{grid-template-columns:minmax(0,1fr)}
  .iss summary{grid-template-columns:minmax(0,1fr);row-gap:4px}
  .itag{grid-column:auto}
  .ib{grid-template-columns:minmax(0,1fr)}
@@ -2552,9 +2931,40 @@ JS = r"""
   addEventListener('resize',function(){requestAnimationFrame(spine);});
   if(window.ResizeObserver){var ro=new ResizeObserver(function(){spine();}); var c=$('[data-circuit]'); if(c) ro.observe(c);}
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(spine);
+  // #area-a and the other part keys open that part on the overview; #reform-r-01 and #loop-r1 find their views
+  function alias(){
+    var h=decodeURIComponent(location.hash.slice(1)).toLowerCase(), p=h.split('/'), v=p[0], s=p[1], to=null, m;
+    if((m=v.match(/^area-([a-z]+)$/)) && m[1]!=='c' && $('[data-select="part-'+m[1]+'"]')) to='overview/part-'+m[1];
+    if(v==='reform-r-01') to='reform-r01'+(s?'/'+s:'');
+    if((m=v.match(/^loop-([a-z0-9]+)$/)) && v!=='loop-r10' && $('[data-select="loop-'+m[1]+'"]')) to='loops/loop-'+m[1];
+    if(to) history.replaceState(history.state,'','#'+to);
+  }
+  alias(); addEventListener('hashchange',alias);
+  var skip=$('.skip'); if(skip) skip.addEventListener('click',function(ev){ev.preventDefault();
+    var r=$('[data-view-root]:not([hidden])'), h=r&&($('[data-ak-heading]',r)||$('h1',r)); if(!h) return;
+    h.setAttribute('tabindex','-1'); h.focus(); h.scrollIntoView({block:'start'});});
   tabs();
   AtlasKit.init({inkSelection:true});
   spine();
+  if(innerWidth<900) $$('details.igrp').forEach(function(d){d.removeAttribute('open');});
+  // A drawing that takes focus says how to move inside it
+  document.addEventListener('focusin',function(ev){
+    var d=ev.target.closest&&ev.target.closest('svg[data-ak-roving], [data-ak-roving] svg, [data-ak-roving]'); if(!d) return;
+    var g=ev.target.closest('[data-ak-roving]'); if(!g||(ev.relatedTarget&&g.contains(ev.relatedTarget))) return;
+    if(!g.matches('svg')&&!g.querySelector('svg')) return;
+    var sec=g.closest('section, .sec')||g.closest('[data-view-root]'), ro=sec&&$('[data-ak-readout]',sec); if(!ro) return;
+    requestAnimationFrame(function(){ro.textContent='Arrow keys move between items. Enter opens one. '+ro.textContent;});
+  });
+  // The panel never hides what the reader picked: on a phone the item moves above the sheet; on a wide screen into view
+  document.addEventListener('click',function(ev){
+    var it=ev.target.closest&&ev.target.closest('[data-select]'); if(!it) return;
+    setTimeout(function(){
+      if(!it.hasAttribute('data-ak-sel')||!it.getClientRects().length) return;
+      var r=it.getBoundingClientRect();
+      if(innerWidth<900){var band=innerHeight*0.52-16; if(r.bottom>band||r.top<8) scrollBy(0,r.top-Math.max(8,band-r.height));}
+      else it.scrollIntoView({block:'nearest',inline:'nearest'});
+    },60);
+  });
 })();
 """
 
@@ -2570,6 +2980,9 @@ def kit_js():
     c = "const path = keysOf(k).map((key) => $(`[data-select=\"${key}\"] path.ak-mark`, view)).find(Boolean);"
     assert c in src
     src = src.replace(c, "const path = keysOf(k).map((key) => $$(`[data-select=\"${key}\"] path.ak-mark`, view).find(vis)).find(Boolean);   // system 01")
+    d = "const reform = S.sel && S.sel.startsWith('reform-') ? S.sel : root.dataset.akReform;"
+    assert d in src
+    src = src.replace(d, "const reform = root.hasAttribute('data-reform-red') ? (S.sel && S.sel.startsWith('reform-') ? S.sel : root.dataset.akReform) : null;   // system 01: red only on the loop and reform pages")
     return src
 
 
@@ -2585,8 +2998,9 @@ def build():
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800'
             '&family=Lora:ital@1&display=swap" rel="stylesheet">'
             f'<style>{kit_css}{CSS}</style></head><body data-surface="white">'
+            + '<a class="skip" href="#main">Skip to the view</a>'
             + masthead() + '<div class="wrap"><nav class="ak-crumbs" data-ak-crumbs aria-label="Breadcrumb"></nav>'
-            '<p class="ak-vh" data-ak-status role="status"></p><main class="ak-stage" id="main">'
+            '<p class="status" data-ak-status role="status"></p><main class="ak-stage" id="main">'
             + view_overview() + view_area() + view_r10() + view_r01() + view_loops() + view_read()
             + '</main></div>' + panel() + footer() + f'<div hidden>{templates()}</div>'
             + f'<script>{kit_js()}</script><script>{JS}</script></body></html>')
