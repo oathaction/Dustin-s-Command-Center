@@ -254,3 +254,17 @@ Dustin, after the twelve makers started: "when we said editorial, I thought mayb
 |---|---|---|
 | D2-66 | Eleven makers stopped mid-build (concepts 01 to 11). Their unfinished build scripts moved to `work/boards/phase-2/atlas-concepts/_archive/20261030-stopped-makers/`; no page was finished. Concept 12, Editorial Desk, keeps running, since it is the editorial atlas Dustin describes | Stop work Dustin does not want; keep what matches DR-27 |
 | D2-67 | The studio misread "editorial" as one concept among twelve. Board 1 called it "a newspaper-graphics treatment" for concept 12 only and did not ask whether the treatment should cover the whole atlas | Record of the error, so the next plan asks the scope question first |
+
+## Editorial atlas round, November 5, 2026
+
+Dustin reviewed concept 12, Editorial Desk: "I like the editorial desk, the direction we're going. My issue is like the main system overview and the loops... not exactly educational or clear." He asked for "another set of different editorial desk atlas visual design systems" for the atlas and future systems maps, "at least a few of these concepts so I could just pick one this round, nail it down", and added: "when people look at the overview of the system, I want it to be clear, like what each component is, what the big relationships are, kind of how it all works together", starting high level with detail a click away, and fewer lines than some of his references.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-28 | Editorial Desk is the direction. The next round is a set of editorial atlas systems, each complete enough to pick and finalize | Dustin, November 5 |
+| DR-29 | Overview rule: name every component and say in plain words what it is; show only the big relationships; put individual connections one click down | Dustin, November 5 |
+| DR-30 | Loops are drawn as named box-and-arrow cycles that teach, after his loop explorer and Atlas Visual System sheets. This replaces the dot-plan route thumbnails of DR-15, which he marked as needing work | Dustin, November 5 |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-68 | Five of the ten November 5 images are saved; the other five arrived inside a running turn and were never written to disk, so the rights ledger describes them | Honesty about what the record holds |

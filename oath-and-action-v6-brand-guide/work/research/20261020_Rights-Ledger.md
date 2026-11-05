@@ -464,3 +464,20 @@ All references in this brief are study only and never ship (Master Brief V2 sect
 | dvs-15 | `20261030_Ref-Data-Viz-Utilitarian-Graphic-Assets.webp` | data-viz | stock preview | Already in the ledger; credit "Designed by Vanzyst" | study only | No change; commercial asset pack |
 | dvs-16 | `20261030_Ref-Data-Viz-Economist-Chart-Montage.webp` | data-viz | third-party screenshot | Already in the ledger | study only | No change; The Economist's charts and trademark |
 | dvs-17 | 13 captures in `work/research/data-viz-references/` (listed in the change log) | data-viz-system | third-party screenshot | Taken October 30, 2026 at 1,440 px | study only | Studio captures of third-party pages for the board; the Gagnier capture shows Times brand book pages |
+
+## Added November 5, 2026: references for the editorial atlas round
+
+Dustin sent ten images on November 5. The first five are saved in `work/research/chat-references/atlas-editorial/`. The second five arrived inside a running turn and were not written to disk, so they are described here and not saved. All are study only and never ship.
+
+| File or reference | What it shows | Rights and use |
+|---|---|---|
+| `20261105_Ref-Editorial-Desk-Overview-Needs-Work.png` | The studio's concept 12 overview, which Dustin marked as needing work: unnamed dots, no descriptions | Studio work. Record of feedback |
+| `20261105_Ref-Editorial-Desk-Area-C-And-Strip-Needs-Work.webp` | The studio's concept 12 area C drawing and loop strip, marked as needing work | Studio work. Record of feedback |
+| `20261105_Ref-Atlas-V8-Loop-Explorer-R1.webp` | "What keeps a pattern going?", a loop explorer from Dustin's working atlas ("Design revision V8"): loop list, R1 box-and-arrow, connection cards, responses | Oath & Action's own atlas work (Q-03). Study only |
+| `20261105_Ref-Atlas-V8-Variable-Neighborhood-A3.png` | "What pushes on it and what it pushes on", connections around A3 with incoming and outgoing filters | Oath & Action's own atlas work. Study only |
+| `20261105_Ref-Atlas-Visual-System-Arrow-Conventions.webp` | Atlas Visual System sheets: arrow conventions, R1, R16's untested step, R-28 on its target, working rules | Oath & Action's own work (Q-03). Study only |
+| Not saved: Concept 11 Register | "The whole system on one register", ten domains as rows with an open R10 row and R-01's effects | Oath & Action's own atlas work. Study only |
+| Not saved: Concept 00 Shared Language | "Every line says what happens next, and how sure we are", the line grammar sheet | Oath & Action's own atlas work. Study only |
+| Not saved: working atlas home, dark | "Who do they answer to? Who does our country work for?", whole system on one page, questions, loop cards, topics | Oath & Action's own atlas work. Study only |
+| Not saved: working atlas, Outside drivers page, dark | Driver cards wired to the variables they push on, with loops, reforms and issues tracked | Oath & Action's own atlas work. Study only |
+| Not saved: working atlas home with Dustin's note, dark | "How the circuit runs" (Your household, Wealth, Voice, Elections, Checks, Policy, The fix) and "How it all connects" | Oath & Action's own atlas work, with Dustin's signed note. Study only |
