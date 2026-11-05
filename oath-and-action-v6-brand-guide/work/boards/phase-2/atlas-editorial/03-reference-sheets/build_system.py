@@ -1052,7 +1052,7 @@ def circuit_compact():
     F.add('TC', 'EC', [(tc_x - 2, ych + 40), (ec_x + ec_w + 2, ych + 40)], label=((tc_x + ec_x + ec_w) / 2, ych + 30, 'map', 'middle', False))
     xr0, xr1 = X['E'] + BW - 40, X['A'] + BW - 40
     F.add('E', 'A', [(xr0, yb + 2), (xr0, yr), (xr1, yr), (xr1, yb + 2)], w=3,
-          label=(X['B'] + BW / 2, yr + 8, 'count', 'middle', True), over=[(xd_d, yr, False), (xd_u, yr, False)])
+          label=(X['C'] + BW / 2 + 60, yr + 8, 'count', 'middle', True), over=[(xd_d, yr, False), (xd_u, yr, False)])
     po = passes_on('E')
     rx = X['A'] + BW + 30
     n_ret = len(FLOW[('E', 'A')])
@@ -1822,13 +1822,14 @@ h1,h2,h3{text-wrap:balance}
  html.ak-sheet body{padding-right:var(--ak-panel-w)}
 }
 /* the sticky plate bar */
-.platebar{position:sticky;top:0;z-index:30;background:var(--ns);border-bottom:1px solid var(--st);display:flex;align-items:center;gap:20px;margin-top:12px}
-.platebar>.t-eyebrow{flex:none;color:var(--ds)}
+.platebar{position:sticky;top:0;z-index:30;background:var(--ns);border-bottom:1px solid var(--st);display:flex;align-items:flex-start;gap:20px;margin-top:12px}
+.platebar>.t-eyebrow{flex:none;color:var(--ds);line-height:44px}
 .platebar ol{display:flex;flex-wrap:wrap;gap:0 18px;margin:0;padding:0;list-style:none;font:500 14px/20px Inter,sans-serif}
 .platebar li{border:0}
 .platebar a{display:flex;align-items:center;min-height:44px;text-decoration:none}
 .platebar a:hover{text-decoration:underline}
 .platebar .tn{color:var(--ds);margin-right:6px;font-variant-numeric:tabular-nums}
+.platebar + .plate{border-top:0;margin-top:8px}
 /* the evidence key */
 .evkey .t-eyebrow{margin-bottom:8px}
 .evkey ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
@@ -1950,6 +1951,8 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
  .r10-side{margin-top:20px}
  .facts div{grid-template-columns:110px 1fr}
 }
+@media (max-width:899.98px){.circ-top .ckey{display:none}.mc-i{padding:10px 14px 10px 22px}.mc-c{padding:6px 0 6px 16px}.mc-q{margin-top:2px}.circ{margin-top:12px}}
+@media (max-width:389.98px){.sheets a .n{display:none}.sheets a{white-space:nowrap}}
 @media (max-width:359.98px){:root{--m:10px}}
 
 
@@ -2840,7 +2843,7 @@ def view_area_c():
            + f' {"sits" if len(busiest) == 1 else "each sit"} on {nw(top)} of them, more than any other condition here.')
     b4, r10 = LOOPS['B4'], LOOPS['R10']
     meet = (f'Two loops meet at {node_label("C3").lower()} (C3): the {low(b4["plain_name"])} (B4), which pushes back, and the {low(r10["plain_name"])} (R10), which feeds itself. '
-            + sentences(b4['qualification'])[0].replace('The loop', f'The {low(b4["plain_name"])}', 1) + ' R10 runs through safe seats.')
+            + sentences(b4['qualification'])[0].replace('The loop', f'The {low(b4["plain_name"])}', 1) + f' R10 starts from {node_label("C1").lower()} (C1).')
     p3 = plate('c-loops', '02.3', 'Loops that run through it', f'<p>{e(fin)}</p><p>{e(meet)}</p>',
                '<div class="lcards">' + ''.join(loop_card(k) for k in through) + '</div>')
     # 02.4 issues

@@ -998,7 +998,7 @@ def view_loops():
                  f'<div class="lgrid">{"".join(loop_card(k) for k in ls)}</div></section>')
     head = (f'<header class="vhead"><div class="vhead-main">'
             f'<p class="eyebrow">The loop catalog</p>'
-            f'<h1 class="display" data-ak-heading>{cnt("loops_reinforcing", N_R)} of the {cnt("loops", len(LOOPS))} loops feed themselves. '
+            f'<h1 class="display" data-ak-heading>{cnt("loops_reinforcing", N_R)} of the {cnt("loops", len(LOOPS))} loops can feed themselves. '
             f'{cnt("custom:loops-with-a-reform", N_WITH_REFORM)} have a reform aimed at them.</h1>'
             f'<p class="deck">A loop is a chain of causes that comes back to where it started. Each card draws one as boxes and arrows: '
             f'follow the arrows around, and read each step with its word, raises or lowers. '
@@ -1861,7 +1861,8 @@ def build_templates():
             if x.get('result'):
                 s_ += f'<p><b>Result.</b> {e(x["result"])}</p>'
             where = ', '.join(v for v in [x.get('where'), x.get('when')] if v)
-            s_ += f'<p class="dim">{e(where)}. Source: {e(src.get("title", ""))}, {e(src.get("publisher", ""))}, {e(src.get("year", ""))}.</p>'
+            srcline = sent(f'Source: {src.get("title", "")}, {src.get("publisher", "")}, {src.get("year", "")}')
+            s_ += f'<p class="dim">{e(sent(where))} {e(srcline)}</p>'
             return s_
         rf = ''.join(f'<li>{chip("Reform", r["id"])}{e(REFORMS[r["id"]]["title"])}<br><span class="dim">{e(r["why"])}</span>'
                      + (f'<br><span><b>Disclosure.</b> {e(REFORMS[r["id"]]["disclosure"])}</span>' if REFORMS[r['id']].get('disclosure') else '')
@@ -2086,7 +2087,7 @@ def square_drawing(lid, view, interactive=True, b4=False, stepper=True, notes='r
         B = LOOPS['B4']
         note = [(f'B4, the {B["plain_name"].lower()}, {B["kind_gloss"]}.', 'sn', 15, 600),
                 (first_sentence(B['qualification']), 'im', 15, 500),
-                (f'R10, the {L["plain_name"].lower()}, {L["kind_gloss"].replace("feeds itself", "feeds itself")}.', 'sn', 15, 600)]
+                (f'R10, the {L["plain_name"].lower()}, can feed itself; its weakest step is plausible.', 'sn', 15, 600)]
         out += label_block(note, 0, dy + 24, 520)[0]
         H = dy + TH
     Wt = 1312 if b4 else W
@@ -2174,7 +2175,8 @@ def stepper_html(lid):
                f"{grade_word(l['evidence']).lower()}; {DELAY[l['delay']]}.")
         items += f'<li data-ak-step-keys="link-{s_["id"].lower()} var-{l["to"].lower()}">{e(txt)}</li>'
     w = weakest_of(lid)
-    end = (f"The loop is back where it started, so it {L['kind_gloss']}: {L['kind_word'].lower()}. "
+    soft = any(RANK[LINKS[x['id']]['evidence']] <= 2 for x in L['steps'] if x.get('id'))
+    end = (f"The loop is back where it started, so it {'can feed itself' if soft and L['type'] == 'R' else L['kind_gloss']}: {L['kind_word'].lower()}. "
            + (f"Its weakest step is {w[0]}, graded {grade_word(LINKS[w[0]]['evidence']).lower()}." if w else ''))
     first = L['stations'][0]['code']
     idle = f"Start at {first}, {lab(first)}, and suppose it rises. Press Play, or Next step to follow one numbered connection at a time."
@@ -2464,7 +2466,7 @@ def view_area_c():
            f'<p>The five variables and the {len(inside_)} connections between them, with Quality of public services from Checks, '
            f'which closes the accountability loop.</p></div>'
            f'<p class="figline">{cnt("custom:loops-through-c3", len(NODES["C3"]["loops"]))} loops pass through the risk of losing office. '
-           f'Two are drawn here: the safe-seat loop, which feeds itself, and the accountability loop, which pushes back.</p>'
+           f'Two are drawn here: the safe-seat loop, which can feed itself, and the accountability loop, which pushes back.</p>'
            f'<div class="afig" role="region" aria-label="Inside Elections, drawing" tabindex="-1">'
            f'{square_drawing("R10", "area-c-inside", interactive=True, b4=True, stepper=False, notes="loops")}</div>'
            f'<div class="afig-phone">{chain_drawing("R10", "area-c-inside-phone", interactive=True, stepper=False, notes="loops")}'

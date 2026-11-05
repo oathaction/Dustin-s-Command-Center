@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/01-times-explainer/20261105_Editorial-01-Times-Explainer.html",
- "checked": "2026-11-05T21:43:00.026Z",
+ "checked": "2026-11-05T21:47:17.098Z",
  "views": [
   "overview",
   "area-c",
@@ -69,7 +69,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 11401,
+   "height": 11419,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -78,7 +78,7 @@
    "width": 1440,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 178,
+   "texts": 182,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -103,7 +103,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3534,
+   "height": 3832,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -112,7 +112,7 @@
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 195,
+   "texts": 194,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -137,7 +137,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5206,
+   "height": 5090,
    "axe": [],
    "focusStops": 4,
    "focusWithoutRing": []
@@ -170,7 +170,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 7462,
+   "height": 7470,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -252,7 +252,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 70,
+    "drawings": 69,
     "labels": 110,
     "outside": [],
     "overlaps": []
@@ -267,7 +267,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 18338,
+   "height": 18356,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -276,41 +276,7 @@
    "width": 390,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 132,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 390,
-   "clientWidth": 390,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 12,
-    "labels": 9,
-    "outside": [],
-    "overlaps": []
-   },
-   "red": {
-    "marks": 6,
-    "unmarked": [],
-    "jobs": [
-     "R-01 targets"
-    ],
-    "onPrussian": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 6464,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 390,
-   "view": "reform-r01",
-   "rootVisible": true,
-   "texts": 150,
+   "texts": 136,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -335,7 +301,41 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10422,
+   "height": 6808,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "reform-r01",
+   "rootVisible": true,
+   "texts": 149,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 10,
+    "labels": 9,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [
+     "R-01 targets"
+    ],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 10209,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -352,7 +352,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 30,
+    "drawings": 29,
     "labels": 145,
     "outside": [],
     "overlaps": []
@@ -368,7 +368,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 19533,
+   "height": 19541,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -385,7 +385,7 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 17,
+    "drawings": 16,
     "labels": 25,
     "outside": [],
     "overlaps": []
@@ -450,7 +450,7 @@
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
-    "drawings": 70,
+    "drawings": 69,
     "labels": 110,
     "outside": [],
     "overlaps": []
@@ -465,7 +465,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 18737,
+   "height": 18755,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -474,41 +474,7 @@
    "width": 360,
    "view": "loop-r10",
    "rootVisible": true,
-   "texts": 132,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 12,
-    "labels": 9,
-    "outside": [],
-    "overlaps": []
-   },
-   "red": {
-    "marks": 6,
-    "unmarked": [],
-    "jobs": [
-     "R-01 targets"
-    ],
-    "onPrussian": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 6679,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 360,
-   "view": "reform-r01",
-   "rootVisible": true,
-   "texts": 150,
+   "texts": 136,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -533,7 +499,41 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10886,
+   "height": 7069,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "reform-r01",
+   "rootVisible": true,
+   "texts": 149,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 10,
+    "labels": 9,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [
+     "R-01 targets"
+    ],
+    "onPrussian": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 10646,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -550,7 +550,7 @@
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
-    "drawings": 30,
+    "drawings": 29,
     "labels": 145,
     "outside": [],
     "overlaps": []
@@ -566,7 +566,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 19378,
+   "height": 19386,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -583,7 +583,7 @@
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
-    "drawings": 17,
+    "drawings": 16,
     "labels": 25,
     "outside": [],
     "overlaps": []

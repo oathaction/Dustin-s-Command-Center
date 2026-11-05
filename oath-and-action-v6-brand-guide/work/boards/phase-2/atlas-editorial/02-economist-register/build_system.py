@@ -212,11 +212,18 @@ def disclosure(lid):
 
 
 def effect_words(code):
+    """An expected effect in words only, codes included inside qualifiers: "0 to -S short run" reads
+    "none to small negative (short run)". Never summed, never set beside a plus or minus (fix pass, item 6)."""
+    words = ED['effect_codes']
     out = []
-    for seg in [s.strip() for s in str(code).split(';')]:
-        m = re.match(r'^([+-][LMS]|0|\?)\s*(.*)$', seg)
-        word = ED['effect_codes'][m.group(1)]
-        out.append(word + (f' ({m.group(2)})' if m.group(2) else ''))
+    for seg in [x.strip() for x in str(code).split(';')]:
+        m = re.match(r'^(?P<pre>[a-z ]*?)\s*(?P<codes>(?:[+-][LMS]|0|\?)(?:\s*(?:to|/)\s*(?:[+-][LMS]|0|\?))*)\s*(?P<rest>.*)$', seg)
+        parts = re.split(r'\s*(to|/)\s*', m.group('codes'))
+        cs, seps = parts[0::2], parts[1::2]
+        ws = [('none' if (c == '0' and len(cs) > 1) else words[c]) for c in cs]
+        txt = ws[0] + ''.join((' to ' if sp == 'to' else ' or ') + w for sp, w in zip(seps, ws[1:]))
+        pre = m.group('pre').strip()
+        out.append((pre + ' ' if pre else '') + txt + (f' ({m.group("rest")})' if m.group('rest') else ''))
     return '; '.join(out)
 
 
@@ -299,7 +306,8 @@ def ev_key(kind='both'):
     items = []
     for g in GRADE:
         marks = (ev_swatch(g, 26, 14) if kind in ('both', 'bars') else '') + \
-                (glyph(g, None, None, W=56) if kind in ('both', 'lines') else '')
+                (('<span class="recq" aria-hidden="true"></span>' if g == 'documented' else '<span class="recq none" aria-hidden="true"></span>')
+                 + glyph(g, None, None, W=56) if kind in ('both', 'lines') else '')
         items.append(f'<li>{marks}<span><b>{gword(g)}</b>: {ggloss(g)}</span></li>')
     return (f'<div class="evkey" role="note" aria-label="Evidence key"><p class="evkh">Evidence key</p><ul>{"".join(items)}</ul>'
             f'<p class="evkn">Each arrow says raises or lowers beside its sign. {e(acc.SIGN_RULE)} '
@@ -2351,6 +2359,7 @@ details.words summary,details.keyfold summary{cursor:pointer;font-weight:600;min
 .lrf{font:400 14px/20px Inter}
 .lrg{font:400 13px/18px Inter;color:var(--ds);display:flex;align-items:center;gap:6px}
 .recq{display:inline-block;width:7px;height:7px;background:var(--ch);flex:none}
+.recq.none{background:none}
 .glyph{display:block;overflow:visible}
 .glyph .ak-mark{stroke:var(--ch);fill:none}
 .glyph .hd,.glyph .tag polygon{fill:var(--ch)}
@@ -2385,6 +2394,7 @@ details.words summary,details.keyfold summary{cursor:pointer;font-weight:600;min
 .r10wide svg{display:block}
 .r10narrow{display:none}
 .r10side{margin-top:40px;border-top:1px solid var(--ch);padding-top:20px}
+.r10side .stepper{border-top:0;padding-top:0}
 .quote{font:italic 400 22px/31px Lora,serif;letter-spacing:-.005em;margin:0 0 24px}
 .sh{font:800 22px/26px 'Inter Tight',Inter,sans-serif;letter-spacing:-.02em;margin:28px 0 8px}
 .sh.first{margin-top:0}
@@ -2705,7 +2715,8 @@ GLUE_JS = r"""
     const reg=it.closest('.ak-scroll'); if(reg){ const r=it.getBoundingClientRect(), rr=reg.getBoundingClientRect();
       if(r.left<rr.left || r.right>rr.right) reg.scrollLeft += (r.left-rr.left) - Math.max(0,(rr.width-r.width)/2); }
     if(innerWidth<900 && document.documentElement.classList.contains('ak-sheet')){ const r=it.getBoundingClientRect(), band=innerHeight*0.52-16;
-      if(r.bottom>band || r.top<8) scrollBy(0, r.top - Math.max(8, (band-r.height)/2)); } }
+      if(r.bottom>band || r.top<8) scrollBy(0, r.top - Math.max(8, (band-r.height)/2)); }
+    else { const r=it.getBoundingClientRect(); if(r.top<8 || r.bottom>innerHeight-8) it.scrollIntoView({block:'center'}); } }
   document.addEventListener('click', ()=>setTimeout(()=>{ flags(); keep(); },30));
   document.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' ') setTimeout(()=>{ flags(); keep(); },30); });
   // When a drawing takes focus from outside, its readout says how to move inside it.

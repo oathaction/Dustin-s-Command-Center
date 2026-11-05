@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/02-economist-register/20261105_Editorial-02-Economist-Register.html",
- "checked": "2026-11-05T21:43:26.979Z",
+ "checked": "2026-11-05T21:48:24.237Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 562,
+   "texts": 563,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -214,7 +214,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 542,
+   "texts": 531,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -224,12 +224,7 @@
    "textCheck": {
     "drawings": 15,
     "labels": 52,
-    "outside": [
-     {
-      "svg": "circuit-phone",
-      "text": "How the economy reaches a household"
-     }
-    ],
+    "outside": [],
     "overlaps": []
    },
    "red": {
@@ -242,7 +237,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 16515,
+   "height": 16327,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -309,7 +304,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5573,
+   "height": 5568,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -419,7 +414,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 542,
+   "texts": 531,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -429,12 +424,7 @@
    "textCheck": {
     "drawings": 15,
     "labels": 52,
-    "outside": [
-     {
-      "svg": "circuit-phone",
-      "text": "How the economy reaches a household"
-     }
-    ],
+    "outside": [],
     "overlaps": []
    },
    "red": {
@@ -447,7 +437,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 17115,
+   "height": 16904,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -514,7 +504,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5945,
+   "height": 5940,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -633,9 +623,6 @@
    "visible": true
   }
  },
- "failures": [
-  "390 overview: 1 labels outside their drawing",
-  "360 overview: 1 labels outside their drawing"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }
