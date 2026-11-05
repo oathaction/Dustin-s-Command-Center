@@ -57,7 +57,7 @@
     "A strong first screen and 44 px phone targets."
    ],
    "holds_back": [
-    "Prussian reform tabs beside red marks on the R10 and R-01 pages made a red and blue pair (being fixed).",
+    "Prussian reform tabs beside red marks made a red and blue pair on the R10 and R-01 pages; fixed after the review, so its brand score of 3 predates the fix.",
     "Twenty-three vertical chains in the catalog grow monotonous."
    ]
   },
@@ -112,7 +112,7 @@
     "Every name opens its full record, and problems now come before reforms."
    ],
    "holds_back": [
-    "One overview paragraph stated graded links as fact (being fixed).",
+    "One overview paragraph stated graded links as fact; rewritten after the review, so its evidence score of 3 predates the fix.",
     "Long pages tire on Charcoal, and as the main system it would make every future map dark-first."
    ]
   },
@@ -140,7 +140,7 @@
    ],
    "holds_back": [
     "The stack ranks the parts, Wealth at the ground and Policy on the roof, which the model does not claim.",
-    "Its glossary broke one word per line (being fixed)."
+    "Its glossary broke one word per line; fixed after the review."
    ]
   }
  },
@@ -213,7 +213,8 @@
   "Real readers. The reader panel was simulated by one model, and the ten-second and wall tests are reviewers' readings.",
   "Screen readers, Safari, Firefox, real phones and 200 percent text zoom.",
   "The pages inside the claude.ai viewer beyond the published pages themselves.",
-  "Print."
+  "Print.",
+  "A re-score: the creative director's scores were given before the six last fixes."
  ],
  "changelog_created": [
   "<code>work/handoffs/phase-2/20261105_Atlas-Editorial-Brief.md</code>, <code>20261105_Editorial-Fix-Pass-Brief.md</code>, the five makers' notes, the four red team reports and the creative director's review",
