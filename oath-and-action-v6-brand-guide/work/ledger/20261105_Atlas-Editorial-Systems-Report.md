@@ -2,7 +2,7 @@
 
 Oath & Action Brand Guide, Edition 06. Phase 2, November 5, 2026. Status: waiting for Dustin's pick. This is a stage review inside Phase 2, not a gate.
 
-Open the board: `work/boards/20261105_Atlas-Editorial-Systems-Board.html`, also published as a private page (link in the reply that delivered this report). The five systems are published as private pages, listed in `work/boards/phase-2/atlas-editorial/board-2/20261105_Published-Pages.json`.
+Open the board: `work/boards/20261105_Atlas-Editorial-Systems-Board.html`, also published as a private page at https://claude.ai/artifact/WFwciVo4NvugGRfFENninP. The five systems are published as private pages, listed in `work/boards/phase-2/atlas-editorial/board-2/20261105_Published-Pages.json`.
 
 ## What you are asked to decide
 
