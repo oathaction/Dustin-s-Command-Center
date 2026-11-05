@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/02-economist-register/20261105_Editorial-02-Economist-Register.html",
- "checked": "2026-11-05T21:48:24.237Z",
+ "checked": "2026-11-05T21:50:51.564Z",
  "views": [
   "overview",
   "area-c",
@@ -113,7 +113,7 @@
    "width": 1440,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 185,
+   "texts": 186,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -139,7 +139,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 5236,
+   "height": 5276,
    "axe": [],
    "focusStops": 3,
    "focusWithoutRing": []
@@ -172,7 +172,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 7464,
+   "height": 7492,
    "axe": [],
    "focusStops": 24,
    "focusWithoutRing": []
@@ -313,7 +313,7 @@
    "width": 390,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 149,
+   "texts": 150,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -339,7 +339,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10079,
+   "height": 10145,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -372,7 +372,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 18973,
+   "height": 19001,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -513,7 +513,7 @@
    "width": 360,
    "view": "reform-r01",
    "rootVisible": true,
-   "texts": 149,
+   "texts": 150,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -539,7 +539,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10669,
+   "height": 10761,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -572,7 +572,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 18631,
+   "height": 18659,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

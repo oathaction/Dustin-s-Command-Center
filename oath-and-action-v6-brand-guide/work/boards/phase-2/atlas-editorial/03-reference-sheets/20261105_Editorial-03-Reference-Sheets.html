@@ -967,8 +967,9 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 <script>
 (function(){
   // Hash aliases (fix 10; red team S4): #reform-r-01 is the memo's spelling of the reform sheet.
-  var h = location.hash;
-  if (/^#reform-r-01(\/|$)/i.test(h)) history.replaceState(null, '', '#reform-r01' + h.replace(/^#reform-r-01/i, ''));
+  function alias(){ var h = location.hash;
+    if (/^#reform-r-01(\/|$)/i.test(h)) history.replaceState(history.state, '', '#reform-r01' + h.replace(/^#reform-r-01/i, '')); }
+  alias(); addEventListener('hashchange', alias);   // registered before the kit's router, so it runs first
 })();
 </script>
 <script>/* atlas-kit.js: shared interaction kit for the twelve atlas concepts. Oath & Action Edition 06, Phase 2, October 30, 2026.

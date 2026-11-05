@@ -1052,7 +1052,7 @@ def circuit_compact():
     F.add('TC', 'EC', [(tc_x - 2, ych + 40), (ec_x + ec_w + 2, ych + 40)], label=((tc_x + ec_x + ec_w) / 2, ych + 30, 'map', 'middle', False))
     xr0, xr1 = X['E'] + BW - 40, X['A'] + BW - 40
     F.add('E', 'A', [(xr0, yb + 2), (xr0, yr), (xr1, yr), (xr1, yb + 2)], w=3,
-          label=(X['C'] + BW / 2 + 60, yr + 8, 'count', 'middle', True), over=[(xd_d, yr, False), (xd_u, yr, False)])
+          label=(X['D'] + BW + 26, yr + 8, 'count', 'middle', True), over=[(xd_d, yr, False), (xd_u, yr, False)])
     po = passes_on('E')
     rx = X['A'] + BW + 30
     n_ret = len(FLOW[('E', 'A')])
@@ -2013,8 +2013,9 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 PAGE_JS = r"""
 (function(){
   // Hash aliases (fix 10; red team S4): #reform-r-01 is the memo's spelling of the reform sheet.
-  var h = location.hash;
-  if (/^#reform-r-01(\/|$)/i.test(h)) history.replaceState(null, '', '#reform-r01' + h.replace(/^#reform-r-01/i, ''));
+  function alias(){ var h = location.hash;
+    if (/^#reform-r-01(\/|$)/i.test(h)) history.replaceState(history.state, '', '#reform-r01' + h.replace(/^#reform-r-01/i, '')); }
+  alias(); addEventListener('hashchange', alias);   // registered before the kit's router, so it runs first
 })();
 """
 
