@@ -161,8 +161,9 @@ async function focusAudit(page) {
   const views = meta ? meta[1].trim().split(/\s+/) : ['overview'];
   const report = { file: path.relative(ROOT, file), checked: new Date().toISOString(), views, runs: [], navigation: null, failures: [] };
   const axeSrc = fs.existsSync(AXE) ? AXE : null;
-  for (const width of [1440, 390]) {
-    const ctx = await browser.newContext({ viewport: { width, height: width === 1440 ? 900 : 844 }, deviceScaleFactor: 1 });
+  // 360 px added November 5 after the interface red team found small-phone failures the 390 px pass missed
+  for (const width of [1440, 390, 360]) {
+    const ctx = await browser.newContext({ viewport: { width, height: width === 1440 ? 900 : width === 390 ? 844 : 780 }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     const outside = new Set(); const errors = [];
     page.on('request', (req) => { const u = req.url(); if (u.startsWith('file:') || u.startsWith('data:') || u.startsWith('blob:') || u.startsWith('about:')) return; const h = new URL(u).hostname; if (!ALLOWED_HOSTS.includes(h)) outside.add(h); });
@@ -193,7 +194,7 @@ async function focusAudit(page) {
       if (axe && axe.length) report.failures.push(`${tag}: axe ${axe.map(v => v.id + 'x' + v.nodes).join(', ')}`);
       if (!axe) report.failures.push(`${tag}: axe-core not found at ${path.relative(ROOT, AXE)}`);
       if (focus && focus.some(f => !f.ring)) report.failures.push(`${tag}: ${focus.filter(f => !f.ring).length} focus stops without a visible ring`);
-      if (captures) {
+      if (captures && width !== 360) {
         const base = path.join(capDir, `${stem}-${view}-${width}`);
         await page.evaluate(() => window.scrollTo(0, 0));
         if (width === 1440) {
@@ -237,7 +238,7 @@ async function focusAudit(page) {
   report.pass = report.failures.length === 0;
   const outPath = path.join(dir, `${stem}-Check-Results.json`);
   fs.writeFileSync(outPath, JSON.stringify(report, null, 1));
-  console.log(`${report.pass ? 'PASS' : 'FAIL'} ${path.relative(ROOT, file)}: ${views.length} views x 2 widths, ${report.failures.length} failures`);
+  console.log(`${report.pass ? 'PASS' : 'FAIL'} ${path.relative(ROOT, file)}: ${views.length} views x 3 widths, ${report.failures.length} failures`);
   for (const f of report.failures) console.log('  - ' + f);
   console.log('  results: ' + path.relative(ROOT, outPath));
   process.exit(report.pass ? 0 : 1);
