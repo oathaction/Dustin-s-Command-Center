@@ -295,9 +295,6 @@ def icon(node_or_reform, size, x=None, y=None, edition='newsprint'):
     """A Civic Line icon exactly as drawn (D2-52), one-color Newsprint edition on Charcoal (D2-58)."""
     ic = acc.VARIABLE_ICON.get(node_or_reform) or acc.reform_icon(node_or_reform)
     s = acc.icon_svg(ic, edition, uid=uid('i'), size=size)
-    # The icon files mark their groups data-part="base|accent", which the page contract reserves for the eight parts.
-    # Rename that one attribute; every path, stroke and id stays as delivered.
-    s = s.replace(' data-part="', ' data-icon-part="')
     if x is not None:
         s = s.replace('<svg ', f'<svg x="{fnum(x)}" y="{fnum(y)}" ', 1)
     return s
@@ -1943,7 +1940,8 @@ def reform_row(rid, here_lid=None, red=False):
     else:
         name = f'<button type="button" class="tbtn" {attrs} data-say="{e(say)}">{e(R["title"])}</button>'
     return (f'<li class="rrow">{swatch}<p class="rr-id">{chip("Reform", rid)}</p><h3 class="rr-t">{name}</h3>'
-            f'<p class="rr-lead">{e(lead)}</p><p class="rr-tg"><b>Acts on</b> {e(tg)}</p></li>')
+            f'<p class="rr-lead">{e(lead)}</p><p class="rr-tg"><b>Acts on</b> {e(tg)}</p>'
+            + (f'<p class="rr-disc"><b>Disclosure.</b> {e(R["disclosure"])}</p>' if R.get('disclosure') else '') + '</li>')
 
 
 def view_loop_r10():
@@ -2105,6 +2103,8 @@ EXTRA_CSS += r'''
 .rr-lead{font:500 15px/23px var(--f-ui);color:var(--dim);margin-bottom:8px}
 .rr-tg{font:500 13px/18px var(--f-ui);color:var(--dim)}
 .rr-tg b{color:var(--ink)}
+.rr-disc{margin-top:8px;font:500 13px/18px var(--f-ui);color:var(--ink)}
+.rr-disc b{font-weight:700}
 .statusbox{border-top:2px solid var(--ink);background:var(--panel);padding:16px 20px 20px}
 .statusbox .eyebrow{margin-bottom:8px}
 .disc{margin-top:12px;padding-top:12px;border-top:1px solid var(--stone);font:500 15px/23px var(--f-ui)}

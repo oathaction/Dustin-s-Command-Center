@@ -172,6 +172,14 @@ def weakest_words(lid):
     return 'No single weakest step: ' + ' and '.join(grade_word(s['evidence']).lower() for s in L['steps'])
 
 
+def weakest_short(lid):
+    w = weakest_words(lid)
+    for pre in ('Weakest steps ', 'Weakest step '):
+        if w.startswith(pre):
+            return w[len(pre):]
+    return 'None: a sketch' if LOOPS[lid]['conceptual'] else w
+
+
 def closure_note(lid):
     L = LOOPS[lid]
     if L['conceptual']:
@@ -1460,6 +1468,7 @@ a.lc-name{text-decoration:underline;text-decoration-thickness:1px;text-underline
 .effects li{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DCD9D2;padding:5px 0}
 .rc-t{margin-top:10px}.rc-t .t-eyebrow{display:block;margin-bottom:2px}
 .rc-e{margin-top:12px}
+.rc-disc{margin-top:12px;border-left:3px solid var(--ch);padding-left:10px}
 .rc-more{margin-top:10px}.rc-more summary{cursor:pointer;min-height:32px;display:flex;align-items:center}
 @media (max-width:1439.98px){.vcards{grid-template-columns:repeat(3,1fr)}.lcards{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:899.98px){
@@ -2033,7 +2042,8 @@ def view_loop_r10():
                       f'<p>{chip("Reform", rid, compact=True)}</p><h3 class="t-phead" data-reform="{rid}" data-name="{e(r["title"])}">{e(r["title"])}</h3>'
                       f'<p class="t-cap">Acts on this loop at {", ".join(on) if on else "no step directly"}; its targets are {", ".join(r["targets"])}.</p>'
                       + (f'<p class="t-cap"><a class="tlink" href="#reform-r01">Open sheet 04, the full reform</a></p>' if rid == 'R-01' else
-                         f'<p class="t-cap muted">{e(sentences(r["summary"])[0])}</p>') + '</div>')
+                         f'<p class="t-cap muted">{e(sentences(r["summary"])[0])}</p>')
+                      + (f'<p class="t-note rc-disc"><b>Disclosure.</b> {e(r["disclosure"])}</p>' if r.get('disclosure') else '') + '</div>')
     p4 = plate('r10-reforms', '03.4', 'Where reforms act',
                f'<p>{nw(len(L["reforms"])).capitalize()} reforms aim at this loop. Each acts at named points, and their effects are never added together. The red brackets on plate 03.1 mark where R-01 acts.</p>',
                f'<div class="rcards">{"".join(rcards)}</div>')
@@ -2290,7 +2300,7 @@ def loop_card(k, red_targets=(), level='h3'):
             f'<p class="lc-title t-cap" data-loop="{k}" data-name="{e(L["title"])}">{e(L["title"])}</p>'
             f'<div class="lc-draw">{svg}</div>'
             f'<p class="lc-ra t-cap"><span class="t-eyebrow">Read it aloud</span> {read_aloud_html(k)}</p>'
-            f'<dl class="lc-facts t-note"><div><dt>Weakest</dt><dd>{e(weakest_words(k))}</dd></div>'
+            f'<dl class="lc-facts t-note"><div><dt>Weakest step</dt><dd>{e(weakest_short(k))}</dd></div>'
             f'<div><dt>One turn</dt><dd>{e(L["delay_word"])}</dd></div><div><dt>Now</dt><dd>{e(DIRECTION_WORDS.get(L["direction"], L["direction"]))}</dd></div>'
             f'<div><dt>Reforms</dt><dd data-count="custom:reforms on {k}">{len(rf)}</dd></div></dl>'
             + (f'<p class="lc-note t-note">{e(cn)}</p>' if cn else '')
@@ -2392,7 +2402,8 @@ def view_area_c():
                   f'<p class="t-cap">{e(sentences(r["summary"])[0])}</p>'
                   f'<p class="t-note rc-t"><span class="t-eyebrow">Aims at</span> {tg}</p>'
                   f'<p class="t-eyebrow rc-e">Expected effects, never added together</p><ul class="effects t-note">{eff}</ul>'
-                  f'<details class="rc-more"><summary class="t-note">What it changes</summary><p class="t-cap">{e(r["what_it_changes"])}</p></details>{link}</article>')
+                  f'<details class="rc-more"><summary class="t-note">What it changes</summary><p class="t-cap">{e(r["what_it_changes"])}</p></details>{link}'
+                  + (f'<p class="t-note rc-disc"><b>Disclosure.</b> {e(r["disclosure"])}</p>' if r.get('disclosure') else '') + '</article>')
     p5 = plate('c-reforms', '02.5', 'Reforms aimed here',
                f'<p>{len(refs)} reforms aim at a condition in Elections or at a connection that touches one. Each card says what it would change. Effects are rated family by family and never summed.</p>',
                f'<div class="rcards">{"".join(rc)}</div>')
