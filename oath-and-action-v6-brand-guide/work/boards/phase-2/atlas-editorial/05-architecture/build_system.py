@@ -7,7 +7,6 @@ Usage:
     python3 -I work/boards/phase-2/atlas-editorial/05-architecture/build_system.py
 
 Reads   work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json (every label, count and text)
-        work/extract/supplied-20261105/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html (only the R-01 disclosure)
         work/build/assets/identity/wordmark/ (the approved masters, inlined unchanged)
         work/build/assets/civic-line/ through icon_svg() in atlas_concepts_common.py (icons exactly as drawn)
         work/boards/phase-2/atlas-concepts/shared/atlas-kit.js and atlas-kit.css (behavior, restyled here)
@@ -33,7 +32,6 @@ acc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(acc)
 
 DATA = json.loads((ROOT / 'work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json').read_text())
-V7HTML = ROOT / 'work/extract/supplied-20261105/20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html'
 KIT = ROOT / 'work/boards/phase-2/atlas-concepts/shared'
 OUT = HERE / '20261105_Editorial-05-Architecture.html'
 
@@ -350,17 +348,8 @@ def closure_note(lp):
     return None
 
 
-def v7_interests():
-    """The disclosure V7 prints on reform profiles that touch the editor's own work (INTERESTS, INTEREST_TEXT)."""
-    s = V7HTML.read_text(encoding='utf-8')
-    m = re.search(r'var INTERESTS = \{(.*?)\};', s, re.S)
-    pairs = dict(re.findall(r"'(R-\d+)':\s*'(\w+)'", m.group(1)))
-    m2 = re.search(r'var INTEREST_TEXT = \{(.*?)\n\};', s, re.S)
-    texts = {k: v.replace("\\'", "'") for k, v in re.findall(r"(\w+):\s*'((?:[^'\\]|\\.)*)'", m2.group(1))}
-    return {r: texts[t] for r, t in pairs.items()}
-
-
-DISCLOSE = v7_interests()
+# The editor's disclosure on reform profiles that touch his own work, in V7's words (reforms[...]['disclosure'])
+DISCLOSE = {k: r['disclosure'] for k, r in RF.items() if r.get('disclosure')}
 assert 'Yes on 3' in DISCLOSE['R-01']
 GLOSS = {g['term']: g['definition'] for g in DATA['glossary']}
 

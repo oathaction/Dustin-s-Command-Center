@@ -286,13 +286,9 @@ N_R = sum(1 for l in LO.values() if l['type'] == 'R')
 N_B = sum(1 for l in LO.values() if l['type'] == 'B')
 N_WITH_REFORM = sum(1 for l in LO.values() if l['reforms'])
 
-# Massachusetts Question 3 disclosure, quoted in full from V7 (pathway sub-issue), since ED's R-01 status omits it
-DISCLOSURE = None
-for pw in V7['pathways']:
-    for si in pw.get('sub_issues') or []:
-        if 'Question 3' in si.get('title', '') and 'Disclosure:' in si.get('text', ''):
-            DISCLOSURE = (si['text'][si['text'].index('Disclosure:'):].strip(), si['title'], pw['id'])
-assert DISCLOSURE and 'Yes on 3' in DISCLOSURE[0]
+# The editor's disclosure for R-01, in V7's own words from the shared dataset; the R-01 view prints it in full
+DISCLOSURE = RF['R-01']['disclosure']
+assert DISCLOSURE and 'Yes on 3' in DISCLOSURE
 NO_POSITION = [s for s in re.split(r'(?<=\.)\s+', RF['R-01']['summary']) if 'takes no position' in s][0]
 
 # ------------------------------------------------------------------------------------------------ text metrics
