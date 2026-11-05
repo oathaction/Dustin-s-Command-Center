@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/01-times-explainer/20261105_Editorial-01-Times-Explainer.html",
- "checked": "2026-11-05T21:57:50.009Z",
+ "checked": "2026-11-05T22:29:26.176Z",
  "views": [
   "overview",
   "area-c",
@@ -14,7 +14,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 480,
+   "texts": 483,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -37,7 +37,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 6996,
+   "height": 7034,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []

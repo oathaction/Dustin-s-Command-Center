@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition.html",
- "checked": "2026-11-05T22:00:27.618Z",
+ "checked": "2026-11-05T22:29:13.717Z",
  "views": [
   "overview",
   "area-c",
@@ -239,8 +239,7 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
    "height": 13465,
    "axe": [],
@@ -272,8 +271,7 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
    "height": 26755,
    "axe": [],
@@ -446,7 +444,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 13479,
+   "height": 13502,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

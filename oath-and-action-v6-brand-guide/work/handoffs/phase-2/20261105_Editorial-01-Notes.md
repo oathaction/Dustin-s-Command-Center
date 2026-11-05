@@ -42,6 +42,8 @@ Interface: M1 as above. S1: sticky page index on desktop; on phones the problem 
 
 Evidence and brand: "38 with a real case"; disclosures on R-47 and the R10 picker; every ballot sentence opens "As of October 15, 2026,"; "Loops based here"; sign tags and ticks in ink; "Four loops pass through risk of losing office; two are drawn here"; "the cost of essentials"; "The problem is graded plausible; the remedy, contested." Left for Dustin: L23's name beside its minus sign, and whether "Democratic quality" should read "quality of democracy".
 
+Creative director, two must-fixes: (1) the part questions in the lower overview drawing now wrap inside their boxes; a script confirms no text runs past any box in either drawing. (2) Each sentence with a figure in the 16 everyday answers is now followed by its sources (title, publisher, year). The script finds each figure in the text of a V7 claim, checking the pathway's own claims first, and prints that claim's sources. Every figure that is a statistic found its claim. Dates and law numbers, such as Public Law 119-21's "21", get no source.
+
 Reader panel: questions moved up; a phone drawing that fits; connection codes off the overview and band labels off the cards; R10's key says red never marks a problem; the stance box. Left: "household" naming in two parts, which is DR-35's.
 
 ## Self-score
@@ -57,7 +59,8 @@ Reader panel: questions moved up; a phone drawing that fits; connection codes of
 ## Tested
 
 - `atlas_concepts_verify.py --selftest`: PASS, six of six planted errors caught.
-- `atlas_concepts_check.js`: PASS, 6 views at 1440, 390 and 360 px, 0 failures, 0 axe violations.
+- `atlas_concepts_check.js`: PASS, 6 views at 1440, 390 and 360 px, 0 failures, 0 axe violations, rerun after the creative director's fixes.
+- Every figure-to-claim match in the 16 answers checked by eye against the claim text.
 - My own audit at 320 and 360 px: no text under 13 px and nothing overflowing on any view.
 - Scripted: the panel column, a reform opened from a question (no red), the aliases and an unknown hash, the skip link, the arrow-key hint on three drawings, the phone sheet, no page errors; every ballot sentence dated.
 

@@ -7,6 +7,7 @@ Usage:
     python3 -I work/boards/phase-2/atlas-editorial/05-architecture/build_system.py
 
 Reads   work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json (every label, count and text)
+        work/extract/atlas-v7-data.json (V7's pathway claims, to source each figure in a question's short answer)
         work/build/assets/identity/wordmark/ (the approved masters, inlined unchanged)
         work/build/assets/civic-line/ through icon_svg() in atlas_concepts_common.py (icons exactly as drawn)
         work/boards/phase-2/atlas-concepts/shared/atlas-kit.js and atlas-kit.css (behavior, restyled here)
@@ -1136,11 +1137,73 @@ def tpl_return():
     return tpl('flow-return', 'Return line', 'Policy back down to Wealth', b)
 
 
+V7 = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())
+V7PW = {x['id']: x for x in V7['pathways']}
+CLAIMS = V7['claims']
+FIG_RE = re.compile(r'\$[\d,.]*\d(?:\s(?:billion|million|trillion))?|\d[\d,.]*\s?(?:%|percent)|\b\d{1,3}(?:,\d{3})+\b'
+                    r'|\b\d+(?:\.\d+)?\s(?:cents|million|billion|years|days|hours)\b|\b\d+ (?:of|to) \d+\b|(?<!Law )\b\d{3}\b(?!-)'
+                    r'|three-quarters|(?<=run out in )20\d\d')
+
+
+def _has(text, fig):
+    fig = fig.rstrip('.').replace(' percent', '%')
+    alts = {fig, fig.replace('%', ' percent')}
+    return any(re.search(r'(?<![\d.,$])' + re.escape(a) + r'(?![\d])', text) for a in alts)
+
+
+def figure_claims(pid, sentence):
+    """The V7 claims behind each figure in one sentence of a short answer: the pathway's own claims first, then their
+    support text, then any claim, then the words that follow the figure."""
+    own = V7PW[pid]['claim_ids']
+    figs = FIG_RE.findall(sentence)
+    score = {c: sum(1 for g in figs if _has(CLAIMS[c]['claim'], g)) for c in own}
+    found = []
+    for fig in figs:
+        hits = [c for c in own if _has(CLAIMS[c]['claim'], fig)]
+        if hits:
+            top = max(score[c] for c in hits)
+            hits = [c for c in hits if score[c] == top]
+        hits = hits or [c for c in own if _has(CLAIMS[c].get('supports') or '', fig)]
+        hits = hits or [c for c in CLAIMS if _has(CLAIMS[c]['claim'] + ' ' + (CLAIMS[c].get('supports') or ''), fig)]
+        if not hits:
+            after = sentence[sentence.index(fig) + len(fig):].split()[:4]
+            key = ' '.join(after[-2:]).strip('.,;')
+            hits = [c for c in own if key and key in CLAIMS[c]['claim']]
+        found += [h for h in hits[:2] if h not in found]
+    return found
+
+
+def sourced_answer(pid, text):
+    """A short answer with a numbered source after each sentence that carries a figure (CD review must fix 2)."""
+    sents = re.split(r'(?<=[.!?])\s+(?=[A-Z])', text)
+    order, out = [], []
+    for sent in sents:
+        nums = []
+        for cid in figure_claims(pid, sent):
+            for sid in CLAIMS[cid]['sources']:
+                if sid in DATA['sources']:
+                    if sid not in order:
+                        order.append(sid)
+                    n = order.index(sid) + 1
+                    if n not in nums:
+                        nums.append(n)
+        mark = f' <span class="fn">({", ".join(str(n) for n in nums)})</span>' if nums else ''
+        out.append(e(sent) + mark)
+    srcs = ''
+    for i, sid in enumerate(order, 1):
+        src = DATA['sources'][sid]
+        yr = re.match(r'\d{4}', src.get('year') or '') or re.match(r'\d{4}', src.get('date') or '')
+        bits = [t for t in [src.get('title'), src.get('publisher'), yr.group(0) if yr else ''] if t]
+        srcs += f'<li><span class="fn">({i})</span> {e(", ".join(bits))}</li>'
+    lst = f'<p class="p-sub">Sources for the figures</p><ol class="p-src-l">{srcs}</ol>' if srcs else ''
+    return f'<p>{" ".join(out)}</p>{lst}'
+
+
 def tpl_pathway(pw):
     refs = pw['model_refs']
     hub = next(h for h in DATA['hubs'] if h['id'] == pw['hub'])
     b = f'<p class="p-lead">{e(hub["title"])}: {e(pw["title"])}</p>'
-    b += h3('The short answer') + f'<p>{e(pw["short_answer"])}</p>'
+    b += h3('The short answer') + sourced_answer(pw['id'], pw['short_answer'])
     on = {}
     for nid in refs['nodes']:
         on.setdefault(PART_OF[nid], []).append(nid)
@@ -2109,7 +2172,7 @@ def view_how():
     <figure><figcaption><strong>B4 · {e(LO["B4"]["plain_name"])}</strong> {e(kind_line("B4"))}</figcaption>{b4}<p class="lc-read">{e(read_aloud("B4"))}</p></figure></div></div></section>
   <section class="lesson"><p class="ls-n">5</p><div><h2 class="t-head2">Color is the layer</h2><p class="ls-d">The ground under a floor says which layer of the model it belongs to. Red marks one thing per view: where a reform acts, or the item you selected.</p>{layers}</div></section>
   <section class="lesson wide"><p class="ls-n">?</p><div><h2 class="t-head2">Common mix-ups</h2><p class="ls-d">Questions readers get wrong, with the atlas&#8217;s answer.</p><ul class="mxs">{mix}</ul></div></section>
-  <section class="lesson wide"><p class="ls-n">A</p><div><h2 class="t-head2">Terms</h2><dl class="gl">{gl}</dl></div></section>
+  <section class="lesson wide"><p class="ls-n">A</p><div><h2 class="t-head2">Terms</h2><dl class="gloss">{gl}</dl></div></section>
 </div>
 </section>'''
 

@@ -459,10 +459,10 @@ svg[data-view] { overflow: visible; }
 .mx summary { font: 600 15px/23px Inter, sans-serif; cursor: pointer; }
 .mx p { font: 400 15px/23px Inter, sans-serif; margin: 8px 0 0; }
 .mx-w .t-eyebrow { display: block; }
-.gl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; margin: 0; }
-.gl div { border-top: 1px solid var(--np); padding: 10px 0; }
-.gl dt { font: 600 15px/18px Inter, sans-serif; }
-.gl dd { margin: 4px 0 0; font: 400 15px/23px Inter, sans-serif; }
+.gloss { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; }
+.gloss div { border-top: 1px solid var(--np); padding: 10px 0; }
+.gloss dt { font: 600 15px/18px Inter, sans-serif; }
+.gloss dd { margin: 4px 0 0; font: 400 15px/23px Inter, sans-serif; }
 
 /* ---------------------------------------------------------------- panel */
 .ak-panel { border-left: 1px solid var(--ink); padding: 4px 0 24px 20px; font: 400 15px/23px Inter, sans-serif; }
@@ -555,7 +555,7 @@ ol.p-list { counter-reset: s; }
   .lcards.two { grid-template-columns: minmax(0, 1fr); }
   .ex2 { grid-template-columns: minmax(0, 1fr); }
   .idl { grid-template-columns: minmax(0, 1fr); }
-  .rcards, .probs, .sds, .two-col, .ev2, .ls-loops, .lay, .mxs, .gl { grid-template-columns: minmax(0, 1fr); }
+  .rcards, .probs, .sds, .two-col, .ev2, .ls-loops, .lay, .mxs, .gloss { grid-template-columns: minmax(0, 1fr); }
   .lay-n { border-left: 0; border-top: 3px solid var(--ink); }
   .effs li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .rf-head { grid-template-columns: minmax(0, 1fr); }
@@ -773,3 +773,17 @@ p[data-ak-status]:not(:empty) { position: static !important; width: auto; height
 }
 .ikey { margin-bottom: 28px; }
 .vmain > .ikey:first-child { margin-top: 0; }
+
+/* CD review: the route table stacks on a phone so every check date shows */
+@media (max-width: 899.98px) {
+  .tbl-wrap { overflow: visible; }
+  .routes thead { display: none; }
+  .routes, .routes tbody, .routes tr, .routes th, .routes td { display: block; width: auto; }
+  .routes tr { border-top: 1px solid var(--ink); padding: 10px 0 12px; }
+  .routes th, .routes td { border-top: 0; padding: 4px 0; }
+  .routes tbody th { width: auto; }
+  .rt-d { white-space: normal; font-weight: 600; color: var(--ink); }
+}
+.fn { font-variant-numeric: tabular-nums; color: var(--ds); white-space: nowrap; }
+.p-src-l { list-style: none; margin: 0; padding: 0; }
+.p-src-l li { padding: 4px 0; border-top: 1px solid var(--np); font: 400 13px/18px Inter, sans-serif; color: var(--ds); }

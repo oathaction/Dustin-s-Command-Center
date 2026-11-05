@@ -1256,6 +1256,61 @@ def pathway_target(pw):
     return '#overview', 'Overview'
 
 
+V7_CLAIMS = V7['claims']
+V7_PW = {p['id']: p for p in V7['pathways']}
+FIGURE = re.compile(r'\$[0-9][0-9,.]*(?:\s(?:billion|million|trillion))?|[0-9][0-9,.]*\s?(?:%|percent)|\b[0-9]{1,3}(?:,[0-9]{3})+\b|\b[0-9]+(?:\.[0-9]+)?\b')
+
+
+def _words(t):
+    return {w for w in re.findall(r'[a-z]{4,}', t.lower())}
+
+
+def figure_sources(pid, sentence):
+    """The V7 claims behind each figure in one sentence of a pathway's short answer (CD review, must-fix 2).
+    A figure goes to the pathway claim whose text holds it and shares the most words with the sentence; a figure
+    no claim prints verbatim (PW10's 7.65%, the sum of CL1550's two rates) goes to the closest claim by words."""
+    claims = V7_PW[pid]['claim_ids']
+    figs = [x.strip().rstrip('.') for x in FIGURE.findall(sentence) if not re.fullmatch(r'(19|20)[0-9]{2}', x.strip())]
+    chosen = []
+    for fg in figs:
+        cands = []
+        for cid in claims:
+            c = V7_CLAIMS[cid]
+            blob = c['claim'] + ' ' + (c.get('supports') or '')
+            hit = re.search(r'(?<![0-9.])' + re.escape(fg) + r'(?![0-9])', blob)
+            cands.append((1 if hit else 0, len(_words(sentence) & _words(blob)), cid))
+        best = max(cands)
+        if best[0] == 0 and best[1] < 3:
+            raise ValueError(f'{pid}: no claim found for {fg} in "{sentence}"')
+        if best[2] not in chosen:
+            chosen.append(best[2])
+    srcs = []
+    for cid in chosen:
+        for sid in V7_CLAIMS[cid]['sources']:
+            if sid not in srcs:
+                srcs.append(sid)
+    return srcs
+
+
+def source_words(sid):
+    s_ = D['sources'][sid]
+    year = (s_.get('year') or '')[:4]
+    pub = s_.get('publisher') or ''
+    return f'{s_["title"].rstrip(".")} ({pub}{", " if pub and year else ""}{year})'
+
+
+def sourced_answer(pid, text):
+    out = []
+    for st in sentences(text):
+        srcs = figure_sources(pid, st)
+        if srcs:
+            lab = 'Source' if len(srcs) == 1 else 'Sources'
+            out.append(f'{e(st)} <span class="qsrc">({lab}: {"; ".join(e(source_words(x)) for x in srcs)}.)</span>')
+        else:
+            out.append(e(st))
+    return ' '.join(out)
+
+
 def questions_html():
     """Each question opens its short answer first, with the loop or part it runs through as a link (civic finding 4)."""
     pws = {p['id']: p for p in D['pathways']}
@@ -1275,7 +1330,7 @@ def questions_html():
             if loops:
                 meta += f' · {plural(len(loops), "Loop")} ' + ', '.join(loops)
             lis.append(f'<li><details class="qd"><summary><span class="qlink">{e(pw["question"])}</span><span class="t-note muted">{e(meta)}</span></summary>'
-                       f'<div class="qa"><p class="t-ptext">{e(pw["short_answer"])}</p><p class="t-cap"><a class="tlink" href="{href}">{e(lab)}</a></p></div></details></li>')
+                       f'<div class="qa"><p class="t-ptext">{sourced_answer(pid, pw["short_answer"])}</p><p class="t-cap"><a class="tlink" href="{href}">{e(lab)}</a></p></div></details></li>')
         rows.append(f'<div class="hub"><div class="hub-h"><p class="t-eyebrow">{e(h["title"])}</p><h3 class="t-phead">{e(h["question"])}</h3></div><ol>{"".join(lis)}</ol></div>')
     return f'<div class="hubs">{"".join(rows)}</div>'
 
@@ -1329,8 +1384,8 @@ def overview_view():
     n_b = sum(1 for l in LOOPS.values() if l['type'] == 'B')
     n_sk = sum(1 for l in LOOPS.values() if l['conceptual'])
     sk = plate('ov-sketch', '01.5', 'Where the loops sit',
-               f'<p>Each card lists the loops based in its part. Of the {cnt("loops", COUNTS["loops"])} loops, {cnt("loops_reinforcing", n_r)} feed themselves and '
-               f'{cnt("loops_balancing", n_b)} push back. {cnt("loops_sketched", n_sk)} of the {COUNTS["loops"]} are sketches with no complete numbered chain: '
+               f'<p>Each card lists the loops based in its part. Of the {cnt("loops", COUNTS["loops"])} loops, {cnt("loops_reinforcing", n_r)} can feed themselves and '
+               f'{cnt("loops_balancing", n_b)} can push back. {cnt("loops_sketched", n_sk)} of the {COUNTS["loops"]} are sketches with no complete numbered chain: '
                + ', '.join(f'<a href="{loop_href(k)}" data-loop="{k}" data-steps="sketch" data-name="{e(LOOPS[k]["plain_name"])}">{k}, {e(LOOPS[k]["plain_name"])}</a>' for k in D['loop_order'] if LOOPS[k]['conceptual'])
                + f'.</p><p><a class="btnlink" href="#loops">Open all 23 loops</a></p>', '')
     qs = plate('ov-questions', '01.4', 'Start from a question',
@@ -1917,6 +1972,7 @@ td.mx-t,.mx-tr th{font:600 15px/1 Inter,sans-serif;background:var(--ns)}
 .qd summary:hover .qlink{text-decoration:underline;text-underline-offset:3px}
 .qa{padding:0 0 16px 26px;max-width:72ch}
 .qa p+p{margin-top:8px}
+.qsrc{font:400 13px/18px Inter,sans-serif;color:var(--ds)}
 /* the loop sheet */
 .p-first{border-top:0;margin-top:8px;padding-top:12px}
 .p-eb{color:var(--ds);margin-bottom:10px}
@@ -3050,8 +3106,8 @@ def view_loops():
     n_rf = sum(1 for l in LOOPS.values() if l['reforms'])
     groups = [(p, loops_home(p)) for p in CORE] + [(None, [k for k in D['loop_order'] if LOOPS[k]['home'] is None])]
     groups = [(p, ks) for p, ks in groups if ks]
-    deck = (f'<p>A loop is a chain of causes that returns to where it started. {cnt("loops_reinforcing", n_r)} of the {cnt("loops", len(LOOPS))} feed themselves, '
-            f'so a change comes back stronger, and {cnt("loops_balancing", n_b)} push back. <span class="t-quote">“{e(IMPROVE)}”</span></p>'
+    deck = (f'<p>A loop is a chain of causes that returns to where it started. {cnt("loops_reinforcing", n_r)} of the {cnt("loops", len(LOOPS))} can feed themselves, '
+            f'so a change can come back stronger, and {cnt("loops_balancing", n_b)} can push back. <span class="t-quote">“{e(IMPROVE)}”</span></p>'
             f'<p>Every card draws its loop as boxes and arrows, read from the top; the return step closes it at the bottom. {nw(n_hy).capitalize()} loops close only through an untested step, and '
             f'{cnt("loops_sketched", n_sk)} are sketches with no numbered chain. <span data-count="custom:loops with a reform">{n_rf}</span> of the {len(LOOPS)} have at least one reform aimed at them.</p>')
     idx = []
@@ -3060,7 +3116,7 @@ def view_loops():
         idx.append(f'<div class="lidx-g"><p class="t-eyebrow">{e(title)}</p><ol>' + ''.join(
             f'<li><a href="#lc-{k.lower()}" data-toc><span class="code">{k}</span> {e(LOOPS[k]["plain_name"])}</a></li>' for k in ks) + '</ol></div>')
     side = (f'<nav class="toc" aria-label="Loops on this sheet"><p class="t-eyebrow">Index of loops</p><div class="lidx">{"".join(idx)}</div></nav>')
-    head = sheet_head('loops', 'The loop catalog', f'Of {len(LOOPS)} loops, {n_r} feed themselves and {n_b} push back.', deck, evidence_key(hollow=True), here=set(CORE))
+    head = sheet_head('loops', 'The loop catalog', f'Of {len(LOOPS)} loops, {n_r} can feed themselves and {n_b} can push back.', deck, evidence_key(hollow=True), here=set(CORE))
     head += f'<nav class="lindex" aria-label="Index of loops"><p class="t-eyebrow">Index of loops</p><div class="lidx">{"".join(idx)}</div></nav>'
     body = []
     for p, ks in groups:

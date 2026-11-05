@@ -9,7 +9,8 @@ Pillar Red appears only on the loop and reform views, where R-01 acts.
 
 Every label, count, sign, grade, delay, issue, example and reform text is read by script from
 work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json, including R-01's disclosure in V7's
-own words, which the R-01 view prints in full. Headlines, decks and chart titles are studio drafts.
+own words, which the R-01 view prints in full. The sources for the figures in the 16 everyday answers come from V7's
+claims in work/extract/atlas-v7-data.json, matched figure by figure. Headlines, decks and chart titles are studio drafts.
 
 Run from the project root:
     python3 -I work/boards/phase-2/atlas-editorial/02-economist-register/build_system.py
@@ -33,6 +34,9 @@ _spec.loader.exec_module(acc)
 
 ED = json.loads((ROOT / 'work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json').read_text())
 KIT_JS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.js').read_text()
+# V7's claims, read only to source the figures in the 16 everyday answers (the editorial dataset leaves claims out)
+CLAIMS = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())['claims']
+V7_PATHWAY_CLAIMS = {p['id']: p.get('claim_ids', []) for p in json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())['pathways']}
 KIT_CSS = (ROOT / 'work/boards/phase-2/atlas-concepts/shared/atlas-kit.css').read_text()
 OUT = HERE / '20261105_Editorial-02-Economist-Register.html'
 
@@ -1375,7 +1379,8 @@ def bill_section():
     hubs = []
     pws = {p['id']: p for p in ED['pathways']}
     for h in ED['hubs']:
-        qs = ''.join(f'<li><button type="button" class="qb" data-select="pw-{pid.lower()}"><span class="qt">{e(pws[pid]["title"])}</span>'
+        qs = ''.join(f'<li><button type="button" class="qb" data-select="pw-{pid.lower()}" data-say="{e(pws[pid]["title"] + ": " + pws[pid]["question"])}" '
+                     f'aria-label="{e(pws[pid]["title"] + ": " + pws[pid]["question"])}"><span class="qt">{e(pws[pid]["title"])}</span>'
                      f'<span class="qq">{e(pws[pid]["question"])}</span></button></li>' for pid in h['pathways'])
         hubs.append(f'<div class="hub"><h3>{e(h["title"])}</h3><p class="hq">{e(h["question"])}</p>'
                     f'<ul class="qs" data-ak-roving data-ak-nav="sequence">{qs}</ul></div>')
@@ -1986,6 +1991,93 @@ def tpl_issue(iid):
     return tpl(f'issue-{iid.lower()}', f'Issue {iid}', i['title'], body)
 
 
+_MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+           'November', 'December')
+_FIG = re.compile(r'(\$?\d[\d,]*(?:\.\d+)?)(%|\s+percent)?(?:\s+([A-Za-z]+))?')
+
+
+def fig_tokens(text):
+    """Figures in a text as (number, unit): unit is %, $, or the word that follows. Years, single digits and the day
+    of a date are left out."""
+    out = []
+    for m in _FIG.finditer(text):
+        num, pct, word = m.group(1).rstrip(',.'), m.group(2), (m.group(3) or '').lower()
+        before = text[max(0, m.start() - 10):m.start()]
+        if re.fullmatch(r'(19|20)\d\d', num) or any(before.endswith(mo + ' ') for mo in _MONTHS):
+            continue
+        if pct:
+            out.append((num, '%'))
+        elif num.startswith('$'):
+            out.append((num, '$'))
+        elif not re.fullmatch(r'\d', num):
+            out.append((num, word))
+    return out
+
+
+def _val(n):
+    return float(n.replace('$', '').replace(',', '').split('-')[0])
+
+
+def fig_match(t, c):
+    """Same figure: equal number and unit; a whole number in the answer also matches the claim's figure it rounds,
+    when the unit word agrees ("about 12 cents" and "11.8 cents")."""
+    if t == c:
+        return True
+    if t[1] in ('%', '$') or c[1] in ('%', '$'):
+        return t[1] == c[1] and t[0] == c[0]
+    if t[0] == c[0]:
+        return True
+    return bool(t[1]) and t[1] == c[1] and '.' not in t[0] and round(_val(c[0])) == _val(t[0])
+
+
+def figure_sources(pid, sentence):
+    """The V7 claims that carry each figure in a sentence: the pathway's own claims first, then any claim; among
+    claims that cover as many figures, the one sharing more words with the sentence."""
+    want = fig_tokens(sentence)
+    words = set(re.findall(r'[a-z]{4,}', sentence.lower()))
+    chosen, left = [], list(want)
+    pools = [[CLAIMS[c] for c in V7_PATHWAY_CLAIMS.get(pid, []) if c in CLAIMS], list(CLAIMS.values())]
+    for pool in pools:
+        while left:
+            def score(c):
+                txt = c['claim'] + ' ' + c.get('supports', '')
+                ct = fig_tokens(txt)
+                hit = [t for t in left if any(fig_match(t, x) for x in ct)]
+                return (len(hit), len(words & set(re.findall(r'[a-z]{4,}', txt.lower())))), hit
+            best = max(pool, key=lambda c: score(c)[0], default=None)
+            hit = score(best)[1] if best else []
+            if not hit:
+                break
+            chosen.append(best)
+            left = [t for t in left if t not in hit]
+    return want, chosen, left
+
+
+def src_words(sid):
+    x = ED['sources'].get(sid) or {}
+    y = str(x.get('year') or x.get('date') or '')
+    if re.fullmatch(r'\d{4}-\d\d-\d\d', y):
+        y = date_words(y)
+    elif re.fullmatch(r'\d{4}-\d\d', y):
+        y = f'{date_words(y + "-01").split(" ")[0]} {y[:4]}'
+    return ', '.join(v for v in (x.get('title'), x.get('publisher'), y) if v)
+
+
+FIG_AUDIT = []
+
+
+def sourced_answer(pid, text):
+    """The answer with each figure's source, title, publisher and date, set right after the sentence it backs."""
+    out = []
+    for snt in re.split(r'(?<=[a-z0-9)%][.!?])(?<! v\.)\s+(?=[A-Z"$])', text):
+        want, chosen, left = figure_sources(pid, snt)
+        FIG_AUDIT.append((pid, [f'{a}{"" if b in ("%", "$") else " " + b}'.strip() for a, b in want], [c['id'] for c in chosen], left))
+        srcs = [sid for c in chosen for sid in c['sources'] if sid in ED['sources']]
+        srcs = list(dict.fromkeys(srcs))
+        out.append(e(snt) + (f' <span class="fsrc">(Source: {e("; ".join(src_words(x) for x in srcs))}.)</span>' if srcs else ''))
+    return ' '.join(out)
+
+
 def tpl_pathway(pid):
     p = next(x for x in ED['pathways'] if x['id'] == pid)
     refs = p['model_refs']
@@ -1998,7 +2090,7 @@ def tpl_pathway(pid):
     rfl = ''.join(f'<li><b>{k}</b> {e(RF[k]["title"])}' + (' <a href="#reform-r01">Full profile</a>' if k == 'R-01' else '') + '</li>'
                   for k in refs.get('reforms', []) if k in RF) or '<li>None</li>'
     nxt = '<p class="next"><a href="#area-c">Open the Elections page</a></p>' if 'C' in parts else ''
-    body = (f'<p class="lead">{e(p["short_answer"])}</p><h3>Where it sits in the atlas</h3>'
+    body = (f'<p class="lead">{sourced_answer(pid, p["short_answer"])}</p><h3>Where it sits in the atlas</h3>'
             f'<p><b>Parts:</b> {e(", ".join(pname(x) for x in parts))}.</p><p><b>Variables:</b> {e(vars_)}.</p>'
             f'<h3>Loops</h3><ul>{lps}</ul><h3>Reforms</h3><ul>{rfl}</ul>'
             f'<p>{len(refs.get("issues", []))} issue records follow this question.</p>{nxt}')
@@ -2258,6 +2350,8 @@ details.words summary,details.keyfold summary{cursor:pointer;font-weight:600;min
 .sgd{font:400 13px/1 Inter;fill:var(--ds)}
 .swk{font:700 13px/1 Inter;fill:var(--ch)}
 .flag rect{fill:var(--pr)}
+[data-red-ok] .flag rect{fill:var(--ch)}
+.ak-panel .fsrc{color:var(--ds);font-size:14px}
 .rf-other .stack .flag,.rf-other .stack .flagtxt{display:none}
 .flag .fl{font:700 13px/1 Inter;fill:var(--wh)}
 .stack.l .sgc{font-size:14px}
@@ -2802,6 +2896,8 @@ def page():
 
 def main():
     doc = page()
+    unsourced = [(pid, left) for pid, _, _, left in FIG_AUDIT if left]
+    assert not unsourced, f'figures with no V7 source: {unsourced}'
     assert '—' not in re.sub(r'<(script|style)\b.*?</\1>', '', doc, flags=re.S), 'em dash in page text'
     OUT.write_text(doc)
     print('wrote', OUT.relative_to(ROOT), f'{len(doc) / 1e3:.0f} kB')

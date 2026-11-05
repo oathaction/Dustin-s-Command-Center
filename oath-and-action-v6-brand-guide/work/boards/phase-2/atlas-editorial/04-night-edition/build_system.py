@@ -6,6 +6,7 @@ Builds one self-contained page with six hash views from the shared editorial dat
 Reads   work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json (the dataset, DR-28 to DR-35)
         work/extract/atlas-interactive-concept-v2-data.json (which of the two questions each part answers)
         work/build/scripts/phase-2/atlas_concepts_common.py (palette, icon_svg)
+        work/extract/atlas-v7-data.json (the claims and sources behind each figure in the 16 everyday answers)
         work/boards/phase-2/atlas-concepts/shared/atlas-kit.js and atlas-kit.css (behavior, inlined)
         work/build/assets/identity/wordmark/ (the 24 px and 16 px wordmark masters, inlined as delivered)
 Writes  work/boards/phase-2/atlas-editorial/04-night-edition/20261105_Editorial-04-Night-Edition.html
@@ -1494,6 +1495,16 @@ def glance_narrow():
             f'data-ak-roving data-ak-nav="spatial" aria-label="The system at a glance, top to bottom">{s}</svg>')
 
 
+def map_story(form):
+    """The circuit told with the names of its connections, each with its grade, so no step claims more than its
+    evidence. Phones read top to bottom."""
+    g = lambda k: f'{LINKS[k]["name"]} ({grade_word(LINKS[k]["evidence"]).lower()})'
+    lead = 'Read the map from left to right.' if form == 'wide' else 'Read the parts from top to bottom.'
+    back = 'Along the bottom, the return line closes the circle:' if form == 'wide' else 'After Policy, the return line leads back to Wealth:'
+    return (f'{lead} {g("L01")}, and {lower_first(g("L02"))}. In safe seats, {lower_first(g("L25"))}, '
+            f'and {lower_first(g("L51"))}. {back} {lower_first(g("L03"))}.')
+
+
 def circuit_words():
     cols = ''
     for pid in CORE:
@@ -1537,7 +1548,8 @@ def view_overview():
     board_html = (f'<div class="boardwrap"><div class="board" data-ak-roving data-ak-nav="spatial" style="height:{fnum(H)}px" '
                   f'role="group" aria-labelledby="h-system">{svg}{cards}</div></div>')
     sys_sec = (f'<section class="sec sys" aria-labelledby="h-system"><div class="sys-head"><h2 id="h-system">The full map</h2>'
-               f'<p class="sys-story">{e(D["opening"]["paras"][1])}</p>{howto}</div>{board_html}'
+               f'<p class="sys-story"><span class="st-wide">{e(map_story("wide"))}</span><span class="st-phone">{e(map_story("phone"))}</span></p>'
+               f'{howto}</div>{board_html}'
                f'{circuit_words()}<p class="caption dim board-note">Not drawn, to keep the map calm: {cnt("custom:not-drawn", n_rest)} smaller connections between parts '
                f'({e(rest_words)}). Each part\'s reading panel lists them. Of the {cnt("connections", len(LINKS))} connections, '
                f'{cnt("custom:between-parts", N_BETWEEN)} run between parts and {cnt("custom:inside-parts", N_INSIDE)} stay inside one.</p></section>')
@@ -1580,6 +1592,8 @@ EXTRA_CSS += r'''
 .sys-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:10px;margin-bottom:28px;align-items:start}
 .sys-head h2{grid-column:1/span 3;font:800 40px/44px var(--f-disp);letter-spacing:-.03em;text-wrap:balance}
 .sys-story{grid-column:4/span 6;font:500 15px/23px var(--f-ui);color:var(--ink)}
+.st-phone{display:none}
+@media (max-width:899.98px){.st-wide{display:none}.st-phone{display:inline}}
 .howto{grid-column:10/span 3;font:500 15px/23px var(--f-ui);color:var(--dim)}
 .howto b{color:var(--ink);font-weight:600}
 .howto .more{margin-top:8px}
@@ -1722,6 +1736,54 @@ def target_words(t):
     return f'{t} {LINKS[t]["name"]}'
 
 
+V7 = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())
+V7_PW = {p_['id']: p_ for p_ in V7['pathways']}
+
+
+def figures(t):
+    """Numbers in a sentence, without years."""
+    out = set()
+    for m in re.finditer(r'\$?\d[\d,]*(?:\.\d+)?', t):
+        x = m.group(0).replace('$', '').replace(',', '').rstrip('.')
+        if not re.fullmatch(r'(19|20)\d\d', x):
+            out.add(x)
+    return out
+
+
+def words(t):
+    return {w for w in re.findall(r'[a-z]{4,}', t.lower())}
+
+
+def sourced_answer(pid, text):
+    """Each sentence that prints a figure is followed by the source of the V7 claim that carries that figure: matched by
+    the figures they share, ties broken by shared words. A figure no claim carries says so."""
+    ids = V7_PW[pid]['claim_ids']
+    out = ''
+    for sent_ in re.split(r'(?<=[.!?])\s+(?=[A-Z])', text):
+        out += f'<p class="lead">{e(sent_)}</p>'
+        n = figures(sent_)
+        if not n:
+            continue
+        scored = []
+        for cid in ids:
+            c = V7['claims'][cid]
+            blob = c['claim'] + ' ' + (c.get('supports') or '')
+            k = len(n & figures(blob))
+            if k:
+                scored.append((k, len(words(sent_) & words(blob)), cid))
+        if not scored:
+            out += '<p class="srcnote">V7 ties no source to this figure.</p>'
+            continue
+        scored.sort(key=lambda x: (-x[0], -x[1]))
+        cid = scored[0][2]
+        refs = []
+        for sid in V7['claims'][cid]['sources']:
+            S = V7['sources'][sid]
+            refs.append(f'{S["title"]}, {S.get("publisher") or ""}, {str(S.get("year") or "")[:4]}'.replace(', ,', ','))
+        out += f'<p class="srcnote">Source: {e("; ".join(refs))}.</p>'
+    return out
+
+
 def build_templates():
     # parts
     for pid in PART_ORDER:
@@ -1801,7 +1863,7 @@ def build_templates():
         loops_ = ''.join(f'<li><a href="{loop_href(x)}">{e(LOOPS[x]["plain_name"])}</a> <span class="dim">{x}</span></li>' for x in refs.get('loops', []))
         rfs = ''.join(f'<li>{chip("Reform", r)}{e(REFORMS[r]["title"])}</li>' for r in refs.get('reforms', []))
         hub = next(h for h in HUBS if pid in h['pathways'])
-        body = (f'<p class="dim">{e(hub["title"])} · {e(pw["title"])}</p><p class="lead">{e(pw["short_answer"])}</p>'
+        body = (f'<p class="dim">{e(hub["title"])} · {e(pw["title"])}</p>{sourced_answer(pid, pw["short_answer"])}'
                 + (f'<h3>Where it sits on the map</h3><p>{", ".join(e(part_name(x)) for x in parts_)}. Variables: {e(vs)}.</p>' if parts_ else '')
                 + ('<p><a class="more" href="#area-c">Open Elections</a></p>' if 'C' in parts_ else '')
                 + (f'<h3>Loops</h3><ul>{loops_}</ul>' if loops_ else '')
@@ -1892,6 +1954,8 @@ EXTRA_CSS += r'''
 .ak-panel ol.conns{padding-left:20px}
 .ak-panel ol.conns li{padding:6px 0}
 .ak-panel .src{margin-top:24px;font:500 13px/18px var(--f-ui);color:var(--dim)}
+.ak-panel .srcnote{margin-top:4px;font:500 13px/18px var(--f-ui);color:var(--dim)}
+.ak-panel .lead+.lead{margin-top:10px}
 .ak-panel .more{font-size:15px}
 .ak-panel-bar{gap:8px}
 '''
@@ -2584,7 +2648,7 @@ def view_how_to_read():
     # 1. the tip is the effect
     tip = ''.join(f'<li><div>{spec_svg("sign-" + nm, spec_arrow("well-supported", sg, end=en, authority=au), label=lb)}</div>'
                   f'<p><b>{e(wd.capitalize())}.</b> {e(tx)}</p></li>' for nm, sg, en, au, wd, lb, tx in [
-                      ('plus', '+', 'head', False, 'raises', 'An arrow with a plus tag', gloss('Positive sign')),
+                      ('plus', '+', 'head', False, 'raises', 'An arrow with a plus tag', first_sentence(gloss('Positive sign')) + ' A plus sign does not mean the change is good.'),
                       ('minus', '-', 'head', False, 'lowers', 'An arrow with a minus tag', gloss('Negative sign')),
                       ('authority', None, 'diamond', True, 'decides', 'A line ending in an open diamond', gloss('Authority connection'))])
     rows.append(('The tip is the effect', 'Read every arrow from its tail to its tip: the tail changes, and the tip moves. The tag on the line says which way.', f'<ul class="specs">{tip}</ul>'))
