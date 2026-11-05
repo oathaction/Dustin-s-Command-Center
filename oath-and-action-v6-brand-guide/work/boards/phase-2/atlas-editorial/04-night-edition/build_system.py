@@ -1756,7 +1756,8 @@ def words(t):
 
 def sourced_answer(pid, text):
     """Each sentence that prints a figure is followed by the source of the V7 claim that carries that figure: matched by
-    the figures they share, ties broken by shared words. A figure no claim carries says so."""
+    the figures they share, ties broken by shared words; the answer's own claims first, then any V7 claim (PW10's payroll
+    tax rate is recorded under PW11's CL1467). A figure no claim carries says so."""
     ids = V7_PW[pid]['claim_ids']
     out = ''
     for sent_ in re.split(r'(?<=[.!?])\s+(?=[A-Z])', text):
@@ -1765,12 +1766,15 @@ def sourced_answer(pid, text):
         if not n:
             continue
         scored = []
-        for cid in ids:
-            c = V7['claims'][cid]
-            blob = c['claim'] + ' ' + (c.get('supports') or '')
-            k = len(n & figures(blob))
-            if k:
-                scored.append((k, len(words(sent_) & words(blob)), cid))
+        for pool in (ids, list(V7['claims'])):      # the answer's own claims first, then any V7 claim
+            for cid in pool:
+                c = V7['claims'][cid]
+                blob = c['claim'] + ' ' + (c.get('supports') or '')
+                k = len(n & figures(blob))
+                if k:
+                    scored.append((k, len(words(sent_) & words(blob)), cid))
+            if scored:
+                break
         if not scored:
             out += '<p class="srcnote">V7 ties no source to this figure.</p>'
             continue
@@ -1779,7 +1783,9 @@ def sourced_answer(pid, text):
         refs = []
         for sid in V7['claims'][cid]['sources']:
             S = V7['sources'][sid]
-            refs.append(f'{S["title"]}, {S.get("publisher") or ""}, {str(S.get("year") or "")[:4]}'.replace(', ,', ','))
+            yr = str(S.get('year') or '')
+            yr = yr[:4] if yr[:4].isdigit() else yr      # a plain year, or V7's own words ("certified 2026-09-25")
+            refs.append(f'{S["title"]}, {S.get("publisher") or ""}, {yr}'.replace(', ,', ','))
         out += f'<p class="srcnote">Source: {e("; ".join(refs))}.</p>'
     return out
 

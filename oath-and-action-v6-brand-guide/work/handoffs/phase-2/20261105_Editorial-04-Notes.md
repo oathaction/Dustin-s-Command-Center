@@ -83,7 +83,7 @@ Each finding I was given, what changed, or why it stayed.
 **Creative director's must-fixes.**
 - The paragraph under "The full map" no longer states graded links as fact. It is built from the names of L01, L02, L25, L51 and L03, each with its grade ("political spending can tilt policy toward donors (plausible)"). Phones read "Read the parts from top to bottom" and "After Policy, the return line leads back to Wealth".
 - How to read prints "A plus sign does not mean the change is good."
-- In all 16 everyday answers, each sentence with a figure is followed by its source (title, publisher, year), taken from the V7 claim that carries the same figures (`work/extract/atlas-v7-data.json`). One figure, the 7.65% payroll tax in PW10, has no claim in V7, and the page says so.
+- In all 16 everyday answers, each sentence with a figure is followed by its source (title, publisher, year), taken from the V7 claim that carries the same figures (`work/extract/atlas-v7-data.json`). Where an answer's own claims do not carry a figure, the build searches every V7 claim: PW10's 7.65% payroll tax cites CL1467's sources (SSA's 2027 COLA fact sheet, K1468, and K1479). All 28 figure notes carry a source.
 
 **For Dustin.** L23's V7 name fights its minus sign (S4). "Democratic quality" may read as a party label. The "one documented connection" line comes from his dark atlas.
 

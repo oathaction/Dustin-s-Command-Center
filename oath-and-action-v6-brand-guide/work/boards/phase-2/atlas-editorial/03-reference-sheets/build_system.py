@@ -1267,23 +1267,30 @@ def _words(t):
 
 def figure_sources(pid, sentence):
     """The V7 claims behind each figure in one sentence of a pathway's short answer (CD review, must-fix 2).
-    A figure goes to the pathway claim whose text holds it and shares the most words with the sentence; a figure
-    no claim prints verbatim (PW10's 7.65%, the sum of CL1550's two rates) goes to the closest claim by words."""
-    claims = V7_PW[pid]['claim_ids']
+    A figure goes to the pathway claim whose text holds it (7.65% and 7.65 percent count as the same figure) and
+    shares the most words with the sentence. If no claim of the pathway holds it, every V7 claim is searched:
+    PW10's 7.65% payroll tax rate is recorded in CL1467, filed under PW11."""
     figs = [x.strip().rstrip('.') for x in FIGURE.findall(sentence) if not re.fullmatch(r'(19|20)[0-9]{2}', x.strip())]
-    chosen = []
-    for fg in figs:
+
+    def forms(fg):
+        num = re.sub(r'\s?(%|percent)$', '', fg)
+        return {fg, num + '%', num + ' percent'} if num != fg else {fg}
+
+    def best_in(ids, fg):
         cands = []
-        for cid in claims:
+        for cid in ids:
             c = V7_CLAIMS[cid]
             blob = c['claim'] + ' ' + (c.get('supports') or '')
-            hit = re.search(r'(?<![0-9.])' + re.escape(fg) + r'(?![0-9])', blob)
-            cands.append((1 if hit else 0, len(_words(sentence) & _words(blob)), cid))
-        best = max(cands)
-        if best[0] == 0 and best[1] < 3:
+            if any(re.search(r'(?<![0-9.])' + re.escape(x) + r'(?![0-9])', blob) for x in forms(fg)):
+                cands.append((len(_words(sentence) & _words(blob)), cid))
+        return max(cands)[1] if cands else None
+    chosen = []
+    for fg in figs:
+        cid = best_in(V7_PW[pid]['claim_ids'], fg) or best_in(list(V7_CLAIMS), fg)
+        if cid is None:
             raise ValueError(f'{pid}: no claim found for {fg} in "{sentence}"')
-        if best[2] not in chosen:
-            chosen.append(best[2])
+        if cid not in chosen:
+            chosen.append(cid)
     srcs = []
     for cid in chosen:
         for sid in V7_CLAIMS[cid]['sources']:
@@ -1294,7 +1301,8 @@ def figure_sources(pid, sentence):
 
 def source_words(sid):
     s_ = D['sources'][sid]
-    year = (s_.get('year') or '')[:4]
+    m = re.search(r'(19|20)[0-9]{2}', s_.get('year') or '')
+    year = m.group(0) if m else ''
     pub = s_.get('publisher') or ''
     return f'{s_["title"].rstrip(".")} ({pub}{", " if pub and year else ""}{year})'
 

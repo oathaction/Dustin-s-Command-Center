@@ -112,7 +112,7 @@ The idea stays the same: numbered sheets, one set of marks, and the circled sign
 2. **Sources on figures.** Each sentence in the 16 short answers that prints a figure now ends with its source in small type: title, publisher and year. The script matches each figure to the pathway's V7 claim (`claim_ids` in `work/extract/atlas-v7-data.json`) whose text holds the figure and shares the most words with the sentence. It then prints that claim's sources.
    - PW01's 29 percent rent rise cites The State of the Nation's Housing 2026 (Harvard Joint Center for Housing Studies, 2026) and the Census Bureau's Quarterly Residential Vacancies and Homeownership, Q2 2026 (CL1109).
    - PW01's $1,240, $2,420 and 7 percent cite the same Harvard report and Freddie Mac's Primary Mortgage Market Survey (CL1105).
-   - One figure appears in no claim verbatim: PW10's 7.65 percent, the sum of CL1550's 6.2 and 1.45 percent rates. It takes CL1550's source by word match.
+   - When no claim filed under the pathway holds a figure, the script searches every V7 claim, and it treats "7.65%" and "7.65 percent" as the same figure. PW10's 7.65 percent therefore cites CL1467, filed under PW11: the 2027 Social Security Changes fact sheet (Social Security Administration, 2026) and the Summary of Provisions That Would Change the Social Security Program (SSA Office of the Chief Actuary, 2026).
    - PW13 prints no figure.
    - The build stops with an error if a figure finds no claim.
 
