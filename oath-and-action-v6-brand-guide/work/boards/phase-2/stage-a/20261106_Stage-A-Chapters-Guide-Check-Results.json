@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T22:01:51.356Z",
+ "checked": "2026-11-06T22:05:58.862Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -161,7 +161,7 @@
     "where": []
    },
    "text": {
-    "texts": 8492,
+    "texts": 8463,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -202,7 +202,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 318181,
+   "height": 324969,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -211,6 +211,216 @@
    "axe": [],
    "focusStops": 60,
    "focusProblems": []
+  },
+  {
+   "width": 1024,
+   "structure": {
+    "headings": 149,
+    "h1": [
+     "Oath & Action Brand Guide, Edition 06"
+    ],
+    "skips": [],
+    "inSpecimen": [],
+    "badH3": [],
+    "ruleIds": [],
+    "ruleAnchors": [],
+    "rulesWithoutH3": [],
+    "rules": 99
+   },
+   "anchors": {
+    "ids": 498,
+    "duplicates": [],
+    "links": 694,
+    "broken": [],
+    "relatedLinks": 115,
+    "relatedBad": [],
+    "aliases": []
+   },
+   "specimens": {
+    "stages": 229,
+    "pending": [],
+    "noAlt": [],
+    "imgNoAlt": [],
+    "svgUnnamed": [],
+    "exemptions": [
+     {
+      "specimen": "s-01-1-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-2-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-3-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-4-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-18-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-22-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-24-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-03-1-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-7-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-3-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-8-correct",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-05-2-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-3-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-05-6-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-06-2-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-06-3-failure",
+      "skips": "size scale"
+     },
+     {
+      "specimen": "s-07-5-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-08-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-proofs-letterhead",
+      "skips": "scale"
+     }
+    ],
+    "landmarks": []
+   },
+   "names": {
+    "entities": [],
+    "count": 0
+   },
+   "typeScale": {
+    "stages": 220,
+    "exempt": 9,
+    "off": [],
+    "fluid": [
+     88.61,
+     65.74,
+     29.62,
+     22.41,
+     28.83,
+     20.81,
+     17,
+     15,
+     14,
+     13,
+     81.81,
+     19
+    ]
+   },
+   "codes": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "text": {
+    "texts": 8343,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "skipped": 4
+   },
+   "overflow": {
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflowing": []
+   },
+   "red": {
+    "marks": 347,
+    "unmarked": [],
+    "pageJobs": [],
+    "specimenJobs": [],
+    "onPrussian": []
+   },
+   "writing": {
+    "emDashes": [],
+    "locked": [
+     {
+      "line": "tagline",
+      "exact": 26
+     },
+     {
+      "line": "mission",
+      "exact": 8
+     },
+     {
+      "line": "reader promise",
+      "exact": 8
+     },
+     {
+      "line": "editorial commitment",
+      "exact": 20
+     }
+    ],
+    "nearMisses": [],
+    "pillarOrder": []
+   },
+   "height": 348750,
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "axe": [],
+   "focusStops": null,
+   "focusProblems": null
   },
   {
    "width": 390,
@@ -349,7 +559,24 @@
    "typeScale": {
     "stages": 220,
     "exempt": 9,
-    "off": [],
+    "off": [
+     {
+      "specimen": "s-01-5-correct",
+      "width": null,
+      "sizes": [
+       11.81
+      ],
+      "sample": "AK"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "width": null,
+      "sizes": [
+       11.81
+      ],
+      "sample": "AK"
+     }
+    ],
     "fluid": [
      56,
      44,
@@ -370,9 +597,110 @@
     "where": []
    },
    "text": {
-    "texts": 8401,
-    "minSize": 13,
-    "under13": [],
+    "texts": 8340,
+    "minSize": 11.81,
+    "under13": [
+     {
+      "text": "AK",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ME",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WI",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "VT",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NH",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WA",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ID",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MT",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ND",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MN",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IL",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MI",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NY",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MA",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "OR",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NV",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WY",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "SD",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IA",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IN",
+      "size": 11.81,
+      "where": "specimen s-01-5-correct"
+     }
+    ],
     "lowContrast": [],
     "skipped": 4
    },
@@ -411,7 +739,334 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 418002,
+   "height": 424907,
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "axe": [],
+   "focusStops": null,
+   "focusProblems": null
+  },
+  {
+   "width": 360,
+   "structure": {
+    "headings": 149,
+    "h1": [
+     "Oath & Action Brand Guide, Edition 06"
+    ],
+    "skips": [],
+    "inSpecimen": [],
+    "badH3": [],
+    "ruleIds": [],
+    "ruleAnchors": [],
+    "rulesWithoutH3": [],
+    "rules": 99
+   },
+   "anchors": {
+    "ids": 498,
+    "duplicates": [],
+    "links": 694,
+    "broken": [],
+    "relatedLinks": 115,
+    "relatedBad": [],
+    "aliases": []
+   },
+   "specimens": {
+    "stages": 229,
+    "pending": [],
+    "noAlt": [],
+    "imgNoAlt": [],
+    "svgUnnamed": [],
+    "exemptions": [
+     {
+      "specimen": "s-01-1-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-2-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-3-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-4-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-18-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-22-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-24-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-03-1-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-7-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-3-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-8-correct",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-05-2-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-3-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-05-6-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-06-2-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-06-3-failure",
+      "skips": "size scale"
+     },
+     {
+      "specimen": "s-07-5-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-08-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-proofs-letterhead",
+      "skips": "scale"
+     }
+    ],
+    "landmarks": []
+   },
+   "names": {
+    "entities": [],
+    "count": 0
+   },
+   "typeScale": {
+    "stages": 220,
+    "exempt": 9,
+    "off": [
+     {
+      "specimen": "s-01-5-correct",
+      "width": null,
+      "sizes": [
+       10.72
+      ],
+      "sample": "AK"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "width": null,
+      "sizes": [
+       10.72
+      ],
+      "sample": "AK"
+     }
+    ],
+    "fluid": [
+     56,
+     44,
+     26,
+     20,
+     24,
+     19,
+     17,
+     15,
+     14,
+     13,
+     48
+    ]
+   },
+   "codes": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "text": {
+    "texts": 8350,
+    "minSize": 10.72,
+    "under13": [
+     {
+      "text": "AK",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ME",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WI",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "VT",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NH",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WA",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ID",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MT",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "ND",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MN",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IL",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MI",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NY",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "MA",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "OR",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "NV",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "WY",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "SD",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IA",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     },
+     {
+      "text": "IN",
+      "size": 10.72,
+      "where": "specimen s-01-5-correct"
+     }
+    ],
+    "lowContrast": [],
+    "skipped": 4
+   },
+   "overflow": {
+    "scrollWidth": 360,
+    "clientWidth": 360,
+    "overflowing": []
+   },
+   "red": {
+    "marks": 347,
+    "unmarked": [],
+    "pageJobs": [],
+    "specimenJobs": [],
+    "onPrussian": []
+   },
+   "writing": {
+    "emDashes": [],
+    "locked": [
+     {
+      "line": "tagline",
+      "exact": 26
+     },
+     {
+      "line": "mission",
+      "exact": 8
+     },
+     {
+      "line": "reader promise",
+      "exact": 8
+     },
+     {
+      "line": "editorial commitment",
+      "exact": 20
+     }
+    ],
+    "nearMisses": [],
+    "pillarOrder": []
+   },
+   "height": 439592,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -422,6 +1077,23 @@
    "focusProblems": null
   }
  ],
- "failures": [],
- "pass": true
+ "failures": [
+  {
+   "key": "typeScale",
+   "msg": "390: 2 specimen(s) with type off the D2-254 sizes: s-01-5-correct (11.81 px); s-01-5-failure (11.81 px)"
+  },
+  {
+   "key": "under13",
+   "msg": "390: 20 text item(s) under 13 px, first: {\"text\":\"AK\",\"size\":11.81,\"where\":\"specimen s-01-5-correct\"}"
+  },
+  {
+   "key": "typeScale",
+   "msg": "360: 2 specimen(s) with type off the D2-254 sizes: s-01-5-correct (10.72 px); s-01-5-failure (10.72 px)"
+  },
+  {
+   "key": "under13",
+   "msg": "360: 20 text item(s) under 13 px, first: {\"text\":\"AK\",\"size\":10.72,\"where\":\"specimen s-01-5-correct\"}"
+  }
+ ],
+ "pass": false
 }

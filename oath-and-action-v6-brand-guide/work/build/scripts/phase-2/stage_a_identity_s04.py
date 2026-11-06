@@ -226,7 +226,7 @@ def s_04_4_correct():
     strips = "".join(
         f'<div class="oai-cell"><div class="oai-s-{s}" style="width:300px;max-width:100%;padding:0 20px;border:1px solid {hair(s)}">{divider(s)}</div><span class="oai-tag">{n}</span></div>'
         for s, n in (("newsprint", "Charcoal on Newsprint"), ("white", "Charcoal on White"), ("charcoal", "Newsprint on Charcoal"), ("prussian", "White on Prussian")))
-    body = f'<div class="oai-stack" style="gap:24px">{art}<div class="oai-row top">{strips}</div></div>'
+    body = f'<div class="oai-pad"><div class="oai-stack" style="gap:24px">{art}<div class="oai-row top">{strips}</div></div></div>'
     alt = ("An article passage: a paragraph on how a bill leaves committee, then the hinge divider, a thin line as wide as the "
            "text with a small ampersand at its center, then What you can do. with the testimony deadline. The passage is "
            "Illustrative. Below, the divider on Newsprint, White, Charcoal and Prussian, its line and ampersand in each "

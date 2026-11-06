@@ -162,6 +162,7 @@ main:focus { outline: none }
   .toc-part:nth-child(odd) { grid-column: 1 / span 4 }
   .toc-part:nth-child(even) { grid-column: 6 / span 4 }
 }
+@media (min-width: 90em) { .toc-part:nth-child(odd) { grid-column: 1 / span 5 } .toc-part:nth-child(even) { grid-column: 6 / span 5 } }
 .toc-part { border-top: var(--oa-border-width-hairline) solid var(--rule-strong); padding-top: var(--oa-space-150) }
 .toc-part-h { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
 /* C-S16: a link and plain text take the same box, so both part labels sit on one line */
@@ -299,12 +300,11 @@ a.toc-part-k:hover { text-decoration: underline }
 /* Plates: a specimen at true size on a deeper Newsprint mat. The stage takes the specimen's surface. */
 .plate { margin: var(--oa-space-500) 0 0; min-width: 0 }
 .hinge + .plate { margin-top: 0 }
-.plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--oa-space-050) var(--oa-space-300);
+.plate-head { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: var(--oa-space-050) var(--oa-space-300);
   padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .plate-label { margin: 0; display: inline-flex; gap: .6em; align-items: baseline }
 .plate-glyph { font: var(--oa-type-ui); font-size: 1rem; line-height: 1 }
 .plate-size { margin: 0 0 0 auto; font: var(--oa-type-caption); color: var(--ink-2) }
-.plate-label + .plate-size { margin-left: 0 }
 /* AX-S12: the line that says a frame scrolls sits in the plate head, before the specimen */
 .plate-hint { flex-basis: 100%; margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
 .plate-scroll { position: relative; overflow-x: auto; overflow-y: hidden; padding: var(--oa-space-400) var(--oa-space-200); background: var(--mat);

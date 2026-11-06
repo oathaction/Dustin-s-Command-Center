@@ -155,7 +155,7 @@ def html_fault(s):
 
 FLT_CSS = (f".ed.flt{{max-width:760px}}"
            f".ed .tm{{{fx('body')};margin:0 0 16px;max-width:64ch}}"
-           + flow(".ed .flt .q", "intro") + ".ed .flt .q{overflow-wrap:anywhere}"
+           + flow(".ed.flt .q", "intro") + ".ed.flt .q{overflow-wrap:anywhere}"
            f".ed .dim{{color:var(--oa-color-text-secondary)}}"
            f".ed .lens{{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}}"
            f".ed .lens li{{display:flex;align-items:center;gap:10px;{fx('body-small')};font-variant-numeric:tabular-nums}}"
@@ -285,8 +285,8 @@ def build(book):
         row = (f'<tr id="{h["id"].lower()}"><th scope="row"><span class="hid">{e(h["id"])}</span> {e(h["name"])}</th>'
                f'<td data-k="What it asks">{e(h["rule"])}</td><td class="exq" data-k="Example">{ex}</td></tr>')
         return row + (grades_table(h) if h.get("grades") else "")
-    HCSS = (f".ed .house th[scope=row]{{{fx('body-small', weight='700')};min-width:11rem}}.ed .hid{{display:block;{fx('label')};color:var(--oa-color-text-secondary)}}"
-            f".ed .house td.exq{{{fx('body-small')};min-width:16rem}}.ed .hb{{margin:0 0 6px}}.ed .hb .chip{{margin-right:6px}}.ed .hsrc{{{fx('caption')};color:var(--oa-color-text-secondary);margin:0 0 8px}}"
+    HCSS = (f".ed .house>thead th:nth-child(1){{width:24%}}.ed .house>thead th:nth-child(2){{width:36%}}.ed .house th[scope=row]{{{fx('body-small', weight='700')}}}.ed .hid{{display:block;{fx('label')};color:var(--oa-color-text-secondary)}}"
+            f".ed .house td.exq{{{fx('body-small')}}}.ed .hb{{margin:0 0 6px}}.ed .hb .chip{{margin-right:6px}}.ed .hsrc{{{fx('caption')};color:var(--oa-color-text-secondary);margin:0 0 8px}}"
             f".ed .house tr.grow>td{{padding:4px 0 20px;border-bottom:2px solid var(--oa-color-border-strong)}}"
             f".ed .grades{{background:var(--oa-color-surface-white);border:1px solid var(--oa-color-border-hairline)}}.ed .grades th[scope=row]{{min-width:9rem}}"
             f".ed .house tr:target{{outline:3px solid var(--oa-color-focus-ring);outline-offset:-3px}}"
@@ -295,7 +295,7 @@ def build(book):
             f".ed .house td[data-k]::before{{content:attr(data-k) \": \";font-weight:700}}.ed .house .grades td[data-k]::before{{content:attr(data-k) \": \"}}}}")
     house_tbl = (f'<div class="ed"><table class="house"><thead><tr><th scope="col">Rule</th><th scope="col">What it asks</th><th scope="col">Example</th></tr></thead>'
                  f'<tbody>{"".join(hrow(h) for h in house)}</tbody></table></div>')
-    FCSS = (flow(".ed .prf .txt", "intro") + ".ed .prf .txt{line-height:1.7}"
+    FCSS = (flow(".ed.prf .txt", "intro") + ".ed.prf .txt{line-height:1.7}"
             f".ed .bad{{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px}}"
             f".ed sup.f{{{fx('label')};border:1px solid var(--oa-color-border-strong);padding:2px 4px;margin-left:3px;vertical-align:.5em;line-height:1}}"
             f".ed .fk{{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:4px;{fx('body-small')}}}.ed .fk b{{display:inline-block;min-width:2.8em}}")
@@ -372,7 +372,7 @@ def build(book):
         "correct": {"specimen": A("s-02-23-correct", places, css=(BASE, PLC), rule="02.23",
                                   alt=f"Four places, each with its line. Home page: the wordmark with the reader promise beneath it. About page: the mission and the voice line. Colophon, the note on who makes our work: the editorial commitment, quoted. Newsletter, the last lines of an issue: an illustrative dated step, Sign up with the board clerk by April 10 to speak before the vote, then the tagline, {LOCKED['tagline']}"),
                     "caption": "Each line sits where the table puts it, in exact words. In a newsletter the tagline follows the last story’s step as the sign-off, and Rule 02.24 shows the whole ending."},
-        "failure": {"specimen": A("s-02-23-failure", bad_slot, css=(BASE, PLC), rule="02.23", width=480,
+        "failure": {"specimen": A("s-02-23-failure", bad_slot, css=(BASE, PLC), rule="02.23", width=360,
                                   alt="The wordmark with From spectators to stewards set beneath it in the tagline's slot."),
                     "caption": "In the tagline’s slot, the founding line competes with “A country that answers to its people.” and casts a newcomer as a spectator."},
         "related": ["01", "03", "08"],
@@ -390,10 +390,10 @@ def build(book):
                                                         alt="Our fifth edition's four qualities of voice and where each now lives. Plain and active: writing rules W01 to W04. Sourced: house rule H04 and chapter 13. Nonpartisan: Rules 01.1 to 01.20 with house rules H10 and H12. One next step: Rule 02.24 and Rules 01.22 and 01.23."),
                    "label": "How we sound", "caption": "Our fifth edition named four qualities of the voice. Each one now has rules that teach it."})
 
-    END = (f".ed .end .wycd{{{fx('h4')};margin:0 0 10px}}.ed .end .step{{margin:0 0 12px}}.ed .end .asks{{display:flex;flex-wrap:wrap;gap:10px}}"
-           f".ed .end .story{{{fx('body')};margin:0 0 4px}}"
-           f".ed .end .sign{{margin-top:28px;border-top:1px solid var(--oa-color-border-hairline);padding-top:16px;display:flex;flex-direction:column;gap:10px}}"
-           f".ed .end .sign .so{{{fx('h4')}}}.ed .wmk{{display:block;height:24px;width:auto;color:var(--oa-color-text-primary)}}")
+    END = (f".ed.end .wycd{{{fx('h4')};margin:0 0 10px}}.ed.end .step{{margin:0 0 12px}}.ed.end .asks{{display:flex;flex-wrap:wrap;gap:10px}}"
+           f".ed.end .story{{{fx('body')};margin:0 0 4px}}"
+           f".ed.end .sign{{margin-top:28px;border-top:1px solid var(--oa-color-border-hairline);padding-top:16px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}}"
+           f".ed.end .sign .so{{{fx('h4')}}}.ed .wmk{{display:block;height:24px;width:auto;color:var(--oa-color-text-primary)}}")
     nl_end = (f'<div class="ed end"><p class="lab">The last story in the issue {ill()}</p>'
               '<p class="story">The Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027, and three of its five votes pass the change.</p>'
               f'{hinge()}<p class="wycd">What you can do</p><p class="step">Send a written comment to the Alder County Board of Supervisors by 5 p.m. Wednesday, March 3, 2027.</p>'
@@ -406,19 +406,19 @@ def build(book):
         "tokens": ["oa.color.action.ask.fill.onNewsprint"],
         "why": {"text": ["Four asks at the end of a piece leave a reader to choose, and most choose none. One dated step is easy to take before the date passes."],
                 "basis": "Editorial judgment"},
-        "correct": {"specimen": A("s-02-24-correct", nl_end, css=(BASE, END), rule="02.24", illustrative=True, width=600,
-                                  alt="An illustrative newsletter ending, on a 600 px email column. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people."),
+        "correct": {"specimen": A("s-02-24-correct", nl_end, css=(BASE, END), rule="02.24", illustrative=True, width=360,
+                                  alt="An illustrative newsletter ending, as a phone shows it. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people."),
                     "caption": "The last story ends on one dated step and its button, and the tagline follows as the issue’s sign-off, with no line in between that sums up the issue."},
         "failure": {"specimen": A("s-02-24-failure", f'<div class="ed end">{hinge()}<p class="wycd">What you can do</p><p class="step">Call your supervisor, email the board, share this post and show up! {ill()}</p>'
                                                      '<p class="asks"><span class="ask" data-red="failure">Call</span><span class="ask" data-red="failure">Email</span><span class="ask" data-red="failure">Share</span><span class="ask" data-red="failure">RSVP</span></p></div>',
-                                  css=(BASE, END), rule="02.24", illustrative=True, width=600, exempt=["red", "contrast"],
+                                  css=(BASE, END), rule="02.24", illustrative=True, width=360, exempt=["red", "contrast"],
                                   alt="The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date."),
                     "caption": "Four asks and four red buttons leave out the date and the place, and give a reader no reason to start with any one of them."},
         "related": ["01", "12", "22"],
         "builders": "Give the piece one ask button and put the other ways to take part on the page the button opens. In an email, the tagline after the last story is the sign-off.",
     })
 
-    MCSS = f".ed .mech td{{{fx('body-small')}}}.ed .mech .lab{{margin:0 0 4px}}.ed .mech .qq{{{fx('body')}}}.ed .mech .src{{margin-top:6px}}"
+    MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
     struct = f"{HR7008}, {HR7008_BOTH}. It needed 60 votes to move forward in the Senate and got 53."
     mrows = [("A sweeping claim", "Our democracy is broken.", "The specific rule", "In 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot.", SRC_INITIATIVE, False),
              ("A feeling", "People are frustrated with Congress.", "A mechanism", "The committee chair decides which bills get a hearing.", "", False),
@@ -442,7 +442,7 @@ def build(book):
                                   notes="Fifth-edition table, kept at Gate 0. Row one is held for round two (DR-99): a mechanism from the atlas that explains the claim replaces the 23-states line, which moves to Rule 01.5's map. "
                                         "Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1); the research lead's check of the bill and the Senate vote line follow in round two."),
                     "caption": "Each mood on the left becomes a rule, an office, a dated step or a vote count a reader can check."},
-        "failure": {"specimen": A("s-02-25-failure", mood, css=(BASE, PIECE), rule="02.25", illustrative=True, width=340,
+        "failure": {"specimen": A("s-02-25-failure", mood, css=(BASE, PIECE), rule="02.25", illustrative=True, width=360,
                                   alt="An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!"),
                     "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."},
         "related": ["13", "01"],
@@ -454,7 +454,7 @@ def build(book):
             f".ed .voc ul{{margin:0;padding-left:1.1em;{fx('body-small')}}}.ed .voc li{{margin:0 0 4px}}"
             f".ed .voc dl{{display:grid;grid-template-columns:minmax(6rem,42%) minmax(0,1fr);gap:4px 12px;margin:0;{fx('body-small')}}}.ed .voc dt{{font-weight:700}}.ed .voc dd{{margin:0}}"
             f".ed .out{{text-decoration:line-through;text-decoration-thickness:1px}}"
-            f".ed .bl{{{fx('intro')}}}.ed .lnbox{{border-top:2px solid var(--oa-color-border-strong);padding-top:12px}}")
+            f".ed .bl{{{fx('intro')}}}.ed .lnbox{{max-width:640px;border-top:2px solid var(--oa-color-border-strong);padding-top:12px}}")
     use = ["rule", "decision", "record", "hearing", "vote", "office", "deadline", "step"]
     leave = [("genuinely, really, truly, actually, simply, just", "a fact, or nothing"), ("leverage (as a verb)", "use"), ("underscore, reflect", "show"),
              ("unprecedented", "the first time since a named date, sourced"), ("broken, crisis, rigged", "what changed, with its measure"),
@@ -481,14 +481,14 @@ def build(book):
                                   alt="A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge, lockmark, lever, which is a place where one change has wide effects, Signal Grid and evidence grade.",
                                   notes="Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's. Series routes move to chapter 08. CP-S7: lever joins W04's definition to the lockmark's node."),
                     "caption": "The list to leave out pairs each word with what to write in its place."},
-        "failure": {"specimen": A("s-02-26-failure", bad_v, css=(BASE, VCSS), rule="02.26", illustrative=True, width=600,
+        "failure": {"specimen": A("s-02-26-failure", bad_v, css=(BASE, VCSS), rule="02.26", illustrative=True,
                                   alt="An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system."),
                     "caption": "Five words from the list fill one sentence, and it leaves the reader without a rule, an office or a step."},
         "related": ["08", "13"],
         "builders": "Search a draft for every word on the list to leave out, and check each series name against the list before a kicker ships.",
     })
 
-    HH = ".ed .hhs{display:grid;gap:14px}"
+    HH = ".ed.hhs{display:grid;gap:14px}"
     pairs_ok = [("The zoning code", "the rent."), ("The filing deadline", "the ballot."), ("The coverage rule", "the copay."), ("The records law", "the answer.")]
     hh_ok = '<div class="ed hhs">' + "".join(f'<p class="hh">{e(a)} {amp_h()} {e(b)}</p>' for a, b in pairs_ok) + "</div>"
     hh_bad = ('<div class="ed hhs"><p class="hh">The hearing ' + amp_h() + ' the vote.</p><p class="src">Our brand guide, fifth edition, chapter 02 Voice</p>'
@@ -501,10 +501,10 @@ def build(book):
         "tokens": ["oa.font.family.display"],
         "why": {"text": ["A reader meets the rule they could change beside the result they already feel, which is the hinge between a commitment and the action that keeps it."],
                 "basis": "Editorial judgment"},
-        "correct": {"specimen": A("s-02-27-correct", hh_ok, css=(BASE, HL, HH), rule="02.27", width=600,
+        "correct": {"specimen": A("s-02-27-correct", hh_ok, css=(BASE, HL, HH), rule="02.27",
                                   alt="Four hinge headlines, each a rule and then its result: The zoning code and the rent. The filing deadline and the ballot. The coverage rule and the copay. The records law and the answer. Each ampersand is ampersand B in red."),
                     "caption": "Each headline names a rule first and what it produces second, and each works in any state."},
-        "failure": {"specimen": A("s-02-27-failure", hh_bad, css=(BASE, HL, HH), rule="02.27", width=600,
+        "failure": {"specimen": A("s-02-27-failure", hh_bad, css=(BASE, HL, HH), rule="02.27",
                                   alt="Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule."),
                     "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."},
         "files": [AMP24, AMP_DISPLAY],

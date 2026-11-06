@@ -41,7 +41,7 @@
  "s-01-1-correct": {
   "chapter": "01",
   "rule": "01.1",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "An illustrative tracker card, kicker Tracker, state senate. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. Both bars, yes and no, are Charcoal, each with its name and count. After the hinge divider, one red button: Follow S. 214.",
   "illustrative": true,
   "notes": ""
@@ -49,7 +49,7 @@
  "s-01-1-failure": {
   "chapter": "01",
   "rule": "01.1",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "Failure case: do not publish. The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote.",
   "illustrative": true,
   "notes": "",
@@ -61,7 +61,7 @@
  "s-01-2-correct": {
   "chapter": "01",
   "rule": "01.2",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Bar chart: In May 2023, most Democrats and most Republicans favored a ban on stock trading by members of Congress. Democrats 88 percent and Republicans 87 percent, both bars in the same Charcoal, each named beside its bar. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
   "illustrative": false,
   "notes": ""
@@ -69,7 +69,7 @@
  "s-01-2-failure": {
   "chapter": "01",
   "rule": "01.2",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Failure case: do not publish. The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above.",
   "illustrative": false,
   "notes": "",
@@ -81,7 +81,7 @@
  "s-01-3-correct": {
   "chapter": "01",
   "rule": "01.3",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A five-step key for change in two directions, from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more.",
   "illustrative": false,
   "notes": ""
@@ -89,7 +89,7 @@
  "s-01-3-failure": {
   "chapter": "01",
   "rule": "01.3",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows.",
   "illustrative": false,
   "notes": "",
@@ -101,7 +101,7 @@
  "s-01-4-correct": {
   "chapter": "01",
   "rule": "01.4",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "A Prussian panel with the wordmark in White, ampersand included, at its 24 px master, and an illustrative bar in Newsprint: committees that posted every roll call last session, 6 of 20.",
   "illustrative": true,
   "notes": "",
@@ -110,7 +110,7 @@
  "s-01-4-failure": {
   "chapter": "01",
   "rule": "01.4",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "The same panel with the wordmark's ampersand in Pillar Red on Prussian.",
   "illustrative": true,
   "notes": "",
@@ -123,7 +123,7 @@
  "s-01-5-correct": {
   "chapter": "01",
   "rule": "01.5",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Tile map of the 50 states and DC. Citizens in 23 states and DC have a working way to petition a proposed law or amendment onto the ballot. Those tiles are solid Charcoal; Mississippi is hatched; the other 26 states are open. Key below the map. Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state supreme court ruling.",
   "illustrative": false,
   "notes": "Round two: the research lead checks the 23-state count and each state's limits (Mississippi, Illinois, Florida), and the source line takes them (DR-99, BE-S3)."
@@ -131,7 +131,7 @@
  "s-01-5-failure": {
   "chapter": "01",
   "rule": "01.5",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Failure case: do not publish. The same tile map colored by the 2024 presidential winner, 31 tiles in Pillar Red and 20 in Prussian blue. Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
   "illustrative": false,
   "notes": "",
@@ -143,7 +143,7 @@
  "s-01-6-correct": {
   "chapter": "01",
   "rule": "01.6",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "A labeled photograph placeholder with its caption: the doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Photograph and credit to come.",
   "illustrative": false,
   "notes": "Round two (DR-101): a public-domain U.S. government photograph from the research lead replaces the placeholder, or the rule moves to chapter 16."
@@ -151,7 +151,7 @@
  "s-01-6-failure": {
   "chapter": "01",
   "rule": "01.6",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you.",
   "illustrative": false,
   "notes": ""
@@ -159,7 +159,7 @@
  "s-01-7-correct": {
   "chapter": "01",
   "rule": "01.7",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "An illustrative explainer card: What a yes vote and a no vote on Measure B would do. Below it, a document reference to the measure's ballot text and the county counsel's summary.",
   "illustrative": true,
   "notes": ""
@@ -167,7 +167,7 @@
  "s-01-7-failure": {
   "chapter": "01",
   "rule": "01.7",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX.",
   "illustrative": true,
   "notes": ""
@@ -175,7 +175,7 @@
  "s-01-8-correct": {
   "chapter": "01",
   "rule": "01.8",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "A labeled photograph placeholder with an illustrative caption naming who, what, where and when: a county planner answers residents' questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.",
   "illustrative": true,
   "notes": "Round two (DR-101): a public-domain U.S. government photograph from the research lead, with its real caption, or the rule moves to chapter 16."
@@ -183,7 +183,7 @@
  "s-01-8-failure": {
   "chapter": "01",
   "rule": "01.8",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "The same placeholder captioned only Democracy in action.",
   "illustrative": true,
   "notes": ""
@@ -227,7 +227,7 @@
  "s-01-11-correct": {
   "chapter": "01",
   "rule": "01.11",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month. California: In August 2025, the Democratic-led legislature passed a congressional map aiming at five more Democratic seats, and voters approved it as Proposition 50. Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These records show maps being drawn and measure nothing about how long either majority’s hold lasts.",
   "illustrative": false,
   "notes": "BE-S1, CP-M5: both cases in one form. Round two applies the research lead's check of who drew each map, its aim and the dates."
@@ -235,7 +235,7 @@
  "s-01-11-failure": {
   "chapter": "01",
   "rule": "01.11",
-  "width_px": 600,
+  "width_px": null,
   "alt": "The same loop with only the Texas case: In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month.",
   "illustrative": false,
   "notes": ""
@@ -261,7 +261,7 @@
  "s-01-13-correct": {
   "chapter": "01",
   "rule": "01.13",
-  "width_px": 600,
+  "width_px": null,
   "alt": "For an investor-owned utility, the state public utility commission sets your rate in a rate case, its formal review of the utility’s request. From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
   "illustrative": false,
   "notes": ""
@@ -269,7 +269,7 @@
  "s-01-13-failure": {
   "chapter": "01",
   "rule": "01.13",
-  "width_px": 600,
+  "width_px": null,
   "alt": "An illustrative line: Politicians raised your electric bill again.",
   "illustrative": true,
   "notes": ""
@@ -277,7 +277,7 @@
  "s-01-14-correct": {
   "chapter": "01",
   "rule": "01.14",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A headline question: Who sets your property tax rate, and when could it change?",
   "illustrative": false,
   "notes": ""
@@ -285,7 +285,7 @@
  "s-01-14-failure": {
   "chapter": "01",
   "rule": "01.14",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?",
   "illustrative": false,
   "notes": ""
@@ -293,7 +293,7 @@
  "s-01-15-correct": {
   "chapter": "01",
   "rule": "01.15",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A kicker, Tracker, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday.",
   "illustrative": false,
   "notes": ""
@@ -301,7 +301,7 @@
  "s-01-15-failure": {
   "chapter": "01",
   "rule": "01.15",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor.",
   "illustrative": false,
   "notes": ""
@@ -309,7 +309,7 @@
  "s-01-16-correct": {
   "chapter": "01",
   "rule": "01.16",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Does pay rise with productivity? Two readings at the same length, 24 words each, in the same type. One: Economists writing for the National Bureau of Economic Research find that average pay still rises with productivity, by most or all of each gain. The other: Economists writing for the Economic Policy Institute find that the pay of typical workers has risen far more slowly than productivity has since 1979. Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, the connection from productivity to household income, snapshot of October 15, 2026. The two measure different pay, average pay in one and typical workers’ pay in the other, and they differ in the price index they use and in how they count benefits. The atlas grades the connection plausible and contested.",
   "illustrative": false,
   "notes": "BE-M2, CP-S6: both holders by role and affiliation in one form. Round two takes the research lead's reading of how each publisher describes its authors."
@@ -317,7 +317,7 @@
  "s-01-16-failure": {
   "chapter": "01",
   "rule": "01.16",
-  "width_px": 600,
+  "width_px": null,
   "alt": "The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree.",
   "illustrative": false,
   "notes": ""
@@ -325,7 +325,7 @@
  "s-01-17-correct": {
   "chapter": "01",
   "rule": "01.17",
-  "width_px": 600,
+  "width_px": null,
   "alt": "The filibuster lets senators keep debating a bill until 60 of them vote to end debate, a vote called cloture. Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
   "illustrative": false,
   "notes": ""
@@ -333,7 +333,7 @@
  "s-01-17-failure": {
   "chapter": "01",
   "rule": "01.17",
-  "width_px": 600,
+  "width_px": null,
   "alt": "An illustrative line: The filibuster lets a minority of senators hold the country hostage.",
   "illustrative": true,
   "notes": ""
@@ -341,7 +341,7 @@
  "s-01-18-correct": {
   "chapter": "01",
   "rule": "01.18",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red.",
   "illustrative": false,
   "notes": ""
@@ -349,7 +349,7 @@
  "s-01-18-failure": {
   "chapter": "01",
   "rule": "01.18",
-  "width_px": 600,
+  "width_px": null,
   "alt": "The same headline with the second half, the paycheck, also set in red.",
   "illustrative": false,
   "notes": "",
@@ -361,7 +361,7 @@
  "s-01-19-correct": {
   "chapter": "01",
   "rule": "01.19",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Two hinge headlines from two pieces. One: The bus rider and the driver on one route. The next: The driver and the bus rider at one hearing. The order swaps, and each pair shares a route or a hearing.",
   "illustrative": false,
   "notes": ""
@@ -369,7 +369,7 @@
  "s-01-19-failure": {
   "chapter": "01",
   "rule": "01.19",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A hinge headline: Us and them.",
   "illustrative": false,
   "notes": ""
@@ -377,7 +377,7 @@
  "s-01-20-correct": {
   "chapter": "01",
   "rule": "01.20",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A hinge headline: Democratic voters and Republican voters on a stock trading ban. Deck: In a May 2023 survey, 88 percent of Democrats and 87 percent of Republicans favored a ban on stock trading by members of Congress. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
   "illustrative": false,
   "notes": ""
@@ -385,7 +385,7 @@
  "s-01-20-failure": {
   "chapter": "01",
   "rule": "01.20",
-  "width_px": 600,
+  "width_px": null,
   "alt": "A hinge headline: The left and the right.",
   "illustrative": false,
   "notes": ""
@@ -393,7 +393,7 @@
  "s-01-21-correct": {
   "chapter": "01",
   "rule": "01.21",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? Tracker, Congress: Stop Insider Trading Act Tracker. Analysis, work and pay: Does pay rise with productivity? Report, state legislatures, illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label.",
   "illustrative": false,
   "notes": ""
@@ -401,7 +401,7 @@
  "s-01-21-failure": {
   "chapter": "01",
   "rule": "01.21",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Three kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts.",
   "illustrative": false,
   "notes": ""
@@ -409,7 +409,7 @@
  "s-01-22-correct": {
   "chapter": "01",
   "rule": "01.22",
-  "width_px": 600,
+  "width_px": 360,
   "alt": "An illustrative process piece. Kicker: Act, how to take part. Headline: Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting. Who decides: five county supervisors, and three votes pass the change. What each side has said: supporters said more homes would ease rents; opponents said sewers were sized for fewer homes. After the hinge divider, What you can do: send a written comment by 5 p.m. Wednesday, March 3, 2027, or speak for two minutes at 6 p.m. Tuesday, March 9, 2027. One red button: Send a comment. A line pointing to the Backyard Cottages Tracker.",
   "illustrative": true,
   "notes": ""
@@ -417,7 +417,7 @@
  "s-01-22-failure": {
   "chapter": "01",
   "rule": "01.22",
-  "width_px": 600,
+  "width_px": 360,
   "alt": "The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes.",
   "illustrative": true,
   "notes": ""
@@ -425,7 +425,7 @@
  "s-01-23-correct": {
   "chapter": "01",
   "rule": "01.23",
-  "width_px": 600,
+  "width_px": 360,
   "alt": "An illustrative position piece. The kicker opens with a Charcoal label, Our position, then the topic, committee votes. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, who decided: our editorial board, February 26, 2027; no funder has a stake in S. 214 or saw the piece before it ran; a link to the bios of the board members who decided. One red button: Ask your senator to vote yes. A footer pointing to our explainer on S. 214 and to the position log.",
   "illustrative": true,
   "notes": ""
@@ -433,7 +433,7 @@
  "s-01-23-failure": {
   "chapter": "01",
   "rule": "01.23",
-  "width_px": 600,
+  "width_px": 360,
   "alt": "The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask.",
   "illustrative": true,
   "notes": ""
@@ -864,7 +864,7 @@
  "s-02-23-failure": {
   "chapter": "02",
   "rule": "02.23",
-  "width_px": 480,
+  "width_px": 360,
   "alt": "The wordmark with From spectators to stewards set beneath it in the tagline's slot.",
   "illustrative": false,
   "notes": ""
@@ -882,15 +882,15 @@
  "s-02-24-correct": {
   "chapter": "02",
   "rule": "02.24",
-  "width_px": 600,
-  "alt": "An illustrative newsletter ending, on a 600 px email column. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people.",
+  "width_px": 360,
+  "alt": "An illustrative newsletter ending, as a phone shows it. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people.",
   "illustrative": true,
   "notes": ""
  },
  "s-02-24-failure": {
   "chapter": "02",
   "rule": "02.24",
-  "width_px": 600,
+  "width_px": 360,
   "alt": "The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date.",
   "illustrative": true,
   "notes": "",
@@ -911,7 +911,7 @@
  "s-02-25-failure": {
   "chapter": "02",
   "rule": "02.25",
-  "width_px": 340,
+  "width_px": 360,
   "alt": "An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!",
   "illustrative": true,
   "notes": ""
@@ -928,7 +928,7 @@
  "s-02-26-failure": {
   "chapter": "02",
   "rule": "02.26",
-  "width_px": 600,
+  "width_px": null,
   "alt": "An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system.",
   "illustrative": true,
   "notes": ""
@@ -936,7 +936,7 @@
  "s-02-27-correct": {
   "chapter": "02",
   "rule": "02.27",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Four hinge headlines, each a rule and then its result: The zoning code and the rent. The filing deadline and the ballot. The coverage rule and the copay. The records law and the answer. Each ampersand is ampersand B in red.",
   "illustrative": false,
   "notes": ""
@@ -944,7 +944,7 @@
  "s-02-27-failure": {
   "chapter": "02",
   "rule": "02.27",
-  "width_px": 600,
+  "width_px": null,
   "alt": "Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule.",
   "illustrative": false,
   "notes": ""

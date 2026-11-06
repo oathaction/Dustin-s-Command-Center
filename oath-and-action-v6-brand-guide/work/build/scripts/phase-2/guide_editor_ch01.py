@@ -110,7 +110,7 @@ STAGES = f"""
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# The two Act kinds on a 600 px artboard (phone floor)
+# The two Act kinds as phone pages, 360 px wide (phone floor)
 # ---------------------------------------------------------------------------------------------------------------
 def process_piece(fail=False):
     ask = "Tell the supervisors to vote yes" if fail else "Send a comment"
@@ -165,6 +165,7 @@ def position_piece(fail=False):
 # Charts and maps
 # ---------------------------------------------------------------------------------------------------------------
 CHART = f"""
+.ed.vote{{max-width:600px}}
 .ed .ct{{{fx('h4')};margin:0 0 4px;max-width:34ch;text-wrap:balance}}
 .ed .cm{{{fx('caption')};color:var(--oa-color-text-secondary);margin:0 0 12px}}
 .ed .bchart{{display:grid;gap:10px;margin:0}}
@@ -239,7 +240,7 @@ def tile_map(mode):
 
 
 MAP = f"""
-.ed .mapk{{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;{fx('body-small')};max-width:360px}}
+.ed svg[viewBox]{{max-width:100%;height:auto}}.ed .mapk{{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;{fx('body-small')};max-width:360px}}
 .ed .mapk li{{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}}
 .ed .mapk svg{{margin-top:3px}}
 """
@@ -289,7 +290,7 @@ def diverging_key(fail=False):
 
 
 DIV = f"""
-.ed .dk{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0}}
+.ed .dk{{max-width:600px;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0}}
 .ed .dk li{{display:grid;justify-items:start;gap:6px;width:112px;{fx('body-small')};padding-right:8px}}
 """
 
@@ -488,11 +489,11 @@ def build(book):
         "why": {"text": ["Election-night maps have taught readers to see red as one party. A red mark on a side tells a reader on the other "
                          "side that the piece is against them before they read a word, and they stop trusting the record we keep for everyone."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-1-correct", vbody(False), css=(BASE, CHART), rule="01.1", illustrative=True, width=480,
+        "correct": {"specimen": A("s-01-1-correct", vbody(False), css=(BASE, CHART), rule="01.1", illustrative=True, width=360,
                                   alt="An illustrative tracker card, kicker Tracker, state senate. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. "
                                       "Both bars, yes and no, are Charcoal, each with its name and count. After the hinge divider, one red button: Follow S. 214."),
                     "caption": "Both sides of the vote take the same Charcoal, with their names and counts printed. The view’s one working red goes to the step a reader can take now, the button that follows the bill."},
-        "failure": {"specimen": A("s-01-1-failure", vbody(True), css=(BASE, CHART), rule="01.1", illustrative=True, width=480, exempt=["red", "contrast"],
+        "failure": {"specimen": A("s-01-1-failure", vbody(True), css=(BASE, CHART), rule="01.1", illustrative=True, width=360, exempt=["red", "contrast"],
                                   alt="Failure case: do not publish. The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote."),
                     "caption": "Red on the no votes casts those three senators as the problem. A reader who agrees with them sees an attack, and the count stops reading as a record."},
         "specs": [{"label": "Working red", "value": "One job per view, in the order Rule 05.3 sets", "token": "oa.color.action.ask.fill.onNewsprint"},
@@ -516,12 +517,12 @@ def build(book):
                          "learning a color code, in color or in grayscale."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-2-correct", bars([("Democrats", sv["support-democrats"], "ink", 100), ("Republicans", sv["support-republicans"], "ink", 100)], t2, m2, SRC_STOCK_SURVEY),
-                                  css=(BASE, CHART), rule="01.2", width=600,
+                                  css=(BASE, CHART), rule="01.2",
                                   alt=f"Bar chart: {t2} Democrats 88 percent and Republicans 87 percent, both bars in the same Charcoal, each named beside its bar. {SRC_STOCK_SURVEY}"),
                     "caption": "Both parties take the same Charcoal, with each party’s name beside its bar, so a finding of agreement reads as agreement."},
         "failure": {"specimen": A("s-01-2-failure", bars([("Democrats", sv["support-democrats"], "blue", 100), ("Republicans", sv["support-republicans"], "red", 100)], t2, m2, SRC_STOCK_SURVEY, names=False,
                                                          key=[("blue", "Democrats"), ("red", "Republicans")], fail=True),
-                                  css=(BASE, CHART), rule="01.2", width=600, exempt=["red", "contrast"],
+                                  css=(BASE, CHART), rule="01.2", exempt=["red", "contrast"],
                                   alt="Failure case: do not publish. The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above."),
                     "caption": "Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."},
         "specs": [{"label": "Party marks", "value": "Charcoal, one ink for every party", "token": "oa.chart.color.party.mark.onNewsprint"},
@@ -543,10 +544,10 @@ def build(book):
         "why": {"text": ["Neither end of the pair belongs to a party, so a fall and a rise carry the same weight. The arrow and the word carry "
                          "the direction for a reader who sees no color at all."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-3-correct", f'<div class="ed">{dtitle}<ul class="dk">{dk_ok}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", width=600,
+        "correct": {"specimen": A("s-01-3-correct", f'<div class="ed">{dtitle}<ul class="dk">{dk_ok}</ul></div>', css=(BASE, CHART, DIV), rule="01.3",
                                   alt="A five-step key for change in two directions, from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more."),
                     "caption": "Each step carries a boxed arrow and a word, so the key reads the same in grayscale."},
-        "failure": {"specimen": A("s-01-3-failure", f'<div class="ed">{dnp()}{dtitle}<ul class="dk">{dk_bad}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", width=600, exempt=["red", "contrast"],
+        "failure": {"specimen": A("s-01-3-failure", f'<div class="ed">{dnp()}{dtitle}<ul class="dk">{dk_bad}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", exempt=["red", "contrast"],
                                   alt="Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows."),
                     "caption": "A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."},
         "specs": [{"label": "Steps", "value": "Five, step 1 the strongest fall, step 3 the page color", "token": "oa.chart.color.diverging.fill.step3.onNewsprint"},
@@ -557,7 +558,7 @@ def build(book):
 
     pr_bar = ('<div class="pbar"><p class="pt">Committees that posted every roll call last session</p>'
               '<div class="pb"><span style="width:30%"></span></div><p class="pv num">6 of 20</p></div>')
-    PRCSS = (f".ed.prus{{padding:24px}}"
+    PRCSS = (f".ed.prus{{padding:0}}"
              f".ed .pbar{{margin-top:22px}}.ed .pt{{{fx('body')};margin:0 0 8px}}"
              f".ed .pb{{height:16px;border:1px solid var(--oa-color-data-emphasis)}}.ed .pb span{{display:block;height:100%;background:var(--oa-color-data-emphasis)}}"
              f".ed .pv{{{fx('body', weight='700')};margin-top:6px}}"
@@ -573,11 +574,11 @@ def build(book):
                          "Red on our dark blue also pairs the two colors election maps give the parties."],
                 "basis": "Design judgment, measured against WCAG 2.2 SC 1.4.11 at rendered sizes"},
         "correct": {"specimen": A("s-01-4-correct", f'<div class="ed prus">{kicker("Report", "State legislatures", illus=True)}<img data-inline src="{WORDMARK24_PRUSSIAN}" alt="Oath & Action" class="wmk" height="24">{pr_bar}</div>',
-                                  css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=480,
+                                  css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=360,
                                   alt="A Prussian panel with the wordmark in White, ampersand included, at its 24 px master, and an illustrative bar in Newsprint: committees that posted every roll call last session, 6 of 20."),
                     "caption": "The wordmark and its ampersand turn White, and the bar turns Newsprint. The panel carries no red."},
         "failure": {"specimen": A("s-01-4-failure", f'<div class="ed prus">{kicker("Report", "State legislatures", illus=True)}<img data-inline src="{WORDMARK24}" alt="Oath & Action" class="wmk redamp" height="24" data-red="failure">{pr_bar}</div>',
-                                  css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=480, exempt=["contrast", "red"],
+                                  css=(BASE, PRCSS), rule="01.4", surface="prussian", illustrative=True, width=360, exempt=["contrast", "red"],
                                   alt="The same panel with the wordmark's ampersand in Pillar Red on Prussian."),
                     "caption": "The red ampersand sinks into the Prussian ground at 3.19 to 1, and at small sizes a reader loses the mark’s center."},
         "specs": [{"label": "Identity marks", "value": "White, one color", "token": "oa.color.identity.signature.onPrussian"},
@@ -607,13 +608,13 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-5-correct", f'<div class="ed"><p class="ct">{e(t5)}</p><p class="cm">Statewide citizen-initiated measures, by state, as read November 6, 2026</p>'
                                                     f'{svg_rule}{key_rule}<p class="src">{e(SRC_INITIATIVE)}</p></div>',
-                                  css=(BASE, CHART, MAP), rule="01.5", width=600,
+                                  css=(BASE, CHART, MAP), rule="01.5",
                                   alt=f"Tile map of the 50 states and DC. {t5} Those tiles are solid Charcoal; Mississippi is hatched; the other {cnt['none']} states are open. Key below the map. {SRC_INITIATIVE}",
                                   notes="Round two: the research lead checks the 23-state count and each state's limits (Mississippi, Illinois, Florida), and the source line takes them (DR-99, BE-S3)."),
-                    "caption": "Solid, hatched and open tiles show the rule, with the key beside the map and the source below it."},
+                    "caption": "Solid, hatched and open tiles show the rule, with the key next to the map and the source below it."},
         "failure": {"specimen": A("s-01-5-failure", f'<div class="ed">{dnp()}<p class="ct">The 2024 presidential vote, by state</p><p class="cm">Winner of each state</p>'
                                                     f'{svg_win}{key_win}<p class="src">{e(SRC_FEC)}</p></div>',
-                                  css=(BASE, CHART, MAP), rule="01.5", width=600, exempt=["red", "contrast"],
+                                  css=(BASE, CHART, MAP), rule="01.5", exempt=["red", "contrast"],
                                   alt=f"Failure case: do not publish. The same tile map colored by the 2024 presidential winner, {cw['rep']} tiles in Pillar Red and {cw['dem']} in Prussian blue. {SRC_FEC}"),
                     "caption": "Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."},
         "specs": [{"label": "Tile grid", "value": "12 columns by 8 rows, one square per state and DC"},
@@ -631,7 +632,7 @@ def build(book):
           f".ed .card{{border-top:4px solid var(--oa-color-border-strong);padding-top:14px;position:relative;overflow:hidden}}"
           f".ed .card .hl{{{fx('h3')};margin:0 0 10px;position:relative;max-width:16ch}}"
           f".ed .card .dek{{position:relative;max-width:40ch}}"
-          f".ed .dome{{position:absolute;right:-10px;top:10px;width:260px;height:auto;color:var(--oa-color-graphic-subtle)}}")
+          f".ed .dome{{position:absolute;right:-16px;top:36px;width:200px;height:auto;color:var(--oa-color-graphic-subtle)}}")
     ph = lambda cap: f'<div class="ph"><span class="phl">Photograph placeholder</span></div><p class="phc">{cap}</p>'
     dome = ('<svg class="dome" viewBox="0 0 260 200" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3">'
             '<path d="M70 120 A60 60 0 0 1 190 120"/><path d="M60 120h140M55 132h150"/><path d="M130 60v-26M122 34h16"/>'
@@ -644,13 +645,13 @@ def build(book):
                          "office or event, so they give the reader nothing to check or act on."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-6-correct", '<div class="ed">' + ph("The doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Placeholder: photograph and credit to come.") + "</div>",
-                                  css=(BASE, PH), rule="01.6", width=480,
+                                  css=(BASE, PH), rule="01.6", width=360,
                                   alt="A labeled photograph placeholder with its caption: the doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Photograph and credit to come.",
                                   notes="Round two (DR-101): a public-domain U.S. government photograph from the research lead replaces the placeholder, or the rule moves to chapter 16."),
                     "caption": "The building appears only as the place where the vote happened, named in a caption, in a photograph still to be made."},
         "failure": {"specimen": A("s-01-6-failure", f'<div class="ed"><div class="card">{dome}{kicker("Explainer", "Congress")}'
                                                     '<p class="hl">What the Senate vote on the Stop Insider Trading Act means for you</p><p class="dek">One vote, 53 to 47, and what comes next.</p></div></div>',
-                                  css=(BASE, PH), rule="01.6", width=480,
+                                  css=(BASE, PH), rule="01.6", width=360,
                                   alt="An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you."),
                     "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."},
         "related": ["16", "12"],
@@ -673,10 +674,10 @@ def build(book):
                  "takes a side the piece never argued. A party’s logo may appear as evidence, inside a sourced document the piece reproduces."],
         "why": {"text": ["A reader takes any symbol on our page as ours. A campaign button or a slogan placard reads as an endorsement, even when the story beside it is neutral."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-7-correct", ballot(False), css=(BASE, PH, BCSS), rule="01.7", illustrative=True, width=480,
+        "correct": {"specimen": A("s-01-7-correct", ballot(False), css=(BASE, PH, BCSS), rule="01.7", illustrative=True, width=360,
                                   alt="An illustrative explainer card: What a yes vote and a no vote on Measure B would do. Below it, a document reference to the measure's ballot text and the county counsel's summary."),
                     "caption": "The card explains both votes and points to the ballot text as its document."},
-        "failure": {"specimen": A("s-01-7-failure", ballot(True), css=(BASE, PH, BCSS), rule="01.7", illustrative=True, width=480,
+        "failure": {"specimen": A("s-01-7-failure", ballot(True), css=(BASE, PH, BCSS), rule="01.7", illustrative=True, width=360,
                                   alt="The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX."),
                     "caption": "The button and the placard take sides on a measure the card set out to explain, so a reader on either side stops at the picture."},
         "related": ["16", "23"],
@@ -690,12 +691,12 @@ def build(book):
         "why": {"text": ["A reader trusts a picture of a real hearing more than a picture of the idea of one, and a full caption lets them check it."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-8-correct", '<div class="ed">' + ph(ill() + " A county planner answers residents’ questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.") + "</div>",
-                                  css=(BASE, PH), rule="01.8", illustrative=True, width=480,
+                                  css=(BASE, PH), rule="01.8", illustrative=True, width=360,
                                   alt="A labeled photograph placeholder with an illustrative caption naming who, what, where and when: a county planner answers residents' questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.",
                                   notes="Round two (DR-101): a public-domain U.S. government photograph from the research lead, with its real caption, or the rule moves to chapter 16."),
                     "caption": "The caption names the person by role, the act, the place and the time."},
         "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + ph(ill() + " Democracy in action.") + "</div>",
-                                  css=(BASE, PH), rule="01.8", illustrative=True, width=480,
+                                  css=(BASE, PH), rule="01.8", illustrative=True, width=360,
                                   alt="The same placeholder captioned only Democracy in action."),
                     "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."},
         "related": ["16"],
@@ -704,20 +705,23 @@ def build(book):
 
     # --- Group 3: choosing examples -----------------------------------------------------------------------------
     n, dom, states = tally()
-    TCSS = (".ed .tal td.c{white-space:nowrap;font-variant-numeric:tabular-nums}"
-            ".ed .tal .bar1{display:inline-block;height:10px;background:var(--oa-color-data-emphasis);vertical-align:0}"
+    TCSS = (".ed.tal td.c{white-space:nowrap;font-variant-numeric:tabular-nums}.ed.tal th[scope=row]{font-weight:400}.ed .log th[scope=row]{font-weight:700}"
+            "@media (max-width:79.99em){.ed table.log,.ed table.log tbody,.ed table.log tr,.ed table.log th,.ed table.log td{display:block;width:100%}"
+            ".ed table.log thead{display:none}.ed table.log tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}"
+            ".ed table.log th,.ed table.log td{border:0;padding:3px 0}.ed table.log td[data-k]::before{content:attr(data-k) \": \";font-weight:700}}"
+            ".ed.tal .bar1{display:inline-block;height:10px;background:var(--oa-color-data-emphasis);vertical-align:0}"
             ".ed .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}")
     top = max(dom.values())
-    trs = "".join(f'<tr><td>{e(DOMAINS[d])}</td><td class="c">{dom[d]} of {n}</td><td class="c"><span class="bar1" style="width:{dom[d] * 14}px"></span></td></tr>'
+    trs = "".join(f'<tr><th scope="row">{e(DOMAINS[d])}</th><td class="c">{dom[d]} of {n}</td></tr>'
                   for d in sorted(dom, key=lambda k: (-dom[k], k)))
     limit = n / 4
     st_names = [s for s in NAMED_STATES if states[s]]
     st_line = ", ".join(st_names[:-1]) + " and " + st_names[-1]
     tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply four. '
-              f'{st_line} supply one example each.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col"><span class="vh">Bar</span></th></tr></thead><tbody>{trs}</tbody></table></div>')
+              f'{st_line} supply one example each.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th></tr></thead><tbody>{trs}</tbody></table></div>')
     bad = [("Elections and representation", 3), ("Money, lobbying and influence", 1), ("Taxes, wealth and economic security", 1)]
-    tal_bad = (f'<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
-               + "".join(f'<tr><td>{e(a)}</td><td class="c">{b} of 5</td><td class="c">{["3", "0", "0"][i]}</td></tr>' for i, (a, b) in enumerate(bad)) + "</tbody></table></div>")
+    tal_bad = (f'<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table class="stack"><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
+               + "".join(f'<tr><th scope="row">{e(a)}</th><td class="c" data-k="Examples">{b} of 5</td><td class="c" data-k="From Massachusetts">{["3", "0", "0"][i]}</td></tr>' for i, (a, b) in enumerate(bad)) + "</tbody></table></div>")
     rules.append({
         "id": "01.9", "title": "Draw no more than one example in four from one atlas domain, or one in five from one state.",
         "rule": ["Count examples within one unit: a chapter of this guide, a report, or a month of newsletter issues. Draw no more than one "
@@ -768,7 +772,7 @@ def build(book):
         "builders": "Tag each row of the rotation log with its level and region, and look for an empty one before the piece runs.",
     })
 
-    CASES = (f".ed .cases{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
+    CASES = (f".ed .cases{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
              f".ed .cases div{{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}}"
              f".ed .cases .st{{{fx('h4')};margin:0 0 6px}}")
     tx = "In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month."
@@ -785,19 +789,19 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-11-correct", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div>'
                                                      f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
-                                  css=(BASE, CHART, CASES), rule="01.11", width=600,
+                                  css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {SRC_R4A}",
                                   notes="BE-S1, CP-M5: both cases in one form. Round two applies the research lead's check of who drew each map, its aim and the dates."),
                     "caption": f"Each case names the month, the majority that acted, the seats its map aimed at and the step that put the map in place, in {words(tx)} words."},
         "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
-                                  css=(BASE, CHART, CASES), rule="01.11", width=600,
+                                  css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"The same loop with only the Texas case: {tx}"),
                     "caption": "With one party’s case alone, the loop reads as a charge against that party, and a reader who votes for it stops at the first line."},
         "related": ["15", "13"],
         "builders": "Before a piece runs a mechanism, list the party of the majority in each of the atlas’s case records for that loop, pick one case from each and write both in the same form.",
     })
 
-    LOGH = ('<table class="stack"><thead><tr><th scope="col">Example</th><th scope="col">Domain</th><th scope="col">State</th>'
+    LOGH = ('<table class="stack log"><thead><tr><th scope="col">Example</th><th scope="col">Domain</th><th scope="col">State</th>'
             '<th scope="col">Region</th><th scope="col">Level</th><th scope="col">Coalition behind any reform shown</th></tr></thead><tbody>')
     log_rows = [x for x in EXAMPLES if x[0] in ("Minimum wage floors", "Mid-decade map redraws", "Citizen initiatives", "Backyard cottages", "Posting committee votes, S. 214")]
     log_ok = (f'<div class="ed tal"><p class="ct">Rotation log, chapter 01, five of its {n} rows</p>' + LOGH
@@ -823,7 +827,7 @@ def build(book):
     })
 
     # --- Group 4: words -------------------------------------------------------------------------------------------
-    LINES = (f".ed .lnbox{{border-top:2px solid var(--oa-color-border-strong);padding-top:12px}}"
+    LINES = (f".ed .lnbox{{max-width:640px;border-top:2px solid var(--oa-color-border-strong);padding-top:12px}}"
              f".ed .ln{{{fx('intro')};margin:0}}.ed .ln.h{{{fx('h3')}}}"
              f".ed .ln+.src{{margin-top:10px}}")
     line = lambda t, src="", illus=False, head=False, kick="": (f'<div class="ed"><div class="lnbox">{kick}<p class="ln{" h" if head else ""}">{e(t)}{" " + ill() if illus else ""}</p>'
@@ -835,9 +839,9 @@ def build(book):
                  "vote, and give the count and its source."],
         "why": {"text": ["A reader can call an office or testify before it, and at the next election they can vote out its members or the official who appointed them. A party’s name in place of an office gives them a team to blame and nobody to call."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-13-correct", line(t13, SRC_ELECTRIC), css=(BASE, LINES), rule="01.13", width=600, alt=f"{t13} {SRC_ELECTRIC}"),
+        "correct": {"specimen": A("s-01-13-correct", line(t13, SRC_ELECTRIC), css=(BASE, LINES), rule="01.13", alt=f"{t13} {SRC_ELECTRIC}"),
                     "caption": "The sentence names the commission and the hearing where it decides, so a reader knows where to look."},
-        "failure": {"specimen": A("s-01-13-failure", line("Politicians raised your electric bill again.", illus=True), css=(BASE, LINES), rule="01.13", illustrative=True, width=600,
+        "failure": {"specimen": A("s-01-13-failure", line("Politicians raised your electric bill again.", illus=True), css=(BASE, LINES), rule="01.13", illustrative=True,
                                   alt="An illustrative line: Politicians raised your electric bill again."),
                     "caption": "“Politicians” names no office, so the reader has no one to call, and “again” supplies a grievance the record does not show."},
         "related": ["02", "13"],
@@ -850,10 +854,10 @@ def build(book):
                  "angry about”. Write each question so a person who supports the current rule could ask it too."],
         "why": {"text": ["A question that assumes the reader is angry tells half our readers the piece is for someone else. Who decided, and when the rule could change, are things a reader on either side of it wants to know."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-14-correct", line("Who sets your property tax rate, and when could it change?", head=True), css=(BASE, LINES), rule="01.14", width=600,
+        "correct": {"specimen": A("s-01-14-correct", line("Who sets your property tax rate, and when could it change?", head=True), css=(BASE, LINES), rule="01.14",
                                   alt="A headline question: Who sets your property tax rate, and when could it change?"),
                     "caption": "A homeowner who likes today’s rate and one who wants it lower would both click this question."},
-        "failure": {"specimen": A("s-01-14-failure", line("Who wrote the rule you are angry about?", "Our brand guide, fifth edition, chapter 13 In use", head=True), css=(BASE, LINES), rule="01.14", width=600,
+        "failure": {"specimen": A("s-01-14-failure", line("Who wrote the rule you are angry about?", "Our brand guide, fifth edition, chapter 13 In use", head=True), css=(BASE, LINES), rule="01.14",
                                   alt="A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?"),
                     "caption": "The question assumes the reader is angry and that someone wronged them, so a reader who likes the rule has no reason to read on."},
         "related": ["02", "23"],
@@ -867,11 +871,11 @@ def build(book):
         "why": {"text": ["A war or a game needs an enemy or a loser, and the people on the other side of a vote are our readers too. The verbs for what happens also tell a reader where the decision stands."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-15-correct", line("The state senate votes on the overtime rule Thursday.", illus=True, head=True, kick=kicker("Tracker", "Dispatch")),
-                                  css=(BASE, LINES), rule="01.15", width=600,
+                                  css=(BASE, LINES), rule="01.15",
                                   alt="A kicker, Tracker, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday."),
                     "caption": "The series name is Dispatch, and the headline names the vote and its day. Only the headline is invented, so the label sits beside it."},
         "failure": {"specimen": A("s-01-15-failure", line("The battle over overtime heads to the senate floor.", illus=True, head=True, kick=kicker("Tracker", "Dispatch from the Front")),
-                                  css=(BASE, LINES), rule="01.15", width=600,
+                                  css=(BASE, LINES), rule="01.15",
                                   alt="Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor."),
                     "caption": "“From the Front”, our fifth edition’s series name, and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."},
         "related": ["02"],
@@ -882,7 +886,7 @@ def build(book):
     rb = "Economists writing for the Economic Policy Institute find that the pay of typical workers has risen far more slowly than productivity has since 1979."
     if words(ra) != words(rb):
         raise SystemExit(f"Rule 01.16: the two readings differ in length ({words(ra)} and {words(rb)} words)")
-    RCSS = (f".ed .rd{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
+    RCSS = (f".ed .rd{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
             f".ed .rd div{{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}}"
             f".ed .rd .small{{{fx('caption')};color:var(--oa-color-text-secondary);border-top-width:1px}}")
     lead16 = '<p class="ct">Does pay rise with productivity?</p><p class="cm">Credible studies disagree. Two readings, at the same length.</p>'
@@ -893,12 +897,12 @@ def build(book):
         "why": {"text": ["Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-16-correct", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">One reading</p><p>{e(ra)}</p></div><div><p class="lab">The other reading</p><p>{e(rb)}</p></div></div><p class="src">{e(SRC_PAY)}</p></div>',
-                                  css=(BASE, CHART, RCSS), rule="01.16", width=600,
+                                  css=(BASE, CHART, RCSS), rule="01.16",
                                   alt=f"Does pay rise with productivity? Two readings at the same length, {words(ra)} words each, in the same type. One: {ra} The other: {rb} {SRC_PAY}",
                                   notes="BE-M2, CP-S6: both holders by role and affiliation in one form. Round two takes the research lead's reading of how each publisher describes its authors."),
                     "caption": f"Each reading runs {words(ra)} words, uses the verb “find” and names who holds it the same way, by role and by the organization they wrote for."},
         "failure": {"specimen": A("s-01-16-failure", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">What the research shows</p><p>{e(ra)}</p></div><div class="small"><p>Some critics disagree.</p></div></div></div>',
-                                  css=(BASE, CHART, RCSS), rule="01.16", width=600,
+                                  css=(BASE, CHART, RCSS), rule="01.16",
                                   alt="The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree."),
                     "caption": "One reading becomes “the research” and the other three small words, so the layout settles a question the evidence leaves open."},
         "related": ["13", "14"],
@@ -912,10 +916,10 @@ def build(book):
                  "until they would accept it, and save the argument for a labeled position piece."],
         "why": {"text": ["Readers who back a rule are among the people we serve, and many are the officials we ask readers to contact, so the description has to hold for them as well."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-17-correct", line(t17, SRC_CLOTURE), css=(BASE, LINES), rule="01.17", width=600,
+        "correct": {"specimen": A("s-01-17-correct", line(t17, SRC_CLOTURE), css=(BASE, LINES), rule="01.17",
                                   alt=f"{t17} {SRC_CLOTURE}"),
                     "caption": "A senator who values the 60-vote rule and one who wants it gone would both sign off on this sentence about the same rule."},
-        "failure": {"specimen": A("s-01-17-failure", line("The filibuster lets a minority of senators hold the country hostage.", illus=True), css=(BASE, LINES), rule="01.17", illustrative=True, width=600,
+        "failure": {"specimen": A("s-01-17-failure", line("The filibuster lets a minority of senators hold the country hostage.", illus=True), css=(BASE, LINES), rule="01.17", illustrative=True,
                                   alt="An illustrative line: The filibuster lets a minority of senators hold the country hostage."),
                     "caption": "“Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."},
         "related": ["13", "02"],
@@ -932,10 +936,10 @@ def build(book):
         "tokens": ["oa.font.family.display", "oa.color.palette.pillarRed"],
         "why": {"text": ["When one half is red or heavier, the headline takes a side between a rule and its result. Equal halves leave the joining to the ampersand."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-18-correct", hh("The overtime rule", "the paycheck."), css=(BASE, HL), rule="01.18", width=600,
+        "correct": {"specimen": A("s-01-18-correct", hh("The overtime rule", "the paycheck."), css=(BASE, HL), rule="01.18",
                                   alt="A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red."),
                     "caption": "Both halves share Charcoal and ExtraBold at 44 px, and ampersand B carries the red."},
-        "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", width=600, exempt=["red", "contrast"],
+        "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", exempt=["red", "contrast"],
                                   alt="The same headline with the second half, the paycheck, also set in red."),
                     "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."},
         "files": [AMP24, AMP_DISPLAY],
@@ -943,7 +947,7 @@ def build(book):
         "builders": "Set the headline in Inter Tight ExtraBold and place ampersand B at the cap height in place of the font’s ampersand, from the master Rule 04.3 names for the size.",
     })
 
-    PP = ".ed .pp{display:grid;gap:18px}.ed .pp .lab{margin:0}"
+    PP = ".ed.pp{display:grid;gap:28px}.ed.pp .lab{margin:0 0 6px}"
     rules.append({
         "id": "01.19", "title": "Join people through a rule or place they share, and rotate their order.",
         "rule": ["When a hinge headline joins two people or groups, join them through a rule or a place they share. Swap their order from one "
@@ -952,10 +956,10 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-19-correct", f'<div class="ed pp"><div><p class="lab">One piece</p><p class="hh">The bus rider {amp_h()} the driver on one route.</p></div>'
                                                      f'<div><p class="lab">The next piece</p><p class="hh">The driver {amp_h()} the bus rider at one hearing.</p></div></div>',
-                                  css=(BASE, HL, PP), rule="01.19", width=600,
+                                  css=(BASE, HL, PP), rule="01.19",
                                   alt="Two hinge headlines from two pieces. One: The bus rider and the driver on one route. The next: The driver and the bus rider at one hearing. The order swaps, and each pair shares a route or a hearing."),
                     "caption": "The rider and the driver share a route, then a hearing, and the next piece puts the driver first."},
-        "failure": {"specimen": A("s-01-19-failure", f'<div class="ed"><p class="hh">Us {amp_h()} them.</p></div>', css=(BASE, HL), rule="01.19", width=600,
+        "failure": {"specimen": A("s-01-19-failure", f'<div class="ed"><p class="hh">Us {amp_h()} them.</p></div>', css=(BASE, HL), rule="01.19",
                                   alt="A hinge headline: Us and them."),
                     "caption": "“Us” and “them” name two sides with nothing shared between them, so the ampersand marks a divide."},
         "related": ["04", "02"],
@@ -972,10 +976,10 @@ def build(book):
         "why": {"text": ["A red ampersand between two sides would mark the sides themselves, against Rule 01.1. Reporting agreement is the one case where naming the sides helps a reader."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-20-correct", f'<div class="ed"><p class="hh">Democratic voters {amp_h()} Republican voters on a stock trading ban.</p><p class="dk2">{e(dek20)}</p><p class="src">{e(SRC_STOCK_SURVEY)}</p></div>',
-                                  css=(BASE, HL, f".ed .dk2{{{fx('intro')};margin-top:12px}}"), rule="01.20", width=600,
+                                  css=(BASE, HL, f".ed .dk2{{{fx('intro')};margin-top:12px}}"), rule="01.20",
                                   alt=f"A hinge headline: Democratic voters and Republican voters on a stock trading ban. Deck: {dek20} {SRC_STOCK_SURVEY}"),
                     "caption": "The headline joins both parties’ voters through the ban they agree on, and the deck gives the figures and their source."},
-        "failure": {"specimen": A("s-01-20-failure", f'<div class="ed"><p class="hh">The left {amp_h()} the right.</p></div>', css=(BASE, HL), rule="01.20", width=600,
+        "failure": {"specimen": A("s-01-20-failure", f'<div class="ed"><p class="hh">The left {amp_h()} the right.</p></div>', css=(BASE, HL), rule="01.20",
                                   alt="A hinge headline: The left and the right."),
                     "caption": "The red ampersand sits between two sides with no shared fact, so it marks the divide and reports nothing."},
         "related": ["04", "02"],
@@ -983,7 +987,7 @@ def build(book):
     })
 
     # --- Group 6: labels, Act pieces and names ------------------------------------------------------------------------
-    KCSS2 = (f".ed .kl{{display:grid;gap:12px}}.ed .kl>div{{border-top:1px solid var(--oa-color-border-hairline);padding-top:10px}}"
+    KCSS2 = (f".ed .kl{{display:grid;gap:12px;max-width:600px}}.ed .kl>div{{border-top:1px solid var(--oa-color-border-hairline);padding-top:10px}}"
              f".ed .kl .kick{{margin:0 0 4px}}.ed .kl .kt{{{fx('body')}}}.ed .kl .kw{{{fx('caption')};color:var(--oa-color-text-secondary);margin-top:4px}}")
     kl = [("Explainer", "Utility rates", "Why is my electric bill going up?", False),
           ("Tracker", "Congress", HR7008_TRACKER, False),
@@ -1007,13 +1011,13 @@ def build(book):
         "tokens": ["oa.color.action.primary.fill.onNewsprint"],
         "why": {"text": ["The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21", width=600,
+        "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21",
                                   alt="Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? "
                                       f"Tracker, Congress: {HR7008_TRACKER}. Analysis, work and pay: Does pay rise with productivity? Report, state legislatures, "
                                       "illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, "
                                       "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
                     "caption": "Each kicker opens with its label and adds at most a series or a topic. Only “Our position” takes the Charcoal fill. The first three headlines are real, so the label sits beside each invented one."},
-        "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21", width=600,
+        "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
                                   alt="Three kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts."),
                     "caption": "“Explain” is a pillar and says nothing about the claim. “Must read” and “Breaking” push the reader and hide that the piece argues, and the third kicker reaches its label only after the series."},
         "specs": [{"label": "Explainer", "value": "How a rule or a decision works"},
@@ -1036,16 +1040,16 @@ def build(book):
         "tokens": ["oa.color.action.ask.fill.onNewsprint", "oa.color.action.ask.label.onNewsprint", "oa.component.button.ask.keyline.onNewsprint"],
         "why": {"text": ["A reader of any view can use a process piece, because it tells them how to be heard and leaves what to say to them."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-22-correct", f'<div class="ed">{process_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=600,
+        "correct": {"specimen": A("s-01-22-correct", f'<div class="ed">{process_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=360,
                                   alt="An illustrative process piece. Kicker: Act, how to take part. Headline: Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting. Who decides: five county supervisors, and three votes pass the change. What each side has said: supporters said more homes would ease rents; opponents said sewers were sized for fewer homes. After the hinge divider, What you can do: send a written comment by 5 p.m. Wednesday, March 3, 2027, or speak for two minutes at 6 p.m. Tuesday, March 9, 2027. One red button: Send a comment. A line pointing to the Backyard Cottages Tracker."),
                     "caption": "The piece names who decides, gives both sides one sentence each, then turns at the hinge divider to two dated ways to take part. The red sits on the ask alone."},
-        "failure": {"specimen": A("s-01-22-failure", f'<div class="ed">{process_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=600,
+        "failure": {"specimen": A("s-01-22-failure", f'<div class="ed">{process_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=360,
                                   alt="The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes."),
                     "caption": "The piece keeps the process label and then argues one side, so a reader who opposes the change meets a position they were told was not there."},
         "specs": [{"label": "Kicker", "value": "Act · How to take part, the label alone"},
                   {"label": "Ask", "value": "Pillar Red fill, White label at 19 px bold, Charcoal keyline on Newsprint", "token": "oa.color.action.ask.fill.onNewsprint"},
                   {"label": "Before the ask", "value": "The hinge divider, its ampersand in the surface’s ink", "token": "oa.color.identity.hingeDivider.onNewsprint"},
-                  {"label": "Width", "value": "Shown on a 600 px artboard with the phone sizes of the type scale; the page reflows to a phone"}],
+                  {"label": "Width", "value": "Shown as a phone page, 360 px wide, with the phone sizes of the type scale; on a wider screen the column grows to the reading measure"}],
         "related": ["13", "12", "18"],
         "builders": "Build the ending from the hinge divider, the “What you can do” line and one ask button. Link the neutral tracker, never a campaign page.",
     })
@@ -1066,10 +1070,10 @@ def build(book):
         "tokens": ["oa.color.action.primary.fill.onNewsprint", "oa.color.action.ask.fill.onNewsprint"],
         "why": {"text": ["A reader who disagrees with us can still trust the rest of our coverage when each argument carries its label, its strongest opposing case and the names of the people who decided it."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-23-correct", f'<div class="ed">{position_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=600,
+        "correct": {"specimen": A("s-01-23-correct", f'<div class="ed">{position_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=360,
                                   alt="An illustrative position piece. The kicker opens with a Charcoal label, Our position, then the topic, committee votes. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, who decided: our editorial board, February 26, 2027; no funder has a stake in S. 214 or saw the piece before it ran; a link to the bios of the board members who decided. One red button: Ask your senator to vote yes. A footer pointing to our explainer on S. 214 and to the position log."),
                     "caption": "The label comes first, the case against comes before the ask, and the disclosure of who decided, when and with what funder interest sits directly above the button."},
-        "failure": {"specimen": A("s-01-23-failure", f'<div class="ed">{position_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=600,
+        "failure": {"specimen": A("s-01-23-failure", f'<div class="ed">{position_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=360,
                                   alt="The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask."),
                     "caption": "With the label at the bottom and no case against, a reader learns the piece was an argument only after the ask, which reads as a trick."},
         "specs": [{"label": n, "value": v} for n, v in kit],

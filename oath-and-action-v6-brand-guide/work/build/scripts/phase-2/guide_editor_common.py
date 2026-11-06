@@ -87,6 +87,8 @@ def flow(sel, style, weight=None):
 # ---------------------------------------------------------------------------------------------------------------
 BASE = f"""
 .ed{{{fx('body')};color:var(--oa-color-text-primary);max-width:100%}}
+.sp{{box-sizing:border-box;padding:16px}}
+@media (min-width:48em){{.sp-flow{{padding:24px}}}}
 .ed *{{box-sizing:border-box}}
 .ed p{{margin:0}}
 .ed .k{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary)}}
@@ -157,7 +159,7 @@ PAIR = """
 # A hinge headline on a 600 px artboard: the section style at its phone floor, 44 px, so B's cap height is 32 px
 # and takes the 24 px master (Rule 04.3: 16 px master under 22 px capitals, 24 px master to 46 px).
 HL = f"""
-.ed .hh{{{fx('section')};color:var(--oa-color-text-primary);margin:0;text-wrap:balance}}
+.ed .hh{{{fx('section')};color:var(--oa-color-text-primary);margin:0;max-width:640px;text-wrap:balance}}
 .ed .hh .hamp-h{{display:inline-block;height:.7275em;width:auto;vertical-align:0;color:var(--oa-color-palette-pillar-red)}}
 """
 
@@ -245,8 +247,9 @@ class Book:
             readable=False, interactive=False, exempt=None, height=None, label=None, scale=None, css=(BASE,)):
         if sid in self.files:
             raise SystemExit(f"duplicate specimen id {sid}")
+        wrap = "sp sp-fixed" if width else "sp sp-flow"
         self.files[sid] = f"<!-- {sid}: Oath & Action guide, Edition 06, chapter {chapter}. Editor, November 6, 2026. -->\n" \
-                          + style(*css) + "\n" + body.strip() + "\n"
+                          + style(*css) + f'\n<div class="{wrap}">' + body.strip() + "</div>\n"
         m = {"chapter": chapter, "rule": rule, "width_px": width, "alt": " ".join(alt.split()),
              "illustrative": bool(illustrative), "notes": notes}
         if height:

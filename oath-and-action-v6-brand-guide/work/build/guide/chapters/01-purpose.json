@@ -244,7 +244,7 @@
    },
    "correct": {
     "specimen": "s-01-5-correct",
-    "caption": "Solid, hatched and open tiles show the rule, with the key beside the map and the source below it."
+    "caption": "Solid, hatched and open tiles show the rule, with the key next to the map and the source below it."
    },
    "failure": {
     "specimen": "s-01-5-failure",
@@ -775,7 +775,7 @@
     },
     {
      "label": "Width",
-     "value": "Shown on a 600 px artboard with the phone sizes of the type scale; the page reflows to a phone"
+     "value": "Shown as a phone page, 360 px wide, with the phone sizes of the type scale; on a wider screen the column grows to the reading measure"
     }
    ],
    "related": [

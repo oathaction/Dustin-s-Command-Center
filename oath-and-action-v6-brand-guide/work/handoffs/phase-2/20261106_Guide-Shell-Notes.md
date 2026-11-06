@@ -18,6 +18,8 @@ Published first in the fix pass, under `work/handoffs/phase-2/20261106_Stage-A-F
 | `"fit_switch": true` | A wide comparison frame (the masthead and social card pairs) | A "True size / Fit to window" switch in the plate head, true size by default. Fit to window scales the whole stage down to the frame's width and the size line says by how much |
 | `"width_px"` | Every specimen of a thing with a width (C-S6) | The stage is that wide and the size line prints it. Leave it out only for page text the shell should flow |
 
+**Room at true size.** A plate's stage has 770 px at 1440 (columns 3 to 10, less the mat), 606 px at 1024 and 608 px at 768. On phones the mat keeps 16 px each side (C-S7), so a stage has the screen width less 32 px: 358 px at 390 and 328 px at 360. A fluid SVG whose labels sit near 13 px drops under the floor there; give it a `width_px` or larger labels. From 1440 the appendix spans the whole page with a 24 px mat, so a proof stage has 1,264 px at true size; wider ones scroll, and `fit_switch` offers the fit.
+
 **Type sizes inside a specimen (D2-254), checked by `guide_check.js` as `typeScale`.** Up to 600 px wide: title 56, section 44, figure 48, H3 26, H4 20, quote 24, intro 19, ask 19, body 17, body small 15, UI 15, caption 14, label 13, data label 13. From 1,200 px wide: title 110, section 80, figure 104, H3 32, H4 24, quote 32, intro 22, and the rest unchanged. Between 601 and 1,199 px, either set. A specimen with no `width_px` flows with the page, so it may also use each style's fluid size at the width being checked (`font: var(--oa-type-h3)` and the rest). The chart system's own sizes (28 and 22 px titles, 15 px labels, 116 and 88 px big numbers) also pass. Any other size needs `"scale"` in `check_exempt`.
 
 **Never inside a specimen (AX-S8):** `<nav>`, `<article>`, `<header>`, `<footer>`, `<main>`, `<aside>`, a named `<section>` or `<form>`, or a landmark role. Draw them with `div`. Checked as `specimenLandmarks`.
@@ -115,10 +117,11 @@ The content contract in the Stage A brief stands. The shell reads these fields, 
 | `rules[]` | one rule block each, in order (section 4) |
 | `rules[].why.basis` | the "Basis" tag. Write `Design judgment`, `WCAG 2.2 SC 1.4.3`, or a named source |
 | `rules[].tokens`, `specs[].token` | token chips with the value from `tokens.json`. Write the DTCG name (`oa.color.text.primary.onNewsprint`); the shell shows the CSS name (`--oa-color-text-primary-on-newsprint`). A name the token file lacks is a warning |
-| `rules[].files` | repository paths, shown as code. A path that does not exist is a warning. Download buttons arrive with the asset package in Phase 5 |
-| `rules[].related` | chapter numbers, shown as links under "Related chapters" inside the rule. A chapter not in this page shows its number and name with "later stage", never a dead link |
+| `rules[].files` | repository paths, shown as code that breaks only at a slash. A path that does not exist is a warning. The chapter's Specifications closer ends "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here." (D2-252) |
+| `rules[].related` | chapter numbers, shown as links under "Related chapters" inside the rule. A chapter not in this page shows its number and name with "Coming later", never a dead link |
 | `extras[]` | `{ "after_rule": "05.3", "specimen": "...", "caption": "...", "label": "optional label" }`. Leave `after_rule` out to place the extra above the first rule |
 | `sources[]` | a numbered "Sources" list at the end of the chapter, before the closers |
+| `groups[]` (optional) | rule groups, with a group block before each group's first rule and a rule index after the intro (section 0) |
 | `related_chapters[]` (optional) | `{ "chapter": "06", "reason": "Which sizes count as large text." }` for the chapter's own "Related chapters" closer. Without it the shell uses the map's section 10 list with short reasons, plus any chapter a rule cites |
 
 **Inline text.** Every string is escaped, then these inline tags are kept: `<em> <strong> <code> <abbr title> <q> <cite> <sup> <sub> <br> <span class="..."> <a href="#..."> <a href="https://...">`. Anything else shows as text. The shell links each "Rule 05.2" it finds to `#rule-05-2` when that rule is in the page, and each "chapter 06" to `#type`, so you rarely need an `<a>`. Use `<span class="illus">Illustrative</span>` for an inline Illustrative label.
@@ -132,15 +135,20 @@ You never write this markup; it is here so you know what your fields become, and
   <div class="ch-head">
     <p class="loc-line"><a href="#part-foundations">Foundations</a> · Chapter 05 of 28</p>
     <h2 class="ch-title" id="color-h"><span class="n">05</span> <span class="t">Color</span></h2>
+    <p class="return" hidden></p>                                     "Return to ..." lands here after a cross-reference
     <p class="instr">Choose a surface first, then the text and graphic colors that pass on it.</p>
     <p class="intro">...</p>
+    <div class="rule-index">...</div>                                  only in a chapter with "groups"
   </div>
-  <div class="local-toc">In this chapter: every rule, then the three closers</div>
+  <div class="local-toc">In this chapter: every rule (under its group title, if any), then the three closers</div>
   <div class="ch-body">
-    rules and extras, then Sources, then three closers:
-    <div class="closer" id="color-specs"><h3>Specifications</h3> every token the chapter names, with its value and the rules that use it; every file</div>
+    rule groups, rules and extras, then Sources, then three closers:
+    <div class="closer" id="color-specs"><h3>Specifications</h3> every token the chapter names, with its value and links to the rules
+      that use it ("Rule 05.1"); every file; the D2-252 line</div>
     <div class="closer" id="color-related"><h3>Related chapters</h3> two to five chapters, each with its reason</div>
-    <div class="closer" id="color-builders"><h3>For builders</h3> the chapter's custom properties as a CSS block, with a Copy button</div>
+    <div class="closer" id="color-builders"><h3>For builders</h3> a line on tokens.css; "Download tokens.css" and "Copy this chapter's
+      CSS"; the CSS block: every custom property the chapter names with every property it depends on (type parts and their clamps
+      included), then the four surface classes, as tokens.css holds them (RP-M3)</div>
   </div>
   <div class="chapnav">Previous, Next, Back to contents</div>
 </section>
@@ -151,24 +159,29 @@ One rule, in the Master Brief section 7 order. The h3 starts with the Rule ID an
 ```html
 <div class="rule" id="rule-05-2" data-rule="05.2">
   <h3 class="rule-h"><span class="rid"><span class="rid-w">Rule</span> <span class="rid-n">05.2</span></span> <span class="rt">Text sits only on pairs that pass.</span></h3>
+  <p class="return" hidden></p>
   <div class="rule-body">
     <p class="rule-text">the rule</p>
     <div class="tokens"><p class="label">Tokens</p><ul class="tok-list">chips</ul></div>
     <div class="why"><p class="label">Why it works</p><p class="basis">Basis WCAG 2.2 SC 1.4.3</p><p>...</p></div>
   </div>
-  <div class="hinge" aria-hidden="true">hairline, ampersand B, hairline</div>
+  <div class="hinge" aria-hidden="true"><span class="hinge-line"></span>ampersand B<span class="hinge-line"></span></div>
   <figure class="plate plate--correct">Correct application</figure>
   <figure class="plate plate--failure">Failure case</figure>
   <figure class="plate plate--corrective">Corrective example (only when the rule has one)</figure>
   <div class="rule-foot">
     <div class="foot-block foot-specs"><p class="label">Specifications</p><dl class="spec-list">label, value, token</dl> Files</div>
-    <div class="foot-block foot-related"><p class="label">Related chapters</p>links</div>
-    <div class="foot-block foot-builders"><p class="label">For builders</p>note</div>
+    <div class="foot-pair">
+      <div class="foot-block foot-related"><p class="label">Related chapters</p>links</div>
+      <div class="foot-block foot-builders"><p class="label">For builders</p>note</div>
+    </div>
   </div>
 </div>
 ```
 
-The hinge divider is the shell's: a hairline broken by ampersand B (`work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg`, drawn at its true 24 px) in the surface's ink, `--oa-color-identity-hinge-divider` (D1-22, D1-26). It sits between each rule and its correct use, with the ampersand on the edge of the text column. Do not draw it in a specimen to separate blocks.
+From 48em the Rule ID hangs in its own column: the number sits on the title's first baseline at the H3 size, and the word "Rule" hangs above it in the rule's top space, so every title sits 24 px above its text whatever its length (C-M4). Under 48em "Rule 05.2" sits in the label style above the title.
+
+The hinge divider is the shell's, drawn as DR-96 sets it: ampersand B's 24 px master (`work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg`) at 24 px, centered on a 1 px line as wide as the text block it divides, with 12 px of clear line on each side of B, all in the surface's ink, `--oa-color-identity-hinge-divider` (D1-22, D1-26). In the shell the line spans the rule's text column. Draw the same geometry when a specimen shows the divider; do not draw it in a specimen only to separate blocks.
 
 ## 5. How a specimen fragment is framed (for makers)
 
@@ -178,11 +191,13 @@ Your file `work/build/guide/specimens/s-05-2-correct.html` is a fragment: markup
 <figure class="plate plate--correct" id="fig-s-05-2-correct">
   <div class="plate-head">
     <p class="plate-label"><span aria-hidden="true">✓</span>Correct application</p>
-    <p class="plate-size">True size, 640 px wide</p>
+    <p class="plate-size">True size, 640 px wide</p>                  or "One quarter size" with "scale": 0.25
+    [the True size / Fit to window switch, with "fit_switch": true]
+    <p class="plate-hint" hidden>Wider than this screen. Scroll the frame sideways to see all of it.</p>
   </div>
-  <div class="plate-scroll" data-plate-scroll>                      the mat: a deeper Newsprint around the specimen
+  <div class="plate-scroll" data-plate-scroll data-frame-name="Correct application, Rule 05.2">   the mat
     <div class="plate-stage oa-surface-newsprint" data-specimen="s-05-2-correct" data-red="specimen"
-         data-surface="newsprint" style="--w:640px" role="img" aria-label="(your manifest alt)">
+         style="--w:640px" data-width="640" data-surface="newsprint" role="img" aria-label="(your manifest alt)">
       YOUR FRAGMENT
     </div>
   </div>
@@ -192,9 +207,9 @@ Your file `work/build/guide/specimens/s-05-2-correct.html` is a fragment: markup
 
 What the frame does for you, so the specimen does not have to:
 
-- **True size.** The stage is exactly `width_px` wide. Set your own height. A specimen wider than the screen keeps its size: the mat scrolls sideways, becomes a named keyboard region, and shows a line saying so. Nothing is scaled.
+- **True size.** The stage is exactly `width_px` wide. Set your own height. A specimen wider than the screen keeps its size: the mat scrolls sideways, becomes a keyboard-scrollable group named for its plate ("Correct application, Rule 05.2, at true size"), and the plate head says it scrolls. Nothing is scaled, unless the manifest asks for `scale` or the reader picks Fit to window. A 1 px Stone keyline marks the stage's edge (AX-S13), and the stage keeps its colors when the system forces its own (AX-S6).
 - **Surface.** The stage takes the token surface class for your manifest's `surface` (`newsprint` by default, or `white`, `charcoal`, `prussian`). That class sets the background and the short role names, so inside the specimen `var(--oa-color-text-primary)`, `var(--oa-color-border-hairline)`, `var(--oa-color-focus-ring)` and the rest already point at that surface's values. Long names (`--oa-color-text-primary-on-newsprint`) work too.
-- **Alt text.** The stage is `role="img"` named by your manifest's `alt`, so a screen reader hears one full description. If the specimen has controls a reader should use (a demo, a composer), set `"interactive": true`: the stage becomes a group, your controls stay reachable, and the alt is read as its description.
+- **Alt text.** The stage is `role="img"` named by your manifest's `alt`, so a screen reader hears one full description. A static table or list sets `"readable": true`; a specimen with controls sets `"interactive": true`. Either way the stage becomes a group named for its plate and rule, its structure and controls stay reachable, and the alt is its description, held in a hidden paragraph that assistive technology hears only through the group (section 0).
 - **Illustrative.** `"illustrative": true` prints the Illustrative label at the start of the caption (H03), unless your caption already says it.
 - **Red.** The stage carries `data-red="specimen"`, so red inside a specimen does not count toward the page's red (D2-102). Inside the specimen, still mark what the red is: `data-red="signature"` on a wordmark or lever, `data-red="working"` with `data-red-job="..."` on the one working red the specimen shows as its own view. The check allows one working-red job per specimen, and none on Prussian.
 - **Styles stay inside.** Your `<style>` is wrapped in `@scope ([data-specimen="your-id"])`, so `.label { ... }` styles only your specimen and never the shell. The shell's own element styles are class-based, so a specimen inherits only the font (Inter, 17 px) and the surface's text color.
@@ -207,8 +222,9 @@ What the frame does for you, so the specimen does not have to:
 |---|---|
 | `surface` | `newsprint` (default), `white`, `charcoal` or `prussian` |
 | `height_px` | adds the height to the plate's size line |
-| `interactive` | `true` for a specimen with controls (above) |
-| `check_exempt` | any of `"contrast"`, `"red"`, `"locked"` (a misquoted locked line shown as a failure) and `"size"`. Contrast, red and locked exemptions are for labeled failure cases only, and so is `size` unless the caption says the plate shows a mark or a minimum size at true size. The rendered check skips that test inside the plate and lists every exemption in its results |
+| `readable`, `interactive` | a static table or list, or a specimen with controls (section 0) |
+| `scale`, `fit_switch` | a drawing at reduced scale, or a wide comparison frame (section 0) |
+| `check_exempt` | any of `"contrast"`, `"red"`, `"locked"` (a misquoted locked line shown as a failure), `"size"` and `"scale"`. Contrast, red and locked exemptions are for labeled failure cases only, and so is `size` unless the caption says the plate shows a mark or a minimum size at true size. `scale` is for a labeled failure, a historical record or a print piece, with the reason in `notes`. The rendered check skips that test inside the plate and lists every exemption in its results |
 | `caption`, `label` | for the `s-proofs-*` set when `proofs.json` gives none |
 
 **Colors.** Only `var(--oa-...)` from `work/build/tokens/tokens.css`. The build warns on any literal hex, `rgb()` or `hsl()` outside a `var()` fallback and outside path data.
@@ -240,6 +256,7 @@ It opens the page at 1440, 1024, 390 and 360 px (`--quick` for 1440 and 390) and
 - Rule 05.3: every Pillar Red mark sits under a `data-red`; at most one working-red job in the page outside specimens and one inside each specimen; no red on Prussian.
 - Writing: the locked lines character for character wherever a fragment of one appears; no em dash outside an element marked `data-allow-emdash` (W21's specimen).
 - Page: no sideways scroll outside a scrolling frame; axe-core with the WCAG 2.2 AA tags; a visible focus ring on the first 60 Tab stops at 1440; no outside requests other than Google Fonts; no script errors.
+- Added in the fix pass: `specimenLandmarks` (no landmark or article element inside a stage), `nameEntities` (no accessible name holds an entity such as `&amp;`, and no visible text outside code shows `&amp;`), `typeScale` (every font size in a stage is one D2-254 allows, section 0) and `codes` (no D2-253 code or studio word in reader text, alt text or names). Each failure names its specimens or sections.
 
 It writes `<page>-Guide-Check-Results.json` beside the page and full-page captures to `captures/` beside it.
 
@@ -260,10 +277,12 @@ AXE_PATH="${TMPDIR:-/tmp}/oa-axe/node_modules/axe-core/axe.min.js" node work/bui
 
 ## 7. The shell, in brief
 
-- **Ground and type.** Newsprint everywhere, Charcoal text, Deep Stone for secondary text. Inter Tight for headings, Inter for reading, from `tokens.css`'s type styles (`--oa-type-section` for chapter titles, `--oa-type-h3` for rules, `--oa-type-intro` for the instruction line and the rule, `--oa-type-label` for labels). The cover sets the tagline in `--oa-type-title` as display text under the h1. Lora Italic is left to the chapters' quoted lines.
-- **Navigation, as the Gate 1 wireframes draw it.** A sticky masthead with the wordmark (24 px master, 16 px on phones), "Brand Guide Edition 06", and the part links. A chapter rail on the left from 1024 px, with the current chapter on a White band with a 4 px Charcoal bar. "In this chapter" in a right column from 1280 px, above the first rule below that, with the current rule underlined. Location line over every h2, "Return to ..." after a cross-reference, focus moved to the heading a link lands on. On phones, the wordmark, the current chapter's name and a Menu button that opens a modal dialog with one navigation block.
+- **Ground and type.** Newsprint everywhere, Charcoal text, Deep Stone for secondary text. Inter Tight for headings, Inter for reading, from `tokens.css`'s type styles (`--oa-type-section` for chapter titles, `--oa-type-h3` for rules, `--oa-type-intro` for the instruction line and the rule, `--oa-type-label` for labels). The cover shows the display wordmark, the h1 "Brand Guide, Edition 06" (with "Oath & Action" in hidden text), the tagline in `--oa-type-title`, the pillars kept whole, and one line on what the guide is for. Lora Italic is left to the chapters' quoted lines.
+- **The grid (C-S1).** The page sits on Rule 07.2's columns with the grid tokens' margins and gutters: 16 or 20 px margins on phones, 32 at 768, 40 at 1024 and 64 from 1440. From 1024 the rail takes columns 1 to 3 (1 to 2 from 1440). At 1440 the Rule ID sits in column 3, text in columns 4 to 8, plates in 3 to 10 and "In this chapter" in 11 and 12; at 1024 the ID takes columns 4 and 5 and text 6 to 12; at 768 the ID takes 1 and 2 and text 3 to 8.
+- **Navigation, as the Gate 1 wireframes draw it.** A sticky masthead with the wordmark from its 24 px master (the 16 px master only under 360 px), "Brand Guide Edition 06" from 768 px, and the part links from 1024 px. Under 1024 px a second line under the bar names where the reader is in full, such as "04 The Ampersand and the hinge" (AX-S7), and a Menu button opens a modal dialog with one navigation block. A chapter rail on the left from 1024 px, with the current chapter on a White band with a 4 px Charcoal bar. "In this chapter" in a right column from 1440 px, its top rule level with the chapter head's, and above the first rule below that (a chapter with groups shows its rule index there instead). Location line over every h2. "Return to ..." appears right after the heading a cross-reference lands on, and focus moves to that heading, or to the target itself when it holds none.
 - **Landmarks.** One banner (masthead), one navigation block for parts and one for chapters, main, one contentinfo (the colophon). The phone menu holds a single navigation block. Chapters are sections with headings and no region names.
-- **Part opener.** A Charcoal panel, the part's one dark beat (Rule 05.1), with each chapter and its instruction line. The pillar mark that marks each part waits for board B (DR-88).
+- **Part opener.** A Charcoal panel, the part's one dark beat (Rule 05.1), with each chapter and its instruction line read from the chapter file. The pillar mark that marks each part comes with the pillar marks chapter; the page says nothing about it until then.
+- **Appendix.** From 1440 px the appendix spans all twelve columns and slides over the rail, which the script hides once the appendix reaches it; its mat is 24 px, so a proof stage has 1,264 px at true size (C-M6, D2-251).
 - **Anchors.** Chapter anchors are words (`#color`). V5's `#grid` sits at the top of `#signal-grid`. Rules are `#rule-05-2`; closers are `#color-specs`, `#color-related`, `#color-builders`.
 - **Tokens.** `tokens.css` is inlined into the page. If it is missing, the build writes a provisional block from the Phase 1 schema draft and says so on the page.
 
