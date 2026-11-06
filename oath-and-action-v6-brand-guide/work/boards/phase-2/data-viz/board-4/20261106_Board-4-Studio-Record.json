@@ -20,8 +20,23 @@
   "One fix pass worked through a merged list of 9 must-fix and 12 should-fix items.",
   "The statistics reviewer checked its own findings again, and the creative director scored the fixed page and wrote this board's content. The main session added the process, the checks, the next-stage questions and the change log, then built, checked and published the board."
  ],
- "tested": [],
- "not_tested": [],
+ "tested": [
+  "The verifier on the stretch page: all 5,462 marks match the shared data, with 0 errors, and the self-test caught 7 of 7 planted errors.",
+  "The rendered check on all three views at 1440, 1024, 768, 390 and 360 px: no sideways scroll, no text under 13 px, text contrast, labels and marks inside their drawings, no overlapping labels, Rule 05.3, no party mark in Pillar Red or Prussian, every bar and point on its scale, 0 axe-core violations and a visible focus ring on each stop. 0 failures.",
+  "The new edge test caught S13's cut end dots on the first build, and Explainer still passes the updated check.",
+  "The statistics reviewer rebuilt all four datasets from the public files, measured every scale from the drawings, and checked the United States figures and the new titles by script.",
+  "The creative director looked at every figure at twice size at 1440 and 390 px, and at 720, 960 and 1280 px for S15, and probed 11 widths for overlapping text and cut marks.",
+  "The coverage map and the family tables come from the plan's own tables, and the build stops if they disagree with the plan's tier counts.",
+  "This board passes the rendered check at 1440, 390 and 360 px."
+ ],
+ "not_tested": [
+  "Real readers (Q-13). No one outside the studio has seen these charts.",
+  "A real screen reader, Safari, Firefox, real phones, 200 percent text zoom and print.",
+  "The Bureau of Labor Statistics revision wording comes from bls.gov text in search results. bls.gov and FRED's series page refuse automated reads, so the studio opened neither page.",
+  "The creative director scored before the four last faults were fixed and did not score again, and the statistics reviewer did not read the page after them.",
+  "At 328 px, S16 drops Louisiana's label so that no two leaders cross. The table under the map names every state.",
+  "Nobody exercised S15's sorting by hand on the published page."
+ ],
  "next_questions": [
   {
    "q": "Rule 05.3's sentence on icons in a row or menu (P3, a named approval).",
@@ -59,7 +74,20 @@
    "rec": "No date; the studio works in the order on this board."
   }
  ],
- "changelog_created": [],
- "changelog_modified": [],
+ "changelog_created": [
+  "<code>work/boards/phase-2/data-viz/stretch/</code>: the build script, the page, its check and verify results, and captures",
+  "<code>work/boards/phase-2/data-viz/board-4/</code>: the board's content, the studio record, published page links and captures",
+  "<code>work/boards/20261106_Data-Viz-Coverage-Board.html</code> (this board)",
+  "<code>work/build/scripts/phase-2/dataviz_board4_build.py</code> and <code>dataviz_board4_capture.js</code>",
+  "<code>work/handoffs/phase-2/</code>: the stretch brief, the reviewers' brief, the fix pass brief, the maker's notes, the statistics and nonpartisanship report and the creative director's review",
+  "<code>work/ledger/20261106_Data-Viz-Stretch-And-Coverage-Report.md</code>"
+ ],
+ "changelog_modified": [
+  "<code>work/handoffs/phase-2/20261106_Data-Viz-Coverage-Plan.md</code> (127 forms; section 6 records the changes)",
+  "<code>work/build/scripts/phase-2/dataviz_stretch_data.py</code> and the shared chart data it writes (a United States row, the jobs window and source lines, the revision wording)",
+  "<code>work/build/scripts/phase-2/dataviz_verify.py</code> (seven plants on any page; context rows)",
+  "<code>work/build/scripts/phase-2/dataviz_check.js</code> (1024 and 768 px with <code>--mid</code>; marks cut by a drawing's edge)",
+  "<code>work/ledger/20261020_Decision-Log.md</code> (D2-121 to D2-129)"
+ ],
  "data_line": "Data: Federal Election Commission official results for 2020 and 2024; U.S. Bureau of Labor Statistics payroll series as copied by FRED, retrieved November 6, 2026; U.S. Census Bureau Current Population Survey, November 2024. Chart titles on the stretch page are studio drafts."
 }

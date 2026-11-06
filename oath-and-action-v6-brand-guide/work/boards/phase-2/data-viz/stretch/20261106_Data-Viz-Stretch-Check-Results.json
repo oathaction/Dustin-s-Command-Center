@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
- "checked": "2026-11-06T17:09:46.194Z",
+ "checked": "2026-11-06T17:38:08.104Z",
  "views": [
   "newsprint",
   "dark",
@@ -11,7 +11,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 1095,
+   "texts": 1116,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -20,7 +20,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 344,
+    "labels": 345,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -44,7 +44,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 14794,
+   "height": 14971,
    "axe": [],
    "focusStops": 32,
    "focusWithoutRing": []
@@ -53,7 +53,7 @@
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 147,
+   "texts": 148,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -62,7 +62,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 85,
+    "labels": 86,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -86,7 +86,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3377,
+   "height": 3381,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -95,7 +95,7 @@
    "width": 1440,
    "view": "phone",
    "rootVisible": true,
-   "texts": 926,
+   "texts": 929,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -104,7 +104,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 428,
+    "labels": 431,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -128,7 +128,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10336,
+   "height": 10267,
    "axe": [],
    "focusStops": 18,
    "focusWithoutRing": []
@@ -137,7 +137,7 @@
    "width": 1024,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 1049,
+   "texts": 1071,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -146,7 +146,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 349,
+    "labels": 351,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -170,7 +170,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 16747,
+   "height": 16999,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -179,7 +179,7 @@
    "width": 1024,
    "view": "dark",
    "rootVisible": true,
-   "texts": 143,
+   "texts": 145,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -188,7 +188,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 81,
+    "labels": 83,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -212,7 +212,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3822,
+   "height": 3841,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -221,7 +221,7 @@
    "width": 1024,
    "view": "phone",
    "rootVisible": true,
-   "texts": 926,
+   "texts": 929,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -230,7 +230,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 428,
+    "labels": 431,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -254,7 +254,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 13382,
+   "height": 13313,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -263,7 +263,7 @@
    "width": 768,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 1195,
+   "texts": 1217,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -272,7 +272,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 349,
+    "labels": 351,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -296,7 +296,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 17549,
+   "height": 17818,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -305,7 +305,7 @@
    "width": 768,
    "view": "dark",
    "rootVisible": true,
-   "texts": 137,
+   "texts": 139,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -314,7 +314,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 81,
+    "labels": 83,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -338,7 +338,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3631,
+   "height": 3650,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -347,7 +347,7 @@
    "width": 768,
    "view": "phone",
    "rootVisible": true,
-   "texts": 920,
+   "texts": 923,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -356,7 +356,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 428,
+    "labels": 431,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -380,7 +380,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 17931,
+   "height": 17912,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -389,7 +389,7 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 1201,
+   "texts": 1224,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -398,7 +398,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 428,
+    "labels": 431,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -422,7 +422,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23892,
+   "height": 24358,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -431,12 +431,138 @@
    "width": 390,
    "view": "dark",
    "rootVisible": true,
-   "texts": 128,
+   "texts": 131,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 3,
+    "labels": 75,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 2,
+    "marks": 114,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 4488,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "phone",
+   "rootVisible": true,
+   "texts": 923,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 431,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 18054,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 1224,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 439,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 25460,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 128,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
@@ -464,133 +590,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 4469,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 390,
-   "view": "phone",
-   "rootVisible": true,
-   "texts": 920,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 390,
-   "clientWidth": 390,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 428,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": []
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 4,
-    "marks": 217,
-    "bad": []
-   },
-   "party": {
-    "marks": 785,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 18073,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 360,
-   "view": "newsprint",
-   "rootVisible": true,
-   "texts": 1203,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 438,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": []
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 4,
-    "marks": 217,
-    "bad": []
-   },
-   "party": {
-    "marks": 785,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 24971,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 360,
-   "view": "dark",
-   "rootVisible": true,
-   "texts": 127,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 3,
-    "labels": 71,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": []
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 2,
-    "marks": 114,
-    "bad": []
-   },
-   "party": {
-    "marks": 0,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 4679,
+   "height": 4698,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -599,7 +599,7 @@
    "width": 360,
    "view": "phone",
    "rootVisible": true,
-   "texts": 922,
+   "texts": 923,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -608,7 +608,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 438,
+    "labels": 439,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -632,7 +632,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 19116,
+   "height": 19120,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

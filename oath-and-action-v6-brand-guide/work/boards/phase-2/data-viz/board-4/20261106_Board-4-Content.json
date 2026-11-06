@@ -8,8 +8,16 @@
  ],
  "sample_reply": "Coverage plan and tiers: approved. Build order: approved. The six calls: as recommended.",
  "stretch": {
-  "verdict": "Explainer stretches. Six forms it had never drawn read as the same hand as the ten charts you picked, with the same evidence chip, sentence titles, notes inside the drawing and Newsprint ground, and no party ink on any of them. After the fix pass every line of the rubric reaches 4 or above, and four small faults remain for one short pass before the charts go further.",
-  "cd_scores": [4, 4, 4, 4, 5, 4, 4],
+  "verdict": "Explainer stretches. Six forms it had never drawn read as the same hand as the ten charts you picked, with the same evidence chip, sentence titles, notes inside the drawing and Newsprint ground, and no party ink on any of them. After the fix pass every line of the rubric reaches 4 or above, and the four small faults its second pass found were fixed in one short pass before this board.",
+  "cd_scores": [
+   4,
+   4,
+   4,
+   4,
+   5,
+   4,
+   4
+  ],
   "ships": "Yes",
   "charts": {
    "S11": {
@@ -34,7 +42,6 @@
      "On phones four gray steps carry the size of the shift and hold no party meaning."
     ],
     "needs": [
-     "Phone notes that describe the gray steps the phone map draws.",
      "The gray-step phone map as a kit option for any tile map of sizes."
     ]
    },
@@ -73,7 +80,6 @@
      "The “Even line” row lets the still image tell the story before anyone sorts."
     ],
     "needs": [
-     "A card version of the reading note, since the cards drop the center line and the bars it describes.",
      "Denser rows, with Register’s ranked register folded in (DR-52)."
     ]
    },
@@ -86,13 +92,16 @@
      "The title names only gaps larger than the survey’s margin of error, and a ring marks the three states it names."
     ],
     "needs": [
-     "Label placement on the 328 px map with no crossing leaders.",
+     "A leader-crossing test in the kit’s label guard, so no phone label has to drop; at 328 px Louisiana’s label drops today and the table names it.",
      "An area mark with an area test in the rendered check (D2-124)."
     ]
    }
   },
   "dark": {
-   "specs": ["S14", "S16"],
+   "specs": [
+    "S14",
+    "S16"
+   ],
    "text": "The jobs chart and the bubble map hold on Charcoal from the same generators. The turnout ramp turns over so more voters read lighter, and the rings on Texas, Florida and New York switch to Newsprint, which keeps the three palest circles easy to find."
   }
  },

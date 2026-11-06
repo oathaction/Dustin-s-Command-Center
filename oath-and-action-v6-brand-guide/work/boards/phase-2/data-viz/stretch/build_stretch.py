@@ -58,9 +58,11 @@ STRETCH_TOKENS = {
     'columns': {'fill_share': 0.72, 'avg_line': 3, 'prelim_months': 2, 'vertex_r': 1.5, 'domain': (-200, 850),
                 'ticks': (-200, 0, 200, 400, 600, 800), 'height': 360, 'phone_height': 290},
     'bubble': {'r_max': {'wide': 50, 'mid': 34, 'phone': 23, 'small_phone': 21}, 'gap': 2, 'outline': 1, 'ring': 2,
-               'bins': (60, 65, 70, 75), 'key_millions': (1, 5, 20), 'key_seg': 64, 'label_pad': 3},
+               'bins': (60, 65, 70, 75), 'key_millions': (1, 5, 20), 'key_seg': 64, 'label_pad': 3,
+               'leader_clear': 3},
     'results': {'gap': 12, 'bar': 6, 'bar_gap': 4, 'shift_px_per_point': 6.5, 'shift_head': 8, 'shift_min': 130,
                 'html_headroom': 1.06, 'two_line_min': 560},
+    'tag': {'pad_x': 6, 'height': 18, 'ascent_em': 0.77, 'descent_em': 0.23},
 }
 ST = STRETCH_TOKENS
 
@@ -300,14 +302,21 @@ TAG = 'Leader changed'
 
 
 def tag_w(size=13):
-    return tw(TAG, size, 600) * HR + 10
+    """The tag's width: its measured text plus 6 px a side, as S15's HTML tag pads it."""
+    return tw(TAG, size, 600) + 2 * ST['tag']['pad_x']
 
 
 def svg_tag(a, x, y, size=13):
-    """The boxed "Leader changed" tag, the device S15 uses in HTML, drawn in SVG with its left edge at x on baseline y."""
+    """The boxed "Leader changed" tag, the device S15 uses in HTML, drawn in SVG with its left edge at x on baseline y.
+    The box is sized to the text, and the text sits centered in it, so the descender of the g clears the bottom rule."""
+    T = ST['tag']
     w = tag_w(size)
-    a.rect(x, y - size * 0.92, w, size * 1.24, 's-tag')
-    a.text(x + 5, y, TAG, size, 'tl', 600)
+    h = T['height'] * size / 13
+    ink_mid = y - size * (T['ascent_em'] - T['descent_em']) / 2     # the middle of the letters, from the top of the d to the foot of the g
+    top = ink_mid - h / 2
+    assert y + size * T['descent_em'] + 1.5 <= top + h - 0.5, 'the g touches the tag rule'
+    a.rect(x, top, w, h, 's-tag')
+    a.text(x + w / 2, y, TAG, size, 'tl', 600, 'middle')
     return w
 
 
@@ -740,6 +749,12 @@ def flow_items(a, x0, y, head, items, W, size):
     return y
 
 
+S12_WIDE_NOTE = "Each arrow's length shows the shift, at one scale across the map."
+S12_PHONE_NOTE = "Each square's shade shows the size of the shift, in four steps; the lists name the largest and smallest shifts."
+# notes that differ by artboard: the first shows beside the 1,024 and 600 px drawings, the second beside the 358 and 328 px ones
+WIDTH_NOTES = {'S12': (S12_WIDE_NOTE, S12_PHONE_NOTE)}
+
+
 def spec_s12(view):
     F = shift_facts()
     big, small = shift_lists()
@@ -758,7 +773,7 @@ def spec_s12(view):
              + '. Smallest: ' + ', '.join(f'{short_name(r)} {r["shift_pts"]:.1f}' for r in small)
              + '. A frame marks the six states where the leader changed. The table under the chart lists every state.')
     body, strings = EX.artboards(view, 'S12', gen_s12, TK['artboard']['wide'], label)
-    notes = ["Each arrow's length shows the shift, at one scale across the map.",
+    notes = [S12_WIDE_NOTE,
              "New York's figures count every ballot line each nominee held, including the Working Families and Conservative lines."]
     drawn = ['Size of shift: sample arrows for 1, 5 and 10 points. ' + FRAME_NOTE + '. ' + DIRECTION_NOTE,
              'On phones each square takes one of four steps by the size of its shift: ' + ', '.join(STEP_WORDS)
@@ -1273,9 +1288,11 @@ def gen_s15(view):
               f'<span class="sv"{da(r["key"], sh, field="shift_pts", mark="label")}>{sh:.1f}<span class="swd"> toward the Republican nominee</span></span></span></td></tr>')
     key = ("Each margin sits on the side of the nominee who led, with the party named: left of the center line, the Democratic "
            'nominee; right of it, the Republican nominee. Bars grow from the center line, and every arrow points toward the Republican nominee.')
+    card_key = ('Each card names the leader and margin in each year and gives the shift toward the Republican nominee in words, '
+                'beside its arrow.')
     hint = 'Sorts the table by this column; press again to reverse the order.'
     cols = ''.join(f'<col style="width:{w:.1f}px">' for w in L['widths'])
-    return (f'<div class="rtw"><p class="rkey">{e(key)}</p><p class="rsort"><b>Sort by any column.</b> {e("The table opens in order of the 2024 margin.")}</p>'
+    return (f'<div class="rtw"><p class="rkey rk-full">{e(key)}</p><p class="rkey rk-card">{e(card_key)}</p><p class="rsort"><b>Sort by any column.</b> {e("The table opens in order of the 2024 margin.")}</p>'
             f'<p class="vh2" id="{view}-s15-sorthint">{e(hint)}</p>'
             f'<table class="results" role="table" id="{tid}" style="width:{L["total"]:.1f}px"><caption class="vh2">{e("Presidential margin by state, 2024 and 2020, with the shift toward the Republican nominee")}</caption>'
             f'<colgroup>{cols}</colgroup><thead role="rowgroup"><tr role="row">{head}</tr>{sub}</thead><tbody role="rowgroup">{"".join(body)}</tbody></table>'
@@ -1295,6 +1312,7 @@ def s15_css():
 S15_CSS = r"""
 .rtw{container-type:inline-size}
 .rkey{margin:0 0 6px;font:400 15px/23px Inter,sans-serif;max-width:46em;text-wrap:pretty}
+.rk-card{display:none}
 .rsort{margin:0 0 14px;font:400 15px/23px Inter,sans-serif;color:var(--sec)}.rsort b{color:var(--ink);font-weight:600}
 table.results{border-collapse:collapse;table-layout:fixed;max-width:100%;font:400 14px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
 table.results thead th{text-align:left;vertical-align:bottom;padding:0 12px 6px 0;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
@@ -1349,6 +1367,7 @@ table.results tr.evenrow td{padding:9px 0;border-top:1px solid var(--ink);border
  .mb{display:none}
  .yr{display:inline;font-weight:600;color:var(--sec)}
  .swd{display:inline}
+ .rk-full{display:none}.rk-card{display:block}
  table.results tr.evenrow{display:block}table.results tr.evenrow td{display:block;text-align:left}
 }
 @container (min-width:TWO_LINE) and (max-width:CQ_WIDTH){
@@ -1380,7 +1399,7 @@ def spec_s15(view):
     table = table_html('Vote shares and total presidential votes by state, 2024', ['State', 'Democratic nominee, percent', 'Republican nominee, percent', 'Total votes'], body_rows, (1, 2, 3))
     drawn = ['Each margin sits on the side of the nominee who led, with the party named. Bars grow from the center line; arrows give the shift toward the Republican nominee. '
              'The table opens in order of the 2024 margin, with a row at the even line, and sorts by any column. '
-             'Where a full row does not fit, each row becomes a card that gives the shift in words.']
+             'Where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift in words.']
     return dict(sid='S15', title=title, measure=measure, body=body, strings=[], label='', notes=notes,
                 drawn_notes=drawn, table=table, wide=True,
                 grade_line='Documented: official results the states reported, compiled by the Federal Election Commission')
@@ -1528,6 +1547,24 @@ BIN_WORDS = ['Under 60%', '60 to 64.9', '65 to 69.9', '70 to 74.9', '75 or more'
 RING_NOTE = "Ringed: of the four largest states, the three below the nation by more than the survey's margin of error"   # ST-M6
 
 
+def seg_gap(s1, s2):
+    """The shortest distance between two line segments, 0 where they cross."""
+    (ax, ay, bx, by), (cx, cy, dx, dy) = s1, s2
+
+    def orient(px, py, qx, qy, rx, ry):
+        return (qx - px) * (ry - py) - (qy - py) * (rx - px)
+    if (orient(cx, cy, dx, dy, ax, ay) * orient(cx, cy, dx, dy, bx, by) < 0 and
+            orient(ax, ay, bx, by, cx, cy) * orient(ax, ay, bx, by, dx, dy) < 0):
+        return 0.0
+
+    def pt_seg(px, py, x0, y0, x1, y1):
+        L2 = (x1 - x0) ** 2 + (y1 - y0) ** 2
+        t_ = 0 if L2 == 0 else max(0, min(1, ((px - x0) * (x1 - x0) + (py - y0) * (y1 - y0)) / L2))
+        return math.hypot(px - x0 - t_ * (x1 - x0), py - y0 - t_ * (y1 - y0))
+    return min(pt_seg(ax, ay, cx, cy, dx, dy), pt_seg(bx, by, cx, cy, dx, dy),
+               pt_seg(cx, cy, ax, ay, bx, by), pt_seg(dx, dy, ax, ay, bx, by))
+
+
 def gen_s16(W, uid, t=None):
     """Bubble map: a light map of the states, a circle for each state whose area follows its citizens 18 and over,
     stepped in one Verdigris ink by the share who said they voted. The step key marks the national rate on itself,
@@ -1612,14 +1649,16 @@ def gen_s16(W, uid, t=None):
     # labels: inside where the code fits; beside the circle where the label sits nearer its own circle than any
     # other; else on a short leader
     pad = B['label_pad']
-    placed, skipped, leaders = [], [], []
+    placed, skipped, leaders, led = [], [], [], []
 
-    def hits_circle(box):
+    def hits_circle(box, clear=1.5, own=None):
+        """True where the box comes within `clear` px of a circle; a leader's label keeps further from every circle
+        but its own, so it never sits beside a neighbor."""
         bx0, by0, bx1, by1 = box
         for c2 in R:
             (x2, y2), r2 = pos[c2], rad[c2]
             nx_, ny_ = min(max(x2, bx0), bx1), min(max(y2, by0), by1)
-            if math.hypot(nx_ - x2, ny_ - y2) < r2 + 1.5:
+            if math.hypot(nx_ - x2, ny_ - y2) < r2 + (1.5 if c2 == own else clear):
                 return True
         return False
 
@@ -1634,10 +1673,90 @@ def gen_s16(W, uid, t=None):
         own = gap_to(c)
         return all(own + 2 < gap_to(c2) for c2 in R if c2 != c)
 
+    def away_angles(c):
+        """Leader angles, best first: facing away from the neighbors nearest this circle's edge."""
+        (x, y_), rr = pos[c], rad[c]
+        vx = vy = 0.0
+        for c2 in R:
+            if c2 == c:
+                continue
+            dx_, dy_ = x - pos[c2][0], y_ - pos[c2][1]
+            d = math.hypot(dx_, dy_)
+            gap = d - rr - rad[c2]
+            if gap < 40 and d > 0:
+                vx += dx_ / d / (gap + 4)
+                vy += dy_ / d / (gap + 4)
+        if math.hypot(vx, vy) < 1e-9:
+            return list(range(0, 360, 15))
+        return sorted(range(0, 360, 15), key=lambda g: -(math.cos(math.radians(g)) * vx + math.sin(math.radians(g)) * vy))
+
     def free(box):
         return (box[0] >= 0 and box[2] <= W and box[1] >= top - 6 and
                 all(box[2] <= q[0] or box[0] >= q[2] or box[3] <= q[1] or box[1] >= q[3] for q in placed) and
                 not any(EX._seg_hits_box(*ld, (box[0] - 2, box[1] - 2, box[2] + 2, box[3] + 2)) for ld in leaders))
+    def beside(c):
+        """A label beside its circle, where its nearest circle is its own."""
+        (x, y_), rr = pos[c], rad[c]
+        w_ = tw(c, code_size, 600) * HR
+        for dx_, dy_, anc in ((rr + 4, code_size * 0.36, 'start'), (-rr - 4, code_size * 0.36, 'end'),
+                              (0, -rr - 5, 'middle'), (0, rr + code_size + 2, 'middle'),
+                              (rr * 0.75 + 3, -rr * 0.75 - 2, 'start'), (-rr * 0.75 - 3, -rr * 0.75 - 2, 'end'),
+                              (rr * 0.75 + 3, rr * 0.75 + code_size, 'start'), (-rr * 0.75 - 3, rr * 0.75 + code_size, 'end')):
+            tx, ty = x + dx_, y_ + dy_
+            x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
+            box = (x0, ty - 0.97 * code_size, x0 + w_, ty + 0.25 * code_size)
+            if free(box) and not hits_circle(box) and nearest_is_own(box, c):
+                return dict(tx=tx, ty=ty, anc=anc, box=box, seg=None)
+        return None
+
+    def with_leader(c):
+        """A short leader to the nearest free spot, tried at growing distances, facing away from the neighbors first.
+        The leader crosses no circle, label or other leader, and its label keeps clear of every other circle."""
+        (x, y_), rr = pos[c], rad[c]
+        w_ = tw(c, code_size, 600) * HR
+        for dist in (14, 20, 28, 38, 50):
+            for ang in away_angles(c):
+                ux, uy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
+                tx, ty = x + ux * (rr + dist), y_ + uy * (rr + dist)
+                anc = 'start' if ux > 0.3 else ('end' if ux < -0.3 else 'middle')
+                x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
+                box = (x0, ty - 0.97 * code_size + 0.36 * code_size, x0 + w_, ty + 0.25 * code_size + 0.36 * code_size)
+                if not (free(box) and not hits_circle(box, clear=B['leader_clear'], own=c)):
+                    continue
+                seg = (x + ux * (rr + 2), y_ + uy * (rr + 2), x + ux * (rr + dist - 3), y_ + uy * (rr + dist - 3))
+                lx0, ly0, lx1, ly1 = seg
+                if math.hypot(lx1 - lx0, ly1 - ly0) < TK['note']['leader_min']:
+                    continue
+                if any(EX._seg_hits_box(*seg, (q[0] - 2, q[1] - 2, q[2] + 2, q[3] + 2)) for q in placed + [box]):
+                    continue
+                if any(seg_gap(seg, ld) < 3 for ld in leaders):      # no two leaders cross or touch
+                    continue
+                if any(math.hypot(px - pos[c2][0], py - pos[c2][1]) < rad[c2] + 1 for c2 in R if c2 != c
+                       for px, py in ((lx0 + (lx1 - lx0) * q / 8, ly0 + (ly1 - ly0) * q / 8) for q in range(9))):
+                    continue
+                return dict(tx=tx, ty=ty + code_size * 0.36, anc=anc, box=box, seg=seg)
+        return None
+
+    labels = {}
+
+    def put_label(c, p_):
+        labels[c] = p_
+        placed.append(p_['box'])
+        if p_['seg']:
+            leaders.append(p_['seg'])
+
+    def take_label(c):
+        p_ = labels.pop(c)
+        placed.remove(p_['box'])
+        if p_['seg']:
+            leaders.remove(p_['seg'])
+        return p_
+
+    def place(c):
+        p_ = beside(c) or with_leader(c)
+        if p_:
+            put_label(c, p_)
+        return p_
     for c in order:
         r = R[c]
         (x, y_), rr = pos[c], rad[c]
@@ -1647,50 +1766,30 @@ def gen_s16(W, uid, t=None):
             a.text(x, y_ + code_size * 0.36, c, code_size, f'qt{b}', 600, 'middle', on_mark=True)
             placed.append((x - w_ / 2, y_ - code_size * 0.62, x + w_ / 2, y_ + code_size * 0.5))
             continue
-        done = False
-        for dx_, dy_, anc in ((rr + 4, code_size * 0.36, 'start'), (-rr - 4, code_size * 0.36, 'end'),
-                              (0, -rr - 5, 'middle'), (0, rr + code_size + 2, 'middle'),
-                              (rr * 0.75 + 3, -rr * 0.75 - 2, 'start'), (-rr * 0.75 - 3, -rr * 0.75 - 2, 'end'),
-                              (rr * 0.75 + 3, rr * 0.75 + code_size, 'start'), (-rr * 0.75 - 3, rr * 0.75 + code_size, 'end')):
-            tx, ty = x + dx_, y_ + dy_
-            x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
-            box = (x0, ty - 0.97 * code_size, x0 + w_, ty + 0.25 * code_size)
-            if free(box) and not hits_circle(box) and nearest_is_own(box, c):
-                a.text(tx, ty, c, code_size, 'tl', 600, anc)
-                placed.append(box)
-                done = True
-                break
-        if not done:
-            # a short leader to the nearest free spot, tried at growing distances around the circle
-            for dist in (14, 20, 28, 38, 50):
-                for ang in range(0, 360, 15):
-                    ux, uy = math.cos(math.radians(ang)), math.sin(math.radians(ang))
-                    tx, ty = x + ux * (rr + dist), y_ + uy * (rr + dist)
-                    anc = 'start' if ux > 0.3 else ('end' if ux < -0.3 else 'middle')
-                    x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
-                    box = (x0, ty - 0.97 * code_size + 0.36 * code_size, x0 + w_, ty + 0.25 * code_size + 0.36 * code_size)
-                    if not (free(box) and not hits_circle(box)):
-                        continue
-                    lx0, ly0 = x + ux * (rr + 2), y_ + uy * (rr + 2)
-                    lx1, ly1 = x + ux * (rr + dist - 3), y_ + uy * (rr + dist - 3)
-                    if math.hypot(lx1 - lx0, ly1 - ly0) < TK['note']['leader_min']:
-                        continue
-                    if any(EX._seg_hits_box(lx0, ly0, lx1, ly1, (q[0] - 2, q[1] - 2, q[2] + 2, q[3] + 2)) for q in placed + [box]):
-                        continue
-                    if any(math.hypot(px - pos[c2][0], py - pos[c2][1]) < rad[c2] + 1 for c2 in R if c2 != c
-                           for px, py in ((lx0 + (lx1 - lx0) * q / 8, ly0 + (ly1 - ly0) * q / 8) for q in range(9))):
-                        continue
-                    a.leader([(lx0, ly0), (lx1, ly1)])
-                    leaders.append((lx0, ly0, lx1, ly1))
-                    a.text(tx, ty + code_size * 0.36, c, code_size, 'tl', 600, anc)
-                    placed.append(box)
-                    done = True
-                    break
-                if done:
-                    break
-        if not done:
+        if not place(c):
             skipped.append(c)
+    # a second pass: a state left without a label may take a near neighbor's spot, where both can then be labeled
+    for c in list(skipped):
+        near = sorted((t for t in labels if math.dist(pos[t], pos[c]) < 90), key=lambda t: math.dist(pos[t], pos[c]))
+        for t in near:
+            old = take_label(t)
+            if place(c):
+                if place(t):
+                    skipped.remove(c)
+                    break
+                take_label(c)
+            put_label(t, old)
+    for c in order:
+        if c in labels:
+            p_ = labels[c]
+            if p_['seg']:
+                a.leader([p_['seg'][:2], p_['seg'][2:]])
+                led.append(c)
+            a.text(p_['tx'], p_['ty'], c, code_size, 'tl', 600, p_['anc'])
+    leaders = [labels[c]['seg'] for c in led]
     a.anchors['skipped'] = skipped
+    a.anchors['leaders'] = dict(zip(led, leaders))
+    assert all(seg_gap(l1, l2) >= 3 for i, l1 in enumerate(leaders) for l2 in leaders[i + 1:]), f'{uid}: two leaders cross'
     if W >= 900:
         assert not skipped, f'{uid}: no room for {skipped}'
     # under the map: the largest states, then the range with its margins of error
@@ -1768,7 +1867,18 @@ VIEW_GROUND = {'newsprint': 'news', 'dark': 'dark', 'phone': 'news'}
 def stretch_figure(view, sid):
     """Explainer's figure frame, with the guide link pointed at this page's own short guide."""
     sp = SPEC_FN[sid](view)
-    return EX.figure(view, sp).replace('href="#system/read"', 'href="#newsprint/read"')
+    out = EX.figure(view, sp).replace('href="#system/read"', 'href="#newsprint/read"')
+    if sid in WIDTH_NOTES:
+        # the notes list sits outside the drawing's container, so it gets a container of its own, as wide as the drawing's,
+        # and the note that matches the drawing shown takes its place
+        wide, phone = WIDTH_NOTES[sid]
+        old = f'<li>{e(wide)}</li>'
+        assert out.count(old) == 1 and out.count('<ul class="fnotes">') == 1
+        out = out.replace(old, f'<li class="n-wide">{e(wide)}</li><li class="n-phone">{e(phone)}</li>')
+        start = out.index('<ul class="fnotes">')
+        end = out.index('</ul>', start) + len('</ul>')
+        out = out[:start] + '<div class="fnw">' + out[start:end] + '</div>' + out[end:]
+    return out
 
 
 def stretch_strip(view, sid):
@@ -1838,6 +1948,7 @@ TOKEN_USE = {
     'columns': 'S14',
     'bubble': 'S16',
     'results': 'S15',
+    'tag': 'S11',
 }
 TOKEN_UNITS = {
     'arrow': {'shaft': 'px, line width', 'head_len': 'px', 'head_half': 'px', 'phone_head_len': 'px', 'phone_head_half': 'px',
@@ -1855,10 +1966,12 @@ TOKEN_UNITS = {
                 'domain': 'thousand jobs', 'ticks': 'thousand jobs', 'height': 'px', 'phone_height': 'px'},
     'bubble': {'r_max': 'px, radius of the largest circle per artboard', 'gap': 'px', 'outline': 'px, line width', 'ring': 'px, line width',
                'bins': 'percent, lower edges of steps 2 to 5', 'key_millions': 'million people', 'key_seg': 'px per step',
-               'label_pad': 'px'},
+               'label_pad': 'px', 'leader_clear': 'px between a leader’s label and any other circle'},
     'results': {'gap': 'px', 'bar': 'px, bar height', 'bar_gap': 'px', 'shift_px_per_point': 'px per point', 'shift_head': 'px',
                 'shift_min': 'px, column width', 'html_headroom': 'ratio applied to measured HTML text',
-                'two_line_min': 'px, narrowest container for two-line cards'}
+                'two_line_min': 'px, narrowest container for two-line cards'},
+    'tag': {'pad_x': 'px each side of the measured text', 'height': 'px, box height for 13 px text',
+            'ascent_em': 'em, top of the d above the baseline', 'descent_em': 'em, foot of the g below the baseline'},
 }
 
 
@@ -1930,6 +2043,9 @@ CSS_ADD = r"""
 .s-subd{stroke:var(--ink);stroke-width:3px;fill:none;stroke-dasharray:5 3;stroke-linecap:butt}
 .s-frame{stroke:var(--ink);stroke-width:TILE_FRAME;fill:none}
 .s-tag{stroke:var(--ink);stroke-width:1px;fill:none}
+.fnw{container-type:inline-size}
+.fnw .n-phone{display:none}
+@container (max-width:599.98px){.fnw .n-wide{display:none}.fnw .n-phone{display:list-item}}
 .s-zero{stroke:var(--ink);stroke-width:1px;fill:none}
 .s-case{stroke:var(--g);stroke-width:7px;fill:none;stroke-linejoin:round;stroke-linecap:round}
 .f-area{fill:var(--lt2)}

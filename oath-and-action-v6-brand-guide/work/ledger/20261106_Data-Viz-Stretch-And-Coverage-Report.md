@@ -2,7 +2,7 @@
 
 Oath & Action Brand Guide, Edition 06. Phase 2, November 6, 2026. Status: waiting for Dustin's answers on Board 4. This is a stage review inside Phase 2, not a gate.
 
-Open the board: `work/boards/20261106_Data-Viz-Coverage-Board.html`, also published as a private page at BOARD_URL. The stretch page is published at STRETCH_URL (`work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html`).
+Open the board: `work/boards/20261106_Data-Viz-Coverage-Board.html`, also published as a private page at https://claude.ai/artifact/6kAB3SwWLRvCHFgABe3HB5. The stretch page is published at https://claude.ai/artifact/12gmPs7PG8o9BdNiLqNLBv (`work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html`).
 
 ## What you are asked to decide
 
@@ -41,8 +41,36 @@ Statistics and nonpartisanship reviewer: statistics 3 then 4, nonpartisanship 4 
 
 ## 3. Verification
 
-CHECKS
+**Tested**
+- The verifier on the stretch page: all 5,462 marks match the shared data, 0 errors, and the self-test caught 7 of 7 planted errors (final run by the main session after the last faults).
+- The rendered check with `--mid` on all three views at 1440, 1024, 768, 390 and 360 px: no sideways scroll, no text under 13 px, text contrast, labels and marks inside their drawings, no overlapping labels, Rule 05.3, no party mark in Pillar Red or Prussian, every bar and point on its scale, 0 axe-core violations, a visible focus ring on each stop. 0 failures (final run by the main session).
+- The new edge test caught S13's cut end dots on the first build; a copy of Explainer still passes the updated check.
+- The statistics reviewer rebuilt the four datasets from the public files, measured every scale from the drawings, and checked the United States figures and the new titles by script.
+- The creative director rendered every figure at twice size at 1440 and 390 px, looked at S15 at 720, 960 and 1280 px, and probed 11 widths for overlapping text and cut marks.
+- Board 4 passes the rendered check at 1440, 390 and 360 px; its build stops if the coverage map disagrees with the plan's tier table.
+
+**Not tested**
+- Real readers (Q-13). No one outside the studio has seen these charts.
+- A real screen reader, Safari, Firefox, real phones, 200 percent text zoom and print.
+- The Bureau of Labor Statistics revision wording comes from bls.gov text in search results; bls.gov and FRED's series page refused automated reads and were not retried.
+- Neither reviewer read the page after the four last faults; the creative director's scores describe the build before them.
+- At 328 px, S16 drops Louisiana's label so no leaders cross; the table names every state.
+- Nobody sorted S15 by hand on the published page.
 
 ## 4. Change log
 
-CHANGELOG
+Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, the Civic Line icons, the identity masters, the atlas pick or the three concept folders changed.
+
+**Created**
+- `work/boards/phase-2/data-viz/stretch/`: `build_stretch.py`, `20261106_Data-Viz-Stretch.html`, its check and verify results, `captures/`
+- `work/boards/phase-2/data-viz/board-4/`: `20261106_Board-4-Content.json`, `20261106_Board-4-Studio-Record.json`, `20261106_Published-Pages.json`, `captures/`
+- `work/boards/20261106_Data-Viz-Coverage-Board.html`, `work/boards/20261106_Data-Viz-Coverage-Board-Check-Results.json` and its three captures in `work/boards/captures/`
+- `work/build/scripts/phase-2/dataviz_board4_build.py`, `work/build/scripts/phase-2/dataviz_board4_capture.js`
+- `work/handoffs/phase-2/`: `20261106_Data-Viz-Stretch-Brief.md`, `20261106_Data-Viz-Stretch-Review-Brief.md`, `20261106_Data-Viz-Stretch-Fix-Pass-Brief.md`, `20261106_Data-Viz-Stretch-Notes.md`, `20261106_Data-Viz-Stretch-Red-Team.md`, `20261106_CD-Review-Of-Stretch-Test.md`
+- `work/ledger/20261106_Data-Viz-Stretch-And-Coverage-Report.md` (this file)
+
+**Modified**
+- `work/handoffs/phase-2/20261106_Data-Viz-Coverage-Plan.md` (127 forms; section 6)
+- `work/build/scripts/phase-2/dataviz_stretch_data.py` and `work/boards/phase-2/data-viz/shared/20261106_Chart-Data.json`
+- `work/build/scripts/phase-2/dataviz_verify.py`, `work/build/scripts/phase-2/dataviz_check.js`
+- `work/ledger/20261020_Decision-Log.md` (D2-121 to D2-129)

@@ -306,7 +306,7 @@ tr.k-built,tr.k-stretch{background:#F4F3F0}
 .fnote{font-size:.9375rem;margin-top:10px}
 ol.rounds{list-style:none;margin:16px 0 0;padding:0;counter-reset:r;display:grid;gap:0}
 ol.rounds li{display:grid;grid-template-columns:4.5em minmax(0,1fr) minmax(0,16em);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
-ol.rounds .rn{font:800 1.75rem/1 var(--display);letter-spacing:-.02em}ol.rounds .rn small{display:block;font:700 .75rem/1.4 var(--body);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+ol.rounds .rn{font:800 1.75rem/1 var(--display);letter-spacing:-.02em}ol.rounds .rn small{display:block;font:700 .8125rem/1.4 var(--body);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
 ol.rounds .rw{color:var(--muted);font-size:.9375rem}
 @media (max-width:1000px){.urows{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.sb-g{grid-template-columns:minmax(0,1fr)}}
