@@ -5,8 +5,8 @@
  "error_count": 0,
  "stats": {
   "figures": 14,
-  "marks": 5370,
-  "values": 5370,
+  "marks": 5462,
+  "values": 5462,
   "categories": 0,
   "units": 0
  },
@@ -14,7 +14,7 @@
   {
    "plant": "changed value",
    "caught": true,
-   "first_error": "S11: DC.shift_pts drawn as 4.23, data says 2.94"
+   "first_error": "S11: US.shift_pts drawn as 7.52, data says 5.93"
   },
   {
    "plant": "source line removed",
@@ -34,7 +34,7 @@
   {
    "plant": "key changed",
    "caught": true,
-   "first_error": "S11: mark key \"DC-planted\" is not a row of presidential-shift-by-state"
+   "first_error": "S11: mark key \"US-planted\" is not a row of presidential-shift-by-state"
   },
   {
    "plant": "measure line removed",

@@ -336,7 +336,7 @@ async function focusAudit(page) {
   report.pass = report.failures.length === 0;
   const outPath = path.join(dir, `${stem}-Check-Results.json`);
   fs.writeFileSync(outPath, JSON.stringify(report, null, 1));
-  console.log(`${report.pass ? 'PASS' : 'FAIL'} ${path.relative(ROOT, file)}: ${views.length} views x 3 widths, ${report.failures.length} failures`);
+  console.log(`${report.pass ? 'PASS' : 'FAIL'} ${path.relative(ROOT, file)}: ${views.length} views x ${MID ? 5 : 3} widths, ${report.failures.length} failures`);
   for (const f of report.failures) console.log('  - ' + f);
   console.log('  results: ' + path.relative(ROOT, outPath));
   process.exit(report.pass ? 0 : 1);

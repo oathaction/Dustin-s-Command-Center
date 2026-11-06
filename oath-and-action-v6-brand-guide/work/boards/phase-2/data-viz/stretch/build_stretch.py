@@ -49,17 +49,18 @@ ORDER = ['S11', 'S12', 'S13', 'S14', 'S15', 'S16']
 STRETCH_TOKENS = {
     'arrow': {'shaft': 2, 'head_len': 8, 'head_half': 4.5, 'phone_head_len': 6, 'phone_head_half': 3.5,
               'tail_r': 2.25, 'tip_r': 0.5, 'key_points': 10},
-    'shift_axis': {'pitch': 20, 'phone_pitch': 19, 'label': 14, 'break_gap': 32, 'far_segment': (-90, -80),
-                   'near_segment': (-40, 50), 'tick_step': 10, 'phone_tick_step': 20},
-    'tile': {'size_max': 80, 'gap': 6, 'mid_gap': 4, 'phone_gap': 2.5, 'phone_cols': 11, 'frame': 2},
-    'tile_arrow': {'angle_small': 62, 'angle_large': 22, 'phone_angle_small': 42, 'phone_angle_large': 12, 'angle_ref': 12,
-                   'key_points': (1, 5, 10), 'phone_head_len': 5, 'phone_head_half': 3},
-    'spark': {'px_per_point': 2.5, 'phone_px_per_point': 2.5, 'domain': (-15, 20), 'ticks': (-10, 0, 10, 20), 'line': 2, 'context': 1.5,
-              'end_r': 3, 'row_height': 42, 'gap_x': 30, 'phone_gap_x': 18},
-    'columns': {'fill_share': 0.72, 'avg_line': 3, 'prelim_months': 2, 'vertex_r': 1.5, 'domain': (-200, 450)},
-    'bubble': {'r_max': {'wide': 50, 'mid': 34, 'phone': 23, 'small_phone': 21}, 'gap': 2, 'outline': 1,
-               'bins': (60, 65, 70, 75), 'key_millions': (1, 5, 20), 'label_pad': 3},
-    'results': {'row': 38, 'half': 136, 'half_points': 90, 'bar': 3, 'shift_px_per_point': 6.5, 'shift_head': 6},
+    'shift_axis': {'pitch': 20, 'label': 14, 'break_gap': 32, 'far_segment': (-90, -80), 'near_segment': (-40, 50),
+                   'tick_step': 10, 'phone_lollipop_ppp': 20, 'phone_lollipop_pitch': 44},
+    'tile': {'size_max': 80, 'gap': 6, 'mid_gap': 4, 'phone_gap': 2.5, 'phone_cols': 11, 'frame': 2, 'phone_steps': (3, 6, 9)},
+    'tile_arrow': {'key_points': (1, 5, 10)},
+    'spark': {'px_per_point': 2.5, 'phone_px_per_point': 2.5, 'domain': (-15, 20), 'ticks': (-10, 0, 10, 20), 'line': 2,
+              'context': 1.5, 'end_r': 3, 'gap_x': 30, 'phone_gap_x': 18},
+    'columns': {'fill_share': 0.72, 'avg_line': 3, 'prelim_months': 2, 'vertex_r': 1.5, 'domain': (-200, 850),
+                'ticks': (-200, 0, 200, 400, 600, 800), 'height': 360, 'phone_height': 290},
+    'bubble': {'r_max': {'wide': 50, 'mid': 34, 'phone': 23, 'small_phone': 21}, 'gap': 2, 'outline': 1, 'ring': 2,
+               'bins': (60, 65, 70, 75), 'key_millions': (1, 5, 20), 'key_seg': 64, 'label_pad': 3},
+    'results': {'gap': 12, 'bar': 6, 'bar_gap': 4, 'shift_px_per_point': 6.5, 'shift_head': 8, 'shift_min': 130,
+                'html_headroom': 1.06, 'two_line_min': 560},
 }
 ST = STRETCH_TOKENS
 
@@ -153,16 +154,15 @@ def sector_facts():
 
 
 def monthly_facts():
-    R = {r['key']: r for r in rows(MONTHLY)}
-    since = [r for r in rows(MONTHLY) if r['key'] >= '2025-01']
-    losses = [r for r in rows(MONTHLY) if r['key'] >= '2023-01' and r['change_thousands'] < 0]
-    assert len(losses) == 7 and all(r['key'] >= '2025-01' for r in losses) and len(since) == 21
-    last150 = max(r['key'] for r in rows(MONTHLY) if (r['avg3_thousands'] or 0) >= 150)
-    assert last150 == '2024-04'
-    hi = max((r for r in since), key=lambda r: r['avg3_thousands'])
-    assert (hi['key'], hi['avg3_thousands']) == ('2026-05', 141.7)
-    assert R['2023-01']['avg3_thousands'] == 279.0 and round(R['2026-09']['avg3_thousands']) == 51
-    return {'losses': losses, 'last150': R[last150], 'first': R['2023-01'], 'last': R['2026-09']}
+    """The S14 window is every required month, January 2022 to September 2026, the span both jobs charts share."""
+    req = DS[MONTHLY]['required_keys']
+    D = [r for r in rows(MONTHLY) if r['key'] in set(req)]
+    assert [r['key'] for r in D] == req and req[0] == '2022-01' and req[-1] == '2026-09' and len(D) == 57
+    losses = [r for r in D if r['change_thousands'] < 0]
+    assert len(losses) == 7
+    last = D[-1]
+    assert round(last['avg3_thousands']) == 51
+    return {'window': D, 'losses': losses, 'last': last}
 
 
 def turnout_facts():
@@ -200,6 +200,16 @@ def stretch_ground(name):
         assert EX.contrast(best, hx) >= 4.5, (name, hx)
         out[f'qt{i}'] = best
     out['qk'] = ramp[-1] if name != 'dark' else ramp[-1]           # circle outline: the strongest step
+    # S12's phone steps by size of shift: four Stone steps, darker for more on light grounds and lighter on Charcoal
+    if name == 'dark':
+        steps = [EX.mix(EX.STONE, EX.CHAR, 0.75), EX.mix(EX.STONE, EX.CHAR, 0.4), EX.mix(EX.STONE, EX.NEWS, 0.55), EX.mix(EX.STONE, EX.NEWS, 0.85)]
+    else:
+        steps = [G['lt2'], G['lt'], EX.mix(EX.STONE, EX.CHAR, 0.1), EX.mix(EX.STONE, EX.CHAR, 0.6)]
+    for i, hx in enumerate(steps):
+        out[f'ps{i}'] = hx
+        best = max((dark_ink, EX.NEWS if name == 'news' else light_ink), key=lambda c: EX.contrast(c, hx))
+        assert EX.contrast(best, hx) >= 4.5, (name, hx)
+        out[f'pt{i}'] = best
     out['land'] = EX.mix(EX.NEWS, EX.WHITE, 0.45) if name == 'news' else (EX.mix(EX.STONE, EX.WHITE, 0.94) if name == 'white' else EX.mix(EX.STONE, EX.CHAR, 0.80))
     out['border'] = G['g']
     return out
@@ -286,48 +296,95 @@ def s11_scale(W, narrow, R, lab_w):
     raise AssertionError('S11 labels do not fit at this width')
 
 
+TAG = 'Leader changed'
+
+
+def tag_w(size=13):
+    return tw(TAG, size, 600) * HR + 10
+
+
+def svg_tag(a, x, y, size=13):
+    """The boxed "Leader changed" tag, the device S15 uses in HTML, drawn in SVG with its left edge at x on baseline y."""
+    w = tag_w(size)
+    a.rect(x, y - size * 0.92, w, size * 1.24, 's-tag')
+    a.text(x + 5, y, TAG, size, 'tl', 600)
+    return w
+
+
+def national():
+    """The United States row from the dataset's extra_rows, and the facts its note states."""
+    US = DS[SHIFT]['extra_rows'][0]
+    assert US['key'] == 'US' and US['name'] == 'United States'
+    R = rows(SHIFT)
+    below = [r for r in R if r['shift_pts'] < US['shift_pts']]
+    big4 = sorted(R, key=lambda r: -r['total_votes_2024'])[:4]
+    assert len(below) == 39 and [r['code'] for r in big4] == ['CA', 'TX', 'FL', 'NY'] and min(r['shift_pts'] for r in big4) >= 8.0
+    assert abs(sum(r['total_votes_2024'] for r in R) - US['total_votes_2024']) < 1      # the nation sums from the states
+    assert abs(US['margin_2024'] - US['margin_2020'] - US['shift_pts']) < 0.015 and US['margin_2020'] < 0 < US['margin_2024']
+    return US, below, big4
+
+
+BREAK_NOTE = 'The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale.'
+FLIP_HEAD = 'Six states changed leader'
+
+
+def flip_body(F):
+    names = [r['name'] for r in F['flips']]
+    return 'from the Democratic to the Republican nominee: ' + ', '.join(names[:-1]) + f' and {names[-1]}. Each carries a tag.'
+
+
 def gen_s11(W, uid, t=None):
     """Shift arrows: one row per state, sorted by its 2024 margin, each arrow from the 2020 margin to the 2024
     margin on one axis with the party names at its ends. The name and the shift sit outside the arrow on the side
-    of the state's 2024 leader, so nothing but the six arrows that changed leader crosses the even line."""
+    of the state's 2024 leader, so nothing but the arrows that changed leader crosses the even line. The United
+    States sits above the states, under its own rule. Phones draw a ranked change lollipop instead."""
+    if W < 600:
+        return gen_s11_phone(W, uid, t)
     a = Art(W, uid, t)
-    narrow = W < 600
+    narrow = False
     A, AR = ST['shift_axis'], ST['arrow']
     size = A['label']
     tk = a.t.tk
-    pitch = A['phone_pitch'] if narrow else A['pitch']
+    pitch = A['pitch']
     F = shift_facts()
+    US, _, _ = national()
+    flips = {r['code'] for r in F['flips']}
     R = sorted(rows(SHIFT), key=lambda r: (r['margin_2024'], r['code']))
     far, near = A['far_segment'], A['near_segment']
     assert all(far[0] <= r[m] <= far[1] for r in R if r['code'] == 'DC' for m in ('margin_2020', 'margin_2024'))
-    assert all(near[0] <= r[m] <= near[1] for r in R if r['code'] != 'DC' for m in ('margin_2020', 'margin_2024'))
-
-    def name(r):
-        return r['code'] if narrow else short_name(r)
+    assert all(near[0] <= r[m] <= near[1] for r in R + [US] if r['code'] != 'DC' for m in ('margin_2020', 'margin_2024'))
 
     def num(r):
-        return '+' + f'{r["shift_pts"]:.1f}'
+        return f'{r["shift_pts"]:.1f}'
 
     def lab_w(r):
-        return (tw(name(r), size, 600) + tw(' ' + num(r), size, 400)) * HR
-    X, k, x_lo, x_hi = s11_scale(W, narrow, R, lab_w)
-    hl = AR['phone_head_len'] if narrow else AR['head_len']
+        w_ = (tw(short_name(r), size, 600) + tw(num(r) + ' ', size, 400)) * HR
+        return w_ + (8 + tag_w() if r['code'] in flips else 0)
+    X, k, x_lo, x_hi = s11_scale(W, narrow, R + [US], lab_w)
     # header: the party words at the axis ends, then the ticks
     yw, yt = 16, 42
     wl, wr = min(x_lo, X(far[0])), W
     tri(a, wl + 7, yw - 5, -1, 6)
-    a.text(wl + 12, yw, 'Democratic nominee led' if not narrow else 'Democratic led', size, 'tl', 600)
+    a.text(wl + 12, yw, 'Democratic nominee led', size, 'tl', 600)
     tri(a, wr - 7, yw - 5, 1, 6)
-    a.text(wr - 12, yw, 'Republican nominee led' if not narrow else 'Republican led', size, 'tl', 600, 'end')
-    step = A['phone_tick_step'] if narrow else A['tick_step']
-    ticks = [far[0], far[1]] + [v for v in range(near[0], near[1] + 1, step)]
-    y0 = yt + 22
+    a.text(wr - 12, yw, 'Republican nominee led', size, 'tl', 600, 'end')
+    ticks = [far[0], far[1]] + [v for v in range(near[0], near[1] + 1, A['tick_step'])]
+    y_us = yt + 22
+    y_rule = y_us + pitch / 2 + 6
+    y0 = y_rule + 6 + pitch / 2
     ylast = y0 + (len(R) - 1) * pitch
     yb = ylast + pitch / 2 + 20
 
+    def tick_txt(v):
+        return 'Even' if v == 0 else (f'{abs(v)} points' if v == near[1] else str(abs(v)))
+
     def tick_row(y):
         for v in ticks:
-            a.text(X(v), y, 'Even' if v == 0 else str(abs(v)), tk, 'tk', 400, 'middle')
+            if v == near[1]:
+                # the figure stays centered on its tick and the unit runs to the right of it
+                a.text(X(v) - tw(str(v), tk) * HR / 2, y, tick_txt(v), tk, 'tk', 400)
+            else:
+                a.text(X(v), y, tick_txt(v), tk, 'tk', 400, 'middle')
         # the break mark: two short slashes between the tick labels either side of the skip
         le = X(far[1]) + tw(str(abs(far[1])), tk) * HR / 2
         ri = X(near[0]) - tw(str(abs(near[0])), tk) * HR / 2
@@ -337,21 +394,27 @@ def gen_s11(W, uid, t=None):
             a.line(cx + dx - 1.25, y + 1, cx + dx + 1.25, y - 9, 's-mark')
     tick_row(yt)
     tick_row(yb)
-    # the even line: the zero baseline, crossed only by the six arrows that changed leader
-    a.line(X(0), y0 - pitch / 2 - 2, X(0), ylast + pitch / 2 + 2, 's-even')
-    for i, r in enumerate(R):
-        yc = y0 + i * pitch
+    # the even line: the zero baseline, crossed only by the arrows that changed leader
+    a.line(X(0), y_us - pitch / 2 - 2, X(0), ylast + pitch / 2 + 2, 's-even')
+
+    def row(r, yc):
         x0, x1 = X(r['margin_2020']), X(r['margin_2024'])
         arrow_h(a, x0, x1, yc, r, narrow, scale='far' if r['code'] == 'DC' else None)
         lab = da(r['key'], r['shift_pts'], field='shift_pts', mark='label')
         if r['margin_2024'] < 0 and r['code'] != 'DC':
-            a.rich(x0 - AR['tail_r'] - 6, yc + size * 0.36, [(name(r), 'tl', 600), (' ' + num(r), 'tn', 400)], size, 'end', attrs=lab)
+            a.rich(x0 - AR['tail_r'] - 6, yc + size * 0.36, [(short_name(r), 'tl', 600), (' ' + num(r), 'tn', 400)], size, 'end', attrs=lab)
         else:
-            a.rich(x1 + 8, yc + size * 0.36, [(num(r), 'tn', 400), (' ' + name(r), 'tl', 600)], size, attrs=lab)
-    a.anchors.update(X=X, k=k, y0=y0, pitch=pitch, rows=R)
+            w_ = a.rich(x1 + 8, yc + size * 0.36, [(num(r), 'tn', 400), (' ' + short_name(r), 'tl', 600)], size, attrs=lab)
+            if r['code'] in flips:
+                svg_tag(a, x1 + 8 + w_ * HR + 8, yc + size * 0.36)
+    # the nation first, set apart from the states by a rule
+    row(US, y_us)
+    a.line(0, y_rule, W, y_rule, 's-grid')
+    for i, r in enumerate(R):
+        row(r, y0 + i * pitch)
 
     # the key, in the open space right of the even line beside the Democratic-led rows
-    kx = X(0) + (22 if not narrow else 14)
+    kx = X(0) + 22
     kw = W - kx
     ky = y0 + pitch * 0.5
     eb = next(x for x in ('HOW TO READ AN ARROW', 'READING AN ARROW', 'KEY') if tw(x, 13, 700, track=0.06) * HR <= kw)
@@ -361,11 +424,11 @@ def gen_s11(W, uid, t=None):
     s_len = kp * k                      # drawn at the chart's own scale
     sx0 = kx + AR['tail_r']
     sx1 = sx0 + s_len
-    hh_k = AR['phone_head_half'] if narrow else AR['head_half']
+    hl = AR['head_len']
     a.circle(sx0, ky, AR['tail_r'], 'f-tail')
     a.line(sx0, ky, sx1, ky, 's-arw')
-    a.path(f'M{f(sx1)} {f(ky)}L{f(sx1 - hl)} {f(ky - hh_k)}L{f(sx1 - hl)} {f(ky + hh_k)}Z', 'f-head')
-    a.text(sx1 + 8, ky + size * 0.36, f'+{kp:.1f}', size, 'tn', 400)
+    a.path(f'M{f(sx1)} {f(ky)}L{f(sx1 - hl)} {f(ky - AR["head_half"])}L{f(sx1 - hl)} {f(ky + AR["head_half"])}Z', 'f-head')
+    a.text(sx1 + 8, ky + size * 0.36, f'{kp:.1f}', size, 'tn', 400)
     if s_len >= tw('2020', tk) * HR + tw('2024', tk) * HR / 2 + 6:
         a.text(sx0 - AR['tail_r'], ky + 24, '2020', tk, 'tk', 400)
         a.text(sx1, ky + 24, '2024', tk, 'tk', 400, 'middle')
@@ -376,74 +439,118 @@ def gen_s11(W, uid, t=None):
                f'it is the shift in percentage points; this one shows {nw(kp)}, at the same scale as the chart.')
     ky = a.para(kx, ky, key_txt, kw, size, 'tn', 400, round(size * 1.36))
     ky += 28
-    brk = ('The scale skips from 80 to 40 points on the Democratic side so DC fits. Every arrow keeps one scale.')
-    ky = a.para(kx, ky, brk, kw, size, 'tn', 400, round(size * 1.36))
+    ky = a.para(kx, ky, BREAK_NOTE, kw, size, 'tn', 400, round(size * 1.36))
     assert ky < y0 + 19.5 * pitch, f'{uid}: key runs into the Republican-led rows'
 
-    # the six arrows that cross the even line, named in the open space left of it
-    fl = [i for i, r in enumerate(R) if sgn(r['margin_2020']) != sgn(r['margin_2024'])]
-    i0, i1 = min(fl), max(fl)
-    bx = min(X(R[i]['margin_2020']) for i in fl) - AR['tail_r'] - 8
-    yt0, yt1 = y0 + i0 * pitch - pitch * 0.38, y0 + i1 * pitch + pitch * 0.38
-    a.path(f'M{f(bx + 5)} {f(yt0)}H{f(bx)}V{f(yt1)}H{f(bx + 5)}', 's-ld')
-    names = [R[i]['name'] for i in fl]
-    head = f'{nw(len(fl), cap=True)} states changed leader'
-    body = 'from the Democratic to the Republican nominee: ' + ', '.join(names[:-1]) + f' and {names[-1]}.'
-    nwid = min(bx - 12, 300)
-    nx = bx - 12 - nwid
-    ny = yt0 + 12
-    ny = a.para(nx, ny, head, nwid, size, 'th', 600, round(size * 1.36))
-    a.para(nx, ny + round(size * 1.36), body, nwid, size, 'tn', 400, round(size * 1.36))
+    # the six states that changed leader, named in the open space left of their rows
+    fl = [i for i, r in enumerate(R) if r['code'] in flips]
+    bx = min(X(R[i]['margin_2020']) for i in fl) - AR['tail_r'] - 14
+    nwid = min(bx, 300)
+    nx = bx - nwid
+    ny = y0 + min(fl) * pitch + 4
+    ny = a.para(nx, ny, FLIP_HEAD, nwid, size, 'th', 600, round(size * 1.36))
+    a.para(nx, ny + round(size * 1.36), flip_body(F), nwid, size, 'tn', 400, round(size * 1.36))
     return a, yb + 8
+
+
+def gen_s11_phone(W, uid, t=None):
+    """The phone form: a change lollipop. One row per state, ranked by shift, every arrow from one shared start at
+    zero, with the state's 2024 leader and margin in words on the row; the nation first, under its own rule."""
+    a = Art(W, uid, t)
+    AR, A = ST['arrow'], ST['shift_axis']
+    size = 14
+    ppp = A['phone_lollipop_ppp']
+    pitch = A['phone_lollipop_pitch']
+    F = shift_facts()
+    US, _, _ = national()
+    flips = {r['code'] for r in F['flips']}
+    R = sorted(rows(SHIFT), key=lambda r: (-r['shift_pts'], r['name']))
+    x0 = 1.5
+    assert x0 + max(r['shift_pts'] for r in R) * ppp + 7 + tw('10.5', size) * HR <= W
+    y = 16
+    y = a.para(0, y, 'Each arrow starts at zero and runs as far as the margin moved toward the Republican nominee, at one '
+                     'scale. Under each state, its 2024 leader and margin.', W, size, 'tn', 400, 19)
+    y += 34
+    ticks = (0, 5, 10)
+
+    def tick_row(yy):
+        for v in ticks:
+            txt = f'{v} points' if v == ticks[-1] else str(v)
+            a.text(x0 + v * ppp, yy, txt, 14, 'tk', 400, 'start' if v == 0 else 'middle')
+    tick_row(y)
+    top = y + 8
+
+    def row(r, yy):
+        # line 1: the name, a tag where the leader changed, and the 2024 leader in words at the right
+        a.text(0, yy, short_name(r), size, 'tl', 600)
+        m = r['margin_2024']
+        a.raw(f'<g data-party="{PARTY[sgn(m)]}">')
+        a.text(W, yy, f'2024: {lead_text(m)}', size, 'tn', 400, 'end', attrs=da(r['key'], m, field='margin_2024', mark='label'))
+        a.raw('</g>')
+        # line 2: the arrow from the shared start, the shift, and a tag where the leader changed
+        ya = yy + 16
+        a.line(x0, ya - 7, x0, ya + 7, 's-base')           # the zero line, drawn beside each arrow and never through a name
+        L = r['shift_pts'] * ppp
+        hl = min(AR['phone_head_len'], max(L, 3.5))
+        a.raw('<g data-party="Republicans" class="arw">')
+        a.line(x0, ya, x0 + L, ya, 's-arw', da(r['key'], r['shift_pts'], field='shift_pts', mark='bar', axis='x'))
+        a.path(f'M{f(x0 + L)} {f(ya)}L{f(x0 + L - hl)} {f(ya - AR["phone_head_half"])}L{f(x0 + L - hl)} {f(ya + AR["phone_head_half"])}Z', 'f-head')
+        a.raw('</g>')
+        wv = a.text(x0 + L + 7, ya + size * 0.36, f'{r["shift_pts"]:.1f}', size, 'tn', 400, attrs=da(r['key'], r['shift_pts'], field='shift_pts', mark='label'))
+        if r['code'] in flips:
+            svg_tag(a, x0 + L + 7 + wv * HR + 10, ya + size * 0.36)
+    y += 30
+    row(US, y)
+    y_rule = y + 16 + 16
+    a.line(0, y_rule, W, y_rule, 's-grid')
+    y = y_rule + 24
+    for r in R:
+        row(r, y)
+        y += pitch
+    last = y - pitch + 16
+    y = last + 34
+    tick_row(y)
+    return a, y + 8
 
 
 def spec_s11(view):
     F = shift_facts()
+    US, below, big4 = national()
     R = sorted(rows(SHIFT), key=lambda r: (r['margin_2024'], r['code']))
     lo, hi = F['lo'], F['hi']
-    title = (f'Every state and DC moved toward the Republican nominee from 2020 to 2024, by {lo["shift_pts"]:.1f} point in '
+    title = (f'The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by {lo["shift_pts"]:.1f} point in '
              f'{lo["name"]} to {hi["shift_pts"]:.1f} points in {hi["name"]}.')
     measure = ("Presidential margin by state in 2020 and 2024: the Republican nominee's share of all presidential votes "
-               "minus the Democratic nominee's, in percentage points, 50 states and DC")
+               "minus the Democratic nominee's, in percentage points, 50 states and DC, with the United States above them")
     flips = [r['name'] for r in F['flips']]
-    label = (f'Shift arrows for 50 states and DC, sorted by 2024 margin. Every arrow points toward the Republican nominee. '
-             f'Shifts run from {lo["shift_pts"]:.1f} points in {lo["name"]} to {hi["shift_pts"]:.1f} in {hi["name"]}. '
+    label = (f'Shift arrows for the United States, 50 states and DC. Every arrow points toward the Republican nominee. '
+             f'The United States moved {US["shift_pts"]:.1f} points, from {lead_text(US["margin_2020"])} to {lead_text(US["margin_2024"])}. '
+             f'States run from {lo["shift_pts"]:.1f} points in {lo["name"]} to {hi["shift_pts"]:.1f} in {hi["name"]}. '
              f'Six states changed leader, from the Democratic to the Republican nominee: {", ".join(flips[:-1])} and {flips[-1]}. '
              'The table under the chart lists every state.')
     body, strings = EX.artboards(view, 'S11', gen_s11, TK['artboard']['wide'], label)
     notes = ["Margin: the Republican nominee's share of all presidential votes minus the Democratic nominee's. "
-             'Above zero, the Republican nominee led; below zero, the Democratic nominee led.',
+             'Right of Even, the Republican nominee led; left of it, the Democratic nominee led.',
+             f'The national margin moved {US["shift_pts"]:.1f} points, more than the margin in {len(below)} of the 51 states, because the '
+             'states with the most voters moved most: ' + ', '.join(r['name'] for r in big4[:-1]) + f' and {big4[-1]["name"]} each moved 8 points or more.',
              "New York's figures count every ballot line each nominee held, including the Working Families and Conservative lines.",
              'Maine and Nebraska split their electoral votes by district; these margins are statewide.',
              "The 2024 figures come from the Federal Election Commission's compilation of state results, dated January 16, 2025; "
              'its Federal Elections 2024 report may revise them.']
-    drawn = ["Axis: left of the even line, the Democratic nominee led; right of it, the Republican nominee led. "
-             'The scale skips from 80 to 40 points on the Democratic side so DC fits; every arrow keeps one scale.',
+    drawn = ['Axis: right of Even, the Republican nominee led; left of it, the Democratic nominee led. ' + BREAK_NOTE,
+             f'The United States sits above the states: {lead_text(US["margin_2020"])} in 2020 to {lead_text(US["margin_2024"])} in 2024, a shift of {US["shift_pts"]:.1f}.',
              "How to read an arrow: each arrow runs from a state's 2020 margin, at the dot, to its 2024 margin, at the tip. The figure beside it is the shift in percentage points; the sample shows 10, at the same scale as the chart.",
-             f'Six states changed leader, from the Democratic to the Republican nominee: {", ".join(flips[:-1])} and {flips[-1]}.']
-    body_rows = [[r['name'], lead_text(r['margin_2020']), lead_text(r['margin_2024']), f'{r["shift_pts"]:.2f}'] for r in R]
-    table = table_html('Presidential margin by state, 2020 and 2024, with the shift', ['State', '2020 margin', '2024 margin', 'Shift toward the Republican nominee, points'], body_rows, (3,))
+             f'{FLIP_HEAD} {flip_body(F)}',
+             'On phones the chart ranks the states by shift, each arrow from one start at zero, with the 2024 leader and margin in words on each row. '
+             'Each arrow starts at zero and runs as far as the margin moved toward the Republican nominee, at one scale. Under each state, its 2024 leader and margin.']
+    body_rows = [[US['name'], lead_text(US['margin_2020']), lead_text(US['margin_2024']), f'{US["shift_pts"]:.2f}']]
+    body_rows += [[r['name'], lead_text(r['margin_2020']), lead_text(r['margin_2024']), f'{r["shift_pts"]:.2f}'] for r in R]
+    table = table_html('Presidential margin, the United States and each state, 2020 and 2024, with the shift', ['Place', '2020 margin', '2024 margin', 'Shift toward the Republican nominee, points'], body_rows, (3,))
     return dict(sid='S11', title=title, measure=measure, body=body, strings=strings, label=label, notes=notes,
                 drawn_notes=drawn, table=table, wide=True, grade_line='Documented: official results the states reported, compiled by the Federal Election Commission')
 
 
-
 # ------------------------------------------------------------------------------------------------ S12 tile map of shifts
-def tile_angle(s, narrow=False):
-    """Steep for a small shift, flat for a large one: the arrow's angle and length both grow with the shift. Phone
-    tiles are shallower, so their arrows run flatter."""
-    T = ST['tile_arrow']
-    t = min(s, T['angle_ref']) / T['angle_ref']
-    lo, hi = (T['phone_angle_small'], T['phone_angle_large']) if narrow else (T['angle_small'], T['angle_large'])
-    return math.radians(lo + (hi - lo) * t)
-
-
-def tile_geom(s, k, narrow=False):
-    """The arrow's run (horizontal, exactly k px per point) and rise for a shift of s points."""
-    dx = k * s
-    return dx, dx * math.tan(tile_angle(s, narrow))
-
-
 def phone_tiles():
     """On phones the grid drops to eleven columns: Alaska and Hawaii move to the bottom row, as many newsroom maps
     place them, and every other state keeps its place."""
@@ -467,13 +574,32 @@ def shift_lists(n=4):
     return big, small
 
 
-DIRECTION_NOTE = 'All 51 arrows point right, toward the Republican nominee. A longer, flatter arrow means a larger shift.'
+DIRECTION_NOTE = 'All 51 arrows point right, toward the Republican nominee. A longer arrow means a larger shift.'
+FRAME_NOTE = 'Frame: the leader changed, from the Democratic to the Republican nominee'
+STEP_WORDS = ['Under 3 points', '3 to 5.9', '6 to 8.9', '9 or more']
+
+
+def shift_step(s):
+    """Phone fill step for a shift, binned on the figure as printed, to one decimal."""
+    v = round(s, 1)
+    return sum(1 for b in ST['tile']['phone_steps'] if v >= b)
+
+
+def tile_key_arrows(a, x, base, k, narrow, hd, lbl, gap):
+    """The size key: flat sample arrows at the map's own scale."""
+    for sp_ in ST['tile_arrow']['key_points']:
+        dx = sp_ * k
+        arrow_at(a, x + 1, base, dx, 0, narrow, head=hd)
+        w_ = a.text(x + 1 + dx + 8, base + lbl * 0.36, f'{sp_} point{"s" if sp_ != 1 else ""}', lbl, 'tr', 400)
+        x += 1 + dx + 8 + w_ * HR + gap
+    return x
 
 
 def gen_s12(W, uid, t=None):
-    """Tile map: one square per state on the shared tile grid, each holding an arrow whose run is exactly the shift
-    toward the Republican nominee at one scale, and whose angle flattens as the shift grows. A frame marks the six
-    states where the leader changed. Phones use an eleven-column grid and set the lists under the map."""
+    """Tile map: one square per state on the shared tile grid. On the wide and middle maps each square holds a flat
+    arrow pointing right whose length is the shift toward the Republican nominee, at one scale across the map. On
+    phones, where an arrow would shrink to a speck, each square takes one of four Stone steps by the size of its shift.
+    A frame marks the six states where the leader changed. The largest and smallest shifts are named under the map."""
     a = Art(W, uid, t)
     T, AR = ST['tile'], ST['arrow']
     narrow = W < 600
@@ -488,89 +614,101 @@ def gen_s12(W, uid, t=None):
     pitch = tile + gap
     wide = W >= 900
     stack = W < 900          # under 900 px the key sits above the map
-    # the arrow area inside a tile, and the scale that fits the largest run and the largest rise
-    if wide:
-        pad, top_band = 8, 26
-    elif not narrow:
-        pad, top_band = 6, 22
-    else:
-        pad, top_band = 4, 15
+    pad, top_band = (8, 26) if wide else (6, 22)
     smax = max(r['shift_pts'] for r in R.values())
-    k = (tile - 2 * pad) / smax
-    rise = max(tile_geom(r['shift_pts'], k, narrow)[1] for r in R.values())
-    room = tile - pad - top_band - 2
-    if rise > room:
-        k *= room / rise
-    hd = (ST['tile_arrow']['phone_head_len'], ST['tile_arrow']['phone_head_half']) if narrow else ((6, 3.5) if not wide else (AR['head_len'], AR['head_half']))
+    k = (tile - 2 * pad) / smax          # one scale across the map: the longest arrow fills its square
+    hd = (AR['head_len'], AR['head_half']) if wide else (6, 3.5)
     lbl = 14
     oy = 0
     if stack:
         y = 16
-        a.text(0, y, 'SIZE OF SHIFT', 13, 'te', 700, track=0.06)
-        y += 14
-        x = 0
-        base = y + tile_geom(10, k, narrow)[1] + 6
-        for sp_ in ST['tile_arrow']['key_points']:
-            dx, dy = tile_geom(sp_, k, narrow)
-            arrow_at(a, x + 2, base, dx, dy, narrow, head=hd)
-            w_ = a.text(x + 2 + dx + 8, base, f'{sp_} point{"s" if sp_ != 1 else ""}', lbl, 'tr', 400)
-            x += 2 + dx + 8 + w_ * HR + 22
-        y = base + 28
+        if not narrow:
+            a.text(0, y, 'SIZE OF SHIFT', 13, 'te', 700, track=0.06)
+            tile_key_arrows(a, 0, y + 24, k, narrow, hd, lbl, 22)
+            y += 24 + 34
+        else:
+            a.text(0, y, 'SIZE OF SHIFT', 13, 'te', 700, track=0.06)
+            y += 26
+            x = 0
+            for i, wd in enumerate(STEP_WORDS):
+                w_ = 22 + tw(wd, lbl) * HR
+                if x > 0 and x + w_ > W:
+                    x, y = 0, y + 24
+                a.rect(x, y - 12, 16, 16, f'ps{i}')
+                a.text(x + 22, y, wd, lbl, 'tr', 400)
+                x += w_ + 16
+            y += 30
+            # one key arrow: every state moved the same way
+            a.raw('<g data-party="Republicans">')
+            arrow_at(a, 1, y - 5, 24, 0, narrow, head=(6, 3.5))
+            a.raw('</g>')
+            y = a.para(34, y, 'Every state moved toward the Republican nominee.', W - 34, lbl, 'tr', 400, 19) + 26
         a.rect(1, y - 13, 16, 16, 'f-lt2')
         a.rect(1, y - 13, 16, 16, 's-frame')
-        for i, ln in enumerate(wrap('Frame: the leader changed, from the Democratic to the Republican nominee', (W - 26) / HR, lbl)):
+        lines = wrap(FRAME_NOTE, (W - 26) / HR, lbl)
+        for i, ln in enumerate(lines):
             a.text(26, y + i * 19, ln, lbl, 'tr', 400)
-        y += 19 * len(wrap('Frame: the leader changed, from the Democratic to the Republican nominee', (W - 26) / HR, lbl)) + 4
-        y = a.para(0, y + 6, DIRECTION_NOTE, W, lbl, 'tn', 400, 19)
+        y += 19 * len(lines) + 4
+        if not narrow:
+            y = a.para(0, y + 6, DIRECTION_NOTE, W, lbl, 'tn', 400, 19)
         oy = y + 22
     for tl in tiles:
         r = R[tl['code']]
         x, y = tl['col'] * pitch, oy + tl['row'] * pitch
         a.raw('<g class="tile">')
-        a.rect(x, y, tile, tile, 'f-lt2')
+        if narrow:
+            st_ = shift_step(r['shift_pts'])
+            a.rect(x, y, tile, tile, f'ps{st_}', da(r['key'], r['shift_pts'], field='shift_pts', mark='cell'))
+        else:
+            a.rect(x, y, tile, tile, 'f-lt2')
         if r['code'] in flips:
             a.raw('<g data-party="Republicans">')
-            a.rect(x + 1, y + 1, tile - 2, tile - 2, 's-frame')
+            if narrow:
+                # on phones the frame sits just outside the square, in the gap, so the code keeps 3 px of air
+                assert 0 < tl['col'] < cols - 1 and shift_step(r['shift_pts']) <= 1
+                a.rect(x - 1.25, y - 1.25, tile + 2.5, tile + 2.5, 's-frame')
+            else:
+                a.rect(x + 1, y + 1, tile - 2, tile - 2, 's-frame')
             a.raw('</g>')
         if narrow:
-            a.text(x + tile / 2, y + 12, r['code'], TK['type']['tile_code_phone'], 'tl', 600, 'middle', on_mark=True)
+            cs = TK['type']['tile_code_phone']
+            cw = tw(r['code'], cs, 600)
+            if r['code'] in flips:
+                assert (tile - cw) / 2 + 0.25 >= 3, (W, r['code'])
+            a.text(x + tile / 2, y + tile / 2 + cs * 0.36, r['code'], cs, f'pt{st_}', 600, 'middle', on_mark=True)
         else:
             if wide:
                 # the shift beside the code, so the arrow keeps the rest of the square
-                a.rich(x + pad - 1, y + 20, [(r['code'], 'tl', 600), (f' +{r["shift_pts"]:.1f}', 'tn', 400)], lbl,
+                a.rich(x + pad - 1, y + 20, [(r['code'], 'tl', 600), (f' {r["shift_pts"]:.1f}', 'tn', 400)], lbl,
                        attrs=' class="nh"' + da(r['key'], r['shift_pts'], field='shift_pts', mark='label'), on_mark=True)
             else:
                 a.text(x + pad - 1, y + 16, r['code'], lbl, 'tl', 600, on_mark=True)
-        dx, dy = tile_geom(r['shift_pts'], k, narrow)
-        tx, ty = x + pad, y + tile - pad
-        a.raw('<g data-party="Republicans">')
-        arrow_at(a, tx, ty, dx, dy, narrow, attrs=da(r['key'], r['shift_pts'], field='shift_pts', mark='bar', axis='x'), head=hd)
-        a.raw('</g></g>')
+            dx = r['shift_pts'] * k
+            ty = y + (top_band + tile - pad) / 2
+            a.raw('<g data-party="Republicans">')
+            arrow_at(a, x + pad, ty, dx, 0, narrow, attrs=da(r['key'], r['shift_pts'], field='shift_pts', mark='bar', axis='x'), head=hd)
+            a.raw('</g>')
+        a.raw('</g>')
     H = oy + 8 * pitch - gap
     big, small = shift_lists()
     if not stack:
-        # the key in the open top rows, the lists in the open bottom-left corner
+        # the key in the open top rows
         kx, ky = pitch + 2, 16
         a.text(kx, ky, 'SIZE OF SHIFT', 13, 'te', 700, track=0.06)
-        base = ky + 12 + tile_geom(10, k, narrow)[1] + 4
-        x = kx
-        for sp_ in ST['tile_arrow']['key_points']:
-            dx, dy = tile_geom(sp_, k, narrow)
-            arrow_at(a, x + 2, base, dx, dy, narrow, head=hd)
-            w_ = a.text(x + 2 + dx + 8, base, f'{sp_} point{"s" if sp_ != 1 else ""}', lbl, 'tr', 400)
-            x += 2 + dx + 8 + w_ * HR + 28
+        base = ky + 30
+        x = tile_key_arrows(a, kx, base, k, narrow, hd, lbl, 28)
         fx = x + 12
-        a.rect(fx, base - 13, 16, 16, 'f-lt2')
-        a.rect(fx, base - 13, 16, 16, 's-frame')
-        fl_txt = 'Frame: the leader changed, from the Democratic to the Republican nominee'
+        a.rect(fx, base - 8, 16, 16, 'f-lt2')
+        a.rect(fx, base - 8, 16, 16, 's-frame')
         fw = 11 * pitch - fx - 30
-        for i, ln in enumerate(wrap(fl_txt, fw / HR, lbl)):
-            a.text(fx + 24, base - 18 + i * 19 + (0 if len(wrap(fl_txt, fw / HR, lbl)) > 1 else 18), ln, lbl, 'tr', 400)
+        lines = wrap(FRAME_NOTE, fw / HR, lbl)
+        for i, ln in enumerate(lines):
+            a.text(fx + 24, base + 5 - (len(lines) - 1) * 19 / 2 + i * 19, ln, lbl, 'tr', 400)
         a.para(0, pitch + 26, DIRECTION_NOTE, 6 * pitch - gap - 12, lbl, 'tn', 400, 19)
     # under the map: the largest and smallest shifts, named, so a reader need not hunt for them
     y = H + 36
     for head, rs in (('LARGEST SHIFTS', big), ('SMALLEST SHIFTS', small)):
-        y = flow_items(a, 0, y, head, [(short_name(r), f'+{r["shift_pts"]:.1f}', da(r['key'], r['shift_pts'], field='shift_pts', mark='label')) for r in rs], W, lbl) + 32
+        y = flow_items(a, 0, y, head, [(short_name(r), f'{r["shift_pts"]:.1f}', da(r['key'], r['shift_pts'], field='shift_pts', mark='label')) for r in rs], W, lbl) + 32
     return a, y - 32 + 8
 
 
@@ -608,20 +746,25 @@ def spec_s12(view):
     top4 = F['top4']
     title = (f'{", ".join(r["name"] for r in top4[:-1])} and {top4[-1]["name"]} moved furthest toward the Republican nominee, '
              f'each by {math.floor(min(r["shift_pts"] for r in top4)):d} points or more.')
-    measure = ('Shift in the presidential margin from 2020 to 2024, toward the Republican nominee, in percentage points, '
-               '50 states and DC. Each square is one state, whatever its size.')
-    label = ('Tile map of 50 states and DC, one square each, with an arrow in every square. Every arrow points right, toward the '
-             'Republican nominee; a longer, flatter arrow is a larger shift. Largest: ' + ', '.join(f'{r["name"]} {r["shift_pts"]:.1f}' for r in big)
+    measure = ("Shift in the presidential margin, the Republican nominee's share of all presidential votes minus the Democratic "
+               "nominee's, from 2020 to 2024, in percentage points, 50 states and DC. Each square is one state, whatever its size.")
+    by_step = defaultdict(list)
+    for r in rows(SHIFT):
+        by_step[shift_step(r['shift_pts'])].append(r['code'])
+    label = ('Tile map of 50 states and DC, one square each. On the desktop map every square holds an arrow pointing right, toward the '
+             'Republican nominee, its length the shift; on phones each square is shaded by the size of its shift: '
+             + '; '.join(f'{STEP_WORDS[i].lower()}: {", ".join(sorted(by_step[i]))}' for i in sorted(by_step))
+             + '. Largest: ' + ', '.join(f'{r["name"]} {r["shift_pts"]:.1f}' for r in big)
              + '. Smallest: ' + ', '.join(f'{short_name(r)} {r["shift_pts"]:.1f}' for r in small)
              + '. A frame marks the six states where the leader changed. The table under the chart lists every state.')
     body, strings = EX.artboards(view, 'S12', gen_s12, TK['artboard']['wide'], label)
-    notes = ["Each arrow's run across its square is the same number of pixels for each point of shift, so arrows compare across the map. "
-             'The angle flattens as the shift grows, a second cue to the same number.',
-             'On phones the map drops to eleven columns, with Alaska and Hawaii in the bottom row.']
-    drawn = ['Size of shift: sample arrows for 1, 5 and 10 points. Frame: the leader changed, from the Democratic to the Republican nominee. '
-             + DIRECTION_NOTE,
-             'Largest shifts: ' + '; '.join(f'{short_name(r)} +{r["shift_pts"]:.1f}' for r in big) + '. Smallest shifts: '
-             + '; '.join(f'{short_name(r)} +{r["shift_pts"]:.1f}' for r in small) + '.']
+    notes = ["Each arrow's length shows the shift, at one scale across the map.",
+             "New York's figures count every ballot line each nominee held, including the Working Families and Conservative lines."]
+    drawn = ['Size of shift: sample arrows for 1, 5 and 10 points. ' + FRAME_NOTE + '. ' + DIRECTION_NOTE,
+             'On phones each square takes one of four steps by the size of its shift: ' + ', '.join(STEP_WORDS)
+             + '. Every state moved toward the Republican nominee.',
+             'Largest shifts: ' + '; '.join(f'{short_name(r)} {r["shift_pts"]:.1f}' for r in big) + '. Smallest shifts: '
+             + '; '.join(f'{short_name(r)} {r["shift_pts"]:.1f}' for r in small) + '.']
     R = sorted(rows(SHIFT), key=lambda r: r['name'])
     body_rows = [[r['name'], f'{r["shift_pts"]:.2f}', 'Yes' if sgn(r['margin_2020']) != sgn(r['margin_2024']) else 'No'] for r in R]
     table = table_html('Shift toward the Republican nominee by state, 2020 to 2024', ['State', 'Shift, points', 'Leader changed'], body_rows, (1,))
@@ -651,6 +794,10 @@ def sector_check():
 
 def spark_path(sid, X, Y):
     return 'M' + 'L'.join(f'{f(X(r["date"]))} {f(Y(r["pct_change_since_2022_01"]))}' for r in series(sid))
+
+
+PRELIM_NOTE = ("August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month's first estimate in "
+               'the next two monthly reports, and a yearly benchmark revision can move earlier months.')
 
 
 def gen_s13(W, uid, t=None):
@@ -692,6 +839,7 @@ def gen_s13(W, uid, t=None):
         sx0 = 2 * 18 + 6                 # past the deepest indent, so the tree connectors never cross a sparkline
         sw = vx - val_w - 14 - sx0
     name_base = {}
+    below_extra = 0
     for sid, nm, lev in TOTALS:
         r_last = last[sid]
         if narrow:
@@ -720,7 +868,24 @@ def gen_s13(W, uid, t=None):
                attrs=da(r_last['key'], r_last['change_since_2022_01_thousands'], field='change_since_2022_01_thousands', mark='label'))
         a.text(px_, base, signed1(r_last['pct_change_since_2022_01']) + '%', lbl, 'tn', 400, 'end',
                attrs=da(r_last['key'], r_last['pct_change_since_2022_01'], mark='label'))
-        y = zero + below
+        if sid == 'CES9091000001':
+            # the federal row: its peak and its latest level, dated, and no cause
+            S_ = series(sid)
+            pk = max(S_, key=lambda r: r['employees_thousands'])
+            a.circle(Xs(pk['date']), Ys(pk['pct_change_since_2022_01']), 2.5, 'f-ink',
+                     da(pk['key'], pk['pct_change_since_2022_01'], mark='point', axis='y', scale=f'band-{sid}'))
+            fed_lines = [(f'Peak: {pk["employees_thousands"] * 1000:,.0f} in {month_words(pk["date"])}', pk),
+                         (f'{month_words(r_last["date"])}: {r_last["employees_thousands"] * 1000:,.0f}', r_last)]
+            if W >= 900:
+                fx_ = px_ + 24
+                for j, (txt, rr_) in enumerate(fed_lines):
+                    a.text(fx_, zero - 6 + j * 19, txt, lbl, 'tn', 400, attrs=da(rr_['key'], rr_['employees_thousands'], field='employees_thousands', mark='label'))
+            else:
+                yy = zero + below + 8
+                for j, (txt, rr_) in enumerate(fed_lines):
+                    a.text(sx0, yy + j * 19, txt, lbl, 'tn', 400, attrs=da(rr_['key'], rr_['employees_thousands'], field='employees_thousands', mark='label'))
+                below_extra = 8 + 19 + 6
+        y = zero + below + (below_extra if sid == 'CES9091000001' and W < 900 else 0)
     # a tree connector shows which rows are parts of which: all jobs holds private and government; government holds federal
     for parent, kids, lev in (('PAYEMS', ('USPRIV', 'USGOVT'), 0), ('USGOVT', ('CES9091000001',), 1)):
         cx = lev * 18 + 5
@@ -729,7 +894,13 @@ def gen_s13(W, uid, t=None):
             a.line(cx, name_base[kd] - 5, cx + 8, name_base[kd] - 5, 's-ld')
     # ---- the fourteen private industries
     y += 34
-    eyebrow(a, 0, y, ('PRIVATE INDUSTRIES, LARGEST GAIN FIRST', 'PRIVATE INDUSTRIES'), W)
+    eb_ = 'PRIVATE INDUSTRIES, LARGEST PERCENT GAIN FIRST'
+    if tw(eb_, 13, 700, track=0.06) * HR <= W:
+        a.text(0, y, eb_, 13, 'te', 700, track=0.06)
+    else:
+        a.text(0, y, 'PRIVATE INDUSTRIES,', 13, 'te', 700, track=0.06)
+        y += 19
+        a.text(0, y, 'LARGEST PERCENT GAIN FIRST', 13, 'te', 700, track=0.06)
     y += 22
     # the gray line, explained once, in its own ink
     a.line(0, y - 5, 22, y - 5, 's-ctx15')
@@ -748,14 +919,18 @@ def gen_s13(W, uid, t=None):
         row_ids = order[ri * cols:(ri + 1) * cols]
         nl = max(len(name_lines[s_]) for s_ in row_ids)
         head_h = nl * 18
-        ptop = y + head_h + 30
+        two_row = any((tw(people_of(s_) + ',', lbl, 600) + tw(' ' + signed1(last[s_]['pct_change_since_2022_01']) + '%', lbl, 400)) * hr > pw
+                      for s_ in row_ids)
+        ptop = y + head_h + 30 + (18 if two_row else 0)      # room for a two-line end label above a gain near the top
         Y = lambda v, ptop=ptop: ptop + (hi - v) * kpp
         top_tick = max(SP['ticks'])
         for v in SP['ticks']:
             a.text(gut - 8, Y(v) + 4.5, (f'+{v}%' if v == top_tick else (f'+{v}' if v > 0 else ('0' if v == 0 else f'{MINUS}{-v}'))), 13 if not narrow else 14, 'tk', 400, 'end')
+        year_y = Y(lo) + 22
         for ci, s_ in enumerate(row_ids):
             px0 = gut + ci * (pw + gx)
-            X = lambda d, px0=px0: px0 + m_index[d] / n_m * pw
+            inset = SP['end_r'] + 2          # the end dot stays clear of the panel's right edge
+            X = lambda d, px0=px0: px0 + m_index[d] / n_m * (pw - inset)
             for i, ln in enumerate(name_lines[s_]):
                 a.text(px0, y + 14 + i * 18, ln, lbl, 'tl', 600)
             for v in SP['ticks']:
@@ -771,21 +946,34 @@ def gen_s13(W, uid, t=None):
             rl = last[s_]
             ex, ey = X(rl['date']), Y(rl['pct_change_since_2022_01'])
             a.circle(ex, ey, SP['end_r'], 'f-ink', da(rl['key'], rl['pct_change_since_2022_01'], mark='point', axis='y', scale=f'row-{ri}'))
-            # the end label: the change as people say it, above a gain and below a loss, clear of both lines
-            txt = people_of(s_)
-            lw_ = tw(txt, lbl, 600) * hr
-            lx = min(ex - lw_ * 0.5, px0 + pw - lw_)
-            lx = max(px0, lx)
+            # the end label: the change in jobs and in percent, above a gain and below a loss, clear of both lines;
+            # one line where it fits the panel, else two
+            t1, t2 = people_of(s_), signed1(rl['pct_change_since_2022_01']) + '%'
+            one = (tw(t1 + ',', lbl, 600) + tw(' ' + t2, lbl, 400)) * hr
+            two = one > pw
+            lw_ = max(tw(t1, lbl, 600), tw(t2, lbl, 400)) * hr if two else one
+            lx = max(px0, min(ex - lw_ * 0.5, px0 + pw - lw_))
             gain = rl['change_since_2022_01_thousands'] >= 0
             near = [Y(r['pct_change_since_2022_01']) for s2 in (s_, 'PAYEMS') for r in series(s2) if lx - 2 <= X(r['date']) <= lx + lw_ + 2]
+            la = da(rl['key'], rl['change_since_2022_01_thousands'], field='change_since_2022_01_thousands', mark='label')
+            lb = da(rl['key'], rl['pct_change_since_2022_01'], mark='label')
             if gain:
-                ly = min(near + [ey]) - 9
+                ly2 = min(near + [ey]) - 9
+                ly1 = ly2 - 18 if two else ly2
             else:
-                ly = max(near + [ey]) + lbl + 7
-            a.text(lx, ly, txt, lbl, 'th', 600, attrs=da(rl['key'], rl['change_since_2022_01_thousands'], field='change_since_2022_01_thousands', mark='label'))
-            a.text(px0, Y(lo) + 22, '2022', 13 if not narrow else 14, 'tk', 400)
-            a.text(px0 + pw, Y(lo) + 22, '2026', 13 if not narrow else 14, 'tk', 400, 'end')
-        y = Y(lo) + 22 + 30
+                ly1 = max(near + [ey]) + lbl + 7
+                ly2 = ly1 + 18 if two else ly1
+            if two:
+                a.text(lx, ly1, t1, lbl, 'th', 600, attrs=la)
+                a.text(lx, ly2, t2, lbl, 'tn', 400, attrs=lb)
+            else:
+                a.rich(lx, ly1, [(t1 + ',', 'th', 600), (' ' + t2, 'tn', 400)], lbl, attrs=la)
+            year_y = max(year_y, ly2 + 22)
+        for ci, s_ in enumerate(row_ids):
+            px0 = gut + ci * (pw + gx)
+            a.text(px0, year_y, '2022', 13 if not narrow else 14, 'tk', 400)
+            a.text(px0 + pw, year_y, '2026', 13 if not narrow else 14, 'tk', 400, 'end')
+        y = year_y + 30
     return a, y - 30 + 8
 
 
@@ -795,14 +983,18 @@ def spec_s13(view):
     hc = last['CES6562000001']
     sl_change = last['USGOVT']['change_since_2022_01_thousands'] - last['CES9091000001']['change_since_2022_01_thousands']
     assert sl_change > 0 and round(sl_change / 1000, 1) == 1.5
+    fed_pk = max(series('CES9091000001'), key=lambda r: r['employees_thousands'])
+    fed_last = last['CES9091000001']
+    assert (fed_pk['date'], fed_pk['employees_thousands'], fed_last['employees_thousands']) == ('2024-10-01', 3013.0, 2682.0)
     title = (f'Health care and social assistance added {people(hc["change_since_2022_01_thousands"], sign=False)} jobs from January 2022 '
              'to September 2026, the most of any industry; information and the federal government lost jobs.')
     measure = ('Payroll jobs by industry, seasonally adjusted, change since January 2022 in percent, United States, '
-               'January 2022 to September 2026. Every sparkline shares one vertical scale; labels give the change in jobs.')
+               'January 2022 to September 2026, the span both jobs charts share. Every sparkline shares one vertical scale; '
+               'labels give the change in jobs and in percent.')
     order = sorted(PRIVATE, key=lambda s_: -last[s_]['pct_change_since_2022_01'])
     label = ('Sparklines of payroll jobs since January 2022. Totals: ' + '; '.join(
         f'{nm}, {people(last[sid]["change_since_2022_01_thousands"])} jobs, {signed1(last[sid]["pct_change_since_2022_01"])} percent' for sid, nm, _ in TOTALS)
-        + '. Private industries, largest gain first: ' + '; '.join(
+        + '. Private industries, largest percent gain first: ' + '; '.join(
         f'{last[s_]["sector"]}, {people(last[s_]["change_since_2022_01_thousands"])}, {signed1(last[s_]["pct_change_since_2022_01"])} percent' for s_ in order) + '.')
     body, strings = EX.artboards(view, 'S13', gen_s13, TK['artboard']['wide'], label)
     notes = ['The first rows hold the totals: all nonfarm jobs, its two parts, private industries and government, and federal jobs, which are part of government. '
@@ -810,10 +1002,12 @@ def spec_s13(view):
              f'Government, all levels, gained {people(last["USGOVT"]["change_since_2022_01_thousands"], sign=False)} jobs and federal jobs fell by '
              f'{people(-last["CES9091000001"]["change_since_2022_01_thousands"], sign=False)}, so state and local payrolls, which this dataset does not '
              f'carry on their own, grew by about {people(sl_change, sign=False)}.',
-             'The latest two months, August and September 2026, are preliminary, and the Bureau of Labor Statistics revises them.']
+             PRELIM_NOTE]
     drawn = ['The total, its two parts and federal jobs: ' + '; '.join(f'{nm} {people(last[sid]["change_since_2022_01_thousands"])}, {signed1(last[sid]["pct_change_since_2022_01"])}%' for sid, nm, _ in TOTALS) + '.',
-             f'Private industries, largest gain first. Gray line in every panel: all nonfarm jobs, {signed1(last["PAYEMS"]["pct_change_since_2022_01"])}%. '
-             'Each panel ends with the change in jobs since January 2022, and its scale runs from −15 to +20 percent, January 2022 to September 2026.']
+             f'Private industries, largest percent gain first. Gray line in every panel: all nonfarm jobs, {signed1(last["PAYEMS"]["pct_change_since_2022_01"])}%. '
+             'Each panel ends with the change in jobs and in percent since January 2022, and its scale runs from −15 to +20 percent, January 2022 to September 2026.',
+             f'Federal government: peak {fed_pk["employees_thousands"] * 1000:,.0f} in {month_words(fed_pk["date"])}; '
+             f'{fed_last["employees_thousands"] * 1000:,.0f} in {month_words(fed_last["date"])}.']
     body_rows = [[nm, people(last[sid]['change_since_2022_01_thousands']), signed1(last[sid]['pct_change_since_2022_01']), f'{last[sid]["employees_thousands"]:,.0f}']
                  for sid, nm, _ in TOTALS]
     body_rows += [[last[s_]['sector'], people(last[s_]['change_since_2022_01_thousands']), signed1(last[s_]['pct_change_since_2022_01']), f'{last[s_]["employees_thousands"]:,.0f}'] for s_ in order]
@@ -836,19 +1030,19 @@ def boxes_clear(box, rects, pad=3, rules=()):
 
 def gen_s14(W, uid, t=None):
     """Columns from zero in Stone for each month's change, the three-month average as the Charcoal line over them,
-    the two preliminary months hatched and the average dashed where it leans on them, and the latest month labeled."""
+    the two preliminary months hatched and the average dashed where it leans on them, and the latest month labeled.
+    The chart draws January 2022 to September 2026, the span both jobs charts share."""
     a = Art(W, uid, t)
     C = ST['columns']
     narrow = W < 600
     lbl = 14
     tk = a.t.tk
     F = monthly_facts()
-    D = [r for r in rows(MONTHLY) if r['key'] >= '2023-01']
-    assert [r['key'] for r in D] == DS[MONTHLY]['required_keys']
+    D = F['window']
     lo, hi = C['domain']
     assert lo < min(r['change_thousands'] for r in D) and max(r['change_thousands'] for r in D) < hi
     prelim = {r['key'] for r in D[-C['prelim_months']:]}
-    ticks = [-100, 0, 100, 200, 300, 400]
+    ticks = C['ticks']
 
     def tick_txt(v):
         return '0' if v == 0 else (('+' if v > 0 else MINUS) + f'{abs(v) * 1000:,}')
@@ -866,7 +1060,7 @@ def gen_s14(W, uid, t=None):
     a.rect(x2 + 0.75, y - 10.25, 12.5, 12.5, 's-ctx15 nofill')
     y = a.para(x2 + 21, y, items2, W - x2 - 21, lbl, 'tr', 400, 19)
     top = y + 34
-    ph = 330 if not narrow else 270
+    ph = C['height'] if not narrow else C['phone_height']
     k = ph / (hi - lo)
     x0, x1 = gut, W - 2
 
@@ -893,11 +1087,10 @@ def gen_s14(W, uid, t=None):
         else:
             a.rect(bx, by, bw, bh, 'f-ctx', attrs)
     a.line(x0, Y(0), x1, Y(0), 's-base')
-    # year labels, centered under each year's months
-    years = sorted({r['key'][:4] for r in D})
-    for yr in years:
-        idx = [i for i, r in enumerate(D) if r['key'].startswith(yr)]
-        a.text((X(idx[0]) + X(idx[-1])) / 2, Y(lo) + 22, yr, tk, 'tk', 400, 'middle')
+    # year labels at January
+    for i, r in enumerate(D):
+        if r['key'].endswith('-01'):
+            a.text(X(i), Y(lo) + 22, r['key'][:4], tk, 'tk', 400, 'middle')
     # the average: solid where every month in it is final, dashed where it leans on a preliminary month
     pts = [(X(i), Y(r['avg3_thousands'])) for i, r in enumerate(D)]
     n_final = len(D) - C['prelim_months']
@@ -907,7 +1100,7 @@ def gen_s14(W, uid, t=None):
     for i, r in enumerate(D):
         a.circle(pts[i][0], pts[i][1], C['vertex_r'], 'f-ink', da(r['key'], r['avg3_thousands'], field='avg3_thousands', mark='point', axis='y'))
 
-    def place_text(lines, x, y_last, anchor='start', size=lbl, cls=('th', 'tn')):
+    def place_text(lines, x, y_last, anchor='start', size=lbl):
         """Set one to three lines ending at baseline y_last; returns their box. The caller checks it."""
         lh = round(size * 1.36)
         ws = [tw(ln, size, 600 if j == 0 else 400) * HR for j, ln in enumerate(lines)]
@@ -922,78 +1115,74 @@ def gen_s14(W, uid, t=None):
             a.text(x, y_first + j * lh, ln, lbl, 'th' if j == 0 else 'tn', 600 if j == 0 else 400, anchor,
                    attrs=attrs if j == 0 else '')
         return box
+    grid_y = [Y(v) for v in ticks if v]
     # the latest month, labeled above everything to its left and joined to its column by a leader
     last = D[-1]
     lines = [f'{people(last["change_thousands"])} jobs', f'in {month_words(last["key"])}, preliminary']
-    grid_y = [Y(v) for v in ticks if v]
     yl = Y(last['change_thousands']) - 46
     while not boxes_clear(place_text(lines, x1, yl, 'end')[0], rects, rules=grid_y):
         yl -= 1
     box = put(lines, x1, yl, 'end', da(last['key'], last['change_thousands'], mark='label'))
     a.leader([(X(len(D) - 1), box[3] + 3), (X(len(D) - 1), Y(last['change_thousands']) - 4)])
-    # the average, named on the line in the open space of 2023; under 700 px the notes move under the plot
     if W >= 700:
-        i_lab = 4
+        # the average, named on the line in the open space of 2023
+        i_lab = next(i for i, r in enumerate(D) if r['key'] == '2023-06')
         al = ['Three-month average']
-        yl = Y(D[i_lab]['avg3_thousands']) - 30
+        yl = pts[i_lab][1] - 30
         while not boxes_clear(place_text(al, X(i_lab - 2), yl)[0], rects, rules=grid_y):
             yl -= 1
         box = put(al, X(i_lab - 2), yl)
         a.leader([(X(i_lab), box[3] + 3), (X(i_lab), pts[i_lab][1] - 5)])
-        # the last month the average reached 150,000: ring the point and say so
-        i150 = next(i for i, r in enumerate(D) if r['key'] == F['last150']['key'])
-        a.circle(pts[i150][0], pts[i150][1], TK['dot']['subject_r'], 'f-ink s-gring')
-        nl = [f'{month_words(F["last150"]["key"])}: the last month', f'the average reached 150,000 ({people(F["last150"]["avg3_thousands"], sign=False)})']
-        yl = pts[i150][1] - 34
-        while not boxes_clear(place_text(nl, X(i150) - 4, yl)[0], rects, rules=grid_y):
-            yl -= 1
-        box = put(nl, X(i150) - 4, yl)
-        a.leader([(X(i150), box[3] + 3), (X(i150), pts[i150][1] - 9)])
-        # the losses, named once, in the open space under zero before any of them
+        # the months with a loss, counted once, in the open space under zero before the first of them
         first_loss = next(i for i, r in enumerate(D) if r['change_thousands'] < 0)
-        ll = [f'{nw(len(F["losses"]), cap=True)} months with a loss,', 'all in 2025 and 2026']
+        ll = [f'{nw(len(F["losses"]), cap=True)} months with a loss']
         fl = D[first_loss]
         nx_ = X(first_loss) - bw / 2 - 30
-        box, y_first, lh = place_text(ll, nx_, Y(0) + 40, 'end')
+        box, y_first, lh = place_text(ll, nx_, Y(0) + 34, 'end')
         assert boxes_clear(box, rects, rules=grid_y), 'the losses note crosses a column or gridline'
-        put(ll, nx_, Y(0) + 40, 'end')
+        put(ll, nx_, Y(0) + 34, 'end')
         a.leader([(box[2] + 5, y_first - 5), (X(first_loss) - bw / 2 - 3, Y(fl['change_thousands'] / 2))])
         end = Y(lo) + 30
     else:
         end = Y(lo) + 30
-        i150 = next(i for i, r in enumerate(D) if r['key'] == F['last150']['key'])
-        a.circle(pts[i150][0], pts[i150][1], TK['dot']['subject_r'] - 1.5, 'f-ink s-gring')
         y = end + 10
         a.line(0, y - 5, 24, y - 5, 's-sub')
         y = a.para(32, y, 'Three-month average', W - 32, lbl, 'tr', 400, 19) + 28
-        y = a.para(0, y, f'Ringed: {month_words(F["last150"]["key"])}, the last month the average reached 150,000 ({people(F["last150"]["avg3_thousands"], sign=False)}).', W, lbl, 'tn', 400, 19) + 26
-        y = a.para(0, y, f'{nw(len(F["losses"]), cap=True)} months show a loss, all in 2025 and 2026.', W, lbl, 'tn', 400, 19)
+        y = a.para(0, y, f'{nw(len(F["losses"]), cap=True)} months show a loss: {loss_months(F)}.', W, lbl, 'tn', 400, 19)
         end = y + 4
     return a, end
 
 
+def loss_months(F):
+    """The months with a loss, named in date order with the year once per run, and no period split."""
+    by_year = defaultdict(list)
+    for r in F['losses']:
+        by_year[r['key'][:4]].append(EX.MONTHS[int(r['key'][5:]) - 1])
+    parts = []
+    for yr in sorted(by_year):
+        ms = by_year[yr]
+        parts.append((', '.join(ms[:-1]) + f' and {ms[-1]}' if len(ms) > 1 else ms[0]) + f' {yr}')
+    return ', and '.join(parts) if len(parts) == 2 else ', '.join(parts)
+
+
 def spec_s14(view):
     F = monthly_facts()
-    title = (f'The three-month average of monthly job gains fell from {people(F["first"]["avg3_thousands"], sign=False)} in January 2023 to '
-             f'{people(F["last"]["avg3_thousands"], sign=False)} in September 2026, and payrolls shrank in {nw(len(F["losses"]))} months.')
-    measure = ('Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2023 to September 2026, '
-               'with the three-month average. The scale runs from −200,000 to +450,000.')
-    D = [r for r in rows(MONTHLY) if r['key'] >= '2023-01']
-    label = (f'Column chart of the monthly change in jobs from January 2023 to September 2026, with the three-month average as a line. '
-             f'The average fell from {people(F["first"]["avg3_thousands"], sign=False)} in January 2023 to {people(F["last"]["avg3_thousands"], sign=False)} in September 2026. '
+    D = F['window']
+    title = (f'The three-month average of monthly job change stood at {people(F["last"]["avg3_thousands"], sign=False)} in '
+             f'September 2026, a preliminary figure, and payrolls shrank in {nw(len(F["losses"]))} of the {len(D)} months charted.')
+    measure = ('Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, '
+               'the span both jobs charts share, with the three-month average. The scale runs from −200,000 to +850,000.')
+    label = (f'Column chart of the monthly change in jobs from January 2022 to September 2026, with the three-month average as a line. '
+             f'The average stood at {people(F["last"]["avg3_thousands"], sign=False)} in September 2026, a preliminary figure. '
              f'Months with a loss: ' + ', '.join(f'{month_words(r["key"])} ({people(r["change_thousands"])})' for r in F['losses'])
              + f'. The latest month, September 2026, shows {people(D[-1]["change_thousands"])}, preliminary.')
     body, strings = EX.artboards(view, 'S14', gen_s14, TK['artboard']['reading'], label)
-    hi25 = max((r for r in rows(MONTHLY) if r['key'] >= '2025-01'), key=lambda r: r['avg3_thousands'])
     notes = ["The three-month average for a month is the mean of that month's change and the two before it.",
-             'August and September 2026 are preliminary, and the Bureau of Labor Statistics revises them. '
-             'The average is dashed where it includes a preliminary month.',
-             f'The average’s highest point in 2025 and 2026 is {people(hi25["avg3_thousands"], sign=False)}, in {month_words(hi25["key"])}.']
-    hi25 = max((r for r in rows(MONTHLY) if r['key'] >= '2025-01'), key=lambda r: r['avg3_thousands'])
-    assert hi25['key'] == '2026-05' and hi25['avg3_thousands'] == 141.7
+             PRELIM_NOTE + ' The average is dashed where it includes a preliminary month.',
+             f'Payrolls shrank in {nw(len(F["losses"]))} months: {loss_months(F)}.']
     drawn = ['Key: a Stone column is the jobs added or lost in the month; hatched columns are preliminary, August and September 2026.',
-             f'Three-month average: the dark line. Ringed: {month_words(F["last150"]["key"])}, the last month the average reached 150,000 ({people(F["last150"]["avg3_thousands"], sign=False)}).',
-             f'{nw(len(F["losses"]), cap=True)} months show a loss, all in 2025 and 2026.',
+             'Three-month average: the dark line.',
+             f'{nw(len(F["losses"]), cap=True)} months with a loss. {nw(len(F["losses"]), cap=True)} months show a loss: {loss_months(F)}.',
              f'Latest: {people(D[-1]["change_thousands"])} jobs in September 2026, preliminary.']
     body_rows = [[month_words(r['key']), people(r['change_thousands']), people(r['avg3_thousands']), 'Preliminary' if r['key'] >= '2026-08' else '']
                  for r in D]
@@ -1005,36 +1194,61 @@ def spec_s14(view):
 
 
 # ------------------------------------------------------------------------------------------------ S15 results table
-def margin_cell(r, field, cls, half_px, pts_per_half):
+def s15_layout():
+    """Column widths for the full table, measured from the copy the cells print in Inter, with 6 percent headroom
+    for HTML text, which wraps rather than spills. Names wrap inside the state column, so only the longest name takes
+    two lines. The table switches to cards wherever its container is narrower than the sum, so no cell ever prints
+    over its neighbor."""
+    T = ST['results']
+    R = rows(SHIFT)
+    size, hh = 14, T['html_headroom']
+    tagw = tw(TAG, 13, 600) * hh + 14
+    names = sorted(tw(r['name'], 15, 600) * hh for r in R)
+    state = max(tagw, names[-2]) + T['gap']             # the widest name wraps; every other fits on one line
+    dl = [lead_text(r[m]) for r in R for m in ('margin_2020', 'margin_2024') if r[m] < 0]
+    rl = [lead_text(r[m]) for r in R for m in ('margin_2020', 'margin_2024') if r[m] > 0]
+    half_d = max(tw(x, size, 600) for x in dl) * hh + T['gap']
+    half_r = max(tw(x, size, 600) for x in rl) * hh + T['gap']
+    dmax = max(-r[m] for r in R for m in ('margin_2020', 'margin_2024'))
+    rmax = max(r[m] for r in R for m in ('margin_2020', 'margin_2024'))
+    ppp = min((half_d - 2) / dmax, (half_r - 2) / rmax)      # one scale for every margin bar, fitted to its half
+    kk = T['shift_px_per_point']
+    smax = max(r['shift_pts'] for r in R)
+    shift = max(T['gap'] + smax * kk + 10 + tw('10.5', size) * hh + 8, T['shift_min'])
+    widths = [state, half_d + half_r, half_d + half_r, shift]
+    return {'state': state, 'half_d': half_d, 'half_r': half_r, 'ppp': ppp, 'kk': kk, 'shift': shift,
+            'widths': widths, 'total': sum(widths)}
+
+
+def margin_cell(r, field, cls, L):
     """One margin in its half of a split cell: left of the center line for a Democratic lead, right of it for a
-    Republican lead, with the party named and a bar from the center line whose length is the margin."""
+    Republican lead, with the party named and a 6 px bar from the center line whose length is the margin."""
     m = r[field]
     side = 'r' if m > 0 else 'd'
-    w = abs(m) * half_px / pts_per_half
+    w = abs(m) * L['ppp']
     yr = field[-4:]
     inner = (f'<span data-party="{PARTY[sgn(m)]}" class="mi"><span class="mt"><span class="yr">{yr} </span>{e(lead_text(m))}</span>'
              f'<span class="mb" style="width:{w:.3f}px"{da(r["key"], m, field=field, mark="bar", axis="x", scale="margin")}></span></span>')
     halves = (f'<span class="half d">{inner if side == "d" else ""}</span><span class="half r">{inner if side == "r" else ""}</span>')
-    return f'<td class="mc {cls}"><span class="mcw">{halves}</span></td>'
+    return f'<td role="cell" class="mc {cls}"><span class="mcw">{halves}</span></td>'
 
 
 def gen_s15(view):
     """The results table: one row per state with both margins in split cells, the party named in each, and the
     shift as an arrow whose length is the shift. It sorts by any column; sorted by the 2024 margin, a row marks the
-    even line. On phones each row becomes two lines."""
-    T = ST['results']
+    even line. Where the full row does not fit, each row becomes a card of three lines, with the shift in words.
+    Explicit table roles keep every cell tied to its header when the rows change display."""
+    L = s15_layout()
     F = shift_facts()
     R = sorted(rows(SHIFT), key=lambda r: (r['margin_2024'], r['code']))
     flips = {r['code'] for r in F['flips']}
-    half, pph = T['half'], T['half_points']
-    assert all(abs(r[m]) <= pph for r in R for m in ('margin_2020', 'margin_2024'))
-    kk = T['shift_px_per_point']
+    assert all(abs(r[m]) * L['ppp'] <= (L['half_d'] if r[m] < 0 else L['half_r']) for r in R for m in ('margin_2020', 'margin_2024'))
     tid = f'{view}-s15-table'
 
     def th(key, label, extra='', sort=None):
         a_sort = f' aria-sort="{sort}"' if sort else ''
-        return (f'<th scope="col" data-sort="{key}"{a_sort}{extra}><button type="button" class="sortb" aria-describedby="{view}-s15-sorthint">'
-                f'<span>{e(label)}</span><span class="sa" aria-hidden="true"></span></button></th>')
+        return (f'<th scope="col" role="columnheader" data-sort="{key}"{a_sort}{extra}><button type="button" class="sortb" aria-describedby="{view}-s15-sorthint">'
+                f'{e(label)}<span class="sa" aria-hidden="true"></span></button></th>')
     head = (th('name', 'State') + th('m24', '2024 margin', ' class="mh"', 'ascending') + th('m20', '2020 margin', ' class="mh"')
             + th('shift', 'Shift toward the Republican nominee', ' class="shh"'))
     sub = ('<tr class="subhead" aria-hidden="true"><td></td>'
@@ -1046,43 +1260,127 @@ def gen_s15(view):
     body = []
     for r in R:
         if r['margin_2024'] > 0 and not any('data-divider' in b for b in body):
-            body.append(f'<tr class="evenrow" data-divider data-asc="{e(asc_txt)}" data-desc="{e(desc_txt)}"><td colspan="4"><span class="evtext">{e(asc_txt)}</span></td></tr>')
-        tag = '<span class="chg">Leader changed</span>' if r['code'] in flips else ''
+            body.append(f'<tr role="row" class="evenrow" data-divider data-asc="{e(asc_txt)}" data-desc="{e(desc_txt)}">'
+                        f'<td role="cell" colspan="4" aria-colspan="4"><span class="evtext">{e(asc_txt)}</span></td></tr>')
+        tag = f'<span class="chg">{TAG}</span>' if r['code'] in flips else ''
         sh = r['shift_pts']
         body.append(
-            f'<tr data-row data-name="{ea(r["name"])}" data-m24="{r["margin_2024"]}" data-m20="{r["margin_2020"]}" data-shift="{sh}">'
-            f'<th scope="row"><span class="stn">{e(r["name"])}</span>{tag}</th>'
-            + margin_cell(r, 'margin_2024', 'c24', half, pph) + margin_cell(r, 'margin_2020', 'c20', half, pph)
-            + f'<td class="sc"><span data-party="Republicans" class="sci"><span class="arwh" style="width:{sh * kk:.3f}px"'
+            f'<tr role="row" data-row data-name="{ea(r["name"])}" data-m24="{r["margin_2024"]}" data-m20="{r["margin_2020"]}" data-shift="{sh}">'
+            f'<th scope="row" role="rowheader"><span class="stn">{e(r["name"])}</span>{tag}</th>'
+            + margin_cell(r, 'margin_2024', 'c24', L) + margin_cell(r, 'margin_2020', 'c20', L)
+            + f'<td role="cell" class="sc"><span data-party="Republicans" class="sci"><span class="arwh" style="width:{sh * L["kk"]:.3f}px"'
               f'{da(r["key"], sh, field="shift_pts", mark="bar", axis="x", scale="shift")}></span>'
-              f'<span class="sv"{da(r["key"], sh, field="shift_pts", mark="label")}>+{sh:.1f}</span></span></td></tr>')
+              f'<span class="sv"{da(r["key"], sh, field="shift_pts", mark="label")}>{sh:.1f}<span class="swd"> toward the Republican nominee</span></span></span></td></tr>')
     key = ("Each margin sits on the side of the nominee who led, with the party named: left of the center line, the Democratic "
            'nominee; right of it, the Republican nominee. Bars grow from the center line, and every arrow points toward the Republican nominee.')
     hint = 'Sorts the table by this column; press again to reverse the order.'
+    cols = ''.join(f'<col style="width:{w:.1f}px">' for w in L['widths'])
     return (f'<div class="rtw"><p class="rkey">{e(key)}</p><p class="rsort"><b>Sort by any column.</b> {e("The table opens in order of the 2024 margin.")}</p>'
             f'<p class="vh2" id="{view}-s15-sorthint">{e(hint)}</p>'
-            f'<table class="results" id="{tid}"><caption class="vh2">{e("Presidential margin by state, 2024 and 2020, with the shift toward the Republican nominee")}</caption>'
-            f'<thead><tr>{head}</tr>{sub}</thead><tbody>{"".join(body)}</tbody></table>'
+            f'<table class="results" role="table" id="{tid}" style="width:{L["total"]:.1f}px"><caption class="vh2">{e("Presidential margin by state, 2024 and 2020, with the shift toward the Republican nominee")}</caption>'
+            f'<colgroup>{cols}</colgroup><thead role="rowgroup"><tr role="row">{head}</tr>{sub}</thead><tbody role="rowgroup">{"".join(body)}</tbody></table>'
             f'<p class="vh2" aria-live="polite" id="{view}-s15-status"></p></div>')
+
+
+def s15_css():
+    """The table's stylesheet, with the switch to two-line rows set at the full row's measured width."""
+    L = s15_layout()
+    cq = math.ceil(L['total'])
+    return (S15_CSS.replace('HALF_D', f'{L["half_d"]:.1f}px').replace('HALF_R', f'{L["half_r"]:.1f}px')
+            .replace('CQ_WIDTH', f'{cq - 0.02:.2f}px').replace('TWO_LINE', f'{ST["results"]["two_line_min"]}px')
+            .replace('BAR_GAP', f'{ST["results"]["bar_gap"]}px').replace('BAR_H', f'{ST["results"]["bar"]}px')
+            .replace('SHIFT_HEAD', f'{ST["results"]["shift_head"]}px'))
+
+
+S15_CSS = r"""
+.rtw{container-type:inline-size}
+.rkey{margin:0 0 6px;font:400 15px/23px Inter,sans-serif;max-width:46em;text-wrap:pretty}
+.rsort{margin:0 0 14px;font:400 15px/23px Inter,sans-serif;color:var(--sec)}.rsort b{color:var(--ink);font-weight:600}
+table.results{border-collapse:collapse;table-layout:fixed;max-width:100%;font:400 14px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
+table.results thead th{text-align:left;vertical-align:bottom;padding:0 12px 6px 0;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+table.results thead th.mh{text-align:center;padding:0 0 6px}
+table.results thead th.shh{padding-left:12px}
+.sortb{display:inline-block;min-height:44px;padding:13px 0;margin:0;border:0;background:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink);text-align:inherit}
+.sortb:hover{text-decoration:underline;text-underline-offset:3px}
+.sa{display:inline-block;width:0;height:0;margin-left:7px;vertical-align:1px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--grid)}
+th[aria-sort="ascending"] .sa{border-top:0;border-bottom:6px solid var(--ink)}
+th[aria-sort="descending"] .sa{border-top:6px solid var(--ink)}
+table.results .subhead td{padding:0 0 6px;border-bottom:1px solid var(--ink)}
+.sl2{font:400 13px/18px Inter,sans-serif;color:var(--sec);padding:0 8px}
+table.results tbody th,table.results tbody td{padding:0 12px 0 0;border-top:1px solid var(--grid);vertical-align:middle;text-align:left}
+table.results tbody th{font:600 15px/20px Inter,sans-serif;padding:8px 12px 8px 0}
+.stn{display:block;white-space:normal}
+.chg{display:inline-block;margin-top:4px;padding:1px 6px;border:1px solid var(--ink);font:600 13px/16px Inter,sans-serif;white-space:nowrap}
+td.mc{position:relative;padding:0!important}
+td.mc::before,td.mh2::before{content:"";position:absolute;left:HALF_D;top:0;bottom:0;border-left:1px solid var(--ink)}
+td.mh2{position:relative;padding:0 0 6px!important}
+.mcw{display:grid;grid-template-columns:HALF_D HALF_R}
+.half{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.half.d{align-items:flex-end;text-align:right}.half.r{align-items:flex-start}
+.mi{display:flex;flex-direction:column;gap:BAR_GAP;align-items:inherit;padding:8px 0}
+.mt{font:600 14px/18px Inter,sans-serif;padding:0 8px}
+.c20 .mt{font-weight:400;color:var(--sec)}
+.yr{display:none}
+.mb{display:block;height:BAR_H;background:var(--ink)}
+.c20 .mb{background:var(--lt)}
+td.sc{white-space:nowrap;padding-left:12px!important}
+.sci{display:inline-flex;align-items:center;gap:10px}
+.arwh{position:relative;display:inline-block;flex:none;height:2px;background:var(--ink)}
+.arwh::after{content:"";position:absolute;right:0;top:-4px;border-left:SHIFT_HEAD solid var(--ink);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.sv{font:400 14px/20px Inter,sans-serif}
+.swd{display:none}
+table.results tr.evenrow td{padding:9px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font:600 14px/20px Inter,sans-serif;text-align:center}
+@media (forced-colors:active){.mb,.arwh{forced-color-adjust:none;background:CanvasText}.arwh::after{forced-color-adjust:none;border-left-color:CanvasText}}
+@container (max-width:CQ_WIDTH){
+ table.results{width:100%!important}
+ table.results colgroup{display:none}
+ table.results,table.results thead,table.results tbody{display:block}
+ table.results thead tr:first-child{display:flex;flex-wrap:wrap;gap:0 18px;border-bottom:1px solid var(--ink)}
+ table.results thead th,table.results thead th.mh,table.results thead th.shh{display:block;padding:0;text-align:left}
+ table.results .subhead{display:none}
+ table.results tbody tr[data-row]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"name name" "m24 m20" "shift shift";gap:3px 14px;padding:9px 0 11px;border-top:1px solid var(--grid)}
+ table.results tbody th,table.results tbody td{display:block;border:0;padding:0}
+ table.results tbody th{grid-area:name}
+ td.sc{grid-area:shift;padding:2px 0 0!important;white-space:normal}
+ td.c24{grid-area:m24}td.c20{grid-area:m20}
+ td.mc::before{display:none}
+ .mcw{display:block}.half:empty{display:none}.half.d,.half.r{align-items:flex-start;text-align:left}
+ .mi{padding:0}.mt{padding:0;white-space:normal}
+ .mb{display:none}
+ .yr{display:inline;font-weight:600;color:var(--sec)}
+ .swd{display:inline}
+ table.results tr.evenrow{display:block}table.results tr.evenrow td{display:block;text-align:left}
+}
+@container (min-width:TWO_LINE) and (max-width:CQ_WIDTH){
+ table.results tbody tr[data-row]{grid-template-areas:"name shift" "m24 m20"}
+ td.sc{justify-self:end;padding:0!important}
+ td.c20{justify-self:end}
+ td.c20 .half.d,td.c20 .half.r{align-items:flex-end;text-align:right}
+}
+"""
 
 
 def spec_s15(view):
     F = shift_facts()
-    title = (f'The Republican nominee led in {F["led24"][1]} states in 2024, {nw(F["led24"][1] - F["led20"][1])} more than in 2020, '
-             f'and the Democratic nominee in {F["led24"][-1]} states and DC.')
-    assert F['led24'][1] - F['led20'][1] == len(F['flips']) == 6
+    close = [r for r in F['flips'] if r['margin_2024'] < 2.2]
+    assert len(close) == 4 and len(F['flips']) == 6 and F['led24'][1] - F['led20'][1] == 6
+    title = (f'The Republican nominee led in {F["led24"][1]} states in 2024, {nw(F["led24"][1] - F["led20"][1])} more than in 2020; '
+             f'in {nw(len(close))} of the {nw(len(F["flips"]))} states that changed leader, the lead was under 2.2 points.')
     measure = ("Presidential margin by state in 2024 and 2020: the leading nominee's share of all presidential votes minus the "
                "other's, in percentage points, with the shift between the two elections; 50 states and DC")
     body = f'<div class="art tbl">{gen_s15(view)}</div>'
     notes = ["Margin: the Republican nominee's share of all presidential votes minus the Democratic nominee's, printed as the leader's lead. "
              'A state whose leader changed carries a tag.',
+             f'The Democratic nominee led in {F["led24"][-1]} states and DC in 2024. The four close changes of leader: '
+             + ', '.join(f'{r["name"]} {lead_text(r["margin_2024"])}' for r in sorted(close, key=lambda r: r['margin_2024'])) + '.',
              "New York's figures count every ballot line each nominee held, including the Working Families and Conservative lines.",
              'Maine and Nebraska split their electoral votes by district; these margins are statewide.']
     R = sorted(rows(SHIFT), key=lambda r: r['name'])
     body_rows = [[r['name'], f'{r["dem_pct_2024"]:.2f}', f'{r["rep_pct_2024"]:.2f}', f'{int(r["total_votes_2024"]):,}'] for r in R]
     table = table_html('Vote shares and total presidential votes by state, 2024', ['State', 'Democratic nominee, percent', 'Republican nominee, percent', 'Total votes'], body_rows, (1, 2, 3))
     drawn = ['Each margin sits on the side of the nominee who led, with the party named. Bars grow from the center line; arrows give the shift toward the Republican nominee. '
-             'The table opens in order of the 2024 margin, with a row at the even line, and sorts by any column.']
+             'The table opens in order of the 2024 margin, with a row at the even line, and sorts by any column. '
+             'Where a full row does not fit, each row becomes a card that gives the shift in words.']
     return dict(sid='S15', title=title, measure=measure, body=body, strings=[], label='', notes=notes,
                 drawn_notes=drawn, table=table, wide=True,
                 grade_line='Documented: official results the states reported, compiled by the Federal Election Commission')
@@ -1207,8 +1505,9 @@ def bubble_layout(W, rmax, top):
             x, y = pos[c]
             cx, cy = cen[c]
             x, y = x + (cx - x) * 0.02, y + (cy - y) * 0.02
-            x = min(max(x, rad[c] + 1), W - rad[c] - 1)
-            y = min(max(y, top + rad[c] + 1), top + mh + 24 - rad[c])
+            # keep every circle, and the 2 px ring some carry, inside the drawing
+            x = min(max(x, rad[c] + 3), W - rad[c] - 3)
+            y = min(max(y, top + rad[c] + 3), top + mh + 24 - rad[c])
             pos[c] = (x, y)
         if moved < 0.01 and it > 50:
             break
@@ -1226,12 +1525,15 @@ def turnout_bin(v):
 
 
 BIN_WORDS = ['Under 60%', '60 to 64.9', '65 to 69.9', '70 to 74.9', '75 or more']
+RING_NOTE = "Ringed: below the national rate by more than the survey's margin of error"
 
 
 def gen_s16(W, uid, t=None):
     """Bubble map: a light map of the states, a circle for each state whose area follows its citizens 18 and over,
-    stepped in one Verdigris ink by the share who said they voted. Codes sit inside circles where they fit and beside
-    them where there is room; lists under the map name the largest states and the highest and lowest rates."""
+    stepped in one Verdigris ink by the share who said they voted. The step key marks the national rate on itself,
+    and the three states the title names carry a 2 px ring. Codes sit inside circles where they fit and beside their
+    own circle where there is room, else on a short leader. Under the map: the largest states, and the range with its
+    margins of error."""
     a = Art(W, uid, t)
     B = ST['bubble']
     narrow = W < 600
@@ -1240,26 +1542,36 @@ def gen_s16(W, uid, t=None):
     rk = 'wide' if W >= 900 else ('mid' if W >= 600 else ('phone' if W >= 358 else 'small_phone'))
     rmax = B['r_max'][rk]
     lbl = 14
+    tk = 13 if not narrow else 14
     code_size = 14 if not narrow else 13
     vmax = max(r['citizen_vap_thousands'] for r in R.values())
-    # keys above the map: the shade steps, then the circle sizes
-    y = 16
+    ringed = {r['code'] for r in F['below']}
     stack_keys = W < 900
-    eyebrow(a, 0, y, ('SHARE OF CITIZENS 18 AND OVER WHO SAID THEY VOTED', 'SHARE WHO SAID THEY VOTED', 'SAID THEY VOTED'), W if stack_keys else W * 0.6)
-    y += 26
-    x = 0
-    for i, wd in enumerate(BIN_WORDS, 1):
-        w_ = 18 + tw(wd, lbl) * HR
-        if x > 0 and x + w_ > (W if stack_keys else W * 0.62):
-            x, y = 0, y + 24
-        a.circle(x + 7, y - 5, 7, f'bub q{i}')
-        a.text(x + 19, y, wd, lbl, 'tr', 400)
-        x += w_ + 16
-    a.text(0, y + 24, f'Nation: {F["nat"]}%', lbl, 'tn', 400)
-    y_shade_end = y + 24
+    # the step key: five steps in a bar, with the national rate marked on it
+    y = 16
+    eyebrow(a, 0, y, ('SHARE OF CITIZENS 18 AND OVER WHO SAID THEY VOTED, PERCENT', 'SHARE WHO SAID THEY VOTED, PERCENT', 'SAID THEY VOTED, PERCENT'),
+            W if stack_keys else W * 0.6)
+    seg = min(B['key_seg'], (W - 4) / 5)
+    bar_top = y + 46
+    for i in range(5):
+        a.rect(i * seg, bar_top, seg, 12, f'bub q{i + 1}')
+    for j, b in enumerate(B['bins']):
+        a.text((j + 1) * seg, bar_top + 12 + 18, str(b), tk, 'tk', 400, 'middle')
+    nat = F['nat']
+    lo_b, hi_b = B['bins'][1], B['bins'][2]
+    assert lo_b <= nat < hi_b
+    xn = (2 + (nat - lo_b) / (hi_b - lo_b)) * seg
+    a.line(xn, bar_top - 5, xn, bar_top + 17, 's-mark')
+    a.text(xn, bar_top - 10, f'Nation {nat}%', tk, 'th', 600, 'middle')
+    y = bar_top + 12 + 18 + 30
+    # the ring, explained in the key
+    a.circle(9, y - 5, 8, 'bub q2 bubring')
+    lines = wrap(RING_NOTE, ((W if stack_keys else W * 0.6) - 26) / HR, lbl)
+    for i, ln in enumerate(lines):
+        a.text(26, y + i * 19, ln, lbl, 'tr', 400)
+    y_shade_end = y + 19 * (len(lines) - 1)
     if stack_keys:
-        sy = y_shade_end + 34
-        sx = 0
+        sy, sx = y_shade_end + 36, 0
     else:
         sx, sy = W * 0.66, 16
     eyebrow(a, sx, sy, ('CITIZENS 18 AND OVER', 'CITIZENS 18+'), W)
@@ -1290,15 +1602,17 @@ def gen_s16(W, uid, t=None):
     for c in order:
         r = R[c]
         (x, y_), rr = pos[c], rad[c]
-        # area, never radius, follows the count: check it here, since the rendered check cannot measure area
+        # area, never radius, follows the count: checked here, since the rendered check cannot measure area
         assert abs(math.pi * rr ** 2 / (math.pi * rmax ** 2) - r['citizen_vap_thousands'] / vmax) < 1e-9
         b = turnout_bin(r['voted_pct'])
         a.raw(f'<g{da(r["key"], r["voted_pct"], field="voted_pct", mark="cell")}>')
-        a.circle(x, y_, rr, f'bub q{b}', da(r['key'], r['citizen_vap_thousands'], field='citizen_vap_thousands', mark='cell'))
+        a.circle(x, y_, rr, f'bub q{b}' + (' bubring' if c in ringed else ''),
+                 da(r['key'], r['citizen_vap_thousands'], field='citizen_vap_thousands', mark='cell'))
         a.raw('</g>')
-    # labels: inside where the code fits, else beside the circle where there is room
+    # labels: inside where the code fits; beside the circle where the label sits nearer its own circle than any
+    # other; else on a short leader
     pad = B['label_pad']
-    placed, skipped = [], []
+    placed, skipped, leaders = [], [], []
 
     def hits_circle(box):
         bx0, by0, bx1, by1 = box
@@ -1309,9 +1623,21 @@ def gen_s16(W, uid, t=None):
                 return True
         return False
 
+    def nearest_is_own(box, c):
+        """The label's nearest circle, measured from the box to each circle's edge, must be its own."""
+        bx0, by0, bx1, by1 = box
+
+        def gap_to(c2):
+            (x2, y2), r2 = pos[c2], rad[c2]
+            nx_, ny_ = min(max(x2, bx0), bx1), min(max(y2, by0), by1)
+            return math.hypot(nx_ - x2, ny_ - y2) - r2
+        own = gap_to(c)
+        return all(own + 2 < gap_to(c2) for c2 in R if c2 != c)
+
     def free(box):
         return (box[0] >= 0 and box[2] <= W and box[1] >= top - 6 and
-                all(box[2] <= q[0] or box[0] >= q[2] or box[3] <= q[1] or box[1] >= q[3] for q in placed))
+                all(box[2] <= q[0] or box[0] >= q[2] or box[3] <= q[1] or box[1] >= q[3] for q in placed) and
+                not any(EX._seg_hits_box(*ld, (box[0] - 2, box[1] - 2, box[2] + 2, box[3] + 2)) for ld in leaders))
     for c in order:
         r = R[c]
         (x, y_), rr = pos[c], rad[c]
@@ -1329,7 +1655,7 @@ def gen_s16(W, uid, t=None):
             tx, ty = x + dx_, y_ + dy_
             x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
             box = (x0, ty - 0.97 * code_size, x0 + w_, ty + 0.25 * code_size)
-            if free(box) and not hits_circle(box):
+            if free(box) and not hits_circle(box) and nearest_is_own(box, c):
                 a.text(tx, ty, c, code_size, 'tl', 600, anc)
                 placed.append(box)
                 done = True
@@ -1342,8 +1668,7 @@ def gen_s16(W, uid, t=None):
                     tx, ty = x + ux * (rr + dist), y_ + uy * (rr + dist)
                     anc = 'start' if ux > 0.3 else ('end' if ux < -0.3 else 'middle')
                     x0 = {'start': tx, 'middle': tx - w_ / 2, 'end': tx - w_}[anc]
-                    box = (x0, ty - 0.62 * code_size, x0 + w_, ty + 0.62 * code_size - 0.35 * code_size)
-                    box = (box[0], ty - 0.97 * code_size + 0.36 * code_size, box[2], ty + 0.25 * code_size + 0.36 * code_size)
+                    box = (x0, ty - 0.97 * code_size + 0.36 * code_size, x0 + w_, ty + 0.25 * code_size + 0.36 * code_size)
                     if not (free(box) and not hits_circle(box)):
                         continue
                     lx0, ly0 = x + ux * (rr + 2), y_ + uy * (rr + 2)
@@ -1356,6 +1681,7 @@ def gen_s16(W, uid, t=None):
                            for px, py in ((lx0 + (lx1 - lx0) * q / 8, ly0 + (ly1 - ly0) * q / 8) for q in range(9))):
                         continue
                     a.leader([(lx0, ly0), (lx1, ly1)])
+                    leaders.append((lx0, ly0, lx1, ly1))
                     a.text(tx, ty + code_size * 0.36, c, code_size, 'tl', 600, anc)
                     placed.append(box)
                     done = True
@@ -1364,26 +1690,29 @@ def gen_s16(W, uid, t=None):
                     break
         if not done:
             skipped.append(c)
-    # under the map: the largest states and the extremes, named
-    y = top + mh + 24 + 34
-    big = sorted(R.values(), key=lambda r: -r['citizen_vap_thousands'])[:4]
-    hi3 = sorted(R.values(), key=lambda r: -r['voted_pct'])[:3]
-    lo3 = sorted(R.values(), key=lambda r: r['voted_pct'])[:3]
-    y = flow_items(a, 0, y, 'MOST CITIZENS 18 AND OVER', [(short_name(r), f'{r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]}%',
-                                                          da(r['key'], r['voted_pct'], field='voted_pct', mark='label')) for r in big], W, lbl) + 32
-    y = flow_items(a, 0, y, 'HIGHEST RATES', [(short_name(r), f'{r["voted_pct"]}%', da(r['key'], r['voted_pct'], field='voted_pct', mark='label')) for r in hi3], W, lbl) + 32
-    y = flow_items(a, 0, y, 'LOWEST RATES', [(short_name(r), f'{r["voted_pct"]}%', da(r['key'], r['voted_pct'], field='voted_pct', mark='label')) for r in lo3], W, lbl)
     a.anchors['skipped'] = skipped
     if W >= 900:
         assert not skipped, f'{uid}: no room for {skipped}'
+    # under the map: the largest states, then the range with its margins of error
+    y = top + mh + 24 + 34
+    big = sorted(R.values(), key=lambda r: -r['citizen_vap_thousands'])[:4]
+    y = flow_items(a, 0, y, 'MOST CITIZENS 18 AND OVER', [(short_name(r), f'{r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]}%',
+                                                          da(r['key'], r['voted_pct'], field='voted_pct', mark='label')) for r in big], W, lbl) + 32
+    y = a.para(0, y, range_text(F), W, lbl, 'tn', 400, 19)
     return a, y + 8
+
+
+def range_text(F):
+    lo, hi = F['lo'], F['hi']
+    return (f'Range: {short_name(lo)} {lo["voted_pct"]}% (±{lo["moe_pct"]}) to {short_name(hi)} {hi["voted_pct"]}% '
+            f'(±{hi["moe_pct"]}). Gaps of a few points between states may not be real.')
 
 
 def spec_s16(view):
     F = turnout_facts()
     below = F['below']
-    title = (f'Three of the four states with the most eligible voters, {below[0]["name"]}, {below[1]["name"]} and {below[2]["name"]}, '
-             f'reported turnout below the national rate of {F["nat"]} percent.')
+    title = (f'{below[0]["name"]}, {below[1]["name"]} and {below[2]["name"]}, three of the four states with the most citizens 18 and over, '
+             f'reported turnout below the national {F["nat"]} percent by more than the survey’s margin of error.')
     measure = ('Citizens 18 and over who said they voted in November 2024, percent, by state; circles sized by the number of '
                'citizens 18 and over; 50 states and DC')
     R = rows(TURNOUT)
@@ -1392,24 +1721,23 @@ def spec_s16(view):
         by_bin[turnout_bin(r['voted_pct'])].append(r['code'])
     label = ('Bubble map of 50 states and DC. Circle area follows the number of citizens 18 and over; shade steps with the share who said they voted. '
              + '; '.join(f'{BIN_WORDS[b - 1]}: {", ".join(sorted(by_bin[b]))}' for b in sorted(by_bin))
-             + f'. The four largest: ' + ', '.join(f'{r["name"]} {r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]} percent' for r in F['big4'])
-             + f'. Nation: {F["nat"]} percent. The table under the chart lists every state.')
+             + f'. Nation: {F["nat"]} percent. Ringed, below the nation by more than the margin of error: '
+             + ', '.join(r['name'] for r in below)
+             + '. The four largest: ' + ', '.join(f'{r["name"]} {r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]} percent' for r in F['big4'])
+             + '. The table under the chart lists every state.')
     body, strings = EX.artboards(view, 'S16', gen_s16, TK['artboard']['wide'], label)
-    notes = [f'These rates are what people told a Census survey, which runs higher than counted ballots. State margins of error run from '
+    notes = [f'These rates are what people told a Census survey, which runs higher than counted ballots. The states’ 90 percent margins of error run from '
              f'{min(r["moe_pct"] for r in R)} to {max(r["moe_pct"] for r in R)} points, so a gap of a few points between two states may not be real.',
-             f'{below[0]["name"]}, {below[1]["name"]} and {below[2]["name"]} each sit below the national rate by more than their margins of error; '
+             f'{below[0]["name"]}, {below[1]["name"]} and {below[2]["name"]} each sit below the national rate by more than their 90 percent margins of error; '
              f'California’s {F["big4"][0]["voted_pct"]} percent is within its margin of the nation’s {F["nat"]}.',
-             'Circle area, never the radius, follows the number of citizens 18 and over. Circles sit at each state’s center and move apart '
+             'Each circle’s area follows the number of citizens 18 and over. Circles sit at each state’s center and move apart '
              'only where they would overlap, most in the Northeast. The table names every state.',
              'Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license).']
-    drawn = ['Shade: the share of citizens 18 and over who said they voted, in five steps: ' + ', '.join(BIN_WORDS) + f'. Nation: {F["nat"]}%.',
-             'Circle size: citizens 18 and over; the key shows 1, 5 and 20 million. State codes sit inside the circles where they fit and beside them where there is room.']
-    big = F['big4']
-    hi3 = sorted(R, key=lambda r: -r['voted_pct'])[:3]
-    lo3 = sorted(R, key=lambda r: r['voted_pct'])[:3]
-    drawn.append('Most citizens 18 and over: ' + '; '.join(f'{short_name(r)} {r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]}%' for r in big)
-                 + '. Highest rates: ' + '; '.join(f'{short_name(r)} {r["voted_pct"]}%' for r in hi3)
-                 + '. Lowest rates: ' + '; '.join(f'{short_name(r)} {r["voted_pct"]}%' for r in lo3) + '.')
+    drawn = [f'Shade: the share of citizens 18 and over who said they voted, in five steps, under 60, 60 to 64.9, 65 to 69.9, 70 to 74.9, and 75 percent or more. '
+             f'The nation, {F["nat"]}%, is marked on the step key. {RING_NOTE}.',
+             'Circle size: citizens 18 and over; the key shows 1, 5 and 20 million. State codes sit inside the circles where they fit and beside their own circle where there is room.',
+             'Most citizens 18 and over: ' + '; '.join(f'{short_name(r)} {r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]}%' for r in F['big4'])
+             + '. ' + range_text(F)]
     body_rows = [[r['name'], f'{r["citizen_vap_thousands"]:,.0f}', f'{r["voted_pct"]:.1f}', f'{r["moe_pct"]:.1f}'] for r in sorted(R, key=lambda r: r['name'])]
     table = table_html('Citizens 18 and over and the share who said they voted, by state, 2024',
                        ['State', 'Citizens 18 and over, thousands', 'Said they voted, percent', 'Margin of error, points (90%)'], body_rows, (1, 2, 3))
@@ -1422,13 +1750,16 @@ def spec_s16(view):
 
 # ------------------------------------------------------------------------------------------------ the frame
 WHY = {
-    'S11': 'Arrows on one margin axis show where each state stood and how far it moved, and the six arrows that cross the even line show where the leader changed.',
-    'S12': 'A tile gives every state the same weight, and an arrow inside it puts the size of the shift where the state sits, so a reader finds a region before a number.',
-    'S13': 'Small panels on one scale let a reader compare fourteen industries at a glance, and the totals sit in their own rows so a whole never reads as one of its parts.',
+    'S11': 'Arrows on one margin axis show where each state stood and how far it moved, and the six arrows that cross the even line show where the leader changed. On phones a ranked lollipop gives every shift one start.',
+    'S12': ('A tile gives every state the same weight, and an arrow inside it puts the size of the shift where the state sits, so a reader '
+            'finds a region before a number. On phones the map drops to eleven columns, with Alaska and Hawaii in the bottom row, and each '
+            'square takes a gray step by the size of its shift.'),
+    'S13': 'Small panels on one scale let a reader compare fourteen industries at a glance, ordered by percent gain, and the totals sit in their own rows, apart from the parts they hold.',
     'S14': "Columns show each month's change, noise and all, and the three-month average drawn over them gives the trend a reader can repeat.",
-    'S15': 'A table answers a lookup: a reader finds their state, reads both margins with the leader named, and sorts by any column to find the biggest shifts.',
-    'S16': 'Circles sized by eligible voters show where most of them live, and one ink stepped by turnout shows how many voted, so size and rate read together.',
+    'S15': 'A table answers a lookup: a reader finds a state, reads both margins with the leader named, and sorts by any column to find the biggest shifts.',
+    'S16': 'Circles sized by citizens 18 and over show where most of them live, and one ink stepped by turnout shows how many said they voted, so size and rate read together.',
 }
+QUESTION = {'S16': 'Where did citizens 18 and over turn out, and where are most of them?'}
 SPEC_FN = {}
 VIEWS = [('newsprint', 'Newsprint'), ('dark', 'Charcoal'), ('phone', 'Phones')]
 VIEW_GROUND = {'newsprint': 'news', 'dark': 'dark', 'phone': 'news'}
@@ -1440,9 +1771,19 @@ def stretch_figure(view, sid):
     return EX.figure(view, sp).replace('href="#system/read"', 'href="#newsprint/read"')
 
 
+def stretch_strip(view, sid):
+    """Explainer's studio strip; where the page words a reader question more exactly than the shared data, its text is swapped in."""
+    out = EX.strip(view, sid, WHY[sid])
+    if sid in QUESTION:
+        old = e(SPECS[sid]['reader_question'])
+        assert old in out
+        out = out.replace(old, e(QUESTION[sid]))
+    return out
+
+
 def specimen(view, sid):
     return (f'<section class="spec" id="{view}-{sid.lower()}" aria-labelledby="{view}-{sid.lower()}-t">'
-            f'{stretch_figure(view, sid)}{EX.strip(view, sid, WHY[sid])}</section>')
+            f'{stretch_figure(view, sid)}{stretch_strip(view, sid)}</section>')
 
 
 def masthead():
@@ -1469,10 +1810,10 @@ VIEW_DESC = {'newsprint': 'the six charts and the new tokens',
              'phone': 'all six phone drawings side by side'}
 
 
-def view_head(view, eyebrow, h1, deck, extra=''):
+def view_head(view, eyebrow_, h1, deck, extra=''):
     items = ''.join(f'<li><a href="#{v}">{e(t)}</a> <span>{e(VIEW_DESC[v])}</span></li>' for v, t in VIEWS if v != view)
     lk = f'<nav class="vlinks" aria-label="Other views of the stretch test"><p class="eyebrow">Other views</p><ul>{items}</ul></nav>'
-    return (f'<header class="vhead"><div><p class="eyebrow">{e(eyebrow)}</p>'
+    return (f'<header class="vhead"><div><p class="eyebrow">{e(eyebrow_)}</p>'
             f'<h1 class="display" id="{view}-h1" tabindex="-1">{e(h1)}</h1><div class="deck">{EX.copy_html(deck)}</div>{extra}</div>{lk}</header>')
 
 
@@ -1489,24 +1830,51 @@ def index_nav(view):
 
 
 TOKEN_USE = {
-    'arrow': 'S11, S12, S15: arrowheads, tails and the dot at the tip',
-    'shift_axis': 'S11: row pitch, label size, the break between the far and near segments',
-    'tile': 'S12: tile size, gaps, the eleven-column phone grid, the frame on a changed state',
-    'tile_arrow': 'S12: arrow angle, steep for a small shift and flat for a large one; the key\'s sample shifts',
-    'spark': 'S13: vertical scale shared by every sparkline, domain, line weights, end dot, row height, gutters',
-    'columns': 'S14: column width as a share of the month, the average line, preliminary months, the domain',
-    'bubble': 'S16: largest circle radius per artboard, the gap between circles, the outline, turnout bins, the size key',
-    'results': 'S15: row height, the half-cell for each margin, the bar under it, the shift arrow scale',
+    'arrow': 'S11, S12, S15',
+    'shift_axis': 'S11',
+    'tile': 'S12',
+    'tile_arrow': 'S12',
+    'spark': 'S13',
+    'columns': 'S14',
+    'bubble': 'S16',
+    'results': 'S15',
+}
+TOKEN_UNITS = {
+    'arrow': {'shaft': 'px, line width', 'head_len': 'px', 'head_half': 'px', 'phone_head_len': 'px', 'phone_head_half': 'px',
+              'tail_r': 'px, radius', 'tip_r': 'px, radius', 'key_points': 'percentage points'},
+    'shift_axis': {'pitch': 'px between rows', 'label': 'px, type size', 'break_gap': 'px', 'far_segment': 'percentage points',
+                   'near_segment': 'percentage points', 'tick_step': 'percentage points', 'phone_lollipop_ppp': 'px per point',
+                   'phone_lollipop_pitch': 'px between rows'},
+    'tile': {'size_max': 'px', 'gap': 'px', 'mid_gap': 'px', 'phone_gap': 'px', 'phone_cols': 'columns', 'frame': 'px, line width',
+             'phone_steps': 'percentage points, lower edges of steps 2 to 4'},
+    'tile_arrow': {'key_points': 'percentage points'},
+    'spark': {'px_per_point': 'px per percentage point', 'phone_px_per_point': 'px per percentage point', 'domain': 'percent change',
+              'ticks': 'percent change', 'line': 'px, line width', 'context': 'px, line width', 'end_r': 'px, radius',
+              'gap_x': 'px', 'phone_gap_x': 'px'},
+    'columns': {'fill_share': 'share of a month’s width', 'avg_line': 'px, line width', 'prelim_months': 'months', 'vertex_r': 'px, radius',
+                'domain': 'thousand jobs', 'ticks': 'thousand jobs', 'height': 'px', 'phone_height': 'px'},
+    'bubble': {'r_max': 'px, radius of the largest circle per artboard', 'gap': 'px', 'outline': 'px, line width', 'ring': 'px, line width',
+               'bins': 'percent, lower edges of steps 2 to 5', 'key_millions': 'million people', 'key_seg': 'px per step',
+               'label_pad': 'px'},
+    'results': {'gap': 'px', 'bar': 'px, bar height', 'bar_gap': 'px', 'shift_px_per_point': 'px per point', 'shift_head': 'px',
+                'shift_min': 'px, column width', 'html_headroom': 'ratio applied to measured HTML text',
+                'two_line_min': 'px, narrowest container for two-line cards'}
 }
 
 
 def tokens_table():
-    rows_ = ''.join(f'<tr><th scope="row"><code>{e(k)}</code></th><td><code>{e(json.dumps(v))}</code></td><td>{e(TOKEN_USE[k])}</td></tr>'
-                    for k, v in STRETCH_TOKENS.items())
+    """One row per token, printed exactly as the code writes it, outside the copy function."""
+    rows_ = []
+    for grp, d in STRETCH_TOKENS.items():
+        for k_, v in d.items():
+            unit = TOKEN_UNITS[grp][k_]
+            rows_.append(f'<tr><th scope="row"><code>{html.escape(grp)}.{html.escape(k_)}</code></th>'
+                         f'<td><code>{html.escape(repr(v))}</code></td><td>{e(unit)}</td><td>{e(TOKEN_USE[grp])}</td></tr>')
+    assert all(set(d) == set(TOKEN_UNITS[g]) for g, d in STRETCH_TOKENS.items())
     return (f'<section class="ssec" id="newsprint-tokens" aria-labelledby="tok-h"><h2 class="headline" id="tok-h">New tokens</h2>'
-            f'<p class="lede">{e("The sizes these six forms add to Explainer\'s chart tokens, in one dict the kit can adopt. Every other size on this page is an Explainer token.")}</p>'
+            f'<p class="lede">{e("The sizes these six forms add to Explainer’s chart tokens, one row each, as the code writes them, so the kit can adopt them. Every other size on this page is an Explainer token.")}</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="New tokens, table"><table class="eqt toktbl"><caption>STRETCH_TOKENS, which extends CHART_TOKENS</caption>'
-            f'<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Used by</th></tr></thead><tbody>{rows_}</tbody></table></div></section>')
+            f'<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Unit</th><th scope="col">Used by</th></tr></thead><tbody>{"".join(rows_)}</tbody></table></div></section>')
 
 
 DECK = ('<p>Six forms the ten Explainer charts lack, from the range of Dustin\'s newspaper references: shift arrows, a tile map '
@@ -1543,6 +1911,12 @@ def view_phone():
             f'{view_head("phone", "Chart system 01 · Explainer · Stretch test", "On phones", deck)}<div class="pgrid">{figs}</div></div></section>')
 
 
+def css_add():
+    """The added stylesheet, with its sizes read from STRETCH_TOKENS so the printed table and the drawing agree."""
+    return (CSS_ADD.replace('BUB_OUTLINE', f'{ST["bubble"]["outline"]}px').replace('BUB_RING', f'{ST["bubble"]["ring"]}px')
+            .replace('TILE_FRAME', f'{ST["tile"]["frame"]}px'))
+
+
 def stretch_ground_css():
     return '\n'.join(f'[data-ground="{name}"]{{{";".join(f"--{k}:{v}" for k, v in SGROUNDS[name].items())}}}' for name in ('white', 'news', 'dark'))
 
@@ -1554,68 +1928,21 @@ CSS_ADD = r"""
 .s-even{stroke:var(--ink);stroke-width:1.5px;fill:none}
 .s-spk{stroke:var(--ink);stroke-width:2px;fill:none;stroke-linejoin:round;stroke-linecap:round}
 .s-subd{stroke:var(--ink);stroke-width:3px;fill:none;stroke-dasharray:5 3;stroke-linecap:butt}
-.s-frame{stroke:var(--ink);stroke-width:2px;fill:none}
+.s-frame{stroke:var(--ink);stroke-width:TILE_FRAME;fill:none}
+.s-tag{stroke:var(--ink);stroke-width:1px;fill:none}
 .s-zero{stroke:var(--ink);stroke-width:1px;fill:none}
+.s-case{stroke:var(--g);stroke-width:7px;fill:none;stroke-linejoin:round;stroke-linecap:round}
 .f-area{fill:var(--lt2)}
 .f-land{fill:var(--land);stroke:var(--border);stroke-width:0.75px}
+.ps0{fill:var(--ps0)}.ps1{fill:var(--ps1)}.ps2{fill:var(--ps2)}.ps3{fill:var(--ps3)}
+.pt0{fill:var(--pt0)}.pt1{fill:var(--pt1)}.pt2{fill:var(--pt2)}.pt3{fill:var(--pt3)}
 .q1{fill:var(--q1)}.q2{fill:var(--q2)}.q3{fill:var(--q3)}.q4{fill:var(--q4)}.q5{fill:var(--q5)}
 .qt1{fill:var(--qt1)}.qt2{fill:var(--qt2)}.qt3{fill:var(--qt3)}.qt4{fill:var(--qt4)}.qt5{fill:var(--qt5)}
-.bub{stroke:var(--qk);stroke-width:1px}
+.bub{stroke:var(--qk);stroke-width:BUB_OUTLINE}
+.bub.bubring{stroke:var(--ink);stroke-width:BUB_RING}
 .f-none{fill:none}.s-keyc{stroke:var(--ink);stroke-width:1px}
-.s-arw,.f-head,.s-even,.s-spk,.s-subd,.s-frame,.s-zero,.s-case,.f-land,.bub{vector-effect:non-scaling-stroke}
-.s-case{stroke:var(--g);stroke-width:7px;fill:none;stroke-linejoin:round;stroke-linecap:round}
-.rtw{container-type:inline-size}
-.rkey{margin:0 0 6px;font:400 15px/23px Inter,sans-serif;max-width:46em;text-wrap:pretty}
-.rsort{margin:0 0 14px;font:400 15px/23px Inter,sans-serif;color:var(--sec)}.rsort b{color:var(--ink);font-weight:600}
-table.results{border-collapse:collapse;width:100%;font:400 14px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
-table.results thead th{text-align:left;vertical-align:bottom;padding:0 12px 0 0;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-table.results thead th.mh,table.results thead th.mh{text-align:center;padding:0}
-.sortb{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;margin:0;border:0;background:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink);text-align:left}
-.sortb:hover span:first-child{text-decoration:underline;text-underline-offset:3px}
-.sa{flex:none;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--grid)}
-th[aria-sort="ascending"] .sa{border-top:0;border-bottom:6px solid var(--ink)}
-th[aria-sort="descending"] .sa{border-top:6px solid var(--ink)}
-table.results .subhead td{padding:0 0 6px;border-bottom:1px solid var(--ink)}
-.sl2{font:400 13px/18px Inter,sans-serif;color:var(--sec);padding:0 8px}
-table.results tbody th,table.results tbody td{padding:0 12px 0 0;border-top:1px solid var(--grid);vertical-align:middle;text-align:left}
-table.results tbody th{font:600 15px/20px Inter,sans-serif;padding:7px 12px 7px 0;white-space:nowrap}
-.chg{display:inline-block;margin-left:8px;padding:1px 6px;border:1px solid var(--ink);font:600 13px/16px Inter,sans-serif;vertical-align:1px}
-td.mc{position:relative;width:272px;padding:0!important}
-td.mc::before,td.mh2::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid var(--ink)}
-td.mh2{position:relative;padding:0 0 6px!important}
-.mcw{display:grid;grid-template-columns:1fr 1fr}
-.half{display:flex;flex-direction:column;justify-content:center;min-width:0}
-.half.d{align-items:flex-end;text-align:right}.half.r{align-items:flex-start}
-.mi{display:flex;flex-direction:column;gap:4px;align-items:inherit;padding:6px 0}
-.mt{font:600 14px/18px Inter,sans-serif;white-space:nowrap;padding:0 8px}
-.c20 .mt{font-weight:400;color:var(--sec)}
-.yr{display:none}
-.mb{display:block;height:3px;background:var(--ink)}
-.c20 .mb{background:var(--lt)}
-td.sc{white-space:nowrap}
-.sci{display:inline-flex;align-items:center;gap:10px}
-.arwh{position:relative;display:inline-block;height:2px;background:var(--ink)}
-.arwh::after{content:"";position:absolute;right:0;top:-4px;border-left:8px solid var(--ink);border-top:5px solid transparent;border-bottom:5px solid transparent}
-.sv{font:400 14px/20px Inter,sans-serif}
-table.results tr.evenrow td{padding:9px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font:600 14px/20px Inter,sans-serif;text-align:center}
-@media (forced-colors:active){.mb,.arwh{forced-color-adjust:none;background:CanvasText}.arwh::after{forced-color-adjust:none;border-left-color:CanvasText}}
-@container (max-width:640px){
- table.results,table.results thead,table.results tbody{display:block}
- table.results thead tr:first-child{display:flex;flex-wrap:wrap;gap:0 18px;border-bottom:1px solid var(--ink)}
- table.results thead th,table.results thead th.mh{padding:0;text-align:left}
- table.results .subhead{display:none}
- table.results tbody tr[data-row]{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name shift" "m24 m20";gap:2px 14px;padding:9px 0 10px;border-top:1px solid var(--grid)}
- table.results tbody th,table.results tbody td{border:0;padding:0}
- table.results tbody th{grid-area:name;white-space:normal}
- td.sc{grid-area:shift;justify-self:end}
- td.c24{grid-area:m24}td.c20{grid-area:m20;justify-self:end}
- td.mc{width:auto}td.mc::before{display:none}
- .mcw{display:block}.half:empty{display:none}.half.d,.half.r{align-items:flex-start;text-align:left}
- .mi{padding:0}.mt{padding:0}
- .mb{display:none}
- .yr{display:inline;font-weight:600;color:var(--sec)}
- table.results tr.evenrow{display:block}table.results tr.evenrow td{display:block;text-align:left}
-}
+.s-arw,.f-head,.s-even,.s-spk,.s-subd,.s-frame,.s-tag,.s-zero,.s-case,.f-land,.bub,.s-keyc{vector-effect:non-scaling-stroke}
+.vhead+.spec{margin-top:0;border-top:0}
 .pgrid{display:grid;grid-template-columns:repeat(3,358px);justify-content:space-between;gap:72px 40px;margin-top:40px}
 .pcell{min-width:0}
 .pcell .fig{max-width:358px}
@@ -1700,12 +2027,12 @@ def build():
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800'
             '&family=Lora:ital@1&display=swap" rel="stylesheet">'
-            f'<style>{EX.ground_css()}\n{stretch_ground_css()}{EX.CSS}{CSS_ADD}</style></head><body>'
+            f'<style>{EX.ground_css()}\n{stretch_ground_css()}{EX.CSS}{css_add()}{s15_css()}</style></head><body>'
             '<a class="skip" href="#newsprint">Skip to the view</a>'
             + masthead() + '<main id="main">'
             + view_newsprint() + view_dark() + view_phone()
             + '</main>' + footer() + f'<script>{JS}</script></body></html>')
-    text_only = re.sub(r'<(script|style|pre)\b.*?</\1>', '', page, flags=re.S)
+    text_only = re.sub(r'<(script|style|pre|code)\b.*?</\1>', '', page, flags=re.S)   # code prints tokens exactly as written
     assert '—' not in text_only, 'em dash in page'
     visible = html.unescape(re.sub(r'<[^>]+>', ' ', text_only))
     for m in re.finditer(r'(?:(?<=\s)|(?<=\())-\d', visible):

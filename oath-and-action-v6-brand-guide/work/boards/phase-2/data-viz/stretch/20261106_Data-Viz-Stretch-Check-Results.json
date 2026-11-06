@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
- "checked": "2026-11-06T16:40:50.682Z",
+ "checked": "2026-11-06T17:09:46.194Z",
  "views": [
   "newsprint",
   "dark",
@@ -11,7 +11,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 879,
+   "texts": 1095,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -23,20 +23,7 @@
     "labels": 344,
     "outside": [],
     "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-newsprint-1024",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-1024",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-1024",
-      "mark": "MANEMP|2026-09"
-     }
-    ]
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -46,18 +33,18 @@
    },
    "scale": {
     "groups": 10,
-    "marks": 457,
+    "marks": 484,
     "bad": []
    },
    "party": {
-    "marks": 1185,
+    "marks": 1196,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 12523,
+   "height": 14794,
    "axe": [],
    "focusStops": 32,
    "focusWithoutRing": []
@@ -66,7 +53,7 @@
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 162,
+   "texts": 147,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -75,7 +62,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 94,
+    "labels": 85,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -88,7 +75,7 @@
    },
    "scale": {
     "groups": 2,
-    "marks": 90,
+    "marks": 114,
     "bad": []
    },
    "party": {
@@ -99,7 +86,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3388,
+   "height": 3377,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -108,7 +95,7 @@
    "width": 1440,
    "view": "phone",
    "rootVisible": true,
-   "texts": 840,
+   "texts": 926,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -117,39 +104,10 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 349,
+    "labels": 428,
     "outside": [],
     "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-phone-358",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USINFO|2026-09"
-     }
-    ]
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -158,19 +116,19 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 6,
-    "marks": 343,
+    "groups": 4,
+    "marks": 217,
     "bad": []
    },
    "party": {
-    "marks": 1185,
+    "marks": 785,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 7909,
+   "height": 10336,
    "axe": [],
    "focusStops": 18,
    "focusWithoutRing": []
@@ -179,7 +137,7 @@
    "width": 1024,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 833,
+   "texts": 1049,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -191,24 +149,7 @@
     "labels": 349,
     "outside": [],
     "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "USLAH|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "CES4300000001|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "MANEMP|2026-09"
-     }
-    ]
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -218,18 +159,18 @@
    },
    "scale": {
     "groups": 11,
-    "marks": 457,
+    "marks": 484,
     "bad": []
    },
    "party": {
-    "marks": 1185,
+    "marks": 1196,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 14265,
+   "height": 16747,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -238,7 +179,7 @@
    "width": 1024,
    "view": "dark",
    "rootVisible": true,
-   "texts": 159,
+   "texts": 143,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -247,7 +188,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 91,
+    "labels": 81,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -260,7 +201,7 @@
    },
    "scale": {
     "groups": 2,
-    "marks": 90,
+    "marks": 114,
     "bad": []
    },
    "party": {
@@ -271,7 +212,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3756,
+   "height": 3822,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -280,7 +221,7 @@
    "width": 1024,
    "view": "phone",
    "rootVisible": true,
-   "texts": 840,
+   "texts": 926,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -289,137 +230,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 349,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-phone-358",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USINFO|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 6,
-    "marks": 343,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 9991,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 768,
-   "view": "newsprint",
-   "rootVisible": true,
-   "texts": 826,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 768,
-   "clientWidth": 768,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 349,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "USLAH|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "CES4300000001|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-600",
-      "mark": "MANEMP|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 11,
-    "marks": 457,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 14153,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 768,
-   "view": "dark",
-   "rootVisible": true,
-   "texts": 153,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 768,
-   "clientWidth": 768,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 3,
-    "labels": 91,
+    "labels": 428,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -431,28 +242,28 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 2,
-    "marks": 90,
+    "groups": 4,
+    "marks": 217,
     "bad": []
    },
    "party": {
-    "marks": 0,
+    "marks": 785,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 3559,
+   "height": 13382,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   },
   {
    "width": 768,
-   "view": "phone",
+   "view": "newsprint",
    "rootVisible": true,
-   "texts": 834,
+   "texts": 1195,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -464,148 +275,6 @@
     "labels": 349,
     "outside": [],
     "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-phone-358",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USINFO|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 6,
-    "marks": 343,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 14475,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 390,
-   "view": "newsprint",
-   "rootVisible": true,
-   "texts": 910,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 390,
-   "clientWidth": 390,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 349,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-358",
-      "mark": "USINFO|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 6,
-    "marks": 343,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 18868,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 390,
-   "view": "dark",
-   "rootVisible": true,
-   "texts": 139,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 390,
-   "clientWidth": 390,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 3,
-    "labels": 77,
-    "outside": [],
-    "overlaps": [],
     "marksOutside": []
    },
    "red": {
@@ -615,179 +284,37 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 2,
-    "marks": 90,
+    "groups": 10,
+    "marks": 382,
     "bad": []
    },
    "party": {
-    "marks": 0,
+    "marks": 1247,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 4437,
+   "height": 17549,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   },
   {
-   "width": 390,
-   "view": "phone",
-   "rootVisible": true,
-   "texts": 834,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 390,
-   "clientWidth": 390,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 349,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-phone-358",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-phone-358",
-      "mark": "USINFO|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 6,
-    "marks": 343,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 14617,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 360,
-   "view": "newsprint",
-   "rootVisible": true,
-   "texts": 914,
-   "minSize": 13,
-   "under13": [],
-   "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
-   "overflowing": [],
-   "textCheck": {
-    "drawings": 6,
-    "labels": 353,
-    "outside": [],
-    "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-newsprint-328",
-      "mark": "USINFO|2026-09"
-     }
-    ]
-   },
-   "red": {
-    "marks": 1,
-    "unmarked": [],
-    "jobs": [],
-    "onPrussian": []
-   },
-   "scale": {
-    "groups": 6,
-    "marks": 343,
-    "bad": []
-   },
-   "party": {
-    "marks": 1185,
-    "bad": []
-   },
-   "fonts": [
-    "Inter",
-    "Inter Tight"
-   ],
-   "height": 19662,
-   "axe": [],
-   "focusStops": null,
-   "focusWithoutRing": null
-  },
-  {
-   "width": 360,
+   "width": 768,
    "view": "dark",
    "rootVisible": true,
    "texts": 137,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
+   "scrollWidth": 768,
+   "clientWidth": 768,
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 75,
+    "labels": 81,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -800,7 +327,7 @@
    },
    "scale": {
     "groups": 2,
-    "marks": 90,
+    "marks": 114,
     "bad": []
    },
    "party": {
@@ -811,57 +338,28 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 4547,
+   "height": 3631,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   },
   {
-   "width": 360,
+   "width": 768,
    "view": "phone",
    "rootVisible": true,
-   "texts": 838,
+   "texts": 920,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
-   "scrollWidth": 360,
-   "clientWidth": 360,
+   "scrollWidth": 768,
+   "clientWidth": 768,
    "overflowing": [],
    "textCheck": {
     "drawings": 6,
-    "labels": 353,
+    "labels": 428,
     "outside": [],
     "overlaps": [],
-    "marksOutside": [
-     {
-      "svg": "s13-phone-328",
-      "mark": "CES4422000001|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "USCONS|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "USSERV|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "USWTRADE|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "USFIRE|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "MANEMP|2026-09"
-     },
-     {
-      "svg": "s13-phone-328",
-      "mark": "USINFO|2026-09"
-     }
-    ]
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -870,19 +368,271 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 6,
-    "marks": 343,
+    "groups": 4,
+    "marks": 217,
     "bad": []
    },
    "party": {
-    "marks": 1185,
+    "marks": 785,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 15101,
+   "height": 17931,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 1201,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 428,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 23892,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 128,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 3,
+    "labels": 72,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 2,
+    "marks": 114,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 4469,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "phone",
+   "rootVisible": true,
+   "texts": 920,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 428,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 18073,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 1203,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 438,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 24971,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 127,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 3,
+    "labels": 71,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 2,
+    "marks": 114,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 4679,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "phone",
+   "rootVisible": true,
+   "texts": 922,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 438,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 4,
+    "marks": 217,
+    "bad": []
+   },
+   "party": {
+    "marks": 785,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 19116,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -900,17 +650,6 @@
    "visible": true
   }
  },
- "failures": [
-  "1440 newsprint: 3 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-1024\",\"mark\":\"USCONS|2026-09\"})",
-  "1440 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
-  "1024 newsprint: 4 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-600\",\"mark\":\"USLAH|2026-09\"})",
-  "1024 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
-  "768 newsprint: 4 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-600\",\"mark\":\"USLAH|2026-09\"})",
-  "768 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
-  "390 newsprint: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-358\",\"mark\":\"CES4422000001|2026-09\"})",
-  "390 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
-  "360 newsprint: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-328\",\"mark\":\"CES4422000001|2026-09\"})",
-  "360 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-328\",\"mark\":\"CES4422000001|2026-09\"})"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }
