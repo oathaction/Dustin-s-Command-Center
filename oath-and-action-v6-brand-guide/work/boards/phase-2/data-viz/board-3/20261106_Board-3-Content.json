@@ -1,184 +1,227 @@
 {
-  "deck": "Board 3 shows three chart systems for Oath & Action. Each drew the same ten charts from the same data, then went through six red team reviews, a simulated reader panel and one round of fixes. You are asked to pick one system to finish as chapter 14 and the chart kit, to choose one page color for charts and the atlas, to choose the diverging pair, and to answer six more calls below.",
-  "pick": "01",
-  "runner_up": "02",
-  "concepts": {
-    "01": {
-      "name": "Explainer",
-      "idea": "Each chart leads with its finding: a label that says what kind of evidence it is, a sentence title, and notes beside the marks that teach what a reader could miss.",
-      "pick_if": "You want the charts to read like the atlas you picked, each making one point a reader can repeat.",
-      "best": [
-        "Every title claims only what its data holds, and a plain line above it says how sure the evidence is, such as “Official statistic: a Census Bureau survey.”",
-        "It sits closest to the atlas pick, with the same masthead, evidence chip, type and gray and black drawing, so charts and atlas read as one family.",
-        "It has the cleanest type in the round at twice size, and each phone drawing is made at its own width; S08 turns on its side on a phone.",
-        "Its notes sit beside the marks they explain, and S04 says what a missing margin of error means for a change of a point or two."
-      ],
-      "holds_back": [
-        "With the wordmark covered, the White view could pass for any careful newsroom; Newsprint and the black evidence chip carry the brand.",
-        "It has no Chart and Table switch or downloads yet, so the interactive versions need Instrument’s kit.",
-        "The repair-log charts, S03 and S08, carry long notes and run about two screens each."
-      ],
-      "cd_scores": [
-        4,
-        5,
-        4,
-        4,
-        5,
-        4,
-        4
-      ],
-      "red_team": {
-        "statistics": 4,
-        "civic": 4,
-        "interface": 4,
-        "brand": 3,
-        "craft": 3,
-        "production": 3
-      },
-      "readers_first": 4
-    },
-    "02": {
-      "name": "Register",
-      "idea": "Each chart leads with the numbers, set in a register a reader can look up, inside one frame that repeats on every chart.",
-      "pick_if": "You want readers to compare and look up numbers first, as in the Concept 11 Register you liked.",
-      "best": [
-        "It has the best tables in the round: S03 shows every rule change as a mark and every count in one row.",
-        "The same frame on every chart means a reader learns the parts once.",
-        "The boxed arrows on S06 keep their direction on a black-and-white copy.",
-        "Its social card reads at feed size, with three large bars and the wordmark at the foot."
-      ],
-      "holds_back": [
-        "Its pages run longest, most of all on a phone, and on a desktop screen the first chart sits under a guide and an index.",
-        "Its navy and green data inks sit further from the atlas pick’s gray and black drawing."
-      ],
-      "cd_scores": [
-        4,
-        4,
-        4,
-        4,
-        5,
-        4,
-        4
-      ],
-      "red_team": {
-        "statistics": 3,
-        "civic": 3,
-        "interface": 4,
-        "brand": 2,
-        "craft": 2,
-        "production": 2
-      },
-      "readers_first": 1
-    },
-    "03": {
-      "name": "Instrument",
-      "idea": "Each chart is a module with seven fixed parts, a Chart and Table switch and downloads, built from a kit so the next chart needs no new design.",
-      "pick_if": "You want the charts to work first as a data product that people come back to and download.",
-      "best": [
-        "It has the most complete kit: one call adds a chart, and every chart gives a table, a dated spreadsheet file and a drawing file.",
-        "The Chart and Table switch works by keyboard and keeps the source line in view either way.",
-        "S02 names each change in the Census Bureau’s method at the top of the drawing.",
-        "Its one red mark, the Senate’s seven-vote shortfall, reads the same to readers on either side."
-      ],
-      "holds_back": [
-        "The switch, download buttons and record codes repeat on every chart, so the page reads as a product; simulated readers called it a parts catalog.",
-        "S08 dropped time to stay neutral, so it shows totals and no longer shows whether the rules have been moving.",
-        "The social card sets the whole chart at 1.34 times its size, which crowds it in a feed."
-      ],
-      "cd_scores": [
-        4,
-        4,
-        4,
-        5,
-        5,
-        4,
-        3
-      ],
-      "red_team": {
-        "statistics": 3,
-        "civic": 3,
-        "interface": 3,
-        "brand": 4,
-        "craft": 3,
-        "production": 3
-      },
-      "readers_first": 1
-    }
+ "deck": "Board 3 shows three chart systems for Oath & Action. Each drew the same ten charts from the same data, then went through six red team reviews, a simulated reader panel and one round of fixes. You are asked to pick one system to finish as chapter 14 and the chart kit, to choose one page color for charts and the atlas, to choose the diverging pair, and to answer six more calls below.",
+ "pick": "01",
+ "runner_up": "02",
+ "concepts": {
+  "01": {
+   "name": "Explainer",
+   "idea": "Each chart leads with its finding: a label that says what kind of evidence it is, a sentence title, and notes beside the marks that teach what a reader could miss.",
+   "pick_if": "You want the charts to read like the atlas you picked, each making one point a reader can repeat.",
+   "best": [
+    "Every title claims only what its data holds, and a plain line above it says how sure the evidence is, such as “Official statistic: a Census Bureau survey.”",
+    "It sits closest to the atlas pick, with the same masthead, evidence chip, type and gray and black drawing, so charts and atlas read as one family.",
+    "It has the cleanest type in the round at twice size, and each phone drawing is made at its own width; S08 turns on its side on a phone.",
+    "Its notes sit beside the marks they explain, and S04 says what a missing margin of error means for a change of a point or two."
+   ],
+   "holds_back": [
+    "With the wordmark covered, the White view could pass for any careful newsroom; Newsprint and the black evidence chip carry the brand.",
+    "It has no Chart and Table switch or downloads yet, so the interactive versions need Instrument’s kit.",
+    "The repair-log charts, S03 and S08, carry long notes and run about two screens each."
+   ],
+   "cd_scores": [
+    4,
+    5,
+    4,
+    4,
+    5,
+    4,
+    4
+   ],
+   "red_team": {
+    "statistics": 4,
+    "civic": 4,
+    "interface": 4,
+    "brand": 3,
+    "craft": 3,
+    "production": 3
+   },
+   "readers_first": 4
   },
-  "rec_text": "Explainer teaches best, and it sits closest to the atlas you picked, so the charts and the atlas read as one family. Each chart opens with a plain line on how sure the evidence is and a title that claims only what the data holds, and its notes sit where a reader is already looking. After the fix pass it scores 4 or 5 on every line, with the best type in the round and the clearest phone drawings. Four of six simulated readers ranked it first. The finishing work adds what the other two do better: Register’s tables for looking numbers up, and Instrument’s switch, downloads and one-call kit for the interactive versions.",
-  "runner_text": "Register also scores 4 or more on every line, and its tables are the best in the round, close to the Concept 11 Register you favored. Choose it if readers should look up and compare numbers first, knowing its pages run long on a phone.",
-  "finishing": [
-    "Rebuild every view on the page color you choose, and redraw S06 in the diverging pair you choose, with Register’s boxed arrows carrying the direction.",
-    "Build the chart kit from Explainer’s drawing code with Instrument’s parts: one call to add a chart, the Chart and Table switch, dated downloads, and one command that turns a spreadsheet into a finished, checked chart.",
-    "Move the chart sizes and inks into the project’s one token file, print the system sheet from it, and complete the evidence grade table with every grade the atlas uses.",
-    "Write the selection guide by reader question, including when a table or a single sentence answers best.",
-    "Build the full set of twenty or more charts, chosen so readers on each side meet a finding they would rather skip, and read every title from the left and the right before it ships.",
-    "Write the palette specification for sequential, diverging, category, evidence grade and dark charts, measured on White, Newsprint and Charcoal with grayscale proofs.",
-    "Take Register’s look-up tables and social card layout, and Instrument’s labeled method breaks.",
-    "Build the three complex examples, a chart, a systems diagram and a policy comparison, for desktop, phone, grayscale, keyboard, screen reader and export.",
-    "Make the black evidence chip the charts’ signature on every chart, card and atlas panel, and test again with the wordmark covered.",
-    "Set the repair-log notes as one compact two-column block so S03 and S08 stop running two screens.",
-    "Test with five to eight first-time readers, screen readers, other browsers, real phones and print."
-  ],
-  "ground": {
-    "rec": "Newsprint",
-    "text": "With the wordmark covered, every Newsprint view in this round still reads as Oath & Action, which answers the recognition gap found on White in the atlas review and matches your saved concepts. Small text keeps 5.49:1 contrast in Deep Stone, a red mark takes a thin Charcoal outline, and printed reports use the paper itself as the ground."
+  "02": {
+   "name": "Register",
+   "idea": "Each chart leads with the numbers, set in a register a reader can look up, inside one frame that repeats on every chart.",
+   "pick_if": "You want readers to compare and look up numbers first, as in the Concept 11 Register you liked.",
+   "best": [
+    "It has the best tables in the round: S03 shows every rule change as a mark and every count in one row.",
+    "The same frame on every chart means a reader learns the parts once.",
+    "The boxed arrows on S06 keep their direction on a black-and-white copy.",
+    "Its social card reads at feed size, with three large bars and the wordmark at the foot."
+   ],
+   "holds_back": [
+    "Its pages run longest, most of all on a phone, and on a desktop screen the first chart sits under a guide and an index.",
+    "Its navy and green data inks sit further from the atlas pick’s gray and black drawing."
+   ],
+   "cd_scores": [
+    4,
+    4,
+    4,
+    4,
+    5,
+    4,
+    4
+   ],
+   "red_team": {
+    "statistics": 3,
+    "civic": 3,
+    "interface": 4,
+    "brand": 2,
+    "craft": 2,
+    "production": 2
+   },
+   "readers_first": 1
   },
-  "diverging": {
-    "rec": "B",
-    "text": "Pair B runs from Prussian through the page color to Verdigris, so a fall and a rise carry equal weight, and it holds its colors apart better than A under every color-vision test the palette lab ran. Pair A ends its down side in Stone, the gray every other chart uses for background, so a decline would read as background; with either pair a boxed arrow carries the direction on a black-and-white copy, and Prussian never shares a view with Pillar Red."
+  "03": {
+   "name": "Instrument",
+   "idea": "Each chart is a module with seven fixed parts, a Chart and Table switch and downloads, built from a kit so the next chart needs no new design.",
+   "pick_if": "You want the charts to work first as a data product that people come back to and download.",
+   "best": [
+    "It has the most complete kit: one call adds a chart, and every chart gives a table, a dated spreadsheet file and a drawing file.",
+    "The Chart and Table switch works by keyboard and keeps the source line in view either way.",
+    "S02 names each change in the Census Bureau’s method at the top of the drawing.",
+    "Its one red mark, the Senate’s seven-vote shortfall, reads the same to readers on either side."
+   ],
+   "holds_back": [
+    "The switch, download buttons and record codes repeat on every chart, so the page reads as a product; simulated readers called it a parts catalog.",
+    "S08 dropped time to stay neutral, so it shows totals and no longer shows whether the rules have been moving.",
+    "The social card sets the whole chart at 1.34 times its size, which crowds it in a feed."
+   ],
+   "cd_scores": [
+    4,
+    4,
+    4,
+    5,
+    5,
+    4,
+    3
+   ],
+   "red_team": {
+    "statistics": 3,
+    "civic": 3,
+    "interface": 3,
+    "brand": 4,
+    "craft": 3,
+    "production": 3
+   },
+   "readers_first": 1
+  }
+ },
+ "rec_text": "Explainer teaches best, and it sits closest to the atlas you picked, so the charts and the atlas read as one family. Each chart opens with a plain line on how sure the evidence is and a title that claims only what the data holds, and its notes sit where a reader is already looking. After the fix pass it scores 4 or 5 on every line, with the best type in the round and the clearest phone drawings. Four of six simulated readers ranked it first. The finishing work adds what the other two do better: Register’s tables for looking numbers up, and Instrument’s switch, downloads and one-call kit for the interactive versions.",
+ "runner_text": "Register also scores 4 or more on every line, and its tables are the best in the round, close to the Concept 11 Register you favored. Choose it if readers should look up and compare numbers first, knowing its pages run long on a phone.",
+ "finishing": [
+  "Rebuild every view on the page color you choose, and redraw S06 in the diverging pair you choose, with Register’s boxed arrows carrying the direction.",
+  "Build the chart kit from Explainer’s drawing code with Instrument’s parts: one call to add a chart, the Chart and Table switch, dated downloads, and one command that turns a spreadsheet into a finished, checked chart.",
+  "Move the chart sizes and inks into the project’s one token file, print the system sheet from it, and complete the evidence grade table with every grade the atlas uses.",
+  "Write the selection guide by reader question, including when a table or a single sentence answers best.",
+  "Build the full set of twenty or more charts, chosen so readers on each side meet a finding they would rather skip, and read every title from the left and the right before it ships.",
+  "Write the palette specification for sequential, diverging, category, evidence grade and dark charts, measured on White, Newsprint and Charcoal with grayscale proofs.",
+  "Take Register’s look-up tables and social card layout, and Instrument’s labeled method breaks.",
+  "Build the three complex examples, a chart, a systems diagram and a policy comparison, for desktop, phone, grayscale, keyboard, screen reader and export.",
+  "Make the black evidence chip the charts’ signature on every chart, card and atlas panel, and test again with the wordmark covered.",
+  "Set the repair-log notes as one compact two-column block so S03 and S08 stop running two screens.",
+  "Test with five to eight first-time readers, screen readers, other browsers, real phones and print."
+ ],
+ "ground": {
+  "rec": "Newsprint",
+  "text": "With the wordmark covered, every Newsprint view in this round still reads as Oath & Action, which answers the recognition gap found on White in the atlas review and matches your saved concepts. Small text keeps 5.49:1 contrast in Deep Stone, a red mark takes a thin Charcoal outline, and printed reports use the paper itself as the ground."
+ },
+ "diverging": {
+  "rec": "B",
+  "text": "Pair B runs from Prussian through the page color to Verdigris, so a fall and a rise carry equal weight, and it holds its colors apart better than A under every color-vision test the palette lab ran. Pair A ends its down side in Stone, the gray every other chart uses for background, so a decline would read as background; with either pair a boxed arrow carries the direction on a black-and-white copy, and Prussian never shares a view with Pillar Red."
+ },
+ "decisions": [
+  {
+   "q": "Which chart system?",
+   "text": "Three systems drew the same ten charts from the same data. Explainer scores 4 or 5 on every line, and four of six simulated readers ranked it first.",
+   "rec": "Explainer, finished with Register’s tables and social card and Instrument’s switch, downloads and kit."
   },
-  "decisions": [
-    {
-      "q": "Which chart system?",
-      "text": "Three systems drew the same ten charts from the same data. Explainer scores 4 or 5 on every line, and four of six simulated readers ranked it first.",
-      "rec": "Explainer, finished with Register’s tables and social card and Instrument’s switch, downloads and kit."
-    },
-    {
-      "q": "Which page color for charts and the atlas?",
-      "text": "One ground serves both (DR-45). On Newsprint every page in this round still reads as Oath & Action with the wordmark covered, and small text keeps 5.49:1 contrast.",
-      "rec": "Newsprint, with printed reports using the paper as the ground."
-    },
-    {
-      "q": "Which diverging pair?",
-      "text": "S06 tested both. A runs from Stone through a neutral to Verdigris; B runs from Prussian through the page color to Verdigris.",
-      "rec": "B, with a boxed arrow carrying the direction in every cell."
-    },
-    {
-      "q": "Is the editor’s disclosure worded right?",
-      "text": "The four election-rule charts (S03, S06, S07 and S08) print it word for word (D2-106): “Oath & Action’s editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign.” V7’s quality report asks you to confirm it.",
-      "rec": "Confirm it, or correct any fact about your roles; the charts will print your words exactly."
-    },
-    {
-      "q": "Should S01 split each vote by party?",
-      "text": "S01 shows the House and Senate totals only (D2-104). The House record gives each party’s vote, but the Senate’s record of Vote 253 could not be read from a primary source, and one chamber’s split alone would tilt the chart.",
-      "rec": "Keep the totals only, and add both chambers’ party splits together once the Senate record can be read."
-    },
-    {
-      "q": "What web address goes on social cards?",
-      "text": "The cards name Oath & Action and the atlas and carry no address, because the website is on hold.",
-      "rec": "Add one short address at the foot of every card once the site is settled."
-    },
-    {
-      "q": "What comes after the pick?",
-      "text": "DR-43 and DR-44 set the order of work.",
-      "rec": "Build the full chapter 14 set and the chart kit next, then the open direction review items, then the rest of Phase 2 through Gate 2."
-    },
-    {
-      "q": "Should the chart set be balanced on purpose?",
-      "text": "The brand reviewer found that five of the ten charts point the same way, through the 2021 tax credit, the repair log, the scenario baseline and the state bans on ranked-choice voting, and none points the other way.",
-      "rec": "Yes. Choose the twenty or more charts so readers on each side meet a finding they would rather skip, and read every title from the left and the right before it ships."
-    },
-    {
-      "q": "Should the atlas describe every redrawn map the same way?",
-      "text": "The repair log gives a seat aim for the Texas and Florida maps and describes California’s and Virginia’s only as responses. The S08 tables print that text.",
-      "rec": "Add it to the V7.1 issue list, so every map entry gives its stated aim and its seat effect."
-    }
-  ],
-  "risks": [
-    "The repair-log charts count the atlas’s own codes on subjects your campaigns concern. The disclosure and coding rule keep them honest and make them long, and readers on the right will challenge the household-security rule first.",
-    "Explainer has no interactive layer yet, so the kit must carry Instrument’s switch and downloads into Explainer’s code, a step not yet tested.",
-    "Newsprint gives less contrast headroom than White, and two simulated readers found small gray text hard before the fix pass.",
-    "No real reader has seen the fixed charts. The reader panel was simulated and saw the first versions only."
-  ]
+  {
+   "q": "Which page color for charts and the atlas?",
+   "text": "One ground serves both (DR-45). On Newsprint every page in this round still reads as Oath & Action with the wordmark covered, and small text keeps 5.49:1 contrast.",
+   "rec": "Newsprint, with printed reports using the paper as the ground."
+  },
+  {
+   "q": "Which diverging pair?",
+   "text": "S06 tested both. A runs from Stone through a neutral to Verdigris; B runs from Prussian through the page color to Verdigris.",
+   "rec": "B, with a boxed arrow carrying the direction in every cell."
+  },
+  {
+   "q": "Is the editor’s disclosure worded right?",
+   "text": "The four election-rule charts (S03, S06, S07 and S08) print it word for word (D2-106): “Oath & Action’s editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign.” V7’s quality report asks you to confirm it.",
+   "rec": "Confirm it, or correct any fact about your roles; the charts will print your words exactly."
+  },
+  {
+   "q": "Should S01 split each vote by party?",
+   "text": "S01 shows the House and Senate totals only (D2-104). The House record gives each party’s vote, but the Senate’s record of Vote 253 could not be read from a primary source, and one chamber’s split alone would tilt the chart.",
+   "rec": "Keep the totals only, and add both chambers’ party splits together once the Senate record can be read."
+  },
+  {
+   "q": "What web address goes on social cards?",
+   "text": "The cards name Oath & Action and the atlas and carry no address, because the website is on hold.",
+   "rec": "Add one short address at the foot of every card once the site is settled."
+  },
+  {
+   "q": "What comes after the pick?",
+   "text": "DR-43 and DR-44 set the order of work.",
+   "rec": "Build the full chapter 14 set and the chart kit next, then the open direction review items, then the rest of Phase 2 through Gate 2."
+  },
+  {
+   "q": "Should the chart set be balanced on purpose?",
+   "text": "The brand reviewer found that five of the ten charts point the same way, through the 2021 tax credit, the repair log, the scenario baseline and the state bans on ranked-choice voting, and none points the other way.",
+   "rec": "Yes. Choose the twenty or more charts so readers on each side meet a finding they would rather skip, and read every title from the left and the right before it ships."
+  },
+  {
+   "q": "Should the atlas describe every redrawn map the same way?",
+   "text": "The repair log gives a seat aim for the Texas and Florida maps and describes California’s and Virginia’s only as responses. The S08 tables print that text.",
+   "rec": "Add it to the V7.1 issue list, so every map entry gives its stated aim and its seat effect."
+  }
+ ],
+ "risks": [
+  "The repair-log charts count the atlas’s own codes on subjects your campaigns concern. The disclosure and coding rule keep them honest and make them long, and readers on the right will challenge the household-security rule first.",
+  "Explainer has no interactive layer yet, so the kit must carry Instrument’s switch and downloads into Explainer’s code, a step not yet tested.",
+  "Newsprint gives less contrast headroom than White, and two simulated readers found small gray text hard before the fix pass.",
+  "No real reader has seen the fixed charts. The reader panel was simulated and saw the first versions only."
+ ],
+ "sample_reply": "Pick: Explainer. Page color: Newsprint. Diverging pair: B. Other decisions: as recommended.",
+ "process": [
+  "Your answers set the round (DR-44 to DR-51): three systems, the same ten charts, both page colors, V7 and primary public data, locked type, party marks in neutral inks, still images first with a chart kit to follow.",
+  "The main session built the shared base: one chart dataset from Atlas V7 and the research lead's Census and Ballotpedia series, a palette lab measured on White, Newsprint and Charcoal, a data verifier with a planted-error self-test, and a rendered check that also measures every bar and dot against its scale.",
+  "Three specialist makers built one system each: a newspaper graphics editor (Explainer), a reference information designer (Register) and a civic product data designer (Instrument).",
+  "Six red team reviewers read all three under one lens each: statistics, civic education, interface and accessibility, brand and nonpartisanship, type and drawing craft at 2x, and production. One model played six first-time readers who saw only screenshots.",
+  "One fix pass against a single brief of eighteen shared fixes, then the creative director scored the fixed systems and named the last faults, which the makers fixed before this board.",
+  "The main session reran every check itself after each pass, corrected two shared source lines, and built this board."
+ ],
+ "v7_findings": [
+  "Child poverty: V7 prints the Census rates as first published (9.7, 5.2 and 13.4 percent for 2020, 2021 and 2024); the Bureau's current table reads 9.6, 5.1 and 13.5. The charts use the current table. V7.1 item 31.",
+  "Source W001's note calls 13.4 percent the official rate; it is the official measure for 2025, a different measure and year. V7.1 item 32.",
+  "A newer quarter of homeownership by race is out (third quarter of 2026). V7.1 item 33.",
+  "Repair log entry RL47 rolls all 19 state bans on ranked-choice voting into one entry dated March 2026, while Missouri and Indiana also have entries, so counts from the log mix single changes with a roll-up. V7.1 item 34. Every chart from the log says so.",
+  "The log describes redrawn maps unevenly: a seat aim for Texas and Florida, only a response for California and Virginia. V7.1 item 35.",
+  "Missouri's certified result for Amendment 7 (68.4 to 31.6 percent) matches V7; Ballotpedia prints 68.5 to 31.5."
+ ],
+ "tested": [
+  "Each page passes the data verifier against the shared data: every mark's value or category, every required row, the evidence kind, the five chart parts, the source words, the disclosure on S03, S06, S07 and S08, true dates on the timeline, and no em dash or hyphen used as a minus. Its self-test catches 7 of 7 planted errors on each page.",
+  "Each page passes the rendered check on all five views at 1440, 390 and 360 px: no sideways scroll, no text under 13 px, text contrast, labels inside drawings and apart, Rule 05.3, no party mark in Pillar Red or Prussian, every bar and dot on its scale, 0 axe-core violations, a visible focus ring on each stop, and the click from the first view into another and back.",
+  "The scale test caught a planted wrong bar in a copy of Register's evidence chart and named the row.",
+  "The red team measured scales in a browser, read the accessibility tree, injected wider text spacing, rendered every view at 2x, and built a new chart from each system's own code.",
+  "This board passes the rendered check at 1440, 390 and 360 px."
+ ],
+ "not_tested": [
+  "Real readers. The six readers were simulated by one model and saw the first versions (DR-51, Q-13).",
+  "A real screen reader, Safari, Firefox, real phones, 200 percent text zoom and print.",
+  "PNG export and the SVG downloads with embedded fonts.",
+  "The creative director's scores came after the fix pass; the red team's came before it and were not given again."
+ ],
+ "changelog_created": [
+  "<code>work/boards/phase-2/data-viz/</code>: the shared dataset, palette lab, public series and map geometry; three systems with build scripts, pages, check results and captures; Board 3's content and captures",
+  "<code>work/build/scripts/phase-2/</code>: <code>dataviz_shared_data.py</code>, <code>dataviz_palette_lab.py</code>, <code>dataviz_verify.py</code>, <code>dataviz_check.js</code>, <code>dataviz_board3_capture.js</code>, <code>dataviz_board3_build.py</code>",
+  "<code>work/handoffs/phase-2/</code>: the makers' brief, three makers' notes, six red team reports, the reader panel, the fix pass brief, the creative director's brief and review",
+  "<code>work/research/20261106_Data-Viz-Public-Series.md</code>",
+  "<code>work/boards/20261106_Data-Viz-Systems-Board.html</code> (this board) and <code>work/ledger/20261106_Data-Viz-Systems-Report.md</code>"
+ ],
+ "changelog_modified": [
+  "<code>work/ledger/20261020_Decision-Log.md</code> (DR-44 to DR-51, D2-89 to D2-113)",
+  "<code>work/ledger/20261020_Source-Manifest.md</code>, <code>work/research/20261020_Rights-Ledger.md</code>",
+  "<code>work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md</code> (items 31 to 35)",
+  "<code>.gitignore</code> (font copies, D2-109)"
+ ]
 }
