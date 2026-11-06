@@ -1,0 +1,51 @@
+{
+ "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+ "pass": true,
+ "errors": [],
+ "error_count": 0,
+ "stats": {
+  "figures": 14,
+  "marks": 5370,
+  "values": 5370,
+  "categories": 0,
+  "units": 0
+ },
+ "selftest": [
+  {
+   "plant": "changed value",
+   "caught": true,
+   "first_error": "S11: DC.shift_pts drawn as 4.23, data says 2.94"
+  },
+  {
+   "plant": "source line removed",
+   "caught": true,
+   "first_error": "S11: missing or empty data-role=\"source\""
+  },
+  {
+   "plant": "em dash",
+   "caught": true,
+   "first_error": "em dash in page text near \"ts fused party lines. planted — dash Stu\""
+  },
+  {
+   "plant": "evidence label",
+   "caught": true,
+   "first_error": "S11: evidence label \"Mystery\" does not name \"Finding\""
+  },
+  {
+   "plant": "key changed",
+   "caught": true,
+   "first_error": "S11: mark key \"DC-planted\" is not a row of presidential-shift-by-state"
+  },
+  {
+   "plant": "measure line removed",
+   "caught": true,
+   "first_error": "S11: missing or empty data-role=\"measure\""
+  },
+  {
+   "plant": "specimen removed",
+   "caught": true,
+   "first_error": "S16: specimen not on the page"
+  }
+ ],
+ "selftest_pass": true
+}

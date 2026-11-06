@@ -13,7 +13,7 @@ Checks: every specimen S01 to S10 is present with its dataset and evidence kind;
 the evidence label names the kind; the source line carries the dataset's source words; every mark's key exists and
 its value or category matches the dataset; required keys are all drawn; unit charts draw each row once and each
 category's count exactly, once per artboard when the chart is drawn at several widths; no em dash anywhere in the page text; no hyphen used as a minus sign before a figure.
---selftest plants seven errors in copies of the page and confirms each one is caught.
+--selftest plants seven errors in copies of the page and confirms each one is caught. A page with no unit chart or\nrepair-log categories takes a changed key and a removed measure line in their place.
 Writes <page stem>-Verify-Results.json beside the page. Exit code 1 on any failure.
 """
 import json
@@ -264,6 +264,16 @@ def selftest(html):
     m = re.search(r'data-category="toward voters"', html)
     if m:
         plants.append(('category changed', html[:m.start()] + 'data-category="away from voters"' + html[m.end():]))
+    # Pages without repair-log units or categories (the stretch test, D2-116) get two plants every page can take,
+    # so each page still faces seven (D2-122).
+    if not any(n == 'unit removed' for n, _ in plants):
+        m = re.search(r'data-key="([^"]+)"', html)
+        if m:
+            plants.append(('key changed', html[:m.start()] + f'data-key="{m.group(1)}-planted"' + html[m.end():]))
+    if not any(n == 'category changed' for n, _ in plants):
+        m = re.search(r'data-role="measure"', html)
+        if m:
+            plants.append(('measure line removed', html[:m.start()] + 'data-role="measurex"' + html[m.end():]))
     mm = re.search(r'<meta\s+name="chart-specs"\s+content="([^"]+)"', html)
     last = mm.group(1).split()[-1] if mm else 'S10'
     plants.append(('specimen removed', html.replace(f'data-spec="{last}"', f'data-spec-x="{last}"')))
