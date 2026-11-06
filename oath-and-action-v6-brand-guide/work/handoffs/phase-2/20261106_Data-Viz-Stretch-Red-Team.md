@@ -118,3 +118,85 @@ Created:
 - `work/handoffs/phase-2/20261106_Data-Viz-Stretch-Red-Team.md` (this report)
 
 Modified: none. The verifier rewrote `work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch-Verify-Results.json` with identical content. Renders, probe scripts and my copy of the rendered check's output stayed in the session scratchpad (`review-stats/`). Nothing was committed or pushed.
+
+## Second pass
+
+November 6, 2026, after the fix pass (`work/handoffs/phase-2/20261106_Data-Viz-Stretch-Fix-Pass-Brief.md`, commit 1bc463c) and the main session's shared-data changes (D2-126, D2-127). I re-read the rebuilt page against every finding above, re-ran both checks on a copy of the page in my scratchpad, re-measured the drawings from the SVG markup, rendered the page again, and checked the new United States figures and the new S14 and S15 titles by script.
+
+### Verdict and new scores
+
+**The page is nearly ready for Board 4.** Every first-pass finding is cleared or partly cleared, and the two partial ones mislead no reader. The pass did introduce one key a reader would misread (ST-M6), and one title of my own wording sits on a rounding edge (ST-S8). Both take one line each.
+
+**Statistics: 4 of 5.** Every number still traces to the CSVs, every drawn scale is exact, S12's arrows are now honest, and the titles claim only what the data holds. S16's ring key defines a rule twelve states meet and applies it to three.
+
+**Nonpartisanship: 5 of 5.** Every party rule holds on every view at five widths, the phone cards carry the direction in words, the ranked lists and the plus signs are gone, nothing splits a period at January 2025, and the page now gives each side a title finding it would rather skip.
+
+### Each first-pass finding
+
+| ID | Status | What I measured |
+|---|---|---|
+| ST-M1 | Cleared | The title now reads "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey's margin of error." By script: Texas sits 7.4 points below the nation against a margin of 2.3, Florida 5.0 against 1.9, New York 6.1 against 2.6, and California 0.6 against 1.6. The same title appears on Newsprint, Charcoal and Phones. |
+| ST-M2 | Cleared | Every S12 arrow is flat (rise 0 px). Length per point runs 6.053 to 6.061 px on the 1,024 px map and 3.254 to 3.265 px at 600 px. The key's 1, 5 and 10 point arrows measure 6.06, 30.28 and 60.56 px, exactly 1 to 5 to 10. The first note reads "Each arrow's length shows the shift, at one scale across the map." |
+| ST-M3 | Cleared | Each shift cell reads, for example, "2.9 toward the Republican nominee" wherever the table becomes cards (seen at 390 and 720 px). On desktop the words are hidden (`.swd{display:none}`) and the column header carries them. The table, headers and cells now carry `role="table"`, `columnheader` and `cell`. I did not run a screen reader. |
+| ST-M4 | Cleared | "Highest rates" and "Lowest rates" are gone from every artboard and view. In their place: "Range: Arkansas 52.8% (±2.7) to DC 79.5% (±3.3). Gaps of a few points between states may not be real." |
+| ST-M5 | Cleared | The eyebrow reads "PRIVATE INDUSTRIES, LARGEST PERCENT GAIN FIRST". All 14 panels print jobs and percent ("+61,000, +11.1%"), and the measure line says "labels give the change in jobs and in percent". |
+| ST-S1 | Cleared | A "United States" arrow sits above the states under a rule. Its ends (−4.46 and 1.47) lie on the states' scale with 0 px residual at 1,024 and 600 px, and its shaft is 5.93 points at 9.067 px per point. The note "more than the margin in 39 of the 51 states" checks (12 states moved more than 5.93). Its "because the states with the most voters moved most" holds as arithmetic: the vote-weighted mean of state shifts is 5.57 points, 0.36 more comes from where votes were cast, and without California, Texas, Florida and New York the national shift would have been 4.13 points. S15 is retitled (see ST-S8), and the maker's notes no longer say the dataset lacks the national margin. |
+| ST-S2 | Cleared | S14's title reads "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted." By script: 57 months from January 2022 to September 2026, seven losses (none in 2022), and an average of 50.7 thousand in September 2026. |
+| ST-S3 | Partly cleared | Both jobs charts now run January 2022 to September 2026, both measure lines say "the span both jobs charts share", and both source lines name that period. The page still gives no reason for January 2022 itself. D2-126 records one, and printing it would split a period at 2025. A reader meets no false claim. A neutral line such as "the latest 57 months of data" would close it if the main session wants one. |
+| ST-S4 | Cleared | "Eligible" appears nowhere on the page. The title, strip and reader question say "citizens 18 and over". |
+| ST-S5 | Cleared | No shift label on S11, S12 or S15 starts with a sign (0 of every `shift_pts` label). Margins keep their party words and signs ("Democratic +83.8"). |
+| ST-S6 | Cleared | S12's notes carry S11's New York fused-lines note, and its measure line names "the Republican nominee's share of all presidential votes minus the Democratic nominee's". |
+| ST-S7 | Cleared | On the 358 and 328 px maps the arrows give way to four Stone steps. The bins hold 17, 22, 8 and 4 states, and their edges fall at 2.94 and 3.02, 5.84 and 6.09, and 8.26 and 9.03 points, so no state sits on a rounding edge. At 390 px every code reads clear of its frame. |
+| ST-P1 | Cleared | "Right of Even, the Republican nominee led; left of it, the Democratic nominee led." |
+| ST-P2 | Cleared | The outer right tick reads "50 points" on both tick rows. |
+| ST-P3 | Partly cleared | S11's title begins "The margin in every state and DC". The S12 phone key still says "Every state moved toward the Republican nominee." This is polish only. |
+| ST-P4 | Cleared | The April 2024 ring and "150,000" are gone from every view. |
+| ST-P5 | Cleared | The key is now a stepped bar with 60, 65, 70 and 75 and a marker at "Nation 65.3%". The notes say "90 percent margins of error". Idaho (65.2) still shares the 65 step, and the marker now shows where the nation falls inside it. |
+| ST-P6 | Cleared | The federal row reads "Peak: 3,013,000 in October 2024" and "September 2026: 2,682,000". Both match the CSV, and no cause is given. |
+| ST-P7 | Cleared | S13's source line names "all employees by industry … January 2022 to September 2026" and S14's names "all nonfarm employees, monthly change … January 2022 to September 2026". |
+| ST-P8 | Cleared | The dataset's `meta.rounding` records the rounded-difference rule and Washington's 0.98 against 0.985. |
+| ST-P9 | Cleared | The maker's "Three statements corrected (ST-P9)" section corrects all three. |
+| ST-P10 | Cleared as far as I can check | The notes now say the Bureau "revises each month's first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months." D2-126 read this from bls.gov search snippets. It matches my general knowledge of the program, and I read no BLS page myself. |
+
+### New findings from this pass
+
+**ST-M6. S16, every view and artboard. The ring key states a rule that twelve states meet, and only three carry the ring.** The key reads "Ringed: below the national rate by more than the survey's margin of error". The image name repeats it: "Ringed, below the nation by more than the margin of error: Texas, Florida, New York." By the same test, using each state's own 90 percent margin, twelve states sit below the nation: Arkansas, Texas, Louisiana, Hawaii, Alabama, South Dakota, New York, West Virginia, Oklahoma, Florida, Indiana and Arizona. Arkansas, at 52.8 percent (±2.7), the lowest rate on the map, carries no ring. Why it matters: a reader takes a key as a rule and concludes that only three states fall clearly below the nation. Fix: tie the key to the title, for example "Ringed: Texas, Florida and New York, the three of the four largest states below the national rate by more than the survey's margin of error", and change the image name to match.
+
+**ST-S8. S15, every view. The new title's threshold sits on a rounding edge.** The title reads "…in four of the six states that changed leader, the lead was under 2.2 points." Georgia's lead is 2.19, so the title is true, but the note under it prints "Georgia Republican +2.2" and so does the table. A reader who checks sees a lead of 2.2 called "under 2.2". The threshold came from my first report, and I should have tested it against the printed figures. Fix: "under 2.5 points". Wisconsin (0.86), Michigan (1.41), Pennsylvania (1.70) and Georgia (2.19) stay under it, and Nevada (3.10) and Arizona (5.53) stay over it, with no rounding near the edge.
+
+**ST-P11. S15, under the table's card width. The intro describes what the cards hide.** Above the cards it still reads "left of the center line, the Democratic nominee; right of it, the Republican nominee. Bars grow from the center line". The cards show neither the line nor the bars. Fix: show a card version of the sentence under the card width, for example "Each card names the leader in each year and the shift toward the Republican nominee."
+
+### Every title again, once from the left and once from the right
+
+- **S11.** "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York." Left: a plain record of a loss, now with the national arrow above it. Right: a plain record of a gain with no claim of a mandate. No lean.
+- **S12.** "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more." Unchanged. Three of the four were led by the Democratic nominee in both years. The left may read erosion and the right a trend, and the title gives no cause. No lean.
+- **S13.** "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs." Unchanged. The federal row now dates its peak and its latest level, with no cause. No lean.
+- **S14.** New title above. Left: seven months of loss, and the note names them, all in 2025 and 2026. Right: the window opens on 2022's large gains, so the long cooling the chart draws starts well before 2025. The title names no period and no cause, and nothing on the page splits a period at an inauguration date. No lean. The window itself is the main session's choice (D2-126), made so that neither period stands alone.
+- **S15.** "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.2 points." Left: six more states. Right: four of the six changes were narrow. Each side meets a finding it would rather skip, as DR-55 asks. No lean. Its rounding edge is ST-S8.
+- **S16.** New title above. It names two states led by the Republican nominee and one led by the Democratic nominee, and its test is the survey's margin of error. No lean in the words. ST-M6's fix also stops the ring key from implying that the pattern is three states when the test finds twelve, ten of them led by the Republican nominee.
+
+**The page as a whole (DR-55).** It is balanced now. The election titles give the left three findings to skip and the right one (S15's narrow margins). The jobs pair gives the right S14's losses, set out by month with no period split. Rule 05.3 holds on every view: my run of the rendered check counted one red mark per view, the wordmark, and no working-red job at 1,440, 1,024, 768, 390 and 360 px. It also counted 1,196 marks under `data-party` at 1,440 px on Newsprint, none painted Pillar Red or Prussian. Pair B appears nowhere.
+
+### What I tested in this pass
+
+- Ran `python3 -I work/build/scripts/phase-2/dataviz_verify.py --selftest` on a copy of the page in my scratchpad: PASS, 14 figures, 5,462 marks, 0 errors, 7 of 7 planted errors caught, exit 0.
+- Ran `node work/build/scripts/phase-2/dataviz_check.js <copy> --mid`: PASS, 3 views at 5 widths (1,440, 1,024, 768, 390 and 360 px), 0 failures. Every run has minimum text 13 px, 0 axe violations, no bad scale mark, no cut mark, no overflow and no working red.
+- Re-ran my first-pass scripts on the rebuilt shared data. The FEC, CPS and FRED rows still match the CSVs with no mismatch, and the only differences are the nine documented 0.01 rounding cases.
+- Checked the United States row against my own sums of the FEC rows: −4.46, 1.47, 5.93, 49.80 and 48.32. I also computed the vote-weighted decomposition of the national shift, and the shift without the four largest states.
+- Checked by script the S14 title (57 months, seven losses, 50.7), the S15 title (31 and 25 states; leads in the six changed states of 0.86, 1.41, 1.70, 2.19, 3.10 and 5.53), the S16 title (each state's gap against its margin), the S11 note (39 of 51) and the S13 federal row.
+- Measured from the SVG markup: the S11 scale on all four artboards, including the United States arrow and the 20 px per point phone lollipop with its single start and descending order. Also the S12 arrow lengths, rise and key at 1,024 and 600 px, and the phone fill bins. And S16 circle areas on five artboards (spread 0.23 to 0.52 percent), the size keys and the rings.
+- Scanned the whole page for signed shift labels, "eligible", "150,000", "2025 and 2026" and "since January 2025".
+- Rendered with Playwright: Newsprint at 1,440, 960, 720 and 390 px (390 at 2x), Charcoal and Phones at 1,440 px. By eye: S11, S12, S14 and S16 at 1,440 px, S12 and S15 at 390 px, and S15 at 720 px.
+- Sorted S15 by keyboard on all four columns: the orders, `aria-sort` and status lines are as in the first pass.
+
+### What I could not test in this pass
+
+- Screen readers, including the new ARIA table roles in practice.
+- Real phones, Safari, Firefox and print.
+- The grayscale captures and the Charcoal view by eye beyond the S16 key text.
+- The BLS revision wording on a BLS page.
+- Readers. The readings above are mine.
+
+### Change log for the second pass
+
+Modified: `work/handoffs/phase-2/20261106_Data-Viz-Stretch-Red-Team.md`, with this section added at the end and nothing above it changed. Created: none in the repo. Both checks ran on a copy of the page in the session scratchpad (`review-stats/pass2/`), so neither wrote to the repo. The renders and probes are there too. Nothing was committed or pushed.

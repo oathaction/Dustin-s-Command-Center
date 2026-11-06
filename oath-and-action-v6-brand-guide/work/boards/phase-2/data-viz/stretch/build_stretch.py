@@ -1362,10 +1362,10 @@ table.results tr.evenrow td{padding:9px 0;border-top:1px solid var(--ink);border
 
 def spec_s15(view):
     F = shift_facts()
-    close = [r for r in F['flips'] if r['margin_2024'] < 2.2]
+    close = [r for r in F['flips'] if r['margin_2024'] < 2.5]   # ST-S8: Georgia prints 2.2, so the bound reads 2.5
     assert len(close) == 4 and len(F['flips']) == 6 and F['led24'][1] - F['led20'][1] == 6
     title = (f'The Republican nominee led in {F["led24"][1]} states in 2024, {nw(F["led24"][1] - F["led20"][1])} more than in 2020; '
-             f'in {nw(len(close))} of the {nw(len(F["flips"]))} states that changed leader, the lead was under 2.2 points.')
+             f'in {nw(len(close))} of the {nw(len(F["flips"]))} states that changed leader, the lead was under 2.5 points.')
     measure = ("Presidential margin by state in 2024 and 2020: the leading nominee's share of all presidential votes minus the "
                "other's, in percentage points, with the shift between the two elections; 50 states and DC")
     body = f'<div class="art tbl">{gen_s15(view)}</div>'
@@ -1525,7 +1525,7 @@ def turnout_bin(v):
 
 
 BIN_WORDS = ['Under 60%', '60 to 64.9', '65 to 69.9', '70 to 74.9', '75 or more']
-RING_NOTE = "Ringed: below the national rate by more than the survey's margin of error"
+RING_NOTE = "Ringed: of the four largest states, the three below the nation by more than the survey's margin of error"   # ST-M6
 
 
 def gen_s16(W, uid, t=None):
@@ -1721,7 +1721,7 @@ def spec_s16(view):
         by_bin[turnout_bin(r['voted_pct'])].append(r['code'])
     label = ('Bubble map of 50 states and DC. Circle area follows the number of citizens 18 and over; shade steps with the share who said they voted. '
              + '; '.join(f'{BIN_WORDS[b - 1]}: {", ".join(sorted(by_bin[b]))}' for b in sorted(by_bin))
-             + f'. Nation: {F["nat"]} percent. Ringed, below the nation by more than the margin of error: '
+             + f'. Nation: {F["nat"]} percent. Ringed, of the four largest states, the three below the nation by more than the margin of error: '
              + ', '.join(r['name'] for r in below)
              + '. The four largest: ' + ', '.join(f'{r["name"]} {r["citizen_vap_thousands"] / 1000:.1f} million, {r["voted_pct"]} percent' for r in F['big4'])
              + '. The table under the chart lists every state.')
