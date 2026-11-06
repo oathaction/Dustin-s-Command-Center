@@ -1,0 +1,663 @@
+{
+ "file": "work/boards/phase-2/data-viz/02-register/20261106_Data-Viz-02-Register.html",
+ "checked": "2026-11-06T05:14:43.262Z",
+ "views": [
+  "white",
+  "newsprint",
+  "dark",
+  "social",
+  "system"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "white",
+   "rootVisible": true,
+   "texts": 837,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 209,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 12678,
+   "axe": [],
+   "focusStops": 31,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 1440,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 781,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 209,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 12096,
+   "axe": [],
+   "focusStops": 21,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 1440,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 204,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 22,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 1,
+    "marks": 20,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 3097,
+   "axe": [],
+   "focusStops": 13,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 1440,
+   "view": "social",
+   "rootVisible": true,
+   "texts": 46,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 0,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 2347,
+   "axe": [],
+   "focusStops": 13,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 1440,
+   "view": "system",
+   "rootVisible": true,
+   "texts": 652,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 4,
+    "labels": 49,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 8872,
+   "axe": [],
+   "focusStops": 13,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "white",
+   "rootVisible": true,
+   "texts": 807,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 193,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 25180,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 751,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 193,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 23168,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 195,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 17,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 1,
+    "marks": 20,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 5734,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "social",
+   "rootVisible": true,
+   "texts": 45,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 0,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 3189,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 390,
+   "view": "system",
+   "rootVisible": true,
+   "texts": 651,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 4,
+    "labels": 49,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 22521,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "white",
+   "rootVisible": true,
+   "texts": 807,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 193,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 25606,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 751,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 193,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 7,
+    "marks": 182,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 23550,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 195,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 17,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [
+     "the 2021 low the title names"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 1,
+    "marks": 20,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 5896,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "social",
+   "rootVisible": true,
+   "texts": 45,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 2,
+    "labels": 0,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 2,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 12,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 3256,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "system",
+   "rootVisible": true,
+   "texts": 651,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 4,
+    "labels": 49,
+    "outside": [],
+    "overlaps": []
+   },
+   "red": {
+    "marks": 6,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 23213,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": {
+  "target": "newsprint",
+  "ok": true,
+  "afterClick": {
+   "hash": "#newsprint",
+   "visible": true
+  },
+  "afterBack": {
+   "hash": "#white",
+   "visible": true
+  }
+ },
+ "failures": [],
+ "pass": true
+}

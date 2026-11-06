@@ -1,0 +1,51 @@
+{
+ "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
+ "pass": true,
+ "errors": [],
+ "error_count": 0,
+ "stats": {
+  "figures": 23,
+  "marks": 2807,
+  "values": 2101,
+  "categories": 706,
+  "units": 128
+ },
+ "selftest": [
+  {
+   "plant": "changed value",
+   "caught": true,
+   "first_error": "S01: support-all.value drawn as 95.6, data says 86.0"
+  },
+  {
+   "plant": "source line removed",
+   "caught": true,
+   "first_error": "S01: missing or empty data-role=\"source\""
+  },
+  {
+   "plant": "em dash",
+   "caught": true,
+   "first_error": "em dash in page text near \"votes by three years. planted — dash Stu\""
+  },
+  {
+   "plant": "evidence label",
+   "caught": true,
+   "first_error": "S01: evidence label \"Mystery\" does not name \"Finding\""
+  },
+  {
+   "plant": "unit removed",
+   "caught": true,
+   "first_error": "S08: 1 required rows not drawn (RL01)"
+  },
+  {
+   "plant": "category changed",
+   "caught": true,
+   "first_error": "S08: RL01.direction drawn as \"away from voters\", data says \"toward voters\""
+  },
+  {
+   "plant": "specimen removed",
+   "caught": true,
+   "first_error": "S10: specimen not on the page"
+  }
+ ],
+ "selftest_pass": true
+}
