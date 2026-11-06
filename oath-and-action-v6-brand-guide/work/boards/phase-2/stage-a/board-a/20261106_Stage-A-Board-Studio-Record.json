@@ -1,32 +1,95 @@
 {
- "chapters_page": {"url": "", "placeholder": "https://claude.ai/artifact/pending"},
+ "chapters_page": {
+  "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF"
+ },
  "asked": [
   "Collect the stage A red team reports, run one fix pass with the makers, get the creative director's scores, and build and publish stage board A, chapters 01 to 08 and the Gate 2 proofs, with its decisions.",
   "Read the red team's fairness items under DR-93: one standard of evidence for everyone, findings reported as the record shows them, and no manufactured balance.",
   "Hold everything to the bar of a finished product made by the best branding and design firm in the world, using specialized agents, red team reviews and the creative director's scoring."
  ],
  "process": [
-  {"stage": "Makers", "text": "Four makers built chapters 01 to 08 and the Gate 2 proofs inside a first draft of the guide shell: the editor wrote 01 and 02, the identity designer 03, 04, 08 and the proofs, the systems designer 05 to 07, and the engineer built the shell, the page build and the guide check."},
-  {"stage": "Red team", "text": "Five reviewers read the built page side by side and did not read each other's reports: brand, evidence and nonpartisanship; accessibility and interface; craft and typography; civic education and plain language; and a reader panel of five invented users, labeled simulated and untested. Together they raised 29 must-fix and 72 should-fix items, with many found by more than one lens."},
-  {"stage": "Fix pass", "text": [
-   "The studio put nine questions to Dustin. He accepted every recommendation and retired his disclosure, since the election is over and his affiliations will sit in his bio (DR-95 to DR-103). The fix pass brief gave every report item, by its own ID, to one owner.",
-   "Round one ran the four makers and the research lead in parallel. A container restart stopped all five partway through; their edits were still on disk, the studio committed them, and each agent resumed from its own record. The research lead opened H.R. 7008's text and the House roll call, confirmed the Senate cloture vote in the Congressional Record, checked the initiative limits, the two 2025 congressional maps and the utility commission count, and found six public-domain federal photographs.",
-   "Round two was the editor's copy edit of all eight chapters, with the research applied and the photographs placed in Rules 01.6 and 01.8. The studio then built the page in strict mode and ran every check itself."
-  ]},
-  {"stage": "Creative director", "text": "The creative director scored the fixed page on the Master Brief's rubric, checked each must-fix item from the five reports, and wrote this board's verdict, chapter notes, decisions and risks."}
+  {
+   "stage": "Makers",
+   "text": "Four makers built chapters 01 to 08 and the Gate 2 proofs inside a first draft of the guide shell: the editor wrote 01 and 02, the identity designer 03, 04, 08 and the proofs, the systems designer 05 to 07, and the engineer built the shell, the page build and the guide check."
+  },
+  {
+   "stage": "Red team",
+   "text": "Five reviewers read the built page side by side and did not read each other's reports: brand, evidence and nonpartisanship; accessibility and interface; craft and typography; civic education and plain language; and a reader panel of five invented users, labeled simulated and untested. Together they raised 29 must-fix and 72 should-fix items, with many found by more than one lens."
+  },
+  {
+   "stage": "Fix pass",
+   "text": [
+    "The studio put nine questions to Dustin. He accepted every recommendation and retired his disclosure, since the election is over and his affiliations will sit in his bio (DR-95 to DR-103). The fix pass brief gave every report item, by its own ID, to one owner.",
+    "Round one ran the four makers and the research lead in parallel. A container restart stopped all five partway through; their edits were still on disk, the studio committed them, and each agent resumed from its own record. The research lead opened H.R. 7008's text and the House roll call, confirmed the Senate cloture vote in the Congressional Record, checked the initiative limits, the two 2025 congressional maps and the utility commission count, and found six public-domain federal photographs.",
+    "Round two was the editor's copy edit of all eight chapters, with the research applied and the photographs placed in Rules 01.6 and 01.8. The studio then built the page in strict mode and ran every check itself."
+   ]
+  },
+  {
+   "stage": "Creative director",
+   "text": "The creative director scored the fixed page on the Master Brief's rubric, checked each must-fix item from the five reports, and wrote this board's verdict, chapter notes, decisions and risks."
+  }
  ],
  "red_team": [
-  {"lens": "Brand, evidence and nonpartisanship", "score": 2, "must_fix": 6, "should_fix": 12},
-  {"lens": "Accessibility and interface", "score": 4, "must_fix": 2, "should_fix": 15},
-  {"lens": "Craft and typography", "score": 3, "must_fix": 7, "should_fix": 16},
-  {"lens": "Civic education and plain language", "score": 3, "must_fix": 9, "should_fix": 19},
-  {"lens": "Reader panel, simulated and untested", "score": 3, "must_fix": 5, "should_fix": 10}
+  {
+   "lens": "Brand, evidence and nonpartisanship",
+   "score": 2,
+   "must_fix": 6,
+   "should_fix": 12
+  },
+  {
+   "lens": "Accessibility and interface",
+   "score": 4,
+   "must_fix": 2,
+   "should_fix": 15
+  },
+  {
+   "lens": "Craft and typography",
+   "score": 3,
+   "must_fix": 7,
+   "should_fix": 16
+  },
+  {
+   "lens": "Civic education and plain language",
+   "score": 3,
+   "must_fix": 9,
+   "should_fix": 19
+  },
+  {
+   "lens": "Reader panel, simulated and untested",
+   "score": 3,
+   "must_fix": 5,
+   "should_fix": 10
+  }
  ],
  "checks": [
-  {"name": "Strict page build", "command": "python3 -I work/build/scripts/phase-2/guide_build.py --strict", "result": "8 chapters, 99 rules, 229 specimens, 0 placeholders, 0 warnings.", "pass": true},
-  {"name": "Guide check at four widths", "command": "node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html", "result": "1440, 1024, 390 and 360 px: 694 same-page links, 0 failures, 24 listed exemptions, each a labeled failure case, a print piece set in points or a mark at true size.", "pass": true},
-  {"name": "Token tests", "command": "python3 -I work/build/tests/tokens/run_token_tests.py", "result": "Build parity, contrast and rule checks on 485 tokens, 35 of 35 planted errors caught, the Style Dictionary 5.8.0 cross-check and the rendered check in Chromium all pass with the new letter spacing.", "pass": true},
-  {"name": "Photographs and their rights", "result": "The studio looked at all six photographs and read each record's license line: each is public domain in the United States as a work of the federal government, and each has a rights ledger row.", "pass": true}
+  {
+   "name": "Strict page build",
+   "command": "python3 -I work/build/scripts/phase-2/guide_build.py --strict",
+   "result": "8 chapters, 99 rules, 229 specimens, 0 placeholders, 0 warnings.",
+   "pass": true
+  },
+  {
+   "name": "Guide check at four widths",
+   "command": "node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
+   "result": "1440, 1024, 390 and 360 px: 694 same-page links, 0 failures, 24 listed exemptions, each a labeled failure case, a print piece set in points or a mark at true size.",
+   "pass": true
+  },
+  {
+   "name": "Token tests",
+   "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
+   "result": "Build parity, contrast and rule checks on 485 tokens, 35 of 35 planted errors caught, the Style Dictionary 5.8.0 cross-check and the rendered check in Chromium all pass with the new letter spacing.",
+   "pass": true
+  },
+  {
+   "name": "Photographs and their rights",
+   "result": "The studio looked at all six photographs and read each record's license line: each is public domain in the United States as a work of the federal government, and each has a rights ledger row.",
+   "pass": true
+  },
+  {
+   "name": "Chapters page read before publishing",
+   "result": "The studio scanned all 76,458 words of rendered text and alt text by script (no email address, phone number, em dash, placeholder, studio word or decision code), looked at all 229 plates on contact sheets and at both letterhead PDF pages, and confirmed the only outside resource is Google Fonts.",
+   "pass": true
+  }
  ],
  "not_tested": [
   "Any real screen reader, and browsers other than Chromium.",
@@ -34,7 +97,8 @@
   "The photographs' original files. Wikimedia's original-file host refused the download, so the guide holds its standard-width copies; fetch the originals before print.",
   "Pages the research lead could not open: senate.gov, epi.org, the National Conference of State Legislatures, Ballotpedia's current initiative page, the Illinois General Assembly and Mississippi's legislature. The research report lists what each claim rests on.",
   "The letterhead PDF printed on paper.",
-  "A second red team on the fixed page. The creative director's review is the only review after the fix pass."
+  "A second red team on the fixed page. The creative director's review is the only review after the fix pass.",
+  "Downloads on the published pages. The artifact viewer blocks plain download links, so the tokens file and the letterhead PDF download only from the local file; the Gate 2 preview build should offer them through the viewer's download feature."
  ],
  "changelog": {
   "created": [
