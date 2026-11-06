@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T22:09:52.291Z",
+ "checked": "2026-11-06T22:12:02.856Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -202,7 +202,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 325694,
+   "height": 325632,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -412,7 +412,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 348940,
+   "height": 348878,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -559,24 +559,7 @@
    "typeScale": {
     "stages": 220,
     "exempt": 9,
-    "off": [
-     {
-      "specimen": "s-01-5-correct",
-      "width": null,
-      "sizes": [
-       11.81
-      ],
-      "sample": "AK"
-     },
-     {
-      "specimen": "s-01-5-failure",
-      "width": null,
-      "sizes": [
-       11.81
-      ],
-      "sample": "AK"
-     }
-    ],
+    "off": [],
     "fluid": [
      56,
      44,
@@ -598,109 +581,8 @@
    },
    "text": {
     "texts": 8339,
-    "minSize": 11.81,
-    "under13": [
-     {
-      "text": "AK",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ME",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WI",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "VT",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NH",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WA",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ID",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MT",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ND",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MN",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IL",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MI",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NY",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MA",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "OR",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NV",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WY",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "SD",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IA",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IN",
-      "size": 11.81,
-      "where": "specimen s-01-5-correct"
-     }
-    ],
+    "minSize": 13,
+    "under13": [],
     "lowContrast": [],
     "skipped": 4
    },
@@ -739,7 +621,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 424851,
+   "height": 424789,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -886,24 +768,7 @@
    "typeScale": {
     "stages": 220,
     "exempt": 9,
-    "off": [
-     {
-      "specimen": "s-01-5-correct",
-      "width": null,
-      "sizes": [
-       10.72
-      ],
-      "sample": "AK"
-     },
-     {
-      "specimen": "s-01-5-failure",
-      "width": null,
-      "sizes": [
-       10.72
-      ],
-      "sample": "AK"
-     }
-    ],
+    "off": [],
     "fluid": [
      56,
      44,
@@ -925,109 +790,8 @@
    },
    "text": {
     "texts": 8349,
-    "minSize": 10.72,
-    "under13": [
-     {
-      "text": "AK",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ME",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WI",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "VT",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NH",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WA",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ID",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MT",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "ND",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MN",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IL",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MI",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NY",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "MA",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "OR",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "NV",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "WY",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "SD",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IA",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     },
-     {
-      "text": "IN",
-      "size": 10.72,
-      "where": "specimen s-01-5-correct"
-     }
-    ],
+    "minSize": 13,
+    "under13": [],
     "lowContrast": [],
     "skipped": 4
    },
@@ -1066,7 +830,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 439559,
+   "height": 439581,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -1077,23 +841,6 @@
    "focusProblems": null
   }
  ],
- "failures": [
-  {
-   "key": "typeScale",
-   "msg": "390: 2 specimen(s) with type off the D2-254 sizes: s-01-5-correct (11.81 px); s-01-5-failure (11.81 px)"
-  },
-  {
-   "key": "under13",
-   "msg": "390: 20 text item(s) under 13 px, first: {\"text\":\"AK\",\"size\":11.81,\"where\":\"specimen s-01-5-correct\"}"
-  },
-  {
-   "key": "typeScale",
-   "msg": "360: 2 specimen(s) with type off the D2-254 sizes: s-01-5-correct (10.72 px); s-01-5-failure (10.72 px)"
-  },
-  {
-   "key": "under13",
-   "msg": "360: 20 text item(s) under 13 px, first: {\"text\":\"AK\",\"size\":10.72,\"where\":\"specimen s-01-5-correct\"}"
-  }
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }
