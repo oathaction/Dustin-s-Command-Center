@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/02-register/20261106_Data-Viz-02-Register.html",
- "checked": "2026-11-06T05:21:55.172Z",
+ "checked": "2026-11-06T05:31:32.745Z",
  "views": [
   "white",
   "newsprint",
@@ -35,8 +35,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -78,8 +78,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -121,8 +121,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 1,
-    "marks": 20,
+    "groups": 2,
+    "marks": 39,
     "bad": []
    },
    "party": {
@@ -162,8 +162,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 3,
     "bad": []
    },
    "party": {
@@ -203,8 +203,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 19,
     "bad": []
    },
    "party": {
@@ -215,7 +215,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 8904,
+   "height": 8931,
    "axe": [],
    "focusStops": 13,
    "focusWithoutRing": []
@@ -246,8 +246,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -258,7 +258,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 25034,
+   "height": 25014,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -289,8 +289,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -301,7 +301,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23022,
+   "height": 23002,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -332,8 +332,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 1,
-    "marks": 20,
+    "groups": 2,
+    "marks": 39,
     "bad": []
    },
    "party": {
@@ -373,8 +373,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 3,
     "bad": []
    },
    "party": {
@@ -385,7 +385,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2701,
+   "height": 2678,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -414,8 +414,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 19,
     "bad": []
    },
    "party": {
@@ -426,7 +426,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 22465,
+   "height": 22492,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -457,8 +457,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -469,7 +469,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 25482,
+   "height": 25462,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -500,8 +500,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 7,
-    "marks": 182,
+    "groups": 10,
+    "marks": 255,
     "bad": []
    },
    "party": {
@@ -512,7 +512,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23426,
+   "height": 23406,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -543,8 +543,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 1,
-    "marks": 20,
+    "groups": 2,
+    "marks": 39,
     "bad": []
    },
    "party": {
@@ -584,8 +584,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 3,
     "bad": []
    },
    "party": {
@@ -625,8 +625,8 @@
     "onPrussian": []
    },
    "scale": {
-    "groups": 0,
-    "marks": 0,
+    "groups": 1,
+    "marks": 19,
     "bad": []
    },
    "party": {
@@ -637,7 +637,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23151,
+   "height": 23156,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

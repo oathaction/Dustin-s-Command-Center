@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T05:21:58.180Z",
+ "checked": "2026-11-06T05:30:44.072Z",
  "views": [
   "white",
   "newsprint",
@@ -13,7 +13,7 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 679,
+   "texts": 681,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -22,7 +22,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 362,
+    "labels": 364,
     "outside": [],
     "overlaps": []
    },
@@ -47,7 +47,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10329,
+   "height": 10319,
    "axe": [],
    "focusStops": 34,
    "focusWithoutRing": []
@@ -56,7 +56,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 678,
+   "texts": 680,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -65,7 +65,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 362,
+    "labels": 364,
     "outside": [],
     "overlaps": []
    },
@@ -90,7 +90,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10233,
+   "height": 10223,
    "axe": [],
    "focusStops": 27,
    "focusWithoutRing": []
@@ -225,7 +225,7 @@
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 672,
+   "texts": 676,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -234,7 +234,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 361,
+    "labels": 365,
     "outside": [],
     "overlaps": []
    },
@@ -259,7 +259,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 22099,
+   "height": 21562,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -268,7 +268,7 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 671,
+   "texts": 675,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -277,7 +277,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 361,
+    "labels": 365,
     "outside": [],
     "overlaps": []
    },
@@ -302,7 +302,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21931,
+   "height": 21394,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -437,7 +437,7 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 672,
+   "texts": 676,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -446,7 +446,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 361,
+    "labels": 365,
     "outside": [],
     "overlaps": []
    },
@@ -471,7 +471,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21908,
+   "height": 21446,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -480,7 +480,7 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 671,
+   "texts": 675,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -489,7 +489,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 361,
+    "labels": 365,
     "outside": [],
     "overlaps": []
    },
@@ -514,7 +514,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21696,
+   "height": 21234,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

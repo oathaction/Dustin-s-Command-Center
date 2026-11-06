@@ -12,8 +12,8 @@
 //     and no red over Prussian;
 //   - axe-core 4.10.2 with WCAG 2.2 AA tags; outside requests other than Google Fonts; page errors;
 //   - focus: every element reached in the first 40 Tab stops shows an outline or a box shadow.
-//   - scale: inside each chart drawing, bars (data-mark="bar") have lengths proportional to data-value from a zero
-//     baseline, and points (data-mark="point") sit on one straight scale, per figure, drawing and data-scale group,
+//   - scale: inside each chart drawing and in HTML tables, bars (data-mark="bar") have lengths proportional to data-value from a zero
+//     baseline (or, in a 100 percent stacked bar, as its share of the row), and points (data-mark="point") sit on one straight scale, per figure, drawing and data-scale group,
 //     along data-axis ("x" or "y"); deviations over 1 px (and 1.5 percent for bars) fail;
 //   - party: no mark under [data-party] is painted Pillar Red or Prussian (DR-48).
 // On the first view it also clicks the first link into another view and goes back.
@@ -153,9 +153,44 @@ async function audit(page, view) {
         });
       });
     });
+    // bars drawn in HTML (in-row bars in tables): grouped by data-scale, else by their table, else the figure
+    document.querySelectorAll('figure[data-spec]').forEach((fig, fi) => {
+      const tables = [...fig.querySelectorAll('table')];
+      fig.querySelectorAll('[data-mark="bar"][data-value]').forEach((el) => {
+        if (el instanceof SVGElement || el.closest('svg') || !visible(el)) return;
+        const axis = el.getAttribute('data-axis') || 'x';
+        const t = el.closest('table'); const where = el.getAttribute('data-scale') || (t ? 'table' + tables.indexOf(t) : 'html');
+        const id = `${fig.getAttribute('data-spec')}#${fi}/html/${where}/bar/${axis}`;
+        const r = el.getBoundingClientRect(); const v = parseFloat(el.getAttribute('data-value'));
+        if (!groups.has(id)) groups.set(id, []);
+        groups.get(id).push({ v, len: axis === 'x' ? r.width : r.height, pos: 0, key: el.getAttribute('data-key') });
+      });
+    });
     for (const [id, ms] of groups) {
       const kind = id.split('/')[3];
       const distinct = new Set(ms.map(m => m.v)).size;
+      // a 100 percent stacked bar: several segments per key whose lengths add to the same total in every row.
+      // Then each segment must be its value's share of the row (within 1 px), and the shared scale test does not apply.
+      const byKey = new Map(); for (const m of ms) { if (!byKey.has(m.key)) byKey.set(m.key, []); byKey.get(m.key).push(m); }
+      const rowsLen = [...byKey.values()].map(g => g.reduce((a, m) => a + m.len, 0));
+      const medLen = [...rowsLen].sort((a, b) => a - b)[rowsLen.length >> 1];
+      const tol = Math.max(1.5, 0.015 * medLen);
+      const full = rowsLen.filter(l => Math.abs(l - medLen) <= tol).length;
+      const multi = [...byKey.values()].filter(g => g.length >= 2).length;
+      // most rows hold several segments that fill one common length: read the group as 100 percent bars
+      const stacked = kind === 'bar' && byKey.size >= 3 && multi >= 0.75 * byKey.size && full >= 0.75 * byKey.size;
+      if (stacked) {
+        scale.groups++; scale.marks += ms.length;
+        for (const [k, g] of byKey) {
+          const tl0 = g.reduce((a, m) => a + m.len, 0);
+          if (Math.abs(tl0 - medLen) > tol) { scale.bad.push({ group: id + ' (share)', key: k, value: null, px: +tl0.toFixed(1), off: +(tl0 - medLen).toFixed(1), note: 'row does not fill the 100 percent bar' }); continue; }
+        }
+        for (const g of byKey.values()) {
+          const tv = g.reduce((a, m) => a + Math.abs(m.v), 0), tl = g.reduce((a, m) => a + m.len, 0);
+          for (const m of g) { const d = Math.abs(m.len - tl * Math.abs(m.v) / tv); if (d > 1.0) scale.bad.push({ group: id + ' (share)', key: m.key, value: m.v, px: +m.len.toFixed(1), off: +d.toFixed(1) }); }
+        }
+        continue;
+      }
       if (kind === 'bar' && distinct >= 2) {
         scale.groups++; scale.marks += ms.length;
         const med = (xs) => { const t = [...xs].sort((a, b) => a - b); const h = t.length >> 1; return t.length % 2 ? t[h] : (t[h - 1] + t[h]) / 2; };

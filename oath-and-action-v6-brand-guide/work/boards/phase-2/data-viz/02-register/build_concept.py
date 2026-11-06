@@ -2104,12 +2104,12 @@ svg .ty{font:400 13px Inter,sans-serif}
 .anatfig{padding-left:40px}
 .anatfig .plate{grid-template-columns:minmax(0,1fr);row-gap:20px;padding-bottom:0}
 .anatfig [data-anat]{position:relative}
-.anatfig [data-anat]::before{content:attr(data-anat) / "";position:absolute;left:-40px;top:-2px;width:26px;height:26px;border-radius:50%;
-background:#121212;color:#FFFFFF;font:700 13px/26px Inter,sans-serif;text-align:center;font-style:normal;letter-spacing:0;text-transform:none}
-.anatfig .fig[data-anat]::before{top:-14px}
+.anatfig [data-anat]::before{content:attr(data-anat) / "";position:absolute;left:-38px;top:-1px;width:22px;height:22px;border-radius:50%;
+background:#121212;color:#FFFFFF;font:700 13px/22px Inter,sans-serif;text-align:center;font-style:normal;letter-spacing:0;text-transform:none}
+.anatfig .fig[data-anat]::before{top:-13px}
 .anatfig .rnote[data-anat]{display:block}
 .anatfig .strip{position:relative}
-.anatfig .strip::before{content:"10" / "";position:absolute;left:-41px;top:-1px;width:26px;height:26px;border-radius:50%;background:#121212;color:#FFFFFF;font:700 13px/26px Inter,sans-serif;text-align:center}
+.anatfig .strip::before{content:"10" / "";position:absolute;left:-39px;top:-1px;width:22px;height:22px;border-radius:50%;background:#121212;color:#FFFFFF;font:700 13px/22px Inter,sans-serif;text-align:center}
 .anat{margin:0 0 20px;padding:0;list-style:none;counter-reset:a;font:400 15px/22px Inter,sans-serif}
 .anat li{counter-increment:a;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:8px;padding:8px 0;border-bottom:1px solid var(--rq)}
 .anat li::before{content:counter(a);grid-row:span 2;font:800 17px/22px "Inter Tight",sans-serif}

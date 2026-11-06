@@ -41,7 +41,8 @@ MINUS = '−'
 
 
 def typo(s):
-    """Typographic apostrophes and quotation marks in copy."""
+    """Typographic apostrophes and quotation marks in copy: quoted terms first, then apostrophes."""
+    s = re.sub(r"(?<![\w'])'([^'\n]{1,80}?)'(?![\w])", '\u2018\\1\u2019', s)
     s = re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)])", '\u2019', s)
     return re.sub(r'"([^"<>]*)"', '\u201c\\1\u201d', s)
 
@@ -958,6 +959,8 @@ def gen_s05(W, uid, t=None):
 
 
 # ------------------------------------------------------------------------------------------------ S06 comparison table
+TNOTE = ("Directions hold only if each scenario's assumptions hold. They are no forecast and give no odds. "
+         'The four families are read separately and never added together. In the baseline, no family rises.')
 CLS_TINT = {'up': 'c-up', 'slightly up': 'c-up2', 'flat': 'c-flat', 'flat or down': 'c-dn2', 'down': 'c-dn',
             'mixed': 'c-mix', 'same as ii': 'c-same'}
 CLS_WORD = {'up': 'Up', 'slightly up': 'Slightly up', 'flat': 'Flat', 'flat or down': 'Flat or down', 'down': 'Down',
@@ -993,12 +996,11 @@ def gen_s06_table(view):
         body.append(f'<tr><th scope="row"><span class="sk">{e(r["key"])}</span> {e(r["name"])}</th>{"".join(cells)}</tr>')
     key = ''.join(f'<li class="{CLS_TINT[c]}">{glyph(c)}<span>{e(CLS_WORD[c])}</span></li>'
                   for c in ('up', 'slightly up', 'flat', 'flat or down', 'down', 'mixed', 'same as ii'))
-    return (f'<div class="cmpkey"><p class="kh">The studio\'s reading of the atlas\'s words, by arrow and tint</p><ul>{key}</ul></div>'
+    return (f'<div class="cmpkey"><p class="kh">{e("The studio\'s reading of the atlas\'s words, by arrow and tint")}</p><ul>{key}</ul></div>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Scenario table, scrolls sideways when narrow">'
-            f'<table class="cmp"><caption class="vh2">Direction each outcome family would take by 2036 under eight scenarios, in the atlas\'s words</caption>'
+            f'<table class="cmp"><caption class="vh2">{e("Direction each outcome family would take by 2036 under eight scenarios, in the atlas\'s words")}</caption>'
             f'<thead><tr><th scope="col">Scenario</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
-            '<p class="tnote">Directions hold only if each scenario\'s assumptions hold. They are no forecast and give no odds. '
-            'The four families are read separately and never added together. In the baseline, no family rises.</p>')
+            f'<p class="tnote">{e(TNOTE)}</p>')
 
 
 # ------------------------------------------------------------------------------------------------ S07 tile map
@@ -1029,8 +1031,7 @@ def gen_s07(W, uid, t=None):
         for kind, lab in items:
             key_item(a, 0, y, kind, lab, 14)
             y += 24
-        y = a.para(21, y - 4, f'{" and ".join(sorted(some))} ban it in some elections only.', W - 21) + 14
-        oy = y
+        oy = y - 4
     for tl in TILES:
         r = R[tl['code']]
         x, y = ox + tl['col'] * pitch, oy + tl['row'] * pitch
@@ -1082,13 +1083,16 @@ def gen_s07(W, uid, t=None):
         n2425 = yrs.get(2024, 0) + yrs.get(2025, 0)
         nb = sum(1 for r in R.values() if r['prohibits_rcv'])
         y = H + 28
-        y = a.para(0, y, f'{nw(n2425, cap=True, start=True)} of the {nb} bans became law in 2024 or 2025. Each square is one state, whatever its size.', W)
+        some_n = ' and '.join(sorted(R[k]['name'] for k in R if R[k]['status'] == 'bans in some elections'))
+        y = a.para(0, y, f'{some_n} ban it in some elections only. {nw(n2425, cap=True, start=True)} of the {nb} bans became law '
+                         'in 2024 or 2025. Each square is one state, whatever its size.', W)
         H = y + 6
     return a, H
 
 
 # ------------------------------------------------------------------------------------------------ S08 unit chart
 REDRAWS = ['RL38', 'RL40', 'RL41', 'RL50']
+RL47_NOTE = "One 2026 entry, RL47, counts 19 state bans on ranked-choice voting, passed from 2022 to 2026, as a single change; Indiana's and Missouri's bans also have entries of their own."
 
 
 def unit_shape(a, x, y, s, d, attrs):
@@ -1189,11 +1193,10 @@ def gen_s08(W, uid, t=None, keyed=True):
         ring_y = nk + 30
         a.rect(LW, ring_y - 11, s, s, 'f-ink')
         a.circle(LW + s / 2, ring_y - 11 + s / 2, 2.6, 'f-g')
-        a.para(LW + s + 14, ring_y, 'Dotted: mid-decade congressional maps, coded away from voters whichever party drew them '
-                                    '(Texas and Missouri in 2025, California in 2025 and Virginia in 2026).', W - LW - s - 14)
-        n, lh = a.para_h('x', 10)
-        H = ring_y + (len(wrap('Dotted: mid-decade congressional maps, coded away from voters whichever party drew them (Texas and Missouri in 2025, California in 2025 and Virginia in 2026).', W - LW - s - 14, t.nt)) - 1) * t.lh + 8
-        return a, H
+        last = a.para(LW + s + 14, ring_y, 'Dotted: mid-decade congressional maps, coded away from voters whichever party drew them '
+                                           '(Texas and Missouri in 2025, California in 2025 and Virginia in 2026).', W - LW - s - 14)
+        last = a.para(LW + s + 14, last + 30, RL47_NOTE, W - LW - s - 14)
+        return a, last + 8
     # phone: years run down; away grows left of the year column, toward right; neither in its own block below
     yearw = 50
     cxm = W / 2
@@ -1263,6 +1266,7 @@ def gen_s08(W, uid, t=None, keyed=True):
     a.circle(s / 2, y - 6 + s / 2, 2.6, 'f-g')
     y = a.para(s + 14, y + 5, 'Dotted: mid-decade congressional maps, coded away from voters whichever party drew them '
                               '(Texas and Missouri in 2025, California in 2025 and Virginia in 2026).', W - s - 14)
+    y = a.para(s + 14, y + 30, RL47_NOTE, W - s - 14)
     return a, y + 8
 
 
@@ -1684,7 +1688,8 @@ def spec_s03(view):
     extra = (f'<details class="code"><summary>How the atlas codes direction</summary><p>{e(coding)}</p></details>')
     notes = ['None of the 17 initiatives moved the rules away from voters; eight failed, which left the rules in force.',
              'Nine of 11 statutes moved the rules away from voters, the largest share of any instrument.',
-             DS['rule-changes-by-instrument']['notes'][0], 'Directions are the atlas\'s own codes, set out in its coding note.']
+             DS['rule-changes-by-instrument']['notes'][0], 'Directions are the atlas\'s own codes, set out in its coding note.',
+             'One state statute entry, RL47, counts 19 state bans on ranked-choice voting as a single change; without it, 8 of 10 statutes moved the rules away from voters, still the largest share.']
     hdr = ['Instrument', 'All'] + [DIR_WORD[d] for d in DIR_ORDER]
     table = table_html('Repair-log entries by instrument and direction', hdr,
                        [[r['key'], str(r['value'])] + [str(r[d]) for d in DIR_ORDER] for r in sorted(D, key=lambda r: -r['value'])],
@@ -1806,7 +1811,8 @@ def spec_s08(view):
              f'Since January 2025: {post["toward voters"]} toward voters, {post["away from voters"]} away.',
              'Dotted: mid-decade congressional maps, coded away from voters whichever party drew them (Texas and Missouri in 2025, California in 2025 and Virginia in 2026).',
              'Neither way: voters kept existing rules when a ballot measure failed; mixed; pending on November 3, 2026.',
-             'Directions are the atlas\'s own codes. The log is denser for recent years and counts what the atlas recorded, not every rule change.']
+             'Directions are the atlas\'s own codes. The log is denser for recent years and counts what the atlas recorded, not every rule change.',
+             RL47_NOTE]
     body_rows = [[r['key'], date_words(r['date']), r['jurisdiction'], r['instrument_group'], DIR_WORD[r['direction']]] for r in D]
     table = table_html('Every entry in the repair log', ['Entry', 'Date', 'Where', 'Instrument', 'Direction'], body_rows)
     return figure(view, 'S08', title, measure, body, notes, table, wide=True, extra=extra)
@@ -1901,7 +1907,7 @@ def view_head(view, eyebrow, h1, deck, links=True, extra=''):
         items = ''.join(f'<li><a href="#{v}">{e(t)}</a> <span>{e(desc[v])}</span></li>' for v, t in VIEWS if v != view)
         lk = f'<nav class="vlinks" aria-label="Other views of this concept"><p class="eyebrow">Other views</p><ul>{items}</ul></nav>'
     return (f'<header class="vhead"><div><p class="eyebrow">{e(eyebrow)}</p>'
-            f'<h1 class="display" id="{view}-h1" tabindex="-1">{e(h1)}</h1><div class="deck">{deck}</div>{extra}</div>{lk}</header>')
+            f'<h1 class="display" id="{view}-h1" tabindex="-1">{e(h1)}</h1><div class="deck">{typo(deck)}</div>{extra}</div>{lk}</header>')
 
 
 def index_nav(view):
@@ -2405,7 +2411,7 @@ table.cmp thead th{padding:0 10px 6px;text-align:left;vertical-align:bottom;font
 table.cmp tbody th{padding:10px 14px 10px 0;text-align:left;vertical-align:top;font:600 15px/21px Inter,sans-serif;width:23%;border-bottom:1px solid var(--grid)}
 table.cmp .sk{display:inline-block;min-width:34px;font:800 15px/21px "Inter Tight",sans-serif}
 table.cmp td{padding:9px 10px 11px;vertical-align:top}
-.gw{display:flex;align-items:center;margin:0 0 4px}
+.gw{display:inline-flex;vertical-align:-3px;margin-right:6px}
 .c-up{background:var(--vup)}.c-up2{background:var(--vup2)}.c-dn{background:var(--sdn)}.c-dn2{background:var(--sdn2)}
 .c-flat,.c-mix,.c-same{background:var(--g);box-shadow:inset 0 0 0 1px var(--grid)}
 .tnote{margin:14px 0 0;font:400 15px/23px Inter,sans-serif;max-width:46em}
