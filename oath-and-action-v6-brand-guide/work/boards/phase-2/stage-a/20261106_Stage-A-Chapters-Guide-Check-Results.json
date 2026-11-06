@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T20:08:57.602Z",
+ "checked": "2026-11-06T20:12:49.854Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -105,7 +105,7 @@
     ]
    },
    "text": {
-    "texts": 8049,
+    "texts": 8048,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -146,7 +146,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 309736,
+   "height": 309874,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -258,7 +258,7 @@
     ]
    },
    "text": {
-    "texts": 8063,
+    "texts": 8058,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -299,7 +299,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 385866,
+   "height": 386814,
    "fonts": [
     "Inter",
     "Inter Tight",

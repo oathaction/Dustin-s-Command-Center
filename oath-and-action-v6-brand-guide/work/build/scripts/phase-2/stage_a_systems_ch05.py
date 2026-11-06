@@ -1042,8 +1042,8 @@ def build(ctx):
                 'failure': {'specimen': 's-05-4-failure',
                             'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
-                                       f'as {C.css_gray(ctx.hx(P("pillarRed")))} and {C.css_gray(ctx.hx(P("verdigris")))}, '
-                                       f'two grays a reader cannot tell apart at 12 px.'},
+                                       f'as {C.css_gray(ctx.hx(P("pillarRed")))} and {C.css_gray(ctx.hx(P("verdigris")))}, two '
+                                       f'near grays that say nothing about which row has the problem.'},
                 'specs': [
                     {'label': 'Focus ring on light surfaces', 'value': f'Verdigris, 2 px, 2 px gap; {ver_n} to 1 on Newsprint', 'token': 'oa.color.focus.ring.onNewsprint'},
                     {'label': 'Focus ring on dark surfaces', 'value': f'Newsprint; {n_c} to 1 on Charcoal, {n_pr} on Prussian', 'token': 'oa.color.focus.ring.onCharcoal'},
@@ -1138,11 +1138,11 @@ def build(ctx):
                            'oa.chart.color.diverging.fill.step1.onNewsprint', 'oa.chart.color.diverging.fill.step5.onNewsprint',
                            'oa.chart.color.sequential.fill.step5.onNewsprint', 'oa.chart.color.party.mark.onNewsprint',
                            'oa.chart.color.point.onNewsprint'],
-                'why': {'text': [f'Dustin chose Newsprint for charts and the atlas on Board 3, so a chart shared on its own '
-                                 f'still reads as ours. A scale from red to blue reads as a party split in the United States, '
-                                 f'which a nonpartisan publication has to avoid. Prussian to Verdigris keeps its neighbors '
-                                 f'apart under each color-vision simulation we ran, at least {min(worst.values()):.3f} in '
-                                 f'OKLab. In grayscale both ends print dark, at {Ls[0]:.2f} and {Ls[4]:.2f} OKLab lightness '
+                'why': {'text': [f'On Newsprint, a chart shared on its own still reads as ours. A scale from red to blue '
+                                 f'reads as a party split in the United States, which a nonpartisan publication has to avoid. '
+                                 f'Under each color-vision simulation we ran, the closest steps of Prussian to Verdigris stay '
+                                 f'at least {min(worst.values()):.3f} apart in OKLab, about {min(worst.values()) / 0.02:.0f} '
+                                 f'times the 0.02 that CSS Color 4 treats as the smallest visible difference. In grayscale both ends print dark, at {Ls[0]:.2f} and {Ls[4]:.2f} OKLab lightness '
                                  f'against {Ls[2]:.2f} at the midpoint, so without the arrow a reader cannot tell a rise from '
                                  f'a fall.'],
                         'basis': 'Design judgment; decisions DR-48, DR-53, DR-54 and DR-58'},
@@ -1187,6 +1187,8 @@ def build(ctx):
         'sources': [src,
                     'W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.1, 1.4.3 '
                     'and 1.4.11, https://www.w3.org/TR/WCAG22/.',
+                    'W3C, CSS Color Module Level 4, Candidate Recommendation Draft, the gamut-mapping algorithm’s '
+                    'just-noticeable difference, an OKLCh difference of 0.02, https://www.w3.org/TR/css-color-4/. Retrieved November 6, 2026.',
                     'Machado, G. M., Oliveira, M. M. and Fernandes, L. A. F., “A Physiologically-based Model for Simulation of '
                     'Color Vision Deficiency,” IEEE Transactions on Visualization and Computer Graphics 15, no. 6 (2009), '
                     'severity 1.0, as the palette lab applies it.'],

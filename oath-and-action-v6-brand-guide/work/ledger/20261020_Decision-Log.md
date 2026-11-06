@@ -555,3 +555,26 @@ Four makers build chapters 01 to 08 under `work/handoffs/phase-2/20261106_Stage-
 | D2-186 | Party bars in Rule 01.2 run in alphabetical order, with Charcoal first | A stated order that favors no party |
 | D2-187 | Voice line B appears on the About page, after the mission | Neither Gate 1 nor the strategy named its place |
 | D2-188 | The specimen classes `.btn` and `.bars` are renamed (`.cbtn`, `.bchart`) | The shell's own classes of those names leaked into the specimens |
+
+The identity designer's routine calls for chapters 03, 04 and 08 and the proofs (`work/handoffs/phase-2/20261106_Stage-A-Identity-Notes.md`). The avatar default, the editorial crop's ink and the Signal Grid codes also go to Dustin on stage board A and stand only if he agrees:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-189 | Identity masters enter specimens as `<img data-inline src>` for the shell to inline; the re-exported taglines are inlined by `stage_a_identity_lib.py` with prefixed ids | The fragment names its master by path and never copies a drawing; two tagline copies in one specimen need unique ids |
+| D2-190 | The hinge divider is drawn whole in the surface's ink, hairline and ampersand alike, with B's 24 px master at 24 px and 12 px on each side; Rule 04.4 says so | It matches the shell's divider and Board 5, which Dustin approved |
+| D2-191 | The editorial crop of B takes the surface's ink, never red | Rule 05.3 names no job for a crop, and the divider sets the precedent |
+| D2-192 | Social avatars and the app icon show B alone on the Charcoal tile; L8 serves squares where the name must show | A feed draws avatars at about 32 to 48 px, where L8 sets its capitals at 10 to 12 px; V5 already made B the default avatar (C2) |
+| D2-193 | V4.2's compact signature, "O & A" typed with spaces, retires; L8 is the one monogram | The map sent it to the identity chapter for this ruling; two monograms split recognition |
+| D2-194 | L7's pillar word sits in the surface's ink at a cap height of 0.6x; V5's red "Act" retires | Rule 05.3 gives a label no red; at 0.6x, CONNECT holds 13 px at the 250 px minimum in the I8 table |
+| D2-195 | L4 to L7 are assembled from the approved masters on V5's layouts (L6 measured from the Gate 0 capture: 1400 by 300 units), all White on Prussian, with no web address | Their own masters are not drawn yet (I8 note); this shows them at true size meanwhile |
+| D2-196 | The masthead sets L3 from 768 px and L1 from the 24 px master below it | The lockmark needs about 34 px, which a phone bar gives to the menu button |
+| D2-197 | Signal Grid codes: one per grid, by precedence; progress from 40 px, routes and corners from 24 px; content type in words | Tension 4; V5's content colors fail grayscale and its Active and Ready differ at 1.14 to 1 |
+| D2-198 | Coded grids are drawn on whole-pixel lattices: 24 px on the 24 px lockmark master's centers, 40 px at 3.5, 19.5 and 35.5 px; 80 px is the 40 px drawing doubled | Pixel fit (D1-17) for marks that carry meaning |
+| D2-199 | Coded grids use no Verdigris, so the held `verdigrisOnDark` (#59857D) can be rejected | The token file holds it "for the Signal Grid chapter"; shapes now carry state |
+| D2-200 | Loading draws the links alone and Empty draws small nodes, each with its words; the token architecture's "still Stone outline lever" is not used | A ring at the lever's place would read as a stage under way |
+| D2-201 | The favicon row leaves the lockmark's positions table | I8: favicons use B's 16 px master |
+| D2-202 | The kicker is a 24 px grid, 12 px, a 24 px Civic Line icon in one color, 12 px, then a 13 px label and an optional ID chip | One definition on the 8 px rhythm; V5's labels sat at 10 and 11 px |
+| D2-203 | Illustrative bills reuse V5's invented numbers (Q-01) on neutral topics: public meeting notice, school bus contracts, library hours, records request fees | V5's topics were election rules, which carry the editor's disclosure (D2-106) |
+| D2-204 | In the proofs both widths sit at the same height, except avatars, where L8 fills the same width of the tile | Mastheads and cards are set by height; a tile is filled by width |
+| D2-205 | The letterhead places the display master at 26 px tall, as a print piece would; all its text is 10 pt or larger | The 24 px master is drawn for screens; the 13 px floor holds on screen |
+| D2-206 | Two typed failure cases (03.1, 03.7) carry `check_exempt: contrast` and two (04.3, 04.4) `check_exempt: red`; V5's kicker (08.8) is a PNG | A failure has to show at true size; the shell lists every exemption |

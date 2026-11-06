@@ -306,7 +306,7 @@
       },
       "failure": {
         "specimen": "s-05-4-failure",
-        "caption": "<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two grays a reader cannot tell apart at 12 px."
+        "caption": "<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two near grays that say nothing about which row has the problem."
       },
       "specs": [
         {
@@ -498,7 +498,7 @@
       ],
       "why": {
         "text": [
-          "Dustin chose Newsprint for charts and the atlas on Board 3, so a chart shared on its own still reads as ours. A scale from red to blue reads as a party split in the United States, which a nonpartisan publication has to avoid. Prussian to Verdigris keeps its neighbors apart under each color-vision simulation we ran, at least 0.106 in OKLab. In grayscale both ends print dark, at 0.31 and 0.46 OKLab lightness against 0.85 at the midpoint, so without the arrow a reader cannot tell a rise from a fall."
+          "On Newsprint, a chart shared on its own still reads as ours. A scale from red to blue reads as a party split in the United States, which a nonpartisan publication has to avoid. Under each color-vision simulation we ran, the closest steps of Prussian to Verdigris stay at least 0.106 apart in OKLab, about 5 times the 0.02 that CSS Color 4 treats as the smallest visible difference. In grayscale both ends print dark, at 0.31 and 0.46 OKLab lightness against 0.85 at the midpoint, so without the arrow a reader cannot tell a rise from a fall."
         ],
         "basis": "Design judgment; decisions DR-48, DR-53, DR-54 and DR-58"
       },
@@ -580,6 +580,7 @@
   "sources": [
     "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
     "W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.1, 1.4.3 and 1.4.11, https://www.w3.org/TR/WCAG22/.",
+    "W3C, CSS Color Module Level 4, Candidate Recommendation Draft, the gamut-mapping algorithm’s just-noticeable difference, an OKLCh difference of 0.02, https://www.w3.org/TR/css-color-4/. Retrieved November 6, 2026.",
     "Machado, G. M., Oliveira, M. M. and Fernandes, L. A. F., “A Physiologically-based Model for Simulation of Color Vision Deficiency,” IEEE Transactions on Visualization and Computer Graphics 15, no. 6 (2009), severity 1.0, as the palette lab applies it."
   ]
 }

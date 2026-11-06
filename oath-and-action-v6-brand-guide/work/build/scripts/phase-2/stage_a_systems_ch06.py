@@ -453,8 +453,8 @@ def build(ctx):
                 'tokens': [f'oa.type.{k}' for k, _, _ in STYLES],
                 'why': {'text': ['WCAG 2.2 success criterion 1.4.4 Resize Text asks that text grow to 200 percent with '
                                  'nothing lost. A size in rem grows when a reader raises the browser’s text size, and a size '
-                                 'fixed in px stays where it is. Our fifth edition set every size in px, and when the Phase 0 '
-                                 'audit doubled the root size, none of its 2,383 text elements grew.'],
+                                 'fixed in px stays where it is. Our fifth edition set every size in px, and when we doubled its '
+                                 'root text size in a test, none of its 2,383 text elements grew.'],
                         'basis': 'WCAG 2.2 SC 1.4.4'},
                 'correct': {'specimen': 's-06-2-correct',
                             'caption': 'The fourteen styles, each drawn live at true size for this window. Display sizes move '
@@ -519,7 +519,7 @@ def build(ctx):
                                  f'110 px. Measured at 24 px in Inter Tight 800, that shrinks a word space from '
                                  f'{sp["h4 0"]:.1f} px to {sp["h4 -4.5"]:.1f} px, a cut of {cut:.0f} percent, while the '
                                  f'letters close up too.'],
-                        'basis': 'Design judgment; Phase 0 design director audit'},
+                        'basis': 'Design judgment; our audit of the fifth edition, October 2026'},
                 'correct': {'specimen': 's-06-4-correct',
                             'caption': f'An H4 at true size, 24 px with {C.MINUS}2 percent tracking. Its word spaces measure '
                                        f'{sp["h4 -2"]:.1f} px, and each word stands on its own.'},
@@ -677,7 +677,7 @@ def build(ctx):
                 'why': {'text': [f'Master Brief section 3 says a font substitution is never a finished identity decision. A '
                                  f'fallback keeps a page readable when a font fails to load, and that is its only job. '
                                  f'Measured at 32 px, the heading here sets {wi:.0f} px wide in Inter Tight and {wa:.0f} px in '
-                                 f'Arial, within {max(1, round(abs(wider))):.0f} percent, which is why a page that failed to '
+                                 f'Arial, {wider:.1f} percent wider, which is why a page that failed to '
                                  f'load Inter Tight can look finished: only the letters show it. The list carries our fifth '
                                  f'edition’s never-substitute list forward.'],
                         'basis': 'Master Brief section 3; design judgment'},

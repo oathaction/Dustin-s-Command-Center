@@ -1,7 +1,7 @@
 {
  "intro": [
-  "Gate 2 settles the wordmark's width and ampersand B as refined (DR-71). Each piece below appears twice at actual size, first at today's width and then at the condensed width, both carrying ampersand B. Today's width stays in force until you choose.",
-  "The studio recommends today's width and B as refined. At the same height the condensed drawing gains nothing a reader needs, it sits close to the lettering of campaign signs, and its monogram reads as 0&A (D2-30)."
+  "Gate 2 settles the wordmark’s width and ampersand B as refined (DR-71). Each piece below appears twice at actual size, first at today’s width and then at the condensed width, both carrying ampersand B. Today’s width stays in force until you choose.",
+  "The studio recommends today’s width and B as refined (D2-30). At the same height the condensed drawing only runs narrower, and its heavy capitals sit close to the lettering of campaign signs. Its monogram also reads as 0&A."
  ],
  "groups": [
   {
@@ -25,7 +25,7 @@
    "items": [
     {
      "specimen": "s-proofs-masthead-today",
-     "label": "Today's width",
+     "label": "Today’s width",
      "caption": "L3 from the 24 px master, 221 px wide, and a 52 px lockmark."
     },
     {
@@ -43,7 +43,7 @@
    "items": [
     {
      "specimen": "s-proofs-email-today",
-     "label": "Today's width",
+     "label": "Today’s width",
      "caption": "Invented headline and first line."
     },
     {
@@ -61,8 +61,8 @@
    "items": [
     {
      "specimen": "s-proofs-avatar-today",
-     "label": "Today's width",
-     "caption": "L8 fills 62 percent of the tile's width."
+     "label": "Today’s width",
+     "caption": "L8 fills 62 percent of the tile’s width."
     },
     {
      "specimen": "s-proofs-avatar-condensed",
@@ -74,12 +74,12 @@
   {
    "label": "Social card",
    "text": [
-    "The 1200 by 630 link-preview card, with a hinge headline whose ampersand takes the card's working red. No web address until the site is settled (DR-55)."
+    "The 1200 by 630 link-preview card, with a hinge headline whose ampersand takes the card’s working red. No web address until the site is settled (DR-55)."
    ],
    "items": [
     {
      "specimen": "s-proofs-social-today",
-     "label": "Today's width",
+     "label": "Today’s width",
      "caption": "Invented headline and line."
     },
     {
@@ -97,8 +97,8 @@
    "items": [
     {
      "specimen": "s-proofs-letterhead-today",
-     "label": "Today's width",
-     "caption": "Invented address, recipient and letter, signed with Dustin's name and title."
+     "label": "Today’s width",
+     "caption": "Invented address, recipient and letter, signed with Dustin’s name and title."
     },
     {
      "specimen": "s-proofs-letterhead-condensed",

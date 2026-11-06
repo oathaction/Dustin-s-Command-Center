@@ -375,9 +375,9 @@ def build(ctx):
                          'and page margins are set in px.'],
                 'tokens': [f'oa.space.{k}' for k in SPACE],
                 'why': {'text': ['One rhythm lets the parts of different pages line up, and a reader senses the order before '
-                                 'reading it. Steps of 8, with a 4 px half step for tight places, land on whole pixels on '
-                                 'common screens. Our fifth edition kept the same 8 px rhythm; Edition 06 gives each step a '
-                                 'token.'],
+                                 'reading it. Every step is a multiple of 4 px, so its edges land on whole device pixels at '
+                                 '1x, 1.5x, 2x and 3x screen density. Our fifth edition kept the same 8 px rhythm; Edition '
+                                 '06 gives each step a token.'],
                         'basis': 'Design judgment'},
                 'correct': {'specimen': 's-07-1-correct',
                             'caption': 'The scale at true size, and a card spaced on it: 24 px of padding, 8 px from label to '
@@ -401,7 +401,7 @@ def build(ctx):
                 'why': {'text': ['When every section uses the same column lines, the eye finds the edge of each block in the '
                                  'same place, page after page. Our fifth edition switched among two- to six-column grids from '
                                  'section to section, so no column line ran the length of a chapter.'],
-                        'basis': 'Design judgment; Phase 0 design director audit'},
+                        'basis': 'Design judgment; our audit of the fifth edition, October 2026'},
                 'correct': {'specimen': 's-07-2-correct',
                             'caption': 'The five grids drawn at one quarter of true size, each column’s width worked out from '
                                        'the tokens.'},
@@ -489,7 +489,7 @@ def build(ctx):
                             'caption': 'The layout a reader gets by window width and text size, worked out from the em '
                                        'breakpoints.'},
                 'failure': {'specimen': 's-07-5-failure',
-                            'caption': f'<strong>Fails 1.4.4 in practice.</strong> With breakpoints in px, a reader at 200 '
+                            'caption': f'<strong>Fails the measure at 200 percent.</strong> With breakpoints in px, a reader at 200 '
                                        f'percent text keeps the wide layout, and body text at 34 px in a five-column span runs '
                                        f'about {r200["mean"]:.0f} characters a line.'},
                 'specs': [
@@ -511,8 +511,8 @@ def build(ctx):
                          'labeled frame.'],
                 'tokens': ['oa.layout.breakpoint.phoneSmall', 'oa.layout.grid.phoneSmall.margin', 'oa.layout.grid.phoneSmall.columns'],
                 'why': {'text': ['WCAG 2.2 success criterion 1.4.10 Reflow asks for content at 320 CSS px with no loss of '
-                                 'information and no scrolling in two directions. When the Phase 0 audit set our fifth edition '
-                                 'at 320 px, the page ran 524 px wide and its contrast table lost its last column.'],
+                                 'information and no scrolling in two directions. When we tested our fifth edition at 320 px, '
+                                 'the page ran 524 px wide and its contrast table lost its last column.'],
                         'basis': 'WCAG 2.2 SC 1.4.10'},
                 'correct': {'specimen': 's-07-6-correct',
                             'caption': 'A 320 px frame at true size holding contrast pairs as stacked cards. Every pair, ratio '

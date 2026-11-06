@@ -271,7 +271,7 @@ def write_letterhead(pdf=False):
 PROOFS = {
     "intro": [
         "Gate 2 settles the wordmark's width and ampersand B as refined (DR-71). Each piece below appears twice at actual size, first at today's width and then at the condensed width, both carrying ampersand B. Today's width stays in force until you choose.",
-        "The studio recommends today's width and B as refined. At the same height the condensed drawing gains nothing a reader needs, it sits close to the lettering of campaign signs, and its monogram reads as 0&A (D2-30).",
+        "The studio recommends today's width and B as refined (D2-30). At the same height the condensed drawing only runs narrower, and its heavy capitals sit close to the lettering of campaign signs. Its monogram also reads as 0&A.",
     ],
     "groups": [
         {"label": "The marks at a glance", "text": ["The wordmark from each of its masters, the stacked lockup and the monogram, at the same height in both widths."],
@@ -296,4 +296,12 @@ PROOFS = {
 
 
 def write_proofs_json():
-    (CHAP_DIR / "proofs.json").write_text(json.dumps(PROOFS, indent=1, ensure_ascii=False) + "\n")
+    from stage_a_identity_chapters import smart
+
+    def sm(o):
+        if isinstance(o, dict):
+            return {k: (v if k == "specimen" else sm(v)) for k, v in o.items()}
+        if isinstance(o, list):
+            return [sm(v) for v in o]
+        return smart(o)
+    (CHAP_DIR / "proofs.json").write_text(json.dumps(sm(PROOFS), indent=1, ensure_ascii=False) + "\n")
