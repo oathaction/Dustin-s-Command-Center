@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T07:03:10.841Z",
+ "checked": "2026-11-06T07:29:47.212Z",
  "views": [
   "white",
   "newsprint",
@@ -13,7 +13,7 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 770,
+   "texts": 769,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -45,7 +45,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 15166,
+   "height": 15158,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -54,7 +54,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 770,
+   "texts": 769,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -86,7 +86,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 15137,
+   "height": 15129,
    "axe": [],
    "focusStops": 37,
    "focusWithoutRing": []
@@ -219,7 +219,7 @@
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 751,
+   "texts": 758,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -228,7 +228,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 370,
+    "labels": 378,
     "outside": [],
     "overlaps": []
    },
@@ -251,7 +251,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 26008,
+   "height": 26133,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -260,7 +260,7 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 751,
+   "texts": 758,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -269,7 +269,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 370,
+    "labels": 378,
     "outside": [],
     "overlaps": []
    },
@@ -292,7 +292,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 25930,
+   "height": 26055,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -425,7 +425,7 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 758,
+   "texts": 765,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -434,7 +434,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 377,
+    "labels": 385,
     "outside": [],
     "overlaps": []
    },
@@ -457,7 +457,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 27146,
+   "height": 27271,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -466,7 +466,7 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 758,
+   "texts": 765,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -475,7 +475,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 377,
+    "labels": 385,
     "outside": [],
     "overlaps": []
    },
@@ -498,7 +498,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 27050,
+   "height": 27175,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
