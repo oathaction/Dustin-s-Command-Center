@@ -240,7 +240,7 @@
     "19",
     "27"
    ],
-   "builders": "Read the height you will draw, then pick the master whose range holds it: the 16 px master from 16 to 19 px tall, the 24 px master from 20 to 39 px, the display master from 40 px. In print, set the width in inches from the table."
+   "builders": "Read the height you will draw, then pick the master whose range holds it. For the wordmark, the 16 px master runs from 16 to 19 px tall, the 24 px master from 20 to 39 px and the display master from 40 px. For ampersand B, the lockmark and the badge, the 16 px master runs from 16 to 23 px, the 24 px master from 24 to 47 px and the display master from 48 px (Rule 04.1). In print, set the width in inches from the table."
   },
   {
    "id": "03.5",

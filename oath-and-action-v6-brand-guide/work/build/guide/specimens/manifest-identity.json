@@ -294,10 +294,10 @@
  "s-04-8-correct": {
   "chapter": "04",
   "rule": "04.8",
-  "width_px": 540,
+  "width_px": 528,
   "alt": "A half-letter report cover at true size, 5.5 by 8.5 inches, on Newsprint: the wordmark and the title How a county budget gets written at top left, and a very large Charcoal ampersand B running off the bottom-right corner. Illustrative.",
   "illustrative": true,
-  "notes": "A print piece set in points (D2-205): kicker 10 pt, title 34 pt, deck 12 pt, so check_exempt scale. B display master at 440 px tall in the surface's ink; about 30 percent of it runs past the right and bottom edges.",
+  "notes": "A print piece set in points (D2-205): kicker 10 pt, title 34 pt, deck 12 pt, so check_exempt scale. B display master at 440 px tall in the surface's ink, 84 px past the right edge and 94 px past the bottom: 34.6 percent of its ink outside, and what stays inside is one piece, with every stroke at the trim 90 px or more across (measured on a 1x render; one piece at every offset within 4 px). The stage is the cover, so the keyline is the trim; the Illustrative label sits in the caption (CD review B2).",
   "check_exempt": [
    "scale"
   ]
@@ -305,7 +305,7 @@
  "s-04-8-failure": {
   "chapter": "04",
   "rule": "04.8",
-  "width_px": 540,
+  "width_px": 528,
   "alt": "Failure case: the same cover with the large ampersand moved up behind the title, so the title’s letters cross its strokes. Illustrative.",
   "illustrative": true,
   "notes": "A print piece set in points (D2-205), so check_exempt scale.",

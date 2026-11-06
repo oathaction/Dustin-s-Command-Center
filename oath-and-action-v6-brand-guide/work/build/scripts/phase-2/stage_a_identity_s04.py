@@ -31,9 +31,9 @@ def hinge_amp(font_px, surface="newsprint", red=True, job="the one point the hea
     baseline. The 16 and 24 px masters fill their box with 1 px of overshoot top and bottom (14 and 22 px capitals);
     the display master's box runs 1.34 units above the cap line and 1.35 below the baseline (cap height 100)."""
     cap = font_px * CAP
-    if cap < 22:
+    if cap < 24:                 # Rule 04.1's ranges: 16 px master to 23 px, 24 px master to 47 px, display from 48 px
         f, h, below = AMP[16], cap * 16 / 14, cap / 14
-    elif cap < 46:
+    elif cap < 48:
         f, h, below = AMP[24], cap * 24 / 22, cap / 22
     else:
         f, h, below = AMP["display"], cap * 1.0269, cap * 0.0135
@@ -358,12 +358,12 @@ def s_04_7_failure():
 def _cover(crop_ok=True):
     W, H = 528, 816
     if crop_ok:
-        crop = (f'<span aria-hidden="true" style="position:absolute;right:-120px;bottom:-110px">'
+        crop = (f'<span aria-hidden="true" style="position:absolute;right:-84px;bottom:-94px">'
                 f'{mark(AMP["display"], h=440, mode="ink", decorative=True)}</span>')
     else:
         crop = (f'<span aria-hidden="true" style="position:absolute;left:-40px;top:70px">'
                 f'{mark(AMP["display"], h=480, mode="ink", decorative=True)}</span>')
-    return (f'<div class="oai-s-newsprint" style="position:relative;overflow:hidden;width:{W}px;height:{H}px;padding:48px;border:1px solid {hair("newsprint")}">'
+    return (f'<div class="oai-s-newsprint" style="position:relative;overflow:hidden;width:{W}px;height:{H}px;padding:48px">'
             f'{crop}<div style="position:relative">{wordmark(18, label="Oath & Action")}'
             f'<p style="margin-top:64px;font:700 10pt/1.4 var(--oa-font-family-reading);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:{ink2("newsprint")}">Report · Local budgets</p>'
             f'<p style="margin-top:12px;font:800 34pt/1.02 var(--oa-font-family-display);letter-spacing:var(--oa-type-section-letter-spacing);max-width:10ch;text-wrap:balance">How a county budget gets written</p>'
@@ -372,17 +372,17 @@ def _cover(crop_ok=True):
 
 @spec
 def s_04_8_correct():
-    body = f'<div class="oai-cell">{head_label()}{_cover(True)}</div>'
+    body = _cover(True)
     alt = ("A half-letter report cover at true size, 5.5 by 8.5 inches, on Newsprint: the wordmark and the title How a county "
            "budget gets written at top left, and a very large Charcoal ampersand B running off the bottom-right corner. Illustrative.")
-    return rec("s-04-8-correct", "04.8", 540, alt, body, illustrative=True, check_exempt=["scale"],
+    return rec("s-04-8-correct", "04.8", 528, alt, body, illustrative=True, check_exempt=["scale"],
                notes="A print piece set in points (D2-205): kicker 10 pt, title 34 pt, deck 12 pt, so check_exempt scale. "
-                     "B display master at 440 px tall in the surface's ink; about 30 percent of it runs past the right and bottom edges.")
+                     "B display master at 440 px tall in the surface's ink, 84 px past the right edge and 94 px past the bottom: 34.6 percent of its ink outside, and what stays inside is one piece, with every stroke at the trim 90 px or more across (measured on a 1x render; one piece at every offset within 4 px). The stage is the cover, so the keyline is the trim; the Illustrative label sits in the caption (CD review B2).")
 
 
 @spec
 def s_04_8_failure():
-    body = f'<div class="oai-cell">{head_label()}{_cover(False)}</div>'
+    body = _cover(False)
     alt = "Failure case: the same cover with the large ampersand moved up behind the title, so the title's letters cross its strokes. Illustrative."
-    return rec("s-04-8-failure", "04.8", 540, alt, body, illustrative=True, check_exempt=["scale"],
+    return rec("s-04-8-failure", "04.8", 528, alt, body, illustrative=True, check_exempt=["scale"],
                notes="A print piece set in points (D2-205), so check_exempt scale.")

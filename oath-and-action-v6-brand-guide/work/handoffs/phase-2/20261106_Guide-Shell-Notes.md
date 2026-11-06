@@ -446,6 +446,16 @@ None. Every item above is a routine call inside the approved fix pass.
 - Every plate by eye. I looked at the views listed above.
 - Pages offline: fonts still come from Google Fonts.
 
+### Creative director's blockers B1 and B3
+
+Fixed in the shell after the creative director's review (`work/handoffs/phase-2/20261106_CD-Review-Of-Stage-A.md`, Blocking).
+
+- **B1.** A stage with no `width_px` now keeps 24 px between its content and its keyline, 16 px under 48em. A stage with a fixed width keeps its exact true size. Where a flowing stage's content cannot shrink to the column (Rule 06.5's tables on a 360 px phone), the script widens that stage to hold it, so the keyline still encloses the content and the frame scrolls instead. I first tried `min-width: min-content` in CSS and dropped it: it made ten specimens scroll at 390 px that shrink fine.
+- **B3.** On phones a frame with a fixed-width stage keeps only the side margin that is left, up to 16 px: the frame's width less the stage, halved. A 360 px page now sits whole at 390 and 360 px with no scroll, no hint and no Tab stop. A stage wider than the screen keeps the 16 px margin and scrolls as before. The build writes the stage's width on the frame too, so the CSS can read it.
+- Measured on the final build. The closest text to any keyline among the 143 flowing stages sits 11.6 px away at 1440 (the hanging quotation mark in Rule 06.1) and 15.1 px at 390 and 360. None of the 29 plates drawn 360 px wide scrolls or takes focus at 390 or 360. Scrolling frames: 6 at 1440, 42 at 390. I looked at Rules 06.1, 06.4, 06.6 and 07.4 at 2x.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict` exits 0 with no warnings. `guide_check.js` passes at 1440, 1024, 390 and 360 px with 0 failures, and the self-test still catches 33 of 33 plants. The editor's `s-01-5` maps, which failed earlier at 390 and 360, now pass.
+- Not tested: the widening script at widths other than 1440, 390 and 360, and B2, which belongs to the identity designer.
+
 ### Change log
 
 Modified:

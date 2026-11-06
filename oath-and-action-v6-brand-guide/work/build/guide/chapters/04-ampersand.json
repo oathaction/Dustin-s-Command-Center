@@ -140,7 +140,7 @@
     },
     {
      "label": "Master",
-     "value": "16 px master under 22 px capitals, 24 px master to 46 px, display above"
+     "value": "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px"
     }
    ],
    "files": [],
@@ -371,7 +371,7 @@
   {
    "id": "04.8",
    "title": "Crop a large B off the bottom-right corner only.",
-   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with up to 40 percent of the glyph outside the frame. It takes the surface’s ink, stays clear of the text, and never enters the top-left corner where reading starts.",
+   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with 25 to 40 percent of its ink outside the frame. What stays inside reads as one letter, with no stroke cut off alone at the edge. It takes the surface’s ink, stays clear of the text, and never enters the top-left corner where reading starts.",
    "tokens": [
     "oa.color.text.primary.onNewsprint"
    ],
@@ -394,7 +394,11 @@
     },
     {
      "label": "Outside the frame",
-     "value": "Up to 40 percent of the glyph"
+     "value": "25 to 40 percent of the glyph’s ink"
+    },
+    {
+     "label": "Inside the frame",
+     "value": "One piece: no stroke or fragment cut off from the letter at the trim"
     },
     {
      "label": "Color",
@@ -414,7 +418,7 @@
     "24",
     "25"
    ],
-   "builders": "Place the display master in a frame with its overflow hidden, and move it until 25 to 40 percent of its ink sits outside."
+   "builders": "Place the display master in a frame with its overflow hidden, and move it until 25 to 40 percent of its ink sits outside and every part left inside the trim joins the rest of the letter, with no fragment alone at the edge."
   }
  ],
  "extras": [],
