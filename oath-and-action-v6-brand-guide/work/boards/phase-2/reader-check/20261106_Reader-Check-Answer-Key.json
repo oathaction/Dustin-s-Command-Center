@@ -34,28 +34,28 @@
     "why": "R-01 (all-party primaries) targets L08, L25 and C2; the red marks are arrow 1, arrow 2 and the box \"Seats settled in the primary\". Safe seats and Risk of losing office each touch one red arrow. The drawing shows no key, so this question tests whether red reads as \"where a reform acts\" without one; the loop page sets the key line above the drawing."
    }
   },
-  "r8": {
-   "loop": "R8, Housing-scarcity loop (V7), reinforcing, \"feeds itself\"",
+  "b4": {
+   "loop": "B4, Accountability loop (V7), balancing, \"pushes back\"",
    "drawing": "System 1 phone drawing from the \"All loops\" catalog card; the catalog draws no reform marks",
-   "image": "img/drawing-r8-390.png and img/drawing-r8-360.png",
+   "image": "img/drawing-b4-390.png and img/drawing-b4-360.png",
    "comes_back": {
     "answer": "yes",
-    "why": "Two steps: L38 runs from Housing scarcity to Homeowners' equity and L39 returns."
+    "why": "Three steps: L23 runs from Quality of public services to Risk of losing office, L24 to Incumbents defeated, and L54 returns to Quality of public services."
    },
    "feeds_or_pushes": {
-    "answer": "feeds",
-    "why": "Both steps carry a plus sign."
+    "answer": "pushes",
+    "why": "One minus sign (L23, \"lowers\") and two plus signs: an odd number of minus signs makes the loop balancing. A reader who answers \"feeds itself\" here is guessing or reading the plus signs alone."
    },
    "least_certain": {
     "answer": "same",
-    "why": "Both steps, L38 and L39, are graded well supported and drawn with the same solid line; no weakest step is marked."
+    "why": "All three steps, L23, L24 and L54, are graded well supported and drawn with the same solid line; no weakest step is marked."
    },
    "reform_acts": {
     "answer": "none",
-    "why": "R-30 (more homes allowed by right near jobs) aims at R8, but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show."
+    "why": "Four reforms aim at B4 (R-01, R-02, R-06 and R-07), but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show."
    }
   },
-  "choice_values": "least_certain: step1 to step4 (R10) or top and bottom (R8), \"same\" for \"They look about the same\", \"unsure\" for \"Not sure\". reform_acts: the box name as printed, \"none\" for \"No reform is shown\", \"unsure\"."
+  "choice_values": "least_certain: step1 to step4 (R10), or top, right and left (B4), \"same\" for \"They look about the same\", \"unsure\" for \"Not sure\". reform_acts: the box name as printed, \"none\" for \"No reform is shown\", \"unsure\"."
  },
  "icons": [
   {
