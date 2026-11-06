@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-6-Capitol-Visitor-Center-Opening-Emancipation-Hall-2008.jpg",
+ "for_rule": "01.6",
+ "status": "alternate",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:Capitol_Visitors_Center_opening_ceremonies.jpg",
+ "commons_title": "File:Capitol Visitors Center opening ceremonies.jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:Capitol_Visitors_Center_opening_ceremonies.jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Capitol_Visitors_Center_opening_ceremonies.jpg",
+ "original_pixels": {
+  "width": 4256,
+  "height": 2832
+ },
+ "original_sha1": "810ca23419c8ac864239e1abd3403dd0424df99c",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Capitol_Visitors_Center_opening_ceremonies.jpg/1920px-Capitol_Visitors_Center_opening_ceremonies.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "Architect of the Capitol",
+ "author": "Architect of the Capitol photographer; individual not named (\"Photo courtesy Architect of the Capitol unless otherwise noted\")",
+ "date": "December 2, 2008",
+ "place": "Emancipation Hall, U.S. Capitol Visitor Center, Washington, D.C.",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This image is a work of an employee of the Architect of the Capitol, taken or made as part of that person's official duties. As a work of the U.S. federal government, all images created or made by the Architect of the Capitol are in the public domain in the United States.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": null,
+ "source_description": "Emancipation Hall during the opening ceremony of the United States Capitol Visitor Center.",
+ "caption": "Guests fill Emancipation Hall for the opening ceremony of the U.S. Capitol Visitor Center, Washington, D.C., December 2, 2008. Photograph: Architect of the Capitol.",
+ "why_it_fits": "The hall, its columns, flags and the plaster model of the Statue of Freedom are shown as the place of a named public event. The audience is the subject.",
+ "notes": "Congressional leaders spoke at this ceremony; the people on the stage are too small to identify and are not the subject. Do not crop in toward the stage. The opening date matches the file and the Architect of the Capitol's other record of the event (\"The Capitol Visitor Opened its doors on December 2, 2008\").",
+ "pixels": {
+  "width": 1920,
+  "height": 1278
+ },
+ "format": "JPEG",
+ "sha256": "aedd9c098a0d29beef4a6027cea60f2709917ef58b5eb8046dbf9e34de6ea171",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}

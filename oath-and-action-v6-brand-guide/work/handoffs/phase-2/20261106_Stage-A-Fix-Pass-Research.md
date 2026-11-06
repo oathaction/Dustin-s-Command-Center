@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 2, November 6, 2026. Written by the research lea
 
 Every claim carries its grade from H08 in chapter 02's writing section: Documented, Well supported, Plausible, Contested or Hypothesis. Where a claim rests on a secondary source or a search result, the grade line says so. "Opened" means I downloaded or fetched the page or file and read it. "Snippet" means I read only a search result's summary, and I use those only from official domains unless I say otherwise. DR-93 governs the descriptions: each case is told in the same form for both sides, and the record is reported as it stands.
 
-Status at this writing: tasks 1 to 6 are complete. Task 7 (photographs) is in progress; its section is filled in below as each photograph clears.
+All seven tasks are complete. Six photographs and their JSON files are in `work/build/assets/photography/`, with six new rows in the rights ledger.
 
 ## 1. H.R. 7008, the Stop Insider Trading Act
 
@@ -210,7 +210,45 @@ My recommendation is L50, because it names the step at which accountability fail
 
 ## 7. Photographs for Rules 01.6 and 01.8
 
-In progress. Search notes so far: Wikimedia Commons' API rate-limits this session's shared address (HTTP 429 with a Retry-After header), so searches run slowly and with pauses. Candidates found so far, not yet cleared: for Rule 01.8, FEMA photographs of town hall meetings (Waverly, Iowa, June 17, 2008; Brownsville, Texas, August 7, 2008) and U.S. Army Corps of Engineers photographs of a public meeting on the Isabella Lake Dam project (Kern County, California, March 2014 and November 21, 2014). The Capitol Christmas Tree photographs by the Architect of the Capitol were set aside for Rule 01.6: the event is not civic, and their descriptions center a party leader.
+Six photographs cleared, three for each rule, all public domain as works of U.S. federal employees. Each sits in `work/build/assets/photography/` with a JSON file beside it that holds the file page URL, the original's URL and SHA-1, the agency, photographer, date, place, the license line as the file page states it, the agency's own description, a caption naming who, what, where and when, why the photograph fits, and notes. Each has a row in `work/research/20261020_Rights-Ledger.md` (pho-01 to pho-06). I looked at every one before listing it.
+
+**How they were downloaded.** I read each file page on Commons and quoted its license box. The original-file host (upload.wikimedia.org) then refused the originals with HTTP 429 and a Retry-After of 600 seconds, three times over 20 minutes. Its error page says: "Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai." I followed that instruction: each file is Wikimedia's standard 1,920 px rendition of the original (960 px for the National Archives photograph, whose original is 1,200 px), fetched through the imageinfo API. This departs from the brief's instruction to download through the original URL. The renditions serve the guide on screen. Before print, the main session should fetch each original from the `original_url` in its sidecar and check it against `original_sha1`.
+
+### Rule 01.6: a government building as the place of a named public event
+
+| File | Status | Caption | Why it fits |
+|---|---|---|---|
+| `20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg` | Recommended | Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol. | The Rotunda's pilasters, paintings and statues are the setting of a named public event, and the public is the subject. Authority for the event: Senate Concurrent Resolution 61, agreed to October 29, 2005 (from the file's description). |
+| `20261106_Photo-Rule-01-6-Capitol-Visitor-Center-Opening-Emancipation-Hall-2008.jpg` | Alternate | Guests fill Emancipation Hall for the opening ceremony of the U.S. Capitol Visitor Center, Washington, D.C., December 2, 2008. Photograph: Architect of the Capitol. | Columns, flags and the plaster model of the Statue of Freedom frame a named event, with the audience as the subject. Congressional leaders spoke; on the stage they are too small to identify, so keep the crop wide. |
+| `20261106_Photo-Rule-01-6-National-Archives-Constitution-Day-Naturalization-2023.jpg` | Alternate | New citizens raise their right hands during the Constitution Day naturalization ceremony in the Rotunda of the National Archives Building, Washington, D.C., September 15, 2023. Photograph: U.S. National Archives. | A federal building's Rotunda as the place of a named ceremony. The agency's description says the inductees are "listen[ing] to the speakers before taking the oath"; the photograph shows raised hands, so the caption states only what is visible. 960 px. |
+
+The license line on both Architect of the Capitol pages: "This image is a work of an employee of the Architect of the Capitol, taken or made as part of that person's official duties. As a work of the U.S. federal government, all images created or made by the Architect of the Capitol are in the public domain in the United States." On the National Archives page: "This work is in the public domain in the United States because it is a work prepared by an officer or employee of the United States Federal Government as part of that person's official duties under the terms of Title 17, Chapter 1, Section 105 of the US Code." Its Flickr source, which I opened, names the author "U.S. National Archives" and the license "United States Government Work".
+
+The Rosa Parks photograph's file date reads "1 October 2005"; the description gives the event as October 30 and 31, 2005, so the caption says "October 2005". The Architect of the Capitol's mark sits at its lower right and should be cropped.
+
+### Rule 01.8: people doing public work, officials among them
+
+| File | Status | Caption | Why it fits |
+|---|---|---|---|
+| `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg` | Recommended | Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento District, explains the Isabella Lake Dam safety project's land purchases to residents at a public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army. | A named official answers residents at a public meeting, beside the project map and a board titled "Steps in the real estate process". It matches the rule's own example of a planner answering residents' questions. The residents face away and are not named. |
+| `20261106_Photo-Rule-01-8-FEMA-Town-Hall-Waverly-Iowa-2008.jpg` | Alternate | Jim Woodard, an intergovernmental affairs representative for the Federal Emergency Management Agency, speaks at a town hall meeting for residents of Waverly, Iowa, on June 17, 2008, after the Cedar River flooded the town. Photograph: Patsy Lynch, FEMA. | A named federal official at a town hall, with a seated panel. A different region, agency and year from the recommended one. The agency names Woodard and no one else, so the panel stays unnamed. |
+| `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Menniti.jpg` | Alternate | John Menniti (right), senior project manager for the U.S. Army Corps of Engineers' Isabella Lake Dam safety project, talks with residents about affected properties at a public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army. | The same meeting; here the residents' faces show and the official's back is to the camera. Use this one or the recommended one, not both. |
+
+The license line on both Corps of Engineers pages: "This image or file is a work of a U.S. Army Corps of Engineers soldier or employee, taken or made as part of that person's official duties. As a work of the U.S. federal government, the image is in the public domain." On the FEMA page: "This image is a work of a Federal Emergency Management Agency employee, taken or made as part of that person's official duties. As works of the U.S. federal government, all FEMA images are in the public domain in the United States."
+
+The Zianno file's Commons description carries a stray phrase, "Cross border estate planning", that is no part of the Army's caption. The caption above leaves it out.
+
+### Considered and set aside
+
+- Two more Architect of the Capitol photographs of the same event (8509693137 and 8509693085), both public domain and both viewed. The recommended frame shows more of the Rotunda and centers the public; 8509693137 centers the casket and an honor guard officer, with mourners behind, and 8509693085 centers the joint honor guard carrying the casket.
+- National Archives naturalization photograph 22 (viewed): a close crowd shot with no building in view, so it fails Rule 01.6.
+- FEMA's Prattsville, New York town hall, November 14, 2011 (viewed): residents only, with no official in frame.
+- The Architect of the Capitol's Capitol Christmas Tree photographs (descriptions only): the event is not a civic one, and their descriptions center a party leader.
+- FEMA's Brownsville, Texas and Atlanta town halls, a Census enumerator search and a National Guard poll worker search (search results only): the Census search returned a Philippine agency's photograph, and the poll worker search returned documents, not photographs.
+
+### For Rules 01.6 and 01.8
+
+DR-101's condition is met, so both rules keep their photographs in chapter 01 and nothing moves to chapter 16. In round two the editor replaces the placeholders in `s-01-6-correct` and `s-01-8-correct` with the recommended files, cropped as the rules say, with the captions above. The Rule 01.6 caption changes event: the placeholder named the Senate chamber doors on the day of the H.R. 7008 vote, and no public-domain photograph of that day was found.
 
 ## Questions for Dustin
 
@@ -229,6 +267,9 @@ None of these tasks needs a ruling from Dustin. The choice among the three DR-99
 - The utility commissioner count against state constitutions, and the details of Alabama's 2026 law.
 - EPI's page, its byline and its observation period (epi.org refused).
 - Massachusetts Question 3's official summary on the Secretary's own page (redirect loop) and the vote's result.
+- The six photographs' original files (HTTP 429 from Wikimedia's original-file host); the delivered files are Wikimedia's standard-width renditions.
+- The photographers' names for the two Architect of the Capitol photographs and the National Archives photograph, which the sources do not give.
+- The Corps of Engineers' and FEMA's own pages for their photographs; I relied on the Commons file pages, and opened one Flickr source (the National Archives').
 
 ## Tested
 
@@ -245,6 +286,11 @@ None of these tasks needs a ruling from Dustin. The choice among the three DR-99
 - Read the NBER working paper's page and the first two pages of its PDF (title page, affiliations, abstract).
 - Searched the atlas export by script for EPI's descriptions, LE04's wording and Question 3; read the full records of connections L50, L26 and L11 and loops R11, R16 and R13.
 - Counted the words of the paired sentences offered for Rules 01.11 and 01.16 by hand: 22 and 22; 24 and 24.
+- Ran nine Commons searches through its API for photographs, honoring every Retry-After.
+- Read the Commons file page of each of ten candidate photographs and extracted its license box, description, date, author and source by script.
+- Opened the National Archives' Flickr page for one photograph and read its author and license metadata.
+- Downloaded ten standard-width renditions, opened each with an image library to confirm it is a JPEG of the stated size, and looked at all ten at up to 1,200 px.
+- Confirmed by SHA-256 that each of the six placed files is the rendition I looked at, and that each sidecar's checksum matches its file; ran an image-integrity check on each; searched the sidecars for em dashes (none).
 
 ## Not tested
 
@@ -255,7 +301,19 @@ None of these tasks needs a ruling from Dustin. The choice among the three DR-99
 - The utility commission count against any state's own law.
 - EPI's own pages, and whether Stansbury still holds a Harvard affiliation.
 - How readers take any of the sentences offered here; none went to a reader.
+- The original photograph files, and any crop; the editor crops in round two.
+- Whether anyone in the Capitol Visitor Center or Rosa Parks crowds is a public official; no source names them, and none is the subject.
+- The photographs at print size.
 
 ## Change log
 
 - Created: `work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Research.md` (this file).
+- Created in `work/build/assets/photography/` (new folder), six photographs, each with a JSON file of the same name:
+  - `20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg` and `.json`
+  - `20261106_Photo-Rule-01-6-Capitol-Visitor-Center-Opening-Emancipation-Hall-2008.jpg` and `.json`
+  - `20261106_Photo-Rule-01-6-National-Archives-Constitution-Day-Naturalization-2023.jpg` and `.json`
+  - `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg` and `.json`
+  - `20261106_Photo-Rule-01-8-FEMA-Town-Hall-Waverly-Iowa-2008.jpg` and `.json`
+  - `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Menniti.jpg` and `.json`
+- Modified: `work/research/20261020_Rights-Ledger.md`, one section appended, "Added November 6, 2026: photographs for Rules 01.6 and 01.8", rows pho-01 to pho-06.
+- Downloads, file pages, logs and scripts stayed in the session scratchpad. Nothing committed or pushed.

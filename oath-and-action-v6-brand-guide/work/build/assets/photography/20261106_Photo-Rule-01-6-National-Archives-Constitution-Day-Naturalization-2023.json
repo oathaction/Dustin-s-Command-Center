@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-6-National-Archives-Constitution-Day-Naturalization-2023.jpg",
+ "for_rule": "01.6",
+ "status": "alternate",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:New_American_citizens_at_their_naturalization_ceremony_held_on_Constitution_Day_at_the_U.S._National_Archives_building_in_Washington,_D.C._on_September_15,_2023_-_34.jpg",
+ "commons_title": "File:New American citizens at their naturalization ceremony held on Constitution Day at the U.S. National Archives building in Washington, D.C. on September 15, 2023 - 34.jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:New_American_citizens_at_their_naturalization_ceremony_held_on_Constitution_Day_at_the_U.S._National_Archives_building_in_Washington,_D.C._on_September_15,_2023_-_34.jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/New_American_citizens_at_their_naturalization_ceremony_held_on_Constitution_Day_at_the_U.S._National_Archives_building_in_Washington%2C_D.C._on_September_15%2C_2023_-_34.jpg",
+ "original_pixels": {
+  "width": 1200,
+  "height": 800
+ },
+ "original_sha1": "4b0c51a43ba315bc9862646cf4b1a6dbdd1140d0",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/New_American_citizens_at_their_naturalization_ceremony_held_on_Constitution_Day_at_the_U.S._National_Archives_building_in_Washington%2C_D.C._on_September_15%2C_2023_-_34.jpg/960px-thumbnail.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "U.S. National Archives and Records Administration",
+ "author": "U.S. National Archives (Flickr account \"archivesnews\"); individual photographer not named",
+ "date": "September 15, 2023",
+ "place": "Rotunda, National Archives Building, Washington, D.C.",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This work is in the public domain in the United States because it is a work prepared by an officer or employee of the United States Federal Government as part of that person’s official duties under the terms of Title 17, Chapter 1, Section 105 of the US Code.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": "https://www.flickr.com/photos/archivesnews/53189877825 (author \"U.S. National Archives\"; license \"United States Government Work\", read November 6, 2026)",
+ "source_description": "The twenty five inductees to citizenship listen to the speakers before taking the oath of citizenship during the Constitution Day naturalization ceremony in the National Archives Rotunda on Sept. 15, 2023.",
+ "caption": "New citizens raise their right hands during the Constitution Day naturalization ceremony in the Rotunda of the National Archives Building, Washington, D.C., September 15, 2023. Photograph: U.S. National Archives.",
+ "why_it_fits": "A documentary photograph of a federal building as the place of a named public event; the Rotunda's arches and gilded gates are in view. The subjects are private people taking part in a public ceremony; none is a partisan figure.",
+ "notes": "The source description says the inductees are listening before the oath; the photograph shows them with right hands raised, so the caption says only what is visible. The original is 1,200 px wide, so this rendition is 960 px; use the original for anything wider than 960 px. Faces of private people are identifiable.",
+ "pixels": {
+  "width": 960,
+  "height": 640
+ },
+ "format": "JPEG",
+ "sha256": "0ec66be59d8de6b932e0f29c3d7fafefcca0589633ef8cc277b33a37640334c3",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}

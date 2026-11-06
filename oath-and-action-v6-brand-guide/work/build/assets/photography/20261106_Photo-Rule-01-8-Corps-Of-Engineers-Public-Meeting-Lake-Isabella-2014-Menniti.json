@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Menniti.jpg",
+ "for_rule": "01.8",
+ "status": "alternate",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:Corps_meets_with_Lake_Isabella_owners_(13548850913).jpg",
+ "commons_title": "File:Corps meets with Lake Isabella owners (13548850913).jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:Corps_meets_with_Lake_Isabella_owners_(13548850913).jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Corps_meets_with_Lake_Isabella_owners_%2813548850913%29.jpg",
+ "original_pixels": {
+  "width": 4440,
+  "height": 2904
+ },
+ "original_sha1": "7cdab455dc6010761fb63e88636ec224b294d30d",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Corps_meets_with_Lake_Isabella_owners_%2813548850913%29.jpg/1920px-Corps_meets_with_Lake_Isabella_owners_%2813548850913%29.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "U.S. Army Corps of Engineers, Sacramento District",
+ "author": "John Prettyman, U.S. Army",
+ "date": "March 27, 2014",
+ "place": "Lake Isabella, Kern County, California",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This image or file is a work of a U.S. Army Corps of Engineers soldier or employee, taken or made as part of that person's official duties. As a work of the U.S. federal government, the image is in the public domain.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": null,
+ "source_description": "John Menniti (right), senior project manager for the U.S. Army Corps of Engineers Sacramento District Isabella Lake Dam Safety Modification Project, discusses impacted properties and proposed real estate actions with local residents at a public meeting March 27, 2014 in Lake Isabella, Calif. (U.S. Army photo by John Prettyman/Released)",
+ "caption": "John Menniti (right), senior project manager for the U.S. Army Corps of Engineers' Isabella Lake Dam safety project, talks with residents about affected properties at a public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.",
+ "why_it_fits": "People doing public work, an official among them, at the same public meeting; here the residents' faces show and the official's back is to the camera.",
+ "notes": "Same meeting as the recommended photograph; use one of the two, not both. The two residents are private people and are not named.",
+ "pixels": {
+  "width": 1920,
+  "height": 1256
+ },
+ "format": "JPEG",
+ "sha256": "245b7f6042c8f3b2e637b6ecee0c9380e903f1a76255cd7a656884f5860e6106",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}

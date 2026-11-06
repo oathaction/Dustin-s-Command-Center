@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg",
+ "for_rule": "01.6",
+ "status": "recommended",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:Rosa_Parks_Lying_in_Honor_(8509693081).jpg",
+ "commons_title": "File:Rosa Parks Lying in Honor (8509693081).jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:Rosa_Parks_Lying_in_Honor_(8509693081).jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Rosa_Parks_Lying_in_Honor_%288509693081%29.jpg",
+ "original_pixels": {
+  "width": 2500,
+  "height": 1660
+ },
+ "original_sha1": "580c3b8584e87fb9a2297ac6ce0f171e0b1c5338",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Rosa_Parks_Lying_in_Honor_%288509693081%29.jpg/1920px-Rosa_Parks_Lying_in_Honor_%288509693081%29.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "Architect of the Capitol",
+ "author": "Architect of the Capitol photographer (credited \"USCapitol\"); individual not named",
+ "date": "October 30 or 31, 2005 (the two days Rosa Parks lay in honor; the file's \"1 October 2005\" date is a placeholder)",
+ "place": "Rotunda, U.S. Capitol, Washington, D.C.",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This image is a work of an employee of the Architect of the Capitol, taken or made as part of that person's official duties. As a work of the U.S. federal government, all images created or made by the Architect of the Capitol are in the public domain in the United States.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": null,
+ "source_description": "From October 30-31, 2005, Rosa Parks lay in honor in the Capitol Rotunda. Parks was the first woman to lay in honor in the Capitol Rotunda and the second African-American. ... Authority for use of the Rotunda granted by Senate Concurrent Resolution 61, 109th Congress, 1st Session, agreed to October 29, 2005.",
+ "caption": "Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.",
+ "why_it_fits": "A documentary photograph in which the Capitol Rotunda (its pilasters, historical paintings and statues) appears as the place where a named public event happened. The subject is the public filing past the casket; no partisan figure is the subject.",
+ "notes": "The Architect of the Capitol mark sits at the lower right; crop it. Uniformed U.S. Capitol Police officers stand in the line of mourners.",
+ "pixels": {
+  "width": 1920,
+  "height": 1275
+ },
+ "format": "JPEG",
+ "sha256": "749b7159ac31fc856a37a3b1fd2110e1184458d0c00a3f9d42ee69d544b879d0",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}

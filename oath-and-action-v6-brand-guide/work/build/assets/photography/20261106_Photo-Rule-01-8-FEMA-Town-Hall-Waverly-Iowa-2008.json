@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-8-FEMA-Town-Hall-Waverly-Iowa-2008.jpg",
+ "for_rule": "01.8",
+ "status": "alternate",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:FEMA_-_35786_-_Town_hall_meeting_in_Iowa.jpg",
+ "commons_title": "File:FEMA - 35786 - Town hall meeting in Iowa.jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:FEMA_-_35786_-_Town_hall_meeting_in_Iowa.jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/FEMA_-_35786_-_Town_hall_meeting_in_Iowa.jpg",
+ "original_pixels": {
+  "width": 3000,
+  "height": 1752
+ },
+ "original_sha1": "f53285bc8d1528812d0ca1acdf1380183636a449",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/FEMA_-_35786_-_Town_hall_meeting_in_Iowa.jpg/1920px-FEMA_-_35786_-_Town_hall_meeting_in_Iowa.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "Federal Emergency Management Agency",
+ "author": "Patsy Lynch, FEMA",
+ "date": "June 17, 2008",
+ "place": "Waverly, Iowa",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This image is a work of a Federal Emergency Management Agency employee, taken or made as part of that person's official duties. As works of the U.S. federal government, all FEMA images are in the public domain in the United States.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": null,
+ "source_description": "Waverly, IA June 17, 2008 -- FEMA intergovernmental Affairs representative, Jim Woodard, talks residents of Waverly, IA at a town hall meeting. FEMA is working with State and local officials to help with the rebuilding of the town after it was flooded when the Cedar River came over its' banks. Photo by Patsy Lynch/FEMA",
+ "caption": "Jim Woodard, an intergovernmental affairs representative for the Federal Emergency Management Agency, speaks at a town hall meeting for residents of Waverly, Iowa, on June 17, 2008, after the Cedar River flooded the town. Photograph: Patsy Lynch, FEMA.",
+ "why_it_fits": "People doing public work, officials among them: a named federal official speaks at a town hall, with a panel seated behind him. A different region, agency and year from the recommended photograph.",
+ "notes": "The agency caption names Woodard but does not say where he stands; the standing speaker with the microphone is the only person speaking. The seated panel is not named, so the caption must not name them. The audience is out of frame.",
+ "pixels": {
+  "width": 1920,
+  "height": 1121
+ },
+ "format": "JPEG",
+ "sha256": "c0c81cb55a0832e50df40323be4ab5310bfacb745f900ffcc391377fc587eea2",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}

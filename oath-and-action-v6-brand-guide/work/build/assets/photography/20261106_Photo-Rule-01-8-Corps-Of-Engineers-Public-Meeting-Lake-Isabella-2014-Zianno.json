@@ -1,0 +1,35 @@
+{
+ "file": "20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg",
+ "for_rule": "01.8",
+ "status": "recommended",
+ "commons_file_page": "https://commons.wikimedia.org/wiki/File:A_meeting_between_Corps_and_Lake_Isabella_owners.jpg",
+ "commons_title": "File:A meeting between Corps and Lake Isabella owners.jpg",
+ "source_url": "https://commons.wikimedia.org/wiki/File:A_meeting_between_Corps_and_Lake_Isabella_owners.jpg",
+ "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/A_meeting_between_Corps_and_Lake_Isabella_owners.jpg",
+ "original_pixels": {
+  "width": 2048,
+  "height": 1311
+ },
+ "original_sha1": "bba5ed98f4da2f706b0cb9747156e8ce4847226d",
+ "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/A_meeting_between_Corps_and_Lake_Isabella_owners.jpg/1920px-A_meeting_between_Corps_and_Lake_Isabella_owners.jpg",
+ "download_note": "Downloaded on November 6, 2026 as Wikimedia's standard-width rendition of the original, through the imageinfo API. The original URL returned HTTP 429 with Retry-After 600 three times, and Wikimedia's error page directs rate-limited clients to its standard thumbnail sizes. Replace with the original from original_url before print, and check it against original_sha1.",
+ "agency": "U.S. Army Corps of Engineers, Sacramento District",
+ "author": "John Prettyman, U.S. Army",
+ "date": "March 27, 2014",
+ "place": "Lake Isabella, Kern County, California",
+ "license": "Public domain in the United States as a work of the U.S. federal government (17 U.S.C. 105)",
+ "license_line": "This image or file is a work of a U.S. Army Corps of Engineers soldier or employee, taken or made as part of that person's official duties. As a work of the U.S. federal government, the image is in the public domain.",
+ "license_read_on": "November 6, 2026, on the Commons file page",
+ "other_source": "https://www.flickr.com/photos/sacramentodistrict/13549062964/ (as listed on the file page; not opened)",
+ "source_description": "Paul Zianno (center), chief of civil works for acquisition and management for the U.S. Army Corps of Engineers Sacramento District Isabella Lake Dam Safety Modification Project, discusses impacted properties and proposed real estate actions with local residents at a public meeting March 27, 2014 in Lake Isabella, Calif. ... (U.S. Army photo by John Prettyman/Released)",
+ "caption": "Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento District, explains the Isabella Lake Dam safety project's land purchases to residents at a public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.",
+ "why_it_fits": "People doing public work, an official among them: a named federal official answers residents' questions at a public meeting, beside the project map and a board headed \"Steps in the real estate process\". Who, what, where and when are all in the agency caption.",
+ "notes": "The Commons description carries a stray phrase, \"Cross border estate planning\", that is not part of the agency caption; leave it out. The residents are seen from behind and are not named.",
+ "pixels": {
+  "width": 1920,
+  "height": 1229
+ },
+ "format": "JPEG",
+ "sha256": "fa69d904bad9318e0a45a96be43bfeceb37154292296ef7e88d21227b73975ab",
+ "checked_by": "Research lead, November 6, 2026; image viewed before listing"
+}
