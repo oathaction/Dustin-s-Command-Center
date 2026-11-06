@@ -48,6 +48,8 @@ The studio agents live in `.claude/agents/`. Use them as Master Brief section 4 
 
 Plain, spoken prose in active voice. Explain terms at first use. Quote the locked brand lines exactly. Vary sentence length. Avoid em dashes, antithesis, corrective negation, contrasting pairs, rhetorical triplets, parallel sentence runs, setup and payoff lines, slogan-like closing sentences, throat-clearing openers, summary beats, stacked noun phrases, nominalizations, hedging qualifiers, performed enthusiasm, filler intensifiers (genuinely, really, truly, actually) and corporate verbs (leverage, underscore, reflect).
 
+The binding text is chapter 02's writing section, `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`, approved on Board 5 (DR-73). Where the two differ, chapter 02 governs.
+
 ## Honesty
 
 Report what you tested and what you could not test as separate lists. Never describe a check you did not run. Label illustrative people, quotes, places and figures beside the item. Every public policy statistic carries its source, observation period and qualification.

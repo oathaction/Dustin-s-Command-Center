@@ -463,3 +463,19 @@ Dustin restarted in a new chat with the V3 handoff's starting prompt and wrote: 
 | # | Decision | Reason |
 |---|---|---|
 | D2-133 | The Board 5 answers are folded into the writing section and its content file by the main session: the status line, "Twelve house rules" in the deck, H11 and H12 without the Proposed mark, W21's typesetting note, and each decision's answer with its DR number. The rules' wording is unchanged. Board 5 itself is not rebuilt; it stays the record of what Dustin saw | Clerical edits that carry an approval; a board records what was shown |
+
+## Reader check and stage board A, November 6, 2026
+
+The studio asked nine questions with a recommendation for each. Dustin: "Go, all recommendations."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-84 | The reader check shows System 1's drawings in place of the October 28 cards and poster, which DR-26 set aside: the overview, the R10 loop close-up and one more loop, with the four loop questions. It adds a naming test of Civic Line icons and the 16 px marks sheet | Dustin, November 6, as recommended |
+| DR-85 | The reader check shows three charts, S02 (child poverty), S11 (shift arrows) and S14 (monthly jobs), each with two questions: what the chart tells you in one sentence, and whether it seems to favor a party or side, and which | Dustin, November 6, as recommended |
+| DR-86 | The reader check adds three before and after pairs from chapter 02 (which is easier to follow) and the wordmark at both widths in a masthead (which reads faster at a glance). The whole check runs 8 to 10 minutes on a phone | Dustin, November 6, as recommended |
+| DR-87 | Reader check: five or more readers, phone first, a mix of political leanings and ages, a first name or initials and nothing else, a one-line consent note, and readers told only that it is a draft for a civic publication | Dustin, November 6, as recommended |
+| DR-88 | Stage board A shows chapters 01 to 08 as finished guide pages with final copy and real specimens, inside a first draft of the guide shell. The shell's last pass waits for board B, where the pillar marks (chapter 09) mark each part | Dustin, November 6, as recommended |
+| DR-89 | The DR-71 proofs (masthead, avatar, social card, letterhead) are built at both wordmark widths now, as their own panel on board A. Chapter 03 shows today's width until Gate 2 | Dustin, November 6, as recommended |
+| DR-90 | Stage board A works from V5's text census, the Phase 0 audits and the rebuilt identity masters, with no V5 upload | Dustin, November 6, as recommended |
+| DR-91 | Chapter 01 names each pillar's products as the brand's set, with no launch dates or status | Dustin, November 6, as recommended |
+| DR-92 | `CLAUDE.md` gains one line naming chapter 02's writing section as the binding text | Dustin, November 6, as recommended |
