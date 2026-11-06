@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/03-instrument/20261106_Data-Viz-03-Instrument.html",
- "checked": "2026-11-06T05:06:25.322Z",
+ "checked": "2026-11-06T05:20:16.030Z",
  "views": [
   "white",
   "newsprint",
@@ -13,7 +13,7 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 754,
+   "texts": 818,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -22,48 +22,9 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 325,
-    "outside": [
-     {
-      "svg": "white-s02-w",
-      "text": "2009"
-     },
-     {
-      "svg": "white-s03-w",
-      "text": "17 changes"
-     },
-     {
-      "svg": "white-s05-w",
-      "text": "48.5%"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "white-s01-w",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "white-s01-w",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "white-s02-w",
-      "a": "2021: 5.1%. The expanded child",
-      "b": "both"
-     },
-     {
-      "svg": "white-s05-w",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s10-w",
-      "a": "100%",
-      "b": "Documented"
-     }
-    ]
+    "labels": 392,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -86,7 +47,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10853,
+   "height": 10248,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -95,7 +56,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 745,
+   "texts": 809,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -104,48 +65,9 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 325,
-    "outside": [
-     {
-      "svg": "newsprint-s02-w",
-      "text": "2009"
-     },
-     {
-      "svg": "newsprint-s03-w",
-      "text": "17 changes"
-     },
-     {
-      "svg": "newsprint-s05-w",
-      "text": "48.5%"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "newsprint-s01-w",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "newsprint-s01-w",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "newsprint-s02-w",
-      "a": "2021: 5.1%. The expanded child",
-      "b": "both"
-     },
-     {
-      "svg": "newsprint-s05-w",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s10-w",
-      "a": "100%",
-      "b": "Documented"
-     }
-    ]
+    "labels": 392,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -168,7 +90,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10609,
+   "height": 10004,
    "axe": [],
    "focusStops": 39,
    "focusWithoutRing": []
@@ -177,7 +99,7 @@
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 143,
+   "texts": 142,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -188,23 +110,7 @@
     "drawings": 3,
     "labels": 76,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "dark-s01-w",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "dark-s01-w",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "dark-s10-w",
-      "a": "100%",
-      "b": "Documented"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -227,7 +133,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2475,
+   "height": 2457,
    "axe": [],
    "focusStops": 15,
    "focusWithoutRing": []
@@ -236,7 +142,7 @@
    "width": 1440,
    "view": "social",
    "rootVisible": true,
-   "texts": 46,
+   "texts": 45,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -247,18 +153,7 @@
     "drawings": 3,
     "labels": 20,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "of registered votersfavored a "
-     },
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "100%"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -281,7 +176,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 1963,
+   "height": 2283,
    "axe": [],
    "focusStops": 8,
    "focusWithoutRing": []
@@ -290,7 +185,7 @@
    "width": 1440,
    "view": "system",
    "rootVisible": true,
-   "texts": 458,
+   "texts": 465,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -300,48 +195,8 @@
    "textCheck": {
     "drawings": 4,
     "labels": 100,
-    "outside": [
-     {
-      "svg": "systema-s03-m",
-      "text": "17 changes"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "text": "17 changes"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "systema-s03-m",
-      "a": "Executive or agency action",
-      "b": "2"
-     },
-     {
-      "svg": "systema-s03-m",
-      "a": "Local law or funding vote",
-      "b": "2"
-     },
-     {
-      "svg": "system-r-s01-w",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "system-r-s01-w",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Executive or agency action",
-      "b": "2"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Local law or funding vote",
-      "b": "2"
-     }
-    ]
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 5,
@@ -364,124 +219,27 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 8792,
-   "axe": [
-    {
-     "id": "list",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".steps"
-    }
-   ],
-   "focusStops": 16,
+   "height": 9146,
+   "axe": [],
+   "focusStops": 17,
    "focusWithoutRing": []
   },
   {
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 789,
+   "texts": 796,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 433
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 366,
-    "outside": [
-     {
-      "svg": "white-s02-n",
-      "text": "2009"
-     },
-     {
-      "svg": "white-s02-n",
-      "text": "2025"
-     },
-     {
-      "svg": "white-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "65.2%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "74.3%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "44.7%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "48.5%"
-     },
-     {
-      "svg": "white-s09-n",
-      "text": "E21"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "white-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "white-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "white-s04-n",
-      "a": "2020",
-      "b": "2024"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Non-Hispanic White",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "50",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "60",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Black",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "40",
-      "b": "29.6 points below non-Hispanic"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Hispanic, of any race",
-      "b": "80%"
-     }
-    ]
+    "labels": 375,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -504,7 +262,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 20450,
+   "height": 20590,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -513,108 +271,18 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 780,
+   "texts": 787,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 433
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 366,
-    "outside": [
-     {
-      "svg": "newsprint-s02-n",
-      "text": "2009"
-     },
-     {
-      "svg": "newsprint-s02-n",
-      "text": "2025"
-     },
-     {
-      "svg": "newsprint-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "65.2%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "74.3%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "44.7%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "48.5%"
-     },
-     {
-      "svg": "newsprint-s09-n",
-      "text": "E21"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "newsprint-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "newsprint-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "newsprint-s04-n",
-      "a": "2020",
-      "b": "2024"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Non-Hispanic White",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "50",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "60",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Black",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "40",
-      "b": "29.6 points below non-Hispanic"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Hispanic, of any race",
-      "b": "80%"
-     }
-    ]
+    "labels": 375,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -637,7 +305,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 19918,
+   "height": 20058,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -646,7 +314,7 @@
    "width": 390,
    "view": "dark",
    "rootVisible": true,
-   "texts": 143,
+   "texts": 142,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -657,18 +325,7 @@
     "drawings": 3,
     "labels": 74,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "dark-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "dark-s01-n",
-      "a": "86%",
-      "b": "100%"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -691,7 +348,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 4555,
+   "height": 4522,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -700,7 +357,7 @@
    "width": 390,
    "view": "social",
    "rootVisible": true,
-   "texts": 45,
+   "texts": 44,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -711,18 +368,7 @@
     "drawings": 3,
     "labels": 20,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "of registered votersfavored a "
-     },
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "100%"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -745,7 +391,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2542,
+   "height": 2762,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -754,303 +400,18 @@
    "width": 390,
    "view": "system",
    "rootVisible": true,
-   "texts": 446,
-   "minSize": 6.84,
-   "under13": [
-    {
-     "text": "Away from voters",
-     "size": 12.76
-    },
-    {
-     "text": "Toward voters",
-     "size": 12.76
-    },
-    {
-     "text": "Kept existing rules",
-     "size": 12.76
-    },
-    {
-     "text": "Mixed",
-     "size": 12.76
-    },
-    {
-     "text": "Pending",
-     "size": 12.76
-    },
-    {
-     "text": "7",
-     "size": 12.76
-    },
-    {
-     "text": "8",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "None away from voters",
-     "size": 12.76
-    },
-    {
-     "text": "8",
-     "size": 12.76
-    },
-    {
-     "text": "5",
-     "size": 12.76
-    },
-    {
-     "text": "9",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "9 of its 11 moved the rules away from vo",
-     "size": 12.76
-    },
-    {
-     "text": "3",
-     "size": 12.76
-    },
-    {
-     "text": "3",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "4",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "2",
-     "size": 12.76
-    },
-    {
-     "text": "Away from voters",
-     "size": 6.84
-    },
-    {
-     "text": "Toward voters",
-     "size": 6.84
-    },
-    {
-     "text": "Kept existing rules",
-     "size": 6.84
-    },
-    {
-     "text": "Mixed",
-     "size": 6.84
-    },
-    {
-     "text": "Pending",
-     "size": 6.84
-    },
-    {
-     "text": "Ballot initiative",
-     "size": 7.9
-    },
-    {
-     "text": "None away from voters",
-     "size": 6.84
-    },
-    {
-     "text": "7",
-     "size": 6.84
-    },
-    {
-     "text": "8",
-     "size": 6.84
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "17 changes",
-     "size": 7.9
-    },
-    {
-     "text": "Court ruling",
-     "size": 7.9
-    },
-    {
-     "text": "8",
-     "size": 6.84
-    },
-    {
-     "text": "5",
-     "size": 6.84
-    },
-    {
-     "text": "1",
-     "size": 6.84
-    },
-    {
-     "text": "14",
-     "size": 7.9
-    },
-    {
-     "text": "State statute",
-     "size": 7.9
-    },
-    {
-     "text": "9",
-     "size": 6.84
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "11",
-     "size": 7.9
-    },
-    {
-     "text": "9 of its 11 moved the rules",
-     "size": 6.84
-    },
-    {
-     "text": "away from voters",
-     "size": 6.84
-    },
-    {
-     "text": "Referendum",
-     "size": 7.9
-    },
-    {
-     "text": "3",
-     "size": 6.84
-    },
-    {
-     "text": "3",
-     "size": 6.84
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "1",
-     "size": 6.84
-    },
-    {
-     "text": "1",
-     "size": 6.84
-    },
-    {
-     "text": "10",
-     "size": 7.9
-    },
-    {
-     "text": "Federal statute",
-     "size": 7.9
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "4",
-     "size": 6.84
-    },
-    {
-     "text": "1",
-     "size": 6.84
-    },
-    {
-     "text": "7",
-     "size": 7.9
-    },
-    {
-     "text": "Executive or agency action",
-     "size": 7.9
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "1",
-     "size": 6.84
-    },
-    {
-     "text": "3",
-     "size": 7.9
-    },
-    {
-     "text": "Local law or funding vote",
-     "size": 7.9
-    },
-    {
-     "text": "2",
-     "size": 6.84
-    },
-    {
-     "text": "2",
-     "size": 7.9
-    }
-   ],
+   "texts": 457,
+   "minSize": 13,
+   "under13": [],
    "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 427
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 4,
-    "labels": 95,
-    "outside": [
-     {
-      "svg": "systema-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "text": "17 changes"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "system-r-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "system-r-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Executive or agency action",
-      "b": "2"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Local law or funding vote",
-      "b": "2"
-     }
-    ]
+    "labels": 100,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 5,
@@ -1073,15 +434,8 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 16705,
-   "axe": [
-    {
-     "id": "list",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".steps"
-    }
-   ],
+   "height": 16648,
+   "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   },
@@ -1089,108 +443,18 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 789,
+   "texts": 796,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 398
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 366,
-    "outside": [
-     {
-      "svg": "white-s02-n",
-      "text": "2009"
-     },
-     {
-      "svg": "white-s02-n",
-      "text": "2025"
-     },
-     {
-      "svg": "white-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "65.2%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "74.3%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "44.7%"
-     },
-     {
-      "svg": "white-s05-n",
-      "text": "48.5%"
-     },
-     {
-      "svg": "white-s09-n",
-      "text": "E21"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "white-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "white-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "white-s04-n",
-      "a": "2020",
-      "b": "2024"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Non-Hispanic White",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "50",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "60",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Black",
-      "b": "80%"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "40",
-      "b": "29.6 points below non-Hispanic"
-     },
-     {
-      "svg": "white-s05-n",
-      "a": "Hispanic, of any race",
-      "b": "80%"
-     }
-    ]
+    "labels": 375,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -1213,7 +477,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 20903,
+   "height": 21053,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -1222,108 +486,18 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 780,
+   "texts": 787,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 398
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 366,
-    "outside": [
-     {
-      "svg": "newsprint-s02-n",
-      "text": "2009"
-     },
-     {
-      "svg": "newsprint-s02-n",
-      "text": "2025"
-     },
-     {
-      "svg": "newsprint-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "65.2%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "74.3%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "44.7%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "text": "48.5%"
-     },
-     {
-      "svg": "newsprint-s09-n",
-      "text": "E21"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "newsprint-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "newsprint-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "newsprint-s04-n",
-      "a": "2020",
-      "b": "2024"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "All households",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Non-Hispanic White",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "50",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "60",
-      "b": "Lines for this group and Black"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Black",
-      "b": "80%"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "40",
-      "b": "29.6 points below non-Hispanic"
-     },
-     {
-      "svg": "newsprint-s05-n",
-      "a": "Hispanic, of any race",
-      "b": "80%"
-     }
-    ]
+    "labels": 375,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 2,
@@ -1346,7 +520,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 20321,
+   "height": 20471,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -1355,7 +529,7 @@
    "width": 360,
    "view": "dark",
    "rootVisible": true,
-   "texts": 143,
+   "texts": 142,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -1366,18 +540,7 @@
     "drawings": 3,
     "labels": 74,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "dark-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "dark-s01-n",
-      "a": "86%",
-      "b": "100%"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -1400,7 +563,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 4667,
+   "height": 4634,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -1409,7 +572,7 @@
    "width": 360,
    "view": "social",
    "rootVisible": true,
-   "texts": 45,
+   "texts": 44,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -1420,18 +583,7 @@
     "drawings": 3,
     "labels": 20,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "of registered votersfavored a "
-     },
-     {
-      "svg": "social-s01-c",
-      "a": "86%",
-      "b": "100%"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 3,
@@ -1454,7 +606,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2621,
+   "height": 2881,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -1463,303 +615,18 @@
    "width": 360,
    "view": "system",
    "rootVisible": true,
-   "texts": 446,
-   "minSize": 6.27,
-   "under13": [
-    {
-     "text": "Away from voters",
-     "size": 11.57
-    },
-    {
-     "text": "Toward voters",
-     "size": 11.57
-    },
-    {
-     "text": "Kept existing rules",
-     "size": 11.57
-    },
-    {
-     "text": "Mixed",
-     "size": 11.57
-    },
-    {
-     "text": "Pending",
-     "size": 11.57
-    },
-    {
-     "text": "7",
-     "size": 11.57
-    },
-    {
-     "text": "8",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "None away from voters",
-     "size": 11.57
-    },
-    {
-     "text": "8",
-     "size": 11.57
-    },
-    {
-     "text": "5",
-     "size": 11.57
-    },
-    {
-     "text": "9",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "9 of its 11 moved the rules away from vo",
-     "size": 11.57
-    },
-    {
-     "text": "3",
-     "size": 11.57
-    },
-    {
-     "text": "3",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "4",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "2",
-     "size": 11.57
-    },
-    {
-     "text": "Away from voters",
-     "size": 6.27
-    },
-    {
-     "text": "Toward voters",
-     "size": 6.27
-    },
-    {
-     "text": "Kept existing rules",
-     "size": 6.27
-    },
-    {
-     "text": "Mixed",
-     "size": 6.27
-    },
-    {
-     "text": "Pending",
-     "size": 6.27
-    },
-    {
-     "text": "Ballot initiative",
-     "size": 7.24
-    },
-    {
-     "text": "None away from voters",
-     "size": 6.27
-    },
-    {
-     "text": "7",
-     "size": 6.27
-    },
-    {
-     "text": "8",
-     "size": 6.27
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "17 changes",
-     "size": 7.24
-    },
-    {
-     "text": "Court ruling",
-     "size": 7.24
-    },
-    {
-     "text": "8",
-     "size": 6.27
-    },
-    {
-     "text": "5",
-     "size": 6.27
-    },
-    {
-     "text": "1",
-     "size": 6.27
-    },
-    {
-     "text": "14",
-     "size": 7.24
-    },
-    {
-     "text": "State statute",
-     "size": 7.24
-    },
-    {
-     "text": "9",
-     "size": 6.27
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "11",
-     "size": 7.24
-    },
-    {
-     "text": "9 of its 11 moved the rules",
-     "size": 6.27
-    },
-    {
-     "text": "away from voters",
-     "size": 6.27
-    },
-    {
-     "text": "Referendum",
-     "size": 7.24
-    },
-    {
-     "text": "3",
-     "size": 6.27
-    },
-    {
-     "text": "3",
-     "size": 6.27
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "1",
-     "size": 6.27
-    },
-    {
-     "text": "1",
-     "size": 6.27
-    },
-    {
-     "text": "10",
-     "size": 7.24
-    },
-    {
-     "text": "Federal statute",
-     "size": 7.24
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "4",
-     "size": 6.27
-    },
-    {
-     "text": "1",
-     "size": 6.27
-    },
-    {
-     "text": "7",
-     "size": 7.24
-    },
-    {
-     "text": "Executive or agency action",
-     "size": 7.24
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "1",
-     "size": 6.27
-    },
-    {
-     "text": "3",
-     "size": 7.24
-    },
-    {
-     "text": "Local law or funding vote",
-     "size": 7.24
-    },
-    {
-     "text": "2",
-     "size": 6.27
-    },
-    {
-     "text": "2",
-     "size": 7.24
-    }
-   ],
+   "texts": 457,
+   "minSize": 13,
+   "under13": [],
    "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
-   "overflowing": [
-    {
-     "tag": "text",
-     "cls": "x15k",
-     "right": 392
-    }
-   ],
+   "overflowing": [],
    "textCheck": {
     "drawings": 4,
-    "labels": 95,
-    "outside": [
-     {
-      "svg": "systema-s03-n",
-      "text": "17 changes"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "text": "17 changes"
-     }
-    ],
-    "overlaps": [
-     {
-      "svg": "system-r-s01-n",
-      "a": "86%",
-      "b": "of registered voters favored a"
-     },
-     {
-      "svg": "system-r-s01-n",
-      "a": "86%",
-      "b": "100%"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Executive or agency action",
-      "b": "2"
-     },
-     {
-      "svg": "system-s-s03-s",
-      "a": "Local law or funding vote",
-      "b": "2"
-     }
-    ]
+    "labels": 100,
+    "outside": [],
+    "overlaps": []
    },
    "red": {
     "marks": 5,
@@ -1782,15 +649,8 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 17257,
-   "axe": [
-    {
-     "id": "list",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".steps"
-    }
-   ],
+   "height": 17317,
+   "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   }
@@ -1807,36 +667,6 @@
    "visible": true
   }
  },
- "failures": [
-  "1440 white: 3 labels outside their drawing",
-  "1440 white: 5 overlapping labels",
-  "1440 newsprint: 3 labels outside their drawing",
-  "1440 newsprint: 5 overlapping labels",
-  "1440 dark: 3 overlapping labels",
-  "1440 social: 2 overlapping labels",
-  "1440 system: 2 labels outside their drawing",
-  "1440 system: 6 overlapping labels",
-  "1440 system: axe listx1",
-  "390 white: 8 labels outside their drawing",
-  "390 white: 10 overlapping labels",
-  "390 newsprint: 8 labels outside their drawing",
-  "390 newsprint: 10 overlapping labels",
-  "390 dark: 2 overlapping labels",
-  "390 social: 2 overlapping labels",
-  "390 system: 62 text items under 13 px (min 6.84)",
-  "390 system: 2 labels outside their drawing",
-  "390 system: 4 overlapping labels",
-  "390 system: axe listx1",
-  "360 white: 8 labels outside their drawing",
-  "360 white: 10 overlapping labels",
-  "360 newsprint: 8 labels outside their drawing",
-  "360 newsprint: 10 overlapping labels",
-  "360 dark: 2 overlapping labels",
-  "360 social: 2 overlapping labels",
-  "360 system: 62 text items under 13 px (min 6.27)",
-  "360 system: 2 labels outside their drawing",
-  "360 system: 4 overlapping labels",
-  "360 system: axe listx1"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }

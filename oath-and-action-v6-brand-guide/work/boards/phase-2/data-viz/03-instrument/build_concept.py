@@ -1257,7 +1257,7 @@ def module(sid, view, ground, mode='panel', inst='', anat=False, red=True, hl=2,
 
 def strip(sid, size='Column module, 866 px; artboards 866, 560 and 328 px'):
     m, s = META[sid], SPECS[sid]
-    return (f'<aside class="strip" aria-label="Studio note on {sid}"><p class="sn-h">Studio note, not chart copy</p>'
+    return (f'<aside class="strip" aria-label="Studio note on {sid}"><p class="sn-h">Studio note for reviewers</p>'
             f'<p class="sn-id">{sid} · {esc(s["form"])}</p>'
             f'<p><span class="k">Reader question.</span> {esc(s["reader_question"])}</p>'
             f'<p><span class="k">Why this form.</span> {esc(m["why"])}</p>'
@@ -1312,7 +1312,7 @@ def view_white():
             'second code after color, as the atlas\'s evidence lines do. The same module works as a still image and as a panel with a '
             'Chart and Table switch; the System view says which parts change.</p>'
             f'<nav class="vlinks" aria-label="Other views"><ul>{lk}</ul></nav>'
-            '<p class="howto">Each chart sits in its module. The tinted panel beside it is the studio\'s note for reviewers and is not chart copy.</p>'
+            '<p class="howto">Each chart sits in its module. The tinted panel beside it holds the studio\'s note for reviewers and sits outside the chart.</p>'
             f'</header><div class="specs">{rows}</div></div></section>')
 
 
@@ -1338,7 +1338,7 @@ def view_dark():
     return (f'<section class="view g-dark" data-view-root="dark" aria-labelledby="h-dark" hidden><div class="wrap">'
             '<header class="vhead"><p class="eyebrow">View 3 of 5 · Charcoal</p>'
             '<h1 class="headline" id="h-dark">Two modules on Charcoal</h1>'
-            '<p class="deck">The dark palette swaps roles, not meanings: Newsprint carries the named series, Dim Newsprint the context, and texture '
+            '<p class="deck">On Charcoal, Newsprint carries the named series, Dim Newsprint the context, and texture '
             'still carries the evidence grade. Text from 13 to 15 px sets one weight heavier. Lifted Prussian and lifted Verdigris sit only 0.022 '
             'apart in lightness here, so dark charts keep to two inks and label every mark.</p>'
             f'<ul class="dtok">{items}</ul><p class="dtn">Contrast measured against Charcoal, #121212.</p>'
@@ -1383,7 +1383,7 @@ def view_social():
             f'{SOCIAL["scale"]:.2f} times, so the smallest chart label reads at {13 * SOCIAL["scale"]:.0f} px. The slots keep their order: evidence label, title, measure, '
             'figure, source. The wordmark comes from the display master, and the one red mark is the Senate shortfall the title names.</p>'
             f'</header><div class="socwrap">{card_html}<aside class="strip" aria-label="Studio note on the social card">'
-            '<p class="sn-h">Studio note, not chart copy</p><p class="sn-id">Social card · built from S01</p>'
+            '<p class="sn-h">Studio note for reviewers</p><p class="sn-id">Social card · built from S01</p>'
             '<p><span class="k">What changes.</span> The switch, the downloads and the readout drop. The title, measure, figure, notes and source stay. The table travels as the alt text.</p>'
             '<p><span class="k">Size.</span> 1080 by 1350 px, the portrait post for Instagram and LinkedIn; 64 px margins on the 8 px rhythm.</p>'
             '<p><span class="k">Kit.</span> social_card(spec) measures the title, measure and source, then asks the generator for the narrowest artboard that fills the card\'s 952 px width and still fits the height left over. A module whose scale would fall under 1.6 times needs a shorter title or a shorter artboard.</p>'
@@ -1489,7 +1489,7 @@ def sys_codes():
             f'<div><h3 class="sh3">Evidence code</h3><ul class="mklist">{grades}</ul><p class="small">Grades never take red, and hypothesis, the dotted line, has no fill: '
             'no claim in the register carries it.</p></div>'
             f'<div><h3 class="sh3">Direction glyphs, scenarios</h3><ul class="mklist gl-list">{glyphs}</ul><p class="small">Shape carries the direction; a Verdigris or Prussian tint '
-            'carries the side, never red against blue. Party marks take neutral inks with the party\'s name printed on them, ordered by value or alphabet.</p></div></div>')
+            'carries the side: Verdigris for up, Prussian for down. No scale pairs red with blue. Party marks take neutral inks with the party\'s name printed on them, ordered by value or alphabet.</p></div></div>')
 
 
 PAL = [('Ground', 'gr', 'White, Newsprint, Charcoal'), ('Named series, baseline, away from voters', 'ink', 'Charcoal; Newsprint on Charcoal'),
@@ -1551,12 +1551,12 @@ def sys_rules():
     rules = [('Notes sit inside the drawing.', 'Inter 13 in Deep Stone, joined to the data by 1 px leaders; the named record in Inter 600, Charcoal. A note names the record, explains an odd encoding once, or gives a reader\'s scale.'),
              ('Label directly.', 'Labels sit on the mark or at its end. A key appears only when labels cannot fit, and it sits inside the drawing above the marks it explains.'),
              ('Write the unit once.', 'On the top tick or the first label: "100%", "17 changes", "Down 3.7 points". Other ticks stay bare.'),
-             ('Numbers are tabular, and minus is the true minus.', f'{MINUS}3.7, never a hyphen.'),
+             ('Numbers are tabular, and minus is the true minus.', f'Write {MINUS}3.7 with U+2212.'),
              ('Scales are honest.', 'Bars start at zero. A line or dot scale may start elsewhere when the measure line says so. Small multiples share one scale. Missing years and method breaks stay open; the line never bridges them.'),
-             ('Hover adds, never hides.', 'The readout under a chart repeats what the table holds. Every value is printed, in the notes or in the table.'),
-             ('The source line goes under every chart.', 'In section 15 order: publisher, title or table, observation period, geography, date retrieved, qualification. Shorten by dropping words, never facts. The credit sits at the right.'),
+             ('Hover repeats the table.', 'The readout under a chart repeats what the table holds. Every value is printed, in the notes or in the table.'),
+             ('The source line goes under every chart.', 'In section 15 order: publisher, title or table, observation period, geography, date retrieved, qualification. Shorten by dropping words; every fact stays. The credit sits at the right.'),
              ('Index labels point at records.', 'RL07 is repair log row 7, PW15 is everyday question 15, E09 is the studio\'s key for the ninth history event. They print where they help a reader find the record, and nowhere for decoration.'),
-             ('Illustrative items carry the word.', '"Illustrative data" or "Illustrative ask" sits beside the item, never in a footnote.')]
+             ('Illustrative items carry the word.', '"Illustrative data" or "Illustrative ask" sits beside the item itself.')]
     return '<ol class="rules">' + ''.join(f'<li><strong>{esc(a)}</strong> {esc(b)}</li>' for a, b in rules) + '</ol>'
 
 
@@ -1566,7 +1566,8 @@ def sys_still():
                ('Adds', 'Alt text with every value, sent with the image, and a line in the notes that says where the table and data live.'),
                ('Changes', 'The figure uses a 680 px artboard drawn by the same generator and exports at 2x for Substack and email. Nothing moves between slots.')]
     lst = ''.join(f'<li><strong>{a}.</strong> {esc(b)}</li>' for a, b in changes)
-    return (f'<div class="stillgrid"><div class="stillmod">{module("S03", "system", "white", mode="still", inst="-s", hl=3)}</div>'
+    return (f'<div class="stillgrid"><div class="stillbox" role="region" tabindex="0" aria-label="The S03 still at true size, 680 pixels wide. '
+            f'On a narrow screen, scroll inside the box.">{module("S03", "system", "white", mode="still", inst="-s", hl=3)}</div>'
             f'<div><h3 class="sh3">Still and panel</h3><ul class="chg">{lst}</ul><p class="small">This page offers CSV and SVG from the panel. A PNG still would come from '
             'an export step in the kit, which this concept does not build yet.</p></div></div>')
 
@@ -1669,7 +1670,7 @@ button{font:inherit;color:inherit}
 .art-n{display:block;max-width:358px}
 @container mod (min-width:560px){.art-n{display:none}.art-m{display:block;max-width:560px}}
 @container mod (min-width:866px){.art-m{display:none}.art-w{display:block;max-width:866px}}
-.still .art{display:block;max-width:680px}
+.still .art{display:block}
 .readout{margin:12px 0 0;min-height:20px;font:400 14px/20px Inter,sans-serif;color:var(--sec)}
 .sf{margin-top:16px}
 .notes{font:400 14px/20px Inter,sans-serif;max-width:52em}
@@ -1862,7 +1863,10 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .redmod{max-width:866px}
 .rules,.readers{margin:8px 0 0;padding-left:24px;max-width:60em;font:400 16px/25px Inter,sans-serif}
 .rules li,.readers li{margin-bottom:10px}
-.stillgrid{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);gap:40px;align-items:start;margin-top:8px}
+.stillgrid{display:grid;grid-template-columns:minmax(0,682px) minmax(0,1fr);gap:40px;align-items:start;margin-top:8px}
+.stillbox{overflow:auto;max-width:100%;width:max-content}
+.stillbox>.mod.still{width:680px}
+.still .art{width:680px;max-width:none}
 .chg{margin:0 0 12px;padding-left:20px;font:400 15px/23px Inter,sans-serif}.chg li{margin-bottom:8px}
 .dtok{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px;margin:20px 0 0;padding:0;list-style:none;font:500 14px/20px Inter,sans-serif}
 .dtok li{display:flex;gap:10px;align-items:center}

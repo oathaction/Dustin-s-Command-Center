@@ -12,7 +12,7 @@ Contract (data viz brief, section 6):
 Checks: every specimen S01 to S10 is present with its dataset and evidence kind; every role present and not empty;
 the evidence label names the kind; the source line carries the dataset's source words; every mark's key exists and
 its value or category matches the dataset; required keys are all drawn; unit charts draw each row once and each
-category's count exactly; no em dash anywhere in the page text; no hyphen used as a minus sign before a figure.
+category's count exactly, once per artboard when the chart is drawn at several widths; no em dash anywhere in the page text; no hyphen used as a minus sign before a figure.
 --selftest plants seven errors in copies of the page and confirms each one is caught.
 Writes <page stem>-Verify-Results.json beside the page. Exit code 1 on any failure.
 """
@@ -46,12 +46,16 @@ class Collect(HTMLParser):
             self.skip += 1
         rec = self._rec(tag, a)
         if tag == 'figure' and 'data-spec' in a:
-            fig = {'attrs': a, 'roles': {}, 'marks': [], 'text': []}
+            fig = {'attrs': a, 'roles': {}, 'marks': [], 'text': [], 'svg_n': 0, 'svg_open': []}
             self.figs.append(fig)
             self.cur.append(fig)
             rec['fig'] = fig
         if self.cur:
             f = self.cur[-1]
+            if tag == 'svg':
+                f['svg_n'] += 1
+                f['svg_open'].append(f['svg_n'])
+            rec['svg'] = f['svg_open'][0] if f['svg_open'] else 'html'
             if 'data-role' in a:
                 f['roles'].setdefault(a['data-role'], []).append(rec)
             if 'data-key' in a:
@@ -63,11 +67,16 @@ class Collect(HTMLParser):
     def handle_startendtag(self, tag, attrs):
         a = dict(attrs)
         if self.cur and 'data-key' in a:
-            self.cur[-1]['marks'].append(self._rec(tag, a))
+            f = self.cur[-1]
+            rec = self._rec(tag, a)
+            rec['svg'] = f['svg_open'][0] if f['svg_open'] else 'html'
+            f['marks'].append(rec)
 
     def handle_endtag(self, tag):
         if tag in ('script', 'style'):
             self.skip = max(0, self.skip - 1)
+        if tag == 'svg' and self.cur and self.cur[-1]['svg_open']:
+            self.cur[-1]['svg_open'].pop()
         for i in range(len(self.stack) - 1, -1, -1):
             if self.stack[i]['tag'] == tag:
                 for r in self.stack[i:]:
@@ -148,7 +157,7 @@ def verify(html):
             errs.append(f'{tag}: illustrative data without an "Illustrative data" label')
         idx = row_index(ds)
         drawn = set()
-        unit_count, unit_keys = {}, []
+        units_by_art = {}   # one unit chart per artboard: a figure may draw the same chart at several widths
         for m in fig['marks']:
             ma = m['attrs']
             k = ma['data-key']
@@ -174,20 +183,28 @@ def verify(html):
                     errs.append(f'{tag}: {k}.{cf} drawn as "{ma["data-category"]}", data says "{row.get(cf)}"')
             if ma.get('data-mark') == 'unit':
                 stats['units'] += 1
-                unit_keys.append(k)
                 c = ma.get('data-category', row.get('direction'))
-                unit_count[c] = unit_count.get(c, 0) + 1
+                units_by_art.setdefault(m.get('svg', 'html'), []).append((k, c))
         missing = [k for k in ds.get('required_keys', []) if k not in drawn]
         if missing:
             errs.append(f'{tag}: {len(missing)} required rows not drawn ({", ".join(missing[:6])})')
-        if unit_keys:
-            dup = sorted({k for k in unit_keys if unit_keys.count(k) > 1})
-            if dup:
-                errs.append(f'{tag}: unit marks repeat rows {dup[:6]}')
+        us = [u for v in units_by_art.values() for u in v]
+        if us:
+            # a figure may draw its unit chart at several widths: every row must then appear the same number of times
+            keys = [k for k, _ in us]
+            per = {k: keys.count(k) for k in set(keys)}
+            reps = sorted(set(per.values()))
+            if len(reps) > 1:
+                odd = sorted(k for k, n in per.items() if n != max(set(per.values()), key=list(per.values()).count))
+                errs.append(f'{tag}: unit marks repeat some rows more often than others ({odd[:6]})')
+            m = reps[-1]
             if did == 'rule-changes':
+                cnt = {}
+                for _, c in us:
+                    cnt[c] = cnt.get(c, 0) + 1
                 for c, n in ds['counts'].items():
-                    if unit_count.get(c, 0) != n:
-                        errs.append(f'{tag}: unit chart draws {unit_count.get(c, 0)} "{c}", data has {n}')
+                    if cnt.get(c, 0) != n * m:
+                        errs.append(f'{tag}: unit chart draws {cnt.get(c, 0)} "{c}" across {m} artboard(s), data has {n} each')
         # hyphen-minus used as a minus sign before a figure, inside the specimen's own text
         ftxt = norm(' '.join(fig['text']))
         for mm in re.finditer(r'(?:(?<=\s)|(?<=\())-\d', ftxt):
