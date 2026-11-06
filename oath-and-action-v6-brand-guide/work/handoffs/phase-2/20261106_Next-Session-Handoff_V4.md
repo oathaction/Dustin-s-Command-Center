@@ -44,6 +44,7 @@ Collected from the makers' notes, each with its recommendation:
 10. Rule 05.1: firm per-view color limits (Newsprint 60 to 85 percent, one dark panel per section, red within 5 percent), with V5's shares as the balance across a body of work.
 11. The body-measure token renders 64 to 66 characters against its 68 promise: keep the value and correct the description.
 12. Atlas System 1 moves from White to Newsprint in its finishing work (D2-160).
+13. How the guide names H.R. 7008. The brand and evidence review found that "the stock trading ban" overstates a bill that bars buying stocks and also carries a voter photo ID requirement (`20261106_Stage-A-Red-Team-Brand-Evidence.md`). The same name sits on chart specimen S01 in the Explainer system and in the shared chart data, so the fix reaches chapter 14's specimens too; the studio should propose one neutral name (H12) for every place it appears.
 Add whatever the red team and the creative director raise.
 
 ### E. Then
