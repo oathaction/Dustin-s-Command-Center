@@ -517,8 +517,9 @@ def build(ctx):
                 'id': '07.6', 'title': 'Make every page read at 320 px wide, with nothing lost.',
                 'rule': ['At 320 CSS px, the width of a small phone or a desktop window zoomed to 400 percent, a page shows '
                          'all its content without scrolling sideways. Tables stack into one card per row. Only content that '
-                         'needs two dimensions, such as a wide data table or a specimen at true size, scrolls inside its own '
-                         'labeled frame.'],
+                         'needs two dimensions, such as a wide data table or a specimen at true size, scrolls sideways inside '
+                         'its own frame. That frame is a group named for what it holds, and it takes keyboard focus only '
+                         'while its content overflows.'],
                 'tokens': ['oa.layout.breakpoint.phoneSmall', 'oa.layout.grid.phoneSmall.margin', 'oa.layout.grid.phoneSmall.columns'],
                 'why': {'text': ['WCAG 2.2 success criterion 1.4.10 Reflow asks for content at 320 CSS px with no loss of '
                                  'information and no scrolling in two directions. When we tested our fifth edition at 320 px, '
@@ -526,7 +527,8 @@ def build(ctx):
                         'basis': 'WCAG 2.2 SC 1.4.10'},
                 'correct': {'specimen': 's-07-6-correct',
                             'caption': 'A 320 px frame at true size holding contrast pairs as stacked cards. Every pair, ratio '
-                                       'and use stays in view.'},
+                                       'and use stays in view. A table that must keep its columns scrolls inside a named frame '
+                                       'instead, as the wide plates in this guide do on a phone.'},
                 'failure': {'specimen': 's-07-6-failure',
                             'caption': '<strong>Fails 1.4.10.</strong> The same pairs kept as a table in a 320 px frame. The '
                                        'last column falls past the edge, and a reader on a small phone never sees what each '
@@ -535,11 +537,17 @@ def build(ctx):
                     {'label': 'Reflow width', 'value': '320 CSS px, on the small phone grid', 'token': 'oa.layout.breakpoint.phoneSmall'},
                     {'label': 'Small phone margin', 'value': '16 px', 'token': 'oa.layout.grid.phoneSmall.margin'},
                     {'label': 'Text at 200 percent', 'value': 'No clipped boxes and no sideways scroll at 1440 px', 'token': None},
+                    {'label': 'A frame that scrolls', 'value': 'A group named for what it holds, such as the table’s title', 'token': None},
+                    {'label': 'Keyboard focus', 'value': 'Only while its content overflows the frame, checked on load and on resize', 'token': None},
+                    {'label': 'Scroll cue', 'value': 'A line above the frame saying it scrolls sideways', 'token': None},
                 ],
                 'related': ['18', '19', '28'],
                 'builders': ['Check every page at 320, 360 and 390 px with the shared rendered check. A frame that must '
-                             'scroll gets <code>role="region"</code>, a name and <code>tabindex="0"</code>, so a keyboard user '
-                             'can scroll it too.'],
+                             'scroll is a group with its own name, such as the table’s title, and takes '
+                             '<code>tabindex="0"</code> only while it overflows, so a keyboard user can scroll it and a page '
+                             'with many frames keeps its landmark list short: <code>role="group"</code> and '
+                             '<code>aria-label="Contrast pairs, scroll sideways"</code> while '
+                             '<code>scrollWidth &gt; clientWidth</code>, and neither once the content fits.'],
             },
         ],
         'extras': [
