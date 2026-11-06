@@ -116,8 +116,8 @@ WCAG 2 contrast against the ground and OKLab lightness, computed by the build sc
 ## Not tested
 
 - Screen readers, Safari, Firefox, real phones, 200 percent text zoom, print.
-- Widths between 900 and 1440 px and the 560 px artboards were not captured by the check; I rendered them only through the container-query logic, not by eye.
-- Keyboard use beyond the check's first 40 Tab stops; the sort buttons were not exercised by keyboard.
+- Widths other than 1440, 1024, 768, 390 and 360 px. My 1024 and 768 px captures covered six plates of the White view only.
+- Keyboard use beyond the check's first 40 Tab stops and the one sort button I pressed.
 - Readers. The ten-second and wall tests were not run.
 - A PNG export of the social card.
 
@@ -130,4 +130,4 @@ Created:
 - `work/boards/phase-2/data-viz/02-register/captures/`, written by the rendered check
 - `work/handoffs/phase-2/20261106_Data-Viz-02-Notes.md`
 
-Modified: none outside this folder and this notes file. Nothing committed.
+Modified: none outside this folder and this notes file. I committed nothing; the main session committed a snapshot after the container restart.
