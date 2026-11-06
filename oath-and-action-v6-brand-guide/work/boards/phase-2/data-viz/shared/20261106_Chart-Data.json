@@ -15409,10 +15409,26 @@
      "2024presgeresults.xlsx": "68acdee2924d771b",
      "2024presgeresults.pdf": "c99a431e08cb7790"
     },
-    "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines."
+    "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+    "rounding": "shift_pts is the difference of the margins as rounded to two decimals in the FEC file's shares; in nine states it differs by 0.01 from the difference of unrounded shares (Washington 0.98 against 0.985). No figure printed to one decimal changes (D2-126)."
    },
+   "extra_rows": [
+    {
+     "key": "US",
+     "code": "US",
+     "name": "United States",
+     "scope": "nation",
+     "margin_2020": -4.46,
+     "margin_2024": 1.47,
+     "shift_pts": 5.93,
+     "dem_pct_2024": 48.32,
+     "rep_pct_2024": 49.8,
+     "total_votes_2024": 155238302.0
+    }
+   ],
    "notes": [
     "margin_pts is Republican share minus Democratic share, so a positive margin is a Republican lead and a positive shift moved toward Republicans.",
+    "extra_rows holds the United States, summed from the state rows' vote counts, which match the FEC national totals: it is context for a chart, never one of the 51 rows a chart must draw (D2-126).",
     "Party marks take neutral inks with the party name printed; arrows, position and words carry direction (DR-48, DR-58). Never Pillar Red or Prussian for a party.",
     "Marks: data-field=\"margin_2020\" and \"margin_2024\" for the two ends of an arrow; data-value carries the number."
    ]
@@ -26625,7 +26641,7 @@
     "USGOVT|2026-09",
     "CES9091000001|2026-09"
    ],
-   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2021 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The latest two months are preliminary.",
+   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
    "source_tokens": [
     "FRED"
    ],
@@ -26641,10 +26657,11 @@
     "unit": "thousands of jobs",
     "date_retrieved": "2026-11-06",
     "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
-    "qualification": "Seasonally adjusted. The latest two months are preliminary. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
+    "qualification": "Seasonally adjusted. The Bureau of Labor Statistics revises each month's first estimate in the next two monthly reports, so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
     "months_missing": [],
     "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2021 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The latest two months are preliminary.",
-    "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)"
+    "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)",
+    "revision_basis": "BLS Employment Situation technical note and CES benchmark notes, read as search snippets from bls.gov on November 6, 2026 (bls.gov refuses automated page reads): the establishment survey revises its initial monthly estimates twice, in the immediately succeeding two months, and a yearly benchmark re-anchors the series to unemployment insurance tax records (D2-126)"
    },
    "notes": [
     "FRED copies Bureau of Labor Statistics series; the source line names both (DR-60).",
@@ -27070,6 +27087,18 @@
     }
    ],
    "required_keys": [
+    "2022-01",
+    "2022-02",
+    "2022-03",
+    "2022-04",
+    "2022-05",
+    "2022-06",
+    "2022-07",
+    "2022-08",
+    "2022-09",
+    "2022-10",
+    "2022-11",
+    "2022-12",
     "2023-01",
     "2023-02",
     "2023-03",
@@ -27116,7 +27145,7 @@
     "2026-08",
     "2026-09"
    ],
-   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2021 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The latest two months are preliminary.",
+   "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
    "source_tokens": [
     "FRED"
    ],
@@ -27132,13 +27161,15 @@
     "unit": "thousands of jobs",
     "date_retrieved": "2026-11-06",
     "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
-    "qualification": "Seasonally adjusted. The latest two months are preliminary. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
+    "qualification": "Seasonally adjusted. The Bureau of Labor Statistics revises each month's first estimate in the next two monthly reports, so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
     "months_missing": [],
     "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by sector, seasonally adjusted, January 2021 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The latest two months are preliminary.",
-    "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)"
+    "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)",
+    "revision_basis": "BLS Employment Situation technical note and CES benchmark notes, read as search snippets from bls.gov on November 6, 2026 (bls.gov refuses automated page reads): the establishment survey revises its initial monthly estimates twice, in the immediately succeeding two months, and a yearly benchmark re-anchors the series to unemployment insurance tax records (D2-126)"
    },
    "notes": [
     "avg3_thousands is the three-month moving average ending in that month (the studio computes it from the monthly change).",
+    "Both jobs charts draw January 2022 to September 2026, one window for both (D2-126). Never split a period at January 2025 or at any inauguration date (fix pass F2).",
     "Mark a month with no release, if any, as a gap with a note; never bridge it (R16)."
    ]
   },

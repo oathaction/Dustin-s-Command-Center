@@ -55,12 +55,23 @@ if rows:
                         'shift_pts': round(m24 - m20, 2) if m20 is not None and m24 is not None else None,
                         'dem_pct_2024': num(s[2024]['dem_pct']), 'rep_pct_2024': num(s[2024]['rep_pct']),
                         'total_votes_2024': num(s[2024]['total_votes'])})
+    nat = {}
+    for r in rows:
+        y = int(float(r['year']))
+        t = nat.setdefault(y, [0, 0, 0])
+        t[0] += num(r['total_votes']); t[1] += num(r['dem_votes']); t[2] += num(r['rep_votes'])
+    shares = {y: (round(100 * d / tv, 2), round(100 * rp / tv, 2), round(100 * (rp - d) / tv, 2)) for y, (tv, d, rp) in nat.items()}
+    national = {'key': 'US', 'code': 'US', 'name': 'United States', 'scope': 'nation',
+                'margin_2020': shares[2020][2], 'margin_2024': shares[2024][2], 'shift_pts': round(shares[2024][2] - shares[2020][2], 2),
+                'dem_pct_2024': shares[2024][0], 'rep_pct_2024': shares[2024][1], 'total_votes_2024': nat[2024][0]}
     DS['presidential-shift-by-state'] = {
         'spec': 'S11', 'kind': 'public', 'title': 'Presidential margin by state, 2020 and 2024', 'evidence': 'Finding',
         'grade': 'official results', 'key': 'key', 'value_field': 'shift_pts', 'rows': out,
         'required_keys': [r['key'] for r in out], 'source_line': meta.get('source_line'), 'source_tokens': ['Federal Election Commission'],
-        'meta': meta,
+        'meta': dict(meta, rounding='shift_pts is the difference of the margins as rounded to two decimals in the FEC file\'s shares; in nine states it differs by 0.01 from the difference of unrounded shares (Washington 0.98 against 0.985). No figure printed to one decimal changes (D2-126).'),
+        'extra_rows': [national],
         'notes': ['margin_pts is Republican share minus Democratic share, so a positive margin is a Republican lead and a positive shift moved toward Republicans.',
+                  'extra_rows holds the United States, summed from the state rows\' vote counts, which match the FEC national totals: it is context for a chart, never one of the 51 rows a chart must draw (D2-126).',
                   'Party marks take neutral inks with the party name printed; arrows, position and words carry direction (DR-48, DR-58). Never Pillar Red or Prussian for a party.',
                   'Marks: data-field="margin_2020" and "margin_2024" for the two ends of an arrow; data-value carries the number.']}
 else:
@@ -91,17 +102,24 @@ if rows:
     for r in out:
         if r['date'] >= latest.get(r['series_id'], ('', None))[0]:
             latest[r['series_id']] = (r['date'], r['key'])
+    REV = ('Seasonally adjusted. The Bureau of Labor Statistics revises each month\'s first estimate in the next two monthly reports, '
+           'so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months.')
+    meta = dict(meta, qualification=REV + ' FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).',
+                revision_basis='BLS Employment Situation technical note and CES benchmark notes, read as search snippets from bls.gov on November 6, 2026 (bls.gov refuses automated page reads): the establishment survey revises its initial monthly estimates twice, in the immediately succeeding two months, and a yearly benchmark re-anchors the series to unemployment insurance tax records (D2-126)')
+    LINE = ('Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, {what}, seasonally adjusted, January 2022 to September 2026, '
+            'United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.')
     DS['payrolls-by-sector'] = {
         'spec': 'S13', 'kind': 'public', 'title': 'Payroll employment by sector, monthly', 'evidence': 'Finding', 'grade': 'official statistic',
         'key': 'key', 'value_field': 'pct_change_since_2022_01', 'rows': out,
-        'required_keys': [k for _, k in latest.values()], 'source_line': meta.get('source_line'), 'source_tokens': ['FRED'],
+        'required_keys': [k for _, k in latest.values()], 'source_line': LINE.format(what='all employees by industry'), 'source_tokens': ['FRED'],
         'meta': meta, 'notes': ['FRED copies Bureau of Labor Statistics series; the source line names both (DR-60).',
                                 'Sparklines plot pct_change_since_2022_01; the end label prints change_since_2022_01_thousands in words such as "+3.8 million".']}
     DS['payrolls-monthly-change'] = {
         'spec': 'S14', 'kind': 'public', 'title': 'Monthly change in total nonfarm payrolls', 'evidence': 'Finding', 'grade': 'official statistic',
         'key': 'key', 'value_field': 'change_thousands', 'rows': change,
-        'required_keys': [r['key'] for r in change if r['date'] >= '2023-01'], 'source_line': meta.get('source_line'), 'source_tokens': ['FRED'],
+        'required_keys': [r['key'] for r in change if r['date'] >= '2022-01'], 'source_line': LINE.format(what='all nonfarm employees, monthly change'), 'source_tokens': ['FRED'],
         'meta': meta, 'notes': ['avg3_thousands is the three-month moving average ending in that month (the studio computes it from the monthly change).',
+                                'Both jobs charts draw January 2022 to September 2026, one window for both (D2-126). Never split a period at January 2025 or at any inauguration date (fix pass F2).',
                                 'Mark a month with no release, if any, as a gap with a note; never bridge it (R16).']}
 else:
     pending('payrolls-by-sector', 'S13', 'fred-payrolls-by-sector')

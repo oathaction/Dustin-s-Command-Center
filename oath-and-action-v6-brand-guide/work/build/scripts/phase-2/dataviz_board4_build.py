@@ -109,7 +109,7 @@ def row_of(form, tier, use, data, status):
     elif st.startswith('Sketch'):
         kind, label = 'sketch', 'Sketch and rule'
     else:
-        kind, label = 'phase3', 'Phase 3'
+        kind, label = 'phase3', st or 'Phase 3'
     extra = [p for p in rest[1:]]
     if 'interactive' in tier:
         extra.append('interactive')
@@ -120,8 +120,9 @@ def row_of(form, tier, use, data, status):
 RULES, TIER_TEXT, FAMS, ORDER, BALANCE = parse_plan()
 ALL = [r for f in FAMS for r in f['rows']]
 COUNT = collections.Counter(r['tier'] for r in ALL)
-assert len(ALL) == 122 and [COUNT[t] for t in TIERS] == [50, 43, 23, 6], (len(ALL), COUNT)
-assert all(TIER_TEXT[t][1] == COUNT[t] for t in TIERS)
+TOTAL = len(ALL)
+assert all(TIER_TEXT[t][1] == COUNT[t] for t in TIERS), (COUNT, TIER_TEXT)   # the family tables agree with the tier table (D2-125, D2-127)
+assert str(TOTAL) in PLAN.read_text().split('## 3.')[0], 'the plan states its own entry count'
 DRAWN = sum(r['drawn'] for r in ALL)
 
 
@@ -138,7 +139,7 @@ def unit_map():
         rows.append(f'<li><a href="#{f["id"]}"><span class="un">{E(f["name"])}</span><span class="uc">{len(f["rows"])}</span></a>'
                     f'<span class="us" role="img" aria-label="{E(aria)}">{sq}</span></li>')
     legend = ''.join(f'<li><span class="u u-{t.lower()}"></span>{t}, {COUNT[t]}</li>' for t in TIERS)
-    return (f'<figure class="umap"><figcaption class="umap-h"><b>All 122 forms, one square each, by family and tier.</b> '
+    return (f'<figure class="umap"><figcaption class="umap-h"><b>All {TOTAL} forms, one square each, by family and tier.</b> '
             f'A dot marks a form already drawn in the Explainer system: {DRAWN} so far, from the ten specimens and the six in this test. '
             f'Each family name links to its table.</figcaption>'
             f'<ul class="ulegend" aria-label="Key">{legend}<li><span class="u u-core drawn"></span>Drawn so far, {DRAWN}</li></ul>'
@@ -341,7 +342,7 @@ def build():
 <h3 style="margin-top:40px">On Charcoal</h3><p>{E(dark.get("text", ""))}</p><div class="pair">{dark_figs}</div>
 </section>
 <section id="coverage" aria-labelledby="h-cov"><p class="secnum">COVERAGE PLAN</p><h2 id="h-cov">Every way Oath &amp; Action shows data</h2>
-<p class="deck">The plan lists 122 forms in 16 families. Each one says what Oath &amp; Action uses it for, names real data for its specimen and sets a tier. Chapter 14 is built from it at the start of Phase 3.</p>
+<p class="deck">The plan lists {TOTAL} forms in 16 families. Each one says what Oath &amp; Action uses it for, names real data for its specimen and sets a tier. Chapter 14 is built from it at the start of Phase 3.</p>
 <div class="tiers">{tiers}</div>
 {unit_map()}
 <h4>Rules that hold across every form</h4><ul class="rules">{rules}</ul>

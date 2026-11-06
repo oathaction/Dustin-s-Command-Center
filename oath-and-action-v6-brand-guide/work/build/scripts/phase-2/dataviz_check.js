@@ -1,5 +1,5 @@
 // Rendered checks for one data visualization concept page (November 6, 2026), adapted from atlas_concepts_check.js.
-// Usage: node work/build/scripts/phase-2/dataviz_check.js <concept.html> [--no-captures] [--board]
+// Usage: node work/build/scripts/phase-2/dataviz_check.js <concept.html> [--no-captures] [--board] [--mid]
 //
 // The page lists its views in <meta name="chart-views" content="white newsprint dark social system">, and each view's
 // root element carries data-view-root="<view>". The first view links to the others. For every view at 1440, 390 and
@@ -7,7 +7,7 @@
 //   - the view root is visible after loading <file>#<view>;
 //   - no sideways scroll (content inside a focusable role="region" may run wide by design);
 //   - no text under 13 px (SVG text at its rendered scale) and text contrast from rendered colors;
-//   - inside every <svg data-view>: labels inside the drawing and no two labels overlapping;
+//   - inside every <svg data-view>: labels and marks (circles and data-mark shapes) inside the drawing, no two labels overlapping;
 //   - Rule 05.3 as read in DR-18: every Pillar Red mark sits under data-red, at most one working-red job per view,
 //     and no red over Prussian;
 //   - axe-core 4.10.2 with WCAG 2.2 AA tags; outside requests other than Google Fonts; page errors;
@@ -32,6 +32,7 @@ const ALLOWED_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 const file = path.resolve(process.argv[2] || '');
 const captures = !process.argv.includes('--no-captures');
 const BOARD = process.argv.includes('--board');   // a review board: one view, no close-up navigation to test
+const MID = process.argv.includes('--mid');       // also check 1024 and 768 px (D2-126)
 if (!fs.existsSync(file)) { console.error('usage: node dataviz_check.js <concept.html>'); process.exit(2); }
 const dir = path.dirname(file);
 const stem = path.basename(file, '.html');
@@ -97,19 +98,25 @@ async function audit(page, view) {
     out.overflowing = out.overflowing.slice(0, 15);
     // labels inside drawings
     const inter = (a, b, pad) => Math.min(a.right, b.right) - Math.max(a.left, b.left) > pad && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > pad;
-    const tx = { drawings: 0, labels: 0, outside: [], overlaps: [] };
+    const tx = { drawings: 0, labels: 0, outside: [], overlaps: [], marksOutside: [] };
     for (const svg of document.querySelectorAll('svg[data-view]')) {
       if (!visible(svg)) continue; tx.drawings++;
       const sr = svg.getBoundingClientRect(); const name = svg.getAttribute('data-view');
       const ts = [...svg.querySelectorAll('text')].filter(t => t.textContent.trim() && visible(t)); const rs = ts.map(t => t.getBoundingClientRect());
       tx.labels += ts.length;
       ts.forEach((t, i) => { const r = rs[i]; if (r.left < sr.left - 0.5 || r.right > sr.right + 0.5 || r.top < sr.top - 0.5 || r.bottom > sr.bottom + 0.5) tx.outside.push({ svg: name, text: t.textContent.slice(0, 40) }); });
+      // marks inside the drawing too (D2-126): a dot or circle cut by the drawing's edge fails
+      for (const m of svg.querySelectorAll('circle, [data-mark]:not([data-mark="label"])')) {
+        if (m.tagName.toLowerCase() === 'text' || !visible(m)) continue;
+        const r = m.getBoundingClientRect(); if (r.width === 0 && r.height === 0) continue;
+        if (r.left < sr.left - 0.5 || r.right > sr.right + 0.5 || r.top < sr.top - 0.5 || r.bottom > sr.bottom + 0.5) tx.marksOutside.push({ svg: name, mark: (m.getAttribute('data-key') || m.tagName).slice(0, 40) });
+      }
       for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) {
         if (ts[i].contains(ts[j]) || ts[j].contains(ts[i])) continue;
         if (inter(rs[i], rs[j], 1.5)) tx.overlaps.push({ svg: name, a: ts[i].textContent.slice(0, 30), b: ts[j].textContent.slice(0, 30) });
       }
     }
-    tx.overlaps = tx.overlaps.slice(0, 30); out.textCheck = tx;
+    tx.overlaps = tx.overlaps.slice(0, 30); tx.marksOutside = tx.marksOutside.slice(0, 30); out.textCheck = tx;
     // Rule 05.3 as read in DR-18
     const red = { marks: 0, unmarked: [], jobs: [], onPrussian: [] };
     const jobs = new Set();
@@ -249,8 +256,9 @@ async function focusAudit(page) {
   const report = { file: path.relative(ROOT, file), checked: new Date().toISOString(), views, runs: [], navigation: null, failures: [] };
   const axeSrc = fs.existsSync(AXE) ? AXE : null;
   // 360 px added November 5 after the interface red team found small-phone failures the 390 px pass missed
-  for (const width of [1440, 390, 360]) {
-    const ctx = await browser.newContext({ viewport: { width, height: width === 1440 ? 900 : width === 390 ? 844 : 780 }, deviceScaleFactor: 1 });
+  // --mid adds 1024 and 768 px (D2-126): the creative director found a table overprinting between phone and desktop widths
+  for (const width of MID ? [1440, 1024, 768, 390, 360] : [1440, 390, 360]) {
+    const ctx = await browser.newContext({ viewport: { width, height: width === 1440 ? 900 : width === 390 ? 844 : width === 360 ? 780 : 1000 }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     const outside = new Set(); const errors = [];
     page.on('request', (req) => { const u = req.url(); if (u.startsWith('file:') || u.startsWith('data:') || u.startsWith('blob:') || u.startsWith('about:')) return; const h = new URL(u).hostname; if (!ALLOWED_HOSTS.includes(h)) outside.add(h); });
@@ -275,6 +283,7 @@ async function focusAudit(page) {
       if (a.lowContrast.length) report.failures.push(`${tag}: ${a.lowContrast.length} text items under contrast`);
       if (a.textCheck.outside.length) report.failures.push(`${tag}: ${a.textCheck.outside.length} labels outside their drawing`);
       if (a.textCheck.overlaps.length) report.failures.push(`${tag}: ${a.textCheck.overlaps.length} overlapping labels`);
+      if (a.textCheck.marksOutside.length) report.failures.push(`${tag}: ${a.textCheck.marksOutside.length} marks cut by their drawing's edge (first: ${JSON.stringify(a.textCheck.marksOutside[0])})`);
       if (a.red.unmarked.length) report.failures.push(`${tag}: ${a.red.unmarked.length} red marks without data-red`);
       if (a.red.jobs.length > 1) report.failures.push(`${tag}: ${a.red.jobs.length} working-red jobs (${a.red.jobs.join(', ')})`);
       if (a.red.onPrussian.length) report.failures.push(`${tag}: red over Prussian (${a.red.onPrussian.length})`);
@@ -283,7 +292,7 @@ async function focusAudit(page) {
       if (axe && axe.length) report.failures.push(`${tag}: axe ${axe.map(v => v.id + 'x' + v.nodes).join(', ')}`);
       if (!axe) report.failures.push(`${tag}: axe-core not found at ${path.relative(ROOT, AXE)}`);
       if (focus && focus.some(f => !f.ring)) report.failures.push(`${tag}: ${focus.filter(f => !f.ring).length} focus stops without a visible ring`);
-      if (captures && width !== 360) {
+      if (captures && (width === 1440 || width === 390)) {
         const base = path.join(capDir, `${stem}-${view}-${width}`);
         await page.evaluate(() => window.scrollTo(0, 0));
         if (width === 1440) {

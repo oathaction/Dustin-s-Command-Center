@@ -119,7 +119,7 @@ def frac_year(d):
 
 def row_index(ds):
     idx = {}
-    for r in ds.get('rows', []):
+    for r in ds.get('rows', []) + ds.get('extra_rows', []):   # extra_rows: context such as a national total (D2-126)
         k = r.get('key')
         if k is None and ds.get('key_fields'):
             k = '|'.join(str(r[f]) for f in ds['key_fields'])
