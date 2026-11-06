@@ -508,3 +508,15 @@ The research lead fetched these for the data visualization round (DR-46); its br
 | dvp-05 | `work/boards/phase-2/data-viz/shared/public/ballotpedia-rcv-prohibitions-by-state.csv` and `work/boards/phase-2/data-viz/shared/public/ballotpedia-citizen-initiative-states.csv` | data-viz-public | third-party reference data | Ballotpedia pages, revisions 12746538 and 11698211, read November 6, 2026; Tennessee bill record | may ship | T-GFDL-BP. Facts only; credit Ballotpedia and label it secondary. Whether facts drawn from a GFDL page need GFDL terms is a judgment, not a legal opinion |
 | dvp-06 | `work/boards/phase-2/data-viz/shared/geo/states-albers-10m.json` | data-viz-public | open-source package | us-atlas 3.0.1 tarball; hashes match the npm registry | may ship with license text | T-ISC-USATLAS for the file, T-USGOV for the Census geometry. Ship `work/boards/phase-2/data-viz/shared/geo/us-atlas-LICENSE.txt` with it |
 | dvp-07 | `work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json` | data-viz-public | Oath & Action original | Made by the research lead, November 6, 2026 | may ship | Design layout; no third-party source |
+
+## Added November 6, 2026: New York Times graphics Dustin likes
+
+Dustin sent five composite images of New York Times graphics with his Board 3 answers, to show the range of forms he wants chapter 14 to cover. Saved in `work/research/chat-references/data-viz/`. All are study only and never ship: no Times layout, typeface, wordmark or color is copied (D2-65), and their red and blue party colors stay out of Oath & Action charts (DR-48).
+
+| File | What it shows | Rights and use |
+|---|---|---|
+| `20261106_Ref-NYT-Election-Shift-Charts.webp` | Voter-group shift arrows between 2020, 2024 and 2026 with filters; Texas county margins since 1988 as a dense line field; House seat advantage by election as diverging bars with arrows; group shifts by gender, race, age and education | Third-party screenshots; The New York Times Company. Study only |
+| `20261106_Ref-NYT-Election-Results-Tables.webp` | Shift lollipops for men 18 to 44 in Senate races; Senate results grouped by race rating with margin cells; results by group with stacked share bars and shift arrows; electorate share bars against population benchmarks | Third-party screenshots; The New York Times Company. Study only |
+| `20261106_Ref-NYT-Election-Maps.webp` | A tile-grid cartogram with one shift arrow per district; a bubble map by state with a layer switcher; a House district results map with a seat-count bar | Third-party screenshots; The New York Times Company. Study only |
+| `20261106_Ref-NYT-Jobs-Report-Charts.webp` | Change in jobs by sector as small-multiple area sparklines; monthly job change as columns with a moving average; the unemployment rate since 2019 with a missing month marked | Third-party screenshots; The New York Times Company. Study only |
+| `20261106_Ref-NYT-House-Tile-Maps.webp` | Two House district tile maps: where incumbents lost, and who won districts that voted one way in 2024 | Third-party screenshots; The New York Times Company. Study only |
