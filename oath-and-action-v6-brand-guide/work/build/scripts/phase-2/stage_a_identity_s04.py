@@ -358,7 +358,7 @@ def s_04_7_failure():
 def _cover(crop_ok=True):
     W, H = 528, 816
     if crop_ok:
-        crop = (f'<span aria-hidden="true" style="position:absolute;right:-84px;bottom:-94px">'
+        crop = (f'<span aria-hidden="true" style="position:absolute;right:-142px;bottom:-30px">'
                 f'{mark(AMP["display"], h=440, mode="ink", decorative=True)}</span>')
     else:
         crop = (f'<span aria-hidden="true" style="position:absolute;left:-40px;top:70px">'
@@ -377,7 +377,9 @@ def s_04_8_correct():
            "budget gets written at top left, and a very large Charcoal ampersand B running off the bottom-right corner. Illustrative.")
     return rec("s-04-8-correct", "04.8", 528, alt, body, illustrative=True, check_exempt=["scale"],
                notes="A print piece set in points (D2-205): kicker 10 pt, title 34 pt, deck 12 pt, so check_exempt scale. "
-                     "B display master at 440 px tall in the surface's ink, 84 px past the right edge and 94 px past the bottom: 34.6 percent of its ink outside, and what stays inside is one piece, with every stroke at the trim 90 px or more across (measured on a 1x render; one piece at every offset within 4 px). The stage is the cover, so the keyline is the trim; the Illustrative label sits in the caption (CD review B2).")
+                     "B display master at 440 px tall in the surface's ink, 142 px past the right edge and 30 px past the bottom: 30.5 percent of its ink "
+                     "outside. The trim falls at 258 px of 400: it cuts a 116 px chord through the upper bowl (whose edge is at 273), leaves 14 px of ink beyond the lower counter's tip (244), and clears the beak (277 to 366), which sits wholly outside. The bottom trim falls 24 px below the lower counter, so no hairline of ink runs along the edge. What stays "
+                     "inside is one piece at every offset within 4 px, and each stroke at the trim runs over 90 px across (measured on a 1x render). The stage is the cover, so the keyline is the trim; the Illustrative label sits in the caption (CD review B2).")
 
 
 @spec

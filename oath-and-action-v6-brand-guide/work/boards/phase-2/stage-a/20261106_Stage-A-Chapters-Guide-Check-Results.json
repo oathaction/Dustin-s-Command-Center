@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T23:32:06.567Z",
+ "checked": "2026-11-06T23:40:06.932Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -21,7 +21,7 @@
    "anchors": {
     "ids": 498,
     "duplicates": [],
-    "links": 694,
+    "links": 695,
     "broken": [],
     "relatedLinks": 115,
     "relatedBad": [],
@@ -161,7 +161,7 @@
     "where": []
    },
    "text": {
-    "texts": 8487,
+    "texts": 8488,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -202,7 +202,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 337790,
+   "height": 337910,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -230,7 +230,7 @@
    "anchors": {
     "ids": 498,
     "duplicates": [],
-    "links": 694,
+    "links": 695,
     "broken": [],
     "relatedLinks": 115,
     "relatedBad": [],
@@ -371,7 +371,7 @@
     "where": []
    },
    "text": {
-    "texts": 8368,
+    "texts": 8369,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -412,7 +412,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 361589,
+   "height": 361719,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -440,7 +440,7 @@
    "anchors": {
     "ids": 498,
     "duplicates": [],
-    "links": 694,
+    "links": 695,
     "broken": [],
     "relatedLinks": 115,
     "relatedBad": [],
@@ -580,7 +580,7 @@
     "where": []
    },
    "text": {
-    "texts": 8333,
+    "texts": 8334,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -621,7 +621,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 436083,
+   "height": 436318,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -649,7 +649,7 @@
    "anchors": {
     "ids": 498,
     "duplicates": [],
-    "links": 694,
+    "links": 695,
     "broken": [],
     "relatedLinks": 115,
     "relatedBad": [],
@@ -789,7 +789,7 @@
     "where": []
    },
    "text": {
-    "texts": 8338,
+    "texts": 8339,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -830,7 +830,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 452150,
+   "height": 452409,
    "fonts": [
     "Inter",
     "Inter Tight",

@@ -177,6 +177,15 @@ Round one, November 6, 2026, under `work/handoffs/phase-2/20261106_Stage-A-Fix-P
 - Any reader on the plain stage names or the badge question.
 - The last three small fixes (the pad on Rule 04.4's sheet, the stacked table caption, the unused CSS rule) passed the full check but were not captured and looked at again.
 
+### After the creative director's review
+
+Two fixes from `work/handoffs/phase-2/20261106_CD-Review-Of-Stage-A.md`, sent by the main session.
+
+- **B2, Rule 04.8's crop.** The old crop left the left tip of B's beak as a separate piece about 2 px wide inside the right edge, and put 42 percent of B's ink outside, over the rule's 40. I rendered the display master at 440 px as an ink mask and tested crop positions by script. B now runs 142 px past the right edge and 30 px past the bottom, with 30.5 percent of its ink outside. The right trim falls at 258 px of the drawing's 400. It cuts a 116 px chord through the upper bowl, whose edge is at 273. It leaves 14 px of ink past the lower counter's tip, at 244. The beak, at 277 to 366, sits wholly outside. The bottom trim falls 24 px below the lower counter, so no hairline of ink runs along the edge. What stays inside is one piece at every offset within 4 px. The stage is now the cover's 528 px with no inner frame, so the keyline is the trim. The Illustrative label moved to the caption. The failure plate's crop is one piece too. Rule 04.8 now asks for 25 to 40 percent of the ink outside and one piece inside, with no stroke cut off alone at the edge, and its specifications and builders note say the same.
+- **Ruling 1, B's master ranges.** Rule 04.3's specification reads "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px", as Rule 04.1 sets. The build's B picker uses the same breaks (it changed no rendered headline). Rule 03.4's builders note had given the wordmark's ranges as if they held for every mark. It now gives the wordmark's ranges and, separately, Rule 04.1's for B, the lockmark and the badge. Rules 04.6 and 08.1 already matched.
+
+Tested: my build; `guide_build.py --strict`, exit 0; `guide_check.js` at 1440, 1024, 390 and 360 px, pass, 0 failures. I looked at both Rule 04.8 plates at twice size, and three crops before this one, each rejected for a reason I could see at 2x: the beak cut through its middle, the counter's tip touching the right trim, and a hairline of ink under the counter along the bottom. Not tested: the cover in print.
+
 ### Change log
 
 Modified (all mine):
