@@ -186,6 +186,15 @@ def css_value(flat, tok):
         return "cubic-bezier(" + ", ".join(f"{x:g}" for x in v) + ")"
     if isinstance(v, (int, float)) and not isinstance(v, bool):
         return f"{v:g}"
+    if t == "typography" and isinstance(v, dict):
+        # shown, not used as CSS: "Inter 400, 1.0625rem/1.6"
+        fam = resolve(flat, v.get("fontFamily"))
+        fam = fam[0] if isinstance(fam, list) and fam else fam
+        wt = resolve(flat, v.get("fontWeight"))
+        size = resolve(flat, v.get("fontSize"))
+        size = f"{size['value']:g}{size['unit']}" if isinstance(size, dict) and "value" in size else size
+        lh = resolve(flat, v.get("lineHeight"))
+        return f"{fam} {wt}, {size}/{lh:g}" if isinstance(lh, (int, float)) else f"{fam} {wt}, {size}"
     return None
 
 
@@ -509,7 +518,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None):
     alt = str(meta.get("alt", "")).strip()
     illustrative = bool(meta.get("illustrative"))
     interactive = bool(meta.get("interactive"))
-    exempt = [x for x in (meta.get("check_exempt") or []) if x in ("contrast", "size", "red")]
+    exempt = [x for x in (meta.get("check_exempt") or []) if x in ("contrast", "size", "red", "locked")]
     if kind != "failure" and set(exempt) - {"size"}:
         R.warn(where, f"{spec_id}: check_exempt {exempt}: contrast and red exemptions are for failure cases only")
     if "size" in exempt and kind != "failure" and not re.search(r"true size|minimum size|actual size", str(caption or ""), re.I):
@@ -645,7 +654,25 @@ def files_list(files, where):
     return f'<p class="label">Files</p><ul class="file-list">{"".join(items)}</ul>'
 
 
+def as_list(v):
+    if v is None:
+        return []
+    return list(v) if isinstance(v, (list, tuple)) else [v]
+
+
+def normalize_rule(r):
+    """Accept the small slips a hand-written file makes: a bare string where an object or a list belongs."""
+    r = dict(r)
+    for k in ("correct", "failure", "corrective"):
+        if isinstance(r.get(k), str):
+            r[k] = {"specimen": r[k]}
+    for k in ("tokens", "files", "related", "specs"):
+        r[k] = as_list(r.get(k))
+    return r
+
+
 def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
+    r = normalize_rule(r)
     rid = str(r.get("id", ""))
     where = f"Rule {rid}"
     m = RULE_ID.match(rid)
@@ -755,6 +782,9 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     extras = (data or {}).get("extras") or []
     extras_by = {}
     for x in extras:
+        if not isinstance(x, dict):
+            R.warn(where, f"an extra is not an object: {str(x)[:60]!r}")
+            continue
         extras_by.setdefault(str(x.get("after_rule") or ""), []).append(x)
     known_rules = {str(r.get("id")) for r in rules}
     for k in extras_by:
@@ -766,6 +796,10 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     toc = []
     all_tokens, all_files, rule_related = [], [], []
     for r in rules:
+        if not isinstance(r, dict):
+            R.warn(where, f"a rule entry is not an object: {str(r)[:60]!r}")
+            continue
+        r = normalize_rule(r)
         rid = str(r.get("id"))
         if rid in seen:
             R.warn(where, f"rule id {rid} appears twice")
@@ -843,12 +877,14 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         css_lines = []
         for name, d in tok_rows.items():
             val = tokens.value(d["tok"])
-            css_lines.append(f"  {name}: {val};" if val else f"  /* {name} */")
+            tk = tokens.by_css.get(name)
+            is_type = tk and tokens.flat[tk].get("$type") == "typography"
+            css_lines.append(f"  /* {name}: {val} */" if is_type else (f"  {name}: {val};" if val else f"  /* {name} */"))
         block = ":root {\n" + "\n".join(css_lines) + "\n}"
         closers.append(f'<div class="closer" id="{cid}-builders"><h3>For builders</h3>'
                        '<p>Every custom property this chapter names, with the value tokens.css gives it. Read the rule&#8217;s own note '
                        'before you pick one: the surface comes first, then the role.</p>'
-                       f'<pre class="code" id="{cid}-css" tabindex="0" aria-label="Custom properties for chapter {num}"><code>{e(block)}</code></pre>'
+                       f'<pre class="code" id="{cid}-css" role="region" tabindex="0" aria-label="Custom properties for chapter {num}, scrolls sideways when wide"><code>{e(block)}</code></pre>'
                        f'<p><button type="button" class="btn copy" data-copy-from="{cid}-css">Copy the custom properties</button></p>'
                        f'<p class="status" role="status" id="{cid}-copy-status">Nothing copied yet.</p></div>')
         toc.append((f"{cid}-builders", None, "For builders"))
@@ -985,6 +1021,20 @@ def load_chapters(chap_dir):
         except Exception as ex:
             R.warn(p.name, f"does not parse as JSON, so the chapter shows as a placeholder: {ex}")
             continue
+        if not isinstance(data, dict):
+            R.warn(p.name, "the file is not a JSON object, so the chapter shows as a placeholder")
+            continue
+        for key in ("rules", "extras", "sources", "intro", "related_chapters"):
+            if key in data and not isinstance(data[key], list):
+                if key == "intro" and isinstance(data[key], str):
+                    data[key] = [data[key]]
+                    continue
+                R.warn(p.name, f'"{key}" is not a list; it is ignored')
+                data[key] = []
+        bad = [r for r in data.get("rules", []) if not isinstance(r, dict)]
+        if bad:
+            R.warn(p.name, (f"{len(bad)} rule entry is not an object; skipped" if len(bad) == 1 else f"{len(bad)} rule entries are not objects; skipped"))
+            data["rules"] = [r for r in data["rules"] if isinstance(r, dict)]
         if p.stem != f"{num}-{CHAPTER[num][1]}":
             R.warn(p.name, f"expected the file name {num}-{CHAPTER[num][1]}.json")
         if num in found:
@@ -1040,7 +1090,11 @@ def build(args):
             if n == demo_num:
                 body.append(render_chapter(n, demo_data, specs, tokens, ctx, amp, order.index(n), order, demo=True))
             else:
-                body.append(render_chapter(n, chapters.get(n), specs, tokens, ctx, amp, order.index(n), order))
+                try:
+                    body.append(render_chapter(n, chapters.get(n), specs, tokens, ctx, amp, order.index(n), order))
+                except Exception as ex:  # one malformed file must not stop the page
+                    R.warn(f"chapter {n}", f"could not render ({type(ex).__name__}: {ex}); shown as a placeholder")
+                    body.append(render_chapter(n, None, specs, tokens, ctx, amp, order.index(n), order))
     proofs_html, has_proofs = proofs_section(chap_dir, specs, ctx)
     if not has_proofs:
         ctx["has_proofs"] = False

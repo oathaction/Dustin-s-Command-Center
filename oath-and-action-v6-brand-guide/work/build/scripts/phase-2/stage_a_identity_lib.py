@@ -13,7 +13,7 @@ import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]                      # oath-and-action-v6-brand-guide/
+ROOT = HERE.parents[3]                      # oath-and-action-v6-brand-guide/
 ID_DIR = ROOT / "work/build/assets/identity"
 CL_DIR = ROOT / "work/build/assets/civic-line"
 SPEC_DIR = ROOT / "work/build/guide/specimens"
@@ -103,6 +103,7 @@ def mark_style(surface, mode="color"):
 
 
 _uid = [0]
+LORA = "reexport/20261028_Amp-V5-Lora-Master-Reexported.svg"
 
 
 def _prussian_file(relpath):
@@ -142,20 +143,25 @@ def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, de
     return out
 
 
-def mark(relpath, *, w=None, h=None, surface="newsprint", mode="color", label=None, cls="", decorative=False, red_job=None):
+def mark(relpath, *, w=None, h=None, surface="newsprint", mode="color", label=None, cls="", decorative=False, red_job=None, extra=""):
     """Place an identity master on a surface. On Prussian (color mode) the explicit-White file is placed."""
     path = ID_DIR / relpath
     style = mark_style(surface, mode)
+    glyph = relpath.startswith(("ampersand/", "badge/")) or relpath == LORA
+    if glyph and mode == "color" and surface != "prussian":
+        style = f"color:{sig(surface)}"          # the ampersand and the badge are drawn whole in signature red
     if surface == "prussian" and mode == "color":
         alt = _prussian_file(relpath)
         if alt is not None:
             path, style = alt, ""
+        elif glyph:
+            style = f"color:{pal('white')}"       # treatment D for the narrow drawings, which have no White file
     text = path.read_text()
-    has_red = ("--amp" in text or "--lever" in text) and mode == "color" and surface != "prussian"
+    has_red = ((("--amp" in text or "--lever" in text) or glyph) and mode == "color" and surface != "prussian")
     red = None
     if has_red:
         red = ("working", red_job) if red_job else ("signature",)
-    return svg_file(path, w=w, h=h, label=label, style=style, cls=cls, red=red, decorative=decorative)
+    return svg_file(path, w=w, h=h, label=label, style=style, cls=cls, red=red, decorative=decorative, extra=extra)
 
 
 def icon(cl_id, *, size=24, edition="black", label=None, decorative=False, surface="newsprint"):
@@ -187,7 +193,6 @@ HINGE = {"display": "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", "compa
 TL1 = "reexport/20261028_Tagline-1-Line-Reexported.svg"
 TL2A = "reexport/20261028_Tagline-2-Line-A-Reexported.svg"
 TL2B = "reexport/20261028_Tagline-2-Line-B-Reexported.svg"
-LORA = "reexport/20261028_Amp-V5-Lora-Master-Reexported.svg"
 
 # master widths in px at their native heights, and display widths in units (cap height 100, box 108)
 WM_W = {"today": {"display": 978.31, 24: 221, 16: 152}, "condensed": {"display": 770.07, 24: 181, 16: 120}}
@@ -242,7 +247,7 @@ def sgrid(size, *, nodes=None, route=None, surface="newsprint", label=None, deco
     """Draw a coded Signal Grid.
 
     nodes: nine states in reading order (left to right, top to bottom): 'off' small subtle node, 'done' filled disc,
-    'now' ring, 'gap' no node and its links cut, 'step' working-red disc with a keyline, 'lit' corner disc,
+    'now' ring (7 px outside, 1 px line, so its 5 px hole reads at 40 px), 'gap' no node and its links cut, 'step' working-red disc with a keyline, 'lit' corner disc,
     'none' nothing at all (loading). route: a list of positions; route nodes 5 px, the end 7 px, a 3 px bar between.
     """
     base = 40 if size >= 40 else 24
@@ -271,7 +276,7 @@ def sgrid(size, *, nodes=None, route=None, surface="newsprint", label=None, deco
         elif n == "route":
             parts.append(f'<circle cx="{x}" cy="{y}" r="2.5" fill="{e}"/>')
         elif n == "now":
-            parts.append(f'<circle cx="{x}" cy="{y}" r="2.5" fill="none" stroke="{e}" stroke-width="2"/>')
+            parts.append(f'<circle cx="{x}" cy="{y}" r="3" fill="none" stroke="{e}" stroke-width="1"/>')
         elif n == "step":
             if surface == "prussian":
                 raise ValueError("Rule 05.3: red never sits on Prussian")

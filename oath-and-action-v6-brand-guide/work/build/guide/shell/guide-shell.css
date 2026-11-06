@@ -96,10 +96,11 @@ main:focus { outline: none }
 .cover { min-height: calc(100vh - var(--head-h)); display: flex; flex-direction: column; padding: var(--oa-space-400) 0 var(--oa-space-600) }
 .cover-folio { display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0;
   border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
-.cover-folio span + span { padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.cover-folio span { white-space: nowrap }
+@media (min-width: 48em) { .cover-folio span + span { padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) } }
 .cover-mark { margin: var(--oa-space-800) 0 0; color: var(--oa-color-text-primary-on-newsprint) }
 .cover-mark svg { display: block; width: min(100%, 26rem); height: auto }
-.cover-h1 { margin: var(--oa-space-600) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); max-width: 24ch }
+.cover-h1 { margin: var(--oa-space-600) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); max-width: 34ch; text-wrap: balance }
 .tagline { margin: var(--oa-space-300) 0 0; font: var(--oa-type-title); letter-spacing: var(--oa-type-title-letter-spacing); max-width: 11ch; text-wrap: balance }
 .pillars { margin: var(--oa-space-600) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--oa-space-050) var(--oa-space-150); font: var(--oa-type-intro); font-weight: var(--oa-font-weight-semibold) }
 .pillars .arr { color: var(--oa-color-text-secondary-on-newsprint); font-weight: var(--oa-font-weight-regular) }
@@ -219,7 +220,7 @@ main:focus { outline: none }
 
 /* The hinge divider: a hairline broken by ampersand B in the surface's ink (D1-22, D1-26).
    Its ampersand sits on the text column's edge, so the rule above swings into its use below. */
-.hinge { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-600) 0 var(--oa-space-300); color: var(--oa-color-identity-hinge-divider) }
+.hinge { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-600) 0 var(--oa-space-500); color: var(--oa-color-identity-hinge-divider) }
 .hinge-line { height: 0; border-top: var(--oa-border-width-hairline) solid currentColor }
 .hinge-line--a { flex: 0 0 var(--oa-space-400) }
 .hinge-line--b { flex: 1 1 auto }
@@ -280,6 +281,7 @@ main:focus { outline: none }
 .closer { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint) }
 .closer h3 { margin: 0 0 var(--oa-space-300); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
 .closer > p { max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-200) }
+.closer > p.label { margin: var(--oa-space-400) 0 var(--oa-space-100) }
 .closer-note { font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
 .table-wrap { overflow-x: auto; max-width: 100% }
 .tok-table { border-collapse: collapse; width: 100%; font: var(--oa-type-body-small) }
@@ -322,6 +324,11 @@ main:focus { outline: none }
 .proof-row { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); align-items: flex-start }
 .proof-row > .plate { flex: 1 1 auto; min-width: 0; max-width: 100%; margin-top: var(--oa-space-400) }
 
+
+/* long chapter names wrap inside their links at large text sizes */
+.toc-list a, .toc-name, .part-list a, .related a, .rel-inline a, .chapnav a { max-width: 100% }
+.toc-list .t, .part-list .t, .related a, .chapnav a { min-width: 0; overflow-wrap: break-word }
+
 /* ---------------------------------------------------------------- Colophon */
 .colophon { padding: var(--oa-space-800) var(--gutter) var(--oa-space-1000) }
 .colophon-inner { max-width: 100rem; margin: 0 auto }
@@ -353,7 +360,8 @@ main:focus { outline: none }
 
 /* ---------------------------------------------------------------- Forced colors, print */
 @media (forced-colors: active) {
-  .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight }
+  .rail a, .menu a { border-left-color: Canvas }
+  .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight; text-decoration: underline }
   .hinge-line { border-top-color: CanvasText }
   .plate-scroll { border: 1px solid CanvasText }
   .btn { border: 1px solid ButtonText }

@@ -89,11 +89,13 @@ const ICONS = [
   { file: 'icon-6.svg', id: 'CL-063', sheet: '03', group: 'topic: economy and public issues' },
   { file: 'icon-4.svg', id: 'R-02', sheet: '04', group: 'reform' },
 ];
+// Meanings in the words of voice line B (W13's rewrite, DR-76): "We'll explain the rules and track what happens to
+// them. When a decision is coming, we'll connect you with the people making it, so you can act in time."
 const PILLAR_MEANING = {
-  'CL-019': 'Explain, the first pillar: Oath & Action explains how a decision is made.',
-  'CL-020': 'Track, the second pillar: following a decision as it moves.',
-  'CL-021': 'Connect, the third pillar: linking readers with the people who make a decision.',
-  'CL-022': 'Act, the fourth pillar: the reader takes part.',
+  'CL-019': 'Explain, pillar 1: we explain the rules and how a decision is made.',
+  'CL-020': 'Track, pillar 2: we track what happens to the rules as a decision moves.',
+  'CL-021': 'Connect, pillar 3: when a decision is coming, we connect readers with the people making it.',
+  'CL-022': 'Act, pillar 4: the reader acts in time, taking part in the decision.',
 };
 
 // ------------------------------------------------------------------------------------------------ 16 px marks (DR-84, R10 of DR-67)

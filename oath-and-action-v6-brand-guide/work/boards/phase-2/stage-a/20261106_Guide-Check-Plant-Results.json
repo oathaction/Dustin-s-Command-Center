@@ -1,0 +1,206 @@
+{
+ "checked": "2026-11-06T19:52:26.703Z",
+ "page": "demo build (guide_build.py --demo), in a temporary folder",
+ "axe": "found",
+ "clean": {
+  "pass": true,
+  "failures": [],
+  "exemptions": [
+   {
+    "specimen": "s-demo-1-failure",
+    "skips": "contrast size"
+   },
+   {
+    "specimen": "s-demo-2-failure",
+    "skips": "contrast"
+   }
+  ],
+  "skippedTexts": 2
+ },
+ "plants": [
+  {
+   "test": "h1",
+   "fault": "a second h1",
+   "caught": true,
+   "message": "1440: 2 h1 headings (\"Oath & Action Brand Guide, Edition 06\", \"A second title\"); the page has exactly one",
+   "alsoFlagged": [
+    "headingOrder"
+   ]
+  },
+  {
+   "test": "headingOrder",
+   "fault": "an h4 straight after a chapter h2",
+   "caught": true,
+   "message": "1440: 1 skipped heading level(s), first: {\"text\":\"Skipped level\",\"from\":2,\"to\":4}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "specimenHeadings",
+   "fault": "an h3 inside a specimen",
+   "caught": true,
+   "message": "1440: 1 heading(s) inside specimens, first: {\"specimen\":\"s-demo-1-correct\",\"text\":\"Mockup headline\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "ruleIds",
+   "fault": "a rule h3 without its Rule ID",
+   "caught": true,
+   "message": "1440: 1 rule block(s) without a Rule NN.n h3: rule-01-1",
+   "alsoFlagged": [
+    "chapterH3"
+   ]
+  },
+  {
+   "test": "ruleIds",
+   "fault": "a rule h3 whose ID names another chapter",
+   "caught": true,
+   "message": "1440: 1 rule h3(s) with a bad Rule ID, first: {\"chapter\":\"01\",\"text\":\"Rule 09.1 A rule is one plain sentence.\",\"problem\":\"Rule 09.1 sits in chapter 01\"}",
+   "alsoFlagged": [
+    "ruleAnchors"
+   ]
+  },
+  {
+   "test": "ruleAnchors",
+   "fault": "a rule block whose id does not match its Rule ID",
+   "caught": true,
+   "message": "1440: 1 rule h3(s) without their #rule-NN-n anchor, first: {\"text\":\"Rule 01.1 A rule is one plain sentence.\",\"want\":\"rule-01-1\",\"got\":\"rule-xx\"}",
+   "alsoFlagged": [
+    "brokenLinks"
+   ]
+  },
+  {
+   "test": "chapterH3",
+   "fault": "a stray h3 in a chapter",
+   "caught": true,
+   "message": "1440: 1 chapter h3(s) that are neither rules nor closers, first: {\"chapter\":\"01\",\"text\":\"Why it works\",\"problem\":\"an h3 that is neither a rule (Rule NN.n) nor a closer\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "duplicateIds",
+   "fault": "two elements with one id",
+   "caught": true,
+   "message": "1440: 1 duplicate id(s), first: {\"id\":\"contents\",\"n\":2}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "brokenLinks",
+   "fault": "a same-page link to no id",
+   "caught": true,
+   "message": "1440: 1 same-page link(s) to no id, first: {\"href\":\"#nowhere\",\"text\":\"Nowhere\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "relatedLinks",
+   "fault": "a Related chapters link that lands on the contents",
+   "caught": true,
+   "message": "1440: 1 Related chapters link(s) that do not land on a chapter, first: {\"href\":\"#contents\",\"text\":\"05 Color\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "aliases",
+   "fault": "the #grid alias removed from 08 The Signal Grid",
+   "caught": true,
+   "message": "1440: V5 alias problem(s): [{\"alias\":\"grid\",\"target\":\"signal-grid\",\"problem\":\"missing\"}]",
+   "alsoFlagged": []
+  },
+  {
+   "test": "specimenAlt",
+   "fault": "a specimen stage with no alt",
+   "caught": true,
+   "message": "1440: 1 specimen(s) without alt text, first: {\"specimen\":\"s-demo-1-correct\",\"label\":\"\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "imgAlt",
+   "fault": "an <img> with no alt",
+   "caught": true,
+   "message": "1440: 1 <img> without alt, first: {\"src\":\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "svgNames",
+   "fault": "an inline SVG neither named nor hidden",
+   "caught": true,
+   "message": "1440: 1 inline SVG(s) neither named nor hidden, first: {\"where\":\"#rule-01-1\",\"cls\":\"\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "pendingSpecimens",
+   "fault": "a specimen file missing",
+   "caught": true,
+   "message": "1440: 1 specimen file(s) missing: s-demo-1-correct",
+   "alsoFlagged": []
+  },
+  {
+   "test": "under13",
+   "fault": "12 px text outside an exempt plate",
+   "caught": true,
+   "message": "1440: 1 text item(s) under 13 px, first: {\"text\":\"State the rule in one to three sentences\",\"size\":12,\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "contrast",
+   "fault": "Stone text tint on Newsprint",
+   "caught": true,
+   "message": "1440: 1 text item(s) under contrast, first: {\"text\":\"State the rule in one to three sentences. The shel\",\"size\":22,\"ratio\":1.81,\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "redUnmarked",
+   "fault": "a Pillar Red rule with no data-red",
+   "caught": true,
+   "message": "1440: 1 Pillar Red mark(s) without data-red, first: {\"tag\":\"P\",\"cls\":\"\",\"text\":\"Red bar\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "redJobs",
+   "fault": "two working-red jobs in the page",
+   "caught": true,
+   "message": "1440: 2 working-red jobs outside specimens (ask, error)",
+   "alsoFlagged": []
+  },
+  {
+   "test": "redJobsSpecimen",
+   "fault": "two working-red jobs inside one specimen",
+   "caught": true,
+   "message": "1440: specimen(s) with more than one working-red job: [{\"specimen\":\"s-demo-1-correct\",\"jobs\":[\"ask\",\"point\"]}]",
+   "alsoFlagged": []
+  },
+  {
+   "test": "redOnPrussian",
+   "fault": "red on a Prussian ground",
+   "caught": true,
+   "message": "1440: 1 red mark(s) on Prussian, first: {\"tag\":\"SPAN\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "emDash",
+   "fault": "an em dash in prose",
+   "caught": true,
+   "message": "1440: 1 em dash(es) outside data-allow-emdash, first: {\"text\":\"One clause — then another.\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "lockedLines",
+   "fault": "a near miss of the tagline",
+   "caught": true,
+   "message": "1440: 1 near miss(es) of a locked line, first: {\"line\":\"tagline\",\"found\":\"s Rule ID. A nation that answers to its people.Tokens--oa\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "pillarOrder",
+   "fault": "the pillars out of order",
+   "caught": true,
+   "message": "1440: pillars out of order: [\"Explain → Connect → Track → Act\"]",
+   "alsoFlagged": []
+  },
+  {
+   "test": "overflow",
+   "fault": "a wide element outside a scrolling frame",
+   "caught": true,
+   "message": "1440: sideways scroll (3496 > 1440), first: {\"tag\":\"DIV\",\"cls\":\"\",\"right\":3496,\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  }
+ ],
+ "pass": true
+}
