@@ -184,7 +184,7 @@ November 6, 2026, under `work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Brief.m
 - CP-M2 and RP-S7: "Words this guide uses" opens chapter 01 after the intro: 15 terms, among them the seven colors, view, working and signature red, kicker, deck, hinge headline and divider, lockup, the atlas with its loops and domains, evidence grade and Illustrative. Token is defined there for the first time. Each links to the rule or chapter that sets it.
 - CP-M3: W01's and W02's failure cards name the fault ("Writing for the eye: ...", "Passive voice: ..."). Their approved terms lines print whole in their rule text, so no approved word is lost.
 - CP-M6 and RP-M2: Rule 02.24 adds "In a newsletter, the step ends the last story, and the tagline follows it as the issue's sign-off." Its correct plate is one whole newsletter ending: the last story, the hinge divider, "What you can do", the dated step and its button, then the wordmark and the tagline. Rule 02.23's newsletter cell ends on W08's dated step and the tagline; "That's the briefing for November 6." is gone.
-- CP-M8 and RP-M1 (D2-250, DR-103, D2-249): Rule 01.21 now carries one kicker grammar and the seven labels, Guide among them, each defined in its specifications; a newsletter issue carries no label in its header; a pillar name alone and a chart's "Finding" line are never kickers; a piece that fits no label goes to the editor. Every kicker in my specimens follows it (for example "Explainer · Utility rates", "Guide · Field Notes", "Tracker · Dispatch").
+- CP-M8 and RP-M1 (D2-250, DR-103, D2-249): Rule 01.21 now carries one kicker grammar and the seven labels, Guide among them, each defined in its specifications; a newsletter issue carries no label in its header; a pillar name alone and a chart's "Finding" line are never kickers; a piece that fits no label goes to the editor. Every kicker in my specimens follows it (for example "Explainer · Utility rates" and "Guide · Field Notes"; round two sets Dispatch stories to "Report · Dispatch").
 - CP-S1: chapter 01 in six groups, and the hinge headline rules point at each other: group 5's line names Rules 02.27 and 04.3, and Rule 02.27 names Rules 01.18 to 01.20 and 04.3.
 - CP-S2: "our fourth edition" replaces "edition 4.2"; no "V5" or "V4.2" in my reader text or alts.
 - CP-S3: "We could not open the Senate's own page for the vote."; "Our editors review the log before each chapter, report or series runs."; "our shared tile grid"; builders notes say "before the piece runs".
@@ -281,3 +281,87 @@ Created: `work/build/guide/specimens/s-01-words.html`, `s-02-about.html`.
 Deleted by the build: `work/build/guide/specimens/s-02-index.html`, `s-02-group-1.html` to `s-02-group-5.html`.
 
 Nothing in `source/`, `work/ledger/`, the masters or another maker's files was touched, and nothing was committed.
+
+## Fix pass, round two
+
+November 6, 2026, under the fix pass brief's "Round two" and the main session's round-two message. I applied the research lead's report (`work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Research.md`) to everything I held, placed the photographs, and copy edited all eight chapters. Copy in chapters 03 to 08 changed only in the owners' build scripts, which I reran; no measurement, token, rule ID or locked line changed. I committed nothing.
+
+### Research applied
+
+- **H.R. 7008 (Documented in the bill texts and the two chambers' records).** DR-98's wording stands, and the report confirms it against the House-passed text. The Track piece's source line now cites the House Clerk's Roll Call 280 and the Congressional Record for Senate Vote 253, page S5199, and ends "Ending debate needs three-fifths of the Senate, 60 votes." Its second stage reads, in our own voice, "A Senate vote to end debate on taking it up got 53 votes, short of the 60 it needed." Rule 02.25's structure row keeps DR-98's first-mention wording and takes the Record as its source. "We could not open the Senate's own page" is gone from both chapters. The rotation log's row for the bill now holds the record's party split, in one form for both chambers.
+- **Rule 01.5.** The source line is the report's: Ballotpedia, marked secondary, with Mississippi's May 14, 2021 ruling and Florida's and Illinois's limits. The map, its key and its title stay as drawn, which the report says hold.
+- **Rule 01.11.** Both cases take the report's 22-word sentences, the same verb and the majority as the actor in both. The source line now cites the Texas bill history, California's Statement of Vote and the California court's January 14, 2026 order, and says the five-seat aims are each side's stated goals. The caption says why the last clauses differ: Texas's map became law with the governor's signature, and California's needed an amendment only voters could approve.
+- **Rule 01.13.** The why already said "vote out its members or the official who appointed them", as the report proposes. The chapter states no count of elected commissions, so no new source line was needed.
+- **Rule 01.16.** Both readings take the report's wording, 24 words each, with the verb "find" and each holder by role and affiliation: "Economists at Harvard University" and "Economists at the Economic Policy Institute". The first now covers typical and average pay, as the paper's abstract does. The source line is the report's.
+- **Rule 02.25, row one (DR-99).** "Our democracy is broken." now becomes connection L50 in the report's words, "Few voters leave their own party's candidate over an undemocratic stand, so officials who take one face little threat of losing office.", graded well supported, with its source line. The loop's safe-seat line stays out, so the row touches no primaries, ranked-choice voting or Massachusetts Question 3, which concerns primaries. The four row labels now name the four kinds the rule lists: how the system works, the office that decides, a next step and the structure; the rule text says "how the system works" where it said "the rule".
+- **Photographs (DR-101).** Rule 01.6 shows the Rosa Parks photograph from the Capitol Rotunda (rights ledger pho-01), cropped to 5:3 from the top so the walls and the public stay and the Architect of the Capitol's mark at lower right falls outside. Its caption is the record's, naming who, what, where and when with the credit; the plate's caption now names that event, since no photograph of the H.R. 7008 vote day exists. Rule 01.8 shows the Zianno photograph from the Lake Isabella public meeting (pho-04), cropped to 3:2, with the record's caption. I chose it over the Menniti frame because the named official faces the camera, so the caption's "who" is the person a reader sees, and the residents, whom the record does not name, face away. The failure plate shows the same photograph with "Democracy in action.", labeled Illustrative beside that invented caption. Both rules gained specifications for the photograph, the crop and the caption, and list the file. The shell embeds both files as it embeds other repository assets; the page grew from 4.31 to 6.05 MB.
+- **Rotation (Rule 01.9).** The two photographs are examples, so the log holds 17: the largest domain, Congress, agencies and public services, supplies four, under one in four (4.25); California supplies two, under one in five. Rule 01.10's plate lists both under federal.
+
+### Copy edit, all eight chapters
+
+I read every rule, why, caption, specification and builders note of chapters 03 to 08 as dumped from the chapter files, and scanned every specimen's visible text and alt in all eight chapters and the proofs for the patterns chapter 02 removes. The ten cross-chapter issues in my stage A notes now stand as follows:
+
+1. Decision codes in reader text: none left; the check's codes test passes.
+2. Bare lockup codes: named at first use, in Rule 03.2 ("L1, the wordmark alone", "L3, the wordmark with the lockmark", "L2, the stacked lockup", "L8, the monogram") and in Rule 08.2 ("L3, the masthead lockup, and L6, the editorial signature").
+3. "Atlas V7": none on the page.
+4. Corrective negation: 04.3's builders note was fixed in round one; 06.3's now reads "draw it a phone version with its own label positions".
+5. Rule titles: every title is an instruction, after round one.
+6. Kickers: one grammar (D2-250). One clash remained: the same kind of Dispatch story took "Tracker · Dispatch" in Rule 01.15 and "Report · Dispatch" in Rule 08.8. Both now read "Report · Dispatch", and Rule 01.21 defines Report as "What the record shows about a decision, from a story in a series such as Dispatch to a numbered study".
+7. Hinge divider geometry: one, after DR-96.
+8. Rules that should cite each other: 06.5 cites H07; 04.3 cites 02.27 and 01.18 to 01.20; 02.27 cites 01.18 to 01.20 and 04.3.
+9. `s-05-pairs` contrast: passes.
+10. Shell classes reaching into specimens: the engineer's; I renamed mine in round one.
+
+Other edits, with the plain-language items:
+- CP-S2: the editions keep one name each. Prose now writes a contrast ratio as "13.29 to 1", as chapter 05 does, in Rules 03.5 (why and specifications), 04.7 (why and failure caption) and 08.9 (why and failure caption). Tables and specimens keep "13.29:1" as data.
+- CP-S8: "Verdigris, a muted green" in chapter 01's words key, as chapter 05's intro says it; "backyard cottages" glossed the same way in Rule 01.22 and the letterhead proof.
+- CP-S9: Rule 08.8 now explains the Civic Line at first use: "a topic icon from the Civic Line, our set of topic symbols in chapter 10". Breakpoint, em, Dim Newsprint, lockup, x, rem, OKLab, tracking and widow were already defined at first use.
+- CP-S10: two landing lines rewritten (04.6's why now ends "With no words on it, the badge marks where a piece ends and claims nothing more."; 08.4's why ends "With one code per grid, chosen in a fixed order, a reader always knows which code a grid shows."); "just over" in 03.5 became "a little over" (W17); four passive sentences now name who acts (03.4's why, 05.2's roles caption, chapter 01's words key caption and chapter 02's brand lines caption).
+- Rule 02.25's mechanism table no longer narrows its first column on phones.
+
+### For the creative director (meaning or measurement, left as they are)
+
+1. **B's master ranges disagree.** Rules 04.1 and 04.6 place the 16 px master from 16 to 23 px and the 24 px master from 24 to 47 px; Rule 04.3's specifications say "16 px master under 22 px capitals, 24 px master to 46 px". A B 22 or 23 px tall gets a different master under each. This is a measurement, so the identity designer should rule.
+2. **Scrolling frames.** Rule 07.6's builders note asks for `role="region"` on a frame that scrolls; the guide's own shell now names its frames as groups, to keep 83 same-named regions out of the landmark list (AX-S3). Both are defensible on a site; the guide should teach one.
+3. **Report as a label.** I widened Report to cover a story in a series so Rules 01.15 and 08.8 agree. If the creative director prefers Tracker for series stories, both specimens change together.
+4. **Rule 01.5's map.** The report offers a fourth fill for amendment-only states (Florida and Illinois). I kept three fills and put the limits in the source line.
+5. **360 px phone pages** still scroll their frames by 2 px at 390 px (chapter 05's and ten of mine).
+6. **The photographs** are Wikimedia's 1,920 px renditions; the research lead asks that the originals be fetched and checked against their SHA-1 before print.
+
+### Routine calls, as proposed decision lines
+
+- D2-xxx | Rule 01.8 shows the Zianno frame from the Lake Isabella meeting | The named official faces the camera, and the unnamed residents face away
+- D2-xxx | Photographs are cropped in the specimen's CSS from the delivered files, with no new image files | Each file stays as the rights ledger records it, so print can swap in the original
+- D2-xxx | Rule 01.8's failure shows the same photograph with an invented caption, labeled Illustrative beside the caption | The fault is the caption alone
+- D2-xxx | Rule 02.25 labels its four answers as how the system works, the office that decides, a next step and the structure | Row one is now a mechanism (DR-99)
+- D2-xxx | A Dispatch story's kicker is "Report · Dispatch" in every chapter, and Rule 01.21's Report covers what the record shows about a decision | One label for one kind of piece
+- D2-xxx | Prose writes contrast ratios as "13.29 to 1"; tables and specimens may print "13.29:1" | One form in sentences, compact figures in data
+- D2-xxx | The Rosa Parks and Lake Isabella photographs join chapter 01's rotation log | Every example a reader meets is counted
+
+### Tested
+
+- `guide_editor_build.py`: every check passes, including Rule 01.11's two cases at 22 words each and Rule 01.16's two readings at 24 words each, by script.
+- `stage_a_identity_build.py` and the three-step `stage_a_systems_build.py` (probe, capture, final) rerun after my edits. Before editing, a rerun of each changed nothing but the measurement file's timestamp, so the diffs after it are my copy edits alone; I read every changed line in the chapter files' word diff.
+- `python3 -I work/build/scripts/phase-2/guide_build.py`: 0 warnings, 229 specimens.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px, on the final build: PASS, 0 failures across 99 rules, 229 specimens and 694 same-page links, with axe-core 4.10.2. An earlier full run, before my last fix to the mechanism table's phone layout, also passed.
+- By eye in Playwright Chromium: Rules 01.6 and 01.8 (both plates) at 1440 and 390 px, with the photographs rendered and the agency's mark cropped out of the Rotunda frame (checked at 2x the plate's corner); Rules 01.11, 01.16 and 02.25 at 1440 and 390 px; Rules 03.2 and 08.8 at 1440 and 390 px; Rules 06.3 and 01.15 at 1440 px.
+- A script scan of every chapter's text and every specimen's text and alt for em dashes, the listed fillers and corporate verbs, ", while", "rather than", "Here is", exclamation points, straight quotes, edition codes, "eyebrow", "diverging pair", "Civic Line", "Atlas V7" and passive verbs; I read each hit.
+
+### Not tested
+
+- The research lead's sources; I used the report's sentences and source lines as written.
+- The photographs at print size, and the originals they stand in for.
+- Chapters 03 to 08 by eye beyond the rules listed above; I read their text in full but looked at few of their plates.
+- Screen readers, other browsers and real readers.
+
+### Change log, round two
+
+Modified:
+- `work/build/scripts/phase-2/guide_editor_ch01.py`, `guide_editor_ch02.py`
+- `work/build/scripts/phase-2/stage_a_identity_chapters.py` (copy in Rules 03.2, 03.4, 03.5, 04.6, 04.7, 08.2, 08.4, 08.8 and 08.9)
+- `work/build/scripts/phase-2/stage_a_systems_ch05.py` (the roles caption) and `stage_a_systems_ch06.py` (Rule 06.3's builders note)
+- Regenerated by those scripts: `work/build/guide/chapters/01-purpose.json` to `08-signal-grid.json` where copy changed (01, 02, 03, 04, 05, 06, 08), the `s-01-*`, `s-02-*`, `s-03-*`, `s-04-*`, `s-05-*` to `s-08-*` specimens and their manifests, and `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json` (timestamp only)
+- `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, its build report and its check results
+- This file
+
+Created: none. The photographs are the research lead's files, read in place.

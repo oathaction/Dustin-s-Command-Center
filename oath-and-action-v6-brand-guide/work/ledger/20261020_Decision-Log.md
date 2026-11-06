@@ -670,3 +670,98 @@ Dustin restarted in a new chat with the V4 handoff's starting prompt. The studio
 | D2-256 | H10's qualification line is corrected as an erratum to read "Each margin is the leading party's lead, in percentage points of all presidential votes." The rule and its example are unchanged; board A shows the correction | The printed line made its own example's sign wrong (civic CP-S18) |
 | D2-257 | A position piece's disclosure names who decided the position, the date, any funder interest, and links to the bios of those who decided it | DR-100 moves the editor's roles to his bio; the brand review asked that campaign roles reach the reader (S7) |
 | D2-258 | The fix pass runs in two rounds: the four makers and the research lead in parallel by ownership, then the editor's copy edit of all eight chapters, made through each owner's build script | One fix pass, and no two agents edit one file at once |
+
+## Stage A fix pass, November 6, 2026
+
+Five agents fixed the stage A page under `work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Brief.md`; the editor then copy edited all eight chapters with the research lead's findings (`20261106_Stage-A-Fix-Pass-Research.md`, which proposes no routine calls). Their routine calls, numbered by the main session in the order each maker's notes give them:
+
+### Engineer (shell, build, checks, tokens)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-259 | Figure tracking loosens from −4 to −3 percent with DR-95's set; token version 6.0.0-gate2.2 | At 48 px, "00" and "44" touched at −4 percent; no pair touches at −3 percent |
+| D2-260 | The shell sits on Rule 07.2's grid, with 64 px margins from 1440 px and "In this chapter" in columns 11 and 12 from 1440 px | The guide breaks its own grid rule otherwise (C-S1) |
+| D2-261 | From 1440 px the appendix spans twelve columns over the rail, which hides once covered; appendix mat 24 px | D2-251's "no rail from 1440 px" without a jump in layout |
+| D2-262 | A readable or interactive stage is a group named by plate label and rule, described by a hidden alt | Unique names for 34 groups (D2-255, AX-S2) |
+| D2-263 | Scrolling frames and code blocks are groups, not regions, focusable only while they overflow; the ring on the mat is Charcoal | AX-S3, AX-S4 |
+| D2-264 | Under 1024 px the masthead has a second line with the full location; the 16 px master stays only under 360 px | AX-S7 with the 24 px master (C-S10) |
+| D2-265 | Chapter JSON strings are decoded once; `<code>` content prints as written | RP-M4; a maker can show markup inside code |
+| D2-266 | Each For builders block copies the chapter's properties with every dependency and the four surface classes; tokens.css downloads as `20261106_Oath-And-Action-Tokens.css` | RP-M3; the copied block works alone |
+| D2-267 | The cover's display wordmark is hidden from assistive technology, since the h1 names the guide in full | One name, heard once (C-S10) |
+| D2-268 | `typeScale` allows the chart system's sizes and, for stages with no width, the fluid sizes at the checked width | Charts and page-flow specimens are on the scale by construction |
+
+### Editor (chapters 01 and 02, and the round-two copy edit)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-269 | Both sides of a vote, and every party, take the party mark ink with names printed; solid and outline in the same ink where sides must be told apart at a glance (Rules 01.1 and 01.2) | One standard under DR-48, DR-58 and DR-93, matching Rule 05.7 |
+| D2-270 | "Act · How to take part" is one content label and takes nothing after it | It holds its own middle dot; a third part would break D2-250's "at most one more part" |
+| D2-271 | Only "Our position" takes the filled Charcoal label; the other labels are set in the label style, with the second part in the secondary text ink | The one kind that argues is seen before the headline (Rule 01.23) |
+| D2-272 | The editor's phone pages are 360 px wide with 16 px margins, as chapter 05's are; reference sheets, lines, headlines, charts and the writing pairs flow, at the D2-254 phone floor below 48em and the desktop ceiling from 48em | C-S6 where width is the lesson; no sideways scrolling elsewhere |
+| D2-273 | Hinge headline plates set H3 at 26 px on phones and the section style at 44 px from 48em, with B from the 16 px and 24 px masters | Rule 04.3's master table; at 44 px a headline ran to six lines at 390 px |
+| D2-274 | Rule 01.20's correct headline is a pair of people joined through what they agree on, and Rule 02.27 sends pairs of people to Rules 01.19 and 01.20 | RP-S1; the two rules no longer disagree |
+| D2-275 | Rule 01.9 counts within one unit and names no state | CP-S11 |
+| D2-276 | Rule 01.10 and the rotation log carry a region; Ohio's and Pennsylvania's minimum wage floors (atlas I104) are the Midwest and Northeast cases | CP-S11, from a sourced atlas record |
+| D2-277 | The rotation log keeps the May 2023 survey and H.R. 7008 as two rows | DR-98 |
+| D2-278 | Rule 01.12's failure row is about town library hours in place of open primaries | Keeps chapter 01 clear of the subjects of the editor's campaigns, in DR-99's spirit |
+| D2-279 | Chapter 02 runs in seven groups: the five teaching groups, house rules, and our lines and words | Every rule sits in a group in the shell's index |
+| D2-280 | W01's and W02's approved terms print in their rule text, and their failure cards name the fault | CP-M3, with no approved word lost |
+| D2-281 | The writing section's deck, third paragraph, scope, legend and sources note sit in one readable extra, "How Oath & Action writes"; its index sentence retires, since the shell's index does that job | C-S11 |
+| D2-282 | The failure band "Failure case: do not publish" is a Charcoal label inside the stage | BE-S4, with no red on a failure that names parties |
+| D2-283 | Rule 01.8 shows the Zianno frame from the Lake Isabella meeting | The named official faces the camera, and the unnamed residents face away |
+| D2-284 | Photographs are cropped in the specimen's CSS from the delivered files, with no new image files | Each file stays as the rights ledger records it, so print can swap in the original |
+| D2-285 | Rule 01.8's failure shows the same photograph with an invented caption, labeled Illustrative beside the caption | The fault is the caption alone |
+| D2-286 | Rule 02.25 labels its four answers as how the system works, the office that decides, a next step and the structure | Row one is now a mechanism (DR-99) |
+| D2-287 | A Dispatch story's kicker is "Report · Dispatch" in every chapter, and Rule 01.21's Report covers what the record shows about a decision | One label for one kind of piece |
+| D2-288 | Prose writes contrast ratios as "13.29 to 1"; tables and specimens may print "13.29:1" | One form in sentences, compact figures in data |
+| D2-289 | The Rosa Parks and Lake Isabella photographs join chapter 01's rotation log | Every example a reader meets is counted |
+
+### Identity designer (chapters 03, 04, 08 and the proofs)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-290 | Letterhead proofs sit side by side, not stacked as the fix pass brief lists | Side by side, both wordmarks sit on one line 72 px from the top; stacked, they sit 1,128 px apart, more than a 900 px window, which defeats the comparison D2-251 asks for |
+| D2-291 | Proof labels read "Today's width" and "Condensed width, proposed"; the appendix is titled "Wordmark width proofs" | D2-253 keeps "Gate" off reader pages, and the labels still name which width is in force |
+| D2-292 | Cards in chapters 04 and 08 are drawn at 358 px, a 390 px phone's column | They fit a phone at true size (C-S7) and take the phone floor's sizes (D2-254) |
+| D2-293 | Sheets of marks and reference tables leave out `width_px` and flow; artboards keep it | Each mark in a sheet prints its own size, so a sheet width would claim nothing (C-S6) |
+| D2-294 | Tracker stages take plain names, with one line on each stage's meaning per tracker page | A newcomer reads the key without the legislative terms (H02, CP-M9) |
+| D2-295 | The social card sets its kicker in the H4 style at 24 px, its headline in the title style at 110 px, 72 px margins, and no deck | Every size is on the desktop ceiling; a deck at the body size would be unreadable at feed size |
+| D2-296 | The two-email proof uses only sizes both type sets share: 24 px headline, 17 px body, 13 px kicker | The pair is 1,280 px wide, so the check reads it against the desktop ceiling, while each email is a 600 px piece |
+| D2-297 | L6 has its own plate at its 884 px minimum | Its minimum is wider than the guide's column, and the sheet stays readable at 712 px |
+| D2-298 | The display lockmark's file, `20261028_Lockmark-Master-V5.svg`, leaves the Files lists of Rules 03.6 and 08.1, and the builders note says to ask the editor for it | Its name holds "V5", which D2-253 keeps off reader pages; the asset package should rename it, for example `Lockmark-Display-Master.svg` |
+| D2-299 | `<title>` and `<desc>` are stripped from SVG files my build inlines itself (the taglines, the Lora record, the letterhead PDF); the files keep them | Their record notes held "V5" and "Phase 2" and reached the page |
+| D2-300 | The letterhead's town is Wrenfield, Massachusetts, invented | CP-S17: it cannot be joined to Alder County |
+
+### Systems designer (chapters 05, 06, 07)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-301 | An artboard between 600 and 1,200 px wide takes each style's size from either column of Rule 06.2 | D2-254 names no size for that band; the engineer's check accepts either set there |
+| D2-302 | A specimen sheet with no fixed width shows each display style at its phone floor below 48em and its desktop ceiling from 48em | Every size a reader sees in a specimen is then one D2-254 names |
+| D2-303 | Rule 05.1's and 05.3's phone page puts its dates on a Charcoal panel | Keeps the red ask clear of Prussian (BE-S5) and keeps the hinge where Rule 04.4 puts it |
+| D2-304 | Rule 06.4's plates show an H3 at 32 px at −1 percent against −3 percent, with word spaces and touching letter pairs measured | The fusing DR-95 fixes showed most at H3; −3 percent is the guide's own earlier value |
+| D2-305 | Letters touch when no white device pixel separates their ink at twice size, on canvas with kerning | Repeats the craft review's tagline result (2 of 24 at −3 percent) |
+| D2-306 | Rule 07.3's table moves to its own readable extra, and its correct plate is the quarter-size drawing | A plate can carry one scale |
+| D2-307 | Column spans are measured over chapter 02's prose (7,041 characters), and plates show chapter 02's opening paragraph | D2-248 retires W07's paragraph as sample text, and a longer sample steadies the averages |
+| D2-308 | A failure plate that could be mistaken for our work carries a Charcoal "Failure case: do not publish" band at the top of its stage | BE-S4; the editor may want the same form in 01.2, 01.3 and 01.5 |
+
+### Board builder
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-309 | A 1,440 px view is the chapter column under the masthead, from the rail's edge to 24 px past the local contents, 1,136 by 835 px; a 390 px view is the whole phone screen under the masthead | At true size the column fits the board's 1,312 px measure with no sideways scroll, and the phone screen keeps the plates' full-width mats |
+| D2-310 | Views are captured after the page's own anchor jump, with the focus ring the shell gives the heading cleared | The capture shows what a reader sees on landing, without a ring no reader would see |
+| D2-311 | Each proof plate is captured as its stage alone, at true size, in a window wide enough for the widest plate, with the page's chrome hidden | The plate is the specimen; the appendix's notes and caption print as live text beside it |
+| D2-312 | Captures are JPEG at quality 80, at device scale 2 | About 11 MB for 51 images, sharp on a 2x screen; a 4 MB chapters page and a 16 MB publish limit leave no room to inline them |
+| D2-313 | The board inlines `tokens.css` and sets every color, size, space and type style from it, with the title, section, H3 and H4 styles at the tracking Dustin approved | The board then looks like the guide and moves with the tokens |
+| D2-314 | The letter spacing pairs set live text in the token styles, old above new, joined by the hinge divider in Charcoal, each pair as wide as its widest line | DR-95 asks for actual size; the divider follows DR-96 and Board 5's before and after |
+| D2-315 | Decisions sit on White cards with an answer column; the reply box is the board's one Prussian panel | One dark panel per section (Rule 05.1); the answers gather in one place Dustin can copy |
+| D2-316 | The reply box saves marks in the viewer's browser only, keyed to the decisions' text | A changed set of decisions never loads stale answers, and no answer leaves Dustin's browser |
+| D2-317 | The publish copy sets `lang="en"` by script and keeps no attribute on its body | The publish skeleton's elements carry no attributes (as D2-243 found) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-318 | Stage board A commits its captures (about 11 MB) with the board, in `work/boards/phase-2/stage-a/board-a/` | A board is the record of what Dustin saw (D2-133), and earlier boards keep theirs |
+| D2-319 | The main session ran the final checks itself: `guide_build.py --strict` (99 rules, 229 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 24 listed exemptions, each a labeled failure, a print piece or a true-size mark) and the token tests (all pass, 35 of 35 plants caught) | A check is reported only once the main session has run it |
