@@ -328,3 +328,23 @@ Dustin: "Pick: Times Explainer. Decisions: as recommended. I love the times expl
 | # | Decision | Reason |
 |---|---|---|
 | D2-88 | The session closes with a handoff for a new chat (`work/handoffs/phase-2/20261106_Next-Session-Handoff.md` and its starting prompt) | Dustin's chat had used 86 percent of its context |
+
+## Data visualization round, November 6, 2026
+
+The studio asked eight questions with a recommendation for each. Dustin re-supplied Atlas V7 with its public rebuild package and wrote: "Review attached files, then please proceed with your recommendations."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-44 | Board 3 shows three chart-system concepts inside the atlas pick's visual language, each with the same ten charts on the same data. After the pick, the studio builds the full chapter 14 set (twenty or more charts, the selection guide, the palette spec and three complex examples) in the picked system, under its own go | Dustin, November 6, as recommended |
+| DR-45 | Each concept shows its charts on White and on Newsprint, and Dustin settles one page color for charts and the atlas together on Board 3. This also answers the atlas finishing list's item 2 | Dustin, November 6, as recommended |
+| DR-46 | Chart data comes from Atlas V7 and from primary public sources (Census Bureau, FEC, state election offices), each with a full source line. Anything else carries an "Illustrative data" label beside the chart | Dustin, November 6, as recommended |
+| DR-47 | Chart type stays in the locked faces: Inter Tight titles, Inter labels and numbers, Lora Italic only for quoted words. No serif chart titles | Dustin, November 6, as recommended |
+| DR-48 | Party data uses neutral inks with the party's name printed on the mark. Pillar Red and Prussian are never assigned to a party, on any chart or map | Dustin, November 6, as recommended |
+| DR-49 | Charts are designed still-image first, for Substack posts, email and social cards, with interactive versions for the atlas site and reports. The studio ships a chart kit: templates, tokens and a script that turns a CSV into a finished chart | Dustin, November 6, as recommended |
+| DR-50 | Each concept shows two charts on Charcoal; the full dark specification follows the pick | Dustin, November 6, as recommended |
+| DR-51 | Q-13 stays open: the reader panel for Board 3 is simulated and the report marks it untested | Default; Dustin gave no reader list |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-89 | New files in this round carry the date 20261106. Concept pages live in `work/boards/phase-2/data-viz/`, notes and reviews in `work/handoffs/phase-2/` | The execution date changed; one place per stage (D2-02, D2-47) |
+| D2-90 | The re-supplied V7 HTML, QA report and coverage manifest match the November 5 checksums. The new package, `v7-public-atlas-rebuild.zip`, is unpacked under the git-ignored `work/extract/supplied-20261106/`. Its `maintenance/data/20261015_Atlas-V7-Public-Data.json` equals the HTML's `atlas-data` script tag key for key, so both name one master, extracted to `work/extract/atlas-v7-data.json` | Large supplied files stay out of git (D0-05); one canonical model (D2-71) |

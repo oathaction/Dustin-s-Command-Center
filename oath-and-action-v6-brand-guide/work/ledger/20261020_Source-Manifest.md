@@ -45,3 +45,14 @@ Supplied by Dustin in the session. The large files stay out of git (`work/extrac
 | `20261015_Democracy-Issues-And-Reforms-Register_V4.xlsx` | 539,792 | `987529dfa02a66414864c1114968555a40e3ea55ea066dbce2a6c795a7d4f23a` | `work/extract/supplied-20261105/` |
 | `20261015_Evidence-And-Changes-Ledger_V4.xlsx` | 187,226 | `dea97078a809b326e574dbfe4f43ef95df11cdeaa196b07ffc9b8d6fbb9e3105` | `work/extract/supplied-20261105/` |
 | `20260911_Democracy-Atlas-Rigorous-Review-Memo.docx` | 22,915 | `e22bfad3d98a9833deece9fb83b425c652734ae77f69bf9bfa68e516a92e87c3` | `work/extract/supplied-20261105/` |
+
+## Added November 6, 2026
+
+Supplied by Dustin in the session. The HTML, the QA report and the coverage manifest repeat the November 5 files byte for byte. The zip is new and stays out of git (`work/extract/` is ignored).
+
+| File | Bytes | SHA-256 | Where it sits |
+|---|---|---|---|
+| `20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html` (repeat) | 3,109,589 | `05e26c6b2dc6031a915847fd3c941772cde50d3eda056fb0a4bc869b80c97649` | `work/extract/supplied-20261105/` |
+| `20261015_Atlas-V7-Editorial-And-QA-Report.md` (repeat) | 20,688 | `5ea7927a116e89bb8b067d7e47a5ff8c74ee063b3390ad4787bc2e6e2fc00446` | `work/research/atlas-v7-docs/` |
+| `20261015_Atlas-V7-Content-Coverage-Manifest.csv` (repeat) | 31,051 | `19ae92d033816e6716f74918357d6b9622e888a6dc86cb83e8b4dbf23ef4eea7` | `work/research/atlas-v7-docs/` |
+| `v7-public-atlas-rebuild.zip` (111 files: V7, its maintenance data, research, build, verification, and an archive of V4 and V6) | 6,070,943 | `2f6d573ee5556a2a35a4d91323032a5006405cca0b413049866fff6ef8f6518e` | `work/extract/supplied-20261106/` |
