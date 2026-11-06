@@ -175,6 +175,11 @@ I read the fix-pass brief, the six red team reports and the reader panel, rebuil
 - **EX-P2. Partly.** Chart sizes live in `CHART_TOKENS`; some layout offsets (gutters, note widths) stay as literals in the generators.
 - **SH-1, SH-4.** For the main session (chart registration, `oa.chart` tokens). **SH-2.** Five grades; V7's `plausible_contested` has no display word yet, and Explainer's data does not use it. **SH-3. Done** (S10 key note and guide item 4). **SH-5. Partly** (F16). **SH-6, SH-7. Done.**
 
+### Creative director, must fix before Board 3
+
+- **S03 phone counts. Done.** On the 358 and 328 px drawings a line under each bar prints every count ("2 away · 4 toward · 1 mixed"), wrapping between items; the lines also reach the table notes. Seen at 360 px; both checks pass.
+- **S08 roll-up notes. Done.** The two notes are merged into the director's one sentence pair, with the counts computed from RL47's list; S03 keeps its shorter roll-up note.
+
 ### Reader panel, five changes
 
 1. **Done.** Measure lines say "the atlas, Oath & Action's own research"; no codes on chart faces.
