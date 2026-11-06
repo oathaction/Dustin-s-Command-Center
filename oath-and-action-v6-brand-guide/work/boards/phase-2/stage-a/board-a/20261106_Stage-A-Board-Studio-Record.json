@@ -26,7 +26,10 @@
   },
   {
    "stage": "Creative director",
-   "text": "The creative director scored the fixed page on the Master Brief's rubric, checked each must-fix item from the five reports, and wrote this board's verdict, chapter notes, decisions and risks."
+   "text": [
+    "The creative director scored the fixed page on the Master Brief's rubric, confirmed that all 29 must-fix items from the five reports were resolved, and named three blockers: text touching the new plate border in 38 plates, a stray sliver in Rule 04.8's crop, and 29 phone plates that overflowed by 2 px. Their makers fixed all three, with two small consistency fixes in Rules 04.3 and 07.6.",
+    "The studio rebuilt the page and reran the checks; the creative director looked at each fix, raised Craft from 3 to 4, signed off with all six criteria at 4, and wrote this board's verdict, chapter notes, decisions and risks. At the studio's request it also reweighed the example for decision 13, since a party-line vote shows each side voting as a bloc."
+   ]
   }
  ],
  "red_team": [
@@ -88,6 +91,12 @@
   {
    "name": "Chapters page read before publishing",
    "result": "The studio scanned all 76,458 words of rendered text and alt text by script (no email address, phone number, em dash, placeholder, studio word or decision code), looked at all 229 plates on contact sheets and at both letterhead PDF pages, and confirmed the only outside resource is Google Fonts.",
+   "pass": true
+  },
+  {
+   "name": "Board check",
+   "command": "node work/build/scripts/phase-2/dataviz_check.js work/boards/20261106_Stage-A-Foundations-Board.html --board",
+   "result": "1440, 390 and 360 px: axe-core, contrast, text size, reflow and no working red, 0 failures.",
    "pass": true
   }
  ],

@@ -6,6 +6,15 @@
    "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
    "published": "2026-11-06",
    "access": "private"
+  },
+  {
+   "name": "Stage board A",
+   "file": "work/boards/20261106_Stage-A-Foundations-Board.html",
+   "publish_copy": "scratchpad publish-board-a folder (rebuilt by stage_a_board_build.py)",
+   "url": "https://claude.ai/artifact/4QBnvFeqfohzs972M4P8rx",
+   "published": "2026-11-06",
+   "access": "private",
+   "files": "55 captures from work/boards/phase-2/stage-a/board-a/captures/"
   }
  ]
 }

@@ -1,26 +1,26 @@
 {
  "title": "Chapters 01 to 08, for your review",
- "deck": "The eight Foundations chapters now read as finished guide pages, every must-fix item from the five reviews is resolved, and the wordmark proofs sit side by side at true size. Fourteen decisions wait for your answer.",
+ "deck": "The eight Foundations chapters now read as finished guide pages, every must-fix item from the five reviews is resolved, and the wordmark proofs sit side by side at true size. Fifteen decisions wait for your answer.",
  "ask": [
   "Read the verdict, then each chapter's views at desktop and phone width.",
   "Compare the wordmark proofs at true size before you answer A1.",
-  "Answer A1 to A14 on the cards, or send the sample reply if every recommendation suits you."
+  "Answer A1 to A15 on the cards, or send the sample reply if every recommendation suits you."
  ],
- "sample_reply": "A1 to A14: as recommended.",
+ "sample_reply": "A1 to A15: as recommended.",
  "verdict": {
-  "headline": "The Foundations chapters reach the ship line on five of six criteria, and craft reaches it once three layout and drawing faults close.",
+  "headline": "The Foundations chapters reach the ship line on all six criteria, and I sign them off for your review.",
   "text": [
    "Every must-fix item from the five reviews is resolved on the page. H.R. 7008 is described whole from the bill text and both chambers' records, every party takes one neutral ink, the photographs are real, the hinge divider has one geometry, the letter spacing is loosened as you approved, and the proofs sit side by side at true size.",
-   "Craft scored 3 on the page as I reviewed it, for three faults: the specimens in chapters 05 to 07 now touch the keyline the fix pass drew around every plate, Rule 04.8's crop leaves a stray sliver of B at the cover's edge, and 29 phone plates scroll by 2 px. They are marked Blocking under Still to do, and none needs your answer. Chapter 01 does need your wording on what nonpartisan means, in A13."
+   "My first look found three craft faults the fix pass had left: specimens touching their new frames in chapters 05 to 07, a stray sliver of B in Rule 04.8's crop, and phone plates that scrolled by 2 px. The studio fixed all three, and I checked each fix on the rebuilt page. Chapter 01 still needs your wording on what nonpartisan means, in A13."
   ]
  },
  "scores": [
-  {"criterion": "Craft", "score": 3, "line": "Rule heads, the hinge divider, the letter spacing, the photographs and the proofs hold at 2x, but 38 plates in chapters 05 to 07 touch their keyline, Rule 04.8 leaves a sliver of B, and 29 phone plates scroll 2 px."},
+  {"criterion": "Craft", "score": 4, "line": "Rule heads, the hinge divider, the letter spacing, the photographs, the proofs and the repaired plates hold at 2x; the tagline still breaks with one word in two sign-offs, and one event card sits flush on its frame."},
   {"criterion": "Clarity", "score": 4, "line": "Each chapter opens on its instruction line, chapters 01 and 02 run in named groups with an index, and chapter 01 defines its terms before it uses them."},
   {"criterion": "Brand fidelity", "score": 4, "line": "The locked lines appear 31 times, exact; red stays off parties and off Prussian; chapters use today's width; the badge still reads as a registered sign at 16 px (A6)."},
-  {"criterion": "Usefulness", "score": 4, "line": "Rules carry tokens, sizes in px and points, files and working CSS, though Rules 04.1 and 04.3 give B's masters different ranges and Rule 07.6 teaches a frame the shell no longer uses."},
+  {"criterion": "Usefulness", "score": 4, "line": "Rules carry tokens, sizes in px and points, files and working CSS, and B's master ranges now agree; L4 to L7 and the coded Signal Grid drawings still lack master files."},
   {"criterion": "Evidence honesty", "score": 4, "line": "H.R. 7008 is described whole from primary records and both sides take one form, but chapter 01 does not yet say what to do when the record falls on one side (A13)."},
-  {"criterion": "Accessibility", "score": 4, "line": "The guide check passes at four widths, names carry no stray code and every frame has its own name; 29 phone frames take focus for a 2 px scroll, and no screen reader has heard the page."}
+  {"criterion": "Accessibility", "score": 4, "line": "The guide check passes at four widths, names carry no stray code, every frame has its own name and no phone page takes a false focus stop; no screen reader has heard the page."}
  ],
  "chapters": {
   "01": {
@@ -29,7 +29,7 @@
    "scores": [4, 4, 5, 4, 4, 4]
   },
   "02": {
-   "note": "Chapter 02 is the writing section you approved, now in seven groups with an index, and each rule still pairs its before and after across the hinge divider. Rule 02.25 now answers \"Our democracy is broken.\" with an atlas mechanism graded well supported. Its last row leaves out how each party voted on H.R. 7008, which A13 would restore.",
+   "note": "Chapter 02 is the writing section you approved, now in seven groups with an index, and each rule still pairs its before and after across the hinge divider. Rule 02.25 now answers \"Our democracy is broken.\" with an atlas mechanism graded well supported. Its last row leaves out how each party voted on H.R. 7008, which A14 would add.",
    "views": ["opening", "02.1", "02.25"],
    "scores": [4, 5, 5, 4, 4, 4]
   },
@@ -39,24 +39,24 @@
    "scores": [4, 4, 5, 4, 4, 4]
   },
   "04": {
-   "note": "Chapter 04 keeps the ampersand to one moment a view, and its hinge headlines now come from chapter 02's correct list. The badge after a sentence reads as a registered sign at 16 px (A6), and Rule 04.8's crop leaves a sliver of B at the cover's edge, one of the three blocking faults. Rules 04.1 and 04.3 also give B's masters different size ranges; Rule 04.1's ranges govern.",
+   "note": "Chapter 04 keeps the ampersand to one moment a view, and its hinge headlines now come from chapter 02's correct list. Rule 04.8's crop now runs cleanly off the cover's edge, and B's master ranges agree across the chapter. The badge after a sentence still reads as a registered sign at 16 px, which A6 puts to you.",
    "views": ["04.3", "04.6", "04.8"],
-   "scores": [3, 4, 4, 3, 4, 4]
+   "scores": [4, 4, 4, 4, 4, 4]
   },
   "05": {
-   "note": "Chapter 05 asks for a surface first, then the colors that pass on it, and every pair carries its measured ratio. The phone page in Rules 05.1 and 05.3 now keeps the red ask clear of any blue panel. From Rule 05.4 on, the tables and charts sit against their keyline with no inner margin.",
+   "note": "Chapter 05 asks for a surface first, then the colors that pass on it, and every pair carries its measured ratio. The phone page in Rules 05.1 and 05.3 keeps the red ask clear of any blue panel and now sits whole on a phone. The tables and charts have room inside their frames.",
    "views": ["05.1", "05.3", "05.7"],
-   "scores": [3, 4, 5, 4, 5, 4]
+   "scores": [4, 4, 5, 4, 5, 4]
   },
   "06": {
-   "note": "Chapter 06 sets every word from fourteen styles and three faces, and Rule 06.4 shows the letter spacing you approved at true size beside the old value. Its specimens sit against their keyline, and the hanging quotation mark in Rule 06.1 crosses it.",
+   "note": "Chapter 06 sets every word from fourteen styles and three faces, and Rule 06.4 shows the letter spacing you approved at true size beside the old value. Its specimens now sit inside their frames, the hanging quotation mark in Rule 06.1 included.",
    "views": ["opening", "06.2", "06.4"],
-   "scores": [3, 4, 5, 4, 5, 4]
+   "scores": [4, 4, 5, 4, 5, 4]
   },
   "07": {
-   "note": "Chapter 07 puts every page on the column grid and the 8 px scale, and checks it at 320 px wide. The quarter-size grids read clearly. Rule 07.6's note for builders still teaches a scrolling frame as a region, where the guide itself uses a named group, and it should teach the one the guide uses.",
+   "note": "Chapter 07 puts every page on the column grid and the 8 px scale, and checks it at 320 px wide. The quarter-size grids read clearly, and Rule 07.6 now teaches the scrolling frame the guide itself uses: a group named for what it holds.",
    "views": ["opening", "07.2", "07.6"],
-   "scores": [3, 4, 5, 4, 5, 4]
+   "scores": [4, 4, 5, 4, 5, 4]
   },
   "08": {
    "note": "Chapter 08 gives each Signal Grid one code, chosen in a fixed order, and tells stages apart by shape, so a tracker reads in gray print and for color-blind readers. The tracker's key now uses plain stage names. The new codes and the six series routes wait for you in A2 and A5.",
@@ -79,11 +79,6 @@
   }
  },
  "needs_work": [
-  {"where": "05.4", "text": "**Blocking.** 38 plates in chapters 05 to 07 set their text against the 1 px keyline every plate now carries, and the quotation mark in Rule 06.1 crosses it. The shell gives each plate without a fixed width 24 px of inner margin, 16 px on phones."},
-  {"where": "04.8", "text": "**Blocking.** The crop leaves a piece of B's beak, about 2 px by 35 px, inside the cover's right edge. Move the crop so the beak falls wholly outside the trim or wholly inside it, and let the cover's own edge be the plate's edge."},
-  {"where": "05.1", "text": "**Blocking.** On a 390 px phone, 29 plates drawn 360 px wide overflow by 2 px, print \"Wider than this screen\" and take a focus stop. The shell lets a plate that overflows by 4 px or less sit whole, at true size, with no hint."},
-  {"where": "04.3", "text": "Rule 04.3 gives B's masters different ranges from Rule 04.1. Rule 04.1 governs: the 16 px master for B 16 to 23 px tall, the 24 px master from 24 to 47 px, the display master from 48 px. Rule 04.3's specification changes to match."},
-  {"where": "07.6", "text": "Rule 07.6's note for builders gives a scrolling frame `role=\"region\"`. It changes to what the guide does: a group with its own name that takes focus only while it overflows."},
   {"where": "02.24", "text": "In the sign-offs of Rules 02.23 and 02.24, and in two table cells, the tagline breaks with \"people.\" alone on its last line, against Rule 06.6. Keep the last two words together."},
   {"where": "04.6", "text": "The event card in the correct plate sits flush on the frame's edge with its caption on the frame line. Pad it inside the plate like the other cards."},
   {"where": "04.3", "text": "On a phone the 600 px sheet of hinge headlines cuts every headline. Let it flow at the phone sizes, as chapter 01's headline plates do."},
@@ -95,7 +90,8 @@
  ],
  "risks": [
   {"where": "01", "text": "H.R. 7008 is a live bill. The Senate is in pro forma sessions until November 9, and any later action changes the tracker's lines and Rule 02.25's last row, so someone checks its status before each build that ships."},
-  {"where": "02.25", "text": "If you approve A13, the guide's example of an uneven finding is a vote in which most Democrats voted against a bill. It stays fair only while both of the bill's provisions travel with the count, so no excerpt prints the split without them."},
+  {"where": "purpose", "text": "If you approve A13 with the 2020 court record, chapter 01's example names the Trump campaign. It rests on a federal court's ruling and a review written by conservatives, and it stays fair only while it says what the record shows and no more. The research lead confirms both sources before it prints."},
+  {"where": "02.25", "text": "If you approve A14, Rule 02.25's last row prints a vote in which every Democrat voted no. It stays fair only while both of the bill's provisions travel with the count, so no excerpt prints the split without them."},
   "Some claims rest on secondary sources: the 23-state initiative count, the senators' party labels and the Economic Policy Institute's description of itself. The research report lists each one.",
   "No second red team read the fixed page. This review is the only check after the fix pass, and the reader check's answers arrive at Gate 2.",
   {"where": "08.5", "text": "No reader has seen the stage shapes or the series routes. If readers miss them, the trackers change before Phase 3 builds them."},
@@ -265,23 +261,37 @@
    "source": "Decision log, DR-94, the studio's proposal from your direction of November 6 (DR-93); it replaces part of your Board 3 answer (DR-55)."
   },
   {
-   "question": "How does chapter 01 say what nonpartisan means?",
+   "question": "How does chapter 01 say what nonpartisan means, and which finding shows it?",
    "context": [
-    "Your November 6 direction says nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them. Chapter 01 teaches even treatment in Rules 01.2, 01.11 and 01.16, and it never says what a writer does when the record falls on one side. Rule 02.25's last row turns \"One party blocked the bill.\" into the Senate's 60-vote rule and leaves out how each party voted, which Rule 01.13 says to print with its count.",
+    "Your November 6 direction says nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them. Chapter 01 teaches even treatment in Rules 01.2, 01.11 and 01.16, and it never says what a writer does when the record falls on one side.",
     "**Proposed wording.** Chapter 01's opening gains: \"Nonpartisan, for us, means one standard of evidence and one way of describing sources, actors and parties, applied to everyone. We report each finding as the record shows it. When the record shows one party or official doing more of something, we say so, name who acted and size the claim to its evidence grade. No piece adds, softens or drops a finding to make the sides look even.\"",
     "Rule 01.11 gains: \"When the record shows one party using a mechanism more, report it that way, with the counts, as Rule 01.13 asks, and add no case to even the count.\" Its reason becomes: \"Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it.\" Rule 01.20's reason gains \"in a hinge headline\", and Rule 01.12's reason says \"the spread of examples\" where it now says \"balance\".",
-    "**The example of an uneven finding, graded documented:** \"On July 22, 2026, the House passed H.R. 7008, the Stop Insider Trading Act, 232 to 198. The bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. Republicans voted 218 to 0 for it and Democrats 198 to 13 against it, and the one independent voted for it.\" Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026, United States. Retrieved November 6, 2026. One Democrat did not vote.",
-    "Rule 02.25's last row ends: \"It needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no.\" Its source line adds that the Congressional Record lists senators by name, and the party labels come from a roster of members, a secondary source."
+    "**The example.** A party-line vote shows each side voting as a bloc, the same act on both sides, so it shows this rule weakly. Our systems atlas holds a better candidate, graded documented (issue I155): after the 2020 election, claims of fraud large enough to change the result failed in court. Lost, Not Stolen, a 2022 review by conservative lawyers and former officials, found no evidence of outcome-changing fraud in any of 64 court cases. In one, the Trump campaign asked a federal appeals court to stop Pennsylvania's certified result, and the court refused, noting that the campaign \"never alleges that any ballot was fraudulent.\" Before it prints, the research lead reads the court's opinion and the review in full and writes its source line."
    ],
    "options": [
-    {"text": "Adopt this wording, with the House vote as the example of an uneven finding", "short": "adopt the wording and the House vote"},
-    {"text": "Adopt the wording, and have the research lead propose an example on another subject before Gate 2", "short": "adopt the wording, find another example"},
+    {"text": "Adopt the wording now, and add the example before Gate 2 once the research lead has checked it, starting from the 2020 court record in atlas issue I155", "short": "adopt the wording, example before Gate 2"},
+    {"text": "Adopt the wording now, with the House vote on H.R. 7008 as the example", "short": "adopt the wording with the House vote"},
     {"text": "Leave chapter 01 as it stands, with your direction kept in the decision log", "short": "leave chapter 01 as it stands"}
    ],
    "recommended": "a",
-   "why": "Chapter 01 is where a newcomer learns what nonpartisan means, so your direction belongs there in plain words. The House vote sits in the Clerk's own roll call, names both parties in one sentence form, and travels with the bill described whole, as you asked for H.R. 7008. A reader can check every number.",
-   "touches": ["purpose", "01.11", "01.13", "01.20", "02.25"],
-   "source": "Your direction of November 6 on nonpartisanship (DR-93), and the research lead's report on H.R. 7008's votes."
+   "why": "Chapter 01 is where a newcomer learns what nonpartisan means, so your direction belongs there in plain words. The 2020 court record shows one side doing more of something your direction names, a threat to the peaceful transfer of power, and a writer applying the rule names who acted, uses record language and adds no counterweight. Its key finding comes from a review written by conservatives, which shows one standard of evidence at work. The House vote, option (b), repeats the framing a fact check flagged, \"Democrats voted against a stock trading ban\", even with the bill described whole.",
+   "touches": ["purpose", "01.11", "01.13", "01.20"],
+   "source": "Your direction of November 6 on nonpartisanship (DR-93); our systems atlas, issue I155; the research lead's report on H.R. 7008."
+  },
+  {
+   "question": "Does Rule 02.25's last row print how each party voted?",
+   "context": [
+    "The row turns \"One party blocked the bill.\" into the structure: H.R. 7008's two provisions, the Senate's 60-vote rule and the 53 votes the bill got. It leaves out who voted how. Rule 01.13 says to name a party when party is how the decision worked, such as a party-line vote, and to give the count and its source.",
+    "The proposed ending: \"It needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no.\" The source line would add that the Congressional Record lists senators by name and the party labels come from a roster of members, a secondary source."
+   ],
+   "options": [
+    {"text": "Add the count by party, in the same sentence as both of the bill's provisions", "short": "add the count by party"},
+    {"text": "Keep the row as it stands", "short": "keep the row as it stands"}
+   ],
+   "recommended": "a",
+   "why": "A writer who meets \"One party blocked the bill.\" should learn to replace it with the whole record: what the bill would do, the rule that decided it and who voted how. That is what Rule 01.13 asks. With the photo ID provision in the same sentence, the count carries the context the fact check said the bare charge left out, and leaving the count off would teach writers to drop a finding.",
+   "touches": ["02.25", "01.13"],
+   "source": "Your direction of November 6 on nonpartisanship (DR-93); the research lead's report on the Senate vote, page S5199 of the Congressional Record."
   },
   {
    "question": "Do you accept the correction to house rule H10's qualification line?",
