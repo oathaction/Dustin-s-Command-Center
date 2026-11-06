@@ -209,7 +209,8 @@
   "Real readers. The six readers were simulated by one model and saw the first versions (DR-51, Q-13).",
   "A real screen reader, Safari, Firefox, real phones, 200 percent text zoom and print.",
   "PNG export and the SVG downloads with embedded fonts.",
-  "The creative director's scores came after the fix pass; the red team's came before it and were not given again."
+  "The creative director's scores came after the fix pass; the red team's came before it and were not given again.",
+  "Instrument's CSV and SVG downloads work in the local file; the private page's viewer blocks downloads, so the buttons do nothing on the published page."
  ],
  "changelog_created": [
   "<code>work/boards/phase-2/data-viz/</code>: the shared dataset, palette lab, public series and map geometry; three systems with build scripts, pages, check results and captures; Board 3's content and captures",
