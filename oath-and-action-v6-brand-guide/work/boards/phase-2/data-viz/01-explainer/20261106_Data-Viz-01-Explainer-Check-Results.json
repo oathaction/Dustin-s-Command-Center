@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T05:10:22.803Z",
+ "checked": "2026-11-06T05:21:58.180Z",
  "views": [
   "white",
   "newsprint",
@@ -13,37 +13,16 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 681,
+   "texts": 679,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "OH",
-     "size": 14,
-     "ratio": 1
-    },
-    {
-     "text": "2026",
-     "size": 13,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 14,
-     "ratio": 1
-    },
-    {
-     "text": "2022",
-     "size": 13,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 368,
+    "labels": 362,
     "outside": [],
     "overlaps": []
    },
@@ -68,7 +47,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10294,
+   "height": 10329,
    "axe": [],
    "focusStops": 34,
    "focusWithoutRing": []
@@ -77,67 +56,16 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 680,
+   "texts": 678,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "7",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "5",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "3",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "4",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 14,
-     "ratio": 4.29
-    },
-    {
-     "text": "OH",
-     "size": 14,
-     "ratio": 1
-    },
-    {
-     "text": "2026",
-     "size": 13,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 14,
-     "ratio": 1
-    },
-    {
-     "text": "2022",
-     "size": 13,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 368,
+    "labels": 362,
     "outside": [],
     "overlaps": []
    },
@@ -162,7 +90,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10198,
+   "height": 10233,
    "axe": [],
    "focusStops": 27,
    "focusWithoutRing": []
@@ -171,7 +99,7 @@
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 159,
+   "texts": 154,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -180,20 +108,13 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 79,
+    "labels": 74,
     "outside": [],
     "overlaps": []
    },
    "red": {
     "marks": 3,
-    "unmarked": [
-     {
-      "tag": "SPAN",
-      "id": null,
-      "cls": "swx",
-      "text": ""
-     }
-    ],
+    "unmarked": [],
     "jobs": [
      "the 2021 low the title names"
     ],
@@ -212,7 +133,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2894,
+   "height": 2941,
    "axe": [],
    "focusStops": 7,
    "focusWithoutRing": []
@@ -221,7 +142,7 @@
    "width": 1440,
    "view": "social",
    "rootVisible": true,
-   "texts": 64,
+   "texts": 63,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -230,7 +151,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 32,
+    "labels": 31,
     "outside": [],
     "overlaps": []
    },
@@ -262,22 +183,16 @@
    "width": 1440,
    "view": "system",
    "rootVisible": true,
-   "texts": 567,
+   "texts": 566,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "Find your state’s child poverty rate",
-     "size": 15,
-     "ratio": 4.49
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 1440,
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
     "drawings": 5,
-    "labels": 97,
+    "labels": 96,
     "outside": [],
     "overlaps": []
    },
@@ -301,15 +216,8 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8212,
-   "axe": [
-    {
-     "id": "color-contrast",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".askbtn"
-    }
-   ],
+   "height": 8348,
+   "axe": [],
    "focusStops": 8,
    "focusWithoutRing": []
   },
@@ -317,27 +225,16 @@
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 667,
+   "texts": 672,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "OH",
-     "size": 14.54,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 14.54,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 360,
+    "labels": 361,
     "outside": [],
     "overlaps": []
    },
@@ -362,7 +259,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21962,
+   "height": 22099,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -371,57 +268,16 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 666,
+   "texts": 671,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "7",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "5",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "3",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "4",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 14.54,
-     "ratio": 4.29
-    },
-    {
-     "text": "OH",
-     "size": 14.54,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 14.54,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 360,
+    "labels": 361,
     "outside": [],
     "overlaps": []
    },
@@ -446,7 +302,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21794,
+   "height": 21931,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -470,14 +326,7 @@
    },
    "red": {
     "marks": 3,
-    "unmarked": [
-     {
-      "tag": "SPAN",
-      "id": null,
-      "cls": "swx",
-      "text": ""
-     }
-    ],
+    "unmarked": [],
     "jobs": [
      "the 2021 low the title names"
     ],
@@ -496,7 +345,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5556,
+   "height": 5618,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -505,7 +354,7 @@
    "width": 390,
    "view": "social",
    "rootVisible": true,
-   "texts": 63,
+   "texts": 62,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -514,7 +363,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 32,
+    "labels": 31,
     "outside": [],
     "overlaps": []
    },
@@ -546,22 +395,16 @@
    "width": 390,
    "view": "system",
    "rootVisible": true,
-   "texts": 574,
+   "texts": 577,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "Find your state’s child poverty rate",
-     "size": 15,
-     "ratio": 4.49
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 390,
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
     "drawings": 5,
-    "labels": 105,
+    "labels": 108,
     "outside": [],
     "overlaps": []
    },
@@ -585,15 +428,8 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 18601,
-   "axe": [
-    {
-     "id": "color-contrast",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".askbtn"
-    }
-   ],
+   "height": 18884,
+   "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   },
@@ -601,27 +437,16 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 667,
+   "texts": 672,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "OH",
-     "size": 13.32,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 13.32,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 360,
+    "labels": 361,
     "outside": [],
     "overlaps": []
    },
@@ -646,7 +471,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21782,
+   "height": 21908,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -655,57 +480,16 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 666,
+   "texts": 671,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "7",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "5",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "3",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "4",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "2",
-     "size": 13.32,
-     "ratio": 4.29
-    },
-    {
-     "text": "OH",
-     "size": 13.32,
-     "ratio": 1
-    },
-    {
-     "text": "TN",
-     "size": 13.32,
-     "ratio": 1
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 360,
+    "labels": 361,
     "outside": [],
     "overlaps": []
    },
@@ -730,7 +514,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21570,
+   "height": 21696,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -754,14 +538,7 @@
    },
    "red": {
     "marks": 3,
-    "unmarked": [
-     {
-      "tag": "SPAN",
-      "id": null,
-      "cls": "swx",
-      "text": ""
-     }
-    ],
+    "unmarked": [],
     "jobs": [
      "the 2021 low the title names"
     ],
@@ -780,7 +557,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5625,
+   "height": 5684,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -789,7 +566,7 @@
    "width": 360,
    "view": "social",
    "rootVisible": true,
-   "texts": 63,
+   "texts": 62,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -798,7 +575,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 32,
+    "labels": 31,
     "outside": [],
     "overlaps": []
    },
@@ -830,22 +607,16 @@
    "width": 360,
    "view": "system",
    "rootVisible": true,
-   "texts": 574,
+   "texts": 577,
    "minSize": 13,
    "under13": [],
-   "lowContrast": [
-    {
-     "text": "Find your state’s child poverty rate",
-     "size": 15,
-     "ratio": 4.49
-    }
-   ],
+   "lowContrast": [],
    "scrollWidth": 360,
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
     "drawings": 5,
-    "labels": 105,
+    "labels": 108,
     "outside": [],
     "overlaps": []
    },
@@ -869,15 +640,8 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 18869,
-   "axe": [
-    {
-     "id": "color-contrast",
-     "impact": "serious",
-     "nodes": 1,
-     "sample": ".askbtn"
-    }
-   ],
+   "height": 19138,
+   "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
   }
@@ -894,22 +658,6 @@
    "visible": true
   }
  },
- "failures": [
-  "1440 white: 4 text items under contrast",
-  "1440 newsprint: 10 text items under contrast",
-  "1440 dark: 1 red marks without data-red",
-  "1440 system: 1 text items under contrast",
-  "1440 system: axe color-contrastx1",
-  "390 white: 2 text items under contrast",
-  "390 newsprint: 8 text items under contrast",
-  "390 dark: 1 red marks without data-red",
-  "390 system: 1 text items under contrast",
-  "390 system: axe color-contrastx1",
-  "360 white: 2 text items under contrast",
-  "360 newsprint: 8 text items under contrast",
-  "360 dark: 1 red marks without data-red",
-  "360 system: 1 text items under contrast",
-  "360 system: axe color-contrastx1"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }

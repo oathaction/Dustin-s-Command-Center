@@ -403,6 +403,8 @@ def key_item(art, x, y, kind, label, size, uid_suffix=''):
         art.rect(x, top, sw, sw, 'f-ctx')
     elif kind == 'lt':
         art.rect(x, top, sw, sw, 'f-lt')
+    elif kind == 'lt2':
+        art.rect(x, top, sw, sw, 'f-lt2')
     elif kind == 'hatch':
         art.rect(x + 0.75, top + 0.75, sw - 1.5, sw - 1.5, 's-ctx15h', f' style="fill:{art.hatch()}"')
     elif kind == 'dash':
@@ -461,7 +463,7 @@ def gen_s01(W, uid, t=None, compact=False):
     a.text(x0, ytop, 'BY PARTY', t.eb, 'te', 700, track=0.06)
     parties = sorted([R['support-democrats'], R['support-republicans']], key=lambda r: (-r['value'], r['group']))
     y = ytop + 34 * s
-    bh = 26 * s
+    bh = 24 * s
     for r in parties:
         g = []
         name = r['group']
@@ -617,7 +619,7 @@ def gen_s02(W, uid, t=None, red=True, anatomy=False):
         ws = a.text(gut + 40, ky, 'Supplemental', t.lbl, 'tl', 600)
         a.line(gut + 52 + ws, ky - 5, gut + 76 + ws, ky - 5, 's-ctx')
         wo = a.text(gut + 82 + ws, ky, 'Official', t.lbl, 'ts', 600)
-        a.anchors['m7'] = (gut + 22, ky + 17)
+        a.anchors['m7'] = (gut - 5, ky - 5)
         a.anchors['m8'] = (gut + 64 + ws, ky + 17)
     # the low point the title names, labeled under the point
     a.text(cx, cy + 25, f'{p21["percent"]}%', t.lbl, 'tl', 600, 'middle')
@@ -667,7 +669,7 @@ def gen_s02(W, uid, t=None, red=True, anatomy=False):
         a.anchors['m10'] = (W - 11, last + 25)
         last = a.para(0, last + 30, n21, nw_)
         last = a.para(0, last + 26, n2, nw_)
-    a.anchors['m11'] = (X(2017) + 16, Y(12.2))
+    a.anchors['m11'] = (X(2017) + 16, Y(12.2) if not narrow else Y(10.4))
     return a, last + 10
 
 
@@ -889,7 +891,7 @@ def gen_s05(W, uid, t=None):
     pw = (W - gut - gapx * (cols - 1)) / cols
     ph = 190 if cols != 1 else 172
     lo, hi = 40, 80
-    head_h = 34
+    head_h = 54
     foot_h = 30
     rows_n = math.ceil(len(order) / cols)
     gapy = 44 if cols != 1 else 30
@@ -906,7 +908,7 @@ def gen_s05(W, uid, t=None):
 
         def Y(v):
             return py + ph - (v - lo) / (hi - lo) * ph
-        a.text(px, py - 14, HO_GROUP[g], t.lbl, 'tl', 600)
+        a.text(px, py - 34, HO_GROUP[g], t.lbl, 'tl', 600)
         for v in range(lo, hi + 1, 10):
             a.line(px, Y(v), px + pw, Y(v), 's-grid' if v != lo else 's-grid')
             if c == 0:
@@ -928,8 +930,8 @@ def gen_s05(W, uid, t=None):
         for r in lone:
             a.circle(X(r['year']), Y(r['rate_pct']), 2.2, 'f-ink', da(r['key'], r['rate_pct'], mark='point', axis='y', scale=f'p-{g}'))
         lv = last[g]
-        a.text(x1, Y(lv['rate_pct']) - 10 if g != 'black' else Y(lv['rate_pct']) + 22, f'{lv["rate_pct"]}%',
-               t.lbl, 'tl', 600, 'end', attrs=da(lv['key'], lv['rate_pct'], mark='label'))
+        a.rich(px, py - 13, [('2025: ', 'tn', 400), (f'{lv["rate_pct"]}%', 'th', 600)], t.nt, 'start',
+               attrs=da(lv['key'], lv['rate_pct'], mark='label'))
         if g in ('black', 'hispanic'):
             H5 = rows('homeownership-by-race')
 
@@ -1023,7 +1025,7 @@ def gen_s07(W, uid, t=None):
     if narrow:
         y = 16
         some = [R[k]['name'] for k in R if R[k]['status'] == 'bans in some elections']
-        items = [('ink', 'Bans it in all elections'), ('some', 'Bans it in some elections'), ('lt', 'No state ban')]
+        items = [('ink', 'Bans it in all elections'), ('some', 'Bans it in some elections'), ('lt2', 'No state ban')]
         for kind, lab in items:
             key_item(a, 0, y, kind, lab, 14)
             y += 24
@@ -1068,7 +1070,7 @@ def gen_s07(W, uid, t=None):
         kx, ky = ox + pitch + 6, oy + 18
         key_item(a, kx, ky, 'ink', 'Bans it in all elections, with the year it became law', 14)
         key_item(a, kx, ky + 24, 'some', f'Bans it in some elections: {" and ".join(sorted(some))}', 14)
-        key_item(a, kx, ky + 48, 'lt', 'No state ban', 14)
+        key_item(a, kx, ky + 48, 'lt2', 'No state ban', 14)
         yrs = Counter(r['enacted_year'] for r in R.values() if r['enacted_year'])
         n2425 = yrs.get(2024, 0) + yrs.get(2025, 0)
         nb = sum(1 for r in R.values() if r['prohibits_rcv'])
@@ -1214,7 +1216,7 @@ def gen_s08(W, uid, t=None, keyed=True):
         nrows = max(1, math.ceil(len(tow) / per), math.ceil(len(awy) / per))
         h = nrows * (s + g) - g
         rowpos[bk] = (y, h)
-        labs = ['1965 to', '2012'] if bk == 'early' else [lab]
+        labs = ['To 2012'] if bk == 'early' else [lab]
         hh = max(h, 19 * len(labs) - 3)
         for j, ln in enumerate(labs):
             a.text(cxm, y + 11 + j * 19, ln, 14, 'tk', 400, 'middle')
@@ -1946,7 +1948,8 @@ def view_dark():
     deck = ('<p>Two charts with the proposed dark palette. Newsprint carries the subject; Dim Newsprint carries secondary text; '
             'context lines take Stone mixed 35 percent toward Newsprint; gridlines drop to Stone mixed 45 percent toward Charcoal. '
             'On Charcoal, lifted Prussian and lifted Verdigris land too close to tell apart, so dark charts keep to few categories '
-            'and label every series directly. The grade ramp steps from Newsprint through Dim Newsprint and Stone to a hatch.</p>')
+            'and label every series directly. The grade ramp steps from Newsprint to Stone mixed 35 percent toward Newsprint, '
+            'then Stone, then a hatch, so it keeps its order by lightness.</p>')
     body = specimen('dark', 'S02') + specimen('dark', 'S10')
     return (f'<section class="view" data-view-root="dark" data-ground="dark" aria-labelledby="dark-h1" hidden><div class="wrap">'
             f'{view_head("dark", "Chart system 01 · Explainer", "On Charcoal", deck, extra=pal)}{body}</div></section>')
@@ -1969,7 +1972,6 @@ def social_card():
     wm = wordmark(40, '20261028_Wordmark-Display-Master.svg', 'cwm')
     wm_w = float(re.search(r'width="(\d+)"', wm).group(1))
     c.out.append(f'<g data-red="signature" transform="translate({P} {P})">{wm.replace("<svg ", "<svg x=\"0\" y=\"0\" ", 1)}</g>')
-    c.text(W - P, P + 30, 'Chart: Oath & Action', 22, 'tk', 400, 'end')
     y = P + 40 + 62
     ev = DS['stock-trading-ban']['evidence']
     ew = tw(ev.upper(), 20, 700, track=0.06) + 24
@@ -1998,13 +2000,14 @@ def social_card():
     chart, ch = gen_s01(W - 2 * P, 'social-s01', t=t, compact=True)
     place(c, chart, P, y)
     y += ch + 26
-    c.line(P, y, W - P, y, 's-grid')
-    y += 34
-    c.out.append('<g data-role="source">')
     src = 'Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, May 19 to 30, 2023; U.S. House Roll Call 280; U.S. Senate Vote 253; as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7.'
-    y = c.para(P, y, src, W - 2 * P, 20, 'tn', 400, 28)
+    n_src = len(wrap(src, W - 2 * P, 20, 400))
+    ys = H - P - (n_src - 1) * 28          # the source sits on the card's foot
+    assert ys - 40 > y, f'social card runs to {y}'
+    c.line(P, ys - 36, W - P, ys - 36, 's-grid')
+    c.out.append('<g data-role="source">')
+    c.para(P, ys, src, W - 2 * P, 20, 'tn', 400, 28)
     c.out.append('</g>')
-    assert y + 20 < H - 40, f'social card runs to {y}'
     return c.render(H, 'Social card, 1080 by 1350 pixels: ' + title + ' 86 percent of registered voters favored a ban; '
                     '88 percent of Democrats and 87 percent of Republicans. The House passed it 232 to 198; the Senate vote to take it up '
                     'was 53 to 47, 7 short of the 60 needed. Source: Program for Public Consultation survey, May 2023, and the House and Senate roll calls.',
@@ -2022,7 +2025,7 @@ def view_social():
            f'<ul class="eqn"><li>Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote.</li>'
            f'<li>The Senate vote to take up the bill fell 7 votes short of the 60 needed.</li></ul>{table}<p class="src">{e(src)}</p></div></details></figure>')
     deck = ('<p>One chart as a portrait post at 1080 by 1350 pixels, the size Instagram and LinkedIn use. It is chart S01 from the '
-            'same generator, with type at one and a half times its page size so labels hold at a phone\'s feed width. The card '
+            'same generator, with type at one and a quarter times its page size so labels hold at a phone\'s feed width. The card '
             'keeps the evidence label, the title, the measure line, the source and the wordmark, so it still makes sense when '
             'it travels without the page. It sits on Newsprint, the ground a feed of white cards does not use.</p>')
     strip_html = ('<div class="strip"><p class="stag">Studio note, not part of the card</p><h2 class="sid" id="social-s01-h">S01 '
@@ -2071,7 +2074,7 @@ ANATOMY = [
 
 def type_ramp():
     rows_ = [
-        ('View title', '<span class="display" style="font-size:inherit;line-height:inherit">Explainer</span>', 'Inter Tight 800, 56/60, −0.035em; 36/40 on phones'),
+        ('View title', '<span class="display" style="display:block">Explainer</span>', 'Inter Tight 800, 56/60, −0.035em; 36/40 on phones'),
         ('Chart title', '<span class="ct" style="display:block">A sentence that states the finding.</span>', 'Inter Tight 800, 28/33, −0.02em; 22/27 on phones'),
         ('Evidence label', '<span class="ev">Finding</span>', 'Inter 700, 13/18, capitals, 0.06em; Charcoal chip'),
         ('Measure line', '<span class="ms" style="margin:0">Percent, United States, 2009 to 2025</span>', 'Inter 400, 17/25, Deep Stone; 15/22 on phones'),
@@ -2080,7 +2083,7 @@ def type_ramp():
         ('Tick label', '<span class="tkx">25%  20  15</span>', 'Inter 400, 13 px, Deep Stone; 14 px on phones'),
         ('Note', '<span class="ntx">2021: the expanded credit was in force.</span>', 'Inter 400, 14/19, Deep Stone; note heads Inter 600 Charcoal'),
         ('Source line', '<span class="src">Source: U.S. Census Bureau, P60-290, Table 8.</span>', 'Inter 400, 13/18, Deep Stone'),
-        ('Quotation', '<span class="q">"Clarity is our duty. Action is our promise."</span>', 'Lora Italic, quoted words only, never a title'),
+        ('Quotation', '<span class="q">\u201cClarity is our duty. Action is our promise.\u201d</span>', 'Lora Italic, quoted words only, never a title'),
     ]
     body = ''.join(f'<tr><th scope="row">{e(n)}</th><td>{s}</td><td>{e(spec)}</td></tr>' for n, s, spec in rows_)
     return (f'<div class="tw" role="region" tabindex="0" aria-label="Type ramp, table"><table class="eqt ramp"><caption>Type ramp</caption>'
@@ -2116,8 +2119,8 @@ def marks_art(W, uid):
         a.circle(8, b - 5, 6.5, 'f-ink')
         a.circle(32, b - 5, 5.5, 's-open')
         a.circle(54, b - 5, 3, 'f-ink')
-    row(dots, 'Dots: 13 px for a subject value, 11 px open for the earlier value, 6 px for a line vertex')
-    row(lambda b: a.rect(0, b - 17, SW, 24, 'f-ink'), 'Bars: 24 px, 18 px between rows, no gap between segments')
+    row(dots, 'Dots: 13 px for a subject value, 11 px open for the earlier value, 6 px for a line vertex, 4.5 px in small multiples')
+    row(lambda b: a.rect(0, b - 17, SW, 24, 'f-ink'), 'Bars: 24 px with 18 px between rows; 16 px when a chart runs past ten rows; segments meet with no gap')
 
     def units(b):
         for i in range(4):
@@ -2157,7 +2160,9 @@ def swatch_table(name):
         elif k in ('ctx', 'red'):
             use = 'mark' if cr >= 3 else 'mark with keyline'
         else:
-            use = 'fill, values printed'
+            use = {'lt': 'fill, values printed', 'lt2': 'track behind a printed share', 'grid': 'hairline; values printed',
+                   'band': 'background tint behind a note', 'vup': 'cell tint, words printed', 'vup2': 'cell tint, words printed',
+                   'sdn': 'cell tint, words printed', 'sdn2': 'cell tint, words printed'}[k]
         made = ROLE_MIX[name].get(k) or base_mix.get(k, '')
         red_attr = ' data-red="specimen" data-red-job="palette swatch"' if k == 'red' else ''
         out.append(f'<tr><th scope="row"><span class="swx" style="background:{hexv}"{red_attr}></span>{e(ROLE_WORDS[k])}</th>'
@@ -2207,8 +2212,10 @@ def red_demo():
 
 
 HOW_TO_READ = [
-    ('Start with the label.', 'The black chip says what kind of evidence the chart shows. A Finding is something measured. An Estimate says what would happen if something else happened first.'),
-    ('Read the title as the answer.', 'It is one sentence that says what the numbers show. If the title says "would" or "may", the evidence is less certain.'),
+    ('Start with the label.', 'The black chip says what kind of evidence the chart shows. A Finding is something measured. '
+     'An Association is a pattern that does not show one thing caused another. An Estimate says what would happen if something '
+     'else happened first. An Illustration shows how a chart works, with made-up numbers.'),
+    ('Read the title as the answer.', 'It is one sentence that says what the numbers show. If the title says "would" or "may," the evidence is less certain.'),
     ('Check what was counted.', 'The gray line under the title names what was measured, in what unit, where and when.'),
     ('Look for the dark line.', 'The black line, bar or dot is what the title is about. Gray marks are there for comparison.'),
     ('Read the notes in the chart.', 'Short notes point at the record, the turning point or anything drawn in an unusual way, such as a line that breaks where a survey changed.'),
@@ -2229,14 +2236,14 @@ def view_system():
                 '<p class="fakesum"><span class="mk">14</span>Show the table and notes</p></div>'
                 '<ol class="parts">' + ''.join(f'<li><b>{e(n)}.</b> {e(d)}</li>' for n, d in ANATOMY) + '</ol></div>')
     marks = sys_art(marks_art, ((720, 'ab ab-w'), (600, 'ab ab-m'), (320, 'ab ab-n')), 'Mark specifications: line weights, dots, bars, units, hatch, ring and break.', 'marks')
-    rules_notes = ''.join(f'<li>{x}</li>' for x in [
+    rules_notes = ''.join(f'<li>{e(x)}</li>' for x in [
         'Name the record, give a reader’s scale, or explain an unusual encoding once. A note that does none of these comes out.',
         'Put the note in open space near its data and join it with a 1 px Stone leader. Leaders run straight or with one bend, never across a label.',
         'Notes are Inter 14 px in Deep Stone; a note head that states a number is Inter 600 in Charcoal.',
         'State the qualification in the drawing when it changes the reading: self-reported rates, method breaks, a survey older than the votes.',
         'A note may say what a measure did over time. It never says a policy caused it unless the source grades that cause.',
         'Label series at the line or the bar. Use a key only when labels cannot fit, and draw the key in the chart’s own marks.'])
-    rules_src = ''.join(f'<li>{x}</li>' for x in [
+    rules_src = ''.join(f'<li>{e(x)}</li>' for x in [
         'Order: publisher, title or table, observation period, geography, date retrieved, qualification (Master Brief section 15).',
         'Start from the dataset’s source line. Shorten only by dropping words, never facts. Dates read as words: October 15, 2026.',
         'Inter 400, 13/18, Deep Stone, under a grid-tint hairline, with "Chart: Oath & Action" at the right.',

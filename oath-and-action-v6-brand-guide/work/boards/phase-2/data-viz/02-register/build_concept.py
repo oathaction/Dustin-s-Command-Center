@@ -256,9 +256,16 @@ def tw(text, size=13, weight=400):
 
 
 def wrap(text, width, size=13, weight=400):
-    out, line = [], ''
+    words = []
     for word in text.split():
-        trial = (line + ' ' + word).strip()
+        if tw(word, size, weight) > width and '-' in word:
+            parts = word.split('-')
+            words += [x + '-' for x in parts[:-1]] + [parts[-1]]
+        else:
+            words.append(word)
+    out, line = [], ''
+    for word in words:
+        trial = (line + word) if line.endswith('-') else (line + ' ' + word).strip()
         if line and tw(trial, size, weight) > width:
             out.append(line)
             line = word
@@ -318,7 +325,8 @@ def anat_figure(sid, uid, title, measure, body, notes, source, equivalent, grade
     """The same figure with the anatomy numbers of the system sheet on its parts."""
     h = figure(sid, 'anat-' + uid, title, measure, body, notes, source, equivalent, grade_words, extra_cls)
     h = h.replace('id="anat-', 'id="').replace('aria-labelledby="anat-', 'aria-labelledby="')
-    for old, num in [('<figure class="fig', 1), ('<p class="elab"', 2), ('<h3 class="ftitle"', 3), ('<p class="fmeasure"', 4),
+    h = h.replace('<figure ', '<figure data-anat="1" ', 1)
+    for old, num in [('<p class="elab"', 2), ('<h3 class="ftitle"', 3), ('<p class="fmeasure"', 4),
                      ('<div class="fbody"', 5), ('<span class="rnote"', 6), ('<ol class="fnotes"', 7), ('<p class="fsrc"', 8),
                      ('<details class="feq"', 9)]:
         assert old in h, old
@@ -449,7 +457,7 @@ def s01_card(uid, title, measure, parties, allr, src, eq, hy, hn, sy, sn, need):
             f'<p class="cmeasure" data-role="measure">{e(measure)}</p>'
             f'<div class="crows">{rows_}{allrow}<p class="cscale" aria-hidden="true"><span>0</span><span>100%</span></p></div>'
             f'{ctx}<p class="csrc" data-role="source">{e(src)}</p>'
-            f'<div class="cfoot">{wordmark_card()}<p>Survey fielded three years before both votes. Studio draft.</p></div></div>')
+            f'<div class="cfoot">{wordmark_card()}<p>Studio draft for the brand guide</p></div></div>')
     return (f'<figure class="cardfig" data-spec="S01" data-dataset="stock-trading-ban" data-evidence="Finding" aria-labelledby="{uid}-t">'
             f'<div class="cardscroll" role="region" tabindex="0" aria-label="Social card from specimen S01, 1080 by 1350 pixels at true size">'
             f'{card}</div>'
@@ -490,6 +498,19 @@ class Occ:
             return False
         return not (self.g if grid is None else grid)[self._sl(x0, y0, x1, y1)].any()
 
+    def crossings(self, xa, ya, xb, yb):
+        """How many separate drawn lines a leader would cross between its two ends."""
+        n = int(max(abs(xb - xa), abs(yb - ya)) / 2) + 1
+        hits, inside = 0, False
+        for i in range(3, n - 2):
+            t = i / n
+            x, y = xa + (xb - xa) * t, ya + (yb - ya) * t
+            occ = bool(self.g[self._sl(x, y, x, y)].any())
+            if occ and not inside:
+                hits += 1
+            inside = occ
+        return hits
+
     def seg_free(self, xa, ya, xb, yb):
         n = int(max(abs(xb - xa), abs(yb - ya)) / 2) + 1
         for i in range(1, n):
@@ -505,10 +526,12 @@ def place_note(occ, rows_, cls, target, region, pref, size=13, weight=400, lh=16
     corner, with a 1 px leader when it sits away from the target. A shorter fallback wording is tried if the first finds
     no room. Returns the SVG for the note."""
     if fallback:
-        try:
-            return place_note(occ, rows_, cls, target, region, pref, size, weight, lh, gap, step, lead)
-        except SystemExit:
-            return place_note(occ, fallback, cls, target, region, pref, size, weight, lh, gap, step, lead)
+        for i, wording in enumerate([rows_] + list(fallback)):
+            try:
+                return place_note(occ, wording, cls, target, region, pref, size, weight, lh, gap, step, lead)
+            except SystemExit:
+                if i == len(fallback):
+                    raise
     w = max(tw(r, size, weight) for r in rows_)
     h = lh * len(rows_) - (lh - size) + 2
     tx, ty = target
@@ -521,7 +544,13 @@ def place_note(occ, rows_, cls, target, region, pref, size=13, weight=400, lh=16
             nx, ny = min(max(tx, x), x + w), min(max(ty, y), y + h)
             d = math.hypot(nx - tx, ny - ty)
             cost = d + 0.35 * math.hypot(x - pref[0], y - pref[1])
-            if (best is None or cost < best[0]) and (d <= 9 or occ.seg_free(tx, ty, nx, ny)):
+            if best is not None and cost >= best[0]:
+                continue
+            if d > 9:
+                if not occ.seg_free(tx, ty, nx, ny):
+                    continue
+                cost += 40 * occ.crossings(tx, ty, nx, ny)
+            if best is None or cost < best[0]:
                 best = (cost, x, y, nx, ny, d)
     if best is None:
         raise SystemExit(f'no room for the note "{rows_[0]}"')
@@ -567,11 +596,14 @@ S02_NOTES = {
              'y22': ['2022: 12.0%, the first year', 'after the expanded credit expired'],
              'brk': ['Census changed its method in 2013, 2017', 'and 2019. Each of those years has two',
                      'estimates, and the line does not join them.'],
+             'brk+': [['Census changed its method in', '2013, 2017 and 2019. Each has', 'two estimates, not joined.'],
+                      ['Method changes in 2013,', '2017 and 2019: two', 'estimates, not joined']],
              'off': ['Official measure, which counts', 'pretax cash income only'],
-             'spm': ['Supplemental Poverty Measure, which', 'adds tax credits and other aid'], 'spm2': ['Supplemental Poverty Measure']},
+             'spm': ['Supplemental Poverty Measure, which', 'adds tax credits and other aid'],
+             'spm+': [['Supplemental', 'Poverty Measure'], ['Supplemental Poverty Measure']]},
     'narrow': {'red': ['2021: 5.1%, the low', 'for 2009 to 2025'], 'y22': ['2022: 12.0%, after', 'the credit expired'],
                'brk': ['Two estimates in', '2013, 2017 and', '2019, not joined'],
-               'off': ['Official measure'], 'spm': ['Supplemental', 'Poverty Measure'], 'spm2': ['Supplemental Poverty Measure']},
+               'off': ['Official measure'], 'spm': ['Supplemental', 'Poverty Measure'], 'spm+': [['Supplemental Poverty Measure']]},
 }
 
 
@@ -637,9 +669,11 @@ def s02_layout(W):
     ]
     if narrow:   # on the phone artboard the method note moves under the plot (R25), listed in the figure's notes
         notes = [n for n in notes if n[0] != 'brk']
+    elif W < 700:   # on the 560 px artboard the line's own label goes first, so it sits beside the line it names
+        notes[3], notes[4] = notes[4], notes[3]
     for key, cls, target, pref in notes:
         wt = 600 if cls in ('nt-b', 'lab-s') else 400
-        p.append(place_note(occ, N[key], cls, target, plot, pref, weight=wt, fallback=N.get(key + '2')))
+        p.append(place_note(occ, N[key], cls, target, plot, pref, weight=wt, fallback=N.get(key + '+')))
     return ''.join(p), H, (lx, ly), low
 
 
@@ -668,7 +702,7 @@ def s02(view, red='working'):
                'in percent, with the official measure for context')
     body = (f'<div class="abs">{s02_svg(866, view, red)}{s02_svg(560, view, red)}{s02_svg(328, view, red)}</div>')
     notes = ['The Supplemental Poverty Measure counts tax credits and other aid that the official measure leaves out. '
-             'Census treats a change between two years as a description, not the effect of one policy.',
+             'Census describes a change between two years and credits it to no single policy.',
              'The Census Bureau revised 2019 to 2024 in August 2026. Atlas V7 prints the first-published 9.7, 5.2 and 13.4 percent '
              'for 2020, 2021 and 2024; the current table reads 9.6, 5.1 and 13.5.',
              'Margins of error run from 0.4 to 0.9 points at the 90 percent level; the table gives each one.']
@@ -811,8 +845,8 @@ def s04_svg(W, view):
     lo, hi = 40, 80
     p = []
     if not narrow:
-        lx, px0, px1 = 0, 170, 520 if W < 800 else 560
-        c20, c24, cch = (px1 + 70, px1 + 140, W) if W >= 800 else (px1 + 0, px1 + 0, W)
+        lx, px0, px1 = (0, 170, 560) if W >= 800 else (0, 112, W - 136)
+        c20, c24, cch = (px1 + 70, px1 + 140, W) if W >= 800 else (px1, px1, W)
         X = lambda v: px0 + (v - lo) / (hi - lo) * (px1 - px0)
         top = 62
         rh = 46
@@ -915,9 +949,9 @@ def s05_numbers():
 @functools.lru_cache(maxsize=None)
 def s05_body(W):
     S, v, order = s05_numbers()
-    narrow = W < 500
+    narrow = W < 700
     cols = 2 if narrow else 4
-    gut, gap = 36, (18 if narrow else 24)
+    gut, gap = 36, (18 if W < 500 else 24)
     pw = (W - gut - gap * (cols - 1)) / cols
     ph = 128 if narrow else 156
     head = 48
@@ -1056,7 +1090,7 @@ def s06(view):
     assert allup == ['iii', 'iv-b'], allup
     title = 'Two of the eight reform paths would move all four outcome families up by 2036, if their assumptions hold.'
     measure = ('Direction each outcome family would take under each scenario, in Atlas V7\'s words, United States, '
-               '2026 baseline to 2036; conditional directions, not forecasts')
+               '2026 baseline to 2036; conditional directions that make no forecast')
     key = ('<div class="gkey"><p class="gkh">The glyph is the studio\'s reading of V7\'s words</p><ul>'
            + ''.join(f'<li>{glyph(c)}<span>{e(CLS[c][2])}</span></li>' for c in ['up', 'slightly up', 'flat', 'flat or down', 'down', 'mixed', 'same as ii'])
            + '</ul></div>')
@@ -1438,7 +1472,7 @@ def s10(view):
             + ''.join(f'<span class="gseg gs-{k}" style="width:{100 * DS["claims-by-grade"]["totals"][g] / n:.3f}%"></span>' for g, _, _, k in GRADES)
             + f'</span></td><td class="n nb">{share_all:.1f}</td><td class="n">0.0</td></tr></tfoot>')
     reg = f'{key}<div class="tw"><table class="reg s10"><caption>Evidence behind each everyday answer, most documented first</caption>{head}<tbody>{"".join(body)}</tbody>{foot}</table></div>'
-    notes = ['Grades are the atlas\'s own, defined on its evidence page. A claim\'s grade covers that claim, not the whole answer.',
+    notes = ['Grades are the atlas\'s own, defined on its evidence page. Each grade covers one claim.',
              'The grades step from dark to light, and contested claims add a hatch, so the mix reads in grayscale. Grades never take red.',
              'Light fills fall under 3:1 against the ground; the table under "Show the table" prints every count, a studio judgment.']
     src = source_text('claims-by-grade')
@@ -1546,8 +1580,8 @@ def view_social():
             'members of Congress. Bars show 88 percent of Democrats, 87 percent of Republicans and 86 percent of all registered voters, '
             'from a survey fielded May 19 to 30, 2023. The House passed a ban 232 to 198 on July 22, 2026; on September 30 the Senate '
             'voted 53 to 47 to take it up, short of the 60 votes it needed.</p>'
-            '<p class="eyebrow">Rules for cards</p><ul class="bul"><li>Type keeps its system sizes, scaled once for the card: title 64 px, '
-            'figures 96 px, labels 28 px, source 20 px.</li><li>The source line prints whole on the card, never in the caption only.</li>'
+            '<p class="eyebrow">Rules for cards</p><ul class="bul"><li>Type keeps its system roles at card size: label 26 px, title 60 px, '
+            'figures 68 px, party names 32 px, votes 28 px, source 20 px.</li><li>The source line prints whole on the card itself.</li>'
             '<li>Party rows share one ink and print the party name.</li><li>The wordmark sits at the foot; it is the only red on the card.</li></ul></aside>'
             '</div></div></section>')
 
@@ -1609,7 +1643,7 @@ def anatomy():
              ('Notes', 'Inter 400, 14/20, Deep Stone, numbered, above a quiet rule. What a reader needs to read the figure fairly.'),
              ('Source line', 'Inter 400, 13/18, Deep Stone. Publisher, table, period, place, date retrieved, qualification.'),
              ('Table', '"Show the table": every value, the notes and the source, readable by a screen reader.'),
-             ('Studio note', 'Dashed box beside the figure, for the guide only. Never part of a published chart.')]
+             ('Studio note', 'Dashed box beside the figure, used in the guide only.')]
     return ('<ol class="anat">' + ''.join(f'<li><b>{e(n)}</b><span>{e(d)}</span></li>' for n, d in parts) + '</ol>')
 
 
@@ -1695,7 +1729,8 @@ def red_demo():
 
 def view_system():
     t = G['white']
-    dpair = ' · '.join(f'{s}: {delta_e(t["tow"], t["awy"], s if s != "normal" else None):.3f}' for s in ['normal', 'deuteranopia', 'protanopia', 'tritanopia'])
+    dpair = (f'{delta_e(t["tow"], t["awy"]):.3f} ({delta_e(t["tow"], t["awy"], "deuteranopia"):.3f} under deuteranopia, '
+             f'{delta_e(t["tow"], t["awy"], "protanopia"):.3f} under protanopia, {delta_e(t["tow"], t["awy"], "tritanopia"):.3f} under tritanopia)')
     anat_fig = s03('system')
     src_parts = [('Publisher', 'U.S. Census Bureau'), ('Title or table', 'Poverty in the United States: 2025 (P60-290), Table 8'),
                  ('Observation period', '2009 to 2025'), ('Geography', 'United States'), ('Date retrieved', 'Retrieved November 6, 2026'),
@@ -1704,7 +1739,7 @@ def view_system():
     read = [('Start with the label.', 'It says what kind of evidence the chart holds. A Finding is measured; an Estimate depends on assumptions.'),
             ('Read the title as the claim.', 'It is one sentence, and its verb says how sure the evidence is.'),
             ('Check the measure line.', 'It says what was counted, where and when, and whether the scale starts above zero.'),
-            ('Dark is the subject; gray is context.', 'The series the title names is drawn in the darkest ink.'),
+            ('Find the darkest ink.', 'It marks the series or the point the title names; lighter ink gives context.'),
             ('Look up the numbers.', 'The register under each chart prints the figures, so nothing depends on reading a bar by eye.'),
             ('Read the notes and the source.', 'They say what the figure leaves out and where the numbers came from.'),
             ('Open the table.', '"Show the table" holds every value behind the chart.')]
@@ -1754,7 +1789,7 @@ def view_system():
             '<li>Join a note to its data with a 1 px leader or a bracket. Never hide a note behind hover.</li>'
             '<li>Notes under the figure say what the reader needs to read it fairly: revisions, breaks, coding rules, margins of error.</li>'
             '<li>Label illustrative items beside the item. Titles say what the evidence supports and nothing more.</li></ul></div>'
-            f'<div><p class="sp">The source line keeps section 15 order. Shorten it only by dropping words, never facts.</p><ol class="srcl">{srcl}</ol></div></div></section>'
+            f'<div><p class="sp">The source line keeps section 15 order. Shorten it only by dropping words; every fact stays.</p><ol class="srcl">{srcl}</ol></div></div></section>'
             '<section class="sys" id="system-red" aria-labelledby="sys-7"><h2 class="sh" id="sys-7"><span>7</span>Red</h2>'
             f'<blockquote class="rule">{e(RULE_053)}<footer>Rule 05.3 (D2-01)</footer></blockquote>'
             '<p class="sp">On a chart page red never encodes a series, a category, a grade or a scale. It may mark the one point a title names, '
@@ -2035,7 +2070,7 @@ svg .ty{font:400 13px Inter,sans-serif}
 .s10 .nb{font-weight:700}
 /* social card */
 .socialw{display:grid;grid-template-columns:minmax(0,1104px);gap:32px;align-items:start;padding-bottom:96px}
-.cardnote{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;max-width:1104px}
+.cardnote{display:grid;grid-template-columns:240px minmax(0,1fr);gap:0 40px;max-width:1104px}
 .cardfig{margin:0;min-width:0}
 .cardscroll{overflow:auto;width:1104px;max-width:100%;border:1px solid #5D636D;padding:11px;background:#FFFFFF}
 .card{width:1080px;height:1350px;padding:84px 84px 64px;display:flex;flex-direction:column;background:var(--bg);color:var(--ink)}
@@ -2054,8 +2089,8 @@ svg .ty{font:400 13px Inter,sans-serif}
 .cscale{display:flex;justify-content:space-between;margin:8px 206px 0 346px;font:400 20px/28px Inter,sans-serif;color:var(--sec)}
 .cctx{margin:32px 0 0;font:400 28px/39px Inter,sans-serif}
 .csrc{margin:auto 0 0;padding-top:24px;font:400 20px/28px Inter,sans-serif;color:var(--sec)}
-.cfoot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px;border-top:2px solid var(--ink);padding-top:22px;font:400 20px/28px Inter,sans-serif;color:var(--sec)}
-.cfoot p{margin:0}
+.cfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:28px;border-top:2px solid var(--ink);padding-top:22px;font:400 20px/28px Inter,sans-serif;color:var(--sec)}
+.cfoot p{margin:0;text-align:right;max-width:380px}
 .cwm{display:inline-flex;color:var(--ink)}
 .cardnote{font:400 15px/23px Inter,sans-serif}
 .cardnote p{margin:0 0 14px}
@@ -2123,6 +2158,7 @@ background:#121212;color:#FFFFFF;font:700 13px/26px Inter,sans-serif;text-align:
 @media (max-width:1000px){.sys2{grid-template-columns:minmax(0,1fr)}.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* phones */
 @media (max-width:899.98px){
+ .cardnote{grid-template-columns:minmax(0,1fr)}
  .wrap{padding:0 16px}
  .mrow{grid-template-columns:1fr;gap:4px;padding-top:14px}
  .wm24{display:none}.wm16{display:block}

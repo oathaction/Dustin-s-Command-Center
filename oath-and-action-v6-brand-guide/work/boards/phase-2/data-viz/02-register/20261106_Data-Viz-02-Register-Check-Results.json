@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/02-register/20261106_Data-Viz-02-Register.html",
- "checked": "2026-11-06T05:14:43.262Z",
+ "checked": "2026-11-06T05:21:55.172Z",
  "views": [
   "white",
   "newsprint",
@@ -174,7 +174,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2347,
+   "height": 2301,
    "axe": [],
    "focusStops": 13,
    "focusWithoutRing": []
@@ -213,10 +213,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 8872,
+   "height": 8904,
    "axe": [],
    "focusStops": 13,
    "focusWithoutRing": []
@@ -259,7 +258,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 25180,
+   "height": 25034,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -302,7 +301,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23168,
+   "height": 23022,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -386,7 +385,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3189,
+   "height": 2701,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -425,10 +424,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 22521,
+   "height": 22465,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -471,7 +469,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 25606,
+   "height": 25482,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -514,7 +512,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 23550,
+   "height": 23426,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -598,7 +596,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 3256,
+   "height": 2768,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -637,10 +635,9 @@
    },
    "fonts": [
     "Inter",
-    "Inter Tight",
-    "Lora"
+    "Inter Tight"
    ],
-   "height": 23213,
+   "height": 23151,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
