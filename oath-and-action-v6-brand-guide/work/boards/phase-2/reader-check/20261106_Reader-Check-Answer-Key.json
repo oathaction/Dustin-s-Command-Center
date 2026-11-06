@@ -1,0 +1,288 @@
+{
+ "title": "Reader check answer key",
+ "date": "November 6, 2026",
+ "page": "work/boards/phase-2/reader-check/20261106_Reader-Check.html",
+ "private": "Never publish this file with the page. The page carries neutral codes only (i1 to i8, m1 to m9).",
+ "overview": {
+  "image": "img/drawing-overview-390.png and -360.png: System 1 overview kicker, headline \"Who do they answer to?\", deck and whole-system phone drawing",
+  "purpose_pass": "Names who officials answer to, or how economic and public life connect (civic education memo, section 7, Q1). A party or a single issue fails.",
+  "open_first": "No right answer. The choices are the eight parts as the drawing prints them, in its order."
+ },
+ "loops": {
+  "r10": {
+   "loop": "R10, Safe-seat loop (V7), reinforcing, \"feeds itself\"",
+   "drawing": "System 1 phone drawing from the R10 loop close-up, with reform R-01's targets in the working red",
+   "image": "img/drawing-r10-390.png and img/drawing-r10-360.png",
+   "comes_back": {
+    "answer": "yes",
+    "why": "Four steps run C1 to C2 to C3 to C4 and step 4 (L42) returns to Safe seats."
+   },
+   "feeds_or_pushes": {
+    "answer": "feeds",
+    "why": "Two plus and two minus signs: an even number of minus signs makes the loop reinforcing."
+   },
+   "least_certain": {
+    "answer": "step3",
+    "why": "Step 3, L53 \"Officials safe from defeat write rules for themselves\", graded plausible and drawn dashed; the drawing prints \"weakest step\" under it. Steps 1 and 4 are documented, step 2 well supported."
+   },
+   "reform_acts": {
+    "answer": "Seats settled in the primary",
+    "partial": [
+     "Safe seats",
+     "Risk of losing office"
+    ],
+    "why": "R-01 (all-party primaries) targets L08, L25 and C2; the red marks are arrow 1, arrow 2 and the box \"Seats settled in the primary\". Safe seats and Risk of losing office each touch one red arrow. The drawing shows no key, so this question tests whether red reads as \"where a reform acts\" without one; the loop page sets the key line above the drawing."
+   }
+  },
+  "r8": {
+   "loop": "R8, Housing-scarcity loop (V7), reinforcing, \"feeds itself\"",
+   "drawing": "System 1 phone drawing from the \"All loops\" catalog card; the catalog draws no reform marks",
+   "image": "img/drawing-r8-390.png and img/drawing-r8-360.png",
+   "comes_back": {
+    "answer": "yes",
+    "why": "Two steps: L38 runs from Housing scarcity to Homeowners' equity and L39 returns."
+   },
+   "feeds_or_pushes": {
+    "answer": "feeds",
+    "why": "Both steps carry a plus sign."
+   },
+   "least_certain": {
+    "answer": "same",
+    "why": "Both steps, L38 and L39, are graded well supported and drawn with the same solid line; no weakest step is marked."
+   },
+   "reform_acts": {
+    "answer": "none",
+    "why": "R-30 (more homes allowed by right near jobs) aims at R8, but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show."
+   }
+  },
+  "choice_values": "least_certain: step1 to step4 (R10) or top and bottom (R8), \"same\" for \"They look about the same\", \"unsure\" for \"Not sure\". reform_acts: the box name as printed, \"none\" for \"No reform is shown\", \"unsure\"."
+ },
+ "icons": [
+  {
+   "code": "i5",
+   "file": "img/icon-5.svg",
+   "id": "CL-019",
+   "label": "Explain",
+   "group": "pillar mark",
+   "intended_meaning": "Explain, the first pillar: Oath & Action explains how a decision is made.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg"
+  },
+  {
+   "code": "i2",
+   "file": "img/icon-2.svg",
+   "id": "CL-020",
+   "label": "Track",
+   "group": "pillar mark",
+   "intended_meaning": "Track, the second pillar: following a decision as it moves.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg"
+  },
+  {
+   "code": "i7",
+   "file": "img/icon-7.svg",
+   "id": "CL-021",
+   "label": "Connect",
+   "group": "pillar mark",
+   "intended_meaning": "Connect, the third pillar: linking readers with the people who make a decision.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg"
+  },
+  {
+   "code": "i3",
+   "file": "img/icon-3.svg",
+   "id": "CL-022",
+   "label": "Act",
+   "group": "pillar mark",
+   "intended_meaning": "Act, the fourth pillar: the reader takes part.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg"
+  },
+  {
+   "code": "i8",
+   "file": "img/icon-8.svg",
+   "id": "CL-015",
+   "label": "Political Money",
+   "group": "topic: participation and accountability",
+   "intended_meaning": "Political money: money spent to influence politics (atlas B1, \"Money spent on influence\"). The drawing: a coin with a dollar sign wired to a ballot box.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-015-Political-Money-Black.svg"
+  },
+  {
+   "code": "i1",
+   "file": "img/icon-1.svg",
+   "id": "CL-032",
+   "label": "Local Reporting",
+   "group": "topic: government, information and technology",
+   "intended_meaning": "Local reporting: the availability of local news about local government and elections (atlas B2). The drawing: a folded newspaper.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-032-Local-Reporting-Black.svg"
+  },
+  {
+   "code": "i6",
+   "file": "img/icon-6.svg",
+   "id": "CL-063",
+   "label": "Essential Costs",
+   "group": "topic: economy and public issues",
+   "intended_meaning": "Essential costs: the cost of necessities a household must buy (atlas EC9, \"Cost of essentials\"). The drawing: a house holding a shopping bag with a price tag.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-063-Essential-Costs-Black.svg"
+  },
+  {
+   "code": "i4",
+   "file": "img/icon-4.svg",
+   "id": "R-02",
+   "label": "Ranked-Choice Voting",
+   "group": "reform",
+   "intended_meaning": "Ranked-choice voting (reform R-02): voters rank candidates in order of preference. The drawing: a ballot with numbered choices 1, 2 and 3.",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-R-02-Ranked-Choice-Voting-Black.svg"
+  }
+ ],
+ "marks": [
+  {
+   "code": "m1",
+   "file": "img/mark-1.svg",
+   "mark": "Wordmark, today's width, 16 px master",
+   "size_px": "152 by 16",
+   "source": "work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg"
+  },
+  {
+   "code": "m2",
+   "file": "img/mark-2.svg",
+   "mark": "Wordmark, condensed, 16 px master",
+   "size_px": "120 by 16",
+   "source": "work/build/assets/identity/wordmark-condensed/20261028_Wordmark-Condensed-16px-Master.svg"
+  },
+  {
+   "code": "m3",
+   "file": "img/mark-3.svg",
+   "mark": "Ampersand B, 16 px master",
+   "size_px": "14 by 16",
+   "source": "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg"
+  },
+  {
+   "code": "m4",
+   "file": "img/mark-4.svg",
+   "mark": "Lockmark, 16 px master",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg"
+  },
+  {
+   "code": "m5",
+   "file": "img/mark-5.svg",
+   "mark": "Hinge-circle badge, 16 px master",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/identity/badge/20261028_Hinge-Badge-16px-Master.svg"
+  },
+  {
+   "code": "m6",
+   "file": "img/mark-6.svg",
+   "mark": "Pillar mark Explain (CL-019) at 16 px",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-019-Explain-Black.svg"
+  },
+  {
+   "code": "m7",
+   "file": "img/mark-7.svg",
+   "mark": "Pillar mark Track (CL-020) at 16 px",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-020-Track-Black.svg"
+  },
+  {
+   "code": "m8",
+   "file": "img/mark-8.svg",
+   "mark": "Pillar mark Connect (CL-021) at 16 px",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-021-Connect-Black.svg"
+  },
+  {
+   "code": "m9",
+   "file": "img/mark-9.svg",
+   "mark": "Pillar mark Act (CL-022) at 16 px",
+   "size_px": "16 by 16",
+   "source": "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-022-Act-Black.svg"
+  }
+ ],
+ "marks_note": "One color, Charcoal #121212 on Newsprint, at true CSS size. The Civic Line set has no 16 px drawing of the pillar marks, so m6 to m9 are the black edition scaled to 16 px, below the set's 32 px bare floor (D2-42); their strokes fall to about 0.4 px.",
+ "charts": [
+  {
+   "code": "S02",
+   "board": "Data viz board 3, Explainer, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
+   "section": "#newsprint-s02",
+   "image": "img/chart-s02-390.png and -360.png",
+   "title": "Child poverty fell to 5.1 percent in 2021, the lowest since the series began in 2009, and more than doubled the next year.",
+   "finding": "Child poverty under the Supplemental Poverty Measure fell to its series low of 5.1 percent in 2021 and rose to 12.0 percent in 2022; in 2025 both measures stood at 13.4 percent.",
+   "evidence": "Finding, official statistic (Census Bureau)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus."
+  },
+  {
+   "code": "S11",
+   "board": "Data viz stretch test, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+   "section": "#newsprint-s11",
+   "image": "img/chart-s11-390.png and -360.png",
+   "title": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+   "finding": "Every state and DC shifted toward the Republican nominee between 2020 and 2024, from 1.0 point (Washington) to 10.5 points (New York); the phone drawing ranks the shifts as arrows from zero.",
+   "evidence": "Finding, documented official results (FEC)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus."
+  },
+  {
+   "code": "S14",
+   "board": "Data viz stretch test, Newsprint view",
+   "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+   "section": "#newsprint-s14",
+   "image": "img/chart-s14-390.png and -360.png",
+   "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
+   "finding": "Monthly payroll change from January 2022 to September 2026 with its three-month average, 51,000 in September 2026 (preliminary); seven of the 57 months show a loss.",
+   "evidence": "Finding, official statistic (BLS via FRED)",
+   "favors_intended": "no",
+   "telling_pass": "The sentence carries the finding's direction and subject (what moved, which way, over what period). Numbers are a bonus."
+  }
+ ],
+ "pairs": [
+  {
+   "code": "W02",
+   "rule": "Name who acts",
+   "before": "Your rate is approved by a regulator or a board.",
+   "after": "A regulator or a board approves your rate.",
+   "before_source": "Our systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
+   "expected": "after"
+  },
+  {
+   "code": "W10",
+   "rule": "Drop the matched pair",
+   "before": "Written testimony counts. Spoken testimony counts more.",
+   "after": "Written testimony counts, and speaking at the hearing carries more weight.",
+   "before_source": "Our brand guide, fifth edition, chapter 13 In use",
+   "expected": "after"
+  },
+  {
+   "code": "W11",
+   "rule": "Skip the run of negatives",
+   "before": "No crest, no shield, no founding date, no ring of words",
+   "after": "Leave crests, shields, founding dates and rings of words off the seal, because they suggest an authority we do not claim.",
+   "before_source": "Our brand guide, fifth edition, chapter 04, the seal; the reason in the rewrite is the guide’s own, “Seals imply an authority we do not claim.”",
+   "expected": "after"
+  }
+ ],
+ "mastheads": [
+  {
+   "code": "L3-today",
+   "file": "img/masthead-1.svg",
+   "lockup": "L3 horizontal lockup, today's width",
+   "css_px": "217.3 by 40.8",
+   "scale": 0.17,
+   "source": "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg"
+  },
+  {
+   "code": "L3-condensed",
+   "file": "img/masthead-2.svg",
+   "lockup": "L3 horizontal lockup, condensed",
+   "css_px": "181.9 by 40.8",
+   "scale": 0.17,
+   "source": "work/build/assets/identity/lockups/20261028_L3-Horizontal-Condensed-Master.svg"
+  }
+ ],
+ "record_fields": {
+  "path": "responses/<viewer id>: { schema, latest_run, updated_at, runs: { <run id>: run } }. Copy mode sends the same run as text.",
+  "run": "initials, mode (\"saved\" or \"copy\"), mode_note, started_at, finished_at (ISO, UTC), viewport_width, resumed, position, orders, items",
+  "orders": "loops (codes in the order shown), icons (i codes in order), charts, pairs (per pair: which of A and B was the before), mastheads (A then B)",
+  "items": "one per stimulus: show_again (count of \"Show it again\"), shown_seconds (each exposure as measured, visible time only), interrupted (exposures cut short by a reload), load_failed, questions: { <q>: { answer, seconds (visible seconds on the question screen, re-shows excluded), skipped } }"
+ }
+}

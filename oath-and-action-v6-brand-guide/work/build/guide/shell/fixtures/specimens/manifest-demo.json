@@ -1,0 +1,8 @@
+{
+  "s-demo-1-correct": { "chapter": "00", "rule": "00.1", "width_px": 360, "alt": "A notice card on Newsprint: the label Notice, the line The library opens at nine on Saturdays, in Charcoal at 17 px.", "illustrative": true, "notes": "shell fixture" },
+  "s-demo-1-failure": { "chapter": "00", "rule": "00.1", "width_px": 360, "alt": "The same notice card with its body line in gray at 12 px.", "illustrative": true, "check_exempt": ["contrast", "size"], "notes": "shell fixture; a labeled failure case" },
+  "s-demo-2-correct": { "chapter": "00", "rule": "00.2", "width_px": 320, "alt": "A text field labeled Email with a Charcoal edge.", "illustrative": false, "notes": "shell fixture" },
+  "s-demo-2-failure": { "chapter": "00", "rule": "00.2", "width_px": 320, "alt": "A text field labeled Email whose edge is nearly invisible.", "illustrative": false, "check_exempt": ["contrast"], "notes": "shell fixture" },
+  "s-demo-2-corrective": { "chapter": "00", "rule": "00.2", "width_px": 320, "alt": "The text field with its edge in the strong border color.", "illustrative": false, "notes": "shell fixture" },
+  "s-demo-sheet": { "chapter": "00", "rule": null, "width_px": 640, "alt": "A two-column sheet of surface names and their text colors.", "illustrative": false, "surface": "white", "notes": "shell fixture" }
+}

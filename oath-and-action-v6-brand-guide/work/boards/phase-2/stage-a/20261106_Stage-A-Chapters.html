@@ -1,0 +1,1790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oath &amp; Action Brand Guide, Edition 06: Foundations draft</title>
+<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06. Stage board A: chapters 01 to 08, the Foundations part, in the first draft of the guide shell.">
+<meta name="generator" content="work/build/scripts/phase-2/guide_build.py">
+<meta name="guide-build" content="{&quot;chapters&quot;: [], &quot;placeholders&quot;: [&quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;], &quot;tokens&quot;: &quot;tokens.css&quot;, &quot;demo&quot;: false}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Lora:ital,wght@1,400;1,500&amp;display=swap">
+<style id="oa-tokens">
+/* work/build/tokens/tokens.css, inlined by guide_build.py */
+/* Oath & Action design tokens, Edition 06
+ * Version 6.0.0-gate2.1 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
+ * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
+ * file and tokens.json disagree.
+ *
+ * Naming: Prefix --oa-, path segments in kebab case, the surface last: oa.color.text.secondary.onNewsprint becomes --oa-color-text-secondary-on-newsprint.
+ * Surface classes (.oa-surface-newsprint and the rest) point the short names, such as
+ * --oa-color-text-secondary, at that surface's tokens.
+ *
+ * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
+ *   wide        (min-width: 90em)
+ *   desktop     (min-width: 64em)
+ *   tablet      (min-width: 48em)
+ *   phone       (base layout, no query)
+ *   phoneSmall  (base layout, no query)
+ */
+
+:root {
+  /* oa.color.palette */
+  --oa-color-palette-newsprint: #DCD9D2;
+  --oa-color-palette-charcoal: #121212;
+  --oa-color-palette-pillar-red: #E63946;
+  --oa-color-palette-prussian: #1F2D5A;
+  --oa-color-palette-stone: #5D636D;
+  --oa-color-palette-verdigris: #4A7C74;
+  --oa-color-palette-white: #FFFFFF;
+
+  /* oa.color.derived */
+  --oa-color-derived-deep-stone: #4E535B;
+  --oa-color-derived-dim-newsprint: #A3A19C;
+  --oa-color-derived-error-band: #E1C9C1;
+
+  /* oa.color.tint */
+  --oa-color-tint-stone-n55: #A1A2A3;
+  --oa-color-tint-stone-n70: #B4B4B3;
+  --oa-color-tint-stone-n88: #CCCAC5;
+  --oa-color-tint-stone-n90: #CECDC7;
+  --oa-color-tint-stone-n35: #878A8F;
+  --oa-color-tint-stone-n85: #C8C6C2;
+  --oa-color-tint-stone-c10: #555A63;
+  --oa-color-tint-stone-c40: #3D4046;
+  --oa-color-tint-stone-c45: #393C41;
+  --oa-color-tint-stone-c55: #323438;
+  --oa-color-tint-stone-c60: #2E3034;
+  --oa-color-tint-stone-c72: #252729;
+  --oa-color-tint-stone-c75: #232426;
+  --oa-color-tint-stone-c80: #202122;
+  --oa-color-tint-white-n55: #ECEAE6;
+  --oa-color-tint-prussian-n62: #8E94A4;
+  --oa-color-tint-verdigris-n55: #9AAEA6;
+  --oa-color-tint-verdigris-c25: #3C5F59;
+  --oa-color-tint-verdigris-n82: #C1C8C0;
+  --oa-color-tint-verdigris-n52p75: #97ACA4;
+  --oa-color-tint-verdigris-n23p5: #6D9189;
+  --oa-color-tint-verdigris-c5p75: #47756E;
+  --oa-color-tint-verdigris-c35: #36544F;
+  --oa-color-tint-verdigris-c75: #202A28;
+  --oa-color-tint-verdigris-c50: #2E4340;
+  --oa-color-tint-verdigris-c20: #3F655E;
+  --oa-color-tint-verdigris-n25: #6F938B;
+
+  /* oa.color.surface */
+  --oa-color-surface-newsprint: var(--oa-color-palette-newsprint);
+  --oa-color-surface-white: var(--oa-color-palette-white);
+  --oa-color-surface-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-surface-prussian: var(--oa-color-palette-prussian);
+
+  /* oa.color.text */
+  --oa-color-text-primary-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-text-primary-on-prussian: var(--oa-color-palette-white);
+  --oa-color-text-secondary-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-text-secondary-on-prussian: var(--oa-color-derived-dim-newsprint);
+
+  /* oa.color.graphic */
+  --oa-color-graphic-essential-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-essential-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-subtle-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-white: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-graphic-subtle-on-prussian: var(--oa-color-derived-dim-newsprint);
+
+  /* oa.color.border */
+  --oa-color-border-strong-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-border-strong-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-border-hairline-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-white: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-charcoal: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.focus */
+  --oa-color-focus-ring-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-focus-ring-on-prussian: var(--oa-color-palette-newsprint);
+
+  /* oa.color.identity */
+  --oa-color-identity-signature-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-prussian: var(--oa-color-palette-white);
+  --oa-color-identity-hinge-divider-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-identity-hinge-divider-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.action */
+  --oa-color-action-ask-fill-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-ask-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-hover-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-white: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-primary-fill-hover-on-prussian: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-label-on-prussian: var(--oa-color-palette-charcoal);
+
+  /* oa.color.state */
+  --oa-color-state-muted-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-selected-band-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-state-selected-band-on-white: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-band-on-charcoal: var(--oa-color-palette-prussian);
+  --oa-color-state-selected-band-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-bar-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-warning-mark-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-error-band-on-newsprint: var(--oa-color-derived-error-band);
+  --oa-color-state-error-band-on-white: var(--oa-color-derived-error-band);
+  --oa-color-state-error-mark-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-empty-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-success-mark-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.data */
+  --oa-color-data-emphasis-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-data-emphasis-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-data-context-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-white: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-charcoal: var(--oa-color-tint-stone-n35);
+  --oa-color-data-context-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-data-emphasis-red-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-charcoal: var(--oa-color-palette-pillar-red);
+
+  /* oa.font.family */
+  --oa-font-family-display: "Inter Tight", "Arial", sans-serif;
+  --oa-font-family-reading: "Inter", "Arial", sans-serif;
+  --oa-font-family-quote: "Lora", "Georgia", serif;
+  --oa-font-family-email-sans: "Helvetica", "Arial", sans-serif;
+  --oa-font-family-email-quote: "Georgia", serif;
+
+  /* oa.font.weight */
+  --oa-font-weight-regular: 400;
+  --oa-font-weight-medium: 500;
+  --oa-font-weight-semibold: 600;
+  --oa-font-weight-bold: 700;
+  --oa-font-weight-extrabold: 800;
+
+  /* oa.type */
+  --oa-type-title-font-family: var(--oa-font-family-display);
+  --oa-type-title-font-style: normal;
+  --oa-type-title-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-title-font-size: clamp(3.5rem, 2.2464rem + 5.1429vw, 6.875rem);
+  --oa-type-title-line-height: 0.95;
+  --oa-type-title-letter-spacing: -0.045em;
+  --oa-type-title-text-transform: none;
+  --oa-type-title-font-variant-numeric: normal;
+  --oa-type-title: var(--oa-type-title-font-style) var(--oa-type-title-font-weight) var(--oa-type-title-font-size)/var(--oa-type-title-line-height) var(--oa-type-title-font-family);
+  --oa-type-section-font-family: var(--oa-font-family-display);
+  --oa-type-section-font-style: normal;
+  --oa-type-section-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-section-font-size: clamp(2.75rem, 1.9143rem + 3.4286vw, 5rem);
+  --oa-type-section-line-height: 1.03;
+  --oa-type-section-letter-spacing: -0.04em;
+  --oa-type-section-text-transform: none;
+  --oa-type-section-font-variant-numeric: normal;
+  --oa-type-section: var(--oa-type-section-font-style) var(--oa-type-section-font-weight) var(--oa-type-section-font-size)/var(--oa-type-section-line-height) var(--oa-type-section-font-family);
+  --oa-type-h3-font-family: var(--oa-font-family-display);
+  --oa-type-h3-font-style: normal;
+  --oa-type-h3-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h3-font-size: clamp(1.625rem, 1.4857rem + 0.5714vw, 2rem);
+  --oa-type-h3-line-height: 1.08;
+  --oa-type-h3-letter-spacing: -0.03em;
+  --oa-type-h3-text-transform: none;
+  --oa-type-h3-font-variant-numeric: normal;
+  --oa-type-h3: var(--oa-type-h3-font-style) var(--oa-type-h3-font-weight) var(--oa-type-h3-font-size)/var(--oa-type-h3-line-height) var(--oa-type-h3-font-family);
+  --oa-type-h4-font-family: var(--oa-font-family-display);
+  --oa-type-h4-font-style: normal;
+  --oa-type-h4-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h4-font-size: clamp(1.25rem, 1.1571rem + 0.3810vw, 1.5rem);
+  --oa-type-h4-line-height: 1.15;
+  --oa-type-h4-letter-spacing: -0.02em;
+  --oa-type-h4-text-transform: none;
+  --oa-type-h4-font-variant-numeric: normal;
+  --oa-type-h4: var(--oa-type-h4-font-style) var(--oa-type-h4-font-weight) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);
+  --oa-type-quote-font-family: var(--oa-font-family-quote);
+  --oa-type-quote-font-style: italic;
+  --oa-type-quote-font-weight: var(--oa-font-weight-regular);
+  --oa-type-quote-font-size: clamp(1.5rem, 1.3143rem + 0.7619vw, 2rem);
+  --oa-type-quote-line-height: 1.3;
+  --oa-type-quote-letter-spacing: -0.02em;
+  --oa-type-quote-text-transform: none;
+  --oa-type-quote-font-variant-numeric: normal;
+  --oa-type-quote: var(--oa-type-quote-font-style) var(--oa-type-quote-font-weight) var(--oa-type-quote-font-size)/var(--oa-type-quote-line-height) var(--oa-type-quote-font-family);
+  --oa-type-intro-font-family: var(--oa-font-family-reading);
+  --oa-type-intro-font-style: normal;
+  --oa-type-intro-font-weight: var(--oa-font-weight-regular);
+  --oa-type-intro-font-size: clamp(1.1875rem, 1.1179rem + 0.2857vw, 1.375rem);
+  --oa-type-intro-line-height: 1.5;
+  --oa-type-intro-letter-spacing: 0em;
+  --oa-type-intro-text-transform: none;
+  --oa-type-intro-font-variant-numeric: normal;
+  --oa-type-intro: var(--oa-type-intro-font-style) var(--oa-type-intro-font-weight) var(--oa-type-intro-font-size)/var(--oa-type-intro-line-height) var(--oa-type-intro-font-family);
+  --oa-type-body-font-family: var(--oa-font-family-reading);
+  --oa-type-body-font-style: normal;
+  --oa-type-body-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-font-size: 1.0625rem;
+  --oa-type-body-line-height: 1.6;
+  --oa-type-body-letter-spacing: 0em;
+  --oa-type-body-text-transform: none;
+  --oa-type-body-font-variant-numeric: normal;
+  --oa-type-body: var(--oa-type-body-font-style) var(--oa-type-body-font-weight) var(--oa-type-body-font-size)/var(--oa-type-body-line-height) var(--oa-type-body-font-family);
+  --oa-type-body-small-font-family: var(--oa-font-family-reading);
+  --oa-type-body-small-font-style: normal;
+  --oa-type-body-small-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-small-font-size: 0.9375rem;
+  --oa-type-body-small-line-height: 1.6;
+  --oa-type-body-small-letter-spacing: 0em;
+  --oa-type-body-small-text-transform: none;
+  --oa-type-body-small-font-variant-numeric: normal;
+  --oa-type-body-small: var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) var(--oa-type-body-small-font-size)/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);
+  --oa-type-ui-font-family: var(--oa-font-family-reading);
+  --oa-type-ui-font-style: normal;
+  --oa-type-ui-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-ui-font-size: 0.9375rem;
+  --oa-type-ui-line-height: 1.4;
+  --oa-type-ui-letter-spacing: 0em;
+  --oa-type-ui-text-transform: none;
+  --oa-type-ui-font-variant-numeric: normal;
+  --oa-type-ui: var(--oa-type-ui-font-style) var(--oa-type-ui-font-weight) var(--oa-type-ui-font-size)/var(--oa-type-ui-line-height) var(--oa-type-ui-font-family);
+  --oa-type-caption-font-family: var(--oa-font-family-reading);
+  --oa-type-caption-font-style: normal;
+  --oa-type-caption-font-weight: var(--oa-font-weight-regular);
+  --oa-type-caption-font-size: 0.875rem;
+  --oa-type-caption-line-height: 1.5;
+  --oa-type-caption-letter-spacing: 0em;
+  --oa-type-caption-text-transform: none;
+  --oa-type-caption-font-variant-numeric: normal;
+  --oa-type-caption: var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) var(--oa-type-caption-font-size)/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);
+  --oa-type-label-font-family: var(--oa-font-family-reading);
+  --oa-type-label-font-style: normal;
+  --oa-type-label-font-weight: var(--oa-font-weight-bold);
+  --oa-type-label-font-size: 0.8125rem;
+  --oa-type-label-line-height: 1.4;
+  --oa-type-label-letter-spacing: 0.06em;
+  --oa-type-label-text-transform: uppercase;
+  --oa-type-label-font-variant-numeric: normal;
+  --oa-type-label: var(--oa-type-label-font-style) var(--oa-type-label-font-weight) var(--oa-type-label-font-size)/var(--oa-type-label-line-height) var(--oa-type-label-font-family);
+  --oa-type-data-label-font-family: var(--oa-font-family-reading);
+  --oa-type-data-label-font-style: normal;
+  --oa-type-data-label-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-data-label-font-size: 0.8125rem;
+  --oa-type-data-label-line-height: 1.3;
+  --oa-type-data-label-letter-spacing: 0em;
+  --oa-type-data-label-text-transform: none;
+  --oa-type-data-label-font-variant-numeric: tabular-nums;
+  --oa-type-data-label: var(--oa-type-data-label-font-style) var(--oa-type-data-label-font-weight) var(--oa-type-data-label-font-size)/var(--oa-type-data-label-line-height) var(--oa-type-data-label-font-family);
+  --oa-type-figure-font-family: var(--oa-font-family-display);
+  --oa-type-figure-font-style: normal;
+  --oa-type-figure-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-figure-font-size: clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem);
+  --oa-type-figure-line-height: 1;
+  --oa-type-figure-letter-spacing: -0.04em;
+  --oa-type-figure-text-transform: none;
+  --oa-type-figure-font-variant-numeric: tabular-nums;
+  --oa-type-figure: var(--oa-type-figure-font-style) var(--oa-type-figure-font-weight) var(--oa-type-figure-font-size)/var(--oa-type-figure-line-height) var(--oa-type-figure-font-family);
+  --oa-type-ask-font-family: var(--oa-font-family-reading);
+  --oa-type-ask-font-style: normal;
+  --oa-type-ask-font-weight: var(--oa-font-weight-bold);
+  --oa-type-ask-font-size: 1.1875rem;
+  --oa-type-ask-line-height: 1.2;
+  --oa-type-ask-letter-spacing: 0em;
+  --oa-type-ask-text-transform: none;
+  --oa-type-ask-font-variant-numeric: normal;
+  --oa-type-ask: var(--oa-type-ask-font-style) var(--oa-type-ask-font-weight) var(--oa-type-ask-font-size)/var(--oa-type-ask-line-height) var(--oa-type-ask-font-family);
+
+  /* oa.space */
+  --oa-space-0: 0rem;
+  --oa-space-100: 0.5rem;
+  --oa-space-150: 0.75rem;
+  --oa-space-200: 1rem;
+  --oa-space-300: 1.5rem;
+  --oa-space-400: 2rem;
+  --oa-space-500: 2.5rem;
+  --oa-space-600: 3rem;
+  --oa-space-800: 4rem;
+  --oa-space-1000: 5rem;
+  --oa-space-1300: 6.5rem;
+  --oa-space-050: 0.25rem;
+
+  /* oa.size.icon */
+  --oa-size-icon-small: 16px;
+  --oa-size-icon-medium: 24px;
+  --oa-size-icon-large: 48px;
+
+  /* oa.size.target */
+  --oa-size-target-minimum: 24px;
+  --oa-size-target-touch: 44px;
+
+  /* oa.layout.breakpoint */
+  --oa-layout-breakpoint-wide: 1440px;
+  --oa-layout-breakpoint-desktop: 1024px;
+  --oa-layout-breakpoint-tablet: 768px;
+  --oa-layout-breakpoint-phone: 390px;
+  --oa-layout-breakpoint-phone-small: 360px;
+
+  /* oa.layout.grid */
+  --oa-layout-grid-wide-columns: 12;
+  --oa-layout-grid-wide-gutter: 24px;
+  --oa-layout-grid-wide-margin: 64px;
+  --oa-layout-grid-desktop-columns: 12;
+  --oa-layout-grid-desktop-gutter: 24px;
+  --oa-layout-grid-desktop-margin: 40px;
+  --oa-layout-grid-tablet-columns: 8;
+  --oa-layout-grid-tablet-gutter: 24px;
+  --oa-layout-grid-tablet-margin: 32px;
+  --oa-layout-grid-phone-columns: 4;
+  --oa-layout-grid-phone-gutter: 16px;
+  --oa-layout-grid-phone-margin: 20px;
+  --oa-layout-grid-phone-small-columns: 4;
+  --oa-layout-grid-phone-small-gutter: 16px;
+  --oa-layout-grid-phone-small-margin: 16px;
+
+  /* oa.layout.measure */
+  --oa-layout-measure-body-ideal: 33.88rem;
+  --oa-layout-measure-body-max: 37.37rem;
+  --oa-layout-measure-intro-max: 41.91rem;
+
+  /* oa.radius */
+  --oa-radius-none: 0px;
+  --oa-radius-full: 50%;
+
+  /* oa.border.width */
+  --oa-border-width-hairline: 1px;
+  --oa-border-width-rule: 2px;
+  --oa-border-width-bar: 4px;
+  --oa-border-width-focus-ring: 2px;
+  --oa-border-width-underline: 1px;
+  --oa-border-width-underline-hover: 2px;
+
+  /* oa.border */
+  --oa-border-focus-offset: 2px;
+
+  /* oa.opacity */
+  --oa-opacity-watermark-on-light: 0.08;
+  --oa-opacity-watermark-on-dark: 0.1;
+
+  /* oa.motion.duration */
+  --oa-motion-duration-fast: 120ms;
+  --oa-motion-duration-standard: 200ms;
+  --oa-motion-duration-slow: 320ms;
+  --oa-motion-duration-stagger: 40ms;
+  --oa-motion-duration-hinge: 680ms;
+  --oa-motion-duration-lever: 560ms;
+
+  /* oa.motion.easing */
+  --oa-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --oa-motion-easing-enter: cubic-bezier(0, 0, 0.2, 1);
+  --oa-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* oa.zIndex */
+  --oa-z-index-base: 0;
+  --oa-z-index-raised: 10;
+  --oa-z-index-sticky: 40;
+  --oa-z-index-overlay: 90;
+  --oa-z-index-skip: 100;
+
+  /* oa.chart.color */
+  --oa-chart-color-subject-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-subject-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-context-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-context-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-label-on-newsprint: var(--oa-color-text-primary-on-newsprint);
+  --oa-chart-color-label-on-charcoal: var(--oa-color-text-primary-on-charcoal);
+  --oa-chart-color-secondary-on-newsprint: var(--oa-color-text-secondary-on-newsprint);
+  --oa-chart-color-secondary-on-charcoal: var(--oa-color-text-secondary-on-charcoal);
+  --oa-chart-color-baseline-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-baseline-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-leader-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-leader-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-point-on-newsprint: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-point-on-charcoal: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-point-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-chart-color-party-mark-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-party-mark-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-label-on-subject-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-label-on-subject-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-light-fill-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-light-fill-on-charcoal: var(--oa-color-palette-stone);
+  --oa-chart-color-track-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-track-on-charcoal: var(--oa-color-tint-stone-c55);
+  --oa-chart-color-gridline-on-newsprint: var(--oa-color-tint-stone-n70);
+  --oa-chart-color-gridline-on-charcoal: var(--oa-color-tint-stone-c45);
+  --oa-chart-color-band-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-band-on-charcoal: var(--oa-color-tint-stone-c72);
+  --oa-chart-color-land-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-land-on-charcoal: var(--oa-color-tint-stone-c80);
+  --oa-chart-color-diverging-fill-step1-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-diverging-fill-step2-on-newsprint: var(--oa-color-tint-prussian-n62);
+  --oa-chart-color-diverging-fill-step3-on-newsprint: var(--oa-color-tint-stone-n90);
+  --oa-chart-color-diverging-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-diverging-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c25);
+  --oa-chart-color-diverging-label-step1-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-diverging-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-fill-step1-on-newsprint: var(--oa-color-tint-verdigris-n82);
+  --oa-chart-color-sequential-fill-step1-on-charcoal: var(--oa-color-tint-verdigris-c75);
+  --oa-chart-color-sequential-fill-step2-on-newsprint: var(--oa-color-tint-verdigris-n52p75);
+  --oa-chart-color-sequential-fill-step2-on-charcoal: var(--oa-color-tint-verdigris-c50);
+  --oa-chart-color-sequential-fill-step3-on-newsprint: var(--oa-color-tint-verdigris-n23p5);
+  --oa-chart-color-sequential-fill-step3-on-charcoal: var(--oa-color-tint-verdigris-c20);
+  --oa-chart-color-sequential-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-c5p75);
+  --oa-chart-color-sequential-fill-step4-on-charcoal: var(--oa-color-tint-verdigris-n25);
+  --oa-chart-color-sequential-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-fill-step5-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-sequential-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step3-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step4-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step5-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-outline-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-outline-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-magnitude-fill-step1-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-magnitude-fill-step1-on-charcoal: var(--oa-color-tint-stone-c75);
+  --oa-chart-color-magnitude-fill-step2-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step2-on-charcoal: var(--oa-color-tint-stone-c40);
+  --oa-chart-color-magnitude-fill-step3-on-newsprint: var(--oa-color-tint-stone-c10);
+  --oa-chart-color-magnitude-fill-step3-on-charcoal: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step4-on-newsprint: var(--oa-color-tint-stone-c60);
+  --oa-chart-color-magnitude-fill-step4-on-charcoal: var(--oa-color-tint-stone-n85);
+  --oa-chart-color-magnitude-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step4-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+
+  /* oa.chart.artboard */
+  --oa-chart-artboard-wide: 1024px;
+  --oa-chart-artboard-reading: 720px;
+  --oa-chart-artboard-mid: 600px;
+  --oa-chart-artboard-phone: 358px;
+  --oa-chart-artboard-small-phone: 328px;
+
+  /* oa.chart.type */
+  --oa-chart-type-label: 15px;
+  --oa-chart-type-tick: 13px;
+  --oa-chart-type-note: 14px;
+  --oa-chart-type-note-leading: 19px;
+  --oa-chart-type-phone-min: 14px;
+  --oa-chart-type-tile-code-phone: 13px;
+  --oa-chart-type-big: 116px;
+  --oa-chart-type-big-phone: 88px;
+  --oa-chart-type-eyebrow: 13px;
+  --oa-chart-type-title-size: 28px;
+  --oa-chart-type-title-leading: 32px;
+  --oa-chart-type-title-phone-size: 22px;
+  --oa-chart-type-title-phone-leading: 27px;
+  --oa-chart-type-measure-size: 17px;
+  --oa-chart-type-measure-leading: 27px;
+
+  /* oa.chart.line */
+  --oa-chart-line-hairline: 1px;
+  --oa-chart-line-baseline: 1.5px;
+  --oa-chart-line-context: 2px;
+  --oa-chart-line-subject: 3px;
+  --oa-chart-line-selected: 6px;
+
+  /* oa.chart.dot */
+  --oa-chart-dot-subject-radius: 6.5px;
+  --oa-chart-dot-open-radius: 5.5px;
+  --oa-chart-dot-vertex-radius: 3px;
+  --oa-chart-dot-small-vertex-radius: 2.25px;
+
+  /* oa.chart.bar */
+  --oa-chart-bar-height: 24px;
+  --oa-chart-bar-pitch: 42px;
+  --oa-chart-bar-dense-height: 16px;
+  --oa-chart-bar-dense-pitch: 36px;
+  --oa-chart-bar-phone-height: 20px;
+  --oa-chart-bar-phone-pitch: 58px;
+
+  /* oa.chart.unit */
+  --oa-chart-unit-size: 14px;
+  --oa-chart-unit-gap: 3px;
+
+  /* oa.chart.note */
+  --oa-chart-note-width: 520px;
+  --oa-chart-note-min-chars: 45;
+  --oa-chart-note-max-chars: 75;
+  --oa-chart-note-gap: 10px;
+  --oa-chart-note-leader-min: 12px;
+
+  /* oa.chart.guard */
+  --oa-chart-guard-headroom: 1.15;
+  --oa-chart-guard-line-pad: 1px;
+
+  /* oa.chart */
+  --oa-chart-halo: 4px;
+
+  /* oa.chart.hatch */
+  --oa-chart-hatch-pitch: 5px;
+  --oa-chart-hatch-weight: 1.5px;
+
+  /* oa.chart */
+  --oa-chart-keyline: 1px;
+  --oa-chart-gap-years: 1;
+
+  /* oa.chart.arrow */
+  --oa-chart-arrow-shaft: 2px;
+  --oa-chart-arrow-head-length: 8px;
+  --oa-chart-arrow-head-half-width: 4.5px;
+  --oa-chart-arrow-phone-head-length: 6px;
+  --oa-chart-arrow-phone-head-half-width: 3.5px;
+  --oa-chart-arrow-tail-radius: 2.25px;
+  --oa-chart-arrow-tip-radius: 0.5px;
+
+  /* oa.chart.shiftAxis */
+  --oa-chart-shift-axis-pitch: 20px;
+  --oa-chart-shift-axis-label: 14px;
+  --oa-chart-shift-axis-break-gap: 32px;
+  --oa-chart-shift-axis-phone-lollipop-pitch: 44px;
+
+  /* oa.chart.tile */
+  --oa-chart-tile-size-max: 80px;
+  --oa-chart-tile-gap: 6px;
+  --oa-chart-tile-mid-gap: 4px;
+  --oa-chart-tile-phone-gap: 2.5px;
+  --oa-chart-tile-phone-columns: 11;
+  --oa-chart-tile-frame: 2px;
+
+  /* oa.chart.spark */
+  --oa-chart-spark-line: 2px;
+  --oa-chart-spark-context: 1.5px;
+  --oa-chart-spark-end-radius: 3px;
+  --oa-chart-spark-gap-x: 30px;
+  --oa-chart-spark-phone-gap-x: 18px;
+
+  /* oa.chart.columns */
+  --oa-chart-columns-fill-share: 0.72;
+  --oa-chart-columns-average-line: 3px;
+  --oa-chart-columns-vertex-radius: 1.5px;
+  --oa-chart-columns-height: 360px;
+  --oa-chart-columns-phone-height: 290px;
+
+  /* oa.chart.bubble */
+  --oa-chart-bubble-radius-max-wide: 50px;
+  --oa-chart-bubble-radius-max-mid: 34px;
+  --oa-chart-bubble-radius-max-phone: 23px;
+  --oa-chart-bubble-radius-max-small-phone: 21px;
+  --oa-chart-bubble-gap: 2px;
+  --oa-chart-bubble-outline: 1px;
+  --oa-chart-bubble-ring: 2px;
+  --oa-chart-bubble-key-step: 64px;
+  --oa-chart-bubble-label-pad: 3px;
+  --oa-chart-bubble-leader-clear: 3px;
+
+  /* oa.chart.results */
+  --oa-chart-results-gap: 12px;
+  --oa-chart-results-bar: 6px;
+  --oa-chart-results-bar-gap: 4px;
+  --oa-chart-results-shift-head: 8px;
+  --oa-chart-results-shift-min: 130px;
+  --oa-chart-results-html-headroom: 1.06;
+  --oa-chart-results-two-line-min: 560px;
+
+  /* oa.chart.tag */
+  --oa-chart-tag-pad-x: 6px;
+  --oa-chart-tag-height: 18px;
+  --oa-chart-tag-ascent-em: 0.77;
+  --oa-chart-tag-descent-em: 0.23;
+
+  /* oa.component.button */
+  --oa-component-button-ask-fill-on-newsprint: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-component-button-ask-fill-on-white: var(--oa-color-action-ask-fill-on-white);
+  --oa-component-button-ask-fill-on-charcoal: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-component-button-ask-fill-on-prussian: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-component-button-ask-label-on-newsprint: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-component-button-ask-label-on-white: var(--oa-color-action-ask-label-on-white);
+  --oa-component-button-ask-label-on-charcoal: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-component-button-ask-label-on-prussian: var(--oa-color-action-ask-label-on-prussian);
+  --oa-component-button-ask-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-component-button-ask-label-type-font-family: var(--oa-type-ask-font-family);
+  --oa-component-button-ask-label-type-font-style: var(--oa-type-ask-font-style);
+  --oa-component-button-ask-label-type-font-weight: var(--oa-type-ask-font-weight);
+  --oa-component-button-ask-label-type-font-size: var(--oa-type-ask-font-size);
+  --oa-component-button-ask-label-type-line-height: var(--oa-type-ask-line-height);
+  --oa-component-button-ask-label-type-letter-spacing: var(--oa-type-ask-letter-spacing);
+  --oa-component-button-ask-label-type-text-transform: var(--oa-type-ask-text-transform);
+  --oa-component-button-ask-label-type-font-variant-numeric: var(--oa-type-ask-font-variant-numeric);
+  --oa-component-button-ask-label-type: var(--oa-type-ask);
+  --oa-component-button-primary-fill-on-newsprint: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-on-white: var(--oa-color-action-primary-fill-on-white);
+  --oa-component-button-primary-fill-on-charcoal: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-on-prussian: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover-on-newsprint: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-fill-hover-on-white: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-component-button-primary-fill-hover-on-charcoal: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-fill-hover-on-prussian: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label-on-newsprint: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-component-button-primary-label-on-white: var(--oa-color-action-primary-label-on-white);
+  --oa-component-button-primary-label-on-charcoal: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-component-button-primary-label-on-prussian: var(--oa-color-action-primary-label-on-prussian);
+  --oa-component-button-disabled-label-on-newsprint: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-component-button-disabled-label-on-white: var(--oa-color-state-disabled-text-on-white);
+  --oa-component-button-disabled-label-on-charcoal: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-component-button-disabled-label-on-prussian: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-component-button-disabled-edge-on-newsprint: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-component-button-disabled-edge-on-white: var(--oa-color-state-disabled-edge-on-white);
+  --oa-component-button-disabled-edge-on-charcoal: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-component-button-disabled-edge-on-prussian: var(--oa-color-state-disabled-edge-on-prussian);
+
+  /* oa.component.icon */
+  --oa-component-icon-ink-on-newsprint: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-component-icon-ink-on-white: var(--oa-color-graphic-essential-on-white);
+  --oa-component-icon-ink-on-charcoal: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-icon-ink-on-prussian: var(--oa-color-graphic-essential-on-prussian);
+  --oa-component-icon-accent-on-newsprint: var(--oa-color-identity-signature-on-newsprint);
+  --oa-component-icon-accent-on-white: var(--oa-color-identity-signature-on-white);
+  --oa-component-icon-accent-on-charcoal: var(--oa-color-identity-signature-on-charcoal);
+  --oa-component-icon-accent-on-prussian: var(--oa-color-identity-signature-on-prussian);
+
+  /* oa.component.appIcon */
+  --oa-component-app-icon-tile: var(--oa-color-surface-charcoal);
+  --oa-component-app-icon-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-app-icon-accent: var(--oa-color-identity-signature-on-charcoal);
+
+  /* oa.component.avatar */
+  --oa-component-avatar-tile: var(--oa-color-surface-charcoal);
+  --oa-component-avatar-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-avatar-accent: var(--oa-color-identity-signature-on-charcoal);
+}
+
+/* Newsprint: the default reading surface and the page color for charts and the atlas (DR-53). */
+.oa-surface-newsprint {
+  background-color: var(--oa-color-surface-newsprint);
+  color: var(--oa-color-text-primary-on-newsprint);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-newsprint);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-newsprint);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-newsprint);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-newsprint);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-newsprint);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-newsprint);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-newsprint);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-newsprint);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-newsprint);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-newsprint);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-newsprint);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-newsprint);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-color-data-context: var(--oa-color-data-context-on-newsprint);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-newsprint);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-newsprint);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-newsprint);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-newsprint);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-newsprint);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-newsprint);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-newsprint);
+  --oa-chart-color-point-keyline: var(--oa-chart-color-point-keyline-on-newsprint);
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-newsprint);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-newsprint);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-newsprint);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-newsprint);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-newsprint);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-newsprint);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-newsprint);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-newsprint);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-newsprint);
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-newsprint);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-newsprint);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-newsprint);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-newsprint);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-newsprint);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-newsprint);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-newsprint);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-newsprint);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-newsprint);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-newsprint);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-newsprint);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-newsprint);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-newsprint);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-newsprint);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-newsprint);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-newsprint);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-newsprint);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-newsprint);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-newsprint);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-newsprint);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-newsprint);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-newsprint);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-newsprint);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-newsprint);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-newsprint);
+  --oa-component-button-ask-keyline: var(--oa-component-button-ask-keyline-on-newsprint);
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-newsprint);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-newsprint);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-newsprint);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-newsprint);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-newsprint);
+}
+
+/* White: the bright surface. Chart roles are initial here: charts sit on Newsprint or Charcoal. */
+.oa-surface-white {
+  background-color: var(--oa-color-surface-white);
+  color: var(--oa-color-text-primary-on-white);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-white);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-white);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-white);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-white);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-white);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-white);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-white);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-white);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-white);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-white);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-white);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-white);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-white);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-white);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-white);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-white);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-white);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-white);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-white);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-white);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-white);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-white);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-white);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-white);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-white);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-white);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-white);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-white);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-white);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-white);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-white);
+  --oa-color-data-context: var(--oa-color-data-context-on-white);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-white);
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-white);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-white);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-white);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-white);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-white);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-white);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-white);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-white);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-white);
+}
+
+/* Charcoal: the dark ground. Interface roles and chart roles take their Charcoal values (DR-50). */
+.oa-surface-charcoal {
+  background-color: var(--oa-color-surface-charcoal);
+  color: var(--oa-color-text-primary-on-charcoal);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-charcoal);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-charcoal);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-charcoal);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-charcoal);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-charcoal);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-charcoal);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-charcoal);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-charcoal);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-charcoal);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-charcoal);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-color-data-context: var(--oa-color-data-context-on-charcoal);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-charcoal);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-charcoal);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-charcoal);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-charcoal);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-charcoal);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-charcoal);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-charcoal);
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-charcoal);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-charcoal);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-charcoal);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-charcoal);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-charcoal);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-charcoal);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-charcoal);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-charcoal);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-charcoal);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-charcoal);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-charcoal);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-charcoal);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-charcoal);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-charcoal);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-charcoal);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-charcoal);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-charcoal);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-charcoal);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-charcoal);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-charcoal);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-charcoal);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-charcoal);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-charcoal);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-charcoal);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-charcoal);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-charcoal);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-charcoal);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-charcoal);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-charcoal);
+}
+
+/* Prussian: the depth surface. Every red role is initial here, because red never sits on Prussian (Rule 05.3). */
+.oa-surface-prussian {
+  background-color: var(--oa-color-surface-prussian);
+  color: var(--oa-color-text-primary-on-prussian);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-prussian);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-prussian);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-prussian);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-prussian);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-prussian);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-prussian);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-prussian);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-prussian);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-prussian);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-prussian);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-prussian);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-prussian);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-prussian);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-prussian);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-prussian);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-prussian);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-prussian);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-prussian);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-prussian);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-prussian);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-prussian);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-prussian);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-prussian);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-prussian);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-prussian);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-prussian);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-prussian);
+  --oa-color-data-context: var(--oa-color-data-context-on-prussian);
+  --oa-color-data-emphasis-red: initial;
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-prussian);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-prussian);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-prussian);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-prussian);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-prussian);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-prussian);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-prussian);
+}
+
+/* Reduced motion: every duration resolves to 0 ms and the final state shows at once. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --oa-motion-duration-fast: 0ms;
+    --oa-motion-duration-standard: 0ms;
+    --oa-motion-duration-slow: 0ms;
+    --oa-motion-duration-stagger: 0ms;
+    --oa-motion-duration-hinge: 0ms;
+    --oa-motion-duration-lever: 0ms;
+  }
+}
+
+</style>
+<style id="oa-guide-shell">
+/* Oath & Action Brand Guide, Edition 06: the guide shell.
+   Written by the guide engineer for stage board A, November 6, 2026. guide_build.py inlines this file after tokens.css.
+   Every color, type style, space and border comes from tokens.css. Surface classes (.oa-surface-newsprint and the rest)
+   point the short names (--oa-color-text-primary and the rest) at their surface, so a block changes surface with one class.
+   Breakpoints are in em, so layouts follow the reader's text size: tablet 48em, desktop 64em, wide 90em (tokens.css header).
+   No dotted or dashed lines anywhere (D1-21). */
+
+:root {
+  --gutter: var(--oa-layout-grid-phone-small-margin);
+  --head-h: 4rem;
+  --rid-col: 9rem;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --mat: var(--oa-color-tint-stone-n90);
+}
+@media (min-width: 24.375em) { :root { --gutter: var(--oa-layout-grid-phone-margin) } }
+@media (min-width: 48em) { :root { --gutter: var(--oa-layout-grid-tablet-margin) } }
+@media (min-width: 64em) { :root { --gutter: var(--oa-layout-grid-desktop-margin) } }
+
+*, *::before, *::after { box-sizing: border-box }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--oa-color-surface-newsprint) }
+body {
+  margin: 0;
+  font: var(--oa-type-body);
+  font-feature-settings: "ss01" 0;
+  background: var(--oa-color-surface-newsprint);
+  color: var(--oa-color-text-primary-on-newsprint);
+}
+/* The sticky masthead's offset sits on the content: a root scroll-padding makes Chromium scroll when a masthead control takes focus. */
+main *, .colophon * { scroll-margin-top: calc(var(--head-h) + var(--oa-space-300)) }
+a { color: inherit; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
+a:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
+:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: var(--oa-border-focus-offset) }
+[tabindex="-1"]:focus { outline: none }
+code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: anywhere }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+[hidden] { display: none !important }
+.alias { position: relative; top: calc(-1 * var(--head-h)); display: block; height: 0 }
+
+/* Shell type styles. Element styles stay under shell classes, so a specimen inherits only font and color. */
+.label, .plate-label, .local-toc-title, .colophon-k, .toc-part-h, .rid-w, .basis-k, .lbl, .cover-folio, .chapnav-k, .demo-tag {
+  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform);
+}
+.n { font-variant-numeric: tabular-nums }
+
+/* Skip links: the first two Tab stops, shown on focus */
+.skip { position: fixed; left: var(--gutter); top: var(--oa-space-100); z-index: var(--oa-z-index-skip); padding: var(--oa-space-150) var(--oa-space-200);
+  background: var(--oa-color-surface-charcoal); color: var(--oa-color-text-primary-on-charcoal); font: var(--oa-type-ui); text-decoration: underline;
+  outline-color: var(--oa-color-focus-ring-on-charcoal) }
+.skip:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+
+/* ---------------------------------------------------------------- Masthead */
+.masthead { position: sticky; top: 0; z-index: var(--oa-z-index-sticky); min-height: var(--head-h); display: flex; align-items: center; gap: var(--oa-space-150) var(--oa-space-300);
+  padding: 0 var(--gutter); background: var(--oa-color-surface-newsprint); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.home { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); color: var(--oa-color-text-primary-on-newsprint); flex: none }
+.home .wm { display: block }
+.home .wm-24 { display: none }
+.edition { display: none; padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint);
+  font: var(--oa-type-ui); white-space: nowrap }
+.edition-k { color: var(--oa-color-text-secondary-on-newsprint); font-weight: var(--oa-font-weight-regular); margin-right: .35em }
+.partnav { display: none; margin-left: auto }
+.partnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0 var(--oa-space-300) }
+.partnav a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui); text-decoration: none }
+.partnav a:hover, .partnav a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .45em }
+.where { margin: 0 0 0 auto; min-width: 0; font: var(--oa-type-ui); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.menubtn { flex: none; display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-200);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
+.menubtn:hover { box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong-on-newsprint) }
+.bars { width: 1.125rem; height: .75rem; display: inline-grid; align-content: space-between }
+.bars i { display: block; height: var(--oa-border-width-rule); background: currentColor }
+@media (max-width: 22.49em) { .where { display: none } .menubtn { margin-left: auto } }
+@media (min-width: 48em) { .home .wm-24 { display: block } .home .wm-16 { display: none } .edition { display: inline } }
+@media (min-width: 64em) { .partnav { display: block } .where, .menubtn { display: none } }
+
+/* ---------------------------------------------------------------- Frame: rail and main */
+.frame { padding: 0 var(--gutter) }
+.rail { display: none }
+@media (min-width: 64em) {
+  .frame { display: grid; grid-template-columns: 14.5rem minmax(0, 1fr); column-gap: var(--oa-space-600); max-width: 100rem; margin: 0 auto }
+  .rail { display: block; position: sticky; top: var(--head-h); align-self: start; max-height: calc(100vh - var(--head-h)); overflow-y: auto; overscroll-behavior: contain;
+    padding: var(--oa-space-400) 0 var(--oa-space-600) }
+}
+.rail ul { list-style: none; margin: 0; padding: 0 }
+.rail a { display: flex; gap: var(--oa-space-100); align-items: baseline; padding: var(--oa-space-050) var(--oa-space-150); min-height: var(--oa-size-target-minimum);
+  font: var(--oa-type-body-small); line-height: 1.4; text-decoration: none; border-left: var(--oa-border-width-bar) solid transparent }
+.rail a:hover { text-decoration: underline }
+.rail .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.5rem }
+.rail a.rail-partlink { margin-top: var(--oa-space-300); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
+.rail > ul > li:first-child > a { margin-top: 0 }
+.rail a[aria-current], .menu a[aria-current] { background: var(--oa-color-state-selected-band-on-newsprint); border-left-color: var(--oa-color-state-selected-bar-on-newsprint); font-weight: var(--oa-font-weight-semibold) }
+.rail a[aria-current] .n, .menu a[aria-current] .n { color: inherit }
+
+main { min-width: 0; padding-bottom: var(--oa-space-1300) }
+main:focus { outline: none }
+
+/* ---------------------------------------------------------------- Cover */
+.cover { min-height: calc(100vh - var(--head-h)); display: flex; flex-direction: column; padding: var(--oa-space-400) 0 var(--oa-space-600) }
+.cover-folio { display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0;
+  border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.cover-folio span + span { padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.cover-mark { margin: var(--oa-space-800) 0 0; color: var(--oa-color-text-primary-on-newsprint) }
+.cover-mark svg { display: block; width: min(100%, 26rem); height: auto }
+.cover-h1 { margin: var(--oa-space-600) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); max-width: 24ch }
+.tagline { margin: var(--oa-space-300) 0 0; font: var(--oa-type-title); letter-spacing: var(--oa-type-title-letter-spacing); max-width: 11ch; text-wrap: balance }
+.pillars { margin: var(--oa-space-600) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--oa-space-050) var(--oa-space-150); font: var(--oa-type-intro); font-weight: var(--oa-font-weight-semibold) }
+.pillars .arr { color: var(--oa-color-text-secondary-on-newsprint); font-weight: var(--oa-font-weight-regular) }
+.cover-foot { margin-top: auto; padding-top: var(--oa-space-800); display: grid; gap: var(--oa-space-100) var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
+.cover-foot p { margin: 0; font: var(--oa-type-caption); max-width: 40rem }
+.cover-stage { padding-top: var(--oa-space-150); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.cover-status { color: var(--oa-color-text-secondary-on-newsprint) }
+.cover-start a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
+@media (min-width: 48em) { .cover-foot { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) } .cover-start { grid-column: 2; grid-row: 1 / span 2; justify-self: end } }
+
+/* ---------------------------------------------------------------- Section openers */
+.contents, .part, .chapter, .appendix { margin-top: var(--oa-space-1300) }
+.ch-head { border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); padding-top: var(--oa-space-150) }
+.loc-line { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.loc-line a { color: var(--oa-color-text-primary-on-newsprint) }
+.return { margin: var(--oa-space-150) 0 0 }
+.return a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-ui); text-decoration: none }
+.return a:hover { text-decoration: underline }
+.ch-title, .front-title, .part-title { margin: var(--oa-space-800) 0 0; font: var(--oa-type-section); letter-spacing: var(--oa-type-section-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
+.ch-title .n { color: var(--oa-color-text-secondary-on-newsprint); margin-right: .12em }
+.ch-title--appendix { font-size: var(--oa-type-h3-font-size); }
+.instr { margin: var(--oa-space-300) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max); text-wrap: pretty }
+.intro { margin: var(--oa-space-300) 0 0; max-width: var(--oa-layout-measure-body-max) }
+.intro + .intro { margin-top: var(--oa-space-200) }
+.later-note { font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+
+/* Contents */
+.toc-parts { display: grid; gap: var(--oa-space-600) var(--oa-space-600); margin-top: var(--oa-space-800); grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 48em) { .toc-parts { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.toc-part { border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); padding-top: var(--oa-space-150) }
+.toc-part-h { margin: 0 }
+.toc-part-h a { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum) }
+.toc-part-h a:hover { text-decoration: underline }
+.toc-part--later .toc-part-h { color: var(--oa-color-text-secondary-on-newsprint) }
+.toc-list { list-style: none; margin: var(--oa-space-200) 0 0; padding: 0 }
+.toc-list li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.toc-list a, .toc-name { display: inline-flex; gap: .5em; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+.toc-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
+.toc-list .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.6em }
+.toc-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint); max-width: var(--oa-layout-measure-body-ideal) }
+.toc-later { padding: var(--oa-space-100) 0 !important }
+.toc-later .toc-name { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
+
+/* Part opener: one dark beat per part (Rule 05.1) */
+.part-inner { padding: var(--oa-space-600) var(--gutter) var(--oa-space-800); margin: 0 calc(-1 * var(--gutter)) }
+@media (min-width: 64em) { .part-inner { margin: 0; padding: var(--oa-space-800) var(--oa-space-800) var(--oa-space-1000) } }
+.part-title { margin-top: 0 }
+.part-title .lbl { display: block; margin-bottom: var(--oa-space-200); color: var(--oa-color-text-secondary) }
+.part .instr { margin-top: var(--oa-space-300) }
+.part-list { list-style: none; margin: var(--oa-space-800) 0 0; padding: 0; display: grid; gap: 0 var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 48em) { .part-list { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.part-list li { padding: var(--oa-space-200) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+.part-list a { display: inline-flex; gap: .5em; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+.part-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
+.part-list .n { color: var(--oa-color-text-secondary); min-width: 1.6em }
+.part-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.part-note { margin: var(--oa-space-600) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+
+/* ---------------------------------------------------------------- Chapter */
+.chapter { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--oa-space-800) }
+.ch-body { min-width: 0 }
+.local-toc { margin: var(--oa-space-600) 0 0; padding: var(--oa-space-150) 0 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.local-toc-title { margin: 0 0 var(--oa-space-100) }
+.local-toc ul { list-style: none; margin: 0; padding: 0; columns: 1 }
+@media (min-width: 48em) and (max-width: 79.99em) { .local-toc ul { columns: 2; column-gap: var(--oa-space-600) } }
+.local-toc li { break-inside: avoid }
+.local-toc a { display: inline-block; padding: var(--oa-space-050) 0; min-height: var(--oa-size-target-minimum); font: var(--oa-type-body-small); line-height: 1.4; text-decoration: none }
+.local-toc a:hover { text-decoration: underline }
+.local-toc a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
+.toc-rid { font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint); margin-right: .25em }
+@media (min-width: 80em) {
+  .chapter { grid-template-columns: minmax(0, 1fr) 13rem }
+  .chapter > .ch-head, .chapter > .ch-body, .chapter > .chapnav, .chapter > .pending-note { grid-column: 1 }
+  .chapter > .alias { grid-column: 1 / -1 }
+  .local-toc { grid-column: 2; grid-row: 2 / span 3; position: sticky; top: calc(var(--head-h) + var(--oa-space-400)); align-self: start; margin-top: var(--oa-space-1300); max-height: calc(100vh - var(--head-h) - var(--oa-space-800)); overflow-y: auto }
+  .local-toc ul { columns: 1 }
+}
+.pending-note, .demo-tag { margin: var(--oa-space-600) 0 0; padding: var(--oa-space-300); max-width: var(--oa-layout-measure-intro-max);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); border-left-width: var(--oa-border-width-bar) }
+.pending-note p { margin: 0; max-width: var(--oa-layout-measure-body-max) }
+.pending-note .label { margin-bottom: var(--oa-space-100) }
+.demo-tag { padding: var(--oa-space-100) var(--oa-space-150); margin: 0 0 var(--oa-space-300); display: inline-block }
+
+/* Rule: the Master Brief section 7 template */
+.rule { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint);
+  display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--oa-space-400) }
+.ch-body > .rule:first-child, .ch-body > .plate--extra:first-child + .rule { margin-top: var(--oa-space-800) }
+.rule-h { margin: 0; font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
+.rid { display: block; margin-bottom: var(--oa-space-150); font-variant-numeric: tabular-nums }
+.rid-w { color: var(--oa-color-text-secondary-on-newsprint); margin-right: .25em }
+.rid-n { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing) }
+.rule-body { margin-top: var(--oa-space-300); min-width: 0 }
+.rule-text { margin: 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-body-max); text-wrap: pretty }
+.rule-text + .rule-text { margin-top: var(--oa-space-200) }
+@media (min-width: 48em) {
+  .rule { grid-template-columns: var(--rid-col) minmax(0, 1fr) }
+  .rule-h { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline }
+  .rid { grid-column: 1; margin: 0; display: flex; flex-direction: column; gap: var(--oa-space-050) }
+  .rid-w { margin: 0 }
+  .rid-n { font: var(--oa-type-h3); letter-spacing: 0; font-variant-numeric: tabular-nums }
+  .rt { grid-column: 2 }
+  .rule-body, .rule-foot { grid-column: 2 }
+  .hinge, .plate, .rule > .plate { grid-column: 1 / -1 }
+}
+.label { margin: var(--oa-space-400) 0 var(--oa-space-100); color: var(--oa-color-text-secondary-on-newsprint) }
+.why p:not(.label):not(.basis) { margin: 0 0 var(--oa-space-200); max-width: var(--oa-layout-measure-body-max) }
+.basis { display: inline-flex; flex-wrap: wrap; gap: .5em; align-items: baseline; margin: 0 0 var(--oa-space-150); padding: var(--oa-space-050) var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-ui) }
+.basis-k { color: var(--oa-color-text-secondary-on-newsprint) }
+.tok-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
+.tok { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-100); padding: var(--oa-space-050) var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); background: var(--oa-color-state-selected-band-on-newsprint); max-width: 100% }
+.tok-name { font-size: .875rem }
+.tok-sw { width: 1rem; height: 1rem; flex: none; box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong-on-newsprint); forced-color-adjust: none }
+.tok-val { font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint) }
+
+/* The hinge divider: a hairline broken by ampersand B in the surface's ink (D1-22, D1-26).
+   Its ampersand sits on the text column's edge, so the rule above swings into its use below. */
+.hinge { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-600) 0 var(--oa-space-300); color: var(--oa-color-identity-hinge-divider) }
+.hinge-line { height: 0; border-top: var(--oa-border-width-hairline) solid currentColor }
+.hinge-line--a { flex: 0 0 var(--oa-space-400) }
+.hinge-line--b { flex: 1 1 auto }
+.hinge-amp { flex: none; display: block; width: 21px; height: 24px }
+@media (min-width: 48em) { .hinge-line--a { flex-basis: calc(var(--rid-col) + var(--oa-space-400) - var(--oa-space-150)) } }
+
+/* Plates: a specimen at true size on a deeper Newsprint mat. The stage takes the specimen's surface. */
+.plate { margin: var(--oa-space-500) 0 0; min-width: 0 }
+.hinge + .plate { margin-top: 0 }
+.plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--oa-space-050) var(--oa-space-300);
+  padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint) }
+.plate-label { margin: 0; display: inline-flex; gap: .6em; align-items: baseline }
+.plate-glyph { font: var(--oa-type-ui); font-size: 1rem; line-height: 1 }
+.plate-size { margin: 0; font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint) }
+.plate-scroll { position: relative; overflow-x: auto; overflow-y: hidden; padding: var(--oa-space-600) var(--oa-space-400); background: var(--mat);
+  margin-inline: calc(-1 * var(--gutter)) }
+@media (max-width: 47.99em) { .plate-scroll { padding: var(--oa-space-400) 0 } }
+@media (min-width: 48em) { .plate-scroll { margin-inline: 0; padding: var(--oa-space-800) var(--oa-space-600) } }
+.plate-scroll:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
+/* background and color come from the stage's surface class (.oa-surface-newsprint by default) */
+.plate-stage { position: relative; width: var(--w, 100%); max-width: none; margin: 0 auto; font: var(--oa-type-body); text-align: left }
+
+.plate-stage[data-pending] { padding: var(--oa-space-400); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); max-width: 100% }
+.plate-pending { margin: 0; font: var(--oa-type-body-small) }
+.plate-cap { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); max-width: var(--oa-layout-measure-intro-max) }
+@media (min-width: 48em) { .rule > .plate > .plate-cap { margin-left: calc(var(--rid-col) + var(--oa-space-400)) } }
+.plate-hint { display: none; margin: 0; padding: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.plate.is-wide .plate-hint { display: block }
+.illus { display: inline-block; margin-right: .4em; padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
+  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; line-height: 1.5 }
+.plate--failure .plate-head { border-top-width: var(--oa-border-width-bar) }
+.plate--extra, .plate--proof { margin-top: var(--oa-space-800) }
+
+/* Rule foot: Specifications, Related chapters, For builders */
+.rule-foot { margin-top: var(--oa-space-600); display: grid; gap: var(--oa-space-300) var(--oa-space-600); grid-template-columns: minmax(0, 1fr); min-width: 0 }
+@media (min-width: 64em) { .rule-foot { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) } .foot-specs { grid-row: span 2 } }
+.foot-block { min-width: 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.foot-block > .label:first-child { margin-top: var(--oa-space-150) }
+.foot-builders p:not(.label) { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small) }
+.spec-list { margin: 0 }
+.spec-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--oa-space-300); padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+@media (min-width: 30em) { .spec-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) } .spec-tok { grid-column: 2 } }
+.spec-row dt { font: var(--oa-type-body-small); font-weight: var(--oa-font-weight-semibold) }
+.spec-row dd { margin: 0; font: var(--oa-type-body-small); font-variant-numeric: tabular-nums }
+.spec-tok code { font-size: .8125rem; color: var(--oa-color-text-secondary-on-newsprint) }
+.file-list { list-style: none; margin: 0; padding: 0 }
+.file-list li { padding: var(--oa-space-050) 0; font-size: .875rem }
+.file-list code { font-size: .8125rem }
+.rel-inline { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300) }
+.rel-inline a { display: inline-flex; gap: .4em; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
+.rel-inline .later { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
+.rel-inline li { display: flex; align-items: center; gap: .5em; flex-wrap: wrap }
+
+/* Sources and closers */
+.sources { margin-top: var(--oa-space-1000); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.src-list { margin: 0; padding-left: 1.5em; font: var(--oa-type-body-small); max-width: var(--oa-layout-measure-intro-max) }
+.src-list li { padding: var(--oa-space-050) 0 }
+.closer { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint) }
+.closer h3 { margin: 0 0 var(--oa-space-300); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
+.closer > p { max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-200) }
+.closer-note { font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.table-wrap { overflow-x: auto; max-width: 100% }
+.tok-table { border-collapse: collapse; width: 100%; font: var(--oa-type-body-small) }
+.tok-table caption { text-align: left; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint); padding-bottom: var(--oa-space-100) }
+.tok-table th, .tok-table td { text-align: left; vertical-align: baseline; padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.tok-table thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; border-bottom-color: var(--oa-color-border-strong-on-newsprint) }
+.tok-table tbody th { font-weight: var(--oa-font-weight-regular) }
+.tok-table td { font-variant-numeric: tabular-nums; white-space: nowrap }
+@media (max-width: 47.99em) {
+  .tok-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+  .tok-table tr { display: block; padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+  .tok-table th, .tok-table td { display: block; border: 0; padding: 0; white-space: normal }
+}
+.related { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 48em) { .related { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.related li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); display: flex; flex-direction: column; gap: var(--oa-space-050) }
+.related a, .related .later { display: inline-flex; gap: .45em; align-items: baseline; font: var(--oa-type-h4); font-size: 1.25rem; letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+.related a:hover { text-decoration: underline }
+.related .later { color: var(--oa-color-text-secondary-on-newsprint) }
+.related .n { color: var(--oa-color-text-secondary-on-newsprint) }
+.rel-why { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
+.code { margin: 0 0 var(--oa-space-200); padding: var(--oa-space-300); background: var(--mat); overflow-x: auto; max-width: 100%; font-size: .875rem; line-height: 1.6; white-space: pre }
+.code code { overflow-wrap: normal }
+.btn { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-300); border: 0; cursor: pointer;
+  background: var(--oa-color-action-primary-fill-on-newsprint); color: var(--oa-color-action-primary-label-on-newsprint); font: var(--oa-type-ui) }
+.btn:hover { background: var(--oa-color-action-primary-fill-hover-on-newsprint); text-decoration: underline }
+.status { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.status.is-error { color: var(--oa-color-text-primary-on-newsprint); font-weight: var(--oa-font-weight-semibold) }
+.copy-fallback { display: block; margin-top: var(--oa-space-100); width: 100%; max-width: 30rem; font-family: var(--mono) }
+
+.chapnav { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); margin-top: var(--oa-space-1000); padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.chapnav a { display: inline-flex; align-items: center; gap: .4em; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
+.chapnav-k { color: var(--oa-color-text-secondary-on-newsprint) }
+.chapnav .to-contents { margin-left: auto }
+
+/* Appendix: proofs side by side */
+.proof-group { margin-top: var(--oa-space-1000) }
+.proof-h { margin: 0; padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing) }
+.proof-group > p { max-width: var(--oa-layout-measure-body-max) }
+.proof-row { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); align-items: flex-start }
+.proof-row > .plate { flex: 1 1 auto; min-width: 0; max-width: 100%; margin-top: var(--oa-space-400) }
+
+/* ---------------------------------------------------------------- Colophon */
+.colophon { padding: var(--oa-space-800) var(--gutter) var(--oa-space-1000) }
+.colophon-inner { max-width: 100rem; margin: 0 auto }
+@media (min-width: 64em) { .colophon-inner { padding-left: calc(14.5rem + var(--oa-space-600)) } }
+.colophon-k { margin: 0 0 var(--oa-space-300); color: var(--oa-color-text-secondary) }
+.colophon-list { margin: 0; display: grid; gap: 0; max-width: 56rem }
+.colophon-list > div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--oa-space-400); padding: var(--oa-space-150) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+@media (min-width: 48em) { .colophon-list > div { grid-template-columns: 8rem minmax(0, 1fr) } }
+.colophon-list dt { font: var(--oa-type-ui); color: var(--oa-color-text-secondary) }
+.colophon-list dd { margin: 0; font: var(--oa-type-body-small) }
+.colophon-back { margin: var(--oa-space-400) 0 0 }
+.colophon-back a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
+
+/* ---------------------------------------------------------------- Phone menu: a modal dialog with one navigation block */
+.menu { padding: 0; border: 0; margin: 0 0 0 auto; width: min(100vw, 26rem); max-width: 100vw; height: 100vh; max-height: 100vh;
+  background: var(--oa-color-surface-newsprint); color: var(--oa-color-text-primary-on-newsprint); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.menu::backdrop { background: var(--oa-color-palette-charcoal); opacity: .6 }
+.menu-inner { display: flex; flex-direction: column; height: 100% }
+.menu-head { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-200); padding: var(--oa-space-150) var(--gutter); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.menu-title { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
+.menu-close { min-height: var(--oa-size-target-touch); min-width: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
+.menu-where { margin: 0; padding: var(--oa-space-150) var(--gutter); font: var(--oa-type-caption) }
+.menu-scroll { flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--gutter) var(--oa-space-600) }
+.menu ul { list-style: none; margin: 0; padding: 0 }
+.menu a { display: flex; gap: var(--oa-space-100); align-items: center; min-height: var(--oa-size-target-touch); padding: var(--oa-space-050) var(--oa-space-150);
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-body); text-decoration: none }
+.menu a .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.6em }
+.menu a.menu-partlink { margin-top: var(--oa-space-300); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
+
+/* ---------------------------------------------------------------- Forced colors, print */
+@media (forced-colors: active) {
+  .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight }
+  .hinge-line { border-top-color: CanvasText }
+  .plate-scroll { border: 1px solid CanvasText }
+  .btn { border: 1px solid ButtonText }
+}
+@media print {
+  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .status { display: none !important }
+  .frame { display: block; padding: 0 }
+  body, .plate-scroll { background: none }
+  .chapter, .part, .contents, .appendix { break-before: page }
+  .plate, .rule-h, .hinge { break-inside: avoid }
+  .local-toc { position: static }
+  a { text-decoration: none }
+}
+
+</style>
+</head>
+<body class="oa-surface-newsprint">
+<a class="skip" href="#main">Skip to main content</a>
+<a class="skip" href="#contents">Skip to contents</a>
+<header class="masthead">
+  <a class="home" href="#top" data-red="signature"><svg role="img" aria-label="Oath &amp; Action" focusable="false" class="wm wm-24" width="221" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221 24"><path fill="currentColor" d="M10.508 23Q7.29 23 4.919 21.87Q2.548 20.741 1.275 18.478Q0 15.827 0 12.016Q0 8.189 1.275 5.522Q2.548 3.248 4.919 2.124Q7.29 1 10.508 1Q13.71 1 16.075 2.124Q18.44 3.248 19.719 5.522Q21 8.189 21 12.016Q21 15.827 19.719 18.488Q18.44 20.752 16.075 21.876Q13.71 23 10.508 23ZM189.95 23Q186.898 23 184.312 21.87Q181.726 20.741 180.231 18.478Q178.732 15.827 178.732 12.016Q178.732 8.189 180.231 5.522Q181.726 3.248 184.312 2.124Q186.898 1 189.95 1Q192.674 1 194.869 2.124Q197.061 3.248 198.342 5.719Q199.623 8.189 199.623 12.016Q199.623 15.827 198.342 18.488Q197.061 20.752 194.869 21.876Q192.674 23 189.95 23ZM220.763 1V23H216.529L208.24 10.302H208.079V23H202.846V1H207.365L215.598 13.668H215.763V1ZM27.318 23H21.578L28.623 1H36.318L43.579 23H37.579L36.116 18H28.885ZM111.506 23H106.211L113.464 1H120.399L128.217 23H122.219L120.817 18H113.271ZM60.847 23V1H66.029V10H74.847V1H79.847V23H74.847V14H66.029V23ZM138.741 23Q135.714 23 133.325 21.87Q130.933 20.741 129.59 18.414Q128.329 15.437 128.329 11.895Q128.329 8.334 129.602 5.545Q130.965 3.248 133.369 2.124Q135.774 1 138.741 1Q140.764 1 142.488 1.475Q144.212 1.952 145.522 2.866Q146.833 3.781 147.644 5.131Q148.452 6.822 148.662 9H143.207Q143.102 8.089 142.765 7.35Q142.428 6.609 141.865 6.09Q141.305 5.569 140.554 5.283Q139.807 5 138.875 5Q137.259 5 136.089 5.87Q134.921 6.74 134.291 8.373Q133.662 9.875 133.662 11.895Q133.662 13.969 134.298 15.481Q134.935 17.236 136.096 18.118Q137.259 19 138.862 19Q139.746 19 140.481 18.729Q141.213 18.459 141.776 17.943Q142.339 17.428 142.705 16.686Q143.073 15.945 143.207 15H148.662Q148.512 16.731 147.807 18.425Q147.103 19.814 145.853 20.811Q144.6 21.806 142.819 22.404Q141.035 23 138.741 23ZM149.707 5V1H168.016V5H161.362V23H155.977V5ZM40.5 5V1H58.808V5H52.154V23H47.052V5ZM10.508 19Q12.221 19 13.455 18.191Q14.688 17.382 15.344 15.827Q16 14.272 16 12.016Q16 9.745 15.344 8.18Q14.688 6.618 13.455 5.809Q12.221 5 10.508 5Q8.795 5 7.562 5.809Q6.331 6.618 5.666 8.18Q5 9.745 5 12.016Q5 14.272 5.666 15.827Q6.331 17.382 7.562 18.191Q8.795 19 10.508 19ZM189.95 19Q191.408 19 192.457 18.191Q193.507 17.382 194.065 15.827Q194.623 14.272 194.623 12.016Q194.623 9.745 194.065 8.18Q193.507 6.618 192.457 5.809Q191.408 5 189.906 5Q188.404 5 187.17 5.809Q185.937 6.618 185.274 8.18Q184.608 9.745 184.608 12.016Q184.608 14.272 185.274 15.827Q185.937 17.382 187.17 18.191Q188.404 19 189.95 19ZM175.732 1V23H170.732V1ZM119.696 14 117.566 6.4H117.364L114.682 14ZM34.946 14 32.723 6.4H32.521L30.139 14Z"/><path fill="var(--amp,#E63946)" d="M89.6 0H93.6C96 0 97 2 97 4.4V6.6C97 8.8 95.6 10.6 94.3 12L99 16V14.2C99 13.5 98.6 13 98.2 13H98V11H102V14.6Q102 16.7 100.8 18.2C101.6 20 102.6 20.9 104 21V24H102.4C100.6 24 99.2 23 98 21.8C96.6 23.3 94.6 24 92 24H90.4C86 24 83 21.6 83 18.6V17.6C83 14.8 85.6 13.2 89.1 12C87.4 10.6 86 8.6 86 6.6V4.6C86 1.8 87.6 0 89.6 0ZM90.6 14.3C89 14.8 88 15.6 88 16.8V18.6C88 20 88.9 21 90.4 21H92.8C94 21 95 20.8 95.9 20.2ZM91.5 3C90.6 3 90 3.8 90 5V6.4C90 8 91 9.4 92.2 10.4C92.8 9.4 93 8.3 93 7V5C93 3.8 92.4 3 91.5 3Z"/></svg><svg role="img" aria-label="Oath &amp; Action" focusable="false" class="wm wm-16" width="152" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 16"><path fill="currentColor" d="M6.505 15Q4.457 15 2.993 14.153Q1.529 13.306 0.765 11.702Q0 10.187 0 8.009Q0 5.823 0.765 4.298Q1.529 2.686 2.993 1.843Q4.457 1 6.505 1Q8.543 1 10.003 1.843Q11.464 2.686 12.231 4.298Q13 5.823 13 8.009Q13 10.187 12.231 11.707Q11.464 13.314 10.003 14.157Q8.543 15 6.505 15ZM131.311 15Q129.667 15 128.227 14.153Q126.787 13.306 125.835 11.702Q124.882 10.187 124.882 8.009Q124.882 5.823 125.835 4.298Q126.787 2.686 128.227 1.843Q129.667 1 131.311 1Q132.945 1 134.262 1.843Q135.577 2.686 136.346 4.254Q137.114 5.823 137.114 8.009Q137.114 10.187 136.346 11.707Q135.577 13.314 134.262 14.157Q132.945 15 131.311 15ZM76.312 15H73.055L77.291 1H81.862L87.074 15H83.076L82.057 12H77.158ZM18.636 15H14.77L19.623 1H23.637L28.772 15H24.772L23.901 12H19.461ZM151.17 1V15H148.629L143.676 6.919H143.584V15H140.456V1H143.175L148.071 9.061H148.17V1ZM42.042 15V1H45.493V6H51.042V1H54.042V15H51.042V9H45.493V15ZM95.06 15Q93.042 15 91.449 14.153Q89.855 13.306 88.932 11.707Q88.008 10.219 88.008 7.93Q88.008 5.667 88.941 4.273Q89.876 2.686 91.479 1.843Q93.082 1 95.06 1Q96.409 1 97.558 1.356Q98.707 1.714 99.581 2.399Q100.455 3.086 100.995 4.065Q101.534 4.911 101.674 6H98.038Q97.968 5.545 97.743 5.175Q97.518 4.804 97.143 4.545Q96.769 4.285 96.269 4.142Q95.77 4 95.15 4Q94.072 4 93.292 4.435Q92.514 4.87 92.094 5.686Q91.674 6.583 91.674 7.93Q91.674 9.313 92.098 10.241Q92.522 11.118 93.297 11.559Q94.072 12 95.141 12Q95.73 12 96.22 11.865Q96.708 11.729 97.083 11.472Q97.458 11.214 97.703 10.843Q97.948 10.472 98.038 10H101.674Q101.574 10.865 101.104 11.712Q100.635 12.61 99.801 13.358Q98.966 14.105 97.779 14.553Q96.589 15 95.06 15ZM103.27 4V1H115.341V4H111.001V15H107.084V4ZM27.846 4V1H38.989V4H34.649V15H31.263V4ZM6.505 12Q7.595 12 8.38 11.538Q9.165 11.075 9.583 10.187Q10 9.298 10 8.009Q10 6.711 9.583 5.817Q9.165 4.925 8.38 4.462Q7.595 4 6.505 4Q5.415 4 4.63 4.462Q3.847 4.925 3.424 5.817Q3 6.711 3 8.009Q3 9.298 3.424 10.187Q3.847 11.075 4.63 11.538Q5.415 12 6.505 12ZM121.33 1V15H118.33V1ZM131.311 12Q132.185 12 132.815 11.538Q133.445 11.075 133.78 10.187Q134.115 9.298 134.115 8.009Q134.115 6.711 133.78 5.817Q133.445 4.925 132.815 4.462Q132.185 4 131.311 4Q130.436 4 129.806 4.462Q129.177 4.925 128.838 5.817Q128.498 6.711 128.498 8.009Q128.498 9.298 128.838 10.187Q129.177 11.075 129.806 11.538Q130.436 12 131.311 12ZM81.038 9 79.449 4.323H79.324L78.005 9ZM23.031 9 21.673 4.323H21.572L20.286 9Z"/><path fill="var(--amp,#E63946)" d="M61.4 0H64.2C65.9 0 67 1.2 67 2.8V4.2C67 5.6 65.9 6.9 64.6 8.1L68 10.9V9.6Q68 9 67.4 9H67V7H70V9.8C70 10.8 69.6 11.5 69.1 12.1C69.6 13.3 70.2 13.9 71 14V16H69.8C68.7 16 67.8 15.3 67.2 14.6C66.2 15.6 64.8 16 63.2 16H61.4C58.8 16 57 14.5 57 12.4V11.6C57 9.8 58.6 8.8 60.8 8C59.7 7.1 59 5.8 59 4.6V3C59 1.2 60 0 61.4 0ZM62.1 9.4C60.8 9.7 60 10.2 60 10.9V12.3C60 13.3 60.6 14 61.6 14H63.5C64.3 14 65.1 13.8 65.7 13.3ZM62.5 2C61.6 2 61 2.6 61 3.5V4.4C61 5.4 61.9 6.3 62.8 7C63.6 6.1 64 5.3 64 4.3V3.5C64 2.6 63.4 2 62.5 2Z"/></svg></a>
+  <span class="edition"><span class="edition-k">Brand Guide</span> Edition 06</span>
+  <nav class="partnav" aria-label="Parts"><ul>
+    <li><a href="#contents" data-part-link="contents">Contents</a></li>
+    <li><a href="#part-foundations" data-part-link="foundations">Foundations</a></li>
+    
+  </ul></nav>
+  <p class="where" id="where" aria-hidden="true">Cover</p>
+  <button class="menubtn" id="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
+</header>
+<div class="frame">
+  <nav class="rail" aria-label="Chapters"><ul><li><a href="#contents" data-loc="contents">Contents</a></li><li><a class="rail-partlink" href="#part-foundations" data-loc="part-foundations">Foundations</a><ul><li><a href="#purpose" data-loc="purpose"><span class="n">01</span> <span class="t">Purpose</span></a></li><li><a href="#voice" data-loc="voice"><span class="n">02</span> <span class="t">Voice</span></a></li><li><a href="#identity" data-loc="identity"><span class="n">03</span> <span class="t">Identity</span></a></li><li><a href="#ampersand" data-loc="ampersand"><span class="n">04</span> <span class="t">The Ampersand and the hinge</span></a></li><li><a href="#color" data-loc="color"><span class="n">05</span> <span class="t">Color</span></a></li><li><a href="#type" data-loc="type"><span class="n">06</span> <span class="t">Type</span></a></li><li><a href="#layout" data-loc="layout"><span class="n">07</span> <span class="t">Layout and spacing</span></a></li><li><a href="#signal-grid" data-loc="signal-grid"><span class="n">08</span> <span class="t">The Signal Grid</span></a></li></ul></li><li><a class="rail-partlink" href="#colophon" data-loc="colophon">Colophon</a></li></ul></nav>
+  <main id="main" tabindex="-1" data-view-root="overview">
+    <section class="cover" id="top" data-track="front" data-label="Cover">
+      <div class="cover-folio"><span>Brand Guide</span><span>Edition 06</span><span>November 6, 2026</span></div>
+      <div class="cover-mark" data-red="signature"><svg role="img" aria-label="Oath &amp; Action" focusable="false" class="cover-wm" width="978.31" height="108" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 978.31 108"><path fill="currentColor" d="M47.72 105.34Q34.23 105.34 23.39 99.37Q12.55 93.4 6.28 81.95Q0 70.51 0 54.07Q0 37.56 6.28 26.05Q12.55 14.54 23.39 8.6Q34.23 2.66 47.72 2.66Q61.14 2.66 71.95 8.6Q82.76 14.54 89.06 26.05Q95.37 37.56 95.37 54.07Q95.37 70.51 89.06 81.99Q82.76 93.46 71.95 99.4Q61.14 105.34 47.72 105.34ZM835.77 105.34Q822.28 105.34 811.44 99.37Q800.6 93.4 794.33 81.95Q788.05 70.51 788.05 54.07Q788.05 37.56 794.33 26.05Q800.6 14.54 811.44 8.6Q822.28 2.66 835.77 2.66Q849.19 2.66 860 8.6Q870.8 14.54 877.11 26.05Q883.42 37.56 883.42 54.07Q883.42 70.51 877.11 81.99Q870.8 93.46 860 99.4Q849.19 105.34 835.77 105.34ZM978.31 4V104H957.9L918.11 46.28H917.37V104H893.27V4H914.08L953.41 61.58H954.21V4ZM119.13 104H93.16L126.99 4H159.07L192.83 104H166.92L160.32 82.99H125.73ZM495.65 104H469.68L503.5 4H535.58L569.34 104H543.44L536.84 82.99H502.25ZM272.42 104V4H296.51V44.13H335.98V4H360.07V104H335.98V63.8H296.51V104ZM614.58 105.34Q601.02 105.34 590.32 99.37Q579.61 93.4 573.41 81.95Q567.2 70.51 567.2 54.07Q567.2 37.56 573.47 26.05Q579.75 14.54 590.52 8.6Q601.29 2.66 614.58 2.66Q623.64 2.66 631.36 5.17Q639.08 7.69 644.95 12.52Q650.82 17.36 654.45 24.34Q658.07 31.32 659.01 40.31H634.58Q634.11 36.55 632.6 33.5Q631.09 30.44 628.57 28.3Q626.06 26.15 622.7 24.97Q619.35 23.8 615.18 23.8Q607.94 23.8 602.7 27.39Q597.47 30.98 594.65 37.72Q591.83 44.47 591.83 54.07Q591.83 63.93 594.68 70.68Q597.53 77.42 602.73 80.81Q607.94 84.2 615.12 84.2Q619.08 84.2 622.37 83.16Q625.65 82.12 628.17 80.14Q630.69 78.16 632.33 75.31Q633.98 72.46 634.58 68.83H659.01Q658.34 75.48 655.18 81.99Q652.03 88.5 646.43 93.77Q640.82 99.03 632.84 102.19Q624.85 105.34 614.58 105.34ZM181.28 23.66V4H265.71V23.66H235.38V104H211.62V23.66ZM662.97 23.66V4H747.4V23.66H717.07V104H693.31V23.66ZM778.2 4V104H754.11V4ZM835.77 84.2Q842.95 84.2 848.12 80.71Q853.29 77.22 856.04 70.51Q858.79 63.8 858.79 54.07Q858.79 44.27 856.04 37.52Q853.29 30.78 848.12 27.29Q842.95 23.8 835.77 23.8Q828.59 23.8 823.42 27.29Q818.25 30.78 815.47 37.52Q812.68 44.27 812.68 54.07Q812.68 63.8 815.47 70.51Q818.25 77.22 823.42 80.71Q828.59 84.2 835.77 84.2ZM47.72 84.2Q54.9 84.2 60.07 80.71Q65.24 77.22 67.99 70.51Q70.74 63.8 70.74 54.07Q70.74 44.27 67.99 37.52Q65.24 30.78 60.07 27.29Q54.9 23.8 47.72 23.8Q40.54 23.8 35.37 27.29Q30.21 30.78 27.42 37.52Q24.63 44.27 24.63 54.07Q24.63 63.8 27.42 70.51Q30.21 77.22 35.37 80.71Q40.54 84.2 47.72 84.2ZM154.55 64.6 143.43 29.17H142.62L131.5 64.6ZM531.07 64.6 519.95 29.17H519.14L508.02 64.6Z"/><path fill="var(--amp,#E63946)" d="M409.54 2.66C395.83 2.66 384.4 12 384.4 27.43C384.4 37.43 388.4 45.71 396.69 53.71C385.26 60.86 369.4 69.43 369.4 80.29C369.4 94.86 385.83 105.34 404.97 105.34C417.54 105.34 427.54 102.29 436.11 96C441.26 101.43 447.83 104 455.83 104H462.69V92C456.97 91.71 451.4 87.71 448.54 80.29C450.83 74 453.54 67.14 453.54 58.57V48.57H434.11V58H438.4C439.69 58 440.4 59.43 440.4 62C440.4 63.74 440.44 64.71 440.48 65.55C440.53 66.92 440.58 67.92 440.4 71.29L419.54 54.14C425.83 46.43 433.26 40.29 433.26 27.14C433.26 12.86 422.69 2.66 409.54 2.66ZM426.69 89.86C420.97 91.86 416.97 92.49 410.4 92.49C400.11 92.49 391.11 87.43 391.11 77.43C391.11 71.14 396.26 66.86 402.83 63.71ZM408.11 15.23C413.26 15.23 415.54 19.43 415.54 24.86C415.54 32.57 413.83 41 410.4 47.29C405.54 41.57 401.97 30.57 401.97 24.29C401.97 19.14 403.83 15.23 408.11 15.23Z"/></svg></div>
+      <h1 class="cover-h1">Oath &amp; Action Brand Guide, Edition 06</h1>
+      <p class="tagline">A country that answers to its people.</p>
+      <p class="pillars" aria-label="The four pillars, in order: Explain, Track, Connect, Act"><span class="pillar">Explain</span> <span class="arr" aria-hidden="true">→</span> <span class="pillar">Track</span> <span class="arr" aria-hidden="true">→</span> <span class="pillar">Connect</span> <span class="arr" aria-hidden="true">→</span> <span class="pillar">Act</span></p>
+      <div class="cover-foot">
+        <p class="cover-stage">Stage board A draft, November 6, 2026. Chapters 01 to 08 of the Foundations part.</p>
+        <p class="cover-status">0 of 8 chapters delivered, 0 rules, 0 specimens placed. Placeholders hold the rest.</p>
+        <p class="cover-start"><a href="#contents">Open the contents</a></p>
+      </div>
+    </section>
+    <section class="contents" id="contents" data-track="front" data-label="Contents"><div class="ch-head"><h2 id="contents-h" class="front-title">Contents</h2><p class="instr">Jump to any chapter by its part or number.</p></div><div class="toc-parts"><div class="toc-part"><h3 class="toc-part-h"><a href="#part-foundations">Foundations</a></h3><ol class="toc-list"><li><a href="#purpose"><span class="n">01</span> <span class="t">Purpose</span></a><p>Learn what Oath &amp; Action does, and how its pillars and nonpartisan rules shape every piece.</p></li><li><a href="#voice"><span class="n">02</span> <span class="t">Voice</span></a><p>Write the way you&#x27;d explain a rule to a neighbor, and quote the brand lines exactly.</p></li><li><a href="#identity"><span class="n">03</span> <span class="t">Identity</span></a><p>Pick the lockup that fits the surface and size, and give it room on every side.</p></li><li><a href="#ampersand"><span class="n">04</span> <span class="t">The Ampersand and the hinge</span></a><p>Use the ampersand once per composition to join a commitment to what it produces.</p></li><li><a href="#color"><span class="n">05</span> <span class="t">Color</span></a><p>Choose a surface first, then the text and graphic colors that pass on it.</p></li><li><a href="#type"><span class="n">06</span> <span class="t">Type</span></a><p>Set every word at a readable size with the three faces and the type scale.</p></li><li><a href="#layout"><span class="n">07</span> <span class="t">Layout and spacing</span></a><p>Build each page on the column grid and spacing scale, readable at every width.</p></li><li><a href="#signal-grid"><span class="n">08</span> <span class="t">The Signal Grid</span></a><p>Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content.</p></li></ol></div><div class="toc-part toc-part--later"><h3 class="toc-part-h">Symbols and graphics</h3><span class="later-note">Later stages</span><ol class="toc-list"><li class="toc-later"><span class="toc-name"><span class="n">09</span> <span class="t">Pillar marks</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">10</span> <span class="t">Topic and atlas symbols</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">11</span> <span class="t">Status and utility icons</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">12</span> <span class="t">Graphic devices and patterns</span></span></li></ol></div><div class="toc-part toc-part--later"><h3 class="toc-part-h">Evidence and media</h3><span class="later-note">Later stages</span><ol class="toc-list"><li class="toc-later"><span class="toc-name"><span class="n">13</span> <span class="t">Evidence and sourcing</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">14</span> <span class="t">Data visualization</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">15</span> <span class="t">Systems graphics</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">16</span> <span class="t">Photography, illustration and video</span></span></li></ol></div><div class="toc-part toc-part--later"><h3 class="toc-part-h">Behavior</h3><span class="later-note">Later stages</span><ol class="toc-list"><li class="toc-later"><span class="toc-name"><span class="n">17</span> <span class="t">Motion and states</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">18</span> <span class="t">Components and interaction</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">19</span> <span class="t">Accessibility</span></span></li></ol></div><div class="toc-part toc-part--later"><h3 class="toc-part-h">Applications</h3><span class="later-note">Later stages</span><ol class="toc-list"><li class="toc-later"><span class="toc-name"><span class="n">20</span> <span class="t">Web</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">21</span> <span class="t">The atlas</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">22</span> <span class="t">Newsletter and email</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">23</span> <span class="t">Social and video</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">24</span> <span class="t">Reports</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">25</span> <span class="t">Print and presentation</span></span></li></ol></div><div class="toc-part toc-part--later"><h3 class="toc-part-h">Production</h3><span class="later-note">Later stages</span><ol class="toc-list"><li class="toc-later"><span class="toc-name"><span class="n">26</span> <span class="t">Tokens and how to choose them</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">27</span> <span class="t">Assets and downloads</span></span></li><li class="toc-later"><span class="toc-name"><span class="n">28</span> <span class="t">Standards checklist</span></span></li></ol></div></div></section>
+    <section class="part" id="part-foundations" data-track="part" data-part="foundations" data-label="Part: Foundations"><div class="part-inner oa-surface-charcoal"><h2 id="part-foundations-h" class="part-title"><span class="lbl">Part</span> Foundations</h2><p class="instr">The identity, its voice, color and type, the page grid and the Signal Grid.</p><ol class="part-list"><li><a href="#purpose"><span class="n">01</span> <span class="t">Purpose</span></a><p>Learn what Oath &amp; Action does, and how its pillars and nonpartisan rules shape every piece.</p></li><li><a href="#voice"><span class="n">02</span> <span class="t">Voice</span></a><p>Write the way you&#x27;d explain a rule to a neighbor, and quote the brand lines exactly.</p></li><li><a href="#identity"><span class="n">03</span> <span class="t">Identity</span></a><p>Pick the lockup that fits the surface and size, and give it room on every side.</p></li><li><a href="#ampersand"><span class="n">04</span> <span class="t">The Ampersand and the hinge</span></a><p>Use the ampersand once per composition to join a commitment to what it produces.</p></li><li><a href="#color"><span class="n">05</span> <span class="t">Color</span></a><p>Choose a surface first, then the text and graphic colors that pass on it.</p></li><li><a href="#type"><span class="n">06</span> <span class="t">Type</span></a><p>Set every word at a readable size with the three faces and the type scale.</p></li><li><a href="#layout"><span class="n">07</span> <span class="t">Layout and spacing</span></a><p>Build each page on the column grid and spacing scale, readable at every width.</p></li><li><a href="#signal-grid"><span class="n">08</span> <span class="t">The Signal Grid</span></a><p>Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content.</p></li></ol><p class="part-note">The pillar mark that marks this part arrives with stage board B (DR-88).</p></div></section><section class="chapter chapter--placeholder" id="purpose" data-track="chapter" data-part="foundations" data-label="01 Purpose" data-chapter="01"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 01 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="purpose-h"><span class="n">01</span> <span class="t">Purpose</span></h2><p class="instr">Learn what Oath &amp; Action does, and how its pillars and nonpartisan rules shape every piece.</p></div><div class="pending-note"><p class="label">In progress</p><p>The editor is writing this chapter. Its file will be <code>work/build/guide/chapters/01-purpose.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#voice" rel="next"><span class="chapnav-k">Next</span> <span class="n">02</span> Voice</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="voice" data-track="chapter" data-part="foundations" data-label="02 Voice" data-chapter="02"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 02 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="voice-h"><span class="n">02</span> <span class="t">Voice</span></h2><p class="instr">Write the way you&#x27;d explain a rule to a neighbor, and quote the brand lines exactly.</p></div><div class="pending-note"><p class="label">In progress</p><p>The editor is writing this chapter. Its file will be <code>work/build/guide/chapters/02-voice.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#purpose" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">01</span> Purpose</a><a href="#identity" rel="next"><span class="chapnav-k">Next</span> <span class="n">03</span> Identity</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="identity" data-track="chapter" data-part="foundations" data-label="03 Identity" data-chapter="03"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 03 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="identity-h"><span class="n">03</span> <span class="t">Identity</span></h2><p class="instr">Pick the lockup that fits the surface and size, and give it room on every side.</p></div><div class="pending-note"><p class="label">In progress</p><p>The identity designer is writing this chapter. Its file will be <code>work/build/guide/chapters/03-identity.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#voice" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">02</span> Voice</a><a href="#ampersand" rel="next"><span class="chapnav-k">Next</span> <span class="n">04</span> The Ampersand and the hinge</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="ampersand" data-track="chapter" data-part="foundations" data-label="04 The Ampersand and the hinge" data-chapter="04"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 04 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="ampersand-h"><span class="n">04</span> <span class="t">The Ampersand and the hinge</span></h2><p class="instr">Use the ampersand once per composition to join a commitment to what it produces.</p></div><div class="pending-note"><p class="label">In progress</p><p>The identity designer is writing this chapter. Its file will be <code>work/build/guide/chapters/04-ampersand.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#identity" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">03</span> Identity</a><a href="#color" rel="next"><span class="chapnav-k">Next</span> <span class="n">05</span> Color</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="color" data-track="chapter" data-part="foundations" data-label="05 Color" data-chapter="05"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 05 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="color-h"><span class="n">05</span> <span class="t">Color</span></h2><p class="instr">Choose a surface first, then the text and graphic colors that pass on it.</p></div><div class="pending-note"><p class="label">In progress</p><p>The systems designer is writing this chapter. Its file will be <code>work/build/guide/chapters/05-color.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#ampersand" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">04</span> The Ampersand and the hinge</a><a href="#type" rel="next"><span class="chapnav-k">Next</span> <span class="n">06</span> Type</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="type" data-track="chapter" data-part="foundations" data-label="06 Type" data-chapter="06"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 06 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="type-h"><span class="n">06</span> <span class="t">Type</span></h2><p class="instr">Set every word at a readable size with the three faces and the type scale.</p></div><div class="pending-note"><p class="label">In progress</p><p>The systems designer is writing this chapter. Its file will be <code>work/build/guide/chapters/06-type.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#color" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">05</span> Color</a><a href="#layout" rel="next"><span class="chapnav-k">Next</span> <span class="n">07</span> Layout and spacing</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="layout" data-track="chapter" data-part="foundations" data-label="07 Layout and spacing" data-chapter="07"><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 07 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="layout-h"><span class="n">07</span> <span class="t">Layout and spacing</span></h2><p class="instr">Build each page on the column grid and spacing scale, readable at every width.</p></div><div class="pending-note"><p class="label">In progress</p><p>The systems designer is writing this chapter. Its file will be <code>work/build/guide/chapters/07-layout.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#type" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">06</span> Type</a><a href="#signal-grid" rel="next"><span class="chapnav-k">Next</span> <span class="n">08</span> The Signal Grid</a><a class="to-contents" href="#contents">Back to contents</a></div></section><section class="chapter chapter--placeholder" id="signal-grid" data-track="chapter" data-part="foundations" data-label="08 The Signal Grid" data-chapter="08"><span id="grid" class="alias" aria-hidden="true"></span><div class="ch-head"><p class="loc-line"><a href="#part-foundations">Foundations</a> <span aria-hidden="true">·</span> Chapter 08 of 28</p><p class="return" hidden></p><h2 class="ch-title" id="signal-grid-h"><span class="n">08</span> <span class="t">The Signal Grid</span></h2><p class="instr">Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content.</p></div><div class="pending-note"><p class="label">In progress</p><p>The identity designer is writing this chapter. Its file will be <code>work/build/guide/chapters/08-signal-grid.json</code>; until it lands, this placeholder keeps the chapter&#8217;s anchor, number and contents entry.</p></div><div class="chapnav"><a href="#layout" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">07</span> Layout and spacing</a><a class="to-contents" href="#contents">Back to contents</a></div></section>
+    
+  </main>
+</div>
+<footer class="colophon oa-surface-charcoal" id="colophon">
+  <div class="colophon-inner">
+    <p class="colophon-k">Colophon</p>
+    <dl class="colophon-list">
+      <div><dt>Edition</dt><dd>Oath &amp; Action Brand Guide, Edition 06. Stage board A draft, November 6, 2026. Chapters 01 to 08 of the Foundations part.</dd></div>
+      <div><dt>Client</dt><dd>Dustin Cathcart, Founder and Editor, who approves every change.</dd></div>
+      <div><dt>Type</dt><dd>Inter Tight for display, Inter for reading and interface, Lora Italic for quoted lines. All three are published under the SIL Open Font License 1.1 and load from Google Fonts in this draft.</dd></div>
+      <div><dt>Tokens</dt><dd>Every color, size and space on this page comes from <code>work/build/tokens/tokens.css</code>, inlined when the page was built.</dd></div>
+      <div><dt>Built</dt><dd>November 6, 2026 at 19:39, by <code>work/build/scripts/phase-2/guide_build.py</code> from <code>work/build/guide/</code>. 0 of 8 chapters delivered, 0 rules, 0 specimens placed. Placeholders hold the rest.</dd></div>
+    </dl>
+    <p class="colophon-back"><a href="#contents">Back to contents</a></p>
+  </div>
+</footer>
+<dialog class="menu" id="menu" aria-labelledby="menu-h">
+  <div class="menu-inner">
+    <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close</button></div>
+    <p class="menu-where">You are in <strong id="menu-where-text">Cover</strong>.</p>
+    <div class="menu-scroll">
+      <nav aria-label="Guide contents"><ul><li><a href="#top" data-loc="top">Cover</a></li><li><a href="#contents" data-loc="contents">Contents</a></li><li><a class="menu-partlink" href="#part-foundations" data-loc="part-foundations">Foundations</a><ul><li><a href="#purpose" data-loc="purpose"><span class="n">01</span> <span class="t">Purpose</span></a></li><li><a href="#voice" data-loc="voice"><span class="n">02</span> <span class="t">Voice</span></a></li><li><a href="#identity" data-loc="identity"><span class="n">03</span> <span class="t">Identity</span></a></li><li><a href="#ampersand" data-loc="ampersand"><span class="n">04</span> <span class="t">The Ampersand and the hinge</span></a></li><li><a href="#color" data-loc="color"><span class="n">05</span> <span class="t">Color</span></a></li><li><a href="#type" data-loc="type"><span class="n">06</span> <span class="t">Type</span></a></li><li><a href="#layout" data-loc="layout"><span class="n">07</span> <span class="t">Layout and spacing</span></a></li><li><a href="#signal-grid" data-loc="signal-grid"><span class="n">08</span> <span class="t">The Signal Grid</span></a></li></ul></li><li><a class="menu-partlink" href="#colophon" data-loc="colophon">Colophon</a></li></ul></nav>
+    </div>
+  </div>
+</dialog>
+<script>
+// Oath & Action Brand Guide, Edition 06: the guide shell's script. guide_build.py inlines it at the end of the page.
+// Built from the Gate 1 wireframe's interaction model (work/boards/phase-1/navigation/wireframe.js):
+// marks the current part, chapter and rule; moves focus to the heading a link lands on; offers a way back after a
+// cross-reference; runs the phone menu as a modal dialog; makes a specimen frame a keyboard-scrollable region only when
+// its true-size specimen is wider than the screen; and drives the Copy buttons with a status line.
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  var header = $('.masthead');
+  var tracked = $$('[data-track]');
+  var where = $('#where');
+  var menuWhere = $('#menu-where-text');
+  var rail = $('.rail');
+  var menu = $('#menu');
+  var menuBtn = $('#menubtn');
+  var menuScroll = $('.menu-scroll');
+  var current = null, currentRule = null;
+  var pinnedUntil = 0;
+  var pendingReturn = null;
+  var navigatingFromMenu = false;
+
+  function keepInView(el, box) {
+    if (!el || !box) return;
+    var e = el.getBoundingClientRect(), b = box.getBoundingClientRect();
+    if (e.top < b.top + 8) box.scrollTop -= (b.top + 8 - e.top);
+    else if (e.bottom > b.bottom - 8) box.scrollTop += (e.bottom - b.bottom + 8);
+  }
+  function sectionFor(el) { return el && el.closest ? el.closest('[data-track]') : null; }
+
+  function setCurrent(sec) {
+    if (sec === current) return;
+    current = sec;
+    $$('[data-loc][aria-current]').forEach(function (a) { a.removeAttribute('aria-current'); });
+    $$('[data-part-link][aria-current]').forEach(function (a) { a.removeAttribute('aria-current'); });
+    var label = sec ? sec.getAttribute('data-label') : 'Cover';
+    if (where) where.textContent = label;
+    if (menuWhere) menuWhere.textContent = label;
+    if (!sec) return;
+    var loc = sec.id === 'proofs' ? ['proofs', 'proofs-item'] : [sec.id];
+    loc.forEach(function (id) { $$('[data-loc="' + id + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); }); });
+    var part = sec.getAttribute('data-part') || (sec.id === 'contents' ? 'contents' : null);
+    if (part) $$('[data-part-link="' + part + '"]').forEach(function (a) { a.setAttribute('aria-current', 'location'); });
+    keepInView($('.rail [data-loc="' + sec.id + '"]'), rail);
+  }
+
+  // The current rule inside a chapter is marked in that chapter's "In this chapter" list.
+  function setRule(chapter, line) {
+    var rules = chapter ? $$('.rule, .closer', chapter) : [];
+    var cur = null;
+    for (var i = 0; i < rules.length; i++) { if (rules[i].getBoundingClientRect().top <= line) cur = rules[i]; else break; }
+    if (cur === currentRule) return;
+    if (currentRule) $$('.local-toc a[aria-current]').forEach(function (a) { a.removeAttribute('aria-current'); });
+    currentRule = cur;
+    if (cur && chapter) { var a = $('.local-toc a[href="#' + cur.id + '"]', chapter); if (a) a.setAttribute('aria-current', 'true'); }
+  }
+
+  // The current section is the last one whose top has passed a line a quarter of the way down the window.
+  function compute() {
+    var line = header.getBoundingClientRect().bottom + window.innerHeight * 0.25;
+    var cur = null;
+    for (var i = 0; i < tracked.length; i++) { if (tracked[i].getBoundingClientRect().top <= line) cur = tracked[i]; else break; }
+    setRule(cur && cur.classList.contains('chapter') ? cur : null, line);
+    return cur;
+  }
+  var ticking = false, pinTimer = null;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      var wait = pinnedUntil - Date.now();
+      if (wait > 0) { clearTimeout(pinTimer); pinTimer = setTimeout(function () { setCurrent(compute()); }, wait + 20); return; }
+      setCurrent(compute());
+    });
+  }, { passive: true });
+
+  // Cross-references remember where the reader came from.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.xref');
+    if (!a) return;
+    var origin = a.closest('.rule[id], .closer[id], [data-track]');
+    var sec = sectionFor(a);
+    if (!origin || !sec) return;
+    var what = '';
+    if (!origin.matches('[data-track]')) {
+      var h = origin.querySelector('h3');
+      what = h ? h.textContent.replace(/\s+/g, ' ').trim().replace(/[.:]$/, '') : '';
+    }
+    pendingReturn = { id: origin.id, label: (what ? what + ', ' : '') + sec.getAttribute('data-label') };
+  });
+
+  function onHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    $$('.return').forEach(function (p) { p.hidden = true; p.textContent = ''; });
+    if (!id) { pendingReturn = null; return; }
+    var target = document.getElementById(id);
+    if (!target) { pendingReturn = null; return; }
+    // a V5 alias such as #grid stands at the top of its new chapter
+    var host = target.classList.contains('alias') ? target.parentElement : target;
+    var sec = sectionFor(host);
+    if (sec) { setCurrent(sec); pinnedUntil = Date.now() + 600; }
+    // Focus moves to the heading the link points at, so the next Tab continues from there.
+    var h = host.matches('h1, h2, h3') ? host : host.querySelector('h1, h2, h3');
+    if (host.id === 'main') h = host;
+    if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    if (pendingReturn && sec && pendingReturn.id !== id) {
+      var slot = $('.return', sec);
+      if (slot) {
+        var back = document.createElement('a');
+        back.href = '#' + pendingReturn.id;
+        back.textContent = 'Return to ' + pendingReturn.label;
+        slot.appendChild(back);
+        slot.hidden = false;
+      }
+    }
+    pendingReturn = null;
+  }
+  window.addEventListener('hashchange', onHash);
+
+  // Phone menu: a modal dialog with one navigation block, every part and chapter in it.
+  if (menu && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      menu.showModal();
+      menuBtn.setAttribute('aria-expanded', 'true');
+      var cur = $('a[aria-current]', menu);
+      if (cur) { keepInView(cur, menuScroll); cur.focus(); } else { $('#menuclose').focus(); }
+    });
+    $('#menuclose').addEventListener('click', function () { menu.close(); });
+    menu.addEventListener('close', function () {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      if (!navigatingFromMenu) menuBtn.focus();
+      navigatingFromMenu = false;
+    });
+    menu.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (a) {
+        e.preventDefault();
+        navigatingFromMenu = true;
+        menu.close();
+        var href = a.getAttribute('href');
+        if (location.hash === href) onHash(); else location.hash = href;
+        var t = document.getElementById(href.slice(1));
+        if (t && location.hash === href) t.scrollIntoView();
+      } else if (e.target === menu) {
+        menu.close();
+      }
+    });
+    window.addEventListener('resize', function () { if (menu.open && window.matchMedia('(min-width: 64em)').matches) menu.close(); });
+  }
+
+  // A frame whose true-size specimen or table is wider than the screen becomes a named, focusable region, so a
+  // keyboard can scroll it; a frame that fits stays out of the Tab order.
+  function frames() {
+    $$('[data-plate-scroll]').forEach(function (box) {
+      var wide = box.scrollWidth > box.clientWidth + 1;
+      var fig = box.closest('.plate');
+      if (fig) fig.classList.toggle('is-wide', wide);
+      if (wide) {
+        if (!box.hasAttribute('tabindex')) {
+          var stage = box.querySelector('[data-specimen]');
+          var cap = box.querySelector('caption');
+          var name = stage ? 'Specimen at true size, wider than the screen. Scroll sideways.' : (cap ? cap.textContent + '. Scroll sideways.' : 'Wide table. Scroll sideways.');
+          box.setAttribute('tabindex', '0');
+          box.setAttribute('role', 'region');
+          box.setAttribute('aria-label', name);
+        }
+        if (fig && !fig.querySelector('.plate-hint')) {
+          var hint = document.createElement('p');
+          hint.className = 'plate-hint';
+          hint.textContent = 'Shown at true size, wider than this screen. Scroll the frame sideways to see all of it.';
+          box.insertAdjacentElement('afterend', hint);
+        }
+      } else if (box.getAttribute('role') === 'region') {
+        box.removeAttribute('tabindex'); box.removeAttribute('role'); box.removeAttribute('aria-label');
+      }
+    });
+  }
+  var rt = null;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(frames, 120); });
+
+  // Copy buttons write their result to the status line beside them (a polite live region).
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button.copy');
+    if (!b) return;
+    var src = document.getElementById(b.getAttribute('data-copy-from'));
+    var value = src ? src.textContent : (b.getAttribute('data-copy') || '');
+    var scope = b.closest('.closer, .rule, section');
+    var st = scope ? $('[role="status"]', scope) : null;
+    var old = scope && $('.copy-fallback', scope);
+    if (old) old.remove();
+    var say = function (t, err) { if (!st) return; st.textContent = t; st.classList.toggle('is-error', !!err); };
+    var done = function () { say('Copied ' + value.split('\n').length + ' lines to the clipboard.'); };
+    var fail = function () {
+      say('The browser blocked copying. The text is selected below: press Control and C, or Command and C.', true);
+      var ta = document.createElement('textarea');
+      ta.className = 'copy-fallback'; ta.readOnly = true; ta.value = value; ta.rows = 6;
+      ta.setAttribute('aria-label', 'Text to copy');
+      st.insertAdjacentElement('afterend', ta);
+      ta.focus(); ta.select();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(value).then(done, fail); else fail();
+  });
+
+  function start() {
+    frames();
+    if (location.hash) onHash(); else setCurrent(compute());
+  }
+  start();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { current = null; start(); });
+})();
+
+</script>
+</body>
+</html>
