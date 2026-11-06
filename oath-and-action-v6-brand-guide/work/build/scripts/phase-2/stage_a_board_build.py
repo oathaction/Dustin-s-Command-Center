@@ -183,8 +183,8 @@ def lint(obj, name, skip=('url', 'placeholder', 'command')):
     for path, s in strings(obj):
         if path.split('.')[-1] in skip or re.search(r'changelog', path):
             continue
-        need('—' not in s, f'{name} {path}: an em dash (W21). Join the parts with a comma and a word, or end the sentence.')
-        if '–' in s or ' -- ' in s:
+        need('\u2014' not in s, f'{name} {path}: an em dash (W21). Join the parts with a comma and a word, or end the sentence.')
+        if '\u2013' in s or ' -- ' in s:
             warn(f'{name} {path}: an en dash or double hyphen; write "to" for a range')
         for w in FLAGGED:
             if re.search(rf'\b{w}\b', s, flags=re.I):
@@ -998,7 +998,7 @@ def main():
     page = render(rel)
     # the board's own words: no em dash anywhere, and the word check on everything it prints
     text = html.unescape(re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style)\b.*?</\1>', '', page, flags=re.S)))
-    need('—' not in text, 'em dash on the board')
+    need('\u2014' not in text, 'em dash on the board')
     flagged = sorted({w for w in FLAGGED if re.search(rf'\b{w}\b', text, flags=re.I)})
     BUILDER_CHECKS.append('The board prints no em dash' + (f', and the word check flags {", ".join(flagged)}.' if flagged else ' and none of the words the writing rules flag.'))
     page = render(rel)
