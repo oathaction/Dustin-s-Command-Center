@@ -6,7 +6,9 @@ Chromium with the W07 paragraph at 17 px Inter (stage_a_systems_capture.js).
 import sys
 
 C = sys.modules['stage_a_systems_core']
-W07 = sys.modules['stage_a_systems_ch06'].W07
+B = sys.modules['stage_a_systems_build']
+SAMPLE = sys.modules['stage_a_systems_ch06'].SAMPLE        # shown on the plates (D2-248)
+LONG = sys.modules['stage_a_systems_ch06'].long_sample()   # measured: 7,000 characters of chapter 02's prose
 
 BPS = [('wide', 1440), ('desktop', 1024), ('tablet', 768), ('phone', 390), ('phoneSmall', 360)]
 BNAME = {'wide': 'Wide', 'desktop': 'Desktop', 'tablet': 'Tablet', 'phone': 'Phone', 'phoneSmall': 'Small phone'}
@@ -37,9 +39,11 @@ def probes(ctx):
     for name, _ in BPS:
         g = grid(ctx, name)
         for n in candidates(g):
-            ctx.probe(f'cpl span {name} {n}', 'cpl', text=W07, css=f'font:var(--oa-type-body);width:{span_w(g, n):.2f}px')
+            ctx.probe(f'cpl span {name} {n}', 'cpl', text=LONG, css=f'font:var(--oa-type-body);width:{span_w(g, n):.2f}px')
     g = grid(ctx, 'wide')
-    ctx.probe('cpl 200 percent in five columns', 'cpl', text=W07,
+    ctx.probe('cpl 200 percent in five columns', 'cpl', text=LONG,
+              css=f'font:var(--oa-type-body);font-size:2.125rem;width:{span_w(g, 5):.2f}px')
+    ctx.probe('cpl 200 percent sample', 'cpl', text=SAMPLE,
               css=f'font:var(--oa-type-body);font-size:2.125rem;width:{span_w(g, 5):.2f}px')
 
 
@@ -78,13 +82,13 @@ def s_07_1(ctx):
             f'{card(ctx, ("var(--oa-space-300)", "var(--oa-space-100)", "var(--oa-space-200)"), ("24", "8", "16"))}</div>')
     ctx.spec('s-07-1-correct', html, '07', '07.1',
              'The spacing scale at true size: eleven bars from 4 px to 104 px, each with its token name and its value in px '
-             'and rem. Below it, a tracker card spaced on the scale, with 24 px padding, 8 px from label to heading and 16 px '
-             'from heading to text, each gap marked.', illustrative=True,
+             'and rem. Below it, an Illustrative tracker card spaced on the scale, with 24 px padding, 8 px from kicker to '
+             'heading and 16 px from heading to text, each gap marked.', illustrative=True,
              notes='Bar lengths are the space tokens themselves.')
     css2 = card_css(ctx)
     html2 = f'<style>{css2}</style>{card(ctx, ("22px", "13px", "37px"), ("22", "13", "37"))}'
     ctx.spec('s-07-1-failure', html2, '07', '07.1',
-             'The same tracker card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.',
+             'The same Illustrative tracker card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.',
              illustrative=True, width=420, notes='Off-scale gaps written in px on purpose.')
 
 
@@ -92,8 +96,9 @@ def card_css(ctx):
     v = ctx.v
     return (f'.cd{{position:relative;max-width:26rem;margin-top:32px;background:{v("oa.color.surface.white")};'
             f'box-shadow:inset 0 0 0 1px {v("oa.color.border.hairline.onNewsprint")}}}'
-            f'.ey{{margin:0;{ctx.ty("label")};color:{v("oa.color.text.secondary.onWhite")}}}'
-            f'.hd{{margin:0;{ctx.ty("h4")};text-wrap:balance}}.bt{{margin:0;{ctx.ty("body")}}}'
+            f'.ey{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;{ctx.ty("label")};color:{v("oa.color.text.secondary.onWhite")}}}'
+            f'.ey .illus{{margin:0}}'
+            f'.hd{{margin:0;{ctx.ty("h4", "floor")};text-wrap:balance}}.bt{{margin:0;{ctx.ty("body")}}}'
             f'.gp{{display:block;background:{v("oa.color.tint.verdigrisN82")}}}'
             f'.ky{{display:flex;gap:8px;align-items:baseline;max-width:26rem;margin:12px 0 0;{ctx.ty("caption")};color:{v("oa.color.text.secondary.onNewsprint")}}}'
             f'.kw{{flex:none;width:12px;height:12px;background:{v("oa.color.tint.verdigrisN82")};box-shadow:inset 0 0 0 1px {v("oa.color.border.strong.onNewsprint")}}}')
@@ -104,12 +109,12 @@ def card(ctx, gaps, labels):
     la, lb_, lc = labels
     # The gaps are drawn as tinted bands so the spacing shows; a key under the card names them.
     return (f'<div class="cd" style="padding:{pad}">'
-            f'<p class="ey">Track · City council</p>'
+            f'<p class="ey"><span>Tracker · City council</span>{B.ILLUS}</p>'
             f'<div class="gp" style="height:{a}"></div>'
             f'<p class="hd">Budget hearing moves to May 12</p>'
             f'<div class="gp" style="height:{b}"></div>'
             f'<p class="bt">The council will take public comment before it votes on the city budget the same night.</p></div>'
-            f'<p class="ky"><span class="kw"></span>Tinted bands mark the gaps: {lb_} px from label to heading and {lc} px '
+            f'<p class="ky"><span class="kw"></span>Tinted bands mark the gaps: {lb_} px from kicker to heading and {lc} px '
             f'from heading to text. The card’s padding is {la} px on every side.</p>')
 
 
@@ -165,13 +170,15 @@ def s_07_2(ctx):
     ctx.spec('s-07-2-correct', f'<style>{css}</style><ul>{"".join(items)}</ul>', '07', '07.2',
              'The five column grids drawn at one quarter of true size, each with its columns, gutters and margins: ' +
              '; '.join(f'{BNAME[n]} {w} px, {grid(ctx, n)["cols"]} columns of {grid(ctx, n)["col"]:.1f} px' for n, w in BPS) + '.',
-             width=376, notes='Drawn at one quarter of each width; column widths computed from the grid tokens.')
+             width=360, scale=0.25,
+             notes='Drawn at one quarter of each width, so the 1440 px grid takes 360 px; the labels under each drawing are '
+                   'at true size. Column widths computed from the grid tokens.')
     svg, g = grid_svg(ctx, 'wide', sections=[3, 5, 2])
     cssf = (f'.nm{{margin:8px 0 0;{ctx.ty("ui")}}}.sp{{margin:2px 0 0;{ctx.ty("caption")};color:{sec}}}')
     ctx.spec('s-07-2-failure', f'<style>{cssf}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
                                f'<p class="sp">Three sections on three, five and two columns</p>', '07', '07.2',
              'A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges '
-             'never line up.', width=376, notes='A diagram.')
+             'never line up.', width=360, scale=0.25, notes='A diagram at one quarter size.')
 
 
 def s_07_3(ctx):
@@ -187,47 +194,46 @@ def s_07_3(ctx):
         else:
             n, _, r = best
         picks[name] = (n, r, g)
-        rows.append(f'<tr><th scope="row">{BNAME[name]}, {w:g} px</th><td>{n} of {g["cols"]}</td>'
-                    f'<td>{span_w(g, n):.0f} px</td><td>{r["mean"]:.0f} ({r["min"]} to {r["max"]})</td></tr>')
+        rows.append(f'<tr><th scope="row">{BNAME[name]}, {w:g} px</th><td data-k="Body span">{n} of {g["cols"]}</td>'
+                    f'<td data-k="Span width">{span_w(g, n):.0f} px</td>'
+                    f'<td data-k="Characters a line">{r["mean"]:.0f} ({r["min"]} to {r["max"]})</td></tr>')
         ctx.fig(f'body span {name}', f'{n} of {g["cols"]} columns, {span_w(g, n):.1f} px, {r["mean"]:.1f} characters a line',
-                'W07 paragraph at 17 px Inter, Chromium, full lines only')
+                'chapter 02 prose at 17 px Inter, Chromium, full lines only')
+    # the correct application: the 1440 px grid at one quarter size, with the text span marked
     svg, g = grid_svg(ctx, 'wide', highlight=picks['wide'][0])
+    css = (f'.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}')
+    ctx.spec('s-07-3-correct', f'<style>{css}</style>{svg}<p class="nm">Wide, 1440 px, at one quarter size</p>'
+                               f'<p class="cp">Body text spans the first {picks["wide"][0]} of 12 columns, '
+                               f'{span_w(g, picks["wide"][0]):.0f} px at true size.</p>', '07', '07.3',
+             f'The 1440 px grid drawn at one quarter size, with body text spanning the first {picks["wide"][0]} of 12 columns, '
+             f'{span_w(g, picks["wide"][0]):.0f} px at true size.', width=360, scale=0.25,
+             notes='A diagram at one quarter size; the span is the one whose measured mean sits nearest 68 within 60 to 75.')
+    # the span at every width, as a readable table
     css = (f'table{{width:100%;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
            f'th,td{{text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")};vertical-align:baseline}}'
            f'thead th{{{ctx.ty("label")};border-bottom-color:{v("oa.color.border.strong.onNewsprint")}}}'
            f'tbody th{{font-weight:600}}td{{font-variant-numeric:tabular-nums}}'
-           f'.dg{{margin-top:24px}}.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}'
            f'@container (max-width:30rem){{thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}'
            f'table,tbody,tr,th,td{{display:block}}tr{{padding:8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
            f'th,td{{border:0;padding:0}}td::before{{content:attr(data-k) ": ";color:{sec}}}}}.wr{{container-type:inline-size}}')
-    trs = ''.join(r.replace('<td>', '<td data-k="{k}">', 4) for r in rows)
-    for k in ('Body span', 'Span width', 'Characters a line'):
-        trs = trs.replace('data-k="{k}"', f'data-k="{k}"', 1)
-    # give each cell its own label in order
-    out = []
-    for r in rows:
-        cells = r.split('<td>')
-        lab = ['Body span', 'Span width', 'Characters a line']
-        rr = cells[0] + ''.join(f'<td data-k="{lab[i]}">' + c for i, c in enumerate(cells[1:]))
-        out.append(rr)
     html = (f'<style>{css}</style><div class="wr"><table role="table"><thead><tr><th scope="col">Width</th><th scope="col">Body span</th>'
             f'<th scope="col">Span width</th><th scope="col">Characters a line, mean (range)</th></tr></thead>'
-            f'<tbody>{"".join(out)}</tbody></table>'
-            f'<div class="dg">{svg}<p class="cp">At 1440 px, drawn at one quarter size: the body text spans the first '
-            f'{picks["wide"][0]} of 12 columns.</p></div></div>')
-    ctx.spec('s-07-3-correct', html, '07', '07.3',
+            f'<tbody>{"".join(rows)}</tbody></table></div>')
+    ctx.spec('s-07-spans', html, '07', None,
              'A table of each width’s body span: ' + '; '.join(
                  f'{BNAME[n]} {w} px, {picks[n][0]} of {picks[n][2]["cols"]} columns, {span_w(picks[n][2], picks[n][0]):.0f} px, '
-                 f'{picks[n][1]["mean"]:.0f} characters a line' for n, w in BPS) +
-             '. Below it, the 1440 px grid at one quarter size with the text span marked.', interactive=True,
-             notes='Each span picked as the one whose measured mean sits nearest 68 within 60 to 75; phones take all four columns.')
+                 f'{picks[n][1]["mean"]:.0f} characters a line' for n, w in BPS) + '.', readable=True,
+             notes='A readable table (D2-255). Each span picked as the one whose measured mean sits nearest 68 within 60 to '
+                   '75; phones take all four columns. Measured with 7,000 characters of chapter 02’s prose.')
     full = ctx.R.get('cpl span wide 12') or {'mean': 0, 'min': 0, 'max': 0}
     svgf, _ = grid_svg(ctx, 'wide', text_band=12)
-    cssf = f'.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}'
-    ctx.spec('s-07-3-failure', f'<style>{cssf}</style>{svgf}<p class="cp">Wide, 1440 px, at one quarter size: the paragraph '
-                               f'spans all 12 columns, {full["mean"]:.0f} characters a line.</p>', '07', '07.3',
+    cssf = f'.cp{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}.nm{{margin:8px 0 0;{ctx.ty("ui")}}}'
+    ctx.spec('s-07-3-failure', f'<style>{cssf}</style>{svgf}<p class="nm">Wide, 1440 px, at one quarter size</p>'
+                               f'<p class="cp">The paragraph spans all 12 columns, {full["mean"]:.0f} characters a line.</p>',
+             '07', '07.3',
              f'The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at '
-             f'{full["mean"]:.0f} characters a line.', width=376, notes='Measured with the W07 paragraph at 17 px across 1,312 px.')
+             f'{full["mean"]:.0f} characters a line.', width=360, scale=0.25,
+             notes='A diagram at one quarter size, measured with chapter 02’s prose at 17 px across 1,312 px.')
     return picks, full
 
 
@@ -242,7 +248,7 @@ def s_07_4(ctx):
                f'.bt{{margin:0;{ctx.ty("body")}}}.hd{{margin:0;{ctx.ty("h4")};text-wrap:balance}}'
                f'.gp{{display:flex;align-items:center;justify-content:flex-end;padding-right:6px;background:{v("oa.color.tint.verdigrisN82")};'
                f'color:{v("oa.color.text.primary.onNewsprint")};{ctx.ty("dataLabel")};line-height:1}}')
-        html = (f'<style>{css}</style><div class="sl">'
+        html = (f'<style>{css}.il{{margin:0 0 16px}}</style><div class="sl"><p class="il">{B.ILLUS}</p>'
                 f'<p class="bt">The council takes public comment before each budget vote, and anyone who signs up can speak '
                 f'for three minutes.</p>'
                 f'<div class="gp" style="height:{above}">{a_px} px</div>'
@@ -252,8 +258,8 @@ def s_07_4(ctx):
                 f'<div class="gp" style="height:var(--oa-space-200)">16 px</div>'
                 f'<p class="bt">The clerk calls speakers in the order they signed up.</p></div>')
         ctx.spec(sid, html, '07', '07.4',
-                 f'A short section with the heading How to sign up, its gaps drawn as bands: {a_px} px above the heading, '
-                 f'{b_px} px below it and 16 px between paragraphs.', illustrative=True,
+                 f'A short Illustrative section with the heading How to sign up, its gaps drawn as bands: {a_px} px above '
+                 f'the heading, {b_px} px below it and 16 px between paragraphs.', illustrative=True,
                  notes='Gap bands are part of the specimen.')
 
 
@@ -294,17 +300,21 @@ def s_07_5(ctx):
     ctx.spec('s-07-5-correct', html, '07', '07.5',
              'A table of the layout a reader gets by window width and text size: ' + '; '.join(
                  f'{w} px at ' + ', '.join(f'{p} percent {BNAME[layout_for(w, p)].lower()}' for p in pcts) for w in widths) + '.',
-             interactive=True, notes='Worked out from the em breakpoints; text percent is the browser’s text size setting.')
+             readable=True, notes='A readable table (D2-255). Worked out from the em breakpoints; text percent is the '
+                                  'browser’s text size setting.')
     r = ctx.R.get('cpl 200 percent in five columns') or {'mean': 0, 'min': 0, 'max': 0}
+    rs = ctx.R.get('cpl 200 percent sample') or {'mean': 0, 'min': 0, 'max': 0}
     g = grid(ctx, 'wide')
     css2 = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}'
             f'.b{{margin:0;width:{span_w(g, 5):.2f}px;font-family:var(--oa-font-family-reading);font-size:2.125rem;line-height:1.6}}')
     ctx.spec('s-07-5-failure', f'<style>{css2}</style><p class="k">Five of 12 columns at 1440 px, text at 200 percent</p>'
-                               f'<p class="b">{W07}</p>', '07', '07.5',
-             f'The W07 paragraph at 34 px squeezed into five columns, {span_w(g, 5):.0f} px wide, as a page with breakpoints in '
-             f'px would set it for a reader at 200 percent text: about {r["mean"]:.0f} characters a line.',
-             width=round(span_w(g, 5)), notes='The span a wide layout gives body text, at doubled size.')
-    return r
+                               f'<p class="b">{SAMPLE}</p>', '07', '07.5',
+             f'The opening paragraph of chapter 02 at 34 px squeezed into five columns, {span_w(g, 5):.0f} px wide, as a '
+             f'page with breakpoints in px would set it for a reader at 200 percent text: about {rs["mean"]:.0f} characters '
+             f'a line.', width=round(span_w(g, 5)), exempt=['scale'],
+             notes='The span a wide layout gives body text, at doubled size. Exempt from the scale check: 34 px is the body '
+                   'size doubled, off the scale on purpose in a labeled failure.')
+    return r, rs
 
 
 def stack_table(ctx, cut=False):

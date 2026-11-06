@@ -65,7 +65,7 @@ PART_ANCHOR_ALIAS = {"applications": "in-use"}
 
 CHAPTERS = [
     ("01", "purpose", "Purpose", "foundations", "Learn what Oath & Action does, and how its pillars and nonpartisan rules shape every piece."),
-    ("02", "voice", "Voice", "foundations", "Write the way you'd explain a rule to a neighbor, and quote the brand lines exactly."),
+    ("02", "voice", "Voice", "foundations", "Write the way you’d explain a rule to a neighbor, and quote the brand lines exactly."),
     ("03", "identity", "Identity", "foundations", "Pick the lockup that fits the surface and size, and give it room on every side."),
     ("04", "ampersand", "The Ampersand and the hinge", "foundations", "Use the ampersand once per composition to join a commitment to what it produces."),
     ("05", "color", "Color", "foundations", "Choose a surface first, then the text and graphic colors that pass on it."),
@@ -187,14 +187,26 @@ def css_value(flat, tok):
     if isinstance(v, (int, float)) and not isinstance(v, bool):
         return f"{v:g}"
     if t == "typography" and isinstance(v, dict):
-        # shown, not used as CSS: "Inter 400, 1.0625rem/1.6"
+        # shown, not used as CSS (RP-S5): "Inter Tight 800, 56 to 110 px, line height 0.95, tracking −3%".
+        # The CSS, clamp() included, is in the chapter's For builders block.
         fam = resolve(flat, v.get("fontFamily"))
         fam = fam[0] if isinstance(fam, list) and fam else fam
         wt = resolve(flat, v.get("fontWeight"))
-        size = resolve(flat, v.get("fontSize"))
-        size = f"{size['value']:g}{size['unit']}" if isinstance(size, dict) and "value" in size else size
+        ext = (tok.get("$extensions") or {}).get("org.oathandaction", {})
+
+        def px_of(d):
+            return d["value"] * (16 if d.get("unit") == "rem" else 1) if isinstance(d, dict) and "value" in d else None
+        hi = px_of(resolve(flat, v.get("fontSize")))
+        lo = px_of(ext.get("minFontSize")) or hi
+        size = (f"{lo:g} to {hi:g} px" if lo is not None and hi is not None and abs(lo - hi) > 1e-6 else f"{hi:g} px") if hi else "?"
+        bits = [f"{fam} {wt}", size]
         lh = resolve(flat, v.get("lineHeight"))
-        return f"{fam} {wt}, {size}/{lh:g}" if isinstance(lh, (int, float)) else f"{fam} {wt}, {size}"
+        if isinstance(lh, (int, float)):
+            bits.append(f"line height {lh:g}")
+        tr = ext.get("trackingEm")
+        if isinstance(tr, (int, float)) and tr:
+            bits.append(f"tracking {'+' if tr > 0 else '\u2212'}{abs(tr) * 100:g}%")
+        return ", ".join(bits)
     return None
 
 
@@ -246,14 +258,25 @@ class Tokens:
 # ---------------------------------------------------------------------------------------------------------------
 ALLOWED_INLINE = re.compile(
     r"&lt;(/?)(em|strong|code|abbr|q|cite|br|sup|sub|span|a)((?:\s+(?:href|title|class|lang)=&quot;[^&]*?&quot;)*)\s*/?&gt;")
+CODE_SPAN = re.compile(r"&lt;code&gt;(.*?)&lt;/code&gt;", re.S)
 
 
 def inline(text, ctx=None):
     """Escape a JSON string, keep <em> <strong> <code> <abbr> <q> <cite> <sup> <sub> <br> <span class> <a href>,
-    and link each "Rule NN.n" and "chapter NN" mention that the page holds."""
+    and link each "Rule NN.n" and "chapter NN" mention that the page holds.
+
+    Entities are decoded once before escaping (RP-M4), so "&amp;" and "&" both print as "&", and "&amp;minus;" prints
+    as "&minus;". Inside <code>, everything prints as written, tags included, and nothing is linked."""
     if text is None:
         return ""
-    s = e(str(text), quote=True)
+    s = e(html.unescape(str(text)), quote=True)
+    codes = []
+
+    def stash(m):
+        codes.append(m.group(1))
+        return f"\x00{len(codes) - 1}\x00"
+
+    s = CODE_SPAN.sub(stash, s)
 
     def keep(m):
         close, tag, attrs = m.group(1), m.group(2), m.group(3) or ""
@@ -278,7 +301,18 @@ def inline(text, ctx=None):
     s = ALLOWED_INLINE.sub(keep, s)
     if ctx is not None:
         s = autolink(s, ctx)
-    return s
+    return re.sub("\x00(\\d+)\x00", lambda m: f"<code>{codes[int(m.group(1))]}</code>", s)
+
+
+def plain(text):
+    """A plain string for an attribute or a text node: entities decoded once, then escaped once."""
+    return e(html.unescape(str(text or "")), quote=True)
+
+
+def break_code(name, sep="-"):
+    """A token name or path that may break only between its segments, never mid-segment (C-S5)."""
+    parts = e(str(name)).split(sep)
+    return (sep + "<wbr>").join(parts) if len(parts) > 1 else parts[0]
 
 
 def autolink(s, ctx):
@@ -446,7 +480,8 @@ def inline_assets(s, sid, where):
         sty = re.search(r'\sstyle="([^"]*)"', tag)
         w = re.search(r'\swidth="([\d.]+)"', tag)
         h = re.search(r'\sheight="([\d.]+)"', tag)
-        svg = svg_inline(p, label=alt.group(1) if alt and alt.group(1) else None, cls=cls.group(1) if cls else None,
+        # the attribute is HTML source, so decode it once before svg_inline escapes it (AX-M2)
+        svg = svg_inline(p, label=html.unescape(alt.group(1)) if alt and alt.group(1) else None, cls=cls.group(1) if cls else None,
                          width=float(w.group(1)) if w else None, height=float(h.group(1)) if h else None,
                          style=sty.group(1) if sty else None)
         dr = re.search(r'\sdata-red="([^"]*)"', tag)
@@ -504,47 +539,101 @@ def scope_styles(s, sid):
 
 PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure case", "×"),
                "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None)}
+EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale")
+SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
+               2: "Twice true size"}
 
 
-def plate(kind, spec_id, caption, specs, ctx, where, label=None):
+def num(n):
+    """1440 -> '1,440'; 0.5 -> '0.5'."""
+    return f"{n:,g}" if isinstance(n, (int, float)) and not isinstance(n, bool) else str(n)
+
+
+def scale_words(sc):
+    for k, v in SCALE_WORDS.items():
+        if abs(sc - k) < 1e-6:
+            return v
+    if abs(sc - 1 / 3) < 0.002:
+        return "One third size"
+    return f"{sc * 100:.0f} percent of true size"
+
+
+def first_words(text, n=8):
+    w = re.sub(r"\s+", " ", str(text or "")).strip().split(" ")
+    return " ".join(w[:n]).rstrip(",.;:") + ("…" if len(w) > n else "")
+
+
+def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None):
     """One specimen in its frame. The frame, its label, size line and caption belong to the shell; the fragment is the
-    maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen"."""
+    maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen".
+
+    Manifest keys the shell reads (shell notes, section 0): width_px, height_px, surface, alt, illustrative, readable,
+    interactive, scale, fit_switch, check_exempt."""
     meta = specs.meta(spec_id) if spec_id else {}
     frag = specs.fragment(spec_id, where) if spec_id else None
     lab, glyph = PLATE_LABEL.get(kind, (None, None))
-    lab = label or lab
+    lab = html.unescape(str(label or lab or "")) or None
     width = meta.get("width_px")
     height = meta.get("height_px")
-    alt = str(meta.get("alt", "")).strip()
+    alt = html.unescape(str(meta.get("alt", ""))).strip()
     illustrative = bool(meta.get("illustrative"))
     interactive = bool(meta.get("interactive"))
-    exempt = [x for x in (meta.get("check_exempt") or []) if x in ("contrast", "size", "red", "locked")]
-    if kind != "failure" and set(exempt) - {"size"}:
-        R.warn(where, f"{spec_id}: check_exempt {exempt}: contrast and red exemptions are for failure cases only")
+    readable = bool(meta.get("readable")) and not interactive
+    fit = bool(meta.get("fit_switch"))
+    sc = meta.get("scale")
+    if sc is not None and not (isinstance(sc, (int, float)) and not isinstance(sc, bool) and sc > 0):
+        R.warn(where, f"{spec_id}: scale {sc!r} is not a positive number; ignored")
+        sc = None
+    if sc is not None and abs(sc - 1) < 1e-9:
+        sc = None
+    exempt = [x for x in as_list(meta.get("check_exempt")) if x in EXEMPT_KINDS]
+    unknown = [x for x in as_list(meta.get("check_exempt")) if x not in EXEMPT_KINDS]
+    if unknown:
+        R.warn(where, f"{spec_id}: check_exempt {unknown} not known; the shell reads {', '.join(EXEMPT_KINDS)}")
+    if kind != "failure" and set(exempt) & {"contrast", "red", "locked"}:
+        R.warn(where, f"{spec_id}: check_exempt {exempt}: contrast, red and locked exemptions are for failure cases only")
     if "size" in exempt and kind != "failure" and not re.search(r"true size|minimum size|actual size", str(caption or ""), re.I):
         R.warn(where, f"{spec_id}: exempt from the 13 px floor, so its caption must say it shows a mark or a minimum size at true size")
+    if "scale" in exempt:
+        notes = str(meta.get("notes") or "").strip()
+        if not notes:
+            R.warn(where, f"{spec_id}: check_exempt \"scale\" needs its reason in notes (D2-254)")
+        elif kind != "failure" and not re.search(r"print|points|\bpt\b|historic|record|fifth edition|fourth edition|edition 05|edition 04|V5|V4", notes, re.I):
+            R.warn(where, f"{spec_id}: check_exempt \"scale\" is for a labeled failure, a historical record or a print piece; notes give none of these")
+    if fit and not isinstance(width, (int, float)):
+        R.warn(where, f"{spec_id}: fit_switch needs width_px")
+        fit = False
     surface = meta.get("surface")
+    rule_bit = f", Rule {rule_id}" if rule_id else ""
+    frame_name = (lab or first_words(alt, 6) or "Specimen") + rule_bit
     head = []
     if lab:
         g = f'<span class="plate-glyph" aria-hidden="true">{glyph}</span>' if glyph else ""
         head.append(f'<p class="plate-label">{g}{e(lab)}</p>')
     size_bits = []
     if width:
-        size_bits.append(f"{width:g} px wide" if isinstance(width, (int, float)) else f"{e(str(width))} wide")
+        size_bits.append(f"{num(width)} px wide" if isinstance(width, (int, float)) else f"{e(str(width))} wide")
     if height and isinstance(height, (int, float)):
-        size_bits.append(f"{height:g} px high")
-    if size_bits:
-        head.append(f'<p class="plate-size">True size, {", ".join(size_bits)}</p>')
+        size_bits.append(f"{num(height)} px high")
+    if sc is not None:
+        head.append(f'<p class="plate-size">{e(scale_words(sc))}</p>')
+    elif size_bits:
+        head.append(f'<p class="plate-size" data-true="True size, {", ".join(size_bits)}">True size, {", ".join(size_bits)}</p>')
+    if fit:
+        head.append('<div class="fit-switch" role="group" aria-label="Size of this specimen">'
+                    '<button type="button" class="fit-btn" data-fit="true" aria-pressed="true">True size</button>'
+                    '<button type="button" class="fit-btn" data-fit="fit" aria-pressed="false">Fit to window</button></div>')
+    head.append('<p class="plate-hint" hidden>Wider than this screen. Scroll the frame sideways to see all of it.</p>')
     surf = str(surface or "newsprint").lower()
     if surf not in ("newsprint", "white", "charcoal", "prussian"):
         R.warn(where, f"{spec_id}: surface {surface!r} is not newsprint, white, charcoal or prussian")
         surf = "newsprint"
     stage_attrs = [f'class="plate-stage oa-surface-{surf}"', f'data-specimen="{e(spec_id or "pending")}"', 'data-red="specimen"']
-    style = []
     if isinstance(width, (int, float)):
-        style.append(f"--w:{width:g}px")
-    if style:
-        stage_attrs.append(f'style="{";".join(style)}"')
+        stage_attrs.append(f'style="--w:{width:g}px"')
+        stage_attrs.append(f'data-width="{width:g}"')
+    if sc is not None:
+        stage_attrs.append(f'data-scale="{sc:g}"')
     if exempt:
         stage_attrs.append(f'data-check-exempt="{" ".join(exempt)}"')
     stage_attrs.append(f'data-surface="{surf}"')
@@ -552,21 +641,25 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None):
     if frag is None:
         body = (f'<p class="plate-pending">Specimen <code>{e(spec_id or "(none named)")}</code> is not in '
                 f'<code>work/build/guide/specimens/</code> yet.</p>')
-        stage_attrs[2] = 'data-red="specimen"'
         stage_attrs.append('data-pending="true"')
     else:
         body = frag
-        if interactive:
+        if interactive or readable:
+            # D2-255, AX-S2: a group named by the plate, described once by the alt. The alt paragraph is hidden from
+            # assistive technology, so it is heard only as the group's description.
             aid = f"{spec_id}--alt"
-            alt_html = f'<p class="vh" id="{aid}">{e(alt)}</p>' if alt else ""
+            alt_html = f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p>' if alt else ""
             stage_attrs.append('role="group"')
+            stage_attrs.append(f'aria-label="{e(frame_name)}, {"interactive specimen" if interactive else "specimen"}"')
             if alt:
                 stage_attrs.append(f'aria-describedby="{aid}"')
-            if lab:
-                stage_attrs.append(f'aria-label="{e(lab)}, interactive specimen"')
+            stage_attrs.append(f'data-mode="{"interactive" if interactive else "readable"}"')
         else:
             stage_attrs.append('role="img"')
             stage_attrs.append(f'aria-label="{e(alt) if alt else e(lab or "Specimen")}"')
+    stage = f'<div {" ".join(stage_attrs)}>{body}</div>'
+    if fit:
+        stage = f'<div class="plate-fit">{stage}</div>'
     cap = ""
     cap_text = inline(caption, ctx) if caption else ""
     if illustrative and not re.search(r"\bIllustrative\b", str(caption or "")):
@@ -576,9 +669,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None):
     elif kind in ("correct", "failure", "corrective"):
         R.warn(where, f"{spec_id}: the {kind} specimen has no caption")
     fid = f' id="fig-{e(spec_id)}"' if spec_id else ""
-    return (f'<figure class="plate plate--{kind}"{fid}>'
-            + (f'<div class="plate-head">{"".join(head)}</div>' if head else "")
-            + f'<div class="plate-scroll" data-plate-scroll>{alt_html}<div {" ".join(stage_attrs)}>{body}</div></div>'
+    return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}>'
+            + f'<div class="plate-head">{"".join(head)}</div>'
+            + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}">{alt_html}{stage}</div>'
             + cap + "</figure>")
 
 
@@ -586,9 +679,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None):
 # Template blocks
 # ---------------------------------------------------------------------------------------------------------------
 def hinge(amp_svg):
-    """The hinge divider: a hairline broken by ampersand B in the surface's ink (D1-22, D1-26), set between a rule and
-    its correct use (Gate 1 proposal item 4). Decorative, so hidden from assistive technology."""
-    return f'<div class="hinge" aria-hidden="true"><span class="hinge-line hinge-line--a"></span>{amp_svg}<span class="hinge-line hinge-line--b"></span></div>'
+    """The hinge divider (DR-96): ampersand B's 24 px master at 24 px, centered on a 1 px line as wide as the text block
+    it divides, with 12 px of clear line on each side of B, in the surface's ink (D1-22, D1-26). It sits between a
+    rule and its correct use (Gate 1 proposal item 4). Decorative, so hidden from assistive technology."""
+    return f'<div class="hinge" aria-hidden="true"><span class="hinge-line"></span>{amp_svg}<span class="hinge-line"></span></div>'
 
 
 def token_chip(tok, tokens, where):
@@ -601,7 +695,7 @@ def token_chip(tok, tokens, where):
         red = ' data-red="swatch"' if val.upper() == "#E63946" else ""
         sw = f'<span class="tok-sw" style="background:var({name})"{red} aria-hidden="true"></span>'
     shown = f'<span class="tok-val">{e(val)}</span>' if val else ""
-    return f'<li class="tok"><code class="tok-name">{e(name)}</code>{sw}{shown}</li>'
+    return f'<li class="tok"><code class="tok-name">{break_code(name)}</code>{sw}{shown}</li>'
 
 
 def basis_tag(basis):
@@ -609,7 +703,7 @@ def basis_tag(basis):
     if not b:
         return ""
     cls = "basis basis--judgment" if b.lower().startswith("design judgment") else "basis"
-    return f'<p class="{cls}"><span class="basis-k">Basis</span> {e(b)}</p>'
+    return f'<p class="{cls}"><span class="basis-k">Basis</span> {plain(b)}</p>'
 
 
 def related_inline(nums, ctx, where):
@@ -623,7 +717,7 @@ def related_inline(nums, ctx, where):
         if n in ctx["present"]:
             items.append(f'<li><a class="xref" href="#{cid}"><span class="n">{n}</span> {e(cname)}</a></li>')
         else:
-            items.append(f'<li><span class="later"><span class="n">{n}</span> {e(cname)}</span> <span class="later-note">later stage</span></li>')
+            items.append(f'<li><span class="later"><span class="n">{n}</span> {e(cname)}</span> <span class="later-note">Coming later</span></li>')
     return f'<ul class="rel-inline">{"".join(items)}</ul>' if items else ""
 
 
@@ -637,8 +731,8 @@ def specs_list(specs_rows, tokens, where):
         if tok:
             if not tokens.known(tok):
                 R.warn(where, f"spec token {tok} is not in the token file")
-            tok_html = f'<dd class="spec-tok"><code>{e(css_name(tok))}</code></dd>'
-        rows.append(f'<div class="spec-row"><dt>{inline(s.get("label"))}</dt><dd class="spec-val">{inline(s.get("value"))}</dd>{tok_html}</div>')
+            tok_html = f'<dd class="spec-tok"><code>{break_code(css_name(tok))}</code></dd>'
+        rows.append(f'<div class="spec-row{" spec-row--tok" if tok else ""}"><dt>{inline(s.get("label"))}</dt><dd class="spec-val">{inline(s.get("value"))}</dd>{tok_html}</div>')
     return f'<dl class="spec-list">{"".join(rows)}</dl>' if rows else ""
 
 
@@ -650,7 +744,7 @@ def files_list(files, where):
         p = ROOT / f
         if not p.exists():
             R.warn(where, f"file {f} does not exist in the repository")
-        items.append(f"<li><code>{e(f)}</code></li>")
+        items.append(f"<li><code>{break_code(f, '/')}</code></li>")
     return f'<p class="label">Files</p><ul class="file-list">{"".join(items)}</ul>'
 
 
@@ -693,7 +787,10 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
         why = {"text": why}
     out = [f'<div class="rule" id="{anchor}" data-rule="{e(rid)}">']
     demo_tag = '<p class="demo-tag">Template demonstration. Not chapter content.</p>' if demo else ""
+    # C-M4: the Rule ID is one line tall, "Rule" hung above the number, so every title sits the same distance above
+    # its text whatever its length.
     out.append(f'<h3 class="rule-h"><span class="rid"><span class="rid-w">Rule</span> <span class="rid-n">{e(rid)}</span></span> <span class="rt">{inline(title)}</span></h3>')
+    out.append('<p class="return" hidden></p>')
     out.append('<div class="rule-body">' + demo_tag)
     out.append(paras(r.get("rule"), ctx, "rule-text"))
     if r.get("tokens"):
@@ -708,21 +805,33 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     for kind in ("correct", "failure", "corrective"):
         blk = r.get(kind)
         if blk:
-            out.append(plate(kind, blk.get("specimen"), blk.get("caption"), specs, ctx, where))
+            out.append(plate(kind, blk.get("specimen"), blk.get("caption"), specs, ctx, where, rule_id=rid))
+    # C-S5: the specifications run across the whole text column as one table, and Related chapters and For builders
+    # share one row under it.
     foot = []
     sl = specs_list(r.get("specs"), tokens, where)
     fl = files_list(r.get("files"), where)
     if sl or fl:
         foot.append(f'<div class="foot-block foot-specs"><p class="label">Specifications</p>{sl}{fl}</div>')
+    pair = []
     rel = related_inline(r.get("related"), ctx, where)
     if rel:
-        foot.append(f'<div class="foot-block foot-related"><p class="label">Related chapters</p>{rel}</div>')
+        pair.append(f'<div class="foot-block foot-related"><p class="label">Related chapters</p>{rel}</div>')
     if r.get("builders"):
-        foot.append(f'<div class="foot-block foot-builders"><p class="label">For builders</p>{paras(r.get("builders"), ctx)}</div>')
+        pair.append(f'<div class="foot-block foot-builders"><p class="label">For builders</p>{paras(r.get("builders"), ctx)}</div>')
+    if pair:
+        foot.append(f'<div class="foot-pair">{"".join(pair)}</div>')
     if foot:
         out.append(f'<div class="rule-foot">{"".join(foot)}</div>')
     out.append("</div>")
     return "".join(out), anchor, title
+
+
+APPENDIX_TITLE = "Wordmark width proofs"
+APPENDIX_LINE = ("Compare each piece at both wordmark widths, side by side at actual size. Dustin Cathcart, our founder and "
+                 "editor, chooses one width; until he does, every piece uses today’s width.")
+FILES_NOTE = "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here."   # D2-252
+LATER = "Coming later"   # CP-S3
 
 
 def chapnav(i, order, ctx):
@@ -731,13 +840,106 @@ def chapnav(i, order, ctx):
     next_ = nums[i + 1] if i < len(nums) - 1 else None
     out = ['<div class="chapnav">']
     if prev_:
-        out.append(f'<a href="#{CHAPTER[prev_][1]}" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">{prev_}</span> {e(CHAPTER[prev_][2])}</a>')
+        out.append(f'<a href="#{CHAPTER[prev_][1]}" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">{prev_}</span> {e(ctx["names"].get(prev_, CHAPTER[prev_][2]))}</a>')
     if next_:
-        out.append(f'<a href="#{CHAPTER[next_][1]}" rel="next"><span class="chapnav-k">Next</span> <span class="n">{next_}</span> {e(CHAPTER[next_][2])}</a>')
+        out.append(f'<a href="#{CHAPTER[next_][1]}" rel="next"><span class="chapnav-k">Next</span> <span class="n">{next_}</span> {e(ctx["names"].get(next_, CHAPTER[next_][2]))}</a>')
     elif ctx.get("has_proofs"):
-        out.append('<a href="#proofs" rel="next"><span class="chapnav-k">Next</span> Proofs for Gate 2</a>')
+        out.append(f'<a href="#proofs" rel="next"><span class="chapnav-k">Next</span> Appendix: {e(ctx.get("appendix_title", APPENDIX_TITLE))}</a>')
     out.append('<a class="to-contents" href="#contents">Back to contents</a></div>')
     return "".join(out)
+
+
+class TokenCSS:
+    """tokens.css read as data, so each chapter's For builders block copies exactly what tokens.css holds (RP-M3)."""
+
+    def __init__(self, text):
+        self.text = text or ""
+        self.decl = {}
+        root = re.search(r":root\s*\{(.*?)\n\}", self.text, re.S)
+        if root:
+            for m in re.finditer(r"(--oa-[a-z0-9-]+)\s*:\s*([^;]+);", root.group(1)):
+                self.decl[m.group(1)] = m.group(2).strip()
+        self.surfaces = []
+        for m in re.finditer(r"(\.oa-surface-[a-z]+)\s*\{(.*?)\n\}", self.text, re.S):
+            body = re.sub(r"/\*.*?\*/", "", m.group(2), flags=re.S)
+            self.surfaces.append((m.group(1), [x.strip() for x in body.splitlines() if x.strip()]))
+        rm = re.search(r"@media \(prefers-reduced-motion: reduce\)\s*\{\s*:root\s*\{(.*?)\}", self.text, re.S)
+        self.reduced = re.findall(r"(--oa-[a-z0-9-]+)\s*:\s*([^;]+);", rm.group(1)) if rm else []
+
+    def closure(self, names):
+        have, todo = set(), list(names)
+        while todo:
+            n = todo.pop()
+            if n in have or n not in self.decl:
+                continue
+            have.add(n)
+            todo += re.findall(r"var\((--oa-[a-z0-9-]+)", self.decl[n])
+        return [n for n in self.decl if n in have]   # in tokens.css order
+
+    def block(self, names, num):
+        deps = set(names)
+        for _, decls in self.surfaces:
+            for d in decls:
+                deps.update(re.findall(r"var\((--oa-[a-z0-9-]+)", d))
+        order = self.closure(deps)
+        lines = ["/* tokens.css is the full source of these values: download it from this page and link it before your own styles.",
+                 f"   This block copies, as tokens.css holds them, the custom properties chapter {num} names, every property they",
+                 "   depend on and the four surface classes, so it also works on its own. Set a page's ground with a surface",
+                 "   class, as in <body class=\"oa-surface-newsprint\">, and set type with font: var(--oa-type-body). */",
+                 ":root {"]
+        lines += [f"  {n}: {self.decl[n]};" for n in order] + ["}"]
+        for sel, decls in self.surfaces:
+            lines += ["", sel + " {"] + ["  " + d for d in decls] + ["}"]
+        keep = set(order)
+        red = [(n, v.strip()) for n, v in self.reduced if n in keep]
+        if red:
+            lines += ["", "@media (prefers-reduced-motion: reduce) {", "  :root {"] + [f"    {n}: {v};" for n, v in red] + ["  }", "}"]
+        return "\n".join(lines), len(order)
+
+
+def chapter_groups(data, rules, num, where):
+    """Validate the chapter's "groups" (shell notes, section 0). Returns the groups in rule order, keyed by the rule
+    each opens, and each rule's group."""
+    raw = (data or {}).get("groups")
+    if not raw:
+        return [], {}
+    if not isinstance(raw, list):
+        R.warn(where, '"groups" is not a list; it is ignored')
+        return [], {}
+    ids = [str(r.get("id")) for r in rules if isinstance(r, dict)]
+    found = []
+    for g in raw:
+        if not isinstance(g, dict):
+            R.warn(where, f"a group is not an object: {str(g)[:60]!r}")
+            continue
+        br = str(g.get("before_rule") or "")
+        if br not in ids:
+            R.warn(where, f"group {g.get('number')!r} opens before rule {br or '(none)'}, which this chapter does not have")
+            continue
+        if any(str(x["before_rule"]) == br for x in found):
+            R.warn(where, f"two groups open before rule {br}; the first wins")
+            continue
+        if not str(g.get("title") or "").strip():
+            R.warn(where, f"group {g.get('number')!r} has no title")
+        if not str(g.get("line") or "").strip():
+            R.warn(where, f"group {g.get('number')!r} has no line")
+        found.append(g)
+    found.sort(key=lambda g: ids.index(str(g["before_rule"])))
+    if found and str(found[0]["before_rule"]) != ids[0]:
+        R.warn(where, f"the first group opens before rule {found[0]['before_rule']}, so the rules ahead of it sit outside any group")
+    nums = [g.get("number") for g in found]
+    if nums != list(range(1, len(found) + 1)):
+        R.warn(where, f"group numbers run {nums}; write 1, 2, 3 in rule order")
+    member, cur = {}, None
+    starts = {str(g["before_rule"]): g for g in found}
+    for rid in ids:
+        cur = starts.get(rid, cur)
+        member[rid] = cur
+    return found, member
+
+
+def group_id(num, g):
+    return f"group-{num}-{g.get('number')}"
 
 
 def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=False):
@@ -756,12 +958,13 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     alias = f'<span id="{ALIASES[cid]}" class="alias" aria-hidden="true"></span>' if cid in ALIASES else ""
     loc = (f'<p class="loc-line"><a href="#part-{part}">{e(PART_NAME[part])}</a> <span aria-hidden="true">·</span> '
            f'Chapter {num} of 28</p>')
-    head = (f'<div class="ch-head">{loc}<p class="return" hidden></p>'
-            f'<h2 class="ch-title" id="{cid}-h"><span class="n">{num}</span> <span class="t">{e(cname)}</span></h2>'
-            f'<p class="instr">{inline(line)}</p>')
-    out = [f'<section class="chapter{" chapter--placeholder" if placeholder else ""}" id="{cid}" data-track="chapter" '
-           f'data-part="{part}" data-label="{num} {e(cname)}" data-chapter="{num}">{alias}']
-    rules = (data or {}).get("rules") or []
+    head = (f'<div class="ch-head">{loc}'
+            f'<h2 class="ch-title" id="{cid}-h"><span class="n">{num}</span> <span class="t">{plain(cname)}</span></h2>'
+            f'<p class="return" hidden></p><p class="instr">{inline(line)}</p>')
+    rules = [r for r in ((data or {}).get("rules") or []) if isinstance(r, dict)]
+    groups, member = chapter_groups(data, rules, num, where) if not placeholder else ([], {})
+    out = [f'<section class="chapter{" chapter--placeholder" if placeholder else ""}{" chapter--grouped" if groups else ""}" id="{cid}" data-track="chapter" '
+           f'data-part="{part}" data-label="{num} {plain(cname)}" data-chapter="{num}">{alias}']
     if placeholder:
         out.append(head + "</div>")
         out.append(f'<div class="pending-note"><p class="label">In progress</p><p>The {OWNER.get(num, "maker")} is writing this chapter. '
@@ -771,14 +974,14 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         if not demo:
             out.append(chapnav(idx, order, ctx) + "</section>")
             return "".join(out)
+        rules = [r for r in ((data or {}).get("rules") or []) if isinstance(r, dict)]
+        intro_html = ""
     else:
-        out.append(head + paras(data.get("intro"), dict(ctx, self_chapter=num), "intro") + "</div>")
+        intro_html = paras(data.get("intro"), dict(ctx, self_chapter=num), "intro")
         if len(data.get("intro") or []) > 2:
             R.warn(where, "intro has more than two paragraphs (content contract: at most two short paragraphs)")
     cctx = dict(ctx, self_chapter=num)
-    # local contents: rules, then the three closers
     seen = set()
-    rendered = []
     extras = (data or {}).get("extras") or []
     extras_by = {}
     for x in extras:
@@ -795,15 +998,21 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label")))
     toc = []
     all_tokens, all_files, rule_related = [], [], []
+    starts = {str(g["before_rule"]): g for g in groups}
     for r in rules:
-        if not isinstance(r, dict):
-            R.warn(where, f"a rule entry is not an object: {str(r)[:60]!r}")
-            continue
         r = normalize_rule(r)
         rid = str(r.get("id"))
         if rid in seen:
             R.warn(where, f"rule id {rid} appears twice")
         seen.add(rid)
+        g = starts.get(rid)
+        if g:
+            gid = group_id(num, g)
+            body.append(f'<div class="rule-group" id="{gid}" data-group="{e(str(g.get("number")))}">'
+                        f'<p class="rg-head"><span class="rg-n"><span class="rg-w">Group</span> {e(str(g.get("number")))}</span> '
+                        f'<span class="rg-t">{inline(g.get("title"))}</span></p><p class="return" hidden></p>'
+                        f'{paras(g.get("line"), cctx, "rg-line")}</div>')
+            toc.append((gid, "group", f'{g.get("number")} {g.get("title")}'))
         h, anchor, title = render_rule(num, r, specs, tokens, cctx, amp_svg, demo=demo)
         body.append(h)
         toc.append((anchor, f"Rule {rid}", title))
@@ -811,20 +1020,22 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label")))
         for t in r.get("tokens") or []:
             all_tokens.append((t, rid))
-        for s in r.get("specs") or []:
-            if isinstance(s, dict) and s.get("token"):
-                all_tokens.append((s["token"], rid))
+        for sp in r.get("specs") or []:
+            if isinstance(sp, dict) and sp.get("token"):
+                all_tokens.append((sp["token"], rid))
         for f in r.get("files") or []:
             all_files.append((f, rid))
         for n in r.get("related") or []:
             rule_related.append((str(n).zfill(2), rid))
     if not placeholder and not rules:
         R.warn(where, "the chapter has no rules")
+    after = []   # the closers, for the rule index
     # sources
     srcs = (data or {}).get("sources") or []
     if srcs:
         body.append('<div class="sources" id="%s-sources"><p class="label">Sources</p><ol class="src-list">%s</ol></div>'
-                    % (cid, "".join(f"<li>{inline(s, cctx)}</li>" for s in srcs)))
+                    % (cid, "".join(f"<li>{inline(x, cctx)}</li>" for x in srcs)))
+        after.append((f"{cid}-sources", "Sources"))
     # closers
     closers = []
     # Specifications: one index of every token and file the chapter's rules name
@@ -835,20 +1046,22 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         rows = []
         for name, d in tok_rows.items():
             val = tokens.value(d["tok"])
-            rules_cell = ", ".join(f'<a class="xref" href="#rule-{x.replace(".", "-")}">{x}</a>' for x in dict.fromkeys(d["rules"]))
-            rows.append(f'<tr><th scope="row"><code>{e(name)}</code></th><td>{e(val) if val else ""}</td><td>{rules_cell}</td></tr>')
+            rules_cell = ", ".join(f'<a class="xref" href="#rule-{x.replace(".", "-")}">Rule {x}</a>' for x in dict.fromkeys(d["rules"]))
+            rows.append(f'<tr><th scope="row"><code>{break_code(name)}</code></th><td data-k="Value">{e(val) if val else ""}</td>'
+                        f'<td data-k="Rules">{rules_cell}</td></tr>')
         table = ""
         if rows:
-            table = ('<div class="table-wrap" data-plate-scroll><table class="tok-table"><caption>Tokens named in this chapter, with the rules that use them</caption>'
+            table = (f'<div class="table-wrap" data-plate-scroll data-frame-name="Tokens named in chapter {num}"><table class="tok-table"><caption>Tokens named in this chapter, with the rules that use them</caption>'
                      '<thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Rules</th></tr></thead>'
                      f'<tbody>{"".join(rows)}</tbody></table></div>')
         flist = ""
         if all_files:
             uniq = list(dict.fromkeys(f for f, _ in all_files))
-            flist = '<p class="label">Files</p><ul class="file-list">' + "".join(f"<li><code>{e(f)}</code></li>" for f in uniq) + "</ul>"
-        closers.append(f'<div class="closer" id="{cid}-specs"><h3>Specifications</h3>{table}{flist}'
-                       '<p class="closer-note">Download buttons for these files arrive with the asset package in Phase 5.</p></div>')
+            flist = ('<p class="label">Files</p><ul class="file-list">' + "".join(f"<li><code>{break_code(f, '/')}</code></li>" for f in uniq) + "</ul>"
+                     f'<p class="closer-note">{e(FILES_NOTE)}</p>')
+        closers.append(f'<div class="closer" id="{cid}-specs"><h3>Specifications</h3><p class="return" hidden></p>{table}{flist}</div>')
         toc.append((f"{cid}-specs", None, "Specifications"))
+        after.append((f"{cid}-specs", "Specifications"))
     # Related chapters: the map's list with reasons, then any further chapter a rule cites
     rel = [(n, reason) for n, reason in ((d.get("chapter"), d.get("reason")) for d in (data or {}).get("related_chapters", []))] \
         if (data or {}).get("related_chapters") else list(RELATED_DEFAULT.get(num, []))
@@ -865,58 +1078,95 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
                 R.warn(where, f"related_chapters names {n}, which is not a chapter")
                 continue
             _, rcid, rname, _, _ = CHAPTER[n]
+            rname = ctx["names"].get(n, rname)
             if n in ctx["present"]:
                 items.append(f'<li><a class="xref" href="#{rcid}"><span class="n">{n}</span> {e(rname)}</a><span class="rel-why">{inline(reason)}</span></li>')
             else:
                 items.append(f'<li><span class="later"><span class="n">{n}</span> {e(rname)}</span><span class="rel-why">{inline(reason)} '
-                             f'<span class="later-note">In a later stage.</span></span></li>')
-        closers.append(f'<div class="closer" id="{cid}-related"><h3>Related chapters</h3><ul class="related">{"".join(items)}</ul></div>')
+                             f'<span class="later-note">{LATER}.</span></span></li>')
+        closers.append(f'<div class="closer" id="{cid}-related"><h3>Related chapters</h3><p class="return" hidden></p><ul class="related">{"".join(items)}</ul></div>')
         toc.append((f"{cid}-related", None, "Related chapters"))
-    # For builders: the chapter's custom properties, ready to copy
+        after.append((f"{cid}-related", "Related chapters"))
+    # For builders: working CSS for the chapter's custom properties, and tokens.css itself (RP-M3)
     if tok_rows:
-        css_lines = []
-        for name, d in tok_rows.items():
-            val = tokens.value(d["tok"])
-            tk = tokens.by_css.get(name)
-            is_type = tk and tokens.flat[tk].get("$type") == "typography"
-            css_lines.append(f"  /* {name}: {val} */" if is_type else (f"  {name}: {val};" if val else f"  /* {name} */"))
-        block = ":root {\n" + "\n".join(css_lines) + "\n}"
-        closers.append(f'<div class="closer" id="{cid}-builders"><h3>For builders</h3>'
-                       '<p>Every custom property this chapter names, with the value tokens.css gives it. Read the rule&#8217;s own note '
-                       'before you pick one: the surface comes first, then the role.</p>'
-                       f'<pre class="code" id="{cid}-css" role="region" tabindex="0" aria-label="Custom properties for chapter {num}, scrolls sideways when wide"><code>{e(block)}</code></pre>'
-                       f'<p><button type="button" class="btn copy" data-copy-from="{cid}-css">Copy the custom properties</button></p>'
-                       f'<p class="status" role="status" id="{cid}-copy-status">Nothing copied yet.</p></div>')
+        if tokens.final:
+            block, n_props = tokens.tcss.block(list(tok_rows), num)
+            intro_p = (f"<p>tokens.css is the full source for every token in this guide. Link it before your own styles, or copy "
+                       f"this chapter&#8217;s block, which holds the {n_props} custom properties it needs, with the type parts and "
+                       f"their clamps, and the four surface classes.</p>")
+            dl = (f'<a class="btn" href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>')
+        else:
+            css_lines = []
+            for name, d in tok_rows.items():
+                val = tokens.value(d["tok"])
+                css_lines.append(f"  {name}: {val};" if val else f"  /* {name} */")
+            block = "/* Provisional: tokens.css was not there when this page was built. */\n:root {\n" + "\n".join(css_lines) + "\n}"
+            intro_p = "<p>Every custom property this chapter names. tokens.css replaces this block when it lands.</p>"
+            dl = ""
+        closers.append(f'<div class="closer" id="{cid}-builders"><h3>For builders</h3><p class="return" hidden></p>{intro_p}'
+                       f'<p class="btn-row">{dl}<button type="button" class="btn btn--quiet copy" data-copy-from="{cid}-css">Copy this chapter&#8217;s CSS</button></p>'
+                       f'<p class="status" role="status" id="{cid}-copy-status">Nothing copied yet.</p>'
+                       f'<pre class="code" id="{cid}-css" data-plate-scroll data-frame-name="CSS for chapter {num}"><code>{e(block)}</code></pre></div>')
         toc.append((f"{cid}-builders", None, "For builders"))
+        after.append((f"{cid}-builders", "For builders"))
+    # The rule index, after the intro, in a chapter with groups (C-S11, CP-S1)
+    index_html = ""
+    if groups:
+        lis, cur = [], None
+        loose = [t for t in toc if t[1] and t[1].startswith("Rule ") and member.get(t[1][5:]) is None]
+        if loose:
+            lis.append('<li class="ri-group"><ul class="ri-rules">' + "".join(
+                f'<li><a href="#{a}"><span class="toc-rid">{e(l[5:])}</span> {inline(t)}</a></li>' for a, l, t in loose) + "</ul></li>")
+        for g in groups:
+            gid = group_id(num, g)
+            mine = [t for t in toc if t[1] and t[1].startswith("Rule ") and member.get(t[1][5:]) is g]
+            lis.append(f'<li class="ri-group"><a class="ri-g" href="#{gid}"><span class="rg-n">{e(str(g.get("number")))}</span> '
+                       f'<span class="t">{inline(g.get("title"))}</span></a><ul class="ri-rules">'
+                       + "".join(f'<li><a href="#{a}"><span class="toc-rid">{e(l[5:])}</span> {inline(t)}</a></li>' for a, l, t in mine)
+                       + "</ul></li>")
+        tail = ""
+        if after:
+            tail = ('<p class="ri-after"><span class="ri-after-k">After the rules</span> '
+                    + ", ".join(f'<a href="#{a}">{e(t)}</a>' for a, t in after) + "</p>")
+        index_html = (f'<div class="rule-index"><p class="label" id="{cid}-index-t">Rules in this chapter, by group</p>'
+                      f'<ol class="ri-groups" aria-labelledby="{cid}-index-t">{"".join(lis)}</ol>{tail}</div>')
+    if not placeholder:
+        out.append(head + intro_html + index_html + "</div>")
     if toc:
-        items = "".join(
-            f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>" for a, lbl, t in toc)
+        items = []
+        for a, lbl, t in toc:
+            if lbl == "group":
+                items.append(f'<li class="toc-group"><a href="#{a}">{inline(t)}</a></li>')
+            else:
+                items.append(f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>")
         out.append(f'<div class="local-toc"><p class="local-toc-title" id="{cid}-toc-t">In this chapter</p>'
-                   f'<ul aria-labelledby="{cid}-toc-t">{items}</ul></div>')
+                   f'<ul aria-labelledby="{cid}-toc-t">{"".join(items)}</ul></div>')
     out.append('<div class="ch-body">' + "".join(body) + "".join(closers) + "</div>")
     out.append(chapnav(idx, order, ctx) + "</section>")
     return "".join(out)
 
 
-def contents_section(present, has_proofs):
+def contents_section(present, has_proofs, ctx):
     out = ['<section class="contents" id="contents" data-track="front" data-label="Contents"><div class="ch-head">',
-           '<h2 id="contents-h" class="front-title">Contents</h2>', f'<p class="instr">{e(FRONT_CONTENTS)}</p></div>',
+           '<h2 id="contents-h" class="front-title">Contents</h2><p class="return" hidden></p>', f'<p class="instr">{e(FRONT_CONTENTS)}</p></div>',
            '<div class="toc-parts">']
     for slug, name, desc in PARTS:
         chs = [c for c in CHAPTERS if c[3] == slug]
         built = any(c[0] in present for c in chs)
-        head = f'<a href="#part-{slug}">{e(name)}</a>' if built else e(name)
-        status = "" if built else '<span class="later-note">Later stages</span>'
+        # C-S16: a link and plain text take the same box, so the part labels line up
+        head = f'<a class="toc-part-k" href="#part-{slug}">{e(name)}</a>' if built else f'<span class="toc-part-k">{e(name)}</span>'
+        status = "" if built else f'<span class="later-note">{LATER}</span>'
         out.append(f'<div class="toc-part{"" if built else " toc-part--later"}"><h3 class="toc-part-h">{head}</h3>{status}<ol class="toc-list">')
         for num, cid, cname, _, line in chs:
             if num in present:
-                out.append(f'<li><a href="#{cid}"><span class="n">{num}</span> <span class="t">{e(cname)}</span></a><p>{e(line)}</p></li>')
+                out.append(f'<li><a href="#{cid}"><span class="n">{num}</span> <span class="t">{e(ctx["names"].get(num, cname))}</span></a>'
+                           f'<p>{inline(ctx["lines"].get(num, line))}</p></li>')   # C-S9: the chapter file's own line
             else:
                 out.append(f'<li class="toc-later"><span class="toc-name"><span class="n">{num}</span> <span class="t">{e(cname)}</span></span></li>')
         out.append("</ol></div>")
     if has_proofs:
-        out.append('<div class="toc-part"><h3 class="toc-part-h"><a href="#proofs">Appendix</a></h3><ol class="toc-list toc-list--plain">'
-                   '<li><a href="#proofs"><span class="t">Proofs for Gate 2</span></a><p>The masthead, avatar, social card and letterhead at both wordmark widths, side by side at actual size.</p></li></ol></div>')
+        out.append(f'<div class="toc-part"><h3 class="toc-part-h"><a class="toc-part-k" href="#proofs">Appendix</a></h3><ol class="toc-list toc-list--plain">'
+                   f'<li><a href="#proofs"><span class="t">{e(ctx.get("appendix_title", APPENDIX_TITLE))}</span></a><p>The masthead, avatar, social card and letterhead at both wordmark widths, side by side at actual size.</p></li></ol></div>')
     out.append("</div></section>")
     return "".join(out)
 
@@ -928,16 +1178,16 @@ def part_section(slug, name, desc, present, ctx):
         if cpart != slug:
             continue
         if num in present:
-            items.append(f'<li><a href="#{cid}"><span class="n">{num}</span> <span class="t">{e(cname)}</span></a><p>{e(ctx["lines"].get(num, line))}</p></li>')
+            items.append(f'<li><a href="#{cid}"><span class="n">{num}</span> <span class="t">{e(ctx["names"].get(num, cname))}</span></a>'
+                         f'<p>{inline(ctx["lines"].get(num, line))}</p></li>')
     return (f'<section class="part" id="part-{slug}" data-track="part" data-part="{slug}" data-label="Part: {e(name)}">{alias}'
             f'<div class="part-inner oa-surface-charcoal"><h2 id="part-{slug}-h" class="part-title"><span class="lbl">Part</span> {e(name)}</h2>'
-            f'<p class="instr">{e(desc)}</p><ol class="part-list">{"".join(items)}</ol>'
-            '<p class="part-note">The pillar mark that marks this part arrives with stage board B (DR-88).</p></div></section>')
+            f'<p class="return" hidden></p><p class="instr">{e(desc)}</p><ol class="part-list">{"".join(items)}</ol></div></section>')
 
 
 def proofs_section(chap_dir, specs, ctx):
-    ids = [s for s in specs.manifest if s.startswith("s-proofs-")]
-    ids += [s for s in specs.files if s.startswith("s-proofs-") and s not in ids]
+    ids = [x for x in specs.manifest if x.startswith("s-proofs-")]
+    ids += [x for x in specs.files if x.startswith("s-proofs-") and x not in ids]
     pj = chap_dir / "proofs.json"
     conf = {}
     if pj.exists():
@@ -947,20 +1197,22 @@ def proofs_section(chap_dir, specs, ctx):
             R.warn("proofs.json", f"does not parse: {ex}")
     if not ids and not conf:
         return "", False
-    out = ['<section class="appendix" id="proofs" data-track="appendix" data-part="appendix" data-label="Proofs for Gate 2">',
-           '<div class="ch-head"><p class="loc-line">Appendix <span aria-hidden="true">·</span> After chapter 08</p><p class="return" hidden></p>',
-           f'<h2 id="proofs-h" class="ch-title ch-title--appendix">{e(conf.get("title", "Proofs for Gate 2"))}</h2>',
-           f'<p class="instr">{inline(conf.get("instruction", "Compare each piece at both wordmark widths, side by side at actual size, before you choose at Gate 2."), ctx)}</p>',
+    title = conf.get("title") or APPENDIX_TITLE
+    ctx["appendix_title"] = title
+    out = [f'<section class="appendix" id="proofs" data-track="appendix" data-part="appendix" data-label="Appendix: {plain(title)}">',
+           '<div class="ch-head"><p class="loc-line">Appendix <span aria-hidden="true">·</span> After chapter 08</p>',
+           f'<h2 id="proofs-h" class="ch-title ch-title--appendix">{plain(title)}</h2><p class="return" hidden></p>',
+           f'<p class="instr">{inline(conf.get("instruction") or APPENDIX_LINE, ctx)}</p>',
            paras(conf.get("intro"), ctx, "intro"), "</div><div class=\"ch-body\">"]
     groups = conf.get("groups")
     if not groups:
-        items = conf.get("items") or [{"specimen": s} for s in ids]
+        items = conf.get("items") or [{"specimen": x} for x in ids]
         groups = [{"label": None, "items": items}]
     placed = set()
     for g in groups:
         if g.get("label"):
-            gid = "proofs-" + re.sub(r"[^a-z0-9]+", "-", g["label"].lower()).strip("-")
-            out.append(f'<div class="proof-group" id="{gid}"><h3 class="proof-h">{inline(g["label"])}</h3>{paras(g.get("text"), ctx)}')
+            gid = "proofs-" + re.sub(r"[^a-z0-9]+", "-", html.unescape(g["label"]).lower()).strip("-")
+            out.append(f'<div class="proof-group" id="{gid}"><h3 class="proof-h">{inline(g["label"])}</h3><p class="return" hidden></p>{paras(g.get("text"), ctx)}')
         else:
             out.append('<div class="proof-group">')
         pair = g.get("pair") or len(g.get("items") or []) == 2
@@ -975,7 +1227,7 @@ def proofs_section(chap_dir, specs, ctx):
     for sid in ids:
         if sid not in placed:
             R.warn("proofs", f"{sid} is in a manifest but not in proofs.json, so it is not shown")
-    out.append('<div class="chapnav"><a href="#signal-grid" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">08</span> The Signal Grid</a>'
+    out.append(f'<div class="chapnav"><a href="#signal-grid" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">08</span> {e(ctx["names"].get("08", CHAPTER["08"][2]))}</a>'
                '<a class="to-contents" href="#contents">Back to contents</a></div></div></section>')
     return "".join(out), True
 

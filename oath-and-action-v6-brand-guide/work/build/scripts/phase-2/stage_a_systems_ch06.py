@@ -8,12 +8,18 @@ import re
 import sys
 
 C = sys.modules['stage_a_systems_core']
+B = sys.modules['stage_a_systems_build']
 
-# Real Oath & Action copy. W07's rewrite in chapter 02 (an interactive version of our systems atlas, rewritten):
-W07 = ('The pressure on officials to serve the whole electorate depends on a real chance of losing. In most districts the '
-       'general election is easy to predict, so the contest that decides the seat is a low-turnout primary. Incumbents '
-       'also help write the rules for their own races, from district maps to voting procedures.')
+# Sample text for measures (D2-248): real Oath & Action copy whose terms are all plain, the first paragraph of chapter
+# 02's writing section (approved on Board 5). It quotes the tagline and W02's rewrite word for word.
+SAMPLE = ('Our tagline is “A country that answers to its people.” People can hold an office to account once they know which '
+          'office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board '
+          'approves your rate.”')
+TAGLINE = 'A country that answers to its people.'
+DRAFT_H3 = -0.03      # the H3 tracking in the first build of this guide, before DR-95
+V5_TRACK = -0.045     # our fifth edition's tracking at every heading size
 HEAD = 'Who decides what happens next?'            # our fifth edition's type chapter, its H2 sample line
+PLATE_HEAD = 'Tighten tracking only as headings grow.'   # Rule 06.4's own title, set at the H3 ceiling
 BAL = 'What a primary decides, and who may vote in it'   # our fifth edition's balanced-heading sample
 COMMIT = 'Clarity is our duty. Action is our promise.'   # locked editorial commitment (Master Brief section 3)
 W02 = 'A regulator or a board approves your rate.'       # chapter 02, W02's rewrite of an Atlas V7 everyday answer
@@ -21,7 +27,7 @@ W02 = 'A regulator or a board approves your rate.'       # chapter 02, W02's rew
 STYLES = [
     ('title', 'Title', 'Edition 06'),
     ('section', 'Section', '05 Color'),
-    ('h3', 'H3', 'Text sits only on color pairs that pass.'),
+    ('h3', 'H3', 'Set text only on color pairs that pass.'),
     ('h4', 'H4', HEAD),
     ('quote', 'Quote', f'“{COMMIT}”'),
     ('intro', 'Intro', 'Choose a surface first, then the text and graphic colors that pass on it.'),
@@ -50,17 +56,34 @@ def long_sample():
     return ' '.join(out)
 
 
+def track(ctx, name):
+    return ctx.T.ext(f'oa.type.{name}').get('trackingEm', 0)
+
+
+def pct(tr):
+    """Tracking in em as the guide prints it: −1 percent, +6 percent, 0."""
+    if not tr:
+        return '0'
+    return f'{C.MINUS if tr < 0 else "+"}{abs(tr) * 100:g} percent'
+
+
 def probes(ctx):
     body = 'font:var(--oa-type-body)'
-    ctx.probe('cpl body ideal', 'cpl', text=W07, css=f'{body};width:var(--oa-layout-measure-body-ideal)')
-    ctx.probe('cpl body max', 'cpl', text=W07, css=f'{body};width:var(--oa-layout-measure-body-max)')
+    ctx.probe('cpl body ideal', 'cpl', text=SAMPLE, css=f'{body};width:var(--oa-layout-measure-body-ideal)')
+    ctx.probe('cpl body max', 'cpl', text=SAMPLE, css=f'{body};width:var(--oa-layout-measure-body-max)')
     ctx.probe('cpl long sample ideal', 'cpl', text=long_sample(), css=f'{body};width:var(--oa-layout-measure-body-ideal)')
     ctx.probe('cpl long sample max', 'cpl', text=long_sample(), css=f'{body};width:var(--oa-layout-measure-body-max)')
-    ctx.probe('cpl intro max', 'cpl', text=W07, css='font:var(--oa-type-intro);font-size:1.375rem;width:var(--oa-layout-measure-intro-max)')
-    ctx.probe('cpl v5 intro 65ch', 'cpl', text=W07, css='font:var(--oa-type-intro);font-size:1.375rem;width:65ch')
+    ctx.probe('cpl intro max', 'cpl', text=long_sample(), css='font:var(--oa-type-intro);font-size:1.375rem;width:var(--oa-layout-measure-intro-max)')
+    ctx.probe('cpl v5 intro 65ch', 'cpl', text=SAMPLE, css='font:var(--oa-type-intro);font-size:1.375rem;width:65ch')
     ctx.probe('width v5 intro 65ch', 'width', text='0', css='font:var(--oa-type-intro);font-size:1.375rem;display:block;width:65ch')
-    for name, tr in (('h4 0', '0em'), ('h4 -2', '-0.02em'), ('h4 -4.5', '-0.045em')):
-        ctx.probe(f'space {name}', 'space', css=f'font:var(--oa-type-h4);font-size:1.5rem;letter-spacing:{tr}')
+    # Rule 06.4: word spaces and touching letter pairs at the token tracking (DR-95) and at the earlier values
+    h3 = track(ctx, 'h3')
+    for name, tr in (('h3 0', 0), ('h3 token', h3), ('h3 draft', DRAFT_H3)):
+        ctx.probe(f'space {name}', 'space', css=f'font:var(--oa-type-h3);font-size:2rem;letter-spacing:{tr}em')
+    for name, tr in (('0', 0), ('token', h3), ('draft', DRAFT_H3)):
+        ctx.probe(f'pairs plate {name}', 'pairs', text=PLATE_HEAD, family='Inter Tight', weight=800, size=32, track=tr)
+    for name, tr in (('0', 0), ('token', track(ctx, 'title')), ('v5', V5_TRACK)):
+        ctx.probe(f'pairs tagline {name}', 'pairs', text=TAGLINE, family='Inter Tight', weight=800, size=110, track=tr)
     ctx.probe('width head inter tight', 'width', text=HEAD, css='font:var(--oa-type-h3);font-size:2rem;letter-spacing:var(--oa-type-h3-letter-spacing)')
     ctx.probe('width head arial', 'width', text=HEAD, css='font:var(--oa-type-h3);font-size:2rem;font-family:Arial,sans-serif;letter-spacing:var(--oa-type-h3-letter-spacing)')
     ctx.probe('width open quote lora em', 'width', text='“', css='font:var(--oa-type-quote);font-size:100px;letter-spacing:0')
@@ -91,52 +114,55 @@ def s_06_1(ctx):
             f'<div><p class="k">Inter Tight 800 · display</p><p class="d">{HEAD}</p>'
             f'<p class="t">Titles, headings and big figures</p></div>'
             f'<div><p class="k">Inter 400, 600 and 700 · reading and interface</p><p class="b">{W02}</p>'
-            f'<span class="u">Download the lockmark</span><span class="l">Explain · Local utilities</span>'
+            f'<span class="u">Download the lockmark</span><span class="l">Explainer · Local utilities</span>'
             f'<p class="t">Body text, buttons, labels, captions, tables and chart text</p></div>'
             f'<div><p class="k">Lora Italic 400 · quotation</p><p class="q">“{COMMIT}”</p>'
             f'<p class="t">Only words we quote: pull quotes and quote cards</p></div></div>')
     ctx.spec('s-06-1-correct', html, '06', '06.1',
              f'The three faces at true size. Inter Tight 800 sets the heading {HEAD} Inter sets the sentence {W02}, a button '
-             f'labeled Download the lockmark and a label in capitals. Lora Italic sets our editorial commitment, “{COMMIT}”',
+             f'labeled Download the lockmark and the kicker Explainer, Local utilities, in capitals. Lora Italic sets our '
+             f'editorial commitment, “{COMMIT}”',
              notes='The heading line is our fifth edition’s type sample; the body line is chapter 02’s W02 rewrite.')
     cssf = (f'.d{{margin:0;{ctx.ty("h3")};font-family:var(--oa-font-family-quote);font-style:italic;font-weight:var(--oa-font-weight-regular);text-wrap:balance}}'
             f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}.b{{margin:12px 0 0;{ctx.ty("body")}}}')
-    htmlf = (f'<style>{cssf}</style><p class="k">Explain · Local utilities</p><p class="d">{HEAD}</p>'
+    htmlf = (f'<style>{cssf}</style><p class="k">Explainer · Local utilities</p><p class="d">{HEAD}</p>'
              f'<p class="b">{W02}</p>')
     ctx.spec('s-06-1-failure', htmlf, '06', '06.1',
              f'The heading {HEAD} set in Lora Italic above the sentence {W02}, so the heading looks like a quotation.',
              notes='A labeled failure: the face does a job that is not its own.')
 
 
+def style_spec(ctx, key):
+    """Face, weight, web size, line height, tracking and extras for one style, read from tokens.json."""
+    T = ctx.T
+    node = T.node(f'oa.type.{key}')
+    ext = T.ext(f'oa.type.{key}')
+    val = node['$value']
+    fam = T.value(val['fontFamily'][1:-1])[0] if isinstance(val['fontFamily'], str) else val['fontFamily'][0]
+    wt = T.value(val['fontWeight'][1:-1]) if isinstance(val['fontWeight'], str) else val['fontWeight']
+    lh = val['lineHeight']
+    tr = ext.get('trackingEm', 0)
+    lo, hi = ctx.fixed_px(key)
+    size = (f'{lo:g} to {hi:g} px ({lo / 16:g} to {hi / 16:g} rem)' if hi != lo else f'{lo:g} px ({lo / 16:g} rem)')
+    face = fam + (' Italic' if key == 'quote' else '')
+    trk = 'tracking 0' if not tr else f'tracking {C.MINUS if tr < 0 else "+"}{abs(tr) * 100:g}%'
+    extra = []
+    if ext.get('numeric'):
+        extra.append('tabular figures')
+    if ext.get('textTransform') == 'uppercase':
+        extra.append('capitals')
+    return f'{face} {wt} · {size} · line height {lh:g} · {trk}' + (' · ' + ', '.join(extra) if extra else ''), lo, hi
+
+
 def s_06_2(ctx):
     v = ctx.v
-    T = ctx.T
     sec = v('oa.color.text.secondary.onNewsprint')
     rows = []
     for key, name, sample in STYLES:
-        node = T.node(f'oa.type.{key}')
-        ext = T.ext(f'oa.type.{key}')
-        val = node['$value']
-        fam = T.value(val['fontFamily'][1:-1])[0] if isinstance(val['fontFamily'], str) else val['fontFamily'][0]
-        wt = T.value(val['fontWeight'][1:-1]) if isinstance(val['fontWeight'], str) else val['fontWeight']
-        lh = val['lineHeight']
-        tr = ext.get('trackingEm', 0)
-        fs = val['fontSize']
-        mx = fs['value'] if fs['unit'] == 'rem' else fs['value'] / 16
-        mn = ext.get('minFontSize', {}).get('value', mx)
-        size = (f'{mn * 16:g} to {mx * 16:g} px ({mn:g} to {mx:g} rem)' if mx and mx != mn else f'{mn * 16:g} px ({mn:g} rem)')
-        face = fam + (' Italic' if key == 'quote' else '')
-        trk = 'tracking 0' if not tr else f'tracking {C.MINUS if tr < 0 else "+"}{abs(tr) * 100:g}%'
-        extra = []
-        if ext.get('numeric'):
-            extra.append('tabular figures')
-        if ext.get('textTransform') == 'uppercase':
-            extra.append('capitals')
-        spec = f'{face} {wt} · {size} · line height {lh:g} · {trk}' + (' · ' + ', '.join(extra) if extra else '')
+        spec, lo, hi = style_spec(ctx, key)
         ctx.fig(f'type scale {key}', spec, 'tokens.json oa.type')
-        cls = 'smp'
         rows.append(f'<li><p class="nm">{name}<code>{C.css_name("oa.type." + key)}</code></p><p class="sp">{spec}</p>'
-                    f'<p class="{cls}" style="{ctx.ty(key)}">{sample}</p></li>')
+                    f'<p class="smp" style="{ctx.ty(key)}">{sample}</p></li>')
     css = (f'ul{{list-style:none;margin:0;padding:0}}'
            f'li{{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:4px 32px;align-items:baseline;padding:20px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
            f'.nm{{margin:0;{ctx.ty("ui")}}}.nm code{{display:block;{ctx.ty("caption")};color:{sec}}}'
@@ -147,8 +173,38 @@ def s_06_2(ctx):
     html = f'<style>{css}</style><div class="wr"><ul>{"".join(rows)}</ul></div>'
     ctx.spec('s-06-2-correct', html, '06', '06.2',
              'The type scale, fourteen styles from Title to Ask, each with its token name, face, size in px and rem, line '
-             'height and tracking, and a sample line drawn live in the style.', interactive=True,
-             notes='Every spec line is read from tokens.json; every sample uses the token’s CSS custom properties.')
+             'height and tracking, and a sample line in the style. On a phone each sample shows the style’s phone floor, '
+             'and on a wider screen its desktop ceiling.', readable=True,
+             notes='A readable list (D2-255). Every spec line is read from tokens.json; every sample uses the token’s CSS '
+                   'custom properties at a fixed size from D2-254.')
+
+    # the fixed-artboard column (D2-254), as its own readable table
+    trs = []
+    for key, name, _ in STYLES:
+        _, lo, hi = style_spec(ctx, key)
+        web = f'{lo:g} to {hi:g} px' if hi != lo else f'{lo:g} px'
+        trs.append(f'<tr><th scope="row">{name}</th><td>{web}</td><td>{lo:g} px</td><td>{hi:g} px</td></tr>')
+    cssa = (f'table{{width:100%;max-width:40rem;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
+            f'th,td{{text-align:left;padding:8px 16px 8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")};vertical-align:baseline}}'
+            f'thead th{{{ctx.ty("label")};border-bottom-color:{v("oa.color.border.strong.onNewsprint")}}}'
+            f'tbody th{{{ctx.ty("ui")}}}td{{font-variant-numeric:tabular-nums}}'
+            f'@container (max-width:30rem){{thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}'
+            f'table,tbody,tr,th,td{{display:block}}tr{{padding:8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
+            f'th,td{{border:0;padding:0}}td::before{{content:attr(data-k) ": ";color:{sec}}}}}.wr{{container-type:inline-size}}')
+    heads = ['On a web page', 'Artboards up to 600 px', 'Artboards 1,200 px and up']
+    out = []
+    for r in trs:
+        cells = r.split('<td>')
+        out.append(cells[0] + ''.join(f'<td data-k="{heads[i]}">' + c for i, c in enumerate(cells[1:])))
+    htmla = (f'<style>{cssa}</style><div class="wr"><table role="table"><thead><tr><th scope="col">Style</th>'
+             + ''.join(f'<th scope="col">{h}</th>' for h in heads) + f'</tr></thead><tbody>{"".join(out)}</tbody></table></div>')
+    ctx.spec('s-06-artboards', htmla, '06', None,
+             'A table of the fourteen styles with three sizes each: on a web page, on an artboard up to 600 px wide and on '
+             'an artboard 1,200 px wide or more. ' + '; '.join(
+                 f'{name} {style_spec(ctx, key)[1]:g} and {style_spec(ctx, key)[2]:g} px' for key, name, _ in STYLES) + '.',
+             readable=True, notes='The fixed-artboard column of Rule 06.2 (D2-254), read from tokens.json and checked '
+                                  'against the decision\'s list.')
+
     # failure: what 200 percent text does to px and rem
     cssf = (f'.pr{{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}}'
             f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}'
@@ -158,9 +214,10 @@ def s_06_2(ctx):
              f'<div><p class="k">Set in px, still 17 px</p><p class="p">{W02}</p></div></div>')
     ctx.spec('s-06-2-failure', htmlf, '06', '06.2',
              f'Two columns showing the sentence {W02} as a reader sees it with text set to 200 percent: on the left, set in '
-             f'rem, it has grown to 34 px; on the right, set in px, it is still 17 px.',
+             f'rem, it has grown to 34 px; on the right, set in px, it is still 17 px.', exempt=['scale'],
              notes='A depiction: both columns are drawn at the sizes a 200 percent text setting produces, since the guide '
-                   'page itself runs at the reader’s own setting.')
+                   'page itself runs at the reader’s own setting. Exempt from the scale check: 34 px is the body size '
+                   'doubled, off the scale on purpose in a labeled failure.')
 
 
 def s_06_3(ctx):
@@ -187,29 +244,38 @@ def s_06_3(ctx):
             f'letter-spacing:.13em;text-transform:uppercase}}'
             f'.f{{margin:0;font-family:var(--oa-font-family-reading);font-weight:400;font-size:.625rem;letter-spacing:.1em}}'
             f'.n{{margin:4px 0 0;{ctx.ty("caption")};color:{sec}}}')
-    htmlf = (f'<style>{cssf}</style><div class="v"><div><p class="e">06 / Type</p><p class="n">Eyebrow: 11 px, Inter 700, '
+    htmlf = (f'<style>{cssf}</style><div class="v"><div><p class="e">06 / Type</p><p class="n">Kicker: 11 px, Inter 700, '
              f'13 percent tracking</p></div><div><p class="f">OATH &amp; ACTION · Type / 06</p><p class="n">Footer line: 10 px, '
              f'Inter 400</p></div></div>')
     ctx.spec('s-06-3-failure', htmlf, '06', '06.3',
-             'A graphic at true size of two labels from our fifth edition: the eyebrow 06 / Type at 11 px in capitals with '
-             'wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.', exempt=['size'],
-             notes='Sizes and tracking from the V5 text census (eyebrow 11 px, 700, 1.43 px tracking; footer 10 px).')
+             'A graphic at true size of two labels from our fifth edition: the kicker 06 / Type at 11 px in capitals with '
+             'wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.', exempt=['size', 'scale'],
+             notes='Sizes and tracking from the V5 text census (eyebrow 11 px, 700, 1.43 px tracking; footer 10 px). A '
+                   'historical record in a labeled failure, so its sizes sit off the scale on purpose.')
 
 
 def s_06_4(ctx):
     v = ctx.v
     sec = v('oa.color.text.secondary.onNewsprint')
-    for sid, tr, label in (('s-06-4-correct', 'var(--oa-type-h4-letter-spacing)', 'H4 at −2 percent tracking'),
-                           ('s-06-4-failure', '-0.045em', 'H4 at −4.5 percent tracking')):
+    h3 = track(ctx, 'h3')
+    out = {}
+    for sid, tr, which in (('s-06-4-correct', h3, 'token'), ('s-06-4-failure', DRAFT_H3, 'draft')):
+        sp = (ctx.m(f'space h3 {which}') or {}).get('width') or 0
+        pr = ctx.m(f'pairs plate {which}') or {'pairs': 0, 'touching': 0, 'which': []}
+        out[which] = (sp, pr)
         css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}'
-               f'.h{{margin:0;{ctx.ty("h4")};font-size:1.5rem;letter-spacing:{tr};text-wrap:balance}}'
-               f'.b{{margin:12px 0 0;{ctx.ty("body")}}}')
-        html = f'<style>{css}</style><p class="k">{label}</p><p class="h">{HEAD}</p><p class="b">{W02}</p>'
+               f'.h{{margin:0;{ctx.ty("h3", "ceil")};letter-spacing:{tr}em;text-wrap:balance}}'
+               f'.m{{margin:12px 0 0;{ctx.ty("dataLabel")};color:{sec}}}')
+        lab = f'H3 at 32 px, {pct(tr)} tracking'
+        meas = f'Word space {sp:.1f} px · {pr["touching"]} of {pr["pairs"]} letter pairs touch'
+        html = f'<style>{css}</style><p class="k">{lab}</p><p class="h">{PLATE_HEAD}</p><p class="m">{meas}</p>'
         ctx.spec(sid, html, '06', '06.4',
-                 f'The heading {HEAD} in Inter Tight 800 at 24 px with ' + ('minus 2 percent tracking, its word spaces open.'
-                                                                          if sid.endswith('correct') else
-                                                                          'minus 4.5 percent tracking, its word spaces closing up.'),
-                 notes='Set at 24 px, the H4 size at 1440 px, so the measured word spaces apply.')
+                 f'The heading {PLATE_HEAD} in Inter Tight 800 at 32 px with {pct(tr).replace(C.MINUS, "minus ")} '
+                 f'tracking. A line below it reads: word space {sp:.1f} px, {pr["touching"]} of {pr["pairs"]} letter pairs '
+                 f'touch.',
+                 notes='Set at 32 px, the H3 ceiling. Word space and touching pairs measured in Chromium with the Google '
+                       'Fonts files the page loads, at this tracking.')
+    return out
 
 
 def jobs():
@@ -253,7 +319,7 @@ def s_06_5(ctx):
     vals = '; '.join(f'{r["sector"]} {C.signed(r["change_since_2022_01_thousands"], 0)} thousand, {C.signed(r["pct_change_since_2022_01"], 1)} percent' for r in rows)
     ctx.spec('s-06-5-correct', table(True), '06', '06.5',
              f'A table titled Change in payroll jobs by sector, January 2022 to September 2026, with tabular figures aligned '
-             f'right and the true minus sign. {vals}. Source line below.', interactive=True,
+             f'right and the true minus sign. {vals}. Source line below.', readable=True,
              notes='Data: payrolls-by-sector in the shared chart data, September 2026 row.')
     ctx.spec('s-06-5-failure', table(False), '06', '06.5',
              'The same table with proportional figures aligned left and a hyphen for each minus sign, so the columns no '
@@ -267,7 +333,7 @@ def s_06_6(ctx):
         text = BAL if good else BAL.rsplit(' ', 1)[0] + '<br>' + BAL.rsplit(' ', 1)[1]
         css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}'
                f'.h{{margin:0;max-width:22rem;{ctx.ty("h3")};text-wrap:{"balance" if good else "wrap"}}}')
-        html = f'<style>{css}</style><p class="k">Explain · Primaries</p><p class="h">{text}</p>'
+        html = f'<style>{css}</style><p class="k">Explainer · Primaries</p><p class="h">{text}</p>'
         ctx.spec(sid, html, '06', '06.6',
                  f'The heading {BAL} in Inter Tight 800, ' + ('broken into lines of near equal length.' if good else
                                                              'with the single word it alone on its last line.'),
@@ -300,14 +366,14 @@ def s_06_8(ctx):
     sec = v('oa.color.text.secondary.onNewsprint')
     css = (f'.k{{margin:0 0 12px;{ctx.ty("label")};color:{sec}}}'
            f'.b{{margin:0;{ctx.ty("body")};max-width:var(--oa-layout-measure-body-ideal)}}')
-    ctx.spec('s-06-8-correct', f'<style>{css}</style><p class="k">Body, 17 px, at the body measure</p><p class="b">{W07}</p>',
-             '06', '06.8', f'A paragraph in Inter at 17 px set to the body measure of 33.88 rem: {W07}',
-             notes='The paragraph is W07’s rewrite in chapter 02.')
+    ctx.spec('s-06-8-correct', f'<style>{css}</style><p class="k">Body, 17 px, at the body measure</p><p class="b">{SAMPLE}</p>',
+             '06', '06.8', f'A paragraph in Inter at 17 px set to the body measure of 33.88 rem: {SAMPLE}',
+             notes='The paragraph is the opening of chapter 02’s writing section, whose terms are all plain (D2-248).')
     w = ctx.m('width v5 intro 65ch')
     wpx = round(w['width']) if w else 880
     cssf = (f'.k{{margin:0 0 12px;{ctx.ty("label")};color:{sec}}}'
             f'.b{{margin:0;font:var(--oa-type-intro);font-size:1.375rem;width:65ch;max-width:none}}')
-    ctx.spec('s-06-8-failure', f'<style>{cssf}</style><p class="k">Intro, 22 px, at 65ch</p><p class="b">{W07}</p>',
+    ctx.spec('s-06-8-failure', f'<style>{cssf}</style><p class="k">Intro, 22 px, at 65ch</p><p class="b">{SAMPLE}</p>',
              '06', '06.8', f'The same paragraph at 22 px in a column 65ch wide, as our fifth edition set its intros, so the lines run long.',
              width=wpx + 0, notes=f'Width 65ch at 22 px measured at {wpx} px; shown at true size, so it scrolls inside its frame on narrow screens.')
 
@@ -320,20 +386,20 @@ def s_06_9(ctx):
         hfam = 'var(--oa-font-family-email-sans)' if good else '"Inter Tight Unavailable", serif'
         css = (f'.em{{background:{v("oa.color.surface.white")};color:{v(W)};padding:32px 24px;max-width:600px}}'
                f'.mh{{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid {v("oa.color.border.hairline.onWhite")}}}'
-               f'.is{{font-family:var(--oa-font-family-email-sans);font-size:.875rem;color:{v(S)}}}'
-               f'.h{{margin:24px 0 0;font-family:{hfam};font-weight:700;font-size:1.75rem;line-height:1.15}}'
+               f'.mh .illus{{margin:0;font-family:var(--oa-font-family-email-sans)}}'
+               f'.h{{margin:24px 0 0;font-family:{hfam};font-weight:700;font-size:1.625rem;line-height:1.08}}'
                f'.b{{margin:16px 0 0;font-family:var(--oa-font-family-email-sans);font-size:1.0625rem;line-height:1.6}}'
-               f'.q{{margin:24px 0 0;font-family:var(--oa-font-family-email-quote);font-style:italic;font-size:1.375rem;line-height:1.35}}')
+               f'.q{{margin:24px 0 0;font-family:var(--oa-font-family-email-quote);font-style:italic;font-size:1.5rem;line-height:1.3}}')
         html = (f'<style>{css}</style><div class="em"><div class="mh">'
                 f'<img data-inline src="work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg" width="152" height="16" alt="" data-red="signature">'
-                f'<span class="is">Sample issue</span></div>'
+                f'{B.ILLUS}</div>'
                 f'<p class="h">The school board votes on the new bell schedule April 14.</p>'
                 f'<p class="b">Sign up with the board clerk by April 10 to speak before the vote.</p>'
                 f'<p class="q">“{COMMIT}”</p></div>')
         ctx.spec(sid, html, '06', '06.9',
-                 ('An email header at 600 px on White, set in the system stack: the wordmark, the label Sample issue, the '
-                  'headline The school board votes on the new bell schedule April 14 in Helvetica or Arial bold, a sentence '
-                  'of body text, and our editorial commitment in Georgia Italic.') if good else
+                 ('An Illustrative email header at 600 px on White, set in the system stack: the wordmark, the headline The '
+                  'school board votes on the new bell schedule April 14 in Helvetica or Arial bold at 26 px, a sentence of '
+                  'body text, and our editorial commitment in Georgia Italic at 24 px.') if good else
                  ('The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the '
                   'mail app’s default serif.'),
                  width=600, illustrative=True, surface='white',
@@ -351,7 +417,7 @@ def s_06_10(ctx):
     sec = ctx.v('oa.color.text.secondary.onNewsprint')
     for sid, good in (('s-06-10-correct', True), ('s-06-10-failure', False)):
         fam = '' if good else 'font-family:Arial,sans-serif;'
-        css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}.h{{margin:0;{ctx.ty("h3")};{fam}text-wrap:balance}}'
+        css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}.h{{margin:0;{ctx.ty("h3", "ceil")};{fam}text-wrap:balance}}'
                f'.s{{margin:12px 0 0;{ctx.ty("caption")};color:{sec}}}')
         lab = 'Inter Tight 800' if good else 'Arial, the fallback'
         html = (f'<style>{css}</style><p class="k">{lab}</p><p class="h">{HEAD}</p>'
@@ -368,7 +434,7 @@ def build(ctx):
     s_06_1(ctx)
     s_06_2(ctx)
     s_06_3(ctx)
-    s_06_4(ctx)
+    p64 = s_06_4(ctx)
     src = s_06_5(ctx)
     s_06_6(ctx)
     hang_em = s_06_7(ctx)
@@ -381,20 +447,41 @@ def build(ctx):
         return r.get('mean', 0), r.get('min', 0), r.get('max', 0), r.get('chars', 0), r.get('lines', 0)
 
     bi = cpl('cpl body ideal')
-    bm = cpl('cpl body max')
     li = cpl('cpl long sample ideal')
     lm = cpl('cpl long sample max')
     v5 = cpl('cpl v5 intro 65ch')
     im = cpl('cpl intro max')
-    sp = {k: (ms(ctx, f'space {k}').get('width') or 0) for k in ('h4 0', 'h4 -2', 'h4 -4.5')}
     wi = ms(ctx, 'width head inter tight').get('width') or 1
     wa = ms(ctx, 'width head arial').get('width') or 1
     wider = (wa / wi - 1) * 100
-    cut = (1 - sp['h4 -4.5'] / sp['h4 0']) * 100 if sp['h4 0'] else 0
-    for k, val in (('space h4 0', sp['h4 0']), ('space h4 -2', sp['h4 -2']), ('space h4 -4.5', sp['h4 -4.5'])):
-        ctx.fig(k + ' px', f'{val:.2f}', 'width("a b") minus width("ab") in Inter Tight 800 at 24 px, Chromium')
     ctx.fig('Arial over Inter Tight width, percent', f'{wider:.1f}', 'rendered width of the heading at 32 px')
-    ctx.fig('word space cut at -4.5 percent, percent', f'{cut:.0f}', 'from the two space widths')
+
+    # Rule 06.4: tracking from tokens.json, checked against DR-95, and what it does at each size
+    trk = {k: track(ctx, k) for k in ('title', 'section', 'h3', 'h4', 'figure', 'quote', 'label')}
+    off = {k: (trk[k], want) for k, want in B.TRACKING_DR95.items() if abs(trk[k] - want) > 1e-9}
+    if off:
+        msg = f'display tracking in tokens.json is not yet DR-95: {off}'
+        if ctx.stage == 'final' and not getattr(ctx, 'allow_old_tracking', False):
+            raise ValueError(msg)
+        print('warning:', msg)
+    sp0 = (ms(ctx, 'space h3 0').get('width') or 0)
+    sp_tok, pr_tok = p64['token']
+    sp_dr, pr_dr = p64['draft']
+    tg = {k: ms(ctx, f'pairs tagline {k}') for k in ('0', 'token', 'v5')}
+    tt = {k: ms(ctx, f'pairs titles {k}') for k in ('0', 'token', 'draft')}
+    for k, val in (('space h3 0 px', sp0), ('space h3 token px', sp_tok), ('space h3 draft px', sp_dr)):
+        ctx.fig(k, f'{val:.2f}', 'width("n n") minus width("nn") in Inter Tight 800 at 32 px, Chromium')
+    for k, r in [(f'pairs tagline {k}', tg[k]) for k in tg] + [(f'pairs titles {k}', tt[k]) for k in tt] + \
+            [('pairs plate token', pr_tok), ('pairs plate draft', pr_dr)]:
+        if r:
+            ctx.fig(f'{k}, touching', f'{r.get("touching")} of {r.get("pairs")}: {" ".join(r.get("which", []))}',
+                    f'canvas at twice size, Inter Tight 800 at {r.get("size_px")} px, tracking {r.get("track_em")} em, '
+                    f'with kerning; a pair touches when no white device pixel separates the two glyphs')
+    n_titles = (tt['token'] or {}).get('titles') or 0
+    all_r = bool(pr_tok.get('which')) and all('r' in w for w in pr_tok.get('which', []))
+    tok_r = tt['token'].get('which', []) if tt['token'] else []
+    tok_all_r = bool(tok_r) and all('r' in w for w in tok_r)
+
     phone = ctx.R.get('cpl span phone 4') or {}
     phone_s = ctx.R.get('cpl span phoneSmall 4') or {}
     ph_lo = round(min(phone_s.get('mean', 0), phone.get('mean', 0)))
@@ -403,6 +490,14 @@ def build(ctx):
     ch_n = ctx.ratio('oa.color.text.primary.onNewsprint', 'oa.color.surface.newsprint')
     lab_r = ctx.ratio(sec, 'oa.color.surface.newsprint')
     fonts = ctx.R.get('font check', {})
+    fl = {k: ctx.fixed_px(k) for k in B.FLUID}
+    floor_list = ', '.join(f'{n} {B.ARTBOARD_FLOOR[k]}' for k, n in (
+        ('title', 'title'), ('section', 'section'), ('figure', 'figure'), ('h3', 'H3'), ('h4', 'H4'), ('quote', 'quote'),
+        ('intro', 'intro'), ('ask', 'ask'), ('body', 'body'), ('bodySmall', 'body small'), ('ui', 'UI'),
+        ('caption', 'caption'), ('label', 'label'), ('dataLabel', 'data label'))) + ' px'
+    ceil_list = ', '.join(f'{n} {B.ARTBOARD_CEIL[k]}' for k, n in (
+        ('title', 'title'), ('section', 'section'), ('figure', 'figure'), ('h3', 'H3'), ('h4', 'H4'), ('quote', 'quote'),
+        ('intro', 'intro'))) + ' px; the rest as on phones'
     ch = {
         'number': '06', 'anchor': 'type', 'title': 'Type', 'part': 'Foundations',
         'instruction': 'Set every word at a readable size with the three faces and the type scale.',
@@ -414,7 +509,7 @@ def build(ctx):
             'reader who enlarges text gets larger type everywhere, and no text on screen sets below 13 px.'],
         'rules': [
             {
-                'id': '06.1', 'title': 'Each typeface keeps its one job.',
+                'id': '06.1', 'title': 'Keep each typeface to its one job.',
                 'rule': ['Inter Tight 800 sets titles, headings and big figures. Inter sets body text, the interface, labels, '
                          'captions, tables and chart text, at 400, 600 and 700. Lora Italic sets only quoted words, such as a '
                          'pull quote or a quote card, at 400, or at 500 on a quote card.'],
@@ -425,10 +520,10 @@ def build(ctx):
                                  'wordmark is drawn from Inter Tight 800, so our headings share its voice, and the page still '
                                  'reads as ours with the logo covered. Charts follow the same split: Inter Tight for titles, '
                                  'Inter for labels and numbers, and Lora Italic only for quoted words.'],
-                        'basis': 'Design judgment; Master Brief section 3; decision DR-47'},
+                        'basis': 'Our locked identity rules; design judgment'},
                 'correct': {'specimen': 's-06-1-correct',
                             'caption': 'The three faces at true size, each in its job: a heading in Inter Tight 800, a '
-                                       'sentence, a button and a label in Inter, and our editorial commitment quoted in Lora '
+                                       'sentence, a button and a kicker in Inter, and our editorial commitment quoted in Lora '
                                        'Italic.'},
                 'failure': {'specimen': 's-06-1-failure',
                             'caption': '<strong>Fails the faces’ jobs.</strong> Set in Lora Italic, the heading reads as a '
@@ -446,54 +541,64 @@ def build(ctx):
                              '<code>--oa-font-family-reading</code> and <code>--oa-font-family-quote</code>.'],
             },
             {
-                'id': '06.2', 'title': 'Every size comes from the type scale.',
-                'rule': ['Set text in the fourteen styles of the scale, with no sizes between them. Display styles grow with '
-                         'the window from 390 to 1440 px wide, reading styles hold one size, and every size is in rem so it '
-                         'follows the reader’s text setting.'],
+                'id': '06.2', 'title': 'Take every size from the type scale.',
+                'rule': ['Set text in the fourteen styles of the scale, with no sizes between them. On a web page, display '
+                         'styles grow with the window from 390 to 1440 px wide, and every size is in rem so it follows the '
+                         'reader’s text setting. A fixed artboard, such as a card, an email or a social image, takes fixed '
+                         'sizes from the same scale: up to 600 px wide, each style’s phone floor, and from 1,200 px wide, its '
+                         'desktop ceiling. Print pieces set type in points.'],
                 'tokens': [f'oa.type.{k}' for k, _, _ in STYLES],
                 'why': {'text': ['WCAG 2.2 success criterion 1.4.4 Resize Text asks that text grow to 200 percent with '
-                                 'nothing lost. A size in rem grows when a reader raises the browser’s text size, and a size '
-                                 'fixed in px stays where it is. Our fifth edition set every size in px, and when we doubled its '
-                                 'root text size in a test, none of its 2,383 text elements grew.'],
-                        'basis': 'WCAG 2.2 SC 1.4.4'},
+                                 'nothing lost. A size in rem grows with the reader’s text setting, which a size fixed in px '
+                                 'ignores. Our fifth edition set every size in px, and when our audit doubled its root text '
+                                 'size, no text on the page grew.',
+                                 'A card or an email has one width, so the window cannot pick its sizes. Taking them from the '
+                                 'scale’s two ends keeps a 480 px card and a 1,200 px social image in the same family as the '
+                                 'page around them.'],
+                        'basis': 'WCAG 2.2 SC 1.4.4; design judgment'},
                 'correct': {'specimen': 's-06-2-correct',
-                            'caption': 'The fourteen styles, each drawn live at true size for this window. Display sizes move '
-                                       'between their floor at 390 px and their ceiling at 1440 px, so the samples match the '
-                                       'screen you are reading on.'},
+                            'caption': 'The fourteen styles at true size. On a phone each sample shows its phone floor, the '
+                                       'size an artboard up to 600 px wide takes, and on a wider screen its desktop ceiling, '
+                                       'the size for artboards 1,200 px and wider. On a web page, display styles move between '
+                                       'the two as the window grows.'},
                 'failure': {'specimen': 's-06-2-failure',
                             'caption': '<strong>Fails 1.4.4.</strong> Two columns as a reader sees them with text set to 200 '
                                        'percent. The column set in rem has grown to 34 px; the column set in px is still 17 px.'},
                 'specs': [
                     {'label': 'Text size base', 'value': '16 px, the browser default; every size is a multiple in rem', 'token': None},
-                    {'label': 'Fluid range', 'value': 'Display sizes grow from 390 px to 1440 px wide', 'token': 'oa.type.title'},
+                    {'label': 'On a web page', 'value': 'Display sizes grow from 390 px to 1440 px wide', 'token': 'oa.type.title'},
+                    {'label': 'Artboards up to 600 px wide', 'value': f'Each style’s phone floor: {floor_list}', 'token': None},
+                    {'label': 'Artboards 1,200 px and wider', 'value': f'Each style’s desktop ceiling: {ceil_list}', 'token': None},
+                    {'label': 'Artboards between 600 and 1,200 px', 'value': 'Each style’s size from either column', 'token': None},
+                    {'label': 'Print', 'value': 'Points, with all text at 10 pt or larger; chapter 25 sets the point scale', 'token': None},
                     {'label': 'Body', 'value': 'Inter 400, 17 px (1.0625 rem), line height 1.6', 'token': 'oa.type.body'},
-                    {'label': 'Intro', 'value': 'Inter 400, 19 to 22 px, line height 1.5', 'token': 'oa.type.intro'},
-                    {'label': 'H3', 'value': 'Inter Tight 800, 26 to 32 px, line height 1.08', 'token': 'oa.type.h3'},
-                    {'label': 'Print', 'value': 'A point scale follows in chapter 25, Phase 4', 'token': None},
                 ],
                 'related': ['07', '19', '25'],
                 'builders': ['Set a style with its shorthand and its parts: <code>font: var(--oa-type-body)</code> carries '
                              'face, weight, size and line height, and <code>letter-spacing</code>, '
                              '<code>text-transform</code> and <code>font-variant-numeric</code> each have their own property, '
-                             'such as <code>--oa-type-label-letter-spacing</code>. Never write a font size in px.'],
+                             'such as <code>--oa-type-label-letter-spacing</code>. On a fixed artboard, override only the '
+                             'size, as in <code>font-size: 1.625rem</code> for an H3 on a 480 px card. Never write a font '
+                             'size in px.'],
             },
             {
-                'id': '06.3', 'title': 'No text on screen sets below 13 px.',
+                'id': '06.3', 'title': 'Set no text on screen below 13 px.',
                 'rule': ['The smallest text on screen is 13 px, or 0.8125 rem: labels, tags and data labels. A label in '
                          'capitals at 13 px takes Inter 700 with 6 percent tracking. A specimen that shows a mark or a minimum '
                          'size at true size is a graphic, and its caption says so.'],
                 'tokens': ['oa.type.label', 'oa.type.dataLabel', 'oa.type.caption'],
-                'why': {'text': ['Our fifth edition set its labels at 10 to 12 px, and its text census counted 833 of 2,346 '
-                                 'rendered text elements under 13 px. A floor with no screen exceptions keeps eyebrows, tags '
-                                 'and navigation readable without zoom. At 13 px, capitals need less tracking than they did at '
-                                 '10 px, so 6 percent keeps them open without pulling a word apart.'],
-                        'basis': 'Design judgment; Master Brief section 8, tension 1; decision T-9'},
+                'why': {'text': ['Our fifth edition set its labels at 10 to 12 px. Our census of its text, which measured '
+                                 '2,346 text elements rendered at 1440 px and left out text inside SVG drawings, counted 833 '
+                                 'under 13 px. A floor with no screen exceptions keeps kickers, tags and navigation readable '
+                                 'without zoom. At 13 px, capitals need less tracking than they did at 10 px, so 6 percent '
+                                 'keeps them open without pulling a word apart.'],
+                        'basis': 'Design judgment; our measurements of the fifth edition, October 2026'},
                 'correct': {'specimen': 's-06-3-correct',
                             'caption': f'Four labels at true size, all at 13 px. The location line is secondary text at '
                                        f'{lab_r} to 1; the column head, tag and data label are primary text at {ch_n} to 1.'},
                 'failure': {'specimen': 's-06-3-failure',
                             'caption': '<strong>Fails the 13 px floor.</strong> A graphic at true size of two labels from our '
-                                       'fifth edition: the chapter eyebrow at 11 px with 13 percent tracking, and the footer '
+                                       'fifth edition: the chapter kicker at 11 px with 13 percent tracking, and the footer '
                                        'line at 10 px.'},
                 'specs': [
                     {'label': 'Floor', 'value': '13 px (0.8125 rem), no screen exceptions', 'token': 'oa.type.label'},
@@ -508,41 +613,56 @@ def build(ctx):
                              'than shrinking the desktop one.'],
             },
             {
-                'id': '06.4', 'title': 'Tracking tightens only as headings grow.',
-                'rule': ['Tracking is the space added to or taken from every pair of letters. Display styles take negative '
-                         f'tracking that eases as the size drops: {C.MINUS}4.5 percent for titles, {C.MINUS}4 percent for '
-                         f'sections, {C.MINUS}3 percent for H3 and {C.MINUS}2 percent for H4. Reading styles keep the '
-                         f'font’s own spacing, and labels in capitals open to +6 percent.'],
-                'tokens': ['oa.type.title', 'oa.type.section', 'oa.type.h3', 'oa.type.h4', 'oa.type.label'],
-                'why': {'text': [f'Large type looks loose at the font’s own spacing, and small type looks cramped when it is '
-                                 f'pulled tight. Our fifth edition used {C.MINUS}4.5 percent at every heading size from 24 to '
-                                 f'110 px. Measured at 24 px in Inter Tight 800, that shrinks a word space from '
-                                 f'{sp["h4 0"]:.1f} px to {sp["h4 -4.5"]:.1f} px, a cut of {cut:.0f} percent, while the '
-                                 f'letters close up too.'],
-                        'basis': 'Design judgment; our audit of the fifth edition, October 2026'},
+                'id': '06.4', 'title': 'Tighten tracking only as headings grow.',
+                'rule': [f'Tracking is the space added to or taken from every pair of letters. Display styles take negative '
+                         f'tracking that eases as the size drops: {pct(trk["title"])} for titles, {pct(trk["section"])} for '
+                         f'sections, {pct(trk["h3"])} for H3 and {pct(trk["h4"])} for H4. Big figures, which are digits, '
+                         f'take {pct(trk["figure"])}, and quotes in Lora Italic {pct(trk["quote"])}. Reading styles keep the '
+                         f'font’s own spacing, and labels in capitals open to {pct(trk["label"])}.'],
+                'tokens': ['oa.type.title', 'oa.type.section', 'oa.type.h3', 'oa.type.h4', 'oa.type.figure', 'oa.type.label'],
+                'why': {'text': [f'At display sizes the font’s own spacing leaves gaps a reader sees, and a little negative '
+                                 f'tracking closes them. Pulled too far, the letters touch. Our fifth edition used '
+                                 f'{pct(V5_TRACK)} at every heading size from 24 to 110 px, and at the cover’s 110 px that '
+                                 f'makes {tg["v5"].get("touching", 0)} of our tagline’s {tg["v5"].get("pairs", 0)} letter pairs '
+                                 f'touch. At the title’s {pct(trk["title"])}, {C.num(tg["token"].get("touching", 0))} do.',
+                                 f'Across the {n_titles} rule titles in chapters 05 to 07, set at the H3 size of 32 px, '
+                                 f'{tt["draft"].get("touching", 0)} of {tt["draft"].get("pairs", 0)} letter pairs touch at '
+                                 f'{pct(DRAFT_H3)}, the value an early draft of this guide used, and '
+                                 f'{tt["token"].get("touching", 0)} at {pct(trk["h3"])}'
+                                 + (', each where the arm of an r meets its neighbor.' if tok_all_r else '.')],
+                        'basis': 'Our measurements, November 2026; design judgment'},
                 'correct': {'specimen': 's-06-4-correct',
-                            'caption': f'An H4 at true size, 24 px with {C.MINUS}2 percent tracking. Its word spaces measure '
-                                       f'{sp["h4 -2"]:.1f} px, and each word stands on its own.'},
+                            'caption': f'An H3 at true size, 32 px with {pct(trk["h3"])} tracking. Its word spaces measure '
+                                       f'{sp_tok:.1f} px, and {C.num(pr_tok.get("touching", 0))} of its {pr_tok.get("pairs", 0)} '
+                                       f'letter pairs touch'
+                                       + (', where the arm of an r meets its neighbor.' if all_r else '.')},
                 'failure': {'specimen': 's-06-4-failure',
-                            'caption': f'<strong>Fails the tracking scale.</strong> The same H4 at {C.MINUS}4.5 percent. Its '
-                                       f'word spaces shrink to {sp["h4 -4.5"]:.1f} px and the words begin to run together.'},
+                            'caption': f'<strong>Fails the tracking scale.</strong> The same heading at {pct(DRAFT_H3)}, the '
+                                       f'H3 value in an early draft of this guide. {C.num(pr_dr.get("touching", 0)).capitalize()} of its '
+                                       f'{pr_dr.get("pairs", 0)} letter pairs touch, and its word spaces shrink to '
+                                       f'{sp_dr:.1f} px.'},
                 'specs': [
-                    {'label': 'Title', 'value': f'{C.MINUS}4.5% (−0.045 em)', 'token': 'oa.type.title'},
-                    {'label': 'Section', 'value': f'{C.MINUS}4%', 'token': 'oa.type.section'},
-                    {'label': 'H3', 'value': f'{C.MINUS}3%', 'token': 'oa.type.h3'},
-                    {'label': 'H4', 'value': f'{C.MINUS}2%', 'token': 'oa.type.h4'},
+                    {'label': 'Title', 'value': f'{pct(trk["title"])} ({trk["title"]:g} em)'.replace('-', C.MINUS), 'token': 'oa.type.title'},
+                    {'label': 'Section', 'value': pct(trk['section']), 'token': 'oa.type.section'},
+                    {'label': 'H3', 'value': pct(trk['h3']), 'token': 'oa.type.h3'},
+                    {'label': 'H4', 'value': pct(trk['h4']), 'token': 'oa.type.h4'},
+                    {'label': 'Big figures', 'value': pct(trk['figure']), 'token': 'oa.type.figure'},
+                    {'label': 'Quote', 'value': pct(trk['quote']), 'token': 'oa.type.quote'},
                     {'label': 'Reading styles', 'value': '0, the font’s own spacing', 'token': 'oa.type.body'},
-                    {'label': 'Label', 'value': '+6%', 'token': 'oa.type.label'},
+                    {'label': 'Label', 'value': pct(trk['label']), 'token': 'oa.type.label'},
+                    {'label': 'Letter pairs that touch, tagline at 110 px', 'value': f'{tg["token"].get("touching", 0)} of {tg["token"].get("pairs", 0)} at {pct(trk["title"])}; {tg["v5"].get("touching", 0)} at {pct(V5_TRACK)}; {tg["0"].get("touching", 0)} at the font’s own spacing', 'token': None},
+                    {'label': 'Letter pairs that touch, rule titles at 32 px', 'value': f'{tt["token"].get("touching", 0)} of {tt["token"].get("pairs", 0)} at {pct(trk["h3"])}; {tt["draft"].get("touching", 0)} at {pct(DRAFT_H3)}; {tt["0"].get("touching", 0)} at the font’s own spacing', 'token': None},
                 ],
                 'related': ['03', '04'],
                 'builders': ['Tracking lives in each style’s <code>letter-spacing</code> property, in em, so it scales with '
-                             'the size: <code>letter-spacing: var(--oa-type-h3-letter-spacing)</code>. Never track body text.'],
+                             'the size: <code>letter-spacing: var(--oa-type-h3-letter-spacing)</code>. Leave body text at '
+                             'the font’s own spacing.'],
             },
             {
-                'id': '06.5', 'title': 'Figures line up in tables, and negatives take the true minus sign.',
-                'rule': ['Tables, trackers, scorecards and chart labels set tabular figures, which give every digit the same '
-                         'width so a column lines up. A negative number takes the minus sign (−, U+2212), never a hyphen, '
-                         'and the numbers in one column carry the same number of decimals.'],
+                'id': '06.5', 'title': 'Line up figures in tables, and give negatives the true minus sign.',
+                'rule': ['Tables, trackers and chart labels set tabular figures, which give every digit the same width so a '
+                         'column lines up. A negative number takes the minus sign (−, U+2212), which matches the plus sign’s '
+                         'width, and the numbers in one column carry the same number of decimals.'],
                 'tokens': ['oa.type.dataLabel', 'oa.type.figure', 'oa.type.bodySmall'],
                 'why': {'text': ['A reader compares a column by its right edge, and proportional figures move that edge digit '
                                  'by digit. The hyphen is shorter than the minus and sits lower, so a hyphen before 245 can '
@@ -566,9 +686,9 @@ def build(ctx):
                              'should format negatives itself, since a number converted to text takes a hyphen.'],
             },
             {
-                'id': '06.6', 'title': 'Headings balance their lines and never end on one word.',
+                'id': '06.6', 'title': 'Balance a heading’s lines, and keep two words or more on its last line.',
                 'rule': ['A heading that runs to two or more lines splits into lines of near equal length, and its last line '
-                         'holds at least two words. Body text wraps so its last line never holds one short word.'],
+                         'holds at least two words. Body text wraps so its last line holds more than one short word.'],
                 'tokens': ['oa.type.h3', 'oa.type.section'],
                 'why': {'text': ['A lone word on a heading’s last line, called a widow, reads as an afterthought and pulls the '
                                  'eye down a line for one word. Balanced lines let a reader take in a heading at a glance.'],
@@ -587,14 +707,14 @@ def build(ctx):
                              'heading at 360 px and, where a widow appears, join its last two words with a no-break space.'],
             },
             {
-                'id': '06.7', 'title': 'Opening quotation marks hang outside the text edge.',
+                'id': '06.7', 'title': 'Hang opening quotation marks outside the text edge.',
                 'rule': ['In a pull quote or a quote card, the opening mark sits in the margin, so the first letter of every '
-                         'line starts on the same edge. Use curly quotation marks and apostrophes, never straight ones, and '
-                         'keep common ligatures on and discretionary ligatures off.'],
+                         'line starts on the same edge. Use curly quotation marks and apostrophes (“ ” ‘ ’), and keep common '
+                         'ligatures on and discretionary ligatures off.'],
                 'tokens': ['oa.type.quote'],
                 'why': {'text': ['When the mark sits inside the edge, the first line starts a mark’s width to the right of the '
-                                 'rest, and the block looks indented by accident. Straight marks come from the typewriter; '
-                                 'curly marks are the ones readers know from print.'],
+                                 'rest, and the block looks indented by accident. Readers know curly marks from books and '
+                                 'newspapers, so a straight mark looks like a typing slip.'],
                         'basis': 'Design judgment'},
                 'correct': {'specimen': 's-06-7-correct',
                             'caption': f'Our editorial commitment as a pull quote at true size. The opening mark hangs '
@@ -612,7 +732,7 @@ def build(ctx):
                              f'<code>text-indent</code> of {hang_em:.2f} em on the quote where it does not.'],
             },
             {
-                'id': '06.8', 'title': 'Body text runs 60 to 75 characters a line.',
+                'id': '06.8', 'title': 'Set body text at 60 to 75 characters a line.',
                 'rule': [f'Set body text to a measure of 60 to 75 characters a line on wider screens, and intro '
                          f'text to 65 at most. A phone gives about {ph_lo} to {ph_hi} characters, which suits a small screen. '
                          f'Chapter 07 gives the column spans that deliver these measures at each width.'],
@@ -624,10 +744,10 @@ def build(ctx):
                                  f'set it at 22 px.'],
                         'basis': 'Design judgment, with WCAG 2.2 SC 1.4.8 (AAA, advisory)'},
                 'correct': {'specimen': 's-06-8-correct',
-                            'caption': f'A paragraph at true size and the body measure, 33.88 rem. Its full lines measure '
-                                       f'{bi[1]} to {bi[2]} characters. Over {li[3]:,} characters of chapter 02’s prose at the '
-                                       f'same width, lines average {li[0]:.0f}, and at the widest body measure, '
-                                       f'{lm[0]:.0f}.'},
+                            'caption': f'The opening of our writing rules in chapter 02, at true size and the body measure, '
+                                       f'33.88 rem. Its full lines measure {bi[1]} to {bi[2]} characters. Over {li[3]:,} '
+                                       f'characters of chapter 02’s prose at the same width, lines average {li[0]:.0f}, and at '
+                                       f'the widest body measure, {lm[0]:.0f}.'},
                 'failure': {'specimen': 's-06-8-failure',
                             'caption': f'<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its '
                                        f'intros, at 22 px and 65ch. Its full lines run {v5[1]} to {v5[2]} characters, and the '
@@ -635,7 +755,7 @@ def build(ctx):
                 'specs': [
                     {'label': 'Body measure', 'value': f'33.88 rem, 542 px at 16 px text; lines average {li[0]:.0f} characters', 'token': 'oa.layout.measure.bodyIdeal'},
                     {'label': 'Widest body measure', 'value': f'37.37 rem; lines average {lm[0]:.0f} characters', 'token': 'oa.layout.measure.bodyMax'},
-                    {'label': 'Widest intro measure', 'value': f'41.91 rem; at 22 px, lines of {im[1]} to {im[2]} characters', 'token': 'oa.layout.measure.introMax'},
+                    {'label': 'Widest intro measure', 'value': f'41.91 rem; at 22 px, lines average {im[0]:.0f} characters', 'token': 'oa.layout.measure.introMax'},
                     {'label': 'Phones', 'value': f'About {ph_lo} to {ph_hi} characters at 360 and 390 px', 'token': 'oa.layout.grid.phone.margin'},
                 ],
                 'related': ['07', '19'],
@@ -643,18 +763,19 @@ def build(ctx):
                              'is in rem, so a reader who enlarges text keeps the same characters a line.'],
             },
             {
-                'id': '06.9', 'title': 'Email sets its type in the system stack.',
+                'id': '06.9', 'title': 'Set email type in the system font stack.',
                 'rule': ['Many mail apps ignore web fonts, so email sets headlines and body text in Helvetica, Arial, '
-                         'sans-serif, and quotations in Georgia Italic. The scale’s sizes and weights still apply, and '
-                         'chapter 22 shows the full template.'],
+                         'sans-serif, and quotations in Georgia Italic. An email is a fixed artboard 600 px wide, so it takes '
+                         'the scale’s phone floor sizes, as Rule 06.2 sets out. Chapter 22 shows the full template.'],
                 'tokens': ['oa.font.family.emailSans', 'oa.font.family.emailQuote'],
                 'why': {'text': ['A mail app that cannot load a web font falls back to a face of its own choosing, often a '
                                  'serif. The system stack names the fallback in advance, so every reader sees a face we chose. '
                                  'Our fifth edition kept this rule and then set its own email headline in Inter Tight.'],
-                        'basis': 'Design judgment; Master Brief section 10'},
+                        'basis': 'Design judgment'},
                 'correct': {'specimen': 's-06-9-correct',
                             'caption': 'An email header at its true width of 600 px on White, set in the system stack: the '
-                                       'headline and body in Helvetica or Arial, the quote in Georgia Italic.'},
+                                       'headline in Helvetica or Arial at 26 px, the H3 floor, and the quote in Georgia Italic '
+                                       'at 24 px, the quote floor.'},
                 'failure': {'specimen': 's-06-9-failure',
                             'caption': '<strong>Fails the email rule.</strong> The headline set in Inter Tight, as a mail app '
                                        'shows it when the web font does not load: in the app’s default serif.'},
@@ -662,25 +783,26 @@ def build(ctx):
                     {'label': 'Headlines and body', 'value': 'Helvetica, Arial, sans-serif', 'token': 'oa.font.family.emailSans'},
                     {'label': 'Quotation', 'value': 'Georgia, serif, italic', 'token': 'oa.font.family.emailQuote'},
                     {'label': 'Width', 'value': '600 px', 'token': None},
+                    {'label': 'Sizes', 'value': 'The phone floor: headline 26 px, quote 24 px, body 17 px', 'token': 'oa.type.h3'},
                 ],
                 'related': ['02', '22'],
                 'builders': ['Write the stack on every text element of an email, inline, since many mail apps strip a '
                              'style block. The wordmark goes in as an image with its name as alt text.'],
             },
             {
-                'id': '06.10', 'title': 'Pages load the three faces and never substitute another.',
+                'id': '06.10', 'title': 'Load the three faces, and let no other face stand in.',
                 'rule': ['Pages load Inter Tight, Inter and Lora from their published files, in the weights the scale uses. '
                          'Arial and Georgia appear only as fallbacks inside the font stacks. No other face stands in for '
                          'ours, including Spectral, Source Sans, Public Sans, IBM Plex, Libre Baskerville, Playfair Display, '
                          'Cormorant, Helvetica Neue for display, Times New Roman, Calibri, Roboto, Open Sans and Montserrat.'],
                 'tokens': ['oa.font.family.display', 'oa.font.family.reading', 'oa.font.family.quote'],
-                'why': {'text': [f'Master Brief section 3 says a font substitution is never a finished identity decision. A '
-                                 f'fallback keeps a page readable when a font fails to load, and that is its only job. '
-                                 f'Measured at 32 px, the heading here sets {wi:.0f} px wide in Inter Tight and {wa:.0f} px in '
-                                 f'Arial, {wider:.1f} percent wider, which is why a page that failed to '
-                                 f'load Inter Tight can look finished: only the letters show it. The list carries our fifth '
-                                 f'edition’s never-substitute list forward.'],
-                        'basis': 'Master Brief section 3; design judgment'},
+                'why': {'text': [f'Our locked identity rules say a font substitution is never a finished identity decision. A '
+                                 f'fallback’s one job is to keep a page readable when a font fails to load. Measured at 32 '
+                                 f'px, the heading here sets {wi:.0f} px wide in Inter Tight and {wa:.0f} px in Arial, '
+                                 f'{wider:.1f} percent wider. A page that failed to load Inter Tight can look finished, and '
+                                 f'only the letters give it away. The list carries our fifth edition’s never-substitute list '
+                                 f'forward.'],
+                        'basis': 'Our locked identity rules; design judgment'},
                 'correct': {'specimen': 's-06-10-correct',
                             'caption': f'A heading at true size in Inter Tight 800, {wi:.0f} px wide at 32 px.'},
                 'failure': {'specimen': 's-06-10-failure',
@@ -698,7 +820,12 @@ def build(ctx):
                              'carries the files.'],
             },
         ],
-        'extras': [],
+        'extras': [
+            {'after_rule': '06.2', 'specimen': 's-06-artboards', 'label': 'Sizes for fixed artboards',
+             'caption': 'Every style’s size on a web page and on a fixed artboard, such as a card, an email or a social '
+                        'image. Between 600 and 1,200 px, take each style’s size from either column. Print pieces set type '
+                        'in points, with all text at 10 pt or larger.'},
+        ],
         'sources': [src,
                     'W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.4 and '
                     '1.4.8, https://www.w3.org/TR/WCAG22/.'],

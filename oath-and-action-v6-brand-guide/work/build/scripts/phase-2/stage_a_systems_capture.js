@@ -7,6 +7,7 @@
 //   width   the rendered width of an element in CSS px
 //   space   the width of "n n" less the width of "nn" in the same style: one word space as set
 //   fonts   document.fonts.check() for each face and weight the guide loads
+//   pairs   neighboring letters whose ink touches at a given size and tracking (canvas, twice size, with kerning)
 // then takes each screenshot probe (a phone page) at device scale 1. Writes <scratch>/results.json.
 const fs = require('fs');
 const path = require('path');
@@ -64,6 +65,63 @@ const spec = JSON.parse(fs.readFileSync(path.join(dir, 'probes.json'), 'utf8'));
     }
     return out;
   });
+  // pairs: for each pair of neighboring letters (no space between), draw each glyph on its own canvas at twice size,
+  // the second at the advance the pair takes with kerning and tracking, and find the narrowest white gap between their
+  // ink, row by row, allowing a diagonal neighbor. A pair touches when no white device pixel separates the two.
+  const pairSpecs = Object.entries(spec.probes).filter(([, p]) => p.kind === 'pairs');
+  if (pairSpecs.length) {
+    const pairResults = await page.evaluate(async (list) => {
+      const out = {};
+      const S = 2;
+      for (const [key, p] of list) {
+        await document.fonts.load(`${p.weight} ${p.size}px "${p.family}"`);
+        const font = `${p.weight} ${p.size * S}px "${p.family}"`;
+        const ls = `${(p.track * p.size * S).toFixed(4)}px`;
+        const m = document.createElement('canvas').getContext('2d');
+        m.font = font; m.letterSpacing = ls; m.fontKerning = 'normal';
+        const H = Math.ceil(p.size * S * 1.8);
+        const base = Math.round(H * 0.72);
+        const ink = (ch, x, W) => {
+          const c = document.createElement('canvas'); c.width = W; c.height = H;
+          const g = c.getContext('2d', { willReadFrequently: true });
+          g.font = font; g.letterSpacing = ls; g.fontKerning = 'normal'; g.fillStyle = '#000'; g.textBaseline = 'alphabetic';
+          g.fillText(ch, x, base);
+          const d = g.getImageData(0, 0, W, H).data;
+          const left = new Array(H).fill(Infinity), right = new Array(H).fill(-1);
+          for (let y = 0; y < H; y++) for (let xx = 0; xx < W; xx++) {
+            if (d[(y * W + xx) * 4 + 3] > 96) { if (xx < left[y]) left[y] = xx; if (xx > right[y]) right[y] = xx; }
+          }
+          return { left, right };
+        };
+        const words = p.text.split(/\s+/).filter(Boolean);
+        const pairs = [];
+        for (const w of words) for (let i = 0; i < w.length - 1; i++) pairs.push(w[i] + w[i + 1]);
+        const touching = [];
+        let minGap = Infinity;
+        for (const pr of pairs) {
+          const a = pr[0], b = pr[1];
+          const xb = m.measureText(pr).width - m.measureText(b).width;
+          const W = Math.ceil(xb + p.size * S * 2 + 40);
+          const A = ink(a, 20, W), B = ink(b, 20 + xb, W);
+          let gap = Infinity;
+          for (let y = 0; y < H; y++) {
+            if (A.right[y] < 0) continue;
+            for (const dy of [-1, 0, 1]) {
+              const yy = y + dy; if (yy < 0 || yy >= H || B.left[yy] === Infinity) continue;
+              gap = Math.min(gap, B.left[yy] - A.right[y] - 1);
+            }
+          }
+          if (gap <= 0) touching.push(pr);
+          minGap = Math.min(minGap, gap);
+        }
+        out[key] = { pairs: pairs.length, touching: touching.length, which: touching,
+          min_gap_px: +(minGap / S).toFixed(2), size_px: p.size, track_em: p.track, family: p.family, weight: p.weight,
+          titles: p.n_titles || null };
+      }
+      return out;
+    }, pairSpecs);
+    Object.assign(results, pairResults);
+  }
   for (const [key, p] of Object.entries(spec.probes)) {
     if (p.kind !== 'screenshot') continue;
     const pg = await ctx.newPage();

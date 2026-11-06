@@ -45,6 +45,19 @@ MEAS_OUT = ROOT / 'work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.j
 FONTS = ('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@800'
          '&family=Lora:ital,wght@1,400;1,500&display=swap')
 
+# Display styles grow with the window; every other style holds one size (tokens.json oa.type).
+FLUID = ('title', 'section', 'h3', 'h4', 'quote', 'intro', 'figure')
+# D2-254: fixed artboards up to 600 px take each style's phone floor; 1,200 px and wider, its desktop ceiling.
+ARTBOARD_FLOOR = {'title': 56, 'section': 44, 'figure': 48, 'h3': 26, 'h4': 20, 'quote': 24, 'intro': 19, 'ask': 19,
+                  'body': 17, 'bodySmall': 15, 'ui': 15, 'caption': 14, 'label': 13, 'dataLabel': 13}
+ARTBOARD_CEIL = dict(ARTBOARD_FLOOR, title=110, section=80, figure=104, h3=32, h4=24, quote=32, intro=22)
+# DR-95: display tracking, in em
+TRACKING_DR95 = {'title': -0.03, 'section': -0.025, 'h3': -0.01, 'h4': -0.005}
+# Classes the shell styles on purpose inside a specimen: the one Illustrative label (DR-97)
+SHELL_CLASSES = ('illus',)
+ILLUS = '<span class="illus">Illustrative</span>'
+FAIL_BAND = ('<div class="fb" aria-hidden="true"><span>×</span> Failure case: do not publish</div>')
+
 
 class Ctx:
     """What every content module needs: token values, measured figures and the specimen register."""
@@ -70,14 +83,57 @@ class Ctx:
             raise KeyError(f'{name} is not in tokens.css')
         return f'var({name})'
 
-    def ty(self, name):
-        """A type style as CSS declarations: the shorthand and the parts the shorthand cannot carry."""
+    def ty(self, name, fixed=None):
+        """A type style as CSS declarations: the shorthand and the parts the shorthand cannot carry.
+
+        Display styles grow with the window on a web page, but a specimen is a fixed artboard or a sheet, so its size
+        comes from the scale's fixed sizes (D2-254): fixed='floor' or 'ceil' writes that size; otherwise the size is
+        var(--sx-fs-NAME), which spec() sets for the specimen's width (the phone floor by default)."""
         k = C.css_name('oa.type.' + name)
         for suf in ('', '-letter-spacing', '-text-transform', '-font-variant-numeric'):
             self.cssv(k + suf)
         self.T.used.add('oa.type.' + name)
-        return (f'font:var({k});letter-spacing:var({k}-letter-spacing);text-transform:var({k}-text-transform);'
-                f'font-variant-numeric:var({k}-font-variant-numeric)')
+        out = (f'font:var({k});letter-spacing:var({k}-letter-spacing);text-transform:var({k}-text-transform);'
+               f'font-variant-numeric:var({k}-font-variant-numeric)')
+        if name in FLUID:
+            lo, hi = self.fixed_px(name)
+            if fixed == 'floor':
+                out += f';font-size:{lo / 16:g}rem'
+            elif fixed == 'ceil':
+                out += f';font-size:{hi / 16:g}rem'
+            else:
+                out += f';font-size:var(--sx-fs-{name},{lo / 16:g}rem)'
+        return out
+
+    def fixed_px(self, name):
+        """The style's phone floor and desktop ceiling in px, read from tokens.json and checked against D2-254."""
+        node = self.T.node(f'oa.type.{name}')
+        fs = node['$value']['fontSize']
+        hi = fs['value'] * 16 if fs['unit'] == 'rem' else fs['value']
+        lo = self.T.ext(f'oa.type.{name}').get('minFontSize', {}).get('value')
+        lo = lo * 16 if lo else hi
+        if (round(lo), round(hi)) != (ARTBOARD_FLOOR[name], ARTBOARD_CEIL[name]):
+            raise ValueError(f'oa.type.{name} runs {lo:g} to {hi:g} px in tokens.json; D2-254 prints '
+                             f'{ARTBOARD_FLOOR[name]} and {ARTBOARD_CEIL[name]}')
+        return lo, hi
+
+    def fs_vars(self, mode):
+        """Custom properties that size every display style in a specimen: 'floor', 'ceil' or 'sheet' (floor on
+        phones, ceiling from 48em, so every size a reader sees is one of the scale's fixed sizes)."""
+        lo = ';'.join(f'--sx-fs-{n}:{self.fixed_px(n)[0] / 16:g}rem' for n in FLUID)
+        hi = ';'.join(f'--sx-fs-{n}:{self.fixed_px(n)[1] / 16:g}rem' for n in FLUID)
+        if mode == 'floor':
+            return f':scope{{{lo}}}'
+        if mode == 'ceil':
+            return f':scope{{{hi}}}'
+        return f':scope{{{lo}}}@media (min-width:48em){{:scope{{{hi}}}}}'
+
+    def fail_band(self):
+        """A band inside a failure stage, so a cropped picture of it still says not to publish it (BE-S4)."""
+        css = (f'.fb{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 12px;'
+               f'background:{self.v("oa.color.surface.charcoal")};color:{self.v("oa.color.text.primary.onCharcoal")};'
+               f'{self.ty("label")}}}')
+        return css, FAIL_BAND
 
     def ratio(self, fg, bg, key=None):
         """Contrast of two token paths (or hex values), printed to two decimals and recorded."""
@@ -108,7 +164,7 @@ class Ctx:
 
     # specimens -----------------------------------------------------------------------------------------------
     def spec(self, sid, html, chapter, rule, alt, width=None, illustrative=False, exempt=None, surface=None,
-             interactive=False, notes='', height=None):
+             interactive=False, notes='', height=None, readable=False, scale=None, sizing=None):
         if sid in self.specs:
             raise ValueError(f'{sid} registered twice')
         if re.search(r'<h[1-6]\b', html, re.I):
@@ -121,6 +177,15 @@ class Ctx:
             raise ValueError(f'{sid}: literal color outside var()')
         if re.search(r'font-size:\s*[\d.]+px', html):
             raise ValueError(f'{sid}: px font size; use a type token or rem')
+        if re.search(r'<(nav|article|header|footer|main|aside|section)\b', html, re.I):
+            raise ValueError(f'{sid}: landmark or sectioning element in a specimen; use div')
+        if exempt and 'scale' in exempt and 'scale' not in notes.lower() and 'off the scale' not in notes.lower():
+            raise ValueError(f'{sid}: check_exempt scale needs its reason in notes')
+        # sizes for display styles: the phone floor up to 600 px, the ceiling from 1,200 px, and a sheet that flows
+        # with the page shows the floor on phones and the ceiling from 48em (D2-254)
+        mode = sizing or ('sheet' if width is None else 'ceil' if width >= 1200 else 'floor')
+        if 'var(--sx-fs-' in html and mode != 'floor':
+            html = f'<style>{self.fs_vars(mode)}</style>' + html
         C.check_copy(alt, f'{sid} alt')
         if width is None:
             # A fluid specimen fills the stage, and on phones the shell's mat has no side padding, so the specimen
@@ -138,6 +203,10 @@ class Ctx:
             meta['surface'] = surface
         if interactive:
             meta['interactive'] = True
+        if readable:
+            meta['readable'] = True
+        if scale:
+            meta['scale'] = scale
         self.specs[sid] = {'html': html.strip() + '\n', 'meta': meta}
         return sid
 
@@ -146,11 +215,11 @@ def prefix_classes(html):
     """Prefix every class in a fragment with "sx-", in markup and in its <style>, so no name meets a shell class
     (the shell styles .menu, .label, .hinge and more by class, and @scope keeps styles in but not out)."""
     def cls(m):
-        return 'class="' + ' '.join('sx-' + c for c in m.group(1).split()) + '"'
+        return 'class="' + ' '.join(c if c in SHELL_CLASSES else 'sx-' + c for c in m.group(1).split()) + '"'
     html = re.sub(r'class="([^"]*)"', cls, html)
 
     def css(m):
-        body = re.sub(r'(?<![-\d])\.([A-Za-z][\w-]*)', r'.sx-\1', m.group(2))
+        body = re.sub(r'(?<![-\d])\.(?!(?:' + '|'.join(SHELL_CLASSES) + r')\b)([A-Za-z][\w-]*)', r'.sx-\1', m.group(2))
         return m.group(1) + body + m.group(3)
     return re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', css, html, flags=re.S)
 
@@ -208,6 +277,8 @@ def main():
     ap.add_argument('--out-dir', required=True, help='scratch folder for probe pages and capture results')
     ap.add_argument('--tokens-json', default=str(C.TOKENS_JSON))
     ap.add_argument('--tokens-css', default=str(C.TOKENS_CSS))
+    ap.add_argument('--allow-old-tracking', action='store_true',
+                    help='preview only: build while tokens.json still holds the display tracking before DR-95')
     a = ap.parse_args()
     scratch = pathlib.Path(a.out_dir)
     scratch.mkdir(parents=True, exist_ok=True)
@@ -222,9 +293,16 @@ def main():
         for mod in mods:
             if hasattr(mod, 'analyze'):
                 mod.analyze(ctx, scratch)
+    ctx.allow_old_tracking = a.allow_old_tracking
     chapters = [mod.build(ctx) for mod in mods]
 
     if a.stage == 'probe':
+        # Rule 06.4: every rule title in these chapters, at the H3 size, at three trackings
+        titles = [r['title'] for ch in chapters for r in ch['rules']]
+        h3 = T.ext('oa.type.h3').get('trackingEm', 0)
+        for name, tr in (('0', 0), ('token', h3), ('draft', -0.03)):
+            ctx.probe(f'pairs titles {name}', 'pairs', text=' '.join(titles), family='Inter Tight', weight=800, size=32,
+                      track=tr, n_titles=len(titles))
         pages = {}
         for mod in mods:
             if hasattr(mod, 'probe_pages'):

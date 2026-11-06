@@ -2,6 +2,74 @@
 
 Oath & Action Edition 06, Phase 2, November 6, 2026. Written by the guide engineer for the editor, the identity designer and the systems designer, under `work/handoffs/phase-2/20261106_Stage-A-Brief.md`. This is a living file: the sections marked "for makers" stay stable; the engineer's report sits at the end.
 
+## 0. New interfaces for the fix pass (for makers)
+
+Published first in the fix pass, under `work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Brief.md` ("New interfaces"). Write against these now. The build reads every key below; until a key's rendering lands in the shell, the build accepts it and ignores it, so nothing you write will break the page.
+
+### Manifest keys (`manifest-<maker>.json`)
+
+| Key | Write it when | What the shell does |
+|---|---|---|
+| `"readable": true` | The specimen is a static table or list whose words a reader needs (minimums, palettes, term tables, checklists) | The stage becomes a group named "Correct application, Rule 03.4, specimen" (the plate label, the rule, then "specimen"; an extra without a label takes the first words of its alt). The table or list keeps its structure for assistive technology. Your alt becomes the group's description, read once. Nothing claims interaction (D2-255) |
+| `"interactive": true` | Only for a specimen with controls a reader uses (the composer, a demo with buttons) | The same group, named "..., interactive specimen" |
+| neither | Everything else: a picture of a piece | The stage is an image named by your alt, as now |
+| `"scale": 0.25` | A drawing shown smaller than the thing it shows | The size line reads "One quarter size" in place of "True size". Also 0.5 "Half size", 0.2 "One fifth size", 0.1 "One tenth size"; any other value prints its percent. Text in the drawing passes the type-scale check at its drawn size or at its size divided by the scale |
+| `"check_exempt": [..., "scale"]` | Type off the D2-254 sizes on purpose: a labeled failure, a historical record (our fifth edition as it was) or a print piece set in points | The type-scale check skips the plate and lists the exemption. Put the reason in `notes`; the build warns when `notes` is empty, or when a plate that is not a failure gives no print or historical reason |
+| `"fit_switch": true` | A wide comparison frame (the masthead and social card pairs) | A "True size / Fit to window" switch in the plate head, true size by default. Fit to window scales the whole stage down to the frame's width and the size line says by how much |
+| `"width_px"` | Every specimen of a thing with a width (C-S6) | The stage is that wide and the size line prints it. Leave it out only for page text the shell should flow |
+
+**Type sizes inside a specimen (D2-254), checked by `guide_check.js` as `typeScale`.** Up to 600 px wide: title 56, section 44, figure 48, H3 26, H4 20, quote 24, intro 19, ask 19, body 17, body small 15, UI 15, caption 14, label 13, data label 13. From 1,200 px wide: title 110, section 80, figure 104, H3 32, H4 24, quote 32, intro 22, and the rest unchanged. Between 601 and 1,199 px, either set. A specimen with no `width_px` flows with the page, so it may also use each style's fluid size at the width being checked (`font: var(--oa-type-h3)` and the rest). The chart system's own sizes (28 and 22 px titles, 15 px labels, 116 and 88 px big numbers) also pass. Any other size needs `"scale"` in `check_exempt`.
+
+**Never inside a specimen (AX-S8):** `<nav>`, `<article>`, `<header>`, `<footer>`, `<main>`, `<aside>`, a named `<section>` or `<form>`, or a landmark role. Draw them with `div`. Checked as `specimenLandmarks`.
+
+**Illustrative (DR-97, C-S8).** One form only: `<span class="illus">Illustrative</span>`. The shell styles it everywhere, specimens included, and it never stretches inside a flex or grid parent. Do not restyle it in your `<style>`. One label at the head of a piece in which everything is invented; a label beside each item only where real and invented items mix.
+
+### Chapter key `groups` (chapter JSON)
+
+```
+"groups": [
+  { "before_rule": "02.1", "number": 1, "title": "Sound like a person talking",
+    "line": "Write the sentence you would say across a kitchen table, with the actor up front." },
+  { "before_rule": "02.5", "number": 2, "title": "Put the point first and stop", "line": "..." }
+]
+```
+
+Each group opens before the rule `before_rule` names and runs to the next group. Rules keep their IDs and stay h3. The shell prints two things:
+
+1. A rule-group block before the group's first rule, outside any mat: a hairline, the number and title in the H4 style, and the line in the intro style. It is page text, not a heading, so the heading rule holds (map section 5).
+
+```html
+<div class="rule-group" id="group-02-1" data-group="1">
+  <p class="rg-head"><span class="rg-n">1</span> <span class="rg-t">Sound like a person talking</span></p>
+  <p class="rg-line">Write the sentence you would say across a kitchen table, with the actor up front.</p>
+</div>
+```
+
+2. A rule index right after the chapter's intro, as page text: each group's number and title (a link to its block), then its rules as links.
+
+```html
+<div class="rule-index">
+  <p class="label" id="voice-index-t">Rules in this chapter, by group</p>
+  <ol class="ri-groups" aria-labelledby="voice-index-t">
+    <li><a class="ri-g" href="#group-02-1"><span class="rg-n">1</span> Sound like a person talking</a>
+      <ul class="ri-rules"><li><a href="#rule-02-1"><span class="toc-rid">02.1</span> Write it the way you would say it.</a></li> ...</ul></li>
+  </ol>
+</div>
+```
+
+In a chapter with groups, the "In this chapter" list lists rules under their group titles. A group anchor takes focus when a link lands on it. The build warns when `before_rule` names no rule in the chapter, when the first group does not start at the first rule, or when numbers skip. Chapter 02's old index and group-opener specimens (`s-02-index`, `s-02-group-1` to `s-02-group-5`) are no longer needed once `groups` is in the file.
+
+### Strings the shell now writes
+
+- "Coming later" wherever a chapter is not in this page (was "later stage").
+- Every Files list ends: "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here." (D2-252)
+- The appendix is "Wordmark width proofs". The shell writes no decision code, "Phase", "Gate", "stage board" or "the studio" anywhere (D2-253); `guide_check.js` now fails those words and codes in every reader string, alt text included, as `codes`. Keep codes in manifests (`notes`) and in your handoff notes.
+- An accessible name that holds an entity such as `&amp;` fails as `nameEntities`. Write `alt="Oath &amp; Action"` or `alt="Oath & Action"`; the build now decodes entities once in both cases. In chapter JSON, `&amp;` and `&minus;` print as `&` and `&minus;` once, and anything inside `<code>` prints as written, tags included.
+
+### Preview
+
+As before: `python3 -I work/build/scripts/phase-2/guide_build.py`, then open `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`. Then `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html --quick` for the rendered checks at 1440 and 390 px. The new checks report each failure with its specimen id.
+
 ## 1. Preview your chapter (for makers)
 
 From the repository root:

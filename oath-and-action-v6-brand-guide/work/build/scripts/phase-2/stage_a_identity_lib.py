@@ -10,6 +10,7 @@ own hooks (currentColor, --amp, --lever, --link, --line).
 """
 import html
 import re
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -19,8 +20,44 @@ CL_DIR = ROOT / "work/build/assets/civic-line"
 SPEC_DIR = ROOT / "work/build/guide/specimens"
 CHAP_DIR = ROOT / "work/build/guide/chapters"
 
-E = html.escape
+def E(t):
+    """Escape for HTML text and double-quoted attributes. Apostrophes stay as typed, so the quote helper can curl them."""
+    return html.escape(str(t), quote=False).replace('"', "&quot;")
+
+
 SURFACES = ("newsprint", "white", "charcoal", "prussian")
+
+# --------------------------------------------------------------------------------------------- quotation marks
+# Rule 06.7: curly quotation marks and apostrophes. Every visible string runs through the editor's helper (C-S9).
+sys.path.insert(0, str(HERE))
+try:
+    from guide_editor_common import curl as _curl  # noqa: E402
+except Exception:                                   # the editor's file is being rewritten; same rules as its curl()
+    def _curl(s):
+        s = str(s)
+        s = re.sub(r'"([^"<>]*)"', "\u201c\\1\u201d", s)
+        s = re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)])", "\u2019", s)
+        return re.sub(r"(?<![\w'])'([^'\n]{1,80}?)'(?![\w])", "\u2018\\1\u2019", s)
+
+
+def curl(t):
+    return _curl(t) if isinstance(t, str) else t
+
+
+def curl_html(s):
+    """Curl the quotation marks in an HTML fragment's text and in its alt and aria-label values, leaving markup,
+    <style> and <script> untouched."""
+    out = []
+    for part in re.split(r"(<style\b.*?</style>|<script\b.*?</script>|<[^>]+>)", s, flags=re.S):
+        if not part:
+            continue
+        if part.startswith("<style") or part.startswith("<script"):
+            out.append(part)
+        elif part.startswith("<"):
+            out.append(re.sub(r'\b(alt|aria-label)="([^"]*)"', lambda m: f'{m.group(1)}="{curl(m.group(2))}"', part))
+        else:
+            out.append(curl(part.replace("&#x27;", "'")))
+    return "".join(out)
 
 
 def rel(p):
@@ -254,8 +291,18 @@ def lockmark(size, *, surface="newsprint", mode="color", label="Lockmark", decor
 LATTICE = {24: (24, (3.5, 11.5, 19.5)), 40: (40, (3.5, 19.5, 35.5))}
 POS = {"TL": (0, 0), "TM": (1, 0), "TR": (2, 0), "ML": (0, 1), "C": (1, 1), "MR": (2, 1), "BL": (0, 2), "BM": (1, 2), "BR": (2, 2)}
 PILLAR_CORNER = {"Explain": "TL", "Track": "TR", "Connect": "BL", "Act": "BR"}
-STAGES = ["Filed", "Referred", "Hearing", "Reported out", "Passed first chamber", "Passed second chamber", "Reconciled",
-          "Signed", "In effect"]
+STAGES = ["Filed", "Sent to committee", "Hearing", "Out of committee", "Passed one chamber", "Passed both chambers",
+          "Final text agreed", "Signed", "In effect"]
+# What each stage means, in plain words (H02, CP-M9). Printed once per tracker page and in the stages sheet.
+GLOSS = ["A legislator introduced the bill.",
+         "The bill went to the committee that studies its subject.",
+         "The committee heard from the public.",
+         "The committee voted to send it to the full chamber, the House or the Senate.",
+         "The House or the Senate approved it.",
+         "The other chamber approved it too.",
+         "Both chambers agreed on one text.",
+         "The governor signed it into law.",
+         "The law now applies."]
 SERIES = [  # V5's six series and routes (V5 07, "Six series, six routes"); "Dispatch from the Front" renamed (S2)
     ("Reform 101", "Explain", ["BL", "ML", "TL"]),
     ("The Oath", "Explain", ["TR", "TM", "TL"]),
@@ -361,8 +408,34 @@ def corner(pillar):
 
 
 # --------------------------------------------------------------------------------------------- page bits
-def illus(text="Illustrative"):
-    return f'<span class="oai-illus">{E(text)}</span>'
+def illus():
+    """The shell's one Illustrative label (DR-97, C-S8): <span class="illus">Illustrative</span>, never restyled."""
+    return '<span class="illus">Illustrative</span>'
+
+
+def head_label(scope=""):
+    """One label at the head of a piece. scope names what is invented when real and invented items mix."""
+    tail = f' <span class="oai-tag">{E(scope)}</span>' if scope else ""
+    return f'<p class="oai-head">{illus()}{tail}</p>'
+
+
+# ------------------------------------------------------------------------------- type on fixed artboards (D2-254)
+# Up to 600 px wide: each style's phone floor. 1,200 px and wider: its desktop ceiling. Print: points (D2-205).
+FLOOR = {"title": 56, "section": 44, "figure": 48, "h3": 26, "h4": 20, "quote": 24, "intro": 19, "ask": 19, "body": 17,
+         "body-small": 15, "ui": 15, "caption": 14, "label": 13, "data-label": 13}
+CEIL = dict(FLOOR, title=110, section=80, figure=104, h3=32, h4=24, quote=32, intro=22)
+
+
+def ty(style, board=600, size=None):
+    """CSS for a type style at its fixed size on an artboard of a given width: face, weight, size, line height and
+    tracking from the style's tokens, so the tracking follows tokens.css."""
+    px = size or (CEIL if board >= 1200 else FLOOR)[style]
+    t = f"--oa-type-{style}"
+    css = (f"font-family:var({t}-font-family);font-weight:var({t}-font-weight);font-style:var({t}-font-style);"
+           f"font-size:{px}px;line-height:var({t}-line-height);letter-spacing:var({t}-letter-spacing)")
+    if style == "label":
+        css += ";text-transform:uppercase"
+    return css
 
 
 def tag(text):
@@ -390,18 +463,51 @@ CSS = """
 .oai-s-white .oai-tag{color:var(--oa-color-text-secondary-on-white)}
 .oai-s-charcoal .oai-tag{color:var(--oa-color-text-secondary-on-charcoal)}
 .oai-s-prussian .oai-tag{color:var(--oa-color-text-secondary-on-prussian)}
-.oai-illus{display:inline-block;font:600 13px/1.3 var(--oa-font-family-reading);letter-spacing:0;padding:1px 6px;border:1px solid currentColor;border-radius:0;vertical-align:middle;white-space:nowrap}
+.oai-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;margin:0 0 12px}
 .oai-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;padding-bottom:4px}
 .oai-scroll:focus-visible{outline:2px solid var(--oa-color-focus-ring-on-newsprint);outline-offset:2px}
 .oai-note{font-size:14px;color:var(--oa-color-text-secondary-on-newsprint);max-width:62ch}
-.oai-label{font:700 13px/1.4 var(--oa-font-family-reading);letter-spacing:.06em;text-transform:uppercase}
-.oai-disp{font-family:var(--oa-font-family-display);font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.oai-mono{font-variant-numeric:tabular-nums}
+.oai-label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.oai-num{font-variant-numeric:tabular-nums}
 .oai table{border-collapse:collapse;font-size:14px;line-height:1.45}
 .oai th,.oai td{text-align:left;vertical-align:top;padding:8px 12px 8px 0;border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint)}
+.oai thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary-on-newsprint);border-bottom:2px solid var(--oa-color-border-strong-on-newsprint)}
+@media (max-width:35.49em){.oai table.stack,.oai table.stack tbody,.oai table.stack tr,.oai table.stack th,.oai table.stack td{display:block;width:100%}.oai table.stack thead,.oai table.stack caption+thead{display:none}.oai table.stack tr{border-bottom:1px solid var(--oa-color-border-strong-on-newsprint);padding:10px 0}.oai table.stack th,.oai table.stack td{border:0;padding:2px 0}.oai table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
 .oai th{font-weight:700}
 .oai-fail-x{display:none}
 """
+
+
+def raster_png(html_body, w, h, name, scale=2):
+    """Render a small piece of HTML to a PNG data URI with Chromium: at twice size for a failure case that must show
+    text under the 13 px floor as an image (D1-09), or at 1x to show how a master falls on the pixel grid."""
+    import base64
+    import subprocess
+    import tempfile
+    tmpd = Path(tempfile.mkdtemp(prefix="oai-raster-"))
+    out = tmpd / f"oai-{name}.png"
+    tokens = (ROOT / "work/build/tokens/tokens.css").resolve()
+    page = ('<!doctype html><html><head><meta charset="utf-8">'
+            '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
+            f'<link rel="stylesheet" href="file://{tokens}">'
+            '<style>body{margin:0;background:var(--oa-color-surface-newsprint);font-family:Inter;color:var(--oa-color-text-primary-on-newsprint)}</style></head>'
+            f'<body><div id="c" style="width:{w}px;height:{h}px;overflow:hidden">{html_body}</div></body></html>')
+    tmp = tmpd / f"oai-{name}.html"
+    tmp.write_text(page)
+    js = HERE / "stage_a_identity_raster.js"
+    subprocess.run(["node", str(js), str(tmp), str(out), str(w), str(h), str(scale)], check=True, capture_output=True)
+    return "data:image/png;base64," + base64.b64encode(out.read_bytes()).decode()
+
+
+def inline_master(relpath, h, style=""):
+    """A master's SVG text, for a standalone page that no build inlines (rasters, the letterhead PDF)."""
+    s = (ID_DIR / relpath).read_text()
+    s = re.sub(r"<\?xml[^>]*\?>\s*", "", s).strip()
+    vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', s).group(1).replace(",", " ").split()]
+    w = h * vb[2] / vb[3]
+    s = re.sub(r"<svg\b([^>]*)>", lambda m: "<svg" + re.sub(r'\s(width|height|style)="[^"]*"', "", m.group(1))
+               + f' width="{w:.2f}" height="{h:.2f}" style="display:block;{style}">', s, count=1)
+    return s
 
 
 def fragment(spec_id, body, *, cls="", extra_css="", role_img=None, attrs=""):
@@ -409,5 +515,5 @@ def fragment(spec_id, body, *, cls="", extra_css="", role_img=None, attrs=""):
     specimen from the manifest's alt (role="img"), so the fragment carries no name of its own."""
     if body.startswith('<div class="oai-panel oai-s-newsprint"'):
         body = '<div class="oai-pad oai-s-newsprint"' + body[len('<div class="oai-panel oai-s-newsprint"'):]
-    return (f'<style>{CSS}{extra_css}</style>\n'
-            f'<div class="oai {cls}" data-oai="{spec_id}"{attrs}>{body}</div>\n')
+    return curl_html(f'<style>{CSS}{extra_css}</style>\n'
+                     f'<div class="oai {cls}" data-oai="{spec_id}"{attrs}>{body}</div>\n')

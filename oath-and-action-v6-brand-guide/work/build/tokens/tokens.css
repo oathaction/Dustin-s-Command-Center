@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate2.1 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * Version 6.0.0-gate2.2 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -235,7 +235,7 @@
   --oa-type-title-font-weight: var(--oa-font-weight-extrabold);
   --oa-type-title-font-size: clamp(3.5rem, 2.2464rem + 5.1429vw, 6.875rem);
   --oa-type-title-line-height: 0.95;
-  --oa-type-title-letter-spacing: -0.045em;
+  --oa-type-title-letter-spacing: -0.03em;
   --oa-type-title-text-transform: none;
   --oa-type-title-font-variant-numeric: normal;
   --oa-type-title: var(--oa-type-title-font-style) var(--oa-type-title-font-weight) var(--oa-type-title-font-size)/var(--oa-type-title-line-height) var(--oa-type-title-font-family);
@@ -244,7 +244,7 @@
   --oa-type-section-font-weight: var(--oa-font-weight-extrabold);
   --oa-type-section-font-size: clamp(2.75rem, 1.9143rem + 3.4286vw, 5rem);
   --oa-type-section-line-height: 1.03;
-  --oa-type-section-letter-spacing: -0.04em;
+  --oa-type-section-letter-spacing: -0.025em;
   --oa-type-section-text-transform: none;
   --oa-type-section-font-variant-numeric: normal;
   --oa-type-section: var(--oa-type-section-font-style) var(--oa-type-section-font-weight) var(--oa-type-section-font-size)/var(--oa-type-section-line-height) var(--oa-type-section-font-family);
@@ -253,7 +253,7 @@
   --oa-type-h3-font-weight: var(--oa-font-weight-extrabold);
   --oa-type-h3-font-size: clamp(1.625rem, 1.4857rem + 0.5714vw, 2rem);
   --oa-type-h3-line-height: 1.08;
-  --oa-type-h3-letter-spacing: -0.03em;
+  --oa-type-h3-letter-spacing: -0.01em;
   --oa-type-h3-text-transform: none;
   --oa-type-h3-font-variant-numeric: normal;
   --oa-type-h3: var(--oa-type-h3-font-style) var(--oa-type-h3-font-weight) var(--oa-type-h3-font-size)/var(--oa-type-h3-line-height) var(--oa-type-h3-font-family);
@@ -262,7 +262,7 @@
   --oa-type-h4-font-weight: var(--oa-font-weight-extrabold);
   --oa-type-h4-font-size: clamp(1.25rem, 1.1571rem + 0.3810vw, 1.5rem);
   --oa-type-h4-line-height: 1.15;
-  --oa-type-h4-letter-spacing: -0.02em;
+  --oa-type-h4-letter-spacing: -0.005em;
   --oa-type-h4-text-transform: none;
   --oa-type-h4-font-variant-numeric: normal;
   --oa-type-h4: var(--oa-type-h4-font-style) var(--oa-type-h4-font-weight) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);
@@ -343,7 +343,7 @@
   --oa-type-figure-font-weight: var(--oa-font-weight-extrabold);
   --oa-type-figure-font-size: clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem);
   --oa-type-figure-line-height: 1;
-  --oa-type-figure-letter-spacing: -0.04em;
+  --oa-type-figure-letter-spacing: -0.03em;
   --oa-type-figure-text-transform: none;
   --oa-type-figure-font-variant-numeric: tabular-nums;
   --oa-type-figure: var(--oa-type-figure-font-style) var(--oa-type-figure-font-weight) var(--oa-type-figure-font-size)/var(--oa-type-figure-line-height) var(--oa-type-figure-font-family);

@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.1',
+  version: '6.0.0-gate2.2',
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -338,11 +338,14 @@ const font = {
 
 // name: [family, weight, min px, max px, line height, tracking em, case, numeric, job]
 // Sizes run in rem from 390 to 1440 px wide (T-9). The floor is 13 px with no screen exceptions.
+// Display tracking (DR-95, November 6, 2026): title -3%, section -2.5%, h3 -1%, h4 -0.5%, the craft reviewer's measured
+// set, so letters stop touching in the tagline and the headings. Figure loosened from -4% to -3% by the same measure:
+// at 48 px and -4%, '00' and '44' touched in tabular figures; at -3% no pair of 142 touches at 48 or 104 px.
 const TYPE = [
-  ['title', 'display', 'extrabold', 56, 110, 0.95, -0.045, 'none', null, 'Cover and chapter-opening titles.'],
-  ['section', 'display', 'extrabold', 44, 80, 1.03, -0.04, 'none', null, 'Chapter headings (h2).'],
-  ['h3', 'display', 'extrabold', 26, 32, 1.08, -0.03, 'none', null, 'Module headings.'],
-  ['h4', 'display', 'extrabold', 20, 24, 1.15, -0.02, 'none', null, 'Sub-module and card headings.'],
+  ['title', 'display', 'extrabold', 56, 110, 0.95, -0.03, 'none', null, 'Cover and chapter-opening titles.'],
+  ['section', 'display', 'extrabold', 44, 80, 1.03, -0.025, 'none', null, 'Chapter headings (h2).'],
+  ['h3', 'display', 'extrabold', 26, 32, 1.08, -0.01, 'none', null, 'Module headings.'],
+  ['h4', 'display', 'extrabold', 20, 24, 1.15, -0.005, 'none', null, 'Sub-module and card headings.'],
   ['quote', 'quote', 'regular', 24, 32, 1.3, -0.02, 'none', null, 'Pull quotes and quote cards in Lora Italic.'],
   ['intro', 'reading', 'regular', 19, 22, 1.5, 0, 'none', null, 'Chapter introduction paragraph.'],
   ['body', 'reading', 'regular', 17, 17, 1.6, 0, 'none', null, 'Running text.'],
@@ -351,7 +354,7 @@ const TYPE = [
   ['caption', 'reading', 'regular', 14, 14, 1.5, 0, 'none', null, 'Figure captions and source lines.'],
   ['label', 'reading', 'bold', 13, 13, 1.4, 0.06, 'uppercase', null, 'Eyebrows, column heads and tags, set in capitals at 13 px with 6% tracking (T-9).'],
   ['dataLabel', 'reading', 'semibold', 13, 13, 1.3, 0, 'none', 'tabular-nums', 'Chart labels, axis values and table figures, with tabular figures and the true minus sign.'],
-  ['figure', 'display', 'extrabold', 48, 104, 1.0, -0.04, 'none', 'tabular-nums', 'Big numbers in reports and specimens, with tabular figures and the true minus sign.'],
+  ['figure', 'display', 'extrabold', 48, 104, 1.0, -0.03, 'none', 'tabular-nums', 'Big numbers in reports and specimens, with tabular figures and the true minus sign.'],
   ['ask', 'reading', 'bold', 19, 19, 1.2, 0, 'none', null, 'Ask button label. White on Pillar Red passes only as large text, so it never sets below 19 px bold (T-7).'],
 ];
 const type = Object.fromEntries(TYPE.map(([name, fam, wt, minPx, maxPx, lh, tr, tt, numeric, job]) => [name, {

@@ -1,9 +1,16 @@
 """Shared helpers for the editor's chapters on stage board A (01 Purpose, 02 Voice).
 
 Imported by guide_editor_build.py. Specimens are self-contained HTML fragments: colors only through var(--oa-...)
-from work/build/tokens/tokens.css, text 13 px or larger, no heading elements, no em dash character anywhere
-(W21's specimen draws it as a rule one em wide, DR-79). The shell (guide_build.py) scopes each fragment's <style>
-to its own stage, so every fragment carries the small style block it needs.
+from work/build/tokens/tokens.css, text 13 px or larger, no heading elements, no landmark or article elements
+(AX-S8), no em dash character anywhere (W21's specimen draws it as a rule one em wide, DR-79). The shell
+(guide_build.py) scopes each fragment's <style> to its own stage, so every fragment carries the small style block
+it needs.
+
+Type sizes follow D2-254. A fixed artboard up to 600 px wide uses each style's phone floor and one 1,200 px wide or
+more uses the desktop ceiling. A specimen that flows with the page (a reference table, a list, a before and after)
+uses the same fixed values, switching from the phone floor to the desktop ceiling at 48em, so no size falls between
+two steps of the scale. Every size is written through fx(), which takes face, weight, line height and tracking
+from the type tokens (so DR-95's tracking reaches the specimens) and the size from the D2-254 table.
 """
 import html
 import json
@@ -14,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[4]
 CHAPTERS = ROOT / "work/build/guide/chapters"
 SPECIMENS = ROOT / "work/build/guide/specimens"
 
+AMP16 = "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg"
 AMP24 = "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg"
 AMP_DISPLAY = "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
 WORDMARK24 = "work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg"
@@ -21,6 +29,7 @@ WORDMARK24_PRUSSIAN = "work/build/assets/identity/prussian/20261028_Wordmark-24p
 TILE_GRID = "work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json"
 CHART_DATA = "work/boards/phase-2/data-viz/shared/20261106_Chart-Data.json"
 VOICE_CONTENT = "work/boards/phase-2/voice/20261106_Voice-Rules-Content.json"
+ATLAS_DATA = "work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json"
 
 LOCKED = {
     "tagline": "A country that answers to its people.",
@@ -32,6 +41,19 @@ PILLARS = ["Explain", "Track", "Connect", "Act"]
 VOICE_LINE_B = ("We’ll explain the rules and track what happens to them. When a decision is coming, "
                 "we’ll connect you with the people making it, so you can act in time.")
 
+# H.R. 7008 at its first mention in each chapter (DR-98). The research lead checks the bill's scope in round two.
+HR7008 = "H.R. 7008, the Stop Insider Trading Act"
+HR7008_BOTH = ("would bar members of Congress, their spouses and dependent children from buying individual stocks, "
+               "and would require photo ID to vote in federal elections")
+HR7008_TRACKER = "Stop Insider Trading Act Tracker"
+
+# D2-254: each style's phone floor and desktop ceiling, in rem (16 px root).
+PHONE = {"title": 3.5, "section": 2.75, "figure": 3, "h3": 1.625, "h4": 1.25, "quote": 1.5, "intro": 1.1875,
+         "ask": 1.1875, "body": 1.0625, "body-small": .9375, "ui": .9375, "caption": .875, "label": .8125,
+         "data-label": .8125}
+DESK = dict(PHONE, title=6.875, section=5, figure=6.5, h3=2, h4=1.5, quote=2, intro=1.375)
+ALLOWED_REM = sorted(set(PHONE.values()) | set(DESK.values()))
+
 e = lambda s: html.escape(str(s), quote=True)
 
 
@@ -40,58 +62,84 @@ def q(s):
     return f"“{s}”"
 
 
+def fx(style, size=None, weight=None):
+    """A font shorthand from the type tokens with a fixed size from the D2-254 table (the phone floor unless a size
+    in rem is given). Tracking comes from the token too."""
+    rem = PHONE[style] if size is None else size
+    if rem not in ALLOWED_REM:
+        raise SystemExit(f"fx: {rem}rem is off the type scale")
+    w = weight or f"var(--oa-type-{style}-font-weight)"
+    return (f"font:var(--oa-type-{style}-font-style) {w} {rem:g}rem/var(--oa-type-{style}-line-height) "
+            f"var(--oa-type-{style}-font-family);letter-spacing:var(--oa-type-{style}-letter-spacing)")
+
+
+def flow(sel, style, weight=None):
+    """A flowing specimen's style: the phone floor, then the desktop ceiling from 48em."""
+    a, b = PHONE[style], DESK[style]
+    out = f"{sel}{{{fx(style, a, weight)}}}"
+    if b != a:
+        out += f"@media (min-width:48em){{{sel}{{font-size:{b:g}rem}}}}"
+    return out
+
+
 # ---------------------------------------------------------------------------------------------------------------
 # Style blocks. Short names (--oa-color-text-primary and the rest) come from the stage's surface class.
 # ---------------------------------------------------------------------------------------------------------------
-BASE = """
-.ed{font-family:var(--oa-font-family-reading);font-size:1.0625rem;line-height:1.6;color:var(--oa-color-text-primary);max-width:100%}
-.ed *{box-sizing:border-box}
-.ed p{margin:0}
-.ed .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
-.ed .src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:68ch}
-.ed .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
-.ed .chip.solid{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}
-.ed .ill{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.3;padding:1px 6px;border:1px solid currentColor;vertical-align:.1em;white-space:nowrap}
-.ed del{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
-.ed ins{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
-.ed .hinge{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
-.ed .hinge::before,.ed .hinge::after{content:"";flex:1 1 auto;border-top:1px solid currentColor}
-.ed .hinge .hamp{flex:none;display:block;width:21px;height:24px}
-.ed .ask{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}
-.ed .lab{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
-.ed table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
-.ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
-.ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
-.ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
-@media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
-.ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
-.ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
+BASE = f"""
+.ed{{{fx('body')};color:var(--oa-color-text-primary);max-width:100%}}
+.ed *{{box-sizing:border-box}}
+.ed p{{margin:0}}
+.ed .k{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary)}}
+.ed .src{{{fx('caption')};color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem;text-wrap:pretty}}
+.ed .num{{font-variant-numeric:tabular-nums}}
+.ed .chip{{display:inline-block;{fx('label')};text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}}
+.ed .chip.solid{{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}}
+.ed .illus{{white-space:nowrap;vertical-align:.1em}}
+.ed del{{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}}
+.ed ins{{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}}
+.ed .hg{{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}}
+.ed .hg::before,.ed .hg::after{{content:"";flex:1 1 0;border-top:1px solid currentColor}}
+.ed .hg .hamp{{flex:none;display:block;width:21px;height:24px}}
+.ed .ask{{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}}
+.ed .lab{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}}
+.ed .kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 12px;{fx('label')};text-transform:uppercase}}
+.ed .kick .dot{{color:var(--oa-color-text-secondary)}}
+.ed .kick .sx{{color:var(--oa-color-text-secondary)}}
+.ed .kick .pos{{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px}}
+.ed table{{border-collapse:collapse;width:100%;{fx('body-small')}}}
+.ed th,.ed td{{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}}
+.ed thead th{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}}
+.ed .lk{{font-family:var(--oa-font-family-quote);font-style:italic}}
+.ed .dnp{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);{fx('label')};text-transform:uppercase}}
+@media (max-width:47.99em){{.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{{display:block;width:100%;min-width:0}}
+.ed table.stack thead{{display:none}}.ed table.stack tr{{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}}
+.ed table.stack th,.ed table.stack td{{border:0;padding:3px 0}}.ed table.stack td[data-k]::before{{content:attr(data-k) ": ";font-weight:700}}}}
 """
 
-PIECE = """
-.ed .pc{width:340px;max-width:100%;background:var(--oa-color-surface-newsprint);border-top:4px solid var(--oa-color-border-strong);padding:16px 0 4px}
-.ed .pc .kick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 10px}
-.ed .pc .hl{font:800 1.75rem/1.1 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
-.ed .pc .dek{font-size:1.0625rem;line-height:1.5;margin:0 0 12px}
-.ed .pc .blk{border-top:1px solid var(--oa-color-border-hairline);padding:10px 0 0;margin:12px 0 0}
-.ed .pc .wycd{font:800 1.25rem/1.2 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 8px}
-.ed .pc .step{margin:0 0 12px}
-.ed .pc .by{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin:12px 0 0}
+# A piece at a phone's text width, 340 px (phone floor).
+PIECE = f"""
+.ed .pc{{width:340px;max-width:100%;background:var(--oa-color-surface-newsprint);border-top:4px solid var(--oa-color-border-strong);padding:16px 0 4px}}
+.ed .pc .hl{{{fx('h3')};margin:0 0 10px;text-wrap:balance}}
+.ed .pc .dek{{{fx('body')};margin:0 0 12px}}
+.ed .pc .blk{{border-top:1px solid var(--oa-color-border-hairline);padding:10px 0 0;margin:12px 0 0}}
+.ed .pc .wycd{{{fx('h4')};margin:0 0 8px}}
+.ed .pc .step{{margin:0 0 12px}}
+.ed .pc .by{{{fx('caption')};color:var(--oa-color-text-secondary);margin:12px 0 0}}
 """
 
-ARTICLE = """
-.ed .art{max-width:640px;background:var(--oa-color-surface-newsprint)}
-.ed .art .kick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 12px}
-.ed .art .hl{font:800 clamp(1.75rem,1.4rem + 1.4vw,2.5rem)/1.08 var(--oa-font-family-display);letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
-.ed .art .dek{font-size:1.25rem;line-height:1.5;margin:0 0 18px}
-.ed .art .sec{border-top:1px solid var(--oa-color-border-hairline);padding:14px 0 0;margin:18px 0 0}
-.ed .art .sec p+p{margin-top:8px}
-.ed .art .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
-.ed .art .wycd{font:800 1.5rem/1.15 var(--oa-font-family-display);letter-spacing:-.015em;margin:0 0 10px}
-.ed .art .step{margin:0 0 10px}
-.ed .art .disc{font-size:1rem;border-left:4px solid var(--oa-color-border-strong);padding:4px 0 4px 12px;margin:14px 0}
-.ed .art .foot{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:18px}
-.ed .art .num{display:inline-block;min-width:1.6em;font-weight:700}
+# A piece on a 600 px artboard (phone floor), such as the two kinds of Act piece.
+ARTICLE = f"""
+.ed .art{{background:var(--oa-color-surface-newsprint)}}
+.ed .art .hl{{{fx('h3')};margin:0 0 12px;text-wrap:balance}}
+.ed .art .dek{{{fx('intro')};margin:0 0 16px}}
+.ed .art .sec{{border-top:1px solid var(--oa-color-border-hairline);padding:14px 0 0;margin:16px 0 0}}
+.ed .art .sec p+p{{margin-top:8px}}
+.ed .art .two{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}}
+.ed .art .wycd{{{fx('h4')};margin:0 0 10px}}
+.ed .art .step{{margin:0 0 10px}}
+.ed .art .disc{{border-left:4px solid var(--oa-color-border-strong);padding:4px 0 4px 12px;margin:14px 0}}
+.ed .art .disc a,.ed .art .bio{{color:inherit;text-decoration:underline;text-underline-offset:3px}}
+.ed .art .foot{{{fx('caption')};color:var(--oa-color-text-secondary);margin-top:16px}}
 """
 
 PAIR = """
@@ -99,16 +147,19 @@ PAIR = """
 .ed .ex{margin:0;padding:18px 20px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface-newsprint)}
 .ed .ex.after{background:var(--oa-color-surface-white);border-color:var(--oa-color-border-strong)}
 .ed .exh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px}
-.ed .exh .s{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}
-.ed .ex .q{margin:0;font:400 clamp(1.1875rem,1.1rem + .4vw,1.375rem)/1.5 var(--oa-font-family-reading);letter-spacing:-.005em;overflow-wrap:anywhere}
-.ed .ex .note{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px}
-.ed .emrule{display:inline-block;width:1em;height:0;border-top:2px solid currentColor;vertical-align:.32em;margin:0 .08em}
-.ed del .emrule{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}
+""" + f""".ed .exh .s{{{fx('caption')};color:var(--oa-color-text-secondary)}}
+{flow('.ed .ex .q', 'intro')}
+.ed .ex .q{{margin:0;overflow-wrap:anywhere}}
+.ed .ex .note{{{fx('caption')};color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem}}
+.ed .emrule{{display:inline-block;width:1em;height:0;border-top:2px solid currentColor;vertical-align:.32em;margin:0 .08em}}
+.ed del .emrule{{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}}
 """
 
-HL = """
-.ed .hh{font:800 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.1 var(--oa-font-family-display);letter-spacing:-.012em;color:var(--oa-color-text-primary);margin:0;text-wrap:balance}
-.ed .hh .hamp-h{display:inline-block;height:.747em;width:auto;vertical-align:-.01em;color:var(--oa-color-palette-pillar-red)}
+# A hinge headline on a 600 px artboard: the section style at its phone floor, 44 px, so B's cap height is 32 px
+# and takes the 24 px master (Rule 04.3: 16 px master under 22 px capitals, 24 px master to 46 px).
+HL = f"""
+.ed .hh{{{fx('section')};color:var(--oa-color-text-primary);margin:0;text-wrap:balance}}
+.ed .hh .hamp-h{{display:inline-block;height:.7275em;width:auto;vertical-align:0;color:var(--oa-color-palette-pillar-red)}}
 """
 
 
@@ -117,18 +168,35 @@ def style(*blocks):
 
 
 def hinge():
-    """The hinge divider inside a specimen: a hairline broken by ampersand B's 24 px master in the surface's ink."""
-    return (f'<div class="hinge" aria-hidden="true"><img data-inline src="{AMP24}" alt="" class="hamp" '
+    """The hinge divider inside a specimen (DR-96): ampersand B's 24 px master at 24 px, centered on a 1 px line as wide
+    as the text block it divides, with 12 px of clear line on each side, in the surface's ink."""
+    return (f'<div class="hg" aria-hidden="true"><img data-inline src="{AMP24}" alt="" class="hamp" '
             f'width="21" height="24"></div>')
 
 
-def amp_h(label="and"):
-    """Ampersand B's display master, set at a hinge headline's cap height in the view's working red."""
-    return f'<img data-inline src="{AMP_DISPLAY}" alt="{e(label)}" class="hamp-h" data-red="working" data-red-job="headline">'
+def amp_h(cap_px=32, label="and"):
+    """Ampersand B set at a hinge headline's cap height in the view's working red, from the master Rule 04.3 names
+    for that cap height."""
+    src = AMP16 if cap_px < 22 else AMP24 if cap_px <= 46 else AMP_DISPLAY
+    return f'<img data-inline src="{src}" alt="{e(label)}" class="hamp-h" data-red="working" data-red-job="headline">'
 
 
 def ill():
-    return '<span class="ill">Illustrative</span>'
+    """The shell's one Illustrative label (DR-97)."""
+    return '<span class="illus">Illustrative</span>'
+
+
+def kicker(label, more=None, illus=False):
+    """One kicker grammar (D2-250, DR-103): the content label, then at most one more part after a middle dot, the series
+    name if the piece belongs to one, otherwise the topic. "Our position" takes the position label's Charcoal fill."""
+    lab = f'<span class="pos">{e(label)}</span>' if label == "Our position" else f'<span class="lb">{e(label)}</span>'
+    tail = f'<span class="dot" aria-hidden="true">·</span><span class="sx">{e(more)}</span>' if more else ""
+    return f'<p class="kick">{lab}{tail}{" " + ill() if illus else ""}</p>'
+
+
+def dnp():
+    """The band inside a partisan failure stage, so a cropped capture still says what it is (BE-S4)."""
+    return '<p class="dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
 
 
 def marks(s):
@@ -175,7 +243,7 @@ class Book:
         self.manifest = {}
 
     def add(self, sid, body, *, chapter, rule, alt, width=None, illustrative=False, notes="", surface=None,
-            interactive=False, exempt=None, height=None, label=None, css=(BASE,)):
+            readable=False, interactive=False, exempt=None, height=None, label=None, scale=None, css=(BASE,)):
         if sid in self.files:
             raise SystemExit(f"duplicate specimen id {sid}")
         self.files[sid] = f"<!-- {sid}: Oath & Action guide, Edition 06, chapter {chapter}. Editor, November 6, 2026. -->\n" \
@@ -186,8 +254,12 @@ class Book:
             m["height_px"] = height
         if surface:
             m["surface"] = surface
+        if readable:
+            m["readable"] = True
         if interactive:
             m["interactive"] = True
+        if scale:
+            m["scale"] = scale
         if exempt:
             m["check_exempt"] = exempt
         if label:
@@ -197,6 +269,9 @@ class Book:
 
     def write(self):
         SPECIMENS.mkdir(parents=True, exist_ok=True)
+        for old in SPECIMENS.glob("s-0[12]-*.html"):
+            if old.stem not in self.files:
+                old.unlink()
         for sid, txt in self.files.items():
             (SPECIMENS / f"{sid}.html").write_text(txt)
         (SPECIMENS / f"manifest-{self.maker}.json").write_text(json.dumps(self.manifest, indent=1, ensure_ascii=False) + "\n")
