@@ -1,0 +1,33 @@
+{
+ "ask": [
+  "Approve these rules and house rules as chapter 02's writing section, or name what to change.",
+  "Answer the decisions in the blue band; each carries a recommendation.",
+  "Tell us any before or after you want swapped for another example."
+ ],
+ "sample_reply": "Writing rules: approved. Decisions: as recommended.",
+ "process_title": "The editor wrote the rules and the creative director tested them",
+ "process": [
+  "You approved your own writing rules as Oath & Action's public rules and asked to see them before and after (DR-70).",
+  "The editor wrote the rules from your standing instructions and the studio's house rules, and searched the committed files for real Oath & Action copy to use as befores. A script found every real before word for word in its named source.",
+  "The creative director read every after against every rule on the page, checked each real before by script, rendered the draft board at desktop and phone width, and scored the section 3 on six lines and 4 on usefulness.",
+  "The editor made one fix pass: rewritten afters, civic befores in place of three studio drafts, five teaching groups, marked edits and source lines in public words.",
+  "The main session redesigned the board from the review: each before joined to its after by the hinge divider, the edit marked in both, a rule index, larger specimens in Inter, and a phone layout. It built and checked the board and published it as a private page."
+ ],
+ "tested": [],
+ "not_tested": [
+  "Real readers. No one outside the studio has read these rules.",
+  "A real screen reader, Safari, Firefox, real phones and print.",
+  "Befores the review traced only to the studio's audits, because the fifth edition's own file is not in this checkout: the audits quote them, and the census holds 50-character cuts of two."
+ ],
+ "changelog_created": [
+  "<code>work/handoffs/phase-2/20261106_Voice-Writing-Rules-Brief.md</code>",
+  "<code>work/handoffs/phase-2/20261106_Voice-Writing-Rules.md</code> (the section, with the editor's notes)",
+  "<code>work/handoffs/phase-2/20261106_CD-Review-Of-Writing-Rules.md</code>",
+  "<code>work/boards/phase-2/voice/</code>: the board's content and this record",
+  "<code>work/build/scripts/phase-2/voice_board5_build.py</code>",
+  "<code>work/boards/20261106_Voice-Writing-Rules-Board.html</code> and its check results"
+ ],
+ "changelog_modified": [
+  "<code>work/ledger/20261020_Decision-Log.md</code>"
+ ]
+}
