@@ -230,8 +230,12 @@ def verify(html):
         for mm in re.finditer(r'(?:(?<=\s)|(?<=\())-\d', ftxt):
             errs.append(f'{tag}: hyphen used as a minus sign near "{ftxt[max(0, mm.start() - 15):mm.end() + 10]}"')
             break
-    for sid in SPECS:
-        if sid not in seen_specs:
+    m = re.search(r'<meta\s+name="chart-specs"\s+content="([^"]+)"', html)
+    wanted = m.group(1).split() if m else [k for k in SPECS if k <= 'S10']   # a page may declare its own set (D2-116)
+    for sid in wanted:
+        if sid not in SPECS:
+            errs.append(f'{sid}: declared in chart-specs but not a specimen in the shared data')
+        elif sid not in seen_specs:
             errs.append(f'{sid}: specimen not on the page')
     page = ' '.join(p.text)
     if '—' in page:
@@ -260,7 +264,9 @@ def selftest(html):
     m = re.search(r'data-category="toward voters"', html)
     if m:
         plants.append(('category changed', html[:m.start()] + 'data-category="away from voters"' + html[m.end():]))
-    plants.append(('specimen removed', html.replace('data-spec="S10"', 'data-spec-x="S10"')))
+    mm = re.search(r'<meta\s+name="chart-specs"\s+content="([^"]+)"', html)
+    last = mm.group(1).split()[-1] if mm else 'S10'
+    plants.append(('specimen removed', html.replace(f'data-spec="{last}"', f'data-spec-x="{last}"')))
     out = []
     for name, h in plants:
         e, _ = verify(h)
