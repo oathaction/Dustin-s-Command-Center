@@ -5,9 +5,9 @@
  "error_count": 0,
  "stats": {
   "figures": 24,
-  "marks": 2256,
-  "values": 1694,
-  "categories": 562,
+  "marks": 2953,
+  "values": 2187,
+  "categories": 766,
   "units": 128
  },
  "selftest": [
@@ -29,7 +29,7 @@
   {
    "plant": "evidence label",
    "caught": true,
-   "first_error": "S01: evidence label \"Mystery · documented record\" does not name \"Finding\""
+   "first_error": "S01: evidence label \"Mystery · a published survey and two rec\" does not name \"Finding\""
   },
   {
    "plant": "unit removed",
