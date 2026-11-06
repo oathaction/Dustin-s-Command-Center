@@ -185,8 +185,8 @@ def share_bar(ctx, sid):
     segs = ''.join(f'<span class="sg" style="flex:{sh[k]:.2f} 0 0;background:{ctx.v(P(k))}"></span>' for k in order)
     key = ''.join(f'<li><span class="sw" style="background:{ctx.v(P(k))}"></span>{PNAME[k]} <b>{share_txt(ctx, sid, k)}%</b></li>'
                   for k in order)
-    css = (f'.sb{{display:flex;height:24px;margin-top:16px;box-shadow:inset 0 0 0 1px {ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'.sb .sg{{display:block;min-width:2px}}'
+    css = (f'.sb{{display:flex;height:24px;margin-top:16px;outline:1px solid {ctx.v("oa.color.border.strong.onNewsprint")};outline-offset:0}}'
+           f'.sb .sg{{display:block;min-width:2px}}.sb .sg + .sg{{box-shadow:inset 1px 0 0 {ctx.v("oa.color.border.strong.onNewsprint")}}}'
            f'.sk{{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;{ctx.ty("caption")}}}'
            f'.sk li{{display:inline-flex;align-items:center;gap:6px}}.sk b{{font-weight:600}}'
            f'.sw{{width:12px;height:12px;flex:none;box-shadow:inset 0 0 0 1px {ctx.v("oa.color.border.strong.onNewsprint")}}}')

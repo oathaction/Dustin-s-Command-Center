@@ -24,7 +24,7 @@ A private test page for five or more first-time readers on their phones. It tell
 | 7 Mastheads | L3 at today's width and condensed, as A and B in random order, together; which reads faster, and an optional why | 1 at 10 s |
 | 8 End | Thanks and what happens next; in copy mode, the answers with a Copy button | none |
 
-Fixed looking time is 175 seconds. With 38 answers (12 typed, 26 tapped) and the opening screens, I estimate 9 to 10 minutes for a careful reader and about 7 for a quick one.
+Fixed looking time is 175 seconds. With 38 answers (13 typed, one of them optional, and 25 tapped) and the opening screens, I estimate 9 to 10 minutes for a careful reader and about 7 for a quick one.
 
 ### Fair timing
 
@@ -91,7 +91,28 @@ Numbers left for the main session to assign.
 
 ## Tested
 
-RESULTS
+`test_reader_check.js`, final run on the final page: **13 of 13 pass** (`20261106_Reader-Check-Test-Results.json`). Each walk goes through all 54 screens, answering, skipping one symbol, using Show it again three times and leaving one 16 px mark unrated.
+
+| Run | Width | Result |
+|---|---|---|
+| Saved mode, real time, captures | 390 | Pass. 220 s of automated walking; every look measured 10.0 s (charts 15.0 s). 31 writes (1 `set`, 30 `update`), never two at once on the document; the stored run matches the page state; "Your answers are saved." |
+| Saved mode | 360, 1440 | Pass, same record and writes |
+| Copy mode, `use()` resolves null | 390 (captures), 360, 1440 | Pass. Mode sentence shown at the start; no writes; the copied JSON line equals the page state; Copy reports "Copied" |
+| Copy mode, no `window.claude` | 390 | Pass |
+| Copy mode, view-only (`can("data.write")` false) | 390 | Pass |
+| Saved, then every write rejected `invalid_argument` | 390 | Pass. Switches to copy mode on the first write with the one-line notice, ends with the copy text |
+| Saved, reduced motion | 390 | Pass. The draining line is hidden during looks and the seconds-left words stay |
+| Resume after a reload | 390 | Pass. "Welcome back" offered; picks up at the same question with the same run and earlier answers |
+| A look while the page is hidden | 390 | Pass. 1.5 s hidden inside a 2 s look ran 3.6 s of wall time and recorded the full look |
+| Reflow | 320 | Pass. No sideways scroll on any screen |
+
+On every screen of every walk: axe-core 4.10.2 with the WCAG 2.0, 2.1 and 2.2 A and AA tags (0 violations), no sideways scroll, no page text under 13 px, text contrast from rendered colors (all at least 4.5:1, or 3:1 for large text), every button, answer and field at least 44 px tall, focus on the new screen's heading after each change, an empty Next caught, a draft kept across Show it again, no page errors and no requests beyond Google Fonts. The copy text names no symbol's meaning, and a single tap on "Start a new test" does not clear unsent answers.
+
+Also:
+- `node work/build/scripts/phase-2/dataviz_check.js <page> --board`: **pass**, 0 failures at 1440, 390 and 360 px (0 axe violations, smallest text 13 px, focus rings on every Tab stop). It checks the first screen only, so it ran on a copy wrapped in the publish skeleton; results in `20261106_Reader-Check-Check-Results.json`.
+- The build refuses to write the page if its configuration or text names an icon's label or ID, names the brand, or carries an em dash; a scan of `img/` finds no titles, descriptions or names.
+- Forced colors (emulated): a chosen answer keeps its check and takes a heavier border; capture `captures/20261106_Reader-Check-30-Forced-Colors-390.png`.
+- Captures: one or more per step at 390 px in both modes, 43 files in `captures/`.
 
 ## Not tested
 
@@ -113,4 +134,4 @@ Created, all in `work/boards/phase-2/reader-check/` unless named:
 - `captures/` (the 390 px walk, one or more per step, in both modes)
 - `work/handoffs/phase-2/20261106_Reader-Check-Notes.md` (this file)
 
-Modified: none in the repository. Outside it, `work/build/node_modules/` (not tracked, D0-05) lost and regained Style Dictionary 5.8.0 as described above. Nothing in `source/`, the ledgers or any other board was touched. Nothing was committed.
+Modified: none outside this folder and this file. `work/build/node_modules/` (not tracked, D0-05) lost and regained Style Dictionary 5.8.0 as described above. Nothing in `source/`, the ledgers or any other board was touched. I committed nothing; the main session's snapshot commits (731ce70 and later) picked up earlier states of this folder while I worked, so the files now show as modified against them.

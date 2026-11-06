@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T20:12:49.854Z",
+ "checked": "2026-11-06T20:16:45.783Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -157,6 +157,159 @@
    "focusProblems": []
   },
   {
+   "width": 1024,
+   "structure": {
+    "headings": 148,
+    "h1": [
+     "Oath & Action Brand Guide, Edition 06"
+    ],
+    "skips": [],
+    "inSpecimen": [],
+    "badH3": [],
+    "ruleIds": [],
+    "ruleAnchors": [],
+    "rulesWithoutH3": [],
+    "rules": 99
+   },
+   "anchors": {
+    "ids": 473,
+    "duplicates": [],
+    "links": 607,
+    "broken": [],
+    "relatedLinks": 113,
+    "relatedBad": [],
+    "aliases": []
+   },
+   "specimens": {
+    "stages": 234,
+    "pending": [],
+    "noAlt": [],
+    "imgNoAlt": [],
+    "svgUnnamed": [],
+    "exemptions": [
+     {
+      "specimen": "s-01-1-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-2-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-3-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-4-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-18-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-22-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-24-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-03-1-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-03-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-04-3-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-05-2-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-3-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-05-6-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-06-3-failure",
+      "skips": "size"
+     }
+    ]
+   },
+   "text": {
+    "texts": 8081,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "skipped": 4
+   },
+   "overflow": {
+    "scrollWidth": 1024,
+    "clientWidth": 1024,
+    "overflowing": []
+   },
+   "red": {
+    "marks": 345,
+    "unmarked": [],
+    "pageJobs": [],
+    "specimenJobs": [],
+    "onPrussian": []
+   },
+   "writing": {
+    "emDashes": [],
+    "locked": [
+     {
+      "line": "tagline",
+      "exact": 18
+     },
+     {
+      "line": "mission",
+      "exact": 8
+     },
+     {
+      "line": "reader promise",
+      "exact": 8
+     },
+     {
+      "line": "editorial commitment",
+      "exact": 20
+     }
+    ],
+    "nearMisses": [],
+    "pillarOrder": []
+   },
+   "height": 343645,
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "axe": [],
+   "focusStops": null,
+   "focusProblems": null
+  },
+  {
    "width": 390,
    "structure": {
     "headings": 148,
@@ -300,6 +453,159 @@
     "pillarOrder": []
    },
    "height": 386814,
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "axe": [],
+   "focusStops": null,
+   "focusProblems": null
+  },
+  {
+   "width": 360,
+   "structure": {
+    "headings": 148,
+    "h1": [
+     "Oath & Action Brand Guide, Edition 06"
+    ],
+    "skips": [],
+    "inSpecimen": [],
+    "badH3": [],
+    "ruleIds": [],
+    "ruleAnchors": [],
+    "rulesWithoutH3": [],
+    "rules": 99
+   },
+   "anchors": {
+    "ids": 473,
+    "duplicates": [],
+    "links": 607,
+    "broken": [],
+    "relatedLinks": 113,
+    "relatedBad": [],
+    "aliases": []
+   },
+   "specimens": {
+    "stages": 234,
+    "pending": [],
+    "noAlt": [],
+    "imgNoAlt": [],
+    "svgUnnamed": [],
+    "exemptions": [
+     {
+      "specimen": "s-01-1-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-2-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-3-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-4-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-18-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-22-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-24-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-03-1-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-03-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-04-3-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-05-2-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-3-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-05-6-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-06-3-failure",
+      "skips": "size"
+     }
+    ]
+   },
+   "text": {
+    "texts": 8063,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "skipped": 4
+   },
+   "overflow": {
+    "scrollWidth": 360,
+    "clientWidth": 360,
+    "overflowing": []
+   },
+   "red": {
+    "marks": 345,
+    "unmarked": [],
+    "pageJobs": [],
+    "specimenJobs": [],
+    "onPrussian": []
+   },
+   "writing": {
+    "emDashes": [],
+    "locked": [
+     {
+      "line": "tagline",
+      "exact": 18
+     },
+     {
+      "line": "mission",
+      "exact": 8
+     },
+     {
+      "line": "reader promise",
+      "exact": 8
+     },
+     {
+      "line": "editorial commitment",
+      "exact": 20
+     }
+    ],
+    "nearMisses": [],
+    "pillarOrder": []
+   },
+   "height": 398595,
    "fonts": [
     "Inter",
     "Inter Tight",

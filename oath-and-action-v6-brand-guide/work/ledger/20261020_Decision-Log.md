@@ -578,3 +578,22 @@ The identity designer's routine calls for chapters 03, 04 and 08 and the proofs 
 | D2-204 | In the proofs both widths sit at the same height, except avatars, where L8 fills the same width of the tile | Mastheads and cards are set by height; a tile is filled by width |
 | D2-205 | The letterhead places the display master at 26 px tall, as a print piece would; all its text is 10 pt or larger | The 24 px master is drawn for screens; the 13 px floor holds on screen |
 | D2-206 | Two typed failure cases (03.1, 03.7) carry `check_exempt: contrast` and two (04.3, 04.4) `check_exempt: red`; V5's kicker (08.8) is a PNG | A failure has to show at true size; the shell lists every exemption |
+
+The systems designer's routine calls for chapters 05, 06 and 07 (`work/handoffs/phase-2/20261106_Stage-A-Systems-Notes.md`). The per-view color limits of Rule 05.1 also go to Dustin on stage board A and stand only if he agrees:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-207 | Rule 05.3's `rule` field holds the full wording as D2-01 and DR-66 give it, past the contract's one to three sentences | The rule binds every page and must be quoted exactly |
+| D2-208 | Rule IDs 05.1 to 05.4 keep the Gate 1 wireframe's subjects (Newsprint leads, pairs that pass, one working red, state cues); 05.5 to 05.7 are new | Links and citations made since Gate 1 still land |
+| D2-209 | Rule 05.1 sets firm limits per view (Newsprint 60 to 85 percent, one dark panel per section, red within 5 percent) and keeps V5's other shares as the balance across a body of work | Measured on one phone page, no view can hold all seven colors inside their V5 ranges; Verdigris may be absent |
+| D2-210 | Color shares are measured by assigning each rendered pixel to its nearest palette color, with Deep Stone counted as Stone and Dim Newsprint as Newsprint | A repeatable measure of area; type counts as ink, so Charcoal reads low (4 percent) when the dark panel is Prussian |
+| D2-211 | Failure cases are live HTML with `check_exempt`, never images | The shell supports it, failures stay sharp at 2x, and the check lists each exemption |
+| D2-212 | Every class in my fragments is prefixed `sx-` at build time | Shell class names (`.menu`) leaked into a specimen |
+| D2-213 | The phone mock in 05.1 and 05.3 carries a hinge divider between the article and its dates, in Charcoal | It shows the divider's ink in an application; the shell notes ask makers not to draw it to separate guide blocks, which this does not do. The identity designer may prefer it out |
+| D2-214 | Hex values printed as text in specimens are written `&#35;DCD9D2` | They render the same and do not trip the literal-color check meant for styles |
+| D2-215 | Display sizes in a phone mock use the style's phone size (the clamp's floor), such as H3 at 1.625 rem | A phone page at true size shows what a phone reader sees, whatever the guide reader's window |
+| D2-216 | 06.6's widow is set with a line break, so it shows at every window width | Ordinary wrapping produces it only at some widths; the specimen notes say so |
+| D2-217 | 06.2's failure draws both columns at the sizes a 200 percent text setting produces | The guide page runs at the reader's own setting, so it cannot show the failure live |
+| D2-218 | Body spans picked by measurement: 5 of 12 at 1440 px, 7 of 12 at 1024 px, 6 of 8 at 768 px, all 4 on phones | Each span's measured mean sits nearest 68 within 60 to 75 |
+| D2-219 | Section rhythm in 07.4 matches the shell: 80 px between rules, 32 px above a label and 8 px below, 16 px between paragraphs | The guide follows its own rule |
+| D2-220 | Chapter 05's chart summary shows Newsprint tokens only | Pair B exists on Newsprint only; the dark ground belongs to chapter 14 |

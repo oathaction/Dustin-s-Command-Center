@@ -422,7 +422,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-rxg1wcxn differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-kcfi3gw5 differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
     "parity"
    ]
