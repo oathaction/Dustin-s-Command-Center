@@ -28,7 +28,9 @@ CAP = B4 / 'captures'
 PLAN = ROOT / 'work/handoffs/phase-2/20261106_Data-Viz-Coverage-Plan.md'
 OUT = ROOT / 'work/boards/20261106_Data-Viz-Coverage-Board.html'
 PUB = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/72a6dd5d-b3ac-5a79-9ac0-32d5f5fbde66/scratchpad/publish/20261106_Data-Viz-Coverage-Board.html')
-C = json.loads((B4 / '20261106_Board-4-Content.json').read_text())
+C = json.loads((B4 / '20261106_Board-4-Content.json').read_text())       # the creative director's content
+REC = B4 / '20261106_Board-4-Studio-Record.json'                         # the main session's: process, checks, files, next stage
+C.update(json.loads(REC.read_text()) if REC.exists() else {})
 PP = B4 / '20261106_Published-Pages.json'
 PAGES = json.loads(PP.read_text()) if PP.exists() else {}
 SPECS = ['S11', 'S12', 'S13', 'S14', 'S15', 'S16']
@@ -185,13 +187,15 @@ def img(name, alt, out_w=1440, q=80, cls=''):
 def stretch_scores():
     s = C['stretch']
     cd = ''.join(f'<td class="n">{v}</td>' for v in s['cd_scores'])
+    first = ''.join(f'<td class="n">{v}</td>' for v in C.get('cd_first', []))
     head = ''.join(f'<th scope="col">{h}</th>' for h in RUBRIC)
-    rv = s.get('reviewer', {})
+    rv = C.get('reviewer', {})
     rvt = ''.join(f'<li><b>{E(k)}:</b> {E(v)}</li>' for k, v in rv.items())
     return (f'<div class="tw" role="region" tabindex="0" aria-label="Scores for the stretch test"><table class="sc">'
-            f'<caption>The creative director’s scores after the fix pass, 1 to 5, ship line 4 on every line.</caption>'
+            f'<caption>The creative director’s scores, 1 to 5, ship line 4 on every line, after the fix pass and on the first build.</caption>'
             f'<thead><tr><th scope="col">Page</th>{head}<th scope="col">Ships</th></tr></thead>'
-            f'<tbody><tr><th scope="row">Stretch test, S11 to S16</th>{cd}<td>{E(s["ships"])}</td></tr></tbody></table></div>'
+            f'<tbody><tr><th scope="row">After the fix pass</th>{cd}<td>{E(s["ships"])}</td></tr>'
+            f'<tr><th scope="row">First build</th>{first}<td>No</td></tr></tbody></table></div>'
             + (f'<h4>The statistics and nonpartisanship review</h4><ul class="facts">{rvt}</ul>' if rvt else ''))
 
 
@@ -306,7 +310,7 @@ ol.rounds li{grid-template-columns:3.5em minmax(0,1fr)}ol.rounds .rw{grid-column
 def build():
     L = lambda k: ''.join(f'<li>{x}</li>' for x in C.get(k, []))
     s = C['stretch']
-    ask = ''.join(f'<li>{x}</li>' for x in C['ask'])
+    ask = ''.join(f'<li>{E(x)}</li>' for x in C['ask'])
     decisions = ''.join(f'<li><b>{E(d["q"])}</b> {E(d["text"])}<span class="rec">Recommended: {E(d["rec"])}</span></li>' for d in C['decisions'])
     nextq = ''.join(f'<li><b>{E(d["q"])}</b> {E(d["text"])}<span class="rec">Recommended: {E(d["rec"])}</span></li>' for d in C.get('next_questions', []))
     tiers = ''.join(f'<div><b><span class="u u-{t.lower()}" aria-hidden="true"></span>{t}, {COUNT[t]}</b><p>{md(TIER_TEXT[t][0])}</p></div>' for t in TIERS)
