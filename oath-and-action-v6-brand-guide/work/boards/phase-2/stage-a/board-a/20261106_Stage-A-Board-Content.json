@@ -1,0 +1,299 @@
+{
+ "title": "Chapters 01 to 08, for your review",
+ "deck": "The eight Foundations chapters now read as finished guide pages, every must-fix item from the five reviews is resolved, and the wordmark proofs sit side by side at true size. Fourteen decisions wait for your answer.",
+ "ask": [
+  "Read the verdict, then each chapter's views at desktop and phone width.",
+  "Compare the wordmark proofs at true size before you answer A1.",
+  "Answer A1 to A14 on the cards, or send the sample reply if every recommendation suits you."
+ ],
+ "sample_reply": "A1 to A14: as recommended.",
+ "verdict": {
+  "headline": "The Foundations chapters reach the ship line on five of six criteria, and craft reaches it once three layout and drawing faults close.",
+  "text": [
+   "Every must-fix item from the five reviews is resolved on the page. H.R. 7008 is described whole from the bill text and both chambers' records, every party takes one neutral ink, the photographs are real, the hinge divider has one geometry, the letter spacing is loosened as you approved, and the proofs sit side by side at true size.",
+   "Craft scored 3 on the page as I reviewed it, for three faults: the specimens in chapters 05 to 07 now touch the keyline the fix pass drew around every plate, Rule 04.8's crop leaves a stray sliver of B at the cover's edge, and 29 phone plates scroll by 2 px. They are marked Blocking under Still to do, and none needs your answer. Chapter 01 does need your wording on what nonpartisan means, in A13."
+  ]
+ },
+ "scores": [
+  {"criterion": "Craft", "score": 3, "line": "Rule heads, the hinge divider, the letter spacing, the photographs and the proofs hold at 2x, but 38 plates in chapters 05 to 07 touch their keyline, Rule 04.8 leaves a sliver of B, and 29 phone plates scroll 2 px."},
+  {"criterion": "Clarity", "score": 4, "line": "Each chapter opens on its instruction line, chapters 01 and 02 run in named groups with an index, and chapter 01 defines its terms before it uses them."},
+  {"criterion": "Brand fidelity", "score": 4, "line": "The locked lines appear 31 times, exact; red stays off parties and off Prussian; chapters use today's width; the badge still reads as a registered sign at 16 px (A6)."},
+  {"criterion": "Usefulness", "score": 4, "line": "Rules carry tokens, sizes in px and points, files and working CSS, though Rules 04.1 and 04.3 give B's masters different ranges and Rule 07.6 teaches a frame the shell no longer uses."},
+  {"criterion": "Evidence honesty", "score": 4, "line": "H.R. 7008 is described whole from primary records and both sides take one form, but chapter 01 does not yet say what to do when the record falls on one side (A13)."},
+  {"criterion": "Accessibility", "score": 4, "line": "The guide check passes at four widths, names carry no stray code and every frame has its own name; 29 phone frames take focus for a 2 px scroll, and no screen reader has heard the page."}
+ ],
+ "chapters": {
+  "01": {
+   "note": "Chapter 01 teaches nonpartisan practice as habits a writer can check: one neutral ink for every party, the office named in place of a team, and both readings of a contested claim at the same length. Look at the bars in Rule 01.2 and the federal photographs in Rules 01.6 and 01.8. It does not yet say what a writer does when the record falls on one side, which A13 puts to you.",
+   "views": ["opening", "01.2", "01.6"],
+   "scores": [4, 4, 5, 4, 4, 4]
+  },
+  "02": {
+   "note": "Chapter 02 is the writing section you approved, now in seven groups with an index, and each rule still pairs its before and after across the hinge divider. Rule 02.25 now answers \"Our democracy is broken.\" with an atlas mechanism graded well supported. Its last row leaves out how each party voted on H.R. 7008, which A13 would restore.",
+   "views": ["opening", "02.1", "02.25"],
+   "scores": [4, 5, 5, 4, 4, 4]
+  },
+  "03": {
+   "note": "Chapter 03 picks the lockup by space and surface, at today's width, and its table of minimum sizes now reads as a table for every reader. The masthead rule gives its switch in em, as a developer writes it. The plates hold up at 2x.",
+   "views": ["opening", "03.2", "03.6"],
+   "scores": [4, 4, 5, 4, 4, 4]
+  },
+  "04": {
+   "note": "Chapter 04 keeps the ampersand to one moment a view, and its hinge headlines now come from chapter 02's correct list. The badge after a sentence reads as a registered sign at 16 px (A6), and Rule 04.8's crop leaves a sliver of B at the cover's edge, one of the three blocking faults. Rules 04.1 and 04.3 also give B's masters different size ranges; Rule 04.1's ranges govern.",
+   "views": ["04.3", "04.6", "04.8"],
+   "scores": [3, 4, 4, 3, 4, 4]
+  },
+  "05": {
+   "note": "Chapter 05 asks for a surface first, then the colors that pass on it, and every pair carries its measured ratio. The phone page in Rules 05.1 and 05.3 now keeps the red ask clear of any blue panel. From Rule 05.4 on, the tables and charts sit against their keyline with no inner margin.",
+   "views": ["05.1", "05.3", "05.7"],
+   "scores": [3, 4, 5, 4, 5, 4]
+  },
+  "06": {
+   "note": "Chapter 06 sets every word from fourteen styles and three faces, and Rule 06.4 shows the letter spacing you approved at true size beside the old value. Its specimens sit against their keyline, and the hanging quotation mark in Rule 06.1 crosses it.",
+   "views": ["opening", "06.2", "06.4"],
+   "scores": [3, 4, 5, 4, 5, 4]
+  },
+  "07": {
+   "note": "Chapter 07 puts every page on the column grid and the 8 px scale, and checks it at 320 px wide. The quarter-size grids read clearly. Rule 07.6's note for builders still teaches a scrolling frame as a region, where the guide itself uses a named group, and it should teach the one the guide uses.",
+   "views": ["opening", "07.2", "07.6"],
+   "scores": [3, 4, 5, 4, 5, 4]
+  },
+  "08": {
+   "note": "Chapter 08 gives each Signal Grid one code, chosen in a fixed order, and tells stages apart by shape, so a tracker reads in gray print and for color-blind readers. The tracker's key now uses plain stage names. The new codes and the six series routes wait for you in A2 and A5.",
+   "views": ["08.4", "08.5", "08.6"],
+   "scores": [4, 4, 5, 4, 4, 4]
+  }
+ },
+ "tracking": {
+  "chapter": "04",
+  "rule": "05.3",
+  "note": "Approved on November 6 and shown here as the page sets it: titles at -3 percent, sections at -2.5 percent, H3 at -1 percent and H4 at -0.5 percent. At 110 px two of the tagline's 24 letter pairs still touch, both after an r, where six touched at the old value."
+ },
+ "proofs": {
+  "note": "Read the mastheads and the avatars first. At the same height the condensed drawing runs about a fifth narrower and changes nothing else; its heavy capitals sit close to campaign-sign lettering, and on an avatar its monogram reads as 0&A. Today's width holds its spacing at 16 px, and I recommend it with B as refined (A1).",
+  "notes": {
+   "proofs-masthead-on-the-site": "The condensed bar frees 40 px, and the lockmark moves left with it. At a glance the two bars read alike.",
+   "proofs-avatar": "Both widths set the monogram's capitals under the 14 px floor at feed size, 10 and 12 px on a 48 px tile, which is why A3 recommends B alone on Charcoal whichever width you choose.",
+   "proofs-social-card": "The specification list under the card is the only social card guidance until chapter 23. The lockmark at 40 px is the 24 px master scaled up and looks heavy at 2x; a 40 px master comes to Gate 2.",
+   "proofs-letterhead": "The print PDF carries its width and the Illustrative line at the top of each page."
+  }
+ },
+ "needs_work": [
+  {"where": "05.4", "text": "**Blocking.** 38 plates in chapters 05 to 07 set their text against the 1 px keyline every plate now carries, and the quotation mark in Rule 06.1 crosses it. The shell gives each plate without a fixed width 24 px of inner margin, 16 px on phones."},
+  {"where": "04.8", "text": "**Blocking.** The crop leaves a piece of B's beak, about 2 px by 35 px, inside the cover's right edge. Move the crop so the beak falls wholly outside the trim or wholly inside it, and let the cover's own edge be the plate's edge."},
+  {"where": "05.1", "text": "**Blocking.** On a 390 px phone, 29 plates drawn 360 px wide overflow by 2 px, print \"Wider than this screen\" and take a focus stop. The shell lets a plate that overflows by 4 px or less sit whole, at true size, with no hint."},
+  {"where": "04.3", "text": "Rule 04.3 gives B's masters different ranges from Rule 04.1. Rule 04.1 governs: the 16 px master for B 16 to 23 px tall, the 24 px master from 24 to 47 px, the display master from 48 px. Rule 04.3's specification changes to match."},
+  {"where": "07.6", "text": "Rule 07.6's note for builders gives a scrolling frame `role=\"region\"`. It changes to what the guide does: a group with its own name that takes focus only while it overflows."},
+  {"where": "02.24", "text": "In the sign-offs of Rules 02.23 and 02.24, and in two table cells, the tagline breaks with \"people.\" alone on its last line, against Rule 06.6. Keep the last two words together."},
+  {"where": "04.6", "text": "The event card in the correct plate sits flush on the frame's edge with its caption on the frame line. Pad it inside the plate like the other cards."},
+  {"where": "04.3", "text": "On a phone the 600 px sheet of hinge headlines cuts every headline. Let it flow at the phone sizes, as chapter 01's headline plates do."},
+  {"where": "08.2", "text": "The lockmark at its 40 px anchor size is the 24 px master scaled up, and its nodes look heavy at 2x. A 40 px master, or the display master from 48 px, comes to Gate 2 side by side, since it touches identity geometry."},
+  {"where": "03.2", "text": "L4 to L7 are still assembled from masters on our fifth edition's layouts, and the coded Signal Grid drawings live in a build script. Both need master files for the asset package."},
+  {"where": "proofs-social-card", "text": "The social card sets its kicker in the H4 style in sentence case, where Rule 01.21 sets kickers in label capitals. Add a line to Rule 01.21 for artboards 1,200 px and wider."},
+  {"where": "proofs-masthead-in-email", "text": "The email pair is 1,280 px wide and scrolls 16 px in a 1,440 px window. Trim it to 1,264 px so the pair sits whole at true size."},
+  {"where": "01.6", "text": "The photographs are Wikimedia's standard-width copies. Fetch the originals and check each against its recorded checksum before print."}
+ ],
+ "risks": [
+  {"where": "01", "text": "H.R. 7008 is a live bill. The Senate is in pro forma sessions until November 9, and any later action changes the tracker's lines and Rule 02.25's last row, so someone checks its status before each build that ships."},
+  {"where": "02.25", "text": "If you approve A13, the guide's example of an uneven finding is a vote in which most Democrats voted against a bill. It stays fair only while both of the bill's provisions travel with the count, so no excerpt prints the split without them."},
+  "Some claims rest on secondary sources: the 23-state initiative count, the senators' party labels and the Economic Policy Institute's description of itself. The research report lists each one.",
+  "No second red team read the fixed page. This review is the only check after the fix pass, and the reader check's answers arrive at Gate 2.",
+  {"where": "08.5", "text": "No reader has seen the stage shapes or the series routes. If readers miss them, the trackers change before Phase 3 builds them."},
+  {"where": "04.6", "text": "If the badge stays as the end mark (A6, option b), readers skimming an article may take it for a trademark sign."},
+  "The chapters page weighs 6 MB with the photographs and loads its fonts from Google Fonts, so a phone on a slow connection waits for it."
+ ],
+ "decisions": [
+  {
+   "question": "Which wordmark width carries Edition 06, with ampersand B as refined?",
+   "context": [
+    "The proofs show the site and email mastheads, the avatar, a social card and the letterhead at both widths, side by side at true size. At the same height the condensed drawing runs about a fifth narrower: 120 against 152 px from the 16 px masters, 181 against 221 px from the 24 px masters, and 342 against 435 px at 48 px tall.",
+    "The reader check also asks which masthead reads faster at a glance, and its answers arrive at Gate 2."
+   ],
+   "options": [
+    {"text": "Keep today's width, with ampersand B as refined", "short": "today's width with B"},
+    {"text": "Adopt the condensed width, with ampersand B", "short": "the condensed width with B"},
+    {"text": "Hold the choice until Gate 2 and read the reader check's answers first", "short": "hold until Gate 2"}
+   ],
+   "recommended": "a",
+   "why": "At the same height the condensed drawing only runs narrower. Its heavy capitals sit close to campaign-sign lettering, which a nonpartisan brand should stay away from, and on an avatar its monogram reads as 0&A. Today's width already holds its spacing at 16 px, and every chapter is built on it. If the reader check points the other way at Gate 2, you can still change course there.",
+   "touches": ["proofs-the-marks-at-a-glance", "proofs-masthead-on-the-site", "proofs-avatar", "03.1", "04.1"],
+   "source": "The identity designer's open question 1, and your November 6 ruling that the width and B are chosen from proofs at actual size."
+  },
+  {
+   "question": "Do we adopt the Signal Grid's new codes in Rules 08.4 to 08.8?",
+   "context": "Content type leaves the grid and goes into words. Each grid codes one thing, chosen in a fixed order: tracker progress, then a series route, then a pillar corner. Stages are told apart by shape: a filled disc for done, a ring for under way, a gap for a stage that never happened, a small node for one not yet reached, and one red disc where a reader can take part now.",
+   "options": [
+    {"text": "Adopt the new codes as drawn", "short": "adopt as drawn"},
+    {"text": "Adopt them, and add the stage shapes and two routes to the next reader check before trackers ship", "short": "adopt and test with readers"},
+    {"text": "Keep our fifth edition's codes", "short": "keep the fifth edition's codes"}
+   ],
+   "recommended": "b",
+   "why": "Our fifth edition's content colors collapse into four grays in gray print, and its Active and Ready states differ by 1.14 to 1, so a color-blind reader loses them. Shapes survive both. No reader has seen the new shapes yet, and a short test costs little next to a tracker that ships with a key nobody reads.",
+   "touches": ["08.4", "08.5", "08.6", "08.7", "08.8"],
+   "source": "The identity designer's open question 2."
+  },
+  {
+   "question": "Do social avatars and the app icon show ampersand B alone on Charcoal?",
+   "context": "At feed size, 32 to 48 px, the monogram L8 sets its capitals at 10 to 12 px, under the 14 px floor at either width. L8 stays for squares where the name must show, such as a tile in a partner's directory.",
+   "options": [
+    {"text": "B alone on the Charcoal tile, with L8 for squares where the name must show", "short": "B alone, L8 where the name must show"},
+    {"text": "L8 on the Charcoal tile everywhere", "short": "L8 everywhere"}
+   ],
+   "recommended": "a",
+   "why": "B is the mark readers learn first, and our fifth edition already made it the avatar. It holds at 32 px where L8's letters fall under our own floor, so this answer stands whichever width you choose in A1.",
+   "touches": ["04.7", "03.7", "proofs-avatar"],
+   "source": "The identity designer's open question 3."
+  },
+  {
+   "question": "Does the editorial crop of B always take the surface's ink?",
+   "context": "Rule 04.8 crops a large B off the bottom-right corner of a cover or poster.",
+   "options": [
+    {"text": "Always the surface's ink, never red", "short": "the surface's ink"},
+    {"text": "Red when nothing else in the view holds the working red", "short": "red when the view's red is free"}
+   ],
+   "recommended": "a",
+   "why": "Rule 05.3 gives each view one working red, for an error, a step or the point the headline names, and a crop does none of those jobs. A red crop would spend that red on decoration. The hinge divider's ampersand already takes the surface's ink, and the crop follows it.",
+   "touches": ["04.8", "05.3"],
+   "source": "The identity designer's open question 4."
+  },
+  {
+   "question": "Do the six series keep the routes Rule 08.6 gives them?",
+   "context": "Our fifth edition's text census cuts its route table at 50 characters, so the identity designer matched the six series to the six routes by their order there. Each route ends on its pillar's corner: Reform 101 and The Oath on Explain, Dispatch and The Public Record on Track, Field Notes on Connect, and Proof It Works on Act.",
+   "options": [
+    {"text": "Confirm the six pairs as drawn", "short": "confirm the six pairs"},
+    {"text": "Change the pairs you name in a note", "short": "change the pairs I name"},
+    {"text": "Send the full fifth-edition table, and we match from it", "short": "match from the full table"}
+   ],
+   "recommended": "a",
+   "why": "Every route ends on the corner of its series' pillar, which supports the match, and no series has run under a route yet, so a change today costs nothing. If you remember a different pairing, option (b) takes it.",
+   "touches": ["08.6", "08.7"],
+   "source": "The identity designer's open question 5."
+  },
+  {
+   "question": "How does an article end: with the hinge-circle badge, or with B alone?",
+   "context": [
+    "Rule 04.6 places the badge, B inside a red ring, after an article's last sentence, a use you approved at Gate 1 with three conditions. At 16 px after a period it reads as the registered trademark sign. I looked at the plate at true size and at 2x and read it that way too.",
+    "Option (a) changes an approved identity use, so it needs your named approval."
+   ],
+   "options": [
+    {"text": "End an article with B alone, at the text's cap height and in the text's ink, and keep the badge from 48 px for back covers and events", "short": "B alone as the end mark"},
+    {"text": "Keep the badge as the end mark at 16 px", "short": "keep the badge"},
+    {"text": "Use no end mark", "short": "no end mark"}
+   ],
+   "recommended": "a",
+   "why": "A reader who takes the badge for a trademark sign learns the wrong thing about the mark. B alone keeps the hinge at the end of every piece, spends no red and stays legible at text size, and the badge keeps the sizes where its ring reads as a ring.",
+   "touches": ["04.6", "04.1", "05.3"],
+   "source": "The identity designer's question in the fix pass, and the craft review's item C-S12."
+  },
+  {
+   "question": "Does Rule 05.1 set firm color limits for each view?",
+   "context": "Our fifth edition gave each of the seven colors a share of a composition. Measured on a real phone page, a view can meet Newsprint's range but cannot hold every other range at once, and Verdigris is often absent.",
+   "options": [
+    {"text": "Firm limits for each view: Newsprint 60 to 85 percent, one dark panel per section and red within 5 percent, with the other fifth-edition shares kept as the balance across a body of work", "short": "firm limits for each view"},
+    {"text": "Hold every view to all seven fifth-edition shares", "short": "all seven shares in every view"}
+   ],
+   "recommended": "a",
+   "why": "These three limits are the ones a producer can check on one screen, and they keep Newsprint leading and red scarce. The phone page in Rule 05.1 measures 76 percent Newsprint, one Charcoal panel and 3 percent red, inside all three.",
+   "touches": ["05.1", "05.3"],
+   "source": "The systems designer's open question 1."
+  },
+  {
+   "question": "Do we keep the body measure token and correct its description?",
+   "context": "The token for the ideal body measure, 33.88 rem, promises 68 characters a line. Rendered in Inter at 17 px, it gives 64 to 66 on chapter 02's prose.",
+   "options": [
+    {"text": "Keep the value, and describe it as about 65 characters of 17 px Inter, measured in Chromium", "short": "keep the value, fix the description"},
+    {"text": "Widen the token until it measures 68", "short": "widen it to 68"}
+   ],
+   "recommended": "a",
+   "why": "The measure sits inside the 60 to 75 characters Rule 06.8 asks for, and the column spans in Rule 07.3 were picked against it. Widening it would move every span and every page for three characters a line.",
+   "touches": ["06.8", "07.3"],
+   "source": "The systems designer's open question 2."
+  },
+  {
+   "question": "Does atlas System 1 move from White to Newsprint in its finishing work?",
+   "context": "System 1, the atlas drawing you chose, was drawn on White. Your later ruling made Newsprint the page color for charts and the atlas, and the token files follow it. The move happens in the finishing work for chapters 15 and 21; nothing in System 1's folder has changed.",
+   "options": [
+    {"text": "Move System 1 to Newsprint in its finishing work", "short": "move to Newsprint"},
+    {"text": "Keep System 1 on White as the one exception", "short": "keep White"}
+   ],
+   "recommended": "a",
+   "why": "Chart tokens exist on Newsprint and Charcoal only, so a White atlas would need a color set of its own. On Newsprint the atlas and the guide's charts share one ground, as Rule 05.7 asks.",
+   "touches": ["05.7"],
+   "source": "The token engineer's flag, logged on November 6 as a routine call that waits for you."
+  },
+  {
+   "question": "Do two more fifth-edition supporting lines retire?",
+   "context": [
+    "On Board 5 you retired four fifth-edition lines. Two more remain, each cut by the text census at 50 characters: \"Here is what the record shows. This part still needs…\" and \"The rules connect. The gaps create opportunity. Pe…\".",
+    "The editor recommends retiring the second and reading the first in full. I recommend retiring both."
+   ],
+   "options": [
+    {"text": "Retire both, with no role", "short": "retire both"},
+    {"text": "Retire the second, and read the first in full before deciding", "short": "retire the second, read the first"},
+    {"text": "Keep both, each with a role", "short": "keep both"}
+   ],
+   "recommended": "a",
+   "why": "The first opens with \"Here is\", the opener Rule 02.5 removes, and chapter 02 already teaches graded language with whole examples in Rules 02.16 and 02.22. The second is a run of matched sentences built on the gaps frame you dropped at Gate 1. The locked lines and the voice line already do both jobs.",
+   "touches": ["02.23", "fig-s-02-lines"],
+   "source": "The editor's open question 2."
+  },
+  {
+   "question": "Do the three lines the editor completed stand?",
+   "context": "Where the text census cut our fifth edition at 50 characters, the editor finished three lines: Connect's job, \"Help people reach the office that decides and the evidence it decides on.\"; the end of the list of words we use, \"vote, office, deadline and step\"; and the mechanism row \"The committee chair decides which bills get a hearing.\"",
+   "options": [
+    {"text": "Approve the three lines as written", "short": "approve as written"},
+    {"text": "Send the full fifth-edition wording, and we use it", "short": "use the fifth edition's wording"}
+   ],
+   "recommended": "a",
+   "why": "Each line passes chapter 02's rules and does the job its place on the page needs. The full fifth-edition text is not in our files, so option (b) waits on a file from you.",
+   "touches": ["fig-s-01-pillars", "02.25", "02.26"],
+   "source": "The editor's open question 4."
+  },
+  {
+   "question": "Does the one-standard wording replace the balance clause in your Board 3 answer?",
+   "context": [
+    "Your Board 3 answer holds this clause: \"the chart set is chosen so readers on each side meet a finding they would rather skip\".",
+    "The studio's proposed replacement: \"Charts are chosen by the question and the evidence. Every title is read from the left and the right to check that its words are accurate and fair. A set never adds or drops a finding to even the score.\""
+   ],
+   "options": [
+    {"text": "Replace the clause with the one-standard wording", "short": "replace the clause"},
+    {"text": "Keep the Board 3 clause", "short": "keep the Board 3 clause"}
+   ],
+   "recommended": "a",
+   "why": "The old clause picks charts to spread discomfort evenly, which is the manufactured balance your November 6 direction rules out. The new wording keeps the read of every title from the left and the right, which catches unfair words, and lets the evidence choose the charts.",
+   "touches": ["05.7", "01.16"],
+   "source": "Decision log, DR-94, the studio's proposal from your direction of November 6 (DR-93); it replaces part of your Board 3 answer (DR-55)."
+  },
+  {
+   "question": "How does chapter 01 say what nonpartisan means?",
+   "context": [
+    "Your November 6 direction says nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them. Chapter 01 teaches even treatment in Rules 01.2, 01.11 and 01.16, and it never says what a writer does when the record falls on one side. Rule 02.25's last row turns \"One party blocked the bill.\" into the Senate's 60-vote rule and leaves out how each party voted, which Rule 01.13 says to print with its count.",
+    "**Proposed wording.** Chapter 01's opening gains: \"Nonpartisan, for us, means one standard of evidence and one way of describing sources, actors and parties, applied to everyone. We report each finding as the record shows it. When the record shows one party or official doing more of something, we say so, name who acted and size the claim to its evidence grade. No piece adds, softens or drops a finding to make the sides look even.\"",
+    "Rule 01.11 gains: \"When the record shows one party using a mechanism more, report it that way, with the counts, as Rule 01.13 asks, and add no case to even the count.\" Its reason becomes: \"Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it.\" Rule 01.20's reason gains \"in a hinge headline\", and Rule 01.12's reason says \"the spread of examples\" where it now says \"balance\".",
+    "**The example of an uneven finding, graded documented:** \"On July 22, 2026, the House passed H.R. 7008, the Stop Insider Trading Act, 232 to 198. The bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. Republicans voted 218 to 0 for it and Democrats 198 to 13 against it, and the one independent voted for it.\" Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026, United States. Retrieved November 6, 2026. One Democrat did not vote.",
+    "Rule 02.25's last row ends: \"It needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no.\" Its source line adds that the Congressional Record lists senators by name, and the party labels come from a roster of members, a secondary source."
+   ],
+   "options": [
+    {"text": "Adopt this wording, with the House vote as the example of an uneven finding", "short": "adopt the wording and the House vote"},
+    {"text": "Adopt the wording, and have the research lead propose an example on another subject before Gate 2", "short": "adopt the wording, find another example"},
+    {"text": "Leave chapter 01 as it stands, with your direction kept in the decision log", "short": "leave chapter 01 as it stands"}
+   ],
+   "recommended": "a",
+   "why": "Chapter 01 is where a newcomer learns what nonpartisan means, so your direction belongs there in plain words. The House vote sits in the Clerk's own roll call, names both parties in one sentence form, and travels with the bill described whole, as you asked for H.R. 7008. A reader can check every number.",
+   "touches": ["purpose", "01.11", "01.13", "01.20", "02.25"],
+   "source": "Your direction of November 6 on nonpartisanship (DR-93), and the research lead's report on H.R. 7008's votes."
+  },
+  {
+   "question": "Do you accept the correction to house rule H10's qualification line?",
+   "context": "H10's example reads \"Georgia: Democratic +0.2 in 2020, Republican +2.2 in 2024\", while its qualification said margins are the Republican share minus the Democratic share, which made the 2020 figure -0.2. The line now reads \"Each margin is the leading party's lead, in percentage points of all presidential votes.\" The rule and its example are unchanged. This card is for your record.",
+   "options": [
+    {"text": "Accept the corrected line", "short": "accept the correction"},
+    {"text": "Restore the approved line and change the example's signs", "short": "restore the line, change the signs"}
+   ],
+   "recommended": "a",
+   "why": "The corrected line makes the example true as printed, and the example is the Georgia row from our chart page, which a reader can check against the source. Changing the example would print one party's lead as a negative number.",
+   "touches": ["02.22"],
+   "source": "The civic review's item CP-S18, corrected on November 6 as a routine erratum."
+  }
+ ]
+}
