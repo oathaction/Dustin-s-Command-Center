@@ -73,11 +73,21 @@ Long notes belong in HTML beside or under the drawing, where they wrap, not insi
 
 **F17. Social card.** Keep the source line. Add no web address: Dustin has not settled the site, so the card names "Oath & Action" and the atlas instead. Board 3 asks him.
 
+**F18. Craft at 2x (the craft review's shared findings).**
+- Tabular figures in every drawn chart. In CSS, set `font-variant-numeric` after any `font` shorthand, which resets it (Register).
+- Apply tabular figures to numbers only, so hyphens in words do not widen ("Non-Hispanic", never "Non - Hispanic").
+- Draw each phone artboard at the width it shows. A drawing must never scale up, so every line weight stays in the 1, 1.5, 2, 3 and 6 px family.
+- Set big numbers optically flush with the left edge, correcting the 4 to 5 px side bearing.
+- No rule, gridline or leader crosses a word. Place notes clear of gridlines, or give them a knockout in the ground color.
+- Notes run 45 to 75 characters a line.
+- Dates print in words, with no line break inside a date.
+- Extend each generator's layout guard to test label boxes against lines, rules and baselines, not only against other labels.
+
 ## Per-concept priorities
 
-- **01 Explainer:** F2's title and map marker first (brand EX-M1, EX-M2; statistics), then the craft report's items, then the line-crossing-label guard the production review asks for (S03 and S10 baselines on phones).
-- **02 Register:** the S10 title (civic RG-M1), the "How to read" guide (civic RG-M2), F1's full coding rule (brand), the S06 badges (statistics, brand), Prussian off "away" (brand), the S07 count (interface RG-M1), heading levels, phone targets, forced colors, and the copy pipeline.
-- **03 Instrument:** the evidence label's grade words and no source codes (civic IN-M1), S10's two patterns (civic IN-M2), S07's note in the equivalent (interface IN-M1), S06's title (statistics, brand), S01's title (statistics), S05's 2002 bridge, the generators that hard-code `/17` and the missing `ranked_bar()` (production), and the copy pipeline.
+- **01 Explainer:** F2's title and map marker first (brand EX-M1, EX-M2; statistics), then the craft report's items (rules crossing words in four places, widened hyphens), then the line-crossing-label guard the production review asks for (S03 and S10 baselines on phones).
+- **02 Register:** the S10 title (civic RG-M1), the "How to read" guide (civic RG-M2), F1's full coding rule (brand), the S06 badges (statistics, brand), Prussian off "away" (brand), the S07 count (interface RG-M1), heading levels, phone targets, forced colors, the copy pipeline, and from the craft review: S02's series label on the wrong line (its one must fix), tabular figures in every drawing, and notes at 75 characters a line at most.
+- **03 Instrument:** the evidence label's grade words and no source codes (civic IN-M1), S10's two patterns (civic IN-M2), S07's note in the equivalent (interface IN-M1), S06's title (statistics, brand), S01's title (statistics), S05's 2002 bridge, the generators that hard-code `/17` and the missing `ranked_bar()` (production), the copy pipeline (442 straight apostrophes, ISO dates that break), and notes printed over gridlines (craft).
 
 ## Checks
 
