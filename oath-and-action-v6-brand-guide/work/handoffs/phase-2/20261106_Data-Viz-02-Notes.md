@@ -56,6 +56,12 @@ Rebuilt from the current shared data (D2-104 to D2-107): S06 iv-c income and wea
 - **F17.** The card keeps its full source line and names Oath & Action and the atlas. No web address.
 - **F18.** Tabular figures wrap each run of digits in a drawing, so hyphens in words keep their width; in CSS the tabular rule follows every font shorthand. A 358 px artboard joins 866, 560 and 328, and no drawing scales up. The big figure sits optically flush. Labels carry a ground halo, and the build's guard now tests label boxes against leaders, series, baselines and table rules. Notes run two columns of about 57 characters at desktop width and 540 px on phones. Dates print in words with no break inside.
 
+### Creative director, must fix before Board 3
+
+- **CD 1.** "RL47" is off every chart face: S03 note 3 ends "without the roll-up entry", and S03 note 5 and S08 note 3 open "One entry, dated March 2026, stands for…". The build's face check now also fails on record IDs.
+- **CD 2.** The coding note's last clause on S03 and S08 reads "the atlas's profiles of those two reforms rate confidence…".
+- **CD 3.** S10's title reads "Most claims behind each of the atlas's 16 everyday answers are documented on the public record, from 59 percent for algorithms to 96 percent for tap water." The build checks 59 (13 of 22, 59.1) and 96 (23 of 24, 95.8) against the shared data.
+
 ### Statistics red team
 
 - **RG-M1.** Fixed by F5: no badges, a title that counts scenarios, and no pointer resolved in the count.
