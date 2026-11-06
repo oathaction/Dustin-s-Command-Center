@@ -5,9 +5,9 @@
  "error_count": 0,
  "stats": {
   "figures": 26,
-  "marks": 3058,
-  "values": 2560,
-  "categories": 498,
+  "marks": 4025,
+  "values": 3425,
+  "categories": 600,
   "units": 128
  },
  "selftest": [
@@ -24,17 +24,17 @@
   {
    "plant": "em dash",
    "caught": true,
-   "first_error": "em dash in page text near \"Chart: Oath & Action planted — dash Stu\""
+   "first_error": "em dash in page text near \"ow to read our charts planted — dash Stu\""
   },
   {
    "plant": "evidence label",
    "caught": true,
-   "first_error": "S01: evidence label \"Mystery\" does not name \"Finding\""
+   "first_error": "S01: evidence label \"Mystery · Documented: a published survey\" does not name \"Finding\""
   },
   {
    "plant": "unit removed",
    "caught": true,
-   "first_error": "S08: 1 required rows not drawn (RL03)"
+   "first_error": "S08: 1 required rows not drawn (RL01)"
   },
   {
    "plant": "category changed",

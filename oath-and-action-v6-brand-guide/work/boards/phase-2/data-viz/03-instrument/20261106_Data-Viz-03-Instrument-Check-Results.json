@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/03-instrument/20261106_Data-Viz-03-Instrument.html",
- "checked": "2026-11-06T05:32:22.965Z",
+ "checked": "2026-11-06T06:46:17.138Z",
  "views": [
   "white",
   "newsprint",
@@ -13,7 +13,7 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 818,
+   "texts": 877,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -22,7 +22,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 392,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -36,18 +36,18 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 10248,
+   "height": 13745,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -56,7 +56,7 @@
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 809,
+   "texts": 869,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -65,7 +65,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 392,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -79,27 +79,27 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 10004,
+   "height": 13679,
    "axe": [],
-   "focusStops": 39,
+   "focusStops": 40,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 142,
+   "texts": 178,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -108,7 +108,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 76,
+    "labels": 59,
     "outside": [],
     "overlaps": []
    },
@@ -126,23 +126,23 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 2457,
+   "height": 2788,
    "axe": [],
-   "focusStops": 15,
+   "focusStops": 10,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "social",
    "rootVisible": true,
-   "texts": 45,
+   "texts": 63,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -169,23 +169,23 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 2283,
+   "height": 2383,
    "axe": [],
-   "focusStops": 8,
+   "focusStops": 1,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "system",
    "rootVisible": true,
-   "texts": 465,
+   "texts": 626,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -212,23 +212,23 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 9146,
+   "height": 13697,
    "axe": [],
-   "focusStops": 17,
+   "focusStops": 13,
    "focusWithoutRing": []
   },
   {
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 796,
+   "texts": 874,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -237,7 +237,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 375,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -251,18 +251,18 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 20590,
+   "height": 25146,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -271,7 +271,7 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 787,
+   "texts": 874,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -280,7 +280,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 375,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -294,18 +294,18 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 20058,
+   "height": 25150,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -314,7 +314,7 @@
    "width": 390,
    "view": "dark",
    "rootVisible": true,
-   "texts": 142,
+   "texts": 180,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -323,7 +323,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 74,
+    "labels": 59,
     "outside": [],
     "overlaps": []
    },
@@ -341,14 +341,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 4522,
+   "height": 4712,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -357,7 +357,7 @@
    "width": 390,
    "view": "social",
    "rootVisible": true,
-   "texts": 44,
+   "texts": 61,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -384,14 +384,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 2762,
+   "height": 2661,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -400,7 +400,7 @@
    "width": 390,
    "view": "system",
    "rootVisible": true,
-   "texts": 457,
+   "texts": 611,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -427,14 +427,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 16648,
+   "height": 23569,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -443,7 +443,7 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 796,
+   "texts": 875,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -452,7 +452,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 375,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -466,18 +466,18 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 21053,
+   "height": 26443,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -486,7 +486,7 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 787,
+   "texts": 875,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -495,7 +495,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 9,
-    "labels": 375,
+    "labels": 281,
     "outside": [],
     "overlaps": []
    },
@@ -509,18 +509,18 @@
    },
    "scale": {
     "groups": 27,
-    "marks": 279,
+    "marks": 283,
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 20471,
+   "height": 26447,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -529,7 +529,7 @@
    "width": 360,
    "view": "dark",
    "rootVisible": true,
-   "texts": 142,
+   "texts": 180,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -538,7 +538,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 74,
+    "labels": 59,
     "outside": [],
     "overlaps": []
    },
@@ -556,14 +556,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 4634,
+   "height": 4975,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -572,7 +572,7 @@
    "width": 360,
    "view": "social",
    "rootVisible": true,
-   "texts": 44,
+   "texts": 61,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -599,14 +599,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 2881,
+   "height": 2797,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -615,7 +615,7 @@
    "width": 360,
    "view": "system",
    "rootVisible": true,
-   "texts": 457,
+   "texts": 611,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -642,14 +642,14 @@
     "bad": []
    },
    "party": {
-    "marks": 10,
+    "marks": 12,
     "bad": []
    },
    "fonts": [
     "Inter",
     "Inter Tight"
    ],
-   "height": 17317,
+   "height": 24820,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

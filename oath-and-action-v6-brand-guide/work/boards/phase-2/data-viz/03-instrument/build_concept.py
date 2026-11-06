@@ -1,17 +1,36 @@
-"""Build chart system concept 03, Instrument, for the data visualization round (November 6, 2026).
+"""Build chart system concept 03, Instrument, for the data visualization round (November 6, 2026; fix pass the same day).
 
-Every chart is a module with seven fixed slots (index, title, measure, controls, figure, notes, source), set on the
-Signal Grid's 8 px rhythm. One generator function per chart form draws every artboard (866, 560 and 328 px for the
-panel, 680 px for the still, 468 px at 1.7x for the social card) from the shared chart data, so the page doubles as
-the seed of the chart kit. Atlas record numbers (RL07, PW15, E09) print as small index labels; texture and fill
-against outline carry the second code after color, as the atlas's evidence lines do.
+The chart kit (DR-49). Every chart is a module with seven fixed slots (A index, B title, C measure, D controls,
+E figure, F notes, G source) on the Signal Grid's 8 px rhythm. A chart joins the kit with one call:
 
-Every value is read from work/boards/phase-2/data-viz/shared/20261106_Chart-Data.json. Titles, measure lines, notes
-and studio strips are studio drafts (see work/handoffs/phase-2/20261106_Data-Viz-03-Notes.md).
+    register_chart('S03', dataset='rule-changes-by-instrument', gen=ranked_bar, adapter=spec_s03,
+                   table=eq_s03, csv_cols=['key', 'value', ...])
+
+The adapter reads the shared data and returns a spec: the copy for each slot and the data the generator draws.
+Generators draw at any width, so the module asks for every artboard in CHART_TOKENS['artboards'] (866, 560, 358
+and 328 px), for the 680 px still and for the social card:
+
+    big_number(art, spec)       one figure set large, group bars on a 0 to 100 track, vote bars with a threshold
+    line_events(art, spec)      lines with unjoined method breaks, event notes and direct labels
+    ranked_bar(art, spec)       bars ranked by total, split by a category code; the scale comes from the largest total
+    dumbbell(art, spec)         two dots per row on one cropped scale, the change in words
+    small_multiples(art, spec)  one panel per group on one shared scale
+    tile_map(art, spec)         equal tiles on the studio grid, coded by a status
+    strip_timeline(art, spec)   lanes on one true time scale, each dot flagged with its year
+    share_bars(art, spec)       100 percent bars, one per row, in the graded fill code
+    comparison_table(uid, spec), unit_ledger(uid, spec), event_register(spec, hl)   HTML forms that reflow
+
+Every generator draws through Art, which measures each label with the Inter files in ./fonts and refuses to build when
+a label leaves its drawing, two labels touch, or a label meets a line, rule, leader or mark it does not sit in, all with
+15 percent headroom for readers who widen text spacing. All copy passes through typo(): curly quotes and apostrophes,
+ISO dates in words with no line break inside, the true minus. Chart values live in CHART_TOKENS, which the System
+view prints.
+
+Every value is read from work/boards/phase-2/data-viz/shared/20261106_Chart-Data.json.
 
 Run from the project root:
     python3 -I work/boards/phase-2/data-viz/03-instrument/build_concept.py
-Writes 20261106_Data-Viz-03-Instrument.html beside this file.
+Writes 20261106_Data-Viz-03-Instrument.html beside this file, or stops and lists every layout fault it finds.
 """
 import csv
 import html
@@ -20,6 +39,7 @@ import json
 import math
 import pathlib
 import re
+import sys
 
 from PIL import ImageFont
 
@@ -30,47 +50,71 @@ GRID = json.loads((ROOT / 'work/boards/phase-2/data-viz/shared/geo/us-state-tile
 OUT = HERE / '20261106_Data-Viz-03-Instrument.html'
 DS = DATA['datasets']
 SPECS = {s['id']: s for s in DATA['specimens']}
-ORDER = ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09', 'S10']
-MINUS = '−'
-ARTS = [('w', 866), ('m', 560), ('n', 328)]
+BUILD_DATE = '20261106'
+MINUS, NBSP = '−', ' '
 
+# ------------------------------------------------------------------------------------------------ chart tokens
+# One source for every chart value. Generators read it; the System view prints it.
+CHART_TOKENS = {
+    'artboards': [('w', 866), ('m', 560), ('p', 358), ('n', 328)],   # shown when the module is at least this wide
+    'still': 680,
+    'social': {'w': 1080, 'h': 1350, 'margin': 64, 'min_scale': 1.3, 'artboard_search': (440, 640, 4), 'artboard_fallback': 600},   # 13 px labels print at 17 px or more on the card
+    'page': {'columns': 12, 'gutter': 24, 'margin': 64, 'phone_margin': 16, 'module_columns': 8},
+    'slot_space': {'A': 12, 'B': 8, 'C': 8, 'D': 16, 'E': 16, 'F': 16, 'G': 12, 'after': 16},
+    'space': [4, 8, 12, 16, 24, 32, 48, 72],
+    'type': {   # style: (face, weight, size px, line height px, tracking em)
+        'title': ('Inter Tight', 800, 28, 32, -0.025), 'title_phone': ('Inter Tight', 800, 22, 26, -0.02),
+        'kind': ('Inter', 700, 13, 18, 0.06), 'grade_words': ('Inter', 400, 13, 18, 0), 'index': ('Inter', 600, 13, 18, 0),
+        'measure': ('Inter', 400, 15, 23, 0), 'series': ('Inter', 600, 15, 18, 0), 'data': ('Inter', 600, 13, 16, 0),
+        'note': ('Inter', 400, 13, 16, 0), 'notes_slot': ('Inter', 400, 14, 20, 0), 'source': ('Inter', 400, 13, 18, 0),
+        'big': ('Inter Tight', 800, 96, 96, -0.03), 'big_small': ('Inter Tight', 800, 72, 72, -0.03)},
+    'lines': {'hair': 1, 'outline': 1.5, 'context': 2, 'named': 3, 'lit': 6},
+    'bar': {'h': 24, 'pitch': 40},
+    'share_bar': {'h': 18, 'pitch': 36},
+    'group_bar': {'h': 20, 'pitch': 54},
+    'vote_bar': {'h': 24},
+    'unit': {'size': 24, 'gap': 4},
+    'dot': {'later': 6, 'earlier': 5, 'timeline': 5, 'point': 4, 'vertex': 1.5},
+    'tile_pitch': {866: 56, 560: 44, 358: 29, 328: 27},
+    'breaks': {'side_labels': 640, 'big_side': 460, 'big_96': 700, 'four_panels': 760, 'two_panels': 460,
+               'table_reflow': 640, 'map_years': 460, 'map_notes_beside': 760},
+    'label_headroom': 1.15,
+    'note_chars': (45, 75),
+    'note_gap': 10,
+    'big_bearing_em': 0.04,
+    'inter_tight_factor': 0.955,
+}
+CT = CHART_TOKENS
 
-def esc(s):
-    return html.escape(str(s), quote=True)
-
-
-def fmt(v):
-    return f'{v:.2f}'.rstrip('0').rstrip('.')
-
-
-def pct(v, d=1):
-    s = f'{v:.{d}f}'
-    return s.replace('-', MINUS)
-
-
-# ------------------------------------------------------------------------------------------------ text metrics
-FONTDIR = pathlib.Path('/usr/share/fonts/opentype/inter')
+# ------------------------------------------------------------------------------------------------ fonts and measuring
+FONT_DIR = HERE / 'fonts'
+FONT_FILES = {400: 'Inter-Regular.otf', 600: 'Inter-SemiBold.otf', 700: 'Inter-Bold.otf', 800: 'Inter-ExtraBold.otf'}
+_missing = [n for n in FONT_FILES.values() if not (FONT_DIR / n).is_file()]
+if _missing:
+    raise SystemExit(f'build_concept.py measures labels with the Inter files in {FONT_DIR.name}/ beside it; missing: {", ".join(_missing)}')
 _FONTS = {}
 
 
 def _font(weight):
-    name = {400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold', 800: 'ExtraBold'}[weight]
+    weight = {500: 600}.get(weight, weight)
     if weight not in _FONTS:
-        _FONTS[weight] = ImageFont.truetype(str(FONTDIR / f'Inter-{name}.otf'), 200)
+        _FONTS[weight] = ImageFont.truetype(str(FONT_DIR / FONT_FILES[weight]), 200, layout_engine=ImageFont.Layout.RAQM)
     return _FONTS[weight]
 
 
-def tw(text, size, weight=400, tight=False):
-    """Width of a run of text in px. Digits get a tabular allowance; Inter Tight runs about 4.5% narrower."""
-    w = _font(weight).getlength(text) * size / 200
-    w += sum(1 for c in text if c.isdigit()) * size * 0.012
-    return w * 0.955 if tight else w
+def tw(text, size, weight=400, tight=False, track=0.0):
+    """Width in px, tabular figures on. Inter Tight is measured as Inter ExtraBold times the tight factor."""
+    text = str(text)
+    w = _font(weight).getlength(text, features=['tnum']) * size / 200
+    if tight:
+        w *= CT['inter_tight_factor']
+    return w + track * size * max(len(text) - 1, 0)
 
 
 def wrap(text, width, size, weight=400, tight=False):
     out, line = [], ''
-    for word in str(text).split():
-        trial = (line + ' ' + word).strip()
+    for word in typo(text).split(' '):   # the copy pipeline first, then split on plain spaces only, so dates and law numbers stay whole
+        trial = (line + ' ' + word).strip(' ')
         if line and tw(trial, size, weight, tight) > width:
             out.append(line)
             line = word
@@ -81,71 +125,96 @@ def wrap(text, width, size, weight=400, tight=False):
     return out or ['']
 
 
-# SVG text styles: class -> (size, weight). Sizes are rendered px at 1x.
-STY = {'x13': (13, 400), 'x13b': (13, 600), 'x13s': (13, 600), 'x15': (15, 400), 'x15b': (15, 600), 'x15k': (15, 700),
-       'xin': (13, 600), 'xint': (13, 600), 'xins': (13, 600), 'x14': (14, 400)}
+def wrap_even(text, width, size, weight=400):
+    """Wrap, then narrow the measure until no line is a single word left alone."""
+    lines = wrap(text, width, size, weight)
+    if len(lines) > 1 and len(lines[-1].split(' ')) == 1:
+        w = width
+        for _ in range(16):
+            w -= 10
+            alt = wrap(text, w, size, weight)
+            if len(alt) == len(lines) and len(alt[-1].split(' ')) > 1:
+                return alt
+    return lines
 
 
-def sw(text, cls):
-    size, weight = STY[cls]
-    return tw(text, size, weight)
-
-
-def T(x, y, s, cls, anchor=None, attrs=''):
-    a = f' text-anchor="{anchor}"' if anchor and anchor != 'start' else ''
-    return f'<text x="{fmt(x)}" y="{fmt(y)}" class="{cls}"{a}{attrs}>{esc(s)}</text>'
-
-
-def TL(x, y, rows, cls, lh, anchor=None, attrs=''):
-    a = f' text-anchor="{anchor}"' if anchor and anchor != 'start' else ''
-    spans = ''.join(f'<tspan x="{fmt(x)}" dy="{0 if i == 0 else lh}">{esc(r)}</tspan>' for i, r in enumerate(rows))
-    return f'<text x="{fmt(x)}" y="{fmt(y)}" class="{cls}"{a}{attrs}>{spans}</text>'
-
-
-def R(x, y, w, h, cls, attrs=''):
-    return f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(max(w, 0))}" height="{fmt(h)}" class="{cls}"{attrs}/>'
-
-
-def LN(x1, y1, x2, y2, cls, attrs=''):
-    return f'<line x1="{fmt(x1)}" y1="{fmt(y1)}" x2="{fmt(x2)}" y2="{fmt(y2)}" class="{cls}"{attrs}/>'
-
-
-def da(key, value=None, field=None, mark=None, axis=None, scale=None, cat=None, tip=None):
-    """Data-contract attributes for one mark."""
-    s = f' data-key="{esc(key)}"'
-    if field:
-        s += f' data-field="{esc(field)}"'
-    if value is not None:
-        s += f' data-value="{fmt(value)}"'
-    if cat is not None:
-        s += f' data-category="{esc(cat)}"'
-    if mark:
-        s += f' data-mark="{mark}"'
-    if axis:
-        s += f' data-axis="{axis}"'
-    if scale:
-        s += f' data-scale="{esc(scale)}"'
-    if tip:
-        s += f' data-tip="{esc(tip)}"'
-    return s
-
-
-def svg(uid, art, W, H, body, label, defs='', extra_cls=''):
-    d = f'<defs>{defs}</defs>' if defs else ''
-    return (f'<svg class="art art-{art}{extra_cls}" data-view="{uid}-{art}" viewBox="0 0 {fmt(W)} {fmt(H)}" width="{fmt(W)}" '
-            f'height="{fmt(H)}" role="img" aria-label="{esc(label)}" focusable="false">{d}{body}</svg>')
+# ------------------------------------------------------------------------------------------------ copy
+MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 
 def date_words(iso):
-    y, m, d = iso.split('-')
-    mon = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-           'November', 'December'][int(m) - 1]
-    return f'{mon} {int(d)}, {y}'
+    y, m, d = str(iso)[:10].split('-')
+    return f'{MONTHS[int(m) - 1]}{NBSP}{int(d)},{NBSP}{y}'
+
+
+MONTH_RE = '|'.join(MONTHS)
+
+
+def iso_to_words(t):
+    return re.sub(r'\b(\d{4})-(\d{2})-(\d{2})\b', lambda m: date_words(m.group(0)), str(t))
+
+
+def typo(s):
+    """The copy pipeline: dates in words, curly quotes and apostrophes, the true minus."""
+    s = iso_to_words(s)
+    s = re.sub(r"(?<![\w'’])'([^'\n]{1,80}?)'(?!\w)", '‘\\1’', s)
+    s = re.sub(r"(?<=\w)'(?=\w)|(?<=s)'(?=[\s.,;:)])", '’', s)
+    s = re.sub(r'"([^"<>]*)"', '“\\1”', s)
+    s = re.sub(r'(?<=[\s(])-(?=\d)', MINUS, s)
+    s = re.sub(rf'\b({MONTH_RE}) (\d{{1,2}}), (\d{{4}})\b', '\\1' + NBSP + '\\2,' + NBSP + '\\3', s)   # no break inside a date
+    s = re.sub(rf'\b({MONTH_RE}) (\d{{1,2}}|\d{{4}})\b', '\\1' + NBSP + '\\2', s)
+    s = re.sub(r'\b(H\.R\.|P\.L\.|S\.J\.Res\.|No\.|Question|Proposition|Amendment|Measure) (\d)', '\\1' + NBSP + '\\2', s)
+    return s
+
+
+def tx(s):
+    return html.escape(typo(s), quote=False)
+
+
+def at(s):
+    return html.escape(typo(s), quote=True)
+
+
+def ra(s):
+    """A data attribute, exactly as the shared data holds it."""
+    return html.escape(str(s), quote=True)
+
+
+def svg_tx(s):
+    """SVG text: figures in tabular tspans, so hyphens inside words keep their own width."""
+    return re.sub(r'\d[\d.,%]*', lambda m: f'<tspan class="tn">{m.group(0)}</tspan>', tx(s))
+
+
+def fmt(v):
+    return f'{v:.2f}'.rstrip('0').rstrip('.')
+
+
+def pct(v, d=1):
+    return f'{v:.{d}f}'.replace('-', MINUS)
+
+
+SENTENCE_END = r'(?<!\bv)(?<!\b[A-Z])\.\s(?=[A-Z])'   # a period before a capital, never after "v." or an initial
 
 
 def first_sentence(t):
-    m = re.match(r'(.+?\.)(\s|$)', t)
-    return m.group(1) if m else t
+    m = re.search(SENTENCE_END, t)
+    return t[:m.start() + 1] if m else t
+
+
+def first_clause(t, limit=180):
+    """The first sentence and its first clause, for the event register. A sentence ends at a period before a capital,
+    never after "v." or an initial. A long clause is cut at a comma outside parentheses, or else at a space."""
+    m = re.search(SENTENCE_END, t)
+    c = (t[:m.start()] if m else t).rstrip('.').split('; ')[0]
+    if len(c) <= limit:
+        return c + '.'
+    depth, commas = 0, []
+    for i, ch in enumerate(c[:limit]):
+        depth += (ch == '(') - (ch == ')')
+        if ch == ',' and depth == 0:
+            commas.append(i)
+    cut = commas[-1] if commas and commas[-1] > 60 else c.rfind(' ', 0, limit)
+    return c[:cut].rstrip(' ,') + '…'
 
 
 def rows_of(did):
@@ -156,7 +225,258 @@ def rowmap(did):
     return {str(r['key']): r for r in DS[did]['rows']}
 
 
-# ------------------------------------------------------------------------------------------------ color
+def frac_year(iso):
+    import datetime
+    y, m, d = (int(x) for x in str(iso)[:10].split('-'))
+    start = datetime.date(y, 1, 1)
+    return y + (datetime.date(y, m, d) - start).days / (datetime.date(y + 1, 1, 1) - start).days
+
+
+def slug(s):
+    return '-'.join(w.capitalize() for w in re.findall(r'[A-Za-z0-9]+', s))[:60]
+
+
+def da(key, value=None, field=None, mark=None, axis=None, scale=None, cat=None, tip=None):
+    s = f' data-key="{ra(key)}"'
+    if field:
+        s += f' data-field="{ra(field)}"'
+    if value is not None:
+        s += f' data-value="{fmt(value)}"'
+    if cat is not None:
+        s += f' data-category="{ra(cat)}"'
+    if mark:
+        s += f' data-mark="{mark}"'
+    if axis:
+        s += f' data-axis="{axis}"'
+    if scale:
+        s += f' data-scale="{ra(scale)}"'
+    if tip:
+        s += f' data-tip="{at(tip)}"'
+    return s
+
+
+# ------------------------------------------------------------------------------------------------ SVG primitives and the layout guard
+STY = {'x13': (13, 400), 'x13b': (13, 600), 'x13s': (13, 600), 'x15': (15, 400), 'x15b': (15, 600), 'x15k': (15, 700),
+       'xin': (13, 600), 'xint': (13, 600), 'xins': (13, 600), 'xkey': (13, 400)}
+HAIR = {'grid', 'lane', 'lead', 'base', 'track'}
+PROBLEMS = []
+
+
+def R(x, y, w, h, cls, attrs=''):
+    return f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(max(w, 0))}" height="{fmt(h)}" class="{cls}"{attrs}/>'
+
+
+def LN(x1, y1, x2, y2, cls, attrs=''):
+    return f'<line x1="{fmt(x1)}" y1="{fmt(y1)}" x2="{fmt(x2)}" y2="{fmt(y2)}" class="{cls}"{attrs}/>'
+
+
+def seg_hits_box(seg, box):
+    """Liang-Barsky: does the segment enter the box?"""
+    x1, y1, x2, y2 = seg
+    l, t, r, b = box
+    if r <= l or b <= t:
+        return False
+    dx, dy = x2 - x1, y2 - y1
+    u0, u1 = 0.0, 1.0
+    for p, q in ((-dx, x1 - l), (dx, r - x1), (-dy, y1 - t), (dy, b - y1)):
+        if p == 0:
+            if q < 0:
+                return False
+        else:
+            u = q / p
+            if p < 0:
+                u0 = max(u0, u)
+            else:
+                u1 = min(u1, u)
+            if u0 > u1:
+                return False
+    return True
+
+
+def boxes_overlap(a, b, pad=0.0):
+    return min(a[2], b[2]) - max(a[0], b[0]) > pad and min(a[3], b[3]) - max(a[1], b[1]) > pad
+
+
+class Art:
+    """One artboard. Records every label, line and mark it draws, so check() can refuse a faulty drawing."""
+    HR = CT['label_headroom']
+
+    def __init__(self, W, name, g):
+        self.W, self.name, self.g = W, name, g
+        self.H, self.bleed, self.defs = 0.0, 0.0, ''
+        self.o, self.texts, self.lines, self.rects, self.strings = [], [], [], [], []
+
+    def _add(self, m):
+        self.o.append(m)
+        return len(self.o)
+
+    def raw(self, m):
+        self._add(m)
+
+    def rect(self, x, y, w, h, cls, attrs='', host=False, block=True):
+        self._add(R(x, y, w, h, cls, attrs))
+        self.rects.append({'box': (x, y, x + w, y + h), 'block': block})
+        return len(self.rects) - 1
+
+    def circle(self, cx, cy, r, cls, attrs=''):
+        self._add(f'<circle cx="{fmt(cx)}" cy="{fmt(cy)}" r="{fmt(r)}" class="{cls}"{attrs}/>')
+        self.rects.append({'box': (cx - r, cy - r, cx + r, cy + r), 'block': True})
+
+    def line(self, x1, y1, x2, y2, cls, kind='rule', attrs=''):
+        if cls in HAIR:   # 1 px hairlines on half pixels, so a still exported at 1x prints them crisp
+            if y1 == y2:
+                y1 = y2 = math.floor(y1) + 0.5
+            if x1 == x2:
+                x1 = x2 = math.floor(x1) + 0.5
+        order = self._add(LN(x1, y1, x2, y2, cls, attrs if 'aria-hidden' in attrs else attrs + ' aria-hidden="true"'))
+        self.lines.append({'seg': (x1, y1, x2, y2), 'kind': kind, 'order': order})
+
+    def poly(self, pts, cls, kind='series'):
+        d = 'M' + ' L'.join(f'{fmt(p)} {fmt(q)}' for p, q in pts)
+        order = self._add(f'<path d="{d}" class="{cls}" aria-hidden="true"/>')
+        for (p, q), (r, s) in zip(pts, pts[1:]):
+            self.lines.append({'seg': (p, q, r, s), 'kind': kind, 'order': order})
+
+    def marks(self, markup, segs, kind='mark'):
+        order = self._add(markup)
+        for s in segs:
+            self.lines.append({'seg': s, 'kind': kind, 'order': order})
+
+    def text(self, x, y, s, cls, anchor='start', attrs='', rows=None, lh=16, inside=None, knock=False, record=True):
+        rows = rows if rows is not None else [s]
+        size, weight = STY[cls]
+        w = max(tw(r, size, weight) for r in rows)
+        x0 = x if anchor == 'start' else (x - w if anchor == 'end' else x - w / 2)
+        yb = y + lh * (len(rows) - 1)
+        if knock:   # a band in the ground color, so gridlines drawn earlier stop short of the words
+            self._add(R(x0 - 4, y - 0.8 * size - 2, w + 8, yb - y + 1.05 * size + 4, 'knock', ' aria-hidden="true"'))
+        a = f' text-anchor="{anchor}"' if anchor != 'start' else ''
+        if len(rows) == 1:
+            m = f'<text x="{fmt(x)}" y="{fmt(y)}" class="{cls}"{a}{attrs}>{svg_tx(rows[0])}</text>'
+        else:
+            spans = ''.join(f'<tspan x="{fmt(x)}" dy="{0 if i == 0 else lh}">{svg_tx(r)}</tspan>' for i, r in enumerate(rows))
+            m = f'<text x="{fmt(x)}" y="{fmt(y)}" class="{cls}"{a}{attrs}>{spans}</text>'
+        order = self._add(m)
+        self.texts.append({'x0': x0, 'w': w, 'anchor': anchor, 'y': y, 'yb': yb, 'size': size, 'inside': inside,
+                           'knock': knock, 'order': order, 's': ' '.join(rows)})
+        if record:
+            self.strings.append(' '.join(rows))
+        return w
+
+    def custom_text(self, markup, x0, y, w, size, s):
+        order = self._add(markup)
+        self.texts.append({'x0': x0, 'w': w, 'anchor': 'start', 'y': y, 'yb': y, 'size': size, 'inside': None,
+                           'knock': False, 'order': order, 's': s})
+
+    def _box(self, t, full=True, head=True):
+        w = t['w'] * (self.HR if head else 1)
+        if t['anchor'] == 'start':
+            l, r = t['x0'], t['x0'] + w
+        elif t['anchor'] == 'end':
+            r = t['x0'] + t['w']
+            l = r - w
+        else:
+            c = t['x0'] + t['w'] / 2
+            l, r = c - w / 2, c + w / 2
+        if full:
+            return (l, t['y'] - 0.97 * t['size'], r, t['yb'] + 0.25 * t['size'])
+        return (l, t['y'] - 0.74 * t['size'], r, t['yb'] + 0.22 * t['size'])
+
+    def check(self):
+        P, tag = [], f'{self.name} at {fmt(self.W)} px'
+        for t in self.texts:
+            b = self._box(t)
+            if b[0] < -self.bleed - 0.5 or b[2] > self.W + 0.5 or b[1] < -0.5 or b[3] > self.H + 0.5:
+                P.append(f'{tag}: "{t["s"][:40]}" leaves the drawing, with 15% headroom')
+        for i, t in enumerate(self.texts):
+            for u in self.texts[i + 1:]:
+                if boxes_overlap(self._box(t), self._box(u), 1.5):
+                    P.append(f'{tag}: "{t["s"][:30]}" touches "{u["s"][:30]}"')
+        for t in self.texts:
+            ink = self._box(t, full=False)
+            core = (ink[0] + 0.5, ink[1] + 0.5, ink[2] - 0.5, ink[3] - 0.5)
+            for ln in self.lines:
+                if t['knock'] and ln['kind'] in ('grid', 'lane', 'rule', 'base') and ln['order'] < t['order']:
+                    continue
+                if seg_hits_box(ln['seg'], core):
+                    P.append(f'{tag}: a {ln["kind"]} line crosses "{t["s"][:40]}"')
+            for k, rc in enumerate(self.rects):
+                if k == t['inside'] or not rc['block']:
+                    continue
+                if boxes_overlap(ink, rc['box'], 1.0):
+                    P.append(f'{tag}: "{t["s"][:40]}" sits on a mark it does not label')
+            if t['inside'] is not None:
+                hb = self.rects[t['inside']]['box']
+                own = self._box(t, full=False, head=False)
+                if own[0] < hb[0] + 1 or own[2] > hb[2] - 1:
+                    P.append(f'{tag}: "{t["s"][:30]}" does not fit inside its mark')
+        return P
+
+    def svg(self, uid, art, label, extra_cls=''):
+        PROBLEMS.extend(self.check())
+        aid = f'{uid}-{art}'   # pattern ids, unique per view and artboard, with no spaces, so url(#...) resolves
+        d = f'<defs>{self.defs}</defs>'.replace(ART_ID, aid) if self.defs else ''
+        body = ''.join(self.o).replace(ART_ID, aid)
+        wt = self.W + self.bleed
+        style = f' style="margin-left:{fmt(-self.bleed)}px"' if self.bleed else ''
+        return (f'<svg class="art art-{art}{extra_cls}" data-view="{uid}-{art}" data-w="{fmt(self.W)}" viewBox="{fmt(-self.bleed)} 0 {fmt(wt)} {fmt(self.H)}" '
+                f'width="{fmt(wt)}" height="{fmt(self.H)}"{style} role="img" aria-label="{at(label)}" focusable="false">{d}{body}</svg>')
+
+
+def place_flags(items, x_max, gap=6.0):
+    """Tier flag labels above a line so no label covers another's leader: a label that covers another dot sits above
+    that dot's label, and labels that overlap never share a tier."""
+    for it in items:
+        it['anchor'] = 'start' if it['x'] + it['w'] <= x_max else 'end'
+
+    def span(it):
+        return (it['x'], it['x'] + it['w']) if it['anchor'] == 'start' else (it['x'] - it['w'], it['x'])
+
+    def covers(i, k):
+        a, b = span(i)
+        return i is not k and a - 3 <= k['x'] <= b + 3
+
+    for _ in range(len(items) * 2):
+        flip = next((i for i in items for k in items if i['anchor'] == 'start' and covers(i, k) and covers(k, i)), None)
+        if not flip:
+            break
+        flip['anchor'] = 'end'
+    left, done = list(items), []
+    while left:
+        ready = [i for i in left if not any(covers(i, k) for k in left)] or [min(left, key=lambda i: i['x'])]
+        for i in sorted(ready, key=lambda i: i['x']):
+            a, b = span(i)
+            t = max([k['t'] + 1 for k in done if covers(i, k)] + [0])
+            while any(k['t'] == t and not (b + gap < k['a'] or a > k['b'] + gap) for k in done):
+                t += 1
+            i['t'], i['a'], i['b'] = t, a, b
+            done.append(i)
+            left.remove(i)
+    return items
+
+
+# ------------------------------------------------------------------------------------------------ grounds
+GROUNDS = {
+    'white': {'gr': '#FFFFFF', 'ink': '#121212', 'ctx': '#5D636D', 'sec': '#4E535B', 'grid': '#CBCED1', 'rule': '#5D636D',
+              'alt': '#DCD9D2', 'focus': '#121212', 'tow': '#3C5F59', 'on-tow': '#FFFFFF', 'away': '#121212',
+              'on-away': '#FFFFFF', 'kept': '#B3B6BB', 'some': '#5D636D', 'on-some': '#FFFFFF', 'g2': '#616161', 'pl': '#B3B6BB',
+              'vdl': '#ACC2BE', 'vdxl': '#DDE6E5', 'prl': '#A2AABF', 'prxl': '#DCDFE7', 'pr': '#1F2D5A', 'red': '#E63946'},
+    'newsprint': {'gr': '#DCD9D2', 'ink': '#121212', 'ctx': '#5D636D', 'sec': '#4E535B', 'grid': '#B4B4B3', 'rule': '#5D636D',
+                  'alt': '#FFFFFF', 'focus': '#121212', 'tow': '#3C5F59', 'on-tow': '#FFFFFF', 'away': '#121212',
+                  'on-away': '#DCD9D2', 'kept': '#A1A2A3', 'some': '#5D636D', 'on-some': '#FFFFFF', 'g2': '#565553', 'pl': '#A1A2A3',
+                  'vdl': '#9AAEA6', 'vdxl': '#C1C8C0', 'prl': '#8E94A4', 'prxl': '#BEBFC1', 'pr': '#1F2D5A', 'red': '#E63946'},
+    'charcoal': {'gr': '#121212', 'ink': '#DCD9D2', 'ctx': '#A3A19C', 'sec': '#A3A19C', 'grid': '#393C41', 'rule': '#878A8F',
+                 'alt': '#121212', 'focus': '#DCD9D2', 'tow': '#76978F', 'on-tow': '#121212', 'away': '#DCD9D2',
+                 'on-away': '#121212', 'kept': '#393C41', 'some': '#878A8F', 'on-some': '#121212', 'g2': '#A3A19C', 'pl': '#5D636D',
+                 'vdl': '#3F655E', 'vdxl': '#2E4340', 'prl': '#80889C', 'prxl': '#393C41', 'pr': '#80889C', 'red': '#E63946'},
+}
+GCLS = {'white': 'g-white', 'newsprint': 'g-news', 'charcoal': 'g-dark'}
+MIX = {   # each lab tint as the OKLab mix the palette lab made, recovered by script (zero error)
+    'tow': 'Verdigris 25% toward Charcoal', 'kept': 'Stone 55% toward the ground', 'pl': 'Stone 55% toward the ground',
+    'g2': 'Charcoal 38% toward the ground', 'vdl': 'Verdigris 55% toward the ground', 'vdxl': 'Verdigris 82% toward the ground',
+    'prl': 'Prussian 62% toward the ground', 'prxl': 'Prussian 86% toward the ground', 'grid': 'Stone 70% toward the ground'}
+
+
 def hex_rgb(h):
     h = h.lstrip('#')
     return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
@@ -175,340 +495,787 @@ def contrast(a, b):
     return (max(x, y) + 0.05) / (min(x, y) + 0.05)
 
 
-# The grounds. Every chart ink is a CSS custom property, so one generator draws every ground.
-# Values: locked palette, the token architecture's derived values and the palette lab's OKLab tints.
-GROUNDS = {
-    'white': {'gr': '#FFFFFF', 'ink': '#121212', 'ctx': '#5D636D', 'sec': '#4E535B', 'grid': '#CBCED1', 'rule': '#5D636D',
-              'alt': '#DCD9D2', 'focus': '#4A7C74', 'tow': '#3C5F59', 'on-tow': '#FFFFFF', 'away': '#121212',
-              'on-away': '#FFFFFF', 'kept': '#B3B6BB', 'some': '#5D636D', 'on-some': '#FFFFFF', 'g2': '#616161',
-              'vdl': '#ACC2BE', 'vdxl': '#DDE6E5', 'prl': '#A2AABF', 'prxl': '#DCDFE7', 'pr': '#1F2D5A', 'red': '#E63946'},
-    'newsprint': {'gr': '#DCD9D2', 'ink': '#121212', 'ctx': '#5D636D', 'sec': '#4E535B', 'grid': '#B4B4B3', 'rule': '#5D636D',
-                  'alt': '#FFFFFF', 'focus': '#4A7C74', 'tow': '#3C5F59', 'on-tow': '#FFFFFF', 'away': '#121212',
-                  'on-away': '#DCD9D2', 'kept': '#A1A2A3', 'some': '#5D636D', 'on-some': '#FFFFFF', 'g2': '#565553',
-                  'vdl': '#9AAEA6', 'vdxl': '#C1C8C0', 'prl': '#8E94A4', 'prxl': '#BEBFC1', 'pr': '#1F2D5A', 'red': '#E63946'},
-    'charcoal': {'gr': '#121212', 'ink': '#DCD9D2', 'ctx': '#A3A19C', 'sec': '#A3A19C', 'grid': '#393C41', 'rule': '#878A8F',
-                 'alt': '#121212', 'focus': '#DCD9D2', 'tow': '#76978F', 'on-tow': '#121212', 'away': '#DCD9D2',
-                 'on-away': '#121212', 'kept': '#393C41', 'some': '#878A8F', 'on-some': '#121212', 'g2': '#A3A19C',
-                 'vdl': '#3F655E', 'vdxl': '#2E4340', 'prl': '#80889C', 'prxl': '#393C41', 'pr': '#80889C', 'red': '#E63946'},
-}
-GCLS = {'white': 'g-white', 'newsprint': 'g-news', 'charcoal': 'g-dark'}
-
-
 def ground_css():
-    out = []
-    for g, t in GROUNDS.items():
-        out.append(f'.{GCLS[g]}{{' + ';'.join(f'--{k}:{v}' for k, v in t.items()) + f';background:{t["gr"]};color:{t["ink"]}}}')
-    return '\n'.join(out)
+    return '\n'.join(f'.{GCLS[g]}{{' + ';'.join(f'--{k}:{v}' for k, v in t.items()) + f';background:{t["gr"]};color:{t["ink"]}}}'
+                     for g, t in GROUNDS.items())
 
 
-# ------------------------------------------------------------------------------------------------ shared codes
-# The repair log's direction code: tint, then fill against outline, then position.
+# ------------------------------------------------------------------------------------------------ codes after color
 DIRS = [('away from voters', 'away', 'Away from voters'), ('toward voters', 'tow', 'Toward voters'),
-        ('voters kept existing rules', 'kept', 'Kept existing rules'), ('mixed', 'mixed', 'Mixed'),
-        ('pending', 'pend', 'Pending')]
+        ('voters kept existing rules', 'kept', 'Kept existing rules'), ('mixed', 'mixed', 'Mixed'), ('pending', 'pend', 'Pending')]
 DIR_CLS = {d: c for d, c, _ in DIRS}
 DIR_WORD = {d: w for d, _, w in DIRS}
 FILL = {'away': 'f-away', 'tow': 'f-tow', 'kept': 'f-kept', 'pend': 'f-pend', 'mixed': 'f-tow'}
 ONTXT = {'away': 'xin', 'tow': 'xint', 'kept': 'x13b', 'pend': 'x13b', 'mixed': 'xin'}
 
 
-def dir_shape(x, y, w, h, c, attrs=''):
-    """One direction-coded rect; 'mixed' adds a Charcoal lower-right triangle: both directions in one mark."""
+def dir_markup(x, y, w, h, c, attrs=''):
+    """The repair log's direction code. Away: solid Charcoal. Toward: Verdigris strong with an inner frame in the
+    ground color, so the two differ by fill as well as shade. Kept: light fill with an outline. Mixed: both fills
+    split on the diagonal. Pending: an open outline."""
     s = R(x, y, w, h, FILL[c], attrs)
+    if c == 'tow' and w >= 10 and h >= 10:
+        s += R(x + 3, y + 3, w - 6, h - 6, 'frame', ' aria-hidden="true"')
     if c == 'mixed':
         s += f'<path d="M{fmt(x + w)} {fmt(y)}V{fmt(y + h)}H{fmt(x)}Z" class="f-away" aria-hidden="true"/>'
     return s
 
 
-GRADES = [('documented', 'Documented', 'on the public record'), ('well-supported', 'Well supported', 'strong research evidence'),
-          ('plausible', 'Plausible', 'some evidence'), ('contested', 'Contested', 'evidence disputed')]
+def dir_shape(a, x, y, w, h, c, attrs=''):
+    a.raw(dir_markup(x, y, w, h, c, attrs))
+    a.rects.append({'box': (x, y, x + w, y + h), 'block': True})
+    return len(a.rects) - 1
+
+
+GRADES = [('documented', 'Documented', 'on the public record', 'solid', 'record language: was, passed, logged'),
+          ('well-supported', 'Well supported', 'strong research evidence', 'solid', 'a direct finding: raises, lowers'),
+          ('plausible', 'Plausible', 'some evidence', 'dashed', '“can” or “may”'),
+          ('contested', 'Contested', 'evidence disputed', 'dash-dot', 'both readings, side by side'),
+          ('hypothesis', 'Hypothesis', 'untested', 'dotted', '“untested”')]
+GRADE_FILL = {'documented': 'Solid, the darkest ink', 'well-supported': 'Solid, a gray step lighter',
+              'plausible': 'Light solid tint with an outline', 'contested': 'Diagonal hatch with an outline',
+              'hypothesis': 'Dots with an outline'}
+LINE_DASH = {'solid': '', 'dashed': '8 4', 'dash-dot': '8 3 2 3', 'dotted': '0 5'}
+
+
+ART_ID = '@ART@'   # stands for the artboard's id until Art.svg() writes it
 
 
 def grade_defs(uid):
-    """Fills for grades that echo the atlas's evidence lines: 2 px dashes at 8 on 4, dash-dot at 8, 3, 2, 3."""
-    return (f'<pattern id="{uid}-pl" width="12" height="6" patternUnits="userSpaceOnUse"><path d="M0 3H8" class="pt"/></pattern>'
-            f'<pattern id="{uid}-ct" width="16" height="6" patternUnits="userSpaceOnUse"><path d="M0 3H8M11 3H13" class="pt"/></pattern>')
+    return (f'<pattern id="{uid}-ct" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+            f'<rect width="5" height="5" class="pbg"/><path d="M0 0V5" class="phs"/></pattern>'
+            f'<pattern id="{uid}-hy" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" class="pbg"/>'
+            f'<circle cx="3" cy="3" r="1.2" class="pdt"/></pattern>')
 
 
-def grade_rect(uid, g, x, y, w, h, attrs=''):
+def grade_markup(uid, g, x, y, w, h, attrs=''):
     if g == 'documented':
         return R(x, y, w, h, 'f-ink', attrs)
     if g == 'well-supported':
         return R(x, y, w, h, 'f-g2', attrs)
-    pid = f'{uid}-pl' if g == 'plausible' else f'{uid}-ct'
-    return (f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" class="f-tex" fill="url(#{pid})"{attrs}/>')
+    if g == 'plausible':
+        return R(x, y, w, h, 'f-pl', attrs)
+    pid = f'{uid}-ct' if g == 'contested' else f'{uid}-hy'
+    return f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" class="f-tex" fill="url(#{pid})"{attrs}/>'
 
 
-def red_mark(d, ground, red=True):
-    """The one working red: the headline's point. On Newsprint it takes a 1 px Charcoal keyline (R09)."""
-    key = f'<path d="{d}" class="redkey"/>' if ground == 'newsprint' and red else ''
+def line_sample(style, w=36):
+    dash = LINE_DASH[style]
+    da_ = f' stroke-dasharray="{dash}"' if dash else ''
+    cap = ' stroke-linecap="round"' if style == 'dotted' else ''
+    return (f'<svg class="mks" viewBox="0 0 {w} 10" width="{w}" height="10" aria-hidden="true" focusable="false">'
+            f'<path d="M1 5H{w - 1}" class="lsam"{da_}{cap}/></svg>')
+
+
+def red_mark(path_d, ground, red=True):
+    """The one working red: the point the title names. On Newsprint it takes a 1 px Charcoal keyline (R09)."""
+    key = f'<path d="{path_d}" class="redkey"/>' if ground == 'newsprint' and red else ''
     cls = 'redmark' if red else 'inkmark'
     attrs = ' data-red="working" data-red-job="headline point"' if red else ''
-    return f'<g class="redg"{attrs}>{key}<path d="{d}" class="{cls}"/></g>'
+    return f'<g class="redg"{attrs}>{key}<path d="{path_d}" class="{cls}"/></g>'
 
 
-# ------------------------------------------------------------------------------------------------ S01 big number
-def g_s01(W, uid, g):
-    rm = rowmap('stock-trading-ban')
-    o = []
-    side = W >= 460
-    fs = 96 if W >= 700 else 72
-    bigw = tw('86%', fs, 800, tight=True)
-    lc = max(bigw + 20, round(W * 0.3)) if side else W
+def key_row(a, items, y, W=None):
+    """An inline key inside the drawing: (draw, words) pairs that wrap at the drawing's width."""
+    W = W or a.W
+    x = 0
+    for draw, words in items:
+        w = 20 + tw(words, 13) * CT['label_headroom'] + 18
+        if x and x + w > W:
+            x, y = 0, y + 22
+        draw(x, y - 11)
+        a.text(x + 20, y, words, 'xkey')
+        x += w
+    return y + 12
+
+
+# ------------------------------------------------------------------------------------------------ generators
+def big_number(a, s):
+    """One figure set large; group bars on a 0 to 100 track with names printed; vote bars holding every vote cast,
+    with a threshold tick and, when the title names it, the shortfall in red."""
+    W, g = a.W, a.g
+    side = W >= CT['breaks']['big_side']
+    fs = CT['type']['big'][2] if W >= CT['breaks']['big_96'] else CT['type']['big_small'][2]
+    fig = s['figure']
+    txt = f'{fig["value"]}%'
+    bigw = tw(txt, fs, 800, tight=True, track=-0.03)
+    lc = max(bigw + 28, round(W * 0.3)) if side else W
     yb = round(0.97 * fs) + 4
-    o.append(f'<text x="0" y="{yb}" class="xbig" style="font-size:{fs}px"{da("support-all", rm["support-all"]["value"], mark="label")}>'
-             f'{rm["support-all"]["value"]}%</text>')
-    cap = wrap('of registered voters favored a ban', lc - 12, 15)
+    a.bleed = round(CT['big_bearing_em'] * fs, 1)   # set the figure's ink flush with the title's left edge
+    a.custom_text(f'<text x="{fmt(-a.bleed)}" y="{yb}" class="xbig" style="font-size:{fs}px"{da(fig["key"], fig["value"], mark="label")}>'
+                  f'<tspan class="tn">{fig["value"]}</tspan>%</text>', -a.bleed, yb, bigw, fs, txt)
     y = yb + round(0.25 * fs) + 18
-    o.append(TL(0, y, cap, 'x15', 20))
+    cap = wrap(fig['caption'], lc - 16, 15)
+    a.text(0, y, '', 'x15', rows=cap, lh=20)
     y += 20 * (len(cap) - 1) + 20
-    o.append(T(0, y, 'Survey, May 2023', 'x13'))
+    a.text(0, y, fig['sub'], 'x13')
     big_bottom = y + 8
-    # party bars, ordered by value: Democrats 88, Republicans 87, then all voters in Stone
     x0 = lc + 28 if side else 0
-    rw = W - x0
-    y = 16 if side else big_bottom + 28
-    k = (rw - 52) / 100
-    o.append(T(x0, y, 'Favored a ban, by group', 'x13') + T(x0 + 100 * k, y, '100%', 'x13', 'end'))
-    y += 14
-    for key, name, party in (('support-democrats', 'Democrats', 'Democrats'), ('support-republicans', 'Republicans', 'Republicans'),
-                             ('support-all', 'All registered voters', None)):
-        v = rm[key]['value']
-        cls = 'f-ink' if party else 'f-ctx'
-        inner = (T(x0, y + 15, name, 'x15b') + R(x0, y + 22, 100 * k, 20, 'track', ' aria-hidden="true"') +
-                 R(x0, y + 22, v * k, 20, cls, da(key, v, mark='bar', axis='x', scale='support')) +
-                 T(x0 + v * k + 6, y + 37, f'{v}%', 'x15k', attrs=da(key, v, mark='label')))
-        o.append(f'<g data-party="{party}">{inner}</g>' if party else inner)
-        y += 54
-    y_top_end = max(big_bottom, y - 8)
-    # Congress, full width: every vote cast in each chamber
-    y = y_top_end + 28
-    o.append(LN(0, y - 18, W, y - 18, 'grid', ' aria-hidden="true"'))
-    o.append(T(0, y, 'What Congress did in 2026', 'x13'))
-    y += 26
-    hl = wrap('House: passed H.R. 7008, July 22, 2026', W, 15, 600)
-    o.append(TL(0, y, hl, 'x15b', 19))
-    y += 19 * (len(hl) - 1) + 9
-    hy, hn = rm['house-yes']['value'], rm['house-no']['value']
-    kh = W / (hy + hn)
-    o.append(R(0, y, hy * kh, 24, 'f-away', da('house-yes', hy, mark='bar', axis='x', scale='house')))
-    o.append(R(hy * kh, y, hn * kh, 24, 'f-kept', da('house-no', hn, mark='bar', axis='x', scale='house')))
-    o.append(T(8, y + 17, f'{hy} for', 'xin', attrs=da('house-yes', hy, mark='label')))
-    o.append(T(W - 8, y + 17, f'{hn} against', 'x13b', 'end', attrs=da('house-no', hn, mark='label')))
-    y += 24 + 30
-    sl = wrap('Senate: vote to take up the bill, September 30, 2026', W, 15, 600)
-    o.append(TL(0, y, sl, 'x15b', 19))
-    y += 19 * (len(sl) - 1) + 18
-    sn = rm['senate-needed']['value']
-    o.append(T(0, y, f'{sn} of 100 votes needed, three-fifths of the Senate', 'x13'))
+    lab_w = tw('100%', 15, 700) * CT['label_headroom'] + 10
+    k = (W - x0 - lab_w) / 100
+    y = 16 if side else big_bottom + 30
+    a.text(x0, y, s['group_head'], 'x13')
+    a.text(x0 + 100 * k, y, '100%', 'x13', 'end')
     y += 12
-    syes, sno = rm['senate-yes']['value'], rm['senate-no']['value']
-    ks = W / (syes + sno)
-    o.append(R(0, y, syes * ks, 24, 'f-away', da('senate-yes', syes, mark='bar', axis='x', scale='senate')))
-    o.append(R(syes * ks, y, sno * ks, 24, 'f-kept', da('senate-no', sno, mark='bar', axis='x', scale='senate')))
-    o.append(T(8, y + 17, f'{syes} for', 'xin', attrs=da('senate-yes', syes, mark='label')))
-    o.append(T(W - 8, y + 17, f'{sno} against', 'x13b', 'end', attrs=da('senate-no', sno, mark='label')))
-    xn = sn * ks
-    o.append(LN(xn, y - 6, xn, y + 24 + 16, 'tick2', da('senate-needed', sn, mark='label')))
-    yr = y + 24 + 12
-    o.append(red_mark(f'M{fmt(syes * ks + 1.5)} {fmt(yr - 7)}V{fmt(yr)}H{fmt(xn - 1.5)}V{fmt(yr - 7)}', g['ground'], g.get('red', True)))
-    lab = wrap(f'{sn - syes} votes short of the {sn} needed', max(W - xn - 10, 110), 13, 600)
-    lx = xn + 8 if W - xn - 10 >= 110 else 0
-    ly = yr + 5 if lx else yr + 22
-    o.append(TL(lx, ly, lab, 'x13b', 16))
-    H = ly + 16 * (len(lab) - 1) + 8
-    label = (f'Chart. 86% of registered voters favored a ban in May 2023: 88% of Democrats and 87% of Republicans. '
-             f'The House passed H.R. 7008 by {hy} to {hn} on July 22, 2026. On September 30, 2026 the Senate vote to take it up '
-             f'got {syes} of the {sn} votes needed, {sn - syes} short. The Table button lists every value.')
-    return ''.join(o), H, '', label
+    gb = CT['group_bar']
+    for grp in s['groups']:
+        cls = 'f-ctx' if grp.get('context') else 'f-ink'
+        if grp.get('party'):
+            a.raw(f'<g data-party="{ra(grp["party"])}">')
+        a.text(x0, y + 15, grp['label'], 'x15b')
+        a.raw(R(x0, y + 22, 100 * k, gb['h'], 'track', ' aria-hidden="true"'))
+        for seg in ((x0, y + 22, x0 + 100 * k, y + 22), (x0, y + 22 + gb['h'], x0 + 100 * k, y + 22 + gb['h']),
+                    (x0 + 100 * k, y + 22, x0 + 100 * k, y + 22 + gb['h'])):
+            a.lines.append({'seg': seg, 'kind': 'track', 'order': len(a.o)})
+        a.rect(x0, y + 22, grp['value'] * k, gb['h'], cls, da(grp['key'], grp['value'], mark='bar', axis='x', scale='groups'))
+        a.text(x0 + 100 * k + 8, y + 22 + 15, f'{grp["value"]}%', 'x15k', attrs=da(grp['key'], grp['value'], mark='label'))
+        if grp.get('party'):
+            a.raw('</g>')
+        y += gb['pitch']
+    y = max(big_bottom, y - 14) + 30
+    a.line(0, y - 20, W, y - 20, 'grid', 'grid')
+    a.text(0, y, s['vote_head'], 'x13')
+    y += 26
+    vb = CT['vote_bar']['h']
+    for v in s['votes']:
+        hl = wrap_even(v['label'], W / CT['label_headroom'], 15, 600)
+        a.text(0, y, '', 'x15b', rows=hl, lh=19)
+        y += 19 * (len(hl) - 1)
+        if v.get('sub'):
+            sl = wrap_even(v['sub'], W / CT['label_headroom'], 13)
+            a.text(0, y + 18, '', 'x13', rows=sl, lh=16)
+            y += 18 + 16 * (len(sl) - 1)
+        y += 12
+        total = sum(sg['value'] for sg in v['segs'])
+        kv = W / total
+        x = 0
+        for i, sg in enumerate(v['segs']):
+            host = dir_shape(a, x, y, sg['value'] * kv, vb, sg['code'], da(sg['key'], sg['value'], mark='bar', axis='x', scale=v['scale']))
+            words = f'{sg["value"]} {sg["word"]}'
+            if i == 0:
+                a.text(x + 8, y + 17, words, ONTXT[sg['code']], attrs=da(sg['key'], sg['value'], mark='label'), inside=host)
+            else:
+                a.text(x + sg['value'] * kv - 8, y + 17, words, ONTXT[sg['code']], 'end', da(sg['key'], sg['value'], mark='label'), inside=host)
+            x += sg['value'] * kv
+        th = v.get('threshold')
+        if th:
+            xn = th['value'] * kv
+            a.line(xn, y - 6, xn, y + vb + 16, 'tick2', 'tick', da(th['key'], th['value'], mark='label'))
+            rd = v['red']
+            yr = y + vb + 12
+            x1, x2 = rd['from'] * kv + 1.5, xn - 1.5
+            d = f'M{fmt(x1)} {fmt(yr - 7)}V{fmt(yr)}H{fmt(x2)}V{fmt(yr - 7)}'
+            a.marks(red_mark(d, g['ground'], g.get('red', True)), [(x1, yr - 7, x1, yr), (x1, yr, x2, yr), (x2, yr, x2, yr - 7)])
+            room = W - xn - 12
+            lab = wrap_even(rd['words'], room / CT['label_headroom'], 13, 600) if room >= 120 else wrap_even(rd['words'], W / CT['label_headroom'], 13, 600)
+            lx, ly = (xn + 10, yr + 5) if room >= 120 else (0, yr + 22)
+            a.text(lx, ly, '', 'x13b', rows=lab, lh=16)
+            y = ly + 16 * (len(lab) - 1) + 8
+        else:
+            y += vb + 30
+    a.H = y
 
 
-# ------------------------------------------------------------------------------------------------ S02 line with event notes
+def line_events(a, s):
+    """Lines on one value scale. Estimates that change method at a break year are never joined; notes sit at their
+    point with a 1 px leader, or under the plot on narrow drawings."""
+    W = a.W
+    narrow = W < CT['breaks']['big_side']
+    x_lo, x_hi = s['x_range']
+    y_max, step = s['y_max'], s['y_step']
+    flags = []
+    for b in s['breaks']:
+        flags.append({'x': 0, 'w': tw(b['word'], 13) * CT['label_headroom'] + 6, 'brk': b})
+    px0 = 46
+    px1 = W - (16 if narrow else s['right_margin'])
+    X = lambda v: px0 + (v - x_lo) * (px1 - px0) / (x_hi - x_lo)
+    for f_ in flags:
+        f_['x'] = X(f_['brk']['x'])
+    place_flags(flags, W, gap=10)
+    tiers = max(f_['t'] for f_ in flags) + 1 if flags else 0
+    top = 14 + tiers * 18 + 8
+    ph = s['plot_h'][1 if narrow else 0]
+    pb = top + ph
+    Y = lambda v: pb - v * ph / y_max
+    for v in range(0, y_max + 1, step):
+        a.line(px0 - 8, Y(v), W, Y(v), 'base' if v == 0 else 'grid', 'base' if v == 0 else 'grid')
+        a.text(px0 - 12, Y(v) + 4.5, f'{v}%' if v == y_max else str(v), 'x13', 'end')
+    for i, yr in enumerate(s['x_ticks']):
+        anchor = 'end' if (narrow and i == len(s['x_ticks']) - 1) else 'middle'
+        a.text(min(X(yr) + (14 if anchor == 'end' else 0), W), pb + 20, str(yr), 'x13', anchor)
+    for f_ in flags:
+        b = f_['brk']
+        ty = 14 + (tiers - 1 - f_['t']) * 18   # tier 0 sits nearest the plot
+        tx_ = f_['x'] + 4 if f_['anchor'] == 'start' else f_['x'] - 4
+        a.text(tx_, ty, b['word'], 'x13', f_['anchor'])
+        a.line(f_['x'], ty - 10, f_['x'], Y(b['top']) - 8, 'lead', 'lead')
+    for ser in s['series']:
+        for seg in ser['segments']:
+            pts = [(X(p['x']), Y(p['v'])) for p in seg]
+            if len(pts) > 1:
+                a.poly(pts, ser['line'])
+            for p in seg:
+                r = ser['dot_big'] if p.get('big') else ser['dot']
+                a.circle(X(p['x']), Y(p['v']), r, ser['fill'], da(p['key'], p['v'], mark='point', axis='y', tip=p['tip']))
+    wide = W >= CT['breaks']['four_panels']
+    for lb in s['labels']['wide' if wide else 'other']:
+        if lb['text']:
+            a.text(X(lb['x']), Y(lb['v']), lb['text'], lb['cls'], lb.get('anchor', 'start'), lb.get('attrs', ''), knock=True)
+    y_end = pb + 30
+    for nt in s['plot_notes']:
+        if not wide:
+            rows = wrap_even(nt.get('text_other', nt['text']), W / CT['label_headroom'], 13)
+            a.text(0, y_end + 16, '', 'x13', rows=rows, lh=16)
+            y_end += 16 * len(rows) + 10
+            continue
+        rows = wrap_even(nt['text'], nt['chars'] * 6.4, 13)
+        ty, xr = Y(nt['top']), (W - 2 if nt.get('edge') else X(nt['right']))
+        a.text(xr, ty, '', 'x13', 'end', rows=rows, lh=16, knock=True)
+        yl, yb_ = Y(nt['v']), ty + 16 * (len(rows) - 1)
+        if ty - 12 <= yl <= yb_ + 4:   # the point sits beside the block: a level leader
+            a.line(xr + 6, yl, X(nt['x']) - 7, yl, 'lead', 'lead')
+        else:                           # the point sits above the block: a leader down to its top
+            a.line(X(nt['x']), yl + 7, X(nt['x']), ty - 15, 'lead', 'lead')
+    a.H = y_end - 4
+
+
+def ranked_bar(a, s):
+    """Rows ranked by total, each bar split by a category code with the count inside where it fits. The scale comes
+    from the largest total in the rows, so any rows drop in."""
+    W = a.W
+    rows = s['rows']
+    top_total = max(r['total'] for r in rows)
+    y = key_row(a, [((lambda c: (lambda x, yy: dir_shape(a, x, yy, 14, 14, c)))(c), w) for c, w in s['key']], 14) + 12
+    side = W >= CT['breaks']['side_labels']
+    unit_label = f'{top_total} {s["unit"]}'
+    if side:
+        lw = max(tw(r['label'], 15, 600) for r in rows) * CT['label_headroom'] + 14
+        rmax = tw(unit_label, 15, 700) * CT['label_headroom'] + 12
+        k = (W - lw - rmax) / top_total
+    else:
+        lw, k = 0, W / top_total
+    bh = CT['bar']['h']
+    for i, r in enumerate(rows):
+        tot_txt = unit_label if i == 0 else str(r['total'])
+        if side:
+            by = y
+            a.text(0, by + 17, r['label'], 'x15b')
+            if r.get('sub'):
+                a.text(0, by + 35, r['sub'], 'x13')
+        else:
+            a.text(0, y + 15, r['label'], 'x15b')
+            a.text(W, y + 15, tot_txt, 'x15k', 'end', da(r['key'], r['total'], mark='label'))
+            by = y + 22
+        x = lw
+        for sg in r['segs']:
+            if not sg['value']:
+                continue
+            w = sg['value'] * k
+            host = dir_shape(a, x, by, w, bh, sg['code'], da(r['key'], sg['value'], field=sg['field'], mark='bar', axis='x'))
+            if w >= 18:
+                a.text(x + w / 2, by + 17, str(sg['value']), ONTXT[sg['code']], 'middle', da(r['key'], sg['value'], field=sg['field'], mark='label'), inside=host)
+            x += w
+        extra = 0
+        if side:
+            a.text(x + 8, by + 17, tot_txt, 'x15k', attrs=da(r['key'], r['total'], mark='label'))
+            xe = x + 8 + tw(tot_txt, 15, 700) * CT['label_headroom'] + 14
+            if r.get('note'):
+                room = W - xe
+                rows_ = wrap_even(r['note'], room / CT['label_headroom'], 13) if room >= 150 else None
+                if rows_ and len(rows_) <= 2:
+                    a.text(xe, by + 17 - 8 * (len(rows_) - 1), '', 'x13', rows=rows_, lh=16)
+                else:
+                    a.text(lw, by + bh + 18, r['note'], 'x13')
+                    extra = 24
+            y = by + bh + 16 + extra + (8 if r.get('sub') else 0)
+        else:
+            for nt in (r.get('sub'), r.get('note')):
+                if nt:
+                    rows_ = wrap_even(nt, W / CT['label_headroom'], 13)
+                    a.text(0, by + bh + 18 + extra, '', 'x13', rows=rows_, lh=16)
+                    extra += 16 * len(rows_) + 6
+            y = by + bh + 18 + extra
+    a.H = y
+
+
+def dumbbell(a, s):
+    """Two dots per row on one scale; the later year filled, the earlier an open ring; values printed beside the
+    dots and the change in words at the right. The scale is cropped to whole tens around the data."""
+    W = a.W
+    side = W >= CT['breaks']['side_labels']
+    vals = [v for r in s['rows'] for v in (r['a']['v'], r['b']['v'])]
+    lo = int(math.floor((min(vals) - 4) / 10) * 10)
+    hi = int(math.ceil((max(vals) + 4) / 10) * 10)
+    lw = (max(tw(r['label'], 15, 600) for r in s['rows']) * CT['label_headroom'] + 16) if side else 0
+    cw = (max(tw(r['change'], 13, 600) for r in s['rows']) * CT['label_headroom'] + 16) if side else 0
+    x0 = lw + 22
+    x1 = W - cw - 34 if side else W - 34
+    X = lambda v: x0 + (v - lo) * (x1 - x0) / (hi - lo)
+    y = 14
+    for v in range(lo, hi + 1, 10):
+        a.text(X(v), y, f'{v}%' if v == hi else str(v), 'x13', 'middle')
+    y += 20
+    dot = CT['dot']
+    first = True
+    for r in s['rows']:
+        if r.get('context'):
+            a.line(0, y - 2, W, y - 2, 'grid', 'grid')
+            y += 10
+        lab_cls = 'x15' if r.get('context') else 'x15b'
+        if side:
+            cy = y + (40 if first else 24)
+            a.text(0, cy + 5, r['label'], lab_cls)
+            a.text(W, cy + 5, r['change'], 'x13b', 'end')
+        else:
+            a.text(0, y + 15, r['label'], lab_cls)
+            two = (tw(r['label'], 15, 600) + tw(r['change'], 13, 600)) * CT['label_headroom'] + 16 > W
+            a.text(W if not two else 0, y + (15 if not two else 33), r['change'], 'x13b', 'end' if not two else 'start')
+            cy = y + (66 if first else 46) + (18 if two else 0)
+        xa, xb = X(r['a']['v']), X(r['b']['v'])
+        if abs(xa - xb) > dot['later'] + dot['earlier']:
+            a.line(min(xa, xb) + 5, cy, max(xa, xb) - 5, cy, 'l-ctx2', 'series')
+        fill = 'f-ctx' if r.get('context') else 'f-ink'
+        a.circle(xb, cy, dot['later'], fill, da(r['b']['key'], r['b']['v'], mark='point', axis='x'))
+        a.circle(xa, cy, dot['earlier'], 'ring', da(r['a']['key'], r['a']['v'], mark='point', axis='x'))
+        lo_r, hi_r = (r['a'], r['b']) if r['a']['v'] <= r['b']['v'] else (r['b'], r['a'])
+        a.text(min(xa, xb) - 11, cy + 5, pct(lo_r['v']), 'x13b', 'end', da(lo_r['key'], lo_r['v'], mark='label'))
+        a.text(max(xa, xb) + 11, cy + 5, pct(hi_r['v']), 'x13b', attrs=da(hi_r['key'], hi_r['v'], mark='label'))
+        if first:
+            ky = cy - 20
+            (xl, wl), (xr, wr) = sorted([(xa, s['years'][0]), (xb, s['years'][1])])
+            a.text(xl + 5, ky, wl, 'x13', 'end')
+            a.text(xr - 5, ky, wr, 'x13')
+            first = False
+        y = cy + (26 if side else 22)
+    a.H = y + 2
+
+
+def small_multiples(a, s):
+    """One panel per group on one shared scale; the panel's group in the dark line, the other groups in gray. Notes
+    sit in the empty band under the lines, on a band in the ground color."""
+    W = a.W
+    cols = 4 if W >= CT['breaks']['four_panels'] else (2 if W >= CT['breaks']['two_panels'] else 1)
+    gap, gut, endw = 20, 46, 60
+    pw = (W - gut - gap * (cols - 1)) / cols
+    lo, hi = s['y_range']
+    x_lo, x_hi = s['x_range']
+    ph = 220 if cols == 4 else 190
+    head = 30
+    H = 0
+    for i, p in enumerate(s['panels']):
+        c, rr = i % cols, i // cols
+        ox = gut + c * (pw + gap)
+        top = rr * (head + ph + 44) + head
+        X = lambda yr, ox=ox: ox + 2 + (yr - x_lo) * (pw - endw - 4) / (x_hi - x_lo)
+        Y = lambda v, top=top: top + (hi - v) * ph / (hi - lo)
+        a.text(ox, top - 14, p['name'], 'x15b')
+        for v in range(lo, hi + 1, 10):
+            a.line(ox, Y(v), ox + pw, Y(v), 'grid', 'grid')
+            if c == 0:
+                a.text(ox - 8, Y(v) + 4.5, f'{v}%' if v == hi else str(v), 'x13', 'end')
+        a.text(X(x_lo), Y(lo) + 18, str(x_lo), 'x13')
+        a.text(X(x_hi), Y(lo) + 18, str(x_hi), 'x13', 'end')
+        for q in s['panels']:
+            if q is not p:
+                for seg in q['segments']:
+                    if len(seg) > 1:
+                        a.poly([(X(r['x']), Y(r['v'])) for r in seg], 'l-ctx', 'series')
+        for seg in p['segments']:
+            if len(seg) > 1:
+                a.poly([(X(r['x']), Y(r['v'])) for r in seg], 'l-ink', 'series')
+            for r in seg:
+                big = r.get('end')
+                a.raw(f'<circle cx="{fmt(X(r["x"]))}" cy="{fmt(Y(r["v"]))}" r="{2.5 if big else 1.5}" class="f-ink"'
+                      f'{da(r["key"], r["v"], mark="point", axis="y", scale="panel-" + p["id"])}/>')
+        last = p['last']
+        a.text(X(last['x']) + 6, Y(last['v']) + 4, f'{pct(last["v"])}%', 'x13b', attrs=da(last['key'], last['v'], mark='label'), knock=True)
+        if p.get('note'):
+            rows_ = wrap_even(p['note'], (pw - 12) / CT['label_headroom'], 13, p.get('note_weight', 400))
+            a.text(ox + 2, Y(s['note_at']), '', 'x13b' if p.get('note_weight') == 600 else 'x13', rows=rows_, lh=16, knock=True)
+        H = max(H, top + ph + 26)
+    a.H = H
+
+
+def tile_map(a, s):
+    """Equal tiles on the studio grid, one per state, coded by status with a fill step that holds in grayscale; each
+    tile prints its code and, where room allows, the year of its law."""
+    W = a.W
+    pitch = CT['tile_pitch'].get(int(W), 27 if W < 460 else 44)
+    gap = 4 if pitch >= 44 else 2
+    t = pitch - gap
+    cols = max(c['col'] for c in GRID) + 1
+    rows_n = max(c['row'] for c in GRID) + 1
+    beside = W >= CT['breaks']['map_notes_beside']
+    years = W >= CT['breaks']['map_years']
+    items = [((lambda f: (lambda x, yy: a.rect(x, yy, 14, 14, f)))(f), words) for f, words in s['key']]
+    if beside:
+        kx, ky = pitch + 4, 20
+        for draw, words in items:
+            draw(kx, ky - 11)
+            a.text(kx + 22, ky, words, 'xkey')
+            ky += 24
+        rows_ = wrap_even(s['size_note'], (5 * pitch - 24) / CT['label_headroom'], 13)
+        a.text(kx, ky - 2, '', 'x13', rows=rows_, lh=16)
+        gy = 0
+    else:
+        yy = key_row(a, items, 14)
+        a.text(0, yy + 14, s['size_note'], 'x13')
+        gy = yy + 32
+    for tl in s['tiles']:
+        x, y = tl['col'] * pitch, gy + tl['row'] * pitch
+        host = a.rect(x, y, t, t, tl['fill'], da(tl['key'], field='status', cat=tl['status'], mark='cell', tip=tl['tip']))
+        if years:
+            a.text(x + t / 2, y + (22 if pitch >= 56 else 18), tl['key'], tl['txt'], 'middle', inside=host)
+            if tl.get('year'):
+                a.text(x + t / 2, y + (40 if pitch >= 56 else 34), str(tl['year']), tl['txt'], 'middle', ' style="font-weight:400"', inside=host, record=False)
+        else:
+            a.text(x + t / 2, y + t / 2 + 4.5, tl['key'], tl['txt'], 'middle', inside=host)
+    a.H = gy + rows_n * pitch - gap + 4
+    del cols
+
+
+def strip_timeline(a, s):
+    """Lanes on one true time scale. Each dot sits at its exact date and flies its year; flags tier so no leader runs
+    through a label. The events' names and what each did sit in the register under the drawing."""
+    W = a.W
+    lw = 128 if W >= CT['breaks']['side_labels'] else 0
+    px0, px1 = lw + 10, W - 10
+    x_lo, x_hi = s['x_range']
+    X = lambda v: px0 + (v - x_lo) * (px1 - px0) / (x_hi - x_lo)
+    y = 0
+    for li, lane in enumerate(s['lanes']):
+        if lw:
+            top = y
+        else:
+            a.text(0, y + 16, lane['label'], 'x15b')
+            top = y + 24
+        flags = [{'x': X(e['x']), 'w': tw(str(e['year']), 13) * CT['label_headroom'] + 6, 'e': e} for e in lane['events']]
+        place_flags(flags, W, gap=6)
+        tiers = max(f_['t'] for f_ in flags) + 1
+        line_y = top + tiers * 17 + 14
+        if lw:
+            a.text(0, line_y + 5, lane['label'], 'x15b')
+        a.line(px0 - 6, line_y, px1 + 6, line_y, 'lane', 'lane')
+        for f_ in flags:
+            e = f_['e']
+            ty = line_y - 15 - f_['t'] * 17
+            a.line(f_['x'], line_y - 6, f_['x'], ty - 10, 'lead', 'lead')
+            a.text(f_['x'] + 4 if f_['anchor'] == 'start' else f_['x'] - 4, ty, str(e['year']), 'x13', f_['anchor'], record=False)
+            a.circle(f_['x'], line_y, CT['dot']['timeline'] if lw else 4.5, 'f-ink',
+                     da(e['key'], round(e['x'], 4), field='date', mark='point', axis='x', tip=e['tip']))
+        y = line_y + 22
+    for i, yr in enumerate(s['ticks']):
+        anchor = 'start' if i == 0 else ('end' if i == len(s['ticks']) - 1 else 'middle')
+        a.text(X(yr) - (4 if anchor == 'start' else 0) + (4 if anchor == 'end' else 0), y + 4, str(yr), 'x13', anchor, record=False)
+    a.H = y + 12
+
+
+def share_bars(a, s):
+    """A 100 percent bar per row in the graded fill code, sorted by the share the title names, with that share and
+    the row's base printed at the right."""
+    W = a.W
+    a.defs = grade_defs(ART_ID)
+    side = W >= CT['breaks']['side_labels']
+    y = 14
+    x = 0
+    for gk, word, gloss, line_style, _ in [gr for gr in GRADES if gr[0] in s['grades']]:
+        words = f'{word}: {gloss}'
+        w = 24 + 6 + tw(words, 13) * CT['label_headroom'] + 20
+        if x and x + w > W:
+            x, y = 0, y + 22
+        a.raw(grade_markup(ART_ID, gk, x, y - 11, 24, 14, ' aria-hidden="true"'))
+        a.rects.append({'box': (x, y - 11, x + 24, y + 3), 'block': True})
+        a.text(x + 30, y, words, 'xkey')
+        x += w
+    y += 30
+    rw = max(tw(f'{r["share"]:.0f}% of {r["total"]} {s["unit"]}' if i == 0 else f'{r["share"]:.0f}% of {r["total"]}', 15, 700)
+             for i, r in enumerate(s['rows'])) * CT['label_headroom'] + 14
+    nmw = (max(tw(r['label'], 15) for r in s['rows']) * CT['label_headroom'] + 16) if side else 0
+    bx0 = nmw
+    bw = W - bx0 - rw
+    a.text(bx0, y, '0', 'x13')
+    a.text(bx0 + bw, y, '100%', 'x13', 'end')
+    a.text(W, y, s['right_head'], 'x13', 'end')
+    y += 12
+    bh = CT['share_bar']['h']
+    for i, r in enumerate(s['rows']):
+        if side:
+            by = y
+            a.text(0, by + 14, r['label'], 'x15')
+        else:
+            a.text(0, y + 14, r['label'], 'x15')
+            by = y + 22
+        x = bx0
+        k = bw / r['total']
+        edges = []
+        for gk, v in r['segs']:
+            if not v:
+                continue
+            a.raw(grade_markup(ART_ID, gk, x, by, v * k, bh, da(r['key'], v, field=gk, mark='bar', axis='x', scale=r['key'])))
+            a.rects.append({'box': (x, by, x + v * k, by + bh), 'block': True})
+            edges.append(x + v * k)
+            x += v * k
+        for ex in edges[:-1]:
+            a.raw(LN(ex, by - 1, ex, by + bh + 1, 'sep', ' aria-hidden="true"'))
+        right = f'{r["share"]:.0f}% of {r["total"]} {s["unit"]}' if i == 0 else f'{r["share"]:.0f}% of {r["total"]}'
+        a.text(W, by + 14, right, 'x15k', 'end', da(r['key'], r[s['share_field']], field=s['share_field'], mark='label'))
+        y = by + bh + (CT['share_bar']['pitch'] - bh if side else 16)
+    a.H = y + 4
+
+
+# ------------------------------------------------------------------------------------------------ HTML forms
+def boxed_arrow(c, size=20):
+    """Scenario glyphs: an arrow in a box, so the direction survives a black-and-white copy on its own."""
+    shapes = {
+        'up': '<path d="M8.6 16V8H5L10 2.5L15 8H11.4V16Z" class="gf-up"/>',
+        'slightly up': '<path d="M5.2 15.6L12.2 8.6" class="gs-up"/><path d="M9 6H15V12Z" class="gf-up"/>',
+        'flat': '<path d="M3.5 10H12.5" class="gs-flat"/><path d="M11.5 6L16.5 10L11.5 14Z" class="gf-flat"/>',
+        'flat or down': '<path d="M5.2 4.4L12.2 11.4" class="gs-down"/><path d="M9 14H15V8Z" class="gf-down"/>',
+        'down': '<path d="M8.6 4V12H5L10 17.5L15 12H11.4V4Z" class="gf-down"/>',
+        'mixed': '<path d="M10 6V14" class="gs-mix"/><path d="M6 7L10 2.6L14 7Z M6 13L10 17.4L14 13Z" class="gf-mix"/>',
+        'same as ii': '<path d="M5 7H15V9H5Z M5 11H15V13H5Z" class="gf-flat"/>',
+    }
+    return (f'<svg class="gl" viewBox="0 0 20 20" width="{size}" height="{size}" aria-hidden="true" focusable="false">'
+            f'<rect x="0.5" y="0.5" width="19" height="19" class="gbox"/>{shapes[c]}</svg>')
+
+
+CLASS_CSS = {'up': 'c-up', 'slightly up': 'c-sup', 'flat': 'c-flat', 'flat or down': 'c-fod', 'down': 'c-down', 'mixed': 'c-mix', 'same as ii': 'c-same'}
+CLASS_WORD = {'up': 'Up', 'slightly up': 'Slightly up', 'flat': 'Flat', 'flat or down': 'Flat or down', 'down': 'Down',
+              'mixed': 'Mixed', 'same as ii': 'Same as scenario ii'}
+
+
+def comparison_table(uid, s, hl=2):
+    key = ''.join(f'<li>{boxed_arrow(c)}<span>{tx(CLASS_WORD[c])}</span></li>' for c in CLASS_WORD)
+    head = ''.join(f'<th scope="col">{tx(n)}</th>' for _, n in s['families'])
+    body = []
+    for r in s['rows']:
+        cells = []
+        for f, fname in s['families']:
+            c = r[f + '_class']
+            cells.append(f'<td class="{CLASS_CSS[c]}"{da(r["key"], field=f, cat=r[f], mark="cell")}>'
+                         f'<span class="fam-l">{tx(fname)}</span><span class="cw">{boxed_arrow(c)}'
+                         f'<span><span class="vh">Oath &amp; Action’s reading: {tx(CLASS_WORD[c].lower())}. The atlas: </span>{tx(r[f])}</span></span></td>')
+        body.append(f'<tr><th scope="row"><span class="sid">{tx(r["key"])}</span><span class="snm"><span class="sname">{tx(r["name"])}</span>'
+                    f'<span class="sgl">{tx(r["gloss"])}</span></span></th>{"".join(cells)}</tr>')
+    return (f'<div class="sg"><p class="sg-kh">{tx(s["key_head"])}</p><ul class="sg-key">{key}</ul>'
+            f'<table class="sgt"><caption class="vh">{tx(s["caption"])}</caption>'
+            f'<thead><tr><th scope="col">Scenario</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
+
+
+def unit_svg(r, code, roll=None, key=False):
+    """One record, one square. A roll-up record keeps one square's footprint, so rows still compare by length, and
+    prints its count inside."""
+    u = CT['unit']['size']
+    attrs = '' if key else da(r['key'], cat=r['direction'], mark='unit', tip=roll['tip'] if roll else r['tip'])
+    mark = dir_markup(0.75, 0.75, u - 1.5, u - 1.5, code, attrs)
+    if roll:
+        mark += (f'<text x="{fmt(u / 2)}" y="{fmt(u / 2 + 4)}" class="{ONTXT[code]}" text-anchor="middle">{svg_tx(str(roll["count"]))}</text>')
+    return (f'<svg class="u{" roll" if roll else ""}" viewBox="0 0 {u} {u}" width="{u}" height="{u}" aria-hidden="true" focusable="false">'
+            f'{mark}</svg>')
+
+
+def unit_ledger(uid, s):
+    """One mark per record in a row per category, in date order. HTML, so every record is drawn once. Each row's
+    label sits above its marks, so at full width every row runs on one line at the same pitch and rows compare like bars.
+    A key under the rows names each roll-up mark."""
+    out = [f'<div class="ul" role="img" aria-label="{at(s["label"])}">']
+    keys = []
+    for code, word, recs in s['rows']:
+        units = ''.join(unit_svg(r, code, s['rollups'].get(r['key'])) for r in recs)
+        keys += [unit_svg(r, code, s['rollups'][r['key']], key=True) + f'<span><strong>{tx(s["rollups"][r["key"]]["label"])}:</strong> '
+                 f'{tx(s["rollups"][r["key"]]["key"])}</span>' for r in recs if r['key'] in s['rollups']]
+        out.append(f'<div class="ul-row"><p class="ul-w"><span class="ul-dw">{tx(word)}</span> <span class="ul-dn">{len(recs)}</span></p>'
+                   f'<div class="ul-us">{units or "<span class=ul-none>none</span>"}</div></div>')
+    out.append('</div>')
+    out += [f'<p class="ul-k">{k}</p>' for k in keys]
+    return ''.join(out)
+
+
+def event_register(s, hl=3):
+    """The events behind the timeline, by lane: year, lead name and what each did, in date order."""
+    cols = []
+    for lane in s['lanes']:
+        items = ''.join(f'<li><span class="er-y">{tx(e["date_words"])}</span><span class="er-n">{tx(e["name"])}</span>'
+                        f'<span class="er-d">{tx(e["did"])}</span></li>' for e in lane['events'])
+        cols.append(f'<section class="er-c"><h{hl} class="er-h">{tx(lane["label"])}</h{hl}><p class="er-q">{tx(lane["question"])}</p><ol class="er-l">{items}</ol></section>')
+    return f'<div class="ereg">{"".join(cols)}</div>'
+
+
+# ------------------------------------------------------------------------------------------------ copy shared by the repair-log charts (F1)
+RLD = DS['rule-changes']
+DISCLOSURE = DS['rule-changes']['required_text'][0]
+RL_ROWS = sorted(RLD['rows'], key=lambda r: (r['date'], r['key']))
+RL_N = len(RL_ROWS)
+RL_RECENT = sum(1 for r in RL_ROWS if r['year'] >= 2025)
+RCV = rowmap('rcv-bans')
+RCV_BANS = [r for r in RCV.values() if r['prohibits_rcv']]
+RCV_EARLY = sorted(r['code'] for r in RCV_BANS if r['enacted_date'] < '2025-01-01')
+RCV_OWN = [r['jurisdiction'] for r in RL_ROWS   # states whose ban also has a log entry of its own, in date order
+           if r['key'] != 'RL47' and r['direction'] == 'away from voters' and 'ranked-choice' in r['rule']
+           and 'ban' in r['rule'].lower() and r['jurisdiction'] in {b['name'] for b in RCV_BANS}]
+RCV_EARLY_ALONE = [c for c in RCV_EARLY if RCV[c]['name'] not in RCV_OWN]
+
+
+def log_notes(extra_first=()):
+    n38, n41 = rowmap('rule-changes')['RL38'], rowmap('rule-changes')['RL41']
+    assert n38['direction'] == n41['direction'] == 'away from voters'
+    return list(extra_first) + [
+        f'The log holds the {RL_N} changes the atlas chose to record, not every rule change in the country. It records more of recent years: {RL_RECENT} of the {RL_N} entries fall in 2025 and 2026.',
+        ('How the atlas codes direction, in its own words:', RLD['coding_note']),
+        "A map redrawn in the middle of a decade counts as away from voters whichever party draws it: Texas's HB 4 (August 2025) and California's Proposition 50 (November 2025) both count as away.",
+        f"One entry, RL47 (March 2026), stands for all {len(RCV_BANS)} state bans on ranked-choice voting; {' and '.join(n + chr(39) + 's' for n in RCV_OWN)} bans also have entries of their own.",
+    ]
+
+
+# ------------------------------------------------------------------------------------------------ the specimens: adapters read the shared data
+def spec_s01():
+    rm = rowmap('stock-trading-ban')
+    d, r_, al = rm['support-democrats']['value'], rm['support-republicans']['value'], rm['support-all']['value']
+    sy, sn, need = rm['senate-yes']['value'], rm['senate-no']['value'], rm['senate-needed']['value']
+    hy, hn = rm['house-yes']['value'], rm['house-no']['value']
+    groups = sorted([{'key': 'support-democrats', 'label': 'Democrats', 'value': d, 'party': 'Democrats'},
+                     {'key': 'support-republicans', 'label': 'Republicans', 'value': r_, 'party': 'Republicans'}],
+                    key=lambda x: (-x['value'], x['label'])) + [{'key': 'support-all', 'label': 'All registered voters', 'value': al, 'context': True}]
+    return {
+        'kind_words': 'Documented: a published survey and two recorded votes',
+        'title': f'In 2023, {d}% of Democrats and {r_}% of Republicans favored a ban on stock trading by members of Congress; in 2026 the Senate fell {need - sy} votes short of taking one up.',
+        'measure': ['Registered voters who favored banning stock trading by members of Congress, percent, United States, survey of May 2023; House and Senate votes on H.R. 7008, July and September 2026'],
+        'index': '',
+        'figure': {'key': 'support-all', 'value': al, 'caption': 'of registered voters favored a ban', 'sub': 'Survey, May 2023'},
+        'group_head': 'Favored a ban, by group',
+        'groups': groups,
+        'vote_head': 'What Congress did in 2026',
+        'votes': [
+            {'label': 'House: passed a ban, H.R. 7008, July 22, 2026', 'scale': 'house',
+             'segs': [{'key': 'house-yes', 'value': hy, 'word': 'for', 'code': 'away'}, {'key': 'house-no', 'value': hn, 'word': 'against', 'code': 'kept'}]},
+            {'label': 'Senate: vote to take up the bill, September 30, 2026', 'scale': 'senate',
+             'sub': f'Taking up the bill needed {need} votes, three-fifths of the Senate, to end debate (cloture).',
+             'segs': [{'key': 'senate-yes', 'value': sy, 'word': 'for', 'code': 'away'}, {'key': 'senate-no', 'value': sn, 'word': 'against', 'code': 'kept'}],
+             'threshold': {'key': 'senate-needed', 'value': need},
+             'red': {'from': sy, 'words': f'{need - sy} votes short of the {need} needed'}}],
+        'notes': [f"Each chamber's bar holds every vote cast there: {hy + hn} in the House and {sy + sn} in the Senate.",
+                  f"The {al}% for all registered voters comes from the survey's own release. The survey came three years before H.R. 7008 reached either chamber."],
+        'drawn': ['of registered voters favored a ban', 'Survey, May 2023', 'Favored a ban, by group', 'What Congress did in 2026',
+                  'House: passed a ban, H.R. 7008, July 22, 2026', 'Senate: vote to take up the bill, September 30, 2026',
+                  f'Taking up the bill needed {need} votes, three-fifths of the Senate, to end debate (cloture).',
+                  f'{hy} for, {hn} against', f'{sy} for, {sn} against', f'{need - sy} votes short of the {need} needed',
+                  'Democrats', 'Republicans', 'All registered voters'],
+        'label': (f'Chart. {al}% of registered voters favored a ban in May 2023: {d}% of Democrats and {r_}% of Republicans. '
+                  f'The House passed a ban, H.R. 7008, by {hy} to {hn} on July 22, 2026. On September 30, 2026 the Senate vote to take it up '
+                  f'got {sy} of the {need} votes needed to end debate, {need - sy} short.'),
+        'why': 'A big number answers yes at a glance; the party bars beside it show the two figures one point apart, and the votes show what Congress did three years later.',
+    }
+
+
 def poverty_segments(measure):
     rows = [r for r in rows_of('child-poverty-spm') if r['measure'] == measure]
-    years = sorted({r['year'] for r in rows})
     segs, cur = [], []
-    for y in years:
+    for y in sorted({r['year'] for r in rows}):
         ry = [r for r in rows if r['year'] == y]
         if len(ry) == 1:
             cur.append(ry[0])
         else:
-            early = next(r for r in ry if r['comparable_with'] == 'earlier')
-            late = next(r for r in ry if r['comparable_with'] == 'later')
-            cur.append(early)
+            cur.append(next(r for r in ry if r['comparable_with'] == 'earlier'))
             segs.append(cur)
-            cur = [late]
+            cur = [next(r for r in ry if r['comparable_with'] == 'later')]
     segs.append(cur)
     return segs
 
 
-BREAK_WORDS = {2013: 'Survey change', 2017: 'Processing change', 2019: 'Method change'}
-
-
-def g_s02(W, uid, g):
-    o = []
-    narrow = W < 460
-    y0, y1 = 0, 25
-    top = 64 if narrow else 48
-    ph = 210 if narrow else 260
-    pb = top + ph
-    px0, px1 = 46, W - (16 if narrow else 104)
-    X = lambda yr: px0 + (yr - 2009) * (px1 - px0) / 16
-    Y = lambda v: pb - (v - y0) * ph / (y1 - y0)
-    for v in range(0, 26, 5):
-        o.append(LN(px0 - 8, Y(v), W, Y(v), 'base' if v == 0 else 'grid', ' aria-hidden="true"'))
-        o.append(T(px0 - 12, Y(v) + 4.5, f'{v}%' if v == 25 else str(v), 'x13', 'end'))
-    for yr in (2009, 2013, 2017, 2021, 2025):
-        anchor = 'end' if narrow and yr == 2025 else 'middle'
-        o.append(T(min(X(yr) + (14 if anchor == 'end' else 0), W), pb + 20, str(yr), 'x13', anchor))
-    # method breaks: labels in tiers, 1 px leaders down to the higher of the two estimates
-    placed = []
-    for yr, word in BREAK_WORDS.items():
-        w = sw(word, 'x13')
-        x = min(max(X(yr) - 3, px0), W - w)
-        tier = 0
-        while any(t == tier and not (x + w + 10 < a or x > b + 10) for a, b, t in placed):
-            tier += 1
-        placed.append((x, x + w, tier))
-        ty = 14 + tier * 17
-        hi = max(r['percent'] for r in rows_of('child-poverty-spm') if r['year'] == yr and r['comparable_with'] in ('earlier', 'later'))
-        o.append(LN(X(yr), ty + 5, X(yr), Y(hi) - 7, 'lead', ' aria-hidden="true"'))
-        o.append(T(x, ty, word, 'x13'))
-    # official measure in Stone, the supplemental measure in Charcoal; breaks are never bridged
-    for measure, line_cls, r_pt in (('official', 'l-ctx2', 1.5), ('spm', 'l-ink', 1.5)):
-        for seg in poverty_segments(measure):
-            pts = [(X(r['year']), Y(r['percent'])) for r in seg]
-            if len(pts) > 1:
-                o.append(f'<path d="M{" L".join(f"{fmt(a)} {fmt(b)}" for a, b in pts)}" class="{line_cls}" aria-hidden="true"/>')
-            for r in seg:
-                cls = 'f-ink' if measure == 'spm' else 'f-ctx'
-                rad = 4 if (measure == 'spm' and (r['year'] in (2021, 2025) or r['comparable_with'] != 'both')) else r_pt
-                if measure == 'official' and r['comparable_with'] != 'both':
-                    rad = 3
-                mname = 'Supplemental measure' if measure == 'spm' else 'Official measure'
-                tip = f'{mname}, {r["year"]}: {pct(r["percent"])}%'
-                o.append(f'<circle cx="{fmt(X(r["year"]))}" cy="{fmt(Y(r["percent"]))}" r="{rad}" class="{cls}"'
-                         f'{da(r["key"], r["percent"], mark="point", axis="y", tip=tip)}/>')
-    # direct labels
-    if narrow:
-        o.append(T(X(2009), Y(23.2), 'Official measure', 'x13s'))
-        o.append(T(X(2009), Y(11.8), 'Supplemental measure', 'x13b'))
-    elif W < 760:
-        o.append(T(X(2009), Y(23.5), 'Official measure', 'x13s'))
-        o.append(T(X(2009), Y(14.2), 'Supplemental measure', 'x13b'))
-        o.append(T(px1 + 10, Y(13.4) + 5, '13.4%', 'x13b'))
-        o.append(T(px1 + 10, Y(13.4) + 21, 'on both', 'x13'))
-    else:
-        o.append(T(X(2009), Y(23.5), 'Official measure', 'x15b', attrs=' style="fill:var(--sec)"'))
-        o.append(T(X(2009), Y(14.6), 'Supplemental Poverty Measure', 'x15b'))
-        o.append(T(px1 + 10, Y(13.4) + 5, '13.4%', 'x13b'))
-        o.append(T(px1 + 10, Y(13.4) + 21, 'on both', 'x13'))
-    # event note joined to 2021 by a leader
+def spec_s02():
     rm = rowmap('child-poverty-spm')
+    spm = [r for r in rows_of('child-poverty-spm') if r['measure'] == 'spm']
+    low = min(spm, key=lambda r: r['percent'])
     v21, v22 = rm['spm|2021|standard']['percent'], rm['spm|2022|standard']['percent']
-    note = (f'2021: {pct(v21)}%. The expanded child tax credit paid out that year, half in monthly installments (RL15). '
-            f'It expired after 2021 (RL16); in 2022 the rate was {pct(v22)}%.')
-    nw = 230 if not narrow else W - 8
-    lines = wrap(note, nw, 13)
-    if narrow:
-        ny = pb + 46
-        o.append(TL(0, ny, lines, 'x13', 16))
-        H = ny + 16 * (len(lines) - 1) + 8
-        both = f'2025: {pct(13.4)}% on both measures'
-        o.append(T(0, H + 12, both, 'x13b'))
-        H += 20
-    else:
-        # set to the left of 2021, under the line, so no segment crosses it; a leader joins it to the point
-        nx = X(2020) - 10
-        ny = Y(8.2)
-        o.append(f'<path d="M{fmt(nx + 4)} {fmt(Y(v21))}H{fmt(X(2021) - 6)}" class="lead" aria-hidden="true"/>')
-        o.append(TL(nx, ny, lines, 'x13', 16, 'end'))
-        H = pb + 30
-    label = (f'Line chart of child poverty, 2009 to 2025. Under the Supplemental Poverty Measure the rate was 17.0% in 2009, fell to '
-             f'{pct(v21)}% in 2021 and stood at 12.0% in 2022 and 13.4% in 2025. The official measure ran from 20.7% to 13.4%. '
-             f'The lines break in 2013, 2017 and 2019, when the Census Bureau changed its survey, processing or method. The Table button lists every value.')
-    return ''.join(o), H, '', label
+    assert low['year'] == 2021 and v22 > 2 * v21
+    first_year = min(r['year'] for r in spm)
+    rl = rowmap('rule-changes')
+    rl15, rl16, rl35 = rl['RL15'], rl['RL16'], rl['RL35']
+    breaks = sorted({r['year'] for r in spm if r['comparable_with'] != 'both'})
+    words = {2013: 'Survey change', 2017: 'Processing change', 2019: 'Method change'}
+
+    def pts(measure):
+        out = []
+        for seg in poverty_segments(measure):
+            out.append([{'x': r['year'], 'v': r['percent'], 'key': r['key'],
+                         'big': measure == 'spm' and (r['year'] in (2021, 2025) or r['comparable_with'] != 'both'),
+                         'tip': f'{"Supplemental measure" if measure == "spm" else "Official measure"}, {r["year"]}: {pct(r["percent"])}%'} for r in seg])
+        return out
+    v25 = rm['spm|2025|standard']['percent']
+    o25 = rm['official|2025|standard']['percent']
+    end_both = v25 == o25
+    note21 = (f'2021: {pct(v21)}%. The expanded child tax credit paid half in monthly installments for 2021 only, and expired after it. '
+              'The timing alone does not show how much of the drop came from the credit.')
+    note25 = f'July 2025: P.L. 119-21 set the child tax credit at up to $2,200 per child.'
+    assert '2,200' in rl35['rule'] and 'monthly installments for 2021 only' in rl15['rule'] and rl16['direction']
+    return {
+        'kind_words': 'Official statistic: a Census Bureau survey',
+        'title': f'Child poverty fell to {pct(v21)}% in 2021, the lowest since the series began in {first_year}, and more than doubled the next year.',
+        'measure': ['Children under 18 below the poverty line, percent, United States, 2009 to 2025. The dark line is the Supplemental Poverty Measure, which counts tax credits and other aid; the gray line is the official measure, which counts pretax cash income only'],
+        'index': 'Atlas records RL15, RL16, RL35',
+        'x_range': (min(r['year'] for r in spm), max(r['year'] for r in spm)), 'x_ticks': [2009, 2013, 2017, 2021, 2025],
+        'y_max': 25, 'y_step': 5, 'plot_h': (260, 210), 'right_margin': 108,
+        'breaks': [{'x': y, 'word': words[y], 'top': max(r['percent'] for r in rows_of('child-poverty-spm') if r['year'] == y and r['comparable_with'] != 'both')} for y in breaks],
+        'series': [{'segments': pts('official'), 'line': 'l-ctx2', 'fill': 'f-ctx', 'dot': 1.5, 'dot_big': 3},
+                   {'segments': pts('spm'), 'line': 'l-ink', 'fill': 'f-ink', 'dot': 1.5, 'dot_big': 4}],
+        'labels': {
+            'wide': [{'x': 2009, 'v': 23.4, 'text': 'Official measure', 'cls': 'x15b', 'attrs': ' style="fill:var(--sec)"'},
+                     {'x': 2009, 'v': 14.2, 'text': 'Supplemental Poverty Measure', 'cls': 'x15b'},
+                     {'x': 2025.35, 'v': 13.4 + 0.25, 'text': f'{pct(v25)}%' if end_both else '', 'cls': 'x13b'},
+                     {'x': 2025.35, 'v': 13.4 - 1.35, 'text': 'on both' if end_both else '', 'cls': 'x13'}],
+            'other': [{'x': 2009, 'v': 23.2, 'text': 'Official', 'cls': 'x13s'},
+                      {'x': 2009, 'v': 13.9, 'text': 'Supplemental', 'cls': 'x13b'}]},
+        'plot_notes': [{'x': 2021, 'v': v21, 'text': note21, 'right': 2020, 'top': 8.0, 'chars': 46},
+                  {'x': 2025, 'v': v25, 'text': note25, 'text_other': note25 + (f' Both measures read {pct(v25)}% in 2025.' if end_both else ''),
+                   'edge': True, 'top': 9.4, 'chars': 26}],
+        'html_notes': ['The Census Bureau describes the change between two years and credits no single policy with it.',
+                       "Figures for 2019 to 2024 include the Bureau's August 2026 revision. The atlas prints the first-published 9.7%, 5.2% and 13.4% for 2020, 2021 and 2024; this table reads 9.6%, 5.1% and 13.5%.",
+                       'In 2013, 2017 and 2019 the Bureau gives two estimates, one that joins the earlier years and one that joins the later years, so the lines break there.'],
+        'drawn': ['Official measure', 'Supplemental Poverty Measure', 'on both', note21, note25 + ' Both measures read 13.4% in 2025.'] + list(words.values()),
+        'label': (f'Line chart of child poverty, 2009 to 2025. Under the Supplemental Poverty Measure the rate was 17.0% in 2009, fell to '
+                  f'{pct(v21)}% in 2021 and stood at {pct(v22)}% in 2022 and {pct(v25)}% in 2025. The official measure ran from 20.7% to {pct(o25)}%. '
+                  'The lines break in 2013, 2017 and 2019, when the Census Bureau changed its survey, processing or method.'),
+        'why': 'A line shows the fall to 2021 and the climb back; the official measure in gray shows what the supplemental measure counts, and the breaks show where the Census Bureau changed its method.',
+    }
 
 
-# ------------------------------------------------------------------------------------------------ S03 ranked bar
-def key_row(items, W, y, uid=None):
-    """Inline key: (swatch markup function, words). Wraps at W. Returns markup and the y below it."""
-    o, x = [], 0
-    for draw, words in items:
-        w = 14 + 6 + sw(words, 'x13') + 18
-        if x and x + w > W:
-            x, y = 0, y + 22
-        o.append(draw(x, y - 11) + T(x + 20, y, words, 'x13'))
-        x += w
-    return ''.join(o), y + 12
-
-
-def dir_key(W, y):
-    items = [((lambda c: (lambda x, yy: dir_shape(x, yy, 14, 14, c, ' aria-hidden="true"')))(c), w) for _, c, w in DIRS]
-    return key_row(items, W, y)
-
-
-def g_s03(W, uid, g):
+def spec_s03():
     rows = rows_of('rule-changes-by-instrument')
-    o = []
-    kmark, y = dir_key(W, 14)
-    o.append(kmark)
-    y += 14
-    side = W >= 640
-    lw = (max(sw(r['key'], 'x15b') for r in rows) + 14) if side else 0
-    rmax = sw(f'{rows[0]["value"]} changes', 'x15k') + 12
-    k = (W - lw - rmax) / 17 if side else W / 17
-    bh = 24
-    for i, r in enumerate(rows):
-        name = r['key']
-        if side:
-            by = y
-            o.append(T(0, by + 17, name, 'x15b'))
-            if r['away from voters'] == 0 and r['value'] >= 10:
-                o.append(T(0, by + 34, 'None away from voters', 'x13'))
-        else:
-            o.append(T(0, y + 15, name, 'x15b'))
-            o.append(T(W, y + 15, f'{r["value"]} changes' if i == 0 else str(r['value']), 'x15k', 'end', da(name, r['value'], mark='label')))
-            by = y + 22
-        x = lw
-        for d, c, _ in DIRS:
-            v = r[d]
-            if not v:
-                continue
-            w = v * k
-            o.append(dir_shape(x, by, w, bh, c, da(name, v, field=d, mark='bar', axis='x')))
-            if w >= 18:
-                o.append(T(x + w / 2, by + 17, str(v), ONTXT[c], 'middle', da(name, v, field=d, mark='label')))
-            x += w
-        tot = f'{r["value"]} changes' if i == 0 else str(r['value'])
-        if side:
-            o.append(T(x + 8, by + 17, tot, 'x15k', attrs=da(name, r['value'], mark='label')))
-        xe = x + 8 + sw(tot, 'x15k') + 14
-        extra = 0
-        if name == 'State statute':
-            note = f'{r["away from voters"]} of its {r["value"]} moved the rules away from voters'
-            if side and W - xe >= 150:
-                lines = wrap(note, W - xe, 13)
-                o.append(TL(xe, by + 17 - 8 * (len(lines) - 1), lines, 'x13', 16))
-            else:
-                o.append(T(0, by + bh + 18, note, 'x13'))
-                extra = 22
-        if not side and r['away from voters'] == 0 and r['value'] >= 10:
-            o.append(T(0, by + bh + 18, 'None away from voters', 'x13'))
-            extra = 22
-        y = by + bh + 16 + extra if side else by + bh + 18 + extra
-        if side and r['away from voters'] == 0 and r['value'] >= 10:
-            y += 4
-    H = y + 2
-    label = ('Ranked bar chart of the 64 rule changes by how they were made. ' +
-             '; '.join(f'{r["key"]}: {r["value"]}, of them {r["away from voters"]} away from voters and {r["toward voters"]} toward' for r in rows) +
-             '. The Table button lists every value.')
-    return ''.join(o), H, '', label
+    rm = {r['key']: r for r in rows}
+    ss, bi, rf = rm['State statute'], rm['Ballot initiative'], rm['Referendum']
+    passed = bi['toward voters'] + bi['away from voters'] + bi['mixed']
+    shares = {r['key']: r['away from voters'] / r['value'] for r in rows}
+    assert max(shares, key=shares.get) == 'State statute'
+    rl47_away = rowmap('rule-changes')['RL47']['direction'] == 'away from voters'
+    out_rows = []
+    for r in rows:
+        note = None
+        if r['key'] == 'State statute':
+            note = f'{r["away from voters"]} of {r["value"]} away from voters'
+        sub = None
+        if r['key'] == 'Ballot initiative':
+            sub = f'{passed} passed, all toward voters'
+        out_rows.append({'key': r['key'], 'label': r['key'], 'total': r['value'], 'note': note, 'sub': sub,
+                         'segs': [{'field': d, 'value': r[d], 'code': c} for d, c, _ in DIRS]})
+    return {
+        'kind_words': "Documented: the atlas's dated log, coded by the atlas",
+        'title': f'The atlas codes {ss["away from voters"]} of {ss["value"]} logged state statutes as moving the rules away from voters, the largest share of any instrument.',
+        'measure': [f"Rule changes in Oath & Action's own atlas log of {RL_N}, by how each was made and by the log's direction code, United States, August 1965 to the November 3, 2026 ballot"],
+        'index': 'Repair log RL01 to RL64',
+        'key': [(c, w) for _, c, w in DIRS], 'unit': 'changes', 'rows': out_rows,
+        'notes': [f'Citizen ballot initiatives: {bi["value"]} entries. {passed} passed, and all {bi["toward voters"]} moved the rules toward voters; '
+                  f'{bi["voters kept existing rules"]} failed and left the rules in force; {bi["pending"]} are pending. Referendums are ballot measures too, and {rf["away from voters"]} of {rf["value"]} moved the rules away from voters.',
+                  f'State statutes: {ss["away from voters"]} of {ss["value"]} moved the rules away from voters as logged, '
+                  f'and {ss["away from voters"] - (1 if rl47_away else 0)} of {ss["value"] - 1} without the single entry that stands for all {len(RCV_BANS)} state bans on ranked-choice voting.',
+                  'Oath & Action grouped five instruments with one change each: an agency rule, an executive action and an executive order as executive or agency action; a city ordinance and a council funding vote as local law or funding vote. The instruments are the atlas\'s.'] + log_notes(),
+        'drawn': [w for _, _, w in DIRS] + [r['key'] for r in rows] + ['changes', f'{passed} passed, all toward voters', f'{ss["away from voters"]} of {ss["value"]} away from voters'],
+        'label': ('Ranked bar chart of the 64 rule changes by how they were made. ' +
+                  '; '.join(f'{r["key"]}: {r["value"]}, of them {r["away from voters"]} away from voters and {r["toward voters"]} toward' for r in rows) + '.'),
+        'why': "Seven instruments ranked by count answer who made the most changes; splitting each bar by the atlas's direction code shows which way each instrument moved the rules.",
+    }
 
 
-# ------------------------------------------------------------------------------------------------ S04 dumbbell
-AGES = [('18_to_24', '18 to 24'), ('25_to_44', '25 to 44'), ('45_to_64', '45 to 64'), ('65_and_over', '65 and over'),
-        ('all', 'All citizens 18 and over')]
+AGES = [('18_to_24', '18 to 24'), ('25_to_44', '25 to 44'), ('45_to_64', '45 to 64'), ('65_and_over', '65 and over'), ('all', 'All citizens 18 and over')]
 
 
 def turnout(age, year):
@@ -518,829 +1285,562 @@ def turnout(age, year):
 def change_words(a, b, first):
     d = round(b - a, 1)
     unit = ' points' if first else ''
-    if d > 0:
-        return f'Up {d:.1f}{unit}'
-    if d < 0:
-        return f'Down {abs(d):.1f}{unit}'
-    return 'No change'
+    if abs(d) <= 2.0:
+        return f'Little changed, {pct(d) if d < 0 else "+" + pct(d)}'
+    return f'Down {abs(d):.1f}{unit}' if d < 0 else f'Up {d:.1f}{unit}'
 
 
-def g_s04(W, uid, g):
-    o = []
-    side = W >= 560
-    lw = 190 if side else 0
-    cw = 116 if side else 0
-    x0 = lw + (10 if side else 14)
-    x1 = W - cw - 26 if side else W - 34
-    lo, hi = 40, 80
-    X = lambda v: x0 + (v - lo) * (x1 - x0) / (hi - lo)
-    y = 14
-    for v in range(lo, hi + 1, 10):
-        o.append(T(X(v), y, f'{v}%' if v == hi else str(v), 'x13', 'middle'))
-    y += 18
+def spec_s04():
+    rows = []
     first = True
     for age, name in AGES:
-        a, b = turnout(age, 2020), turnout(age, 2024)
-        ctx = age == 'all'
-        if ctx:
-            o.append(LN(0, y - 2, W, y - 2, 'grid', ' aria-hidden="true"'))
-            y += 10
-        if side:
-            cy = y + 26
-            o.append(T(0, cy + 5, name, 'x15b' if not ctx else 'x15', attrs='' if not ctx else ' style="fill:var(--sec)"'))
-            o.append(T(W, cy + 5, change_words(a['voted_pct'], b['voted_pct'], first), 'x13b', 'end'))
-        else:
-            o.append(T(0, y + 15, name, 'x15b' if not ctx else 'x15', attrs='' if not ctx else ' style="fill:var(--sec)"'))
-            o.append(T(W, y + 15, change_words(a['voted_pct'], b['voted_pct'], first), 'x13b', 'end'))
-            cy = y + 48
-        xa, xb = X(a['voted_pct']), X(b['voted_pct'])
-        o.append(LN(min(xa, xb), cy, max(xa, xb), cy, 'l-ctx2', ' aria-hidden="true"'))
-        fill = 'f-ink' if not ctx else 'f-ctx'
-        o.append(f'<circle cx="{fmt(xb)}" cy="{fmt(cy)}" r="6" class="{fill}"{da(b["key"], b["voted_pct"], mark="point", axis="x")}/>')
-        o.append(f'<circle cx="{fmt(xa)}" cy="{fmt(cy)}" r="5" class="ring"{da(a["key"], a["voted_pct"], mark="point", axis="x")}/>')
-        # values: the lower one to the left, the higher to the right
-        lo_r, hi_r = (a, b) if a['voted_pct'] <= b['voted_pct'] else (b, a)
-        o.append(T(min(xa, xb) - 10, cy + 5, pct(lo_r['voted_pct']), 'x13b', 'end', da(lo_r['key'], lo_r['voted_pct'], mark='label')))
-        o.append(T(max(xa, xb) + 10, cy + 5, pct(hi_r['voted_pct']), 'x13b', attrs=da(hi_r['key'], hi_r['voted_pct'], mark='label')))
-        if first:
-            ky = cy - 14
-            (xl, wl), (xr, wr) = sorted([(xa, '2020'), (xb, '2024')])
-            o.append(T(xl + 6, ky, wl, 'x13', 'end'))
-            o.append(T(xr - 6, ky, wr, 'x13'))
-            first = False
-        y = cy + (24 if side else 22)
-    H = y + 4
-    parts = '; '.join(f'{n}: {turnout(a, 2020)["voted_pct"]}% in 2020 and {turnout(a, 2024)["voted_pct"]}% in 2024' for a, n in AGES)
-    label = f'Dot chart of reported voting among citizens by age, 2020 and 2024. {parts}. The Table button lists every value.'
-    return ''.join(o), H, '', label
+        a_, b_ = turnout(age, 2020), turnout(age, 2024)
+        rows.append({'label': name, 'context': age == 'all', 'change': change_words(a_['voted_pct'], b_['voted_pct'], first),
+                     'a': {'key': a_['key'], 'v': a_['voted_pct']}, 'b': {'key': b_['key'], 'v': b_['voted_pct']}})
+        first = False
+    lo_, hi_ = turnout('18_to_24', 2024)['voted_pct'], turnout('65_and_over', 2024)['voted_pct']
+    return {
+        'kind_words': 'Official statistic: what survey respondents reported',
+        'title': f'Reported turnout in 2024 ran from {pct(lo_)}% of citizens 18 to 24 to {pct(hi_)}% of those 65 and over.',
+        'measure': ['Citizens who reported voting in the November presidential election, percent, by age, United States, 2020 and 2024; the scale runs from 40 to 80 percent'],
+        'index': '', 'rows': rows, 'years': ('2020', '2024'),
+        'notes': ["These are the shares of citizens who told the Census Bureau's November survey that they voted. Reported voting runs higher than counted ballots.",
+                  'Table A-1 publishes no margins of error, so a change of a point or two may sit within survey error. Changes of 2 points or less print as little changed.',
+                  'Where the two years nearly match, the open ring for 2020 sits over the dot for 2024.'],
+        'drawn': [r['label'] for r in rows] + [r['change'] for r in rows] + ['2020', '2024'],
+        'label': 'Dot chart of reported voting among citizens by age, 2020 and 2024. ' + '; '.join(f'{r["label"]}: {pct(r["a"]["v"])}% in 2020 and {pct(r["b"]["v"])}% in 2024' for r in rows) + '.',
+        'why': 'Two dots per age group show the level and the change at once; printed values and the change in words carry the numbers without a grid.',
+    }
 
 
-# ------------------------------------------------------------------------------------------------ S05 small multiples
-HGROUPS = [('all_households', 'All households'), ('non_hispanic_white', 'Non-Hispanic White'), ('black', 'Black'),
-           ('hispanic', 'Hispanic, of any race')]
+HGROUPS = [('all_households', 'All households'), ('non_hispanic_white', 'Non-Hispanic White'), ('black', 'Black'), ('hispanic', 'Hispanic, of any race')]
 
 
 def home_segments(group):
-    """Annual rows for one group. 2002 uses the value revised to 2000 Census controls. Black and non-Hispanic White
-    break at 2003, when race categories changed."""
-    rows = [r for r in rows_of('homeownership-by-race') if r['group'] == group and
-            (r['series_variant'] == 'standard' or (r['year'] == 2002 and r['series_variant'] == 'revised_2000_census'))]
-    rows.sort(key=lambda r: r['year'])
+    """Three runs at most: 1994 to 2002 with 2002's original value; for All and Hispanic, the value revised to 2000
+    Census controls starts the later run; for Black and non-Hispanic White, race categories change in 2003, so the
+    revised 2002 value stands alone and the later run starts in 2003. No run is joined across a break."""
+    rows = sorted([r for r in rows_of('homeownership-by-race') if r['group'] == group], key=lambda r: r['year'])
+    early = [r for r in rows if r['year'] < 2002 or (r['year'] == 2002 and r['series_variant'] == 'original')]
+    rev = [r for r in rows if r['year'] == 2002 and r['series_variant'] == 'revised_2000_census']
+    late = [r for r in rows if r['year'] >= 2003]
     if group in ('black', 'non_hispanic_white'):
-        return [[r for r in rows if r['year'] < 2003], [r for r in rows if r['year'] >= 2003]]
-    return [rows]
+        return [early, rev, late]
+    return [early, rev + late]
 
 
-def g_s05(W, uid, g):
-    o = []
-    cols = 4 if W >= 760 else (2 if W >= 460 else 1)
-    gap = 20
-    gut = 40
-    pw = (W - gut - gap * (cols - 1)) / cols
-    lo, hi = 20, 80
-    ph = 210 if cols == 4 else 180
-    head = 30
-    endw = 50
+def spec_s05():
     rm = rowmap('homeownership-by-race')
-    gap25 = rm['non_hispanic_white|2025|race_alone|standard']['rate_pct'] - rm['black|2025|race_alone|standard']['rate_pct']
-    gap03 = rm['non_hispanic_white|2003|race_alone|standard']['rate_pct'] - rm['black|2003|race_alone|standard']['rate_pct']
-    H = 0
-    for i, (grp, name) in enumerate(HGROUPS):
-        c, rr = i % cols, i // cols
-        ox = gut + c * (pw + gap)
-        oy = rr * (head + ph + 44)
-        top = oy + head
-        X = lambda yr, ox=ox: ox + 2 + (yr - 1994) * (pw - endw - 4) / 31
-        Y = lambda v, top=top: top + (hi - v) * ph / (hi - lo)
-        o.append(T(ox, oy + 16, name, 'x15b'))
-        for v in range(lo, hi + 1, 10):
-            o.append(LN(ox, Y(v), ox + pw, Y(v), 'grid', ' aria-hidden="true"'))
-            if c == 0:
-                o.append(T(ox - 8, Y(v) + 4.5, f'{v}%' if v == hi else str(v), 'x13', 'end'))
-        for yr in (1994, 2025):
-            o.append(T(X(yr), Y(lo) + 18, str(yr), 'x13', 'middle' if yr == 1994 and False else ('start' if yr == 1994 else 'end')))
-        sc = f'panel-{grp}'
-        # the other three groups in Stone, then this group in Charcoal
-        for og, _ in HGROUPS:
-            if og == grp:
-                continue
-            for seg in home_segments(og):
-                pts = ' L'.join(f'{fmt(X(r["year"]))} {fmt(Y(r["rate_pct"]))}' for r in seg)
-                o.append(f'<path d="M{pts}" class="l-ctx" aria-hidden="true"/>')
-        for seg in home_segments(grp):
-            pts = ' L'.join(f'{fmt(X(r["year"]))} {fmt(Y(r["rate_pct"]))}' for r in seg)
-            o.append(f'<path d="M{pts}" class="l-ink" aria-hidden="true"/>')
-            for r in seg:
-                ends = r['year'] in (2002, 2003) and grp in ('black', 'non_hispanic_white')
-                o.append(f'<circle cx="{fmt(X(r["year"]))}" cy="{fmt(Y(r["rate_pct"]))}" r="{2.5 if ends else 1.5}" class="f-ink"'
-                         f'{da(r["key"], r["rate_pct"], mark="point", axis="y", scale=sc)}/>')
-        last = rm[next(k for k in rm if k.startswith(grp + '|2025|'))]
-        o.append(T(X(2025) + 6, Y(last['rate_pct']) + 4, f'{pct(last["rate_pct"])}%', 'x13b', attrs=da(last['key'], last['rate_pct'], mark='label')))
-        nx = ox + 2
-        if grp == 'non_hispanic_white':
-            lines = wrap('The line breaks at 2003, when race categories changed.', pw - 8, 13)
-            o.append(TL(nx, Y(31.5), lines, 'x13', 16))
-        if grp == 'black':
-            lines = wrap(f'{pct(gap25)} points below non-Hispanic White in 2025; {pct(gap03)} in 2003', pw - 8, 13)
-            o.append(TL(nx, Y(31.5), lines, 'x13b', 16))
-        H = max(H, top + ph + 26)
-    label = ('Four line charts of the homeownership rate, 1994 to 2025, on one scale. In 2025: ' +
-             '; '.join(f'{n} {rm[next(k for k in rm if k.startswith(gp + "|2025|"))]["rate_pct"]}%' for gp, n in HGROUPS) +
-             f'. Non-Hispanic White householders led Black householders by {pct(gap25)} points in 2025 and {pct(gap03)} in 2003. '
-             'The Table button lists every value.')
-    return ''.join(o), H, '', label
-
-
-# ------------------------------------------------------------------------------------------------ S06 comparison table (HTML)
-FAMS = [('DQ', 'Quality of democracy'), ('GE', 'Government efficacy'), ('EP', 'Economic performance'), ('EQ', 'Income and wealth equality')]
-CLASS_CSS = {'up': 'c-up', 'slightly up': 'c-sup', 'flat': 'c-flat', 'flat or down': 'c-fod', 'down': 'c-down', 'mixed': 'c-mix',
-             'same as ii': 'c-same'}
-CLASS_WORD = {'up': 'Up', 'slightly up': 'Slightly up', 'flat': 'Flat', 'flat or down': 'Flat or down', 'down': 'Down',
-              'mixed': 'Mixed', 'same as ii': 'Same as scenario ii'}
-GLYPH = {
-    'up': '<path d="M8 2.5L14.5 13.5H1.5Z" class="gf-up"/>',
-    'slightly up': '<path d="M8 4.2L13.2 12.8H2.8Z" class="gs-up"/>',
-    'flat': '<path d="M1.5 6.75H14.5V9.25H1.5Z" class="gf-flat"/>',
-    'flat or down': '<path d="M1.5 2.5H14.5V4.75H1.5Z" class="gf-flat"/><path d="M8 14L12.6 7.6H3.4Z" class="gs-down"/>',
-    'down': '<path d="M8 13.5L14.5 2.5H1.5Z" class="gf-down"/>',
-    'mixed': '<path d="M4.8 1.5L8.6 7.6H1Z" class="gf-up"/><path d="M11.2 14.5L15 8.4H7.4Z" class="gf-down"/>',
-    'same as ii': '<path d="M2 4.6H14V6.8H2ZM2 9.2H14V11.4H2Z" class="gf-flat"/>',
-}
-
-
-def glyph(c, size=16):
-    return (f'<svg class="gl" viewBox="0 0 16 16" width="{size}" height="{size}" aria-hidden="true" focusable="false">'
-            f'{GLYPH[c]}</svg>')
-
-
-def g_s06_html(uid, g):
-    rows = rows_of('scenarios-2030')
-    key = ''.join(f'<li>{glyph(c)}<span>{esc(CLASS_WORD[c])}</span></li>' for c in CLASS_WORD)
-    head = ''.join(f'<th scope="col">{esc(n)}</th>' for _, n in FAMS)
-    body = []
-    for r in rows:
-        cells = []
-        for f, fname in FAMS:
-            c = r[f + '_class']
-            cells.append(f'<td class="{CLASS_CSS[c]}"{da(r["key"], field=f, cat=r[f], mark="cell")}>'
-                         f'<span class="fam-l">{esc(fname)}</span><span class="cw">{glyph(c)}<span>{esc(r[f])}</span></span></td>')
-        body.append(f'<tr><th scope="row"><span class="sid">{esc(r["key"])}</span> <span class="sname">{esc(r["name"])}</span></th>{"".join(cells)}</tr>')
-    return (f'<div class="sg"><p class="sg-kh">Glyph and tint: the studio\'s reading of the atlas\'s words, which print in every cell</p>'
-            f'<ul class="sg-key">{key}</ul>'
-            f'<table class="sgt"><caption class="vh">Direction each outcome family would take by 2036 in eight scenarios, in the atlas\'s words</caption>'
-            f'<thead><tr><th scope="col">Scenario</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>')
-
-
-# ------------------------------------------------------------------------------------------------ S07 tile map
-STATUS = [('bans in all elections', 'f-away', 'xin', 'Bans it in every election'),
-          ('bans in some elections', 'f-some', 'xins', 'Bans it in some elections'),
-          ('no ban', 'f-none', 'x13b', 'No state ban')]
-ST_FILL = {s: (f, t) for s, f, t, _ in STATUS}
-
-
-def g_s07(W, uid, g):
-    rows = rowmap('rcv-bans')
-    o = []
-    wide = W >= 760
-    mid = 460 <= W < 760
-    pitch = 56 if wide else (44 if mid else 27)
-    gap = 4 if not (not wide and not mid) else 2
-    t = pitch - gap
-    cnt = {s: sum(1 for r in rows.values() if r['status'] == s) for s, *_ in STATUS}
-    words = {'bans in all elections': f'Bans it in every election ({cnt["bans in all elections"]})',
-             'bans in some elections': f'Bans it in some elections ({cnt["bans in some elections"]})',
-             'no ban': f'No state ban ({cnt["no ban"] - 1} states and DC)'}
-    if wide:
-        ky, kx = 20, pitch + 4
-        for s, f, _, _ in STATUS:
-            o.append(R(kx, ky - 11, 14, 14, f, ' aria-hidden="true"') + T(kx + 22, ky, words[s], 'x13'))
-            ky += 24
-        gy = 0
-    else:
-        kmark, ky = key_row([((lambda f: (lambda x, yy: R(x, yy, 14, 14, f, ' aria-hidden="true"')))(f), words[s]) for s, f, _, _ in STATUS], W, 14)
-        o.append(kmark)
-        gy = ky + 10
-    for tcell in GRID:
-        r = rows[tcell['code']]
-        f, tc = ST_FILL[r['status']]
-        x, y = tcell['col'] * pitch, gy + tcell['row'] * pitch
-        yr = f', {date_words(r["enacted_date"])}' if r['enacted_date'] else ''
-        tip = f'{r["name"]}: {r["status"]}{yr}. {r["scope_note"]}' if r['prohibits_rcv'] else f'{r["name"]}: no state ban'
-        o.append(R(x, y, t, t, f, da(r['key'], field='status', cat=r['status'], mark='cell', tip=tip)))
-        if wide or mid:
-            o.append(T(x + t / 2, y + (22 if wide else 18), r['key'], tc, 'middle'))
-            if r['prohibits_rcv']:
-                o.append(T(x + t / 2, y + (40 if wide else 34), str(r['enacted_year']), tc.replace('x13b', 'x13'), 'middle',
-                           ' style="font-weight:400"'))
-        else:
-            o.append(T(x + t / 2, y + t / 2 + 4.5, r['key'], tc, 'middle'))
-    gb = gy + 8 * pitch - gap
-    notes = [f'Ohio, 2026: home-rule cities may still adopt it, but they lose state local government fund money while it is in effect.',
-             'Tennessee, 2022: county election commissions may not use it for state or local offices.',
-             'Missouri wrote its ban into the state constitution in 2024; the other 18 are statutes.',
-             'The map shows state bans only. Whether a city in a state with no ban may adopt it depends on other state law, which the map does not show.']
-    if wide:
-        nx = 12 * pitch + 14
-        nw = W - nx
-        ny = 14
-        for n in notes:
-            lines = wrap(n, nw, 13)
-            o.append(TL(nx, ny, lines, 'x13', 16))
-            ny += 16 * len(lines) + 10
-        H = max(gb, ny) + 4
-    else:
-        ny = gb + 24
-        for n in notes:
-            lines = wrap(n, W, 13)
-            o.append(TL(0, ny, lines, 'x13', 16))
-            ny += 16 * len(lines) + 8
-        H = ny - 6
-    label = (f'Tile map of the 50 states and DC. {cnt["bans in all elections"]} states ban ranked-choice voting in every election: ' +
-             ', '.join(r['name'] for r in rows.values() if r['status'] == 'bans in all elections') +
-             '. Ohio and Tennessee ban it in some elections. The other 31 states and DC have no state ban. The Table button lists every state.')
-    return ''.join(o), H, '', label
-
-
-# ------------------------------------------------------------------------------------------------ S08 unit chart
-def unit_svg(r):
-    """One repair-log record: a 28 px square in its direction code, numbered by its record."""
-    c = DIR_CLS[r['direction']]
-    tip = f'{r["key"]}, {date_words(r["date"])}, {r["jurisdiction"]}. {DIR_WORD[r["direction"]]}. {first_sentence(r["rule"])}'
-    return (f'<svg class="u" viewBox="0 0 28 28" width="28" height="28" aria-hidden="true" focusable="false">'
-            f'{dir_shape(0.75, 0.75, 26.5, 26.5, c, da(r["key"], cat=r["direction"], mark="unit", tip=tip))}'
-            f'{T(14, 18.5, r["key"][2:], ONTXT[c], "middle")}</svg>')
-
-
-def g_s08_html(uid, g):
-    """The unit chart is one HTML grid, so every record is drawn once and the layout reflows: direction rows across two
-    period panels when the module is 700 px or wider, the two panels stacked below that."""
-    rows = sorted(rows_of('rule-changes'), key=lambda r: (r['date'], r['key']))
-    panels = [('1965 to 2024', [r for r in rows if r['year'] < 2025]), ('2025 and 2026', [r for r in rows if r['year'] >= 2025])]
-    c = DS['rule-changes']['counts']
-    label = ('Unit chart: one square per change in the repair log, split at January 1, 2025. Before 2025: ' +
-             ', '.join(f'{sum(1 for r in panels[0][1] if r["direction"] == d)} {w.lower()}' for d, _, w in DIRS) +
-             '. In 2025 and 2026: ' + ', '.join(f'{sum(1 for r in panels[1][1] if r["direction"] == d)} {w.lower()}' for d, _, w in DIRS) +
-             f'. In all: {c["toward voters"]} toward voters and {c["away from voters"]} away. The Table button lists every change.')
-    out = [f'<div class="ul" role="img" aria-label="{esc(label)}"><div class="ul-h0" aria-hidden="true"></div>']
-    for i, (title, rs) in enumerate(panels):
-        out.append(f'<div class="ul-ph{" b" if i else ""}" style="--o:{i * 6}"><p class="ul-pt">{esc(title)}</p><p class="ul-pn">{len(rs)} changes</p></div>')
-    for j, (d, cc, word) in enumerate(DIRS):
-        parts = [[r for r in rs if r['direction'] == d] for _, rs in panels]
-        out.append(f'<div class="ul-dl"><p class="ul-dw">{esc(word)}</p><p class="ul-dn">{sum(len(pp) for pp in parts)} in all</p></div>')
-        for i, pp in enumerate(parts):
-            units = ''.join(unit_svg(r) for r in pp)
-            cnt = f'<span class="ul-c">{len(pp)}</span>' if pp else '<span class="ul-none">none</span>'
-            out.append(f'<div class="ul-cell{" b" if i else ""}" style="--o:{i * 6 + j + 1}"><p class="ul-cw">{esc(word)}</p>'
-                       f'<div class="ul-us">{units}{cnt}</div></div>')
-    out.append('</div>')
-    return ''.join(out)
-
-
-# ------------------------------------------------------------------------------------------------ S09 timeline
-def lead_name(t):
-    return t.split(' (')[0]
-
-
-def dec_year(iso):
-    y, m, d = (int(x) for x in iso.split('-'))
-    return y + ((m - 1) * 30.4 + d - 1) / 365
-
-
-def place_flags(items, x_max, gap=10):
-    """Tier flag labels above a time line so no label covers another's leader.
-
-    items: dicts with x (dot), w (label width). A label at tier t spanning [a, b] that covers another dot's x must sit
-    above that dot's label; overlapping labels never share a tier. Start-anchored labels cover dots to their right and
-    end-anchored ones cover dots to their left, so the leftmost label of any mutual cover flips to end-anchored first.
-    Tiers are then assigned in an order where every covered label is placed before the label that covers it."""
-    for it in items:
-        it['anchor'] = 'start' if it['x'] + it['w'] <= x_max else 'end'
-
-    def span(it):
-        return (it['x'], it['x'] + it['w']) if it['anchor'] == 'start' else (it['x'] - it['w'], it['x'])
-
-    def covers(i, k):
-        a, b = span(i)
-        return i is not k and a - 3 <= k['x'] <= b + 3
-
-    for _ in range(len(items) * 2):
-        flip = next((i for i in items for k in items if i['anchor'] == 'start' and covers(i, k) and covers(k, i)), None)
-        if not flip:
-            break
-        flip['anchor'] = 'end'
-    left = list(items)
-    done = []
-    while left:
-        ready = [i for i in left if not any(covers(i, k) for k in left)]
-        if not ready:  # a cycle survived: fall back to the leftmost label
-            ready = [min(left, key=lambda i: i['x'])]
-        for i in sorted(ready, key=lambda i: i['x']):
-            a, b = span(i)
-            t = max([k['t'] + 1 for k in done if covers(i, k)] + [0])
-            while any(k['t'] == t and not (b + gap < k['a'] or a > k['b'] + gap) for k in done):
-                t += 1
-            i['t'], i['a'], i['b'] = t, a, b
-            done.append(i)
-            left.remove(i)
-    return items
-
-
-def g_s09(W, uid, g):
-    """Four lanes on one true time scale. Each dot carries its studio key (E01 to E24) as an index label, and the list
-    under each lane gives every event's year and lead name, so names print in full at every width without stacking."""
-    ds = DS['history-events']
-    rows = ds['rows']
-    threads = ds['threads']
-    o = []
-    lw = 176 if W >= 760 else 0
-    ax0 = lw
-    aw = W - ax0
-    px0, px1 = ax0 + 8, W - 8
-    X = lambda dy: px0 + (dy - 1870) * (px1 - px0) / (2026.6 - 1870)
-    cols = 3 if aw >= 600 else (2 if aw >= 440 else 1)
-    cg = 20
-    cw = (aw - cg * (cols - 1)) / cols
-    ticks = (1870, 1900, 1930, 1960, 1990, 2020) if aw >= 440 else (1870, 2026)
-    y = 0
-    for li, th in enumerate(threads):
-        ev = sorted([r for r in rows if r['thread'] == th['id']], key=lambda r: r['date'])
-        ql = wrap(th['question'], (lw - 20) if lw else W, 13)
-        if lw:
-            o.append(T(0, y + 16, th['label'], 'x15b') + TL(0, y + 34, ql, 'x13', 16))
-            top = y
-        else:
-            o.append(T(0, y + 16, th['label'], 'x15b') + TL(0, y + 34, ql, 'x13', 16))
-            top = y + 34 + 16 * (len(ql) - 1) + 10
-        # index labels over the dots, in tiers where they would touch
-        flags = [{'x': X(dec_year(r['date'])), 'w': sw(r['key'], 'x13s') + 5, 'r': r} for r in ev]
-        place_flags(flags, W, gap=6)
-        tiers = max(f_['t'] for f_ in flags) + 1
-        line_y = top + tiers * 17 + 12
-        o.append(LN(px0 - 6, line_y, px1 + 6, line_y, 'lane', ' aria-hidden="true"'))
-        for f_ in flags:
-            x, r = f_['x'], f_['r']
-            ty = line_y - 13 - f_['t'] * 17
-            o.append(LN(x, line_y - 5, x, ty - 10, 'lead', ' aria-hidden="true"'))
-            o.append(T(x + 4 if f_['anchor'] == 'start' else x - 4, ty, r['key'], 'x13s', f_['anchor']))
-            tip = f'{r["key"]}, {date_words(r["date"])}. {r["title"]}. {r["mechanism"]}'
-            o.append(f'<circle cx="{fmt(x)}" cy="{fmt(line_y)}" r="{5 if lw else 4.5}" class="f-ink"'
-                     f'{da(r["key"], round(dec_year(r["date"]), 3), field="year", mark="point", axis="x", tip=tip)}/>')
-        for i, yr in enumerate(ticks):
-            anchor = 'start' if i == 0 else ('end' if yr == 2026 else 'middle')
-            o.append(T(X(yr) if yr != 2026 else W, line_y + 19, str(yr), 'x13', anchor))
-        # the list: index, year, lead name, in date order across the columns
-        ly = line_y + 46
-        for rstart in range(0, len(ev), cols):
-            row = ev[rstart:rstart + cols]
-            hmax = 1
-            for ci, r in enumerate(row):
-                cx = ax0 + ci * (cw + cg)
-                nl = wrap(lead_name(r['title']), cw - 76, 13, 600)
-                hmax = max(hmax, len(nl))
-                o.append(T(cx, ly, r['key'], 'x13s') + T(cx + 34, ly, str(r['year']), 'x13') + TL(cx + 76, ly, nl, 'x13b', 16))
-            ly += 16 * hmax + 8
-        y = max(ly, top + 16 * (len(ql) + 2)) + 14
-        if li < len(threads) - 1:
-            o.append(LN(0, y - 12, W, y - 12, 'grid', ' aria-hidden="true"'))
-            y += 8
-    H = y - 14
-    label = ('Timeline of 24 documented rule changes on four threads, 1870 to 2026. ' +
-             '. '.join(f'{th["label"]}: ' + ', '.join(f'{r["year"]} {lead_name(r["title"])}' for r in sorted(rows, key=lambda r: r['date']) if r['thread'] == th['id'])
-                       for th in threads) + '. The Table button lists every event.')
-    return ''.join(o), H, '', label
-
-
-# ------------------------------------------------------------------------------------------------ S10 evidence mix
-def g_s10(W, uid, g):
-    rows = sorted(rows_of('claims-by-grade'), key=lambda r: (-r['documented'] / r['value'], r['key']))
-    o = []
-    defs = grade_defs(uid)
-    items = [((lambda gk: (lambda x, yy: grade_rect(uid, gk, x, yy, 26, 14, ' aria-hidden="true"')))(gk), f'{w}: {gl}')
-             for gk, w, gl in GRADES]
-    o_key = []
-    x, y = 0, 14
-    for draw, words in items:
-        w = 26 + 8 + sw(words, 'x13') + 20
-        if x and x + w > W:
-            x, y = 0, y + 22
-        o_key.append(draw(x, y - 11) + T(x + 34, y, words, 'x13'))
-        x += w
-    o.append(''.join(o_key))
-    y += 26
-    side = W >= 560
-    idw, nmw = (44, max(sw(r['title'], 'x15') for r in rows) + 16) if side else (0, 0)
-    rw = 96 if side else 58
-    bx0 = idw + nmw
-    bw = W - bx0 - rw
-    if side:
-        o.append(T(bx0, y, '0', 'x13') + T(bx0 + bw, y, '100%', 'x13', 'end'))
-        o.append(T(W, y, 'Documented', 'x13', 'end'))
-    else:
-        o.append(T(W, y, 'Documented', 'x13', 'end'))
-    y += 10
-    bh = 18
-    for i, r in enumerate(rows):
-        if side:
-            by = y
-            o.append(T(0, by + 14, r['key'], 'x13s') + T(idw, by + 14, r['title'], 'x15'))
-        else:
-            o.append(T(0, y + 14, r['key'], 'x13s') + T(42, y + 14, r['title'], 'x15'))
-            by = y + 22
-        x = bx0
-        k = bw / r['value']
+    g = lambda grp, y: rm[next(k for k in rm if k.startswith(f'{grp}|{y}|') and (y != 2002))]['rate_pct']
+    gap25, gap03 = g('non_hispanic_white', 2025) - g('black', 2025), g('non_hispanic_white', 2003) - g('black', 2003)
+    hgap25, hgap03 = g('non_hispanic_white', 2025) - g('hispanic', 2025), g('non_hispanic_white', 2003) - g('hispanic', 2003)
+    q = [r for r in rows_of('homeownership-by-race-quarterly') if r['year'] == 2026 and r['quarter'] == 3]
+    qv = {r['group']: r['rate_pct'] for r in q}
+    panels = []
+    for grp, name in HGROUPS:
         segs = []
-        for gk, _, _ in GRADES:
-            v = r[gk]
-            if not v:
-                continue
-            o.append(grade_rect(uid, gk, x, by, v * k, bh, da(r['key'], v, field=gk, mark='bar', axis='x', scale=r['key'])))
-            segs.append(x + v * k)
-            x += v * k
-        for sx in segs[:-1]:
-            o.append(LN(sx, by - 1, sx, by + bh + 1, 'sep', ' aria-hidden="true"'))
-        share = 100 * r['documented'] / r['value']
-        o.append(T(W, by + 14, f'{share:.0f}%', 'x15k', 'end', da(r['key'], r['documented'], field='documented', mark='label')))
-        y = by + bh + (14 if side else 16)
-    # the record: the question with the largest share of plausible or contested claims
-    pick = max(rows, key=lambda r: (r['plausible'] + r['contested']) / r['value'])
-    n = pick['plausible'] + pick['contested']
-    note = (f'{pick["key"]}, {pick["title"].lower()}: {n} of its {pick["value"]} claims are plausible or contested, '
-            f'the largest share of any question.')
-    lines = wrap(note, (W - bx0 - 8) if side else W, 13)
-    o.append(TL(bx0 if side else 0, y + 12, lines, 'x13', 16))
-    H = y + 12 + 16 * (len(lines) - 1) + 8
+        for seg in home_segments(grp):
+            segs.append([{'x': r['year'] + (0.0 if r['series_variant'] != 'revised_2000_census' else 0.0), 'v': r['rate_pct'], 'key': r['key'],
+                          'end': r['year'] in (2002, 2003)} for r in seg])
+        last = next(r for r in rows_of('homeownership-by-race') if r['group'] == grp and r['year'] == 2025)
+        note, weight = None, 400
+        if grp == 'all_households':
+            note = 'Gray lines: the other three groups.'
+        elif grp == 'non_hispanic_white':
+            note = 'Breaks at 2002, when the Bureau reweighted, and 2003, when race categories changed.'
+        elif grp == 'black':
+            note, weight = f'{pct(gap25)} points below non-Hispanic White in 2025; {pct(gap03)} in 2003.', 600
+        elif grp == 'hispanic':
+            note, weight = f'{pct(hgap25)} points below non-Hispanic White in 2025; {pct(hgap03)} in 2003.', 600
+        panels.append({'id': grp, 'name': name, 'segments': segs, 'last': {'x': 2025, 'v': last['rate_pct'], 'key': last['key']},
+                       'note': note, 'note_weight': weight})
+    return {
+        'kind_words': 'Official statistic: a Census Bureau survey',
+        'title': f'The homeownership gap between non-Hispanic White and Black households was {pct(gap25)} points in 2025, wider than the {pct(gap03)} points of 2003.',
+        'measure': ['Owner households as a percent of all households in each group, by race and ethnicity of householder, United States, 1994 to 2025; one scale, starting at 20 percent'],
+        'index': '', 'panels': panels, 'y_range': (20, 80), 'x_range': (1994, 2025), 'note_at': 37,
+        'notes': ['The Census Bureau asks readers to use caution comparing 2020 with other years, after interviews moved to the phone.',
+                  'Each line breaks where the table gives two values for 2002, before and after the Bureau reweighted to 2000 Census counts, and the Black and non-Hispanic White lines break again at 2003, when race categories changed. Both 2002 values are drawn.',
+                  f'The 2025 average leaves out October 2025, when no data were collected. The latest quarter, the third quarter of 2026, reads {pct(qv["non_hispanic_white"])}% for non-Hispanic White and {pct(qv["black"])}% for Black householders: a single quarter\'s estimate, with a margin of error up to 0.9 points.'],
+        'drawn': [n for _, n in HGROUPS] + [p['note'] for p in panels if p['note']],
+        'label': ('Four line charts of the homeownership rate, 1994 to 2025, on one scale. In 2025: ' +
+                  '; '.join(f'{p["name"]} {pct(p["last"]["v"])}%' for p in panels) +
+                  f'. Non-Hispanic White householders led Black householders by {pct(gap25)} points in 2025 and {pct(gap03)} in 2003, and Hispanic householders by {pct(hgap25)} and {pct(hgap03)}.'),
+        'why': 'One panel per group on one scale lets a reader compare each group with the other three, which sit behind it in gray.',
+    }
+
+
+FAMS = [('DQ', 'Quality of democracy'), ('GE', 'Government efficacy'), ('EP', 'Economic performance'), ('EQ', 'Income and wealth equality')]
+GLOSS = {'i': 'Current law runs as written, and the Senate keeps the filibuster',
+         'ii': 'Some states pass reforms; no federal rule changes',
+         'iii': 'The Senate changes the filibuster and passes rules for elections and government',
+         'iv-a': 'Fusion voting lets more than one party nominate the same candidate',
+         'iv-b': 'Inspectors general are the watchdogs inside federal agencies',
+         'iv-c': 'Stronger competition rules and faster labor-law remedies',
+         'iv-d': 'Changes adopted by constitutional amendment',
+         'iv-e': 'Officials hold back from using every power they have'}
+
+
+def spec_s06():
+    rows = []
+    for r in rows_of('scenarios-2030'):
+        rows.append(dict(r, gloss=GLOSS[r['key']]))
+    beyond = [r for r in rows if r['key'] != 'i']
+    lift = sum(1 for r in beyond if any(r[f + '_class'] in ('up', 'slightly up') for f, _ in FAMS))
+    words = {5: 'five', 6: 'six', 7: 'seven', 4: 'four', 3: 'three'}
+    return {
+        'kind_words': 'Conditional directions: no forecast and no odds',
+        'title': f'If their assumptions hold, {words.get(lift, lift)} of the {words.get(len(beyond), len(beyond))} scenarios beyond the baseline would lift at least one outcome family by 2036.',
+        'measure': ["Direction each outcome family would take by 2036 if a scenario's assumptions hold, in the words of Oath & Action's atlas, United States, from a 2026 baseline",
+                    'Up means better for each family; for income and wealth equality, more equal.'],
+        'index': 'Scenarios i to iv-e', 'rows': rows, 'families': FAMS,
+        'key_head': "Arrow and tint: Oath & Action's reading of the atlas's words, which print in every cell",
+        'caption': "Direction each outcome family would take by 2036 in eight scenarios, in the atlas's words",
+        'notes': ["Arrows and tints are Oath & Action's reading of the atlas's words, which print in every cell. The four families are read one at a time and never added together.",
+                  'These are conditional directions with no forecast and no odds. The table lists the assumptions behind each scenario.'],
+        'why': "A table keeps the atlas's words in every cell; a boxed arrow and a tint let a reader scan the moves across eight rows, and the arrow alone carries each move on a black-and-white copy.",
+    }
+
+
+STATUS = [('bans in all elections', 'f-away', 'xin', 'Bans it in all elections'), ('bans in some elections', 'f-some', 'xins', 'Bans it in some elections'),
+          ('no ban', 'f-none', 'x13b', 'No state ban')]
+
+
+def spec_s07():
+    rows = RCV
+    cnt = {s_: sum(1 for r in rows.values() if r['status'] == s_) for s_, *_ in STATUS}
+    no_states = cnt['no ban'] - (1 if rows['DC']['status'] == 'no ban' else 0)
+    words = {'bans in all elections': f'Bans it in all elections ({cnt["bans in all elections"]})',
+             'bans in some elections': f'Bans it in some elections ({cnt["bans in some elections"]})',
+             'no ban': f'No state ban ({no_states} states and DC)'}
+    fills = {s_: (f, t) for s_, f, t, _ in STATUS}
+    tiles = []
+    for c in GRID:
+        r = rows[c['code']]
+        f, t = fills[r['status']]
+        tip = (f'{r["name"]}: {r["status"]}, {date_words(r["enacted_date"])}. {r["scope_note"]}' if r['prohibits_rcv'] else f'{r["name"]}: no state ban')
+        tiles.append({'col': c['col'], 'row': c['row'], 'key': r['key'], 'status': r['status'], 'fill': f, 'txt': t,
+                      'year': r['enacted_year'] if r['prohibits_rcv'] else None, 'tip': tip})
+    total_bans = cnt['bans in all elections'] + cnt['bans in some elections']
+    return {
+        'kind_words': "A secondary source: Ballotpedia's list, checked against the atlas",
+        'title': f'As of November 2026, {total_bans} states ban ranked-choice voting, {cnt["bans in all elections"]} of them in all elections as Ballotpedia reads the laws.',
+        'measure': ['State laws that prohibit ranked-choice voting, by scope and year enacted, 50 states and DC, as of November 2026'],
+        'index': 'Atlas repair log RL47',
+        'key': [(fills[s_][0], words[s_]) for s_, *_ in STATUS], 'tiles': tiles, 'size_note': 'Each square is one state, whatever its size.',
+        'notes': ['Ranked-choice voting: voters rank candidates in order; if no one wins a majority of first choices, the last-place candidate drops out and those ballots count for their next choice, round by round.',
+                  f'{no_states} states and DC have no state ban. A state with no ban may still keep its cities from adopting it, because many cities need the state\'s permission.',
+                  'Ohio, 2026: home-rule cities may still adopt it, but they lose state local government fund money while it is in effect. Tennessee, 2022: county election commissions may not use it for state or local offices.',
+                  f'Missouri wrote its ban into the state constitution in 2024; the other {total_bans - 1} are statutes. Ballotpedia reads 17 bans as covering all elections; Mississippi\'s quoted text does not name congressional district races.',
+                  "Ballotpedia is a secondary source. The atlas cites the National Conference of State Legislatures, whose page could not be read by script; both list the same 19 states, as does the atlas's repair log."],
+        'drawn': list(words.values()) + ['Each square is one state, whatever its size.'] + [t['key'] for t in tiles],
+        'label': (f'Tile map of the 50 states and DC, one equal square each. {cnt["bans in all elections"]} states ban ranked-choice voting in all elections: ' +
+                  ', '.join(r['name'] for r in rows.values() if r['status'] == 'bans in all elections') +
+                  f'. Ohio and Tennessee ban it in some elections. {no_states} states and DC have no state ban.'),
+        'why': 'Equal tiles give every state the same weight and room for its code and the year of its ban; true shapes would hide the small eastern states.',
+    }
+
+
+def spec_s08():
+    tw_, aw_ = RLD['counts']['toward voters'], RLD['counts']['away from voters']
+    rows = []
+    for d, c, w in [DIRS[1], DIRS[0], DIRS[2], DIRS[3], DIRS[4]]:
+        recs = []
+        for r in RL_ROWS:
+            if r['direction'] == d:
+                recs.append(dict(r, tip=f'{r["key"]}, {date_words(r["date"])}, {r["jurisdiction"]}. {DIR_WORD[r["direction"]]}. {first_sentence(r["rule"])}'))
+        rows.append((c, w, recs))
+    r47 = rowmap('rule-changes')['RL47']
+    rollups = {'RL47': {'label': f'{len(RCV_BANS)} states', 'count': len(RCV_BANS),
+                        'key': f'the square marked {len(RCV_BANS)} is one entry that stands for every state ban on ranked-choice voting.',
+                        'tip': f'RL47, {date_words(r47["date"])}: one entry for all {len(RCV_BANS)} state bans on ranked-choice voting. {first_sentence(r47["rule"])}'}}
+    label = (f'Unit chart: one square per change in the repair log, in date order within each row. Toward voters {tw_}; away from voters {aw_}, '
+             f'one of them a single entry for {len(RCV_BANS)} state bans; kept existing rules {RLD["counts"]["voters kept existing rules"]}; '
+             f'mixed {RLD["counts"]["mixed"]}; pending {RLD["counts"]["pending"]}.')
+    return {
+        'kind_words': "Documented: the atlas's dated log, coded by the atlas",
+        'title': f"The atlas's log codes {tw_} of its {RL_N} rule changes as moving toward voters and {aw_} as moving away.",
+        'measure': [f"Each square is one dated change in Oath & Action's own atlas log of {RL_N}, in date order within each row, by the log's direction code, United States, August 1965 to the November 3, 2026 ballot"],
+        'index': 'Repair log RL01 to RL64', 'rows': rows, 'rollups': rollups, 'label': label,
+        'notes': log_notes() + [f'The atlas dates that entry {date_words(r47["date"])}, though {len(RCV_EARLY)} of its {len(RCV_BANS)} bans became law before 2025; '
+                                f'{len(RCV_EARLY_ALONE)} of those {len(RCV_EARLY)} have no entry of their own.'],
+        'why': 'One square per record lets a reader count every change; rows by direction show the whole log at once, with no period chosen for them.',
+    }
+
+
+def spec_s09():
+    ds = DS['history-events']
+    lanes = []
+    for th in ds['threads']:
+        evs = []
+        for r in sorted([r for r in ds['rows'] if r['thread'] == th['id']], key=lambda r: r['date']):
+            evs.append({'key': r['key'], 'x': frac_year(r['date']), 'year': r['year'], 'date_words': date_words(r['date']),
+                        'name': r['title'].split(' (')[0], 'did': first_clause(r['mechanism']),
+                        'tip': f'{date_words(r["date"])}. {r["title"]}. {r["mechanism"]}'})
+        lanes.append({'label': th['label'], 'question': th['question'], 'events': evs})
+    return {
+        'kind_words': 'Documented: each event rests on a statute, ruling or official record',
+        'title': 'The atlas traces 24 documented rule changes on four threads, from 1870 to 2026.',
+        'measure': ["Dated changes in the history that Oath & Action's atlas traces, by thread, United States, February 3, 1870 to June 29, 2026; each dot sits at its date"],
+        'index': 'Events E01 to E24, keys by Oath & Action',
+        'lanes': lanes, 'x_range': (1868, 2028), 'ticks': [1870, 1900, 1930, 1960, 1990, 2026],
+        'notes': ['Every event is documented: each rests on a statute, ruling, constitutional text or official record. The register under the drawing gives each event\'s lead name and the first part of what it did; the table gives the full entry, with the events the atlas pairs with it.'],
+        'drawn': [th['label'] for th in ds['threads']],
+        'label': ('Timeline of 24 documented rule changes on four threads, 1870 to 2026. ' +
+                  '. '.join(f'{ln["label"]}: ' + ', '.join(f'{e["year"]} {e["name"]}' for e in ln['events']) for ln in lanes) + '.'),
+        'why': 'Four lanes on one true time scale show when each thread changed; the register under the drawing names every event and what it did, in date order.',
+    }
+
+
+def spec_s10():
+    rs = sorted(rows_of('claims-by-grade'), key=lambda r: (-r['documented'] / r['value'], r['key']))
     tot = DS['claims-by-grade']['totals']
-    label = (f'Stacked bars, one per everyday question, showing the share of its claims by evidence grade, sorted by the documented share. '
-             f'Across all 433 claims: {tot["documented"]} documented, {tot["well-supported"]} well supported, {tot["plausible"]} plausible, '
-             f'{tot["contested"]} contested. ' + '; '.join(f'{r["key"]} {r["title"]} {100 * r["documented"] / r["value"]:.0f}% documented' for r in rows) +
-             '. The Table button lists every count.')
-    return ''.join(o), H, defs, label
+    alln = sum(tot.values())
+    top, bot = rs[0], rs[-1]
+    rows = [{'key': r['key'], 'label': r['title'], 'total': r['value'], 'documented': r['documented'],
+             'share': 100 * r['documented'] / r['value'], 'segs': [(g, r[g]) for g in ('documented', 'well-supported', 'plausible', 'contested')]} for r in rs]
+    pick = max(rs, key=lambda r: (r['plausible'] + r['contested']) / r['value'])
+    return {
+        'kind_words': "Documented: the atlas's claims register, graded by the atlas",
+        'title': (f"{tot['documented']} of the atlas's {alln} claims are documented on the public record, from "
+                  f"{top['documented']} of {top['value']} on {top['title'].lower()} to {bot['documented']} of {bot['value']} on {bot['title'].lower()}."),
+        'measure': ["Share of each everyday question's claims by evidence grade, percent of claims, with each question's count of claims; the claims register of Oath & Action's atlas, United States, checked through October 15, 2026"],
+        'index': 'Questions PW01 to PW16',
+        'grades': ['documented', 'well-supported', 'plausible', 'contested'], 'rows': rows, 'unit': 'claims',
+        'share_field': 'documented', 'right_head': 'Documented',
+        'notes': ["Here the {strongest} marks documented claims: the grade code replaces the rule that the {strongest} marks the title's subject.",
+                  'Fills follow the atlas\'s evidence lines: documented and well supported are solid like its solid lines, plausible is a light tint where its line is dashed, and contested is hatched where its line is dash-dot. A claim\'s grade covers that claim alone.',
+                  f'{pick["title"]}: {pick["plausible"] + pick["contested"]} of its {pick["value"]} claims are plausible or contested, the largest share of any question.'],
+        'drawn': [f'{w}: {gl}' for _, w, gl, _, _ in GRADES[:4]] + [r['label'] for r in rows] + ['Documented', 'claims'],
+        'label': (f'Stacked bars, one per everyday question, showing the share of its claims by evidence grade, sorted by the documented share. '
+                  f'Across all {alln} claims: {tot["documented"]} documented, {tot["well-supported"]} well supported, {tot["plausible"]} plausible, '
+                  f'{tot["contested"]} contested. ' + '; '.join(f'{r["label"]} {r["share"]:.0f}% documented of {r["total"]}' for r in rows) + '.'),
+        'why': 'A 100% bar per question compares the mix across questions of different sizes; sorting by the documented share puts the firmest answers first, and the count beside each share shows its base.',
+    }
 
 
-# ------------------------------------------------------------------------------------------------ table equivalents and CSV
-def table(head, rows, cls='eqt', caption=''):
-    th = ''.join(f'<th scope="col">{esc(h)}</th>' for h in head)
+# ------------------------------------------------------------------------------------------------ equivalents (tables) and CSV
+def table(head, rows, caption='', num_cols=()):
+    th = ''.join(f'<th scope="col">{tx(h)}</th>' for h in head)
     body = []
     for r in rows:
         cells = []
         for j, c in enumerate(r):
             if j == 0:
-                cells.append(f'<th scope="row">{esc(c)}</th>')
+                cells.append(f'<th scope="row">{tx(c)}</th>')
             else:
-                cells.append(f'<td data-label="{esc(head[j])}"><span class="tl">{esc(head[j])}</span>{esc(c)}</td>')
+                cls = ' class="n"' if j in num_cols else ''
+                cells.append(f'<td{cls}><span class="tl">{tx(head[j])}</span>{tx(c)}</td>')
         body.append('<tr>' + ''.join(cells) + '</tr>')
-    cap = f'<caption>{esc(caption)}</caption>' if caption else ''
-    return f'<div class="tbl"><table class="{cls}">{cap}<thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
-
-
-def num_cell(v):
-    return pct(v) if isinstance(v, float) and not float(v).is_integer() else str(int(v)) if isinstance(v, (int, float)) else str(v)
+    cap = f'<caption>{tx(caption)}</caption>' if caption else ''
+    return f'<div class="tbl"><table class="eqt">{cap}<thead><tr>{th}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
 
 
 def eq_s01():
-    rs = rows_of('stock-trading-ban')
-    return table(['Group', 'Measure', 'Value'], [[r['group'], r['measure'], r['value']] for r in rs], caption='Survey shares and votes')
+    return table(['Group', 'Measure', 'Value'], [[r['group'], r['measure'], r['value']] for r in rows_of('stock-trading-ban')], 'Survey shares and votes', (2,))
 
 
 def eq_s02():
     rs = sorted(rows_of('child-poverty-spm'), key=lambda r: (r['year'], r['measure'], r['comparable_with'] != 'earlier'))
-    out = []
-    for r in rs:
-        est = {'both': '', 'earlier': 'joins earlier years', 'later': 'joins later years'}[r['comparable_with']]
-        out.append([r['year'], 'Supplemental' if r['measure'] == 'spm' else 'Official', pct(r['percent']),
-                    pct(r['moe_pct']) if r['moe_pct'] not in ('', None) else 'not given', est])
-    return table(['Year', 'Measure', 'Percent of children', 'Margin of error, points', 'Break-year estimate'], out,
-                 caption='Children under 18 in poverty')
+    out = [[r['year'], 'Supplemental' if r['measure'] == 'spm' else 'Official', pct(r['percent']),
+            pct(r['moe_pct']) if r['moe_pct'] not in ('', None) else 'not given',
+            {'both': '', 'earlier': 'joins earlier years', 'later': 'joins later years'}[r['comparable_with']]] for r in rs]
+    return table(['Year', 'Measure', 'Percent of children', 'Margin of error, points', 'Break-year estimate'], out, 'Children under 18 in poverty', (2, 3))
 
 
 def eq_s03():
-    rs = rows_of('rule-changes-by-instrument')
     return table(['Instrument', 'All', 'Away from voters', 'Toward voters', 'Kept existing rules', 'Mixed', 'Pending'],
                  [[r['key'], r['value'], r['away from voters'], r['toward voters'], r['voters kept existing rules'], r['mixed'], r['pending']]
-                  for r in rs], caption='Rule changes by instrument and direction')
+                  for r in rows_of('rule-changes-by-instrument')], 'Rule changes by instrument and direction', (1, 2, 3, 4, 5, 6))
 
 
 def eq_s04():
-    out = []
-    for a, n in AGES:
-        x, y = turnout(a, 2020), turnout(a, 2024)
-        out.append([n, pct(x['voted_pct']), pct(y['voted_pct']), change_words(x['voted_pct'], y['voted_pct'], True)])
-    return table(['Age group', '2020', '2024', 'Change'], out, caption='Reported voting among citizens, percent')
+    out = [[n, pct(turnout(a, 2020)['voted_pct']), pct(turnout(a, 2024)['voted_pct']), change_words(turnout(a, 2020)['voted_pct'], turnout(a, 2024)['voted_pct'], True)] for a, n in AGES]
+    return table(['Age group', '2020', '2024', 'Change'], out, 'Reported voting among citizens, percent', (1, 2))
 
 
 def eq_s05():
-    out = []
     years = sorted({r['year'] for r in rows_of('homeownership-by-race')})
+    out = []
     for yr in years:
-        row = [yr]
-        for grp, _ in HGROUPS:
-            seg = [r for s in home_segments(grp) for r in s if r['year'] == yr]
-            row.append(pct(seg[0]['rate_pct']) if seg else '')
-        out.append(row)
-    return table(['Year'] + [n for _, n in HGROUPS], out, caption='Homeownership rate, percent. 2002 uses the value revised to 2000 Census controls; '
-                 'Black and non-Hispanic White rates before 2003 use the older race categories.')
+        for variant in (['original', 'revised_2000_census'] if yr == 2002 else [None]):
+            row = [f'{yr}, {"original" if variant == "original" else "revised to 2000 Census counts"}' if variant else yr]
+            for grp, _ in HGROUPS:
+                m = [r for r in rows_of('homeownership-by-race') if r['group'] == grp and r['year'] == yr and (variant is None or r['series_variant'] == variant)]
+                row.append(pct(m[0]['rate_pct']) if m else '')
+            out.append(row)
+    return table(['Year'] + [n for _, n in HGROUPS], out, 'Homeownership rate, percent. Black and non-Hispanic White rates before 2003 use the older race categories.', (1, 2, 3, 4))
 
 
 def eq_s06():
-    rows = rows_of('scenarios-2030')
     out = []
-    for r in rows:
+    for r in rows_of('scenarios-2030'):
         for f, n in FAMS:
             out.append([f'{r["key"]}. {r["name"]}', n, r[f], CLASS_WORD[r[f + '_class']], r[f + '_why'] or 'Same reasoning as scenario ii'])
-    return table(['Scenario', 'Outcome family', 'Direction, atlas\'s words', 'Studio\'s reading', 'Why, atlas\'s words'], out,
-                 caption='Eight scenarios, four outcome families')
+    assum = [[f'{r["key"]}. {r["name"]}', '; '.join(r['assumptions'])] for r in rows_of('scenarios-2030')]
+    return (table(['Scenario', 'Outcome family', "Direction, atlas's words", "Oath & Action's reading", "Why, atlas's words"], out, 'Eight scenarios, four outcome families') +
+            table(['Scenario', "Assumptions, atlas's words"], assum, 'What each scenario assumes'))
 
 
 def eq_s07():
-    rs = rows_of('rcv-bans')
     return table(['State', 'Status', 'Enacted', 'Law', 'Scope, as the source describes it'],
-                 [[r['name'], r['status'], date_words(r['enacted_date']) if r['enacted_date'] else '', r['measure'] or '', r['scope_note'] or '']
-                  for r in rs], caption='State laws on ranked-choice voting, as of November 2026')
+                 [[r['name'], r['status'], date_words(r['enacted_date']) if r['enacted_date'] else '', r['measure'] or '', r['scope_note'] or ''] for r in rows_of('rcv-bans')],
+                 'State laws on ranked-choice voting, as of November 2026')
 
 
 def eq_s08():
-    rs = sorted(rows_of('rule-changes'), key=lambda r: (r['date'], r['key']))
     return table(['Record', 'Date', 'Where', 'Direction', 'Instrument', 'What changed'],
                  [[r['key'] + ('' if r['verified'] else ' (source not checked by the atlas)'), date_words(r['date']), r['jurisdiction'],
-                   DIR_WORD[r['direction']], r['instrument'], r['rule']] for r in rs], caption='The repair log, 64 changes')
+                   DIR_WORD[r['direction']], r['instrument'], r['rule']] for r in RL_ROWS], f'The repair log, {RL_N} changes')
 
 
 def eq_s09():
-    rs = rows_of('history-events')
+    th = {t['id']: t for t in DS['history-events']['threads']}
     return table(['Event', 'Date', 'Thread', 'What happened', 'Mechanism'],
-                 [[r['key'], date_words(r['date']), r['thread_label'], r['title'], r['mechanism']] for r in rs], caption='24 documented events')
+                 [[r['key'], date_words(r['date']), f'{r["thread_label"]}: {th[r["thread"]]["question"]}', r['title'], r['mechanism']] for r in rows_of('history-events')],
+                 '24 documented events')
 
 
 def eq_s10():
     rs = sorted(rows_of('claims-by-grade'), key=lambda r: (-r['documented'] / r['value'], r['key']))
     return table(['Question', 'Documented', 'Well supported', 'Plausible', 'Contested', 'All claims', 'Documented share'],
-                 [[f'{r["key"]} {r["title"]}', r['documented'], r['well-supported'], r['plausible'], r['contested'], r['value'],
-                   f'{100 * r["documented"] / r["value"]:.0f}%'] for r in rs], caption='Claims by evidence grade')
+                 [[f'{r["key"]} {r["title"]}: {r["question"]}', r['documented'], r['well-supported'], r['plausible'], r['contested'], r['value'],
+                   f'{100 * r["documented"] / r["value"]:.0f}%'] for r in rs], 'Claims by evidence grade. Documented: on the public record; well supported: strong research evidence; plausible: some evidence; contested: evidence disputed.', (1, 2, 3, 4, 5, 6))
 
 
-CSV_COLS = {
-    'S01': ['key', 'group', 'measure', 'value'],
-    'S02': ['key', 'year', 'measure', 'series_variant', 'comparable_with', 'percent', 'moe_pct', 'source_table'],
-    'S03': ['key', 'value', 'away from voters', 'toward voters', 'voters kept existing rules', 'mixed', 'pending'],
-    'S04': ['key', 'year', 'age_group', 'base', 'voted_pct'],
-    'S05': ['key', 'year', 'group', 'race_definition', 'series_variant', 'rate_pct', 'moe_pct'],
-    'S06': ['key', 'name', 'DQ', 'GE', 'EP', 'EQ', 'DQ_class', 'GE_class', 'EP_class', 'EQ_class'],
-    'S07': ['key', 'name', 'status', 'scope', 'instrument', 'enacted_date', 'measure', 'scope_note'],
-    'S08': ['key', 'date', 'jurisdiction', 'direction', 'instrument', 'instrument_group', 'rule', 'verified', 'source_url'],
-    'S09': ['key', 'date', 'thread_label', 'title', 'mechanism', 'source_text'],
-    'S10': ['key', 'title', 'documented', 'well-supported', 'plausible', 'contested', 'value'],
-}
+# ------------------------------------------------------------------------------------------------ the registry
+CHARTS = {}
 
 
-def csv_rows(sid):
-    did = SPECS[sid]['dataset']
-    rs = rows_of(did)
-    if sid == 'S02':
-        pass
-    elif sid == 'S04':
-        keep = {turnout(a, y)['key'] for a, _ in AGES for y in (2020, 2024)}
-        rs = [r for r in rs if r['key'] in keep]
-    elif sid == 'S05':
-        keep = {r['key'] for g_, _ in HGROUPS for s in home_segments(g_) for r in s}
-        rs = [r for r in rs if r['key'] in keep]
+def register_chart(cid, dataset, gen=None, html_gen=None, adapter=None, table=None, csv_cols=None, csv_filter=None, readout=None, size_note=None):
+    """Add a chart to the kit: one call, and the module, equivalents, downloads and page pick it up."""
+    CHARTS[cid] = {'dataset': dataset, 'gen': gen, 'html': html_gen, 'adapter': adapter, 'table': table, 'csv_cols': csv_cols,
+                   'csv_filter': csv_filter, 'readout': readout,
+                   'size_note': size_note or 'Column module, 866 px; artboards 866, 560, 358 and 328 px'}
+
+
+def csv_text(cid):
+    c = CHARTS[cid]
+    rs = rows_of(c['dataset'])
+    if c['csv_filter']:
+        rs = [r for r in rs if c['csv_filter'](r)]
     buf = io.StringIO()
     w = csv.writer(buf)
-    w.writerow(CSV_COLS[sid])
+    w.writerow(c['csv_cols'])
     for r in rs:
-        w.writerow([r.get(c, '') for c in CSV_COLS[sid]])
+        w.writerow([r.get(k, '') for k in c['csv_cols']])
     return buf.getvalue()
 
 
-# ------------------------------------------------------------------------------------------------ the ten modules' copy
-def src_text(sid):
-    s = DS[SPECS[sid]['dataset']]['source_line']
+_S04_KEYS = {turnout(a, y)['key'] for a, _ in AGES for y in (2020, 2024)}
+register_chart('S01', 'stock-trading-ban', big_number, adapter=spec_s01, table=eq_s01, csv_cols=['key', 'group', 'measure', 'value'])
+register_chart('S02', 'child-poverty-spm', line_events, adapter=spec_s02, table=eq_s02,
+               csv_cols=['key', 'year', 'measure', 'series_variant', 'comparable_with', 'percent', 'moe_pct', 'source_table'])
+register_chart('S03', 'rule-changes-by-instrument', ranked_bar, adapter=spec_s03, table=eq_s03,
+               csv_cols=['key', 'value', 'away from voters', 'toward voters', 'voters kept existing rules', 'mixed', 'pending'])
+register_chart('S04', 'turnout-by-age', dumbbell, adapter=spec_s04, table=eq_s04, csv_cols=['key', 'year', 'age_group', 'base', 'voted_pct'],
+               csv_filter=lambda r: r['key'] in _S04_KEYS)
+register_chart('S05', 'homeownership-by-race', small_multiples, adapter=spec_s05, table=eq_s05,
+               csv_cols=['key', 'year', 'group', 'race_definition', 'series_variant', 'rate_pct', 'moe_pct'])
+register_chart('S06', 'scenarios-2030', html_gen=comparison_table, adapter=spec_s06, table=eq_s06,
+               csv_cols=['key', 'name', 'DQ', 'GE', 'EP', 'EQ', 'DQ_class', 'GE_class', 'EP_class', 'EQ_class'],
+               size_note='Column module, 866 px; one HTML table that reflows under 640 px')
+register_chart('S07', 'rcv-bans', tile_map, adapter=spec_s07, table=eq_s07,
+               csv_cols=['key', 'name', 'status', 'scope', 'instrument', 'enacted_date', 'measure', 'scope_note'],
+               readout='Tap or point at a state to read its law. The table lists every state.')
+register_chart('S08', 'rule-changes', html_gen=unit_ledger, adapter=spec_s08, table=eq_s08,
+               csv_cols=['key', 'date', 'jurisdiction', 'direction', 'instrument', 'instrument_group', 'rule', 'verified', 'source_url'],
+               readout='Tap or point at a square to read its record. The table lists every change.',
+               size_note='Column module, 866 px; one HTML grid of 24 px units that reflows')
+register_chart('S09', 'history-events', strip_timeline, adapter=spec_s09, table=eq_s09,
+               csv_cols=['key', 'date', 'thread_label', 'title', 'mechanism', 'source_text'],
+               readout='Tap or point at a dot to read the event. The register below lists every event.')
+register_chart('S10', 'claims-by-grade', share_bars, adapter=spec_s10, table=eq_s10,
+               csv_cols=['key', 'title', 'documented', 'well-supported', 'plausible', 'contested', 'value'])
+ORDER = list(CHARTS)
+_SPEC_CACHE = {}
+
+
+def spec(cid):
+    if cid not in _SPEC_CACHE:
+        _SPEC_CACHE[cid] = CHARTS[cid]['adapter']()
+    return _SPEC_CACHE[cid]
+
+
+def src_text(cid):
+    s = DS[CHARTS[cid]['dataset']]['source_line']
     return s[len('Source: '):] if s.startswith('Source: ') else s
 
 
-RL = DS['rule-changes']
-CODING_LINE = ("Directions are the atlas's own codes: a change counts toward voters when it widens who can vote or have a ballot counted, "
-               "weighs votes more equally, opens the contest that decides the seat, limits or shows political money, strengthens an "
-               "independent check, or adds automatic household security; away from voters means the reverse.")
-
-META = {
-    'S01': dict(gen=g_s01, kit='big_number()', table=eq_s01,
-                title='The Senate fell 7 votes short of taking up a stock-trading ban that 88% of Democrats and 87% of Republicans favored in 2023.',
-                measure='Registered voters who favored banning stock trading by members of Congress, percent, United States, May 2023; House and Senate votes on H.R. 7008, July and September 2026',
-                index='Atlas sources N40, K1908, W035',
-                notes=['Each chamber\'s bar holds every vote cast there: 430 in the House and 100 in the Senate. The 86% for all registered voters comes from the survey\'s own release.'],
-                why='A big number answers yes at a glance; the party bars beside it show the two figures one point apart, and the votes show what Congress did three years later.'),
-    'S02': dict(gen=g_s02, kit='line_events()', table=eq_s02,
-                title='Child poverty under the Supplemental Poverty Measure fell to 5.1% in 2021, the year the expanded child tax credit paid out, and was 12.0% in 2022.',
-                measure='Children under 18 below the poverty line, percent, United States, 2009 to 2025; Supplemental Poverty Measure in Charcoal, official measure in Stone',
-                index='Census P60-290 Tables 3 and 8; atlas RL15, RL16',
-                notes=['The Census Bureau describes a change between two years; it does not credit one policy with it.',
-                       'Figures for 2019 to 2024 include the Bureau\'s August 2026 revision. The atlas prints the first-published 9.7%, 5.2% and 13.4% for 2020, 2021 and 2024; this table reads 9.6%, 5.1% and 13.5%.',
-                       'In 2013, 2017 and 2019 the Bureau gives two estimates, one that joins the earlier years and one that joins the later years, so the lines break there. The official measure counts pretax money income and leaves out tax credits.'],
-                why='A line shows the fall to 2021 and the climb back; the official measure in Stone shows what the supplemental measure counts, and the breaks show where the Census Bureau changed its method.'),
-    'S03': dict(gen=g_s03, kit='ranked_bar()', table=eq_s03,
-                title='State statutes moved the rules away from voters in 9 of 11 logged changes; ballot initiatives did so in none of 17.',
-                measure='Rule changes in the atlas\'s repair log by how they were made, split by the atlas\'s direction code, United States, August 1965 to the November 3, 2026 ballot',
-                index='Repair log RL01 to RL64',
-                notes=[CODING_LINE,
-                       'Five instruments with one change each are grouped: an agency rule, an executive action and an executive order as executive or agency action; a city ordinance and a council funding vote as local law or funding vote. The grouping is the studio\'s; the instruments are the atlas\'s.'],
-                why='Seven instruments ranked by count answer who made the most changes; splitting each bar by the atlas\'s direction code shows which way each instrument moved the rules.'),
-    'S04': dict(gen=g_s04, kit='dumbbell()', table=eq_s04,
-                title='Reported turnout in 2024 ran from 47.7% of citizens 18 to 24 to 74.7% of those 65 and over; every group under 65 fell from 2020.',
-                measure='Citizens who reported voting in the November presidential election, percent, by age, United States, 2020 and 2024; the scale starts at 40%',
-                index='Census Table A-1',
-                notes=['These are the shares of citizens who told the Census Bureau\'s November survey that they voted. Reported voting runs higher than counted ballots.'],
-                why='Two dots per age group show the level and the change at once; printed values and the change in words carry the numbers without a grid.'),
-    'S05': dict(gen=g_s05, kit='small_multiples()', table=eq_s05,
-                title='The homeownership gap between non-Hispanic White and Black households was 29.6 points in 2025, wider than the 27.3 points of 2003.',
-                measure='Owner households as a percent of all households in each group, by race and ethnicity of householder, United States, 1994 to 2025; one scale, starting at 20%',
-                index='Census HVS Table 22',
-                notes=['Race categories changed in 2003, so the Black and non-Hispanic White lines break there. 2002 uses the value the Census Bureau revised to 2000 Census controls.',
-                       'The 2025 average leaves out October 2025, when no data were collected. The latest quarter, the third quarter of 2026, reads 75.1% for non-Hispanic White and 44.4% for Black householders.'],
-                why='One panel per group on one scale lets a reader compare each group with the other three, which sit behind it in Stone.'),
-    'S06': dict(gen=None, html=g_s06_html, kit='comparison_table()', table=eq_s06,
-                title='Two of eight scenarios would move all four outcome families up by 2036: the federal package and capacity first.',
-                measure='Direction each outcome family would take by 2036 if a scenario\'s assumptions hold, in the atlas\'s words, United States, from a 2026 baseline',
-                index='Scenarios i to iv-e',
-                notes=['Glyphs and tints are the studio\'s reading of the atlas\'s words, which print in every cell. Capacity first reaches "up" on economic performance through "same as scenario ii".',
-                       'These are conditional directions with no forecast and no odds. The four families are read one at a time and never added together.'],
-                why='A table keeps the atlas\'s words in every cell; a glyph and a tint let a reader scan the up and down moves across eight rows without red or blue.'),
-    'S07': dict(gen=g_s07, kit='tile_map()', table=eq_s07,
-                title='Nineteen states ban ranked-choice voting, 17 of them in every election, as of November 2026.',
-                measure='State laws that prohibit ranked-choice voting, by scope and year enacted, 50 states and DC, as of November 2026',
-                index='Atlas repair log RL47',
-                notes=['Ballotpedia is a secondary source. The atlas cites the National Conference of State Legislatures, whose page refused an automated read; both list the same 19 states, as does the atlas\'s repair log row RL47.'],
-                why='Equal tiles give every state the same weight and room for its code and the year of its ban; true shapes would hide the small eastern states.'),
-    'S08': dict(gen=None, html=g_s08_html, kit='unit_ledger()', table=eq_s08,
-                title='Seventeen of the 24 logged changes that moved rules away from voters came in 2025 and 2026.',
-                measure='Each square is one dated change in the atlas\'s repair log, numbered by its record, by the atlas\'s direction code, United States, August 1965 to the November 3, 2026 ballot',
-                index='Repair log RL01 to RL64',
-                notes=[CODING_LINE + ' The split at January 1, 2025 is the studio\'s.'],
-                coding=True,
-                why='One square per record lets a reader count every change and find each one by number; two panels split at 2025 show when the changes away from voters came.'),
-    'S09': dict(gen=g_s09, kit='timeline()', table=eq_s09,
-                title='The atlas traces 24 documented rule changes on four threads, from the Fifteenth Amendment in 1870 to Trump v. Slaughter in 2026.',
-                measure='Dated changes in the atlas\'s history, by thread, United States, February 3, 1870 to June 29, 2026',
-                index='Events E01 to E24, studio keys',
-                notes=['Every event is documented: each rests on a statute, ruling, constitutional text or official record. The keys E01 to E24 are the studio\'s, in date order. The list gives each event\'s lead name; the table gives the full entry, with the events the atlas pairs with it.'],
-                why='Four lanes on one true time scale show when each thread changed; each dot carries its record key, and the list under the lane names every event in date order.'),
-    'S10': dict(gen=g_s10, kit='evidence_mix()', table=eq_s10,
-                title='The public record backs 74% of the atlas\'s 433 claims, from 96% for drinking water to 59% for algorithms.',
-                measure='Share of each everyday question\'s claims by evidence grade, percent of claims, atlas claims register, United States, checked through October 15, 2026',
-                index='Questions PW01 to PW16',
-                notes=['Fills follow the atlas\'s evidence lines: solid for documented and well supported, dashed for plausible, dash-dot for contested. A claim\'s grade covers that claim, not the whole answer.'],
-                why='A 100% bar per question compares the mix across questions of different sizes; sorting by the documented share puts the firmest answers first.'),
-}
-READOUT = {'S07': 'Point at a state to read its law. The table lists every state.',
-           'S08': 'Point at a square to read its record. The table lists every change.',
-           'S09': 'Point at a dot to read the event. The table lists every event.',
-           'S10': 'The table lists every count.'}
-
-
 # ------------------------------------------------------------------------------------------------ the module
-def artboards(sid, uid, g, sizes):
-    m = META[sid]
-    out = []
-    first_label = ''
-    for art, W in sizes:
-        body, H, defs, label = m['gen'](W, f'{uid}-{art}', g)
-        first_label = first_label or label
-        out.append(svg(uid, art, W, H, body, label, defs))
-    return ''.join(out), first_label
+WORD_RX = re.compile(r"[A-Za-z][A-Za-z’'-]{3,}")
 
 
-def module(sid, view, ground, mode='panel', inst='', anat=False, red=True, hl=2, extra_cls='', sizes=None):
-    m = META[sid]
-    spec = SPECS[sid]
-    did = spec['dataset']
-    uid = f'{view}{inst}-{sid.lower()}'
+def coverage(cid, strings, text):
+    """F15: every word drawn inside an SVG with role="img" appears in its name or its equivalent."""
+    hay = typo(text).lower().replace('’', "'")
+    for s in strings:
+        for w in WORD_RX.findall(typo(s)):
+            if w.lower().replace('’', "'") not in hay:
+                PROBLEMS.append(f'{cid}: "{w}" is drawn but not in the image name or the equivalent ("{s[:40]}")')
+                break
+
+
+def module(cid, view, ground, mode='panel', inst='', anat=False, red=True, hl=2, extra_cls=''):
+    c, s = CHARTS[cid], spec(cid)
+    sp = SPECS[cid]
+    did = c['dataset']
+    uid = f'{view}{inst}-{cid.lower()}'
     g = {'ground': ground, 'red': red}
     sm = (lambda L: f'<span class="slotmark" aria-hidden="true">{L}</span>') if anat else (lambda L: '')
-    if m.get('html'):
-        fig, alt = m['html'](uid, g), ''
+    strings = []
+    if c['html']:
+        fig = c['html'](uid, s) if cid != 'S06' else c['html'](uid, s, hl)
     else:
-        fig, alt = artboards(sid, uid, g, sizes or (ARTS if mode == 'panel' else [('s', 680)]))
-    ev = spec['evidence']
-    idx = f'<p class="idx">{esc(m["index"])}</p>'
-    head = (f'<div class="slot sa" data-slot="A">{sm("A")}<p class="ev" data-role="evidence-label">{esc(ev)}</p>{idx}</div>'
-            f'<div class="slot sb" data-slot="B">{sm("B")}<h{hl} class="mt" id="{uid}-t" data-role="title">{esc(m["title"])}</h{hl}></div>'
-            f'<div class="slot sc" data-slot="C">{sm("C")}<p class="ms" data-role="measure">{esc(m["measure"])}</p></div>')
-    notes = ''.join(f'<p>{esc(n)}</p>' for n in m['notes'])
-    if m.get('coding'):
-        notes += (f'<details class="cn"><summary>Read the atlas\'s full coding note</summary><p>{esc(RL["coding_note"])}</p></details>')
-    src = (f'<div class="slot sg2" data-slot="G">{sm("G")}<p class="src" data-role="source"><span class="s1">Source: {esc(src_text(sid))}</span>'
-           f'<span class="s2">Chart: Oath &amp; Action</span></p></div>')
+        arts = CT['artboards'] if mode == 'panel' else [('s', CT['still'])]
+        out = []
+        for art, W in arts:
+            a = Art(W, f'{cid} {art}', g)
+            c['gen'](a, s)
+            strings.extend(a.strings)
+            out.append(a.svg(uid, art, s['label'] + (' The Table button lists every value and note in the chart.' if mode == 'panel' else '')))
+        fig = ''.join(out)
+        if cid == 'S09':
+            fig += event_register(s, hl + 1)
+    ev = sp['evidence']
+    idx = f'<p class="idx">{tx(s["index"])}</p>' if s.get('index') else ''
+    head = (f'<div class="slot sa" data-slot="A">{sm("A")}<p class="ev" data-role="evidence-label">{tx(ev)}<span class="gw"> · {tx(s["kind_words"])}</span></p>{idx}</div>'
+            f'<div class="slot sb" data-slot="B">{sm("B")}<h{hl} class="mt" id="{uid}-t" tabindex="-1" data-role="title">{tx(s["title"])}</h{hl}></div>'
+            f'<div class="slot sc" data-slot="C">{sm("C")}<p class="ms" data-role="measure">{tx(s["measure"][0])}</p>'
+            + ''.join(f'<p class="ms ms2">{tx(m)}</p>' for m in s['measure'][1:]) + '</div>')
+    strongest = 'brightest fill' if ground == 'charcoal' else 'darkest ink'   # the subject's mark, named for this ground
+    notes_list = [n.replace('{strongest}', strongest) if isinstance(n, str) else n
+                  for n in list(s.get('html_notes', [])) + list(s.get('notes', []))]
+    notes = ''.join(f'<p><strong>{tx(n[0])}</strong> {tx(n[1])}</p>' if isinstance(n, tuple) else f'<p>{tx(n)}</p>' for n in notes_list)
+    if DS[did].get('required_text'):
+        notes += ''.join(f'<p class="disc"><strong>Disclosure:</strong> {tx(t)}</p>' for t in DS[did]['required_text'])
+    fname = f'{BUILD_DATE}_Oath-And-Action-{cid}-{slug(DS[did]["title"])}'
+    src = (f'<div class="slot sg2" data-slot="G">{sm("G")}<p class="src" data-role="source"><span class="s1">Source: {tx(src_text(cid))}</span>'
+           f'<span class="s2">Chart: Oath &amp; Action · <a href="#how-to-read">How to read our charts</a></span></p></div>')
+    drawn_list = ''.join(f'<li>{tx(d)}</li>' for d in s.get('drawn', []))
+    in_chart = (f'<p class="eqh">Labels and notes in the chart</p><ul class="eql">{drawn_list}</ul>' if drawn_list else '')
+    equiv = (f'<p class="eqh">Every value in the chart. The notes and the source line stay below.</p>{c["table"]()}{in_chart}')
     if mode == 'panel':
-        has_svg = not m.get('html')
+        coverage(cid, strings, s.get('label', '') + ' ' + re.sub(r'<[^>]+>', ' ', html.unescape(equiv)))
+        has_svg = not c['html']
         dls = (f'<div class="dls"><span class="dlh">Download</span>'
-               f'<button type="button" class="dl" data-dl="csv" data-for="{sid}" aria-label="Download the {sid} data as CSV">CSV</button>'
-               + (f'<button type="button" class="dl" data-dl="svg" data-for="{sid}" aria-label="Download this chart as SVG">SVG</button>' if has_svg else '')
+               f'<button type="button" class="dl" data-dl="csv" data-for="{cid}" data-file="{fname}" aria-label="Download the {cid} data as CSV">CSV</button>'
+               + (f'<button type="button" class="dl" data-dl="svg" data-for="{cid}" data-file="{fname}" aria-label="Download {cid} as SVG">SVG</button>' if has_svg else '')
                + '</div>')
-        ctl = (f'<div class="slot sd" data-slot="D">{sm("D")}<div class="ctl"><div class="sw" role="group" aria-label="Show {sid} as">'
-               f'<button type="button" data-sw="c" aria-pressed="true" aria-controls="{uid}-pc">Chart</button>'
-               f'<button type="button" data-sw="t" aria-pressed="false" aria-controls="{uid}-pt">Table</button></div>{dls}</div></div>')
-        ro = f'<p class="readout" aria-hidden="true">{esc(READOUT[sid])}</p>' if sid in READOUT and sid != 'S10' else ''
+        ctl = (f'<div class="slot sd" data-slot="D">{sm("D")}<div class="ctl"><div class="sw" role="group" aria-label="Show {cid} as a chart or a table">'
+               f'<button type="button" data-sw="c" aria-pressed="true" aria-controls="{uid}-pc" aria-label="Show the {cid} chart">Chart</button>'
+               f'<button type="button" data-sw="t" aria-pressed="false" aria-controls="{uid}-pt" aria-label="Show the {cid} table">Table</button></div>{dls}</div></div>')
+        ro = f'<p class="readout" aria-hidden="true">{tx(c["readout"])}</p>' if c['readout'] else ''
         body = (f'<div class="slot se" data-slot="E">{sm("E")}<div class="pane pane-c" id="{uid}-pc">{fig}{ro}</div>'
-                f'<div class="pane pane-t" id="{uid}-pt" hidden data-role="equivalent">'
-                f'<p class="eqh">Every value in the chart, with its notes. The source line stays below.</p>{m["table"]()}</div></div>')
-        return (f'<figure class="mod {extra_cls}" id="{uid}" data-spec="{sid}" data-dataset="{did}" data-evidence="{esc(ev)}" '
-                f'aria-labelledby="{uid}-t">{head}{ctl}{body}<div class="slot sf" data-slot="F">{sm("F")}<div class="notes">{notes}</div></div>'
-                f'{src}</figure>')
-    # still: no controls, no readout; the alt text travels as the equivalent
-    alt_txt = re.sub(r' The Table button lists every (value|change|event|state|count)\.$', '', alt or m['title'])
-    alt_txt += ' Source: ' + src_text(sid)
+                f'<div class="pane pane-t" id="{uid}-pt" hidden data-role="equivalent">{equiv}</div></div>')
+        return (f'<figure class="mod {extra_cls}" id="{uid}" data-spec="{cid}" data-dataset="{did}" data-evidence="{tx(ev)}" '
+                f'data-title="{at(s["title"])}" data-desc="{at(s.get("label", s["title"]))}" aria-labelledby="{uid}-t">{head}{ctl}{body}'
+                f'<div class="slot sf" data-slot="F">{sm("F")}<div class="notes">{notes}</div></div>{src}</figure>')
+    alt_txt = s.get('label', s['title']) + ' Source: ' + src_text(cid)
     body = f'<div class="slot se" data-slot="E">{sm("E")}<div class="pane">{fig}</div></div>'
     still_note = '<p>Table and data: with the interactive version of this chart.</p>'
-    return (f'<figure class="mod still {extra_cls}" id="{uid}" data-spec="{sid}" data-dataset="{did}" data-evidence="{esc(ev)}" '
+    # a still is a fixed-size image: it carries its own labeled scroll box, so it needs no outer wrapper on a narrow screen
+    return (f'<div class="stillbox" role="region" tabindex="0" aria-label="The {cid} still at true size, {CT["still"]} pixels wide. On a narrow screen, scroll inside the box.">'
+            f'<figure class="mod still {extra_cls}" id="{uid}" data-spec="{cid}" data-dataset="{did}" data-evidence="{tx(ev)}" '
             f'aria-labelledby="{uid}-t">{head}{body}<div class="slot sf" data-slot="F">{sm("F")}<div class="notes">{notes}{still_note}</div></div>'
-            f'{src}<div class="alt" data-role="equivalent"><p class="alt-h">Alt text, sent with the image</p><p>{esc(alt_txt)}</p></div></figure>')
+            f'{src}<div class="alt" data-role="equivalent"><p class="alt-h">Alt text, sent with the image</p><p>{tx(alt_txt)}</p></div></figure></div>')
 
 
-def strip(sid, size='Column module, 866 px; artboards 866, 560 and 328 px'):
-    m, s = META[sid], SPECS[sid]
-    return (f'<aside class="strip" aria-label="Studio note on {sid}"><p class="sn-h">Studio note for reviewers</p>'
-            f'<p class="sn-id">{sid} · {esc(s["form"])}</p>'
-            f'<p><span class="k">Reader question.</span> {esc(s["reader_question"])}</p>'
-            f'<p><span class="k">Why this form.</span> {esc(m["why"])}</p>'
-            f'<p class="sn-kit"><span class="k">Kit.</span> Drawn by {esc(m["kit"])}. {esc(size)}.</p></aside>')
+def strip(cid):
+    c, s, sp = CHARTS[cid], spec(cid), SPECS[cid]
+    fn = (c['gen'] or c['html']).__name__
+    return (f'<aside class="strip" aria-label="Studio note on {cid}"><p class="sn-h">Studio note for reviewers</p>'
+            f'<p class="sn-id">{cid} · {tx(sp["form"])}</p>'
+            f'<p><span class="k">Reader question.</span> {tx(sp["reader_question"])}</p>'
+            f'<p><span class="k">Why this form.</span> {tx(s["why"])}</p>'
+            f'<p class="sn-kit"><span class="k">Kit.</span> register_chart(‘{cid}’, gen={fn}, adapter=spec_{cid.lower()}). {tx(c["size_note"])}.</p></aside>')
 
 
-def spec_row(sid, view, ground, **kw):
-    size = {'S06': 'Column module, 866 px; one HTML table that reflows under 640 px',
-            'S08': 'Column module, 866 px; one HTML grid of 28 px units that stacks its two panels under 700 px'}.get(
-        sid, 'Column module, 866 px; artboards 866, 560 and 328 px')
-    return f'<div class="spec-row">{module(sid, view, ground, **kw)}{strip(sid, size)}</div>'
+def spec_row(cid, view, ground):
+    return f'<div class="spec-row">{module(cid, view, ground)}{strip(cid)}</div>'
 
 
-# ------------------------------------------------------------------------------------------------ identity
-def wordmark(height, master, cls):
+# ------------------------------------------------------------------------------------------------ identity and views
+def wordmark(height, master, cls, signature=False):
     src = (ROOT / 'work/build/assets/identity/wordmark' / master).read_text()
     vb = re.search(r'viewBox="([^"]+)"', src).group(1).split()
     w = float(vb[2]) * height / float(vb[3])
     src = re.sub(r'<title>.*?</title>', '', src, flags=re.S)
-    src = src.replace('<svg ', f'<svg class="{cls}" data-view="wordmark" width="{w:.0f}" height="{height}" role="img" '
-                               f'aria-label="Oath &amp; Action" ', 1)
-    return src
+    sig = ' data-red="signature"' if signature else ''
+    return src.replace('<svg ', f'<svg class="{cls}" data-view="wordmark"{sig} width="{w:.0f}" height="{height}" role="img" aria-label="Oath &amp; Action" ', 1)
 
 
 VIEWS = [('white', 'White'), ('newsprint', 'Newsprint'), ('dark', 'Charcoal'), ('social', 'Social card'), ('system', 'System')]
-VIEW_GROUND = {'white': 'white', 'newsprint': 'newsprint', 'dark': 'charcoal', 'social': 'white', 'system': 'white'}
 
 
 def masthead():
-    tabs = ''.join(f'<li><a href="#{v}">{esc(t)}</a></li>' for v, t in VIEWS)
+    tabs = ''.join(f'<li><a href="#{v}">{tx(t).replace(" card", "<span class=t-more> card</span>")}</a></li>' for v, t in VIEWS)
     return ('<a class="skip" href="#main">Skip to the charts</a><header class="mast"><div class="wrap mrow">'
-            f'<a class="wm" href="#white" data-red="signature" aria-label="Oath &amp; Action, concept 03 first view">'
+            '<a class="wm" href="#white" data-red="signature" aria-label="Oath &amp; Action, concept 03 first view">'
             f'{wordmark(24, "20261028_Wordmark-24px-Master.svg", "wm24")}{wordmark(16, "20261028_Wordmark-16px-Master.svg", "wm16")}</a>'
             '<p class="run">Chart system 03 · Instrument</p>'
             f'<nav class="tabs" aria-label="Views"><ul>{tabs}</ul></nav></div></header>')
 
 
-# ------------------------------------------------------------------------------------------------ views
+HOWTO_SHORT = [('Kind and grade.', 'The label over each title names the kind of claim and how sure its evidence is.'),
+               ('Title and measure.', 'The title states the finding; the line under it gives what, where and when.'),
+               ('Dark and gray.', 'The darkest mark is what the title is about; gray marks are there for comparison.'),
+               ('Red.', 'A red mark points at the one thing the title names; it never marks a party or a side.'),
+               ('Check it.', 'Every chart has a Table button, notes and a source line.')]
+
+
+def howto_short(view):
+    items = ''.join(f'<li><strong>{tx(a)}</strong> {tx(b)}</li>' for a, b in HOWTO_SHORT)
+    return (f'<section class="howto-s" aria-labelledby="{view}-howto"><div class="hs-top"><h2 class="hs-h" id="{view}-howto">How to read these charts</h2>'
+            f'<p class="hs-more"><a href="#how-to-read">The full guide</a></p></div><ul>{items}</ul></section>')
+
+
+def module_index(view):
+    items = ''.join(f'<li><a href="#{view}-{cid.lower()}"><span class="mi-id">{cid}</span> {tx(SPECS[cid]["form"])}</a></li>' for cid in ORDER)
+    return f'<nav class="mindex" aria-label="The ten charts on this view"><ul>{items}</ul></nav>'
+
+
 def view_white():
-    links = [('newsprint', 'Newsprint', 'The same ten modules on the warm ground, from the same generators.'),
-             ('dark', 'Charcoal', 'Two modules on the dark ground, with the dark palette.'),
-             ('social', 'Social card', 'One module set as a 1080 by 1350 card.'),
-             ('system', 'System', 'The kit on one sheet: slots, sizes, type, marks, codes, palettes and rules.')]
-    lk = ''.join(f'<li><a href="#{v}"><span class="vl-t">{esc(t)}</span><span class="vl-d">{esc(d)}</span></a></li>' for v, t, d in links)
-    rows = ''.join(spec_row(s, 'white', 'white') for s in ORDER)
-    return (f'<section class="view g-white" data-view-root="white" aria-labelledby="h-white"><div class="wrap">'
-            '<header class="vhead"><p class="eyebrow">Chart system · Concept 03 · View 1 of 5, White</p>'
-            '<h1 class="display" id="h-white">Instrument</h1>'
-            '<p class="deck">Every chart here is a module with the same seven slots, in the same order, on the Signal Grid\'s 8 px rhythm. '
-            'One generator per chart form draws each module at three widths, so a builder can make the next chart from the kit without asking. '
-            'Atlas record numbers print as small index labels where they help a reader find the record, and texture or an open mark carries the '
-            'second code after color, as the atlas\'s evidence lines do. The same module works as a still image and as a panel with a '
-            'Chart and Table switch; the System view says which parts change.</p>'
-            f'<nav class="vlinks" aria-label="Other views"><ul>{lk}</ul></nav>'
-            '<p class="howto">Each chart sits in its module. The tinted panel beside it holds the studio\'s note for reviewers and sits outside the chart.</p>'
-            f'</header><div class="specs">{rows}</div></div></section>')
+    links = [('newsprint', 'Newsprint', 'The same ten modules on the warm ground.'), ('dark', 'Charcoal', 'Two modules on the dark ground.'),
+             ('social', 'Social card', 'One module set as a 1080 by 1350 card.'), ('system', 'System', 'The kit on one sheet, and the full reading guide.')]
+    lk = ''.join(f'<li><a href="#{v}"><span class="vl-t">{tx(t)}</span><span class="vl-d">{tx(d)}</span></a></li>' for v, t, d in links)
+    rows = ''.join(spec_row(c, 'white', 'white') for c in ORDER)
+    return ('<section class="view g-white" data-view-root="white" data-title="White" aria-labelledby="h-white"><div class="wrap">'
+            '<header class="vhead"><div class="vh-main"><p class="eyebrow">Chart system · Concept 03 · White</p>'
+            '<h1 class="display" id="h-white" tabindex="-1">Instrument</h1>'
+            '<p class="deck">Every chart is a module with the same seven slots, built by one function per chart form, so the next chart comes from the kit. '
+            '<span class="deck-more">Texture and open marks carry a second code after color, as the atlas’s evidence lines do, and each module works as a still image and as a panel with a Chart and Table switch.</span></p>'
+            f'<nav class="vlinks" aria-label="Other views"><ul>{lk}</ul></nav></div>{howto_short("white")}</header>'
+            f'{module_index("white")}<div class="specs">{rows}</div></div></section>')
 
 
 def view_newsprint():
-    rows = ''.join(spec_row(s, 'newsprint', 'newsprint') for s in ORDER)
-    return (f'<section class="view g-news" data-view-root="newsprint" aria-labelledby="h-news" hidden><div class="wrap">'
-            '<header class="vhead"><p class="eyebrow">View 2 of 5 · Newsprint</p>'
-            '<h1 class="headline" id="h-news">The same ten modules on Newsprint</h1>'
-            '<p class="deck">The generators are the ones that drew the White view; only the ground and its tokens change. On Newsprint, Stone context '
-            'measures 4.29:1 and Verdigris 3.37:1, the toward-voters fill stays at 5.01:1, and the one red mark in S01 takes a 1 px Charcoal keyline, '
-            'because Pillar Red alone measures 2.96:1 here. The studio note panel turns White.</p>'
-            f'</header><div class="specs">{rows}</div></div></section>')
+    rows = ''.join(spec_row(c, 'newsprint', 'newsprint') for c in ORDER)
+    return ('<section class="view g-news" data-view-root="newsprint" data-title="Newsprint" aria-labelledby="h-news" hidden><div class="wrap">'
+            '<header class="vhead"><div class="vh-main"><p class="eyebrow">Chart system · Concept 03 · Newsprint</p>'
+            '<h1 class="headline" id="h-news" tabindex="-1">The same ten modules on Newsprint</h1>'
+            '<p class="deck">The White view’s generators drew these; only the ground and its tokens change. '
+            '<span class="deck-more">On Newsprint, Stone context measures 4.29:1, the toward-voters fill 5.01:1, and the one red mark in S01 takes a 1 px Charcoal keyline, because Pillar Red alone measures 2.96:1 here.</span></p></div>'
+            f'{howto_short("newsprint")}</header>{module_index("newsprint")}<div class="specs">{rows}</div></div></section>')
 
 
 def view_dark():
-    dark_tokens = [('Named series and away from voters', '#DCD9D2', 'Newsprint'), ('Context and secondary text', '#A3A19C', 'Dim Newsprint'),
-                   ('Toward voters', '#76978F', 'Verdigris, 30% toward Newsprint'), ('Middle level and quieter context', '#878A8F', 'Stone, 35% toward Newsprint'),
-                   ('Well supported', '#A3A19C', 'Dim Newsprint'), ('Gridline, decorative', '#393C41', 'Stone, 45% toward Charcoal'),
-                   ('The headline\'s point', '#E63946', 'Pillar Red')]
-    items = ''.join(f'<li><span class="sw2" style="background:{h}"{" data-red=\"swatch\"" if h == "#E63946" else ""}></span>'
-                    f'<span><strong>{esc(j)}.</strong> {esc(n)}, {h}, {contrast(h, "#121212"):.2f}:1</span></li>' for j, h, n in dark_tokens)
+    toks = [('Named series and away from voters', 'ink', 'Newsprint'), ('Context and secondary text', 'ctx', 'Dim Newsprint'),
+            ('Toward voters', 'tow', 'Verdigris, 30% toward Newsprint'), ('Middle level', 'some', 'Stone, 35% toward Newsprint'),
+            ('Plausible fill', 'pl', 'Stone'), ('Gridline, decorative', 'grid', 'Stone, 45% toward Charcoal'), ("The headline's point", 'red', 'Pillar Red')]
+    items = ''.join(f'<li><span class="sw2" style="background:{GROUNDS["charcoal"][t]}"{" data-red=\"swatch\"" if t == "red" else ""}></span>'
+                    f'<span><strong>{tx(j)}.</strong> {tx(n)}, {GROUNDS["charcoal"][t]}, {contrast(GROUNDS["charcoal"][t], "#121212"):.2f}:1</span></li>' for j, t, n in toks)
     rows = spec_row('S01', 'dark', 'charcoal') + spec_row('S10', 'dark', 'charcoal')
-    return (f'<section class="view g-dark" data-view-root="dark" aria-labelledby="h-dark" hidden><div class="wrap">'
-            '<header class="vhead"><p class="eyebrow">View 3 of 5 · Charcoal</p>'
-            '<h1 class="headline" id="h-dark">Two modules on Charcoal</h1>'
-            '<p class="deck">On Charcoal, Newsprint carries the named series, Dim Newsprint the context, and texture '
-            'still carries the evidence grade. Text from 13 to 15 px sets one weight heavier. Lifted Prussian and lifted Verdigris sit only 0.022 '
-            'apart in lightness here, so dark charts keep to two inks and label every mark.</p>'
+    return ('<section class="view g-dark" data-view-root="dark" data-title="Charcoal" aria-labelledby="h-dark" hidden><div class="wrap">'
+            '<header class="vhead"><p class="eyebrow">Chart system · Concept 03 · Charcoal</p>'
+            '<h1 class="headline" id="h-dark" tabindex="-1">Two modules on Charcoal</h1>'
+            '<p class="deck">On Charcoal, Newsprint carries the named series, Dim Newsprint the context, and texture still carries the evidence grade. '
+            'Text from 13 to 15 px sets one weight heavier. Lifted Prussian and lifted Verdigris sit only 0.022 apart in lightness here, so dark charts keep to two inks and label every mark.</p>'
             f'<ul class="dtok">{items}</ul><p class="dtn">Contrast measured against Charcoal, #121212.</p>'
             f'</header><div class="specs">{rows}</div></div></section>')
 
@@ -1349,102 +1849,118 @@ SOCIAL = {}
 
 
 def social_card():
-    sid = 'S01'
-    m = META[sid]
-    cw = 1080 - 2 * 64
-    tl = len(wrap(m['title'], cw / 0.95, 50, 800, tight=True))  # Inter Tight at -0.03 em runs about 5% under the Inter estimate
-    ml = len(wrap(m['measure'], cw, 22))
-    sl = len(wrap('Source: ' + src_text(sid), cw, 20))
-    avail = 1350 - 2 * 64 - 40 - 36 - 54 * tl - 14 - 30 * ml - 28 - 24 - 28 * sl - 24
-    # the narrowest artboard that fills the card's width and still fits its height gives the largest type
-    W0 = next((w for w in range(440, 640, 4) if g_s01(w, 'probe', {'ground': 'newsprint'})[1] * cw / w <= avail), 600)
-    body, H, defs, label = g_s01(W0, 'social-s01-c', {'ground': 'newsprint', 'red': True})
-    scale = round(min(cw / W0, avail / H), 3)
-    SOCIAL['scale'], SOCIAL['w0'] = scale, W0
-    art = (f'<svg class="art-c" data-view="social-s01-c" viewBox="0 0 {W0} {fmt(H)}" width="{fmt(W0 * scale)}" height="{fmt(H * scale)}" '
-           f'role="img" aria-label="{esc(label)}" focusable="false">{body}</svg>')
-    card = (f'<div class="card g-news"><div class="c-top">{wordmark(40, "20261028_Wordmark-Display-Master.svg", "wmd")}'
-            f'<p class="c-ev" data-role="evidence-label">{esc(SPECS[sid]["evidence"])}</p></div>'
-            f'<h2 class="c-t" data-role="title">{esc(m["title"])}</h2><p class="c-m" data-role="measure">{esc(m["measure"])}</p>'
-            f'<div class="c-art">{art}</div><p class="c-s" data-role="source">Source: {esc(src_text(sid))}</p></div>')
-    alt = re.sub(r' The Table button lists every value\.$', '', f'{m["title"]} {label}') + ' Source: ' + src_text(sid)
-    return (f'<figure class="social" data-spec="{sid}" data-dataset="{SPECS[sid]["dataset"]}" data-evidence="{SPECS[sid]["evidence"]}" aria-label="Social card built from S01">'
-            f'<div class="cardbox" role="region" tabindex="0" aria-label="Social card at true size, 1080 by 1350 pixels. Scroll inside the box to see all of it.">'
-            f'<span data-red="signature" class="sigwrap">{card}</span></div>'
-            f'<div class="alt" data-role="equivalent"><p class="alt-h">Alt text, posted with the card</p><p>{esc(alt)}</p></div></figure>')
+    cid = 'S01'
+    s = spec(cid)
+    sc = CT['social']
+    cw = sc['w'] - 2 * sc['margin']
+    tl = len(wrap(s['title'], cw / 0.95, 50, 800, tight=True))
+    ml = len(wrap(s['measure'][0], cw, 22))
+    sl = len(wrap('Source: ' + src_text(cid), cw, 20))
+    avail = sc['h'] - 2 * sc['margin'] - 40 - 36 - 54 * tl - 14 - 30 * ml - 28 - 24 - 28 * sl - 28 - 24
+    W0 = None
+    for w in range(*sc['artboard_search']):
+        a = Art(w, 'probe', {'ground': 'newsprint'})
+        big_number(a, s)
+        if a.H * cw / w <= avail:
+            W0 = w
+            break
+    W0 = W0 or sc['artboard_fallback']
+    a = Art(W0, 'S01 social card', {'ground': 'newsprint', 'red': True})
+    big_number(a, s)
+    PROBLEMS.extend(a.check())
+    scale = round(min(cw / W0, avail / a.H), 3)
+    if scale < sc['min_scale']:
+        PROBLEMS.append(f'social card: {cid} sets at {scale:.2f}x, under the {sc["min_scale"]}x floor; shorten the title or the artboard')
+    SOCIAL.update(scale=scale, w0=W0)
+    bl = a.bleed
+    art = (f'<svg class="art-c" data-view="social-s01-c" viewBox="{fmt(-bl)} 0 {fmt(W0 + bl)} {fmt(a.H)}" width="{fmt((W0 + bl) * scale)}" height="{fmt(a.H * scale)}" '
+           f'style="margin-left:{fmt(-bl * scale)}px" role="img" aria-label="{at(s["label"])}" focusable="false">{"".join(a.o)}</svg>')
+    card = (f'<div class="card g-news"><div class="c-top">{wordmark(40, "20261028_Wordmark-Display-Master.svg", "wmd", signature=True)}'
+            f'<p class="c-ev" data-role="evidence-label">{tx(SPECS[cid]["evidence"])}</p></div>'
+            f'<h2 class="c-t" data-role="title">{tx(s["title"])}</h2><p class="c-m" data-role="measure">{tx(s["measure"][0])}</p>'
+            f'<div class="c-art">{art}</div><p class="c-s" data-role="source">Source: {tx(src_text(cid))}</p>'
+            '<p class="c-cr">Chart: Oath &amp; Action, from its atlas, Who Do They Answer To?</p></div>')
+    alt = s['title'] + ' ' + s['label'] + ' Source: ' + src_text(cid)
+    return (f'<figure class="social" data-spec="{cid}" data-dataset="{CHARTS[cid]["dataset"]}" data-evidence="{SPECS[cid]["evidence"]}" aria-label="Social card built from S01">'
+            f'<div class="cardbox" role="region" tabindex="0" aria-label="Social card at true size, 1080 by 1350 pixels. Scroll inside the box to see all of it.">{card}</div>'
+            f'<div class="alt" data-role="equivalent"><p class="alt-h">Alt text, posted with the card</p><p>{tx(alt)}</p></div></figure>')
 
 
 def view_social():
     card_html = social_card()
-    return (f'<section class="view g-white" data-view-root="social" aria-labelledby="h-social" hidden><div class="wrap">'
-            '<header class="vhead"><p class="eyebrow">View 4 of 5 · Social card</p>'
-            '<h1 class="headline" id="h-social">S01 as a 1080 by 1350 card</h1>'
+    return ('<section class="view g-white" data-view-root="social" data-title="Social card" aria-labelledby="h-social" hidden><div class="wrap">'
+            '<header class="vhead"><p class="eyebrow">Chart system · Concept 03 · Social card</p>'
+            '<h1 class="headline" id="h-social" tabindex="-1">S01 as a 1080 by 1350 card</h1>'
             f'<p class="deck">The card is the S01 module with its controls removed. big_number() draws a {SOCIAL["w0"]} px artboard and the card sets it at '
-            f'{SOCIAL["scale"]:.2f} times, so the smallest chart label reads at {13 * SOCIAL["scale"]:.0f} px. The slots keep their order: evidence label, title, measure, '
-            'figure, source. The wordmark comes from the display master, and the one red mark is the Senate shortfall the title names.</p>'
+            f'{SOCIAL["scale"]:.2f} times, so the smallest chart label reads at {13 * SOCIAL["scale"]:.0f} px. The card keeps the source line and names Oath &amp; Action and the atlas; it carries no web address until the site is settled.</p>'
             f'</header><div class="socwrap">{card_html}<aside class="strip" aria-label="Studio note on the social card">'
             '<p class="sn-h">Studio note for reviewers</p><p class="sn-id">Social card · built from S01</p>'
-            '<p><span class="k">What changes.</span> The switch, the downloads and the readout drop. The title, measure, figure, notes and source stay. The table travels as the alt text.</p>'
+            '<p><span class="k">What changes.</span> The switch, the downloads and the readout drop. The title, measure, figure and source stay. The table travels as the alt text.</p>'
             '<p><span class="k">Size.</span> 1080 by 1350 px, the portrait post for Instagram and LinkedIn; 64 px margins on the 8 px rhythm.</p>'
-            '<p><span class="k">Kit.</span> social_card(spec) measures the title, measure and source, then asks the generator for the narrowest artboard that fills the card\'s 952 px width and still fits the height left over. A module whose scale would fall under 1.6 times needs a shorter title or a shorter artboard.</p>'
+            '<p><span class="k">Kit.</span> social_card() measures the title, measure and source, then asks the generator for the narrowest artboard that fills the card’s 952 px width and fits the height left over. A module whose scale would fall under ' + f'{CT["social"]["min_scale"]}' + ' times stops the build until its title or artboard is shorter.</p>'
             '</aside></div></div></section>')
 
 
 # ------------------------------------------------------------------------------------------------ the system sheet
-def sys_section(n, title, body, lead=''):
-    lead_html = f'<p class="lede">{lead}</p>' if lead else ''
-    return f'<section class="ssec" aria-labelledby="sys-{n}"><h2 class="sh" id="sys-{n}"><span class="sn">{n:02d}</span> {esc(title)}</h2>{lead_html}{body}</section>'
+def sys_section(n, title, body, lead='', sid=None):
+    lead_html = f'<p class="lede">{tx(lead)}</p>' if lead else ''
+    hid = sid or f'sys-{n}'
+    return f'<section class="ssec" aria-labelledby="{hid}"><h2 class="sh" id="{hid}" tabindex="-1"><span class="sn">{n:02d}</span> {tx(title)}</h2>{lead_html}{body}</section>'
 
 
-SLOTS = [('A', 'Index', 'Evidence label at left; the atlas record index at right', 'Inter 700, 13/18, capitals, +0.06 em; index Inter 600, 13/18, tabular, Deep Stone', '2 px Charcoal rule, then 12'),
-         ('B', 'Title', 'One sentence that states the finding, its verb matched to the grade', 'Inter Tight 800, 28/32, −0.025 em; 22/26 on phones', '8'),
-         ('C', 'Measure', 'Measure, unit, place and period; says where a scale starts if not at zero', 'Inter 400, 15/22, Deep Stone', '8'),
-         ('D', 'Controls', 'Chart and Table switch at left, downloads at right. Panel only', 'Inter 600, 14; 32 px targets, 44 on phones', '16'),
-         ('E', 'Figure', 'One artboard at 866, 560 or 328 px with its notes inside the drawing; or the table', 'Labels Inter 600, 13; notes Inter 400, 13', '16'),
-         ('F', 'Notes', 'Coding notes and qualifications a reader needs; the key only when labels cannot fit', 'Inter 400, 14/20', '16'),
-         ('G', 'Source', 'Source line in section 15 order, credit at right; then a 1 px Stone rule', 'Inter 400, 13/18, Deep Stone', '12, then 16 below')]
+def ty(name):
+    f, w, s, lh, tr = CT['type'][name]
+    track = f', {tr:+.3f} em'.replace('-', MINUS).replace('+', '+') if tr else ''
+    return f'{f} {w}, {s}/{lh}{track}'
+
+
+def sys_slots():
+    sp = CT['slot_space']
+    return [('A', 'Index', 'The evidence kind and its grade in words at left; the atlas record index at right, when the chart has one', f'Kind {ty("kind")}, capitals; grade {ty("grade_words")}; index {ty("index")}, Deep Stone', f'2 px Charcoal rule, then {sp["A"]}'),
+            ('B', 'Title', 'One sentence that states the finding, its verb matched to the grade', f'{ty("title")}; {ty("title_phone")} on phones', str(sp['B'])),
+            ('C', 'Measure', 'Measure, unit, place and period; where a scale starts if not at zero', f'{ty("measure")}, Deep Stone, 38 em at most', str(sp['C'])),
+            ('D', 'Controls', 'Chart and Table switch at left, downloads at right. Panel only', 'Inter 600, 14; 32 px targets, 44 on phones', str(sp['D'])),
+            ('E', 'Figure', 'One artboard at the module’s width, its notes inside the drawing; or an HTML table or grid that reflows', f'Labels {ty("data")}; notes {ty("note")}', str(sp['E'])),
+            ('F', 'Notes', 'What a reader needs to read the chart honestly: coding rules, qualifications, the disclosure', f'{ty("notes_slot")}, 36 em at most (45 to 75 characters)', str(sp['F'])),
+            ('G', 'Source', 'Source line in section 15 order; the credit and the reading guide link at right; then a 1 px Stone rule', f'{ty("source")}, Deep Stone', f'{sp["G"]}, then {sp["after"]} below')]
 
 
 def sys_anatomy():
-    tbl = ''.join(f'<tr><th scope="row"><span class="slk">{a}</span> {esc(n)}</th><td>{esc(h)}</td><td>{esc(t)}</td><td>{esc(s)}</td></tr>'
-                  for a, n, h, t, s in SLOTS)
+    tbl = ''.join(f'<tr><th scope="row"><span class="slk">{a}</span> {tx(n)}</th><td>{tx(h)}</td><td>{tx(t)}</td><td class="n">{tx(sp_)}</td></tr>' for a, n, h, t, sp_ in sys_slots())
     return (f'<div class="anat-grid"><div class="anat">{module("S03", "system", "white", inst="a", anat=True, hl=3)}</div>'
             f'<div class="anat-spec"><div class="tbl"><table class="st2"><caption class="vh">The seven slots</caption><thead><tr><th scope="col">Slot</th><th scope="col">Holds</th>'
             f'<th scope="col">Type</th><th scope="col">Space above, px</th></tr></thead><tbody>{tbl}</tbody></table></div>'
             '<p class="small">A slot never moves and never changes job. An empty slot closes up, except B, C, E and G, which every chart fills. '
-            'The figure slot holds one artboard at a time: a container query picks 866 px when the module is that wide, 560 px from 560, and 328 px below, '
-            'drawn to fill 328 to 358 px so labels never fall under 13 px.</p></div></div>')
+            'The figure slot holds one artboard at a time: a container query shows the widest artboard that fits the module, so a drawing is never scaled up or down and every line stays in the 1, 1.5, 2, 3 and 6 px family.</p></div></div>')
 
 
 def sys_sizes():
-    rows = [('Column module', 866, '8 of 12 columns at 1440; the default for atlas pages and reports'),
-            ('Still', 680, 'Substack and email body; exported at 2x'),
-            ('Medium artboard', 560, 'Tablets and narrow windows'),
-            ('Social card artboard', SOCIAL['w0'], f'Chosen by social_card() and set at {SOCIAL["scale"]:.2f}x to fill the 952 px content width of the 1080 by 1350 card'),
-            ('Phone artboard', 328, 'Drawn at 328, shown at 328 to 358 for 360 and 390 px phones')]
+    rows = [('Column module', CT['artboards'][0][1], '8 of 12 columns at 1440; the default for atlas pages and reports'),
+            ('Still', CT['still'], 'Substack and email body; exported at 2x'),
+            ('Medium artboard', CT['artboards'][1][1], 'Tablets and narrow windows'),
+            ('Social card artboard', SOCIAL['w0'], f'Chosen by social_card() and set at {SOCIAL["scale"]:.2f}x inside the 1080 by 1350 card'),
+            ('Phone artboard, 390', CT['artboards'][2][1], 'Drawn at 358, the column of a 390 px phone'),
+            ('Phone artboard, 360', CT['artboards'][3][1], 'Drawn at 328, the column of a 360 px phone')]
     rows.sort(key=lambda r: -r[1])
-    bars = ''.join(f'<li><span class="szb" style="width:{100 * w / 866:.2f}%"></span><span class="szl"><strong>{esc(n)}</strong>, {w} px. {esc(d)}</span></li>'
-                   for n, w, d in rows)
-    steps = ''.join(f'<li><span class="sp" style="width:{s}px;height:{s}px"></span><span>{s}</span></li>' for s in (4, 8, 12, 16, 24, 32, 48, 72))
+    bars = ''.join(f'<li><span class="szb" style="width:{100 * w / CT["artboards"][0][1]:.2f}%"></span><span class="szl"><strong>{tx(n)}</strong>, {w} px. {tx(d)}</span></li>' for n, w, d in rows)
+    steps = ''.join(f'<li><span class="sp" style="width:{s_}px;height:{s_}px"></span><span>{s_}</span></li>' for s_ in CT['space'])
+    brk = ''.join(f'<li><strong>{tx(k.replace("_", " "))}</strong>: from {v} px</li>' for k, v in CT['breaks'].items())
     return (f'<div class="two-col"><div><h3 class="sh3">Widths</h3><ul class="sizes">{bars}</ul></div>'
-            '<div><h3 class="sh3">Spacing</h3><p class="small">Every gap is a step of the Signal Grid\'s 8 px rhythm, with its 4 px half step. '
-            f'Modules stack 72 px apart; slots sit 8 to 16 px apart; rows in a chart sit on 32 or 40 px.</p><ul class="steps">{steps}</ul></div></div>')
+            '<div><h3 class="sh3">Spacing</h3><p class="small">Every gap is a step of the Signal Grid’s 8 px rhythm, with its 4 px half step. '
+            f'Modules stack 72 px apart; slots sit 8 to 16 px apart; rows in a chart sit on 32 to 40 px.</p><ul class="steps">{steps}</ul>'
+            f'<h3 class="sh3 sh3b">Layout switches inside generators</h3><ul class="brks">{brk}</ul></div></div>')
 
 
 def sys_type():
-    rows = [('Chart title', 'Inter Tight 800, 28/32, −0.025 em; 22/26 on phones', 'mt-s', 'Seventeen of the 24 changes came in 2025 and 2026.'),
-            ('Evidence label', 'Inter 700, 13/18, capitals, +0.06 em', 'ev-s', 'Finding'),
-            ('Measure line', 'Inter 400, 15/22, Deep Stone', 'ms-s', 'Rule changes by how they were made, United States, 1965 to 2026'),
-            ('Big figure', 'Inter Tight 800, 96/96, tabular; 72 under 700 px', 'big-s', '86%'),
-            ('Series label', 'Inter 600, 15/18', 'sl-s', 'Toward voters'),
-            ('Data label', 'Inter 600, 13/16, tabular, true minus', 'dl-s', f'Down 3.7 points, {MINUS}3.7'),
-            ('Index label', 'Inter 600, 13/16, tabular, Deep Stone', 'ix-s', 'RL07 · PW15 · E09'),
-            ('Note in a drawing', 'Inter 400, 13/16, Deep Stone; the named record in Inter 600, Charcoal', 'nt-s', '9 of its 11 moved the rules away from voters'),
-            ('Notes slot', 'Inter 400, 14/20', 'ns-s', 'The split at January 1, 2025 is the studio\'s.'),
-            ('Source line', 'Inter 400, 13/18, Deep Stone', 'sr-s', 'Source: U.S. Census Bureau, Table A-1, United States. Retrieved November 6, 2026.')]
-    items = ''.join(f'<li><p class="tr-n">{esc(n)}</p><p class="tr-sp">{esc(s)}</p><p class="{c}">{esc(t)}</p></li>' for n, s, c, t in rows)
-    return (f'<ul class="ramp">{items}</ul><p class="small">Lora Italic sets quoted words inside a note and nothing else; no chart title or label uses a serif. '
-            'On Charcoal, text from 13 to 15 px sets one weight heavier.</p>')
+    samples = {'title': 'The atlas codes 9 of 11 logged state statutes as away from voters.', 'kind': 'Finding', 'grade_words': 'Documented: the atlas’s dated log',
+               'index': 'Repair log RL01 to RL64', 'measure': 'Rule changes by how they were made, United States, 1965 to 2026',
+               'big': '86%', 'series': 'Toward voters', 'data': f'Down 3.7 points, {MINUS}3.7', 'note': '9 of 11 away from voters',
+               'notes_slot': 'The log holds the 64 changes the atlas chose to record.', 'source': 'Source: U.S. Census Bureau, Table A-1. Retrieved November 6, 2026.'}
+    names = {'title': 'Chart title', 'kind': 'Evidence kind', 'grade_words': 'Grade in words', 'index': 'Index', 'measure': 'Measure line', 'big': 'Big figure',
+             'series': 'Series label', 'data': 'Data label', 'note': 'Note in a drawing', 'notes_slot': 'Notes slot', 'source': 'Source line'}
+    items = ''.join(f'<li><p class="tr-n">{tx(names[k])}</p><p class="tr-sp">{tx(ty(k))}</p><p class="ts-{k}">{tx(samples[k])}</p></li>' for k in names)
+    return (f'<ul class="ramp">{items}</ul><p class="small">Figures are tabular only where they are figures, so a hyphen inside a word keeps its own width. '
+            'Lora Italic sets quoted words inside a note and nothing else; no chart title or label uses a serif. On Charcoal, text from 13 to 15 px sets one weight heavier.</p>')
 
 
 def mk(svgbody, w, h):
@@ -1452,55 +1968,53 @@ def mk(svgbody, w, h):
 
 
 def sys_marks():
-    lines = [(1, 'Hairline: gridlines in Stone 70% toward the ground, leaders, rules, the bar track', 'grid'),
-             (1.5, 'Context lines in small multiples; the open ring for an earlier year; the pending outline', 'l-ctx'),
-             (2, 'Context series in a line chart; the 60-vote threshold; dumbbell connectors', 'l-ctx2'),
-             (3, 'The series the title names, in Charcoal; the red point mark', 'l-ink'),
-             (6, 'The lit selection in an interactive panel only', 'l-sel')]
-    li = ''.join(f'<li>{mk(f"<path d=\"M2 10H118\" class=\"{c}\" style=\"stroke-width:{w}px\"/>", 120, 20)}<span><strong>{fmt(w)} px.</strong> {esc(d)}</span></li>'
-                 for w, d, c in lines)
-    shapes = [
-        (mk('<rect x="2" y="2" width="28" height="28" class="f-tow"/><rect x="36" y="2" width="28" height="28" class="f-away"/>'
-            '<rect x="70" y="2" width="28" height="28" class="f-kept"/><rect x="104" y="2" width="28" height="28" class="f-pend"/>', 136, 32),
-         'Units: 28 px squares on a 32 px pitch, numbered in Inter 600 13 px. Fill or outline carries the second code.'),
-        (mk('<rect x="2" y="4" width="160" height="24" class="f-away"/><rect x="2" y="36" width="110" height="24" class="f-tow"/>', 164, 64),
-         'Ranked bars: 24 px tall on a 40 px pitch, a 16 px gap, counts inside when the segment is 18 px or wider. 100% bars: 18 px on a 32 px pitch.'),
-        (mk('<line x1="8" y1="16" x2="70" y2="16" class="l-ctx2"/><circle cx="70" cy="16" r="6" class="f-ink"/><circle cx="8" cy="16" r="5" class="ring"/>'
-            '<circle cx="104" cy="16" r="5" class="f-ink"/><circle cx="124" cy="16" r="4" class="f-ink"/>', 136, 32),
-         'Dots: 6 px radius for the later year, a 5 px open ring for the earlier; 5 px on a timeline; 4 px on a line where a note points.'),
-    ]
-    sh = ''.join(f'<li>{s}<span>{esc(d)}</span></li>' for s, d in shapes)
+    L = CT['lines']
+    lines = [(L['hair'], 'Hairline: gridlines, leaders, rules and the bar track, on half pixels so a 1x export prints them crisp', 'grid'),
+             (L['outline'], 'Context lines in small multiples; the open ring for an earlier year; outlines', 'l-ctx'),
+             (L['context'], 'Context series in a line chart; the threshold tick; dumbbell connectors', 'l-ctx2'),
+             (L['named'], 'The series the title names; the red point mark', 'l-ink'),
+             (L['lit'], 'The lit selection in an interactive panel only', 'l-sel')]
+    li = ''.join(f'<li>{mk(f"<path d=\"M2 10H118\" class=\"{c}\" style=\"stroke-width:{w}px\"/>", 120, 20)}<span><strong>{fmt(w)} px.</strong> {tx(d)}</span></li>' for w, d, c in lines)
+    u, b, sb, d = CT['unit'], CT['bar'], CT['share_bar'], CT['dot']
+    shapes = [(mk(dir_markup(1, 1, u['size'], u['size'], 'tow') + dir_markup(1 + u['size'] + u['gap'], 1, u['size'], u['size'], 'away'), 2 * u['size'] + u['gap'] + 2, u['size'] + 2),
+               f'Units: {u["size"]} px squares {u["gap"]} px apart, one per record. A roll-up record draws as a stack three units wide and says what it holds.'),
+              (mk(R(2, 4, 160, b['h'], 'f-away') + R(2, 4 + b['pitch'], 110, b['h'], 'f-tow') + R(5, 7 + b['pitch'], 104, b['h'] - 6, 'frame'), 164, b['pitch'] + b['h'] + 6),
+               f'Ranked bars: {b["h"]} px tall on a {b["pitch"]} px pitch; counts inside when the segment is 18 px or wider. 100% bars: {sb["h"]} px on a {sb["pitch"]} px pitch.'),
+              (mk('<line x1="8" y1="16" x2="64" y2="16" class="l-ctx2"/>' + f'<circle cx="70" cy="16" r="{d["later"]}" class="f-ink"/><circle cx="8" cy="16" r="{d["earlier"]}" class="ring"/>'
+                  f'<circle cx="104" cy="16" r="{d["timeline"]}" class="f-ink"/><circle cx="124" cy="16" r="{d["point"]}" class="f-ink"/>', 136, 32),
+               f'Dots: {d["later"]} px radius for the later year, a {d["earlier"]} px open ring for the earlier; {d["timeline"]} px on a timeline; {d["point"]} px where a note points.')]
+    sh = ''.join(f'<li>{s_}<span>{tx(t)}</span></li>' for s_, t in shapes)
     return f'<div class="two-col"><div><h3 class="sh3">Line weights</h3><ul class="mklist">{li}</ul></div><div><h3 class="sh3">Marks</h3><ul class="mklist">{sh}</ul></div></div>'
 
 
 def sys_codes():
-    dirs = ''.join(f'<li>{mk(dir_shape(2, 2, 28, 28, c), 32, 32)}<span><strong>{esc(w)}.</strong> {d}</span></li>' for (_, c, w), d in zip(DIRS, [
-        'Charcoal fill. The named series when a title names it.', 'Verdigris strong fill: Verdigris 25% toward Charcoal in OKLab.', 'Stone light fill with a Stone outline.',
-        'Split: both fills in one mark.', 'Open: a 1.5 px Charcoal outline on the ground, not yet decided.']))
+    dirs = ''.join(f'<li>{mk(dir_markup(2, 2, 28, 28, c), 32, 32)}<span><strong>{tx(w)}.</strong> {tx(dsc)}</span></li>' for (_, c, w), dsc in zip(DIRS, [
+        'Solid Charcoal.', 'Verdigris strong with an inner frame in the ground color: the frame sets it apart from away on any copy.',
+        'Light fill with a Stone outline.', 'Split: both fills in one mark.', 'Open: an outline on the ground, for a change still undecided.']))
     uid = 'sys-codes'
-    grades = ''.join(f'<li>{mk(grade_rect(uid, gk, 2, 4, 40, 18), 44, 26)}<span><strong>{esc(w)}.</strong> {esc(gl[0].upper() + gl[1:])}. '
-                     f'{d}</span></li>' for (gk, w, gl), d in zip(GRADES, ['Solid Charcoal.', 'Solid gray, a step lighter.',
-                                                                            '2 px dashes, 8 on and 4 off, the atlas\'s plausible line.',
-                                                                            'Dash-dot at 8, 3, 2 and 3, the atlas\'s contested line.']))
+    grows = ''.join(f'<tr><th scope="row">{tx(w)}</th><td>{tx(k)}</td><td>{tx(gl)}</td><td>{mk(grade_markup(uid, k, 1, 3, 40, 16), 42, 22)} {tx(GRADE_FILL[k])}</td>'
+                    f'<td>{line_sample(ls)} {tx(ls)}</td><td>{tx(vb)}</td></tr>' for k, w, gl, ls, vb in GRADES)
     gdefs = f'<svg width="0" height="0" class="vh" aria-hidden="true" focusable="false"><defs>{grade_defs(uid)}</defs></svg>'
-    glyphs = ''.join(f'<li>{glyph(c, 20)}<span><strong>{esc(CLASS_WORD[c])}.</strong></span></li>' for c in CLASS_WORD)
-    return (f'{gdefs}<div class="three-col"><div><h3 class="sh3">Direction code, repair log</h3><ul class="mklist">{dirs}</ul>'
-            '<p class="small">Grayscale holds the order: Charcoal, Verdigris strong, Stone light, ground. Row position in S08 and segment order in S03 add a third code.</p></div>'
-            f'<div><h3 class="sh3">Evidence code</h3><ul class="mklist">{grades}</ul><p class="small">Grades never take red, and hypothesis, the dotted line, has no fill: '
-            'no claim in the register carries it.</p></div>'
-            f'<div><h3 class="sh3">Direction glyphs, scenarios</h3><ul class="mklist gl-list">{glyphs}</ul><p class="small">Shape carries the direction; a Verdigris or Prussian tint '
-            'carries the side: Verdigris for up, Prussian for down. No scale pairs red with blue. Party marks take neutral inks with the party\'s name printed on them, ordered by value or alphabet.</p></div></div>')
+    glyphs = ''.join(f'<li>{boxed_arrow(c, 24)}<span><strong>{tx(CLASS_WORD[c])}.</strong></span></li>' for c in CLASS_WORD)
+    return (f'{gdefs}<div class="two-col"><div><h3 class="sh3">Direction code, repair log</h3><ul class="mklist">{dirs}</ul>'
+            '<p class="small">Grayscale holds the order: Charcoal, Verdigris strong with its frame, Stone light, ground. Rows in S08 and segment order in S03 add a third code.</p></div>'
+            f'<div><h3 class="sh3">Scenario arrows</h3><ul class="mklist gl-list">{glyphs}</ul><p class="small">The arrow in its box carries the direction on a black-and-white copy; '
+            'a Verdigris or Prussian tint carries the side as a second code. No scale pairs red with blue. Party marks take neutral inks with the party’s name printed on them, ordered by value or alphabet.</p></div></div>'
+            f'<h3 class="sh3 sh3b">Evidence grades: one table for every V7 label</h3><div class="tbl"><table class="st2 gtab"><caption class="vh">Evidence grades</caption><thead><tr>'
+            '<th scope="col">Display word</th><th scope="col">V7 key</th><th scope="col">Reader’s meaning</th><th scope="col">Fill, in this order</th><th scope="col">Line on the atlas</th><th scope="col">Title verb</th></tr></thead>'
+            f'<tbody>{grows}</tbody></table></div><p class="small">The code covers claims and connections alike. V7’s key plausible_contested prints as Contested. Grades never take red. '
+            'Where a chart’s categories carry their own code, as grades do, rank the rows by the code’s order or draw every bar in one ink and print the grade, so the darkest-ink rule never points at a grade by accident.</p>')
 
 
 PAL = [('Ground', 'gr', 'White, Newsprint, Charcoal'), ('Named series, baseline, away from voters', 'ink', 'Charcoal; Newsprint on Charcoal'),
        ('Context', 'ctx', 'Stone; Dim Newsprint on Charcoal'), ('Secondary text', 'sec', 'Deep Stone; Dim Newsprint on Charcoal'),
-       ('Toward voters, up glyph', 'tow', 'Verdigris 25% toward Charcoal; on Charcoal, Verdigris 30% toward Newsprint'),
+       ('Toward voters, up arrow', 'tow', 'Verdigris 25% toward Charcoal; on Charcoal, Verdigris 30% toward Newsprint'),
        ('Middle level: some elections', 'some', 'Stone; on Charcoal, Stone 35% toward Newsprint'),
-       ('Kept existing rules (values printed)', 'kept', 'Stone 55% toward the ground; on Charcoal, the gridline gray with an outline'),
+       ('Kept existing rules; plausible (values printed)', 'kept', 'Stone 55% toward the ground'),
        ('Well supported', 'g2', 'Charcoal 38% toward the ground; Dim Newsprint on Charcoal'),
        ('Up tint (words print in the cell)', 'vdl', 'Verdigris 55% toward the ground'), ('Down tint (words print in the cell)', 'prl', 'Prussian 62% toward the ground'),
-       ('Down glyph', 'pr', 'Prussian; on Charcoal, Prussian 55% toward Newsprint'), ('Gridline, decorative', 'grid', 'Stone 70% toward the ground'),
-       ('The headline\'s point', 'red', 'Pillar Red; 1 px Charcoal keyline on Newsprint'), ('Focus ring', 'focus', 'Verdigris; Newsprint on Charcoal')]
+       ('Down arrow', 'pr', 'Prussian; on Charcoal, Prussian 55% toward Newsprint'), ('Gridline, decorative', 'grid', 'Stone 70% toward the ground'),
+       ("The headline's point", 'red', 'Pillar Red; 1 px Charcoal keyline on Newsprint'), ('Focus ring', 'focus', 'Charcoal; Newsprint on Charcoal')]
 
 
 def sys_palettes():
@@ -1511,18 +2025,14 @@ def sys_palettes():
         for gname in ('white', 'newsprint', 'charcoal'):
             h = GROUNDS[gname][tok]
             gr = GROUNDS[gname]['gr']
-            c = contrast(h, gr)
             red = ' data-red="swatch"' if h == '#E63946' else ''
-            mark = '' if tok == 'gr' else f'{c:.2f}:1'
-            cells.append(f'<td><span class="pal"><span class="sw3" style="background:{h};outline-color:{gr}"{red}></span>'
-                         f'<span class="hx">{h}</span><span class="cr">{mark}</span></span></td>')
-        body.append(f'<tr><th scope="row">{esc(job)}<span class="pn">{esc(name)}</span></th>{"".join(cells)}</tr>')
-    return (f'<div class="tbl"><table class="st2 paltab"><caption class="vh">Chart palette with measured contrast against each ground</caption>'
-            f'<thead>{head}</thead><tbody>{"".join(body)}</tbody></table></div>'
-            '<p class="small">Contrast is WCAG 2 against the ground, computed by the build script. Every tint is one of the palette lab\'s OKLab mixes of locked colors; the build script recovered each mix and prints it above. '
-            'identity colors never change. Kept existing rules, the up and down tints and the gridline fall under 3:1 by design: each kept segment prints its count and '
-            'carries a Stone outline, each tinted cell prints the atlas\'s words, and gridlines carry no meaning. Verdigris and Stone sit 0.05 apart in lightness, so no '
-            'chart separates two categories by those two inks alone. Pillar Red appears in the table as a swatch, which Rule 05.3 does not count.</p>')
+            mark = '' if tok == 'gr' else f'{contrast(h, gr):.2f}:1'
+            cells.append(f'<td><span class="pal"><span class="sw3" style="background:{h}"{red}></span><span class="hx">{h}</span><span class="cr">{mark}</span></span></td>')
+        body.append(f'<tr><th scope="row">{tx(job)}<span class="pn">{tx(name)}</span></th>{"".join(cells)}</tr>')
+    return (f'<div class="tbl"><table class="st2 paltab"><caption class="vh">Chart palette with measured contrast against each ground</caption><thead>{head}</thead><tbody>{"".join(body)}</tbody></table></div>'
+            '<p class="small">Contrast is WCAG 2 against the ground, computed by the build script. Every tint is one of the palette lab’s OKLab mixes of locked colors; the script recovered each mix and prints it above. '
+            'Kept existing rules, the plausible tint, the up and down tints and the gridline fall under 3:1 by design: each kept segment prints its count and carries a Stone outline, each plausible segment carries an outline, '
+            'each tinted cell prints the atlas’s words beside an arrow, and gridlines carry no meaning. Pillar Red appears in the table as a swatch, which Rule 05.3 does not count.</p>')
 
 
 RULE_053 = ("The wordmark's ampersand and the lockmark's lever are signature red and do not count, and neither do the ampersands inside the hinge "
@@ -1536,70 +2046,114 @@ RULE_053 = ("The wordmark's ampersand and the lockmark's lever are signature red
 
 
 def sys_red():
-    url = next(s['url'] for s in DS['stock-trading-ban']['sources'] if s['id'] == 'W035')
-    return (f'<blockquote class="rule"><p>{esc(RULE_053)}</p><footer>Rule 05.3, the red rule (D2-01)</footer></blockquote>'
+    url = next(s_['url'] for s_ in DS['stock-trading-ban']['sources'] if s_['id'] == 'W035')
+    return (f'<blockquote class="rule"><p>{tx(RULE_053)}</p><footer>Rule 05.3, the red rule (D2-01)</footer></blockquote>'
             '<p class="body2">On a chart page each module counts as one view. Red never codes a series, a category, a scale, a party or a grade. It may mark the one point '
             'a title names, here the 7 votes the Senate fell short in S01, and only when no error or ask holds the view. Press the button to put an ask in this view: '
             'the ask takes the red, and the shortfall steps down to Charcoal at the same 3 px weight.</p>'
+            '<p class="body2"><strong>A chart on its own, or added to a page.</strong> A chart posted alone, as a card or a still, may mark the point its title names in red. '
+            'A chart added to a page takes red only when the page’s red job moves to it.</p>'
             f'<div class="askbar"><button type="button" class="tgl" aria-pressed="false" data-ask="system-r-s01">Put an ask in this view</button>'
-            f'<span class="askwrap" id="ask-demo" hidden><a class="ask" href="{esc(url)}" data-red="working" data-red-job="ask">See how each senator voted</a>'
+            f'<span class="askwrap" id="ask-demo" hidden><a class="ask" href="{at(url)}" data-red="working" data-red-job="ask">See how each senator voted</a>'
             '<span class="ill">Illustrative ask</span></span></div>'
             f'<div class="redmod">{module("S01", "system", "white", inst="-r", hl=3)}</div>')
 
 
 def sys_rules():
-    rules = [('Notes sit inside the drawing.', 'Inter 13 in Deep Stone, joined to the data by 1 px leaders; the named record in Inter 600, Charcoal. A note names the record, explains an odd encoding once, or gives a reader\'s scale.'),
+    rules = [('Notes sit inside the drawing when they are short.', 'Inter 13 in Deep Stone, joined to the data by 1 px leaders, clear of every gridline or on a band in the ground color. Long notes go in the notes slot, where they wrap at 45 to 75 characters a line.'),
              ('Label directly.', 'Labels sit on the mark or at its end. A key appears only when labels cannot fit, and it sits inside the drawing above the marks it explains.'),
-             ('Write the unit once.', 'On the top tick or the first label: "100%", "17 changes", "Down 3.7 points". Other ticks stay bare.'),
-             ('Numbers are tabular, and minus is the true minus.', f'Write {MINUS}3.7 with U+2212.'),
-             ('Scales are honest.', 'Bars start at zero. A line or dot scale may start elsewhere when the measure line says so. Small multiples share one scale. Missing years and method breaks stay open; the line never bridges them.'),
+             ('Write the unit once.', 'On the top tick or the first label: “100%”, “17 changes”, “Down 3.7 points”. Other ticks stay bare.'),
+             ('Numbers are tabular, and minus is the true minus.', f'Write {MINUS}3.7 with U+2212. Dates print in words with no line break inside them.'),
+             ('Scales are honest.', 'Bars start at zero. A line or dot scale may start elsewhere when the measure line says so. Small multiples share one scale. Missing years and method breaks stay open; no line joins them.'),
+             ('Small changes are changes.', 'A change of a point or two in a survey with no published margin of error prints as “little changed”, never as a fall or a rise.'),
              ('Hover repeats the table.', 'The readout under a chart repeats what the table holds. Every value is printed, in the notes or in the table.'),
-             ('The source line goes under every chart.', 'In section 15 order: publisher, title or table, observation period, geography, date retrieved, qualification. Shorten by dropping words; every fact stays. The credit sits at the right.'),
-             ('Index labels point at records.', 'RL07 is repair log row 7, PW15 is everyday question 15, E09 is the studio\'s key for the ninth history event. They print where they help a reader find the record, and nowhere for decoration.'),
-             ('Illustrative items carry the word.', '"Illustrative data" or "Illustrative ask" sits beside the item itself.')]
-    return '<ol class="rules">' + ''.join(f'<li><strong>{esc(a)}</strong> {esc(b)}</li>' for a, b in rules) + '</ol>'
+             ('The source line goes under every chart.', 'In section 15 order: publisher, title or table, observation period, geography, date retrieved, qualification. Shorten by dropping words; every fact stays. The credit and the link to the reading guide sit at the right.'),
+             ('Record IDs stay in the index and the tables.', 'RL07, PW15 and E09 print in slot A and in the table, where a reader looks a record up, and nowhere on the face of a drawing. When a dataset mixes ID prefixes, the index prints the count and the prefixes: “118 connections, IDs L, LE, LT, LX and T”.'),
+             ('No reader sees studio words.', 'No color names, source codes or “the studio” on the face of a chart or in its notes; say “the dark line”, “the gray bars”, “Oath & Action”.'),
+             ('Read every title twice.', 'Before a title ships, read it once as a reader on the left and once as a reader on the right. If either would take it as a side, rewrite it.'),
+             ('Disclose where the editor works on the subject.', 'Charts on nomination, ranked-ballot or election-rule data print the editor’s disclosure in the notes, labeled “Disclosure:”.'),
+             ('Illustrative items carry the word.', '“Illustrative data” or “Illustrative ask” sits beside the item itself.')]
+    return '<ol class="rules">' + ''.join(f'<li><strong>{tx(a)}</strong> {tx(b)}</li>' for a, b in rules) + '</ol>'
+
+
+def sys_kit():
+    gens = [('big_number(art, spec)', 'figure, group_head, groups (key, label, value, party, context), vote_head, votes (label, sub, scale, segs, threshold, red)', 'S01'),
+            ('line_events(art, spec)', 'x_range, x_ticks, y_max, y_step, series (segments of points, line and dot classes), breaks (x, word, top), labels per layout, notes (point, text, side)', 'S02'),
+            ('ranked_bar(art, spec)', 'rows (key, label, total, segs of field, value and code, note, sub), key, unit; the scale comes from the largest total', 'S03'),
+            ('dumbbell(art, spec)', 'rows (label, a and b points, change words, context), years; the scale crops to whole tens around the data', 'S04'),
+            ('small_multiples(art, spec)', 'panels (id, name, segments, last, note), y_range, x_range, note_at', 'S05'),
+            ('comparison_table(uid, spec)', 'rows with the atlas’s words and a class per family, families, key_head, caption', 'S06'),
+            ('tile_map(art, spec)', 'tiles (col, row, key, status, fill, year, tip), key, size_note; the grid comes from geo/us-state-tile-grid.json', 'S07'),
+            ('unit_ledger(uid, spec)', 'rows (code, word, records), rollups (key: label and tip), label', 'S08'),
+            ('strip_timeline(art, spec)', 'lanes (label, question, events with exact fractional dates), x_range, ticks', 'S09'),
+            ('share_bars(art, spec)', 'rows (key, label, total, segs of grade and count), grades, unit, share_field, right_head', 'S10')]
+    rows = ''.join(f'<tr><th scope="row"><code>{tx(n)}</code></th><td>{tx(i)}</td><td>{tx(e)}</td></tr>' for n, i, e in gens)
+    example = ("register_chart('X01', 'link-grades', share_bars, adapter=spec_x01, table=eq_x01,\n"
+               "               csv_cols=['key', 'documented', 'well-supported', 'plausible', 'contested', 'hypothesis'])\n\n"
+               "def spec_x01():\n    return {'kind_words': ..., 'title': ..., 'measure': [...], 'index': '118 connections, IDs L, LE, LT, LX and T',\n"
+               "            'rows': [...], 'grades': [...], 'unit': 'links', 'share_field': 'documented', 'right_head': 'Documented',\n"
+               "            'notes': [...], 'drawn': [...], 'label': ..., 'why': ...}")
+    return (f'<p class="body2">A chart joins the kit with one call to <code>register_chart()</code>: its dataset, its generator, an adapter that reads the shared data into a spec, '
+            'a table builder for the equivalent and the CSV columns. The module then supplies all seven slots, the Chart and Table switch, both downloads, the still and the coverage check. '
+            'Every generator draws through <code>Art</code>, which measures each label with the Inter files in <code>./fonts</code> and stops the build when a label leaves its drawing, '
+            'touches another, or meets a line, rule, leader or mark, with 15% headroom for wider text spacing.</p>'
+            f'<div class="tbl"><table class="st2 kittab"><caption class="vh">Generators and their inputs</caption><thead><tr><th scope="col">Generator</th><th scope="col">Spec it reads</th><th scope="col">Used by</th></tr></thead><tbody>{rows}</tbody></table></div>'
+            f'<h3 class="sh3 sh3b">A worked example</h3><pre class="code"><code>{html.escape(example, quote=False)}</code></pre>'
+            '<p class="small">Downloads name their files <code>YYYYMMDD_Oath-And-Action-&lt;ID&gt;-&lt;Dataset-Title&gt;</code>; the SVG carries the chart’s title and alt text as &lt;title&gt; and &lt;desc&gt;. '
+            'The SVG names its fonts and carries no font files, so a design tool needs Inter and Inter Tight installed. A PNG still would come from an export step the kit does not build yet. '
+            'Motion is not in the kit yet; the first animated chart arrives with a reduced-motion path that shows the final state.</p>')
 
 
 def sys_still():
     changes = [('Stays', 'Slots A, B, C, E, F and G in the same order and the same type; every printed number; every note; the source line.'),
-               ('Drops', 'Slot D: the Chart and Table switch and the downloads. The hover readout.'),
-               ('Adds', 'Alt text with every value, sent with the image, and a line in the notes that says where the table and data live.'),
-               ('Changes', 'The figure uses a 680 px artboard drawn by the same generator and exports at 2x for Substack and email. Nothing moves between slots.')]
-    lst = ''.join(f'<li><strong>{a}.</strong> {esc(b)}</li>' for a, b in changes)
-    return (f'<div class="stillgrid"><div class="stillbox" role="region" tabindex="0" aria-label="The S03 still at true size, 680 pixels wide. '
-            f'On a narrow screen, scroll inside the box.">{module("S03", "system", "white", mode="still", inst="-s", hl=3)}</div>'
-            f'<div><h3 class="sh3">Still and panel</h3><ul class="chg">{lst}</ul><p class="small">This page offers CSV and SVG from the panel. A PNG still would come from '
-            'an export step in the kit, which this concept does not build yet.</p></div></div>')
+               ('Drops', 'Slot D: the Chart and Table switch and the downloads. The tap and hover readout.'),
+               ('Adds', 'Alt text with every value and the source, sent with the image, and a line in the notes that says where the table and data live.'),
+               ('Changes', f'The figure uses a {CT["still"]} px artboard drawn by the same generator and exports at 2x for Substack and email. Nothing moves between slots.')]
+    lst = ''.join(f'<li><strong>{a}.</strong> {tx(b)}</li>' for a, b in changes)
+    return (f'<div class="stillgrid"><div>{module("S03", "system", "white", mode="still", inst="-s", hl=3)}</div>'
+            f'<div><h3 class="sh3">Still and panel</h3><ul class="chg">{lst}</ul></div></div>')
+
+
+READ_FULL = [
+    ('What kind of claim.', 'The small label above the title says what kind of claim the chart makes. A Finding reports what the data shows: a count, a measured rate or a record. '
+     'An Association says two things move together and does not say one causes the other. An Estimate says what would or may happen if stated assumptions hold. '
+     'An Illustration explains an idea with an example; its numbers are made up and labeled so.'),
+    ('How sure.', 'After the kind come a few words on the evidence: documented means on the public record; an official statistic comes from a government survey or count; '
+     'a secondary source is someone else’s list that Oath & Action checked against its own record.'),
+    ('The verb in the title.', 'The verb matches the evidence. Documented facts take plain record words: was, passed, logged. A strong research finding says raises or lowers. '
+     'Some evidence says can or may. Disputed evidence gives both readings. An untested idea says untested. A scenario says would or may.'),
+    ('The line under the title.', 'It names what was measured, where and when, and says when a scale does not start at zero.'),
+    ('Dark and gray.', 'The darkest mark is the one the title is about; gray marks are there for comparison. Where a chart uses a code of its own, such as the grades, its key says so.'),
+    ('Red.', 'A red mark, when a chart has one, points at the single thing the title names. It never marks a party or a side, and it carries no verdict on either.'),
+    ('Texture.', 'In the evidence charts, solid means documented or well supported, a light tint means plausible, and a hatch means contested, as solid, dashed and dash-dot lines do on the atlas.'),
+    ('Survey numbers.', 'Survey numbers come from a sample of people, so each has a margin of error. A margin of 0.5 points means the true figure most likely sits within half a point either way, '
+     'and a smaller change may be chance. When a table publishes no margin, a change of a point or two prints as little changed.'),
+    ('Records.', 'Codes such as RL07 or PW15 in a chart’s top line are record numbers. Search the atlas for them to read the full record.'),
+    ('Check it.', 'Every chart has a Table button, and its source sits under it in both states. The downloads give you the same numbers.')]
 
 
 def sys_read():
-    items = ['The small label above the title says what kind of claim the chart makes: a finding, an association, an estimate or an illustration.',
-             'The title says what the chart found. The line under it names what was measured, where and when.',
-             'The darkest mark is the one the title is about. Gray marks are there for comparison.',
-             'A red mark, when a chart has one, points at the single thing the title names. It never stands for a party, a side or a group.',
-             'Texture tells you how sure the atlas is. Solid means documented or well supported, dashes mean plausible, dash-dot means contested.',
-             'Codes such as RL07 or PW15 are record numbers. Search the atlas for them to read the full record.',
-             'Every chart has a Table button, and its source sits under it in both states. The downloads give you the same numbers.']
-    return '<ol class="readers">' + ''.join(f'<li>{esc(i)}</li>' for i in items) + '</ol>'
+    return '<ol class="readers">' + ''.join(f'<li><strong>{tx(a)}</strong> {tx(b)}</li>' for a, b in READ_FULL) + '</ol>'
 
 
 def view_system():
     secs = [
-        sys_section(1, 'The module', sys_anatomy(), 'One chart, every part named. The letters in the margin match the table.'),
-        sys_section(2, 'Sizes and spacing', sys_sizes()),
-        sys_section(3, 'Type ramp', sys_type(), 'Inter Tight for titles and big figures, Inter for everything a reader reads in or around a chart.'),
-        sys_section(4, 'Marks', sys_marks()),
-        sys_section(5, 'Codes after color', sys_codes(), 'Every code survives grayscale through a second channel: fill against outline, texture, shape or position.'),
-        sys_section(6, 'Palettes, measured', sys_palettes()),
-        sys_section(7, 'Red', sys_red()),
-        sys_section(8, 'Annotation and source lines', sys_rules()),
-        sys_section(9, 'Still image and interactive panel', sys_still()),
-        sys_section(10, 'How to read our charts', sys_read(), 'For readers. This list can run on the atlas\'s help page and under a report\'s first chart.'),
+        sys_section(1, 'How to read our charts', sys_read(), 'For readers. Every chart’s source line links here, and this list can run on the atlas’s help page and under a report’s first chart.', sid='how-to-read'),
+        sys_section(2, 'The module', sys_anatomy(), 'One chart, every part named. The letters in the margin match the table.'),
+        sys_section(3, 'Sizes and spacing', sys_sizes()),
+        sys_section(4, 'Type ramp', sys_type(), 'Inter Tight for titles and big figures, Inter for everything a reader reads in or around a chart. Every value here is read from CHART_TOKENS in the build script.'),
+        sys_section(5, 'Marks', sys_marks()),
+        sys_section(6, 'Codes after color', sys_codes(), 'Every code survives grayscale through a second channel: fill against outline, texture, shape or position.'),
+        sys_section(7, 'Palettes, measured', sys_palettes()),
+        sys_section(8, 'Red', sys_red()),
+        sys_section(9, 'Annotation, sources and reader words', sys_rules()),
+        sys_section(10, 'The kit', sys_kit()),
+        sys_section(11, 'Still image and interactive panel', sys_still()),
     ]
-    return (f'<section class="view g-white" data-view-root="system" aria-labelledby="h-sys" hidden><div class="wrap">'
-            '<header class="vhead"><p class="eyebrow">View 5 of 5 · System</p><h1 class="headline" id="h-sys">The kit on one sheet</h1>'
-            '<p class="deck">What a builder needs to make the next chart without asking: the module\'s seven slots, its sizes, the type ramp, the marks, '
-            'the codes, the palettes with measured contrast, the red rule, the annotation and source rules, and what changes between a still image and a panel.</p>'
+    return ('<section class="view g-white" data-view-root="system" data-title="System" aria-labelledby="h-sys" hidden><div class="wrap">'
+            '<header class="vhead"><p class="eyebrow">Chart system · Concept 03 · System</p><h1 class="headline" id="h-sys" tabindex="-1">The kit on one sheet</h1>'
+            '<p class="deck">The reading guide first, then what a builder needs to make the next chart without asking: the module’s seven slots, its sizes, the type ramp, the marks, '
+            'the codes, the palettes with measured contrast, the red rule, the annotation and source rules, the generators and what changes between a still image and a panel.</p>'
             f'</header>{"".join(secs)}</div></section>')
 
 
@@ -1613,83 +2167,104 @@ body{margin:0;font:400 17px/27px Inter,system-ui,sans-serif;background:#FFFFFF;c
 a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
 button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--focus,#4A7C74);outline-offset:2px}
+:focus-visible{outline:2px solid var(--focus,#121212);outline-offset:2px}
+[tabindex="-1"]:focus{outline:none}
 .wrap{max-width:1440px;margin:0 auto;padding:0 64px}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .skip{position:absolute;left:16px;top:-200px;z-index:200;padding:10px 14px;background:#FFFFFF;border:2px solid #121212;font:600 15px/1 Inter,sans-serif;color:#121212}
 .skip:focus{top:12px}
+.tn{font-variant-numeric:tabular-nums}
 /* masthead */
 .mast{border-bottom:1px solid var(--rule)}
 .mrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;min-height:72px}
-.wm{display:inline-flex;color:var(--ink)}
+.wm{display:inline-flex;color:var(--ink);padding:14px 0}
 .wm svg{--amp:#E63946}
 .wm16{display:none}
 .run{margin:0 0 0 48px;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--sec)}
 .tabs ul{display:flex;gap:22px;margin:0;padding:0;list-style:none}
-.tabs a{display:inline-flex;align-items:center;min-height:44px;font:600 15px/1 Inter,sans-serif;text-decoration:none;color:var(--ink)}
+.tabs a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;font:600 15px/1 Inter,sans-serif;text-decoration:none;color:var(--ink)}
 .tabs a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--ink)}
 .tabs a:hover{text-decoration:underline}
 /* view heads */
 .view{padding-bottom:96px}
-.vhead{padding:40px 0 8px;max-width:1080px}
+.vhead{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 48px;padding:40px 0 8px;align-items:start}
+.g-dark .vhead,[data-view-root="social"] .vhead,[data-view-root="system"] .vhead{display:block;max-width:1080px}
 .eyebrow{margin:0 0 8px;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .display{margin:0;font:800 56px/60px "Inter Tight",Inter,sans-serif;letter-spacing:-.035em;margin-left:-.04em}
 .headline{margin:0;font:800 40px/44px "Inter Tight",Inter,sans-serif;letter-spacing:-.03em;text-wrap:balance}
-.deck{margin:16px 0 0;font:400 19px/28px Inter,sans-serif;max-width:46em}
+.deck{margin:16px 0 0;font:400 19px/28px Inter,sans-serif;max-width:40em;text-wrap:pretty}
 .lede{margin:8px 0 24px;font:400 17px/27px Inter,sans-serif;max-width:46em}
-.howto{margin:16px 0 0;font:400 15px/23px Inter,sans-serif;color:var(--sec)}
-.vlinks ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;margin:24px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.vlinks ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin:24px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}
 .vlinks a{display:grid;gap:2px;padding:10px 0 12px;min-height:44px;text-decoration:none}
 .vlinks a:hover .vl-t{text-decoration:underline}
 .vl-t{font:600 17px/24px Inter,sans-serif}.vl-d{font:400 14px/20px Inter,sans-serif;color:var(--sec)}
+.howto-s{border-top:2px solid var(--ink);padding-top:10px}
+.hs-h{margin:0;font:800 22px/26px "Inter Tight",Inter,sans-serif;letter-spacing:-.02em}
+.howto-s ul{margin:0;padding:0;list-style:none;font:400 15px/22px Inter,sans-serif}
+.howto-s li{padding:5px 0;border-top:1px solid var(--grid)}
+.hs-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:0 16px}
+.hs-more{margin:0;font:600 15px/22px Inter,sans-serif}
+.hs-more a{display:inline-flex;align-items:center;min-height:44px}
+.mindex ul{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 24px;margin:32px 0 0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.mindex a{display:flex;gap:8px;align-items:center;min-height:44px;border-bottom:1px solid var(--grid);font:400 15px/20px Inter,sans-serif;text-decoration:none}
+.mindex a:hover{text-decoration:underline}
+.mi-id{font:600 13px/18px Inter,sans-serif;color:var(--sec);font-variant-numeric:tabular-nums}
 /* spec rows: module in 8 columns, the studio note in the last 3 */
 .specs{display:grid;gap:72px;margin-top:48px}
 .spec-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);align-items:start}
 .spec-row>.mod{grid-column:1/span 8}
 .spec-row>.strip{grid-column:10/span 3}
 /* the module */
-.mod{margin:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding-top:12px;container-type:inline-size;container-name:mod;min-width:0}
+.mod{margin:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);padding-top:12px;container-type:inline-size;container-name:mod;min-width:0;scroll-margin-top:16px}
 .slot{position:relative}
 .sa{display:flex;justify-content:space-between;align-items:baseline;gap:4px 16px;flex-wrap:wrap}
 .ev{margin:0;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.idx{margin:0;font:600 13px/18px Inter,sans-serif;color:var(--sec);font-variant-numeric:tabular-nums}
+.gw{font-weight:400;letter-spacing:0;text-transform:none;color:var(--sec)}
+.idx{margin:0;font:600 13px/18px Inter,sans-serif;color:var(--sec)}
 .mt{margin:8px 0 0;font:800 28px/32px "Inter Tight",Inter,sans-serif;letter-spacing:-.025em;max-width:30em;text-wrap:balance}
-.ms{margin:8px 0 0;font:400 15px/22px Inter,sans-serif;color:var(--sec);max-width:54em}
+.ms{margin:8px 0 0;font:400 15px/23px Inter,sans-serif;color:var(--sec);max-width:38em;text-wrap:pretty}
+.ms2{margin-top:4px;color:var(--ink)}
 .ctl{display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap;margin-top:16px}
 .sw{display:inline-flex;border:1px solid var(--ink)}
-.sw button{min-height:32px;min-width:72px;padding:0 14px;border:0;background:var(--gr);color:var(--ink);font:600 14px/1 Inter,sans-serif;cursor:pointer}
+.sw button{min-height:32px;min-width:84px;padding:0 14px;border:0;background:var(--gr);color:var(--ink);font:600 14px/1 Inter,sans-serif;cursor:pointer}
 .sw button+button{border-left:1px solid var(--ink)}
 .sw button[aria-pressed="true"]{background:var(--ink);color:var(--gr)}
+.sw button[aria-pressed="true"]::before{content:"\2713\00a0" / ""}
 .dls{display:flex;gap:8px;align-items:center}
 .dlh{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
 .dl{min-height:32px;min-width:48px;padding:0 10px;border:1px solid var(--ctx);background:var(--gr);color:var(--ink);font:600 14px/1 Inter,sans-serif;cursor:pointer}
 .dl:hover,.sw button:hover{text-decoration:underline;text-underline-offset:3px}
 .se{margin-top:16px}
 .pane-c{min-height:20px}
-.art{display:none;width:100%;height:auto;overflow:visible}
-.art-n{display:block;max-width:358px}
-@container mod (min-width:560px){.art-n{display:none}.art-m{display:block;max-width:560px}}
-@container mod (min-width:866px){.art-m{display:none}.art-w{display:block;max-width:866px}}
+.art{display:none;height:auto;max-width:none;overflow:visible}
+.art-n{display:block}
+@container mod (min-width:§art_p§px){.art-n{display:none}.art-p{display:block}}
+@container mod (min-width:§art_m§px){.art-p{display:none}.art-m{display:block}}
+@container mod (min-width:§art_w§px){.art-m{display:none}.art-w{display:block}}
+.mod.still{width:§still§px;max-width:none}
 .still .art{display:block}
-.readout{margin:12px 0 0;min-height:20px;font:400 14px/20px Inter,sans-serif;color:var(--sec)}
+.readout{margin:12px 0 0;min-height:20px;font:400 14px/20px Inter,sans-serif;color:var(--sec);max-width:36em}
 .sf{margin-top:16px}
-.notes{font:400 14px/20px Inter,sans-serif;max-width:52em}
-.notes p{margin:0 0 6px}
-.cn summary{display:flex;align-items:center;min-height:32px;font:600 14px/20px Inter,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px;width:max-content;max-width:100%}
-.cn p{margin:4px 0 8px;padding-left:12px;border-left:2px solid var(--ink)}
+.notes{font:400 14px/20px Inter,sans-serif;max-width:36em;text-wrap:pretty}
+.notes p{margin:0 0 8px}
+.disc{padding-left:10px;border-left:2px solid var(--ink)}
 .sg2{margin-top:12px;padding-bottom:16px}
-.src{margin:0;display:flex;justify-content:space-between;gap:4px 24px;font:400 13px/18px Inter,sans-serif;color:var(--sec);overflow-wrap:anywhere}
-.src .s1{max-width:52em}.src .s2{flex:none;white-space:nowrap}
+.src{margin:0;display:flex;justify-content:space-between;gap:4px 24px;font:400 13px/18px Inter,sans-serif;color:var(--sec);text-wrap:pretty}
+.src .s1{max-width:46em}.src .s2{flex:none;max-width:16em;text-align:right}
+.src a{color:var(--ink)}
 .eqh{margin:0 0 8px;font:400 14px/20px Inter,sans-serif;color:var(--sec)}
-.alt{margin:0 0 16px;padding:10px 12px;border-left:2px solid var(--ink);font:400 14px/20px Inter,sans-serif;max-width:52em}
+.eql{margin:0 0 8px;padding-left:18px;font:400 14px/20px Inter,sans-serif;max-width:36em}
+.alt{margin:0 0 16px;padding:10px 12px;border-left:2px solid var(--ink);font:400 14px/20px Inter,sans-serif;max-width:36em}
 .alt p{margin:0 0 4px}.alt-h{font-weight:600}
 /* tables */
 .tbl{max-width:100%}
-table.eqt,table.st2{width:100%;border-collapse:collapse;font:400 14px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
+table.eqt,table.st2{width:100%;border-collapse:collapse;font:400 14px/20px Inter,sans-serif}
 .eqt caption{text-align:left;font:600 14px/20px Inter,sans-serif;padding-bottom:6px}
 .eqt th,.eqt td,.st2 th,.st2 td{border-top:1px solid var(--grid);padding:6px 12px 6px 0;text-align:left;vertical-align:top}
 .eqt thead th,.st2 thead th{border-top:1px solid var(--ink);font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .eqt tbody th{font-weight:600}
+td.n,.st2 td.n{font-variant-numeric:tabular-nums}
+.eqt+.tbl,.tbl+.tbl{margin-top:16px}
 .tl{display:none}
 /* S06 comparison table */
 .sg-kh{margin:0 0 6px;font:400 13px/18px Inter,sans-serif;color:var(--sec)}
@@ -1697,17 +2272,21 @@ table.eqt,table.st2{width:100%;border-collapse:collapse;font:400 14px/20px Inter
 .sg-key li{display:inline-flex;gap:6px;align-items:center}
 .sgt{width:100%;border-collapse:collapse;table-layout:fixed;font:400 14px/19px Inter,sans-serif}
 .sgt thead th{text-align:left;vertical-align:bottom;padding:0 8px 6px;border-bottom:1px solid var(--ink);font:600 13px/17px Inter,sans-serif}
-.sgt thead th:first-child{width:30%;padding-left:0}
+.sgt thead th:first-child{width:31%;padding-left:0}
 .sgt tbody th{text-align:left;vertical-align:top;padding:8px 8px 8px 0;font:600 14px/19px Inter,sans-serif;border-bottom:1px solid var(--grid)}
 .sgt td{vertical-align:top;padding:8px;border-bottom:1px solid var(--grid);border-left:2px solid var(--gr)}
-.sid{display:inline-block;min-width:34px;font:600 13px/19px Inter,sans-serif;color:var(--sec)}
-.cw{display:flex;gap:6px;align-items:flex-start}.cw .gl{flex:none;margin-top:1px}
+.sid{float:left;width:40px;font:600 13px/19px Inter,sans-serif;color:var(--sec)}
+.snm{display:block;margin-left:40px}
+.sgl{display:block;margin-top:2px;font:400 13px/18px Inter,sans-serif;color:var(--sec)}
+.cw{display:flex;gap:7px;align-items:flex-start}.cw .gl{flex:none}
 .fam-l{display:none}
 .c-up{background:var(--vdl)}.c-sup{background:var(--vdxl)}.c-fod{background:var(--prxl)}.c-down{background:var(--prl)}
-.gl .gf-up{fill:var(--tow)}.gl .gs-up{fill:none;stroke:var(--tow);stroke-width:1.6}
-.gl .gf-down{fill:var(--pr)}.gl .gs-down{fill:none;stroke:var(--pr);stroke-width:1.6}
-.gl .gf-flat{fill:var(--ctx)}
-@container mod (max-width:639px){
+.gl .gbox{fill:var(--gr);stroke:var(--ctx);stroke-width:1}
+.gl .gf-up{fill:var(--tow)}.gl .gs-up{fill:none;stroke:var(--tow);stroke-width:2.2}
+.gl .gf-down{fill:var(--pr)}.gl .gs-down{fill:none;stroke:var(--pr);stroke-width:2.2}
+.gl .gf-flat{fill:var(--ctx)}.gl .gs-flat{fill:none;stroke:var(--ctx);stroke-width:2.4}
+.gl .gf-mix{fill:var(--ink)}.gl .gs-mix{fill:none;stroke:var(--ink);stroke-width:2}
+@container mod (max-width:§table_reflow§px){
  .sgt,.sgt tbody,.sgt tr,.sgt th,.sgt td{display:block;width:auto}
  .sgt thead{display:none}
  .sgt tr{border-top:1px solid var(--ink);padding:6px 0 10px}
@@ -1720,29 +2299,25 @@ table.eqt,table.st2{width:100%;border-collapse:collapse;font:400 14px/20px Inter
  .eqt th,.eqt td{border:0;padding:2px 0}
  .eqt .tl{display:block;font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--sec)}
 }
-/* S08 unit grid */
-.ul{display:grid;grid-template-columns:160px minmax(0,1fr) minmax(0,1fr);column-gap:0}
+/* S08 unit ledger */
+.ul{display:grid;gap:0}
+.ul-row{display:grid;gap:6px;border-top:1px solid var(--grid);padding:10px 0 12px}
 .ul p{margin:0}
-.ul-ph{padding:0 0 10px 16px}.ul-ph:not(.b){padding-left:0;padding-right:16px}
-.ul-pt{font:600 15px/20px Inter,sans-serif}.ul-pn{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
-.ul-dl,.ul-cell{border-top:1px solid var(--grid);padding:10px 16px 12px 0}
-.ul-cell.b,.ul-ph.b{border-left:1px solid var(--grid);padding-left:16px}
-.ul-dw{font:600 15px/20px Inter,sans-serif}.ul-dn{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
-.ul-cw{display:none;font:600 13px/18px Inter,sans-serif;margin-bottom:6px}
+.ul-dw{font:600 15px/20px Inter,sans-serif}.ul-dn{font:700 15px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
 .ul-us{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .u{display:block;flex:none;overflow:visible}
-.ul-c{margin-left:4px;font:700 15px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
-.ul-none{font:400 13px/18px Inter,sans-serif;color:var(--sec);min-height:28px;display:inline-flex;align-items:center}
-@container mod (max-width:699px){
- .ul{display:flex;flex-direction:column}
- .ul-h0,.ul-dl{display:none}
- .ul-ph,.ul-cell{order:var(--o)}
- .ul-ph,.ul-ph:not(.b),.ul-ph.b,.ul-cell,.ul-cell.b{border-left:0;padding-left:0;padding-right:0}
- .ul-ph{border-top:1px solid var(--ink);padding-top:8px;margin-top:8px}
- .ul-ph.b{margin-top:20px}
- .ul-cell{padding:8px 0 10px}
- .ul-cw{display:block}
-}
+.ul-k{display:flex;gap:8px;align-items:center;margin:4px 0 0;font:400 14px/20px Inter,sans-serif}.ul-k .u{flex:none}
+.ul-none{font:400 13px/18px Inter,sans-serif;color:var(--sec);min-height:24px;display:inline-flex;align-items:center}
+/* S09 event register */
+.ereg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 20px;margin-top:20px}
+.er-c{border-top:1px solid var(--ink);padding-top:8px}
+.er-h{margin:0;font:600 15px/20px Inter,sans-serif}
+.er-q{margin:2px 0 8px;font:400 13px/18px Inter,sans-serif;color:var(--sec)}
+.er-l{margin:0;padding:0;list-style:none;font:400 13px/18px Inter,sans-serif}
+.er-l li{display:grid;gap:1px;padding:6px 0;border-top:1px solid var(--grid)}
+.er-y{color:var(--sec)}.er-n{font-weight:600}.er-d{color:var(--sec)}
+@container mod (max-width:§four_panels§px){.ereg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container mod (max-width:§two_panels§px){.ereg{grid-template-columns:minmax(0,1fr)}}
 /* studio strip: on the other ground, so nobody reads it as chart copy */
 .strip{background:var(--alt);padding:16px 16px 8px;font:400 14px/20px Inter,sans-serif;color:var(--ink)}
 .g-dark .strip{border:1px solid var(--ctx)}
@@ -1751,11 +2326,11 @@ table.eqt,table.st2{width:100%;border-collapse:collapse;font:400 14px/20px Inter
 .sn-id{font:800 20px/24px "Inter Tight",Inter,sans-serif;letter-spacing:-.02em}
 .strip .k{font-weight:600}
 /* SVG chart styles */
-svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
+svg text{font-family:Inter,sans-serif}
 .x13{font-size:13px;font-weight:400;fill:var(--sec)}
+.xkey{font-size:13px;font-weight:400;fill:var(--ink)}
 .x13b{font-size:13px;font-weight:600;fill:var(--ink)}
 .x13s{font-size:13px;font-weight:600;fill:var(--sec)}
-.x14{font-size:14px;font-weight:400;fill:var(--ink)}
 .x15{font-size:15px;font-weight:400;fill:var(--ink)}
 .x15b{font-size:15px;font-weight:600;fill:var(--ink)}
 .x15k{font-size:15px;font-weight:700;fill:var(--ink)}
@@ -1763,7 +2338,7 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .xint{font-size:13px;font-weight:600;fill:var(--on-tow)}
 .xins{font-size:13px;font-weight:600;fill:var(--on-some)}
 .xbig{font-family:"Inter Tight",Inter,sans-serif;font-weight:800;letter-spacing:-.03em;fill:var(--ink)}
-.g-dark .x13,.g-dark .x15,.g-dark .x14{font-weight:500}
+.g-dark .x13,.g-dark .x15,.g-dark .xkey{font-weight:500}
 .grid{stroke:var(--grid);stroke-width:1}
 .base{stroke:var(--ink);stroke-width:1}
 .lane{stroke:var(--ctx);stroke-width:1}
@@ -1771,14 +2346,18 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .sep{stroke:var(--gr);stroke-width:2}
 .track{fill:none;stroke:var(--grid);stroke-width:1}
 .tick2{stroke:var(--ink);stroke-width:2}
+.knock{fill:var(--gr)}
+.frame{fill:none;stroke:var(--gr);stroke-width:1.5}
 .f-ink{fill:var(--ink)}.f-ctx{fill:var(--ctx)}.f-g2{fill:var(--g2)}
 .f-away{fill:var(--away)}.f-tow{fill:var(--tow)}
 .f-kept{fill:var(--kept);stroke:var(--ctx);stroke-width:1}
 .f-pend{fill:var(--gr);stroke:var(--ink);stroke-width:1.5}
 .f-some{fill:var(--some)}
 .f-none{fill:var(--gr);stroke:var(--ctx);stroke-width:1}
+.f-pl{fill:var(--pl);stroke:var(--ink);stroke-width:1}
 .f-tex{stroke:var(--ink);stroke-width:1}
-.pt{stroke:var(--ink);stroke-width:2;fill:none}
+.pbg{fill:var(--gr)}.phs{stroke:var(--ink);stroke-width:1.5}.pdt{fill:var(--ink)}
+.lsam{stroke:var(--ink);stroke-width:2;fill:none}
 .ring{fill:var(--gr);stroke:var(--ink);stroke-width:1.5}
 .l-ink{stroke:var(--ink);stroke-width:3;fill:none;stroke-linejoin:round;stroke-linecap:round}
 .l-ctx{stroke:var(--ctx);stroke-width:1.5;fill:none;stroke-linejoin:round}
@@ -1790,12 +2369,15 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .stepdown .redmark{stroke:var(--ink)}
 .stepdown .redkey{display:none}
 [data-tip]{cursor:default}
+@media (forced-colors:active){
+ .art,.u,.gl,.mks,.art-c{forced-color-adjust:none}
+ .sw button[aria-pressed="true"]{forced-color-adjust:none;background:Highlight;color:HighlightText}
+}
 /* social */
 .socwrap{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:32px;align-items:start}
 .socwrap>.strip{max-width:866px}
 .social{margin:0;min-width:0}
 .cardbox{overflow:auto;width:max-content;max-width:100%;border:1px solid var(--rule)}
-.sigwrap{display:block;width:1080px}
 .card{width:1080px;height:1350px;padding:64px;display:flex;flex-direction:column;overflow:hidden}
 .c-top{display:flex;justify-content:space-between;align-items:center;height:40px;color:#121212}
 .wmd{--amp:#E63946;display:block}
@@ -1805,22 +2387,22 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .c-art{margin-top:28px}
 .c-art svg{display:block}
 .c-s{margin:auto 0 0;padding-top:24px;font:400 20px/28px Inter,sans-serif;color:#4E535B}
+.c-cr{margin:6px 0 0;font:600 20px/28px Inter,sans-serif;color:#121212}
 /* system sheet */
 .ssec{margin-top:72px;padding-top:16px;border-top:2px solid var(--ink)}
 .sh{margin:0;font:800 40px/44px "Inter Tight",Inter,sans-serif;letter-spacing:-.03em}
 .sh .sn{color:var(--sec)}
 .sh3{margin:0 0 12px;font:800 22px/26px "Inter Tight",Inter,sans-serif;letter-spacing:-.02em}
+.sh3b{margin-top:28px}
 .small{font:400 14px/20px Inter,sans-serif;color:var(--sec);max-width:52em}
-.body2{font:400 17px/27px Inter,sans-serif;max-width:46em}
+.body2{font:400 17px/27px Inter,sans-serif;max-width:40em}
 .anat-grid{display:grid;grid-template-columns:minmax(0,914px);gap:32px;align-items:start;margin-top:8px}
 .anat{padding-left:48px}
-.anat .slot{border-left:0}
 .slotmark{position:absolute;left:-48px;top:0;display:flex;align-items:center;justify-content:center;width:24px;height:24px;background:#121212;color:#FFFFFF;font:700 13px/1 Inter,sans-serif}
 .anat .slot::before{content:"";position:absolute;left:-14px;top:2px;bottom:2px;border-left:1px solid var(--ctx)}
 .slk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#121212;color:#FFFFFF;font:700 13px/1 Inter,sans-serif;margin-right:6px}
-.st2 tbody th{font-weight:600;white-space:nowrap}
+.st2 tbody th{font-weight:600}
 .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:8px}
-.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:8px}
 .sizes{margin:0;padding:0;list-style:none}
 .sizes li{padding:8px 0 10px;border-top:1px solid var(--grid)}
 .szb{display:block;height:16px;background:#121212;margin-bottom:6px}
@@ -1828,45 +2410,48 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 .steps{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin:16px 0 0;padding:0;list-style:none}
 .steps li{display:grid;justify-items:center;gap:6px;font:600 13px/16px Inter,sans-serif;font-variant-numeric:tabular-nums}
 .sp{display:block;background:#121212}
+.brks{margin:0;padding-left:18px;font:400 14px/20px Inter,sans-serif;columns:2;column-gap:24px}
 .ramp{margin:0;padding:0;list-style:none}
-.ramp li{display:grid;grid-template-columns:200px 300px minmax(0,1fr);gap:16px;align-items:baseline;padding:12px 0;border-top:1px solid var(--grid)}
+.ramp li{display:grid;grid-template-columns:180px 320px minmax(0,1fr);gap:16px;align-items:baseline;padding:12px 0;border-top:1px solid var(--grid)}
 .ramp p{margin:0}
 .tr-n{font:600 15px/22px Inter,sans-serif}.tr-sp{font:400 14px/20px Inter,sans-serif;color:var(--sec)}
-.mt-s{font:800 28px/32px "Inter Tight",Inter,sans-serif;letter-spacing:-.025em}
-.ev-s{font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.ms-s{font:400 15px/22px Inter,sans-serif;color:var(--sec)}
-.big-s{font:800 96px/96px "Inter Tight",Inter,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.sl-s{font:600 15px/18px Inter,sans-serif}
-.dl-s{font:600 13px/16px Inter,sans-serif;font-variant-numeric:tabular-nums}
-.ix-s{font:600 13px/16px Inter,sans-serif;color:var(--sec);font-variant-numeric:tabular-nums}
-.nt-s{font:400 13px/16px Inter,sans-serif;color:var(--sec)}
-.ns-s{font:400 14px/20px Inter,sans-serif}
-.sr-s{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
+.ts-title{font:800 28px/32px "Inter Tight",Inter,sans-serif;letter-spacing:-.025em}
+.ts-kind{font:700 13px/18px Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.ts-grade_words{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
+.ts-index{font:600 13px/18px Inter,sans-serif;color:var(--sec)}
+.ts-measure{font:400 15px/23px Inter,sans-serif;color:var(--sec)}
+.ts-big{font:800 96px/96px "Inter Tight",Inter,sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-left:-.04em}
+.ts-series{font:600 15px/18px Inter,sans-serif}
+.ts-data{font:600 13px/16px Inter,sans-serif;font-variant-numeric:tabular-nums}
+.ts-note{font:400 13px/16px Inter,sans-serif;color:var(--sec)}
+.ts-notes_slot{font:400 14px/20px Inter,sans-serif}
+.ts-source{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
 .mklist{margin:0;padding:0;list-style:none}
 .mklist li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--grid);font:400 14px/20px Inter,sans-serif}
-.mks{display:block;overflow:visible}
-.gl-list li{grid-template-columns:20px minmax(0,1fr)}
+.mks{display:inline-block;vertical-align:middle;overflow:visible}
+.gl-list li{grid-template-columns:24px minmax(0,1fr)}
+.gtab td{vertical-align:middle}
 .paltab td,.paltab th{vertical-align:middle}
 .pal{display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
-.sw3{display:inline-block;width:28px;height:20px;outline:1px solid;outline-offset:0;box-shadow:inset 0 0 0 1px rgba(93,99,109,.5)}
+.sw3{display:inline-block;width:28px;height:20px;box-shadow:inset 0 0 0 1px #5D636D}
 .hx{font:400 13px/18px Inter,sans-serif;color:var(--sec)}
 .cr{font:600 14px/20px Inter,sans-serif;font-variant-numeric:tabular-nums}
 .pn{display:block;font:400 13px/18px Inter,sans-serif;color:var(--sec)}
 .rule{margin:8px 0 24px;padding:4px 0 4px 16px;border-left:2px solid var(--ink);max-width:60em;font:400 15px/23px Inter,sans-serif}
 .rule p{margin:0 0 8px}.rule footer{font:600 13px/18px Inter,sans-serif;color:var(--sec)}
 .askbar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:16px 0 24px}
-.tgl{min-height:40px;padding:0 16px;border:1.5px solid var(--ink);background:var(--gr);color:var(--ink);font:600 15px/1 Inter,sans-serif;cursor:pointer}
+.tgl{min-height:44px;padding:0 16px;border:1.5px solid var(--ink);background:var(--gr);color:var(--ink);font:600 15px/1 Inter,sans-serif;cursor:pointer}
 .tgl[aria-pressed="true"]{background:var(--ink);color:var(--gr)}
 .askwrap{display:inline-flex;gap:12px;align-items:center}
 .ask{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:#E63946;color:#FFFFFF;font:700 19px/1 Inter,sans-serif;text-decoration:none}
 .ill{font:600 13px/18px Inter,sans-serif;color:var(--sec)}
 .redmod{max-width:866px}
-.rules,.readers{margin:8px 0 0;padding-left:24px;max-width:60em;font:400 16px/25px Inter,sans-serif}
+.rules,.readers{margin:8px 0 0;padding-left:32px;max-width:46em;font:400 16px/25px Inter,sans-serif}
 .rules li,.readers li{margin-bottom:10px}
+.code{margin:0 0 12px;padding:12px 14px;background:var(--alt);overflow-x:auto;font:400 13px/19px Inter,sans-serif;white-space:pre-wrap;max-width:60em}
+code{font:inherit;font-weight:600}
 .stillgrid{display:grid;grid-template-columns:minmax(0,682px) minmax(0,1fr);gap:40px;align-items:start;margin-top:8px}
 .stillbox{overflow:auto;max-width:100%;width:max-content}
-.stillbox>.mod.still{width:680px}
-.still .art{width:680px;max-width:none}
 .chg{margin:0 0 12px;padding-left:20px;font:400 15px/23px Inter,sans-serif}.chg li{margin-bottom:8px}
 .dtok{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px;margin:20px 0 0;padding:0;list-style:none;font:500 14px/20px Inter,sans-serif}
 .dtok li{display:flex;gap:10px;align-items:center}
@@ -1876,28 +2461,35 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
 @media (max-width:1299.98px){
  .spec-row>.mod,.spec-row>.strip{grid-column:1/-1}
  .spec-row>.strip{max-width:866px;margin-top:16px}
- .anat-grid,.stillgrid{grid-template-columns:minmax(0,1fr)}
+ .stillgrid{grid-template-columns:minmax(0,1fr)}
+ .mindex ul{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:1099.98px){
- .socwrap{grid-template-columns:minmax(0,1fr)}
- .three-col{grid-template-columns:minmax(0,1fr)}
+ .vhead{grid-template-columns:minmax(0,1fr)}
  .ramp li{grid-template-columns:minmax(0,1fr);gap:4px}
 }
 @media (max-width:899.98px){
  .wrap{padding:0 16px}
- .mrow{grid-template-columns:1fr;gap:8px;padding-top:16px}
+ .mrow{grid-template-columns:1fr;gap:0;padding-top:4px}
  .wm24{display:none}.wm16{display:block}
  .run{display:none}
- .tabs ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+ .tabs ul{justify-content:space-between;gap:8px}
+ .tabs a{font-size:14px;white-space:nowrap}
+ .t-more{display:none}
+ .vhead{padding-top:20px;gap:16px}
  .display{font-size:36px;line-height:40px;letter-spacing:-.03em}
  .headline,.sh{font-size:30px;line-height:34px}
- .deck{font-size:17px;line-height:25px}
- .vlinks ul{grid-template-columns:minmax(0,1fr)}
- .specs{gap:56px;margin-top:32px}
- .mt{font-size:22px;line-height:26px}
- .sw button,.dl,.cn summary{min-height:44px}
- .src{flex-direction:column}
+ .deck{font-size:16px;line-height:24px;margin-top:8px}
+ .deck-more,.vlinks,.mindex{display:none}
+ .hs-h{font-size:20px;line-height:24px}
+ .howto-s ul{font-size:14px;line-height:20px}
+ .howto-s li{padding:3px 0}
+ .specs{gap:56px;margin-top:24px}
+ .mt{font-size:22px;line-height:26px;letter-spacing:-.02em}
+ .sw button,.dl{min-height:44px}
+ .src{flex-direction:column}.src .s2{text-align:left;max-width:none}
  .two-col{grid-template-columns:minmax(0,1fr)}
+ .brks{columns:1}
  .anat{padding-left:0}
  .slotmark,.anat .slot::before{display:none}
  .dtok{grid-template-columns:minmax(0,1fr)}
@@ -1905,43 +2497,75 @@ svg text{font-family:Inter,sans-serif;font-variant-numeric:tabular-nums}
  table.st2 thead{display:none}
  table.st2 tr{border-top:1px solid var(--ink);padding:6px 0}
  table.st2 th,table.st2 td{border:0;padding:2px 0}
- .st2 tbody th{white-space:normal}
 }
 """
+
+
+def css():
+    """The stylesheet with its container breakpoints read from CHART_TOKENS, so the artboards and reflows match the kit."""
+    art, br = dict(CT['artboards']), CT['breaks']
+    vals = {'art_p': art['p'], 'art_m': art['m'], 'art_w': art['w'], 'still': CT['still'],
+            'table_reflow': br['table_reflow'] - 1, 'four_panels': br['four_panels'] - 1, 'two_panels': br['two_panels'] - 1}
+    out = re.sub(r'§(\w+)§', lambda m: str(vals[m.group(1)]), CSS)
+    assert '§' not in out
+    return out
 
 JS = r"""
 (function(){
   var views=[].slice.call(document.querySelectorAll('[data-view-root]'));
   var ground={white:'g-white',newsprint:'g-news',dark:'g-dark',social:'g-white',system:'g-white'};
-  var current=null;
-  function show(first){
-    var v=location.hash.slice(1);
-    var known=views.some(function(e){return e.getAttribute('data-view-root')===v;});
-    if(!known){ if(current&&!first) return; v='white'; }
+  var base=document.title, current=null;
+  function rootOf(el){ return el && el.closest('[data-view-root]'); }
+  function activate(v){
     current=v;
     views.forEach(function(e){ e.hidden = e.getAttribute('data-view-root')!==v; });
     document.body.className=ground[v];
+    var r=document.querySelector('[data-view-root="'+v+'"]');
+    document.title=(r.getAttribute('data-title')||v)+' · '+base;
     [].forEach.call(document.querySelectorAll('.tabs a'),function(a){
       if(a.getAttribute('href')==='#'+v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
     });
-    if(!first) window.scrollTo(0,0);
+    return r;
   }
-  window.addEventListener('hashchange',function(){show(false);});
-  show(true);
+  function route(first){
+    var h=location.hash.slice(1);
+    var isView=views.some(function(e){return e.getAttribute('data-view-root')===h;});
+    if(isView){
+      var r=activate(h);
+      if(!first){ window.scrollTo(0,0); var hd=r.querySelector('h1'); if(hd) hd.focus({preventScroll:true}); }
+      return;
+    }
+    var el=h&&document.getElementById(h), r2=rootOf(el);
+    if(r2){
+      activate(r2.getAttribute('data-view-root'));
+      var target=el.matches('figure')?el.querySelector('[data-role="title"]'):el;
+      el.scrollIntoView();
+      if(!first&&target&&target.focus) target.focus({preventScroll:true});
+      return;
+    }
+    if(!current) activate('white');
+  }
+  window.addEventListener('hashchange',function(){route(false);});
+  route(true);
   function save(name,type,text){
     var b=new Blob([text],{type:type}); var a=document.createElement('a');
     a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click();
     setTimeout(function(){URL.revokeObjectURL(a.href); a.remove();},800);
   }
-  var P=['fill','stroke','stroke-width','stroke-linecap','stroke-linejoin','font-family','font-size','font-weight','letter-spacing','font-variant-numeric','text-anchor','paint-order'];
-  function svgText(s){
+  var P=['fill','stroke','stroke-width','stroke-linecap','stroke-linejoin','stroke-dasharray','font-family','font-size','font-weight','letter-spacing','font-variant-numeric','text-anchor'];
+  function svgText(s,title,desc){
+    var hidden=s.closest('[hidden]'); if(hidden) hidden.hidden=false;
     var c=s.cloneNode(true), src=[s].concat([].slice.call(s.querySelectorAll('*'))), dst=[c].concat([].slice.call(c.querySelectorAll('*')));
     src.forEach(function(el,i){ var cs=getComputedStyle(el); P.forEach(function(p){ var v=cs.getPropertyValue(p); if(v) dst[i].style.setProperty(p,v); }); });
-    c.setAttribute('xmlns','http://www.w3.org/2000/svg');
-    var bg=document.createElementNS('http://www.w3.org/2000/svg','rect');
-    bg.setAttribute('width','100%'); bg.setAttribute('height','100%');
-    bg.setAttribute('fill',getComputedStyle(s).getPropertyValue('--gr').trim()||'#FFFFFF');
-    c.insertBefore(bg,c.firstChild);
+    if(hidden) hidden.hidden=true;
+    var NS='http://www.w3.org/2000/svg';
+    c.setAttribute('xmlns',NS); c.removeAttribute('style'); c.setAttribute('role','img');
+    var t=document.createElementNS(NS,'title'); t.textContent=title;
+    var d=document.createElementNS(NS,'desc'); d.textContent=desc;
+    var bg=document.createElementNS(NS,'rect'); var vb=s.viewBox.baseVal;
+    bg.setAttribute('x',vb.x); bg.setAttribute('y',vb.y); bg.setAttribute('width',vb.width); bg.setAttribute('height',vb.height);
+    bg.setAttribute('fill',getComputedStyle(s.closest('.mod')).getPropertyValue('--gr').trim()||'#FFFFFF');
+    c.insertBefore(bg,c.firstChild); c.insertBefore(d,c.firstChild); c.insertBefore(t,c.firstChild);
     return '<?xml version="1.0" encoding="UTF-8"?>\n'+new XMLSerializer().serializeToString(c);
   }
   document.addEventListener('click',function(e){
@@ -1953,13 +2577,15 @@ JS = r"""
       m.querySelector('.pane-t').hidden = want!=='t';
       return;
     }
-    var d=e.target.closest('[data-dl]');
-    if(d){
-      var sid=d.getAttribute('data-for'), kind=d.getAttribute('data-dl'), mod=d.closest('.mod');
-      if(kind==='csv'){ save(sid+'-data.csv','text/csv;charset=utf-8',JSON.parse(document.getElementById('csv-'+sid).textContent)); }
+    var dl=e.target.closest('[data-dl]');
+    if(dl){
+      var cid=dl.getAttribute('data-for'), kind=dl.getAttribute('data-dl'), mod=dl.closest('.mod'), file=dl.getAttribute('data-file');
+      if(kind==='csv'){ save(file+'.csv','text/csv;charset=utf-8',JSON.parse(document.getElementById('csv-'+cid).textContent)); }
       else{
-        var arts=[].slice.call(mod.querySelectorAll('svg.art')).filter(function(s){return s.getBoundingClientRect().width>0;});
-        if(arts.length) save(sid+'-chart.svg','image/svg+xml',svgText(arts[0]));
+        var w=mod.clientWidth, arts=[].slice.call(mod.querySelectorAll('svg.art'));
+        arts.sort(function(a,b){return (+b.getAttribute('data-w'))-(+a.getAttribute('data-w'));});
+        var pick=arts.filter(function(s){return +s.getAttribute('data-w')<=w+1;})[0]||arts[arts.length-1];
+        if(pick) save(file+'.svg','image/svg+xml',svgText(pick,mod.getAttribute('data-title'),mod.getAttribute('data-desc')));
       }
       return;
     }
@@ -1981,20 +2607,29 @@ JS = r"""
 
 
 def build():
-    csvs = ''.join(f'<script type="application/json" id="csv-{s}">{json.dumps(csv_rows(s)).replace("</", "<\\/")}</script>' for s in ORDER)
+    pages = [masthead(), '<main id="main" tabindex="-1">', view_white(), view_newsprint(), view_dark(), view_social(), view_system(), '</main>']
+    csvs = ''.join(f'<script type="application/json" id="csv-{c}">{json.dumps(csv_text(c)).replace("</", "<\\/")}</script>' for c in CHARTS)
     page = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             '<meta name="chart-views" content="white newsprint dark social system">'
             '<title>Chart system 03, Instrument</title>'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&family=Lora:ital@1&display=swap" rel="stylesheet">'
-            f'<style>{ground_css()}{CSS}</style></head><body class="g-white">'
-            f'{masthead()}<main id="main" tabindex="-1">{view_white()}{view_newsprint()}{view_dark()}{view_social()}{view_system()}</main>'
-            f'{csvs}<script>{JS}</script></body></html>')
+            f'<style>{ground_css()}{css()}</style></head><body class="g-white">{"".join(pages)}{csvs}<script>{JS}</script></body></html>')
     if '—' in page:
         raise SystemExit('em dash in page')
+    straight = len(re.findall(r"(?<=\w)'(?=\w)", re.sub(r'<(script|style|pre)[^>]*>.*?</\1>|<[^>]+>', ' ', page, flags=re.S)))
+    if straight:
+        PROBLEMS.append(f'{straight} straight apostrophes in page text')
+    if PROBLEMS and '--draft' not in sys.argv:
+        print(f'build_concept.py: {len(PROBLEMS)} layout or copy faults; nothing written. Run with --draft to write the page anyway.')
+        for p in PROBLEMS[:200]:
+            print('  - ' + p)
+        raise SystemExit(1)
     OUT.write_text(page, encoding='utf-8')
-    print(f'wrote {OUT.relative_to(ROOT)} ({len(page) // 1024} KB)')
+    print(f'wrote {OUT.relative_to(ROOT)} ({len(page) // 1024} KB){", with " + str(len(PROBLEMS)) + " faults (draft)" if PROBLEMS else ""}')
+    for p in PROBLEMS[:200]:
+        print('  - ' + p)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T05:30:44.072Z",
+ "checked": "2026-11-06T06:51:07.298Z",
  "views": [
   "white",
   "newsprint",
@@ -13,7 +13,7 @@
    "width": 1440,
    "view": "white",
    "rootVisible": true,
-   "texts": 681,
+   "texts": 770,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -22,21 +22,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 364,
+    "labels": 346,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -47,16 +45,16 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10319,
+   "height": 15148,
    "axe": [],
-   "focusStops": 34,
+   "focusStops": 40,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 680,
+   "texts": 770,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -65,21 +63,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 364,
+    "labels": 346,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -90,16 +86,16 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 10223,
+   "height": 15119,
    "axe": [],
-   "focusStops": 27,
+   "focusStops": 37,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "dark",
    "rootVisible": true,
-   "texts": 154,
+   "texts": 169,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -108,16 +104,14 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 74,
+    "labels": 64,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 3,
+    "marks": 2,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
@@ -133,16 +127,16 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2941,
+   "height": 3255,
    "axe": [],
-   "focusStops": 7,
+   "focusStops": 9,
    "focusWithoutRing": []
   },
   {
    "width": 1440,
    "view": "social",
    "rootVisible": true,
-   "texts": 63,
+   "texts": 67,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -151,7 +145,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 31,
+    "labels": 33,
     "outside": [],
     "overlaps": []
    },
@@ -174,7 +168,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2102,
+   "height": 2126,
    "axe": [],
    "focusStops": 6,
    "focusWithoutRing": []
@@ -183,7 +177,7 @@
    "width": 1440,
    "view": "system",
    "rootVisible": true,
-   "texts": 566,
+   "texts": 633,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -191,7 +185,7 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 5,
+    "drawings": 10,
     "labels": 96,
     "outside": [],
     "overlaps": []
@@ -208,7 +202,7 @@
     "bad": []
    },
    "party": {
-    "marks": 0,
+    "marks": 20,
     "bad": []
    },
    "fonts": [
@@ -216,16 +210,16 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 8348,
+   "height": 10466,
    "axe": [],
-   "focusStops": 8,
+   "focusStops": 11,
    "focusWithoutRing": []
   },
   {
    "width": 390,
    "view": "white",
    "rootVisible": true,
-   "texts": 676,
+   "texts": 751,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -234,21 +228,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 365,
+    "labels": 370,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -259,7 +251,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21562,
+   "height": 26008,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -268,7 +260,7 @@
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 675,
+   "texts": 751,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -277,21 +269,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 365,
+    "labels": 370,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -302,7 +292,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21394,
+   "height": 25930,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -311,7 +301,7 @@
    "width": 390,
    "view": "dark",
    "rootVisible": true,
-   "texts": 145,
+   "texts": 162,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -320,16 +310,14 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 66,
+    "labels": 67,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 3,
+    "marks": 2,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
@@ -345,7 +333,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5618,
+   "height": 5459,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -354,7 +342,7 @@
    "width": 390,
    "view": "social",
    "rootVisible": true,
-   "texts": 62,
+   "texts": 57,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -363,7 +351,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 31,
+    "labels": 33,
     "outside": [],
     "overlaps": []
    },
@@ -386,7 +374,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2789,
+   "height": 2578,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -395,7 +383,7 @@
    "width": 390,
    "view": "system",
    "rootVisible": true,
-   "texts": 577,
+   "texts": 637,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -403,10 +391,16 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 5,
-    "labels": 108,
+    "drawings": 10,
+    "labels": 110,
     "outside": [],
-    "overlaps": []
+    "overlaps": [
+     {
+      "svg": "anatomy-system-358",
+      "a": "12.0%",
+      "b": "5"
+     }
+    ]
    },
    "red": {
     "marks": 7,
@@ -420,7 +414,7 @@
     "bad": []
    },
    "party": {
-    "marks": 0,
+    "marks": 20,
     "bad": []
    },
    "fonts": [
@@ -428,7 +422,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 18884,
+   "height": 22998,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -437,7 +431,7 @@
    "width": 360,
    "view": "white",
    "rootVisible": true,
-   "texts": 676,
+   "texts": 758,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -446,21 +440,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 365,
+    "labels": 377,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -471,7 +463,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21446,
+   "height": 27146,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -480,7 +472,7 @@
    "width": 360,
    "view": "newsprint",
    "rootVisible": true,
-   "texts": 675,
+   "texts": 758,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -489,21 +481,19 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 10,
-    "labels": 365,
+    "labels": 377,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 2,
+    "marks": 1,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
-    "groups": 26,
-    "marks": 256,
+    "groups": 27,
+    "marks": 280,
     "bad": []
    },
    "party": {
@@ -514,7 +504,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 21234,
+   "height": 27050,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -523,7 +513,7 @@
    "width": 360,
    "view": "dark",
    "rootVisible": true,
-   "texts": 145,
+   "texts": 164,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -532,16 +522,14 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 66,
+    "labels": 69,
     "outside": [],
     "overlaps": []
    },
    "red": {
-    "marks": 3,
+    "marks": 2,
     "unmarked": [],
-    "jobs": [
-     "the 2021 low the title names"
-    ],
+    "jobs": [],
     "onPrussian": []
    },
    "scale": {
@@ -557,7 +545,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 5684,
+   "height": 5778,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -566,7 +554,7 @@
    "width": 360,
    "view": "social",
    "rootVisible": true,
-   "texts": 62,
+   "texts": 57,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -575,7 +563,7 @@
    "overflowing": [],
    "textCheck": {
     "drawings": 3,
-    "labels": 31,
+    "labels": 33,
     "outside": [],
     "overlaps": []
    },
@@ -598,7 +586,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 2841,
+   "height": 2604,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -607,7 +595,7 @@
    "width": 360,
    "view": "system",
    "rootVisible": true,
-   "texts": 577,
+   "texts": 639,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -615,10 +603,16 @@
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
-    "drawings": 5,
-    "labels": 108,
+    "drawings": 10,
+    "labels": 112,
     "outside": [],
-    "overlaps": []
+    "overlaps": [
+     {
+      "svg": "anatomy-system-328",
+      "a": "12.0%",
+      "b": "5"
+     }
+    ]
    },
    "red": {
     "marks": 7,
@@ -632,7 +626,7 @@
     "bad": []
    },
    "party": {
-    "marks": 0,
+    "marks": 20,
     "bad": []
    },
    "fonts": [
@@ -640,7 +634,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 19138,
+   "height": 23991,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -658,6 +652,9 @@
    "visible": true
   }
  },
- "failures": [],
- "pass": true
+ "failures": [
+  "390 system: 1 overlapping labels",
+  "360 system: 1 overlapping labels"
+ ],
+ "pass": false
 }

@@ -5,10 +5,10 @@
  "error_count": 0,
  "stats": {
   "figures": 23,
-  "marks": 2807,
-  "values": 2101,
-  "categories": 706,
-  "units": 128
+  "marks": 4038,
+  "values": 2990,
+  "categories": 1048,
+  "units": 512
  },
  "selftest": [
   {
@@ -34,7 +34,7 @@
   {
    "plant": "unit removed",
    "caught": true,
-   "first_error": "S08: 1 required rows not drawn (RL01)"
+   "first_error": "S08: unit marks repeat some rows more often than others (['RL01'])"
   },
   {
    "plant": "category changed",
