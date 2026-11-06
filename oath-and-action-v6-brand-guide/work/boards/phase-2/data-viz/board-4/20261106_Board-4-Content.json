@@ -1,101 +1,160 @@
 {
- "deck": "Draft deck.",
+ "deck": "Board 4 shows six new chart forms drawn in the Explainer system on real election, jobs and turnout data, beside a plan that names every chart, map, table and diagram chapter 14 will hold. The six went through a statistics and nonpartisanship review, a creative director review and one round of fixes. You are asked to approve the plan with its tiers and the Phase 3 build order, and to make six calls the stretch test raised.",
  "ask": [
-  "Approve the coverage plan and its tiers.",
-  "Approve the Phase 3 build order."
+  "Approve the coverage plan: 127 forms in 16 families, with their tiers.",
+  "Approve the Phase 3 build order, with the chart kit first.",
+  "Make the six calls below, from flat shift arrows to survey gaps.",
+  "Tell us if any of the six titles reads as leaning to either side."
  ],
- "sample_reply": "Coverage plan: approved. Build order: approved.",
+ "sample_reply": "Coverage plan and tiers: approved. Build order: approved. The six calls: as recommended.",
  "stretch": {
-  "verdict": "Draft verdict.",
-  "cd_scores": [
-   0,
-   0,
-   0,
-   0,
-   0,
-   0,
-   0
-  ],
-  "ships": "pending",
-  "reviewer": {},
+  "verdict": "Explainer stretches. Six forms it had never drawn read as the same hand as the ten charts you picked, with the same evidence chip, sentence titles, notes inside the drawing and Newsprint ground, and no party ink on any of them. After the fix pass every line of the rubric reaches 4 or above, and four small faults remain for one short pass before the charts go further.",
+  "cd_scores": [4, 4, 4, 4, 5, 4, 4],
+  "ships": "Yes",
   "charts": {
    "S11": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Shift arrows",
+    "question": "Which states moved toward which party between 2020 and 2024, and how far?",
+    "title": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
     "proves": [
-     "x"
+     "Gray and black arrows with the party named in words can carry a shift where every state moved the same way, and a United States row sets the states in context.",
+     "On phones a ranked lollipop gives every shift one starting point and keeps each state’s 2024 leader in words."
     ],
-    "needs": []
+    "needs": [
+     "One “Leader changed” tag for the whole kit, sized from its text as S15’s is.",
+     "A shortest visible shaft for shifts under 2 points."
+    ]
    },
    "S12": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Tile map with shift arrows",
+    "question": "Where did the shift happen?",
+    "title": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
     "proves": [
-     "x"
+     "S07’s tile grid takes a second encoding: a flat arrow whose length is the shift, with the figure printed in every tile.",
+     "On phones four gray steps carry the size of the shift and hold no party meaning."
     ],
-    "needs": []
+    "needs": [
+     "Phone notes that describe the gray steps the phone map draws.",
+     "The gray-step phone map as a kit option for any tile map of sizes."
+    ]
    },
    "S13": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Small-multiple sparklines",
+    "question": "Which sectors added jobs since January 2022, and which lost them?",
+    "title": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
     "proves": [
-     "x"
+     "A tree of totals keeps the whole apart from its parts, and one shared scale with a gray national line lets fourteen panels compare at a glance.",
+     "Each panel prints jobs and percent, so the order and the figures agree."
     ],
-    "needs": []
+    "needs": [
+     "A sort by count or by percent in the kit’s sparkline generator.",
+     "A rule for industries whose large percent hides a small count, such as utilities at 11.1 percent and 61,000 jobs."
+    ]
    },
    "S14": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Columns with a three-month average",
+    "question": "How many jobs did the economy add each month?",
+    "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
     "proves": [
-     "x"
+     "The system draws a jobs-report chart with preliminary months hatched, the average dashed where it rests on them, and every note clear of the columns.",
+     "One window shared with S13 keeps the years before 2025 and the months since in one view."
     ],
-    "needs": []
+    "needs": [
+     "The large gains of 2022 set the scale at 850,000 and press the latest months toward the baseline; test an inset for the latest year.",
+     "A lighter Stone for context columns so the average leads."
+    ]
    },
    "S15": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Results table with margin cells",
+    "question": "How did each state vote in 2024, and how did that compare with 2020?",
+    "title": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",
     "proves": [
-     "x"
+     "A table that sorts by keyboard, names the party in words in every cell and turns into cards wherever a full row does not fit.",
+     "The “Even line” row lets the still image tell the story before anyone sorts."
     ],
-    "needs": []
+    "needs": [
+     "A card version of the reading note, since the cards drop the center line and the bars it describes.",
+     "Denser rows, with Register’s ranked register folded in (DR-52)."
+    ]
    },
    "S16": {
-    "form": "Form",
-    "question": "Question?",
-    "title": "Title",
+    "form": "Bubble map",
+    "question": "Where did citizens 18 and over turn out, and where are most of them?",
+    "title": "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey’s margin of error.",
     "proves": [
-     "x"
+     "Real geography, circles sized by area, and one Verdigris ramp that runs darker for more on Newsprint and lighter for more on Charcoal.",
+     "The title names only gaps larger than the survey’s margin of error, and a ring marks the three states it names."
     ],
-    "needs": []
+    "needs": [
+     "Label placement on the 328 px map with no crossing leaders.",
+     "An area mark with an area test in the rendered check (D2-124)."
+    ]
    }
   },
   "dark": {
-   "specs": [],
-   "text": ""
+   "specs": ["S14", "S16"],
+   "text": "The jobs chart and the bubble map hold on Charcoal from the same generators. The turnout ramp turns over so more voters read lighter, and the rings on Texas, Florida and New York switch to Newsprint, which keeps the three palest circles easy to find."
   }
+ },
+ "coverage": {
+  "verdict": "The revised plan covers every family your references show and every form Master Brief section 13 names, with specimen data a builder can fetch for each core form. Each of the 127 forms now sits in one family with one tier, and every specimen rests on data that can answer its question.",
+  "corrections": [
+   "Added an avoid entry for party-colored maps and red and blue scales, with neutral inks, arrows and printed party names as the form to use.",
+   "Added the forms section 13 names that the first plan lacked: the evidence table, the implementation timeline, the indexed line and the waterfall, with one sentence and a plain table for questions words answer faster.",
+   "Added a tracker list for the Track pillar, and a roll-call grid that prints both chambers’ party splits or neither.",
+   "Replaced specimen data that could not work: the Venn diagram now overlaps two lists of states, since one party’s voters cannot overlap the other’s, and the alluvial moved to reference, since the Census survey cannot follow voters from one election to the next.",
+   "Put the editor’s disclosure on every election-rule specimen, the primaries comparison cards and the ranked ballot illustration among them.",
+   "Tied bullet graphs to a numeric target set in law, or to an “Illustrative data” label, since the atlas scenarios give directions without numbers.",
+   "Moved the gauge to avoid beside the thermometer, dropped the SWOT grid, and merged duplicates so each form sits in one family."
+  ]
  },
  "decisions": [
   {
-   "q": "Q?",
-   "text": "t",
-   "rec": "r"
-  }
- ],
- "next_questions": [
+   "q": "Approve the coverage plan as revised?",
+   "text": "The plan lists 127 forms in 16 families, each with its use for Oath & Action, real specimen data and a tier: 56 core, 41 extended, 22 reference and 8 to avoid. It takes all 25 corrections from the creative director’s review.",
+   "rec": "Approve it with its tiers."
+  },
   {
-   "q": "Q?",
-   "text": "t",
-   "rec": "r"
+   "q": "Approve the Phase 3 build order?",
+   "text": "Round 0 builds the chart kit: tokens, generators that take data, the layout guard, exports, and one command that builds and checks a chart. Five rounds of forms follow, each with a red team, a reader panel, one fix pass and a creative director review.",
+   "rec": "Approve it, with the chart kit first."
+  },
+  {
+   "q": "Flat arrows on maps of shifts?",
+   "text": "S12 first tilted its arrows by the size of the shift, so New York’s 10.5-point arrow drew only about six times as long as Washington’s 1-point arrow. Flat arrows pointing right make length follow the shift exactly and point the way S11’s axis does.",
+   "rec": "Make the flat arrow the standard on every tile map of shifts, with the figure printed in each tile and gray steps on phones."
+  },
+  {
+   "q": "A national row on every chart of state results?",
+   "text": "S11 now draws the United States above the states. Its 5.9-point shift was larger than the shift in 39 of 51 states, because the largest states moved most, and the state rows alone hide that.",
+   "rec": "Draw the national figure on every chart of state election results, set apart from the states and labeled."
+  },
+  {
+   "q": "One stated window for charts shown together?",
+   "text": "The two jobs charts first started a year apart, and the start date decides the story. Both now run January 2022 to September 2026 and say so, and no chart on the page splits a period at January 2025.",
+   "rec": "Charts shown together share one time window, printed with its reason in the measure line, and no chart splits a period at an inauguration date."
+  },
+  {
+   "q": "Phone drawings that change form?",
+   "text": "Two desktop forms could not be read at 358 px. S11 becomes a ranked lollipop with each leader in words, and S12’s squares take four gray steps by size of shift, with the largest and smallest shifts named under the map.",
+   "rec": "Let a phone drawing change form when the desktop form cannot be read, provided it carries the same data and the same finding."
+  },
+  {
+   "q": "Avoid red and blue on election graphics?",
+   "text": "The plan now lists party-colored maps and red and blue scales as forms to avoid. Election charts use neutral inks, with arrows, position and printed party names carrying direction (DR-58).",
+   "rec": "Approve the avoid rule for every election graphic, social cards included."
+  },
+  {
+   "q": "Compare survey rates only beyond their error?",
+   "text": "S16 first listed the highest and lowest turnout states on gaps smaller than the survey’s error, and the two lists split by party. The fixed chart names only gaps larger than each state’s 90 percent margin of error.",
+   "rec": "Make it a rule: a chart ranks or singles out survey estimates only where the gap exceeds the margin of error, and it says so on the chart."
   }
  ],
- "process": [],
- "tested": [],
- "not_tested": [],
- "changelog_created": [],
- "changelog_modified": []
+ "risks": [
+  "Three of the six charts carry one election finding: every state moved toward the Republican nominee. The national row, the narrow leads in four states that changed leader and the jobs charts give readers on each side a finding they would rather skip, and Phase 3 should check that balance again across the full set.",
+  "Neutral inks read slower at a glance than party colors. Readers used to red and blue maps will take a moment longer to find the direction in the arrows and printed names.",
+  "August and September 2026 jobs figures are preliminary, and the next two monthly reports will move them, so the jobs charts need a rebuild after each release.",
+  "The 2024 election figures come from the FEC’s compilation dated January 16, 2025, and its Federal Elections 2024 report, not yet posted, can revise them.",
+  "No real reader has seen these charts, and no screen reader, Safari, Firefox or real phone was tested."
+ ]
 }

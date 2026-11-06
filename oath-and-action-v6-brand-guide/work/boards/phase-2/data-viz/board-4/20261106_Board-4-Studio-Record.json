@@ -1,8 +1,16 @@
 {
- "cd_first": [3, 3, 4, 4, 3, 3, 4],
+ "cd_first": [
+  3,
+  3,
+  4,
+  4,
+  3,
+  3,
+  4
+ ],
  "reviewer": {
-  "Statistics": "3 of 5 on the first build: every number traced to the data, but S12's slanted arrows understated large shifts, S16's title was contradicted by California, and S13 sorted by percent while printing jobs.",
-  "Nonpartisanship": "4 of 5 on the first build: neutral inks and party names in words throughout, but phone cards lost the words for direction and S16's best and worst lists sorted the states by party on survey noise."
+  "Statistics": "4 of 5 after the fix pass, up from 3. Every number traces to the data; S12's arrows now follow the shift exactly; S16 names only gaps larger than the survey's margin of error; S13 says it sorts by percent and prints both figures.",
+  "Nonpartisanship": "5 of 5 after the fix pass, up from 4. Neutral inks and party names in words on every view; the phone cards say which way each shift went; the national row and the narrow leads in four states that changed leader give each side a finding to weigh; no chart splits a period at January 2025."
  },
  "process": [
   "You gave the go for the stretch test on Board 3 (DR-57) and restarted in a new chat. The main session checked the six datasets in a fresh container: all present, nothing pending.",
@@ -15,13 +23,41 @@
  "tested": [],
  "not_tested": [],
  "next_questions": [
-  {"q": "Rule 05.3's sentence on icons in a row or menu (P3, a named approval).", "text": "Today it reads: “In a row or a menu, icons go one color and only the current one keeps its red.” The proposal ends it: “…and only the current one keeps its red, and that red counts as signature red.” Without the clause, a menu's current icon spends the view's one working red, so a page could not show a menu and an ask button together.", "rec": "Approve the added clause."},
-  {"q": "Five direction review rules, as a set (R7, R9, R10, R11, R13).", "text": "R7 is already V7.1 item 29 and needs only your yes. R9 keeps a pillar mark under 48 px beside its word. R10 makes icons at 16 px one color, with no red. R11 lets a standalone icon's red sit bare on Newsprint as signature red. R13 makes Charcoal the default tile for the app icon and avatars.", "rec": "Approve all five."},
-  {"q": "The reader check with real people (Q-13).", "text": "Every test of the marks, atlas cards and charts so far used simulated readers. Five or more people who have never seen the brand would look at one sheet, ten seconds per item, and answer four short questions. The studio can build the sheet as a private page that records their answers, so all you do is send the link.", "rec": "Yes, before Gate 2, with the studio's page."},
-  {"q": "How you review the rest of Phase 2.", "text": "Sixteen chapters remain before Gate 2 (01 to 12, 17, 18, the rules of 19, and 26 Tokens), with the token files, the guide shell and a preview build.", "rec": "Three stage boards (foundations 01 to 08; symbols and devices 09 to 12; interface, accessibility and tokens 17, 18, 19 and 26), then the Gate 2 preview build of the whole set."},
-  {"q": "Chapter 02, Voice.", "text": "Your own writing rules (plain spoken prose, no em dashes, the list of patterns to avoid) already govern every word the studio writes. They could become the brand's public writing rules, with before and after examples taken from real Oath & Action copy.", "rec": "Adopt them in chapter 02, with each example labeled."},
-  {"q": "The wordmark width and ampersand B at Gate 2.", "text": "Both wait for Gate 2. The studio would show today's width and the condensed drawing side by side at actual sizes on the masthead, an avatar, a social card and a letterhead.", "rec": "Decide from those proofs; the studio recommends today's width (D2-30) and ampersand B as refined."},
-  {"q": "Pace.", "text": "Is there a date you want Gate 2 by, or an application you want ahead of the rest?", "rec": "No date; the studio works in the order on this board."}
+  {
+   "q": "Rule 05.3's sentence on icons in a row or menu (P3, a named approval).",
+   "text": "Today it reads: “In a row or a menu, icons go one color and only the current one keeps its red.” The proposal ends it: “…and only the current one keeps its red, and that red counts as signature red.” Without the clause, a menu's current icon spends the view's one working red, so a page could not show a menu and an ask button together.",
+   "rec": "Approve the added clause."
+  },
+  {
+   "q": "Five direction review rules, as a set (R7, R9, R10, R11, R13).",
+   "text": "R7 is already V7.1 item 29 and needs only your yes. R9 keeps a pillar mark under 48 px beside its word. R10 makes icons at 16 px one color, with no red. R11 lets a standalone icon's red sit bare on Newsprint as signature red. R13 makes Charcoal the default tile for the app icon and avatars.",
+   "rec": "Approve all five."
+  },
+  {
+   "q": "The reader check with real people (Q-13).",
+   "text": "Every test of the marks, atlas cards and charts so far used simulated readers. Five or more people who have never seen the brand would look at one sheet, ten seconds per item, and answer four short questions. The studio can build the sheet as a private page that records their answers, so all you do is send the link.",
+   "rec": "Yes, before Gate 2, with the studio's page."
+  },
+  {
+   "q": "How you review the rest of Phase 2.",
+   "text": "Sixteen chapters remain before Gate 2 (01 to 12, 17, 18, the rules of 19, and 26 Tokens), with the token files, the guide shell and a preview build.",
+   "rec": "Three stage boards (foundations 01 to 08; symbols and devices 09 to 12; interface, accessibility and tokens 17, 18, 19 and 26), then the Gate 2 preview build of the whole set."
+  },
+  {
+   "q": "Chapter 02, Voice.",
+   "text": "Your own writing rules (plain spoken prose, no em dashes, the list of patterns to avoid) already govern every word the studio writes. They could become the brand's public writing rules, with before and after examples taken from real Oath & Action copy.",
+   "rec": "Adopt them in chapter 02, with each example labeled."
+  },
+  {
+   "q": "The wordmark width and ampersand B at Gate 2.",
+   "text": "Both wait for Gate 2. The studio would show today's width and the condensed drawing side by side at actual sizes on the masthead, an avatar, a social card and a letterhead.",
+   "rec": "Decide from those proofs; the studio recommends today's width (D2-30) and ampersand B as refined."
+  },
+  {
+   "q": "Pace.",
+   "text": "Is there a date you want Gate 2 by, or an application you want ahead of the rest?",
+   "rec": "No date; the studio works in the order on this board."
+  }
  ],
  "changelog_created": [],
  "changelog_modified": [],

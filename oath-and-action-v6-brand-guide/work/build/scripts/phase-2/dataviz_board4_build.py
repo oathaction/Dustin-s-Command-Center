@@ -170,11 +170,14 @@ def family_table(f):
 
 
 # ------------------------------------------------------------------------------------------------ captures
-def img(name, alt, out_w=1440, q=80, cls=''):
+def img(name, alt, out_w=2048, q=80, cls='', crop_css=None):
+    """A capture made at twice size, shown at true size; crop_css cuts a tall figure to its top, in CSS px."""
     p = CAP / name
     if not p.exists():
         return f'<p class="missing">Capture {E(name)} not made yet.</p>'
     im = Image.open(p).convert('RGB')
+    if crop_css and im.height > crop_css * 2:
+        im = im.crop((0, 0, im.width, crop_css * 2))
     if im.width > out_w:
         im = im.resize((out_w, round(im.height * out_w / im.width)), Image.LANCZOS)
     buf = io.BytesIO()
@@ -199,16 +202,22 @@ def stretch_scores():
             + (f'<h4>The statistics and nonpartisanship review</h4><ul class="facts">{rvt}</ul>' if rvt else ''))
 
 
+DESK_CROP = {'S15': 1500}        # the results table runs 51 rows; the board shows its top and the live page the rest
+PHONE_CROP = 1300                 # each phone drawing's first screen and a half
+
+
 def chart_band(sid):
     ch = C['stretch']['charts'][sid]
     proves = ''.join(f'<li>{E(x)}</li>' for x in ch.get('proves', []))
     needs = ''.join(f'<li>{E(x)}</li>' for x in ch.get('needs', []))
+    dc = DESK_CROP.get(sid)
+    dcap = 'Desktop, on Newsprint, at true size' + (': the top of the table; the live page holds every row.' if dc else '.')
     return f'''<article class="sb" id="{sid.lower()}" aria-labelledby="{sid.lower()}-h">
 <div class="sb-h"><p class="secnum">{sid} · {E(ch["form"]).upper()}</p><h3 id="{sid.lower()}-h">{E(ch["question"])}</h3></div>
-<div class="sb-g"><figure class="shot big">{img(f"newsprint-{sid}.jpg", f"{sid}, {ch['form']}, on Newsprint at 1440 px: {ch['title']}")}
-<figcaption>Desktop, on Newsprint.</figcaption></figure>
-<div class="sb-side"><figure class="shot ph">{img(f"phone-{sid}.jpg", f"{sid} on a phone at 390 px", 780)}<figcaption>Phone, 390 px.</figcaption></figure>
-<h4>What it proves</h4><ul class="facts">{proves}</ul>{f'<h4>What still needs work</h4><ul class="facts">{needs}</ul>' if needs else ''}</div></div></article>'''
+<figure class="shot big">{img(f"newsprint-{sid}.jpg", f"{sid}, {ch['form']}, on Newsprint at 1440 px: {ch['title']}", crop_css=dc)}
+<figcaption>{E(dcap)}</figcaption></figure>
+<div class="sb-g"><figure class="shot ph">{img(f"phone-{sid}.jpg", f"{sid} on a phone at 390 px", 780, crop_css=PHONE_CROP)}<figcaption>Phone, 390 px: the top of the drawing.</figcaption></figure>
+<div class="sb-side"><h4>What it proves</h4><ul class="facts">{proves}</ul>{f'<h4>What still needs work</h4><ul class="facts">{needs}</ul>' if needs else ''}</div></div></article>'''
 
 
 # ------------------------------------------------------------------------------------------------ page
@@ -259,9 +268,10 @@ code{font:500 max(13px,.875em)/1.4 ui-monospace,Menlo,monospace;overflow-wrap:an
 /* stretch bands */
 .sb{border-top:2px solid var(--fg);margin-top:40px;padding-top:18px}
 .sb-h h3{max-width:40ch}
-.sb-g{display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:32px;align-items:start;margin-top:16px}
+.sb .big{margin-top:16px}.sb-g{display:grid;grid-template-columns:minmax(0,390px) minmax(0,1fr);gap:40px;align-items:start;margin-top:28px}
 .sb-side{min-width:0}.shot.ph{max-width:390px}
 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:16px;align-items:start}
+.darks{display:grid;gap:28px;margin-top:16px}
 /* coverage map: tier code. Core solid Charcoal; extended outlined; reference Stone; avoid outlined and struck.
    A Newsprint dot (Charcoal on light squares) marks a form already drawn. */
 .u{display:inline-block;width:var(--u);height:var(--u);flex:none;position:relative;vertical-align:-2px}
@@ -298,7 +308,8 @@ ol.rounds{list-style:none;margin:16px 0 0;padding:0;counter-reset:r;display:grid
 ol.rounds li{display:grid;grid-template-columns:4.5em minmax(0,1fr) minmax(0,16em);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
 ol.rounds .rn{font:800 1.75rem/1 var(--display);letter-spacing:-.02em}ol.rounds .rn small{display:block;font:700 .75rem/1.4 var(--body);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
 ol.rounds .rw{color:var(--muted);font-size:.9375rem}
-@media (max-width:1000px){.sb-g{grid-template-columns:minmax(0,1fr)}.urows{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1000px){.urows{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.sb-g{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){.pair,.tiers{grid-template-columns:minmax(0,1fr)}ul.rules{columns:1}
 .fam-h{grid-template-columns:minmax(0,1fr)}.fam-h .chips{grid-column:1;grid-row:auto;justify-content:flex-start;margin-top:8px}
 ol.rounds li{grid-template-columns:3.5em minmax(0,1fr)}ol.rounds .rw{grid-column:2}}
@@ -321,7 +332,7 @@ def build():
     corr = ''.join(f'<li>{E(x)}</li>' for x in C.get('coverage', {}).get('corrections', []))
     dark = C['stretch'].get('dark', {})
     dark_specs = dark.get('specs', [])
-    dark_figs = ''.join(f'<figure class="shot">{img(f"dark-{d}.jpg", f"{d} on Charcoal", 1440)}<figcaption>{d} on Charcoal.</figcaption></figure>' for d in dark_specs)
+    dark_figs = ''.join(f'<figure class="shot big">{img(f"dark-{d}.jpg", f"{d} on Charcoal", crop_css=1150)}<figcaption>{d} on Charcoal, at true size: the top of the figure.</figcaption></figure>' for d in dark_specs)
     page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="chart-views" content="overview">
@@ -343,7 +354,7 @@ def build():
 <p class="deck">{E(s["verdict"])}</p>{link}
 {stretch_scores()}
 {"".join(chart_band(x) for x in SPECS)}
-<h3 style="margin-top:40px">On Charcoal</h3><p>{E(dark.get("text", ""))}</p><div class="pair">{dark_figs}</div>
+<h3 style="margin-top:40px">On Charcoal</h3><p>{E(dark.get("text", ""))}</p><div class="darks">{dark_figs}</div>
 </section>
 <section id="coverage" aria-labelledby="h-cov"><p class="secnum">COVERAGE PLAN</p><h2 id="h-cov">Every way Oath &amp; Action shows data</h2>
 <p class="deck">The plan lists {TOTAL} forms in 16 families. Each one says what Oath &amp; Action uses it for, names real data for its specimen and sets a tier. Chapter 14 is built from it at the start of Phase 3.</p>

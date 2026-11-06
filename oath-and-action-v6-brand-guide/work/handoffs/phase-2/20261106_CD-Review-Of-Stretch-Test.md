@@ -219,6 +219,108 @@ Each fault needs one pass on one generator:
 - I did not look by eye at the Charcoal and Phones views at 360 px, or at the 600 px drawings of S13, S14 and S16.
 - No real reader saw the page.
 
+## Second pass
+
+I scored the page after the maker's fix pass and the main session's changes to the shared files (D2-126, D2-127). The page was rebuilt at 17:18 to fix the statistics reviewer's ST-M6 (S16's ring key) and ST-S8 (S15's title threshold). I rendered it again after that rebuild, and my scores describe that build. I read the statistics reviewer's second-pass findings after my own renders. I checked both of those fixes myself against the shared data.
+
+### Verdict
+
+**Ships.** Every line reaches 4 or above. All seven of my must-fixes are cleared, and so are most of my should-fixes. Four small faults remain. None misleads a reader about a number. Two of them sit on phones, where most readers meet these charts first, so I recommend fixing all four before the board. The main session decides.
+
+### Scores
+
+| Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Beauty and distinctiveness | Ships |
+|---|---|---|---|---|---|---|---|
+| 4 | 4 | 4 | 4 | 5 | 4 | 4 | Yes |
+
+- **Craft 4.** S15 prints no text on other text at any of 11 widths from 360 to 1440 px. No mark crosses a drawing's edge at any of those widths. The flat S12 arrows sit on one baseline in every tile. Two faults remain: S11's tag boxes and S16's crossing leaders at 328 px (open items 3 and 4).
+- **Clarity 4.** S13's order and figures now agree, the April 2024 ring is gone from S14, and S12 shows a size of shift on phones. Two phone notes still describe marks the phone drawings do not have (open items 1 and 2).
+- **Brand fidelity 4.** Nothing changed here. The locked inks and type are exact. There is no working red, no Prussian and no party ink. The evidence chip is still the only signature device.
+- **Usefulness 4.** The tokens table now prints the code exactly, one row per token with its unit. The page's CSS reads the same dict. The generators are still not registered in a kit module.
+- **Evidence honesty 5.** Every title and key now claims only what the data holds:
+  - S16's title names its error test, and its key now reads "Ringed: of the four largest states, the three below the nation by more than the survey's margin of error". Twelve states meet the test; I counted them.
+  - S15's title reads "under 2.5 points", and Georgia's 2.19 now sits clear of the edge.
+  - S11 draws the United States, with the national shift of 5.9 points. It was larger than the shift in 39 of 51 states, which I checked.
+  - S14 marks September as preliminary and names its seven months with a loss.
+- **Accessibility 4.** I ran the rendered check with `--mid` on a copy of the page in my scratchpad. It found 0 axe violations and no text under 13 px, on 3 views at 1440, 1024, 768, 390 and 360 px. The S15 sort still works by keyboard. The cards keep their headers through ARIA table roles, which the maker read in the accessibility tree; I did not. No screen reader was run.
+- **Beauty and distinctiveness 4.** The flat arrows are calmer, and every tile prints its shift, so S12 now reads like a reference map. The rings on Texas, Florida and New York lift the title's states on both grounds. S14's shared window sets the scale at 850,000, so the latest months sit low and close to the baseline.
+
+### My seven must-fixes
+
+1. **S16 title. Cleared.** It reads: "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey's margin of error."
+2. **S11 bracket. Cleared.** The bracket is gone, and the six states that changed leader each carry a boxed "Leader changed" tag. North Carolina has none.
+3. **S13 sort label. Cleared.** The eyebrow reads "Private industries, largest percent gain first", and each panel prints both figures, for example "+61,000, +11.1%".
+4. **S13 clipping. Cleared.** My probe found 0 marks crossing a drawing's edge at 11 widths, and the check's new edge test passes.
+5. **S15 widths. Cleared.** I measured 0 overlapping text boxes in any row at 11 widths. The full table shows from 860 px, and cards take over below 826 px. I looked at 720, 960 and 1280 px at 2x.
+6. **S12 arrow angle. Cleared,** with arrows drawn flat (D2-127). I had asked for one 25 degree angle. Flat serves better: it points the way S11's axis does and carries no rising cue.
+7. **S12 on phones. Cleared.** Four Stone steps carry the size of shift, and the fills match the four bins for all 51 states. The two darkest steps print their codes in Newsprint.
+
+**Should-fixes cleared:**
+- S11: the phone lollipop and the "Right of Even" note.
+- S12: the "pixels" note, and the phone-grid note moved into the studio strip.
+- S14: the April ring removed, and the title marks September as preliminary.
+- S15: 6 px bars, tags on their own line on phones, and glyphs after every label.
+- S16: rings on both grounds, and the area note.
+- The exact tokens table, and the Charcoal band closed.
+- The main session's items: a source line for each chart, the `--mid` widths and the edge test.
+
+**Partly cleared:** S16's phone labels. At 390 px every outside label sits beside its own circle or takes a leader; at 328 px two pairs of leaders cross (open item 4).
+
+### Still open
+
+1. **S12 on phones, at 358 and 328 px.** The first note under the map reads "Each arrow's length shows the shift, at one scale across the map." The phone map draws no arrows. Fix: under 600 px, print "Each square's shade shows the size of the shift, in four steps; the lists name the largest and smallest shifts."
+2. **S15 cards, below 826 px.** The reading note above the cards still says "left of the center line, the Democratic nominee; right of it, the Republican nominee. Bars grow from the center line". The cards show neither the line nor the bars. The statistics reviewer found this too (ST-P11). Fix: below the card width, print "Each card names the leader and margin in each year, then the shift toward the Republican nominee in words."
+3. **S11 "Leader changed" tags, every artboard.** Each box is 127 px wide around text 101.8 px wide, with 5 px of space on the left and 20.3 px on the right. At 2x the descender of the "g" sits on the bottom rule. Fix:
+   - Size each box from the measured width of its text plus 6 px a side.
+   - Add 2 px of height and center the text in the box.
+   - Match S15's tag, which is drawn right.
+4. **S16 at 328 px (360 px screens).** The CO and UT leaders cross, and so do the AL and LA leaders. The "UT" label also sits beside Wyoming's small circle. Fix:
+   - Add a test to the label guard that fails when two leaders cross.
+   - Place each of those four labels on the side of its own circle that faces away from its neighbor.
+
+### What I tested in the second pass
+
+- **Reading.** I read:
+  - the fix-pass brief and the maker's "Fix pass" section
+  - D2-126 and D2-127
+  - section 6 of the revised coverage plan, and its counts of 127 entries in tiers of 56, 41, 22 and 8
+  - the statistics reviewer's second-pass findings, after my renders
+- **Renders and crops.** At deviceScaleFactor 2 I rendered Newsprint at 1440, 1280, 960, 720, 390 and 360 px, Charcoal at 1440, 390 and 360 px, and Phones at 1440, 390 and 360 px, and cropped every figure. No view had script errors or sideways scroll. After the 17:18 rebuild I rendered every view again and looked at S16's key at 1440 and 390 px, and its map at 360 px.
+- **Probes:**
+  - text boxes that overlap in every S15 row, at 11 widths from 360 to 1440 px
+  - marks that cross a drawing's edge, at the same 11 widths
+  - S11's tag boxes against their text
+  - which circle each S16 label sits nearest, at 1024, 600, 358 and 328 px
+  - the S12 phone fills against the four bins
+  - the visible notes on S12 and S15 at each width
+- **Text scan.** I scanned the visible chart text on all three views for:
+  - "pixels", "never", "eligible" and "job gains"
+  - any period split at January 2025
+  - shift figures printed with a sign
+  - em dashes
+  
+  I found none.
+- **Facts against the shared data:**
+  - the 2024 margins of the six states that changed leader
+  - the United States row, and the count of 39 states with a smaller shift
+  - the twelve states below the nation by more than their margin of error
+  - S14's 57 required months
+- **Checks.** I ran `dataviz_verify.py --selftest` and `dataviz_check.js --mid --no-captures` on a copy of the page in my scratchpad:
+  - the verifier passed with 0 errors and caught 7 of 7 planted errors
+  - the check found 0 failures, with 1 red mark per view (the wordmark) and no party mark in red or Prussian
+- **Keyboard.** I sorted S15 by keyboard again: the 3 px focus ring, `aria-sort` and the status line all worked.
+
+### What I could not test in the second pass
+
+- Screen readers, Safari, Firefox, real phones, browser zoom itself and print.
+- The accessibility tree of the S15 cards. I relied on the maker's reading of it.
+- The 600 px drawings of S14 and S16 by eye.
+- Real readers.
+
 ## Change log
 
-Created: `work/handoffs/phase-2/20261106_CD-Review-Of-Stretch-Test.md`. Modified: none. Renders, crops, reference conversions and probe scripts stay in the session scratchpad (`review-cd/`). Nothing was committed.
+First pass. Created: `work/handoffs/phase-2/20261106_CD-Review-Of-Stretch-Test.md`.
+
+Second pass. Modified: this report, with the "Second pass" section added. Replaced the placeholder in `work/boards/phase-2/data-viz/board-4/20261106_Board-4-Content.json` with Board 4's content.
+
+Both passes: renders, crops, reference conversions, probe scripts and the copies used for the checks stay in the session scratchpad (`review-cd/`). Nothing was committed.
