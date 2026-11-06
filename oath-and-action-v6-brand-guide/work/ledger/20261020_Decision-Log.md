@@ -597,3 +597,36 @@ The systems designer's routine calls for chapters 05, 06 and 07 (`work/handoffs/
 | D2-218 | Body spans picked by measurement: 5 of 12 at 1440 px, 7 of 12 at 1024 px, 6 of 8 at 768 px, all 4 on phones | Each span's measured mean sits nearest 68 within 60 to 75 |
 | D2-219 | Section rhythm in 07.4 matches the shell: 80 px between rules, 32 px above a label and 8 px below, 16 px between paragraphs | The guide follows its own rule |
 | D2-220 | Chapter 05's chart summary shows Newsprint tokens only | Pair B exists on Newsprint only; the dark ground belongs to chapter 14 |
+
+## Reader check page, November 6, 2026
+
+The UX and accessibility designer built the reader check (`work/handoffs/phase-2/20261106_Reader-Check-Notes.md`). Its routine calls, numbered by the main session:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-221 | The third loop is B4, the balancing accountability loop, from System 1's "All loops" view, in place of the brief's R8 (main session, November 6). R8 stays in the build script as a one-line swap (`THIRD_LOOP`) | R10 and R8 both feed themselves, so a reader who always answered "feeds itself" scored both; B4 pushes back and separates readers who read the signs from readers who guess |
+| D2-222 | The loops show as drawn and alone: R10's close-up with R-01's targets in red, B4's catalog card with no reform marks, and no key | The brief asks for the drawings; the "where does a reform act" question then tests whether red reads as a reform with no key beside it |
+| D2-223 | The loop order is random per reader, and both loops get the same choices, including "They look about the same", "No reform is shown" and "Not sure" | Readers learn the four questions on the first loop; random order spreads that across both, and identical choices cue neither answer |
+| D2-224 | The loop questions avoid the word loop: "Do the arrows come back to where they started?" and an opening screen titled "The next drawing" | Calling it a loop answers the first question |
+| D2-225 | The step and reform choices quote the drawing: "3. lowers" over "Risk of losing office → Incumbents control election rules"; B4's unnumbered arrows are "Top arrow, lowers", "Right arrow, raises" and "Left arrow, raises" | The brief asks for the words printed on the drawing; the box names say which arrow is which |
+| D2-226 | The overview look is the overview's first two phone screens (kicker, headline, deck and whole-system drawing) without the wordmark, tabs or breadcrumb; readers may scroll | The fix-pass ten-second rule holds on a phone within the first two screens |
+| D2-227 | The four topic icons are CL-015 Political Money (sheet 01), CL-032 Local Reporting (02), CL-063 Essential Costs (03) and R-02 Ranked-Choice Voting (04) | One from each of the set's other families, each tied to a part or reform the atlas names |
+| D2-228 | Icons, marks and mastheads ship under neutral names (icon-1 to icon-8, mark-1 to mark-9, masthead-1 and -2) with titles, descriptions and ids stripped, and the icons show in random order | The master files' titles and names would tell a reader the answer |
+| D2-229 | The 16 px sheet carries both wordmark widths, so it holds nine marks | Readers then meet both widths before the masthead question, and the condensed 16 px master gets a reading for DR-71 |
+| D2-230 | The rating rows repeat each mark at true size, 16 px | Rating nine small marks from memory is unreliable, and a larger reference would show readers what the small one is |
+| D2-231 | The 16 px marks are one color, Charcoal, ampersand, lever and lattice included | R10 of DR-67 |
+| D2-232 | Charts show for 15 seconds | Charts need longer than marks (brief, step 5) |
+| D2-233 | A chart look is the figure as a phone reader meets it first: evidence line, title, measure line and the phone drawing. Notes, source line and table toggle stay off. S02 comes from Explainer's Newsprint view | The title carries the finding by design and was the subject of DR-65's leaning review; the notes would push the drawing past 15 seconds |
+| D2-234 | Charts and atlas drawings are captured at 390 and 360 px, twice size, and the page picks by screen width, never scaling up | Chart text holds its 14 px phone floor on phones from 360 px |
+| D2-235 | W10 replaces the brief's W05 | W05's county is invented, so house rule H03 would put an Illustrative label beside that one pair only |
+| D2-236 | Pair order is fixed (W02, W10, W11); A and B are random within each pair | The brief asks for random A and B |
+| D2-237 | Both mastheads use one scale, 0.17 px a unit (217 and 182 px wide, both 41 px tall), with signature red as the masters draw it and no other chrome | The minimum-size table sets both widths at one scale; Rule 05.3 does not count the ampersand's or the lever's red |
+| D2-238 | The page keeps one light look on Newsprint in every phone theme | Every reader sees the stimuli on the same ground |
+| D2-239 | Each stimulus image carries alt text that identifies it without the answer ("Symbol 3 of 8") | WCAG 1.1.1's exception for tests |
+| D2-240 | A first name or initials is required to start; every question can be skipped, and an empty Next asks for an answer or a skip | Each record needs a name to tell readers apart; a stray tap should not skip a question |
+| D2-241 | The page saves after each answer, not after each step | A reader who stops halfway leaves every answer given so far |
+| D2-242 | Unfinished runs resume from browser storage on the same phone | Phones often reload a tab after a call or an app switch; storage holds only this reader's own draft |
+| D2-243 | The page sets `lang="en"` by script | The publish skeleton's `html` tag has none (WCAG 3.1.1) |
+| D2-244 | Two page-local tokens, `--press` (Newsprint 6% toward Charcoal) and `--track` (12%), plus `--ink-hover` | Hover and the progress track; they live in this page only and are not proposed for the token file |
+| D2-245 | The brief's `npm install --no-save axe-core@4.10.2` removed Style Dictionary 5.8.0 (D2-157) from `work/build/node_modules`; I reinstalled both in one command | npm prunes packages it was not asked for; future briefs should name both: `npm install --no-save axe-core@4.10.2 style-dictionary@5.8.0` |
+| D2-246 | The third loop is B4, a balancing loop, in place of R8; R8 stays in the build script as a one-line swap | R8 and R10 both feed themselves, so the question could not tell a reader who understood from one who guessed |

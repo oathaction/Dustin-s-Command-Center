@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/reader-check/20261106_Reader-Check.html",
- "run_at": "2026-11-06T20:18:07.749Z",
+ "run_at": "2026-11-06T20:29:26.853Z",
  "pass": true,
  "runs": [
   {
@@ -15,44 +15,20 @@
     {
      "key": "overview:look",
      "shown": 10,
-     "wall": 9.988,
+     "wall": 10.016,
      "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 9.998,
-     "imgs": "drawing-r8-390.png@354"
     },
     {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 10.001,
+     "wall": 10.002,
      "imgs": "drawing-r10-390.png@354"
     },
     {
-     "key": "icon_i3:look",
+     "key": "loop_b4:look",
      "shown": 10,
-     "wall": 10.015,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 10.02,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 10.004,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 10.006,
-     "imgs": "icon-5.svg@48"
+     "wall": 10.003,
+     "imgs": "drawing-b4-390.png@354"
     },
     {
      "key": "icon_i6:look",
@@ -61,28 +37,58 @@
      "imgs": "icon-6.svg@48"
     },
     {
-     "key": "icon_i4:look",
+     "key": "icon_i1:look",
      "shown": 10,
-     "wall": 10.004,
-     "imgs": "icon-4.svg@48"
+     "wall": 10.005,
+     "imgs": "icon-1.svg@48"
     },
     {
      "key": "icon_i7:look",
      "shown": 10,
-     "wall": 10.002,
+     "wall": 10.004,
      "imgs": "icon-7.svg@48"
     },
     {
-     "key": "icon_i1:look",
+     "key": "icon_i8:look",
      "shown": 10,
-     "wall": 10.004,
-     "imgs": "icon-1.svg@48"
+     "wall": 10.016,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 10.003,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 10.014,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 10.015,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 10.007,
+     "imgs": "icon-4.svg@48"
     },
     {
      "key": "marks:look",
      "shown": 10,
-     "wall": 10.001,
+     "wall": 10.008,
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 15,
+     "wall": 15.005,
+     "imgs": "chart-s11-390.png@358"
     },
     {
      "key": "chart_S02:look",
@@ -97,395 +103,9 @@
      "imgs": "chart-s14-390.png@358"
     },
     {
-     "key": "chart_S11:look",
-     "shown": 15,
-     "wall": 15.004,
-     "imgs": "chart-s11-390.png@358"
-    },
-    {
      "key": "masthead:look",
      "shown": 10,
-     "wall": 10.004,
-     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
-    }
-   ],
-   "modeLine": "This page saves your answers as you go.",
-   "end": {
-    "text": "Thank you\n\nYour answers are saved.\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": null
-   },
-   "seen": {
-    "ready": 7,
-    "expose": 16,
-    "question": 24,
-    "marks": 1,
-    "pair": 3,
-    "masthead": 1,
-    "end": 1
-   },
-   "finalMode": "saved",
-   "record": {
-    "questions": 38,
-    "items": 19,
-    "orders": {
-     "loops": [
-      "r8",
-      "r10"
-     ],
-     "icons": [
-      "i3",
-      "i8",
-      "i2",
-      "i5",
-      "i6",
-      "i4",
-      "i7",
-      "i1"
-     ],
-     "charts": [
-      "S02",
-      "S14",
-      "S11"
-     ],
-     "pairs": {
-      "W02": [
-       "before",
-       "after"
-      ],
-      "W10": [
-       "before",
-       "after"
-      ],
-      "W11": [
-       "before",
-       "after"
-      ]
-     },
-     "mastheads": [
-      "L3-today",
-      "L3-condensed"
-     ]
-    },
-    "finished": true,
-    "initials": "T390",
-    "viewport_width": 390,
-    "mode": "saved",
-    "mode_note": "",
-    "showAgain": {
-     "overview": 1,
-     "loop_r10": 1,
-     "icon_i3": 1
-    },
-    "skipped": [
-     "icon_i3.stands_for",
-     "marks.m9"
-    ]
-   },
-   "db": {
-    "writes": 31,
-    "maxInflight": 1,
-    "calls": {
-     "get": 1,
-     "set": 1,
-     "update": 30
-    }
-   },
-   "pass": true,
-   "seconds": 220
-  },
-  {
-   "label": "saved, 360",
-   "mode": "saved",
-   "width": 360,
-   "scale": 0.05,
-   "screens": 54,
-   "failures": [],
-   "notes": [],
-   "exposures": [
-    {
-     "key": "overview:look",
-     "shown": 10,
-     "wall": 0.512,
-     "imgs": "drawing-overview-360.png@324"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.499,
-     "imgs": "drawing-r8-360.png@324"
-    },
-    {
-     "key": "loop_r10:look",
-     "shown": 10,
-     "wall": 0.505,
-     "imgs": "drawing-r10-360.png@324"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.514,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.511,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.507,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 0.514,
-     "imgs": "icon-7.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.518,
-     "imgs": "icon-5.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.513,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i6:look",
-     "shown": 10,
-     "wall": 0.513,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "marks:look",
-     "shown": 10,
-     "wall": 0.505,
-     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.806,
-     "imgs": "chart-s11-360.png@328"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.804,
-     "imgs": "chart-s14-360.png@328"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.807,
-     "imgs": "chart-s02-360.png@328"
-    },
-    {
-     "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.505,
-     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
-    }
-   ],
-   "modeLine": "This page saves your answers as you go.",
-   "end": {
-    "text": "Thank you\n\nYour answers are saved.\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": null
-   },
-   "seen": {
-    "ready": 7,
-    "expose": 16,
-    "question": 24,
-    "marks": 1,
-    "pair": 3,
-    "masthead": 1,
-    "end": 1
-   },
-   "finalMode": "saved",
-   "record": {
-    "questions": 38,
-    "items": 19,
-    "orders": {
-     "loops": [
-      "r8",
-      "r10"
-     ],
-     "icons": [
-      "i8",
-      "i3",
-      "i1",
-      "i2",
-      "i7",
-      "i5",
-      "i4",
-      "i6"
-     ],
-     "charts": [
-      "S11",
-      "S14",
-      "S02"
-     ],
-     "pairs": {
-      "W02": [
-       "before",
-       "after"
-      ],
-      "W10": [
-       "before",
-       "after"
-      ],
-      "W11": [
-       "before",
-       "after"
-      ]
-     },
-     "mastheads": [
-      "L3-today",
-      "L3-condensed"
-     ]
-    },
-    "finished": true,
-    "initials": "T360",
-    "viewport_width": 360,
-    "mode": "saved",
-    "mode_note": "",
-    "showAgain": {
-     "overview": 1,
-     "loop_r10": 1,
-     "icon_i8": 1
-    },
-    "skipped": [
-     "icon_i8.stands_for",
-     "marks.m9"
-    ]
-   },
-   "db": {
-    "writes": 31,
-    "maxInflight": 1,
-    "calls": {
-     "get": 1,
-     "set": 1,
-     "update": 30
-    }
-   },
-   "pass": true,
-   "seconds": 25
-  },
-  {
-   "label": "saved, 1440",
-   "mode": "saved",
-   "width": 1440,
-   "scale": 0.05,
-   "screens": 54,
-   "failures": [],
-   "notes": [],
-   "exposures": [
-    {
-     "key": "overview:look",
-     "shown": 10,
-     "wall": 0.49,
-     "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r10:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "drawing-r10-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.507,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.513,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.513,
-     "imgs": "icon-5.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i6:look",
-     "shown": 10,
-     "wall": 0.505,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.493,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.512,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-7.svg@48"
-    },
-    {
-     "key": "marks:look",
-     "shown": 10,
-     "wall": 0.506,
-     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.805,
-     "imgs": "chart-s11-390.png@358"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.809,
-     "imgs": "chart-s14-390.png@358"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.803,
-     "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.512,
+     "wall": 10.011,
      "imgs": "masthead-2.svg@182 masthead-1.svg@217"
     }
    ],
@@ -510,22 +130,22 @@
     "orders": {
      "loops": [
       "r10",
-      "r8"
+      "b4"
      ],
      "icons": [
-      "i3",
-      "i4",
-      "i5",
-      "i1",
       "i6",
-      "i2",
+      "i1",
+      "i7",
       "i8",
-      "i7"
+      "i3",
+      "i2",
+      "i5",
+      "i4"
      ],
      "charts": [
       "S11",
-      "S14",
-      "S02"
+      "S02",
+      "S14"
      ],
      "pairs": {
       "W02": [
@@ -537,8 +157,388 @@
        "after"
       ],
       "W11": [
+       "after",
+       "before"
+      ]
+     },
+     "mastheads": [
+      "L3-condensed",
+      "L3-today"
+     ]
+    },
+    "finished": true,
+    "initials": "T390",
+    "viewport_width": 390,
+    "mode": "saved",
+    "mode_note": "",
+    "showAgain": {
+     "overview": 1,
+     "loop_r10": 1,
+     "icon_i6": 1
+    },
+    "skipped": [
+     "icon_i6.stands_for",
+     "marks.m9"
+    ]
+   },
+   "db": {
+    "writes": 31,
+    "maxInflight": 1,
+    "calls": {
+     "get": 1,
+     "set": 1,
+     "update": 30
+    }
+   },
+   "pass": true,
+   "seconds": 219
+  },
+  {
+   "label": "saved, 360",
+   "mode": "saved",
+   "width": 360,
+   "scale": 0.05,
+   "screens": 54,
+   "failures": [],
+   "notes": [],
+   "exposures": [
+    {
+     "key": "overview:look",
+     "shown": 10,
+     "wall": 0.516,
+     "imgs": "drawing-overview-360.png@324"
+    },
+    {
+     "key": "loop_r10:look",
+     "shown": 10,
+     "wall": 0.501,
+     "imgs": "drawing-r10-360.png@324"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "drawing-b4-360.png@324"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.508,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.515,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "marks:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s11-360.png@328"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.808,
+     "imgs": "chart-s14-360.png@328"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.802,
+     "imgs": "chart-s02-360.png@328"
+    },
+    {
+     "key": "masthead:look",
+     "shown": 10,
+     "wall": 0.499,
+     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
+    }
+   ],
+   "modeLine": "This page saves your answers as you go.",
+   "end": {
+    "text": "Thank you\n\nYour answers are saved.\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
+    "copy": null
+   },
+   "seen": {
+    "ready": 7,
+    "expose": 16,
+    "question": 24,
+    "marks": 1,
+    "pair": 3,
+    "masthead": 1,
+    "end": 1
+   },
+   "finalMode": "saved",
+   "record": {
+    "questions": 38,
+    "items": 19,
+    "orders": {
+     "loops": [
+      "r10",
+      "b4"
+     ],
+     "icons": [
+      "i4",
+      "i6",
+      "i7",
+      "i2",
+      "i5",
+      "i8",
+      "i1",
+      "i3"
+     ],
+     "charts": [
+      "S11",
+      "S14",
+      "S02"
+     ],
+     "pairs": {
+      "W02": [
+       "after",
+       "before"
+      ],
+      "W10": [
+       "after",
+       "before"
+      ],
+      "W11": [
+       "after",
+       "before"
+      ]
+     },
+     "mastheads": [
+      "L3-today",
+      "L3-condensed"
+     ]
+    },
+    "finished": true,
+    "initials": "T360",
+    "viewport_width": 360,
+    "mode": "saved",
+    "mode_note": "",
+    "showAgain": {
+     "overview": 1,
+     "loop_r10": 1,
+     "icon_i4": 1
+    },
+    "skipped": [
+     "icon_i4.stands_for",
+     "marks.m9"
+    ]
+   },
+   "db": {
+    "writes": 31,
+    "maxInflight": 1,
+    "calls": {
+     "get": 1,
+     "set": 1,
+     "update": 30
+    }
+   },
+   "pass": true,
+   "seconds": 24
+  },
+  {
+   "label": "saved, 1440",
+   "mode": "saved",
+   "width": 1440,
+   "scale": 0.05,
+   "screens": 54,
+   "failures": [],
+   "notes": [],
+   "exposures": [
+    {
+     "key": "overview:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "drawing-overview-390.png@354"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.506,
+     "imgs": "drawing-b4-390.png@354"
+    },
+    {
+     "key": "loop_r10:look",
+     "shown": 10,
+     "wall": 0.509,
+     "imgs": "drawing-r10-390.png@354"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.509,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.514,
+     "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10.1,
+     "wall": 0.504,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "marks:look",
+     "shown": 10,
+     "wall": 0.51,
+     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s14-390.png@358"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.804,
+     "imgs": "chart-s02-390.png@358"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.802,
+     "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "masthead:look",
+     "shown": 10,
+     "wall": 0.497,
+     "imgs": "masthead-2.svg@182 masthead-1.svg@217"
+    }
+   ],
+   "modeLine": "This page saves your answers as you go.",
+   "end": {
+    "text": "Thank you\n\nYour answers are saved.\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
+    "copy": null
+   },
+   "seen": {
+    "ready": 7,
+    "expose": 16,
+    "question": 24,
+    "marks": 1,
+    "pair": 3,
+    "masthead": 1,
+    "end": 1
+   },
+   "finalMode": "saved",
+   "record": {
+    "questions": 38,
+    "items": 19,
+    "orders": {
+     "loops": [
+      "b4",
+      "r10"
+     ],
+     "icons": [
+      "i8",
+      "i5",
+      "i4",
+      "i3",
+      "i1",
+      "i2",
+      "i6",
+      "i7"
+     ],
+     "charts": [
+      "S14",
+      "S02",
+      "S11"
+     ],
+     "pairs": {
+      "W02": [
        "before",
        "after"
+      ],
+      "W10": [
+       "after",
+       "before"
+      ],
+      "W11": [
+       "after",
+       "before"
       ]
      },
      "mastheads": [
@@ -554,10 +554,10 @@
     "showAgain": {
      "overview": 1,
      "loop_r10": 1,
-     "icon_i3": 1
+     "icon_i8": 1
     },
     "skipped": [
-     "icon_i3.stands_for",
+     "icon_i8.stands_for",
      "marks.m9"
     ]
    },
@@ -571,7 +571,7 @@
     }
    },
    "pass": true,
-   "seconds": 25
+   "seconds": 23
   },
   {
    "label": "copy (use() resolves null), 390, captures",
@@ -589,82 +589,70 @@
      "imgs": "drawing-overview-390.png@354"
     },
     {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 4.001,
+     "imgs": "drawing-b4-390.png@354"
+    },
+    {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 4,
+     "wall": 4.005,
      "imgs": "drawing-r10-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 4.006,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 4.004,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 4.004,
-     "imgs": "icon-7.svg@48"
     },
     {
      "key": "icon_i5:look",
      "shown": 10,
-     "wall": 4.004,
+     "wall": 4.003,
      "imgs": "icon-5.svg@48"
     },
     {
      "key": "icon_i4:look",
      "shown": 10,
-     "wall": 4.004,
+     "wall": 4.013,
      "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 4.01,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 4.017,
-     "imgs": "icon-3.svg@48"
     },
     {
      "key": "icon_i2:look",
      "shown": 10,
-     "wall": 4.014,
+     "wall": 4.003,
      "imgs": "icon-2.svg@48"
     },
     {
      "key": "icon_i6:look",
      "shown": 10,
-     "wall": 4.003,
+     "wall": 3.998,
      "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 4.004,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 4.003,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10,
+     "wall": 4.017,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 4.014,
+     "imgs": "icon-1.svg@48"
     },
     {
      "key": "marks:look",
      "shown": 10,
-     "wall": 4.007,
+     "wall": 4.008,
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 15,
-     "wall": 6.005,
-     "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 15,
-     "wall": 6.003,
-     "imgs": "chart-s11-390.png@358"
     },
     {
      "key": "chart_S14:look",
@@ -673,16 +661,28 @@
      "imgs": "chart-s14-390.png@358"
     },
     {
+     "key": "chart_S11:look",
+     "shown": 15,
+     "wall": 6.004,
+     "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 15,
+     "wall": 6.004,
+     "imgs": "chart-s02-390.png@358"
+    },
+    {
      "key": "masthead:look",
      "shown": 10,
-     "wall": 4.006,
+     "wall": 4.005,
      "imgs": "masthead-1.svg@217 masthead-2.svg@182"
     }
    ],
    "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
    "end": {
     "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:13:38.931Z\nFinished: 2026-11-06T20:15:13.447Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\n\nSymbols\nSymbol 1 (i1), looked again 1×: (skipped)\nSymbol 2 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 4 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 5 (i8): “answer for icon_i8:stands_for at 390”\nSymbol 6 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 7 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 8 (i6): “answer for icon_i6:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\nChart 3 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-g4p5yyway5ip\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:13:38.931Z\",\"finished_at\":\"2026-11-06T20:15:13.447Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"r8\"],\"icons\":[\"i1\",\"i7\",\"i5\",\"i4\",\"i8\",\"i3\",\"i2\",\"i6\"],\"charts\":[\"S02\",\"S11\",\"S14\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.4,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.4,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.4,\"skipped\":true}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.6,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.6,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.6,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.6,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.6,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.3,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:24:58.037Z\nFinished: 2026-11-06T20:26:32.036Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i5), looked again 1×: (skipped)\nSymbol 2 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 3 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 390”\nSymbol 5 (i8): “answer for icon_i8:stands_for at 390”\nSymbol 6 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 7 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 8 (i1): “answer for icon_i1:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-ndatsuq3wm3h\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:24:58.037Z\",\"finished_at\":\"2026-11-06T20:26:32.036Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"b4\",\"r10\"],\"icons\":[\"i5\",\"i4\",\"i2\",\"i6\",\"i8\",\"i3\",\"i7\",\"i1\"],\"charts\":[\"S14\",\"S11\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.4,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.4,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.3,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[15],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
    },
    "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
    "seen": {
@@ -700,23 +700,23 @@
     "items": 19,
     "orders": {
      "loops": [
-      "r10",
-      "r8"
+      "b4",
+      "r10"
      ],
      "icons": [
-      "i1",
-      "i7",
       "i5",
       "i4",
+      "i2",
+      "i6",
       "i8",
       "i3",
-      "i2",
-      "i6"
+      "i7",
+      "i1"
      ],
      "charts": [
-      "S02",
+      "S14",
       "S11",
-      "S14"
+      "S02"
      ],
      "pairs": {
       "W02": [
@@ -745,10 +745,10 @@
     "showAgain": {
      "overview": 1,
      "loop_r10": 1,
-     "icon_i1": 1
+     "icon_i5": 1
     },
     "skipped": [
-     "icon_i1.stands_for",
+     "icon_i5.stands_for",
      "marks.m9"
     ]
    },
@@ -767,32 +767,20 @@
     {
      "key": "overview:look",
      "shown": 10,
-     "wall": 0.513,
+     "wall": 0.504,
      "imgs": "drawing-overview-360.png@324"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.501,
-     "imgs": "drawing-r8-360.png@324"
     },
     {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.508,
      "imgs": "drawing-r10-360.png@324"
     },
     {
-     "key": "icon_i6:look",
+     "key": "loop_b4:look",
      "shown": 10,
-     "wall": 0.516,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.502,
-     "imgs": "icon-8.svg@48"
+     "wall": 0.504,
+     "imgs": "drawing-b4-360.png@324"
     },
     {
      "key": "icon_i5:look",
@@ -801,34 +789,46 @@
      "imgs": "icon-5.svg@48"
     },
     {
-     "key": "icon_i3:look",
+     "key": "icon_i2:look",
      "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-3.svg@48"
+     "wall": 0.502,
+     "imgs": "icon-2.svg@48"
     },
     {
      "key": "icon_i4:look",
      "shown": 10,
-     "wall": 0.503,
+     "wall": 0.516,
      "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.514,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-1.svg@48"
     },
     {
      "key": "icon_i7:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.507,
      "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.515,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.508,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.508,
+     "imgs": "icon-6.svg@48"
     },
     {
      "key": "marks:look",
@@ -837,398 +837,34 @@
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
     },
     {
-     "key": "chart_S11:look",
+     "key": "chart_S02:look",
      "shown": 16,
-     "wall": 0.803,
+     "wall": 0.806,
+     "imgs": "chart-s02-360.png@328"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16.1,
+     "wall": 0.804,
      "imgs": "chart-s11-360.png@328"
     },
     {
      "key": "chart_S14:look",
      "shown": 16,
-     "wall": 0.802,
+     "wall": 0.803,
      "imgs": "chart-s14-360.png@328"
     },
     {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.802,
-     "imgs": "chart-s02-360.png@328"
-    },
-    {
      "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.509,
-     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
-    }
-   ],
-   "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
-   "end": {
-    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T360\nStarted: 2026-11-06T20:15:15.062Z\nFinished: 2026-11-06T20:15:37.211Z\nScreen width: 360 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 360”. Open first: Wealth.\nDrawing 2 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i6), looked again 1×: (skipped)\nSymbol 2 (i8): “answer for icon_i8:stands_for at 360”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 360”\nSymbol 4 (i3): “answer for icon_i3:stands_for at 360”\nSymbol 5 (i4): “answer for icon_i4:stands_for at 360”\nSymbol 6 (i2): “answer for icon_i2:stands_for at 360”\nSymbol 7 (i1): “answer for icon_i1:stands_for at 360”\nSymbol 8 (i7): “answer for icon_i7:stands_for at 360”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S11): “answer for chart_S11:telling at 360”. Favors a side: left.\nChart 2 (S14): “answer for chart_S14:telling at 360”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 360”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-ruji2udgcsa7\",\"run\":{\"initials\":\"T360\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:15:15.062Z\",\"finished_at\":\"2026-11-06T20:15:37.211Z\",\"viewport_width\":360,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r8\",\"r10\"],\"icons\":[\"i6\",\"i8\",\"i5\",\"i3\",\"i4\",\"i2\",\"i1\",\"i7\"],\"charts\":[\"S11\",\"S14\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 360\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.2,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"icon_i6\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
-   },
-   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
-   "seen": {
-    "ready": 7,
-    "expose": 16,
-    "question": 24,
-    "marks": 1,
-    "pair": 3,
-    "masthead": 1,
-    "end": 1
-   },
-   "finalMode": "copy",
-   "record": {
-    "questions": 38,
-    "items": 19,
-    "orders": {
-     "loops": [
-      "r8",
-      "r10"
-     ],
-     "icons": [
-      "i6",
-      "i8",
-      "i5",
-      "i3",
-      "i4",
-      "i2",
-      "i1",
-      "i7"
-     ],
-     "charts": [
-      "S11",
-      "S14",
-      "S02"
-     ],
-     "pairs": {
-      "W02": [
-       "before",
-       "after"
-      ],
-      "W10": [
-       "before",
-       "after"
-      ],
-      "W11": [
-       "before",
-       "after"
-      ]
-     },
-     "mastheads": [
-      "L3-today",
-      "L3-condensed"
-     ]
-    },
-    "finished": true,
-    "initials": "T360",
-    "viewport_width": 360,
-    "mode": "copy",
-    "mode_note": "db unavailable",
-    "showAgain": {
-     "overview": 1,
-     "loop_r10": 1,
-     "icon_i6": 1
-    },
-    "skipped": [
-     "icon_i6.stands_for",
-     "marks.m9"
-    ]
-   },
-   "pass": true,
-   "seconds": 24
-  },
-  {
-   "label": "copy (use() resolves null), 1440",
-   "mode": "null",
-   "width": 1440,
-   "scale": 0.05,
-   "screens": 54,
-   "failures": [],
-   "notes": [],
-   "exposures": [
-    {
-     "key": "overview:look",
-     "shown": 10,
-     "wall": 0.518,
-     "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.508,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "loop_r10:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "drawing-r10-390.png@354"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-5.svg@48"
-    },
-    {
-     "key": "icon_i6:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 0.494,
-     "imgs": "icon-7.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "marks:look",
      "shown": 10,
      "wall": 0.507,
-     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.805,
-     "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.802,
-     "imgs": "chart-s11-390.png@358"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.802,
-     "imgs": "chart-s14-390.png@358"
-    },
-    {
-     "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.495,
-     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
+     "imgs": "masthead-2.svg@182 masthead-1.svg@217"
     }
    ],
    "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
    "end": {
     "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T1440\nStarted: 2026-11-06T20:15:38.910Z\nFinished: 2026-11-06T20:16:01.113Z\nScreen width: 1440 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 1440”. Open first: Wealth.\nDrawing 2 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i8), looked again 1×: (skipped)\nSymbol 2 (i4): “answer for icon_i4:stands_for at 1440”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 1440”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 1440”\nSymbol 5 (i7): “answer for icon_i7:stands_for at 1440”\nSymbol 6 (i2): “answer for icon_i2:stands_for at 1440”\nSymbol 7 (i1): “answer for icon_i1:stands_for at 1440”\nSymbol 8 (i3): “answer for icon_i3:stands_for at 1440”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 1440”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 1440”. Favors a side: left.\nChart 3 (S14): “answer for chart_S14:telling at 1440”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (after)\nPair 3 (W11): A (after)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-kp8y3hmvzene\",\"run\":{\"initials\":\"T1440\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:15:38.910Z\",\"finished_at\":\"2026-11-06T20:16:01.113Z\",\"viewport_width\":1440,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r8\",\"r10\"],\"icons\":[\"i8\",\"i4\",\"i5\",\"i6\",\"i7\",\"i2\",\"i1\",\"i3\"],\"charts\":[\"S02\",\"S11\",\"S14\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"after\",\"before\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 1440\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.2,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 1440\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 1440\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 1440\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 1440\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
-   },
-   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
-   "seen": {
-    "ready": 7,
-    "expose": 16,
-    "question": 24,
-    "marks": 1,
-    "pair": 3,
-    "masthead": 1,
-    "end": 1
-   },
-   "finalMode": "copy",
-   "record": {
-    "questions": 38,
-    "items": 19,
-    "orders": {
-     "loops": [
-      "r8",
-      "r10"
-     ],
-     "icons": [
-      "i8",
-      "i4",
-      "i5",
-      "i6",
-      "i7",
-      "i2",
-      "i1",
-      "i3"
-     ],
-     "charts": [
-      "S02",
-      "S11",
-      "S14"
-     ],
-     "pairs": {
-      "W02": [
-       "before",
-       "after"
-      ],
-      "W10": [
-       "after",
-       "before"
-      ],
-      "W11": [
-       "after",
-       "before"
-      ]
-     },
-     "mastheads": [
-      "L3-today",
-      "L3-condensed"
-     ]
-    },
-    "finished": true,
-    "initials": "T1440",
-    "viewport_width": 1440,
-    "mode": "copy",
-    "mode_note": "db unavailable",
-    "showAgain": {
-     "overview": 1,
-     "loop_r10": 1,
-     "icon_i8": 1
-    },
-    "skipped": [
-     "icon_i8.stands_for",
-     "marks.m9"
-    ]
-   },
-   "pass": true,
-   "seconds": 24
-  },
-  {
-   "label": "copy (no window.claude), 390",
-   "mode": "absent",
-   "width": 390,
-   "scale": 0.05,
-   "screens": 54,
-   "failures": [],
-   "notes": [],
-   "exposures": [
-    {
-     "key": "overview:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r10:look",
-     "shown": 10,
-     "wall": 0.507,
-     "imgs": "drawing-r10-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-5.svg@48"
-    },
-    {
-     "key": "icon_i6:look",
-     "shown": 10,
-     "wall": 0.502,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-7.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.502,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "marks:look",
-     "shown": 10,
-     "wall": 0.512,
-     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.803,
-     "imgs": "chart-s14-390.png@358"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16.1,
-     "wall": 0.801,
-     "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.803,
-     "imgs": "chart-s11-390.png@358"
-    },
-    {
-     "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.499,
-     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
-    }
-   ],
-   "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
-   "end": {
-    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:16:02.775Z\nFinished: 2026-11-06T20:16:25.109Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\n\nSymbols\nSymbol 1 (i8), looked again 1×: (skipped)\nSymbol 2 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 390”\nSymbol 5 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 6 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 7 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 8 (i3): “answer for icon_i3:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 2 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\nChart 3 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (after)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-wjn8su3799v4\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"no viewer\",\"started_at\":\"2026-11-06T20:16:02.775Z\",\"finished_at\":\"2026-11-06T20:16:25.109Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"r8\"],\"icons\":[\"i8\",\"i2\",\"i5\",\"i6\",\"i1\",\"i4\",\"i7\",\"i3\"],\"charts\":[\"S14\",\"S02\",\"S11\"],\"pairs\":{\"W02\":[\"after\",\"before\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16.1],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+    "copy": "Draft design test: my answers\nName or initials: T360\nStarted: 2026-11-06T20:26:33.634Z\nFinished: 2026-11-06T20:26:56.816Z\nScreen width: 360 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 360”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\n\nSymbols\nSymbol 1 (i5), looked again 1×: (skipped)\nSymbol 2 (i2): “answer for icon_i2:stands_for at 360”\nSymbol 3 (i4): “answer for icon_i4:stands_for at 360”\nSymbol 4 (i7): “answer for icon_i7:stands_for at 360”\nSymbol 5 (i3): “answer for icon_i3:stands_for at 360”\nSymbol 6 (i1): “answer for icon_i1:stands_for at 360”\nSymbol 7 (i8): “answer for icon_i8:stands_for at 360”\nSymbol 8 (i6): “answer for icon_i6:stands_for at 360”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 360”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 360”. Favors a side: left.\nChart 3 (S14): “answer for chart_S14:telling at 360”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (after)\nPair 2 (W10): A (after)\nPair 3 (W11): A (after)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-4qi95dxnie95\",\"run\":{\"initials\":\"T360\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:26:33.634Z\",\"finished_at\":\"2026-11-06T20:26:56.816Z\",\"viewport_width\":360,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"b4\"],\"icons\":[\"i5\",\"i2\",\"i4\",\"i7\",\"i3\",\"i1\",\"i8\",\"i6\"],\"charts\":[\"S02\",\"S11\",\"S14\"],\"pairs\":{\"W02\":[\"after\",\"before\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"after\",\"before\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 360\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 360\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 360\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 360\",\"seconds\":0.5,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16.1],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 360\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"after\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
    },
    "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
    "seen": {
@@ -1247,22 +883,22 @@
     "orders": {
      "loops": [
       "r10",
-      "r8"
+      "b4"
      ],
      "icons": [
-      "i8",
-      "i2",
       "i5",
-      "i6",
-      "i1",
+      "i2",
       "i4",
       "i7",
-      "i3"
+      "i3",
+      "i1",
+      "i8",
+      "i6"
      ],
      "charts": [
-      "S14",
       "S02",
-      "S11"
+      "S11",
+      "S14"
      ],
      "pairs": {
       "W02": [
@@ -1270,8 +906,190 @@
        "before"
       ],
       "W10": [
+       "after",
+       "before"
+      ],
+      "W11": [
+       "after",
+       "before"
+      ]
+     },
+     "mastheads": [
+      "L3-condensed",
+      "L3-today"
+     ]
+    },
+    "finished": true,
+    "initials": "T360",
+    "viewport_width": 360,
+    "mode": "copy",
+    "mode_note": "db unavailable",
+    "showAgain": {
+     "overview": 1,
+     "loop_r10": 1,
+     "icon_i5": 1
+    },
+    "skipped": [
+     "icon_i5.stands_for",
+     "marks.m9"
+    ]
+   },
+   "pass": true,
+   "seconds": 25
+  },
+  {
+   "label": "copy (use() resolves null), 1440",
+   "mode": "null",
+   "width": 1440,
+   "scale": 0.05,
+   "screens": 54,
+   "failures": [],
+   "notes": [],
+   "exposures": [
+    {
+     "key": "overview:look",
+     "shown": 10,
+     "wall": 0.493,
+     "imgs": "drawing-overview-390.png@354"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.5,
+     "imgs": "drawing-b4-390.png@354"
+    },
+    {
+     "key": "loop_r10:look",
+     "shown": 10,
+     "wall": 0.507,
+     "imgs": "drawing-r10-390.png@354"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.512,
+     "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.508,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "marks:look",
+     "shown": 10,
+     "wall": 0.556,
+     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.807,
+     "imgs": "chart-s14-390.png@358"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.808,
+     "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.817,
+     "imgs": "chart-s02-390.png@358"
+    },
+    {
+     "key": "masthead:look",
+     "shown": 10,
+     "wall": 0.497,
+     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
+    }
+   ],
+   "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
+   "end": {
+    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
+    "copy": "Draft design test: my answers\nName or initials: T1440\nStarted: 2026-11-06T20:26:58.400Z\nFinished: 2026-11-06T20:27:21.367Z\nScreen width: 1440 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 1440”. Open first: Wealth.\nDrawing 2 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i7), looked again 1×: (skipped)\nSymbol 2 (i3): “answer for icon_i3:stands_for at 1440”\nSymbol 3 (i2): “answer for icon_i2:stands_for at 1440”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 1440”\nSymbol 5 (i8): “answer for icon_i8:stands_for at 1440”\nSymbol 6 (i1): “answer for icon_i1:stands_for at 1440”\nSymbol 7 (i4): “answer for icon_i4:stands_for at 1440”\nSymbol 8 (i5): “answer for icon_i5:stands_for at 1440”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S14): “answer for chart_S14:telling at 1440”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 1440”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 1440”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (after)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-ambkdb736nwy\",\"run\":{\"initials\":\"T1440\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:26:58.400Z\",\"finished_at\":\"2026-11-06T20:27:21.367Z\",\"viewport_width\":1440,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"b4\",\"r10\"],\"icons\":[\"i7\",\"i3\",\"i2\",\"i6\",\"i8\",\"i1\",\"i4\",\"i5\"],\"charts\":[\"S14\",\"S11\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 1440\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.2,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 1440\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 1440\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 1440\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 1440\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 1440\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 1440\",\"seconds\":0.5,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.6,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+   },
+   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
+   "seen": {
+    "ready": 7,
+    "expose": 16,
+    "question": 24,
+    "marks": 1,
+    "pair": 3,
+    "masthead": 1,
+    "end": 1
+   },
+   "finalMode": "copy",
+   "record": {
+    "questions": 38,
+    "items": 19,
+    "orders": {
+     "loops": [
+      "b4",
+      "r10"
+     ],
+     "icons": [
+      "i7",
+      "i3",
+      "i2",
+      "i6",
+      "i8",
+      "i1",
+      "i4",
+      "i5"
+     ],
+     "charts": [
+      "S14",
+      "S11",
+      "S02"
+     ],
+     "pairs": {
+      "W02": [
        "before",
        "after"
+      ],
+      "W10": [
+       "after",
+       "before"
       ],
       "W11": [
        "before",
@@ -1281,6 +1099,188 @@
      "mastheads": [
       "L3-today",
       "L3-condensed"
+     ]
+    },
+    "finished": true,
+    "initials": "T1440",
+    "viewport_width": 1440,
+    "mode": "copy",
+    "mode_note": "db unavailable",
+    "showAgain": {
+     "overview": 1,
+     "loop_r10": 1,
+     "icon_i7": 1
+    },
+    "skipped": [
+     "icon_i7.stands_for",
+     "marks.m9"
+    ]
+   },
+   "pass": true,
+   "seconds": 25
+  },
+  {
+   "label": "copy (no window.claude), 390",
+   "mode": "absent",
+   "width": 390,
+   "scale": 0.05,
+   "screens": 54,
+   "failures": [],
+   "notes": [],
+   "exposures": [
+    {
+     "key": "overview:look",
+     "shown": 10,
+     "wall": 0.506,
+     "imgs": "drawing-overview-390.png@354"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.511,
+     "imgs": "drawing-b4-390.png@354"
+    },
+    {
+     "key": "loop_r10:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "drawing-r10-390.png@354"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.516,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.509,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "marks:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.802,
+     "imgs": "chart-s02-390.png@358"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s14-390.png@358"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "masthead:look",
+     "shown": 10,
+     "wall": 0.501,
+     "imgs": "masthead-2.svg@182 masthead-1.svg@217"
+    }
+   ],
+   "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
+   "end": {
+    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
+    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:27:22.833Z\nFinished: 2026-11-06T20:27:45.450Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i8), looked again 1×: (skipped)\nSymbol 2 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 390”\nSymbol 5 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 6 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 7 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 8 (i7): “answer for icon_i7:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\nChart 2 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 3 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (after)\nPair 2 (W10): A (after)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-6j68xf9xf8s4\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"no viewer\",\"started_at\":\"2026-11-06T20:27:22.833Z\",\"finished_at\":\"2026-11-06T20:27:45.450Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"b4\",\"r10\"],\"icons\":[\"i8\",\"i1\",\"i5\",\"i6\",\"i4\",\"i2\",\"i3\",\"i7\"],\"charts\":[\"S02\",\"S14\",\"S11\"],\"pairs\":{\"W02\":[\"after\",\"before\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.6,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.6,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+   },
+   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
+   "seen": {
+    "ready": 7,
+    "expose": 16,
+    "question": 24,
+    "marks": 1,
+    "pair": 3,
+    "masthead": 1,
+    "end": 1
+   },
+   "finalMode": "copy",
+   "record": {
+    "questions": 38,
+    "items": 19,
+    "orders": {
+     "loops": [
+      "b4",
+      "r10"
+     ],
+     "icons": [
+      "i8",
+      "i1",
+      "i5",
+      "i6",
+      "i4",
+      "i2",
+      "i3",
+      "i7"
+     ],
+     "charts": [
+      "S02",
+      "S14",
+      "S11"
+     ],
+     "pairs": {
+      "W02": [
+       "after",
+       "before"
+      ],
+      "W10": [
+       "after",
+       "before"
+      ],
+      "W11": [
+       "before",
+       "after"
+      ]
+     },
+     "mastheads": [
+      "L3-condensed",
+      "L3-today"
      ]
     },
     "finished": true,
@@ -1313,32 +1313,26 @@
     {
      "key": "overview:look",
      "shown": 10,
-     "wall": 0.502,
+     "wall": 0.503,
      "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.495,
-     "imgs": "drawing-r8-390.png@354"
     },
     {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.507,
      "imgs": "drawing-r10-390.png@354"
     },
     {
-     "key": "icon_i8:look",
+     "key": "loop_b4:look",
      "shown": 10,
      "wall": 0.504,
-     "imgs": "icon-8.svg@48"
+     "imgs": "drawing-b4-390.png@354"
     },
     {
-     "key": "icon_i1:look",
+     "key": "icon_i6:look",
      "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-1.svg@48"
+     "wall": 0.516,
+     "imgs": "icon-6.svg@48"
     },
     {
      "key": "icon_i5:look",
@@ -1347,16 +1341,16 @@
      "imgs": "icon-5.svg@48"
     },
     {
-     "key": "icon_i4:look",
+     "key": "icon_i7:look",
      "shown": 10,
-     "wall": 0.513,
-     "imgs": "icon-4.svg@48"
+     "wall": 0.511,
+     "imgs": "icon-7.svg@48"
     },
     {
-     "key": "icon_i2:look",
+     "key": "icon_i1:look",
      "shown": 10,
-     "wall": 0.516,
-     "imgs": "icon-2.svg@48"
+     "wall": 0.512,
+     "imgs": "icon-1.svg@48"
     },
     {
      "key": "icon_i3:look",
@@ -1365,22 +1359,34 @@
      "imgs": "icon-3.svg@48"
     },
     {
-     "key": "icon_i7:look",
+     "key": "icon_i2:look",
      "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-7.svg@48"
+     "wall": 0.505,
+     "imgs": "icon-2.svg@48"
     },
     {
-     "key": "icon_i6:look",
+     "key": "icon_i8:look",
      "shown": 10,
-     "wall": 0.502,
-     "imgs": "icon-6.svg@48"
+     "wall": 0.505,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-4.svg@48"
     },
     {
      "key": "marks:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.501,
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.805,
+     "imgs": "chart-s02-390.png@358"
     },
     {
      "key": "chart_S11:look",
@@ -1391,208 +1397,20 @@
     {
      "key": "chart_S14:look",
      "shown": 16,
-     "wall": 0.803,
+     "wall": 0.804,
      "imgs": "chart-s14-390.png@358"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.809,
-     "imgs": "chart-s02-390.png@358"
     },
     {
      "key": "masthead:look",
      "shown": 10,
-     "wall": 0.503,
+     "wall": 0.481,
      "imgs": "masthead-2.svg@182 masthead-1.svg@217"
     }
    ],
    "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
    "end": {
     "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:16:27.108Z\nFinished: 2026-11-06T20:16:49.275Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i8), looked again 1×: (skipped)\nSymbol 2 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 3 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 4 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 5 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 6 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 7 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 8 (i6): “answer for icon_i6:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\nChart 2 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-nxqghdptb62d\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"view-only access\",\"started_at\":\"2026-11-06T20:16:27.108Z\",\"finished_at\":\"2026-11-06T20:16:49.275Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r8\",\"r10\"],\"icons\":[\"i8\",\"i1\",\"i5\",\"i4\",\"i2\",\"i3\",\"i7\",\"i6\"],\"charts\":[\"S11\",\"S14\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.2,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.2,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
-   },
-   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
-   "seen": {
-    "ready": 7,
-    "expose": 16,
-    "question": 24,
-    "marks": 1,
-    "pair": 3,
-    "masthead": 1,
-    "end": 1
-   },
-   "finalMode": "copy",
-   "record": {
-    "questions": 38,
-    "items": 19,
-    "orders": {
-     "loops": [
-      "r8",
-      "r10"
-     ],
-     "icons": [
-      "i8",
-      "i1",
-      "i5",
-      "i4",
-      "i2",
-      "i3",
-      "i7",
-      "i6"
-     ],
-     "charts": [
-      "S11",
-      "S14",
-      "S02"
-     ],
-     "pairs": {
-      "W02": [
-       "before",
-       "after"
-      ],
-      "W10": [
-       "before",
-       "after"
-      ],
-      "W11": [
-       "before",
-       "after"
-      ]
-     },
-     "mastheads": [
-      "L3-condensed",
-      "L3-today"
-     ]
-    },
-    "finished": true,
-    "initials": "T390",
-    "viewport_width": 390,
-    "mode": "copy",
-    "mode_note": "view-only access",
-    "showAgain": {
-     "overview": 1,
-     "loop_r10": 1,
-     "icon_i8": 1
-    },
-    "skipped": [
-     "icon_i8.stands_for",
-     "marks.m9"
-    ]
-   },
-   "pass": true,
-   "seconds": 24
-  },
-  {
-   "label": "saved then copy (every write rejected), 390",
-   "mode": "reject",
-   "width": 390,
-   "scale": 0.05,
-   "screens": 54,
-   "failures": [],
-   "notes": [],
-   "exposures": [
-    {
-     "key": "overview:look",
-     "shown": 10,
-     "wall": 0.517,
-     "imgs": "drawing-overview-390.png@354"
-    },
-    {
-     "key": "loop_r10:look",
-     "shown": 10,
-     "wall": 0.498,
-     "imgs": "drawing-r10-390.png@354"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.505,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "icon_i7:look",
-     "shown": 10,
-     "wall": 0.516,
-     "imgs": "icon-7.svg@48"
-    },
-    {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.507,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i6:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-6.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-5.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.508,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.502,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "marks:look",
-     "shown": 10,
-     "wall": 0.506,
-     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.801,
-     "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.802,
-     "imgs": "chart-s14-390.png@358"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.803,
-     "imgs": "chart-s11-390.png@358"
-    },
-    {
-     "key": "masthead:look",
-     "shown": 10,
-     "wall": 0.508,
-     "imgs": "masthead-2.svg@182 masthead-1.svg@217"
-    }
-   ],
-   "modeLine": "This page saves your answers as you go.",
-   "end": {
-    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:16:50.673Z\nFinished: 2026-11-06T20:17:12.940Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\n\nSymbols\nSymbol 1 (i7), looked again 1×: (skipped)\nSymbol 2 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 3 (i8): “answer for icon_i8:stands_for at 390”\nSymbol 4 (i6): “answer for icon_i6:stands_for at 390”\nSymbol 5 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 6 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 7 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 8 (i2): “answer for icon_i2:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\nChart 2 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 3 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (after)\nPair 2 (W10): A (after)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-p2z2g4p3b4ym\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"write failed: invalid_argument\",\"started_at\":\"2026-11-06T20:16:50.673Z\",\"finished_at\":\"2026-11-06T20:17:12.940Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"r8\"],\"icons\":[\"i7\",\"i1\",\"i8\",\"i6\",\"i4\",\"i5\",\"i3\",\"i2\"],\"charts\":[\"S02\",\"S14\",\"S11\"],\"pairs\":{\"W02\":[\"after\",\"before\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.3,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.5,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:27:47.049Z\nFinished: 2026-11-06T20:28:09.914Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\n\nSymbols\nSymbol 1 (i6), looked again 1×: (skipped)\nSymbol 2 (i5): “answer for icon_i5:stands_for at 390”\nSymbol 3 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 4 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 5 (i3): “answer for icon_i3:stands_for at 390”\nSymbol 6 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 7 (i8): “answer for icon_i8:stands_for at 390”\nSymbol 8 (i4): “answer for icon_i4:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\nChart 3 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (after)\nPair 3 (W11): A (after)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-na6tg7qm9f69\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"view-only access\",\"started_at\":\"2026-11-06T20:27:47.049Z\",\"finished_at\":\"2026-11-06T20:28:09.914Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"b4\"],\"icons\":[\"i6\",\"i5\",\"i7\",\"i1\",\"i3\",\"i2\",\"i8\",\"i4\"],\"charts\":[\"S02\",\"S11\",\"S14\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"after\",\"before\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.4,\"skipped\":true}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.5,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
    },
    "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
    "seen": {
@@ -1611,35 +1429,35 @@
     "orders": {
      "loops": [
       "r10",
-      "r8"
+      "b4"
      ],
      "icons": [
+      "i6",
+      "i5",
       "i7",
       "i1",
-      "i8",
-      "i6",
-      "i4",
-      "i5",
       "i3",
-      "i2"
+      "i2",
+      "i8",
+      "i4"
      ],
      "charts": [
       "S02",
-      "S14",
-      "S11"
+      "S11",
+      "S14"
      ],
      "pairs": {
       "W02": [
-       "after",
-       "before"
+       "before",
+       "after"
       ],
       "W10": [
        "after",
        "before"
       ],
       "W11": [
-       "before",
-       "after"
+       "after",
+       "before"
       ]
      },
      "mastheads": [
@@ -1651,19 +1469,201 @@
     "initials": "T390",
     "viewport_width": 390,
     "mode": "copy",
-    "mode_note": "write failed: invalid_argument",
+    "mode_note": "view-only access",
     "showAgain": {
      "overview": 1,
      "loop_r10": 1,
-     "icon_i7": 1
+     "icon_i6": 1
     },
     "skipped": [
-     "icon_i7.stands_for",
+     "icon_i6.stands_for",
      "marks.m9"
     ]
    },
    "pass": true,
    "seconds": 24
+  },
+  {
+   "label": "saved then copy (every write rejected), 390",
+   "mode": "reject",
+   "width": 390,
+   "scale": 0.05,
+   "screens": 54,
+   "failures": [],
+   "notes": [],
+   "exposures": [
+    {
+     "key": "overview:look",
+     "shown": 10,
+     "wall": 0.508,
+     "imgs": "drawing-overview-390.png@354"
+    },
+    {
+     "key": "loop_r10:look",
+     "shown": 10,
+     "wall": 0.506,
+     "imgs": "drawing-r10-390.png@354"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "drawing-b4-390.png@354"
+    },
+    {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.493,
+     "imgs": "icon-5.svg@48"
+    },
+    {
+     "key": "icon_i7:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-7.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i1:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-1.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.503,
+     "imgs": "icon-6.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.506,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i3:look",
+     "shown": 10,
+     "wall": 0.506,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "marks:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.804,
+     "imgs": "chart-s14-390.png@358"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.804,
+     "imgs": "chart-s02-390.png@358"
+    },
+    {
+     "key": "masthead:look",
+     "shown": 10,
+     "wall": 0.494,
+     "imgs": "masthead-1.svg@217 masthead-2.svg@182"
+    }
+   ],
+   "modeLine": "This page saves your answers as you go.",
+   "end": {
+    "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
+    "copy": "Draft design test: my answers\nName or initials: T390\nStarted: 2026-11-06T20:28:11.380Z\nFinished: 2026-11-06T20:28:33.347Z\nScreen width: 390 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 390”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\n\nSymbols\nSymbol 1 (i5), looked again 1×: (skipped)\nSymbol 2 (i7): “answer for icon_i7:stands_for at 390”\nSymbol 3 (i4): “answer for icon_i4:stands_for at 390”\nSymbol 4 (i1): “answer for icon_i1:stands_for at 390”\nSymbol 5 (i6): “answer for icon_i6:stands_for at 390”\nSymbol 6 (i2): “answer for icon_i2:stands_for at 390”\nSymbol 7 (i8): “answer for icon_i8:stands_for at 390”\nSymbol 8 (i3): “answer for icon_i3:stands_for at 390”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S14): “answer for chart_S14:telling at 390”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 390”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 390”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (after)\nPair 3 (W11): A (after)\n\nMastheads\nFaster: B (L3-condensed). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-rauc6ryykj7m\",\"run\":{\"initials\":\"T390\",\"mode\":\"copy\",\"mode_note\":\"write failed: invalid_argument\",\"started_at\":\"2026-11-06T20:28:11.380Z\",\"finished_at\":\"2026-11-06T20:28:33.347Z\",\"viewport_width\":390,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"b4\"],\"icons\":[\"i5\",\"i7\",\"i4\",\"i1\",\"i6\",\"i2\",\"i8\",\"i3\"],\"charts\":[\"S14\",\"S11\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"after\",\"before\"],\"W11\":[\"after\",\"before\"]},\"mastheads\":[\"L3-today\",\"L3-condensed\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 390\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.3,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 390\",\"seconds\":0.3,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 390\",\"seconds\":0.3,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 390\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-condensed\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+   },
+   "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
+   "seen": {
+    "ready": 7,
+    "expose": 16,
+    "question": 24,
+    "marks": 1,
+    "pair": 3,
+    "masthead": 1,
+    "end": 1
+   },
+   "finalMode": "copy",
+   "record": {
+    "questions": 38,
+    "items": 19,
+    "orders": {
+     "loops": [
+      "r10",
+      "b4"
+     ],
+     "icons": [
+      "i5",
+      "i7",
+      "i4",
+      "i1",
+      "i6",
+      "i2",
+      "i8",
+      "i3"
+     ],
+     "charts": [
+      "S14",
+      "S11",
+      "S02"
+     ],
+     "pairs": {
+      "W02": [
+       "before",
+       "after"
+      ],
+      "W10": [
+       "after",
+       "before"
+      ],
+      "W11": [
+       "after",
+       "before"
+      ]
+     },
+     "mastheads": [
+      "L3-today",
+      "L3-condensed"
+     ]
+    },
+    "finished": true,
+    "initials": "T390",
+    "viewport_width": 390,
+    "mode": "copy",
+    "mode_note": "write failed: invalid_argument",
+    "showAgain": {
+     "overview": 1,
+     "loop_r10": 1,
+     "icon_i5": 1
+    },
+    "skipped": [
+     "icon_i5.stands_for",
+     "marks.m9"
+    ]
+   },
+   "pass": true,
+   "seconds": 23
   },
   {
    "label": "saved, 390, reduced motion",
@@ -1677,50 +1677,26 @@
     {
      "key": "overview:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.502,
      "imgs": "drawing-overview-390.png@354"
+    },
+    {
+     "key": "loop_b4:look",
+     "shown": 10,
+     "wall": 0.505,
+     "imgs": "drawing-b4-390.png@354"
     },
     {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 0.506,
+     "wall": 0.505,
      "imgs": "drawing-r10-390.png@354"
     },
     {
-     "key": "loop_r8:look",
+     "key": "icon_i6:look",
      "shown": 10,
-     "wall": 0.504,
-     "imgs": "drawing-r8-390.png@354"
-    },
-    {
-     "key": "icon_i2:look",
-     "shown": 10,
-     "wall": 0.506,
-     "imgs": "icon-2.svg@48"
-    },
-    {
-     "key": "icon_i8:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-8.svg@48"
-    },
-    {
-     "key": "icon_i3:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-3.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
-     "shown": 10,
-     "wall": 0.504,
-     "imgs": "icon-4.svg@48"
-    },
-    {
-     "key": "icon_i5:look",
-     "shown": 10,
-     "wall": 0.51,
-     "imgs": "icon-5.svg@48"
+     "wall": 0.503,
+     "imgs": "icon-6.svg@48"
     },
     {
      "key": "icon_i1:look",
@@ -1729,45 +1705,69 @@
      "imgs": "icon-1.svg@48"
     },
     {
+     "key": "icon_i5:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-5.svg@48"
+    },
+    {
      "key": "icon_i7:look",
      "shown": 10,
-     "wall": 0.503,
+     "wall": 0.514,
      "imgs": "icon-7.svg@48"
     },
     {
-     "key": "icon_i6:look",
+     "key": "icon_i3:look",
      "shown": 10,
-     "wall": 0.505,
-     "imgs": "icon-6.svg@48"
+     "wall": 0.5,
+     "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i8:look",
+     "shown": 10,
+     "wall": 0.511,
+     "imgs": "icon-8.svg@48"
+    },
+    {
+     "key": "icon_i4:look",
+     "shown": 10,
+     "wall": 0.512,
+     "imgs": "icon-4.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.502,
+     "imgs": "icon-2.svg@48"
     },
     {
      "key": "marks:look",
      "shown": 10,
-     "wall": 0.508,
+     "wall": 0.515,
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
     },
     {
      "key": "chart_S02:look",
      "shown": 16,
-     "wall": 0.804,
+     "wall": 0.807,
      "imgs": "chart-s02-390.png@358"
-    },
-    {
-     "key": "chart_S14:look",
-     "shown": 16,
-     "wall": 0.803,
-     "imgs": "chart-s14-390.png@358"
     },
     {
      "key": "chart_S11:look",
      "shown": 16,
-     "wall": 0.802,
+     "wall": 0.803,
      "imgs": "chart-s11-390.png@358"
+    },
+    {
+     "key": "chart_S14:look",
+     "shown": 16,
+     "wall": 0.801,
+     "imgs": "chart-s14-390.png@358"
     },
     {
      "key": "masthead:look",
      "shown": 10,
-     "wall": 0.511,
+     "wall": 0.501,
      "imgs": "masthead-2.svg@182 masthead-1.svg@217"
     }
    ],
@@ -1791,23 +1791,23 @@
     "items": 19,
     "orders": {
      "loops": [
-      "r10",
-      "r8"
+      "b4",
+      "r10"
      ],
      "icons": [
-      "i2",
-      "i8",
-      "i3",
-      "i4",
-      "i5",
+      "i6",
       "i1",
+      "i5",
       "i7",
-      "i6"
+      "i3",
+      "i8",
+      "i4",
+      "i2"
      ],
      "charts": [
       "S02",
-      "S14",
-      "S11"
+      "S11",
+      "S14"
      ],
      "pairs": {
       "W02": [
@@ -1836,10 +1836,10 @@
     "showAgain": {
      "overview": 1,
      "loop_r10": 1,
-     "icon_i2": 1
+     "icon_i6": 1
     },
     "skipped": [
-     "icon_i2.stands_for",
+     "icon_i6.stands_for",
      "marks.m9"
     ]
    },
@@ -1853,7 +1853,7 @@
     }
    },
    "pass": true,
-   "seconds": 24
+   "seconds": 23
   },
   {
    "label": "resume after a reload, saved mode, 390",
@@ -1863,7 +1863,7 @@
   {
    "label": "a look pauses while the page is hidden, 390",
    "failures": [],
-   "wall": 3.6,
+   "wall": 3.611,
    "shown": 10.5,
    "pass": true
   },
@@ -1879,104 +1879,104 @@
     {
      "key": "overview:look",
      "shown": 10,
-     "wall": 0.5,
+     "wall": 0.506,
      "imgs": "drawing-overview-360.png@288"
-    },
-    {
-     "key": "loop_r8:look",
-     "shown": 10,
-     "wall": 0.507,
-     "imgs": "drawing-r8-360.png@288"
     },
     {
      "key": "loop_r10:look",
      "shown": 10,
-     "wall": 0.503,
+     "wall": 0.506,
      "imgs": "drawing-r10-360.png@288"
     },
     {
-     "key": "icon_i6:look",
+     "key": "loop_b4:look",
      "shown": 10,
-     "wall": 0.515,
-     "imgs": "icon-6.svg@48"
+     "wall": 0.511,
+     "imgs": "drawing-b4-360.png@288"
     },
     {
-     "key": "icon_i8:look",
+     "key": "icon_i4:look",
      "shown": 10,
      "wall": 0.503,
-     "imgs": "icon-8.svg@48"
+     "imgs": "icon-4.svg@48"
     },
     {
-     "key": "icon_i2:look",
+     "key": "icon_i1:look",
      "shown": 10,
-     "wall": 0.506,
-     "imgs": "icon-2.svg@48"
+     "wall": 0.504,
+     "imgs": "icon-1.svg@48"
     },
     {
      "key": "icon_i3:look",
      "shown": 10,
-     "wall": 0.514,
+     "wall": 0.502,
      "imgs": "icon-3.svg@48"
+    },
+    {
+     "key": "icon_i2:look",
+     "shown": 10,
+     "wall": 0.504,
+     "imgs": "icon-2.svg@48"
+    },
+    {
+     "key": "icon_i6:look",
+     "shown": 10,
+     "wall": 0.514,
+     "imgs": "icon-6.svg@48"
     },
     {
      "key": "icon_i7:look",
      "shown": 10,
-     "wall": 0.503,
+     "wall": 0.504,
      "imgs": "icon-7.svg@48"
     },
     {
      "key": "icon_i5:look",
      "shown": 10,
-     "wall": 0.504,
+     "wall": 0.511,
      "imgs": "icon-5.svg@48"
     },
     {
-     "key": "icon_i1:look",
-     "shown": 10,
-     "wall": 0.503,
-     "imgs": "icon-1.svg@48"
-    },
-    {
-     "key": "icon_i4:look",
+     "key": "icon_i8:look",
      "shown": 10,
      "wall": 0.504,
-     "imgs": "icon-4.svg@48"
+     "imgs": "icon-8.svg@48"
     },
     {
      "key": "marks:look",
      "shown": 10,
-     "wall": 0.501,
+     "wall": 0.509,
      "imgs": "mark-1.svg@152 mark-2.svg@120 mark-3.svg@14 mark-4.svg@16 mark-5.svg@16 mark-6.svg@16 mark-7.svg@16 mark-8.svg@16 mark-9.svg@16"
-    },
-    {
-     "key": "chart_S02:look",
-     "shown": 16,
-     "wall": 0.836,
-     "imgs": "chart-s02-360.png@288"
-    },
-    {
-     "key": "chart_S11:look",
-     "shown": 16,
-     "wall": 0.804,
-     "imgs": "chart-s11-360.png@288"
     },
     {
      "key": "chart_S14:look",
      "shown": 16,
-     "wall": 0.803,
+     "wall": 0.802,
      "imgs": "chart-s14-360.png@288"
+    },
+    {
+     "key": "chart_S11:look",
+     "shown": 16,
+     "wall": 0.803,
+     "imgs": "chart-s11-360.png@288"
+    },
+    {
+     "key": "chart_S02:look",
+     "shown": 16,
+     "wall": 0.804,
+     "imgs": "chart-s02-360.png@288"
     },
     {
      "key": "masthead:look",
      "shown": 10,
-     "wall": 0.479,
+     "wall": 0.499,
      "imgs": "masthead-2.svg@182 masthead-1.svg@217"
     }
    ],
    "modeLine": "This page can’t save answers for you here, so at the end it will show your answers for you to copy and send to the person who shared the link.",
    "end": {
     "text": "Thank you\n\nThis page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.\n\nYour answers\nCopy my answers\n\nA small design team will read your answers alongside other readers’ and use what they learn to fix the drafts before they’re final.\n\nStart a new test on this device",
-    "copy": "Draft design test: my answers\nName or initials: T320\nStarted: 2026-11-06T20:17:44.938Z\nFinished: 2026-11-06T20:18:07.004Z\nScreen width: 320 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 320”. Open first: Wealth.\nDrawing 2 (r8). Comes back: no. Feeds or pushes: pushes. Least certain: bottom. Reform acts: “Homeowners' equity”.\nDrawing 3 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\n\nSymbols\nSymbol 1 (i6), looked again 1×: (skipped)\nSymbol 2 (i8): “answer for icon_i8:stands_for at 320”\nSymbol 3 (i2): “answer for icon_i2:stands_for at 320”\nSymbol 4 (i3): “answer for icon_i3:stands_for at 320”\nSymbol 5 (i7): “answer for icon_i7:stands_for at 320”\nSymbol 6 (i5): “answer for icon_i5:stands_for at 320”\nSymbol 7 (i1): “answer for icon_i1:stands_for at 320”\nSymbol 8 (i4): “answer for icon_i4:stands_for at 320”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S02): “answer for chart_S02:telling at 320”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 320”. Favors a side: left.\nChart 3 (S14): “answer for chart_S14:telling at 320”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (after)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-6nk93kyvdg5q\",\"run\":{\"initials\":\"T320\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:17:44.938Z\",\"finished_at\":\"2026-11-06T20:18:07.004Z\",\"viewport_width\":320,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r8\",\"r10\"],\"icons\":[\"i6\",\"i8\",\"i2\",\"i3\",\"i7\",\"i5\",\"i1\",\"i4\"],\"charts\":[\"S02\",\"S11\",\"S14\"],\"pairs\":{\"W02\":[\"after\",\"before\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 320\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"bottom\",\"seconds\":0.2,\"skipped\":false},\"reform_acts\":{\"answer\":\"Homeowners' equity\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"icon_i6\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 320\",\"seconds\":0.4,\"skipped\":false}}},\"icon_i4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i4:stands_for at 320\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 320\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 320\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 320\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"after\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
+    "copy": "Draft design test: my answers\nName or initials: T320\nStarted: 2026-11-06T20:29:04.030Z\nFinished: 2026-11-06T20:29:26.145Z\nScreen width: 320 px\n\nDrawings\nDrawing 1, the page, looked again 1×. For: “answer for overview:purpose at 320”. Open first: Wealth.\nDrawing 2 (r10), looked again 1×. Comes back: no. Feeds or pushes: pushes. Least certain: step2. Reform acts: “Seats settled in the primary”.\nDrawing 3 (b4). Comes back: no. Feeds or pushes: pushes. Least certain: right. Reform acts: “Risk of losing office”.\n\nSymbols\nSymbol 1 (i4), looked again 1×: (skipped)\nSymbol 2 (i1): “answer for icon_i1:stands_for at 320”\nSymbol 3 (i3): “answer for icon_i3:stands_for at 320”\nSymbol 4 (i2): “answer for icon_i2:stands_for at 320”\nSymbol 5 (i6): “answer for icon_i6:stands_for at 320”\nSymbol 6 (i7): “answer for icon_i7:stands_for at 320”\nSymbol 7 (i5): “answer for icon_i5:stands_for at 320”\nSymbol 8 (i8): “answer for icon_i8:stands_for at 320”\n\nSmall marks\n1 clear, 2 blurry, 3 cannot_tell, 4 clear, 5 blurry, 6 cannot_tell, 7 clear, 8 blurry, 9 (skipped)\n\nCharts\nChart 1 (S14): “answer for chart_S14:telling at 320”. Favors a side: left.\nChart 2 (S11): “answer for chart_S11:telling at 320”. Favors a side: left.\nChart 3 (S02): “answer for chart_S02:telling at 320”. Favors a side: left.\n\nSentences\nPair 1 (W02): A (before)\nPair 2 (W10): A (before)\nPair 3 (W11): A (before)\n\nMastheads\nFaster: B (L3-today). Why: “It is shorter.”\n\nFor the design team, please keep this line:\n{\"schema\":\"reader-check/1\",\"run_id\":\"run-dgr8z8by76kz\",\"run\":{\"initials\":\"T320\",\"mode\":\"copy\",\"mode_note\":\"db unavailable\",\"started_at\":\"2026-11-06T20:29:04.030Z\",\"finished_at\":\"2026-11-06T20:29:26.145Z\",\"viewport_width\":320,\"resumed\":0,\"position\":\"end\",\"orders\":{\"loops\":[\"r10\",\"b4\"],\"icons\":[\"i4\",\"i1\",\"i3\",\"i2\",\"i6\",\"i7\",\"i5\",\"i8\"],\"charts\":[\"S14\",\"S11\",\"S02\"],\"pairs\":{\"W02\":[\"before\",\"after\"],\"W10\":[\"before\",\"after\"],\"W11\":[\"before\",\"after\"]},\"mastheads\":[\"L3-condensed\",\"L3-today\"]},\"items\":{\"overview\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"purpose\":{\"answer\":\"answer for overview:purpose at 320\",\"seconds\":0.3,\"skipped\":false},\"open_first\":{\"answer\":\"Wealth\",\"seconds\":0.2,\"skipped\":false}}},\"loop_r10\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.2,\"skipped\":false},\"least_certain\":{\"answer\":\"step2\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Seats settled in the primary\",\"seconds\":0.2,\"skipped\":false}}},\"loop_b4\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"comes_back\":{\"answer\":\"no\",\"seconds\":0.2,\"skipped\":false},\"feeds_or_pushes\":{\"answer\":\"pushes\",\"seconds\":0.3,\"skipped\":false},\"least_certain\":{\"answer\":\"right\",\"seconds\":0.3,\"skipped\":false},\"reform_acts\":{\"answer\":\"Risk of losing office\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i4\":{\"show_again\":1,\"shown_seconds\":[10],\"again_seconds\":[10],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":null,\"seconds\":0.3,\"skipped\":true}}},\"icon_i1\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i1:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i3\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i3:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i2\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i2:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i6\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i6:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i7\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i7:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i5\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i5:stands_for at 320\",\"seconds\":0.3,\"skipped\":false}}},\"icon_i8\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"stands_for\":{\"answer\":\"answer for icon_i8:stands_for at 320\",\"seconds\":0.4,\"skipped\":false}}},\"marks\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"m1\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m2\":{\"answer\":\"blurry\",\"seconds\":0.4,\"skipped\":false},\"m3\":{\"answer\":\"cannot_tell\",\"seconds\":0.4,\"skipped\":false},\"m4\":{\"answer\":\"clear\",\"seconds\":0.4,\"skipped\":false},\"m5\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m6\":{\"answer\":\"cannot_tell\",\"seconds\":0.5,\"skipped\":false},\"m7\":{\"answer\":\"clear\",\"seconds\":0.5,\"skipped\":false},\"m8\":{\"answer\":\"blurry\",\"seconds\":0.5,\"skipped\":false},\"m9\":{\"answer\":null,\"seconds\":null,\"skipped\":true}}},\"chart_S14\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S14:telling at 320\",\"seconds\":0.3,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S11\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S11:telling at 320\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"chart_S02\":{\"show_again\":0,\"shown_seconds\":[16],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"telling\":{\"answer\":\"answer for chart_S02:telling at 320\",\"seconds\":0.4,\"skipped\":false},\"favors\":{\"answer\":\"left\",\"seconds\":0.4,\"skipped\":false}}},\"pair_W02\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W10\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.5,\"skipped\":false,\"picked\":\"before\"}}},\"pair_W11\":{\"show_again\":0,\"shown_seconds\":[],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"easier\":{\"answer\":\"A\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"before\"}}},\"masthead\":{\"show_again\":0,\"shown_seconds\":[10],\"again_seconds\":[],\"interrupted\":0,\"load_failed\":0,\"questions\":{\"faster\":{\"answer\":\"B\",\"seconds\":0.4,\"skipped\":false,\"picked\":\"L3-today\"},\"why\":{\"answer\":\"It is shorter.\",\"skipped\":false}}}}}}"
    },
    "copyStatus": "Copied. Paste it into a message to the person who shared the link.",
    "seen": {
@@ -1994,28 +1994,28 @@
     "items": 19,
     "orders": {
      "loops": [
-      "r8",
-      "r10"
+      "r10",
+      "b4"
      ],
      "icons": [
-      "i6",
-      "i8",
-      "i2",
+      "i4",
+      "i1",
       "i3",
+      "i2",
+      "i6",
       "i7",
       "i5",
-      "i1",
-      "i4"
+      "i8"
      ],
      "charts": [
-      "S02",
+      "S14",
       "S11",
-      "S14"
+      "S02"
      ],
      "pairs": {
       "W02": [
-       "after",
-       "before"
+       "before",
+       "after"
       ],
       "W10": [
        "before",
@@ -2039,10 +2039,10 @@
     "showAgain": {
      "overview": 1,
      "loop_r10": 1,
-     "icon_i6": 1
+     "icon_i4": 1
     },
     "skipped": [
-     "icon_i6.stands_for",
+     "icon_i4.stands_for",
      "marks.m9"
     ]
    },
