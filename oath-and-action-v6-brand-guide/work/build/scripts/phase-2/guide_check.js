@@ -21,6 +21,19 @@
 //              outside [data-allow-emdash] (DR-79)
 //   page       no sideways scroll outside a scrolling frame; axe-core 4.10.2 (WCAG 2.2 AA tags); outside requests other
 //              than Google Fonts; script errors; at 1440, a visible focus ring on the first 60 Tab stops
+// Added in the stage A fix pass (November 6, 2026):
+//   specimenLandmarks  no <nav>, <article>, <header>, <footer>, <main>, <aside>, named <section> or <form>, or
+//                      landmark role inside a stage (AX-S8)
+//   nameEntities       no accessible name (aria-label, alt, title, SVG title and desc, the text an aria-labelledby or
+//                      aria-describedby points at) holds an entity such as "&amp;", and no visible text outside code
+//                      shows "&amp;" (AX-M2, RP-M4)
+//   typeScale          every font size inside a stage is one D2-254 allows: the phone floor up to 600 px wide, the desktop
+//                      ceiling from 1,200 px, either between, plus each style's fluid size at the checked width for a
+//                      stage with no width and the chart system's own sizes; a stage with data-scale also passes at
+//                      size divided by its scale; check_exempt "scale" skips the stage (D2-254, C-M7)
+//   codes              no decision code (DR-, D1-, D2-, G1-, T-, R9, R13, I6, I8, S5, S9) and none of "Master Brief",
+//                      "Phase", "Gate", "Board 5", "stage board", "the studio", "V5", "V4.2", "Atlas V7" in reader text,
+//                      alt text and accessible names (D2-253)
 // A plate whose stage carries data-check-exempt="contrast size red locked" skips that test inside it; every exemption
 // is listed in the results. Writes <page stem>-Guide-Check-Results.json beside the page, and one capture per section at
 // 1440 and 390 px to captures/. Exit code 1 when any check fails.
@@ -46,10 +59,31 @@ const LOCKED = [
 const ALIASES = [['grid', 'signal-grid'], ['topic-icons', 'symbols'], ['data', 'data-visualization'], ['motion', 'motion-and-states'],
   ['atlas-system', 'systems-graphics'], ['in-use', 'part-applications']];
 const CLOSERS = ['Specifications', 'Related chapters', 'For builders'];
+// D2-254: fixed artboards up to 600 px take each style's phone floor; from 1,200 px its desktop ceiling.
+const SCALE_FLOOR = [56, 44, 48, 26, 20, 24, 19, 17, 15, 14, 13];
+const SCALE_CEIL = [110, 80, 104, 32, 24, 22, 19, 17, 15, 14, 13];
+const TYPE_STYLES = ['title', 'section', 'h3', 'h4', 'quote', 'intro', 'body', 'body-small', 'ui', 'caption', 'label', 'data-label', 'figure', 'ask'];
+const CHART_SIZES = ['--oa-chart-type-label', '--oa-chart-type-tick', '--oa-chart-type-note', '--oa-chart-type-phone-min', '--oa-chart-type-tile-code-phone',
+  '--oa-chart-type-big', '--oa-chart-type-big-phone', '--oa-chart-type-eyebrow', '--oa-chart-type-title-size', '--oa-chart-type-title-phone-size', '--oa-chart-type-measure-size'];
+// D2-253: words and codes that never reach a reader. Each entry: [pattern source, flags, what it is].
+const CODE_PATTERNS = [
+  ['\\b(?:DR|D1|D2|G1)-\\d+', 'g', 'decision code'],
+  ['\\bT-\\d+\\b', 'g', 'decision code'],
+  ['(?<![Ll]oop )\\b(?:R9|R13|I6|I8|S5|S9)\\b', 'g', 'decision code'],
+  ['\\bMaster Brief\\b', 'g', 'internal document'],
+  ['\\bPhase\\b', 'g', 'studio word'],
+  ['\\bGate\\b', 'g', 'studio word'],
+  ['\\bBoard 5\\b', 'g', 'studio word'],
+  ['\\bstage board\\b', 'gi', 'studio word'],
+  ['\\bthe studio\\b', 'gi', 'studio word'],
+  ['\\bV5\\b', 'g', 'internal edition name'],
+  ['\\bV4\\.2\\b', 'g', 'internal edition name'],
+  ['\\bAtlas V7', 'g', 'internal document'],
+];
 
 // ------------------------------------------------------------------------------------------------ in-page audit
 function audit(page) {
-  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS }) => {
+  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS }) => {
     const parse = (c) => { const m = c && c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(',').map(parseFloat); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
     const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
     const lum = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
@@ -145,7 +179,81 @@ function audit(page) {
       const named = (s.getAttribute('role') === 'img' || s.getAttribute('role') === 'graphics-document') && (norm(s.getAttribute('aria-label')) || s.getAttribute('aria-labelledby') || s.querySelector(':scope > title'));
       if (!named) sp.svgUnnamed.push({ where: where(s), cls: String(s.className && s.className.baseVal || '').slice(0, 30) });
     });
+    // AX-S8: a stage holds no landmark or article, so the page's landmark list stays the page's own
+    sp.landmarks = [];
+    const LANDMARK = 'nav, article, header, footer, main, aside, section[aria-label], section[aria-labelledby], form[aria-label], form[aria-labelledby], '
+      + ['banner', 'complementary', 'contentinfo', 'form', 'main', 'navigation', 'region', 'search', 'article', 'feed'].map((r) => `[role~="${r}"]`).join(', ');
+    document.querySelectorAll('[data-specimen]').forEach((s) => {
+      s.querySelectorAll(LANDMARK).forEach((el) => sp.landmarks.push({ specimen: s.getAttribute('data-specimen'), element: el.tagName.toLowerCase() + (el.getAttribute('role') ? `[role=${el.getAttribute('role')}]` : '') }));
+    });
     out.specimens = sp;
+
+    // ---------------- accessible names: no entity text (AX-M2, RP-M4)
+    const ENT = /&(?:[a-z][a-z0-9]{1,31}|#\d+|#x[0-9a-f]+);/i;
+    const nm = [];
+    const NAME_ATTRS = ['aria-label', 'alt', 'title', 'aria-description', 'aria-roledescription', 'placeholder'];
+    document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => {
+      for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v && ENT.test(v)) nm.push({ attribute: a, value: norm(v).slice(0, 60), where: where(el) }); }
+    });
+    document.querySelectorAll('svg title, svg desc').forEach((t) => { if (ENT.test(t.textContent)) nm.push({ attribute: t.tagName, value: norm(t.textContent).slice(0, 60), where: where(t) }); });
+    document.querySelectorAll('[aria-labelledby], [aria-describedby]').forEach((el) => {
+      for (const a of ['aria-labelledby', 'aria-describedby']) {
+        const v = (el.getAttribute(a) || '').split(/\s+/).map((x) => document.getElementById(x)).filter(Boolean).map((x) => x.textContent).join(' ');
+        if (ENT.test(v)) nm.push({ attribute: a, value: norm(v).slice(0, 60), where: where(el) });
+      }
+    });
+    {
+      const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+        const p = n.parentElement; if (!p || p.closest('script,style,code,pre')) continue;
+        if (n.textContent.includes('&amp;')) nm.push({ attribute: 'text', value: norm(n.textContent).slice(0, 60), where: where(p) });
+      }
+    }
+    out.names = { entities: nm.slice(0, 30), count: nm.length };
+
+    // ---------------- type scale inside specimens (D2-254)
+    const probe = document.createElement('span'); probe.textContent = 'x'; probe.style.position = 'absolute'; probe.style.visibility = 'hidden';
+    document.body.append(probe);
+    const fluid = TYPE_STYLES.map((st) => { probe.style.font = `var(--oa-type-${st})`; return parseFloat(getComputedStyle(probe).fontSize); }).filter((x) => x > 0);
+    const chart = CHART_SIZES.map((v) => { probe.style.font = ''; probe.style.fontSize = `var(${v})`; return parseFloat(getComputedStyle(probe).fontSize); }).filter((x) => x > 0);
+    probe.remove();
+    const ts = { stages: 0, exempt: 0, off: [], fluid: [...new Set(fluid.map((x) => +x.toFixed(2)))] };
+    document.querySelectorAll('[data-specimen]:not([data-pending])').forEach((stage) => {
+      const id = stage.getAttribute('data-specimen');
+      if (stage.matches('[data-check-exempt~="scale"]')) { ts.exempt++; return; }
+      ts.stages++;
+      const w = parseFloat(stage.getAttribute('data-width')) || null;
+      const sc = parseFloat(stage.getAttribute('data-scale')) || 1;
+      let allowed = w === null ? [...SCALE_FLOOR, ...SCALE_CEIL, ...fluid] : w <= 600 ? SCALE_FLOOR : w >= 1200 ? SCALE_CEIL : [...SCALE_FLOOR, ...SCALE_CEIL];
+      allowed = allowed.concat(chart);
+      const ok = (size) => allowed.some((a) => Math.abs(size - a) <= 0.3 || (sc !== 1 && Math.abs(size / sc - a) <= 0.3 / sc));
+      const offHere = new Map();
+      stage.querySelectorAll('*').forEach((el) => {
+        if (['SCRIPT', 'STYLE', 'TITLE', 'DESC', 'DEFS', 'OPTION'].includes(el.tagName.toUpperCase()) || el.closest('title,desc,defs,.vh')) return;
+        const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(' ');
+        if (!own || !visible(el)) return;
+        const r = el.getBoundingClientRect(); if (r.width <= 1 && r.height <= 1) return;
+        let size = parseFloat(getComputedStyle(el).fontSize);
+        if (el instanceof SVGElement) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
+        if (!ok(size)) { const k = +size.toFixed(2); if (!offHere.has(k)) offHere.set(k, own.slice(0, 40)); }
+      });
+      if (offHere.size) ts.off.push({ specimen: id, width: w, scale: sc === 1 ? undefined : sc, sizes: [...offHere.keys()], sample: [...offHere.values()][0] });
+    });
+    out.typeScale = ts;
+
+    // ---------------- D2-253: no codes or studio words in reader text, alt text or accessible names
+    const codeRes = CODE_PATTERNS.map(([src, flags, kind]) => [new RegExp(src, flags), kind]);
+    const hits = [];
+    const scan = (txt, w, how) => {
+      for (const [re, kind] of codeRes) { re.lastIndex = 0; let m; while ((m = re.exec(txt))) { hits.push({ found: m[0], kind, how, where: w, text: norm(txt.slice(Math.max(0, m.index - 30), m.index + m[0].length + 30)) }); } }
+    };
+    {
+      const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) { const p = n.parentElement; if (!p || p.closest('script,style')) continue; scan(n.textContent, where(p), 'text'); }
+    }
+    scan(document.title, 'document title', 'title');
+    document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v) scan(v, where(el), a); } });
+    out.codes = { hits: hits.slice(0, 40), count: hits.length, where: [...new Set(hits.map((h) => h.where))] };
 
     // ---------------- text size and contrast
     const svgUnder = (el) => {
@@ -264,7 +372,7 @@ function audit(page) {
     out.height = document.documentElement.scrollHeight;
     out.fonts = [...new Set([...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '')))];
     return out;
-  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS });
+  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS });
 }
 
 function failuresFrom(a, width) {
@@ -288,6 +396,10 @@ function failuresFrom(a, width) {
   if (sp.noAlt.length) add('specimenAlt', `${sp.noAlt.length} specimen(s) without alt text, first: ${JSON.stringify(sp.noAlt[0])}`);
   if (sp.imgNoAlt.length) add('imgAlt', `${sp.imgNoAlt.length} <img> without alt, first: ${JSON.stringify(sp.imgNoAlt[0])}`);
   if (sp.svgUnnamed.length) add('svgNames', `${sp.svgUnnamed.length} inline SVG(s) neither named nor hidden, first: ${JSON.stringify(sp.svgUnnamed[0])}`);
+  if (sp.landmarks.length) add('specimenLandmarks', `${sp.landmarks.length} landmark or article element(s) inside stages, in ${[...new Set(sp.landmarks.map((x) => x.specimen))].join(', ')}; first: ${JSON.stringify(sp.landmarks[0])}`);
+  if (a.names.count) add('nameEntities', `${a.names.count} accessible name(s) or text(s) holding an entity, first: ${JSON.stringify(a.names.entities[0])}`);
+  if (a.typeScale.off.length) add('typeScale', `${a.typeScale.off.length} specimen(s) with type off the D2-254 sizes: ${a.typeScale.off.map((x) => `${x.specimen} (${x.sizes.join(', ')} px)`).join('; ')}`);
+  if (a.codes.count) add('codes', `${a.codes.count} decision code(s) or studio word(s) in reader text, in ${a.codes.where.slice(0, 25).join(', ')}${a.codes.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.codes.hits[0])}`);
   if (a.text.under13.length) add('under13', `${a.text.under13.length} text item(s) under 13 px, first: ${JSON.stringify(a.text.under13[0])}`);
   if (a.text.lowContrast.length) add('contrast', `${a.text.lowContrast.length} text item(s) under contrast, first: ${JSON.stringify(a.text.lowContrast[0])}`);
   if (a.overflow.scrollWidth > a.overflow.clientWidth + 1) add('overflow', `sideways scroll (${a.overflow.scrollWidth} > ${a.overflow.clientWidth}), first: ${JSON.stringify(a.overflow.overflowing[0] || null)}`);
@@ -414,6 +526,14 @@ const PLANTS = [
   { key: 'lockedLines', fault: 'a near miss of the tagline', js: () => { document.querySelector('.rule-text').append(' A nation that answers to its people.'); } },
   { key: 'pillarOrder', fault: 'the pillars out of order', js: () => { document.querySelector('.rule-text').append(' Explain → Connect → Track → Act.'); } },
   { key: 'overflow', fault: 'a wide element outside a scrolling frame', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div style="width:3000px;height:4px;background:var(--oa-color-palette-charcoal)"></div>'); } },
+  { key: 'specimenLandmarks', fault: 'a <nav> inside a specimen', js: () => { document.querySelector('[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<nav aria-label="Site"><span>Home</span></nav>'); } },
+  { key: 'specimenLandmarks', fault: 'an <article> inside a specimen', js: () => { document.querySelector('[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<article><span>A story</span></article>'); } },
+  { key: 'nameEntities', fault: 'an alt that reads "Oath &amp; Action" (escaped twice)', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'Oath &amp; Action, the wordmark at 24 px on Newsprint'); } },
+  { key: 'nameEntities', fault: 'visible text that shows "&amp;"', js: () => { document.querySelector('.rule-text').append(' Load Inter &amp;family=Lora.'); } },
+  { key: 'typeScale', fault: '21 px text in a specimen, off the scale', js: () => { document.querySelector('[data-specimen]:not([data-pending]):not([data-check-exempt~="scale"])').insertAdjacentHTML('beforeend', '<p style="font:700 21px/1.2 Inter;margin:0">Off-scale deck</p>'); } },
+  { key: 'codes', fault: 'a decision code and "Gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Approved at Gate 1 (DR-55).'); } },
+  { key: 'codes', fault: 'a decision code in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card at true size, as decided in D2-30.'); } },
+  { key: 'codes', fault: '"the studio" in a caption', js: () => { document.querySelector('.plate-cap').append(' The studio drew it.'); } },
 ];
 
 async function selfTest() {

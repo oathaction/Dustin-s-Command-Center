@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-06T19:52:26.703Z",
+ "checked": "2026-11-06T21:58:49.174Z",
  "page": "demo build (guide_build.py --demo), in a temporary folder",
  "axe": "found",
  "clean": {
@@ -8,7 +8,7 @@
   "exemptions": [
    {
     "specimen": "s-demo-1-failure",
-    "skips": "contrast size"
+    "skips": "contrast size scale"
    },
    {
     "specimen": "s-demo-2-failure",
@@ -198,7 +198,63 @@
    "test": "overflow",
    "fault": "a wide element outside a scrolling frame",
    "caught": true,
-   "message": "1440: sideways scroll (3496 > 1440), first: {\"tag\":\"DIV\",\"cls\":\"\",\"right\":3496,\"where\":\"#rule-01-1\"}",
+   "message": "1440: sideways scroll (3398 > 1440), first: {\"tag\":\"DIV\",\"cls\":\"\",\"right\":3398,\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "specimenLandmarks",
+   "fault": "a <nav> inside a specimen",
+   "caught": true,
+   "message": "1440: 1 landmark or article element(s) inside stages, in s-demo-1-correct; first: {\"specimen\":\"s-demo-1-correct\",\"element\":\"nav\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "specimenLandmarks",
+   "fault": "an <article> inside a specimen",
+   "caught": true,
+   "message": "1440: 1 landmark or article element(s) inside stages, in s-demo-1-correct; first: {\"specimen\":\"s-demo-1-correct\",\"element\":\"article\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "nameEntities",
+   "fault": "an alt that reads \"Oath &amp; Action\" (escaped twice)",
+   "caught": true,
+   "message": "1440: 1 accessible name(s) or text(s) holding an entity, first: {\"attribute\":\"aria-label\",\"value\":\"Oath &amp; Action, the wordmark at 24 px on Newsprint\",\"where\":\"specimen s-demo-1-correct\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "nameEntities",
+   "fault": "visible text that shows \"&amp;\"",
+   "caught": true,
+   "message": "1440: 1 accessible name(s) or text(s) holding an entity, first: {\"attribute\":\"text\",\"value\":\"Load Inter &amp;family=Lora.\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "typeScale",
+   "fault": "21 px text in a specimen, off the scale",
+   "caught": true,
+   "message": "1440: 1 specimen(s) with type off the D2-254 sizes: s-demo-1-correct (21 px)",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "a decision code and \"Gate\" in rule text",
+   "caught": true,
+   "message": "1440: 2 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"DR-55\",\"kind\":\"decision code\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Approved at Gate 1 (DR-55).\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "a decision code in an alt text",
+   "caught": true,
+   "message": "1440: 1 decision code(s) or studio word(s) in reader text, in specimen s-demo-1-correct; first: {\"found\":\"D2-30\",\"kind\":\"decision code\",\"how\":\"aria-label\",\"where\":\"specimen s-demo-1-correct\",\"text\":\"d at true size, as decided in D2-30.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "\"the studio\" in a caption",
+   "caught": true,
+   "message": "1440: 1 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"The studio\",\"kind\":\"studio word\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"The studio drew it.\"}",
    "alsoFlagged": []
   }
  ],

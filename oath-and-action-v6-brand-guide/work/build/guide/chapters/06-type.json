@@ -11,7 +11,7 @@
   "rules": [
     {
       "id": "06.1",
-      "title": "Each typeface keeps its one job.",
+      "title": "Keep each typeface to its one job.",
       "rule": [
         "Inter Tight 800 sets titles, headings and big figures. Inter sets body text, the interface, labels, captions, tables and chart text, at 400, 600 and 700. Lora Italic sets only quoted words, such as a pull quote or a quote card, at 400, or at 500 on a quote card."
       ],
@@ -29,11 +29,11 @@
         "text": [
           "One face for each job lets a reader tell a headline from a quotation at a glance. The wordmark is drawn from Inter Tight 800, so our headings share its voice, and the page still reads as ours with the logo covered. Charts follow the same split: Inter Tight for titles, Inter for labels and numbers, and Lora Italic only for quoted words."
         ],
-        "basis": "Design judgment; Master Brief section 3; decision DR-47"
+        "basis": "Our locked identity rules; design judgment"
       },
       "correct": {
         "specimen": "s-06-1-correct",
-        "caption": "The three faces at true size, each in its job: a heading in Inter Tight 800, a sentence, a button and a label in Inter, and our editorial commitment quoted in Lora Italic."
+        "caption": "The three faces at true size, each in its job: a heading in Inter Tight 800, a sentence, a button and a kicker in Inter, and our editorial commitment quoted in Lora Italic."
       },
       "failure": {
         "specimen": "s-06-1-failure",
@@ -71,9 +71,9 @@
     },
     {
       "id": "06.2",
-      "title": "Every size comes from the type scale.",
+      "title": "Take every size from the type scale.",
       "rule": [
-        "Set text in the fourteen styles of the scale, with no sizes between them. Display styles grow with the window from 390 to 1440 px wide, reading styles hold one size, and every size is in rem so it follows the reader’s text setting."
+        "Set text in the fourteen styles of the scale, with no sizes between them. On a web page, display styles grow with the window from 390 to 1440 px wide, and every size is in rem so it follows the reader’s text setting. A fixed artboard, such as a card, an email or a social image, takes fixed sizes from the same scale: up to 600 px wide, each style’s phone floor, and from 1,200 px wide, its desktop ceiling. Print pieces set type in points."
       ],
       "tokens": [
         "oa.type.title",
@@ -93,13 +93,14 @@
       ],
       "why": {
         "text": [
-          "WCAG 2.2 success criterion 1.4.4 Resize Text asks that text grow to 200 percent with nothing lost. A size in rem grows when a reader raises the browser’s text size, and a size fixed in px stays where it is. Our fifth edition set every size in px, and when we doubled its root text size in a test, none of its 2,383 text elements grew."
+          "WCAG 2.2 success criterion 1.4.4 Resize Text asks that text grow to 200 percent with nothing lost. A size in rem grows with the reader’s text setting, which a size fixed in px ignores. Our fifth edition set every size in px, and when our audit doubled its root text size, no text on the page grew.",
+          "A card or an email has one width, so the window cannot pick its sizes. Taking them from the scale’s two ends keeps a 480 px card and a 1,200 px social image in the same family as the page around them."
         ],
-        "basis": "WCAG 2.2 SC 1.4.4"
+        "basis": "WCAG 2.2 SC 1.4.4; design judgment"
       },
       "correct": {
         "specimen": "s-06-2-correct",
-        "caption": "The fourteen styles, each drawn live at true size for this window. Display sizes move between their floor at 390 px and their ceiling at 1440 px, so the samples match the screen you are reading on."
+        "caption": "The fourteen styles at true size. On a phone each sample shows its phone floor, the size an artboard up to 600 px wide takes, and on a wider screen its desktop ceiling, the size for artboards 1,200 px and wider. On a web page, display styles move between the two as the window grows."
       },
       "failure": {
         "specimen": "s-06-2-failure",
@@ -111,28 +112,30 @@
           "value": "16 px, the browser default; every size is a multiple in rem"
         },
         {
-          "label": "Fluid range",
+          "label": "On a web page",
           "value": "Display sizes grow from 390 px to 1440 px wide",
           "token": "oa.type.title"
+        },
+        {
+          "label": "Artboards up to 600 px wide",
+          "value": "Each style’s phone floor: title 56, section 44, figure 48, H3 26, H4 20, quote 24, intro 19, ask 19, body 17, body small 15, UI 15, caption 14, label 13, data label 13 px"
+        },
+        {
+          "label": "Artboards 1,200 px and wider",
+          "value": "Each style’s desktop ceiling: title 110, section 80, figure 104, H3 32, H4 24, quote 32, intro 22 px; the rest as on phones"
+        },
+        {
+          "label": "Artboards between 600 and 1,200 px",
+          "value": "Each style’s size from either column"
+        },
+        {
+          "label": "Print",
+          "value": "Points, with all text at 10 pt or larger; chapter 25 sets the point scale"
         },
         {
           "label": "Body",
           "value": "Inter 400, 17 px (1.0625 rem), line height 1.6",
           "token": "oa.type.body"
-        },
-        {
-          "label": "Intro",
-          "value": "Inter 400, 19 to 22 px, line height 1.5",
-          "token": "oa.type.intro"
-        },
-        {
-          "label": "H3",
-          "value": "Inter Tight 800, 26 to 32 px, line height 1.08",
-          "token": "oa.type.h3"
-        },
-        {
-          "label": "Print",
-          "value": "A point scale follows in chapter 25, Phase 4"
         }
       ],
       "related": [
@@ -141,12 +144,12 @@
         "25"
       ],
       "builders": [
-        "Set a style with its shorthand and its parts: <code>font: var(--oa-type-body)</code> carries face, weight, size and line height, and <code>letter-spacing</code>, <code>text-transform</code> and <code>font-variant-numeric</code> each have their own property, such as <code>--oa-type-label-letter-spacing</code>. Never write a font size in px."
+        "Set a style with its shorthand and its parts: <code>font: var(--oa-type-body)</code> carries face, weight, size and line height, and <code>letter-spacing</code>, <code>text-transform</code> and <code>font-variant-numeric</code> each have their own property, such as <code>--oa-type-label-letter-spacing</code>. On a fixed artboard, override only the size, as in <code>font-size: 1.625rem</code> for an H3 on a 480 px card. Never write a font size in px."
       ]
     },
     {
       "id": "06.3",
-      "title": "No text on screen sets below 13 px.",
+      "title": "Set no text on screen below 13 px.",
       "rule": [
         "The smallest text on screen is 13 px, or 0.8125 rem: labels, tags and data labels. A label in capitals at 13 px takes Inter 700 with 6 percent tracking. A specimen that shows a mark or a minimum size at true size is a graphic, and its caption says so."
       ],
@@ -157,9 +160,9 @@
       ],
       "why": {
         "text": [
-          "Our fifth edition set its labels at 10 to 12 px, and its text census counted 833 of 2,346 rendered text elements under 13 px. A floor with no screen exceptions keeps eyebrows, tags and navigation readable without zoom. At 13 px, capitals need less tracking than they did at 10 px, so 6 percent keeps them open without pulling a word apart."
+          "Our fifth edition set its labels at 10 to 12 px. Our census of its text, which measured 2,346 text elements rendered at 1440 px and left out text inside SVG drawings, counted 833 under 13 px. A floor with no screen exceptions keeps kickers, tags and navigation readable without zoom. At 13 px, capitals need less tracking than they did at 10 px, so 6 percent keeps them open without pulling a word apart."
         ],
-        "basis": "Design judgment; Master Brief section 8, tension 1; decision T-9"
+        "basis": "Design judgment; our measurements of the fifth edition, October 2026"
       },
       "correct": {
         "specimen": "s-06-3-correct",
@@ -167,7 +170,7 @@
       },
       "failure": {
         "specimen": "s-06-3-failure",
-        "caption": "<strong>Fails the 13 px floor.</strong> A graphic at true size of two labels from our fifth edition: the chapter eyebrow at 11 px with 13 percent tracking, and the footer line at 10 px."
+        "caption": "<strong>Fails the 13 px floor.</strong> A graphic at true size of two labels from our fifth edition: the chapter kicker at 11 px with 13 percent tracking, and the footer line at 10 px."
       },
       "specs": [
         {
@@ -206,51 +209,63 @@
     },
     {
       "id": "06.4",
-      "title": "Tracking tightens only as headings grow.",
+      "title": "Tighten tracking only as headings grow.",
       "rule": [
-        "Tracking is the space added to or taken from every pair of letters. Display styles take negative tracking that eases as the size drops: −4.5 percent for titles, −4 percent for sections, −3 percent for H3 and −2 percent for H4. Reading styles keep the font’s own spacing, and labels in capitals open to +6 percent."
+        "Tracking is the space added to or taken from every pair of letters. Display styles take negative tracking that eases as the size drops: −3 percent for titles, −2.5 percent for sections, −1 percent for H3 and −0.5 percent for H4. Big figures, which are digits, take −3 percent, and quotes in Lora Italic −2 percent. Reading styles keep the font’s own spacing, and labels in capitals open to +6 percent."
       ],
       "tokens": [
         "oa.type.title",
         "oa.type.section",
         "oa.type.h3",
         "oa.type.h4",
+        "oa.type.figure",
         "oa.type.label"
       ],
       "why": {
         "text": [
-          "Large type looks loose at the font’s own spacing, and small type looks cramped when it is pulled tight. Our fifth edition used −4.5 percent at every heading size from 24 to 110 px. Measured at 24 px in Inter Tight 800, that shrinks a word space from 4.5 px to 3.4 px, a cut of 24 percent, while the letters close up too."
+          "At display sizes the font’s own spacing leaves gaps a reader sees, and a little negative tracking closes them. Pulled too far, the letters touch. Our fifth edition used −4.5 percent at every heading size from 24 to 110 px, and at the cover’s 110 px that makes 7 of our tagline’s 24 letter pairs touch. At the title’s −3 percent, two do.",
+          "Across the 23 rule titles in chapters 05 to 07, set at the H3 size of 32 px, 107 of 738 letter pairs touch at −3 percent, the value an early draft of this guide used, and 32 at −1 percent."
         ],
-        "basis": "Design judgment; our audit of the fifth edition, October 2026"
+        "basis": "Our measurements, November 2026; design judgment"
       },
       "correct": {
         "specimen": "s-06-4-correct",
-        "caption": "An H4 at true size, 24 px with −2 percent tracking. Its word spaces measure 4.0 px, and each word stands on its own."
+        "caption": "An H3 at true size, 32 px with −1 percent tracking. Its word spaces measure 5.7 px, and one of its 28 letter pairs touches, where the arm of an r meets its neighbor."
       },
       "failure": {
         "specimen": "s-06-4-failure",
-        "caption": "<strong>Fails the tracking scale.</strong> The same H4 at −4.5 percent. Its word spaces shrink to 3.4 px and the words begin to run together."
+        "caption": "<strong>Fails the tracking scale.</strong> The same heading at −3 percent, the H3 value in an early draft of this guide. Four of its 28 letter pairs touch, and its word spaces shrink to 5.0 px."
       },
       "specs": [
         {
           "label": "Title",
-          "value": "−4.5% (−0.045 em)",
+          "value": "−3 percent (−0.03 em)",
           "token": "oa.type.title"
         },
         {
           "label": "Section",
-          "value": "−4%",
+          "value": "−2.5 percent",
           "token": "oa.type.section"
         },
         {
           "label": "H3",
-          "value": "−3%",
+          "value": "−1 percent",
           "token": "oa.type.h3"
         },
         {
           "label": "H4",
-          "value": "−2%",
+          "value": "−0.5 percent",
           "token": "oa.type.h4"
+        },
+        {
+          "label": "Big figures",
+          "value": "−3 percent",
+          "token": "oa.type.figure"
+        },
+        {
+          "label": "Quote",
+          "value": "−2 percent",
+          "token": "oa.type.quote"
         },
         {
           "label": "Reading styles",
@@ -259,8 +274,16 @@
         },
         {
           "label": "Label",
-          "value": "+6%",
+          "value": "+6 percent",
           "token": "oa.type.label"
+        },
+        {
+          "label": "Letter pairs that touch, tagline at 110 px",
+          "value": "2 of 24 at −3 percent; 7 at −4.5 percent; 0 at the font’s own spacing"
+        },
+        {
+          "label": "Letter pairs that touch, rule titles at 32 px",
+          "value": "32 of 738 at −1 percent; 107 at −3 percent; 4 at the font’s own spacing"
         }
       ],
       "related": [
@@ -268,14 +291,14 @@
         "04"
       ],
       "builders": [
-        "Tracking lives in each style’s <code>letter-spacing</code> property, in em, so it scales with the size: <code>letter-spacing: var(--oa-type-h3-letter-spacing)</code>. Never track body text."
+        "Tracking lives in each style’s <code>letter-spacing</code> property, in em, so it scales with the size: <code>letter-spacing: var(--oa-type-h3-letter-spacing)</code>. Leave body text at the font’s own spacing."
       ]
     },
     {
       "id": "06.5",
-      "title": "Figures line up in tables, and negatives take the true minus sign.",
+      "title": "Line up figures in tables, and give negatives the true minus sign.",
       "rule": [
-        "Tables, trackers, scorecards and chart labels set tabular figures, which give every digit the same width so a column lines up. A negative number takes the minus sign (−, U+2212), never a hyphen, and the numbers in one column carry the same number of decimals."
+        "Tables, trackers and chart labels set tabular figures, which give every digit the same width so a column lines up. A negative number takes the minus sign (−, U+2212), which matches the plus sign’s width, and the numbers in one column carry the same number of decimals."
       ],
       "tokens": [
         "oa.type.dataLabel",
@@ -326,9 +349,9 @@
     },
     {
       "id": "06.6",
-      "title": "Headings balance their lines and never end on one word.",
+      "title": "Balance a heading’s lines, and keep two words or more on its last line.",
       "rule": [
-        "A heading that runs to two or more lines splits into lines of near equal length, and its last line holds at least two words. Body text wraps so its last line never holds one short word."
+        "A heading that runs to two or more lines splits into lines of near equal length, and its last line holds at least two words. Body text wraps so its last line holds more than one short word."
       ],
       "tokens": [
         "oa.type.h3",
@@ -370,16 +393,16 @@
     },
     {
       "id": "06.7",
-      "title": "Opening quotation marks hang outside the text edge.",
+      "title": "Hang opening quotation marks outside the text edge.",
       "rule": [
-        "In a pull quote or a quote card, the opening mark sits in the margin, so the first letter of every line starts on the same edge. Use curly quotation marks and apostrophes, never straight ones, and keep common ligatures on and discretionary ligatures off."
+        "In a pull quote or a quote card, the opening mark sits in the margin, so the first letter of every line starts on the same edge. Use curly quotation marks and apostrophes (“ ” ‘ ’), and keep common ligatures on and discretionary ligatures off."
       ],
       "tokens": [
         "oa.type.quote"
       ],
       "why": {
         "text": [
-          "When the mark sits inside the edge, the first line starts a mark’s width to the right of the rest, and the block looks indented by accident. Straight marks come from the typewriter; curly marks are the ones readers know from print."
+          "When the mark sits inside the edge, the first line starts a mark’s width to the right of the rest, and the block looks indented by accident. Readers know curly marks from books and newspapers, so a straight mark looks like a typing slip."
         ],
         "basis": "Design judgment"
       },
@@ -412,9 +435,9 @@
     },
     {
       "id": "06.8",
-      "title": "Body text runs 60 to 75 characters a line.",
+      "title": "Set body text at 60 to 75 characters a line.",
       "rule": [
-        "Set body text to a measure of 60 to 75 characters a line on wider screens, and intro text to 65 at most. A phone gives about 38 to 40 characters, which suits a small screen. Chapter 07 gives the column spans that deliver these measures at each width."
+        "Set body text to a measure of 60 to 75 characters a line on wider screens, and intro text to 65 at most. A phone gives about 37 to 40 characters, which suits a small screen. Chapter 07 gives the column spans that deliver these measures at each width."
       ],
       "tokens": [
         "oa.layout.measure.bodyIdeal",
@@ -425,17 +448,17 @@
       ],
       "why": {
         "text": [
-          "Lines far past 75 characters make the eye lose its place on the way back to the next one. The ch unit, the width of a zero, runs wider than Inter’s average letter, so an intro set to 65ch, as in our fifth edition, measured 83 to 89 characters a line when we set it at 22 px."
+          "Lines far past 75 characters make the eye lose its place on the way back to the next one. The ch unit, the width of a zero, runs wider than Inter’s average letter, so an intro set to 65ch, as in our fifth edition, measured 78 to 83 characters a line when we set it at 22 px."
         ],
         "basis": "Design judgment, with WCAG 2.2 SC 1.4.8 (AAA, advisory)"
       },
       "correct": {
         "specimen": "s-06-8-correct",
-        "caption": "A paragraph at true size and the body measure, 33.88 rem. Its full lines measure 63 to 67 characters. Over 7,041 characters of chapter 02’s prose at the same width, lines average 64, and at the widest body measure, 71."
+        "caption": "The opening of our writing rules in chapter 02, at true size and the body measure, 33.88 rem. Its full lines measure 65 to 66 characters. Over 7,041 characters of chapter 02’s prose at the same width, lines average 64, and at the widest body measure, 71."
       },
       "failure": {
         "specimen": "s-06-8-failure",
-        "caption": "<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its intros, at 22 px and 65ch. Its full lines run 83 to 89 characters, and the eye has far to travel back to the start of each."
+        "caption": "<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its intros, at 22 px and 65ch. Its full lines run 78 to 83 characters, and the eye has far to travel back to the start of each."
       },
       "specs": [
         {
@@ -450,12 +473,12 @@
         },
         {
           "label": "Widest intro measure",
-          "value": "41.91 rem; at 22 px, lines of 63 to 66 characters",
+          "value": "41.91 rem; at 22 px, lines average 61 characters",
           "token": "oa.layout.measure.introMax"
         },
         {
           "label": "Phones",
-          "value": "About 38 to 40 characters at 360 and 390 px",
+          "value": "About 37 to 40 characters at 360 and 390 px",
           "token": "oa.layout.grid.phone.margin"
         }
       ],
@@ -469,9 +492,9 @@
     },
     {
       "id": "06.9",
-      "title": "Email sets its type in the system stack.",
+      "title": "Set email type in the system font stack.",
       "rule": [
-        "Many mail apps ignore web fonts, so email sets headlines and body text in Helvetica, Arial, sans-serif, and quotations in Georgia Italic. The scale’s sizes and weights still apply, and chapter 22 shows the full template."
+        "Many mail apps ignore web fonts, so email sets headlines and body text in Helvetica, Arial, sans-serif, and quotations in Georgia Italic. An email is a fixed artboard 600 px wide, so it takes the scale’s phone floor sizes, as Rule 06.2 sets out. Chapter 22 shows the full template."
       ],
       "tokens": [
         "oa.font.family.emailSans",
@@ -481,15 +504,15 @@
         "text": [
           "A mail app that cannot load a web font falls back to a face of its own choosing, often a serif. The system stack names the fallback in advance, so every reader sees a face we chose. Our fifth edition kept this rule and then set its own email headline in Inter Tight."
         ],
-        "basis": "Design judgment; Master Brief section 10"
+        "basis": "Design judgment"
       },
       "correct": {
         "specimen": "s-06-9-correct",
-        "caption": "An email header at its true width of 600 px on White, set in the system stack: the headline and body in Helvetica or Arial, the quote in Georgia Italic."
+        "caption": "An email header at its true width of 600 px on White, set in the system stack: the headline in Helvetica or Arial at 26 px, the H3 floor, and the quote in Georgia Italic at 24 px, the quote floor."
       },
       "failure": {
         "specimen": "s-06-9-failure",
-        "caption": "<strong>Fails the email rule.</strong> The headline set in Inter Tight, as a mail app shows it when the web font does not load: in the app’s default serif."
+        "caption": "<strong>Fails the email rule.</strong> The headline set in Inter Tight, which a mail app that cannot load the web font shows in its own default serif."
       },
       "specs": [
         {
@@ -505,6 +528,11 @@
         {
           "label": "Width",
           "value": "600 px"
+        },
+        {
+          "label": "Sizes",
+          "value": "The phone floor: headline 26 px, quote 24 px, body 17 px",
+          "token": "oa.type.h3"
         }
       ],
       "related": [
@@ -517,7 +545,7 @@
     },
     {
       "id": "06.10",
-      "title": "Pages load the three faces and never substitute another.",
+      "title": "Load the three faces, and let no other face stand in.",
       "rule": [
         "Pages load Inter Tight, Inter and Lora from their published files, in the weights the scale uses. Arial and Georgia appear only as fallbacks inside the font stacks. No other face stands in for ours, including Spectral, Source Sans, Public Sans, IBM Plex, Libre Baskerville, Playfair Display, Cormorant, Helvetica Neue for display, Times New Roman, Calibri, Roboto, Open Sans and Montserrat."
       ],
@@ -528,17 +556,17 @@
       ],
       "why": {
         "text": [
-          "Master Brief section 3 says a font substitution is never a finished identity decision. A fallback keeps a page readable when a font fails to load, and that is its only job. Measured at 32 px, the heading here sets 479 px wide in Inter Tight and 485 px in Arial, 1.3 percent wider, which is why a page that failed to load Inter Tight can look finished: only the letters show it. The list carries our fifth edition’s never-substitute list forward."
+          "Our locked identity rules say a font substitution is never a finished identity decision. A fallback’s one job is to keep a page readable when a font fails to load. Measured at 32 px, the heading here sets 498 px wide in Inter Tight and 504 px in Arial, 1.3 percent wider. A page that failed to load Inter Tight can look finished, and only the letters give it away. The list carries our fifth edition’s never-substitute list forward."
         ],
-        "basis": "Master Brief section 3; design judgment"
+        "basis": "Our locked identity rules; design judgment"
       },
       "correct": {
         "specimen": "s-06-10-correct",
-        "caption": "A heading at true size in Inter Tight 800, 479 px wide at 32 px."
+        "caption": "A heading at true size in Inter Tight 800, 498 px wide at 32 px."
       },
       "failure": {
         "specimen": "s-06-10-failure",
-        "caption": "<strong>Fails the face rule.</strong> The same heading in Arial, the fallback that shows when Inter Tight fails to load. It sets 485 px wide, close to the original, and its letters lose the cut of the wordmark’s face."
+        "caption": "<strong>Fails the face rule.</strong> The same heading in Arial, the fallback that shows when Inter Tight fails to load. It sets 504 px wide, close to the original, and its letters lose the cut of the wordmark’s face."
       },
       "specs": [
         {
@@ -566,7 +594,14 @@
       ]
     }
   ],
-  "extras": [],
+  "extras": [
+    {
+      "after_rule": "06.2",
+      "specimen": "s-06-artboards",
+      "label": "Sizes for fixed artboards",
+      "caption": "Every style’s size on a web page and on a fixed artboard, such as a card, an email or a social image. Between 600 and 1,200 px, take each style’s size from either column. Print pieces set type in points, with all text at 10 pt or larger."
+    }
+  ],
   "sources": [
     "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
     "W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.4 and 1.4.8, https://www.w3.org/TR/WCAG22/."

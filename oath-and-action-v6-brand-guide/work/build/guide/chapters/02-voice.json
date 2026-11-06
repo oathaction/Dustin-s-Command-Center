@@ -8,12 +8,57 @@
   "Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”",
   "Our reader promise is “We explain how a decision is made and give you a practical way to take part.” A reader can take part only in a decision they can follow, which is why clarity comes first in our editorial commitment, “Clarity is our duty. Action is our promise.”"
  ],
+ "groups": [
+  {
+   "before_rule": "02.1",
+   "number": 1,
+   "title": "Sound like a person talking",
+   "line": "Write the sentence you would say across a kitchen table, with the actor up front and a rhythm that keeps changing."
+  },
+  {
+   "before_rule": "02.5",
+   "number": 2,
+   "title": "Put the point first and stop",
+   "line": "Open with what the reader came for, and end when the facts run out."
+  },
+  {
+   "before_rule": "02.9",
+   "number": 3,
+   "title": "Say what is so",
+   "line": "State what is true in plain sentences, and leave out the shapes writers use for effect."
+  },
+  {
+   "before_rule": "02.14",
+   "number": 4,
+   "title": "Cut the padding",
+   "line": "Take out the words that add weight and no meaning."
+  },
+  {
+   "before_rule": "02.21",
+   "number": 5,
+   "title": "Marks and numbers",
+   "line": "Set dashes, dates, numbers and signs the same way on every page."
+  },
+  {
+   "before_rule": "02.22",
+   "number": 6,
+   "title": "House rules for every page",
+   "line": "Twelve rules hold on every page, from quoting the locked lines exactly to calling a contested policy by its neutral name, and H05 to H07 also belong to group 5."
+  },
+  {
+   "before_rule": "02.23",
+   "number": 7,
+   "title": "Our lines and words",
+   "line": "Quote each brand line in its own place, and write everything around it in the words a reader would use."
+  }
+ ],
  "rules": [
   {
    "id": "02.1",
    "title": "W01 Write it the way you would say it.",
    "rule": [
-    "Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say."
+    "Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say.",
+    "<em>Terms.</em> Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow."
    ],
    "why": {
     "text": [
@@ -48,7 +93,8 @@
    "id": "02.2",
    "title": "W02 Name who acts.",
    "rule": [
-    "Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them."
+    "Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them.",
+    "<em>Terms.</em> Active voice: a sentence that names the actor first, as in “The council passed the budget.” Passive voice puts the thing acted on first and often hides the actor, as in “The budget was passed.”"
    ],
    "why": {
     "text": [
@@ -540,7 +586,7 @@
    ],
    "why": {
     "text": [
-     "A stack of softeners blurs how sure we are, while one grade verb, taken from the atlas’s scale, tells the reader how far the evidence goes."
+     "One grade verb, taken from the atlas’s scale, tells a reader how far the evidence goes. A pile of softeners leaves them to guess."
     ],
     "basis": "Editorial judgment"
    },
@@ -611,7 +657,7 @@
    ],
    "why": {
     "text": [
-     "Memo verbs put distance between the writer and the reader, while the words a resident would use at a council meeting sound like a neighbor talking."
+     "A resident at a council meeting says “use” and “show”, and copy in those words sounds like a neighbor talking."
     ],
     "basis": "Editorial judgment"
    },
@@ -758,7 +804,7 @@
    },
    "correct": {
     "specimen": "s-02-22-correct",
-    "caption": "The house rules as approved with the writing rules. H05 to H07 also belong to the marks and numbers group."
+    "caption": "The house rules as approved with the writing rules. H05 to H07 also belong to the marks and numbers group, and H10’s source line carries its corrected qualification."
    },
    "failure": {
     "specimen": "s-02-22-failure",
@@ -793,7 +839,7 @@
    "id": "02.23",
    "title": "Set each brand line in its own place, word for word.",
    "rule": [
-    "Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and keep the candidate and founding lines out of the tagline’s slot."
+    "Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and keep the founding line out of the tagline’s slot."
    ],
    "tokens": [
     "oa.font.family.reading",
@@ -807,7 +853,7 @@
    },
    "correct": {
     "specimen": "s-02-23-correct",
-    "caption": "Each line sits where the table puts it, in exact words, and the tagline signs off the newsletter."
+    "caption": "Each line sits where the table puts it, in exact words. In a newsletter the tagline follows the last story’s step as the sign-off, and Rule 02.24 shows the whole ending."
    },
    "failure": {
     "specimen": "s-02-23-failure",
@@ -824,7 +870,7 @@
    "id": "02.24",
    "title": "Close every piece on one next step, with its date.",
    "rule": [
-    "End every piece on the one step a reader is most likely to take, with its date and place and the way to take it. Link other ways to take part from the step’s page."
+    "End every piece on the one step a reader is most likely to take, with its date and place and the way to take it. Link other ways to take part from the step’s page. In a newsletter, the step ends the last story, and the tagline follows it as the issue’s sign-off."
    ],
    "tokens": [
     "oa.color.action.ask.fill.onNewsprint"
@@ -837,7 +883,7 @@
    },
    "correct": {
     "specimen": "s-02-24-correct",
-    "caption": "The ending gives a single dated step at one place, with the button that takes it."
+    "caption": "The last story ends on one dated step and its button, and the tagline follows as the issue’s sign-off, with no line in between that sums up the issue."
    },
    "failure": {
     "specimen": "s-02-24-failure",
@@ -845,9 +891,10 @@
    },
    "related": [
     "01",
-    "12"
+    "12",
+    "22"
    ],
-   "builders": "Give the piece one ask button. Put the other ways to take part on the page the button opens."
+   "builders": "Give the piece one ask button and put the other ways to take part on the page the button opens. In an email, the tagline after the last story is the sign-off."
   },
   {
    "id": "02.25",
@@ -905,7 +952,7 @@
    "id": "02.27",
    "title": "Write a hinge headline as a rule, then what it produces.",
    "rule": [
-    "A hinge headline joins two noun phrases with the ampersand. The first names a rule, and the second names what the rule produces in a reader’s life. Chapter 04 sets how it is drawn."
+    "A hinge headline joins two noun phrases with the ampersand. The first names a rule, and the second names what the rule produces in a reader’s life. A headline that joins two people or groups follows Rules 01.19 and 01.20, Rule 01.18 sets its color, and Rule 04.3 sets how it is drawn."
    ],
    "tokens": [
     "oa.font.family.display"
@@ -925,6 +972,7 @@
     "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."
    },
    "files": [
+    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg",
     "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
    ],
    "related": [
@@ -941,41 +989,15 @@
    "caption": "The locked lines are quoted word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."
   },
   {
-   "specimen": "s-02-index",
+   "specimen": "s-02-about",
    "label": "How Oath & Action writes",
-   "caption": "The writing section, approved on Board 5: 21 rules in five groups, each with a before and an after, and 12 house rules. Rule 02.1 is W01, and every W rule keeps its number as part of its title."
-  },
-  {
-   "specimen": "s-02-group-1",
-   "label": "Writing rules, group 1 of 5",
-   "caption": "Each rule below shows a before and its repair, joined by the hinge divider."
-  },
-  {
-   "after_rule": "02.4",
-   "specimen": "s-02-group-2",
-   "label": "Writing rules, group 2 of 5"
-  },
-  {
-   "after_rule": "02.8",
-   "specimen": "s-02-group-3",
-   "label": "Writing rules, group 3 of 5"
-  },
-  {
-   "after_rule": "02.13",
-   "specimen": "s-02-group-4",
-   "label": "Writing rules, group 4 of 5"
-  },
-  {
-   "after_rule": "02.20",
-   "specimen": "s-02-group-5",
-   "label": "Writing rules, group 5 of 5",
-   "caption": "H05 to H07 sit with the house rules in Rule 02.22."
+   "caption": "Rule 02.1 is W01, and each writing rule keeps its W number in its title, so every citation of a W number still holds."
   },
   {
    "after_rule": "02.22",
    "specimen": "s-02-checklist",
    "label": "Before you publish",
-   "caption": "The ten questions close the writing section. A yes to each one means the draft passes."
+   "caption": "Each question is worded so that a yes means the draft passes."
   },
   {
    "after_rule": "02.23",
@@ -985,11 +1007,11 @@
   }
  ],
  "sources": [
-  "Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process exists on paper but cannot be used after a 2021 state supreme court ruling.",
-  "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+  "Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state supreme court ruling.",
+  "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Each margin is the leading party’s lead, in percentage points of all presidential votes; New York counts fused party lines.",
   "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
-  "Source: U.S. Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The studio could not open the Senate’s own page for the vote.",
+  "Source: U.S. Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. We could not open the Senate’s own page for the vote.",
   "Our systems atlas, Who Do They Answer To?, glossary entry “Cloture”, for H02’s example."
  ],
  "related_chapters": [

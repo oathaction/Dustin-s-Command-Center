@@ -1,33 +1,31 @@
 <!-- s-01-pillars: Oath & Action guide, Edition 06, chapter 01. Editor, November 6, 2026. -->
 <style>
-.ed{font-family:var(--oa-font-family-reading);font-size:1.0625rem;line-height:1.6;color:var(--oa-color-text-primary);max-width:100%}
+.ed{font:var(--oa-type-body-font-style) var(--oa-type-body-font-weight) 1.0625rem/var(--oa-type-body-line-height) var(--oa-type-body-font-family);letter-spacing:var(--oa-type-body-letter-spacing);color:var(--oa-color-text-primary);max-width:100%}
 .ed *{box-sizing:border-box}
 .ed p{margin:0}
-.ed .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
-.ed .src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:68ch}
-.ed .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
+.ed .k{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
+.ed .src{font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);letter-spacing:var(--oa-type-caption-letter-spacing);color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem;text-wrap:pretty}
+.ed .num{font-variant-numeric:tabular-nums}
+.ed .chip{display:inline-block;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
 .ed .chip.solid{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}
-.ed .ill{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.3;padding:1px 6px;border:1px solid currentColor;vertical-align:.1em;white-space:nowrap}
 .ed del{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
 .ed ins{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
-.ed .hinge{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
-.ed .hinge::before,.ed .hinge::after{content:"";flex:1 1 auto;border-top:1px solid currentColor}
-.ed .hinge .hamp{flex:none;display:block;width:21px;height:24px}
+.ed .hg{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
+.ed .hg::before,.ed .hg::after{content:"";flex:1 1 0;border-top:1px solid currentColor}
+.ed .hg .hamp{flex:none;display:block;width:21px;height:24px}
 .ed .ask{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}
-.ed .lab{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
-.ed table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.ed .lab{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
+.ed .kick{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 12px;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.ed .kick .dot{color:var(--oa-color-text-secondary)}
+.ed .kick .sx{color:var(--oa-color-text-secondary)}
+.ed .pos{display:inline-block;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.ed table{border-collapse:collapse;width:100%;font:var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) 0.9375rem/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);letter-spacing:var(--oa-type-body-small-letter-spacing)}
 .ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
-.ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
+.ed thead th{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
 .ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
+.ed .dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
 @media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
 .ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
 .ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
-
-.ed .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:28px 28px}
-.ed .pcol{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}
-.ed .pn{font:700 .9375rem/1 var(--oa-font-family-reading);font-variant-numeric:tabular-nums;color:var(--oa-color-text-secondary);margin:0 0 6px}
-.ed .pname{font:800 2rem/1 var(--oa-font-family-display);letter-spacing:-.03em;margin:0 0 10px}
-.ed .pjob{font-size:1.0625rem;line-height:1.45;margin:0 0 14px}
-.ed .pcol ul{margin:0;padding-left:1.1em;font-size:.9375rem;line-height:1.45}.ed .pcol li{margin:0 0 6px}
-</style>
+.ed .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:28px 28px}.ed .pcol{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}.ed .pn{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);font-variant-numeric:tabular-nums;color:var(--oa-color-text-secondary);margin:0 0 6px}.ed .pname{font:var(--oa-type-h3-font-style) var(--oa-type-h3-font-weight) 1.625rem/var(--oa-type-h3-line-height) var(--oa-type-h3-font-family);letter-spacing:var(--oa-type-h3-letter-spacing)}@media (min-width:48em){.ed .pname{font-size:2rem}}.ed .pname{margin:0 0 10px}.ed .pjob{font:var(--oa-type-body-font-style) var(--oa-type-body-font-weight) 1.0625rem/var(--oa-type-body-line-height) var(--oa-type-body-font-family);letter-spacing:var(--oa-type-body-letter-spacing);margin:0 0 14px}.ed .pcol ul{margin:0;padding-left:1.1em;font:var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) 0.9375rem/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);letter-spacing:var(--oa-type-body-small-letter-spacing)}.ed .pcol li{margin:0 0 6px}</style>
 <div class="ed"><div class="pills"><div class="pcol"><p class="pn">01</p><p class="pname">Explain</p><p class="pjob">Make the rules and their effects understandable.</p><p class="lab">Products</p><ul><li>Explainers, in the Reform 101 and The Oath series</li><li>The atlas’s 16 question-first pathways, such as “Why did my rent go up?”</li><li>Reports</li><li>The weekly briefing newsletter</li><li>Glossaries and primers</li></ul></div><div class="pcol"><p class="pn">02</p><p class="pname">Track</p><p class="pjob">Follow the decision and keep its record within reach.</p><p class="lab">Products</p><ul><li>Trackers, each named for its subject and dated “as of”</li><li>The Dispatch and The Public Record series</li><li>The atlas Register, the record-by-record view of each claim</li></ul></div><div class="pcol"><p class="pn">03</p><p class="pname">Connect</p><p class="pjob">Help people reach the office that decides and the evidence it decides on.</p><p class="lab">Products</p><ul><li>Guides and call scripts</li><li>The Field Notes series</li><li>The atlas’s view of who can act on each issue</li></ul></div><div class="pcol"><p class="pn">04</p><p class="pname">Act</p><p class="pjob">Give the reader a useful next step.</p><p class="lab">Products</p><ul><li>Act pieces, in two kinds: How to take part, and Our position</li><li>Case studies, in the Proof It Works series</li><li>The closing step on every explainer, tracker, report and newsletter issue</li></ul></div></div></div>

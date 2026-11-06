@@ -1,24 +1,29 @@
 <!-- s-02-10-pair: Oath & Action guide, Edition 06, chapter 02. Editor, November 6, 2026. -->
 <style>
-.ed{font-family:var(--oa-font-family-reading);font-size:1.0625rem;line-height:1.6;color:var(--oa-color-text-primary);max-width:100%}
+.ed{font:var(--oa-type-body-font-style) var(--oa-type-body-font-weight) 1.0625rem/var(--oa-type-body-line-height) var(--oa-type-body-font-family);letter-spacing:var(--oa-type-body-letter-spacing);color:var(--oa-color-text-primary);max-width:100%}
 .ed *{box-sizing:border-box}
 .ed p{margin:0}
-.ed .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
-.ed .src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:68ch}
-.ed .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
+.ed .k{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
+.ed .src{font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);letter-spacing:var(--oa-type-caption-letter-spacing);color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem;text-wrap:pretty}
+.ed .num{font-variant-numeric:tabular-nums}
+.ed .chip{display:inline-block;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
 .ed .chip.solid{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}
-.ed .ill{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.3;padding:1px 6px;border:1px solid currentColor;vertical-align:.1em;white-space:nowrap}
 .ed del{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
 .ed ins{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
-.ed .hinge{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
-.ed .hinge::before,.ed .hinge::after{content:"";flex:1 1 auto;border-top:1px solid currentColor}
-.ed .hinge .hamp{flex:none;display:block;width:21px;height:24px}
+.ed .hg{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
+.ed .hg::before,.ed .hg::after{content:"";flex:1 1 0;border-top:1px solid currentColor}
+.ed .hg .hamp{flex:none;display:block;width:21px;height:24px}
 .ed .ask{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}
-.ed .lab{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
-.ed table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.ed .lab{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
+.ed .kick{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 12px;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.ed .kick .dot{color:var(--oa-color-text-secondary)}
+.ed .kick .sx{color:var(--oa-color-text-secondary)}
+.ed .pos{display:inline-block;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.ed table{border-collapse:collapse;width:100%;font:var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) 0.9375rem/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);letter-spacing:var(--oa-type-body-small-letter-spacing)}
 .ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
-.ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
+.ed thead th{font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
 .ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
+.ed .dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
 @media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
 .ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
 .ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
@@ -27,10 +32,11 @@
 .ed .ex{margin:0;padding:18px 20px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface-newsprint)}
 .ed .ex.after{background:var(--oa-color-surface-white);border-color:var(--oa-color-border-strong)}
 .ed .exh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px}
-.ed .exh .s{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}
-.ed .ex .q{margin:0;font:400 clamp(1.1875rem,1.1rem + .4vw,1.375rem)/1.5 var(--oa-font-family-reading);letter-spacing:-.005em;overflow-wrap:anywhere}
-.ed .ex .note{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px}
+.ed .exh .s{font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);letter-spacing:var(--oa-type-caption-letter-spacing);color:var(--oa-color-text-secondary)}
+.ed .ex .q{font:var(--oa-type-intro-font-style) var(--oa-type-intro-font-weight) 1.1875rem/var(--oa-type-intro-line-height) var(--oa-type-intro-font-family);letter-spacing:var(--oa-type-intro-letter-spacing)}@media (min-width:48em){.ed .ex .q{font-size:1.375rem}}
+.ed .ex .q{margin:0;overflow-wrap:anywhere}
+.ed .ex .note{font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);letter-spacing:var(--oa-type-caption-letter-spacing);color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem}
 .ed .emrule{display:inline-block;width:1em;height:0;border-top:2px solid currentColor;vertical-align:.32em;margin:0 .08em}
 .ed del .emrule{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}
 </style>
-<div class="ed pair"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="s">Our brand guide, fifth edition, chapter 13 In use</span></figcaption><p class="q">Written testimony counts<del>. Spoken testimony counts more</del>.</p></figure><div class="hinge" aria-hidden="true"><img data-inline src="work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg" alt="" class="hamp" width="21" height="24"></div><figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><p class="q">Written testimony counts<ins>, and speaking at the hearing carries more weight</ins>.</p></figure></div>
+<div class="ed pair"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="s">Our brand guide, fifth edition, chapter 13 In use</span></figcaption><p class="q">Written testimony counts<del>. Spoken testimony counts more</del>.</p></figure><div class="hg" aria-hidden="true"><img data-inline src="work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg" alt="" class="hamp" width="21" height="24"></div><figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><p class="q">Written testimony counts<ins>, and speaking at the hearing carries more weight</ins>.</p></figure></div>

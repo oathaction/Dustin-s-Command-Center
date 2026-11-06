@@ -1,20 +1,34 @@
 /* Oath & Action Brand Guide, Edition 06: the guide shell.
-   Written by the guide engineer for stage board A, November 6, 2026. guide_build.py inlines this file after tokens.css.
-   Every color, type style, space and border comes from tokens.css. Surface classes (.oa-surface-newsprint and the rest)
-   point the short names (--oa-color-text-primary and the rest) at their surface, so a block changes surface with one class.
-   Breakpoints are in em, so layouts follow the reader's text size: tablet 48em, desktop 64em, wide 90em (tokens.css header).
+   Written by the guide engineer for stage board A, November 6, 2026; reworked in the stage A fix pass the same day.
+   guide_build.py inlines this file after tokens.css. Every color, type style, space and border comes from tokens.css.
+   Surface classes (.oa-surface-newsprint and the rest) point the short names (--oa-color-text-primary and the rest) at
+   their surface, so a block changes surface with one class.
+
+   The page sits on the column grid of Rule 07.2 (C-S1): 4 columns under 48em, 8 from 48em, 12 from 64em, with the
+   grid tokens' margins and gutters. From 64em the rail takes columns 1 to 3 (1 to 2 from 90em) and the main text the
+   rest. Inside a chapter, the Rule ID hangs in the first column (two from 48em to 90em), the text runs on the next
+   five to seven, and plates span the whole body. Breakpoints are in em, so layouts follow the reader's text size.
    No dotted or dashed lines anywhere (D1-21). */
 
 :root {
-  --gutter: var(--oa-layout-grid-phone-small-margin);
-  --head-h: 4rem;
-  --rid-col: 9rem;
+  --m: var(--oa-layout-grid-phone-small-margin);   /* page margin */
+  --g: var(--oa-layout-grid-phone-small-gutter);   /* gutter */
+  --mc: 4;                                         /* columns in main */
+  --bar-h: 3.5rem;
+  --where-h: 2rem;
+  --head-h: calc(var(--bar-h) + var(--where-h));
   --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --mat: var(--oa-color-tint-stone-n90);
+  --keyline: var(--oa-color-border-hairline-on-newsprint);
+  --ink: var(--oa-color-text-primary-on-newsprint);
+  --ink-2: var(--oa-color-text-secondary-on-newsprint);
+  --rule-strong: var(--oa-color-border-strong-on-newsprint);
+  --rule-hair: var(--oa-color-border-hairline-on-newsprint);
 }
-@media (min-width: 24.375em) { :root { --gutter: var(--oa-layout-grid-phone-margin) } }
-@media (min-width: 48em) { :root { --gutter: var(--oa-layout-grid-tablet-margin) } }
-@media (min-width: 64em) { :root { --gutter: var(--oa-layout-grid-desktop-margin) } }
+@media (min-width: 24.375em) { :root { --m: var(--oa-layout-grid-phone-margin); --g: var(--oa-layout-grid-phone-gutter) } }
+@media (min-width: 48em) { :root { --m: var(--oa-layout-grid-tablet-margin); --g: var(--oa-layout-grid-tablet-gutter); --mc: 8 } }
+@media (min-width: 64em) { :root { --m: var(--oa-layout-grid-desktop-margin); --g: var(--oa-layout-grid-desktop-gutter); --mc: 9; --bar-h: 4rem; --where-h: 0rem } }
+@media (min-width: 90em) { :root { --m: var(--oa-layout-grid-wide-margin); --g: var(--oa-layout-grid-wide-gutter); --mc: 10 } }
 
 *, *::before, *::after { box-sizing: border-box }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--oa-color-surface-newsprint) }
@@ -23,7 +37,7 @@ body {
   font: var(--oa-type-body);
   font-feature-settings: "ss01" 0;
   background: var(--oa-color-surface-newsprint);
-  color: var(--oa-color-text-primary-on-newsprint);
+  color: var(--ink);
 }
 /* The sticky masthead's offset sits on the content: a root scroll-padding makes Chromium scroll when a masthead control takes focus. */
 main *, .colophon * { scroll-margin-top: calc(var(--head-h) + var(--oa-space-300)) }
@@ -34,56 +48,70 @@ a:hover { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: anywhere }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 [hidden] { display: none !important }
-.alias { position: relative; top: calc(-1 * var(--head-h)); display: block; height: 0 }
+.chapter, .part { position: relative }
+.alias { position: absolute; top: calc(-1 * var(--head-h)); left: 0; width: 0; height: 0 }
 
 /* Shell type styles. Element styles stay under shell classes, so a specimen inherits only font and color. */
-.label, .plate-label, .local-toc-title, .colophon-k, .toc-part-h, .rid-w, .basis-k, .lbl, .cover-folio, .chapnav-k, .demo-tag {
+.label, .plate-label, .local-toc-title, .colophon-k, .rid-w, .rg-w, .basis-k, .lbl, .cover-folio, .chapnav-k, .demo-tag, .ri-after-k {
   font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform);
 }
-.n { font-variant-numeric: tabular-nums }
+/* C-S4: tabular figures only where a column of numbers lines up, never on runs of text with hyphens */
+.n, .rid-n, .toc-rid, .rg-n { font-variant-numeric: tabular-nums }
+/* C-S3: no paragraph of the shell ends on one short word */
+:where(.ch-head, .rule-body, .rule-foot, .closer, .sources, .contents, .part, .cover, .rule-group, .rule-index, .local-toc, .colophon, .proof-group, .rail)
+  :is(p, li, dd, dt, a), .plate-cap { text-wrap: pretty }
 
 /* Skip links: the first two Tab stops, shown on focus */
-.skip { position: fixed; left: var(--gutter); top: var(--oa-space-100); z-index: var(--oa-z-index-skip); padding: var(--oa-space-150) var(--oa-space-200);
+.skip { position: fixed; left: var(--m); top: var(--oa-space-100); z-index: var(--oa-z-index-skip); padding: var(--oa-space-150) var(--oa-space-200);
   background: var(--oa-color-surface-charcoal); color: var(--oa-color-text-primary-on-charcoal); font: var(--oa-type-ui); text-decoration: underline;
   outline-color: var(--oa-color-focus-ring-on-charcoal) }
 .skip:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 
-/* ---------------------------------------------------------------- Masthead */
-.masthead { position: sticky; top: 0; z-index: var(--oa-z-index-sticky); min-height: var(--head-h); display: flex; align-items: center; gap: var(--oa-space-150) var(--oa-space-300);
-  padding: 0 var(--gutter); background: var(--oa-color-surface-newsprint); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
-.home { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); color: var(--oa-color-text-primary-on-newsprint); flex: none }
+/* ---------------------------------------------------------------- Masthead
+   One bar with the wordmark from its 24 px master (Rule 03.6; the 16 px master only under 22.5em), and under 64em a
+   second line that names where the reader is in full (AX-S7). */
+.masthead { position: sticky; top: 0; z-index: var(--oa-z-index-sticky); padding: 0 var(--m); background: var(--oa-color-surface-newsprint);
+  border-bottom: var(--oa-border-width-hairline) solid var(--rule-strong) }
+.mh-bar, .where { max-width: calc(100rem - 2 * var(--m)); margin-inline: auto }
+.mh-bar { min-height: var(--bar-h); display: flex; align-items: center; gap: var(--oa-space-150) var(--oa-space-300) }
+.home { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); color: var(--ink); flex: none }
 .home .wm { display: block }
-.home .wm-24 { display: none }
-.edition { display: none; padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint);
+.home .wm-16 { display: none }
+.edition { display: none; padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--rule-hair);
   font: var(--oa-type-ui); white-space: nowrap }
-.edition-k { color: var(--oa-color-text-secondary-on-newsprint); font-weight: var(--oa-font-weight-regular); margin-right: .35em }
+.edition-k { color: var(--ink-2); font-weight: var(--oa-font-weight-regular); margin-right: .35em }
 .partnav { display: none; margin-left: auto }
 .partnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0 var(--oa-space-300) }
 .partnav a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui); text-decoration: none }
 .partnav a:hover, .partnav a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule); text-underline-offset: .45em }
-.where { margin: 0 0 0 auto; min-width: 0; font: var(--oa-type-ui); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-.menubtn { flex: none; display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-200);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
-.menubtn:hover { box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong-on-newsprint) }
+.menubtn { flex: none; margin-left: auto; display: inline-flex; align-items: center; gap: var(--oa-space-100); min-height: var(--oa-size-target-touch);
+  padding: 0 var(--oa-space-150); border: var(--oa-border-width-hairline) solid var(--rule-strong); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
+.menubtn:hover { box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--rule-strong) }
 .bars { width: 1.125rem; height: .75rem; display: inline-grid; align-content: space-between }
 .bars i { display: block; height: var(--oa-border-width-rule); background: currentColor }
-@media (max-width: 22.49em) { .where { display: none } .menubtn { margin-left: auto } }
-@media (min-width: 48em) { .home .wm-24 { display: block } .home .wm-16 { display: none } .edition { display: inline } }
+.where { min-height: var(--where-h); margin-block: 0; padding-bottom: var(--oa-space-050); display: flex; align-items: center; font: var(--oa-type-caption);
+  color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+@media (max-width: 22.49em) { .home .wm-24 { display: none } .home .wm-16 { display: block } }
+@media (min-width: 48em) { .edition { display: inline } }
 @media (min-width: 64em) { .partnav { display: block } .where, .menubtn { display: none } }
 
-/* ---------------------------------------------------------------- Frame: rail and main */
-.frame { padding: 0 var(--gutter) }
+/* ---------------------------------------------------------------- Frame: rail and main on the page grid */
+.frame { max-width: 100rem; margin: 0 auto; padding: 0 var(--m) }
 .rail { display: none }
 @media (min-width: 64em) {
-  .frame { display: grid; grid-template-columns: 14.5rem minmax(0, 1fr); column-gap: var(--oa-space-600); max-width: 100rem; margin: 0 auto }
-  .rail { display: block; position: sticky; top: var(--head-h); align-self: start; max-height: calc(100vh - var(--head-h)); overflow-y: auto; overscroll-behavior: contain;
-    padding: var(--oa-space-400) 0 var(--oa-space-600) }
+  .frame { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g) }
+  .rail { grid-column: 1 / span 3; display: block; position: sticky; top: var(--head-h); align-self: start; max-height: calc(100vh - var(--head-h));
+    overflow-y: auto; overscroll-behavior: contain; padding: var(--oa-space-400) 0 var(--oa-space-600) }
+  main { grid-column: 4 / -1 }
 }
+@media (min-width: 90em) { .rail { grid-column: 1 / span 2 } main { grid-column: 3 / -1 } }
+.rail.is-covered { visibility: hidden }
 .rail ul { list-style: none; margin: 0; padding: 0 }
 .rail a { display: flex; gap: var(--oa-space-100); align-items: baseline; padding: var(--oa-space-050) var(--oa-space-150); min-height: var(--oa-size-target-minimum);
   font: var(--oa-type-body-small); line-height: 1.4; text-decoration: none; border-left: var(--oa-border-width-bar) solid transparent }
+.rail a .t { text-wrap: balance }
 .rail a:hover { text-decoration: underline }
-.rail .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.5rem }
+.rail .n { color: var(--ink-2); min-width: 1.5rem }
 .rail a.rail-partlink { margin-top: var(--oa-space-300); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
 .rail > ul > li:first-child > a { margin-top: 0 }
 .rail a[aria-current], .menu a[aria-current] { background: var(--oa-color-state-selected-band-on-newsprint); border-left-color: var(--oa-color-state-selected-bar-on-newsprint); font-weight: var(--oa-font-weight-semibold) }
@@ -92,61 +120,65 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 main { min-width: 0; padding-bottom: var(--oa-space-1300) }
 main:focus { outline: none }
 
-/* ---------------------------------------------------------------- Cover */
+/* ---------------------------------------------------------------- Cover (C-S10, RP-S10) */
 .cover { min-height: calc(100vh - var(--head-h)); display: flex; flex-direction: column; padding: var(--oa-space-400) 0 var(--oa-space-600) }
-.cover-folio { display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0;
-  border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.cover-folio { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--oa-space-050) var(--oa-space-300); margin: 0; padding: var(--oa-space-100) 0;
+  border-top: var(--oa-border-width-rule) solid var(--rule-strong); color: var(--ink-2) }
 .cover-folio span { white-space: nowrap }
-@media (min-width: 48em) { .cover-folio span + span { padding-left: var(--oa-space-300); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) } }
-.cover-mark { margin: var(--oa-space-800) 0 0; color: var(--oa-color-text-primary-on-newsprint) }
+.cover-mark { margin: var(--oa-space-1000) 0 0; color: var(--ink) }
 .cover-mark svg { display: block; width: min(100%, 26rem); height: auto }
-.cover-h1 { margin: var(--oa-space-600) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); max-width: 34ch; text-wrap: balance }
-.tagline { margin: var(--oa-space-300) 0 0; font: var(--oa-type-title); letter-spacing: var(--oa-type-title-letter-spacing); max-width: 11ch; text-wrap: balance }
-.pillars { margin: var(--oa-space-600) 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--oa-space-050) var(--oa-space-150); font: var(--oa-type-intro); font-weight: var(--oa-font-weight-semibold) }
-.pillars .arr { color: var(--oa-color-text-secondary-on-newsprint); font-weight: var(--oa-font-weight-regular) }
-.cover-foot { margin-top: auto; padding-top: var(--oa-space-800); display: grid; gap: var(--oa-space-100) var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
-.cover-foot p { margin: 0; font: var(--oa-type-caption); max-width: 40rem }
-.cover-stage { padding-top: var(--oa-space-150); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
-.cover-status { color: var(--oa-color-text-secondary-on-newsprint) }
+.cover-h1 { margin: var(--oa-space-300) 0 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
+.tagline { margin: var(--oa-space-800) 0 0; font: var(--oa-type-title); letter-spacing: var(--oa-type-title-letter-spacing); max-width: 11ch; text-wrap: balance }
+.pillars { margin: var(--oa-space-600) 0 0; font: var(--oa-type-intro); font-weight: var(--oa-font-weight-semibold); text-wrap: balance }
+.pillars .nw { white-space: nowrap }
+.pillars .arr { color: var(--ink-2); font-weight: var(--oa-font-weight-regular); margin-inline: .1em }
+.cover-purpose { margin: var(--oa-space-300) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max) }
+.cover-start { margin: auto 0 0; padding-top: var(--oa-space-800) }
 .cover-start a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
-@media (min-width: 48em) { .cover-foot { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) } .cover-start { grid-column: 2; grid-row: 1 / span 2; justify-self: end } }
 
 /* ---------------------------------------------------------------- Section openers */
 .contents, .part, .chapter, .appendix { margin-top: var(--oa-space-1300) }
-.ch-head { border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); padding-top: var(--oa-space-150) }
-.loc-line { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
-.loc-line a { color: var(--oa-color-text-primary-on-newsprint) }
+.ch-head { border-top: var(--oa-border-width-rule) solid var(--rule-strong); padding-top: var(--oa-space-150) }
+.loc-line { margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
+.loc-line a { color: var(--ink) }
 .return { margin: var(--oa-space-150) 0 0 }
 .return a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-150);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-ui); text-decoration: none }
+  border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui); text-decoration: none; background: var(--oa-color-surface-newsprint) }
 .return a:hover { text-decoration: underline }
 .ch-title, .front-title, .part-title { margin: var(--oa-space-800) 0 0; font: var(--oa-type-section); letter-spacing: var(--oa-type-section-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
-.ch-title .n { color: var(--oa-color-text-secondary-on-newsprint); margin-right: .12em }
-.ch-title--appendix { font-size: var(--oa-type-h3-font-size); }
+.ch-title .n { color: var(--ink-2); margin-right: .12em }
+@media (max-width: 47.99em) { .ch-title .n { display: block; margin: 0 } }
+.ch-title--appendix { font-size: var(--oa-type-h3-font-size); letter-spacing: var(--oa-type-h3-letter-spacing) }
 .instr { margin: var(--oa-space-300) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max); text-wrap: pretty }
 .intro { margin: var(--oa-space-300) 0 0; max-width: var(--oa-layout-measure-body-max) }
 .intro + .intro { margin-top: var(--oa-space-200) }
-.later-note { font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.later-note { font: var(--oa-type-caption); color: var(--ink-2) }
 
 /* Contents */
-.toc-parts { display: grid; gap: var(--oa-space-600) var(--oa-space-600); margin-top: var(--oa-space-800); grid-template-columns: minmax(0, 1fr) }
-@media (min-width: 48em) { .toc-parts { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
-.toc-part { border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); padding-top: var(--oa-space-150) }
-.toc-part-h { margin: 0 }
-.toc-part-h a { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum) }
-.toc-part-h a:hover { text-decoration: underline }
-.toc-part--later .toc-part-h { color: var(--oa-color-text-secondary-on-newsprint) }
+.toc-parts { display: grid; gap: var(--oa-space-600) var(--g); margin-top: var(--oa-space-800); grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 48em) { .toc-parts { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--oa-space-600) } }
+@media (min-width: 64em) {
+  .toc-parts { grid-template-columns: repeat(var(--mc), minmax(0, 1fr)); column-gap: var(--g) }
+  .toc-part:nth-child(odd) { grid-column: 1 / span 4 }
+  .toc-part:nth-child(even) { grid-column: 6 / span 4 }
+}
+.toc-part { border-top: var(--oa-border-width-hairline) solid var(--rule-strong); padding-top: var(--oa-space-150) }
+.toc-part-h { margin: 0; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
+/* C-S16: a link and plain text take the same box, so both part labels sit on one line */
+.toc-part-k { display: inline-flex; align-items: center; min-height: var(--oa-size-target-minimum); text-decoration: none }
+a.toc-part-k:hover { text-decoration: underline }
+.toc-part--later .toc-part-h { color: var(--ink-2) }
 .toc-list { list-style: none; margin: var(--oa-space-200) 0 0; padding: 0 }
-.toc-list li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+.toc-list li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
 .toc-list a, .toc-name { display: inline-flex; gap: .5em; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
 .toc-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
-.toc-list .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.6em }
-.toc-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint); max-width: var(--oa-layout-measure-body-ideal) }
+.toc-list .n { color: var(--ink-2); min-width: 1.6em }
+.toc-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--ink-2); max-width: var(--oa-layout-measure-body-ideal) }
 .toc-later { padding: var(--oa-space-100) 0 !important }
-.toc-later .toc-name { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
+.toc-later .toc-name { font: var(--oa-type-body-small); color: var(--ink-2) }
 
 /* Part opener: one dark beat per part (Rule 05.1) */
-.part-inner { padding: var(--oa-space-600) var(--gutter) var(--oa-space-800); margin: 0 calc(-1 * var(--gutter)) }
+.part-inner { padding: var(--oa-space-600) var(--m) var(--oa-space-800); margin: 0 calc(-1 * var(--m)) }
 @media (min-width: 64em) { .part-inner { margin: 0; padding: var(--oa-space-800) var(--oa-space-800) var(--oa-space-1000) } }
 .part-title { margin-top: 0 }
 .part-title .lbl { display: block; margin-bottom: var(--oa-space-200); color: var(--oa-color-text-secondary) }
@@ -158,181 +190,260 @@ main:focus { outline: none }
 .part-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
 .part-list .n { color: var(--oa-color-text-secondary); min-width: 1.6em }
 .part-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
-.part-note { margin: var(--oa-space-600) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
 
-/* ---------------------------------------------------------------- Chapter */
-.chapter { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--oa-space-800) }
+/* ---------------------------------------------------------------- Chapter on the grid
+   From 48em a chapter is a grid of main's columns. From 90em the chapter head and body take the first eight and the
+   local contents the last two, its top rule level with the chapter head's (C-S16). */
+@media (min-width: 48em) {
+  .chapter { display: grid; grid-template-columns: repeat(var(--mc), minmax(0, 1fr)); column-gap: var(--g) }
+  .chapter > * { grid-column: 1 / -1 }
+}
+@media (min-width: 90em) {
+  .chapter > .ch-head, .chapter > .ch-body, .chapter > .chapnav, .chapter > .pending-note { grid-column: 1 / span 8 }
+  .chapter > .local-toc { grid-column: 9 / span 2; grid-row: 1 / span 6; position: sticky; top: calc(var(--head-h) + var(--oa-space-400)); align-self: start;
+    margin-top: 0; padding-top: var(--oa-space-150); border-top: var(--oa-border-width-rule) solid var(--rule-strong); max-height: calc(100vh - var(--head-h) - var(--oa-space-800)); overflow-y: auto }
+}
 .ch-body { min-width: 0 }
-.local-toc { margin: var(--oa-space-600) 0 0; padding: var(--oa-space-150) 0 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+/* The chapter body's own columns: --bc of them, the Rule ID in --id-col, text in --txt-col, the rule foot in --foot-col */
+@media (min-width: 48em) {
+  .ch-body { --bc: var(--mc); --idn: 2; --id-col: 1 / span 2; --txt-col: 3 / -1; --foot-col: 3 / -1;
+    display: grid; grid-template-columns: repeat(var(--bc), minmax(0, 1fr)); column-gap: var(--g); align-items: start }
+  .ch-body > * { grid-column: 1 / -1; min-width: 0 }
+}
+@media (min-width: 90em) { .ch-body { --bc: 8; --idn: 1; --id-col: 1 / span 1; --txt-col: 2 / span 5; --foot-col: 2 / -1 } }
+
+.local-toc { margin: var(--oa-space-600) 0 0; padding: var(--oa-space-150) 0 0; border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
 .local-toc-title { margin: 0 0 var(--oa-space-100) }
 .local-toc ul { list-style: none; margin: 0; padding: 0; columns: 1 }
-@media (min-width: 48em) and (max-width: 79.99em) { .local-toc ul { columns: 2; column-gap: var(--oa-space-600) } }
+@media (min-width: 48em) and (max-width: 89.99em) { .local-toc ul { columns: 2; column-gap: var(--oa-space-600) } }
 .local-toc li { break-inside: avoid }
 .local-toc a { display: inline-block; padding: var(--oa-space-050) 0; min-height: var(--oa-size-target-minimum); font: var(--oa-type-body-small); line-height: 1.4; text-decoration: none }
 .local-toc a:hover { text-decoration: underline }
 .local-toc a[aria-current] { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
-.toc-rid { font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint); margin-right: .25em }
-@media (min-width: 80em) {
-  .chapter { grid-template-columns: minmax(0, 1fr) 13rem }
-  .chapter > .ch-head, .chapter > .ch-body, .chapter > .chapnav, .chapter > .pending-note { grid-column: 1 }
-  .chapter > .alias { grid-column: 1 / -1 }
-  .local-toc { grid-column: 2; grid-row: 2 / span 3; position: sticky; top: calc(var(--head-h) + var(--oa-space-400)); align-self: start; margin-top: var(--oa-space-1300); max-height: calc(100vh - var(--head-h) - var(--oa-space-800)); overflow-y: auto }
-  .local-toc ul { columns: 1 }
-}
+.local-toc .toc-group a { margin-top: var(--oa-space-200); font-weight: var(--oa-font-weight-semibold) }
+.local-toc .toc-group:first-child a { margin-top: 0 }
+.toc-rid { color: var(--ink-2); margin-right: .25em }
+/* In a chapter with groups the rule index after the intro does this job until the side column appears */
+.chapter--grouped > .local-toc { display: none }
+@media (min-width: 90em) { .chapter--grouped > .local-toc { display: block } }
 .pending-note, .demo-tag { margin: var(--oa-space-600) 0 0; padding: var(--oa-space-300); max-width: var(--oa-layout-measure-intro-max);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); border-left-width: var(--oa-border-width-bar) }
+  border: var(--oa-border-width-hairline) solid var(--rule-strong); border-left-width: var(--oa-border-width-bar) }
 .pending-note p { margin: 0; max-width: var(--oa-layout-measure-body-max) }
 .pending-note .label { margin-bottom: var(--oa-space-100) }
 .demo-tag { padding: var(--oa-space-100) var(--oa-space-150); margin: 0 0 var(--oa-space-300); display: inline-block }
 
-/* Rule: the Master Brief section 7 template */
-.rule { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint);
-  display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--oa-space-400) }
+/* Rule index, after the intro of a chapter with groups (C-S11, CP-S1) */
+.rule-index { margin-top: var(--oa-space-600); padding-top: var(--oa-space-150); border-top: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.rule-index > .label { margin: 0 0 var(--oa-space-200) }
+.ri-groups { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--oa-space-400) var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
+@media (min-width: 48em) { .ri-groups { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+.ri-g { display: inline-flex; gap: .5em; align-items: baseline; min-height: var(--oa-size-target-minimum); font: var(--oa-type-ui); font-size: 1.0625rem; text-decoration: none }
+.ri-g:hover .t { text-decoration: underline }
+.ri-g .rg-n { color: var(--ink-2); min-width: 1em }
+.ri-rules { list-style: none; margin: var(--oa-space-100) 0 0; padding: 0 0 0 1.5em; border-left: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.ri-rules a { display: inline-block; padding: var(--oa-space-050) 0; min-height: var(--oa-size-target-minimum); font: var(--oa-type-body-small); line-height: 1.4; text-decoration: none }
+.ri-rules a:hover { text-decoration: underline }
+.ri-after { margin: var(--oa-space-400) 0 0; font: var(--oa-type-body-small) }
+.ri-after-k { color: var(--ink-2); margin-right: .6em }
+
+/* Rule group block: page text, not a heading (map section 5), outside any mat */
+.rule-group { margin-top: var(--oa-space-1300); padding-top: var(--oa-space-400); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
+.rg-head { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.rg-n { display: block; margin-bottom: var(--oa-space-100); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing) }
+.rg-w { color: var(--ink-2); margin-right: .25em }
+.rg-line { margin: var(--oa-space-200) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max); color: var(--ink-2) }
+.rule-group + .rule { margin-top: var(--oa-space-800) }
+
+/* Rule: the Master Brief section 7 template. C-S2: a 2 px rule opens each rule, the heaviest line inside a chapter. */
+.rule { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-400); border-top: var(--oa-border-width-rule) solid var(--rule-strong) }
 .ch-body > .rule:first-child, .ch-body > .plate--extra:first-child + .rule { margin-top: var(--oa-space-800) }
 .rule-h { margin: 0; font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
-.rid { display: block; margin-bottom: var(--oa-space-150); font-variant-numeric: tabular-nums }
-.rid-w { color: var(--oa-color-text-secondary-on-newsprint); margin-right: .25em }
+.rid { display: block; margin-bottom: var(--oa-space-100) }
+.rid-w { color: var(--ink-2); margin-right: .25em }
 .rid-n { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing) }
 .rule-body { margin-top: var(--oa-space-300); min-width: 0 }
 .rule-text { margin: 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-body-max); text-wrap: pretty }
 .rule-text + .rule-text { margin-top: var(--oa-space-200) }
 @media (min-width: 48em) {
-  .rule { grid-template-columns: var(--rid-col) minmax(0, 1fr) }
-  .rule-h { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline }
-  .rid { grid-column: 1; margin: 0; display: flex; flex-direction: column; gap: var(--oa-space-050) }
-  .rid-w { margin: 0 }
-  .rid-n { font: var(--oa-type-h3); letter-spacing: 0; font-variant-numeric: tabular-nums }
-  .rt { grid-column: 2 }
-  .rule-body, .rule-foot { grid-column: 2 }
-  .hinge, .plate, .rule > .plate { grid-column: 1 / -1 }
+  .rule, .rule-group { display: grid; grid-template-columns: repeat(var(--bc), minmax(0, 1fr)); column-gap: var(--g) }
+  .rule > *, .rule-group > * { grid-column: var(--txt-col); min-width: 0 }
+  /* C-M4: the Rule ID is one line tall, its number on the title's first baseline and "Rule" hung above it, so every
+     title sits 24 px above its text whatever its length */
+  .rule-h, .rg-head { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(var(--bc), minmax(0, 1fr)); column-gap: var(--g); align-items: baseline }
+  .rid, .rg-n { grid-column: var(--id-col); position: relative; margin: 0; white-space: nowrap }
+  .rid-w, .rg-w { position: absolute; left: 0; bottom: 100%; margin: 0 0 var(--oa-space-050) }
+  .rid-n { font: inherit; letter-spacing: 0 }
+  .rg-n { font: inherit; letter-spacing: 0 }
+  .rt, .rg-t { grid-column: var(--txt-col) }
+  .rule > .plate { grid-column: 1 / -1 }
+  .rule > .rule-foot { grid-column: var(--foot-col) }
 }
-.label { margin: var(--oa-space-400) 0 var(--oa-space-100); color: var(--oa-color-text-secondary-on-newsprint) }
+.label { margin: var(--oa-space-400) 0 var(--oa-space-100); color: var(--ink-2) }
 .why p:not(.label):not(.basis) { margin: 0 0 var(--oa-space-200); max-width: var(--oa-layout-measure-body-max) }
 .basis { display: inline-flex; flex-wrap: wrap; gap: .5em; align-items: baseline; margin: 0 0 var(--oa-space-150); padding: var(--oa-space-050) var(--oa-space-100);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-ui) }
-.basis-k { color: var(--oa-color-text-secondary-on-newsprint) }
+  border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui) }
+.basis-k { color: var(--ink-2) }
 .tok-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-100) }
-.tok { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-100); padding: var(--oa-space-050) var(--oa-space-100);
-  border: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); background: var(--oa-color-state-selected-band-on-newsprint); max-width: 100% }
-.tok-name { font-size: .875rem }
-.tok-sw { width: 1rem; height: 1rem; flex: none; box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong-on-newsprint); forced-color-adjust: none }
-.tok-val { font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint) }
+.tok { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--oa-space-050) var(--oa-space-100); padding: var(--oa-space-050) var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--rule-hair); background: var(--oa-color-state-selected-band-on-newsprint); max-width: 100% }
+.tok-name { font-size: .875rem; overflow-wrap: normal; word-break: normal }
+.tok-sw { width: 1rem; height: 1rem; flex: none; box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--rule-strong); forced-color-adjust: none }
+.tok-val { font: var(--oa-type-caption); color: var(--ink-2) }
 
-/* The hinge divider: a hairline broken by ampersand B in the surface's ink (D1-22, D1-26).
-   Its ampersand sits on the text column's edge, so the rule above swings into its use below. */
+/* The hinge divider (DR-96): ampersand B's 24 px master at 24 px, centered on a 1 px line as wide as the text it
+   divides, 12 px of clear line on each side of B, in the surface's ink (D1-22, D1-26). */
 .hinge { display: flex; align-items: center; gap: var(--oa-space-150); margin: var(--oa-space-600) 0 var(--oa-space-500); color: var(--oa-color-identity-hinge-divider) }
-.hinge-line { height: 0; border-top: var(--oa-border-width-hairline) solid currentColor }
-.hinge-line--a { flex: 0 0 var(--oa-space-400) }
-.hinge-line--b { flex: 1 1 auto }
+.hinge-line { flex: 1 1 0; height: 0; border-top: var(--oa-border-width-hairline) solid currentColor }
 .hinge-amp { flex: none; display: block; width: 21px; height: 24px }
-@media (min-width: 48em) { .hinge-line--a { flex-basis: calc(var(--rid-col) + var(--oa-space-400) - var(--oa-space-150)) } }
 
 /* Plates: a specimen at true size on a deeper Newsprint mat. The stage takes the specimen's surface. */
 .plate { margin: var(--oa-space-500) 0 0; min-width: 0 }
 .hinge + .plate { margin-top: 0 }
-.plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--oa-space-050) var(--oa-space-300);
-  padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint) }
+.plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--oa-space-050) var(--oa-space-300);
+  padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .plate-label { margin: 0; display: inline-flex; gap: .6em; align-items: baseline }
 .plate-glyph { font: var(--oa-type-ui); font-size: 1rem; line-height: 1 }
-.plate-size { margin: 0; font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary-on-newsprint) }
-.plate-scroll { position: relative; overflow-x: auto; overflow-y: hidden; padding: var(--oa-space-600) var(--oa-space-400); background: var(--mat);
-  margin-inline: calc(-1 * var(--gutter)) }
-@media (max-width: 47.99em) { .plate-scroll { padding: var(--oa-space-400) 0 } }
+.plate-size { margin: 0 0 0 auto; font: var(--oa-type-caption); color: var(--ink-2) }
+.plate-label + .plate-size { margin-left: 0 }
+/* AX-S12: the line that says a frame scrolls sits in the plate head, before the specimen */
+.plate-hint { flex-basis: 100%; margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
+.plate-scroll { position: relative; overflow-x: auto; overflow-y: hidden; padding: var(--oa-space-400) var(--oa-space-200); background: var(--mat);
+  margin-inline: calc(-1 * var(--m)) }
 @media (min-width: 48em) { .plate-scroll { margin-inline: 0; padding: var(--oa-space-800) var(--oa-space-600) } }
-.plate-scroll:focus-visible { outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
-/* background and color come from the stage's surface class (.oa-surface-newsprint by default) */
-.plate-stage { position: relative; width: var(--w, 100%); max-width: none; margin: 0 auto; font: var(--oa-type-body); text-align: left }
-
-.plate-stage[data-pending] { padding: var(--oa-space-400); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); max-width: 100% }
+/* AX-S4: on the mat the ring is Charcoal, 11.76 to 1, drawn inside the frame */
+.plate-scroll:focus-visible, .code:focus-visible, .table-wrap:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-palette-charcoal); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
+/* background and color come from the stage's surface class (.oa-surface-newsprint by default). AX-S13: a 1 px Stone
+   keyline marks where the true-size piece ends (4.29 to 1 on Newsprint, 3.80 on the mat). AX-S6: a specimen is a
+   picture of a finished piece, so it keeps its colors when the system forces its own. */
+.plate-stage { position: relative; width: var(--w, 100%); max-width: none; margin: 0 auto; font: var(--oa-type-body); text-align: left;
+  box-shadow: 0 0 0 var(--oa-border-width-hairline) var(--keyline); forced-color-adjust: none }
+.plate-stage :is(button, input, select, textarea) { font: inherit }
+.plate-stage[data-pending] { padding: var(--oa-space-400); max-width: 100% }
 .plate-pending { margin: 0; font: var(--oa-type-body-small) }
-.plate-cap { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); max-width: var(--oa-layout-measure-intro-max) }
-@media (min-width: 48em) { .rule > .plate > .plate-cap { margin-left: calc(var(--rid-col) + var(--oa-space-400)) } }
-.plate-hint { display: none; margin: 0; padding: var(--oa-space-100) 0 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
-.plate.is-wide .plate-hint { display: block }
-.illus { display: inline-block; margin-right: .4em; padding: 0 .4em; border: var(--oa-border-width-hairline) solid currentColor;
-  font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; line-height: 1.5 }
-.plate--failure .plate-head { border-top-width: var(--oa-border-width-bar) }
+.plate-fit { width: fit-content; margin: 0 auto }
+.plate-fit > .plate-stage { margin: 0 }
+.plate-cap { margin: var(--oa-space-150) 0 0; font: var(--oa-type-caption); max-width: 32rem }
+@media (min-width: 48em) {
+  .rule > .plate > .plate-cap { margin-left: calc((100% - (var(--bc) - 1) * var(--g)) / var(--bc) * var(--idn) + var(--idn) * var(--g)) }
+}
+/* C-S8: one Illustrative label, the shell's, which never stretches in a flex or grid parent */
+.illus { display: inline-block; flex: none; align-self: flex-start; justify-self: start; width: auto; max-width: max-content; margin-right: .4em; padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: uppercase; line-height: 1.5; white-space: nowrap; vertical-align: baseline }
 .plate--extra, .plate--proof { margin-top: var(--oa-space-800) }
+/* The True size / Fit to window switch (D2-251) */
+.fit-switch { display: inline-flex; border: var(--oa-border-width-hairline) solid var(--rule-strong) }
+.fit-btn { min-height: 2.25rem; padding: 0 var(--oa-space-150); border: 0; background: transparent; color: var(--ink); font: var(--oa-type-ui); cursor: pointer }
+.fit-btn + .fit-btn { border-left: var(--oa-border-width-hairline) solid var(--rule-strong) }
+.fit-btn[aria-pressed="true"] { background: var(--oa-color-action-primary-fill-on-newsprint); color: var(--oa-color-action-primary-label-on-newsprint) }
+.fit-btn:hover { text-decoration: underline }
 
-/* Rule foot: Specifications, Related chapters, For builders */
-.rule-foot { margin-top: var(--oa-space-600); display: grid; gap: var(--oa-space-300) var(--oa-space-600); grid-template-columns: minmax(0, 1fr); min-width: 0 }
-@media (min-width: 64em) { .rule-foot { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) } .foot-specs { grid-row: span 2 } }
-.foot-block { min-width: 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+/* Rule foot (C-S5): the specifications run across the whole text column; Related chapters and For builders share
+   one row under them. One hairline opens the foot and one closes each specification row. */
+.rule-foot { margin-top: var(--oa-space-600); border-top: var(--oa-border-width-hairline) solid var(--rule-hair); display: grid; gap: var(--oa-space-200); grid-template-columns: minmax(0, 1fr); align-content: start; min-width: 0 }
+.foot-block { min-width: 0 }
 .foot-block > .label:first-child { margin-top: var(--oa-space-150) }
-.foot-builders p:not(.label) { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small) }
-.spec-list { margin: 0 }
-.spec-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--oa-space-300); padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
-@media (min-width: 30em) { .spec-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) } .spec-tok { grid-column: 2 } }
+.foot-pair { display: grid; gap: 0 var(--oa-space-600); grid-template-columns: minmax(0, 1fr); align-items: start }
+@media (min-width: 64em) { .foot-pair { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) } .foot-pair > :only-child { grid-column: 1 / -1 } }
+.foot-builders p:not(.label) { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small); max-width: var(--oa-layout-measure-body-max) }
+.spec-list { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) }
+.spec-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+@media (min-width: 30em) { .spec-row { grid-template-columns: minmax(7rem, 2fr) minmax(0, 5fr) } .spec-tok { grid-column: 2 } }
+@media (min-width: 90em) {
+  .spec-list { grid-template-columns: minmax(8rem, 2fr) minmax(12rem, 4fr) auto; column-gap: 0 }
+  .spec-row { display: contents }
+  .spec-row > * { padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+  .spec-row > :last-child { padding-right: 0 }
+  .spec-row > dt { grid-column: 1 } .spec-row > .spec-val { grid-column: 2 } .spec-row > .spec-tok { grid-column: 3 }
+  .spec-row:not(.spec-row--tok) > .spec-val { grid-column: 2 / -1 }
+}
 .spec-row dt { font: var(--oa-type-body-small); font-weight: var(--oa-font-weight-semibold) }
-.spec-row dd { margin: 0; font: var(--oa-type-body-small); font-variant-numeric: tabular-nums }
-.spec-tok code { font-size: .8125rem; color: var(--oa-color-text-secondary-on-newsprint) }
+.spec-row dd { margin: 0; font: var(--oa-type-body-small) }
+.spec-tok code, .file-list code, .tok-table th code { overflow-wrap: normal; word-break: normal }
+.spec-tok code { font-size: .8125rem; color: var(--ink-2) }
 .file-list { list-style: none; margin: 0; padding: 0 }
 .file-list li { padding: var(--oa-space-050) 0; font-size: .875rem }
 .file-list code { font-size: .8125rem }
 .rel-inline { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300) }
 .rel-inline a { display: inline-flex; gap: .4em; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
-.rel-inline .later { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
+.rel-inline .later { font: var(--oa-type-body-small); color: var(--ink-2) }
 .rel-inline li { display: flex; align-items: center; gap: .5em; flex-wrap: wrap }
 
 /* Sources and closers */
-.sources { margin-top: var(--oa-space-1000); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
-.src-list { margin: 0; padding-left: 1.5em; font: var(--oa-type-body-small); max-width: var(--oa-layout-measure-intro-max) }
+.sources { margin-top: var(--oa-space-1000); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
+.src-list { margin: 0; padding-left: 1.5em; font: var(--oa-type-body-small); max-width: 32rem }
 .src-list li { padding: var(--oa-space-050) 0 }
-.closer { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint) }
+.closer { margin-top: var(--oa-space-1000); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--rule-strong) }
 .closer h3 { margin: 0 0 var(--oa-space-300); font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
 .closer > p { max-width: var(--oa-layout-measure-body-max); margin: 0 0 var(--oa-space-200) }
 .closer > p.label { margin: var(--oa-space-400) 0 var(--oa-space-100) }
-.closer-note { font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
+.closer > .return { margin: 0 0 var(--oa-space-200) }
+.closer-note { font: var(--oa-type-caption); color: var(--ink-2) }
 .table-wrap { overflow-x: auto; max-width: 100% }
 .tok-table { border-collapse: collapse; width: 100%; font: var(--oa-type-body-small) }
-.tok-table caption { text-align: left; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint); padding-bottom: var(--oa-space-100) }
-.tok-table th, .tok-table td { text-align: left; vertical-align: baseline; padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
-.tok-table thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; border-bottom-color: var(--oa-color-border-strong-on-newsprint) }
+.tok-table caption { text-align: left; font: var(--oa-type-caption); color: var(--ink-2); padding-bottom: var(--oa-space-100) }
+.tok-table th, .tok-table td { text-align: left; vertical-align: baseline; padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
+.tok-table thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; border-bottom-color: var(--rule-strong) }
 .tok-table tbody th { font-weight: var(--oa-font-weight-regular) }
-.tok-table td { font-variant-numeric: tabular-nums; white-space: nowrap }
+.tok-table td a { white-space: nowrap }
+/* AX-S10: on phones each row stacks, and each value and rule list carries its own small label */
 @media (max-width: 47.99em) {
   .tok-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
-  .tok-table tr { display: block; padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint) }
+  .tok-table tr { display: block; padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
   .tok-table th, .tok-table td { display: block; border: 0; padding: 0; white-space: normal }
+  .tok-table td::before { content: attr(data-k); display: block; margin-top: var(--oa-space-100); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; color: var(--ink-2) }
 }
 .related { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
 @media (min-width: 48em) { .related { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
-.related li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); display: flex; flex-direction: column; gap: var(--oa-space-050) }
+.related li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair); display: flex; flex-direction: column; gap: var(--oa-space-050) }
 .related a, .related .later { display: inline-flex; gap: .45em; align-items: baseline; font: var(--oa-type-h4); font-size: 1.25rem; letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
 .related a:hover { text-decoration: underline }
-.related .later { color: var(--oa-color-text-secondary-on-newsprint) }
-.related .n { color: var(--oa-color-text-secondary-on-newsprint) }
-.rel-why { font: var(--oa-type-body-small); color: var(--oa-color-text-secondary-on-newsprint) }
-.code { margin: 0 0 var(--oa-space-200); padding: var(--oa-space-300); background: var(--mat); overflow-x: auto; max-width: 100%; font-size: .875rem; line-height: 1.6; white-space: pre }
+.related .later { color: var(--ink-2) }
+.related .n { color: var(--ink-2) }
+.rel-why { font: var(--oa-type-body-small); color: var(--ink-2) }
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--oa-space-150); margin: 0 0 var(--oa-space-100) !important }
+.code { margin: var(--oa-space-200) 0 0; padding: var(--oa-space-300); background: var(--mat); overflow: auto; max-width: 100%; max-height: 28rem; font-size: .875rem; line-height: 1.6; white-space: pre }
 .code code { overflow-wrap: normal }
-.btn { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-300); border: 0; cursor: pointer;
+.btn { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); padding: 0 var(--oa-space-300); border: 0; cursor: pointer; text-decoration: none;
   background: var(--oa-color-action-primary-fill-on-newsprint); color: var(--oa-color-action-primary-label-on-newsprint); font: var(--oa-type-ui) }
 .btn:hover { background: var(--oa-color-action-primary-fill-hover-on-newsprint); text-decoration: underline }
-.status { margin: 0; font: var(--oa-type-caption); color: var(--oa-color-text-secondary-on-newsprint) }
-.status.is-error { color: var(--oa-color-text-primary-on-newsprint); font-weight: var(--oa-font-weight-semibold) }
+.btn--quiet { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--rule-strong) }
+.btn--quiet:hover { background: transparent; box-shadow: inset 0 0 0 var(--oa-border-width-rule) var(--rule-strong) }
+.status { margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
+.status.is-error { color: var(--ink); font-weight: var(--oa-font-weight-semibold) }
 .copy-fallback { display: block; margin-top: var(--oa-space-100); width: 100%; max-width: 30rem; font-family: var(--mono) }
 
-.chapnav { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); margin-top: var(--oa-space-1000); padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.chapnav { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); margin-top: var(--oa-space-1000); padding-top: var(--oa-space-100); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .chapnav a { display: inline-flex; align-items: center; gap: .4em; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
-.chapnav-k { color: var(--oa-color-text-secondary-on-newsprint) }
+.chapnav-k { color: var(--ink-2) }
 .chapnav .to-contents { margin-left: auto }
 
-/* Appendix: proofs side by side */
+/* ---------------------------------------------------------------- Appendix: proofs side by side (C-M6, D2-251)
+   From 90em the appendix takes the whole page width, columns 1 to 12, and slides over the rail, which the script hides
+   once the appendix reaches it. The mat narrows to 24 px, so two 600 px emails sit side by side at true size. */
 .proof-group { margin-top: var(--oa-space-1000) }
-.proof-h { margin: 0; padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-newsprint); font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing) }
+.proof-h { margin: 0; padding-top: var(--oa-space-300); border-top: var(--oa-border-width-rule) solid var(--rule-strong); font: var(--oa-type-h3); letter-spacing: var(--oa-type-h3-letter-spacing) }
 .proof-group > p { max-width: var(--oa-layout-measure-body-max) }
-.proof-row { display: flex; flex-wrap: wrap; gap: 0 var(--oa-space-400); align-items: flex-start }
+.proof-row { display: flex; flex-wrap: wrap; gap: 0 var(--g); align-items: flex-start }
 .proof-row > .plate { flex: 1 1 auto; min-width: 0; max-width: 100%; margin-top: var(--oa-space-400) }
-
+@media (min-width: 48em) { .appendix .plate-scroll { padding: var(--oa-space-300) } }
+@media (min-width: 90em) {
+  .appendix { position: relative; z-index: 2; background: var(--oa-color-surface-newsprint);
+    margin-left: calc((100% - 9 * var(--g)) / -5 - 2 * var(--g)) }
+}
 
 /* long chapter names wrap inside their links at large text sizes */
 .toc-list a, .toc-name, .part-list a, .related a, .rel-inline a, .chapnav a { max-width: 100% }
 .toc-list .t, .part-list .t, .related a, .chapnav a { min-width: 0; overflow-wrap: break-word }
 
-/* ---------------------------------------------------------------- Colophon */
-.colophon { padding: var(--oa-space-800) var(--gutter) var(--oa-space-1000) }
-.colophon-inner { max-width: 100rem; margin: 0 auto }
-@media (min-width: 64em) { .colophon-inner { padding-left: calc(14.5rem + var(--oa-space-600)) } }
+/* ---------------------------------------------------------------- Colophon, on the same columns as main */
+.colophon { padding: var(--oa-space-800) 0 var(--oa-space-1000) }
+.colophon-inner { max-width: 100rem; margin: 0 auto; padding: 0 var(--m) }
+@media (min-width: 64em) {
+  .colophon-inner { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g) }
+  .colophon-inner > * { grid-column: 4 / -1 }
+}
+@media (min-width: 90em) { .colophon-inner > * { grid-column: 3 / -1 } }
 .colophon-k { margin: 0 0 var(--oa-space-300); color: var(--oa-color-text-secondary) }
 .colophon-list { margin: 0; display: grid; gap: 0; max-width: 56rem }
 .colophon-list > div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--oa-space-400); padding: var(--oa-space-150) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
@@ -344,18 +455,18 @@ main:focus { outline: none }
 
 /* ---------------------------------------------------------------- Phone menu: a modal dialog with one navigation block */
 .menu { padding: 0; border: 0; margin: 0 0 0 auto; width: min(100vw, 26rem); max-width: 100vw; height: 100vh; max-height: 100vh;
-  background: var(--oa-color-surface-newsprint); color: var(--oa-color-text-primary-on-newsprint); border-left: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+  background: var(--oa-color-surface-newsprint); color: var(--ink); border-left: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .menu::backdrop { background: var(--oa-color-palette-charcoal); opacity: .6 }
 .menu-inner { display: flex; flex-direction: column; height: 100% }
-.menu-head { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-200); padding: var(--oa-space-150) var(--gutter); border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint) }
+.menu-head { display: flex; align-items: center; justify-content: space-between; gap: var(--oa-space-200); padding: var(--oa-space-150) var(--m); border-bottom: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .menu-title { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing) }
-.menu-close { min-height: var(--oa-size-target-touch); min-width: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-newsprint); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
-.menu-where { margin: 0; padding: var(--oa-space-150) var(--gutter); font: var(--oa-type-caption) }
-.menu-scroll { flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--gutter) var(--oa-space-600) }
+.menu-close { min-height: var(--oa-size-target-touch); min-width: var(--oa-size-target-touch); padding: 0 var(--oa-space-200); border: var(--oa-border-width-hairline) solid var(--rule-strong); background: transparent; color: inherit; font: var(--oa-type-ui); cursor: pointer }
+.menu-where { margin: 0; padding: var(--oa-space-150) var(--m); font: var(--oa-type-caption) }
+.menu-scroll { flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--m) var(--oa-space-600) }
 .menu ul { list-style: none; margin: 0; padding: 0 }
 .menu a { display: flex; gap: var(--oa-space-100); align-items: center; min-height: var(--oa-size-target-touch); padding: var(--oa-space-050) var(--oa-space-150);
-  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-newsprint); border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-body); text-decoration: none }
-.menu a .n { color: var(--oa-color-text-secondary-on-newsprint); min-width: 1.6em }
+  border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair); border-left: var(--oa-border-width-bar) solid transparent; font: var(--oa-type-body); text-decoration: none }
+.menu a .n { color: var(--ink-2); min-width: 1.6em }
 .menu a.menu-partlink { margin-top: var(--oa-space-300); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase }
 
 /* ---------------------------------------------------------------- Forced colors, print */
@@ -364,14 +475,17 @@ main:focus { outline: none }
   .rail a[aria-current], .menu a[aria-current] { border-left-color: Highlight; text-decoration: underline }
   .hinge-line { border-top-color: CanvasText }
   .plate-scroll { border: 1px solid CanvasText }
-  .btn { border: 1px solid ButtonText }
+  .btn, .fit-btn { border: 1px solid ButtonText }
+  .fit-btn[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText }
 }
 @media print {
-  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .status { display: none !important }
+  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint { display: none !important }
   .frame { display: block; padding: 0 }
   body, .plate-scroll { background: none }
+  .appendix { margin-left: 0 }
   .chapter, .part, .contents, .appendix { break-before: page }
   .plate, .rule-h, .hinge { break-inside: avoid }
   .local-toc { position: static }
+  .code { max-height: none; overflow: visible }
   a { text-decoration: none }
 }

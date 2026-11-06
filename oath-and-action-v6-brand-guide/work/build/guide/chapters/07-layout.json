@@ -5,15 +5,15 @@
   "part": "Foundations",
   "instruction": "Build each page on the column grid and spacing scale, readable at every width.",
   "intro": [
-    "Every page sits on a column grid and spaces its parts in steps of 8 px. The grid changes with the screen, from 12 columns on a desktop to four on a phone, and each paragraph spans the columns that keep its lines at the measure chapter 06 sets.",
+    "Every page sits on a column grid and spaces its parts in steps of 8 px. The grid changes at set window widths, called breakpoints, from 12 columns on a desktop to four on a phone, and each paragraph spans the columns that keep its lines at the measure chapter 06 sets.",
     "A page also has to read at 320 px wide, and with its text at twice the size, with nothing cut off and no scrolling sideways."
   ],
   "rules": [
     {
       "id": "07.1",
-      "title": "Space comes in steps of the 8 px scale.",
+      "title": "Space everything in steps of the 8 px scale.",
       "rule": [
-        "Use the eleven steps of the spacing scale, from 4 px to 104 px, for every gap, padding and margin. Spaces around text are set in rem, so they grow with the reader’s text, and the grid’s gutters and page margins are set in px."
+        "Use the eleven steps of the spacing scale, from 4 px to 104 px, for every gap, padding and margin. Spaces around text are set in rem, so they grow with the reader’s text. The grid’s gutters and page margins stay in px."
       ],
       "tokens": [
         "oa.space.050",
@@ -36,7 +36,7 @@
       },
       "correct": {
         "specimen": "s-07-1-correct",
-        "caption": "The scale at true size, and a card spaced on it: 24 px of padding, 8 px from label to heading and 16 px from heading to text."
+        "caption": "The scale at true size, and a card spaced on it: 24 px of padding, 8 px from kicker to heading and 16 px from heading to text."
       },
       "failure": {
         "specimen": "s-07-1-failure",
@@ -110,7 +110,7 @@
     },
     {
       "id": "07.2",
-      "title": "Each page sits on the column grid for its width.",
+      "title": "Set each page on the column grid for its width.",
       "rule": [
         "Lay each page on the grid for its width: 12 columns at 1440 and 1024 px, eight at 768 px and four on phones, with the gutters and margins in the specifications. Every section of a page shares the same column lines."
       ],
@@ -135,7 +135,7 @@
       },
       "correct": {
         "specimen": "s-07-2-correct",
-        "caption": "The five grids drawn at one quarter of true size, each column’s width worked out from the tokens."
+        "caption": "The five grids drawn at one quarter of true size, each column’s width worked out from the tokens. The labels under each grid are at true size."
       },
       "failure": {
         "specimen": "s-07-2-failure",
@@ -180,9 +180,9 @@
     },
     {
       "id": "07.3",
-      "title": "Body text spans the columns that hold its measure.",
+      "title": "Span body text across the columns that hold its measure.",
       "rule": [
-        "Body text spans five of 12 columns at 1440 px, seven of 12 at 1024 px, six of eight at 768 px and all four on phones. Those spans hold the 60 to 75 characters a line that chapter 06 sets, and a block that spans more columns caps its text at the body measure."
+        "Body text spans five of 12 columns at 1440 px, seven of 12 at 1024 px, seven of eight at 768 px and all four on phones. Those spans hold the 60 to 75 characters a line that chapter 06 sets, and a block that spans more columns caps its text at the body measure."
       ],
       "tokens": [
         "oa.layout.measure.bodyIdeal",
@@ -193,32 +193,32 @@
       ],
       "why": {
         "text": [
-          "The grid places a block, and its span keeps the lines readable. A paragraph run across all 12 columns at 1440 px measured 165 characters a line, more than twice the measure, while the five-column span measured 66."
+          "The grid places a block, and its span keeps the lines readable. Prose run across all 12 columns at 1440 px measured 160 characters a line, more than twice the measure. Across the five-column span, the same prose measured 63."
         ],
         "basis": "Design judgment"
       },
       "correct": {
         "specimen": "s-07-3-correct",
-        "caption": "The body span at each width, measured with the same paragraph in Inter at 17 px. Phones fall under 60 characters, which suits a small screen."
+        "caption": "The 1440 px grid at one quarter size. Body text takes the first five of 12 columns, and the table below gives the span at every width."
       },
       "failure": {
         "specimen": "s-07-3-failure",
-        "caption": "<strong>Fails the measure.</strong> Drawn at one quarter size, a paragraph spanning all 12 columns at 1440 px. It measured 165 characters a line."
+        "caption": "<strong>Fails the measure.</strong> Drawn at one quarter size, a paragraph spanning all 12 columns at 1440 px. It measured 160 characters a line."
       },
       "specs": [
         {
           "label": "Wide, 1440 px",
-          "value": "5 of 12 columns, 533 px, 66 characters a line",
+          "value": "5 of 12 columns, 533 px, 63 characters a line",
           "token": "oa.layout.grid.wide.columns"
         },
         {
           "label": "Desktop, 1024 px",
-          "value": "7 of 12 columns, 541 px, 66 characters a line",
+          "value": "7 of 12 columns, 541 px, 64 characters a line",
           "token": "oa.layout.grid.desktop.columns"
         },
         {
           "label": "Tablet, 768 px",
-          "value": "6 of 8 columns, 522 px, 64 characters a line",
+          "value": "7 of 8 columns, 613 px, 73 characters a line",
           "token": "oa.layout.grid.tablet.columns"
         },
         {
@@ -228,7 +228,7 @@
         },
         {
           "label": "Small phone, 360 px",
-          "value": "4 of 4 columns, 328 px, 38 characters a line",
+          "value": "4 of 4 columns, 328 px, 37 characters a line",
           "token": "oa.layout.grid.phoneSmall.columns"
         },
         {
@@ -248,7 +248,7 @@
     },
     {
       "id": "07.4",
-      "title": "A heading sits closer to the text it introduces than to the block above.",
+      "title": "Set a heading closer to the text it introduces than to the block above.",
       "rule": [
         "Leave at least twice as much space above a heading as below it. Sections part by 80 px, a label sits 32 px below the block above it and 8 px above what it names, and paragraphs part by 16 px."
       ],
@@ -305,14 +305,14 @@
         "12"
       ],
       "builders": [
-        "Put the space on the heading’s top margin, never on the bottom of the block above it, so the gap moves with the heading wherever it lands."
+        "Put the space on the heading’s own top margin, so the gap moves with the heading wherever it lands."
       ]
     },
     {
       "id": "07.5",
-      "title": "Breakpoints are set in em, so larger text gets a narrower layout.",
+      "title": "Set breakpoints in em, so larger text gets fewer columns.",
       "rule": [
-        "Write media queries in em, which follows the reader’s text size: 90em for the wide layout, 64em for desktop and 48em for tablet, with the phone layout as the base. On a 1440 px screen, a reader at 150 percent text gets the tablet layout and a reader at 200 percent the phone layout, with fewer, wider columns for the larger words."
+        "A breakpoint is the window width where the layout changes, and an em is the reader’s text size, 16 px unless they change it. Write each breakpoint in em: 90em for the wide layout, 64em for desktop and 48em for tablet, with the phone layout as the base. On a 1440 px screen, a reader at 150 percent text gets the tablet layout and a reader at 200 percent the phone layout, with fewer, wider columns for the larger words."
       ],
       "tokens": [
         "oa.layout.breakpoint.wide",
@@ -321,7 +321,7 @@
       ],
       "why": {
         "text": [
-          "WCAG 2.2 success criterion 1.4.4 Resize Text asks that text reach 200 percent with nothing lost. A breakpoint in px ignores the reader’s text size, so doubled text crowds a layout drawn for smaller words: five columns at 1440 px hold about 28 characters of 34 px text a line. In em, the layout steps down as the text grows, and the measure cap in rem keeps the line length."
+          "WCAG 2.2 success criterion 1.4.4 Resize Text asks that text reach 200 percent with nothing lost. A breakpoint in px ignores the reader’s text size, so doubled text crowds a layout drawn for smaller words: five columns at 1440 px hold about 30 characters of 34 px text a line. In em, the layout steps down as the text grows, and the measure cap in rem keeps the line length."
         ],
         "basis": "WCAG 2.2 SC 1.4.4"
       },
@@ -331,7 +331,7 @@
       },
       "failure": {
         "specimen": "s-07-5-failure",
-        "caption": "<strong>Fails the measure at 200 percent.</strong> With breakpoints in px, a reader at 200 percent text keeps the wide layout, and body text at 34 px in a five-column span runs about 28 characters a line."
+        "caption": "<strong>Fails the measure at 200 percent.</strong> With breakpoints in px, a reader at 200 percent text keeps the wide layout, and body text at 34 px in a five-column span runs about 29 characters a line."
       },
       "specs": [
         {
@@ -365,7 +365,7 @@
     },
     {
       "id": "07.6",
-      "title": "Every page reads at 320 px wide, with nothing lost.",
+      "title": "Make every page read at 320 px wide, with nothing lost.",
       "rule": [
         "At 320 CSS px, the width of a small phone or a desktop window zoomed to 400 percent, a page shows all its content without scrolling sideways. Tables stack into one card per row. Only content that needs two dimensions, such as a wide data table or a specimen at true size, scrolls inside its own labeled frame."
       ],
@@ -414,7 +414,14 @@
       ]
     }
   ],
-  "extras": [],
+  "extras": [
+    {
+      "after_rule": "07.3",
+      "specimen": "s-07-spans",
+      "label": "Body span at each width",
+      "caption": "The body span at each width, measured with 7,000 characters of chapter 02’s prose in Inter at 17 px. Phones fall under 60 characters, which suits a small screen."
+    }
+  ],
   "sources": [
     "W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.4 and 1.4.10, https://www.w3.org/TR/WCAG22/."
   ]

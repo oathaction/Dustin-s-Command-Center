@@ -187,11 +187,11 @@ def s_06_2(ctx):
     cssa = (f'table{{width:100%;max-width:40rem;border-collapse:collapse;{ctx.ty("bodySmall")}}}'
             f'th,td{{text-align:left;padding:8px 16px 8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")};vertical-align:baseline}}'
             f'thead th{{{ctx.ty("label")};border-bottom-color:{v("oa.color.border.strong.onNewsprint")}}}'
-            f'tbody th{{{ctx.ty("ui")}}}td{{font-variant-numeric:tabular-nums}}'
+            f'tbody th{{{ctx.ty("ui")};white-space:nowrap}}td{{font-variant-numeric:tabular-nums}}'
             f'@container (max-width:30rem){{thead{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}'
             f'table,tbody,tr,th,td{{display:block}}tr{{padding:8px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
             f'th,td{{border:0;padding:0}}td::before{{content:attr(data-k) ": ";color:{sec}}}}}.wr{{container-type:inline-size}}')
-    heads = ['On a web page', 'Artboards up to 600 px', 'Artboards 1,200 px and up']
+    heads = ['On a web page', f'Artboard up to 600{C.NBSP}px', f'Artboard from 1,200{C.NBSP}px']
     out = []
     for r in trs:
         cells = r.split('<td>')
@@ -267,12 +267,13 @@ def s_06_4(ctx):
                f'.h{{margin:0;{ctx.ty("h3", "ceil")};letter-spacing:{tr}em;text-wrap:balance}}'
                f'.m{{margin:12px 0 0;{ctx.ty("dataLabel")};color:{sec}}}')
         lab = f'H3 at 32 px, {pct(tr)} tracking'
-        meas = f'Word space {sp:.1f} px · {pr["touching"]} of {pr["pairs"]} letter pairs touch'
+        verb = 'touches' if pr['touching'] == 1 else 'touch'
+        meas = f'Word space {sp:.1f} px · {pr["touching"]} of {pr["pairs"]} letter pairs {verb}'
         html = f'<style>{css}</style><p class="k">{lab}</p><p class="h">{PLATE_HEAD}</p><p class="m">{meas}</p>'
         ctx.spec(sid, html, '06', '06.4',
                  f'The heading {PLATE_HEAD} in Inter Tight 800 at 32 px with {pct(tr).replace(C.MINUS, "minus ")} '
                  f'tracking. A line below it reads: word space {sp:.1f} px, {pr["touching"]} of {pr["pairs"]} letter pairs '
-                 f'touch.',
+                 f'{verb}.',
                  notes='Set at 32 px, the H3 ceiling. Word space and touching pairs measured in Chromium with the Google '
                        'Fonts files the page loads, at this tracking.')
     return out
@@ -386,7 +387,6 @@ def s_06_9(ctx):
         hfam = 'var(--oa-font-family-email-sans)' if good else '"Inter Tight Unavailable", serif'
         css = (f'.em{{background:{v("oa.color.surface.white")};color:{v(W)};padding:32px 24px;max-width:600px}}'
                f'.mh{{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid {v("oa.color.border.hairline.onWhite")}}}'
-               f'.mh .illus{{margin:0;font-family:var(--oa-font-family-email-sans)}}'
                f'.h{{margin:24px 0 0;font-family:{hfam};font-weight:700;font-size:1.625rem;line-height:1.08}}'
                f'.b{{margin:16px 0 0;font-family:var(--oa-font-family-email-sans);font-size:1.0625rem;line-height:1.6}}'
                f'.q{{margin:24px 0 0;font-family:var(--oa-font-family-email-quote);font-style:italic;font-size:1.5rem;line-height:1.3}}')
@@ -634,7 +634,7 @@ def build(ctx):
                 'correct': {'specimen': 's-06-4-correct',
                             'caption': f'An H3 at true size, 32 px with {pct(trk["h3"])} tracking. Its word spaces measure '
                                        f'{sp_tok:.1f} px, and {C.num(pr_tok.get("touching", 0))} of its {pr_tok.get("pairs", 0)} '
-                                       f'letter pairs touch'
+                                       f'letter pairs {"touches" if pr_tok.get("touching") == 1 else "touch"}'
                                        + (', where the arm of an r meets its neighbor.' if all_r else '.')},
                 'failure': {'specimen': 's-06-4-failure',
                             'caption': f'<strong>Fails the tracking scale.</strong> The same heading at {pct(DRAFT_H3)}, the '
@@ -777,8 +777,8 @@ def build(ctx):
                                        'headline in Helvetica or Arial at 26 px, the H3 floor, and the quote in Georgia Italic '
                                        'at 24 px, the quote floor.'},
                 'failure': {'specimen': 's-06-9-failure',
-                            'caption': '<strong>Fails the email rule.</strong> The headline set in Inter Tight, as a mail app '
-                                       'shows it when the web font does not load: in the app’s default serif.'},
+                            'caption': '<strong>Fails the email rule.</strong> The headline set in Inter Tight, which a mail '
+                                       'app that cannot load the web font shows in its own default serif.'},
                 'specs': [
                     {'label': 'Headlines and body', 'value': 'Helvetica, Arial, sans-serif', 'token': 'oa.font.family.emailSans'},
                     {'label': 'Quotation', 'value': 'Georgia, serif, italic', 'token': 'oa.font.family.emailQuote'},

@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import guide_editor_ch01 as ch01  # noqa: E402
 import guide_editor_ch02 as ch02  # noqa: E402
-from guide_editor_common import (CHAPTERS, LOCKED, ROOT, SPECIMENS, VOICE_CONTENT, VOICE_LINE_B, Book, curl, load,  # noqa: E402
+from guide_editor_common import (ALLOWED_REM, LOCKED, ROOT, VOICE_CONTENT, VOICE_LINE_B, Book, curl, load,  # noqa: E402
                                  plain, write_chapter)
 
 FILLERS = ["genuinely", "really", "truly", "actually", "simply", "leverage", "underscore", "reflect"]
@@ -65,7 +65,7 @@ def tokens_known():
     return names
 
 
-def check(chapters, book):
+def check(chapters, book, house):
     fails, notes = [], []
     texts = {}
     for c in chapters:
@@ -107,11 +107,12 @@ def check(chapters, book):
     # 3. bare record codes (H11): decision and question codes never print in reader-facing text
     for k, t in texts.items():
         for m in re.finditer(r"\b(DR|D[012]|G1|DC|Q|C|S|I|Y|M|T|NP)-\d{1,3}\b", t):
-            if m.group(1) in ("R",):
-                continue
             fails.append(f"bare record code {m.group(0)} in {k}")
-        for m in re.finditer(r"(?<![\w-])(?<!Loop )(?<!Rule )\b(V7|V5|V4\.2)\b", t):
-            fails.append(f"internal edition code {m.group(0)} in {k}")
+        for m in re.finditer(r"(?<![\w-])(?<!Loop )(?<!Rule )\b(V7|V5|V4\.2|R9|R13|I6|I8|S5|S9)\b", t):
+            fails.append(f"internal code {m.group(0)} in {k}")
+        # D2-253: studio words never reach a reader
+        for m in re.finditer(r"Master Brief|\bPhase \d|\bPhase\b|\bGate \d|\bGate\b|Board 5|stage board|the studio|Atlas V7|later stage", t):
+            fails.append(f"studio word {m.group(0)!r} in {k}")
 
     # 4. fillers and corporate words, outside the rules and sheets that name them as the words to cut
     allowed = {"s-02-17-pair", "s-02-17-fault", "s-02-18-pair", "s-02-18-fault", "s-02-26-correct", "s-02-26-failure",
@@ -155,7 +156,7 @@ def check(chapters, book):
                         fails.append(f"{r['id']} {key} missing from the output")
             if r.get("source_line") and r["source_line"] not in blob:
                 fails.append(f"{r['id']} source line missing")
-    for h in C["house_rules"]:
+    for h in house:
         for key in ("name", "rule", "example_source", "example_before_source"):
             v = curl(h.get(key) or "")
             if v and v not in blob:
@@ -172,7 +173,7 @@ def check(chapters, book):
     for qq in C["checklist"]:
         if curl(qq) not in blob:
             fails.append(f"checklist question missing: {qq[:50]}")
-    for k in ("title", "deck", "scope", "sources_note", "rule_index_intro"):
+    for k in ("title", "deck", "scope", "sources_note"):
         if curl(C[k]) not in blob:
             fails.append(f"writing section {k} missing")
     for p in C["narrative"]:
@@ -199,6 +200,15 @@ def check(chapters, book):
             fails.append(f"{sid}: a literal color")
         if re.search(r"<h[1-6]\b", html):
             fails.append(f"{sid}: a heading element")
+        if re.search(r"<(nav|article|header|footer|main|aside|section|form)\b|role=\"(navigation|main|banner|contentinfo|region|complementary|article)\"", html):
+            fails.append(f"{sid}: a landmark or article element (AX-S8)")
+        for m in re.finditer(r"font(?:-size)?\s*:[^;}]*?([\d.]+)rem", html):
+            if float(m.group(1)) not in ALLOWED_REM:
+                fails.append(f"{sid}: a font size of {m.group(1)}rem, off the D2-254 scale")
+        if re.search(r"font(?:-size)?\s*:[^;}]*clamp\(", html):
+            fails.append(f"{sid}: a fluid font size written by hand")
+        if re.search(r"class=\"ill\"|\.ill\b", html):
+            fails.append(f"{sid}: an Illustrative label in a form other than the shell's (DR-97)")
 
     # 8. tokens named in the chapters exist
     known = tokens_known()
@@ -237,8 +247,8 @@ def check(chapters, book):
 def main():
     book = Book("editor")
     c1 = ch01.build(book)
-    c2 = ch02.build(book)
-    fails, notes = check([c1, c2], book)
+    c2, house = ch02.build(book)
+    fails, notes = check([c1, c2], book, house)
     for n in notes:
         print("note:", n)
     if fails:

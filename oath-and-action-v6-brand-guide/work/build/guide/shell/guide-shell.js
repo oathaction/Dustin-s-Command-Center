@@ -1,8 +1,10 @@
 // Oath & Action Brand Guide, Edition 06: the guide shell's script. guide_build.py inlines it at the end of the page.
 // Built from the Gate 1 wireframe's interaction model (work/boards/phase-1/navigation/wireframe.js):
-// marks the current part, chapter and rule; moves focus to the heading a link lands on; offers a way back after a
-// cross-reference; runs the phone menu as a modal dialog; makes a specimen frame a keyboard-scrollable region only when
-// its true-size specimen is wider than the screen; and drives the Copy buttons with a status line.
+// marks the current part, chapter and rule; moves focus to the heading a link lands on (or to the target itself when it
+// holds none); offers a way back after a cross-reference, right after the heading that took focus; runs the phone menu
+// as a modal dialog; makes a specimen frame or code block a named, keyboard-scrollable group only while it overflows;
+// switches wide comparison frames between true size and fit to window; hides the rail once the full-width appendix
+// reaches it; and drives the Copy buttons with a status line. Fix pass, November 6, 2026: AX-S1, AX-S3, AX-S11, AX-S12, D2-251.
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -16,6 +18,7 @@
   var menu = $('#menu');
   var menuBtn = $('#menubtn');
   var menuScroll = $('.menu-scroll');
+  var appendix = $('#proofs');
   var current = null, currentRule = null;
   var pinnedUntil = 0;
   var pendingReturn = null;
@@ -56,6 +59,15 @@
     if (cur && chapter) { var a = $('.local-toc a[href="#' + cur.id + '"]', chapter); if (a) a.setAttribute('aria-current', 'true'); }
   }
 
+  // From 90em the appendix spans the whole page and slides over the rail; once it reaches the rail, the rail is hidden,
+  // so no link under the appendix can take focus out of sight.
+  function railCover() {
+    if (!rail || !appendix) return;
+    var wide = window.matchMedia('(min-width: 90em)').matches;
+    var covered = wide && appendix.getBoundingClientRect().top < rail.getBoundingClientRect().bottom;
+    rail.classList.toggle('is-covered', covered);
+  }
+
   // The current section is the last one whose top has passed a line a quarter of the way down the window.
   function compute() {
     var line = header.getBoundingClientRect().bottom + window.innerHeight * 0.25;
@@ -70,6 +82,7 @@
     ticking = true;
     requestAnimationFrame(function () {
       ticking = false;
+      railCover();
       var wait = pinnedUntil - Date.now();
       if (wait > 0) { clearTimeout(pinTimer); pinTimer = setTimeout(function () { setCurrent(compute()); }, wait + 20); return; }
       setCurrent(compute());
@@ -80,12 +93,12 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.xref');
     if (!a) return;
-    var origin = a.closest('.rule[id], .closer[id], [data-track]');
+    var origin = a.closest('.rule[id], .closer[id], .rule-group[id], [data-track]');
     var sec = sectionFor(a);
     if (!origin || !sec) return;
     var what = '';
     if (!origin.matches('[data-track]')) {
-      var h = origin.querySelector('h3');
+      var h = origin.querySelector('h3, .rg-head');
       what = h ? h.textContent.replace(/\s+/g, ' ').trim().replace(/[.:]$/, '') : '';
     }
     pendingReturn = { id: origin.id, label: (what ? what + ', ' : '') + sec.getAttribute('data-label') };
@@ -101,12 +114,16 @@
     var host = target.classList.contains('alias') ? target.parentElement : target;
     var sec = sectionFor(host);
     if (sec) { setCurrent(sec); pinnedUntil = Date.now() + 600; }
-    // Focus moves to the heading the link points at, so the next Tab continues from there.
+    // Focus moves to the heading the link points at, so the next Tab continues from there. A target with no heading
+    // (a group block, a table row inside a specimen) takes focus itself (AX-S11).
     var h = host.matches('h1, h2, h3') ? host : host.querySelector('h1, h2, h3');
     if (host.id === 'main') h = host;
+    if (!h && host !== document.body) h = host;
     if (h) { if (!h.hasAttribute('tabindex')) h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
     if (pendingReturn && sec && pendingReturn.id !== id) {
-      var slot = $('.return', sec);
+      // the way back sits right after the heading that took focus, so the next Tab reaches it (AX-S1)
+      var own = host.matches('.rule, .closer, .rule-group, .proof-group') ? host.querySelector(':scope > .return') : null;
+      var slot = own || $('.return', sec);
       if (slot) {
         var back = document.createElement('a');
         back.href = '#' + pendingReturn.id;
@@ -150,35 +167,60 @@
     window.addEventListener('resize', function () { if (menu.open && window.matchMedia('(min-width: 64em)').matches) menu.close(); });
   }
 
-  // A frame whose true-size specimen or table is wider than the screen becomes a named, focusable region, so a
-  // keyboard can scroll it; a frame that fits stays out of the Tab order.
+  // A frame or code block that overflows becomes a focusable group named for what it holds, so a keyboard can scroll
+  // it; one that fits stays out of the Tab order (AX-S3). Groups stay out of the landmark list. A plate that scrolls
+  // shows its hint in the plate head, before the specimen (AX-S12).
   function frames() {
     $$('[data-plate-scroll]').forEach(function (box) {
       var wide = box.scrollWidth > box.clientWidth + 1;
+      var tall = box.matches('pre') && box.scrollHeight > box.clientHeight + 1;
       var fig = box.closest('.plate');
-      if (fig) fig.classList.toggle('is-wide', wide);
-      if (wide) {
-        if (!box.hasAttribute('tabindex')) {
-          var stage = box.querySelector('[data-specimen]');
-          var cap = box.querySelector('caption');
-          var name = stage ? 'Specimen at true size, wider than the screen. Scroll sideways.' : (cap ? cap.textContent + '. Scroll sideways.' : 'Wide table. Scroll sideways.');
-          box.setAttribute('tabindex', '0');
-          box.setAttribute('role', 'region');
-          box.setAttribute('aria-label', name);
-        }
-        if (fig && !fig.querySelector('.plate-hint')) {
-          var hint = document.createElement('p');
-          hint.className = 'plate-hint';
-          hint.textContent = 'Shown at true size, wider than this screen. Scroll the frame sideways to see all of it.';
-          box.insertAdjacentElement('afterend', hint);
-        }
-      } else if (box.getAttribute('role') === 'region') {
-        box.removeAttribute('tabindex'); box.removeAttribute('role'); box.removeAttribute('aria-label');
+      if (fig) {
+        fig.classList.toggle('is-wide', wide);
+        var hint = $('.plate-hint', fig);
+        if (hint) hint.hidden = !wide;
+      }
+      var name = box.getAttribute('data-frame-name') || 'Frame';
+      if (wide || tall) {
+        box.setAttribute('tabindex', '0');
+        box.setAttribute('role', 'group');
+        box.setAttribute('aria-label', fig ? name + ', at true size. Scroll sideways to see all of it.' : name + '. Scroll to see all of it.');
+      } else if (box.hasAttribute('tabindex')) {
+        ['tabindex', 'role', 'aria-label'].forEach(function (k) { box.removeAttribute(k); });
       }
     });
   }
+
+  // True size or fit to window, for the wide comparison frames (D2-251). True size is the default; fit scales the whole
+  // stage to the frame's inner width and says by how much.
+  function applyFit(fig) {
+    var box = $('.plate-scroll', fig), wrap = $('.plate-fit', fig), stage = $('.plate-stage', fig), size = $('.plate-size', fig);
+    if (!box || !wrap || !stage) return;
+    var on = fig.getAttribute('data-fit') === 'fit';
+    stage.style.transform = ''; stage.style.transformOrigin = ''; wrap.style.width = ''; wrap.style.height = '';
+    var cs = getComputedStyle(box);
+    var avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var w = stage.offsetWidth, hgt = stage.offsetHeight;
+    var s = on ? Math.min(1, avail / w) : 1;
+    if (on && s < 1) {
+      stage.style.transformOrigin = '0 0'; stage.style.transform = 'scale(' + s + ')';
+      wrap.style.width = (w * s) + 'px'; wrap.style.height = (hgt * s) + 'px';
+    }
+    if (size) size.textContent = on ? (s < 1 ? 'Fit to window, ' + Math.round(s * 100) + ' percent of true size' : 'Fits at true size, ' + w.toLocaleString('en-US') + ' px wide') : size.getAttribute('data-true');
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.fit-btn');
+    if (!b) return;
+    var fig = b.closest('.plate');
+    fig.setAttribute('data-fit', b.getAttribute('data-fit'));
+    $$('.fit-btn', fig).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    applyFit(fig); frames();
+  });
   var rt = null;
-  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(frames, 120); });
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { $$('.plate--fit[data-fit="fit"]').forEach(applyFit); frames(); railCover(); }, 120);
+  });
 
   // Copy buttons write their result to the status line beside them (a polite live region).
   document.addEventListener('click', function (e) {
@@ -205,6 +247,7 @@
 
   function start() {
     frames();
+    railCover();
     if (location.hash) onHash(); else setCurrent(compute());
   }
   start();

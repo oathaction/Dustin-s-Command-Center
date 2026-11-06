@@ -38,6 +38,8 @@ def _load(name):
 
 
 C = _load('stage_a_systems_core')
+# the chapter modules read the shared constants below as stage_a_systems_build, whether this file runs as a script or not
+sys.modules.setdefault('stage_a_systems_build', sys.modules[__name__])
 ROOT = C.ROOT
 OUT_CH = ROOT / 'work/build/guide/chapters'
 OUT_SP = ROOT / 'work/build/guide/specimens'

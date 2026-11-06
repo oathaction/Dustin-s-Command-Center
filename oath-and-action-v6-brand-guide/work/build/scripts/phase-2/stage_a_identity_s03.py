@@ -61,7 +61,7 @@ def l3_small(master16or24=24, width="today", surface="newsprint", label="Oath & 
         lk = mark(LOCK[24], h=34, surface=surface, decorative=True)
         gap, top = 8, -9
     pad = "0" if hang else f"{-top}px 0"
-    lk_style = f"margin-top:{top}px;margin-bottom:{top}px" if hang else f"margin-top:{top}px"
+    lk_style = f"display:block;line-height:0;margin-top:{top}px;margin-bottom:{top}px"   # centered on the wordmark's box, hanging equally above and below
     return (f'<span class="oai-l3" role="img" aria-label="{E(label)}" style="display:inline-flex;align-items:flex-start;gap:{gap}px;'
             f'padding:{pad}">{wm}<span style="{lk_style}">{lk}</span></span>')
 
@@ -485,7 +485,7 @@ def _hair(surface="newsprint"):
 
 
 def _partner_name():
-    return f'<span style="font:600 24px/1.1 var(--oa-font-family-reading);max-width:15ch">Merrimack Valley Civic Lab</span>'
+    return f'<span style="font:600 24px/1.1 var(--oa-font-family-reading);white-space:nowrap">Merrimack Valley Civic Lab</span>'
 
 
 def _plock(host="us"):
@@ -504,7 +504,7 @@ def s_03_8_correct():
     alt = ("Two partnership lockups at true size. In the first, for a piece Oath & Action hosts, the wordmark 32 pixels tall "
            "leads, then a vertical hairline, then the partner name Merrimack Valley Civic Lab. In the second, for a piece the "
            "partner hosts, the partner name leads and the wordmark follows the hairline. The partner is invented, Illustrative.")
-    return rec("s-03-8-correct", "03.8", 620, alt, body, illustrative=True,
+    return rec("s-03-8-correct", "03.8", 760, alt, body, illustrative=True,
                notes="Merrimack Valley Civic Lab is V5's invented partner (Q-01), labeled beside each lockup. Hairline 1.2x tall, "
                      "0.6x of space on each side (x = 29.3 px). The host's name leads (DR-102).")
 

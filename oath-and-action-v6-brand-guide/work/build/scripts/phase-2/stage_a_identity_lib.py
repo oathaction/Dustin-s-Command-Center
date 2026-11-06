@@ -181,6 +181,7 @@ def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, de
         return out
     s = path.read_text()
     s = re.sub(r"<\?xml[^>]*\?>\s*", "", s).strip()
+    s = re.sub(r"<(title|desc)\b[^>]*>.*?</\1>", "", s, flags=re.S)   # the file's record notes stay in the file
     m = re.match(r"<svg\b([^>]*)>", s)
     attrs = m.group(1)
     vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', attrs).group(1).replace(",", " ").split()]
@@ -463,7 +464,7 @@ CSS = """
 .oai-s-white .oai-tag{color:var(--oa-color-text-secondary-on-white)}
 .oai-s-charcoal .oai-tag{color:var(--oa-color-text-secondary-on-charcoal)}
 .oai-s-prussian .oai-tag{color:var(--oa-color-text-secondary-on-prussian)}
-.oai-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;margin:0 0 12px}
+.oai .oai-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;margin:0 0 12px}
 .oai-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;padding-bottom:4px}
 .oai-scroll:focus-visible{outline:2px solid var(--oa-color-focus-ring-on-newsprint);outline-offset:2px}
 .oai-note{font-size:14px;color:var(--oa-color-text-secondary-on-newsprint);max-width:62ch}
@@ -503,6 +504,7 @@ def inline_master(relpath, h, style=""):
     """A master's SVG text, for a standalone page that no build inlines (rasters, the letterhead PDF)."""
     s = (ID_DIR / relpath).read_text()
     s = re.sub(r"<\?xml[^>]*\?>\s*", "", s).strip()
+    s = re.sub(r"<(title|desc)\b[^>]*>.*?</\1>", "", s, flags=re.S)
     vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', s).group(1).replace(",", " ").split()]
     w = h * vb[2] / vb[3]
     s = re.sub(r"<svg\b([^>]*)>", lambda m: "<svg" + re.sub(r'\s(width|height|style)="[^"]*"', "", m.group(1))

@@ -17,16 +17,16 @@
     "oa.color.identity.signature.onNewsprint"
    ],
    "why": {
-    "text": "B’s strokes swell and thin at 1.74 to 1, so the glyph keeps its color beside the heavy capitals, and its waist crossing sits on the center line that the hinge diagram draws through its nodes. The small masters sit on the pixel grid: at 16 px, 66 percent of B’s ink pixels are solid, where Edition 05’s scaled glyph reached 48 percent.",
-    "basis": "Design judgment, measured in Chromium (Identity masters notes, October 28, 2026)"
+    "text": "B’s strokes swell and thin at 1.74 to 1, so the glyph keeps its color beside the heavy capitals, and its waist crossing sits on the center line that the hinge diagram draws through its nodes. The small masters sit on the pixel grid: at 16 px, 66 percent of B’s ink pixels are solid, where the glyph in our brand guide’s fifth edition reached 48 percent.",
+    "basis": "Our measurements, October 2026"
    },
    "correct": {
     "specimen": "s-04-1-correct",
-    "caption": "B at true size: the display master at 160 and 48 px, the 24 px master and the 16 px master, and the 16 px master enlarged four times over its pixel grid."
+    "caption": "B at true size on one baseline: the display master at 160 and 48 px, the 24 px master and the 16 px master. Below, enlarged four times, the 16 px master as the browser draws it in pixels, and its outline on the pixel grid."
    },
    "failure": {
     "specimen": "s-04-1-failure",
-    "caption": "Edition 05’s ampersand, placed from an old file. It is Lora Bold’s glyph, which anyone with Lora can type, and it has no beak."
+    "caption": "Our fifth edition’s ampersand, placed from an old file. It is Lora Bold’s glyph, which anyone with Lora can type, and it has no beak."
    },
    "specs": [
     {
@@ -65,7 +65,7 @@
     "17",
     "27"
    ],
-   "builders": "The ampersand files draw in <code>currentColor</code>, so set <code>color</code> to the surface’s signature token. Edition 05’s <code>OA_Amp_Master.svg</code> holds the Lora glyph; retire it from your templates."
+   "builders": "The ampersand files draw in <code>currentColor</code>, so set <code>color</code> to the surface’s signature token. Our fifth edition’s <code>OA_Amp_Master.svg</code> holds the Lora glyph; retire it from your templates."
   },
   {
    "id": "04.2",
@@ -78,7 +78,7 @@
    },
    "correct": {
     "specimen": "s-04-2-correct",
-    "caption": "A link card at 480 by 252 px, the size a feed shows it, with one hinge headline and the wordmark at its foot."
+    "caption": "A link card at 358 by 188 px, the size a phone feed shows it, with one hinge headline and the wordmark at its foot."
    },
    "failure": {
     "specimen": "s-04-2-failure",
@@ -104,18 +104,18 @@
   {
    "id": "04.3",
    "title": "Join a rule to its result with a hinge headline, and give its ampersand the view’s working red.",
-   "rule": "A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.” B takes the view’s working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline’s ink.",
+   "rule": "A hinge headline joins two noun phrases with B, as in “The zoning code & the rent.” B takes the view’s working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline’s ink. Rule 02.27 sets how to write one, and Rules 01.18 to 01.20 set when to use one.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.action.ask.fill.onNewsprint"
    ],
    "why": {
     "text": "The headline names a mechanism in five or six words, and the red ampersand marks the joint. Rule 05.3 ranks an error first and the step a reader can take now second, so on an Act piece with a red button the step keeps the red.",
-    "basis": "Rule 05.3 (D2-01, DR-66); G1-05"
+    "basis": "Rule 05.3, the red rule"
    },
    "correct": {
     "specimen": "s-04-3-correct",
-    "caption": "Hinge headlines at three scales, at true size: 64, 40 and 24 px. Each B comes from the master whose range holds that cap height."
+    "caption": "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height."
    },
    "failure": {
     "specimen": "s-04-3-failure",
@@ -135,6 +135,10 @@
      "value": "Its baseline on the text’s baseline, a word space on each side"
     },
     {
+     "label": "Line break",
+     "value": "At the hinge, so B leads the second line and each phrase stays whole"
+    },
+    {
      "label": "Master",
      "value": "16 px master under 22 px capitals, 24 px master to 46 px, display above"
     }
@@ -145,7 +149,7 @@
     "05",
     "06"
    ],
-   "builders": "Set B as an inline image, not a font glyph, and keep it with the second phrase so a line break never strands it.",
+   "builders": "Set B as an inline image of its master, joined to the second phrase with no-break spaces, so a line break falls at the hinge.",
    "corrective": {
     "specimen": "s-04-3-corrective",
     "caption": "The same card with B in Charcoal. The button keeps the red, so the step to take is the one red mark."
@@ -154,7 +158,7 @@
   {
    "id": "04.4",
    "title": "Set a hinge divider between how a decision is made and what you can do about it.",
-   "rule": "The hinge divider is a 1 px hairline broken by a small B, drawn whole in the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
+   "rule": "The hinge divider centers B’s 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
    "tokens": [
     "oa.color.identity.hingeDivider.onNewsprint",
     "oa.color.identity.hingeDivider.onCharcoal",
@@ -162,7 +166,7 @@
    ],
    "why": {
     "text": "The divider marks the turn from how a decision is made to the step a reader can take, the same turn the ampersand makes in our name. In ink it stays quiet, and the view’s one working red stays free for the step itself.",
-    "basis": "Rule 05.3; D1-22"
+    "basis": "Rule 05.3, the red rule; Design judgment"
    },
    "correct": {
     "specimen": "s-04-4-correct",
@@ -170,21 +174,21 @@
    },
    "failure": {
     "specimen": "s-04-4-failure",
-    "caption": "Edition 05’s divider, with a red ampersand, above a red button. The divider spends the view’s red, and two red marks compete for the step."
+    "caption": "Our fifth edition’s divider, with a red ampersand, above a red button. The divider spends the view’s red, and two red marks compete for the step."
    },
    "specs": [
     {
+     "label": "Ampersand",
+     "value": "B’s 24 px master at 24 px, at the center of the line"
+    },
+    {
      "label": "Line",
-     "value": "1 px, in the same ink as the ampersand",
+     "value": "1 px, as wide as the text block it divides, in the same ink as B",
      "token": "oa.color.identity.hingeDivider.onNewsprint"
     },
     {
-     "label": "Ampersand",
-     "value": "B’s 24 px master at 24 px"
-    },
-    {
      "label": "Space",
-     "value": "12 px on each side of B",
+     "value": "12 px of clear line on each side of B",
      "token": "oa.space.150"
     },
     {
@@ -200,19 +204,19 @@
     "12",
     "02"
    ],
-   "builders": "This guide draws the divider between each rule and its correct use; copy its markup from any rule above."
+   "builders": "Draw the line as two flexible halves with B between them, so B stays centered at any width. This guide draws the same divider between each rule and its correct use."
   },
   {
    "id": "04.5",
    "title": "Show the hinge diagram on its own, to explain the idea.",
-   "rule": "The hinge diagram draws OATH and ACTION on a line with four nodes, B in a ring between them, two solid arcs running clockwise, and UNDERSTAND and IMPACT beneath. Keep it out of any view that holds the wordmark or a figure with a key, and use the divider where a page needs a break.",
+   "rule": "The hinge diagram draws OATH and ACTION on a line with four nodes, B in a ring between them, two solid arcs running clockwise, and UNDERSTAND and IMPACT beneath. Draw its lines solid, give it words alone, and keep it out of any view that holds the wordmark, the badge or a figure with a key. Where a page needs a break, use the divider.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.graphic.subtle.onNewsprint"
    ],
    "why": {
-    "text": "The diagram teaches the brand’s idea in one picture: a promise becomes action, and the result shapes the next promise. Its arcs are solid because Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. It carries words alone, with no ID, sign, grade, delay or count, so no reader takes it for one of the atlas’s loops.",
-    "basis": "Design judgment; the five separation rules approved with I6 (G1-01)"
+    "text": "The diagram teaches the brand’s idea in one picture: a promise becomes action, and the result shapes the next promise. Its arcs are solid because our systems atlas draws a hypothesis as a dotted line and a plausible link as a dashed one. It carries words alone, with no ID, sign, grade, delay or count, so no reader takes it for one of the atlas’s loops.",
+    "basis": "Design judgment"
    },
    "correct": {
     "specimen": "s-04-5-correct",
@@ -258,13 +262,13 @@
   {
    "id": "04.6",
    "title": "Use the hinge-circle badge only to close a piece, on a back cover or at events.",
-   "rule": "The badge is B inside the hinge diagram’s ring, with no words. It ends an article or a report and marks event materials. Keep it away from avatars and favicons, from candidates and ballots, and from any view with the wordmark or the hinge diagram, and add no words or dates to it.",
+   "rule": "The badge is B inside the hinge diagram’s ring, with no words. It ends an article or a report and marks event materials. Keep it off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement. Keep it away from avatars, favicons and any view with the wordmark or the hinge diagram, and add no words or dates to it.",
    "tokens": [
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "A ring of words and a founding date turn a badge into a seal, and Edition 05 put the reason plainly: “Seals imply an authority we do not claim.” A wordless badge closes a piece the way a period closes a sentence.",
-    "basis": "Design judgment; the badge's three conditions (S9, G1-02)"
+    "text": "A ring of words and a founding date turn a badge into a seal, and our fifth edition put the reason plainly: “Seals imply an authority we do not claim.” A wordless badge closes a piece the way a period closes a sentence.",
+    "basis": "Design judgment"
    },
    "correct": {
     "specimen": "s-04-6-correct",
@@ -315,8 +319,8 @@
     "oa.component.appIcon.tile"
    ],
    "why": {
-    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal holds Pillar Red at 4.49:1, the strongest red of any approved surface, and stays visible on light and dark app themes (R13).",
-    "basis": "R13 (DR-67); WCAG 2.2 SC 1.4.11; Design judgment for the feed sizes"
+    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49:1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
+    "basis": "WCAG 2.2 SC 1.4.11; Design judgment for the feed sizes"
    },
    "correct": {
     "specimen": "s-04-7-correct",
@@ -415,6 +419,6 @@
  ],
  "extras": [],
  "sources": [
-  "Oath & Action Brand Guide, Edition 05, chapter 04 The Ampersand, “Seal and emboss”. Quoted in Rule 04.6."
+  "Oath & Action Brand Guide, fifth edition, chapter 04 The Ampersand, “Seal and emboss”. Quoted in Rule 04.6."
  ]
 }

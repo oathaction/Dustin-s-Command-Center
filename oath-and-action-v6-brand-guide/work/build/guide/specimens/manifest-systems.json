@@ -3,7 +3,7 @@
   "chapter": "05",
   "rule": "05.1",
   "width_px": 360,
-  "alt": "A phone page at 360 px on Newsprint: the wordmark and a Menu button, the label Explain, Local schools, the headline The school board votes on the new bell schedule April 14, two lines of body text, a hinge divider, a Prussian panel listing what happens next on April 10 and April 14, a red Sign up to speak button with a Charcoal edge, and an Illustrative note. Below it, a bar of the page’s measured color shares, with Newsprint the largest.",
+  "alt": "An Illustrative phone page at 360 px on Newsprint: the wordmark and a Menu button, the kicker Explainer, Local schools, the headline The school board votes on the new bell schedule April 14, three short paragraphs, a hinge divider, a Charcoal panel listing what happens next on April 10 and April 14, and below it on Newsprint a red Sign up to speak button with a Charcoal edge. Below the page, a bar of its measured color shares: Newsprint 76 percent, Charcoal 18, Stone 3 and Pillar Red 3.",
   "illustrative": true,
   "notes": "Shares measured from a 1x Chromium render of the page, each pixel assigned to its nearest palette color; Deep Stone counts as Stone and Dim Newsprint as Newsprint."
  },
@@ -11,7 +11,7 @@
   "chapter": "05",
   "rule": "05.1",
   "width_px": 360,
-  "alt": "The same phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares, with Newsprint a small part.",
+  "alt": "The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint 10 percent, Charcoal 62 and Prussian 24.",
   "illustrative": true,
   "notes": "A labeled failure: the proportion fails, every text pair still passes."
  },
@@ -19,7 +19,7 @@
   "chapter": "05",
   "rule": "05.2",
   "width_px": null,
-  "alt": "Four tiles, one per surface, each with the same short article: a label, the headline Who sets the library’s hours?, two sentences of body text, an Illustrative note and its measured ratios. Newsprint: primary text 13.29 to 1, secondary text 5.49 to 1. White: primary text 18.73 to 1, secondary text 7.74 to 1. Charcoal: primary text 13.29 to 1, secondary text 7.26 to 1. Prussian: primary text 13.28 to 1, secondary text 5.14 to 1.",
+  "alt": "Four tiles, one per surface, each with the same Illustrative short article: the kicker Explainer, Local budgets, the headline Who sets the library’s hours?, two sentences of body text, a caption and its measured ratios. Newsprint: primary text 13.29 to 1, secondary text 5.49 to 1. White: primary text 18.73 to 1, secondary text 7.74 to 1. Charcoal: primary text 13.29 to 1, secondary text 7.26 to 1. Prussian: primary text 13.28 to 1, secondary text 5.14 to 1.",
   "illustrative": true,
   "notes": "Fluid grid of four surface tiles. Each tile is its own surface; ratios from tokens.json."
  },
@@ -27,7 +27,7 @@
   "chapter": "05",
   "rule": "05.2",
   "width_px": 360,
-  "alt": "The Newsprint tile with its label, caption and ratio line in Stone, measured at 4.29 to 1, and a link, Read the hearing notice, in Pillar Red at 14 px, measured at 2.96 to 1.",
+  "alt": "The Newsprint tile, labeled Illustrative, with its kicker, caption and ratio line in Stone, measured at 4.29 to 1, and a link, Read the hearing notice, in Pillar Red at 14 px, measured at 2.96 to 1.",
   "illustrative": true,
   "notes": "A labeled failure case: its small text fails 4.5 to 1 on purpose.",
   "check_exempt": [
@@ -38,7 +38,7 @@
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "A phone page at 360 px on Newsprint: the wordmark with its red ampersand, the school board headline, body text, a hinge divider with a Charcoal ampersand, a Prussian panel of dates, and one red button, Sign up to speak, with a Charcoal edge.",
+  "alt": "An Illustrative phone page at 360 px on Newsprint: the wordmark with its red ampersand, the school board headline, body text, a hinge divider with a Charcoal ampersand, a Charcoal panel of dates, and one red button, Sign up to speak, with a Charcoal edge.",
   "illustrative": true,
   "notes": "Signature red: the wordmark ampersand. Working red: the ask, precedence 2."
  },
@@ -46,7 +46,7 @@
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "The same phone page with an email field in its error state: a red bar on the field, a message on a pale red band that reads Error: Enter an email address so the clerk can confirm your time to speak, a red error glyph, and below it the Sign up to speak button in Charcoal with a White label.",
+  "alt": "The same Illustrative phone page with an email field in its error state: a red bar on the field, a message on a pale red band that reads Error: Enter an email address so the clerk can confirm your time to speak, a red error glyph, and below it the Sign up to speak button in Charcoal with a White label.",
   "illustrative": true,
   "notes": "The error takes the working red (precedence 1); the ask steps down to the primary button."
  },
@@ -54,7 +54,7 @@
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "The same phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
+  "alt": "The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
   "illustrative": true,
   "notes": "A labeled failure case: red date text at 28 px fails 3 to 1 on purpose.",
   "check_exempt": [
@@ -66,7 +66,7 @@
   "chapter": "05",
   "rule": "05.4",
   "width_px": null,
-  "alt": "Ten interface states on Newsprint, each with a sample and its cue: Hover: The fill steps from Charcoal to Prussian and the label underlines. Focus: A 2 px Verdigris ring with a 2 px gap, shown at once. Disabled: A dashed edge, readable text and a line that says what makes it available. Loading: A still outline and the words that say what is loading. Selected: The paired surface, a 4 px bar and a check. Muted: Regular weight and an outline mark. Warning: A triangle, the word Warning and a 4 px bar. Warning has no hue of its own. Error: The word Error, a glyph and the fix in plain words, on the Error Band. Empty: A dashed region that says what is missing and what to do next. Success: A Verdigris check and a word such as Saved.",
+  "alt": "Ten interface states on Newsprint, labeled Illustrative, each with a sample and its cue: Hover: The fill steps from Charcoal to Prussian and the label underlines. Focus: A 2 px Verdigris ring with a 2 px gap, shown at once. Disabled: A dashed edge, readable text and a line that says what makes it available. Loading: A still outline and the words that say what is loading. Selected: The paired surface, a 4 px bar and a check. Muted: Regular weight and an outline mark. Warning: A triangle, the word Warning and a 4 px bar. Warning has no hue of its own. Error: The word Error, a glyph and the fix in plain words, on the Error Band. Empty: A dashed region that says what is missing and what to do next. Success: A Verdigris check and a word such as Saved.",
   "illustrative": true,
   "notes": "Fluid sheet. Every text and mark color is a state token; every sample changes text or shape too."
  },
@@ -74,22 +74,22 @@
   "chapter": "05",
   "rule": "05.4",
   "width_px": null,
-  "alt": "Two tracker rows, Budget hearing with a red dot and Zoning vote with a Verdigris dot, and no word for either status. Beside them the same rows in grayscale, where the two dots print as nearly the same gray.",
+  "alt": "Two Illustrative tracker rows, Budget hearing with a red dot and Zoning vote with a Verdigris dot, and no word for either status. Beside them the same rows in grayscale, where the two dots print as nearly the same gray.",
   "illustrative": true,
   "notes": "Pillar Red against Verdigris 1.14 to 1; in grayscale #5F5F5F and #717171."
  },
  "s-05-5-correct": {
   "chapter": "05",
   "rule": "05.5",
-  "width_px": null,
-  "alt": "A bar chart titled Health care and social assistance added 3.8 million payroll jobs from January 2022 to September 2026, the most of the six sectors shown. Bars, in thousands of jobs: Health care and social assistance 3,798; Leisure and hospitality 1,640; Government 1,278; Construction 769; Manufacturing 88; Information −245. The health care bar is Pillar Red with a 1 px Charcoal edge; the others are Stone. Source line below.",
+  "width_px": 600,
+  "alt": "A bar chart 600 px wide titled Health care and social assistance added 3.8 million payroll jobs from January 2022 to September 2026, the most of the six sectors shown. Bars, in thousands of jobs: Health care and social assistance 3,798; Leisure and hospitality 1,640; Government 1,278; Construction 769; Manufacturing 88; Information −245. The health care bar is Pillar Red with a 1 px Charcoal edge; the others are Stone. Source line below.",
   "illustrative": false,
-  "notes": "Data: payrolls-by-sector in the shared chart data, September 2026 row; 16 sector series checked for the most."
+  "notes": "Data: payrolls-by-sector in the shared chart data, September 2026 row; 16 sector series checked for the most. 600 px wide, so its type takes the phone floor (D2-254)."
  },
  "s-05-5-failure": {
   "chapter": "05",
   "rule": "05.5",
-  "width_px": null,
+  "width_px": 600,
   "alt": "The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the Newsprint page.",
   "illustrative": false,
   "notes": "The red bar has no keyline; text in the chart still passes."
@@ -98,16 +98,16 @@
   "chapter": "05",
   "rule": "05.6",
   "width_px": null,
-  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49:1; text on White 7.74:1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26:1; text on Prussian 5.14:1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89:1; Deep Stone text on it 4.91:1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47:1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of diverging pair B; Charcoal label on it 6.18:1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of diverging pair B; Charcoal label on it 8.01:1.",
+  "alt": "A table of six tints, each with its swatch, name, token, recipe, hex value, one job and measured ratio. Deep Stone, Stone 18% toward Charcoal, #4E535B: Secondary and disabled text on Newsprint and White; text on Newsprint 5.49:1; text on White 7.74:1. Dim Newsprint, Newsprint 25% toward Charcoal, #A3A19C: Secondary and disabled text on Charcoal and Prussian; text on Charcoal 7.26:1; text on Prussian 5.14:1. Error Band, Pillar Red 88% toward Newsprint, #E1C9C1: The ground of an error message on Newsprint and White; Charcoal text on it 11.89:1; Deep Stone text on it 4.91:1. Gridline, Stone 70% toward Newsprint, #B4B4B3: Chart gridlines on Newsprint; decoration only; on Newsprint 1.47:1. Light Prussian, Prussian 62% toward Newsprint, #8E94A4: The light Prussian step of the diverging scale; Charcoal label on it 6.18:1. Light Verdigris, Verdigris 55% toward Newsprint, #9AAEA6: The light Verdigris step of the diverging scale; Charcoal label on it 8.01:1.",
   "illustrative": false,
-  "notes": "Recipes read from each token's derivation in tokens.json; ratios computed here.",
-  "interactive": true
+  "notes": "A readable table (D2-255). Recipes read from each token's derivation in tokens.json; ratios computed here.",
+  "readable": true
  },
  "s-05-6-failure": {
   "chapter": "05",
   "rule": "05.6",
   "width_px": 360,
-  "alt": "A tracker card on Newsprint with the label Track, State bills, the headline Paid family leave bill moves to a committee vote, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
+  "alt": "An Illustrative tracker card on Newsprint with the kicker Tracker, State bills, the headline Paid family leave bill moves to a committee vote, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
   "illustrative": true,
   "notes": "Composite #8B8985; the Deep Stone token measures 5.49 to 1 on the same ground.",
   "check_exempt": [
@@ -118,7 +118,7 @@
   "chapter": "05",
   "rule": "05.7",
   "width_px": null,
-  "alt": "The chart palette on Newsprint. Four roles: subject in Charcoal, context in Stone, gridline in a light Stone tint, and the one point in Pillar Red with a Charcoal edge. Diverging pair B in five steps from strong Prussian through a pale midpoint to strong Verdigris, each with a boxed arrow and words from Falls a lot to Rises a lot. The same scale in grayscale, where both ends print dark. Sequential Verdigris in five steps.",
+  "alt": "The chart palette on Newsprint. Four roles: Subject 13.29 to 1, Context 4.29 to 1, Gridline 1.47 to 1, The one point 2.96 to 1; the subject in Charcoal, the context in Stone, the gridline in a light Stone tint and the one point in Pillar Red with a Charcoal edge. The diverging scale in five steps from strong Prussian through a pale midpoint to strong Verdigris, each with a boxed arrow, its words and its label ratio: Falls a lot, two down arrow, label 13.28 to 1; Falls a little, one down arrow, label 6.18 to 1; Little change, square arrow, label 11.76 to 1; Rises a little, one up arrow, label 8.01 to 1; Rises a lot, two up arrow, label 7.06 to 1. The same scale in grayscale, where both ends print dark. Sequential Verdigris in five steps, with label ratios 10.96, 7.81, 5.41, 5.20 and 8.27 to 1.",
   "illustrative": false,
   "notes": "Every fill and label is an oa.chart token; label ratios computed here."
  },
@@ -126,9 +126,9 @@
   "chapter": "05",
   "rule": "05.7",
   "width_px": null,
-  "alt": "A five-step scale labeled Change in turnout by state that runs from Pillar Red for Rises a lot through a pale midpoint to Prussian for Falls a lot, with no arrows.",
+  "alt": "A band across the top reads Failure case: do not publish. Below it, an Illustrative five-step scale labeled Change in turnout by state that runs from Pillar Red for Rises a lot through a pale midpoint to Prussian for Falls a lot, with no arrows.",
   "illustrative": true,
-  "notes": "The light red step is a color-mix() in the fragment, not a token, because the failure needs a red tint the token set refuses.",
+  "notes": "The light red step is a color-mix() in the fragment, not a token, because the failure needs a red tint the token set refuses. The band keeps the failure marked in any crop (BE-S4).",
   "check_exempt": [
    "contrast"
   ]
@@ -148,7 +148,7 @@
   "alt": "A table of the seven colors set on the four surfaces, each cell drawn on its surface with a sample, the measured ratio and what the pair may carry.",
   "illustrative": false,
   "notes": "All 28 cells computed from tokens.json. Samples: Aa at body size where text passes, Aa at 24 px bold where only large text passes, a chip where only marks or nothing pass.",
-  "interactive": true
+  "readable": true
  },
  "s-05-palette": {
   "chapter": "05",
@@ -156,8 +156,8 @@
   "width_px": null,
   "alt": "The seven colors, each as a swatch with its name, hex value, RGB values, share of a composition and job: Newsprint #DCD9D2, 60 to 85 percent; Charcoal #121212, 10 to 25 percent; Pillar Red #E63946, 1 to 5 percent; Prussian #1F2D5A, 5 to 15 percent; Stone #5D636D, 5 to 15 percent; Verdigris #4A7C74, 1 to 5 percent; White #FFFFFF, as needed.",
   "illustrative": false,
-  "notes": "Fluid sheet. Values read from tokens.json; shares are Master Brief and V5 ranges.",
-  "interactive": true
+  "notes": "Fluid sheet, a readable list (D2-255). Values read from tokens.json; shares are Master Brief and V5 ranges.",
+  "readable": true
  },
  "s-05-roles": {
   "chapter": "05",
@@ -165,14 +165,14 @@
   "width_px": null,
   "alt": "A table of nine color roles across the four surfaces, each cell drawn on its surface with a sample, the color the role takes and its measured ratio.",
   "illustrative": false,
-  "notes": "Every ratio computed from tokens.json. Stacks into one block per role under 40 rem.",
-  "interactive": true
+  "notes": "A readable table (D2-255). Every ratio computed from tokens.json. Stacks into one block per role under 40 rem.",
+  "readable": true
  },
  "s-06-1-correct": {
   "chapter": "06",
   "rule": "06.1",
   "width_px": null,
-  "alt": "The three faces at true size. Inter Tight 800 sets the heading Who decides what happens next? Inter sets the sentence A regulator or a board approves your rate., a button labeled Download the lockmark and a label in capitals. Lora Italic sets our editorial commitment, “Clarity is our duty. Action is our promise.”",
+  "alt": "The three faces at true size. Inter Tight 800 sets the heading Who decides what happens next? Inter sets the sentence A regulator or a board approves your rate., a button labeled Download the lockmark and the kicker Explainer, Local utilities, in capitals. Lora Italic sets our editorial commitment, “Clarity is our duty. Action is our promise.”",
   "illustrative": false,
   "notes": "The heading line is our fifth edition’s type sample; the body line is chapter 02’s W02 rewrite."
  },
@@ -204,10 +204,10 @@
   "chapter": "06",
   "rule": "06.2",
   "width_px": null,
-  "alt": "The type scale, fourteen styles from Title to Ask, each with its token name, face, size in px and rem, line height and tracking, and a sample line drawn live in the style.",
+  "alt": "The type scale, fourteen styles from Title to Ask, each with its token name, face, size in px and rem, line height and tracking, and a sample line in the style. On a phone each sample shows the style’s phone floor, and on a wider screen its desktop ceiling.",
   "illustrative": false,
-  "notes": "Every spec line is read from tokens.json; every sample uses the token’s CSS custom properties.",
-  "interactive": true
+  "notes": "A readable list (D2-255). Every spec line is read from tokens.json; every sample uses the token’s CSS custom properties at a fixed size from D2-254.",
+  "readable": true
  },
  "s-06-2-failure": {
   "chapter": "06",
@@ -215,7 +215,10 @@
   "width_px": null,
   "alt": "Two columns showing the sentence A regulator or a board approves your rate. as a reader sees it with text set to 200 percent: on the left, set in rem, it has grown to 34 px; on the right, set in px, it is still 17 px.",
   "illustrative": false,
-  "notes": "A depiction: both columns are drawn at the sizes a 200 percent text setting produces, since the guide page itself runs at the reader’s own setting."
+  "notes": "A depiction: both columns are drawn at the sizes a 200 percent text setting produces, since the guide page itself runs at the reader’s own setting. Exempt from the scale check: 34 px is the body size doubled, off the scale on purpose in a labeled failure.",
+  "check_exempt": [
+   "scale"
+  ]
  },
  "s-06-3-correct": {
   "chapter": "06",
@@ -229,28 +232,29 @@
   "chapter": "06",
   "rule": "06.3",
   "width_px": null,
-  "alt": "A graphic at true size of two labels from our fifth edition: the eyebrow 06 / Type at 11 px in capitals with wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.",
+  "alt": "A graphic at true size of two labels from our fifth edition: the kicker 06 / Type at 11 px in capitals with wide tracking, and the footer line Oath & Action, Type / 06 at 10 px.",
   "illustrative": false,
-  "notes": "Sizes and tracking from the V5 text census (eyebrow 11 px, 700, 1.43 px tracking; footer 10 px).",
+  "notes": "Sizes and tracking from the V5 text census (eyebrow 11 px, 700, 1.43 px tracking; footer 10 px). A historical record in a labeled failure, so its sizes sit off the scale on purpose.",
   "check_exempt": [
-   "size"
+   "size",
+   "scale"
   ]
  },
  "s-06-4-correct": {
   "chapter": "06",
   "rule": "06.4",
   "width_px": null,
-  "alt": "The heading Who decides what happens next? in Inter Tight 800 at 24 px with minus 2 percent tracking, its word spaces open.",
+  "alt": "The heading Tighten tracking only as headings grow. in Inter Tight 800 at 32 px with minus 1 percent tracking. A line below it reads: word space 5.7 px, 1 of 28 letter pairs touches.",
   "illustrative": false,
-  "notes": "Set at 24 px, the H4 size at 1440 px, so the measured word spaces apply."
+  "notes": "Set at 32 px, the H3 ceiling. Word space and touching pairs measured in Chromium with the Google Fonts files the page loads, at this tracking."
  },
  "s-06-4-failure": {
   "chapter": "06",
   "rule": "06.4",
   "width_px": null,
-  "alt": "The heading Who decides what happens next? in Inter Tight 800 at 24 px with minus 4.5 percent tracking, its word spaces closing up.",
+  "alt": "The heading Tighten tracking only as headings grow. in Inter Tight 800 at 32 px with minus 3 percent tracking. A line below it reads: word space 5.0 px, 4 of 28 letter pairs touch.",
   "illustrative": false,
-  "notes": "Set at 24 px, the H4 size at 1440 px, so the measured word spaces apply."
+  "notes": "Set at 32 px, the H3 ceiling. Word space and touching pairs measured in Chromium with the Google Fonts files the page loads, at this tracking."
  },
  "s-06-5-correct": {
   "chapter": "06",
@@ -259,7 +263,7 @@
   "alt": "A table titled Change in payroll jobs by sector, January 2022 to September 2026, with tabular figures aligned right and the true minus sign. Health care and social assistance 3,798 thousand, 18.8 percent; Leisure and hospitality 1,640 thousand, 10.7 percent; Government 1,278 thousand, 5.8 percent; Construction 769 thousand, 10.1 percent; Manufacturing 88 thousand, 0.7 percent; Information −245 thousand, −8.2 percent. Source line below.",
   "illustrative": false,
   "notes": "Data: payrolls-by-sector in the shared chart data, September 2026 row.",
-  "interactive": true
+  "readable": true
  },
  "s-06-5-failure": {
   "chapter": "06",
@@ -305,9 +309,9 @@
   "chapter": "06",
   "rule": "06.8",
   "width_px": null,
-  "alt": "A paragraph in Inter at 17 px set to the body measure of 33.88 rem: The pressure on officials to serve the whole electorate depends on a real chance of losing. In most districts the general election is easy to predict, so the contest that decides the seat is a low-turnout primary. Incumbents also help write the rules for their own races, from district maps to voting procedures.",
+  "alt": "A paragraph in Inter at 17 px set to the body measure of 33.88 rem: Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”",
   "illustrative": false,
-  "notes": "The paragraph is W07’s rewrite in chapter 02."
+  "notes": "The paragraph is the opening of chapter 02’s writing section, whose terms are all plain (D2-248)."
  },
  "s-06-8-failure": {
   "chapter": "06",
@@ -321,7 +325,7 @@
   "chapter": "06",
   "rule": "06.9",
   "width_px": 600,
-  "alt": "An email header at 600 px on White, set in the system stack: the wordmark, the label Sample issue, the headline The school board votes on the new bell schedule April 14 in Helvetica or Arial bold, a sentence of body text, and our editorial commitment in Georgia Italic.",
+  "alt": "An Illustrative email header at 600 px on White, set in the system stack: the wordmark, the headline The school board votes on the new bell schedule April 14 in Helvetica or Arial bold at 26 px, a sentence of body text, and our editorial commitment in Georgia Italic at 24 px.",
   "illustrative": true,
   "notes": "Headline and body from chapter 02, W08 (Illustrative).",
   "surface": "white"
@@ -335,11 +339,20 @@
   "notes": "Headline and body from chapter 02, W08 (Illustrative). The failure names a face no page loads, so every browser falls to its default serif, as a mail app does.",
   "surface": "white"
  },
+ "s-06-artboards": {
+  "chapter": "06",
+  "rule": null,
+  "width_px": null,
+  "alt": "A table of the fourteen styles with three sizes each: on a web page, on an artboard up to 600 px wide and on an artboard 1,200 px wide or more. Title 56 and 110 px; Section 44 and 80 px; H3 26 and 32 px; H4 20 and 24 px; Quote 24 and 32 px; Intro 19 and 22 px; Body 17 and 17 px; Small body 15 and 15 px; Interface 15 and 15 px; Caption 14 and 14 px; Label 13 and 13 px; Data label 13 and 13 px; Figure 48 and 104 px; Ask 19 and 19 px.",
+  "illustrative": false,
+  "notes": "The fixed-artboard column of Rule 06.2 (D2-254), read from tokens.json and checked against the decision's list.",
+  "readable": true
+ },
  "s-07-1-correct": {
   "chapter": "07",
   "rule": "07.1",
   "width_px": null,
-  "alt": "The spacing scale at true size: eleven bars from 4 px to 104 px, each with its token name and its value in px and rem. Below it, a tracker card spaced on the scale, with 24 px padding, 8 px from label to heading and 16 px from heading to text, each gap marked.",
+  "alt": "The spacing scale at true size: eleven bars from 4 px to 104 px, each with its token name and its value in px and rem. Below it, an Illustrative tracker card spaced on the scale, with 24 px padding, 8 px from kicker to heading and 16 px from heading to text, each gap marked.",
   "illustrative": true,
   "notes": "Bar lengths are the space tokens themselves."
  },
@@ -347,48 +360,51 @@
   "chapter": "07",
   "rule": "07.1",
   "width_px": 420,
-  "alt": "The same tracker card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.",
+  "alt": "The same Illustrative tracker card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.",
   "illustrative": true,
   "notes": "Off-scale gaps written in px on purpose."
  },
  "s-07-2-correct": {
   "chapter": "07",
   "rule": "07.2",
-  "width_px": 376,
+  "width_px": 360,
   "alt": "The five column grids drawn at one quarter of true size, each with its columns, gutters and margins: Wide 1440 px, 12 columns of 87.3 px; Desktop 1024 px, 12 columns of 56.7 px; Tablet 768 px, 8 columns of 67.0 px; Phone 390 px, 4 columns of 75.5 px; Small phone 360 px, 4 columns of 70.0 px.",
   "illustrative": false,
-  "notes": "Drawn at one quarter of each width; column widths computed from the grid tokens."
+  "notes": "Drawn at one quarter of each width, so the 1440 px grid takes 360 px; the labels under each drawing are at true size. Column widths computed from the grid tokens.",
+  "scale": 0.25
  },
  "s-07-2-failure": {
   "chapter": "07",
   "rule": "07.2",
-  "width_px": 376,
+  "width_px": 360,
   "alt": "A page at 1440 px drawn at one quarter size, with three sections on three, five and two columns whose edges never line up.",
   "illustrative": false,
-  "notes": "A diagram."
+  "notes": "A diagram at one quarter size.",
+  "scale": 0.25
  },
  "s-07-3-correct": {
   "chapter": "07",
   "rule": "07.3",
-  "width_px": null,
-  "alt": "A table of each width’s body span: Wide 1440 px, 5 of 12 columns, 533 px, 66 characters a line; Desktop 1024 px, 7 of 12 columns, 541 px, 66 characters a line; Tablet 768 px, 6 of 8 columns, 522 px, 64 characters a line; Phone 390 px, 4 of 4 columns, 350 px, 40 characters a line; Small phone 360 px, 4 of 4 columns, 328 px, 38 characters a line. Below it, the 1440 px grid at one quarter size with the text span marked.",
+  "width_px": 360,
+  "alt": "The 1440 px grid drawn at one quarter size, with body text spanning the first 5 of 12 columns, 533 px at true size.",
   "illustrative": false,
-  "notes": "Each span picked as the one whose measured mean sits nearest 68 within 60 to 75; phones take all four columns.",
-  "interactive": true
+  "notes": "A diagram at one quarter size; the span is the one whose measured mean sits nearest 68 within 60 to 75.",
+  "scale": 0.25
  },
  "s-07-3-failure": {
   "chapter": "07",
   "rule": "07.3",
-  "width_px": 376,
-  "alt": "The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at 165 characters a line.",
+  "width_px": 360,
+  "alt": "The 1440 px grid at one quarter size with a paragraph drawn across all 12 columns, measured at 160 characters a line.",
   "illustrative": false,
-  "notes": "Measured with the W07 paragraph at 17 px across 1,312 px."
+  "notes": "A diagram at one quarter size, measured with chapter 02’s prose at 17 px across 1,312 px.",
+  "scale": 0.25
  },
  "s-07-4-correct": {
   "chapter": "07",
   "rule": "07.4",
   "width_px": null,
-  "alt": "A short section with the heading How to sign up, its gaps drawn as bands: 48 px above the heading, 16 px below it and 16 px between paragraphs.",
+  "alt": "A short Illustrative section with the heading How to sign up, its gaps drawn as bands: 48 px above the heading, 16 px below it and 16 px between paragraphs.",
   "illustrative": true,
   "notes": "Gap bands are part of the specimen."
  },
@@ -396,7 +412,7 @@
   "chapter": "07",
   "rule": "07.4",
   "width_px": null,
-  "alt": "A short section with the heading How to sign up, its gaps drawn as bands: 24 px above the heading, 24 px below it and 16 px between paragraphs.",
+  "alt": "A short Illustrative section with the heading How to sign up, its gaps drawn as bands: 24 px above the heading, 24 px below it and 16 px between paragraphs.",
   "illustrative": true,
   "notes": "Gap bands are part of the specimen."
  },
@@ -406,16 +422,19 @@
   "width_px": null,
   "alt": "A table of the layout a reader gets by window width and text size: 1440 px at 100 percent wide, 150 percent tablet, 200 percent phone; 1024 px at 100 percent desktop, 150 percent phone, 200 percent phone; 768 px at 100 percent tablet, 150 percent phone, 200 percent phone.",
   "illustrative": false,
-  "notes": "Worked out from the em breakpoints; text percent is the browser’s text size setting.",
-  "interactive": true
+  "notes": "A readable table (D2-255). Worked out from the em breakpoints; text percent is the browser’s text size setting.",
+  "readable": true
  },
  "s-07-5-failure": {
   "chapter": "07",
   "rule": "07.5",
   "width_px": 533,
-  "alt": "The W07 paragraph at 34 px squeezed into five columns, 533 px wide, as a page with breakpoints in px would set it for a reader at 200 percent text: about 28 characters a line.",
+  "alt": "The opening paragraph of chapter 02 at 34 px squeezed into five columns, 533 px wide, as a page with breakpoints in px would set it for a reader at 200 percent text: about 29 characters a line.",
   "illustrative": false,
-  "notes": "The span a wide layout gives body text, at doubled size."
+  "notes": "The span a wide layout gives body text, at doubled size. Exempt from the scale check: 34 px is the body size doubled, off the scale on purpose in a labeled failure.",
+  "check_exempt": [
+   "scale"
+  ]
  },
  "s-07-6-correct": {
   "chapter": "07",
@@ -432,5 +451,14 @@
   "alt": "The same five pairs kept as a three-column table inside a 320 px frame, so the right part of the table, with each pair’s use, is cut off at the frame’s edge.",
   "illustrative": false,
   "notes": "The table is 30 rem wide inside a 320 px frame that hides its overflow, as V5’s contrast table was cut."
+ },
+ "s-07-spans": {
+  "chapter": "07",
+  "rule": null,
+  "width_px": null,
+  "alt": "A table of each width’s body span: Wide 1440 px, 5 of 12 columns, 533 px, 63 characters a line; Desktop 1024 px, 7 of 12 columns, 541 px, 64 characters a line; Tablet 768 px, 7 of 8 columns, 613 px, 73 characters a line; Phone 390 px, 4 of 4 columns, 350 px, 40 characters a line; Small phone 360 px, 4 of 4 columns, 328 px, 37 characters a line.",
+  "illustrative": false,
+  "notes": "A readable table (D2-255). Each span picked as the one whose measured mean sits nearest 68 within 60 to 75; phones take all four columns. Measured with 7,000 characters of chapter 02’s prose.",
+  "readable": true
  }
 }

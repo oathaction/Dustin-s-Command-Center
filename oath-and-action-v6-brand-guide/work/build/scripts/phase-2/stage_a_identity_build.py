@@ -23,14 +23,7 @@ import stage_a_identity_proofs as SP  # noqa: E402
 import stage_a_identity_chapters as CH  # noqa: E402
 
 
-# manifest fields the shell reads beyond the brief's (Guide Shell Notes section 5)
-EXTRA = {
-    "s-03-1-failure": {"check_exempt": ["contrast"]},  # the typed name's red ampersand, 2.96:1, is the failure shown
-    "s-03-7-failure": {"check_exempt": ["contrast"]},
-    "s-04-3-failure": {"check_exempt": ["red"]},      # the failure is two working reds in one view
-    "s-04-4-failure": {"check_exempt": ["red"]},
-    "s-08-composer": {"interactive": True},
-}
+MINE = ("s-03-", "s-04-", "s-08-", "s-proofs-")      # specimen ids this maker owns
 
 
 def build(preview_dir=None, pdf=False):
@@ -40,18 +33,23 @@ def build(preview_dir=None, pdf=False):
     records = []
     for mod in (S03, S04, S08, SP):
         for fn in mod.S:
-            r = fn()
-            records.append(r)
+            records.append(fn())
     ids = [r["id"] for r in records]
     assert len(ids) == len(set(ids)), "duplicate specimen id"
     manifest = {}
     for r in records:
         (L.SPEC_DIR / f'{r["id"]}.html').write_text(r["html"])
-        m = {k: r[k] for k in ("chapter", "rule", "width_px", "alt", "illustrative", "notes")}
-        m.update({k: v for k, v in EXTRA.get(r["id"], {}).items()})
-        if r.get("interactive"):
-            m["interactive"] = True
+        m = {"chapter": r["chapter"], "rule": r["rule"]}
+        if r["width_px"]:
+            m["width_px"] = r["width_px"]      # left out for a sheet or table the shell should flow (C-S6)
+        m.update({"alt": r["alt"], "illustrative": r["illustrative"], "notes": r["notes"]})
+        m.update(r.get("meta") or {})          # readable, interactive, scale, fit_switch, check_exempt
         manifest[r["id"]] = m
+    # specimens this maker wrote before and no longer writes (the proof pairs replaced twelve single plates)
+    for f in L.SPEC_DIR.glob("s-*.html"):
+        if f.stem.startswith(MINE) and f.stem not in manifest:
+            f.unlink()
+            print(f"  removed stale {f.name}")
     (L.SPEC_DIR / "manifest-identity.json").write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n")
     for ch in CH.CHAPTERS:
         f = L.CHAP_DIR / f'{ch["number"]}-{ch["anchor"]}.json'

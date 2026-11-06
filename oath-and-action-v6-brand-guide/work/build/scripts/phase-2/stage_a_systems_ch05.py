@@ -40,7 +40,6 @@ PHONE_CSS = """
 .menu{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--edge);%(ui)s}
 .bd{padding:24px 16px 8px}
 .ey{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;color:var(--sec);%(label)s}
-.ey .illus{margin:0}
 .hl{margin:8px 0 0;%(h3)s;text-wrap:balance}
 .tx{margin:16px 0 0;%(body)s}
 .hg{display:flex;align-items:center;gap:12px;margin:24px 16px;color:var(--hinge)}
@@ -203,7 +202,7 @@ def s_05_1(ctx):
         if ctx.stage == 'final':
             css, bar = share_bar(ctx, sid)
             measured = f'<div class="ms"><p class="mk">Measured shares of this page</p>{bar}</div>'
-            css += f'.ms{{padding:16px 0 0}}.mk{{margin:0;{ctx.ty("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
+            css += f'.ms{{padding:16px 16px 16px}}.mk{{margin:0;{ctx.ty("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
         else:
             css, measured = '', ''
         html = phone(ctx, var).replace('</style>', css + '</style>', 1) + measured
@@ -287,7 +286,6 @@ TILE_CSS = """
 .sn{margin:0;%(h4)s}
 .sj{margin:4px 0 0;color:var(--sec);%(caption)s}
 .ey{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--rule);color:var(--sec);%(label)s}
-.ey .illus{margin:0}
 .hd{margin:8px 0 0;%(h4)s;text-wrap:balance}
 .bt{margin:12px 0 0;%(body)s}
 .cp{margin:12px 0 0;color:var(--sec);%(caption)s}
@@ -750,7 +748,7 @@ def s_05_6(ctx):
     rd = ctx.ratio('oa.color.derived.deepStone', P('newsprint'))
     cssf = (f'.cd{{padding:24px;border-top:4px solid {v("oa.color.border.strong.onNewsprint")}}}'
             f'.ey{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;{ctx.ty("label")};color:{v("oa.color.text.secondary.onNewsprint")}}}'
-            f'.ey .illus{{margin:0}}.hd{{margin:8px 0 0;{ctx.ty("h4")}}}'
+            f'.hd{{margin:8px 0 0;{ctx.ty("h4")}}}'
             f'.mt{{margin:12px 0 0;{ctx.ty("caption")};color:{v(P("charcoal"))};opacity:.4}}')
     htmlf = (f'<style>{cssf}</style><div class="cd"><p class="ey"><span>Tracker · State bills</span>{B.ILLUS}</p>'
              f'<p class="hd">Paid family leave bill moves to a committee vote</p>'
@@ -847,7 +845,7 @@ def s_05_7(ctx):
     cssf = (f'.sc{{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}}'
             f'.sc li{{min-height:96px;padding:10px 8px}}.wd{{{ctx.ty("caption")};line-height:1.25}}'
             f'.k{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 8px;{ctx.ty("label")};color:{v("oa.color.text.secondary." + N)}}}'
-            f'.k .illus{{margin:0}}{bcss}')
+            f'{bcss}')
     htmlf = (f'<style>{cssf}</style>{band}<p class="k"><span>Change in turnout by state</span>{B.ILLUS}</p>'
              f'<ul class="sc">{"".join(fcells)}</ul>')
     ctx.spec('s-05-7-failure', htmlf, '05', '05.7',
@@ -954,7 +952,7 @@ def build(ctx):
                 'correct': {'specimen': 's-05-1-correct',
                             'caption': f'One view at true size: a phone page about a school board vote. Measured from the '
                                        f'rendered page, Newsprint covers {nc} percent. Charcoal covers {chc} percent as the one '
-                                       f'dark panel, the type and the rules, and Pillar Red {rc_share}, counting the wordmark’s '
+                                       f'dark panel, the type and the rules, and Pillar Red {rc_share} percent, counting the wordmark’s '
                                        f'ampersand.'},
                 'failure': {'specimen': 's-05-1-failure',
                             'caption': f'<strong>Fails the proportion.</strong> The same page set on Charcoal and Prussian. '
@@ -1150,7 +1148,7 @@ def build(ctx):
                     {'label': 'Deep Stone', 'value': f'{ctx.hx("oa.color.derived.deepStone")}, Stone 18% toward Charcoal; {ds_n} to 1 on Newsprint, {ds_w} on White', 'token': 'oa.color.derived.deepStone'},
                     {'label': 'Dim Newsprint', 'value': f'{ctx.hx("oa.color.derived.dimNewsprint")}, Newsprint 25% toward Charcoal; {dn_c} to 1 on Charcoal, {dn_p} on Prussian', 'token': 'oa.color.derived.dimNewsprint'},
                     {'label': 'Error Band', 'value': f'{ctx.hx("oa.color.derived.errorBand")}, Pillar Red 88% toward Newsprint; Charcoal text {eb_c} to 1', 'token': 'oa.color.derived.errorBand'},
-                    {'label': 'Opacity', 'value': 'Two decorative watermarks only, never text or marks', 'token': 'oa.opacity.watermarkOnLight'},
+                    {'label': 'Opacity', 'value': 'Two decorative watermarks only', 'token': 'oa.opacity.watermarkOnLight'},
                 ],
                 'files': ['work/build/tokens/src/oa-tokens.src.mjs'],
                 'related': ['12', '14', '26'],

@@ -1,4 +1,14 @@
 {
+ "s-01-words": {
+  "chapter": "01",
+  "rule": null,
+  "width_px": null,
+  "alt": "A list of the words this guide uses, each with its meaning and the rule or chapter that sets it: Locked lines: Our four brand lines whose wording never changes: the tagline, the mission, the reader promise and the editorial commitment. Pillars: Explain, Track, Connect and Act, the four jobs our work does, always in that order. The seven colors: Newsprint, a warm off-white, is our page, and Charcoal carries the words. Pillar Red marks one thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a gray-green, and White support the rest. View: One screen, card, slide or printed page. Working red: The one red a view may spend, on an error the reader must fix, the step they can take now or the point the headline names, in that order. Signature red: The red inside our marks, the wordmark’s ampersand and the lockmark’s lever. It never counts as a view’s working red. Token: A named color, size or type setting in our code, such as --oa-color-text-primary-on-newsprint. Builders use the name, and writers can skip the Tokens lines. Kicker: The short line above a headline that says what kind of piece it is. Deck: The line under a headline that says what the piece covers. Hinge headline: A headline that joins a rule to what it produces with our ampersand, as in “The zoning code & the rent.” Hinge divider: A hairline broken by our ampersand, set where a piece turns from how a decision is made to what you can do. Lockup: Our name and marks set together in one fixed arrangement. Our systems atlas: Who Do They Answer To?, our map of who makes public decisions and what shapes them. A loop in it is a chain of causes that returns to where it started, and its ten domains sort every issue by subject, such as elections and representation. Evidence grade: How sure a claim is: documented, well supported, plausible, contested or hypothesis. Illustrative: Our label for anything invented for an example, such as a person, a quote, a place or a figure.",
+  "illustrative": false,
+  "notes": "CP-M2, RP-S7: the guide's vocabulary before chapter 01 uses it. Token is defined here for the first time. The atlas glossary's own wording for a feedback loop: a chain of causes that returns to its starting variable.",
+  "readable": true,
+  "label": "Words this guide uses"
+ },
  "s-01-hinge-lines": {
   "chapter": "01",
   "rule": null,
@@ -6,7 +16,7 @@
   "alt": "A table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
   "illustrative": false,
   "notes": "From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's.",
-  "interactive": true,
+  "readable": true,
   "label": "The hinge in the locked lines"
  },
  "s-01-pillars": {
@@ -15,32 +25,32 @@
   "width_px": null,
   "alt": "The four pillars in order with each pillar's job and products. 01 Explain: make the rules and their effects understandable. Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, the Dispatch and The Public Record series, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece.",
   "illustrative": false,
-  "notes": "Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand architecture table (strategy section 3, S2); series pillars follow V5's series routes. Connect's job line is new, since the V5 census cut its line at 50 characters.",
-  "interactive": true,
+  "notes": "Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand architecture table (strategy section 3, S2); series pillars follow V5's series routes. Connect's job line is new, since the V5 census cut its line at 50 characters. CP-S8: the series is Dispatch, as Rule 02.26 spells it.",
+  "readable": true,
   "label": "The four pillars, always in this order"
  },
  "s-01-pieces": {
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "Four pieces at phone width, one per pillar, each turning at the hinge divider to What you can do and ending on one red ask button. Explain: an explainer, Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: the Stock Trading Ban Tracker, as of October 15, 2026: passed the House 232 to 198 on July 22, 2026; the Senate vote to take it up failed 53 to 47 on September 30, 2026, short of 60; then follow this bill. Connect, illustrative: who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, illustrative: Alder County votes on backyard cottages March 9; send a comment by March 3.",
-  "illustrative": true,
-  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented and labeled beside each invented item. Each card is 340 px wide, the text column of a phone.",
+  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of October 15, 2026: passed the House 232 to 198 on July 22, 2026; the Senate vote to take it up failed 53 to 47 on September 30, 2026, short of 60; then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
+  "illustrative": false,
+  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98).",
   "label": "One piece from each pillar, at true size"
  },
  "s-01-1-correct": {
   "chapter": "01",
   "rule": "01.1",
-  "width_px": null,
-  "alt": "An illustrative tracker card. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. The yes bar is Charcoal and the no bar Stone, each with its count. After the hinge divider, one red button: Follow S. 214.",
+  "width_px": 480,
+  "alt": "An illustrative tracker card, kicker Tracker, state senate. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. Both bars, yes and no, are Charcoal, each with its name and count. After the hinge divider, one red button: Follow S. 214.",
   "illustrative": true,
   "notes": ""
  },
  "s-01-1-failure": {
   "chapter": "01",
   "rule": "01.1",
-  "width_px": null,
-  "alt": "The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote.",
+  "width_px": 480,
+  "alt": "Failure case: do not publish. The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote.",
   "illustrative": true,
   "notes": "",
   "check_exempt": [
@@ -51,16 +61,16 @@
  "s-01-2-correct": {
   "chapter": "01",
   "rule": "01.2",
-  "width_px": null,
-  "alt": "Bar chart: Most Republicans and most Democrats favor a ban on stock trading by members of Congress. Democrats 88 percent in Charcoal, Republicans 87 percent in Stone, each named beside its bar. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey came three years before the House and Senate votes.",
+  "width_px": 600,
+  "alt": "Bar chart: In May 2023, most Democrats and most Republicans favored a ban on stock trading by members of Congress. Democrats 88 percent and Republicans 87 percent, both bars in the same Charcoal, each named beside its bar. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
   "illustrative": false,
   "notes": ""
  },
  "s-01-2-failure": {
   "chapter": "01",
   "rule": "01.2",
-  "width_px": null,
-  "alt": "The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above.",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -71,16 +81,16 @@
  "s-01-3-correct": {
   "chapter": "01",
   "rule": "01.3",
-  "width_px": null,
-  "alt": "A five-step diverging key from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more.",
+  "width_px": 600,
+  "alt": "A five-step key for change in two directions, from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more.",
   "illustrative": false,
   "notes": ""
  },
  "s-01-3-failure": {
   "chapter": "01",
   "rule": "01.3",
-  "width_px": null,
-  "alt": "The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows.",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -91,7 +101,7 @@
  "s-01-4-correct": {
   "chapter": "01",
   "rule": "01.4",
-  "width_px": null,
+  "width_px": 480,
   "alt": "A Prussian panel with the wordmark in White, ampersand included, at its 24 px master, and an illustrative bar in Newsprint: committees that posted every roll call last session, 6 of 20.",
   "illustrative": true,
   "notes": "",
@@ -100,7 +110,7 @@
  "s-01-4-failure": {
   "chapter": "01",
   "rule": "01.4",
-  "width_px": null,
+  "width_px": 480,
   "alt": "The same panel with the wordmark's ampersand in Pillar Red on Prussian.",
   "illustrative": true,
   "notes": "",
@@ -113,16 +123,16 @@
  "s-01-5-correct": {
   "chapter": "01",
   "rule": "01.5",
-  "width_px": null,
-  "alt": "Tile map of the 50 states and DC. Citizens in 23 states and DC have a working way to petition a proposed law or amendment onto the ballot. Those tiles are solid Charcoal; Mississippi is hatched; the other 26 states are open. Key beside the map. Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process exists on paper but cannot be used after a 2021 state supreme court ruling.",
+  "width_px": 600,
+  "alt": "Tile map of the 50 states and DC. Citizens in 23 states and DC have a working way to petition a proposed law or amendment onto the ballot. Those tiles are solid Charcoal; Mississippi is hatched; the other 26 states are open. Key below the map. Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state supreme court ruling.",
   "illustrative": false,
-  "notes": ""
+  "notes": "Round two: the research lead checks the 23-state count and each state's limits (Mississippi, Illinois, Florida), and the source line takes them (DR-99, BE-S3)."
  },
  "s-01-5-failure": {
   "chapter": "01",
   "rule": "01.5",
-  "width_px": null,
-  "alt": "The same tile map colored by the 2024 presidential winner, 31 tiles in Pillar Red and 20 in Prussian blue. Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
+  "width_px": 600,
+  "alt": "Failure case: do not publish. The same tile map colored by the 2024 presidential winner, 31 tiles in Pillar Red and 20 in Prussian blue. Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -133,23 +143,23 @@
  "s-01-6-correct": {
   "chapter": "01",
   "rule": "01.6",
-  "width_px": null,
-  "alt": "A labeled photograph placeholder with its caption: the doors of the U.S. Senate chamber on September 30, 2026, the day of the vote on the stock trading ban. Photograph and credit to come.",
+  "width_px": 480,
+  "alt": "A labeled photograph placeholder with its caption: the doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Photograph and credit to come.",
   "illustrative": false,
-  "notes": ""
+  "notes": "Round two (DR-101): a public-domain U.S. government photograph from the research lead replaces the placeholder, or the rule moves to chapter 16."
  },
  "s-01-6-failure": {
   "chapter": "01",
   "rule": "01.6",
-  "width_px": null,
-  "alt": "An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on stock trading means for you.",
+  "width_px": 480,
+  "alt": "An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you.",
   "illustrative": false,
   "notes": ""
  },
  "s-01-7-correct": {
   "chapter": "01",
   "rule": "01.7",
-  "width_px": null,
+  "width_px": 480,
   "alt": "An illustrative explainer card: What a yes vote and a no vote on Measure B would do. Below it, a document reference to the measure's ballot text and the county counsel's summary.",
   "illustrative": true,
   "notes": ""
@@ -157,7 +167,7 @@
  "s-01-7-failure": {
   "chapter": "01",
   "rule": "01.7",
-  "width_px": null,
+  "width_px": 480,
   "alt": "The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX.",
   "illustrative": true,
   "notes": ""
@@ -165,15 +175,15 @@
  "s-01-8-correct": {
   "chapter": "01",
   "rule": "01.8",
-  "width_px": null,
+  "width_px": 480,
   "alt": "A labeled photograph placeholder with an illustrative caption naming who, what, where and when: a county planner answers residents' questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.",
   "illustrative": true,
-  "notes": ""
+  "notes": "Round two (DR-101): a public-domain U.S. government photograph from the research lead, with its real caption, or the rule moves to chapter 16."
  },
  "s-01-8-failure": {
   "chapter": "01",
   "rule": "01.8",
-  "width_px": null,
+  "width_px": 480,
   "alt": "The same placeholder captioned only Democracy in action.",
   "illustrative": true,
   "notes": ""
@@ -182,9 +192,10 @@
   "chapter": "01",
   "rule": "01.9",
   "width_px": null,
-  "alt": "A table of this chapter's 13 examples by atlas domain. The largest counts are 3 of 13, under the one-in-four limit. News, records and public information: 1; Elections and representation: 2; Money, lobbying and influence: 1; Congress, agencies and public services: 3; Work, pay and bargaining power: 2; Taxes, wealth and economic security: 1; Housing, health care and getting ahead: 3",
+  "alt": "A table of this chapter's 15 examples by atlas domain. The largest count is 3 of 15, under the one-in-four limit. News, records and public information: 1; Elections and representation: 2; Money, lobbying and influence: 2; Congress, agencies and public services: 3; Work, pay and bargaining power: 3; Taxes, wealth and economic security: 1; Housing, health care and getting ahead: 3. Texas, California, Ohio and Pennsylvania supply one example each.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-9-failure": {
   "chapter": "01",
@@ -192,15 +203,17 @@
   "width_px": null,
   "alt": "An illustrative tally of a draft chapter's five examples: three from elections and representation, and three from Massachusetts.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-10-correct": {
   "chapter": "01",
   "rule": "01.10",
   "width_px": null,
-  "alt": "This chapter's examples sorted by level. Federal: the stock trading ban, the cloture rule. State: map redraws in Texas and California, posting committee votes (illustrative). County or city: backyard cottages in Alder County (illustrative), property tax rates. School district: a bell schedule vote (illustrative).",
+  "alt": "This chapter's examples sorted by level, each with its region. Federal: the Stop Insider Trading Act in Congress and the Senate's cloture rule, national. State: map redraws in Texas and California, South and West; minimum wage floors, Ohio's rising each year by formula and Pennsylvania's at the federal $7.25, Midwest and Northeast; posting committee votes, illustrative. County or city: backyard cottages in Alder County, illustrative; property tax rates, every region. School district: a bell schedule vote, illustrative. Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, Ohio and Pennsylvania, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Ohio’s yearly rate applies to employers with annual gross receipts of $405,000 or more.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-10-failure": {
   "chapter": "01",
@@ -208,21 +221,22 @@
   "width_px": null,
   "alt": "A draft chapter with four federal examples and none at the state, county or city, or school district level.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-11-correct": {
   "chapter": "01",
   "rule": "01.11",
-  "width_px": null,
-  "alt": "Loop R4a, the map-drawing loop. Two cases at the same length. Texas: In August 2025, the Republican-led legislature redrew the congressional map, aiming at five more Republican seats. California: In November 2025, voters approved Proposition 50, which put in place a congressional map drawn to favor Democrats. Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These events show maps being drawn; they do not measure how long either majority’s hold lasts.",
+  "width_px": 600,
+  "alt": "Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month. California: In August 2025, the Democratic-led legislature passed a congressional map aiming at five more Democratic seats, and voters approved it as Proposition 50. Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These records show maps being drawn and measure nothing about how long either majority’s hold lasts.",
   "illustrative": false,
-  "notes": ""
+  "notes": "BE-S1, CP-M5: both cases in one form. Round two applies the research lead's check of who drew each map, its aim and the dates."
  },
  "s-01-11-failure": {
   "chapter": "01",
   "rule": "01.11",
-  "width_px": null,
-  "alt": "The same loop with only the Texas case: In August 2025, the Republican-led legislature redrew the congressional map, aiming at five more Republican seats.",
+  "width_px": 600,
+  "alt": "The same loop with only the Texas case: In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month.",
   "illustrative": false,
   "notes": ""
  },
@@ -230,23 +244,24 @@
   "chapter": "01",
   "rule": "01.12",
   "width_px": null,
-  "alt": "A rotation log table with five of this chapter's rows, each with example, domain, state, level and the coalition behind any reform shown.",
+  "alt": "A rotation log table with five of this chapter's rows, each with example, domain, state, region, level and the coalition behind any reform shown.",
   "illustrative": false,
   "notes": "",
-  "interactive": true
+  "readable": true
  },
  "s-01-12-failure": {
   "chapter": "01",
   "rule": "01.12",
   "width_px": null,
-  "alt": "An illustrative log row for open primaries in Massachusetts with the domain, level and coalition left blank.",
+  "alt": "An illustrative log row for town library hours in Massachusetts with the domain, region, level and coalition left blank.",
   "illustrative": true,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-13-correct": {
   "chapter": "01",
   "rule": "01.13",
-  "width_px": null,
+  "width_px": 600,
   "alt": "For an investor-owned utility, the state public utility commission sets your rate in a rate case, its formal review of the utility’s request. From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
   "illustrative": false,
   "notes": ""
@@ -254,7 +269,7 @@
  "s-01-13-failure": {
   "chapter": "01",
   "rule": "01.13",
-  "width_px": null,
+  "width_px": 600,
   "alt": "An illustrative line: Politicians raised your electric bill again.",
   "illustrative": true,
   "notes": ""
@@ -262,7 +277,7 @@
  "s-01-14-correct": {
   "chapter": "01",
   "rule": "01.14",
-  "width_px": null,
+  "width_px": 600,
   "alt": "A headline question: Who sets your property tax rate, and when could it change?",
   "illustrative": false,
   "notes": ""
@@ -270,7 +285,7 @@
  "s-01-14-failure": {
   "chapter": "01",
   "rule": "01.14",
-  "width_px": null,
+  "width_px": 600,
   "alt": "A headline question quoted from our brand guide's fifth edition, chapter 13: Who wrote the rule you are angry about?",
   "illustrative": false,
   "notes": ""
@@ -278,31 +293,31 @@
  "s-01-15-correct": {
   "chapter": "01",
   "rule": "01.15",
-  "width_px": null,
-  "alt": "A Dispatch kicker and an illustrative headline: The state senate votes on the overtime rule Thursday.",
-  "illustrative": true,
+  "width_px": 600,
+  "alt": "A kicker, Tracker, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday.",
+  "illustrative": false,
   "notes": ""
  },
  "s-01-15-failure": {
   "chapter": "01",
   "rule": "01.15",
-  "width_px": null,
-  "alt": "The fifth edition's series name, Dispatch from the Front, over an illustrative headline: The battle over overtime heads to the senate floor.",
-  "illustrative": true,
+  "width_px": 600,
+  "alt": "Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor.",
+  "illustrative": false,
   "notes": ""
  },
  "s-01-16-correct": {
   "chapter": "01",
   "rule": "01.16",
-  "width_px": null,
-  "alt": "Does pay rise with productivity? Two readings at the same length, 24 words each, in the same type. One: Economists Anna Stansbury and Lawrence Summers find that average pay still rises with productivity, by most or all of each gain, in their estimates. The other: The Economic Policy Institute, an advocacy group, finds that typical workers’ pay has risen far more slowly than productivity since 1979, in its measures. Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, NBER Working Paper 24165, December 2017, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, the connection from productivity to household income, snapshot of October 15, 2026. The two differ in the price index they use and in how they count benefits. The atlas grades the connection plausible and contested.",
+  "width_px": 600,
+  "alt": "Does pay rise with productivity? Two readings at the same length, 24 words each, in the same type. One: Economists writing for the National Bureau of Economic Research find that average pay still rises with productivity, by most or all of each gain. The other: Economists writing for the Economic Policy Institute find that the pay of typical workers has risen far more slowly than productivity has since 1979. Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, the connection from productivity to household income, snapshot of October 15, 2026. The two measure different pay, average pay in one and typical workers’ pay in the other, and they differ in the price index they use and in how they count benefits. The atlas grades the connection plausible and contested.",
   "illustrative": false,
-  "notes": ""
+  "notes": "BE-M2, CP-S6: both holders by role and affiliation in one form. Round two takes the research lead's reading of how each publisher describes its authors."
  },
  "s-01-16-failure": {
   "chapter": "01",
   "rule": "01.16",
-  "width_px": null,
+  "width_px": 600,
   "alt": "The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree.",
   "illustrative": false,
   "notes": ""
@@ -310,15 +325,15 @@
  "s-01-17-correct": {
   "chapter": "01",
   "rule": "01.17",
-  "width_px": null,
-  "alt": "Cloture, a Senate vote to end debate, takes 60 votes for most legislation. Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
+  "width_px": 600,
+  "alt": "The filibuster lets senators keep debating a bill until 60 of them vote to end debate, a vote called cloture. Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
   "illustrative": false,
   "notes": ""
  },
  "s-01-17-failure": {
   "chapter": "01",
   "rule": "01.17",
-  "width_px": null,
+  "width_px": 600,
   "alt": "An illustrative line: The filibuster lets a minority of senators hold the country hostage.",
   "illustrative": true,
   "notes": ""
@@ -326,7 +341,7 @@
  "s-01-18-correct": {
   "chapter": "01",
   "rule": "01.18",
-  "width_px": null,
+  "width_px": 600,
   "alt": "A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red.",
   "illustrative": false,
   "notes": ""
@@ -334,7 +349,7 @@
  "s-01-18-failure": {
   "chapter": "01",
   "rule": "01.18",
-  "width_px": null,
+  "width_px": 600,
   "alt": "The same headline with the second half, the paycheck, also set in red.",
   "illustrative": false,
   "notes": "",
@@ -346,7 +361,7 @@
  "s-01-19-correct": {
   "chapter": "01",
   "rule": "01.19",
-  "width_px": null,
+  "width_px": 600,
   "alt": "Two hinge headlines from two pieces. One: The bus rider and the driver on one route. The next: The driver and the bus rider at one hearing. The order swaps, and each pair shares a route or a hearing.",
   "illustrative": false,
   "notes": ""
@@ -354,7 +369,7 @@
  "s-01-19-failure": {
   "chapter": "01",
   "rule": "01.19",
-  "width_px": null,
+  "width_px": 600,
   "alt": "A hinge headline: Us and them.",
   "illustrative": false,
   "notes": ""
@@ -362,15 +377,15 @@
  "s-01-20-correct": {
   "chapter": "01",
   "rule": "01.20",
-  "width_px": null,
-  "alt": "A hinge headline: Both parties' voters and the stock trading ban. Deck: In a May 2023 survey, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey came three years before the House and Senate votes.",
+  "width_px": 600,
+  "alt": "A hinge headline: Democratic voters and Republican voters on a stock trading ban. Deck: In a May 2023 survey, 88 percent of Democrats and 87 percent of Republicans favored a ban on stock trading by members of Congress. Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
   "illustrative": false,
   "notes": ""
  },
  "s-01-20-failure": {
   "chapter": "01",
   "rule": "01.20",
-  "width_px": null,
+  "width_px": 600,
   "alt": "A hinge headline: The left and the right.",
   "illustrative": false,
   "notes": ""
@@ -378,31 +393,31 @@
  "s-01-21-correct": {
   "chapter": "01",
   "rule": "01.21",
-  "width_px": null,
-  "alt": "Six kickers, one per content label, each with a headline: Explainer, Tracker, Analysis, Report, Act · How to take part, and Our position followed by Act. The last three headlines are illustrative.",
-  "illustrative": true,
+  "width_px": 600,
+  "alt": "Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? Tracker, Congress: Stop Insider Trading Act Tracker. Analysis, work and pay: Does pay rise with productivity? Report, state legislatures, illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label.",
+  "illustrative": false,
   "notes": ""
  },
  "s-01-21-failure": {
   "chapter": "01",
   "rule": "01.21",
-  "width_px": null,
-  "alt": "An illustrative kicker reading Must read and Breaking above a position headline, with no content label.",
-  "illustrative": true,
+  "width_px": 600,
+  "alt": "Three kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts.",
+  "illustrative": false,
   "notes": ""
  },
  "s-01-22-correct": {
   "chapter": "01",
   "rule": "01.22",
-  "width_px": null,
-  "alt": "An illustrative process piece at the site's reading width. Kicker: Act · How to take part. Headline: Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting. Who decides: five county supervisors, and three votes pass the change. What each side has said: supporters said more homes would ease rents; opponents said sewers were sized for fewer homes. After the hinge divider, What you can do: send a written comment by 5 p.m. Wednesday, March 3, 2027, or speak for two minutes at 6 p.m. Tuesday, March 9, 2027. One red button: Send a comment. A link to the Accessory Homes Tracker.",
+  "width_px": 600,
+  "alt": "An illustrative process piece. Kicker: Act, how to take part. Headline: Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting. Who decides: five county supervisors, and three votes pass the change. What each side has said: supporters said more homes would ease rents; opponents said sewers were sized for fewer homes. After the hinge divider, What you can do: send a written comment by 5 p.m. Wednesday, March 3, 2027, or speak for two minutes at 6 p.m. Tuesday, March 9, 2027. One red button: Send a comment. A line pointing to the Backyard Cottages Tracker.",
   "illustrative": true,
   "notes": ""
  },
  "s-01-22-failure": {
   "chapter": "01",
   "rule": "01.22",
-  "width_px": null,
+  "width_px": 600,
   "alt": "The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes.",
   "illustrative": true,
   "notes": ""
@@ -410,16 +425,16 @@
  "s-01-23-correct": {
   "chapter": "01",
   "rule": "01.23",
-  "width_px": null,
-  "alt": "An illustrative position piece. The kicker opens with a Charcoal label, Our position, then Act. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, the disclosure: Oath & Action supports S. 214; read our explainer first. One red button: Ask your senator to vote yes. Footer: decided by the editorial board, February 26, 2027; no funder reviewed this piece; all positions are in the position log.",
+  "width_px": 600,
+  "alt": "An illustrative position piece. The kicker opens with a Charcoal label, Our position, then the topic, committee votes. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, who decided: our editorial board, February 26, 2027; no funder has a stake in S. 214 or saw the piece before it ran; a link to the bios of the board members who decided. One red button: Ask your senator to vote yes. A footer pointing to our explainer on S. 214 and to the position log.",
   "illustrative": true,
   "notes": ""
  },
  "s-01-23-failure": {
   "chapter": "01",
   "rule": "01.23",
-  "width_px": null,
-  "alt": "The same piece with the Our position label moved to the footer, and with no case against, no open questions and no disclosure above the ask.",
+  "width_px": 600,
+  "alt": "The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask.",
   "illustrative": true,
   "notes": ""
  },
@@ -427,92 +442,49 @@
   "chapter": "01",
   "rule": "01.24",
   "width_px": null,
-  "alt": "Five product names: Oath & Action, the weekly briefing. Who Do They Answer To? The Oath & Action Systems Atlas. Stock Trading Ban Tracker. Reform 101 / Cloture. Oath & Action Report 3: How state committees record their votes (illustrative).",
+  "alt": "Five product names, each with what it is: Oath & Action, the weekly briefing, the newsletter. Who Do They Answer To? The Oath & Action Systems Atlas, the one product named as a question. Stop Insider Trading Act Tracker, named for the bill it follows. Reform 101 / Cloture, an explainer. Oath & Action Report 3: How state committees record their votes, March 2027, numbered and dated, labeled Illustrative.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-24-failure": {
   "chapter": "01",
   "rule": "01.24",
   "width_px": null,
-  "alt": "Three names that break the rule: Rent & Reform Tracker, with an ampersand; The Senator Scorecard, which grades officials; and Dispatch from the Front, the fifth edition's series name, a war metaphor.",
+  "alt": "Three names that break the rule. Rent & Reform Tracker, labeled Illustrative, with an ampersand. The Senator Scorecard, labeled Illustrative, which grades officials. Dispatch from the Front, our fifth edition's series name, a war metaphor.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "readable": true
  },
  "s-01-founding-line": {
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "A record card. Our founding line, kept as a record: From spectators to stewards. Edition 4.2 lists it as the historical tagline, retired from current applications. It has no role as a brand line today.",
+  "alt": "A record card. Our founding line, kept as a record: From spectators to stewards. Our fourth edition lists it as the historical tagline, retired from current applications. It has no role as a brand line today.",
   "illustrative": false,
   "notes": "",
+  "readable": true,
   "label": "Our founding line"
  },
  "s-02-lines": {
   "chapter": "02",
   "rule": null,
   "width_px": null,
-  "alt": "A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line approved at Gate 1, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. Below it, a record of four retired lines from the fifth edition.",
+  "alt": "A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. Below it, a record of four retired lines from our fifth edition.",
   "illustrative": false,
-  "notes": "Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The four retired lines are DR-77's, shown only as a labeled record.",
-  "interactive": true,
+  "notes": "Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The four retired lines are DR-77's, shown only as a labeled record. CP-S9: colophon and the four-dot row explained at first use.",
+  "readable": true,
   "label": "The brand lines"
  },
- "s-02-index": {
+ "s-02-about": {
   "chapter": "02",
   "rule": null,
   "width_px": null,
-  "alt": "The writing section's opening: These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Twelve house rules for every page come with them. Our founder and editor, Dustin Cathcart, set these rules for everything Oath & Action publishes. Sixteen of the 21 rules quote our own work and rewrite the line to pass every rule on the page. Where we found none, we wrote one, and anything we invented carries the Illustrative label. A rule index in five groups with links to each of the 21 writing rules, and the 12 house rules. A legend: a dotted underline marks what a rule removes and a solid underline the repair.",
+  "alt": "These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Twelve house rules for every page come with them. Our founder and editor, Dustin Cathcart, set these rules for everything Oath & Action publishes. Sixteen of the 21 rules quote our own work and rewrite the line to pass every rule on the page. Where we found none, we wrote one, and anything we invented carries the Illustrative label. Headings, labels, captions and chart keys may be phrases; every other line on the page is a full sentence. A key: a dotted underline marks what a rule removes, a solid underline marks the repair, and the Illustrative label marks a line invented for the example. The lines we quote come from our brand guide’s fifth edition, our systems atlas, Who Do They Answer To?, an interactive version of that atlas and early drafts of this guide.",
   "illustrative": false,
-  "notes": "Title, deck, third narrative paragraph, index intro, scope and sources note verbatim from the approved content file. The count sentence follows Board 5's wording with the number spelled out (H06).",
-  "interactive": true,
+  "notes": "C-S11: the writing section's title, deck, third narrative paragraph, scope and sources note, verbatim from the approved content file. The rule index is now the shell's, built from the chapter's groups, so the index intro sentence and the group openers are retired. The legend moves here from the group openers (AX-S14).",
+  "readable": true,
   "label": "How Oath & Action writes"
- },
- "s-02-group-1": {
-  "chapter": "02",
-  "rule": null,
-  "width_px": null,
-  "alt": "Group 1 of the writing rules: Sound like a person talking. Write the sentence you would say across a kitchen table, with the actor up front and a rhythm that keeps changing.",
-  "illustrative": false,
-  "notes": "",
-  "label": "Writing rules, group 1 of 5"
- },
- "s-02-group-2": {
-  "chapter": "02",
-  "rule": null,
-  "width_px": null,
-  "alt": "Group 2 of the writing rules: Put the point first and stop. Open with what the reader came for, and end when the facts run out.",
-  "illustrative": false,
-  "notes": "",
-  "label": "Writing rules, group 2 of 5"
- },
- "s-02-group-3": {
-  "chapter": "02",
-  "rule": null,
-  "width_px": null,
-  "alt": "Group 3 of the writing rules: Say what is so. State what is true in plain sentences, and leave out the shapes writers use for effect.",
-  "illustrative": false,
-  "notes": "",
-  "label": "Writing rules, group 3 of 5"
- },
- "s-02-group-4": {
-  "chapter": "02",
-  "rule": null,
-  "width_px": null,
-  "alt": "Group 4 of the writing rules: Cut the padding. Take out the words that add weight and no meaning.",
-  "illustrative": false,
-  "notes": "",
-  "label": "Writing rules, group 4 of 5"
- },
- "s-02-group-5": {
-  "chapter": "02",
-  "rule": null,
-  "width_px": null,
-  "alt": "Group 5 of the writing rules: Marks and numbers. Set dashes, dates, numbers and signs the same way on every page. House rules in this group: H05 Write dates in words, H06 Spell out numbers under ten, H07 Use the true minus sign.",
-  "illustrative": false,
-  "notes": "",
-  "interactive": true,
-  "label": "Writing rules, group 5 of 5"
  },
  "s-02-1-pair": {
   "chapter": "02",
@@ -526,9 +498,9 @@
   "chapter": "02",
   "rule": "02.1",
   "width_px": null,
-  "alt": "The pattern: Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow.. In the before, the words the rule removes: Make the point of responsibility visible.",
+  "alt": "The fault: Writing for the eye: phrases a listener cannot follow without seeing them on the page, such as “the point of responsibility”. In the before, the words the rule removes: Make the point of responsibility visible.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-2-pair": {
   "chapter": "02",
@@ -542,9 +514,9 @@
   "chapter": "02",
   "rule": "02.2",
   "width_px": null,
-  "alt": "The pattern: Active voice: a sentence that names the actor first, as in “The council passed the budget.” Passive voice puts the thing acted on first and often hides the actor, as in “The budget was passed.”. In the before, the words the rule removes: is approved by.",
+  "alt": "The fault: Passive voice: a sentence that puts the thing acted on first and often hides the actor, as in “The budget was passed.” In the before, the words the rule removes: is approved by.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-3-pair": {
   "chapter": "02",
@@ -558,9 +530,9 @@
   "chapter": "02",
   "rule": "02.3",
   "width_px": null,
-  "alt": "The pattern: a run of sentences the same size. In the before, the words the rule removes: FTC; its pending consent orders.",
+  "alt": "The fault: A run of sentences the same size: the metronome this rule warns about. In the before, the words the rule removes: FTC; its pending consent orders.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-4-pair": {
   "chapter": "02",
@@ -574,9 +546,9 @@
   "chapter": "02",
   "rule": "02.4",
   "width_px": null,
-  "alt": "The pattern: Parataxis: setting clauses or sentences side by side with no words to link them, which as a rhythm device chops one thought into short beats.. In the before, the words the rule removes: . Find.",
+  "alt": "The fault: Parataxis: setting clauses or sentences side by side with no words to link them, which as a rhythm device chops one thought into short beats. In the before, the words the rule removes: . Find.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-5-pair": {
   "chapter": "02",
@@ -590,9 +562,9 @@
   "chapter": "02",
   "rule": "02.5",
   "width_px": null,
-  "alt": "The pattern: Throat-clearing opener: a sentence that announces what is coming in place of saying it. Rhetorical crutch: a stock phrase that props up a sentence and adds no meaning, such as “the truth is” or “make no mistake”.. In the before, the words the rule removes: Here is how to weigh in..",
+  "alt": "The fault: Throat-clearing opener: a sentence that announces what is coming in place of saying it. Rhetorical crutch: a stock phrase that props up a sentence and adds no meaning, such as “the truth is” or “make no mistake”. In the before, the words the rule removes: Here is how to weigh in..",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-6-pair": {
   "chapter": "02",
@@ -606,9 +578,9 @@
   "chapter": "02",
   "rule": "02.6",
   "width_px": null,
-  "alt": "The pattern: Setup and payoff: holding back the point so it lands as a reveal, often after a colon or a teaser sentence.. In the before, the words the rule removes: This is where; :.",
+  "alt": "The fault: Setup and payoff: holding back the point so it lands as a reveal, often after a colon or a teaser sentence. In the before, the words the rule removes: This is where; :.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-7-pair": {
   "chapter": "02",
@@ -622,9 +594,9 @@
   "chapter": "02",
   "rule": "02.7",
   "width_px": null,
-  "alt": "The pattern: Landing sentence: a closing line written to make a paragraph land with a flourish. Paragraph pinning: ending paragraph after paragraph on a short line that restates its point. Summary beat: a sentence that tells readers what they have read.. In the before, the words the rule removes: Accountability depends on a real chance of losing.; When few officials face a competitive race, the pressure to serve the whole electorate fades..",
+  "alt": "The fault: Landing sentence: a closing line written to make a paragraph land with a flourish. Paragraph pinning: ending paragraph after paragraph on a short line that restates its point. Summary beat: a sentence that tells readers what they have read. In the before, the words the rule removes: Accountability depends on a real chance of losing.; When few officials face a competitive race, the pressure to serve the whole electorate fades..",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-8-pair": {
   "chapter": "02",
@@ -638,9 +610,9 @@
   "chapter": "02",
   "rule": "02.8",
   "width_px": null,
-  "alt": "The pattern: Slogan-like closing sentence: a short, quotable line at the end of a piece that sounds like an advertisement and carries no fact.. In the before, the words the rule removes: Put the promise to work..",
+  "alt": "The fault: Slogan-like closing sentence: a short, quotable line at the end of a piece that sounds like an advertisement and carries no fact. In the before, the words the rule removes: Put the promise to work..",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-9-pair": {
   "chapter": "02",
@@ -654,9 +626,9 @@
   "chapter": "02",
   "rule": "02.9",
   "width_px": null,
-  "alt": "The pattern: Corrective negation: saying what something is not before saying what it is, as in “X, not Y” or “not X but Y”. Antithesis: two opposed ideas set against each other in balanced phrases.. In the before, the words the rule removes: the process, not the idea of it.",
+  "alt": "The fault: Corrective negation: saying what something is not before saying what it is, as in “X, not Y” or “not X but Y”. Antithesis: two opposed ideas set against each other in balanced phrases. In the before, the words the rule removes: the process, not the idea of it.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-10-pair": {
   "chapter": "02",
@@ -670,9 +642,9 @@
   "chapter": "02",
   "rule": "02.10",
   "width_px": null,
-  "alt": "The pattern: Contrasting pair: two short matched phrases placed side by side for their rhythm. A hinge headline such as “The zoning code & the rent.” stays, since it joins a rule to its result under its own rules in chapter 04.. In the before, the words the rule removes: . Spoken testimony counts more.",
+  "alt": "The fault: Contrasting pair: two short matched phrases placed side by side for their rhythm. A hinge headline such as “The zoning code & the rent.” stays, since it joins a rule to its result under its own rules in chapter 04. In the before, the words the rule removes: . Spoken testimony counts more.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-11-pair": {
   "chapter": "02",
@@ -686,9 +658,9 @@
   "chapter": "02",
   "rule": "02.11",
   "width_px": null,
-  "alt": "The pattern: Negative parallelism: a run of matched negatives, such as “no this, no that”. Negative anaphora: starting clause after clause with the same negative word.. In the before, the words the rule removes: No crest, no shield, no founding date, no ring of words.",
+  "alt": "The fault: Negative parallelism: a run of matched negatives, such as “no this, no that”. Negative anaphora: starting clause after clause with the same negative word. In the before, the words the rule removes: No crest, no shield, no founding date, no ring of words.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-12-pair": {
   "chapter": "02",
@@ -702,9 +674,9 @@
   "chapter": "02",
   "rule": "02.12",
   "width_px": null,
-  "alt": "The pattern: Rule of three, or rhetorical triplet: grouping words or phrases in threes because three sounds finished. A plain list of three is fine when the facts have three parts.. In the before, the words the rule removes: the rule, the gap, the ask.",
+  "alt": "The fault: Rule of three, or rhetorical triplet: grouping words or phrases in threes because three sounds finished. A plain list of three is fine when the facts have three parts. In the before, the words the rule removes: the rule, the gap, the ask.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-13-pair": {
   "chapter": "02",
@@ -718,9 +690,9 @@
   "chapter": "02",
   "rule": "02.13",
   "width_px": null,
-  "alt": "The pattern: Parallel structure: sentences built on the same frame one after another, such as a run that each starts with “We”.. In the before, the words the rule removes: We explain the rules. We expose the gaps. We connect people to action. We act..",
+  "alt": "The fault: Parallel structure: sentences built on the same frame one after another, such as a run that each starts with “We”. In the before, the words the rule removes: We explain the rules. We expose the gaps. We connect people to action. We act..",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-14-pair": {
   "chapter": "02",
@@ -734,9 +706,9 @@
   "chapter": "02",
   "rule": "02.14",
   "width_px": null,
-  "alt": "The pattern: Stacked noun phrase: three or more nouns in a row, each describing the next, with the main noun last.. In the before, the words the rule removes: Report cover kicker.",
+  "alt": "The fault: Stacked noun phrase: three or more nouns in a row, each describing the next, with the main noun last. In the before, the words the rule removes: Report cover kicker.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-15-pair": {
   "chapter": "02",
@@ -750,9 +722,9 @@
   "chapter": "02",
   "rule": "02.15",
   "width_px": null,
-  "alt": "The pattern: Nominalization: a verb or adjective turned into a noun, such as “allocation” from “allocate” or “implementation” from “implement”.. In the before, the words the rule removes: An allocation; establishes no claim about service quality.",
+  "alt": "The fault: Nominalization: a verb or adjective turned into a noun, such as “allocation” from “allocate” or “implementation” from “implement”. In the before, the words the rule removes: An allocation; establishes no claim about service quality.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-16-pair": {
   "chapter": "02",
@@ -766,9 +738,9 @@
   "chapter": "02",
   "rule": "02.16",
   "width_px": null,
-  "alt": "The pattern: Hedging qualifier: a word that softens a claim with no reason given, such as “perhaps” or “somewhat”. Grade verbs work differently: for a claim graded plausible, “may” or “can” reports the grade, as H08 requires.. In the before, the words the rule removes: could perhaps help; somewhat in some places.",
+  "alt": "The fault: Hedging qualifier: a word that softens a claim with no reason given, such as “perhaps” or “somewhat”. Grade verbs work differently: for a claim graded plausible, “may” or “can” reports the grade, as H08 requires. In the before, the words the rule removes: could perhaps help; somewhat in some places.",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-17-pair": {
   "chapter": "02",
@@ -782,9 +754,9 @@
   "chapter": "02",
   "rule": "02.17",
   "width_px": null,
-  "alt": "The pattern: Filler intensifier: a word meant to add emphasis that adds no information.. In the before, the words the rule removes: really.",
+  "alt": "The fault: Filler intensifier: a word meant to add emphasis that adds no information. In the before, the words the rule removes: really.",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-18-pair": {
   "chapter": "02",
@@ -798,9 +770,9 @@
   "chapter": "02",
   "rule": "02.18",
   "width_px": null,
-  "alt": "The pattern: Corporate register: the vocabulary of business memos. The atlas glossary’s “leverage point”, a systems term from Donella Meadows, is a defined term and stays.. In the before, the words the rule removes: leverage; funds; expand broadband access.",
+  "alt": "The fault: Corporate register: the vocabulary of business memos. The atlas glossary’s “leverage point”, a systems term from Donella Meadows, is a defined term and stays. In the before, the words the rule removes: leverage; funds; expand broadband access.",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-19-pair": {
   "chapter": "02",
@@ -814,9 +786,9 @@
   "chapter": "02",
   "rule": "02.19",
   "width_px": null,
-  "alt": "The pattern: Performed enthusiasm: excitement acted out on the page in place of a reason to care.. In the before, the words the rule removes: Make your voice heard!.",
+  "alt": "The fault: Performed enthusiasm: excitement acted out on the page in place of a reason to care. In the before, the words the rule removes: Make your voice heard!.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-20-pair": {
   "chapter": "02",
@@ -830,9 +802,9 @@
   "chapter": "02",
   "rule": "02.20",
   "width_px": null,
-  "alt": "The pattern: Inflated adjective: a word that claims more than its evidence, such as “stunning”, or a name wider than what was measured.. In the before, the words the rule removes: eligible voters.",
+  "alt": "The fault: Inflated adjective: a word that claims more than its evidence, such as “stunning”, or a name wider than what was measured. In the before, the words the rule removes: eligible voters.",
   "illustrative": false,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-21-pair": {
   "chapter": "02",
@@ -846,24 +818,24 @@
   "chapter": "02",
   "rule": "02.21",
   "width_px": null,
-  "alt": "The pattern: Em dash: the long dash, as wide as a capital M, that writers use to break into a sentence or tack a thought onto its end.. In the before, the words the rule removes: (em dash).",
+  "alt": "The fault: Em dash: the long dash, as wide as a capital M, that writers use to break into a sentence or tack a thought onto its end. In the before, the words the rule removes: (em dash).",
   "illustrative": true,
-  "notes": "The pattern named in the approved terms line, and the before with only its fault in full ink."
+  "notes": "The fault the rule removes, named, and the before with only its fault in full ink. W01 and W02 name the fault in words of their own, since their approved terms lines define the good habit (CP-M3)."
  },
  "s-02-22-correct": {
   "chapter": "02",
   "rule": "02.22",
   "width_px": null,
-  "alt": "The 12 house rules in a table, each with what it asks and an example: H01 to H12, with H08's before and after and its table of evidence grades and title verbs.",
+  "alt": "The 12 house rules in a table, each with what it asks and an example: H01 to H12, with H08's before and after, then H08's evidence grades in a table of their own, each grade with what it means and the title verb it takes.",
   "illustrative": false,
-  "notes": "Every rule, example and source line verbatim from the approved content file.",
-  "interactive": true
+  "notes": "Every rule, example and source line verbatim from the approved content file, except H10's qualification line, which takes the erratum approved as D2-256. C-M5: H08's grades run full width in their own table under H08's row.",
+  "readable": true
  },
  "s-02-22-failure": {
   "chapter": "02",
   "rule": "02.22",
   "width_px": null,
-  "alt": "An illustrative draft paragraph that breaks eight house rules, each fault underlined and tagged with the rule it breaks: a bare ID R10, a hyphen used as a minus sign, a numeric date, a statistic with no source, a party name set in red, the figure 3 in prose, one side's terms for two contested policies, and an invented person and quote with no Illustrative label.",
+  "alt": "Failure case: do not publish. An illustrative draft paragraph that breaks eight house rules, each fault underlined and tagged with the rule it breaks: a bare ID R10, a hyphen used as a minus sign, a numeric date, a statistic with no source, a party name set in red, the figure 3 in prose, one side's terms for two contested policies, and an invented person and quote with no Illustrative label.",
   "illustrative": true,
   "notes": "",
   "check_exempt": [
@@ -878,21 +850,21 @@
   "alt": "Ten questions to ask before you publish, each worded so that yes means pass: 1. Could you say each sentence aloud to a neighbor, with the person who acts named first? 2. Do your sentences change in length and shape as the paragraph goes on? 3. Does the first sentence give the reader a fact or a step, and does the last one end on a fact? 4. Does each sentence say what something is, with no matched pair or “not this, but that” turn? 5. Have you turned every noun that hides a verb back into its verb, and pulled apart every stack of nouns? 6. Does each claim sit at the strength its evidence grade allows, with no word added for force or caution? 7. Are the locked lines exact, and does every invented line, person, place or figure carry the Illustrative label? 8. Does every public policy statistic carry its full source line? 9. Are parties named in words, in the same ink as the text, and is each contested policy called by its neutral name? 10. Are months written as words, numbers under ten spelled out, minus signs true and em dashes gone?",
   "illustrative": false,
   "notes": "",
-  "interactive": true,
+  "readable": true,
   "label": "Before you publish"
  },
  "s-02-23-correct": {
   "chapter": "02",
   "rule": "02.23",
   "width_px": null,
-  "alt": "Four places, each with its line. Home page: the wordmark with the reader promise beneath it. About page: the mission and the voice line. Colophon: the editorial commitment, quoted. Newsletter sign-off: That's the briefing for November 6, then the tagline, A country that answers to its people.",
+  "alt": "Four places, each with its line. Home page: the wordmark with the reader promise beneath it. About page: the mission and the voice line. Colophon, the note on who makes our work: the editorial commitment, quoted. Newsletter, the last lines of an issue: an illustrative dated step, Sign up with the board clerk by April 10 to speak before the vote, then the tagline, A country that answers to its people.",
   "illustrative": false,
   "notes": ""
  },
  "s-02-23-failure": {
   "chapter": "02",
   "rule": "02.23",
-  "width_px": null,
+  "width_px": 480,
   "alt": "The wordmark with From spectators to stewards set beneath it in the tagline's slot.",
   "illustrative": false,
   "notes": ""
@@ -904,21 +876,21 @@
   "alt": "Our fifth edition's four qualities of voice and where each now lives. Plain and active: writing rules W01 to W04. Sourced: house rule H04 and chapter 13. Nonpartisan: Rules 01.1 to 01.20 with house rules H10 and H12. One next step: Rule 02.24 and Rules 01.22 and 01.23.",
   "illustrative": false,
   "notes": "",
-  "interactive": true,
+  "readable": true,
   "label": "How we sound"
  },
  "s-02-24-correct": {
   "chapter": "02",
   "rule": "02.24",
-  "width_px": null,
-  "alt": "An illustrative ending. After the hinge divider, What you can do: send a written comment to the Alder County Board of Supervisors by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment.",
+  "width_px": 600,
+  "alt": "An illustrative newsletter ending, on a 600 px email column. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people.",
   "illustrative": true,
   "notes": ""
  },
  "s-02-24-failure": {
   "chapter": "02",
   "rule": "02.24",
-  "width_px": null,
+  "width_px": 600,
   "alt": "The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date.",
   "illustrative": true,
   "notes": "",
@@ -931,15 +903,15 @@
   "chapter": "02",
   "rule": "02.25",
   "width_px": null,
-  "alt": "A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes the specific rule: in 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot. A feeling, People are frustrated with Congress, becomes a mechanism: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. A side, One party blocked the bill, becomes the structure: the stock trading ban needed 60 votes to move forward in the Senate, and it got 53.",
+  "alt": "A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes the specific rule: in 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot. A feeling, People are frustrated with Congress, becomes a mechanism: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. A side, One party blocked the bill, becomes the structure: H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. It needed 60 votes to move forward in the Senate and got 53.",
   "illustrative": false,
-  "notes": "Fifth-edition table, kept at Gate 0. Its unsourced 23-states line is replaced by a sourced count of working citizen-initiative states; the hearing line carries the Illustrative label; the cloture line now uses the Senate's September 30, 2026 vote.",
-  "interactive": true
+  "notes": "Fifth-edition table, kept at Gate 0. Row one is held for round two (DR-99): a mechanism from the atlas that explains the claim replaces the 23-states line, which moves to Rule 01.5's map. Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1); the research lead's check of the bill and the Senate vote line follow in round two.",
+  "readable": true
  },
  "s-02-25-failure": {
   "chapter": "02",
   "rule": "02.25",
-  "width_px": null,
+  "width_px": 340,
   "alt": "An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!",
   "illustrative": true,
   "notes": ""
@@ -948,15 +920,15 @@
   "chapter": "02",
   "rule": "02.26",
   "width_px": null,
-  "alt": "A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge, lockmark, lever, Signal Grid and evidence grade.",
+  "alt": "A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge, lockmark, lever, which is a place where one change has wide effects, Signal Grid and evidence grade.",
   "illustrative": false,
-  "notes": "Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's. Series routes move to chapter 08.",
-  "interactive": true
+  "notes": "Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's. Series routes move to chapter 08. CP-S7: lever joins W04's definition to the lockmark's node.",
+  "readable": true
  },
  "s-02-26-failure": {
   "chapter": "02",
   "rule": "02.26",
-  "width_px": null,
+  "width_px": 600,
   "alt": "An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system.",
   "illustrative": true,
   "notes": ""
@@ -964,7 +936,7 @@
  "s-02-27-correct": {
   "chapter": "02",
   "rule": "02.27",
-  "width_px": null,
+  "width_px": 600,
   "alt": "Four hinge headlines, each a rule and then its result: The zoning code and the rent. The filing deadline and the ballot. The coverage rule and the copay. The records law and the answer. Each ampersand is ampersand B in red.",
   "illustrative": false,
   "notes": ""
@@ -972,8 +944,8 @@
  "s-02-27-failure": {
   "chapter": "02",
   "rule": "02.27",
-  "width_px": null,
-  "alt": "Two failing hinge headlines. The hearing and the vote, from the fifth edition, names two events. The problem and the solution names no rule.",
+  "width_px": 600,
+  "alt": "Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule.",
   "illustrative": false,
   "notes": ""
  }

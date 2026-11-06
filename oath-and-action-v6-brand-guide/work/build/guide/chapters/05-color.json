@@ -5,13 +5,13 @@
   "part": "Foundations",
   "instruction": "Choose a surface first, then the text and graphic colors that pass on it.",
   "intro": [
-    "Oath & Action works in seven colors, and each one has a job. Newsprint, a warm off-white, is the page most of our work sits on, and Charcoal carries the words. Pillar Red marks one thing in each view, while Prussian, Stone, Verdigris and White support the rest.",
-    "Every pair in this chapter carries a contrast ratio: how far apart two colors sit in lightness, from 1 to 1 for the same color up to 21 to 1 for black on white, by the formula in the Web Content Accessibility Guidelines (WCAG). We measured each ratio on the token values. Pick the surface, and the tables tell you which text and marks can sit on it."
+    "Oath & Action works in seven colors, and each one has a job. Newsprint, a warm off-white, is the page most of our work sits on, and Charcoal carries the words. Pillar Red marks the one thing a reader should see first in each view, meaning each screen, card, slide or printed page. The other four do narrower work: Prussian, our dark blue, holds panels of dates and figures, Stone draws hairlines, Verdigris, a muted green, shows success and focus, and White serves specimens and email.",
+    "Every pair in this chapter carries a contrast ratio, a measure of how far apart two colors sit in lightness. It runs from 1 to 1 for the same color up to 21 to 1 for black on white, by the formula in the Web Content Accessibility Guidelines (WCAG). We measured each ratio on the token values, the exact colors our code names. Pick the surface first, and the tables tell you which text and marks can sit on it."
   ],
   "rules": [
     {
       "id": "05.1",
-      "title": "Newsprint covers most of every page.",
+      "title": "Cover most of every view in Newsprint.",
       "rule": [
         "Newsprint covers 60 to 85 percent of every view. A dark panel in Charcoal or Prussian marks a turn in the reading, so a section holds one at most, and Pillar Red stays within 5 percent. Across a body of work, the seven colors keep the shares in the palette sheet below this rule."
       ],
@@ -26,17 +26,17 @@
       ],
       "why": {
         "text": [
-          "A warm, light page keeps long reading calm, and readers come to know Newsprint as ours before they read a word. A dark panel works as a signal only while it stays rare: each one tells the reader the section has turned, for example from an explanation to the dates that follow from it."
+          "A warm, light page keeps long reading calm, and readers come to know Newsprint as ours before they read a word. A dark panel works as a signal only while it stays rare. Each one tells the reader the section has turned, for example from an explanation to the dates that follow from it."
         ],
         "basis": "Design judgment"
       },
       "correct": {
         "specimen": "s-05-1-correct",
-        "caption": "One view at true size: a phone page about a school board vote. Measured from the rendered page, Newsprint covers 77 percent, the one Prussian panel 13 and Pillar Red 3, counting the wordmark’s ampersand. Charcoal covers 4 percent as type and rules."
+        "caption": "One view at true size: a phone page about a school board vote. Measured from the rendered page, Newsprint covers 76 percent. Charcoal covers 18 percent as the one dark panel, the type and the rules, and Pillar Red 3 percent, counting the wordmark’s ampersand."
       },
       "failure": {
         "specimen": "s-05-1-failure",
-        "caption": "<strong>Fails the proportion.</strong> The same page set on Charcoal and Prussian. Newsprint falls to 9 percent, dark surfaces take 88, and no panel can mark a turn because the whole page is dark. Every text pair here still passes; the page fails as a composition."
+        "caption": "<strong>Fails the proportion.</strong> The same page set on Charcoal and Prussian. Newsprint falls to 10 percent and dark surfaces take 86, so no panel can mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how much of the view is dark."
       },
       "specs": [
         {
@@ -100,9 +100,9 @@
     },
     {
       "id": "05.2",
-      "title": "Text sits only on color pairs that pass.",
+      "title": "Set text only on color pairs that pass.",
       "rule": [
-        "Text under 24 px, or under 18.66 px in bold, needs a contrast ratio of 4.5 to 1 against its surface. Larger text needs 3 to 1. Take the primary and secondary text tokens for the surface, and read any other pair’s ratio in the tables below. Never judge a pair by eye."
+        "Text under 24 px, or under 18.66 px in bold, needs a contrast ratio of 4.5 to 1 against its surface, and larger text needs 3 to 1. Take the primary and secondary text tokens for the surface. For any other pair, read its measured ratio in the tables below before you use it."
       ],
       "tokens": [
         "oa.color.text.primary.onNewsprint",
@@ -117,7 +117,7 @@
       "why": {
         "text": [
           "WCAG 2.2 success criterion 1.4.3 Contrast (Minimum) sets 4.5 to 1 for text and 3 to 1 for large text, which it defines as 18 point, or 14 point bold: 24 px and 18.66 px on screen. Readers with low vision need that margin, and so does anyone reading a phone in sunlight.",
-          "Stone, the secondary text color in our fifth edition, measures 4.29 to 1 on Newsprint. Secondary text on light surfaces now takes Deep Stone, Stone mixed 18 percent toward Charcoal, at 5.49 to 1. On dark surfaces it takes Dim Newsprint."
+          "Stone, the secondary text color in our fifth edition, measures 4.29 to 1 on Newsprint. Secondary text on light surfaces now takes Deep Stone, Stone mixed 18 percent toward Charcoal, at 5.49 to 1. On dark surfaces it takes Dim Newsprint, Newsprint mixed 25 percent toward Charcoal, at 7.26 to 1 on Charcoal and 5.14 on Prussian."
         ],
         "basis": "WCAG 2.2 SC 1.4.3"
       },
@@ -190,7 +190,7 @@
     },
     {
       "id": "05.3",
-      "title": "Each view carries one working red.",
+      "title": "Give each view one working red.",
       "rule": [
         "The wordmark’s ampersand and the lockmark’s lever are signature red and do not count, and neither do the ampersands inside the hinge diagram and the hinge-circle badge, which are identity marks. The hinge diagram never shares a view with the wordmark and never stands in for the hinge divider. An icon’s red accent counts as signature red when the icon stands alone, as an app tile, an avatar or a single feature icon. In a row or a menu, icons go one color and only the current one keeps its red, and that red counts as signature red. Each view (one screen, card, slide or printed page) then carries one working red, in this order of precedence: an error the reader must fix; the step a reader can take now; the one point the headline names, which in a systems figure is where a reform acts. One job may take several marks, such as each target of one reform. A hinge headline’s ampersand uses the view’s working red. The hinge divider’s ampersand takes its surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. In the guide itself, specimens, labeled failure cases and palette swatches do not count. Red never sits on Prussian."
       ],
@@ -205,13 +205,13 @@
       "why": {
         "text": [
           "One red tells the eye where to go first. The order settles which mark gets it when two compete: a reader has to fix an error before taking a step, and a step a reader can take matters more than a point we want to make. Signature red is part of the marks themselves, so it never competes with the working red.",
-          "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue. On Newsprint it measures 2.96 to 1, so a working red mark there takes a Charcoal keyline (Rule 05.5)."
+          "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue. On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark (Rule 05.5)."
         ],
-        "basis": "Design judgment; decisions D2-01 and DR-66"
+        "basis": "Design judgment"
       },
       "correct": {
         "specimen": "s-05-3-correct",
-        "caption": "One view at true size, with two reds. The wordmark’s ampersand is signature red and does not count. The button is the working red: Sign up to speak is the step a reader can take now. The hinge divider’s ampersand takes Charcoal, the ink of Newsprint."
+        "caption": "One view at true size, with two reds. The wordmark’s ampersand is signature red and does not count. The button is the working red: Sign up to speak is the step a reader can take now. The hinge divider’s ampersand takes Charcoal, the ink of Newsprint. The dates sit on a Charcoal panel, and 24 px of Newsprint part it from the red button."
       },
       "failure": {
         "specimen": "s-05-3-failure",
@@ -279,7 +279,7 @@
     },
     {
       "id": "05.4",
-      "title": "Every state shows a word or a shape as well as a color.",
+      "title": "Show every state with a word or a shape as well as a color.",
       "rule": [
         "Each interface state, from hover to error, changes its text or its shape along with its color. A disabled control stays readable and says what will make it available. State colors are their own set, kept apart from identity color and from the chart palettes in chapter 14."
       ],
@@ -351,7 +351,7 @@
     },
     {
       "id": "05.5",
-      "title": "Marks that carry meaning pass 3 to 1, and red on Newsprint takes a Charcoal keyline.",
+      "title": "Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline.",
       "rule": [
         "An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its surface. Pillar Red measures 2.96 to 1 on Newsprint, so a red mark that carries meaning there takes a 1 px Charcoal keyline. Stone passes for marks on light surfaces, and a hairline that carries no meaning may sit lower."
       ],
@@ -365,13 +365,13 @@
       ],
       "why": {
         "text": [
-          "WCAG 2.2 success criterion 1.4.11 Non-text Contrast asks 3 to 1 for the parts of a graphic a reader needs and for the edges of controls. The keyline gives a red mark an edge the eye can find, at 13.29 to 1, while the fill keeps its red. Stone context bars measure 4.29 to 1, so they pass without help."
+          "WCAG 2.2 success criterion 1.4.11 Non-text Contrast asks 3 to 1 for the parts of a graphic a reader needs and for the edges of controls. The keyline gives a red mark an edge the eye can find, at 13.29 to 1, and the fill keeps its red. Stone context bars measure 4.29 to 1, so they pass without help."
         ],
         "basis": "WCAG 2.2 SC 1.4.11"
       },
       "correct": {
         "specimen": "s-05-5-correct",
-        "caption": "A finding at true size. The bar the title names takes the view’s working red with a 1 px Charcoal keyline at 13.29 to 1; the other sectors stay in Stone at 4.29 to 1."
+        "caption": "A finding at true size, 600 px wide. The bar the title names takes the view’s working red with a 1 px Charcoal keyline at 13.29 to 1; the other sectors stay in Stone at 4.29 to 1."
       },
       "failure": {
         "specimen": "s-05-5-failure",
@@ -420,7 +420,7 @@
     },
     {
       "id": "05.6",
-      "title": "A tint has one named job, and identity marks never use one.",
+      "title": "Give each tint one named job, and keep tints off identity marks.",
       "rule": [
         "A tint is one palette color mixed toward Newsprint or Charcoal by a recorded amount, for one job. It enters only as a token, with its measured ratio. The wordmark, the ampersand, the lockmark and the pillar marks stay in solid palette colors, and no color on a page comes from lowering opacity."
       ],
@@ -434,10 +434,10 @@
       ],
       "why": {
         "text": [
-          "Our fifth edition said “There are no tints.” Charts, error messages and selected rows need lighter and darker steps that no palette color supplies, so Edition 06 allows tints that meet five conditions: a measured need, a recorded mix, one job, a passing ratio on every surface it serves and a registered token.",
-          "We mix in OKLab, a color space where equal steps look equal, which keeps a tint’s hue steady as it lightens. Opacity gives no such control: Charcoal at 40 percent on Newsprint measures 2.48 to 1, where the Deep Stone token measures 5.49."
+          "Our fifth edition said “There are no tints.” Charts, error messages and selected rows need lighter and darker steps that no palette color supplies, so Edition 06 allows a tint that meets five conditions: a measured need, a recorded mix, one job, a passing ratio on every surface it serves and a registered token.",
+          "We mix in OKLab, a color space where equal steps look equal, which keeps a tint’s hue steady as it lightens. Opacity gives up that control. Charcoal at 40 percent on Newsprint measures 2.48 to 1, where the Deep Stone token measures 5.49."
         ],
-        "basis": "Design judgment; Master Brief section 10; decision D1-04"
+        "basis": "Design judgment"
       },
       "correct": {
         "specimen": "s-05-6-correct",
@@ -465,7 +465,7 @@
         },
         {
           "label": "Opacity",
-          "value": "Two decorative watermarks only, never text or marks",
+          "value": "Two decorative watermarks only",
           "token": "oa.opacity.watermarkOnLight"
         }
       ],
@@ -478,14 +478,14 @@
         "26"
       ],
       "builders": [
-        "Write a new tint as a recipe in the token source, never as a hex in a page: <code>mix('stone', 'newsprint', 0.70)</code>. The generator computes the hex and every ratio, and the rule test fails a tint with no registered need. In CSS the same mix is <code>color-mix(in oklab, var(--oa-color-palette-stone), var(--oa-color-palette-newsprint) 70%)</code>."
+        "Write a new tint as a recipe in the token source, such as <code>mix('stone', 'newsprint', 0.70)</code>, and keep hex values out of pages. The generator computes the hex and every ratio, and the rule test fails a tint with no registered need. In CSS the same mix is <code>color-mix(in oklab, var(--oa-color-palette-stone), var(--oa-color-palette-newsprint) 70%)</code>."
       ]
     },
     {
       "id": "05.7",
-      "title": "Charts and the atlas sit on Newsprint and take the chart palette.",
+      "title": "Set charts and the atlas on Newsprint, in the chart palette.",
       "rule": [
-        "Newsprint is the page color for charts and the atlas. The series a title names takes Charcoal, and every other series takes Stone. Values that rise and fall run from Prussian through the page color to Verdigris, with an arrow or a printed sign carrying the direction. A party takes the same neutral ink as every other party, with its name printed on the mark, and Pillar Red reaches data only as the view’s one working red."
+        "Newsprint is the page color for charts and the atlas. The series a title names takes Charcoal, and every other series takes Stone. When the title names one point, such as a single bar, that point takes the view’s working red with a Charcoal keyline, as in Rule 05.5. Values that rise and fall from a midpoint take the diverging scale, which runs from Prussian through a pale middle to Verdigris, with an arrow or a printed sign for the direction. Every party takes one neutral ink, with its name printed on the mark."
       ],
       "tokens": [
         "oa.chart.color.subject.onNewsprint",
@@ -498,22 +498,22 @@
       ],
       "why": {
         "text": [
-          "On Newsprint, a chart shared on its own still reads as ours. A scale from red to blue reads as a party split in the United States, which a nonpartisan publication has to avoid. Under each color-vision simulation we ran, the closest steps of Prussian to Verdigris stay at least 0.106 apart in OKLab, about 5 times the 0.02 that CSS Color 4 treats as the smallest visible difference. In grayscale both ends print dark, at 0.31 and 0.46 OKLab lightness against 0.85 at the midpoint, so without the arrow a reader cannot tell a rise from a fall."
+          "Neither end of the diverging scale belongs to a party, so a reader sees a rise or a fall before any side. A scale from red to blue reads as a party split in the United States, and Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a chart shared on its own still reads as ours."
         ],
-        "basis": "Design judgment; decisions DR-48, DR-53, DR-54 and DR-58"
+        "basis": "Design judgment; Rules 01.1 and 01.3"
       },
       "correct": {
         "specimen": "s-05-7-correct",
-        "caption": "The chart palette on Newsprint at true size: four roles, diverging pair B with its boxed arrows, the same scale in grayscale and the sequential Verdigris steps. Every label on a fill passes 4.5 to 1. Chapter 14 holds the full palette specification, with the dark ground and the grayscale proofs of each chart."
+        "caption": "The chart palette on Newsprint at true size: four roles, the diverging scale with its boxed arrows, the same scale in grayscale and the sequential Verdigris steps. Every label on a fill passes 4.5 to 1. Chapter 14 holds the full chart palette, with the dark ground and the grayscale proofs of each chart."
       },
       "failure": {
         "specimen": "s-05-7-failure",
-        "caption": "<strong>Fails the nonpartisan rule.</strong> A scale from red to blue reads as Republican against Democratic before anyone reads its key, and it spends the view’s red on every rising cell."
+        "caption": "<strong>Fails Rules 01.1 and 01.3.</strong> A scale from red to blue reads as Republican against Democratic before anyone reads its key, and it spends the view’s red on every rising cell."
       },
       "specs": [
         {
           "label": "Chart ground",
-          "value": "Newsprint (DR-53); Charcoal for dark views",
+          "value": "Newsprint; Charcoal for dark views",
           "token": "oa.color.surface.newsprint"
         },
         {
@@ -527,9 +527,32 @@
           "token": "oa.chart.color.context.onNewsprint"
         },
         {
-          "label": "Diverging pair B",
-          "value": "Prussian, light Prussian, midpoint, light Verdigris, strong Verdigris",
+          "label": "The one point",
+          "value": "Pillar Red, 2.96 to 1, with a 1 px Charcoal keyline at 13.29 to 1",
+          "token": "oa.chart.color.point.onNewsprint"
+        },
+        {
+          "label": "Diverging scale",
+          "value": "Prussian, light Prussian, a pale midpoint, light Verdigris, strong Verdigris",
           "token": "oa.chart.color.diverging.fill.step1.onNewsprint"
+        },
+        {
+          "label": "Labels on the diverging scale",
+          "value": "13.28, 6.18, 11.76, 8.01 and 7.06 to 1, from Prussian to Verdigris",
+          "token": "oa.chart.color.diverging.label.step1.onNewsprint"
+        },
+        {
+          "label": "Labels on sequential Verdigris",
+          "value": "10.96, 7.81, 5.41, 5.20 and 8.27 to 1, from step 1 to step 5",
+          "token": "oa.chart.color.sequential.label.step1.onNewsprint"
+        },
+        {
+          "label": "Neighboring steps under color-vision simulation",
+          "value": "At least 0.106 apart in OKLab, about 5 times the 0.02 that CSS Color 4 treats as the smallest visible difference"
+        },
+        {
+          "label": "Lightness in grayscale",
+          "value": "Ends at 0.31 and 0.46, the midpoint at 0.85, in OKLab lightness"
         },
         {
           "label": "Party marks",
@@ -537,8 +560,8 @@
           "token": "oa.chart.color.party.mark.onNewsprint"
         },
         {
-          "label": "Palette lab",
-          "value": "Measurements on White, Newsprint and Charcoal, November 6, 2026"
+          "label": "Measurements",
+          "value": "Our palette measurements on White, Newsprint and Charcoal, November 6, 2026"
         }
       ],
       "files": [
@@ -551,7 +574,7 @@
         "21"
       ],
       "builders": [
-        "Take chart colors from <code>oa.chart.color</code>, never from the palette directly, so a chart follows the page color. Pair B exists on Newsprint only until a Charcoal ramp is measured. Print the value or the direction on every diverging cell."
+        "Take chart colors from <code>oa.chart.color</code>, whose tokens follow the page color. The diverging scale exists on Newsprint only until a Charcoal ramp is measured. Print the value or the direction on every diverging cell."
       ]
     }
   ],
@@ -559,21 +582,25 @@
     {
       "after_rule": "05.1",
       "specimen": "s-05-palette",
-      "caption": "The seven colors with their values, jobs and shares across a body of work. The hex values are locked in Master Brief section 3; the shares come from our fifth edition."
+      "label": "The seven colors",
+      "caption": "The seven colors with their values, jobs and shares across a body of work. The hex values are locked in our identity rules, and the shares come from our fifth edition."
     },
     {
       "after_rule": "05.2",
       "specimen": "s-05-roles",
+      "label": "Color roles on each surface",
       "caption": "Text-safe and graphic-safe roles on each surface. Every ratio is measured against its surface on the token values. Text roles need 4.5 to 1, marks and edges 3 to 1, and hairlines carry no meaning."
     },
     {
       "after_rule": "05.3",
       "specimen": "s-05-ask",
+      "label": "The ask on four surfaces",
       "caption": "The ask on each surface at true size. White on Pillar Red measures 4.17 to 1, which passes only as large text, so the label never sets below 19 px bold. On Prussian the ask turns Newsprint."
     },
     {
       "after_rule": "05.5",
       "specimen": "s-05-pairs",
+      "label": "Every palette pair, measured",
       "caption": "Every palette pair, measured. “Text at any size” means 4.5 to 1 or more; “Large text and marks” means 3 to 1 or more. Pillar Red never sets text, whatever its ratio."
     }
   ],

@@ -226,6 +226,10 @@ class Tokens:
         self.by_css = {css_name(k): k for k in self.flat}
         self.css_text = TOKENS_CSS.read_text() if TOKENS_CSS.exists() else None
         self.css_names = set(re.findall(r"(--oa-[a-z0-9-]+)\s*:", self.css_text)) if self.css_text else set()
+        self.tcss = TokenCSS(self.css_text)
+        # tokens.css as a download from the page (RP-M3), with a dated, descriptive file name
+        self.download_name = "20261106_Oath-And-Action-Tokens.css"
+        self.download_uri = ("data:text/css;charset=utf-8;base64," + base64.b64encode(self.css_text.encode()).decode()) if self.css_text else ""
 
     @property
     def final(self):
@@ -563,7 +567,7 @@ def first_words(text, n=8):
     return " ".join(w[:n]).rstrip(",.;:") + ("…" if len(w) > n else "")
 
 
-def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None):
+def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, frame_ctx=None):
     """One specimen in its frame. The frame, its label, size line and caption belong to the shell; the fragment is the
     maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen".
 
@@ -604,7 +608,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None):
         R.warn(where, f"{spec_id}: fit_switch needs width_px")
         fit = False
     surface = meta.get("surface")
-    rule_bit = f", Rule {rule_id}" if rule_id else ""
+    rule_bit = f", Rule {rule_id}" if rule_id else (f", {html.unescape(str(frame_ctx))}" if frame_ctx else "")
     frame_name = (lab or first_words(alt, 6) or "Specimen") + rule_bit
     head = []
     if lab:
@@ -849,6 +853,9 @@ def chapnav(i, order, ctx):
     return "".join(out)
 
 
+TYPE_PARTS = ("font-family", "font-style", "font-weight", "font-size", "line-height", "letter-spacing", "text-transform", "font-variant-numeric")
+
+
 class TokenCSS:
     """tokens.css read as data, so each chapter's For builders block copies exactly what tokens.css holds (RP-M3)."""
 
@@ -878,6 +885,10 @@ class TokenCSS:
 
     def block(self, names, num):
         deps = set(names)
+        # a type style brings all its parts, tracking and case included, not only the ones its shorthand reads
+        for n in names:
+            if re.fullmatch(r"--oa-type-[a-z-]+", n) and n in self.decl and "var(" in self.decl[n]:
+                deps.update(f"{n}-{part}" for part in TYPE_PARTS if f"{n}-{part}" in self.decl)
         for _, decls in self.surfaces:
             for d in decls:
                 deps.update(re.findall(r"var\((--oa-[a-z0-9-]+)", d))
@@ -1222,7 +1233,7 @@ def proofs_section(chap_dir, specs, ctx):
             placed.add(sid)
             meta = specs.meta(sid)
             cap = it.get("caption") or meta.get("caption") or meta.get("notes")
-            out.append(plate("proof", sid, cap, specs, ctx, f"proofs {sid}", label=it.get("label") or meta.get("label")))
+            out.append(plate("proof", sid, cap, specs, ctx, f"proofs {sid}", label=it.get("label") or meta.get("label"), frame_ctx=g.get("label")))
         out.append("</div></div>")
     for sid in ids:
         if sid not in placed:
@@ -1235,7 +1246,7 @@ def proofs_section(chap_dir, specs, ctx):
 # ---------------------------------------------------------------------------------------------------------------
 # Navigation
 # ---------------------------------------------------------------------------------------------------------------
-def nav_list(prefix, present, has_proofs, menu=False):
+def nav_list(prefix, present, has_proofs, menu=False, appendix_title=None):
     out = ["<ul>"]
     if menu:
         out.append('<li><a href="#top" data-loc="top">Cover</a></li>')
@@ -1250,7 +1261,7 @@ def nav_list(prefix, present, has_proofs, menu=False):
         out.append("</ul></li>")
     if has_proofs:
         out.append(f'<li><a class="{prefix}-partlink" href="#proofs" data-loc="proofs">Appendix</a><ul>'
-                   '<li><a href="#proofs" data-loc="proofs-item"><span class="t">Proofs for Gate 2</span></a></li></ul></li>')
+                   f'<li><a href="#proofs" data-loc="proofs-item"><span class="t">{e(appendix_title or APPENDIX_TITLE)}</span></a></li></ul></li>')
     out.append(f'<li><a class="{prefix}-partlink" href="#colophon" data-loc="colophon">Colophon</a></li>')
     out.append("</ul>")
     return "".join(out)
@@ -1329,7 +1340,12 @@ def build(args):
         for r in d.get("rules") or []:
             rule_anchors.add("rule-" + str(r.get("id", "")).replace(".", "-"))
     has_proofs_ids = any(s.startswith("s-proofs-") for s in list(specs.manifest) + list(specs.files)) or (chap_dir / "proofs.json").exists()
-    ctx = {"present": present, "rule_anchors": rule_anchors, "lines": lines, "has_proofs": has_proofs_ids}
+    ctx = {"present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
+           "appendix_title": APPENDIX_TITLE}
+    try:
+        ctx["appendix_title"] = json.loads((chap_dir / "proofs.json").read_text()).get("title") or APPENDIX_TITLE
+    except Exception:
+        pass
 
     amp = svg_inline(AMP_B_24, cls="hinge-amp")
     body = []
@@ -1365,17 +1381,21 @@ def build(args):
 
     wm24 = svg_inline(WORDMARK_24, label="Oath & Action", cls="wm wm-24")
     wm16 = svg_inline(WORDMARK_16, label="Oath & Action", cls="wm wm-16")
-    wm_display = svg_inline(WORDMARK_DISPLAY, label="Oath & Action", cls="cover-wm")
+    # the cover's h1 names the guide in full, so the display wordmark above it is hidden from assistive technology
+    wm_display = svg_inline(WORDMARK_DISPLAY, cls="cover-wm")
     built = datetime.datetime.now().strftime("%B %-d, %Y at %H:%M")
     n_real = len(chapters)
     n_rules = sum(len(d.get("rules") or []) for d in chapters.values())
     n_specs = len(specs.used)
-    stage_line = (f"Stage board A draft, {EDITION_DATE}. Chapters 01 to 08 of the Foundations part"
-                  + (", with the proofs for Gate 2." if has_proofs else "."))
-    status_line = (f"{n_real} of 8 chapters delivered, {n_rules} rules, {n_specs} specimens placed."
-                   + (" Placeholders hold the rest." if n_real < 8 else ""))
-    pillars = ' <span class="arr" aria-hidden="true">→</span> '.join(f'<span class="pillar">{p}</span>' for p in LOCKED["pillars"])
-    pillars_label = ", ".join(LOCKED["pillars"])
+    appendix_title = ctx.get("appendix_title", APPENDIX_TITLE)
+    edition_line = (f"Chapters 01 to 08, the Foundations part, in draft, {EDITION_DATE}"
+                    + (f", with the appendix {appendix_title.lower() if appendix_title == APPENDIX_TITLE else appendix_title}." if has_proofs else "."))
+    count_line = (f"{n_real} chapters, {n_rules} rules and {n_specs} specimens." if n_real >= 8 else
+                  f"{n_real} of 8 chapters written so far, with {n_rules} rules and {n_specs} specimens; placeholders hold the rest.")
+    # C-S10, RP-S10: each arrow stays with the pillar after it, so the line breaks whole
+    arr = '<span class="arr" aria-hidden="true">→</span>'
+    pillars = LOCKED["pillars"][0] + "".join(f' <span class="nw">{arr} {p}</span>' for p in LOCKED["pillars"][1:])
+    dl_tokens = (f' <a href="{tokens.download_uri}" download="{tokens.download_name}">Download tokens.css</a>.' if tokens.final else "")
 
     page = f"""<!doctype html>
 <html lang="en">
@@ -1383,7 +1403,7 @@ def build(args):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oath &amp; Action Brand Guide, Edition 06: Foundations draft</title>
-<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06. Stage board A: chapters 01 to 08, the Foundations part, in the first draft of the guide shell.">
+<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. Chapters 01 to 08, the Foundations part, in draft.">
 <meta name="generator" content="work/build/scripts/phase-2/guide_build.py">
 <meta name="guide-build" content="{e(json.dumps({"chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)), "tokens": "tokens.css" if tokens.final else "draft", "demo": bool(args.demo)}))}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1400,32 +1420,31 @@ def build(args):
 <a class="skip" href="#main">Skip to main content</a>
 <a class="skip" href="#contents">Skip to contents</a>
 <header class="masthead">
-  <a class="home" href="#top" data-red="signature">{wm24}{wm16}</a>
-  <span class="edition"><span class="edition-k">Brand Guide</span> Edition 06</span>
-  <nav class="partnav" aria-label="Parts"><ul>
-    <li><a href="#contents" data-part-link="contents">Contents</a></li>
-    {"".join(f'<li><a href="#part-{s}" data-part-link="{s}">{e(n)}</a></li>' for s, n, _ in PARTS if any(CHAPTER[x][3] == s for x in order))}
-    {'<li><a href="#proofs" data-part-link="appendix">Proofs</a></li>' if has_proofs else ''}
-  </ul></nav>
+  <div class="mh-bar">
+    <a class="home" href="#top" data-red="signature">{wm24}{wm16}</a>
+    <span class="edition"><span class="edition-k">Brand Guide</span> Edition 06</span>
+    <nav class="partnav" aria-label="Parts"><ul>
+      <li><a href="#contents" data-part-link="contents">Contents</a></li>
+      {"".join(f'<li><a href="#part-{s}" data-part-link="{s}">{e(n)}</a></li>' for s, n, _ in PARTS if any(CHAPTER[x][3] == s for x in order))}
+      {'<li><a href="#proofs" data-part-link="appendix">Appendix</a></li>' if has_proofs else ''}
+    </ul></nav>
+    <button class="menubtn" id="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
+  </div>
   <p class="where" id="where" aria-hidden="true">Cover</p>
-  <button class="menubtn" id="menubtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Menu</button>
 </header>
 <div class="frame">
-  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs)}</nav>
+  <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title)}</nav>
   <main id="main" tabindex="-1" data-view-root="overview">
     <section class="cover" id="top" data-track="front" data-label="Cover">
-      <div class="cover-folio"><span>Brand Guide</span><span>Edition 06</span><span>{e(EDITION_DATE)}</span></div>
+      <p class="cover-folio"><span>Foundations, chapters 01 to 08</span> <span>Draft of {e(EDITION_DATE)}</span></p>
       <div class="cover-mark" data-red="signature">{wm_display}</div>
-      <h1 class="cover-h1">Oath &amp; Action Brand Guide, Edition 06</h1>
+      <h1 class="cover-h1"><span class="vh">Oath &amp; Action </span>Brand Guide, Edition 06</h1>
       <p class="tagline">{e(LOCKED["tagline"])}</p>
-      <p class="pillars" aria-label="The four pillars, in order: {e(pillars_label)}">{pillars}</p>
-      <div class="cover-foot">
-        <p class="cover-stage">{e(stage_line)}</p>
-        <p class="cover-status">{e(status_line)}</p>
-        <p class="cover-start"><a href="#contents">Open the contents</a></p>
-      </div>
+      <p class="pillars">{pillars}</p>
+      <p class="cover-purpose">This guide holds the rules for everything Oath &amp; Action publishes, for the staff, partners, designers and developers who make it.</p>
+      <p class="cover-start"><a href="#contents">Open the contents</a></p>
     </section>
-    {contents_section(present, has_proofs)}
+    {contents_section(present, has_proofs, ctx)}
     {"".join(body)}
     {proofs_html}
   </main>
@@ -1434,11 +1453,12 @@ def build(args):
   <div class="colophon-inner">
     <p class="colophon-k">Colophon</p>
     <dl class="colophon-list">
-      <div><dt>Edition</dt><dd>Oath &amp; Action Brand Guide, Edition 06. {e(stage_line)}</dd></div>
-      <div><dt>Client</dt><dd>Dustin Cathcart, Founder and Editor, who approves every change.</dd></div>
+      <div><dt>Edition</dt><dd>Oath &amp; Action Brand Guide, Edition 06. {e(edition_line)}</dd></div>
+      <div><dt>Contact</dt><dd>The editor. Ask the editor for any file this guide lists. Every co-branded piece goes to Dustin Cathcart, or an editor he names, before it prints or posts. An address follows once our web address is settled.</dd></div>
+      <div><dt>Approval</dt><dd>Dustin Cathcart, Founder and Editor, approves every change to these rules.</dd></div>
       <div><dt>Type</dt><dd>Inter Tight for display, Inter for reading and interface, Lora Italic for quoted lines. All three are published under the SIL Open Font License 1.1 and load from Google Fonts in this draft.</dd></div>
-      <div><dt>Tokens</dt><dd>{"Every color, size and space on this page comes from <code>work/build/tokens/tokens.css</code>, inlined when the page was built." if tokens.final else "This build carries a provisional token block generated from the Phase 1 schema draft, because <code>work/build/tokens/tokens.css</code> was not there yet."}</dd></div>
-      <div><dt>Built</dt><dd>{e(built)}, by <code>work/build/scripts/phase-2/guide_build.py</code> from <code>work/build/guide/</code>. {e(status_line)}</dd></div>
+      <div><dt>Tokens</dt><dd>{("Every color, size and space on this page comes from tokens.css, inlined when the page was built." + dl_tokens) if tokens.final else "This build carries a provisional token block, because tokens.css was not there yet."}</dd></div>
+      <div><dt>Built</dt><dd>{e(built)}, from the guide&#8217;s source files: {e(count_line)}</dd></div>
     </dl>
     <p class="colophon-back"><a href="#contents">Back to contents</a></p>
   </div>
@@ -1448,7 +1468,7 @@ def build(args):
     <div class="menu-head"><h2 id="menu-h" class="menu-title">Contents</h2><button type="button" class="menu-close" id="menuclose">Close</button></div>
     <p class="menu-where">You are in <strong id="menu-where-text">Cover</strong>.</p>
     <div class="menu-scroll">
-      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True)}</nav>
+      <nav aria-label="Guide contents">{nav_list("menu", present, has_proofs, menu=True, appendix_title=appendix_title)}</nav>
     </div>
   </div>
 </dialog>

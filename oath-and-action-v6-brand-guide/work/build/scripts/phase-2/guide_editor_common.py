@@ -94,7 +94,6 @@ BASE = f"""
 .ed .num{{font-variant-numeric:tabular-nums}}
 .ed .chip{{display:inline-block;{fx('label')};text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}}
 .ed .chip.solid{{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}}
-.ed .illus{{white-space:nowrap;vertical-align:.1em}}
 .ed del{{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}}
 .ed ins{{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}}
 .ed .hg{{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}}
@@ -105,7 +104,7 @@ BASE = f"""
 .ed .kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 12px;{fx('label')};text-transform:uppercase}}
 .ed .kick .dot{{color:var(--oa-color-text-secondary)}}
 .ed .kick .sx{{color:var(--oa-color-text-secondary)}}
-.ed .kick .pos{{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px}}
+.ed .pos{{display:inline-block;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px;{fx('label')};text-transform:uppercase}}
 .ed table{{border-collapse:collapse;width:100%;{fx('body-small')}}}
 .ed th,.ed td{{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}}
 .ed thead th{{{fx('label')};text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}}
