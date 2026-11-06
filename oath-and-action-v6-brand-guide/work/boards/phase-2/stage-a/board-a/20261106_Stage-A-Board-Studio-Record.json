@@ -1,0 +1,68 @@
+{
+ "chapters_page": {"url": "", "placeholder": "https://claude.ai/artifact/pending"},
+ "asked": [
+  "Collect the stage A red team reports, run one fix pass with the makers, get the creative director's scores, and build and publish stage board A, chapters 01 to 08 and the Gate 2 proofs, with its decisions.",
+  "Read the red team's fairness items under DR-93: one standard of evidence for everyone, findings reported as the record shows them, and no manufactured balance.",
+  "Hold everything to the bar of a finished product made by the best branding and design firm in the world, using specialized agents, red team reviews and the creative director's scoring."
+ ],
+ "process": [
+  {"stage": "Makers", "text": "Four makers built chapters 01 to 08 and the Gate 2 proofs inside a first draft of the guide shell: the editor wrote 01 and 02, the identity designer 03, 04, 08 and the proofs, the systems designer 05 to 07, and the engineer built the shell, the page build and the guide check."},
+  {"stage": "Red team", "text": "Five reviewers read the built page side by side and did not read each other's reports: brand, evidence and nonpartisanship; accessibility and interface; craft and typography; civic education and plain language; and a reader panel of five invented users, labeled simulated and untested. Together they raised 29 must-fix and 72 should-fix items, with many found by more than one lens."},
+  {"stage": "Fix pass", "text": [
+   "The studio put nine questions to Dustin. He accepted every recommendation and retired his disclosure, since the election is over and his affiliations will sit in his bio (DR-95 to DR-103). The fix pass brief gave every report item, by its own ID, to one owner.",
+   "Round one ran the four makers and the research lead in parallel. A container restart stopped all five partway through; their edits were still on disk, the studio committed them, and each agent resumed from its own record. The research lead opened H.R. 7008's text and the House roll call, confirmed the Senate cloture vote in the Congressional Record, checked the initiative limits, the two 2025 congressional maps and the utility commission count, and found six public-domain federal photographs.",
+   "Round two was the editor's copy edit of all eight chapters, with the research applied and the photographs placed in Rules 01.6 and 01.8. The studio then built the page in strict mode and ran every check itself."
+  ]},
+  {"stage": "Creative director", "text": "The creative director scored the fixed page on the Master Brief's rubric, checked each must-fix item from the five reports, and wrote this board's verdict, chapter notes, decisions and risks."}
+ ],
+ "red_team": [
+  {"lens": "Brand, evidence and nonpartisanship", "score": 2, "must_fix": 6, "should_fix": 12},
+  {"lens": "Accessibility and interface", "score": 4, "must_fix": 2, "should_fix": 15},
+  {"lens": "Craft and typography", "score": 3, "must_fix": 7, "should_fix": 16},
+  {"lens": "Civic education and plain language", "score": 3, "must_fix": 9, "should_fix": 19},
+  {"lens": "Reader panel, simulated and untested", "score": 3, "must_fix": 5, "should_fix": 10}
+ ],
+ "checks": [
+  {"name": "Strict page build", "command": "python3 -I work/build/scripts/phase-2/guide_build.py --strict", "result": "8 chapters, 99 rules, 229 specimens, 0 placeholders, 0 warnings.", "pass": true},
+  {"name": "Guide check at four widths", "command": "node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html", "result": "1440, 1024, 390 and 360 px: 694 same-page links, 0 failures, 24 listed exemptions, each a labeled failure case, a print piece set in points or a mark at true size.", "pass": true},
+  {"name": "Token tests", "command": "python3 -I work/build/tests/tokens/run_token_tests.py", "result": "Build parity, contrast and rule checks on 485 tokens, 35 of 35 planted errors caught, the Style Dictionary 5.8.0 cross-check and the rendered check in Chromium all pass with the new letter spacing.", "pass": true},
+  {"name": "Photographs and their rights", "result": "The studio looked at all six photographs and read each record's license line: each is public domain in the United States as a work of the federal government, and each has a rights ledger row.", "pass": true}
+ ],
+ "not_tested": [
+  "Any real screen reader, and browsers other than Chromium.",
+  "Real readers. The reader panel was simulated; the reader check's answers are read at Gate 2.",
+  "The photographs' original files. Wikimedia's original-file host refused the download, so the guide holds its standard-width copies; fetch the originals before print.",
+  "Pages the research lead could not open: senate.gov, epi.org, the National Conference of State Legislatures, Ballotpedia's current initiative page, the Illinois General Assembly and Mississippi's legislature. The research report lists what each claim rests on.",
+  "The letterhead PDF printed on paper.",
+  "A second red team on the fixed page. The creative director's review is the only review after the fix pass."
+ ],
+ "changelog": {
+  "created": [
+   "work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Brief.md",
+   "work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Research.md",
+   "work/handoffs/phase-2/20261106_Stage-A-Board-Builder-Notes.md",
+   "work/handoffs/phase-2/20261106_CD-Review-Of-Stage-A.md",
+   "work/build/assets/photography/ (six photographs, each with its record)",
+   "work/build/guide/specimens/ (11 new specimens, among them one comparison plate per proof pair)",
+   "work/build/scripts/phase-2/stage_a_board_build.py",
+   "work/build/scripts/phase-2/stage_a_board_capture.js",
+   "work/boards/phase-2/stage-a/board-a/20261106_Stage-A-Board-Content.json",
+   "work/boards/phase-2/stage-a/board-a/20261106_Stage-A-Board-Studio-Record.json",
+   "work/boards/20261106_Stage-A-Foundations-Board.html"
+  ],
+  "modified": [
+   "work/build/guide/chapters/ (all eight chapters and the proofs)",
+   "work/build/guide/specimens/ (213 specimens changed, 16 retired into merged plates or page text)",
+   "work/build/guide/shell/ (styles and script)",
+   "work/build/scripts/phase-2/ (the guide build, the guide check and each maker's build scripts)",
+   "work/build/tokens/src/oa-tokens.src.mjs, tokens.css and tokens.json (letter spacing)",
+   "work/build/tests/tokens/20261106_Token-Test-Results.json",
+   "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html and its build report and check results",
+   "work/handoffs/phase-2/ (the four makers' notes and the systems measurements)",
+   "work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md (items 36 and 37)",
+   "work/research/20261020_Rights-Ledger.md (six photograph rows)",
+   "work/ledger/20261020_Decision-Log.md (DR-95 to DR-103, D2-248 to D2-319)",
+   "work/ledger/20261020_Change-Ledger.md (C-029 to C-033)"
+  ]
+ }
+}
