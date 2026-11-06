@@ -248,6 +248,11 @@ Each line names a finding and what I did, or why I left it.
 - **Change 4.** First title on the first screen at 390 px; S05 full width; toward and away differ by more than shade.
 - **Change 5.** S01 says why 60 votes were needed. The party split of the votes stays out under D2-104.
 
+### Creative director's fixes before Board 3
+
+- **Masthead "Socialcard".** The tab label now sits in one inline span with the space outside `<span class=t-more>card</span>`, so desktop reads "Social card" and phones read "Social"; checked in the browser at 1440 and 390 px.
+- **Record IDs in the S03 and S08 notes.** `reader_words()` prints the coding note with "the atlas's profiles of those two reforms" in place of "the reform profiles R-01 and R-02" (the shared data is unchanged), and the roll-up note opens "One entry stands for all 19 state bans…" without "RL47".
+
 ### Checks after the fix pass
 
 - Verifier: PASS, 26 figures, 4,025 marks, 0 errors; self-test 7 of 7.

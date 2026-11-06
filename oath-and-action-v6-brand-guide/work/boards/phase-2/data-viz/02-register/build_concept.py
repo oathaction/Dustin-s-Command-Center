@@ -1008,7 +1008,7 @@ def log_facts():
     assert note.endswith(neutral)
     coding = note[:-len(neutral)].strip()
     assert coding.count('the reform profiles R-01 and R-02 rate') == 1
-    coding = coding.replace('the reform profiles R-01 and R-02 rate', 'the reform profiles rate')
+    coding = coding.replace('the reform profiles R-01 and R-02 rate', 'the atlas\'s profiles of those two reforms rate')
     return dict(n=n, recent=recent, early=early, n_bans=len(bans) - len(own), coding=coding, neutral=neutral)
 
 
@@ -1026,7 +1026,7 @@ def log_notes():
     assert (L['n'], L['recent']) == (64, 33)
     return [f'The log holds the {L["n"]} changes the atlas chose to record, not every rule change in the country. It records more '
             f'of recent years: {L["recent"]} of the {L["n"]} entries fall in 2025 and 2026.',
-            'One entry, RL47 (March 2026), stands for all 19 state bans on ranked-choice voting; Missouri\'s and Indiana\'s bans '
+            'One entry, dated March 2026, stands for all 19 state bans on ranked-choice voting; Missouri\'s and Indiana\'s bans '
             'also have entries of their own.']
 
 
@@ -1081,7 +1081,7 @@ def s03(view):
         f'{bi["voters kept existing rules"]} failed and left the rules in force, and {bi["pending"]} are pending. Referendums are '
         f'ballot measures too: {rf["away from voters"]} of their {rf["value"]} entries moved the rules away from voters.',
         f'State statutes moved the rules away from voters in {ss["away from voters"]} of {ss["value"]} entries as logged, and in '
-        f'{ss["away from voters"] - 1} of {ss["value"] - 1} without RL47.',
+        f'{ss["away from voters"] - 1} of {ss["value"] - 1} without the roll-up entry.',
         'One federal entry is a statute that lapsed: the expanded child tax credit expired at the end of 2021 when Congress did '
         'not extend it.',
         log_notes()[1],
@@ -1856,8 +1856,9 @@ def s10(view):
     lo, hi = data[-1], data[0]
     slo, shi = 100 * lo['documented'] / lo['value'], 100 * hi['documented'] / hi['value']
     assert (lo['key'], hi['key']) == ('PW16', 'PW12') and all(r['documented'] / r['value'] > 0.5 for r in data)
-    title = (f'Most claims behind every everyday answer are documented on the public record, from {slo:.0f} percent for '
-             f'algorithms to {shi:.0f} percent for tap water.')
+    assert (f'{slo:.0f}', f'{shi:.0f}', len(data)) == ('59', '96', 16), (slo, shi, len(data))
+    title = (f'Most claims behind each of the atlas\'s {len(data)} everyday answers are documented on the public record, from '
+             f'{slo:.0f} percent for algorithms to {shi:.0f} percent for tap water.')
     measure = (f'Share of the claims behind each of our atlas\'s 16 everyday answers, by evidence grade, {n} claims, United States, '
                'checked through October 15, 2026')
     key = ('<ul class="grkey">' + ''.join(f'<li><span class="gsw k-{k}" aria-hidden="true"></span><b>{lab}</b> {e(mean)}</li>' for _, lab, mean, k in GRADES)
@@ -2874,7 +2875,7 @@ def build():
     for m in re.finditer(r'<figure\b.*?</figure>', page, flags=re.S):
         face = re.sub(r'<details class="feq".*?</details>', '', m.group(0), flags=re.S)
         face = ' '.join(text_nodes(face))
-        bad = re.findall(r'\b(Charcoal|Stone|Verdigris|Prussian|studio|N40|K1908|W035)\b', face)
+        bad = re.findall(r'\b(Charcoal|Stone|Verdigris|Prussian|studio|N40|K1908|W035|RL\d+|R-\d+)\b', face)
         assert not bad, (m.group(0)[:80], bad)
     OUT.write_text(page)
     print('wrote', OUT.relative_to(ROOT), f'{len(page) / 1024:.0f} KB')

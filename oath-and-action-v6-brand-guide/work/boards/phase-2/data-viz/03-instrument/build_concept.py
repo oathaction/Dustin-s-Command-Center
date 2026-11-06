@@ -1116,14 +1116,21 @@ RCV_OWN = [r['jurisdiction'] for r in RL_ROWS   # states whose ban also has a lo
 RCV_EARLY_ALONE = [c for c in RCV_EARLY if RCV[c]['name'] not in RCV_OWN]
 
 
+def reader_words(note):
+    """The coding note with its two record IDs put in reader words (the creative director's fix before Board 3)."""
+    old = 'the reform profiles R-01 and R-02'
+    assert old in note, 'the shared coding note changed; check the reader-words fix'
+    return note.replace(old, "the atlas's profiles of those two reforms")
+
+
 def log_notes(extra_first=()):
     n38, n41 = rowmap('rule-changes')['RL38'], rowmap('rule-changes')['RL41']
     assert n38['direction'] == n41['direction'] == 'away from voters'
     return list(extra_first) + [
         f'The log holds the {RL_N} changes the atlas chose to record, not every rule change in the country. It records more of recent years: {RL_RECENT} of the {RL_N} entries fall in 2025 and 2026.',
-        ('How the atlas codes direction, in its own words:', RLD['coding_note']),
+        ('How the atlas codes direction, in its own words:', reader_words(RLD['coding_note'])),
         "A map redrawn in the middle of a decade counts as away from voters whichever party draws it: Texas's HB 4 (August 2025) and California's Proposition 50 (November 2025) both count as away.",
-        f"One entry, RL47 (March 2026), stands for all {len(RCV_BANS)} state bans on ranked-choice voting; {' and '.join(n + chr(39) + 's' for n in RCV_OWN)} bans also have entries of their own.",
+        f"One entry stands for all {len(RCV_BANS)} state bans on ranked-choice voting; {' and '.join(n + chr(39) + 's' for n in RCV_OWN)} bans also have entries of their own.",
     ]
 
 
@@ -1779,7 +1786,8 @@ VIEWS = [('white', 'White'), ('newsprint', 'Newsprint'), ('dark', 'Charcoal'), (
 
 
 def masthead():
-    tabs = ''.join(f'<li><a href="#{v}">{tx(t).replace(" card", "<span class=t-more> card</span>")}</a></li>' for v, t in VIEWS)
+    # one inline span holds the whole label, so the space before "card" survives inside the flex link
+    tabs = ''.join(f'<li><a href="#{v}"><span>{tx(t).replace(" card", " <span class=t-more>card</span>")}</span></a></li>' for v, t in VIEWS)
     return ('<a class="skip" href="#main">Skip to the charts</a><header class="mast"><div class="wrap mrow">'
             '<a class="wm" href="#white" data-red="signature" aria-label="Oath &amp; Action, concept 03 first view">'
             f'{wordmark(24, "20261028_Wordmark-24px-Master.svg", "wm24")}{wordmark(16, "20261028_Wordmark-16px-Master.svg", "wm16")}</a>'

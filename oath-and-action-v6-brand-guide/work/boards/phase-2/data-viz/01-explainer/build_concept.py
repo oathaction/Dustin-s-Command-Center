@@ -915,6 +915,15 @@ def s03_annotations(D):
     return {hi['key']: f'{nw(hi["away from voters"])} away from voters', zero['key']: 'none away from voters'}
 
 
+S03_SHORT = {'away from voters': 'away', 'toward voters': 'toward', 'voters kept existing rules': 'rules kept',
+             'mixed': 'mixed', 'pending': 'pending'}
+
+
+def s03_counts(r):
+    """One bar's counts in words, for the line under each phone bar, so no short segment loses its count."""
+    return ' · '.join(f'{r[d]} {S03_SHORT[d]}' for d in DIR_ORDER if r[d])
+
+
 def gen_s03(W, uid, t=None):
     """Ranked bar: instruments ranked by how many entries they made in the repair log, each bar split by the
     atlas's direction code. Away from voters sits at the baseline in solid ink because the title names it; toward
@@ -967,12 +976,27 @@ def gen_s03(W, uid, t=None):
         else:
             a.text(BX + r['value'] * k + 8, by + bh / 2 + lbl * 0.36, end, lbl, 'tl', 600, attrs=da(r['key'], r['value'], mark='label'))
         rowy[r['key']] = (by, by + bh)
+        bottom = by + bh
         if narrow:
             a.line(0, by - 3, 0, by + bh + 3, 's-base')
+            # every count on one line under the bar, wrapped between items, never inside one
+            items, lines, cur = s03_counts(r).split(' · '), [], ''
+            for it in items:
+                trial = f'{cur} · {it}' if cur else it
+                if cur and tw(trial, lbl, 400) * hr > W:
+                    lines.append(cur)
+                    cur = it
+                else:
+                    cur = trial
+            lines.append(cur)
+            for i, ln in enumerate(lines):
+                a.text(0, by + bh + 19 + i * 19, ln, lbl, 'tn', 400)
+            bottom = by + bh + 19 + (len(lines) - 1) * 19 + 4
+            y += 19 * len(lines)
         y += pitch
     if not narrow:
         a.line(BX, rowy[D[0]['key']][0] - 6, BX, rowy[D[-1]['key']][1] + 6, 's-base')
-    return a, rowy[D[-1]['key']][1] + 10
+    return a, bottom + 10
 
 
 # ------------------------------------------------------------------------------------------------ S04 dumbbell
@@ -1911,7 +1935,7 @@ WHY = {
 }
 
 
-def log_notes():
+def log_notes(rollup=None):
     """The repair log's shared notes (F1): what the log is, the coding rule in full, one map example from each side,
     the roll-up entry, and the atlas's neutrality line word for word."""
     D = rows('rule-changes')
@@ -1930,7 +1954,7 @@ def log_notes():
             'the reform profiles R-01 and R-02 rate', "the atlas's profiles of those two reforms rate"),
         "A map redrawn in the middle of a decade counts as away from voters whichever party draws it: Texas's HB 4 "
         "(August 2025) and California's Proposition 50 (November 2025) both count as away.",
-        'One entry, dated March 2026, stands for all 19 state bans on ranked-choice voting; Missouri\'s and Indiana\'s bans also have entries of their own.',
+        rollup or 'One entry, dated March 2026, stands for all 19 state bans on ranked-choice voting; Missouri\'s and Indiana\'s bans also have entries of their own.',
         neutral,
     ]
 
@@ -2011,7 +2035,9 @@ def spec_s03(view):
     table = table_html('Repair-log entries by instrument and direction', hdr,
                        [[r['key'], str(r['value'])] + [str(r[d]) for d in DIR_ORDER] for r in D], tuple(range(1, 7)))
     return dict(sid='S03', title=title, measure=measure, body=body, strings=strings, label=label, notes=notes,
-                drawn_notes=['Labels at the bars: ' + '; '.join(f'{k}, {v}' for k, v in s03_annotations(D).items()) + '.'], table=table)
+                drawn_notes=['Labels at the bars: ' + '; '.join(f'{k}, {v}' for k, v in s03_annotations(D).items()) + '.',
+                             'On phones, a line under each bar gives its counts: ' + '; '.join(f'{r["key"]}, {s03_counts(r)}' for r in D) + '.'],
+                table=table)
 
 
 def spec_s04(view):
@@ -2148,10 +2174,12 @@ def spec_s08(view):
              f'{c["voters kept existing rules"]} where voters kept existing rules, {c["mixed"]} mixed and {c["pending"]} pending. '
              'Entries per year: ' + ', '.join(f'{y} {n}' for y, n in sorted(per_year.items())) + '.')
     body, strings = artboards(view, 'S08', gen_s08, TK['artboard']['wide'], label)
+    # one note for the roll-up entry (CD review): what it is, how it is drawn, and when its bans passed
+    rollup = ('One entry, dated March 2026 and drawn as the ringed square marked 19 states, stands for all 19 state bans on '
+              "ranked-choice voting; Missouri's and Indiana's bans also have entries of their own. "
+              f'{nw(len(before), cap=True, start=True)} of the 19 passed before 2025, and {nw(len(before_alone))} of those have no entry of their own.')
     notes = [f'The first year group, To {first - 1}, holds every entry from {min(per_year)} to {first - 1}.',
-             f'The ringed square marked 19 states is one entry dated March 2026. {nw(len(before), cap=True, start=True)} of its 19 bans passed '
-             f'before 2025, and {nw(len(before_alone))} of those have no entry of their own.',
-             'Open squares count toward voters and solid squares away from voters; the band below holds entries that went neither way.'] + log_notes()
+             'Open squares count toward voters and solid squares away from voters; the band below holds entries that went neither way.'] + log_notes(rollup)
     body_rows = [[r['key'], date_words(r['date']), r['jurisdiction'], r['instrument_group'], DIR_WORD[r['direction']]] for r in D]
     table = table_html('Every entry in the repair log', ['Entry', 'Date', 'Where', 'Instrument', 'Direction'], body_rows)
     return dict(sid='S08', title=title, measure=measure, body=body, strings=strings, label=label, notes=notes,
