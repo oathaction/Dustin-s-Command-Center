@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (fourth handoff of November 6)
 
-Written November 6, 2026, when Dustin's chat neared 75 percent of its context. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. Decision log entries for this chat end at D2-247 (and DR-92). The starting prompt is in section 8. It replaces `20261106_Next-Session-Handoff_V3.md`.
+Written November 6, 2026, when Dustin's chat neared 75 percent of its context. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. Decision log entries for this chat end at D2-247 and DR-94. The starting prompt is in section 8. It replaces `20261106_Next-Session-Handoff_V3.md`.
 
 ## 1. Where things stand
 
@@ -55,6 +55,8 @@ Collected from the makers' notes, each with its recommendation:
 11. The body-measure token renders 64 to 66 characters against its 68 promise: keep the value and correct the description.
 12. Atlas System 1 moves from White to Newsprint in its finishing work (D2-160).
 13. How the guide names H.R. 7008. The brand and evidence review found that "the stock trading ban" overstates a bill that bars buying stocks and also carries a voter photo ID requirement (`20261106_Stage-A-Red-Team-Brand-Evidence.md`). The same name sits on chart specimen S01 in the Explainer system and in the shared chart data, so the fix reaches chapter 14's specimens too; the studio should propose one neutral name (H12) for every place it appears.
+14. DR-94: replace DR-55's balance clause with the one-standard wording.
+15. The wording of chapter 01's nonpartisan rules under DR-93, with its sourced example.
 Add whatever the red team and the creative director raise.
 
 ### E. Then
@@ -62,6 +64,7 @@ Stage board B (09 Pillar marks, 10 Topic and atlas symbols, 11 Status and utilit
 
 ## 3. Rules in force that the next session must not miss
 - Everything in section 3 of the V3 handoff still holds (Rule 05.3 with its icon clause; party marks neutral and no red and blue on election graphics; the disclosure on election-rule charts; Newsprint ground; diverging pair B; the six chart rules of DR-64; chart titles that claim only what the evidence holds).
+- **Nonpartisan means one standard (DR-93).** One standard of evidence and one way of describing sources, actors and parties, applied to everyone. Report findings as the record shows them; where it shows one side doing more, say so, name who acted, and size the claim to its grade. Never add, soften or drop a finding to look balanced. In the fix pass, read the red team's fairness items this way: Rule 01.2's unequal party inks, Rule 01.16's unequal source descriptions, Rule 01.11's hidden actor and the H.R. 7008 name are one-standard faults and get fixed; no fix may manufacture balance. Chapter 01's nonpartisan rules should say this plainly, with a real, sourced example of an uneven finding stated at its grade; its wording goes to Dustin on board A.
 - Chapter 02's writing section binds every word (DR-73, DR-92). H11: no bare IDs or decision codes on a reader-facing page.
 - Chapter pages use today's wordmark width; the condensed width appears only in the proofs panel until Gate 2 (DR-89).
 - Products are named with no launch dates or status (DR-91).
@@ -94,6 +97,8 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from DR-73 on), the change ledger and the open questions.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-2/20261106_Next-Session-Handoff_V4.md, which says where things stand and what is next, in order.
+
+Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Read the red team's fairness items that way, and never manufacture balance.
 
 Settled and not to be changed: the Civic Line icons, the atlas visual system (System 1, DR-36), the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61), the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63), the chart rules of DR-64, and chapter 02's writing rules (DR-73 to DR-83).
 
