@@ -15,7 +15,46 @@
  "unit": "rate_pct in percent; moe_pct is the 90 percent margin of error for the three race and ethnicity groups, 2010 onward (Table B-8 gives none for the U.S. total)",
  "date_retrieved": "2026-11-06",
  "vintage": "Table dated October 28, 2026 in its source note, the release for the third quarter of 2026",
- "qualification": "Quarterly survey estimates; group margins of error in 2026 are 0.4 points (non-Hispanic White), 0.9 (Black) and 0.8 (Hispanic). The fourth quarter of 2025 uses November and December only",
+ "qualification": "Quarterly survey estimates; group margins of error in 2026 are 0.4 points (non-Hispanic White), 0.9 (Black) and 0.8 (Hispanic). The fourth quarter of 2025 uses November and December only. Pandemic changes to data collection affect the first quarter of 2020 through the second quarter of 2021",
+ "notes_2020": {
+  "summary": "The Census Bureau's quarterly releases say pandemic changes to data collection affected the first quarter of 2020 (March data only) through the second quarter of 2021. In-person interviews were suspended for all of the second quarter of 2020. The U.S. rate went from 65.3 (first quarter 2020) to 67.9 (second quarter) and back to 65.8 (fourth quarter)",
+  "date_read": "2026-11-06",
+  "releases": [
+   {
+    "quarter": "2020 Q1",
+    "url": "https://www.census.gov/housing/hvs/files/qtr120/Q120press.pdf",
+    "quote": "The changes in data collection operations made in response to the coronavirus pandemic affect the data collected in March only."
+   },
+   {
+    "quarter": "2020 Q2",
+    "release": "CB20-107, July 28, 2020",
+    "url": "https://www.census.gov/housing/hvs/files/qtr220/Q220press.pdf",
+    "quote": "We are unable to determine the extent to which this data collection change affected the CPS/HVS estimates. Data users should therefore exercise caution when comparing the second quarter estimates to previous quarters, interpreting the differences between quarters to reflect both the effects of the coronavirus pandemic and the effects of changes in data collection procedures."
+   },
+   {
+    "quarter": "2020 Q3",
+    "url": "https://www.census.gov/housing/hvs/files/qtr320/Q320press.pdf",
+    "quote": "in-person interviews were only allowed for portions of the sample in July (41 percent), August (53 percent), and September (100 percent)."
+   },
+   {
+    "quarter": "2020 Q4",
+    "url": "https://www.census.gov/housing/hvs/files/qtr420/Q420press.pdf",
+    "quote": "in-person interviews were only allowed for portions of the sample in October (100 percent), November (98 percent), and December (84 percent)."
+   },
+   {
+    "quarter": "2021 Q1",
+    "url": "https://www.census.gov/housing/hvs/files/qtr121/Q121press.pdf",
+    "quote": "data collection operations for the CPS/HVS were affected during the first quarter of 2021, though to a much lesser extent than previous quarters"
+   },
+   {
+    "quarter": "2021 Q2",
+    "url": "https://www.census.gov/housing/hvs/files/qtr221/Q221press.pdf",
+    "quote": "data collection operations for the CPS/HVS were slightly affected during the second quarter of 2021, though to a much lesser extent than last year"
+   }
+  ],
+  "homeownership_specific": "The 2020 annual Source and Accuracy statement (https://www.census.gov/housing/hvs/files/annual20/ann20src.pdf) says the changes 'could have affected the CPS/HVS estimates of the homeownership rate for 2020' and that lower response among renters would give 'a higher estimate of the homeownership rate.' See the annual sidecar for the full quotes",
+  "not_in_tables": "Table 16 carries no footnote on 2020"
+ },
  "v7_comparison": {
   "v7_figures": "Atlas V7 claim CL1120: second quarter 2026, 74.5% non-Hispanic White, 45.4% Black, 48.1% Hispanic householders; national rate 65.0%",
   "match": "Yes. Table 16 gives 74.5, 45.4 and 48.1 for the second quarter of 2026, and 65.0 for the U.S.",
@@ -42,5 +81,5 @@
   "B8.xlsx": "3e463174aba1c226",
   "histtab14.xlsx": "9ebe7c51e6c8e312"
  },
- "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Table 16, homeownership rate by race and ethnicity of householder, first quarter 1994 to third quarter 2026, United States. Retrieved November 6, 2026. Quarterly survey estimates, with margins of error up to 0.9 points for each group."
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Table 16, homeownership rate by race and ethnicity of householder, first quarter 1994 to third quarter 2026, United States. Retrieved November 6, 2026. Quarterly survey estimates, with margins of error up to 0.9 points for each group; pandemic changes to data collection affect 2020 and early 2021."
 }

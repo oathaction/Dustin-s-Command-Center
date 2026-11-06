@@ -14,7 +14,7 @@
  "unit": "rate_pct is owner households as a percent of all households in the group; moe_pct is the 90 percent margin of error (2025 only)",
  "date_retrieved": "2026-11-06",
  "vintage": "Table dated March 24, 2026 in its source note",
- "qualification": "Race categories changed in 2003 (race alone from 2003; earlier groups followed the older standard, with 'other' responses allocated from 1996 to 2002), so the Black and non-Hispanic White lines break at 2003. The 2025 annual figure leaves out October 2025, when no data were collected",
+ "qualification": "Race categories changed in 2003 (race alone from 2003; earlier groups followed the older standard, with 'other' responses allocated from 1996 to 2002), so the Black and non-Hispanic White lines break at 2003. The 2025 annual figure leaves out October 2025, when no data were collected. The Bureau cautions against comparing 2020 with earlier years, because pandemic changes to data collection could have affected that year's rates",
  "columns": {
   "year": "year",
   "group": "all_households, non_hispanic_white, black, hispanic",
@@ -25,6 +25,20 @@
   "source_table": "table the row came from",
   "note": "Census footnote text"
  },
+ "notes_2020": {
+  "summary": "Every group's annual rate rose in 2020 and fell back in 2021 (U.S. 64.6, 66.6, 65.5 for 2019 to 2021). The Census Bureau qualified its 2020 estimates in the 2020 annual release, not in Table 22: in-person interviews stopped on March 20, 2020, and the Bureau says the change could have raised the measured homeownership rate",
+  "source": "U.S. Census Bureau, CPS/HVS Annual Statistics: 2020, Source and Accuracy of Estimates, section 'Impacts of the coronavirus (COVID-19) pandemic on Housing Vacancies and Homeownership data collection for 2020'",
+  "url": "https://www.census.gov/housing/hvs/files/annual20/ann20src.pdf",
+  "date_read": "2026-11-06",
+  "quotes": [
+   "The Census Bureau suspended in-person data collection for the CPS/HVS on March 20th, 2020.",
+   "The changes in data collection procedures could have affected the CPS/HVS estimates of the homeownership rate for 2020. In particular, data users should consider the potential for the suspension of in-person interviews to disproportionately affect the response rates of renters versus homeowners.",
+   "For example, if response rates declined further among rental units than homeowner units following the suspension of in-person interviews, the effects on the CPS/HVS estimates would be a lower estimate of the number of rental households, a higher estimate of the number of homeowner households, and a higher estimate of the homeownership rate.",
+   "Data users should therefore exercise caution when comparing the 2020 estimates to previous years, interpreting the differences between years to reflect both the effects of the COVID-19 pandemic and the effects of changes in data collection procedures."
+  ],
+  "second_quarter_2020": "Release CB20-107, July 28, 2020 (https://www.census.gov/housing/hvs/files/qtr220/Q220press.pdf): 'In-person interviews were suspended for the duration of the second quarter and replaced with telephone interview attempts when contact information was available.' Response rates were 69.9 percent (April), 67.4 (May) and 64.9 (June), against an average of 82.7 percent for April to June 2019",
+  "not_in_tables": "Neither the 2025 nor the 2020 edition of Table 22 carries a footnote on 2020. The 2020 values (66.6, 75.0, 45.3, 50.1) are the same in the 2020 edition (dated March 9, 2021) and the 2025 edition"
+ },
  "v7_comparison": "Atlas V7 cites second-quarter 2026 rates (74.5% non-Hispanic White, 45.4% Black, 48.1% Hispanic). This annual table ends in 2025; see the quarterly file for the check",
  "unconfirmed": [
   "Margins of error for years before 2025 are in earlier annual releases and were not collected"
@@ -33,5 +47,5 @@
   "ann25t_22.xlsx": "ff6fe80bfcadba96",
   "ann25t_b7.xlsx": "9167848cd609afcf"
  },
- "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 22, homeownership rate by race and ethnicity of householder, 1994 to 2025, United States. Retrieved November 6, 2026. Race categories changed in 2003; the 2025 average leaves out October, when no data were collected."
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 22, homeownership rate by race and ethnicity of householder, 1994 to 2025, United States. Retrieved November 6, 2026. Race categories changed in 2003; pandemic changes to data collection affect 2020; the 2025 average leaves out October, when no data were collected."
 }

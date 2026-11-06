@@ -176,3 +176,58 @@ Files created on November 6, 2026 (paths from the project root):
 - `work/research/20261106_Data-Viz-Public-Series.md`
 
 Files modified: none. The build scripts and raw downloads are in the session scratchpad, outside the repo.
+
+## 11. Follow-up checks, November 6
+
+Two checks the statistics red team asked for, read the same day under the same rules.
+
+### 11.1 The 2020 jump in homeownership
+
+Every group's annual rate rose in 2020 and fell back in 2021. For all households the rate went 64.6% (2019), 66.6% (2020), 65.5% (2021); for Black householders 42.1%, 45.3%, 44.2%; for Hispanic householders 47.5%, 50.1%, 48.4%; for non-Hispanic White householders 73.3%, 75.0%, 74.1%. The quarterly U.S. rate went from 65.3% in the first quarter of 2020 to 67.9% in the second, then back to 65.8% by the fourth.
+
+The Census Bureau did qualify the 2020 estimates. The qualification sits in the releases, not in the tables: neither the current Table 22, its 2020 edition (dated March 9, 2021) nor Table 16 carries a 2020 footnote. The 2020 values are the same in the 2020 and 2025 editions of Table 22.
+
+The Bureau's own words, from *CPS/HVS Annual Statistics: 2020, Source and Accuracy of Estimates*, section "Impacts of the coronavirus (COVID-19) pandemic on Housing Vacancies and Homeownership data collection for 2020" (https://www.census.gov/housing/hvs/files/annual20/ann20src.pdf):
+
+> "The Census Bureau suspended in-person data collection for the CPS/HVS on March 20th, 2020."
+
+> "The changes in data collection procedures could have affected the CPS/HVS estimates of the homeownership rate for 2020. In particular, data users should consider the potential for the suspension of in-person interviews to disproportionately affect the response rates of renters versus homeowners. For example, if response rates declined further among rental units than homeowner units following the suspension of in-person interviews, the effects on the CPS/HVS estimates would be a lower estimate of the number of rental households, a higher estimate of the number of homeowner households, and a higher estimate of the homeownership rate. Data users should therefore exercise caution when comparing the 2020 estimates to previous years, interpreting the differences between years to reflect both the effects of the COVID-19 pandemic and the effects of changes in data collection procedures."
+
+On the second quarter of 2020, release CB20-107, July 28, 2020 (https://www.census.gov/housing/hvs/files/qtr220/Q220press.pdf):
+
+> "In-person interviews were suspended for the duration of the second quarter and replaced with telephone interview attempts when contact information was available."
+
+> "The response rate for April was 69.9 percent, 67.4 percent for May, and 64.9 percent for June. For comparison, the average response rate for April, May, and June 2019 was 82.7 percent."
+
+> "We are unable to determine the extent to which this data collection change affected the CPS/HVS estimates. Data users should therefore exercise caution when comparing the second quarter estimates to previous quarters, interpreting the differences between quarters to reflect both the effects of the coronavirus pandemic and the effects of changes in data collection procedures."
+
+The quarterly releases carry a pandemic note from the first quarter of 2020 through the second quarter of 2021. The first-quarter 2020 note says the changes "affect the data collected in March only." The third and fourth quarters of 2020 allowed in-person interviews for part of the sample: "July (41 percent), August (53 percent), and September (100 percent)," then "October (100 percent), November (98 percent), and December (84 percent)." The second-quarter 2021 release says collection was "slightly affected... though to a much lesser extent than last year." The third-quarter 2021 release carries no such announcement. Its only pandemic remark is a table note that third-quarter 2020 data "were impacted by interviewing restrictions due to COVID."
+
+**What changed.** The annual sidecar now has a `notes_2020` field with these quotes and URLs. Its `qualification` adds "The Bureau cautions against comparing 2020 with earlier years, because pandemic changes to data collection could have affected that year's rates," and its `source_line` adds "pandemic changes to data collection affect 2020." The quarterly sidecar has its own `notes_2020` with one quote per release, and its `qualification` and `source_line` add a clause covering 2020 and early 2021. A chart of either series should mark 2020 with the Bureau's caution, and a quarterly chart should mark the second quarter of 2020 in particular.
+
+### 11.2 Missouri Amendment 7, November 5, 2024
+
+V7 is right. The Missouri Secretary of State's "Official Election Returns, State of Missouri - General Election, November 05, 2024," "As announced by the Board of State Canvassers on Thursday, December 5, 2024" (https://www.sos.mo.gov/CMSImages/ElectionResultsStatistics/2024GeneralElection.pdf, the "Grand Totals" link on https://www.sos.mo.gov/elections/results), reads:
+
+> "Constitutional Amendment 7 ... Yes Votes 1,966,852 68.4% / No Votes 906,851 31.6% / Total Votes 2,873,703" (3,572 of 3,572 precincts reported)
+
+V7 repair log row RL30 gives the same counts, 1,966,852 to 906,851, and "68.44% yes," although its cited source is Wikipedia. Ballotpedia's 68.5% to 31.5% does not match the certified percentages; it is 0.1 point off on each side.
+
+One studio file carries Ballotpedia's figure: the Missouri `measure` cell in `public/ballotpedia-rcv-prohibitions-by-state.csv` reads "Amendment 7 (approved 68.5% to 31.5%)." As instructed, I recorded the result only here and did not change that file. The cell should read 68.4% to 31.6% once the coordinator approves the edit.
+
+### 11.3 What I could not read in the follow-up
+
+- `enr.sos.mo.gov`, the Missouri election-night results site, returned HTTP 403 behind a Cloudflare challenge. I did not retry it; the certified PDF made it unnecessary.
+- The Missouri results page timed out partway through the download (40,813 bytes received). The links I used were in the part that arrived.
+- The text of Amendment 7 is still unread, so Missouri's ban scope still rests on Ballotpedia.
+- The HVS FAQ page that the 2020 releases point to has no pandemic text today. I did not look for an archived copy.
+
+### 11.4 Change log for the follow-up
+
+Files modified on November 6, 2026:
+
+- `work/boards/phase-2/data-viz/shared/public/census-hvs-homeownership-by-race-annual.meta.json` (new `notes_2020`; `qualification` and `source_line` extended)
+- `work/boards/phase-2/data-viz/shared/public/census-hvs-homeownership-by-race-quarterly.meta.json` (new `notes_2020`; `qualification` and `source_line` extended)
+- `work/research/20261106_Data-Viz-Public-Series.md` (this section)
+
+No other file changed. The other five sidecars were rewritten by the same script and are byte-identical to before (checked with SHA-256).
