@@ -2,6 +2,7 @@
 import base64
 import json
 import subprocess
+import tempfile
 from pathlib import Path
 
 from stage_a_identity_lib import (E, ID_DIR, LOCK, SERIES, STAGES, PILLAR_CORNER, POS, NAMES, fragment, mark, lockmark,
@@ -91,7 +92,7 @@ def s_08_1_correct():
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "
            "true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.")
-    return rec("s-08-1-correct", "08.1", 720, alt, body)
+    return rec("s-08-1-correct", "08.1", 700, alt, body)
 
 
 @spec
@@ -110,20 +111,18 @@ def s_08_1_failure():
 def s_08_2_correct():
     corner_ = (f'<div class="oai-s-newsprint" style="position:relative;width:360px;height:240px;border:1px solid {hair("newsprint")};overflow:hidden">'
                f'<p class="oai-tag" style="position:absolute;left:24px;top:20px">Bottom-right corner of a report cover, 0.5 in margin</p>'
-               f'<span style="position:absolute;right:48px;bottom:48px">{lockmark(40, label="Lockmark anchored at bottom right, 40 px")}</span>'
-               f'<span aria-hidden="true" style="position:absolute;right:0;bottom:48px;width:48px;height:1px;background:{pal("stone")}"></span>'
-               f'<span aria-hidden="true" style="position:absolute;right:48px;bottom:0;width:1px;height:48px;background:{pal("stone")}"></span></div>')
+               f'<span style="position:absolute;right:48px;bottom:48px">{lockmark(40, label="Lockmark anchored at bottom right, 40 px")}</span></div>')
     header = (f'<div class="oai-s-white" style="width:560px;display:flex;align-items:center;gap:12px;padding:16px 24px;border:1px solid {hair("white")}">'
               f'{lockmark(24, surface="white", label="Lockmark as a section marker, 24 px")}'
               f'<span class="oai-label">03 · Who writes the budget</span></div>')
-    body = ('<div class="oai-row top">'
+    body = ('<div class="oai-stack" style="gap:28px">'
             f'<div class="oai-cell">{scroll(corner_, "Cover corner at true size")}<span class="oai-tag">Anchor, 40 px, inside the margin</span></div>'
             f'<div class="oai-cell">{scroll(header, "Report page header at true size")}<span class="oai-tag">Section marker, 24 px, beside the section label</span>'
             f'<p style="margin-top:4px">{illus()}</p></div></div>')
     alt = ("Two fixed places at true size: the lockmark at 40 pixels in the bottom-right corner of a report cover, half an "
            "inch in from both edges; and the lockmark at 24 pixels beside the section label 03 Who writes the budget at the "
            "top of a report page. Illustrative label.")
-    return rec("s-08-2-correct", "08.2", 960, alt, body, illustrative=True)
+    return rec("s-08-2-correct", "08.2", 600, alt, body, illustrative=True)
 
 
 @spec
@@ -148,20 +147,20 @@ def _row(bill, topic, nodes, keyed=True, surface="newsprint", extra=""):
 
 @spec
 def s_08_3_correct():
-    box = (f'<div class="oai-s-newsprint" style="width:520px;padding:8px 24px;border:1px solid {hair("newsprint")}">'
+    box = (f'<div class="oai-s-newsprint" style="width:340px;padding:8px 20px;border:1px solid {hair("newsprint")}">'
            f'{_row("Bill S.0876", "School bus contracts", progress(4))}</div>')
     body = f'<div>{scroll(box, "Tracker row at true size")}<p style="margin-top:8px">{illus()}</p></div>'
     alt = "A tracker row at true size: a 40 pixel Signal Grid with its first four nodes filled, beside Bill S.0876, School bus contracts, and its key, Stage 4 of 9: Reported out. Illustrative bill."
-    return rec("s-08-3-correct", "08.3", 530, alt, body, illustrative=True)
+    return rec("s-08-3-correct", "08.3", 350, alt, body, illustrative=True)
 
 
 @spec
 def s_08_3_failure():
-    box = (f'<div class="oai-s-newsprint" style="width:520px;padding:8px 24px;border:1px solid {hair("newsprint")}">'
+    box = (f'<div class="oai-s-newsprint" style="width:340px;padding:8px 20px;border:1px solid {hair("newsprint")}">'
            f'{_row("Bill S.0876", "School bus contracts", progress(4), keyed=False)}</div>')
     body = f'<div>{scroll(box, "Failure case")}<p style="margin-top:8px">{illus()}</p></div>'
     alt = "Failure case: the same tracker row with the grid and no key. Four filled nodes sit beside the bill name with nothing to say what they count. Illustrative bill."
-    return rec("s-08-3-failure", "08.3", 530, alt, body, illustrative=True)
+    return rec("s-08-3-failure", "08.3", 350, alt, body, illustrative=True)
 
 
 # ------------------------------------------------------------------------------------------- 08.4
@@ -213,9 +212,9 @@ def s_08_combinations():
     table = ('<table><caption class="oai-note" style="text-align:left;caption-side:top;padding-bottom:8px">When a piece could carry more than one code, its grid shows the first that applies.</caption>'
              '<thead><tr><th scope="col">Order</th><th scope="col">Code</th><th scope="col">What it tells a reader</th><th scope="col">Smallest size</th><th scope="col">May share a grid with</th></tr></thead>'
              f'<tbody>{tr}</tbody></table>')
-    body = '<div class="oai-panel oai-s-newsprint">' + scroll(f'<div style="min-width:760px">{table}</div>', "Codes table; scroll sideways on a narrow screen") + '</div>'
+    body = '<div class="oai-panel oai-s-newsprint">' + scroll(f'<div style="min-width:640px">{table}</div>') + '</div>'
     alt = "Table of the Signal Grid's codes in order of precedence, with what each tells a reader, its smallest size and what it may share a grid with."
-    return rec("s-08-combinations", "08.4", 1000, alt, body)
+    return rec("s-08-combinations", "08.4", 712, alt, body)
 
 
 # ------------------------------------------------------------------------------------------- 08.5
@@ -246,16 +245,21 @@ def s_08_5_failure():
     def v5(lever, gray=False):
         st = f"color:{ink('newsprint')};--link:{pal('stone')};--lever:{lever}"
         return svg_file(ID_DIR / LOCK["display"], h=28, decorative=True, style=st)
+    def big(lever):
+        st = f"color:{ink('newsprint')};--link:{pal('stone')};--lever:{lever}"
+        return svg_file(ID_DIR / LOCK["display"], h=112, decorative=True, style=st)
     cells = []
     for gray in (False, True):
         f = ' style="filter:grayscale(1)"' if gray else ""
         cells.append(f'<div class="oai-row"{f}>'
-                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{v5(pal("verdigris"))}</span><span class="oai-tag" style="filter:none">Active: lever in Verdigris</span></div>'
-                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{v5(tv("color-palette-pillar-red"))}</span><span class="oai-tag" style="filter:none">Ready: lever in red</span></div></div>')
+                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{v5(pal("verdigris"))}</span><span class="oai-tag">Active: lever in Verdigris, 28 px</span></div>'
+                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{v5(tv("color-palette-pillar-red"))}</span><span class="oai-tag">Ready: lever in red, 28 px</span></div>'
+                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{big(pal("verdigris"))}</span><span class="oai-tag">Active, enlarged four times</span></div>'
+                     f'<div class="oai-cell"><span class="oai-red" data-red="signature" data-failure="true">{big(tv("color-palette-pillar-red"))}</span><span class="oai-tag">Ready, enlarged four times</span></div></div>')
     body = (f'<div class="oai-panel oai-s-newsprint" role="img" aria-label="Failure case: V5 Active and Ready states, in color and grayscale">'
             f'<div class="oai-stack"><p class="oai-tag">In color</p>{cells[0]}<p class="oai-tag">In grayscale</p>{cells[1]}</div></div>')
     alt = "Failure case: V5's Active and Ready states at 28 pixels, the same grid with the lever in Verdigris or in red. In grayscale the two are the same picture; the colors differ at 1.14 to 1."
-    return rec("s-08-5-failure", "08.5", 420, alt, body, notes="V5's lockmark master at 28 px, V5's tracker size, with its lever hook set to Verdigris or red, as V5 described the two states.")
+    return rec("s-08-5-failure", "08.5", 700, alt, body, notes="V5's lockmark master at 28 px, V5's tracker size, with its lever hook set to Verdigris or red, as V5 described the two states.")
 
 
 @spec
@@ -281,7 +285,7 @@ def s_08_stages():
            "first chamber, Passed second chamber, Reconciled, Signed, In effect. Four grids at 80 pixels show a stage under way as "
            "a ring, a stage that never happened as a gap with its links cut, a red node where taking part is open, and all nine "
            "filled for a law in effect, with a legend of the shapes.")
-    return rec("s-08-stages", "08.5", 900, alt, body, css=LEGEND_CSS,
+    return rec("s-08-stages", "08.5", 700, alt, body, css=LEGEND_CSS,
                notes="The numbered order grid is a diagram at 208 px, its numbers 25 px; the four grids are the 40 px drawing at twice size.")
 
 
@@ -297,7 +301,7 @@ def s_08_6_correct():
     alt = ("Six series and their six routes at 40 and 24 pixels, each route a heavy line along the grid's links that ends on "
            "its pillar's corner: Reform 101 and The Oath end top left for Explain, Dispatch and The Public Record top right for "
            "Track, Field Notes bottom left for Connect, and Proof It Works bottom right for Act.")
-    return rec("s-08-6-correct", "08.6", 1000, alt, body,
+    return rec("s-08-6-correct", "08.6", 700, alt, body,
                notes="Routes from V5's table; Dispatch from the Front is renamed Dispatch (S2).")
 
 
@@ -366,12 +370,13 @@ def s_08_8_correct():
 
 def _raster(html_body, w, h, name):
     """Render a failure case that breaks the 13 px text floor to a PNG, so the page carries it as an image (D1-09)."""
-    out = Path("/tmp") / f"oai-{name}.png"
+    tmpd = Path(tempfile.mkdtemp(prefix="oai-raster-"))
+    out = tmpd / f"oai-{name}.png"
     page = ('<!doctype html><html><head><meta charset="utf-8">'
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
             '<style>body{margin:0;background:#DCD9D2;font-family:Inter;color:#121212}</style></head>'
             f'<body><div id="c" style="width:{w}px;height:{h}px;overflow:hidden">{html_body}</div></body></html>')
-    tmp = Path("/tmp") / f"oai-{name}.html"
+    tmp = tmpd / f"oai-{name}.html"
     tmp.write_text(page)
     js = HERE / "stage_a_identity_raster.js"
     subprocess.run(["node", str(js), str(tmp), str(out), str(w), str(h)], check=True, capture_output=True)
@@ -412,28 +417,30 @@ def _state(nodes, surface):
 @spec
 def s_08_9_correct():
     def row(surface, name):
-        cells = "".join(f'<div class="oai-cell" style="width:150px">{_state(n, surface)}<span style="font-weight:600">{E(t)}</span>'
+        cells = "".join(f'<div class="oai-cell" style="width:116px">{_state(n, surface)}<span style="font-weight:600">{E(t)}</span>'
                         f'<span style="font-size:14px;color:{ink2(surface)}">{E(w)}</span></div>' for t, n, w in STATES)
-        return f'<div class="oai-panel oai-s-{surface}"><div class="oai-row top">{cells}</div><p class="oai-tag" style="margin-top:12px">{E(name)}</p></div>'
+        return f'<div class="oai-panel oai-s-{surface}"><div class="oai-row top" style="gap:16px">{cells}</div><p class="oai-tag" style="margin-top:12px">{E(name)}</p></div>'
     body = f'<div class="oai-stack" style="gap:12px">{row("newsprint", "Newsprint")}{row("charcoal", "Charcoal")}{row("prussian", "Prussian")}</div>'
     alt = ("Five tracker states at 40 pixels on Newsprint, Charcoal and Prussian, each with its words: Empty, small nodes only, "
            "Nothing filed yet; Loading, the links with no nodes, Loading tracker; Ready, two filled nodes, Stage 2 of 9: Referred; "
            "Under way, two filled and a ring on the third, Stage 3 of 9: Hearing, under way; Final, all nine filled, In effect.")
-    return rec("s-08-9-correct", "08.9", 820, alt, body,
+    return rec("s-08-9-correct", "08.9", 712, alt, body,
                notes="Loading draws the links alone, so it differs in shape from Empty, which draws the nodes small. In a page, the words sit in a role=\"status\" region.")
 
 
 @spec
 def s_08_9_failure():
-    def frame(op):
-        g = mark(LOCK["display"], h=28, decorative=True)
+    def frame(op, h=28):
+        g = mark(LOCK["display"], h=h, decorative=True)
         return f'<span class="oai-red" data-red="signature" data-failure="true" style="--o:{op}">{g}</span>'
     css = ".oai-pulse [fill^=\"var(--lever\"]{opacity:var(--o)}"
     body = (f'<div class="oai-panel oai-s-newsprint" role="img" aria-label="Failure case: V5 loading state, two frames of the pulsing lever">'
             f'<div class="oai-row oai-pulse"><div class="oai-cell">{frame(0.2)}<span class="oai-tag">Frame at 20 percent, 1.27 to 1</span></div>'
-            f'<div class="oai-cell">{frame(0.5)}<span class="oai-tag">Frame at 50 percent, 1.83 to 1</span></div></div></div>')
+            f'<div class="oai-cell">{frame(0.5)}<span class="oai-tag">Frame at 50 percent, 1.83 to 1</span></div>'
+            f'<div class="oai-cell">{frame(0.2, 112)}<span class="oai-tag">20 percent, enlarged four times</span></div>'
+            f'<div class="oai-cell">{frame(0.5, 112)}<span class="oai-tag">50 percent, enlarged four times</span></div></div></div>')
     alt = "Failure case: two frames of V5's loading state, the lockmark's red lever faded to 20 and then 50 percent. It pulsed forever with no text, and neither frame reaches 3 to 1."
-    return rec("s-08-9-failure", "08.9", 420, alt, body, css=css,
+    return rec("s-08-9-failure", "08.9", 700, alt, body, css=css,
                notes="V5's lockmark master at 28 px with its lever at V5's two opacities.")
 
 
@@ -448,7 +455,7 @@ def s_08_composer():
     data = {"stages": STAGES, "series": [[n, p, r] for n, p, r in SERIES], "corner": PILLAR_CORNER, "pos": POS, "names": NAMES,
             "ink": g_ess("newsprint"), "sub": g_sub("newsprint"), "red": tv("color-palette-pillar-red"), "keyline": tv("color-border-strong-on-newsprint")}
     css = """
-.oai-comp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px}
+.oai-comp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
 @media (max-width:760px){.oai-comp{grid-template-columns:1fr}}
 .oai-comp fieldset{border:0;padding:0;margin:0 0 16px}
 .oai-comp legend{font-weight:700;font-size:15px;margin-bottom:6px;padding:0}
@@ -480,7 +487,7 @@ def s_08_composer():
            '<p class="oai-tag" style="margin-top:8px">80 px and 40 px</p>'
            '<p class="status" role="status" aria-live="polite" data-c="status">The lockmark. It codes nothing.</p>')
     script = """<script>(function(){
-var root=document.currentScript.closest('[data-specimen="s-08-composer"]');if(!root)return;
+var root=document.currentScript.closest('[data-oai="s-08-composer"]');if(!root)return;
 var D=JSON.parse(root.querySelector('script[type="application/json"]').textContent);
 function q(s){return root.querySelector(s)}function c(n){return root.querySelector('[data-c="'+n+'"]')}
 var L80=c('g80').innerHTML,L40=c('g40').innerHTML,C=[3.5,19.5,35.5];
@@ -527,5 +534,5 @@ render()})();</script>"""
     alt = ("An interactive composer. Pick a code, nothing, tracker progress, a series route or a pillar corner, and its "
            "settings; the grid redraws at 80 and 40 pixels and a status line reads the grid in words, for example Tracker "
            "progress: stage 3 of 9, Hearing, under way.")
-    return rec("s-08-composer", "08.9", 900, alt, body, css=css,
+    return rec("s-08-composer", "08.9", 712, alt, body, css=css,
                notes="Script scoped to its own root; the status line is a role=\"status\" region. The step option stays disabled, with its reason shown, until the stage is under way. Only valid combinations can be built.")

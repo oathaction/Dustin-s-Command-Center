@@ -16,8 +16,10 @@ def rec(sid, rule, width, alt, body, *, illustrative=False, notes="", cls="", cs
             "notes": notes, "html": fragment(sid, body, cls=cls, extra_css=css, role_img=role_img)}
 
 
-def scroll(inner, label):
-    return f'<div class="oai-scroll" role="region" tabindex="0" aria-label="{E(label)}">{inner}</div>'
+def scroll(inner, label=""):
+    """A wide part of a specimen. The shell's mat scrolls the whole plate sideways when it is wider than the screen,
+    so the specimen itself holds no scrolling region (a focusable region inside an image would trap keyboard users)."""
+    return f'<div class="oai-wide">{inner}</div>'
 
 
 # ------------------------------------------------------------------------------------------- lockup assembly
@@ -103,12 +105,12 @@ def l7(width_px, word="TRACK", surface="newsprint"):
 # ------------------------------------------------------------------------------------------- 03.1
 @spec
 def s_03_1_correct():
-    W = 480
+    W = 440
     k = W / 978.31          # px per unit; x = 100 units
     x = 100 * k
     pad = x                 # clear space 1.0x
     wm = mark(WM["display"], w=W, decorative=True)
-    left = 96               # room for labels
+    left = 80               # room for labels
     ink_top, ink_bot = 2.66 * k, 105.34 * k
     H = ink_bot - ink_top + 2 * pad + 40
     Wt = left + W + 2 * pad + 24
@@ -143,18 +145,18 @@ def s_03_1_correct():
         f'<div style="position:relative;width:{Wt:.0f}px;height:{H:.0f}px">{overlay}'
         f'<div style="position:absolute;left:{ox:.1f}px;top:{oy:.1f}px">{wm}</div></div>',
         "Wordmark construction at true size; scroll sideways on a narrow screen") + '</div>')
-    alt = ("The Oath & Action wordmark at 480 pixels wide on Newsprint: OATH and ACTION in black capitals with a red "
+    alt = ("The Oath & Action wordmark at 440 pixels wide on Newsprint: OATH and ACTION in black capitals with a red "
            "ampersand between them. Guides mark the cap line and baseline, the cap height x, a clear-space box one cap height "
            "out from the letters on every side, and the equal white on each side of the ampersand, 0.203x.")
     return rec("s-03-1-correct", "03.1", int(Wt + 50), alt, body, role_img=alt,
-               notes="Display master placed at 480 px wide (49.06 px capitals). Annotations are a guide overlay, not part of the mark.")
+               notes="Display master placed at 440 px wide (44.98 px capitals). Annotations are a guide overlay, not part of the mark.")
 
 
 @spec
 def s_03_1_failure():
-    cap = 49.06
+    cap = 44.98
     fs = cap / 0.7275
-    w = 600
+    w = 560
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="96" viewBox="0 0 {w} 96" class="oai-svg" aria-hidden="true">'
            f'<text x="0" y="{24 + cap:.1f}" font-family="Inter Tight, Arial, sans-serif" font-weight="800" font-size="{fs:.1f}" fill="{ink("newsprint")}">'
            f'OATH <tspan fill="{sig("newsprint")}">&amp;</tspan> ACTION</text></svg>')
@@ -162,7 +164,7 @@ def s_03_1_failure():
         f'<span class="oai-red" data-red="signature" data-failure="true">{svg}</span>', "Failure case; scroll sideways on a narrow screen") + '</div>')
     alt = ("Failure case: OATH & ACTION typed in Inter Tight 800 with the font's own sans-serif ampersand colored red and "
            "ordinary word spaces, so the ampersand is a different shape and the gaps around it are wide and uneven.")
-    return rec("s-03-1-failure", "03.1", 650, alt, body, role_img=alt,
+    return rec("s-03-1-failure", "03.1", 610, alt, body, role_img=alt,
                notes="Drawn as live SVG text inside a labeled image (D1-09), in the same cap height as the correct case.")
 
 
@@ -216,7 +218,7 @@ def s_03_lockups():
            "with a large ampersand at right; L3 the wordmark with the lockmark grid at its right; L4 the O & A monogram, a hairline "
            "and the tagline on two lines; L5 the wordmark over the tagline; L7 the wordmark, a hairline and the word TRACK; L8 the "
            "monogram; and L6, a Prussian strip with the wordmark, tagline, four dots and lockmark all in White.")
-    return rec("s-03-lockups", "03.2", 1000, alt, body, css=css,
+    return rec("s-03-lockups", "03.2", 932, alt, body, css=css,
                notes="L1, L2, L3 and L8 are masters. L4 to L7 are assembled here from the approved masters and re-exported taglines on V5's layouts (I8 note); their own masters are drawn after Gate 2. L6 leaves out the web address until the site is settled (DR-55). L7's pillar word is live text.")
 
 
@@ -232,7 +234,7 @@ def _page_head(gap_px, failure=False):
                 f'height:{h + 2 * cs}px;border:1px solid {pal("stone")}"></span>'
                 f'<span class="oai-tag" style="position:absolute;left:calc(100% + {cs + 8}px);top:{-cs - 2}px;white-space:nowrap">1.0x</span>')
     head = (f'<p class="oai-disp" style="font-size:28px;margin-top:{gap_px}px;max-width:22ch">What the county board decides on Tuesday</p>')
-    return (f'<div style="padding:{40 if not failure else 24}px 48px 24px 40px">'
+    return (f'<div style="padding:{40 if not failure else 24}px 56px 24px 56px">'
             f'<div style="position:relative;display:inline-block">{wm}{zone}</div>{head}'
             f'<p style="margin-top:8px">{illus()}</p></div>')
 
@@ -278,17 +280,15 @@ def s_03_4_correct():
         it("L7, 250 px wide", l7(250, "CONNECT")),
     ])
     wide = it("Hinge diagram, display, 533 px", mark(HINGE["display"], w=533, label="Hinge diagram, display master, at its minimum, 533 px wide"))
-    wide6 = it("L6, 884 px wide", l6(884))
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:32px">'
             f'<div class="oai-row">{row1}</div><div class="oai-row">{row2}</div><div class="oai-row">{row3}</div>'
             + scroll(f'<div class="oai-row" style="flex-wrap:nowrap">{wide}</div>', "The hinge diagram's display minimum at true size; scroll sideways on a narrow screen")
-            + scroll(f'<div class="oai-row" style="flex-wrap:nowrap">{wide6}</div>', "L6 at its minimum, true size; scroll sideways")
-            + '<p class="oai-note">Every mark here sits at its smallest allowed size, at true size. These are graphics, so the 13 px floor for text does not apply to the letters drawn inside them.</p>'
+            + '<p class="oai-note">Every mark here sits at its smallest allowed size, at true size. These are graphics, so the 13 px floor for text does not apply to the letters drawn inside them. L6 appears at its 884 px minimum with the eight lockups after Rule 03.2.</p>'
             '</div></div>')
     alt = ("Every identity mark at its screen minimum, at true size: the wordmark 16 pixels tall, the stacked lockup 90 wide, "
            "the horizontal lockup 196 wide, the monogram 48 wide, ampersand B, the lockmark and the badge at 16 pixels, the "
-           "compact hinge diagram at 245 and the display one at 533, L4 at 304, L5 at 388, L7 at 250 and the L6 strip at 884.")
-    return rec("s-03-4-correct", "03.4", 1000, alt, body,
+           "compact hinge diagram at 245 and the display one at 533, L4 at 304, L5 at 388 and L7 at 250.")
+    return rec("s-03-4-correct", "03.4", 700, alt, body,
                notes="Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so).")
 
 
@@ -310,9 +310,9 @@ def s_03_minimums():
     table = (f'<table><caption class="oai-note" style="text-align:left;caption-side:top;padding-bottom:8px">{E(data["rule"])}</caption>'
              '<thead><tr><th scope="col">Mark</th><th scope="col">Screen minimum</th><th scope="col">Print minimum</th><th scope="col">Below the minimum</th></tr></thead>'
              f'<tbody>{rows}</tbody></table>')
-    body = '<div class="oai-panel oai-s-newsprint">' + scroll(f'<div style="min-width:760px">{table}</div>', "Minimum sizes table; scroll sideways on a narrow screen") + '</div>'
+    body = '<div class="oai-panel oai-s-newsprint">' + scroll(f'<div style="min-width:640px">{table}</div>') + '</div>'
     alt = "Table of minimum sizes on screen and in print for every identity mark, with the mark to use below each minimum."
-    return rec("s-03-minimums", "03.4", 1000, alt, body,
+    return rec("s-03-minimums", "03.4", 712, alt, body,
                notes="Read word for word from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8).")
 
 
@@ -328,11 +328,11 @@ def s_03_5_correct():
                  f'<div class="oai-row" style="gap:20px">{mark(L2["today"], w=110, surface=s, mode=m, label=f"L2 on {name}")}'
                  f'{mark(L8["today"], w=60, surface=s, mode=m, label=f"L8 on {name}")}</div></div>')
         cells.append(f'<div class="oai-panel oai-s-{s}">{inner}<p class="oai-tag" style="margin-top:16px">{E(name)}</p></div>')
-    css = (".oai-matrix{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:12px}")
+    css = (".oai-matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px}")
     body = f'<div class="oai-matrix">{"".join(cells)}</div>'
     alt = ("L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with "
            "every part White; and one-color versions in Charcoal on Newsprint and in Newsprint on Charcoal.")
-    return rec("s-03-5-correct", "03.5", 1000, alt, body,
+    return rec("s-03-5-correct", "03.5", 640, alt, body, css=css,
                notes="Prussian cells place the explicit-White files from prussian/ (treatment D, I9). L1 uses the 24 px master at 22 px tall.")
 
 
@@ -442,7 +442,7 @@ def s_03_8_correct():
 def s_03_8_failure():
     body = f'<div class="oai-panel oai-s-newsprint" style="padding:32px">{_partner(True)}</div>'
     alt = "Failure case: an event flyer that reads OATH & ACTION & MERRIMACK VALLEY CIVIC LAB present a workshop on public comment, with a second red ampersand joining the two names. Illustrative."
-    return rec("s-03-8-failure", "03.8", 900, alt, body, illustrative=True)
+    return rec("s-03-8-failure", "03.8", 700, alt, body, illustrative=True)
 
 
 @spec
@@ -450,8 +450,9 @@ def s_03_misuse():
     def case(title, inner):
         return (f'<div class="oai-panel oai-s-newsprint oai-cell" style="gap:16px"><div style="min-height:70px;display:flex;align-items:center">{inner}</div>'
                 f'<p class="oai-note" style="color:var(--oa-color-text-primary-on-newsprint)">{title}</p></div>')
-    stretched = mark(WM["display"], w=330, h=(330 / 1.3) * 108 / 978.31, decorative=True, extra=' preserveAspectRatio="none"')
-    shadow = f'<span style="display:inline-block;filter:drop-shadow(3px 4px 3px rgba(18,18,18,.55))">{mark(WM["display"], w=300, decorative=True)}</span>'
+    stretched = (f'<span style="display:inline-block;width:330px;height:{254 * 108 / 978.31:.1f}px">'
+                 f'<span style="display:inline-block;transform:scaleX(1.3);transform-origin:0 0">{mark(WM["display"], w=254, decorative=True)}</span></span>')
+    shadow = f'<span style="display:inline-block;filter:drop-shadow(3px 4px 3px var(--oa-color-palette-stone))">{mark(WM["display"], w=300, decorative=True)}</span>'
     recolor = svg_file(ID_DIR / WM["display"], w=300, decorative=True,
                        style=f"color:{ink('newsprint')};--amp:{pal('prussian')}")
     cases = [
@@ -462,8 +463,8 @@ def s_03_misuse():
         case("<b>The ampersand recolored to match a partner's blue.</b> The red joint of the name is gone, and Prussian sits in a job it does not have.",
              f'<span role="img" aria-label="Failure case: the wordmark with its ampersand recolored Prussian">{recolor}</span>'),
     ]
-    css = ".oai-mis{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:12px}"
+    css = ".oai-mis{display:grid;grid-template-columns:1fr;gap:12px}"
     body = f'<div class="oai-mis">{"".join(cases)}</div>'
     alt = "Three more failure cases at true size: the wordmark stretched 30 percent wider, the wordmark with a drop shadow, and the wordmark with its ampersand recolored dark blue."
-    return rec("s-03-misuse", "03.8", 1000, alt, body,
+    return rec("s-03-misuse", "03.8", 460, alt, body, css=css,
                notes="Extras: three failures producers make in slide and design apps. Placement attributes only; the master is unchanged.")

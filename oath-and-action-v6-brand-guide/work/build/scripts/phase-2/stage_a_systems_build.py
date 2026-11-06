@@ -122,6 +122,12 @@ class Ctx:
         if re.search(r'font-size:\s*[\d.]+px', html):
             raise ValueError(f'{sid}: px font size; use a type token or rem')
         C.check_copy(alt, f'{sid} alt')
+        if width is None:
+            # A fluid specimen fills the stage, and on phones the shell's mat has no side padding, so the specimen
+            # keeps the small-phone margin itself below the shell's 48em breakpoint.
+            html = (f'<style>@media (max-width:47.99em){{.inset{{padding-inline:{self.cssv("--oa-layout-grid-phone-small-margin")}}}}}</style>'
+                    f'<div class="inset">{html}</div>')
+        html = prefix_classes(html)
         meta = {'chapter': chapter, 'rule': rule, 'width_px': width, 'alt': alt, 'illustrative': illustrative,
                 'notes': notes}
         if height:
@@ -134,6 +140,19 @@ class Ctx:
             meta['interactive'] = True
         self.specs[sid] = {'html': html.strip() + '\n', 'meta': meta}
         return sid
+
+
+def prefix_classes(html):
+    """Prefix every class in a fragment with "sx-", in markup and in its <style>, so no name meets a shell class
+    (the shell styles .menu, .label, .hinge and more by class, and @scope keeps styles in but not out)."""
+    def cls(m):
+        return 'class="' + ' '.join('sx-' + c for c in m.group(1).split()) + '"'
+    html = re.sub(r'class="([^"]*)"', cls, html)
+
+    def css(m):
+        body = re.sub(r'(?<![-\d])\.([A-Za-z][\w-]*)', r'.sx-\1', m.group(2))
+        return m.group(1) + body + m.group(3)
+    return re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', css, html, flags=re.S)
 
 
 def check_chapter(ch):
@@ -163,6 +182,26 @@ def probe_page(ctx, body, title, extra_css=''):
             f'</head><body>{body}</body></html>')
 
 
+def measure_page(ctx, page):
+    """One page holding every text measurement the chapters ask for."""
+    out = []
+    for key, p in ctx.probes.items():
+        k = p['kind']
+        if k == 'cpl':
+            out.append(f'<div data-probe="{C.esc(key)}" data-kind="cpl" style="{p["css"]};margin:0 0 40px">{C.esc(p["text"])}</div>')
+        elif k == 'width':
+            disp = '' if 'display:block' in p['css'] else 'display:inline-block;white-space:nowrap;'
+            out.append(f'<div style="margin:0 0 40px"><span data-probe="{C.esc(key)}" data-kind="width" '
+                       f'style="{disp}{p["css"]}">{C.esc(p["text"])}</span></div>')
+        elif k == 'space':
+            st = f'display:inline-block;white-space:pre;{p["css"]}'
+            out.append(f'<div data-probe="{C.esc(key)}" data-kind="space" style="margin:0 0 40px">'
+                       f'<span class="a" style="{st}">n n</span> <span class="b" style="{st}">nn</span></div>')
+        elif k == 'fonts':
+            out.append(f'<div data-probe="{C.esc(key)}" data-kind="fonts"></div>')
+    return page(ctx, ''.join(out), 'measurements')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('stage', choices=['probe', 'final'])
@@ -190,6 +229,7 @@ def main():
         for mod in mods:
             if hasattr(mod, 'probe_pages'):
                 pages.update(mod.probe_pages(ctx, probe_page))
+        pages['measure.html'] = measure_page(ctx, probe_page)
         for name, html in pages.items():
             (scratch / name).write_text(html)
         (scratch / 'probes.json').write_text(json.dumps({'pages': sorted(pages), 'probes': ctx.probes}, indent=1))

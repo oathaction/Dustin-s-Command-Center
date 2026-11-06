@@ -63,12 +63,15 @@ BASE = """
 .ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
 .ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
 .ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
+@media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
+.ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
+.ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
 """
 
 PIECE = """
-.ed .pc{width:360px;max-width:100%;background:var(--oa-color-surface-newsprint);border-top:4px solid var(--oa-color-border-strong);padding:16px 0 4px}
+.ed .pc{width:340px;max-width:100%;background:var(--oa-color-surface-newsprint);border-top:4px solid var(--oa-color-border-strong);padding:16px 0 4px}
 .ed .pc .kick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 10px}
-.ed .pc .hl{font:800 1.75rem/1.1 var(--oa-font-family-display);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+.ed .pc .hl{font:800 1.75rem/1.1 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
 .ed .pc .dek{font-size:1.0625rem;line-height:1.5;margin:0 0 12px}
 .ed .pc .blk{border-top:1px solid var(--oa-color-border-hairline);padding:10px 0 0;margin:12px 0 0}
 .ed .pc .wycd{font:800 1.25rem/1.2 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 8px}
@@ -79,7 +82,7 @@ PIECE = """
 ARTICLE = """
 .ed .art{max-width:640px;background:var(--oa-color-surface-newsprint)}
 .ed .art .kick{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:0 0 12px}
-.ed .art .hl{font:800 clamp(1.75rem,1.4rem + 1.4vw,2.5rem)/1.06 var(--oa-font-family-display);letter-spacing:-.025em;margin:0 0 14px;text-wrap:balance}
+.ed .art .hl{font:800 clamp(1.75rem,1.4rem + 1.4vw,2.5rem)/1.08 var(--oa-font-family-display);letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
 .ed .art .dek{font-size:1.25rem;line-height:1.5;margin:0 0 18px}
 .ed .art .sec{border-top:1px solid var(--oa-color-border-hairline);padding:14px 0 0;margin:18px 0 0}
 .ed .art .sec p+p{margin-top:8px}
@@ -100,10 +103,11 @@ PAIR = """
 .ed .ex .q{margin:0;font:400 clamp(1.1875rem,1.1rem + .4vw,1.375rem)/1.5 var(--oa-font-family-reading);letter-spacing:-.005em;overflow-wrap:anywhere}
 .ed .ex .note{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px}
 .ed .emrule{display:inline-block;width:1em;height:0;border-top:2px solid currentColor;vertical-align:.32em;margin:0 .08em}
+.ed del .emrule{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}
 """
 
 HL = """
-.ed .hh{font:800 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.1 var(--oa-font-family-display);letter-spacing:-.02em;color:var(--oa-color-text-primary);margin:0;text-wrap:balance}
+.ed .hh{font:800 clamp(1.75rem,1.3rem + 1.8vw,2.5rem)/1.1 var(--oa-font-family-display);letter-spacing:-.012em;color:var(--oa-color-text-primary);margin:0;text-wrap:balance}
 .ed .hh .hamp-h{display:inline-block;height:.747em;width:auto;vertical-align:-.01em;color:var(--oa-color-palette-pillar-red)}
 """
 
@@ -120,7 +124,7 @@ def hinge():
 
 def amp_h(label="and"):
     """Ampersand B's display master, set at a hinge headline's cap height in the view's working red."""
-    return f'<img data-inline src="{AMP_DISPLAY}" alt="{e(label)}" class="hamp-h" data-red="working">'
+    return f'<img data-inline src="{AMP_DISPLAY}" alt="{e(label)}" class="hamp-h" data-red="working" data-red-job="headline">'
 
 
 def ill():

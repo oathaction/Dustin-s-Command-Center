@@ -103,6 +103,7 @@ def mark_style(surface, mode="color"):
 
 
 _uid = [0]
+INLINE_ALL = [False]          # set True for standalone pages (the letterhead PDF), which no build inlines
 LORA = "reexport/20261028_Amp-V5-Lora-Master-Reexported.svg"
 
 
@@ -112,9 +113,35 @@ def _prussian_file(relpath):
     return cand if cand.exists() else None
 
 
-def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, decorative=False, extra=""):
-    """Inline one SVG file at a set size. Exactly one of w or h may be given; the other follows the viewBox."""
+def _vb(path):
+    s = Path(path).read_text()
+    m = re.search(r"<svg\b([^>]*)>", s)
+    return [float(v) for v in re.search(r'viewBox="([^"]+)"', m.group(1)).group(1).replace(",", " ").split()]
+
+
+def svg_file(path, *, w=None, h=None, label=None, style="", cls="", red=None, decorative=False, extra="", by_ref=None):
+    """Place one SVG file at a set size. Exactly one of w or h may be given; the other follows the viewBox.
+
+    Identity masters and Civic Line files are placed by reference: an <img data-inline src="work/..."> that the guide
+    build (guide_build.py) inlines as SVG, so the fragment holds the path and never a copy of the drawing. Files with
+    ids that may repeat inside one specimen (the re-exported taglines) are inlined here with their ids prefixed."""
     path = Path(path)
+    if by_ref is None:
+        by_ref = not INLINE_ALL[0] and "reexport" not in path.parts
+    if by_ref:
+        vb = _vb(path)
+        if w is None and h is None:
+            h = vb[3]
+        if w is None:
+            w = h * vb[2] / vb[3]
+        if h is None:
+            h = w * vb[3] / vb[2]
+        alt = "" if decorative else (label or path.stem)
+        st = f' style="{style}"' if style else ""
+        out = (f'<img data-inline src="{rel(path)}" alt="{E(alt)}" width="{w:.2f}" height="{h:.2f}" class="oai-svg {cls}"{st}>')
+        if red:
+            return f'<span class="oai-red" data-red="{red[0]}"' + (f' data-red-job="{E(red[1])}"' if len(red) > 1 else "") + f">{out}</span>"
+        return out
     s = path.read_text()
     s = re.sub(r"<\?xml[^>]*\?>\s*", "", s).strip()
     m = re.match(r"<svg\b([^>]*)>", s)
@@ -165,11 +192,10 @@ def mark(relpath, *, w=None, h=None, surface="newsprint", mode="color", label=No
 
 
 def icon(cl_id, *, size=24, edition="black", label=None, decorative=False, surface="newsprint"):
-    """Place a Civic Line icon from the approved package (D2-52), one color by default."""
-    folder = CL_DIR / edition
-    f = sorted(folder.glob(f"*-{cl_id}-*.svg"))[0]
-    st = ""
-    return svg_file(f, w=size, h=size, label=label, style=st, decorative=decorative, cls="oai-icon")
+    """Place a Civic Line icon from the approved package (D2-52), one color, by reference (the build makes it a data URI)."""
+    f = sorted((CL_DIR / edition).glob(f"*-{cl_id}-*.svg"))[0]
+    alt = "" if decorative else (label or cl_id)
+    return f'<img src="{rel(f)}" alt="{E(alt)}" width="{size}" height="{size}" class="oai-svg oai-icon">'
 
 
 # --------------------------------------------------------------------------------------------- file names
@@ -350,6 +376,7 @@ CSS = """
 .oai .oai-svg{display:block;flex:none;max-width:none;overflow:visible}
 .oai .oai-red{display:inline-block;line-height:0}
 .oai-panel{padding:24px;border:1px solid var(--oa-color-border-hairline-on-newsprint)}
+.oai-pad{padding:24px}
 .oai-s-newsprint{background:var(--oa-color-surface-newsprint);color:var(--oa-color-text-primary-on-newsprint)}
 .oai-s-white{background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white)}
 .oai-s-charcoal{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);border-color:var(--oa-color-surface-charcoal)}
@@ -378,7 +405,9 @@ CSS = """
 
 
 def fragment(spec_id, body, *, cls="", extra_css="", role_img=None, attrs=""):
-    """One self-contained specimen fragment: a style block, then the root element."""
-    a = f' role="img" aria-label="{E(role_img)}"' if role_img else ""
+    """One self-contained specimen fragment: a style block, then the root element. The shell's plate stage names the
+    specimen from the manifest's alt (role="img"), so the fragment carries no name of its own."""
+    if body.startswith('<div class="oai-panel oai-s-newsprint"'):
+        body = '<div class="oai-pad oai-s-newsprint"' + body[len('<div class="oai-panel oai-s-newsprint"'):]
     return (f'<style>{CSS}{extra_css}</style>\n'
-            f'<div class="oai {cls}" data-specimen="{spec_id}"{a}{attrs}>{body}</div>\n')
+            f'<div class="oai {cls}" data-oai="{spec_id}"{attrs}>{body}</div>\n')

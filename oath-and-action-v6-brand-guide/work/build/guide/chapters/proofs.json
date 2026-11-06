@@ -1,0 +1,111 @@
+{
+ "intro": [
+  "Gate 2 settles the wordmark's width and ampersand B as refined (DR-71). Each piece below appears twice at actual size, first at today's width and then at the condensed width, both carrying ampersand B. Today's width stays in force until you choose.",
+  "The studio recommends today's width and B as refined. At the same height the condensed drawing gains nothing a reader needs, it sits close to the lettering of campaign signs, and its monogram reads as 0&A (D2-30)."
+ ],
+ "groups": [
+  {
+   "label": "The marks at a glance",
+   "text": [
+    "The wordmark from each of its masters, the stacked lockup and the monogram, at the same height in both widths."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-glance",
+     "label": "Both widths",
+     "caption": "Same height, so the difference shows as width: 152 against 120 px from the 16 px masters."
+    }
+   ]
+  },
+  {
+   "label": "Masthead on the site",
+   "text": [
+    "L3 in the 1440 px bar, with the phone bar under it. Both widths sit at the same height, so the condensed bar is shorter by 40 px."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-masthead-today",
+     "label": "Today's width",
+     "caption": "L3 from the 24 px master, 221 px wide, and a 52 px lockmark."
+    },
+    {
+     "specimen": "s-proofs-masthead-condensed",
+     "label": "Condensed width, for Gate 2",
+     "caption": "L3 from the condensed 24 px master, 181 px wide, and the same lockmark."
+    }
+   ]
+  },
+  {
+   "label": "Masthead in email",
+   "text": [
+    "L3 at the head of a 600 px email. In a sent email it is a PNG at twice size with the alt text Oath & Action."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-email-today",
+     "label": "Today's width",
+     "caption": "Invented headline and first line."
+    },
+    {
+     "specimen": "s-proofs-email-condensed",
+     "label": "Condensed width, for Gate 2",
+     "caption": "Invented headline and first line."
+    }
+   ]
+  },
+  {
+   "label": "Avatar",
+   "text": [
+    "The monogram, L8, on the Charcoal tile that R13 sets as the default, in a circle and a square. Feeds draw an avatar at about 32 to 48 px, where L8 at either width sets its capitals under the 14 px floor; ampersand B alone reads there and is the same at both widths, so the studio recommends B for avatars whichever width you choose."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-avatar-today",
+     "label": "Today's width",
+     "caption": "L8 fills 62 percent of the tile's width."
+    },
+    {
+     "specimen": "s-proofs-avatar-condensed",
+     "label": "Condensed width, for Gate 2",
+     "caption": "Same width, so the condensed capitals stand taller; its narrow O reads close to a zero."
+    }
+   ]
+  },
+  {
+   "label": "Social card",
+   "text": [
+    "The 1200 by 630 link-preview card, with a hinge headline whose ampersand takes the card's working red. No web address until the site is settled (DR-55)."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-social-today",
+     "label": "Today's width",
+     "caption": "Invented headline and line."
+    },
+    {
+     "specimen": "s-proofs-social-condensed",
+     "label": "Condensed width, for Gate 2",
+     "caption": "Invented headline and line."
+    }
+   ]
+  },
+  {
+   "label": "Letterhead",
+   "text": [
+    "US Letter, 8.5 by 11 inches, at true size on screen (96 px to the inch). The print proof holds both widths, one per page; check its scale with a ruler before you judge it on paper."
+   ],
+   "items": [
+    {
+     "specimen": "s-proofs-letterhead-today",
+     "label": "Today's width",
+     "caption": "Invented address, recipient and letter, signed with Dustin's name and title."
+    },
+    {
+     "specimen": "s-proofs-letterhead-condensed",
+     "label": "Condensed width, for Gate 2",
+     "caption": "Invented address, recipient and letter."
+    }
+   ]
+  }
+ ]
+}

@@ -32,25 +32,25 @@ def kick(*parts, illus=False):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Pieces, one per pillar, at the phone width they ship at (360 px)
+# Pieces, one per pillar, at the width of a phone's text column (340 px)
 # ---------------------------------------------------------------------------------------------------------------
 def piece_explain():
     return f'''<article class="pc" aria-label="Explain piece">
-{kick(("chip solid", "Explainer"), ("k", "Explain"))}
+{kick(("chip solid", "Explainer"))}
 <p class="hl">Why is my electric bill going up?</p>
 <p class="dek">A regulator or a board approves your rate.</p>
 <div class="blk"><p class="lab">Who decides</p><p>For an investor-owned utility, your state’s public utility commission sets rates in a rate case, its formal review of the utility’s request. For public power and cooperatives, a city council, a utility board or a co-op board does.</p></div>
 {hinge()}
 <p class="wycd">What you can do</p>
 <p class="step">Find your utility’s name on your bill, then look up its open rate case on your state commission’s site for the dates to comment.</p>
-<span class="ask" data-red="working">Find your rate case</span>
+<span class="ask" data-red="working" data-red-job="ask">Find your rate case</span>
 <p class="by">{e(SRC_ELECTRIC)}</p>
 </article>'''
 
 
 def piece_track():
     return f'''<article class="pc" aria-label="Track piece">
-{kick(("chip solid", "Tracker"), ("k", "Track"))}
+{kick(("chip solid", "Tracker"))}
 <p class="hl">Stock Trading Ban Tracker</p>
 <p class="dek">H.R. 7008 would bar members of Congress from trading individual stocks. As of October 15, 2026.</p>
 <ol class="stages">
@@ -61,7 +61,7 @@ def piece_track():
 {hinge()}
 <p class="wycd">What you can do</p>
 <p class="step">Get an email the day the Senate schedules its next vote on the bill.</p>
-<span class="ask" data-red="working">Follow this bill</span>
+<span class="ask" data-red="working" data-red-job="ask">Follow this bill</span>
 <p class="by">{e(SRC_STOCK_VOTES)}</p>
 </article>'''
 
@@ -75,7 +75,7 @@ def piece_connect():
 {hinge()}
 <p class="wycd">What you can do</p>
 <p class="step">Speak at the board’s public comment period, 6 p.m. Tuesday, April 13, 2027. {ill()}</p>
-<span class="ask" data-red="working">Find your supervisor</span>
+<span class="ask" data-red="working" data-red-job="ask">Find your supervisor</span>
 </article>'''
 
 
@@ -87,7 +87,7 @@ def piece_act():
 {hinge()}
 <p class="wycd">What you can do</p>
 <p class="step">Send a written comment by 5 p.m. Wednesday, March 3, 2027. {ill()}</p>
-<span class="ask" data-red="working">Send a comment</span>
+<span class="ask" data-red="working" data-red-job="ask">Send a comment</span>
 </article>'''
 
 
@@ -97,8 +97,8 @@ STAGES = """
 .ed .stages li.now{border-left:4px solid var(--oa-color-border-strong);padding-left:6px}
 .ed .stages li.next{color:var(--oa-color-text-secondary)}
 .ed .stages .sn{font:800 1.125rem/1.3 var(--oa-font-family-display)}
-.ed .grid4{display:flex;flex-wrap:wrap;gap:40px 48px;align-items:flex-start}
-.ed .grid4>div{width:360px;max-width:100%}
+.ed .grid4{display:flex;flex-wrap:wrap;gap:40px 24px;align-items:flex-start}
+.ed .grid4>div{width:340px;max-width:100%}
 .ed .grid4 .pl{font:800 1.125rem/1.2 var(--oa-font-family-display);margin:0 0 6px}
 """
 
@@ -125,7 +125,7 @@ def process_piece(fail=False):
 <p class="wycd">What you can do</p>
 <p class="step">Send a written comment by 5 p.m. Wednesday, March 3, 2027. {ill()}</p>
 {step2}
-<span class="ask" data-red="working">{e(ask)}</span>
+<span class="ask" data-red="working" data-red-job="ask">{e(ask)}</span>
 {track}
 </article>'''
 
@@ -150,7 +150,7 @@ def position_piece(fail=False):
 {against}
 {hinge()}
 {disc}
-<span class="ask" data-red="working">Ask your senator to vote yes</span>
+<span class="ask" data-red="working" data-red-job="ask">Ask your senator to vote yes</span>
 {foot}
 </article>'''
 
@@ -161,7 +161,7 @@ def position_piece(fail=False):
 CHART = """
 .ed .ct{font:800 1.25rem/1.2 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 4px;max-width:34ch;text-wrap:balance}
 .ed .cm{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin:0 0 12px}
-.ed .bars{display:grid;gap:10px;margin:0;max-width:520px}
+.ed .bchart{display:grid;gap:10px;margin:0;max-width:520px}
 .ed .bar{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:10px;align-items:center}
 .ed .bar .n{font:var(--oa-type-data-label);font-size:.9375rem}
 .ed .bar .t{position:relative;height:28px}
@@ -181,7 +181,7 @@ def bars(rows, title, measure, src, names=True, key=None):
     out = [f'<div class="ed vote"><p class="ct">{e(title)}</p><p class="cm">{e(measure)}</p>']
     if key:
         out.append('<p class="key">' + "".join(f'<span><span class="sw {c}"></span>{e(t)}</span>' for c, t in key) + "</p>")
-    out.append('<div class="bars">')
+    out.append('<div class="bchart">')
     for name, val, cls, vmax in rows:
         lab = e(name) if names else '<span aria-hidden="true"></span>'
         out.append(f'<div class="bar"><span class="n">{lab}</span><span class="t"><span class="f {cls}" style="width:{val / vmax * 100:.1f}%"'
@@ -221,9 +221,10 @@ def tile_map(mode):
             fill = "var(--oa-color-palette-pillar-red)" if rep else "var(--oa-color-palette-prussian)"
             ink = "var(--oa-color-palette-charcoal)" if rep else "var(--oa-color-palette-white)"
             red = ' data-red="failure"' if rep else ""
+        halo = ' stroke="var(--oa-color-surface-newsprint)" stroke-width="4" paint-order="stroke"' if fill == "url(#hatch)" else ""
         cells.append(f'<g><rect x="{x}" y="{y}" width="{S}" height="{S}" fill="{fill}" stroke="var(--oa-color-border-strong)" '
                      f'stroke-width="1"{red}/><text x="{x + S / 2}" y="{y + S / 2 + 4.5}" text-anchor="middle" fill="{ink}" '
-                     f'font-size="13" font-weight="700" font-family="var(--oa-font-family-reading)">{c}</text></g>')
+                     f'font-size="13" font-weight="700" font-family="var(--oa-font-family-reading)"{halo}>{c}</text></g>')
     defs = ('<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
             '<rect width="6" height="6" fill="var(--oa-color-surface-newsprint)"/><line x1="0" y1="0" x2="0" y2="6" '
             'stroke="var(--oa-color-data-emphasis)" stroke-width="2.5"/></pattern></defs>')
@@ -337,20 +338,29 @@ def build(book):
     rules = []
 
     # --- extras before Rule 01.1 -----------------------------------------------------------------------------
-    rows = [("Mission", LOCKED["mission"], "understand", "improve"),
-            ("Reader promise", LOCKED["promise"], "explain how a decision is made", "give you a practical way to take part"),
-            ("Editorial commitment", LOCKED["commitment"], "clarity, our duty", "action, our promise"),
-            ("Pillars", "Explain → Track → Connect → Act", "Explain, Track", "Connect, Act")]
-    trs = "".join(f'<tr><th scope="row">{e(r)}<br><span class="lk">{e(q(l) if r != "Pillars" else l)}</span></th>'
-                  f'<td>{e(c)}</td><td>{e(a)}</td></tr>' for r, l, c, a in rows)
-    trs += (f'<tr><th scope="row">Tagline<br><span class="lk">{e(q(LOCKED["tagline"]))}</span></th>'
+    rows = [("Mission", LOCKED["mission"], ("understand", "improve"), "understand", "improve"),
+            ("Reader promise", LOCKED["promise"], ("We explain how a decision is made", "give you a practical way to take part."),
+             "we explain the decision", "you get a way to take part"),
+            ("Editorial commitment", LOCKED["commitment"], ("Clarity is our duty.", "Action is our promise."), "clarity, our duty", "action, our promise"),
+            ("Pillars", "Explain → Track → Connect → Act", ("Explain → Track", "Connect → Act"), "Explain, Track", "Connect, Act")]
+
+    def split_line(line, halves):
+        a, b = halves
+        i, j = line.index(a), line.index(b)
+        out = e(line[:i]) + f'<b class="cm1">{e(a)}</b>' + e(line[i + len(a):j]) + f'<span class="ac1">{e(b)}</span>' + e(line[j + len(b):])
+        return out
+
+    trs = "".join(f'<tr><th scope="row">{e(r)}<br><span class="ll">{"“" if r != "Pillars" else ""}{split_line(l, h)}{"”" if r != "Pillars" else ""}</span></th>'
+                  f'<td data-k="Commitment">{e(c)}</td><td data-k="Action">{e(a)}</td></tr>' for r, l, h, c, a in rows)
+    trs += (f'<tr><th scope="row">Tagline<br><span class="ll">{e(q(LOCKED["tagline"]))}</span></th>'
             f'<td colspan="2">It names the result when the hinge has turned and the loop closes: officials who answer to the people they serve.</td></tr>')
-    A("s-01-hinge-lines", f'<div class="ed"><table><thead><tr><th scope="col">Locked line, exact</th><th scope="col">The commitment</th>'
+    A("s-01-hinge-lines", f'<div class="ed hl"><table class="stack"><thead><tr><th scope="col">Locked line, exact</th><th scope="col">The commitment</th>'
       f'<th scope="col">The action</th></tr></thead><tbody>{trs}</tbody></table></div>',
       rule=None, interactive=True, label="The hinge in the locked lines",
-      alt="A table of the locked lines. Each one splits at the hinge into a commitment and an action. Mission: understand, then improve. "
-          "Reader promise: explain how a decision is made, then give you a practical way to take part. Editorial commitment: clarity, "
-          "our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
+      css=(BASE, ".ed.hl .cm1{font-weight:700}.ed.hl .ac1{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:4px}.ed.hl th[scope=row]{min-width:18rem;font-weight:700}.ed.hl .ll{display:block;font-weight:400;font-size:1.0625rem;margin-top:4px}"),
+      alt="A table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. "
+          "Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then "
+          "action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
       notes="From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's.")
 
     pillars = [
@@ -370,7 +380,7 @@ def build(book):
                     f'<p class="lab">Products</p><ul>{"".join(f"<li>{e(x)}</li>" for x in prods)}</ul></div>'
                     for n, p, j, prods in pillars)
     PCSS = """
-.ed .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:24px 28px}
+.ed .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:28px 28px}
 .ed .pcol{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}
 .ed .pn{font:700 .9375rem/1 var(--oa-font-family-reading);font-variant-numeric:tabular-nums;color:var(--oa-color-text-secondary);margin:0 0 6px}
 .ed .pname{font:800 2rem/1 var(--oa-font-family-display);letter-spacing:-.03em;margin:0 0 10px}
@@ -402,7 +412,7 @@ def build(book):
           "Connect, illustrative: who answers for the repair on your street in Alder County, what to say in 90 seconds, then find "
           "your supervisor. Act, illustrative: Alder County votes on backyard cottages March 9; send a comment by March 3.",
       notes="Explain and Track use real atlas copy and records; Connect and Act are invented and labeled beside each invented item. "
-            "Each card is 360 px wide, the phone width it ships at.")
+            "Each card is 340 px wide, the text column of a phone.")
 
     # --- Rules 01.1 to 01.20: the nonpartisan rule set (Gate 1, S7) -----------------------------------------
     vote_rows = lambda fail: [("Yes", 6, "ink", 9), ("No", 3, "red" if fail else "ctx", 9)]
@@ -410,7 +420,7 @@ def build(book):
     vm = "Committee vote on S. 214, Tuesday, March 2, 2027."
     vbody = lambda fail: (bars(vote_rows(fail), vt, vm, "Illustrative committee and bill, invented for the specimen.")
                           .replace('<div class="ed vote">', '<div class="ed vote"><p class="kick"><span class="chip solid">Tracker</span>' + ill() + '</p>', 1)
-                          .replace('</div><p class="src">', f'</div>{hinge()}<span class="ask" data-red="working">Follow S. 214</span><p class="src">', 1))
+                          .replace('</div><p class="src">', f'</div>{hinge()}<span class="ask" data-red="working" data-red-job="ask">Follow S. 214</span><p class="src">', 1))
     KCSS = ".ed .kick{display:flex;gap:8px;align-items:center;margin:0 0 10px}"
     rules.append({
         "id": "01.1", "title": "Red never marks a party, a side or a person.",
@@ -424,7 +434,7 @@ def build(book):
                                   alt="An illustrative tracker card. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. "
                                       "The yes bar is Charcoal and the no bar Stone, each with its count. After the hinge divider, one red button: Follow S. 214."),
                     "caption": "The votes sit in Charcoal and Stone with their counts printed. The view’s one working red goes to the step a reader can take now, the button that follows the bill."},
-        "failure": {"specimen": A("s-01-1-failure", vbody(True), css=(BASE, CHART, KCSS), rule="01.1", illustrative=True, exempt=["red"],
+        "failure": {"specimen": A("s-01-1-failure", vbody(True), css=(BASE, CHART, KCSS), rule="01.1", illustrative=True, exempt=["red", "contrast"],
                                   alt="The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote."),
                     "caption": "Red on the no votes casts those three senators as the problem. A reader who agrees with them sees an attack, and the count stops reading as a record."},
         "specs": [{"label": "Working red", "value": "One job per view, in the order Rule 05.3 sets", "token": "oa.color.action.ask.fill.onNewsprint"},
@@ -451,7 +461,7 @@ def build(book):
                     "caption": "Charcoal and Stone, with each party’s name beside its bar, show a finding of agreement as agreement."},
         "failure": {"specimen": A("s-01-2-failure", bars([("Democrats", sv["support-democrats"], "blue", 100), ("Republicans", sv["support-republicans"], "red", 100)], t2, m2, SRC_STOCK_SURVEY, names=False,
                                                          key=[("blue", "Democrats"), ("red", "Republicans")]),
-                                  css=(BASE, CHART), rule="01.2", exempt=["red"],
+                                  css=(BASE, CHART), rule="01.2", exempt=["red", "contrast"],
                                   alt="The same chart with the Democrats' bar in Prussian blue and the Republicans' bar in Pillar Red, unlabeled, with a color key above."),
                     "caption": "Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."},
         "specs": [{"label": "First side", "value": "Charcoal, solid", "token": "oa.color.data.emphasis.onNewsprint"},
@@ -475,9 +485,9 @@ def build(book):
         "correct": {"specimen": A("s-01-3-correct", f'<div class="ed dkw">{dtitle}<ul class="dk">{dk_ok}</ul></div>', css=(BASE, CHART, DIV), rule="01.3",
                                   alt="A five-step diverging key from Prussian through Newsprint to Verdigris. Each step has a boxed arrow and a word: down 2 points or more, down less than 2, no change, up less than 2, up 2 points or more."),
                     "caption": "Each step carries a boxed arrow and a word, so the key reads the same in grayscale."},
-        "failure": {"specimen": A("s-01-3-failure", f'<div class="ed dkw">{dtitle}<ul class="dk">{dk_bad}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", exempt=["red"],
+        "failure": {"specimen": A("s-01-3-failure", f'<div class="ed dkw">{dtitle}<ul class="dk">{dk_bad}</ul></div>', css=(BASE, CHART, DIV), rule="01.3", exempt=["red", "contrast"],
                                   alt="The same key running from Pillar Red through Newsprint to Prussian blue, with no arrows."),
-                    "caption": "A red-to-blue scale reads as one party’s gain against the other’s whatever it measures, and with no arrows its direction disappears in grayscale."},
+                    "caption": "A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."},
         "specs": [{"label": "Steps", "value": "Five, step 1 the strongest fall, step 3 the page color", "token": "oa.chart.color.diverging.fill.step3.onNewsprint"},
                   {"label": "Direction", "value": "A boxed arrow in each step’s label ink, and a word"}],
         "related": ["05", "14"],
@@ -532,8 +542,8 @@ def build(book):
         "rule": ["Color a map by the rule, count or measure the story is about, never by which party won each place. Use the neutral palette "
                  "or a pattern, and set the key beside the map."],
         "tokens": ["oa.color.data.emphasis.onNewsprint", "oa.color.border.strong.onNewsprint"],
-        "why": {"text": ["A map colored by winner splits the country into two camps and gives large, thinly settled states the most ink. A map of a "
-                         "rule shows a reader whether the rule reaches the place where they live."],
+        "why": {"text": ["A map colored by winner splits the country into two camps and gives large, thinly settled states the most ink, when what "
+                         "a reader wants to know is whether a rule reaches the place where they live."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-5-correct", f'<div class="ed"><p class="ct">{e(t5)}</p><p class="cm">Statewide citizen-initiated measures, by state, as read November 6, 2026</p>'
                                                     f'<div class="mapw">{svg_rule}{key_rule}</div><p class="src">{e(SRC_INITIATIVE)}</p></div>',
@@ -542,7 +552,7 @@ def build(book):
                     "caption": "Solid, hatched and open tiles show the rule, with the key beside the map and the source below it."},
         "failure": {"specimen": A("s-01-5-failure", f'<div class="ed"><p class="ct">The 2024 presidential vote, by state</p><p class="cm">Winner of each state</p>'
                                                     f'<div class="mapw">{svg_win}{key_win}</div><p class="src">{e(SRC_FEC)}</p></div>',
-                                  css=(BASE, CHART, MAP), rule="01.5", exempt=["red"],
+                                  css=(BASE, CHART, MAP), rule="01.5", exempt=["red", "contrast"],
                                   alt=f"The same tile map colored by the 2024 presidential winner, {cw['rep']} tiles in Pillar Red and {cw['dem']} in Prussian blue. {SRC_FEC}"),
                     "caption": "Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."},
         "specs": [{"label": "Tile grid", "value": "12 columns by 8 rows, one square per state and DC"},
@@ -582,7 +592,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
                                                     '<p class="hl">What the Senate vote on stock trading means for you</p><p class="dek">One vote, 53 to 47, and what comes next.</p></div></div>',
                                   css=(BASE, PH), rule="01.6",
                                   alt="An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on stock trading means for you."),
-                    "caption": "The dome behind the headline decorates a story about one vote, names no office and borrows the look of campaign mail."},
+                    "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, while the card names no office."},
         "related": ["16", "12"],
         "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit.",
     })
@@ -590,16 +600,13 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
     ballot = lambda fail: (f'<div class="ed"><div class="card"><p class="kick"><span class="chip solid">Explainer</span>{ill()}</p>'
                            '<p class="hl">What a yes vote and a no vote on Measure B would do</p>'
                            '<p class="dek">Alder County’s bond for road repairs, on the March 2027 ballot.</p>'
-                           + ('<svg class="btn" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="56" fill="var(--oa-color-surface-white)" stroke="currentColor" stroke-width="4"/>'
-                              '<text x="60" y="56" text-anchor="middle" font-size="22" font-weight="800" font-family="var(--oa-font-family-display)" fill="currentColor">YES</text>'
-                              '<text x="60" y="80" text-anchor="middle" font-size="16" font-weight="800" font-family="var(--oa-font-family-display)" fill="currentColor">ON B</text></svg>'
-                              '<svg class="plac" viewBox="0 0 150 120" aria-hidden="true" focusable="false"><rect x="4" y="4" width="142" height="70" fill="var(--oa-color-surface-white)" stroke="currentColor" stroke-width="4"/>'
-                              '<text x="75" y="48" text-anchor="middle" font-size="20" font-weight="800" font-family="var(--oa-font-family-display)" fill="currentColor">STOP THE TAX</text>'
-                              '<path d="M75 74v44" stroke="currentColor" stroke-width="6"/></svg>' if fail else
+                           + ('<div class="gear"><span class="cbtn">YES<br>ON B</span><span class="plac">STOP THE TAX</span></div>' if fail else
                               '<div class="docref"><p class="lab">Document</p><p>Alder County, Measure B, ballot text and the county counsel’s summary, March 2027. ' + ill() + '</p></div>')
                            + "</div></div>")
     BCSS = """
-.ed .btn{width:96px;height:96px;margin:8px 12px 0 0}.ed .plac{width:130px;height:104px;margin-top:8px}
+.ed .gear{display:flex;gap:16px;align-items:center;margin-top:12px}
+.ed .cbtn{display:flex;align-items:center;justify-content:center;text-align:center;width:104px;height:104px;border-radius:50%;border:4px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);font:800 1.25rem/1.05 var(--oa-font-family-display)}
+.ed .plac{display:inline-block;padding:18px 16px;border:4px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);font:800 1.25rem/1 var(--oa-font-family-display)}
 .ed .docref{border:1px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);padding:12px 14px;margin-top:12px;max-width:44ch}
 """
     rules.append({
@@ -641,7 +648,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
     trs = "".join(f'<tr><td>{e(DOMAINS[d])}</td><td class="c">{dom[d]} of {n}</td><td class="c"><span class="bar1" style="width:{dom[d] * 14}px"></span></td></tr>'
                   for d in sorted(dom, key=lambda k: (-dom[k], k)))
     limit = n / 4
-    tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">The limit is one in four, {limit:g} of {n}. '
+    tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply four. '
               f'The only named states, Texas and California, supply one example each.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col"><span class="vh">Bar</span></th></tr></thead><tbody>{trs}</tbody></table></div>')
     bad = [("Elections and representation", 3), ("Money, lobbying and influence", 1), ("Taxes, wealth and economic security", 1)]
     tal_bad = ('<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state ' + ill() + '</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
@@ -656,7 +663,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "correct": {"specimen": A("s-01-9-correct", tal_ok, css=(BASE, CHART, TCSS + ".ed .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}"), rule="01.9",
                                   alt=f"A table of this chapter's {n} examples by atlas domain. The largest counts are 3 of {n}, under the one-in-four limit. " +
                                       "; ".join(f"{DOMAINS[d]}: {dom[d]}" for d in sorted(dom))),
-                    "caption": f"This chapter checked against its own rule: no domain passes {limit:g} of {n} examples, and no state supplies more than one."},
+                    "caption": f"This chapter checked against its own rule: its largest domain supplies three of its {n} examples, under one in four, and no named state supplies more than one."},
         "failure": {"specimen": A("s-01-9-failure", tal_bad, css=(BASE, CHART, TCSS), rule="01.9", illustrative=True,
                                   alt="An illustrative tally of a draft chapter's five examples: three from elections and representation, and three from Massachusetts."),
                     "caption": "Three election examples from one state would tell readers elsewhere that the chapter was written for someone else."},
@@ -700,7 +707,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "id": "01.11", "title": "When majorities of both parties use a mechanism, show a case from each.",
         "rule": ["When majorities of either party use the same mechanism, show a documented case from each, at the same length. The test case is "
                  "Loop R4a, the map-drawing loop, which the atlas titles “Majorities draw maps that help them keep control.”"],
-        "why": {"text": ["A mechanism shown through one party’s case reads as a charge against that party. A case from each side shows the mechanism itself, which is what a reader can change."],
+        "why": {"text": ["A mechanism shown through one party’s case reads as a charge against that party. With a case from each side, the mechanism itself stands out, and that is the part a reader can change."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-11-correct", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div>'
                                                      f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
@@ -716,18 +723,18 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
     })
 
     log_rows = [x for x in EXAMPLES if x[0] in ("The stock trading ban", "Posting committee votes, S. 214", "Mid-decade map redraws", "Citizen initiatives", "Backyard cottages")]
-    log_ok = ('<div class="ed tal"><p class="ct">Rotation log, chapter 01, five of its 13 rows</p><table><thead><tr><th scope="col">Example</th><th scope="col">Domain</th>'
+    log_ok = ('<div class="ed tal"><p class="ct">Rotation log, chapter 01, five of its 13 rows</p><table class="stack"><thead><tr><th scope="col">Example</th><th scope="col">Domain</th>'
               '<th scope="col">State</th><th scope="col">Level</th><th scope="col">Coalition behind any reform shown</th></tr></thead><tbody>'
-              + "".join(f'<tr><td>{e(a)}</td><td>{e(DOMAINS[d])}</td><td>{e(s)}</td><td>{e(l)}</td><td>{e(c)}</td></tr>' for a, d, s, l, c, _, _ in log_rows)
+              + "".join(f'<tr><th scope="row">{e(a)}</th><td data-k="Domain">{e(DOMAINS[d])}</td><td data-k="State">{e(s)}</td><td data-k="Level">{e(l)}</td><td data-k="Coalition">{e(c)}</td></tr>' for a, d, s, l, c, _, _ in log_rows)
               + "</tbody></table></div>")
-    log_bad = ('<div class="ed tal"><p class="ct">Rotation log, a draft row ' + ill() + '</p><table><thead><tr><th scope="col">Example</th><th scope="col">Domain</th>'
+    log_bad = ('<div class="ed tal"><p class="ct">Rotation log, a draft row ' + ill() + '</p><table class="stack"><thead><tr><th scope="col">Example</th><th scope="col">Domain</th>'
                '<th scope="col">State</th><th scope="col">Level</th><th scope="col">Coalition behind any reform shown</th></tr></thead><tbody>'
-               '<tr><td>Open primaries</td><td>(blank)</td><td>Massachusetts</td><td>(blank)</td><td>(blank)</td></tr></tbody></table></div>')
+               '<tr><th scope="row">Open primaries</th><td data-k="Domain">(blank)</td><td data-k="State">Massachusetts</td><td data-k="Level">(blank)</td><td data-k="Coalition">(blank)</td></tr></tbody></table></div>')
     rules.append({
         "id": "01.12", "title": "A rotation log records each example’s domain, state, level and backing coalition.",
         "rule": ["Log every example with its atlas domain, its state, its level of government and, for any reform shown, the coalition that "
                  "usually backs it. The studio reviews the log at each gate."],
-        "why": {"text": ["Balance across a chapter is easy to feel and hard to see. A log turns it into counts anyone can check, including a reader who suspects a lean."],
+        "why": {"text": ["A chapter can lean toward one topic or one side without anyone noticing. A log turns balance into counts anyone can check, including a reader who suspects a lean."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-12-correct", log_ok, css=(BASE, CHART, TCSS), rule="01.12", interactive=True,
                                   alt="A rotation log table with five of this chapter's rows, each with example, domain, state, level and the coalition behind any reform shown."),
@@ -751,7 +758,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "id": "01.13", "title": "Name the office that decides, and name a party only when party is the mechanism.",
         "rule": ["Say which office or body makes the decision. Name a party only when party is part of how the decision works, such as a party-line "
                  "vote, and give the count and its source."],
-        "why": {"text": ["A reader can call an office, testify before it or vote its members out. A party’s name in place of an office gives them a team to blame and nobody to call."],
+        "why": {"text": ["A reader can call an office or testify before it, and at the next election they can vote its members out. A party’s name in place of an office gives them a team to blame and nobody to call."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-13-correct", line(t13, SRC_ELECTRIC), css=(BASE, LINES), rule="01.13", alt=f"{t13} {SRC_ELECTRIC}"),
                     "caption": "The sentence names the commission and the hearing where it decides, so a reader knows where to look."},
@@ -766,7 +773,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "id": "01.14", "title": "Ask questions a supporter of the current rule could ask too.",
         "rule": ["Leave grievance words out of headlines, questions and calls to act, such as “rigged”, “broken”, “crisis” and “the rule you are "
                  "angry about”. Write each question so a person who supports the current rule could ask it too."],
-        "why": {"text": ["A question that assumes the reader is angry tells half our readers the piece is not for them. A plain question about who decided, and when it could change, works for every reader."],
+        "why": {"text": ["A question that assumes the reader is angry tells half our readers the piece is not for them, while a question about who decided and when it could change invites everyone in."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-14-correct", line("Who sets your property tax rate, and when could it change?"), css=(BASE, LINES), rule="01.14",
                                   alt="A headline question: Who sets your property tax rate, and when could it change?"),
@@ -807,7 +814,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
     lead16 = '<p class="ct">Does pay rise with productivity?</p><p class="cm">Credible studies disagree. Two readings, at the same length.</p>'
     rules.append({
         "id": "01.16", "title": "Show both readings of a contested claim at the same length.",
-        "rule": ["When credible studies disagree, give each reading the same length, the same verb and the same type, and name who holds it."],
+        "rule": ["When credible studies disagree, give the two readings equal length and the same verbs and type, and name who holds each one."],
         "why": {"text": ["Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal tells them which side we prefer before they weigh either."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-16-correct", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">One reading</p><p>{e(ra)}</p></div><div><p class="lab">The other reading</p><p>{e(rb)}</p></div></div><p class="src">{e(SRC_PAY)}</p></div>',
@@ -826,7 +833,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "id": "01.17", "title": "Describe a rule so its supporters would accept the description.",
         "rule": ["Read your description of a rule as someone who supports it would. If they would object to the words, rewrite the description "
                  "until they would accept it, and save the argument for a labeled position piece."],
-        "why": {"text": ["Readers who back a rule are among the people we serve, and many are the officials a reader is asked to contact. A description both sides accept is one both sides can use."],
+        "why": {"text": ["Readers who back a rule are among the people we serve, and many are the officials a reader is asked to contact, so the description has to hold for them as well."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-17-correct", line("Cloture, a Senate vote to end debate, takes 60 votes for most legislation.", SRC_CLOTURE), css=(BASE, LINES), rule="01.17",
                                   alt=f"Cloture, a Senate vote to end debate, takes 60 votes for most legislation. {SRC_CLOTURE}"),
@@ -849,7 +856,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "correct": {"specimen": A("s-01-18-correct", hh("The overtime rule", "the paycheck."), css=(BASE, HL), rule="01.18",
                                   alt="A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red."),
                     "caption": "Both halves share Charcoal and ExtraBold, and ampersand B carries the red."},
-        "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", exempt=["red"],
+        "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", exempt=["red", "contrast"],
                                   alt="The same headline with the second half, the paycheck, also set in red."),
                     "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."},
         "files": [AMP_DISPLAY],
@@ -956,7 +963,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         "rule": ["A piece that asks readers to support or oppose a named measure opens its kicker with the label “Our position”, before the "
                  "headline. Before the ask it gives the strongest case against the position, what we don’t know and a disclosure of who decided."],
         "tokens": ["oa.color.action.primary.fill.onNewsprint", "oa.color.action.ask.fill.onNewsprint"],
-        "why": {"text": ["A reader who disagrees with us can still trust the rest of our coverage when every argument is labeled, answered by its strongest opposing case and logged."],
+        "why": {"text": ["A reader who disagrees with us can still trust the rest of our coverage when each argument carries its label and its strongest opposing case."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-23-correct", f'<div class="ed">{position_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True,
                                   alt="An illustrative position piece. The kicker opens with a Charcoal label, Our position, then Act. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, the disclosure: Oath & Action supports S. 214; read our explainer first. One red button: Ask your senator to vote yes. Footer: decided by the editorial board, February 26, 2027; no funder reviewed this piece; all positions are in the position log."),
@@ -1000,7 +1007,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
         'It has no role as a brand line today, because it competes with the tagline for the same place and casts a newcomer as a spectator.</p></div></div>',
         css=(BASE, FL), rule=None, label="Our founding line",
         alt="A record card. Our founding line, kept as a record: From spectators to stewards. Edition 4.2 lists it as the historical tagline, retired from current applications. It has no role as a brand line today."),
-        "caption": "The founding line stays in our history, out of every lockup and headline."}]
+        "label": "Our founding line", "caption": "The founding line stays in our history, out of every lockup and headline."}]
 
     # extras that sit before Rule 01.1 carry no after_rule
     extras = [{"specimen": "s-01-hinge-lines", "label": "The hinge in the locked lines",
@@ -1008,7 +1015,7 @@ background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
                "caption": "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces. Chapter 09 draws the pillar marks."},
               {"specimen": "s-01-pieces", "label": "One piece from each pillar, at true size",
-               "caption": "Each piece names its pillar in the kicker, turns at the hinge divider to “What you can do” and ends on one step, the view’s one working red. Explain and Track quote real records; Connect and Act are invented and labeled."}] + extras_after
+               "caption": "Each piece opens with its content label, turns at the hinge divider to “What you can do” and ends on one step, the view’s one working red. Explain and Track quote real records; Connect and Act are invented and labeled beside each invented item."}] + extras_after
 
     sources = [SRC_STOCK_SURVEY, SRC_STOCK_VOTES, SRC_INITIATIVE, SRC_FEC, SRC_R4A, SRC_PAY, SRC_CLOTURE, SRC_ELECTRIC,
                "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"]

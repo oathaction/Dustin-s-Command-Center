@@ -1,0 +1,860 @@
+{
+ "number": "01",
+ "anchor": "purpose",
+ "title": "Purpose",
+ "part": "Foundations",
+ "instruction": "Learn what Oath & Action does, and how its pillars and nonpartisan rules shape every piece.",
+ "intro": [
+  "Oath & Action is a nonpartisan publication and a set of tools for people in every state who live under public rules they rarely get to read. Our mission is “Help people understand and improve the rules that shape their lives.”",
+  "The ampersand in our name is the hinge, the joint a door swings on. It joins a promise to the action that keeps it, so every piece explains and tracks a decision, then turns to the people who make it and the step a reader can take. Chapter 04 draws the hinge and sets its rules."
+ ],
+ "rules": [
+  {
+   "id": "01.1",
+   "title": "Red never marks a party, a side or a person.",
+   "rule": [
+    "Pillar Red never stands for a party, one side of a debate or a named person, in a chart, a map, a label or a headline. Each view gives its one working red to the job Rule 05.3 names, and none of those jobs is a side."
+   ],
+   "tokens": [
+    "oa.color.data.emphasis.onNewsprint",
+    "oa.color.data.context.onNewsprint",
+    "oa.color.action.ask.fill.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Election-night maps have taught readers to see red as one party. A red mark on a side tells a reader on the other side that the piece is against them before they read a word, and they stop trusting the record we keep for everyone."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-1-correct",
+    "caption": "The votes sit in Charcoal and Stone with their counts printed. The view’s one working red goes to the step a reader can take now, the button that follows the bill."
+   },
+   "failure": {
+    "specimen": "s-01-1-failure",
+    "caption": "Red on the no votes casts those three senators as the problem. A reader who agrees with them sees an attack, and the count stops reading as a record."
+   },
+   "specs": [
+    {
+     "label": "Working red",
+     "value": "One job per view, in the order Rule 05.3 sets",
+     "token": "oa.color.action.ask.fill.onNewsprint"
+    },
+    {
+     "label": "Sides of a vote",
+     "value": "Charcoal and Stone, counts printed",
+     "token": "oa.color.data.context.onNewsprint"
+    }
+   ],
+   "related": [
+    "05",
+    "14"
+   ],
+   "builders": "Search the piece for Pillar Red and name each red mark’s job. If a mark stands for a party, a side or a person, redraw it in Charcoal or Stone."
+  },
+  {
+   "id": "01.2",
+   "title": "Two sides take Charcoal and Stone, with their names printed.",
+   "rule": [
+    "When a chart or table compares two parties or two sides, draw one in Charcoal and the other in Stone, or one solid and one in outline, and print each side’s name on its mark. Red never stands against blue or Verdigris."
+   ],
+   "tokens": [
+    "oa.color.data.emphasis.onNewsprint",
+    "oa.color.data.context.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Red against blue reads as an election before it reads as data, and red against Verdigris stages the same contest in other hues. Neutral inks with printed names let a reader see who is who without learning a color code, and they hold in grayscale."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-2-correct",
+    "caption": "Charcoal and Stone, with each party’s name beside its bar, show a finding of agreement as agreement."
+   },
+   "failure": {
+    "specimen": "s-01-2-failure",
+    "caption": "Red and blue turn a finding of agreement into a contest, and the color key makes a reader match swatches to find each party, which fails in grayscale."
+   },
+   "specs": [
+    {
+     "label": "First side",
+     "value": "Charcoal, solid",
+     "token": "oa.color.data.emphasis.onNewsprint"
+    },
+    {
+     "label": "Second side",
+     "value": "Stone, solid, or a Charcoal outline",
+     "token": "oa.color.data.context.onNewsprint"
+    },
+    {
+     "label": "Names",
+     "value": "Printed on or beside each mark, in the text ink"
+    }
+   ],
+   "related": [
+    "05",
+    "14"
+   ],
+   "builders": "Pick the data emphasis and data context tokens for the two sides, never a palette color by name, and set each side’s name as a direct label."
+  },
+  {
+   "id": "01.3",
+   "title": "A diverging scale runs from Prussian through the page color to Verdigris.",
+   "rule": [
+    "A scale that shows change in two directions runs from Prussian through Newsprint to Verdigris. A boxed arrow and a word name each step’s direction, because the two hues lose their order in grayscale. Red and blue never form a diverging pair."
+   ],
+   "tokens": [
+    "oa.chart.color.diverging.fill.step1.onNewsprint",
+    "oa.chart.color.diverging.fill.step2.onNewsprint",
+    "oa.chart.color.diverging.fill.step3.onNewsprint",
+    "oa.chart.color.diverging.fill.step4.onNewsprint",
+    "oa.chart.color.diverging.fill.step5.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Neither end of the pair belongs to a party, so a fall and a rise carry the same weight. The arrow and the word carry the direction for a reader who sees no color at all."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-3-correct",
+    "caption": "Each step carries a boxed arrow and a word, so the key reads the same in grayscale."
+   },
+   "failure": {
+    "specimen": "s-01-3-failure",
+    "caption": "A red-to-blue scale reads as one party’s gain against the other’s, whatever it measures, and with no arrows its direction disappears in grayscale."
+   },
+   "specs": [
+    {
+     "label": "Steps",
+     "value": "Five, step 1 the strongest fall, step 3 the page color",
+     "token": "oa.chart.color.diverging.fill.step3.onNewsprint"
+    },
+    {
+     "label": "Direction",
+     "value": "A boxed arrow in each step’s label ink, and a word"
+    }
+   ],
+   "related": [
+    "05",
+    "14"
+   ],
+   "builders": "Use the five diverging steps in order and draw each arrow in the matching diverging label token, which the chart palette pairs with its fill."
+  },
+  {
+   "id": "01.4",
+   "title": "On Prussian, identity marks turn White and data marks turn Newsprint.",
+   "rule": [
+    "On a Prussian ground, set every identity mark in one color, White, the ampersand included. Draw data graphics on Prussian in Newsprint. Red never sits on Prussian."
+   ],
+   "tokens": [
+    "oa.color.identity.signature.onPrussian",
+    "oa.color.data.emphasis.onPrussian"
+   ],
+   "why": {
+    "text": [
+     "Pillar Red measures 3.19 to 1 against Prussian. At 16 px, where smoothing thins the strokes, the red ampersand measures 2.27 to 1 and a White one 8.27 to 1, so only White stays legible."
+    ],
+    "basis": "WCAG 2.2 SC 1.4.11 Non-text Contrast"
+   },
+   "correct": {
+    "specimen": "s-01-4-correct",
+    "caption": "The wordmark and its ampersand turn White, and the bar turns Newsprint. The panel carries no red."
+   },
+   "failure": {
+    "specimen": "s-01-4-failure",
+    "caption": "The red ampersand sinks into the Prussian ground at 3.19 to 1, and at small sizes a reader loses the mark’s center."
+   },
+   "specs": [
+    {
+     "label": "Identity marks",
+     "value": "White, one color",
+     "token": "oa.color.identity.signature.onPrussian"
+    },
+    {
+     "label": "Data marks",
+     "value": "Newsprint",
+     "token": "oa.color.data.emphasis.onPrussian"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/prussian/20261028_Wordmark-24px-Master-Prussian-White.svg"
+   ],
+   "related": [
+    "03",
+    "05"
+   ],
+   "builders": "Inside a Prussian surface class, the identity signature token resolves to White and the data emphasis token to Newsprint. Never name the palette red there."
+  },
+  {
+   "id": "01.5",
+   "title": "Maps show a rule or a measure, never which party won a place.",
+   "rule": [
+    "Color a map by the rule, count or measure the story is about, never by which party won each place. Use the neutral palette or a pattern, and set the key beside the map."
+   ],
+   "tokens": [
+    "oa.color.data.emphasis.onNewsprint",
+    "oa.color.border.strong.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A map colored by winner splits the country into two camps and gives large, thinly settled states the most ink, when what a reader wants to know is whether a rule reaches the place where they live."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-5-correct",
+    "caption": "Solid, hatched and open tiles show the rule, with the key beside the map and the source below it."
+   },
+   "failure": {
+    "specimen": "s-01-5-failure",
+    "caption": "Colored by winner, the map splits the country into two camps and says nothing about the rule a story covers."
+   },
+   "specs": [
+    {
+     "label": "Tile grid",
+     "value": "12 columns by 8 rows, one square per state and DC"
+    },
+    {
+     "label": "Fills",
+     "value": "Charcoal, a Charcoal hatch and open, keyed in words",
+     "token": "oa.color.data.emphasis.onNewsprint"
+    }
+   ],
+   "files": [
+    "work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json"
+   ],
+   "related": [
+    "14",
+    "05"
+   ],
+   "builders": "Start from the studio’s shared tile grid and join the story’s own measure to it by state code. A map of election results follows chapter 14’s rules, with party names printed."
+  },
+  {
+   "id": "01.6",
+   "title": "Domes, columns and flags appear only in a captioned photograph of that place.",
+   "rule": [
+    "Show a capitol dome, columns or a flag only inside a documentary photograph of that place or event, with a caption that names it. Keep them out of icons, backgrounds and textures."
+   ],
+   "why": {
+    "text": [
+     "Campaigns in both parties use the dome and the flag as shorthand for government. As decoration they stand for no rule, office or event, so they give the reader nothing to check or act on."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-6-correct",
+    "caption": "The building appears only as the place where the vote happened, named in a caption, in a photograph still to be made."
+   },
+   "failure": {
+    "specimen": "s-01-6-failure",
+    "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, while the card names no office."
+   },
+   "related": [
+    "16",
+    "12"
+   ],
+   "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit."
+  },
+  {
+   "id": "01.7",
+   "title": "Brand graphics carry no party symbols, candidate photos, campaign gear or protest slogans.",
+   "rule": [
+    "Keep party symbols, candidate photographs, campaign merchandise and legible protest slogans out of brand graphics, since each takes a side the piece never argued. A party’s logo may appear as evidence, inside a sourced document the piece reproduces."
+   ],
+   "why": {
+    "text": [
+     "A reader takes any symbol on our page as ours. A campaign button or a slogan placard reads as an endorsement, even when the story beside it is neutral."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-7-correct",
+    "caption": "The card explains both votes and points to the ballot text as its document."
+   },
+   "failure": {
+    "specimen": "s-01-7-failure",
+    "caption": "The button and the placard take sides on a measure the card set out to explain, so a reader on either side stops at the picture."
+   },
+   "related": [
+    "16",
+    "23"
+   ],
+   "builders": "When a story needs a party’s logo or a campaign’s material, place the whole document as a sourced image with its credit, never the symbol by itself."
+  },
+  {
+   "id": "01.8",
+   "title": "Photographs show people doing public work, with who, what, where and when in the caption.",
+   "rule": [
+    "Choose photographs of people of different ages, places and roles doing public work, officials among them. Every caption names who is shown, what they are doing, where and when."
+   ],
+   "why": {
+    "text": [
+     "A reader trusts a picture of a real hearing more than a picture of the idea of one, and a full caption lets them check it."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-8-correct",
+    "caption": "The caption names the person by role, the act, the place and the time."
+   },
+   "failure": {
+    "specimen": "s-01-8-failure",
+    "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."
+   },
+   "related": [
+    "16"
+   ],
+   "builders": "Write the caption’s four parts before a photograph goes in: who, what, where and when. Until the photography direction is settled, use a labeled placeholder."
+  },
+  {
+   "id": "01.9",
+   "title": "No atlas domain supplies more than one example in four, and no state more than one in five.",
+   "rule": [
+    "Within a chapter, draw no more than one example in four from any one of the atlas’s ten domains, and no more than one in five from any one state. Massachusetts examples may appear on the same terms as any other state’s."
+   ],
+   "why": {
+    "text": [
+     "A run of examples from one subject or one state tells readers whose problems we care about. Rotation keeps a reader in Texas and a reader in Maine in view of the same chapter."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-9-correct",
+    "caption": "This chapter checked against its own rule: its largest domain supplies three of its 13 examples, under one in four, and no named state supplies more than one."
+   },
+   "failure": {
+    "specimen": "s-01-9-failure",
+    "caption": "Three election examples from one state would tell readers elsewhere that the chapter was written for someone else."
+   },
+   "related": [
+    "13"
+   ],
+   "builders": "Count from the rotation log before a chapter goes to review, using the atlas’s ten domains by their full names."
+  },
+  {
+   "id": "01.10",
+   "title": "Examples rotate across levels of government and regions.",
+   "rule": [
+    "Draw examples from federal, state, county or city, and school district decisions, and from every region of the country."
+   ],
+   "why": {
+    "text": [
+     "Most of the rules that reach a household are written below the federal level. A reader who only ever sees Congress learns that the decisions nearest to them are not worth following."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-10-correct",
+    "caption": "This chapter’s examples reach all four levels, with real cases from Texas, California and Congress beside the invented county."
+   },
+   "failure": {
+    "specimen": "s-01-10-failure",
+    "caption": "Four federal examples in a row leave out the councils, boards and districts where a reader can most easily be heard."
+   },
+   "related": [
+    "13",
+    "21"
+   ],
+   "builders": "Tag each row of the rotation log with its level, and look for an empty level before review."
+  },
+  {
+   "id": "01.11",
+   "title": "When majorities of both parties use a mechanism, show a case from each.",
+   "rule": [
+    "When majorities of either party use the same mechanism, show a documented case from each, at the same length. The test case is Loop R4a, the map-drawing loop, which the atlas titles “Majorities draw maps that help them keep control.”"
+   ],
+   "why": {
+    "text": [
+     "A mechanism shown through one party’s case reads as a charge against that party. With a case from each side, the mechanism itself stands out, and that is the part a reader can change."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-11-correct",
+    "caption": "One case from a Republican majority and one from a Democratic majority, at the same length, show the loop as a mechanism both sides use."
+   },
+   "failure": {
+    "specimen": "s-01-11-failure",
+    "caption": "With one party’s case alone, the loop reads as a charge against that party, and a reader who votes for it stops at the first line."
+   },
+   "related": [
+    "15",
+    "13"
+   ],
+   "builders": "Before a piece runs a mechanism, list the party of the majority in each of the atlas’s case records for that loop, and pick one case from each."
+  },
+  {
+   "id": "01.12",
+   "title": "A rotation log records each example’s domain, state, level and backing coalition.",
+   "rule": [
+    "Log every example with its atlas domain, its state, its level of government and, for any reform shown, the coalition that usually backs it. The studio reviews the log at each gate."
+   ],
+   "why": {
+    "text": [
+     "A chapter can lean toward one topic or one side without anyone noticing. A log turns balance into counts anyone can check, including a reader who suspects a lean."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-12-correct",
+    "caption": "Every field is filled, and an invented example says so in the coalition column."
+   },
+   "failure": {
+    "specimen": "s-01-12-failure",
+    "caption": "A row with blank fields cannot be counted, so the gate review cannot see a run of one topic or one side’s reforms."
+   },
+   "related": [
+    "13",
+    "28"
+   ],
+   "builders": "Keep one log row per example in the chapter’s notes and count domains and states from it before review."
+  },
+  {
+   "id": "01.13",
+   "title": "Name the office that decides, and name a party only when party is the mechanism.",
+   "rule": [
+    "Say which office or body makes the decision. Name a party only when party is part of how the decision works, such as a party-line vote, and give the count and its source."
+   ],
+   "why": {
+    "text": [
+     "A reader can call an office or testify before it, and at the next election they can vote its members out. A party’s name in place of an office gives them a team to blame and nobody to call."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-13-correct",
+    "caption": "The sentence names the commission and the hearing where it decides, so a reader knows where to look."
+   },
+   "failure": {
+    "specimen": "s-01-13-failure",
+    "caption": "“Politicians” names no office, so the reader has no one to call, and “again” supplies a grievance the record does not show."
+   },
+   "related": [
+    "02",
+    "13"
+   ],
+   "builders": "Search a draft for “politicians”, “Washington”, “lawmakers” and party names, and replace each with the office that holds the decision."
+  },
+  {
+   "id": "01.14",
+   "title": "Ask questions a supporter of the current rule could ask too.",
+   "rule": [
+    "Leave grievance words out of headlines, questions and calls to act, such as “rigged”, “broken”, “crisis” and “the rule you are angry about”. Write each question so a person who supports the current rule could ask it too."
+   ],
+   "why": {
+    "text": [
+     "A question that assumes the reader is angry tells half our readers the piece is not for them, while a question about who decided and when it could change invites everyone in."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-14-correct",
+    "caption": "A homeowner who likes today’s rate and one who wants it lower would both click this question."
+   },
+   "failure": {
+    "specimen": "s-01-14-failure",
+    "caption": "The question assumes the reader is angry and that someone wronged them, so a reader who likes the rule has no reason to read on."
+   },
+   "related": [
+    "02",
+    "23"
+   ],
+   "builders": "Search a draft for the words this rule lists, and read each question as someone who likes the current rule would."
+  },
+  {
+   "id": "01.15",
+   "title": "Use plain verbs in place of war and sports metaphors.",
+   "rule": [
+    "Describe a public decision in the words for what happens, such as propose, debate, vote and pass. Leave out war and sports metaphors such as fight, battle, front and game plan."
+   ],
+   "why": {
+    "text": [
+     "A war or a game needs an enemy or a loser, and the people on the other side of a vote are our readers too. The verbs for what happens also tell a reader where the decision stands."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-15-correct",
+    "caption": "The series name is Dispatch, and the headline names the vote and its day."
+   },
+   "failure": {
+    "specimen": "s-01-15-failure",
+    "caption": "“From the Front” and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."
+   },
+   "related": [
+    "02"
+   ],
+   "builders": "Search a draft for fight, battle, front, war and game plan, and name the step in the process in its place."
+  },
+  {
+   "id": "01.16",
+   "title": "Show both readings of a contested claim at the same length.",
+   "rule": [
+    "When credible studies disagree, give the two readings equal length and the same verbs and type, and name who holds each one."
+   ],
+   "why": {
+    "text": [
+     "Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal tells them which side we prefer before they weigh either."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-16-correct",
+    "caption": "Each reading runs 24 words, uses the verb “finds” and names who holds it."
+   },
+   "failure": {
+    "specimen": "s-01-16-failure",
+    "caption": "One reading becomes “the research” and the other three small words, so the layout settles a question the evidence leaves open."
+   },
+   "related": [
+    "13",
+    "14"
+   ],
+   "builders": "Set both readings in one two-column block with matching labels and count their words before you publish."
+  },
+  {
+   "id": "01.17",
+   "title": "Describe a rule so its supporters would accept the description.",
+   "rule": [
+    "Read your description of a rule as someone who supports it would. If they would object to the words, rewrite the description until they would accept it, and save the argument for a labeled position piece."
+   ],
+   "why": {
+    "text": [
+     "Readers who back a rule are among the people we serve, and many are the officials a reader is asked to contact, so the description has to hold for them as well."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-17-correct",
+    "caption": "A senator who values the 60-vote rule and one who wants it gone would both sign off on this sentence."
+   },
+   "failure": {
+    "specimen": "s-01-17-failure",
+    "caption": "“Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."
+   },
+   "related": [
+    "13",
+    "02"
+   ],
+   "builders": "Before review, read the description in the place of someone who supports the rule, and mark every word they would change."
+  },
+  {
+   "id": "01.18",
+   "title": "Both halves of a hinge pair share one color and weight, and only the ampersand is red.",
+   "rule": [
+    "Set both noun phrases of a hinge headline in the same ink, face and weight. Only the ampersand takes red, as the view’s working red."
+   ],
+   "tokens": [
+    "oa.font.family.display",
+    "oa.color.palette.pillarRed"
+   ],
+   "why": {
+    "text": [
+     "When one half is red or heavier, the headline takes a side between a rule and its result. Equal halves leave the joining to the ampersand."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-18-correct",
+    "caption": "Both halves share Charcoal and ExtraBold, and ampersand B carries the red."
+   },
+   "failure": {
+    "specimen": "s-01-18-failure",
+    "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."
+   },
+   "files": [
+    "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+   ],
+   "related": [
+    "04",
+    "02"
+   ],
+   "builders": "Set the headline in Inter Tight ExtraBold and place ampersand B’s display master at the cap height in place of the font’s ampersand. Chapter 04 gives the sizes."
+  },
+  {
+   "id": "01.19",
+   "title": "People pairs join people through a shared rule or place, and their order rotates.",
+   "rule": [
+    "When a hinge headline joins two people or groups, join them through a rule or a place they share. Swap their order from one piece to the next, so neither always comes first."
+   ],
+   "why": {
+    "text": [
+     "The ampersand stands for common ground, and people stand on it through something they share. A fixed order would rank one group above the other."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-19-correct",
+    "caption": "The rider and the driver share a route, then a hearing, and the next piece puts the driver first."
+   },
+   "failure": {
+    "specimen": "s-01-19-failure",
+    "caption": "“Us” and “them” name two sides with nothing shared between them, so the ampersand marks a divide."
+   },
+   "related": [
+    "04",
+    "02"
+   ],
+   "builders": "Log the order of each people pair, and swap it the next time a piece joins the same two groups."
+  },
+  {
+   "id": "01.20",
+   "title": "Party names, “left” and “right” enter a hinge headline only to report sourced agreement.",
+   "rule": [
+    "Use “left”, “right” or a party’s name in a hinge headline only to report a point where the sides agree, such as a bill with sponsors from both parties, and source the agreement in the deck."
+   ],
+   "why": {
+    "text": [
+     "A red ampersand between two sides would mark the sides themselves, against Rule 01.1. Reporting agreement is the one case where naming the sides helps a reader."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-20-correct",
+    "caption": "The headline names both parties’ voters to report a point of agreement, and the deck gives the figures and their source."
+   },
+   "failure": {
+    "specimen": "s-01-20-failure",
+    "caption": "The red ampersand sits between two sides with no shared fact, so it marks the divide and reports nothing."
+   },
+   "related": [
+    "04",
+    "02"
+   ],
+   "builders": "When a headline names the sides, link the deck’s source line to the vote, the sponsor list or the survey that shows the agreement."
+  },
+  {
+   "id": "01.21",
+   "title": "Every piece carries one content label in its kicker.",
+   "rule": [
+    "Open the kicker, the short line above a headline, with one content label: Explainer, Tracker, Analysis, Report, Act · How to take part, or Our position. A series name may follow the label."
+   ],
+   "tokens": [
+    "oa.color.action.primary.fill.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-21-correct",
+    "caption": "Each kicker opens with its one label. A position piece’s label comes first and fills with Charcoal."
+   },
+   "failure": {
+    "specimen": "s-01-21-failure",
+    "caption": "“Must read” and “Breaking” push the reader and never say that the headline argues a position."
+   },
+   "related": [
+    "13",
+    "09"
+   ],
+   "builders": "Pick the label from the six in this rule. A piece that fits none of them needs a ruling before it runs."
+  },
+  {
+   "id": "01.22",
+   "title": "A process piece names the step and leaves the side to the reader.",
+   "rule": [
+    "An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what supporters and opponents have said at the same length, and takes no side. Its ask is the view’s one working red."
+   ],
+   "tokens": [
+    "oa.color.action.ask.fill.onNewsprint",
+    "oa.color.action.ask.label.onNewsprint",
+    "oa.component.button.ask.keyline.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A reader of any view can use a process piece, because it tells them how to be heard and leaves what to say to them."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-22-correct",
+    "caption": "The piece names who decides, gives both sides one sentence each, then turns at the hinge divider to two dated ways to take part. The red sits on the ask alone."
+   },
+   "failure": {
+    "specimen": "s-01-22-failure",
+    "caption": "The piece keeps the process label and then argues one side, so a reader who opposes the change meets a position they were told was not there."
+   },
+   "specs": [
+    {
+     "label": "Kicker",
+     "value": "Act · How to take part, in plain type"
+    },
+    {
+     "label": "Ask",
+     "value": "Pillar Red fill, White label at 19 px bold, Charcoal keyline on Newsprint",
+     "token": "oa.color.action.ask.fill.onNewsprint"
+    },
+    {
+     "label": "Before the ask",
+     "value": "The hinge divider, its ampersand in the surface’s ink",
+     "token": "oa.color.identity.hingeDivider.onNewsprint"
+    },
+    {
+     "label": "Width",
+     "value": "640 px reading column, reflowing to a phone"
+    }
+   ],
+   "related": [
+    "13",
+    "12",
+    "18"
+   ],
+   "builders": "Build the ending from the hinge divider, the “What you can do” heading and one ask button. Link the neutral tracker, never a campaign page."
+  },
+  {
+   "id": "01.23",
+   "title": "A position piece wears its label before the headline and its fairness kit before the ask.",
+   "rule": [
+    "A piece that asks readers to support or oppose a named measure opens its kicker with the label “Our position”, before the headline. Before the ask it gives the strongest case against the position, what we don’t know and a disclosure of who decided."
+   ],
+   "tokens": [
+    "oa.color.action.primary.fill.onNewsprint",
+    "oa.color.action.ask.fill.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A reader who disagrees with us can still trust the rest of our coverage when each argument carries its label and its strongest opposing case."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-23-correct",
+    "caption": "The label comes first, the case against comes before the ask, and the disclosure sits directly above the button."
+   },
+   "failure": {
+    "specimen": "s-01-23-failure",
+    "caption": "With the label at the bottom and no case against, a reader learns the piece was an argument only after the ask, which reads as a trick."
+   },
+   "specs": [
+    {
+     "label": "Label first",
+     "value": "“Our position” opens the kicker, before the headline, and a shared card keeps it top left."
+    },
+    {
+     "label": "The strongest case against",
+     "value": "The opposing case as its supporters would put it, sourced, at least a third of the argument’s length."
+    },
+    {
+     "label": "Grades kept",
+     "value": "Every claim keeps its evidence grade, and its verb matches the grade."
+    },
+    {
+     "label": "Opponents by role",
+     "value": "Opponents are named by office or role, never by party as a villain."
+    },
+    {
+     "label": "What we don’t know",
+     "value": "The open questions, named."
+    },
+    {
+     "label": "Process facts",
+     "value": "Who decides, when and how, word for word as the neutral tracker gives them."
+    },
+    {
+     "label": "Disclosure",
+     "value": "Who decided the position, the date and any funder interest, above the ask, with the public position log."
+    },
+    {
+     "label": "Never in the record",
+     "value": "Positions never appear in the atlas, the trackers or the data."
+    }
+   ],
+   "related": [
+    "13",
+    "18"
+   ],
+   "builders": "Use the position label component, never a plain kicker, and check the eight kit items in this rule’s specifications before the piece goes to the editor."
+  },
+  {
+   "id": "01.24",
+   "title": "Name each product for what it does, and keep the ampersand for Oath & Action.",
+   "rule": [
+    "Give each product a plain name that says what it does, signed by Oath & Action. The atlas is the only product named as a question, and no product name holds an ampersand; a partner’s ampersand is written as “and”."
+   ],
+   "why": {
+    "text": [
+     "One masterbrand means one trust mark, so a reader who trusts the newsletter can trust the tracker it links to. A plain name tells them what they will get before they open it."
+    ],
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-01-24-correct",
+    "caption": "Each name says what the product does, and the only ampersand belongs to Oath & Action."
+   },
+   "failure": {
+    "specimen": "s-01-24-failure",
+    "caption": "A second ampersand competes with ours, a scorecard grades the officials a reader is asked to contact, and “the Front” turns a series into a war."
+   },
+   "related": [
+    "03",
+    "22"
+   ],
+   "builders": "Name a new product as its subject plus its kind, such as “Child Care Rules Tracker”, and run the name past this rule and Rule 01.15 before it ships."
+  }
+ ],
+ "extras": [
+  {
+   "specimen": "s-01-hinge-lines",
+   "label": "The hinge in the locked lines",
+   "caption": "Each locked line splits at the hinge, a commitment first and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."
+  },
+  {
+   "specimen": "s-01-pillars",
+   "label": "The four pillars, always in this order",
+   "caption": "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces. Chapter 09 draws the pillar marks."
+  },
+  {
+   "specimen": "s-01-pieces",
+   "label": "One piece from each pillar, at true size",
+   "caption": "Each piece opens with its content label, turns at the hinge divider to “What you can do” and ends on one step, the view’s one working red. Explain and Track quote real records; Connect and Act are invented and labeled beside each invented item."
+  },
+  {
+   "after_rule": "01.24",
+   "specimen": "s-01-founding-line",
+   "label": "Our founding line",
+   "caption": "The founding line stays in our history, out of every lockup and headline."
+  }
+ ],
+ "sources": [
+  "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey came three years before the House and Senate votes.",
+  "Source: U.S. House of Representatives, Roll Call 280, passage of H.R. 7008, July 22, 2026, and U.S. Senate, Vote 253, cloture on the motion to proceed, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The studio could not open the Senate’s own page for the vote.",
+  "Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process exists on paper but cannot be used after a 2021 state supreme court ruling.",
+  "Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
+  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These events show maps being drawn; they do not measure how long either majority’s hold lasts.",
+  "Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, NBER Working Paper 24165, December 2017, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, the connection from productivity to household income, snapshot of October 15, 2026. The two differ in the price index they use and in how they count benefits. The atlas grades the connection plausible and contested.",
+  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
+  "From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
+  "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"
+ ],
+ "related_chapters": [
+  {
+   "chapter": "02",
+   "reason": "The lines that state the purpose."
+  },
+  {
+   "chapter": "04",
+   "reason": "The hinge in full."
+  },
+  {
+   "chapter": "05",
+   "reason": "Rule 05.3, the red rule these rules cite."
+  },
+  {
+   "chapter": "09",
+   "reason": "The pillar marks."
+  },
+  {
+   "chapter": "13",
+   "reason": "Evidence grades and the labels beside each item."
+  },
+  {
+   "chapter": "21",
+   "reason": "The atlas as the purpose at work."
+  }
+ ]
+}

@@ -534,3 +534,24 @@ The guide engineer built the shell, the build and a guide check (`work/handoffs/
 | D2-172 | The masthead uses the wordmark's 24 px master from 768 px and its 16 px master on phones | Pixel-grid masters at the sizes they were drawn for |
 | D2-173 | `guide_check.js` is a new script; `dataviz_check.js` is unchanged | The chart checks stay as they are (brief); guide pages need structure, anchor and exemption logic the chart pages do not |
 | D2-174 | Makers install axe-core with `style-dictionary@5.8.0` in the same command, or outside the repository with `AXE_PATH` | With no `package.json` in `work/build`, a lone `npm install --no-save` removes packages installed the same way, including the token build's |
+
+## Stage A makers, November 6, 2026
+
+Four makers build chapters 01 to 08 under `work/handoffs/phase-2/20261106_Stage-A-Brief.md`. The editor's routine calls for chapters 01 and 02 (`work/handoffs/phase-2/20261106_Stage-A-Editor-Notes.md`), numbered by the main session. The line on the "23 states" count also goes to Dustin on stage board A, and stands only if he agrees:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-175 | Rules 02.1 to 02.21 are W01 to W21, numbered alike, each titled with its W number | Every rule gets a heading and an anchor, and every W citation stays valid |
+| D2-176 | The 12 house rules form one rule, 02.22, in Board 5's table, with each row anchored | Board 5 approved them as a table; the index and group 5 link to each row |
+| D2-177 | In each W rule, the correct plate is Board 5's pair and the failure plate is the pattern card | This carries the approved pair look into the guide without printing the before twice in the same form |
+| D2-178 | Each W rule gets a new "Why it works" line with the basis "Editorial judgment" | The template needs one; the approved words are untouched |
+| D2-179 | W21's typesetting note prints without "(DR-79)", and the index says "six marked Illustrative" where Board 5 printed "6" | H11 and H06 on the guide's own page |
+| D2-180 | Rules 01.1 to 01.20 keep their Gate 1 numbers; the pillars, products and pieces sit as extras before Rule 01.1, and the Act and naming rules are 01.21 to 01.24 | Icon notes cite 01.1, 01.4 and 01.6; a reader still meets the pillars first |
+| D2-181 | The labeled-position pattern lives in 01 as Rules 01.22 and 01.23, and 13 should cite them | The Stage A brief places it in 01; the map and strategy had it in 13 |
+| D2-182 | The fifth edition's "23 states" row becomes a sourced count: "In 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot." (Ballotpedia, read November 6, 2026) | Tension 17 needs a source or a label; this one is real and checkable |
+| D2-183 | The mechanism table's hearing row carries the Illustrative label, and its structure row uses Senate Vote 253 (53 to 47, 60 needed) | The fifth edition's hearing was invented; the vote is in Atlas V7 |
+| D2-184 | Its columns read "What a draft says" and "What we publish", in place of "We publish the mechanism / Not the mood" | The old heading is a corrective negation (W09) |
+| D2-185 | Pillar pieces are 340 px wide, two to a row at 1440 | 340 px is a phone's text column, and two fit in the guide's content column |
+| D2-186 | Party bars in Rule 01.2 run in alphabetical order, with Charcoal first | A stated order that favors no party |
+| D2-187 | Voice line B appears on the About page, after the mission | Neither Gate 1 nor the strategy named its place |
+| D2-188 | The specimen classes `.btn` and `.bars` are renamed (`.cbtn`, `.bchart`) | The shell's own classes of those names leaked into the specimens |

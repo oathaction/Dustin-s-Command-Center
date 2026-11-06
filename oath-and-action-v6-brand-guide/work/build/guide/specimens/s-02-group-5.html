@@ -1,0 +1,45 @@
+<!-- s-02-group-5: Oath & Action guide, Edition 06, chapter 02. Editor, November 6, 2026. -->
+<style>
+.ed{font-family:var(--oa-font-family-reading);font-size:1.0625rem;line-height:1.6;color:var(--oa-color-text-primary);max-width:100%}
+.ed *{box-sizing:border-box}
+.ed p{margin:0}
+.ed .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
+.ed .src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:68ch}
+.ed .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
+.ed .chip.solid{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}
+.ed .ill{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.3;padding:1px 6px;border:1px solid currentColor;vertical-align:.1em;white-space:nowrap}
+.ed del{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
+.ed ins{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
+.ed .hinge{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
+.ed .hinge::before,.ed .hinge::after{content:"";flex:1 1 auto;border-top:1px solid currentColor}
+.ed .hinge .hamp{flex:none;display:block;width:21px;height:24px}
+.ed .ask{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}
+.ed .lab{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
+.ed table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
+.ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
+@media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
+.ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
+.ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
+
+.ed.pair{max-width:760px}
+.ed .ex{margin:0;padding:18px 20px;border:1px solid var(--oa-color-border-hairline);background:var(--oa-color-surface-newsprint)}
+.ed .ex.after{background:var(--oa-color-surface-white);border-color:var(--oa-color-border-strong)}
+.ed .exh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px}
+.ed .exh .s{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}
+.ed .ex .q{margin:0;font:400 clamp(1.1875rem,1.1rem + .4vw,1.375rem)/1.5 var(--oa-font-family-reading);letter-spacing:-.005em;overflow-wrap:anywhere}
+.ed .ex .note{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px}
+.ed .emrule{display:inline-block;width:1em;height:0;border-top:2px solid currentColor;vertical-align:.32em;margin:0 .08em}
+.ed del .emrule{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}
+
+.ed.go{max-width:760px;border-top:2px solid var(--oa-color-border-strong);padding-top:16px}
+.ed .gwrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;align-items:start}
+.ed .gnum{font:800 clamp(3rem,2.4rem + 2.6vw,4.5rem)/.85 var(--oa-font-family-display);letter-spacing:-.04em;grid-row:1/3}
+.ed .gname{font:800 clamp(1.5rem,1.3rem + .8vw,2rem)/1.1 var(--oa-font-family-display);letter-spacing:-.02em}
+.ed .gint{font-size:1.0625rem;margin-top:6px;max-width:58ch}
+.ed .ghouse{margin-top:14px;border-top:1px solid var(--oa-color-border-hairline);padding-top:10px}
+.ed .ghouse ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 24px}
+.ed .ghouse a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:inherit}
+.ed .legend{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:.9375rem;color:var(--oa-color-text-secondary);margin:14px 0 0}</style>
+<div class="ed go"><div class="gwrap"><p class="gnum" aria-hidden="true">05</p><p class="gname">Marks and numbers</p><p class="gint">Set dashes, dates, numbers and signs the same way on every page.</p></div><div class="ghouse"><p class="lab">House rules in this group</p><ul><li><a href="#s-02-22-correct--h05">H05 · Write dates in words</a></li><li><a href="#s-02-22-correct--h06">H06 · Spell out numbers under ten</a></li><li><a href="#s-02-22-correct--h07">H07 · Use the true minus sign</a></li></ul></div><p class="legend"><span><del>Dotted underline</del>: what the rule removes</span><span><ins>Solid underline</ins>: the repair</span><span><span class="ill">Illustrative</span> written to show the fault, not quoted</span></p></div>

@@ -1,0 +1,1013 @@
+{
+ "number": "02",
+ "anchor": "voice",
+ "title": "Voice",
+ "part": "Foundations",
+ "instruction": "Write the way you’d explain a rule to a neighbor, and quote the brand lines exactly.",
+ "intro": [
+  "Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”",
+  "Our reader promise is “We explain how a decision is made and give you a practical way to take part.” A reader can take part only in a decision they can follow, which is why clarity comes first in our editorial commitment, “Clarity is our duty. Action is our promise.”"
+ ],
+ "rules": [
+  {
+   "id": "02.1",
+   "title": "W01 Write it the way you would say it.",
+   "rule": [
+    "Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say."
+   ],
+   "why": {
+    "text": [
+     "Most readers meet us on a phone, between other things. A sentence they can follow by ear the first time is the one they can act on."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-1-pair",
+    "caption": "What changed: The rewrite names the office, the thing a reader would ask about, and read aloud it sounds like one person talking to another."
+   },
+   "failure": {
+    "specimen": "s-02-1-fault",
+    "caption": "“The point of responsibility” names no office a listener could call, and nobody says it out loud."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "1. Sound like a person talking"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, the sample research brief in its Reports chapter"
+    }
+   ],
+   "builders": "Read the draft aloud, or have a screen reader read it to you, and rewrite each line where you stumble or stop to decode.",
+   "related": [
+    "01"
+   ]
+  },
+  {
+   "id": "02.2",
+   "title": "W02 Name who acts.",
+   "rule": [
+    "Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them."
+   ],
+   "why": {
+    "text": [
+     "People can hold an office to account only when they can name it. Putting the actor first gives them the name in the first breath."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-2-pair",
+    "caption": "What changed: The rewrite names who decides in its first five words, so a listener hears the answer before anything else."
+   },
+   "failure": {
+    "specimen": "s-02-2-fault",
+    "caption": "The passive verb pushes the actor to the end of the sentence, and in many drafts it drops the actor altogether."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "1. Sound like a person talking"
+    },
+    {
+     "label": "Before",
+     "value": "Our systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”"
+    }
+   ],
+   "builders": "Search for “is”, “are”, “was” and “were” before a past participle, and for “by”, and ask who does the action.",
+   "related": [
+    "01",
+    "13"
+   ]
+  },
+  {
+   "id": "02.3",
+   "title": "W03 Change the length of your sentences.",
+   "rule": [
+    "Mix short sentences with long ones, and keep the mix hard to predict. A run of sentences the same size starts to sound like a metronome."
+   ],
+   "why": {
+    "text": [
+     "Speech rises and falls. When every sentence runs the same length, a listener starts to hear the beat over the words."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-3-pair",
+    "caption": "What changed: The rewrite defines consent orders in one long sentence ahead of two shorter ones, so the voice rises and falls and a newcomer can follow."
+   },
+   "failure": {
+    "specimen": "s-02-3-fault",
+    "caption": "Three sentences of eight, eight and 11 words fall on one beat, and the abbreviation FTC assumes the reader already knows the agency."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "1. Sound like a person talking"
+    },
+    {
+     "label": "Before",
+     "value": "Our systems atlas, Who Do They Answer To?, reform profile “Rules for drug-pricing middlemen (PBMs)”, how it would be carried out"
+    }
+   ],
+   "builders": "Count the words in each sentence of a paragraph. If every count falls within a few words of the others, join two sentences or split one."
+  },
+  {
+   "id": "02.4",
+   "title": "W04 Join thoughts that belong together.",
+   "rule": [
+    "Use the small words that show how thoughts connect, such as because, so, when and once. Save short sentences for the moments that need one."
+   ],
+   "why": {
+    "text": [
+     "Words such as because and once carry the logic a listener needs. Without them, the reader has to guess how one short sentence leads to the next."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-4-pair",
+    "caption": "What changed: “Once” tells a listener that finding the lever depends on knowing the rules, and the rewrite defines the lever in the atlas glossary’s words."
+   },
+   "failure": {
+    "specimen": "s-02-4-fault",
+    "caption": "Two commands sit side by side with no word to join them, so a listener cannot tell that one depends on the other, and “the lever” goes undefined."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "1. Sound like a person talking"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 02 Voice, sample lines"
+    }
+   ],
+   "builders": "Look for runs of short sentences with no joining word, and join the ones that depend on each other with because, so, when or once."
+  },
+  {
+   "id": "02.5",
+   "title": "W05 Open with something the reader can use.",
+   "rule": [
+    "Make the first sentence give the reader a fact or a step. Cut lines that only announce what comes next, and stock phrases that lean on the words after them."
+   ],
+   "why": {
+    "text": [
+     "A reader decides in the first line whether a piece is worth their time, and a line that only announces what is coming gives them no reason to stay."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-5-pair",
+    "caption": "What changed: Read aloud, the rewrite gives the deadline and both ways to take part, which “here is how” only promised."
+   },
+   "failure": {
+    "specimen": "s-02-5-fault",
+    "caption": "“Here is how to weigh in” promises the steps and gives none, so a reader who stops at the headline leaves without the deadline."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "2. Put the point first and stop"
+    },
+    {
+     "label": "Before",
+     "value": "An early draft of this guide, the headline of a mock article on taking part. The draft is real, and everything it describes is invented."
+    }
+   ],
+   "builders": "Delete the first sentence of a draft and read it again. If nothing is lost, leave it out.",
+   "related": [
+    "20",
+    "22"
+   ]
+  },
+  {
+   "id": "02.6",
+   "title": "W06 Give the point without a reveal.",
+   "rule": [
+    "Put the point where the reader meets it first. A colon or a teaser sentence that holds it back for effect only makes the reader wait."
+   ],
+   "why": {
+    "text": [
+     "A reveal makes the reader wait for a point we could have given at once, and holding it back sounds like a performance."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-6-pair",
+    "caption": "What changed: The rewrite gives the answer in the first breath and runs two words shorter."
+   },
+   "failure": {
+    "specimen": "s-02-6-fault",
+    "caption": "“This is where” and the colon hold the answer back for effect, so a listener waits through the setup to hear who owns what."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "2. Put the point first and stop"
+    },
+    {
+     "label": "Before",
+     "value": "An interactive version of our systems atlas, the guided story, part “Who holds the money and the market”"
+    }
+   ],
+   "builders": "Search headlines and openers for colons and for “here’s”, “this is where” and “the answer”, and lead with what follows them.",
+   "related": [
+    "20",
+    "23"
+   ]
+  },
+  {
+   "id": "02.7",
+   "title": "W07 Stop when the facts stop.",
+   "rule": [
+    "End a paragraph on its last useful fact, and cut any line after it that only restates the point."
+   ],
+   "why": {
+    "text": [
+     "A closing line that restates the point tells the reader we doubt they followed, so we end on the last new fact and trust them with it."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-7-pair",
+    "caption": "What changed: The rewrite states the point once, at the start, so a listener hears the paragraph end on its last new fact."
+   },
+   "failure": {
+    "specimen": "s-02-7-fault",
+    "caption": "The first and last sentences say one idea twice, and the last lands as a moral the facts did not need."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "2. Put the point first and stop"
+    },
+    {
+     "label": "Before",
+     "value": "An interactive version of our systems atlas, the guided story, part “Whether voters can fire them”"
+    }
+   ],
+   "builders": "Cover the last sentence of each paragraph. If the paragraph still holds every fact, delete the sentence.",
+   "related": [
+    "24"
+   ]
+  },
+  {
+   "id": "02.8",
+   "title": "W08 Close without a slogan.",
+   "rule": [
+    "End a piece or section on the last thing the reader needs, usually a step with its date. Where a sign-off line belongs, use the locked tagline."
+   ],
+   "why": {
+    "text": [
+     "The last words of a piece are the ones a reader carries away. A dated step gives them something to do with what they read."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-8-pair",
+    "caption": "What changed: The rewrite ends on a step and its date, so the last words a listener hears say what to do."
+   },
+   "failure": {
+    "specimen": "s-02-8-fault",
+    "caption": "“Put the promise to work” sounds like an advertisement and leaves the reader with no step and no date."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "2. Put the point first and stop"
+    },
+    {
+     "label": "Before",
+     "value": "Written for the rule, and labeled Illustrative"
+    }
+   ],
+   "builders": "Check that the last line of every piece names a step and its date, or signs off with the locked tagline.",
+   "related": [
+    "01",
+    "12"
+   ]
+  },
+  {
+   "id": "02.9",
+   "title": "W09 Say what a thing is.",
+   "rule": [
+    "Tell the reader what something is. Leave out the turn that first says what it is not, and the phrases set against each other for effect."
+   ],
+   "why": {
+    "text": [
+     "A sentence that starts with what a thing is not makes the reader picture the wrong thing first and then undo it."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-9-pair",
+    "caption": "What changed: The rewrite tells a photographer what to shoot, and a listener hears no “not” to undo."
+   },
+   "failure": {
+    "specimen": "s-02-9-fault",
+    "caption": "The “not” half is there for rhythm, and a photographer still has to work out what to shoot."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "3. Say what is so"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 10 Photography, headline"
+    }
+   ],
+   "builders": "Search for “, not”, “not only” and “rather than”, and keep the half that says what to do.",
+   "related": [
+    "16"
+   ]
+  },
+  {
+   "id": "02.10",
+   "title": "W10 Drop the matched pair.",
+   "rule": [
+    "Write the relation between two things as a plain sentence. Two short halves set side by side sound like a slogan and leave the reader to supply the link."
+   ],
+   "why": {
+    "text": [
+     "Two matched halves sound like a slogan and leave the reader to supply the link between them, which one plain sentence can state."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-10-pair",
+    "caption": "What changed: The rewrite makes the comparison in one sentence, so a listener hears no echo of “counts” in the second half."
+   },
+   "failure": {
+    "specimen": "s-02-10-fault",
+    "caption": "The second sentence echoes “counts” for rhythm and never says where spoken testimony happens."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "3. Say what is so"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 13 In use"
+    }
+   ],
+   "builders": "Look for pairs of short sentences that repeat a word or a frame, and write the relation between them in one sentence.",
+   "related": [
+    "04"
+   ]
+  },
+  {
+   "id": "02.11",
+   "title": "W11 Skip the run of negatives.",
+   "rule": [
+    "When you rule several things out, put them in one list under one verb and give the reason."
+   ],
+   "why": {
+    "text": [
+     "A run of negatives sounds like a list of grievances. One verb and a reason tell the reader what to do and why."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-11-pair",
+    "caption": "What changed: One verb carries the whole list in the rewrite, and a listener hears the reason with it."
+   },
+   "failure": {
+    "specimen": "s-02-11-fault",
+    "caption": "Four “no” phrases in a row give no verb and no reason, so the reader learns what is banned and never why."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "3. Say what is so"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 04, the seal; the reason in the rewrite is the guide’s own, “Seals imply an authority we do not claim.”"
+    }
+   ],
+   "builders": "Search for “no” or “never” opening two or more phrases in a row, and fold them into one list under one verb with its reason.",
+   "related": [
+    "03"
+   ]
+  },
+  {
+   "id": "02.12",
+   "title": "W12 List what the facts hold.",
+   "rule": [
+    "Give a list as many items as the facts hold. When there are three, vary their shape so they do not fall into a chant."
+   ],
+   "why": {
+    "text": [
+     "Three items in a row sound finished, so writers reach for three when the facts hold two or four. A list sized to the facts sounds like advice."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-12-pair",
+    "caption": "What changed: The rewrite turns the chant into one instruction a first-time speaker can follow, and read aloud it sounds like advice."
+   },
+   "failure": {
+    "specimen": "s-02-12-fault",
+    "caption": "“The rule, the gap, the ask” chants three nouns and gives a first-time speaker no instruction to follow."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "3. Say what is so"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 13 In use, the first sentence of a line on a workshop flyer"
+    }
+   ],
+   "builders": "Count the items in every list of three. If the facts hold a different number, or the items share one shape, rewrite the list.",
+   "related": [
+    "23"
+   ]
+  },
+  {
+   "id": "02.13",
+   "title": "W13 Give each sentence its own shape.",
+   "rule": [
+    "Build each sentence in a paragraph on its own frame. When several in a row open the same way, combine them or recast one."
+   ],
+   "why": {
+    "text": [
+     "When sentences in a row open the same way, a listener hears the pattern and stops hearing the content."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-13-pair",
+    "caption": "What changed: Four sentences on one frame become two of different lengths in the rewrite, the voice line we now use, which drops “We expose the gaps” and hands the last step to the reader on purpose. Our editorial commitment keeps its two-part shape, since locked lines keep their wording (H01)."
+   },
+   "failure": {
+    "specimen": "s-02-13-fault",
+    "caption": "Four sentences open with “We” on one frame, and the run sounds like a pledge read aloud."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "3. Say what is so"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 02 Voice, the voice line"
+    }
+   ],
+   "builders": "Read the first word of each sentence in a paragraph. When two or more in a row match, combine them or recast one.",
+   "related": [
+    "01"
+   ]
+  },
+  {
+   "id": "02.14",
+   "title": "W14 Pull stacked nouns apart.",
+   "rule": [
+    "When three or more nouns pile up, pull them apart with a preposition or a verb, so a listener can find the main noun."
+   ],
+   "why": {
+    "text": [
+     "A listener holds each noun in a stack until the last one says what the phrase is about. Pulling the stack apart puts the main noun first."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-14-pair",
+    "caption": "What changed: Read aloud, “report cover kicker” runs together, and the rewrite puts the main noun first and says where it sits."
+   },
+   "failure": {
+    "specimen": "s-02-14-fault",
+    "caption": "“Report cover kicker” stacks three nouns, so a listener holds all three before learning that the phrase means a kicker."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 07 the Signal Grid, figure caption"
+    }
+   ],
+   "builders": "Search for three or more nouns in a row, and rewrite with a preposition or a verb between them.",
+   "related": [
+    "06"
+   ]
+  },
+  {
+   "id": "02.15",
+   "title": "W15 Use the verb inside the noun.",
+   "rule": [
+    "When a noun hides a verb, use the verb and name who does it."
+   ],
+   "why": {
+    "text": [
+     "A noun made from a verb hides who acts, and turning it back into the verb brings the actor back into the sentence."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-15-pair",
+    "caption": "What changed: The rewrite brings back the verbs, so a listener hears who sets money aside and what the amount cannot show."
+   },
+   "failure": {
+    "specimen": "s-02-15-fault",
+    "caption": "“Allocation” and “establishes no claim” turn two actions into nouns, so the sentence names no one who sets money aside."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, the sample research brief, page 07, source note"
+    }
+   ],
+   "builders": "Search for words ending in -tion, -ment, -ance and -ity, and ask which verb each one hides and who does it.",
+   "related": [
+    "13"
+   ]
+  },
+  {
+   "id": "02.16",
+   "title": "W16 Drop the hedges and keep the grade.",
+   "rule": [
+    "State a claim at the strength its evidence holds. When the evidence grade calls for “may” or “can”, use that word once and cut the other softeners."
+   ],
+   "why": {
+    "text": [
+     "A stack of softeners blurs how sure we are, while one grade verb, taken from the atlas’s scale, tells the reader how far the evidence goes."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-16-pair",
+    "caption": "What changed: The rewrite lets one grade verb carry the doubt the evidence holds and names the grade, and read aloud it is one plain claim."
+   },
+   "failure": {
+    "specimen": "s-02-16-fault",
+    "caption": "“Could perhaps help” and “somewhat in some places” stack four softeners, so a reader cannot tell how strong the evidence is."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Written for the rule, and labeled Illustrative"
+    }
+   ],
+   "builders": "Look up the claim’s grade in the atlas, use the verb the H08 table gives it, and delete every other softener.",
+   "related": [
+    "13",
+    "14"
+   ]
+  },
+  {
+   "id": "02.17",
+   "title": "W17 Cut the intensifiers.",
+   "rule": [
+    "Cut words that try to add force, such as genuinely, really, truly, actually, simply and just. If the sentence feels weak without one, give it a stronger fact."
+   ],
+   "why": {
+    "text": [
+     "A word added for force signals that the sentence is missing a fact, and the fact, once found, carries the force by itself."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-17-pair",
+    "caption": "What changed: The rewrite drops “really” and adds that the vote comes the same night, which gives a listener the urgency the word only signaled."
+   },
+   "failure": {
+    "specimen": "s-02-17-fault",
+    "caption": "“Really” asks the reader to feel urgency and gives no reason for it."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Written for the rule, and labeled Illustrative"
+    }
+   ],
+   "builders": "Search for genuinely, really, truly, actually, simply and just, and replace each with a fact or delete it.",
+   "related": [
+    "22"
+   ]
+  },
+  {
+   "id": "02.18",
+   "title": "W18 Use everyday verbs.",
+   "rule": [
+    "Pick the word you would say out loud. Write “use” for leverage, and “show” for underscore or reflect."
+   ],
+   "why": {
+    "text": [
+     "Memo verbs put distance between the writer and the reader, while the words a resident would use at a council meeting sound like a neighbor talking."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-18-pair",
+    "caption": "What changed: The rewrite uses the words a resident would say at a council meeting, and “more homes” tells a listener who gains."
+   },
+   "failure": {
+    "specimen": "s-02-18-fault",
+    "caption": "“Leverage”, “funds” and “expand broadband access” are memo words, and none of them says who gains."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Written for the rule, and labeled Illustrative"
+    }
+   ],
+   "builders": "Search for leverage, underscore and reflect, and swap each for use, show or the plain verb you would say.",
+   "related": [
+    "20"
+   ]
+  },
+  {
+   "id": "02.19",
+   "title": "W19 Let the facts carry the feeling.",
+   "rule": [
+    "Leave out exclamation points and cheering, and let the step itself carry the energy."
+   ],
+   "why": {
+    "text": [
+     "Excitement on the page asks the reader to feel something we have given them no reason for, and a clear step with its date gives them the reason."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-19-pair",
+    "caption": "What changed: The rewrite names whom to tell and when, and read aloud it sounds like advice from a neighbor."
+   },
+   "failure": {
+    "specimen": "s-02-19-fault",
+    "caption": "The slogan and its exclamation point cheer the reader on and name no one to tell and no time to tell them."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "Our brand guide, fifth edition, chapter 02 Voice, which already listed it as a line to avoid"
+    }
+   ],
+   "builders": "Search for exclamation points and delete each one, then check that the sentence names a step.",
+   "related": [
+    "23"
+   ]
+  },
+  {
+   "id": "02.20",
+   "title": "W20 Size each word to its evidence.",
+   "rule": [
+    "Give an adjective or a label no more weight than its evidence carries, and when we praise our own work, label the praise as a design judgment."
+   ],
+   "why": {
+    "text": [
+     "A word that claims more than the evidence invites a reader to check it and find it wrong, and one wrong word costs the trust the rest of the page earned."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-20-pair",
+    "caption": "What changed: The survey counts citizens 18 and over, so the rewrite uses those words, and its margin-of-error test makes the title say only what a listener could check on the chart."
+   },
+   "failure": {
+    "specimen": "s-02-20-fault",
+    "caption": "“Eligible voters” names a wider group than the survey counted, and the ranking ignores the survey’s margin of error."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "4. Cut the padding"
+    },
+    {
+     "label": "Before",
+     "value": "An early draft of this guide, the first title of a turnout chart, November 6, 2026"
+    }
+   ],
+   "builders": "Check each adjective and group name against the source’s own definition, and test every ranking against the margin of error.",
+   "related": [
+    "13",
+    "14"
+   ]
+  },
+  {
+   "id": "02.21",
+   "title": "W21 Leave out the em dash.",
+   "rule": [
+    "Where you want an em dash, end the sentence, or join the parts with a comma and a word such as “and” or “because”."
+   ],
+   "why": {
+    "text": [
+     "An em dash lets a writer skip the word that says how two thoughts connect, and a listener needs that word to follow."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-21-pair",
+    "caption": "What changed: The rewrite’s comma and “and” tell a listener that the vote follows the deadline."
+   },
+   "failure": {
+    "specimen": "s-02-21-fault",
+    "caption": "The em dash breaks the sentence without saying how the vote relates to the deadline, and a screen reader may skip it."
+   },
+   "specs": [
+    {
+     "label": "Group",
+     "value": "5. Marks and numbers"
+    },
+    {
+     "label": "Before",
+     "value": "Written for the rule, and labeled Illustrative"
+    }
+   ],
+   "builders": "Search for the em dash, U+2014, and replace each with a period, or with a comma and a joining word.",
+   "related": [
+    "06"
+   ]
+  },
+  {
+   "id": "02.22",
+   "title": "Follow the 12 house rules on every page.",
+   "rule": [
+    "Every page follows the 12 house rules, from quoting the locked lines exactly to calling a contested policy by its neutral name. They apply to headings, labels, captions and chart keys as well as to sentences."
+   ],
+   "why": {
+    "text": [
+     "These are details a reader relies on without noticing, such as a date written in words and a source line they can follow back to its table. Each one keeps a page easy to check and fair to every reader."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-22-correct",
+    "caption": "The house rules as approved with the writing rules. H05 to H07 also belong to the marks and numbers group."
+   },
+   "failure": {
+    "specimen": "s-02-22-failure",
+    "caption": "One short paragraph breaks eight house rules. Each tag names the rule, and the list says how to fix it."
+   },
+   "specs": [
+    {
+     "label": "Minus sign",
+     "value": "U+2212, in prose, tables and charts"
+    },
+    {
+     "label": "Dates",
+     "value": "Month in words in prose; numeric dates only in file names and data"
+    },
+    {
+     "label": "Source line order",
+     "value": "Publisher, title or table, observation period, geography, date retrieved, qualification"
+    }
+   ],
+   "files": [
+    "work/boards/phase-2/voice/20261106_Voice-Rules-Content.json",
+    "work/handoffs/phase-2/20261106_Voice-Writing-Rules.md"
+   ],
+   "related": [
+    "13",
+    "14",
+    "15"
+   ],
+   "builders": "Before review, search for numeric dates, a hyphen before a figure, IDs with no name beside them, party names in a color and statistics without a source line."
+  },
+  {
+   "id": "02.23",
+   "title": "Set each brand line in its own place, word for word.",
+   "rule": [
+    "Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and keep the candidate and founding lines out of the tagline’s slot."
+   ],
+   "tokens": [
+    "oa.font.family.reading",
+    "oa.font.family.quote"
+   ],
+   "why": {
+    "text": [
+     "A line that appears in the same place every time becomes something a reader recognizes. Moving a line, or swapping one in, spends that recognition."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-23-correct",
+    "caption": "Each line sits where the table puts it, in exact words, and the tagline signs off the newsletter."
+   },
+   "failure": {
+    "specimen": "s-02-23-failure",
+    "caption": "In the tagline’s slot, the founding line competes with “A country that answers to its people.” and casts a newcomer as a spectator."
+   },
+   "related": [
+    "01",
+    "03",
+    "08"
+   ],
+   "builders": "Copy brand lines from the table in this chapter, never retype them, and check them character for character before a piece ships."
+  },
+  {
+   "id": "02.24",
+   "title": "Close every piece on one next step, with its date.",
+   "rule": [
+    "End every piece on the one step a reader is most likely to take, with its date and place and the way to take it. Link other ways to take part from the step’s page."
+   ],
+   "tokens": [
+    "oa.color.action.ask.fill.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Four asks at the end of a piece leave a reader to choose, and most choose none. One dated step is easy to take before the date passes."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-24-correct",
+    "caption": "The ending gives a single dated step at one place, with the button that takes it."
+   },
+   "failure": {
+    "specimen": "s-02-24-failure",
+    "caption": "Four asks and four red buttons leave out the date and the place, and give a reader no reason to start with any one of them."
+   },
+   "related": [
+    "01",
+    "12"
+   ],
+   "builders": "Give the piece one ask button. Put the other ways to take part on the page the button opens."
+  },
+  {
+   "id": "02.25",
+   "title": "Publish the mechanism behind a mood.",
+   "rule": [
+    "When a draft states a sweeping claim, a feeling, a slogan or a side, replace it with the mechanism behind it: the rule, the office that decides, the step a reader can take or the structure of the vote."
+   ],
+   "why": {
+    "text": [
+     "A mood asks the reader to agree with us, and the mechanism behind it gives them something to check and an office to call."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-25-correct",
+    "caption": "Each mood on the left becomes a rule, an office, a dated step or a vote count a reader can check."
+   },
+   "failure": {
+    "specimen": "s-02-25-failure",
+    "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."
+   },
+   "related": [
+    "13",
+    "01"
+   ],
+   "builders": "For each sentence of a draft, ask which rule, office, date or count it rests on. Where the answer is none, the sentence is a mood."
+  },
+  {
+   "id": "02.26",
+   "title": "Use the words a reader would use, and spell series names exactly.",
+   "rule": [
+    "Write rule, decision, record, hearing and vote, the words a reader uses for public business. Leave out the words this rule lists, define each term of art at first use, and spell the six series names exactly."
+   ],
+   "why": {
+    "text": [
+     "Every word on the list to leave out has a plainer one that says more. Exact series names let a reader find a series again."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-26-correct",
+    "caption": "The list to leave out pairs each word with what to write in its place."
+   },
+   "failure": {
+    "specimen": "s-02-26-failure",
+    "caption": "Five words from the list fill one sentence, and it leaves the reader without a rule, an office or a step."
+   },
+   "related": [
+    "08",
+    "13"
+   ],
+   "builders": "Search a draft for every word on the list to leave out, and check each series name against the list before a kicker ships."
+  },
+  {
+   "id": "02.27",
+   "title": "Write a hinge headline as a rule, then what it produces.",
+   "rule": [
+    "A hinge headline joins two noun phrases with the ampersand. The first names a rule, and the second names what the rule produces in a reader’s life. Chapter 04 sets how it is drawn."
+   ],
+   "tokens": [
+    "oa.font.family.display"
+   ],
+   "why": {
+    "text": [
+     "A reader meets the rule they could change beside the result they already feel, which is the hinge between a commitment and the action that keeps it."
+    ],
+    "basis": "Editorial judgment"
+   },
+   "correct": {
+    "specimen": "s-02-27-correct",
+    "caption": "Each headline names a rule first and what it produces second, and each works in any state."
+   },
+   "failure": {
+    "specimen": "s-02-27-failure",
+    "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."
+   },
+   "files": [
+    "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+   ],
+   "related": [
+    "04",
+    "01"
+   ],
+   "builders": "Test a hinge headline by asking whether its first half is a rule a reader could look up. If not, rewrite it before chapter 04’s drawing rules apply."
+  }
+ ],
+ "extras": [
+  {
+   "specimen": "s-02-lines",
+   "label": "The brand lines",
+   "caption": "The locked lines are quoted word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."
+  },
+  {
+   "specimen": "s-02-index",
+   "label": "How Oath & Action writes",
+   "caption": "The writing section, approved on Board 5: 21 rules in five groups, each with a before and an after, and 12 house rules. Rule 02.1 is W01, and every W rule keeps its number as part of its title."
+  },
+  {
+   "specimen": "s-02-group-1",
+   "label": "Writing rules, group 1 of 5",
+   "caption": "Each rule below shows a before and its repair, joined by the hinge divider."
+  },
+  {
+   "after_rule": "02.4",
+   "specimen": "s-02-group-2",
+   "label": "Writing rules, group 2 of 5"
+  },
+  {
+   "after_rule": "02.8",
+   "specimen": "s-02-group-3",
+   "label": "Writing rules, group 3 of 5"
+  },
+  {
+   "after_rule": "02.13",
+   "specimen": "s-02-group-4",
+   "label": "Writing rules, group 4 of 5"
+  },
+  {
+   "after_rule": "02.20",
+   "specimen": "s-02-group-5",
+   "label": "Writing rules, group 5 of 5",
+   "caption": "H05 to H07 sit with the house rules in Rule 02.22."
+  },
+  {
+   "after_rule": "02.22",
+   "specimen": "s-02-checklist",
+   "label": "Before you publish",
+   "caption": "The ten questions close the writing section. A yes to each one means the draft passes."
+  },
+  {
+   "after_rule": "02.23",
+   "specimen": "s-02-sound",
+   "label": "How we sound",
+   "caption": "Our fifth edition named four qualities of the voice. Each one now has rules that teach it."
+  }
+ ],
+ "sources": [
+  "Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process exists on paper but cannot be used after a 2021 state supreme court ruling.",
+  "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.",
+  "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+  "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+  "Source: U.S. Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The studio could not open the Senate’s own page for the vote.",
+  "Our systems atlas, Who Do They Answer To?, glossary entry “Cloture”, for H02’s example."
+ ],
+ "related_chapters": [
+  {
+   "chapter": "01",
+   "reason": "What the voice serves, and the nonpartisan rules."
+  },
+  {
+   "chapter": "04",
+   "reason": "How hinge headlines are drawn."
+  },
+  {
+   "chapter": "13",
+   "reason": "Evidence grades, sourcing and the labels beside each item."
+  },
+  {
+   "chapter": "22",
+   "reason": "The voice in email."
+  }
+ ]
+}

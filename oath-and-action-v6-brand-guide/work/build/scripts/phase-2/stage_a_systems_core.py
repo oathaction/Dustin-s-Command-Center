@@ -216,6 +216,8 @@ EN_DASH = '–'
 def check_copy(s, where):
     """Fail on marks the house rules forbid in every word we write here."""
     bad = []
+    s_full = s
+    s = re.sub(r'<code>.*?</code>', '', s, flags=re.S)
     if EM_DASH in s:
         bad.append('em dash')
     if EN_DASH in s:
@@ -229,4 +231,4 @@ def check_copy(s, where):
             bad.append(f'"{w}"')
     if bad:
         raise ValueError(f'{where}: {", ".join(bad)} in: {s[:160]}')
-    return s
+    return s_full

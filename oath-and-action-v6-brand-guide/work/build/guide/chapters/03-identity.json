@@ -1,0 +1,444 @@
+{
+ "number": "03",
+ "anchor": "identity",
+ "title": "Identity",
+ "part": "Foundations",
+ "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
+ "intro": [
+  "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the 3 by 3 grid of nodes that chapter 08 explains.",
+  "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark’s capitals, and the pages show today’s wordmark width; a condensed width appears only in the proofs for Gate 2 after chapter 08."
+ ],
+ "rules": [
+  {
+   "id": "03.1",
+   "title": "Place the wordmark from its master file.",
+   "rule": "Use the master drawn for the height you need and set its color with tokens. Never type the name in a font, Inter Tight included, though the capitals were cut from it.",
+   "tokens": [
+    "oa.color.text.primary.onNewsprint",
+    "oa.color.identity.signature.onNewsprint"
+   ],
+   "why": {
+    "text": "The masters set every gap between letters by eye and give the ampersand the same white on each side, 0.203x, so the name keeps one shape from a 16 px email footer to a printed banner. Ampersand B exists only as drawn artwork. A typed name takes the font’s ampersand and the font’s spacing, and a reader who meets two slightly different names starts to wonder which one is ours.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-1-correct",
+    "caption": "The display master at 440 px wide on Newsprint, with its construction drawn in: the cap line and baseline, x, one cap height of clear space and the white on each side of the ampersand."
+   },
+   "failure": {
+    "specimen": "s-03-1-failure",
+    "caption": "The name typed in Inter Tight 800 for a slide. The font’s own ampersand stands in for B, the gaps come out wide and uneven, and the result no longer matches the masthead the reader saw a minute earlier."
+   },
+   "specs": [
+    {
+     "label": "Display master",
+     "value": "From 40 px tall; 978.31 by 108 units, capitals 100 units"
+    },
+    {
+     "label": "24 px master",
+     "value": "From 20 to 39 px tall; 221 by 24 px, capitals 22 px"
+    },
+    {
+     "label": "16 px master",
+     "value": "From 16 to 19 px tall; 152 by 16 px, capitals 14 px"
+    },
+    {
+     "label": "White beside the ampersand",
+     "value": "0.203x on each side, measured as area"
+    },
+    {
+     "label": "Overshoot",
+     "value": "The O and the ampersand run 1.34 units past the cap line and the baseline"
+    },
+    {
+     "label": "Letters",
+     "value": "Charcoal on light surfaces, Newsprint on Charcoal",
+     "token": "oa.color.text.primary.onNewsprint"
+    },
+    {
+     "label": "Ampersand",
+     "value": "Signature red on Newsprint, White and Charcoal; White on Prussian",
+     "token": "oa.color.identity.signature.onNewsprint"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/wordmark/20261028_Wordmark-Display-Master.svg",
+    "work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg",
+    "work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg"
+   ],
+   "related": [
+    "04",
+    "05",
+    "27"
+   ],
+   "builders": "Pick the file by the height you will draw it. Set <code>color</code> to the surface’s primary text token and <code>--amp</code> to its signature token; the file reads both. On Prussian, place the file from <code>prussian/</code>, which carries White in the drawing."
+  },
+  {
+   "id": "03.2",
+   "title": "Choose the lockup by the space and the surface.",
+   "rule": "Eight lockups cover every use, and each has one job. Start from the width you have: L1 for most uses, L3 for the site and email masthead, L2 for square formats and posters, L8 where the full name will not fit. The table after this rule names all eight.",
+   "tokens": [],
+   "why": {
+    "text": "A fixed set means a reader meets the same arrangement in the same place, and a producer never has to invent one. Each lockup’s job comes from the space it fills, so the choice turns on two facts you can measure: the width you have and the surface under it.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-2-correct",
+    "caption": "A 120 px tile in a partner directory carries L8 at 74 px wide, so its capitals stand 25 px tall."
+   },
+   "failure": {
+    "specimen": "s-03-2-failure",
+    "caption": "The same tile with the full wordmark squeezed in at 100 px wide. Its capitals drop to 10 px, under the 14 px floor, and the white around the ampersand fills in."
+   },
+   "specs": [
+    {
+     "label": "L1 Wordmark",
+     "value": "Most uses: page heads, documents, slides and signs"
+    },
+    {
+     "label": "L2 Stacked",
+     "value": "Square formats and posters"
+    },
+    {
+     "label": "L3 Horizontal with the lockmark",
+     "value": "The site and email masthead"
+    },
+    {
+     "label": "L4 Monogram and tagline",
+     "value": "Document footers and small print"
+    },
+    {
+     "label": "L5 Wordmark and tagline",
+     "value": "Covers, banners and partner placements where the tagline travels with the mark"
+    },
+    {
+     "label": "L6 Editorial signature",
+     "value": "The sign-off strip at the foot of pages, emails and reports"
+    },
+    {
+     "label": "L7 Section masthead",
+     "value": "Names the pillar a piece serves"
+    },
+    {
+     "label": "L8 Monogram",
+     "value": "Small squares where the full name will not fit; never a favicon"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/lockups/20261028_L2-Stacked-Master.svg",
+    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg"
+   ],
+   "related": [
+    "04",
+    "07",
+    "27"
+   ],
+   "builders": "Read the lockup’s minimum in Rule 03.4 before you place it. When the space falls under that minimum, switch to the lockup the table names. L4 to L7 are assembled from the approved masters on their Edition 05 layouts until their own masters are drawn after Gate 2."
+  },
+  {
+   "id": "03.3",
+   "title": "Keep one cap height of clear space on every side.",
+   "rule": "Leave 1.0x of open space around the lockup’s outer edge, with its tagline and lockmark inside that edge. Text, rules, image edges and other logos all stay outside it. Over a photograph, set the lockup on a solid Newsprint or Charcoal panel with the same space inside the panel.",
+   "tokens": [
+    "oa.space.400"
+   ],
+   "why": {
+    "text": "Open space lets the eye find the name before it reads anything else, and it keeps a headline or a partner’s logo from reading as part of our mark. A measure of one cap height grows with the mark, so the rule holds at every size.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-3-correct",
+    "caption": "A page head at true size: L1 at 32 px tall, its clear space drawn in, and the headline set below that space."
+   },
+   "failure": {
+    "specimen": "s-03-3-failure",
+    "caption": "The same page head with the headline moved up to 9 px under the wordmark, 0.3x. The headline’s first words read as part of the name."
+   },
+   "specs": [
+    {
+     "label": "Clear space",
+     "value": "1.0x on every side, from the outer edge of the lockup"
+    },
+    {
+     "label": "At 32 px capitals",
+     "value": "32 px, the 400 step of the spacing scale",
+     "token": "oa.space.400"
+    },
+    {
+     "label": "Taglines in L4, L5 and L6",
+     "value": "Part of the lockup; clear space starts outside them"
+    },
+    {
+     "label": "Over a photograph",
+     "value": "A solid Newsprint or Charcoal panel, with 1.0x inside it"
+    }
+   ],
+   "files": [],
+   "related": [
+    "07",
+    "12"
+   ],
+   "builders": "Round the clear space up to the next step of the spacing scale, so a page built on the 8 px rhythm keeps it."
+  },
+  {
+   "id": "03.4",
+   "title": "Keep every mark at or above its minimum size.",
+   "rule": "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Under a lockup’s minimum, switch to the lockup the table names.",
+   "tokens": [],
+   "why": {
+    "text": "Each master was drawn and checked at its smallest size, where the wordmark keeps its six enclosed counters, the holes inside letters such as O and A, and the ampersand keeps its two. Edition 05 scaled one drawing to every size, and at its own 120 px minimum a notch in the ampersand closed into a seventh enclosed shape.",
+    "basis": "Design judgment, measured in Chromium at device scale 1 (Identity masters notes, October 28, 2026)"
+   },
+   "correct": {
+    "specimen": "s-03-4-correct",
+    "caption": "Every mark at its screen minimum, at true size. These are graphics drawn at their smallest allowed size, so the 13 px floor for text does not apply to the letters inside them."
+   },
+   "failure": {
+    "specimen": "s-03-4-failure",
+    "caption": "The display master scaled to 12 px tall for an email footer. Its capitals fall to 11 px, the white around the ampersand fills in and the name blurs. The 16 px master, 152 px wide, fits the same footer."
+   },
+   "specs": [
+    {
+     "label": "L1",
+     "value": "16 px tall, 152 px wide; 1.20 in in print"
+    },
+    {
+     "label": "L2",
+     "value": "90 px wide; 0.80 in"
+    },
+    {
+     "label": "L3",
+     "value": "196 px wide; 1.55 in"
+    },
+    {
+     "label": "L8",
+     "value": "48 px wide; 0.50 in; never a favicon"
+    },
+    {
+     "label": "Ampersand B, lockmark and badge",
+     "value": "16 px; 0.25 in"
+    },
+    {
+     "label": "Favicon",
+     "value": "Ampersand B’s 16 px master at 16 px"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/20261028_Identity-Minimum-Sizes.json"
+   ],
+   "related": [
+    "06",
+    "19",
+    "27"
+   ],
+   "builders": "Read the height you will draw, then pick the master whose range holds it: the 16 px master from 16 to 19 px tall, the 24 px master from 20 to 39 px, the display master from 40 px. In print, set the width in inches from the table."
+  },
+  {
+   "id": "03.5",
+   "title": "Set the marks in their colors on the four approved surfaces.",
+   "rule": "Newsprint, White and Charcoal carry the wordmark with its red ampersand. On Prussian every mark goes White, ampersand and lever included, because red never sits on Prussian (Rule 05.3). One-color versions in Charcoal or White serve one-color print, embossing and watermarks.",
+   "tokens": [
+    "oa.color.text.primary.onCharcoal",
+    "oa.color.identity.signature.onCharcoal",
+    "oa.color.identity.signature.onPrussian"
+   ],
+   "why": {
+    "text": "Each surface has one ink that reads on it: Charcoal on Newsprint at 13.29:1, Newsprint on Charcoal at 13.29:1, White on Prussian at 13.28:1. Pillar Red measures 3.19:1 on Prussian, and Edition 05’s 16 px red ampersand measured 2.27:1 there.",
+    "basis": "WCAG 2.2 SC 1.4.11 for the ratios; Rule 05.3 for red"
+   },
+   "correct": {
+    "specimen": "s-03-5-correct",
+    "caption": "L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand, Prussian in White, and the one-color versions."
+   },
+   "failure": {
+    "specimen": "s-03-5-failure",
+    "caption": "The Newsprint file dropped onto a Charcoal slide. The Charcoal letters vanish into the ground and only the red ampersand shows."
+   },
+   "specs": [
+    {
+     "label": "Newsprint and White",
+     "value": "Charcoal letters, red ampersand, Stone links in the lockmark"
+    },
+    {
+     "label": "Charcoal",
+     "value": "Newsprint letters and links, red ampersand and lever at 4.49:1",
+     "token": "oa.color.identity.signature.onCharcoal"
+    },
+    {
+     "label": "Prussian",
+     "value": "Every part White, from the files in prussian/",
+     "token": "oa.color.identity.signature.onPrussian"
+    },
+    {
+     "label": "One color",
+     "value": "Charcoal on light grounds, White on dark ones"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/prussian/20261028_Wordmark-Display-Master-Prussian-White.svg",
+    "work/build/assets/identity/prussian/20261028_L8-Monogram-Master-Prussian-White.svg"
+   ],
+   "related": [
+    "05",
+    "12",
+    "27"
+   ],
+   "builders": "Pick the surface first. On Prussian, place the file whose name ends in Prussian-White; it needs no CSS."
+  },
+  {
+   "id": "03.6",
+   "title": "Use L3 for the masthead, and drop the lockmark when the bar gets narrow.",
+   "rule": "The masthead is the bar across the top of every page and email. From 768 px wide, it sets L3: the wordmark at left and the lockmark at its right, 2.4 cap heights tall. Under 768 px, it sets L1 from the 24 px master beside the menu button. Email takes L3 as an image.",
+   "tokens": [],
+   "why": {
+    "text": "The masthead is the one place every reader sees the mark, so it carries the fullest lockup the width allows. The lockmark needs about 34 px to show its nine nodes and its lever, and on a phone that room goes to the menu button.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-6-correct",
+    "caption": "Three mastheads at true size: the site at 1440 px, the site on a 390 px phone and a 600 px email header, each from the master drawn for its height."
+   },
+   "failure": {
+    "specimen": "s-03-6-failure",
+    "caption": "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px and the lockmark’s nodes and links run together at 28 px."
+   },
+   "specs": [
+    {
+     "label": "Site, from 768 px",
+     "value": "L3: the 24 px wordmark master, 13 px of space, the lockmark at 52 px; bar 80 px tall"
+    },
+    {
+     "label": "Site, under 768 px",
+     "value": "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px",
+     "token": "oa.size.target.touch"
+    },
+    {
+     "label": "Email header",
+     "value": "L3 at 287 px in a 600 px header, sent as a PNG at twice size"
+    },
+    {
+     "label": "Section masthead",
+     "value": "L7: L1, a hairline and the pillar’s name in Inter 600 capitals, in the surface’s ink"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg",
+    "work/build/assets/identity/lockmark/20261028_Lockmark-Master-V5.svg"
+   ],
+   "related": [
+    "07",
+    "20",
+    "22"
+   ],
+   "builders": "In email, export the masthead as a PNG at twice its size with the alt text “Oath & Action”. Most email clients drop web fonts, and several show no inline SVG."
+  },
+  {
+   "id": "03.7",
+   "title": "Use L8 as the one monogram, and retire the spaced “O & A”.",
+   "rule": "L8 sets O and A with ampersand B between them, cut from the same masters as the wordmark. It serves small squares where the full name will not fit, from 48 px wide. The Edition 04 compact signature, “O & A” typed with word spaces, retires, along with any other typed monogram.",
+   "tokens": [],
+   "why": {
+    "text": "Two monograms split what readers learn to recognize. L8 keeps the wordmark’s own white beside the ampersand, so it reads as the name in brief. Typed with spaces, the three characters read as separate letters, and the font’s ampersand replaces B.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-7-correct",
+    "caption": "L8 at its 48 px minimum and at 120 px, on Newsprint and on Charcoal."
+   },
+   "failure": {
+    "specimen": "s-03-7-failure",
+    "caption": "The Edition 04 compact signature, typed in Inter Tight with word spaces and the font’s own ampersand."
+   },
+   "specs": [
+    {
+     "label": "Display master",
+     "value": "299.67 by 108 units"
+    },
+    {
+     "label": "Minimum",
+     "value": "48 px wide, capitals 16 px; 0.50 in"
+    },
+    {
+     "label": "Below the minimum",
+     "value": "Ampersand B’s 16 px master"
+    },
+    {
+     "label": "Favicon",
+     "value": "Never L8; ampersand B’s 16 px master"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg"
+   ],
+   "related": [
+    "04",
+    "23"
+   ],
+   "builders": "For an app tile or an avatar, use ampersand B alone on the Charcoal tile (Rule 04.7). L8 belongs where the name has to show and the square has room for 16 px capitals."
+  },
+  {
+   "id": "03.8",
+   "title": "Join a partner with a hairline, and keep our ampersand inside our name.",
+   "rule": "In a partnership lockup, L1 sits at left, a 1 px vertical hairline follows after 0.6x of space, and the partner’s name or logo sits at right, no taller than our capitals. Our ampersand stays inside the wordmark. A second ampersand or a plus sign never joins the two names.",
+   "tokens": [
+    "oa.color.border.hairline.onNewsprint"
+   ],
+   "why": {
+    "text": "The ampersand is our hinge between an oath and the action that keeps it. Used to join two organizations, it turns our mark into a conjunction anyone can borrow, and the reader sees one organization with a long name. A hairline marks a partnership and gives each name its own field.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-03-8-correct",
+    "caption": "A partnership lockup at true size. The partner is invented."
+   },
+   "failure": {
+    "specimen": "s-03-8-failure",
+    "caption": "An event flyer that joins the names with a second ampersand, so it reads as one organization called “Oath & Action & Merrimack Valley Civic Lab”."
+   },
+   "specs": [
+    {
+     "label": "Hairline",
+     "value": "1 px, as tall as our capitals plus 6 px",
+     "token": "oa.color.border.hairline.onNewsprint"
+    },
+    {
+     "label": "Space",
+     "value": "0.6x on each side of the hairline"
+    },
+    {
+     "label": "Partner",
+     "value": "Its own logo, or its name in Inter 600, no taller than our capitals"
+    }
+   ],
+   "files": [],
+   "related": [
+    "01",
+    "25"
+   ],
+   "builders": "Ask the partner for its logo file and its own clear-space rule, and give each mark the larger of the two."
+  }
+ ],
+ "extras": [
+  {
+   "after_rule": "03.2",
+   "specimen": "s-03-lockups",
+   "label": "The eight lockups",
+   "caption": "The eight lockups at true size, each with its job and minimum. L1, L2, L3 and L8 are masters; L4 to L7 are assembled from the approved masters on their Edition 05 layouts. L6 leaves out the web address until the site is settled (DR-55)."
+  },
+  {
+   "after_rule": "03.4",
+   "specimen": "s-03-minimums",
+   "label": "Minimum sizes",
+   "caption": "The minimum-size table for every mark, read from the identity masters’ table (I8)."
+  },
+  {
+   "after_rule": "03.8",
+   "specimen": "s-03-misuse",
+   "label": "Three more failures",
+   "caption": "Three more failures that slide and design apps make easy: a stretched mark, a drop shadow and a recolored ampersand."
+  }
+ ],
+ "sources": []
+}

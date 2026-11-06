@@ -14,8 +14,9 @@
   --ink: #121212;         /* Charcoal: text, selected answers, primary buttons; 13.29:1 on Newsprint */
   --ink-2: #4E535B;       /* Deep Stone: secondary text, 5.49:1 on Newsprint */
   --rule: #5D636D;        /* Stone: control borders and hairlines, 4.29:1 on Newsprint */
-  --track: #C2BFB8;       /* progress track: Newsprint 12% toward Charcoal, decorative */
-  --press: #D0CDC6;       /* hover and press: Newsprint 6% toward Charcoal */
+  --track: #C4C1BB;       /* progress track: Newsprint 12% toward Charcoal in sRGB, decorative */
+  --ink-hover: #252525;   /* primary button hover: Charcoal 8% toward White in sRGB */
+  --press: #D0CDC6;       /* hover and press: Newsprint 6% toward Charcoal in sRGB */
   --field: #FFFFFF;       /* White: text fields */
   --on-ink-2: #A3A19C;    /* Dim Newsprint: secondary text on Charcoal, 7.26:1 */
   --font-text: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -55,7 +56,7 @@ p { margin: 0; max-width: 62ch; }
 .hint { font-size: 15px; color: var(--ink-2); margin-top: -8px; }
 .hint.tight { margin-top: -12px; }
 .note { font-size: 15px; font-weight: 600; padding: 10px 12px; border: 1px solid var(--rule); background: var(--press); }
-.mode { font-size: 15px; font-weight: 600; }
+.mode { font-size: 15px; font-weight: 500; }
 .mode::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; border: 2px solid var(--ink); border-radius: 50%; vertical-align: 1px; }
 .mode.saved::before { background: var(--ink); }
 .sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -63,7 +64,7 @@ p { margin: 0; max-width: 62ch; }
 /* controls */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); padding: 0 20px; border-radius: 3px; font: 600 17px/1.2 var(--font-text); cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; }
 .btn.primary { background: var(--ink); color: var(--newsprint); border: 1px solid var(--ink); }
-.btn.primary:hover { background: #2A2B2D; }
+.btn.primary:hover { background: var(--ink-hover); }
 .btn.line { background: transparent; color: var(--ink); border: 1px solid var(--ink); min-height: 44px; font-size: 15px; padding: 0 16px; }
 .btn.line:hover { background: var(--press); }
 .btn.text { background: transparent; color: var(--ink-2); border: 0; min-height: 44px; padding: 0 4px; font-size: 15px; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
@@ -139,7 +140,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .seg label.on svg, .seg label:has(input:checked) svg { display: block; }
 
 /* the end */
-.copy textarea { min-height: 14em; font-size: 15px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.copy textarea { min-height: 14em; font-size: 15px; line-height: 1.45; }
 .status { font-size: 15px; font-weight: 600; }
 .status:empty { height: 0; margin-top: -18px; }
 
@@ -150,6 +151,13 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .clock { display: none; }
+}
+/* forced colors: the system palette drops backgrounds, so the rail and clock draw in its text color, and a chosen
+   answer takes a heavier border beside its check */
+@media (forced-colors: active) {
+  .rail span.done, .clock-fill { forced-color-adjust: none; background: CanvasText; }
+  .rail span, .clock { forced-color-adjust: none; background: GrayText; }
+  .choice.on, .choice:has(input:checked), .seg label.on, .seg label:has(input:checked) { border-width: 3px; }
 }
 </style>
 
@@ -425,7 +433,7 @@ function renderWelcome() {
   const sec = h('section', { class: 'screen', 'data-view-root': 'welcome' });
   sec.append(
     h('h1', { text: 'A short test of a draft design' }),
-    h('p', { text: 'This is a short test of a draft design for a civic publication, and we’d like your first impressions. You’ll look at some drawings, symbols, charts and sentences, and answer quick questions about each. It takes about 10 minutes. We record your answers, how long you take, how often you look again, your screen width and the first name or initials you type below, and nothing else. You can skip any question and stop at any time.' }),
+    h('p', { text: 'We’re trying out a draft design for a civic publication, and we’d like your first impressions. You’ll look at some drawings, symbols, charts and sentences and answer quick questions about each. It takes about 10 minutes. We record your answers, how long you take, how often you look again, your screen width and the first name or initials you type below, and nothing else. You can skip any question and stop at any time.' }),
     h('p', { id: 'mode-line', class: 'mode' }),
   );
   if (snap && !snap.run.finished_at && snap.pos > 0) {
@@ -769,7 +777,14 @@ function renderEnd() {
       h('div', { class: 'copy' }, h('label', { class: 'field', id: 'copy-h', for: 'copy-text', text: 'Your answers' }), ta),
       h('div', { class: 'actions' }, btn), status, next, restartBtn());
   };
-  const restartBtn = () => h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn text', onclick: () => { clearSnap(); S.run = null; S.runId = null; go(0); } }, 'Start a new test on this device'));
+  // Starting over clears this phone's copy of the answers, so it takes a second tap.
+  const restartBtn = () => {
+    const b = h('button', { type: 'button', class: 'btn text', onclick: () => {
+      if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = 'Tap again to clear these answers and start over'; return; }
+      clearSnap(); S.run = null; S.runId = null; go(0);
+    } }, 'Start a new test on this device');
+    return h('div', { class: 'actions' }, b);
+  };
   const copyWhy = 'This page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.';
   if (Store.finalOk) { body.replaceChildren(h('p', { role: 'status', text: 'Your answers are saved.' }), next, restartBtn()); return; }
   if (Store.mode === 'saved' || Store.mode === 'checking') {

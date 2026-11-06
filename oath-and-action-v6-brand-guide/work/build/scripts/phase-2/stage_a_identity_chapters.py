@@ -1,0 +1,444 @@
+"""Chapter content for 03 Identity, 04 The Ampersand and the hinge, and 08 The Signal Grid (stage board A).
+
+Every word follows chapter 02's writing section (DR-73). Typographic quotes and apostrophes are set by smart() on the
+prose fields, so the source stays easy to edit."""
+import re
+
+A = "work/build/assets/identity/"
+
+
+def smart(t):
+    if not isinstance(t, str):
+        return t
+    parts = re.split(r"(<code>.*?</code>|<[^>]+>)", t)
+    out = []
+    for p in parts:
+        if p.startswith("<"):
+            out.append(p)
+            continue
+        p = re.sub(r'(^|[\s(\[])"', "\\1\u201c", p)
+        p = p.replace('"', "\u201d")
+        p = re.sub(r"(\w)'(\w)", "\\1\u2019\\2", p)
+        p = re.sub(r"(\w)'(\s|$|[.,;:])", "\\1\u2019\\2", p)
+        p = re.sub(r"(^|\s)'(\w)", "\\1\u2018\\2", p)
+        out.append(p)
+    return "".join(out)
+
+
+def S(label, value, token=None):
+    d = {"label": label, "value": value}
+    if token:
+        d["token"] = token
+    return d
+
+
+def R(id_, title, rule, why, basis, correct, failure, *, tokens=(), specs=(), files=(), related=(), builders="", corrective=None):
+    r = {"id": id_, "title": title, "rule": rule, "tokens": list(tokens), "why": {"text": why, "basis": basis},
+         "correct": {"specimen": f"s-{id_.replace('.', '-')}-correct", "caption": correct},
+         "failure": {"specimen": f"s-{id_.replace('.', '-')}-failure", "caption": failure},
+         "specs": list(specs), "files": list(files), "related": list(related), "builders": builders}
+    if corrective:
+        r["corrective"] = {"specimen": f"s-{id_.replace('.', '-')}-corrective", "caption": corrective}
+    return r
+
+
+DJ = "Design judgment"
+
+# =========================================================================================== 03 Identity
+CH03 = {
+    "number": "03", "anchor": "identity", "title": "Identity", "part": "Foundations",
+    "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
+    "intro": [
+        "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the 3 by 3 grid of nodes that chapter 08 explains.",
+        "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark's capitals, and the pages show today's wordmark width; a condensed width appears only in the proofs for Gate 2 after chapter 08.",
+    ],
+    "rules": [
+        R("03.1", "Place the wordmark from its master file.",
+          "Use the master drawn for the height you need and set its color with tokens. Never type the name in a font, Inter Tight included, though the capitals were cut from it.",
+          "The masters set every gap between letters by eye and give the ampersand the same white on each side, 0.203x, so the name keeps one shape from a 16 px email footer to a printed banner. Ampersand B exists only as drawn artwork. A typed name takes the font's ampersand and the font's spacing, and a reader who meets two slightly different names starts to wonder which one is ours.",
+          DJ,
+          "The display master at 440 px wide on Newsprint, with its construction drawn in: the cap line and baseline, x, one cap height of clear space and the white on each side of the ampersand.",
+          "The name typed in Inter Tight 800 for a slide. The font's own ampersand stands in for B, the gaps come out wide and uneven, and the result no longer matches the masthead the reader saw a minute earlier.",
+          tokens=["oa.color.text.primary.onNewsprint", "oa.color.identity.signature.onNewsprint"],
+          specs=[S("Display master", "From 40 px tall; 978.31 by 108 units, capitals 100 units"),
+                 S("24 px master", "From 20 to 39 px tall; 221 by 24 px, capitals 22 px"),
+                 S("16 px master", "From 16 to 19 px tall; 152 by 16 px, capitals 14 px"),
+                 S("White beside the ampersand", "0.203x on each side, measured as area"),
+                 S("Overshoot", "The O and the ampersand run 1.34 units past the cap line and the baseline"),
+                 S("Letters", "Charcoal on light surfaces, Newsprint on Charcoal", "oa.color.text.primary.onNewsprint"),
+                 S("Ampersand", "Signature red on Newsprint, White and Charcoal; White on Prussian", "oa.color.identity.signature.onNewsprint")],
+          files=[A + "wordmark/20261028_Wordmark-Display-Master.svg", A + "wordmark/20261028_Wordmark-24px-Master.svg", A + "wordmark/20261028_Wordmark-16px-Master.svg"],
+          related=["04", "05", "27"],
+          builders="Pick the file by the height you will draw it. Set <code>color</code> to the surface's primary text token and <code>--amp</code> to its signature token; the file reads both. On Prussian, place the file from <code>prussian/</code>, which carries White in the drawing."),
+        R("03.2", "Choose the lockup by the space and the surface.",
+          "Eight lockups cover every use, and each has one job. Start from the width you have: L1 for most uses, L3 for the site and email masthead, L2 for square formats and posters, L8 where the full name will not fit. The table after this rule names all eight.",
+          "A fixed set means a reader meets the same arrangement in the same place, and a producer never has to invent one. Each lockup's job comes from the space it fills, so the choice turns on two facts you can measure: the width you have and the surface under it.",
+          DJ,
+          "A 120 px tile in a partner directory carries L8 at 74 px wide, so its capitals stand 25 px tall.",
+          "The same tile with the full wordmark squeezed in at 100 px wide. Its capitals drop to 10 px, under the 14 px floor, and the white around the ampersand fills in.",
+          specs=[S("L1 Wordmark", "Most uses: page heads, documents, slides and signs"),
+                 S("L2 Stacked", "Square formats and posters"),
+                 S("L3 Horizontal with the lockmark", "The site and email masthead"),
+                 S("L4 Monogram and tagline", "Document footers and small print"),
+                 S("L5 Wordmark and tagline", "Covers, banners and partner placements where the tagline travels with the mark"),
+                 S("L6 Editorial signature", "The sign-off strip at the foot of pages, emails and reports"),
+                 S("L7 Section masthead", "Names the pillar a piece serves"),
+                 S("L8 Monogram", "Small squares where the full name will not fit; never a favicon")],
+          files=[A + "lockups/20261028_L2-Stacked-Master.svg", A + "lockups/20261028_L3-Horizontal-Master.svg", A + "lockups/20261028_L8-Monogram-Master.svg"],
+          related=["04", "07", "27"],
+          builders="Read the lockup's minimum in Rule 03.4 before you place it. When the space falls under that minimum, switch to the lockup the table names. L4 to L7 are assembled from the approved masters on their Edition 05 layouts until their own masters are drawn after Gate 2."),
+        R("03.3", "Keep one cap height of clear space on every side.",
+          "Leave 1.0x of open space around the lockup's outer edge, with its tagline and lockmark inside that edge. Text, rules, image edges and other logos all stay outside it. Over a photograph, set the lockup on a solid Newsprint or Charcoal panel with the same space inside the panel.",
+          "Open space lets the eye find the name before it reads anything else, and it keeps a headline or a partner's logo from reading as part of our mark. A measure of one cap height grows with the mark, so the rule holds at every size.",
+          DJ,
+          "A page head at true size: L1 at 32 px tall, its clear space drawn in, and the headline set below that space.",
+          "The same page head with the headline moved up to 9 px under the wordmark, 0.3x. The headline's first words read as part of the name.",
+          tokens=["oa.space.400"],
+          specs=[S("Clear space", "1.0x on every side, from the outer edge of the lockup"),
+                 S("At 32 px capitals", "32 px, the 400 step of the spacing scale", "oa.space.400"),
+                 S("Taglines in L4, L5 and L6", "Part of the lockup; clear space starts outside them"),
+                 S("Over a photograph", "A solid Newsprint or Charcoal panel, with 1.0x inside it")],
+          related=["07", "12"],
+          builders="Round the clear space up to the next step of the spacing scale, so a page built on the 8 px rhythm keeps it."),
+        R("03.4", "Keep every mark at or above its minimum size.",
+          "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Under a lockup's minimum, switch to the lockup the table names.",
+          "Each master was drawn and checked at its smallest size, where the wordmark keeps its six enclosed counters, the holes inside letters such as O and A, and the ampersand keeps its two. Edition 05 scaled one drawing to every size, and at its own 120 px minimum a notch in the ampersand closed into a seventh enclosed shape.",
+          "Design judgment, measured in Chromium at device scale 1 (Identity masters notes, October 28, 2026)",
+          "Every mark at its screen minimum, at true size. These are graphics drawn at their smallest allowed size, so the 13 px floor for text does not apply to the letters inside them.",
+          "The display master scaled to 12 px tall for an email footer. Its capitals fall to 11 px, the white around the ampersand fills in and the name blurs. The 16 px master, 152 px wide, fits the same footer.",
+          specs=[S("L1", "16 px tall, 152 px wide; 1.20 in in print"),
+                 S("L2", "90 px wide; 0.80 in"),
+                 S("L3", "196 px wide; 1.55 in"),
+                 S("L8", "48 px wide; 0.50 in; never a favicon"),
+                 S("Ampersand B, lockmark and badge", "16 px; 0.25 in"),
+                 S("Favicon", "Ampersand B's 16 px master at 16 px")],
+          files=[A + "20261028_Identity-Minimum-Sizes.json"],
+          related=["06", "19", "27"],
+          builders="Read the height you will draw, then pick the master whose range holds it: the 16 px master from 16 to 19 px tall, the 24 px master from 20 to 39 px, the display master from 40 px. In print, set the width in inches from the table."),
+        R("03.5", "Set the marks in their colors on the four approved surfaces.",
+          "Newsprint, White and Charcoal carry the wordmark with its red ampersand. On Prussian every mark goes White, ampersand and lever included, because red never sits on Prussian (Rule 05.3). One-color versions in Charcoal or White serve one-color print, embossing and watermarks.",
+          "Each surface has one ink that reads on it: Charcoal on Newsprint at 13.29:1, Newsprint on Charcoal at 13.29:1, White on Prussian at 13.28:1. Pillar Red measures 3.19:1 on Prussian, and Edition 05's 16 px red ampersand measured 2.27:1 there.",
+          "WCAG 2.2 SC 1.4.11 for the ratios; Rule 05.3 for red",
+          "L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand, Prussian in White, and the one-color versions.",
+          "The Newsprint file dropped onto a Charcoal slide. The Charcoal letters vanish into the ground and only the red ampersand shows.",
+          tokens=["oa.color.text.primary.onCharcoal", "oa.color.identity.signature.onCharcoal", "oa.color.identity.signature.onPrussian"],
+          specs=[S("Newsprint and White", "Charcoal letters, red ampersand, Stone links in the lockmark"),
+                 S("Charcoal", "Newsprint letters and links, red ampersand and lever at 4.49:1", "oa.color.identity.signature.onCharcoal"),
+                 S("Prussian", "Every part White, from the files in prussian/", "oa.color.identity.signature.onPrussian"),
+                 S("One color", "Charcoal on light grounds, White on dark ones")],
+          files=[A + "prussian/20261028_Wordmark-Display-Master-Prussian-White.svg", A + "prussian/20261028_L8-Monogram-Master-Prussian-White.svg"],
+          related=["05", "12", "27"],
+          builders="Pick the surface first. On Prussian, place the file whose name ends in Prussian-White; it needs no CSS."),
+        R("03.6", "Use L3 for the masthead, and drop the lockmark when the bar gets narrow.",
+          "The masthead is the bar across the top of every page and email. From 768 px wide, it sets L3: the wordmark at left and the lockmark at its right, 2.4 cap heights tall. Under 768 px, it sets L1 from the 24 px master beside the menu button. Email takes L3 as an image.",
+          "The masthead is the one place every reader sees the mark, so it carries the fullest lockup the width allows. The lockmark needs about 34 px to show its nine nodes and its lever, and on a phone that room goes to the menu button.",
+          DJ,
+          "Three mastheads at true size: the site at 1440 px, the site on a 390 px phone and a 600 px email header, each from the master drawn for its height.",
+          "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px and the lockmark's nodes and links run together at 28 px.",
+          specs=[S("Site, from 768 px", "L3: the 24 px wordmark master, 13 px of space, the lockmark at 52 px; bar 80 px tall"),
+                 S("Site, under 768 px", "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px", "oa.size.target.touch"),
+                 S("Email header", "L3 at 287 px in a 600 px header, sent as a PNG at twice size"),
+                 S("Section masthead", "L7: L1, a hairline and the pillar's name in Inter 600 capitals, in the surface's ink")],
+          files=[A + "lockups/20261028_L3-Horizontal-Master.svg", A + "wordmark/20261028_Wordmark-24px-Master.svg", A + "lockmark/20261028_Lockmark-Master-V5.svg"],
+          related=["07", "20", "22"],
+          builders="In email, export the masthead as a PNG at twice its size with the alt text \"Oath & Action\". Most email clients drop web fonts, and several show no inline SVG."),
+        R("03.7", "Use L8 as the one monogram, and retire the spaced \"O & A\".",
+          "L8 sets O and A with ampersand B between them, cut from the same masters as the wordmark. It serves small squares where the full name will not fit, from 48 px wide. The Edition 04 compact signature, \"O & A\" typed with word spaces, retires, along with any other typed monogram.",
+          "Two monograms split what readers learn to recognize. L8 keeps the wordmark's own white beside the ampersand, so it reads as the name in brief. Typed with spaces, the three characters read as separate letters, and the font's ampersand replaces B.",
+          DJ,
+          "L8 at its 48 px minimum and at 120 px, on Newsprint and on Charcoal.",
+          "The Edition 04 compact signature, typed in Inter Tight with word spaces and the font's own ampersand.",
+          specs=[S("Display master", "299.67 by 108 units"), S("Minimum", "48 px wide, capitals 16 px; 0.50 in"),
+                 S("Below the minimum", "Ampersand B's 16 px master"), S("Favicon", "Never L8; ampersand B's 16 px master")],
+          files=[A + "lockups/20261028_L8-Monogram-Master.svg"],
+          related=["04", "23"],
+          builders="For an app tile or an avatar, use ampersand B alone on the Charcoal tile (Rule 04.7). L8 belongs where the name has to show and the square has room for 16 px capitals."),
+        R("03.8", "Join a partner with a hairline, and keep our ampersand inside our name.",
+          "In a partnership lockup, L1 sits at left, a 1 px vertical hairline follows after 0.6x of space, and the partner's name or logo sits at right, no taller than our capitals. Our ampersand stays inside the wordmark. A second ampersand or a plus sign never joins the two names.",
+          "The ampersand is our hinge between an oath and the action that keeps it. Used to join two organizations, it turns our mark into a conjunction anyone can borrow, and the reader sees one organization with a long name. A hairline marks a partnership and gives each name its own field.",
+          DJ,
+          "A partnership lockup at true size. The partner is invented.",
+          "An event flyer that joins the names with a second ampersand, so it reads as one organization called \"Oath & Action & Merrimack Valley Civic Lab\".",
+          tokens=["oa.color.border.hairline.onNewsprint"],
+          specs=[S("Hairline", "1 px, as tall as our capitals plus 6 px", "oa.color.border.hairline.onNewsprint"),
+                 S("Space", "0.6x on each side of the hairline"),
+                 S("Partner", "Its own logo, or its name in Inter 600, no taller than our capitals")],
+          related=["01", "25"],
+          builders="Ask the partner for its logo file and its own clear-space rule, and give each mark the larger of the two."),
+    ],
+    "extras": [
+        {"after_rule": "03.2", "specimen": "s-03-lockups", "label": "The eight lockups", "caption": "The eight lockups at true size, each with its job and minimum. L1, L2, L3 and L8 are masters; L4 to L7 are assembled from the approved masters on their Edition 05 layouts. L6 leaves out the web address until the site is settled (DR-55)."},
+        {"after_rule": "03.4", "specimen": "s-03-minimums", "label": "Minimum sizes", "caption": "The minimum-size table for every mark, read from the identity masters' table (I8)."},
+        {"after_rule": "03.8", "specimen": "s-03-misuse", "label": "Three more failures", "caption": "Three more failures that slide and design apps make easy: a stretched mark, a drop shadow and a recolored ampersand."},
+    ],
+    "sources": [],
+}
+
+# =========================================================================================== 04 The Ampersand and the hinge
+CH04 = {
+    "number": "04", "anchor": "ampersand", "title": "The Ampersand and the hinge", "part": "Foundations",
+    "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
+    "intro": [
+        "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
+        "This chapter covers B drawn alone and the four places the hinge appears: the hinge headline, the hinge divider, the hinge diagram and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers.",
+    ],
+    "rules": [
+        R("04.1", "Draw the ampersand from B's master for its size.",
+          "B has three masters: the 16 px master for 16 to 23 px tall, the 24 px master for 24 to 47 px, and the display master from 48 px. Place the one whose range holds your height. A narrow drawing of B serves the condensed wordmark alone.",
+          "B's strokes swell and thin at 1.74 to 1, so the glyph keeps its color beside the heavy capitals, and its waist crossing sits on the center line that the hinge diagram draws through its nodes. The small masters sit on the pixel grid: at 16 px, 66 percent of B's ink pixels are solid, where Edition 05's scaled glyph reached 48 percent.",
+          "Design judgment, measured in Chromium (Identity masters notes, October 28, 2026)",
+          "B at true size: the display master at 160 and 48 px, the 24 px master and the 16 px master, and the 16 px master enlarged four times over its pixel grid.",
+          "Edition 05's ampersand, placed from an old file. It is Lora Bold's glyph, which anyone with Lora can type, and it has no beak.",
+          tokens=["oa.color.identity.signature.onNewsprint"],
+          specs=[S("Stroke contrast", "1.74 to 1, thickest over thinnest"), S("Weight", "Thick strokes at 0.91 of the wordmark's stem"),
+                 S("Waist crossing", "On the glyph's vertical ink center"), S("Overshoot", "1.34 wordmark units above the cap line and below the baseline"),
+                 S("Clear space, drawn alone", "1.0x of B's own cap height"), S("Color", "Signature red; White on Prussian", "oa.color.identity.signature.onNewsprint")],
+          files=[A + "ampersand/20261028_Amp-B-Display-Master.svg", A + "ampersand/20261028_Amp-B-24px-Master.svg", A + "ampersand/20261028_Amp-B-16px-Master.svg"],
+          related=["03", "17", "27"],
+          builders="The ampersand files draw in <code>currentColor</code>, so set <code>color</code> to the surface's signature token. Edition 05's <code>OA_Amp_Master.svg</code> holds the Lora glyph; retire it from your templates."),
+        R("04.2", "Give each composition one ampersand moment.",
+          "A composition is one view: a screen, a card, a slide or a printed page. It carries one ampersand moment, a hinge headline, a freestanding B or a cropped B. The wordmark's own ampersand and the hinge divider do not count.",
+          "The ampersand carries the brand's idea, and a reader takes in one hinge at a time. With two or three on a card, each says less and the eye has no place to land.",
+          DJ,
+          "A link card at 480 by 252 px, the size a feed shows it, with one hinge headline and the wordmark at its foot.",
+          "The same card with a cropped B in the corner and a second B beside the wordmark. Three ampersands compete for one glance.",
+          specs=[S("Moments", "A hinge headline, a freestanding B or a cropped B"), S("Not counted", "The wordmark's ampersand and the hinge divider")],
+          related=["02", "05"],
+          builders="When a template already holds a hinge headline, leave its ampersand slot out of every other layer."),
+        R("04.3", "Join a rule to its result with a hinge headline, and give its ampersand the view's working red.",
+          "A hinge headline joins two noun phrases with B, as in \"The zoning code & the rent.\" B takes the view's working red, the one red each view may spend, unless an error or a step the reader can take now already holds it. Then B takes the headline's ink.",
+          "The headline names a mechanism in five or six words, and the red ampersand marks the joint. Rule 05.3 ranks an error first and the step a reader can take now second, so on an Act piece with a red button the step keeps the red.",
+          "Rule 05.3 (D2-01, DR-66); G1-05",
+          "Hinge headlines at three scales, at true size: 64, 40 and 24 px. Each B comes from the master whose range holds that cap height.",
+          "An Act card with a red ampersand in its headline and a red button below it, two working reds in one view.",
+          corrective="The same card with B in Charcoal. The button keeps the red, so the step to take is the one red mark.",
+          tokens=["oa.color.identity.signature.onNewsprint", "oa.color.action.ask.fill.onNewsprint"],
+          specs=[S("Face", "Inter Tight 800, the headline's tracking"), S("B's height", "The type's cap height, 0.7275 of the font size"),
+                 S("B's position", "Its baseline on the text's baseline, a word space on each side"),
+                 S("Master", "16 px master under 22 px capitals, 24 px master to 46 px, display above")],
+          related=["02", "05", "06"],
+          builders="Set B as an inline image, not a font glyph, and keep it with the second phrase so a line break never strands it."),
+        R("04.4", "Set a hinge divider between how a decision is made and what you can do about it.",
+          "The hinge divider is a 1 px hairline broken by a small B, drawn whole in the surface's ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
+          "The divider marks the turn from how a decision is made to the step a reader can take, the same turn the ampersand makes in our name. In ink it stays quiet, and the view's one working red stays free for the step itself.",
+          "Rule 05.3; D1-22",
+          "A divider at true size in an article, between how a bill leaves committee and what a reader can do, and below it the divider on all four surfaces.",
+          "Edition 05's divider, with a red ampersand, above a red button. The divider spends the view's red, and two red marks compete for the step.",
+          tokens=["oa.color.identity.hingeDivider.onNewsprint", "oa.color.identity.hingeDivider.onCharcoal", "oa.color.identity.hingeDivider.onPrussian"],
+          specs=[S("Line", "1 px, in the same ink as the ampersand", "oa.color.identity.hingeDivider.onNewsprint"),
+                 S("Ampersand", "B's 24 px master at 24 px"), S("Space", "12 px on each side of B", "oa.space.150"),
+                 S("Above and below", "24 px or more", "oa.space.300")],
+          files=[A + "ampersand/20261028_Amp-B-24px-Master.svg"],
+          related=["12", "02"],
+          builders="This guide draws the divider between each rule and its correct use; copy its markup from any rule above."),
+        R("04.5", "Show the hinge diagram on its own, to explain the idea.",
+          "The hinge diagram draws OATH and ACTION on a line with four nodes, B in a ring between them, two solid arcs running clockwise, and UNDERSTAND and IMPACT beneath. Keep it out of any view that holds the wordmark or a figure with a key, and use the divider where a page needs a break.",
+          "The diagram teaches the brand's idea in one picture: a promise becomes action, and the result shapes the next promise. Its arcs are solid because Atlas V7 draws a hypothesis as a dotted line and a plausible link as a dashed one. It carries words alone, with no ID, sign, grade, delay or count, so no reader takes it for one of the atlas's loops.",
+          "Design judgment; the five separation rules approved with I6 (G1-01)",
+          "The display master at 600 px on Newsprint, and the compact master at 280 px on Newsprint and on Charcoal.",
+          "The diagram with dashed arcs and a dashed ring, as an early mockup drew it. In the atlas's key a dashed line means a plausible link, so the brand's own idea reads as unproven.",
+          tokens=["oa.color.identity.signature.onNewsprint", "oa.color.graphic.subtle.onNewsprint"],
+          specs=[S("Display master", "From 533 px wide, labels at 13 px; 4.00 in in print"), S("Compact master", "From 245 px wide, no labels"),
+                 S("Lines", "Solid; 3.5 units, arcs 2.8 units on the display master"), S("B", "In the ring, 1.25 cap heights, signature red"),
+                 S("Below 245 px", "A hinge headline")],
+          files=[A + "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", A + "hinge/20261028_Hinge-Diagram-V2-Compact-Master.svg"],
+          related=["15", "05", "17"],
+          builders="The diagram's lines read <code>--line</code>; leave it at Stone on light grounds and Newsprint on Charcoal. On Prussian, place the White file."),
+        R("04.6", "Use the hinge-circle badge only to close a piece, on a back cover or at events.",
+          "The badge is B inside the hinge diagram's ring, with no words. It ends an article or a report and marks event materials. Keep it away from avatars and favicons, from candidates and ballots, and from any view with the wordmark or the hinge diagram, and add no words or dates to it.",
+          "A ring of words and a founding date turn a badge into a seal, and Edition 05 put the reason plainly: \"Seals imply an authority we do not claim.\" A wordless badge closes a piece the way a period closes a sentence.",
+          "Design judgment; the badge's three conditions (S9, G1-02)",
+          "The badge at true size as the end mark after an article's last sentence, 16 px, and on the back of a 4 by 6 in event card, 96 px.",
+          "The badge turned into a seal with a ring of words. It claims an authority Oath & Action does not hold.",
+          tokens=["oa.color.identity.signature.onCharcoal"],
+          specs=[S("Masters", "16 px from 16 to 23 px, 24 px from 24 to 47 px, display from 48 px"), S("Print", "0.25 in at the smallest"),
+                 S("Color", "Signature red, ring and B alike; White on Prussian", "oa.color.identity.signature.onNewsprint"),
+                 S("Print finishes", "A blind emboss on uncoated stock, matte red foil on Charcoal, or one color; chapter 25 sets the details")],
+          files=[A + "badge/20261028_Hinge-Badge-16px-Master.svg", A + "badge/20261028_Hinge-Badge-24px-Master.svg", A + "badge/20261028_Hinge-Badge-Display-Master.svg"],
+          related=["12", "24", "25"],
+          builders="Set the end mark inline after the last word, with a no-break space before it, at the body text's cap height or the 16 px master, whichever is larger."),
+        R("04.7", "Put B on a Charcoal tile for avatars and the app icon.",
+          "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. Favicons use B's 16 px master with no tile.",
+          "A feed often draws an avatar at 32 to 48 px. B's 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal holds Pillar Red at 4.49:1, the strongest red of any approved surface, and stays visible on light and dark app themes (R13).",
+          "R13 (DR-67); WCAG 2.2 SC 1.4.11; Design judgment for the feed sizes",
+          "Avatars and the app icon at true size: B on a Charcoal circle at 180, 64 and 32 px and on a Charcoal square at 180 and 64 px; the Newsprint, Prussian and one-color tiles; and the favicon on a light and a dark browser tab.",
+          "A Newsprint circle in a white feed with no keyline. Its edge measures 1.41:1 against the page, so the tile fades and B floats.",
+          tokens=["oa.component.avatar.tile", "oa.component.avatar.accent", "oa.component.appIcon.tile"],
+          specs=[S("B's height", "58 percent of the tile"), S("Default tile", "Charcoal, for avatars and the app icon", "oa.component.avatar.tile"),
+                 S("Light tile", "Newsprint with a 1 px Charcoal keyline, for dark app themes"), S("Prussian tile", "B in White"),
+                 S("Upload", "A full-bleed square at 1080 px; platforms cut their own circle or corner"), S("Favicon", "B's 16 px master at 16 px, no tile")],
+          files=[A + "ampersand/20261028_Amp-B-Display-Master.svg", A + "ampersand/20261028_Amp-B-16px-Master.svg"],
+          related=["23", "03", "27"],
+          builders="Export one 1080 px square and let each platform reduce it; check it at 48 and 32 px before you upload."),
+        R("04.8", "Crop a large B off the bottom-right corner only.",
+          "On a cover or a section opener, a large B may run off the bottom-right corner with up to 40 percent of the glyph outside the frame. It takes the surface's ink, stays clear of the text, and never enters the top-left corner where reading starts.",
+          "Readers start at the top left, so a crop there sits in the way of the title. At the bottom right it frames the page and points to the turn. Rule 05.3 gives red no job for a crop, so it takes the surface's ink, as the divider does.",
+          "Design judgment; Rule 05.3",
+          "A half-letter report cover at true size, 5.5 by 8.5 in, with B cropped off the bottom-right corner.",
+          "The crop moved up behind the title. The title's letters cross B's strokes and lose their edge.",
+          tokens=["oa.color.text.primary.onNewsprint"],
+          specs=[S("Corner", "Bottom right"), S("Outside the frame", "Up to 40 percent of the glyph"),
+                 S("Color", "The surface's ink: Charcoal on Newsprint, Newsprint on Charcoal, White on Prussian", "oa.color.text.primary.onNewsprint"),
+                 S("Text", "Clear of B's strokes by at least the body text's line height")],
+          files=[A + "ampersand/20261028_Amp-B-Display-Master.svg"],
+          related=["12", "24", "25"],
+          builders="Place the display master in a frame with its overflow hidden, and move it until 25 to 40 percent of its ink sits outside."),
+    ],
+    "extras": [],
+    "sources": ["Oath & Action Brand Guide, Edition 05, chapter 04 The Ampersand, \"Seal and emboss\". Quoted in Rule 04.6."],
+}
+
+# =========================================================================================== 08 The Signal Grid
+CH08 = {
+    "number": "08", "anchor": "signal-grid", "title": "The Signal Grid", "part": "Foundations",
+    "instruction": "Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content.",
+    "intro": [
+        "Democracy has a structure. The lockmark draws it as nine nodes joined by links, with the lever, a larger red node at bottom right, at the place where one change moves the rest. It sits beside the wordmark in the masthead and in a few fixed places, and its drawing never changes.",
+        "The Signal Grid uses the same nine nodes to code one thing about a piece: how far a bill has moved, which recurring series it belongs to, or which pillar it serves. A coded grid always sits beside words that say what it shows.",
+    ],
+    "rules": [
+        R("08.1", "Draw the lockmark from its master for its size, and keep its drawing fixed.",
+          "The lockmark is a 3 by 3 grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px and Edition 05's master from 48 px.",
+          "At small sizes Edition 05's single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest.",
+          "Design judgment, measured in Chromium (Identity masters notes, October 28, 2026)",
+          "The lockmark's construction at 240 px, then at true size at 96, 48, 24 and 16 px, and at 48 px on Charcoal and on Prussian.",
+          "Edition 05's master scaled to 16 px beside the 16 px master. Its nodes shrink to the width of a link and the lever turns into a single pink pixel.",
+          tokens=["oa.color.identity.signature.onNewsprint", "oa.color.palette.stone"],
+          specs=[S("Field", "123.5 units square"), S("Node centers", "11.75, 61.75 and 111.75 units on each axis"),
+                 S("Nodes", "Radius 3.8 units"), S("Lever", "Radius 4.75 units, bottom right, signature red", "oa.color.identity.signature.onNewsprint"),
+                 S("Links", "1 px Stone around the edge and through the center", "oa.color.palette.stone"),
+                 S("16 px master", "Centers at 2.5, 7.5 and 12.5 px; 3 px nodes; 5 px lever"),
+                 S("24 px master", "Centers at 3.5, 11.5 and 19.5 px; 5 px nodes; 7 px lever"), S("Print", "0.25 in at the smallest")],
+          files=[A + "lockmark/20261028_Lockmark-Master-V5.svg", A + "lockmark/20261028_Lockmark-24px-Master.svg", A + "lockmark/20261028_Lockmark-16px-Master.svg"],
+          related=["03", "05"],
+          builders="The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file."),
+        R("08.2", "Place the lockmark only in its fixed positions and sizes.",
+          "The lockmark appears in four places, once per view: at the bottom right of social cards, covers and posters, 40 px or 0.4 in, inside the margin; beside the wordmark in L3 and L6; beside the section label on report and slide pages, 24 px or 0.25 in; and in a chart legend at 16 px, where chapter 14 calls for it.",
+          "A signature works by turning up in the same place, so a reader finds it without looking. Used as a bullet or scattered as decoration, it stops signing the page.",
+          DJ,
+          "Two of the fixed places at true size: the bottom-right corner of a report cover, with the lockmark at 40 px inside a 0.5 in margin, and a report page header with the lockmark at 24 px beside the section label.",
+          "The lockmark used as list bullets on a flyer, three lockmarks in one view, each one decoration.",
+          specs=[S("Anchor", "Bottom right of social cards, covers and posters; 40 px or 0.4 in, inside the margin"),
+                 S("Masthead partner", "Right of the wordmark in L3 and L6, 2.4 cap heights tall"),
+                 S("Section marker", "Beside the section label on report and slide pages; 24 px or 0.25 in"),
+                 S("Legend mark", "16 px, in a chart legend, where chapter 14 calls for it"),
+                 S("Favicon", "Retired: favicons use ampersand B's 16 px master (Rule 03.4)")],
+          related=["03", "14", "12"],
+          builders="A low-density pattern of the lattice, with no lit nodes, belongs to chapter 12's patterns and follows its 12 percent ink limit."),
+        R("08.3", "Set a key beside every Signal Grid that codes content.",
+          "A coded grid sits beside words that say what it shows, on the same line or directly under it, at 13 px or larger: the stage and its name for a tracker, the series name for a route, the pillar's name for a corner. Screen readers get the same words.",
+          "Nine dots at 24 or 40 px cannot explain themselves, and Edition 05's grids coded six things with no words nearby. With the words beside it, the grid becomes a shortcut for readers who know it and hides nothing from readers who do not.",
+          "WCAG 2.2 SC 1.1.1 and 1.4.1; Design judgment",
+          "A tracker row at true size: the grid at 40 px beside its key, \"Stage 4 of 9: Reported out\".",
+          "The same row with the grid alone. Four filled nodes sit beside the bill's name with nothing to say what they count.",
+          tokens=["oa.color.text.secondary.onNewsprint"],
+          specs=[S("Key", "On the grid's line or directly under it"), S("Size", "13 px or larger", "oa.type.label"),
+                 S("Screen readers", "The grid is hidden; the key's words carry it")],
+          related=["14", "18", "19"],
+          builders="Write the key from the record's data, so the words and the grid can never disagree, and mark the grid <code>aria-hidden=\"true\"</code> when the key sits beside it."),
+        R("08.4", "Let each grid code one thing, chosen in this order: tracker progress, a series route, a pillar corner.",
+          "When a piece could carry more than one code, its grid shows the first that applies. Progress may add the stage where a reader can take part now, and a series route always ends on its pillar's corner. Content type is never coded by color; name it in words in the kicker.",
+          "Edition 05's grid coded pillar, content type, progress, gaps and series on the same nine nodes, and a reader could not tell which one was in front of them. Its four content-type colors look alike in grayscale, and its Verdigris and red differ at 1.14 to 1. One code per grid, chosen in a fixed order, gives every grid one meaning.",
+          "WCAG 2.2 SC 1.4.1; Design judgment",
+          "The three codes at 40 px, each with its key: progress, a series route and a pillar corner.",
+          "Edition 05's content-type grids in color and in grayscale. Prussian, Verdigris, Charcoal and red collapse into four grays.",
+          specs=[S("Order", "Tracker progress, then a series route, then a pillar corner"), S("Tracker progress", "From 40 px"),
+                 S("Series route and pillar corner", "From 24 px"), S("Content type", "In words, in the kicker")],
+          related=["05", "09", "17"],
+          builders="The composer after Rule 08.9 builds only the combinations this rule allows."),
+        R("08.5", "Show tracker progress with a shape for each stage, from 40 px.",
+          "A tracker grid reads its nine stages left to right and top to bottom. A filled disc marks a stage done; a ring marks the stage under way; a gap, with the node and its links cut away, marks a stage that never happened; a small Stone node marks a stage not yet reached. One red disc may mark the stage where a reader can take part now.",
+          "Shapes survive grayscale, color blindness and a cheap printer. Edition 05 told the stage under way from a finished one by color alone, Verdigris against red at 1.14 to 1, and drew a missed stage as a dashed ring, a texture the atlas gives to a plausible link.",
+          "WCAG 2.2 SC 1.4.1; D1-21",
+          "A tracker list at true size: four bills at 40 px, each with its stage in words, and a legend of the shapes.",
+          "Edition 05's Active and Ready grids at its 28 px tracker size and enlarged four times, in color and in grayscale. In gray the two states are the same picture.",
+          tokens=["oa.color.graphic.essential.onNewsprint", "oa.color.graphic.subtle.onNewsprint", "oa.color.palette.pillarRed", "oa.color.border.strong.onNewsprint"],
+          specs=[S("Lattice at 40 px", "Centers at 3.5, 19.5 and 35.5 px; 1 px links", "oa.color.graphic.subtle.onNewsprint"),
+                 S("Done", "7 px disc", "oa.color.graphic.essential.onNewsprint"), S("Under way", "7 px ring, 1 px line"),
+                 S("Never happened", "No node; its links stop 5 px short"), S("Not yet reached", "3 px disc", "oa.color.graphic.subtle.onNewsprint"),
+                 S("Taking part now", "6 px red disc with a 1 px Charcoal keyline on light grounds; never on Prussian", "oa.color.palette.pillarRed"),
+                 S("Larger sizes", "80 px is the 40 px drawing at twice size")],
+          related=["15", "17", "18"],
+          builders="Give the red disc to the stage only while the reader can act, and only when no error holds the view's red (Rule 05.3)."),
+        R("08.6", "Give each recurring series one fixed route that ends on its pillar's corner.",
+          "A series route runs along the links, never across a diagonal, and ends on the corner of the pillar the series serves. Six series hold six routes, and a new series takes a route no other series uses.",
+          "A route lets a regular reader spot a series at a glance, and ending on the pillar's corner ties each series to the pillar order: Explain top left, Track top right, Connect bottom left, Act bottom right.",
+          DJ,
+          "Six series and their six routes at 40 and 24 px, each beside its name.",
+          "A seventh series drawn with a diagonal from the center to a corner. The lattice has no diagonal link, so the route reads as a break in the grid.",
+          tokens=["oa.color.graphic.essential.onNewsprint"],
+          specs=[S("Route", "A 3 px line along the links", "oa.color.graphic.essential.onNewsprint"), S("Nodes on the route", "5 px discs"),
+                 S("End", "A 7 px disc on the pillar's corner"), S("Smallest size", "24 px")],
+          related=["09", "23"],
+          builders="List a new series with its route in the table before it ships, and check that no other series holds the same nodes in the same order."),
+        R("08.7", "Light one corner to name a pillar, and print the pillar's name beside it.",
+          "The four corners follow the pillar order in reading order: Explain top left, Track top right, Connect bottom left, Act bottom right. Light one corner as a 7 px disc at 24 px, keep the other nodes small and Stone, and set the pillar's name beside the grid.",
+          "The pillars run Explain, Track, Connect, Act, and the corners take them in the order a page is read. Under 48 px a pillar mark sits with its word (R9), and the corner follows the same rule.",
+          "R9 (DR-67); Design judgment",
+          "The four pillar corners at 24 px, each beside its pillar's name.",
+          "A 16 px grid with every node the same size and one in Verdigris for Track, in color and in grayscale, at true size and enlarged. In gray nothing is lit.",
+          tokens=["oa.color.graphic.essential.onNewsprint", "oa.color.graphic.subtle.onNewsprint"],
+          specs=[S("Lit corner", "7 px disc at 24 px", "oa.color.graphic.essential.onNewsprint"), S("Other nodes", "3 px, Stone", "oa.color.graphic.subtle.onNewsprint"),
+                 S("Smallest size", "24 px, with the pillar's name")],
+          related=["01", "09"],
+          builders="Use a pillar corner only where the piece belongs to no series; a series route already ends on its pillar's corner."),
+        R("08.8", "Build the kicker from a 24 px grid, a 24 px icon and a label.",
+          "The kicker, the short line above a title, sets the grid at 24 px, 12 px of space, a Civic Line topic icon at 24 px in one color, 12 px, then the series and the topic in the label style at 13 px. A record's ID, when there is one, follows as a typed chip.",
+          "One definition keeps every kicker the same height and order on the site, in email and in reports. Edition 05 defined it twice, with 20 to 24 px grids and labels at 10 and 11 px, under the 13 px floor.",
+          "Master Brief V2 section 10, the 13 px floor; Design judgment",
+          "The top of an article at true size, with its kicker over the title.",
+          "Edition 05's kicker, with a 16 px grid and 11 px labels. The grid turns to specks and the labels fall under the floor.",
+          tokens=["oa.size.icon.medium", "oa.space.150", "oa.type.label"],
+          specs=[S("Grid", "24 px, a series route or a pillar corner"), S("Space", "12 px between parts", "oa.space.150"),
+                 S("Icon", "Civic Line at 24 px, one color", "oa.size.icon.medium"),
+                 S("Label", "Inter 700 capitals, 13 px, tracked 0.06 em", "oa.type.label"), S("Record ID", "A typed chip, such as Bill H.4212")],
+          files=["work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg"],
+          related=["10", "20"],
+          builders="Let the kicker wrap after the label; the grid and the icon stay together on the first line."),
+        R("08.9", "Keep every grid state still, and say it in words.",
+          "Empty, loading, ready, under way and final each have their own drawing and a line of text. Nothing pulses: loading shows the links alone, with the words \"Loading tracker\" in a status region that screen readers announce.",
+          "Edition 05 pulsed the lever between 20 and 50 percent opacity with no end and no pause, at 1.27 to 1.83 to 1 on Newsprint. That fails WCAG's rules on moving content and on contrast for graphics, and the pulse told a reader nothing a word could not.",
+          "WCAG 2.2 SC 2.2.2, 1.4.11 and 4.1.3",
+          "The five states at 40 px with their words, on Newsprint, Charcoal and Prussian.",
+          "Two frames of Edition 05's loading state at 28 px and enlarged four times, with the lever at 20 and 50 percent. Neither frame reaches 3:1.",
+          tokens=["oa.color.state.loading.text.onNewsprint", "oa.color.state.empty.text.onNewsprint"],
+          specs=[S("Empty", "Small nodes and links; \"Nothing filed yet\""), S("Loading", "Links alone; \"Loading tracker\" in a status region", "oa.color.state.loading.text.onNewsprint"),
+                 S("Ready", "Stages done as filled discs; the stage in words"), S("Under way", "A ring on the current stage"),
+                 S("Final", "All nine filled"), S("Motion", "None; chapter 17 covers any change between states")],
+          related=["17", "18", "19"],
+          builders="Put the state's words in an element with <code>role=\"status\"</code> and change only its text, so a screen reader announces each change once."),
+    ],
+    "extras": [
+        {"after_rule": "08.4", "specimen": "s-08-combinations", "label": "Codes and combinations", "caption": "The codes in their order of precedence, what each tells a reader, its smallest size and what it may share a grid with."},
+        {"after_rule": "08.5", "specimen": "s-08-stages", "label": "Nine stages, five shapes", "caption": "The nine stages of a state bill in reading order, and the five shapes at twice size. The stages are a configurable example; chapter 15 sets them for other routes."},
+        {"after_rule": "08.9", "specimen": "s-08-composer", "label": "Composer", "caption": "Pick a code and its settings. The grid redraws at 80 and 40 px, and the status line reads it back in words."},
+    ],
+    "sources": ["\"Democracy has a structure.\" is the lockmark's explanatory line, approved at Gate 1 (S5)."],
+}
+
+CHAPTERS = [CH03, CH04, CH08]
+
+_PROSE = ("instruction", "title", "rule", "caption", "builders", "label", "value", "text")
+
+
+def _smarten(o, key=None):
+    if isinstance(o, dict):
+        return {k: (_smarten(v, k) if k not in ("specimen", "token", "id", "files", "tokens", "related", "basis", "anchor", "number", "part", "after_rule") else v) for k, v in o.items()}
+    if isinstance(o, list):
+        return [_smarten(v, key) for v in o]
+    if isinstance(o, str) and key in _PROSE + ("intro", "sources"):
+        return smart(o)
+    return o
+
+
+CHAPTERS = [_smarten(c) for c in CHAPTERS]
+
+
+def specimens_used(ch):
+    out = []
+    for r in ch["rules"]:
+        for k in ("correct", "failure", "corrective"):
+            if r.get(k):
+                out.append(r[k]["specimen"])
+    out += [x["specimen"] for x in ch.get("extras", [])]
+    return out

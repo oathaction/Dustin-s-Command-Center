@@ -140,7 +140,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .seg label.on svg, .seg label:has(input:checked) svg { display: block; }
 
 /* the end */
-.copy textarea { min-height: 14em; font-size: 15px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.copy textarea { min-height: 14em; font-size: 15px; line-height: 1.45; }
 .status { font-size: 15px; font-weight: 600; }
 .status:empty { height: 0; margin-top: -18px; }
 
@@ -151,6 +151,13 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .clock { display: none; }
+}
+/* forced colors: the system palette drops backgrounds, so the rail and clock draw in its text color, and a chosen
+   answer takes a heavier border beside its check */
+@media (forced-colors: active) {
+  .rail span.done, .clock-fill { forced-color-adjust: none; background: CanvasText; }
+  .rail span, .clock { forced-color-adjust: none; background: GrayText; }
+  .choice.on, .choice:has(input:checked), .seg label.on, .seg label:has(input:checked) { border-width: 3px; }
 }
 </style>
 
@@ -770,7 +777,14 @@ function renderEnd() {
       h('div', { class: 'copy' }, h('label', { class: 'field', id: 'copy-h', for: 'copy-text', text: 'Your answers' }), ta),
       h('div', { class: 'actions' }, btn), status, next, restartBtn());
   };
-  const restartBtn = () => h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn text', onclick: () => { clearSnap(); S.run = null; S.runId = null; go(0); } }, 'Start a new test on this device'));
+  // Starting over clears this phone's copy of the answers, so it takes a second tap.
+  const restartBtn = () => {
+    const b = h('button', { type: 'button', class: 'btn text', onclick: () => {
+      if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = 'Tap again to clear these answers and start over'; return; }
+      clearSnap(); S.run = null; S.runId = null; go(0);
+    } }, 'Start a new test on this device');
+    return h('div', { class: 'actions' }, b);
+  };
   const copyWhy = 'This page couldn’t save your answers, so please copy them and send them to the person who shared the link with you.';
   if (Store.finalOk) { body.replaceChildren(h('p', { role: 'status', text: 'Your answers are saved.' }), next, restartBtn()); return; }
   if (Store.mode === 'saved' || Store.mode === 'checking') {

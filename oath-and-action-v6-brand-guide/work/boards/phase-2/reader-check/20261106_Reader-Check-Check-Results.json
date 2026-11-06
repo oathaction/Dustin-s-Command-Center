@@ -1,0 +1,139 @@
+{
+ "file": "work/boards/phase-2/reader-check/20261106_Reader-Check.html",
+ "checked": "2026-11-06T20:09:07.685Z",
+ "views": [
+  "welcome"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 900,
+   "axe": [],
+   "focusStops": 2,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 844,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "welcome",
+   "rootVisible": true,
+   "texts": 7,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 813,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": null,
+ "failures": [],
+ "pass": true,
+ "note": "Run on a copy of the page wrapped in the publish skeleton with a <base> pointing at this folder, since the page itself is content only. No window.claude, so the welcome screen shows copy mode. The script checks the first screen only; test_reader_check.js checks every screen."
+}

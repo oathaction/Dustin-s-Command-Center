@@ -1,0 +1,560 @@
+{
+ "s-03-1-correct": {
+  "chapter": "03",
+  "rule": "03.1",
+  "width_px": 683,
+  "alt": "The Oath & Action wordmark at 440 pixels wide on Newsprint: OATH and ACTION in black capitals with a red ampersand between them. Guides mark the cap line and baseline, the cap height x, a clear-space box one cap height out from the letters on every side, and the equal white on each side of the ampersand, 0.203x.",
+  "illustrative": false,
+  "notes": "Display master placed at 440 px wide (44.98 px capitals). Annotations are a guide overlay, not part of the mark."
+ },
+ "s-03-1-failure": {
+  "chapter": "03",
+  "rule": "03.1",
+  "width_px": 610,
+  "alt": "Failure case: OATH & ACTION typed in Inter Tight 800 with the font's own sans-serif ampersand colored red and ordinary word spaces, so the ampersand is a different shape and the gaps around it are wide and uneven.",
+  "illustrative": false,
+  "notes": "Drawn as live SVG text inside a labeled image (D1-09), in the same cap height as the correct case.",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-03-2-correct": {
+  "chapter": "03",
+  "rule": "03.2",
+  "width_px": 200,
+  "alt": "A 120 pixel white square tile from a partner directory carrying the L8 monogram, O & A, 74 pixels wide with 25 pixel capitals.",
+  "illustrative": false,
+  "notes": "L8 cap height 24.7 px."
+ },
+ "s-03-2-failure": {
+  "chapter": "03",
+  "rule": "03.2",
+  "width_px": 200,
+  "alt": "Failure case: the same 120 pixel tile with the full OATH & ACTION wordmark squeezed to 100 pixels wide; its capitals are 10 pixels tall and blur.",
+  "illustrative": false,
+  "notes": "Display master scaled to 100 px wide (10.2 px capitals), as a producer would drag it."
+ },
+ "s-03-lockups": {
+  "chapter": "03",
+  "rule": "03.2",
+  "width_px": 932,
+  "alt": "The eight lockups at true size on Newsprint, each with its job and minimum: L1 the wordmark; L2 stacked, OATH over ACTION with a large ampersand at right; L3 the wordmark with the lockmark grid at its right; L4 the O & A monogram, a hairline and the tagline on two lines; L5 the wordmark over the tagline; L7 the wordmark, a hairline and the word TRACK; L8 the monogram; and L6, a Prussian strip with the wordmark, tagline, four dots and lockmark all in White.",
+  "illustrative": false,
+  "notes": "L1, L2, L3 and L8 are masters. L4 to L7 are assembled here from the approved masters and re-exported taglines on V5's layouts (I8 note); their own masters are drawn after Gate 2. L6 leaves out the web address until the site is settled (DR-55). L7's pillar word is live text."
+ },
+ "s-03-3-correct": {
+  "chapter": "03",
+  "rule": "03.3",
+  "width_px": 520,
+  "alt": "A page head at true size: the wordmark 32 pixels tall with a box one cap height out on every side, and the headline What the county board decides on Tuesday set below the box. Illustrative.",
+  "illustrative": true,
+  "notes": "24 px master drawn at 32 px tall (29 px capitals); clear space rounded up to 32 px, oa.space.400."
+ },
+ "s-03-3-failure": {
+  "chapter": "03",
+  "rule": "03.3",
+  "width_px": 520,
+  "alt": "Failure case: the same page head with the headline moved up to 9 pixels below the wordmark, inside its clear space, so the headline's first words read as part of the name. Illustrative.",
+  "illustrative": true,
+  "notes": "Headline 0.3x below the wordmark."
+ },
+ "s-03-4-correct": {
+  "chapter": "03",
+  "rule": "03.4",
+  "width_px": 700,
+  "alt": "Every identity mark at its screen minimum, at true size: the wordmark 16 pixels tall, the stacked lockup 90 wide, the horizontal lockup 196 wide, the monogram 48 wide, ampersand B, the lockmark and the badge at 16 pixels, the compact hinge diagram at 245 and the display one at 533, L4 at 304, L5 at 388 and L7 at 250.",
+  "illustrative": false,
+  "notes": "Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so)."
+ },
+ "s-03-4-failure": {
+  "chapter": "03",
+  "rule": "03.4",
+  "width_px": 360,
+  "alt": "Failure case: the wordmark's display master scaled down to 12 pixels tall, its capitals 11 pixels, the gaps around the ampersand filling in.",
+  "illustrative": false,
+  "notes": "Display master at 12 px tall (11.1 px capitals), as an email footer might place it."
+ },
+ "s-03-minimums": {
+  "chapter": "03",
+  "rule": "03.4",
+  "width_px": 712,
+  "alt": "Table of minimum sizes on screen and in print for every identity mark, with the mark to use below each minimum.",
+  "illustrative": false,
+  "notes": "Read word for word from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8)."
+ },
+ "s-03-5-correct": {
+  "chapter": "03",
+  "rule": "03.5",
+  "width_px": 640,
+  "alt": "L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with every part White; and one-color versions in Charcoal on Newsprint and in Newsprint on Charcoal.",
+  "illustrative": false,
+  "notes": "Prussian cells place the explicit-White files from prussian/ (treatment D, I9). L1 uses the 24 px master at 22 px tall."
+ },
+ "s-03-5-failure": {
+  "chapter": "03",
+  "rule": "03.5",
+  "width_px": 560,
+  "alt": "Failure case: the Newsprint version of the wordmark placed on a Charcoal slide. The black letters disappear into the black ground and only the red ampersand shows.",
+  "illustrative": false,
+  "notes": "Charcoal letters on Charcoal, 1:1."
+ },
+ "s-03-6-correct": {
+  "chapter": "03",
+  "rule": "03.6",
+  "width_px": 1440,
+  "alt": "Three mastheads at true size: a 1440 pixel site bar with the wordmark and lockmark at left and five navigation words at right; a 390 pixel phone bar with the wordmark and a menu button; and a 600 pixel white email header with the wordmark and lockmark.",
+  "illustrative": false,
+  "notes": "Navigation words are placeholders for chapter 20. The email header is drawn live here; in email it ships as a PNG."
+ },
+ "s-03-6-failure": {
+  "chapter": "03",
+  "rule": "03.6",
+  "width_px": 400,
+  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark's nodes and links run together at 28 pixels.",
+  "illustrative": false,
+  "notes": "L3 master at 150 px wide: 11.7 px capitals, 28 px lockmark."
+ },
+ "s-03-7-correct": {
+  "chapter": "03",
+  "rule": "03.7",
+  "width_px": 420,
+  "alt": "The L8 monogram, O & A with ampersand B, at its 48 pixel minimum and at 120 pixels on Newsprint and on Charcoal, at true size.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-03-7-failure": {
+  "chapter": "03",
+  "rule": "03.7",
+  "width_px": 300,
+  "alt": "Failure case: V4.2's compact signature, O & A typed in Inter Tight with word spaces and the font's sans-serif ampersand in red, at the same cap height as L8 at 120 pixels.",
+  "illustrative": false,
+  "notes": "",
+  "check_exempt": [
+   "contrast"
+  ]
+ },
+ "s-03-8-correct": {
+  "chapter": "03",
+  "rule": "03.8",
+  "width_px": 620,
+  "alt": "A partnership lockup at true size: the wordmark 32 pixels tall, a vertical hairline, then the partner name Merrimack Valley Civic Lab in semibold type. The partner is invented. Illustrative.",
+  "illustrative": true,
+  "notes": "Merrimack Valley Civic Lab is invented (Q-01) and labeled beside the item."
+ },
+ "s-03-8-failure": {
+  "chapter": "03",
+  "rule": "03.8",
+  "width_px": 700,
+  "alt": "Failure case: an event flyer that reads OATH & ACTION & MERRIMACK VALLEY CIVIC LAB present a workshop on public comment, with a second red ampersand joining the two names. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-03-misuse": {
+  "chapter": "03",
+  "rule": "03.8",
+  "width_px": 460,
+  "alt": "Three more failure cases at true size: the wordmark stretched 30 percent wider, the wordmark with a drop shadow, and the wordmark with its ampersand recolored dark blue.",
+  "illustrative": false,
+  "notes": "Extras: three failures producers make in slide and design apps. Placement attributes only; the master is unchanged."
+ },
+ "s-04-1-correct": {
+  "chapter": "04",
+  "rule": "04.1",
+  "width_px": 700,
+  "alt": "Ampersand B in Pillar Red at true size: the display master 160 pixels tall, then at 48, 24 and 16 pixels, and the 16 pixel master enlarged four times over its pixel grid, with its two open counters.",
+  "illustrative": false,
+  "notes": "The enlarged cell is labeled as enlarged; every other drawing is at true size."
+ },
+ "s-04-1-failure": {
+  "chapter": "04",
+  "rule": "04.1",
+  "width_px": 420,
+  "alt": "Failure case: V5's ampersand, the unmodified Lora Bold glyph that any Lora user can type, in red at 160 pixels tall. It has no beak, and its strokes are more even than B's.",
+  "illustrative": false,
+  "notes": "V5's glyph placed from the re-exported I1 record file, as an old Edition 05 file would place it."
+ },
+ "s-04-2-correct": {
+  "chapter": "04",
+  "rule": "04.2",
+  "width_px": 490,
+  "alt": "A link card at 480 by 252 pixels, the size a feed shows it: the hinge headline The zoning code & the rent. with one red ampersand, a line under it, and the wordmark at the foot. Illustrative.",
+  "illustrative": true,
+  "notes": "Feed size: a 1200 by 630 file drawn at 480 px wide. The headline is chapter 02's W10 example (DR-75)."
+ },
+ "s-04-2-failure": {
+  "chapter": "04",
+  "rule": "04.2",
+  "width_px": 490,
+  "alt": "Failure case: the same card with a large cropped ampersand in the corner and a second small ampersand beside the wordmark, so three ampersands compete with the headline's. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-04-3-correct": {
+  "chapter": "04",
+  "rule": "04.3",
+  "width_px": 700,
+  "alt": "Three hinge headlines at true size in heavy type, each joining two noun phrases with a red ampersand B: The rule & the result. at 64 pixels, The budget & the bill. at 40, The hearing & the vote. at 24.",
+  "illustrative": false,
+  "notes": "V5's three hinge headlines, with B drawn from the master whose range holds each cap height (24 px master at 64 and 40 px type; 16 px master at 24 px)."
+ },
+ "s-04-3-failure": {
+  "chapter": "04",
+  "rule": "04.3",
+  "width_px": 490,
+  "alt": "Failure case: an Act card whose hinge headline The bus map & the vote. has a red ampersand above a red Send a comment button, two working reds in one view. Illustrative.",
+  "illustrative": true,
+  "notes": "",
+  "check_exempt": [
+   "red"
+  ]
+ },
+ "s-04-3-corrective": {
+  "chapter": "04",
+  "rule": "04.3",
+  "width_px": 490,
+  "alt": "The same Act card corrected: the headline's ampersand in Charcoal and the Send a comment button in red, so the step to take is the one red mark. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-04-4-correct": {
+  "chapter": "04",
+  "rule": "04.4",
+  "width_px": 640,
+  "alt": "An article passage at true size: a paragraph on how a bill leaves committee, then the hinge divider, a thin line broken by a small ampersand in Charcoal, then What you can do. with the testimony deadline. Illustrative. Below, the divider on Newsprint, White, Charcoal and Prussian, its ampersand in each surface's ink.",
+  "illustrative": true,
+  "notes": "Divider: 1 px hairline token, B's 24 px master at 24 px in the hinge-divider token, 12 px gaps, 24 px above and below."
+ },
+ "s-04-4-failure": {
+  "chapter": "04",
+  "rule": "04.4",
+  "width_px": 490,
+  "alt": "Failure case: V5's hinge divider with a red ampersand, above a red Send testimony button, so two red marks compete for the step. Illustrative.",
+  "illustrative": true,
+  "notes": "",
+  "check_exempt": [
+   "red"
+  ]
+ },
+ "s-04-5-correct": {
+  "chapter": "04",
+  "rule": "04.5",
+  "width_px": 650,
+  "alt": "The hinge diagram at true size: the display master 600 pixels wide on Newsprint, with OATH and ACTION on a line through four nodes, a red ampersand B in a ring between them, two solid arcs running clockwise and the words UNDERSTAND and IMPACT beneath; and the compact master at 280 pixels on Newsprint and on Charcoal.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-04-5-failure": {
+  "chapter": "04",
+  "rule": "04.5",
+  "width_px": 650,
+  "alt": "Failure case: the hinge diagram redrawn with dashed arcs and a dashed ring. In the atlas's key a dashed line means a plausible link, so the diagram reads as a guess.",
+  "illustrative": false,
+  "notes": "The master is placed unchanged; a dash pattern applied to its strokes at placement shows the failure."
+ },
+ "s-04-6-correct": {
+  "chapter": "04",
+  "rule": "04.6",
+  "width_px": 560,
+  "alt": "The badge, a red ampersand B inside a thin ring, at true size: at 16 pixels as the end mark after an article's last sentence, and at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. Illustrative article text.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-04-6-failure": {
+  "chapter": "04",
+  "rule": "04.6",
+  "width_px": 300,
+  "alt": "Failure case: the badge set inside an outer ring of words, OATH & ACTION, OFFICIAL SEAL, repeated around the circle, turning it into a seal.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-04-7-correct": {
+  "chapter": "04",
+  "rule": "04.7",
+  "width_px": 700,
+  "alt": "Avatars and app icons at true size: ampersand B in red on a Charcoal circle at 180, 64 and 32 pixels and on a Charcoal rounded square at 180 and 64; then a Newsprint circle with a thin Charcoal keyline, a Prussian circle with a White ampersand, a one-color circle, and the 16 pixel ampersand as a favicon on a light and a dark browser tab.",
+  "illustrative": false,
+  "notes": "B at 58 percent of the tile (V5's container proportion). The rounded square's corner is a placeholder radius; iOS and Android cut their own mask from a full-bleed square upload."
+ },
+ "s-04-7-failure": {
+  "chapter": "04",
+  "rule": "04.7",
+  "width_px": 440,
+  "alt": "Failure case: a Newsprint circle avatar with no keyline in a white feed. The circle's edge measures 1.41 to 1 against the page and fades, so the ampersand floats without its tile.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-04-8-correct": {
+  "chapter": "04",
+  "rule": "04.8",
+  "width_px": 540,
+  "alt": "A half-letter report cover at true size, 5.5 by 8.5 inches, on Newsprint: the wordmark and the title How a county budget gets written at top left, and a very large Charcoal ampersand B running off the bottom-right corner. Illustrative.",
+  "illustrative": true,
+  "notes": "B display master at 440 px tall in the surface's ink; about 30 percent of it runs past the right and bottom edges."
+ },
+ "s-04-8-failure": {
+  "chapter": "04",
+  "rule": "04.8",
+  "width_px": 540,
+  "alt": "Failure case: the same cover with the large ampersand moved up behind the title, so the title's letters cross its strokes. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-08-1-correct": {
+  "chapter": "08",
+  "rule": "08.1",
+  "width_px": 700,
+  "alt": "The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-1-failure": {
+  "chapter": "08",
+  "rule": "08.1",
+  "width_px": 420,
+  "alt": "Failure case: V5's lockmark master scaled to 16 pixels, its nodes no wider than its links and the lever a single pink pixel, beside the 16 pixel master for comparison.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-2-correct": {
+  "chapter": "08",
+  "rule": "08.2",
+  "width_px": 600,
+  "alt": "Two fixed places at true size: the lockmark at 40 pixels in the bottom-right corner of a report cover, half an inch in from both edges; and the lockmark at 24 pixels beside the section label 03 Who writes the budget at the top of a report page. Illustrative label.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-08-2-failure": {
+  "chapter": "08",
+  "rule": "08.2",
+  "width_px": 430,
+  "alt": "Failure case: a flyer, How to speak at a council meeting, whose three list items each start with a 16 pixel lockmark used as a bullet. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-08-3-correct": {
+  "chapter": "08",
+  "rule": "08.3",
+  "width_px": 350,
+  "alt": "A tracker row at true size: a 40 pixel Signal Grid with its first four nodes filled, beside Bill S.0876, School bus contracts, and its key, Stage 4 of 9: Reported out. Illustrative bill.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-08-3-failure": {
+  "chapter": "08",
+  "rule": "08.3",
+  "width_px": 350,
+  "alt": "Failure case: the same tracker row with the grid and no key. Four filled nodes sit beside the bill name with nothing to say what they count. Illustrative bill.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-08-4-correct": {
+  "chapter": "08",
+  "rule": "08.4",
+  "width_px": 700,
+  "alt": "The three codes at 40 pixels, each with its key: a tracker grid with four filled nodes and a ring on the fifth, Stage 5 of 9 under way; the Dispatch series route, a heavy line from the middle left through the center and up to the top right corner; and a pillar corner with only the bottom-left node lit, for Connect.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-4-failure": {
+  "chapter": "08",
+  "rule": "08.4",
+  "width_px": 520,
+  "alt": "Failure case: V5's four content-type grids at 24 pixels, each lighting its center node in a different color: Prussian, Verdigris, Charcoal and red. Converted to grayscale, the four lit nodes turn into near-identical dark grays.",
+  "illustrative": false,
+  "notes": "Redrawn from V5's rule B captions at its 24 px kicker size."
+ },
+ "s-08-combinations": {
+  "chapter": "08",
+  "rule": "08.4",
+  "width_px": 712,
+  "alt": "Table of the Signal Grid's codes in order of precedence, with what each tells a reader, its smallest size and what it may share a grid with.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-5-correct": {
+  "chapter": "08",
+  "rule": "08.5",
+  "width_px": 630,
+  "alt": "A tracker list at true size, Where four state bills stand this week, with a 40 pixel grid and a key per bill: Bill H.4212, Public meeting notice, stage 3 of 9, Hearing, under way, its third node red because testimony is open until March 3; Bill S.0876, stage 4, Reported out; Bill H.1180, stage 6, Passed second chamber; and Bill H.3301, stage 4, Reported out, with a gap where its hearing should be because no hearing was held. A legend names each shape. Illustrative bills.",
+  "illustrative": true,
+  "notes": "Bill numbers are V5's invented examples (Q-01) on new, neutral topics. One working red in the view: the open testimony."
+ },
+ "s-08-5-failure": {
+  "chapter": "08",
+  "rule": "08.5",
+  "width_px": 700,
+  "alt": "Failure case: V5's Active and Ready states at 28 pixels, the same grid with the lever in Verdigris or in red. In grayscale the two are the same picture; the colors differ at 1.14 to 1.",
+  "illustrative": false,
+  "notes": "V5's lockmark master at 28 px, V5's tracker size, with its lever hook set to Verdigris or red, as V5 described the two states."
+ },
+ "s-08-stages": {
+  "chapter": "08",
+  "rule": "08.5",
+  "width_px": 700,
+  "alt": "The nine stages of a state bill in reading order, numbered on the grid: Filed, Referred, Hearing, Reported out, Passed first chamber, Passed second chamber, Reconciled, Signed, In effect. Four grids at 80 pixels show a stage under way as a ring, a stage that never happened as a gap with its links cut, a red node where taking part is open, and all nine filled for a law in effect, with a legend of the shapes.",
+  "illustrative": false,
+  "notes": "The numbered order grid is a diagram at 208 px, its numbers 25 px; the four grids are the 40 px drawing at twice size."
+ },
+ "s-08-6-correct": {
+  "chapter": "08",
+  "rule": "08.6",
+  "width_px": 700,
+  "alt": "Six series and their six routes at 40 and 24 pixels, each route a heavy line along the grid's links that ends on its pillar's corner: Reform 101 and The Oath end top left for Explain, Dispatch and The Public Record top right for Track, Field Notes bottom left for Connect, and Proof It Works bottom right for Act.",
+  "illustrative": false,
+  "notes": "Routes from V5's table; Dispatch from the Front is renamed Dispatch (S2)."
+ },
+ "s-08-6-failure": {
+  "chapter": "08",
+  "rule": "08.6",
+  "width_px": 360,
+  "alt": "Failure case: a route for a new series that runs from the middle left to the center, then cuts diagonally to the top-right corner, across a link the grid does not have.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-7-correct": {
+  "chapter": "08",
+  "rule": "08.7",
+  "width_px": 520,
+  "alt": "Four pillar corners at 24 pixels, each beside its pillar's name: Explain lights the top-left node, Track the top right, Connect the bottom left and Act the bottom right.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-7-failure": {
+  "chapter": "08",
+  "rule": "08.7",
+  "width_px": 300,
+  "alt": "Failure case: a 16 pixel grid where every node is the same size and the top-right node is Verdigris to mean Track. In grayscale no node stands out.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-08-8-correct": {
+  "chapter": "08",
+  "rule": "08.8",
+  "width_px": 610,
+  "alt": "The top of an article at true size. Its kicker runs left to right: a 24 pixel Signal Grid lighting the Dispatch route, a 24 pixel Civic Line icon for a public meeting, the label Dispatch, Public meetings, and a chip reading Bill H.4212. Below sits the title What a meeting notice has to say, and how far ahead it posts. Illustrative bill and title.",
+  "illustrative": true,
+  "notes": "Civic Line CL-005 Public Meeting, black edition, placed by reference at 24 px (one color in a row, G1-07)."
+ },
+ "s-08-8-failure": {
+  "chapter": "08",
+  "rule": "08.8",
+  "width_px": 680,
+  "alt": "Failure case: V5's kicker, with a 16 pixel grid whose nodes turn to specks and labels set at 11 pixels in tracked capitals, under the 13 pixel floor. Illustrative.",
+  "illustrative": true,
+  "notes": "Rendered to a PNG at twice size and embedded, so the page's own 13 px check stays clean while the failure shows at true size (D1-09)."
+ },
+ "s-08-9-correct": {
+  "chapter": "08",
+  "rule": "08.9",
+  "width_px": 712,
+  "alt": "Five tracker states at 40 pixels on Newsprint, Charcoal and Prussian, each with its words: Empty, small nodes only, Nothing filed yet; Loading, the links with no nodes, Loading tracker; Ready, two filled nodes, Stage 2 of 9: Referred; Under way, two filled and a ring on the third, Stage 3 of 9: Hearing, under way; Final, all nine filled, In effect.",
+  "illustrative": false,
+  "notes": "Loading draws the links alone, so it differs in shape from Empty, which draws the nodes small. In a page, the words sit in a role=\"status\" region."
+ },
+ "s-08-9-failure": {
+  "chapter": "08",
+  "rule": "08.9",
+  "width_px": 700,
+  "alt": "Failure case: two frames of V5's loading state, the lockmark's red lever faded to 20 and then 50 percent. It pulsed forever with no text, and neither frame reaches 3 to 1.",
+  "illustrative": false,
+  "notes": "V5's lockmark master at 28 px with its lever at V5's two opacities."
+ },
+ "s-08-composer": {
+  "chapter": "08",
+  "rule": "08.9",
+  "width_px": 712,
+  "alt": "An interactive composer. Pick a code, nothing, tracker progress, a series route or a pillar corner, and its settings; the grid redraws at 80 and 40 pixels and a status line reads the grid in words, for example Tracker progress: stage 3 of 9, Hearing, under way.",
+  "illustrative": false,
+  "notes": "Script scoped to its own root; the status line is a role=\"status\" region. The step option stays disabled, with its reason shown, until the stage is under way. Only valid combinations can be built.",
+  "interactive": true
+ },
+ "s-proofs-glance": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 960,
+  "alt": "The wordmark at both widths side by side at true size: today's width at left and the condensed width at right, each from its 16 px master, its 24 px master and its display master at 48 pixels tall, then the stacked lockup and the O & A monogram. At the same height the condensed drawing runs about a fifth narrower.",
+  "illustrative": false,
+  "notes": "Same height for both widths, so the difference shows as width. Today's width is in force; the condensed width is a proposal for Gate 2."
+ },
+ "s-proofs-masthead-today": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 1440,
+  "alt": "The site masthead at today's width, at true size: a 1440 pixel Newsprint bar with OATH & ACTION and the lockmark at left and five navigation words at right, and below it the phone bar at 390 pixels with the wordmark and a menu button.",
+  "illustrative": false,
+  "notes": "L3 from the 24 px wordmark master (221 px) with a 52 px lockmark; phone bar with the 24 px master."
+ },
+ "s-proofs-masthead-condensed": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 1440,
+  "alt": "The same site masthead with the condensed wordmark, at true size: the wordmark runs 181 pixels wide at the same height, so the lockmark sits 40 pixels further left; the phone bar below it.",
+  "illustrative": false,
+  "notes": "The condensed 24 px master (181 px) at the same height as today's."
+ },
+ "s-proofs-email-today": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 600,
+  "alt": "An email at true size, 600 pixels wide: the L3 masthead at today's width in a white header, then an invented headline and first line in Arial. Illustrative.",
+  "illustrative": true,
+  "notes": "Drawn live here; in email the masthead ships as a PNG at twice size. Body text uses the email stack (V5's system fonts)."
+ },
+ "s-proofs-email-condensed": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 600,
+  "alt": "The same email with the condensed wordmark in the masthead, at true size. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-proofs-avatar-today": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 480,
+  "alt": "Avatars on Charcoal at today's width, at true size: the O & A monogram in Newsprint with a red ampersand, filling a 200 pixel circle and a 200 pixel rounded square, then the circle at 96 and at 48 pixels, where its capitals fall to 10 pixels, and ampersand B alone in a 48 pixel circle.",
+  "illustrative": false,
+  "notes": "L8 fills 62 percent of the tile's width (same width for both drawings, as a designer fits a tile). Charcoal tile by R13."
+ },
+ "s-proofs-avatar-condensed": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 480,
+  "alt": "The same avatars with the condensed monogram, at true size: at the same width its capitals stand taller, 50 pixels in the 200 pixel circle, and its narrow O reads close to a zero; at 48 pixels its capitals reach 12 pixels, still under the floor, beside ampersand B alone.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-proofs-social-today": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 1200,
+  "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the pillar word Explain, the hinge headline The zoning code & the rent. with a red ampersand B, a line under it, the wordmark at today's width at bottom left and the lockmark at bottom right. No web address. Illustrative.",
+  "illustrative": true,
+  "notes": "1200 by 630, the link-preview size. The headline is chapter 02's W10 example (DR-75). No web address until the site is settled (DR-55)."
+ },
+ "s-proofs-social-condensed": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 1200,
+  "alt": "The same social card at actual size with the condensed wordmark at bottom left, at the same height. Illustrative.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-proofs-letterhead-today": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 816,
+  "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: the wordmark at today's width at top left, a return address at top right, a short records request to a town clerk signed by Dustin Cathcart, Founder and Editor, and a footer with the tagline and the lockmark. The address, recipient and letter are Illustrative. A link downloads the two-page print proof.",
+  "illustrative": true,
+  "notes": "96 CSS px to the inch, so the sheet is 816 by 1056 px. The display master at 26 px tall, as a print piece places it. Every line of text is 10 pt or larger.",
+  "interactive": true
+ },
+ "s-proofs-letterhead-condensed": {
+  "chapter": "proofs",
+  "rule": "proofs",
+  "width_px": 816,
+  "alt": "The same letterhead with the condensed wordmark at the same height, at true size. Illustrative address, recipient and letter.",
+  "illustrative": true,
+  "notes": ""
+ }
+}

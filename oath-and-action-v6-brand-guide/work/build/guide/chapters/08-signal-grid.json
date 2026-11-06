@@ -1,0 +1,497 @@
+{
+ "number": "08",
+ "anchor": "signal-grid",
+ "title": "The Signal Grid",
+ "part": "Foundations",
+ "instruction": "Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content.",
+ "intro": [
+  "Democracy has a structure. The lockmark draws it as nine nodes joined by links, with the lever, a larger red node at bottom right, at the place where one change moves the rest. It sits beside the wordmark in the masthead and in a few fixed places, and its drawing never changes.",
+  "The Signal Grid uses the same nine nodes to code one thing about a piece: how far a bill has moved, which recurring series it belongs to, or which pillar it serves. A coded grid always sits beside words that say what it shows."
+ ],
+ "rules": [
+  {
+   "id": "08.1",
+   "title": "Draw the lockmark from its master for its size, and keep its drawing fixed.",
+   "rule": "The lockmark is a 3 by 3 grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px and Edition 05’s master from 48 px.",
+   "tokens": [
+    "oa.color.identity.signature.onNewsprint",
+    "oa.color.palette.stone"
+   ],
+   "why": {
+    "text": "At small sizes Edition 05’s single master lost its shape: at 24 px only 5 percent of its ink was solid, and at 16 px the lever became one pink pixel. The small masters set every node and link on whole pixels and draw the lever one size up, so it still reads as the place where one change moves the rest.",
+    "basis": "Design judgment, measured in Chromium (Identity masters notes, October 28, 2026)"
+   },
+   "correct": {
+    "specimen": "s-08-1-correct",
+    "caption": "The lockmark’s construction at 240 px, then at true size at 96, 48, 24 and 16 px, and at 48 px on Charcoal and on Prussian."
+   },
+   "failure": {
+    "specimen": "s-08-1-failure",
+    "caption": "Edition 05’s master scaled to 16 px beside the 16 px master. Its nodes shrink to the width of a link and the lever turns into a single pink pixel."
+   },
+   "specs": [
+    {
+     "label": "Field",
+     "value": "123.5 units square"
+    },
+    {
+     "label": "Node centers",
+     "value": "11.75, 61.75 and 111.75 units on each axis"
+    },
+    {
+     "label": "Nodes",
+     "value": "Radius 3.8 units"
+    },
+    {
+     "label": "Lever",
+     "value": "Radius 4.75 units, bottom right, signature red",
+     "token": "oa.color.identity.signature.onNewsprint"
+    },
+    {
+     "label": "Links",
+     "value": "1 px Stone around the edge and through the center",
+     "token": "oa.color.palette.stone"
+    },
+    {
+     "label": "16 px master",
+     "value": "Centers at 2.5, 7.5 and 12.5 px; 3 px nodes; 5 px lever"
+    },
+    {
+     "label": "24 px master",
+     "value": "Centers at 3.5, 11.5 and 19.5 px; 5 px nodes; 7 px lever"
+    },
+    {
+     "label": "Print",
+     "value": "0.25 in at the smallest"
+    }
+   ],
+   "files": [
+    "work/build/assets/identity/lockmark/20261028_Lockmark-Master-V5.svg",
+    "work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg",
+    "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg"
+   ],
+   "related": [
+    "03",
+    "05"
+   ],
+   "builders": "The lockmark files read <code>--link</code> for the links and <code>--lever</code> for the lever. Leave the lever on the signature token; on Prussian, place the White file."
+  },
+  {
+   "id": "08.2",
+   "title": "Place the lockmark only in its fixed positions and sizes.",
+   "rule": "The lockmark appears in four places, once per view: at the bottom right of social cards, covers and posters, 40 px or 0.4 in, inside the margin; beside the wordmark in L3 and L6; beside the section label on report and slide pages, 24 px or 0.25 in; and in a chart legend at 16 px, where chapter 14 calls for it.",
+   "tokens": [],
+   "why": {
+    "text": "A signature works by turning up in the same place, so a reader finds it without looking. Used as a bullet or scattered as decoration, it stops signing the page.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-2-correct",
+    "caption": "Two of the fixed places at true size: the bottom-right corner of a report cover, with the lockmark at 40 px inside a 0.5 in margin, and a report page header with the lockmark at 24 px beside the section label."
+   },
+   "failure": {
+    "specimen": "s-08-2-failure",
+    "caption": "The lockmark used as list bullets on a flyer, three lockmarks in one view, each one decoration."
+   },
+   "specs": [
+    {
+     "label": "Anchor",
+     "value": "Bottom right of social cards, covers and posters; 40 px or 0.4 in, inside the margin"
+    },
+    {
+     "label": "Masthead partner",
+     "value": "Right of the wordmark in L3 and L6, 2.4 cap heights tall"
+    },
+    {
+     "label": "Section marker",
+     "value": "Beside the section label on report and slide pages; 24 px or 0.25 in"
+    },
+    {
+     "label": "Legend mark",
+     "value": "16 px, in a chart legend, where chapter 14 calls for it"
+    },
+    {
+     "label": "Favicon",
+     "value": "Retired: favicons use ampersand B’s 16 px master (Rule 03.4)"
+    }
+   ],
+   "files": [],
+   "related": [
+    "03",
+    "14",
+    "12"
+   ],
+   "builders": "A low-density pattern of the lattice, with no lit nodes, belongs to chapter 12’s patterns and follows its 12 percent ink limit."
+  },
+  {
+   "id": "08.3",
+   "title": "Set a key beside every Signal Grid that codes content.",
+   "rule": "A coded grid sits beside words that say what it shows, on the same line or directly under it, at 13 px or larger: the stage and its name for a tracker, the series name for a route, the pillar’s name for a corner. Screen readers get the same words.",
+   "tokens": [
+    "oa.color.text.secondary.onNewsprint"
+   ],
+   "why": {
+    "text": "Nine dots at 24 or 40 px cannot explain themselves, and Edition 05’s grids coded six things with no words nearby. With the words beside it, the grid becomes a shortcut for readers who know it and hides nothing from readers who do not.",
+    "basis": "WCAG 2.2 SC 1.1.1 and 1.4.1; Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-3-correct",
+    "caption": "A tracker row at true size: the grid at 40 px beside its key, “Stage 4 of 9: Reported out”."
+   },
+   "failure": {
+    "specimen": "s-08-3-failure",
+    "caption": "The same row with the grid alone. Four filled nodes sit beside the bill’s name with nothing to say what they count."
+   },
+   "specs": [
+    {
+     "label": "Key",
+     "value": "On the grid’s line or directly under it"
+    },
+    {
+     "label": "Size",
+     "value": "13 px or larger",
+     "token": "oa.type.label"
+    },
+    {
+     "label": "Screen readers",
+     "value": "The grid is hidden; the key’s words carry it"
+    }
+   ],
+   "files": [],
+   "related": [
+    "14",
+    "18",
+    "19"
+   ],
+   "builders": "Write the key from the record’s data, so the words and the grid can never disagree, and mark the grid <code>aria-hidden=\"true\"</code> when the key sits beside it."
+  },
+  {
+   "id": "08.4",
+   "title": "Let each grid code one thing, chosen in this order: tracker progress, a series route, a pillar corner.",
+   "rule": "When a piece could carry more than one code, its grid shows the first that applies. Progress may add the stage where a reader can take part now, and a series route always ends on its pillar’s corner. Content type is never coded by color; name it in words in the kicker.",
+   "tokens": [],
+   "why": {
+    "text": "Edition 05’s grid coded pillar, content type, progress, gaps and series on the same nine nodes, and a reader could not tell which one was in front of them. Its four content-type colors look alike in grayscale, and its Verdigris and red differ at 1.14 to 1. One code per grid, chosen in a fixed order, gives every grid one meaning.",
+    "basis": "WCAG 2.2 SC 1.4.1; Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-4-correct",
+    "caption": "The three codes at 40 px, each with its key: progress, a series route and a pillar corner."
+   },
+   "failure": {
+    "specimen": "s-08-4-failure",
+    "caption": "Edition 05’s content-type grids in color and in grayscale. Prussian, Verdigris, Charcoal and red collapse into four grays."
+   },
+   "specs": [
+    {
+     "label": "Order",
+     "value": "Tracker progress, then a series route, then a pillar corner"
+    },
+    {
+     "label": "Tracker progress",
+     "value": "From 40 px"
+    },
+    {
+     "label": "Series route and pillar corner",
+     "value": "From 24 px"
+    },
+    {
+     "label": "Content type",
+     "value": "In words, in the kicker"
+    }
+   ],
+   "files": [],
+   "related": [
+    "05",
+    "09",
+    "17"
+   ],
+   "builders": "The composer after Rule 08.9 builds only the combinations this rule allows."
+  },
+  {
+   "id": "08.5",
+   "title": "Show tracker progress with a shape for each stage, from 40 px.",
+   "rule": "A tracker grid reads its nine stages left to right and top to bottom. A filled disc marks a stage done; a ring marks the stage under way; a gap, with the node and its links cut away, marks a stage that never happened; a small Stone node marks a stage not yet reached. One red disc may mark the stage where a reader can take part now.",
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint",
+    "oa.color.graphic.subtle.onNewsprint",
+    "oa.color.palette.pillarRed",
+    "oa.color.border.strong.onNewsprint"
+   ],
+   "why": {
+    "text": "Shapes survive grayscale, color blindness and a cheap printer. Edition 05 told the stage under way from a finished one by color alone, Verdigris against red at 1.14 to 1, and drew a missed stage as a dashed ring, a texture the atlas gives to a plausible link.",
+    "basis": "WCAG 2.2 SC 1.4.1; D1-21"
+   },
+   "correct": {
+    "specimen": "s-08-5-correct",
+    "caption": "A tracker list at true size: four bills at 40 px, each with its stage in words, and a legend of the shapes."
+   },
+   "failure": {
+    "specimen": "s-08-5-failure",
+    "caption": "Edition 05’s Active and Ready grids at its 28 px tracker size and enlarged four times, in color and in grayscale. In gray the two states are the same picture."
+   },
+   "specs": [
+    {
+     "label": "Lattice at 40 px",
+     "value": "Centers at 3.5, 19.5 and 35.5 px; 1 px links",
+     "token": "oa.color.graphic.subtle.onNewsprint"
+    },
+    {
+     "label": "Done",
+     "value": "7 px disc",
+     "token": "oa.color.graphic.essential.onNewsprint"
+    },
+    {
+     "label": "Under way",
+     "value": "7 px ring, 1 px line"
+    },
+    {
+     "label": "Never happened",
+     "value": "No node; its links stop 5 px short"
+    },
+    {
+     "label": "Not yet reached",
+     "value": "3 px disc",
+     "token": "oa.color.graphic.subtle.onNewsprint"
+    },
+    {
+     "label": "Taking part now",
+     "value": "6 px red disc with a 1 px Charcoal keyline on light grounds; never on Prussian",
+     "token": "oa.color.palette.pillarRed"
+    },
+    {
+     "label": "Larger sizes",
+     "value": "80 px is the 40 px drawing at twice size"
+    }
+   ],
+   "files": [],
+   "related": [
+    "15",
+    "17",
+    "18"
+   ],
+   "builders": "Give the red disc to the stage only while the reader can act, and only when no error holds the view’s red (Rule 05.3)."
+  },
+  {
+   "id": "08.6",
+   "title": "Give each recurring series one fixed route that ends on its pillar’s corner.",
+   "rule": "A series route runs along the links, never across a diagonal, and ends on the corner of the pillar the series serves. Six series hold six routes, and a new series takes a route no other series uses.",
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": "A route lets a regular reader spot a series at a glance, and ending on the pillar’s corner ties each series to the pillar order: Explain top left, Track top right, Connect bottom left, Act bottom right.",
+    "basis": "Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-6-correct",
+    "caption": "Six series and their six routes at 40 and 24 px, each beside its name."
+   },
+   "failure": {
+    "specimen": "s-08-6-failure",
+    "caption": "A seventh series drawn with a diagonal from the center to a corner. The lattice has no diagonal link, so the route reads as a break in the grid."
+   },
+   "specs": [
+    {
+     "label": "Route",
+     "value": "A 3 px line along the links",
+     "token": "oa.color.graphic.essential.onNewsprint"
+    },
+    {
+     "label": "Nodes on the route",
+     "value": "5 px discs"
+    },
+    {
+     "label": "End",
+     "value": "A 7 px disc on the pillar’s corner"
+    },
+    {
+     "label": "Smallest size",
+     "value": "24 px"
+    }
+   ],
+   "files": [],
+   "related": [
+    "09",
+    "23"
+   ],
+   "builders": "List a new series with its route in the table before it ships, and check that no other series holds the same nodes in the same order."
+  },
+  {
+   "id": "08.7",
+   "title": "Light one corner to name a pillar, and print the pillar’s name beside it.",
+   "rule": "The four corners follow the pillar order in reading order: Explain top left, Track top right, Connect bottom left, Act bottom right. Light one corner as a 7 px disc at 24 px, keep the other nodes small and Stone, and set the pillar’s name beside the grid.",
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint",
+    "oa.color.graphic.subtle.onNewsprint"
+   ],
+   "why": {
+    "text": "The pillars run Explain, Track, Connect, Act, and the corners take them in the order a page is read. Under 48 px a pillar mark sits with its word (R9), and the corner follows the same rule.",
+    "basis": "R9 (DR-67); Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-7-correct",
+    "caption": "The four pillar corners at 24 px, each beside its pillar’s name."
+   },
+   "failure": {
+    "specimen": "s-08-7-failure",
+    "caption": "A 16 px grid with every node the same size and one in Verdigris for Track, in color and in grayscale, at true size and enlarged. In gray nothing is lit."
+   },
+   "specs": [
+    {
+     "label": "Lit corner",
+     "value": "7 px disc at 24 px",
+     "token": "oa.color.graphic.essential.onNewsprint"
+    },
+    {
+     "label": "Other nodes",
+     "value": "3 px, Stone",
+     "token": "oa.color.graphic.subtle.onNewsprint"
+    },
+    {
+     "label": "Smallest size",
+     "value": "24 px, with the pillar’s name"
+    }
+   ],
+   "files": [],
+   "related": [
+    "01",
+    "09"
+   ],
+   "builders": "Use a pillar corner only where the piece belongs to no series; a series route already ends on its pillar’s corner."
+  },
+  {
+   "id": "08.8",
+   "title": "Build the kicker from a 24 px grid, a 24 px icon and a label.",
+   "rule": "The kicker, the short line above a title, sets the grid at 24 px, 12 px of space, a Civic Line topic icon at 24 px in one color, 12 px, then the series and the topic in the label style at 13 px. A record’s ID, when there is one, follows as a typed chip.",
+   "tokens": [
+    "oa.size.icon.medium",
+    "oa.space.150",
+    "oa.type.label"
+   ],
+   "why": {
+    "text": "One definition keeps every kicker the same height and order on the site, in email and in reports. Edition 05 defined it twice, with 20 to 24 px grids and labels at 10 and 11 px, under the 13 px floor.",
+    "basis": "Master Brief V2 section 10, the 13 px floor; Design judgment"
+   },
+   "correct": {
+    "specimen": "s-08-8-correct",
+    "caption": "The top of an article at true size, with its kicker over the title."
+   },
+   "failure": {
+    "specimen": "s-08-8-failure",
+    "caption": "Edition 05’s kicker, with a 16 px grid and 11 px labels. The grid turns to specks and the labels fall under the floor."
+   },
+   "specs": [
+    {
+     "label": "Grid",
+     "value": "24 px, a series route or a pillar corner"
+    },
+    {
+     "label": "Space",
+     "value": "12 px between parts",
+     "token": "oa.space.150"
+    },
+    {
+     "label": "Icon",
+     "value": "Civic Line at 24 px, one color",
+     "token": "oa.size.icon.medium"
+    },
+    {
+     "label": "Label",
+     "value": "Inter 700 capitals, 13 px, tracked 0.06 em",
+     "token": "oa.type.label"
+    },
+    {
+     "label": "Record ID",
+     "value": "A typed chip, such as Bill H.4212"
+    }
+   ],
+   "files": [
+    "work/build/assets/civic-line/black/20261029_Oath-And-Action-Civic-Line-CL-005-Public-Meeting-Black.svg"
+   ],
+   "related": [
+    "10",
+    "20"
+   ],
+   "builders": "Let the kicker wrap after the label; the grid and the icon stay together on the first line."
+  },
+  {
+   "id": "08.9",
+   "title": "Keep every grid state still, and say it in words.",
+   "rule": "Empty, loading, ready, under way and final each have their own drawing and a line of text. Nothing pulses: loading shows the links alone, with the words “Loading tracker” in a status region that screen readers announce.",
+   "tokens": [
+    "oa.color.state.loading.text.onNewsprint",
+    "oa.color.state.empty.text.onNewsprint"
+   ],
+   "why": {
+    "text": "Edition 05 pulsed the lever between 20 and 50 percent opacity with no end and no pause, at 1.27 to 1.83 to 1 on Newsprint. That fails WCAG’s rules on moving content and on contrast for graphics, and the pulse told a reader nothing a word could not.",
+    "basis": "WCAG 2.2 SC 2.2.2, 1.4.11 and 4.1.3"
+   },
+   "correct": {
+    "specimen": "s-08-9-correct",
+    "caption": "The five states at 40 px with their words, on Newsprint, Charcoal and Prussian."
+   },
+   "failure": {
+    "specimen": "s-08-9-failure",
+    "caption": "Two frames of Edition 05’s loading state at 28 px and enlarged four times, with the lever at 20 and 50 percent. Neither frame reaches 3:1."
+   },
+   "specs": [
+    {
+     "label": "Empty",
+     "value": "Small nodes and links; “Nothing filed yet”"
+    },
+    {
+     "label": "Loading",
+     "value": "Links alone; “Loading tracker” in a status region",
+     "token": "oa.color.state.loading.text.onNewsprint"
+    },
+    {
+     "label": "Ready",
+     "value": "Stages done as filled discs; the stage in words"
+    },
+    {
+     "label": "Under way",
+     "value": "A ring on the current stage"
+    },
+    {
+     "label": "Final",
+     "value": "All nine filled"
+    },
+    {
+     "label": "Motion",
+     "value": "None; chapter 17 covers any change between states"
+    }
+   ],
+   "files": [],
+   "related": [
+    "17",
+    "18",
+    "19"
+   ],
+   "builders": "Put the state’s words in an element with <code>role=\"status\"</code> and change only its text, so a screen reader announces each change once."
+  }
+ ],
+ "extras": [
+  {
+   "after_rule": "08.4",
+   "specimen": "s-08-combinations",
+   "label": "Codes and combinations",
+   "caption": "The codes in their order of precedence, what each tells a reader, its smallest size and what it may share a grid with."
+  },
+  {
+   "after_rule": "08.5",
+   "specimen": "s-08-stages",
+   "label": "Nine stages, five shapes",
+   "caption": "The nine stages of a state bill in reading order, and the five shapes at twice size. The stages are a configurable example; chapter 15 sets them for other routes."
+  },
+  {
+   "after_rule": "08.9",
+   "specimen": "s-08-composer",
+   "label": "Composer",
+   "caption": "Pick a code and its settings. The grid redraws at 80 and 40 px, and the status line reads it back in words."
+  }
+ ],
+ "sources": [
+  "“Democracy has a structure.” is the lockmark’s explanatory line, approved at Gate 1 (S5)."
+ ]
+}

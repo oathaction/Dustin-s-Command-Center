@@ -1,0 +1,2004 @@
+{
+ "about": "Every figure printed in chapters 05, 06 and 07 of stage board A, with the method that produced it. Contrast, OKLab and color-vision figures are computed from tokens.json; rendered figures come from Chromium through stage_a_systems_capture.js with the fonts the guide page loads.",
+ "built": "2026-11-06",
+ "tokens_json": "work/build/tokens/tokens.json",
+ "token_set_version": "6.0.0-gate2.1",
+ "figures": {
+  "Arial over Inter Tight width, percent": {
+   "value": "1.3",
+   "method": "rendered width of the heading at 32 px"
+  },
+  "Charcoal at 40 percent opacity on Newsprint, composited": {
+   "value": "#8B8985",
+   "method": "sRGB alpha compositing, as browsers paint it"
+  },
+  "OKLab lightness diverging step 1": {
+   "value": "0.311",
+   "method": "OKLab L of the token hex"
+  },
+  "OKLab lightness diverging step 2": {
+   "value": "0.667",
+   "method": "OKLab L of the token hex"
+  },
+  "OKLab lightness diverging step 3": {
+   "value": "0.847",
+   "method": "OKLab L of the token hex"
+  },
+  "OKLab lightness diverging step 4": {
+   "value": "0.733",
+   "method": "OKLab L of the token hex"
+  },
+  "OKLab lightness diverging step 5": {
+   "value": "0.457",
+   "method": "OKLab L of the token hex"
+  },
+  "Rule 05.3 matches tokens.json redRule.text": {
+   "value": "yes",
+   "method": "string comparison, straight apostrophes read as curly"
+  },
+  "body span desktop": {
+   "value": "7 of 12 columns, 540.7 px, 65.5 characters a line",
+   "method": "W07 paragraph at 17 px Inter, Chromium, full lines only"
+  },
+  "body span phone": {
+   "value": "4 of 4 columns, 350.0 px, 39.9 characters a line",
+   "method": "W07 paragraph at 17 px Inter, Chromium, full lines only"
+  },
+  "body span phoneSmall": {
+   "value": "4 of 4 columns, 328.0 px, 37.9 characters a line",
+   "method": "W07 paragraph at 17 px Inter, Chromium, full lines only"
+  },
+  "body span tablet": {
+   "value": "6 of 8 columns, 522.0 px, 64.5 characters a line",
+   "method": "W07 paragraph at 17 px Inter, Chromium, full lines only"
+  },
+  "body span wide": {
+   "value": "5 of 12 columns, 532.7 px, 65.5 characters a line",
+   "method": "W07 paragraph at 17 px Inter, Chromium, full lines only"
+  },
+  "chart rows": {
+   "value": "Health care and social assistance 3,798; Leisure and hospitality 1,640; Government 1,278; Construction 769; Manufacturing 88; Information −245",
+   "method": "payrolls-by-sector, row 2026-09-01, change_since_2022_01_thousands"
+  },
+  "column width desktop": {
+   "value": "56.67",
+   "method": "(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json"
+  },
+  "column width phone": {
+   "value": "75.50",
+   "method": "(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json"
+  },
+  "column width phoneSmall": {
+   "value": "70.00",
+   "method": "(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json"
+  },
+  "column width tablet": {
+   "value": "67.00",
+   "method": "(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json"
+  },
+  "column width wide": {
+   "value": "87.33",
+   "method": "(width − 2 × margin − (columns − 1) × gutter) ÷ columns, from tokens.json"
+  },
+  "contrast Charcoal at 40 percent opacity on Newsprint": {
+   "value": "2.48",
+   "fg": "#8B8985",
+   "bg": "#DCD9D2",
+   "exact": 2.4771,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Charcoal keyline on Newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Charcoal on Newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Charcoal on Prussian": {
+   "value": "1.41",
+   "fg": "#121212",
+   "bg": "#1F2D5A",
+   "exact": 1.4106,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Charcoal on White": {
+   "value": "18.73",
+   "fg": "#121212",
+   "bg": "#FFFFFF",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Newsprint on Charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Newsprint on Prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Newsprint on White": {
+   "value": "1.41",
+   "fg": "#DCD9D2",
+   "bg": "#FFFFFF",
+   "exact": 1.4095,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red against Verdigris": {
+   "value": "1.14",
+   "fg": "#E63946",
+   "bg": "#4A7C74",
+   "exact": 1.1382,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red on Charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red on Newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red on Prussian": {
+   "value": "3.19",
+   "fg": "#E63946",
+   "bg": "#1F2D5A",
+   "exact": 3.1863,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Pillar Red on White": {
+   "value": "4.17",
+   "fg": "#E63946",
+   "bg": "#FFFFFF",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Prussian on Charcoal": {
+   "value": "1.41",
+   "fg": "#1F2D5A",
+   "bg": "#121212",
+   "exact": 1.4106,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Prussian on Newsprint": {
+   "value": "9.42",
+   "fg": "#1F2D5A",
+   "bg": "#DCD9D2",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Prussian on White": {
+   "value": "13.28",
+   "fg": "#1F2D5A",
+   "bg": "#FFFFFF",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Stone context bars on Newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Stone on Charcoal": {
+   "value": "3.10",
+   "fg": "#5D636D",
+   "bg": "#121212",
+   "exact": 3.0964,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Stone on Newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Stone on Prussian": {
+   "value": "2.20",
+   "fg": "#5D636D",
+   "bg": "#1F2D5A",
+   "exact": 2.1951,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Stone on White": {
+   "value": "6.05",
+   "fg": "#5D636D",
+   "bg": "#FFFFFF",
+   "exact": 6.0501,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Verdigris on Charcoal": {
+   "value": "3.95",
+   "fg": "#4A7C74",
+   "bg": "#121212",
+   "exact": 3.9487,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Verdigris on Newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Verdigris on Prussian": {
+   "value": "2.80",
+   "fg": "#4A7C74",
+   "bg": "#1F2D5A",
+   "exact": 2.7993,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast Verdigris on White": {
+   "value": "4.74",
+   "fg": "#4A7C74",
+   "bg": "#FFFFFF",
+   "exact": 4.7442,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast White on Charcoal": {
+   "value": "18.73",
+   "fg": "#FFFFFF",
+   "bg": "#121212",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast White on Newsprint": {
+   "value": "1.41",
+   "fg": "#FFFFFF",
+   "bg": "#DCD9D2",
+   "exact": 1.4095,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast White on Prussian": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.context.onNewsprint on oa.color.palette.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.diverging.label.step1.onNewsprint on oa.chart.color.diverging.fill.step1.onNewsprint": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.diverging.label.step2.onNewsprint on oa.chart.color.diverging.fill.step2.onNewsprint": {
+   "value": "6.18",
+   "fg": "#121212",
+   "bg": "#8E94A4",
+   "exact": 6.1751,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.diverging.label.step3.onNewsprint on oa.chart.color.diverging.fill.step3.onNewsprint": {
+   "value": "11.76",
+   "fg": "#121212",
+   "bg": "#CECDC7",
+   "exact": 11.759,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.diverging.label.step4.onNewsprint on oa.chart.color.diverging.fill.step4.onNewsprint": {
+   "value": "8.01",
+   "fg": "#121212",
+   "bg": "#9AAEA6",
+   "exact": 8.01,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.diverging.label.step5.onNewsprint on oa.chart.color.diverging.fill.step5.onNewsprint": {
+   "value": "7.06",
+   "fg": "#FFFFFF",
+   "bg": "#3C5F59",
+   "exact": 7.0629,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.gridline.onNewsprint on oa.color.palette.newsprint": {
+   "value": "1.47",
+   "fg": "#B4B4B3",
+   "bg": "#DCD9D2",
+   "exact": 1.4722,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.point.onNewsprint on oa.color.palette.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.sequential.label.step1.onNewsprint on oa.chart.color.sequential.fill.step1.onNewsprint": {
+   "value": "10.96",
+   "fg": "#121212",
+   "bg": "#C1C8C0",
+   "exact": 10.964,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.sequential.label.step2.onNewsprint on oa.chart.color.sequential.fill.step2.onNewsprint": {
+   "value": "7.81",
+   "fg": "#121212",
+   "bg": "#97ACA4",
+   "exact": 7.8083,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.sequential.label.step3.onNewsprint on oa.chart.color.sequential.fill.step3.onNewsprint": {
+   "value": "5.41",
+   "fg": "#121212",
+   "bg": "#6D9189",
+   "exact": 5.4075,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.sequential.label.step4.onNewsprint on oa.chart.color.sequential.fill.step4.onNewsprint": {
+   "value": "5.20",
+   "fg": "#FFFFFF",
+   "bg": "#47756E",
+   "exact": 5.2011,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.sequential.label.step5.onNewsprint on oa.chart.color.sequential.fill.step5.onNewsprint": {
+   "value": "8.27",
+   "fg": "#FFFFFF",
+   "bg": "#36544F",
+   "exact": 8.2746,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.chart.color.subject.onNewsprint on oa.color.palette.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.action.ask.fill.onCharcoal on oa.color.surface.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.action.ask.fill.onNewsprint on oa.color.surface.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.action.ask.fill.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.action.ask.fill.onWhite on oa.color.surface.white": {
+   "value": "4.17",
+   "fg": "#E63946",
+   "bg": "#FFFFFF",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.hairline.onCharcoal on oa.color.surface.charcoal": {
+   "value": "3.10",
+   "fg": "#5D636D",
+   "bg": "#121212",
+   "exact": 3.0964,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.hairline.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.hairline.onPrussian on oa.color.surface.prussian": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.hairline.onWhite on oa.color.surface.white": {
+   "value": "6.05",
+   "fg": "#5D636D",
+   "bg": "#FFFFFF",
+   "exact": 6.0501,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.border.strong.onWhite on oa.color.surface.white": {
+   "value": "18.73",
+   "fg": "#121212",
+   "bg": "#FFFFFF",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.derived.deepStone on oa.color.derived.errorBand": {
+   "value": "4.91",
+   "fg": "#4E535B",
+   "bg": "#E1C9C1",
+   "exact": 4.9132,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.derived.deepStone on oa.color.palette.newsprint": {
+   "value": "5.49",
+   "fg": "#4E535B",
+   "bg": "#DCD9D2",
+   "exact": 5.4931,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.derived.deepStone on oa.color.palette.white": {
+   "value": "7.74",
+   "fg": "#4E535B",
+   "bg": "#FFFFFF",
+   "exact": 7.7425,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.derived.dimNewsprint on oa.color.palette.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.derived.dimNewsprint on oa.color.palette.prussian": {
+   "value": "5.14",
+   "fg": "#A3A19C",
+   "bg": "#1F2D5A",
+   "exact": 5.1449,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onNewsprint on oa.color.surface.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.focus.ring.onWhite on oa.color.surface.white": {
+   "value": "4.74",
+   "fg": "#4A7C74",
+   "bg": "#FFFFFF",
+   "exact": 4.7442,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.essential.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.essential.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.essential.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.essential.onWhite on oa.color.surface.white": {
+   "value": "18.73",
+   "fg": "#121212",
+   "bg": "#FFFFFF",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onNewsprint on oa.color.surface.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onPrussian on oa.color.surface.prussian": {
+   "value": "5.14",
+   "fg": "#A3A19C",
+   "bg": "#1F2D5A",
+   "exact": 5.1449,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.graphic.subtle.onWhite on oa.color.surface.white": {
+   "value": "6.05",
+   "fg": "#5D636D",
+   "bg": "#FFFFFF",
+   "exact": 6.0501,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.identity.signature.onCharcoal on oa.color.surface.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.identity.signature.onNewsprint on oa.color.surface.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.identity.signature.onPrussian on oa.color.surface.prussian": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.identity.signature.onWhite on oa.color.surface.white": {
+   "value": "4.17",
+   "fg": "#E63946",
+   "bg": "#FFFFFF",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.charcoal on oa.color.derived.errorBand": {
+   "value": "11.89",
+   "fg": "#121212",
+   "bg": "#E1C9C1",
+   "exact": 11.888,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.charcoal on oa.color.palette.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.charcoal on oa.color.palette.white": {
+   "value": "18.73",
+   "fg": "#121212",
+   "bg": "#FFFFFF",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.charcoal on oa.color.tint.prussianN62": {
+   "value": "6.18",
+   "fg": "#121212",
+   "bg": "#8E94A4",
+   "exact": 6.1751,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.charcoal on oa.color.tint.verdigrisN55": {
+   "value": "8.01",
+   "fg": "#121212",
+   "bg": "#9AAEA6",
+   "exact": 8.01,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.newsprint on oa.color.palette.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.newsprint on oa.color.palette.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.palette.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.palette.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.palette.prussian": {
+   "value": "3.19",
+   "fg": "#E63946",
+   "bg": "#1F2D5A",
+   "exact": 3.1863,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.palette.verdigris": {
+   "value": "1.14",
+   "fg": "#E63946",
+   "bg": "#4A7C74",
+   "exact": 1.1382,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.pillarRed on oa.color.palette.white": {
+   "value": "4.17",
+   "fg": "#E63946",
+   "bg": "#FFFFFF",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.stone on oa.color.palette.charcoal": {
+   "value": "3.10",
+   "fg": "#5D636D",
+   "bg": "#121212",
+   "exact": 3.0964,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.stone on oa.color.palette.newsprint": {
+   "value": "4.29",
+   "fg": "#5D636D",
+   "bg": "#DCD9D2",
+   "exact": 4.2924,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.verdigris on oa.color.palette.newsprint": {
+   "value": "3.37",
+   "fg": "#4A7C74",
+   "bg": "#DCD9D2",
+   "exact": 3.3659,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.white on oa.color.palette.pillarRed": {
+   "value": "4.17",
+   "fg": "#FFFFFF",
+   "bg": "#E63946",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.palette.white on oa.color.palette.prussian": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.primary.onCharcoal on oa.color.surface.charcoal": {
+   "value": "13.29",
+   "fg": "#DCD9D2",
+   "bg": "#121212",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.primary.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.primary.onPrussian on oa.color.surface.prussian": {
+   "value": "13.28",
+   "fg": "#FFFFFF",
+   "bg": "#1F2D5A",
+   "exact": 13.2806,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.primary.onWhite on oa.color.surface.white": {
+   "value": "18.73",
+   "fg": "#121212",
+   "bg": "#FFFFFF",
+   "exact": 18.7337,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onCharcoal on oa.color.surface.charcoal": {
+   "value": "7.26",
+   "fg": "#A3A19C",
+   "bg": "#121212",
+   "exact": 7.2573,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onNewsprint on oa.color.surface.newsprint": {
+   "value": "5.49",
+   "fg": "#4E535B",
+   "bg": "#DCD9D2",
+   "exact": 5.4931,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onPrussian on oa.color.surface.prussian": {
+   "value": "5.14",
+   "fg": "#A3A19C",
+   "bg": "#1F2D5A",
+   "exact": 5.1449,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.text.secondary.onWhite on oa.color.surface.white": {
+   "value": "7.74",
+   "fg": "#4E535B",
+   "bg": "#FFFFFF",
+   "exact": 7.7425,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.color.tint.stoneN70 on oa.color.palette.newsprint": {
+   "value": "1.47",
+   "fg": "#B4B4B3",
+   "bg": "#DCD9D2",
+   "exact": 1.4722,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.fill.onCharcoal on oa.color.surface.charcoal": {
+   "value": "4.49",
+   "fg": "#E63946",
+   "bg": "#121212",
+   "exact": 4.4946,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.fill.onNewsprint on oa.color.surface.newsprint": {
+   "value": "2.96",
+   "fg": "#E63946",
+   "bg": "#DCD9D2",
+   "exact": 2.9571,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.fill.onPrussian on oa.color.surface.prussian": {
+   "value": "9.42",
+   "fg": "#DCD9D2",
+   "bg": "#1F2D5A",
+   "exact": 9.4222,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.fill.onWhite on oa.color.surface.white": {
+   "value": "4.17",
+   "fg": "#E63946",
+   "bg": "#FFFFFF",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.keyline.onNewsprint on oa.color.surface.newsprint": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.label.onCharcoal on oa.component.button.ask.fill.onCharcoal": {
+   "value": "4.17",
+   "fg": "#FFFFFF",
+   "bg": "#E63946",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.label.onNewsprint on oa.component.button.ask.fill.onNewsprint": {
+   "value": "4.17",
+   "fg": "#FFFFFF",
+   "bg": "#E63946",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.label.onPrussian on oa.component.button.ask.fill.onPrussian": {
+   "value": "13.29",
+   "fg": "#121212",
+   "bg": "#DCD9D2",
+   "exact": 13.291,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "contrast oa.component.button.ask.label.onWhite on oa.component.button.ask.fill.onWhite": {
+   "value": "4.17",
+   "fg": "#FFFFFF",
+   "bg": "#E63946",
+   "exact": 4.1681,
+   "method": "WCAG 2.x relative luminance on the token hex values in tokens.json"
+  },
+  "count of chart tints": {
+   "value": "27",
+   "method": "keys of oa.color.tint in tokens.json"
+  },
+  "diverging B smallest neighbor distance, deuteranopia": {
+   "value": "0.117",
+   "method": "OKLab Euclidean distance between neighboring steps; Machado 2009 severity 1.0 in linear sRGB"
+  },
+  "diverging B smallest neighbor distance, normal": {
+   "value": "0.117",
+   "method": "OKLab Euclidean distance between neighboring steps; Machado 2009 severity 1.0 in linear sRGB"
+  },
+  "diverging B smallest neighbor distance, protanopia": {
+   "value": "0.106",
+   "method": "OKLab Euclidean distance between neighboring steps; Machado 2009 severity 1.0 in linear sRGB"
+  },
+  "diverging B smallest neighbor distance, tritanopia": {
+   "value": "0.119",
+   "method": "OKLab Euclidean distance between neighboring steps; Machado 2009 severity 1.0 in linear sRGB"
+  },
+  "fonts loaded in the render": {
+   "value": "{\"Inter Tight 800\": true, \"Inter 400\": true, \"Inter 600\": true, \"Inter 700\": true, \"Lora Italic 400\": true}",
+   "method": "document.fonts.check in Chromium"
+  },
+  "grayscale Pillar Red": {
+   "value": "#5F5F5F",
+   "method": "CSS grayscale(1): 0.2126 R + 0.7152 G + 0.0722 B on the encoded values"
+  },
+  "grayscale Verdigris": {
+   "value": "#717171",
+   "method": "CSS grayscale(1): 0.2126 R + 0.7152 G + 0.0722 B on the encoded values"
+  },
+  "hang of the opening mark, em": {
+   "value": "0.388",
+   "method": "width of “ in Lora Italic 400, rendered at 100 px"
+  },
+  "layout at 1024 px and 100 percent text": {
+   "value": "desktop",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 1024 px and 150 percent text": {
+   "value": "phone",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 1024 px and 200 percent text": {
+   "value": "phone",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 1440 px and 100 percent text": {
+   "value": "wide",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 1440 px and 150 percent text": {
+   "value": "tablet",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 1440 px and 200 percent text": {
+   "value": "phone",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 768 px and 100 percent text": {
+   "value": "tablet",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 768 px and 150 percent text": {
+   "value": "phone",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "layout at 768 px and 200 percent text": {
+   "value": "phone",
+   "method": "em media queries: 90em, 64em, 48em at 16 px × text percent"
+  },
+  "space h4 -2 px": {
+   "value": "4.02",
+   "method": "width(\"a b\") minus width(\"ab\") in Inter Tight 800 at 24 px, Chromium"
+  },
+  "space h4 -4.5 px": {
+   "value": "3.42",
+   "method": "width(\"a b\") minus width(\"ab\") in Inter Tight 800 at 24 px, Chromium"
+  },
+  "space h4 0 px": {
+   "value": "4.50",
+   "method": "width(\"a b\") minus width(\"ab\") in Inter Tight 800 at 24 px, Chromium"
+  },
+  "type scale ask": {
+   "value": "Inter 700 · 19 px (1.1875 rem) · line height 1.2 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "type scale body": {
+   "value": "Inter 400 · 17 px (1.0625 rem) · line height 1.6 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "type scale bodySmall": {
+   "value": "Inter 400 · 15 px (0.9375 rem) · line height 1.6 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "type scale caption": {
+   "value": "Inter 400 · 14 px (0.875 rem) · line height 1.5 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "type scale dataLabel": {
+   "value": "Inter 600 · 13 px (0.8125 rem) · line height 1.3 · tracking 0 · tabular figures",
+   "method": "tokens.json oa.type"
+  },
+  "type scale figure": {
+   "value": "Inter Tight 800 · 48 to 104 px (3 to 6.5 rem) · line height 1 · tracking −4% · tabular figures",
+   "method": "tokens.json oa.type"
+  },
+  "type scale h3": {
+   "value": "Inter Tight 800 · 26 to 32 px (1.625 to 2 rem) · line height 1.08 · tracking −3%",
+   "method": "tokens.json oa.type"
+  },
+  "type scale h4": {
+   "value": "Inter Tight 800 · 20 to 24 px (1.25 to 1.5 rem) · line height 1.15 · tracking −2%",
+   "method": "tokens.json oa.type"
+  },
+  "type scale intro": {
+   "value": "Inter 400 · 19 to 22 px (1.1875 to 1.375 rem) · line height 1.5 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "type scale label": {
+   "value": "Inter 700 · 13 px (0.8125 rem) · line height 1.4 · tracking +6% · capitals",
+   "method": "tokens.json oa.type"
+  },
+  "type scale quote": {
+   "value": "Lora Italic 400 · 24 to 32 px (1.5 to 2 rem) · line height 1.3 · tracking −2%",
+   "method": "tokens.json oa.type"
+  },
+  "type scale section": {
+   "value": "Inter Tight 800 · 44 to 80 px (2.75 to 5 rem) · line height 1.03 · tracking −4%",
+   "method": "tokens.json oa.type"
+  },
+  "type scale title": {
+   "value": "Inter Tight 800 · 56 to 110 px (3.5 to 6.875 rem) · line height 0.95 · tracking −4.5%",
+   "method": "tokens.json oa.type"
+  },
+  "type scale ui": {
+   "value": "Inter 600 · 15 px (0.9375 rem) · line height 1.4 · tracking 0",
+   "method": "tokens.json oa.type"
+  },
+  "word space cut at -4.5 percent, percent": {
+   "value": "24",
+   "method": "from the two space widths"
+  }
+ },
+ "rendered": {
+  "cpl 200 percent in five columns": {
+   "lines": 11,
+   "full_lines": 10,
+   "counts": [
+    28,
+    26,
+    27,
+    29,
+    27,
+    28,
+    33,
+    29,
+    29,
+    28
+   ],
+   "mean": 28.4,
+   "min": 26,
+   "max": 33,
+   "chars": 312,
+   "width_px": 532.66,
+   "font_size_px": 34
+  },
+  "cpl body ideal": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    66,
+    66,
+    63,
+    67
+   ],
+   "mean": 65.5,
+   "min": 63,
+   "max": 67,
+   "chars": 312,
+   "width_px": 542.08,
+   "font_size_px": 17
+  },
+  "cpl body max": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    73,
+    76,
+    73,
+    75
+   ],
+   "mean": 74.25,
+   "min": 73,
+   "max": 76,
+   "chars": 312,
+   "width_px": 597.91,
+   "font_size_px": 17
+  },
+  "cpl intro max": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    63,
+    66,
+    66,
+    63
+   ],
+   "mean": 64.5,
+   "min": 63,
+   "max": 66,
+   "chars": 312,
+   "width_px": 670.55,
+   "font_size_px": 22
+  },
+  "cpl long sample ideal": {
+   "lines": 109,
+   "full_lines": 108,
+   "counts": [
+    60,
+    62,
+    66,
+    65,
+    59,
+    67,
+    65,
+    66,
+    67,
+    68,
+    60,
+    65,
+    66,
+    63,
+    70,
+    63,
+    61,
+    62,
+    63,
+    59,
+    62,
+    65,
+    63,
+    62,
+    65,
+    62,
+    62,
+    68,
+    67,
+    64,
+    60,
+    64,
+    60,
+    58,
+    60,
+    65,
+    68,
+    59,
+    66,
+    61,
+    61,
+    65,
+    65,
+    67,
+    60,
+    64,
+    71,
+    67,
+    69,
+    68,
+    68,
+    64,
+    67,
+    68,
+    66,
+    69,
+    62,
+    64,
+    65,
+    68,
+    53,
+    63,
+    66,
+    64,
+    72,
+    66,
+    63,
+    69,
+    68,
+    60,
+    56,
+    61,
+    62,
+    59,
+    65,
+    64,
+    67,
+    63,
+    68,
+    62,
+    66,
+    59,
+    67,
+    62,
+    62,
+    64,
+    69,
+    68,
+    66,
+    67,
+    67,
+    65,
+    61,
+    58,
+    67,
+    65,
+    58,
+    67,
+    61,
+    62,
+    65,
+    67,
+    65,
+    60,
+    64,
+    60,
+    68,
+    71
+   ],
+   "mean": 64.15,
+   "min": 53,
+   "max": 72,
+   "chars": 7041,
+   "width_px": 542.08,
+   "font_size_px": 17
+  },
+  "cpl long sample max": {
+   "lines": 98,
+   "full_lines": 97,
+   "counts": [
+    69,
+    69,
+    74,
+    70,
+    72,
+    68,
+    70,
+    69,
+    69,
+    76,
+    73,
+    74,
+    63,
+    75,
+    72,
+    71,
+    74,
+    71,
+    71,
+    69,
+    70,
+    76,
+    74,
+    61,
+    70,
+    72,
+    67,
+    66,
+    73,
+    65,
+    69,
+    69,
+    71,
+    71,
+    69,
+    74,
+    67,
+    71,
+    75,
+    73,
+    68,
+    75,
+    73,
+    68,
+    76,
+    69,
+    68,
+    75,
+    73,
+    77,
+    71,
+    71,
+    72,
+    73,
+    66,
+    74,
+    73,
+    70,
+    76,
+    71,
+    72,
+    71,
+    72,
+    68,
+    65,
+    73,
+    73,
+    66,
+    71,
+    74,
+    73,
+    73,
+    68,
+    67,
+    71,
+    71,
+    72,
+    70,
+    79,
+    76,
+    73,
+    70,
+    68,
+    65,
+    69,
+    73,
+    69,
+    73,
+    69,
+    72,
+    70,
+    71,
+    75,
+    66,
+    70,
+    71,
+    77
+   ],
+   "mean": 71,
+   "min": 61,
+   "max": 79,
+   "chars": 7041,
+   "width_px": 597.91,
+   "font_size_px": 17
+  },
+  "cpl span desktop 10": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    94,
+    97,
+    97
+   ],
+   "mean": 96,
+   "min": 94,
+   "max": 97,
+   "chars": 312,
+   "width_px": 782.66,
+   "font_size_px": 17
+  },
+  "cpl span desktop 11": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    109,
+    103
+   ],
+   "mean": 106,
+   "min": 103,
+   "max": 109,
+   "chars": 312,
+   "width_px": 863.33,
+   "font_size_px": 17
+  },
+  "cpl span desktop 12": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    113,
+    115
+   ],
+   "mean": 114,
+   "min": 113,
+   "max": 115,
+   "chars": 312,
+   "width_px": 944,
+   "font_size_px": 17
+  },
+  "cpl span desktop 3": {
+   "lines": 13,
+   "full_lines": 12,
+   "counts": [
+    25,
+    18,
+    23,
+    25,
+    26,
+    28,
+    27,
+    25,
+    24,
+    24,
+    21,
+    23
+   ],
+   "mean": 24.08,
+   "min": 18,
+   "max": 28,
+   "chars": 312,
+   "width_px": 218,
+   "font_size_px": 17
+  },
+  "cpl span desktop 4": {
+   "lines": 9,
+   "full_lines": 8,
+   "counts": [
+    34,
+    33,
+    30,
+    38,
+    31,
+    33,
+    35,
+    35
+   ],
+   "mean": 33.63,
+   "min": 30,
+   "max": 38,
+   "chars": 312,
+   "width_px": 298.66,
+   "font_size_px": 17
+  },
+  "cpl span desktop 5": {
+   "lines": 7,
+   "full_lines": 6,
+   "counts": [
+    44,
+    46,
+    49,
+    48,
+    43,
+    50
+   ],
+   "mean": 46.67,
+   "min": 43,
+   "max": 50,
+   "chars": 312,
+   "width_px": 379.33,
+   "font_size_px": 17
+  },
+  "cpl span desktop 6": {
+   "lines": 6,
+   "full_lines": 5,
+   "counts": [
+    55,
+    57,
+    56,
+    53,
+    60
+   ],
+   "mean": 56.2,
+   "min": 53,
+   "max": 60,
+   "chars": 312,
+   "width_px": 460,
+   "font_size_px": 17
+  },
+  "cpl span desktop 7": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    66,
+    66,
+    63,
+    67
+   ],
+   "mean": 65.5,
+   "min": 63,
+   "max": 67,
+   "chars": 312,
+   "width_px": 540.66,
+   "font_size_px": 17
+  },
+  "cpl span desktop 8": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    73,
+    79,
+    75,
+    70
+   ],
+   "mean": 74.25,
+   "min": 70,
+   "max": 79,
+   "chars": 312,
+   "width_px": 621.33,
+   "font_size_px": 17
+  },
+  "cpl span desktop 9": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    83,
+    86,
+    89
+   ],
+   "mean": 86,
+   "min": 83,
+   "max": 89,
+   "chars": 312,
+   "width_px": 702,
+   "font_size_px": 17
+  },
+  "cpl span phone 4": {
+   "lines": 8,
+   "full_lines": 7,
+   "counts": [
+    38,
+    41,
+    40,
+    43,
+    38,
+    39,
+    40
+   ],
+   "mean": 39.86,
+   "min": 38,
+   "max": 43,
+   "chars": 312,
+   "width_px": 350,
+   "font_size_px": 17
+  },
+  "cpl span phoneSmall 4": {
+   "lines": 8,
+   "full_lines": 7,
+   "counts": [
+    38,
+    34,
+    39,
+    39,
+    38,
+    36,
+    41
+   ],
+   "mean": 37.86,
+   "min": 34,
+   "max": 41,
+   "chars": 312,
+   "width_px": 328,
+   "font_size_px": 17
+  },
+  "cpl span tablet 3": {
+   "lines": 11,
+   "full_lines": 10,
+   "counts": [
+    28,
+    26,
+    27,
+    29,
+    27,
+    28,
+    26,
+    27,
+    29,
+    30
+   ],
+   "mean": 27.7,
+   "min": 26,
+   "max": 30,
+   "chars": 312,
+   "width_px": 249,
+   "font_size_px": 17
+  },
+  "cpl span tablet 4": {
+   "lines": 8,
+   "full_lines": 7,
+   "counts": [
+    38,
+    34,
+    39,
+    43,
+    39,
+    37,
+    41
+   ],
+   "mean": 38.71,
+   "min": 34,
+   "max": 43,
+   "chars": 312,
+   "width_px": 340,
+   "font_size_px": 17
+  },
+  "cpl span tablet 5": {
+   "lines": 6,
+   "full_lines": 5,
+   "counts": [
+    44,
+    49,
+    55,
+    53,
+    55
+   ],
+   "mean": 51.2,
+   "min": 44,
+   "max": 55,
+   "chars": 312,
+   "width_px": 431,
+   "font_size_px": 17
+  },
+  "cpl span tablet 6": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    63,
+    66,
+    66,
+    63
+   ],
+   "mean": 64.5,
+   "min": 63,
+   "max": 66,
+   "chars": 312,
+   "width_px": 522,
+   "font_size_px": 17
+  },
+  "cpl span tablet 7": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    73,
+    79,
+    75,
+    70
+   ],
+   "mean": 74.25,
+   "min": 70,
+   "max": 79,
+   "chars": 312,
+   "width_px": 613,
+   "font_size_px": 17
+  },
+  "cpl span tablet 8": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    83,
+    86,
+    89
+   ],
+   "mean": 86,
+   "min": 83,
+   "max": 89,
+   "chars": 312,
+   "width_px": 704,
+   "font_size_px": 17
+  },
+  "cpl span wide 10": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    138,
+    137
+   ],
+   "mean": 137.5,
+   "min": 137,
+   "max": 138,
+   "chars": 312,
+   "width_px": 1089.33,
+   "font_size_px": 17
+  },
+  "cpl span wide 11": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    153,
+    146
+   ],
+   "mean": 149.5,
+   "min": 146,
+   "max": 153,
+   "chars": 312,
+   "width_px": 1200.66,
+   "font_size_px": 17
+  },
+  "cpl span wide 12": {
+   "lines": 2,
+   "full_lines": 1,
+   "counts": [
+    165
+   ],
+   "mean": 165,
+   "min": 165,
+   "max": 165,
+   "chars": 312,
+   "width_px": 1312,
+   "font_size_px": 17
+  },
+  "cpl span wide 3": {
+   "lines": 9,
+   "full_lines": 8,
+   "counts": [
+    38,
+    34,
+    39,
+    39,
+    38,
+    36,
+    34,
+    35
+   ],
+   "mean": 36.63,
+   "min": 34,
+   "max": 39,
+   "chars": 312,
+   "width_px": 310,
+   "font_size_px": 17
+  },
+  "cpl span wide 4": {
+   "lines": 7,
+   "full_lines": 6,
+   "counts": [
+    44,
+    49,
+    55,
+    53,
+    49,
+    45
+   ],
+   "mean": 49.17,
+   "min": 44,
+   "max": 55,
+   "chars": 312,
+   "width_px": 421.33,
+   "font_size_px": 17
+  },
+  "cpl span wide 5": {
+   "lines": 5,
+   "full_lines": 4,
+   "counts": [
+    63,
+    69,
+    63,
+    67
+   ],
+   "mean": 65.5,
+   "min": 63,
+   "max": 69,
+   "chars": 312,
+   "width_px": 532.66,
+   "font_size_px": 17
+  },
+  "cpl span wide 6": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    73,
+    83,
+    76
+   ],
+   "mean": 77.33,
+   "min": 73,
+   "max": 83,
+   "chars": 312,
+   "width_px": 644,
+   "font_size_px": 17
+  },
+  "cpl span wide 7": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    94,
+    97,
+    92
+   ],
+   "mean": 94.33,
+   "min": 92,
+   "max": 97,
+   "chars": 312,
+   "width_px": 755.33,
+   "font_size_px": 17
+  },
+  "cpl span wide 8": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    109,
+    103
+   ],
+   "mean": 106,
+   "min": 103,
+   "max": 109,
+   "chars": 312,
+   "width_px": 866.66,
+   "font_size_px": 17
+  },
+  "cpl span wide 9": {
+   "lines": 3,
+   "full_lines": 2,
+   "counts": [
+    121,
+    122
+   ],
+   "mean": 121.5,
+   "min": 121,
+   "max": 122,
+   "chars": 312,
+   "width_px": 978,
+   "font_size_px": 17
+  },
+  "cpl v5 intro 65ch": {
+   "lines": 4,
+   "full_lines": 3,
+   "counts": [
+    83,
+    86,
+    89
+   ],
+   "mean": 86,
+   "min": 83,
+   "max": 89,
+   "chars": 312,
+   "width_px": 902.13,
+   "font_size_px": 22
+  },
+  "font check": {
+   "Inter Tight 800": true,
+   "Inter 400": true,
+   "Inter 600": true,
+   "Inter 700": true,
+   "Lora Italic 400": true
+  },
+  "share s-05-1-correct": {
+   "size": [
+    360,
+    832
+   ],
+   "pixels": 299520,
+   "shares": {
+    "newsprint": 76.74,
+    "charcoal": 3.63,
+    "pillarRed": 2.89,
+    "prussian": 13.26,
+    "stone": 2.79,
+    "verdigris": 0.0,
+    "white": 0.69
+   }
+  },
+  "share s-05-1-failure": {
+   "size": [
+    360,
+    800
+   ],
+   "pixels": 288000,
+   "shares": {
+    "newsprint": 9.21,
+    "charcoal": 56.53,
+    "pillarRed": 0.04,
+    "prussian": 30.59,
+    "stone": 3.03,
+    "verdigris": 0.0,
+    "white": 0.61
+   }
+  },
+  "shot s-05-1-correct": {
+   "file": "phone-s-05-1-correct.png"
+  },
+  "shot s-05-1-failure": {
+   "file": "phone-s-05-1-failure.png"
+  },
+  "space h4 -2": {
+   "width": 4.016,
+   "font_size_px": 24
+  },
+  "space h4 -4.5": {
+   "width": 3.422,
+   "font_size_px": 24
+  },
+  "space h4 0": {
+   "width": 4.5,
+   "font_size_px": 24
+  },
+  "width head arial": {
+   "width": 485.05,
+   "font_size_px": 32,
+   "font_family": "Arial, sans-serif"
+  },
+  "width head inter tight": {
+   "width": 478.73,
+   "font_size_px": 32,
+   "font_family": "\"Inter Tight\", Arial, sans-serif"
+  },
+  "width open quote lora em": {
+   "width": 38.81,
+   "font_size_px": 100,
+   "font_family": "Lora, Georgia, serif"
+  },
+  "width v5 intro 65ch": {
+   "width": 902.13,
+   "font_size_px": 22,
+   "font_family": "Inter, Arial, sans-serif"
+  }
+ },
+ "render_environment": {
+  "browser": "chromium 153.0.8010.12",
+  "viewport": "1440x900",
+  "deviceScaleFactor": 1,
+  "fonts": "Google Fonts css2: Inter 400 500 600 700, Inter Tight 800, Lora italic 400 500",
+  "date": "2026-11-06T20:03:07.923Z"
+ },
+ "tokens_cited": [
+  "oa.chart.color.baseline.onNewsprint",
+  "oa.chart.color.context.onNewsprint",
+  "oa.chart.color.diverging.fill.step1.onNewsprint",
+  "oa.chart.color.diverging.fill.step2.onNewsprint",
+  "oa.chart.color.diverging.fill.step3.onNewsprint",
+  "oa.chart.color.diverging.fill.step4.onNewsprint",
+  "oa.chart.color.diverging.fill.step5.onNewsprint",
+  "oa.chart.color.diverging.label.step1.onNewsprint",
+  "oa.chart.color.diverging.label.step2.onNewsprint",
+  "oa.chart.color.diverging.label.step3.onNewsprint",
+  "oa.chart.color.diverging.label.step4.onNewsprint",
+  "oa.chart.color.diverging.label.step5.onNewsprint",
+  "oa.chart.color.gridline.onNewsprint",
+  "oa.chart.color.point.onNewsprint",
+  "oa.chart.color.pointKeyline.onNewsprint",
+  "oa.chart.color.sequential.fill.step1.onNewsprint",
+  "oa.chart.color.sequential.fill.step2.onNewsprint",
+  "oa.chart.color.sequential.fill.step3.onNewsprint",
+  "oa.chart.color.sequential.fill.step4.onNewsprint",
+  "oa.chart.color.sequential.fill.step5.onNewsprint",
+  "oa.chart.color.sequential.label.step1.onNewsprint",
+  "oa.chart.color.sequential.label.step2.onNewsprint",
+  "oa.chart.color.sequential.label.step3.onNewsprint",
+  "oa.chart.color.sequential.label.step4.onNewsprint",
+  "oa.chart.color.sequential.label.step5.onNewsprint",
+  "oa.chart.color.subject.onNewsprint",
+  "oa.color.action.ask.fill.onCharcoal",
+  "oa.color.action.ask.fill.onNewsprint",
+  "oa.color.action.ask.fill.onPrussian",
+  "oa.color.action.ask.fill.onWhite",
+  "oa.color.action.primary.fill.onNewsprint",
+  "oa.color.action.primary.fillHover.onNewsprint",
+  "oa.color.action.primary.label.onNewsprint",
+  "oa.color.border.hairline.onCharcoal",
+  "oa.color.border.hairline.onNewsprint",
+  "oa.color.border.hairline.onPrussian",
+  "oa.color.border.hairline.onWhite",
+  "oa.color.border.strong.onCharcoal",
+  "oa.color.border.strong.onNewsprint",
+  "oa.color.border.strong.onPrussian",
+  "oa.color.border.strong.onWhite",
+  "oa.color.derived.deepStone",
+  "oa.color.derived.dimNewsprint",
+  "oa.color.derived.errorBand",
+  "oa.color.focus.ring.onCharcoal",
+  "oa.color.focus.ring.onNewsprint",
+  "oa.color.focus.ring.onPrussian",
+  "oa.color.focus.ring.onWhite",
+  "oa.color.graphic.essential.onCharcoal",
+  "oa.color.graphic.essential.onNewsprint",
+  "oa.color.graphic.essential.onPrussian",
+  "oa.color.graphic.essential.onWhite",
+  "oa.color.graphic.subtle.onCharcoal",
+  "oa.color.graphic.subtle.onNewsprint",
+  "oa.color.graphic.subtle.onPrussian",
+  "oa.color.graphic.subtle.onWhite",
+  "oa.color.identity.hingeDivider.onCharcoal",
+  "oa.color.identity.hingeDivider.onNewsprint",
+  "oa.color.identity.signature.onCharcoal",
+  "oa.color.identity.signature.onNewsprint",
+  "oa.color.identity.signature.onPrussian",
+  "oa.color.identity.signature.onWhite",
+  "oa.color.palette.charcoal",
+  "oa.color.palette.newsprint",
+  "oa.color.palette.pillarRed",
+  "oa.color.palette.prussian",
+  "oa.color.palette.stone",
+  "oa.color.palette.verdigris",
+  "oa.color.palette.white",
+  "oa.color.state.disabled.edge.onNewsprint",
+  "oa.color.state.disabled.text.onNewsprint",
+  "oa.color.state.empty.edge.onNewsprint",
+  "oa.color.state.empty.text.onNewsprint",
+  "oa.color.state.error.band.onNewsprint",
+  "oa.color.state.error.mark.onNewsprint",
+  "oa.color.state.error.text.onNewsprint",
+  "oa.color.state.loading.mark.onNewsprint",
+  "oa.color.state.loading.text.onNewsprint",
+  "oa.color.state.muted.mark.onNewsprint",
+  "oa.color.state.muted.text.onNewsprint",
+  "oa.color.state.selected.band.onNewsprint",
+  "oa.color.state.selected.bar.onNewsprint",
+  "oa.color.state.success.mark.onNewsprint",
+  "oa.color.state.success.text.onNewsprint",
+  "oa.color.state.warning.mark.onNewsprint",
+  "oa.color.state.warning.text.onNewsprint",
+  "oa.color.surface.charcoal",
+  "oa.color.surface.newsprint",
+  "oa.color.surface.prussian",
+  "oa.color.surface.white",
+  "oa.color.text.primary.onCharcoal",
+  "oa.color.text.primary.onNewsprint",
+  "oa.color.text.primary.onPrussian",
+  "oa.color.text.primary.onWhite",
+  "oa.color.text.secondary.onCharcoal",
+  "oa.color.text.secondary.onNewsprint",
+  "oa.color.text.secondary.onPrussian",
+  "oa.color.text.secondary.onWhite",
+  "oa.color.tint.prussianN62",
+  "oa.color.tint.stoneN70",
+  "oa.color.tint.verdigrisN52p75",
+  "oa.color.tint.verdigrisN55",
+  "oa.color.tint.verdigrisN82",
+  "oa.component.button.ask.fill.onCharcoal",
+  "oa.component.button.ask.fill.onNewsprint",
+  "oa.component.button.ask.fill.onPrussian",
+  "oa.component.button.ask.fill.onWhite",
+  "oa.component.button.ask.keyline.onNewsprint",
+  "oa.component.button.ask.label.onCharcoal",
+  "oa.component.button.ask.label.onNewsprint",
+  "oa.component.button.ask.label.onPrussian",
+  "oa.component.button.ask.label.onWhite",
+  "oa.component.button.primary.fill.onNewsprint",
+  "oa.component.button.primary.label.onNewsprint",
+  "oa.space.050",
+  "oa.space.100",
+  "oa.space.1000",
+  "oa.space.1300",
+  "oa.space.150",
+  "oa.space.200",
+  "oa.space.300",
+  "oa.space.400",
+  "oa.space.500",
+  "oa.space.600",
+  "oa.space.800",
+  "oa.type.ask",
+  "oa.type.body",
+  "oa.type.bodySmall",
+  "oa.type.caption",
+  "oa.type.dataLabel",
+  "oa.type.figure",
+  "oa.type.h3",
+  "oa.type.h4",
+  "oa.type.intro",
+  "oa.type.label",
+  "oa.type.quote",
+  "oa.type.section",
+  "oa.type.title",
+  "oa.type.ui"
+ ]
+}

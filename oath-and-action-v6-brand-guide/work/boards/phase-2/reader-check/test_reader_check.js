@@ -169,6 +169,10 @@ async function walk(browser, { mode, width, scale, captures, reduce, label }) {
         await page.waitForTimeout(200);
         res.copyStatus = await page.evaluate(() => (document.querySelector('.status') || {}).textContent || '');
         if (!/Copied|couldn’t copy/.test(res.copyStatus)) fail('end: copy gave no status');
+        // one tap on "Start a new test" must not clear unsent answers
+        await page.click('text=Start a new test on this device');
+        const kept = await page.evaluate(() => ({ copy: !!document.querySelector('#copy-text'), label: [...document.querySelectorAll('main button')].map((b) => b.textContent).join(' | ') }));
+        if (!kept.copy || !/Tap again/.test(kept.label)) fail('end: one tap on start-again cleared the answers or gave no warning');
       }
       break;
     }

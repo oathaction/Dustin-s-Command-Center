@@ -37,12 +37,12 @@ def hinge_amp(font_px, surface="newsprint", red=True, job="the one point the hea
     return svg
 
 
-def headline(text_a, text_b, font_px, surface="newsprint", red=True, extra_style=""):
+def headline(text_a, text_b, font_px, surface="newsprint", red=True, extra_style="", br=False):
     """A hinge headline: two noun phrases joined by B, set in Inter Tight 800."""
     a = hinge_amp(font_px, surface, red)
     b = E(text_b).replace(" ", "&nbsp;")
     return (f'<p class="oai-disp" style="font-size:{font_px}px;line-height:1.08;letter-spacing:-.035em;text-wrap:balance;{extra_style}">'
-            f'{E(text_a)} <span style="white-space:nowrap"><span role="img" aria-label="and" style="display:inline-block">{a}</span>&nbsp;{b}</span></p>')
+            f'{E(text_a)}{"<br>" if br else " "}<span style="white-space:nowrap"><span role="img" aria-label="and" style="display:inline-block">{a}</span>&nbsp;{b}</span></p>')
 
 
 def divider(surface="newsprint", width=None, red=False):
@@ -52,7 +52,7 @@ def divider(surface="newsprint", width=None, red=False):
         b = f'<span class="oai-red" data-red="working" data-red-job="divider" data-failure="true" style="line-height:0">{svg_file(ID_DIR / AMP[24], h=24, decorative=True, style="color:" + tv("color-palette-pillar-red"))}</span>'
     else:
         b = svg_file(ID_DIR / AMP[24], h=24, decorative=True, style=f"color:{tv('color-identity-hinge-divider-on-' + surface)}")
-    line = f'<span aria-hidden="true" style="flex:1;height:1px;background:{hair(surface)}"></span>'
+    line = f'<span aria-hidden="true" style="flex:1;height:1px;background:{tv("color-identity-hinge-divider-on-" + surface) if not red else hair(surface)}"></span>'
     w = f"width:{width}px;" if width else ""
     return (f'<div role="separator" aria-label="Hinge divider" style="display:flex;align-items:center;gap:12px;{w}margin:24px 0">'
             f'{line}{b}{line}</div>')
@@ -89,7 +89,7 @@ def s_04_1_correct():
             + '</div></div>')
     alt = ("Ampersand B in Pillar Red at true size: the display master 160 pixels tall, then at 48, 24 and 16 pixels, and the "
            "16 pixel master enlarged four times over its pixel grid, with its two open counters.")
-    return rec("s-04-1-correct", "04.1", 720, alt, body, notes="The enlarged cell is labeled as enlarged; every other drawing is at true size.")
+    return rec("s-04-1-correct", "04.1", 700, alt, body, notes="The enlarged cell is labeled as enlarged; every other drawing is at true size.")
 
 
 @spec
@@ -113,7 +113,7 @@ def _card(extra_crop=False, extra_free=False):
         free = f'<span style="margin-left:12px">{mark(AMP[16], h=16, decorative=True)}</span>'
     return (f'<div class="oai-s-newsprint" style="position:relative;overflow:hidden;width:{W}px;height:{H}px;padding:28px 32px;'
             f'border:1px solid {hair("newsprint")}">'
-            f'{headline("The zoning code", "the rent.", 36)}'
+            f'{headline("The zoning code", "the rent.", 36, br=True)}'
             f'<p style="margin-top:12px;font-size:16px;max-width:30ch">Who decides what can be built near you, and when they vote next.</p>'
             f'<div style="position:absolute;left:32px;bottom:24px;display:flex;align-items:center">{wordmark(16, label="Oath & Action")}{free}</div>'
             f'{crop}</div>')
@@ -145,7 +145,7 @@ def s_04_3_correct():
             + headline("The hearing", "the vote.", 24)
             + '<p class="oai-tag">Display, 64 px · Section, 40 px · Caption, 24 px</p></div></div>')
     alt = "Three hinge headlines at true size in heavy type, each joining two noun phrases with a red ampersand B: The rule & the result. at 64 pixels, The budget & the bill. at 40, The hearing & the vote. at 24."
-    return rec("s-04-3-correct", "04.3", 720, alt, body,
+    return rec("s-04-3-correct", "04.3", 700, alt, body,
                notes="V5's three hinge headlines, with B drawn from the master whose range holds each cap height (24 px master at 64 and 40 px type; 16 px master at 24 px).")
 
 
@@ -238,11 +238,11 @@ def s_04_6_correct():
            f'<p style="margin-top:12px">{illus()}</p></div>')
     card = (f'<div class="oai-s-charcoal" style="width:384px;height:576px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">'
             f'{mark(BADGE["display"], h=96, surface="charcoal", label="Hinge-circle badge, 96 px, on the back of an event card")}</div>')
-    body = (f'<div class="oai-row top">{end}<div class="oai-cell">{scroll(card, "Event card back, 4 by 6 inches at true size")}'
+    body = (f'<div class="oai-stack" style="gap:32px">{end}<div class="oai-cell">{scroll(card, "Event card back, 4 by 6 inches at true size")}'
             f'<span class="oai-tag">Back of a 4 by 6 in event card, true size</span></div></div>')
     alt = ("The badge, a red ampersand B inside a thin ring, at true size: at 16 pixels as the end mark after an article's last "
            "sentence, and at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. Illustrative article text.")
-    return rec("s-04-6-correct", "04.6", 960, alt, body, illustrative=True)
+    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True)
 
 
 @spec
@@ -299,7 +299,7 @@ def s_04_7_correct():
     alt = ("Avatars and app icons at true size: ampersand B in red on a Charcoal circle at 180, 64 and 32 pixels and on a "
            "Charcoal rounded square at 180 and 64; then a Newsprint circle with a thin Charcoal keyline, a Prussian circle with "
            "a White ampersand, a one-color circle, and the 16 pixel ampersand as a favicon on a light and a dark browser tab.")
-    return rec("s-04-7-correct", "04.7", 900, alt, body,
+    return rec("s-04-7-correct", "04.7", 700, alt, body,
                notes="B at 58 percent of the tile (V5's container proportion). The rounded square's corner is a placeholder radius; iOS and Android cut their own mask from a full-bleed square upload.")
 
 
@@ -309,7 +309,7 @@ def s_04_7_failure():
             f'{_tile(48, surface="newsprint")}<div><p style="font-weight:700">Oath &amp; Action</p><p style="font-size:14px;color:{ink2("white")}">Posted a link</p></div></div>')
     body = f'<div role="img" aria-label="Failure case: a Newsprint avatar with no keyline on a white feed">{scroll(feed, "Failure case")}</div>'
     alt = "Failure case: a Newsprint circle avatar with no keyline in a white feed. The circle's edge measures 1.41 to 1 against the page and fades, so the ampersand floats without its tile."
-    return rec("s-04-7-failure", "04.7", 430, alt, body)
+    return rec("s-04-7-failure", "04.7", 440, alt, body)
 
 
 # ------------------------------------------------------------------------------------------- 04.8

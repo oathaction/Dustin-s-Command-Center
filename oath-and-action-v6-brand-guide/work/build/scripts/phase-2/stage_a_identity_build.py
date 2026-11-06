@@ -23,9 +23,20 @@ import stage_a_identity_proofs as SP  # noqa: E402
 import stage_a_identity_chapters as CH  # noqa: E402
 
 
+# manifest fields the shell reads beyond the brief's (Guide Shell Notes section 5)
+EXTRA = {
+    "s-03-1-failure": {"check_exempt": ["contrast"]},  # the typed name's red ampersand, 2.96:1, is the failure shown
+    "s-03-7-failure": {"check_exempt": ["contrast"]},
+    "s-04-3-failure": {"check_exempt": ["red"]},      # the failure is two working reds in one view
+    "s-04-4-failure": {"check_exempt": ["red"]},
+    "s-08-composer": {"interactive": True},
+}
+
+
 def build(preview_dir=None, pdf=False):
     L.SPEC_DIR.mkdir(parents=True, exist_ok=True)
     L.CHAP_DIR.mkdir(parents=True, exist_ok=True)
+    SP.write_letterhead(pdf=pdf)          # first, so the letterhead specimen can carry the PDF
     records = []
     for mod in (S03, S04, S08, SP):
         for fn in mod.S:
@@ -36,7 +47,11 @@ def build(preview_dir=None, pdf=False):
     manifest = {}
     for r in records:
         (L.SPEC_DIR / f'{r["id"]}.html').write_text(r["html"])
-        manifest[r["id"]] = {k: r[k] for k in ("chapter", "rule", "width_px", "alt", "illustrative", "notes")}
+        m = {k: r[k] for k in ("chapter", "rule", "width_px", "alt", "illustrative", "notes")}
+        m.update({k: v for k, v in EXTRA.get(r["id"], {}).items()})
+        if r.get("interactive"):
+            m["interactive"] = True
+        manifest[r["id"]] = m
     (L.SPEC_DIR / "manifest-identity.json").write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n")
     for ch in CH.CHAPTERS:
         f = L.CHAP_DIR / f'{ch["number"]}-{ch["anchor"]}.json'
@@ -44,7 +59,7 @@ def build(preview_dir=None, pdf=False):
         used = CH.specimens_used(ch)
         missing = [u for u in used if u not in manifest]
         assert not missing, f"{f.name} names specimens that do not exist: {missing}"
-    SP.write_letterhead(pdf=pdf)
+    SP.write_proofs_json()
     if preview_dir:
         write_preview(Path(preview_dir), records)
     print(f"{len(records)} specimens, {len(CH.CHAPTERS)} chapters")

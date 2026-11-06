@@ -1,0 +1,46 @@
+<!-- s-01-11-correct: Oath & Action guide, Edition 06, chapter 01. Editor, November 6, 2026. -->
+<style>
+.ed{font-family:var(--oa-font-family-reading);font-size:1.0625rem;line-height:1.6;color:var(--oa-color-text-primary);max-width:100%}
+.ed *{box-sizing:border-box}
+.ed p{margin:0}
+.ed .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary)}
+.ed .src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:68ch}
+.ed .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.2;padding:5px 8px;border:1px solid var(--oa-color-border-strong);white-space:nowrap}
+.ed .chip.solid{background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);border-color:var(--oa-color-action-primary-fill)}
+.ed .ill{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;line-height:1.3;padding:1px 6px;border:1px solid currentColor;vertical-align:.1em;white-space:nowrap}
+.ed del{text-decoration:underline dotted 2px var(--oa-color-graphic-subtle);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
+.ed ins{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:5px;text-decoration-skip-ink:none;color:inherit}
+.ed .hinge{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--oa-color-identity-hinge-divider)}
+.ed .hinge::before,.ed .hinge::after{content:"";flex:1 1 auto;border-top:1px solid currentColor}
+.ed .hinge .hamp{flex:none;display:block;width:21px;height:24px}
+.ed .ask{display:inline-block;background:var(--oa-color-action-ask-fill);color:var(--oa-color-action-ask-label);font:var(--oa-type-ask);padding:12px 18px;border:1px solid var(--oa-component-button-ask-keyline);white-space:nowrap}
+.ed .lab{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);margin:0 0 6px}
+.ed table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
+.ed th,.ed td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ed thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary);border-bottom:2px solid var(--oa-color-border-strong)}
+.ed .lk{font-family:var(--oa-font-family-quote);font-style:italic}
+@media (max-width:47.99em){.ed table.stack,.ed table.stack tbody,.ed table.stack tr,.ed table.stack th,.ed table.stack td{display:block;width:100%;min-width:0}
+.ed table.stack thead{display:none}.ed table.stack tr{border-bottom:1px solid var(--oa-color-border-strong);padding:10px 0}
+.ed table.stack th,.ed table.stack td{border:0;padding:3px 0}.ed table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
+
+.ed .ct{font:800 1.25rem/1.2 var(--oa-font-family-display);letter-spacing:-.01em;margin:0 0 4px;max-width:34ch;text-wrap:balance}
+.ed .cm{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin:0 0 12px}
+.ed .bchart{display:grid;gap:10px;margin:0;max-width:520px}
+.ed .bar{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:10px;align-items:center}
+.ed .bar .n{font:var(--oa-type-data-label);font-size:.9375rem}
+.ed .bar .t{position:relative;height:28px}
+.ed .bar .f{display:flex;align-items:center;justify-content:flex-end;height:28px;padding-right:8px;font:700 .9375rem/1 var(--oa-font-family-reading);font-variant-numeric:tabular-nums}
+.ed .f.ink{background:var(--oa-color-data-emphasis);color:var(--oa-color-surface-newsprint)}
+.ed .f.ctx{background:var(--oa-color-data-context);color:var(--oa-color-surface-white)}
+.ed .f.red{background:var(--oa-color-palette-pillar-red);color:var(--oa-color-palette-charcoal)}
+.ed .f.blue{background:var(--oa-color-palette-prussian);color:var(--oa-color-palette-white)}
+.ed .key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 10px;font-size:.9375rem}
+.ed .sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+.ed .sw.red{background:var(--oa-color-palette-pillar-red)}.ed .sw.blue{background:var(--oa-color-palette-prussian)}
+.ed .vote{max-width:520px}
+
+.ed .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px;max-width:720px}
+.ed .cases div{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}
+.ed .cases .st{font:800 1.25rem/1.2 var(--oa-font-family-display);margin:0 0 6px}
+</style>
+<div class="ed"><p class="ct">Loop R4a, the map-drawing loop: majorities draw maps that help them keep control.</p><div class="cases"><div><p class="st">Texas</p><p>In August 2025, the Republican-led legislature redrew the congressional map, aiming at five more Republican seats.</p></div><div><p class="st">California</p><p>In November 2025, voters approved Proposition 50, which put in place a congressional map drawn to favor Democrats.</p></div></div><p class="src">Source: Oath &amp; Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These events show maps being drawn; they do not measure how long either majority’s hold lasts.</p></div>

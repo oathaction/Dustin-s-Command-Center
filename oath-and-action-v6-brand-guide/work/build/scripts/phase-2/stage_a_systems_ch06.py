@@ -30,7 +30,7 @@ STYLES = [
     ('ui', 'Interface', 'Download the lockmark'),
     ('caption', 'Caption', 'Source: U.S. Bureau of Labor Statistics, Current Employment Statistics.'),
     ('label', 'Label', 'Foundations · Chapter 06 of 28'),
-    ('dataLabel', 'Data label', '3,798   1,640   −245'),
+    ('dataLabel', 'Data label', '3,798 · 1,640 · −245'),
     ('figure', 'Figure', '13.29'),
     ('ask', 'Ask', 'Sign up to speak'),
 ]
@@ -43,7 +43,7 @@ def long_sample():
     out = []
     for line in md.splitlines():
         s = line.strip()
-        if not s or s[0] in '#>*|-<0123456789' or s.startswith('What changed') is False and len(s) < 60:
+        if not s or s[0] in '#>*|-<' or len(s) < 60 or re.match(r'\d+\.', s):
             continue
         s = re.sub(r'\*\*|~~|\*', '', s)
         out.append(s)
@@ -67,15 +67,16 @@ def probes(ctx):
     ctx.probe('font check', 'fonts')
 
 
-def build_probes(ctx, page):
-    return {}
-
-
 def ms(ctx, key):
     return ctx.m(key) or {}
 
 
 # ------------------------------------------------------------------------------------------------ specimens
+def hang(ctx):
+    h = ctx.m('width open quote lora em')
+    return (h['width'] / 100) if h else 0.42
+
+
 def s_06_1(ctx):
     v = ctx.v
     sec = v('oa.color.text.secondary.onNewsprint')
@@ -84,7 +85,7 @@ def s_06_1(ctx):
            f'.u{{display:inline-flex;margin-top:12px;align-items:center;min-height:44px;padding:0 16px;'
            f'background:{v("oa.component.button.primary.fill.onNewsprint")};color:{v("oa.component.button.primary.label.onNewsprint")};{ctx.ty("ui")}}}'
            f'.l{{display:block;margin-top:12px;{ctx.ty("label")}}}'
-           f'.q{{margin:0;{ctx.ty("quote")};text-indent:-.42em}}'
+           f'.q{{margin:0;{ctx.ty("quote")};text-indent:-{hang(ctx):.3f}em}}'
            f'.t{{margin:8px 0 0;{ctx.ty("caption")};color:{sec}}}')
     html = (f'<style>{css}</style><div class="fc">'
             f'<div><p class="k">Inter Tight 800 · display</p><p class="d">{HEAD}</p>'
@@ -120,11 +121,9 @@ def s_06_2(ctx):
         wt = T.value(val['fontWeight'][1:-1]) if isinstance(val['fontWeight'], str) else val['fontWeight']
         lh = val['lineHeight']
         tr = ext.get('trackingEm', 0)
-        mn = ext.get('minFontSize', {}).get('value')
-        mx = ext.get('maxFontSize', {}).get('value') if ext.get('maxFontSize') else None
-        if mn is None:
-            fs = val['fontSize']
-            mn = fs['value'] if fs['unit'] == 'rem' else fs['value'] / 16
+        fs = val['fontSize']
+        mx = fs['value'] if fs['unit'] == 'rem' else fs['value'] / 16
+        mn = ext.get('minFontSize', {}).get('value', mx)
         size = (f'{mn * 16:g} to {mx * 16:g} px ({mn:g} to {mx:g} rem)' if mx and mx != mn else f'{mn * 16:g} px ({mn:g} rem)')
         face = fam + (' Italic' if key == 'quote' else '')
         trk = 'tracking 0' if not tr else f'tracking {C.MINUS if tr < 0 else "+"}{abs(tr) * 100:g}%'
@@ -139,7 +138,7 @@ def s_06_2(ctx):
         rows.append(f'<li><p class="nm">{name}<code>{C.css_name("oa.type." + key)}</code></p><p class="sp">{spec}</p>'
                     f'<p class="{cls}" style="{ctx.ty(key)}">{sample}</p></li>')
     css = (f'ul{{list-style:none;margin:0;padding:0}}'
-           f'li{{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:4px 32px;align-items:baseline;padding:20px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
+           f'li{{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:4px 32px;align-items:baseline;padding:20px 0;border-bottom:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
            f'.nm{{margin:0;{ctx.ty("ui")}}}.nm code{{display:block;{ctx.ty("caption")};color:{sec}}}'
            f'.sp{{margin:0;grid-column:1;{ctx.ty("caption")};color:{sec}}}'
            f'.smp{{margin:0;grid-column:2;grid-row:1 / span 2;text-wrap:balance;overflow-wrap:break-word;min-width:0}}'
@@ -279,14 +278,13 @@ def s_06_6(ctx):
 
 def s_06_7(ctx):
     v = ctx.v
-    hang = ctx.m('width open quote lora em')
-    hang_em = (hang['width'] / 100) if hang else 0.42
+    hang_em = hang(ctx)
     ctx.fig('hang of the opening mark, em', f'{hang_em:.3f}', 'width of “ in Lora Italic 400, rendered at 100 px')
     for sid, good in (('s-06-7-correct', True), ('s-06-7-failure', False)):
         css = (f'.wr{{position:relative;padding-left:24px;max-width:30rem}}'
-               f'.wr::before{{content:"";position:absolute;left:24px;top:0;bottom:0;border-left:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
-               f'.q{{position:relative;margin:0;{ctx.ty("quote")};{"text-indent:-" + format(hang_em, ".3f") + "em" if good else ""}}}'
-               f'.k{{margin:12px 0 0;{ctx.ty("caption")};color:{v("oa.color.text.secondary.onNewsprint")}}}')
+               f'.q{{position:relative;margin:0;{ctx.ty("quote")};text-wrap:balance;{"text-indent:-" + format(hang_em, ".3f") + "em" if good else ""}}}'
+               f'.q::before{{content:"";position:absolute;left:0;top:-8px;bottom:-8px;border-left:1px solid {v("oa.color.border.hairline.onNewsprint")}}}'
+               f'.k{{margin:20px 0 0;{ctx.ty("caption")};color:{v("oa.color.text.secondary.onNewsprint")}}}')
         html = (f'<style>{css}</style><div class="wr"><p class="q">“{COMMIT}”</p>'
                 f'<p class="k">Our editorial commitment</p></div>')
         ctx.spec(sid, html, '06', '06.7',
@@ -327,7 +325,7 @@ def s_06_9(ctx):
                f'.b{{margin:16px 0 0;font-family:var(--oa-font-family-email-sans);font-size:1.0625rem;line-height:1.6}}'
                f'.q{{margin:24px 0 0;font-family:var(--oa-font-family-email-quote);font-style:italic;font-size:1.375rem;line-height:1.35}}')
         html = (f'<style>{css}</style><div class="em"><div class="mh">'
-                f'<img data-inline src="work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg" width="152" height="16" alt="">'
+                f'<img data-inline src="work/build/assets/identity/wordmark/20261028_Wordmark-16px-Master.svg" width="152" height="16" alt="" data-red="signature">'
                 f'<span class="is">Sample issue</span></div>'
                 f'<p class="h">The school board votes on the new bell schedule April 14.</p>'
                 f'<p class="b">Sign up with the board clerk by April 10 to speak before the vote.</p>'
@@ -343,18 +341,24 @@ def s_06_9(ctx):
                        ' The failure names a face no page loads, so every browser falls to its default serif, as a mail app does.'))
 
 
+def w_fallback(ctx):
+    a = (ctx.m('width head arial') or {}).get('width') or 520
+    b = (ctx.m('width head inter tight') or {}).get('width') or 480
+    return int(-(-max(a, b) // 8) * 8 + 8)
+
+
 def s_06_10(ctx):
     sec = ctx.v('oa.color.text.secondary.onNewsprint')
     for sid, good in (('s-06-10-correct', True), ('s-06-10-failure', False)):
         fam = '' if good else 'font-family:Arial,sans-serif;'
-        css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}.h{{margin:0;{ctx.ty("h3")};{fam}white-space:nowrap}}'
+        css = (f'.k{{margin:0 0 8px;{ctx.ty("label")};color:{sec}}}.h{{margin:0;{ctx.ty("h3")};{fam}text-wrap:balance}}'
                f'.s{{margin:12px 0 0;{ctx.ty("caption")};color:{sec}}}')
         lab = 'Inter Tight 800' if good else 'Arial, the fallback'
         html = (f'<style>{css}</style><p class="k">{lab}</p><p class="h">{HEAD}</p>'
                 f'<p class="s">{"Loaded from the published Inter Tight files" if good else "Shown when Inter Tight fails to load"}</p>')
         ctx.spec(sid, html, '06', '06.10',
-                 f'The heading {HEAD} set in ' + ('Inter Tight 800.' if good else 'Arial bold, wider and rounder than Inter Tight.'),
-                 width=560, notes='Widths measured at 32 px, the H3 size at 1440 px.')
+                 f'The heading {HEAD} set in ' + ('Inter Tight 800.' if good else 'Arial bold, about the same width, with plainer letters than Inter Tight.'),
+                 notes='Widths measured at 32 px, the H3 size at 1440 px, on one line.')
 
 
 # ------------------------------------------------------------------------------------------------ chapter
@@ -550,7 +554,7 @@ def build(ctx):
                 'failure': {'specimen': 's-06-5-failure',
                             'caption': '<strong>Fails the figure rule.</strong> The same table with proportional figures, '
                                        'columns aligned left and a hyphen for each minus. The digits no longer stack, and the '
-                                       'two falls read like dashes.'},
+                                       'two minus signs read like dashes.'},
                 'specs': [
                     {'label': 'Figures in tables and charts', 'value': 'Tabular, font-variant-numeric: tabular-nums', 'token': 'oa.type.dataLabel'},
                     {'label': 'Big figures', 'value': 'Inter Tight 800, tabular', 'token': 'oa.type.figure'},
@@ -609,7 +613,7 @@ def build(ctx):
             },
             {
                 'id': '06.8', 'title': 'Body text runs 60 to 75 characters a line.',
-                'rule': [f'Set body text to a measure of 60 to 75 characters a line on wider screens, aiming for 68, and intro '
+                'rule': [f'Set body text to a measure of 60 to 75 characters a line on wider screens, and intro '
                          f'text to 65 at most. A phone gives about {ph_lo} to {ph_hi} characters, which suits a small screen. '
                          f'Chapter 07 gives the column spans that deliver these measures at each width.'],
                 'tokens': ['oa.layout.measure.bodyIdeal', 'oa.layout.measure.bodyMax', 'oa.layout.measure.introMax',
@@ -622,7 +626,8 @@ def build(ctx):
                 'correct': {'specimen': 's-06-8-correct',
                             'caption': f'A paragraph at true size and the body measure, 33.88 rem. Its full lines measure '
                                        f'{bi[1]} to {bi[2]} characters. Over {li[3]:,} characters of chapter 02’s prose at the '
-                                       f'same width, lines average {li[0]:.0f}.'},
+                                       f'same width, lines average {li[0]:.0f}, and at the widest body measure, '
+                                       f'{lm[0]:.0f}.'},
                 'failure': {'specimen': 's-06-8-failure',
                             'caption': f'<strong>Fails the measure.</strong> The same paragraph as our fifth edition set its '
                                        f'intros, at 22 px and 65ch. Its full lines run {v5[1]} to {v5[2]} characters, and the '
@@ -671,18 +676,19 @@ def build(ctx):
                 'tokens': ['oa.font.family.display', 'oa.font.family.reading', 'oa.font.family.quote'],
                 'why': {'text': [f'Master Brief section 3 says a font substitution is never a finished identity decision. A '
                                  f'fallback keeps a page readable when a font fails to load, and that is its only job. '
-                                 f'Measured at 32 px, the heading here runs {wi:.0f} px in Inter Tight and {wa:.0f} px in '
-                                 f'Arial, {wider:.0f} percent wider, so a page drawn for one breaks its lines differently in '
-                                 f'the other. The list carries our fifth edition’s never-substitute list forward.'],
+                                 f'Measured at 32 px, the heading here sets {wi:.0f} px wide in Inter Tight and {wa:.0f} px in '
+                                 f'Arial, within {max(1, round(abs(wider))):.0f} percent, which is why a page that failed to '
+                                 f'load Inter Tight can look finished: only the letters show it. The list carries our fifth '
+                                 f'edition’s never-substitute list forward.'],
                         'basis': 'Master Brief section 3; design judgment'},
                 'correct': {'specimen': 's-06-10-correct',
                             'caption': f'A heading at true size in Inter Tight 800, {wi:.0f} px wide at 32 px.'},
                 'failure': {'specimen': 's-06-10-failure',
                             'caption': f'<strong>Fails the face rule.</strong> The same heading in Arial, the fallback that '
-                                       f'shows when Inter Tight fails to load. It runs {wider:.0f} percent wider, and its '
-                                       f'letters lose the cut of the wordmark’s face.'},
+                                       f'shows when Inter Tight fails to load. It sets {wa:.0f} px wide, close to the '
+                                       f'original, and its letters lose the cut of the wordmark’s face.'},
                 'specs': [
-                    {'label': 'Display stack', 'value': '"Inter Tight", Arial, sans-serif', 'token': 'oa.font.family.display'},
+                    {'label': 'Display stack', 'value': '<code>"Inter Tight", Arial, sans-serif</code>', 'token': 'oa.font.family.display'},
                     {'label': 'Reading stack', 'value': 'Inter, Arial, sans-serif', 'token': 'oa.font.family.reading'},
                     {'label': 'Quotation stack', 'value': 'Lora, Georgia, serif', 'token': 'oa.font.family.quote'},
                 ],
