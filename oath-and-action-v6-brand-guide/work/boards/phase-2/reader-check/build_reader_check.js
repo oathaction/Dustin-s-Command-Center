@@ -40,9 +40,10 @@ const WIDTHS = [390, 360];
 const DPR = 2;   // twice size for sharpness (brief, step 5)
 
 // ------------------------------------------------------------------------------------------------ the loops (DR-84)
-// The third loop: R8, because System 1 draws it (on its "All loops" view) and the brief asks for R8 when the page draws
-// it. B4, the balancing loop, is ready below as a one-line swap (see the notes: both R8 and R10 feed themselves).
-const THIRD_LOOP = 'R8';
+// The third loop: B4, a balancing loop from System 1's "All loops" view, chosen by the main session on November 6 so
+// the "feeds itself or pushes back" question separates readers who read the signs from readers who guess (R10 and the
+// brief's first choice, R8, both feed themselves). R8 stays below as a one-line swap.
+const THIRD_LOOP = 'B4';
 const LOOP_DEFS = {
   R10: { view: 'loop-r10', selector: '[data-view-root="loop-r10"] svg.cyc.ph', from: 'the R10 loop close-up' },
   R8: { view: 'loops', selector: '[data-view-root="loops"] svg.cyc.ph[aria-label^="R8,"]', from: 'the "All loops" catalog card' },
@@ -293,16 +294,27 @@ function build() {
       least_certain: { answer: 'step3', why: 'Step 3, L53 "Officials safe from defeat write rules for themselves", graded plausible and drawn dashed; the drawing prints "weakest step" under it. Steps 1 and 4 are documented, step 2 well supported.' },
       reform_acts: { answer: 'Seats settled in the primary', partial: ['Safe seats', 'Risk of losing office'], why: 'R-01 (all-party primaries) targets L08, L25 and C2; the red marks are arrow 1, arrow 2 and the box "Seats settled in the primary". Safe seats and Risk of losing office each touch one red arrow. The drawing shows no key, so this question tests whether red reads as "where a reform acts" without one; the loop page sets the key line above the drawing.' },
     },
-    [THIRD_LOOP.toLowerCase()]: THIRD_LOOP === 'R8' ? {
-      loop: 'R8, Housing-scarcity loop (V7), reinforcing, "feeds itself"',
-      drawing: `System 1 phone drawing from ${LOOP_DEFS.R8.from}; the catalog draws no reform marks`,
-      image: 'img/drawing-r8-390.png and img/drawing-r8-360.png',
-      comes_back: { answer: 'yes', why: 'Two steps: L38 runs from Housing scarcity to Homeowners\' equity and L39 returns.' },
-      feeds_or_pushes: { answer: 'feeds', why: 'Both steps carry a plus sign.' },
-      least_certain: { answer: 'same', why: 'Both steps, L38 and L39, are graded well supported and drawn with the same solid line; no weakest step is marked.' },
-      reform_acts: { answer: 'none', why: 'R-30 (more homes allowed by right near jobs) aims at R8, but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show.' },
-    } : { loop: THIRD_LOOP, note: 'Write this key from the model before publishing.' },
-    choice_values: 'least_certain: step1 to step4 (R10) or top and bottom (R8), "same" for "They look about the same", "unsure" for "Not sure". reform_acts: the box name as printed, "none" for "No reform is shown", "unsure".',
+    [THIRD_LOOP.toLowerCase()]: ({
+      R8: {
+        loop: 'R8, Housing-scarcity loop (V7), reinforcing, "feeds itself"',
+        drawing: `System 1 phone drawing from ${LOOP_DEFS.R8.from}; the catalog draws no reform marks`,
+        image: 'img/drawing-r8-390.png and img/drawing-r8-360.png',
+        comes_back: { answer: 'yes', why: 'Two steps: L38 runs from Housing scarcity to Homeowners\' equity and L39 returns.' },
+        feeds_or_pushes: { answer: 'feeds', why: 'Both steps carry a plus sign.' },
+        least_certain: { answer: 'same', why: 'Both steps, L38 and L39, are graded well supported and drawn with the same solid line; no weakest step is marked.' },
+        reform_acts: { answer: 'none', why: 'R-30 (more homes allowed by right near jobs) aims at R8, but the catalog drawing shows no reform marks.' },
+      },
+      B4: {
+        loop: 'B4, Accountability loop (V7), balancing, "pushes back"',
+        drawing: `System 1 phone drawing from ${LOOP_DEFS.B4.from}; the catalog draws no reform marks`,
+        image: 'img/drawing-b4-390.png and img/drawing-b4-360.png',
+        comes_back: { answer: 'yes', why: 'Three steps: L23 runs from Quality of public services to Risk of losing office, L24 to Incumbents defeated, and L54 returns to Quality of public services.' },
+        feeds_or_pushes: { answer: 'pushes', why: 'One minus sign (L23, "lowers") and two plus signs: an odd number of minus signs makes the loop balancing. A reader who answers "feeds itself" here is guessing or reading the plus signs alone.' },
+        least_certain: { answer: 'same', why: 'All three steps, L23, L24 and L54, are graded well supported and drawn with the same solid line; no weakest step is marked.' },
+        reform_acts: { answer: 'none', why: 'Four reforms aim at B4 (R-01, R-02, R-06 and R-07), but the catalog drawing shows no reform marks. A reader who names a box is reading in a reform the drawing does not show.' },
+      },
+    })[THIRD_LOOP],
+    choice_values: 'least_certain: step1 to step4 (R10), or top, right and left (B4), "same" for "They look about the same", "unsure" for "Not sure". reform_acts: the box name as printed, "none" for "No reform is shown", "unsure".',
   };
   const key = {
     title: 'Reader check answer key',
