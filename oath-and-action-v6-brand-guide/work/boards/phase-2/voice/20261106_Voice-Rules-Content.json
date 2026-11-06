@@ -1,6 +1,7 @@
 {
  "title": "How Oath & Action writes",
- "deck": "These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Ten house rules for every page come with them.",
+ "status": "Approved by Dustin Cathcart on Board 5, November 6, 2026, with all ten recommendations (DR-73 to DR-83).",
+ "deck": "These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Twelve house rules for every page come with them.",
  "narrative": [
   "Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”",
   "Our reader promise is “We explain how a decision is made and give you a practical way to take part.” A reader can take part only in a decision they can follow, which is why clarity comes first in our editorial commitment, “Clarity is our duty. Action is our promise.”",
@@ -273,7 +274,8 @@
      "before_source": "We wrote this line for the rule, since our published copy holds no em dash to quote.",
      "illustrative": true,
      "after": "Public comment on the town budget closes Monday at 5 p.m.[+, and+] the council votes the next night.",
-     "why": "The rewrite’s comma and “and” tell a listener that the vote follows the deadline."
+     "why": "The rewrite’s comma and “and” tell a listener that the vote follows the deadline.",
+     "render_note": "In the guide, the em dash in this before is drawn as a rule one em wide, labeled “em dash” for screen readers (DR-79)."
     }
    ]
   }
@@ -376,14 +378,12 @@
   {
    "id": "H11",
    "name": "Say what an ID refers to",
-   "proposed": true,
    "rule": "Name what an ID refers to the first time it appears, and print no bare code.",
    "example": "Loop R10, the safe-seat loop"
   },
   {
    "id": "H12",
    "name": "Use the neutral name for a contested policy",
-   "proposed": true,
    "rule": "Call a contested policy by its official or plain name. When one side’s term has to appear, say who uses it.",
    "example": "Public Law 119-21, the July 2025 tax law"
   }
@@ -404,52 +404,72 @@
   {
    "q": "Do the locked lines keep their wording where a rule would change them?",
    "text": "Our editorial commitment, “Clarity is our duty. Action is our promise.”, is two sentences on one frame, the shape W13 asks writers to avoid, and the tagline is a phrase. H01 keeps their wording, and W13’s note says so where a reader meets the clash.",
-   "rec": "Confirm the exemption."
+   "rec": "Confirm the exemption.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-74"
   },
   {
    "q": "Do hinge headlines stay?",
    "text": "A hinge headline such as “The zoning code & the rent.” joins two noun phrases by design, the shape W10 removes elsewhere. W10’s terms line keeps it, since it joins a rule to its result.",
-   "rec": "Confirm the exemption."
+   "rec": "Confirm the exemption.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-75"
   },
   {
    "q": "Is voice line B the right rewrite for W13?",
    "text": "W13’s rewrite is the voice line you approved at Gate 1. It drops “We expose the gaps” and hands the last step to the reader, so it is the one rewrite that changes meaning on purpose, and its note says so.",
-   "rec": "Keep voice line B."
+   "rec": "Keep voice line B.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-76"
   },
   {
    "q": "Retire the four V5 lines that fail these rules?",
    "text": "“Know the rules. Find the lever.”, “Institutions endure when people act.”, “The fine print affects the big picture.” and “Bring your questions. They belong here.” each fail a rule here. The locked lines and voice line B already do each of their jobs.",
-   "rec": "Retire all four, with no role."
+   "rec": "Retire all four, with no role.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-77"
   },
   {
    "q": "Keep 21 rules in five groups?",
    "text": "Each rule carries its own worked example. The rules now sit in five teaching groups, with an index of every rule name after the opening.",
-   "rec": "Keep 21 rules in the five groups."
+   "rec": "Keep 21 rules in the five groups.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-78"
   },
   {
    "q": "How should W21 show the em dash?",
    "text": "W21’s before now prints the real em dash, the only one the page allows. The board can also draw it as a rule one em wide, labeled for screen readers.",
-   "rec": "Show it, drawn one em wide and labeled “em dash” for screen readers."
+   "rec": "Show it, drawn one em wide and labeled “em dash” for screen readers.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-79"
   },
   {
    "q": "Which studio drafts stay as befores?",
    "text": "W05 keeps a civic mock from an early draft of this guide. The other three studio befores came from internal boards, and lines a public reader can check now stand in W07, W10 and W20.",
-   "rec": "Keep W05 and the three swaps."
+   "rec": "Keep W05 and the three swaps.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-80"
   },
   {
    "q": "Add H11, naming what an ID refers to?",
    "text": "The studio already writes “Loop R10, the safe-seat loop” and never a bare “R10”. H11 turns that habit into a house rule.",
-   "rec": "Add H11."
+   "rec": "Add H11.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-81"
   },
   {
    "q": "Add H12, the neutral name for a contested policy?",
    "text": "The chapter guards party names and colors, and word choice is where partisan framing most often enters. H12 asks for the official or plain name and says who uses a side’s term when it has to appear.",
-   "rec": "Add H12."
+   "rec": "Add H12.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-82"
   },
   {
    "q": "Do “may” and “can” stay in W16?",
    "text": "W16 tells writers that “may” and “can” report a plausible grade, as H08 says, so they stay when the evidence calls for them.",
-   "rec": "Confirm that reading."
+   "rec": "Confirm that reading.",
+   "answer": "Accepted as recommended",
+   "logged_as": "DR-83"
   }
  ],
  "notes_for_dustin": []

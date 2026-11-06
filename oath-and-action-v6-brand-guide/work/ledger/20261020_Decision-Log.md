@@ -441,3 +441,25 @@ Dustin: "This is good. I really like it. I still think we'll eventually have to 
 | D2-130 | The editor wrote chapter 02's writing rules from Dustin's standing instructions and the house rules (brief `work/handoffs/phase-2/20261106_Voice-Writing-Rules-Brief.md`). The creative director scored the draft 3 on six lines and 4 on usefulness; the editor's one fix pass gives 21 rules in five teaching groups, 12 house rules (H11 and H12 proposed), a ten-question checklist and ten decisions for Dustin. 15 befores are real copy, found word for word by script with the edit marks stripped; six are labeled Illustrative, W21's em dash among them | DR-70; one fix pass against the review, as in every round |
 | D2-131 | Board 5 sets each before and after as a pair joined by the hinge divider, a hairline broken by ampersand B in Charcoal (D1-22), with a dotted underline on what a rule removes and a solid one on the repair. Specimens run in Inter as copy does in production; Lora Italic carries only the locked lines. It passes the rendered check at 1440, 390 and 360 px and is published privately (https://claude.ai/artifact/WLLBcn9hrwB8rZacfcYkUE). The creative director did not score the fixed section; the main session looked at the rebuilt board once at desktop and phone width | The creative director's design notes; the brand's own device carries the idea of a sentence and its repair. A second score would have cost the time Dustin asked the studio to save (DR-72) |
 | D2-132 | The session closes with a third handoff, `work/handoffs/phase-2/20261106_Next-Session-Handoff_V3.md`, and its starting prompt | Dustin's chat passed 60 percent of its context; stage board A needs a fresh chat |
+
+## Board 5 answers, November 6, 2026 (new chat)
+
+Dustin restarted in a new chat with the V3 handoff's starting prompt and wrote: "Board 5 is approved and all recommendations accepted."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-73 | Chapter 02's writing section is approved as revised: 21 rules in five teaching groups, 12 house rules, the ten-question checklist and every before and after as printed (`work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`). It binds every word Oath & Action publishes, in the guide and in reports to Dustin | Dustin, November 6 |
+| DR-74 | The locked lines keep their exact wording where a writing rule would shape the sentence differently (H01; W13's note) | Dustin, November 6, as recommended |
+| DR-75 | Hinge headlines, such as "The zoning code & the rent.", stay: W10's terms line exempts a headline that joins a rule to its result | Dustin, November 6, as recommended |
+| DR-76 | W13's rewrite stays voice line B, the Gate 1 voice line, with its note that it changes meaning on purpose | Dustin, November 6, as recommended |
+| DR-77 | Four V5 lines retire with no role: "Know the rules. Find the lever.", "Institutions endure when people act.", "The fine print affects the big picture." and "Bring your questions. They belong here." | Dustin, November 6, as recommended |
+| DR-78 | The chapter keeps 21 rules in five groups, with the rule index after the opening | Dustin, November 6, as recommended |
+| DR-79 | In the guide, W21's before draws its em dash as a rule one em wide, labeled "em dash" for screen readers. It is the only em dash any Oath & Action page shows | Dustin, November 6, as recommended |
+| DR-80 | W05 keeps its civic mock from an early draft of this guide, and W07, W10 and W20 keep the befores a public reader can check | Dustin, November 6, as recommended |
+| DR-81 | H11 is a house rule: name what an ID refers to the first time it appears, and print no bare code | Dustin, November 6, as recommended |
+| DR-82 | H12 is a house rule: call a contested policy by its official or plain name, and say who uses a side's term when it has to appear | Dustin, November 6, as recommended |
+| DR-83 | In W16, "may" and "can" report a plausible grade, as H08's table says, and stay where the evidence calls for them | Dustin, November 6, as recommended |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-133 | The Board 5 answers are folded into the writing section and its content file by the main session: the status line, "Twelve house rules" in the deck, H11 and H12 without the Proposed mark, W21's typesetting note, and each decision's answer with its DR number. The rules' wording is unchanged. Board 5 itself is not rebuilt; it stays the record of what Dustin saw | Clerical edits that carry an approval; a board records what was shown |

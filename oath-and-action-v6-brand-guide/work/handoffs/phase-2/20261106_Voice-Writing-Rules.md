@@ -1,8 +1,8 @@
 # How Oath & Action writes
 
-Chapter 02 Voice, Edition 06. Draft for Board 5, November 6, 2026, revised after the creative director's review.
+Chapter 02 Voice, Edition 06. Approved by Dustin Cathcart on Board 5, November 6, 2026, with all ten recommendations (DR-73 to DR-83). This is chapter 02's writing section.
 
-*These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Ten house rules for every page come with them.*
+*These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Twelve house rules for every page come with them.*
 
 Our tagline is “A country that answers to its people.” People can hold an office to account once they know which office decided. So we name who acts, in words you would use at a kitchen table, as in “A regulator or a board approves your rate.”
 
@@ -19,7 +19,7 @@ Every rule in this chapter appears below by group, and each name leads to its wo
 - **Say what is so:** W09 Say what a thing is; W10 Drop the matched pair; W11 Skip the run of negatives; W12 List what the facts hold; W13 Give each sentence its own shape
 - **Cut the padding:** W14 Pull stacked nouns apart; W15 Use the verb inside the noun; W16 Drop the hedges and keep the grade; W17 Cut the intensifiers; W18 Use everyday verbs; W19 Let the facts carry the feeling; W20 Size each word to its evidence
 - **Marks and numbers:** W21 Leave out the em dash; H05 Write dates in words; H06 Spell out numbers under ten; H07 Use the true minus sign
-- **House rules:** H01 Quote the locked lines exactly; H02 Explain a term the first time you use it; H03 Label what is invented beside it; H04 Source every public policy statistic; H08 Let a title claim only what its evidence holds; H09 Keep a period whole; H10 Name parties in words; H11 Say what an ID refers to (proposed); H12 Use the neutral name for a contested policy (proposed)
+- **House rules:** H01 Quote the locked lines exactly; H02 Explain a term the first time you use it; H03 Label what is invented beside it; H04 Source every public policy statistic; H08 Let a title claim only what its evidence holds; H09 Keep a period whole; H10 Name parties in words; H11 Say what an ID refers to; H12 Use the neutral name for a contested policy
 
 *Scope.* Headings, labels, captions and chart keys may be phrases; every other line on the page is a full sentence.
 
@@ -383,6 +383,8 @@ Where you want an em dash, end the sentence, or join the parts with a comma and 
 
 What changed: The rewrite’s comma and “and” tell a listener that the vote follows the deadline.
 
+<small>Typesetting: in the guide, the em dash in this before is drawn as a rule one em wide and labeled “em dash” for screen readers (DR-79).</small>
+
 **H05 Write dates in words.** Write the month as a word, as in November 6, 2026. Numeric dates belong in file names and data.
 
 > Retrieved November 6, 2026.
@@ -449,11 +451,11 @@ After
 
 <small>Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.</small>
 
-**H11 Say what an ID refers to.** *Proposed.* Name what an ID refers to the first time it appears, and print no bare code.
+**H11 Say what an ID refers to.** Name what an ID refers to the first time it appears, and print no bare code.
 
 > Loop R10, the safe-seat loop
 
-**H12 Use the neutral name for a contested policy.** *Proposed.* Call a contested policy by its official or plain name. When one side’s term has to appear, say who uses it.
+**H12 Use the neutral name for a contested policy.** Call a contested policy by its official or plain name. When one side’s term has to appear, say who uses it.
 
 > Public Law 119-21, the July 2025 tax law
 
@@ -472,20 +474,23 @@ After
 
 ## Notes for the main session and for Dustin
 
-Editor: oa-editor, November 6, 2026, revised the same day after the creative director’s review (`work/handoffs/phase-2/20261106_CD-Review-Of-Writing-Rules.md`). Everything above is a proposal for Board 5, and nothing here has been approved or committed.
+Editor: oa-editor, November 6, 2026, revised the same day after the creative director’s review (`work/handoffs/phase-2/20261106_CD-Review-Of-Writing-Rules.md`). Dustin approved everything above on Board 5, November 6, 2026, with all ten recommendations (DR-73 to DR-83). The notes below stay as the editor's record.
 
-### Decisions for Dustin
+### Decisions, as Dustin answered them on Board 5
 
-1. **Do the locked lines keep their wording where a rule would change them?** Our editorial commitment, “Clarity is our duty. Action is our promise.”, is two sentences on one frame, the shape W13 asks writers to avoid, and the tagline is a phrase. H01 keeps their wording, and W13’s note says so where a reader meets the clash. *Recommendation:* Confirm the exemption.
-2. **Do hinge headlines stay?** A hinge headline such as “The zoning code & the rent.” joins two noun phrases by design, the shape W10 removes elsewhere. W10’s terms line keeps it, since it joins a rule to its result. *Recommendation:* Confirm the exemption.
-3. **Is voice line B the right rewrite for W13?** W13’s rewrite is the voice line you approved at Gate 1. It drops “We expose the gaps” and hands the last step to the reader, so it is the one rewrite that changes meaning on purpose, and its note says so. *Recommendation:* Keep voice line B.
-4. **Retire the four V5 lines that fail these rules?** “Know the rules. Find the lever.”, “Institutions endure when people act.”, “The fine print affects the big picture.” and “Bring your questions. They belong here.” each fail a rule here. The locked lines and voice line B already do each of their jobs. *Recommendation:* Retire all four, with no role.
-5. **Keep 21 rules in five groups?** Each rule carries its own worked example. The rules now sit in five teaching groups, with an index of every rule name after the opening. *Recommendation:* Keep 21 rules in the five groups.
-6. **How should W21 show the em dash?** W21’s before now prints the real em dash, the only one the page allows. The board can also draw it as a rule one em wide, labeled for screen readers. *Recommendation:* Show it, drawn one em wide and labeled “em dash” for screen readers.
-7. **Which studio drafts stay as befores?** W05 keeps a civic mock from an early draft of this guide. The other three studio befores came from internal boards, and lines a public reader can check now stand in W07, W10 and W20. *Recommendation:* Keep W05 and the three swaps.
-8. **Add H11, naming what an ID refers to?** The studio already writes “Loop R10, the safe-seat loop” and never a bare “R10”. H11 turns that habit into a house rule. *Recommendation:* Add H11.
-9. **Add H12, the neutral name for a contested policy?** The chapter guards party names and colors, and word choice is where partisan framing most often enters. H12 asks for the official or plain name and says who uses a side’s term when it has to appear. *Recommendation:* Add H12.
-10. **Do “may” and “can” stay in W16?** W16 tells writers that “may” and “can” report a plausible grade, as H08 says, so they stay when the evidence calls for them. *Recommendation:* Confirm that reading.
+Dustin, November 6, 2026: “Board 5 is approved and all recommendations accepted.” Each answer below is logged in the decision log.
+
+
+1. **Do the locked lines keep their wording where a rule would change them?** Our editorial commitment, “Clarity is our duty. Action is our promise.”, is two sentences on one frame, the shape W13 asks writers to avoid, and the tagline is a phrase. H01 keeps their wording, and W13’s note says so where a reader meets the clash. *Recommendation:* Confirm the exemption. *Answer:* Accepted (DR-74).
+2. **Do hinge headlines stay?** A hinge headline such as “The zoning code & the rent.” joins two noun phrases by design, the shape W10 removes elsewhere. W10’s terms line keeps it, since it joins a rule to its result. *Recommendation:* Confirm the exemption. *Answer:* Accepted (DR-75).
+3. **Is voice line B the right rewrite for W13?** W13’s rewrite is the voice line you approved at Gate 1. It drops “We expose the gaps” and hands the last step to the reader, so it is the one rewrite that changes meaning on purpose, and its note says so. *Recommendation:* Keep voice line B. *Answer:* Accepted (DR-76).
+4. **Retire the four V5 lines that fail these rules?** “Know the rules. Find the lever.”, “Institutions endure when people act.”, “The fine print affects the big picture.” and “Bring your questions. They belong here.” each fail a rule here. The locked lines and voice line B already do each of their jobs. *Recommendation:* Retire all four, with no role. *Answer:* Accepted (DR-77).
+5. **Keep 21 rules in five groups?** Each rule carries its own worked example. The rules now sit in five teaching groups, with an index of every rule name after the opening. *Recommendation:* Keep 21 rules in the five groups. *Answer:* Accepted (DR-78).
+6. **How should W21 show the em dash?** W21’s before now prints the real em dash, the only one the page allows. The board can also draw it as a rule one em wide, labeled for screen readers. *Recommendation:* Show it, drawn one em wide and labeled “em dash” for screen readers. *Answer:* Accepted (DR-79).
+7. **Which studio drafts stay as befores?** W05 keeps a civic mock from an early draft of this guide. The other three studio befores came from internal boards, and lines a public reader can check now stand in W07, W10 and W20. *Recommendation:* Keep W05 and the three swaps. *Answer:* Accepted (DR-80).
+8. **Add H11, naming what an ID refers to?** The studio already writes “Loop R10, the safe-seat loop” and never a bare “R10”. H11 turns that habit into a house rule. *Recommendation:* Add H11. *Answer:* Accepted (DR-81).
+9. **Add H12, the neutral name for a contested policy?** The chapter guards party names and colors, and word choice is where partisan framing most often enters. H12 asks for the official or plain name and says who uses a side’s term when it has to appear. *Recommendation:* Add H12. *Answer:* Accepted (DR-82).
+10. **Do “may” and “can” stay in W16?** W16 tells writers that “may” and “can” report a plausible grade, as H08 says, so they stay when the evidence calls for them. *Recommendation:* Confirm that reading. *Answer:* Accepted (DR-83).
 
 ### Rule numbers before and after the fix pass
 
@@ -583,7 +588,7 @@ The source lines use public names, which `sources_note` defines once: “our bra
 - Terms: each opens with its term and a colon, and none says “In plain words”
 - Opening passage: 147 words; sentence lengths 10, 13, 24, 20, 30 (the one that quotes the commitment), 15, 20, 15
 - Checklist: 10 questions, each worded so yes means pass (read by hand)
-- JSON parses: 21 rules in 5 groups, 12 house rules (2 proposed), 10 decisions, notes_for_dustin empty, plain strings only
+- JSON parses: 21 rules in 5 groups, 12 house rules (2 proposed at the time; both approved, DR-81 and DR-82), 10 decisions, notes_for_dustin empty, plain strings only
 - The three-item list pattern in my prose, 56 hits, read by hand: none is a rhetorical triplet; most are pairs or lists of four or more, and the few lists of three are rule numbers or the three states a real chart title names
 - The weekdays of the W05 mock dates by script: March 3, 2027 is a Wednesday and March 9, 2027 a Tuesday, as the mock card prints them
 - A full read of both files, line by line, against every rule on the page
@@ -622,3 +627,4 @@ Each item from the creative director’s review and the coordinator’s message,
 
 - Modified `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md` (this file) and `work/boards/phase-2/voice/20261106_Voice-Rules-Content.json`, both created earlier today.
 - Created: none.
+- Board 5 answers folded in by the main session, November 6, 2026: status line, deck count, H11 and H12 approved, W21's typesetting note, each decision's answer. Same edits in `work/boards/phase-2/voice/20261106_Voice-Rules-Content.json`.
