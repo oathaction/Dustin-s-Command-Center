@@ -126,7 +126,7 @@ def dclass(w):
         return 'down'
     if w.startswith('mixed') or 'mixed' in w and w.startswith('prices'):
         return 'mixed'
-    if w.startswith('slightly up') or w.startswith('small'):
+    if w.startswith('slightly up') or w.startswith('small') or w.startswith('up modestly'):
         return 'slightly up'
     if w.startswith('up'):
         return 'up'
@@ -150,8 +150,10 @@ datasets['scenarios-2030'] = {
     'fields': [{'name': 'key', 'type': 'id'}, {'name': 'name', 'type': 'label'}] +
               [{'name': f, 'type': 'words', 'label': FAM[f]} for f in FAM] + [{'name': f + '_class', 'type': 'category'} for f in FAM],
     'class_values': ['up', 'slightly up', 'flat', 'flat or down', 'down', 'mixed', 'same as ii'],
+    'class_rules': ['A glyph or tint is a reading aid only; the four families are never added or tallied, so no badge, count or title may say "all four up".',
+                    '"same as ii" points to scenario ii and must print as words; it is no direction of its own.'],
     'class_method': ("The studio's coarse reading of V7's direction words, for a glyph or tint only. The words are V7's and always print beside any glyph. "
-                     "Words that start 'up' read up; 'slightly up' and 'small and slow' read slightly up; 'flat', 'near trend' and 'flat through 2036' read flat; "
+                     "Words that start 'up' read up, except 'up modestly'; 'slightly up', 'up modestly' and 'small and slow' read slightly up; 'flat', 'near trend' and 'flat through 2036' read flat; "
                      "'down or flat' and 'flat, or down if ...' read flat or down; 'down' reads down; 'mixed' and 'prices down ...; employment effects mixed' read mixed; "
                      "'same as scenario ii' points to scenario ii."),
     'rows': srows, 'intro': V7['scenarios']['intro'],

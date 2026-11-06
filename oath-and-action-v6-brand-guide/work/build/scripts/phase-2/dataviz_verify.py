@@ -106,6 +106,17 @@ def num(x):
         return None
 
 
+def frac_year(d):
+    m = re.fullmatch(r'(\d{4})-(\d{2})-(\d{2})', str(d or ''))
+    if not m:
+        return None
+    import datetime
+    y, mo, da = map(int, m.groups())
+    start = datetime.date(y, 1, 1)
+    days = (datetime.date(y + 1, 1, 1) - start).days
+    return y + ((datetime.date(y, mo, da) - start).days) / days
+
+
 def row_index(ds):
     idx = {}
     for r in ds.get('rows', []):
@@ -172,9 +183,14 @@ def verify(html):
             if 'data-value' in ma:
                 stats['values'] += 1
                 want, got = num(row.get(field)), num(ma['data-value'])
+                fy = frac_year(row.get('date')) if field in ('year', 'date') else None
+                if fy is not None and got is not None and abs(got - round(got)) > 1e-9:
+                    want = fy   # a mark placed at its true date: compare with the date as a fractional year
+                if field == 'date' and fy is not None and want is None:
+                    want = fy
                 if want is None or got is None:
                     errs.append(f'{tag}: {k}.{field}: value "{ma["data-value"]}" cannot be compared with "{row.get(field)}"')
-                elif abs(want - got) > max(0.051, abs(want) * 0.005):
+                elif abs(want - got) > (0.02 if fy is not None and want == fy else max(0.051, min(abs(want) * 0.005, 0.5))):   # dates within a week; other values relative, capped at half a unit
                     errs.append(f'{tag}: {k}.{field} drawn as {got}, data says {want}')
             if 'data-category' in ma:
                 stats['categories'] += 1

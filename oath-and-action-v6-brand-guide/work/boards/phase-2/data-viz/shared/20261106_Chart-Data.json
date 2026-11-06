@@ -1517,7 +1517,11 @@
     "mixed",
     "same as ii"
    ],
-   "class_method": "The studio's coarse reading of V7's direction words, for a glyph or tint only. The words are V7's and always print beside any glyph. Words that start 'up' read up; 'slightly up' and 'small and slow' read slightly up; 'flat', 'near trend' and 'flat through 2036' read flat; 'down or flat' and 'flat, or down if ...' read flat or down; 'down' reads down; 'mixed' and 'prices down ...; employment effects mixed' read mixed; 'same as scenario ii' points to scenario ii.",
+   "class_rules": [
+    "A glyph or tint is a reading aid only; the four families are never added or tallied, so no badge, count or title may say \"all four up\".",
+    "\"same as ii\" points to scenario ii and must print as words; it is no direction of its own."
+   ],
+   "class_method": "The studio's coarse reading of V7's direction words, for a glyph or tint only. The words are V7's and always print beside any glyph. Words that start 'up' read up, except 'up modestly'; 'slightly up', 'up modestly' and 'small and slow' read slightly up; 'flat', 'near trend' and 'flat through 2036' read flat; 'down or flat' and 'flat, or down if ...' read flat or down; 'down' reads down; 'mixed' and 'prices down ...; employment effects mixed' read mixed; 'same as scenario ii' points to scenario ii.",
    "rows": [
     {
      "key": "i",
@@ -1673,7 +1677,7 @@
      "EP_class": "mixed",
      "EP_why": "",
      "EQ": "up modestly",
-     "EQ_class": "up",
+     "EQ_class": "slightly up",
      "EQ_why": "Workers' share of income (EC3) rises."
     },
     {
