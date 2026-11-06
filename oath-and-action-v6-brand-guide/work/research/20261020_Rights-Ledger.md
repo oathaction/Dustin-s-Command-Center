@@ -489,3 +489,22 @@ Added later on November 5, 2026: five more images. Two repeat earlier files byte
 | `20261105_Ref-Atlas-Follow-A-Question-Preview.webp` | "Who do they answer to? Follow a question from your week to the rules behind it.", illustrated question cards and topic tiles, marked "Private design preview"; it counts 193 issue records, 50 reforms and 740 sources | Supplied by Dustin; maker and tool not recorded; illustrations look generated. Study only |
 | `20261105_Ref-Atlas-Concept-03-R8-Diagram-Preview.webp` | "How housing scarcity sustains itself", Concept 03 diagram preview in a serif display, R8 as two boxes with a reform entry; footer says it reproduces "the supplied V4 model" | Supplied by Dustin; maker not recorded. Study only |
 | `20261105_Ref-Atlas-Feedback-Loops-Dark-Grid.webp` | "The feedback loops", six loops as icon box-and-arrow cards on Charcoal, the clean version of the board Dustin marked "I like this design" on October 30 | Generated mockup supplied by Dustin. Study only |
+
+## Added November 6, 2026: public data for the chart specimens
+
+The research lead fetched these for the data visualization round (DR-46); its brief is `work/research/20261106_Data-Viz-Public-Series.md`. Three terms codes and two likely-origin values are added with them.
+
+- **T-USGOV:** 17 U.S.C. 105, read on copyright.gov on November 6, 2026. U.S. government works carry no U.S. copyright. The Census Bureau's citation page asks users to cite the Bureau as the source.
+- **T-ISC-USATLAS:** the us-atlas LICENSE file, read from the package. Copy and redistribute with the copyright and permission notice.
+- **T-GFDL-BP:** Ballotpedia:Copyrights, read on November 6, 2026. Ballotpedia text is under the GNU Free Documentation License, with attribution by link. The studio files copy facts and short statutory phrases only.
+- Likely origin "federal public data": a table or file published by a U.S. federal agency. Likely origin "open-source package": a file taken from a published software package under its license.
+
+| # | File | Set | Likely origin | Evidence | Permitted use | Notes |
+|---|---|---|---|---|---|---|
+| dvp-01 | `work/boards/phase-2/data-viz/shared/public/census-spm-child-poverty.csv` | data-viz-public | federal public data | P60-290 Tables 3 and 8, P60-287 Table B-2, read November 6, 2026 | may ship | T-USGOV. Print the source line from the sidecar |
+| dvp-02 | `work/boards/phase-2/data-viz/shared/public/census-cps-reported-voting.csv` | data-viz-public | federal public data | CPS Table A-1, read November 6, 2026 | may ship | T-USGOV |
+| dvp-03 | `work/boards/phase-2/data-viz/shared/public/census-hvs-homeownership-by-race-annual.csv` | data-viz-public | federal public data | HVS Annual Table 22 and B-7, read November 6, 2026 | may ship | T-USGOV |
+| dvp-04 | `work/boards/phase-2/data-viz/shared/public/census-hvs-homeownership-by-race-quarterly.csv` | data-viz-public | federal public data | HVS Table 16 and B-8, read November 6, 2026 | may ship | T-USGOV |
+| dvp-05 | `work/boards/phase-2/data-viz/shared/public/ballotpedia-rcv-prohibitions-by-state.csv` and `work/boards/phase-2/data-viz/shared/public/ballotpedia-citizen-initiative-states.csv` | data-viz-public | third-party reference data | Ballotpedia pages, revisions 12746538 and 11698211, read November 6, 2026; Tennessee bill record | may ship | T-GFDL-BP. Facts only; credit Ballotpedia and label it secondary. Whether facts drawn from a GFDL page need GFDL terms is a judgment, not a legal opinion |
+| dvp-06 | `work/boards/phase-2/data-viz/shared/geo/states-albers-10m.json` | data-viz-public | open-source package | us-atlas 3.0.1 tarball; hashes match the npm registry | may ship with license text | T-ISC-USATLAS for the file, T-USGOV for the Census geometry. Ship `work/boards/phase-2/data-viz/shared/geo/us-atlas-LICENSE.txt` with it |
+| dvp-07 | `work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json` | data-viz-public | Oath & Action original | Made by the research lead, November 6, 2026 | may ship | Design layout; no third-party source |

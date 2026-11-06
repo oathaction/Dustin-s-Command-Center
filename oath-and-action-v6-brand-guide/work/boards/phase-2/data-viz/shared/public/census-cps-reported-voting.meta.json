@@ -1,0 +1,39 @@
+{
+ "file": "census-cps-reported-voting.csv",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Table A-1. Reported Voting and Registration by Race, Hispanic Origin, Sex and Age Groups: November 1964 to 2024",
+ "table_id": "CPS Voting and Registration Supplement, historical Table A-1 (hst_vote01)",
+ "url": [
+  "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote01.xlsx",
+  "https://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html"
+ ],
+ "observation_period": "November general elections, 1964 to 2024: presidential years and midterm years. The November 2026 supplement is not yet published",
+ "geography": "United States",
+ "universe_or_base": "Two bases, in the base column. citizen_voting_age_population: citizens 18 and over (all ages from 1978; age groups from 2002). total_voting_age_population: all people 18 and over, citizens or not (1964 to 2024). Charts should use the citizen base where it exists",
+ "unit": "voted_pct is the percent of the base who reported voting; total_voting_age_population_thousands is the total (not citizen) voting-age population of the group, in thousands",
+ "date_retrieved": "2026-11-06",
+ "vintage": "Table as posted on the historical tables page (page last revised April 24, 2025); covers elections through November 2024",
+ "qualification": "Rates are what survey respondents reported, not counts of ballots cast",
+ "columns": {
+  "year": "election year",
+  "election_type": "presidential or midterm",
+  "age_group": "all, 18_to_24, 25_to_44, 45_to_64, 65_and_over",
+  "base": "citizen_voting_age_population or total_voting_age_population",
+  "voted_pct": "percent who reported voting",
+  "total_voting_age_population_thousands": "total voting-age population of the age group, thousands",
+  "note": "comparability notes from the table"
+ },
+ "comparability": [
+  "Census note: Prior to 1996, the CPS did not collect information on citizenship in a uniform way. Citizen-base estimates before 1996 should be interpreted with caution, as they are not directly comparable to estimates from 1996 and after",
+  "Census note: Prior to 1972, the 18 to 24 rows are for people 21 to 24, except 18 to 24 in Georgia and Kentucky, 19 to 24 in Alaska, and 20 to 24 in Hawaii; the Twenty-sixth Amendment lowered the voting age to 18 in 1972",
+  "Citizen-base rates by age group start in 2002; earlier cells are 'N' (not available) in the table"
+ ],
+ "unconfirmed": [
+  "Margins of error are not in Table A-1 and were not collected"
+ ],
+ "raw_files_sha256_prefix": {
+  "hst_vote01.xlsx": "175d5ba32190aa65"
+ },
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, November 1964 to 2024, United States. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over (from 1978; by age from 2002); earlier years use all people 18 and over.",
+ "source_line_citizen_only": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable."
+}

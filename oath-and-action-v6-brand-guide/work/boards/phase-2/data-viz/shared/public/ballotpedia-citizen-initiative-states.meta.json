@@ -1,0 +1,32 @@
+{
+ "file": "ballotpedia-citizen-initiative-states.csv",
+ "publisher": "Ballotpedia. Secondary source",
+ "title_or_table": "States with initiative or referendum, table 'States that provide for citizen-initiated ballot measures'",
+ "table_id": "Wiki page revision 11698211",
+ "url": [
+  "https://ballotpedia.org/States_with_initiative_or_referendum"
+ ],
+ "observation_period": "Current state constitutions as described on the page read November 6, 2026; the page gives no as-of date",
+ "geography": "50 states and the District of Columbia (one row each)",
+ "universe_or_base": "Statewide citizen-initiated ballot measures: initiated state statutes and initiated constitutional amendments. Veto referendum is recorded for context",
+ "unit": "1 or 0 flags; form is direct, indirect or direct_and_indirect",
+ "date_retrieved": "2026-11-06",
+ "vintage": "Ballotpedia page read November 6, 2026",
+ "qualification": "Mississippi's initiative process is in its constitution but cannot be used since a May 14, 2021 state supreme court ruling, so 24 states have the process and 23 can use it",
+ "form_rule": "Ballotpedia marks indirect processes as '(indirect)' and does not define the term on this page. This file labels unmarked processes 'direct'. Studio gloss, not from the source: in an indirect process the petitioned measure goes to the legislature before it can reach the ballot",
+ "first_choice_source": "The NCSL site refused the session's request with a Cloudflare challenge (see the RCV file), so NCSL's initiative list was not tried",
+ "v7_comparison": "V7 claim CL1735 says 24 states, DC and the U.S. Virgin Islands have a citizen initiative process (Mississippi's ruled void), and V7 elsewhere counts '23 states with a working initiative process'. This file agrees: 24 with the process, 23 usable",
+ "counts": {
+  "citizen_initiative_states": 24,
+  "usable": 23,
+  "initiated_statute": 21,
+  "initiated_constitutional_amendment": 18
+ },
+ "unconfirmed": [
+  "Not checked against any state constitution or secretary of state",
+  "Subject-matter limits (for example Illinois) are not recorded",
+  "DC's initiative types are not itemized on the page"
+ ],
+ "rights": "Ballotpedia text is licensed under the GNU Free Documentation License; this file copies facts only and credits Ballotpedia",
+ "source_line": "Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi's process exists on paper but cannot be used after a 2021 state supreme court ruling."
+}

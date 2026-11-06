@@ -1,0 +1,31 @@
+{
+ "files": {
+  "states-albers-10m.json": "TopoJSON of the 50 states and DC with objects 'states' and 'nation'. Copied unchanged from the npm package. SHA-256 6e7bb086a3c791490361968a3094f377f7726c5d0c4900fec03cc42db2305a3d",
+  "us-atlas-LICENSE.txt": "The package LICENSE file, unchanged",
+  "us-state-tile-grid.json": "Studio-made square tile grid: 51 records of {code, name, fips, col, row}"
+ },
+ "package": {
+  "name": "us-atlas",
+  "version": "3.0.1",
+  "published": "2023-04-19 (npm registry time for 3.0.1)",
+  "tarball": "https://registry.npmjs.org/us-atlas/-/us-atlas-3.0.1.tgz",
+  "tarball_sha1": "367d64e4b31d3f945827710f1a43813c38e17d6b (matches the registry shasum)",
+  "tarball_integrity": "sha512-wEIZCq0ImPvGblTd8gZMqNNCPkQshugMUG/8nkSWXb02+XqNFREg9atHOKP9w6prLZTpqcLhSvdBW81MkV3/0Q== (matches the registry)",
+  "repository": "https://github.com/topojson/us-atlas",
+  "license": "ISC. 'Copyright 2013-2019 Michael Bostock'. Keep the copyright notice and permission notice with any copy of the file",
+  "date_retrieved": "2026-11-06"
+ },
+ "geometry": {
+  "underlying_data": "U.S. Census Bureau cartographic boundary files, 2017 edition (https://www2.census.gov/geo/tiger/GENZ2017/shp/), per the package README; state outlines merged from counties",
+  "projection": "Already projected with d3.geoAlbersUsa().scale(1300).translate([487.5, 305]) to fit a 975 x 610 viewport, per the README. Alaska and Hawaii are insets. Puerto Rico and other territories are not included",
+  "ids": "Each state's id is its two-digit FIPS code as a string; properties.name is the state name",
+  "extent": "File bbox [-57.66, 12.98, 957.52, 606.57]. Ten of Alaska's 56 polygons (the western Aleutians) fall left of x = 0, so a viewBox that starts at 0 clips them; use a viewBox starting near x = -60 or accept the clip",
+  "census_terms": "Census boundary files are works of the U.S. federal government. 17 U.S.C. 105 (read on copyright.gov, November 6, 2026): 'Copyright protection under this title is not available for any work of the United States Government.' The Census Bureau's citation page asks users to cite the Bureau as the source of the original data. No Census page read in this session states a license for these files"
+ },
+ "tile_grid": {
+  "layout": "12 columns by 8 rows, one square per state. Columns run west to east and rows run north to south; Alaska sits at the top left and Hawaii at the bottom left",
+  "convention": "Follows the square tile-grid convention newsrooms have used for state maps since the mid-2010s, which trades true shape and area for equal weight per state. It is a design layout made by the studio, not copied from a single publication, and needs no data source",
+  "join": "Join to data by code (two-letter postal code) or fips"
+ },
+ "credit_line": "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)."
+}

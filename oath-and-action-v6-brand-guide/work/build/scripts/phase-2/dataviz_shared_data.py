@@ -203,9 +203,9 @@ datasets['claims-by-grade'] = {
 # Public series from the research lead (DR-46). Each CSV has a sidecar meta.json with a ready source line.
 PUBLIC_SPECS = {
     'census-spm-child-poverty': ('S02', 'child-poverty-spm', 'Line with event notes'),
-    'census-cps-turnout': ('S04', 'turnout-by-age', 'Dumbbell'),
-    'census-hvs-homeownership-by-race': ('S05', 'homeownership-by-race', 'Small multiples'),
-    'rcv-prohibitions-by-state': ('S07', 'rcv-bans', 'Map'),
+    'census-cps-reported-voting': ('S04', 'turnout-by-age', 'Dumbbell'),
+    'census-hvs-homeownership-by-race-annual': ('S05', 'homeownership-by-race', 'Small multiples'),
+    'ballotpedia-rcv-prohibitions-by-state': ('S07', 'rcv-bans', 'Map'),
 }
 public_found = {}
 if PUBLIC.exists():
@@ -224,15 +224,78 @@ if PUBLIC.exists():
                     r[k] = int(r[k])
         public_found[p.stem] = {'file': str(p.relative_to(ROOT)), 'meta': meta, 'rows': prow, 'columns': list(prow[0].keys()) if prow else []}
 
+# How each public series becomes chart rows: which rows, which fields make the key, which field holds the value
+PUBLIC_RULES = {
+    'child-poverty-spm': {
+        'title': 'Children in poverty, Supplemental Poverty Measure and official measure, 2009 to 2025',
+        'filter': lambda r: r['vintage'] == 'p60-290' and r['age_group'] == 'under_18',
+        'key_fields': ['measure', 'year', 'series_variant'], 'value_field': 'percent',
+        'required': lambda r: r['measure'] == 'spm',
+        'source_tokens': ['Census Bureau', 'P60-290'],
+        'notes': ['Use the current P60-290 table (D2-98). V7 prints the first-published 9.7 (2020), 5.2 (2021) and 13.4 (2024) percent; '
+                  'the current table reads 9.6, 5.1 and 13.5 after the August 2026 revision and the 2024 reweighting.',
+                  'Break years carry two rows (series_variant "earlier" and "later" method, for 2013, 2017 and 2019). Draw the break; never bridge it (R16).',
+                  'Census: a change between two years is a descriptive change, not the effect of one policy.'],
+    },
+    'turnout-by-age': {
+        'title': 'Reported voting rate by age group, November elections, 1964 to 2024',
+        'filter': lambda r: True,
+        'key_fields': ['age_group', 'year', 'base'], 'value_field': 'voted_pct',
+        'required': lambda r: r['base'] == 'citizen_voting_age_population' and r['age_group'] != 'all' and int(float(r['year'])) in (2020, 2024),
+        'source_tokens': ['Census Bureau', 'Table A-1'],
+        'notes': ['S04 compares 2020 and 2024 for the four age groups, citizens 18 and over (the required rows). Other rows are context.',
+                  'Rates are what respondents reported, which runs higher than counted ballots; say so in the chart.'],
+    },
+    'homeownership-by-race': {
+        'title': 'Homeownership rate by race and ethnicity of householder, 1994 to 2025',
+        'filter': lambda r: True,
+        'key_fields': ['group', 'year', 'race_definition', 'series_variant'], 'value_field': 'rate_pct',
+        'required': lambda r: r['series_variant'] == 'standard',
+        'source_tokens': ['Census Bureau', 'Table 22'],
+        'notes': ['Race categories changed in 2003, so the Black and non-Hispanic White lines break there. Draw the break.',
+                  'The 2025 annual figure leaves out October 2025, when no data were collected. The latest quarter (third quarter of 2026) is in the dataset homeownership-by-race-quarterly.'],
+    },
+    'rcv-bans': {
+        'title': 'States that prohibit ranked-choice voting, as of November 2026',
+        'filter': lambda r: True,
+        'key_fields': ['code'], 'value_field': None,
+        'required': lambda r: True,
+        'source_tokens': ['Ballotpedia'],
+        'notes': ['Ballotpedia is a secondary source; V7 cites the National Conference of State Legislatures (W049), whose page refused automated reading. '
+                  'Both give 19 states, matching V7 repair log row RL47.',
+                  'Mark each state with data-key="<code>" data-category="<status>" data-field="status". Every state and DC must be drawn.'],
+    },
+}
 for stem, (spec, did, form) in PUBLIC_SPECS.items():
-    hit = next((v for k, v in public_found.items() if k.startswith(stem)), None)
-    if hit:
-        m = hit['meta']
-        datasets[did] = {'spec': spec, 'kind': 'public', 'title': m.get('title') or m.get('title_or_table') or stem,
-                         'evidence': 'Finding', 'grade': 'official statistic', 'file': hit['file'], 'columns': hit['columns'],
-                         'rows': hit['rows'], 'meta': m, 'source_line': m.get('source_line'), 'key': None}
-    else:
+    hit = public_found.get(stem)
+    if not hit:
         datasets[did] = {'spec': spec, 'kind': 'public', 'pending': True, 'title': f'{form}: waiting for the research lead ({stem})'}
+        continue
+    m, rule = hit['meta'], PUBLIC_RULES[did]
+    prow = [dict(r) for r in hit['rows'] if rule['filter'](r)]
+    for r in prow:
+        for k in ('year', 'quarter', 'enacted_year'):
+            if isinstance(r.get(k), float):
+                r[k] = int(r[k])
+        if did == 'rcv-bans':
+            r['status'] = {'all': 'bans in all elections', 'some': 'bans in some elections'}.get(r.get('scope') or '', 'no ban')
+        r['key'] = '|'.join(str(r[f]) for f in rule['key_fields'])
+    keys = [r['key'] for r in prow]
+    if len(keys) != len(set(keys)):
+        raise SystemExit(f'{did}: key fields {rule["key_fields"]} do not make unique keys')
+    datasets[did] = {
+        'spec': spec, 'kind': 'public', 'title': rule['title'], 'evidence': 'Finding', 'grade': 'official statistic' if 'census' in stem else 'secondary compilation',
+        'file': hit['file'], 'key': 'key', 'key_fields': rule['key_fields'], 'value_field': rule['value_field'],
+        'columns': hit['columns'] + (['status'] if did == 'rcv-bans' else []) + ['key'],
+        'rows': prow, 'required_keys': [r['key'] for r in prow if rule['required'](r)],
+        'source_line': m.get('source_line'), 'source_tokens': rule['source_tokens'], 'meta': m, 'notes': rule['notes'],
+    }
+# Extra public tables beside the ten (not specimen datasets): latest quarter and initiative states
+for stem, did in (('census-hvs-homeownership-by-race-quarterly', 'homeownership-by-race-quarterly'), ('ballotpedia-citizen-initiative-states', 'initiative-states')):
+    hit = public_found.get(stem)
+    if hit:
+        datasets[did] = {'spec': None, 'kind': 'public', 'title': hit['meta'].get('title_or_table'), 'file': hit['file'], 'rows': hit['rows'],
+                         'source_line': hit['meta'].get('source_line'), 'meta': hit['meta']}
 
 # Verifier hooks: which keys a figure must draw, and which words its source line must carry
 for did, ds in datasets.items():

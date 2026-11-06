@@ -1,0 +1,37 @@
+{
+ "file": "census-hvs-homeownership-by-race-annual.csv",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Housing Vacancies and Homeownership (CPS/HVS), Annual Statistics: 2025, Table 22. Homeownership Rates by Race and Ethnicity of Householder: 1994 to 2025",
+ "table_id": "HVS Annual Statistics 2025, Table 22 (ann25t_22); margins of error from Table B-7 (ann25t_b7)",
+ "url": [
+  "https://www.census.gov/housing/hvs/files/annual25/ann25t_22.xlsx",
+  "https://www.census.gov/housing/hvs/files/annual25/ann25t_b7.xlsx",
+  "https://www.census.gov/housing/hvs/data/prevann.html"
+ ],
+ "observation_period": "Annual averages, 1994 to 2025",
+ "geography": "United States",
+ "universe_or_base": "Households, by the race and Hispanic origin of the householder. HVS definitions: the homeownership rate is computed by dividing the number of households that are owners by the total number of households. all_households is the U.S. total; non_hispanic_white, black and hispanic are householder groups (Hispanic of any race)",
+ "unit": "rate_pct is owner households as a percent of all households in the group; moe_pct is the 90 percent margin of error (2025 only)",
+ "date_retrieved": "2026-11-06",
+ "vintage": "Table dated March 24, 2026 in its source note",
+ "qualification": "Race categories changed in 2003 (race alone from 2003; earlier groups followed the older standard, with 'other' responses allocated from 1996 to 2002), so the Black and non-Hispanic White lines break at 2003. The 2025 annual figure leaves out October 2025, when no data were collected",
+ "columns": {
+  "year": "year",
+  "group": "all_households, non_hispanic_white, black, hispanic",
+  "rate_pct": "homeownership rate",
+  "moe_pct": "90 percent margin of error (2025 only, from Table B-7)",
+  "race_definition": "pre_2003_race_categories or race_alone (race groups only)",
+  "series_variant": "2002 has two values: original and revised_2000_census",
+  "source_table": "table the row came from",
+  "note": "Census footnote text"
+ },
+ "v7_comparison": "Atlas V7 cites second-quarter 2026 rates (74.5% non-Hispanic White, 45.4% Black, 48.1% Hispanic). This annual table ends in 2025; see the quarterly file for the check",
+ "unconfirmed": [
+  "Margins of error for years before 2025 are in earlier annual releases and were not collected"
+ ],
+ "raw_files_sha256_prefix": {
+  "ann25t_22.xlsx": "ff6fe80bfcadba96",
+  "ann25t_b7.xlsx": "9167848cd609afcf"
+ },
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 22, homeownership rate by race and ethnicity of householder, 1994 to 2025, United States. Retrieved November 6, 2026. Race categories changed in 2003; the 2025 average leaves out October, when no data were collected."
+}

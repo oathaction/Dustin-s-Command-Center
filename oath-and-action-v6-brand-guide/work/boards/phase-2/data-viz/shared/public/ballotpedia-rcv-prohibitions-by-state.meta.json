@@ -1,0 +1,35 @@
+{
+ "file": "ballotpedia-rcv-prohibitions-by-state.csv",
+ "publisher": "Ballotpedia. Secondary source",
+ "title_or_table": "Ranked-choice voting (RCV), section 'State laws prohibiting RCV'",
+ "table_id": "Wiki page revision 12746538",
+ "url": [
+  "https://ballotpedia.org/Ranked-choice_voting_(RCV)",
+  "https://wapp.capitol.tn.gov/apps/BillInfo/Default.aspx?BillNumber=SB1820&GA=112"
+ ],
+ "observation_period": "State law as of November 2026, the as-of date Ballotpedia states. The same 19 states appear in Atlas V7 repair log row RL47 as of October 15, 2026",
+ "geography": "50 states and the District of Columbia (one row each)",
+ "universe_or_base": "Statewide laws or constitutional provisions that prohibit ranked-choice voting",
+ "unit": "prohibits_rcv is 1 or 0; scope is all or some",
+ "date_retrieved": "2026-11-06",
+ "vintage": "Ballotpedia page read November 6, 2026",
+ "qualification": "17 of the 19 bans cover all elections. Ohio's leaves an opening for home-rule cities, at the cost of state funds, and Tennessee's names statewide and local offices only",
+ "scope_rule": "all means the law, as Ballotpedia quotes it, covers local, state and federal offices or every election in the state. some means the quoted text leaves a class of elections out. Exceptions for military and overseas voters' ranked runoff ballots (Alabama, Arkansas, Louisiana) do not change the scope",
+ "first_choice_source": "Atlas V7 source W049, the National Conference of State Legislatures page https://www.ncsl.org/elections-and-campaigns/ranked-choice-voting, returned HTTP 403 with a Cloudflare security challenge on November 6, 2026. The studio did not retry it. NCSL's own state list and scope labels were not read",
+ "v7_comparison": "Same 19 states and the same enactment years as V7 RL47. V7 gives the count of 19 from NCSL (March 23, 2026)",
+ "primary_checks": {
+  "Tennessee": "Read on the Tennessee General Assembly site: SB1820, Public Chapter 621, 'prohibits a county election commission from utilizing instant runoff voting or ranked choice voting to conduct an election in this state for a statewide or local government office'; signed by the governor 02/28/2022; Pub. Ch. 621 on 03/07/2022",
+  "Mississippi": "billstatus.ls.state.ms.us failed TLS certificate verification; not read",
+  "Ohio": "www.legislature.ohio.gov failed TLS certificate verification; not read",
+  "Missouri": "A guessed Secretary of State URL for Amendment 7 returned 404; the amendment text was not read"
+ },
+ "unconfirmed": [
+  "Every state except Tennessee rests on Ballotpedia's quotation of the statute; the statutes themselves were not read",
+  "Alabama's bill number prints as 'SB 1886' on Ballotpedia; not checked against the Alabama Legislature",
+  "Ballotpedia gives two bill numbers for Iowa (HF 954 and HF 1954) and two signing dates for North Dakota (April 15 and April 18, 2025)",
+  "Missouri's scope rests on Ballotpedia's statement that Amendment 7 'prohibited ranked-choice voting'",
+  "Mississippi's quoted text does not name congressional district races; marked all as Ballotpedia describes it"
+ ],
+ "rights": "Ballotpedia text is licensed under the GNU Free Documentation License (Ballotpedia:Copyrights, read November 6, 2026). This file copies facts only, plus short statutory phrases, and credits Ballotpedia",
+ "source_line": "Source: Ballotpedia, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio's and Tennessee's bans cover some elections; the other 17 cover all."
+}

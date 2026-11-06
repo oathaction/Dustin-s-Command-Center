@@ -1,0 +1,52 @@
+code,name,fips,citizen_initiative,initiated_statute,initiated_statute_form,initiated_constitutional_amendment,initiated_amendment_form,veto_referendum,year_adopted,initiative_usable,note
+AL,Alabama,01,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+AK,Alaska,02,1,1,indirect,0,,1,1956,1,
+AZ,Arizona,04,1,1,direct,1,direct,1,1911,1,
+AR,Arkansas,05,1,1,direct,1,direct,1,1910,1,
+CA,California,06,1,1,direct,1,direct,1,1911,1,
+CO,Colorado,08,1,1,direct,1,direct,1,1910,1,
+CT,Connecticut,09,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+DE,Delaware,10,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+DC,District of Columbia,11,1,,,,,,,,"Ballotpedia says only that Washington, D.C. also has an initiative and referendum process; it does not itemize the types, so those columns are blank"
+FL,Florida,12,1,0,,1,direct,0,1968,1,Constitutional amendments only
+GA,Georgia,13,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+HI,Hawaii,15,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+ID,Idaho,16,1,1,direct,0,,1,1912,1,
+IL,Illinois,17,1,0,,1,direct,0,1970,1,Constitutional amendments only; subject limits are not recorded in this list
+IN,Indiana,18,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+IA,Iowa,19,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+KS,Kansas,20,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+KY,Kentucky,21,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+LA,Louisiana,22,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+ME,Maine,23,1,1,indirect,0,,1,1908,1,
+MD,Maryland,24,0,0,,0,,1,1915,,Veto referendum only; no citizen initiative
+MA,Massachusetts,25,1,1,indirect,1,indirect,1,1918,1,
+MI,Michigan,26,1,1,indirect,1,direct,1,1908,1,
+MN,Minnesota,27,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+MS,Mississippi,28,1,0,,1,indirect,0,1992,0,"The Mississippi Supreme Court held on May 14, 2021 that the signature distribution requirement cannot be met with four congressional districts, so the process cannot be used"
+MO,Missouri,29,1,1,direct,1,direct,1,1908,1,
+MT,Montana,30,1,1,direct,1,direct,1,1906,1,
+NE,Nebraska,31,1,1,direct,1,direct,1,1912,1,
+NV,Nevada,32,1,1,indirect,1,direct,1,1905,1,
+NH,New Hampshire,33,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+NJ,New Jersey,34,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+NM,New Mexico,35,0,0,,0,,1,1911,,Veto referendum only; no citizen initiative
+NY,New York,36,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+NC,North Carolina,37,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+ND,North Dakota,38,1,1,direct,1,direct,1,1914,1,
+OH,Ohio,39,1,1,indirect,1,direct,1,1912,1,
+OK,Oklahoma,40,1,1,direct,1,direct,1,1907,1,
+OR,Oregon,41,1,1,direct,1,direct,1,1902,1,
+PA,Pennsylvania,42,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+RI,Rhode Island,44,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+SC,South Carolina,45,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+SD,South Dakota,46,1,1,direct,1,direct,1,1898 and 1972,1,
+TN,Tennessee,47,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+TX,Texas,48,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+UT,Utah,49,1,1,direct_and_indirect,0,,1,1900,1,
+VT,Vermont,50,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+VA,Virginia,51,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+WA,Washington,53,1,1,direct_and_indirect,0,,1,1912,1,
+WV,West Virginia,54,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+WI,Wisconsin,55,0,0,,0,,0,,,Listed by Ballotpedia among the 24 states without statewide citizen-initiated ballot measures
+WY,Wyoming,56,1,1,indirect,0,,1,1968,1,

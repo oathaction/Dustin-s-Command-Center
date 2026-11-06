@@ -1,0 +1,46 @@
+{
+ "file": "census-hvs-homeownership-by-race-quarterly.csv",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Housing Vacancies and Homeownership (CPS/HVS), Table 16. Homeownership Rates by Race and Ethnicity of Householder: 1994 to Present",
+ "table_id": "HVS historical Table 16 (histtab16); margins of error from Table B-8 (B8)",
+ "url": [
+  "https://www.census.gov/housing/hvs/data/histtab16.xlsx",
+  "https://www.census.gov/housing/hvs/data/B8.xlsx",
+  "https://www.census.gov/housing/hvs/data/histtabs.html",
+  "https://www.census.gov/housing/hvs/current/index.html"
+ ],
+ "observation_period": "Quarterly, first quarter 1994 to third quarter 2026",
+ "geography": "United States",
+ "universe_or_base": "Households, by the race and Hispanic origin of the householder (Hispanic of any race). HVS definitions: owner households divided by all households",
+ "unit": "rate_pct in percent; moe_pct is the 90 percent margin of error for the three race and ethnicity groups, 2010 onward (Table B-8 gives none for the U.S. total)",
+ "date_retrieved": "2026-11-06",
+ "vintage": "Table dated October 28, 2026 in its source note, the release for the third quarter of 2026",
+ "qualification": "Quarterly survey estimates; group margins of error in 2026 are 0.4 points (non-Hispanic White), 0.9 (Black) and 0.8 (Hispanic). The fourth quarter of 2025 uses November and December only",
+ "v7_comparison": {
+  "v7_figures": "Atlas V7 claim CL1120: second quarter 2026, 74.5% non-Hispanic White, 45.4% Black, 48.1% Hispanic householders; national rate 65.0%",
+  "match": "Yes. Table 16 gives 74.5, 45.4 and 48.1 for the second quarter of 2026, and 65.0 for the U.S.",
+  "newer_quarter": "The third quarter of 2026 (released October 28, 2026) gives 75.1 non-Hispanic White, 44.4 Black, 48.1 Hispanic, 65.5 U.S.",
+  "not_checked": "V7's release date for the second-quarter data (July 28, 2026) was not checked"
+ },
+ "columns": {
+  "year": "year",
+  "quarter": "1 to 4",
+  "group": "all_households, non_hispanic_white, black, hispanic",
+  "rate_pct": "homeownership rate",
+  "moe_pct": "90 percent margin of error (race and ethnicity groups, 2010 onward)",
+  "race_definition": "pre_2003_race_categories or race_alone (race groups only)",
+  "cell_as_read": "filled only where the table cell carried an extra digit; rate_pct gives the corrected reading",
+  "source_table": "table the row came from",
+  "note": "Census footnote text or a cell note"
+ },
+ "unconfirmed": [
+  "1998 Q4 Hispanic: the cell reads 45.73; the file gives 45.7, read as a stray footnote mark, but no second table confirms it",
+  "Whether Table 16 is seasonally adjusted is not stated in the table; it is not marked as adjusted (Table 14a is the seasonally adjusted U.S. series)"
+ ],
+ "raw_files_sha256_prefix": {
+  "histtab16.xlsx": "bcdc52cc612b09f8",
+  "B8.xlsx": "3e463174aba1c226",
+  "histtab14.xlsx": "9ebe7c51e6c8e312"
+ },
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Table 16, homeownership rate by race and ethnicity of householder, first quarter 1994 to third quarter 2026, United States. Retrieved November 6, 2026. Quarterly survey estimates, with margins of error up to 0.9 points for each group."
+}

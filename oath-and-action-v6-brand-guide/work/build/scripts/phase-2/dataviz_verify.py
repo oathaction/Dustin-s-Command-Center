@@ -157,7 +157,7 @@ def verify(html):
                 errs.append(f'{tag}: mark key "{k}" is not a row of {did}')
                 continue
             row = idx[k]
-            field = ma.get('data-field', 'value')
+            field = ma.get('data-field', ds.get('value_field') or 'value')
             if ma.get('data-mark') not in (None, 'label'):
                 drawn.add(k)
             if 'data-value' in ma:
@@ -169,7 +169,7 @@ def verify(html):
                     errs.append(f'{tag}: {k}.{field} drawn as {got}, data says {want}')
             if 'data-category' in ma:
                 stats['categories'] += 1
-                cf = ma.get('data-field', 'direction' if did == 'rule-changes' else 'category')
+                cf = ma.get('data-field') if 'data-category' in ma and ma.get('data-field') and ma.get('data-field') in row and not isinstance(row.get(ma.get('data-field')), (int, float)) else {'rule-changes': 'direction', 'rcv-bans': 'status'}.get(did, 'category')
                 if str(row.get(cf)) != ma['data-category']:
                     errs.append(f'{tag}: {k}.{cf} drawn as "{ma["data-category"]}", data says "{row.get(cf)}"')
             if ma.get('data-mark') == 'unit':
