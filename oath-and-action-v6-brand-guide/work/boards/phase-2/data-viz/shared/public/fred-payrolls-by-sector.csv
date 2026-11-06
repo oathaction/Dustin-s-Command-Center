@@ -1,0 +1,1243 @@
+series_id,sector,date,employees_thousands
+PAYEMS,Total nonfarm,2021-01-01,142863.0
+PAYEMS,Total nonfarm,2021-02-01,143380.0
+PAYEMS,Total nonfarm,2021-03-01,144232.0
+PAYEMS,Total nonfarm,2021-04-01,144587.0
+PAYEMS,Total nonfarm,2021-05-01,145065.0
+PAYEMS,Total nonfarm,2021-06-01,145820.0
+PAYEMS,Total nonfarm,2021-07-01,146762.0
+PAYEMS,Total nonfarm,2021-08-01,147314.0
+PAYEMS,Total nonfarm,2021-09-01,147771.0
+PAYEMS,Total nonfarm,2021-10-01,148572.0
+PAYEMS,Total nonfarm,2021-11-01,149230.0
+PAYEMS,Total nonfarm,2021-12-01,149816.0
+PAYEMS,Total nonfarm,2022-01-01,150006.0
+PAYEMS,Total nonfarm,2022-02-01,150825.0
+PAYEMS,Total nonfarm,2022-03-01,151315.0
+PAYEMS,Total nonfarm,2022-04-01,151623.0
+PAYEMS,Total nonfarm,2022-05-01,151924.0
+PAYEMS,Total nonfarm,2022-06-01,152358.0
+PAYEMS,Total nonfarm,2022-07-01,153072.0
+PAYEMS,Total nonfarm,2022-08-01,153362.0
+PAYEMS,Total nonfarm,2022-09-01,153582.0
+PAYEMS,Total nonfarm,2022-10-01,153939.0
+PAYEMS,Total nonfarm,2022-11-01,154242.0
+PAYEMS,Total nonfarm,2022-12-01,154342.0
+PAYEMS,Total nonfarm,2023-01-01,154776.0
+PAYEMS,Total nonfarm,2023-02-01,155066.0
+PAYEMS,Total nonfarm,2023-03-01,155134.0
+PAYEMS,Total nonfarm,2023-04-01,155375.0
+PAYEMS,Total nonfarm,2023-05-01,155655.0
+PAYEMS,Total nonfarm,2023-06-01,155880.0
+PAYEMS,Total nonfarm,2023-07-01,156043.0
+PAYEMS,Total nonfarm,2023-08-01,156261.0
+PAYEMS,Total nonfarm,2023-09-01,156417.0
+PAYEMS,Total nonfarm,2023-10-01,156576.0
+PAYEMS,Total nonfarm,2023-11-01,156703.0
+PAYEMS,Total nonfarm,2023-12-01,156857.0
+PAYEMS,Total nonfarm,2024-01-01,157032.0
+PAYEMS,Total nonfarm,2024-02-01,157238.0
+PAYEMS,Total nonfarm,2024-03-01,157466.0
+PAYEMS,Total nonfarm,2024-04-01,157530.0
+PAYEMS,Total nonfarm,2024-05-01,157608.0
+PAYEMS,Total nonfarm,2024-06-01,157695.0
+PAYEMS,Total nonfarm,2024-07-01,157748.0
+PAYEMS,Total nonfarm,2024-08-01,157757.0
+PAYEMS,Total nonfarm,2024-09-01,157912.0
+PAYEMS,Total nonfarm,2024-10-01,157945.0
+PAYEMS,Total nonfarm,2024-11-01,158079.0
+PAYEMS,Total nonfarm,2024-12-01,158316.0
+PAYEMS,Total nonfarm,2025-01-01,158268.0
+PAYEMS,Total nonfarm,2025-02-01,158310.0
+PAYEMS,Total nonfarm,2025-03-01,158377.0
+PAYEMS,Total nonfarm,2025-04-01,158485.0
+PAYEMS,Total nonfarm,2025-05-01,158498.0
+PAYEMS,Total nonfarm,2025-06-01,158478.0
+PAYEMS,Total nonfarm,2025-07-01,158542.0
+PAYEMS,Total nonfarm,2025-08-01,158472.0
+PAYEMS,Total nonfarm,2025-09-01,158548.0
+PAYEMS,Total nonfarm,2025-10-01,158408.0
+PAYEMS,Total nonfarm,2025-11-01,158449.0
+PAYEMS,Total nonfarm,2025-12-01,158432.0
+PAYEMS,Total nonfarm,2026-01-01,158592.0
+PAYEMS,Total nonfarm,2026-02-01,158436.0
+PAYEMS,Total nonfarm,2026-03-01,158650.0
+PAYEMS,Total nonfarm,2026-04-01,158798.0
+PAYEMS,Total nonfarm,2026-05-01,158861.0
+PAYEMS,Total nonfarm,2026-06-01,158892.0
+PAYEMS,Total nonfarm,2026-07-01,158882.0
+PAYEMS,Total nonfarm,2026-08-01,159015.0
+PAYEMS,Total nonfarm,2026-09-01,159044.0
+USPRIV,Total private,2021-01-01,121122.0
+USPRIV,Total private,2021-02-01,121626.0
+USPRIV,Total private,2021-03-01,122388.0
+USPRIV,Total private,2021-04-01,122694.0
+USPRIV,Total private,2021-05-01,123136.0
+USPRIV,Total private,2021-06-01,123789.0
+USPRIV,Total private,2021-07-01,124723.0
+USPRIV,Total private,2021-08-01,125178.0
+USPRIV,Total private,2021-09-01,125669.0
+USPRIV,Total private,2021-10-01,126545.0
+USPRIV,Total private,2021-11-01,127184.0
+USPRIV,Total private,2021-12-01,127754.0
+USPRIV,Total private,2022-01-01,127957.0
+USPRIV,Total private,2022-02-01,128793.0
+USPRIV,Total private,2022-03-01,129282.0
+USPRIV,Total private,2022-04-01,129554.0
+USPRIV,Total private,2022-05-01,129799.0
+USPRIV,Total private,2022-06-01,130216.0
+USPRIV,Total private,2022-07-01,130766.0
+USPRIV,Total private,2022-08-01,131056.0
+USPRIV,Total private,2022-09-01,131285.0
+USPRIV,Total private,2022-10-01,131646.0
+USPRIV,Total private,2022-11-01,131863.0
+USPRIV,Total private,2022-12-01,131977.0
+USPRIV,Total private,2023-01-01,132292.0
+USPRIV,Total private,2023-02-01,132528.0
+USPRIV,Total private,2023-03-01,132554.0
+USPRIV,Total private,2023-04-01,132733.0
+USPRIV,Total private,2023-05-01,132933.0
+USPRIV,Total private,2023-06-01,133088.0
+USPRIV,Total private,2023-07-01,133206.0
+USPRIV,Total private,2023-08-01,133354.0
+USPRIV,Total private,2023-09-01,133469.0
+USPRIV,Total private,2023-10-01,133583.0
+USPRIV,Total private,2023-11-01,133667.0
+USPRIV,Total private,2023-12-01,133766.0
+USPRIV,Total private,2024-01-01,133892.0
+USPRIV,Total private,2024-02-01,134027.0
+USPRIV,Total private,2024-03-01,134170.0
+USPRIV,Total private,2024-04-01,134233.0
+USPRIV,Total private,2024-05-01,134278.0
+USPRIV,Total private,2024-06-01,134356.0
+USPRIV,Total private,2024-07-01,134348.0
+USPRIV,Total private,2024-08-01,134321.0
+USPRIV,Total private,2024-09-01,134463.0
+USPRIV,Total private,2024-10-01,134459.0
+USPRIV,Total private,2024-11-01,134575.0
+USPRIV,Total private,2024-12-01,134787.0
+USPRIV,Total private,2025-01-01,134711.0
+USPRIV,Total private,2025-02-01,134751.0
+USPRIV,Total private,2025-03-01,134818.0
+USPRIV,Total private,2025-04-01,134917.0
+USPRIV,Total private,2025-05-01,134937.0
+USPRIV,Total private,2025-06-01,134892.0
+USPRIV,Total private,2025-07-01,134957.0
+USPRIV,Total private,2025-08-01,134937.0
+USPRIV,Total private,2025-09-01,135005.0
+USPRIV,Total private,2025-10-01,135018.0
+USPRIV,Total private,2025-11-01,135090.0
+USPRIV,Total private,2025-12-01,135083.0
+USPRIV,Total private,2026-01-01,135263.0
+USPRIV,Total private,2026-02-01,135115.0
+USPRIV,Total private,2026-03-01,135317.0
+USPRIV,Total private,2026-04-01,135467.0
+USPRIV,Total private,2026-05-01,135528.0
+USPRIV,Total private,2026-06-01,135554.0
+USPRIV,Total private,2026-07-01,135582.0
+USPRIV,Total private,2026-08-01,135671.0
+USPRIV,Total private,2026-09-01,135717.0
+USMINE,Mining and logging,2021-01-01,549.0
+USMINE,Mining and logging,2021-02-01,539.0
+USMINE,Mining and logging,2021-03-01,553.0
+USMINE,Mining and logging,2021-04-01,555.0
+USMINE,Mining and logging,2021-05-01,557.0
+USMINE,Mining and logging,2021-06-01,559.0
+USMINE,Mining and logging,2021-07-01,561.0
+USMINE,Mining and logging,2021-08-01,565.0
+USMINE,Mining and logging,2021-09-01,566.0
+USMINE,Mining and logging,2021-10-01,569.0
+USMINE,Mining and logging,2021-11-01,572.0
+USMINE,Mining and logging,2021-12-01,577.0
+USMINE,Mining and logging,2022-01-01,578.0
+USMINE,Mining and logging,2022-02-01,581.0
+USMINE,Mining and logging,2022-03-01,589.0
+USMINE,Mining and logging,2022-04-01,596.0
+USMINE,Mining and logging,2022-05-01,600.0
+USMINE,Mining and logging,2022-06-01,608.0
+USMINE,Mining and logging,2022-07-01,614.0
+USMINE,Mining and logging,2022-08-01,612.0
+USMINE,Mining and logging,2022-09-01,614.0
+USMINE,Mining and logging,2022-10-01,618.0
+USMINE,Mining and logging,2022-11-01,624.0
+USMINE,Mining and logging,2022-12-01,627.0
+USMINE,Mining and logging,2023-01-01,634.0
+USMINE,Mining and logging,2023-02-01,633.0
+USMINE,Mining and logging,2023-03-01,634.0
+USMINE,Mining and logging,2023-04-01,637.0
+USMINE,Mining and logging,2023-05-01,642.0
+USMINE,Mining and logging,2023-06-01,640.0
+USMINE,Mining and logging,2023-07-01,642.0
+USMINE,Mining and logging,2023-08-01,641.0
+USMINE,Mining and logging,2023-09-01,641.0
+USMINE,Mining and logging,2023-10-01,639.0
+USMINE,Mining and logging,2023-11-01,636.0
+USMINE,Mining and logging,2023-12-01,638.0
+USMINE,Mining and logging,2024-01-01,633.0
+USMINE,Mining and logging,2024-02-01,633.0
+USMINE,Mining and logging,2024-03-01,636.0
+USMINE,Mining and logging,2024-04-01,628.0
+USMINE,Mining and logging,2024-05-01,624.0
+USMINE,Mining and logging,2024-06-01,620.0
+USMINE,Mining and logging,2024-07-01,622.0
+USMINE,Mining and logging,2024-08-01,620.0
+USMINE,Mining and logging,2024-09-01,622.0
+USMINE,Mining and logging,2024-10-01,622.0
+USMINE,Mining and logging,2024-11-01,624.0
+USMINE,Mining and logging,2024-12-01,622.0
+USMINE,Mining and logging,2025-01-01,622.0
+USMINE,Mining and logging,2025-02-01,622.0
+USMINE,Mining and logging,2025-03-01,620.0
+USMINE,Mining and logging,2025-04-01,622.0
+USMINE,Mining and logging,2025-05-01,618.0
+USMINE,Mining and logging,2025-06-01,616.0
+USMINE,Mining and logging,2025-07-01,610.0
+USMINE,Mining and logging,2025-08-01,607.0
+USMINE,Mining and logging,2025-09-01,605.0
+USMINE,Mining and logging,2025-10-01,606.0
+USMINE,Mining and logging,2025-11-01,605.0
+USMINE,Mining and logging,2025-12-01,604.0
+USMINE,Mining and logging,2026-01-01,602.0
+USMINE,Mining and logging,2026-02-01,601.0
+USMINE,Mining and logging,2026-03-01,604.0
+USMINE,Mining and logging,2026-04-01,608.0
+USMINE,Mining and logging,2026-05-01,611.0
+USMINE,Mining and logging,2026-06-01,609.0
+USMINE,Mining and logging,2026-07-01,606.0
+USMINE,Mining and logging,2026-08-01,609.0
+USMINE,Mining and logging,2026-09-01,607.0
+USCONS,Construction,2021-01-01,7362.0
+USCONS,Construction,2021-02-01,7278.0
+USCONS,Construction,2021-03-01,7399.0
+USCONS,Construction,2021-04-01,7400.0
+USCONS,Construction,2021-05-01,7391.0
+USCONS,Construction,2021-06-01,7393.0
+USCONS,Construction,2021-07-01,7425.0
+USCONS,Construction,2021-08-01,7432.0
+USCONS,Construction,2021-09-01,7484.0
+USCONS,Construction,2021-10-01,7518.0
+USCONS,Construction,2021-11-01,7562.0
+USCONS,Construction,2021-12-01,7595.0
+USCONS,Construction,2022-01-01,7595.0
+USCONS,Construction,2022-02-01,7651.0
+USCONS,Construction,2022-03-01,7692.0
+USCONS,Construction,2022-04-01,7698.0
+USCONS,Construction,2022-05-01,7738.0
+USCONS,Construction,2022-06-01,7761.0
+USCONS,Construction,2022-07-01,7792.0
+USCONS,Construction,2022-08-01,7801.0
+USCONS,Construction,2022-09-01,7832.0
+USCONS,Construction,2022-10-01,7847.0
+USCONS,Construction,2022-11-01,7863.0
+USCONS,Construction,2022-12-01,7885.0
+USCONS,Construction,2023-01-01,7932.0
+USCONS,Construction,2023-02-01,7943.0
+USCONS,Construction,2023-03-01,7926.0
+USCONS,Construction,2023-04-01,7955.0
+USCONS,Construction,2023-05-01,7965.0
+USCONS,Construction,2023-06-01,8006.0
+USCONS,Construction,2023-07-01,8016.0
+USCONS,Construction,2023-08-01,8042.0
+USCONS,Construction,2023-09-01,8053.0
+USCONS,Construction,2023-10-01,8080.0
+USCONS,Construction,2023-11-01,8088.0
+USCONS,Construction,2023-12-01,8100.0
+USCONS,Construction,2024-01-01,8123.0
+USCONS,Construction,2024-02-01,8132.0
+USCONS,Construction,2024-03-01,8164.0
+USCONS,Construction,2024-04-01,8170.0
+USCONS,Construction,2024-05-01,8176.0
+USCONS,Construction,2024-06-01,8196.0
+USCONS,Construction,2024-07-01,8208.0
+USCONS,Construction,2024-08-01,8236.0
+USCONS,Construction,2024-09-01,8254.0
+USCONS,Construction,2024-10-01,8262.0
+USCONS,Construction,2024-11-01,8267.0
+USCONS,Construction,2024-12-01,8276.0
+USCONS,Construction,2025-01-01,8264.0
+USCONS,Construction,2025-02-01,8267.0
+USCONS,Construction,2025-03-01,8273.0
+USCONS,Construction,2025-04-01,8271.0
+USCONS,Construction,2025-05-01,8269.0
+USCONS,Construction,2025-06-01,8267.0
+USCONS,Construction,2025-07-01,8261.0
+USCONS,Construction,2025-08-01,8239.0
+USCONS,Construction,2025-09-01,8255.0
+USCONS,Construction,2025-10-01,8243.0
+USCONS,Construction,2025-11-01,8279.0
+USCONS,Construction,2025-12-01,8272.0
+USCONS,Construction,2026-01-01,8317.0
+USCONS,Construction,2026-02-01,8296.0
+USCONS,Construction,2026-03-01,8311.0
+USCONS,Construction,2026-04-01,8314.0
+USCONS,Construction,2026-05-01,8316.0
+USCONS,Construction,2026-06-01,8319.0
+USCONS,Construction,2026-07-01,8337.0
+USCONS,Construction,2026-08-01,8353.0
+USCONS,Construction,2026-09-01,8364.0
+MANEMP,Manufacturing,2021-01-01,12142.0
+MANEMP,Manufacturing,2021-02-01,12172.0
+MANEMP,Manufacturing,2021-03-01,12229.0
+MANEMP,Manufacturing,2021-04-01,12193.0
+MANEMP,Manufacturing,2021-05-01,12216.0
+MANEMP,Manufacturing,2021-06-01,12247.0
+MANEMP,Manufacturing,2021-07-01,12305.0
+MANEMP,Manufacturing,2021-08-01,12353.0
+MANEMP,Manufacturing,2021-09-01,12393.0
+MANEMP,Manufacturing,2021-10-01,12453.0
+MANEMP,Manufacturing,2021-11-01,12498.0
+MANEMP,Manufacturing,2021-12-01,12537.0
+MANEMP,Manufacturing,2022-01-01,12564.0
+MANEMP,Manufacturing,2022-02-01,12601.0
+MANEMP,Manufacturing,2022-03-01,12674.0
+MANEMP,Manufacturing,2022-04-01,12726.0
+MANEMP,Manufacturing,2022-05-01,12735.0
+MANEMP,Manufacturing,2022-06-01,12767.0
+MANEMP,Manufacturing,2022-07-01,12800.0
+MANEMP,Manufacturing,2022-08-01,12832.0
+MANEMP,Manufacturing,2022-09-01,12849.0
+MANEMP,Manufacturing,2022-10-01,12883.0
+MANEMP,Manufacturing,2022-11-01,12896.0
+MANEMP,Manufacturing,2022-12-01,12895.0
+MANEMP,Manufacturing,2023-01-01,12903.0
+MANEMP,Manufacturing,2023-02-01,12898.0
+MANEMP,Manufacturing,2023-03-01,12888.0
+MANEMP,Manufacturing,2023-04-01,12884.0
+MANEMP,Manufacturing,2023-05-01,12869.0
+MANEMP,Manufacturing,2023-06-01,12875.0
+MANEMP,Manufacturing,2023-07-01,12862.0
+MANEMP,Manufacturing,2023-08-01,12861.0
+MANEMP,Manufacturing,2023-09-01,12872.0
+MANEMP,Manufacturing,2023-10-01,12837.0
+MANEMP,Manufacturing,2023-11-01,12859.0
+MANEMP,Manufacturing,2023-12-01,12872.0
+MANEMP,Manufacturing,2024-01-01,12875.0
+MANEMP,Manufacturing,2024-02-01,12852.0
+MANEMP,Manufacturing,2024-03-01,12836.0
+MANEMP,Manufacturing,2024-04-01,12833.0
+MANEMP,Manufacturing,2024-05-01,12825.0
+MANEMP,Manufacturing,2024-06-01,12814.0
+MANEMP,Manufacturing,2024-07-01,12806.0
+MANEMP,Manufacturing,2024-08-01,12772.0
+MANEMP,Manufacturing,2024-09-01,12758.0
+MANEMP,Manufacturing,2024-10-01,12697.0
+MANEMP,Manufacturing,2024-11-01,12711.0
+MANEMP,Manufacturing,2024-12-01,12693.0
+MANEMP,Manufacturing,2025-01-01,12673.0
+MANEMP,Manufacturing,2025-02-01,12671.0
+MANEMP,Manufacturing,2025-03-01,12666.0
+MANEMP,Manufacturing,2025-04-01,12662.0
+MANEMP,Manufacturing,2025-05-01,12651.0
+MANEMP,Manufacturing,2025-06-01,12636.0
+MANEMP,Manufacturing,2025-07-01,12625.0
+MANEMP,Manufacturing,2025-08-01,12615.0
+MANEMP,Manufacturing,2025-09-01,12612.0
+MANEMP,Manufacturing,2025-10-01,12603.0
+MANEMP,Manufacturing,2025-11-01,12593.0
+MANEMP,Manufacturing,2025-12-01,12580.0
+MANEMP,Manufacturing,2026-01-01,12582.0
+MANEMP,Manufacturing,2026-02-01,12583.0
+MANEMP,Manufacturing,2026-03-01,12598.0
+MANEMP,Manufacturing,2026-04-01,12597.0
+MANEMP,Manufacturing,2026-05-01,12595.0
+MANEMP,Manufacturing,2026-06-01,12608.0
+MANEMP,Manufacturing,2026-07-01,12628.0
+MANEMP,Manufacturing,2026-08-01,12643.0
+MANEMP,Manufacturing,2026-09-01,12652.0
+USWTRADE,Wholesale trade,2021-01-01,5607.3
+USWTRADE,Wholesale trade,2021-02-01,5618.8
+USWTRADE,Wholesale trade,2021-03-01,5633.7
+USWTRADE,Wholesale trade,2021-04-01,5651.4
+USWTRADE,Wholesale trade,2021-05-01,5672.0
+USWTRADE,Wholesale trade,2021-06-01,5699.9
+USWTRADE,Wholesale trade,2021-07-01,5723.3
+USWTRADE,Wholesale trade,2021-08-01,5744.0
+USWTRADE,Wholesale trade,2021-09-01,5758.5
+USWTRADE,Wholesale trade,2021-10-01,5773.9
+USWTRADE,Wholesale trade,2021-11-01,5800.1
+USWTRADE,Wholesale trade,2021-12-01,5828.1
+USWTRADE,Wholesale trade,2022-01-01,5851.6
+USWTRADE,Wholesale trade,2022-02-01,5876.5
+USWTRADE,Wholesale trade,2022-03-01,5913.7
+USWTRADE,Wholesale trade,2022-04-01,5945.3
+USWTRADE,Wholesale trade,2022-05-01,5970.7
+USWTRADE,Wholesale trade,2022-06-01,5987.6
+USWTRADE,Wholesale trade,2022-07-01,6002.2
+USWTRADE,Wholesale trade,2022-08-01,6025.3
+USWTRADE,Wholesale trade,2022-09-01,6031.0
+USWTRADE,Wholesale trade,2022-10-01,6043.4
+USWTRADE,Wholesale trade,2022-11-01,6049.4
+USWTRADE,Wholesale trade,2022-12-01,6059.8
+USWTRADE,Wholesale trade,2023-01-01,6073.4
+USWTRADE,Wholesale trade,2023-02-01,6089.7
+USWTRADE,Wholesale trade,2023-03-01,6094.4
+USWTRADE,Wholesale trade,2023-04-01,6091.5
+USWTRADE,Wholesale trade,2023-05-01,6098.5
+USWTRADE,Wholesale trade,2023-06-01,6101.0
+USWTRADE,Wholesale trade,2023-07-01,6112.5
+USWTRADE,Wholesale trade,2023-08-01,6116.7
+USWTRADE,Wholesale trade,2023-09-01,6125.9
+USWTRADE,Wholesale trade,2023-10-01,6127.4
+USWTRADE,Wholesale trade,2023-11-01,6132.3
+USWTRADE,Wholesale trade,2023-12-01,6132.8
+USWTRADE,Wholesale trade,2024-01-01,6126.0
+USWTRADE,Wholesale trade,2024-02-01,6120.5
+USWTRADE,Wholesale trade,2024-03-01,6127.2
+USWTRADE,Wholesale trade,2024-04-01,6127.5
+USWTRADE,Wholesale trade,2024-05-01,6109.1
+USWTRADE,Wholesale trade,2024-06-01,6111.9
+USWTRADE,Wholesale trade,2024-07-01,6110.4
+USWTRADE,Wholesale trade,2024-08-01,6106.2
+USWTRADE,Wholesale trade,2024-09-01,6099.4
+USWTRADE,Wholesale trade,2024-10-01,6094.8
+USWTRADE,Wholesale trade,2024-11-01,6089.5
+USWTRADE,Wholesale trade,2024-12-01,6092.1
+USWTRADE,Wholesale trade,2025-01-01,6073.3
+USWTRADE,Wholesale trade,2025-02-01,6075.9
+USWTRADE,Wholesale trade,2025-03-01,6062.0
+USWTRADE,Wholesale trade,2025-04-01,6066.9
+USWTRADE,Wholesale trade,2025-05-01,6067.7
+USWTRADE,Wholesale trade,2025-06-01,6057.3
+USWTRADE,Wholesale trade,2025-07-01,6051.6
+USWTRADE,Wholesale trade,2025-08-01,6043.0
+USWTRADE,Wholesale trade,2025-09-01,6051.8
+USWTRADE,Wholesale trade,2025-10-01,6054.6
+USWTRADE,Wholesale trade,2025-11-01,6048.2
+USWTRADE,Wholesale trade,2025-12-01,6042.5
+USWTRADE,Wholesale trade,2026-01-01,6044.6
+USWTRADE,Wholesale trade,2026-02-01,6053.0
+USWTRADE,Wholesale trade,2026-03-01,6051.3
+USWTRADE,Wholesale trade,2026-04-01,6051.9
+USWTRADE,Wholesale trade,2026-05-01,6054.4
+USWTRADE,Wholesale trade,2026-06-01,6059.0
+USWTRADE,Wholesale trade,2026-07-01,6065.3
+USWTRADE,Wholesale trade,2026-08-01,6073.3
+USWTRADE,Wholesale trade,2026-09-01,6078.3
+USTRADE,Retail trade,2021-01-01,15165.9
+USTRADE,Retail trade,2021-02-01,15188.9
+USTRADE,Retail trade,2021-03-01,15232.8
+USTRADE,Retail trade,2021-04-01,15189.4
+USTRADE,Retail trade,2021-05-01,15191.5
+USTRADE,Retail trade,2021-06-01,15244.8
+USTRADE,Retail trade,2021-07-01,15238.2
+USTRADE,Retail trade,2021-08-01,15216.0
+USTRADE,Retail trade,2021-09-01,15280.1
+USTRADE,Retail trade,2021-10-01,15348.1
+USTRADE,Retail trade,2021-11-01,15407.0
+USTRADE,Retail trade,2021-12-01,15421.7
+USTRADE,Retail trade,2022-01-01,15428.6
+USTRADE,Retail trade,2022-02-01,15537.4
+USTRADE,Retail trade,2022-03-01,15537.1
+USTRADE,Retail trade,2022-04-01,15488.0
+USTRADE,Retail trade,2022-05-01,15418.7
+USTRADE,Retail trade,2022-06-01,15464.6
+USTRADE,Retail trade,2022-07-01,15490.6
+USTRADE,Retail trade,2022-08-01,15521.8
+USTRADE,Retail trade,2022-09-01,15498.2
+USTRADE,Retail trade,2022-10-01,15512.0
+USTRADE,Retail trade,2022-11-01,15530.2
+USTRADE,Retail trade,2022-12-01,15533.9
+USTRADE,Retail trade,2023-01-01,15551.3
+USTRADE,Retail trade,2023-02-01,15602.6
+USTRADE,Retail trade,2023-03-01,15562.8
+USTRADE,Retail trade,2023-04-01,15556.0
+USTRADE,Retail trade,2023-05-01,15555.9
+USTRADE,Retail trade,2023-06-01,15533.2
+USTRADE,Retail trade,2023-07-01,15539.5
+USTRADE,Retail trade,2023-08-01,15531.2
+USTRADE,Retail trade,2023-09-01,15531.3
+USTRADE,Retail trade,2023-10-01,15543.9
+USTRADE,Retail trade,2023-11-01,15511.3
+USTRADE,Retail trade,2023-12-01,15550.9
+USTRADE,Retail trade,2024-01-01,15524.0
+USTRADE,Retail trade,2024-02-01,15528.5
+USTRADE,Retail trade,2024-03-01,15529.3
+USTRADE,Retail trade,2024-04-01,15531.2
+USTRADE,Retail trade,2024-05-01,15536.0
+USTRADE,Retail trade,2024-06-01,15499.9
+USTRADE,Retail trade,2024-07-01,15480.8
+USTRADE,Retail trade,2024-08-01,15458.4
+USTRADE,Retail trade,2024-09-01,15456.7
+USTRADE,Retail trade,2024-10-01,15452.4
+USTRADE,Retail trade,2024-11-01,15409.8
+USTRADE,Retail trade,2024-12-01,15460.1
+USTRADE,Retail trade,2025-01-01,15459.3
+USTRADE,Retail trade,2025-02-01,15441.8
+USTRADE,Retail trade,2025-03-01,15457.5
+USTRADE,Retail trade,2025-04-01,15461.6
+USTRADE,Retail trade,2025-05-01,15440.0
+USTRADE,Retail trade,2025-06-01,15425.5
+USTRADE,Retail trade,2025-07-01,15430.2
+USTRADE,Retail trade,2025-08-01,15440.3
+USTRADE,Retail trade,2025-09-01,15453.4
+USTRADE,Retail trade,2025-10-01,15438.0
+USTRADE,Retail trade,2025-11-01,15437.1
+USTRADE,Retail trade,2025-12-01,15413.5
+USTRADE,Retail trade,2026-01-01,15426.2
+USTRADE,Retail trade,2026-02-01,15425.9
+USTRADE,Retail trade,2026-03-01,15435.5
+USTRADE,Retail trade,2026-04-01,15459.0
+USTRADE,Retail trade,2026-05-01,15464.0
+USTRADE,Retail trade,2026-06-01,15473.6
+USTRADE,Retail trade,2026-07-01,15479.2
+USTRADE,Retail trade,2026-08-01,15474.1
+USTRADE,Retail trade,2026-09-01,15479.9
+CES4300000001,Transportation and warehousing,2021-01-01,5885.3
+CES4300000001,Transportation and warehousing,2021-02-01,5926.8
+CES4300000001,Transportation and warehousing,2021-03-01,6013.6
+CES4300000001,Transportation and warehousing,2021-04-01,6001.3
+CES4300000001,Transportation and warehousing,2021-05-01,6022.7
+CES4300000001,Transportation and warehousing,2021-06-01,6081.5
+CES4300000001,Transportation and warehousing,2021-07-01,6145.2
+CES4300000001,Transportation and warehousing,2021-08-01,6197.9
+CES4300000001,Transportation and warehousing,2021-09-01,6247.7
+CES4300000001,Transportation and warehousing,2021-10-01,6319.2
+CES4300000001,Transportation and warehousing,2021-11-01,6396.2
+CES4300000001,Transportation and warehousing,2021-12-01,6465.0
+CES4300000001,Transportation and warehousing,2022-01-01,6487.3
+CES4300000001,Transportation and warehousing,2022-02-01,6562.7
+CES4300000001,Transportation and warehousing,2022-03-01,6590.7
+CES4300000001,Transportation and warehousing,2022-04-01,6607.9
+CES4300000001,Transportation and warehousing,2022-05-01,6627.2
+CES4300000001,Transportation and warehousing,2022-06-01,6636.4
+CES4300000001,Transportation and warehousing,2022-07-01,6648.8
+CES4300000001,Transportation and warehousing,2022-08-01,6638.4
+CES4300000001,Transportation and warehousing,2022-09-01,6626.3
+CES4300000001,Transportation and warehousing,2022-10-01,6638.8
+CES4300000001,Transportation and warehousing,2022-11-01,6616.0
+CES4300000001,Transportation and warehousing,2022-12-01,6606.5
+CES4300000001,Transportation and warehousing,2023-01-01,6614.3
+CES4300000001,Transportation and warehousing,2023-02-01,6584.9
+CES4300000001,Transportation and warehousing,2023-03-01,6574.3
+CES4300000001,Transportation and warehousing,2023-04-01,6577.2
+CES4300000001,Transportation and warehousing,2023-05-01,6600.6
+CES4300000001,Transportation and warehousing,2023-06-01,6589.4
+CES4300000001,Transportation and warehousing,2023-07-01,6589.4
+CES4300000001,Transportation and warehousing,2023-08-01,6574.5
+CES4300000001,Transportation and warehousing,2023-09-01,6595.3
+CES4300000001,Transportation and warehousing,2023-10-01,6612.2
+CES4300000001,Transportation and warehousing,2023-11-01,6611.0
+CES4300000001,Transportation and warehousing,2023-12-01,6560.6
+CES4300000001,Transportation and warehousing,2024-01-01,6562.5
+CES4300000001,Transportation and warehousing,2024-02-01,6600.3
+CES4300000001,Transportation and warehousing,2024-03-01,6610.1
+CES4300000001,Transportation and warehousing,2024-04-01,6631.4
+CES4300000001,Transportation and warehousing,2024-05-01,6644.6
+CES4300000001,Transportation and warehousing,2024-06-01,6647.2
+CES4300000001,Transportation and warehousing,2024-07-01,6646.0
+CES4300000001,Transportation and warehousing,2024-08-01,6643.2
+CES4300000001,Transportation and warehousing,2024-09-01,6659.4
+CES4300000001,Transportation and warehousing,2024-10-01,6650.2
+CES4300000001,Transportation and warehousing,2024-11-01,6659.6
+CES4300000001,Transportation and warehousing,2024-12-01,6663.2
+CES4300000001,Transportation and warehousing,2025-01-01,6664.9
+CES4300000001,Transportation and warehousing,2025-02-01,6689.1
+CES4300000001,Transportation and warehousing,2025-03-01,6671.7
+CES4300000001,Transportation and warehousing,2025-04-01,6655.4
+CES4300000001,Transportation and warehousing,2025-05-01,6655.5
+CES4300000001,Transportation and warehousing,2025-06-01,6655.5
+CES4300000001,Transportation and warehousing,2025-07-01,6659.4
+CES4300000001,Transportation and warehousing,2025-08-01,6657.8
+CES4300000001,Transportation and warehousing,2025-09-01,6618.5
+CES4300000001,Transportation and warehousing,2025-10-01,6619.1
+CES4300000001,Transportation and warehousing,2025-11-01,6560.2
+CES4300000001,Transportation and warehousing,2025-12-01,6555.4
+CES4300000001,Transportation and warehousing,2026-01-01,6578.0
+CES4300000001,Transportation and warehousing,2026-02-01,6532.5
+CES4300000001,Transportation and warehousing,2026-03-01,6557.6
+CES4300000001,Transportation and warehousing,2026-04-01,6597.0
+CES4300000001,Transportation and warehousing,2026-05-01,6597.8
+CES4300000001,Transportation and warehousing,2026-06-01,6587.5
+CES4300000001,Transportation and warehousing,2026-07-01,6597.8
+CES4300000001,Transportation and warehousing,2026-08-01,6601.1
+CES4300000001,Transportation and warehousing,2026-09-01,6608.7
+CES4422000001,Utilities,2021-01-01,542.5
+CES4422000001,Utilities,2021-02-01,542.1
+CES4422000001,Utilities,2021-03-01,543.3
+CES4422000001,Utilities,2021-04-01,544.6
+CES4422000001,Utilities,2021-05-01,544.5
+CES4422000001,Utilities,2021-06-01,544.6
+CES4422000001,Utilities,2021-07-01,545.4
+CES4422000001,Utilities,2021-08-01,544.9
+CES4422000001,Utilities,2021-09-01,545.8
+CES4422000001,Utilities,2021-10-01,546.3
+CES4422000001,Utilities,2021-11-01,547.3
+CES4422000001,Utilities,2021-12-01,547.6
+CES4422000001,Utilities,2022-01-01,550.4
+CES4422000001,Utilities,2022-02-01,551.0
+CES4422000001,Utilities,2022-03-01,551.7
+CES4422000001,Utilities,2022-04-01,553.9
+CES4422000001,Utilities,2022-05-01,555.7
+CES4422000001,Utilities,2022-06-01,557.1
+CES4422000001,Utilities,2022-07-01,560.4
+CES4422000001,Utilities,2022-08-01,562.8
+CES4422000001,Utilities,2022-09-01,564.2
+CES4422000001,Utilities,2022-10-01,566.6
+CES4422000001,Utilities,2022-11-01,567.2
+CES4422000001,Utilities,2022-12-01,568.3
+CES4422000001,Utilities,2023-01-01,567.9
+CES4422000001,Utilities,2023-02-01,568.1
+CES4422000001,Utilities,2023-03-01,571.2
+CES4422000001,Utilities,2023-04-01,574.2
+CES4422000001,Utilities,2023-05-01,574.8
+CES4422000001,Utilities,2023-06-01,575.6
+CES4422000001,Utilities,2023-07-01,574.1
+CES4422000001,Utilities,2023-08-01,577.0
+CES4422000001,Utilities,2023-09-01,579.5
+CES4422000001,Utilities,2023-10-01,581.4
+CES4422000001,Utilities,2023-11-01,582.3
+CES4422000001,Utilities,2023-12-01,584.8
+CES4422000001,Utilities,2024-01-01,586.4
+CES4422000001,Utilities,2024-02-01,589.9
+CES4422000001,Utilities,2024-03-01,588.8
+CES4422000001,Utilities,2024-04-01,589.4
+CES4422000001,Utilities,2024-05-01,590.6
+CES4422000001,Utilities,2024-06-01,592.4
+CES4422000001,Utilities,2024-07-01,592.5
+CES4422000001,Utilities,2024-08-01,593.8
+CES4422000001,Utilities,2024-09-01,597.0
+CES4422000001,Utilities,2024-10-01,596.3
+CES4422000001,Utilities,2024-11-01,596.5
+CES4422000001,Utilities,2024-12-01,595.9
+CES4422000001,Utilities,2025-01-01,597.0
+CES4422000001,Utilities,2025-02-01,598.8
+CES4422000001,Utilities,2025-03-01,600.4
+CES4422000001,Utilities,2025-04-01,599.1
+CES4422000001,Utilities,2025-05-01,601.7
+CES4422000001,Utilities,2025-06-01,602.2
+CES4422000001,Utilities,2025-07-01,602.6
+CES4422000001,Utilities,2025-08-01,601.4
+CES4422000001,Utilities,2025-09-01,601.4
+CES4422000001,Utilities,2025-10-01,601.9
+CES4422000001,Utilities,2025-11-01,603.8
+CES4422000001,Utilities,2025-12-01,604.5
+CES4422000001,Utilities,2026-01-01,604.7
+CES4422000001,Utilities,2026-02-01,606.3
+CES4422000001,Utilities,2026-03-01,605.8
+CES4422000001,Utilities,2026-04-01,606.8
+CES4422000001,Utilities,2026-05-01,607.6
+CES4422000001,Utilities,2026-06-01,607.8
+CES4422000001,Utilities,2026-07-01,608.9
+CES4422000001,Utilities,2026-08-01,611.0
+CES4422000001,Utilities,2026-09-01,611.5
+USINFO,Information,2021-01-01,2747.0
+USINFO,Information,2021-02-01,2764.0
+USINFO,Information,2021-03-01,2770.0
+USINFO,Information,2021-04-01,2796.0
+USINFO,Information,2021-05-01,2816.0
+USINFO,Information,2021-06-01,2824.0
+USINFO,Information,2021-07-01,2881.0
+USINFO,Information,2021-08-01,2903.0
+USINFO,Information,2021-09-01,2917.0
+USINFO,Information,2021-10-01,2938.0
+USINFO,Information,2021-11-01,2957.0
+USINFO,Information,2021-12-01,2967.0
+USINFO,Information,2022-01-01,2984.0
+USINFO,Information,2022-02-01,2990.0
+USINFO,Information,2022-03-01,3018.0
+USINFO,Information,2022-04-01,3034.0
+USINFO,Information,2022-05-01,3057.0
+USINFO,Information,2022-06-01,3076.0
+USINFO,Information,2022-07-01,3094.0
+USINFO,Information,2022-08-01,3097.0
+USINFO,Information,2022-09-01,3095.0
+USINFO,Information,2022-10-01,3100.0
+USINFO,Information,2022-11-01,3115.0
+USINFO,Information,2022-12-01,3092.0
+USINFO,Information,2023-01-01,3061.0
+USINFO,Information,2023-02-01,3048.0
+USINFO,Information,2023-03-01,3049.0
+USINFO,Information,2023-04-01,3043.0
+USINFO,Information,2023-05-01,3034.0
+USINFO,Information,2023-06-01,3021.0
+USINFO,Information,2023-07-01,3001.0
+USINFO,Information,2023-08-01,2981.0
+USINFO,Information,2023-09-01,2975.0
+USINFO,Information,2023-10-01,2951.0
+USINFO,Information,2023-11-01,2962.0
+USINFO,Information,2023-12-01,2963.0
+USINFO,Information,2024-01-01,2963.0
+USINFO,Information,2024-02-01,2958.0
+USINFO,Information,2024-03-01,2951.0
+USINFO,Information,2024-04-01,2940.0
+USINFO,Information,2024-05-01,2930.0
+USINFO,Information,2024-06-01,2930.0
+USINFO,Information,2024-07-01,2917.0
+USINFO,Information,2024-08-01,2909.0
+USINFO,Information,2024-09-01,2903.0
+USINFO,Information,2024-10-01,2887.0
+USINFO,Information,2024-11-01,2885.0
+USINFO,Information,2024-12-01,2895.0
+USINFO,Information,2025-01-01,2877.0
+USINFO,Information,2025-02-01,2876.0
+USINFO,Information,2025-03-01,2867.0
+USINFO,Information,2025-04-01,2865.0
+USINFO,Information,2025-05-01,2864.0
+USINFO,Information,2025-06-01,2863.0
+USINFO,Information,2025-07-01,2861.0
+USINFO,Information,2025-08-01,2860.0
+USINFO,Information,2025-09-01,2859.0
+USINFO,Information,2025-10-01,2853.0
+USINFO,Information,2025-11-01,2848.0
+USINFO,Information,2025-12-01,2842.0
+USINFO,Information,2026-01-01,2815.0
+USINFO,Information,2026-02-01,2792.0
+USINFO,Information,2026-03-01,2793.0
+USINFO,Information,2026-04-01,2787.0
+USINFO,Information,2026-05-01,2782.0
+USINFO,Information,2026-06-01,2763.0
+USINFO,Information,2026-07-01,2767.0
+USINFO,Information,2026-08-01,2749.0
+USINFO,Information,2026-09-01,2739.0
+USFIRE,Financial activities,2021-01-01,8722.0
+USFIRE,Financial activities,2021-02-01,8718.0
+USFIRE,Financial activities,2021-03-01,8736.0
+USFIRE,Financial activities,2021-04-01,8750.0
+USFIRE,Financial activities,2021-05-01,8761.0
+USFIRE,Financial activities,2021-06-01,8773.0
+USFIRE,Financial activities,2021-07-01,8808.0
+USFIRE,Financial activities,2021-08-01,8826.0
+USFIRE,Financial activities,2021-09-01,8851.0
+USFIRE,Financial activities,2021-10-01,8879.0
+USFIRE,Financial activities,2021-11-01,8911.0
+USFIRE,Financial activities,2021-12-01,8938.0
+USFIRE,Financial activities,2022-01-01,8934.0
+USFIRE,Financial activities,2022-02-01,8976.0
+USFIRE,Financial activities,2022-03-01,9002.0
+USFIRE,Financial activities,2022-04-01,9037.0
+USFIRE,Financial activities,2022-05-01,9049.0
+USFIRE,Financial activities,2022-06-01,9059.0
+USFIRE,Financial activities,2022-07-01,9073.0
+USFIRE,Financial activities,2022-08-01,9092.0
+USFIRE,Financial activities,2022-09-01,9097.0
+USFIRE,Financial activities,2022-10-01,9122.0
+USFIRE,Financial activities,2022-11-01,9136.0
+USFIRE,Financial activities,2022-12-01,9146.0
+USFIRE,Financial activities,2023-01-01,9144.0
+USFIRE,Financial activities,2023-02-01,9152.0
+USFIRE,Financial activities,2023-03-01,9150.0
+USFIRE,Financial activities,2023-04-01,9180.0
+USFIRE,Financial activities,2023-05-01,9175.0
+USFIRE,Financial activities,2023-06-01,9182.0
+USFIRE,Financial activities,2023-07-01,9193.0
+USFIRE,Financial activities,2023-08-01,9193.0
+USFIRE,Financial activities,2023-09-01,9186.0
+USFIRE,Financial activities,2023-10-01,9179.0
+USFIRE,Financial activities,2023-11-01,9172.0
+USFIRE,Financial activities,2023-12-01,9176.0
+USFIRE,Financial activities,2024-01-01,9165.0
+USFIRE,Financial activities,2024-02-01,9151.0
+USFIRE,Financial activities,2024-03-01,9149.0
+USFIRE,Financial activities,2024-04-01,9144.0
+USFIRE,Financial activities,2024-05-01,9147.0
+USFIRE,Financial activities,2024-06-01,9159.0
+USFIRE,Financial activities,2024-07-01,9154.0
+USFIRE,Financial activities,2024-08-01,9162.0
+USFIRE,Financial activities,2024-09-01,9162.0
+USFIRE,Financial activities,2024-10-01,9164.0
+USFIRE,Financial activities,2024-11-01,9173.0
+USFIRE,Financial activities,2024-12-01,9179.0
+USFIRE,Financial activities,2025-01-01,9187.0
+USFIRE,Financial activities,2025-02-01,9199.0
+USFIRE,Financial activities,2025-03-01,9201.0
+USFIRE,Financial activities,2025-04-01,9205.0
+USFIRE,Financial activities,2025-05-01,9211.0
+USFIRE,Financial activities,2025-06-01,9204.0
+USFIRE,Financial activities,2025-07-01,9204.0
+USFIRE,Financial activities,2025-08-01,9185.0
+USFIRE,Financial activities,2025-09-01,9189.0
+USFIRE,Financial activities,2025-10-01,9184.0
+USFIRE,Financial activities,2025-11-01,9185.0
+USFIRE,Financial activities,2025-12-01,9186.0
+USFIRE,Financial activities,2026-01-01,9147.0
+USFIRE,Financial activities,2026-02-01,9149.0
+USFIRE,Financial activities,2026-03-01,9132.0
+USFIRE,Financial activities,2026-04-01,9126.0
+USFIRE,Financial activities,2026-05-01,9106.0
+USFIRE,Financial activities,2026-06-01,9108.0
+USFIRE,Financial activities,2026-07-01,9098.0
+USFIRE,Financial activities,2026-08-01,9089.0
+USFIRE,Financial activities,2026-09-01,9082.0
+USPBS,Professional and business services,2021-01-01,20922.0
+USPBS,Professional and business services,2021-02-01,20999.0
+USPBS,Professional and business services,2021-03-01,21109.0
+USPBS,Professional and business services,2021-04-01,21103.0
+USPBS,Professional and business services,2021-05-01,21176.0
+USPBS,Professional and business services,2021-06-01,21257.0
+USPBS,Professional and business services,2021-07-01,21418.0
+USPBS,Professional and business services,2021-08-01,21535.0
+USPBS,Professional and business services,2021-09-01,21636.0
+USPBS,Professional and business services,2021-10-01,21873.0
+USPBS,Professional and business services,2021-11-01,22019.0
+USPBS,Professional and business services,2021-12-01,22129.0
+USPBS,Professional and business services,2022-01-01,22183.0
+USPBS,Professional and business services,2022-02-01,22372.0
+USPBS,Professional and business services,2022-03-01,22483.0
+USPBS,Professional and business services,2022-04-01,22468.0
+USPBS,Professional and business services,2022-05-01,22503.0
+USPBS,Professional and business services,2022-06-01,22564.0
+USPBS,Professional and business services,2022-07-01,22658.0
+USPBS,Professional and business services,2022-08-01,22697.0
+USPBS,Professional and business services,2022-09-01,22744.0
+USPBS,Professional and business services,2022-10-01,22783.0
+USPBS,Professional and business services,2022-11-01,22792.0
+USPBS,Professional and business services,2022-12-01,22774.0
+USPBS,Professional and business services,2023-01-01,22791.0
+USPBS,Professional and business services,2023-02-01,22837.0
+USPBS,Professional and business services,2023-03-01,22832.0
+USPBS,Professional and business services,2023-04-01,22837.0
+USPBS,Professional and business services,2023-05-01,22850.0
+USPBS,Professional and business services,2023-06-01,22826.0
+USPBS,Professional and business services,2023-07-01,22779.0
+USPBS,Professional and business services,2023-08-01,22768.0
+USPBS,Professional and business services,2023-09-01,22743.0
+USPBS,Professional and business services,2023-10-01,22715.0
+USPBS,Professional and business services,2023-11-01,22661.0
+USPBS,Professional and business services,2023-12-01,22643.0
+USPBS,Professional and business services,2024-01-01,22668.0
+USPBS,Professional and business services,2024-02-01,22658.0
+USPBS,Professional and business services,2024-03-01,22631.0
+USPBS,Professional and business services,2024-04-01,22616.0
+USPBS,Professional and business services,2024-05-01,22633.0
+USPBS,Professional and business services,2024-06-01,22606.0
+USPBS,Professional and business services,2024-07-01,22584.0
+USPBS,Professional and business services,2024-08-01,22544.0
+USPBS,Professional and business services,2024-09-01,22525.0
+USPBS,Professional and business services,2024-10-01,22486.0
+USPBS,Professional and business services,2024-11-01,22499.0
+USPBS,Professional and business services,2024-12-01,22532.0
+USPBS,Professional and business services,2025-01-01,22480.0
+USPBS,Professional and business services,2025-02-01,22473.0
+USPBS,Professional and business services,2025-03-01,22457.0
+USPBS,Professional and business services,2025-04-01,22470.0
+USPBS,Professional and business services,2025-05-01,22450.0
+USPBS,Professional and business services,2025-06-01,22419.0
+USPBS,Professional and business services,2025-07-01,22403.0
+USPBS,Professional and business services,2025-08-01,22375.0
+USPBS,Professional and business services,2025-09-01,22359.0
+USPBS,Professional and business services,2025-10-01,22335.0
+USPBS,Professional and business services,2025-11-01,22391.0
+USPBS,Professional and business services,2025-12-01,22372.0
+USPBS,Professional and business services,2026-01-01,22408.0
+USPBS,Professional and business services,2026-02-01,22412.0
+USPBS,Professional and business services,2026-03-01,22440.0
+USPBS,Professional and business services,2026-04-01,22460.0
+USPBS,Professional and business services,2026-05-01,22466.0
+USPBS,Professional and business services,2026-06-01,22502.0
+USPBS,Professional and business services,2026-07-01,22496.0
+USPBS,Professional and business services,2026-08-01,22491.0
+USPBS,Professional and business services,2026-09-01,22482.0
+CES6561000001,Private educational services,2021-01-01,3458.7
+CES6561000001,Private educational services,2021-02-01,3470.2
+CES6561000001,Private educational services,2021-03-01,3512.7
+CES6561000001,Private educational services,2021-04-01,3517.6
+CES6561000001,Private educational services,2021-05-01,3540.6
+CES6561000001,Private educational services,2021-06-01,3572.0
+CES6561000001,Private educational services,2021-07-01,3606.1
+CES6561000001,Private educational services,2021-08-01,3631.0
+CES6561000001,Private educational services,2021-09-01,3620.8
+CES6561000001,Private educational services,2021-10-01,3680.5
+CES6561000001,Private educational services,2021-11-01,3695.4
+CES6561000001,Private educational services,2021-12-01,3702.6
+CES6561000001,Private educational services,2022-01-01,3708.7
+CES6561000001,Private educational services,2022-02-01,3727.6
+CES6561000001,Private educational services,2022-03-01,3740.4
+CES6561000001,Private educational services,2022-04-01,3736.4
+CES6561000001,Private educational services,2022-05-01,3741.8
+CES6561000001,Private educational services,2022-06-01,3753.8
+CES6561000001,Private educational services,2022-07-01,3777.9
+CES6561000001,Private educational services,2022-08-01,3783.5
+CES6561000001,Private educational services,2022-09-01,3785.3
+CES6561000001,Private educational services,2022-10-01,3787.3
+CES6561000001,Private educational services,2022-11-01,3798.2
+CES6561000001,Private educational services,2022-12-01,3755.5
+CES6561000001,Private educational services,2023-01-01,3778.9
+CES6561000001,Private educational services,2023-02-01,3785.9
+CES6561000001,Private educational services,2023-03-01,3792.4
+CES6561000001,Private educational services,2023-04-01,3803.3
+CES6561000001,Private educational services,2023-05-01,3838.5
+CES6561000001,Private educational services,2023-06-01,3850.1
+CES6561000001,Private educational services,2023-07-01,3858.7
+CES6561000001,Private educational services,2023-08-01,3867.6
+CES6561000001,Private educational services,2023-09-01,3879.2
+CES6561000001,Private educational services,2023-10-01,3895.6
+CES6561000001,Private educational services,2023-11-01,3907.3
+CES6561000001,Private educational services,2023-12-01,3916.1
+CES6561000001,Private educational services,2024-01-01,3937.6
+CES6561000001,Private educational services,2024-02-01,3938.9
+CES6561000001,Private educational services,2024-03-01,3948.8
+CES6561000001,Private educational services,2024-04-01,3954.1
+CES6561000001,Private educational services,2024-05-01,3958.8
+CES6561000001,Private educational services,2024-06-01,3979.9
+CES6561000001,Private educational services,2024-07-01,3973.1
+CES6561000001,Private educational services,2024-08-01,3985.9
+CES6561000001,Private educational services,2024-09-01,4017.1
+CES6561000001,Private educational services,2024-10-01,4031.5
+CES6561000001,Private educational services,2024-11-01,4038.6
+CES6561000001,Private educational services,2024-12-01,4044.0
+CES6561000001,Private educational services,2025-01-01,4045.3
+CES6561000001,Private educational services,2025-02-01,4055.5
+CES6561000001,Private educational services,2025-03-01,4055.5
+CES6561000001,Private educational services,2025-04-01,4063.5
+CES6561000001,Private educational services,2025-05-01,4058.7
+CES6561000001,Private educational services,2025-06-01,4047.7
+CES6561000001,Private educational services,2025-07-01,4052.0
+CES6561000001,Private educational services,2025-08-01,4052.2
+CES6561000001,Private educational services,2025-09-01,4050.3
+CES6561000001,Private educational services,2025-10-01,4047.2
+CES6561000001,Private educational services,2025-11-01,4043.3
+CES6561000001,Private educational services,2025-12-01,4039.3
+CES6561000001,Private educational services,2026-01-01,4052.0
+CES6561000001,Private educational services,2026-02-01,4033.1
+CES6561000001,Private educational services,2026-03-01,4035.6
+CES6561000001,Private educational services,2026-04-01,4044.8
+CES6561000001,Private educational services,2026-05-01,4034.0
+CES6561000001,Private educational services,2026-06-01,4045.9
+CES6561000001,Private educational services,2026-07-01,4046.1
+CES6561000001,Private educational services,2026-08-01,4049.6
+CES6561000001,Private educational services,2026-09-01,4046.4
+CES6562000001,Health care and social assistance,2021-01-01,19903.6
+CES6562000001,Health care and social assistance,2021-02-01,19942.8
+CES6562000001,Health care and social assistance,2021-03-01,20023.5
+CES6562000001,Health care and social assistance,2021-04-01,20066.0
+CES6562000001,Health care and social assistance,2021-05-01,20075.6
+CES6562000001,Health care and social assistance,2021-06-01,20069.8
+CES6562000001,Health care and social assistance,2021-07-01,20077.8
+CES6562000001,Health care and social assistance,2021-08-01,20076.5
+CES6562000001,Health care and social assistance,2021-09-01,20083.8
+CES6562000001,Health care and social assistance,2021-10-01,20119.1
+CES6562000001,Health care and social assistance,2021-11-01,20149.5
+CES6562000001,Health care and social assistance,2021-12-01,20183.4
+CES6562000001,Health care and social assistance,2022-01-01,20160.2
+CES6562000001,Health care and social assistance,2022-02-01,20256.3
+CES6562000001,Health care and social assistance,2022-03-01,20316.5
+CES6562000001,Health care and social assistance,2022-04-01,20380.8
+CES6562000001,Health care and social assistance,2022-05-01,20434.5
+CES6562000001,Health care and social assistance,2022-06-01,20513.3
+CES6562000001,Health care and social assistance,2022-07-01,20616.7
+CES6562000001,Health care and social assistance,2022-08-01,20684.8
+CES6562000001,Health care and social assistance,2022-09-01,20766.3
+CES6562000001,Health care and social assistance,2022-10-01,20855.0
+CES6562000001,Health care and social assistance,2022-11-01,20931.1
+CES6562000001,Health care and social assistance,2022-12-01,21017.7
+CES6562000001,Health care and social assistance,2023-01-01,21103.6
+CES6562000001,Health care and social assistance,2023-02-01,21170.1
+CES6562000001,Health care and social assistance,2023-03-01,21240.9
+CES6562000001,Health care and social assistance,2023-04-01,21309.4
+CES6562000001,Health care and social assistance,2023-05-01,21382.4
+CES6562000001,Health care and social assistance,2023-06-01,21464.2
+CES6562000001,Health care and social assistance,2023-07-01,21576.6
+CES6562000001,Health care and social assistance,2023-08-01,21676.7
+CES6562000001,Health care and social assistance,2023-09-01,21761.7
+CES6562000001,Health care and social assistance,2023-10-01,21839.2
+CES6562000001,Health care and social assistance,2023-11-01,21945.4
+CES6562000001,Health care and social assistance,2023-12-01,22018.7
+CES6562000001,Health care and social assistance,2024-01-01,22095.6
+CES6562000001,Health care and social assistance,2024-02-01,22191.2
+CES6562000001,Health care and social assistance,2024-03-01,22276.6
+CES6562000001,Health care and social assistance,2024-04-01,22359.2
+CES6562000001,Health care and social assistance,2024-05-01,22424.6
+CES6562000001,Health care and social assistance,2024-06-01,22493.7
+CES6562000001,Health care and social assistance,2024-07-01,22541.9
+CES6562000001,Health care and social assistance,2024-08-01,22586.7
+CES6562000001,Health care and social assistance,2024-09-01,22673.6
+CES6562000001,Health care and social assistance,2024-10-01,22754.8
+CES6562000001,Health care and social assistance,2024-11-01,22831.6
+CES6562000001,Health care and social assistance,2024-12-01,22901.4
+CES6562000001,Health care and social assistance,2025-01-01,22960.4
+CES6562000001,Health care and social assistance,2025-02-01,23008.3
+CES6562000001,Health care and social assistance,2025-03-01,23076.0
+CES6562000001,Health care and social assistance,2025-04-01,23152.0
+CES6562000001,Health care and social assistance,2025-05-01,23217.0
+CES6562000001,Health care and social assistance,2025-06-01,23277.5
+CES6562000001,Health care and social assistance,2025-07-01,23360.1
+CES6562000001,Health care and social assistance,2025-08-01,23382.9
+CES6562000001,Health care and social assistance,2025-09-01,23438.2
+CES6562000001,Health care and social assistance,2025-10-01,23485.8
+CES6562000001,Health care and social assistance,2025-11-01,23545.7
+CES6562000001,Health care and social assistance,2025-12-01,23587.5
+CES6562000001,Health care and social assistance,2026-01-01,23694.4
+CES6562000001,Health care and social assistance,2026-02-01,23664.0
+CES6562000001,Health care and social assistance,2026-03-01,23756.7
+CES6562000001,Health care and social assistance,2026-04-01,23813.8
+CES6562000001,Health care and social assistance,2026-05-01,23848.6
+CES6562000001,Health care and social assistance,2026-06-01,23887.2
+CES6562000001,Health care and social assistance,2026-07-01,23900.5
+CES6562000001,Health care and social assistance,2026-08-01,23935.6
+CES6562000001,Health care and social assistance,2026-09-01,23958.6
+USLAH,Leisure and hospitality,2021-01-01,12801.0
+USLAH,Leisure and hospitality,2021-02-01,13142.0
+USLAH,Leisure and hospitality,2021-03-01,13298.0
+USLAH,Leisure and hospitality,2021-04-01,13568.0
+USLAH,Leisure and hospitality,2021-05-01,13802.0
+USLAH,Leisure and hospitality,2021-06-01,14085.0
+USLAH,Leisure and hospitality,2021-07-01,14495.0
+USLAH,Leisure and hospitality,2021-08-01,14621.0
+USLAH,Leisure and hospitality,2021-09-01,14746.0
+USLAH,Leisure and hospitality,2021-10-01,14949.0
+USLAH,Leisure and hospitality,2021-11-01,15071.0
+USLAH,Leisure and hospitality,2021-12-01,15246.0
+USLAH,Leisure and hospitality,2022-01-01,15329.0
+USLAH,Leisure and hospitality,2022-02-01,15462.0
+USLAH,Leisure and hospitality,2022-03-01,15523.0
+USLAH,Leisure and hospitality,2022-04-01,15626.0
+USLAH,Leisure and hospitality,2022-05-01,15704.0
+USLAH,Leisure and hospitality,2022-06-01,15794.0
+USLAH,Leisure and hospitality,2022-07-01,15931.0
+USLAH,Leisure and hospitality,2022-08-01,15990.0
+USLAH,Leisure and hospitality,2022-09-01,16052.0
+USLAH,Leisure and hospitality,2022-10-01,16142.0
+USLAH,Leisure and hospitality,2022-11-01,16183.0
+USLAH,Leisure and hospitality,2022-12-01,16245.0
+USLAH,Leisure and hospitality,2023-01-01,16352.0
+USLAH,Leisure and hospitality,2023-02-01,16431.0
+USLAH,Leisure and hospitality,2023-03-01,16450.0
+USLAH,Leisure and hospitality,2023-04-01,16487.0
+USLAH,Leisure and hospitality,2023-05-01,16533.0
+USLAH,Leisure and hospitality,2023-06-01,16594.0
+USLAH,Leisure and hospitality,2023-07-01,16616.0
+USLAH,Leisure and hospitality,2023-08-01,16651.0
+USLAH,Leisure and hospitality,2023-09-01,16643.0
+USLAH,Leisure and hospitality,2023-10-01,16689.0
+USLAH,Leisure and hospitality,2023-11-01,16694.0
+USLAH,Leisure and hospitality,2023-12-01,16704.0
+USLAH,Leisure and hospitality,2024-01-01,16716.0
+USLAH,Leisure and hospitality,2024-02-01,16744.0
+USLAH,Leisure and hospitality,2024-03-01,16780.0
+USLAH,Leisure and hospitality,2024-04-01,16762.0
+USLAH,Leisure and hospitality,2024-05-01,16731.0
+USLAH,Leisure and hospitality,2024-06-01,16744.0
+USLAH,Leisure and hospitality,2024-07-01,16751.0
+USLAH,Leisure and hospitality,2024-08-01,16746.0
+USLAH,Leisure and hospitality,2024-09-01,16776.0
+USLAH,Leisure and hospitality,2024-10-01,16799.0
+USLAH,Leisure and hospitality,2024-11-01,16823.0
+USLAH,Leisure and hospitality,2024-12-01,16862.0
+USLAH,Leisure and hospitality,2025-01-01,16832.0
+USLAH,Leisure and hospitality,2025-02-01,16796.0
+USLAH,Leisure and hospitality,2025-03-01,16823.0
+USLAH,Leisure and hospitality,2025-04-01,16836.0
+USLAH,Leisure and hospitality,2025-05-01,16839.0
+USLAH,Leisure and hospitality,2025-06-01,16837.0
+USLAH,Leisure and hospitality,2025-07-01,16848.0
+USLAH,Leisure and hospitality,2025-08-01,16870.0
+USLAH,Leisure and hospitality,2025-09-01,16907.0
+USLAH,Leisure and hospitality,2025-10-01,16948.0
+USLAH,Leisure and hospitality,2025-11-01,16936.0
+USLAH,Leisure and hospitality,2025-12-01,16961.0
+USLAH,Leisure and hospitality,2026-01-01,16966.0
+USLAH,Leisure and hospitality,2026-02-01,16935.0
+USLAH,Leisure and hospitality,2026-03-01,16979.0
+USLAH,Leisure and hospitality,2026-04-01,16972.0
+USLAH,Leisure and hospitality,2026-05-01,17014.0
+USLAH,Leisure and hospitality,2026-06-01,16960.0
+USLAH,Leisure and hospitality,2026-07-01,16922.0
+USLAH,Leisure and hospitality,2026-08-01,16959.0
+USLAH,Leisure and hospitality,2026-09-01,16969.0
+USSERV,Other services,2021-01-01,5314.0
+USSERV,Other services,2021-02-01,5324.0
+USSERV,Other services,2021-03-01,5335.0
+USSERV,Other services,2021-04-01,5358.0
+USSERV,Other services,2021-05-01,5370.0
+USSERV,Other services,2021-06-01,5438.0
+USSERV,Other services,2021-07-01,5494.0
+USSERV,Other services,2021-08-01,5532.0
+USSERV,Other services,2021-09-01,5539.0
+USSERV,Other services,2021-10-01,5578.0
+USSERV,Other services,2021-11-01,5598.0
+USSERV,Other services,2021-12-01,5617.0
+USSERV,Other services,2022-01-01,5603.0
+USSERV,Other services,2022-02-01,5648.0
+USSERV,Other services,2022-03-01,5651.0
+USSERV,Other services,2022-04-01,5657.0
+USSERV,Other services,2022-05-01,5665.0
+USSERV,Other services,2022-06-01,5674.0
+USSERV,Other services,2022-07-01,5707.0
+USSERV,Other services,2022-08-01,5719.0
+USSERV,Other services,2022-09-01,5730.0
+USSERV,Other services,2022-10-01,5748.0
+USSERV,Other services,2022-11-01,5762.0
+USSERV,Other services,2022-12-01,5771.0
+USSERV,Other services,2023-01-01,5785.0
+USSERV,Other services,2023-02-01,5785.0
+USSERV,Other services,2023-03-01,5789.0
+USSERV,Other services,2023-04-01,5798.0
+USSERV,Other services,2023-05-01,5814.0
+USSERV,Other services,2023-06-01,5831.0
+USSERV,Other services,2023-07-01,5846.0
+USSERV,Other services,2023-08-01,5874.0
+USSERV,Other services,2023-09-01,5883.0
+USSERV,Other services,2023-10-01,5893.0
+USSERV,Other services,2023-11-01,5905.0
+USSERV,Other services,2023-12-01,5906.0
+USSERV,Other services,2024-01-01,5917.0
+USSERV,Other services,2024-02-01,5930.0
+USSERV,Other services,2024-03-01,5943.0
+USSERV,Other services,2024-04-01,5947.0
+USSERV,Other services,2024-05-01,5949.0
+USSERV,Other services,2024-06-01,5962.0
+USSERV,Other services,2024-07-01,5961.0
+USSERV,Other services,2024-08-01,5957.0
+USSERV,Other services,2024-09-01,5959.0
+USSERV,Other services,2024-10-01,5962.0
+USSERV,Other services,2024-11-01,5968.0
+USSERV,Other services,2024-12-01,5972.0
+USSERV,Other services,2025-01-01,5975.0
+USSERV,Other services,2025-02-01,5977.0
+USSERV,Other services,2025-03-01,5987.0
+USSERV,Other services,2025-04-01,5987.0
+USSERV,Other services,2025-05-01,5994.0
+USSERV,Other services,2025-06-01,5984.0
+USSERV,Other services,2025-07-01,5989.0
+USSERV,Other services,2025-08-01,6008.0
+USSERV,Other services,2025-09-01,6005.0
+USSERV,Other services,2025-10-01,5999.0
+USSERV,Other services,2025-11-01,6015.0
+USSERV,Other services,2025-12-01,6023.0
+USSERV,Other services,2026-01-01,6026.0
+USSERV,Other services,2026-02-01,6032.0
+USSERV,Other services,2026-03-01,6018.0
+USSERV,Other services,2026-04-01,6029.0
+USSERV,Other services,2026-05-01,6031.0
+USSERV,Other services,2026-06-01,6024.0
+USSERV,Other services,2026-07-01,6030.0
+USSERV,Other services,2026-08-01,6033.0
+USSERV,Other services,2026-09-01,6039.0
+USGOVT,Government,2021-01-01,21741.0
+USGOVT,Government,2021-02-01,21754.0
+USGOVT,Government,2021-03-01,21844.0
+USGOVT,Government,2021-04-01,21893.0
+USGOVT,Government,2021-05-01,21929.0
+USGOVT,Government,2021-06-01,22031.0
+USGOVT,Government,2021-07-01,22039.0
+USGOVT,Government,2021-08-01,22136.0
+USGOVT,Government,2021-09-01,22102.0
+USGOVT,Government,2021-10-01,22027.0
+USGOVT,Government,2021-11-01,22046.0
+USGOVT,Government,2021-12-01,22062.0
+USGOVT,Government,2022-01-01,22049.0
+USGOVT,Government,2022-02-01,22032.0
+USGOVT,Government,2022-03-01,22033.0
+USGOVT,Government,2022-04-01,22069.0
+USGOVT,Government,2022-05-01,22125.0
+USGOVT,Government,2022-06-01,22142.0
+USGOVT,Government,2022-07-01,22306.0
+USGOVT,Government,2022-08-01,22306.0
+USGOVT,Government,2022-09-01,22297.0
+USGOVT,Government,2022-10-01,22293.0
+USGOVT,Government,2022-11-01,22379.0
+USGOVT,Government,2022-12-01,22365.0
+USGOVT,Government,2023-01-01,22484.0
+USGOVT,Government,2023-02-01,22538.0
+USGOVT,Government,2023-03-01,22580.0
+USGOVT,Government,2023-04-01,22642.0
+USGOVT,Government,2023-05-01,22722.0
+USGOVT,Government,2023-06-01,22792.0
+USGOVT,Government,2023-07-01,22837.0
+USGOVT,Government,2023-08-01,22907.0
+USGOVT,Government,2023-09-01,22948.0
+USGOVT,Government,2023-10-01,22993.0
+USGOVT,Government,2023-11-01,23036.0
+USGOVT,Government,2023-12-01,23091.0
+USGOVT,Government,2024-01-01,23140.0
+USGOVT,Government,2024-02-01,23211.0
+USGOVT,Government,2024-03-01,23296.0
+USGOVT,Government,2024-04-01,23297.0
+USGOVT,Government,2024-05-01,23330.0
+USGOVT,Government,2024-06-01,23339.0
+USGOVT,Government,2024-07-01,23400.0
+USGOVT,Government,2024-08-01,23436.0
+USGOVT,Government,2024-09-01,23449.0
+USGOVT,Government,2024-10-01,23486.0
+USGOVT,Government,2024-11-01,23504.0
+USGOVT,Government,2024-12-01,23529.0
+USGOVT,Government,2025-01-01,23557.0
+USGOVT,Government,2025-02-01,23559.0
+USGOVT,Government,2025-03-01,23559.0
+USGOVT,Government,2025-04-01,23568.0
+USGOVT,Government,2025-05-01,23561.0
+USGOVT,Government,2025-06-01,23586.0
+USGOVT,Government,2025-07-01,23585.0
+USGOVT,Government,2025-08-01,23535.0
+USGOVT,Government,2025-09-01,23543.0
+USGOVT,Government,2025-10-01,23390.0
+USGOVT,Government,2025-11-01,23359.0
+USGOVT,Government,2025-12-01,23349.0
+USGOVT,Government,2026-01-01,23329.0
+USGOVT,Government,2026-02-01,23321.0
+USGOVT,Government,2026-03-01,23333.0
+USGOVT,Government,2026-04-01,23331.0
+USGOVT,Government,2026-05-01,23333.0
+USGOVT,Government,2026-06-01,23338.0
+USGOVT,Government,2026-07-01,23300.0
+USGOVT,Government,2026-08-01,23344.0
+USGOVT,Government,2026-09-01,23327.0
+CES9091000001,Federal government,2021-01-01,2884.0
+CES9091000001,Federal government,2021-02-01,2883.0
+CES9091000001,Federal government,2021-03-01,2885.0
+CES9091000001,Federal government,2021-04-01,2894.0
+CES9091000001,Federal government,2021-05-01,2886.0
+CES9091000001,Federal government,2021-06-01,2887.0
+CES9091000001,Federal government,2021-07-01,2892.0
+CES9091000001,Federal government,2021-08-01,2888.0
+CES9091000001,Federal government,2021-09-01,2887.0
+CES9091000001,Federal government,2021-10-01,2878.0
+CES9091000001,Federal government,2021-11-01,2889.0
+CES9091000001,Federal government,2021-12-01,2882.0
+CES9091000001,Federal government,2022-01-01,2879.0
+CES9091000001,Federal government,2022-02-01,2874.0
+CES9091000001,Federal government,2022-03-01,2867.0
+CES9091000001,Federal government,2022-04-01,2866.0
+CES9091000001,Federal government,2022-05-01,2862.0
+CES9091000001,Federal government,2022-06-01,2853.0
+CES9091000001,Federal government,2022-07-01,2862.0
+CES9091000001,Federal government,2022-08-01,2861.0
+CES9091000001,Federal government,2022-09-01,2865.0
+CES9091000001,Federal government,2022-10-01,2870.0
+CES9091000001,Federal government,2022-11-01,2877.0
+CES9091000001,Federal government,2022-12-01,2874.0
+CES9091000001,Federal government,2023-01-01,2880.0
+CES9091000001,Federal government,2023-02-01,2887.0
+CES9091000001,Federal government,2023-03-01,2893.0
+CES9091000001,Federal government,2023-04-01,2904.0
+CES9091000001,Federal government,2023-05-01,2915.0
+CES9091000001,Federal government,2023-06-01,2925.0
+CES9091000001,Federal government,2023-07-01,2930.0
+CES9091000001,Federal government,2023-08-01,2946.0
+CES9091000001,Federal government,2023-09-01,2951.0
+CES9091000001,Federal government,2023-10-01,2956.0
+CES9091000001,Federal government,2023-11-01,2960.0
+CES9091000001,Federal government,2023-12-01,2964.0
+CES9091000001,Federal government,2024-01-01,2971.0
+CES9091000001,Federal government,2024-02-01,2980.0
+CES9091000001,Federal government,2024-03-01,2989.0
+CES9091000001,Federal government,2024-04-01,2992.0
+CES9091000001,Federal government,2024-05-01,3001.0
+CES9091000001,Federal government,2024-06-01,3005.0
+CES9091000001,Federal government,2024-07-01,3007.0
+CES9091000001,Federal government,2024-08-01,3011.0
+CES9091000001,Federal government,2024-09-01,3012.0
+CES9091000001,Federal government,2024-10-01,3013.0
+CES9091000001,Federal government,2024-11-01,3009.0
+CES9091000001,Federal government,2024-12-01,3009.0
+CES9091000001,Federal government,2025-01-01,3010.0
+CES9091000001,Federal government,2025-02-01,2997.0
+CES9091000001,Federal government,2025-03-01,2988.0
+CES9091000001,Federal government,2025-04-01,2976.0
+CES9091000001,Federal government,2025-05-01,2952.0
+CES9091000001,Federal government,2025-06-01,2944.0
+CES9091000001,Federal government,2025-07-01,2935.0
+CES9091000001,Federal government,2025-08-01,2916.0
+CES9091000001,Federal government,2025-09-01,2914.0
+CES9091000001,Federal government,2025-10-01,2748.0
+CES9091000001,Federal government,2025-11-01,2733.0
+CES9091000001,Federal government,2025-12-01,2722.0
+CES9091000001,Federal government,2026-01-01,2685.0
+CES9091000001,Federal government,2026-02-01,2689.0
+CES9091000001,Federal government,2026-03-01,2682.0
+CES9091000001,Federal government,2026-04-01,2681.0
+CES9091000001,Federal government,2026-05-01,2685.0
+CES9091000001,Federal government,2026-06-01,2685.0
+CES9091000001,Federal government,2026-07-01,2686.0
+CES9091000001,Federal government,2026-08-01,2683.0
+CES9091000001,Federal government,2026-09-01,2682.0
