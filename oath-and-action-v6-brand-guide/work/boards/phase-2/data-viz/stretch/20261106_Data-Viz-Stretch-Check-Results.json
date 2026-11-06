@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
- "checked": "2026-11-06T16:16:15.876Z",
+ "checked": "2026-11-06T16:40:50.682Z",
  "views": [
   "newsprint",
   "dark",
@@ -22,7 +22,21 @@
     "drawings": 6,
     "labels": 344,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-newsprint-1024",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-1024",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-1024",
+      "mark": "MANEMP|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -63,7 +77,8 @@
     "drawings": 3,
     "labels": 94,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -104,7 +119,37 @@
     "drawings": 6,
     "labels": 349,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-phone-358",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USINFO|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -131,6 +176,350 @@
    "focusWithoutRing": []
   },
   {
+   "width": 1024,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 833,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1024,
+   "clientWidth": 1024,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 349,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "USLAH|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "CES4300000001|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "MANEMP|2026-09"
+     }
+    ]
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 11,
+    "marks": 457,
+    "bad": []
+   },
+   "party": {
+    "marks": 1185,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 14265,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 1024,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 159,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1024,
+   "clientWidth": 1024,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 3,
+    "labels": 91,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 2,
+    "marks": 90,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 3756,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 1024,
+   "view": "phone",
+   "rootVisible": true,
+   "texts": 840,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1024,
+   "clientWidth": 1024,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 349,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-phone-358",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USINFO|2026-09"
+     }
+    ]
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 6,
+    "marks": 343,
+    "bad": []
+   },
+   "party": {
+    "marks": 1185,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 9991,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 768,
+   "view": "newsprint",
+   "rootVisible": true,
+   "texts": 826,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 768,
+   "clientWidth": 768,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 349,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "USLAH|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "CES4300000001|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-600",
+      "mark": "MANEMP|2026-09"
+     }
+    ]
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 11,
+    "marks": 457,
+    "bad": []
+   },
+   "party": {
+    "marks": 1185,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 14153,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 768,
+   "view": "dark",
+   "rootVisible": true,
+   "texts": 153,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 768,
+   "clientWidth": 768,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 3,
+    "labels": 91,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 2,
+    "marks": 90,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 3559,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 768,
+   "view": "phone",
+   "rootVisible": true,
+   "texts": 834,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 768,
+   "clientWidth": 768,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 6,
+    "labels": 349,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-phone-358",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USINFO|2026-09"
+     }
+    ]
+   },
+   "red": {
+    "marks": 1,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 6,
+    "marks": 343,
+    "bad": []
+   },
+   "party": {
+    "marks": 1185,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight"
+   ],
+   "height": 14475,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
    "width": 390,
    "view": "newsprint",
    "rootVisible": true,
@@ -145,7 +534,37 @@
     "drawings": 6,
     "labels": 349,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-358",
+      "mark": "USINFO|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -186,7 +605,8 @@
     "drawings": 3,
     "labels": 77,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -227,7 +647,37 @@
     "drawings": 6,
     "labels": 349,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-phone-358",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-phone-358",
+      "mark": "USINFO|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -268,7 +718,37 @@
     "drawings": 6,
     "labels": 353,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-newsprint-328",
+      "mark": "USINFO|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -309,7 +789,8 @@
     "drawings": 3,
     "labels": 75,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": []
    },
    "red": {
     "marks": 1,
@@ -350,7 +831,37 @@
     "drawings": 6,
     "labels": 353,
     "outside": [],
-    "overlaps": []
+    "overlaps": [],
+    "marksOutside": [
+     {
+      "svg": "s13-phone-328",
+      "mark": "CES4422000001|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "USCONS|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "USSERV|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "USWTRADE|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "USFIRE|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "MANEMP|2026-09"
+     },
+     {
+      "svg": "s13-phone-328",
+      "mark": "USINFO|2026-09"
+     }
+    ]
    },
    "red": {
     "marks": 1,
@@ -389,6 +900,17 @@
    "visible": true
   }
  },
- "failures": [],
- "pass": true
+ "failures": [
+  "1440 newsprint: 3 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-1024\",\"mark\":\"USCONS|2026-09\"})",
+  "1440 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
+  "1024 newsprint: 4 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-600\",\"mark\":\"USLAH|2026-09\"})",
+  "1024 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
+  "768 newsprint: 4 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-600\",\"mark\":\"USLAH|2026-09\"})",
+  "768 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
+  "390 newsprint: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-358\",\"mark\":\"CES4422000001|2026-09\"})",
+  "390 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-358\",\"mark\":\"CES4422000001|2026-09\"})",
+  "360 newsprint: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-newsprint-328\",\"mark\":\"CES4422000001|2026-09\"})",
+  "360 phone: 7 marks cut by their drawing's edge (first: {\"svg\":\"s13-phone-328\",\"mark\":\"CES4422000001|2026-09\"})"
+ ],
+ "pass": false
 }
