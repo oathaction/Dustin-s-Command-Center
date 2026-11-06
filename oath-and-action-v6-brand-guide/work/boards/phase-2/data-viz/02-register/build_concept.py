@@ -1088,7 +1088,7 @@ def s03(view):
         'We grouped five one-row instruments (agency rule, executive action and executive order; municipal ordinance and council '
         'funding vote), and grouped instruments by who acted. The instruments are the atlas\'s.',
         f'Bars share one scale, from 0 to {mx} changes. Each dot or square is one change, and every count is printed.']
-    src = source_text('rule-changes-by-instrument', drop=('(RL02) ',))
+    src = source_text('rule-changes-by-instrument', drop=())
     eqrows = [r for _, rs, _, _ in grp for r in rs]
     eq = table([('Instrument', lambda r: (e(r['key']), r['key']), 'h'), ('All', lambda r: (str(r['value']), r['value']), 'n')]
                + [(lab, (lambda d: (lambda r: (str(r[d]), r[d])))(d), 'n') for d, lab, _ in DIRS],
@@ -1659,7 +1659,7 @@ def s08(view):
         'for passed before 2025.',
         'The first column holds the two oldest entries, 1965 and 1988; 2011, 2012 and 2023 have none. One entry rests on a source '
         'the atlas did not check.']
-    src = source_text('rule-changes', drop=('(RL02) ',))
+    src = source_text('rule-changes', drop=())
     data = sorted(rs, key=lambda r: r['date'], reverse=True)
     eq = table([('ID', lambda r: (r['key'], r['key']), 'hid'), ('Date', lambda r: (date_words(r['date']), r['date']), 't'),
                 ('Where', lambda r: (e(r['jurisdiction']), r['jurisdiction']), 't'),

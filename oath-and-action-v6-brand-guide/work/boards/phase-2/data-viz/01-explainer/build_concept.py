@@ -684,8 +684,9 @@ def gen_s01(W, uid, t=None, compact=False, red=None):
     for ch in ('house', 'senate'):
         yes, no = R[f'{ch}-yes'], R[f'{ch}-no']
         tot = yes['value'] + no['value']
-        head, when = (('The House passed a ban (H.R. 7008)', 'July 22, 2026') if ch == 'house'
-                      else ('The Senate vote to take it up fell short', 'September 30, 2026'))
+        when = re.search(r'([A-Z][a-z]+ \d{1,2}, \d{4})$', yes['group']).group(1)      # the vote's date, from the data
+        bill = re.search(r'H\.R\. \d+', R['house-yes']['group']).group(0)
+        head = f'The House passed a ban ({bill})' if ch == 'house' else 'The Senate vote to take it up fell short'
         score = f'{yes["value"]} to {no["value"]}'
         if narrow:
             a.text(0, y, head, lbl, 'tl', 600)
@@ -1274,7 +1275,7 @@ def gen_s07(W, uid, t=None):
             tcls = 'ti'
         elif kind == 'some':
             a.rect(x + 1, y + 1, tile - 2, tile - 2, 's-ink2 f-g', attrs)
-            a.rect(x + 1, y + tile - 1 - 5, tile - 2, 5, 'f-ink')
+            a.rect(x + 1, y + tile - 1 - 4, tile - 2, 4, 'f-ink')
             tcls = 'tl'
         else:
             a.rect(x, y, tile, tile, 'f-lt2', attrs)
@@ -1283,9 +1284,9 @@ def gen_s07(W, uid, t=None):
             ty = y + tile / 2 + 4.6 - (1.5 if kind == 'some' else 0)
             a.text(x + tile / 2, ty, tl['code'], TK['type']['tile_code_phone'], tcls, 600, 'middle', on_mark=True)
         else:
-            a.text(x + 7, y + 20, tl['code'], 14, tcls, 600, on_mark=True)
+            a.text(x + 7, y + min(20, tile * 0.4), tl['code'], 14, tcls, 600, on_mark=True)
             if r['enacted_year']:
-                a.text(x + 7, y + 37, str(r['enacted_year']), 13, 'ti4' if kind == 'all' else 'tr', 400, on_mark=True)
+                a.text(x + 7, y + min(37, tile - 11), str(r['enacted_year']), 13, 'ti4' if kind == 'all' else 'tr', 400, on_mark=True)
         a.raw('</g>')
     H = oy + 8 * pitch - gap
     if not stack:
@@ -2730,7 +2731,7 @@ def view_system():
             'The ten charts in this concept take no working red: the one candidate, the 2021 low in S02, sits on a year most readers tie to one policy, so the demonstrations use the Senate shortfall in S01. Party marks, grades, scales and categories never take red.</p>'
             f'{red_demo()}</section>'
             f'<section class="ssec" aria-labelledby="sys-kit"><h2 class="headline" id="sys-kit">The chart kit</h2>'
-            f'<p class="lede">The generators in build_concept.py, the seed of the kit (DR-49). Each takes a width and data from the shared dataset and returns a drawing that has passed the label guard.</p>'
+            f'<p class="lede">The generators in build_concept.py, the seed of the kit (DR-49). Each takes a width and data from the shared dataset and returns a drawing that has passed the label guard. No chart here moves; an animated chart must offer a still version for readers who ask for reduced motion.</p>'
             f'<div class="tw" role="region" tabindex="0" aria-label="Generators, table"><table class="eqt"><caption>Generators</caption><thead><tr><th scope="col">Call</th><th scope="col">What it draws</th></tr></thead><tbody>{api}</tbody></table></div>'
             f'<details class="eq toks"><summary><span><span class="sw-c">Show</span><span class="sw-o">Hide</span> the chart tokens</span></summary><pre>{tok}</pre></details></section>'
             '</div></section>')

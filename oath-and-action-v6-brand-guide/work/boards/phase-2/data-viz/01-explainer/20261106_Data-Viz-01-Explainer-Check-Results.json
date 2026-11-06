@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T06:52:45.172Z",
+ "checked": "2026-11-06T07:03:10.841Z",
  "views": [
   "white",
   "newsprint",
@@ -45,7 +45,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 15148,
+   "height": 15166,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -86,7 +86,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 15119,
+   "height": 15137,
    "axe": [],
    "focusStops": 37,
    "focusWithoutRing": []
@@ -210,7 +210,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 10466,
+   "height": 10493,
    "axe": [],
    "focusStops": 11,
    "focusWithoutRing": []
@@ -416,7 +416,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 22998,
+   "height": 23052,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -622,7 +622,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 23991,
+   "height": 24045,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

@@ -83,7 +83,7 @@ for r in RL['rows']:
                  'source_title': r['source_title'], 'source_url': r['source_url'], 'verified': r['verified']})
 rows.sort(key=lambda x: (x['date'], x['key']))
 rl_line = atlas_line('repair log of 64 dated rule changes', 'August 6, 1965 to the November 3, 2026 ballot',
-                     'United States: federal, state and local', 'Directions are the atlas\'s own codes, set out in its coding note; each row cites its own source. One row (RL02) rests on a source the atlas did not check.')
+                     'United States: federal, state and local', 'Directions are the atlas\'s own codes, set out in its coding note; each row cites its own source. One entry, New York City\'s 1988 small-donor matching law, rests on a source the atlas did not check.')
 datasets['rule-changes'] = {
     'spec': 'S08', 'kind': 'v7', 'title': 'The repair log: 64 dated changes to the rules that decide who officials answer to',
     'evidence': 'Finding', 'grade': 'documented', 'key': 'key',
