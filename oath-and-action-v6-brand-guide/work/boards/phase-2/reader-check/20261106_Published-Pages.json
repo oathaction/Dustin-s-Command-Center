@@ -1,0 +1,10 @@
+{
+ "reader-check": {
+  "name": "Reader check",
+  "url": "https://claude.ai/artifact/16SD4uFJTiHKJC5p9CaFpP",
+  "file": "work/boards/phase-2/reader-check/20261106_Reader-Check.html",
+  "version": "1793997073-fe81",
+  "capabilities": "db (responses: read admin, write owner; responses/{self}: read view, write interact), user",
+  "published": "2026-11-06"
+ }
+}
