@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="chart-views" content="overview">
+<title>Oath &amp; Action Writing Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;500;600;700&family=Lora:ital@1&display=swap" rel="stylesheet">
+<style>
+/* Board 5. The Board 3 and 4 frame: one 1280 px column on Newsprint, a Prussian decision band. Each rule is a card:
+   its name and rule in Inter, then the before and the after side by side, quoted in Lora Italic, chipped like the
+   charts' evidence label (outlined for before, solid Charcoal for after). No working red on the page. */
+:root{color-scheme:light;--bg:#DCD9D2;--surface:#E6E3DD;--white:#FFFFFF;--fg:#121212;--muted:#4E535B;--rule:#5D636D;
+--hair:#C9C6BF;--prussian:#1F2D5A;--newsprint:#DCD9D2;--display:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+--body:"Inter","Helvetica Neue",Arial,sans-serif;--quote:"Lora",Georgia,serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--body)}
+a{color:inherit;text-underline-offset:3px}a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.board{max-width:1280px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:2px solid var(--fg);padding-bottom:14px;flex-wrap:wrap}
+.mast b{font:800 1.25rem/1 var(--display);letter-spacing:-.02em}.mast span{font:700 .8125rem/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{font:700 .8125rem/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:28px 0 0}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.25rem,6vw,4.25rem);line-height:1.02;margin-top:10px;max-width:16ch}
+h2{font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.08;margin:0 0 10px}
+h3{font-size:1.3125rem;line-height:1.2;letter-spacing:-.015em}
+h4{font:700 .8125rem/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+p{margin:0 0 12px;max-width:68ch}.deck{font-size:1.1875rem;line-height:1.5;max-width:62ch;margin-top:16px}
+section{border-top:1px solid var(--rule);margin-top:48px;padding-top:32px}
+.secnum{font:700 .8125rem/1.4 var(--body);letter-spacing:.08em;color:var(--muted);margin:0 0 6px}
+.ask{background:var(--white);border:1px solid var(--rule);padding:22px 24px;margin-top:28px}
+.ask ol{margin:0;padding-left:1.3em}.ask li{margin:0 0 8px;max-width:84ch}.reply{font:italic 400 1.0625rem/1.5 var(--quote);margin:10px 0 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;padding:12px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.toc a{font:600 .9375rem/1.4 var(--body);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}.toc a:hover{text-decoration:underline}
+.narr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:48px;align-items:start}
+.narr .body p{font-size:1.1875rem;line-height:1.6;max-width:60ch}
+.locked{border-top:2px solid var(--fg);padding-top:12px}.locked p{font:italic 400 1.125rem/1.45 var(--quote);margin:0 0 4px}
+.locked small{display:block;font:700 .8125rem/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.group{margin-top:44px}.group>p{font-size:1.0625rem}
+.rules{display:grid;gap:0}
+.rule{border-top:2px solid var(--fg);padding:18px 0 26px}
+.rule-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.rid{font:700 .8125rem/1 var(--body);letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.rtext{font-size:1.0625rem;margin:8px 0 6px;max-width:72ch}
+.terms{font-size:.9375rem;color:var(--muted);margin:0 0 6px;max-width:72ch}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}
+.ex{margin:0;padding:16px 18px;border:1px solid var(--rule);background:var(--surface);min-width:0}
+.ex.after{background:var(--white);border-color:var(--fg);box-shadow:inset 0 3px 0 var(--fg)}
+.exh{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.chip{display:inline-block;font:700 .8125rem/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border:1px solid var(--fg)}
+.chip.solid{background:var(--fg);color:var(--white)}
+.chip.ill{border-style:dashed}
+.src{font-size:.875rem;color:var(--muted)}
+.ex blockquote{margin:0;font:italic 400 1.125rem/1.55 var(--quote);overflow-wrap:anywhere}
+.why{font-size:.9375rem;margin:12px 0 0;max-width:80ch}.why b{font-weight:700}
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--white)}
+table{border-collapse:collapse;width:100%;font-size:.9375rem;min-width:720px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--hair)}
+thead th{font:700 .8125rem/1.3 var(--body);letter-spacing:.02em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+td.exq{font:italic 400 1rem/1.5 var(--quote)}
+ol.check{list-style:none;counter-reset:c;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+ol.check li{counter-increment:c;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:1.0625rem}
+ol.check li::before{content:counter(c);font:800 1.25rem/1.2 var(--display)}
+.decision{background:var(--prussian);color:var(--newsprint);padding-block:28px;padding-left:max(20px,3vw);padding-right:max(20px,3vw);margin-top:48px}
+.decision *{color:inherit}.decision h2{color:#FFFFFF}.decision ol{padding-left:1.3em;margin:0}.decision li{margin:0 0 16px;max-width:88ch}
+.decision .rec{display:block;margin-top:4px;font-weight:700}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:28px}
+ul.facts{margin:0;padding-left:1.1em}ul.facts li{margin:0 0 8px;max-width:70ch}
+.small{font-size:.875rem;color:var(--muted)}
+code{font:500 max(13px,.875em)/1.4 ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+@media (max-width:900px){.narr{grid-template-columns:minmax(0,1fr);gap:24px}.ba{grid-template-columns:minmax(0,1fr)}ol.check{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.ask{padding:18px 16px}.ex{padding:14px}}
+</style></head>
+<body><main class="board" data-view-root="overview">
+<header>
+<div class="mast"><b>Oath &amp; Action</b><span>Brand Guide, Edition 06 · Phase 2 · Chapter 02, Voice</span></div>
+<p class="eyebrow">Board 5 · November 6, 2026</p>
+<h1>How Oath &amp; Action writes</h1>
+<p class="deck">These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Ten house rules for every page follow them.</p>
+<div class="ask"><h3>What you are asked</h3><ol></ol><p class="reply"></p></div>
+<nav class="toc" aria-label="On this board"><a href="#why">Why we write this way</a><a href="#g1">Sound like a person talking</a><a href="#g2">Say it straight</a><a href="#g3">Let the sentence carry its own weight</a><a href="#g4">Cut the padding</a><a href="#house">House rules</a><a href="#checklist">Before you publish</a><a href="#decisions">Decisions</a><a href="#checks">Checks</a></nav>
+</header>
+<section id="why" aria-labelledby="h-why"><p class="secnum">CHAPTER 02 · VOICE</p><h2 id="h-why">Why we write this way</h2>
+<div class="narr"><div class="body"><p>Our reader promise is “We explain how a decision is made and give you a practical way to take part.” A reader can take part only in a decision they can follow, and that puts the first half of the promise on our writing.</p><p>Our editorial commitment reads, “Clarity is our duty. Action is our promise.” These rules carry out the first of those two sentences. Our founder and editor, Dustin Cathcart, set them as his standing instructions, and they now govern everything Oath &amp; Action publishes. Each asks for sentences you could say aloud to a neighbor.</p><p>Nearly every rule below quotes a sentence we published or drafted, with its source. We wrote the other two ourselves and labeled them Illustrative, the label every invented place or date carries. Beside each, we rewrite the same facts to pass every rule on the page.</p></div><div class="locked"><p>“We explain how a decision is made and give you a practical way to take part.”</p><small>Reader promise</small><p>“Clarity is our duty. Action is our promise.”</p><small>Editorial commitment</small><p>“A country that answers to its people.”</p><small>Tagline</small></div></div>
+<p class="small" style="margin-top:20px">21 rules in 4 groups. 18 of the befores are real Oath &amp; Action copy, quoted exactly with their source; the rest are written to show the fault and labeled Illustrative. Every after keeps the before’s facts.</p></section>
+<div class="group" id="g1"><p class="secnum">GROUP 1 OF 4</p><h2>Sound like a person talking</h2><p>Write the sentence you would say across a kitchen table, with the actor up front and a rhythm that keeps changing.</p>
+<div class="rules"><article class="rule" id="w01" aria-labelledby="w01-h">
+<div class="rule-h"><span class="rid">W01</span><h3 id="w01-h">Write it the way you would say it</h3></div>
+<p class="rtext">Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say.</p><p class="terms"><b>In plain words:</b> Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, Reports chapter, sample research brief, section 01</span></figcaption>
+<blockquote>Make the point of responsibility visible.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Show the reader which office answers for the decision.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> Nobody says “the point of responsibility” out loud, and “which office” is the question a reader would ask.</p></article><article class="rule" id="w02" aria-labelledby="w02-h">
+<div class="rule-h"><span class="rid">W02</span><h3 id="w02-h">Name who acts</h3></div>
+<p class="rtext">Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them.</p><p class="terms"><b>In plain words:</b> Active voice names the actor first: “The council passed the budget.” Passive voice puts the thing acted on first and often hides the actor: “The budget was passed.”</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Atlas V7, the everyday answer to “Why is my electric bill going up?”</span></figcaption>
+<blockquote>Your rate is approved by a regulator or a board.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>A regulator or a board approves your rate.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The after names who decides in its first five words, so a listener hears the answer before anything else.</p></article><article class="rule" id="w03" aria-labelledby="w03-h">
+<div class="rule-h"><span class="rid">W03</span><h3 id="w03-h">Change the length of your sentences</h3></div>
+<p class="rtext">Mix short sentences with long ones, and keep the mix hard to predict. A run of sentences the same size starts to sound like a metronome.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Atlas V7, reform profile “IRS enforcement of taxes already owed”, how it would be carried out</span></figcaption>
+<blockquote>Congress provides multi-year funding first. The IRS then hires and trains staff. Audits of high-income returns follow.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Congress acts first. It gives the IRS funding that lasts several years, and the agency uses it to hire and train the staff who then audit high-income returns.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The steps keep their order, and a three-word opener followed by one long sentence lets the voice rise and fall.</p></article></div></div><div class="group" id="g2"><p class="secnum">GROUP 2 OF 4</p><h2>Say it straight</h2><p>Say what is so in plain order, and start with what the reader came for.</p>
+<div class="rules"><article class="rule" id="w04" aria-labelledby="w04-h">
+<div class="rule-h"><span class="rid">W04</span><h3 id="w04-h">Leave out the em dash</h3></div>
+<p class="rtext">Where you want an em dash, end the sentence, or join the parts with a comma and a word such as “and” or “because”.</p><p class="terms"><b>In plain words:</b> Em dash: the long dash, as wide as a capital M, that writers use to break into a sentence or tack a thought onto its end.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="chip ill">Illustrative</span><span class="src">Illustrative. We found no em dash in our published copy to quote, so [em dash] marks where the dash would sit.</span></figcaption>
+<blockquote>Public comment on the town budget closes Monday at 5 p.m. [em dash] the council votes the next night.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Public comment on the town budget closes Monday at 5 p.m., and the council votes the next night.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The comma and “and” tell a listener that the vote follows the deadline.</p></article><article class="rule" id="w05" aria-labelledby="w05-h">
+<div class="rule-h"><span class="rid">W05</span><h3 id="w05-h">Say what a thing is</h3></div>
+<p class="rtext">Tell the reader what something is. Leave out the turn that first says what it is not, and the phrases set against each other for effect.</p><p class="terms"><b>In plain words:</b> Corrective negation: saying what something is not before saying what it is, as in “X, not Y” or “not X but Y”. Antithesis: two opposed ideas set against each other in balanced phrases.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 10 Photography, headline</span></figcaption>
+<blockquote>Photograph the process, not the idea of it.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Photograph a hearing or a polling place while the work goes on.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> A photographer can act on the after at once, with no need to guess what “the idea of it” rules out.</p></article><article class="rule" id="w06" aria-labelledby="w06-h">
+<div class="rule-h"><span class="rid">W06</span><h3 id="w06-h">Drop the matched pair</h3></div>
+<p class="rtext">Write the relation between two things as a plain sentence. Two short halves set side by side sound like a slogan and leave the reader to supply the link.</p><p class="terms"><b>In plain words:</b> Contrasting pair: two short matched phrases placed side by side for their rhythm. A hinge headline, which joins two noun phrases with the ampersand, is a named format with its own rules in chapter 04 and stays.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Studio draft, Strategy and Direction Board, section heading, October 21, 2026, as the editor’s review quoted it</span></figcaption>
+<blockquote>Six readers, one record</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>All six audiences read the same record, starting from different pages.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The after says in one breath what the table under it shows, so the heading stops sounding like a tagline.</p></article><article class="rule" id="w07" aria-labelledby="w07-h">
+<div class="rule-h"><span class="rid">W07</span><h3 id="w07-h">Skip the run of negatives</h3></div>
+<p class="rtext">When you rule several things out, put them in one list under one verb and give the reason.</p><p class="terms"><b>In plain words:</b> Negative parallelism: a run of matched negatives, such as “no this, no that”. Negative anaphora: starting clause after clause with the same negative word.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 04 The Ampersand, the seal. The reason in the after is V5’s own: “Seals imply an authority we do not claim.”</span></figcaption>
+<blockquote>No crest, no shield, no founding date, no ring of words</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Leave crests, shields, founding dates and rings of words off the seal, because they suggest an authority we do not claim.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> One verb now carries the whole list, and the reason comes with it.</p></article><article class="rule" id="w08" aria-labelledby="w08-h">
+<div class="rule-h"><span class="rid">W08</span><h3 id="w08-h">Open with something the reader can use</h3></div>
+<p class="rtext">Make the first sentence give the reader a fact or a step. Cut lines that only announce what comes next, and stock phrases that lean on the words after them.</p><p class="terms"><b>In plain words:</b> Throat-clearing opener: a sentence that announces what is coming in place of saying it. Rhetorical crutch: a stock phrase that props up a sentence and adds no meaning, such as “the truth is” or “make no mistake”.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="chip ill">Illustrative</span><span class="src">Studio draft, Strategy and Direction Board, headline of a mock process piece, October 21, 2026. The draft is real and its contents are invented, so both texts carry the Illustrative label.</span></figcaption>
+<blockquote>Alder County votes on backyard cottages March 9. Here is how to weigh in.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The second sentence now gives both ways to take part and the comment deadline, which “here is how” only promised.</p></article></div></div><div class="group" id="g3"><p class="secnum">GROUP 3 OF 4</p><h2>Let the sentence carry its own weight</h2><p>Trust the facts to hold a reader, and drop the patterns writers build to make prose sound rhythmic.</p>
+<div class="rules"><article class="rule" id="w09" aria-labelledby="w09-h">
+<div class="rule-h"><span class="rid">W09</span><h3 id="w09-h">List what the facts hold</h3></div>
+<p class="rtext">Give a list as many items as the facts hold. When there are three, vary their shape so they do not fall into a chant.</p><p class="terms"><b>In plain words:</b> Rule of three, or rhetorical triplet: grouping words or phrases in threes because three sounds finished. A plain list of three is fine when the facts have three parts.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 13 In use, community workshop flyer, first sentence of a longer line</span></figcaption>
+<blockquote>Ninety seconds: the rule, the gap, the ask.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>You get 90 seconds. Name the rule and where it falls short before you ask the committee for what you want.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The same parts arrive as one instruction a first-time speaker can follow, with no chant to remember.</p></article><article class="rule" id="w10" aria-labelledby="w10-h">
+<div class="rule-h"><span class="rid">W10</span><h3 id="w10-h">Give each sentence its own shape</h3></div>
+<p class="rtext">Build each sentence in a paragraph on its own frame. When several in a row open the same way, combine them or recast one.</p><p class="terms"><b>In plain words:</b> Parallel structure: sentences built on the same frame one after another, such as a run that each starts with “We”.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 02 Voice, the voice line</span></figcaption>
+<blockquote>We explain the rules. We expose the gaps. We connect people to action. We act.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>We&#x27;ll explain the rules and track what happens to them. When a decision is coming, we&#x27;ll connect you with the people making it, so you can act in time.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> Four sentences on one frame became two of different lengths. This is the voice line now in force, and it gives the last step to the reader on purpose.</p></article><article class="rule" id="w11" aria-labelledby="w11-h">
+<div class="rule-h"><span class="rid">W11</span><h3 id="w11-h">Join thoughts that belong together</h3></div>
+<p class="rtext">Use the small words that show how thoughts connect, such as because, so, when and once. Save short sentences for the moments that need one.</p><p class="terms"><b>In plain words:</b> Parataxis: setting clauses or sentences side by side with no words to link them. As a rhythm device, it chops one thought into short beats for effect.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 02 Voice, sample lines</span></figcaption>
+<blockquote>Know the rules. Find the lever.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Once you know how a rule works, you can find its lever, the one point where a change moves the whole structure.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> “Once” shows that finding the lever depends on knowing the rule, and the lever gets its definition.</p></article><article class="rule" id="w12" aria-labelledby="w12-h">
+<div class="rule-h"><span class="rid">W12</span><h3 id="w12-h">Give the point without a reveal</h3></div>
+<p class="rtext">Put the point where the reader meets it first. A colon or a teaser sentence that holds it back for effect only makes the reader wait.</p><p class="terms"><b>In plain words:</b> Setup and payoff: holding back the point so it lands as a reveal, often after a colon or a teaser sentence.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Dark atlas, Atlas Interactive Concept V2, October 19, 2026, the guided story, part “Who holds the money and the market”</span></figcaption>
+<blockquote>This is where the story starts: who owns what.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>The story starts with who owns what.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The answer arrives in the first breath, and the sentence loses two words.</p></article><article class="rule" id="w13" aria-labelledby="w13-h">
+<div class="rule-h"><span class="rid">W13</span><h3 id="w13-h">Stop when the facts stop</h3></div>
+<p class="rtext">End a paragraph on its last useful fact, and cut any line after it that only restates the point.</p><p class="terms"><b>In plain words:</b> Landing sentence: a closing line written to make a paragraph land with a flourish. Paragraph pinning: ending paragraph after paragraph on a short line that restates its point. Summary beat: a sentence that tells readers what they have read.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Studio draft, Symbol Family Board, introduction, October 21, 2026, as the editor’s review quoted it</span></figcaption>
+<blockquote>Every mark carries one hinge node, so the family belongs to the ampersand.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Every mark carries one node where its two parts meet, the way the ampersand joins OATH and ACTION.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The after defines the node and shows the link that the “so” clause only claimed.</p></article><article class="rule" id="w14" aria-labelledby="w14-h">
+<div class="rule-h"><span class="rid">W14</span><h3 id="w14-h">Close without a slogan</h3></div>
+<p class="rtext">End a piece or section on the last thing the reader needs, usually the step they can take. Where a sign-off line belongs, use the locked tagline.</p><p class="terms"><b>In plain words:</b> Slogan-like closing sentence: a short, quotable line at the end of a piece that sounds like an advertisement and carries no fact.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, the closing headline as the Phase 0 editor audit lists it; the same line heads a slide mockup in chapter 13 In use</span></figcaption>
+<blockquote>Put the promise to work.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>See which edition you&#x27;re reading, and return to the contents from here.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The after tells the reader what the closing page holds, which the slogan never said.</p></article></div></div><div class="group" id="g4"><p class="secnum">GROUP 4 OF 4</p><h2>Cut the padding</h2><p>Take out the words that add weight and no meaning.</p>
+<div class="rules"><article class="rule" id="w15" aria-labelledby="w15-h">
+<div class="rule-h"><span class="rid">W15</span><h3 id="w15-h">Pull stacked nouns apart</h3></div>
+<p class="rtext">When three or more nouns pile up, pull them apart with a preposition or a verb, so a listener can tell which word is the subject.</p><p class="terms"><b>In plain words:</b> Stacked noun phrase: three or more nouns in a row, each describing the next.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 07, the Signal Grid, figure caption</span></figcaption>
+<blockquote>Report cover kicker on Prussian</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>The kicker, the short line above the title, on a report cover set on Prussian.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> Read aloud, “report cover kicker” blurs into one sound, and the after says what the kicker is and where it sits.</p></article><article class="rule" id="w16" aria-labelledby="w16-h">
+<div class="rule-h"><span class="rid">W16</span><h3 id="w16-h">Use the verb inside the noun</h3></div>
+<p class="rtext">When a noun hides a verb, use the verb and name who does it.</p><p class="terms"><b>In plain words:</b> Nominalization: a verb or adjective turned into a noun, such as “allocation” from “allocate” or “implementation” from “implement”.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, sample research brief, page 07, source note</span></figcaption>
+<blockquote>An allocation alone establishes no claim about service quality.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>How much a town sets aside for a service tells you nothing about how good the service is.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> With its verbs back, the sentence says who sets money aside and what the amount leaves unanswered.</p></article><article class="rule" id="w17" aria-labelledby="w17-h">
+<div class="rule-h"><span class="rid">W17</span><h3 id="w17-h">Drop the hedges and keep the grade</h3></div>
+<p class="rtext">State a claim at the strength its evidence holds. When the evidence grade calls for “may” or “can”, use that word once and cut the other softeners.</p><p class="terms"><b>In plain words:</b> Hedging qualifier: a word that softens a claim with no reason given, such as “perhaps” or “somewhat”. Grade verbs work differently: for a claim graded plausible, “may” or “can” reports the grade, and the house rules require it.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="chip ill">Illustrative</span><span class="src">Illustrative, written on the atlas’s profile of automatic voter registration, which grades the evidence for its effect on turnout as plausible. We found no clean example in our copy.</span></figcaption>
+<blockquote>Automatic voter registration could perhaps help turnout somewhat in some places.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Automatic voter registration may raise turnout a little. The atlas grades that evidence as plausible.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> Four softeners said nothing exact. One grade verb now carries the doubt the evidence holds, and the second sentence names the grade.</p></article><article class="rule" id="w18" aria-labelledby="w18-h">
+<div class="rule-h"><span class="rid">W18</span><h3 id="w18-h">Cut the intensifiers</h3></div>
+<p class="rtext">Cut words that try to add force, such as genuinely, really, truly, actually, simply and just. If the sentence feels weak without one, give it a stronger fact.</p><p class="terms"><b>In plain words:</b> Filler intensifier: a word meant to add emphasis that adds no information.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 12 Motion</span></figcaption>
+<blockquote>The lever is simply there. The hinge is already assembled.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>The lever and the finished hinge are on the page from the start.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> “Simply” and “already” gave a listener nothing to check, and one sentence now says what appears.</p></article><article class="rule" id="w19" aria-labelledby="w19-h">
+<div class="rule-h"><span class="rid">W19</span><h3 id="w19-h">Use everyday verbs</h3></div>
+<p class="rtext">Pick the word you would say out loud. Write “use” for leverage, and “show” for underscore or reflect.</p><p class="terms"><b>In plain words:</b> Corporate register: the vocabulary of business memos. The atlas glossary’s “leverage point”, a systems term from Donella Meadows, is a defined term and stays.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 07, the Signal Grid, figure caption</span></figcaption>
+<blockquote>Chart legend with the grid as the leverage mark</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>A chart key in which the Signal Grid marks where the reader can act.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> “Leverage” is boardroom talk. The after says what the mark tells a reader, in the words V5’s data chapter used for the same mark.</p></article><article class="rule" id="w20" aria-labelledby="w20-h">
+<div class="rule-h"><span class="rid">W20</span><h3 id="w20-h">Let the facts carry the feeling</h3></div>
+<p class="rtext">Leave out exclamation points and praise for our own work, and let the step itself carry the energy.</p><p class="terms"><b>In plain words:</b> Performed enthusiasm: excitement acted out on the page in place of a reason to care.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">V5 guide, chapter 02 Voice, where V5 already listed it as a line to avoid</span></figcaption>
+<blockquote>Make your voice heard!</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>Tell the people who decide what you think, before they vote.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The after names whom to tell and when, which is the part a reader can act on.</p></article><article class="rule" id="w21" aria-labelledby="w21-h">
+<div class="rule-h"><span class="rid">W21</span><h3 id="w21-h">Size each adjective to its evidence</h3></div>
+<p class="rtext">Give an adjective no more weight than its evidence carries, and label a design judgment as a judgment.</p><p class="terms"><b>In plain words:</b> Inflated adjective: a word bigger than its evidence, such as “stunning” or “world-class”.</p>
+<div class="ba"><figure class="ex before"><figcaption class="exh"><span class="chip">Before</span><span class="src">Studio draft, Atlas Editorial Systems Board, System 04 Night Edition, November 5, 2026</span></figcaption>
+<blockquote>The most striking page of the five; the R10 page and the icon loop cards are portfolio work.</blockquote></figure>
+<figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span></figcaption><blockquote>In our design judgment, this page catches the eye first of the five. The page for Loop R10, the safe-seat loop, and the icon card for each loop are ready to show as finished work.</blockquote></figure></div>
+<p class="why"><b>What changed.</b> The judgment carries its label, and “portfolio work” becomes a claim a reader can check against the page.</p></article></div></div>
+<section id="house" aria-labelledby="h-house"><p class="secnum">HOUSE RULES</p><h2 id="h-house">The rules every page already follows</h2>
+<div class="tw" role="region" tabindex="0" aria-label="House rules"><table><thead><tr><th scope="col">Rule</th><th scope="col">What it asks</th><th scope="col">Written correctly</th></tr></thead><tbody><tr><th scope="row">H01</th><td><b>Quote the locked lines exactly</b><br>Quote the tagline, the mission, the reader promise and the editorial commitment word for word, and keep the pillars in their order: Explain, Track, Connect, Act. The locked lines keep their wording even where a writing rule above would shape a sentence differently.</td><td class="exq">&quot;A country that answers to its people.&quot;</td></tr><tr><th scope="row">H02</th><td><b>Explain a term the first time you use it</b><br>Define each term of art in plain words where it first appears, using the atlas glossary’s wording when it fits. Keep the same term after that.</td><td class="exq">Cloture, a Senate vote to end debate, takes 60 votes for most legislation.</td></tr><tr><th scope="row">H03</th><td><b>Label what is invented beside it</b><br>Put the word Illustrative beside every invented person, quote, place or figure a reader could take for real, right on the item.</td><td class="exq">Alder County votes on backyard cottages March 9. Illustrative</td></tr><tr><th scope="row">H04</th><td><b>Source every public policy statistic</b><br>Give the publisher, the title or table, the observation period, the geography, the date retrieved and the qualification that matters, in that order.</td><td class="exq">Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.</td></tr><tr><th scope="row">H05</th><td><b>Write dates in words</b><br>Write the month as a word, as in November 6, 2026. Numeric dates belong in file names and data.</td><td class="exq">Retrieved November 6, 2026.</td></tr><tr><th scope="row">H06</th><td><b>Spell out numbers under ten</b><br>In prose, write one to nine as words. Charts, tables, measurements and data use figures.</td><td class="exq">payrolls shrank in seven of the 57 months charted</td></tr><tr><th scope="row">H07</th><td><b>Use the true minus sign</b><br>Write a negative number with the minus sign (U+2212). It matches the plus sign’s width and lines up in tables, and a hyphen is too short to read as minus.</td><td class="exq">The scale runs from −200,000 to +850,000.</td></tr><tr><th scope="row">H08</th><td><b>Let a title claim only what its evidence holds</b><br>A title states only what its evidence shows, with the verb its grade allows: record language for documented claims, a direct finding when the evidence is well supported, “can” or “may” for plausible claims, a label marking a hypothesis as untested, and both readings when a claim is contested.</td><td class="exq">The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.</td></tr><tr><th scope="row">H09</th><td><b>Keep a period whole</b><br>No chart or sentence splits a period at an inauguration date. Charts shown together share one time window and print the reason for it.</td><td class="exq">Both jobs charts cover January 2022 to September 2026, the same 57 months, so a reader compares like with like.</td></tr><tr><th scope="row">H10</th><td><b>Name parties in words</b><br>Write a party’s name in words, in the same ink as the text around it. No election graphic, social cards included, codes a party with red or blue.</td><td class="exq">Georgia Republican +2.2</td></tr></tbody></table></div></section>
+<section id="checklist" aria-labelledby="h-check"><p class="secnum">BEFORE YOU PUBLISH</p><h2 id="h-check">Read it aloud, then ask</h2><ol class="check"><li><span>Could you say each sentence this way to a neighbor, with the person who acts named?</span></li><li><span>Do your sentences change in length and shape as the paragraph goes on?</span></li><li><span>Does a search for the em dash come back empty?</span></li><li><span>Does the first sentence give the reader a fact or a step?</span></li><li><span>Does each sentence say what something is, with no matched pair or “not this, but that” turn?</span></li><li><span>If you cut the last line of a paragraph or a piece, would the reader lose a fact?</span></li><li><span>Can any heavy noun give its verb back, or any stack of nouns come apart?</span></li><li><span>Does each claim sit at the strength its evidence grade allows, with no word added for force or caution?</span></li><li><span>Are the locked lines exact, and does every invented item carry the Illustrative label?</span></li><li><span>Does every public policy statistic carry its full source line?</span></li></ol></section>
+<div class="decision" id="decisions" role="region" aria-labelledby="h-dec"><h2 id="h-dec">Decisions on this board</h2><ol></ol></div>
+<section id="process" aria-labelledby="h-proc"><p class="secnum">HOW THIS WAS MADE</p><h2 id="h-proc">The editor wrote it, the creative director read it against itself</h2><ol></ol></section>
+<section id="checks" aria-labelledby="h-checks"><p class="secnum">CHECKS</p><h2 id="h-checks">What was tested</h2>
+<div class="cols"><div><h4>Tested</h4><ul class="facts"></ul></div><div><h4>Not tested</h4><ul class="facts"></ul></div></div></section>
+<section id="changes" aria-labelledby="h-ch"><p class="secnum">CHANGE LOG</p><h2 id="h-ch">Files</h2>
+<p class="small">Paths are relative to <code>oath-and-action-v6-brand-guide/</code>.</p>
+<div class="cols"><div><h4>Created</h4><ul class="facts"></ul></div><div><h4>Modified</h4><ul class="facts"></ul></div></div></section>
+</main></body></html>

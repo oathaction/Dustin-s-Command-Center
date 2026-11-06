@@ -1,0 +1,351 @@
+{
+ "title": "How Oath & Action writes",
+ "deck": "These 21 rules teach writing that sounds like a person talking, and each one shows a sentence before and after the fix. Ten house rules for every page follow them.",
+ "narrative": [
+  "Our reader promise is \"We explain how a decision is made and give you a practical way to take part.\" A reader can take part only in a decision they can follow, and that puts the first half of the promise on our writing.",
+  "Our editorial commitment reads, \"Clarity is our duty. Action is our promise.\" These rules carry out the first of those two sentences. Our founder and editor, Dustin Cathcart, set them as his standing instructions, and they now govern everything Oath & Action publishes. Each asks for sentences you could say aloud to a neighbor.",
+  "Nearly every rule below quotes a sentence we published or drafted, with its source. We wrote the other two ourselves and labeled them Illustrative, the label every invented place or date carries. Beside each, we rewrite the same facts to pass every rule on the page."
+ ],
+ "groups": [
+  {
+   "name": "Sound like a person talking",
+   "intro": "Write the sentence you would say across a kitchen table, with the actor up front and a rhythm that keeps changing.",
+   "rules": [
+    {
+     "id": "W01",
+     "name": "Write it the way you would say it",
+     "rule": "Write the way you would explain something to a neighbor, in everyday words and full sentences. Read the draft aloud and rewrite any line you would not say.",
+     "terms": "Plain prose: everyday words in complete sentences, with nothing a listener would need to see on the page to follow.",
+     "before": "Make the point of responsibility visible.",
+     "before_source": "V5 guide, Reports chapter, sample research brief, section 01",
+     "illustrative": false,
+     "after": "Show the reader which office answers for the decision.",
+     "why": "Nobody says \"the point of responsibility\" out loud, and \"which office\" is the question a reader would ask."
+    },
+    {
+     "id": "W02",
+     "name": "Name who acts",
+     "rule": "Put the person or office that acts in front of the verb. When you find a passive verb, ask who does the action and name them.",
+     "terms": "Active voice names the actor first: \"The council passed the budget.\" Passive voice puts the thing acted on first and often hides the actor: \"The budget was passed.\"",
+     "before": "Your rate is approved by a regulator or a board.",
+     "before_source": "Atlas V7, the everyday answer to \"Why is my electric bill going up?\"",
+     "illustrative": false,
+     "after": "A regulator or a board approves your rate.",
+     "why": "The after names who decides in its first five words, so a listener hears the answer before anything else."
+    },
+    {
+     "id": "W03",
+     "name": "Change the length of your sentences",
+     "rule": "Mix short sentences with long ones, and keep the mix hard to predict. A run of sentences the same size starts to sound like a metronome.",
+     "terms": "",
+     "before": "Congress provides multi-year funding first. The IRS then hires and trains staff. Audits of high-income returns follow.",
+     "before_source": "Atlas V7, reform profile \"IRS enforcement of taxes already owed\", how it would be carried out",
+     "illustrative": false,
+     "after": "Congress acts first. It gives the IRS funding that lasts several years, and the agency uses it to hire and train the staff who then audit high-income returns.",
+     "why": "The steps keep their order, and a three-word opener followed by one long sentence lets the voice rise and fall."
+    }
+   ]
+  },
+  {
+   "name": "Say it straight",
+   "intro": "Say what is so in plain order, and start with what the reader came for.",
+   "rules": [
+    {
+     "id": "W04",
+     "name": "Leave out the em dash",
+     "rule": "Where you want an em dash, end the sentence, or join the parts with a comma and a word such as \"and\" or \"because\".",
+     "terms": "Em dash: the long dash, as wide as a capital M, that writers use to break into a sentence or tack a thought onto its end.",
+     "before": "Public comment on the town budget closes Monday at 5 p.m. [em dash] the council votes the next night.",
+     "before_source": "Illustrative. We found no em dash in our published copy to quote, so [em dash] marks where the dash would sit.",
+     "illustrative": true,
+     "after": "Public comment on the town budget closes Monday at 5 p.m., and the council votes the next night.",
+     "why": "The comma and \"and\" tell a listener that the vote follows the deadline."
+    },
+    {
+     "id": "W05",
+     "name": "Say what a thing is",
+     "rule": "Tell the reader what something is. Leave out the turn that first says what it is not, and the phrases set against each other for effect.",
+     "terms": "Corrective negation: saying what something is not before saying what it is, as in \"X, not Y\" or \"not X but Y\". Antithesis: two opposed ideas set against each other in balanced phrases.",
+     "before": "Photograph the process, not the idea of it.",
+     "before_source": "V5 guide, chapter 10 Photography, headline",
+     "illustrative": false,
+     "after": "Photograph a hearing or a polling place while the work goes on.",
+     "why": "A photographer can act on the after at once, with no need to guess what \"the idea of it\" rules out."
+    },
+    {
+     "id": "W06",
+     "name": "Drop the matched pair",
+     "rule": "Write the relation between two things as a plain sentence. Two short halves set side by side sound like a slogan and leave the reader to supply the link.",
+     "terms": "Contrasting pair: two short matched phrases placed side by side for their rhythm. A hinge headline, which joins two noun phrases with the ampersand, is a named format with its own rules in chapter 04 and stays.",
+     "before": "Six readers, one record",
+     "before_source": "Studio draft, Strategy and Direction Board, section heading, October 21, 2026, as the editor's review quoted it",
+     "illustrative": false,
+     "after": "All six audiences read the same record, starting from different pages.",
+     "why": "The after says in one breath what the table under it shows, so the heading stops sounding like a tagline."
+    },
+    {
+     "id": "W07",
+     "name": "Skip the run of negatives",
+     "rule": "When you rule several things out, put them in one list under one verb and give the reason.",
+     "terms": "Negative parallelism: a run of matched negatives, such as \"no this, no that\". Negative anaphora: starting clause after clause with the same negative word.",
+     "before": "No crest, no shield, no founding date, no ring of words",
+     "before_source": "V5 guide, chapter 04 The Ampersand, the seal. The reason in the after is V5's own: \"Seals imply an authority we do not claim.\"",
+     "illustrative": false,
+     "after": "Leave crests, shields, founding dates and rings of words off the seal, because they suggest an authority we do not claim.",
+     "why": "One verb now carries the whole list, and the reason comes with it."
+    },
+    {
+     "id": "W08",
+     "name": "Open with something the reader can use",
+     "rule": "Make the first sentence give the reader a fact or a step. Cut lines that only announce what comes next, and stock phrases that lean on the words after them.",
+     "terms": "Throat-clearing opener: a sentence that announces what is coming in place of saying it. Rhetorical crutch: a stock phrase that props up a sentence and adds no meaning, such as \"the truth is\" or \"make no mistake\".",
+     "before": "Alder County votes on backyard cottages March 9. Here is how to weigh in.",
+     "before_source": "Studio draft, Strategy and Direction Board, headline of a mock process piece, October 21, 2026. The draft is real and its contents are invented, so both texts carry the Illustrative label.",
+     "illustrative": true,
+     "after": "Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting.",
+     "why": "The second sentence now gives both ways to take part and the comment deadline, which \"here is how\" only promised."
+    }
+   ]
+  },
+  {
+   "name": "Let the sentence carry its own weight",
+   "intro": "Trust the facts to hold a reader, and drop the patterns writers build to make prose sound rhythmic.",
+   "rules": [
+    {
+     "id": "W09",
+     "name": "List what the facts hold",
+     "rule": "Give a list as many items as the facts hold. When there are three, vary their shape so they do not fall into a chant.",
+     "terms": "Rule of three, or rhetorical triplet: grouping words or phrases in threes because three sounds finished. A plain list of three is fine when the facts have three parts.",
+     "before": "Ninety seconds: the rule, the gap, the ask.",
+     "before_source": "V5 guide, chapter 13 In use, community workshop flyer, first sentence of a longer line",
+     "illustrative": false,
+     "after": "You get 90 seconds. Name the rule and where it falls short before you ask the committee for what you want.",
+     "why": "The same parts arrive as one instruction a first-time speaker can follow, with no chant to remember."
+    },
+    {
+     "id": "W10",
+     "name": "Give each sentence its own shape",
+     "rule": "Build each sentence in a paragraph on its own frame. When several in a row open the same way, combine them or recast one.",
+     "terms": "Parallel structure: sentences built on the same frame one after another, such as a run that each starts with \"We\".",
+     "before": "We explain the rules. We expose the gaps. We connect people to action. We act.",
+     "before_source": "V5 guide, chapter 02 Voice, the voice line",
+     "illustrative": false,
+     "after": "We'll explain the rules and track what happens to them. When a decision is coming, we'll connect you with the people making it, so you can act in time.",
+     "why": "Four sentences on one frame became two of different lengths. This is the voice line now in force, and it gives the last step to the reader on purpose."
+    },
+    {
+     "id": "W11",
+     "name": "Join thoughts that belong together",
+     "rule": "Use the small words that show how thoughts connect, such as because, so, when and once. Save short sentences for the moments that need one.",
+     "terms": "Parataxis: setting clauses or sentences side by side with no words to link them. As a rhythm device, it chops one thought into short beats for effect.",
+     "before": "Know the rules. Find the lever.",
+     "before_source": "V5 guide, chapter 02 Voice, sample lines",
+     "illustrative": false,
+     "after": "Once you know how a rule works, you can find its lever, the one point where a change moves the whole structure.",
+     "why": "\"Once\" shows that finding the lever depends on knowing the rule, and the lever gets its definition."
+    },
+    {
+     "id": "W12",
+     "name": "Give the point without a reveal",
+     "rule": "Put the point where the reader meets it first. A colon or a teaser sentence that holds it back for effect only makes the reader wait.",
+     "terms": "Setup and payoff: holding back the point so it lands as a reveal, often after a colon or a teaser sentence.",
+     "before": "This is where the story starts: who owns what.",
+     "before_source": "Dark atlas, Atlas Interactive Concept V2, October 19, 2026, the guided story, part \"Who holds the money and the market\"",
+     "illustrative": false,
+     "after": "The story starts with who owns what.",
+     "why": "The answer arrives in the first breath, and the sentence loses two words."
+    },
+    {
+     "id": "W13",
+     "name": "Stop when the facts stop",
+     "rule": "End a paragraph on its last useful fact, and cut any line after it that only restates the point.",
+     "terms": "Landing sentence: a closing line written to make a paragraph land with a flourish. Paragraph pinning: ending paragraph after paragraph on a short line that restates its point. Summary beat: a sentence that tells readers what they have read.",
+     "before": "Every mark carries one hinge node, so the family belongs to the ampersand.",
+     "before_source": "Studio draft, Symbol Family Board, introduction, October 21, 2026, as the editor's review quoted it",
+     "illustrative": false,
+     "after": "Every mark carries one node where its two parts meet, the way the ampersand joins OATH and ACTION.",
+     "why": "The after defines the node and shows the link that the \"so\" clause only claimed."
+    },
+    {
+     "id": "W14",
+     "name": "Close without a slogan",
+     "rule": "End a piece or section on the last thing the reader needs, usually the step they can take. Where a sign-off line belongs, use the locked tagline.",
+     "terms": "Slogan-like closing sentence: a short, quotable line at the end of a piece that sounds like an advertisement and carries no fact.",
+     "before": "Put the promise to work.",
+     "before_source": "V5 guide, the closing headline as the Phase 0 editor audit lists it; the same line heads a slide mockup in chapter 13 In use",
+     "illustrative": false,
+     "after": "See which edition you're reading, and return to the contents from here.",
+     "why": "The after tells the reader what the closing page holds, which the slogan never said."
+    }
+   ]
+  },
+  {
+   "name": "Cut the padding",
+   "intro": "Take out the words that add weight and no meaning.",
+   "rules": [
+    {
+     "id": "W15",
+     "name": "Pull stacked nouns apart",
+     "rule": "When three or more nouns pile up, pull them apart with a preposition or a verb, so a listener can tell which word is the subject.",
+     "terms": "Stacked noun phrase: three or more nouns in a row, each describing the next.",
+     "before": "Report cover kicker on Prussian",
+     "before_source": "V5 guide, chapter 07, the Signal Grid, figure caption",
+     "illustrative": false,
+     "after": "The kicker, the short line above the title, on a report cover set on Prussian.",
+     "why": "Read aloud, \"report cover kicker\" blurs into one sound, and the after says what the kicker is and where it sits."
+    },
+    {
+     "id": "W16",
+     "name": "Use the verb inside the noun",
+     "rule": "When a noun hides a verb, use the verb and name who does it.",
+     "terms": "Nominalization: a verb or adjective turned into a noun, such as \"allocation\" from \"allocate\" or \"implementation\" from \"implement\".",
+     "before": "An allocation alone establishes no claim about service quality.",
+     "before_source": "V5 guide, sample research brief, page 07, source note",
+     "illustrative": false,
+     "after": "How much a town sets aside for a service tells you nothing about how good the service is.",
+     "why": "With its verbs back, the sentence says who sets money aside and what the amount leaves unanswered."
+    },
+    {
+     "id": "W17",
+     "name": "Drop the hedges and keep the grade",
+     "rule": "State a claim at the strength its evidence holds. When the evidence grade calls for \"may\" or \"can\", use that word once and cut the other softeners.",
+     "terms": "Hedging qualifier: a word that softens a claim with no reason given, such as \"perhaps\" or \"somewhat\". Grade verbs work differently: for a claim graded plausible, \"may\" or \"can\" reports the grade, and the house rules require it.",
+     "before": "Automatic voter registration could perhaps help turnout somewhat in some places.",
+     "before_source": "Illustrative, written on the atlas's profile of automatic voter registration, which grades the evidence for its effect on turnout as plausible. We found no clean example in our copy.",
+     "illustrative": true,
+     "after": "Automatic voter registration may raise turnout a little. The atlas grades that evidence as plausible.",
+     "why": "Four softeners said nothing exact. One grade verb now carries the doubt the evidence holds, and the second sentence names the grade."
+    },
+    {
+     "id": "W18",
+     "name": "Cut the intensifiers",
+     "rule": "Cut words that try to add force, such as genuinely, really, truly, actually, simply and just. If the sentence feels weak without one, give it a stronger fact.",
+     "terms": "Filler intensifier: a word meant to add emphasis that adds no information.",
+     "before": "The lever is simply there. The hinge is already assembled.",
+     "before_source": "V5 guide, chapter 12 Motion",
+     "illustrative": false,
+     "after": "The lever and the finished hinge are on the page from the start.",
+     "why": "\"Simply\" and \"already\" gave a listener nothing to check, and one sentence now says what appears."
+    },
+    {
+     "id": "W19",
+     "name": "Use everyday verbs",
+     "rule": "Pick the word you would say out loud. Write \"use\" for leverage, and \"show\" for underscore or reflect.",
+     "terms": "Corporate register: the vocabulary of business memos. The atlas glossary's \"leverage point\", a systems term from Donella Meadows, is a defined term and stays.",
+     "before": "Chart legend with the grid as the leverage mark",
+     "before_source": "V5 guide, chapter 07, the Signal Grid, figure caption",
+     "illustrative": false,
+     "after": "A chart key in which the Signal Grid marks where the reader can act.",
+     "why": "\"Leverage\" is boardroom talk. The after says what the mark tells a reader, in the words V5's data chapter used for the same mark."
+    },
+    {
+     "id": "W20",
+     "name": "Let the facts carry the feeling",
+     "rule": "Leave out exclamation points and praise for our own work, and let the step itself carry the energy.",
+     "terms": "Performed enthusiasm: excitement acted out on the page in place of a reason to care.",
+     "before": "Make your voice heard!",
+     "before_source": "V5 guide, chapter 02 Voice, where V5 already listed it as a line to avoid",
+     "illustrative": false,
+     "after": "Tell the people who decide what you think, before they vote.",
+     "why": "The after names whom to tell and when, which is the part a reader can act on."
+    },
+    {
+     "id": "W21",
+     "name": "Size each adjective to its evidence",
+     "rule": "Give an adjective no more weight than its evidence carries, and label a design judgment as a judgment.",
+     "terms": "Inflated adjective: a word bigger than its evidence, such as \"stunning\" or \"world-class\".",
+     "before": "The most striking page of the five; the R10 page and the icon loop cards are portfolio work.",
+     "before_source": "Studio draft, Atlas Editorial Systems Board, System 04 Night Edition, November 5, 2026",
+     "illustrative": false,
+     "after": "In our design judgment, this page catches the eye first of the five. The page for Loop R10, the safe-seat loop, and the icon card for each loop are ready to show as finished work.",
+     "why": "The judgment carries its label, and \"portfolio work\" becomes a claim a reader can check against the page."
+    }
+   ]
+  }
+ ],
+ "house_rules": [
+  {
+   "id": "H01",
+   "name": "Quote the locked lines exactly",
+   "rule": "Quote the tagline, the mission, the reader promise and the editorial commitment word for word, and keep the pillars in their order: Explain, Track, Connect, Act. The locked lines keep their wording even where a writing rule above would shape a sentence differently.",
+   "example": "\"A country that answers to its people.\""
+  },
+  {
+   "id": "H02",
+   "name": "Explain a term the first time you use it",
+   "rule": "Define each term of art in plain words where it first appears, using the atlas glossary's wording when it fits. Keep the same term after that.",
+   "example": "Cloture, a Senate vote to end debate, takes 60 votes for most legislation."
+  },
+  {
+   "id": "H03",
+   "name": "Label what is invented beside it",
+   "rule": "Put the word Illustrative beside every invented person, quote, place or figure a reader could take for real, right on the item.",
+   "example": "Alder County votes on backyard cottages March 9. Illustrative"
+  },
+  {
+   "id": "H04",
+   "name": "Source every public policy statistic",
+   "rule": "Give the publisher, the title or table, the observation period, the geography, the date retrieved and the qualification that matters, in that order.",
+   "example": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points."
+  },
+  {
+   "id": "H05",
+   "name": "Write dates in words",
+   "rule": "Write the month as a word, as in November 6, 2026. Numeric dates belong in file names and data.",
+   "example": "Retrieved November 6, 2026."
+  },
+  {
+   "id": "H06",
+   "name": "Spell out numbers under ten",
+   "rule": "In prose, write one to nine as words. Charts, tables, measurements and data use figures.",
+   "example": "payrolls shrank in seven of the 57 months charted"
+  },
+  {
+   "id": "H07",
+   "name": "Use the true minus sign",
+   "rule": "Write a negative number with the minus sign (U+2212). It matches the plus sign's width and lines up in tables, and a hyphen is too short to read as minus.",
+   "example": "The scale runs from −200,000 to +850,000."
+  },
+  {
+   "id": "H08",
+   "name": "Let a title claim only what its evidence holds",
+   "rule": "A title states only what its evidence shows, with the verb its grade allows: record language for documented claims, a direct finding when the evidence is well supported, \"can\" or \"may\" for plausible claims, a label marking a hypothesis as untested, and both readings when a claim is contested.",
+   "example": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted."
+  },
+  {
+   "id": "H09",
+   "name": "Keep a period whole",
+   "rule": "No chart or sentence splits a period at an inauguration date. Charts shown together share one time window and print the reason for it.",
+   "example": "Both jobs charts cover January 2022 to September 2026, the same 57 months, so a reader compares like with like."
+  },
+  {
+   "id": "H10",
+   "name": "Name parties in words",
+   "rule": "Write a party's name in words, in the same ink as the text around it. No election graphic, social cards included, codes a party with red or blue.",
+   "example": "Georgia Republican +2.2"
+  }
+ ],
+ "checklist": [
+  "Could you say each sentence this way to a neighbor, with the person who acts named?",
+  "Do your sentences change in length and shape as the paragraph goes on?",
+  "Does a search for the em dash come back empty?",
+  "Does the first sentence give the reader a fact or a step?",
+  "Does each sentence say what something is, with no matched pair or \"not this, but that\" turn?",
+  "If you cut the last line of a paragraph or a piece, would the reader lose a fact?",
+  "Can any heavy noun give its verb back, or any stack of nouns come apart?",
+  "Does each claim sit at the strength its evidence grade allows, with no word added for force or caution?",
+  "Are the locked lines exact, and does every invented item carry the Illustrative label?",
+  "Does every public policy statistic carry its full source line?"
+ ],
+ "notes_for_dustin": [
+  "Locked lines and the rules: the editorial commitment, \"Clarity is our duty. Action is our promise.\", is two sentences on one frame, the shape W10 asks writers to avoid, and the tagline is a phrase. H01 says the locked lines keep their wording. Please confirm that exemption.",
+  "Hinge headlines and W06: a hinge headline such as \"The zoning code & the rent.\" joins two noun phrases by design. W06 exempts it as a named format with its own rules in chapter 04. Please confirm.",
+  "W10's after is the voice line you approved at Gate 1 (revision B). It drops \"We expose the gaps\" and hands the last step to the reader, so it is the one after that changes meaning on purpose. Keep it, or I write a closer rewrite.",
+  "Several V5 lines fail these rules, among them \"Know the rules. Find the lever.\", \"Institutions endure when people act.\", \"The fine print affects the big picture.\" and \"Bring your questions. They belong here.\" If you want any of them in use, it needs a named role beside the locked lines, as the candidate lines got at Gate 1.",
+  "Your eight standing instructions became 21 rules, one for each pattern a single example can teach. If you prefer fewer, W05 to W07 can merge into one rule on negatives and pairs, and W13 with W14 into one rule on endings.",
+  "W04 marks the em dash's place as \"[em dash]\", so no file holds the character. The board can draw the dash as an image if you want readers to see it.",
+  "W17 tells writers that \"may\" and \"can\" stay when the evidence grade calls for them, since they report the grade. Please confirm that reading.",
+  "Four befores come from studio drafts and boards made for you, so the chapter shows the studio breaking its own rules. If you would rather quote only published copy, I can swap them for V5 or atlas lines.",
+  "A candidate eleventh house rule: name the kind of every ID (\"Loop R10\", never a bare \"R10\"), which the studio already follows. Add it as H11?"
+ ]
+}
