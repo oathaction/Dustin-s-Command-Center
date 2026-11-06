@@ -900,7 +900,7 @@
    "id": "02.25",
    "title": "Publish the mechanism behind a mood.",
    "rule": [
-    "When a draft states a sweeping claim, a feeling, a slogan or a side, replace it with the mechanism behind it: the rule, the office that decides, the step a reader can take or the structure of the vote."
+    "When a draft states a sweeping claim, a feeling, a slogan or a side, replace it with the mechanism behind it: how the system works, the office that decides, the step a reader can take or the structure of the vote."
    ],
    "why": {
     "text": [
@@ -910,7 +910,7 @@
    },
    "correct": {
     "specimen": "s-02-25-correct",
-    "caption": "Each mood on the left becomes a rule, an office, a dated step or a vote count a reader can check."
+    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check."
    },
    "failure": {
     "specimen": "s-02-25-failure",
@@ -986,7 +986,7 @@
   {
    "specimen": "s-02-lines",
    "label": "The brand lines",
-   "caption": "The locked lines are quoted word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."
+   "caption": "We quote the locked lines word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."
   },
   {
    "specimen": "s-02-about",
@@ -1007,11 +1007,11 @@
   }
  ],
  "sources": [
-  "Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state supreme court ruling.",
+  "Source: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199, United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
   "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Each margin is the leading party’s lead, in percentage points of all presidential votes; New York counts fused party lines.",
+  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of losing office, snapshot of October 15, 2026, United States. Retrieved November 6, 2026. From survey experiments with 1,691 respondents (Graham and Svolik, 2020); about 3.5 percent left their own party’s candidate in realistic matchups.",
   "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
-  "Source: U.S. Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. We could not open the Senate’s own page for the vote.",
   "Our systems atlas, Who Do They Answer To?, glossary entry “Cloture”, for H02’s example."
  ],
  "related_chapters": [

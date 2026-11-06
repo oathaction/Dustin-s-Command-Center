@@ -76,7 +76,7 @@
   {
    "id": "03.2",
    "title": "Choose the lockup by the space and the surface.",
-   "rule": "Eight lockups cover every use, and each has one job. Start from the width you have: L1 for most uses, L3 for the site and email masthead, L2 for square formats and posters, L8 where the full name will not fit. The sheet after this rule shows all eight at true size, and the specifications give each one’s minimum.",
+   "rule": "Eight lockups cover every use, and each has one job. Start from the width you have: L1, the wordmark alone, for most uses; L3, the wordmark with the lockmark, for the site and email masthead; L2, the stacked lockup, for square formats and posters; and L8, the monogram, where the full name will not fit. The sheet after this rule shows all eight at true size, and the specifications give each one’s minimum.",
    "tokens": [],
    "why": {
     "text": "A fixed set means a reader meets the same arrangement in the same place, and a producer never has to invent one. Each lockup’s job comes from the space it fills, so the choice turns on two facts you can measure: the width you have and the surface under it.",
@@ -191,7 +191,7 @@
    "rule": "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Under a lockup’s minimum, switch to the lockup the table names.",
    "tokens": [],
    "why": {
-    "text": "Each master was drawn and checked at its smallest size, where the wordmark keeps its six enclosed counters, the holes inside letters such as O and A, and the ampersand keeps its two. Our fifth edition scaled one drawing to every size, and at its own 120 px minimum a notch in the ampersand closed into a seventh enclosed shape.",
+    "text": "We drew and checked each master at its smallest size, where the wordmark keeps its six enclosed counters, the holes inside letters such as O and A, and the ampersand keeps its two. Our fifth edition scaled one drawing to every size, and at its own 120 px minimum a notch in the ampersand closed into a seventh enclosed shape.",
     "basis": "Our measurements, October 2026"
    },
    "correct": {
@@ -252,7 +252,7 @@
     "oa.color.identity.signature.onPrussian"
    ],
    "why": {
-    "text": "Each surface has one ink that reads on it: Charcoal on Newsprint at 13.29:1, Newsprint on Charcoal at 13.29:1, White on Prussian at 13.28:1. Pillar Red measures 3.19:1 on Prussian, just over the 3:1 a graphic needs, but once drawn small it falls short: our fifth edition’s red ampersand measured 2.27:1 there at 16 px. Red on our dark blue also reads as a pair of party colors, which Rule 01.1 keeps off every page.",
+    "text": "Each surface has one ink that reads on it: Charcoal on Newsprint at 13.29 to 1, Newsprint on Charcoal at 13.29 to 1, White on Prussian at 13.28 to 1. Pillar Red measures 3.19 to 1 on Prussian, a little over the 3 to 1 a graphic needs, but once drawn small it falls short: our fifth edition’s red ampersand measured 2.27 to 1 there at 16 px. Red on our dark blue also reads as a pair of party colors, which Rule 01.1 keeps off every page.",
     "basis": "Design judgment, measured against WCAG 2.2 SC 1.4.11 at rendered sizes; Rule 05.3 for red"
    },
    "correct": {
@@ -270,7 +270,7 @@
     },
     {
      "label": "Charcoal",
-     "value": "Newsprint letters and links, red ampersand and lever at 4.49:1",
+     "value": "Newsprint letters and links, red ampersand and lever at 4.49 to 1",
      "token": "oa.color.identity.signature.onCharcoal"
     },
     {

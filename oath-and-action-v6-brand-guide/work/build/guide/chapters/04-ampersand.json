@@ -267,7 +267,7 @@
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "A ring of words and a founding date turn a badge into a seal, and our fifth edition put the reason plainly: “Seals imply an authority we do not claim.” A wordless badge closes a piece the way a period closes a sentence.",
+    "text": "A ring of words and a founding date turn a badge into a seal, and our fifth edition put the reason plainly: “Seals imply an authority we do not claim.” With no words on it, the badge marks where a piece ends and claims nothing more.",
     "basis": "Design judgment"
    },
    "correct": {
@@ -319,7 +319,7 @@
     "oa.component.appIcon.tile"
    ],
    "why": {
-    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49:1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
+    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49 to 1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
     "basis": "WCAG 2.2 SC 1.4.11; Design judgment for the feed sizes"
    },
    "correct": {
@@ -328,7 +328,7 @@
    },
    "failure": {
     "specimen": "s-04-7-failure",
-    "caption": "A Newsprint circle in a white feed with no keyline. Its edge measures 1.41:1 against the page, so the tile fades and B floats."
+    "caption": "A Newsprint circle in a white feed with no keyline. Its edge measures 1.41 to 1 against the page, so the tile fades and B floats."
    },
    "specs": [
     {

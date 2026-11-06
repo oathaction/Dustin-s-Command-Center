@@ -204,7 +204,7 @@
         "28"
       ],
       "builders": [
-        "The shared check fails any text under 12.95 px, with SVG text measured at its rendered scale. A chart drawn in SVG has to keep its labels at 13 px on a phone, so draw a phone version rather than shrinking the desktop one."
+        "The shared check fails any text under 12.95 px, with SVG text measured at its rendered scale. A chart drawn in SVG has to keep its labels at 13 px on a phone, so draw it a phone version with its own label positions."
       ]
     },
     {

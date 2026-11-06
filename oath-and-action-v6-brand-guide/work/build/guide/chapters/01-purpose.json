@@ -284,17 +284,34 @@
    },
    "correct": {
     "specimen": "s-01-6-correct",
-    "caption": "The building appears only as the place where the vote happened, named in a caption, in a photograph still to be made."
+    "caption": "The Capitol Rotunda appears only as the place where a named public event happened, and the caption says what, where and when, with the credit. The crop keeps the walls and the public and leaves out the agency’s mark."
    },
    "failure": {
     "specimen": "s-01-6-failure",
     "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."
    },
+   "specs": [
+    {
+     "label": "Photograph",
+     "value": "Documentary, of the place where a named public event happened"
+    },
+    {
+     "label": "Crop",
+     "value": "Keep the building as the setting and the people in it; crop any agency mark"
+    },
+    {
+     "label": "Caption",
+     "value": "What happened, where and when, then the credit"
+    }
+   ],
+   "files": [
+    "work/build/assets/photography/20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg"
+   ],
    "related": [
     "16",
     "12"
    ],
-   "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit."
+   "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit, logged in the rights ledger."
   },
   {
    "id": "01.7",
@@ -336,16 +353,33 @@
    },
    "correct": {
     "specimen": "s-01-8-correct",
-    "caption": "The caption names the person by role, the act, the place and the time."
+    "caption": "The caption names the official and his job, what he is doing, where and when, then the credit. The residents face away and stay unnamed."
    },
    "failure": {
     "specimen": "s-01-8-failure",
     "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."
    },
+   "specs": [
+    {
+     "label": "Caption",
+     "value": "Who is shown, what they are doing, where and when, then the credit"
+    },
+    {
+     "label": "People",
+     "value": "Name officials by their role; leave residents unnamed unless the record names them"
+    },
+    {
+     "label": "Crop",
+     "value": "3:2, keeping the official, the people they serve and what the meeting is about"
+    }
+   ],
+   "files": [
+    "work/build/assets/photography/20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg"
+   ],
    "related": [
     "16"
    ],
-   "builders": "Write the caption’s four parts before a photograph goes in: who, what, where and when."
+   "builders": "Write the caption’s four parts before a photograph goes in: who, what, where and when. Take them from the agency’s own caption and log the photograph in the rights ledger."
   },
   {
    "id": "01.9",
@@ -361,7 +395,7 @@
    },
    "correct": {
     "specimen": "s-01-9-correct",
-    "caption": "This chapter checked against its own rule: no domain supplies more than three of its 15 examples, under one in four, and no named state supplies more than one."
+    "caption": "This chapter checked against its own rule: no domain supplies more than four of its 17 examples, under one in four, and no named state supplies more than two, under one in five."
    },
    "failure": {
     "specimen": "s-01-9-failure",
@@ -412,7 +446,7 @@
    },
    "correct": {
     "specimen": "s-01-11-correct",
-    "caption": "Each case names the month, the majority that acted, the seats its map aimed at and the step that put the map in place, in 23 words."
+    "caption": "Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in 22 words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve."
    },
    "failure": {
     "specimen": "s-01-11-failure",
@@ -541,7 +575,7 @@
    },
    "correct": {
     "specimen": "s-01-16-correct",
-    "caption": "Each reading runs 24 words, uses the verb “find” and names who holds it the same way, by role and by the organization they wrote for."
+    "caption": "Each reading runs 24 words, uses the verb “find” and names who holds it by role and affiliation."
    },
    "failure": {
     "specimen": "s-01-16-failure",
@@ -703,7 +737,7 @@
     },
     {
      "label": "Report",
-     "value": "A numbered study, with its method and its date"
+     "value": "What the record shows about a decision, from a story in a series such as Dispatch to a numbered study"
     },
     {
      "label": "Guide",
@@ -880,7 +914,7 @@
   {
    "specimen": "s-01-words",
    "label": "Words this guide uses",
-   "caption": "Each word is defined once here and kept the same through the guide. The link beside it opens the rule or chapter that sets it."
+   "caption": "We define each word once here and keep it the same through the guide. The link beside it opens the rule or chapter that sets it."
   },
   {
    "specimen": "s-01-hinge-lines",
@@ -906,12 +940,12 @@
  ],
  "sources": [
   "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
-  "Source: U.S. House of Representatives, Roll Call 280, passage of H.R. 7008, July 22, 2026, and U.S. Senate, Vote 253, cloture on the motion to proceed, September 30, 2026, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. We could not open the Senate’s own page for the vote.",
-  "Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state supreme court ruling.",
+  "Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199; United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
+  "Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only constitutional amendments, which need 60 percent of the vote. Illinois’s citizens may propose only amendments on the legislature’s structure and procedure.",
   "Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
-  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and California, snapshot of October 15, 2026. These records show maps being drawn and measure nothing about how long either majority’s hold lasts.",
+  "Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
   "Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, Ohio and Pennsylvania, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Ohio’s yearly rate applies to employers with annual gross receipts of $405,000 or more.",
-  "Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, the connection from productivity to household income, snapshot of October 15, 2026. The two measure different pay, average pay in one and typical workers’ pay in the other, and they differ in the price index they use and in how they count benefits. The atlas grades the connection plausible and contested.",
+  "Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. The two differ in the price index they use and in how they count benefits; our systems atlas grades the connection plausible and contested.",
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",
   "From Oath & Action’s systems atlas, Who Do They Answer To?, the everyday answer to “Why is my electric bill going up?”",
   "Our brand guide, fifth edition, chapter 13 In use: “Who wrote the rule you are angry about?”"

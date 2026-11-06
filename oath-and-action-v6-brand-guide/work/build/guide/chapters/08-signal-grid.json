@@ -78,7 +78,7 @@
   {
    "id": "08.2",
    "title": "Place the lockmark only in its fixed positions and sizes.",
-   "rule": "The lockmark appears in four places, once per view: at the bottom right of social cards, covers and posters, 40 px or 0.4 in, inside the margin; beside the wordmark in L3 and L6; beside the section label on report and slide pages, 24 px or 0.25 in; and in a chart legend at 16 px, where chapter 14 calls for it.",
+   "rule": "The lockmark appears in four places, once per view: at the bottom right of social cards, covers and posters, 40 px or 0.4 in, inside the margin; beside the wordmark in L3, the masthead lockup, and L6, the editorial signature; beside the section label on report and slide pages, 24 px or 0.25 in; and in a chart legend at 16 px, where chapter 14 calls for it.",
    "tokens": [],
    "why": {
     "text": "A signature works by turning up in the same place, so a reader finds it without looking. Used as a bullet or scattered as decoration, it stops signing the page.",
@@ -170,7 +170,7 @@
    "rule": "When a piece could carry more than one code, its grid shows the first that applies. Progress may add the stage where a reader can take part now, and a series route always ends on its pillar’s corner. A pillar corner shares its grid with nothing else. Content type is never coded by color; name it in words in the kicker.",
    "tokens": [],
    "why": {
-    "text": "Our fifth edition’s grid coded pillar, content type, progress, gaps and series on the same nine nodes, and a reader could not tell which one was in front of them. Its four content-type colors look alike in grayscale, and its Verdigris and red differ at 1.14 to 1. One code per grid, chosen in a fixed order, gives every grid one meaning.",
+    "text": "Our fifth edition’s grid coded pillar, content type, progress, gaps and series on the same nine nodes, and a reader could not tell which one was in front of them. Its four content-type colors look alike in grayscale, and its Verdigris and red differ at 1.14 to 1. With one code per grid, chosen in a fixed order, a reader always knows which code a grid shows.",
     "basis": "WCAG 2.2 SC 1.4.1; Design judgment"
    },
    "correct": {
@@ -366,7 +366,7 @@
   {
    "id": "08.8",
    "title": "Build the kicker from a 24 px grid, a 24 px icon and a label.",
-   "rule": "The kicker, the short line above a title, sets the grid at 24 px, 12 px of space, a Civic Line topic icon at 24 px in one color, 12 px, then its words in the label style at 13 px. The words follow Rule 01.21: the content label, then after a middle dot the series name if the piece belongs to a series, or else the topic. A record’s ID, when there is one, follows as a typed chip.",
+   "rule": "The kicker, the short line above a title, sets the grid at 24 px, 12 px of space, a topic icon from the Civic Line, our set of topic symbols in chapter 10, at 24 px in one color, 12 px, then its words in the label style at 13 px. The words follow Rule 01.21: the content label, then after a middle dot the series name if the piece belongs to a series, or else the topic. A record’s ID, when there is one, follows as a typed chip.",
    "tokens": [
     "oa.size.icon.medium",
     "oa.space.150",
@@ -427,7 +427,7 @@
     "oa.color.state.empty.text.onNewsprint"
    ],
    "why": {
-    "text": "Our fifth edition pulsed the lever between 20 and 50 percent opacity with no end and no pause, at 1.27 to 1.83 to 1 on Newsprint. That fails WCAG’s rules on moving content and on contrast for graphics, and the pulse told a reader nothing a word could not.",
+    "text": "Our fifth edition pulsed the lever between 20 and 50 percent opacity with no end and no pause, measuring between 1.27 and 1.83 to 1 on Newsprint. That fails WCAG’s rules on moving content and on contrast for graphics, and the pulse told a reader nothing a word could not.",
     "basis": "WCAG 2.2 SC 2.2.2, 1.4.11 and 4.1.3"
    },
    "correct": {
@@ -436,7 +436,7 @@
    },
    "failure": {
     "specimen": "s-08-9-failure",
-    "caption": "Two frames of our fifth edition’s loading state at 28 px and enlarged four times, with the lever at 20 and 50 percent. Neither frame reaches 3:1."
+    "caption": "Two frames of our fifth edition’s loading state at 28 px and enlarged four times, with the lever at 20 and 50 percent. Neither frame reaches 3 to 1."
    },
    "specs": [
     {

@@ -609,8 +609,8 @@ def build(ctx):
                 ],
                 'related': ['03', '19', '28'],
                 'builders': ['The shared check fails any text under 12.95 px, with SVG text measured at its rendered scale. '
-                             'A chart drawn in SVG has to keep its labels at 13 px on a phone, so draw a phone version rather '
-                             'than shrinking the desktop one.'],
+                             'A chart drawn in SVG has to keep its labels at 13 px on a phone, so draw it a phone version with '
+                             'its own label positions.'],
             },
             {
                 'id': '06.4', 'title': 'Tighten tracking only as headings grow.',

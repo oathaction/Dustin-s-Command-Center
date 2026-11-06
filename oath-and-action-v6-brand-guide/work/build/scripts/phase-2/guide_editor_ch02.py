@@ -103,12 +103,13 @@ LEGEND = ('<p class="legend"><span><del>Dotted underline</del>: what the rule re
           '<span><span class="illus">Illustrative</span> invented for the example</span></p>')
 LEG_CSS = f".ed .legend{{display:flex;flex-wrap:wrap;gap:6px 24px;{fx('body-small')};color:var(--oa-color-text-secondary);margin:16px 0 0}}"
 
-SRC_SENATE = ("Source: U.S. Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, United States, as "
-              "recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. We could not "
-              "open the Senate’s own page for the vote.")
-SRC_INITIATIVE = ("Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, "
-                  "50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state "
-                  "supreme court ruling.")
+SRC_SENATE = ("Source: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, "
+              "2026, page S5199, United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.")
+# DR-99: the research lead's first choice, connection L50, kept to the connection (the loop's safe-seat line stays out).
+MECH_L50 = "Few voters leave their own party’s candidate over an undemocratic stand, so officials who take one face little threat of losing office."
+SRC_L50 = ("Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of "
+           "losing office, snapshot of October 15, 2026, United States. Retrieved November 6, 2026. From survey experiments "
+           "with 1,691 respondents (Graham and Svolik, 2020); about 3.5 percent left their own party’s candidate in realistic matchups.")
 
 
 def sentence_lengths(s):
@@ -219,7 +220,7 @@ def build(book):
             "The legend moves here from the group openers (AX-S14).")
 
     extras = [{"specimen": "s-02-lines", "label": "The brand lines",
-               "caption": "The locked lines are quoted word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."},
+               "caption": "We quote the locked lines word for word everywhere, and H01 keeps their wording even where a writing rule would shape the sentence another way."},
               {"specimen": "s-02-about", "label": C["title"],
                "caption": "Rule 02.1 is W01, and each writing rule keeps its W number in its title, so every citation of a W number still holds."}]
 
@@ -418,10 +419,10 @@ def build(book):
         "builders": "Give the piece one ask button and put the other ways to take part on the page the button opens. In an email, the tagline after the last story is the sign-off.",
     })
 
-    MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
+    MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}@media (max-width:47.99em){{.ed.mech td:first-child{{width:100%}}}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
     struct = f"{HR7008}, {HR7008_BOTH}. It needed 60 votes to move forward in the Senate and got 53."
-    mrows = [("A sweeping claim", "Our democracy is broken.", "The specific rule", "In 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot.", SRC_INITIATIVE, False),
-             ("A feeling", "People are frustrated with Congress.", "A mechanism", "The committee chair decides which bills get a hearing.", "", False),
+    mrows = [("A sweeping claim", "Our democracy is broken.", "How the system works", MECH_L50, SRC_L50, False),
+             ("A feeling", "People are frustrated with Congress.", "The office that decides", "The committee chair decides which bills get a hearing.", "", False),
              ("A slogan", "Make your voice heard!", "A next step", "The hearing is Tuesday at 10 a.m. in Room 4, and the clerk signs up speakers until 9:45.", "", True),
              ("A side", "One party blocked the bill.", "The structure", struct, SRC_SENATE, False)]
     mtr = "".join(f'<tr><td data-k="What a draft says"><p class="lab">{e(a)}</p><p class="qq">{e(q(b))}</p></td><td data-k="What we publish"><p class="lab">{e(c)}</p><p class="qq">{e(q(d))}{" " + ill() if il else ""}</p>'
@@ -431,17 +432,17 @@ def build(book):
             f'<p class="dek">People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!</p></div></div>')
     rules.append({
         "id": "02.25", "title": "Publish the mechanism behind a mood.",
-        "rule": ["When a draft states a sweeping claim, a feeling, a slogan or a side, replace it with the mechanism behind it: the rule, the office "
-                 "that decides, the step a reader can take or the structure of the vote."],
+        "rule": ["When a draft states a sweeping claim, a feeling, a slogan or a side, replace it with the mechanism behind it: how the system "
+                 "works, the office that decides, the step a reader can take or the structure of the vote."],
         "why": {"text": ["A mood asks the reader to agree with us, and the mechanism behind it gives them something to check and an office to call."],
                 "basis": "Editorial judgment"},
         "correct": {"specimen": A("s-02-25-correct", mech, css=(BASE, MCSS), rule="02.25", readable=True,
-                                  alt="A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes the specific rule: in 23 states, citizens can petition a proposed law or constitutional amendment onto the statewide ballot. "
-                                      "A feeling, People are frustrated with Congress, becomes a mechanism: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. "
+                                  alt=f"A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes how the system works: {MECH_L50} {SRC_L50} "
+                                      "A feeling, People are frustrated with Congress, becomes the office that decides: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. "
                                       f"A side, One party blocked the bill, becomes the structure: {struct}",
-                                  notes="Fifth-edition table, kept at Gate 0. Row one is held for round two (DR-99): a mechanism from the atlas that explains the claim replaces the 23-states line, which moves to Rule 01.5's map. "
-                                        "Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1); the research lead's check of the bill and the Senate vote line follow in round two."),
-                    "caption": "Each mood on the left becomes a rule, an office, a dated step or a vote count a reader can check."},
+                                  notes="Fifth-edition table, kept at Gate 0. Row one (DR-99) is the research lead's first choice, atlas connection L50, graded well supported, kept to the connection so the loop's safe-seat qualification stays out; it touches no ranked-choice voting, primaries or Massachusetts Question 3. "
+                                        "Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1), documented in the bill texts, with the Congressional Record as the vote's source."),
+                    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check."},
         "failure": {"specimen": A("s-02-25-failure", mood, css=(BASE, PIECE), rule="02.25", illustrative=True, width=360,
                                   alt="An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!"),
                     "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."},
@@ -513,7 +514,7 @@ def build(book):
     })
 
     src_lines = {r["source_line"] for r in W if r.get("source_line")} | {h["example_source"] for h in house if h.get("example_source") and h["example_source"].startswith("Source")}
-    sources = sorted(src_lines | {SRC_INITIATIVE, SRC_SENATE})
+    sources = sorted(src_lines | {SRC_L50, SRC_SENATE})
     sources.append("Our systems atlas, Who Do They Answer To?, glossary entry “Cloture”, for H02’s example.")
 
     gl = [{"before_rule": rid[g["rules"][0]["id"]], "number": i + 1, "title": g["name"], "line": g["intro"]} for i, g in enumerate(groups)]

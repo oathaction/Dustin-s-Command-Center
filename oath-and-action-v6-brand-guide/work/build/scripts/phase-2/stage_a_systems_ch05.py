@@ -1210,7 +1210,7 @@ def build(ctx):
              'caption': 'The seven colors with their values, jobs and shares across a body of work. The hex values are '
                         'locked in our identity rules, and the shares come from our fifth edition.'},
             {'after_rule': '05.2', 'specimen': 's-05-roles', 'label': 'Color roles on each surface',
-             'caption': 'Text-safe and graphic-safe roles on each surface. Every ratio is measured against its surface on the '
+             'caption': 'Text-safe and graphic-safe roles on each surface. We measured every ratio against its surface on the '
                         'token values. Text roles need 4.5 to 1, marks and edges 3 to 1, and hairlines carry no meaning.'},
             {'after_rule': '05.3', 'specimen': 's-05-ask', 'label': 'The ask on four surfaces',
              'caption': f'The ask on each surface at true size. White on Pillar Red measures {wl_red} to 1, which passes only '

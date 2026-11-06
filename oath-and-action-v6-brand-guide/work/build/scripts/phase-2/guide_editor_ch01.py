@@ -13,27 +13,38 @@ ATLAS = "Oath & Action’s systems atlas, Who Do They Answer To?"
 SRC_STOCK_SURVEY = ("Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, "
                     "fielded May 19 to 30, 2023, United States, as recorded in " + ATLAS + ", snapshot of October 15, 2026. "
                     "The survey asked about a ban in general and names no bill.")
-SRC_STOCK_VOTES = ("Source: U.S. House of Representatives, Roll Call 280, passage of H.R. 7008, July 22, 2026, and U.S. Senate, "
-                   "Vote 253, cloture on the motion to proceed, September 30, 2026, United States, as recorded in " + ATLAS +
-                   ", snapshot of October 15, 2026. We could not open the Senate’s own page for the vote.")
-SRC_INITIATIVE = ("Source: Ballotpedia, a secondary source, States with initiative or referendum, as of November 6, 2026, "
-                  "50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a 2021 state "
-                  "supreme court ruling.")
+SRC_STOCK_VOTES = ("Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, "
+                   "2026; Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, "
+                   "2026, page S5199; United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the "
+                   "Senate, 60 votes.")
+SRC_INITIATIVE = ("Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated "
+                  "measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s "
+                  "process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only "
+                  "constitutional amendments, which need 60 percent of the vote. Illinois’s citizens may propose only "
+                  "amendments on the legislature’s structure and procedure.")
 SRC_FEC = ("Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state "
            "election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.")
-SRC_R4A = ("Source: " + ATLAS + ", Loop R4a, the map-drawing loop, case record, August 2025 to November 2025, Texas and "
-           "California, snapshot of October 15, 2026. These records show maps being drawn and measure nothing about how "
-           "long either majority’s hold lasts.")
-SRC_PAY = ("Sources: Anna Stansbury and Lawrence H. Summers, “Productivity and Pay: Is the Link Broken?”, National Bureau "
-           "of Economic Research Working Paper 24165, December 2017, United States; Economic Policy Institute, “The "
-           "Productivity-Pay Gap”, 1979 to 2026, United States; both as recorded in " + ATLAS + ", the connection from "
-           "productivity to household income, snapshot of October 15, 2026. The two measure different pay, average pay "
-           "in one and typical workers’ pay in the other, and they differ in the price index they use and in how they "
-           "count benefits. The atlas grades the connection plausible and contested.")
+SRC_R4A = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; "
+           "California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. "
+           "District Court for the Central District of California, order of January 14, 2026; Texas and California. "
+           "Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the "
+           "seats either map produced.")
+SRC_PAY = ("Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link "
+           "Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; "
+           "Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. "
+           "The two differ in the price index they use and in how they count benefits; our systems atlas grades the "
+           "connection plausible and contested.")
 SRC_MINWAGE = ("Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, "
                "Ohio and Pennsylvania, as recorded in " + ATLAS + ", snapshot of October 15, 2026. Ohio’s yearly rate "
                "applies to employers with annual gross receipts of $405,000 or more.")
 SRC_CLOTURE = "Source: " + ATLAS + ", glossary entry “Cloture”."
+PHOTO_PARKS = "work/build/assets/photography/20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg"
+PHOTO_ZIANNO = "work/build/assets/photography/20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg"
+CAP_PARKS = ("Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the "
+             "Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.")
+CAP_ZIANNO = ("Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento "
+              "District, explains the Isabella Lake Dam safety project’s land purchases to residents at a public meeting in "
+              "Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.")
 SRC_ELECTRIC = "From " + ATLAS + ", the everyday answer to “Why is my electric bill going up?”"
 
 
@@ -61,7 +72,7 @@ def piece_track():
 <p class="dek">{e(HR7008)}, {e(HR7008_BOTH)}. As of October 15, 2026.</p>
 <ol class="stages">
 <li class="done"><span class="sn">1</span><span><b>Passed the House, 232 to 198</b><br>July 22, 2026</span></li>
-<li class="now"><span class="sn">2</span><span><b>Senate vote to take it up failed, 53 to 47</b><br>September 30, 2026. It needed 60.</span></li>
+<li class="now"><span class="sn">2</span><span><b>A Senate vote to end debate on taking it up got 53 votes, short of the 60 it needed</b><br>September 30, 2026, 53 to 47</span></li>
 <li class="next"><span class="sn">3</span><span><b>Next: a Senate vote to take it up</b><br>It needs 60 votes to go forward.</span></li>
 </ol>
 {hinge()}
@@ -312,7 +323,7 @@ EXAMPLES = [
     ("A ban on stock trading by members of Congress, May 2023 survey", "D03", "National", "National", "Federal",
      "Survey majorities of both parties’ voters, for a ban in general", False, "Rules 01.2, 01.20"),
     ("H.R. 7008, the Stop Insider Trading Act", "D03", "National", "National", "Federal",
-     "Held for round two: the party breakdown of the House and Senate votes, from the research lead's check", False,
+     "House passage: 218 Republicans, 13 Democrats and one independent; Senate vote to end debate: 53 Republicans", False,
      "Track piece; Rules 01.6, 01.10, 01.21, 01.24"),
     ("A county road budget", "D04", "Alder County (invented)", "None, invented", "County or city", "No reform shown", True, "Connect piece"),
     ("Backyard cottages", "D09", "Alder County (invented)", "None, invented", "County or city", "Invented", True, "Act piece; Rules 01.8, 01.21, 01.22"),
@@ -326,6 +337,8 @@ EXAMPLES = [
     ("A school bell schedule", "D09", "Unnamed district (invented)", "None, invented", "School district", "Invented", True, "Rule 01.10"),
     ("How property tax rates are set", "D08", "Every state", "Every region", "County or city", "No reform shown", False, "Rule 01.14"),
     ("A bus route hearing", "D04", "Unnamed city (invented)", "None, invented", "County or city", "No reform shown", True, "Rule 01.19"),
+    ("Rosa Parks lying in honor at the Capitol", "D10", "Washington, D.C.", "National", "Federal", "No reform shown", False, "Rule 01.6"),
+    ("A public meeting on a federal dam project", "D04", "California", "West", "Federal", "No reform shown", False, "Rule 01.8"),
 ]
 
 
@@ -361,7 +374,7 @@ def build(book):
                          "the editorial commitment.", "#rule-02-23", "Rule 02.23"),
         ("Pillars", "Explain, Track, Connect and Act, the four jobs our work does, always in that order.", None, None),
         ("The seven colors", "Newsprint, a warm off-white, is our page, and Charcoal carries the words. Pillar Red marks one "
-                             "thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a gray-green, and "
+                             "thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a muted green, and "
                              "White support the rest.", "#color", "Chapter 05"),
         ("View", "One screen, card, slide or printed page.", "#rule-04-2", "Rule 04.2"),
         ("Working red", "The one red a view may spend, on an error the reader must fix, the step they can take now or the "
@@ -467,7 +480,7 @@ def build(book):
           "you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A "
           "regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. "
           f"{HR7008_TRACKER}. {HR7008}, {HR7008_BOTH}. As of October 15, 2026: passed the House 232 to 198 on July 22, 2026; "
-          "the Senate vote to take it up failed 53 to 47 on September 30, 2026, short of 60; then follow this bill. Connect, "
+          "on September 30, 2026 a Senate vote to end debate on taking it up got 53 votes, short of the 60 it needed; then follow this bill. Connect, "
           "labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 "
           "seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard "
           "cottages March 9; send a comment by March 3.",
@@ -625,15 +638,15 @@ def build(book):
     })
 
     # --- Group 2: pictures --------------------------------------------------------------------------------------
-    PH = (f".ed .ph{{position:relative;aspect-ratio:3/2;width:100%;border:1px solid var(--oa-color-border-strong);"
-          f"background:repeating-linear-gradient(135deg,var(--oa-color-surface-newsprint) 0 10px,var(--oa-color-surface-white) 10px 20px);display:flex;align-items:flex-end}}"
-          f".ed .ph .phl{{{fx('label')};text-transform:uppercase;background:var(--oa-color-surface-white);border-top:1px solid var(--oa-color-border-strong);border-right:1px solid var(--oa-color-border-strong);padding:6px 10px}}"
-          f".ed .phc{{{fx('caption')};margin-top:8px}}"
+    PH = (f".ed .phw{{max-width:600px}}.ed .ph{{display:block;width:100%;height:auto;object-fit:cover;background:var(--oa-color-surface-white)}}"
+          f".ed .ph.r53{{aspect-ratio:5/3;object-position:50% 0%}}.ed .ph.r32{{aspect-ratio:3/2;object-position:50% 50%}}"
+          f".ed .phc{{{fx('caption')};margin-top:8px;max-width:34rem;text-wrap:pretty}}"
           f".ed .card{{border-top:4px solid var(--oa-color-border-strong);padding-top:14px;position:relative;overflow:hidden}}"
           f".ed .card .hl{{{fx('h3')};margin:0 0 10px;position:relative;max-width:16ch}}"
           f".ed .card .dek{{position:relative;max-width:40ch}}"
           f".ed .dome{{position:absolute;right:-16px;top:36px;width:200px;height:auto;color:var(--oa-color-graphic-subtle)}}")
-    ph = lambda cap: f'<div class="ph"><span class="phl">Photograph placeholder</span></div><p class="phc">{cap}</p>'
+    ph = lambda src, crop, alt, cap: (f'<div class="phw"><img src="{src}" alt="{e(alt)}" class="ph {crop}" width="1920" height="1152" loading="lazy">'
+                                      f'<p class="phc">{cap}</p></div>')
     dome = ('<svg class="dome" viewBox="0 0 260 200" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3">'
             '<path d="M70 120 A60 60 0 0 1 190 120"/><path d="M60 120h140M55 132h150"/><path d="M130 60v-26M122 34h16"/>'
             '<path d="M80 132v52M100 132v52M120 132v52M140 132v52M160 132v52M180 132v52M40 186h180"/></svg>')
@@ -644,18 +657,25 @@ def build(book):
         "why": {"text": ["Campaigns in both parties use the dome and the flag as shorthand for government. As decoration they stand for no rule, "
                          "office or event, so they give the reader nothing to check or act on."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-6-correct", '<div class="ed">' + ph("The doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Placeholder: photograph and credit to come.") + "</div>",
-                                  css=(BASE, PH), rule="01.6", width=360,
-                                  alt="A labeled photograph placeholder with its caption: the doors of the U.S. Senate chamber on September 30, 2026, the day of the Senate vote on the Stop Insider Trading Act. Photograph and credit to come.",
-                                  notes="Round two (DR-101): a public-domain U.S. government photograph from the research lead replaces the placeholder, or the rule moves to chapter 16."),
-                    "caption": "The building appears only as the place where the vote happened, named in a caption, in a photograph still to be made."},
+        "correct": {"specimen": A("s-01-6-correct", '<div class="ed">' + ph(PHOTO_PARKS, "r53", "Mourners file past a casket ringed by velvet ropes in the Capitol Rotunda, under its paintings and statues.", e(CAP_PARKS)) + "</div>",
+                                  css=(BASE, PH), rule="01.6",
+                                  alt="A documentary photograph of the U.S. Capitol Rotunda, its pilasters, framed paintings and statues above a line of people "
+                                      "filing past a casket inside velvet ropes, with Capitol Police officers among them. Caption: " + CAP_PARKS,
+                                  notes="DR-101, round two: the research lead's recommended photograph (pho-01 in the rights ledger), a public-domain work of the "
+                                        "Architect of the Capitol, from Wikimedia's 1,920 px rendition. Cropped by CSS to 5:3 from the top, so the agency's mark at "
+                                        "lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event."),
+                    "caption": "The Capitol Rotunda appears only as the place where a named public event happened, and the caption says what, where and when, with the credit. The crop keeps the walls and the public and leaves out the agency’s mark."},
         "failure": {"specimen": A("s-01-6-failure", f'<div class="ed"><div class="card">{dome}{kicker("Explainer", "Congress")}'
                                                     '<p class="hl">What the Senate vote on the Stop Insider Trading Act means for you</p><p class="dek">One vote, 53 to 47, and what comes next.</p></div></div>',
                                   css=(BASE, PH), rule="01.6", width=360,
                                   alt="An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you."),
                     "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."},
+        "specs": [{"label": "Photograph", "value": "Documentary, of the place where a named public event happened"},
+                  {"label": "Crop", "value": "Keep the building as the setting and the people in it; crop any agency mark"},
+                  {"label": "Caption", "value": "What happened, where and when, then the credit"}],
+        "files": [PHOTO_PARKS],
         "related": ["16", "12"],
-        "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit.",
+        "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit, logged in the rights ledger.",
     })
 
     ballot = lambda fail: (f'<div class="ed"><div class="card">{kicker("Explainer", "Ballot measures", illus=True)}'
@@ -690,17 +710,24 @@ def build(book):
                  "names who is shown, what they are doing, where and when."],
         "why": {"text": ["A reader trusts a picture of a real hearing more than a picture of the idea of one, and a full caption lets them check it."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-8-correct", '<div class="ed">' + ph(ill() + " A county planner answers residents’ questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.") + "</div>",
-                                  css=(BASE, PH), rule="01.8", illustrative=True, width=360,
-                                  alt="A labeled photograph placeholder with an illustrative caption naming who, what, where and when: a county planner answers residents' questions about backyard cottages before the Alder County Board of Supervisors votes, 6 p.m. Tuesday, March 9, 2027.",
-                                  notes="Round two (DR-101): a public-domain U.S. government photograph from the research lead, with its real caption, or the rule moves to chapter 16."),
-                    "caption": "The caption names the person by role, the act, the place and the time."},
-        "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + ph(ill() + " Democracy in action.") + "</div>",
-                                  css=(BASE, PH), rule="01.8", illustrative=True, width=360,
-                                  alt="The same placeholder captioned only Democracy in action."),
+        "correct": {"specimen": A("s-01-8-correct", '<div class="ed">' + ph(PHOTO_ZIANNO, "r32", "An official points to a project map while two residents, seen from behind, listen.", e(CAP_ZIANNO)) + "</div>",
+                                  css=(BASE, PH), rule="01.8",
+                                  alt="A documentary photograph of a public meeting: a federal official facing the camera points to a large map of Lake Isabella while two "
+                                      "residents, seen from behind, listen; a board at left reads Steps in the real estate process. Caption: " + CAP_ZIANNO,
+                                  notes="DR-101, round two: the research lead's recommended photograph (pho-04), a public-domain work of the U.S. Army Corps of Engineers, from "
+                                        "Wikimedia's 1,920 px rendition, cropped by CSS to 3:2. Chosen over the Menniti frame from the same meeting because the named "
+                                        "official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away."),
+                    "caption": "The caption names the official and his job, what he is doing, where and when, then the credit. The residents face away and stay unnamed."},
+        "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + ph(PHOTO_ZIANNO, "r32", "The same photograph of the public meeting.", "Democracy in action. " + ill()) + "</div>",
+                                  css=(BASE, PH), rule="01.8",
+                                  alt="The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative."),
                     "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."},
+        "specs": [{"label": "Caption", "value": "Who is shown, what they are doing, where and when, then the credit"},
+                  {"label": "People", "value": "Name officials by their role; leave residents unnamed unless the record names them"},
+                  {"label": "Crop", "value": "3:2, keeping the official, the people they serve and what the meeting is about"}],
+        "files": [PHOTO_ZIANNO],
         "related": ["16"],
-        "builders": "Write the caption’s four parts before a photograph goes in: who, what, where and when.",
+        "builders": "Write the caption’s four parts before a photograph goes in: who, what, where and when. Take them from the agency’s own caption and log the photograph in the rights ledger.",
     })
 
     # --- Group 3: choosing examples -----------------------------------------------------------------------------
@@ -716,9 +743,14 @@ def build(book):
                   for d in sorted(dom, key=lambda k: (-dom[k], k)))
     limit = n / 4
     st_names = [s for s in NAMED_STATES if states[s]]
-    st_line = ", ".join(st_names[:-1]) + " and " + st_names[-1]
-    tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply four. '
-              f'{st_line} supply one example each.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th></tr></thead><tbody>{trs}</tbody></table></div>')
+    many = [x for x in st_names if states[x] > 1]
+    ones = [x for x in st_names if states[x] == 1]
+    st_line = (", ".join(f"{x} supplies {SPELL[states[x]]} examples" for x in many) + (", and " if many else "")
+               + ", ".join(ones[:-1]) + " and " + ones[-1] + (" one each" if many else " supply one example each"))
+    st_max = max(states.values())
+    import math
+    tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply {SPELL[math.floor(limit) + 1]}. '
+              f'{st_line}.</p><table><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th></tr></thead><tbody>{trs}</tbody></table></div>')
     bad = [("Elections and representation", 3), ("Money, lobbying and influence", 1), ("Taxes, wealth and economic security", 1)]
     tal_bad = (f'<div class="ed tal"><p class="ct">A draft chapter’s five examples by domain and state</p><p class="cm">Three of five come from one domain, and three of five from Massachusetts.</p><table class="stack"><thead><tr><th scope="col">Domain</th><th scope="col">Examples</th><th scope="col">From Massachusetts</th></tr></thead><tbody>'
                + "".join(f'<tr><th scope="row">{e(a)}</th><td class="c" data-k="Examples">{b} of 5</td><td class="c" data-k="From Massachusetts">{["3", "0", "0"][i]}</td></tr>' for i, (a, b) in enumerate(bad)) + "</tbody></table></div>")
@@ -731,8 +763,8 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-9-correct", tal_ok, css=(BASE, CHART, TCSS), rule="01.9", readable=True,
                                   alt=f"A table of this chapter's {n} examples by atlas domain. The largest count is {top} of {n}, under the one-in-four limit. " +
-                                      "; ".join(f"{DOMAINS[d]}: {dom[d]}" for d in sorted(dom)) + f". {st_line} supply one example each."),
-                    "caption": f"This chapter checked against its own rule: no domain supplies more than {SPELL[top]} of its {n} examples, under one in four, and no named state supplies more than one."},
+                                      "; ".join(f"{DOMAINS[d]}: {dom[d]}" for d in sorted(dom)) + f". {st_line}."),
+                    "caption": f"This chapter checked against its own rule: no domain supplies more than {SPELL[top]} of its {n} examples, under one in four, and no named state supplies more than {SPELL[st_max]}, under one in five."},
         "failure": {"specimen": A("s-01-9-failure", tal_bad, css=(BASE, CHART, TCSS), rule="01.9", illustrative=True, readable=True,
                                   alt="An illustrative tally of a draft chapter's five examples: three from elections and representation, and three from Massachusetts."),
                     "caption": "Three election examples from one state would tell readers elsewhere that the chapter was written for someone else."},
@@ -746,7 +778,7 @@ def build(book):
             f".ed .lv .rg{{display:block;{fx('caption')};color:var(--oa-color-text-secondary)}}")
     lv = lambda items: "<ul>" + "".join(f'<li>{t}<span class="rg">{e(r)}</span></li>' for t, r in items) + "</ul>"
     lv_ok = ('<div class="ed"><div class="lv">'
-             f'<div><p class="lab">Federal</p>{lv([("The Stop Insider Trading Act in Congress", "National"), ("The Senate’s cloture rule", "National")])}</div>'
+             f'<div><p class="lab">Federal</p>{lv([("The Stop Insider Trading Act in Congress", "National"), ("The Senate’s cloture rule", "National"), ("Rosa Parks lying in honor at the Capitol", "National"), ("A public meeting on a federal dam project in California", "West")])}</div>'
              f'<div><p class="lab">State</p>{lv([("Map redraws in Texas and California", "South and West"), ("Minimum wage floors: Ohio’s rises each year by formula, and Pennsylvania’s stays at the federal $7.25", "Midwest and Northeast"), ("Posting committee votes " + ill(), "No region")])}</div>'
              f'<div><p class="lab">County or city</p>{lv([("Backyard cottages in Alder County " + ill(), "No region"), ("Property tax rates", "Every region")])}</div>'
              f'<div><p class="lab">School district</p>{lv([("A bell schedule vote " + ill(), "No region")])}</div></div>'
@@ -761,7 +793,7 @@ def build(book):
         "why": {"text": ["Most of the rules that reach a household are written below the federal level. A reader who only ever sees Congress learns that the decisions nearest to them are not worth following."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-10-correct", lv_ok, css=(BASE, LCSS), rule="01.10", readable=True,
-                                  alt="This chapter's examples sorted by level, each with its region. Federal: the Stop Insider Trading Act in Congress and the Senate's cloture rule, national. "
+                                  alt="This chapter's examples sorted by level, each with its region. Federal: the Stop Insider Trading Act in Congress, the Senate's cloture rule and Rosa Parks lying in honor at the Capitol, national; a public meeting on a federal dam project in California, West. "
                                       "State: map redraws in Texas and California, South and West; minimum wage floors, Ohio's rising each year by formula and Pennsylvania's at the federal $7.25, Midwest and Northeast; posting committee votes, illustrative. "
                                       "County or city: backyard cottages in Alder County, illustrative; property tax rates, every region. School district: a bell schedule vote, illustrative. " + SRC_MINWAGE),
                     "caption": "This chapter’s examples reach all four levels, and its real cases come from all four regions: Texas in the South, California in the West, Ohio in the Midwest and Pennsylvania in the Northeast."},
@@ -775,8 +807,8 @@ def build(book):
     CASES = (f".ed .cases{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
              f".ed .cases div{{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}}"
              f".ed .cases .st{{{fx('h4')};margin:0 0 6px}}")
-    tx = "In August 2025, the Republican-led legislature passed a congressional map aiming at five more Republican seats, and the governor signed it that month."
-    ca = "In August 2025, the Democratic-led legislature passed a congressional map aiming at five more Democratic seats, and voters approved it as Proposition 50."
+    tx = "In August 2025, Texas’s Republican-led legislature passed a congressional map aimed at five more Republican seats, and Governor Greg Abbott signed it."
+    ca = "In August 2025, California’s Democratic-led legislature passed a congressional map aimed at five more Democratic seats, and voters approved it in November."
     if words(tx) != words(ca):
         raise SystemExit(f"Rule 01.11: the two cases differ in length ({words(tx)} and {words(ca)} words)")
     lead11 = '<p class="ct">Loop R4a, the map-drawing loop: majorities draw maps that help them keep control.</p>'
@@ -791,8 +823,8 @@ def build(book):
                                                      f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {SRC_R4A}",
-                                  notes="BE-S1, CP-M5: both cases in one form. Round two applies the research lead's check of who drew each map, its aim and the dates."),
-                    "caption": f"Each case names the month, the majority that acted, the seats its map aimed at and the step that put the map in place, in {words(tx)} words."},
+                                  notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding."),
+                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve."},
         "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"The same loop with only the Texas case: {tx}"),
@@ -870,11 +902,11 @@ def build(book):
                  "metaphors such as fight, battle, front and game plan."],
         "why": {"text": ["A war or a game needs an enemy or a loser, and the people on the other side of a vote are our readers too. The verbs for what happens also tell a reader where the decision stands."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-15-correct", line("The state senate votes on the overtime rule Thursday.", illus=True, head=True, kick=kicker("Tracker", "Dispatch")),
+        "correct": {"specimen": A("s-01-15-correct", line("The state senate votes on the overtime rule Thursday.", illus=True, head=True, kick=kicker("Report", "Dispatch")),
                                   css=(BASE, LINES), rule="01.15",
-                                  alt="A kicker, Tracker, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday."),
+                                  alt="A kicker, Report, Dispatch, over an illustrative headline: The state senate votes on the overtime rule Thursday."),
                     "caption": "The series name is Dispatch, and the headline names the vote and its day. Only the headline is invented, so the label sits beside it."},
-        "failure": {"specimen": A("s-01-15-failure", line("The battle over overtime heads to the senate floor.", illus=True, head=True, kick=kicker("Tracker", "Dispatch from the Front")),
+        "failure": {"specimen": A("s-01-15-failure", line("The battle over overtime heads to the senate floor.", illus=True, head=True, kick=kicker("Report", "Dispatch from the Front")),
                                   css=(BASE, LINES), rule="01.15",
                                   alt="Our fifth edition's series name, Dispatch from the Front, in the kicker over an illustrative headline: The battle over overtime heads to the senate floor."),
                     "caption": "“From the Front”, our fifth edition’s series name, and “battle” cast the vote as a war with an enemy, and the headline never says when the vote happens."},
@@ -882,8 +914,8 @@ def build(book):
         "builders": "Search a draft for fight, battle, front, war and game plan, and name the step in the process in its place.",
     })
 
-    ra = "Economists writing for the National Bureau of Economic Research find that average pay still rises with productivity, by most or all of each gain."
-    rb = "Economists writing for the Economic Policy Institute find that the pay of typical workers has risen far more slowly than productivity has since 1979."
+    ra = "Economists at Harvard University find that faster productivity growth has still brought faster pay growth for typical and average workers, in the authors’ estimates."
+    rb = "Economists at the Economic Policy Institute find that typical workers’ pay has grown far more slowly than productivity since 1979, in the authors’ measures."
     if words(ra) != words(rb):
         raise SystemExit(f"Rule 01.16: the two readings differ in length ({words(ra)} and {words(rb)} words)")
     RCSS = (f".ed .rd{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
@@ -899,8 +931,8 @@ def build(book):
         "correct": {"specimen": A("s-01-16-correct", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">One reading</p><p>{e(ra)}</p></div><div><p class="lab">The other reading</p><p>{e(rb)}</p></div></div><p class="src">{e(SRC_PAY)}</p></div>',
                                   css=(BASE, CHART, RCSS), rule="01.16",
                                   alt=f"Does pay rise with productivity? Two readings at the same length, {words(ra)} words each, in the same type. One: {ra} The other: {rb} {SRC_PAY}",
-                                  notes="BE-M2, CP-S6: both holders by role and affiliation in one form. Round two takes the research lead's reading of how each publisher describes its authors."),
-                    "caption": f"Each reading runs {words(ra)} words, uses the verb “find” and names who holds it the same way, by role and by the organization they wrote for."},
+                                  notes="BE-M2, CP-S6: both holders by role and affiliation in one form, as the research lead's report sets them (task 5). The first reading follows the paper's abstract, which covers median and average pay."),
+                    "caption": f"Each reading runs {words(ra)} words, uses the verb “find” and names who holds it by role and affiliation."},
         "failure": {"specimen": A("s-01-16-failure", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">What the research shows</p><p>{e(ra)}</p></div><div class="small"><p>Some critics disagree.</p></div></div></div>',
                                   css=(BASE, CHART, RCSS), rule="01.16",
                                   alt="The first reading set in full under the label What the research shows, and the second cut to three words in small gray type: Some critics disagree."),
@@ -1023,7 +1055,7 @@ def build(book):
         "specs": [{"label": "Explainer", "value": "How a rule or a decision works"},
                   {"label": "Tracker", "value": "Where a decision stands, dated “as of”"},
                   {"label": "Analysis", "value": "What the evidence shows on a contested question"},
-                  {"label": "Report", "value": "A numbered study, with its method and its date"},
+                  {"label": "Report", "value": "What the record shows about a decision, from a story in a series such as Dispatch to a numbered study"},
                   {"label": "Guide", "value": "How to reach the office that decides, for a Connect piece"},
                   {"label": "Act · How to take part", "value": "One step with its date and place; one label, with nothing after it"},
                   {"label": "Our position", "value": "An argument for or against a named measure, in the Charcoal label (Rule 01.23)", "token": "oa.color.action.primary.fill.onNewsprint"},
@@ -1121,7 +1153,7 @@ def build(book):
         "label": "Our founding line", "caption": "Chapter 02’s table of brand lines lists it with no role."}]
 
     extras = [{"specimen": "s-01-words", "label": "Words this guide uses",
-               "caption": "Each word is defined once here and kept the same through the guide. The link beside it opens the rule or chapter that sets it."},
+               "caption": "We define each word once here and keep it the same through the guide. The link beside it opens the rule or chapter that sets it."},
               {"specimen": "s-01-hinge-lines", "label": "The hinge in the locked lines",
                "caption": "Each locked line splits at the hinge, a commitment first and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
