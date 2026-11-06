@@ -2381,7 +2381,7 @@
     "plausible": 38,
     "contested": 18
    },
-   "source_line": "Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions. Claims checked through October 15, 2026. United States. Snapshot of 2026-10-15. Grades are the atlas's own, defined on its evidence page; a claim's grade covers that claim, not the whole answer.",
+   "source_line": "Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions. Claims checked through October 15, 2026. United States. Snapshot of 2026-10-15. Grades are the atlas's own, defined on its evidence page; a claim's grade covers that claim alone.",
    "notes": [
     "Grades never take Pillar Red (R10 of the research brief); the atlas draws grades as line textures, so a fill needs a texture or tint step that survives grayscale."
    ],

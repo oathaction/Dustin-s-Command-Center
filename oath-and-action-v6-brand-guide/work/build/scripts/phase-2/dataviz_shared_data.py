@@ -198,7 +198,7 @@ datasets['claims-by-grade'] = {
               [{'name': g, 'type': 'number', 'unit': 'claims'} for g in GR],
     'rows': crow, 'totals': {g: sum(r[g] for r in crow) for g in GR},
     'source_line': atlas_line('claims register, 433 claims across 16 everyday questions', 'Claims checked through October 15, 2026', 'United States',
-                              'Grades are the atlas\'s own, defined on its evidence page; a claim\'s grade covers that claim, not the whole answer.'),
+                              'Grades are the atlas\'s own, defined on its evidence page; a claim\'s grade covers that claim alone.'),
     'notes': ['Grades never take Pillar Red (R10 of the research brief); the atlas draws grades as line textures, so a fill needs a texture or tint step that survives grayscale.'],
 }
 
