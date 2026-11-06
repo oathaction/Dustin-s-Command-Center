@@ -164,6 +164,10 @@ def verify(html):
         for tok in ds.get('source_tokens', []):
             if tok not in srcline:
                 errs.append(f'{tag}: source line lacks "{tok}"')
+        ftext_all = norm(' '.join(fig['text'])).replace('\u2019', "'")
+        for req in ds.get('required_text', []):
+            if norm(req) not in ftext_all:
+                errs.append(f'{tag}: required text missing ("{req[:50]}...")')
         if ds.get('kind') == 'illustrative' and 'Illustrative data' not in norm(' '.join(fig['text'])):
             errs.append(f'{tag}: illustrative data without an "Illustrative data" label')
         idx = row_index(ds)

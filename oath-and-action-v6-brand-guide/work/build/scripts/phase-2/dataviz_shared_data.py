@@ -307,6 +307,14 @@ for did, ds in datasets.items():
 datasets['stock-trading-ban']['source_tokens'] = ['Atlas V7', 'Program for Public Consultation']
 datasets['stock-trading-ban']['required_keys'] = ['support-republicans', 'support-democrats']
 
+# The editor's disclosure (D2-80, D2-106): V7's renderer prints it on the nomination reforms (R-01, R-02, R-47),
+# word for word as here. Charts on nomination, ranked-ballot or election-rule data carry it too.
+DISCLOSURE = ("Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through "
+              "Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign.")
+for did in ('rule-changes-by-instrument', 'scenarios-2030', 'rcv-bans', 'rule-changes'):
+    datasets[did]['required_text'] = [DISCLOSURE]
+    datasets[did].setdefault('notes', []).append('Print the editor\'s disclosure word for word, labeled "Disclosure:", where the reader sees it with the chart (D2-106).')
+
 # Extra V7 material the makers may use beside the ten (big numbers, social card, captions)
 extras = {
     'numbers': V7['numbers'],

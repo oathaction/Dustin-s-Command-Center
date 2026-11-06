@@ -1240,7 +1240,8 @@
    },
    "source_line": "Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes. August 6, 1965 to the November 3, 2026 ballot. United States: federal, state and local. Snapshot of 2026-10-15. Directions are the atlas's own codes, set out in its coding note; each row cites its own source. One row (RL02) rests on a source the atlas did not check.",
    "notes": [
-    "Unit charts draw one mark per row, keyed by its RL id, so every mark traces to one record."
+    "Unit charts draw one mark per row, keyed by its RL id, so every mark traces to one record.",
+    "Print the editor's disclosure word for word, labeled \"Disclosure:\", where the reader sees it with the chart (D2-106)."
    ],
    "source_tokens": [
     "Atlas V7"
@@ -1310,6 +1311,9 @@
     "RL62",
     "RL63",
     "RL64"
+   ],
+   "required_text": [
+    "Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign."
    ]
   },
   "rule-changes-by-instrument": {
@@ -1434,7 +1438,8 @@
    },
    "source_line": "Oath & Action, Who Do They Answer To? Systems Atlas V7, repair log of 64 dated rule changes. August 6, 1965 to the November 3, 2026 ballot. United States: federal, state and local. Snapshot of 2026-10-15. Directions are the atlas's own codes, set out in its coding note; each row cites its own source. One row (RL02) rests on a source the atlas did not check.",
    "notes": [
-    "Five instruments with one row each are grouped: agency rule, executive action and executive order as \"Executive or agency action\"; municipal ordinance and council funding vote as \"Local law or funding vote\". The grouping is the studio's; the instruments are V7's."
+    "Five instruments with one row each are grouped: agency rule, executive action and executive order as \"Executive or agency action\"; municipal ordinance and council funding vote as \"Local law or funding vote\". The grouping is the studio's; the instruments are V7's.",
+    "Print the editor's disclosure word for word, labeled \"Disclosure:\", where the reader sees it with the chart (D2-106)."
    ],
    "source_tokens": [
     "Atlas V7"
@@ -1447,6 +1452,9 @@
     "Federal statute",
     "Executive or agency action",
     "Local law or funding vote"
+   ],
+   "required_text": [
+    "Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign."
    ]
   },
   "scenarios-2030": {
@@ -1727,7 +1735,8 @@
    "source_line": "Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios. Conditional directions to 2036 from a 2026 baseline. United States. Snapshot of 2026-10-15. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.",
    "notes": [
     "DQ prints as \"Quality of democracy\" (DR-39).",
-    "Title verbs take \"would\" or \"may\": these are conditional estimates (section 15)."
+    "Title verbs take \"would\" or \"may\": these are conditional estimates (section 15).",
+    "Print the editor's disclosure word for word, labeled \"Disclosure:\", where the reader sees it with the chart (D2-106)."
    ],
    "source_tokens": [
     "Atlas V7"
@@ -1741,6 +1750,9 @@
     "iv-c",
     "iv-d",
     "iv-e"
+   ],
+   "required_text": [
+    "Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign."
    ]
   },
   "history-events": {
@@ -8039,7 +8051,11 @@
    },
    "notes": [
     "Ballotpedia is a secondary source; V7 cites the National Conference of State Legislatures (W049), whose page refused automated reading. Both give 19 states, matching V7 repair log row RL47.",
-    "Mark each state with data-key=\"<code>\" data-category=\"<status>\" data-field=\"status\". Every state and DC must be drawn."
+    "Mark each state with data-key=\"<code>\" data-category=\"<status>\" data-field=\"status\". Every state and DC must be drawn.",
+    "Print the editor's disclosure word for word, labeled \"Disclosure:\", where the reader sees it with the chart (D2-106)."
+   ],
+   "required_text": [
+    "Oath & Action's editor works with the Yes on 3 campaign for Massachusetts Question 3 and promotes it through Veterans for All Voters, where he is Massachusetts state lead. He also co-leads Ranked Choice Melrose, a local campaign."
    ]
   },
   "homeownership-by-race-quarterly": {
