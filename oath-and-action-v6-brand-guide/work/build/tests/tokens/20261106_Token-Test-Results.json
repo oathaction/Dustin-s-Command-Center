@@ -1,0 +1,432 @@
+{
+ "run": "2026-11-06",
+ "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
+ "tokenSetVersion": "6.0.0-gate2.1",
+ "status": "pre-release",
+ "passed": true,
+ "steps": [
+  {
+   "step": "build check",
+   "result": "pass",
+   "detail": "tokens_build --check: tokens.json and tokens.css match the source (485 tokens)."
+  },
+  {
+   "step": "parity",
+   "result": "pass",
+   "detail": "485 tokens, 605 :root properties, 90 short names in each of 4 surface classes, 0 failures"
+  },
+  {
+   "step": "rules",
+   "result": "pass",
+   "detail": "485 tokens, 30 derived colors and tints, 201 semantic color cells measured, 0 failures"
+  },
+  {
+   "step": "self-test",
+   "result": "pass",
+   "detail": "clean files pass; plants caught 35 of 35"
+  },
+  {
+   "step": "cross-check",
+   "result": "pass",
+   "detail": "sd-crosscheck: Style Dictionary 5.8.0 read 485 tokens (298 color, 5 fontFamily, 5 fontWeight, 15 typography, 131 dimension, 22 number, 6 duration, 3 cubicBezier); 485 agree with tokens.css; 120 typography part properties are tokens.css's own; 0 disagreements; planted Stone change reported"
+  },
+  {
+   "step": "rendered",
+   "result": "pass",
+   "detail": "render: Chromium 153.0.8010.12 resolved 454 token values, 30 color-mix() derivations (largest channel difference 0), 360 surface short names nested in another surface, 14 type styles at 390 and 1440 px and 6 durations under reduced motion; 0 failures; planted red leak onto Prussian reported"
+  }
+ ],
+ "counts": {
+  "color.palette": {
+   "primitive": 7
+  },
+  "color.derived": {
+   "primitive": 3
+  },
+  "color.tint": {
+   "primitive": 27
+  },
+  "color (roles)": {
+   "semantic": 137
+  },
+  "font": {
+   "untiered": 10
+  },
+  "type": {
+   "semantic": 14
+  },
+  "space": {
+   "untiered": 12
+  },
+  "size": {
+   "untiered": 5
+  },
+  "layout": {
+   "untiered": 23
+  },
+  "radius": {
+   "untiered": 2
+  },
+  "border": {
+   "untiered": 7
+  },
+  "opacity": {
+   "untiered": 2
+  },
+  "motion": {
+   "untiered": 9
+  },
+  "zIndex": {
+   "untiered": 5
+  },
+  "chart.color": {
+   "component": 17,
+   "semantic": 64
+  },
+  "chart (sizes)": {
+   "untiered": 97
+  },
+  "component": {
+   "component": 44
+  }
+ },
+ "plants": [
+  {
+   "plant": "A changed value in tokens.css (Stone one step off)",
+   "test": "parity",
+   "caught": true,
+   "failure": "oa.color.palette.stone: --oa-color-palette-stone resolves to #5D636E in tokens.css and to #5D636D in tokens.json",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A missing CSS property (secondary text on Newsprint)",
+   "test": "parity",
+   "caught": true,
+   "failure": "oa.color.text.secondary.onNewsprint: tokens.json has it, tokens.css has no --oa-color-text-secondary-on-newsprint",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "An extra CSS property the JSON lacks",
+   "test": "parity",
+   "caught": true,
+   "failure": "--oa-color-text-tertiary-on-newsprint: tokens.css declares it, tokens.json has no token for it",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A red ask fill on Prussian",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.action.ask.fill.onPrussian: Rule 05.3, red never sits on Prussian",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A failing text contrast (Stone as secondary text on Newsprint, 4.29:1)",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.text.secondary.onNewsprint: text measures 4.29:1 on newsprint, under 4.5:1",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A broken alias (a label pointing at a surface that does not exist)",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.component.button.primary.label.onWhite: broken alias, {oa.color.action.primary.label.onSnow} names no token",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A party color set to Pillar Red",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.chart.color.party.mark.onNewsprint: a party mark resolves to Pillar Red; DR-48 and DR-58 forbid it",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A changed value in tokens.json (space.200 from 1 rem to 1.25 rem)",
+   "test": "parity",
+   "caught": true,
+   "failure": "oa.space.200: --oa-space-200 resolves to 1rem in tokens.css and to 1.25rem in tokens.json",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "Red reaching Prussian through the stylesheet's surface class",
+   "test": "rules",
+   "caught": true,
+   "failure": ".oa-surface-prussian: --oa-color-data-emphasis-red resolves to Pillar Red; Rule 05.3, red never sits on Prussian",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A chart role leaking onto White from an outer surface",
+   "test": "parity",
+   "caught": true,
+   "failure": ".oa-surface-white: --oa-chart-color-subject reads var(--oa-chart-color-subject-on-newsprint); the JSON implies initial",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A party color set to Prussian on Charcoal",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.chart.color.party.mark.onCharcoal: a party mark resolves to Prussian; DR-48 and DR-58 forbid it",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A party color pair (a second ink for one party)",
+   "test": "rules",
+   "caught": true,
+   "failure": "chart: party marks on newsprint take 2 different inks (#121212, #5D636D); DR-58 allows no party color pair",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "Working red on Newsprint without its keyline",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.data.emphasisRed.onNewsprint: Rule 05.3, working red on Newsprint (2.96:1) takes its 1 px Charcoal keyline",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "Red as text (an error message set in Pillar Red)",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.state.error.text.onWhite: Rule 05.3 and T-6, red never sets text",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A red hinge divider",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.identity.hingeDivider.onWhite: Rule 05.3, the hinge divider's ampersand takes its surface's ink, never red",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A diverging step set to red",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.chart.color.diverging.fill.step2.onNewsprint: a diverging step is red (#E63946); no diverging scale pairs red with blue (Master Brief V2 section 13)",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A derived red ink (#AC3339, rejected at Gate 1)",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.tint.redInk: #AC3339 is a second red (chroma 0.157, hue 22°); T-6 allows no derived red",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A tint whose hex its derivation does not produce",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.tint.stoneN55: condition 2, stone 0.55 toward newsprint gives #A1A2A3 but the token says #A1A2A4",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A tint with no registered need",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.tint.stoneN70: condition 1, no measured need registered (need=N-99)",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "The locked Pillar Red changed to Atlas V7's #BD2C32",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.palette.pillarRed: #BD2C32 differs from the locked value #E63946",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A stale stored contrast ratio",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.text.primary.onNewsprint: stored contrast 14.0 is stale; measured 13.29",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "An 11 px label",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.type.label: size 11 px is under the 13 px floor",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "The ask label at 15 px",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.action.ask.label.onNewsprint: a large-text pass needs 24 px, or 18.66 px bold; its type is 15 px at 700",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "Chart type at 12 px",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.chart.type.tick: chart type at 12 px is under the 13 px floor",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A third opacity job (a 40% disabled label)",
+   "test": "rules",
+   "caught": true,
+   "failure": "opacity: T-10 gives opacity two decorative jobs; found 3 tokens",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A transparent color token",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.tint.stoneN70: a color token is never transparent; opacity has named jobs of its own",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A duration off V5's timing",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.motion.duration.fast: V5 sets 120 ms (T-10)",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A duration missing from the reduced-motion block",
+   "test": "parity",
+   "caught": true,
+   "failure": "reduced-motion block: --oa-motion-duration-hinge is missing",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A clamp() size that no longer reaches the JSON maximum",
+   "test": "parity",
+   "caught": true,
+   "failure": "oa.type.title: clamp() runs 3.5 to 6.875 rem; the JSON says 3.5 to 7 rem",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A 16 px icon allowed a red accent",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.component.icon.accent.onNewsprint: R10, a red accent appears only at 24 px and up (minSize)",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "The app icon tile moved to Newsprint",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.component.appIcon.tile: R13 makes Charcoal the default tile",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "An alias cycle",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.color.surface.white: alias cycle: oa.color.surface.white > oa.color.surface.prussian > oa.color.surface.white",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "A component token pointing straight at a primitive",
+   "test": "rules",
+   "caught": true,
+   "failure": "oa.component.button.disabled.label.onWhite: a component token must alias a semantic token, not oa.color.palette.stone",
+   "alsoCaughtBy": [
+    "build",
+    "parity"
+   ]
+  },
+  {
+   "plant": "Rule 05.3 reworded",
+   "test": "rules",
+   "caught": true,
+   "failure": "Rule 05.3: the stored wording differs from D2-01 as amended by DR-66",
+   "alsoCaughtBy": [
+    "build"
+   ]
+  },
+  {
+   "plant": "A stylesheet edited by hand, so it no longer matches the source",
+   "test": "build",
+   "caught": true,
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-rxg1wcxn differ from what the source builds. Run the build.",
+   "alsoCaughtBy": [
+    "parity"
+   ]
+  }
+ ],
+ "roleTable": "| Role | Newsprint | White | Charcoal | Prussian |\n|---|---|---|---|---|\n| color.surface | Newsprint 1.00 | White 1.00 | Charcoal 1.00 | Prussian 1.00 |\n| color.text.primary | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.text.secondary | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.graphic.essential | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.graphic.subtle | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.border.strong | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.border.hairline | Stone 4.29 | Stone 6.05 | Stone 3.10 | White 13.28 |\n| color.focus.ring | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.identity.signature | Pillar Red 2.96 | Pillar Red 4.17 | Pillar Red 4.49 | White 13.28 |\n| color.identity.hingeDivider | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | White 13.28 (needs 3) |\n| color.action.ask.fill | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.ask.label | White 4.17 (needs 3) | White 4.17 (needs 3) | White 4.17 (needs 3) | Charcoal 13.29 (needs 3) |\n| color.action.primary.fill | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.action.primary.fillHover | Prussian 9.42 (needs 3) | Prussian 13.28 (needs 3) | White 18.73 (needs 3) | White 13.28 (needs 3) |\n| color.action.primary.label | White 18.73 (needs 4.5) | White 18.73 (needs 4.5) | Charcoal 13.29 (needs 4.5) | Charcoal 13.29 (needs 4.5) |\n| color.state.muted.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.muted.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.disabled.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.disabled.edge | Deep Stone 5.49 (needs 3) | Deep Stone 7.74 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.loading.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.loading.mark | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.selected.band | White 7.74 (needs 4.5) | Newsprint 5.49 (needs 4.5) | Prussian 5.14 (needs 4.5) | Charcoal 7.26 (needs 4.5) |\n| color.state.selected.bar | Charcoal 18.73 (needs 3) | Charcoal 13.29 (needs 3) | Newsprint 9.42 (needs 3) | White 18.73 (needs 3) |\n| color.state.warning.mark | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.warning.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.error.band | Error Band 4.91 (needs 4.5) | Error Band 4.91 (needs 4.5) | none | none |\n| color.state.error.mark | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.error.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.state.empty.text | Deep Stone 5.49 (needs 4.5) | Deep Stone 7.74 (needs 4.5) | Dim Newsprint 7.26 (needs 4.5) | Dim Newsprint 5.14 (needs 4.5) |\n| color.state.empty.edge | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | Dim Newsprint 7.26 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.state.success.mark | Verdigris 3.37 (needs 3) | Verdigris 4.74 (needs 3) | Verdigris 3.95 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.state.success.text | Charcoal 13.29 (needs 4.5) | Charcoal 18.73 (needs 4.5) | Newsprint 13.29 (needs 4.5) | White 13.28 (needs 4.5) |\n| color.data.emphasis | Charcoal 13.29 (needs 3) | Charcoal 18.73 (needs 3) | Newsprint 13.29 (needs 3) | Newsprint 9.42 (needs 3) |\n| color.data.context | Stone 4.29 (needs 3) | Stone 6.05 (needs 3) | #878A8F 5.41 (needs 3) | Dim Newsprint 5.14 (needs 3) |\n| color.data.emphasisRed | Pillar Red 2.96, keyline 13.29 (needs 3) | Pillar Red 4.17 (needs 3) | Pillar Red 4.49 (needs 3) | none |\n| chart.color.labelOnSubject | White 18.73 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.chip.fill | Charcoal 13.29 (needs 3) | none | Newsprint 13.29 (needs 3) | none |\n| chart.color.chip.label | Newsprint 13.29 (needs 4.5) | none | Charcoal 13.29 (needs 4.5) | none |\n| chart.color.lightFill | #A1A2A3 1.81 | none | Stone 3.10 | none |\n| chart.color.track | #CCCAC5 1.16 | none | #323438 1.50 | none |\n| chart.color.gridline | #B4B4B3 1.47 | none | #393C41 1.69 | none |\n| chart.color.band | #ECEAE6 1.17 | none | #252729 1.25 | none |\n| chart.color.land | #ECEAE6 1.17 | none | #202122 1.16 | none |\n| chart.color.diverging.fill.step1 | Prussian 9.42 | none | none | none |\n| chart.color.diverging.fill.step2 | #8E94A4 2.15 | none | none | none |\n| chart.color.diverging.fill.step3 | #CECDC7 1.13 | none | none | none |\n| chart.color.diverging.fill.step4 | #9AAEA6 1.66 | none | none | none |\n| chart.color.diverging.fill.step5 | #3C5F59 5.01 | none | none | none |\n| chart.color.diverging.label.step1 | White 13.28 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step2 | Charcoal 6.18 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step3 | Charcoal 11.76 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step4 | Charcoal 8.01 (needs 4.5) | none | none | none |\n| chart.color.diverging.label.step5 | White 7.06 (needs 4.5) | none | none | none |\n| chart.color.sequential.fill.step1 | #C1C8C0 1.21 | none | #202A28 1.27 | none |\n| chart.color.sequential.fill.step2 | #97ACA4 1.70 | none | #2E4340 1.78 | none |\n| chart.color.sequential.fill.step3 | #6D9189 2.46 | none | #3F655E 2.89 | none |\n| chart.color.sequential.fill.step4 | #47756E 3.69 | none | #6F938B 5.55 | none |\n| chart.color.sequential.fill.step5 | #36544F 5.87 | none | #9AAEA6 8.01 | none |\n| chart.color.sequential.label.step1 | Charcoal 10.96 (needs 4.5) | none | Newsprint 10.47 (needs 4.5) | none |\n| chart.color.sequential.label.step2 | Charcoal 7.81 (needs 4.5) | none | Newsprint 7.48 (needs 4.5) | none |\n| chart.color.sequential.label.step3 | Charcoal 5.41 (needs 4.5) | none | Newsprint 4.61 (needs 4.5) | none |\n| chart.color.sequential.label.step4 | White 5.20 (needs 4.5) | none | Charcoal 5.55 (needs 4.5) | none |\n| chart.color.sequential.label.step5 | White 8.27 (needs 4.5) | none | Charcoal 8.01 (needs 4.5) | none |\n| chart.color.sequential.outline | #36544F 5.87 (needs 3) | none | #9AAEA6 8.01 (needs 3) | none |\n| chart.color.magnitude.fill.step1 | #CCCAC5 1.16 | none | #232426 1.21 | none |\n| chart.color.magnitude.fill.step2 | #A1A2A3 1.81 | none | #3D4046 1.80 | none |\n| chart.color.magnitude.fill.step3 | #555A63 4.92 | none | #A1A2A3 7.33 | none |\n| chart.color.magnitude.fill.step4 | #2E3034 9.38 | none | #C8C6C2 10.98 | none |\n| chart.color.magnitude.label.step1 | Charcoal 11.44 (needs 4.5) | none | Newsprint 11.02 (needs 4.5) | none |\n| chart.color.magnitude.label.step2 | Charcoal 7.33 (needs 4.5) | none | Newsprint 7.37 (needs 4.5) | none |\n| chart.color.magnitude.label.step3 | Newsprint 4.92 (needs 4.5) | none | Charcoal 7.33 (needs 4.5) | none |\n| chart.color.magnitude.label.step4 | Newsprint 9.38 (needs 4.5) | none | Charcoal 10.98 (needs 4.5) | none |"
+}

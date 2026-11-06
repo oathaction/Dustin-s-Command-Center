@@ -479,3 +479,38 @@ The studio asked nine questions with a recommendation for each. Dustin: "Go, all
 | DR-90 | Stage board A works from V5's text census, the Phase 0 audits and the rebuilt identity masters, with no V5 upload | Dustin, November 6, as recommended |
 | DR-91 | Chapter 01 names each pillar's products as the brand's set, with no launch dates or status | Dustin, November 6, as recommended |
 | DR-92 | `CLAUDE.md` gains one line naming chapter 02's writing section as the binding text | Dustin, November 6, as recommended |
+
+## Tokens, November 6, 2026
+
+The engineer built the token files from one source (`work/handoffs/phase-2/20261106_Token-Build-Notes.md`). Its routine calls, numbered by the main session:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-134 | The token source is one JavaScript module of recipes, `work/build/tokens/src/oa-tokens.src.mjs` | No computed number is typed by hand, and comments carry each value's decision |
+| D2-135 | The token files carry version 6.0.0-gate2.1, status pre-release | Gate 2 has not approved them; the label sorts between the Phase 1 draft and 6.0.0 |
+| D2-136 | Chart tokens exist on Newsprint and Charcoal only; White and Prussian set them to initial | DR-53 makes Newsprint the chart ground and DR-50 Charcoal the dark one |
+| D2-137 | Data context on Charcoal takes Stone 35% toward Newsprint (#878A8F, 5.41:1) in place of Dim Newsprint | DR-52's Explainer keeps context marks quieter than the Dim Newsprint secondary text |
+| D2-138 | Diverging pair B becomes five Newsprint tokens from the palette lab's recipes; diverging A is not adopted; Charcoal waits for a measured ramp | DR-54 picked B, and no Charcoal ramp exists |
+| D2-139 | Sequential Verdigris and the gray magnitude steps become tokens with label inks picked by measured contrast | The stretch test's S16 and S12 use them, and DR-64 makes gray phone steps a rule |
+| D2-140 | The categorical inks and sequential Prussian wait for the Phase 3 palette specification | No built chart uses them, so condition 1 has no measured need |
+| D2-141 | Sixteen dataset values in STRETCH_TOKENS stay with their specimens | They describe one dataset's axes, bins and keys |
+| D2-142 | Explainer's "Newsprint 45% toward White" is recorded as White 55% toward Newsprint | OKLab mixing is linear, so the value is the same and D1-04's form holds |
+| D2-143 | Chart tint primitives take recipe names, such as stoneN55 and verdigrisN52p75, with p for a decimal point | One primitive per value; the job lives in the chart role that points at it |
+| D2-144 | Chart sizes take readable names, such as subjectRadius for subject_r, and record their Python key | The kit can map them, and the names read in CSS |
+| D2-145 | On Charcoal and Prussian, the primary button's hover fill steps from Newsprint to White | Section 4 names only the light-surface step; the Charcoal label holds 18.73:1 on White |
+| D2-146 | oa.color.data.emphasisRed enters now at rank 3, with a keyline on Newsprint and no Prussian token | Explainer's red demonstration uses it; section 2 reserved the name |
+| D2-147 | The selected state's 4 px bar takes the surface's primary ink, measured on the selected band | Section 4 names the bar and not its ink |
+| D2-148 | The selected band and error band name the text they carry, and both primary and secondary text are measured on them | A band passes only when every text set on it passes |
+| D2-149 | oa.size holds icons at 16, 24 and 48 px and targets at 24 px (WCAG 2.5.8) and 44 px | Master Brief section 10 lists size tokens; R9 and R10 key to these sizes; studio tabs and links use 44 px |
+| D2-150 | The focus ring, link underline and hover underline get border widths of their own | One job per token; section 4 names them |
+| D2-151 | The hinge (680 ms) and lever (560 ms) durations join motion | Section 5 names them, and the draft left them out |
+| D2-152 | Grid columns, gutters and margins become tokens beside each breakpoint, and the 360 px width takes no query | CSS cannot read the draft's extension fields, and 360 px is a test width of the base layout |
+| D2-153 | A typography token becomes a font shorthand plus eight part properties in CSS | CSS cannot hold a composite, and the shorthand drops letter-spacing |
+| D2-154 | A surface class sets each role its surface lacks to initial, and sets color-scheme | No value leaks from an outer surface, so red cannot reach Prussian by inheritance |
+| D2-155 | The held Verdigris on dark and the rejected reds stay in the root register, out of the token files | Section 6 keeps held and rejected values unused |
+| D2-156 | The build runs the rule test on a temporary copy and writes nothing when it fails | Token Architecture section 7, step 2 |
+| D2-157 | Style Dictionary 5.8.0 is installed with npm install --no-save for the cross-check and not committed | T-11; node_modules stays out of git (D0-05) |
+| D2-158 | A rendered check in Chromium joins the token run | The browser's own color-mix() and var() resolution check the generator's math |
+| D2-159 | The file keeps the name tokens.json | Master Brief section 20 names it; DTCG recommends .tokens.json, which the package can add in Phase 5 |
+| D2-160 | Atlas System 1 draws on White, while DR-53 makes Newsprint the atlas page color. The token files follow DR-53; System 1's ground moves to Newsprint in its finishing work (chapters 15 and 21), and nothing in its folder changed | The engineer's flag; DR-53 is the later decision, and the atlas pick's folder stays as approved until its finishing pass |
+| D2-161 | The main session ran `python3 -I work/build/tests/tokens/run_token_tests.py` itself: build check, parity, rules, self-test (35 of 35 plants caught), the Style Dictionary 5.8.0 cross-check and the rendered check in Chromium all pass | A check is reported only once the main session has run it |
