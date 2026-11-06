@@ -442,7 +442,7 @@
    },
    "failure": {
     "specimen": "s-01-12-failure",
-    "caption": "A row with blank fields cannot be counted, so the review cannot see a run of one topic or one side’s reforms."
+    "caption": "A row with blank fields cannot be counted, so whoever checks the log cannot see a run of one topic or one side’s reforms."
    },
    "related": [
     "13",
@@ -577,7 +577,7 @@
     "13",
     "02"
    ],
-   "builders": "Before review, read the description in the place of someone who supports the rule, and mark every word they would change."
+   "builders": "Before the piece runs, read the description in the place of someone who supports the rule, and mark every word they would change."
   },
   {
    "id": "01.18",
@@ -597,15 +597,15 @@
    },
    "correct": {
     "specimen": "s-01-18-correct",
-    "caption": "Both halves share Charcoal and ExtraBold at 44 px, and ampersand B carries the red."
+    "caption": "Both halves share Charcoal and ExtraBold, and ampersand B carries the red."
    },
    "failure": {
     "specimen": "s-01-18-failure",
     "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."
    },
    "files": [
-    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg",
-    "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+    "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",
+    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg"
    ],
    "related": [
     "04",

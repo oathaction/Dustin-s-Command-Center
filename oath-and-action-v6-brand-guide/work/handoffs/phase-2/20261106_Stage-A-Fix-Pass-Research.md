@@ -232,11 +232,29 @@ None of these tasks needs a ruling from Dustin. The choice among the three DR-99
 
 ## Tested
 
-To be completed with the photographs; the checks for tasks 1 to 6 are listed under "Where I looked" in each section.
+- Parsed the H.R. 7008 bill status file by script: titles, sponsor, every action with its date, the recorded votes and the summary.
+- Converted all four H.R. 7008 texts to plain text and searched each for the photo ID section; read sections 1 to 3 of the House-passed text in full.
+- Parsed House roll calls 279 and 280 by script for party totals and the one independent's vote.
+- Extracted the September 30, 2026 Congressional Record and Daily Digest from their PDFs; read the Vote 253 passage, its 100 names and the ruling; matched the names by script against the senators' roster (53 of 53 Republicans among the yeas; 45 Democrats and 2 independents among the nays).
+- Read section 8 of H. Res. 1438 as reported and as agreed to.
+- Compared the atlas export's text on H.R. 7008 (issue I043, reform R-09) by script.
+- Read Florida's Article XI, sections 3 and 5(e), from flsenate.gov; read the Illinois Appellate Court's quotation of Article XIV, section 3; read the Mississippi Supreme Court's opinion on section 273(3), including its holding paragraph.
+- Read Texas H.B. 4's history and the head of its enrolled text on Texas Legislature Online; read Proposition 50's Statement of Vote totals, its official title and summary, the Legislative Analyst's analysis and the measure's text in the voter guide.
+- Read the Supreme Court's December 4, 2025 order and opinions in No. 25A608 and its docket; searched Texas's stay application by script for its stated aims and its mapmaker; searched the California three-judge court's January 14, 2026 opinion and California's December 10, 2025 notice by script for the aims, the mapmaker and the legislature's makeup.
+- Opened Ballotpedia News's May 11, 2026 article on utility commission elections and the Cullman Tribune's April 7, 2026 article on Alabama's law.
+- Read the NBER working paper's page and the first two pages of its PDF (title page, affiliations, abstract).
+- Searched the atlas export by script for EPI's descriptions, LE04's wording and Question 3; read the full records of connections L50, L26 and L11 and loops R11, R16 and R13.
+- Counted the words of the paired sentences offered for Rules 01.11 and 01.16 by hand: 22 and 22; 24 and 24.
 
 ## Not tested
 
-To be completed with the photographs.
+- Every page listed under "Claims I could not verify" above.
+- The Rules Committee print and report for H.R. 7008, so the origin of section 3 within the House substitute.
+- Any state constitution beyond Florida's, Illinois's and Mississippi's, and the other 21 initiative states' entries in the count.
+- The full three-judge opinions in the Texas and California cases; I searched them for specific passages and read those.
+- The utility commission count against any state's own law.
+- EPI's own pages, and whether Stansbury still holds a Harvard affiliation.
+- How readers take any of the sentences offered here; none went to a reader.
 
 ## Change log
 

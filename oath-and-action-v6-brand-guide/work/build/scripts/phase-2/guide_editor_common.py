@@ -156,11 +156,14 @@ PAIR = """
 .ed del .emrule{{height:.47em;vertical-align:-.15em;border-bottom:2px dotted var(--oa-color-graphic-subtle)}}
 """
 
-# A hinge headline on a 600 px artboard: the section style at its phone floor, 44 px, so B's cap height is 32 px
-# and takes the 24 px master (Rule 04.3: 16 px master under 22 px capitals, 24 px master to 46 px).
+# A hinge headline in a flowing plate: H3 at its phone floor, 26 px, on a phone, and the section style at its phone
+# floor, 44 px, from 48em. B sits at the cap height from the master Rule 04.3 names for it: the 16 px master under
+# 22 px capitals (19 px here), the 24 px master to 46 px (32 px here).
 HL = f"""
-.ed .hh{{{fx('section')};color:var(--oa-color-text-primary);margin:0;max-width:640px;text-wrap:balance}}
-.ed .hh .hamp-h{{display:inline-block;height:.7275em;width:auto;vertical-align:0;color:var(--oa-color-palette-pillar-red)}}
+.ed .hh{{{fx('h3')};color:var(--oa-color-text-primary);margin:0;max-width:640px;text-wrap:balance}}
+.ed .hh .hamp-h{{height:.7275em;width:auto;vertical-align:0;color:var(--oa-color-palette-pillar-red)}}
+.ed .hh .hamp-h.s{{display:inline-block}}.ed .hh .hamp-h.l{{display:none}}
+@media (min-width:48em){{.ed .hh{{{fx('section')}}}.ed .hh .hamp-h.s{{display:none}}.ed .hh .hamp-h.l{{display:inline-block}}}}
 """
 
 
@@ -175,11 +178,11 @@ def hinge():
             f'width="21" height="24"></div>')
 
 
-def amp_h(cap_px=32, label="and"):
-    """Ampersand B set at a hinge headline's cap height in the view's working red, from the master Rule 04.3 names
-    for that cap height."""
-    src = AMP16 if cap_px < 22 else AMP24 if cap_px <= 46 else AMP_DISPLAY
-    return f'<img data-inline src="{src}" alt="{e(label)}" class="hamp-h" data-red="working" data-red-job="headline">'
+def amp_h(label="and"):
+    """Ampersand B set at a hinge headline's cap height in the view's working red, from the master Rule 04.3 names for
+    each cap height HL sets: the 16 px master on a phone and the 24 px master from 48em. Only one shows at a time."""
+    return "".join(f'<img data-inline src="{src}" alt="{e(label)}" class="hamp-h {k}" data-red="working" data-red-job="headline">'
+                   for k, src in (("s", AMP16), ("l", AMP24)))
 
 
 def ill():

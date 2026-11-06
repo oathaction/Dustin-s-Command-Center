@@ -833,7 +833,7 @@
     "14",
     "15"
    ],
-   "builders": "Before review, search for numeric dates, a hyphen before a figure, IDs with no name beside them, party names in a color and statistics without a source line."
+   "builders": "Before a piece runs, search for numeric dates, a hyphen before a figure, IDs with no name beside them, party names in a color and statistics without a source line."
   },
   {
    "id": "02.23",
@@ -972,8 +972,8 @@
     "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."
    },
    "files": [
-    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg",
-    "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg"
+    "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",
+    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg"
    ],
    "related": [
     "04",

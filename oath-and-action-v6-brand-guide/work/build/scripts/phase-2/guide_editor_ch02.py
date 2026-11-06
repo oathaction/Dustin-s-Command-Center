@@ -10,7 +10,7 @@ so the shell prints the group blocks and the rule index; the old index and group
 """
 import re
 
-from guide_editor_common import (AMP24, AMP_DISPLAY, BASE, HL, HR7008, HR7008_BOTH, LOCKED, PAIR, PIECE, VOICE_CONTENT,
+from guide_editor_common import (AMP16, AMP24, BASE, HL, HR7008, HR7008_BOTH, LOCKED, PAIR, PIECE, VOICE_CONTENT,
                                  VOICE_LINE_B, WORDMARK24, added, amp_h, curl, dnp, e, flow, fx, hinge, ill, kicker, load,
                                  marks, plain, q, removed, say_dash)
 
@@ -331,7 +331,7 @@ def build(book):
                   {"label": "Source line order", "value": "Publisher, title or table, observation period, geography, date retrieved, qualification"}],
         "files": ["work/boards/phase-2/voice/20261106_Voice-Rules-Content.json", VOICE_MD],
         "related": ["13", "14", "15"],
-        "builders": "Before review, search for numeric dates, a hyphen before a figure, IDs with no name beside them, party names in a color and statistics without a source line.",
+        "builders": "Before a piece runs, search for numeric dates, a hyphen before a figure, IDs with no name beside them, party names in a color and statistics without a source line.",
     })
     check = "".join(f"<li>{e(x)}</li>" for x in C["checklist"])
     CKCSS = (f".ed ol.check{{margin:0;padding:0;list-style:none;counter-reset:c;columns:2 22rem;column-gap:40px;max-width:1040px}}"
@@ -507,7 +507,7 @@ def build(book):
         "failure": {"specimen": A("s-02-27-failure", hh_bad, css=(BASE, HL, HH), rule="02.27",
                                   alt="Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule."),
                     "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."},
-        "files": [AMP24, AMP_DISPLAY],
+        "files": [AMP16, AMP24],
         "related": ["04", "01"],
         "builders": "Test a hinge headline by asking whether its first half is a rule a reader could look up. If not, rewrite it before chapter 04’s drawing rules apply.",
     })

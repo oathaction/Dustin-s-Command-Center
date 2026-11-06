@@ -4,7 +4,7 @@ Fix pass round one, November 6, 2026: the items the stage A fix pass brief lists
 the research lead's checks (H.R. 7008's grade, Rule 01.5's limits, Rules 01.11, 01.13 and 01.16, the Senate vote
 line and the photographs in Rules 01.6 and 01.8).
 """
-from guide_editor_common import (AMP_DISPLAY, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR7008, HR7008_BOTH, HR7008_TRACKER,
+from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR7008, HR7008_BOTH, HR7008_TRACKER,
                                  LOCKED, PIECE, TILE_GRID, WORDMARK24, WORDMARK24_PRUSSIAN, amp_h, dnp, e, flow, fx,
                                  hinge, ill, kicker, load, q)
 
@@ -202,7 +202,7 @@ def tile_map(mode):
     data = load(CHART_DATA)["datasets"]
     init = {r["code"]: r for r in data["initiative-states"]["rows"]}
     pres = {r["code"]: r for r in data["presidential-shift-by-state"]["rows"]}
-    S, G = 27, 3
+    S, G = 24, 2  # 312 px across, so the map stays at true size inside a 360 px phone's frame
     w, h = 12 * S + 11 * G, 8 * S + 7 * G
     cells = []
     counts = {"work": 0, "paper": 0, "none": 0, "rep": 0, "dem": 0}
@@ -240,7 +240,7 @@ def tile_map(mode):
 
 
 MAP = f"""
-.ed svg[viewBox]{{max-width:100%;height:auto}}.ed .mapk{{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;{fx('body-small')};max-width:360px}}
+@media (max-width:47.99em){{.sp{{padding-left:8px;padding-right:8px}}}}.ed .mapk{{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;{fx('body-small')};max-width:360px}}
 .ed .mapk li{{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}}
 .ed .mapk svg{{margin-top:3px}}
 """
@@ -428,7 +428,7 @@ def build(book):
          ["Explainers, in the Reform 101 and The Oath series", "The atlas’s 16 question-first pathways, such as “Why did my rent go up?”",
           "Reports", "The weekly briefing newsletter", "Glossaries and primers"]),
         ("02", "Track", "Follow the decision and keep its record within reach.",
-         ["Trackers, each named for its subject and dated “as of”", "The Dispatch and The Public Record series",
+         ["Trackers, each named for its subject and dated “as of”", "Two series, Dispatch and The Public Record",
           "The atlas Register, the record-by-record view of each claim"]),
         ("03", "Connect", "Help people reach the office that decides and the evidence it decides on.",
          ["Guides and call scripts", "The Field Notes series", "The atlas’s view of who can act on each issue"]),
@@ -449,8 +449,8 @@ def build(book):
       rule=None, readable=True, label="The four pillars, always in this order",
       alt="The four pillars in order with each pillar's job and products. 01 Explain: make the rules and their effects understandable. "
           "Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing "
-          "newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, the Dispatch and "
-          "The Public Record series, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it "
+          "newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, two series, Dispatch and "
+          "The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it "
           "decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a "
           "useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece.",
       notes="Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand "
@@ -821,7 +821,7 @@ def build(book):
                     "caption": "Every field is filled, and an invented example says so in the state, region and coalition columns."},
         "failure": {"specimen": A("s-01-12-failure", log_bad, css=(BASE, CHART, TCSS), rule="01.12", illustrative=True, readable=True,
                                   alt="An illustrative log row for town library hours in Massachusetts with the domain, region, level and coalition left blank."),
-                    "caption": "A row with blank fields cannot be counted, so the review cannot see a run of one topic or one side’s reforms."},
+                    "caption": "A row with blank fields cannot be counted, so whoever checks the log cannot see a run of one topic or one side’s reforms."},
         "related": ["13", "28"],
         "builders": "Keep one log row per example in the piece’s notes and count domains, states and regions from it before it runs.",
     })
@@ -923,7 +923,7 @@ def build(book):
                                   alt="An illustrative line: The filibuster lets a minority of senators hold the country hostage."),
                     "caption": "“Hold the country hostage” is an opponent’s charge, so a senator who values the rule would reject the sentence before reaching the facts."},
         "related": ["13", "02"],
-        "builders": "Before review, read the description in the place of someone who supports the rule, and mark every word they would change.",
+        "builders": "Before the piece runs, read the description in the place of someone who supports the rule, and mark every word they would change.",
     })
 
     # --- Group 5: hinge headlines ---------------------------------------------------------------------------------
@@ -938,11 +938,11 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-18-correct", hh("The overtime rule", "the paycheck."), css=(BASE, HL), rule="01.18",
                                   alt="A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red."),
-                    "caption": "Both halves share Charcoal and ExtraBold at 44 px, and ampersand B carries the red."},
+                    "caption": "Both halves share Charcoal and ExtraBold, and ampersand B carries the red."},
         "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", exempt=["red", "contrast"],
                                   alt="The same headline with the second half, the paycheck, also set in red."),
                     "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."},
-        "files": [AMP24, AMP_DISPLAY],
+        "files": [AMP16, AMP24],
         "related": ["04", "02"],
         "builders": "Set the headline in Inter Tight ExtraBold and place ampersand B at the cap height in place of the font’s ampersand, from the master Rule 04.3 names for the size.",
     })

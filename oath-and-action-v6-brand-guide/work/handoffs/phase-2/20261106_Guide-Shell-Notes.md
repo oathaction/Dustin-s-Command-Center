@@ -342,3 +342,117 @@ Created:
 - `work/handoffs/phase-2/20261106_Guide-Shell-Notes.md` (this file)
 
 Modified: none. Nothing in `work/build/tokens/`, `work/build/tests/tokens/`, `source/`, the ledgers or any existing board was touched.
+
+## 9. Fix pass, round one
+
+Written by the guide engineer on November 6, 2026, under `work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Brief.md`, "Engineer" and "New interfaces". Section 0 published the new keys first; sections 3 to 7 now describe the shell as it stands after this pass. The container restarted partway through; every edit survived on disk, and the main session's snapshots (914c714 and later) hold the work in progress. I committed nothing.
+
+### Items, by ID
+
+**Tokens**
+- C-M3 and DR-95: title −3 percent, section −2.5 percent, H3 −1 percent, H4 −0.5 percent in `work/build/tokens/src/oa-tokens.src.mjs`, rebuilt with `tokens_build.mjs`. I measured `figure` by the craft report's method, with tabular figures through SVG text because canvas ignores `font-variant-numeric`: at −4 percent, "00" and "44" touched at 48 px; at −3 percent none of 142 figure pairs touched at 48 or 104 px. Figure is now −3 percent. My script matched the craft report on its own cases first: 6 of 24 tagline pairs touching at 110 px and −4.5 percent, 1 of 24 at −3 percent (the report counted 2). Token set version 6.0.0-gate2.2. The token chips and closers now print each type style as a range with its tracking, such as "Inter Tight 800, 56 to 110 px, line height 0.95, tracking −3%" (RP-S5).
+
+**Build**
+- AX-M2: `img_inline()` decodes the alt once before `svg_inline()` escapes it. Manifest alts, plate labels and Basis lines are decoded once too.
+- RP-M4: chapter JSON strings are decoded once and escaped once, so the font link prints `&family=` and the minus note prints `&minus;`. Anything inside `<code>` now prints as written, tags included, and is never auto-linked.
+- RP-M3: each For builders closer says tokens.css is the full source, offers "Download tokens.css" (the file itself, as `20261106_Oath-And-Action-Tokens.css`) and copies working CSS: every property the chapter names, every property those depend on, each type style's parts with their clamps, and the four surface classes as tokens.css holds them, comments removed. A page built from chapter 06's copied block alone set Inter at 17 px, the title at 87.37 px at a 1,000 px window with −3 percent tracking, and Charcoal on Newsprint.
+- RP-S5: done as above.
+
+**Shell**
+- C-M2 and DR-96: B's 24 px master at 24 px, centered on a 1 px line as wide as the rule's text column, 12 px of clear line each side, in the surface's ink. Measured: B centered within 0.01 px at every width, 12 px each side.
+- C-M4: the Rule ID is one line tall, its number on the title's first baseline and "Rule" hung above it. All 99 titles sit 24 px above their text at 1440, 1024 and 768 px (23 px at 390).
+- C-M6 and D2-251: from 1440 px the appendix spans all twelve columns and slides over the rail, which the script hides once covered; the appendix mat is 24 px; `fit_switch` gives "True size / Fit to window", true size by default.
+- D2-255 and AX-S2: `readable` and `interactive` make a group named "Correct application, Rule 03.4, specimen" (or "..., interactive specimen"); the alt paragraph carries `aria-hidden="true"`; no group is unnamed.
+- AX-S1: "Return to ..." sits right after the heading a cross-reference lands on, and the next Tab reaches it.
+- AX-S3: scrolling frames and code blocks are groups named for their plate, focusable only while they overflow. No region roles remain on the page, and no two frames share a name.
+- AX-S4: on the mat the focus ring is Charcoal, inside the frame (11.76 to 1).
+- AX-S6: stages keep their colors under forced colors; the frame keeps its CanvasText border.
+- AX-S7 and RP-S6: under 1024 px a second line under the bar names the location in full ("04 The Ampersand and the hinge"), unclipped at 320, 360, 390 and 768 px.
+- AX-S10: Specifications tables link "Rule 05.1" in full, and on phones each value and rule list carries its own label.
+- AX-S11: a link to a target with no heading focuses the target.
+- AX-S12: the scroll hint sits in the plate head.
+- AX-S13: a 1 px Stone keyline around every stage.
+- AX-S15: the cover's pillars line carries no `aria-label`. The composer's `aria-describedby` belongs to the identity designer.
+- C-S1: the shell sits on Rule 07.2's grid. Measured at 1440: main at 286.7 px (column 3), titles and text at 398 (column 4), the hinge 398 to 930.7, plates 286.7 to 1,153.3, "In this chapter" at 1,177.3 (column 11). At 1024 text starts at 443.3 (column 6) and at 768 at 214 (column 3).
+- C-S2: 2 px on each rule's top, hairlines on plate heads, no failure bar, one hairline over the rule foot.
+- C-S3: captions and source lists capped at 32 rem; `text-wrap: pretty` on every shell paragraph. One-word last lines by my count: 4 at 1440 and 4 at 390, all in long source lines.
+- C-S4: tabular figures only on chapter numbers, Rule IDs and group numbers.
+- C-S5: the specifications run from the text column to the plate edge, as a three-column table from 1440 px and as label and value with the token on its own line below that. Names break only between segments, paths only at a slash. Related chapters and For builders share one row.
+- C-S6: `scale` prints "One quarter size"; every plate with `width_px` prints its width.
+- C-S7: the phone mat keeps 16 px each side.
+- C-S8: `.illus` never stretches in a flex or grid parent.
+- C-S9: the contents and the part opener read instruction lines and names from the chapter files; the fallback line uses a curly apostrophe.
+- C-S10 and RP-S10: the cover carries the h1 "Brand Guide, Edition 06" with "Oath & Action" in hidden text, the pillars kept whole, and one line on what the guide is for; the build counts moved to the colophon; the masthead uses the 24 px master from 360 px; rail names wrap in balanced lines; under 48em the chapter number sits on its own line.
+- C-S11 and CP-S1: chapter `groups` render the group block and the rule index (section 0). The editor has not added `groups` yet; I tested it on a scratch copy of chapter 02.
+- C-S16: the local contents' top rule sits level with the chapter head's; both part labels on the contents page take one box.
+
+**Shell words**
+- CP-S3: "Coming later" for "later stage"; the Files line as D2-252; the part opener's stage board note removed.
+- BE-M5 and CP-M1: no string the shell writes carries a code or a studio word; the appendix is "Wordmark width proofs".
+- DR-102: the colophon's Contact line names the editor, says co-branded pieces go to Dustin or an editor he names before they print or post, and says an address follows once the web address is settled.
+
+**Checks** in `guide_check.js`, each with self-test plants: `nameEntities` (any entity in an accessible name, and "&amp;" in visible text outside code), `specimenLandmarks`, `typeScale` (D2-254) and `codes` (D2-253, text and alt text). The self-test catches 33 of 33 plants, 8 of them new.
+
+### Declined or changed, with the reason
+
+- C-M6 counted 1,360 px for the appendix at 1440 with 40 px margins. C-S1 puts the wide grid's 64 px margins at 1440, so the appendix has 1,312 px and a stage 1,264 px. The email pair (`s-proofs-email`, 1,280 px) scrolls 16 px at 1440 unless the identity designer trims it; Fit to window covers it meanwhile.
+- C-S5 asks for three columns. Below 1440 px a token name does not fit beside its value unbroken, so the token takes its own line there.
+- AX-S4 offered an outside ring or a Charcoal ring. I chose Charcoal inside the frame, because phone frames run to the screen edge and an outside ring would be cut off.
+- AX-S7 offered the number alone or a second line. With the 24 px master (C-S10) the bar has no room left at 360 px, so the full name takes a second line.
+- C-S10 asks for the 24 px master on phones. Under 360 px (400 percent zoom of 1440, or 320 px phones) the bar keeps the 16 px master, since the 24 px master and Menu do not fit.
+- "In this chapter" moves to its side column from 1440 px (it was 1280), where the wide grid gives it columns 11 and 12.
+- Group names add the rule ("Correct application, Rule 03.4, specimen") to the brief's "<plate label>, specimen", so every group name on the page is unique.
+- `typeScale` accepts the chart system's own sizes and, for a stage with no width, each style's fluid size at the checked width. The brief is silent on pieces between 601 and 1,199 px; the check accepts either set there. `codes` lets "Loop R9" and "Loop R13" stand, since H11 allows an atlas loop named with its ID.
+- RP-M3's working CSS makes each block 680 to 780 lines, and tokens.css rides in nine download links; the page grew from 2.6 to 4.3 MB, well under the 16 MB limit.
+
+### Specimens that fail the new or tightened checks (owners to fix)
+
+On the final build, `guide_check.js` passes at 1440 and 1024 px. At 390 and 360 px the only failures are the editor's tile maps `s-01-5-correct` and `s-01-5-failure`: a fluid SVG whose state labels draw at 11.81 px at 390 and 10.72 px at 360, under the 13 px floor and off the scale. The 16 px phone mat (C-S7) narrows the stage; a fixed `width_px` or larger labels would fix it.
+
+### Routine calls, as proposed decision lines
+
+- D2-xxx | Figure tracking loosens from −4 to −3 percent with DR-95's set; token version 6.0.0-gate2.2 | At 48 px, "00" and "44" touched at −4 percent; no pair touches at −3 percent
+- D2-xxx | The shell sits on Rule 07.2's grid, with 64 px margins from 1440 px and "In this chapter" in columns 11 and 12 from 1440 px | The guide breaks its own grid rule otherwise (C-S1)
+- D2-xxx | From 1440 px the appendix spans twelve columns over the rail, which hides once covered; appendix mat 24 px | D2-251's "no rail from 1440 px" without a jump in layout
+- D2-xxx | A readable or interactive stage is a group named by plate label and rule, described by a hidden alt | Unique names for 34 groups (D2-255, AX-S2)
+- D2-xxx | Scrolling frames and code blocks are groups, not regions, focusable only while they overflow; the ring on the mat is Charcoal | AX-S3, AX-S4
+- D2-xxx | Under 1024 px the masthead has a second line with the full location; the 16 px master stays only under 360 px | AX-S7 with the 24 px master (C-S10)
+- D2-xxx | Chapter JSON strings are decoded once; `<code>` content prints as written | RP-M4; a maker can show markup inside code
+- D2-xxx | Each For builders block copies the chapter's properties with every dependency and the four surface classes; tokens.css downloads as `20261106_Oath-And-Action-Tokens.css` | RP-M3; the copied block works alone
+- D2-xxx | The cover's display wordmark is hidden from assistive technology, since the h1 names the guide in full | One name, heard once (C-S10)
+- D2-xxx | `typeScale` allows the chart system's sizes and, for stages with no width, the fluid sizes at the checked width | Charts and page-flow specimens are on the scale by construction
+
+### Questions for Dustin
+
+None. Every item above is a routine call inside the approved fix pass.
+
+### Tested
+
+- Token tests, `python3 -I work/build/tests/tokens/run_token_tests.py`: all six steps pass (build check, parity, rules, self-test 35 of 35, Style Dictionary cross-check, rendered).
+- Letter pairs in Inter Tight 800 from Google Fonts, kerning on: my canvas method against the craft report's numbers, then figure pairs in tabular figures through SVG text at 48 and 104 px, from −4 to 0 percent.
+- `python3 -I work/build/scripts/phase-2/guide_build.py`: the page builds with no warnings, 8 chapters, 99 rules, 229 specimens, 4.3 MB.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px: axe-core 4.10.2, focus rings on 60 stops, every new check. Result: fail, 4 failures, all from `s-01-5-correct` and `s-01-5-failure` at 390 and 360 px.
+- `guide_check.js --self-test`: the clean demo passes, 33 of 33 plants caught.
+- By script on the built page: the return link after a cross-reference and the next Tab; focus on a target without a heading; 34 groups named, none unnamed, every description hidden; 14 focusable frames, all groups, no duplicate names, no regions; the fit switch at 1440 (85 percent, then back to "True size, 1,488 px wide"); the rail hidden at the appendix and shown at chapter 08; the download decodes to tokens.css (67,440 bytes); the copied chapter 06 CSS renders on its own; the location line unclipped at 320, 360, 390 and 768 px with no page scroll; forced colors keep the palette's seven colors.
+- Measured: the title-to-text gap on all 99 rules at 1440, 1024, 768 and 390 px; shell edges against the grid; hinge geometry; one-word last lines; on a scratch build with chapter 02 grouped, the group blocks, the rule index and the grouped side list.
+- Looked at, at 1440 and 390 px: the cover, chapter 03's opening, Rules 03.1, 04.4 and 05.2 (rule head, hinge, plates), Rule 03.1's foot, the contents, the Color Specifications closer at twice size on a phone, and the appendix with the masthead and email pairs. The scratch build's chapter 02 rule index and group block at both widths.
+
+### Not tested
+
+- A screen reader by ear, and browsers other than Chromium.
+- The fit switch at 390 px by hand, beyond its markup, and with a keyboard.
+- Print, beyond keeping the print rules in step with the new classes.
+- `groups` in the real chapters 01 and 02, which the editor has not written yet.
+- Every plate by eye. I looked at the views listed above.
+- Pages offline: fonts still come from Google Fonts.
+
+### Change log
+
+Modified:
+- `work/build/tokens/src/oa-tokens.src.mjs`, and through `tokens_build.mjs`: `work/build/tokens/tokens.css`, `work/build/tokens/tokens.json`, `work/build/tests/tokens/20261106_Token-Test-Results.json`
+- `work/build/scripts/phase-2/guide_build.py`, `work/build/scripts/phase-2/guide_check.js`
+- `work/build/guide/shell/guide-shell.css`, `work/build/guide/shell/guide-shell.js`, `work/build/guide/shell/fixtures/specimens/manifest-demo.json`
+- `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, its build report, check results, `20261106_Guide-Check-Plant-Results.json` and `captures/`, regenerated by the build and the checks
+- `work/handoffs/phase-2/20261106_Guide-Shell-Notes.md` (this file: section 0 new, sections 3 to 7 updated, section 9 new)
+
+Created: none in the repository. Measuring scripts and screenshots stayed in the session scratchpad.
