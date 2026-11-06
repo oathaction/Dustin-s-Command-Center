@@ -1,0 +1,33 @@
+{
+ "file": "census-cps-2024-turnout-by-state.csv",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Table 4a. Reported Voting and Registration of the Total Voting-Age Population, for States: November 2024; and Table 4a. Reported Voting and Registration for States: November 2020",
+ "table_id": "Voting and Registration in the Election of November 2024 (page p20-590; files under p20/587, vote04a_2024.xlsx); Voting and Registration in the Election of November 2020 (p20-585, table04a.xlsx)",
+ "url": [
+  "https://www2.census.gov/programs-surveys/cps/tables/p20/587/vote04a_2024.xlsx",
+  "https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-590.html",
+  "https://www2.census.gov/programs-surveys/cps/tables/p20/585/table04a.xlsx",
+  "https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-585.html"
+ ],
+ "observation_period": "November 2024 and November 2020 general elections",
+ "geography": "50 states and the District of Columbia",
+ "universe_or_base": "Citizens 18 and over in the Current Population Survey (the citizen voting-age population). voted_pct is the percent of that population who reported voting",
+ "unit": "citizen_vap_thousands in thousands of people; voted_pct in percent; moe_pct is the 90 percent margin of error in percentage points ('This figure added to or subtracted from the estimate provides the 90-percent confidence interval')",
+ "date_retrieved": "2026-11-06",
+ "vintage": "2024 tables listed on the Census voting tables page as released April 2025 (the p20-590 page was last revised August 10, 2026). 2020 page last revised October 28, 2021",
+ "qualification": "Self-reported voting in a survey, among citizens 18 and over; state margins of error run from 1.6 to 5.6 points in 2024 and 1.2 to 3.7 points in 2020",
+ "notes": [
+  "National rate, not in the CSV: 65.3% of 236,138 thousand citizens 18 and over reported voting in 2024 (margin 0.5), matching historical Table A-1",
+  "2024 range: 52.8% (Arkansas) to 79.5% (District of Columbia). 2020 range: 54.0% (Arkansas) to 84.0% (District of Columbia)",
+  "The citizen voting-age population here is the CPS survey estimate. D2-115 also names Census CVAP tables; no American Community Survey CVAP file was fetched"
+ ],
+ "unconfirmed": [
+  "The 2024 and 2020 release dates were read from the voting tables index and page footers, not from a press release"
+ ],
+ "raw_files_sha256_prefix": {
+  "vote04a_2024.xlsx": "068e47d3c7fc9701",
+  "table04a_2020.xlsx": "8afd077c560de260"
+ },
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024 (and November 2020), 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+ "source_line_2024_only": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points."
+}

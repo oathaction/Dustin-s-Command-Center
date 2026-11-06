@@ -1,0 +1,44 @@
+{
+ "file": "fec-presidential-results-by-state.csv",
+ "publisher": "Federal Election Commission (FEC), compiled from official results reported by state election offices",
+ "title_or_table": "2020: Federal Elections 2020: Election Results for the U.S. President, the U.S. Senate and the U.S. House of Representatives (October 2022), Table 2, 2020 Presidential Electoral and Popular Vote. 2024: Official 2024 Presidential General Election Results, compiled from state election offices (dated January 16, 2025)",
+ "table_id": "federalelections2020.xlsx sheet '3. Table 2 Electoral & Pop Vote'; 2024presgeresults.xlsx sheet 'OFFICIAL 2024 PRES GE RESULTS'",
+ "url": [
+  "https://www.fec.gov/documents/4228/federalelections2020.xlsx",
+  "https://www.fec.gov/introduction-campaign-finance/election-and-voting-information/federal-elections-2020/",
+  "https://www.fec.gov/documents/5645/2024presgeresults.xlsx",
+  "https://www.fec.gov/documents/5644/2024presgeresults.pdf",
+  "https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/"
+ ],
+ "observation_period": "General elections of November 3, 2020 and November 5, 2024",
+ "geography": "50 states and the District of Columbia (one row per state and year)",
+ "universe_or_base": "All votes cast for president as reported by each state, including write-ins where the state reported them",
+ "unit": "Votes are counts. dem_pct and rep_pct are each nominee's percent of total_votes, computed by the studio from the FEC counts and rounded to 2 decimals. margin_pts is rep_pct minus dem_pct, computed from unrounded shares and rounded to 2 decimals: a positive value means the Republican nominee led, a negative value means the Democratic nominee led",
+ "candidates": "2020: Joseph R. Biden (Democratic), Donald J. Trump (Republican). 2024: Kamala D. Harris (Democratic), Donald J. Trump (Republican)",
+ "date_retrieved": "2026-11-06",
+ "vintage": "2020 from the FEC's Federal Elections 2020 publication (October 2022). 2024 from the FEC's compiled official results file dated January 16, 2025. The FEC's election results page, read November 6, 2026, lists Federal Elections publications through 2022; Federal Elections 2024 is not posted yet",
+ "qualification": "Votes for each nominee include every ballot line the nominee held in the state, so New York counts fused party lines; margins are shares of all presidential votes, not of the two-party vote",
+ "state_caveats": {
+  "NY": "Fusion voting. 2020: the FEC's detailed results list Biden at 4,858,273 on the Democratic line and 386,613 on the Working Families line (combined 5,244,886), and Trump at 2,955,662 Republican and 296,335 Conservative (combined 3,251,997); Table 2 and this file use the combined totals. 2024: the FEC lists Harris under D, DFL, DNL and WF labels and Trump under R and C, and its state total is the candidate's total; the 2024 line-by-line split for New York was not read",
+  "ME": "Maine splits its electoral votes by congressional district (FEC Table 2 note: 'Maine and Nebraska distribute electoral votes proportionally'). 2020: Biden 3, Trump 1. 2024: Harris 3, Trump 1. This file is statewide popular vote only",
+  "NE": "Nebraska also splits its electoral votes. 2020: Biden 1, Trump 4. 2024: Trump 4, Harris 1. Statewide popular vote only",
+  "NV": "Nevada's ballot offers 'None of these candidates'; those votes are inside total_votes (14,079 in 2020 per the FEC's detailed results; 19,625 in 2024, a column of its own in the 2024 file)",
+  "MN_ND": "In 2024 the FEC labels Harris DFL (Democratic-Farmer Labor) and DNL (Democratic-Nonpartisan League), the Democratic party's names in Minnesota and North Dakota; she is the Democratic nominee in this file"
+ },
+ "notes": [
+  "The FEC's 2020 Table 2 header misspells the Republican nominee as 'Trunp (R)'; the vote figures are Trump's",
+  "In both files the state rows sum exactly to the FEC's published national totals (checked): 2020 Biden 81,283,501, Trump 74,223,975, total 158,429,631; 2024 Harris 75,017,613, Trump 77,302,580, total 155,238,302",
+  "2024 Excel values for PA, NV and NY match the FEC's PDF of the same results (spot check)",
+  "Every state and DC has a larger margin_pts in 2024 than in 2020: the smallest move is Washington (+0.98 points), the largest New York (+10.54). Shift arrows will all point the same way"
+ ],
+ "unconfirmed": [
+  "State figures were not checked against each state's certified canvass",
+  "The 2024 file is the FEC's compilation, not the Federal Elections 2024 publication, which may revise figures when it appears"
+ ],
+ "raw_files_sha256_prefix": {
+  "federalelections2020.xlsx": "5073b6d2c76c86c9",
+  "2024presgeresults.xlsx": "68acdee2924d771b",
+  "2024presgeresults.pdf": "c99a431e08cb7790"
+ },
+ "source_line": "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines."
+}

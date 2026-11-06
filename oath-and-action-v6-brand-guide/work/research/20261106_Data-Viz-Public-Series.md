@@ -231,3 +231,112 @@ Files modified on November 6, 2026:
 - `work/research/20261106_Data-Viz-Public-Series.md` (this section)
 
 No other file changed. The other five sidecars were rewritten by the same script and are byte-identical to before (checked with SHA-256).
+
+## 12. Stretch test series, November 6
+
+Data for the six-form stretch test (DR-57 to DR-60; forms listed in D2-115). Two of the three series are in; the jobs series is not, because FRED and the BLS API both turned this session away.
+
+### 12.1 Presidential results by state, 2020 and 2024
+
+**File:** `public/fec-presidential-results-by-state.csv` (102 rows: 50 states and DC, two years)
+
+**Where it came from.** For 2020, the Federal Election Commission's *Federal Elections 2020* (October 2022), Table 2, "2020 Presidential Electoral and Popular Vote." For 2024, the FEC has not posted *Federal Elections 2024*; its election results page, read today, lists the publication through 2022. The 2024 figures come from the FEC's "Official 2024 Presidential General Election Results, compiled from state election offices," dated January 16, 2025. Both rest on official results that state election offices reported to the FEC.
+
+**Source line:** Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Margins are Republican minus Democratic share of all presidential votes; New York counts fused party lines.
+
+**How the numbers work.** Vote counts are the FEC's. The studio computed each nominee's share of all presidential votes and the margin, Republican share minus Democratic share, so a positive margin means a Republican lead. The state rows add up exactly to the FEC's national totals for both years.
+
+**State caveats** (full text in the sidecar):
+
+- New York uses fusion voting, where one candidate can appear on more than one party's line. The 2020 totals combine Biden's Democratic and Working Families lines and Trump's Republican and Conservative lines. The 2024 file lists Harris under D, DFL, DNL and WF and Trump under R and C, and gives one total per candidate.
+- Maine and Nebraska split their electoral votes by district. The file holds statewide popular votes only, so a tile map that shows electoral votes needs the split noted.
+- Nevada's totals include "None of these candidates" (14,079 votes in 2020; 19,625 in 2024).
+- The FEC's 2020 table misspells the Republican nominee "Trunp" in its header.
+
+**A design note from the data.** Every state and DC moved toward the Republican nominee between 2020 and 2024, from +0.98 points (Washington) to +10.54 (New York). All shift arrows on S11 and S12 will point the same way; the design has to carry differences in length, not direction.
+
+### 12.2 Reported turnout by state, 2024 and 2020
+
+**File:** `public/census-cps-2024-turnout-by-state.csv` (102 rows: 50 states and DC, 2024 and 2020)
+
+**Where it came from.** U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a for each year: "Reported Voting and Registration of the Total Voting-Age Population, for States: November 2024" (released April 2025) and "Reported Voting and Registration for States: November 2020." The file keeps the citizen population 18 and over, the percent of citizens who reported voting, and its 90 percent margin of error.
+
+**Source line:** Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024 (and November 2020), 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.
+
+**Values worth knowing.** In 2024 the national rate was 65.3%, matching Table A-1. States ran from 52.8% (Arkansas) to 79.5% (District of Columbia). State margins of error run from 1.6 to 5.6 points in 2024, wide enough that many neighboring states cannot be ranked against each other; a bubble map shaded by turnout should use few, broad classes.
+
+**Gap.** D2-115 also mentions Census CVAP tables (the American Community Survey's citizen voting-age population tabulation). I did not fetch one; the CPS citizen population serves for bubble size.
+
+### 12.3 Payrolls by sector: not collected
+
+**File:** none. `public/fred-payrolls-by-sector.csv` does not exist yet.
+
+**What happened.**
+
+- FRED (fred.stlouisfed.org) dropped every request at the server: the CSV download (`fredgraph.csv?id=PAYEMS`) and the series page both ended in a closed stream or an empty reply. The proxy logged no failure of its own. I treated that as a refusal and stopped after one retry over HTTP/1.1.
+- The BLS public API (api.bls.gov), the official machine route for the same Current Employment Statistics series, answered: "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key has been reached." I made one request.
+- The FRED API (api.stlouisfed.org) is reachable but needs a key passed in the address. This session's credential form can only add keys to request headers, so it cannot supply that key.
+- I did not try www.bls.gov or download.bls.gov, which refuse automated requests.
+
+**Ways forward.** DR-60 already allows CSVs Dustin downloads. The quickest route is for Dustin to open each link below in a browser, save the CSV, and drop the files into the scratchpad or `work/handoffs/`. I can then build the tidy file and sidecar in a few minutes. A free BLS API registration key, pasted into the request rather than chat, would also work. The FRED identifiers below are the ones I expect; I could not confirm them on FRED today.
+
+| Sector | FRED series | BLS series | Download link |
+|---|---|---|---|
+| Total nonfarm | PAYEMS | CES0000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=PAYEMS |
+| Total private | USPRIV | CES0500000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USPRIV |
+| Mining and logging | USMINE | CES1000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USMINE |
+| Construction | USCONS | CES2000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USCONS |
+| Manufacturing | MANEMP | CES3000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=MANEMP |
+| Wholesale trade | USWTRADE | CES4142000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USWTRADE |
+| Retail trade | USTRADE | CES4200000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USTRADE |
+| Transportation and warehousing | CES4300000001 | CES4300000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES4300000001 |
+| Utilities | CES4422000001 | CES4422000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES4422000001 |
+| Information | USINFO | CES5000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USINFO |
+| Financial activities | USFIRE | CES5500000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USFIRE |
+| Professional and business services | USPBS | CES6000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USPBS |
+| Private educational services | CES6561000001 | CES6561000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6561000001 |
+| Health care and social assistance | CES6562000001 | CES6562000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6562000001 |
+| Leisure and hospitality | USLAH | CES7000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USLAH |
+| Other services | USSERV | CES8000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USSERV |
+| Government | USGOVT | CES9000000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=USGOVT |
+| Federal government | CES9091000001 | CES9091000001 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES9091000001 |
+
+**Source line to use once the files arrive** (per DR-60, BLS as publisher and FRED as the copy): Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all employees by industry, seasonally adjusted, January 2021 to [latest month], United States, via FRED (Federal Reserve Bank of St. Louis). Retrieved [date]. The latest two months are preliminary and BLS revises them.
+
+The last clause describes BLS's usual revision schedule from memory; I could not read it on a BLS or FRED page today, so check it before the line prints.
+
+### 12.4 Rights rows for the reader to add
+
+Same format as section 7; T-USGOV is the code proposed there.
+
+| # | File or reference | Set | Likely origin | Evidence | Permitted use | Notes |
+|---|---|---|---|---|---|---|
+| dvp-08 | `public/fec-presidential-results-by-state.csv` | data-viz-public | federal public data | FEC Federal Elections 2020 workbook and the 2024 compiled results, read November 6, 2026 | may ship | T-USGOV. Credit the FEC and the state election offices it compiled from |
+| dvp-09 | `public/census-cps-2024-turnout-by-state.csv` | data-viz-public | federal public data | CPS Table 4a for 2024 and 2020, read November 6, 2026 | may ship | T-USGOV |
+| dvp-10 | FRED copies of BLS payroll series (not yet collected) | data-viz-public | federal public data, via a third-party copy | Not collected | unknown | BLS data are federal works (T-USGOV). FRED's own terms of use were not read; read them before shipping a FRED copy |
+
+### 12.5 What I tested and what I could not
+
+Tested:
+
+- The state rows in both FEC files sum exactly to the FEC's national totals for Democratic votes, Republican votes and all votes. In 2020 each state's Democratic, Republican and other votes add to its total.
+- The 2024 Excel values for Pennsylvania, Nevada and New York match the FEC's PDF of the same results.
+- Both CSVs parse with lowercase headers, numeric value columns and 51 distinct codes. The CPS national 2024 rate (65.3%) matches Table A-1.
+
+Not tested or not read:
+
+- State-by-state checks against each state's certified canvass.
+- New York's 2024 line-by-line split.
+- The FRED identifiers in the table above, FRED's terms of use, and the BLS revision schedule.
+- The payroll data itself (section 12.3).
+
+### 12.6 Change log for the stretch test
+
+Files created on November 6, 2026:
+
+- `work/boards/phase-2/data-viz/shared/public/fec-presidential-results-by-state.csv`
+- `work/boards/phase-2/data-viz/shared/public/fec-presidential-results-by-state.meta.json`
+- `work/boards/phase-2/data-viz/shared/public/census-cps-2024-turnout-by-state.csv`
+- `work/boards/phase-2/data-viz/shared/public/census-cps-2024-turnout-by-state.meta.json`
+
+Files modified: `work/research/20261106_Data-Viz-Public-Series.md` (this section).
