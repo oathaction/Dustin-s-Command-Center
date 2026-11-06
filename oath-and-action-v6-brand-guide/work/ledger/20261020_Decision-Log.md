@@ -309,3 +309,22 @@ Dustin: "Looks good. Let's begin... If you need to use multiple agents and red t
 | D2-85 | The creative director's six last faults are fixed before the board: a label past its box (01), a red and blue pair and a spacing slip (02), "can" on the loop counts (03), an overclaiming paragraph and phone directions (04), a broken glossary (05), and a source on every figure in the 16 everyday answers (all five) | Faults a reader would meet; the board shows the systems as they would ship |
 | D2-86 | PW10's 7.65 percent payroll tax cites claim CL1467's sources (K1468, the SSA fact sheet that states the rate, and K1479) in every system | Two makers had cited a neighboring source or none; CL1467 records the figure |
 | D2-87 | Board 2 carries the studio's recommendation, Times Explainer with Reference Sheets as runner-up, and seven decisions for Dustin | The creative director's review, `work/handoffs/phase-2/20261105_CD-Review-Of-Editorial-Systems.md` |
+
+## Board 2 answers, November 6, 2026
+
+Dustin: "Pick: Times Explainer. Decisions: as recommended. I love the times explainer design... I do think the 'Read the system in the order its effects travel' ... section of the design could be improve as well as all the writing / copy / narrative / but the visual design is great... let's just make a note of this and ... work out final tweaks when we build out the next version of the us democracy-economy systems atlas. right now I'd like to continue moving forward with the oath & action brand work."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-36 | The atlas visual system is System 1, Times Explainer (`work/boards/phase-2/atlas-editorial/01-times-explainer/`). It closes Choice 1 of the direction review. Its finishing work is the creative director's list in `work/handoffs/phase-2/20261105_CD-Review-Of-Editorial-Systems.md` ("Finishing work for the pick"), including Night Edition as its dark mode and a rename that drops "Times" (D2-65) | Dustin, November 6 |
+| DR-37 | Deferred to the next atlas version: rewrite the overview's walk-through section ("Read the system in the order its effects travel") and the page's copy and narrative throughout. The visual design stands | Dustin, November 6 |
+| DR-38 | The sign mark is the pointing tag (closes Choice 3). Reference Sheets' circled sign retires with that system | Dustin, November 6, as recommended |
+| DR-39 | The effect family DQ prints as "Quality of democracy" on atlas pages and in the guide; the data keeps the code DQ and V7's own label | Dustin, November 6, as recommended |
+| DR-40 | L23's name goes to the V7.1 issue list for a rename that reads with its minus sign | Dustin, November 6, as recommended |
+| DR-41 | "Your household" (the economy part) and "Households' financial security" (a condition in Wealth) both stay; revisit if readers mix them up | Dustin, November 6, as recommended |
+| DR-42 | In Dustin's own dark atlas copy, "one documented connection at a time" becomes "one graded connection at a time" (his file; noted for the next atlas version) | Dustin, November 6, as recommended |
+| DR-43 | Order of work: the data visualization system (chapter 14, DR-25) next, then the open direction review items, then the rest of Phase 2 through Gate 2, then Phases 3 to 5. The atlas system's finishing work folds into chapters 15 and 21 and the next atlas version | Dustin, November 6, as recommended, and "continue moving forward with the oath & action brand work" |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-88 | The session closes with a handoff for a new chat (`work/handoffs/phase-2/20261106_Next-Session-Handoff.md` and its starting prompt) | Dustin's chat had used 86 percent of its context |

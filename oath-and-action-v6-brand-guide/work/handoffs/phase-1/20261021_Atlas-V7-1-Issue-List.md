@@ -253,3 +253,11 @@ These belong to the supplied demonstrations, which V6 replaces. They need no V7.
 
 - Created: `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (this file), by `work/build/scripts/phase-1/build_v71_issue_list.py`.
 - Modified: none. V7 and every file in `source/` are unchanged.
+
+## Added November 6, 2026
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 28 | L23 is named "Poor service raises incumbents' risk of losing" but runs from public service quality (D5) to risk of losing office (C3) with a minus sign, so every page prints the name beside "lowers" | `links.L23.name` | Rename so the name reads with its sign, for example "Better service lowers incumbents' risk of losing" (DR-40) |
+| 29 | Fourteen reforms list a loop that does not list them back, R-06 on R8 among them | `reforms[].loops` against `loops[].reforms` | Make the two lists agree (R7 of the October 28 direction review) |
+| 30 | The dark atlas's opening says "one documented connection at a time"; 32 of 118 connections are graded documented | Dark atlas `story.opening` | "one graded connection at a time" (DR-42) |
