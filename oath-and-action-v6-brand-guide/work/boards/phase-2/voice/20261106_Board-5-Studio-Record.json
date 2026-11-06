@@ -13,11 +13,16 @@
   "The editor made one fix pass: rewritten afters, civic befores in place of three studio drafts, five teaching groups, marked edits and source lines in public words.",
   "The main session redesigned the board from the review: each before joined to its after by the hinge divider, the edit marked in both, a rule index, larger specimens in Inter, and a phone layout. It built and checked the board and published it as a private page."
  ],
- "tested": [],
+ "tested": [
+  "A script found every real before word for word in its named source, with the edit marks stripped (the editor, after the fix pass).",
+  "The creative director read every after against every rule on the page and rendered the first board at desktop and phone width.",
+  "This board passes the rendered check at 1440, 390 and 360 px: no sideways scroll, no text under 13 px, contrast, axe-core and focus rings."
+ ],
  "not_tested": [
   "Real readers. No one outside the studio has read these rules.",
   "A real screen reader, Safari, Firefox, real phones and print.",
-  "Befores the review traced only to the studio's audits, because the fifth edition's own file is not in this checkout: the audits quote them, and the census holds 50-character cuts of two."
+  "Befores the review traced only to the studio's audits, because the fifth edition's own file is not in this checkout: the audits quote them, and the census holds 50-character cuts of two.",
+  "The creative director scored the first draft and has not scored the fixed section; the main session looked at the rebuilt board once at desktop and phone width."
  ],
  "changelog_created": [
   "<code>work/handoffs/phase-2/20261106_Voice-Writing-Rules-Brief.md</code>",

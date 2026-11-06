@@ -1,0 +1,233 @@
+{
+ "file": "work/boards/20261106_Voice-Writing-Rules-Board.html",
+ "checked": "2026-11-06T18:58:32.143Z",
+ "views": [
+  "overview"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 585,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 17903,
+   "axe": [],
+   "focusStops": 36,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 581,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 488
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 697
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 819
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 953
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1115
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1220
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1373
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1462
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1535
+    }
+   ],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 33111,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 581,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 488
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 697
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 819
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 953
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1115
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1220
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1373
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1462
+    },
+    {
+     "tag": "A",
+     "cls": "",
+     "right": 1535
+    }
+   ],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 35032,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": null,
+ "failures": [],
+ "pass": true
+}

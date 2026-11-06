@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (third handoff of November 6)
 
-Written November 6, 2026, when Dustin's chat reached about 60 percent of its context. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. The starting prompt is in section 8. It replaces `20261106_Next-Session-Handoff_V2.md`; the first handoff, `20261106_Next-Session-Handoff.md`, still holds useful background in its sections 1, 4 and 6.
+Written November 6, 2026, when Dustin's chat reached about 60 percent of its context. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. Decision log entries for this chat end at D2-132. The starting prompt is in section 8. It replaces `20261106_Next-Session-Handoff_V2.md`; the first handoff, `20261106_Next-Session-Handoff.md`, still holds useful background in its sections 1, 4 and 6.
 
 ## 1. Where things stand
 
@@ -17,7 +17,7 @@ Written November 6, 2026, when Dustin's chat reached about 60 percent of its con
 - **Board 4** (https://claude.ai/artifact/6kAB3SwWLRvCHFgABe3HB5) and the stretch page (https://claude.ai/artifact/12gmPs7PG8o9BdNiLqNLBv), both private. Dustin: "I approve everything."
 - **Shared tooling**: the verifier plants seven errors on any page and reads `extra_rows`; the rendered check takes `--mid` (adds 1024 and 768 px) and fails any circle or data mark cut by its drawing's edge (D2-122, D2-126).
 - **Approvals logged**: Rule 05.3's icon clause (DR-66, C-023), R7, R9, R10, R11 and R13 (DR-67, C-024), six chart rules from the stretch test (DR-64), the reader check with real people (DR-68), three stage boards then the Gate 2 preview (DR-69), Dustin's writing rules as chapter 02's public rules (DR-70), wordmark width and ampersand B from in-context proofs at Gate 2 (DR-71), pace as fast as quality allows (DR-72).
-- **Chapter 02 writing rules**: BOARD5_STATUS
+- **Chapter 02 writing rules** on Board 5 (https://claude.ai/artifact/WLLBcn9hrwB8rZacfcYkUE, private): 21 rules in five groups, 12 house rules (H11 and H12 proposed), a checklist and ten decisions, each with a recommendation. The creative director scored the first draft; the editor made one fix pass; the creative director did not score again (D2-130, D2-131). Section `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`, review `work/handoffs/phase-2/20261106_CD-Review-Of-Writing-Rules.md`, builder `work/build/scripts/phase-2/voice_board5_build.py`.
 
 ## 2. Next, in order
 
@@ -68,7 +68,7 @@ Ask the questions a good analyst would ask, post a short plan, and wait for his 
 4. `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md` and the creative director's review of it.
 
 ## 7. Change log of this handoff
-Created: this file. Modified: none.
+Created: this file. Modified: none. The change log of the whole chat is in section 1 and in the two reports it names.
 
 ## 8. Starting prompt for the new chat
 
@@ -81,7 +81,7 @@ Before you do anything else, read these in order:
 
 Settled and not to be changed: the Civic Line icons, the atlas visual system (System 1, DR-36), the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61), the chapter 14 coverage plan and Phase 3 build order (DR-62, DR-63), and the chart rules of DR-64.
 
-Next: BOARD5_NEXT Then the reader-check page, the token files, and stage board A (chapters 01 to 08), as the handoff orders them. Ask me the analyst's questions and post a short plan before building stage board A.
+Next: log my answers to Board 5 (the writing rules and their ten decisions), which I will give you in this chat, and fold them into chapter 02's writing section. Then the reader-check page, the token files, and stage board A (chapters 01 to 08), as the handoff orders them. Ask me the analyst's questions and post a short plan before building stage board A.
 
 The bar for everything: a finished product that looks like it was made by the best branding and design firm in the world. Use specialized agents, red team reviews and the creative director's scoring, as the handoffs describe.
 

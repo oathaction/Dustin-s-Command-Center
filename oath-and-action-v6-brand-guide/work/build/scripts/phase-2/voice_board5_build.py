@@ -120,7 +120,10 @@ ins{text-decoration:underline solid 2px var(--fg);text-underline-offset:5px;colo
 table{border-collapse:collapse;width:100%;font-size:.9375rem;font-variant-numeric:tabular-nums}
 th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--hair)}
 thead th{font:700 .8125rem/1.3 var(--body);letter-spacing:.02em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
-td.exq{font-size:1rem}
+td.exq{font-size:1rem}td.exq p{margin:0 0 6px}.hsrc{font-size:.875rem;color:var(--muted)}
+.grades{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;margin:10px 0 0;font-size:.875rem}.grades dt{font-weight:700}.grades dd{margin:0}
+.ghouse{border-top:1px solid var(--rule);padding-top:14px}.ghouse ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 24px}
+.ghouse a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
 ol.check{list-style:none;counter-reset:c;margin:12px 0 0;padding:0;columns:2;column-gap:48px}
 ol.check li{counter-increment:c;display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:10px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:1.0625rem;break-inside:avoid}
 ol.check li::before{content:counter(c);font:800 1.375rem/1.15 var(--display)}
@@ -140,7 +143,7 @@ code{font:500 max(13px,.875em)/1.4 ui-monospace,Menlo,monospace;overflow-wrap:an
 table.house,table.house tbody,table.house tr,table.house th,table.house td{display:block;width:100%}
 table.house thead{display:none}table.house tr{border-bottom:1px solid var(--rule);padding:12px 0}
 table.house th,table.house td{border:0;padding:4px 14px}
-table.house td.exq::before{content:"Written correctly: ";font:700 .8125rem/1.4 var(--body);letter-spacing:.04em;color:var(--muted)}}
+table.house td.exq{padding-top:8px}}
 @media (max-width:520px){.ask{padding:18px 16px}.ex{padding:14px 16px}.ghead{grid-template-columns:minmax(0,1fr)}.gnum{grid-row:auto}}
 """
 
@@ -156,6 +159,33 @@ def rule_card(r, gname):
 <blockquote>{marks(r["before"], "before")}</blockquote></figure>
 <div class="hinge">{AMP}<span class="sr">becomes</span></div>
 <figure class="ex after"><figcaption class="exh"><span class="chip solid">After</span>{ill}</figcaption><blockquote>{marks(r["after"], "after")}</blockquote></figure></div></article>'''
+
+
+def house_row(h):
+    prop = ' <span class="chip ill">Proposed</span>' if str(h.get('proposed', '')).lower() == 'true' else ''
+    grades = ''
+    if isinstance(h.get('grades'), list):
+        grades = '<dl class="grades">' + ''.join(f'<dt>{E(x.get("grade", ""))}</dt><dd>{E(x.get("means", ""))}</dd>' for x in h['grades']) + '</dl>'
+    ex = ''
+    if h.get('example_before'):
+        ex += (f'<p class="hb"><span class="chip">Before</span> {marks(h["example_before"], "before")}</p>'
+               + (f'<p class="hsrc">{E(h["example_before_source"])}</p>' if h.get('example_before_source') else ''))
+        ex += f'<p class="hb"><span class="chip solid">After</span> {marks(h.get("example", ""), "after")}</p>'
+    else:
+        ex += f'<p class="hb">{marks(h.get("example", ""), "after")}</p>'
+    if h.get('example_source'):
+        ex += f'<p class="hsrc">{E(h["example_source"])}</p>'
+    return (f'<tr id="{E(h["id"].lower())}"><th scope="row">{E(h["id"])} · {E(h["name"])}{prop}</th>'
+            f'<td>{E(h["rule"])}{grades}</td><td class="exq">{ex}</td></tr>')
+
+
+def group_house(g):
+    ids = g.get('house_rules') or []
+    if not ids:
+        return ''
+    byid = {h['id']: h for h in C.get('house_rules', [])}
+    items = ''.join(f'<li><a href="#{E(i.lower())}">{E(i)} · {E(byid[i]["name"])}</a></li>' for i in ids if i in byid)
+    return f'<div class="ghouse"><h4>House rules in this group</h4><ul>{items}</ul></div>'
 
 
 LOCKED = ['We explain how a decision is made and give you a practical way to take part.', 'Clarity is our duty. Action is our promise.',
@@ -182,8 +212,8 @@ def build():
               '<span><ins>Solid underline</ins>: the repair</span><span>Illustrative: written to show the fault, not quoted</span></p>')
     gsec = ''.join(f'''<section class="group" id="{gid(i)}" aria-labelledby="{gid(i)}-h"><div class="ghead"><span class="gnum" aria-hidden="true">{i + 1:02d}</span>
 <h2 id="{gid(i)}-h">{E(g["name"])}</h2><p>{E(g["intro"])}</p></div>{legend}
-{"".join(rule_card(r, g["name"]) for r in g["rules"])}</section>''' for i, g in enumerate(groups))
-    house = ''.join(f'<tr><th scope="row">{E(h["id"])} · {E(h["name"])}</th><td>{E(h["rule"])}</td><td class="exq">{E(h.get("example", ""))}</td></tr>' for h in C.get('house_rules', []))
+{"".join(rule_card(r, g["name"]) for r in g["rules"])}{group_house(g)}</section>''' for i, g in enumerate(groups))
+    house = ''.join(house_row(h) for h in C.get('house_rules', []))
     check = ''.join(f'<li><span>{E(q)}</span></li>' for q in C.get('checklist', []))
     narr = ''.join(f'<p>{narrative_html(p)}</p>' for p in C['narrative'])
     L = lambda k: ''.join(f'<li>{x}</li>' for x in R.get(k, []))
@@ -210,11 +240,11 @@ def build():
 <section id="why" aria-labelledby="h-why"><p class="secnum">CHAPTER 02 · VOICE</p><h2 id="h-why">Why we write this way</h2>
 <div class="narr"><div class="body">{narr}</div></div></section>
 <section id="rules-index" aria-labelledby="h-idx"><p class="secnum">THE RULES</p><h2 id="h-idx">All {n_rules} rules, in {len(groups)} groups</h2>
-<p>{E(C.get("rule_index_intro", ""))}</p><div class="index">{index}</div>
-<p class="small" style="margin-top:18px">Each before is quoted exactly from Oath &amp; Action’s own writing, with its source named, except the {n_ill} marked Illustrative, which the editor wrote to show the fault.</p></section>
+<p>{E(C.get("rule_index_intro", ""))}</p><p>{E(C.get("scope", ""))}</p><div class="index">{index}</div>
+<p class="small" style="margin-top:18px">{E(C.get("sources_note", ""))} Each before is quoted exactly, with its source named, except the {n_ill} marked Illustrative, which show the fault in words we wrote for the purpose.</p></section>
 {gsec}
 <section id="house" aria-labelledby="h-house"><p class="secnum">HOUSE RULES</p><h2 id="h-house">The house rules for every page</h2>
-<div class="tw" role="region" tabindex="0" aria-label="House rules"><table class="house"><thead><tr><th scope="col">Rule</th><th scope="col">What it asks</th><th scope="col">Written correctly</th></tr></thead><tbody>{house}</tbody></table></div></section>
+<div class="tw" role="region" tabindex="0" aria-label="House rules"><table class="house"><thead><tr><th scope="col">Rule</th><th scope="col">What it asks</th><th scope="col">Example</th></tr></thead><tbody>{house}</tbody></table></div></section>
 <section id="checklist" aria-labelledby="h-check"><p class="secnum">BEFORE YOU PUBLISH</p><h2 id="h-check">Read it aloud, then ask</h2><ol class="check">{check}</ol></section>
 <div class="decision" id="decisions" role="region" aria-labelledby="h-dec"><h2 id="h-dec">Decisions on this board</h2><ol>{decisions}</ol></div>
 <section id="process" aria-labelledby="h-proc"><p class="secnum">HOW THIS WAS MADE</p><h2 id="h-proc">{E(R.get("process_title", "How this was made"))}</h2><ol>{L("process")}</ol></section>
