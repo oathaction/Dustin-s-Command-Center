@@ -9,3 +9,5 @@ work/build/package-lock.json
 source/*.pdf
 __pycache__/
 *.pyc
+# Font copies made for text measurement by concept build scripts; regenerable from the system Inter install (D2-109)
+work/boards/phase-2/data-viz/*/fonts/
