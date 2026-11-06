@@ -1,0 +1,101 @@
+{
+ "deck": "Draft deck.",
+ "ask": [
+  "Approve the coverage plan and its tiers.",
+  "Approve the Phase 3 build order."
+ ],
+ "sample_reply": "Coverage plan: approved. Build order: approved.",
+ "stretch": {
+  "verdict": "Draft verdict.",
+  "cd_scores": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "ships": "pending",
+  "reviewer": {},
+  "charts": {
+   "S11": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   },
+   "S12": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   },
+   "S13": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   },
+   "S14": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   },
+   "S15": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   },
+   "S16": {
+    "form": "Form",
+    "question": "Question?",
+    "title": "Title",
+    "proves": [
+     "x"
+    ],
+    "needs": []
+   }
+  },
+  "dark": {
+   "specs": [],
+   "text": ""
+  }
+ },
+ "decisions": [
+  {
+   "q": "Q?",
+   "text": "t",
+   "rec": "r"
+  }
+ ],
+ "next_questions": [
+  {
+   "q": "Q?",
+   "text": "t",
+   "rec": "r"
+  }
+ ],
+ "process": [],
+ "tested": [],
+ "not_tested": [],
+ "changelog_created": [],
+ "changelog_modified": []
+}
