@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
- "checked": "2026-11-06T06:51:07.298Z",
+ "checked": "2026-11-06T06:52:45.172Z",
  "views": [
   "white",
   "newsprint",
@@ -394,13 +394,7 @@
     "drawings": 10,
     "labels": 110,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "anatomy-system-358",
-      "a": "12.0%",
-      "b": "5"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 7,
@@ -606,13 +600,7 @@
     "drawings": 10,
     "labels": 112,
     "outside": [],
-    "overlaps": [
-     {
-      "svg": "anatomy-system-328",
-      "a": "12.0%",
-      "b": "5"
-     }
-    ]
+    "overlaps": []
    },
    "red": {
     "marks": 7,
@@ -652,9 +640,6 @@
    "visible": true
   }
  },
- "failures": [
-  "390 system: 1 overlapping labels",
-  "360 system: 1 overlapping labels"
- ],
- "pass": false
+ "failures": [],
+ "pass": true
 }
