@@ -547,7 +547,7 @@ def build(ctx):
                              '<code>tabindex="0"</code> only while it overflows, so a keyboard user can scroll it and a page '
                              'with many frames keeps its landmark list short: <code>role="group"</code> and '
                              '<code>aria-label="Contrast pairs, scroll sideways"</code> while '
-                             '<code>scrollWidth &gt; clientWidth</code>, and neither once the content fits.'],
+                             '<code>scrollWidth > clientWidth</code>, and neither once the content fits.'],
             },
         ],
         'extras': [

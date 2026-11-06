@@ -167,6 +167,16 @@
     window.addEventListener('resize', function () { if (menu.open && window.matchMedia('(min-width: 64em)').matches) menu.close(); });
   }
 
+  // A flowing stage whose content cannot shrink to the column (a wide table on a 360 px phone) grows to hold it, so the
+  // keyline always encloses the content and the frame scrolls in its place (B1).
+  function hugFlowing() {
+    $$('.plate-stage:not([data-width]):not([data-pending])').forEach(function (st) {
+      st.style.minWidth = '';
+      var over = st.scrollWidth - st.clientWidth;
+      if (over > 1) st.style.minWidth = Math.ceil(st.offsetWidth + over + parseFloat(getComputedStyle(st).paddingRight)) + 'px';
+    });
+  }
+
   // A frame or code block that overflows becomes a focusable group named for what it holds, so a keyboard can scroll
   // it; one that fits stays out of the Tab order (AX-S3). Groups stay out of the landmark list. A plate that scrolls
   // shows its hint in the plate head, before the specimen (AX-S12).
@@ -219,7 +229,7 @@
   var rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { $$('.plate--fit[data-fit="fit"]').forEach(applyFit); frames(); railCover(); }, 120);
+    rt = setTimeout(function () { hugFlowing(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); frames(); railCover(); }, 120);
   });
 
   // Copy buttons write their result to the status line beside them (a polite live region).
@@ -246,6 +256,7 @@
   });
 
   function start() {
+    hugFlowing();
     frames();
     railCover();
     if (location.hash) onHash(); else setCurrent(compute());

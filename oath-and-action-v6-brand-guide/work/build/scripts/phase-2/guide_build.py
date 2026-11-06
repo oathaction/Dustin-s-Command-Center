@@ -675,7 +675,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     fid = f' id="fig-{e(spec_id)}"' if spec_id else ""
     return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}>'
             + f'<div class="plate-head">{"".join(head)}</div>'
-            + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}">{alt_html}{stage}</div>'
+            + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
+            + (f' data-width="{width:g}" style="--w:{width:g}px"' if isinstance(width, (int, float)) else "")
+            + f'>{alt_html}{stage}</div>'
             + cap + "</figure>")
 
 

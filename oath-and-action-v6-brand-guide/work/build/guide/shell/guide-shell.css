@@ -309,6 +309,14 @@ a.toc-part-k:hover { text-decoration: underline }
 .plate-hint { flex-basis: 100%; margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
 .plate-scroll { position: relative; overflow-x: auto; overflow-y: hidden; padding: var(--oa-space-400) var(--oa-space-200); background: var(--mat);
   margin-inline: calc(-1 * var(--m)) }
+/* B3 (creative director's review): on phones a fixed-width stage that nearly fits keeps whatever side margin is left, so
+   a 360 px page sits whole at 390 and 360 px with no scroll; a stage wider than the screen keeps the 16 px margin and
+   scrolls as before. --room is the frame's width (the plate plus both page margins) less the stage; the second term of
+   max() is 16 px whenever --room is negative and zero or less otherwise. */
+@media (max-width: 47.99em) {
+  .plate-scroll[data-width] { --room: calc(100% + 2 * var(--m) - var(--w));
+    padding-inline: max(min(var(--oa-space-200), var(--room) / 2), min(var(--oa-space-200), var(--room) * -1000)) }
+}
 @media (min-width: 48em) { .plate-scroll { margin-inline: 0; padding: var(--oa-space-800) var(--oa-space-600) } }
 /* AX-S4: on the mat the ring is Charcoal, 11.76 to 1, drawn inside the frame */
 .plate-scroll:focus-visible, .code:focus-visible, .table-wrap:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-palette-charcoal); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
@@ -319,6 +327,10 @@ a.toc-part-k:hover { text-decoration: underline }
   box-shadow: 0 0 0 var(--oa-border-width-hairline) var(--keyline); forced-color-adjust: none }
 .plate-stage :is(button, input, select, textarea) { font: inherit }
 .plate-stage[data-pending] { padding: var(--oa-space-400); max-width: 100% }
+/* B1 (creative director's review): a stage that flows with the page keeps 16 px, 24 px from 48em, between its content
+   and its keyline. A stage with a fixed width_px stays at its exact true size. */
+.plate-stage:not([data-width]):not([data-pending]) { padding: var(--oa-space-200) }
+@media (min-width: 48em) { .plate-stage:not([data-width]):not([data-pending]) { padding: var(--oa-space-300) } }
 .plate-pending { margin: 0; font: var(--oa-type-body-small) }
 .plate-fit { width: fit-content; margin: 0 auto }
 .plate-fit > .plate-stage { margin: 0 }

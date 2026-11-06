@@ -148,6 +148,17 @@ None. Both open questions from stage A (Rule 05.1's shares and the body measure 
 - Real phones, forced colors, 200 percent text on the rendered page, print.
 - No red team or reader has seen the fixed chapters.
 
+### Follow-up: Rule 07.6's scrolling frame
+
+From the creative director's review (`work/handoffs/phase-2/20261106_CD-Review-Of-Stage-A.md`, ruling 2). Rule 07.6 taught `role="region"` for a frame that scrolls, and the shell now draws each such frame as a group named for its plate, focusable only while it overflows (AX-S3; shell notes, section 9). Rule 07.6 now teaches the same pattern:
+
+- The rule: content that needs two dimensions scrolls sideways inside its own frame, "a group named for what it holds", which takes keyboard focus only while its content overflows.
+- Specifications: three new rows, "A frame that scrolls" (a group named for what it holds, such as the table's title), "Keyboard focus" (only while the content overflows, checked on load and on resize) and "Scroll cue" (a line above the frame saying it scrolls sideways, where the shell puts its hint).
+- For builders: the review's wording, with the markup: `role="group"` and an `aria-label` such as "Contrast pairs, scroll sideways", and `tabindex="0"`, while `scrollWidth > clientWidth`, and neither once the content fits.
+- The correct caption adds that a table which must keep its columns scrolls in a named frame, as the guide's wide plates do on a phone. The two specimens are pictures inside image stages, so they hold no focusable frame of their own.
+
+Tested: `stage_a_systems_build.py final`; `python3 -I work/build/scripts/phase-2/guide_build.py --strict`, exit 0 with 0 warnings; `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, PASS at 1440, 1024, 390 and 360 px with 0 failures; Rule 07.6's rendered text read at 1440 px, with no `role="region"` left in my chapters. Not tested: a screen reader on the new wording, and the CD review's blocking item B1 (specimens touching the new keyline), which it assigns to the shell's CSS.
+
 ### Change log
 
 Modified:

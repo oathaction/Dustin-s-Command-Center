@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T22:57:04.939Z",
+ "checked": "2026-11-06T23:29:32.614Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -161,7 +161,7 @@
     "where": []
    },
    "text": {
-    "texts": 8479,
+    "texts": 8487,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -202,7 +202,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 327538,
+   "height": 327890,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -371,7 +371,7 @@
     "where": []
    },
    "text": {
-    "texts": 8359,
+    "texts": 8367,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -412,7 +412,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 350859,
+   "height": 361588,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -580,7 +580,7 @@
     "where": []
    },
    "text": {
-    "texts": 8353,
+    "texts": 8342,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -621,7 +621,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 426271,
+   "height": 435038,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -789,7 +789,7 @@
     "where": []
    },
    "text": {
-    "texts": 8363,
+    "texts": 8343,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -830,7 +830,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 441213,
+   "height": 450400,
    "fonts": [
     "Inter",
     "Inter Tight",

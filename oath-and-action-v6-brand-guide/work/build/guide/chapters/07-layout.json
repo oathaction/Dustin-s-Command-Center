@@ -367,7 +367,7 @@
       "id": "07.6",
       "title": "Make every page read at 320 px wide, with nothing lost.",
       "rule": [
-        "At 320 CSS px, the width of a small phone or a desktop window zoomed to 400 percent, a page shows all its content without scrolling sideways. Tables stack into one card per row. Only content that needs two dimensions, such as a wide data table or a specimen at true size, scrolls inside its own labeled frame."
+        "At 320 CSS px, the width of a small phone or a desktop window zoomed to 400 percent, a page shows all its content without scrolling sideways. Tables stack into one card per row. Only content that needs two dimensions, such as a wide data table or a specimen at true size, scrolls sideways inside its own frame. That frame is a group named for what it holds, and it takes keyboard focus only while its content overflows."
       ],
       "tokens": [
         "oa.layout.breakpoint.phoneSmall",
@@ -382,7 +382,7 @@
       },
       "correct": {
         "specimen": "s-07-6-correct",
-        "caption": "A 320 px frame at true size holding contrast pairs as stacked cards. Every pair, ratio and use stays in view."
+        "caption": "A 320 px frame at true size holding contrast pairs as stacked cards. Every pair, ratio and use stays in view. A table that must keep its columns scrolls inside a named frame instead, as the wide plates in this guide do on a phone."
       },
       "failure": {
         "specimen": "s-07-6-failure",
@@ -402,6 +402,18 @@
         {
           "label": "Text at 200 percent",
           "value": "No clipped boxes and no sideways scroll at 1440 px"
+        },
+        {
+          "label": "A frame that scrolls",
+          "value": "A group named for what it holds, such as the table’s title"
+        },
+        {
+          "label": "Keyboard focus",
+          "value": "Only while its content overflows the frame, checked on load and on resize"
+        },
+        {
+          "label": "Scroll cue",
+          "value": "A line above the frame saying it scrolls sideways"
         }
       ],
       "related": [
@@ -410,7 +422,7 @@
         "28"
       ],
       "builders": [
-        "Check every page at 320, 360 and 390 px with the shared rendered check. A frame that must scroll gets <code>role=\"region\"</code>, a name and <code>tabindex=\"0\"</code>, so a keyboard user can scroll it too."
+        "Check every page at 320, 360 and 390 px with the shared rendered check. A frame that must scroll is a group with its own name, such as the table’s title, and takes <code>tabindex=\"0\"</code> only while it overflows, so a keyboard user can scroll it and a page with many frames keeps its landmark list short: <code>role=\"group\"</code> and <code>aria-label=\"Contrast pairs, scroll sideways\"</code> while <code>scrollWidth > clientWidth</code>, and neither once the content fits."
       ]
     }
   ],
