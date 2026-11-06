@@ -83,6 +83,60 @@
    "reader_question": "How much of each everyday answer rests on documented fact?",
    "requirements": "A share per question across four grades, sorted, with grades readable in grayscale and never in red.",
    "evidence": "Finding"
+  },
+  {
+   "id": "S11",
+   "form": "Shift arrows",
+   "dataset": "presidential-shift-by-state",
+   "reader_question": "Which states moved toward which party between 2020 and 2024, and how far?",
+   "requirements": "One arrow per state from its 2020 margin to its 2024 margin; party direction in words and position; neutral inks (DR-58).",
+   "evidence": "Finding",
+   "stretch": true
+  },
+  {
+   "id": "S12",
+   "form": "Tile-grid map with shift arrows",
+   "dataset": "presidential-shift-by-state",
+   "reader_question": "Where did the shift happen?",
+   "requirements": "One tile per state on the shared tile grid, an arrow in each whose angle and length follow the shift; a size-of-shift key.",
+   "evidence": "Finding",
+   "stretch": true
+  },
+  {
+   "id": "S13",
+   "form": "Small-multiple sparklines",
+   "dataset": "payrolls-by-sector",
+   "reader_question": "Which sectors added jobs since January 2022, and which lost them?",
+   "requirements": "One panel per sector on a shared scale, an end label with the change in words, a line at zero.",
+   "evidence": "Finding",
+   "stretch": true
+  },
+  {
+   "id": "S14",
+   "form": "Columns with a moving average",
+   "dataset": "payrolls-monthly-change",
+   "reader_question": "How many jobs did the economy add each month?",
+   "requirements": "Monthly change as columns from zero in Stone, the three-month average as a Charcoal line, the latest month labeled.",
+   "evidence": "Finding",
+   "stretch": true
+  },
+  {
+   "id": "S15",
+   "form": "Results table",
+   "dataset": "presidential-shift-by-state",
+   "reader_question": "How did each state vote in 2024, and how did that compare with 2020?",
+   "requirements": "Margin cells with party names printed, a shift column with arrows, sortable on the atlas site, readable as cards on a phone.",
+   "evidence": "Finding",
+   "stretch": true
+  },
+  {
+   "id": "S16",
+   "form": "Bubble map",
+   "dataset": "turnout-by-state-2024",
+   "reader_question": "Where did eligible voters turn out, and where are most of them?",
+   "requirements": "Circles by area for citizen voting-age population, shaded by turnout in one sequential ink, labeled where they fit.",
+   "evidence": "Finding",
+   "stretch": true
   }
  ],
  "datasets": {
@@ -14684,6 +14738,30 @@
     "rights": "Ballotpedia text is licensed under the GNU Free Documentation License; this file copies facts only and credits Ballotpedia",
     "source_line": "Source: Ballotpedia, States with initiative or referendum, 50 states and DC. Retrieved November 6, 2026. Mississippi's process exists on paper but cannot be used after a 2021 state supreme court ruling."
    }
+  },
+  "presidential-shift-by-state": {
+   "spec": "S11",
+   "kind": "public",
+   "pending": true,
+   "title": "waiting for fec-presidential-results-by-state.csv"
+  },
+  "payrolls-by-sector": {
+   "spec": "S13",
+   "kind": "public",
+   "pending": true,
+   "title": "waiting for fred-payrolls-by-sector.csv"
+  },
+  "payrolls-monthly-change": {
+   "spec": "S14",
+   "kind": "public",
+   "pending": true,
+   "title": "waiting for fred-payrolls-by-sector.csv"
+  },
+  "turnout-by-state-2024": {
+   "spec": "S16",
+   "kind": "public",
+   "pending": true,
+   "title": "waiting for census-cps-2024-turnout-by-state.csv"
   }
  },
  "extras": {
