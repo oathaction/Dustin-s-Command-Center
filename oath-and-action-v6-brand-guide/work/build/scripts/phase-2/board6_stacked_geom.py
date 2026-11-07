@@ -380,7 +380,7 @@ def groups(size, b_scale=1.0):
     oath = word(G, ["O", "A", "T", "H"])
     action = word(G, ["A2", "C", "T2", "I", "O2", "N"])
     pix = size != "display"
-    sh = lambda v: float(round(v)) if pix else v
+    sh = lambda v: float(round(v)) if pix else round(v, 2)   # display moves stay on the masters' 0.01-unit grid
     amp_alone = BM.moved(0, B.box[1] - BM.box[1])           # B's master, standing where the wordmark stands it
     if b_scale != 1.0:
         bx = amp_alone.box
@@ -407,7 +407,7 @@ def build(v, size):
     S = SIZES[size]
     M = masters(size)
     cap, pix = S["cap"], size != "display"
-    sh = lambda val: float(round(val)) if pix else val
+    sh = lambda val: float(round(val)) if pix else round(val, 2)
     P = groups(size, v.get("b_scale", 1.0))
     lines = [list(P[k]) for k in v["lines"]]
     # horizontal placement
@@ -428,7 +428,9 @@ def build(v, size):
         if pix:
             dy, r = drop_px(up, lo, x0, x1, cap, M["hinge"]["target"], S["floor"])
         else:
-            dy, r = solve_drop(up, lo, x0, x1, cap, M["hinge"]["target"])
+            dy, _ = solve_drop(up, lo, x0, x1, cap, M["hinge"]["target"])
+            dy = round(dy, 2)
+            r = line_white(up, move_all(lo, 0, dy), x0, x1, cap)
         lines[k] = move_all(lo, 0, dy)
         joins.append({"kind": "lines", "between": f"{v['lines'][k - 1]} / {v['lines'][k]}", "white": r["white"], "nearest": r["nearest"],
                       "open_share": r["open_share"], "band": [x0, x1]})
@@ -446,7 +448,7 @@ def build(v, size):
             joins.insert(0, {"kind": "side", "between": "B / A", "white": r["white"], "nearest": r["nearest"]})
     # frame: x from the leftmost ink, y from line one's cap line less the pad, to the last baseline plus the pad
     bx = group_box(shapes)
-    x_shift = -bx[0] if not pix else -math.floor(bx[0])
+    x_shift = -round(bx[0], 2) if not pix else -math.floor(bx[0])
     shapes = move_all(shapes, x_shift)
     bx = group_box(shapes)
     top = S["cap_top"] - S["pad"]
@@ -474,7 +476,8 @@ def svg_body(res, amp_fill="var(--amp,#E63946)"):
     nd = SIZES[res["size"]]["nd"]
     ink = [sp for s in res["shapes"] if s.role == "ink" for sp in s.subs]
     amp = [sp for s in res["shapes"] if s.role == "amp" for sp in s.subs]
-    return f'<path fill="currentColor" d="{to_d(ink, nd)}"/><path fill="{amp_fill}" d="{to_d(amp, nd)}"/>'
+    # B keeps four decimals, so S6's B, scaled 1.25 (or 1.125 at 16 px), stays an exact copy of its master
+    return f'<path fill="currentColor" d="{to_d(ink, nd)}"/><path fill="{amp_fill}" d="{to_d(amp, 4)}"/>'
 
 
 def l2_measures():

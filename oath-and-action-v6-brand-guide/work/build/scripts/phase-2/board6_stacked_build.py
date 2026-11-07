@@ -667,6 +667,9 @@ def main():
     M = measures(res)
     crisp, pngs = render_minimums(res)
     M["crisp_share"] = crisp
+    checks = [g.verify_no_redraw(res[v["id"]][k]) for v in g.VARIANTS for k in ("display", 24, 16)]
+    M["no_redraw"] = {"rule": "every placed letter is its master glyph moved; B is its master moved, or moved and scaled as a whole (S6)",
+                      "points_compared": sum(c["points"] for c in checks), "worst_offset_units": max(c["worst_offset"] for c in checks)}
     M["contrast"] = {"charcoal_on_newsprint": round(contrast(CHAR, NEWS), 2), "deep_stone_on_newsprint": round(contrast(DEEP_STONE, NEWS), 2),
                      "deep_stone_on_panel": round(contrast(DEEP_STONE, PANEL), 2), "red_on_newsprint": round(contrast(RED, NEWS), 2),
                      "red_on_charcoal": round(contrast(RED, CHAR), 2), "white_on_prussian": round(contrast(WHITE, PRUS), 2),

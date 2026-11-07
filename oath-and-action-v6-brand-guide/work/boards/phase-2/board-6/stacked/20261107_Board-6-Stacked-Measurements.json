@@ -222,7 +222,7 @@
      "between": "OATH / &ACTION",
      "kind": "lines",
      "white_x": 0.203,
-     "nearest_x": 0.094
+     "nearest_x": 0.095
     }
    ],
    "joins_24px": [
@@ -419,7 +419,7 @@
     }
    ],
    "baseline_to_cap_line_x": [
-    0.109,
+    0.108,
     0.101
    ],
    "size_24px": [
@@ -532,6 +532,11 @@
   "S6-16": 0.679,
   "S6-24": 0.766,
   "L2-min": 0.579
+ },
+ "no_redraw": {
+  "rule": "every placed letter is its master glyph moved; B is its master moved, or moved and scaled as a whole (S6)",
+  "points_compared": 5382,
+  "worst_offset_units": 7.105427357601002e-14
  },
  "contrast": {
   "charcoal_on_newsprint": 13.29,

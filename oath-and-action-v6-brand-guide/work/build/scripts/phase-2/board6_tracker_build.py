@@ -698,7 +698,7 @@ def sec_grid():
         (footer, 'Footer', 'Site, email and chart footers: 24 px, beside the tagline; 16 px in a chart footer'),
         (signoff, 'Sign-off', 'Bottom right of social cards, covers and posters: 40 px, inside the margin'),
     ]
-    al = ''.join(f'<li><div class="ba-app">{m}</div><p class="ba-t">{E(t)}</p><p class="ba-k">{E(k)}</p></li>' for m, t, k in after)
+    al = ''.join(f'<li><div class="ba-app" role="region" aria-label="{A(t)}, true size">{m}</div><p class="ba-t">{E(t)}</p><p class="ba-k">{E(k)}</p></li>' for m, t, k in after)
     kicker_after = (f'<div class="am am-kick oa-surface-newsprint"><span class="kick">{icon("n")}<span class="kick-l">Report · Dispatch</span>'
                     f'<span class="chip-id"><span>Bill</span><span>H.4212</span></span></span>'
                     f'<p class="kick-hl">The House takes up the meeting notice bill on Thursday</p></div>')
@@ -969,7 +969,7 @@ ul.facts{margin:0;padding-left:1.1em}ul.facts li{margin:0 0 8px;max-width:76ch}
 .idm{display:block;flex:none}
 .lk-c{color:var(--oa-color-palette-newsprint)}
 .am{padding:18px 20px}
-.am-mast{width:720px;border-bottom:2px solid var(--oa-color-palette-charcoal);color:var(--oa-color-palette-charcoal)}
+.am-mast{width:660px;border-bottom:2px solid var(--oa-color-palette-charcoal);color:var(--oa-color-palette-charcoal)}
 .am-head{width:520px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--oa-color-palette-stone);color:var(--oa-color-palette-charcoal)}
 .am-head .pg{margin-left:auto;font:600 13px/1 var(--oa-font-family-reading);font-variant-numeric:tabular-nums}
 .am-foot{width:560px;display:flex;align-items:center;gap:14px}
@@ -1042,7 +1042,7 @@ td.n{width:auto}
 JS = r"""
 (function(){
   function upd(){
-    document.querySelectorAll('.frame,.mxw').forEach(function(f){
+    document.querySelectorAll('.frame,.mxw,.ba-app').forEach(function(f){
       if (f.scrollWidth > f.clientWidth + 1) { f.tabIndex = 0; f.classList.add('is-wide'); }
       else { f.removeAttribute('tabindex'); f.classList.remove('is-wide'); }
     });

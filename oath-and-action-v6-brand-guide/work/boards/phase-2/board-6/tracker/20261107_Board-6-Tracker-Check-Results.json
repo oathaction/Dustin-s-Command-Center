@@ -1,0 +1,147 @@
+{
+ "file": "work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html",
+ "checked": "2026-11-07T01:11:49.980Z",
+ "views": [
+  "overview"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 2115,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 361,
+    "labels": 288,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 99,
+    "unmarked": [],
+    "jobs": [
+     "take part now"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 29828,
+   "axe": [],
+   "focusStops": 9,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 2098,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 361,
+    "labels": 288,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 99,
+    "unmarked": [],
+    "jobs": [
+     "take part now"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 51865,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 2098,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 361,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 361,
+    "labels": 288,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 99,
+    "unmarked": [],
+    "jobs": [
+     "take part now"
+    ],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 53070,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": null,
+ "failures": [],
+ "pass": true
+}
