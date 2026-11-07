@@ -950,3 +950,9 @@ Four owners worked in parallel under `work/handoffs/phase-2/20261107_Apply-Pass-
 | D2-412 | Basis lines for Dustin's rulings read "Design judgment, approved by our founder and editor in November 2026" | One form across chapters 04, 08 and 11 (D2-253) |
 | D2-413 | Issue I155's summary takes the review's own wording on the next atlas V7.1 list; the atlas itself is never edited | The research lead found the summary's "no evidence in any of 64 cases" drops the one case the review says Trump's side won |
 | D2-414 | The main session ran the final checks itself: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 25 listed exemptions, each a labeled failure plate or a print piece) and the token tests (all pass, 35 of 35 plants caught) | A check is reported only once the main session has run it |
+
+## Fix pass, November 7, 2026
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-415 | Chapter 09 is named "Pillar icons" in the chapter list | Dustin calls the four marks pillar icons (DR-105, DR-111), and the drawings are Civic Line icons since DR-04; the creative director and the editor both asked for it (CD-S5) |
