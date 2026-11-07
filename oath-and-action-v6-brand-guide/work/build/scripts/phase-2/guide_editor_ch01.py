@@ -588,10 +588,10 @@ def build(book):
     A("s-01-hinge-lines", f'<div class="ed hl"><p class="hlead">{e(HINGE_LEAD)}</p><table class="stack"><thead><tr><th scope="col">Locked line, exact</th><th scope="col">The commitment</th>'
       f'<th scope="col">The action</th></tr></thead><tbody>{trs}</tbody></table></div>',
       rule=None, readable=True, label="The hinge in the locked lines",
-      css=(BASE, f".ed.hl .cm1{{font-weight:700}}.ed.hl .ac1{{text-decoration:underline solid 2px var(--oa-color-graphic-essential);text-underline-offset:4px}}"
+      css=(BASE, f".ed.hl .cm1{{font-weight:700}}"
                  f".ed.hl th[scope=row]{{min-width:18rem;{fx('body-small', weight='700')}}}.ed.hl .ll{{display:block;{fx('body')};margin-top:4px}}"
                  f".ed.hl .hlead{{{fx('body')};max-width:64ch;margin:0 0 20px}}"),
-      alt=HINGE_LEAD + " Then a table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. "
+      alt=HINGE_LEAD + " Then a table of the locked lines, each shown whole with its commitment in bold and its action in regular weight. Mission: understand, then improve. "
           "Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then "
           "action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
       notes="From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's. The lead paragraph was the "
@@ -1268,7 +1268,8 @@ def build(book):
                                       "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
                     "caption": ("Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a "
                                 "kicker may carry, the Productivity icon beside its own word. Only “Our position” takes the Charcoal fill, and the "
-                                "first three headlines are real, so the label sits beside each invented one.")},
+                                "first three headlines are real, so the label sits beside each invented one. “Act · How to take part” is one label, so its "
+                                "dot and both its words belong to the label.")},
         "failure": {"specimen": A("s-01-21-failure", kl_bad, css=(BASE, KCSS2), rule="01.21",
                                   alt="Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. "
                                       "Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker "
@@ -1382,10 +1383,10 @@ def build(book):
     extras = [{"specimen": "s-01-words", "label": "Words this guide uses",
                "caption": "We define each word once here and keep it the same through the guide. The link beside it opens the rule or chapter that sets it."},
               {"specimen": "s-01-hinge-lines", "label": "The hinge in the locked lines",
-               "caption": "Each locked line splits at the hinge, a commitment first and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
+               "caption": "Each locked line splits at the hinge, its commitment first, set in bold, and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
                "caption": ("Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48\u00a0px its "
-                           "icon also shows its red part as a second sign, as the second row draws it. The icons belong to the Civic Line, our set of symbols, and "
+                           "icon also shows its red part as a second sign, as the section opener’s row draws it. The icons belong to the Civic Line, our set of symbols, and "
                            "chapter 09 sets their sizes. "
                            "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; "
                            "positions appear only in labeled Act pieces.")},
