@@ -281,13 +281,24 @@ def s_04_5_failure():
 # ------------------------------------------------------------------------------------------- 04.6
 END_TEXT = ("The board meets again on April 2, and the agenda posts a week before. We will add the vote to the tracker once "
             "the clerk publishes the minutes.")
+CAP_EM = 0.7275          # Inter's cap height in em
+
+# The registered trademark sign, U+00AE, from Liberation Sans Regular (SIL Open Font License), in font units (2048 to the
+# em, y up), read with fontTools on November 7, 2026. Drawn as outlines, so the comparison never depends on a viewer's
+# fonts. Advance 1509 units; ink from y -16 to 1430.
+REG_PATH = ("M1477 707Q1477 514 1380.5 345.5Q1284 177 1115.5 80.5Q947 -16 754 -16Q557 -16 387.5 84.5Q218 185 124.5 351.5Q31 518 31 707Q31 900 128.0 1068.0Q225 1236 393.0 1333.0Q561 1430 754 1430Q948 1430 1116.5 1332.5Q1285 1235 1381.0 1068.0Q1477 901 1477 707ZM1385 707Q1385 876 1301.0 1020.5Q1217 1165 1070.5 1250.0Q924 1335 754 1335Q586 1335 440.0 1250.5Q294 1166 210.0 1020.0Q126 874 126 707Q126 538 210.5 392.0Q295 246 440.0 162.0Q585 78 754 78Q923 78 1070.0 162.0Q1217 246 1301.0 392.0Q1385 538 1385 707ZM955 289 756 625H595V289H468V1120H775Q917 1120 992.5 1057.0Q1068 994 1068 883Q1068 781 1016.0 719.5Q964 658 879 639L1100 289ZM941 881Q941 950 893.5 986.0Q846 1022 765 1022H595V721H777Q857 721 899.0 763.5Q941 806 941 881Z")
 
 
-def end_b(surface="newsprint"):
-    """B alone as an article's end mark (DR-118): the 16 px master at 16 px, in the text's ink, its tail 1 px under the
-    baseline where the master draws it. At 17 px body text the capitals stand 12.4 px, under B's 14 px floor (Rule 03.4),
-    so B takes the master whose range starts at that floor."""
-    return svg_file(ID_DIR / AMP[16], h=16, decorative=True, style=f"color:{ink(surface)};display:inline-block;vertical-align:-1px")
+def end_b(font_px=17, surface="newsprint"):
+    """B alone as an article's end mark, as the guide draws it until Dustin answers the cap height question (CD-M1):
+    16/14 of the text's cap height, so B's band sits on the capitals, and never under its 16 px minimum, with the
+    master's baseline on the text's. At 17 px text that is the 16 px master at 16 px, its tail 1 px under the baseline
+    and its top 2.6 px over the cap line (measured in Chromium at eight times). Half an em before it (CA-S4)."""
+    cap = font_px * CAP_EM
+    h = max(16.0, cap * 16 / 14)
+    below = h / 16
+    return svg_file(ID_DIR / AMP[16], h=h, decorative=True,
+                    style=f"color:{ink(surface)};display:inline-block;vertical-align:{-below:.3f}px;margin-left:0.5em")
 
 
 def end_badge():
@@ -295,51 +306,67 @@ def end_badge():
             f'{svg_file(ID_DIR / BADGE[16], h=16, decorative=True, style="color:" + tv("color-identity-signature-on-newsprint"))}</span>')
 
 
-def _article(mark_html):
-    return (f'<div class="oai-s-newsprint" style="width:100%;padding:24px 28px;border:1px solid {hair("newsprint")};{ty("body")}">'
-            f'{head_label()}<p>{E(END_TEXT)}&nbsp;{mark_html}</p></div>')
+def registered(font_px=17, surface="newsprint"):
+    """The registered sign drawn from Liberation Sans's outline at a font size, on the text's baseline."""
+    k = font_px / 2048
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1430 1509 1446" width="{1509 * k:.2f}" height="{1446 * k:.2f}" '
+            f'aria-hidden="true" focusable="false" class="oai-svg" style="display:inline-block;vertical-align:{-16 * k:.2f}px">'
+            f'<path transform="scale(1,-1)" fill="{ink(surface)}" d="{REG_PATH}"/></svg>')
+
+
+def _ending(mark_html, surface="newsprint", gap=True):
+    """A paragraph whose last word and end mark never break apart. gap=False keeps the old word space (the failure)."""
+    head, last = END_TEXT.rsplit(" ", 1)
+    sep = "" if gap else "&nbsp;"
+    return f'<p>{E(head)} <span style="white-space:nowrap">{E(last)}{sep}{mark_html}</span></p>'
+
+
+def _article(mark_html, surface="newsprint", gap=True, label=True):
+    return (f'<div class="oai-s-{surface}" style="width:100%;padding:24px 28px;border:1px solid {hair(surface)};{ty("body")}">'
+            f'{head_label() if label else ""}{_ending(mark_html, surface, gap)}</div>')
 
 
 @spec
 def s_04_6_correct():
     card = (f'<div class="oai-s-charcoal" style="width:384px;height:576px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">'
             f'{mark(BADGE["display"], h=96, surface="charcoal", label="Hinge-circle badge, 96 px, on the back of an event card")}</div>')
-    body = (f'<div class="oai-stack" style="gap:32px"><div class="oai-cell">{_article(end_b())}'
-            f'<span class="oai-tag">The end mark: B alone, in the text\'s ink, 16 px master</span></div>'
-            f'<div class="oai-cell">{card}<span class="oai-tag">The badge at 96 px on the back of a 4 by 6 in event card, true size</span></div></div>')
-    alt = ("At true size, the last lines of an article in 17 pixel body text, ending with ampersand B alone in Charcoal, the "
-           "text's ink, one space after the final period, its capitals at the 16 pixel master's 14 pixels. Below, the "
-           "hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 "
-           "inch event card. The article text is Illustrative.")
+    body = (f'<div class="oai-pad"><div class="oai-stack" style="gap:32px">'
+            f'<div class="oai-stack" style="gap:12px">{_article(end_b())}{_article(end_b(surface="charcoal"), "charcoal", label=False)}'
+            f'<span class="oai-tag">The end mark: B alone, in the text\'s ink, from its 16 px master at 16 px, half an em after the period</span></div>'
+            f'<div class="oai-cell">{card}<span class="oai-tag">The badge at 96 px on the back of a 4 by 6 in event card, true size</span></div></div></div>')
+    alt = ("At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending "
+           "with ampersand B alone in the text's ink, half an em after the final period. B stands 16 pixels tall beside "
+           "capitals 12.4 pixels tall, its top 2.6 pixels over the cap line. Below, the hinge-circle badge, a red ampersand B "
+           "inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.")
     return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
-               notes="DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, "
-                     "as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px "
-                     "floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px.")
+               notes="CD-M1 and CA-S4. B's 16 px master at 16 px, its minimum (Rule 03.4), in the text's ink, with vertical-align -1 px so "
+                     "the master's baseline sits on the text's. Measured in Chromium at eight times beside a capital H of 17 px Inter: "
+                     "capitals 12.4 px, B 16.0 px, its top 2.6 px over the cap line, its tail 1.0 px under the baseline. Half an em of "
+                     "margin before B, inside a no-wrap span with the last word. DR-118 asks for the cap height; that height breaks "
+                     "B's minimum at body size, so both versions go to Dustin on the changes board (work/boards/phase-2/apply-pass/end-mark/). "
+                     "The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).")
 
 
 @spec
 def s_04_6_failure():
-    # The comparison is rendered to a PNG, so both marks show as a reader's screen draws them and the registered sign
-    # takes the form most typefaces give it (Liberation Sans, metric twin of Arial), whatever fonts a viewer has.
-    badge = inline_master(BADGE[16], 16, style="color:var(--oa-color-identity-signature-on-newsprint);display:inline-block;vertical-align:-3px")
-    row = ('<div style="padding:4px 6px;font:400 17px/24px Inter,sans-serif;color:var(--oa-color-text-primary-on-newsprint);white-space:nowrap">'
-           f'minutes.&nbsp;{badge}<span style="display:inline-block;width:24px"></span>'
-           'minutes.&nbsp;<span style="font-family:Liberation Sans,Arial,sans-serif">&reg;</span></div>')
-    W, H = 230, 32
-    uri = raster_png(row, W, H, "badge-vs-registered", scale=4)
-    img1 = f'<img src="{uri}" width="{W}" height="{H}" alt="" style="display:block">'
-    img2 = f'<img src="{uri}" width="{2 * W}" height="{2 * H}" alt="" style="display:block">'
-    body = (f'<div class="oai-stack" style="gap:20px">{_article(end_badge())}'
-            f'<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:20px">'
-            f'<div class="oai-cell">{img1}<span class="oai-tag">The badge, then the registered trademark sign, true size</span></div>'
-            f'<div class="oai-cell">{img2}<span class="oai-tag">The same, enlarged twice</span></div></div></div></div>')
-    alt = ("Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after "
-           "the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered "
-           "trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.")
+    def pair():
+        return (f'<div style="display:flex;gap:24px;align-items:baseline;white-space:nowrap;width:max-content;{ty("body")}">'
+                f'<span>minutes.&nbsp;{end_badge()}</span><span>minutes.&nbsp;{registered()}</span></div>')
+    twice = f'<div style="width:{2 * 196}px;height:52px"><div style="transform:scale(2);transform-origin:0 0;width:max-content">{pair()}</div></div>'
+    frame = (f'<div style="border:1px solid {hair("newsprint")}">{_article(end_badge(), gap=False).replace("border:1px solid", "border:0 solid", 1)}'
+             f'<div class="oai-s-newsprint" style="border-top:1px solid {hair("newsprint")};padding:20px 28px 24px">'
+             f'<div class="oai-stack" style="gap:20px">'
+             f'<div class="oai-cell">{pair()}<span class="oai-tag">The badge, then the registered trademark sign, true size</span></div>'
+             f'<div class="oai-cell">{twice}<span class="oai-tag">The same, enlarged twice</span></div></div></div></div>')
+    body = f'<div class="oai-pad">{dnp()}{frame}</div>'
+    alt = ("Failure case: do not publish. The same article ending with the hinge-circle badge, a red B inside a red ring, at "
+           "16 pixels after the final period. Below, the words minutes. followed by the badge, then minutes. followed by the "
+           "registered trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.")
     return rec("s-04-6-failure", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
-               notes="The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG "
-                     "rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, "
-                     "and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean.")
+               notes="The badge's 16 px master after the last word with a word space, as the end mark stood before DR-118. The comparison "
+                     "is live: 17 px Inter, the badge's master and the registered sign drawn from Liberation Sans's outline (SIL Open "
+                     "Font License), the form most typefaces draw, so only the marks differ (CA-S5). The twice-size row is a CSS "
+                     "transform of vector drawings, sharp on any screen. Failure band per D2-308 (CA-S6). Padded 24 px (CA-S5).")
 
 
 # ------------------------------------------------------------------------------------------- 04.7
