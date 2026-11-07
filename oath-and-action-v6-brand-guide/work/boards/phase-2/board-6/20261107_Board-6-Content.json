@@ -3,22 +3,23 @@
  "deck": "You asked for a simpler bill tracker, a few thoughts on the pillar icons, more stacked lockups and six color schemes. Each one is here with our recommendation, and seven questions close the page.",
  "sample_reply": "B6-1 to B6-7: as recommended.",
  "verdict": {
-  "headline": "Pick numbered steps, Set A and stacked S1, and keep Pillar Red; three small fixes come first.",
+  "headline": "Pick numbered steps, Set A and stacked S1, and keep Pillar Red.",
   "text": [
-   "Each section page is built from the approved masters, and each passes its accessibility check. My review found three faults the checks could not see. A bill waiting for the governor reads \"Step 6 of 6: Law.\" The pillar row marks the current pillar by red alone at 48 px and larger. The color page understates what a new lead color costs. The decisions below carry each fix.",
-   "On color I part with the color designer. Patina is the best of the six sheets. Red gives Act its urgency and stays clear of Stone for color-blind readers, under rules the guide already follows. The reader check you approved can tell us whether readers see red as partisan before anything changes."
+   "Each section page is built from the approved masters and passes its accessibility check. My first review found three faults the checks could not see, and the makers have fixed all three. I confirmed each fix on the pages at desktop and phone widths. Step 6 is now Governor, so a bill waiting for a signature reads as waiting. The current pillar's word is underlined at every size in all three sets. The color page states the full cost of a new lead color.",
+   "On color I part with the color designer. Patina is the best of the six sheets. Red gives Act its urgency and stays clear of Stone for color-blind readers, under rules the guide already follows. The reader check you approved can tell us whether readers see red as partisan before anything changes.",
+   "Each score below is the lowest any of the four sections earns. Craft stays at 3 until the pillar icons have small drawings of their own."
   ]
  },
  "scores": [
   {
    "criterion": "Craft",
-   "score": 4,
-   "line": "Letters, icons and lockmarks come from the masters, and the stacks hold at twice size; the pillar icons still lack small drawings of their own."
+   "score": 3,
+   "line": "The pillar icons have no drawings made for 16 and 24 px, where their line falls under half a pixel; the stacked lockups hold at twice size."
   },
   {
    "criterion": "Clarity",
-   "score": 3,
-   "line": "One line misleads: \"Step 6 of 6: Law.\" for a bill that is waiting for the governor. B6-1 renames the step."
+   "score": 4,
+   "line": "Every tracker step names what is happening, and a signed bill reads \"Became law on\" with its date."
   },
   {
    "criterion": "Brand fidelity",
@@ -32,13 +33,13 @@
   },
   {
    "criterion": "Evidence honesty",
-   "score": 3,
-   "line": "The color page understates what a new lead costs; B6-7 states the full cost."
+   "score": 4,
+   "line": "The color page now states what a new lead costs, and every invented bill and figure carries its label."
   },
   {
    "criterion": "Accessibility",
-   "score": 3,
-   "line": "Every page passes its check, yet the pillar row marks the current pillar by red alone at 48 px; B6-4 adds an underline at every size."
+   "score": 4,
+   "line": "Every state reads by shape and words, and the current pillar's word is underlined at every size."
   }
  ],
  "sections": {
@@ -48,9 +49,9 @@
     "The page ends with the grid's one job. The lockmark keeps four fixed places, and every grid that coded something retires."
    ],
    "pick": "Numbered steps, and a timeline on a bill's page",
-   "recommendation": "Use numbered steps in lists and on story cards and the same steps as a timeline on a bill's own page, with step 6 renamed Governor.",
-   "why": "A reader can say \"step 2 of 6\" without a key, and the marks hold up on a phone and in gray print. As drawn, step 6 is called Law, so a bill waiting for the governor reads as law; the new name says who acts next.",
-   "note": "I checked every state in grayscale, and each one holds by its shape. Step 5 should also say that the second chamber may hold its own hearing, since readers can take part there too."
+   "recommendation": "Use numbered steps in lists and on story cards and the same steps as a timeline on a bill's own page.",
+   "why": "A reader can say \"step 2 of 6\" without a key, and the marks hold up on a phone and in gray print. Step 6 is Governor, so the tracker says who acts next, and once the governor signs it prints \"Became law on\" with the date.",
+   "note": "I checked every state in grayscale, and each one holds by its shape. Step 5 should still say that the second chamber may hold its own hearing, since readers can take part there too."
   },
   "pillar-icons": {
    "summary": [
@@ -58,8 +59,8 @@
     "Each set appears at 16, 24, 48 and 128 px, in the pillar row, on a section opener, in a kicker and as a tile on Charcoal, with a naming test the studio ran on its own."
    ],
    "pick": "Set A, each icon with its word",
-   "recommendation": "Keep Set A, print each word beside its icon, and underline the current pillar's word at every size.",
-   "why": "Only these four were drawn for the pillars, so no topic page shares them. At 48 px the row marks the current pillar by red alone, and the underline gives a reader who cannot see red the same cue.",
+   "recommendation": "Keep Set A, with each word beside its icon and the current pillar's word underlined at every size.",
+   "why": "Only these four were drawn for the pillars, so no topic page shares them. The underline marks the current pillar for every reader, and from 48 px up its icon keeps its red as a second sign.",
    "note": "The four icons still need small drawings of their own at 16 and 24 px, where today's line falls under half a pixel wide."
   },
   "stacked": {
@@ -79,7 +80,7 @@
    ],
    "pick": "Keep Pillar Red",
    "recommendation": "Keep Pillar Red as the lead, and ask readers how they read it for party in the reader check you already approved.",
-   "why": "The color designer recommends Patina, the strongest of the six. Patina matches Stone in gray print and for many color-blind readers, and a new lead means rebuilding the color tokens, every two-color icon and chapters 03 to 05.",
+   "why": "The color designer recommends Patina, the strongest of the six, and the page now prints both views. Patina matches Stone in gray print and for many color-blind readers, and a new lead means rebuilding the color tokens, every two-color icon and chapters 03 to 05.",
    "note": "Federal Ink and Highlighter change how the ampersand reads: the first fades into the letters in gray, and the second changes color with its ground. I would take neither further."
   }
  },
@@ -87,15 +88,11 @@
   {
    "id": "B6-1",
    "question": "Do the nine tracker stages become six plain steps?",
-   "context": "Six steps cover the same path in words a newcomer knows. As drawn, step 6 is called Law, and trackers name the step a bill is at now, so a bill waiting for the governor reads \"Step 6 of 6: Law.\" We renamed that step.",
+   "context": "Six steps cover the same path in words a newcomer knows. Trackers name the step a bill is at now, so a bill waiting for a signature reads \"Step 6 of 6: Governor\", and a signed bill reads \"Became law on\" with its date.",
    "options": [
     {
      "text": "Six steps: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor",
-     "short": "six steps, step 6 Governor"
-    },
-    {
-     "text": "Six steps as drawn, with step 6 called Law",
-     "short": "six steps, step 6 Law"
+     "short": "six steps"
     },
     {
      "text": "Keep the nine stages",
@@ -103,7 +100,7 @@
     }
    ],
    "recommended": "a",
-   "why": "A step's name has to stay true while a bill sits at it. Governor tells a reader who acts next, and a bill that becomes law shows all six steps done with the words \"Became law on\" and the date. Hearing keeps a step of its own, because the public is invited to speak there.",
+   "why": "Each step's name stays true while a bill sits at it, and Governor tells a reader who acts next. Hearing keeps a step of its own, because the public is invited to speak there.",
    "section": "tracker",
    "touches": [
     "tracker#six-steps",
@@ -168,10 +165,10 @@
   {
    "id": "B6-4",
    "question": "Which four icons stand for the pillars?",
-   "context": "Set A is today's set. At 48 px and larger its row marks the current pillar by red alone, so the recommendation adds an underline at every size.",
+   "context": "Set A is today's set. In every set the current pillar's word is underlined at every size, and from 48 px up its icon also keeps its red.",
    "options": [
     {
-     "text": "Set A, drawn for the pillars, with each word beside its icon and the current pillar underlined at every size",
+     "text": "Set A, drawn for the pillars, with each word beside its icon",
      "short": "Set A"
     },
     {
@@ -257,7 +254,7 @@
    "question": "Does Pillar Red stay the lead color?",
    "context": [
     "Pillar Red is locked, so a move needs your named approval with the old and the new side by side. Red has marked the Republican side of election maps since 2000, and the guide keeps it off Prussian and prints every party in Charcoal with its name.",
-    "A move replaces red in 12 color tokens, the 244 two-color Civic Line icon files and their tiles, and Rules 05.3 and 05.5, which are written around red. Chapters 03 to 05 and every identity proof are then made again. Patina also moves the focus ring, the diverging scale and the success color."
+    "A move replaces red in 12 color tokens, or nine if red stays as the error color, and in the 244 two-color Civic Line icon files and their 732 two-color tiles. Rules 05.3 and 05.5, which are written around red, change too, and chapters 03 to 05 and every identity proof are made again. Patina also moves the focus ring, the success check and the diverging scale. The color page states the same cost."
    ],
    "options": [
     {

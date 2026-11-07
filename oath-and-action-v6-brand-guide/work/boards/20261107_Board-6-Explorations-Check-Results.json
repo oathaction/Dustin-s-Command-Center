@@ -1,6 +1,6 @@
 {
  "file": "work/boards/20261107_Board-6-Explorations.html",
- "checked": "2026-11-07T02:07:00.702Z",
+ "checked": "2026-11-07T02:12:31.342Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 432,
+   "texts": 427,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -43,7 +43,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 21905,
+   "height": 21951,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -52,7 +52,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 434,
+   "texts": 429,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -86,7 +86,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 34501,
+   "height": 34443,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -95,7 +95,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 434,
+   "texts": 429,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -129,7 +129,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 35684,
+   "height": 35599,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
