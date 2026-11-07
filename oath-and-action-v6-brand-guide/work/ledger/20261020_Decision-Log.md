@@ -782,3 +782,17 @@ Dustin, after reviewing stage board A: "Everything in that updated brand guide l
 | D2-320 | The four explorations go on one board, Board 6, with options and a recommendation for each; nothing in the guide changes until Dustin picks | His picks decide what chapters 01, 03, 08 and 11 rewrite |
 | D2-321 | Every option uses approved masters only (wordmark, ampersand B, lockmark, Civic Line drawings); lockup variations arrange masters and redraw no letter | Gate rule 4: identity geometry changes need their own named approval |
 | D2-322 | The color sheets measure every text and mark pair for contrast and say how each lead color could read for party | DR-48 and DR-93: no party may own a brand color, and a sheet must pass before it can be picked |
+
+## Board 6 answers, November 7, 2026
+
+Dustin, replying to Board 6: "Agree with all. please proceed and tell me when to start a new chat and when you do please give me the first prompt to paste into that chat." The studio reads this as every Board 6 recommendation, B6-1 to B6-7; board A's answers are still to come.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-108 | The bill tracker has six plain steps: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor. A step that never happened keeps its number with a slash; a bill that stops ends its line on a square; a signed bill reads as law in words | Dustin, November 7, as recommended (B6-1) |
+| DR-109 | Trackers are numbered steps in lists and on story cards, and the same steps as a vertical timeline on a bill's own page | Dustin, November 7, as recommended (B6-2) |
+| DR-110 | The lockmark keeps four fixed places (masthead, page header, footer, sign-off); every other use of the grid retires (tracker progress, series routes, pillar corners, coded grids, the grid in the kicker). Chapter 08 becomes a short chapter called The lockmark | Dustin, November 7, as recommended (B6-3) |
+| DR-111 | The pillar icons stay Set A, CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, each with its word beside it; the current pillar's word is underlined at every size | Dustin, November 7, as recommended (B6-4) |
+| DR-112 | A kicker keeps its content label and words. A topic icon sits only beside the topic's own word; the pillar icons stay in the pillar row, on section openers and on tiles | Dustin, November 7, as recommended (B6-5) |
+| DR-113 | Stacked lockup S1, "OATH &" over "ACTION", flush left, replaces L2 (named approval of a lockup change under gate rule 4, shown beside L2 at the same cap height on Board 6) | Dustin, November 7, as recommended (B6-6) |
+| DR-114 | Pillar Red stays the lead color. The next reader check adds a question on how readers read it for party | Dustin, November 7, as recommended (B6-7) |
