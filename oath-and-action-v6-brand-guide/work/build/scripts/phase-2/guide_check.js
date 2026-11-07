@@ -32,8 +32,19 @@
 //                      stage with no width and the chart system's own sizes; a stage with data-scale also passes at
 //                      size divided by its scale; check_exempt "scale" skips the stage (D2-254, C-M7)
 //   codes              no decision code (DR-, D1-, D2-, G1-, T-, R9, R13, I6, I8, S5, S9) and none of "Master Brief",
-//                      "Phase", "Gate", "Board 5", "stage board", "the studio", "V5", "V4.2", "Atlas V7" in reader text,
-//                      alt text and accessible names (D2-253)
+//                      "Phase", "Gate" or "gate" in any case, "Board 5" or any "Board N" or "board A", "stage A" to
+//                      "stage C", "stage board", "the studio", "V5", "V4.2", "Atlas V7" in reader text, alt text and
+//                      accessible names (D2-253; the case-free "gate" and the board and stage names from the apply pass)
+// Added in the apply pass (November 7, 2026):
+//   retiredWords       none of "Signal Grid" (D2-326), "Stage n of 9" or "nine stages" (the six-step tracker, DR-108)
+//                      and "condensed width, proposed" (DR-115, D2-328) in reader text, alt text, accessible names or
+//                      the document title, failure plates included
+//   retiredClasses     no element carries a class the makers' grid specimens used for a retired grid job (the coded
+//                      grid, its key and nine-stage sheet, grid states, the composer: DR-110), except inside a labeled
+//                      failure plate, where chapter 08 shows one retired use on purpose
+//   partOrder          every chapter sits under its own part's opener, and that opener links to it (D2-324)
+//   ruleRefs           every rule a citation names ("Rule 05.2", "Rules 05.3 and 05.5", "Rules 08.4 to 08.8") exists
+//                      when its chapter's rules are in the page, so an old chapter 08 number cannot hide (D2-325)
 // A plate whose stage carries data-check-exempt="contrast size red locked" skips that test inside it; every exemption
 // is listed in the results. Writes <page stem>-Guide-Check-Results.json beside the page, and one capture per section at
 // 1440 and 390 px to captures/. Exit code 1 when any check fails.
@@ -56,7 +67,7 @@ const LOCKED = [
   { name: 'reader promise', full: 'We explain how a decision is made and give you a practical way to take part.', frags: ['practical way to take part', 'how a decision is made and give'] },
   { name: 'editorial commitment', full: 'Clarity is our duty. Action is our promise.', frags: ['Clarity is our duty', 'Action is our promise'] },
 ];
-const ALIASES = [['grid', 'signal-grid'], ['topic-icons', 'symbols'], ['data', 'data-visualization'], ['motion', 'motion-and-states'],
+const ALIASES = [['grid', 'lockmark'], ['topic-icons', 'symbols'], ['data', 'data-visualization'], ['motion', 'motion-and-states'],
   ['atlas-system', 'systems-graphics'], ['in-use', 'part-applications']];
 const CLOSERS = ['Specifications', 'Related chapters', 'For builders'];
 // D2-254: fixed artboards up to 600 px take each style's phone floor; from 1,200 px its desktop ceiling.
@@ -72,8 +83,9 @@ const CODE_PATTERNS = [
   ['(?<![Ll]oop )\\b(?:R9|R13|I6|I8|S5|S9)\\b', 'g', 'decision code'],
   ['\\bMaster Brief\\b', 'g', 'internal document'],
   ['\\bPhase\\b', 'g', 'studio word'],
-  ['\\bGate\\b', 'g', 'studio word'],
-  ['\\bBoard 5\\b', 'g', 'studio word'],
+  ['\\bgates?\\b', 'gi', 'studio word'],
+  ['\\b[Bb]oards?[\\s\\u00a0]+(?:\\d+|[A-Z])\\b', 'g', 'studio word'],
+  ['\\b[Ss]tages?[\\s\\u00a0]+[A-C]\\b', 'g', 'studio word'],
   ['\\bstage board\\b', 'gi', 'studio word'],
   ['\\bthe studio\\b', 'gi', 'studio word'],
   ['\\bV5\\b', 'g', 'internal edition name'],
@@ -81,9 +93,21 @@ const CODE_PATTERNS = [
   ['\\bAtlas V7', 'g', 'internal document'],
 ];
 
+// Apply pass (November 7, 2026). Words that left reader pages: [pattern source, flags, what it is].
+const RETIRED_WORDS = [
+  ['\\bSignal[\\s\\u00a0-]*Grid', 'gi', 'the name "Signal Grid" (D2-326: the drawing is the lockmark)'],
+  ['\\bstages?[\\s\\u00a0]+(?:\\d+|one|two|three|four|five|six|seven|eight|nine)[\\s\\u00a0]+of[\\s\\u00a0]+(?:9|nine)\\b', 'gi', 'a nine-stage tracker (DR-108: six steps)'],
+  ['\\b(?:nine|9)[\\s\\u00a0-]+stages?\\b', 'gi', 'a nine-stage tracker (DR-108: six steps)'],
+  ['\\bcondensed[\\s\\u00a0]+width,?[\\s\\u00a0]+proposed\\b', 'gi', 'a condensed width proof (DR-115, D2-328)'],
+];
+// Class names the stage A grid specimens used for jobs DR-110 retires: the coded grid (oai-grid), its key (oai-lg), the
+// nine-stage sheet and glossary (oai-st, oai-gl, oai-gl-d), the grid states (oai-pulse) and the composer (oai-comp,
+// oai-compwrap). Read from stage_a_identity_lib.py and stage_a_identity_s08.py at commit 3130c5b.
+const RETIRED_CLASSES = ['oai-grid', 'oai-lg', 'oai-st', 'oai-gl', 'oai-gl-d', 'oai-pulse', 'oai-comp', 'oai-compwrap'];
+
 // ------------------------------------------------------------------------------------------------ in-page audit
 function audit(page) {
-  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS }) => {
+  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES }) => {
     const parse = (c) => { const m = c && c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(',').map(parseFloat); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
     const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
     const lum = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
@@ -255,6 +279,73 @@ function audit(page) {
     document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v) scan(v, where(el), a); } });
     out.codes = { hits: hits.slice(0, 40), count: hits.length, where: [...new Set(hits.map((h) => h.where))] };
 
+    // ---------------- apply pass: retired words, retired grid classes, parts, cross-references
+    {
+      const res = RETIRED_WORDS.map(([src, flags, kind]) => [new RegExp(src, flags), kind]);
+      const rh = [];
+      const rscan = (txt, w, how) => {
+        for (const [re, kind] of res) { re.lastIndex = 0; let m; while ((m = re.exec(txt))) rh.push({ found: m[0], kind, how, where: w, text: norm(txt.slice(Math.max(0, m.index - 30), m.index + m[0].length + 30)) }); }
+      };
+      const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) { const p = n.parentElement; if (!p || p.closest('script,style')) continue; rscan(n.textContent, where(p), 'text'); }
+      rscan(document.title, 'document title', 'title');
+      document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v) rscan(v, where(el), a); } });
+      out.retiredWords = { hits: rh.slice(0, 40), count: rh.length, where: [...new Set(rh.map((h) => h.where))] };
+
+      const rc = { hits: [], exempt: [] };
+      document.querySelectorAll(RETIRED_CLASSES.map((c) => '.' + c).join(',')).forEach((el) => {
+        const cls = RETIRED_CLASSES.filter((c) => el.classList.contains(c));
+        const item = { classes: cls, element: el.tagName.toLowerCase(), where: where(el) };
+        if (el.closest('.plate--failure')) rc.exempt.push(item); else rc.hits.push(item);
+      });
+      out.retiredClasses = { hits: rc.hits.slice(0, 30), count: rc.hits.length, where: [...new Set(rc.hits.map((h) => h.where))], exemptInFailurePlates: [...new Set(rc.exempt.map((h) => h.where))] };
+
+      const po = [];
+      let opener = null;
+      document.querySelectorAll('main > section').forEach((sec) => {
+        if (sec.matches('section.part')) { opener = sec; return; }
+        if (!sec.matches('section.chapter')) return;
+        const part = sec.getAttribute('data-part'), num = sec.getAttribute('data-chapter');
+        if (!opener || opener.getAttribute('data-part') !== part) po.push({ chapter: num, part, under: opener ? opener.getAttribute('data-part') : null, problem: 'sits under another part\'s opener' });
+        else if (!opener.querySelector(`.part-list a[href="#${sec.id}"]`)) po.push({ chapter: num, part, problem: 'its part opener does not link to it' });
+      });
+      out.partOrder = po;
+
+      // rules held, by chapter, where a chapter's rules are in the page (a placeholder holds none and is skipped)
+      const held = new Map();
+      document.querySelectorAll('section.chapter[data-chapter]').forEach((sec) => {
+        const ids = [...sec.querySelectorAll('.rule[id^="rule-"]')].map((r) => r.id);
+        if (ids.length) held.set(sec.getAttribute('data-chapter'), new Set(ids));
+      });
+      const XREF = /\bRules?(?:\s|\u00a0)+\d{2}\.\d{1,2}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,2}\b)*/g;
+      const refs = []; const seen = new Set();
+      const cite = (txt, w, how) => {
+        XREF.lastIndex = 0; let m;
+        while ((m = XREF.exec(txt))) {
+          const toks = [...m[0].matchAll(/(\d{2})\.(\d{1,2})|\b(to|through)\b/g)];
+          let prev = null, rng = false; const got = [];
+          for (const t of toks) {
+            if (t[3]) { rng = true; continue; }
+            const cur = [t[1], parseInt(t[2], 10)];
+            if (rng && prev && prev[0] === cur[0] && cur[1] > prev[1]) for (let k = prev[1] + 1; k < cur[1]; k++) got.push([cur[0], k]);
+            got.push(cur); prev = cur; rng = false;
+          }
+          for (const [ch, k] of got) {
+            if (!held.has(ch) || held.get(ch).has(`rule-${ch}-${k}`)) continue;
+            const key = `${ch}.${k}|${w}`; if (seen.has(key)) continue; seen.add(key);
+            refs.push({ rule: `${ch}.${k}`, how, where: w, text: norm(m[0]) });
+          }
+        }
+      };
+      document.querySelectorAll('p, li, dd, dt, td, th, figcaption, caption, h2, h3, label, legend, blockquote, span').forEach((el) => {
+        if (el.closest('script,style')) return;
+        const t = norm(el.textContent); if (t.includes('Rule')) cite(t, where(el), 'text');
+      });
+      document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v && v.includes('Rule')) cite(norm(v), where(el), a); } });
+      out.ruleRefs = refs.slice(0, 30);
+      out.ruleRefCount = refs.length;
+    }
+
     // ---------------- text size and contrast
     const svgUnder = (el) => {
       if (!(el instanceof SVGElement)) return null;
@@ -372,7 +463,7 @@ function audit(page) {
     out.height = document.documentElement.scrollHeight;
     out.fonts = [...new Set([...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '')))];
     return out;
-  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS });
+  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES });
 }
 
 function failuresFrom(a, width) {
@@ -399,6 +490,10 @@ function failuresFrom(a, width) {
   if (sp.landmarks.length) add('specimenLandmarks', `${sp.landmarks.length} landmark or article element(s) inside stages, in ${[...new Set(sp.landmarks.map((x) => x.specimen))].join(', ')}; first: ${JSON.stringify(sp.landmarks[0])}`);
   if (a.names.count) add('nameEntities', `${a.names.count} accessible name(s) or text(s) holding an entity, first: ${JSON.stringify(a.names.entities[0])}`);
   if (a.typeScale.off.length) add('typeScale', `${a.typeScale.off.length} specimen(s) with type off the D2-254 sizes: ${a.typeScale.off.map((x) => `${x.specimen} (${x.sizes.join(', ')} px)`).join('; ')}`);
+  if (a.retiredWords.count) add('retiredWords', `${a.retiredWords.count} retired word(s) in reader text or names, in ${a.retiredWords.where.slice(0, 25).join(', ')}${a.retiredWords.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.retiredWords.hits[0])}`);
+  if (a.retiredClasses.count) add('retiredClasses', `${a.retiredClasses.count} element(s) with a retired grid class outside a failure plate, in ${a.retiredClasses.where.slice(0, 25).join(', ')}; first: ${JSON.stringify(a.retiredClasses.hits[0])}`);
+  if (a.partOrder.length) add('partOrder', `${a.partOrder.length} chapter(s) out of their part, first: ${JSON.stringify(a.partOrder[0])}`);
+  if (a.ruleRefCount) add('ruleRefs', `${a.ruleRefCount} citation(s) of a rule the page does not hold, first: ${JSON.stringify(a.ruleRefs[0])}`);
   if (a.codes.count) add('codes', `${a.codes.count} decision code(s) or studio word(s) in reader text, in ${a.codes.where.slice(0, 25).join(', ')}${a.codes.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.codes.hits[0])}`);
   if (a.text.under13.length) add('under13', `${a.text.under13.length} text item(s) under 13 px, first: ${JSON.stringify(a.text.under13[0])}`);
   if (a.text.lowContrast.length) add('contrast', `${a.text.lowContrast.length} text item(s) under contrast, first: ${JSON.stringify(a.text.lowContrast[0])}`);
@@ -511,7 +606,7 @@ const PLANTS = [
   { key: 'duplicateIds', fault: 'two elements with one id', js: () => { const p = document.createElement('p'); p.id = 'contents'; p.textContent = 'Duplicate'; document.querySelector('.chapter .ch-head').append(p); } },
   { key: 'brokenLinks', fault: 'a same-page link to no id', js: () => { const a = document.createElement('a'); a.href = '#nowhere'; a.textContent = 'Nowhere'; document.querySelector('.rule .why').append(a); } },
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
-  { key: 'aliases', fault: 'the #grid alias removed from 08 The Signal Grid', js: () => { document.getElementById('grid').remove(); } },
+  { key: 'aliases', fault: 'the #grid alias removed from 08 The lockmark', js: () => { document.getElementById('grid').remove(); } },
   { key: 'specimenAlt', fault: 'a specimen stage with no alt', js: () => { document.querySelector('[data-specimen][role="img"]').removeAttribute('aria-label'); } },
   { key: 'imgAlt', fault: 'an <img> with no alt', js: () => { const i = document.createElement('img'); i.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACw='; i.width = 20; i.height = 20; document.querySelector('.rule .why').append(i); } },
   { key: 'svgNames', fault: 'an inline SVG neither named nor hidden', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<svg width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="currentColor"/></svg>'); } },
@@ -534,6 +629,23 @@ const PLANTS = [
   { key: 'codes', fault: 'a decision code and "Gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Approved at Gate 1 (DR-55).'); } },
   { key: 'codes', fault: 'a decision code in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card at true size, as decided in D2-30.'); } },
   { key: 'codes', fault: '"the studio" in a caption', js: () => { document.querySelector('.plate-cap').append(' The studio drew it.'); } },
+  // apply pass, November 7, 2026
+  { key: 'codes', fault: 'a lowercase "gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Shown to the editor at the next gate.'); } },
+  { key: 'codes', fault: '"Board 6" in a caption', js: () => { document.querySelector('.plate-cap').append(' As drawn on Board 6.'); } },
+  { key: 'codes', fault: '"stage B" in a chapter intro', js: () => { document.querySelector('.chapter .ch-head .instr').append(' Status marks arrive in stage B.'); } },
+  { key: 'retiredWords', fault: '"Signal Grid" in rule text', js: () => { document.querySelector('.rule-text').append(' The Signal Grid codes the tracker.'); } },
+  { key: 'retiredWords', fault: '"Signal Grid" in a specimen alt', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card with a 24 px Signal Grid in its kicker, at true size.'); } },
+  { key: 'retiredWords', fault: '"Stage 4 of 9" in a caption', js: () => { document.querySelector('.plate-cap').append(' Stage 4 of 9: Out of committee.'); } },
+  { key: 'retiredWords', fault: '"nine stages" in a failure plate', js: () => { document.querySelector('.plate--failure .plate-cap').append(' A tracker reads its nine stages left to right.'); } },
+  { key: 'retiredWords', fault: '"Condensed width, proposed" as a proof label', js: () => { document.querySelector('.plate-label').append(' Condensed width, proposed'); } },
+  { key: 'retiredClasses', fault: 'a coded grid (class oai-grid) in a correct plate', js: () => { document.querySelector('.plate--correct [data-specimen]').insertAdjacentHTML('beforeend', '<svg class="oai-svg oai-grid" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>'); } },
+  { key: 'retiredClasses', fault: 'the composer (class oai-comp) after a rule', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="oai-comp"><span>Composer</span></div>'); } },
+  { key: 'retiredClasses', fault: 'a coded grid inside a labeled failure plate (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.plate--failure [data-specimen]').insertAdjacentHTML('beforeend', '<svg class="oai-svg oai-grid" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>'); } },
+  { key: 'partOrder', fault: 'a chapter that names another part than its opener', js: () => { document.querySelector('section.chapter').setAttribute('data-part', 'symbols'); } },
+  { key: 'partOrder', fault: 'a part opener that does not link to its chapter', js: () => { document.querySelector('section.part .part-list a').remove(); } },
+  { key: 'ruleRefs', fault: 'a citation of Rule 01.9, which chapter 01 does not hold', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>See Rule 01.9 for the sizes.</p>'); } },
+  { key: 'ruleRefs', fault: 'a range, "Rules 01.1 to 01.4", past chapter 01\'s last rule', js: () => { document.querySelector('.plate-cap').append(' Rules 01.1 to 01.4 set the frame.'); } },
+  { key: 'ruleRefs', fault: 'a citation in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card drawn as Rule 01.7 sets it, at true size.'); } },
 ];
 
 async function selfTest() {
@@ -550,16 +662,21 @@ async function selfTest() {
     const r = await checkPage(browser, page, [1440], { mutate: p.js, skipAxe: true, skipFocus: true });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
-    result.plants.push({ test: p.key, fault: p.fault, caught: caught.length > 0, message: caught[0] ? caught[0].msg : null, alsoFlagged: [...new Set(others)] });
+    // a plant with expect: false proves an allowance: the test must stay quiet
+    const expect = p.expect !== false;
+    result.plants.push({ test: p.key, fault: p.fault, expect: expect ? 'caught' : 'not flagged', caught: caught.length > 0, ok: (caught.length > 0) === expect,
+      message: caught[0] ? caught[0].msg : null, alsoFlagged: [...new Set(others)] });
   }
   await browser.close();
-  result.pass = result.clean.pass && result.plants.every((p) => p.caught);
+  result.pass = result.clean.pass && result.plants.every((p) => p.ok);
   const outPath = path.join(ROOT, 'work/boards/phase-2/stage-a/20261106_Guide-Check-Plant-Results.json');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, JSON.stringify(result, null, 1));
-  console.log(`${result.pass ? 'PASS' : 'FAIL'} self-test: clean demo ${result.clean.pass ? 'passes' : 'FAILS'}; ${result.plants.filter((p) => p.caught).length} of ${result.plants.length} planted faults caught`);
+  const faults = result.plants.filter((p) => p.expect === 'caught'), allow = result.plants.filter((p) => p.expect !== 'caught');
+  console.log(`${result.pass ? 'PASS' : 'FAIL'} self-test: clean demo ${result.clean.pass ? 'passes' : 'FAILS'}; ${faults.filter((p) => p.ok).length} of ${faults.length} planted faults caught`
+    + (allow.length ? `; ${allow.filter((p) => p.ok).length} of ${allow.length} allowed cases left alone` : ''));
   if (!result.clean.pass) result.clean.failures.forEach((f) => console.log('  clean: ' + f));
-  for (const p of result.plants) console.log(`  ${p.caught ? 'caught' : 'MISSED'}  ${p.test.padEnd(17)} ${p.fault}${p.alsoFlagged.length ? '  (also: ' + p.alsoFlagged.join(', ') + ')' : ''}`);
+  for (const p of result.plants) console.log(`  ${p.ok ? (p.expect === 'caught' ? 'caught' : 'quiet ') : (p.expect === 'caught' ? 'MISSED' : 'FLAGGED')}  ${p.test.padEnd(17)} ${p.fault}${p.alsoFlagged.length ? '  (also: ' + p.alsoFlagged.join(', ') + ')' : ''}`);
   console.log('  results: ' + path.relative(ROOT, outPath));
   fs.rmSync(outDir, { recursive: true, force: true });
   process.exit(result.pass ? 0 : 1);

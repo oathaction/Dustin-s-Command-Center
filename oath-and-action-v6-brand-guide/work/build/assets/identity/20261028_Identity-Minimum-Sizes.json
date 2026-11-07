@@ -6,21 +6,40 @@
    "v5": "120 px wide (13.4 px tall, cap 12.4 px)",
    "screen": "16 px tall: 16 px master from 16 to 19 px tall (152 px wide; condensed 120 px), 24 px master from 20 to 39 px, display master from 40 px",
    "print": "1.20 in wide (condensed 0.95 in)",
-   "below": "Use L8; below 48 px wide, the ampersand's 16 px master"
+   "below": "Use L8; below 48 px wide, the ampersand's 16 px master",
+   "condensed": "kept for the record, not in use (D2-328)"
   },
   {
    "lockup": "L2 stacked",
    "v5": "72 px wide (cap 11.5 px)",
    "screen": "90 px wide (condensed 72 px), capitals 14 px",
    "print": "0.80 in wide (condensed 0.65 in)",
-   "below": "Use L8"
+   "below": "Use L8",
+   "status": "retired",
+   "replaced_by": "S1 stacked",
+   "status_note": "Kept for the record. S1 replaced L2 on November 7, 2026 (DR-113); its files stay in lockups/ and prussian/.",
+   "condensed": "kept for the record, not in use (D2-328)"
+  },
+  {
+   "lockup": "S1 stacked",
+   "v5": "None. New in Edition 06; replaced L2 on November 7, 2026 (DR-113)",
+   "screen": "79 px wide, capitals 14 px: 16 px master for capitals 14 to 17 px (79 by 33 px), 24 px master for capitals 18 to 36 px (115 by 50 px), display master from 37 px",
+   "print": "0.65 in wide",
+   "below": "Use L8",
+   "files": [
+    "lockups/20261107_S1-Stacked-Master.svg",
+    "lockups/20261107_S1-Stacked-Master-24px.svg",
+    "lockups/20261107_S1-Stacked-Master-16px.svg"
+   ],
+   "source": "work/boards/phase-2/board-6/stacked/20261107_Board-6-Stacked-Measurements.json, variant S1"
   },
   {
    "lockup": "L3 horizontal with lockmark",
    "v5": "192 px wide",
    "screen": "196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master",
    "print": "1.55 in wide (condensed 1.30 in)",
-   "below": "Use L1"
+   "below": "Use L1",
+   "condensed": "kept for the record, not in use (D2-328)"
   },
   {
    "lockup": "L4 monogram and tagline",
@@ -55,7 +74,9 @@
    "v5": "48 px wide, also listed for favicons",
    "screen": "48 px wide (capitals 16.0 px; condensed 19.5 px). Never a favicon",
    "print": "0.50 in wide",
-   "below": "Use the ampersand's 16 px master"
+   "below": "Use the ampersand's 16 px master",
+   "condensed": "kept for the record, not in use (D2-328)",
+   "status_note": "For squares where the name must show, such as a tile in a partner's directory. Social avatars and the app icon show ampersand B alone on the Charcoal tile (DR-116)"
   },
   {
    "lockup": "Ampersand B, freestanding",
@@ -76,14 +97,18 @@
    "v5": "None set",
    "screen": "Display master from 533 px wide (labels at 13 px; condensed 463 px); compact master from 245 px (lines 1 px; condensed 213 px)",
    "print": "4.00 in wide (labels at 7 pt)",
-   "below": "Use a hinge headline"
+   "below": "Use a hinge headline",
+   "condensed": "kept for the record, not in use (D2-328)"
   },
   {
    "lockup": "Hinge-circle badge",
    "v5": "New mark (S9)",
-   "screen": "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; display master from 48 px",
-   "print": "0.25 in",
-   "below": "Nothing smaller. Never an avatar or favicon"
+   "screen": "48 px, display master; the 16 px and 24 px masters are kept for the record",
+   "print": "0.50 in",
+   "below": "End an article with ampersand B alone (Rule 04.6). Never an avatar or favicon",
+   "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)"
   }
- ]
+ ],
+ "condensed": "Figures marked condensed belong to the condensed wordmark, kept in the files for the record and not in use: Edition 06 keeps today's width (DR-115, D2-328).",
+ "updated": "November 7, 2026, apply pass: S1 added, L2 retired, the badge from 48 px, condensed figures kept for the record"
 }

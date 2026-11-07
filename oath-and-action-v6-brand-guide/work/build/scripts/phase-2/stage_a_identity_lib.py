@@ -254,6 +254,10 @@ L2 = {"today": "lockups/20261028_L2-Stacked-Master.svg", "condensed": "lockups/2
 L3 = {"today": "lockups/20261028_L3-Horizontal-Master.svg", "condensed": "lockups/20261028_L3-Horizontal-Condensed-Master.svg"}
 L8 = {"today": "lockups/20261028_L8-Monogram-Master.svg", "condensed": "lockups/20261028_L8-Monogram-Condensed-Master.svg"}
 HINGE = {"display": "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", "compact": "hinge/20261028_Hinge-Diagram-V2-Compact-Master.svg"}
+# S1, the stacked lockup that replaced L2 (DR-113), written by stage_a_identity_s1.py from Board 6's files.
+S1 = {"display": "lockups/20261107_S1-Stacked-Master.svg", 24: "lockups/20261107_S1-Stacked-Master-24px.svg",
+      16: "lockups/20261107_S1-Stacked-Master-16px.svg"}
+S1_BOX = {"display": (508.63, 218.81, 100.0), 24: (115.0, 50.0, 22.0), 16: (79.0, 33.0, 14.0)}   # width, height, capitals
 TL1 = "reexport/20261028_Tagline-1-Line-Reexported.svg"
 TL2A = "reexport/20261028_Tagline-2-Line-A-Reexported.svg"
 TL2B = "reexport/20261028_Tagline-2-Line-B-Reexported.svg"
@@ -286,8 +290,26 @@ def lockmark(size, *, surface="newsprint", mode="color", label="Lockmark", decor
     return mark(LOCK[key], h=size, surface=surface, mode=mode, label=label, decorative=decorative)
 
 
-# --------------------------------------------------------------------------------------------- Signal Grid (coded)
-# Lattices on whole pixels. 24 px follows the 24 px lockmark master (centers 3.5, 11.5, 19.5). 40 px keeps the same
+def s1_key(caps):
+    """S1's master for a cap height: the 16 px master for capitals 14 to 17 px, the 24 px master for 18 to 36 px, the
+    display master from 37 px (Board 6's ranges, which follow the wordmark's by height)."""
+    return 16 if caps < 18 else (24 if caps < 37 else "display")
+
+
+def s1(caps, *, surface="newsprint", mode="color", label="Oath & Action, S1 stacked lockup", decorative=False):
+    """S1 at a cap height in px, from the master whose range holds it."""
+    key = s1_key(caps)
+    w, h, c = S1_BOX[key]
+    return mark(S1[key], h=h * caps / c, surface=surface, mode=mode, label=label, decorative=decorative)
+
+
+def s1_width(caps):
+    w, h, c = S1_BOX[s1_key(caps)]
+    return w * caps / c
+
+
+# ------------------------------------------------------------------- the grid as a code (retired, DR-110)
+# Kept only to draw chapter 08's failure case, a tracker on the lockmark's grid. Lattices on whole pixels. 24 px follows the 24 px lockmark master (centers 3.5, 11.5, 19.5). 40 px keeps the same
 # margins with a 16 px pitch (3.5, 19.5, 35.5). 80 px is the 40 px drawing at twice size.
 LATTICE = {24: (24, (3.5, 11.5, 19.5)), 40: (40, (3.5, 19.5, 35.5))}
 POS = {"TL": (0, 0), "TM": (1, 0), "TR": (2, 0), "ML": (0, 1), "C": (1, 1), "MR": (2, 1), "BL": (0, 2), "BM": (1, 2), "BR": (2, 2)}
@@ -318,7 +340,7 @@ NAMES = {"TL": "top left", "TM": "top middle", "TR": "top right", "ML": "middle 
 
 def sgrid(size, *, nodes=None, route=None, surface="newsprint", label=None, decorative=False, cls="", links=True,
           step_job="the step a reader can take now"):
-    """Draw a coded Signal Grid.
+    """Draw the grid as a code, for a failure case only (DR-110 retires every coded grid).
 
     nodes: nine states in reading order (left to right, top to bottom): 'off' small subtle node, 'done' filled disc,
     'now' ring (7 px outside, 1 px line, so its 5 px hole reads at 40 px), 'gap' no node and its links cut, 'step' working-red disc with a keyline, 'lit' corner disc,
@@ -357,7 +379,7 @@ def sgrid(size, *, nodes=None, route=None, surface="newsprint", label=None, deco
             kl = f' stroke="{strong(surface)}" stroke-width="1"' if surface in ("newsprint", "white") else ""
             rr = "3" if kl else "3.5"
             parts.append(f'<circle cx="{x}" cy="{y}" r="{rr}" fill="{RED}"{kl} data-red="working" data-red-job="{E(step_job)}"/>')
-    a11y = 'aria-hidden="true"' if decorative else f'role="img" aria-label="{E(label or "Signal Grid")}"'
+    a11y = 'aria-hidden="true"' if decorative else f'role="img" aria-label="{E(label or "The lockmark grid")}"'
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {field} {field}" width="{size}" height="{size}" '
            f'class="oai-svg oai-grid {cls}" shape-rendering="geometricPrecision" {a11y} focusable="false">{"".join(parts)}</svg>')
     if "step" in nodes:
@@ -420,6 +442,57 @@ def head_label(scope=""):
     return f'<p class="oai-head">{illus()}{tail}</p>'
 
 
+def dnp():
+    """The Charcoal band inside a failure stage that could pass for our work, so a cropped capture still says what it
+    is. Same form as the editor's and the systems designer's bands (D2-282, D2-308)."""
+    return '<p class="oai-dnp"><span aria-hidden="true">×</span>Failure case: do not publish</p>'
+
+
+# ------------------------------------------------------------------------- numbered steps, as chapter 11 draws them
+# Board 6's Option B, which Dustin chose for lists and story cards (DR-108, DR-109, DR-128), drawn with the same
+# geometry as work/build/scripts/phase-2/board6_tracker_build.py (b_node, mk_steps, line_segments) and colored with
+# tokens. Chapter 11 owns these marks; chapter 08 shows them once, beside the failure they replace.
+STEP_NAMES_STATE = ["Filed", "Hearing", "Committee vote", "First chamber", "Second chamber", "Governor"]
+
+
+def _step_node(cx, cy, d, st, num, surface):
+    ink_, sub, bg, t2 = g_ess(surface), g_sub(surface), ground(surface), ink2(surface)
+    R = d / 2
+    fs = 14 if d >= 28 else 13
+    ty_ = cy + 0.36 * fs
+    txt = (f'font-family="Inter, Arial, sans-serif" font-size="{fs}" text-anchor="middle" '
+           f'style="font-family:var(--oa-font-family-reading);font-variant-numeric:tabular-nums"')
+    if st == "done":
+        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R:g}" fill="{ink_}"/>'
+                f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="700" fill="{bg}" {txt}>{num}</text>')
+    if st == "now":
+        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 1.5:g}" fill="{bg}" stroke="{ink_}" stroke-width="3"/>'
+                f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="800" fill="{ink_}" {txt}>{num}</text>')
+    if st == "notyet":
+        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" fill="{bg}" stroke="{sub}" stroke-width="1.5"/>'
+                f'<text x="{cx:g}" y="{ty_:.2f}" font-weight="600" fill="{t2}" {txt}>{num}</text>')
+    raise ValueError(st)
+
+
+def steps(states, W=324, d=26, surface="newsprint"):
+    """Six numbered steps on a line: solid 2 px where the bill has come, a fine line ahead. Hidden from assistive
+    technology; the words beside it carry the step."""
+    c = W // 6
+    xs = [c * i + c // 2 for i in range(6)]
+    R = d / 2
+    cy = 6 + R
+    H = int(cy + R + 2)
+    body = []
+    for i in range(5):
+        if states[i + 1] != "notyet":
+            body.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="2" fill="{g_ess(surface)}"/>')
+        else:
+            body.append(f'<rect x="{xs[i]:g}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]:g}" height="1" fill="{g_sub(surface)}"/>')
+    body += [_step_node(x, cy, d, s, i + 1, surface) for i, (x, s) in enumerate(zip(xs, states))]
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" class="oai-svg" '
+            f'aria-hidden="true" focusable="false">{"".join(body)}</svg>')
+
+
 # ------------------------------------------------------------------------------- type on fixed artboards (D2-254)
 # Up to 600 px wide: each style's phone floor. 1,200 px and wider: its desktop ceiling. Print: points (D2-205).
 FLOOR = {"title": 56, "section": 44, "figure": 48, "h3": 26, "h4": 20, "quote": 24, "intro": 19, "ask": 19, "body": 17,
@@ -474,6 +547,7 @@ CSS = """
 @media (max-width:35.49em){.oai table.stack,.oai table.stack tbody,.oai table.stack tr,.oai table.stack th,.oai table.stack td{display:block;width:100%}.oai table.stack thead,.oai table.stack caption+thead{display:none}.oai table.stack tr{border-bottom:1px solid var(--oa-color-border-strong-on-newsprint);padding:10px 0}.oai table.stack caption{display:block;width:100%}.oai table.stack th,.oai table.stack td{border:0;padding:2px 0}.oai table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
 .oai th{font-weight:700}
 .oai-fail-x{display:none}
+.oai .oai-dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
 """
 
 

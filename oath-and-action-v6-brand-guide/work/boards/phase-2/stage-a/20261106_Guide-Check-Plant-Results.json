@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-06T23:33:55.639Z",
+ "checked": "2026-11-07T06:21:31.011Z",
  "page": "demo build (guide_build.py --demo), in a temporary folder",
  "axe": "found",
  "clean": {
@@ -21,7 +21,9 @@
   {
    "test": "h1",
    "fault": "a second h1",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 2 h1 headings (\"Oath & Action Brand Guide, Edition 06\", \"A second title\"); the page has exactly one",
    "alsoFlagged": [
     "headingOrder"
@@ -30,21 +32,27 @@
   {
    "test": "headingOrder",
    "fault": "an h4 straight after a chapter h2",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 skipped heading level(s), first: {\"text\":\"Skipped level\",\"from\":2,\"to\":4}",
    "alsoFlagged": []
   },
   {
    "test": "specimenHeadings",
    "fault": "an h3 inside a specimen",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 heading(s) inside specimens, first: {\"specimen\":\"s-demo-1-correct\",\"text\":\"Mockup headline\"}",
    "alsoFlagged": []
   },
   {
    "test": "ruleIds",
    "fault": "a rule h3 without its Rule ID",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 rule block(s) without a Rule NN.n h3: rule-01-1",
    "alsoFlagged": [
     "chapterH3"
@@ -53,7 +61,9 @@
   {
    "test": "ruleIds",
    "fault": "a rule h3 whose ID names another chapter",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 rule h3(s) with a bad Rule ID, first: {\"chapter\":\"01\",\"text\":\"Rule 09.1 A rule is one plain sentence.\",\"problem\":\"Rule 09.1 sits in chapter 01\"}",
    "alsoFlagged": [
     "ruleAnchors"
@@ -62,199 +72,400 @@
   {
    "test": "ruleAnchors",
    "fault": "a rule block whose id does not match its Rule ID",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 rule h3(s) without their #rule-NN-n anchor, first: {\"text\":\"Rule 01.1 A rule is one plain sentence.\",\"want\":\"rule-01-1\",\"got\":\"rule-xx\"}",
    "alsoFlagged": [
-    "brokenLinks"
+    "brokenLinks",
+    "ruleRefs"
    ]
   },
   {
    "test": "chapterH3",
    "fault": "a stray h3 in a chapter",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 chapter h3(s) that are neither rules nor closers, first: {\"chapter\":\"01\",\"text\":\"Why it works\",\"problem\":\"an h3 that is neither a rule (Rule NN.n) nor a closer\"}",
    "alsoFlagged": []
   },
   {
    "test": "duplicateIds",
    "fault": "two elements with one id",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 duplicate id(s), first: {\"id\":\"contents\",\"n\":2}",
    "alsoFlagged": []
   },
   {
    "test": "brokenLinks",
    "fault": "a same-page link to no id",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 same-page link(s) to no id, first: {\"href\":\"#nowhere\",\"text\":\"Nowhere\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "relatedLinks",
    "fault": "a Related chapters link that lands on the contents",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 Related chapters link(s) that do not land on a chapter, first: {\"href\":\"#contents\",\"text\":\"05 Color\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "aliases",
-   "fault": "the #grid alias removed from 08 The Signal Grid",
+   "fault": "the #grid alias removed from 08 The lockmark",
+   "expect": "caught",
    "caught": true,
-   "message": "1440: V5 alias problem(s): [{\"alias\":\"grid\",\"target\":\"signal-grid\",\"problem\":\"missing\"}]",
+   "ok": true,
+   "message": "1440: V5 alias problem(s): [{\"alias\":\"grid\",\"target\":\"lockmark\",\"problem\":\"missing\"}]",
    "alsoFlagged": []
   },
   {
    "test": "specimenAlt",
    "fault": "a specimen stage with no alt",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 specimen(s) without alt text, first: {\"specimen\":\"s-demo-1-correct\",\"label\":\"\"}",
    "alsoFlagged": []
   },
   {
    "test": "imgAlt",
    "fault": "an <img> with no alt",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 <img> without alt, first: {\"src\":\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "svgNames",
    "fault": "an inline SVG neither named nor hidden",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 inline SVG(s) neither named nor hidden, first: {\"where\":\"#rule-01-1\",\"cls\":\"\"}",
    "alsoFlagged": []
   },
   {
    "test": "pendingSpecimens",
    "fault": "a specimen file missing",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 specimen file(s) missing: s-demo-1-correct",
    "alsoFlagged": []
   },
   {
    "test": "under13",
    "fault": "12 px text outside an exempt plate",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 text item(s) under 13 px, first: {\"text\":\"State the rule in one to three sentences\",\"size\":12,\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "contrast",
    "fault": "Stone text tint on Newsprint",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 text item(s) under contrast, first: {\"text\":\"State the rule in one to three sentences. The shel\",\"size\":22,\"ratio\":1.81,\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "redUnmarked",
    "fault": "a Pillar Red rule with no data-red",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 Pillar Red mark(s) without data-red, first: {\"tag\":\"P\",\"cls\":\"\",\"text\":\"Red bar\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "redJobs",
    "fault": "two working-red jobs in the page",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 2 working-red jobs outside specimens (ask, error)",
    "alsoFlagged": []
   },
   {
    "test": "redJobsSpecimen",
    "fault": "two working-red jobs inside one specimen",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: specimen(s) with more than one working-red job: [{\"specimen\":\"s-demo-1-correct\",\"jobs\":[\"ask\",\"point\"]}]",
    "alsoFlagged": []
   },
   {
    "test": "redOnPrussian",
    "fault": "red on a Prussian ground",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 red mark(s) on Prussian, first: {\"tag\":\"SPAN\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "emDash",
    "fault": "an em dash in prose",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 em dash(es) outside data-allow-emdash, first: {\"text\":\"One clause — then another.\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "lockedLines",
    "fault": "a near miss of the tagline",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 near miss(es) of a locked line, first: {\"line\":\"tagline\",\"found\":\"s Rule ID. A nation that answers to its people.Tokens--oa\"}",
    "alsoFlagged": []
   },
   {
    "test": "pillarOrder",
    "fault": "the pillars out of order",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: pillars out of order: [\"Explain → Connect → Track → Act\"]",
    "alsoFlagged": []
   },
   {
    "test": "overflow",
    "fault": "a wide element outside a scrolling frame",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: sideways scroll (3398 > 1440), first: {\"tag\":\"DIV\",\"cls\":\"\",\"right\":3398,\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "specimenLandmarks",
    "fault": "a <nav> inside a specimen",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 landmark or article element(s) inside stages, in s-demo-1-correct; first: {\"specimen\":\"s-demo-1-correct\",\"element\":\"nav\"}",
    "alsoFlagged": []
   },
   {
    "test": "specimenLandmarks",
    "fault": "an <article> inside a specimen",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 landmark or article element(s) inside stages, in s-demo-1-correct; first: {\"specimen\":\"s-demo-1-correct\",\"element\":\"article\"}",
    "alsoFlagged": []
   },
   {
    "test": "nameEntities",
    "fault": "an alt that reads \"Oath &amp; Action\" (escaped twice)",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 accessible name(s) or text(s) holding an entity, first: {\"attribute\":\"aria-label\",\"value\":\"Oath &amp; Action, the wordmark at 24 px on Newsprint\",\"where\":\"specimen s-demo-1-correct\"}",
    "alsoFlagged": []
   },
   {
    "test": "nameEntities",
    "fault": "visible text that shows \"&amp;\"",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 accessible name(s) or text(s) holding an entity, first: {\"attribute\":\"text\",\"value\":\"Load Inter &amp;family=Lora.\",\"where\":\"#rule-01-1\"}",
    "alsoFlagged": []
   },
   {
    "test": "typeScale",
    "fault": "21 px text in a specimen, off the scale",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 specimen(s) with type off the D2-254 sizes: s-demo-1-correct (21 px)",
    "alsoFlagged": []
   },
   {
    "test": "codes",
    "fault": "a decision code and \"Gate\" in rule text",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 2 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"DR-55\",\"kind\":\"decision code\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Approved at Gate 1 (DR-55).\"}",
    "alsoFlagged": []
   },
   {
    "test": "codes",
    "fault": "a decision code in an alt text",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 decision code(s) or studio word(s) in reader text, in specimen s-demo-1-correct; first: {\"found\":\"D2-30\",\"kind\":\"decision code\",\"how\":\"aria-label\",\"where\":\"specimen s-demo-1-correct\",\"text\":\"d at true size, as decided in D2-30.\"}",
    "alsoFlagged": []
   },
   {
    "test": "codes",
    "fault": "\"the studio\" in a caption",
+   "expect": "caught",
    "caught": true,
+   "ok": true,
    "message": "1440: 1 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"The studio\",\"kind\":\"studio word\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"The studio drew it.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "a lowercase \"gate\" in rule text",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"gate\",\"kind\":\"studio word\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"own to the editor at the next gate.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "\"Board 6\" in a caption",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 decision code(s) or studio word(s) in reader text, in #rule-01-1; first: {\"found\":\"Board 6\",\"kind\":\"studio word\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"As drawn on Board 6.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "codes",
+   "fault": "\"stage B\" in a chapter intro",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 decision code(s) or studio word(s) in reader text, in #purpose; first: {\"found\":\"stage B\",\"kind\":\"studio word\",\"how\":\"text\",\"where\":\"#purpose\",\"text\":\"Status marks arrive in stage B.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredWords",
+   "fault": "\"Signal Grid\" in rule text",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 retired word(s) in reader text or names, in #rule-01-1; first: {\"found\":\"Signal Grid\",\"kind\":\"the name \\\"Signal Grid\\\" (D2-326: the drawing is the lockmark)\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"The Signal Grid codes the tracker.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredWords",
+   "fault": "\"Signal Grid\" in a specimen alt",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 retired word(s) in reader text or names, in specimen s-demo-1-correct; first: {\"found\":\"Signal Grid\",\"kind\":\"the name \\\"Signal Grid\\\" (D2-326: the drawing is the lockmark)\",\"how\":\"aria-label\",\"where\":\"specimen s-demo-1-correct\",\"text\":\"A notice card with a 24 px Signal Grid in its kicker, at true size.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredWords",
+   "fault": "\"Stage 4 of 9\" in a caption",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 retired word(s) in reader text or names, in #rule-01-1; first: {\"found\":\"Stage 4 of 9\",\"kind\":\"a nine-stage tracker (DR-108: six steps)\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Stage 4 of 9: Out of committee.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredWords",
+   "fault": "\"nine stages\" in a failure plate",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 retired word(s) in reader text or names, in #rule-01-1; first: {\"found\":\"nine stages\",\"kind\":\"a nine-stage tracker (DR-108: six steps)\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"A tracker reads its nine stages left to right.\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredWords",
+   "fault": "\"Condensed width, proposed\" as a proof label",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 retired word(s) in reader text or names, in #rule-01-1; first: {\"found\":\"Condensed width, proposed\",\"kind\":\"a condensed width proof (DR-115, D2-328)\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Condensed width, proposed\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredClasses",
+   "fault": "a coded grid (class oai-grid) in a correct plate",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 element(s) with a retired grid class outside a failure plate, in specimen s-demo-1-correct; first: {\"classes\":[\"oai-grid\"],\"element\":\"svg\",\"where\":\"specimen s-demo-1-correct\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredClasses",
+   "fault": "the composer (class oai-comp) after a rule",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 element(s) with a retired grid class outside a failure plate, in #rule-01-1; first: {\"classes\":[\"oai-comp\"],\"element\":\"div\",\"where\":\"#rule-01-1\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "retiredClasses",
+   "fault": "a coded grid inside a labeled failure plate (allowed: must not be flagged)",
+   "expect": "not flagged",
+   "caught": false,
+   "ok": true,
+   "message": null,
+   "alsoFlagged": []
+  },
+  {
+   "test": "partOrder",
+   "fault": "a chapter that names another part than its opener",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 chapter(s) out of their part, first: {\"chapter\":\"01\",\"part\":\"symbols\",\"under\":\"foundations\",\"problem\":\"sits under another part's opener\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "partOrder",
+   "fault": "a part opener that does not link to its chapter",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 chapter(s) out of their part, first: {\"chapter\":\"01\",\"part\":\"foundations\",\"problem\":\"its part opener does not link to it\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "ruleRefs",
+   "fault": "a citation of Rule 01.9, which chapter 01 does not hold",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 citation(s) of a rule the page does not hold, first: {\"rule\":\"01.9\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Rule 01.9\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "ruleRefs",
+   "fault": "a range, \"Rules 01.1 to 01.4\", past chapter 01's last rule",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 2 citation(s) of a rule the page does not hold, first: {\"rule\":\"01.3\",\"how\":\"text\",\"where\":\"#rule-01-1\",\"text\":\"Rules 01.1 to 01.4\"}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "ruleRefs",
+   "fault": "a citation in an alt text",
+   "expect": "caught",
+   "caught": true,
+   "ok": true,
+   "message": "1440: 1 citation(s) of a rule the page does not hold, first: {\"rule\":\"01.7\",\"how\":\"aria-label\",\"where\":\"specimen s-demo-1-correct\",\"text\":\"Rule 01.7\"}",
    "alsoFlagged": []
   }
  ],

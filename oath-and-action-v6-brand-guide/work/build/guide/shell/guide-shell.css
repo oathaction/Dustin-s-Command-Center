@@ -191,6 +191,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .part-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
 .part-list .n { color: var(--oa-color-text-secondary); min-width: 1.6em }
 .part-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+/* A chapter of the part that is not in this page yet: its number and name as text, then "Coming later" (D2-324) */
+.part-later .part-name { display: inline-flex; gap: .5em; align-items: baseline; max-width: 100%; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--oa-color-text-secondary) }
+.part .later-note { color: var(--oa-color-text-secondary) }
 
 /* ---------------------------------------------------------------- Chapter on the grid
    From 48em a chapter is a grid of main's columns. From 90em the chapter head and body take the first eight and the

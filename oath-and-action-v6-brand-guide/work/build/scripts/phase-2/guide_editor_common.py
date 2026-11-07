@@ -38,6 +38,9 @@ LOCKED = {
     "commitment": "Clarity is our duty. Action is our promise.",
 }
 PILLARS = ["Explain", "Track", "Connect", "Act"]
+# DR-111: the pillar icons are the Civic Line drawings made for the pillars, each always with its word beside it.
+CL_DIR = "work/build/assets/civic-line"
+PILLAR_ICON = {"Explain": "CL-019", "Track": "CL-020", "Connect": "CL-021", "Act": "CL-022"}
 VOICE_LINE_B = ("We’ll explain the rules and track what happens to them. When a decision is coming, "
                 "we’ll connect you with the people making it, so you can act in time.")
 
@@ -106,6 +109,8 @@ BASE = f"""
 .ed .kick{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 12px;{fx('label')};text-transform:uppercase}}
 .ed .kick .dot{{color:var(--oa-color-text-secondary)}}
 .ed .kick .sx{{color:var(--oa-color-text-secondary)}}
+.ed .kick .sxi{{display:inline-flex;align-items:center;gap:8px}}
+.ed .kick .ki{{flex:none;display:block;color:var(--oa-color-graphic-essential)}}
 .ed .pos{{display:inline-block;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px;{fx('label')};text-transform:uppercase}}
 .ed table{{border-collapse:collapse;width:100%;{fx('body-small')}}}
 .ed th,.ed td{{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}}
@@ -190,12 +195,78 @@ def ill():
     return '<span class="illus">Illustrative</span>'
 
 
-def kicker(label, more=None, illus=False):
+def kicker(label, more=None, illus=False, icon=None):
     """One kicker grammar (D2-250, DR-103): the content label, then at most one more part after a middle dot, the series
-    name if the piece belongs to one, otherwise the topic. "Our position" takes the position label's Charcoal fill."""
+    name if the piece belongs to one, otherwise the topic. "Our position" takes the position label's Charcoal fill.
+    DR-112: a kicker is words; the one picture it may hold is a topic icon, 24 px in one color, just before the topic's
+    own word. `icon` is that topic's Civic Line ID, and the build checks that the icon's name is the word beside it."""
     lab = f'<span class="pos">{e(label)}</span>' if label == "Our position" else f'<span class="lb">{e(label)}</span>'
-    tail = f'<span class="dot" aria-hidden="true">·</span><span class="sx">{e(more)}</span>' if more else ""
+    tail = ""
+    if more:
+        word = f'<span class="sx">{e(more)}</span>'
+        if icon:
+            word = f'<span class="sxi">{cl_icon(icon, 24, cls="ki")}{word}</span>'
+        tail = f'<span class="dot" aria-hidden="true">·</span>{word}'
     return f'<p class="kick">{lab}{tail}{" " + ill() if illus else ""}</p>'
+
+
+def cl_file(cl_id, edition="black"):
+    """The Civic Line master file for an ID and edition."""
+    return sorted((ROOT / CL_DIR / edition).glob(f"*-{cl_id}-*.svg"))[0]
+
+
+def cl_name(cl_id):
+    """A Civic Line icon's name, from its master's file name: CL-025 is "Congress"."""
+    return re.sub(r"^.*-CL-\d{3}-(.+)-Black$", r"\1", cl_file(cl_id).stem).replace("-", " ")
+
+
+def cl_icon(cl_id, size, red=False, cls="cl"):
+    """A Civic Line master inline at `size` px, its geometry exactly as drawn. The strokes take the icon's ink through
+    currentColor; with red=True the accent part takes Pillar Red, which Rule 05.3 counts as signature red. The file's
+    ids, title and desc are dropped: nothing in the drawing refers to the ids, and the word beside the icon names it,
+    so the icon is hidden from assistive technology."""
+    s = cl_file(cl_id, "red-black" if red else "black").read_text()
+    s = re.sub(r"<\?xml.*?\?>", "", s)
+    s = re.sub(r"<title>.*?</title>|<desc>.*?</desc>", "", s, flags=re.S)
+    s = re.sub(r'\s(id|data-id)="[^"]*"', "", s)
+    s = re.sub(r'(stroke|fill)="#121212"', r'\1="currentColor"', s)
+    s = re.sub(r'(stroke|fill)="#E63946"', r'\1="var(--oa-color-palette-pillar-red)"', s)
+    if re.search(r'#[0-9A-Fa-f]{6}\b', s):
+        raise SystemExit(f"{cl_id}: the master holds a color this helper does not map")
+    red_attr = ' data-red="signature"' if red else ""
+    s = re.sub(r"<svg\b[^>]*>", f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="{size}" height="{size}" '
+                                f'class="{cls}" data-icon="{cl_id}" aria-hidden="true" focusable="false"{red_attr}>', s, count=1)
+    return re.sub(r">\s+<", "><", s.strip())
+
+
+def pillar_row(size, current=None, label="The four pillars, in order"):
+    """The pillar row (DR-111): each pillar's icon with its word beside it, in order, one color. The current pillar's
+    word is underlined at every size and set bold under 48 px; from 48 px its icon also keeps its red, a second sign.
+    The arrows are drawn by CSS and hidden from screen readers; the list's order carries the sequence."""
+    lis = []
+    for p in PILLARS:
+        cur = p == current
+        attrs = ' class="pi cur" aria-current="true"' if cur else ' class="pi"'
+        lis.append(f'<li{attrs}>{cl_icon(PILLAR_ICON[p], size, red=cur and size >= 48)}<span class="pw">{e(p)}</span></li>')
+    return f'<ol class="prow prow-{size}" aria-label="{e(label)}">{"".join(lis)}</ol>'
+
+
+# The pillar row's style: words in the intro style beside 48 px icons and in body bold beside 24 px icons. A row that
+# no longer fits on one line wraps after an arrow; under 48em the 48 px row stacks in one column with downward arrows.
+PROW = f"""
+.ed .prow{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;row-gap:12px}}
+.ed .prow .pi{{display:flex;align-items:center;gap:12px}}
+.ed .prow .cl{{flex:none;display:block;color:var(--oa-color-graphic-essential)}}
+.ed .prow .pi:not(:last-child)::after{{content:"→" / "";color:var(--oa-color-text-secondary);{fx('body')};margin:0 14px 0 2px}}
+.ed .prow-48 .pw{{{fx('intro', weight='700')}}}
+@media (min-width:48em){{.ed .prow-48 .pw{{font-size:{DESK['intro']:g}rem}}}}
+.ed .prow-24 .pi{{gap:8px}}
+.ed .prow-24 .pw{{{fx('body')}}}
+.ed .prow .cur .pw{{text-decoration:underline solid 2px;text-underline-offset:5px;text-decoration-skip-ink:none}}
+.ed .prow-24 .cur .pw{{font-weight:700}}
+@media (max-width:47.99em){{.ed .prow-48{{flex-direction:column;align-items:flex-start}}
+.ed .prow-48 .pi:not(:last-child)::after{{content:"↓" / "";margin:0 0 0 4px}}}}
+"""
 
 
 def dnp():

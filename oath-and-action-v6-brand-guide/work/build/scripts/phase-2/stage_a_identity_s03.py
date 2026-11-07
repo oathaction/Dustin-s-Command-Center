@@ -269,7 +269,7 @@ def s_03_lockups():
 @spec
 def s_03_l6():
     body = (f'<div>{l6(884)}<p class="oai-tag" style="margin-top:12px">L6 Editorial signature, at its minimum: 884 px wide on '
-            f'screen, 6.60 in in print. The sign-off strip at the foot of pages and reports, shown on Prussian, where every part is White.</p></div>')
+            f'screen, 6.60 in in print. The strip that closes a report or a long page, shown on Prussian, where every part is White.</p></div>')
     alt = ("L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the "
            "tagline at left, four pillar dots under them and the lockmark at right. Its print minimum is 6.60 inches.")
     return rec("s-03-l6", "03.2", 884, alt, body,

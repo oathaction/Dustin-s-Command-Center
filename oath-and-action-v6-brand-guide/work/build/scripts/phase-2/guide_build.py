@@ -5,8 +5,9 @@ Usage:
   python3 -I work/build/scripts/phase-2/guide_build.py --chapters DIR --specimens DIR --out PATH   (fixtures and tests)
 
 Reads, from the repository root (found from this file's place, so the working folder does not matter):
-  work/build/guide/chapters/NN-anchor.json        one per chapter, written by the makers (Stage A brief, content contract)
-  work/build/guide/chapters/proofs.json           optional: order, groups and captions for the Gate 2 proofs appendix
+  work/build/guide/chapters/NN-anchor.json        one per chapter, written by the makers (Stage A brief, content contract);
+                                                  chapter 08 is 08-lockmark.json from the apply pass (D2-325)
+  work/build/guide/chapters/proofs.json           optional: order, groups and captions for the identity proofs appendix
   work/build/guide/specimens/<id>.html            one self-contained fragment per specimen
   work/build/guide/specimens/manifest-*.json      { id: { chapter, rule, width_px, alt, illustrative, notes, ... } }
   work/build/guide/shell/guide-shell.css, guide-shell.js   the shell's own style and script (engineer)
@@ -16,8 +17,14 @@ Reads, from the repository root (found from this file's place, so the working fo
 
 Writes work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html: one page that stands alone except for Google Fonts.
 Any chapter of 01 to 08 without a JSON file gets a placeholder that keeps its anchor and contents entry, so the page
-builds with none, some or all chapters. --demo fills those placeholders with the shell's sample rules
-(work/build/guide/shell/fixtures/), labeled as a template demonstration.
+builds with none, some or all chapters. A later chapter joins the page, under its part opener, once its file exists
+(chapter 11 from the apply pass, D2-324); the other chapters of that part show as "Coming later". --demo fills the
+placeholders with the shell's sample rules (work/build/guide/shell/fixtures/), labeled as a template demonstration.
+
+Cross-references: every "Rule NN.n" (or "Rules NN.n and NN.m", "Rules NN.n to NN.m", "#rule-NN-n") in reader text,
+specimens, captions and alt text must name a rule the page holds when chapter NN is in the page, and no sentence may
+still carry one of chapter 08's numbers from before it became The lockmark (D2-325). Each miss is a warning, so
+--strict fails until it is fixed. --self-test proves these and the other apply-pass checks on fixtures.
 
 The build never stops on content problems. It prints each one as a warning and writes them, with counts, to
 <out stem>-Build-Report.json beside the page. --strict exits 1 when there is any warning.
@@ -43,7 +50,7 @@ WORDMARK_16 = ASSETS / "identity/wordmark/20261028_Wordmark-16px-Master.svg"
 WORDMARK_DISPLAY = ASSETS / "identity/wordmark/20261028_Wordmark-Display-Master.svg"
 AMP_B_24 = ASSETS / "identity/ampersand/20261028_Amp-B-24px-Master.svg"
 DEFAULT_OUT = ROOT / "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html"
-EDITION_DATE = "November 6, 2026"
+EDITION_DATE = "November 7, 2026"   # the apply pass draft
 
 e = html.escape
 
@@ -53,7 +60,7 @@ e = html.escape
 # own title and instruction line win over these for the chapters it covers.
 # ---------------------------------------------------------------------------------------------------------------
 PARTS = [
-    ("foundations", "Foundations", "The identity, its voice, color and type, the page grid and the Signal Grid."),
+    ("foundations", "Foundations", "The identity, its voice, color and type, the page grid and the lockmark."),
     ("symbols", "Symbols and graphics", "Pillar marks, symbols and icons, and the graphic devices that guide a reader."),
     ("evidence", "Evidence and media", "How a claim carries its source, then charts, systems graphics and imagery."),
     ("behavior", "Behavior", "How the guide and its products respond to readers who use a keyboard, a screen reader, zoom or touch."),
@@ -71,7 +78,8 @@ CHAPTERS = [
     ("05", "color", "Color", "foundations", "Choose a surface first, then the text and graphic colors that pass on it."),
     ("06", "type", "Type", "foundations", "Set every word at a readable size with the three faces and the type scale."),
     ("07", "layout", "Layout and spacing", "foundations", "Build each page on the column grid and spacing scale, readable at every width."),
-    ("08", "signal-grid", "The Signal Grid", "foundations", "Keep the lockmark to its fixed places, and put a key beside every Signal Grid that codes content."),
+    # D2-325, D2-326: chapter 08 is The lockmark, anchor "lockmark"; its instruction line is the identity designer's.
+    ("08", "lockmark", "The lockmark", "foundations", "Draw the lockmark from its master, and keep it to its four fixed places."),
     ("09", "pillar-marks", "Pillar marks", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
     ("11", "icons", "Status and utility icons", "symbols", "Give each record state or interface action a glyph and a word that read without color."),
@@ -96,10 +104,15 @@ CHAPTERS = [
 CHAPTER = {c[0]: c for c in CHAPTERS}
 STAGE_A = [c[0] for c in CHAPTERS if c[3] == "foundations"]
 OWNER = {"01": "editor", "02": "editor", "03": "identity designer", "04": "identity designer", "08": "identity designer",
-         "05": "systems designer", "06": "systems designer", "07": "systems designer"}
+         "05": "systems designer", "06": "systems designer", "07": "systems designer", "11": "systems designer"}
 
-# V5 anchors kept as aliases on their new homes (map section 4).
-ALIASES = {"signal-grid": "grid", "symbols": "topic-icons", "data-visualization": "data",
+# Apply pass only (D2-325): chapter 08's file moves from 08-signal-grid.json to 08-lockmark.json. While the new file is
+# missing, the build reads the old one under its old name and anchor without a warning, so the other makers keep
+# building. Once 08-lockmark.json exists, the old name is a warning. Empty this map when the pass closes.
+LEGACY_FILE = {"08": "signal-grid"}
+
+# V5 anchors kept as aliases on their new homes (map section 4). V5's #grid now lands on The lockmark (D2-325).
+ALIASES = {"lockmark": "grid", "symbols": "topic-icons", "data-visualization": "data",
            "motion-and-states": "motion", "systems-graphics": "atlas-system"}
 
 # Chapter-level Related chapters, with reasons, from map section 10. A chapter JSON may replace them with
@@ -109,10 +122,11 @@ RELATED_DEFAULT = {
     "02": [("01", "What the voice serves."), ("04", "Hinge headlines."), ("13", "Sourcing and the Act label."), ("22", "The voice in email.")],
     "03": [("04", "The ampersand inside the wordmark."), ("05", "The approved surfaces."), ("07", "Clear space on the grid."), ("27", "The logo files.")],
     "04": [("03", "The wordmark the ampersand belongs to."), ("02", "Hinge headlines in copy."), ("12", "The divider index."), ("17", "Hinge motion.")],
-    "05": [("06", "Which sizes count as large text."), ("08", "The lever and content-type colors."), ("14", "The data palettes."), ("17", "States."), ("26", "The color tokens.")],
+    "05": [("06", "Which sizes count as large text."), ("08", "The lockmark and its red lever."), ("14", "The data palettes."), ("17", "States."), ("26", "The color tokens.")],
     "06": [("05", "The pairs that pass."), ("07", "Measure and rhythm."), ("19", "Reading size and zoom."), ("22", "The email stack.")],
-    "07": [("06", "The type scale the grid carries."), ("08", "The sanctioned positions."), ("20", "Web pages on the grid."), ("25", "Print and slides on the grid.")],
-    "08": [("03", "The lockmark beside the wordmark."), ("09", "The pillar marks."), ("14", "The legend mark."), ("17", "Grid states.")],
+    "07": [("06", "The type scale the grid carries."), ("08", "The four fixed places of the lockmark."), ("20", "Web pages on the grid."), ("25", "Print and slides on the grid.")],
+    # DR-110: the lockmark keeps four fixed places and codes nothing, so trackers move to chapter 11
+    "08": [("03", "The lockups that carry the lockmark."), ("07", "The page header and footer it sits in."), ("11", "Trackers, drawn as numbered steps."), ("14", "The lockmark in a chart’s footer.")],
 }
 
 FRONT_CONTENTS = "Jump to any chapter by its part or number."
@@ -122,6 +136,98 @@ LOCKED = {
 }
 
 RULE_ID = re.compile(r"^(\d{2})\.(\d{1,2})$")
+
+# ---------------------------------------------------------------------------------------------------------------
+# Cross-references (apply pass, D2-325). A citation is "Rule 05.2", "Rules 05.3 and 05.5", "Rules 08.4 to 08.8" or a
+# link to "#rule-05-2". When chapter NN is in the page, every rule it cites must exist there.
+# ---------------------------------------------------------------------------------------------------------------
+XREF = re.compile(r"\bRules?(?:\s| )+\d{2}\.\d{1,2}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,2}\b)*")
+XREF_HREF = re.compile(r"#rule-(\d{2})-(\d{1,2})\b")
+# Sentences that carried chapter 08's numbers before it became The lockmark, read from commit 3130c5b (the page before
+# the apply pass). Each points at a rule that moved, changed or retired, so the build warns while one survives as written.
+OLD_08_REFS = [
+    "Rule 08.8 sets the grid and icon that may lead a kicker",
+    "The composer after Rule 08.9 builds only the combinations",
+    "40 px, bottom right, inside the margin (Rule 08.2)",
+]
+XREF_SKIP_KEYS = {"specimen", "id", "after_rule", "before_rule", "token", "tokens", "files", "number", "anchor", "part",
+                  "chapter", "related", "_legacy_file", "notes"}
+
+
+def cited_rules(text):
+    """Every (chapter, rule) a string cites, with ranges expanded: "Rules 08.4 to 08.6" gives 08.4, 08.5 and 08.6."""
+    out = []
+    for m in XREF.finditer(text):
+        toks = re.findall(r"(\d{2})\.(\d{1,2})|\b(to|through)\b", m.group(0))
+        prev, rng = None, False
+        for a, b, word in toks:
+            if word:
+                rng = True
+                continue
+            cur = (a, int(b))
+            if rng and prev and prev[0] == cur[0] and cur[1] > prev[1]:
+                out += [(a, k) for k in range(prev[1] + 1, cur[1])]
+            out.append(cur)
+            prev, rng = cur, False
+    out += [(a, int(b)) for a, b in XREF_HREF.findall(text)]
+    return out
+
+
+def reader_text(s):
+    """Markup as a reader meets it: styles, scripts and comments gone, tags as spaces, entities decoded, one space."""
+    s = re.sub(r"<style\b.*?</style>|<script\b.*?</script>|<!--.*?-->", " ", str(s), flags=re.S | re.I)
+    hrefs = " ".join(re.findall(r"#rule-\d{2}-\d{1,2}\b", s))   # links keep their targets, which tags would lose
+    s = re.sub(r"<[^>]+>", " ", s)
+    return re.sub(r"\s+", " ", html.unescape(s)).strip() + (" " + hrefs if hrefs else "")
+
+
+def json_strings(node, where, out, path=()):
+    if isinstance(node, str):
+        out.append((where + (" " + ".".join(str(p) for p in path) if path else ""), node))
+    elif isinstance(node, list):
+        for i, x in enumerate(node):
+            rid = x.get("id") if isinstance(x, dict) and isinstance(x.get("id"), str) else None
+            json_strings(x, where, out, path + ((f"rule {rid}",) if rid else (i,)))
+    elif isinstance(node, dict):
+        for k, v in node.items():
+            if k not in XREF_SKIP_KEYS:
+                json_strings(v, where, out, path + (k,))
+
+
+def check_cross_refs(chapters, pconf, specs):
+    """Warn on a citation of a rule that the page's copy of its chapter does not hold, and on any sentence that still
+    carries one of chapter 08's numbers from before the lockmark rename. Reads every reader string: chapter files,
+    proofs.json, the placed specimens, and their alt text, captions and labels."""
+    texts = []
+    for n, d in sorted(chapters.items()):
+        json_strings(d, d.get("_legacy_file") or f"{n}-{CHAPTER[n][1]}.json", texts)
+    if pconf:
+        json_strings(pconf, "proofs.json", texts)
+    for sid in specs.used:
+        p = specs.files.get(sid)
+        if p:
+            texts.append((f"specimen {sid}", p.read_text()))
+        meta = specs.meta(sid)
+        for k in ("alt", "caption", "label"):
+            if meta.get(k):
+                texts.append((f"{specs.origin.get(sid, 'manifest')} {sid}.{k}", str(meta[k])))
+    held = {n: {str(r.get("id")) for r in (d.get("rules") or []) if isinstance(r, dict)} for n, d in chapters.items()}
+    renamed = "08" in chapters and not chapters["08"].get("_legacy_file")
+    seen = set()
+    for where, raw in texts:
+        t = reader_text(raw)
+        for ch, k in cited_rules(t):
+            rid = f"{ch}.{k}"
+            if ch in held and rid not in held[ch] and (where, rid) not in seen:
+                seen.add((where, rid))
+                tail = (" Chapter 08 renumbered from 08.1 when it became The lockmark (D2-325): point the sentence at the rule it now means."
+                        if ch == "08" and renamed else "")
+                R.warn(where, f"cites Rule {rid}, which chapter {ch} does not hold.{tail}")
+        if renamed:
+            for fp in OLD_08_REFS:
+                if fp in t:
+                    R.warn(where, f"still reads \"{fp}\", a chapter 08 number from before The lockmark (D2-325); "
+                                  "check which rule it means now and edit the sentence")
 
 
 class Report:
@@ -469,6 +575,12 @@ def process_fragment(src, sid, where):
 
 def inline_assets(s, sid, where):
     """Repository paths in src and href become data URIs; <img data-inline src="...svg"> becomes inline SVG."""
+    # DR-115, D2-328: today's width carries Edition 06; the condensed drawing leaves every page and its files stay only
+    # as a record, so a placed specimen that draws from a condensed master is a warning.
+    cond = sorted(set(re.findall(r'(?:work|source|deliverables)/[^"\'\s)]*condensed[^"\'\s)]*', s, re.I)))
+    if cond:
+        R.warn(where, f"{sid}: draws the condensed wordmark ({', '.join(Path(c).name for c in cond[:3])}); "
+                      "it left every page when today's width was kept (DR-115)")
 
     def img_inline(m):
         tag = m.group(0)
@@ -833,9 +945,10 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     return "".join(out), anchor, title
 
 
-APPENDIX_TITLE = "Wordmark width proofs"
-APPENDIX_LINE = ("Compare each piece at both wordmark widths, side by side at actual size. Dustin Cathcart, our founder and "
-                 "editor, chooses one width; until he does, every piece uses today’s width.")
+# D2-328: the proofs appendix is "Identity proofs": today's width in use, and L2 beside S1. proofs.json may set its own
+# instruction line; its title must stay this one.
+APPENDIX_TITLE = "Identity proofs"
+APPENDIX_LINE = "See today’s wordmark in use at actual size, and the new stacked lockup beside the one it replaces."
 FILES_NOTE = "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here."   # D2-252
 LATER = "Coming later"   # CP-S3
 
@@ -962,7 +1075,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     if data is not None and not demo:
         if str(data.get("number", "")).zfill(2) != num:
             R.warn(where, f"\"number\" is {data.get('number')!r}, expected \"{num}\"")
-        if data.get("anchor") != cid:
+        if data.get("anchor") != cid and not (data.get("_legacy_file") and data.get("anchor") == LEGACY_FILE.get(num)):
             R.warn(where, f"\"anchor\" is {data.get('anchor')!r}; the architecture map fixes it as \"{cid}\"")
         cname = data.get("title") or cname
         line = data.get("instruction") or line
@@ -1159,6 +1272,19 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     return "".join(out)
 
 
+def chapter_span(nums):
+    """["01", ..., "08", "11"] -> "Chapters 01 to 08 and 11": runs of consecutive chapters as ranges, joined in words."""
+    runs = []
+    for n in sorted(nums):
+        if runs and int(n) == int(runs[-1][-1]) + 1:
+            runs[-1].append(n)
+        else:
+            runs.append([n])
+    parts = [f"{r[0]} to {r[-1]}" if len(r) > 2 else (f"{r[0]} and {r[1]}" if len(r) == 2 else r[0]) for r in runs]
+    words = parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1]
+    return ("Chapters " if len(nums) > 1 else "Chapter ") + words
+
+
 def contents_section(present, has_proofs, ctx):
     out = ['<section class="contents" id="contents" data-track="front" data-label="Contents"><div class="ch-head">',
            '<h2 id="contents-h" class="front-title">Contents</h2><p class="return" hidden></p>', f'<p class="instr">{e(FRONT_CONTENTS)}</p></div>',
@@ -1179,12 +1305,14 @@ def contents_section(present, has_proofs, ctx):
         out.append("</ol></div>")
     if has_proofs:
         out.append(f'<div class="toc-part"><h3 class="toc-part-h"><a class="toc-part-k" href="#proofs">Appendix</a></h3><ol class="toc-list toc-list--plain">'
-                   f'<li><a href="#proofs"><span class="t">{e(ctx.get("appendix_title", APPENDIX_TITLE))}</span></a><p>The masthead, avatar, social card and letterhead at both wordmark widths, side by side at actual size.</p></li></ol></div>')
+                   f'<li><a href="#proofs"><span class="t">{e(ctx.get("appendix_title", APPENDIX_TITLE))}</span></a><p>{inline(ctx.get("appendix_line") or APPENDIX_LINE)}</p></li></ol></div>')
     out.append("</div></section>")
     return "".join(out)
 
 
 def part_section(slug, name, desc, present, ctx):
+    """A part opener lists every chapter of its part: the chapters in the page as links with their instruction lines,
+    the rest as text marked "Coming later" (chapters 09, 10 and 12 while chapter 11 opens the Symbols part)."""
     alias = f'<span id="{PART_ANCHOR_ALIAS[slug]}" class="alias" aria-hidden="true"></span>' if slug in PART_ANCHOR_ALIAS else ""
     items = []
     for num, cid, cname, cpart, line in CHAPTERS:
@@ -1193,6 +1321,9 @@ def part_section(slug, name, desc, present, ctx):
         if num in present:
             items.append(f'<li><a href="#{cid}"><span class="n">{num}</span> <span class="t">{e(ctx["names"].get(num, cname))}</span></a>'
                          f'<p>{inline(ctx["lines"].get(num, line))}</p></li>')
+        else:
+            items.append(f'<li class="part-later"><span class="part-name"><span class="n">{num}</span> <span class="t">{e(cname)}</span></span>'
+                         f'<p><span class="later-note">{LATER}</span></p></li>')
     return (f'<section class="part" id="part-{slug}" data-track="part" data-part="{slug}" data-label="Part: {e(name)}">{alias}'
             f'<div class="part-inner oa-surface-charcoal"><h2 id="part-{slug}-h" class="part-title"><span class="lbl">Part</span> {e(name)}</h2>'
             f'<p class="return" hidden></p><p class="instr">{e(desc)}</p><ol class="part-list">{"".join(items)}</ol></div></section>')
@@ -1211,9 +1342,12 @@ def proofs_section(chap_dir, specs, ctx):
     if not ids and not conf:
         return "", False
     title = conf.get("title") or APPENDIX_TITLE
+    if html.unescape(str(title)).strip() != APPENDIX_TITLE:
+        R.warn("proofs.json", f"the appendix is titled {title!r}; D2-328 names it \"{APPENDIX_TITLE}\"")
     ctx["appendix_title"] = title
+    last = ctx["order"][-1]
     out = [f'<section class="appendix" id="proofs" data-track="appendix" data-part="appendix" data-label="Appendix: {plain(title)}">',
-           '<div class="ch-head"><p class="loc-line">Appendix <span aria-hidden="true">·</span> After chapter 08</p>',
+           f'<div class="ch-head"><p class="loc-line">Appendix <span aria-hidden="true">·</span> After chapter {last}</p>',
            f'<h2 id="proofs-h" class="ch-title ch-title--appendix">{plain(title)}</h2><p class="return" hidden></p>',
            f'<p class="instr">{inline(conf.get("instruction") or APPENDIX_LINE, ctx)}</p>',
            paras(conf.get("intro"), ctx, "intro"), "</div><div class=\"ch-body\">"]
@@ -1240,7 +1374,7 @@ def proofs_section(chap_dir, specs, ctx):
     for sid in ids:
         if sid not in placed:
             R.warn("proofs", f"{sid} is in a manifest but not in proofs.json, so it is not shown")
-    out.append(f'<div class="chapnav"><a href="#signal-grid" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">08</span> {e(ctx["names"].get("08", CHAPTER["08"][2]))}</a>'
+    out.append(f'<div class="chapnav"><a href="#{CHAPTER[last][1]}" rel="prev"><span class="chapnav-k">Previous</span> <span class="n">{last}</span> {e(ctx["names"].get(last, CHAPTER[last][2]))}</a>'
                '<a class="to-contents" href="#contents">Back to contents</a></div></div></section>')
     return "".join(out), True
 
@@ -1276,10 +1410,17 @@ def load_chapters(chap_dir):
     found = {}
     if not chap_dir.exists():
         return found
-    for p in sorted(chap_dir.glob("[0-9][0-9]-*.json")):
+    files = sorted(chap_dir.glob("[0-9][0-9]-*.json"))
+    canonical = {p.stem for p in files}
+    for p in files:
         num = p.name[:2]
         if num not in CHAPTER:
             R.warn(p.name, "the file name does not start with a chapter number from 01 to 28")
+            continue
+        legacy = LEGACY_FILE.get(num)
+        is_legacy = legacy is not None and p.stem == f"{num}-{legacy}"
+        if is_legacy and f"{num}-{CHAPTER[num][1]}" in canonical:
+            R.warn(p.name, f"the chapter's old file name; {num}-{CHAPTER[num][1]}.json replaces it and wins, so remove the old file")
             continue
         try:
             data = json.loads(p.read_text())
@@ -1300,7 +1441,12 @@ def load_chapters(chap_dir):
         if bad:
             R.warn(p.name, (f"{len(bad)} rule entry is not an object; skipped" if len(bad) == 1 else f"{len(bad)} rule entries are not objects; skipped"))
             data["rules"] = [r for r in data["rules"] if isinstance(r, dict)]
-        if p.stem != f"{num}-{CHAPTER[num][1]}":
+        if is_legacy:
+            # apply pass only: read under the old name and anchor, with a note, until the new file lands
+            R.note(f"{p.name} read as chapter {num} under its old name during the apply pass; "
+                   f"{num}-{CHAPTER[num][1]}.json replaces it, with the anchor \"{CHAPTER[num][1]}\"")
+            data["_legacy_file"] = p.name
+        elif p.stem != f"{num}-{CHAPTER[num][1]}":
             R.warn(p.name, f"expected the file name {num}-{CHAPTER[num][1]}.json")
         if num in found:
             R.warn(p.name, f"a second file for chapter {num}; the first one wins")
@@ -1343,9 +1489,12 @@ def build(args):
             rule_anchors.add("rule-" + str(r.get("id", "")).replace(".", "-"))
     has_proofs_ids = any(s.startswith("s-proofs-") for s in list(specs.manifest) + list(specs.files)) or (chap_dir / "proofs.json").exists()
     ctx = {"present": present, "rule_anchors": rule_anchors, "lines": lines, "names": names, "has_proofs": has_proofs_ids,
-           "appendix_title": APPENDIX_TITLE}
+           "appendix_title": APPENDIX_TITLE, "appendix_line": None, "order": order}
+    pconf = None
     try:
-        ctx["appendix_title"] = json.loads((chap_dir / "proofs.json").read_text()).get("title") or APPENDIX_TITLE
+        pconf = json.loads((chap_dir / "proofs.json").read_text())
+        ctx["appendix_title"] = pconf.get("title") or APPENDIX_TITLE
+        ctx["appendix_line"] = pconf.get("instruction") or None
     except Exception:
         pass
 
@@ -1371,6 +1520,7 @@ def build(args):
     for sid in specs.manifest:
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")
+    check_cross_refs(chapters, pconf if isinstance(pconf, dict) else None, specs)
 
     css = (SHELL / "guide-shell.css").read_text()
     js = (SHELL / "guide-shell.js").read_text()
@@ -1390,10 +1540,17 @@ def build(args):
     n_rules = sum(len(d.get("rules") or []) for d in chapters.values())
     n_specs = len(specs.used)
     appendix_title = ctx.get("appendix_title", APPENDIX_TITLE)
-    edition_line = (f"Chapters 01 to 08, the Foundations part, in draft, {EDITION_DATE}"
-                    + (f", with the appendix {appendix_title.lower() if appendix_title == APPENDIX_TITLE else appendix_title}." if has_proofs else "."))
-    count_line = (f"{n_real} chapters, {n_rules} rules and {n_specs} specimens." if n_real >= 8 else
-                  f"{n_real} of 8 chapters written so far, with {n_rules} rules and {n_specs} specimens; placeholders hold the rest.")
+    # The page's scope in words, from the chapters it holds: "Chapters 01 to 08" or "Chapters 01 to 08 and 11"
+    scope = chapter_span(order)
+    only_foundations = all(CHAPTER[n][3] == "foundations" for n in order)
+    scope_long = f"{scope}, the Foundations part" if only_foundations and order == STAGE_A else scope
+    edition_line = (f"{scope_long}, in draft, {EDITION_DATE}"
+                    + ((", with an appendix of identity proofs." if appendix_title == APPENDIX_TITLE else f", with the appendix “{appendix_title}”.")
+                       if has_proofs else "."))
+    n_found = sum(1 for n in STAGE_A if n in chapters)
+    count_line = (f"{n_real} chapters, {n_rules} rules and {n_specs} specimens." if n_found == len(STAGE_A) else
+                  f"{n_found} of {len(STAGE_A)} Foundations chapters written so far, with {n_rules} rules and {n_specs} specimens in all; placeholders hold the rest.")
+    folio = f"Foundations, {scope[0].lower() + scope[1:]}" if only_foundations else scope
     # C-S10, RP-S10: each arrow stays with the pillar after it, so the line breaks whole
     arr = '<span class="arr" aria-hidden="true">→</span>'
     pillars = LOCKED["pillars"][0] + "".join(f' <span class="nw">{arr} {p}</span>' for p in LOCKED["pillars"][1:])
@@ -1404,8 +1561,8 @@ def build(args):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oath &amp; Action Brand Guide, Edition 06: Foundations draft</title>
-<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. Chapters 01 to 08, the Foundations part, in draft.">
+<title>Oath &amp; Action Brand Guide, Edition 06: {"Foundations draft" if only_foundations else "draft of " + e(scope[0].lower() + scope[1:])}</title>
+<meta name="description" content="Oath &amp; Action Brand Guide, Edition 06: the rules for everything Oath &amp; Action publishes. {e(scope_long)}, in draft.">
 <meta name="generator" content="work/build/scripts/phase-2/guide_build.py">
 <meta name="guide-build" content="{e(json.dumps({"chapters": sorted(chapters), "placeholders": sorted(set(STAGE_A) - set(chapters)), "tokens": "tokens.css" if tokens.final else "draft", "demo": bool(args.demo)}))}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1438,7 +1595,7 @@ def build(args):
   <nav class="rail" aria-label="Chapters">{nav_list("rail", present, has_proofs, appendix_title=appendix_title)}</nav>
   <main id="main" tabindex="-1" data-view-root="overview">
     <section class="cover" id="top" data-track="front" data-label="Cover">
-      <p class="cover-folio"><span>Foundations, chapters 01 to 08</span> <span>Draft of {e(EDITION_DATE)}</span></p>
+      <p class="cover-folio"><span>{e(folio)}</span> <span>Draft of {e(EDITION_DATE)}</span></p>
       <div class="cover-mark" data-red="signature">{wm_display}</div>
       <h1 class="cover-h1"><span class="vh">Oath &amp; Action </span>Brand Guide, Edition 06</h1>
       <p class="tagline">{e(LOCKED["tagline"])}</p>
@@ -1504,6 +1661,104 @@ def build(args):
     return 1 if (args.strict and R.warnings) else 0
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# Self-test (apply pass, November 7, 2026): fixture chapters in a temporary folder, one scenario per check, each with
+# the warnings it must raise and the ones it must not. The fixtures are throwaway; nothing in the repository changes.
+# ---------------------------------------------------------------------------------------------------------------
+def self_test():
+    import tempfile
+    global R
+
+    def rule(rid, extra=None):
+        r = {"id": rid, "title": f"Rule {rid} in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "Design judgment"}}
+        r.update(extra or {})
+        return r
+
+    def chapter(num, anchor, title, rules, **more):
+        return dict({"number": num, "anchor": anchor, "title": title, "instruction": f"Read the {title.lower()} fixture.",
+                     "intro": ["A fixture chapter."], "rules": rules}, **more)
+
+    ch01 = chapter("01", "purpose", "Purpose", [rule("01.1", {"builders": "Rule 08.8 sets the grid and icon that may lead a kicker, after Rule 01.1."})])
+    old08 = chapter("08", "signal-grid", "The Signal Grid", [rule(f"08.{k}") for k in range(1, 10)])
+    new08 = chapter("08", "lockmark", "The lockmark", [rule("08.1"), rule("08.2"), rule("08.3")])
+    ch11 = chapter("11", "icons", "Status and utility icons", [rule("11.1"), rule("11.2")])
+    gap08 = chapter("08", "lockmark", "The lockmark", [rule("08.1"), rule("08.3", {"correct": {"specimen": "s-test-old", "caption": "A fixture."}}),
+                                                       rule("08.4", {"failure": {"specimen": "s-test-condensed", "caption": "A fixture."}})])
+    xref01 = chapter("01", "purpose", "Purpose", [rule("01.1", {"rule": "Rules 08.1 to 08.3 place it. Rule 08.3 holds. See <a href=\"#rule-08-7\">the old composer</a>."})])
+    specs = {"s-test-old.html": "<p>Lockmark 40 px, bottom right, inside the margin (Rule 08.2)</p>",
+             "s-test-condensed.html": '<img data-inline src="work/build/assets/identity/wordmark-condensed/20261028_Wordmark-Condensed-24px-Master.svg" alt="Oath &amp; Action">'}
+    manifest = {"s-test-old": {"chapter": "08", "rule": "08.3", "alt": "A lockmark drawn as Rule 08.5 sets it, at true size.", "notes": "fixture"},
+                "s-test-condensed": {"chapter": "08", "rule": "08.4", "alt": "The condensed wordmark, a fixture at true size.", "notes": "fixture"}}
+    scenarios = [
+        ("old file name alone: read silently, old numbers still valid", {"01-purpose.json": ch01, "08-signal-grid.json": old08}, {},
+         {"note": ["under its old name"], "absent": ["expected the file name", "\"anchor\" is", "cites Rule", "still reads"],
+          "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']}),
+        ("renamed file: an old 08 number fails until the sentence changes", {"01-purpose.json": ch01, "08-lockmark.json": new08}, {},
+         {"warn": ["cites Rule 08.8, which chapter 08 does not hold", "still reads \"Rule 08.8 sets the grid"],
+          "absent": ["under its old name", "cites Rule 01.1"]}),
+        ("both file names: the new one wins and the old one is a warning", {"08-lockmark.json": new08, "08-signal-grid.json": old08}, {},
+         {"warn": ["the chapter's old file name"], "html": ['<span class="t">The lockmark</span></h2>']}),
+        ("cross-references: ranges, links, specimens, alt text and the condensed drawing",
+         {"01-purpose.json": xref01, "08-lockmark.json": gap08}, {"specimens": specs, "manifest": manifest},
+         {"warn": ["cites Rule 08.2, which chapter 08", "cites Rule 08.7, which chapter 08", "cites Rule 08.5, which chapter 08",
+                   "still reads \"40 px, bottom right, inside the margin (Rule 08.2)\"", "draws the condensed wordmark"],
+          "absent": ["cites Rule 08.1,", "cites Rule 08.3,"]}),
+        ("chapter 11 under its part opener; 09, 10 and 12 coming later; the appendix follows it",
+         {"08-lockmark.json": new08, "11-icons.json": ch11, "proofs.json": {"title": "Identity proofs", "items": []}}, {},
+         {"absent": ["expected the file name", "D2-328"],
+          "order": ['id="part-foundations"', 'id="lockmark"', 'id="part-symbols"', 'id="icons"', 'id="proofs"'],
+          "html": ['<li class="part-later"><span class="part-name"><span class="n">09</span>', '<span class="n">10</span> <span class="t">Topic and atlas symbols</span></span>',
+                   '<span class="n">12</span> <span class="t">Graphic devices and patterns</span></span>', 'href="#icons" rel="next"',
+                   'After chapter 11</p>', '<a href="#icons" rel="prev">', 'Chapters 01 to 08 and 11']}),
+        ("appendix title: anything but Identity proofs is a warning", {"proofs.json": {"title": "Wordmark width proofs", "items": []}}, {},
+         {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),
+    ]
+    results, ok_all = [], True
+    with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
+        for i, (name, files, extra, expect) in enumerate(scenarios):
+            base = Path(tmp) / f"s{i}"
+            (base / "chapters").mkdir(parents=True)
+            (base / "specimens").mkdir()
+            for fn, data in files.items():
+                (base / "chapters" / fn).write_text(json.dumps(data))
+            for fn, text in (extra.get("specimens") or {}).items():
+                (base / "specimens" / fn).write_text(text)
+            if extra.get("manifest"):
+                (base / "specimens" / "manifest-test.json").write_text(json.dumps(extra["manifest"]))
+            R = Report()
+            out = base / "page.html"
+            build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
+                                     demo=False, strict=False, quiet=True))
+            warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]
+            page = out.read_text()
+            checks = []
+            for frag in expect.get("warn", []):
+                checks.append((f"warns: {frag}", any(frag in w for w in warns)))
+            for frag in expect.get("note", []):
+                checks.append((f"notes: {frag}", any(frag in n for n in R.notes)))
+            for frag in expect.get("absent", []):
+                checks.append((f"no warning: {frag}", not any(frag in w for w in warns)))
+            for frag in expect.get("html", []):
+                checks.append((f"page holds: {frag}", frag in page))
+            if expect.get("order"):
+                pos = [page.find(x) for x in expect["order"]]
+                checks.append(("page order: " + " < ".join(expect["order"]), all(p >= 0 for p in pos) and pos == sorted(pos)))
+            ok = all(c for _, c in checks)
+            ok_all &= ok
+            results.append({"scenario": name, "pass": ok, "checks": [{"check": c, "pass": p} for c, p in checks]})
+            print(f"{'pass' if ok else 'FAIL'}  {name}")
+            for c, p in checks:
+                if not p:
+                    print(f"        missed: {c}")
+            if not ok:
+                for w in warns:
+                    print(f"        warning {w}")
+    n = sum(len(r["checks"]) for r in results)
+    print(f"{'PASS' if ok_all else 'FAIL'} guide_build.py self-test: {sum(r['pass'] for r in results)} of {len(results)} scenarios, "
+          f"{sum(c['pass'] for r in results for c in r['checks'])} of {n} expectations")
+    return 0 if ok_all else 1
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", help="output HTML path (default: the Stage A board page)")
@@ -1512,7 +1767,9 @@ def main():
     ap.add_argument("--demo", action="store_true", help="fill placeholder chapters with the shell's sample rules")
     ap.add_argument("--strict", action="store_true", help="exit 1 when there is any warning")
     ap.add_argument("--quiet", action="store_true")
-    sys.exit(build(ap.parse_args()))
+    ap.add_argument("--self-test", action="store_true", help="prove the build's checks on fixtures in a temporary folder")
+    args = ap.parse_args()
+    sys.exit(self_test() if args.self_test else build(args))
 
 
 if __name__ == "__main__":
