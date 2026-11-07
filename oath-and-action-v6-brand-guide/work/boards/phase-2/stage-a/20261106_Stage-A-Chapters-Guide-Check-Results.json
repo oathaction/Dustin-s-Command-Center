@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-07T07:39:35.838Z",
+ "checked": "2026-11-07T07:41:49.308Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -182,7 +182,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9280,
+    "texts": 9300,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -194,7 +194,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 336,
+    "marks": 338,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -223,7 +223,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 359540,
+   "height": 360418,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -417,7 +417,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9145,
+    "texts": 9165,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -429,7 +429,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 336,
+    "marks": 338,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -458,7 +458,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 385584,
+   "height": 386572,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -662,7 +662,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9119,
+    "texts": 9139,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -674,7 +674,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 336,
+    "marks": 338,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -703,7 +703,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 462891,
+   "height": 463997,
    "fonts": [
     "Inter",
     "Inter Tight",
