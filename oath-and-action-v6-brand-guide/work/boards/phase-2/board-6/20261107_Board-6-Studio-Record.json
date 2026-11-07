@@ -1,0 +1,46 @@
+{
+ "asked": [
+  "Keep the grid to one use, on mastheads, headers and footers, and make the bill tracker much simpler, like a line with dots or a six-step process, because the grid is not clear.",
+  "Revisit the Civic Line icons and show a few thoughts on the four icons for the four pillars.",
+  "Show more variations of the stacked lockup, since the offset ampersand at the right of today's L2 does not sit well.",
+  "Make six one-page brand identity sheets in six different color schemes with different feels, after researching what is current in design, keeping Newsprint and the whole direction, to see what would work if red were not at the forefront.",
+  "Roll with it, with no question round first."
+ ],
+ "process": [
+  {"stage": "Makers", "text": [
+   "Four sections were built in parallel under one brief. The systems designer drew the tracker options and the lockmark's places, and checked them for accessibility. The icon designer reviewed all 122 Civic Line icons and proposed three pillar sets. The identity designer arranged six stacked lockups from the approved masters, with a script confirming no letter was redrawn.",
+   "The research lead surveyed current color and design practice at editorial, news and civic brands, and how lead colors read for party, and proposed eight palette directions. The color designer built six identity sheets from six of them, plus today's palette as a reference, measuring every text and mark pair against WCAG 2.2 AA."
+  ]},
+  {"stage": "Creative director", "text": "The creative director reviewed every option at desktop and phone width, acted as the red team for contrast, color-only meaning, party reading and the use of approved masters, and wrote this board's verdict, recommendations and decisions."}
+ ],
+ "checks": [
+  {"name": "Tracker section", "command": "node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html --board", "result": "0 failures at 1440, 390 and 360 px, run by the main session.", "pass": true},
+  {"name": "Pillar icons section", "command": "node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html --board", "result": "0 failures at 1440, 390 and 360 px, run by the main session.", "pass": true},
+  {"name": "Stacked lockups section", "command": "node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html --board", "result": "0 failures at 1440, 390 and 360 px, run by the main session.", "pass": true},
+  {"name": "Color sheets section", "command": "node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html --board", "result": "0 failures at 1440, 390 and 360 px, run by the main session.", "pass": true}
+ ],
+ "not_tested": [
+  "Real readers. The tracker options, the pillar icons and the stacked lockups have not been shown to anyone outside the studio; the icon designer's naming test is the studio's own judgment.",
+  "Print. The color sheets were measured on screen only; no lead color has been proofed on newsprint or coated stock.",
+  "Any real screen reader, and browsers other than Chromium.",
+  "Party reading with real readers. The research memo's party readings rest on published studies and examples, not a test of these sheets."
+ ],
+ "changelog": {
+  "created": [
+   "work/handoffs/phase-2/20261107_Board-6-Brief.md",
+   "work/handoffs/phase-2/20261107_Color-And-Aesthetic-Research.md",
+   "work/handoffs/phase-2/20261107_Board-6-Tracker-Notes.md",
+   "work/handoffs/phase-2/20261107_Board-6-Pillar-Icons-Notes.md",
+   "work/handoffs/phase-2/20261107_Board-6-Stacked-Notes.md",
+   "work/handoffs/phase-2/20261107_Board-6-Color-Sheets-Notes.md",
+   "work/handoffs/phase-2/20261107_Board-6-Builder-Notes.md",
+   "work/handoffs/phase-2/20261107_CD-Review-Of-Board-6.md",
+   "work/boards/phase-2/board-6/ (four section pages, the stacked lockup SVGs, the board content and this record)",
+   "work/build/scripts/phase-2/ (the Board 6 section builders, the hub builder and its capture helper)",
+   "work/boards/20261107_Board-6-Explorations.html"
+  ],
+  "modified": [
+   "work/ledger/20261020_Decision-Log.md (DR-104 to DR-107, D2-320 to D2-322)"
+  ]
+ }
+}
