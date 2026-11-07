@@ -796,3 +796,23 @@ Dustin, replying to Board 6: "Agree with all. please proceed and tell me when to
 | DR-112 | A kicker keeps its content label and words. A topic icon sits only beside the topic's own word; the pillar icons stay in the pillar row, on section openers and on tiles | Dustin, November 7, as recommended (B6-5) |
 | DR-113 | Stacked lockup S1, "OATH &" over "ACTION", flush left, replaces L2 (named approval of a lockup change under gate rule 4, shown beside L2 at the same cap height on Board 6) | Dustin, November 7, as recommended (B6-6) |
 | DR-114 | Pillar Red stays the lead color. The next reader check adds a question on how readers read it for party | Dustin, November 7, as recommended (B6-7) |
+
+## Board A answers, November 7, 2026 (new chat)
+
+Dustin, in the eighth chat's starting prompt: "Board A: all recommendations, and I approve A1 and A6 by name. A2 and A5 are overtaken by my grid direction." The studio records each recommendation below. A2 (the Signal Grid's codes) and A5 (series routes) take no answer, since DR-104 and DR-110 retire both jobs.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-115 | Edition 06 keeps today's wordmark width, with ampersand B as refined. The condensed drawing stays in the files as a record and leaves the proofs (named approval under gate rule 4) | Dustin, November 7, as recommended (A1), approved by name |
+| DR-116 | Social avatars and the app icon show ampersand B alone on the Charcoal tile; the monogram lockup L8 stays for squares where the name must show, such as a tile in a partner's directory | Dustin, November 7, as recommended (A3) |
+| DR-117 | The editorial crop of B always takes the surface's ink, never red | Dustin, November 7, as recommended (A4) |
+| DR-118 | An article ends with B alone, at the text's cap height and in the text's ink. The hinge-circle badge keeps sizes from 48 px, for back covers and events (named approval of a change to an approved identity use, gate rule 4) | Dustin, November 7, as recommended (A6), approved by name |
+| DR-119 | Rule 05.1 sets three firm limits for each view: Newsprint 60 to 85 percent, one dark panel per section, and red within 5 percent. The other fifth-edition shares stay as the balance across a body of work | Dustin, November 7, as recommended (A7) |
+| DR-120 | The body measure token keeps 33.88 rem, and its description says it holds about 65 characters of 17 px Inter, measured in Chromium | Dustin, November 7, as recommended (A8) |
+| DR-121 | Atlas System 1 moves from White to Newsprint in its finishing work for chapters 15 and 21 | Dustin, November 7, as recommended (A9) |
+| DR-122 | The two remaining fifth-edition supporting lines retire with no role: "Here is what the record shows. This part still needs…" and "The rules connect. The gaps create opportunity. Pe…" | Dustin, November 7, as recommended (A10) |
+| DR-123 | The three lines the editor completed stand as written: Connect's job, the end of the list of words we use, and the mechanism row on the committee chair | Dustin, November 7, as recommended (A11) |
+| DR-124 | DR-94 is approved. DR-55's clause "the chart set is chosen so readers on each side meet a finding they would rather skip" is replaced by "Charts are chosen by the question and the evidence. Every title is read from the left and the right to check that its words are accurate and fair. A set never adds or drops a finding to even the score." | Dustin, November 7, as recommended (A12) |
+| DR-125 | Chapter 01 takes the one-standard wording now: its opening's paragraph on what nonpartisan means, Rule 01.11's added sentence and new reason, "in a hinge headline" in Rule 01.20's reason, and "the spread of examples" in Rule 01.12's reason. The example of an uneven finding starts from the 2020 court record (our systems atlas, issue I155) and goes in before Gate 2, once the research lead has read the court's opinion and the review in full and written its source line | Dustin, November 7, as recommended (A13) |
+| DR-126 | Rule 02.25's last row prints the Senate count by party in the same sentence as both of H.R. 7008's provisions: "It needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no." Its source line names the Congressional Record and marks the party roster as a secondary source | Dustin, November 7, as recommended (A14) |
+| DR-127 | H10's corrected qualification line stands: "Each margin is the leading party's lead, in percentage points of all presidential votes." This confirms the erratum D2-256 | Dustin, November 7, as recommended (A15) |
