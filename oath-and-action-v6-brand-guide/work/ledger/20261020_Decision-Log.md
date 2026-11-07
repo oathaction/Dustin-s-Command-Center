@@ -834,3 +834,105 @@ The studio asked two questions before the apply pass: whether the reader check h
 | D2-327 | The sign-off is drawn from the lockmark's display master at 48 px | The creative director found the 24 px master soft at 40 px on Board 6; Rule 08.1 already places the sign-off at 48 px |
 | D2-328 | The condensed wordmark files stay where they are, marked in the asset records as kept for the record and not in use. The proofs appendix becomes "Identity proofs": today's width in use, and L2 beside S1 at 48 px, 96 px and display size | DR-115 and DR-113, with the side-by-side record gate rule 4 asks for |
 | D2-329 | The apply pass runs in two rounds as D2-258 set for the stage A fix pass: the makers, the engineer and the research lead in parallel by ownership, then the editor's copy edit through each owner's build script | One pass, and no two agents edit one file at once |
+
+## Apply pass, round one, November 7, 2026
+
+Four owners worked in parallel under `work/handoffs/phase-2/20261107_Apply-Pass-Brief.md`, and the research lead checked the 2020 court example and mapped H.R. 7008 onto the six steps (`20261107_Apply-Pass-Research.md`, which proposes no routine calls). Their routine calls, numbered by the main session in the order each owner's notes give them:
+
+### Identity designer (chapters 03, 04, 08, the proofs, S1)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-330 | S1's Charcoal edition sets Charcoal letters with B in signature red, colors written in, beside each master in `lockups/`; its Prussian White edition sits in `prussian/` | The Civic Line package calls the editions drawn in Charcoal "Charcoal editions", and `prussian/` holds every treatment D file, where Rule 03.1 already sends builders |
+| D2-331 | S1's masters cover capitals 14 to 17 px (16 px master), 18 to 36 px (24 px master) and from 37 px (display master) | Board 6's proposed ranges, which follow the wordmark's ranges by height |
+| D2-332 | The badge's minimum is 48 px on screen and 0.50 in in print; its 16 and 24 px masters stay in `badge/` for the record | DR-118 keeps the badge from 48 px; 0.50 in is 48 px at 96 px to the inch |
+| D2-333 | At body size, B as the end mark takes its 16 px master at 16 px, 14 px tall, 1.6 px taller than the capitals of 17 px text | DR-118's cap height meets Rule 03.4's 14 px floor for identity marks, and the floor wins; the rule says "as tall as the text's capitals, or 14 px tall where they are shorter", as the old Rule 04.6 builders note did |
+| D2-334 | The end mark does not count as the view's one ampersand moment (Rule 04.2) | Every article now ends on B, and a hinge headline must stay possible in the same article |
+| D2-335 | Rule 04.6's failure sets the registered sign in Liberation Sans, the metric twin of Arial, inside a PNG | Inter draws the sign as a small raised glyph; most typefaces draw it full height on the baseline, the form a reader would confuse with the badge, and a PNG keeps the comparison the same on every screen |
+| D2-336 | Chapter 08 holds three rules: the master (08.1), the four places (08.2) and no codes (08.3) | The brief asks for a short chapter, and each place's size sits in Rule 08.2's specifications |
+| D2-337 | The four places share one plate, 770 px wide, with the fit switch | Each place shows at true size, and the masthead needs its 768 px breakpoint |
+| D2-338 | The masthead place includes the email header | Rule 03.6 already sets L3 at the head of an email |
+| D2-339 | When a masthead and a footer share one view, the footer keeps the lockmark and the masthead sets the wordmark alone | Rule 08.2 has always said once per view; Board 6's tracker notes proposed this form, and Rule 03.6's builders note now says the same |
+| D2-340 | L6 is listed under the footer place, with its lockmark at L6's own proportion | L6 is the strip that closes a report; changing its proportion would change a lockup (question 1) |
+| D2-341 | The chart footer prints chapter 02's jobs chart source line word for word | A real, approved source line, and no invented statistic |
+| D2-342 | Rule 08.3's correct plate draws Board 6's Option B with the same geometry as chapter 11 | A reader sees the fix beside the failure; I compared it with `s-11-list-360-charcoal` (324 by 34 px, 26 px circles), and they match |
+| D2-343 | Rule 08.3's failure draws Board 6's S.0876 on stage A's 40 px lattice | One retired use, as the brief asks, with the same bill as the correct plate and one Illustrative label at the head of each card |
+| D2-344 | L6's job reads "the strip that closes a report or a long page" | "Sign-off" now names one of the lockmark's places |
+| D2-345 | The proofs drop the email pair | The brief lists the masthead, avatar, social card and letterhead, and chapter 03 already shows the email header |
+| D2-346 | "48 px, 96 px and display size" are read as lockup heights at one cap height: capitals 22, 44 and 100 px. L2 comes from its display master at every size, and S1 from the master its range picks | L2 has only a display master, and S1 at 22 px capitals is its 24 px master at true size |
+| D2-347 | The minimum table on the page leaves out retired rows, while the JSON keeps L2 as retired | The asset record keeps the history, and the reader page shows what is in force |
+| D2-348 | A new one-page letterhead proof, `20261107_Letterhead-Proof.pdf`, sits beside the stage A proof | The stage A file is the record of what board A showed |
+### Systems designer (chapters 05, 06, 07 and chapter 11's trackers)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-349 | Chapter 11's plates draw Board 6's Option B and Option D marks in tokens, with the take-part badge's 1 px Charcoal keyline inside its 11 px disc and 1.5 px of the surface cut around it | Rule 05.5 draws a keyline inside the mark, and the cut parts the disc from the ring at 24 px |
+| D2-350 | Every type size in chapter 11's plates is on the scale: bill name 17 px, status and take-part lines 15, keys 14, step names and numbers 13 (14 in circles from 28 px), list titles H3 at 26 or 32, the card headline H4 at 20 | D2-254 and D2-301; Board 6's 16 px rows would fail the guide check |
+| D2-351 | The list grows from Board 6's four bills to five, adding S.2045, stopped at step 6 by a veto that stood | The creative director's open item asks for one list with a stopped bill |
+| D2-352 | The take-part mark on step 5 is shown on a story card (S.0412), and the lists keep one take-part bill | The creative director's other open item; one red row per list keeps the ask clear |
+| D2-353 | The federal example is an invented bill, H.R. 3120, Passport wait times, beside a state bill, both at step 6 | DR-128 shown where the two names differ, at true size |
+| D2-354 | Chapter 11's kickers are text only, "Tracker · State bills"; the bill page drops Board 6's CL-005 icon | DR-112, and the Board 6 notes found CL-005 faint at 24 px |
+| D2-355 | Every failure plate in chapter 11 carries the "Failure case: do not publish" band | D2-308; each could pass for a real tracker |
+| D2-356 | Rule 11.1's failure uses the clerk's step names and Rule 11.3's prints "Step 6 of 6: Law" | One fault a producer could make in each, and neither prints the nine retired stages the check rejects |
+| D2-357 | Chapter 11's 1,024 px plates carry the True size / Fit to window switch | At 1440 px the chapter column holds about 867 px, so they scroll at true size by default; the switch shows them whole at 75 percent |
+| D2-358 | Chapter 11's intro names the coming groups in plain words with no stage name, and the chapter ends with no placeholder group | D2-253; the shell needs no block, and the sentence stays true once the groups land |
+| D2-359 | In chapter 11, dates, "N px" and "step N" carry a no-break space, and running lines set `text-wrap: pretty` | No date splits from its day and no line ends on one word at 360 px |
+| D2-360 | Rules 11.1, 11.3, 11.5 and 11.6 cite "Design judgment, approved by our founder and editor in November 2026" | DR-108, DR-109 and DR-128 approved these choices; the basis says so in words (D2-253) |
+| D2-361 | Prussian's job reads "panels that hold dates, an explainer or a set of figures" | A tracker carries the take-part red, and red never sits on Prussian (Rule 05.3) |
+| D2-362 | Rule 05.7's why takes DR-124's wording as a second paragraph | Board A's A12 card names Rule 05.7; the old clause was not there, and this is where chapter 05 meets chart choice |
+| D2-363 | The cards in `s-05-6-failure` and `s-07-1-*` change kicker from Tracker to Explainer and to Act · How to take part | A Tracker card now carries numbered steps (Rule 11.5); these plates teach contrast and spacing |
+| D2-364 | Chapters 05 and 07 carry their own related chapter lists | The build's default reasons named content-type colors and sanctioned positions, both retired with the grid's codes |
+| D2-365 | `stage_a_systems_build.py` keeps manifest entries from chapters it does not write | Chapter 11 shares `manifest-systems.json` |
+### Editor, round one (chapters 01 and 02)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-366 | A13's paragraph is chapter 01's second opening paragraph, and the hinge paragraph opens the hinge figure | The content contract allows two paragraphs, and the hinge text then sits above the table it explains |
+| D2-367 | The 2020 example prints as an extra after Rule 01.11, and only once the research lead's check holds | It shows Rule 01.11's added sentence where a writer learns it, off the chapter's first screen |
+| D2-368 | Rule 01.11's title is "Show a case from each party that uses a mechanism, and report the counts as the record gives them." | The old title taught only the even case (DR-93) |
+| D2-369 | Rule 01.11's failure names its fault as a dropped finding | DR-93: dropping a documented case is the fault |
+| D2-370 | Rule 01.13 names a party when party is part of the finding, a one-sided record included | Rule 01.11's new sentence relies on 01.13's counts (A13) |
+| D2-371 | Rule 01.16 gives two readings only to a contested grade, and every other grade one reading | DR-93 and DR-124: no reading added to even the score |
+| D2-372 | Rule 01.1's card is a Report | A card that reports one vote needs no tracker steps (DR-109), and its lesson stays on color |
+| D2-373 | A kicker's topic icon is 24 px, one color, 8 px directly before the topic's word; Rule 01.21 shows CL-055 on "Analysis · Productivity" | DR-112, with an icon whose name is the kicker's word |
+| D2-374 | CL-025 Congress stays out of chapters 01 and 02 | It draws a dome over columns, which Rule 01.6 keeps out of icons |
+| D2-375 | The pillars figure opens with the 48 px pillar row, one color and no current pillar, and closes with the 24 px row with Track current | DR-111's underline shown where a current pillar exists; red only from 48 px |
+| D2-376 | The 48 px pillar row stacks in one column under 48em, with downward arrows | The creative director's Board 6 review: the phone row dropped its arrow |
+| D2-377 | Pillar and topic icons are inlined from the black masters, ink through currentColor, ids, title and desc dropped, hidden from assistive technology | Geometry untouched, no literal colors, and the word carries the meaning |
+| D2-378 | The H.R. 7008 card draws Rule 11.7's 24 px circles across 336 px, with a key of the six step names under them | A story card at a phone's text width, and the key shows "President" (DR-128) |
+| D2-379 | Until the research lead's mapping arrives, the card prints the two documented votes in words and no step marks | The page stays true while the states wait |
+| D2-380 | Rule 02.25's count joins the provisions sentence with ", and it needed" | Keeps DR-98's and DR-126's wording and puts the count in one sentence with both provisions |
+| D2-381 | Rule 02.25's source line names the Congressional Record and the congress-legislators roster as a secondary source | DR-126, from the research lead's November 6 report |
+| D2-382 | W14's source reads "chapter 07, figure caption" | D2-326; the approved content file stays as Board 5 approved it |
+| D2-383 | The retired record lists six lines and quotes DR-122's two to the end of their last whole sentence | Our copy holds only their first 50 characters |
+| D2-384 | Rule 02.26 drops the grid's coding term and defines the lockmark by its four places | D2-326, DR-110 |
+| D2-385 | The pieces figure drops its own side padding from 48em, so two 340 px cards share a row at 1,440 px | The stage's inner width, 675 px, had put one card per row |
+### Engineer (build, shell, checks, tokens)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-386 | The build reads a chapter file under its old name, with a note, only while the new file is missing; once the new file exists the old name is a warning. The map held `08-signal-grid` during the pass and is empty since the rename landed | Other makers kept building through the rename, and the finished build expects `08-lockmark.json` |
+| D2-387 | A citation of a rule its chapter does not hold is a build warning for every chapter in the page, and the three sentences that carried chapter 08's old numbers warn while they survive as written | D2-325: no old number may survive, including one that lands on a new rule by chance |
+| D2-388 | `guide_check.js` repeats the citation check on the rendered page as `ruleRefs`, alt text included | The build reads raw files; the check reads what a reader meets |
+| D2-389 | V5's `#grid` alias moves to `#lockmark`, and no `#signal-grid` alias is kept | D2-325: nothing has shipped, so no reader holds the old anchor |
+| D2-390 | A part opener lists every chapter of its part, those not in the page as text with "Coming later" | Chapter 11 opens its part alone, and the reader sees where 09, 10 and 12 will sit |
+| D2-391 | The appendix stays after the last chapter in the page; its location line and Previous link follow that chapter | An appendix closes the guide; with chapter 11 in the page it follows 11 |
+| D2-392 | The shell fixes the appendix title as "Identity proofs" and warns on any other; the contents takes `proofs.json`'s instruction line | D2-328 |
+| D2-393 | The cover folio, page title, description and colophon name the chapters the page holds, and the draft date moves to November 7, 2026 | The cover said "Foundations, chapters 01 to 08" with chapter 11 in the page |
+| D2-394 | Related reasons for chapters 05, 07 and 08 drop the grid's retired jobs, and chapter 08 relates to 03, 07, 11 and 14 | DR-110 |
+| D2-395 | A placed specimen drawn from a condensed wordmark master is a build warning | DR-115 and D2-328: the condensed drawing leaves every page and stays only as files |
+| D2-396 | The `codes` check reads "gate" in any case, "Board N", "board A" to "F" and "stage A" to "C" | Brief item 3's "Gate" wording, and the board and stage names are the same kind of studio word D2-253 bans |
+| D2-397 | `retiredWords` fails "Signal Grid", "Stage n of 9", "nine stages" and "condensed width, proposed" everywhere, failure plates included | D2-326, DR-108 and DR-115; a failure plate can name its fault without the old name |
+| D2-398 | `retiredClasses` fails the eight classes of the stage A grid specimens, except inside a failure plate | Chapter 08's failure plate shows one retired use on purpose, as the brief asks |
+| D2-399 | `partOrder` fails a chapter outside its own part's opener or missing from its list | D2-324 puts a chapter in a second part for the first time |
+| D2-400 | `guide_check.js` removes its own captures of sections the page no longer holds | Stale `signal-grid` captures would show a chapter that no longer exists |
+| D2-401 | The body measure token reads "Body measure: holds about 65 characters of 17 px Inter, measured in Chromium.", with `chars` 65, at version 6.0.0-gate2.3 | DR-120 |
+| D2-402 | The tracker gets no tokens in this pass; stage B defines one family of mark tokens for trackers and status marks, read by the plates through CSS | A token with no reader escapes the guide-to-token parity test, and stage B's status marks share the tracker's shapes |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-403 | L6 stays as drawn, with its four pillar dots, until Dustin answers the identity designer's question on the changes board | Removing the dots changes a lockup, which needs his named approval (gate rule 4); the dots break DR-110 and DR-111, so the board asks |
+| D2-404 | Rule 01.11's reason prints as Dustin approved it in DR-125; the editor's one-sentence version goes to him on the changes board | Approved wording changes only with his answer |
+| D2-405 | The capitol dome in Civic Line's Congress icon (CL-025) goes to stage B as a question, and chapter 01 uses no icon for Congress until then | Rule 01.6 keeps domes to captioned photographs, and the Civic Line set is settled, so the conflict is Dustin's to resolve |
