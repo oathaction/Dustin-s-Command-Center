@@ -257,7 +257,7 @@ function recommendation(M) {
 <h3>Five changes in how Set A is used</h3>
 <ol class="changes">
 <li>The word sits beside the icon in every row, and always below 48 px.</li>
-<li>In a row the four icons go one color, and the current pillar keeps its red from 48 px up. Below 48 px, bold type and an underline mark the current pillar’s word.</li>
+<li>In a row the four icons go one color, and an underline marks the current pillar’s word at every size. From 48 px up its icon also keeps its red, as a second sign.</li>
 <li>At 16 px the icon is decoration beside its word. Its line is ${fmt(STROKE * 16 / 128)} px wide there, and no drawing on this page keeps a clear shape at that size.</li>
 <li>The grid corner retires, and the icon takes its place in kickers and on section openers.</li>
 <li>The app icon and avatars use the two-color tile on Charcoal, from 76 px.</li>
@@ -309,7 +309,7 @@ function sizes(s, M) {
 
 function rows(s) {
   return `<h3 class="sub">In the pillar row</h3>
-<p>At 48 px in one color, with Track as the current pillar keeping its red. Below it, the compact row at 24 px, where bold type and an underline mark the current pillar.</p>
+<p>At 48 px in one color, with Track as the current pillar: its word is underlined and its icon keeps its red. Below it, the compact row at 24 px, where the underlined word, set bold, marks Track and every icon stays one color.</p>
 <div class="rowdemo">${pillarRow(s.ids, { px: 48, current: 'track' })}</div>
 <div class="rowdemo compact">${pillarRow(s.ids, { px: 24, current: 'track', size: 's' })}</div>`;
 }
@@ -446,7 +446,8 @@ section{border-top:1px solid var(--stone);margin-top:56px;padding-top:32px}
 .prow-grid .pi{position:relative;padding-right:36px}
 .prow-grid .pi:not(:last-child)::after{position:absolute;right:8px;top:50%;transform:translateY(-50%);margin:0}
 .prow-s .pi{gap:8px}.prow-s .pw{font:500 1rem/1 var(--body)}.prow-s .pi:not(:last-child)::after{margin:0 12px;font-size:1rem}
-.prow-s .cur .pw{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+/* the current pillar: an underline on its word at every size, so the state never rests on red alone (WCAG 2.2, 1.4.1) */
+.prow .cur .pw{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}.prow-s .cur .pw{font-weight:700}
 /* comparison */
 .cmp{border-top:2px solid var(--ch);margin-top:20px}
 .cmp-row{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px 40px;align-items:center;padding:24px 0;border-bottom:1px solid var(--stone)}

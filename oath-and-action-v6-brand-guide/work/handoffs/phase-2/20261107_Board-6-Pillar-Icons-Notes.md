@@ -32,7 +32,7 @@ All 122 drawings read on the five red-black contact sheets, then: (1) sheets 01 
 
 **Keep Set A and change how it is used.** These are the only four of the 122 drawn for the pillars, so no topic or reform page shares the drawing. Sets B and C each borrow drawings that already name a topic (B three: Public Records, Household Income, Petition; C two: Civic Ties, Voting), so a reader would meet one drawing with two meanings. A's hand covers any next step, where a ballot (C) or a signed page (B) names one kind of step, and B's petition can read as advocacy. A needs no new identity approval (DR-04 stands).
 
-Five changes in use: the word beside the icon in every row and always under 48 px (R9); one color in a row, with the current pillar's red only from 48 px up, and bold type and an underline marking it below 48 px (DR-66); at 16 px the icon is decoration beside its word; the grid corner retires and the icon takes its place in kickers and section openers (DR-104); the app icon and avatars use the rounded two-color Charcoal tile from 76 px (R13, D2-42).
+Five changes in use: the word beside the icon in every row and always under 48 px (R9); one color in a row, with an underline on the current pillar's word at every size and its icon's red as a second sign from 48 px up (DR-66); at 16 px the icon is decoration beside its word; the grid corner retires and the icon takes its place in kickers and section openers (DR-104); the app icon and avatars use the rounded two-color Charcoal tile from 76 px (R13, D2-42).
 
 Weaknesses Dustin would accept: Track is the busiest mark and the faintest at 16 px (1 pixel reaches 3:1); Act measures 63.9 against Explain's 79.4 px at 128 px, about a fifth smaller. Second choice: Set C, if he wants people and public acts. Set B ties best as a family, at the cost of three topic drawings and two pillars that both show writing.
 
@@ -54,7 +54,7 @@ R9 asks for the pillar's word beside a mark under 48 px. In a kicker the content
 - D2-xxx | The shortlist starts from the 41 drawings the October 29 trace review found still read at 24 px, 29 of them on sheets 01 to 03 | A pillar mark works at 24 px in kickers and compact rows
 - D2-xxx | Explain stays CL-019 in all three sets | No other drawing says explain as plainly; CL-068 repeats the book and names a topic, and CL-023 shares Track's magnifier
 - D2-xxx | 16 and 24 px stay one color on the board; two colors start at 48 px | The line is 0.42 px at 16 px and 0.63 px at 24 px, and red under a full pixel reads as pink (the reason behind D2-42)
-- D2-xxx | In a row, only the current pillar keeps its red, and only from 48 px; below 48 px bold type and an underline mark it | DR-66, read with the small-size reason above
+- D2-xxx | In a row, a 2 px underline marks the current pillar's word at every size, set bold below 48 px; from 48 px up its icon also keeps its red, as a second sign | Nothing is told by color alone (WCAG 2.2, 1.4.1; creative director's review); DR-66 for the red, read with the small-size reason above
 - D2-xxx | In a kicker the pillar icon takes the grid's slot at 24 px in one color, 12 px before the content label, and the topic icon leaves the kicker | DR-104 retires the grid from the kicker; one icon keeps the line short. Open to Dustin's answer on R9
 - D2-xxx | The section opener is a Charcoal panel with the Newsprint and red edition at 128 px | The guide's part openers are Charcoal panels waiting for the pillar mark (D2-166), and DR-09 puts that edition on Charcoal
 - D2-xxx | Section openers show Connect for all three sets | Connect is the one pillar that changes in every set, so the openers compare like with like
@@ -71,6 +71,9 @@ R9 asks for the pillar's word beside a mark under 48 px. In a kicker the content
 - Closest pair in shape at 24 px: Set A Explain and Connect, 60th percentile; Set B Track and Connect, 36th; Set C Connect and Act, 75th.
 - The build fails if the page holds an em dash; it holds none. A scan of the page text found none of the listed intensifiers or corporate verbs and no en dash.
 - Every icon inlined from its master file; the only edits are id suffixes per placement and the width and height attributes.
+
+- Fix pass: Chromium computed style shows the current pillar's word underlined in all six rows that mark one (Sets A, B and C, at 48 and 24 px), at 1440 and 390 px, with no other word underlined and no red outside the current icon. In grayscale the 48 px row of Set A shows Track by its underline. A scan of the page found no other state carried by color: the Recommended and Illustrative chips carry their words, the shortlist names each set in words, and no link sits outside the contents bar.
+- After the fix pass, `dataviz_check.js --board` reads **PASS, 0 failures** at 1440, 390 and 360 px.
 
 ## Not tested
 
@@ -90,6 +93,11 @@ Created:
 - `work/boards/phase-2/board-6/pillar-icons/captures/20261107_Board-6-Pillar-Icons-board-1440.jpg`, `-board-1440-grayscale.jpg`, `-board-390.jpg` (written by the check)
 - `work/handoffs/phase-2/20261107_Board-6-Pillar-Icons-Notes.md` (this file)
 
-Modified: none. No master, ledger, chapter, token or other board was touched. Nothing committed or pushed. Scratch renders stay in the session scratchpad.
+Fix pass, November 7, 2026, after the creative director's review (`work/handoffs/phase-2/20261107_CD-Review-Of-Board-6.md`, blocking fault 2):
+- Modified `work/build/scripts/phase-2/board6_pillar_icons_build.js`: the current pillar's word takes the 2 px underline at every size, where at 48 px it had shown by red alone; recommendation item 2 and the pillar-row caption say so.
+- Rebuilt the board, its measurements file, the check results and the captures, and modified this file (recommendation, routine call, Tested).
+- Not taken up in this pass, as the coordinator asked for the blocking fault only: the review's other items for this section (pixel-fit 16 and 24 px masters, the phone row's dropped arrow, Act's placement size, the tracker card's deck, and its answer that the pillar mark stays out of kickers).
+
+Modified in the first pass: none. No master, ledger, chapter, token or other board was touched. Nothing committed or pushed. Scratch renders stay in the session scratchpad.
 
 Note: the brief pointed to `.claude/agents/oa-design-director.md` at the repository root; the file lives in `oath-and-action-v6-brand-guide/.claude/agents/`, and I worked from that copy.

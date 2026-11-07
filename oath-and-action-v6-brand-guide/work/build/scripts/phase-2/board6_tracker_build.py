@@ -107,7 +107,7 @@ STAGES = [
          covers=['5 Passed one chamber']),
     dict(n=5, name='Second chamber', means='The other chamber votes, and both agree on one text.',
          covers=['6 Passed both chambers', '7 Final text agreed']),
-    dict(n=6, name='Law', means='The governor signs it, or lawmakers override a veto, and it becomes law. The bill\'s page gives the date it takes effect.',
+    dict(n=6, name='Governor', means='The governor signs or vetoes the bill, and lawmakers can override a veto. Once all six steps are done, the tracker says "Became law on" with the date, and the bill\'s page adds the date it takes effect.',
          covers=['8 Signed', '9 In effect']),
 ]
 NAMES = [s['name'] for s in STAGES]
@@ -138,8 +138,8 @@ BILLS = [
          today='Stage 4 of 9: Out of committee'),
     dict(id='H.1180', title='Library hours', step=6,
          states=['done', 'done', 'done', 'done', 'done', 'now'],
-         line='Both chambers passed it, and it waits for the governor.',
-         notes={6: 'It waits for the governor.'},
+         line='Both chambers passed it, and it waits for the governor to sign or veto it.',
+         notes={6: 'It waits for the governor to sign or veto it.'},
          today='Stage 6 of 9: Passed both chambers'),
     dict(id='H.3301', title='Records request fees', step=4,
          states=['done', 'skipped', 'done', 'now', 'notyet', 'notyet'],
@@ -149,7 +149,15 @@ BILLS = [
 ]
 
 
+# H.1180 once the governor signs it: all six steps done. Invented dates, Illustrative.
+LAW_BILL = dict(id='H.1180', title='Library hours', step=6, law='April 2', effect='July 1',
+                states=['done'] * 6, line='It takes effect July 1.',
+                notes={6: 'Signed April 2. It takes effect July 1.'})
+
+
 def status_words(b):
+    if b.get('law'):
+        return f'Became law on {b["law"]}.'
     return f'Step {b["step"]} of 6: {NAMES[b["step"] - 1]}.'
 
 
@@ -442,8 +450,8 @@ def row(opt, b, ctx):
         return f'<li class="row">{bill}{body}{tp}</li>'
     mark = mark_for(opt, b, ctx)
     if opt == 'C':
-        word = (f'<p class="cw"><span class="cw-w">{E(NAMES[b["step"] - 1])}</span> '
-                f'<span class="cw-n">Step {b["step"]} of 6</span></p>')
+        word = (f'<p class="cw"><span class="cw-w">{E("Became law" if b.get("law") else NAMES[b["step"] - 1])}</span> '
+                f'<span class="cw-n">{E(b["law"] if b.get("law") else "Step " + str(b["step"]) + " of 6")}</span></p>')
         st_line = (f'<p class="st">{E(b["line"])}</p>' if ctx != 'm'
                    else (f'<p class="st">{E(b["short"])}</p>' if b.get('short') else ''))
         core = f'{word}<div class="mkw">{mark}</div>{steps_sr(b["states"])}{st_line}'
@@ -493,7 +501,7 @@ PAGE_NOTES = {
     3: ('Not yet', 'The committee votes on whether to send the bill to the full House.'),
     4: ('Not yet', 'The full House votes on the bill.'),
     5: ('Not yet', 'The Senate votes, and both chambers agree on one text.'),
-    6: ('Not yet', 'The governor signs it into law, and this page gives the date it takes effect.'),
+    6: ('Not yet', 'The governor signs or vetoes the bill. Once it is signed, this page gives the date it became law and the date it takes effect.'),
 }
 
 
@@ -620,6 +628,7 @@ def sec_steps():
     m = ''.join(f'<tr><th scope="row">Bill {E(b["id"])}, {E(b["title"])}</th><td>{E(b["today"])}</td>'
                 f'<td><b>{E(status_words(b))}</b> {E(b["line"])}{" You can take part now." if "take" in b else ""}</td></tr>'
                 for b in BILLS)
+    law = ''.join(f'<li><p class="key-h">Option {o["k"]}, {E(o["short"])}</p>{row(o["k"], LAW_BILL, "m")}</li>' for o in OPTIONS)
     return f'''<section id="six-steps" aria-labelledby="six-steps-h"><p class="secnum">01</p>
 <h2 id="six-steps-h">Six steps a newcomer reads at once</h2>
 <div class="lede"><p>Today's tracker counts nine stages on a 3 by 3 grid, and a reader has to learn the grid's reading order and five shapes before it tells them anything. Six steps cover the same path. Each has a plain name, and every tracker prints the name with its number, as in "Step 2 of 6: Hearing."</p>
@@ -631,6 +640,10 @@ def sec_steps():
 <h3 class="sub">How a state shows, in words</h3>
 <p>Each option below draws these six states its own way, and every one of them prints the state in words beside the mark.</p>
 <dl class="states">{states}</dl>
+<h3 class="sub">When a bill becomes law</h3>
+<p>Step 6 is the governor, who signs or vetoes the bill. A bill at step 6 reads "Step 6 of 6: Governor", which says it is waiting. Once the governor signs, all six steps are done, and the words say "Became law on" with the date. The bill's page adds the date it takes effect. A veto that stands ends the line at step 6 as Stopped.</p>
+<p class="small"><span class="chip chip-ill">Illustrative</span> Bill H.1180, Library hours, after the governor signs it, in each option at the width of a story card.</p>
+<ul class="lawx">{law}</ul>
 <h3 class="sub">Your four bills, today and on six steps</h3>
 <p>Today's list names the last stage a bill finished. The six steps name the step a bill is at now, which is the one a reader can act on.</p>
 <div class="tw"><table class="stk tbl-bills"><caption class="sr">The four bills in your list, as today's tracker reads them and as the six steps read them</caption>
@@ -791,7 +804,7 @@ def sec_checks(meas):
 
 DECISIONS = [
     dict(id='T1', q='Do the nine tracker stages become these six steps?',
-         opts=['Six steps, as drawn: Filed, Hearing, Committee vote, First chamber, Second chamber, Law', 'Keep the nine stages'],
+         opts=['Six steps, as drawn: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor', 'Keep the nine stages'],
          rec='a', why='Six steps cover the same path in words a newcomer knows. Each one joins stages a reader seldom needs apart, such as Signed and In effect, whose dates the bill\'s page still gives. The hearing keeps a step of its own, since it is the step where the public is invited to speak, and a missing hearing is news a reader should see.'),
     dict(id='T2', q='Which tracker do we use?',
          opts=['Option A, a line with dots', 'Option B in lists and on cards, and Option D on a bill\'s own page', 'Option C, the segmented bar', 'Option D everywhere'],
@@ -1009,6 +1022,12 @@ ul.facts{margin:0;padding-left:1.1em}ul.facts li{margin:0 0 8px;max-width:76ch}
 .mx td .cw-w{font:800 17px/1.2 var(--oa-font-family-display)}
 .mx td .cw-n{font-size:13px;color:var(--oa-color-derived-deep-stone)}
 .mx-c td{font-size:.9375rem}
+.lawx{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px 24px}
+.lawx > li{font-size:14px;line-height:1.45;border-top:2px solid var(--oa-color-palette-charcoal);padding-top:10px}
+.lawx p{margin:0;max-width:none}.lawx .st{margin-top:6px}
+.lawx .cw{display:flex;align-items:baseline;gap:8px;margin:0 0 2px}.lawx .cw-w{font:800 17px/1.2 var(--oa-font-family-display)}
+.lawx .cw-n{font-size:13px;color:var(--oa-color-derived-deep-stone)}
+.lawx .vt li{min-height:calc(var(--d) + 14px);padding-bottom:0}.lawx .vt .vt-n{font-size:13px}
 
 /* decisions */
 .decs{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}

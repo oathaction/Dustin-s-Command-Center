@@ -110,6 +110,14 @@ def verdict(a, ground):
 
 NEED = {'text': 4.5, 'large': 3.0, 'mark': 3.0}
 
+# The cost of any move off Pillar Red, as the creative director's review and hub decision B6-7 set it out. Counted on
+# disk November 7, 2026: 12 tokens in tokens.css point at Pillar Red; 122 red-black and 122 red-newsprint Civic Line
+# files; 122 two-color tiles in each of six tile folders.
+SHARED_COST = ('Any move off Pillar Red replaces red in 12 color tokens (signature, the ask fill, chart emphasis and error, '
+               'each on three surfaces; nine if red stays as the error state, as C2 recommends), the 244 two-color Civic Line files and their 732 two-color tiles, and Rules 05.3 and '
+               '05.5, which are written around red. Chapters 03 to 05 and every identity proof are then made again, and Pillar '
+               'Red is locked, so the move waits for the reader check, a press proof on newsprint and your named approval.')
+
 
 # ------------------------------------------------------------------------------------------------ text helpers
 def copy(s):
@@ -165,12 +173,12 @@ SCHEMES = [
          refs=['WGSN and Coloro named Transformative Teal the Colour of the Year 2026, in a trend report.',
                'GOV.UK\'s 2025 refresh keeps teal #158187 as an accent.',
                'The Financial Times sets teal #0D7680 on its paper ground.'],
-         focus_note='Charcoal, 2 px with a 2 px gap, at 13.29:1. Verdigris leaves the ring, since it sits one step from Patina in the same hue.',
+         focus_note='Charcoal, 2 px with a 2 px gap, at 13.29:1. Verdigris sits one step from Patina in the same hue, so it leaves the ring, and the success check moves to Charcoal with its word.',
          error_note='Pillar Red stays as the error state only, with its glyph and the word Error.',
          div=('Prussian', 'Brass', 'Prussian to Brass, so the lead never stands for a data value. Verdigris leaves the scale.'),
          chart_note='Patina and Stone match in grayscale and for a reader with deuteranopia, so the bold label carries the emphasis.',
          print_note='Needs a process build and a press proof on the real stock.',
-         change='Focus ring to Charcoal; diverging scale to Prussian and Brass'),
+         change='Focus ring and success check to Charcoal; diverging scale to Prussian and Brass'),
     dict(key='federal-ink', n=2, name='Federal Ink', feel='Official record', status='Exploration', kind='ink',
          lead='Prussian', hero_ink='White', amp_n='Prussian', amp_c='Sky', lever_n='Prussian', lever_c='Sky',
          acc_n='Prussian', acc_c='Sky', hinge='Prussian', hinge_band=None,
@@ -223,7 +231,7 @@ SCHEMES = [
          div=('Prussian', 'Verdigris', 'Prussian to Verdigris, as today (DR-54).'),
          chart_note='Signal Orange and Stone sit close in grayscale, so the bold label carries the emphasis there.',
          print_note='Needs a process build and a press proof on the real stock.',
-         change='No token changes; Ember for small text'),
+         change='Nothing more; Ember for small text'),
     dict(key='archive-ochre', n=4, name='Archive Ochre', feel='Archival warmth', status='Exploration', kind='band',
          lead='Ochre', hero_ink='White', amp_n='Ochre', amp_c='Ochre', lever_n='Ochre', lever_c='Ochre',
          acc_n='Ochre', acc_c='Ochre', hinge='Ochre', hinge_band=None,
@@ -249,7 +257,7 @@ SCHEMES = [
          div=('Prussian', 'Verdigris', 'Prussian to Verdigris, as today (DR-54).'),
          chart_note='Ochre and Stone sit close in grayscale, so the bold label carries the emphasis there.',
          print_note='Ochre needs three process inks, so it may shift most between print runs.',
-         change='No token changes; Sepia for small text'),
+         change='Nothing more; Sepia for small text'),
     dict(key='highlighter', n=5, name='Highlighter', feel='Modern markup', status='Exploration', kind='fill',
          lead='Highlighter', hero_ink='Charcoal', amp_n='Moss', amp_c='Highlighter', lever_n='Moss', lever_c='Highlighter',
          acc_n='Moss', acc_c='Highlighter', hinge='Charcoal', hinge_band='Highlighter',
@@ -301,7 +309,7 @@ SCHEMES = [
          div=('Prussian', 'Verdigris', 'Prussian to Verdigris, as today (DR-54).'),
          chart_note='Ballot Violet and Stone match in grayscale, so the bold label carries the emphasis.',
          print_note='Violet needs a process build and a press proof on the real stock.',
-         change='No token changes; Deep Violet for small text'),
+         change='Nothing more; Deep Violet for small text'),
     dict(key='today', n=7, name='Pillar Red', feel='Precise punctuation', status='Today, for reference', kind='today',
          lead='Pillar Red', hero_ink='White', amp_n='Pillar Red', amp_c='Pillar Red', lever_n='Pillar Red',
          lever_c='Pillar Red', acc_n='Pillar Red', acc_c='Pillar Red', hinge='Pillar Red', hinge_band=None,
@@ -325,7 +333,7 @@ SCHEMES = [
          div=('Prussian', 'Verdigris', 'Prussian to Verdigris (DR-54).'),
          chart_note='The named bar takes red with a 1 px Charcoal keyline, since red measures 2.96:1 on Newsprint.',
          print_note='Today\'s print notes stand (chapter 25).',
-         change='Today\'s guide'),
+         change='None: today\'s guide'),
 ]
 SCHEME = {s['key']: s for s in SCHEMES}
 ORDER = [s['key'] for s in SCHEMES]
@@ -754,7 +762,11 @@ def sec_sys(s):
             f'<dl><dt>Error</dt><dd>{errbox}<span class="dd-n">{E(s["error_note"])}</span></dd>'
             f'<dt>Focus ring</dt><dd>{E(s["focus_note"])}</dd></dl>'
             f'<dl><dt>Diverging scale</dt><dd>{chips}<span class="dd-n">{E(note)}</span></dd>'
-            f'<dt>Print</dt><dd>{E(s["print_note"])}</dd></dl></div></div>')
+            f'<dt>Print</dt><dd>{E(s["print_note"])}</dd>'
+            + ('' if s['kind'] == 'today' else
+               '<dt>Every move</dt><dd>12 tokens, 244 two-color icon files and their tiles, and Rules 05.3 and 05.5 '
+               'change; chapters 03 to 05 and every proof are made again.</dd>')
+            + '</dl></div></div>')
 
 
 def sheet(s):
@@ -789,7 +801,7 @@ def sec_overview(sheets):
                     f'<td class="num" data-label="On Charcoal">{ratio(L, "Charcoal"):.2f} <span class="vd">{verdict(L, "Charcoal")}</span></td>'
                     f'<td class="num" data-label="Ask label">{E(lab_on)} {ratio(lab_on, s["ask_fill"]):.2f}</td>'
                     f'<td data-label="Party reading">{E(s["party_level"])}</td>'
-                    f'<td data-label="What else changes">{E(s["change"])}</td></tr>')
+                    f'<td data-label="Added to the shared cost">{E(s["change"])}</td></tr>')
     return f'''<section id="all-seven" aria-labelledby="all-seven-h"><p class="secnum">01</p>
 <h2 id="all-seven-h">All seven at once</h2>
 <div class="lede"><p>Every sheet has the same layout and the same content, so only the color changes. Select a sheet to open it at full size. The small sheets are pictures; their type is too small to read here.</p></div>
@@ -797,8 +809,9 @@ def sec_overview(sheets):
 <h3 class="sub">The seven leads, measured</h3>
 <div class="tw"><table class="cmp stk"><thead><tr><th scope="col">Sheet</th><th scope="col">Feel</th><th scope="col">Lead</th>
 <th scope="col">On Newsprint</th><th scope="col">On Charcoal</th><th scope="col">Ask label</th><th scope="col">Party reading</th>
-<th scope="col">What else changes</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
-<p class="small">"Ask label" is the label color on the ask button's fill and its ratio. The party readings are the research lead's design judgments from the sources in her memo; no reader was asked.</p>
+<th scope="col">Added to the shared cost</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
+<p class="small">"Ask label" is the label color on the ask button's fill and its ratio. The party readings are the research lead's design judgments from the sources in the memo; no reader was asked.</p>
+<p class="small"><b>The shared cost.</b> {E(SHARED_COST)}</p>
 </section>'''
 
 
@@ -858,7 +871,7 @@ def sec_checks(render):
 DECISIONS = [
     dict(id='C1', q='Which lead should the studio develop into a full color proposal for chapter 05?',
          opts=['Patina', 'Federal Ink', 'Signal Orange', 'Archive Ochre', 'Highlighter', 'Ballot Violet', 'Keep Pillar Red'],
-         rec='a', why='Patina does every job with one hex on Newsprint and on Charcoal, reads civic, and carries the lowest party reading of the six. It costs two token changes, both shown on its sheet.'),
+         rec='a', why='Patina does every job with one hex on Newsprint and on Charcoal, reads civic, and carries the lowest party reading of the six. Any move replaces red in 12 tokens, the 244 two-color Civic Line files and their tiles, and Rules 05.3 and 05.5, and remakes chapters 03 to 05 and every identity proof after the reader check and a press proof; Patina also moves the focus ring, the success check and the diverging scale. The creative director recommends g, keeping Pillar Red.'),
     dict(id='C2', q='If the lead changes, where does red go?',
          opts=['Pillar Red stays as the error state only, with its glyph and the word Error',
                'Error moves to the new lead\'s deep partner, and red leaves the palette'],
@@ -1159,9 +1172,12 @@ def build():
             sys.exit(f'sheet {k} carries an id or a focusable element')
     head_rec = ('<div class="recbox"><p class="key-h">What we recommend</p>'
                 '<p>We recommend Patina. It does every job with one hex on Newsprint and on Charcoal, reads as civic, and '
-                'carries the lowest party reading of the six. It costs two token changes, shown on its sheet: the focus ring '
-                'moves to Charcoal, and the diverging scale\'s green end moves to Brass. If you want to keep the urgency red '
-                'gives the brand today, Signal Orange is the second choice, and it changes no token.</p></div>')
+                'carries the lowest party reading of the six. If you want to keep the urgency red gives the brand today, '
+                'Signal Orange is the second choice.</p>'
+                f'<p>{E(SHARED_COST)} Patina adds three changes of its own, shown on its sheet: the focus ring and the '
+                'success check move to Charcoal, and the diverging scale\'s green end moves to Brass. Signal Orange adds none.</p>'
+                '<p><b>The creative director recommends keeping Pillar Red</b>, with how readers read it for party added to the '
+                'reader check, and rates Patina the strongest of the six (hub decision B6-7).</p></div>')
     toc = [('all-seven', 'All seven')] + [(f'sheet-{s["key"]}', f'{s["n"]} {s["name"]}') for s in SCHEMES] + \
           [('checks', 'Measurements'), ('answers', 'Your answers')]
     tocs = ''.join(f'<li><a href="#{a}">{E(t)}</a></li>' for a, t in toc)
