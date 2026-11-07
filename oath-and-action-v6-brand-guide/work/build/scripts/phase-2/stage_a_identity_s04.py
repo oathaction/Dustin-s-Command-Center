@@ -9,7 +9,7 @@ fixed sizes (BE-M6, CP-M4, C-M7, D2-254); the Act card reads "The route plan & y
 B's sizes share one baseline and the 16 px master shows as pixels at four times (C-S13); the divider centers B on a line
 as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed (CP-M9)."""
 from stage_a_identity_lib import (E, ID_DIR, AMP, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
-                                  tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master)
+                                  tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp)
 from stage_a_identity_s03 import rec as _rec, markrow, MARKROW_CSS
 
 S = []

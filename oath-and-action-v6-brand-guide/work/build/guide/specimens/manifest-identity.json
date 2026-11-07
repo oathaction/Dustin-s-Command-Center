@@ -39,17 +39,18 @@
   "chapter": "03",
   "rule": "03.2",
   "width_px": 712,
-  "alt": "Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; S1 stacked, OATH & over ACTION on two flush-left lines, 79 pixels, 0.65 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the O & A monogram, 48 pixels, 0.50 inches; L4 the monogram, a hairline and the tagline on two lines, 304 pixels, 2.30 inches; L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.",
+  "alt": "Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches, beside L8 the O & A monogram, 48 pixels, 0.50 inches; S1 stacked, OATH & over ACTION on two flush-left lines, 79 pixels, 0.65 inches, beside L4 the monogram, a hairline and the tagline on two lines, 304 pixels, 2.30 inches; L3 the wordmark with the lockmark at its right, 196 pixels, 1.55 inches, beside L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.",
   "illustrative": false,
-  "notes": "Two columns at 712 px (C-S7). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px."
+  "notes": "Two columns at 712 px (C-S7), with L1, S1 and L3 in the left column, so a phone shows them first in the scrolling frame (CD-S7); every mark sits on the bottom of an 88 px box, so each row's names share one line (CA-S11). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px."
  },
  "s-03-l6": {
   "chapter": "03",
   "rule": "03.2",
-  "width_px": 884,
+  "width_px": 932,
   "alt": "L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the tagline at left, four pillar dots under them and the lockmark at right. Its print minimum is 6.60 inches.",
   "illustrative": false,
-  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units. No web address until it is settled (DR-55)."
+  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units. No web address until it is settled (DR-55).",
+  "fit_switch": true
  },
  "s-03-3-correct": {
   "chapter": "03",
@@ -112,7 +113,8 @@
   "width_px": 1440,
   "alt": "Three mastheads at true size: a 1440 pixel site bar with the wordmark and lockmark at left and five navigation words at right; a 390 pixel phone bar with the wordmark and a menu button; and a 600 pixel white email header with the wordmark and lockmark.",
   "illustrative": false,
-  "notes": "Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG."
+  "notes": "Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG.",
+  "fit_switch": true
  },
  "s-03-6-failure": {
   "chapter": "03",
@@ -264,18 +266,18 @@
   "chapter": "04",
   "rule": "04.6",
   "width_px": 560,
-  "alt": "At true size, the last lines of an article in 17 pixel body text, ending with ampersand B alone in Charcoal, the text’s ink, one space after the final period, its capitals at the 16 pixel master’s 14 pixels. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
+  "alt": "At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending with ampersand B alone in the text’s ink, half an em after the final period. B stands 16 pixels tall beside capitals 12.4 pixels tall, its top 2.6 pixels over the cap line. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
   "illustrative": true,
-  "notes": "DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px.",
+  "notes": "CD-M1 and CA-S4. B's 16 px master at 16 px, its minimum (Rule 03.4), in the text's ink, with vertical-align -1 px so the master's baseline sits on the text's. Measured in Chromium at eight times beside a capital H of 17 px Inter: capitals 12.4 px, B 16.0 px, its top 2.6 px over the cap line, its tail 1.0 px under the baseline. Half an em of margin before B, inside a no-wrap span with the last word. DR-118 asks for the cap height; that height breaks B's minimum at body size, so both versions go to Dustin on the changes board (work/boards/phase-2/apply-pass/end-mark/). The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).",
   "fit_switch": true
  },
  "s-04-6-failure": {
   "chapter": "04",
   "rule": "04.6",
   "width_px": 560,
-  "alt": "Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.",
+  "alt": "Failure case: do not publish. The same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.",
   "illustrative": true,
-  "notes": "The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean.",
+  "notes": "The badge's 16 px master after the last word with a word space, as the end mark stood before DR-118. The comparison is live: 17 px Inter, the badge's master and the registered sign drawn from Liberation Sans's outline (SIL Open Font License), the form most typefaces draw, so only the marks differ (CA-S5). The twice-size row is a CSS transform of vector drawings, sharp on any screen. Failure band per D2-308 (CA-S6). Padded 24 px (CA-S5).",
   "fit_switch": true
  },
  "s-04-7-correct": {
@@ -321,7 +323,8 @@
   "width_px": 700,
   "alt": "The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.",
   "illustrative": false,
-  "notes": ""
+  "notes": "",
+  "fit_switch": true
  },
  "s-08-1-failure": {
   "chapter": "08",
@@ -337,16 +340,16 @@
   "width_px": 770,
   "alt": "The lockmark’s four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark and the lockmark at left and four navigation words at right. Page header: a white report header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people., and a chart’s footer with its source line and the lockmark at 16 pixels at right. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.",
   "illustrative": false,
-  "notes": "DR-110 and D2-327. Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common to both columns of the scale (13 to 17 px), since the plate is 770 px wide.",
+  "notes": "DR-110 and D2-327. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the letterhead proof now draws it too (CA-S10). Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common to both columns of the scale (13 to 17 px), since the plate is 770 px wide.",
   "fit_switch": true
  },
  "s-08-2-failure": {
   "chapter": "08",
   "rule": "08.2",
   "width_px": 358,
-  "alt": "Failure case: a flyer, How to speak at a council meeting, whose three list items each start with a 16 pixel lockmark used as a bullet. Illustrative.",
+  "alt": "Failure case: do not publish. A flyer, How to speak at a council meeting, whose three list items each start with a 16 pixel lockmark used as a bullet. Illustrative.",
   "illustrative": true,
-  "notes": ""
+  "notes": "The flyer could pass for our work, so it carries the Charcoal failure band (D2-308; CD-N5, CA-S6)."
  },
  "s-08-3-correct": {
   "chapter": "08",
@@ -394,9 +397,9 @@
   "chapter": "proofs",
   "rule": "proofs",
   "width_px": 864,
-  "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the tagline and the lockmark at 24 pixels. A link downloads the one-page print proof.",
+  "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the lockmark at 24 pixels followed by the tagline. A link downloads the one-page print proof.",
   "illustrative": true,
-  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px beside the tagline, the footer place (Rule 08.2). interactive: the stage holds the PDF link.",
+  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link.",
   "interactive": true,
   "fit_switch": true,
   "check_exempt": [

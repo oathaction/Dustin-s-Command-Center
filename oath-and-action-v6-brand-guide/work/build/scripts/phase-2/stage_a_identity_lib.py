@@ -547,7 +547,7 @@ CSS = """
 @media (max-width:35.49em){.oai table.stack,.oai table.stack tbody,.oai table.stack tr,.oai table.stack th,.oai table.stack td{display:block;width:100%}.oai table.stack thead,.oai table.stack caption+thead{display:none}.oai table.stack tr{border-bottom:1px solid var(--oa-color-border-strong-on-newsprint);padding:10px 0}.oai table.stack caption{display:block;width:100%}.oai table.stack th,.oai table.stack td{border:0;padding:2px 0}.oai table.stack td[data-k]::before{content:attr(data-k) ": ";font-weight:700}}
 .oai th{font-weight:700}
 .oai-fail-x{display:none}
-.oai .oai-dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.oai .oai-dnp{display:flex;align-items:center;gap:8px;margin:0;padding:6px 10px;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/var(--oa-type-label-line-height) var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
 """
 
 

@@ -181,9 +181,9 @@ def _letter():
             f'<p style="margin-top:15pt">Jordan Lee<br>Town Clerk, Town of Wrenfield</p>'
             f'<p style="margin-top:15pt">Dear Jordan Lee,</p>{paras}'
             f'<p style="margin-top:15pt">Thank you,</p><p style="margin-top:21pt">Dustin Cathcart<br>Founder and Editor</p></div>'
-            f'<div style="position:absolute;left:84px;right:84px;bottom:56px;display:flex;justify-content:space-between;align-items:center;'
+            f'<div style="position:absolute;left:84px;right:84px;bottom:56px;display:flex;gap:12px;align-items:center;'
             f'border-top:1px solid {hair("white")};padding-top:14px">'
-            f'<p style="font-size:10pt;color:{sec}">{E(TAGLINE)}</p>{lockmark(24, surface="white", label="Lockmark")}</div></div>')
+            f'{lockmark(24, surface="white", label="Lockmark")}<p style="font-size:10pt;color:{sec}">{E(TAGLINE)}</p></div></div>')
 
 
 def _pdf_link():
@@ -199,13 +199,13 @@ def s_proofs_letterhead():
     body = f'<div class="oai-pad">{plabel("US Letter", "8.5 by 11 in at 96 px to the inch")}{_letter()}{_pdf_link()}</div>'
     alt = ("A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, "
            "recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to "
-           "the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the tagline and the "
-           "lockmark at 24 pixels. A link downloads the one-page print proof.")
+           "the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the lockmark at 24 "
+           "pixels followed by the tagline. A link downloads the one-page print proof.")
     return rec("s-proofs-letterhead", "proofs", 864, alt, body, illustrative=True, css=PROOF_CSS, interactive=True, fit_switch=True,
                check_exempt=["scale"],
                notes="A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. "
                      "96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. "
-                     "Footer: the lockmark at 24 px beside the tagline, the footer place (Rule 08.2). interactive: the stage holds the PDF link.")
+                     "Footer: the lockmark at 24 px, 12 px, then the tagline, at the footer's left edge, the footer place as Rule 08.2 now draws it (CA-S10). interactive: the stage holds the PDF link.")
 
 
 def write_letterhead(pdf=False):

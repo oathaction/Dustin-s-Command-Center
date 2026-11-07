@@ -57,7 +57,7 @@ def s_08_1_correct():
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "
            "true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.")
-    return rec("s-08-1-correct", "08.1", 700, alt, body)
+    return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True)
 
 
 @spec
@@ -151,7 +151,8 @@ def s_08_2_correct():
            "to its people., and a chart's footer with its source line and the lockmark at 16 pixels at right. Sign-off: the "
            "bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.")
     return rec("s-08-2-correct", "08.2", 770, alt, body, css=PLACE_CSS, fit_switch=True,
-               notes="DR-110 and D2-327. Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display "
+               notes="DR-110 and D2-327. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the "
+                     "letterhead proof now draws it too (CA-S10). Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display "
                      "master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. "
                      "Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display "
                      "master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common "
@@ -165,9 +166,11 @@ def s_08_2_failure():
     flyer = (f'<div class="oai-s-newsprint" style="width:{PHONE}px;padding:20px;border:1px solid {hair("newsprint")}">'
              f'{head_label()}<p style="{ty("h3")}">How to speak at a council meeting</p>'
              f'<ul style="list-style:none;padding:0;margin:12px 0 0;{ty("body")}">{li}</ul></div>')
-    body = f'<div>{flyer}</div>'
-    alt = "Failure case: a flyer, How to speak at a council meeting, whose three list items each start with a 16 pixel lockmark used as a bullet. Illustrative."
-    return rec("s-08-2-failure", "08.2", PHONE, alt, body, illustrative=True)
+    body = f'<div style="width:{PHONE}px">{dnp()}{flyer}</div>'
+    alt = ("Failure case: do not publish. A flyer, How to speak at a council meeting, whose three list items each start with a "
+           "16 pixel lockmark used as a bullet. Illustrative.")
+    return rec("s-08-2-failure", "08.2", PHONE, alt, body, illustrative=True,
+               notes="The flyer could pass for our work, so it carries the Charcoal failure band (D2-308; CD-N5, CA-S6).")
 
 
 # ------------------------------------------------------------------------------------------- 08.3

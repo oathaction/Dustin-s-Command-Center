@@ -12,17 +12,17 @@
   {
    "id": "04.1",
    "title": "Draw the ampersand from B’s master for its size.",
-   "rule": "B has three masters: the 16 px master for 16 to 23 px tall, the 24 px master for 24 to 47 px, and the display master from 48 px. Place the one whose range holds your height.",
+   "rule": "B has three masters: the 16 px master for 16 to 23 px tall, the 24 px master for 24 to 47 px, and the display master from 48 px. Place the one whose range holds your height.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],
    "why": {
-    "text": "B’s strokes swell and thin at 1.74 to 1, so the glyph keeps its color beside the heavy capitals, and its waist crossing sits on the center line that the hinge diagram draws through its nodes. The small masters sit on the pixel grid: at 16 px, 66 percent of B’s ink pixels are solid, where the glyph in our brand guide’s fifth edition reached 48 percent.",
+    "text": "B’s strokes swell and thin at 1.74 to 1, so the glyph keeps its color beside the heavy capitals, and its waist crossing sits on the center line that the hinge diagram draws through its nodes. The small masters sit on the pixel grid: at 16 px, 66 percent of B’s ink pixels are solid, where the glyph in our brand guide’s fifth edition reached 48 percent.",
     "basis": "Our measurements, October 2026"
    },
    "correct": {
     "specimen": "s-04-1-correct",
-    "caption": "B at true size on one baseline: the display master at 160 and 48 px, the 24 px master and the 16 px master. Below, enlarged four times, the 16 px master as the browser draws it in pixels, and its outline on the pixel grid."
+    "caption": "B at true size on one baseline: the display master at 160 and 48 px, the 24 px master and the 16 px master. Below, enlarged four times, the 16 px master as the browser draws it in pixels, and its outline on the pixel grid."
    },
    "failure": {
     "specimen": "s-04-1-failure",
@@ -78,7 +78,7 @@
    },
    "correct": {
     "specimen": "s-04-2-correct",
-    "caption": "A link card at 358 by 188 px, the size a phone feed shows it, with one hinge headline and the wordmark at its foot."
+    "caption": "A link card at 358 by 188 px, the size a phone feed shows it, with one hinge headline and the wordmark at its foot."
    },
    "failure": {
     "specimen": "s-04-2-failure",
@@ -115,7 +115,7 @@
    },
    "correct": {
     "specimen": "s-04-3-correct",
-    "caption": "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height."
+    "caption": "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height."
    },
    "failure": {
     "specimen": "s-04-3-failure",
@@ -140,7 +140,7 @@
     },
     {
      "label": "Master",
-     "value": "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px"
+     "value": "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px"
     }
    ],
    "files": [],
@@ -158,7 +158,7 @@
   {
    "id": "04.4",
    "title": "Set a hinge divider between how a decision is made and what you can do about it.",
-   "rule": "The hinge divider centers B’s 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
+   "rule": "The hinge divider centers B’s 24 px master on a 1 px line as wide as the text it divides, with 12 px of clear line on each side of B. Line and B take the surface’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian. It is never red.",
    "tokens": [
     "oa.color.identity.hingeDivider.onNewsprint",
     "oa.color.identity.hingeDivider.onCharcoal",
@@ -179,21 +179,21 @@
    "specs": [
     {
      "label": "Ampersand",
-     "value": "B’s 24 px master at 24 px, at the center of the line"
+     "value": "B’s 24 px master at 24 px, at the center of the line"
     },
     {
      "label": "Line",
-     "value": "1 px, as wide as the text block it divides, in the same ink as B",
+     "value": "1 px, as wide as the text block it divides, in the same ink as B",
      "token": "oa.color.identity.hingeDivider.onNewsprint"
     },
     {
      "label": "Space",
-     "value": "12 px of clear line on each side of B",
+     "value": "12 px of clear line on each side of B",
      "token": "oa.space.150"
     },
     {
      "label": "Above and below",
-     "value": "24 px or more",
+     "value": "24 px or more",
      "token": "oa.space.300"
     }
    ],
@@ -220,7 +220,7 @@
    },
    "correct": {
     "specimen": "s-04-5-correct",
-    "caption": "The display master at 600 px on Newsprint, and the compact master at 280 px on Newsprint and on Charcoal."
+    "caption": "The display master at 600 px on Newsprint, and the compact master at 280 px on Newsprint and on Charcoal."
    },
    "failure": {
     "specimen": "s-04-5-failure",
@@ -229,11 +229,11 @@
    "specs": [
     {
      "label": "Display master",
-     "value": "From 533 px wide, labels at 13 px; 4.00 in in print"
+     "value": "From 533 px wide, labels at 13 px; 4.00 in in print"
     },
     {
      "label": "Compact master",
-     "value": "From 245 px wide, no labels"
+     "value": "From 245 px wide, no labels"
     },
     {
      "label": "Lines",
@@ -244,7 +244,7 @@
      "value": "In the ring, 1.25 cap heights, signature red"
     },
     {
-     "label": "Below 245 px",
+     "label": "Below 245 px",
      "value": "A hinge headline"
     }
    ],
@@ -262,27 +262,27 @@
   {
    "id": "04.6",
    "title": "End an article with B alone, and keep the badge for back covers and events.",
-   "rule": "An article ends with ampersand B alone after its last word, in the text’s ink, as tall as the text’s capitals, or 14 px tall where they are shorter. The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
+   "rule": "An article ends with ampersand B alone, half an em after its last word, in the text’s ink. B stands at the text’s cap height where its 16 px minimum allows; in body text it takes its 16 px master at 16 px, a little taller than the capitals beside it. The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
    "tokens": [
     "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
+    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-04-6-correct",
-    "caption": "The last lines of an article at true size, body text at 17 px: the paragraph ends on B in Charcoal, the text’s ink, from its 16 px master. Below, the badge at 96 px on the back of a 4 by 6 in event card."
+    "caption": "The last lines of an article at true size, body text at 17 px, on Newsprint and on Charcoal: each paragraph ends on B in the text’s ink, from its 16 px master, half an em after the period. Below, the badge at 96 px on the back of a 4 by 6 in event card."
    },
    "failure": {
     "specimen": "s-04-6-failure",
-    "caption": "The badge at 16 px after an article’s last word. Beside the registered trademark sign at the same size, its ring reads as the same mark."
+    "caption": "The badge at 16 px after an article’s last word. Beside the registered trademark sign at the same size, its ring reads as the same mark."
    },
    "specs": [
     {
      "label": "End mark",
-     "value": "Ampersand B alone, after the last word with a no-break space before it"
+     "value": "Ampersand B alone, half an em after the last word, held to it so B never starts a line"
     },
     {
      "label": "Ink",
@@ -291,15 +291,19 @@
     },
     {
      "label": "Size",
-     "value": "As tall as the text’s capitals, 0.7275 of the font size, from the master whose range holds that height; 14 px at the least (Rule 03.4)"
+     "value": "B’s band, its height less the overshoot above and below, on the text’s capitals, from the master whose range holds that height; never under B’s 16 px minimum (Rule 03.4)"
     },
     {
      "label": "At body size",
-     "value": "17 px text has capitals 12.4 px tall, under B’s 14 px floor, so B takes its 16 px master at 16 px, its tail 1 px under the baseline"
+     "value": "17 px text has capitals 12.4 px tall. B takes its 16 px master at 16 px on the text’s baseline: its top stands 2.6 px over the cap line and its tail 1 px under the baseline"
+    },
+    {
+     "label": "From 20 px text",
+     "value": "B’s band matches the capitals: at 24 px text, capitals 17.5 px, B 20 px tall from its 16 px master"
     },
     {
      "label": "Badge",
-     "value": "From 48 px, its display master; 0.50 in in print. Back covers and event materials"
+     "value": "From 48 px, its display master; 0.50 in in print. Back covers and event materials"
     },
     {
      "label": "Badge color",
@@ -325,24 +329,24 @@
     "24",
     "25"
    ],
-   "builders": "Set B inline after the last word with a no-break space before it, so it never starts a line alone. Draw it in <code>currentColor</code>, so it takes the paragraph’s ink, from the master whose range holds the text’s cap height, and set it 1 px under the baseline at the 16 px master, where its tail lands. Place the badge from its display master only."
+   "builders": "Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B in <code>currentColor</code>, so it takes the paragraph’s ink, at 16/14 of the text’s cap height and never under 16 px, with the master’s baseline on the text’s: at the 16 px master that sets <code>vertical-align: -1px</code>. Place the badge from its display master only."
   },
   {
    "id": "04.7",
    "title": "Put B on a Charcoal tile for avatars and the app icon.",
-   "rule": "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. L8, the monogram, serves squares where the name must show, such as a tile in a partner’s directory (Rule 03.7). Favicons use B’s 16 px master with no tile.",
+   "rule": "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. L8, the monogram, serves squares where the name must show, such as a tile in a partner’s directory (Rule 03.7). Favicons use B’s 16 px master with no tile.",
    "tokens": [
     "oa.component.avatar.tile",
     "oa.component.avatar.accent",
     "oa.component.appIcon.tile"
    ],
    "why": {
-    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49 to 1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
+    "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49 to 1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
     "basis": "WCAG 2.2 SC 1.4.11; design judgment for the feed sizes"
    },
    "correct": {
     "specimen": "s-04-7-correct",
-    "caption": "Avatars and the app icon at true size: B on a Charcoal circle at 180, 64 and 32 px and on a Charcoal square at 180 and 64 px; the Newsprint, Prussian and one-color tiles; and the favicon on a light and a dark browser tab."
+    "caption": "Avatars and the app icon at true size: B on a Charcoal circle at 180, 64 and 32 px and on a Charcoal square at 180 and 64 px; the Newsprint, Prussian and one-color tiles; and the favicon on a light and a dark browser tab."
    },
    "failure": {
     "specimen": "s-04-7-failure",
@@ -360,7 +364,7 @@
     },
     {
      "label": "Light tile",
-     "value": "Newsprint with a 1 px Charcoal keyline, for dark app themes"
+     "value": "Newsprint with a 1 px Charcoal keyline, for dark app themes"
     },
     {
      "label": "Prussian tile",
@@ -368,11 +372,11 @@
     },
     {
      "label": "Upload",
-     "value": "A full-bleed square at 1080 px; platforms cut their own circle or corner"
+     "value": "A full-bleed square at 1080 px; platforms cut their own circle or corner"
     },
     {
      "label": "Favicon",
-     "value": "B’s 16 px master at 16 px, no tile"
+     "value": "B’s 16 px master at 16 px, no tile"
     }
    ],
    "files": [
@@ -384,7 +388,7 @@
     "03",
     "27"
    ],
-   "builders": "Export one 1080 px square and let each platform reduce it; check it at 48 and 32 px before you upload."
+   "builders": "Export one 1080 px square and let each platform reduce it; check it at 48 and 32 px before you upload."
   },
   {
    "id": "04.8",
@@ -399,7 +403,7 @@
    },
    "correct": {
     "specimen": "s-04-8-correct",
-    "caption": "A half-letter report cover at true size, 5.5 by 8.5 in, with B cropped off the bottom-right corner."
+    "caption": "A half-letter report cover at true size, 5.5 by 8.5 in, with B cropped off the bottom-right corner."
    },
    "failure": {
     "specimen": "s-04-8-failure",

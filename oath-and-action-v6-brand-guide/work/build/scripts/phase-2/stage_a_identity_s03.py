@@ -238,13 +238,18 @@ def _lock_item(code, name, job, inner, span=False):
     return (f'<div class="oai-panel oai-s-newsprint oai-lk{" oai-lk--span" if span else ""}">'
             f'<div class="oai-lk-mark">{inner}</div>'
             f'<p class="oai-lk-name">{E(code)} {E(name)}</p><p class="oai-lk-job">{E(job)}</p>'
-            f'<p class="oai-tag">Minimum: {E(scr)} on screen, {E(prt)} in print</p></div>')
+            f'<p class="oai-tag">Minimum: {E(_nb(scr))} on screen, {E(_nb(prt))} in print</p></div>')
+
+
+def _nb(t):
+    """A number keeps its unit on its line (CA-N4)."""
+    return re.sub(r"(\d) (px|pt|in|mm)\b", "\\1\u00a0\\2", t)
 
 
 LOCK_CSS = (".oai-lockgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}"
             ".oai-lk{padding:20px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}"
             ".oai-lk--span{grid-column:1/-1}"
-            ".oai-lk-mark{min-height:72px;display:flex;align-items:flex-end;margin-bottom:10px}"
+            ".oai-lk-mark{min-height:88px;display:flex;align-items:flex-end;margin-bottom:10px}"
             ".oai-lk-name{font-weight:700;font-size:17px}"
             ".oai-lk-job{font-size:15px;color:var(--oa-color-text-secondary-on-newsprint)}")
 
@@ -253,33 +258,33 @@ LOCK_CSS = (".oai-lockgrid{display:grid;grid-template-columns:minmax(0,1fr) minm
 def s_03_lockups():
     parts = [
         _lock_item("L1", "Wordmark", "Most uses: page heads, documents, slides and signs.", wordmark(32, label="Oath & Action, L1 wordmark")),
-        _lock_item("S1", "Stacked", "OATH & over ACTION, flush left, for square formats and posters.", s1(40, label="Oath & Action, S1 stacked lockup")),
-        _lock_item("L3", "Horizontal with the lockmark", "The site and email masthead.", l3_small(24)),
         _lock_item("L8", "Monogram", "Squares where the name must show, such as a tile in a partner's directory. Never an avatar or a favicon.", mark(L8["today"], w=120, label="Oath & Action, L8 monogram")),
+        _lock_item("S1", "Stacked", "OATH & over ACTION, flush left, for square formats and posters.", s1(40, label="Oath & Action, S1 stacked lockup")),
         _lock_item("L4", "Monogram and tagline", "Document footers and small print.", l4(304)),
+        _lock_item("L3", "Horizontal with the lockmark", "The site and email masthead.", l3_small(24)),
         _lock_item("L7", "Section masthead", "Names the pillar a piece serves, in the surface's ink.", l7(l7_width(17, "TRACK"), "TRACK")),
         _lock_item("L5", "Wordmark and tagline", "Covers, banners and partner placements where the tagline travels with the mark.", l5(400), span=True),
     ]
     body = f'<div class="oai-lockgrid">{"".join(parts)}</div>'
     alt = ("Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: "
-           "L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; S1 stacked, OATH & over ACTION on two flush-left lines, "
-           "79 pixels, 0.65 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the "
-           "O & A monogram, 48 pixels, 0.50 inches; L4 the monogram, a hairline and the tagline on two lines, 304 pixels, "
-           "2.30 inches; L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the "
-           "tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.")
+           "L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches, beside L8 the O & A monogram, 48 pixels, 0.50 inches; "
+           "S1 stacked, OATH & over ACTION on two flush-left lines, 79 pixels, 0.65 inches, beside L4 the monogram, a hairline "
+           "and the tagline on two lines, 304 pixels, 2.30 inches; L3 the wordmark with the lockmark at its right, 196 pixels, "
+           "1.55 inches, beside L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark "
+           "over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.")
     return rec("s-03-lockups", "03.2", 712, alt, body, css=LOCK_CSS,
-               notes="Two columns at 712 px (C-S7). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved "
+               notes="Two columns at 712 px (C-S7), with L1, S1 and L3 in the left column, so a phone shows them first in the scrolling frame (CD-S7); every mark sits on the bottom of an 88 px box, so each row's names share one line (CA-S11). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved "
                      "masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px "
                      "minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px.")
 
 
 @spec
 def s_03_l6():
-    body = (f'<div>{l6(884)}<p class="oai-tag" style="margin-top:12px">L6 Editorial signature, at its minimum: 884 px wide on '
+    body = (f'<div class="oai-pad">{l6(884)}<p class="oai-tag" style="margin-top:12px">L6 Editorial signature, at its minimum: 884 px wide on '
             f'screen, 6.60 in in print. The strip that closes a report or a long page, shown on Prussian, where every part is White.</p></div>')
     alt = ("L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the "
            "tagline at left, four pillar dots under them and the lockmark at right. Its print minimum is 6.60 inches.")
-    return rec("s-03-l6", "03.2", 884, alt, body,
+    return rec("s-03-l6", "03.2", 932, alt, body, fit_switch=True,
                notes="L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units. No web address until it is settled (DR-55).")
 
 
@@ -361,8 +366,8 @@ def _no_condensed(t):
     """Today's width only in chapter 03 (BE-S11): the condensed figures move to the proofs appendix."""
     t = re.sub(r";\s*condensed [^);]*", "", t)
     t = re.sub(r"\s*\(condensed [^)]*\)", "", t)
-    t = t.replace("V5 master", "the fifth edition's master").replace("from V5's layout", "on our fifth edition's layout")
-    return t
+    t = t.replace("V5 master", "display master").replace("from V5's layout", "on our fifth edition's layout")
+    return re.sub(r"(\d) (px|pt|in|mm)\b", "\\1\u00a0\\2", t)       # a number keeps its unit on its line (CA-N4)
 
 
 MINIMUM_ROWS = json.loads((ID_DIR / "20261028_Identity-Minimum-Sizes.json").read_text())
@@ -442,7 +447,7 @@ def s_03_6_correct():
     alt = ("Three mastheads at true size: a 1440 pixel site bar with the wordmark and lockmark at left and five navigation words "
            "at right; a 390 pixel phone bar with the wordmark and a menu button; and a 600 pixel white email header with the "
            "wordmark and lockmark.")
-    return rec("s-03-6-correct", "03.6", 1440, alt, body,
+    return rec("s-03-6-correct", "03.6", 1440, alt, body, fit_switch=True,
                notes="Navigation words are placeholders for chapter 20, drawn as div elements (AX-S8). The email header is drawn live here; in email it ships as a PNG.")
 
 

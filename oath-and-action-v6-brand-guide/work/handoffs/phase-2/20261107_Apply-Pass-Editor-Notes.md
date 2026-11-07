@@ -216,3 +216,81 @@ Modified:
 Created: `work/build/guide/specimens/s-01-uneven.html` (the 2020 example).
 
 Not touched: `source/`, `work/ledger/`, the Civic Line masters, any board, the reader check. Nothing committed or pushed.
+
+## Fix pass
+
+November 7, 2026, under `work/handoffs/phase-2/20261107_Apply-Pass-Fix-Brief.md`, "Editor". I read all three reviews in full (`20261107_CD-Review-Of-Apply-Pass.md`, `20261107_Apply-Pass-Red-Team-Brand-Evidence.md`, `20261107_Apply-Pass-Red-Team-Craft-Access.md`). I changed only my own files: chapters 01 and 02, their specimens, `manifest-editor.json` and the four `guide_editor_*.py` scripts. I committed nothing.
+
+### Items, by ID
+
+**Must fix**
+- **BE-02, Rule 01.11's correct plate.** No count exists to print. The research lead's reports hold none, and our atlas's case record for Loop R4a names more redraws, but not the party behind each map. So I took the brief's second route: the plate now claims only what it shows. Under the two cases it reads: "Our systems atlas records more redraws for this loop in 2025 and 2026, among them Missouri’s 2025 map and the maps four Southern states drew after a Supreme Court ruling of April 29, 2026. This plate shows two of them, one by each party’s majority, and gives no count." The source line adds the atlas's R4a case record. The caption ends "The line under the cases keeps the plate to what it shows: two of the loop’s redraws, with no count." Rule 01.11's For builders already asks a piece to count the record by party. The build now fails the plate if it has neither a count line nor "gives no count". When the research lead counts the record, a sourced count line in the cases' form replaces the scope line (`R4A_SCOPE`); I carry that count to stage B.
+
+**Should fix**
+- **CA-S3 and CD-S1, the H.R. 7008 card.** The card now uses chapter 11's story card form. The row is chapter 11's 324 px `steps_svg()` row, set on the text edge, so the first circle sits 15 px in at 1,440 and 390 px, as it does in chapter 11. Only where the column is narrower than 324 px (screens under 24.25em) does the same function draw a 288 px row, so the numbers never scale under 13 px. The status words and the key come from chapter 11's own CSS (`piece_css()`) and its `key()`, placed after the status words as its lists place them. The key shows the six step names and the four marks this bill uses. "As of November 5, 2026" is now a dateline in the label style above the steps. The four-sentence history is one sentence: "The committee held no hearing on this bill, so step 2 has a slash, and it voted 7 to 4 on January 14, 2026, on a version without the photo ID section." The dates and counts of the other steps stay in the hidden step list, and the earlier hearing moved to the source line.
+- **BE-03.** Card wording: "only" is gone. The source line now says "The committee’s report names a November 19, 2025 hearing on the Stop Trading on Congressional Knowledge Act of 2012, held before the bill was filed, as the one used to develop the bill." The call is logged below. Rule 11.2's For builders is the systems designer's, so I ask there.
+- **BE-01 alignment (step 2's words).** The card says only that the committee held no hearing on this bill. That holds under BE-01's interim definition ("The committee holds a hearing and takes testimony on the bill. Who can testify depends on the legislature"), and the card makes no claim about who could have spoken.
+- **BE-04, BE-06, BE-11, the 2020 example.** "A July 2022 review titled Lost, Not Stolen, written by eight former officials and lawyers, among them two former U.S. senators and three former federal appeals judges, counted 64 cases it says Donald Trump and his supporters brought in six battleground states." The authors are described by role alone, as Rule 01.16 describes every holder. Their stated party ties stay in the source line, with the review's subtitle. "It says" puts the count in the review's voice, and the title no longer opens a line.
+- **BE-05.** The caption now reads "they add no counter-case to even the count".
+- **BE-10.** Rule 01.6's failure card is about the chapter's invented bill: "What the state senate’s vote on S. 214 means for you / One vote, 21 to 18, and what comes next." It carries one Illustrative label and the "Failure case: do not publish" band. The rotation log follows.
+- **CA-S6, in my chapters.** The band now heads every failure plate that could pass for our work: Rules 01.6, 01.7, 01.8, 01.18, 01.19, 01.20, 01.22, 01.23, 02.23, 02.24, 02.25 and 02.27, besides 01.1 to 01.5 and 02.22. Each alt opens "Failure case: do not publish." Fragments of a line (01.13, 01.14, 01.17, 02.26) and lists of kickers or names (01.21, 01.24) keep no band.
+- **CA-S7.** The pillars figure adds the row a section opener sets at 48 px with Track current: the word underlined, and Track's red parts drawn (the pin and the magnifier's handle). Each pillar icon's margins are trimmed to its measured ink (`INK` in `guide_editor_common.py`, from getBBox in Chromium), so every word sits 12 px from its drawing at 48 px and 8 px at 24 px; Act's hand left 34 of 128 units empty on each side. The build now requires a current pillar at 48 and 24 px, and red on the 48 px one only. The 24 px icons' light stroke waits for chapter 09's pixel-fit masters (stage B).
+- **CA-S8.** `s-01-pieces` is now a readable group, so a screen reader reads every card's text and every source line, and its alt is a three-sentence description.
+- **CA-S12.** The 24 px topic icon now sits in the kicker's line with a −5 px margin above and below, so the Analysis headline sits where the other six do. A 16 px pixel-fit icon is chapter 10's (stage B); at 16 px today's line is 0.42 px.
+- **CD-S2 and BE-13.** I kept the card's red "Follow this bill", as the creative director prefers; the four pillar cards end the same way. The fix is in Rule 11.4's specification, which is the systems designer's: scope "a text link ... the red button waits for the bill's own page" to cards that carry the take-part mark. Carried to the systems designer.
+
+**Notes taken**
+- **CD-N4.** Rule 02.25's source line now names the bill status and the House-passed text, sections 2 and 3, for the two provisions.
+- **BE-12.** The office row ("The committee chair decides which bills get a hearing.") now carries "Source: U.S. House of Representatives, Rules of the House, 119th Congress, rule XI, clause 2(g)(3)(A), in the House Rules and Manual, H. Doc. 118-187, via govinfo.gov, United States. Retrieved November 7, 2026. The rule has each committee’s chair announce its hearings; state legislatures set their own rules." DR-123's wording is unchanged.
+- **CD-N6.** The hinge table no longer underlines the action half, since an underline now marks the current pillar (DR-111). The commitment stays bold, and the caption and alt say so.
+- **CA-N4.** No-break spaces keep "48 px" together in the pillars caption and the card's dateline together.
+- **CA-N12.** Rule 01.21's caption adds "“Act · How to take part” is one label, so its dot and both its words belong to the label."
+- **CA-N11 and CD-N1, the Illustrative label twice.** These go to the shell (the engineer's CD-N1); I changed nothing.
+
+### Routine calls, as proposed decision lines
+
+- D2-xxx | Rule 01.11's correct plate says it shows two of the loop's redraws and gives no count, until the research lead counts the atlas's record by party | BE-02: no count exists in the research, and the plate may claim only what it shows (DR-93)
+- D2-xxx | A hearing on a bill's subject held before the bill was filed does not fill step 2; the step's note or the source line names it | BE-03: one standard for the next bill, matching the H.R. 7008 card
+- D2-xxx | The H.R. 7008 card takes chapter 11's 324 px row on the text edge, its status style and its key after the status words; a 288 px row only under 24.25em | CA-S3: one geometry for every story card, and numbers at 13 px at every width checked
+- D2-xxx | The card's committee history is one sentence, and the earlier hearing sits in the source line | CD-S1 and CA-S3: Rule 11.1's one plain sentence, with D2-407's two facts kept
+- D2-xxx | Authors and holders are described by role and affiliation, and stated politics stay in the source line | BE-04, DR-93's one way of describing sources, as Rule 01.16 does
+- D2-xxx | Failure plates that could pass for our work carry the band, and fragments of a line do not | CA-S6 and D2-308, applied across chapters 01 and 02
+- D2-xxx | Pillar icons are spaced from their measured ink, not their 128-unit box | CA-S7: equal space from drawing to word for every pillar
+
+### Questions for Dustin
+
+1. **Rule 01.11's reason opens two sentences with "Where" (W13).** It prints exactly as you approved it in DR-125. The creative director proposes a better fix than my one-sentence version, and I now recommend theirs. It recasts the first sentence and keeps the second word for word: "A case from each party, told the same way, puts a mechanism that both parties use in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it." *Recommendation:* approve it.
+
+### For the main session and the other owners
+
+- **Research lead, stage B (BE-02).** Count the 2025 and 2026 congressional redraws in Loop R4a's case record by the party of the majority that drew each map, with a primary source for each. Rule 01.11's plate then prints the count.
+- **Systems designer.** (1) BE-03: add to Rule 11.2's For builders: "A hearing on the bill's subject held before the bill was filed does not fill step 2; the step's note names it." (2) CD-S2 and BE-13: scope Rule 11.4's card row to cards that carry the take-part mark. (3) CA-S3: the card places chapter 11's `key(names, show=<the states on the card>)` after the status words, and `s-11-4-correct` can take the same key in the same place.
+- **Chapters 09 and 10 at stage B.** Pixel-fit 16 and 24 px masters for the pillar icons (CA-S7) and for a kicker's topic icon (CA-S12).
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-2/guide_editor_build.py`: every check passes. New or changed checks: Rule 01.11's plate has a count line or "gives no count"; the pillars figure shows a current pillar at 48 and 24 px, with red on the 48 px one only.
+- Planted faults: 17 of 17 caught, the 16 from round two and one new (the "gives no count" line removed). Three plants had to be re-aimed after their targets moved, and I report them caught only after the re-aim.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict`: 0 warnings, 100 rules, 233 specimens.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px, on the final build: PASS, 0 failures, 756 same-page links.
+- The card's geometry, measured by script in Chromium: card 340, 326 and 296 px wide at 1440, 390 and 360 px; row 324, 324 and 288 px; first circle 15, 15 and 12 px from the text edge; smallest step number 13.0 px at all three.
+- The pillar icons' ink boxes, measured with getBBox in Chromium.
+- By eye in Playwright Chromium: the card at 390 px and its steps, status and key at twice size at 1440 px; Rule 01.11's plate and the pillars figure at 1440 px.
+- The 2020 example's new sentence, compared by string with BE-04, BE-06 and BE-11's wording.
+
+### Not tested
+
+- BE-12's House rule: I did not open the House Rules and Manual. The source line rests on the brand and evidence red team's reading.
+- The count BE-02 asks for; nobody has made it.
+- Chapter 02's banded plates by eye; the check passed them at four widths.
+- Screen readers by ear, forced colors, Firefox, Safari, print, 200 percent zoom and real readers.
+
+### Change log, fix pass
+
+Modified:
+- `work/build/scripts/phase-2/guide_editor_common.py` (ink trims, the kicker icon's margins), `guide_editor_ch01.py`, `guide_editor_ch02.py`, `guide_editor_build.py`
+- Regenerated by the build: `work/build/guide/chapters/01-purpose.json`, `02-voice.json`, `manifest-editor.json` and the `s-01-*` and `s-02-*` specimens
+- Regenerated by the shared build and check: the stage A chapters page, its build report, its check results and its captures
+- This file
+
+Created: none. Nothing committed or pushed.
