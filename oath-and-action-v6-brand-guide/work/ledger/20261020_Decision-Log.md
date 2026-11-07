@@ -765,3 +765,20 @@ Five agents fixed the stage A page under `work/handoffs/phase-2/20261106_Stage-A
 |---|---|---|
 | D2-318 | Stage board A commits its captures (about 11 MB) with the board, in `work/boards/phase-2/stage-a/board-a/` | A board is the record of what Dustin saw (D2-133), and earlier boards keep theirs |
 | D2-319 | The main session ran the final checks itself: `guide_build.py --strict` (99 rules, 229 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 24 listed exemptions, each a labeled failure, a print piece or a true-size mark) and the token tests (all pass, 35 of 35 plants caught) | A check is reported only once the main session has run it |
+
+## Dustin's direction after stage board A, November 7, 2026
+
+Dustin, after reviewing stage board A: "Everything in that updated brand guide looks excellent. I just have a few nitpicky things." He asked the studio to "just roll with this request" with no question round. His answers to A1 to A15 are still to come.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-104 | The grid keeps one job: the lockmark in fixed places such as mastheads, page headers and footers. It stops coding tracker progress, series routes and pillars. The bill tracker becomes a simpler device, "like a line with dots or a 1, 2, 3, 4, 5, 6 step process", and the studio shows options. This overtakes board A's A2 (the Signal Grid's codes) and A5 (series routes) | Dustin, November 7 |
+| DR-105 | The studio reviews the Civic Line set and shows a few options for the four pillar icons (Explain, Track, Connect, Act) | Dustin, November 7 |
+| DR-106 | The studio shows more variations of the stacked lockup; Dustin does not like L2's offset with the ampersand at the right | Dustin, November 7 |
+| DR-107 | The studio makes six one-page brand identity sheets in six different color schemes, each with a different feel, after researching current design aesthetics. Newsprint stays as the ground, and the direction stands; only the colors change, with a lead color other than red. These are explorations: Pillar Red stays in force until Dustin approves a change by name (gate rule 4) | Dustin, November 7 |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-320 | The four explorations go on one board, Board 6, with options and a recommendation for each; nothing in the guide changes until Dustin picks | His picks decide what chapters 01, 03, 08 and 11 rewrite |
+| D2-321 | Every option uses approved masters only (wordmark, ampersand B, lockmark, Civic Line drawings); lockup variations arrange masters and redraw no letter | Gate rule 4: identity geometry changes need their own named approval |
+| D2-322 | The color sheets measure every text and mark pair for contrast and say how each lead color could read for party | DR-48 and DR-93: no party may own a brand color, and a sheet must pass before it can be picked |
