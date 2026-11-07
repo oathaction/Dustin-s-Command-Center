@@ -32,6 +32,12 @@ def P(name):
     return f'oa.color.palette.{name}'
 
 
+def banded(ctx, html, flush=True):
+    """A failure plate that could pass for a finished piece opens with the Failure case band (D2-308, CA-S6)."""
+    css, band = ctx.fail_band(flush=flush)
+    return f'<style>{css}</style>{band}{html}'
+
+
 # ------------------------------------------------------------------------------------------------ phone page
 PHONE_CSS = """
 .ph{width:100%%;overflow:hidden}
@@ -220,11 +226,12 @@ def s_05_1(ctx):
                            'palette color; Deep Stone counts as Stone and Dim Newsprint as Newsprint.')
         else:
             sh = ctx.R.get(f'share {sid}', {}).get('shares', {})
-            alt = ('The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint '
+            alt = ('Labeled Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and '
+                   'body, a Prussian panel and a Newsprint '
                    'button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint '
                    f'{share_txt(ctx, sid, "newsprint") if sh else ""} percent, Charcoal '
                    f'{share_txt(ctx, sid, "charcoal") if sh else ""} and Prussian {share_txt(ctx, sid, "prussian") if sh else ""}.')
-            ctx.spec(sid, html, '05', '05.1', alt, width=360, illustrative=True,
+            ctx.spec(sid, banded(ctx, html), '05', '05.1', alt, width=360, illustrative=True,
                      notes='A labeled failure: the proportion fails, every text pair still passes.')
 
 
@@ -427,8 +434,8 @@ def s_05_3(ctx):
     ctx.spec('s-05-3-correct', phone(ctx, 'plain'), '05', '05.3',
              alt_base + ', and one red button, Sign up to speak, with a Charcoal edge.', width=360, illustrative=True,
              notes='Signature red: the wordmark ampersand. Working red: the ask, precedence 2.')
-    ctx.spec('s-05-3-failure', phone(ctx, 'threejobs'), '05', '05.3',
-             'The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the '
+    ctx.spec('s-05-3-failure', banded(ctx, phone(ctx, 'threejobs')), '05', '05.3',
+             'Labeled Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the '
              'headline, and the red Sign up to speak button.', width=360, illustrative=True, exempt=['contrast', 'red'],
              notes='A labeled failure case: red date text at 28 px fails 3 to 1 on purpose.')
     ctx.spec('s-05-3-corrective', phone(ctx, 'error'), '05', '05.3',
@@ -619,8 +626,9 @@ def s_05_5(ctx):
              notes=f'Data: payrolls-by-sector in the shared chart data, September 2026 row; {nsec} sector series checked '
                    f'for the most. 600 px wide, so its type takes the phone floor (D2-254).')
     html2, *_ = bar_chart(ctx, keyline=False)
-    ctx.spec('s-05-5-failure', html2, '05', '05.5',
-             f'The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the '
+    ctx.spec('s-05-5-failure', banded(ctx, html2, flush=False), '05', '05.5',
+             f'Labeled Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no '
+             f'edge, so its outline blurs into the '
              f'Newsprint page.', width=600, notes='The red bar has no keyline; text in the chart still passes.')
     ctx.fig('chart rows', vals, 'payrolls-by-sector, row 2026-09-01, change_since_2022_01_thousands')
     return rp, rk, rc, src
@@ -753,8 +761,8 @@ def s_05_6(ctx):
     htmlf = (f'<style>{cssf}</style><div class="cd"><p class="ey"><span>Explainer · State bills</span>{B.ILLUS}</p>'
              f'<p class="hd">What the paid family leave bill would change</p>'
              f'<p class="mt">Updated November 6, 2026 · two sources</p></div>')
-    ctx.spec('s-05-6-failure', htmlf, '05', '05.6',
-             f'An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid '
+    ctx.spec('s-05-6-failure', banded(ctx, htmlf), '05', '05.6',
+             f'Labeled Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid '
              f'family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures {ro} to 1.',
              width=360, illustrative=True, exempt=['contrast'],
              notes=f'Composite {comp}; the Deep Stone token measures {rd} to 1 on the same ground.')
@@ -1129,7 +1137,7 @@ def build(ctx):
                 'id': '05.6', 'title': 'Give each tint one named job, and keep tints off identity marks.',
                 'rule': ['A tint is one palette color mixed toward Newsprint or Charcoal by a recorded amount, for one job. '
                          'It enters only as a token, with its measured ratio. The wordmark, the ampersand, the lockmark and '
-                         'the pillar marks stay in solid palette colors, and no color on a page comes from lowering opacity.'],
+                         'the pillar icons stay in solid palette colors, and no color on a page comes from lowering opacity.'],
                 'tokens': ['oa.color.derived.deepStone', 'oa.color.derived.dimNewsprint', 'oa.color.derived.errorBand',
                            'oa.color.tint.stoneN70', 'oa.color.tint.prussianN62', 'oa.color.tint.verdigrisN55'],
                 'why': {'text': ['Our fifth edition said “There are no tints.” Charts, error messages and selected rows need '
@@ -1179,7 +1187,8 @@ def build(ctx):
                                  'Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the '
                                  'arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a '
                                  'chart shared on its own still reads as ours.',
-                                 'The same standard decides which charts run. Charts are chosen by the question '
+                                 'Chapter 01’s one standard of evidence also decides which charts run. Charts are '
+                                 'chosen by the question '
                                  'and the evidence. Every title is read from the left and the right to check that its words '
                                  'are accurate and fair. A set never adds or drops a finding to even the score.'],
                         'basis': 'Design judgment; Rules 01.1 and 01.3'},

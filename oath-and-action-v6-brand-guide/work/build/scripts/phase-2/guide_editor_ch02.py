@@ -135,10 +135,16 @@ LEG_CSS = f".ed .legend{{display:flex;flex-wrap:wrap;gap:6px 24px;{fx('body-smal
 # count can leave the photo ID provision behind. Dustin's wording runs unchanged from "it needed" to "voted no".
 SENATE_COUNT = ("it needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two "
                 "independents voted no.")
-SRC_SENATE = ("Sources: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, page S5199, "
-              "September 30, 2026, United States; party labels from the congress-legislators project’s roster of current "
-              "members of Congress, a secondary source. Retrieved November 6, 2026. The Record lists each senator’s vote by "
-              "name, and ending debate needs three-fifths of the Senate, 60 votes.")
+SRC_SENATE = ("Sources: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, and the "
+              "bill’s text as passed by the House, sections 2 and 3, via govinfo.gov; Congressional Record, Senate, Vote 253, "
+              "cloture on the motion to proceed to H.R. 7008, page S5199, September 30, 2026, United States; party labels from "
+              "the congress-legislators project’s roster of current members of Congress, a secondary source. Retrieved "
+              "November 7, 2026. The Record lists each senator’s vote by name, and ending debate needs three-fifths of the "
+              "Senate, 60 votes.")
+# BE-12: the office row's source, as the brand and evidence red team read it in the House Rules and Manual
+SRC_HOUSE_XI = ("Source: U.S. House of Representatives, Rules of the House, 119th Congress, rule XI, clause 2(g)(3)(A), in the "
+                "House Rules and Manual, H. Doc. 118-187, via govinfo.gov, United States. Retrieved November 7, 2026. The rule "
+                "has each committee’s chair announce its hearings; state legislatures set their own rules.")
 # DR-99: the research lead's first choice, connection L50, kept to the connection (the loop's safe-seat line stays out).
 MECH_L50 = "Few voters leave their own party’s candidate over an undemocratic stand, so officials who take one face little threat of losing office."
 SRC_L50 = ("Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of "
@@ -396,7 +402,7 @@ def build(book):
               f'<div><p class="lab">Colophon, the note on who makes our work</p><div class="mh"><p class="pv"><span class="lk">{e(q(LOCKED["commitment"]))}</span> Corrections and our method are linked from every page.</p></div></div>'
               f'<div><p class="lab">Newsletter, the last lines of an issue</p><div class="mh"><p class="pv">Sign up with the board clerk by April 10 to speak before the vote. {ill()}</p><p class="so">{e(LOCKED["tagline"])}</p></div></div>'
               f'</div></div>')
-    bad_slot = f'<div class="ed"><div class="tagslot">{wm}<p class="tg">From spectators to stewards.</p></div></div>'
+    bad_slot = f'<div class="ed">{dnp()}<div class="tagslot">{wm}<p class="tg">From spectators to stewards.</p></div></div>'
     rules.append({
         "id": "02.23", "title": "Set each brand line in its own place, word for word.",
         "rule": ["Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and "
@@ -408,7 +414,7 @@ def build(book):
                                   alt=f"Four places, each with its line. Home page: the wordmark with the reader promise beneath it. About page: the mission and the voice line. Colophon, the note on who makes our work: the editorial commitment, quoted. Newsletter, the last lines of an issue: an illustrative dated step, Sign up with the board clerk by April 10 to speak before the vote, then the tagline, {LOCKED['tagline']}"),
                     "caption": "Each line sits where the table puts it, in exact words. In a newsletter the tagline follows the last story’s step as the sign-off, and Rule 02.24 shows the whole ending."},
         "failure": {"specimen": A("s-02-23-failure", bad_slot, css=(BASE, PLC), rule="02.23", width=360,
-                                  alt="The wordmark with From spectators to stewards set beneath it in the tagline's slot."),
+                                  alt="Failure case: do not publish. The wordmark with From spectators to stewards set beneath it in the tagline's slot."),
                     "caption": "In the tagline’s slot, the founding line competes with “A country that answers to its people.” and casts a newcomer as a spectator."},
         "related": ["01", "03", "08"],
         "builders": "Copy brand lines from the table in this chapter, never retype them, and check them character for character before a piece ships.",
@@ -444,10 +450,10 @@ def build(book):
         "correct": {"specimen": A("s-02-24-correct", nl_end, css=(BASE, END), rule="02.24", illustrative=True, width=360,
                                   alt="An illustrative newsletter ending, as a phone shows it. The last story: the Alder County Board of Supervisors votes on backyard cottages at 6 p.m. Tuesday, March 9, 2027. After the hinge divider, What you can do: send a written comment to the board by 5 p.m. Wednesday, March 3, 2027. One red button: Send a comment. Then the sign-off: the wordmark and the tagline, A country that answers to its people."),
                     "caption": "The last story ends on one dated step and its button, and the tagline follows as the issue’s sign-off, with no line in between that sums up the issue."},
-        "failure": {"specimen": A("s-02-24-failure", f'<div class="ed end">{hinge()}<p class="wycd">What you can do</p><p class="step">Call your supervisor, email the board, share this post and show up! {ill()}</p>'
+        "failure": {"specimen": A("s-02-24-failure", f'<div class="ed end">{dnp()}{hinge()}<p class="wycd">What you can do</p><p class="step">Call your supervisor, email the board, share this post and show up! {ill()}</p>'
                                                      '<p class="asks"><span class="ask" data-red="failure">Call</span><span class="ask" data-red="failure">Email</span><span class="ask" data-red="failure">Share</span><span class="ask" data-red="failure">RSVP</span></p></div>',
                                   css=(BASE, END), rule="02.24", illustrative=True, width=360, exempt=["red", "contrast"],
-                                  alt="The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date."),
+                                  alt="Failure case: do not publish. The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date."),
                     "caption": "Four asks and four red buttons leave out the date and the place, and give a reader no reason to start with any one of them."},
         "related": ["01", "12", "22"],
         "builders": "Give the piece one ask button and put the other ways to take part on the page the button opens. In an email, the tagline after the last story is the sign-off.",
@@ -456,13 +462,13 @@ def build(book):
     MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}@media (max-width:47.99em){{.ed.mech td:first-child{{width:100%}}}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
     struct = f"{HR7008_FIRST}, and {SENATE_COUNT}"
     mrows = [("A sweeping claim", "Our democracy is broken.", "How the system works", MECH_L50, SRC_L50, False),
-             ("A feeling", "People are frustrated with Congress.", "The office that decides", "The committee chair decides which bills get a hearing.", "", False),
+             ("A feeling", "People are frustrated with Congress.", "The office that decides", "The committee chair decides which bills get a hearing.", SRC_HOUSE_XI, False),
              ("A slogan", "Make your voice heard!", "A next step", "The hearing is Tuesday at 10 a.m. in Room 4, and the clerk signs up speakers until 9:45.", "", True),
              ("A side", "One party blocked the bill.", "The structure", struct, SRC_SENATE, False)]
     mtr = "".join(f'<tr><td data-k="What a draft says"><p class="lab">{e(a)}</p><p class="qq">{e(q(b))}</p></td><td data-k="What we publish"><p class="lab">{e(c)}</p><p class="qq">{e(q(d))}{" " + ill() if il else ""}</p>'
                   + (f'<p class="src">{e(s)}</p>' if s else "") + "</td></tr>" for a, b, c, d, s, il in mrows)
     mech = f'<div class="ed mech"><table class="stack"><thead><tr><th scope="col">What a draft says</th><th scope="col">What we publish</th></tr></thead><tbody>{mtr}</tbody></table></div>'
-    mood = (f'<div class="ed"><div class="pc">{kicker("Explainer", "Congress", illus=True)}<p class="hl">Our democracy is broken.</p>'
+    mood = (f'<div class="ed">{dnp()}<div class="pc">{kicker("Explainer", "Congress", illus=True)}<p class="hl">Our democracy is broken.</p>'
             f'<p class="dek">People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!</p></div></div>')
     rules.append({
         "id": "02.25", "title": "Publish the mechanism behind a mood.",
@@ -480,7 +486,7 @@ def build(book):
                                         "the source line names the Record and marks the party roster (congress-legislators) as secondary, as the research lead's November 6 report read them."),
                     "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check, with the bill’s two provisions in the same sentence as its count."},
         "failure": {"specimen": A("s-02-25-failure", mood, css=(BASE, PIECE), rule="02.25", illustrative=True, width=360,
-                                  alt="An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!"),
+                                  alt="Failure case: do not publish. An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!"),
                     "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."},
         "related": ["13", "01"],
         "builders": "For each sentence of a draft, ask which rule, office, date or count it rests on. Where the answer is none, the sentence is a mood.",
@@ -529,7 +535,7 @@ def build(book):
     HH = ".ed.hhs{display:grid;gap:14px}"
     pairs_ok = [("The zoning code", "the rent."), ("The filing deadline", "the ballot."), ("The coverage rule", "the copay."), ("The records law", "the answer.")]
     hh_ok = '<div class="ed hhs">' + "".join(f'<p class="hh">{e(a)} {amp_h()} {e(b)}</p>' for a, b in pairs_ok) + "</div>"
-    hh_bad = ('<div class="ed hhs"><p class="hh">The hearing ' + amp_h() + ' the vote.</p><p class="src">Our brand guide, fifth edition, chapter 02 Voice</p>'
+    hh_bad = ('<div class="ed hhs">' + dnp() + '<p class="hh">The hearing ' + amp_h() + ' the vote.</p><p class="src">Our brand guide, fifth edition, chapter 02 Voice</p>'
               '<p class="hh">The problem ' + amp_h() + ' the solution.</p></div>')
     rules.append({
         "id": "02.27", "title": "Write a hinge headline as a rule, then what it produces.",
@@ -543,7 +549,7 @@ def build(book):
                                   alt="Four hinge headlines, each a rule and then its result: The zoning code and the rent. The filing deadline and the ballot. The coverage rule and the copay. The records law and the answer. Each ampersand is ampersand B in red."),
                     "caption": "Each headline names a rule first and what it produces second, and each works in any state."},
         "failure": {"specimen": A("s-02-27-failure", hh_bad, css=(BASE, HL, HH), rule="02.27",
-                                  alt="Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule."),
+                                  alt="Failure case: do not publish. Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule."),
                     "caption": "“The hearing & the vote.” puts an event first, and “The problem & the solution.” names no rule at all."},
         "files": [AMP16, AMP24],
         "related": ["04", "01"],

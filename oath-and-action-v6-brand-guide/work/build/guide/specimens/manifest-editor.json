@@ -13,7 +13,7 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "The ampersand in our name is the hinge, the joint a door swings on. It joins a promise to the action that keeps it, so every piece explains and tracks a decision, then turns to the people who make it and the step a reader can take. Chapter 04 draws the hinge and sets its rules. Then a table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
+  "alt": "The ampersand in our name is the hinge, the joint a door swings on. It joins a promise to the action that keeps it, so every piece explains and tracks a decision, then turns to the people who make it and the step a reader can take. Chapter 04 draws the hinge and sets its rules. Then a table of the locked lines, each shown whole with its commitment in bold and its action in regular weight. Mission: understand, then improve. Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
   "illustrative": false,
   "notes": "From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's. The lead paragraph was the opening's second paragraph until the apply pass; it moved here so the opening keeps the content contract's two paragraphs once A13's paragraph on what nonpartisan means joined it (DR-125).",
   "readable": true,
@@ -23,7 +23,7 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "The pillar row: the four pillar icons at 48 px, each with its word beside it, joined by arrows in order: Explain, an open book; Track, a route to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. Then each pillar's job and products. 01 Explain: make the rules and their effects understandable. Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, two series, Dispatch and The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece. Last, the compact row at 24 px on a page that serves Track: every icon in one color, and the word Track set bold and underlined.",
+  "alt": "The pillar row: the four pillar icons at 48 px, each with its word beside it, joined by arrows in order: Explain, an open book; Track, a route to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. Then each pillar's job and products. 01 Explain: make the rules and their effects understandable. Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, two series, Dispatch and The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece. Then the same row as a section opener that serves Track sets it at 48 px: the word Track underlined, and Track's icon with its red parts, the pin and the magnifier's handle. Last, the compact row at 24 px on a page that serves Track: every icon in one color, and the word Track set bold and underlined.",
   "illustrative": false,
   "notes": "DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, inlined from the black masters with their geometry untouched and their ink taken through currentColor; each word sits beside its icon, and the current pillar's word is underlined at every size, bold under 48 px. Red as a second sign on the current icon starts at 48 px, so the 24 px row stays one color. The 48 px row stacks in one column under 48em, with downward arrows, after the creative director's Board 6 review found the phone row dropping its arrow. Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand architecture table (strategy section 3, S2); each series' pillar follows Rule 02.26's series list, and series routes retire (DR-110). Connect's job line is new, since the V5 census cut its line at 50 characters (DR-123). CP-S8: the series is Dispatch, as Rule 02.26 spells it.",
   "readable": true,
@@ -33,9 +33,10 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of November 5, 2026. Six numbered steps, Filed, Hearing, Committee vote, First chamber, Second chamber and President: step 1, Filed, done; step 2, Hearing, never happened; step 3, Committee vote, done; step 4, First chamber, done; step 5, Second chamber, the bill is here now; step 6, President, not yet. Step 5 of 6: Second chamber. A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, and the bill has stayed on the Senate’s calendar since. The committee held no hearing on this bill, so step 2 has a slash, and it voted 7 to 4 on January 14, 2026, on a version without the photo ID section. Then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
+  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. The Track piece draws H.R. 7008's six numbered steps, and a list beside the marks says each step in words. Connect and Act are invented and labeled Illustrative.",
   "illustrative": false,
-  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98). The Track card is a tracker story card, so it takes numbered steps (DR-109) on the six steps with step 6 named President for a federal bill (DR-128); its step states come from the research lead's mapping in round two, and until then it prints the two documented votes. Its kicker stays in words: the Civic Line's Congress icon, CL-025, draws a capitol dome with columns, which Rule 01.6 keeps out of icons.",
+  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98). The Track card is a tracker story card, so it takes numbered steps (DR-109) on the six steps with step 6 named President for a federal bill (DR-128); its step states come from the research lead's mapping in round two, and until then it prints the two documented votes. Its kicker stays in words: the Civic Line's Congress icon, CL-025, draws a capitol dome with columns, which Rule 01.6 keeps out of icons. Fix pass: a readable group, so a screen reader reads every card's text and source line (CA-S8); the Track card on chapter 11's story card form (CA-S3, CD-S1).",
+  "readable": true,
   "label": "One piece from each pillar, at true size"
  },
  "s-01-1-correct": {
@@ -875,7 +876,7 @@
   "chapter": "02",
   "rule": "02.23",
   "width_px": 360,
-  "alt": "The wordmark with From spectators to stewards set beneath it in the tagline's slot.",
+  "alt": "Failure case: do not publish. The wordmark with From spectators to stewards set beneath it in the tagline's slot.",
   "illustrative": false,
   "notes": ""
  },
@@ -901,7 +902,7 @@
   "chapter": "02",
   "rule": "02.24",
   "width_px": 360,
-  "alt": "The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date.",
+  "alt": "Failure case: do not publish. The same ending with four asks and four red buttons, Call, Email, Share and RSVP, and no date.",
   "illustrative": true,
   "notes": "",
   "check_exempt": [
@@ -922,7 +923,7 @@
   "chapter": "02",
   "rule": "02.25",
   "width_px": 360,
-  "alt": "An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!",
+  "alt": "Failure case: do not publish. An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!",
   "illustrative": true,
   "notes": ""
  },
@@ -955,7 +956,7 @@
   "chapter": "02",
   "rule": "02.27",
   "width_px": null,
-  "alt": "Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule.",
+  "alt": "Failure case: do not publish. Two failing hinge headlines. The hearing and the vote, from our fifth edition, names two events. The problem and the solution names no rule.",
   "illustrative": false,
   "notes": ""
  }

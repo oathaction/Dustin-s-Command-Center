@@ -246,7 +246,7 @@ AMP = {"display": "ampersand/20261028_Amp-B-Display-Master.svg", 24: "ampersand/
        16: "ampersand/20261028_Amp-B-16px-Master.svg"}
 AMPN = {"display": "ampersand/20261028_Amp-B-Narrow-Display-Master.svg", 24: "ampersand/20261028_Amp-B-Narrow-24px-Master.svg",
         16: "ampersand/20261028_Amp-B-Narrow-16px-Master.svg"}
-LOCK = {"display": "lockmark/20261028_Lockmark-Master-V5.svg", 24: "lockmark/20261028_Lockmark-24px-Master.svg",
+LOCK = {"display": "lockmark/20261107_Lockmark-Display-Master.svg", 24: "lockmark/20261028_Lockmark-24px-Master.svg",
         16: "lockmark/20261028_Lockmark-16px-Master.svg"}
 BADGE = {"display": "badge/20261028_Hinge-Badge-Display-Master.svg", 24: "badge/20261028_Hinge-Badge-24px-Master.svg",
          16: "badge/20261028_Hinge-Badge-16px-Master.svg"}

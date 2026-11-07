@@ -1,0 +1,102 @@
+{
+ "ink_at_place_size": {
+  "m16-16": {
+   "field_px": 256,
+   "ink_share": 0.465,
+   "near_black_share": 0.156,
+   "red_px": 21
+  },
+  "m24-24": {
+   "field_px": 576,
+   "ink_share": 0.415,
+   "near_black_share": 0.292,
+   "red_px": 37
+  },
+  "display-48": {
+   "field_px": 2304,
+   "ink_share": 0.154,
+   "near_black_share": 0.02,
+   "red_px": 9
+  },
+  "display-52": {
+   "field_px": 2704,
+   "ink_share": 0.195,
+   "near_black_share": 0.012,
+   "red_px": 12
+  },
+  "p48-48": {
+   "field_px": 2304,
+   "ink_share": 0.22,
+   "near_black_share": 0.128,
+   "red_px": 69
+  },
+  "p48-52": {
+   "field_px": 2704,
+   "ink_share": 0.285,
+   "near_black_share": 0.104,
+   "red_px": 79
+  },
+  "m24-48": {
+   "field_px": 2304,
+   "ink_share": 0.415,
+   "near_black_share": 0.292,
+   "red_px": 148
+  }
+ },
+ "feed_test": {
+  "display": {
+   "500": {
+    "field_px": 484,
+    "ink_share": 0.345,
+    "near_black_share": 0.0,
+    "red_px": 1,
+    "lockmark_px": 20.0
+   },
+   "360": {
+    "field_px": 256,
+    "ink_share": 0.344,
+    "near_black_share": 0.0,
+    "red_px": 0,
+    "lockmark_px": 14.4
+   }
+  },
+  "m24": {
+   "500": {
+    "field_px": 484,
+    "ink_share": 0.488,
+    "near_black_share": 0.202,
+    "red_px": 25,
+    "lockmark_px": 20.0
+   },
+   "360": {
+    "field_px": 256,
+    "ink_share": 0.535,
+    "near_black_share": 0.156,
+    "red_px": 11,
+    "lockmark_px": 14.4
+   }
+  },
+  "p48": {
+   "500": {
+    "field_px": 484,
+    "ink_share": 0.409,
+    "near_black_share": 0.068,
+    "red_px": 10,
+    "lockmark_px": 20.0
+   },
+   "360": {
+    "field_px": 256,
+    "ink_share": 0.398,
+    "near_black_share": 0.066,
+    "red_px": 6,
+    "lockmark_px": 14.4
+   }
+  }
+ },
+ "fonts_loaded": [
+  "Inter 400",
+  "Inter 700",
+  "Inter Tight 800"
+ ],
+ "method": "1x Chromium render on Newsprint; ink = channel distance from Newsprint over 45; near black = every channel under 70; red = R over 170, G and B under 120; feed = the 1200 px card reduced with Lanczos, the lockmark's box plus 1 px"
+}

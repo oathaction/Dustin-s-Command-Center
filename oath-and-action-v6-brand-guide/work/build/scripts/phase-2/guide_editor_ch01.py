@@ -185,6 +185,8 @@ def track_css():
     return (".ed{" + m.mark_vars(ctx, "n") + "}" + m.MARK_CSS
             + m.piece_css(ctx, "n", "s").split(m.MARK_CSS, 1)[1]   # the story card's status words and key, as chapter 11 sets them
             + ".ed .mkw{justify-content:flex-start}.ed .mkw.nw{display:none}"
+            # chapter 11's spacing, restated over this plate's paragraph reset (.ed p{margin:0})
+            ".ed .pc .st{margin-top:8px}.ed .pc .key .kh{margin:12px 0 6px}.ed .pc .key .kh:first-child{margin-top:0}"
             "@media (max-width:24.24em){.ed .mkw.wd{display:none}.ed .mkw.nw{display:flex}}")
 
 

@@ -11,7 +11,7 @@
   "chapter": "05",
   "rule": "05.1",
   "width_px": 360,
-  "alt": "The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint 10 percent, Charcoal 62 and Prussian 24.",
+  "alt": "Labeled Failure case: do not publish. The same Illustrative phone page with a Charcoal masthead and body, a Prussian panel and a Newsprint button, so dark surfaces cover most of the screen. Below it, its measured color shares: Newsprint 10 percent, Charcoal 62 and Prussian 24.",
   "illustrative": true,
   "notes": "A labeled failure: the proportion fails, every text pair still passes."
  },
@@ -54,7 +54,7 @@
   "chapter": "05",
   "rule": "05.3",
   "width_px": 360,
-  "alt": "The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
+  "alt": "Labeled Failure case: do not publish. The same Illustrative phone page with three reds: the date April 14 in the headline, a red bar under the headline, and the red Sign up to speak button.",
   "illustrative": true,
   "notes": "A labeled failure case: red date text at 28 px fails 3 to 1 on purpose.",
   "check_exempt": [
@@ -90,7 +90,7 @@
   "chapter": "05",
   "rule": "05.5",
   "width_px": 600,
-  "alt": "The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the Newsprint page.",
+  "alt": "Labeled Failure case: do not publish. The same bar chart with the health care bar in Pillar Red and no edge, so its outline blurs into the Newsprint page.",
   "illustrative": false,
   "notes": "The red bar has no keyline; text in the chart still passes."
  },
@@ -107,7 +107,7 @@
   "chapter": "05",
   "rule": "05.6",
   "width_px": 360,
-  "alt": "An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
+  "alt": "Labeled Failure case: do not publish. An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures 2.48 to 1.",
   "illustrative": true,
   "notes": "Composite #8B8985; the Deep Stone token measures 5.49 to 1 on the same ground.",
   "check_exempt": [
@@ -334,7 +334,7 @@
   "chapter": "06",
   "rule": "06.9",
   "width_px": 600,
-  "alt": "The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the mail app’s default serif.",
+  "alt": "Labeled Failure case: do not publish. The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the mail app’s default serif.",
   "illustrative": true,
   "notes": "Headline and body from chapter 02, W08 (Illustrative). The failure names a face no page loads, so every browser falls to its default serif, as a mail app does.",
   "surface": "white"
@@ -472,8 +472,8 @@
  "s-11-1-failure": {
   "chapter": "11",
   "rule": "11.1",
-  "width_px": 600,
-  "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, whose six steps take the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”",
+  "width_px": 360,
+  "alt": "Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, at 360 px, whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”",
   "illustrative": true,
   "notes": ""
  },

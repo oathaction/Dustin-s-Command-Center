@@ -396,12 +396,15 @@ def s_06_9(ctx):
                 f'<p class="h">The school board votes on the new bell schedule April 14.</p>'
                 f'<p class="b">Sign up with the board clerk by April 10 to speak before the vote.</p>'
                 f'<p class="q">“{COMMIT}”</p></div>')
+        if not good:
+            bcss, band = ctx.fail_band(flush=True)
+            html = f'<style>{bcss}</style>{band}{html}'
         ctx.spec(sid, html, '06', '06.9',
                  ('An Illustrative email header at 600 px on White, set in the system stack: the wordmark, the headline The '
                   'school board votes on the new bell schedule April 14 in Helvetica or Arial bold at 26 px, a sentence of '
                   'body text, and our editorial commitment in Georgia Italic at 24 px.') if good else
-                 ('The same email header with its headline set in Inter Tight and no web font loaded, so it shows in the '
-                  'mail app’s default serif.'),
+                 ('Labeled Failure case: do not publish. The same email header with its headline set in Inter Tight and '
+                  'no web font loaded, so it shows in the mail app’s default serif.'),
                  width=600, illustrative=True, surface='white',
                  notes='Headline and body from chapter 02, W08 (Illustrative).' + ('' if good else
                        ' The failure names a face no page loads, so every browser falls to its default serif, as a mail app does.'))

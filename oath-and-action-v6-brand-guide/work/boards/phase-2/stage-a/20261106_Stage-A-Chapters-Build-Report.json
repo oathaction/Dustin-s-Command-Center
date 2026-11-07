@@ -1,6 +1,6 @@
 {
  "page": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "built": "2026-11-07T06:59:11",
+ "built": "2026-11-07T07:39:35",
  "chapters": [
   "01",
   "02",
@@ -17,7 +17,7 @@
  "specimens_placed": 233,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 6174169,
+ "bytes": 6228158,
  "warnings": [],
  "notes": []
 }

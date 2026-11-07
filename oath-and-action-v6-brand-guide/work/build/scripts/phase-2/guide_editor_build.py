@@ -288,6 +288,11 @@ def apply_pass(chapters, book, texts, fails, notes):
     if ch01.UNEVEN and not any(x.get("after_rule") == "01.11" for x in c1["extras"]):
         fails.append("the 2020 example is set but not placed after Rule 01.11 (DR-125)")
 
+    # BE-02: Rule 01.11's correct plate either prints a sourced count by party or says it gives none
+    t11 = texts.get("s-01-11-correct", "")
+    if "gives no count" not in t11 and not re.search(r"\bOf the \d+ ", t11):
+        fails.append("s-01-11-correct: the plate shows two cases with neither a count nor a line saying it gives none (BE-02, DR-93)")
+
     # DR-98: H.R. 7008 named whole with both provisions at its first mention in each chapter, as the House passed it, since
     # the committee's text held the stock section alone (round two research)
     whole = HR7008_FIRST
@@ -324,9 +329,18 @@ def apply_pass(chapters, book, texts, fails, notes):
     for p, cl in PILLAR_ICON.items():
         if not re.search(rf'data-icon="{cl}"[^>]*>.*?</svg><span class="pw">{p}</span>', pills, re.S):
             fails.append(f"s-01-pillars: {cl} is not drawn with the word {p} beside it (DR-111)")
-    cur = re.findall(r'<li class="pi cur" aria-current="true">.*?<span class="pw">(\w+)</span>', pills, re.S)
-    if cur != ["Track"] or ".cur .pw{text-decoration:underline" not in pills:
-        fails.append("s-01-pillars: the compact row must underline one current pillar's word (DR-111)")
+    rows = re.findall(r'<ol class="prow prow-(\d+)"[^>]*>(.*?)</ol>', pills, re.S)
+    curs = {}
+    for size, body in rows:
+        cur = re.findall(r'<li class="pi cur" aria-current="true">.*?<span class="pw">(\w+)</span>', body, re.S)
+        if len(cur) > 1:
+            fails.append(f"s-01-pillars: a {size} px row marks more than one current pillar (DR-111)")
+        if cur:
+            curs[int(size)] = body
+    if ".cur .pw{text-decoration:underline" not in pills or 24 not in curs or 48 not in curs:
+        fails.append("s-01-pillars: the figure must show a current pillar, underlined, at 48 px and at 24 px (DR-111, CA-S7)")
+    elif 'data-red="signature"' not in curs[48]:
+        fails.append("s-01-pillars: the 48 px current icon must show its red part, the second sign (DR-111, CA-S7)")
     for size, body in re.findall(r'<ol class="prow prow-(\d+)"[^>]*>(.*?)</ol>', pills, re.S):
         for li_cls, li in re.findall(r'<li class="(pi(?: cur)?)"[^>]*>(.*?)</li>', body, re.S):
             red = 'data-red="signature"' in li

@@ -130,9 +130,10 @@ class Ctx:
             return f':scope{{{hi}}}'
         return f':scope{{{lo}}}@media (min-width:48em){{:scope{{{hi}}}}}'
 
-    def fail_band(self):
-        """A band inside a failure stage, so a cropped picture of it still says not to publish it (BE-S4)."""
-        css = (f'.fb{{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 12px;'
+    def fail_band(self, flush=False):
+        """A band inside a failure stage, so a cropped picture of it still says not to publish it (BE-S4). flush=True
+        sets it on the piece's top edge with no gap, for a fixed-width piece that pads itself (CA-S6)."""
+        css = (f'.fb{{display:flex;align-items:center;gap:8px;margin:0 0 {0 if flush else 16}px;padding:6px 12px;'
                f'background:{self.v("oa.color.surface.charcoal")};color:{self.v("oa.color.text.primary.onCharcoal")};'
                f'{self.ty("label")}}}')
         return css, FAIL_BAND

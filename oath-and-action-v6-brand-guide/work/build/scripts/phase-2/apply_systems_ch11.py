@@ -423,7 +423,7 @@ def s_11_1(ctx):
     T = ctx.ty
     css = piece_css(ctx, 'n', 's') + (f'.kd{{display:block;margin:0 0 4px;{T("label")};color:var(--txt2)}}'
                                       f'.sig{{padding:16px 0 20px;border-bottom:1px solid var(--hair)}}'
-                                      f'.sig:first-of-type{{border-top:1px solid var(--hair)}}.sig .key{{margin-top:14px}}'
+                                      f'.sig:first-of-type{{border-top:1px solid var(--hair)}}.sig:last-of-type{{border-bottom:0;padding-bottom:0}}.sig .key{{margin-top:14px}}'
                                       f'.sig .rows{{border:0}}.sig .row{{padding:0;border:0}}')
     blocks = ''
     for b, label in ((dict(LIST_BILLS[2], kind='state'), 'A state bill'), (FED_BILL, 'A federal bill')):
@@ -439,18 +439,18 @@ def s_11_1(ctx):
            'Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits '
            'for the President to sign or veto it.” Its key ends 6 President.')
     spec(ctx, 's-11-1-correct', html, '11.1', alt, width=360, illustrative=True)
-    fcss, band = ctx.fail_band()
-    css2 = piece_css(ctx, 'n', 'l') + fcss
+    fcss, band = ctx.fail_band(flush=True)
+    css2 = piece_css(ctx, 'n', 's') + fcss
     b = dict(LIST_BILLS[2])
-    r = row(b, 'l', nm=CLERK, step_word='Step 6 of 6: Presented.')
+    r = row(b, 's', nm=CLERK, step_word='Step 6 of 6: Presented.')
     r = r.replace('Both chambers passed it, and it waits for the governor to sign or veto it.',
                   'The enrolled bill went to the executive on February 12.')
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the library hours bill stands</p>'
-             f'<ul class="rows">{r}</ul></div>')
-    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, whose six '
-            'steps take the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads '
-            '“Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”')
-    spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=600, illustrative=True)
+             f'<ul class="rows">{r}</ul>{key(CLERK, ("done", "now"))}</div>')
+    alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, at 360 px, '
+            'whose key gives the six steps the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and '
+            'Presented. It reads “Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”')
+    spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=360, illustrative=True)
 
 def s_11_2(ctx):
     T = ctx.ty
@@ -473,7 +473,7 @@ def s_11_2(ctx):
     spec(ctx, 's-11-2-correct', html, '11.2', alt, readable=True,
          notes='A readable list (D2-255); the marks are hidden from assistive technology and every state is in words.')
 
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     hue = {'done': 'oa.color.palette.verdigris', 'now': 'oa.color.palette.prussian', 'notyet': 'oa.color.palette.stone'}
     st = ['done', 'done', 'done', 'now', 'notyet', 'notyet']
     c = 324 // 6
@@ -484,7 +484,7 @@ def s_11_2(ctx):
                     f'<text x="{x}" y="20.68" font-size="13" style="fill:{ctx.v("oa.color.palette.white")}">{i + 1}</text>')
     mk = svg(324, 32, ''.join(body))
     css2 = (MARK_CSS + fcss + f'.pr{{display:grid;gap:20px}}.k{{margin:0 0 8px;{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
-            f'.g .mk{{filter:grayscale(1)}}.wr{{padding:4px 16px 20px}}')
+            f'.g .mk{{filter:grayscale(1)}}.wr{{padding:16px 16px 20px}}')
     html2 = (f'<style>{css2}</style>{band}<div class="wr"><p style="margin:0 0 16px">{ILLUS}</p><div class="pr">'
              f'<div><p class="k">In color</p>{mk}</div><div class="g"><p class="k">In grayscale</p>{mk}</div></div></div>')
     gv, gs, gp = (C.css_gray(ctx.hx(hue[k])) for k in ('done', 'notyet', 'now'))
@@ -514,7 +514,7 @@ def s_11_3(ctx):
            'Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped '
            'marks.')
     spec(ctx, 's-11-3-correct', html, '11.3', alt, width=360, illustrative=True)
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     css2 = piece_css(ctx, 'n', 's') + fcss
     nm = names()[:5] + ['Law']
     r = row(LIST_BILLS[2], 's', nm=nm)
@@ -551,7 +551,7 @@ def s_11_4(ctx):
            'February 24, and a House committee holds its hearing on March 10.” Beside the same red disc, “You can take '
            'part now. Send written testimony or sign up to speak by March 10.”, then the link How to send testimony.')
     spec(ctx, 's-11-4-correct', f'<style>{css}</style>{html}', '11.4', alt, width=360, illustrative=True)
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     css2, html2 = card(ctx, red_progress=True)
     alt2 = ('Labeled Failure case: do not publish. The same Illustrative story card, with the line and the four filled '
             'steps drawn in Pillar Red, so red marks how far the bill has come as well as the red disc on step 5 that '
@@ -578,7 +578,7 @@ def s_11_5(ctx):
             spec(ctx, sid, html, '11.5' if sid == 's-11-5-correct' else None, alt, width=w, illustrative=True,
                  surface=SURF_NAME[surf])
             sids[(surf, size)] = sid
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     css = piece_css(ctx, 'n', 's') + fcss + '.mkw{padding:4px 0}'
     rows = ''
     for b in LIST_BILLS[:2]:
@@ -696,7 +696,7 @@ def s_11_6(ctx):
         spec(ctx, sid, html, '11.6' if sid == 's-11-6-correct' else None, alt, width=w, illustrative=True,
              surface=SURF_NAME[surf])
         sids[(surf, size)] = sid
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     html = f'<style>{page_css(ctx, "n", "s")}{fcss}</style>{band}{bill_page(ctx, "n", "s", generic=True)}'
     alt = ('Labeled Failure case: do not publish. The same Illustrative page for bill H.4212, Public meeting notice, with '
            'a stock stepper in place of the numbered steps: a filled box with a check for step 1, a box with a dot for '
@@ -746,7 +746,7 @@ def s_11_7(ctx):
            '48 px tall.')
     spec(ctx, 's-11-7-correct', html, '11.7', alt, readable=True,
          notes='A readable list (D2-255). Circle sizes and number sizes are the ones every tracker plate in this chapter draws.')
-    fcss, band = ctx.fail_band()
+    fcss, band = ctx.fail_band(flush=True)
     b = LIST_BILLS[0]
     small = steps_svg(b['states'], 324, 16, fs=9)
     css2 = (piece_css(ctx, 'n', 's') + fcss +

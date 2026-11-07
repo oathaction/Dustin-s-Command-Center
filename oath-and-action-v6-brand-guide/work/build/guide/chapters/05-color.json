@@ -423,7 +423,7 @@
       "id": "05.6",
       "title": "Give each tint one named job, and keep tints off identity marks.",
       "rule": [
-        "A tint is one palette color mixed toward Newsprint or Charcoal by a recorded amount, for one job. It enters only as a token, with its measured ratio. The wordmark, the ampersand, the lockmark and the pillar marks stay in solid palette colors, and no color on a page comes from lowering opacity."
+        "A tint is one palette color mixed toward Newsprint or Charcoal by a recorded amount, for one job. It enters only as a token, with its measured ratio. The wordmark, the ampersand, the lockmark and the pillar icons stay in solid palette colors, and no color on a page comes from lowering opacity."
       ],
       "tokens": [
         "oa.color.derived.deepStone",
@@ -500,7 +500,7 @@
       "why": {
         "text": [
           "Neither end of the diverging scale belongs to a party, so a reader sees a rise or a fall before any side. A scale from red to blue reads as a party split in the United States, and Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a chart shared on its own still reads as ours.",
-          "The same standard decides which charts run. Charts are chosen by the question and the evidence. Every title is read from the left and the right to check that its words are accurate and fair. A set never adds or drops a finding to even the score."
+          "Chapter 01’s one standard of evidence also decides which charts run. Charts are chosen by the question and the evidence. Every title is read from the left and the right to check that its words are accurate and fair. A set never adds or drops a finding to even the score."
         ],
         "basis": "Design judgment; Rules 01.1 and 01.3"
       },

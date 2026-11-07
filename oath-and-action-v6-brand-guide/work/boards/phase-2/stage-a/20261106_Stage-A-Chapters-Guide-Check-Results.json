@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-07T06:59:22.739Z",
+ "checked": "2026-11-07T07:36:09.041Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -19,9 +19,9 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 511,
+    "ids": 512,
     "duplicates": [],
-    "links": 755,
+    "links": 756,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -180,8 +180,9 @@
    "partOrder": [],
    "ruleRefs": [],
    "ruleRefCount": 0,
+   "illusTwice": [],
    "text": {
-    "texts": 9226,
+    "texts": 9280,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -193,7 +194,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 332,
+    "marks": 336,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -222,12 +223,16 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 356265,
+   "height": 359505,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "fit": {
+    "offered": [],
+    "under": []
+   },
    "axe": [],
    "focusStops": 60,
    "focusProblems": []
@@ -248,9 +253,9 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 511,
+    "ids": 512,
     "duplicates": [],
-    "links": 755,
+    "links": 756,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -410,8 +415,9 @@
    "partOrder": [],
    "ruleRefs": [],
    "ruleRefCount": 0,
+   "illusTwice": [],
    "text": {
-    "texts": 9088,
+    "texts": 9145,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -423,7 +429,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 332,
+    "marks": 336,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -452,12 +458,27 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 381239,
+   "height": 385549,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "fit": {
+    "offered": [
+     {
+      "specimen": "s-03-1-failure",
+      "scale": 0.993,
+      "smallest": 61.39
+     },
+     {
+      "specimen": "s-04-5-failure",
+      "scale": 0.932,
+      "smallest": null
+     }
+    ],
+    "under": []
+   },
    "axe": [],
    "focusStops": null,
    "focusProblems": null
@@ -478,9 +499,9 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 511,
+    "ids": 512,
     "duplicates": [],
-    "links": 755,
+    "links": 756,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -639,8 +660,9 @@
    "partOrder": [],
    "ruleRefs": [],
    "ruleRefCount": 0,
+   "illusTwice": [],
    "text": {
-    "texts": 9055,
+    "texts": 9119,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -652,7 +674,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 332,
+    "marks": 336,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -681,12 +703,37 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 459039,
+   "height": 462856,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "fit": {
+    "offered": [
+     {
+      "specimen": "s-03-1-failure",
+      "scale": 0.587,
+      "smallest": 36.27
+     },
+     {
+      "specimen": "s-03-5-failure",
+      "scale": 0.639,
+      "smallest": null
+     },
+     {
+      "specimen": "s-03-6-failure",
+      "scale": 0.895,
+      "smallest": null
+     },
+     {
+      "specimen": "s-04-5-failure",
+      "scale": 0.551,
+      "smallest": null
+     }
+    ],
+    "under": []
+   },
    "axe": [],
    "focusStops": null,
    "focusProblems": null
@@ -707,9 +754,9 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 511,
+    "ids": 512,
     "duplicates": [],
-    "links": 755,
+    "links": 756,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -868,8 +915,9 @@
    "partOrder": [],
    "ruleRefs": [],
    "ruleRefCount": 0,
+   "illusTwice": [],
    "text": {
-    "texts": 9060,
+    "texts": 9124,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -881,7 +929,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 332,
+    "marks": 336,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -910,12 +958,37 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 474683,
+   "height": 478890,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "fit": {
+    "offered": [
+     {
+      "specimen": "s-03-1-failure",
+      "scale": 0.538,
+      "smallest": 33.23
+     },
+     {
+      "specimen": "s-03-5-failure",
+      "scale": 0.586,
+      "smallest": null
+     },
+     {
+      "specimen": "s-03-6-failure",
+      "scale": 0.82,
+      "smallest": null
+     },
+     {
+      "specimen": "s-04-5-failure",
+      "scale": 0.505,
+      "smallest": null
+     }
+    ],
+    "under": []
+   },
    "axe": [],
    "focusStops": null,
    "focusProblems": null
