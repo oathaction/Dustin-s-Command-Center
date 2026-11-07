@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-07T06:37:56.963Z",
+ "checked": "2026-11-07T06:41:14.553Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -21,7 +21,7 @@
    "anchors": {
     "ids": 509,
     "duplicates": [],
-    "links": 753,
+    "links": 754,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -181,7 +181,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9198,
+    "texts": 9204,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -222,7 +222,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 354512,
+   "height": 354559,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -411,7 +411,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9065,
+    "texts": 9066,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -452,7 +452,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 379539,
+   "height": 379540,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -640,7 +640,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9032,
+    "texts": 9033,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -681,7 +681,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 457073,
+   "height": 457029,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -869,7 +869,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9037,
+    "texts": 9038,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -910,7 +910,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 472628,
+   "height": 472601,
    "fonts": [
     "Inter",
     "Inter Tight",
