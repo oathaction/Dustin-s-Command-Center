@@ -99,17 +99,19 @@ def l5(width_px, surface="newsprint"):
             f'<span style="position:absolute;left:0;top:{142.86 * k:.1f}px">{t1}</span></span>')
 
 
-def l6(width_px):
+def l6(width_px, dots=True):
     """L6, the editorial signature strip, on the fifth edition's layout (1400 by 300 units), on Prussian in White.
-    The web address waits until it is settled."""
+    The web address waits until it is settled. dots=False draws it without the four pillar dots, for the changes board
+    only (D2-403: the guide's L6 stays as drawn until Dustin answers)."""
     k = width_px / 1400
     wh = pal("white")
     wm = mark(WM["display"], h=50.8 * k, surface="prussian", decorative=True)
     t1 = svg_file(ID_DIR / TL1, w=363.34 * k, style=f"color:{wh}", decorative=True)
     lk = mark(LOCK["display"], h=148 * k, surface="prussian", decorative=True)
     dots = "".join(f'<span style="position:absolute;left:{(x - 6) * k:.1f}px;top:{(227.8 - 6) * k:.1f}px;width:{12 * k:.1f}px;height:{12 * k:.1f}px;border-radius:50%;background:{wh}"></span>'
-                   for x in (85.6, 110.0, 134.4, 158.8))
-    return (f'<span role="img" aria-label="Oath &amp; Action, L6 editorial signature on Prussian, all in White: the wordmark, the tagline, four pillar dots and the lockmark." '
+                   for x in (85.6, 110.0, 134.4, 158.8)) if dots else ""
+    what = "the wordmark, the tagline, four pillar dots and the lockmark" if dots else "the wordmark, the tagline and the lockmark"
+    return (f'<span role="img" aria-label="Oath &amp; Action, L6 editorial signature on Prussian, all in White: {what}." '
             f'style="position:relative;display:block;width:{width_px:.1f}px;height:{300 * k:.1f}px;background:{tv("color-surface-prussian")}">'
             f'<span style="position:absolute;left:{80 * k:.1f}px;top:{82.5 * k:.1f}px">{wm}</span>'
             f'<span style="position:absolute;left:{80 * k:.1f}px;top:{170.46 * k:.1f}px">{t1}</span>{dots}'

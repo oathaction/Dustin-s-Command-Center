@@ -45,6 +45,12 @@
 //   partOrder          every chapter sits under its own part's opener, and that opener links to it (D2-324)
 //   ruleRefs           every rule a citation names ("Rule 05.2", "Rules 05.3 and 05.5", "Rules 08.4 to 08.8") exists
 //                      when its chapter's rules are in the page, so an old chapter 08 number cannot hide (D2-325)
+// Added in the apply pass's fix pass (November 7, 2026):
+//   fitFloor           every plate whose True size / Fit to window switch shows is set to Fit to window, and its
+//                      smallest rendered text (HTML text times the fit scale, SVG text at its drawn size) must stay at
+//                      13 px or more; the switch is then set back (CA-M1). Plates with no switch showing are skipped.
+//   illusOnce          a plate carries the Illustrative label once: never in both the piece and its caption (DR-97,
+//                      CD-N1, CA-N11)
 // A plate whose stage carries data-check-exempt="contrast size red locked" skips that test inside it; every exemption
 // is listed in the results. Writes <page stem>-Guide-Check-Results.json beside the page, and one capture per section at
 // 1440 and 390 px to captures/. Exit code 1 when any check fails.
@@ -344,6 +350,13 @@ function audit(page) {
       document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v && v.includes('Rule')) cite(norm(v), where(el), a); } });
       out.ruleRefs = refs.slice(0, 30);
       out.ruleRefCount = refs.length;
+
+      // DR-97, CD-N1: one Illustrative label per plate, at the head of the piece or, for a piece that shows none, in
+      // the caption; never both
+      out.illusTwice = [...document.querySelectorAll('figure.plate')].filter((f) => {
+        const st = f.querySelector('.plate-stage'), cap = f.querySelector('.plate-cap');
+        return st && cap && st.querySelector('.illus') && cap.querySelector('.illus');
+      }).map((f) => (f.querySelector('[data-specimen]') || f).getAttribute('data-specimen') || f.id);
     }
 
     // ---------------- text size and contrast
@@ -494,6 +507,7 @@ function failuresFrom(a, width) {
   if (a.retiredClasses.count) add('retiredClasses', `${a.retiredClasses.count} element(s) with a retired grid class outside a failure plate, in ${a.retiredClasses.where.slice(0, 25).join(', ')}; first: ${JSON.stringify(a.retiredClasses.hits[0])}`);
   if (a.partOrder.length) add('partOrder', `${a.partOrder.length} chapter(s) out of their part, first: ${JSON.stringify(a.partOrder[0])}`);
   if (a.ruleRefCount) add('ruleRefs', `${a.ruleRefCount} citation(s) of a rule the page does not hold, first: ${JSON.stringify(a.ruleRefs[0])}`);
+  if (a.illusTwice.length) add('illusOnce', `${a.illusTwice.length} plate(s) with the Illustrative label in both the piece and its caption: ${a.illusTwice.slice(0, 12).join(', ')}`);
   if (a.codes.count) add('codes', `${a.codes.count} decision code(s) or studio word(s) in reader text, in ${a.codes.where.slice(0, 25).join(', ')}${a.codes.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.codes.hits[0])}`);
   if (a.text.under13.length) add('under13', `${a.text.under13.length} text item(s) under 13 px, first: ${JSON.stringify(a.text.under13[0])}`);
   if (a.text.lowContrast.length) add('contrast', `${a.text.lowContrast.length} text item(s) under contrast, first: ${JSON.stringify(a.text.lowContrast[0])}`);
@@ -508,6 +522,40 @@ function failuresFrom(a, width) {
   if (w.nearMisses.length) add('lockedLines', `${w.nearMisses.length} near miss(es) of a locked line, first: ${JSON.stringify(w.nearMisses[0])}`);
   if (w.pillarOrder.length) add('pillarOrder', `pillars out of order: ${JSON.stringify(w.pillarOrder.slice(0, 3))}`);
   return f;
+}
+
+// CA-M1 (fix pass): set each plate whose switch shows to Fit to window, measure its smallest rendered text, set it back.
+async function fitAudit(page) {
+  return page.evaluate(async () => {
+    const settle = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const out = { offered: [], under: [] };
+    for (const fig of document.querySelectorAll('figure.plate')) {
+      const sw = fig.querySelector('.fit-switch');
+      if (!sw || sw.hidden || getComputedStyle(sw).display === 'none') continue;
+      const stage = fig.querySelector('.plate-stage'); if (!stage) continue;
+      const id = stage.getAttribute('data-specimen');
+      const fitBtn = sw.querySelector('[data-fit="fit"]'), trueBtn = sw.querySelector('[data-fit="true"]');
+      const was = fig.getAttribute('data-fit') === 'fit';
+      fitBtn.click(); await settle();
+      const scale = stage.getBoundingClientRect().width / (stage.offsetWidth || 1);
+      let min = Infinity, sample = '';
+      stage.querySelectorAll('*').forEach((el) => {
+        if (/^(script|style|title|desc|defs)$/i.test(el.tagName) || el.closest('title, desc, defs, .vh')) return;
+        const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(' ');
+        if (!own) return;
+        const r = el.getBoundingClientRect(); if (r.width === 0 && r.height === 0) return;
+        const cs = getComputedStyle(el); if (cs.visibility === 'hidden' || cs.display === 'none') return;
+        let size = parseFloat(cs.fontSize);
+        if (el instanceof SVGElement) { const svg = el.closest('svg'); const vb = svg && svg.viewBox && svg.viewBox.baseVal; size = vb && vb.width ? size * svg.getBoundingClientRect().width / vb.width : size * scale; }
+        else size *= scale;
+        if (size < min) { min = size; sample = own.slice(0, 40); }
+      });
+      out.offered.push({ specimen: id, scale: +scale.toFixed(3), smallest: Number.isFinite(min) ? +min.toFixed(2) : null });
+      if (min < 12.95) out.under.push({ specimen: id, scale: +scale.toFixed(3), smallest: +min.toFixed(2), sample });
+      (was ? fitBtn : trueBtn).click(); await settle();
+    }
+    return out;
+  });
 }
 
 async function runAxe(page) {
@@ -559,7 +607,9 @@ async function checkPage(browser, file, widths, opts = {}) {
     await page.waitForTimeout(500);
     if (opts.mutate) await page.evaluate(opts.mutate);
     const a = await audit(page);
+    a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
+    if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
     let axe = null;
     if (!opts.skipAxe) {
       axe = await runAxe(page);
@@ -650,6 +700,25 @@ const PLANTS = [
   { key: 'ruleRefs', fault: 'a citation of Rule 01.9, which chapter 01 does not hold', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p>See Rule 01.9 for the sizes.</p>'); } },
   { key: 'ruleRefs', fault: 'a range, "Rules 01.1 to 01.4", past chapter 01\'s last rule', js: () => { document.querySelector('.plate-cap').append(' Rules 01.1 to 01.4 set the frame.'); } },
   { key: 'ruleRefs', fault: 'a citation in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card drawn as Rule 01.7 sets it, at true size.'); } },
+  // apply fix pass, November 7, 2026. The demo's 640 px sheet holds 13 to 17 px text.
+  { key: 'fitFloor', fault: 'a 2,000 px plate whose switch is forced to show, so Fit to window sets its text near 6 px', js: () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const fig = st.closest('figure');
+    st.style.setProperty('--w', '2000px'); fig.querySelector('.plate-scroll').style.setProperty('--w', '2000px');
+    fig.querySelector('.fit-switch').hidden = false; } },
+  { key: 'fitFloor', fault: 'the same 2,000 px plate after a resize: the shell hides the switch, since fitting would break the floor (allowed: must not be flagged)', expect: false, js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const fig = st.closest('figure');
+    st.style.setProperty('--w', '2000px'); fig.querySelector('.plate-scroll').style.setProperty('--w', '2000px');
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400)); },
+    verify: (r) => r.runs[0].fit.offered.every((x) => x.specimen !== 's-demo-sheet') },
+  { key: 'fitFloor', fault: 'a 1,200 px plate set only in 48 px type: the shell offers the switch, and fitting keeps it over 13 px (allowed: must not be flagged)', expect: false, js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const fig = st.closest('figure');
+    st.innerHTML = '<p style="font:700 48px/1.1 Inter;margin:0;padding:24px">Forty-eight pixel type only</p>';
+    st.style.setProperty('--w', '1200px'); fig.querySelector('.plate-scroll').style.setProperty('--w', '1200px');
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400)); },
+    verify: (r) => r.runs[0].fit.offered.some((x) => x.specimen === 's-demo-sheet' && x.smallest >= 13) },
+  { key: 'illusOnce', fault: 'an Illustrative label in a piece whose caption carries one too', js: () => {
+    const fig = document.querySelector('.plate-cap .illus').closest('figure');
+    fig.querySelector('.plate-stage').insertAdjacentHTML('afterbegin', '<span class="illus">Illustrative</span>'); } },
 ];
 
 async function selfTest() {
@@ -666,9 +735,11 @@ async function selfTest() {
     const r = await checkPage(browser, page, [1440], { mutate: p.js, skipAxe: true, skipFocus: true });
     const caught = r.failures.filter((f) => f.key === p.key);
     const others = r.failures.filter((f) => f.key !== p.key).map((f) => f.key);
-    // a plant with expect: false proves an allowance: the test must stay quiet
+    // a plant with expect: false proves an allowance: the test must stay quiet. verify, where given, reads the run
+    // itself, for example that the shell offered or withheld a switch.
     const expect = p.expect !== false;
-    result.plants.push({ test: p.key, fault: p.fault, expect: expect ? 'caught' : 'not flagged', caught: caught.length > 0, ok: (caught.length > 0) === expect,
+    const verified = p.verify ? !!p.verify(r) : true;
+    result.plants.push({ test: p.key, fault: p.fault, expect: expect ? 'caught' : 'not flagged', caught: caught.length > 0, verified, ok: (caught.length > 0) === expect && verified,
       message: caught[0] ? caught[0].msg : null, alsoFlagged: [...new Set(others)] });
   }
   await browser.close();

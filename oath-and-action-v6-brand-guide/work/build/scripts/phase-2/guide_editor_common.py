@@ -41,6 +41,11 @@ PILLARS = ["Explain", "Track", "Connect", "Act"]
 # DR-111: the pillar icons are the Civic Line drawings made for the pillars, each always with its word beside it.
 CL_DIR = "work/build/assets/civic-line"
 PILLAR_ICON = {"Explain": "CL-019", "Track": "CL-020", "Connect": "CL-021", "Act": "CL-022"}
+# Each pillar icon's ink in its 128-unit field, as left, top, right and bottom edges, measured with getBBox() in Chromium
+# with half the stroke added (November 7, 2026). The pillar row spaces words and arrows from the ink, so Act's narrow hand
+# sits as close to its word as Explain's book (CA-S7).
+INK = {"CL-019": (12.85, 25.28, 115.15, 103.2), "CL-020": (10.34, 24.45, 118.19, 104.36),
+       "CL-021": (10.37, 32.2, 117.94, 96.03), "CL-022": (34.48, 22.92, 93.7, 105.36)}
 VOICE_LINE_B = ("We’ll explain the rules and track what happens to them. When a decision is coming, "
                 "we’ll connect you with the people making it, so you can act in time.")
 
@@ -114,7 +119,7 @@ BASE = f"""
 .ed .kick .dot{{color:var(--oa-color-text-secondary)}}
 .ed .kick .sx{{color:var(--oa-color-text-secondary)}}
 .ed .kick .sxi{{display:inline-flex;align-items:center;gap:8px}}
-.ed .kick .ki{{flex:none;display:block;color:var(--oa-color-graphic-essential)}}
+.ed .kick .ki{{flex:none;display:block;color:var(--oa-color-graphic-essential);margin:-5px 0}}
 .ed .pos{{display:inline-block;background:var(--oa-color-action-primary-fill);color:var(--oa-color-action-primary-label);padding:3px 8px;{fx('label')};text-transform:uppercase}}
 .ed table{{border-collapse:collapse;width:100%;{fx('body-small')}}}
 .ed th,.ed td{{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--oa-color-border-hairline)}}
@@ -224,7 +229,7 @@ def cl_name(cl_id):
     return re.sub(r"^.*-CL-\d{3}-(.+)-Black$", r"\1", cl_file(cl_id).stem).replace("-", " ")
 
 
-def cl_icon(cl_id, size, red=False, cls="cl"):
+def cl_icon(cl_id, size, red=False, cls="cl", trim=False):
     """A Civic Line master inline at `size` px, its geometry exactly as drawn. The strokes take the icon's ink through
     currentColor; with red=True the accent part takes Pillar Red, which Rule 05.3 counts as signature red. The file's
     ids, title and desc are dropped: nothing in the drawing refers to the ids, and the word beside the icon names it,
@@ -238,6 +243,9 @@ def cl_icon(cl_id, size, red=False, cls="cl"):
     if re.search(r'#[0-9A-Fa-f]{6}\b', s):
         raise SystemExit(f"{cl_id}: the master holds a color this helper does not map")
     red_attr = ' data-red="signature"' if red else ""
+    if trim and cl_id in INK:
+        x0, _, x1, _ = INK[cl_id]
+        red_attr += f' style="margin:0 {-(128 - x1) * size / 128:.1f}px 0 {-x0 * size / 128:.1f}px"'
     s = re.sub(r"<svg\b[^>]*>", f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="{size}" height="{size}" '
                                 f'class="{cls}" data-icon="{cl_id}" aria-hidden="true" focusable="false"{red_attr}>', s, count=1)
     return re.sub(r">\s+<", "><", s.strip())
@@ -251,7 +259,7 @@ def pillar_row(size, current=None, label="The four pillars, in order"):
     for p in PILLARS:
         cur = p == current
         attrs = ' class="pi cur" aria-current="true"' if cur else ' class="pi"'
-        lis.append(f'<li{attrs}>{cl_icon(PILLAR_ICON[p], size, red=cur and size >= 48)}<span class="pw">{e(p)}</span></li>')
+        lis.append(f'<li{attrs}>{cl_icon(PILLAR_ICON[p], size, red=cur and size >= 48, trim=True)}<span class="pw">{e(p)}</span></li>')
     return f'<ol class="prow prow-{size}" aria-label="{e(label)}">{"".join(lis)}</ol>'
 
 

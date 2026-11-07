@@ -5,7 +5,7 @@
   "part": "Symbols and graphics",
   "instruction": "Give each record state or interface action a glyph and a word that read without color.",
   "intro": [
-    "This chapter gives each state a record can be in, and each action a page offers, a mark and a word that read without color. A reader who sees no color, or prints the page in gray, gets the same meaning from the shape and the word.",
+    "A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.",
     "It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other records, such as a records request or an agency rule, join the chapter as rule groups of their own once we draw them, and so do utility icons for actions such as copy, filter and share."
   ],
   "groups": [
@@ -21,7 +21,7 @@
       "id": "11.1",
       "title": "Follow every bill through six numbered steps with plain names.",
       "rule": [
-        "A tracker follows a bill through six steps, numbered 1 to 6: Filed, Hearing, Committee vote, First chamber, Second chamber, and a sixth named for whoever signs the bill, Governor on a state bill and President on a federal one. A chamber is one half of a legislature, the House or the Senate, and the first chamber is the one where the bill was filed. Every tracker prints the number and the name together, as in “Step 2 of 6: Hearing”, for the step the bill is at now.",
+        "A tracker follows a bill through six steps, numbered 1 to 6: Filed, Hearing, Committee vote, First chamber, Second chamber, and a sixth named for whoever signs the bill, Governor on a state bill and President on a federal one. A chamber is one house of a legislature, such as the House or the Senate, and the first chamber is the one where the bill was filed. Every tracker prints the number and the name together, as in “Step 2 of 6: Hearing”, for the step the bill is at now.",
         "Six steps fold some procedure together, such as a second reading or a conference committee, where members of both chambers settle one text. A bill’s own page gives those dates in the note under the step they belong to."
       ],
       "tokens": [
@@ -30,13 +30,13 @@
       ],
       "why": {
         "text": [
-          "A number gives a reader words to say, “step 2 of 6”, with no key to learn, and it reads the same on a phone and in gray print. Plain names let a newcomer say what happens at each step. The hearing keeps a step of its own because it is where the public is invited to speak, and a bill that skips it is news. Naming step 6 for the person who signs keeps a bill that waits for a signature from reading as law."
+          "A number gives a reader words to say, “step 2 of 6”, with no key to learn, and it reads the same on a phone and in gray print. Plain names let a newcomer say what happens at each step. The hearing keeps a step of its own because it is where a committee takes testimony on the bill, from the public in many state legislatures and from the witnesses it invites in Congress. Naming step 6 for the person who signs keeps a bill that waits for a signature from reading as law."
         ],
         "basis": "Design judgment, approved by our founder and editor in November 2026"
       },
       "correct": {
         "specimen": "s-11-1-correct",
-        "caption": "Two bills at 1,024 px, both at step 6. The state bill’s sixth step is Governor, and the federal bill’s is President; the other five names stay the same."
+        "caption": "Two bills at 360 px, both at step 6, each with its own key. The state bill’s sixth step is Governor, and the federal bill’s is President; the other five names stay the same."
       },
       "failure": {
         "specimen": "s-11-1-failure",
@@ -58,7 +58,7 @@
         },
         {
           "label": "Step names under the circles",
-          "value": "From 1,024 px, Inter 600 at 13 px, the current step in bold",
+          "value": "In a list column 552 px wide or more, Inter 600 at 13 px, the current step in bold",
           "token": "oa.type.dataLabel"
         }
       ],
@@ -67,7 +67,8 @@
         "18"
       ],
       "builders": [
-        "Write the status words from the data, never from the drawing: the step number, its name for this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state bill prints Governor and a federal bill prints President."
+        "Write the status words from the data, never from the drawing: the step number, its name for this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state bill prints Governor and a federal bill prints President.",
+        "Number an invented federal bill from H.R. 99001 up, far past any number a Congress has used, and label it Illustrative. A cropped plate then cannot put our status words on a real bill."
       ]
     },
     {
@@ -139,14 +140,15 @@
         "17"
       ],
       "builders": [
-        "Draw each tracker as one SVG with <code>aria-hidden=\"true\"</code>, and give screen readers an ordered list of the six steps beside it, each with its state in words, such as “Step 2, Hearing: never happened.” Hide that list visually and keep it in the reading order."
+        "Draw each tracker as one SVG with <code>aria-hidden=\"true\"</code>, and give screen readers an ordered list of the six steps beside it, each with its state in words, such as “Step 2, Hearing: never happened.” Hide that list visually and keep it in the reading order.",
+        "A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s note names it."
       ]
     },
     {
       "id": "11.3",
       "title": "Say in words when a bill becomes law or stops.",
       "rule": [
-        "Step 6 keeps the signer’s name while a bill waits, so a bill there reads “Step 6 of 6: Governor”. Once the governor or the President signs it, all six steps fill, and the words say “Became law on” with the date, then when it takes effect, as in “Became law on April 2. It takes effect July 1.”",
+        "Step 6 keeps the signer’s name while a bill waits, so a bill there reads “Step 6 of 6: Governor”. Once it becomes law, all six steps fill and the words say “Became law on” with the date, then when it takes effect, as in “Became law on April 2. It takes effect July 1.” A bill can become law by signature, by a vote to override a veto, or without a signature where the constitution allows it. When it was not signed, the words say how, as in “Became law on March 18, over the governor’s veto.”",
         "A bill that stops ends its line on a square at the step where it stopped, and the words give the date and the reason. A veto that stands stops a bill at step 6."
       ],
       "why": {
@@ -157,7 +159,7 @@
       },
       "correct": {
         "specimen": "s-11-3-correct",
-        "caption": "Two ends at 360 px. H.1180 became law, and its words give both dates. S.2045 stopped at step 6 when a veto stood, and its line ends on the square."
+        "caption": "Three ends at 360 px. H.1180 became law when it was signed, and S.1517 over a veto; the words of each say how and when. S.2045 stopped at step 6 when a veto stood, and its line ends on the square."
       },
       "failure": {
         "specimen": "s-11-3-failure",
@@ -171,6 +173,14 @@
         {
           "label": "Signed",
           "value": "All six steps filled; “Became law on April 2. It takes effect July 1.”"
+        },
+        {
+          "label": "Over a veto",
+          "value": "All six steps filled; “Became law on March 18, over the governor’s veto.”"
+        },
+        {
+          "label": "Without a signature",
+          "value": "All six steps filled; “Became law on May 4, without the governor’s signature.”, where the constitution allows it"
         },
         {
           "label": "Stopped",
@@ -229,9 +239,13 @@
           "value": "“You can take part now.” in bold, then the deadline and how to act"
         },
         {
-          "label": "In a list or on a card",
+          "label": "In a list, or on a card with this mark",
           "value": "A text link at least 44 px tall; the red button waits for the bill’s own page",
           "token": "oa.size.target.touch"
+        },
+        {
+          "label": "On a card without this mark",
+          "value": "The card may end on the red ask, as the pillar cards in chapter 01 do"
         },
         {
           "label": "Red jobs in a view",
@@ -250,7 +264,7 @@
       "id": "11.5",
       "title": "Use numbered steps in lists and on story cards.",
       "rule": [
-        "In a list of bills and on a story card, the tracker runs across the page: six numbered circles on one line, solid as far as the bill has come and fine after it. The bill’s number and name lead each row, and its status words follow the marks. On a phone, the step names move into a key after the list; from 1,024 px they sit under each circle."
+        "In a list of bills and on a story card, the tracker runs across the page: six numbered circles on one line, solid as far as the bill has come and fine after it. The bill’s number and name lead each row, and its status words follow the marks. In a column narrower than 552 px, as on a phone, the first circle starts on the text edge and the step names move into a key after the list. In a wider column, each step takes a sixth of the row and its name sits under its circle."
       ],
       "tokens": [
         "oa.border.width.rule",
@@ -274,7 +288,7 @@
       "specs": [
         {
           "label": "Circles",
-          "value": "26 px at 360 px, 30 px at 1,024 px, 24 px on a story card"
+          "value": "26 px in a phone list, 30 px in a wide list, 24 px on a story card"
         },
         {
           "label": "Line",
@@ -283,11 +297,11 @@
         },
         {
           "label": "Spacing",
-          "value": "One sixth of the row to each step: 54 px in a 324 px row, 106 px in a 636 px row"
+          "value": "Phone list and card: first circle on the text edge, last on the far edge, 60 px apart in a 328 px row. Wide list: one sixth of a 552 px row to each step, 92 px"
         },
         {
           "label": "Step names",
-          "value": "Under the circles from 1,024 px; in the key on phones",
+          "value": "Under the circles in a column 552 px wide or more; in the key below that",
           "token": "oa.type.dataLabel"
         },
         {
@@ -300,14 +314,14 @@
         "08"
       ],
       "builders": [
-        "Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from Rule 11.2. When a tracker updates in place, announce the new status words through a polite live region, as chapter 18 sets out."
+        "Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from Rule 11.2. Switch to the wide form with a container query on the list’s own width, <code>@container (min-width: 34.5rem)</code>, so a list in a narrow column keeps its key at any window size. When a tracker updates in place, announce the new status words through a polite live region, as chapter 18 sets out."
       ]
     },
     {
       "id": "11.6",
       "title": "Turn the same steps upright on a bill’s own page.",
       "rule": [
-        "A bill’s own page runs the six steps down the page, with the marks a list uses. Each step gives its name, its state in words and a note with its dates. Under the step where the public can act, a box holds the deadline and the page’s one red button, the ask. From 1,024 px, a column beside the steps says what each one means."
+        "A bill’s own page runs the six steps down the page, with the marks a list uses. Each step gives its name, its state in words and a note with its dates. Under the step where the public can act, a box holds the deadline and the page’s one red button, the ask. Where the page has room, a key after the steps says what each one means."
       ],
       "tokens": [
         "oa.component.button.ask.fill.onNewsprint",
@@ -347,8 +361,8 @@
           "token": "oa.type.ask"
         },
         {
-          "label": "Column of meanings",
-          "value": "From 1,024 px, beside a 600 px column of steps"
+          "label": "Key of meanings",
+          "value": "After the steps, in a column 600 px wide or more"
         }
       ],
       "related": [
@@ -363,7 +377,7 @@
       "id": "11.7",
       "title": "Size the marks for reading, and the targets for a thumb.",
       "rule": [
-        "Draw the circles at 24 px on a story card, 26 px in a list at 360 px, 28 px on a bill’s page and 30 px in a list at 1,024 px. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. Every link and button a reader can press stands at least 44 px tall, and the ask button 48 px."
+        "Draw the circles at 24 px on a story card, 26 px in a phone list, 28 px on a bill’s page and 30 px in a wide list. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. Every link and button a reader can press stands at least 44 px tall, and the ask button 48 px."
       ],
       "tokens": [
         "oa.size.target.touch",
@@ -431,21 +445,21 @@
     },
     {
       "after_rule": "11.5",
-      "specimen": "s-11-list-1024-newsprint",
-      "label": "Numbered steps at 1,024 px on Newsprint",
-      "caption": "From 1,024 px each step’s name sits under its circle, and the current step’s name is bold."
+      "specimen": "s-11-list-600-newsprint",
+      "label": "Numbered steps in a 600 px column on Newsprint",
+      "caption": "The wide form, as on a tablet or in a desktop article column. Each step’s name sits under its circle, and the current step’s name is bold."
     },
     {
       "after_rule": "11.5",
-      "specimen": "s-11-list-1024-charcoal",
-      "label": "Numbered steps at 1,024 px on Charcoal",
-      "caption": "The same list on Charcoal at 1,024 px."
+      "specimen": "s-11-list-600-charcoal",
+      "label": "Numbered steps in a 600 px column on Charcoal",
+      "caption": "The same wide list on Charcoal."
     },
     {
       "after_rule": "11.6",
-      "specimen": "s-11-page-1024-newsprint",
-      "label": "A bill’s page at 1,024 px on Newsprint",
-      "caption": "The steps run in a 600 px column, and a column beside them says what each step means."
+      "specimen": "s-11-page-600-newsprint",
+      "label": "A bill’s page in a 600 px column on Newsprint",
+      "caption": "The steps run the width of the column, and a key after them says what each step means."
     },
     {
       "after_rule": "11.6",

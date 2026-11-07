@@ -13,6 +13,11 @@ Writes
   work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (rows updated in place, idempotent)
 Reads Board 6's S1 files and the wordmark and B masters, and writes none of them. L2's files stay where they are.
 
+Fix pass, November 7, 2026 (CD-S8, CA-S9, D2-298): writes the lockmark's display master under a name without the
+edition, lockmark/20261107_Lockmark-Display-Master.svg and its Prussian White file, as byte-for-byte copies of the
+drawing in 20261028_Lockmark-Master-V5.svg with a clean title. The V5-named files stay, since Board 6's scripts read
+them; the asset package retires them. The minimum table calls that master "display master".
+
 Run: python3 -I work/build/scripts/phase-2/stage_a_identity_s1.py      (prints the contour check)
 """
 import json
@@ -153,6 +158,10 @@ def update_minimums():
                       "print": "0.50 in",
                       "below": "End an article with ampersand B alone (Rule 04.6). Never an avatar or favicon",
                       "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)"})
+        if r["lockup"] == "Lockmark":
+            r["screen"] = r["screen"].replace("V5 master from 48 px", "display master from 48 px")
+            r["files"] = ["lockmark/20261028_Lockmark-16px-Master.svg", "lockmark/20261028_Lockmark-24px-Master.svg",
+                          "lockmark/20261107_Lockmark-Display-Master.svg"]
         if r["lockup"] == "L8 monogram":
             r["screen"] = r["screen"].replace("Never a favicon", "Never an avatar or a favicon")
             r["status_note"] = ("For squares where the name must show, such as a tile in a partner's directory. Social avatars "
@@ -161,6 +170,24 @@ def update_minimums():
     d["updated"] = "November 7, 2026, apply pass: S1 added, L2 retired, the badge from 48 px, condensed figures kept for the record"
     MIN_FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
     return d
+
+
+LOCK_OLD = ("lockmark/20261028_Lockmark-Master-V5.svg", "prussian/20261028_Lockmark-Master-V5-Prussian-White.svg")
+LOCK_NEW = ("lockmark/20261107_Lockmark-Display-Master.svg", "prussian/20261107_Lockmark-Display-Master-Prussian-White.svg")
+LOCK_TITLE = "Lockmark, display master, for 48 px and up: the fifth edition's geometry, unchanged"
+
+
+def display_lockmark():
+    """The display master under its new name: same drawing, clean title."""
+    out = []
+    for old, new in zip(LOCK_OLD, LOCK_NEW):
+        src = (ID / old).read_text()
+        tail = ". Treatment D for Prussian: one color, White" if "prussian/" in old else ""
+        dst = re.sub(r"<title>.*?</title>", f"<title>{esc(LOCK_TITLE)}{tail}</title>", src, count=1, flags=re.S)
+        assert "V5" not in dst and re.sub(r"<title>.*?</title>", "", dst) == re.sub(r"<title>.*?</title>", "", src)
+        (ID / new).write_text(dst)
+        out.append(new)
+    return out
 
 
 def run():
@@ -180,6 +207,7 @@ def run():
         c["files"] = [str(p.relative_to(ROOT)) for p in (master, ch, pw)]
         report.append(c)
     update_minimums()
+    display_lockmark()
     return report
 
 
@@ -191,3 +219,4 @@ if __name__ == "__main__":
         for f in c["files"]:
             print("  wrote", f)
     print("updated", MIN_FILE.relative_to(ROOT))
+    print("wrote", ", ".join(LOCK_NEW))

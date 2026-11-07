@@ -61,7 +61,7 @@ e = html.escape
 # ---------------------------------------------------------------------------------------------------------------
 PARTS = [
     ("foundations", "Foundations", "The identity, its voice, color and type, the page grid and the lockmark."),
-    ("symbols", "Symbols and graphics", "Pillar marks, symbols and icons, and the graphic devices that guide a reader."),
+    ("symbols", "Symbols and graphics", "Pillar icons, topic symbols, status and utility icons, and the graphic devices that guide a reader."),
     ("evidence", "Evidence and media", "How a claim carries its source, then charts, systems graphics and imagery."),
     ("behavior", "Behavior", "How the guide and its products respond to readers who use a keyboard, a screen reader, zoom or touch."),
     ("applications", "Applications", "The system at exact sizes, from the website and the atlas to print."),
@@ -80,7 +80,8 @@ CHAPTERS = [
     ("07", "layout", "Layout and spacing", "foundations", "Build each page on the column grid and spacing scale, readable at every width."),
     # D2-325, D2-326: chapter 08 is The lockmark, anchor "lockmark"; its instruction line is the identity designer's.
     ("08", "lockmark", "The lockmark", "foundations", "Draw the lockmark from its master, and place it only in its four fixed places."),
-    ("09", "pillar-marks", "Pillar marks", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
+    # D2-415: chapter 09 is "Pillar icons", Dustin's term in DR-105 and DR-111. Its anchor stays as the map set it.
+    ("09", "pillar-marks", "Pillar icons", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
     ("11", "icons", "Status and utility icons", "symbols", "Give each record state or interface action a glyph and a word that read without color."),
     ("12", "graphic-devices", "Graphic devices and patterns", "symbols", "Add dividers, frames, markers and watermarks only where they help someone read."),
@@ -119,7 +120,7 @@ ALIASES = {"lockmark": "grid", "symbols": "topic-icons", "data-visualization": "
 # Chapter-level Related chapters, with reasons, from map section 10. A chapter JSON may replace them with
 # "related_chapters": [ {"chapter": "06", "reason": "..."} ].
 RELATED_DEFAULT = {
-    "01": [("02", "The lines that state the purpose."), ("04", "The hinge in full."), ("09", "The pillar marks."), ("21", "The atlas as the purpose at work.")],
+    "01": [("02", "The lines that state the purpose."), ("04", "The hinge in full."), ("09", "The pillar icons."), ("21", "The atlas as the purpose at work.")],
     "02": [("01", "What the voice serves."), ("04", "Hinge headlines."), ("13", "Sourcing and the Act label."), ("22", "The voice in email.")],
     "03": [("04", "The ampersand inside the wordmark."), ("05", "The approved surfaces."), ("07", "Clear space on the grid."), ("27", "The logo files.")],
     "04": [("03", "The wordmark the ampersand belongs to."), ("02", "Hinge headlines in copy."), ("12", "The divider index."), ("17", "Hinge motion.")],
@@ -696,7 +697,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     illustrative = bool(meta.get("illustrative"))
     interactive = bool(meta.get("interactive"))
     readable = bool(meta.get("readable")) and not interactive
-    fit = bool(meta.get("fit_switch"))
+    # CA-N9 and CA-M1 (fix pass): every plate with a fixed width carries the True size / Fit to window switch, hidden
+    # until the shell's script finds the stage wider than its frame and finds that fitting keeps every text at 13 px or
+    # more. "fit_switch": false leaves it out; "fit_switch": true without a width is still a warning.
+    fit = meta.get("fit_switch") is not False and (isinstance(width, (int, float)) or bool(meta.get("fit_switch")))
     sc = meta.get("scale")
     if sc is not None and not (isinstance(sc, (int, float)) and not isinstance(sc, bool) and sc > 0):
         R.warn(where, f"{spec_id}: scale {sc!r} is not a positive number; ignored")
@@ -737,10 +741,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     elif size_bits:
         head.append(f'<p class="plate-size" data-true="True size, {", ".join(size_bits)}">True size, {", ".join(size_bits)}</p>')
     if fit:
-        head.append('<div class="fit-switch" role="group" aria-label="Size of this specimen">'
+        head.append('<div class="fit-switch" role="group" aria-label="Size of this specimen" hidden>'
                     '<button type="button" class="fit-btn" data-fit="true" aria-pressed="true">True size</button>'
                     '<button type="button" class="fit-btn" data-fit="fit" aria-pressed="false">Fit to window</button></div>')
-    head.append('<p class="plate-hint" hidden>Wider than this screen. Scroll the frame sideways to see all of it.</p>')
+    head.append('<p class="plate-hint" hidden>Wider than this column. Scroll the frame sideways to see all of it.</p>')
     surf = str(surface or "newsprint").lower()
     if surf not in ("newsprint", "white", "charcoal", "prussian"):
         R.warn(where, f"{spec_id}: surface {surface!r} is not newsprint, white, charcoal or prussian")
@@ -779,7 +783,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         stage = f'<div class="plate-fit">{stage}</div>'
     cap = ""
     cap_text = inline(caption, ctx) if caption else ""
-    if illustrative and not re.search(r"\bIllustrative\b", str(caption or "")):
+    # CD-N1, CA-N11 (fix pass): DR-97 asks for one Illustrative label at the head of a wholly invented piece. When the
+    # piece draws the shell's label itself, the caption takes none; the caption carries it only for a piece that shows none.
+    piece_has_label = frag is not None and re.search(r'class="[^"]*\billus\b', frag) is not None
+    if illustrative and not piece_has_label and not re.search(r"\bIllustrative\b", str(caption or "")):
         cap_text = '<span class="illus">Illustrative</span> ' + cap_text
     if cap_text:
         cap = f'<figcaption class="plate-cap">{cap_text}</figcaption>'
@@ -1694,6 +1701,22 @@ def self_test():
     # While LEGACY_FILE holds chapter 08 (the apply pass), the old name alone is read with a note; once the map is
     # emptied, the build expects 08-lockmark.json and the old name alone is a warning.
     legacy_on = LEGACY_FILE.get("08") == "signal-grid"
+    lab_specs = {"s-lab-own.html": '<p><span class="illus">Illustrative</span> A notice.</p>', "s-lab-none.html": "<p>A notice.</p>",
+                 "s-lab-flow.html": "<p>A notice that flows.</p>"}
+    lab_manifest = {"s-lab-own": {"chapter": "08", "rule": "08.1", "width_px": 1400, "alt": "A wholly invented notice, a fixture.", "illustrative": True, "notes": "fixture"},
+                    "s-lab-none": {"chapter": "08", "rule": "08.1", "width_px": 360, "fit_switch": False, "alt": "A wholly invented notice, a fixture.", "illustrative": True, "notes": "fixture"},
+                    "s-lab-flow": {"chapter": "08", "rule": "08.2", "alt": "A notice that flows with the page, a fixture.", "notes": "fixture"}}
+    lab08 = chapter("08", "lockmark", "The lockmark", [rule("08.1", {"correct": {"specimen": "s-lab-own", "caption": "A fixture."}, "failure": {"specimen": "s-lab-none", "caption": "A fixture."}}),
+                                                       rule("08.2", {"correct": {"specimen": "s-lab-flow", "caption": "A fixture."}})])
+
+    def figure_of(pg, sid):
+        m = re.search(r'<figure[^>]*id="fig-' + re.escape(sid) + r'".*?</figure>', pg, re.S)
+        return m.group(0) if m else ""
+
+    def caption_of(pg, sid):
+        m = re.search(r'<figcaption class="plate-cap">(.*?)</figcaption>', figure_of(pg, sid), re.S)
+        return m.group(1) if m else ""
+
     scenarios = [
         (("old file name alone: read silently, old numbers still valid" if legacy_on else
           "old file name alone: a warning, since the build expects 08-lockmark.json"),
@@ -1724,6 +1747,15 @@ def self_test():
          {"01-purpose.json": ch01, "08-signal-grid.json": old08}, {"legacy": {"08": "signal-grid"}},
          {"note": ["under its old name"], "absent": ["expected the file name", "\"anchor\" is", "cites Rule", "still reads"],
           "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']}),
+        ("fix pass: one Illustrative label per plate, and the switch on every fixed-width plate unless the manifest opts out",
+         {"08-lockmark.json": lab08}, {"specimens": lab_specs, "manifest": lab_manifest},
+         {"absent": ["fit_switch needs width_px"],
+          "tests": [("the piece with its own label gets none in its caption", lambda pg: '<span class="illus">' not in caption_of(pg, "s-lab-own")),
+                    ("the piece with no label gets the caption's", lambda pg: '<span class="illus">Illustrative</span>' in caption_of(pg, "s-lab-none")),
+                    ("a fixed-width plate carries the switch, hidden until the shell offers it", lambda pg: 'aria-label="Size of this specimen" hidden>' in figure_of(pg, "s-lab-own")),
+                    ("a plate with no width carries none", lambda pg: "fit-switch" not in figure_of(pg, "s-lab-flow")),
+                    ("\"fit_switch\": false leaves it out", lambda pg: "fit-switch" not in figure_of(pg, "s-lab-none")),
+                    ("the hint names the column", lambda pg: "Wider than this column." in figure_of(pg, "s-lab-own"))]}),
         ("appendix title: anything but Identity proofs is a warning", {"proofs.json": {"title": "Wordmark width proofs", "items": []}}, {},
          {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),
     ]
@@ -1758,6 +1790,8 @@ def self_test():
                 checks.append((f"no warning: {frag}", not any(frag in w for w in warns)))
             for frag in expect.get("html", []):
                 checks.append((f"page holds: {frag}", frag in page))
+            for desc, fn in expect.get("tests", []):
+                checks.append((desc, bool(fn(page))))
             if expect.get("order"):
                 pos = [page.find(x) for x in expect["order"]]
                 checks.append(("page order: " + " < ".join(expect["order"]), all(p >= 0 for p in pos) and pos == sorted(pos)))

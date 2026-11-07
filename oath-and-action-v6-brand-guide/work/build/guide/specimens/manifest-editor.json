@@ -33,7 +33,7 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of November 5, 2026. Six numbered steps, Filed, Hearing, Committee vote, First chamber, Second chamber and President: step 1, Filed, done; step 2, Hearing, never happened; step 3, Committee vote, done; step 4, First chamber, done; step 5, Second chamber, the bill is here now; step 6, President, not yet. Step 5 of 6: Second chamber. A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, and the bill has stayed on the Senate’s calendar since. Step 2 never happened, because the committee held no hearing on this bill. Its report cites only a hearing held November 19, 2025, before the bill was filed. The committee voted 7 to 4 on January 14, 2026, on a version without the photo ID section, and the House passed both provisions 232 to 198 on July 22, 2026. Then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
+  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of November 5, 2026. Six numbered steps, Filed, Hearing, Committee vote, First chamber, Second chamber and President: step 1, Filed, done; step 2, Hearing, never happened; step 3, Committee vote, done; step 4, First chamber, done; step 5, Second chamber, the bill is here now; step 6, President, not yet. Step 5 of 6: Second chamber. A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, and the bill has stayed on the Senate’s calendar since. The committee held no hearing on this bill, so step 2 has a slash, and it voted 7 to 4 on January 14, 2026, on a version without the photo ID section. Then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
   "illustrative": false,
   "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98). The Track card is a tracker story card, so it takes numbered steps (DR-109) on the six steps with step 6 named President for a federal bill (DR-128); its step states come from the research lead's mapping in round two, and until then it prints the two documented votes. Its kicker stays in words: the Civic Line's Congress icon, CL-025, draws a capitol dome with columns, which Rule 01.6 keeps out of icons.",
   "label": "One piece from each pillar, at true size"
@@ -152,9 +152,9 @@
   "chapter": "01",
   "rule": "01.6",
   "width_px": 360,
-  "alt": "An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you.",
-  "illustrative": false,
-  "notes": ""
+  "alt": "Failure case: do not publish. An illustrative explainer card with a line drawing of a capitol dome and columns behind the headline, What the state senate’s vote on S. 214 means for you.",
+  "illustrative": true,
+  "notes": "BE-10: an invented bill with one Illustrative label in place of H.R. 7008, so no crop repeats a real count without the bill's two provisions, and the band D2-308 asks of a plate that could pass for our work."
  },
  "s-01-7-correct": {
   "chapter": "01",
@@ -168,7 +168,7 @@
   "chapter": "01",
   "rule": "01.7",
   "width_px": 360,
-  "alt": "The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX.",
+  "alt": "Failure case: do not publish. The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX.",
   "illustrative": true,
   "notes": ""
  },
@@ -184,7 +184,7 @@
   "chapter": "01",
   "rule": "01.8",
   "width_px": null,
-  "alt": "The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative.",
+  "alt": "Failure case: do not publish. The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative.",
   "illustrative": false,
   "notes": ""
  },
@@ -228,7 +228,7 @@
   "chapter": "01",
   "rule": "01.11",
   "width_px": null,
-  "alt": "Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: In August 2025, Texas’s Republican-led legislature passed a congressional map aimed at five more Republican seats, and Governor Greg Abbott signed it. California: In August 2025, California’s Democratic-led legislature passed a congressional map aimed at five more Democratic seats, and voters approved it in November. Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
+  "alt": "Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: In August 2025, Texas’s Republican-led legislature passed a congressional map aimed at five more Republican seats, and Governor Greg Abbott signed it. California: In August 2025, California’s Democratic-led legislature passed a congressional map aimed at five more Democratic seats, and voters approved it in November. Our systems atlas records more redraws for this loop in 2025 and 2026, among them Missouri’s 2025 map and the maps four Southern states drew after a Supreme Court ruling of April 29, 2026. This plate shows two of them, one by each party’s majority, and gives no count. Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
   "illustrative": false,
   "notes": "BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding."
  },
@@ -244,7 +244,7 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "A finding graded documented, reported as the record shows it. After the 2020 election, Donald J. Trump’s presidential campaign asked a federal appeals court to block Pennsylvania’s certified vote totals from taking effect. The court refused on November 27, 2020, noting that the campaign “never alleges that any ballot was fraudulent or cast by an illegal voter.” Lost, Not Stolen, a July 2022 review by eight conservatives, among them two former U.S. senators and three former federal appeals judges, counted 64 cases that Donald Trump and his supporters brought in six battleground states. It found that they “failed to produce substantive evidence to make their case,” and it records one case they won, in Pennsylvania, on far too few votes to change the result. Sources: U.S. Court of Appeals for the Third Circuit, Donald J. Trump for President, Inc. v. Secretary Commonwealth of Pennsylvania, No. 20-3371, opinion filed November 27, 2020, pages 9 and 21, via govinfo.gov; John Danforth and seven co-authors, Lost, Not Stolen: The Conservative Case that Trump Lost and Biden Won the 2020 Presidential Election, July 2022, printed pages 1 and 3, lostnotstolen.org; the 2020 presidential election in Arizona, Georgia, Michigan, Nevada, Pennsylvania and Wisconsin. Retrieved November 7, 2026. The court issued the opinion as not precedential. The count of 64 cases is the review’s own, and its authors say each of them “has worked in Republican politics, been appointed to office by Republicans, or is otherwise associated with the Party.”",
+  "alt": "A finding graded documented, reported as the record shows it. After the 2020 election, Donald J. Trump’s presidential campaign asked a federal appeals court to block Pennsylvania’s certified vote totals from taking effect. The court refused on November 27, 2020, noting that the campaign “never alleges that any ballot was fraudulent or cast by an illegal voter.” A July 2022 review titled Lost, Not Stolen, written by eight former officials and lawyers, among them two former U.S. senators and three former federal appeals judges, counted 64 cases it says Donald Trump and his supporters brought in six battleground states. It found that they “failed to produce substantive evidence to make their case,” and it records one case they won, in Pennsylvania, on far too few votes to change the result. Sources: U.S. Court of Appeals for the Third Circuit, Donald J. Trump for President, Inc. v. Secretary Commonwealth of Pennsylvania, No. 20-3371, opinion filed November 27, 2020, pages 9 and 21, via govinfo.gov; John Danforth and seven co-authors, Lost, Not Stolen: The Conservative Case that Trump Lost and Biden Won the 2020 Presidential Election, July 2022, printed pages 1 and 3, lostnotstolen.org; the 2020 presidential election in Arizona, Georgia, Michigan, Nevada, Pennsylvania and Wisconsin. Retrieved November 7, 2026. The court issued the opinion as not precedential. The count of 64 cases is the review’s own, and its authors say each of them “has worked in Republican politics, been appointed to office by Republicans, or is otherwise associated with the Party.”",
   "illustrative": false,
   "notes": "DR-125 and atlas issue I155: the research lead's sentences and source line, printed as written (work/handoffs/phase-2/20261107_Apply-Pass-Research.md, section 1).",
   "readable": true,
@@ -360,7 +360,7 @@
   "chapter": "01",
   "rule": "01.18",
   "width_px": null,
-  "alt": "The same headline with the second half, the paycheck, also set in red.",
+  "alt": "Failure case: do not publish. The same headline with the second half, the paycheck, also set in red.",
   "illustrative": false,
   "notes": "",
   "check_exempt": [
@@ -380,7 +380,7 @@
   "chapter": "01",
   "rule": "01.19",
   "width_px": null,
-  "alt": "A hinge headline: Us and them.",
+  "alt": "Failure case: do not publish. A hinge headline: Us and them.",
   "illustrative": false,
   "notes": ""
  },
@@ -396,7 +396,7 @@
   "chapter": "01",
   "rule": "01.20",
   "width_px": null,
-  "alt": "A hinge headline: The left and the right.",
+  "alt": "Failure case: do not publish. A hinge headline: The left and the right.",
   "illustrative": false,
   "notes": ""
  },
@@ -428,7 +428,7 @@
   "chapter": "01",
   "rule": "01.22",
   "width_px": 360,
-  "alt": "The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes.",
+  "alt": "Failure case: do not publish. The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes.",
   "illustrative": true,
   "notes": ""
  },
@@ -444,7 +444,7 @@
   "chapter": "01",
   "rule": "01.23",
   "width_px": 360,
-  "alt": "The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask.",
+  "alt": "Failure case: do not publish. The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask.",
   "illustrative": true,
   "notes": ""
  },

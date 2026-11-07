@@ -171,10 +171,14 @@ a.toc-part-k:hover { text-decoration: underline }
 .toc-part--later .toc-part-h { color: var(--ink-2) }
 .toc-list { list-style: none; margin: var(--oa-space-200) 0 0; padding: 0 }
 .toc-list li { padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
-.toc-list a, .toc-name { display: inline-flex; gap: .5em; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+/* CA-N8 (fix pass): a chapter's number takes a fixed 36 px box and a 12 px gap, so its title, its line and a later
+   chapter's name start on one edge, 3rem in, in the contents and the part openers alike. Two digits of the H4 style
+   at 24 px need about 29 px. */
+.toc-list a, .toc-name { display: inline-flex; gap: .75rem; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
 .toc-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
-.toc-list .n { color: var(--ink-2); min-width: 1.6em }
-.toc-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--ink-2); max-width: var(--oa-layout-measure-body-ideal) }
+.toc-list .n { color: var(--ink-2); min-width: 2.25rem }
+.toc-list p { margin: var(--oa-space-050) 0 0 3rem; font: var(--oa-type-body-small); color: var(--ink-2); max-width: var(--oa-layout-measure-body-ideal) }
+.toc-list--plain p { margin-left: 0 }   /* the appendix has no number, so its line starts under its title */
 .toc-later { padding: var(--oa-space-100) 0 !important }
 .toc-later .toc-name { font: var(--oa-type-body-small); color: var(--ink-2) }
 
@@ -187,12 +191,12 @@ a.toc-part-k:hover { text-decoration: underline }
 .part-list { list-style: none; margin: var(--oa-space-800) 0 0; padding: 0; display: grid; gap: 0 var(--oa-space-600); grid-template-columns: minmax(0, 1fr) }
 @media (min-width: 48em) { .part-list { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
 .part-list li { padding: var(--oa-space-200) 0; border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
-.part-list a { display: inline-flex; gap: .5em; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
+.part-list a { display: inline-flex; gap: .75rem; align-items: baseline; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-decoration: none }
 .part-list a:hover .t { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-rule) }
-.part-list .n { color: var(--oa-color-text-secondary); min-width: 1.6em }
-.part-list p { margin: var(--oa-space-050) 0 0 calc(1.6em + .5em); font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
+.part-list .n { color: var(--oa-color-text-secondary); min-width: 2.25rem }
+.part-list p { margin: var(--oa-space-050) 0 0 3rem; font: var(--oa-type-body-small); color: var(--oa-color-text-secondary) }
 /* A chapter of the part that is not in this page yet: its number and name as text, then "Coming later" (D2-324) */
-.part-later .part-name { display: inline-flex; gap: .5em; align-items: baseline; max-width: 100%; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--oa-color-text-secondary) }
+.part-later .part-name { display: inline-flex; gap: .75rem; align-items: baseline; max-width: 100%; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); color: var(--oa-color-text-secondary) }
 .part .later-note { color: var(--oa-color-text-secondary) }
 
 /* ---------------------------------------------------------------- Chapter on the grid
@@ -363,9 +367,10 @@ a.toc-part-k:hover { text-decoration: underline }
 .foot-builders p:not(.label) { margin: 0 0 var(--oa-space-150); font: var(--oa-type-body-small); max-width: var(--oa-layout-measure-body-max) }
 .spec-list { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) }
 .spec-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-050) var(--oa-space-300); padding: var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
-@media (min-width: 30em) { .spec-row { grid-template-columns: minmax(7rem, 2fr) minmax(0, 5fr) } .spec-tok { grid-column: 2 } }
+/* CA-N10 (fix pass): the label column keeps one width in every rule, so values start on one edge down a chapter */
+@media (min-width: 30em) { .spec-row { grid-template-columns: 11rem minmax(0, 1fr) } .spec-tok { grid-column: 2 } }
 @media (min-width: 90em) {
-  .spec-list { grid-template-columns: minmax(8rem, 2fr) minmax(12rem, 4fr) auto; column-gap: 0 }
+  .spec-list { grid-template-columns: 11rem minmax(12rem, 1fr) auto; column-gap: 0 }
   .spec-row { display: contents }
   .spec-row > * { padding: var(--oa-space-100) var(--oa-space-300) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--rule-hair) }
   .spec-row > :last-child { padding-right: 0 }

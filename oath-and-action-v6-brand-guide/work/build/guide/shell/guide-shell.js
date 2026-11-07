@@ -5,6 +5,7 @@
 // as a modal dialog; makes a specimen frame or code block a named, keyboard-scrollable group only while it overflows;
 // switches wide comparison frames between true size and fit to window; hides the rail once the full-width appendix
 // reaches it; and drives the Copy buttons with a status line. Fix pass, November 6, 2026: AX-S1, AX-S3, AX-S11, AX-S12, D2-251.
+// Apply fix pass, November 7, 2026: Fit to window is offered only where it keeps every text at 13 px or more (CA-M1, CA-N9).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -218,18 +219,59 @@
     }
     if (size) size.textContent = on ? (s < 1 ? 'Fit to window, ' + Math.round(s * 100) + ' percent of true size' : 'Fits at true size, ' + w.toLocaleString('en-US') + ' px wide') : size.getAttribute('data-true');
   }
+  function setFit(fig, mode) {
+    fig.setAttribute('data-fit', mode);
+    $$('.fit-btn', fig).forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-fit') === mode)); });
+    applyFit(fig);
+  }
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('.fit-btn');
     if (!b) return;
-    var fig = b.closest('.plate');
-    fig.setAttribute('data-fit', b.getAttribute('data-fit'));
-    $$('.fit-btn', fig).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-    applyFit(fig); frames();
+    setFit(b.closest('.plate'), b.getAttribute('data-fit'));
+    frames();
   });
+
+  // Fix pass (CA-M1, CA-N9): every fixed-width plate carries the switch, hidden. It shows only where the stage is wider
+  // than its frame and fitting it keeps the smallest text at 13 px or more, the guide's floor (Rule 06.1). Elsewhere
+  // the frame scrolls at true size. The smallest text is measured at true size, SVG text at its drawn size.
+  var FLOOR = 13;
+  function smallestText(stage) {
+    var keep = stage.style.transform; stage.style.transform = '';
+    var min = Infinity;
+    $$('*', stage).forEach(function (el) {
+      if (/^(script|style|title|desc|defs)$/i.test(el.tagName) || el.closest('title, desc, defs, .vh')) return;
+      var own = false;
+      for (var n = el.firstChild; n; n = n.nextSibling) { if (n.nodeType === 3 && n.textContent.trim()) { own = true; break; } }
+      if (!own) return;
+      var r = el.getBoundingClientRect(); if (r.width === 0 && r.height === 0) return;
+      var cs = getComputedStyle(el); if (cs.visibility === 'hidden') return;
+      var size = parseFloat(cs.fontSize);
+      if (el instanceof SVGElement) {
+        var svg = el.closest('svg'), vb = svg && svg.viewBox && svg.viewBox.baseVal;
+        if (vb && vb.width) size = size * svg.getBoundingClientRect().width / vb.width;
+      }
+      if (size < min) min = size;
+    });
+    stage.style.transform = keep;
+    return min;
+  }
+  function offerFit() {
+    $$('.plate--fit').forEach(function (fig) {
+      var sw = $('.fit-switch', fig), box = $('.plate-scroll', fig), stage = $('.plate-stage', fig);
+      if (!sw || !box || !stage) return;
+      var cs = getComputedStyle(box);
+      var avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      var s = Math.min(1, avail / stage.offsetWidth);
+      var ok = s < 0.999 && smallestText(stage) * s >= FLOOR - 0.05;
+      sw.hidden = !ok;
+      if (!ok && fig.getAttribute('data-fit') === 'fit') setFit(fig, 'true');
+    });
+  }
+
   var rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { hugFlowing(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); frames(); railCover(); }, 120);
+    rt = setTimeout(function () { hugFlowing(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
   });
 
   // Copy buttons write their result to the status line beside them (a polite live region).
@@ -257,6 +299,7 @@
 
   function start() {
     hugFlowing();
+    offerFit();
     frames();
     railCover();
     if (location.hash) onHash(); else setCurrent(compute());

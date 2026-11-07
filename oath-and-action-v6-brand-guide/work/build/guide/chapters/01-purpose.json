@@ -447,7 +447,7 @@
    },
    "correct": {
     "specimen": "s-01-11-correct",
-    "caption": "Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in 22 words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve."
+    "caption": "Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in 22 words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. The line under the cases keeps the plate to what it shows: two of the loop’s redraws, with no count."
    },
    "failure": {
     "specimen": "s-01-11-failure",
@@ -947,7 +947,7 @@
    "after_rule": "01.11",
    "label": "A finding that falls on one side",
    "specimen": "s-01-uneven",
-   "caption": "The lines name who acted and what the record shows, in words sized to the grade, and they add no case from another party to even the count, as Rule 01.11 asks."
+   "caption": "The lines name who acted and what the record shows, in words sized to the grade, and they add no counter-case to even the count, as Rule 01.11 asks."
   },
   {
    "after_rule": "01.24",
@@ -958,10 +958,10 @@
  ],
  "sources": [
   "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
-  "Sources: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, via govinfo.gov; U.S. House of Representatives, Committee on House Administration, H. Rept. 119-479, February 3, 2026, page 5; Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, Senate, August 6, 2026, page S4494, and Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199; United States. Retrieved November 7, 2026. The Congressional Record shows no later action through November 5, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
+  "Sources: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, via govinfo.gov; U.S. House of Representatives, Committee on House Administration, H. Rept. 119-479, February 3, 2026, page 5; Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, Senate, August 6, 2026, page S4494, and Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199; United States. Retrieved November 7, 2026. The committee’s report names a November 19, 2025 hearing on the Stop Trading on Congressional Knowledge Act of 2012, held before the bill was filed, as the one used to develop the bill. The Congressional Record shows no later action through November 5, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
   "Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only constitutional amendments, which need 60 percent of the vote. Illinois’s citizens may propose only amendments on the legislature’s structure and procedure.",
   "Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
-  "Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
+  "Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",
   "Source: U.S. Department of Labor, Wage and Hour Division, State Minimum Wage Laws, updated July 1, 2026, Ohio and Pennsylvania, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Ohio’s yearly rate applies to employers with annual gross receipts of $405,000 or more.",
   "Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. The two differ in the price index they use and in how they count benefits; our systems atlas grades the connection plausible and contested.",
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, glossary entry “Cloture”.",

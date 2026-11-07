@@ -22,6 +22,8 @@ from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR
 #   dict(grade="Documented", lines=["sentence", ...], source="Source: ...", alt_note="", domain="D02",
 #        state="Pennsylvania", region="Northeast", level="Federal")
 # `lines` and `source` are printed exactly as the research lead writes them, sized to the grade.
+# Fix pass (BE-04, BE-06, BE-11): the authors by role alone, as Rule 01.16 names every holder, with their stated party ties
+# left to the source line; "it says" before the review's own count; and the title moved off the start of its sentence.
 # Round two: the research lead's recommended text and source line, word for word (work/handoffs/phase-2/
 # 20261107_Apply-Pass-Research.md, section 1, "Recommendation"), graded Documented. Atlas issue I155 sits in domain D10;
 # the court case is Pennsylvania's, and the review covers six states in all four regions.
@@ -29,9 +31,10 @@ UNEVEN = dict(
     grade="Documented",
     lines=["After the 2020 election, Donald J. Trump’s presidential campaign asked a federal appeals court to block "
            "Pennsylvania’s certified vote totals from taking effect. The court refused on November 27, 2020, noting that the "
-           "campaign “never alleges that any ballot was fraudulent or cast by an illegal voter.” Lost, Not Stolen, a July 2022 "
-           "review by eight conservatives, among them two former U.S. senators and three former federal appeals judges, "
-           "counted 64 cases that Donald Trump and his supporters brought in six battleground states. It found that they "
+           "campaign “never alleges that any ballot was fraudulent or cast by an illegal voter.” A July 2022 review titled Lost, "
+           "Not Stolen, written by eight former officials and lawyers, among them two former U.S. senators and three former "
+           "federal appeals judges, counted 64 cases it says Donald Trump and his supporters brought in six battleground states. "
+           "It found that they "
            "“failed to produce substantive evidence to make their case,” and it records one case they won, in Pennsylvania, "
            "on far too few votes to change the result."],
     source=("Sources: U.S. Court of Appeals for the Third Circuit, Donald J. Trump for President, Inc. v. Secretary Commonwealth "
@@ -60,10 +63,10 @@ HR7008_STEPS = [("done", "January 12, 2026"),
                 ("notyet", "")]
 HR7008_STATUS = ("A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, "
                  "and the bill has stayed on the Senate’s calendar since.")
-HR7008_EARLIER = ("Step 2 never happened, because the committee held no hearing on this bill. Its report cites only a hearing "
-                  "held November 19, 2025, before the bill was filed. The committee voted 7 to 4 on January 14, 2026, on a "
-                  "version without the photo ID section, and the House passed both provisions 232 to 198 on July 22, 2026.")
+HR7008_EARLIER = ("The committee held no hearing on this bill, so step 2 has a slash, and it voted 7 to 4 on January 14, "
+                  "2026, on a version without the photo ID section.")
 HR7008_AS_OF = "November 5, 2026"
+NBSP = "\u00a0"
 STATE_WORDS = {"done": "done", "now": "the bill is here now", "take": "the bill is here now, and you can take part",
                "notyet": "not yet", "skipped": "never happened", "stopped": "stopped here"}
 
@@ -91,7 +94,9 @@ SRC_STOCK_VOTES = ("Sources: Library of Congress, bill status for H.R. 7008, 119
                    "govinfo.gov; U.S. House of Representatives, Committee on House Administration, H. Rept. 119-479, February 3, "
                    "2026, page 5; Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, "
                    "Senate, August 6, 2026, page S4494, and Vote 253, cloture on the motion to proceed to H.R. 7008, September "
-                   "30, 2026, page S5199; United States. Retrieved November 7, 2026. The Congressional Record shows no later "
+                   "30, 2026, page S5199; United States. Retrieved November 7, 2026. The committee’s report names a November 19, "
+                   "2025 hearing on the Stop Trading on Congressional Knowledge Act of 2012, held before the bill was filed, as "
+                   "the one used to develop the bill. The Congressional Record shows no later "
                    "action through November 5, 2026. Ending debate needs three-fifths of the Senate, 60 votes.")
 SRC_INITIATIVE = ("Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated "
                   "measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s "
@@ -103,8 +108,14 @@ SRC_FEC = ("Source: Federal Election Commission, Official 2024 Presidential Gene
 SRC_R4A = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; "
            "California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. "
            "District Court for the Central District of California, order of January 14, 2026; Texas and California. "
-           "Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the "
-           "seats either map produced.")
+           "Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. "
+           "The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.")
+# BE-02: no count of the loop's redraws by party exists in the research lead's reports, so the plate says what it shows and
+# claims no count. When the research lead counts the case record by the party of the majority that drew each map, a sourced
+# count line replaces R4A_SCOPE, in the cases' own form.
+R4A_SCOPE = ("Our systems atlas records more redraws for this loop in 2025 and 2026, among them Missouri’s 2025 map and the maps "
+             "four Southern states drew after a Supreme Court ruling of April 29, 2026. This plate shows two of them, one by each "
+             "party’s majority, and gives no count.")
 SRC_PAY = ("Sources: Anna M. Stansbury and Lawrence H. Summers, Harvard University, “Productivity and Pay: Is the Link "
            "Broken?”, National Bureau of Economic Research Working Paper 24165, December 2017, 1973 to 2016, United States; "
            "Economic Policy Institute, “The Productivity-Pay Gap”, 1979 to 2026, United States. Retrieved November 6, 2026. "
@@ -160,9 +171,10 @@ def ch11():
     return sys.modules["apply_systems_ch11"]
 
 
-# Rule 11.5 gives each step one sixth of the row. A 288 px row (48 px a step) fits the card's narrowest column, 296 px at a
-# 360 px screen, so the marks never scale and the numbers stay at 13 px (Rule 11.7).
-STEPS_ROW = 288
+# Chapter 11's story card geometry (Rules 11.5 and 11.7): a 324 px row, one sixth to each step, starting at the text
+# edge, so the first circle sits 15 px in. Where the card's column is narrower than 324 px (screens under 24.25em, 388
+# px), the same marks draw across 288 px, so the numbers never scale under 13 px.
+STEPS_ROW, STEPS_ROW_NARROW = 324, 288
 
 
 def track_css():
@@ -170,7 +182,10 @@ def track_css():
     m = ch11()
     T = m.C.Tokens(m.C.TOKENS_JSON, m.C.TOKENS_CSS)
     ctx = m.B.Ctx(T, {}, "final")
-    return ".ed .trk{" + m.mark_vars(ctx, "n") + "}" + m.MARK_CSS
+    return (".ed{" + m.mark_vars(ctx, "n") + "}" + m.MARK_CSS
+            + m.piece_css(ctx, "n", "s").split(m.MARK_CSS, 1)[1]   # the story card's status words and key, as chapter 11 sets them
+            + ".ed .mkw{justify-content:flex-start}.ed .mkw.nw{display:none}"
+            "@media (max-width:24.24em){.ed .mkw.wd{display:none}.ed .mkw.nw{display:flex}}")
 
 
 def track_steps():
@@ -186,12 +201,13 @@ def track_steps():
         raise SystemExit("chapter 11's federal step names differ from this chapter's")
     sr = "".join(f"<li>Step {i + 1}, {STEPS_FEDERAL[i]}: {STATE_WORDS[st]}{', ' + e(w) if w else ''}.</li>"
                  for i, (st, w) in enumerate(HR7008_STEPS))
-    key = " ".join(f'<span><b class="num">{i + 1}</b> {e(n)}</span>' for i, n in enumerate(STEPS_FEDERAL))
     status = m.status_words(dict(states=states, kind="federal"))
     earlier = f'<p class="st">{e(HR7008_EARLIER)}</p>' if HR7008_EARLIER else ""
-    return (f'<div class="trk"><div class="mkw">{m.steps_svg(states, STEPS_ROW, 24)}</div><ol class="vh">{sr}</ol>'
-            f'<p class="skey" aria-hidden="true">{key}</p></div>'
-            f'<p class="st"><b>{e(status)}</b> {e(HR7008_STATUS or HR7008_VOTES)}</p>{earlier}')
+    shown = tuple(st for st in m.STATE_ORDER if st in states)
+    return (f'<div class="trk"><div class="mkw wd">{m.steps_svg(states, STEPS_ROW, 24)}</div>'
+            f'<div class="mkw nw">{m.steps_svg(states, STEPS_ROW_NARROW, 24)}</div><ol class="vh">{sr}</ol>'
+            f'<p class="st"><b>{e(status)}</b> {e(HR7008_STATUS or HR7008_VOTES)}</p>{earlier}'
+            f'<div aria-hidden="true">{m.key(STEPS_FEDERAL, show=shown)}</div></div>')
 
 
 def piece_track():
@@ -201,7 +217,8 @@ def piece_track():
     return f'''<div class="pc">
 {kicker("Tracker", "Congress")}
 <p class="hl">{e(HR7008_TRACKER)}</p>
-<p class="dek">{e(HR7008_FIRST)}. As of {e(HR7008_AS_OF)}.</p>
+<p class="dek">{e(HR7008_FIRST)}.</p>
+<p class="lab asof">{e(("As of " + HR7008_AS_OF).replace(" ", NBSP))}</p>
 {track_steps()}{votes}
 {hinge()}
 <p class="wycd">What you can do</p>
@@ -240,8 +257,7 @@ STAGES = f"""
 .ed .trk{{margin:4px 0 0}}
 .ed .mkw{{display:flex;justify-content:center}}
 .ed .mk{{max-width:100%;height:auto}}
-.ed .skey{{display:flex;flex-wrap:wrap;gap:2px 12px;margin:8px 0 0;{fx('caption')};color:var(--oa-color-text-secondary)}}
-.ed .pc .st{{margin:10px 0 0}}
+.ed .asof{{margin:4px 0 8px}}
 .ed .vh{{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
 .sp-flow{{padding-left:0;padding-right:0}}
 .ed .grid4{{display:flex;flex-wrap:wrap;gap:40px 24px;align-items:flex-start}}
@@ -454,10 +470,10 @@ EXAMPLES = [
      "Survey majorities of both parties’ voters, for a ban in general", False, "Rules 01.2, 01.20"),
     ("H.R. 7008, the Stop Insider Trading Act", "D03", "National", "National", "Federal",
      "House passage: 218 Republicans, 13 Democrats and one independent; Senate vote to end debate: 53 Republicans", False,
-     "Track piece; Rules 01.6, 01.10, 01.21, 01.24"),
+     "Track piece; Rules 01.10, 01.21, 01.24"),
     ("A county road budget", "D04", "Alder County (invented)", "None, invented", "County or city", "No reform shown", True, "Connect piece"),
     ("Backyard cottages", "D09", "Alder County (invented)", "None, invented", "County or city", "Invented", True, "Act piece; Rules 01.8, 01.21, 01.22"),
-    ("Posting committee votes, S. 214", "D01", "Unnamed state (invented)", "None, invented", "State", "Invented", True, "Rules 01.1, 01.4, 01.21, 01.23"),
+    ("Posting committee votes, S. 214", "D01", "Unnamed state (invented)", "None, invented", "State", "Invented", True, "Rules 01.1, 01.4, 01.6, 01.21, 01.23"),
     ("Mid-decade map redraws", "D02", "Texas and California", "South and West", "State", "No reform shown", False, "Rule 01.11"),
     ("Citizen initiatives", "D02", "50 states and DC", "Every region", "State", "No reform shown", False, "Rule 01.5"),
     ("Minimum wage floors", "D07", "Ohio and Pennsylvania", "Midwest and Northeast", "State", "No reform shown", False, "Rules 01.10, 01.12"),
@@ -502,6 +518,9 @@ SPELL = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "sev
 
 
 # ---------------------------------------------------------------------------------------------------------------
+FC = "Failure case: do not publish. "
+
+
 def build(book):
     """Write chapter 01's specimens into the book and return the chapter dictionary."""
     A = lambda sid, body, **kw: book.add(sid, body, chapter="01", **kw)
@@ -605,6 +624,8 @@ def build(book):
             f".ed .prow-box{{border-top:1px solid var(--oa-color-border-hairline);padding-top:12px}}")
     A("s-01-pillars", f'<div class="ed"><div class="prow-box"><p class="lab">The pillar row</p>{pillar_row(48)}</div>'
                       f'<div class="pills">{cards}</div>'
+                      f'<div class="prow-box"><p class="lab">On a section opener that serves Track, at 48 px</p>'
+                      f'{pillar_row(48, current="Track", label="The four pillars, in order, with Track as the current pillar")}</div>'
                       f'<div class="prow-box"><p class="lab">The compact row, on a page that serves Track</p>'
                       f'{pillar_row(24, current="Track", label="The four pillars, in order, with Track as the current pillar")}</div></div>',
       css=(BASE, PCSS, PROW),
@@ -617,7 +638,9 @@ def build(book):
           "The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it "
           "decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a "
           "useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece. "
-          "Last, the compact row at 24 px on a page that serves Track: every icon in one color, and the word Track set bold and underlined.",
+          "Then the same row as a section opener that serves Track sets it at 48 px: the word Track underlined, and Track's icon "
+          "with its red parts, the pin and the magnifier's handle. Last, the compact row at 24 px on a page that serves Track: "
+          "every icon in one color, and the word Track set bold and underlined.",
       notes="DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, inlined from the "
             "black masters with their geometry untouched and their ink taken through currentColor; each word sits beside its icon, "
             "and the current pillar's word is underlined at every size, bold under 48 px. Red as a second sign on the current icon "
@@ -632,26 +655,18 @@ def build(book):
 <div><p class="pl">Track</p>{piece_track()}</div>
 <div><p class="pl">Connect</p>{piece_connect()}</div>
 <div><p class="pl">Act</p>{piece_act()}</div></div></div>''', css=(BASE, PIECE, STAGES, track_css()),
-      rule=None, label="One piece from each pillar, at true size",
+      rule=None, label="One piece from each pillar, at true size", readable=True,
       alt="Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What "
-          "you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A "
-          "regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. "
-          f"{HR7008_TRACKER}. {HR7008_FIRST}. As of {HR7008_AS_OF}. "
-          + (f"Six numbered steps, Filed, Hearing, Committee vote, First chamber, Second chamber and President: "
-             + "; ".join(f"step {i + 1}, {STEPS_FEDERAL[i]}, {STATE_WORDS[s]}" for i, (s, _) in enumerate(HR7008_STEPS or [])) + ". "
-             if HR7008_STEPS else "")
-          + (ch11().status_words(dict(states=[st for st, _ in HR7008_STEPS], kind="federal")) + " " if HR7008_STEPS else "")
-          + f"{HR7008_STATUS or HR7008_VOTES} {HR7008_EARLIER if HR7008_STEPS else ''} Then follow this bill. Connect, "
-          "labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 "
-          "seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard "
-          "cottages March 9; send a comment by March 3.",
+          "you can do and ending on one red ask button. The Track piece draws H.R. 7008's six numbered steps, and a list beside "
+          "the marks says each step in words. Connect and Act are invented and labeled Illustrative.",
       notes="Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at "
             "its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a "
             "phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98). "
             "The Track card is a tracker story card, so it takes numbered steps (DR-109) on the six steps with step 6 named "
             "President for a federal bill (DR-128); its step states come from the research lead's mapping in round two, and until "
             "then it prints the two documented votes. Its kicker stays in words: the Civic Line's Congress icon, CL-025, draws a capitol "
-            "dome with columns, which Rule 01.6 keeps out of icons.")
+            "dome with columns, which Rule 01.6 keeps out of icons. Fix pass: a readable group, so a screen reader reads every "
+            "card's text and source line (CA-S8); the Track card on chapter 11's story card form (CA-S3, CD-S1).")
 
     # --- Group 1: color and party -----------------------------------------------------------------------------
     vote_rows = lambda fail: [("Yes", 6, "ink", 9), ("No", 3, "red" if fail else "ink", 9)]
@@ -830,10 +845,11 @@ def build(book):
                                         "Architect of the Capitol, from Wikimedia's 1,920 px rendition. Cropped by CSS to 5:3 from the top, so the agency's mark at "
                                         "lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event."),
                     "caption": "The Capitol Rotunda appears only as the place where a named public event happened, and the caption says what, where and when, with the credit. The crop keeps the walls and the public and leaves out the agency’s mark."},
-        "failure": {"specimen": A("s-01-6-failure", f'<div class="ed"><div class="card">{dome}{kicker("Explainer", "Congress")}'
-                                                    '<p class="hl">What the Senate vote on the Stop Insider Trading Act means for you</p><p class="dek">One vote, 53 to 47, and what comes next.</p></div></div>',
-                                  css=(BASE, PH), rule="01.6", width=360,
-                                  alt="An explainer card with a line drawing of a capitol dome and columns behind the headline, What the Senate vote on the Stop Insider Trading Act means for you."),
+        "failure": {"specimen": A("s-01-6-failure", f'<div class="ed">{dnp()}<div class="card">{dome}{kicker("Explainer", "State senate", illus=True)}'
+                                                    '<p class="hl">What the state senate’s vote on S. 214 means for you</p><p class="dek">One vote, 21 to 18, and what comes next.</p></div></div>',
+                                  css=(BASE, PH), rule="01.6", width=360, illustrative=True,
+                                  alt=f"{FC}An illustrative explainer card with a line drawing of a capitol dome and columns behind the headline, What the state senate’s vote on S. 214 means for you.",
+                                  notes="BE-10: an invented bill with one Illustrative label in place of H.R. 7008, so no crop repeats a real count without the bill's two provisions, and the band D2-308 asks of a plate that could pass for our work."),
                     "caption": "The dome behind the headline decorates a story about one vote and borrows the look of campaign mail, and the card names no office."},
         "specs": [{"label": "Photograph", "value": "Documentary, of the place where a named public event happened"},
                   {"label": "Crop", "value": "Keep the building as the setting and the people in it; crop any agency mark"},
@@ -843,7 +859,7 @@ def build(book):
         "builders": "Build cards from type and the brand’s own devices. A dome, a column or a flag enters only with a documentary photograph, its caption and its credit, logged in the rights ledger.",
     })
 
-    ballot = lambda fail: (f'<div class="ed"><div class="card">{kicker("Explainer", "Ballot measures", illus=True)}'
+    ballot = lambda fail: (f'<div class="ed">{dnp() if fail else ""}<div class="card">{kicker("Explainer", "Ballot measures", illus=True)}'
                            '<p class="hl">What a yes vote and a no vote on Measure B would do</p>'
                            '<p class="dek">Alder County’s bond for road repairs, on the March 2027 ballot.</p>'
                            + ('<div class="gear"><span class="cbtn">YES<br>ON B</span><span class="plac">STOP THE TAX</span></div>' if fail else
@@ -863,7 +879,7 @@ def build(book):
                                   alt="An illustrative explainer card: What a yes vote and a no vote on Measure B would do. Below it, a document reference to the measure's ballot text and the county counsel's summary."),
                     "caption": "The card explains both votes and points to the ballot text as its document."},
         "failure": {"specimen": A("s-01-7-failure", ballot(True), css=(BASE, PH, BCSS), rule="01.7", illustrative=True, width=360,
-                                  alt="The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX."),
+                                  alt=f"{FC}The same card with a campaign button reading YES ON B and a protest placard reading STOP THE TAX."),
                     "caption": "The button and the placard take sides on a measure the card set out to explain, so a reader on either side stops at the picture."},
         "related": ["16", "23"],
         "builders": "When a story needs a party’s logo or a campaign’s material, place the whole document as a sourced image with its credit, never the symbol by itself.",
@@ -883,9 +899,9 @@ def build(book):
                                         "Wikimedia's 1,920 px rendition, cropped by CSS to 3:2. Chosen over the Menniti frame from the same meeting because the named "
                                         "official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away."),
                     "caption": "The caption names the official and his job, what he is doing, where and when, then the credit. The residents face away and stay unnamed."},
-        "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + ph(PHOTO_ZIANNO, "r32", "The same photograph of the public meeting.", "Democracy in action. " + ill()) + "</div>",
+        "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + dnp() + ph(PHOTO_ZIANNO, "r32", "The same photograph of the public meeting.", "Democracy in action. " + ill()) + "</div>",
                                   css=(BASE, PH), rule="01.8",
-                                  alt="The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative."),
+                                  alt=f"{FC}The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative."),
                     "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."},
         "specs": [{"label": "Caption", "value": "Who is shown, what they are doing, where and when, then the credit"},
                   {"label": "People", "value": "Name officials by their role; leave residents unnamed unless the record names them"},
@@ -978,7 +994,8 @@ def build(book):
 
     CASES = (f".ed .cases{{max-width:720px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 28px}}"
              f".ed .cases div{{border-top:2px solid var(--oa-color-border-strong);padding-top:10px}}"
-             f".ed .cases .st{{{fx('h4')};margin:0 0 6px}}")
+             f".ed .cases .st{{{fx('h4')};margin:0 0 6px}}"
+             f".ed .scope{{{fx('body-small')};max-width:720px;margin:16px 0 0;padding-top:10px;border-top:1px solid var(--oa-color-border-hairline)}}")
     tx = "In August 2025, Texas’s Republican-led legislature passed a congressional map aimed at five more Republican seats, and Governor Greg Abbott signed it."
     ca = "In August 2025, California’s Democratic-led legislature passed a congressional map aimed at five more Democratic seats, and voters approved it in November."
     if words(tx) != words(ca):
@@ -993,11 +1010,11 @@ def build(book):
         "why": {"text": [RULE_11_WHY],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-11-correct", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div>'
-                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
+                                                     f'<div><p class="st">California</p><p>{e(ca)}</p></div></div><p class="scope">{e(R4A_SCOPE)}</p><p class="src">{e(SRC_R4A)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
-                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {SRC_R4A}",
+                                  alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} {SRC_R4A}",
                                   notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding."),
-                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve."},
+                    "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. The line under the cases keeps the plate to what it shows: two of the loop’s redraws, with no count."},
         "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
                                   alt=f"The same loop with only the Texas case: {tx}"),
@@ -1021,7 +1038,7 @@ def build(book):
                                         notes="DR-125 and atlas issue I155: the research lead's sentences and source line, printed as written "
                                               "(work/handoffs/phase-2/20261107_Apply-Pass-Research.md, section 1)."),
                           "caption": ("The lines name who acted and what the record shows, in words sized to the grade, and they add no "
-                                      "case from another party to even the count, as Rule 01.11 asks.")}]
+                                      "counter-case to even the count, as Rule 01.11 asks.")}]
     else:
         extras_uneven = []
 
@@ -1155,7 +1172,7 @@ def build(book):
     })
 
     # --- Group 5: hinge headlines ---------------------------------------------------------------------------------
-    hh = lambda a, b, fail=False: (f'<div class="ed"><p class="hh">{e(a)} {amp_h()} '
+    hh = lambda a, b, fail=False: (f'<div class="ed">{dnp() if fail else ""}<p class="hh">{e(a)} {amp_h()} '
                                    + (f'<span style="color:var(--oa-color-palette-pillar-red)" data-red="failure">{e(b)}</span>' if fail else e(b)) + "</p></div>")
     rules.append({
         "id": "01.18", "title": "Set both halves of a hinge headline in one color and weight, and give the red to the ampersand.",
@@ -1168,7 +1185,7 @@ def build(book):
                                   alt="A hinge headline: The overtime rule and the paycheck. Both halves in Charcoal Inter Tight ExtraBold; only ampersand B is red."),
                     "caption": "Both halves share Charcoal and ExtraBold, and ampersand B carries the red."},
         "failure": {"specimen": A("s-01-18-failure", hh("The overtime rule", "the paycheck.", True), css=(BASE, HL), rule="01.18", exempt=["red", "contrast"],
-                                  alt="The same headline with the second half, the paycheck, also set in red."),
+                                  alt=f"{FC}The same headline with the second half, the paycheck, also set in red."),
                     "caption": "The red second half reads as the alarm and the first half as its cause, and the ampersand no longer stands out as the join."},
         "files": [AMP16, AMP24],
         "related": ["04", "02"],
@@ -1187,8 +1204,8 @@ def build(book):
                                   css=(BASE, HL, PP), rule="01.19",
                                   alt="Two hinge headlines from two pieces. One: The bus rider and the driver on one route. The next: The driver and the bus rider at one hearing. The order swaps, and each pair shares a route or a hearing."),
                     "caption": "The rider and the driver share a route, then a hearing, and the next piece puts the driver first."},
-        "failure": {"specimen": A("s-01-19-failure", f'<div class="ed"><p class="hh">Us {amp_h()} them.</p></div>', css=(BASE, HL), rule="01.19",
-                                  alt="A hinge headline: Us and them."),
+        "failure": {"specimen": A("s-01-19-failure", f'<div class="ed">{dnp()}<p class="hh">Us {amp_h()} them.</p></div>', css=(BASE, HL), rule="01.19",
+                                  alt=f"{FC}A hinge headline: Us and them."),
                     "caption": "“Us” and “them” name two sides with nothing shared between them, so the ampersand marks a divide."},
         "related": ["04", "02"],
         "builders": "Log the order of each pair of people, and swap it the next time a piece joins the same two groups.",
@@ -1207,8 +1224,8 @@ def build(book):
                                   css=(BASE, HL, f".ed .dk2{{{fx('intro')};margin-top:12px}}"), rule="01.20",
                                   alt=f"A hinge headline: Democratic voters and Republican voters on a stock trading ban. Deck: {dek20} {SRC_STOCK_SURVEY}"),
                     "caption": "The headline joins both parties’ voters through the ban they agree on, and the deck gives the figures and their source."},
-        "failure": {"specimen": A("s-01-20-failure", f'<div class="ed"><p class="hh">The left {amp_h()} the right.</p></div>', css=(BASE, HL), rule="01.20",
-                                  alt="A hinge headline: The left and the right."),
+        "failure": {"specimen": A("s-01-20-failure", f'<div class="ed">{dnp()}<p class="hh">The left {amp_h()} the right.</p></div>', css=(BASE, HL), rule="01.20",
+                                  alt=f"{FC}A hinge headline: The left and the right."),
                     "caption": "The red ampersand sits between two sides with no shared fact, so it marks the divide and reports nothing."},
         "related": ["04", "02"],
         "builders": "When a headline names the sides, link the deck’s source line to the vote, the sponsor list or the survey that shows the agreement.",
@@ -1285,8 +1302,8 @@ def build(book):
         "correct": {"specimen": A("s-01-22-correct", f'<div class="ed">{process_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=360,
                                   alt="An illustrative process piece. Kicker: Act, how to take part. Headline: Alder County votes on backyard cottages March 9. Send a comment by March 3 or speak at the meeting. Who decides: five county supervisors, and three votes pass the change. What each side has said: supporters said more homes would ease rents; opponents said sewers were sized for fewer homes. After the hinge divider, What you can do: send a written comment by 5 p.m. Wednesday, March 3, 2027, or speak for two minutes at 6 p.m. Tuesday, March 9, 2027. One red button: Send a comment. A line pointing to the Backyard Cottages Tracker."),
                     "caption": "The piece names who decides, gives both sides one sentence each, then turns at the hinge divider to two dated ways to take part. The red sits on the ask alone."},
-        "failure": {"specimen": A("s-01-22-failure", f'<div class="ed">{process_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=360,
-                                  alt="The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes."),
+        "failure": {"specimen": A("s-01-22-failure", f'<div class="ed">{dnp()}{process_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.22", illustrative=True, width=360,
+                                  alt=f"{FC}The same piece with only the supporters' case, under the label Why it matters, and a red button reading Tell the supervisors to vote yes."),
                     "caption": "The piece keeps the process label and then argues one side, so a reader who opposes the change meets a position they were told was not there."},
         "specs": [{"label": "Kicker", "value": "Act · How to take part, the label alone"},
                   {"label": "Ask", "value": "Pillar Red fill, White label at 19 px bold, Charcoal keyline on Newsprint", "token": "oa.color.action.ask.fill.onNewsprint"},
@@ -1315,8 +1332,8 @@ def build(book):
         "correct": {"specimen": A("s-01-23-correct", f'<div class="ed">{position_piece(False)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=360,
                                   alt="An illustrative position piece. The kicker opens with a Charcoal label, Our position, then the topic, committee votes. Headline: State senate committees should post every vote within two days. We support S. 214, which would require it. What the record shows: 14 of 20 committees posted no roll calls last session. The strongest case against: chairs in both parties say posting every procedural vote would discourage early compromise and need new clerk staff. What we don't know: whether faster posting changes how members vote. After the hinge divider, who decided: our editorial board, February 26, 2027; no funder has a stake in S. 214 or saw the piece before it ran; a link to the bios of the board members who decided. One red button: Ask your senator to vote yes. A footer pointing to our explainer on S. 214 and to the position log."),
                     "caption": "The label comes first, the case against comes before the ask, and the disclosure of who decided, when and with what funder interest sits directly above the button."},
-        "failure": {"specimen": A("s-01-23-failure", f'<div class="ed">{position_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=360,
-                                  alt="The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask."),
+        "failure": {"specimen": A("s-01-23-failure", f'<div class="ed">{dnp()}{position_piece(True)}</div>', css=(BASE, ARTICLE), rule="01.23", illustrative=True, width=360,
+                                  alt=f"{FC}The same piece with the Our position label moved to the footer, a pillar name alone in the kicker, and no case against, no open questions and no disclosure above the ask."),
                     "caption": "With the label at the bottom and no case against, a reader learns the piece was an argument only after the ask, which reads as a trick."},
         "specs": [{"label": n, "value": v} for n, v in kit],
         "related": ["13", "18"],
@@ -1367,8 +1384,8 @@ def build(book):
               {"specimen": "s-01-hinge-lines", "label": "The hinge in the locked lines",
                "caption": "Each locked line splits at the hinge, a commitment first and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
-               "caption": ("Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its "
-                           "icon also shows its red part as a second sign. The icons belong to the Civic Line, our set of symbols, and "
+               "caption": ("Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48\u00a0px its "
+                           "icon also shows its red part as a second sign, as the second row draws it. The icons belong to the Civic Line, our set of symbols, and "
                            "chapter 09 sets their sizes. "
                            "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; "
                            "positions appear only in labeled Act pieces.")},

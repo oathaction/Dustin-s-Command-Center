@@ -57,11 +57,13 @@ ARROW = '<span aria-hidden="true"> →</span>'
 # ------------------------------------------------------------------------------------------------ the six steps
 STEPS = [
     ('Filed', 'A legislator files the bill, and it goes to a committee.'),
-    ('Hearing', 'The committee holds a public hearing, where anyone can speak or send written testimony.'),
+    ('Hearing', 'The committee holds a hearing and takes testimony on the bill. Many state legislatures take '
+                'testimony from the public there. In Congress, the committee hears the witnesses it invites. A bill’s own '
+                'page says how to take part.'),
     ('Committee vote', 'The committee votes on whether to send the bill to the full House or Senate.'),
     ('First chamber', 'The full House or Senate, wherever the bill was filed, votes on it.'),
-    ('Second chamber', 'The other chamber takes the bill up. Its own committee often holds a hearing first, where the '
-                       'public can speak again, and then the full chamber votes and both chambers agree on one text.'),
+    ('Second chamber', 'The other chamber takes the bill up. Its own committee can hold a hearing first, and then '
+                       'the full chamber votes and both chambers agree on one text.'),
     ('Governor', 'The governor signs or vetoes the bill, and lawmakers can vote to override a veto.'),
 ]
 SIGNER = {'state': 'Governor', 'federal': 'President'}
@@ -82,7 +84,7 @@ STATE_MEANS = {
     'take': 'The bill is at this step, and the public can act before a date. The red disc, its place on the ring and '
             'the words carry it together.',
     'notyet': 'The bill has not reached this step.',
-    'skipped': 'The bill moved past this step without it, as when a committee votes with no public hearing. It keeps '
+    'skipped': 'The bill moved past this step without it, as when a committee votes without holding a hearing. It keeps '
                'its number, so the count still runs to six.',
     'stopped': 'The bill ended here, as when a committee votes it down or a veto stands. The line ends at this step.',
 }
@@ -98,16 +100,18 @@ LIST_BILLS = [
     dict(id='H.1180', title='Library hours', states=['done', 'done', 'done', 'done', 'done', 'now'],
          line='Both chambers passed it, and it waits for the governor to sign or veto it.'),
     dict(id='H.3301', title='Records request fees', states=['done', 'skipped', 'done', 'now', 'notyet', 'notyet'],
-         line='Step 2 never happened, because the committee voted without a public hearing. The House votes next.'),
+         line='Step 2 never happened, because the committee voted without holding a hearing. The House votes next.'),
     dict(id='S.2045', title='Parking meter fees', states=['done', 'done', 'done', 'done', 'done', 'stopped'],
          line='The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.'),
 ]
 LAW_BILL = dict(id='H.1180', title='Library hours', states=['done'] * 6, law='April 2', line='It takes effect July 1.')
+OVERRIDE_BILL = dict(id='S.1517', title='Snow route parking', states=['done'] * 6, law='March 18',
+                     how='over the governor’s veto', line='It takes effect June 1.')
 STOP_BILL = LIST_BILLS[4]
 CARD_BILL = dict(id='S.0412', title='Town audit deadlines', states=['done', 'done', 'done', 'done', 'take', 'notyet'],
                  line='The Senate passed it on February 24, and a House committee holds its hearing on March 10.',
                  take='Send written testimony or sign up to speak by March 10.', cta='How to send testimony')
-FED_BILL = dict(id='H.R. 3120', title='Passport wait times', kind='federal',
+FED_BILL = dict(id='H.R. 99012', title='Passport wait times', kind='federal',
                 states=['done', 'done', 'done', 'done', 'done', 'now'],
                 line='Both chambers passed it, and it waits for the President to sign or veto it.')
 PAGE_BILL = dict(id='H.4212', title='Public meeting notice', states=LIST_BILLS[0]['states'],
@@ -117,8 +121,7 @@ PAGE_NOTES = [
     'The committee holds its public hearing on March 3, and testimony is open until then.',
     'The committee votes on whether to send the bill to the full House.',
     'The full House votes on the bill.',
-    'The Senate takes it up. Its committee often holds a hearing of its own, where you can speak again, before both '
-    'chambers agree on one text.',
+    'The Senate takes it up. Its committee often holds a hearing of its own before both chambers agree on one text.',
     'The governor signs or vetoes the bill. Once it is signed, this page gives the date it became law and the date it '
     'takes effect.',
 ]
@@ -137,7 +140,7 @@ def nb(text):
 def status_words(b, nm=None):
     nm = nm or names(b.get('kind', 'state'))
     if b.get('law'):
-        return f'Became law on {b["law"]}.'
+        return f'Became law on {b["law"]}' + (f', {b["how"]}.' if b.get('how') else '.')
     st = b['states']
     if 'stopped' in st:
         i = st.index('stopped')
@@ -235,11 +238,16 @@ def line_segments(states, xs, cy, red=False):
     return out
 
 
-def steps_svg(states, W, d, red_progress=False, fs=None):
-    """Numbered steps across a row W px wide, one sixth of the row to each step. red_progress draws the line and the
-    done steps in Pillar Red, for the failure plate of Rule 11.4 only."""
-    c = W // 6
-    xs = [c * i + c // 2 for i in range(6)]
+def steps_svg(states, W, d, red_progress=False, fs=None, hang=False):
+    """Numbered steps across a row W px wide. Centered: one sixth of the row to each step, so names fit under the
+    circles. hang=True: the first circle starts on the text edge and the last ends on the far edge, for rows whose names
+    sit in a key. red_progress draws the line and the done steps in Pillar Red, for the failure plate of Rule 11.4 only."""
+    if hang:
+        c = (W - d) // 5
+        xs = [d / 2 + c * i for i in range(6)]
+    else:
+        c = W // 6
+        xs = [c * i + c // 2 for i in range(6)]
     R = d / 2
     cy = 6 + R
     H = int(cy + R + 2)
@@ -280,7 +288,7 @@ def sample(st, d=26, scale=1, num=4):
 
 
 def labels(nm, states, W):
-    """Step names under the circles, from 1,024 px: the current step in bold, a skipped one says so."""
+    """Step names under the circles, in the wide form: the current step in bold, a skipped one says so."""
     lis = []
     for i, s in enumerate(states):
         cls = ' class="cur"' if s in ('now', 'take', 'stopped') else ''
@@ -291,12 +299,12 @@ def labels(nm, states, W):
 
 # ------------------------------------------------------------------------------------------------ pieces
 def piece_css(ctx, surf, size, sizing='floor'):
-    """Styles every tracker piece shares, for a surface ('n', 'c') and a width ('s' 360 px, 'l' 1,024 px)."""
+    """Styles every tracker piece shares, for a surface ('n', 'c') and a width ('s' 360 px, 'l' 600 px)."""
     T = ctx.ty
     h3 = T('h3', 'ceil' if sizing == 'ceil' else 'floor')
     return (f':scope{{{mark_vars(ctx, surf)}}}' + MARK_CSS +
             f'.pc{{padding:20px 16px 24px;color:var(--txt)}}'
-            + ('.pc{padding:32px 40px 40px}' if size == 'l' else '') +
+            + ('.pc{padding:24px 24px 28px}' if size == 'l' else '') +
             f':where(.pc p){{margin:0}}'
             f'.hd{{margin:0 0 16px;{h3};text-wrap:balance}}'
             f'.rows{{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}}'
@@ -316,8 +324,7 @@ def piece_css(ctx, surf, size, sizing='floor'):
             f'.ks{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px}}.ks b{{color:var(--txt)}}'
             f'.km{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px}}'
             f'.km li{{display:inline-flex;align-items:center;gap:6px}}'
-            + ('.row{display:grid;grid-template-columns:272px 640px;column-gap:32px}.row .bill{margin:4px 0 0}'
-               '.mkw{justify-content:flex-start}' if size == 'l' else ''))
+            + ('.mkw{justify-content:flex-start}' if size == 'l' else ''))
 
 
 def key(nm, show=('done', 'now', 'notyet', 'skipped', 'stopped', 'take'), steps=True):
@@ -325,31 +332,30 @@ def key(nm, show=('done', 'now', 'notyet', 'skipped', 'stopped', 'take'), steps=
     if steps:
         k = ('<p class="kh">The six steps</p><ol class="ks">'
              + ''.join(f'<li><b>{i + 1}</b> {n}</li>' for i, n in enumerate(nm)) + '</ol>')
-    lis = ''.join(f'<li>{sample(s, 24, num=None)}<span>{STATE_WORD[s]}</span></li>' for s in show)
+    lis = ''.join(f'<li>{sample(s, 24, num=4)}<span>{STATE_WORD[s]}</span></li>' for s in show)
     return f'<div class="key">{k}<p class="kh">What the marks mean</p><ul class="km">{lis}</ul></div>'
 
 
 def take_part(b, size='s'):
     if 'take' not in b['states']:
         return ''
-    return (f'<p class="tp">{sample("take", 20, num=None)}<span><b>You can take part now.</b> {b["take"]}</span></p>'
+    n = b['states'].index('take') + 1
+    return (f'<p class="tp">{sample("take", 24, num=n)}<span><b>You can take part now.</b> {b["take"]}</span></p>'
             f'<p class="ctaw"><span class="cta">{b["cta"]}{ARROW}</span></p>')
 
 
 def row(b, size, nm=None, red_progress=False, step_word=None, kind_label=None):
     nm = nm or names(b.get('kind', 'state'))
-    W, d = (324, 26) if size == 's' else (636, 30)
+    W, d = (328, 26) if size == 's' else (552, 30)
     if size == 'card':
-        W, d = 324, 24
+        W, d = 328, 24
     head = (f'<span class="kd">{kind_label}</span> ' if kind_label else '')
     bill = f'<p class="bill">{head}<span><b>Bill {b["id"]}</b>, {b["title"]}</span></p>'
-    marks = f'<div class="mkw">{steps_svg(b["states"], W, d, red_progress)}</div>'
+    marks = f'<div class="mkw">{steps_svg(b["states"], W, d, red_progress, hang=(size != "l"))}</div>'
     lab = labels(nm, b['states'], W) if size == 'l' else ''
     sw = step_word or status_words(b, nm)
     st = f'<p class="st"><b>{sw}</b> {b["line"]}</p>'
     core = f'{marks}{lab}{st}{take_part(b, size)}'
-    if size == 'l':
-        return f'<li class="row">{bill}<div>{core}</div></li>'
     return f'<li class="row">{bill}{core}</li>'
 
 
@@ -375,11 +381,10 @@ def nb_html(html):
 def spec(ctx, sid, html, rule, alt, **kw):
     if re.search(r'Stage \d+ of 9|Signal Grid', re.sub(r'<[^>]+>', '', html)):
         raise ValueError(f'{sid}: a retired tracker phrase in a specimen')
-    out = ctx.spec(sid, nb_html(html), CH, rule, alt, **kw)
-    if (kw.get('width') or 0) > 700:
-        # wider than the chapter column at 1440 px: true size by default, with a switch to fit the window (D2-251)
-        ctx.specs[sid]['meta']['fit_switch'] = True
-    return out
+    if (kw.get('width') or 0) > 600:
+        # CA-M1: the chapter column holds a 606 px stage from a 768 px window up, so no plate is wider than 600 px
+        raise ValueError(f'{sid}: wider than 600 px, so it would scroll inside the chapter column at true size')
+    return ctx.spec(sid, nb_html(html), CH, rule, alt, **kw)
 
 
 def alt_list(bills, nm=None):
@@ -413,22 +418,29 @@ def s_steps(ctx):
 
 
 def s_11_1(ctx):
-    css = piece_css(ctx, 'n', 'l', 'ceil') + (f'.kd{{display:inline-block;margin-right:8px;{ctx.ty("label")};'
-                                              f'color:var(--txt2)}}.row .bill{{display:flex;flex-direction:column}}')
-    bills = [dict(LIST_BILLS[2], kind='state'), FED_BILL]
-    rows = ''.join(row(b, 'l', kind_label=('A state bill' if b.get('kind') != 'federal' else 'A federal bill')) for b in bills)
+    """CA-M1: the two forms of step 6 sit one above the other in a 360 px piece, so both names show at true size in
+    every chapter column and on a phone. Each bill keeps its own key."""
+    T = ctx.ty
+    css = piece_css(ctx, 'n', 's') + (f'.kd{{display:block;margin:0 0 4px;{T("label")};color:var(--txt2)}}'
+                                      f'.sig{{padding:16px 0 20px;border-bottom:1px solid var(--hair)}}'
+                                      f'.sig:first-of-type{{border-top:1px solid var(--hair)}}.sig .key{{margin-top:14px}}'
+                                      f'.sig .rows{{border:0}}.sig .row{{padding:0;border:0}}')
+    blocks = ''
+    for b, label in ((dict(LIST_BILLS[2], kind='state'), 'A state bill'), (FED_BILL, 'A federal bill')):
+        nm = names(b.get('kind', 'state'))
+        blocks += (f'<div class="sig"><p class="kd">{label}</p><ul class="rows">{row(b, "s", nm)}</ul>'
+                   f'{key(nm, ("done", "now"))}</div>')
     html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">Two bills that wait for a signature</p>'
-            f'<ul class="rows">{rows}</ul></div>')
-    alt = ('Two Illustrative bills at 1,024 px on Newsprint, each drawn as six numbered steps with the step names under '
-           'the circles. A state bill, H.1180, Library hours, has passed steps 1 to 5 and stands at step 6, named '
-           'Governor: “Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” '
-           'A federal bill, H.R. 3120, Passport wait times, stands at the same place, and its step 6 is named President: '
-           '“Step 6 of 6: President. Both chambers passed it, and it waits for the President to sign or veto it.” The '
-           'other five names are the same for both: Filed, Hearing, Committee vote, First chamber, Second chamber.')
-    spec(ctx, 's-11-1-correct', html, '11.1', alt, width=1024, illustrative=True, sizing='ceil',
-         notes='Fixed artboard at 1,024 px with the heading at the desktop ceiling (D2-301).')
+            f'{blocks}</div>')
+    alt = ('Two Illustrative bills at 360 px on Newsprint, one above the other, each drawn as six numbered steps with its '
+           'own key. A state bill, H.1180, Library hours, has passed steps 1 to 5 and stands at step 6: “Step 6 of 6: '
+           'Governor. Both chambers passed it, and it waits for the governor to sign or veto it.” Its key reads 1 Filed, '
+           '2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 Governor. A federal bill, H.R. 99012, '
+           'Passport wait times, stands at the same place: “Step 6 of 6: President. Both chambers passed it, and it waits '
+           'for the President to sign or veto it.” Its key ends 6 President.')
+    spec(ctx, 's-11-1-correct', html, '11.1', alt, width=360, illustrative=True)
     fcss, band = ctx.fail_band()
-    css2 = piece_css(ctx, 'n', 'l') + fcss + '.pc{padding:24px 24px 28px}.row{grid-template-columns:1fr;row-gap:8px}'
+    css2 = piece_css(ctx, 'n', 'l') + fcss
     b = dict(LIST_BILLS[2])
     r = row(b, 'l', nm=CLERK, step_word='Step 6 of 6: Presented.')
     r = r.replace('Both chambers passed it, and it waits for the governor to sign or veto it.',
@@ -438,9 +450,7 @@ def s_11_1(ctx):
     alt2 = ('Labeled Failure case: do not publish. An Illustrative tracker for bill H.1180, Library hours, whose six '
             'steps take the clerk’s names: Introduced, Referred, Reported, Engrossed, Enrolled and Presented. It reads '
             '“Step 6 of 6: Presented. The enrolled bill went to the executive on February 12.”')
-    spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=700, illustrative=True,
-         notes='Fixed artboard at 700 px, sizes from the phone floor (D2-301).')
-
+    spec(ctx, 's-11-1-failure', html2, '11.1', alt2, width=600, illustrative=True)
 
 def s_11_2(ctx):
     T = ctx.ty
@@ -493,15 +503,16 @@ def s_11_2(ctx):
 
 def s_11_3(ctx):
     css = piece_css(ctx, 'n', 's')
-    law = dict(LAW_BILL)
-    rows = row(law, 's') + row(STOP_BILL, 's')
-    html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">How two state bills ended</p>'
+    rows = row(LAW_BILL, 's') + row(OVERRIDE_BILL, 's') + row(STOP_BILL, 's')
+    html = (f'<style>{css}</style><div class="pc"><p>{ILLUS}</p><p class="hd">How three state bills ended</p>'
             f'<ul class="rows">{rows}</ul>{key(names(), ("done", "stopped"))}</div>')
-    alt = ('Two Illustrative bills at 360 px on Newsprint. Bill H.1180, Library hours: all six numbered steps are filled, '
-           'and the words say “Became law on April 2. It takes effect July 1.” Bill S.2045, Parking meter fees: steps 1 '
-           'to 5 are filled, and step 6 is a filled square where the line ends. The words say “Stopped at step 6 of 6: '
-           'Governor. The governor vetoed it on February 9, and the Senate’s vote to override fell short on February 23.” '
-           'A key gives the six step names and the Done and Stopped marks.')
+    alt = ('Three Illustrative bills at 360 px on Newsprint. Bill H.1180, Library hours: all six numbered steps are '
+           'filled, and the words say “Became law on April 2. It takes effect July 1.” Bill S.1517, Snow route parking: '
+           'all six steps are filled, and the words say “Became law on March 18, over the governor’s veto. It takes effect '
+           'June 1.” Bill S.2045, Parking meter fees: steps 1 to 5 are filled, and step 6 is a filled square where the '
+           'line ends. The words say “Stopped at step 6 of 6: Governor. The governor vetoed it on February 9, and the '
+           'Senate’s vote to override fell short on February 23.” A key gives the six step names and the Done and Stopped '
+           'marks.')
     spec(ctx, 's-11-3-correct', html, '11.3', alt, width=360, illustrative=True)
     fcss, band = ctx.fail_band()
     css2 = piece_css(ctx, 'n', 's') + fcss
@@ -527,7 +538,7 @@ def card(ctx, red_progress=False):
     html = (f'<div class="pc"><p style="margin-bottom:12px">{ILLUS}</p><div class="cd"><p class="ky">Tracker · State bills</p>'
             f'<p class="ch">The House hears the town audit bill on March 10</p>'
             f'<p class="dk">The bill would move each town’s deadline for its yearly audit from June 30 to September 30.</p>'
-            f'<ul class="rows">{r}</ul></div></div>')
+            f'<ul class="rows">{r}</ul>{key(names(), ("done", "take", "notyet"))}</div></div>')
     return css, html
 
 
@@ -555,18 +566,17 @@ def s_11_5(ctx):
     sids = {}
     for surf in ('n', 'c'):
         for size in ('s', 'l'):
-            css = piece_css(ctx, surf, size, 'ceil' if size == 'l' else 'floor')
+            css = piece_css(ctx, surf, size)
             html = f'<style>{css}</style>' + bill_list(ctx, surf, size, LIST_BILLS, 'Where five state bills stand this week')
-            w = 360 if size == 's' else 1024
+            w = 360 if size == 's' else 600
             ground = 'Newsprint' if surf == 'n' else 'Charcoal'
             sid = 's-11-5-correct' if (surf, size) == ('n', 's') else f's-11-list-{w}-{SURF_NAME[surf]}'
             where = ('with the step names in a key after the list' if size == 's'
-                     else 'with each step’s name under its circle')
+                     else 'with each step’s name under its circle and the bill’s name above its steps')
             alt = (f'An Illustrative list of five state bills at {w:,} px on {ground}, each drawn as six numbered steps on a '
                    f'line, {where}. ' + alt_list(LIST_BILLS))
             spec(ctx, sid, html, '11.5' if sid == 's-11-5-correct' else None, alt, width=w, illustrative=True,
-                 surface=SURF_NAME[surf], sizing='ceil' if size == 'l' else None,
-                 notes='' if size == 's' else 'Fixed artboard at 1,024 px with the heading at the desktop ceiling (D2-301).')
+                 surface=SURF_NAME[surf])
             sids[(surf, size)] = sid
     fcss, band = ctx.fail_band()
     css = piece_css(ctx, 'n', 's') + fcss + '.mkw{padding:4px 0}'
@@ -594,7 +604,7 @@ def timeline(b, d, notes, surf, page=True, generic=False):
         word = 'Now: you can take part' if s == 'take' else STATE_WORD[s]
         box = ''
         if s == 'take' and page:
-            box = (f'<div class="tbox"><p class="tp">{sample("take", 20, num=None)}<span><b>You can take part now.</b> '
+            box = (f'<div class="tbox"><p class="tp">{sample("take", 24, num=i + 1)}<span><b>You can take part now.</b> '
                    f'Send written testimony or sign up to speak by March 3.</span></p>'
                    f'<p class="askw" {RED_W}><span class="ask">Send testimony</span></p></div>')
         if generic:
@@ -624,7 +634,7 @@ def page_css(ctx, surf, size):
     T = ctx.ty
     on = {'n': 'onNewsprint', 'c': 'onCharcoal'}[surf]
     keyline = (f';box-shadow:inset 0 0 0 1px {ctx.v("oa.component.button.ask.keyline.onNewsprint")}' if surf == 'n' else '')
-    return (piece_css(ctx, surf, size, 'ceil' if size == 'l' else 'floor') +
+    return (piece_css(ctx, surf, size) +
             f'.chip{{display:inline-flex;{T("dataLabel")};border:1px solid var(--strong);vertical-align:middle}}'
             f'.chip span{{padding:4px 6px}}.chip span:first-child{{background:var(--ink);color:var(--bg)}}'
             f'.ky{{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:12px 0 12px;{T("label")};color:var(--txt2)}}'
@@ -647,8 +657,7 @@ def page_css(ctx, surf, size):
             f'.ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;'
             f'background:{ctx.v("oa.component.button.ask.fill." + on)};color:{ctx.v("oa.component.button.ask.label." + on)};'
             f'{T("ask")}{keyline}}}'
-            f'.cols{{display:grid;grid-template-columns:600px 1fr;column-gap:48px}}'
-            f'.aside{{{T("caption")};border-top:2px solid var(--strong);padding-top:12px}}'
+            f'.aside{{{T("caption")};border-top:2px solid var(--strong);padding-top:12px;margin-top:12px}}'
             f'.aside ol{{margin:0;padding:0;list-style:none}}.aside li{{margin:0 0 8px}}.aside b{{font-weight:700}}')
 
 
@@ -662,7 +671,7 @@ def bill_page(ctx, surf, size, generic=False):
     if size == 'l':
         aside = ('<div class="aside"><p class="kh">What the six steps mean</p><ol>'
                  + ''.join(f'<li><b>{i + 1} {n}.</b> {m}</li>' for i, (n, m) in enumerate(STEPS)) + '</ol></div>')
-        body = f'<div class="cols"><div>{tl}</div>{aside}</div>'
+        body = f'{tl}{aside}'
     else:
         body = tl
     return f'<div class="pc pg">{head}{body}</div>'
@@ -671,11 +680,11 @@ def bill_page(ctx, surf, size, generic=False):
 def s_11_6(ctx):
     sids = {}
     for surf, size in (('n', 's'), ('n', 'l'), ('c', 's')):
-        w = 360 if size == 's' else 1024
+        w = 360 if size == 's' else 600
         ground = 'Newsprint' if surf == 'n' else 'Charcoal'
         html = f'<style>{page_css(ctx, surf, size)}</style>{bill_page(ctx, surf, size)}'
         sid = 's-11-6-correct' if (surf, size) == ('n', 's') else f's-11-page-{w}-{SURF_NAME[surf]}'
-        aside = (' Beside the timeline, a column says what each of the six steps means.' if size == 'l' else '')
+        aside = (' After the steps, a key says what each of the six steps means.' if size == 'l' else '')
         alt = (f'An Illustrative page for one bill at {w:,} px on {ground}: the kicker Tracker, State bills, the ID Bill '
                f'H.4212, the title Public meeting notice and a line on what the bill would do, then “Step 2 of 6: Hearing. '
                f'Testimony is open until March 3.” The six numbered steps run down the page on a line, each with its name, '
@@ -685,8 +694,7 @@ def s_11_6(ctx):
                f'Committee vote, 4 First chamber, 5 Second chamber and 6 Governor, each not yet, with a note on what '
                f'happens there. Step 5’s note says the Senate’s committee often holds a hearing of its own.' + aside)
         spec(ctx, sid, html, '11.6' if sid == 's-11-6-correct' else None, alt, width=w, illustrative=True,
-             surface=SURF_NAME[surf], sizing='ceil' if size == 'l' else None,
-             notes='' if size == 's' else 'Fixed artboard at 1,024 px with the heading at the desktop ceiling (D2-301).')
+             surface=SURF_NAME[surf])
         sids[(surf, size)] = sid
     fcss, band = ctx.fail_band()
     html = f'<style>{page_css(ctx, "n", "s")}{fcss}</style>{band}{bill_page(ctx, "n", "s", generic=True)}'
@@ -719,7 +727,7 @@ def s_11_7(ctx):
     sizes = [(24, 13, 'On a story card', '24 px circles, numbers at 13 px'),
              (26, 13, 'In a list at 360 px', '26 px circles, numbers at 13 px'),
              (28, 14, 'On a bill’s own page', '28 px circles, numbers at 14 px'),
-             (30, 14, 'In a list at 1,024 px', '30 px circles, numbers at 14 px')]
+             (30, 14, 'In a wide list', '30 px circles, numbers at 14 px')]
     lis = ''
     for d, fs, where, what in sizes:
         marks = ''.join(svg(d + 14, d + 14, node((d + 14) / 2, (d + 14) / 2, d, s, n, fs), cls='mk mk-s')
@@ -733,7 +741,7 @@ def s_11_7(ctx):
     html = f'<style>{css}</style><div class="wr"><ul class="sz">{lis}</ul>{tg}</div>'
     alt = ('The tracker’s four sizes at true size, each drawn as a done step, a step where you can take part and a step '
            'ahead: 24 px circles with 13 px numbers on a story card, 26 px with 13 px numbers in a list at 360 px, 28 px '
-           'with 14 px numbers on a bill’s own page and 30 px with 14 px numbers in a list at 1,024 px. Below them, the '
+           'with 14 px numbers on a bill’s own page and 30 px with 14 px numbers in a wide list. Below them, the '
            'link How to send testimony with a bracket marking it 44 px tall, and the red Send testimony button marked '
            '48 px tall.')
     spec(ctx, 's-11-7-correct', html, '11.7', alt, readable=True,
@@ -784,8 +792,8 @@ def build(ctx):
             'id': '11.1', 'title': 'Follow every bill through six numbered steps with plain names.',
             'rule': ['A tracker follows a bill through six steps, numbered 1 to 6: Filed, Hearing, Committee vote, First '
                      'chamber, Second chamber, and a sixth named for whoever signs the bill, Governor on a state bill and '
-                     'President on a federal one. A chamber is one half of a legislature, the House or the Senate, and the '
-                     'first chamber is the one where the bill was filed. Every tracker prints the number and the name '
+                     'President on a federal one. A chamber is one house of a legislature, such as the House or the Senate, '
+                     'and the first chamber is the one where the bill was filed. Every tracker prints the number and the name '
                      'together, as in “Step 2 of 6: Hearing”, for the step the bill is at now.',
                      'Six steps fold some procedure together, such as a second reading or a conference committee, where '
                      'members of both chambers settle one text. A bill’s own page gives those dates in the note under the '
@@ -793,13 +801,15 @@ def build(ctx):
             'tokens': ['oa.type.dataLabel', 'oa.type.bodySmall'],
             'why': {'text': ['A number gives a reader words to say, “step 2 of 6”, with no key to learn, and it reads the '
                              'same on a phone and in gray print. Plain names let a newcomer say what happens at each step. '
-                             'The hearing keeps a step of its own because it is where the public is invited to speak, and a '
-                             'bill that skips it is news. Naming step 6 for the person who signs keeps a bill that waits '
-                             'for a signature from reading as law.'],
+                             'The hearing keeps a step of its own because it is where a committee takes testimony on the '
+                             'bill, from the public in many state legislatures and from the witnesses it invites in '
+                             'Congress. Naming step 6 for the person who signs keeps a bill that waits for a signature from '
+                             'reading as law.'],
                     'basis': 'Design judgment, approved by our founder and editor in November 2026'},
             'correct': {'specimen': 's-11-1-correct',
-                        'caption': 'Two bills at 1,024 px, both at step 6. The state bill’s sixth step is Governor, and '
-                                   'the federal bill’s is President; the other five names stay the same.'},
+                        'caption': 'Two bills at 360 px, both at step 6, each with its own key. The state bill’s sixth '
+                                   'step is Governor, and the federal bill’s is President; the other five names stay the '
+                                   'same.'},
             'failure': {'specimen': 's-11-1-failure',
                         'caption': '<strong>Fails Rule 11.1.</strong> The steps take the clerk’s names. A newcomer cannot '
                                    'say what Engrossed or Enrolled means, so the tracker needs a glossary before it tells '
@@ -810,13 +820,16 @@ def build(ctx):
                 {'label': 'Step 6', 'value': 'Governor on a state bill; President on a federal bill'},
                 {'label': 'Status words', 'value': '“Step 2 of 6: Hearing.”, in bold, for the step the bill is at now, '
                                                    'then one plain sentence', 'token': 'oa.type.bodySmall'},
-                {'label': 'Step names under the circles', 'value': 'From 1,024 px, Inter 600 at 13 px, the current step '
-                                                                   'in bold', 'token': 'oa.type.dataLabel'},
+                {'label': 'Step names under the circles', 'value': 'In a list column 552 px wide or more, Inter 600 '
+                                                                   'at 13 px, the current step in bold',
+                 'token': 'oa.type.dataLabel'},
             ],
             'related': ['01', '18'],
             'builders': ['Write the status words from the data, never from the drawing: the step number, its name for '
                          'this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state '
-                         'bill prints Governor and a federal bill prints President.'],
+                         'bill prints Governor and a federal bill prints President.',
+                         'Number an invented federal bill from H.R. 99001 up, far past any number a Congress has used, and '
+                         'label it Illustrative. A cropped plate then cannot put our status words on a real bill.'],
         },
         {
             'id': '11.2', 'title': 'Draw each step’s state as a shape, and say it in words.',
@@ -856,13 +869,17 @@ def build(ctx):
             'related': ['05', '17'],
             'builders': ['Draw each tracker as one SVG with <code>aria-hidden="true"</code>, and give screen readers an '
                          'ordered list of the six steps beside it, each with its state in words, such as “Step 2, '
-                         'Hearing: never happened.” Hide that list visually and keep it in the reading order.'],
+                         'Hearing: never happened.” Hide that list visually and keep it in the reading order.',
+                         'A hearing on the bill’s subject held before the bill was filed does not fill step 2; the step’s '
+                         'note names it.'],
         },
         {
             'id': '11.3', 'title': 'Say in words when a bill becomes law or stops.',
             'rule': ['Step 6 keeps the signer’s name while a bill waits, so a bill there reads “Step 6 of 6: Governor”. '
-                     'Once the governor or the President signs it, all six steps fill, and the words say “Became law on” '
-                     'with the date, then when it takes effect, as in “Became law on April 2. It takes effect July 1.”',
+                     'Once it becomes law, all six steps fill and the words say “Became law on” with the date, then when it '
+                     'takes effect, as in “Became law on April 2. It takes effect July 1.” A bill can become law by '
+                     'signature, by a vote to override a veto, or without a signature where the constitution allows it. '
+                     'When it was not signed, the words say how, as in “Became law on March 18, over the governor’s veto.”',
                      'A bill that stops ends its line on a square at the step where it stopped, and the words give the '
                      'date and the reason. A veto that stands stops a bill at step 6.'],
             'why': {'text': ['A reader who sees the last step filled can take the bill for law, so only the words can '
@@ -870,8 +887,9 @@ def build(ctx):
                              'most readers act on.'],
                     'basis': 'Design judgment, approved by our founder and editor in November 2026'},
             'correct': {'specimen': 's-11-3-correct',
-                        'caption': 'Two ends at 360 px. H.1180 became law, and its words give both dates. S.2045 stopped '
-                                   'at step 6 when a veto stood, and its line ends on the square.'},
+                        'caption': 'Three ends at 360 px. H.1180 became law when it was signed, and S.1517 over a veto; '
+                                   'the words of each say how and when. S.2045 stopped at step 6 when a veto stood, and its '
+                                   'line ends on the square.'},
             'failure': {'specimen': 's-11-3-failure',
                         'caption': '<strong>Fails Rule 11.3.</strong> The sixth step is named Law, so a bill that still '
                                    'waits for the governor reads “Step 6 of 6: Law.” A reader may stop following it '
@@ -879,6 +897,9 @@ def build(ctx):
             'specs': [
                 {'label': 'Waiting to be signed', 'value': '“Step 6 of 6: Governor.” or “Step 6 of 6: President.”'},
                 {'label': 'Signed', 'value': 'All six steps filled; “Became law on April 2. It takes effect July 1.”'},
+                {'label': 'Over a veto', 'value': 'All six steps filled; “Became law on March 18, over the governor’s veto.”'},
+                {'label': 'Without a signature', 'value': 'All six steps filled; “Became law on May 4, without the governor’s '
+                                                          'signature.”, where the constitution allows it'},
                 {'label': 'Stopped', 'value': 'A square at the last step reached; “Stopped at step 3 of 6: Committee '
                                               'vote.” with the date and the reason'},
                 {'label': 'A veto that stands', 'value': 'Stopped at step 6'},
@@ -914,8 +935,11 @@ def build(ctx):
                 {'label': 'Contrast', 'value': f'Pillar Red {red_n} to 1 on Newsprint with the keyline at {key_n}; '
                                                f'{red_c} to 1 on Charcoal', 'token': 'oa.component.button.ask.keyline.onNewsprint'},
                 {'label': 'Words', 'value': '“You can take part now.” in bold, then the deadline and how to act'},
-                {'label': 'In a list or on a card', 'value': 'A text link at least 44 px tall; the red button waits for the '
-                                                             'bill’s own page', 'token': 'oa.size.target.touch'},
+                {'label': 'In a list, or on a card with this mark', 'value': 'A text link at least 44 px tall; the red '
+                                                                            'button waits for the bill’s own page',
+                 'token': 'oa.size.target.touch'},
+                {'label': 'On a card without this mark', 'value': 'The card may end on the red ask, as the pillar cards in '
+                                                                  'chapter 01 do'},
                 {'label': 'Red jobs in a view', 'value': 'One: take part now. Every take-part mark and the ask button '
                                                          'share it'},
             ],
@@ -928,8 +952,9 @@ def build(ctx):
             'id': '11.5', 'title': 'Use numbered steps in lists and on story cards.',
             'rule': ['In a list of bills and on a story card, the tracker runs across the page: six numbered circles on '
                      'one line, solid as far as the bill has come and fine after it. The bill’s number and name lead each '
-                     'row, and its status words follow the marks. On a phone, the step names move into a key after the '
-                     'list; from 1,024 px they sit under each circle.'],
+                     'row, and its status words follow the marks. In a column narrower than 552 px, as on a phone, the '
+                     'first circle starts on the text edge and the step names move into a key after the list. In a wider '
+                     'column, each step takes a sixth of the row and its name sits under its circle.'],
             'tokens': ['oa.border.width.rule', 'oa.border.width.hairline', 'oa.type.dataLabel'],
             'why': {'text': ['A list asks a reader to compare bills at a glance, and six numbered steps fit across a '
                              '360 px phone with room for the words. The numbers also keep the tracker apart from the '
@@ -944,26 +969,30 @@ def build(ctx):
                                    'counts dots to find the step, and a row of nodes on a line comes close to the '
                                    'lockmark’s drawing.'},
             'specs': [
-                {'label': 'Circles', 'value': '26 px at 360 px, 30 px at 1,024 px, 24 px on a story card'},
+                {'label': 'Circles', 'value': '26 px in a phone list, 30 px in a wide list, 24 px on a story card'},
                 {'label': 'Line', 'value': '2 px in the surface’s ink as far as the bill has come, 1 px after it',
                  'token': 'oa.border.width.rule'},
-                {'label': 'Spacing', 'value': 'One sixth of the row to each step: 54 px in a 324 px row, 106 px in a '
-                                              '636 px row'},
-                {'label': 'Step names', 'value': 'Under the circles from 1,024 px; in the key on phones',
+                {'label': 'Spacing', 'value': 'Phone list and card: first circle on the text edge, last on the far '
+                                              'edge, 60 px apart in a 328 px row. Wide list: one sixth of a 552 px row '
+                                              'to each step, 92 px'},
+                {'label': 'Step names', 'value': 'Under the circles in a column 552 px wide or more; in the key below '
+                                                 'that',
                  'token': 'oa.type.dataLabel'},
                 {'label': 'Key', 'value': 'After the last bill: the six steps on phones, and every mark the list uses'},
             ],
             'related': ['07', '08'],
             'builders': ['Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from '
-                         'Rule 11.2. When a tracker updates in place, announce the new status words through a polite live '
-                         'region, as chapter 18 sets out.'],
+                         'Rule 11.2. Switch to the wide form with a container query on the list’s own width, '
+                         '<code>@container (min-width: 34.5rem)</code>, so a list in a narrow column keeps its key at any '
+                         'window size. When a tracker updates in place, announce the new status words through a polite '
+                         'live region, as chapter 18 sets out.'],
         },
         {
             'id': '11.6', 'title': 'Turn the same steps upright on a bill’s own page.',
             'rule': ['A bill’s own page runs the six steps down the page, with the marks a list uses. Each step gives its '
                      'name, its state in words and a note with its dates. Under the step where the public can act, a box '
-                     'holds the deadline and the page’s one red button, the ask. From 1,024 px, a column beside the steps '
-                     'says what each one means.'],
+                     'holds the deadline and the page’s one red button, the ask. Where the page has room, a key after '
+                     'the steps says what each one means.'],
             'tokens': ['oa.component.button.ask.fill.onNewsprint', 'oa.component.button.ask.label.onNewsprint', 'oa.type.ask'],
             'why': {'text': ['A bill’s page has room for the dates and notes a list leaves out, and a reader who knows the '
                              'marks from a list knows them here. The ask sits under the step it belongs to, where the '
@@ -981,7 +1010,7 @@ def build(ctx):
                 {'label': 'Each step', 'value': 'Name in Inter 600 at 17 px, the state in label type, a note at 15 px'},
                 {'label': 'Ask button', 'value': f'Inter 700 at 19 px, White on Pillar Red at {ask} to 1, 48 px tall',
                  'token': 'oa.type.ask'},
-                {'label': 'Column of meanings', 'value': 'From 1,024 px, beside a 600 px column of steps'},
+                {'label': 'Key of meanings', 'value': 'After the steps, in a column 600 px wide or more'},
             ],
             'related': ['18', '20'],
             'builders': ['Mark up the steps as an <code>&lt;ol&gt;</code>, one item for each step, with the state in its '
@@ -989,8 +1018,8 @@ def build(ctx):
         },
         {
             'id': '11.7', 'title': 'Size the marks for reading, and the targets for a thumb.',
-            'rule': ['Draw the circles at 24 px on a story card, 26 px in a list at 360 px, 28 px on a bill’s page and '
-                     '30 px in a list at 1,024 px. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. '
+            'rule': ['Draw the circles at 24 px on a story card, 26 px in a phone list, 28 px on a bill’s page and '
+                     '30 px in a wide list. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. '
                      f'Every link and button a reader can press stands at least {touch} px tall, and the ask button 48 px.'],
             'tokens': ['oa.size.target.touch', 'oa.size.target.minimum'],
             'why': {'text': ['Numbers at 13 px keep the type floor of Rule 06.3 inside the mark. A target 44 px tall '
@@ -1019,9 +1048,8 @@ def build(ctx):
         'number': CH, 'anchor': 'icons', 'title': 'Status and utility icons', 'part': 'Symbols and graphics',
         'instruction': 'Give each record state or interface action a glyph and a word that read without color.',
         'intro': [
-            'This chapter gives each state a record can be in, and each action a page offers, a mark and a word that read '
-            'without color. A reader who sees no color, or prints the page in gray, gets the same meaning from the shape '
-            'and the word.',
+            'A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word '
+            'beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.',
             'It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other '
             'records, such as a records request or an agency rule, join the chapter as rule groups of their own once we '
             'draw them, and so do utility icons for actions such as copy, filter and share.',
@@ -1035,12 +1063,13 @@ def build(ctx):
              'caption': 'What happens at each step. Step 6 takes the name of whoever signs the bill.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 's')], 'label': 'Numbered steps at 360 px on Charcoal',
              'caption': 'The same five bills on Charcoal. The marks turn to Newsprint and Dim Newsprint, and the take-part disc keeps its red.'},
-            {'after_rule': '11.5', 'specimen': lists[('n', 'l')], 'label': 'Numbered steps at 1,024 px on Newsprint',
-             'caption': 'From 1,024 px each step’s name sits under its circle, and the current step’s name is bold.'},
-            {'after_rule': '11.5', 'specimen': lists[('c', 'l')], 'label': 'Numbered steps at 1,024 px on Charcoal',
-             'caption': 'The same list on Charcoal at 1,024 px.'},
-            {'after_rule': '11.6', 'specimen': pages[('n', 'l')], 'label': 'A bill’s page at 1,024 px on Newsprint',
-             'caption': 'The steps run in a 600 px column, and a column beside them says what each step means.'},
+            {'after_rule': '11.5', 'specimen': lists[('n', 'l')], 'label': 'Numbered steps in a 600 px column on Newsprint',
+             'caption': 'The wide form, as on a tablet or in a desktop article column. Each step’s name sits under its '
+                        'circle, and the current step’s name is bold.'},
+            {'after_rule': '11.5', 'specimen': lists[('c', 'l')], 'label': 'Numbered steps in a 600 px column on Charcoal',
+             'caption': 'The same wide list on Charcoal.'},
+            {'after_rule': '11.6', 'specimen': pages[('n', 'l')], 'label': 'A bill’s page in a 600 px column on Newsprint',
+             'caption': 'The steps run the width of the column, and a key after them says what each step means.'},
             {'after_rule': '11.6', 'specimen': pages[('c', 's')], 'label': 'A bill’s page at 360 px on Charcoal',
              'caption': 'The same page on Charcoal. The ask button keeps its red, which measures '
                         f'{red_c} to 1 on Charcoal and needs no keyline there.'},

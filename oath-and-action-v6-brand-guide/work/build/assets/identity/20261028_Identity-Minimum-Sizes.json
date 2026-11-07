@@ -88,9 +88,14 @@
   {
    "lockup": "Lockmark",
    "v5": "16 px, one color",
-   "screen": "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; V5 master from 48 px",
+   "screen": "16 px master from 16 to 23 px; 24 px master from 24 to 47 px; display master from 48 px",
    "print": "0.25 in",
-   "below": "Nothing smaller; the lever stays one size up at 16 and 24 px"
+   "below": "Nothing smaller; the lever stays one size up at 16 and 24 px",
+   "files": [
+    "lockmark/20261028_Lockmark-16px-Master.svg",
+    "lockmark/20261028_Lockmark-24px-Master.svg",
+    "lockmark/20261107_Lockmark-Display-Master.svg"
+   ]
   },
   {
    "lockup": "Hinge diagram V2",
