@@ -1,0 +1,282 @@
+{
+ "file": "work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html",
+ "measured": "November 7, 2026",
+ "widths": {
+  "390": {
+   "targets": {
+    "cta": {
+     "count": 16,
+     "minW": 180.828125,
+     "minH": 44
+    },
+    "ask": {
+     "count": 4,
+     "minW": 186.84375,
+     "minH": 48
+    },
+    "toc": {
+     "count": 9,
+     "minW": 54.625,
+     "minH": 44
+    }
+   },
+   "marks": {
+    "minMark": 9.5,
+    "minRed": 9,
+    "minText": 13
+   },
+   "contrast": [
+    {
+     "surface": "Newsprint",
+     "role": "Done mark",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Not yet ring",
+     "ratio": 4.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Red badge",
+     "ratio": 2.96
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Red badge keyline",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Not yet number",
+     "ratio": 5.49
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Status text",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Key text",
+     "ratio": 5.49
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Number on a done step",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Done mark",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Not yet ring",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Red badge",
+     "ratio": 4.49
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Red badge keyline",
+     "ratio": 1
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Not yet number",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Status text",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Key text",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Number on a done step",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Ask button label, 19 px bold",
+     "ratio": 4.17
+    }
+   ],
+   "optionD360RowHeights": [
+    448,
+    332,
+    332,
+    342,
+    448,
+    332,
+    332,
+    342
+   ],
+   "pageHeight": 51865,
+   "sidewaysScroll": false,
+   "focus": {
+    "stops": 29,
+    "withoutRing": []
+   }
+  },
+  "1440": {
+   "targets": {
+    "cta": {
+     "count": 16,
+     "minW": 180.828125,
+     "minH": 44
+    },
+    "ask": {
+     "count": 4,
+     "minW": 186.84375,
+     "minH": 48
+    },
+    "toc": {
+     "count": 9,
+     "minW": 54.625,
+     "minH": 44
+    }
+   },
+   "marks": {
+    "minMark": 9.5,
+    "minRed": 9,
+    "minText": 13
+   },
+   "contrast": [
+    {
+     "surface": "Newsprint",
+     "role": "Done mark",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Not yet ring",
+     "ratio": 4.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Red badge",
+     "ratio": 2.96
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Red badge keyline",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Not yet number",
+     "ratio": 5.49
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Status text",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Key text",
+     "ratio": 5.49
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Number on a done step",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Done mark",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Not yet ring",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Red badge",
+     "ratio": 4.49
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Red badge keyline",
+     "ratio": 1
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Not yet number",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Status text",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Key text",
+     "ratio": 7.26
+    },
+    {
+     "surface": "Charcoal",
+     "role": "Number on a done step",
+     "ratio": 13.29
+    },
+    {
+     "surface": "Newsprint",
+     "role": "Ask button label, 19 px bold",
+     "ratio": 4.17
+    }
+   ],
+   "optionD360RowHeights": [
+    448,
+    332,
+    332,
+    342,
+    448,
+    332,
+    332,
+    342
+   ],
+   "pageHeight": 29828,
+   "sidewaysScroll": false,
+   "focus": {
+    "stops": 10,
+    "withoutRing": []
+   }
+  }
+ },
+ "targets": {
+  "cta": {
+   "count": 16,
+   "minW": 180.828125,
+   "minH": 44
+  },
+  "ask": {
+   "count": 4,
+   "minW": 186.84375,
+   "minH": 48
+  },
+  "toc": {
+   "count": 9,
+   "minW": 54.625,
+   "minH": 44
+  }
+ },
+ "marks": {
+  "minMark": 9.5,
+  "minRed": 9,
+  "minText": 13
+ }
+}

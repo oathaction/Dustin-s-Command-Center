@@ -1,0 +1,545 @@
+{
+ "method": {
+  "x": "one cap height of the wordmark: 100 units in the display drawings, 22 px in the 24 px drawings, 14 px in the 16 px drawings",
+  "white": "area between two shapes: slices 0.25 units apart (0.05 px at pixel sizes), each counted to 0.15x past the nearest point, averaged over the band the two shapes share; between lines the slices are columns and a column where one line has no ink counts as open to the 0.15x limit",
+  "hinge_targets": {
+   "display": 0.203,
+   "24": 0.2384,
+   "16": 0.2953
+  },
+  "hinge_master": {
+   "display": {
+    "H_to_B": 0.2031,
+    "B_to_A": 0.203
+   },
+   "24": {
+    "H_to_B": 0.2405,
+    "B_to_A": 0.2362
+   },
+   "16": {
+    "H_to_B": 0.3069,
+    "B_to_A": 0.2837
+   }
+  },
+  "avatar": "largest capitals that keep the ink box plus 1.0x of clear space on every side inside the 400 px tile's inscribed circle",
+  "print_minimum": "capitals 3 mm, width rounded up to the next 0.05 in"
+ },
+ "L2": {
+  "width_x": 6.38,
+  "ink_height_x": 2.13,
+  "line_white_x": 0.195,
+  "line_nearest_x": 0.086,
+  "b_scale": 1.283,
+  "b_to_n_nearest_x": 0.1,
+  "min_screen_px": 90,
+  "min_print_in": 0.8,
+  "avatar_cap_px": 42.8,
+  "avatar_min_tile_px": 131
+ },
+ "variants": {
+  "S1": {
+   "name": "Ampersand ends line one",
+   "lines": [
+    "OATH&",
+    "ACTION"
+   ],
+   "align": "left",
+   "b_scale": 1.0,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S1-Ampersand-Ends-Line-One.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S1-Ampersand-Ends-Line-One-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S1-Ampersand-Ends-Line-One-16px.svg"
+   },
+   "width_x": 5.086,
+   "ink_height_x": 2.135,
+   "ratio": 2.38,
+   "joins_display": [
+    {
+     "between": "H / B",
+     "kind": "side",
+     "white_x": 0.203,
+     "nearest_x": 0.093
+    },
+    {
+     "between": "OATH& / ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.095
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "H / B",
+     "kind": "side",
+     "white_px": 5.29,
+     "white_x": 0.241,
+     "nearest_px": 3.15
+    },
+    {
+     "between": "OATH& / ACTION",
+     "kind": "lines",
+     "white_px": 5.73,
+     "white_x": 0.26,
+     "nearest_px": 3.12
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "H / B",
+     "kind": "side",
+     "white_px": 4.3,
+     "white_x": 0.307,
+     "nearest_px": 2.96
+    },
+    {
+     "between": "OATH& / ACTION",
+     "kind": "lines",
+     "white_px": 3.79,
+     "white_x": 0.271,
+     "nearest_px": 2.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.108
+   ],
+   "size_24px": [
+    115,
+    50.0
+   ],
+   "size_16px": [
+    79,
+    33.0
+   ],
+   "min_screen_px": 79,
+   "min_screen_height_px": 33.0,
+   "min_print_in": 0.65,
+   "avatar_cap_px": 48.8,
+   "avatar_min_tile_px": 115
+  },
+  "S2": {
+   "name": "Ampersand opens line two",
+   "lines": [
+    "OATH",
+    "&ACTION"
+   ],
+   "align": "left",
+   "b_scale": 1.0,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S2-Ampersand-Opens-Line-Two.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S2-Ampersand-Opens-Line-Two-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S2-Ampersand-Opens-Line-Two-16px.svg"
+   },
+   "width_x": 6.089,
+   "ink_height_x": 2.132,
+   "ratio": 2.86,
+   "joins_display": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_x": 0.203,
+     "nearest_x": 0.07
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.082
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_px": 5.2,
+     "white_x": 0.236,
+     "nearest_px": 2.22
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_px": 4.75,
+     "white_x": 0.216,
+     "nearest_px": 2.0
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_px": 3.97,
+     "white_x": 0.284,
+     "nearest_px": 2.06
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_px": 3.82,
+     "white_x": 0.273,
+     "nearest_px": 2.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.105
+   ],
+   "size_24px": [
+    138,
+    49.0
+   ],
+   "size_16px": [
+    95,
+    33.0
+   ],
+   "min_screen_px": 95,
+   "min_screen_height_px": 33.0,
+   "min_print_in": 0.75,
+   "avatar_cap_px": 44.0,
+   "avatar_min_tile_px": 128
+  },
+  "S3": {
+   "name": "Hung ampersand",
+   "lines": [
+    "OATH",
+    "&ACTION"
+   ],
+   "align": "hung",
+   "b_scale": 1.0,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S3-Hung-Ampersand.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S3-Hung-Ampersand-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S3-Hung-Ampersand-16px.svg"
+   },
+   "width_x": 6.089,
+   "ink_height_x": 2.135,
+   "ratio": 2.85,
+   "joins_display": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_x": 0.203,
+     "nearest_x": 0.07
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.094
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_px": 5.2,
+     "white_x": 0.236,
+     "nearest_px": 2.22
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_px": 5.45,
+     "white_x": 0.248,
+     "nearest_px": 3.0
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "B / A",
+     "kind": "side",
+     "white_px": 3.97,
+     "white_x": 0.284,
+     "nearest_px": 2.06
+    },
+    {
+     "between": "OATH / &ACTION",
+     "kind": "lines",
+     "white_px": 3.68,
+     "white_x": 0.263,
+     "nearest_px": 2.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.108
+   ],
+   "size_24px": [
+    138,
+    49.0
+   ],
+   "size_16px": [
+    95,
+    32.0
+   ],
+   "min_screen_px": 95,
+   "min_screen_height_px": 32.0,
+   "min_print_in": 0.75,
+   "avatar_cap_px": 44.0,
+   "avatar_min_tile_px": 128
+  },
+  "S4": {
+   "name": "Ampersand line, centered",
+   "lines": [
+    "OATH",
+    "&",
+    "ACTION"
+   ],
+   "align": "center",
+   "b_scale": 1.0,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S4-Ampersand-Line-Centered.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S4-Ampersand-Line-Centered-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S4-Ampersand-Line-Centered-16px.svg"
+   },
+   "width_x": 5.086,
+   "ink_height_x": 3.303,
+   "ratio": 1.54,
+   "joins_display": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.092
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.158
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 5.36,
+     "white_x": 0.243,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 4.99,
+     "white_x": 0.227,
+     "nearest_px": 4.0
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 4.47,
+     "white_x": 0.319,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 3.79,
+     "white_x": 0.271,
+     "nearest_px": 3.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.092,
+    0.158
+   ],
+   "size_24px": [
+    115,
+    77.0
+   ],
+   "size_16px": [
+    79,
+    52.0
+   ],
+   "min_screen_px": 79,
+   "min_screen_height_px": 52.0,
+   "min_print_in": 0.65,
+   "avatar_cap_px": 45.2,
+   "avatar_min_tile_px": 124
+  },
+  "S5": {
+   "name": "Ampersand line, flush left",
+   "lines": [
+    "OATH",
+    "&",
+    "ACTION"
+   ],
+   "align": "left",
+   "b_scale": 1.0,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S5-Ampersand-Line-Flush-Left.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S5-Ampersand-Line-Flush-Left-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S5-Ampersand-Line-Flush-Left-16px.svg"
+   },
+   "width_x": 5.086,
+   "ink_height_x": 3.263,
+   "ratio": 1.56,
+   "joins_display": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.099
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.101
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 5.08,
+     "white_x": 0.231,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 5.22,
+     "white_x": 0.237,
+     "nearest_px": 3.0
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 4.28,
+     "white_x": 0.306,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 4.36,
+     "white_x": 0.312,
+     "nearest_px": 3.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.109,
+    0.101
+   ],
+   "size_24px": [
+    115,
+    76.0
+   ],
+   "size_16px": [
+    79,
+    52.0
+   ],
+   "min_screen_px": 79,
+   "min_screen_height_px": 52.0,
+   "min_print_in": 0.65,
+   "avatar_cap_px": 45.3,
+   "avatar_min_tile_px": 124
+  },
+  "S6": {
+   "name": "Large ampersand, centered",
+   "lines": [
+    "OATH",
+    "&",
+    "ACTION"
+   ],
+   "align": "center",
+   "b_scale": 1.25,
+   "files": {
+    "display": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S6-Large-Ampersand-Centered.svg",
+    "24": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S6-Large-Ampersand-Centered-24px.svg",
+    "16": "work/boards/phase-2/board-6/stacked/20261107_Stacked-S6-Large-Ampersand-Centered-16px.svg"
+   },
+   "width_x": 5.086,
+   "ink_height_x": 3.545,
+   "ratio": 1.43,
+   "joins_display": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.084
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_x": 0.203,
+     "nearest_x": 0.15
+    }
+   ],
+   "joins_24px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 5.49,
+     "white_x": 0.25,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 4.98,
+     "white_x": 0.226,
+     "nearest_px": 4.0
+    }
+   ],
+   "joins_16px": [
+    {
+     "between": "OATH / &",
+     "kind": "lines",
+     "white_px": 4.54,
+     "white_x": 0.324,
+     "nearest_px": 3.0
+    },
+    {
+     "between": "& / ACTION",
+     "kind": "lines",
+     "white_px": 3.75,
+     "white_x": 0.268,
+     "nearest_px": 3.0
+    }
+   ],
+   "baseline_to_cap_line_x": [
+    0.084,
+    0.15
+   ],
+   "size_24px": [
+    115,
+    81.0
+   ],
+   "size_16px": [
+    79,
+    54.0
+   ],
+   "min_screen_px": 79,
+   "min_screen_height_px": 54.0,
+   "min_print_in": 0.65,
+   "avatar_cap_px": 44.5,
+   "avatar_min_tile_px": 126
+  }
+ },
+ "crisp_share": {
+  "S1-16": 0.691,
+  "S1-24": 0.771,
+  "S2-16": 0.691,
+  "S2-24": 0.771,
+  "S3-16": 0.691,
+  "S3-24": 0.771,
+  "S4-16": 0.691,
+  "S4-24": 0.771,
+  "S5-16": 0.691,
+  "S5-24": 0.771,
+  "S6-16": 0.679,
+  "S6-24": 0.766,
+  "L2-min": 0.579
+ },
+ "contrast": {
+  "charcoal_on_newsprint": 13.29,
+  "deep_stone_on_newsprint": 5.49,
+  "deep_stone_on_panel": 4.86,
+  "red_on_newsprint": 2.96,
+  "red_on_charcoal": 4.49,
+  "white_on_prussian": 13.28,
+  "newsprint_on_charcoal": 13.29
+ }
+}
