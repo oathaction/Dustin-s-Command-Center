@@ -1341,6 +1341,12 @@ ul.facts{margin:0;padding-left:1.1em}ul.facts li{margin:0 0 8px;max-width:76ch}
 .dec-why{margin:0;font-size:.9375rem}
 .foot{margin-top:64px;border-top:2px solid var(--oa-color-palette-charcoal);padding-top:16px;font-size:.875rem;color:var(--oa-color-derived-deep-stone)}
 
+@media (forced-colors: active){
+.mk .fi{fill:CanvasText}.mk .fs{fill:GrayText}.mk .fb{fill:Canvas}.mk .ft{fill:CanvasText}.mk .fr{fill:Highlight}
+.mk .si,.mk .sk{stroke:CanvasText}.mk .ss{stroke:GrayText}.mk text.halo{stroke:Canvas}
+.vt li::after{background:CanvasText}.vt li.seg-off::after{background:GrayText}
+.chip-id span:first-child{forced-color-adjust:none;background:CanvasText;color:Canvas}
+}
 @media (max-width:1000px){.ba{grid-template-columns:minmax(0,1fr)}.bp-cols{grid-template-columns:600px 280px}}
 @media (max-width:760px){
 .board{padding:24px 16px 64px}
