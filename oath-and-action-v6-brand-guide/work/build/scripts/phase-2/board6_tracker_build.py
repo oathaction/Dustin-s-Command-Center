@@ -389,7 +389,7 @@ def legend_mark(opt, st):
     if opt == 'A':
         return a_sample(st)
     if opt in ('B', 'D'):
-        return b_sample(st, 20)
+        return b_sample(st, 24)
     return c_sample(st, 10)
 
 
