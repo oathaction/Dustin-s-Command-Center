@@ -816,3 +816,21 @@ Dustin, in the eighth chat's starting prompt: "Board A: all recommendations, and
 | DR-125 | Chapter 01 takes the one-standard wording now: its opening's paragraph on what nonpartisan means, Rule 01.11's added sentence and new reason, "in a hinge headline" in Rule 01.20's reason, and "the spread of examples" in Rule 01.12's reason. The example of an uneven finding starts from the 2020 court record (our systems atlas, issue I155) and goes in before Gate 2, once the research lead has read the court's opinion and the review in full and written its source line | Dustin, November 7, as recommended (A13) |
 | DR-126 | Rule 02.25's last row prints the Senate count by party in the same sentence as both of H.R. 7008's provisions: "It needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no." Its source line names the Congressional Record and marks the party roster as a secondary source | Dustin, November 7, as recommended (A14) |
 | DR-127 | H10's corrected qualification line stands: "Each margin is the leading party's lead, in percentage points of all presidential votes." This confirms the erratum D2-256 | Dustin, November 7, as recommended (A15) |
+
+## Apply pass answers and routine calls, November 7, 2026
+
+The studio asked two questions before the apply pass: whether the reader check had gone out and been answered, and what step 6 says on a federal bill. Dustin: "Just proceed with recommendations." His answer settles the second question. The first depends on a fact the studio does not have, so the studio takes the course the seventh handoff sets while readers may be answering (D2-323).
+
+| # | Decision | Source |
+|---|---|---|
+| DR-128 | Step 6 names whoever signs the bill: "Governor" on a state bill and "President" on a federal bill. The other five steps stand as DR-108 sets them | Dustin, November 7, as recommended |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-323 | The live reader check stays as it is. DR-114's party-reading question, the six tracker steps and the four pillar icons go into a second round built at stage B, and the masthead width question leaves that round | The studio does not know whether readers are answering, and the seventh handoff keeps the live check unchanged while they may be; DR-115 settled the width |
+| D2-324 | The tracker rules open chapter 11, Status and utility icons, as its first section. Stage B builds the rest of chapter 11 around them, and chapter 08 links to them | The architecture map and Master Brief section 11 put tracker and record states in chapter 11; chapter 08 keeps only the lockmark (DR-110) |
+| D2-325 | Chapter 08 is titled The lockmark, with the anchor `lockmark`. Its rules renumber from 08.1, and every link to an old number is fixed in the same pass | DR-110; nothing has shipped, so no reader holds the old numbers |
+| D2-326 | "Signal Grid" leaves reader pages as the name of a coding system; the drawing is called the lockmark | One name for one drawing with one job (DR-110) |
+| D2-327 | The sign-off is drawn from the lockmark's display master at 48 px | The creative director found the 24 px master soft at 40 px on Board 6; Rule 08.1 already places the sign-off at 48 px |
+| D2-328 | The condensed wordmark files stay where they are, marked in the asset records as kept for the record and not in use. The proofs appendix becomes "Identity proofs": today's width in use, and L2 beside S1 at 48 px, 96 px and display size | DR-115 and DR-113, with the side-by-side record gate rule 4 asks for |
+| D2-329 | The apply pass runs in two rounds as D2-258 set for the stage A fix pass: the makers, the engineer and the research lead in parallel by ownership, then the editor's copy edit through each owner's build script | One pass, and no two agents edit one file at once |
