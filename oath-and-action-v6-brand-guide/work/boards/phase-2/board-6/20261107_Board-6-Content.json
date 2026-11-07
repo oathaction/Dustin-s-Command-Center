@@ -1,0 +1,287 @@
+{
+ "title": "Four explorations, for your pick",
+ "deck": "You asked for a simpler bill tracker, a few thoughts on the pillar icons, more stacked lockups and six color schemes. Each one is here with our recommendation, and seven questions close the page.",
+ "sample_reply": "B6-1 to B6-7: as recommended.",
+ "verdict": {
+  "headline": "Pick numbered steps, Set A and stacked S1, and keep Pillar Red; three small fixes come first.",
+  "text": [
+   "Each section page is built from the approved masters, and each passes its accessibility check. My review found three faults the checks could not see. A bill waiting for the governor reads \"Step 6 of 6: Law.\" The pillar row marks the current pillar by red alone at 48 px and larger. The color page understates what a new lead color costs. The decisions below carry each fix.",
+   "On color I part with the color designer. Patina is the best of the six sheets. Red gives Act its urgency and stays clear of Stone for color-blind readers, under rules the guide already follows. The reader check you approved can tell us whether readers see red as partisan before anything changes."
+  ]
+ },
+ "scores": [
+  {
+   "criterion": "Craft",
+   "score": 4,
+   "line": "Letters, icons and lockmarks come from the masters, and the stacks hold at twice size; the pillar icons still lack small drawings of their own."
+  },
+  {
+   "criterion": "Clarity",
+   "score": 3,
+   "line": "One line misleads: \"Step 6 of 6: Law.\" for a bill that is waiting for the governor. B6-1 renames the step."
+  },
+  {
+   "criterion": "Brand fidelity",
+   "score": 4,
+   "line": "Each view keeps one working red with none on Prussian, and the stacks redraw no letter."
+  },
+  {
+   "criterion": "Usefulness",
+   "score": 4,
+   "line": "Sizes, states, files and minimums sit on every page; two sections disagree about kickers until you answer B6-5."
+  },
+  {
+   "criterion": "Evidence honesty",
+   "score": 3,
+   "line": "The color page understates what a new lead costs; B6-7 states the full cost."
+  },
+  {
+   "criterion": "Accessibility",
+   "score": 3,
+   "line": "Every page passes its check, yet the pillar row marks the current pillar by red alone at 48 px; B6-4 adds an underline at every size."
+  }
+ ],
+ "sections": {
+  "tracker": {
+   "summary": [
+    "The systems designer proposes six plain steps in place of the nine stages and draws four trackers with them in your four-bill list, at phone and desktop widths, on Newsprint and on Charcoal. Each state shows by its shape and in words, and \"You can take part now\" carries the view's one working red.",
+    "The page ends with the grid's one job. The lockmark keeps four fixed places, and every grid that coded something retires."
+   ],
+   "pick": "Numbered steps, and a timeline on a bill's page",
+   "recommendation": "Use numbered steps in lists and on story cards and the same steps as a timeline on a bill's own page, with step 6 renamed Governor.",
+   "why": "A reader can say \"step 2 of 6\" without a key, and the marks hold up on a phone and in gray print. As drawn, step 6 is called Law, so a bill waiting for the governor reads as law; the new name says who acts next.",
+   "note": "I checked every state in grayscale, and each one holds by its shape. Step 5 should also say that the second chamber may hold its own hearing, since readers can take part there too."
+  },
+  "pillar-icons": {
+   "summary": [
+    "The icon designer read all 122 Civic Line drawings and proposes three sets of four. Set A keeps the four drawn for the pillars. Set B uses paper a reader holds, and Set C turns to people and the vote for Connect and Act.",
+    "Each set appears at 16, 24, 48 and 128 px, in the pillar row, on a section opener, in a kicker and as a tile on Charcoal, with a naming test the studio ran on its own."
+   ],
+   "pick": "Set A, each icon with its word",
+   "recommendation": "Keep Set A, print each word beside its icon, and underline the current pillar's word at every size.",
+   "why": "Only these four were drawn for the pillars, so no topic page shares them. At 48 px the row marks the current pillar by red alone, and the underline gives a reader who cannot see red the same cue.",
+   "note": "The four icons still need small drawings of their own at 16 and 24 px, where today's line falls under half a pixel wide."
+  },
+  "stacked": {
+   "summary": [
+    "The identity designer arranged six stacked lockups from the approved masters and set each beside today's L2. Every letter matches its master point for point, as the designer's script and a second check of my own both found.",
+    "Each option appears at two sizes, on Newsprint, Charcoal and Prussian, in an avatar tile and on a poster corner, with its clear space and minimum size."
+   ],
+   "pick": "S1, ampersand ends line one",
+   "recommendation": "S1 replaces L2: OATH & over ACTION, flush left.",
+   "why": "It is the wordmark split after the ampersand, so it reads in the name's order. It fits the smallest box of the six and gives the largest capitals in a round avatar, 49 px against L2's 43 px.",
+   "note": "If S6 appeals to you, say so. It would tell us the large ampersand was fine and its place at the right was the trouble."
+  },
+  "color-sheets": {
+   "summary": [
+    "The research lead studied color at editorial, news and civic brands and how lead colors read for party. The color designer then built six one-page identity sheets, each led by a color other than red, and today's palette at the same size.",
+    "Every sheet keeps Newsprint, Charcoal, the three typefaces and the approved marks, and measures every color pair it prints."
+   ],
+   "pick": "Keep Pillar Red",
+   "recommendation": "Keep Pillar Red as the lead, and ask readers how they read it for party in the reader check you already approved.",
+   "why": "The color designer recommends Patina, the strongest of the six. Patina matches Stone in gray print and for many color-blind readers, and a new lead means rebuilding the color tokens, every two-color icon and chapters 03 to 05.",
+   "note": "Federal Ink and Highlighter change how the ampersand reads: the first fades into the letters in gray, and the second changes color with its ground. I would take neither further."
+  }
+ },
+ "decisions": [
+  {
+   "id": "B6-1",
+   "question": "Do the nine tracker stages become six plain steps?",
+   "context": "Six steps cover the same path in words a newcomer knows. As drawn, step 6 is called Law, and trackers name the step a bill is at now, so a bill waiting for the governor reads \"Step 6 of 6: Law.\" We renamed that step.",
+   "options": [
+    {
+     "text": "Six steps: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor",
+     "short": "six steps, step 6 Governor"
+    },
+    {
+     "text": "Six steps as drawn, with step 6 called Law",
+     "short": "six steps, step 6 Law"
+    },
+    {
+     "text": "Keep the nine stages",
+     "short": "keep nine stages"
+    }
+   ],
+   "recommended": "a",
+   "why": "A step's name has to stay true while a bill sits at it. Governor tells a reader who acts next, and a bill that becomes law shows all six steps done with the words \"Became law on\" and the date. Hearing keeps a step of its own, because the public is invited to speak there.",
+   "section": "tracker",
+   "touches": [
+    "tracker#six-steps",
+    "tracker#answers"
+   ]
+  },
+  {
+   "id": "B6-2",
+   "question": "Which trackers do we build?",
+   "options": [
+    {
+     "text": "Numbered steps in lists and on story cards, and the same steps as a vertical timeline on a bill's own page",
+     "short": "numbered steps and timeline"
+    },
+    {
+     "text": "The segmented bar in lists, and the timeline on a bill's page",
+     "short": "segmented bar and timeline"
+    },
+    {
+     "text": "The line with dots in lists, and the timeline on a bill's page",
+     "short": "line with dots and timeline"
+    },
+    {
+     "text": "The timeline everywhere",
+     "short": "timeline everywhere"
+    }
+   ],
+   "recommended": "a",
+   "why": "A number gives a reader words to say, \"step 2 of 6\", with no key, and it holds up on a phone and in gray print. The timeline uses the same numbered marks and gives a bill's page room for dates and the way to take part. On a phone the line with dots loses its step names, and its row of dots looks like the lockmark.",
+   "section": "tracker",
+   "touches": [
+    "tracker#compare",
+    "tracker#option-b",
+    "tracker#option-d"
+   ]
+  },
+  {
+   "id": "B6-3",
+   "question": "Does the lockmark keep four fixed places, with every other use of the grid retired?",
+   "context": "The four places are the masthead, page headers, footers and the sign-off on cards, covers and posters. Tracker progress, series routes, pillar corners, coded grids and the grid in the kicker retire. The Signal Grid is part of the locked identity, so your answer is the named approval this change needs.",
+   "options": [
+    {
+     "text": "Yes, four places, and chapter 08 becomes a short chapter called The lockmark",
+     "short": "four places, chapter 08 The lockmark"
+    },
+    {
+     "text": "Yes, and the small lockmark in chart legends stays as a fifth place",
+     "short": "five places"
+    },
+    {
+     "text": "Yes, and the lockmark joins the lockups in chapter 03, so chapter 08 closes and later chapters renumber",
+     "short": "lockmark into chapter 03"
+    }
+   ],
+   "recommended": "a",
+   "why": "You asked for one use. A chart footer already holds the lockmark, so a legend mark adds a place with no new job. Keeping chapter 08's number spares every later chapter its links and rule numbers.",
+   "section": "tracker",
+   "touches": [
+    "tracker#grid"
+   ]
+  },
+  {
+   "id": "B6-4",
+   "question": "Which four icons stand for the pillars?",
+   "context": "Set A is today's set. At 48 px and larger its row marks the current pillar by red alone, so the recommendation adds an underline at every size.",
+   "options": [
+    {
+     "text": "Set A, drawn for the pillars, with each word beside its icon and the current pillar underlined at every size",
+     "short": "Set A"
+    },
+    {
+     "text": "Set B, the reader's paper",
+     "short": "Set B"
+    },
+    {
+     "text": "Set C, civic life",
+     "short": "Set C"
+    }
+   ],
+   "recommended": "a",
+   "why": "Only Set A was drawn for the pillars. Sets B and C borrow drawings that already name topics, such as Voting and Public Records, so one drawing would carry two meanings, and a ballot or a petition narrows Act to one kind of step.",
+   "section": "pillar-icons",
+   "touches": [
+    "pillar-icons#compare",
+    "pillar-icons#rec",
+    "pillar-icons#set-a"
+   ]
+  },
+  {
+   "id": "B6-5",
+   "question": "Does a pillar icon go in a kicker, with the content label counting as the pillar's word?",
+   "context": "A kicker is the short line above a headline, and it opens with one of seven content labels. The icon designer asks whether a label such as Guide can stand for Connect beside Connect's icon.",
+   "options": [
+    {
+     "text": "No: a kicker keeps its label and words, with a topic icon only beside the topic's own word, and the pillar icons stay in the pillar row, on section openers and on tiles",
+     "short": "no pillar icon in kickers"
+    },
+    {
+     "text": "Yes, and the content label counts as the pillar's word",
+     "short": "pillar icon in kickers"
+    },
+    {
+     "text": "No, and a kicker carries no icon at all",
+     "short": "kickers in words only"
+    }
+   ],
+   "recommended": "a",
+   "why": "Analysis, Report and Our position name no pillar, and Guide does not say Connect. A pillar icon in those kickers would code a pillar with no word beside it, the job you asked the grid to stop doing.",
+   "section": "pillar-icons",
+   "touches": [
+    "pillar-icons#rec",
+    "tracker#grid"
+   ]
+  },
+  {
+   "id": "B6-6",
+   "question": "Which stacked lockup replaces L2?",
+   "context": "L2 is today's stacked lockup, OATH over ACTION with a large ampersand at the right. Every option is cut from the approved masters with no letter redrawn. A new lockup changes identity geometry, so your pick is the named approval it needs.",
+   "options": [
+    {
+     "text": "S1: OATH & over ACTION, flush left",
+     "short": "S1"
+    },
+    {
+     "text": "S4: OATH, the ampersand and ACTION on three centered lines",
+     "short": "S4"
+    },
+    {
+     "text": "S6: S4 with a larger ampersand",
+     "short": "S6"
+    },
+    {
+     "text": "S2, S3 or S5 (name it)",
+     "short": "another stack"
+    },
+    {
+     "text": "Keep L2",
+     "short": "keep L2"
+    }
+   ],
+   "recommended": "a",
+   "why": "S1 is the wordmark split after the ampersand, so a reader who knows the masthead knows the stack. It reads in the name's order, fits the smallest box and gives the largest capitals in a round avatar.",
+   "section": "stacked",
+   "touches": [
+    "stacked#s1",
+    "stacked#measures"
+   ]
+  },
+  {
+   "id": "B6-7",
+   "question": "Does Pillar Red stay the lead color?",
+   "context": [
+    "Pillar Red is locked, so a move needs your named approval with the old and the new side by side. Red has marked the Republican side of election maps since 2000, and the guide keeps it off Prussian and prints every party in Charcoal with its name.",
+    "A move replaces red in 12 color tokens, the 244 two-color Civic Line icon files and their tiles, and Rules 05.3 and 05.5, which are written around red. Chapters 03 to 05 and every identity proof are then made again. Patina also moves the focus ring, the diverging scale and the success color."
+   ],
+   "options": [
+    {
+     "text": "Keep Pillar Red, and add how readers read it for party to the reader check you approved",
+     "short": "keep Pillar Red"
+    },
+    {
+     "text": "Move to Patina, after the reader check and a press proof on newsprint, with the two side by side for your approval",
+     "short": "move to Patina"
+    },
+    {
+     "text": "Move to another of the six (name it), with the same steps first",
+     "short": "another scheme"
+    }
+   ],
+   "recommended": "a",
+   "why": "Red does its jobs under rules the guide already follows, and it gives Act its urgency. Patina passes on both grounds with no keyline and has no party reading the research found. It also matches Stone in gray print and for many color-blind readers, so a chart's named bar would fade for them. Readers can tell us how they read red before anything changes.",
+   "section": "color-sheets",
+   "touches": [
+    "color-sheets#all-seven",
+    "color-sheets#sheet-patina",
+    "color-sheets#sheet-today",
+    "color-sheets#answers"
+   ]
+  }
+ ]
+}
