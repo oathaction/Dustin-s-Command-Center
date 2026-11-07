@@ -1,0 +1,432 @@
+{
+ "captured": "2026-11-07T02:06:51.547Z",
+ "width": 1440,
+ "scale": 2,
+ "sections": {
+  "tracker": {
+   "key": "tracker",
+   "page": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html",
+   "page_mtime": "2026-11-07T02:05:54.574Z",
+   "title": "Bill Tracker Options",
+   "h1": "Six plain steps for the bill tracker, and one job for the grid",
+   "ids": {
+    "overview": {
+     "tag": "main",
+     "label": "Six plain steps for the bill tracker, and one job for the grid"
+    },
+    "six-steps": {
+     "tag": "section",
+     "label": "Six steps a newcomer reads at once"
+    },
+    "six-steps-h": {
+     "tag": "h2",
+     "label": "Six steps a newcomer reads at once"
+    },
+    "compare": {
+     "tag": "section",
+     "label": "The four options side by side"
+    },
+    "compare-h": {
+     "tag": "h2",
+     "label": "The four options side by side"
+    },
+    "option-a": {
+     "tag": "section",
+     "label": "Option A: A line with dots"
+    },
+    "option-a-h": {
+     "tag": "h2",
+     "label": "Option A: A line with dots"
+    },
+    "option-b": {
+     "tag": "section",
+     "label": "Option B: Numbered steps, 1 to 6"
+    },
+    "option-b-h": {
+     "tag": "h2",
+     "label": "Option B: Numbered steps, 1 to 6"
+    },
+    "option-c": {
+     "tag": "section",
+     "label": "Option C: A segmented bar with the stage word"
+    },
+    "option-c-h": {
+     "tag": "h2",
+     "label": "Option C: A segmented bar with the stage word"
+    },
+    "option-d": {
+     "tag": "section",
+     "label": "Option D: A vertical timeline for a bill’s own page"
+    },
+    "option-d-h": {
+     "tag": "h2",
+     "label": "Option D: A vertical timeline for a bill’s own page"
+    },
+    "grid": {
+     "tag": "section",
+     "label": "The grid keeps one job"
+    },
+    "grid-h": {
+     "tag": "h2",
+     "label": "The grid keeps one job"
+    },
+    "checks": {
+     "tag": "section",
+     "label": "Accessibility: what was measured"
+    },
+    "checks-h": {
+     "tag": "h2",
+     "label": "Accessibility: what was measured"
+    },
+    "answers": {
+     "tag": "section",
+     "label": "Your answers"
+    },
+    "answers-h": {
+     "tag": "h2",
+     "label": "Your answers"
+    },
+    "t1": {
+     "tag": "li",
+     "label": "T1Do the nine tracker stages become these six steps?a Six st"
+    },
+    "t2": {
+     "tag": "li",
+     "label": "T2Which tracker do we use?a Option A, a line with dotsb Opti"
+    },
+    "t3": {
+     "tag": "li",
+     "label": "T3Does the lockmark keep these four places, with Rules 08.3 "
+    }
+   },
+   "lead": {
+    "selector": "#compare table.mx:not(.mx-c)",
+    "from": "default",
+    "file": "20261107_Board-6-Hub-Tracker-Lead.png",
+    "format": "png",
+    "bytes": 413245,
+    "css_w": 1280,
+    "css_h": 1255,
+    "px_w": 2560,
+    "px_h": 2510,
+    "page_x": 80,
+    "page_y": 3295,
+    "tag": "table",
+    "id": null
+   },
+   "errors": [],
+   "lead_attr": false
+  },
+  "pillar-icons": {
+   "key": "pillar-icons",
+   "page": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/boards/phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html",
+   "page_mtime": "2026-11-07T02:04:45.370Z",
+   "title": "Board 6 Pillar Icons",
+   "h1": "Four pillar icons from the Civic Line",
+   "ids": {
+    "compare": {
+     "tag": "section",
+     "label": "The three sets in the pillar row"
+    },
+    "compare-h": {
+     "tag": "h2",
+     "label": "The three sets in the pillar row"
+    },
+    "cmp-a": {
+     "tag": "div",
+     "label": "Drawn for the pillars"
+    },
+    "cmp-b": {
+     "tag": "div",
+     "label": "The reader’s paper"
+    },
+    "cmp-c": {
+     "tag": "div",
+     "label": "Civic life"
+    },
+    "rec": {
+     "tag": "section",
+     "label": "Our recommendation: keep Set A and change how it is used"
+    },
+    "rec-h": {
+     "tag": "h2",
+     "label": "Our recommendation: keep Set A and change how it is used"
+    },
+    "how": {
+     "tag": "section",
+     "label": "How we chose from the 122"
+    },
+    "how-h": {
+     "tag": "h2",
+     "label": "How we chose from the 122"
+    },
+    "set-a": {
+     "tag": "section",
+     "label": "Set A, drawn for the pillars"
+    },
+    "set-a-h": {
+     "tag": "h2",
+     "label": "Set A, drawn for the pillars"
+    },
+    "set-b": {
+     "tag": "section",
+     "label": "Set B, the reader’s paper"
+    },
+    "set-b-h": {
+     "tag": "h2",
+     "label": "Set B, the reader’s paper"
+    },
+    "set-c": {
+     "tag": "section",
+     "label": "Set C, civic life"
+    },
+    "set-c-h": {
+     "tag": "h2",
+     "label": "Set C, civic life"
+    },
+    "naming": {
+     "tag": "section",
+     "label": "Could a newcomer match each icon to its word?"
+    },
+    "naming-h": {
+     "tag": "h2",
+     "label": "Could a newcomer match each icon to its word?"
+    },
+    "measure": {
+     "tag": "section",
+     "label": "Measurements"
+    },
+    "measure-h": {
+     "tag": "h2",
+     "label": "Measurements"
+    }
+   },
+   "lead": {
+    "selector": "#compare .cmp",
+    "from": "default",
+    "file": "20261107_Board-6-Hub-Pillar-Icons-Lead.png",
+    "format": "png",
+    "bytes": 187081,
+    "css_w": 1248,
+    "css_h": 525,
+    "px_w": 2496,
+    "px_h": 1050,
+    "page_x": 96,
+    "page_y": 812,
+    "tag": "div",
+    "id": null
+   },
+   "errors": [],
+   "lead_attr": false
+  },
+  "stacked": {
+   "key": "stacked",
+   "page": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/boards/phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html",
+   "page_mtime": "2026-11-07T01:13:30.475Z",
+   "title": "Board 6, section 3: Stacked lockups",
+   "h1": "More stacked lockups",
+   "ids": {
+    "cmp-h": {
+     "tag": "h2",
+     "label": "All six beside today’s L2"
+    },
+    "rec-h": {
+     "tag": "h2",
+     "label": "S1, ampersand ends line one"
+    },
+    "s1": {
+     "tag": "section",
+     "label": "S1 Ampersand ends line one"
+    },
+    "s1-h": {
+     "tag": "h2",
+     "label": "S1 Ampersand ends line one"
+    },
+    "s2": {
+     "tag": "section",
+     "label": "S2 Ampersand opens line two"
+    },
+    "s2-h": {
+     "tag": "h2",
+     "label": "S2 Ampersand opens line two"
+    },
+    "s3": {
+     "tag": "section",
+     "label": "S3 Hung ampersand"
+    },
+    "s3-h": {
+     "tag": "h2",
+     "label": "S3 Hung ampersand"
+    },
+    "s4": {
+     "tag": "section",
+     "label": "S4 Ampersand line, centered"
+    },
+    "s4-h": {
+     "tag": "h2",
+     "label": "S4 Ampersand line, centered"
+    },
+    "s5": {
+     "tag": "section",
+     "label": "S5 Ampersand line, flush left"
+    },
+    "s5-h": {
+     "tag": "h2",
+     "label": "S5 Ampersand line, flush left"
+    },
+    "s6": {
+     "tag": "section",
+     "label": "S6 Large ampersand, centered"
+    },
+    "s6-h": {
+     "tag": "h2",
+     "label": "S6 Large ampersand, centered"
+    },
+    "measures": {
+     "tag": "section",
+     "label": "All measures"
+    },
+    "measures-h": {
+     "tag": "h2",
+     "label": "All measures"
+    },
+    "method": {
+     "tag": "section",
+     "label": "How we spaced them"
+    },
+    "method-h": {
+     "tag": "h2",
+     "label": "How we spaced them"
+    }
+   },
+   "lead": {
+    "selector": ".lead .cmp-grid",
+    "from": "default",
+    "file": "20261107_Board-6-Hub-Stacked-Lead.png",
+    "format": "png",
+    "bytes": 172062,
+    "css_w": 1136,
+    "css_h": 384,
+    "px_w": 2272,
+    "px_h": 768,
+    "page_x": 152,
+    "page_y": 443,
+    "tag": "div",
+    "id": null
+   },
+   "errors": [],
+   "lead_attr": false
+  },
+  "color-sheets": {
+   "key": "color-sheets",
+   "page": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html",
+   "page_mtime": "2026-11-07T02:05:35.213Z",
+   "title": "Color Scheme Sheets",
+   "h1": "Six color schemes for Oath & Action, with today’s palette beside them",
+   "ids": {
+    "overview": {
+     "tag": "main",
+     "label": "Six color schemes for Oath & Action, with today’s palette beside them"
+    },
+    "all-seven": {
+     "tag": "section",
+     "label": "All seven at once"
+    },
+    "all-seven-h": {
+     "tag": "h2",
+     "label": "All seven at once"
+    },
+    "sheet-patina": {
+     "tag": "section",
+     "label": "1 Patina"
+    },
+    "sheet-patina-h": {
+     "tag": "h2",
+     "label": "1 Patina"
+    },
+    "sheet-federal-ink": {
+     "tag": "section",
+     "label": "2 Federal Ink"
+    },
+    "sheet-federal-ink-h": {
+     "tag": "h2",
+     "label": "2 Federal Ink"
+    },
+    "sheet-signal-orange": {
+     "tag": "section",
+     "label": "3 Signal Orange"
+    },
+    "sheet-signal-orange-h": {
+     "tag": "h2",
+     "label": "3 Signal Orange"
+    },
+    "sheet-archive-ochre": {
+     "tag": "section",
+     "label": "4 Archive Ochre"
+    },
+    "sheet-archive-ochre-h": {
+     "tag": "h2",
+     "label": "4 Archive Ochre"
+    },
+    "sheet-highlighter": {
+     "tag": "section",
+     "label": "5 Highlighter"
+    },
+    "sheet-highlighter-h": {
+     "tag": "h2",
+     "label": "5 Highlighter"
+    },
+    "sheet-ballot-violet": {
+     "tag": "section",
+     "label": "6 Ballot Violet"
+    },
+    "sheet-ballot-violet-h": {
+     "tag": "h2",
+     "label": "6 Ballot Violet"
+    },
+    "sheet-today": {
+     "tag": "section",
+     "label": "7 Pillar Red"
+    },
+    "sheet-today-h": {
+     "tag": "h2",
+     "label": "7 Pillar Red"
+    },
+    "checks": {
+     "tag": "section",
+     "label": "How the sheets were measured"
+    },
+    "checks-h": {
+     "tag": "h2",
+     "label": "How the sheets were measured"
+    },
+    "answers": {
+     "tag": "section",
+     "label": "Your answers"
+    },
+    "answers-h": {
+     "tag": "h2",
+     "label": "Your answers"
+    }
+   },
+   "lead": {
+    "selector": "#all-seven .thumbs-w",
+    "from": "default",
+    "file": "20261107_Board-6-Hub-Color-Sheets-Lead.png",
+    "format": "png",
+    "bytes": 392714,
+    "css_w": 1280,
+    "css_h": 348,
+    "px_w": 2560,
+    "px_h": 696,
+    "page_x": 80,
+    "page_y": 1307,
+    "tag": "div",
+    "id": null
+   },
+   "errors": [],
+   "lead_attr": false
+  }
+ },
+ "errors": []
+}

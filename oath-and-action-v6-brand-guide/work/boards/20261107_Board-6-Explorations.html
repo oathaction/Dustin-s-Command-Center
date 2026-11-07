@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="chart-views" content="overview">
+<title>Board 6 Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;500;600;700&family=Lora:ital@1&display=swap" rel="stylesheet">
+<style>/* Oath & Action design tokens, Edition 06
+ * Version 6.0.0-gate2.2 (pre-release). Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.
+ * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
+ * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
+ * file and tokens.json disagree.
+ *
+ * Naming: Prefix --oa-, path segments in kebab case, the surface last: oa.color.text.secondary.onNewsprint becomes --oa-color-text-secondary-on-newsprint.
+ * Surface classes (.oa-surface-newsprint and the rest) point the short names, such as
+ * --oa-color-text-secondary, at that surface's tokens.
+ *
+ * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
+ *   wide        (min-width: 90em)
+ *   desktop     (min-width: 64em)
+ *   tablet      (min-width: 48em)
+ *   phone       (base layout, no query)
+ *   phoneSmall  (base layout, no query)
+ */
+
+:root {
+  /* oa.color.palette */
+  --oa-color-palette-newsprint: #DCD9D2;
+  --oa-color-palette-charcoal: #121212;
+  --oa-color-palette-pillar-red: #E63946;
+  --oa-color-palette-prussian: #1F2D5A;
+  --oa-color-palette-stone: #5D636D;
+  --oa-color-palette-verdigris: #4A7C74;
+  --oa-color-palette-white: #FFFFFF;
+
+  /* oa.color.derived */
+  --oa-color-derived-deep-stone: #4E535B;
+  --oa-color-derived-dim-newsprint: #A3A19C;
+  --oa-color-derived-error-band: #E1C9C1;
+
+  /* oa.color.tint */
+  --oa-color-tint-stone-n55: #A1A2A3;
+  --oa-color-tint-stone-n70: #B4B4B3;
+  --oa-color-tint-stone-n88: #CCCAC5;
+  --oa-color-tint-stone-n90: #CECDC7;
+  --oa-color-tint-stone-n35: #878A8F;
+  --oa-color-tint-stone-n85: #C8C6C2;
+  --oa-color-tint-stone-c10: #555A63;
+  --oa-color-tint-stone-c40: #3D4046;
+  --oa-color-tint-stone-c45: #393C41;
+  --oa-color-tint-stone-c55: #323438;
+  --oa-color-tint-stone-c60: #2E3034;
+  --oa-color-tint-stone-c72: #252729;
+  --oa-color-tint-stone-c75: #232426;
+  --oa-color-tint-stone-c80: #202122;
+  --oa-color-tint-white-n55: #ECEAE6;
+  --oa-color-tint-prussian-n62: #8E94A4;
+  --oa-color-tint-verdigris-n55: #9AAEA6;
+  --oa-color-tint-verdigris-c25: #3C5F59;
+  --oa-color-tint-verdigris-n82: #C1C8C0;
+  --oa-color-tint-verdigris-n52p75: #97ACA4;
+  --oa-color-tint-verdigris-n23p5: #6D9189;
+  --oa-color-tint-verdigris-c5p75: #47756E;
+  --oa-color-tint-verdigris-c35: #36544F;
+  --oa-color-tint-verdigris-c75: #202A28;
+  --oa-color-tint-verdigris-c50: #2E4340;
+  --oa-color-tint-verdigris-c20: #3F655E;
+  --oa-color-tint-verdigris-n25: #6F938B;
+
+  /* oa.color.surface */
+  --oa-color-surface-newsprint: var(--oa-color-palette-newsprint);
+  --oa-color-surface-white: var(--oa-color-palette-white);
+  --oa-color-surface-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-surface-prussian: var(--oa-color-palette-prussian);
+
+  /* oa.color.text */
+  --oa-color-text-primary-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-text-primary-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-text-primary-on-prussian: var(--oa-color-palette-white);
+  --oa-color-text-secondary-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-text-secondary-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-text-secondary-on-prussian: var(--oa-color-derived-dim-newsprint);
+
+  /* oa.color.graphic */
+  --oa-color-graphic-essential-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-graphic-essential-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-essential-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-graphic-subtle-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-white: var(--oa-color-palette-stone);
+  --oa-color-graphic-subtle-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-graphic-subtle-on-prussian: var(--oa-color-derived-dim-newsprint);
+
+  /* oa.color.border */
+  --oa-color-border-strong-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-border-strong-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-border-strong-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-border-hairline-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-white: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-charcoal: var(--oa-color-palette-stone);
+  --oa-color-border-hairline-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.focus */
+  --oa-color-focus-ring-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-focus-ring-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-focus-ring-on-prussian: var(--oa-color-palette-newsprint);
+
+  /* oa.color.identity */
+  --oa-color-identity-signature-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-identity-signature-on-prussian: var(--oa-color-palette-white);
+  --oa-color-identity-hinge-divider-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-identity-hinge-divider-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-identity-hinge-divider-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.action */
+  --oa-color-action-ask-fill-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-action-ask-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-ask-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-ask-label-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-action-primary-fill-hover-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-white: var(--oa-color-palette-prussian);
+  --oa-color-action-primary-fill-hover-on-charcoal: var(--oa-color-palette-white);
+  --oa-color-action-primary-fill-hover-on-prussian: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-white: var(--oa-color-palette-white);
+  --oa-color-action-primary-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-color-action-primary-label-on-prussian: var(--oa-color-palette-charcoal);
+
+  /* oa.color.state */
+  --oa-color-state-muted-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-muted-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-muted-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-muted-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-disabled-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-disabled-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-loading-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-loading-mark-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-loading-mark-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-selected-band-on-newsprint: var(--oa-color-palette-white);
+  --oa-color-state-selected-band-on-white: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-band-on-charcoal: var(--oa-color-palette-prussian);
+  --oa-color-state-selected-band-on-prussian: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-selected-bar-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-selected-bar-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-warning-mark-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-mark-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-warning-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-warning-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-error-band-on-newsprint: var(--oa-color-derived-error-band);
+  --oa-color-state-error-band-on-white: var(--oa-color-derived-error-band);
+  --oa-color-state-error-mark-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-charcoal: var(--oa-color-palette-pillar-red);
+  --oa-color-state-error-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-error-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-error-text-on-prussian: var(--oa-color-palette-white);
+  --oa-color-state-empty-text-on-newsprint: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-white: var(--oa-color-derived-deep-stone);
+  --oa-color-state-empty-text-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-text-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-white: var(--oa-color-palette-stone);
+  --oa-color-state-empty-edge-on-charcoal: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-empty-edge-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-state-success-mark-on-newsprint: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-white: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-charcoal: var(--oa-color-palette-verdigris);
+  --oa-color-state-success-mark-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-state-success-text-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-state-success-text-on-prussian: var(--oa-color-palette-white);
+
+  /* oa.color.data */
+  --oa-color-data-emphasis-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-white: var(--oa-color-palette-charcoal);
+  --oa-color-data-emphasis-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-color-data-emphasis-on-prussian: var(--oa-color-palette-newsprint);
+  --oa-color-data-context-on-newsprint: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-white: var(--oa-color-palette-stone);
+  --oa-color-data-context-on-charcoal: var(--oa-color-tint-stone-n35);
+  --oa-color-data-context-on-prussian: var(--oa-color-derived-dim-newsprint);
+  --oa-color-data-emphasis-red-on-newsprint: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-white: var(--oa-color-palette-pillar-red);
+  --oa-color-data-emphasis-red-on-charcoal: var(--oa-color-palette-pillar-red);
+
+  /* oa.font.family */
+  --oa-font-family-display: "Inter Tight", "Arial", sans-serif;
+  --oa-font-family-reading: "Inter", "Arial", sans-serif;
+  --oa-font-family-quote: "Lora", "Georgia", serif;
+  --oa-font-family-email-sans: "Helvetica", "Arial", sans-serif;
+  --oa-font-family-email-quote: "Georgia", serif;
+
+  /* oa.font.weight */
+  --oa-font-weight-regular: 400;
+  --oa-font-weight-medium: 500;
+  --oa-font-weight-semibold: 600;
+  --oa-font-weight-bold: 700;
+  --oa-font-weight-extrabold: 800;
+
+  /* oa.type */
+  --oa-type-title-font-family: var(--oa-font-family-display);
+  --oa-type-title-font-style: normal;
+  --oa-type-title-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-title-font-size: clamp(3.5rem, 2.2464rem + 5.1429vw, 6.875rem);
+  --oa-type-title-line-height: 0.95;
+  --oa-type-title-letter-spacing: -0.03em;
+  --oa-type-title-text-transform: none;
+  --oa-type-title-font-variant-numeric: normal;
+  --oa-type-title: var(--oa-type-title-font-style) var(--oa-type-title-font-weight) var(--oa-type-title-font-size)/var(--oa-type-title-line-height) var(--oa-type-title-font-family);
+  --oa-type-section-font-family: var(--oa-font-family-display);
+  --oa-type-section-font-style: normal;
+  --oa-type-section-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-section-font-size: clamp(2.75rem, 1.9143rem + 3.4286vw, 5rem);
+  --oa-type-section-line-height: 1.03;
+  --oa-type-section-letter-spacing: -0.025em;
+  --oa-type-section-text-transform: none;
+  --oa-type-section-font-variant-numeric: normal;
+  --oa-type-section: var(--oa-type-section-font-style) var(--oa-type-section-font-weight) var(--oa-type-section-font-size)/var(--oa-type-section-line-height) var(--oa-type-section-font-family);
+  --oa-type-h3-font-family: var(--oa-font-family-display);
+  --oa-type-h3-font-style: normal;
+  --oa-type-h3-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h3-font-size: clamp(1.625rem, 1.4857rem + 0.5714vw, 2rem);
+  --oa-type-h3-line-height: 1.08;
+  --oa-type-h3-letter-spacing: -0.01em;
+  --oa-type-h3-text-transform: none;
+  --oa-type-h3-font-variant-numeric: normal;
+  --oa-type-h3: var(--oa-type-h3-font-style) var(--oa-type-h3-font-weight) var(--oa-type-h3-font-size)/var(--oa-type-h3-line-height) var(--oa-type-h3-font-family);
+  --oa-type-h4-font-family: var(--oa-font-family-display);
+  --oa-type-h4-font-style: normal;
+  --oa-type-h4-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-h4-font-size: clamp(1.25rem, 1.1571rem + 0.3810vw, 1.5rem);
+  --oa-type-h4-line-height: 1.15;
+  --oa-type-h4-letter-spacing: -0.005em;
+  --oa-type-h4-text-transform: none;
+  --oa-type-h4-font-variant-numeric: normal;
+  --oa-type-h4: var(--oa-type-h4-font-style) var(--oa-type-h4-font-weight) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-type-h4-font-family);
+  --oa-type-quote-font-family: var(--oa-font-family-quote);
+  --oa-type-quote-font-style: italic;
+  --oa-type-quote-font-weight: var(--oa-font-weight-regular);
+  --oa-type-quote-font-size: clamp(1.5rem, 1.3143rem + 0.7619vw, 2rem);
+  --oa-type-quote-line-height: 1.3;
+  --oa-type-quote-letter-spacing: -0.02em;
+  --oa-type-quote-text-transform: none;
+  --oa-type-quote-font-variant-numeric: normal;
+  --oa-type-quote: var(--oa-type-quote-font-style) var(--oa-type-quote-font-weight) var(--oa-type-quote-font-size)/var(--oa-type-quote-line-height) var(--oa-type-quote-font-family);
+  --oa-type-intro-font-family: var(--oa-font-family-reading);
+  --oa-type-intro-font-style: normal;
+  --oa-type-intro-font-weight: var(--oa-font-weight-regular);
+  --oa-type-intro-font-size: clamp(1.1875rem, 1.1179rem + 0.2857vw, 1.375rem);
+  --oa-type-intro-line-height: 1.5;
+  --oa-type-intro-letter-spacing: 0em;
+  --oa-type-intro-text-transform: none;
+  --oa-type-intro-font-variant-numeric: normal;
+  --oa-type-intro: var(--oa-type-intro-font-style) var(--oa-type-intro-font-weight) var(--oa-type-intro-font-size)/var(--oa-type-intro-line-height) var(--oa-type-intro-font-family);
+  --oa-type-body-font-family: var(--oa-font-family-reading);
+  --oa-type-body-font-style: normal;
+  --oa-type-body-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-font-size: 1.0625rem;
+  --oa-type-body-line-height: 1.6;
+  --oa-type-body-letter-spacing: 0em;
+  --oa-type-body-text-transform: none;
+  --oa-type-body-font-variant-numeric: normal;
+  --oa-type-body: var(--oa-type-body-font-style) var(--oa-type-body-font-weight) var(--oa-type-body-font-size)/var(--oa-type-body-line-height) var(--oa-type-body-font-family);
+  --oa-type-body-small-font-family: var(--oa-font-family-reading);
+  --oa-type-body-small-font-style: normal;
+  --oa-type-body-small-font-weight: var(--oa-font-weight-regular);
+  --oa-type-body-small-font-size: 0.9375rem;
+  --oa-type-body-small-line-height: 1.6;
+  --oa-type-body-small-letter-spacing: 0em;
+  --oa-type-body-small-text-transform: none;
+  --oa-type-body-small-font-variant-numeric: normal;
+  --oa-type-body-small: var(--oa-type-body-small-font-style) var(--oa-type-body-small-font-weight) var(--oa-type-body-small-font-size)/var(--oa-type-body-small-line-height) var(--oa-type-body-small-font-family);
+  --oa-type-ui-font-family: var(--oa-font-family-reading);
+  --oa-type-ui-font-style: normal;
+  --oa-type-ui-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-ui-font-size: 0.9375rem;
+  --oa-type-ui-line-height: 1.4;
+  --oa-type-ui-letter-spacing: 0em;
+  --oa-type-ui-text-transform: none;
+  --oa-type-ui-font-variant-numeric: normal;
+  --oa-type-ui: var(--oa-type-ui-font-style) var(--oa-type-ui-font-weight) var(--oa-type-ui-font-size)/var(--oa-type-ui-line-height) var(--oa-type-ui-font-family);
+  --oa-type-caption-font-family: var(--oa-font-family-reading);
+  --oa-type-caption-font-style: normal;
+  --oa-type-caption-font-weight: var(--oa-font-weight-regular);
+  --oa-type-caption-font-size: 0.875rem;
+  --oa-type-caption-line-height: 1.5;
+  --oa-type-caption-letter-spacing: 0em;
+  --oa-type-caption-text-transform: none;
+  --oa-type-caption-font-variant-numeric: normal;
+  --oa-type-caption: var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) var(--oa-type-caption-font-size)/var(--oa-type-caption-line-height) var(--oa-type-caption-font-family);
+  --oa-type-label-font-family: var(--oa-font-family-reading);
+  --oa-type-label-font-style: normal;
+  --oa-type-label-font-weight: var(--oa-font-weight-bold);
+  --oa-type-label-font-size: 0.8125rem;
+  --oa-type-label-line-height: 1.4;
+  --oa-type-label-letter-spacing: 0.06em;
+  --oa-type-label-text-transform: uppercase;
+  --oa-type-label-font-variant-numeric: normal;
+  --oa-type-label: var(--oa-type-label-font-style) var(--oa-type-label-font-weight) var(--oa-type-label-font-size)/var(--oa-type-label-line-height) var(--oa-type-label-font-family);
+  --oa-type-data-label-font-family: var(--oa-font-family-reading);
+  --oa-type-data-label-font-style: normal;
+  --oa-type-data-label-font-weight: var(--oa-font-weight-semibold);
+  --oa-type-data-label-font-size: 0.8125rem;
+  --oa-type-data-label-line-height: 1.3;
+  --oa-type-data-label-letter-spacing: 0em;
+  --oa-type-data-label-text-transform: none;
+  --oa-type-data-label-font-variant-numeric: tabular-nums;
+  --oa-type-data-label: var(--oa-type-data-label-font-style) var(--oa-type-data-label-font-weight) var(--oa-type-data-label-font-size)/var(--oa-type-data-label-line-height) var(--oa-type-data-label-font-family);
+  --oa-type-figure-font-family: var(--oa-font-family-display);
+  --oa-type-figure-font-style: normal;
+  --oa-type-figure-font-weight: var(--oa-font-weight-extrabold);
+  --oa-type-figure-font-size: clamp(3rem, 1.7000rem + 5.3333vw, 6.5rem);
+  --oa-type-figure-line-height: 1;
+  --oa-type-figure-letter-spacing: -0.03em;
+  --oa-type-figure-text-transform: none;
+  --oa-type-figure-font-variant-numeric: tabular-nums;
+  --oa-type-figure: var(--oa-type-figure-font-style) var(--oa-type-figure-font-weight) var(--oa-type-figure-font-size)/var(--oa-type-figure-line-height) var(--oa-type-figure-font-family);
+  --oa-type-ask-font-family: var(--oa-font-family-reading);
+  --oa-type-ask-font-style: normal;
+  --oa-type-ask-font-weight: var(--oa-font-weight-bold);
+  --oa-type-ask-font-size: 1.1875rem;
+  --oa-type-ask-line-height: 1.2;
+  --oa-type-ask-letter-spacing: 0em;
+  --oa-type-ask-text-transform: none;
+  --oa-type-ask-font-variant-numeric: normal;
+  --oa-type-ask: var(--oa-type-ask-font-style) var(--oa-type-ask-font-weight) var(--oa-type-ask-font-size)/var(--oa-type-ask-line-height) var(--oa-type-ask-font-family);
+
+  /* oa.space */
+  --oa-space-0: 0rem;
+  --oa-space-100: 0.5rem;
+  --oa-space-150: 0.75rem;
+  --oa-space-200: 1rem;
+  --oa-space-300: 1.5rem;
+  --oa-space-400: 2rem;
+  --oa-space-500: 2.5rem;
+  --oa-space-600: 3rem;
+  --oa-space-800: 4rem;
+  --oa-space-1000: 5rem;
+  --oa-space-1300: 6.5rem;
+  --oa-space-050: 0.25rem;
+
+  /* oa.size.icon */
+  --oa-size-icon-small: 16px;
+  --oa-size-icon-medium: 24px;
+  --oa-size-icon-large: 48px;
+
+  /* oa.size.target */
+  --oa-size-target-minimum: 24px;
+  --oa-size-target-touch: 44px;
+
+  /* oa.layout.breakpoint */
+  --oa-layout-breakpoint-wide: 1440px;
+  --oa-layout-breakpoint-desktop: 1024px;
+  --oa-layout-breakpoint-tablet: 768px;
+  --oa-layout-breakpoint-phone: 390px;
+  --oa-layout-breakpoint-phone-small: 360px;
+
+  /* oa.layout.grid */
+  --oa-layout-grid-wide-columns: 12;
+  --oa-layout-grid-wide-gutter: 24px;
+  --oa-layout-grid-wide-margin: 64px;
+  --oa-layout-grid-desktop-columns: 12;
+  --oa-layout-grid-desktop-gutter: 24px;
+  --oa-layout-grid-desktop-margin: 40px;
+  --oa-layout-grid-tablet-columns: 8;
+  --oa-layout-grid-tablet-gutter: 24px;
+  --oa-layout-grid-tablet-margin: 32px;
+  --oa-layout-grid-phone-columns: 4;
+  --oa-layout-grid-phone-gutter: 16px;
+  --oa-layout-grid-phone-margin: 20px;
+  --oa-layout-grid-phone-small-columns: 4;
+  --oa-layout-grid-phone-small-gutter: 16px;
+  --oa-layout-grid-phone-small-margin: 16px;
+
+  /* oa.layout.measure */
+  --oa-layout-measure-body-ideal: 33.88rem;
+  --oa-layout-measure-body-max: 37.37rem;
+  --oa-layout-measure-intro-max: 41.91rem;
+
+  /* oa.radius */
+  --oa-radius-none: 0px;
+  --oa-radius-full: 50%;
+
+  /* oa.border.width */
+  --oa-border-width-hairline: 1px;
+  --oa-border-width-rule: 2px;
+  --oa-border-width-bar: 4px;
+  --oa-border-width-focus-ring: 2px;
+  --oa-border-width-underline: 1px;
+  --oa-border-width-underline-hover: 2px;
+
+  /* oa.border */
+  --oa-border-focus-offset: 2px;
+
+  /* oa.opacity */
+  --oa-opacity-watermark-on-light: 0.08;
+  --oa-opacity-watermark-on-dark: 0.1;
+
+  /* oa.motion.duration */
+  --oa-motion-duration-fast: 120ms;
+  --oa-motion-duration-standard: 200ms;
+  --oa-motion-duration-slow: 320ms;
+  --oa-motion-duration-stagger: 40ms;
+  --oa-motion-duration-hinge: 680ms;
+  --oa-motion-duration-lever: 560ms;
+
+  /* oa.motion.easing */
+  --oa-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --oa-motion-easing-enter: cubic-bezier(0, 0, 0.2, 1);
+  --oa-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* oa.zIndex */
+  --oa-z-index-base: 0;
+  --oa-z-index-raised: 10;
+  --oa-z-index-sticky: 40;
+  --oa-z-index-overlay: 90;
+  --oa-z-index-skip: 100;
+
+  /* oa.chart.color */
+  --oa-chart-color-subject-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-subject-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-context-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-context-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-label-on-newsprint: var(--oa-color-text-primary-on-newsprint);
+  --oa-chart-color-label-on-charcoal: var(--oa-color-text-primary-on-charcoal);
+  --oa-chart-color-secondary-on-newsprint: var(--oa-color-text-secondary-on-newsprint);
+  --oa-chart-color-secondary-on-charcoal: var(--oa-color-text-secondary-on-charcoal);
+  --oa-chart-color-baseline-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-baseline-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-leader-on-newsprint: var(--oa-color-data-context-on-newsprint);
+  --oa-chart-color-leader-on-charcoal: var(--oa-color-data-context-on-charcoal);
+  --oa-chart-color-point-on-newsprint: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-point-on-charcoal: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-point-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-chart-color-party-mark-on-newsprint: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-chart-color-party-mark-on-charcoal: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-chart-color-label-on-subject-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-label-on-subject-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-chip-fill-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-chip-label-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-light-fill-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-light-fill-on-charcoal: var(--oa-color-palette-stone);
+  --oa-chart-color-track-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-track-on-charcoal: var(--oa-color-tint-stone-c55);
+  --oa-chart-color-gridline-on-newsprint: var(--oa-color-tint-stone-n70);
+  --oa-chart-color-gridline-on-charcoal: var(--oa-color-tint-stone-c45);
+  --oa-chart-color-band-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-band-on-charcoal: var(--oa-color-tint-stone-c72);
+  --oa-chart-color-land-on-newsprint: var(--oa-color-tint-white-n55);
+  --oa-chart-color-land-on-charcoal: var(--oa-color-tint-stone-c80);
+  --oa-chart-color-diverging-fill-step1-on-newsprint: var(--oa-color-palette-prussian);
+  --oa-chart-color-diverging-fill-step2-on-newsprint: var(--oa-color-tint-prussian-n62);
+  --oa-chart-color-diverging-fill-step3-on-newsprint: var(--oa-color-tint-stone-n90);
+  --oa-chart-color-diverging-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-diverging-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c25);
+  --oa-chart-color-diverging-label-step1-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-diverging-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step4-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-diverging-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-fill-step1-on-newsprint: var(--oa-color-tint-verdigris-n82);
+  --oa-chart-color-sequential-fill-step1-on-charcoal: var(--oa-color-tint-verdigris-c75);
+  --oa-chart-color-sequential-fill-step2-on-newsprint: var(--oa-color-tint-verdigris-n52p75);
+  --oa-chart-color-sequential-fill-step2-on-charcoal: var(--oa-color-tint-verdigris-c50);
+  --oa-chart-color-sequential-fill-step3-on-newsprint: var(--oa-color-tint-verdigris-n23p5);
+  --oa-chart-color-sequential-fill-step3-on-charcoal: var(--oa-color-tint-verdigris-c20);
+  --oa-chart-color-sequential-fill-step4-on-newsprint: var(--oa-color-tint-verdigris-c5p75);
+  --oa-chart-color-sequential-fill-step4-on-charcoal: var(--oa-color-tint-verdigris-n25);
+  --oa-chart-color-sequential-fill-step5-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-fill-step5-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-sequential-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step3-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step3-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-sequential-label-step4-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-label-step5-on-newsprint: var(--oa-color-palette-white);
+  --oa-chart-color-sequential-label-step5-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-sequential-outline-on-newsprint: var(--oa-color-tint-verdigris-c35);
+  --oa-chart-color-sequential-outline-on-charcoal: var(--oa-color-tint-verdigris-n55);
+  --oa-chart-color-magnitude-fill-step1-on-newsprint: var(--oa-color-tint-stone-n88);
+  --oa-chart-color-magnitude-fill-step1-on-charcoal: var(--oa-color-tint-stone-c75);
+  --oa-chart-color-magnitude-fill-step2-on-newsprint: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step2-on-charcoal: var(--oa-color-tint-stone-c40);
+  --oa-chart-color-magnitude-fill-step3-on-newsprint: var(--oa-color-tint-stone-c10);
+  --oa-chart-color-magnitude-fill-step3-on-charcoal: var(--oa-color-tint-stone-n55);
+  --oa-chart-color-magnitude-fill-step4-on-newsprint: var(--oa-color-tint-stone-c60);
+  --oa-chart-color-magnitude-fill-step4-on-charcoal: var(--oa-color-tint-stone-n85);
+  --oa-chart-color-magnitude-label-step1-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step1-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step2-on-newsprint: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step2-on-charcoal: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step3-on-charcoal: var(--oa-color-palette-charcoal);
+  --oa-chart-color-magnitude-label-step4-on-newsprint: var(--oa-color-palette-newsprint);
+  --oa-chart-color-magnitude-label-step4-on-charcoal: var(--oa-color-palette-charcoal);
+
+  /* oa.chart.artboard */
+  --oa-chart-artboard-wide: 1024px;
+  --oa-chart-artboard-reading: 720px;
+  --oa-chart-artboard-mid: 600px;
+  --oa-chart-artboard-phone: 358px;
+  --oa-chart-artboard-small-phone: 328px;
+
+  /* oa.chart.type */
+  --oa-chart-type-label: 15px;
+  --oa-chart-type-tick: 13px;
+  --oa-chart-type-note: 14px;
+  --oa-chart-type-note-leading: 19px;
+  --oa-chart-type-phone-min: 14px;
+  --oa-chart-type-tile-code-phone: 13px;
+  --oa-chart-type-big: 116px;
+  --oa-chart-type-big-phone: 88px;
+  --oa-chart-type-eyebrow: 13px;
+  --oa-chart-type-title-size: 28px;
+  --oa-chart-type-title-leading: 32px;
+  --oa-chart-type-title-phone-size: 22px;
+  --oa-chart-type-title-phone-leading: 27px;
+  --oa-chart-type-measure-size: 17px;
+  --oa-chart-type-measure-leading: 27px;
+
+  /* oa.chart.line */
+  --oa-chart-line-hairline: 1px;
+  --oa-chart-line-baseline: 1.5px;
+  --oa-chart-line-context: 2px;
+  --oa-chart-line-subject: 3px;
+  --oa-chart-line-selected: 6px;
+
+  /* oa.chart.dot */
+  --oa-chart-dot-subject-radius: 6.5px;
+  --oa-chart-dot-open-radius: 5.5px;
+  --oa-chart-dot-vertex-radius: 3px;
+  --oa-chart-dot-small-vertex-radius: 2.25px;
+
+  /* oa.chart.bar */
+  --oa-chart-bar-height: 24px;
+  --oa-chart-bar-pitch: 42px;
+  --oa-chart-bar-dense-height: 16px;
+  --oa-chart-bar-dense-pitch: 36px;
+  --oa-chart-bar-phone-height: 20px;
+  --oa-chart-bar-phone-pitch: 58px;
+
+  /* oa.chart.unit */
+  --oa-chart-unit-size: 14px;
+  --oa-chart-unit-gap: 3px;
+
+  /* oa.chart.note */
+  --oa-chart-note-width: 520px;
+  --oa-chart-note-min-chars: 45;
+  --oa-chart-note-max-chars: 75;
+  --oa-chart-note-gap: 10px;
+  --oa-chart-note-leader-min: 12px;
+
+  /* oa.chart.guard */
+  --oa-chart-guard-headroom: 1.15;
+  --oa-chart-guard-line-pad: 1px;
+
+  /* oa.chart */
+  --oa-chart-halo: 4px;
+
+  /* oa.chart.hatch */
+  --oa-chart-hatch-pitch: 5px;
+  --oa-chart-hatch-weight: 1.5px;
+
+  /* oa.chart */
+  --oa-chart-keyline: 1px;
+  --oa-chart-gap-years: 1;
+
+  /* oa.chart.arrow */
+  --oa-chart-arrow-shaft: 2px;
+  --oa-chart-arrow-head-length: 8px;
+  --oa-chart-arrow-head-half-width: 4.5px;
+  --oa-chart-arrow-phone-head-length: 6px;
+  --oa-chart-arrow-phone-head-half-width: 3.5px;
+  --oa-chart-arrow-tail-radius: 2.25px;
+  --oa-chart-arrow-tip-radius: 0.5px;
+
+  /* oa.chart.shiftAxis */
+  --oa-chart-shift-axis-pitch: 20px;
+  --oa-chart-shift-axis-label: 14px;
+  --oa-chart-shift-axis-break-gap: 32px;
+  --oa-chart-shift-axis-phone-lollipop-pitch: 44px;
+
+  /* oa.chart.tile */
+  --oa-chart-tile-size-max: 80px;
+  --oa-chart-tile-gap: 6px;
+  --oa-chart-tile-mid-gap: 4px;
+  --oa-chart-tile-phone-gap: 2.5px;
+  --oa-chart-tile-phone-columns: 11;
+  --oa-chart-tile-frame: 2px;
+
+  /* oa.chart.spark */
+  --oa-chart-spark-line: 2px;
+  --oa-chart-spark-context: 1.5px;
+  --oa-chart-spark-end-radius: 3px;
+  --oa-chart-spark-gap-x: 30px;
+  --oa-chart-spark-phone-gap-x: 18px;
+
+  /* oa.chart.columns */
+  --oa-chart-columns-fill-share: 0.72;
+  --oa-chart-columns-average-line: 3px;
+  --oa-chart-columns-vertex-radius: 1.5px;
+  --oa-chart-columns-height: 360px;
+  --oa-chart-columns-phone-height: 290px;
+
+  /* oa.chart.bubble */
+  --oa-chart-bubble-radius-max-wide: 50px;
+  --oa-chart-bubble-radius-max-mid: 34px;
+  --oa-chart-bubble-radius-max-phone: 23px;
+  --oa-chart-bubble-radius-max-small-phone: 21px;
+  --oa-chart-bubble-gap: 2px;
+  --oa-chart-bubble-outline: 1px;
+  --oa-chart-bubble-ring: 2px;
+  --oa-chart-bubble-key-step: 64px;
+  --oa-chart-bubble-label-pad: 3px;
+  --oa-chart-bubble-leader-clear: 3px;
+
+  /* oa.chart.results */
+  --oa-chart-results-gap: 12px;
+  --oa-chart-results-bar: 6px;
+  --oa-chart-results-bar-gap: 4px;
+  --oa-chart-results-shift-head: 8px;
+  --oa-chart-results-shift-min: 130px;
+  --oa-chart-results-html-headroom: 1.06;
+  --oa-chart-results-two-line-min: 560px;
+
+  /* oa.chart.tag */
+  --oa-chart-tag-pad-x: 6px;
+  --oa-chart-tag-height: 18px;
+  --oa-chart-tag-ascent-em: 0.77;
+  --oa-chart-tag-descent-em: 0.23;
+
+  /* oa.component.button */
+  --oa-component-button-ask-fill-on-newsprint: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-component-button-ask-fill-on-white: var(--oa-color-action-ask-fill-on-white);
+  --oa-component-button-ask-fill-on-charcoal: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-component-button-ask-fill-on-prussian: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-component-button-ask-label-on-newsprint: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-component-button-ask-label-on-white: var(--oa-color-action-ask-label-on-white);
+  --oa-component-button-ask-label-on-charcoal: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-component-button-ask-label-on-prussian: var(--oa-color-action-ask-label-on-prussian);
+  --oa-component-button-ask-keyline-on-newsprint: var(--oa-color-border-strong-on-newsprint);
+  --oa-component-button-ask-label-type-font-family: var(--oa-type-ask-font-family);
+  --oa-component-button-ask-label-type-font-style: var(--oa-type-ask-font-style);
+  --oa-component-button-ask-label-type-font-weight: var(--oa-type-ask-font-weight);
+  --oa-component-button-ask-label-type-font-size: var(--oa-type-ask-font-size);
+  --oa-component-button-ask-label-type-line-height: var(--oa-type-ask-line-height);
+  --oa-component-button-ask-label-type-letter-spacing: var(--oa-type-ask-letter-spacing);
+  --oa-component-button-ask-label-type-text-transform: var(--oa-type-ask-text-transform);
+  --oa-component-button-ask-label-type-font-variant-numeric: var(--oa-type-ask-font-variant-numeric);
+  --oa-component-button-ask-label-type: var(--oa-type-ask);
+  --oa-component-button-primary-fill-on-newsprint: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-on-white: var(--oa-color-action-primary-fill-on-white);
+  --oa-component-button-primary-fill-on-charcoal: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-on-prussian: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover-on-newsprint: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-fill-hover-on-white: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-component-button-primary-fill-hover-on-charcoal: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-fill-hover-on-prussian: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label-on-newsprint: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-component-button-primary-label-on-white: var(--oa-color-action-primary-label-on-white);
+  --oa-component-button-primary-label-on-charcoal: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-component-button-primary-label-on-prussian: var(--oa-color-action-primary-label-on-prussian);
+  --oa-component-button-disabled-label-on-newsprint: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-component-button-disabled-label-on-white: var(--oa-color-state-disabled-text-on-white);
+  --oa-component-button-disabled-label-on-charcoal: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-component-button-disabled-label-on-prussian: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-component-button-disabled-edge-on-newsprint: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-component-button-disabled-edge-on-white: var(--oa-color-state-disabled-edge-on-white);
+  --oa-component-button-disabled-edge-on-charcoal: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-component-button-disabled-edge-on-prussian: var(--oa-color-state-disabled-edge-on-prussian);
+
+  /* oa.component.icon */
+  --oa-component-icon-ink-on-newsprint: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-component-icon-ink-on-white: var(--oa-color-graphic-essential-on-white);
+  --oa-component-icon-ink-on-charcoal: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-icon-ink-on-prussian: var(--oa-color-graphic-essential-on-prussian);
+  --oa-component-icon-accent-on-newsprint: var(--oa-color-identity-signature-on-newsprint);
+  --oa-component-icon-accent-on-white: var(--oa-color-identity-signature-on-white);
+  --oa-component-icon-accent-on-charcoal: var(--oa-color-identity-signature-on-charcoal);
+  --oa-component-icon-accent-on-prussian: var(--oa-color-identity-signature-on-prussian);
+
+  /* oa.component.appIcon */
+  --oa-component-app-icon-tile: var(--oa-color-surface-charcoal);
+  --oa-component-app-icon-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-app-icon-accent: var(--oa-color-identity-signature-on-charcoal);
+
+  /* oa.component.avatar */
+  --oa-component-avatar-tile: var(--oa-color-surface-charcoal);
+  --oa-component-avatar-mark: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-component-avatar-accent: var(--oa-color-identity-signature-on-charcoal);
+}
+
+/* Newsprint: the default reading surface and the page color for charts and the atlas (DR-53). */
+.oa-surface-newsprint {
+  background-color: var(--oa-color-surface-newsprint);
+  color: var(--oa-color-text-primary-on-newsprint);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-newsprint);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-newsprint);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-newsprint);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-newsprint);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-newsprint);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-newsprint);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-newsprint);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-newsprint);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-newsprint);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-newsprint);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-newsprint);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-newsprint);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-newsprint);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-newsprint);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-newsprint);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-newsprint);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-newsprint);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-newsprint);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-newsprint);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-newsprint);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-newsprint);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-newsprint);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-newsprint);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-newsprint);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-newsprint);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-newsprint);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-newsprint);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-newsprint);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-newsprint);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-newsprint);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-newsprint);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-newsprint);
+  --oa-color-data-context: var(--oa-color-data-context-on-newsprint);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-newsprint);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-newsprint);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-newsprint);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-newsprint);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-newsprint);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-newsprint);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-newsprint);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-newsprint);
+  --oa-chart-color-point-keyline: var(--oa-chart-color-point-keyline-on-newsprint);
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-newsprint);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-newsprint);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-newsprint);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-newsprint);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-newsprint);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-newsprint);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-newsprint);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-newsprint);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-newsprint);
+  --oa-chart-color-diverging-fill-step1: var(--oa-chart-color-diverging-fill-step1-on-newsprint);
+  --oa-chart-color-diverging-fill-step2: var(--oa-chart-color-diverging-fill-step2-on-newsprint);
+  --oa-chart-color-diverging-fill-step3: var(--oa-chart-color-diverging-fill-step3-on-newsprint);
+  --oa-chart-color-diverging-fill-step4: var(--oa-chart-color-diverging-fill-step4-on-newsprint);
+  --oa-chart-color-diverging-fill-step5: var(--oa-chart-color-diverging-fill-step5-on-newsprint);
+  --oa-chart-color-diverging-label-step1: var(--oa-chart-color-diverging-label-step1-on-newsprint);
+  --oa-chart-color-diverging-label-step2: var(--oa-chart-color-diverging-label-step2-on-newsprint);
+  --oa-chart-color-diverging-label-step3: var(--oa-chart-color-diverging-label-step3-on-newsprint);
+  --oa-chart-color-diverging-label-step4: var(--oa-chart-color-diverging-label-step4-on-newsprint);
+  --oa-chart-color-diverging-label-step5: var(--oa-chart-color-diverging-label-step5-on-newsprint);
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-newsprint);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-newsprint);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-newsprint);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-newsprint);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-newsprint);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-newsprint);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-newsprint);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-newsprint);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-newsprint);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-newsprint);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-newsprint);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-newsprint);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-newsprint);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-newsprint);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-newsprint);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-newsprint);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-newsprint);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-newsprint);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-newsprint);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-newsprint);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-newsprint);
+  --oa-component-button-ask-keyline: var(--oa-component-button-ask-keyline-on-newsprint);
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-newsprint);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-newsprint);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-newsprint);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-newsprint);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-newsprint);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-newsprint);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-newsprint);
+}
+
+/* White: the bright surface. Chart roles are initial here: charts sit on Newsprint or Charcoal. */
+.oa-surface-white {
+  background-color: var(--oa-color-surface-white);
+  color: var(--oa-color-text-primary-on-white);
+  color-scheme: light;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-white);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-white);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-white);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-white);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-white);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-white);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-white);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-white);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-white);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-white);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-white);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-white);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-white);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-white);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-white);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-white);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-white);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-white);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-white);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-white);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-white);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-white);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-white);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-white);
+  --oa-color-state-error-band: var(--oa-color-state-error-band-on-white);
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-white);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-white);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-white);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-white);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-white);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-white);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-white);
+  --oa-color-data-context: var(--oa-color-data-context-on-white);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-white);
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-white);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-white);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-white);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-white);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-white);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-white);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-white);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-white);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-white);
+}
+
+/* Charcoal: the dark ground. Interface roles and chart roles take their Charcoal values (DR-50). */
+.oa-surface-charcoal {
+  background-color: var(--oa-color-surface-charcoal);
+  color: var(--oa-color-text-primary-on-charcoal);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-charcoal);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-charcoal);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-charcoal);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-charcoal);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-charcoal);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-charcoal);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-charcoal);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-charcoal);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-charcoal);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-charcoal);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-charcoal);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-charcoal);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-charcoal);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-charcoal);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-charcoal);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-charcoal);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-charcoal);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-charcoal);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-charcoal);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-charcoal);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-charcoal);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-charcoal);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-charcoal);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-charcoal);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-charcoal);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-charcoal);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-charcoal);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-charcoal);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-charcoal);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-charcoal);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-charcoal);
+  --oa-color-data-context: var(--oa-color-data-context-on-charcoal);
+  --oa-color-data-emphasis-red: var(--oa-color-data-emphasis-red-on-charcoal);
+  --oa-chart-color-subject: var(--oa-chart-color-subject-on-charcoal);
+  --oa-chart-color-context: var(--oa-chart-color-context-on-charcoal);
+  --oa-chart-color-label: var(--oa-chart-color-label-on-charcoal);
+  --oa-chart-color-secondary: var(--oa-chart-color-secondary-on-charcoal);
+  --oa-chart-color-baseline: var(--oa-chart-color-baseline-on-charcoal);
+  --oa-chart-color-leader: var(--oa-chart-color-leader-on-charcoal);
+  --oa-chart-color-point: var(--oa-chart-color-point-on-charcoal);
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: var(--oa-chart-color-party-mark-on-charcoal);
+  --oa-chart-color-label-on-subject: var(--oa-chart-color-label-on-subject-on-charcoal);
+  --oa-chart-color-chip-fill: var(--oa-chart-color-chip-fill-on-charcoal);
+  --oa-chart-color-chip-label: var(--oa-chart-color-chip-label-on-charcoal);
+  --oa-chart-color-light-fill: var(--oa-chart-color-light-fill-on-charcoal);
+  --oa-chart-color-track: var(--oa-chart-color-track-on-charcoal);
+  --oa-chart-color-gridline: var(--oa-chart-color-gridline-on-charcoal);
+  --oa-chart-color-band: var(--oa-chart-color-band-on-charcoal);
+  --oa-chart-color-land: var(--oa-chart-color-land-on-charcoal);
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: var(--oa-chart-color-sequential-fill-step1-on-charcoal);
+  --oa-chart-color-sequential-fill-step2: var(--oa-chart-color-sequential-fill-step2-on-charcoal);
+  --oa-chart-color-sequential-fill-step3: var(--oa-chart-color-sequential-fill-step3-on-charcoal);
+  --oa-chart-color-sequential-fill-step4: var(--oa-chart-color-sequential-fill-step4-on-charcoal);
+  --oa-chart-color-sequential-fill-step5: var(--oa-chart-color-sequential-fill-step5-on-charcoal);
+  --oa-chart-color-sequential-label-step1: var(--oa-chart-color-sequential-label-step1-on-charcoal);
+  --oa-chart-color-sequential-label-step2: var(--oa-chart-color-sequential-label-step2-on-charcoal);
+  --oa-chart-color-sequential-label-step3: var(--oa-chart-color-sequential-label-step3-on-charcoal);
+  --oa-chart-color-sequential-label-step4: var(--oa-chart-color-sequential-label-step4-on-charcoal);
+  --oa-chart-color-sequential-label-step5: var(--oa-chart-color-sequential-label-step5-on-charcoal);
+  --oa-chart-color-sequential-outline: var(--oa-chart-color-sequential-outline-on-charcoal);
+  --oa-chart-color-magnitude-fill-step1: var(--oa-chart-color-magnitude-fill-step1-on-charcoal);
+  --oa-chart-color-magnitude-fill-step2: var(--oa-chart-color-magnitude-fill-step2-on-charcoal);
+  --oa-chart-color-magnitude-fill-step3: var(--oa-chart-color-magnitude-fill-step3-on-charcoal);
+  --oa-chart-color-magnitude-fill-step4: var(--oa-chart-color-magnitude-fill-step4-on-charcoal);
+  --oa-chart-color-magnitude-label-step1: var(--oa-chart-color-magnitude-label-step1-on-charcoal);
+  --oa-chart-color-magnitude-label-step2: var(--oa-chart-color-magnitude-label-step2-on-charcoal);
+  --oa-chart-color-magnitude-label-step3: var(--oa-chart-color-magnitude-label-step3-on-charcoal);
+  --oa-chart-color-magnitude-label-step4: var(--oa-chart-color-magnitude-label-step4-on-charcoal);
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-charcoal);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-charcoal);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-charcoal);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-charcoal);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-charcoal);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-charcoal);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-charcoal);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-charcoal);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-charcoal);
+}
+
+/* Prussian: the depth surface. Every red role is initial here, because red never sits on Prussian (Rule 05.3). */
+.oa-surface-prussian {
+  background-color: var(--oa-color-surface-prussian);
+  color: var(--oa-color-text-primary-on-prussian);
+  color-scheme: dark;
+  --oa-color-text-primary: var(--oa-color-text-primary-on-prussian);
+  --oa-color-text-secondary: var(--oa-color-text-secondary-on-prussian);
+  --oa-color-graphic-essential: var(--oa-color-graphic-essential-on-prussian);
+  --oa-color-graphic-subtle: var(--oa-color-graphic-subtle-on-prussian);
+  --oa-color-border-strong: var(--oa-color-border-strong-on-prussian);
+  --oa-color-border-hairline: var(--oa-color-border-hairline-on-prussian);
+  --oa-color-focus-ring: var(--oa-color-focus-ring-on-prussian);
+  --oa-color-identity-signature: var(--oa-color-identity-signature-on-prussian);
+  --oa-color-identity-hinge-divider: var(--oa-color-identity-hinge-divider-on-prussian);
+  --oa-color-action-ask-fill: var(--oa-color-action-ask-fill-on-prussian);
+  --oa-color-action-ask-label: var(--oa-color-action-ask-label-on-prussian);
+  --oa-color-action-primary-fill: var(--oa-color-action-primary-fill-on-prussian);
+  --oa-color-action-primary-fill-hover: var(--oa-color-action-primary-fill-hover-on-prussian);
+  --oa-color-action-primary-label: var(--oa-color-action-primary-label-on-prussian);
+  --oa-color-state-muted-text: var(--oa-color-state-muted-text-on-prussian);
+  --oa-color-state-muted-mark: var(--oa-color-state-muted-mark-on-prussian);
+  --oa-color-state-disabled-text: var(--oa-color-state-disabled-text-on-prussian);
+  --oa-color-state-disabled-edge: var(--oa-color-state-disabled-edge-on-prussian);
+  --oa-color-state-loading-text: var(--oa-color-state-loading-text-on-prussian);
+  --oa-color-state-loading-mark: var(--oa-color-state-loading-mark-on-prussian);
+  --oa-color-state-selected-band: var(--oa-color-state-selected-band-on-prussian);
+  --oa-color-state-selected-bar: var(--oa-color-state-selected-bar-on-prussian);
+  --oa-color-state-warning-mark: var(--oa-color-state-warning-mark-on-prussian);
+  --oa-color-state-warning-text: var(--oa-color-state-warning-text-on-prussian);
+  --oa-color-state-error-band: initial;
+  --oa-color-state-error-mark: var(--oa-color-state-error-mark-on-prussian);
+  --oa-color-state-error-text: var(--oa-color-state-error-text-on-prussian);
+  --oa-color-state-empty-text: var(--oa-color-state-empty-text-on-prussian);
+  --oa-color-state-empty-edge: var(--oa-color-state-empty-edge-on-prussian);
+  --oa-color-state-success-mark: var(--oa-color-state-success-mark-on-prussian);
+  --oa-color-state-success-text: var(--oa-color-state-success-text-on-prussian);
+  --oa-color-data-emphasis: var(--oa-color-data-emphasis-on-prussian);
+  --oa-color-data-context: var(--oa-color-data-context-on-prussian);
+  --oa-color-data-emphasis-red: initial;
+  --oa-chart-color-subject: initial;
+  --oa-chart-color-context: initial;
+  --oa-chart-color-label: initial;
+  --oa-chart-color-secondary: initial;
+  --oa-chart-color-baseline: initial;
+  --oa-chart-color-leader: initial;
+  --oa-chart-color-point: initial;
+  --oa-chart-color-point-keyline: initial;
+  --oa-chart-color-party-mark: initial;
+  --oa-chart-color-label-on-subject: initial;
+  --oa-chart-color-chip-fill: initial;
+  --oa-chart-color-chip-label: initial;
+  --oa-chart-color-light-fill: initial;
+  --oa-chart-color-track: initial;
+  --oa-chart-color-gridline: initial;
+  --oa-chart-color-band: initial;
+  --oa-chart-color-land: initial;
+  --oa-chart-color-diverging-fill-step1: initial;
+  --oa-chart-color-diverging-fill-step2: initial;
+  --oa-chart-color-diverging-fill-step3: initial;
+  --oa-chart-color-diverging-fill-step4: initial;
+  --oa-chart-color-diverging-fill-step5: initial;
+  --oa-chart-color-diverging-label-step1: initial;
+  --oa-chart-color-diverging-label-step2: initial;
+  --oa-chart-color-diverging-label-step3: initial;
+  --oa-chart-color-diverging-label-step4: initial;
+  --oa-chart-color-diverging-label-step5: initial;
+  --oa-chart-color-sequential-fill-step1: initial;
+  --oa-chart-color-sequential-fill-step2: initial;
+  --oa-chart-color-sequential-fill-step3: initial;
+  --oa-chart-color-sequential-fill-step4: initial;
+  --oa-chart-color-sequential-fill-step5: initial;
+  --oa-chart-color-sequential-label-step1: initial;
+  --oa-chart-color-sequential-label-step2: initial;
+  --oa-chart-color-sequential-label-step3: initial;
+  --oa-chart-color-sequential-label-step4: initial;
+  --oa-chart-color-sequential-label-step5: initial;
+  --oa-chart-color-sequential-outline: initial;
+  --oa-chart-color-magnitude-fill-step1: initial;
+  --oa-chart-color-magnitude-fill-step2: initial;
+  --oa-chart-color-magnitude-fill-step3: initial;
+  --oa-chart-color-magnitude-fill-step4: initial;
+  --oa-chart-color-magnitude-label-step1: initial;
+  --oa-chart-color-magnitude-label-step2: initial;
+  --oa-chart-color-magnitude-label-step3: initial;
+  --oa-chart-color-magnitude-label-step4: initial;
+  --oa-component-button-ask-fill: var(--oa-component-button-ask-fill-on-prussian);
+  --oa-component-button-ask-label: var(--oa-component-button-ask-label-on-prussian);
+  --oa-component-button-ask-keyline: initial;
+  --oa-component-button-primary-fill: var(--oa-component-button-primary-fill-on-prussian);
+  --oa-component-button-primary-fill-hover: var(--oa-component-button-primary-fill-hover-on-prussian);
+  --oa-component-button-primary-label: var(--oa-component-button-primary-label-on-prussian);
+  --oa-component-button-disabled-label: var(--oa-component-button-disabled-label-on-prussian);
+  --oa-component-button-disabled-edge: var(--oa-component-button-disabled-edge-on-prussian);
+  --oa-component-icon-ink: var(--oa-component-icon-ink-on-prussian);
+  --oa-component-icon-accent: var(--oa-component-icon-accent-on-prussian);
+}
+
+/* Reduced motion: every duration resolves to 0 ms and the final state shows at once. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --oa-motion-duration-fast: 0ms;
+    --oa-motion-duration-standard: 0ms;
+    --oa-motion-duration-slow: 0ms;
+    --oa-motion-duration-stagger: 0ms;
+    --oa-motion-duration-hinge: 0ms;
+    --oa-motion-duration-lever: 0ms;
+  }
+}
+
+
+/* Board 6 hub. Stage board A's frame on Newsprint: the grid margins of tokens.css, the title, section, H3 and H4
+   styles, Lora Italic only for quoted words, hairlines in Stone, White for cards, and one Prussian panel for the reply.
+   Captures sit at true size in frames that scroll sideways on narrow windows. The only red is the wordmark's ampersand. */
+:root{--m:var(--oa-layout-grid-phone-small-margin);--g:var(--oa-layout-grid-phone-small-gutter);--max:82rem;
+--ink:var(--oa-color-text-primary-on-newsprint);--ink-2:var(--oa-color-text-secondary-on-newsprint);
+--hair:var(--oa-color-border-hairline-on-newsprint);--strong:var(--oa-color-border-strong-on-newsprint);
+--white:var(--oa-color-surface-white);--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+@media (min-width:24.375em){:root{--m:var(--oa-layout-grid-phone-margin);--g:var(--oa-layout-grid-phone-gutter)}}
+@media (min-width:48em){:root{--m:var(--oa-layout-grid-tablet-margin);--g:var(--oa-layout-grid-tablet-gutter)}}
+@media (min-width:64em){:root{--m:var(--oa-layout-grid-desktop-margin);--g:var(--oa-layout-grid-desktop-gutter)}}
+@media (min-width:90em){:root{--m:var(--oa-layout-grid-wide-margin);--g:var(--oa-layout-grid-wide-gutter)}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--oa-color-surface-newsprint)}
+body{margin:0;background:var(--oa-color-surface-newsprint);color:var(--ink);font:var(--oa-type-body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-thickness:var(--oa-border-width-underline);text-underline-offset:.2em}
+a:hover{text-decoration-thickness:var(--oa-border-width-underline-hover)}
+:focus-visible{outline:var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring-on-newsprint);outline-offset:var(--oa-border-focus-offset)}
+.oa-surface-prussian :focus-visible{outline-color:var(--oa-color-focus-ring-on-prussian)}
+.dec :focus-visible,.pick :focus-visible{outline-color:var(--oa-color-focus-ring-on-white)}
+p{margin:0 0 var(--oa-space-200);max-width:var(--oa-layout-measure-body-max);text-wrap:pretty}
+code{font:500 .875rem/1.4 var(--mono);overflow-wrap:anywhere}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[hidden]{display:none!important}
+.board{max-width:calc(var(--max) + 2 * var(--m));margin:0 auto;padding:0 var(--m) var(--oa-space-1300)}
+.label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2)}
+.caption{font:var(--oa-type-caption);color:var(--ink-2)}
+.intro{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
+.n{color:var(--ink-2);font-variant-numeric:tabular-nums}
+/* masthead and cover */
+.mast{max-width:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--oa-space-150) var(--oa-space-300);
+  padding:var(--oa-space-300) 0 var(--oa-space-200);border-bottom:var(--oa-border-width-rule) solid var(--strong);margin:0}
+.wm-wrap{display:inline-flex;color:var(--ink);--amp:var(--oa-color-identity-signature-on-newsprint)}
+.wm{display:block;width:221px;height:24px}
+.cover{padding:var(--oa-space-800) 0 0}
+h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);margin:var(--oa-space-200) 0 var(--oa-space-400);max-width:13ch;text-wrap:balance}
+.cover .intro{margin-bottom:var(--oa-space-200)}
+.sample{border:var(--oa-border-width-rule) solid var(--strong);padding:var(--oa-space-200) var(--oa-space-300);margin:var(--oa-space-400) 0 0;background:var(--white)}
+.sample p{margin:0}
+.ask{background:var(--white);border:var(--oa-border-width-hairline) solid var(--hair);padding:var(--oa-space-300) var(--oa-space-400);margin:var(--oa-space-500) 0 0;max-width:52rem}
+.ask h2{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 var(--oa-space-200)}
+.ask ol{margin:0 0 var(--oa-space-200);padding-left:1.4em}.ask li{margin:0 0 var(--oa-space-100);max-width:var(--oa-layout-measure-intro-max)}
+.ask .q{font:italic 400 1.125rem/1.5 var(--oa-font-family-quote);margin:0}
+.toc{margin:var(--oa-space-500) 0 0;border-top:var(--oa-border-width-hairline) solid var(--hair);border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
+.toc ol{list-style:none;margin:0;padding:var(--oa-space-100) 0;display:flex;flex-wrap:wrap;gap:0 var(--oa-space-400)}
+.toc a{display:inline-flex;align-items:center;gap:.5em;min-height:var(--oa-size-target-touch);font:var(--oa-type-ui);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+/* sections, in the guide's chapter rhythm */
+.sec{margin-top:var(--oa-space-1300);border-top:var(--oa-border-width-rule) solid var(--strong);padding-top:var(--oa-space-400)}
+.sec-h{font:var(--oa-type-section);letter-spacing:var(--oa-type-section-letter-spacing);margin:0 0 var(--oa-space-500);text-wrap:balance;max-width:20ch}
+.kick{margin:0 0 var(--oa-space-200)}
+h3,.sub{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);margin:0;text-wrap:balance}
+.sub{margin:var(--oa-space-800) 0 var(--oa-space-300)}
+.sec-h + .cols > div:first-child > .sub:first-child,.sec-h + .rec-grid > div:first-child > .sub:first-child{margin-top:0}
+@media (min-width:64em){.sec-h + .cols > div > .sub:first-child,.sec-h + .rec-grid > div > .sub:first-child{margin-top:0}}
+h4{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:var(--oa-space-300) 0 var(--oa-space-150)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-800)}
+@media (min-width:64em){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+ul.facts{margin:0;padding-left:1.1em}ul.facts li{margin:0 0 var(--oa-space-150);max-width:var(--oa-layout-measure-body-max)}
+ul.files li{list-style:none;margin-left:-1.1em}
+.note{margin:var(--oa-space-400) 0 0;padding-left:var(--oa-space-300);border-left:var(--oa-border-width-rule) solid var(--strong);max-width:var(--oa-layout-measure-intro-max)}
+.note blockquote{margin:0}.note blockquote p{font:italic 400 clamp(1.1875rem,1.12rem + .3vw,1.375rem)/1.5 var(--oa-font-family-quote);margin:0 0 var(--oa-space-150)}
+.note figcaption{margin:0}
+/* verdict */
+.v-head{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);max-width:30ch;text-wrap:balance}
+.legend{margin:0 0 var(--oa-space-200)}
+ol.scores{list-style:none;margin:0;padding:0;border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
+ol.scores li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--oa-space-100) var(--oa-space-300);padding:var(--oa-space-200) 0;border-top:var(--oa-border-width-hairline) solid var(--hair);align-items:baseline}
+.sc-k{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing)}
+.sc-v{display:inline-flex;align-items:baseline;gap:var(--oa-space-100)}
+.sc-n{font:var(--oa-type-h3);letter-spacing:0;font-variant-numeric:tabular-nums}
+.sc-line{grid-column:1/-1;max-width:var(--oa-layout-measure-intro-max)}
+.pips{display:inline-flex;gap:3px;align-items:center;margin-left:var(--oa-space-150);align-self:center}
+.pips i{width:12px;height:12px;box-shadow:inset 0 0 0 1px var(--oa-color-graphic-subtle-on-newsprint)}
+.pips i.on{background:var(--oa-color-graphic-essential-on-newsprint);box-shadow:none}
+.pips b{width:2px;height:20px;background:var(--oa-color-graphic-essential-on-newsprint);margin:0 3px}
+@media (min-width:48em){ol.scores li{grid-template-columns:13rem 11rem minmax(0,1fr)}.sc-line{grid-column:auto}}
+ol.glance{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);border-top:var(--oa-border-width-rule) solid var(--strong)}
+.glance li{padding:var(--oa-space-300) 0 var(--oa-space-400);border-bottom:var(--oa-border-width-hairline) solid var(--hair);display:grid;grid-template-columns:3.25rem minmax(0,1fr);align-content:start}
+.glance li > *{grid-column:2}
+.gl-n{grid-column:1!important;grid-row:1 / span 3;margin:0;font:var(--oa-type-h3);letter-spacing:0;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.gl-t{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:0 0 var(--oa-space-150)}
+.gl-t a{text-decoration:none;display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);margin:-10px 0}
+.gl-t a:hover{text-decoration:underline}
+.gl-k{margin:0 0 var(--oa-space-050)}
+.gl-p{margin:0;max-width:34ch}
+.gl-wait{color:var(--ink-2)}
+@media (min-width:48em){ol.glance{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--oa-space-400)}}
+@media (min-width:80em){ol.glance{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:0}
+  .glance li{border-bottom:0;grid-template-columns:minmax(0,1fr);padding:var(--oa-space-300) var(--oa-space-300) var(--oa-space-200)}
+  .glance li > *{grid-column:1}.gl-n{grid-row:auto;margin:0 0 var(--oa-space-100)}
+  .glance li + li{border-left:var(--oa-border-width-hairline) solid var(--hair)}.glance li:first-child{padding-left:0}}
+/* bands */
+.band .sec-h .n{margin-right:.08em}
+.band-top{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-300) var(--oa-space-800);align-items:start}
+@media (min-width:64em){.band-top{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.asked{margin:0}
+.asked blockquote{margin:0}
+.asked blockquote p{font:italic 400 clamp(1.25rem,1.15rem + .45vw,1.625rem)/1.42 var(--oa-font-family-quote);margin:0 0 var(--oa-space-150);max-width:26ch;text-wrap:pretty}
+.asked figcaption{margin:0}
+.band-sum > .label{margin:0 0 var(--oa-space-100)}
+.lede{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
+.lead{margin:var(--oa-space-800) 0 0;min-width:0}
+.vcap{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--oa-space-050) var(--oa-space-200);margin:0 0 var(--oa-space-200);max-width:none}
+.vk{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}
+.vt{font:var(--oa-type-ui);font-weight:600;max-width:var(--oa-layout-measure-intro-max)}
+.frame{overflow-x:auto;overflow-y:hidden;max-width:100%;width:max-content;padding:min(var(--pad,24px),var(--m));border:var(--oa-border-width-hairline) solid var(--hair);background:var(--oa-color-surface-newsprint)}
+.frame img{display:block;max-width:none;height:auto}
+.hint{margin:0 0 var(--oa-space-100)}
+.cap-note{margin:var(--oa-space-150) 0 0;max-width:var(--oa-layout-measure-intro-max)}
+.pick{margin:var(--oa-space-600) 0 0;background:var(--white);border:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);
+  border-top:var(--oa-border-width-bar) solid var(--oa-color-border-strong-on-white);padding:var(--oa-space-300);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-300) var(--oa-space-800)}
+@media (min-width:48em){.pick{padding:var(--oa-space-400) var(--oa-space-500)}}
+@media (min-width:64em){.pick{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}}
+.pick .label{color:var(--oa-color-text-secondary-on-white);margin:0 0 var(--oa-space-100)}
+.pick-h{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);margin:0;max-width:24ch;text-wrap:balance}
+.pick-side p{max-width:none}
+.pick-side .label{margin-top:var(--oa-space-200)}.pick-side > .label:first-child{margin-top:0}
+ul.declinks{list-style:none;margin:0 0 var(--oa-space-200);padding:0}
+ul.declinks a{display:flex;gap:.6em;align-items:baseline;padding:var(--oa-space-100) 0;min-height:var(--oa-size-target-touch);font:var(--oa-type-body-small);text-decoration:none;border-top:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88)}
+ul.declinks a b{flex:none;font-variant-numeric:tabular-nums}
+ul.declinks a:hover{text-decoration:underline}
+.go-row{margin:var(--oa-space-300) 0 var(--oa-space-100)}
+.go{display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);padding:var(--oa-space-100) var(--oa-space-300);font:var(--oa-type-ui);font-weight:600;
+  text-decoration:none;border:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);color:var(--oa-color-text-primary-on-white)}
+.go:hover{text-decoration:underline}
+.page-name{margin:0}
+.chk{margin:var(--oa-space-200) 0 0;max-width:var(--oa-layout-measure-intro-max)}
+.wait{margin:var(--oa-space-300) 0 0;padding:var(--oa-space-300);border:var(--oa-border-width-rule) solid var(--strong);max-width:var(--oa-layout-measure-intro-max)}
+.wait p{margin:0}
+/* decisions */
+.tw{overflow-x:auto;border:var(--oa-border-width-hairline) solid var(--hair);background:var(--white)}
+table{border-collapse:collapse;width:100%;font:var(--oa-type-body-small)}
+th,td{text-align:left;vertical-align:top;padding:var(--oa-space-150) var(--oa-space-200);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88)}
+thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-secondary-on-white);background:var(--oa-color-tint-white-n55)}
+table.ck-t th{width:40%;font-weight:600}
+@media (max-width:40em){table.ck-t,table.ck-t tbody,table.ck-t tr,table.ck-t th,table.ck-t td{display:block;width:auto}.ck-t thead{display:none}
+  .ck-t tr{border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88);padding:var(--oa-space-100) 0}.ck-t th,.ck-t td{border:0;padding:var(--oa-space-050) var(--oa-space-200)}}
+ol.decs{list-style:none;margin:var(--oa-space-500) 0 0;padding:0;display:grid;gap:var(--oa-space-400)}
+.dec{background:var(--white);border:var(--oa-border-width-hairline) solid var(--hair);padding:var(--oa-space-300);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-200)}
+@media (min-width:48em){.dec{grid-template-columns:6rem minmax(0,1fr);padding:var(--oa-space-400) var(--oa-space-500) var(--oa-space-400) var(--oa-space-400)}}
+.dec-b{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-600);align-items:start}
+@media (min-width:80em){.dec-b{grid-template-columns:minmax(0,1fr) minmax(17rem,24rem)}
+  .dec-b .ans{margin-top:0;border-top:0;border-left:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);padding:0 0 0 var(--oa-space-400)}}
+.dec-n{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dec-q{margin:0 0 var(--oa-space-200);max-width:30ch}
+.dec .label{margin:var(--oa-space-300) 0 var(--oa-space-100);color:var(--oa-color-text-secondary-on-white)}
+ol.opts{list-style:none;margin:0;padding:0;max-width:var(--oa-layout-measure-intro-max)}
+ol.opts li{display:grid;grid-template-columns:2.2em minmax(0,1fr);padding:var(--oa-space-100) 0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-tint-stone-n88)}
+.ol{font-weight:600;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-white);padding:1px 6px;margin-left:.4em;white-space:nowrap}
+.chip--ill{margin:0 .4em 0 0}
+.rec{border-top:var(--oa-border-width-rule) solid var(--oa-color-border-strong-on-white);margin-top:var(--oa-space-300);padding-top:var(--oa-space-100);max-width:var(--oa-layout-measure-intro-max)}
+.rec p{margin:var(--oa-space-150) 0 0;max-width:none}.rec .label{display:block;margin:0 0 2px}
+ul.touch{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--oa-space-050) var(--oa-space-300)}
+ul.touch a{display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);padding:var(--oa-space-050) 0;font:var(--oa-type-ui)}
+ul.touch span{display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);font:var(--oa-type-ui);color:var(--oa-color-text-secondary-on-white)}
+.ans{margin:var(--oa-space-400) 0 0;padding:var(--oa-space-200) 0 0;border:0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline-on-white);min-width:0}
+.ans legend{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;padding:0;float:left;width:100%;margin-bottom:var(--oa-space-100)}
+.rads{display:grid;gap:0;clear:both}
+.rad{display:flex;gap:var(--oa-space-150);align-items:center;min-height:var(--oa-size-target-touch);cursor:pointer;max-width:var(--oa-layout-measure-intro-max)}
+.rad input{width:20px;height:20px;margin:0;flex:none;accent-color:var(--oa-color-palette-charcoal)}
+.nl{display:block;font:var(--oa-type-body-small);color:var(--oa-color-text-secondary-on-white);margin:var(--oa-space-200) 0 var(--oa-space-100)}
+textarea{display:block;width:100%;max-width:var(--oa-layout-measure-intro-max);font:var(--oa-type-body);color:var(--oa-color-text-primary-on-white);background:var(--white);
+  border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-white);border-radius:0;padding:var(--oa-space-150);resize:vertical}
+.reply{background:var(--oa-color-surface-prussian);color:var(--oa-color-text-primary-on-prussian);margin:var(--oa-space-800) 0 0;padding:var(--oa-space-400) var(--oa-space-300)}
+@media (min-width:48em){.reply{padding:var(--oa-space-500)}}
+.reply h3{color:inherit;margin:0 0 var(--oa-space-200)}
+.reply p{color:var(--oa-color-text-primary-on-prussian)}
+.reply .label{color:var(--oa-color-text-secondary-on-prussian);display:block;margin:var(--oa-space-300) 0 var(--oa-space-100)}
+.reply textarea{background:var(--oa-color-surface-newsprint);color:var(--oa-color-text-primary-on-newsprint);border-color:var(--oa-color-surface-newsprint);font:500 1rem/1.55 var(--mono)}
+.reply-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--oa-space-200);margin-top:var(--oa-space-200)}
+.reply button{font:var(--oa-type-ui);min-height:var(--oa-size-target-touch);padding:0 var(--oa-space-300);border:0;border-radius:0;cursor:pointer;
+  background:var(--oa-color-action-primary-fill-on-prussian);color:var(--oa-color-action-primary-label-on-prussian)}
+.reply button:hover{background:var(--oa-color-action-primary-fill-hover-on-prussian)}
+#copy-status{font:var(--oa-type-body-small);color:var(--oa-color-text-primary-on-prussian)}
+/* record */
+.rec-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-800)}
+@media (min-width:64em){.rec-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+ol.process{list-style:none;margin:0 0 var(--oa-space-300);padding:0;border-top:var(--oa-border-width-hairline) solid var(--hair)}
+ol.process li{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--oa-space-050);padding:var(--oa-space-200) 0;border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
+ol.process li p{margin:0 0 var(--oa-space-100)}ol.process .label{color:var(--ink)}
+@media (min-width:48em){ol.process li{grid-template-columns:10rem minmax(0,1fr);gap:var(--oa-space-300)}}
+.foot{margin-top:var(--oa-space-1000);padding-top:var(--oa-space-200);border-top:var(--oa-border-width-hairline) solid var(--hair)}
+@media print{.toc,.ans,.reply,.hint{display:none!important}.frame{overflow:visible;border:0}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head>
+<body><main class="board" data-view-root="overview" data-decisions="e3b7559ebc32">
+<header class="cover">
+<div class="mast"><span class="wm-wrap" data-red="signature"><svg class="wm" role="img" aria-label="Oath &amp; Action" focusable="false" width="221" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221 24"><path fill="currentColor" d="M10.508 23Q7.29 23 4.919 21.87Q2.548 20.741 1.275 18.478Q0 15.827 0 12.016Q0 8.189 1.275 5.522Q2.548 3.248 4.919 2.124Q7.29 1 10.508 1Q13.71 1 16.075 2.124Q18.44 3.248 19.719 5.522Q21 8.189 21 12.016Q21 15.827 19.719 18.488Q18.44 20.752 16.075 21.876Q13.71 23 10.508 23ZM189.95 23Q186.898 23 184.312 21.87Q181.726 20.741 180.231 18.478Q178.732 15.827 178.732 12.016Q178.732 8.189 180.231 5.522Q181.726 3.248 184.312 2.124Q186.898 1 189.95 1Q192.674 1 194.869 2.124Q197.061 3.248 198.342 5.719Q199.623 8.189 199.623 12.016Q199.623 15.827 198.342 18.488Q197.061 20.752 194.869 21.876Q192.674 23 189.95 23ZM220.763 1V23H216.529L208.24 10.302H208.079V23H202.846V1H207.365L215.598 13.668H215.763V1ZM27.318 23H21.578L28.623 1H36.318L43.579 23H37.579L36.116 18H28.885ZM111.506 23H106.211L113.464 1H120.399L128.217 23H122.219L120.817 18H113.271ZM60.847 23V1H66.029V10H74.847V1H79.847V23H74.847V14H66.029V23ZM138.741 23Q135.714 23 133.325 21.87Q130.933 20.741 129.59 18.414Q128.329 15.437 128.329 11.895Q128.329 8.334 129.602 5.545Q130.965 3.248 133.369 2.124Q135.774 1 138.741 1Q140.764 1 142.488 1.475Q144.212 1.952 145.522 2.866Q146.833 3.781 147.644 5.131Q148.452 6.822 148.662 9H143.207Q143.102 8.089 142.765 7.35Q142.428 6.609 141.865 6.09Q141.305 5.569 140.554 5.283Q139.807 5 138.875 5Q137.259 5 136.089 5.87Q134.921 6.74 134.291 8.373Q133.662 9.875 133.662 11.895Q133.662 13.969 134.298 15.481Q134.935 17.236 136.096 18.118Q137.259 19 138.862 19Q139.746 19 140.481 18.729Q141.213 18.459 141.776 17.943Q142.339 17.428 142.705 16.686Q143.073 15.945 143.207 15H148.662Q148.512 16.731 147.807 18.425Q147.103 19.814 145.853 20.811Q144.6 21.806 142.819 22.404Q141.035 23 138.741 23ZM149.707 5V1H168.016V5H161.362V23H155.977V5ZM40.5 5V1H58.808V5H52.154V23H47.052V5ZM10.508 19Q12.221 19 13.455 18.191Q14.688 17.382 15.344 15.827Q16 14.272 16 12.016Q16 9.745 15.344 8.18Q14.688 6.618 13.455 5.809Q12.221 5 10.508 5Q8.795 5 7.562 5.809Q6.331 6.618 5.666 8.18Q5 9.745 5 12.016Q5 14.272 5.666 15.827Q6.331 17.382 7.562 18.191Q8.795 19 10.508 19ZM189.95 19Q191.408 19 192.457 18.191Q193.507 17.382 194.065 15.827Q194.623 14.272 194.623 12.016Q194.623 9.745 194.065 8.18Q193.507 6.618 192.457 5.809Q191.408 5 189.906 5Q188.404 5 187.17 5.809Q185.937 6.618 185.274 8.18Q184.608 9.745 184.608 12.016Q184.608 14.272 185.274 15.827Q185.937 17.382 187.17 18.191Q188.404 19 189.95 19ZM175.732 1V23H170.732V1ZM119.696 14 117.566 6.4H117.364L114.682 14ZM34.946 14 32.723 6.4H32.521L30.139 14Z"/><path fill="var(--amp,#E63946)" d="M89.6 0H93.6C96 0 97 2 97 4.4V6.6C97 8.8 95.6 10.6 94.3 12L99 16V14.2C99 13.5 98.6 13 98.2 13H98V11H102V14.6Q102 16.7 100.8 18.2C101.6 20 102.6 20.9 104 21V24H102.4C100.6 24 99.2 23 98 21.8C96.6 23.3 94.6 24 92 24H90.4C86 24 83 21.6 83 18.6V17.6C83 14.8 85.6 13.2 89.1 12C87.4 10.6 86 8.6 86 6.6V4.6C86 1.8 87.6 0 89.6 0ZM90.6 14.3C89 14.8 88 15.6 88 16.8V18.6C88 20 88.9 21 90.4 21H92.8C94 21 95 20.8 95.9 20.2ZM91.5 3C90.6 3 90 3.8 90 5V6.4C90 8 91 9.4 92.2 10.4C92.8 9.4 93 8.3 93 7V5C93 3.8 92.4 3 91.5 3Z"/></svg></span><span class="label">Brand Guide, Edition 06 · Board 6</span></div>
+
+<p class="label" style="margin-top:var(--oa-space-800)">For Dustin Cathcart · November 7, 2026</p>
+<h1>Four explorations, for your pick</h1>
+<p class="intro">You asked for a simpler bill tracker, a few thoughts on the pillar icons, more stacked lockups and six color schemes. Each one is here with our recommendation, and seven questions close the page.</p>
+<div class="ask"><h2>What you are asked</h2><ol><li>Read the verdict, then the four sections. Each one sets its lead comparison at true size above our recommendation.</li><li>Open a section’s full page to see every option at every size. A link at the top of each page brings you back here.</li><li>Answer <a href="#b6-1">B6-1</a> to <a href="#b6-7">B6-7</a> on the cards, or send the sample reply if every recommendation suits you.</li></ol>
+<p class="caption" style="margin:0 0 var(--oa-space-050)">A reply can be this short:</p><p class="q">B6-1 to B6-7: as recommended.</p></div>
+<nav class="toc" aria-label="On this board"><ol><li><a href="#verdict">Verdict</a></li><li><a href="#tracker"><span class="n">1</span> Bill tracker</a></li><li><a href="#pillar-icons"><span class="n">2</span> Pillar icons</a></li><li><a href="#stacked"><span class="n">3</span> Stacked lockups</a></li><li><a href="#color-sheets"><span class="n">4</span> Color sheets</a></li><li><a href="#decisions">Decisions</a></li><li><a href="#record">Studio record</a></li></ol></nav>
+</header>
+<section class="sec" id="verdict" aria-labelledby="verdict-h"><h2 class="sec-h" id="verdict-h"><span class="t">Verdict</span></h2><p class="v-head">Pick numbered steps, Set A and stacked S1, and keep Pillar Red; three small fixes come first.</p><p>Each section page is built from the approved masters, and each passes its accessibility check. My review found three faults the checks could not see. A bill waiting for the governor reads “Step 6 of 6: Law.” The pillar row marks the current pillar by red alone at 48 px and larger. The color page understates what a new lead color costs. The decisions below carry each fix.</p><p>On color I part with the color designer. Patina is the best of the six sheets. Red gives Act its urgency and stays clear of Stone for color-blind readers, under rules the guide already follows. The reader check you approved can tell us whether readers see red as partisan before anything changes.</p><h3 class="sub">The six criteria</h3><p class="caption legend">The creative director scores each criterion from 1 to 5 on the brief’s rubric. In each row of squares, the upright rule after the third square marks the ship line of 4.</p><ol class="scores"><li><span class="sc-k">Craft</span><span class="sc-v"><span class="sc-n">4</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class="on"></i><i class=""></i></span></span><span class="sc-line">Letters, icons and lockmarks come from the masters, and the stacks hold at twice size; the pillar icons still lack small drawings of their own.</span></li><li><span class="sc-k">Clarity</span><span class="sc-v"><span class="sc-n">3</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class=""></i><i class=""></i></span></span><span class="sc-line">One line misleads: “Step 6 of 6: Law.” for a bill that is waiting for the governor. <a href="#b6-1">B6-1</a> renames the step.</span></li><li><span class="sc-k">Brand fidelity</span><span class="sc-v"><span class="sc-n">4</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class="on"></i><i class=""></i></span></span><span class="sc-line">Each view keeps one working red with none on Prussian, and the stacks redraw no letter.</span></li><li><span class="sc-k">Usefulness</span><span class="sc-v"><span class="sc-n">4</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class="on"></i><i class=""></i></span></span><span class="sc-line">Sizes, states, files and minimums sit on every page; two sections disagree about kickers until you answer <a href="#b6-5">B6-5</a>.</span></li><li><span class="sc-k">Evidence honesty</span><span class="sc-v"><span class="sc-n">3</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class=""></i><i class=""></i></span></span><span class="sc-line">The color page understates what a new lead costs; <a href="#b6-7">B6-7</a> states the full cost.</span></li><li><span class="sc-k">Accessibility</span><span class="sc-v"><span class="sc-n">3</span><span class="caption">of 5</span><span class="pips" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><b></b><i class=""></i><i class=""></i></span></span><span class="sc-line">Every page passes its check, yet the pillar row marks the current pillar by red alone at 48 px; <a href="#b6-4">B6-4</a> adds an underline at every size.</span></li></ol><h3 class="sub">The four recommendations</h3><ol class="glance"><li><p class="gl-n" aria-hidden="true">1</p><h3 class="gl-t"><a href="#tracker"><span class="vh">Section 1, </span>Bill tracker</a></h3><p class="label gl-k">We recommend</p><p class="gl-p">Numbered steps, and a timeline on a bill’s page</p></li><li><p class="gl-n" aria-hidden="true">2</p><h3 class="gl-t"><a href="#pillar-icons"><span class="vh">Section 2, </span>Pillar icons</a></h3><p class="label gl-k">We recommend</p><p class="gl-p">Set A, each icon with its word</p></li><li><p class="gl-n" aria-hidden="true">3</p><h3 class="gl-t"><a href="#stacked"><span class="vh">Section 3, </span>Stacked lockups</a></h3><p class="label gl-k">We recommend</p><p class="gl-p">S1, ampersand ends line one</p></li><li><p class="gl-n" aria-hidden="true">4</p><h3 class="gl-t"><a href="#color-sheets"><span class="vh">Section 4, </span>Color sheets</a></h3><p class="label gl-k">We recommend</p><p class="gl-p">Keep Pillar Red</p></li></ol></section>
+<section class="sec band" id="tracker" aria-labelledby="tracker-h"><p class="label kick">Section 1 of 4</p><h2 class="sec-h" id="tracker-h"><span class="n">1</span> <span class="t">The grid keeps one job, and a simpler bill tracker</span></h2><div class="band-top"><figure class="asked"><blockquote><p>“a bill tracker should be much simpler, like a line with dots or a 1, 2, 3, 4, 5, 6 step process. That grid system’s not clear. I want everything to be clear.”</p></blockquote><figcaption class="caption">Your words, November 7, 2026</figcaption></figure><div class="band-sum"><p class="label">What we made</p><p class="lede">The systems designer proposes six plain steps in place of the nine stages and draws four trackers with them in your four-bill list, at phone and desktop widths, on Newsprint and on Charcoal. Each state shows by its shape and in words, and “You can take part now” carries the view’s one working red.</p><p class="lede">The page ends with the grid’s one job. The lockmark keeps four fixed places, and every grid that coded something retires.</p><figure class="note"><blockquote><p>I checked every state in grayscale, and each one holds by its shape. Step 5 should also say that the second chamber may hold its own hearing, since readers can take part there too.</p></blockquote><figcaption class="caption">Creative director</figcaption></figure></div></div><figure class="lead"><figcaption class="vcap"><span class="vk">Lead comparison</span><span class="vt">The four options side by side: your four bills as rows, each option drawn at 240 px, the width of a story card.</span><span class="vs caption">1,280 by 1,255 px, true size</span></figcaption><p class="hint caption" hidden>Wider than this window. Scroll inside the frame to see all of it.</p><div class="frame" role="region" tabindex="0" aria-label="Bill tracker, lead comparison at true size" style="--pad:15px"><img src="phase-2/board-6/captures/20261107_Board-6-Hub-Tracker-Lead.png" width="1280" height="1255" alt="Capture of the bill tracker page at a 1,440 px window, shown at true size. The four options side by side: your four bills as rows, each option drawn at 240 px, the width of a story card. The full section page holds every option." loading="lazy" decoding="async"></div><p class="caption cap-note">Captured from the section page in a 1,440 px window on November 7, 2026 at 2:06 a.m. UTC. <a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html">Open the full bill tracker page</a> to see every option and its sizes.</p></figure><div class="pick"><div class="pick-main"><p class="label">We recommend</p><p class="pick-h">Use numbered steps in lists and on story cards and the same steps as a timeline on a bill’s own page, with step 6 renamed Governor.</p></div><div class="pick-side"><p class="label">Why</p><p>A reader can say “step 2 of 6” without a key, and the marks hold up on a phone and in gray print. As drawn, step 6 is called Law, so a bill waiting for the governor reads as law; the new name says who acts next.</p><p class="label">Decisions for you</p><ul class="declinks"><li><a href="#b6-1"><b>B6-1</b> Do the nine tracker stages become six plain steps?</a></li><li><a href="#b6-2"><b>B6-2</b> Which trackers do we build?</a></li><li><a href="#b6-3"><b>B6-3</b> Does the lockmark keep four fixed places, with every other use of the grid retired?</a></li><li><a href="#b6-5"><b>B6-5</b> Does a pillar icon go in a kicker, with the content label counting as the pillar’s word?</a></li></ul><p class="go-row"><a class="go" href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html">Open the full bill tracker page<span aria-hidden="true"> →</span></a></p><p class="caption page-name">The page: Six plain steps for the bill tracker, and one job for the grid</p></div></div><p class="caption chk">The section page’s own check, run on November 7, 2026 at 2:05 a.m. UTC, passed at 1,440, 390 and 360 px.</p></section><section class="sec band" id="pillar-icons" aria-labelledby="pillar-icons-h"><p class="label kick">Section 2 of 4</p><h2 class="sec-h" id="pillar-icons-h"><span class="n">2</span> <span class="t">Four pillar icons from the Civic Line set</span></h2><div class="band-top"><figure class="asked"><blockquote><p>“revisit the civic icons. I’d like to use those and maybe see just a few thoughts on the four icons for the four pillars.”</p></blockquote><figcaption class="caption">Your words, November 7, 2026</figcaption></figure><div class="band-sum"><p class="label">What we made</p><p class="lede">The icon designer read all 122 Civic Line drawings and proposes three sets of four. Set A keeps the four drawn for the pillars. Set B uses paper a reader holds, and Set C turns to people and the vote for Connect and Act.</p><p class="lede">Each set appears at 16, 24, 48 and 128 px, in the pillar row, on a section opener, in a kicker and as a tile on Charcoal, with a naming test the studio ran on its own.</p><figure class="note"><blockquote><p>The four icons still need small drawings of their own at 16 and 24 px, where today’s line falls under half a pixel wide.</p></blockquote><figcaption class="caption">Creative director</figcaption></figure></div></div><figure class="lead"><figcaption class="vcap"><span class="vk">Lead comparison</span><span class="vt">The three sets in the pillar row at 48 px in one color, with each word and icon ID beside its icon.</span><span class="vs caption">1,248 by 525 px, true size</span></figcaption><p class="hint caption" hidden>Wider than this window. Scroll inside the frame to see all of it.</p><div class="frame" role="region" tabindex="0" aria-label="Pillar icons, lead comparison at true size" style="--pad:24px"><img src="phase-2/board-6/captures/20261107_Board-6-Hub-Pillar-Icons-Lead.png" width="1248" height="525" alt="Capture of the pillar icons page at a 1,440 px window, shown at true size. The three sets in the pillar row at 48 px in one color, with each word and icon ID beside its icon. The full section page holds every option." loading="lazy" decoding="async"></div><p class="caption cap-note">Captured from the section page in a 1,440 px window on November 7, 2026 at 2:06 a.m. UTC. <a href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html">Open the full pillar icons page</a> to see every option and its sizes.</p></figure><div class="pick"><div class="pick-main"><p class="label">We recommend</p><p class="pick-h">Keep Set A, print each word beside its icon, and underline the current pillar’s word at every size.</p></div><div class="pick-side"><p class="label">Why</p><p>Only these four were drawn for the pillars, so no topic page shares them. At 48 px the row marks the current pillar by red alone, and the underline gives a reader who cannot see red the same cue.</p><p class="label">Decisions for you</p><ul class="declinks"><li><a href="#b6-4"><b>B6-4</b> Which four icons stand for the pillars?</a></li><li><a href="#b6-5"><b>B6-5</b> Does a pillar icon go in a kicker, with the content label counting as the pillar’s word?</a></li></ul><p class="go-row"><a class="go" href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html">Open the full pillar icons page<span aria-hidden="true"> →</span></a></p><p class="caption page-name">The page: Four pillar icons from the Civic Line</p></div></div><p class="caption chk">The section page’s own check, run on November 7, 2026 at 2:04 a.m. UTC, passed at 1,440, 390 and 360 px.</p></section><section class="sec band" id="stacked" aria-labelledby="stacked-h"><p class="label kick">Section 3 of 4</p><h2 class="sec-h" id="stacked-h"><span class="n">3</span> <span class="t">More stacked lockups</span></h2><div class="band-top"><figure class="asked"><blockquote><p>“I don’t know that I like that. Can you give me a few more variations of stacked?”</p></blockquote><figcaption class="caption">Your words, November 7, 2026</figcaption></figure><div class="band-sum"><p class="label">What we made</p><p class="lede">The identity designer arranged six stacked lockups from the approved masters and set each beside today’s L2. Every letter matches its master point for point, as the designer’s script and a second check of my own both found.</p><p class="lede">Each option appears at two sizes, on Newsprint, Charcoal and Prussian, in an avatar tile and on a poster corner, with its clear space and minimum size.</p><figure class="note"><blockquote><p>If S6 appeals to you, say so. It would tell us the large ampersand was fine and its place at the right was the trouble.</p></blockquote><figcaption class="caption">Creative director</figcaption></figure></div></div><figure class="lead"><figcaption class="vcap"><span class="vk">Lead comparison</span><span class="vt">All six stacks beside today’s L2, every one with capitals 33 px tall.</span><span class="vs caption">1,136 by 384 px, true size</span></figcaption><p class="hint caption" hidden>Wider than this window. Scroll inside the frame to see all of it.</p><div class="frame" role="region" tabindex="0" aria-label="Stacked lockups, lead comparison at true size" style="--pad:24px"><img src="phase-2/board-6/captures/20261107_Board-6-Hub-Stacked-Lead.png" width="1136" height="384" alt="Capture of the stacked lockups page at a 1,440 px window, shown at true size. All six stacks beside today’s L2, every one with capitals 33 px tall. The full section page holds every option." loading="lazy" decoding="async"></div><p class="caption cap-note">Captured from the section page in a 1,440 px window on November 7, 2026 at 2:06 a.m. UTC. <a href="phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html">Open the full stacked lockups page</a> to see every option and its sizes.</p></figure><div class="pick"><div class="pick-main"><p class="label">We recommend</p><p class="pick-h">S1 replaces L2: OATH &amp; over ACTION, flush left.</p></div><div class="pick-side"><p class="label">Why</p><p>It is the wordmark split after the ampersand, so it reads in the name’s order. It fits the smallest box of the six and gives the largest capitals in a round avatar, 49 px against L2’s 43 px.</p><p class="label">Decisions for you</p><ul class="declinks"><li><a href="#b6-6"><b>B6-6</b> Which stacked lockup replaces L2?</a></li></ul><p class="go-row"><a class="go" href="phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html">Open the full stacked lockups page<span aria-hidden="true"> →</span></a></p><p class="caption page-name">The page: More stacked lockups</p></div></div><p class="caption chk">The section page’s own check, run on November 7, 2026 at 1:46 a.m. UTC, passed at 1,440, 390 and 360 px.</p></section><section class="sec band" id="color-sheets" aria-labelledby="color-sheets-h"><p class="label kick">Section 4 of 4</p><h2 class="sec-h" id="color-sheets-h"><span class="n">4</span> <span class="t">Six identity sheets in six color schemes</span></h2><div class="band-top"><figure class="asked"><blockquote><p>“I want to see, if red wasn’t at the forefront, what other colors would work.”</p></blockquote><figcaption class="caption">Your words, November 7, 2026</figcaption></figure><div class="band-sum"><p class="label">What we made</p><p class="lede">The research lead studied color at editorial, news and civic brands and how lead colors read for party. The color designer then built six one-page identity sheets, each led by a color other than red, and today’s palette at the same size.</p><p class="lede">Every sheet keeps Newsprint, Charcoal, the three typefaces and the approved marks, and measures every color pair it prints.</p><figure class="note"><blockquote><p>Federal Ink and Highlighter change how the ampersand reads: the first fades into the letters in gray, and the second changes color with its ground. I would take neither further.</p></blockquote><figcaption class="caption">Creative director</figcaption></figure></div></div><figure class="lead"><figcaption class="vcap"><span class="vk">Lead comparison</span><span class="vt">All seven at once: the six new sheets and today’s palette, side by side.</span><span class="vs caption">1,280 by 348 px, true size</span></figcaption><p class="hint caption" hidden>Wider than this window. Scroll inside the frame to see all of it.</p><div class="frame" role="region" tabindex="0" aria-label="Color sheets, lead comparison at true size" style="--pad:15px"><img src="phase-2/board-6/captures/20261107_Board-6-Hub-Color-Sheets-Lead.png" width="1280" height="348" alt="Capture of the color sheets page at a 1,440 px window, shown at true size. All seven at once: the six new sheets and today’s palette, side by side. The full section page holds every option." loading="lazy" decoding="async"></div><p class="caption cap-note">Captured from the section page in a 1,440 px window on November 7, 2026 at 2:06 a.m. UTC. <a href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html">Open the full color sheets page</a> to see every option and its sizes.</p></figure><div class="pick"><div class="pick-main"><p class="label">We recommend</p><p class="pick-h">Keep Pillar Red as the lead, and ask readers how they read it for party in the reader check you already approved.</p></div><div class="pick-side"><p class="label">Why</p><p>The color designer recommends Patina, the strongest of the six. Patina matches Stone in gray print and for many color-blind readers, and a new lead means rebuilding the color tokens, every two-color icon and chapters 03 to 05.</p><p class="label">Decisions for you</p><ul class="declinks"><li><a href="#b6-7"><b>B6-7</b> Does Pillar Red stay the lead color?</a></li></ul><p class="go-row"><a class="go" href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html">Open the full color sheets page<span aria-hidden="true"> →</span></a></p><p class="caption page-name">The page: Six color schemes for Oath &amp; Action, with today’s palette beside them</p></div></div><p class="caption chk">The section page’s own check, run on November 7, 2026 at 2:05 a.m. UTC, passed at 1,440, 390 and 360 px.</p></section>
+<section class="sec" id="decisions" aria-labelledby="decisions-h"><h2 class="sec-h" id="decisions-h"><span class="t">Decisions</span></h2><p class="intro">Seven decisions wait for you, numbered B6-1 to B6-7. Each card gives the question, the options and our recommendation with its reason, and links to the place on a section page where you can see what it changes. Mark an answer on a card and it joins your reply at the end of this section.</p><ol class="decs"><li class="dec" id="b6-1" data-dec="B6-1" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-1</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-1. </span>Do the nine tracker stages become six plain steps?</h3><p>Six steps cover the same path in words a newcomer knows. As drawn, step 6 is called Law, and trackers name the step a bill is at now, so a bill waiting for the governor reads “Step 6 of 6: Law.” We renamed that step.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>Six steps: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>Six steps as drawn, with step 6 called Law</span></li><li><span class="ol">(c)</span><span>Keep the nine stages</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) Six steps: Filed, Hearing, Committee vote, First chamber, Second chamber, Governor</p><p><span class="label">Why</span> A step’s name has to stay true while a bill sits at it. Governor tells a reader who acts next, and a bill that becomes law shows all six steps done with the words “Became law on” and the date. Hearing keeps a step of its own, because the public is invited to speak there.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#tracker">Section 1, Bill tracker, on this hub</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#six-steps">Six steps a newcomer reads at once, on the bill tracker page</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#answers">Your answers, on the bill tracker page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-1</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-1" value="a" data-short="six steps, step 6 Governor"><span>(a) six steps, step 6 Governor · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-1" value="b" data-short="six steps, step 6 Law"><span>(b) six steps, step 6 Law</span></label><label class="rad"><input type="radio" name="ans-B6-1" value="c" data-short="keep nine stages"><span>(c) keep nine stages</span></label></div>
+<label class="nl" for="note-B6-1">A note, or an answer of your own</label><textarea id="note-B6-1" rows="2" data-note="B6-1"></textarea></fieldset></div></li><li class="dec" id="b6-2" data-dec="B6-2" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-2</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-2. </span>Which trackers do we build?</h3>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>Numbered steps in lists and on story cards, and the same steps as a vertical timeline on a bill’s own page <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>The segmented bar in lists, and the timeline on a bill’s page</span></li><li><span class="ol">(c)</span><span>The line with dots in lists, and the timeline on a bill’s page</span></li><li><span class="ol">(d)</span><span>The timeline everywhere</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) Numbered steps in lists and on story cards, and the same steps as a vertical timeline on a bill’s own page</p><p><span class="label">Why</span> A number gives a reader words to say, “step 2 of 6”, with no key, and it holds up on a phone and in gray print. The timeline uses the same numbered marks and gives a bill’s page room for dates and the way to take part. On a phone the line with dots loses its step names, and its row of dots looks like the lockmark.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#tracker">Section 1, Bill tracker, on this hub</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#compare">The four options side by side, on the bill tracker page</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#option-b">Option B: Numbered steps, 1 to 6, on the bill tracker page</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#option-d">Option D: A vertical timeline for a bill’s own page, on the bill tracker page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-2</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-2" value="a" data-short="numbered steps and timeline"><span>(a) numbered steps and timeline · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-2" value="b" data-short="segmented bar and timeline"><span>(b) segmented bar and timeline</span></label><label class="rad"><input type="radio" name="ans-B6-2" value="c" data-short="line with dots and timeline"><span>(c) line with dots and timeline</span></label><label class="rad"><input type="radio" name="ans-B6-2" value="d" data-short="timeline everywhere"><span>(d) timeline everywhere</span></label></div>
+<label class="nl" for="note-B6-2">A note, or an answer of your own</label><textarea id="note-B6-2" rows="2" data-note="B6-2"></textarea></fieldset></div></li><li class="dec" id="b6-3" data-dec="B6-3" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-3</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-3. </span>Does the lockmark keep four fixed places, with every other use of the grid retired?</h3><p>The four places are the masthead, page headers, footers and the sign-off on cards, covers and posters. Tracker progress, series routes, pillar corners, coded grids and the grid in the kicker retire. The Signal Grid is part of the locked identity, so your answer is the named approval this change needs.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>Yes, four places, and chapter 08 becomes a short chapter called The lockmark <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>Yes, and the small lockmark in chart legends stays as a fifth place</span></li><li><span class="ol">(c)</span><span>Yes, and the lockmark joins the lockups in chapter 03, so chapter 08 closes and later chapters renumber</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) Yes, four places, and chapter 08 becomes a short chapter called The lockmark</p><p><span class="label">Why</span> You asked for one use. A chart footer already holds the lockmark, so a legend mark adds a place with no new job. Keeping chapter 08’s number spares every later chapter its links and rule numbers.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#tracker">Section 1, Bill tracker, on this hub</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#grid">The grid keeps one job, on the bill tracker page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-3</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-3" value="a" data-short="four places, chapter 08 The lockmark"><span>(a) four places, chapter 08 The lockmark · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-3" value="b" data-short="five places"><span>(b) five places</span></label><label class="rad"><input type="radio" name="ans-B6-3" value="c" data-short="lockmark into chapter 03"><span>(c) lockmark into chapter 03</span></label></div>
+<label class="nl" for="note-B6-3">A note, or an answer of your own</label><textarea id="note-B6-3" rows="2" data-note="B6-3"></textarea></fieldset></div></li><li class="dec" id="b6-4" data-dec="B6-4" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-4</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-4. </span>Which four icons stand for the pillars?</h3><p>Set A is today’s set. At 48 px and larger its row marks the current pillar by red alone, so the recommendation adds an underline at every size.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>Set A, drawn for the pillars, with each word beside its icon and the current pillar underlined at every size <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>Set B, the reader’s paper</span></li><li><span class="ol">(c)</span><span>Set C, civic life</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) Set A, drawn for the pillars, with each word beside its icon and the current pillar underlined at every size</p><p><span class="label">Why</span> Only Set A was drawn for the pillars. Sets B and C borrow drawings that already name topics, such as Voting and Public Records, so one drawing would carry two meanings, and a ballot or a petition narrows Act to one kind of step.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#pillar-icons">Section 2, Pillar icons, on this hub</a></li><li><a href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html#compare">The three sets in the pillar row, on the pillar icons page</a></li><li><a href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html#rec">Our recommendation: keep Set A and change how it is used, on the pillar icons page</a></li><li><a href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html#set-a">Set A, drawn for the pillars, on the pillar icons page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-4</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-4" value="a" data-short="Set A"><span>(a) Set A · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-4" value="b" data-short="Set B"><span>(b) Set B</span></label><label class="rad"><input type="radio" name="ans-B6-4" value="c" data-short="Set C"><span>(c) Set C</span></label></div>
+<label class="nl" for="note-B6-4">A note, or an answer of your own</label><textarea id="note-B6-4" rows="2" data-note="B6-4"></textarea></fieldset></div></li><li class="dec" id="b6-5" data-dec="B6-5" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-5</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-5. </span>Does a pillar icon go in a kicker, with the content label counting as the pillar’s word?</h3><p>A kicker is the short line above a headline, and it opens with one of seven content labels. The icon designer asks whether a label such as Guide can stand for Connect beside Connect’s icon.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>No: a kicker keeps its label and words, with a topic icon only beside the topic’s own word, and the pillar icons stay in the pillar row, on section openers and on tiles <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>Yes, and the content label counts as the pillar’s word</span></li><li><span class="ol">(c)</span><span>No, and a kicker carries no icon at all</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) No: a kicker keeps its label and words, with a topic icon only beside the topic’s own word, and the pillar icons stay in the pillar row, on section openers and on tiles</p><p><span class="label">Why</span> Analysis, Report and Our position name no pillar, and Guide does not say Connect. A pillar icon in those kickers would code a pillar with no word beside it, the job you asked the grid to stop doing.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#pillar-icons">Section 2, Pillar icons, on this hub</a></li><li><a href="phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html#rec">Our recommendation: keep Set A and change how it is used, on the pillar icons page</a></li><li><a href="phase-2/board-6/tracker/20261107_Board-6-Tracker.html#grid">The grid keeps one job, on the bill tracker page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-5</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-5" value="a" data-short="no pillar icon in kickers"><span>(a) no pillar icon in kickers · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-5" value="b" data-short="pillar icon in kickers"><span>(b) pillar icon in kickers</span></label><label class="rad"><input type="radio" name="ans-B6-5" value="c" data-short="kickers in words only"><span>(c) kickers in words only</span></label></div>
+<label class="nl" for="note-B6-5">A note, or an answer of your own</label><textarea id="note-B6-5" rows="2" data-note="B6-5"></textarea></fieldset></div></li><li class="dec" id="b6-6" data-dec="B6-6" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-6</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-6. </span>Which stacked lockup replaces L2?</h3><p>L2 is today’s stacked lockup, OATH over ACTION with a large ampersand at the right. Every option is cut from the approved masters with no letter redrawn. A new lockup changes identity geometry, so your pick is the named approval it needs.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>S1: OATH &amp; over ACTION, flush left <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>S4: OATH, the ampersand and ACTION on three centered lines</span></li><li><span class="ol">(c)</span><span>S6: S4 with a larger ampersand</span></li><li><span class="ol">(d)</span><span>S2, S3 or S5 (name it)</span></li><li><span class="ol">(e)</span><span>Keep L2</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) S1: OATH &amp; over ACTION, flush left</p><p><span class="label">Why</span> S1 is the wordmark split after the ampersand, so a reader who knows the masthead knows the stack. It reads in the name’s order, fits the smallest box and gives the largest capitals in a round avatar.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#stacked">Section 3, Stacked lockups, on this hub</a></li><li><a href="phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html#s1">S1 Ampersand ends line one, on the stacked lockups page</a></li><li><a href="phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html#measures">All measures, on the stacked lockups page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-6</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-6" value="a" data-short="S1"><span>(a) S1 · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-6" value="b" data-short="S4"><span>(b) S4</span></label><label class="rad"><input type="radio" name="ans-B6-6" value="c" data-short="S6"><span>(c) S6</span></label><label class="rad"><input type="radio" name="ans-B6-6" value="d" data-short="another stack"><span>(d) another stack</span></label><label class="rad"><input type="radio" name="ans-B6-6" value="e" data-short="keep L2"><span>(e) keep L2</span></label></div>
+<label class="nl" for="note-B6-6">A note, or an answer of your own</label><textarea id="note-B6-6" rows="2" data-note="B6-6"></textarea></fieldset></div></li><li class="dec" id="b6-7" data-dec="B6-7" data-rec="a">
+<div class="dec-n" aria-hidden="true">B6-7</div><div class="dec-b">
+<div class="dec-main"><h3 class="dec-q"><span class="vh">B6-7. </span>Does Pillar Red stay the lead color?</h3><p>Pillar Red is locked, so a move needs your named approval with the old and the new side by side. Red has marked the Republican side of election maps since 2000, and the guide keeps it off Prussian and prints every party in Charcoal with its name.</p><p>A move replaces red in 12 color tokens, the 244 two-color Civic Line icon files and their tiles, and Rules 05.3 and 05.5, which are written around red. Chapters 03 to 05 and every identity proof are then made again. Patina also moves the focus ring, the diverging scale and the success color.</p>
+<p class="label">Options</p><ol class="opts"><li><span class="ol">(a)</span><span>Keep Pillar Red, and add how readers read it for party to the reader check you approved <span class="chip">Recommended</span></span></li><li><span class="ol">(b)</span><span>Move to Patina, after the reader check and a press proof on newsprint, with the two side by side for your approval</span></li><li><span class="ol">(c)</span><span>Move to another of the six (name it), with the same steps first</span></li></ol>
+<div class="rec"><p><span class="label">We recommend</span> (a) Keep Pillar Red, and add how readers read it for party to the reader check you approved</p><p><span class="label">Why</span> Red does its jobs under rules the guide already follows, and it gives Act its urgency. Patina passes on both grounds with no keyline and has no party reading the research found. It also matches Stone in gray print and for many color-blind readers, so a chart’s named bar would fade for them. Readers can tell us how they read red before anything changes.</p></div>
+<p class="label">Where to look</p><ul class="touch"><li><a href="#color-sheets">Section 4, Color sheets, on this hub</a></li><li><a href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html#all-seven">All seven at once, on the color sheets page</a></li><li><a href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html#sheet-patina">1 Patina, on the color sheets page</a></li><li><a href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html#sheet-today">7 Pillar Red, on the color sheets page</a></li><li><a href="phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html#answers">Your answers, on the color sheets page</a></li></ul></div>
+<fieldset class="ans"><legend>Your answer to B6-7</legend><div class="rads"><label class="rad"><input type="radio" name="ans-B6-7" value="a" data-short="keep Pillar Red"><span>(a) keep Pillar Red · recommended</span></label><label class="rad"><input type="radio" name="ans-B6-7" value="b" data-short="move to Patina"><span>(b) move to Patina</span></label><label class="rad"><input type="radio" name="ans-B6-7" value="c" data-short="another scheme"><span>(c) another scheme</span></label></div>
+<label class="nl" for="note-B6-7">A note, or an answer of your own</label><textarea id="note-B6-7" rows="2" data-note="B6-7"></textarea></fieldset></div></li></ol><div class="reply oa-surface-prussian" id="reply" role="region" aria-labelledby="reply-h">
+<h3 id="reply-h">Your reply</h3>
+<p>The answers you mark above collect here, ready to paste into our chat. Your marks stay in this browser only. Until you mark one, the box holds a sample reply.</p>
+<label class="label" for="reply-text">Reply</label>
+<textarea id="reply-text" rows="7" readonly data-sample="B6-1 to B6-7: as recommended.">B6-1 to B6-7: as recommended.</textarea>
+<div class="reply-row"><button type="button" id="copy-reply">Copy the reply</button><span id="copy-status" role="status" aria-live="polite"></span></div></div></section>
+<section class="sec" id="record" aria-labelledby="record-h"><h2 class="sec-h" id="record-h"><span class="t">Studio record</span></h2><div class="rec-grid"><div><h3 class="sub">What was asked</h3><ul class="facts"><li>Keep the grid to one use, on mastheads, headers and footers, and make the bill tracker much simpler, like a line with dots or a six-step process, because the grid is not clear.</li><li>Revisit the Civic Line icons and show a few thoughts on the four icons for the four pillars.</li><li>Show more variations of the stacked lockup, since the offset ampersand at the right of today’s L2 does not sit well.</li><li>Make six one-page brand identity sheets in six different color schemes with different feels, after researching what is current in design, keeping Newsprint and the whole direction, to see what would work if red were not at the forefront.</li><li>Roll with it, with no question round first.</li></ul></div><div><h3 class="sub">How the work was done</h3><ol class="process"><li><span class="label">Makers</span><div><p>Four sections were built in parallel under one brief. The systems designer drew the tracker options and the lockmark’s places, and checked them for accessibility. The icon designer reviewed all 122 Civic Line icons and proposed three pillar sets. The identity designer arranged six stacked lockups from the approved masters, with a script confirming no letter was redrawn.</p><p>The research lead surveyed current color and design practice at editorial, news and civic brands, and how lead colors read for party, and proposed eight palette directions. The color designer built six identity sheets from six of them, plus today’s palette as a reference, measuring every text and mark pair against WCAG 2.2 AA.</p></div></li><li><span class="label">Creative director</span><div><p>The creative director reviewed every option at desktop and phone width, acted as the red team for contrast, color-only meaning, party reading and the use of approved masters, and wrote this board’s verdict, recommendations and decisions.</p></div></li></ol></div></div>
+<h3 class="sub">Checks run</h3><div class="tw" role="region" tabindex="0" aria-label="Checks run"><table class="ck-t"><thead><tr><th scope="col">Check</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Tracker section<br><code>node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html --board</code></th><td><b>Pass.</b> 0 failures at 1440, 390 and 360 px, run by the main session.</td></tr><tr><th scope="row">Pillar icons section<br><code>node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/pillar-icons/20261107_Board-6-Pillar-Icons.html --board</code></th><td><b>Pass.</b> 0 failures at 1440, 390 and 360 px, run by the main session.</td></tr><tr><th scope="row">Stacked lockups section<br><code>node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/stacked/20261107_Board-6-Stacked-Lockups.html --board</code></th><td><b>Pass.</b> 0 failures at 1440, 390 and 360 px, run by the main session.</td></tr><tr><th scope="row">Color sheets section<br><code>node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html --board</code></th><td><b>Pass.</b> 0 failures at 1440, 390 and 360 px, run by the main session.</td></tr></tbody></table></div>
+<div class="cols"><div><h3 class="sub">Checks the hub builder ran</h3><ul class="facts"><li>The builder captured four lead comparisons on November 7, 2026 at 2:06 a.m. UTC, each from its section page in a 1,440 px window at device scale 2, and shows each at its CSS size: bill tracker, 1,280 by 1,255 px; pillar icons, 1,248 by 525 px; stacked lockups, 1,136 by 384 px; color sheets, 1,280 by 348 px.</li><li>It read each section page’s own check result: all four passed, each run on the page as it stands.</li><li>Each place a decision points at exists on its section page.</li><li>The hub prints no em dash and none of the words the writing rules flag.</li><li>Its own styles use no red. The one red it draws is the wordmark’s ampersand in the masthead, marked as the signature; every other red sits inside a capture of a section page.</li><li>Each section page is published as a copy with a link back to this hub added at its top. The pages in the repository are left as they are.</li></ul></div><div><h3 class="sub">Not tested</h3><ul class="facts"><li>Real readers. The tracker options, the pillar icons and the stacked lockups have not been shown to anyone outside the studio; the icon designer’s naming test is the studio’s own judgment.</li><li>Print. The color sheets were measured on screen only; no lead color has been proofed on newsprint or coated stock.</li><li>Any real screen reader, and browsers other than Chromium.</li><li>Party reading with real readers. The research memo’s party readings rest on published studies and examples, not a test of these sheets.</li></ul></div></div>
+<h3 class="sub">Change log</h3><p class="caption">Paths are relative to <code>oath-and-action-v6-brand-guide/</code>.</p>
+<div class="cols"><div><h4>Created</h4><ul class="facts files"><li><code>work/handoffs/phase-2/20261107_Board-6-Brief.md</code></li><li><code>work/handoffs/phase-2/20261107_Color-And-Aesthetic-Research.md</code></li><li><code>work/handoffs/phase-2/20261107_Board-6-Tracker-Notes.md</code></li><li><code>work/handoffs/phase-2/20261107_Board-6-Pillar-Icons-Notes.md</code></li><li><code>work/handoffs/phase-2/20261107_Board-6-Stacked-Notes.md</code></li><li><code>work/handoffs/phase-2/20261107_Board-6-Color-Sheets-Notes.md</code></li><li><code>work/handoffs/phase-2/20261107_Board-6-Builder-Notes.md</code></li><li><code>work/handoffs/phase-2/20261107_CD-Review-Of-Board-6.md</code></li><li>work/boards/phase-2/board-6/ (four section pages, the stacked lockup SVGs, the board content and this record)</li><li>work/build/scripts/phase-2/ (the Board 6 section builders, the hub builder and its capture helper)</li><li><code>work/boards/20261107_Board-6-Explorations.html</code></li></ul></div><div><h4>Modified</h4><ul class="facts files"><li>work/ledger/20261020_Decision-Log.md (DR-104 to DR-107, D2-320 to D2-322)</li></ul></div></div></section>
+<p class="foot caption">Built November 7, 2026 at 2:07 a.m. UTC by <code>work/build/scripts/phase-2/board6_hub_build.py</code>, from the creative director’s content, the studio record and the four section pages as they stood then.</p>
+</main>
+<script>
+(function () {
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  // A frame takes keyboard focus only while it is wider than the window and so needs scrolling.
+  function frames() {
+    $$('.frame').forEach(function (f) {
+      var over = f.scrollWidth > f.clientWidth + 1;
+      if (over) f.setAttribute('tabindex', '0'); else f.removeAttribute('tabindex');
+      var h = f.previousElementSibling; if (h && h.classList.contains('hint')) h.hidden = !over;
+    });
+  }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(frames, 120); });
+  $$('.frame img').forEach(function (i) { if (!i.complete) i.addEventListener('load', frames); });
+  frames();
+  // Answers: each card's marks join the reply. Saved in this browser only, keyed to this version of the decisions.
+  var out = document.getElementById('reply-text');
+  if (!out) return;
+  var KEY = 'oa-board-6-answers:' + (document.querySelector('.board') || document.body).getAttribute('data-decisions');
+  var store = {};
+  try { store = JSON.parse(window.localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+  function save() { try { window.localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+  var cards = $$('.dec[data-dec]');
+  function compose() {
+    var lines = [];
+    cards.forEach(function (c) {
+      var id = c.getAttribute('data-dec'), s = store[id] || {};
+      var note = (s.note || '').trim(), part = '';
+      if (s.opt) {
+        var r = c.querySelector('input[value="' + s.opt + '"]');
+        part = s.opt === c.getAttribute('data-rec') ? 'as recommended (' + s.opt + ').' : '(' + s.opt + ') ' + (r ? r.getAttribute('data-short') : '') + '.';
+      }
+      if (note) part = part ? part + ' ' + note : note;
+      if (part) lines.push(id + ': ' + part.replace(/\.\.$/, '.'));
+    });
+    out.value = lines.length ? lines.join('\n') : out.getAttribute('data-sample');
+  }
+  cards.forEach(function (c) {
+    var id = c.getAttribute('data-dec'), s = store[id] || {};
+    $$('input[type=radio]', c).forEach(function (r) {
+      if (s.opt === r.value) r.checked = true;
+      r.addEventListener('change', function () { store[id] = store[id] || {}; store[id].opt = r.value; save(); compose(); });
+    });
+    var t = c.querySelector('textarea[data-note]');
+    if (t) { if (s.note) t.value = s.note; t.addEventListener('input', function () { store[id] = store[id] || {}; store[id].note = t.value; save(); compose(); }); }
+  });
+  compose();
+  var btn = document.getElementById('copy-reply'), st = document.getElementById('copy-status');
+  btn.addEventListener('click', function () {
+    var done = function () { st.textContent = 'Copied. Paste it into our chat.'; };
+    var fall = function () { out.focus(); out.select(); try { document.execCommand('copy') ? done() : (st.textContent = 'Press Ctrl or Command and C to copy the selected reply.'); } catch (e) { st.textContent = 'Press Ctrl or Command and C to copy the selected reply.'; } };
+    try { navigator.clipboard.writeText(out.value).then(done, fall); } catch (e) { fall(); }
+  });
+})();
+</script></body></html>
