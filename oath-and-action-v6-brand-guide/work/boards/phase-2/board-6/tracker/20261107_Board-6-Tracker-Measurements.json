@@ -6,7 +6,7 @@
    "targets": {
     "cta": {
      "count": 16,
-     "minW": 180.828125,
+     "minW": 180.8125,
      "minH": 44
     },
     "ask": {
@@ -16,7 +16,7 @@
     },
     "toc": {
      "count": 9,
-     "minW": 54.625,
+     "minW": 54.640625,
      "minH": 44
     }
    },
@@ -122,7 +122,7 @@
     332,
     342
    ],
-   "pageHeight": 53594,
+   "pageHeight": 53621,
    "sidewaysScroll": false,
    "focus": {
     "stops": 29,

@@ -8,7 +8,7 @@ Board to open: `work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-
 
 One page that opens with all seven sheets side by side, small, with a table that measures the seven leads. Each sheet follows at full size, 1,200 px wide. The page closes with every color pair the sheets print and three questions for Dustin.
 
-Every sheet has the same layout and the same content, so the color is the only thing that changes between them. Each one is 1,200 by 1,922 px at 1440, and the seven share fixed row heights, so every module sits in the same place on each sheet. Each sheet shows:
+Every sheet has the same layout and the same content, so the color is the only thing that changes between them. Each one is 1,200 by 1,949 px at 1440, and the seven share fixed row heights, so every module sits in the same place on each sheet. Each sheet shows:
 
 - the wordmark from its display master, with ampersand B recolored through its `--amp` fill only;
 - a hero swatch naming the scheme, its feel in two words and the lead's hex;
@@ -49,9 +49,13 @@ We recommend Patina.
 
 It is a band lead, so one hex draws ampersand B, the lever and icon accents on Newsprint at 4.26 to 1 and on the Charcoal tile at 3.12 to 1, with no keyline. That hex also fills the ask under a White label at 6.01 to 1. It carries the lowest party reading of the six: no party claims teal in the sources the research lead checked. It reads as civic, the green that public roofs and statues weather to, and it has peers on paper grounds and in civic systems (the Financial Times's teal, GOV.UK's teal). Of the band leads, it gives the widest margin on Newsprint.
 
-It costs two token changes, both drawn on its sheet. The focus ring moves from Verdigris to Charcoal, and the diverging scale's green end moves from Verdigris to Brass, so the identity lead never stands for a data value. Patina also matches Stone in grayscale and for a reader with deuteranopia, so a chart's emphasis has to come from its bold label, which Rule 05.4 asks for already.
+The cost of a move is large, and it is the same for every lead, as the creative director's review and hub decision B6-7 set it out. Red stands behind 12 color tokens (signature, the ask fill, chart emphasis and error, each on three surfaces; nine move if red stays as the error state, as C2 recommends). The move also touches the 244 two-color Civic Line files (122 red-black and 122 red-newsprint) and their 732 two-color tiles, and Rules 05.3 and 05.5, which are written around red. Chapters 03 to 05 and every identity proof are then made again. Pillar Red is locked, so the move waits for the reader check, a press proof on newsprint and Dustin's named approval. I counted the tokens in `tokens.css` and the files on disk.
 
-If Dustin wants to keep the urgency red gives the brand today, Signal Orange is the second choice. It changes no token, and its White label passes even for small text (4.72 to 1). Its costs are readings: the Guardian marks opinion in a near-identical orange, orange means WARNING on U.S. safety signs, and Wear Orange uses it for gun safety.
+Patina adds three changes of its own, all drawn on its sheet. The focus ring and the success check move from Verdigris to Charcoal, and the diverging scale's green end moves from Verdigris to Brass, so the identity lead never stands for a data value. Patina also matches Stone in grayscale and for a reader with deuteranopia, so a chart's emphasis has to come from its bold label, which Rule 05.4 asks for already.
+
+The creative director disagrees with this pick: the review recommends keeping Pillar Red, with how readers read it for party added to the reader check, and rates Patina the strongest of the six. The board prints both views.
+
+If Dustin wants to keep the urgency red gives the brand today, Signal Orange is the second choice. It adds nothing to the shared cost, and its White label passes even for small text (4.72 to 1). Its costs are readings: the Guardian marks opinion in a near-identical orange, orange means WARNING on U.S. safety signs, and Wear Orange uses it for gun safety.
 
 Three findings beyond the memo bear on the pick:
 
@@ -66,7 +70,10 @@ Three findings beyond the memo bear on the pick:
 - D2-xxx | Add Deep Patina, #1B5250, as Patina's hover fill only | The memo names no deep partner for Patina; White on it measures 8.86 to 1
 - D2-xxx | All seven sheets use one layout and one set of content | Color is then the only variable between sheets
 - D2-xxx | The seven sheets share fixed row heights, each the tallest natural height of that row across the seven, measured in a render pass | All seven are 1,200 by 1,922 px, and each module sits in the same place on every sheet and in the strip
-- D2-xxx | The sheets run 1,922 px tall, over the brief's example of about 1,350 | They carry the error, focus ring, diverging scale and print notes the memo asks each sheet to settle, and the full party reading; cutting them would hide what a lead costs
+- D2-xxx | Every cost statement names the full cost of a move, as the creative director's review and B6-7 set it out: the recommendation, the comparison table's shared-cost line, an "Every move" line on each exploration sheet and C1's reason; the table's last column now reads "Added to the shared cost" | The page first said Patina "costs two token changes" and Signal Orange "changes no token", which understated the move (CD review, required change 3)
+- D2-xxx | Patina's sheet adds the success check, which moves from Verdigris to Charcoal with its word | The review found the sheet left success out; a check carries its word, so Charcoal does the job without a new color
+- D2-xxx | The recommendation box and C1 print the creative director's view, keeping Pillar Red, beside the studio's pick | Dustin sees both views before he answers B6-7
+- D2-xxx | The sheets run 1,949 px tall, over the brief's example of about 1,350 | They carry the error, focus ring, diverging scale and print notes the memo asks each sheet to settle, and the full party reading; cutting them would hide what a lead costs
 - D2-xxx | The button shown is the ask, in the lead's fill, with default, hover, focus and disabled states | The ask is where the lead's fill and label contrast matter; today's primary button is Charcoal and does not change with the lead
 - D2-xxx | Hover steps the fill to the lead's deep partner and underlines the label; today's sheet underlines only | Rule 05.4 asks every state to change shape or words with color, and today's tokens name no ask hover fill
 - D2-xxx | The focus ring stays Verdigris except on Patina, where it moves to Charcoal, and on Federal Ink, where the button turns Civic Yellow inside a Charcoal ring | Change only what a lead collides with; Verdigris sits one step from Patina, and the memo gives Civic Yellow the focus job, as GOV.UK does
@@ -89,8 +96,10 @@ Three findings beyond the memo bear on the pick:
 - The build computes 335 color pairs from the WCAG 2.2 formula and stops when a pair falls under its threshold. Sixteen sit under it on purpose, and the page names each one: eleven fills inside a Charcoal keyline or edge, where the edge carries the contrast (the error glyph on all seven sheets, Highlighter's and today's ask, today's hover and today's named bar), and on today's sheet five red marks at 2.96 to 1 that the guide accepts as signature red or as large type (the wordmark's B twice, the hinge B, the icon accents and the lever). Every pair is listed in `20261107_Board-6-Color-Sheets-Pairs.json`.
 - The script reproduces every ratio in the memo's table for the 21 colors used, three ratios each, to the hundredth.
 - `board6_color_sheets_render.js` read back the painted color of 132 tagged marks, labels and focus rings on the full-size sheets at 1440 px (42 fills, 35 strokes, 34 text colors, 14 backgrounds and 7 outlines). None fell under its printed ratio, and none painted a color other than the one the build measured.
-- The same script measured each row's natural height on all seven sheets, set them as fixed rows, and found no module overrunning its row after the rebuild. All seven sheets measure 1,200 by 1,922 px at 1440.
+- The same script measured each row's natural height on all seven sheets, set them as fixed rows, and found no module overrunning its row after the rebuild. All seven sheets measure 1,200 by 1,949 px at 1440.
 - `node work/build/scripts/phase-2/dataviz_check.js <page> --board`: PASS, 0 failures at 1440, 390 and 360 px. No text under 13 px, rendered text contrast passes, no sideways scroll, axe-core 4.10.2 with WCAG 2.2 AA tags finds nothing, all 31 focus stops in the first 40 Tab presses show a ring, 70 bars in 14 charts sit on their scale, 85 red paints all carry `data-red` with no working-red job, and Inter, Inter Tight and Lora load. A second run with `--mid` added 1024 and 768 px and also passed with 0 failures.
+- After the cost revision: the rebuild, the render pass (132 painted pairs, 0 under, 0 mismatched; the first pass caught the new line overrunning the bottom row, and the second build took its height, with no overruns) and `dataviz_check.js --board`, PASS with 0 failures at 1440, 390 and 360 px. I looked at the new recommendation box and Patina's bottom row at 1440 px.
+- The counts behind the cost: 12 references to Pillar Red in `tokens.css`, 122 files each in `civic-line/red-black/` and `civic-line/red-newsprint/`, and 122 two-color files in each of the six tile folders.
 - I looked at every sheet at 1440 px, and at 390 px (Patina in four parts, the other six side by side), the strip in color and in grayscale, and the page's top at 1440 and 390 px and its bottom at 1440 px. Fixes from that look: the sheets were 1,988 to 2,116 px tall and uneven (now 1,922 and equal), the strip widened the page on phones, captions named the scheme where they meant the color (Federal Ink for Prussian), a print note held a warning-state point, the measurements summary miscounted the pairs under threshold, the title split "Oath" from "& Action", and Inter drew "2x4" as "2×4".
 
 ## Not tested
@@ -115,5 +124,7 @@ Created:
 - `work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets-Check-Results.json`, from `dataviz_check.js`.
 - `work/boards/phase-2/board-6/color-sheets/captures/`: each sheet at 1440 and 390 px, the strip in color and grayscale, and the checker's full-page captures.
 - `work/handoffs/phase-2/20261107_Board-6-Color-Sheets-Notes.md`, this note.
+
+Revised the same day, after the creative director's review (`work/handoffs/phase-2/20261107_CD-Review-Of-Board-6.md`) and hub decision B6-7: `board6_color_sheets_build.py` now states the full cost of a move in the recommendation, the comparison table, each exploration sheet and C1; adds Patina's success check; and prints the creative director's recommendation to keep Pillar Red. The board, its pairs, render and check results and the captures were rebuilt, and this note was updated.
 
 Modified: nothing else. The identity masters, the Civic Line drawings, the tokens, the guide, the ledgers and the other Board 6 sections were read only. Nothing was committed or pushed.

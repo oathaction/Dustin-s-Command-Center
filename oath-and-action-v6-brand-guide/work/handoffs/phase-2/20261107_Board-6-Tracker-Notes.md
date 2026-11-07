@@ -8,7 +8,7 @@ Open the board: `work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.ht
 
 One self-contained page in nine parts, in the order the brief and the main session asked for:
 
-1. **Six plain steps.** The proposal, with what each step means, which of today's nine stages it covers, how each state shows in words, and Dustin's four bills read today and on six steps.
+1. **Six plain steps.** The proposal, with what each step means, which of today's nine stages it covers, how each state shows in words, how a signed bill reads as law in each option, and Dustin's four bills read today and on six steps.
 2. **The four options side by side.** One view at 1440 px: the four bills as rows, the four options as columns, each drawn at 240 px, then a table that compares the options on seven questions, then the recommendation. On a phone the comparison stacks by bill.
 3. to 6. **Each option in full.** For each: what it is, our read, its six states at true size and twice size, the four-bill list at 360 and 1024 px on Newsprint and on Charcoal (16 lists in all), and its sizes. Option D adds H.4212's own page at 360 and 1024 px on both grounds.
 7. **The grid keeps one job.** A before and after: the five coding jobs that retire, drawn from chapter 08's specifications, beside the four places the lockmark keeps (masthead, page header, footer, sign-off), the kicker without the grid, and a table of what retires and what takes each job.
@@ -26,9 +26,9 @@ Every bill, date, committee and section title is invented, and each piece carrie
 | 3 | Committee vote | The committee votes on whether to send the bill to the full House or Senate. | 4 Out of committee |
 | 4 | First chamber | The full House or Senate, wherever the bill was filed, votes on it. | 5 Passed one chamber |
 | 5 | Second chamber | The other chamber votes, and both agree on one text. | 6 Passed both chambers, 7 Final text agreed |
-| 6 | Law | The governor signs it, or lawmakers override a veto, and it becomes law. The bill's page gives the date it takes effect. | 8 Signed, 9 In effect |
+| 6 | Governor | The governor signs or vetoes the bill, and lawmakers can override a veto. Once all six steps are done, the tracker says "Became law on" with the date, and the bill's page adds the date it takes effect. | 8 Signed, 9 In effect |
 
-A step that never happened keeps its number and takes a slash, so "Step 4 of 6" still counts it, and the words say what was missed. A bill that stops ends its line at that step with a filled square, and the words give the date and the reason. "You can take part now" is the one working red (Rule 05.3), always on a shape of its own, with a Charcoal keyline, beside those words.
+A bill at step 6 reads "Step 6 of 6: Governor", which says it is waiting. Once the governor signs, all six steps are done and the words say "Became law on April 2. It takes effect July 1." (H.1180, Illustrative, drawn in every option in part 1). A step that never happened keeps its number and takes a slash, so "Step 4 of 6" still counts it, and the words say what was missed. A bill that stops ends its line at that step with a filled square, and the words give the date and the reason. "You can take part now" is the one working red (Rule 05.3), always on a shape of its own, with a Charcoal keyline, beside those words.
 
 ### The four options
 
@@ -50,7 +50,9 @@ The main session numbers these when it logs them.
 - D2-xxx | The six steps keep Hearing as its own step and fold Filed with Sent to committee, Passed both chambers with Final text agreed, and Signed with In effect | The hearing is where the public is invited to speak, and a missing hearing is news; the folded pairs are stages a reader seldom needs apart, and a bill's page keeps their dates
 - D2-xxx | Steps 4 and 5 are named First chamber and Second chamber, and the words beside each tracker name the real chamber | One name serves H. and S. bills in one list; "chamber" is defined at first use (H02)
 - D2-xxx | Trackers name the step a bill is at now, where today's list names the last stage it finished | The current step is the one a reader can act on; S.0876 reads "Step 4 of 6: First chamber" in place of "Stage 4 of 9: Out of committee"
-- D2-xxx | H.1180 is drawn as having passed both chambers in the same text, so it sits at step 6, waiting for the governor | Step 5 folds in Final text agreed; the bill is invented
+- D2-xxx | Step 6 is named Governor, defined as "The governor signs or vetoes the bill, and lawmakers can override a veto" | Trackers name the step a bill is at now, so "Step 6 of 6: Law" told a reader a bill waiting for the governor was law (creative director's review, blocking fault 1)
+- D2-xxx | When all six steps are done, the tracker's words say "Became law on" with the date and add the date it takes effect; Option C's stage word reads "Became law" with the date | A signed bill reads as law in plain words in every option
+- D2-xxx | H.1180 is drawn as having passed both chambers in the same text, so it sits at step 6, waiting for the governor; the became-law example shows it signed on April 2, taking effect July 1 | Step 5 folds in Final text agreed; the bill and dates are invented
 - D2-xxx | H.3301's skipped hearing is step 2, and the status line says "Step 2 never happened" in every option, the comparison cells included | Every state named in words beside its mark
 - D2-xxx | A step that never happened is drawn with a slash in every option | A slash reads as "none" and avoids the dashed texture the atlas gives a plausible link (chapter 08's own note)
 - D2-xxx | A stopped bill shows a filled square at its last step, and its line ends there | A circle-to-square change survives grayscale; the words give the date and the reason
@@ -104,6 +106,17 @@ Criteria met on the rendered page: 1.1.1 and 1.3.1 (each mark is hidden from scr
 - If Dustin picks T1 a and T2 b, chapter 08 becomes the lockmark's chapter (Rules 08.1 and 08.2), and the tracker moves to chapter 18 with its stage sets in chapter 15. Board A's A2 and A5 are overtaken (DR-104).
 - The comparison and both recommended options reuse the same mark functions in the build script, so a picked option can be lifted into the guide's specimens without redrawing.
 
+## Fix pass, November 7, 2026
+
+From the creative director's review (`work/handoffs/phase-2/20261107_CD-Review-Of-Board-6.md`), blocking fault 1, as the main session asked:
+
+- Step 6 is renamed Governor in the steps table, every option's lists and keys, the state keys, the comparison cells, Option D's bill pages, the step list a screen reader hears, T1 and these notes. No step is named Law anywhere on the page.
+- H.1180 now reads "Step 6 of 6: Governor. Both chambers passed it, and it waits for the governor to sign or veto it."
+- New in part 1, "When a bill becomes law": what step 6 means, that a veto that stands ends the line as Stopped, and H.1180 after signing drawn in all four options, each reading "Became law on April 2. It takes effect July 1." (Option C: "Became law", April 2). Illustrative.
+- Option D's bill page, step 6: "The governor signs or vetoes the bill. Once it is signed, this page gives the date it became law and the date it takes effect."
+- Rebuilt with the build script, re-measured, rebuilt, and ran `node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html --board`: PASS, 0 failures at 1440, 390 and 360 px. A scan of the rendered copy finds no step named Law, and every "Step 6 of 6" reads Governor. The became-law example was looked at at 1440 px (twice size) and 390 px.
+- Not done in this pass: the review's other tracker items (step 5's hearing note, a stopped bill in a list, the comparison heads on one line, the sign-off from the display master at 48 px). The main session asked for fault 1 only.
+
 ## Change log
 
 Created:
@@ -115,4 +128,4 @@ Created:
 - `work/boards/phase-2/board-6/tracker/captures/` (15 images: the check's overview captures at 1440 px in color and grayscale and at 390 px, the comparison in color and grayscale, the before and after, each option's state key, each option's 360 px list at twice size, and Option D's bill page at twice size)
 - `work/handoffs/phase-2/20261107_Board-6-Tracker-Notes.md` (this file)
 
-Modified: none. Nothing was committed or pushed.
+Modified in the fix pass: `work/build/scripts/phase-2/board6_tracker_build.py`, the board HTML, its measurements and check results, the captures the check rewrites, and this file. Nothing was committed or pushed by me.

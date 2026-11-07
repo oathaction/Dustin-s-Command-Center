@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html",
- "checked": "2026-11-07T01:46:50.685Z",
+ "checked": "2026-11-07T02:05:44.700Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1261,
+   "texts": 1278,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -43,7 +43,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 19111,
+   "height": 19833,
    "axe": [],
    "focusStops": 31,
    "focusWithoutRing": []
@@ -52,7 +52,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1225,
+   "texts": 1242,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -86,7 +86,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 43721,
+   "height": 45223,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -95,7 +95,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1225,
+   "texts": 1242,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -129,7 +129,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 45290,
+   "height": 47057,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null

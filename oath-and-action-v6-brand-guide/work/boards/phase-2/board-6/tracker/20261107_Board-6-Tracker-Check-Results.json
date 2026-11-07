@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/board-6/tracker/20261107_Board-6-Tracker.html",
- "checked": "2026-11-07T01:46:17.459Z",
+ "checked": "2026-11-07T02:05:54.938Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2118,
+   "texts": 2176,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -17,8 +17,8 @@
    "clientWidth": 1440,
    "overflowing": [],
    "textCheck": {
-    "drawings": 361,
-    "labels": 288,
+    "drawings": 370,
+    "labels": 300,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -45,7 +45,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 30021,
+   "height": 30889,
    "axe": [],
    "focusStops": 9,
    "focusWithoutRing": []
@@ -54,7 +54,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2101,
+   "texts": 2159,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -62,8 +62,8 @@
    "clientWidth": 390,
    "overflowing": [],
    "textCheck": {
-    "drawings": 361,
-    "labels": 288,
+    "drawings": 370,
+    "labels": 300,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -90,7 +90,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 52161,
+   "height": 53621,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -99,7 +99,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2101,
+   "texts": 2159,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -107,8 +107,8 @@
    "clientWidth": 360,
    "overflowing": [],
    "textCheck": {
-    "drawings": 361,
-    "labels": 288,
+    "drawings": 370,
+    "labels": 300,
     "outside": [],
     "overlaps": [],
     "marksOutside": []
@@ -135,7 +135,7 @@
     "Inter Tight",
     "Lora"
    ],
-   "height": 53433,
+   "height": 54942,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
