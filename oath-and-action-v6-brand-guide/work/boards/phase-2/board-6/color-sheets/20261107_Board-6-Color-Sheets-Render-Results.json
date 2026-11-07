@@ -7,55 +7,55 @@
  "sheets": {
   "patina@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "federal-ink@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "signal-orange@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "archive-ochre@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "highlighter@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "ballot-violet@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "today@1440": {
    "width": 1200,
-   "height": 1922
+   "height": 1949
   },
   "patina@390": {
    "width": 358,
-   "height": 5004
+   "height": 5116
   },
   "federal-ink@390": {
    "width": 358,
-   "height": 5069
+   "height": 5161
   },
   "signal-orange@390": {
    "width": 358,
-   "height": 4995
+   "height": 5087
   },
   "archive-ochre@390": {
    "width": 358,
-   "height": 4930
+   "height": 5021
   },
   "highlighter@390": {
    "width": 358,
-   "height": 4871
+   "height": 4963
   },
   "ballot-violet@390": {
    "width": 358,
-   "height": 4974
+   "height": 5065
   },
   "today@390": {
    "width": 358,
@@ -80,14 +80,14 @@
   "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-ballot-violet-390.jpg",
   "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-today-390.jpg"
  ],
- "rowsInUse": "156px 528px 358px 394px 259px",
+ "rowsInUse": "156px 528px 358px 394px 286px",
  "overrun": [],
  "rows": [
   156,
   528,
   358,
   394,
-  259
+  286
  ],
  "rowsPerSheet": {
   "patina": [
@@ -95,42 +95,42 @@
    528,
    358,
    394,
-   231
+   286
   ],
   "federal-ink": [
    156,
    527,
    358,
    388,
-   259
+   286
   ],
   "signal-orange": [
    156,
    507,
    358,
    394,
-   251
+   266
   ],
   "archive-ochre": [
    156,
    507,
    358,
    376,
-   218
+   266
   ],
   "highlighter": [
    156,
    486,
    358,
    394,
-   198
+   266
   ],
   "ballot-violet": [
    156,
    507,
    358,
    376,
-   244
+   266
   ],
   "today": [
    156,

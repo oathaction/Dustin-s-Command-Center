@@ -151,7 +151,7 @@ BILLS = [
 
 # H.1180 once the governor signs it: all six steps done. Invented dates, Illustrative.
 LAW_BILL = dict(id='H.1180', title='Library hours', step=6, law='April 2', effect='July 1',
-                states=['done'] * 6, line='It takes effect July 1.',
+                states=['done'] * 6, line='It takes effect July 1.', short='It takes effect July 1.',
                 notes={6: 'Signed April 2. It takes effect July 1.'})
 
 
@@ -446,7 +446,7 @@ def row(opt, b, ctx):
         body = vt_list(b, d, notes=(ctx != 'm'))
         tp = take_part(b, tmark, compact=(ctx == 'm'))
         if ctx == 'm':
-            return f'{body}<p class="st">{E(status_words(b))}</p>{tp}'
+            return f'{body}<p class="st">{E(status_words(b))}{" " + E(b["short"]) if b.get("law") else ""}</p>{tp}'
         return f'<li class="row">{bill}{body}{tp}</li>'
     mark = mark_for(opt, b, ctx)
     if opt == 'C':
