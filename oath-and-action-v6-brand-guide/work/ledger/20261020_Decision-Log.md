@@ -956,3 +956,62 @@ Four owners worked in parallel under `work/handoffs/phase-2/20261107_Apply-Pass-
 | # | Decision | Reason |
 |---|---|---|
 | D2-415 | Chapter 09 is named "Pillar icons" in the chapter list | Dustin calls the four marks pillar icons (DR-105, DR-111), and the drawings are Civic Line icons since DR-04; the creative director and the editor both asked for it (CD-S5) |
+
+All four owners fixed every Must fix item under `work/handoffs/phase-2/20261107_Apply-Pass-Fix-Brief.md`. Their routine calls, numbered by the main session:
+
+### Identity designer, fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-416 | Until Dustin answers, the end mark stands at B's 16 px minimum, with B's band on the capitals from 20 px text, and every figure on the page is the measured one | The fix brief keeps B as close to cap height as its minimum allows; this replaces D2-333's "14 px" figure, which was the master's width |
+| D2-417 | The end mark sits half an em after the period, in a no-wrap span with the last word | CA-S4: a word space read as "and" opening a new clause; the span keeps B from starting a line |
+| D2-418 | Board plate (a) sets B's band, the 16 px master's y 1 to 15, on the text's capitals | Rule 04.3 already sets B in a hinge headline this way, so "cap height" means one thing in the guide |
+| D2-419 | The display lockmark master is copied to `20261107_Lockmark-Display-Master.svg`, and its Prussian file to the same name with `-Prussian-White`; the V5-named files stay for the boards that read them | D2-298's rename, with the drawing byte for byte the same; the guide can now list the file |
+| D2-420 | The footer place sets the lockmark first, then 12 px and the tagline, at the footer's left edge | CA-S10: one arrangement, and "beside the tagline" read literally |
+| D2-421 | Rule 04.6's failure draws the registered sign as outlines from Liberation Sans, not a PNG | CA-S5: the comparison stays sharp at twice size and sets "minutes." in Inter in both rows |
+| D2-422 | The proposed 48 px lockmark master lives only in the board folder | A new master needs Dustin's named approval (gate rule 4) |
+
+### Systems designer, fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-423 | Step 2 says many state legislatures take testimony from the public and congressional committees hear the witnesses they invite, and step 5 says the second chamber’s committee can hold a hearing first | BE-01: House rule XI and Senate rule XXVI give the public no right to testify |
+| D2-424 | No chapter 11 plate is wider than 600 px, and the build refuses one that is | CA-M1: the chapter column holds a 606 px stage from a 768 px window up |
+| D2-425 | The tracker’s wide form starts where the list’s own column reaches 552 px (34.5rem), by container query; below that the names sit in a key | A list in a narrow column keeps its key at any window size |
+| D2-426 | Rule 11.1’s correct plate stacks the state and federal bills in one 360 px piece, each with its own key | Both step 6 names show at true size at every width, phones included |
+| D2-427 | Invented federal bills take numbers from H.R. 99001 up | BE-09: H.R. 3120 is a real bill of the 119th Congress |
+| D2-428 | Rule 11.3 names three ways a bill becomes law, and the words say how when it was not signed | BE-07: U.S. Constitution, Article I, section 7 |
+| D2-429 | A hearing on a bill’s subject held before the bill was filed does not fill step 2, and the step’s note names it | BE-03: one rule, so the next writer draws the same facts the same way |
+| D2-430 | A card without the take-part mark may end on the red ask | CD-S2 and BE-13: chapter 01’s pillar cards and Rule 11.4 then agree |
+| D2-431 | Keys draw numbered marks, the take-part line shows its step’s number, and phone rows hang on the text edge | CA-N1, CA-N2 and CA-N3 |
+| D2-432 | Failure plates in chapters 05 and 06 that could pass for a finished piece carry the band, flush on the piece | D2-308 and CA-S6 |
+
+### Editor, fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-433 | Rule 01.11's correct plate says it shows two of the loop's redraws and gives no count, until the research lead counts the atlas's record by party | BE-02: no count exists in the research, and the plate may claim only what it shows (DR-93) |
+| D2-434 | A hearing on a bill's subject held before the bill was filed does not fill step 2; the step's note or the source line names it | BE-03: one standard for the next bill, matching the H.R. 7008 card |
+| D2-435 | The H.R. 7008 card takes chapter 11's 324 px row on the text edge, its status style and its key after the status words; a 288 px row only under 24.25em | CA-S3: one geometry for every story card, and numbers at 13 px at every width checked |
+| D2-436 | The card's committee history is one sentence, and the earlier hearing sits in the source line | CD-S1 and CA-S3: Rule 11.1's one plain sentence, with D2-407's two facts kept |
+| D2-437 | Authors and holders are described by role and affiliation, and stated politics stay in the source line | BE-04, DR-93's one way of describing sources, as Rule 01.16 does |
+| D2-438 | Failure plates that could pass for our work carry the band, and fragments of a line do not | CA-S6 and D2-308, applied across chapters 01 and 02 |
+| D2-439 | Pillar icons are spaced from their measured ink, not their 128-unit box | CA-S7: equal space from drawing to word for every pillar |
+
+### Engineer, fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-440 | The shell adds an Illustrative label to a caption only when the piece shows none, and `illusOnce` fails a plate with both | DR-97: one label at the head of a wholly invented piece (CD-N1, CA-N11) |
+| D2-441 | The scroll hint reads "Wider than this column." | The column is the limit at every width (CD-N2, CA-N7) |
+| D2-442 | Every fixed-width plate carries the Fit to window switch, shown only where fitting keeps every text at 13 px or more | CA-N9 asks for the switch on wide plates, and CA-M1's floor rules out any fit that sets type under 13 px |
+| D2-443 | `fitFloor` sets each offered switch to Fit to window and fails text rendered under 13 px | The fix brief's check, which also guards the shell's own rule |
+| D2-444 | A chapter's number takes a 36 px box and a 12 px gap in the contents and the part openers | Titles, lines and later names start on one edge (CA-N8) |
+| D2-445 | The specification tables' label column is 11rem in every rule | Values start on one edge down a chapter (CA-N10) |
+| D2-446 | Chapter 09 keeps the anchor `pillar-marks` until its file is first written | No link to it reaches the page yet, and D2-415 renames the title |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-447 | The main session ran the final checks after the fix pass: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures) and the token tests (all pass) | A check is reported only once the main session has run it |
