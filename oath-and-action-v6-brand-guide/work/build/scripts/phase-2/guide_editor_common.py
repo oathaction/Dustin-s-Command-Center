@@ -198,7 +198,7 @@ def ill():
 def kicker(label, more=None, illus=False, icon=None):
     """One kicker grammar (D2-250, DR-103): the content label, then at most one more part after a middle dot, the series
     name if the piece belongs to one, otherwise the topic. "Our position" takes the position label's Charcoal fill.
-    DR-112: a kicker is words; the one picture it may hold is a topic icon, 24 px in one color, just before the topic's
+    DR-112: a kicker is words; the one picture it may hold is a topic icon, 24 px in one color, directly before the topic's
     own word. `icon` is that topic's Civic Line ID, and the build checks that the icon's name is the word beside it."""
     lab = f'<span class="pos">{e(label)}</span>' if label == "Our position" else f'<span class="lb">{e(label)}</span>'
     tail = ""

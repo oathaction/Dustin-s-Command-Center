@@ -511,7 +511,7 @@ def build(book):
         ("Locked lines", "Our four brand lines whose wording never changes: the tagline, the mission, the reader promise and "
                          "the editorial commitment.", "#rule-02-23", "Rule 02.23"),
         ("Pillars", "Explain, Track, Connect and Act, the four jobs our work does, always in that order. Each pillar has an "
-                    "icon, and its word always sits beside it.", None, None),
+                    "icon, set with its word beside it.", None, None),
         ("The seven colors", "Newsprint, a warm off-white, is our page, and Charcoal carries the words. Pillar Red marks one "
                              "thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a muted green, and "
                              "White support the rest.", "#color", "Chapter 05"),
@@ -1111,7 +1111,7 @@ def build(book):
                  "and the same type, and name who holds each one in the same form. A claim with any other grade takes one reading, at the "
                  "strength its grade allows, and no piece adds a second reading to even the score."],
         "why": {"text": ["Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either. "
-                         "A second reading set beside a settled finding would invent a disagreement the evidence does not hold."],
+                         "A second reading added to a claim no credible study disputes would invent a disagreement."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-16-correct", f'<div class="ed">{lead16}<div class="rd"><div><p class="lab">One reading</p><p>{e(ra)}</p></div><div><p class="lab">The other reading</p><p>{e(rb)}</p></div></div><p class="src">{e(SRC_PAY)}</p></div>',
                                   css=(BASE, CHART, RCSS), rule="01.16",
@@ -1229,7 +1229,7 @@ def build(book):
                  "one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in "
                  "“Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
                  "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, "
-                 "placed just before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."],
+                 "placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."],
         "tokens": ["oa.color.action.primary.fill.onNewsprint", "oa.size.icon.medium"],
         "why": {"text": ["The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. "
                          "A topic icon beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as "
@@ -1237,7 +1237,7 @@ def build(book):
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-21-correct", kl_ok, css=(BASE, KCSS2), rule="01.21",
                                   alt="Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? "
-                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, just before the word Productivity: Does pay rise with productivity? Report, state legislatures, "
+                                      f"Tracker, Congress: {HR7008_TRACKER}. Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, directly before the word Productivity: Does pay rise with productivity? Report, state legislatures, "
                                       "illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, "
                                       "in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label."),
                     "caption": ("Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a "
@@ -1359,7 +1359,8 @@ def build(book):
                "caption": "Each locked line splits at the hinge, a commitment first and the action after it. The pillars split the same way, between Track and Connect, where a reader stops learning about a decision and starts taking part in it."},
               {"specimen": "s-01-pillars", "label": "The four pillars, always in this order",
                "caption": ("Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its "
-                           "icon also turns red. The icons are the Civic Line drawings made for the pillars, and chapter 09 sets their sizes. "
+                           "icon also shows its red part as a second sign. The icons belong to the Civic Line, our set of symbols, and "
+                           "chapter 09 sets their sizes. "
                            "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; "
                            "positions appear only in labeled Act pieces.")},
               {"specimen": "s-01-pieces", "label": "One piece from each pillar, at true size",

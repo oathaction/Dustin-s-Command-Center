@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-07T06:33:00.967Z",
+ "checked": "2026-11-07T06:37:56.963Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -222,7 +222,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 354494,
+   "height": 354512,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -250,7 +250,7 @@
    "anchors": {
     "ids": 509,
     "duplicates": [],
-    "links": 753,
+    "links": 754,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -411,7 +411,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9060,
+    "texts": 9065,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -452,7 +452,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 379536,
+   "height": 379539,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -480,236 +480,7 @@
    "anchors": {
     "ids": 509,
     "duplicates": [],
-    "links": 753,
-    "broken": [],
-    "relatedLinks": 131,
-    "relatedBad": [],
-    "aliases": []
-   },
-   "specimens": {
-    "stages": 232,
-    "pending": [],
-    "noAlt": [],
-    "imgNoAlt": [],
-    "svgUnnamed": [],
-    "exemptions": [
-     {
-      "specimen": "s-01-1-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-01-2-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-01-3-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-01-4-failure",
-      "skips": "contrast red"
-     },
-     {
-      "specimen": "s-01-5-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-01-18-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-02-22-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-02-24-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-03-1-failure",
-      "skips": "contrast scale"
-     },
-     {
-      "specimen": "s-03-7-failure",
-      "skips": "contrast scale"
-     },
-     {
-      "specimen": "s-03-8-failure",
-      "skips": "scale"
-     },
-     {
-      "specimen": "s-04-3-failure",
-      "skips": "red"
-     },
-     {
-      "specimen": "s-04-4-failure",
-      "skips": "red"
-     },
-     {
-      "specimen": "s-04-8-correct",
-      "skips": "scale"
-     },
-     {
-      "specimen": "s-04-8-failure",
-      "skips": "scale"
-     },
-     {
-      "specimen": "s-05-2-failure",
-      "skips": "contrast"
-     },
-     {
-      "specimen": "s-05-3-failure",
-      "skips": "contrast red"
-     },
-     {
-      "specimen": "s-05-6-failure",
-      "skips": "contrast"
-     },
-     {
-      "specimen": "s-05-7-failure",
-      "skips": "contrast"
-     },
-     {
-      "specimen": "s-06-2-failure",
-      "skips": "scale"
-     },
-     {
-      "specimen": "s-06-3-failure",
-      "skips": "size scale"
-     },
-     {
-      "specimen": "s-07-5-failure",
-      "skips": "scale"
-     },
-     {
-      "specimen": "s-11-4-failure",
-      "skips": "red contrast"
-     },
-     {
-      "specimen": "s-11-7-failure",
-      "skips": "size scale"
-     },
-     {
-      "specimen": "s-proofs-letterhead",
-      "skips": "scale"
-     }
-    ],
-    "landmarks": []
-   },
-   "names": {
-    "entities": [],
-    "count": 0
-   },
-   "typeScale": {
-    "stages": 222,
-    "exempt": 10,
-    "off": [],
-    "fluid": [
-     56,
-     44,
-     26,
-     20,
-     24,
-     19,
-     17,
-     15,
-     14,
-     13,
-     48
-    ]
-   },
-   "codes": {
-    "hits": [],
-    "count": 0,
-    "where": []
-   },
-   "retiredWords": {
-    "hits": [],
-    "count": 0,
-    "where": []
-   },
-   "retiredClasses": {
-    "hits": [],
-    "count": 0,
-    "where": [],
-    "exemptInFailurePlates": [
-     "specimen s-08-3-failure"
-    ]
-   },
-   "partOrder": [],
-   "ruleRefs": [],
-   "ruleRefCount": 0,
-   "text": {
-    "texts": 9027,
-    "minSize": 13,
-    "under13": [],
-    "lowContrast": [],
-    "skipped": 16
-   },
-   "overflow": {
-    "scrollWidth": 390,
-    "clientWidth": 390,
-    "overflowing": []
-   },
-   "red": {
-    "marks": 332,
-    "unmarked": [],
-    "pageJobs": [],
-    "specimenJobs": [],
-    "onPrussian": []
-   },
-   "writing": {
-    "emDashes": [],
-    "locked": [
-     {
-      "line": "tagline",
-      "exact": 26
-     },
-     {
-      "line": "mission",
-      "exact": 8
-     },
-     {
-      "line": "reader promise",
-      "exact": 8
-     },
-     {
-      "line": "editorial commitment",
-      "exact": 20
-     }
-    ],
-    "nearMisses": [],
-    "pillarOrder": []
-   },
-   "height": 457042,
-   "fonts": [
-    "Inter",
-    "Inter Tight",
-    "Lora"
-   ],
-   "axe": [],
-   "focusStops": null,
-   "focusProblems": null
-  },
-  {
-   "width": 360,
-   "structure": {
-    "headings": 153,
-    "h1": [
-     "Oath & Action Brand Guide, Edition 06"
-    ],
-    "skips": [],
-    "inSpecimen": [],
-    "badH3": [],
-    "ruleIds": [],
-    "ruleAnchors": [],
-    "rulesWithoutH3": [],
-    "rules": 100
-   },
-   "anchors": {
-    "ids": 509,
-    "duplicates": [],
-    "links": 753,
+    "links": 754,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -876,6 +647,235 @@
     "skipped": 16
    },
    "overflow": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "overflowing": []
+   },
+   "red": {
+    "marks": 332,
+    "unmarked": [],
+    "pageJobs": [],
+    "specimenJobs": [],
+    "onPrussian": []
+   },
+   "writing": {
+    "emDashes": [],
+    "locked": [
+     {
+      "line": "tagline",
+      "exact": 26
+     },
+     {
+      "line": "mission",
+      "exact": 8
+     },
+     {
+      "line": "reader promise",
+      "exact": 8
+     },
+     {
+      "line": "editorial commitment",
+      "exact": 20
+     }
+    ],
+    "nearMisses": [],
+    "pillarOrder": []
+   },
+   "height": 457073,
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "axe": [],
+   "focusStops": null,
+   "focusProblems": null
+  },
+  {
+   "width": 360,
+   "structure": {
+    "headings": 153,
+    "h1": [
+     "Oath & Action Brand Guide, Edition 06"
+    ],
+    "skips": [],
+    "inSpecimen": [],
+    "badH3": [],
+    "ruleIds": [],
+    "ruleAnchors": [],
+    "rulesWithoutH3": [],
+    "rules": 100
+   },
+   "anchors": {
+    "ids": 509,
+    "duplicates": [],
+    "links": 754,
+    "broken": [],
+    "relatedLinks": 131,
+    "relatedBad": [],
+    "aliases": []
+   },
+   "specimens": {
+    "stages": 232,
+    "pending": [],
+    "noAlt": [],
+    "imgNoAlt": [],
+    "svgUnnamed": [],
+    "exemptions": [
+     {
+      "specimen": "s-01-1-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-2-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-3-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-4-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-01-5-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-01-18-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-22-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-02-24-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-03-1-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-7-failure",
+      "skips": "contrast scale"
+     },
+     {
+      "specimen": "s-03-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-3-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-4-failure",
+      "skips": "red"
+     },
+     {
+      "specimen": "s-04-8-correct",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-04-8-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-05-2-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-3-failure",
+      "skips": "contrast red"
+     },
+     {
+      "specimen": "s-05-6-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-05-7-failure",
+      "skips": "contrast"
+     },
+     {
+      "specimen": "s-06-2-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-06-3-failure",
+      "skips": "size scale"
+     },
+     {
+      "specimen": "s-07-5-failure",
+      "skips": "scale"
+     },
+     {
+      "specimen": "s-11-4-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-11-7-failure",
+      "skips": "size scale"
+     },
+     {
+      "specimen": "s-proofs-letterhead",
+      "skips": "scale"
+     }
+    ],
+    "landmarks": []
+   },
+   "names": {
+    "entities": [],
+    "count": 0
+   },
+   "typeScale": {
+    "stages": 222,
+    "exempt": 10,
+    "off": [],
+    "fluid": [
+     56,
+     44,
+     26,
+     20,
+     24,
+     19,
+     17,
+     15,
+     14,
+     13,
+     48
+    ]
+   },
+   "codes": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredWords": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredClasses": {
+    "hits": [],
+    "count": 0,
+    "where": [],
+    "exemptInFailurePlates": [
+     "specimen s-08-3-failure"
+    ]
+   },
+   "partOrder": [],
+   "ruleRefs": [],
+   "ruleRefCount": 0,
+   "text": {
+    "texts": 9037,
+    "minSize": 13,
+    "under13": [],
+    "lowContrast": [],
+    "skipped": 16
+   },
+   "overflow": {
     "scrollWidth": 360,
     "clientWidth": 360,
     "overflowing": []
@@ -910,7 +910,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 472548,
+   "height": 472628,
    "fonts": [
     "Inter",
     "Inter Tight",

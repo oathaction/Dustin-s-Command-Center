@@ -266,7 +266,8 @@
   "width_px": 560,
   "alt": "At true size, the last lines of an article in 17 pixel body text, ending with ampersand B alone in Charcoal, the text’s ink, one space after the final period, its capitals at the 16 pixel master’s 14 pixels. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
   "illustrative": true,
-  "notes": "DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px."
+  "notes": "DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px.",
+  "fit_switch": true
  },
  "s-04-6-failure": {
   "chapter": "04",
@@ -274,7 +275,8 @@
   "width_px": 560,
   "alt": "Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.",
   "illustrative": true,
-  "notes": "The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean."
+  "notes": "The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean.",
+  "fit_switch": true
  },
  "s-04-7-correct": {
   "chapter": "04",
@@ -352,7 +354,7 @@
   "width_px": 358,
   "alt": "A bill in a tracker list at true size on a 358 pixel phone column: Bill S.0876, School bus contracts, with six numbered steps on a line. Steps 1 to 3 are filled circles, step 4 is a heavy ring marking the step the bill is at, and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. No lockmark sits in the row. Illustrative.",
   "illustrative": true,
-  "notes": "Chapter 11 owns these marks (DR-108, DR-109, D2-324). Drawn with the geometry of Board 6's Option B at its 360 px list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this plate follows them."
+  "notes": "Chapter 11 owns these marks (DR-108, DR-109, D2-324); checked against s-11-list-360-charcoal, same geometry. Drawn with the geometry of Board 6's Option B at its 360 px list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this plate follows them."
  },
  "s-08-3-failure": {
   "chapter": "08",

@@ -570,7 +570,7 @@
    ],
    "why": {
     "text": [
-     "Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either. A second reading set beside a settled finding would invent a disagreement the evidence does not hold."
+     "Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either. A second reading added to a claim no credible study disputes would invent a disagreement."
     ],
     "basis": "Design judgment"
    },
@@ -705,7 +705,7 @@
    "title": "Open every kicker with one content label.",
    "rule": [
     "Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in “Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
-    "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, placed just before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
+    "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, placed directly before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
    ],
    "tokens": [
     "oa.color.action.primary.fill.onNewsprint",
@@ -936,7 +936,7 @@
   {
    "specimen": "s-01-pillars",
    "label": "The four pillars, always in this order",
-   "caption": "Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its icon also turns red. The icons are the Civic Line drawings made for the pillars, and chapter 09 sets their sizes. Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces."
+   "caption": "Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its icon also shows its red part as a second sign. The icons belong to the Civic Line, our set of symbols, and chapter 09 sets their sizes. Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces."
   },
   {
    "specimen": "s-01-pieces",

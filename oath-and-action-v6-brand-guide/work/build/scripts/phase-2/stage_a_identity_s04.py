@@ -311,7 +311,7 @@ def s_04_6_correct():
            "text's ink, one space after the final period, its capitals at the 16 pixel master's 14 pixels. Below, the "
            "hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 "
            "inch event card. The article text is Illustrative.")
-    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True,
+    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
                notes="DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, "
                      "as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px "
                      "floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px.")
@@ -336,7 +336,7 @@ def s_04_6_failure():
     alt = ("Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after "
            "the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered "
            "trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.")
-    return rec("s-04-6-failure", "04.6", 560, alt, body, illustrative=True,
+    return rec("s-04-6-failure", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
                notes="The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG "
                      "rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, "
                      "and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean.")

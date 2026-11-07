@@ -190,7 +190,7 @@ def s_08_3_correct():
            "and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the "
            "Senate votes next. No lockmark sits in the row. Illustrative.")
     return rec("s-08-3-correct", "08.3", PHONE, alt, body, illustrative=True,
-               notes="Chapter 11 owns these marks (DR-108, DR-109, D2-324). Drawn with the geometry of Board 6's Option B at its 360 px "
+               notes="Chapter 11 owns these marks (DR-108, DR-109, D2-324); checked against s-11-list-360-charcoal, same geometry. Drawn with the geometry of Board 6's Option B at its 360 px "
                      "list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, "
                      "colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this "
                      "plate follows them.")

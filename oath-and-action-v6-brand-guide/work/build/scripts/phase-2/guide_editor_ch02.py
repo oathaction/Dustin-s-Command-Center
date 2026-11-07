@@ -224,18 +224,17 @@ def build(book):
     retired = RETIRED_WHOLE
     rec = ('<div class="ret"><p class="lab">Retired, kept as a record</p><p>Our fifth edition’s six supporting lines retire with no role. '
            'Each fails a writing rule below, and the lines above already do their jobs.</p><ul>'
-           + "".join(f"<li>{e(q(x))}</li>" for x in retired)
-           + "".join(f"<li>{e(q(x))}, the opening of a line our copy of that edition keeps only in part</li>" for x in RETIRED_OPENINGS)
-           + "</ul></div>")
+           + "".join(f"<li>{e(q(x))}</li>" for x in retired + RETIRED_OPENINGS)
+           + "</ul><p>Our copy of that edition keeps only the openings of the last two.</p></div>")
     LCSS = (f".ed .lines td:nth-child(2){{min-width:14rem;{fx('body')}}}@media (max-width:47.99em){{.ed .lines td:nth-child(2){{min-width:0}}}}"
             f".ed .lines .pl{{font-weight:600}}.ed .ret{{margin-top:16px;border-top:1px solid var(--oa-color-border-hairline);padding-top:10px;{fx('body-small')};max-width:72ch}}"
-            f".ed .ret ul{{margin:8px 0 0;padding-left:1.1em}}.ed .ret li{{margin:0 0 4px}}")
+            f".ed .ret ul{{margin:8px 0 8px;padding-left:1.1em}}.ed .ret li{{margin:0 0 4px}}")
     A("s-02-lines", f'<div class="ed"><table class="lines stack"><thead><tr><th scope="col">Line</th><th scope="col">Exact wording</th><th scope="col">Role</th>'
       f'<th scope="col">Where it appears</th></tr></thead><tbody>{trs}</tbody></table>{rec}</div>', css=(BASE, LCSS),
       rule=None, readable=True, label="The brand lines",
       alt="A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. "
           "Below it, a record of our fifth edition's six supporting lines, retired with no role: " + "; ".join(retired)
-          + "; and two lines our copy of that edition keeps only in part, opening " + " and ".join(q(x) for x in RETIRED_OPENINGS) + ".",
+          + "; " + "; ".join(RETIRED_OPENINGS) + ". Our copy of that edition keeps only the openings of the last two.",
       notes="Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The six retired lines are DR-77's four "
             "and DR-122's two, shown only as a labeled record. DR-122's two survive in the V5 text census only as their first 50 characters, so the "
             "record quotes each to the end of its last whole sentence, with an ellipsis, and says it is kept in part. CP-S9: colophon explained at "
