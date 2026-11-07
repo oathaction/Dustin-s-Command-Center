@@ -49,6 +49,10 @@ HR7008 = "H.R. 7008, the Stop Insider Trading Act"
 HR7008_BOTH = ("would bar members of Congress, their spouses and dependent children from buying individual stocks, "
                "and would require photo ID to vote in federal elections")
 HR7008_TRACKER = "Stop Insider Trading Act Tracker"
+# Round two of the apply pass: the committee voted on a text with the stock section alone, and the photo ID section
+# joined before the House vote (research lead, November 7, 2026). So each first mention describes the bill as the House
+# passed it, with both provisions (DR-98), and implies nothing about the committee's text.
+HR7008_FIRST = f"{HR7008}, as the House passed it, {HR7008_BOTH}"
 
 # D2-254: each style's phone floor and desktop ceiling, in rem (16 px root).
 PHONE = {"title": 3.5, "section": 2.75, "figure": 3, "h3": 1.625, "h4": 1.25, "quote": 1.5, "intro": 1.1875,

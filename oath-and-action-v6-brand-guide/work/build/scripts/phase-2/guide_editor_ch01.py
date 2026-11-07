@@ -8,7 +8,7 @@ Apply pass round one, November 7, 2026: the one-standard wording (DR-125), the p
 DR-112) and the H.R. 7008 card on the six steps (DR-108, DR-109, DR-128). Two inputs wait for the research lead and
 drop in without rewording: UNEVEN, the 2020 court example after Rule 01.11, and HR7008_STEPS, the card's step states.
 """
-from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR7008, HR7008_BOTH, HR7008_TRACKER,
+from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR7008, HR7008_BOTH, HR7008_FIRST, HR7008_TRACKER,
                                  LOCKED, PIECE, PROW, TILE_GRID, WORDMARK24, WORDMARK24_PRUSSIAN, amp_h, cl_icon, dnp,
                                  e, flow, fx, hinge, ill, kicker, load, pillar_row, q)
 
@@ -22,16 +22,48 @@ from guide_editor_common import (AMP16, AMP24, ARTICLE, BASE, CHART_DATA, HL, HR
 #   dict(grade="Documented", lines=["sentence", ...], source="Source: ...", alt_note="", domain="D02",
 #        state="Pennsylvania", region="Northeast", level="Federal")
 # `lines` and `source` are printed exactly as the research lead writes them, sized to the grade.
-UNEVEN = None
+# Round two: the research lead's recommended text and source line, word for word (work/handoffs/phase-2/
+# 20261107_Apply-Pass-Research.md, section 1, "Recommendation"), graded Documented. Atlas issue I155 sits in domain D10;
+# the court case is Pennsylvania's, and the review covers six states in all four regions.
+UNEVEN = dict(
+    grade="Documented",
+    lines=["After the 2020 election, Donald J. Trump’s presidential campaign asked a federal appeals court to block "
+           "Pennsylvania’s certified vote totals from taking effect. The court refused on November 27, 2020, noting that the "
+           "campaign “never alleges that any ballot was fraudulent or cast by an illegal voter.” Lost, Not Stolen, a July 2022 "
+           "review by eight conservatives, among them two former U.S. senators and three former federal appeals judges, "
+           "counted 64 cases that Donald Trump and his supporters brought in six battleground states. It found that they "
+           "“failed to produce substantive evidence to make their case,” and it records one case they won, in Pennsylvania, "
+           "on far too few votes to change the result."],
+    source=("Sources: U.S. Court of Appeals for the Third Circuit, Donald J. Trump for President, Inc. v. Secretary Commonwealth "
+            "of Pennsylvania, No. 20-3371, opinion filed November 27, 2020, pages 9 and 21, via govinfo.gov; John Danforth and "
+            "seven co-authors, Lost, Not Stolen: The Conservative Case that Trump Lost and Biden Won the 2020 Presidential "
+            "Election, July 2022, printed pages 1 and 3, lostnotstolen.org; the 2020 presidential election in Arizona, Georgia, "
+            "Michigan, Nevada, Pennsylvania and Wisconsin. Retrieved November 7, 2026. The court issued the opinion as not "
+            "precedential. The count of 64 cases is the review’s own, and its authors say each of them “has worked in "
+            "Republican politics, been appointed to office by Republicans, or is otherwise associated with the Party.”"),
+    alt_note="",
+    domain="D10", state="Pennsylvania, with five more states in the review", region="All four regions", level="Federal")
 
 # DR-108, DR-128: the six steps of a federal bill; step 6 is named for whoever signs it.
 STEPS_FEDERAL = ["Filed", "Hearing", "Committee vote", "First chamber", "Second chamber", "President"]
 # The research lead's mapping of H.R. 7008's record to the six steps: one (state, words) pair per step, in order. The
 # state is done, now, take, notyet, skipped or stopped; the words are what a screen reader hears for that step, such
 # as its date. HR7008_STATUS is the line after "Step n of 6: Name." and HR7008_AS_OF the date of the newest record.
-HR7008_STEPS = None
-HR7008_STATUS = None
-HR7008_AS_OF = "October 15, 2026"
+# Round two: the research lead's mapping (section 2, "The six steps for H.R. 7008"), as of the Congressional Record of
+# November 5, 2026. Step 2 is a slash: the committee held no hearing on this bill, and its report cites only a hearing held
+# before the bill was filed. Step 5 is current: no action in the record ends the bill, so no stopped square.
+HR7008_STEPS = [("done", "January 12, 2026"),
+                ("skipped", "no hearing on this bill"),
+                ("done", "January 14, 2026, 7 to 4"),
+                ("done", "the House passed it July 22, 2026, 232 to 198"),
+                ("now", "a Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed"),
+                ("notyet", "")]
+HR7008_STATUS = ("A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, "
+                 "and the bill has stayed on the Senate’s calendar since.")
+HR7008_EARLIER = ("Step 2 never happened, because the committee held no hearing on this bill. Its report cites only a hearing "
+                  "held November 19, 2025, before the bill was filed. The committee voted 7 to 4 on January 14, 2026, on a "
+                  "version without the photo ID section, and the House passed both provisions 232 to 198 on July 22, 2026.")
+HR7008_AS_OF = "November 5, 2026"
 STATE_WORDS = {"done": "done", "now": "the bill is here now", "take": "the bill is here now, and you can take part",
                "notyet": "not yet", "skipped": "never happened", "stopped": "stopped here"}
 
@@ -55,10 +87,12 @@ ATLAS = "Oath & Action’s systems atlas, Who Do They Answer To?"
 SRC_STOCK_SURVEY = ("Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, "
                     "fielded May 19 to 30, 2023, United States, as recorded in " + ATLAS + ", snapshot of October 15, 2026. "
                     "The survey asked about a ban in general and names no bill.")
-SRC_STOCK_VOTES = ("Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, "
-                   "2026; Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, "
-                   "2026, page S5199; United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the "
-                   "Senate, 60 votes.")
+SRC_STOCK_VOTES = ("Sources: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, via "
+                   "govinfo.gov; U.S. House of Representatives, Committee on House Administration, H. Rept. 119-479, February 3, "
+                   "2026, page 5; Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, "
+                   "Senate, August 6, 2026, page S4494, and Vote 253, cloture on the motion to proceed to H.R. 7008, September "
+                   "30, 2026, page S5199; United States. Retrieved November 7, 2026. The Congressional Record shows no later "
+                   "action through November 5, 2026. Ending debate needs three-fifths of the Senate, 60 votes.")
 SRC_INITIATIVE = ("Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated "
                   "measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s "
                   "process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only "
@@ -111,80 +145,53 @@ HR7008_VOTES = ("The House passed it 232 to 198 on July 22, 2026. On September 3
                 "taking it up got 53 votes, short of the 60 it needed.")
 
 
-# Numbered steps (DR-109, Board 6's option B), drawn as chapter 11 sets them (Rules 11.2, 11.4 and 11.7, from
-# apply_systems_ch11.py): a filled circle for a step that happened, a heavy ring for the step the bill is at, a fine ring
-# for a step ahead, a slash through a step that never happened and a filled square where a bill stopped, with the line
-# solid as far as the bill has come. A story card draws its circles at 24 px with 13 px numbers.
-def step_node(cx, cy, d, st, num):
-    R = d / 2
-    ty = cy + 0.36 * 13
-    if st == "done":
-        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R:g}" class="fi"/>'
-                f'<text x="{cx:g}" y="{ty:.2f}" class="fb" font-size="13">{num}</text>')
-    if st in ("now", "take"):
-        s = (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 1.5:g}" class="fb si" stroke-width="3"/>'
-             f'<text x="{cx:g}" y="{ty:.2f}" class="fi" font-size="13">{num}</text>')
-        if st == "take":   # Rule 11.4: an 11 px red disc, a 1 px Charcoal keyline inside its edge, 1.5 px of surface around it
-            bx, by = cx + R * 0.72, cy - R * 0.72
-            s += (f'<circle cx="{bx:g}" cy="{by:g}" r="7" class="fb"/><g data-red="working" data-red-job="take part now">'
-                  f'<circle cx="{bx:g}" cy="{by:g}" r="5.5" class="fr"/><circle cx="{bx:g}" cy="{by:g}" r="5" class="sk nf" stroke-width="1"/></g>')
-        return s
-    if st == "notyet":
-        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss" stroke-width="1.5"/>'
-                f'<text x="{cx:g}" y="{ty:.2f}" class="ft tl" font-size="13">{num}</text>')
-    if st == "skipped":
-        k = (R + 2) * 0.7071
-        return (f'<circle cx="{cx:g}" cy="{cy:g}" r="{R - 0.75:g}" class="fb ss" stroke-width="1.5"/>'
-                f'<line x1="{cx - k:.2f}" y1="{cy + k:.2f}" x2="{cx + k:.2f}" y2="{cy - k:.2f}" class="si" stroke-width="2"/>'
-                f'<text x="{cx:g}" y="{ty:.2f}" class="ft tl halo" font-size="13">{num}</text>')
-    if st == "stopped":
-        return (f'<rect x="{cx - R + 1:g}" y="{cy - R + 1:g}" width="{d - 2:g}" height="{d - 2:g}" class="fi"/>'
-                f'<text x="{cx:g}" y="{ty:.2f}" class="fb" font-size="13">{num}</text>')
-    raise SystemExit(f"unknown step state {st!r}")
+def ch11():
+    """Chapter 11's tracker module, apply_systems_ch11.py, read as it stands: its marks, step names and status words draw
+    this card, so the card matches Rules 11.2 to 11.7 (24 px circles on a story card) with no marks of its own."""
+    import importlib.util
+    import sys
+    from pathlib import Path
+    if "apply_systems_ch11" not in sys.modules:
+        here = Path(__file__).resolve().parent
+        spec = importlib.util.spec_from_file_location("apply_systems_ch11", here / "apply_systems_ch11.py")
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules["apply_systems_ch11"] = mod
+        spec.loader.exec_module(mod)
+    return sys.modules["apply_systems_ch11"]
 
 
-def steps_mark(states, W=336, d=24):
-    c = W // 6
-    xs = [c * i + c // 2 for i in range(6)]
-    cy = 6 + d / 2
-    H = int(cy + d / 2 + 2)
-    stop = states.index("stopped") if "stopped" in states else None
-    segs = []
-    for i in range(5):
-        if stop is not None and i >= stop:
-            break
-        h, cls = (2, "fi") if states[i + 1] != "notyet" else (1, "fs")
-        segs.append(f'<rect x="{xs[i]}" y="{cy - 1:g}" width="{xs[i + 1] - xs[i]}" height="{h}" class="{cls}"/>')
-    nodes = "".join(f"<g>{step_node(x, cy, d, s, i + 1)}</g>" for i, (x, s) in enumerate(zip(xs, states)))
-    return (f'<svg class="mk" width="{W}" height="{H}" viewBox="0 0 {W} {H}" aria-hidden="true" focusable="false">'
-            f'{"".join(segs)}{nodes}</svg>')
+# Rule 11.5 gives each step one sixth of the row. A 288 px row (48 px a step) fits the card's narrowest column, 296 px at a
+# 360 px screen, so the marks never scale and the numbers stay at 13 px (Rule 11.7).
+STEPS_ROW = 288
+
+
+def track_css():
+    """The marks' colors for Newsprint and chapter 11's mark classes, as its story card sets them."""
+    m = ch11()
+    T = m.C.Tokens(m.C.TOKENS_JSON, m.C.TOKENS_CSS)
+    ctx = m.B.Ctx(T, {}, "final")
+    return ".ed .trk{" + m.mark_vars(ctx, "n") + "}" + m.MARK_CSS
 
 
 def track_steps():
-    """The six numbered steps of H.R. 7008's tracker, from the research lead's mapping, with a list a screen reader
-    hears and the step's words for every reader. Empty until HR7008_STEPS arrives."""
+    """The six numbered steps of H.R. 7008's tracker, drawn by chapter 11's steps_svg() at its story card size, with a
+    list a screen reader hears, a key of the six names and chapter 11's status words. Empty until HR7008_STEPS is set."""
     if not HR7008_STEPS:
         return ""
+    m = ch11()
     if len(HR7008_STEPS) != 6:
         raise SystemExit("HR7008_STEPS needs one entry per step, six in all")
-    states = [s for s, _ in HR7008_STEPS]
-    here = [i for i, s in enumerate(states) if s in ("now", "take", "stopped")]
-    if len(here) > 1:
-        raise SystemExit("HR7008_STEPS marks more than one step as where the bill is")
-    sr = "".join(f"<li>Step {i + 1}, {STEPS_FEDERAL[i]}: {STATE_WORDS[s]}{', ' + e(w) if w else ''}.</li>"
-                 for i, (s, w) in enumerate(HR7008_STEPS))
+    states = [st for st, _ in HR7008_STEPS]
+    if m.names("federal") != STEPS_FEDERAL:
+        raise SystemExit("chapter 11's federal step names differ from this chapter's")
+    sr = "".join(f"<li>Step {i + 1}, {STEPS_FEDERAL[i]}: {STATE_WORDS[st]}{', ' + e(w) if w else ''}.</li>"
+                 for i, (st, w) in enumerate(HR7008_STEPS))
     key = " ".join(f'<span><b class="num">{i + 1}</b> {e(n)}</span>' for i, n in enumerate(STEPS_FEDERAL))
-    if here:
-        n = here[0]
-        status = (f"Stopped at step {n + 1} of 6: {STEPS_FEDERAL[n]}." if states[n] == "stopped"
-                  else f"Step {n + 1} of 6: {STEPS_FEDERAL[n]}.")   # Rule 11.1's words, and Rule 11.3's for a stop
-    elif all(s == "done" for s in states):
-        status = "Became law."   # a signed bill reads as law in words (DR-108); HR7008_STATUS then gives the dates
-    else:
-        raise SystemExit("HR7008_STEPS marks no step as where the bill is")
-    return (f'<div class="trk">{steps_mark(states)}<ol class="vh">{sr}</ol>'
+    status = m.status_words(dict(states=states, kind="federal"))
+    earlier = f'<p class="st">{e(HR7008_EARLIER)}</p>' if HR7008_EARLIER else ""
+    return (f'<div class="trk"><div class="mkw">{m.steps_svg(states, STEPS_ROW, 24)}</div><ol class="vh">{sr}</ol>'
             f'<p class="skey" aria-hidden="true">{key}</p></div>'
-            f'<p class="st"><b>{e(status)}</b> {e(HR7008_STATUS or HR7008_VOTES)}</p>')
+            f'<p class="st"><b>{e(status)}</b> {e(HR7008_STATUS or HR7008_VOTES)}</p>{earlier}')
 
 
 def piece_track():
@@ -194,7 +201,7 @@ def piece_track():
     return f'''<div class="pc">
 {kicker("Tracker", "Congress")}
 <p class="hl">{e(HR7008_TRACKER)}</p>
-<p class="dek">{e(HR7008)}, {e(HR7008_BOTH)}. As of {e(HR7008_AS_OF)}.</p>
+<p class="dek">{e(HR7008_FIRST)}. As of {e(HR7008_AS_OF)}.</p>
 {track_steps()}{votes}
 {hinge()}
 <p class="wycd">What you can do</p>
@@ -231,18 +238,12 @@ def piece_act():
 
 STAGES = f"""
 .ed .trk{{margin:4px 0 0}}
-.ed .mk{{display:block;max-width:100%;height:auto;overflow:visible}}
-.ed .mk .fi{{fill:var(--oa-color-graphic-essential)}}.ed .mk .fs{{fill:var(--oa-color-graphic-subtle)}}.ed .mk .fb{{fill:var(--oa-color-surface-newsprint)}}
-.ed .mk .ft{{fill:var(--oa-color-text-secondary)}}.ed .mk .fr{{fill:var(--oa-color-palette-pillar-red)}}
-.ed .mk .si{{stroke:var(--oa-color-graphic-essential)}}.ed .mk .ss{{stroke:var(--oa-color-graphic-subtle)}}.ed .mk .sk{{stroke:var(--oa-component-button-ask-keyline)}}
-.ed .mk line,.ed .mk .nf{{fill:none}}
-.ed .mk text{{font-family:var(--oa-font-family-reading);font-weight:700;font-variant-numeric:tabular-nums;text-anchor:middle}}
-.ed .mk text.tl{{font-weight:600}}
-.ed .mk text.halo{{paint-order:stroke;stroke:var(--oa-color-surface-newsprint);stroke-width:4px;stroke-linejoin:round}}
+.ed .mkw{{display:flex;justify-content:center}}
+.ed .mk{{max-width:100%;height:auto}}
 .ed .skey{{display:flex;flex-wrap:wrap;gap:2px 12px;margin:8px 0 0;{fx('caption')};color:var(--oa-color-text-secondary)}}
 .ed .pc .st{{margin:10px 0 0}}
 .ed .vh{{position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
-@media (min-width:48em){{.sp-flow{{padding-left:0;padding-right:0}}}}
+.sp-flow{{padding-left:0;padding-right:0}}
 .ed .grid4{{display:flex;flex-wrap:wrap;gap:40px 24px;align-items:flex-start}}
 .ed .grid4>div{{width:340px;max-width:100%}}
 .ed .grid4 .pl{{{fx('h4')};margin:0 0 6px}}
@@ -630,16 +631,17 @@ def build(book):
 <div><p class="pl">Explain</p>{piece_explain()}</div>
 <div><p class="pl">Track</p>{piece_track()}</div>
 <div><p class="pl">Connect</p>{piece_connect()}</div>
-<div><p class="pl">Act</p>{piece_act()}</div></div></div>''', css=(BASE, PIECE, STAGES),
+<div><p class="pl">Act</p>{piece_act()}</div></div></div>''', css=(BASE, PIECE, STAGES, track_css()),
       rule=None, label="One piece from each pillar, at true size",
       alt="Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What "
           "you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A "
           "regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. "
-          f"{HR7008_TRACKER}. {HR7008}, {HR7008_BOTH}. As of {HR7008_AS_OF}. "
+          f"{HR7008_TRACKER}. {HR7008_FIRST}. As of {HR7008_AS_OF}. "
           + (f"Six numbered steps, Filed, Hearing, Committee vote, First chamber, Second chamber and President: "
              + "; ".join(f"step {i + 1}, {STEPS_FEDERAL[i]}, {STATE_WORDS[s]}" for i, (s, _) in enumerate(HR7008_STEPS or [])) + ". "
              if HR7008_STEPS else "")
-          + f"{HR7008_STATUS or HR7008_VOTES} Then follow this bill. Connect, "
+          + (ch11().status_words(dict(states=[st for st, _ in HR7008_STEPS], kind="federal")) + " " if HR7008_STEPS else "")
+          + f"{HR7008_STATUS or HR7008_VOTES} {HR7008_EARLIER if HR7008_STEPS else ''} Then follow this bill. Connect, "
           "labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 "
           "seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard "
           "cottages March 9; send a comment by March 3.",
@@ -908,8 +910,15 @@ def build(book):
     st_names = [s for s in NAMED_STATES if states[s]]
     many = [x for x in st_names if states[x] > 1]
     ones = [x for x in st_names if states[x] == 1]
-    st_line = (", ".join(f"{x} supplies {SPELL[states[x]]} examples" for x in many) + (", and " if many else "")
-               + ", ".join(ones[:-1]) + " and " + ones[-1] + (" one each" if many else " supply one example each"))
+    def joined(xs):
+        return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+    parts = []
+    for cnt in sorted({states[x] for x in many}, reverse=True):
+        grp = [x for x in many if states[x] == cnt]
+        parts.append(f"{joined(grp)} supplies {SPELL[cnt]} examples" if len(grp) == 1
+                     else f"{joined(grp)} supply {SPELL[cnt]} examples each")
+    st_line = (", ".join(parts) + (", and " if many else "")
+               + joined(ones) + (" one each" if many else " supply one example each"))
     st_max = max(states.values())
     import math
     tal_ok = (f'<div class="ed tal"><p class="ct">This chapter’s {n} examples by atlas domain</p><p class="cm">One in four of {n} is {limit:g}, so no domain may supply {SPELL[math.floor(limit) + 1]}. '
@@ -941,7 +950,7 @@ def build(book):
             f".ed .lv .rg{{display:block;{fx('caption')};color:var(--oa-color-text-secondary)}}")
     lv = lambda items: "<ul>" + "".join(f'<li>{t}<span class="rg">{e(r)}</span></li>' for t, r in items) + "</ul>"
     lv_ok = ('<div class="ed"><div class="lv">'
-             f'<div><p class="lab">Federal</p>{lv([("The Stop Insider Trading Act in Congress", "National"), ("The Senate’s cloture rule", "National"), ("Rosa Parks lying in honor at the Capitol", "National"), ("A public meeting on a federal dam project in California", "West")])}</div>'
+             f'<div><p class="lab">Federal</p>{lv([("The Stop Insider Trading Act in Congress", "National"), ("The Senate’s cloture rule", "National"), ("Rosa Parks lying in honor at the Capitol", "National"), ("A public meeting on a federal dam project in California", "West")] + ([("Court cases after the 2020 presidential election", "Six states, in all four regions")] if UNEVEN else []))}</div>'
              f'<div><p class="lab">State</p>{lv([("Map redraws in Texas and California", "South and West"), ("Minimum wage floors: Ohio’s rises each year by formula, and Pennsylvania’s stays at the federal $7.25", "Midwest and Northeast"), ("Posting committee votes " + ill(), "No region")])}</div>'
              f'<div><p class="lab">County or city</p>{lv([("Backyard cottages in Alder County " + ill(), "No region"), ("Property tax rates", "Every region")])}</div>'
              f'<div><p class="lab">School district</p>{lv([("A bell schedule vote " + ill(), "No region")])}</div></div>'
@@ -956,7 +965,7 @@ def build(book):
         "why": {"text": ["Most of the rules that reach a household are written below the federal level. A reader who only ever sees Congress learns that the decisions nearest to them are not worth following."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-10-correct", lv_ok, css=(BASE, LCSS), rule="01.10", readable=True,
-                                  alt="This chapter's examples sorted by level, each with its region. Federal: the Stop Insider Trading Act in Congress, the Senate's cloture rule and Rosa Parks lying in honor at the Capitol, national; a public meeting on a federal dam project in California, West. "
+                                  alt="This chapter's examples sorted by level, each with its region. Federal: the Stop Insider Trading Act in Congress, the Senate's cloture rule and Rosa Parks lying in honor at the Capitol, national; a public meeting on a federal dam project in California, West" + ("; court cases after the 2020 presidential election, six states in all four regions. " if UNEVEN else ". ") +
                                       "State: map redraws in Texas and California, South and West; minimum wage floors, Ohio's rising each year by formula and Pennsylvania's at the federal $7.25, Midwest and Northeast; posting committee votes, illustrative. "
                                       "County or city: backyard cottages in Alder County, illustrative; property tax rates, every region. School district: a bell schedule vote, illustrative. " + SRC_MINWAGE),
                     "caption": "This chapter’s examples reach all four levels, and its real cases come from all four regions: Texas in the South, California in the West, Ohio in the Midwest and Pennsylvania in the Northeast."},

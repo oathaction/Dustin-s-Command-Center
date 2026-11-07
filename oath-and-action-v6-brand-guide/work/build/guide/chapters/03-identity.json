@@ -12,7 +12,7 @@
   {
    "id": "03.1",
    "title": "Place the wordmark from its master file.",
-   "rule": "Use the master drawn for the height you need and set its color with tokens. The masters hold the wordmark’s one width, the width our fifth edition drew, with ampersand B as refined for this edition. Never type the name in a font, Inter Tight included, though the capitals were cut from it.",
+   "rule": "Use the master drawn for the height you need and set its color with tokens. The masters hold the wordmark’s one width, the width our fifth edition drew, with ampersand B as refined for this edition. Never type the name in a font, Inter Tight included, though we cut the capitals from it.",
    "tokens": [
     "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onNewsprint"

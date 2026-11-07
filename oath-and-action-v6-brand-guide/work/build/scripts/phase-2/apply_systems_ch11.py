@@ -884,8 +884,8 @@ def build(ctx):
                 {'label': 'A veto that stands', 'value': 'Stopped at step 6'},
             ],
             'related': ['02', '13'],
-            'builders': ['Keep three dates in a bill’s record once it is signed: the day it was signed, the day it took '
-                         'effect if that has passed, and the day it takes effect if that is ahead. Print “Became law on” '
+            'builders': ['Keep two dates in a bill’s record once it is signed: the day it was signed and the day it takes '
+                         'effect, written in the past tense once that day has passed. Print “Became law on” '
                          'only from the signed date.'],
         },
         {
@@ -893,7 +893,7 @@ def build(ctx):
             'rule': ['When the public can act on a bill before a date, the step it is at takes the take-part mark: a '
                      'small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. '
                      'The words “You can take part now” sit beside it, with the deadline and the way to act. It is the '
-                     'view’s one working red (Rule 05.3), and it can sit on any step where the public is invited in, '
+                     'view’s one working red (Rule 05.3), and it can sit on any step where the public can take part, '
                      'such as a hearing in the second chamber at step 5. Every other state stays in the surface’s ink.'],
             'tokens': ['oa.color.palette.pillarRed', 'oa.component.button.ask.keyline.onNewsprint'],
             'why': {'text': ['Red catches the eye first, so it goes to the one thing a reader can do. The disc changes '
@@ -937,7 +937,7 @@ def build(ctx):
                              '(chapter 08).'],
                     'basis': 'Design judgment, approved by our founder and editor in November 2026'},
             'correct': {'specimen': 's-11-5-correct',
-                        'caption': 'Five bills at 360 px on Newsprint: one where you can take part, one waiting for the '
+                        'caption': 'Five bills at 360 px on Newsprint, among them one where you can take part, one waiting for the '
                                    'governor, one whose hearing never happened and one stopped by a veto.'},
             'failure': {'specimen': 's-11-5-failure',
                         'caption': '<strong>Fails Rule 11.5.</strong> Dots on a line carry no numbers or names, so a reader '
@@ -1023,8 +1023,8 @@ def build(ctx):
             'without color. A reader who sees no color, or prints the page in gray, gets the same meaning from the shape '
             'and the word.',
             'It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other '
-            'records, such as a records request or an agency rule, and utility icons for actions such as copy, filter and '
-            'share join the chapter as their own rule groups once they are drawn.',
+            'records, such as a records request or an agency rule, join the chapter as rule groups of their own once we '
+            'draw them, and so do utility icons for actions such as copy, filter and share.',
         ],
         'groups': [{'before_rule': '11.1', 'number': 1, 'title': 'Trackers',
                     'line': 'A tracker shows where a bill stands in six numbered steps, with each step’s state drawn as a '
@@ -1032,7 +1032,7 @@ def build(ctx):
         'rules': rules,
         'extras': [
             {'after_rule': '11.1', 'specimen': 's-11-steps', 'label': 'The six steps',
-             'caption': 'What happens at each step. Step 6 is named for whoever signs the bill.'},
+             'caption': 'What happens at each step. Step 6 takes the name of whoever signs the bill.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 's')], 'label': 'Numbered steps at 360 px on Charcoal',
              'caption': 'The same five bills on Charcoal. The marks turn to Newsprint and Dim Newsprint, and the take-part disc keeps its red.'},
             {'after_rule': '11.5', 'specimen': lists[('n', 'l')], 'label': 'Numbered steps at 1,024 px on Newsprint',

@@ -166,7 +166,7 @@
    ],
    "why": {
     "text": "The divider marks the turn from how a decision is made to the step a reader can take, the same turn the ampersand makes in our name. In ink it stays quiet, and the view’s one working red stays free for the step itself.",
-    "basis": "Rule 05.3, the red rule; Design judgment"
+    "basis": "Rule 05.3, the red rule; design judgment"
    },
    "correct": {
     "specimen": "s-04-4-correct",
@@ -268,8 +268,8 @@
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more: our fifth edition put the reason plainly, “Seals imply an authority we do not claim.”",
-    "basis": "Dustin Cathcart’s ruling on the end mark, November 7, 2026; Design judgment"
+    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-04-6-correct",
@@ -338,7 +338,7 @@
    ],
    "why": {
     "text": "A feed often draws an avatar at 32 to 48 px. B’s 24 px master still reads there, where any lettered mark would set its capitals under the 14 px floor. Charcoal is the default tile because it holds Pillar Red at 4.49 to 1, the strongest red of any approved surface, and stays visible on light and dark app themes.",
-    "basis": "WCAG 2.2 SC 1.4.11; Design judgment for the feed sizes"
+    "basis": "WCAG 2.2 SC 1.4.11; design judgment for the feed sizes"
    },
    "correct": {
     "specimen": "s-04-7-correct",
@@ -389,7 +389,7 @@
   {
    "id": "04.8",
    "title": "Crop a large B off the bottom-right corner only.",
-   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with 25 to 40 percent of its ink outside the frame. What stays inside reads as one letter, with no stroke cut off alone at the edge. It takes the surface’s ink, never red. It stays clear of the text and out of the top-left corner, where reading starts.",
+   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with 25 to 40 percent of its ink outside the frame. What stays inside reads as one letter, with no stroke cut off alone at the edge. It takes the surface’s ink, never red, and stays clear of the text and out of the top-left corner, where reading starts.",
    "tokens": [
     "oa.color.text.primary.onNewsprint"
    ],

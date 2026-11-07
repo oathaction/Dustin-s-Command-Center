@@ -395,7 +395,7 @@
    },
    "correct": {
     "specimen": "s-01-9-correct",
-    "caption": "This chapter checked against its own rule: no domain supplies more than four of its 17 examples, under one in four, and no named state supplies more than two, under one in five."
+    "caption": "This chapter checked against its own rule: no domain supplies more than four of its 18 examples, under one in four, and no named state supplies more than two, under one in five."
    },
    "failure": {
     "specimen": "s-01-9-failure",
@@ -944,6 +944,12 @@
    "caption": "Each piece is 340 px wide, the text column of a phone, and opens with its kicker, turns at the hinge divider to “What you can do” and ends on one step, the view’s one working red. Explain and Track quote real records. Connect and Act are invented, and each carries the Illustrative label at its head."
   },
   {
+   "after_rule": "01.11",
+   "label": "A finding that falls on one side",
+   "specimen": "s-01-uneven",
+   "caption": "The lines name who acted and what the record shows, in words sized to the grade, and they add no case from another party to even the count, as Rule 01.11 asks."
+  },
+  {
    "after_rule": "01.24",
    "specimen": "s-01-founding-line",
    "label": "Our founding line",
@@ -952,7 +958,7 @@
  ],
  "sources": [
   "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The survey asked about a ban in general and names no bill.",
-  "Source: U.S. House of Representatives, Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199; United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
+  "Sources: Library of Congress, bill status for H.R. 7008, 119th Congress, updated October 1, 2026, via govinfo.gov; U.S. House of Representatives, Committee on House Administration, H. Rept. 119-479, February 3, 2026, page 5; Office of the Clerk, Roll Call 280, passage of H.R. 7008, July 22, 2026; Congressional Record, Senate, August 6, 2026, page S4494, and Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199; United States. Retrieved November 7, 2026. The Congressional Record shows no later action through November 5, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
   "Source: Ballotpedia, a secondary source, States with initiative or referendum, statewide citizen-initiated measures as described on November 6, 2026, 50 states and DC. Retrieved November 6, 2026. Mississippi’s process cannot be used after a May 14, 2021 state supreme court ruling. Florida’s citizens may propose only constitutional amendments, which need 60 percent of the vote. Illinois’s citizens may propose only amendments on the legislature’s structure and procedure.",
   "Source: Federal Election Commission, Official 2024 Presidential General Election Results, compiled from state election offices, November 2024, 50 states and DC. Retrieved November 6, 2026.",
   "Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; California Secretary of State, Statement of Vote, Proposition 50, November 4, 2025; Tangipa v. Newsom, U.S. District Court for the Central District of California, order of January 14, 2026; Texas and California. Retrieved November 6, 2026. The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.",

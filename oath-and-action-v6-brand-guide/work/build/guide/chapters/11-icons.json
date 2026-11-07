@@ -6,7 +6,7 @@
   "instruction": "Give each record state or interface action a glyph and a word that read without color.",
   "intro": [
     "This chapter gives each state a record can be in, and each action a page offers, a mark and a word that read without color. A reader who sees no color, or prints the page in gray, gets the same meaning from the shape and the word.",
-    "It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other records, such as a records request or an agency rule, and utility icons for actions such as copy, filter and share join the chapter as their own rule groups once they are drawn."
+    "It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other records, such as a records request or an agency rule, join the chapter as rule groups of their own once we draw them, and so do utility icons for actions such as copy, filter and share."
   ],
   "groups": [
     {
@@ -186,14 +186,14 @@
         "13"
       ],
       "builders": [
-        "Keep three dates in a bill’s record once it is signed: the day it was signed, the day it took effect if that has passed, and the day it takes effect if that is ahead. Print “Became law on” only from the signed date."
+        "Keep two dates in a bill’s record once it is signed: the day it was signed and the day it takes effect, written in the past tense once that day has passed. Print “Became law on” only from the signed date."
       ]
     },
     {
       "id": "11.4",
       "title": "Mark the one way to take part in red, on its own shape, beside its words.",
       "rule": [
-        "When the public can act on a bill before a date, the step it is at takes the take-part mark: a small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. The words “You can take part now” sit beside it, with the deadline and the way to act. It is the view’s one working red (Rule 05.3), and it can sit on any step where the public is invited in, such as a hearing in the second chamber at step 5. Every other state stays in the surface’s ink."
+        "When the public can act on a bill before a date, the step it is at takes the take-part mark: a small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. The words “You can take part now” sit beside it, with the deadline and the way to act. It is the view’s one working red (Rule 05.3), and it can sit on any step where the public can take part, such as a hearing in the second chamber at step 5. Every other state stays in the surface’s ink."
       ],
       "tokens": [
         "oa.color.palette.pillarRed",
@@ -265,7 +265,7 @@
       },
       "correct": {
         "specimen": "s-11-5-correct",
-        "caption": "Five bills at 360 px on Newsprint: one where you can take part, one waiting for the governor, one whose hearing never happened and one stopped by a veto."
+        "caption": "Five bills at 360 px on Newsprint, among them one where you can take part, one waiting for the governor, one whose hearing never happened and one stopped by a veto."
       },
       "failure": {
         "specimen": "s-11-5-failure",
@@ -421,7 +421,7 @@
       "after_rule": "11.1",
       "specimen": "s-11-steps",
       "label": "The six steps",
-      "caption": "What happens at each step. Step 6 is named for whoever signs the bill."
+      "caption": "What happens at each step. Step 6 takes the name of whoever signs the bill."
     },
     {
       "after_rule": "11.5",

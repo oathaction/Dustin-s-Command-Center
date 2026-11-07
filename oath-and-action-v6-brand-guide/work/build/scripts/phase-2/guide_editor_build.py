@@ -262,7 +262,7 @@ RETIRED = [(r"\bSignal[\s -]*Grid", "the name Signal Grid (D2-326)"),
 
 def apply_pass(chapters, book, texts, fails, notes):
     """Checks for the apply pass of November 7, 2026, each named for the decision it holds the page to."""
-    from guide_editor_common import HR7008, HR7008_BOTH, PILLAR_ICON, cl_name
+    from guide_editor_common import HR7008_FIRST, PILLAR_ICON, cl_name
     c1 = next(c for c in chapters if c["number"] == "01")
     r1 = {r["id"]: r for r in c1["rules"]}
 
@@ -288,11 +288,16 @@ def apply_pass(chapters, book, texts, fails, notes):
     if ch01.UNEVEN and not any(x.get("after_rule") == "01.11" for x in c1["extras"]):
         fails.append("the 2020 example is set but not placed after Rule 01.11 (DR-125)")
 
-    # DR-98: H.R. 7008 named whole with both provisions at its first mention in each chapter
-    whole = f"{HR7008}, {HR7008_BOTH}"
+    # DR-98: H.R. 7008 named whole with both provisions at its first mention in each chapter, as the House passed it, since
+    # the committee's text held the stock section alone (round two research)
+    whole = HR7008_FIRST
     for sid in ("s-01-pieces", "s-02-25-correct"):
         if whole not in texts.get(sid, ""):
-            fails.append(f"{sid}: H.R. 7008 is not named whole with both provisions (DR-98)")
+            fails.append(f"{sid}: H.R. 7008 is not named whole with both provisions, as the House passed it (DR-98)")
+    for k, t in texts.items():
+        for sent in re.split(r"(?<=[.!?”])\s+", t):
+            if re.search(r"\bcommittee", sent, re.I) and "photo ID" in sent and not re.search(r"without the photo ID|no photo ID", sent):
+                fails.append(f"{k}: a sentence ties the committee to the photo ID section, which its text did not hold: {sent[:120]!r}")
 
     # DR-126: the count by party in the same sentence as both provisions, and the source line's two parts
     t25 = texts.get("s-02-25-correct", "")

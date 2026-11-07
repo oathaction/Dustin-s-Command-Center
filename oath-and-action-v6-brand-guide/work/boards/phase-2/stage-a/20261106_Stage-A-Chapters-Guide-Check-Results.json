@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-07T06:41:14.553Z",
+ "checked": "2026-11-07T06:55:33.569Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -19,16 +19,16 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 509,
+    "ids": 511,
     "duplicates": [],
-    "links": 754,
+    "links": 755,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 232,
+    "stages": 233,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -142,7 +142,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 222,
+    "stages": 223,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -181,7 +181,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9204,
+    "texts": 9226,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -222,7 +222,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 354559,
+   "height": 356265,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -248,16 +248,16 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 509,
+    "ids": 511,
     "duplicates": [],
-    "links": 754,
+    "links": 755,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 232,
+    "stages": 233,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -371,7 +371,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 222,
+    "stages": 223,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -411,7 +411,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9066,
+    "texts": 9088,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -452,7 +452,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 379540,
+   "height": 381239,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -478,16 +478,16 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 509,
+    "ids": 511,
     "duplicates": [],
-    "links": 754,
+    "links": 755,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 232,
+    "stages": 233,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -601,7 +601,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 222,
+    "stages": 223,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -640,7 +640,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9033,
+    "texts": 9055,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -681,7 +681,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 457029,
+   "height": 459039,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -707,16 +707,16 @@
     "rules": 100
    },
    "anchors": {
-    "ids": 509,
+    "ids": 511,
     "duplicates": [],
-    "links": 754,
+    "links": 755,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 232,
+    "stages": 233,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -830,7 +830,7 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 222,
+    "stages": 223,
     "exempt": 10,
     "off": [],
     "fluid": [
@@ -869,7 +869,7 @@
    "ruleRefs": [],
    "ruleRefCount": 0,
    "text": {
-    "texts": 9038,
+    "texts": 9060,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -910,7 +910,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 472601,
+   "height": 474683,
    "fonts": [
     "Inter",
     "Inter Tight",

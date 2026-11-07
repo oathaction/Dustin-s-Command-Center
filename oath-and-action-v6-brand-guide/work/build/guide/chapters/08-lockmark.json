@@ -6,13 +6,13 @@
  "instruction": "Draw the lockmark from its master, and place it only in its four fixed places.",
  "intro": [
   "Democracy has a structure. The lockmark draws it as nine nodes joined by links, with the lever, a larger red node at bottom right, at the place where one change moves the rest. It signs our work in four fixed places: the masthead, the page header, the footer and the sign-off.",
-  "Its drawing never changes, and it codes nothing. Chapter 11 sets how a tracker shows a bill’s steps, and a series or a pillar is named in words."
+  "Its drawing never changes, and it codes nothing. Chapter 11 sets how a tracker shows a bill’s steps, and words name a series or a pillar."
  ],
  "rules": [
   {
    "id": "08.1",
    "title": "Draw the lockmark from its master for its size, and keep its drawing fixed.",
-   "rule": "The lockmark is a 3 by 3 grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px and the display master, drawn for our brand guide’s fifth edition, from 48 px.",
+   "rule": "The lockmark is a three by three grid of nodes joined around its edge and through its center, with the lever in signature red at bottom right. Place the 16 px master from 16 to 23 px, the 24 px master from 24 to 47 px and the display master, drawn for our brand guide’s fifth edition, from 48 px.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint",
     "oa.color.palette.stone"
@@ -84,7 +84,7 @@
    ],
    "why": {
     "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Each size keeps the drawing crisp: the 24 and 16 px masters sit on whole pixels, and the sign-off takes the display master because the 24 px master turns soft when enlarged to 40 px. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
-    "basis": "Dustin Cathcart’s ruling on the lockmark, November 7, 2026; Design judgment"
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-08-2-correct",
@@ -135,11 +135,11 @@
   {
    "id": "08.3",
    "title": "Let the lockmark code nothing.",
-   "rule": "Draw the lockmark the same in every place, with no node lit, dimmed, moved or added. It never shows how far a bill has moved, which series a piece belongs to or which pillar a piece serves. Each of those jobs has its own sign: a bill’s steps are numbered, as chapter 11 sets them; a series is named in words in the kicker (Rule 01.21); and a pillar takes its icon with its word beside it.",
+   "rule": "Draw the lockmark the same in every place, with no node lit, dimmed, moved or added. It never shows how far a bill has moved, which series a piece belongs to or which pillar a piece serves. Each of those jobs has its own sign: chapter 11 numbers a bill’s steps, the kicker names a series in words (Rule 01.21), and a pillar takes its icon with its word beside it.",
    "tokens": [],
    "why": {
     "text": "One drawing with one job is easy to learn. Our fifth edition used the same nine nodes to code a bill’s stage, a series, a pillar and a kind of content, and a reader could not tell which code a grid carried, or whether the mark in the masthead meant anything at all. Numbers and words do those jobs better, because a reader can say “step 4 of 6” out loud and words survive gray print.",
-    "basis": "Dustin Cathcart’s ruling on the lockmark, November 7, 2026; Design judgment"
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-08-3-correct",
@@ -168,7 +168,7 @@
     },
     {
      "label": "Patterns",
-     "value": "None: the lockmark appears whole or not at all"
+     "value": "None; the lockmark always appears whole"
     }
    ],
    "files": [],

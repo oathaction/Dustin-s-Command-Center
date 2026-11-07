@@ -129,3 +129,90 @@ Modified:
 Created: this file. No specimen was created or deleted; `s-01-uneven` appears only when the 2020 example arrives.
 
 Not touched: `source/`, `work/ledger/`, the Civic Line masters (read only), any board, the reader check, and every other owner's files. Scratch builds, captures and the planted-fault script stay in my session scratchpad.
+
+## Round two
+
+November 7, 2026, under the brief's "Round two" section and the main session's round-two message. I applied the research lead's report (`work/handoffs/phase-2/20261107_Apply-Pass-Research.md`) and copy edited chapters 01 to 08, the identity proofs and chapter 11. Copy in other owners' chapters changed only in their build scripts, which I reran; no generated HTML was edited by hand. Before editing, I reran each owner's build untouched and it reproduced the committed outputs, apart from the letterhead PDF's creation time and the systems measurement file's timestamp. So every diff after that is mine. I committed nothing.
+
+### What I changed
+
+**1. The 2020 court example (DR-125, atlas issue I155), graded Documented.** It prints after Rule 01.11, labeled "A finding that falls on one side", with the research lead's four sentences and source line word for word. They carry the four corrections: the court's whole sentence ("never alleges that any ballot was fraudulent or cast by an illegal voter"), the court's own words for the relief ("block Pennsylvania's certified vote totals from taking effect"), the one Pennsylvania case the review says Trump's side won, and the authors in one form ("eight conservatives, among them two former U.S. senators and three former federal appeals judges"), with their own statement of party ties in the source line. The sentences name who acted, use record verbs and attribute the count and the finding to the review by name; no case from another party sits beside them. The example joins the rotation log (domain D10, Pennsylvania, all four regions in the review) and Rule 01.10's federal list. Rule 01.9 now counts 18 examples; no domain supplies more than four, and California and Pennsylvania supply two each.
+
+**2. H.R. 7008's card, as of November 5, 2026.** The marks are chapter 11's own: the card imports `apply_systems_ch11.py` and draws with its `steps_svg()`, `status_words()`, `names("federal")`, `MARK_CSS` and `mark_vars()`. My round-one drawing functions are deleted. The circles are 24 px, as Rule 11.7 sets for a story card. Steps: 1 Filed, January 12, 2026; 2 Hearing, a slash; 3 Committee vote, January 14, 2026, 7 to 4; 4 First chamber, July 22, 2026, 232 to 198; 5 Second chamber, current; 6 President, ahead. The status line reads "Step 5 of 6: Second chamber. A Senate vote to end debate on taking it up got 53 votes on September 30, 2026, short of the 60 it needed, and the bill has stayed on the Senate’s calendar since." A second line gives what the slash means and how the bill got here: "Step 2 never happened, because the committee held no hearing on this bill. Its report cites only a hearing held November 19, 2025, before the bill was filed. The committee voted 7 to 4 on January 14, 2026, on a version without the photo ID section, and the House passed both provisions 232 to 198 on July 22, 2026." The source line is the research lead's replacement, word for word. The take-part line names no Senate date, as the report advises.
+
+**3. First mentions of H.R. 7008.** Only chapters 01 and 02 mention the bill. Both first mentions (the Track card's deck and Rule 02.25's last row) now read "H.R. 7008, the Stop Insider Trading Act, as the House passed it, would bar ... and would require photo ID to vote in federal elections". Every later mention uses the tracker's or the act's name alone, and none describes the committee's text. Rule 02.25's sentence keeps DR-126's words from "it needed" to "voted no".
+
+**4. Copy edit.** Chapters 05, 06 and 07 changed only in lines I read and kept (Rules 05.1, 05.4's failure caption, 06.8, and the related-chapter reasons). Rule 05.7 carries DR-124's wording exactly. The edits:
+
+| Location | Original | Revision | Reason |
+|---|---|---|---|
+| Rule 03.1, rule | "though the capitals were cut from it" | "though we cut the capitals from it" | W02, name who acts |
+| Rule 04.6, why | "the badge claims nothing more: our fifth edition put the reason plainly, “Seals ...”" | "the badge claims nothing more. Our fifth edition gave the reason: “Seals ...”" | Two sentences joined by a colon; "plainly" adds nothing |
+| Rule 04.8, rule | "It takes the surface’s ink, never red. It stays clear of the text ..." | "It takes the surface’s ink, never red, and stays clear of the text ..." | W13, two sentences in a row on one frame |
+| Chapter 08, opening | "and a series or a pillar is named in words" | "and words name a series or a pillar" | W02 |
+| Rule 08.1, rule | "a 3 by 3 grid" | "a three by three grid" | H06, and Rule 02.26's own wording |
+| Rule 08.3, rule | "a bill’s steps are numbered, as chapter 11 sets them; a series is named in words in the kicker (Rule 01.21); and a pillar takes ..." | "chapter 11 numbers a bill’s steps, the kicker names a series in words (Rule 01.21), and a pillar takes ..." | W02, two passives |
+| Rule 08.3, specification "Patterns" | "None: the lockmark appears whole or not at all" | "None; the lockmark always appears whole" | W10, a matched pair |
+| Rules 04.6, 08.2, 08.3, basis | "Dustin Cathcart’s ruling on the ... , November 7, 2026; Design judgment" | "Design judgment, approved by our founder and editor in November 2026" | One form for Dustin's rulings, as chapter 11 writes them |
+| Rules 04.4 and 04.7, basis | "; Design judgment" | "; design judgment" | One capitalization after a semicolon, as elsewhere |
+| Chapter 11, opening | "Status marks ... and utility icons for actions such as copy, filter and share join the chapter as their own rule groups once they are drawn." | "Status marks ... join the chapter as rule groups of their own once we draw them, and so do utility icons for actions such as copy, filter and share." | W14, a long subject before its verb; W02 |
+| Rule 11.3, builders | "Keep three dates ...: the day it was signed, the day it took effect if that has passed, and the day it takes effect if that is ahead." | "Keep two dates ...: the day it was signed and the day it takes effect, written in the past tense once that day has passed." | The list counted one date twice |
+| Rule 11.4, rule | "any step where the public is invited in" | "any step where the public can take part" | W02 |
+| Rule 11.5, correct caption | "Five bills ...: one where you can take part, one waiting ..." | "Five bills ..., among them one where you can take part, one waiting ..." | The list names four of the five |
+| Chapter 11, "The six steps" caption | "Step 6 is named for whoever signs the bill." | "Step 6 takes the name of whoever signs the bill." | W02 |
+| Rule 01.9, tally line | "California supplies two examples, Pennsylvania supplies two examples, and ..." | "California and Pennsylvania supply two examples each, and ..." | W13; the generator now groups states that share a count |
+
+Rule 01.11's approved reason stays exactly as Dustin approved it in DR-125. The dome on CL-025 waits for stage B; nothing changed for it.
+
+**Build.** The step row is 288 px wide, 48 px to a step, so it fits the card's narrowest column (296 px at a 360 px screen) and never scales. My first run drew it at chapter 11's 324 px; at 390 and 360 px it shrank, its numbers fell under 13 px, and `guide_check.js` failed four times on that. The figure's own side padding is now 0 at every width.
+
+### Routine calls, as proposed decision lines
+
+- D2-xxx | Each first mention of H.R. 7008 reads "as the House passed it" before both provisions | The committee voted on the stock section alone, and DR-98's provisions are the House-passed text's
+- D2-xxx | The Track card says in words why step 2 has a slash, and that the committee voted on a version without the photo ID section | DR-108 puts the words beside every state, and the marks alone could imply the committee's text held both provisions
+- D2-xxx | The card draws its steps with chapter 11's `steps_svg()` and status words, imported from `apply_systems_ch11.py` | One drawing for every tracker, with no marks of the editor's own
+- D2-xxx | The card's step row is 288 px, 48 px to a step, with 24 px circles | Rule 11.5's sixths and Rule 11.7's story-card size, at a width that never scales below 13 px numbers
+- D2-xxx | The card dates itself "As of November 5, 2026" | The newest Congressional Record the research lead read
+- D2-xxx | The 2020 example logs as domain D10, Pennsylvania, all four regions, federal | Atlas issue I155's domain; the court case is Pennsylvania's, and the review's six states span the four regions
+- D2-xxx | Basis lines for Dustin's rulings read "Design judgment, approved by our founder and editor in November 2026" | One form across chapters 04, 08 and 11 (D2-253)
+
+### Questions for Dustin
+
+1. **Rule 01.11's reason opens two sentences with "Where".** That is the parallel run W13 removes. It prints exactly as you approved it in DR-125. *Recommendation:* approve one sentence with the same meaning: "A case from each party, told the same way, puts a mechanism both parties use in front of the reader, and where the record shows one side doing more, the finding stands as the record shows it."
+
+### For the main session and the other owners
+
+- **Chapter 11, step 2's meaning (systems designer).** The steps table says the committee "holds a public hearing, where anyone can speak or send written testimony", and Rule 11.1's reason says the hearing "is where the public is invited to speak". The research lead did not check how House and Senate committees take testimony and asks that the wording not be applied to a federal bill until someone does. Chapter 11 shows a federal bill (H.R. 3120) beside the table. I changed nothing in those lines, since I cannot check the fact either. *Recommendation:* once checked, scope the line to state bills, or give the federal case its own words.
+- **Atlas V7.1 list.** Issue I155's summary and evidence note say the review found no evidence "in any of 64 cases"; the review records one case Trump's side won. Both lines should take the review's own words (research lead's note).
+- **The card's committee vote by party** is in the report as an image the research lead did not read, so the card gives the count alone.
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-2/guide_editor_build.py`: every check passes, with two new ones: each first mention carries "as the House passed it" with both provisions, and no sentence ties the committee to the photo ID section unless it says the committee's version lacked it.
+- Planted faults: 16 of 16 caught, the 14 from round one and two new ones (a first mention without "as the House passed it"; a line that gives the committee's vote the photo ID section). The second plant first slipped past a check that read a 12-word window; the check now reads whole sentences, and it catches the plant.
+- Each owner's build, rerun untouched before my edits: `stage_a_identity_build.py --pdf`, the systems pipeline (probe, capture in Chromium, final) and `apply_systems_ch11.py`. Each reproduced its committed outputs apart from two timestamps. After my edits I reran the identity build and `apply_systems_ch11.py` and read every changed line in the chapter files' word diff: only my edits.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict`: 0 warnings, 9 chapter files, 100 rules, 233 specimens.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px, on the final build: PASS, 0 failures, 755 same-page links. The run before my last fix failed four times (the step numbers under 13 px at 390 and 360 px); that is fixed.
+- By eye in Playwright Chromium: the Track card at 390 px and at 360 px at twice size; its step row at twice size at 1440 px; the 2020 example at 1440 px.
+- The research lead's sentences, quotations and source lines against my output: copied from the report and compared as strings; the build checks the card's six step names and both provisions.
+- A script listed every string in chapters 03 to 08, the proofs and chapter 11 that is new since commit 3130c5b, flagged em dashes, the listed words, negation, passives and "here is", and I read every string. A second script did the same for their specimens' visible text and alt text; I read every hit.
+
+### Not tested
+
+- The research lead's sources: I used the report's sentences, step dates and source lines as written.
+- Specimens in chapters 03 to 08 and 11 by eye: I read their text and alts by script and looked at none of their plates in this round.
+- Screen readers, forced colors, Firefox, Safari, print, 200 percent zoom and real readers.
+
+### Change log, round two
+
+Modified:
+- `work/build/scripts/phase-2/guide_editor_common.py`, `guide_editor_ch01.py`, `guide_editor_ch02.py`, `guide_editor_build.py`
+- `work/build/scripts/phase-2/stage_a_identity_chapters.py` (Rules 03.1, 04.6, 04.8, 08.1, 08.3, chapter 08's opening, five basis lines)
+- `work/build/scripts/phase-2/apply_systems_ch11.py` (chapter 11's opening, Rules 11.3 and 11.4, two captions)
+- Regenerated by those scripts: `work/build/guide/chapters/01-purpose.json`, `03-identity.json`, `04-ampersand.json`, `08-lockmark.json`, `11-icons.json`, `manifest-editor.json`, `s-01-9-correct`, `s-01-10-correct`, `s-01-12-correct`, `s-01-pieces`, `s-02-25-correct`, `s-proofs-letterhead` (timestamp only), `work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.pdf` (timestamp only) and `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json` (timestamp only)
+- Regenerated by the shared build and check: the stage A chapters page, its build report, its check results and its captures
+- This file
+
+Created: `work/build/guide/specimens/s-01-uneven.html` (the 2020 example).
+
+Not touched: `source/`, `work/ledger/`, the Civic Line masters, any board, the reader check. Nothing committed or pushed.

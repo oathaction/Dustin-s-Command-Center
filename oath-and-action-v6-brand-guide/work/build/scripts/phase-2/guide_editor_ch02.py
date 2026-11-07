@@ -10,7 +10,7 @@ so the shell prints the group blocks and the rule index; the old index and group
 """
 import re
 
-from guide_editor_common import (AMP16, AMP24, BASE, HL, HR7008, HR7008_BOTH, LOCKED, PAIR, PIECE, VOICE_CONTENT,
+from guide_editor_common import (AMP16, AMP24, BASE, HL, HR7008, HR7008_BOTH, HR7008_FIRST, LOCKED, PAIR, PIECE, VOICE_CONTENT,
                                  VOICE_LINE_B, WORDMARK24, added, amp_h, curl, dnp, e, flow, fx, hinge, ill, kicker, load,
                                  marks, plain, q, removed, say_dash)
 
@@ -454,7 +454,7 @@ def build(book):
     })
 
     MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}@media (max-width:47.99em){{.ed.mech td:first-child{{width:100%}}}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
-    struct = f"{HR7008}, {HR7008_BOTH}, and {SENATE_COUNT}"
+    struct = f"{HR7008_FIRST}, and {SENATE_COUNT}"
     mrows = [("A sweeping claim", "Our democracy is broken.", "How the system works", MECH_L50, SRC_L50, False),
              ("A feeling", "People are frustrated with Congress.", "The office that decides", "The committee chair decides which bills get a hearing.", "", False),
              ("A slogan", "Make your voice heard!", "A next step", "The hearing is Tuesday at 10 a.m. in Room 4, and the clerk signs up speakers until 9:45.", "", True),
