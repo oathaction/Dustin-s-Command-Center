@@ -79,7 +79,7 @@ CHAPTERS = [
     ("06", "type", "Type", "foundations", "Set every word at a readable size with the three faces and the type scale."),
     ("07", "layout", "Layout and spacing", "foundations", "Build each page on the column grid and spacing scale, readable at every width."),
     # D2-325, D2-326: chapter 08 is The lockmark, anchor "lockmark"; its instruction line is the identity designer's.
-    ("08", "lockmark", "The lockmark", "foundations", "Draw the lockmark from its master, and keep it to its four fixed places."),
+    ("08", "lockmark", "The lockmark", "foundations", "Draw the lockmark from its master, and place it only in its four fixed places."),
     ("09", "pillar-marks", "Pillar marks", "symbols", "Mark which pillar a piece serves, always in the order Explain, Track, Connect, Act."),
     ("10", "symbols", "Topic and atlas symbols", "symbols", "Find the symbol for a subject or an atlas element and set it with its label."),
     ("11", "icons", "Status and utility icons", "symbols", "Give each record state or interface action a glyph and a word that read without color."),
@@ -106,10 +106,11 @@ STAGE_A = [c[0] for c in CHAPTERS if c[3] == "foundations"]
 OWNER = {"01": "editor", "02": "editor", "03": "identity designer", "04": "identity designer", "08": "identity designer",
          "05": "systems designer", "06": "systems designer", "07": "systems designer", "11": "systems designer"}
 
-# Apply pass only (D2-325): chapter 08's file moves from 08-signal-grid.json to 08-lockmark.json. While the new file is
-# missing, the build reads the old one under its old name and anchor without a warning, so the other makers keep
-# building. Once 08-lockmark.json exists, the old name is a warning. Empty this map when the pass closes.
-LEGACY_FILE = {"08": "signal-grid"}
+# A chapter file under an old name, read with a note while its new file is missing, so other makers keep building
+# through a rename; once the new file exists, the old name is a warning. The apply pass used {"08": "signal-grid"}
+# while 08-signal-grid.json became 08-lockmark.json (D2-325). That rename landed on November 7, 2026, so the map is
+# empty and the build expects 08-lockmark.json: an 08-signal-grid.json is now a warning.
+LEGACY_FILE = {}
 
 # V5 anchors kept as aliases on their new homes (map section 4). V5's #grid now lands on The lockmark (D2-325).
 ALIASES = {"lockmark": "grid", "symbols": "topic-icons", "data-visualization": "data",
@@ -1667,7 +1668,8 @@ def build(args):
 # ---------------------------------------------------------------------------------------------------------------
 def self_test():
     import tempfile
-    global R
+    global R, LEGACY_FILE
+    kept_legacy = LEGACY_FILE
 
     def rule(rid, extra=None):
         r = {"id": rid, "title": f"Rule {rid} in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "Design judgment"}}
@@ -1689,15 +1691,23 @@ def self_test():
              "s-test-condensed.html": '<img data-inline src="work/build/assets/identity/wordmark-condensed/20261028_Wordmark-Condensed-24px-Master.svg" alt="Oath &amp; Action">'}
     manifest = {"s-test-old": {"chapter": "08", "rule": "08.3", "alt": "A lockmark drawn as Rule 08.5 sets it, at true size.", "notes": "fixture"},
                 "s-test-condensed": {"chapter": "08", "rule": "08.4", "alt": "The condensed wordmark, a fixture at true size.", "notes": "fixture"}}
+    # While LEGACY_FILE holds chapter 08 (the apply pass), the old name alone is read with a note; once the map is
+    # emptied, the build expects 08-lockmark.json and the old name alone is a warning.
+    legacy_on = LEGACY_FILE.get("08") == "signal-grid"
     scenarios = [
-        ("old file name alone: read silently, old numbers still valid", {"01-purpose.json": ch01, "08-signal-grid.json": old08}, {},
-         {"note": ["under its old name"], "absent": ["expected the file name", "\"anchor\" is", "cites Rule", "still reads"],
-          "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']}),
+        (("old file name alone: read silently, old numbers still valid" if legacy_on else
+          "old file name alone: a warning, since the build expects 08-lockmark.json"),
+         {"01-purpose.json": ch01, "08-signal-grid.json": old08}, {},
+         ({"note": ["under its old name"], "absent": ["expected the file name", "\"anchor\" is", "cites Rule", "still reads"],
+           "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']} if legacy_on else
+          {"warn": ["expected the file name 08-lockmark.json", "\"anchor\" is 'signal-grid'"], "absent": ["under its old name"]})),
         ("renamed file: an old 08 number fails until the sentence changes", {"01-purpose.json": ch01, "08-lockmark.json": new08}, {},
          {"warn": ["cites Rule 08.8, which chapter 08 does not hold", "still reads \"Rule 08.8 sets the grid"],
-          "absent": ["under its old name", "cites Rule 01.1"]}),
+          "absent": ["under its old name", "cites Rule 01.1", "expected the file name"],
+          "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']}),
         ("both file names: the new one wins and the old one is a warning", {"08-lockmark.json": new08, "08-signal-grid.json": old08}, {},
-         {"warn": ["the chapter's old file name"], "html": ['<span class="t">The lockmark</span></h2>']}),
+         {"warn": ["the chapter's old file name" if legacy_on else "expected the file name 08-lockmark.json"],
+          "html": ['<span class="t">The lockmark</span></h2>']}),
         ("cross-references: ranges, links, specimens, alt text and the condensed drawing",
          {"01-purpose.json": xref01, "08-lockmark.json": gap08}, {"specimens": specs, "manifest": manifest},
          {"warn": ["cites Rule 08.2, which chapter 08", "cites Rule 08.7, which chapter 08", "cites Rule 08.5, which chapter 08",
@@ -1710,6 +1720,10 @@ def self_test():
           "html": ['<li class="part-later"><span class="part-name"><span class="n">09</span>', '<span class="n">10</span> <span class="t">Topic and atlas symbols</span></span>',
                    '<span class="n">12</span> <span class="t">Graphic devices and patterns</span></span>', 'href="#icons" rel="next"',
                    'After chapter 11</p>', '<a href="#icons" rel="prev">', 'Chapters 01 to 08 and 11']}),
+        ("a rename in progress: with the old name in LEGACY_FILE, it is read with a note and old numbers stay valid",
+         {"01-purpose.json": ch01, "08-signal-grid.json": old08}, {"legacy": {"08": "signal-grid"}},
+         {"note": ["under its old name"], "absent": ["expected the file name", "\"anchor\" is", "cites Rule", "still reads"],
+          "html": ['<section class="chapter" id="lockmark"', '<span id="grid" class="alias"']}),
         ("appendix title: anything but Identity proofs is a warning", {"proofs.json": {"title": "Wordmark width proofs", "items": []}}, {},
          {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),
     ]
@@ -1726,9 +1740,13 @@ def self_test():
             if extra.get("manifest"):
                 (base / "specimens" / "manifest-test.json").write_text(json.dumps(extra["manifest"]))
             R = Report()
+            LEGACY_FILE = extra.get("legacy", kept_legacy)
             out = base / "page.html"
-            build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
-                                     demo=False, strict=False, quiet=True))
+            try:
+                build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
+                                         demo=False, strict=False, quiet=True))
+            finally:
+                LEGACY_FILE = kept_legacy
             warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]
             page = out.read_text()
             checks = []

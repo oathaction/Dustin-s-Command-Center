@@ -48,7 +48,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate2.2',
+  version: '6.0.0-gate2.3',   // apply pass, November 7, 2026: DR-120's measure description
   status: 'pre-release',
   statusNote:
     'Built for Gate 2. Version 6.0.0 ships when Dustin approves the token files at Gate 2; until then every value may still change.',
@@ -395,8 +395,10 @@ const layout = {
     gutter: tok('dimension', px(gutter), `Gutter between columns at the ${n} width.`),
     margin: tok('dimension', px(margin), `Page margin at the ${n} width.`),
   }])),
+  // DR-120 (November 7, 2026): the value stays 33.88 rem; rendered in Chromium it holds 64 to 66 characters of 17 px
+  // Inter on chapter 02's prose, so the description says about 65 (the 68 came from V5 prose without kerning).
   measure: {
-    bodyIdeal: tok('dimension', rem(33.88), 'Body measure for 68 characters of 17 px Inter, measured over 26,950 characters of V5 prose.', { chars: 68 }),
+    bodyIdeal: tok('dimension', rem(33.88), 'Body measure: holds about 65 characters of 17 px Inter, measured in Chromium.', { chars: 65 }),
     bodyMax: tok('dimension', rem(37.37), 'Widest body measure, 75 characters of 17 px Inter.', { chars: 75 }),
     introMax: tok('dimension', rem(41.91), 'Widest intro measure, 65 characters of 22 px Inter.', { chars: 65 }),
   },

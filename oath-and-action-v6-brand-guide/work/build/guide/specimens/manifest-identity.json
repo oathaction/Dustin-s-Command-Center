@@ -39,9 +39,9 @@
   "chapter": "03",
   "rule": "03.2",
   "width_px": 712,
-  "alt": "Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; L2 stacked, OATH over ACTION with a large ampersand at right, 90 pixels, 0.80 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the O & A monogram, 48 pixels, 0.50 inches; L4 the monogram, a hairline and the tagline on two lines, 304 pixels, 2.30 inches; L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.",
+  "alt": "Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; S1 stacked, OATH & over ACTION on two flush-left lines, 79 pixels, 0.65 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the O & A monogram, 48 pixels, 0.50 inches; L4 the monogram, a hairline and the tagline on two lines, 304 pixels, 2.30 inches; L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.",
   "illustrative": false,
-  "notes": "Two columns at 712 px (C-S7). L1, L2, L3 and L8 are masters. L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px."
+  "notes": "Two columns at 712 px (C-S7). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px."
  },
  "s-03-l6": {
   "chapter": "03",
@@ -71,7 +71,7 @@
   "chapter": "03",
   "rule": "03.4",
   "width_px": 712,
-  "alt": "Every identity mark at its screen minimum, at true size, each row on one bottom line: the wordmark 16 pixels tall, the stacked lockup 90 wide, the horizontal lockup 196 wide, the monogram 48 wide; ampersand B, the lockmark and the badge at 16 pixels and the compact hinge diagram at 245; L4 at 304 and L7 at 250; L5 at 388; and the display hinge diagram at 533.",
+  "alt": "Every identity mark at its screen minimum, at true size, each row on one bottom line: the wordmark 16 pixels tall, the S1 stacked lockup 79 wide, the horizontal lockup 196 wide, the monogram 48 wide; ampersand B and the lockmark at 16 pixels, the badge at 48 and the compact hinge diagram at 245; L4 at 304 and L7 at 250; L5 at 388; and the display hinge diagram at 533.",
   "illustrative": false,
   "notes": "Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so). L3's lockmark hangs above and below the wordmark's box, so every row aligns on the marks' bottoms (C-S13)."
  },
@@ -88,15 +88,15 @@
   "rule": "03.4",
   "alt": "Minimum sizes on screen and in print for every identity mark, with the mark to use below each minimum.",
   "illustrative": false,
-  "notes": "Read from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8) with the condensed figures left out (BE-S11; they sit in s-proofs-minimums) and V5 named in words. readable: the table reaches assistive technology (AX-M1). Stacks under 568 px with each cell's column named.",
+  "notes": "Read from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8) with retired rows (L2, DR-113) and the condensed figures left out (DR-115, D2-328) and V5 named in words. readable: the table reaches assistive technology (AX-M1). Stacks under 568 px with each cell's column named.",
   "readable": true
  },
  "s-03-5-correct": {
   "chapter": "03",
   "rule": "03.5",
-  "alt": "L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with every part White; and one-color versions in Charcoal on Newsprint and in Newsprint on Charcoal.",
+  "alt": "L1, S1 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with every part White; and one-color versions in Charcoal on Newsprint and in Newsprint on Charcoal.",
   "illustrative": false,
-  "notes": "A sheet: the stage flows and each mark keeps its true size. Prussian cells place the explicit-White files from prussian/ (treatment D, I9). L1 uses the 24 px master at 22 px tall."
+  "notes": "A sheet: the stage flows and each mark keeps its true size. Prussian cells place the explicit-White files from prussian/ (treatment D, I9), S1's included. L1 uses the 24 px master at 22 px tall; S1 its 24 px master at 22 px capitals."
  },
  "s-03-5-failure": {
   "chapter": "03",
@@ -264,17 +264,17 @@
   "chapter": "04",
   "rule": "04.6",
   "width_px": 560,
-  "alt": "The badge, a red ampersand B inside a thin ring, at true size: at 16 pixels as the end mark after an article’s last sentence, and at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
+  "alt": "At true size, the last lines of an article in 17 pixel body text, ending with ampersand B alone in Charcoal, the text’s ink, one space after the final period, its capitals at the 16 pixel master’s 14 pixels. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
   "illustrative": true,
-  "notes": ""
+  "notes": "DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px."
  },
  "s-04-6-failure": {
   "chapter": "04",
   "rule": "04.6",
-  "width_px": 300,
-  "alt": "Failure case: the badge set inside an outer ring of words, OATH & ACTION, OFFICIAL SEAL, repeated around the circle, turning it into a seal.",
-  "illustrative": false,
-  "notes": ""
+  "width_px": 560,
+  "alt": "Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.",
+  "illustrative": true,
+  "notes": "The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean."
  },
  "s-04-7-correct": {
   "chapter": "04",
@@ -332,10 +332,11 @@
  "s-08-2-correct": {
   "chapter": "08",
   "rule": "08.2",
-  "width_px": 360,
-  "alt": "Two fixed places at true size: the lockmark at 40 pixels in the bottom-right corner of a report cover, half an inch in from both edges; and the lockmark at 24 pixels beside the section label 03 Who writes the budget at the top of a report page. The section label is Illustrative.",
-  "illustrative": true,
-  "notes": ""
+  "width_px": 770,
+  "alt": "The lockmark’s four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark and the lockmark at left and four navigation words at right. Page header: a white report header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people., and a chart’s footer with its source line and the lockmark at 16 pixels at right. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.",
+  "illustrative": false,
+  "notes": "DR-110 and D2-327. Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common to both columns of the scale (13 to 17 px), since the plate is 770 px wide.",
+  "fit_switch": true
  },
  "s-08-2-failure": {
   "chapter": "08",
@@ -349,199 +350,64 @@
   "chapter": "08",
   "rule": "08.3",
   "width_px": 358,
-  "alt": "A tracker row at true size: a 40 pixel Signal Grid with its first four nodes filled, beside Bill S.0876, School bus contracts, and its key, Stage 4 of 9: Out of committee. Illustrative.",
+  "alt": "A bill in a tracker list at true size on a 358 pixel phone column: Bill S.0876, School bus contracts, with six numbered steps on a line. Steps 1 to 3 are filled circles, step 4 is a heavy ring marking the step the bill is at, and steps 5 and 6 are fine rings ahead. Under them: Step 4 of 6: First chamber. The committee sent it on, and the Senate votes next. No lockmark sits in the row. Illustrative.",
   "illustrative": true,
-  "notes": ""
+  "notes": "Chapter 11 owns these marks (DR-108, DR-109, D2-324). Drawn with the geometry of Board 6's Option B at its 360 px list size (324 px wide, 26 px circles, Inter 13 px numbers), from board6_tracker_build.py's b_node and mk_steps, colored with tokens. S.0876 and its states are Board 6's, invented (DR-97). If chapter 11 changes the marks, this plate follows them."
  },
  "s-08-3-failure": {
   "chapter": "08",
   "rule": "08.3",
   "width_px": 358,
-  "alt": "Failure case: the same tracker row with the grid and no key. Four filled nodes sit beside the bill name with nothing to say what they count. Illustrative.",
+  "alt": "Failure case: do not publish. The same bill, S.0876, School bus contracts, drawn on the lockmark’s nine nodes at 40 pixels with four nodes filled to show progress, beside the same words, Step 4 of 6: First chamber. Nine nodes cannot count six steps, and the mark that signs our pages changes from bill to bill. Illustrative.",
   "illustrative": true,
-  "notes": ""
- },
- "s-08-4-correct": {
-  "chapter": "08",
-  "rule": "08.4",
-  "alt": "The three codes at 40 pixels, each with its key: a tracker grid with four filled nodes and a ring on the fifth, Stage 5 of 9, Passed one chamber, under way; the Dispatch series route, a heavy line from the middle left through the center and up to the top right corner; and a pillar corner with only the bottom-left node lit, for Connect, which shares its grid with nothing else.",
-  "illustrative": false,
-  "notes": "A sheet that flows; each grid keeps its 40 px."
- },
- "s-08-4-failure": {
-  "chapter": "08",
-  "rule": "08.4",
-  "width_px": 520,
-  "alt": "Failure case: our fifth edition’s four content-type grids at 24 pixels, each lighting its center node in a different color: Prussian, Verdigris, Charcoal and red. Converted to grayscale, the four lit nodes turn into near-identical dark grays.",
-  "illustrative": false,
-  "notes": "Redrawn from V5's rule B captions at its 24 px kicker size. A labeled failure that shows V5's red content-type node, so check_exempt red.",
-  "check_exempt": [
-   "red"
-  ]
- },
- "s-08-combinations": {
-  "chapter": "08",
-  "rule": "08.4",
-  "alt": "The Signal Grid’s codes in order of precedence, with what each tells a reader, its smallest size and what it may share a grid with.",
-  "illustrative": false,
-  "notes": "readable: the table reaches assistive technology (AX-S9). Stacks under 568 px with each cell's column named.",
-  "readable": true
- },
- "s-08-5-correct": {
-  "chapter": "08",
-  "rule": "08.5",
-  "width_px": 600,
-  "alt": "A tracker list at true size, Where four state bills stand this week, shown first at a phone’s 358 pixels and then at 600, with a 40 pixel grid and a key per bill: Bill H.4212, Public meeting notice, stage 3 of 9, Hearing, under way, its third node red because testimony is open until March 3; Bill S.0876, stage 4, Out of committee; Bill H.1180, stage 6, Passed both chambers; and Bill H.3301, stage 4, Out of committee, with a gap where its hearing should be because no hearing was held. A legend names each shape, and a list says what each of the nine stages means. Illustrative.",
-  "illustrative": true,
-  "notes": "Phone column first, so a phone reader sees the whole list with its step without scrolling sideways (CP-S19). Bill numbers are V5's invented examples (Q-01) on neutral topics. One working red in each view: the open testimony."
- },
- "s-08-5-failure": {
-  "chapter": "08",
-  "rule": "08.5",
-  "width_px": 700,
-  "alt": "Failure case: our fifth edition’s Active and Ready states at 28 pixels, the same grid with the lever in Verdigris or in red. In grayscale the two are the same picture; the colors differ at 1.14 to 1.",
-  "illustrative": false,
-  "notes": "V5's lockmark master at 28 px, V5's tracker size, with its lever hook set to Verdigris or red, as V5 described the two states."
- },
- "s-08-stages": {
-  "chapter": "08",
-  "rule": "08.5",
-  "alt": "The nine stages of a state bill in reading order, numbered on the grid, each with what it means: 1 Filed, a legislator introduced the bill; 2 Sent to committee; 3 Hearing, the committee heard from the public; 4 Out of committee, the committee voted to send it to the full chamber, the House or the Senate; 5 Passed one chamber; 6 Passed both chambers; 7 Final text agreed, both chambers agreed on one text; 8 Signed by the governor; 9 In effect. Four grids at 80 pixels show a stage under way as a ring, a stage that never happened as a gap with its links cut, a red node where taking part is open, and all nine filled for a law in effect, with a legend of the shapes.",
-  "illustrative": false,
-  "notes": "readable: the stage list and its meanings reach assistive technology (CP-M9, AX-S2). The numbered order grid is a diagram at 208 px with 24 px numbers; the four grids are the 40 px drawing at twice size. A sheet that flows.",
-  "readable": true
- },
- "s-08-6-correct": {
-  "chapter": "08",
-  "rule": "08.6",
-  "alt": "Six series and their six routes at 40 and 24 pixels, each route a heavy line along the grid’s links that ends on its pillar’s corner: Reform 101 and The Oath end top left for Explain, Dispatch and The Public Record top right for Track, Field Notes bottom left for Connect, and Proof It Works bottom right for Act.",
-  "illustrative": false,
-  "notes": "A sheet that flows. Routes from V5's table; Dispatch from the Front is renamed Dispatch (S2)."
- },
- "s-08-6-failure": {
-  "chapter": "08",
-  "rule": "08.6",
-  "width_px": 360,
-  "alt": "Failure case: a route for a new series that runs from the middle left to the center, then cuts diagonally to the top-right corner, across a link the grid does not have.",
-  "illustrative": false,
-  "notes": ""
- },
- "s-08-7-correct": {
-  "chapter": "08",
-  "rule": "08.7",
-  "alt": "Four pillar corners at 24 pixels, each beside its pillar’s name: Explain lights the top-left node, Track the top right, Connect the bottom left and Act the bottom right.",
-  "illustrative": false,
-  "notes": "A sheet that flows."
- },
- "s-08-7-failure": {
-  "chapter": "08",
-  "rule": "08.7",
-  "width_px": 300,
-  "alt": "Failure case: a 16 pixel grid where every node is the same size and the top-right node is Verdigris to mean Track. In grayscale no node stands out.",
-  "illustrative": false,
-  "notes": ""
- },
- "s-08-8-correct": {
-  "chapter": "08",
-  "rule": "08.8",
-  "width_px": 600,
-  "alt": "The top of a story card at true size. Its kicker runs left to right: a 24 pixel Signal Grid lighting the Dispatch route, a 24 pixel Civic Line icon for a public meeting, the words Report · Dispatch, and a chip reading Bill H.4212. Below sits the headline The House takes up the meeting notice bill on Thursday. Illustrative.",
-  "illustrative": true,
-  "notes": "Kicker per Rule 01.21 and D2-250: the content label, then the series. Civic Line CL-005 Public Meeting, black edition, placed by reference at 24 px (one color in a row, G1-07). H3 at 26 px on a 600 px card (D2-254)."
- },
- "s-08-8-failure": {
-  "chapter": "08",
-  "rule": "08.8",
-  "width_px": 680,
-  "alt": "Failure case: our fifth edition’s kicker, with a 16 pixel grid whose nodes turn to specks and labels set at 11 pixels in tracked capitals, under the 13 pixel floor. Illustrative.",
-  "illustrative": true,
-  "notes": "Rendered to a PNG at twice size and embedded, so the page's own 13 px check stays clean while the failure shows at true size (D1-09)."
- },
- "s-08-9-correct": {
-  "chapter": "08",
-  "rule": "08.9",
-  "alt": "Five tracker states at 40 pixels on Newsprint, Charcoal and Prussian, each with its words: Empty, small nodes only, Nothing filed yet; Loading, the links with no nodes, Loading tracker; Ready, two filled nodes, Stage 2 of 9: Sent to committee; Under way, two filled and a ring on the third, Stage 3 of 9: Hearing, under way; Final, all nine filled, In effect.",
-  "illustrative": false,
-  "notes": "A sheet that flows. Loading draws the links alone, so it differs in shape from Empty, which draws the nodes small. In a page, the words sit in a role=\"status\" region."
- },
- "s-08-9-failure": {
-  "chapter": "08",
-  "rule": "08.9",
-  "width_px": 700,
-  "alt": "Failure case: two frames of our fifth edition’s loading state, the lockmark’s red lever faded to 20 and then 50 percent. It pulsed forever with no text, and neither frame reaches 3 to 1.",
-  "illustrative": false,
-  "notes": "V5's lockmark master at 28 px with its lever at V5's two opacities."
- },
- "s-08-composer": {
-  "chapter": "08",
-  "rule": "08.9",
-  "alt": "An interactive composer. Pick a code, nothing, tracker progress, a series route or a pillar corner, and its settings; the grid redraws at 80 and 40 pixels and a status line reads the grid in words, for example Tracker progress: stage 3 of 9, Hearing, under way.",
-  "illustrative": false,
-  "notes": "Script scoped to its own root; the status line is a role=\"status\" region. The step option stays disabled, with its reason shown, until the stage is under way. Only valid combinations can be built. Fills its column (AX-S5); the disabled option is described by its reason (AX-S15).",
-  "interactive": true
- },
- "s-proofs-glance": {
-  "chapter": "proofs",
-  "rule": "proofs",
-  "width_px": 960,
-  "alt": "The wordmark at both widths side by side at true size, today’s width at left and the condensed width at right, each at the same height so the difference shows as width: from the 16 pixel masters, 152 against 120 pixels wide; from the 24 pixel masters, 221 against 181; from the display masters at 48 pixels tall, 435 against 342. Below them, the stacked lockup and the O & A monogram at both widths.",
-  "illustrative": false,
-  "notes": "Same height for both widths, so the difference shows as width. Today's width is in force; the condensed width is the proposal for Gate 2 (DR-71)."
+  "notes": "One retired use (DR-110): tracker progress on the grid, drawn as the stage A Rule 08.5 drew it (40 px lattice on whole pixels, filled 7 px discs for done, 3 px Stone nodes ahead), under the Charcoal failure band (D2-308)."
  },
  "s-proofs-masthead": {
   "chapter": "proofs",
   "rule": "proofs",
   "width_px": 1488,
-  "alt": "The site masthead at both widths, at true size, one above the other on one left edge: two 1440 pixel Newsprint bars, each with OATH & ACTION and the lockmark at left and five navigation words at right. Today’s wordmark runs 221 pixels and the condensed one 181, so the condensed lockmark sits 40 pixels further left. Below them, the two 390 pixel phone bars with the wordmark and a menu button, also on one left edge.",
+  "alt": "The site masthead at true size: a 1440 pixel Newsprint bar with OATH & ACTION and the lockmark at left and five navigation words at right. Below it, on the same left edge, the 390 pixel phone bar with the wordmark and a menu button.",
   "illustrative": false,
-  "notes": "L3 from the 24 px master (221 or 181 px) with a 52 px lockmark; phone bars with the 24 px master. Stacked on one left edge (D2-251).",
-  "fit_switch": true
- },
- "s-proofs-email": {
-  "chapter": "proofs",
-  "rule": "proofs",
-  "width_px": 1280,
-  "alt": "Two 600 pixel emails side by side at true size, today’s width at left and the condensed width at right. Each opens with the L3 masthead in a white header, then an invented story: the kicker Explainer · Local budgets, the headline Your county board votes on the budget Tuesday at 7 p.m., and the line Sign up with the board clerk by noon Monday to speak before the vote. The story is Illustrative.",
-  "illustrative": true,
-  "notes": "Drawn live; in email the masthead ships as a PNG at twice size. Body in the email stack. The pair is 1,280 px, so its type takes sizes common to both sets: 24 px headline, 17 px body, 13 px kicker (D2-254). Deck opens on the step (BE-S12).",
+  "notes": "Today's width (DR-115). L3 from the 24 px master (221 px) with a 52 px lockmark from its display master; phone bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record.",
   "fit_switch": true
  },
  "s-proofs-avatar": {
   "chapter": "proofs",
   "rule": "proofs",
-  "width_px": 960,
-  "alt": "Avatars on Charcoal at both widths side by side, at true size, today’s width at left and the condensed width at right: the O & A monogram in Newsprint with a red ampersand fills 62 percent of a 200 pixel circle and a 200 pixel rounded square, then a 96 and a 48 pixel circle. Today’s capitals stand 41, 20 and 10 pixels tall; the condensed capitals stand 50, 24 and 12, and its narrow O reads close to a zero. At 48 pixels both fall under the 14 pixel floor.",
+  "width_px": 760,
+  "alt": "Ampersand B alone, red on Charcoal, at true size: a 400 pixel square upload with a thin circle showing where a platform cuts it; the same avatar in a white feed at 48 and 32 pixels beside the name Oath & Action and the words Posted a link; and a 180 pixel Charcoal app icon with rounded corners.",
   "illustrative": false,
-  "notes": "L8 fills 62 percent of the tile's width at both widths, as a designer fits a tile. Charcoal tile (R13, DR-67)."
+  "notes": "DR-116: B alone on the Charcoal tile, at 58 percent of the tile (Rule 04.7). The 400 px upload is Master Brief section 18's starting size; platform circles are drawn as a guide, not read from a platform's help page."
  },
  "s-proofs-social": {
   "chapter": "proofs",
   "rule": "proofs",
   "width_px": 1248,
-  "alt": "Two social cards at actual size, 1200 by 630 pixels, one above the other on one left edge, today’s width above the condensed width. Each card on Newsprint carries the kicker Explainer · Zoning, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at bottom right. No web address. Under them, the card’s specifications: 72 pixel margins, the kicker in the H4 style at 24 pixels, the headline in the title style at 110, the wordmark’s display master at 44 pixels tall and the lockmark at 40. The headline and kicker are invented.",
+  "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card’s specifications. The headline and kicker are invented.",
   "illustrative": true,
-  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. No web address until the site is settled (DR-55). Stacked on one left edge (D2-251).",
+  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's display master at 48 px (D2-327). No web address until the site is settled (DR-55).",
   "fit_switch": true
  },
  "s-proofs-letterhead": {
   "chapter": "proofs",
   "rule": "proofs",
-  "width_px": 1712,
-  "alt": "Two US Letter letterheads side by side at true size on screen, 8.5 by 11 inches each, today’s width at left and the condensed width at right. Each has a proof line in its top margin naming its width and saying the address, recipient and letter are invented; the wordmark at top left at the same height; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the tagline and the lockmark. A link downloads the two-page print proof.",
+  "width_px": 864,
+  "alt": "A US Letter letterhead at true size on screen, 8.5 by 11 inches: a line in the top margin saying the address, recipient and letter are invented; the wordmark at top left; a return address at top right; a records request to the town clerk of Wrenfield signed by Dustin Cathcart, Founder and Editor; and a footer with the tagline and the lockmark at 24 pixels. A link downloads the one-page print proof.",
   "illustrative": true,
-  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so each sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Side by side, so both wordmarks sit on one line 72 px from the top: stacked, they would sit 1,128 px apart, more than a 900 px window. interactive: the stage holds the PDF link.",
+  "notes": "A print piece set in points (D2-205): 11 pt body, 10 pt address, slug and footer, so check_exempt scale. 96 CSS px to the inch, so the sheet is 816 by 1056 px. Display master at 26 px tall, as a print piece places it. Footer: the lockmark at 24 px beside the tagline, the footer place (Rule 08.2). interactive: the stage holds the PDF link.",
   "interactive": true,
   "fit_switch": true,
   "check_exempt": [
    "scale"
   ]
  },
- "s-proofs-minimums": {
+ "s-proofs-stacked": {
   "chapter": "proofs",
   "rule": "proofs",
-  "alt": "Minimum sizes of the marks whose size changes with the wordmark’s width, at today’s width and at the condensed width.",
+  "width_px": 1248,
+  "alt": "The two stacked lockups side by side at true size, at the same cap height, three times: capitals 22 pixels, so each stands about 48 pixels tall; capitals 44 pixels, about 96 tall; and the display masters at 100 pixel capitals. At left in each pair, L2: OATH over ACTION with a large ampersand at the right of the second line. At right, S1: OATH & over ACTION on two flush-left lines, the ampersand at the size of the capitals. S1 runs about a fifth narrower than L2 at every size.",
   "illustrative": false,
-  "notes": "The condensed figures from the identity masters' table (I8), moved here from chapter 03 (BE-S11), each checked against the table at build time. readable: a static table.",
-  "readable": true
+  "notes": "The record of DR-113, Dustin's named approval of S1 in place of L2 (gate rule 4). Same cap height in each pair. L2 from its display master at every size (it has no small masters); S1 from its 24 px master at 22 px capitals and its display master at 44 and 100 px. Widths: L2 6.38x, S1 5.09x.",
+  "fit_switch": true
  }
 }

@@ -124,6 +124,16 @@ PAGE_NOTES = [
 ]
 
 
+MONTH_DAY = re.compile(r'\b(January|February|March|April|May|June|July|August|September|October|November|December) (\d)')
+
+
+def nb(text):
+    """Keep a month with its day, a number with its unit and a step with its number on one line."""
+    text = MONTH_DAY.sub('\\1' + C.NBSP + '\\2', text)
+    text = re.sub(r'(\d) (px|pt)\b', '\\1' + C.NBSP + '\\2', text)
+    return re.sub(r'\b([Ss]tep) (\d)', '\\1' + C.NBSP + '\\2', text)
+
+
 def status_words(b, nm=None):
     nm = nm or names(b.get('kind', 'state'))
     if b.get('law'):
@@ -225,25 +235,22 @@ def line_segments(states, xs, cy, red=False):
     return out
 
 
-def steps_svg(states, W, d, red_progress=False):
-    """Numbered steps across a row W px wide, one sixth of the row to each step."""
+def steps_svg(states, W, d, red_progress=False, fs=None):
+    """Numbered steps across a row W px wide, one sixth of the row to each step. red_progress draws the line and the
+    done steps in Pillar Red, for the failure plate of Rule 11.4 only."""
     c = W // 6
     xs = [c * i + c // 2 for i in range(6)]
     R = d / 2
     cy = 6 + R
     H = int(cy + R + 2)
-    body = line_segments(states, xs, cy)
+    segs = line_segments(states, xs, cy, red=red_progress)
+    body = [f'<g data-red="working" data-red-job="progress">{x}</g>' if 'class="fr"' in x else x for x in segs]
     for i, (x, s) in enumerate(zip(xs, states)):
         if red_progress and s == 'done':
             body.append(f'<g data-red="working" data-red-job="progress"><circle cx="{x:g}" cy="{cy:g}" r="{R:g}" class="fr"/>'
                         f'<text x="{x:g}" y="{cy + 0.36 * 13:.2f}" class="fi" font-size="13">{i + 1}</text></g>')
         else:
-            body.append(node(x, cy, d, s, i + 1))
-    if red_progress:
-        body = [b.replace('class="fi"/>', 'class="fr"/>', 1) if b.startswith('<rect') and 'height="2"' in b else b
-                for b in body]
-        body = [f'<g data-red="working" data-red-job="progress">{b}</g>' if 'class="fr"' in b and b.startswith('<rect') else b
-                for b in body]
+            body.append(node(x, cy, d, s, i + 1, fs))
     return svg(W, H, ''.join(body))
 
 
@@ -290,26 +297,26 @@ def piece_css(ctx, surf, size, sizing='floor'):
     return (f':scope{{{mark_vars(ctx, surf)}}}' + MARK_CSS +
             f'.pc{{padding:20px 16px 24px;color:var(--txt)}}'
             + ('.pc{padding:32px 40px 40px}' if size == 'l' else '') +
-            f'.pc p{{margin:0}}'
-            f'.hd{{margin:0 0 16px !important;{h3};text-wrap:balance}}'
+            f':where(.pc p){{margin:0}}'
+            f'.hd{{margin:0 0 16px;{h3};text-wrap:balance}}'
             f'.rows{{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}}'
             f'.row{{padding:16px 0 18px;border-bottom:1px solid var(--hair)}}'
-            f'.bill{{margin:0 0 12px !important;{T("body")};line-height:1.35}}.bill b{{font-weight:700}}'
+            f'.bill{{margin:0 0 12px;{T("body")};line-height:1.35}}.bill b{{font-weight:700}}'
             f'.mkw{{display:flex;justify-content:center}}'
-            f'.st{{margin-top:8px !important;{T("bodySmall")};line-height:1.5}}.st b{{font-weight:700}}'
-            f'.tp{{display:flex;gap:8px;align-items:flex-start;margin-top:8px !important;{T("bodySmall")};line-height:1.5}}'
+            f'.st{{margin-top:8px;{T("bodySmall")};line-height:1.5;text-wrap:pretty}}.st b{{font-weight:700}}'
+            f'.tp{{display:flex;gap:8px;align-items:flex-start;margin-top:8px;{T("bodySmall")};line-height:1.5}}.tp > span{{text-wrap:pretty}}'
             f'.tp .mk{{margin-top:-6px}}.tp b{{font-weight:700}}'
             f'.cta{{display:inline-flex;align-items:center;min-height:{ctx.v("oa.size.target.touch")};{T("ui")};'
             f'text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}}'
-            f'.ctaw{{margin:2px 0 -6px !important}}'
+            f'.ctaw{{margin:2px 0 -6px}}'
             f'.lbls{{list-style:none;margin:6px 0 0;padding:0;display:grid;{T("dataLabel")};color:var(--txt2);text-align:center}}'
             f'.lbls li{{padding:0 4px}}.lbls li.cur{{color:var(--txt);font-weight:700}}.lbls .lx{{display:block}}'
             f'.key{{margin-top:20px;{T("caption")};color:var(--txt2)}}'
-            f'.kh{{{T("label")};color:var(--txt);margin:12px 0 6px !important}}.kh:first-child{{margin-top:0 !important}}'
+            f'.kh{{{T("label")};color:var(--txt);margin:12px 0 6px}}.kh:first-child{{margin-top:0}}'
             f'.ks{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 14px}}.ks b{{color:var(--txt)}}'
             f'.km{{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 18px}}'
             f'.km li{{display:inline-flex;align-items:center;gap:6px}}'
-            + ('.row{display:grid;grid-template-columns:272px 640px;column-gap:32px}.row .bill{margin:4px 0 0 !important}'
+            + ('.row{display:grid;grid-template-columns:272px 640px;column-gap:32px}.row .bill{margin:4px 0 0}'
                '.mkw{justify-content:flex-start}' if size == 'l' else ''))
 
 
@@ -335,7 +342,7 @@ def row(b, size, nm=None, red_progress=False, step_word=None, kind_label=None):
     if size == 'card':
         W, d = 324, 24
     head = (f'<span class="kd">{kind_label}</span> ' if kind_label else '')
-    bill = f'<p class="bill">{head}<b>Bill {b["id"]}</b>, {b["title"]}</p>'
+    bill = f'<p class="bill">{head}<span><b>Bill {b["id"]}</b>, {b["title"]}</span></p>'
     marks = f'<div class="mkw">{steps_svg(b["states"], W, d, red_progress)}</div>'
     lab = labels(nm, b['states'], W) if size == 'l' else ''
     sw = step_word or status_words(b, nm)
@@ -359,10 +366,20 @@ def bill_list(ctx, sid_surf, size, bills, title, nm=None, extra_key=None):
 SURF_NAME = {'n': 'newsprint', 'c': 'charcoal'}
 
 
+def nb_html(html):
+    """nb() on the text of a fragment, outside tags and styles."""
+    parts = re.split(r'(<style[^>]*>.*?</style>|<[^>]+>)', html, flags=re.S)
+    return ''.join(x if x.startswith('<') else nb(x) for x in parts)
+
+
 def spec(ctx, sid, html, rule, alt, **kw):
     if re.search(r'Stage \d+ of 9|Signal Grid', re.sub(r'<[^>]+>', '', html)):
         raise ValueError(f'{sid}: a retired tracker phrase in a specimen')
-    return ctx.spec(sid, html, CH, rule, alt, **kw)
+    out = ctx.spec(sid, nb_html(html), CH, rule, alt, **kw)
+    if (kw.get('width') or 0) > 700:
+        # wider than the chapter column at 1440 px: true size by default, with a switch to fit the window (D2-251)
+        ctx.specs[sid]['meta']['fit_switch'] = True
+    return out
 
 
 def alt_list(bills, nm=None):
@@ -376,7 +393,7 @@ def alt_list(bills, nm=None):
 
 
 def s_steps(ctx):
-    rows = ''.join(f'<tr><td class="n">{i + 1}</td><th scope="row">{n if i < 5 else "Governor or President"}</th>'
+    rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n if i < 5 else "Governor or President"}</th>'
                    f'<td>{m if i < 5 else STEP6_BOTH}</td></tr>' for i, (n, m) in enumerate(STEPS))
     T = ctx.ty
     css = (f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
@@ -384,10 +401,10 @@ def s_steps(ctx):
            f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}'
            f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
            f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'tbody th{{{T("ui")};white-space:nowrap}}td.n{{{T("h4")};width:3rem;font-variant-numeric:tabular-nums}}'
-           f'td:last-child{{max-width:34rem}}'
-           f'@container (max-width:30rem){{tbody th{{white-space:normal}}td.n{{width:2rem}}}}.wr{{container-type:inline-size}}')
-    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">Name</th>'
+           f'tbody th{{{T("ui")};width:13rem}}th .n{{display:inline-block;min-width:1.4em;{T("h4")};'
+           f'font-variant-numeric:tabular-nums}}td{{max-width:34rem}}'
+           f'@container (max-width:30rem){{tbody th{{width:6.5rem;padding-right:12px}}th .n{{display:block}}}}.wr{{container-type:inline-size}}')
+    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th>'
             f'<th scope="col">What happens</th></tr></thead><tbody>{rows}</tbody></table></div>')
     alt = ('The six steps, with what happens at each. ' + ' '.join(
         f'{i + 1}, {n if i < 5 else "Governor or President"}: {m if i < 5 else STEP6_BOTH}' for i, (n, m) in enumerate(STEPS)))
@@ -449,13 +466,13 @@ def s_11_2(ctx):
     fcss, band = ctx.fail_band()
     hue = {'done': 'oa.color.palette.verdigris', 'now': 'oa.color.palette.prussian', 'notyet': 'oa.color.palette.stone'}
     st = ['done', 'done', 'done', 'now', 'notyet', 'notyet']
-    c = 600 // 6
+    c = 324 // 6
     xs = [c * i + c // 2 for i in range(6)]
     body = [f'<rect x="{xs[0]}" y="15" width="{xs[-1] - xs[0]}" height="2" style="fill:{ctx.v("oa.color.palette.stone")}"/>']
     for i, (x, s) in enumerate(zip(xs, st)):
         body.append(f'<circle cx="{x}" cy="16" r="13" style="fill:{ctx.v(hue[s])}"/>'
                     f'<text x="{x}" y="20.68" font-size="13" style="fill:{ctx.v("oa.color.palette.white")}">{i + 1}</text>')
-    mk = svg(600, 32, ''.join(body))
+    mk = svg(324, 32, ''.join(body))
     css2 = (MARK_CSS + fcss + f'.pr{{display:grid;gap:20px}}.k{{margin:0 0 8px;{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
             f'.g .mk{{filter:grayscale(1)}}.wr{{padding:4px 16px 20px}}')
     html2 = (f'<style>{css2}</style>{band}<div class="wr"><p style="margin:0 0 16px">{ILLUS}</p><div class="pr">'
@@ -469,8 +486,8 @@ def s_11_2(ctx):
             'states by hue alone: Verdigris for the three done steps, Prussian for step 4, where the bill is now, and '
             f'Stone for steps 5 and 6 ahead, with no word for any state. Below it, the same row in grayscale, where the '
             f'Verdigris and Stone circles print as grays {rr} to 1 apart.')
-    spec(ctx, 's-11-2-failure', html2, '11.2', alt2, width=632, illustrative=True,
-         notes=f'Verdigris against Stone {rh} to 1 in color; grays {gv} and {gs} measure {rr} to 1. Fixed artboard at 632 px.')
+    spec(ctx, 's-11-2-failure', html2, '11.2', alt2, width=360, illustrative=True,
+         notes=f'Verdigris against Stone {rh} to 1 in color; grays {gv} and {gs} measure {rr} to 1.')
     return rr, rh
 
 
@@ -501,9 +518,9 @@ def s_11_3(ctx):
 def card(ctx, red_progress=False):
     T = ctx.ty
     css = piece_css(ctx, 'n', 's') + (f'.cd{{border-top:2px solid var(--strong);padding:16px 0 0}}'
-                                      f'.ky{{margin:0 !important;{T("label")};color:var(--txt2)}}'
-                                      f'.ch{{margin:8px 0 8px !important;{T("h4", "floor")};text-wrap:balance}}'
-                                      f'.dk{{margin:0 0 16px !important;{T("body")}}}'
+                                      f'.ky{{margin:0;{T("label")};color:var(--txt2)}}'
+                                      f'.ch{{margin:8px 0 8px;{T("h4", "floor")};text-wrap:balance}}'
+                                      f'.dk{{margin:0 0 16px;{T("body")};text-wrap:pretty}}'
                                       f'.cd .rows{{border:0}}.cd .row{{padding:0;border:0}}')
     b = CARD_BILL
     r = row(b, 'card', red_progress=red_progress)
@@ -610,10 +627,10 @@ def page_css(ctx, surf, size):
     return (piece_css(ctx, surf, size, 'ceil' if size == 'l' else 'floor') +
             f'.chip{{display:inline-flex;{T("dataLabel")};border:1px solid var(--strong);vertical-align:middle}}'
             f'.chip span{{padding:4px 6px}}.chip span:first-child{{background:var(--ink);color:var(--bg)}}'
-            f'.ky{{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:12px 0 12px !important;{T("label")};color:var(--txt2)}}'
-            f'.hd{{margin:0 0 8px !important}}'
-            f'.dk{{margin:0 0 12px !important;{T("body")}}}'
-            f'.pg > .st{{margin:0 0 20px !important;padding-bottom:16px;border-bottom:1px solid var(--hair)}}'
+            f'.ky{{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:12px 0 12px;{T("label")};color:var(--txt2)}}'
+            f'.hd{{margin:0 0 8px}}'
+            f'.dk{{margin:0 0 12px;{T("body")};text-wrap:pretty}}'
+            f'.pg > .st{{margin:0 0 20px;padding-bottom:16px;border-bottom:1px solid var(--hair)}}'
             f'.vt{{list-style:none;margin:0;padding:0}}'
             f'.vt li{{position:relative;display:grid;grid-template-columns:calc(var(--d) + 14px) minmax(0,1fr);column-gap:6px;'
             f'padding-bottom:14px;min-height:calc(var(--d) + 14px)}}'
@@ -624,9 +641,9 @@ def page_css(ctx, surf, size):
             f'.vt-t{{padding-top:calc(var(--d) / 2 - 5px);display:flex;flex-direction:column;min-width:0}}'
             f'.vt-n{{{T("body")};font-weight:600;line-height:1.35}}.vt li.cur .vt-n{{font-weight:700}}'
             f'.vt-s{{{T("label")};color:var(--txt2)}}.vt li.cur .vt-s{{color:var(--txt)}}'
-            f'.vt-note{{{T("bodySmall")};line-height:1.5;margin-top:2px}}'
-            f'.tbox{{margin:12px 0 4px;padding:14px;border:2px solid var(--strong)}}.tbox .tp{{margin:0 0 12px !important}}'
-            f'.askw{{margin:0 !important}}'
+            f'.vt-note{{{T("bodySmall")};line-height:1.5;margin-top:2px;text-wrap:pretty}}'
+            f'.tbox{{margin:12px 0 4px;padding:14px;border:2px solid var(--strong)}}.tbox .tp{{margin:0 0 12px}}'
+            f'.askw{{margin:0}}'
             f'.ask{{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;'
             f'background:{ctx.v("oa.component.button.ask.fill." + on)};color:{ctx.v("oa.component.button.ask.label." + on)};'
             f'{T("ask")}{keyline}}}'
@@ -723,8 +740,7 @@ def s_11_7(ctx):
          notes='A readable list (D2-255). Circle sizes and number sizes are the ones every tracker plate in this chapter draws.')
     fcss, band = ctx.fail_band()
     b = LIST_BILLS[0]
-    small = steps_svg(b['states'], 324, 16).replace('font-size="13"', 'font-size="9"')
-    small = small.replace('r="4.5"', 'r="3"')
+    small = steps_svg(b['states'], 324, 16, fs=9)
     css2 = (piece_css(ctx, 'n', 's') + fcss +
             '.tiny{display:inline-block;font-size:0.6875rem;line-height:20px;text-decoration:underline;outline:1px dashed var(--sub)}')
     html2 = (f'<style>{css2}</style>{band}<div class="pc"><p>{ILLUS}</p><ul class="rows"><li class="row">'
@@ -813,8 +829,8 @@ def build(ctx):
                        'oa.color.graphic.subtle.onCharcoal'],
             'why': {'text': ['A shape holds up in gray print, in bright sun and for the many readers who cannot tell red '
                              'from green. The words carry the state to a screen reader and to anyone unsure of a mark. '
-                             'Every mark draws in the surface’s ink, Charcoal on Newsprint and Newsprint on Charcoal, so a '
-                             'tracker reads the same on either ground.'],
+                             'Each mark but the take-part disc draws in the surface’s ink, Charcoal on Newsprint and '
+                             'Newsprint on Charcoal, so a tracker reads the same on either ground.'],
                     'basis': 'WCAG 2.2 SC 1.4.1 and 1.4.11; design judgment'},
             'correct': {'specimen': 's-11-2-correct',
                         'caption': 'The six states, each drawn on step 4 at true size and twice size. Each one changes the '
@@ -1018,7 +1034,7 @@ def build(ctx):
             {'after_rule': '11.1', 'specimen': 's-11-steps', 'label': 'The six steps',
              'caption': 'What happens at each step. Step 6 is named for whoever signs the bill.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 's')], 'label': 'Numbered steps at 360 px on Charcoal',
-             'caption': 'The same five bills on Charcoal. Every mark draws in Newsprint, and the take-part disc keeps its red.'},
+             'caption': 'The same five bills on Charcoal. The marks turn to Newsprint and Dim Newsprint, and the take-part disc keeps its red.'},
             {'after_rule': '11.5', 'specimen': lists[('n', 'l')], 'label': 'Numbered steps at 1,024 px on Newsprint',
              'caption': 'From 1,024 px each step’s name sits under its circle, and the current step’s name is bold.'},
             {'after_rule': '11.5', 'specimen': lists[('c', 'l')], 'label': 'Numbered steps at 1,024 px on Charcoal',
@@ -1041,10 +1057,20 @@ def build(ctx):
     return ch
 
 
+def nb_walk(o, key=None):
+    if isinstance(o, str):
+        return o if key in ('specimen', 'token', 'id', 'anchor', 'number', 'before_rule', 'chapter', 'after_rule') else nb(o)
+    if isinstance(o, list):
+        return [nb_walk(x, key) for x in o]
+    if isinstance(o, dict):
+        return {k: (v if k in ('tokens', 'related') else nb_walk(v, k)) for k, v in o.items()}
+    return o
+
+
 def main():
     T = C.Tokens(C.TOKENS_JSON, C.TOKENS_CSS)
     ctx = B.Ctx(T, {}, 'final')
-    ch = build(ctx)
+    ch = nb_walk(build(ctx))
     B.check_chapter(ch)
     used = set()
     for r in ch['rules']:

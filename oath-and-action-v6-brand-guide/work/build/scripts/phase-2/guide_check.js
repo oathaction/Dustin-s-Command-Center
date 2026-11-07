@@ -32,7 +32,7 @@
 //                      stage with no width and the chart system's own sizes; a stage with data-scale also passes at
 //                      size divided by its scale; check_exempt "scale" skips the stage (D2-254, C-M7)
 //   codes              no decision code (DR-, D1-, D2-, G1-, T-, R9, R13, I6, I8, S5, S9) and none of "Master Brief",
-//                      "Phase", "Gate" or "gate" in any case, "Board 5" or any "Board N" or "board A", "stage A" to
+//                      "Phase", "Gate" or "gate" in any case, "Board 5" or any "Board N" or "board A" to "F", "stage A" to
 //                      "stage C", "stage board", "the studio", "V5", "V4.2", "Atlas V7" in reader text, alt text and
 //                      accessible names (D2-253; the case-free "gate" and the board and stage names from the apply pass)
 // Added in the apply pass (November 7, 2026):
@@ -84,7 +84,7 @@ const CODE_PATTERNS = [
   ['\\bMaster Brief\\b', 'g', 'internal document'],
   ['\\bPhase\\b', 'g', 'studio word'],
   ['\\bgates?\\b', 'gi', 'studio word'],
-  ['\\b[Bb]oards?[\\s\\u00a0]+(?:\\d+|[A-Z])\\b', 'g', 'studio word'],
+  ['\\b[Bb]oards?[\\s\\u00a0]+(?:\\d+|[A-F])\\b', 'g', 'studio word'],   // Board 6, board A; not "the board I serve on"
   ['\\b[Ss]tages?[\\s\\u00a0]+[A-C]\\b', 'g', 'studio word'],
   ['\\bstage board\\b', 'gi', 'studio word'],
   ['\\bthe studio\\b', 'gi', 'studio word'],
@@ -579,6 +579,10 @@ async function checkPage(browser, file, widths, opts = {}) {
     report.failures.push(...fails);
     if (opts.captures && (width === 1440 || width === 390)) {
       const secs = await page.evaluate(() => [...document.querySelectorAll('main > section[id]')].map((s) => s.id));
+      // a capture of a section the page no longer holds (such as signal-grid after the lockmark rename) is removed, so
+      // the folder shows this page and nothing older
+      const mine = new RegExp(`^${stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-${width}-(.+)\\.jpg$`);
+      for (const f of fs.readdirSync(capDir)) { const m = f.match(mine); if (m && !secs.includes(m[1])) fs.rmSync(path.join(capDir, f)); }
       await page.evaluate(() => window.scrollTo(0, 0));
       for (const id of secs) {
         const loc = page.locator(`main > section[id="${id}"]`);

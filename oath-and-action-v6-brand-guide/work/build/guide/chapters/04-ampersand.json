@@ -6,13 +6,13 @@
  "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
  "intro": [
   "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
-  "This chapter covers B drawn alone and the four places the hinge appears: the hinge headline, the hinge divider, the hinge diagram and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers."
+  "This chapter covers B drawn alone and the places the hinge appears: the hinge headline, the hinge divider, the hinge diagram, the end mark that closes an article and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers."
  ],
  "rules": [
   {
    "id": "04.1",
    "title": "Draw the ampersand from B’s master for its size.",
-   "rule": "B has three masters: the 16 px master for 16 to 23 px tall, the 24 px master for 24 to 47 px, and the display master from 48 px. Place the one whose range holds your height. A narrow drawing of B serves the condensed wordmark alone.",
+   "rule": "B has three masters: the 16 px master for 16 to 23 px tall, the 24 px master for 24 to 47 px, and the display master from 48 px. Place the one whose range holds your height.",
    "tokens": [
     "oa.color.identity.signature.onNewsprint"
    ],
@@ -70,7 +70,7 @@
   {
    "id": "04.2",
    "title": "Give each composition one ampersand moment.",
-   "rule": "A composition is one view: a screen, a card, a slide or a printed page. It carries one ampersand moment, a hinge headline, a freestanding B or a cropped B. The wordmark’s own ampersand and the hinge divider do not count.",
+   "rule": "A composition is one view: a screen, a card, a slide or a printed page. It carries one ampersand moment, a hinge headline, a freestanding B or a cropped B. The wordmark’s own ampersand, the hinge divider and the end mark that closes an article do not count, since each takes its place from the page around it.",
    "tokens": [],
    "why": {
     "text": "The ampersand carries the brand’s idea, and a reader takes in one hinge at a time. With two or three on a card, each says less and the eye has no place to land.",
@@ -91,7 +91,7 @@
     },
     {
      "label": "Not counted",
-     "value": "The wordmark’s ampersand and the hinge divider"
+     "value": "The wordmark’s ampersand, the hinge divider and the end mark (Rule 04.6)"
     }
    ],
    "files": [],
@@ -261,36 +261,54 @@
   },
   {
    "id": "04.6",
-   "title": "Use the hinge-circle badge only to close a piece, on a back cover or at events.",
-   "rule": "The badge is B inside the hinge diagram’s ring, with no words. It ends an article or a report and marks event materials. Keep it off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement. Keep it away from avatars, favicons and any view with the wordmark or the hinge diagram, and add no words or dates to it.",
+   "title": "End an article with B alone, and keep the badge for back covers and events.",
+   "rule": "An article ends with ampersand B alone after its last word, in the text’s ink, as tall as the text’s capitals, or 14 px tall where they are shorter. The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
    "tokens": [
+    "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "A ring of words and a founding date turn a badge into a seal, and our fifth edition put the reason plainly: “Seals imply an authority we do not claim.” With no words on it, the badge marks where a piece ends and claims nothing more.",
-    "basis": "Design judgment"
+    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more: our fifth edition put the reason plainly, “Seals imply an authority we do not claim.”",
+    "basis": "Dustin Cathcart’s ruling on the end mark, November 7, 2026; Design judgment"
    },
    "correct": {
     "specimen": "s-04-6-correct",
-    "caption": "The badge at true size as the end mark after an article’s last sentence, 16 px, and on the back of a 4 by 6 in event card, 96 px."
+    "caption": "The last lines of an article at true size, body text at 17 px: the paragraph ends on B in Charcoal, the text’s ink, from its 16 px master. Below, the badge at 96 px on the back of a 4 by 6 in event card."
    },
    "failure": {
     "specimen": "s-04-6-failure",
-    "caption": "The badge turned into a seal with a ring of words. It claims an authority Oath & Action does not hold."
+    "caption": "The badge at 16 px after an article’s last word. Beside the registered trademark sign at the same size, its ring reads as the same mark."
    },
    "specs": [
     {
-     "label": "Masters",
-     "value": "16 px from 16 to 23 px, 24 px from 24 to 47 px, display from 48 px"
+     "label": "End mark",
+     "value": "Ampersand B alone, after the last word with a no-break space before it"
     },
     {
-     "label": "Print",
-     "value": "0.25 in at the smallest"
+     "label": "Ink",
+     "value": "The text’s ink: Charcoal on Newsprint and White, Newsprint on Charcoal, White on Prussian; never red",
+     "token": "oa.color.text.primary.onNewsprint"
     },
     {
-     "label": "Color",
+     "label": "Size",
+     "value": "As tall as the text’s capitals, 0.7275 of the font size, from the master whose range holds that height; 14 px at the least (Rule 03.4)"
+    },
+    {
+     "label": "At body size",
+     "value": "17 px text has capitals 12.4 px tall, under B’s 14 px floor, so B takes its 16 px master at 16 px, its tail 1 px under the baseline"
+    },
+    {
+     "label": "Badge",
+     "value": "From 48 px, its display master; 0.50 in in print. Back covers and event materials"
+    },
+    {
+     "label": "Badge color",
      "value": "Signature red, ring and B alike; White on Prussian",
-     "token": "oa.color.identity.signature.onNewsprint"
+     "token": "oa.color.identity.signature.onCharcoal"
+    },
+    {
+     "label": "Badge, never",
+     "value": "On an avatar or a favicon, or in a view with the wordmark or the hinge diagram"
     },
     {
      "label": "Print finishes",
@@ -298,8 +316,8 @@
     }
    ],
    "files": [
-    "work/build/assets/identity/badge/20261028_Hinge-Badge-16px-Master.svg",
-    "work/build/assets/identity/badge/20261028_Hinge-Badge-24px-Master.svg",
+    "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg",
+    "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg",
     "work/build/assets/identity/badge/20261028_Hinge-Badge-Display-Master.svg"
    ],
    "related": [
@@ -307,12 +325,12 @@
     "24",
     "25"
    ],
-   "builders": "Set the end mark inline after the last word, with a no-break space before it, at the body text’s cap height or the 16 px master, whichever is larger."
+   "builders": "Set B inline after the last word with a no-break space before it, so it never starts a line alone. Draw it in <code>currentColor</code>, so it takes the paragraph’s ink, from the master whose range holds the text’s cap height, and set it 1 px under the baseline at the 16 px master, where its tail lands. Place the badge from its display master only."
   },
   {
    "id": "04.7",
    "title": "Put B on a Charcoal tile for avatars and the app icon.",
-   "rule": "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. Favicons use B’s 16 px master with no tile.",
+   "rule": "Social avatars and the app icon show B alone on a Charcoal tile, a circle for avatars and a square for the app icon. The platform prints the account name beside an avatar, so the mark can be the ampersand alone. L8, the monogram, serves squares where the name must show, such as a tile in a partner’s directory (Rule 03.7). Favicons use B’s 16 px master with no tile.",
    "tokens": [
     "oa.component.avatar.tile",
     "oa.component.avatar.accent",
@@ -371,7 +389,7 @@
   {
    "id": "04.8",
    "title": "Crop a large B off the bottom-right corner only.",
-   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with 25 to 40 percent of its ink outside the frame. What stays inside reads as one letter, with no stroke cut off alone at the edge. It takes the surface’s ink, stays clear of the text, and never enters the top-left corner where reading starts.",
+   "rule": "On a cover or a section opener, a large B may run off the bottom-right corner with 25 to 40 percent of its ink outside the frame. What stays inside reads as one letter, with no stroke cut off alone at the edge. It takes the surface’s ink, never red. It stays clear of the text and out of the top-left corner, where reading starts.",
    "tokens": [
     "oa.color.text.primary.onNewsprint"
    ],
@@ -402,7 +420,7 @@
     },
     {
      "label": "Color",
-     "value": "The surface’s ink: Charcoal on Newsprint, Newsprint on Charcoal, White on Prussian",
+     "value": "The surface’s ink, never red: Charcoal on Newsprint, Newsprint on Charcoal, White on Prussian",
      "token": "oa.color.text.primary.onNewsprint"
     },
     {

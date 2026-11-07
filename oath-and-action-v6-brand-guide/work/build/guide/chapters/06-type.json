@@ -437,7 +437,7 @@
       "id": "06.8",
       "title": "Set body text at 60 to 75 characters a line.",
       "rule": [
-        "Set body text to a measure of 60 to 75 characters a line on wider screens, and intro text to 65 at most. A phone gives about 37 to 40 characters, which suits a small screen. Chapter 07 gives the column spans that deliver these measures at each width."
+        "Set body text to a measure of 60 to 75 characters a line on wider screens, and intro text to 65 at most. The body measure, 33.88 rem, holds about 65 characters of 17 px Inter, measured in Chromium. A phone gives about 37 to 40 characters, which suits a small screen. Chapter 07 gives the column spans that deliver these measures at each width."
       ],
       "tokens": [
         "oa.layout.measure.bodyIdeal",
@@ -463,7 +463,7 @@
       "specs": [
         {
           "label": "Body measure",
-          "value": "33.88 rem, 542 px at 16 px text; lines average 64 characters",
+          "value": "33.88 rem, 542 px at 16 px text; about 65 characters of 17 px Inter, measured in Chromium, and 64 on average over chapter 02’s prose",
           "token": "oa.layout.measure.bodyIdeal"
         },
         {

@@ -1,0 +1,483 @@
+{
+  "number": "11",
+  "anchor": "icons",
+  "title": "Status and utility icons",
+  "part": "Symbols and graphics",
+  "instruction": "Give each record state or interface action a glyph and a word that read without color.",
+  "intro": [
+    "This chapter gives each state a record can be in, and each action a page offers, a mark and a word that read without color. A reader who sees no color, or prints the page in gray, gets the same meaning from the shape and the word.",
+    "It opens with trackers, which show how far a bill has come in six numbered steps. Status marks for other records, such as a records request or an agency rule, and utility icons for actions such as copy, filter and share join the chapter as their own rule groups once they are drawn."
+  ],
+  "groups": [
+    {
+      "before_rule": "11.1",
+      "number": 1,
+      "title": "Trackers",
+      "line": "A tracker shows where a bill stands in six numbered steps, with each step’s state drawn as a shape and said in words."
+    }
+  ],
+  "rules": [
+    {
+      "id": "11.1",
+      "title": "Follow every bill through six numbered steps with plain names.",
+      "rule": [
+        "A tracker follows a bill through six steps, numbered 1 to 6: Filed, Hearing, Committee vote, First chamber, Second chamber, and a sixth named for whoever signs the bill, Governor on a state bill and President on a federal one. A chamber is one half of a legislature, the House or the Senate, and the first chamber is the one where the bill was filed. Every tracker prints the number and the name together, as in “Step 2 of 6: Hearing”, for the step the bill is at now.",
+        "Six steps fold some procedure together, such as a second reading or a conference committee, where members of both chambers settle one text. A bill’s own page gives those dates in the note under the step they belong to."
+      ],
+      "tokens": [
+        "oa.type.dataLabel",
+        "oa.type.bodySmall"
+      ],
+      "why": {
+        "text": [
+          "A number gives a reader words to say, “step 2 of 6”, with no key to learn, and it reads the same on a phone and in gray print. Plain names let a newcomer say what happens at each step. The hearing keeps a step of its own because it is where the public is invited to speak, and a bill that skips it is news. Naming step 6 for the person who signs keeps a bill that waits for a signature from reading as law."
+        ],
+        "basis": "Design judgment, approved by our founder and editor in November 2026"
+      },
+      "correct": {
+        "specimen": "s-11-1-correct",
+        "caption": "Two bills at 1,024 px, both at step 6. The state bill’s sixth step is Governor, and the federal bill’s is President; the other five names stay the same."
+      },
+      "failure": {
+        "specimen": "s-11-1-failure",
+        "caption": "<strong>Fails Rule 11.1.</strong> The steps take the clerk’s names. A newcomer cannot say what Engrossed or Enrolled means, so the tracker needs a glossary before it tells anyone where the bill stands."
+      },
+      "specs": [
+        {
+          "label": "Steps",
+          "value": "1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 the signer"
+        },
+        {
+          "label": "Step 6",
+          "value": "Governor on a state bill; President on a federal bill"
+        },
+        {
+          "label": "Status words",
+          "value": "“Step 2 of 6: Hearing.”, in bold, for the step the bill is at now, then one plain sentence",
+          "token": "oa.type.bodySmall"
+        },
+        {
+          "label": "Step names under the circles",
+          "value": "From 1,024 px, Inter 600 at 13 px, the current step in bold",
+          "token": "oa.type.dataLabel"
+        }
+      ],
+      "related": [
+        "01",
+        "18"
+      ],
+      "builders": [
+        "Write the status words from the data, never from the drawing: the step number, its name for this bill’s route and one sentence on what happens next. Store step 6 as the signer, so a state bill prints Governor and a federal bill prints President."
+      ]
+    },
+    {
+      "id": "11.2",
+      "title": "Draw each step’s state as a shape, and say it in words.",
+      "rule": [
+        "Each step shows its state by its shape, and the words beside the tracker say the same thing. Done steps fill in, the step a bill is at now takes a heavy ring, and steps ahead keep a fine one. A step that never happened, such as a hearing the committee skipped, keeps its number under a slash, so the count still runs to six. When a bill stops, its line ends on a filled square at that step."
+      ],
+      "tokens": [
+        "oa.color.graphic.essential.onNewsprint",
+        "oa.color.graphic.subtle.onNewsprint",
+        "oa.color.text.secondary.onNewsprint",
+        "oa.color.graphic.essential.onCharcoal",
+        "oa.color.graphic.subtle.onCharcoal"
+      ],
+      "why": {
+        "text": [
+          "A shape holds up in gray print, in bright sun and for the many readers who cannot tell red from green. The words carry the state to a screen reader and to anyone unsure of a mark. Each mark but the take-part disc draws in the surface’s ink, Charcoal on Newsprint and Newsprint on Charcoal, so a tracker reads the same on either ground."
+        ],
+        "basis": "WCAG 2.2 SC 1.4.1 and 1.4.11; design judgment"
+      },
+      "correct": {
+        "specimen": "s-11-2-correct",
+        "caption": "The six states, each drawn on step 4 at true size and twice size. Each one changes the shape, so the set reads in grayscale."
+      },
+      "failure": {
+        "specimen": "s-11-2-failure",
+        "caption": "<strong>Fails 1.4.1.</strong> Six identical circles tell their states by hue alone. In grayscale, the done steps in Verdigris and the steps ahead in Stone print as grays 1.25 to 1 apart, and no word says where the bill stands."
+      },
+      "specs": [
+        {
+          "label": "Done",
+          "value": "A filled circle, its number in the surface color"
+        },
+        {
+          "label": "Now",
+          "value": "A ring with a 3 px line, its number in bold"
+        },
+        {
+          "label": "Not yet",
+          "value": "A ring with a 1.5 px line, its number in Inter 600 in the secondary text color"
+        },
+        {
+          "label": "Never happened",
+          "value": "The Not yet ring under a 2 px slash, its number kept clear by a 2 px halo in the surface color"
+        },
+        {
+          "label": "Stopped",
+          "value": "A filled square in place of the circle; the line ends there"
+        },
+        {
+          "label": "Marks on Newsprint",
+          "value": "Charcoal 13.29 to 1, Stone 4.29 to 1",
+          "token": "oa.color.graphic.subtle.onNewsprint"
+        },
+        {
+          "label": "Marks on Charcoal",
+          "value": "Newsprint 13.29 to 1, Dim Newsprint 7.26 to 1",
+          "token": "oa.color.graphic.subtle.onCharcoal"
+        },
+        {
+          "label": "Numbers ahead",
+          "value": "Deep Stone 5.49 to 1 on Newsprint, Dim Newsprint 7.26 to 1 on Charcoal",
+          "token": "oa.color.text.secondary.onNewsprint"
+        }
+      ],
+      "related": [
+        "05",
+        "17"
+      ],
+      "builders": [
+        "Draw each tracker as one SVG with <code>aria-hidden=\"true\"</code>, and give screen readers an ordered list of the six steps beside it, each with its state in words, such as “Step 2, Hearing: never happened.” Hide that list visually and keep it in the reading order."
+      ]
+    },
+    {
+      "id": "11.3",
+      "title": "Say in words when a bill becomes law or stops.",
+      "rule": [
+        "Step 6 keeps the signer’s name while a bill waits, so a bill there reads “Step 6 of 6: Governor”. Once the governor or the President signs it, all six steps fill, and the words say “Became law on” with the date, then when it takes effect, as in “Became law on April 2. It takes effect July 1.”",
+        "A bill that stops ends its line on a square at the step where it stopped, and the words give the date and the reason. A veto that stands stops a bill at step 6."
+      ],
+      "why": {
+        "text": [
+          "A reader who sees the last step filled can take the bill for law, so only the words can say when the signature came and when the law applies. The date it takes effect is the one most readers act on."
+        ],
+        "basis": "Design judgment, approved by our founder and editor in November 2026"
+      },
+      "correct": {
+        "specimen": "s-11-3-correct",
+        "caption": "Two ends at 360 px. H.1180 became law, and its words give both dates. S.2045 stopped at step 6 when a veto stood, and its line ends on the square."
+      },
+      "failure": {
+        "specimen": "s-11-3-failure",
+        "caption": "<strong>Fails Rule 11.3.</strong> The sixth step is named Law, so a bill that still waits for the governor reads “Step 6 of 6: Law.” A reader may stop following it before a veto."
+      },
+      "specs": [
+        {
+          "label": "Waiting to be signed",
+          "value": "“Step 6 of 6: Governor.” or “Step 6 of 6: President.”"
+        },
+        {
+          "label": "Signed",
+          "value": "All six steps filled; “Became law on April 2. It takes effect July 1.”"
+        },
+        {
+          "label": "Stopped",
+          "value": "A square at the last step reached; “Stopped at step 3 of 6: Committee vote.” with the date and the reason"
+        },
+        {
+          "label": "A veto that stands",
+          "value": "Stopped at step 6"
+        }
+      ],
+      "related": [
+        "02",
+        "13"
+      ],
+      "builders": [
+        "Keep three dates in a bill’s record once it is signed: the day it was signed, the day it took effect if that has passed, and the day it takes effect if that is ahead. Print “Became law on” only from the signed date."
+      ]
+    },
+    {
+      "id": "11.4",
+      "title": "Mark the one way to take part in red, on its own shape, beside its words.",
+      "rule": [
+        "When the public can act on a bill before a date, the step it is at takes the take-part mark: a small red disc at the upper right of its ring, with a 1 px Charcoal keyline inside the disc’s edge. The words “You can take part now” sit beside it, with the deadline and the way to act. It is the view’s one working red (Rule 05.3), and it can sit on any step where the public is invited in, such as a hearing in the second chamber at step 5. Every other state stays in the surface’s ink."
+      ],
+      "tokens": [
+        "oa.color.palette.pillarRed",
+        "oa.component.button.ask.keyline.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "Red catches the eye first, so it goes to the one thing a reader can do. The disc changes the ring’s outline, so the mark still reads in gray print, and the words say what to do for anyone who cannot see red. On Newsprint, Pillar Red measures 2.96 to 1, under the 3 to 1 a mark needs, and the keyline gives it an edge at 13.29 to 1."
+        ],
+        "basis": "Rule 05.3; WCAG 2.2 SC 1.4.1 and 1.4.11"
+      },
+      "correct": {
+        "specimen": "s-11-4-correct",
+        "caption": "A story card at 360 px. The House committee holds its own hearing at step 5, so the take-part mark sits there, beside its words and the link to act."
+      },
+      "failure": {
+        "specimen": "s-11-4-failure",
+        "caption": "<strong>Fails Rules 11.4 and 05.3.</strong> Red also fills the steps the bill has passed, so it does two jobs and the one way to take part no longer stands out."
+      },
+      "specs": [
+        {
+          "label": "Take-part mark",
+          "value": "An 11 px Pillar Red disc at the upper right of the Now ring, a 1 px Charcoal keyline inside its edge, 1.5 px of the surface around it",
+          "token": "oa.color.palette.pillarRed"
+        },
+        {
+          "label": "Contrast",
+          "value": "Pillar Red 2.96 to 1 on Newsprint with the keyline at 13.29; 4.49 to 1 on Charcoal",
+          "token": "oa.component.button.ask.keyline.onNewsprint"
+        },
+        {
+          "label": "Words",
+          "value": "“You can take part now.” in bold, then the deadline and how to act"
+        },
+        {
+          "label": "In a list or on a card",
+          "value": "A text link at least 44 px tall; the red button waits for the bill’s own page",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Red jobs in a view",
+          "value": "One: take part now. Every take-part mark and the ask button share it"
+        }
+      ],
+      "related": [
+        "05",
+        "18"
+      ],
+      "builders": [
+        "Mark the disc and the ask button with <code>data-red=\"working\"</code> and <code>data-red-job=\"take part now\"</code>, so the shared check counts one red job. The words carry the meaning, so the disc stays hidden from screen readers."
+      ]
+    },
+    {
+      "id": "11.5",
+      "title": "Use numbered steps in lists and on story cards.",
+      "rule": [
+        "In a list of bills and on a story card, the tracker runs across the page: six numbered circles on one line, solid as far as the bill has come and fine after it. The bill’s number and name lead each row, and its status words follow the marks. On a phone, the step names move into a key after the list; from 1,024 px they sit under each circle."
+      ],
+      "tokens": [
+        "oa.border.width.rule",
+        "oa.border.width.hairline",
+        "oa.type.dataLabel"
+      ],
+      "why": {
+        "text": [
+          "A list asks a reader to compare bills at a glance, and six numbered steps fit across a 360 px phone with room for the words. The numbers also keep the tracker apart from the lockmark, the small grid of lines and nodes that marks our pages and codes nothing (chapter 08)."
+        ],
+        "basis": "Design judgment, approved by our founder and editor in November 2026"
+      },
+      "correct": {
+        "specimen": "s-11-5-correct",
+        "caption": "Five bills at 360 px on Newsprint: one where you can take part, one waiting for the governor, one whose hearing never happened and one stopped by a veto."
+      },
+      "failure": {
+        "specimen": "s-11-5-failure",
+        "caption": "<strong>Fails Rule 11.5.</strong> Dots on a line carry no numbers or names, so a reader counts dots to find the step, and a row of nodes on a line comes close to the lockmark’s drawing."
+      },
+      "specs": [
+        {
+          "label": "Circles",
+          "value": "26 px at 360 px, 30 px at 1,024 px, 24 px on a story card"
+        },
+        {
+          "label": "Line",
+          "value": "2 px in the surface’s ink as far as the bill has come, 1 px after it",
+          "token": "oa.border.width.rule"
+        },
+        {
+          "label": "Spacing",
+          "value": "One sixth of the row to each step: 54 px in a 324 px row, 106 px in a 636 px row"
+        },
+        {
+          "label": "Step names",
+          "value": "Under the circles from 1,024 px; in the key on phones",
+          "token": "oa.type.dataLabel"
+        },
+        {
+          "label": "Key",
+          "value": "After the last bill: the six steps on phones, and every mark the list uses"
+        }
+      ],
+      "related": [
+        "07",
+        "08"
+      ],
+      "builders": [
+        "Mark up the list as a <code>&lt;ul&gt;</code> of bills, each holding its hidden step list from Rule 11.2. When a tracker updates in place, announce the new status words through a polite live region, as chapter 18 sets out."
+      ]
+    },
+    {
+      "id": "11.6",
+      "title": "Turn the same steps upright on a bill’s own page.",
+      "rule": [
+        "A bill’s own page runs the six steps down the page, with the marks a list uses. Each step gives its name, its state in words and a note with its dates. Under the step where the public can act, a box holds the deadline and the page’s one red button, the ask. From 1,024 px, a column beside the steps says what each one means."
+      ],
+      "tokens": [
+        "oa.component.button.ask.fill.onNewsprint",
+        "oa.component.button.ask.label.onNewsprint",
+        "oa.type.ask"
+      ],
+      "why": {
+        "text": [
+          "A bill’s page has room for the dates and notes a list leaves out, and a reader who knows the marks from a list knows them here. The ask sits under the step it belongs to, where the reader learns why the date matters."
+        ],
+        "basis": "Design judgment, approved by our founder and editor in November 2026"
+      },
+      "correct": {
+        "specimen": "s-11-6-correct",
+        "caption": "H.4212’s page at 360 px. Step 2 holds the way to take part, and step 5’s note says the Senate’s committee often holds a hearing of its own."
+      },
+      "failure": {
+        "specimen": "s-11-6-failure",
+        "caption": "<strong>Fails Rule 11.6.</strong> A stock stepper draws checks and boxes with no numbers, so a reader who learned the steps in a list has to learn a second set."
+      },
+      "specs": [
+        {
+          "label": "Circles",
+          "value": "28 px with 14 px numbers"
+        },
+        {
+          "label": "Line",
+          "value": "2 px down the page as far as the bill has come, 1 px after it"
+        },
+        {
+          "label": "Each step",
+          "value": "Name in Inter 600 at 17 px, the state in label type, a note at 15 px"
+        },
+        {
+          "label": "Ask button",
+          "value": "Inter 700 at 19 px, White on Pillar Red at 4.17 to 1, 48 px tall",
+          "token": "oa.type.ask"
+        },
+        {
+          "label": "Column of meanings",
+          "value": "From 1,024 px, beside a 600 px column of steps"
+        }
+      ],
+      "related": [
+        "18",
+        "20"
+      ],
+      "builders": [
+        "Mark up the steps as an <code>&lt;ol&gt;</code>, one item for each step, with the state in its text. Make the ask a link to the way to take part, styled as the ask button."
+      ]
+    },
+    {
+      "id": "11.7",
+      "title": "Size the marks for reading, and the targets for a thumb.",
+      "rule": [
+        "Draw the circles at 24 px on a story card, 26 px in a list at 360 px, 28 px on a bill’s page and 30 px in a list at 1,024 px. Numbers sit at 13 px in circles under 28 px and at 14 px from 28 px. Every link and button a reader can press stands at least 44 px tall, and the ask button 48 px."
+      ],
+      "tokens": [
+        "oa.size.target.touch",
+        "oa.size.target.minimum"
+      ],
+      "why": {
+        "text": [
+          "Numbers at 13 px keep the type floor of Rule 06.3 inside the mark. A target 44 px tall clears the 24 px minimum in WCAG 2.2 with room for a thumb, and matches our touch target token."
+        ],
+        "basis": "WCAG 2.2 SC 2.5.8; Rule 06.3"
+      },
+      "correct": {
+        "specimen": "s-11-7-correct",
+        "caption": "The four circle sizes at true size, and the two targets with their heights marked."
+      },
+      "failure": {
+        "specimen": "s-11-7-failure",
+        "caption": "<strong>Fails Rules 11.7 and 06.3.</strong> Circles at 16 px force numbers down to 9 px, and the link stands 20 px tall, under the 24 px minimum."
+      },
+      "specs": [
+        {
+          "label": "Circles",
+          "value": "24, 26, 28 and 30 px, by place"
+        },
+        {
+          "label": "Numbers",
+          "value": "Inter 700 at 13 px, or 14 px in circles of 28 px and up; tabular figures"
+        },
+        {
+          "label": "Links and buttons",
+          "value": "At least 44 px tall",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Smallest target anywhere",
+          "value": "24 by 24 px",
+          "token": "oa.size.target.minimum"
+        },
+        {
+          "label": "Ask button",
+          "value": "48 px tall"
+        }
+      ],
+      "related": [
+        "06",
+        "19"
+      ],
+      "builders": [
+        "Set <code>min-height: var(--oa-size-target-touch)</code> on every link in a tracker, and give a link that sits inline at least 24 px of space around it."
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "after_rule": "11.1",
+      "specimen": "s-11-steps",
+      "label": "The six steps",
+      "caption": "What happens at each step. Step 6 is named for whoever signs the bill."
+    },
+    {
+      "after_rule": "11.5",
+      "specimen": "s-11-list-360-charcoal",
+      "label": "Numbered steps at 360 px on Charcoal",
+      "caption": "The same five bills on Charcoal. The marks turn to Newsprint and Dim Newsprint, and the take-part disc keeps its red."
+    },
+    {
+      "after_rule": "11.5",
+      "specimen": "s-11-list-1024-newsprint",
+      "label": "Numbered steps at 1,024 px on Newsprint",
+      "caption": "From 1,024 px each step’s name sits under its circle, and the current step’s name is bold."
+    },
+    {
+      "after_rule": "11.5",
+      "specimen": "s-11-list-1024-charcoal",
+      "label": "Numbered steps at 1,024 px on Charcoal",
+      "caption": "The same list on Charcoal at 1,024 px."
+    },
+    {
+      "after_rule": "11.6",
+      "specimen": "s-11-page-1024-newsprint",
+      "label": "A bill’s page at 1,024 px on Newsprint",
+      "caption": "The steps run in a 600 px column, and a column beside them says what each step means."
+    },
+    {
+      "after_rule": "11.6",
+      "specimen": "s-11-page-360-charcoal",
+      "label": "A bill’s page at 360 px on Charcoal",
+      "caption": "The same page on Charcoal. The ask button keeps its red, which measures 4.49 to 1 on Charcoal and needs no keyline there."
+    }
+  ],
+  "related_chapters": [
+    {
+      "chapter": "05",
+      "reason": "One working red in each view, and states that read without color."
+    },
+    {
+      "chapter": "06",
+      "reason": "The 13 px floor and tabular figures."
+    },
+    {
+      "chapter": "08",
+      "reason": "The lockmark, which keeps its fixed places and codes nothing."
+    },
+    {
+      "chapter": "17",
+      "reason": "Loading, empty and error states for a live tracker."
+    },
+    {
+      "chapter": "18",
+      "reason": "How a live tracker announces a change."
+    },
+    {
+      "chapter": "19",
+      "reason": "Checking a tracker against WCAG 2.2 AA."
+    }
+  ]
+}

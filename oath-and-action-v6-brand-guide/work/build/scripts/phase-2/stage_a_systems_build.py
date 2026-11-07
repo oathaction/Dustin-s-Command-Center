@@ -336,8 +336,15 @@ def main():
         raise SystemExit(f'specimens missing {sorted(missing)} unused {sorted(unused)}')
     for sid, s in ctx.specs.items():
         (OUT_SP / f'{sid}.html').write_text(s['html'])
-    manifest = {sid: s['meta'] for sid, s in sorted(ctx.specs.items())}
-    (OUT_SP / 'manifest-systems.json').write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + '\n')
+    # The manifest also holds chapter 11's entries, written by apply_systems_ch11.py; keep every entry from a chapter
+    # this build does not write.
+    mpath = OUT_SP / 'manifest-systems.json'
+    kept = {}
+    if mpath.exists():
+        kept = {k: v for k, v in json.loads(mpath.read_text()).items()
+                if str(v.get('chapter')) not in {ch['number'] for ch in chapters}}
+    manifest = dict(sorted({**kept, **{sid: s['meta'] for sid, s in ctx.specs.items()}}.items()))
+    mpath.write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + '\n')
     record = {
         'about': 'Every figure printed in chapters 05, 06 and 07 of stage board A, with the method that produced it. '
                  'Contrast, OKLab and color-vision figures are computed from tokens.json; rendered figures come from '

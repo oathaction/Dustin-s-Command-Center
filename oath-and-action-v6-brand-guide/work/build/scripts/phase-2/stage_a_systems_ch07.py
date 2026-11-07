@@ -82,13 +82,13 @@ def s_07_1(ctx):
             f'{card(ctx, ("var(--oa-space-300)", "var(--oa-space-100)", "var(--oa-space-200)"), ("24", "8", "16"))}</div>')
     ctx.spec('s-07-1-correct', html, '07', '07.1',
              'The spacing scale at true size: eleven bars from 4 px to 104 px, each with its token name and its value in px '
-             'and rem. Below it, an Illustrative tracker card spaced on the scale, with 24 px padding, 8 px from kicker to '
+             'and rem. Below it, an Illustrative story card spaced on the scale, with 24 px padding, 8 px from kicker to '
              'heading and 16 px from heading to text, each gap marked.', illustrative=True,
              notes='Bar lengths are the space tokens themselves.')
     css2 = card_css(ctx)
     html2 = f'<style>{css2}</style>{card(ctx, ("22px", "13px", "37px"), ("22", "13", "37"))}'
     ctx.spec('s-07-1-failure', html2, '07', '07.1',
-             'The same Illustrative tracker card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.',
+             'The same Illustrative story card with gaps of 22, 13 and 37 px, each marked, none of them a step on the scale.',
              illustrative=True, width=420, notes='Off-scale gaps written in px on purpose.')
 
 
@@ -108,7 +108,7 @@ def card(ctx, gaps, labels):
     la, lb_, lc = labels
     # The gaps are drawn as tinted bands so the spacing shows; a key under the card names them.
     return (f'<div class="cd" style="padding:{pad}">'
-            f'<p class="ey"><span>Tracker · City council</span>{B.ILLUS}</p>'
+            f'<p class="ey"><span>Act · How to take part</span>{B.ILLUS}</p>'
             f'<div class="gp" style="height:{a}"></div>'
             f'<p class="hd">Budget hearing moves to May 12</p>'
             f'<div class="gp" style="height:{b}"></div>'
@@ -549,6 +549,12 @@ def build(ctx):
                              '<code>aria-label="Contrast pairs, scroll sideways"</code> while '
                              '<code>scrollWidth > clientWidth</code>, and neither once the content fits.'],
             },
+        ],
+        'related_chapters': [
+            {'chapter': '06', 'reason': 'The type scale the grid carries.'},
+            {'chapter': '08', 'reason': 'The lockmark’s four fixed places on the page.'},
+            {'chapter': '20', 'reason': 'Web pages on the grid.'},
+            {'chapter': '25', 'reason': 'Print and slides on the grid.'},
         ],
         'extras': [
             {'after_rule': '07.3', 'specimen': 's-07-spans', 'label': 'Body span at each width',

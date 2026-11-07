@@ -426,6 +426,24 @@
       ]
     }
   ],
+  "related_chapters": [
+    {
+      "chapter": "06",
+      "reason": "The type scale the grid carries."
+    },
+    {
+      "chapter": "08",
+      "reason": "The lockmark’s four fixed places on the page."
+    },
+    {
+      "chapter": "20",
+      "reason": "Web pages on the grid."
+    },
+    {
+      "chapter": "25",
+      "reason": "Print and slides on the grid."
+    }
+  ],
   "extras": [
     {
       "after_rule": "07.3",

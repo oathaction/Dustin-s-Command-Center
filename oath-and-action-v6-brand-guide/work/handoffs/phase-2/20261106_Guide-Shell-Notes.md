@@ -65,7 +65,7 @@ In a chapter with groups, the "In this chapter" list lists rules under their gro
 
 - "Coming later" wherever a chapter is not in this page (was "later stage").
 - Every Files list ends: "Download buttons arrive with the asset package. Until then, ask the editor for any file listed here." (D2-252)
-- The appendix is "Wordmark width proofs". The shell writes no decision code, "Phase", "Gate", "stage board" or "the studio" anywhere (D2-253); `guide_check.js` now fails those words and codes in every reader string, alt text included, as `codes`. Keep codes in manifests (`notes`) and in your handoff notes.
+- The appendix is "Identity proofs" from the apply pass (D2-328; it was "Wordmark width proofs"). The shell writes no decision code, "Phase", "Gate", "stage board" or "the studio" anywhere (D2-253); `guide_check.js` now fails those words and codes in every reader string, alt text included, as `codes`. Keep codes in manifests (`notes`) and in your handoff notes.
 - An accessible name that holds an entity such as `&amp;` fails as `nameEntities`. Write `alt="Oath &amp; Action"` or `alt="Oath & Action"`; the build now decodes entities once in both cases. In chapter JSON, `&amp;` and `&minus;` print as `&` and `&minus;` once, and anything inside `<code>` prints as written, tags included.
 
 ### Preview
@@ -97,14 +97,14 @@ node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261
 
 | What | Path | Owner |
 |---|---|---|
-| Chapter content | `work/build/guide/chapters/NN-anchor.json`, for example `05-color.json`, `08-signal-grid.json` | each maker |
+| Chapter content | `work/build/guide/chapters/NN-anchor.json`, for example `05-color.json`, `08-lockmark.json` (apply pass; it was `08-signal-grid.json`) | each maker |
 | Proofs appendix order and captions (optional) | `work/build/guide/chapters/proofs.json` | identity designer |
 | Specimens | `work/build/guide/specimens/<id>.html` | each maker |
 | Specimen manifests | `work/build/guide/specimens/manifest-<maker>.json` | each maker |
 | Shell style, script, sample fixtures | `work/build/guide/shell/` | engineer |
 | Build | `work/build/scripts/phase-2/guide_build.py` | engineer |
 
-The file name's number and anchor must match the architecture map (`01-purpose`, `02-voice`, `03-identity`, `04-ampersand`, `05-color`, `06-type`, `07-layout`, `08-signal-grid`). The build warns when they do not.
+The file name's number and anchor must match the architecture map (`01-purpose`, `02-voice`, `03-identity`, `04-ampersand`, `05-color`, `06-type`, `07-layout`, `08-lockmark`, and `11-icons` once chapter 11 opens). The build warns when they do not. See `20261107_Apply-Pass-Engineer-Notes.md` for the apply pass changes.
 
 ## 3. Chapter JSON: what the shell reads (for makers)
 
@@ -283,7 +283,7 @@ AXE_PATH="${TMPDIR:-/tmp}/oa-axe/node_modules/axe-core/axe.min.js" node work/bui
 - **Landmarks.** One banner (masthead), one navigation block for parts and one for chapters, main, one contentinfo (the colophon). The phone menu holds a single navigation block. Chapters are sections with headings and no region names.
 - **Part opener.** A Charcoal panel, the part's one dark beat (Rule 05.1), with each chapter and its instruction line read from the chapter file. The pillar mark that marks each part comes with the pillar marks chapter; the page says nothing about it until then.
 - **Appendix.** From 1440 px the appendix spans all twelve columns and slides over the rail, which the script hides once the appendix reaches it; its mat is 24 px, so a proof stage has 1,264 px at true size (C-M6, D2-251).
-- **Anchors.** Chapter anchors are words (`#color`). V5's `#grid` sits at the top of `#signal-grid`. Rules are `#rule-05-2`; closers are `#color-specs`, `#color-related`, `#color-builders`.
+- **Anchors.** Chapter anchors are words (`#color`). V5's `#grid` sits at the top of `#lockmark` (it sat on `#signal-grid` until the apply pass). Rules are `#rule-05-2`; closers are `#color-specs`, `#color-related`, `#color-builders`.
 - **Tokens.** `tokens.css` is inlined into the page. If it is missing, the build writes a provisional block from the Phase 1 schema draft and says so on the page.
 
 ## 8. Engineer's report

@@ -1,99 +1,73 @@
 {
- "title": "Wordmark width proofs",
- "instruction": "Compare each piece at both wordmark widths at actual size, so Dustin can choose one.",
+ "title": "Identity proofs",
+ "instruction": "Check the identity at true size on four pieces we publish, and see the stacked lockup that replaced L2.",
  "intro": [
-  "Dustin Cathcart, our founder and editor, chooses the wordmark’s width from these proofs. Each proof shows one piece at actual size at today’s width and at the condensed width, both with ampersand B, set on one edge or one line so the wordmark is the one thing that changes. Today’s width stays in use until he chooses.",
-  "We recommend today’s width. At the same height the condensed drawing only runs narrower, and its heavy capitals sit close to the lettering of campaign signs. Its monogram also reads as 0&A."
+  "These proofs set the wordmark, ampersand B and the lockmark at true size on four pieces we publish: the site’s masthead, a social avatar, a link-preview card and a letterhead. Each follows the rules in chapters 03, 04 and 08.",
+  "The last proof is a record. On November 7, 2026, Dustin Cathcart, our founder and editor, approved S1, the stacked lockup that sets OATH & over ACTION, in place of L2. The two stand side by side at the same cap height at three sizes, so anyone can check the change at true size."
  ],
  "groups": [
   {
-   "label": "The marks at a glance",
-   "text": [
-    "The wordmark from each of its masters, the stacked lockup and the monogram, both widths at the same height."
-   ],
-   "items": [
-    {
-     "specimen": "s-proofs-glance",
-     "label": "Both widths",
-     "caption": "At the same height the condensed wordmark runs about a fifth narrower: 152 against 120 px from the 16 px masters, 221 against 181 from the 24 px masters, and 435 against 342 from the display masters at 48 px tall."
-    }
-   ]
-  },
-  {
    "label": "Masthead on the site",
    "text": [
-    "L3 in the 1440 px site bar and L1 in the 390 px phone bar, today’s width above the condensed width on one left edge."
+    "L3 in the 1440 px site bar and L1 in the 390 px phone bar, on one left edge (Rule 03.6)."
    ],
    "items": [
     {
      "specimen": "s-proofs-masthead",
-     "label": "Both widths, stacked",
-     "caption": "At the same height the condensed wordmark runs 40 px shorter, so the lockmark moves 40 px to the left. Use Fit to window to see each bar whole."
-    }
-   ]
-  },
-  {
-   "label": "Masthead in email",
-   "text": [
-    "L3 at the head of a 600 px email, the two widths side by side. A sent email carries the masthead as a PNG at twice size, with the alt text “Oath & Action”."
-   ],
-   "items": [
-    {
-     "specimen": "s-proofs-email",
-     "label": "Both widths, side by side",
-     "caption": "The story under each masthead is invented."
+     "label": "Site and phone",
+     "caption": "Use Fit to window to see the site bar whole on a smaller screen."
     }
    ]
   },
   {
    "label": "Avatar",
    "text": [
-    "The monogram, L8, on the Charcoal tile that Rule 04.7 sets as the default, in a circle and a square. A feed draws an avatar at about 32 to 48 px, where L8 at either width sets its capitals under the 14 px floor. Rule 04.7’s avatar, ampersand B alone, reads at that size and is the same at both widths, so we recommend it whichever width Dustin chooses."
+    "Ampersand B alone on the Charcoal tile, as Rule 04.7 sets it for social avatars and the app icon. The platform prints our name beside the avatar, so the mark can be B alone."
    ],
    "items": [
     {
      "specimen": "s-proofs-avatar",
-     "label": "Both widths, side by side",
-     "caption": "L8 fills 62 percent of the tile’s width at both widths, so the condensed capitals stand taller, and its narrow O reads close to a zero."
+     "label": "Upload, feed and app icon",
+     "caption": "At 32 px in a feed, B still reads, where any lettered mark would set its capitals under the 14 px floor."
     }
    ]
   },
   {
    "label": "Social card",
    "text": [
-    "The 1200 by 630 link-preview card, today’s width above the condensed width on one left edge, with its specifications under them."
+    "The 1200 by 630 link-preview card, with its specifications under it."
    ],
    "items": [
     {
      "specimen": "s-proofs-social",
-     "label": "Both widths, stacked",
-     "caption": "Until chapter 23 sets social cards, build one from these specifications at today’s width."
+     "label": "Link-preview card",
+     "caption": "Until chapter 23 sets social cards, build one from these specifications."
     }
    ]
   },
   {
    "label": "Letterhead",
    "text": [
-    "US Letter, 8.5 by 11 inches, at true size on screen, 96 px to the inch, the two widths side by side. The print proof holds both widths, one per page, each labeled; check its scale with a ruler before you judge it on paper."
+    "US Letter, 8.5 by 11 inches, at true size on screen, 96 px to the inch. Check the print proof’s scale with a ruler before you judge it on paper."
    ],
    "items": [
     {
      "specimen": "s-proofs-letterhead",
-     "label": "Both widths, side by side",
+     "label": "US Letter",
      "caption": "The address, recipient and letter are invented, and the letter is signed with Dustin’s name and title."
     }
    ]
   },
   {
-   "label": "Minimum sizes at both widths",
+   "label": "L2 beside S1",
    "text": [
-    "The smallest size of each mark whose size changes with the width. Chapter 03 lists today’s width alone."
+    "The record of the change to the stacked lockup: L2 at left and S1 at right in each pair, at the same cap height."
    ],
    "items": [
     {
-     "specimen": "s-proofs-minimums",
-     "label": "Both widths",
-     "caption": "From the identity masters’ table. Every other mark keeps its minimum at either width."
+     "specimen": "s-proofs-stacked",
+     "label": "Three sizes",
+     "caption": "S1 reads in the name’s order with B at the size of the capitals, and it runs about a fifth narrower than L2 at every size."
     }
    ]
   }

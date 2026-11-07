@@ -22,7 +22,7 @@ SHARE = {'newsprint': (60, 85), 'charcoal': (10, 25), 'pillarRed': (1, 5), 'prus
 JOB = {'newsprint': 'The reading surface: the page most of our work sits on, and the ground for charts and the atlas.',
        'charcoal': 'Text and structure on light surfaces, and the dark ground for one panel per section.',
        'pillarRed': 'Signature red in the marks, and one working red in each view.',
-       'prussian': 'Depth: panels that hold a tracker, an explainer or a set of figures.',
+       'prussian': 'Depth: panels that hold dates, an explainer or a set of figures.',
        'stone': 'Hairlines, structure and the context marks in a chart.',
        'verdigris': 'Success marks and the focus ring on light surfaces.',
        'white': 'A bright surface for specimens and email, and reversed text on Prussian.'}
@@ -270,7 +270,7 @@ def surface_tile(ctx, s, failing=False):
     job = {'newsprint': 'The page for reading and most of what we publish.',
            'white': 'Specimens and email, where a page needs a bright ground.',
            'charcoal': 'The dark beat: one panel per section at most.',
-           'prussian': 'Panels that hold a tracker, an explainer or a set of figures.'}[s]
+           'prussian': 'Panels that hold dates, an explainer or a set of figures.'}[s]
     return (f'<div class="tl" style="background:{v("oa.color.surface." + s)};color:{v(prim)};--sec:{v(sec)};'
             f'--rule:{v("oa.color.border.hairline." + on)}">'
             f'<p class="sn">{SNAME[s]}</p><p class="sj">{job}</p>'
@@ -750,12 +750,12 @@ def s_05_6(ctx):
             f'.ey{{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0;{ctx.ty("label")};color:{v("oa.color.text.secondary.onNewsprint")}}}'
             f'.hd{{margin:8px 0 0;{ctx.ty("h4")}}}'
             f'.mt{{margin:12px 0 0;{ctx.ty("caption")};color:{v(P("charcoal"))};opacity:.4}}')
-    htmlf = (f'<style>{cssf}</style><div class="cd"><p class="ey"><span>Tracker · State bills</span>{B.ILLUS}</p>'
-             f'<p class="hd">Paid family leave bill moves to a committee vote</p>'
+    htmlf = (f'<style>{cssf}</style><div class="cd"><p class="ey"><span>Explainer · State bills</span>{B.ILLUS}</p>'
+             f'<p class="hd">What the paid family leave bill would change</p>'
              f'<p class="mt">Updated November 6, 2026 · two sources</p></div>')
     ctx.spec('s-05-6-failure', htmlf, '05', '05.6',
-             f'An Illustrative tracker card on Newsprint with the kicker Tracker, State bills, the headline Paid family leave '
-             f'bill moves to a committee vote, and a metadata line in Charcoal at 40 percent opacity that measures {ro} to 1.',
+             f'An Illustrative story card on Newsprint with the kicker Explainer, State bills, the headline What the paid '
+             f'family leave bill would change, and a metadata line in Charcoal at 40 percent opacity that measures {ro} to 1.',
              width=360, illustrative=True, exempt=['contrast'],
              notes=f'Composite {comp}; the Deep Stone token measures {rd} to 1 on the same ground.')
     return len(tints), ro, rd
@@ -940,9 +940,12 @@ def build(ctx):
         'rules': [
             {
                 'id': '05.1', 'title': 'Cover most of every view in Newsprint.',
-                'rule': ['Newsprint covers 60 to 85 percent of every view. A dark panel in Charcoal or Prussian marks a turn '
-                         'in the reading, so a section holds one at most, and Pillar Red stays within 5 percent. Across a '
-                         'body of work, the seven colors keep the shares in the palette sheet below this rule.'],
+                'rule': ['Every view keeps three limits. Newsprint covers 60 to 85 percent of it, each section holds one '
+                         'dark panel at most, in Charcoal or Prussian, and Pillar Red stays within 5 percent, signature red '
+                         'included.',
+                         'The other shares in the palette sheet below, carried from our fifth edition, set the balance '
+                         'across a body of work, such as a month of stories or a whole report. A single view may fall '
+                         'outside them.'],
                 'tokens': [P(k) for k in PAL],
                 'why': {'text': ['A warm, light page keeps long reading calm, and readers come to know Newsprint as ours '
                                  'before they read a word. A dark panel works as a signal only while it stays rare. Each one '
@@ -960,7 +963,7 @@ def build(ctx):
                                        f'mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how '
                                        f'much of the view is dark.'},
                 'specs': [{'label': 'Newsprint in each view', 'value': '60 to 85 percent', 'token': P('newsprint')},
-                          {'label': 'Dark panels', 'value': 'Charcoal or Prussian, one per section at most', 'token': 'oa.color.surface.prussian'},
+                          {'label': 'Dark panels in each section', 'value': 'One at most, in Charcoal or Prussian', 'token': 'oa.color.surface.prussian'},
                           {'label': 'Pillar Red in each view', 'value': 'Within 5 percent, signature red included', 'token': P('pillarRed')}] +
                          [{'label': f'{PNAME[k]} across a body of work', 'value': (f'{SHARE[k][0]} to {SHARE[k][1]} percent' if SHARE[k] else 'As needed'),
                            'token': P(k)} for k in PAL if k not in ('newsprint',)],
@@ -1073,7 +1076,8 @@ def build(ctx):
                             'caption': f'<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a '
                                        f'dot. The dots measure {red_ver} to 1 against each other, and in grayscale they print '
                                        f'as {C.css_gray(ctx.hx(P("pillarRed")))} and {C.css_gray(ctx.hx(P("verdigris")))}, two '
-                                       f'near grays that say nothing about which row has the problem.'},
+                                       f'near grays that say nothing about which row has the problem. Rule 11.2 gives each '
+                                       f'tracker state a shape and a word.'},
                 'specs': [
                     {'label': 'Focus ring on light surfaces', 'value': f'Verdigris, 2 px, 2 px gap; {ver_n} to 1 on Newsprint', 'token': 'oa.color.focus.ring.onNewsprint'},
                     {'label': 'Focus ring on dark surfaces', 'value': f'Newsprint; {n_c} to 1 on Charcoal, {n_pr} on Prussian', 'token': 'oa.color.focus.ring.onCharcoal'},
@@ -1174,7 +1178,10 @@ def build(ctx):
                                  'before any side. A scale from red to blue reads as a party split in the United States, and '
                                  'Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the '
                                  'arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a '
-                                 'chart shared on its own still reads as ours.'],
+                                 'chart shared on its own still reads as ours.',
+                                 'The same standard decides which charts run. Charts are chosen by the question '
+                                 'and the evidence. Every title is read from the left and the right to check that its words '
+                                 'are accurate and fair. A set never adds or drops a finding to even the score.'],
                         'basis': 'Design judgment; Rules 01.1 and 01.3'},
                 'correct': {'specimen': 's-05-7-correct',
                             'caption': 'The chart palette on Newsprint at true size: four roles, the diverging scale with its '
@@ -1218,6 +1225,14 @@ def build(ctx):
             {'after_rule': '05.5', 'specimen': 's-05-pairs', 'label': 'Every palette pair, measured',
              'caption': 'Every palette pair, measured. “Text at any size” means 4.5 to 1 or more; “Large text and marks” '
                         'means 3 to 1 or more. Pillar Red never sets text, whatever its ratio.'},
+        ],
+        'related_chapters': [
+            {'chapter': '06', 'reason': 'Which sizes count as large text.'},
+            {'chapter': '08', 'reason': 'The lockmark, whose lever is signature red.'},
+            {'chapter': '11', 'reason': 'Tracker states told by shape and words, and the one take-part red.'},
+            {'chapter': '14', 'reason': 'The data palettes.'},
+            {'chapter': '17', 'reason': 'States.'},
+            {'chapter': '26', 'reason': 'The color tokens.'},
         ],
         'sources': [src,
                     'W3C, Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, success criteria 1.4.1, 1.4.3 '

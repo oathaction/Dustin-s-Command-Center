@@ -535,7 +535,7 @@
     },
     {
      "label": "Before",
-     "value": "Our brand guide, fifth edition, chapter 07 the Signal Grid, figure caption"
+     "value": "Our brand guide, fifth edition, chapter 07, figure caption"
     }
    ],
    "builders": "Search for three or more nouns in a row, and rewrite with a preposition or a verb between them.",
@@ -839,7 +839,7 @@
    "id": "02.23",
    "title": "Set each brand line in its own place, word for word.",
    "rule": [
-    "Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and keep the founding line out of the tagline’s slot."
+    "Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and keep the founding line out of the tagline’s slot. The retired lines under the table appear nowhere else."
    ],
    "tokens": [
     "oa.font.family.reading",
@@ -910,7 +910,7 @@
    },
    "correct": {
     "specimen": "s-02-25-correct",
-    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check."
+    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check, with the bill’s two provisions in the same sentence as its count."
    },
    "failure": {
     "specimen": "s-02-25-failure",
@@ -1007,11 +1007,11 @@
   }
  ],
  "sources": [
-  "Source: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, 2026, page S5199, United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.",
   "Source: Federal Election Commission, Federal Elections 2020 (Table 2) and Official 2024 Presidential General Election Results, compiled from state election offices, November 2020 and November 2024, 50 states and DC. Retrieved November 6, 2026. Each margin is the leading party’s lead, in percentage points of all presidential votes; New York counts fused party lines.",
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of losing office, snapshot of October 15, 2026, United States. Retrieved November 6, 2026. From survey experiments with 1,691 respondents (Graham and Svolik, 2020); about 3.5 percent left their own party’s candidate in realistic matchups.",
   "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+  "Sources: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, page S5199, September 30, 2026, United States; party labels from the congress-legislators project’s roster of current members of Congress, a secondary source. Retrieved November 6, 2026. The Record lists each senator’s vote by name, and ending debate needs three-fifths of the Senate, 60 votes.",
   "Our systems atlas, Who Do They Answer To?, glossary entry “Cloture”, for H02’s example."
  ],
  "related_chapters": [

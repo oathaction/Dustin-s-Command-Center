@@ -6,13 +6,13 @@
  "instruction": "Pick the lockup that fits the surface and size, and give it room on every side.",
  "intro": [
   "The wordmark is our name drawn as one piece of artwork: OATH and ACTION in heavy capitals, joined by ampersand B, the red ampersand we drew for Oath & Action. A lockup is a fixed arrangement of the wordmark with another part, such as the tagline or the lockmark, the 3 by 3 grid of nodes that chapter 08 explains.",
-  "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark’s capitals, and the pages show today’s wordmark width. The condensed width, which Dustin Cathcart is weighing, appears only in the wordmark width proofs after chapter 08."
+  "Every mark here is a vector master drawn for a range of sizes. You place the master, color it with tokens and leave room around it. In this chapter x means the height of the wordmark’s capitals. The wordmark keeps the width our fifth edition drew, with ampersand B as refined for this edition, and the identity proofs at the end of the guide show it in use."
  ],
  "rules": [
   {
    "id": "03.1",
    "title": "Place the wordmark from its master file.",
-   "rule": "Use the master drawn for the height you need and set its color with tokens. Never type the name in a font, Inter Tight included, though the capitals were cut from it.",
+   "rule": "Use the master drawn for the height you need and set its color with tokens. The masters hold the wordmark’s one width, the width our fifth edition drew, with ampersand B as refined for this edition. Never type the name in a font, Inter Tight included, though the capitals were cut from it.",
    "tokens": [
     "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onNewsprint"
@@ -30,6 +30,10 @@
     "caption": "The name typed in Inter Tight 800 for a slide. The font’s own ampersand stands in for B, the gaps come out wide and uneven, and the result no longer matches the masthead the reader saw a minute earlier."
    },
    "specs": [
+    {
+     "label": "Width",
+     "value": "One width, 9.78x at every size: the width our fifth edition drew, with ampersand B as refined"
+    },
     {
      "label": "Display master",
      "value": "From 40 px tall; 978.31 by 108 units, capitals 100 units"
@@ -71,12 +75,12 @@
     "05",
     "27"
    ],
-   "builders": "Pick the file by the height you will draw it. Set <code>color</code> to the surface’s primary text token and <code>--amp</code> to its signature token; the file reads both. On Prussian, place the file from <code>prussian/</code>, which carries White in the drawing."
+   "builders": "Pick the file by the height you will draw it, from the files this rule lists. Set <code>color</code> to the surface’s primary text token and <code>--amp</code> to its signature token; the file reads both. On Prussian, place the file from <code>prussian/</code>, which carries White in the drawing."
   },
   {
    "id": "03.2",
    "title": "Choose the lockup by the space and the surface.",
-   "rule": "Eight lockups cover every use, and each has one job. Start from the width you have: L1, the wordmark alone, for most uses; L3, the wordmark with the lockmark, for the site and email masthead; L2, the stacked lockup, for square formats and posters; and L8, the monogram, where the full name will not fit. The sheet after this rule shows all eight at true size, and the specifications give each one’s minimum.",
+   "rule": "Eight lockups cover every use, and each has one job. Start from the width you have: L1, the wordmark alone, for most uses; L3, the wordmark with the lockmark, for the site and email masthead; S1, the stacked lockup, OATH & over ACTION, for square formats and posters; and L8, the monogram, for small squares where the name must show. The sheet after this rule shows all eight at true size, and the specifications give each one’s minimum.",
    "tokens": [],
    "why": {
     "text": "A fixed set means a reader meets the same arrangement in the same place, and a producer never has to invent one. Each lockup’s job comes from the space it fills, so the choice turns on two facts you can measure: the width you have and the surface under it.",
@@ -96,8 +100,8 @@
      "value": "Most uses: page heads, documents, slides and signs. Minimum 16 px tall, 152 px wide; 1.20 in"
     },
     {
-     "label": "L2 Stacked",
-     "value": "Square formats and posters. Minimum 90 px wide; 0.80 in"
+     "label": "S1 Stacked",
+     "value": "OATH & over ACTION, flush left, for square formats and posters. Minimum 79 px wide; 0.65 in"
     },
     {
      "label": "L3 Horizontal with the lockmark",
@@ -113,7 +117,7 @@
     },
     {
      "label": "L6 Editorial signature",
-     "value": "The sign-off strip at the foot of pages and reports. Minimum 884 px wide; 6.60 in"
+     "value": "The strip that closes a report or a long page, with the tagline and the lockmark. Minimum 884 px wide; 6.60 in"
     },
     {
      "label": "L7 Section masthead",
@@ -121,11 +125,13 @@
     },
     {
      "label": "L8 Monogram",
-     "value": "Small squares where the full name will not fit; never a favicon. Minimum 48 px wide; 0.50 in"
+     "value": "Small squares where the name must show, such as a tile in a partner’s directory; never an avatar or a favicon. Minimum 48 px wide; 0.50 in"
     }
    ],
    "files": [
-    "work/build/assets/identity/lockups/20261028_L2-Stacked-Master.svg",
+    "work/build/assets/identity/lockups/20261107_S1-Stacked-Master.svg",
+    "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-24px.svg",
+    "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-16px.svg",
     "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
     "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg"
    ],
@@ -134,7 +140,7 @@
     "07",
     "27"
    ],
-   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file."
+   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1’s files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file."
   },
   {
    "id": "03.3",
@@ -208,8 +214,8 @@
      "value": "16 px tall, 152 px wide; 1.20 in in print"
     },
     {
-     "label": "L2",
-     "value": "90 px wide; 0.80 in"
+     "label": "S1",
+     "value": "79 px wide, capitals 14 px; 0.65 in"
     },
     {
      "label": "L3",
@@ -220,8 +226,12 @@
      "value": "48 px wide; 0.50 in; never a favicon"
     },
     {
-     "label": "Ampersand B, lockmark and badge",
+     "label": "Ampersand B and the lockmark",
      "value": "16 px; 0.25 in"
+    },
+    {
+     "label": "Hinge-circle badge",
+     "value": "48 px; 0.50 in (Rule 04.6)"
     },
     {
      "label": "L4 to L7",
@@ -240,7 +250,7 @@
     "19",
     "27"
    ],
-   "builders": "Read the height you will draw, then pick the master whose range holds it. For the wordmark, the 16 px master runs from 16 to 19 px tall, the 24 px master from 20 to 39 px and the display master from 40 px. For ampersand B, the lockmark and the badge, the 16 px master runs from 16 to 23 px, the 24 px master from 24 to 47 px and the display master from 48 px (Rule 04.1). In print, set the width in inches from the table."
+   "builders": "Read the height you will draw, then pick the master whose range holds it. For the wordmark, the 16 px master runs from 16 to 19 px tall, the 24 px master from 20 to 39 px and the display master from 40 px. For ampersand B and the lockmark, the 16 px master runs from 16 to 23 px, the 24 px master from 24 to 47 px and the display master from 48 px (Rule 04.1). S1’s masters follow its capitals: the 16 px master for capitals 14 to 17 px, the 24 px master for 18 to 36 px and the display master from 37 px. The badge starts at 48 px, from its display master. In print, set the width in inches from the table."
   },
   {
    "id": "03.5",
@@ -257,7 +267,7 @@
    },
    "correct": {
     "specimen": "s-03-5-correct",
-    "caption": "L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand, Prussian in White, and the one-color versions."
+    "caption": "L1, S1 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand, Prussian in White, and the one-color versions."
    },
    "failure": {
     "specimen": "s-03-5-failure",
@@ -285,6 +295,7 @@
    ],
    "files": [
     "work/build/assets/identity/prussian/20261028_Wordmark-Display-Master-Prussian-White.svg",
+    "work/build/assets/identity/prussian/20261107_S1-Stacked-Master-Prussian-White.svg",
     "work/build/assets/identity/prussian/20261028_L8-Monogram-Master-Prussian-White.svg"
    ],
    "related": [
@@ -340,12 +351,12 @@
     "20",
     "22"
    ],
-   "builders": "Write the switch as a media query in em, <code>@media (min-width: 48em)</code>, so it follows the reader’s text size (Rule 07.5). In email, export the masthead as a PNG at twice its size with the alt text “Oath & Action”. Most email clients drop web fonts, and several show no inline SVG."
+   "builders": "Write the switch as a media query in em, <code>@media (min-width: 48em)</code>, so it follows the reader’s text size (Rule 07.5). In email, export the masthead as a PNG at twice its size with the alt text “Oath & Action”. Most email clients drop web fonts, and several show no inline SVG. In a short email whose footer shows in the same view as its header, set L1 at the top and keep the lockmark in the footer (Rule 08.2)."
   },
   {
    "id": "03.7",
    "title": "Use L8 as the one monogram, and retire the spaced “O & A”.",
-   "rule": "L8 sets O and A with ampersand B between them, cut from the same masters as the wordmark. It serves small squares where the full name will not fit, from 48 px wide. The compact signature from our brand guide’s fourth edition, “O & A” typed with word spaces, retires, along with any other typed monogram.",
+   "rule": "L8 sets O and A with ampersand B between them, cut from the same masters as the wordmark. It serves squares where the name must show, such as a tile in a partner’s directory, from 48 px wide. Social avatars and the app icon show ampersand B alone on the Charcoal tile (Rule 04.7). The compact signature from our brand guide’s fourth edition, “O & A” typed with word spaces, retires, along with any other typed monogram.",
    "tokens": [],
    "why": {
     "text": "Two monograms split what readers learn to recognize. L8 keeps the wordmark’s own white beside the ampersand, so it reads as the name in brief. Typed with spaces, the three characters read as separate letters, and the font’s ampersand replaces B.",
@@ -373,6 +384,10 @@
      "value": "Ampersand B’s 16 px master"
     },
     {
+     "label": "Avatars and the app icon",
+     "value": "Never L8; ampersand B alone on the Charcoal tile (Rule 04.7)"
+    },
+    {
      "label": "Favicon",
      "value": "Never L8; ampersand B’s 16 px master"
     }
@@ -384,7 +399,7 @@
     "04",
     "23"
    ],
-   "builders": "For an app tile or an avatar, use ampersand B alone on the Charcoal tile (Rule 04.7). L8 belongs where the name has to show and the square has room for 16 px capitals."
+   "builders": "L8 belongs where the name has to show and the square has room for 16 px capitals. For an app tile or an avatar, the platform prints the name, so use ampersand B alone on the Charcoal tile (Rule 04.7)."
   },
   {
    "id": "03.8",
@@ -449,7 +464,7 @@
    "after_rule": "03.2",
    "specimen": "s-03-lockups",
    "label": "The eight lockups",
-   "caption": "Seven of the eight lockups at true size, each with its job and its minimum on screen and in print; L6 follows in its own plate. L1, L2, L3 and L8 are masters; L4, L5 and L7 are built from the approved masters on our fifth edition’s layouts."
+   "caption": "Seven of the eight lockups at true size, each with its job and its minimum on screen and in print; L6 follows in its own plate. L1, S1, L3 and L8 are masters; L4, L5 and L7 are built from the approved masters on our fifth edition’s layouts."
   },
   {
    "after_rule": "03.2",
@@ -461,7 +476,7 @@
    "after_rule": "03.4",
    "specimen": "s-03-minimums",
    "label": "Minimum sizes",
-   "caption": "The smallest size for every mark on screen and in print, and the mark to use below it, at today’s width."
+   "caption": "The smallest size for every mark on screen and in print, and the mark to use below it."
   },
   {
    "after_rule": "03.8",

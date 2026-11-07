@@ -1,14 +1,15 @@
-"""Build the identity designer's stage board A content: chapters 03, 04 and 08 and the Gate 2 proofs panel.
+"""Build the identity designer's content: chapters 03, 04 and 08 (The lockmark) and the identity proofs appendix.
 
 Writes
   work/build/guide/specimens/<id>.html            one self-contained fragment per specimen
   work/build/guide/specimens/manifest-identity.json
-  work/build/guide/chapters/03-identity.json, 04-ampersand.json, 08-signal-grid.json
-  work/boards/phase-2/stage-a/proofs/20261106_Letterhead-Proof.html and .pdf (with --pdf)
+  work/build/guide/chapters/03-identity.json, 04-ampersand.json, 08-lockmark.json, proofs.json
+  work/boards/phase-2/stage-a/proofs/20261107_Letterhead-Proof.html and .pdf (with --pdf)
   <scratch>/preview-identity.html                 a local preview of every specimen with tokens.css (with --preview DIR)
 
 Run from anywhere: python3 work/build/scripts/phase-2/stage_a_identity_build.py [--pdf] [--preview DIR]
-It reads the identity masters and Civic Line files and writes none of them.
+It reads the identity masters and Civic Line files and writes none of them. stage_a_identity_s1.py writes S1's masters
+and the minimum sizes table; run it first when either needs writing.
 """
 import json
 import sys
@@ -24,6 +25,7 @@ import stage_a_identity_chapters as CH  # noqa: E402
 
 
 MINE = ("s-03-", "s-04-", "s-08-", "s-proofs-")      # specimen ids this maker owns
+RETIRED_CHAPTER_FILES = ("08-signal-grid.json",)     # this maker's chapter files that no longer exist under that name
 
 
 def build(preview_dir=None, pdf=False):
@@ -51,6 +53,10 @@ def build(preview_dir=None, pdf=False):
             f.unlink()
             print(f"  removed stale {f.name}")
     (L.SPEC_DIR / "manifest-identity.json").write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n")
+    for old in RETIRED_CHAPTER_FILES:             # chapter 08 moved to 08-lockmark.json (D2-325)
+        if (L.CHAP_DIR / old).exists():
+            (L.CHAP_DIR / old).unlink()
+            print(f"  removed {old}")
     for ch in CH.CHAPTERS:
         f = L.CHAP_DIR / f'{ch["number"]}-{ch["anchor"]}.json'
         f.write_text(json.dumps(ch, indent=1, ensure_ascii=False) + "\n")

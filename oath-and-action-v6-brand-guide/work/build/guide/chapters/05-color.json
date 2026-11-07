@@ -13,7 +13,8 @@
       "id": "05.1",
       "title": "Cover most of every view in Newsprint.",
       "rule": [
-        "Newsprint covers 60 to 85 percent of every view. A dark panel in Charcoal or Prussian marks a turn in the reading, so a section holds one at most, and Pillar Red stays within 5 percent. Across a body of work, the seven colors keep the shares in the palette sheet below this rule."
+        "Every view keeps three limits. Newsprint covers 60 to 85 percent of it, each section holds one dark panel at most, in Charcoal or Prussian, and Pillar Red stays within 5 percent, signature red included.",
+        "The other shares in the palette sheet below, carried from our fifth edition, set the balance across a body of work, such as a month of stories or a whole report. A single view may fall outside them."
       ],
       "tokens": [
         "oa.color.palette.newsprint",
@@ -45,8 +46,8 @@
           "token": "oa.color.palette.newsprint"
         },
         {
-          "label": "Dark panels",
-          "value": "Charcoal or Prussian, one per section at most",
+          "label": "Dark panels in each section",
+          "value": "One at most, in Charcoal or Prussian",
           "token": "oa.color.surface.prussian"
         },
         {
@@ -306,7 +307,7 @@
       },
       "failure": {
         "specimen": "s-05-4-failure",
-        "caption": "<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two near grays that say nothing about which row has the problem."
+        "caption": "<strong>Fails 1.4.1.</strong> Two tracker rows that differ only by the hue of a dot. The dots measure 1.14 to 1 against each other, and in grayscale they print as #5F5F5F and #717171, two near grays that say nothing about which row has the problem. Rule 11.2 gives each tracker state a shape and a word."
       },
       "specs": [
         {
@@ -498,7 +499,8 @@
       ],
       "why": {
         "text": [
-          "Neither end of the diverging scale belongs to a party, so a reader sees a rise or a fall before any side. A scale from red to blue reads as a party split in the United States, and Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a chart shared on its own still reads as ours."
+          "Neither end of the diverging scale belongs to a party, so a reader sees a rise or a fall before any side. A scale from red to blue reads as a party split in the United States, and Rule 01.3 keeps it out of our charts. Both ends of our scale print as dark grays, so the arrow carries the direction for any reader who cannot tell the hues apart. On Newsprint, a chart shared on its own still reads as ours.",
+          "The same standard decides which charts run. Charts are chosen by the question and the evidence. Every title is read from the left and the right to check that its words are accurate and fair. A set never adds or drops a finding to even the score."
         ],
         "basis": "Design judgment; Rules 01.1 and 01.3"
       },
@@ -602,6 +604,32 @@
       "specimen": "s-05-pairs",
       "label": "Every palette pair, measured",
       "caption": "Every palette pair, measured. “Text at any size” means 4.5 to 1 or more; “Large text and marks” means 3 to 1 or more. Pillar Red never sets text, whatever its ratio."
+    }
+  ],
+  "related_chapters": [
+    {
+      "chapter": "06",
+      "reason": "Which sizes count as large text."
+    },
+    {
+      "chapter": "08",
+      "reason": "The lockmark, whose lever is signature red."
+    },
+    {
+      "chapter": "11",
+      "reason": "Tracker states told by shape and words, and the one take-part red."
+    },
+    {
+      "chapter": "14",
+      "reason": "The data palettes."
+    },
+    {
+      "chapter": "17",
+      "reason": "States."
+    },
+    {
+      "chapter": "26",
+      "reason": "The color tokens."
     }
   ],
   "sources": [

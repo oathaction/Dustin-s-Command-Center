@@ -19,6 +19,34 @@ VOICE_MD = "work/handoffs/phase-2/20261106_Voice-Writing-Rules.md"
 # D2-256: the erratum to H10's qualification line. The rule and its example are unchanged.
 H10_OLD = "Margins are Republican minus Democratic share of all presidential votes"
 H10_NEW = "Each margin is the leading party’s lead, in percentage points of all presidential votes"
+# D2-326: "Signal Grid" leaves reader pages as the name of a coding system, so W14's source names the fifth edition's
+# chapter by its number alone. The before, its rewrite and every other approved word are unchanged.
+W14_SRC_OLD = "Our brand guide, fifth edition, chapter 07 the Signal Grid, figure caption"
+W14_SRC_NEW = "Our brand guide, fifth edition, chapter 07, figure caption"
+
+# The fifth edition's supporting lines, retired with no role: DR-77's four, whole, and DR-122's two, which our copy of
+# that edition keeps only as their first 50 characters, quoted to the end of their last whole sentence.
+RETIRED_WHOLE = ["Know the rules. Find the lever.", "Institutions endure when people act.", "The fine print affects the big picture.",
+                 "Bring your questions. They belong here."]
+RETIRED_OPENINGS = ["Here is what the record shows. …", "The rules connect. The gaps create opportunity. …"]
+
+
+def content():
+    """The approved writing section (Board 5, DR-73 to DR-83) with its two approved corrections: H10's erratum (D2-256)
+    and W14's source after D2-326. The build and its checks both read it from here."""
+    C = load(VOICE_CONTENT)
+    for g in C["groups"]:
+        for r in g["rules"]:
+            if r["id"] == "W14":
+                if r["before_source"] != W14_SRC_OLD:
+                    raise SystemExit("W14's source no longer holds the text the correction replaces")
+                r["before_source"] = W14_SRC_NEW
+    for h in C["house_rules"]:
+        if h["id"] == "H10":
+            if H10_OLD not in h["example_source"]:
+                raise SystemExit("H10's source line no longer holds the text the erratum replaces")
+            h["example_source"] = h["example_source"].replace(H10_OLD, H10_NEW)
+    return C
 
 WHY = {
     "W01": "Most readers meet us on a phone, between other things. A sentence they can follow by ear the first time is the one they can act on.",
@@ -103,8 +131,14 @@ LEGEND = ('<p class="legend"><span><del>Dotted underline</del>: what the rule re
           '<span><span class="illus">Illustrative</span> invented for the example</span></p>')
 LEG_CSS = f".ed .legend{{display:flex;flex-wrap:wrap;gap:6px 24px;{fx('body-small')};color:var(--oa-color-text-secondary);margin:16px 0 0}}"
 
-SRC_SENATE = ("Source: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, September 30, "
-              "2026, page S5199, United States. Retrieved November 6, 2026. Ending debate needs three-fifths of the Senate, 60 votes.")
+# DR-126: the Senate count by party, in the same sentence as both of H.R. 7008's provisions, so no quotation of the
+# count can leave the photo ID provision behind. Dustin's wording runs unchanged from "it needed" to "voted no".
+SENATE_COUNT = ("it needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two "
+                "independents voted no.")
+SRC_SENATE = ("Sources: Congressional Record, Senate, Vote 253, cloture on the motion to proceed to H.R. 7008, page S5199, "
+              "September 30, 2026, United States; party labels from the congress-legislators project’s roster of current "
+              "members of Congress, a secondary source. Retrieved November 6, 2026. The Record lists each senator’s vote by "
+              "name, and ending debate needs three-fifths of the Senate, 60 votes.")
 # DR-99: the research lead's first choice, connection L50, kept to the connection (the loop's safe-seat line stays out).
 MECH_L50 = "Few voters leave their own party’s candidate over an undemocratic stand, so officials who take one face little threat of losing office."
 SRC_L50 = ("Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of "
@@ -164,20 +198,13 @@ FLT_CSS = (f".ed.flt{{max-width:760px}}"
 
 
 def build(book):
-    C = load(VOICE_CONTENT)
+    C = content()
     A = lambda sid, body, **kw: book.add(sid, body, chapter="02", **kw)
     groups = C["groups"]
     W = [r for g in groups for r in g["rules"]]
     gi = {r["id"]: i for i, g in enumerate(groups) for r in g["rules"]}
     rid = {r["id"]: f"02.{k + 1}" for k, r in enumerate(W)}
-    house = []
-    for h in C["house_rules"]:
-        h = dict(h)
-        if h["id"] == "H10":
-            if H10_OLD not in h["example_source"]:
-                raise SystemExit("H10's source line no longer holds the text the erratum replaces")
-            h["example_source"] = h["example_source"].replace(H10_OLD, H10_NEW)
-        house.append(h)
+    house = [dict(h) for h in C["house_rules"]]
     n_ill = sum(1 for r in W if r.get("illustrative"))
     num_words = {6: "six", 5: "five", 4: "four", 3: "three", 7: "seven"}
 
@@ -187,24 +214,32 @@ def build(book):
         ("Mission", q(LOCKED["mission"]), "Mission: why Oath & Action exists", "The About page, grant and partner material, and a report’s inside cover"),
         ("Reader promise", q(LOCKED["promise"]), "Reader promise: what every piece owes a reader", "Under the home page masthead and in the newsletter welcome"),
         ("Editorial commitment", q(LOCKED["commitment"]), "Editorial commitment: the standard our staff answer to", "The colophon, the note that says who makes our work, and the method and corrections pages"),
-        ("Pillars", "Explain → Track → Connect → Act", "The pillars: the order of every sequence", "Navigation, the four-dot row that draws the pillars as a line, and the Signal Grid’s corners"),
+        ("Pillars", "Explain → Track → Connect → Act", "The pillars: the order of every sequence", "Navigation, and the pillar row on section openers and tiles, where each pillar’s icon sits beside its word"),
         ("Voice line", q(VOICE_LINE_B), "What we do, in our own words, split at the hinge", "The About page, after the mission"),
         ("Supporting line", q("Democracy has a structure."), "The lockmark’s explanatory line, followed by a sentence that names the lever", "Chapter 08 and the About page"),
         ("Founding line", q("From spectators to stewards."), "A record of where we started, with no role as a brand line", "Chapter 01, as a record"),
     ]
     trs = "".join(f'<tr><th scope="row">{e(a)}</th><td><span class="{"lk" if i < 4 or i >= 5 else "pl"}">{e(b)}</span></td><td data-k="Role">{e(c)}</td><td data-k="Where">{e(d)}</td></tr>'
                   for i, (a, b, c, d) in enumerate(lines))
-    retired = ["Know the rules. Find the lever.", "Institutions endure when people act.", "The fine print affects the big picture.", "Bring your questions. They belong here."]
-    rec = ('<div class="ret"><p class="lab">Retired, kept as a record</p><p>Our fifth edition’s supporting lines '
-           + ", ".join(q(x) for x in retired[:-1]) + " and " + q(retired[-1])
-           + ' retire with no role. Each fails a writing rule below, and the lines above already do their jobs.</p></div>')
+    retired = RETIRED_WHOLE
+    rec = ('<div class="ret"><p class="lab">Retired, kept as a record</p><p>Our fifth edition’s six supporting lines retire with no role. '
+           'Each fails a writing rule below, and the lines above already do their jobs.</p><ul>'
+           + "".join(f"<li>{e(q(x))}</li>" for x in retired)
+           + "".join(f"<li>{e(q(x))}, the opening of a line our copy of that edition keeps only in part</li>" for x in RETIRED_OPENINGS)
+           + "</ul></div>")
     LCSS = (f".ed .lines td:nth-child(2){{min-width:14rem;{fx('body')}}}@media (max-width:47.99em){{.ed .lines td:nth-child(2){{min-width:0}}}}"
-            f".ed .lines .pl{{font-weight:600}}.ed .ret{{margin-top:16px;border-top:1px solid var(--oa-color-border-hairline);padding-top:10px;{fx('body-small')};max-width:72ch}}")
+            f".ed .lines .pl{{font-weight:600}}.ed .ret{{margin-top:16px;border-top:1px solid var(--oa-color-border-hairline);padding-top:10px;{fx('body-small')};max-width:72ch}}"
+            f".ed .ret ul{{margin:8px 0 0;padding-left:1.1em}}.ed .ret li{{margin:0 0 4px}}")
     A("s-02-lines", f'<div class="ed"><table class="lines stack"><thead><tr><th scope="col">Line</th><th scope="col">Exact wording</th><th scope="col">Role</th>'
       f'<th scope="col">Where it appears</th></tr></thead><tbody>{trs}</tbody></table>{rec}</div>', css=(BASE, LCSS),
       rule=None, readable=True, label="The brand lines",
-      alt="A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. Below it, a record of four retired lines from our fifth edition.",
-      notes="Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The four retired lines are DR-77's, shown only as a labeled record. CP-S9: colophon and the four-dot row explained at first use.")
+      alt="A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. "
+          "Below it, a record of our fifth edition's six supporting lines, retired with no role: " + "; ".join(retired)
+          + "; and two lines our copy of that edition keeps only in part, opening " + " and ".join(q(x) for x in RETIRED_OPENINGS) + ".",
+      notes="Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The six retired lines are DR-77's four "
+            "and DR-122's two, shown only as a labeled record. DR-122's two survive in the V5 text census only as their first 50 characters, so the "
+            "record quotes each to the end of its last whole sentence, with an ellipsis, and says it is kept in part. CP-S9: colophon explained at "
+            "first use. The pillars row names the pillar row of DR-111 in place of the grid's corners, which DR-110 retires.")
 
     # --- how to read the writing rules (the writing section's opening, without its index) ---------------------------
     ACSS = (flow(".ed .deck", "intro") + f".ed .deck{{max-width:58ch;margin:0 0 14px}}"
@@ -366,7 +401,7 @@ def build(book):
     rules.append({
         "id": "02.23", "title": "Set each brand line in its own place, word for word.",
         "rule": ["Each brand line has one job and a set of places where it appears, as the table of brand lines gives them. Quote it exactly there, and "
-                 "keep the founding line out of the tagline’s slot."],
+                 "keep the founding line out of the tagline’s slot. The retired lines under the table appear nowhere else."],
         "tokens": ["oa.font.family.reading", "oa.font.family.quote"],
         "why": {"text": ["A line that appears in the same place every time becomes something a reader recognizes. Moving a line, or swapping one in, spends that recognition."],
                 "basis": "Editorial judgment"},
@@ -420,7 +455,7 @@ def build(book):
     })
 
     MCSS = f".ed.mech td{{{fx('body-small')}}}.ed.mech td:first-child{{width:34%}}@media (max-width:47.99em){{.ed.mech td:first-child{{width:100%}}}}.ed.mech .lab{{margin:0 0 4px}}.ed.mech .qq{{{fx('body')}}}.ed.mech .src{{margin-top:6px}}"
-    struct = f"{HR7008}, {HR7008_BOTH}. It needed 60 votes to move forward in the Senate and got 53."
+    struct = f"{HR7008}, {HR7008_BOTH}, and {SENATE_COUNT}"
     mrows = [("A sweeping claim", "Our democracy is broken.", "How the system works", MECH_L50, SRC_L50, False),
              ("A feeling", "People are frustrated with Congress.", "The office that decides", "The committee chair decides which bills get a hearing.", "", False),
              ("A slogan", "Make your voice heard!", "A next step", "The hearing is Tuesday at 10 a.m. in Room 4, and the clerk signs up speakers until 9:45.", "", True),
@@ -441,8 +476,10 @@ def build(book):
                                       "A feeling, People are frustrated with Congress, becomes the office that decides: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. "
                                       f"A side, One party blocked the bill, becomes the structure: {struct}",
                                   notes="Fifth-edition table, kept at Gate 0. Row one (DR-99) is the research lead's first choice, atlas connection L50, graded well supported, kept to the connection so the loop's safe-seat qualification stays out; it touches no ranked-choice voting, primaries or Massachusetts Question 3. "
-                                        "Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1), documented in the bill texts, with the Congressional Record as the vote's source."),
-                    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check."},
+                                        "Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1), documented in the bill texts, with the Congressional Record as the vote's source. "
+                                        "DR-126: the count by party sits in the same sentence as both provisions, in Dustin's words from \"it needed\" to \"voted no\"; "
+                                        "the source line names the Record and marks the party roster (congress-legislators) as secondary, as the research lead's November 6 report read them."),
+                    "caption": "Each mood on the left becomes how the system works, the office that decides, a dated step or a vote count a reader can check, with the bill’s two provisions in the same sentence as its count."},
         "failure": {"specimen": A("s-02-25-failure", mood, css=(BASE, PIECE), rule="02.25", illustrative=True, width=360,
                                   alt="An illustrative explainer card whose headline is Our democracy is broken, with the deck: People are frustrated with Congress, and one party blocked the bill again. Make your voice heard!"),
                     "caption": "Every line states a mood, which leaves the reader without a rule to check or an office to call."},
@@ -462,9 +499,8 @@ def build(book):
              ("stakeholder", "the person or group by name or role"), ("empower", "the step the reader can take"), ("fight, battle, front", "propose, debate, vote, pass")]
     series = [("Reform 101", "Explain"), ("The Oath", "Explain"), ("Dispatch", "Track"), ("The Public Record", "Track"), ("Field Notes", "Connect"), ("Proof It Works", "Act")]
     terms = [("Hinge", "The ampersand’s job: joining a commitment to the action that keeps it. Chapter 04."),
-             ("Lockmark", "The three by three grid of nodes beside the wordmark. Chapter 08."),
+             ("Lockmark", "Our mark of nine nodes in a three by three grid, set in four fixed places: the masthead, page headers, footers and the sign-off. Chapter 08."),
              ("Lever", "A place where one change has wide effects. In the lockmark, the larger red node at bottom right stands for it. Chapter 08."),
-             ("Signal Grid", "The lockmark’s grid used to code content, always with a key. Chapter 08."),
              ("Evidence grade", "How sure a claim is: documented, well supported, plausible, contested or hypothesis. Chapter 13.")]
     voc = (f'<div class="ed"><div class="voc"><div><p class="lab">Words we use</p><p>{e(", ".join(use[:-1]) + " and " + use[-1])}</p></div>'
            f'<div><p class="lab">Words we leave out, and what to write</p><dl>' + "".join(f'<dt><span class="out">{e(a)}</span></dt><dd>{e(b)}</dd>' for a, b in leave) + "</dl></div>"
@@ -479,8 +515,10 @@ def build(book):
         "why": {"text": ["Every word on the list to leave out has a plainer one that says more. Exact series names let a reader find a series again."],
                 "basis": "Editorial judgment"},
         "correct": {"specimen": A("s-02-26-correct", voc, css=(BASE, VCSS), rule="02.26", readable=True,
-                                  alt="A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge, lockmark, lever, which is a place where one change has wide effects, Signal Grid and evidence grade.",
-                                  notes="Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's. Series routes move to chapter 08. CP-S7: lever joins W04's definition to the lockmark's node."),
+                                  alt="A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge; lockmark, our mark of nine nodes, set in four fixed places; lever, which is a place where one change has wide effects; and evidence grade.",
+                                  notes="Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's (DR-123). "
+                                        "The grid's coding term leaves the list (D2-326), and series routes retire (DR-110); each series keeps its pillar in words. "
+                                        "The lockmark's four places follow DR-110. CP-S7: lever joins W04's definition to the lockmark's node."),
                     "caption": "The list to leave out pairs each word with what to write in its place."},
         "failure": {"specimen": A("s-02-26-failure", bad_v, css=(BASE, VCSS), rule="02.26", illustrative=True,
                                   alt="An illustrative sentence: Stakeholders must leverage this unprecedented moment to empower communities and fix a broken system."),

@@ -6,7 +6,7 @@
  "instruction": "Learn what Oath & Action does, and how its pillars and nonpartisan rules shape every piece.",
  "intro": [
   "Oath & Action is a nonpartisan publication and a set of tools for people in every state who live under public rules they rarely get to read. Our mission is “Help people understand and improve the rules that shape their lives.”",
-  "The ampersand in our name is the hinge, the joint a door swings on. It joins a promise to the action that keeps it, so every piece explains and tracks a decision, then turns to the people who make it and the step a reader can take. Chapter 04 draws the hinge and sets its rules."
+  "Nonpartisan, for us, means one standard of evidence and one way of describing sources, actors and parties, applied to everyone. We report each finding as the record shows it. When the record shows one party or official doing more of something, we say so, name who acted and size the claim to its evidence grade. No piece adds, softens or drops a finding to make the sides look even."
  ],
  "groups": [
   {
@@ -434,13 +434,14 @@
   },
   {
    "id": "01.11",
-   "title": "When majorities of both parties use a mechanism, show a case from each.",
+   "title": "Show a case from each party that uses a mechanism, and report the counts as the record gives them.",
    "rule": [
-    "When majorities of both parties use the same mechanism, show a documented case from each, described in the same form and at the same length. The test case is Loop R4a, the map-drawing loop, which our systems atlas titles “Majorities draw maps that help them keep control.”"
+    "When majorities of both parties use the same mechanism, show a documented case from each, described in the same form and at the same length. The test case is Loop R4a, the map-drawing loop, which our systems atlas titles “Majorities draw maps that help them keep control.”",
+    "When the record shows one party using a mechanism more, report it that way, with the counts, as Rule 01.13 asks, and add no case to even the count."
    ],
    "why": {
     "text": [
-     "A mechanism shown through one party’s case reads as a charge against that party. With a case from each side, told the same way, the mechanism itself stands out, and that is the part a reader can change."
+     "Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it."
     ],
     "basis": "Design judgment"
    },
@@ -450,13 +451,13 @@
    },
    "failure": {
     "specimen": "s-01-11-failure",
-    "caption": "With one party’s case alone, the loop reads as a charge against that party, and a reader who votes for it stops at the first line."
+    "caption": "The record holds a case from each party, so a piece that shows Texas alone drops a finding, and the loop reads as a charge against one party."
    },
    "related": [
     "15",
     "13"
    ],
-   "builders": "Before a piece runs a mechanism, list the party of the majority in each of the atlas’s case records for that loop, pick one case from each and write both in the same form."
+   "builders": "Before a piece runs a mechanism, count the atlas’s case records for that loop by the party of the majority, and print the counts with their source when one party leads. Pick one case from each party that uses the mechanism, and write the cases in the same form."
   },
   {
    "id": "01.12",
@@ -466,7 +467,7 @@
    ],
    "why": {
     "text": [
-     "A chapter can lean toward one topic or one side without anyone noticing. A log turns balance into counts anyone can check, including a reader who suspects a lean."
+     "A chapter can lean toward one topic or one side without anyone noticing. A log turns the spread of examples into counts anyone can check, including a reader who suspects a lean."
     ],
     "basis": "Design judgment"
    },
@@ -486,9 +487,9 @@
   },
   {
    "id": "01.13",
-   "title": "Name the office that decides, and name a party only when party is the mechanism.",
+   "title": "Name the office that decides, and name a party only when party is part of the finding.",
    "rule": [
-    "Say which office or body makes the decision. Name a party only when party is part of how the decision works, such as a party-line vote, and give the count and its source."
+    "Say which office or body makes the decision. Name a party only when party is part of the finding, such as a party-line vote or a record that shows one party doing more of something, and give the count and its source."
    ],
    "why": {
     "text": [
@@ -565,11 +566,11 @@
    "id": "01.16",
    "title": "Show both readings of a contested claim at the same length.",
    "rule": [
-    "When credible studies disagree, give the two readings equal length, the same verbs and the same type, and name who holds each one in the same form."
+    "When credible studies disagree, which is what the grade contested means, give the two readings equal length, the same verbs and the same type, and name who holds each one in the same form. A claim with any other grade takes one reading, at the strength its grade allows, and no piece adds a second reading to even the score."
    ],
    "why": {
     "text": [
-     "Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either."
+     "Equal space is how a reader sees that the disagreement is real. A long reading beside a short dismissal, or a credential on one side and a tag on the other, tells them which side we prefer before they weigh either. A second reading set beside a settled finding would invent a disagreement the evidence does not hold."
     ],
     "basis": "Design judgment"
    },
@@ -585,7 +586,7 @@
     "13",
     "14"
    ],
-   "builders": "Set both readings in one two-column block with matching labels, describe both holders in the same words, and count the words of each before you publish."
+   "builders": "Look up the claim’s grade in our systems atlas first, and use this block only when the grade is contested. Set both readings in one two-column block with matching labels, describe both holders in the same words, and count the words of each before you publish."
   },
   {
    "id": "01.17",
@@ -681,7 +682,7 @@
    ],
    "why": {
     "text": [
-     "A red ampersand between two sides would mark the sides themselves, against Rule 01.1. Reporting agreement is the one case where naming the sides helps a reader."
+     "A red ampersand between two sides would mark the sides themselves, against Rule 01.1. Reporting agreement is the one case where naming the sides in a hinge headline helps a reader."
     ],
     "basis": "Design judgment"
    },
@@ -703,24 +704,26 @@
    "id": "01.21",
    "title": "Open every kicker with one content label.",
    "rule": [
-    "Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in “Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own."
+    "Open the kicker, the short line above a headline, with one of the seven content labels in this rule’s specifications. At most one more part follows, after a middle dot: the series name if the piece belongs to a series, otherwise its topic, as in “Explainer · Local schools”. A newsletter issue carries no label in its header, and each story inside it carries its own.",
+    "Set the kicker in words. The one picture it may hold is a topic icon from the Civic Line, our set of symbols in chapter 10, placed just before the topic’s own word. Pillar icons belong to the pillar row, section openers and tiles, and never enter a kicker."
    ],
    "tokens": [
-    "oa.color.action.primary.fill.onNewsprint"
+    "oa.color.action.primary.fill.onNewsprint",
+    "oa.size.icon.medium"
    ],
    "why": {
     "text": [
-     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing."
+     "The label tells a reader what kind of claim the piece makes before they read it, and whether we are reporting or arguing. A topic icon beside its own word shows the subject a second way. A pillar icon in a kicker would sit beside a label such as Report or Guide, which names no pillar, and leave the reader to decode the drawing."
     ],
     "basis": "Design judgment"
    },
    "correct": {
     "specimen": "s-01-21-correct",
-    "caption": "Each kicker opens with its label and adds at most a series or a topic. Only “Our position” takes the Charcoal fill. The first three headlines are real, so the label sits beside each invented one."
+    "caption": "Each kicker opens with its label and adds at most a series or a topic. The Analysis kicker holds the one picture a kicker may carry, the Productivity icon beside its own word. Only “Our position” takes the Charcoal fill, and the first three headlines are real, so the label sits beside each invented one."
    },
    "failure": {
     "specimen": "s-01-21-failure",
-    "caption": "“Explain” is a pillar and says nothing about the claim. “Must read” and “Breaking” push the reader and hide that the piece argues, and the third kicker reaches its label only after the series."
+    "caption": "“Explain” is a pillar and says nothing about the claim, and “Must read” and “Breaking” push the reader while hiding that the piece argues. The third kicker reaches its label only after the series. In the last, the Explain icon codes a pillar that the label Analysis never names."
    },
    "specs": [
     {
@@ -759,13 +762,22 @@
     {
      "label": "Type",
      "value": "The label style, Inter 700 capitals at 13 px; the second part in the secondary text ink"
+    },
+    {
+     "label": "Topic icon",
+     "value": "Optional: a Civic Line icon at 24 px in one color, 8 px before the topic’s own word, only when the second part is a topic",
+     "token": "oa.size.icon.medium"
+    },
+    {
+     "label": "Never inside a kicker",
+     "value": "A pillar icon, the lockmark, or an icon beside a label or a series name"
     }
    ],
    "related": [
-    "13",
-    "08"
+    "10",
+    "13"
    ],
-   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Rule 08.8 sets the grid and icon that may lead a kicker."
+   "builders": "Pick the label from the seven in this rule. If a piece fits none of them, ask the editor before it runs. Add a topic icon only when the kicker’s second part is the word that icon names, and keep pillar icons and the lockmark out of kickers."
   },
   {
    "id": "01.22",
@@ -924,7 +936,7 @@
   {
    "specimen": "s-01-pillars",
    "label": "The four pillars, always in this order",
-   "caption": "Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces. Chapter 09 draws the pillar marks."
+   "caption": "Each pillar’s icon sits beside its word, and a page that serves one pillar underlines that word; from 48 px its icon also turns red. The icons are the Civic Line drawings made for the pillars, and chapter 09 sets their sizes. Every product carries the Oath & Action name. The atlas, the trackers and the data never take a position; positions appear only in labeled Act pieces."
   },
   {
    "specimen": "s-01-pieces",
@@ -965,7 +977,7 @@
   },
   {
    "chapter": "09",
-   "reason": "The pillar marks."
+   "reason": "The pillar icons and their sizes."
   },
   {
    "chapter": "13",

@@ -734,7 +734,8 @@ def build(ctx):
             {
                 'id': '06.8', 'title': 'Set body text at 60 to 75 characters a line.',
                 'rule': [f'Set body text to a measure of 60 to 75 characters a line on wider screens, and intro '
-                         f'text to 65 at most. A phone gives about {ph_lo} to {ph_hi} characters, which suits a small screen. '
+                         f'text to 65 at most. The body measure, 33.88 rem, holds about 65 characters of 17 px Inter, '
+                         f'measured in Chromium. A phone gives about {ph_lo} to {ph_hi} characters, which suits a small screen. '
                          f'Chapter 07 gives the column spans that deliver these measures at each width.'],
                 'tokens': ['oa.layout.measure.bodyIdeal', 'oa.layout.measure.bodyMax', 'oa.layout.measure.introMax',
                            'oa.type.body', 'oa.type.intro'],
@@ -753,7 +754,7 @@ def build(ctx):
                                        f'intros, at 22 px and 65ch. Its full lines run {v5[1]} to {v5[2]} characters, and the '
                                        f'eye has far to travel back to the start of each.'},
                 'specs': [
-                    {'label': 'Body measure', 'value': f'33.88 rem, 542 px at 16 px text; lines average {li[0]:.0f} characters', 'token': 'oa.layout.measure.bodyIdeal'},
+                    {'label': 'Body measure', 'value': f'33.88 rem, 542 px at 16 px text; about 65 characters of 17 px Inter, measured in Chromium, and {li[0]:.0f} on average over chapter 02’s prose', 'token': 'oa.layout.measure.bodyIdeal'},
                     {'label': 'Widest body measure', 'value': f'37.37 rem; lines average {lm[0]:.0f} characters', 'token': 'oa.layout.measure.bodyMax'},
                     {'label': 'Widest intro measure', 'value': f'41.91 rem; at 22 px, lines average {im[0]:.0f} characters', 'token': 'oa.layout.measure.introMax'},
                     {'label': 'Phones', 'value': f'About {ph_lo} to {ph_hi} characters at 360 and 390 px', 'token': 'oa.layout.grid.phone.margin'},

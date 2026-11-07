@@ -1,12 +1,12 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-06T23:40:06.932Z",
+ "checked": "2026-11-07T06:33:00.967Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
    "width": 1440,
    "structure": {
-    "headings": 149,
+    "headings": 153,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -16,19 +16,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 99
+    "rules": 100
    },
    "anchors": {
-    "ids": 498,
+    "ids": 509,
     "duplicates": [],
-    "links": 695,
+    "links": 753,
     "broken": [],
-    "relatedLinks": 115,
+    "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 229,
+    "stages": 232,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -123,8 +123,12 @@
       "skips": "scale"
      },
      {
-      "specimen": "s-08-4-failure",
-      "skips": "red"
+      "specimen": "s-11-4-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-11-7-failure",
+      "skips": "size scale"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -138,8 +142,8 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 220,
-    "exempt": 9,
+    "stages": 222,
+    "exempt": 10,
     "off": [],
     "fluid": [
      110,
@@ -160,12 +164,28 @@
     "count": 0,
     "where": []
    },
+   "retiredWords": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredClasses": {
+    "hits": [],
+    "count": 0,
+    "where": [],
+    "exemptInFailurePlates": [
+     "specimen s-08-3-failure"
+    ]
+   },
+   "partOrder": [],
+   "ruleRefs": [],
+   "ruleRefCount": 0,
    "text": {
-    "texts": 8488,
+    "texts": 9198,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
-    "skipped": 4
+    "skipped": 16
    },
    "overflow": {
     "scrollWidth": 1440,
@@ -173,7 +193,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 347,
+    "marks": 332,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -202,7 +222,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 337910,
+   "height": 354494,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -215,7 +235,7 @@
   {
    "width": 1024,
    "structure": {
-    "headings": 149,
+    "headings": 153,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -225,19 +245,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 99
+    "rules": 100
    },
    "anchors": {
-    "ids": 498,
+    "ids": 509,
     "duplicates": [],
-    "links": 695,
+    "links": 753,
     "broken": [],
-    "relatedLinks": 115,
+    "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 229,
+    "stages": 232,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -332,8 +352,12 @@
       "skips": "scale"
      },
      {
-      "specimen": "s-08-4-failure",
-      "skips": "red"
+      "specimen": "s-11-4-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-11-7-failure",
+      "skips": "size scale"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -347,8 +371,8 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 220,
-    "exempt": 9,
+    "stages": 222,
+    "exempt": 10,
     "off": [],
     "fluid": [
      88.61,
@@ -370,12 +394,28 @@
     "count": 0,
     "where": []
    },
+   "retiredWords": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredClasses": {
+    "hits": [],
+    "count": 0,
+    "where": [],
+    "exemptInFailurePlates": [
+     "specimen s-08-3-failure"
+    ]
+   },
+   "partOrder": [],
+   "ruleRefs": [],
+   "ruleRefCount": 0,
    "text": {
-    "texts": 8369,
+    "texts": 9060,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
-    "skipped": 4
+    "skipped": 16
    },
    "overflow": {
     "scrollWidth": 1024,
@@ -383,7 +423,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 347,
+    "marks": 332,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -412,7 +452,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 361719,
+   "height": 379536,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -425,7 +465,7 @@
   {
    "width": 390,
    "structure": {
-    "headings": 149,
+    "headings": 153,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -435,19 +475,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 99
+    "rules": 100
    },
    "anchors": {
-    "ids": 498,
+    "ids": 509,
     "duplicates": [],
-    "links": 695,
+    "links": 753,
     "broken": [],
-    "relatedLinks": 115,
+    "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 229,
+    "stages": 232,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -542,8 +582,12 @@
       "skips": "scale"
      },
      {
-      "specimen": "s-08-4-failure",
-      "skips": "red"
+      "specimen": "s-11-4-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-11-7-failure",
+      "skips": "size scale"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -557,8 +601,8 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 220,
-    "exempt": 9,
+    "stages": 222,
+    "exempt": 10,
     "off": [],
     "fluid": [
      56,
@@ -579,12 +623,28 @@
     "count": 0,
     "where": []
    },
+   "retiredWords": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredClasses": {
+    "hits": [],
+    "count": 0,
+    "where": [],
+    "exemptInFailurePlates": [
+     "specimen s-08-3-failure"
+    ]
+   },
+   "partOrder": [],
+   "ruleRefs": [],
+   "ruleRefCount": 0,
    "text": {
-    "texts": 8334,
+    "texts": 9027,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
-    "skipped": 4
+    "skipped": 16
    },
    "overflow": {
     "scrollWidth": 390,
@@ -592,7 +652,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 347,
+    "marks": 332,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -621,7 +681,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 436318,
+   "height": 457042,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -634,7 +694,7 @@
   {
    "width": 360,
    "structure": {
-    "headings": 149,
+    "headings": 153,
     "h1": [
      "Oath & Action Brand Guide, Edition 06"
     ],
@@ -644,19 +704,19 @@
     "ruleIds": [],
     "ruleAnchors": [],
     "rulesWithoutH3": [],
-    "rules": 99
+    "rules": 100
    },
    "anchors": {
-    "ids": 498,
+    "ids": 509,
     "duplicates": [],
-    "links": 695,
+    "links": 753,
     "broken": [],
-    "relatedLinks": 115,
+    "relatedLinks": 131,
     "relatedBad": [],
     "aliases": []
    },
    "specimens": {
-    "stages": 229,
+    "stages": 232,
     "pending": [],
     "noAlt": [],
     "imgNoAlt": [],
@@ -751,8 +811,12 @@
       "skips": "scale"
      },
      {
-      "specimen": "s-08-4-failure",
-      "skips": "red"
+      "specimen": "s-11-4-failure",
+      "skips": "red contrast"
+     },
+     {
+      "specimen": "s-11-7-failure",
+      "skips": "size scale"
      },
      {
       "specimen": "s-proofs-letterhead",
@@ -766,8 +830,8 @@
     "count": 0
    },
    "typeScale": {
-    "stages": 220,
-    "exempt": 9,
+    "stages": 222,
+    "exempt": 10,
     "off": [],
     "fluid": [
      56,
@@ -788,12 +852,28 @@
     "count": 0,
     "where": []
    },
+   "retiredWords": {
+    "hits": [],
+    "count": 0,
+    "where": []
+   },
+   "retiredClasses": {
+    "hits": [],
+    "count": 0,
+    "where": [],
+    "exemptInFailurePlates": [
+     "specimen s-08-3-failure"
+    ]
+   },
+   "partOrder": [],
+   "ruleRefs": [],
+   "ruleRefCount": 0,
    "text": {
-    "texts": 8339,
+    "texts": 9032,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
-    "skipped": 4
+    "skipped": 16
    },
    "overflow": {
     "scrollWidth": 360,
@@ -801,7 +881,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 347,
+    "marks": 332,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -830,7 +910,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 452409,
+   "height": 472548,
    "fonts": [
     "Inter",
     "Inter Tight",

@@ -134,8 +134,8 @@ def check(chapters, book, house):
         if m["illustrative"] and "Illustrative" not in book.files[sid] and "illustrative" not in m["alt"].lower():
             fails.append(f"{sid} is flagged illustrative but carries no label")
 
-    # 6. the writing section carried whole
-    C = load(VOICE_CONTENT)
+    # 6. the writing section carried whole, with its two approved corrections (H10, D2-256; W14's source, D2-326)
+    C = ch02.content()
     blob = allt
     for g in C["groups"]:
         for need in (g["name"], g["intro"]):
@@ -179,11 +179,17 @@ def check(chapters, book, house):
     for p in C["narrative"]:
         if curl(p) not in blob:
             fails.append(f"narrative paragraph missing: {p[:50]}")
-    retired = ["Know the rules. Find the lever.", "Institutions endure when people act.", "The fine print affects the big picture.", "Bring your questions. They belong here."]
-    for line in retired[1:]:
+    # W04's approved before quotes "Know the rules. Find the lever." as the line it rewrites, so that one is exempt.
+    retired = ch02.RETIRED_WHOLE[1:] + [x.rstrip(" …") for x in ch02.RETIRED_OPENINGS]
+    for line in retired:
         for k, t in texts.items():
             if line in t and k not in ("s-02-lines", "s-02-lines alt"):
                 fails.append(f"retired line {line!r} outside the labeled record, in {k}")
+        if line not in texts.get("s-02-lines", ""):
+            fails.append(f"retired line {line!r} missing from the labeled record (DR-77, DR-122)")
+
+    # 6b. apply pass (November 7, 2026): what board A and Board 6 decided, read on the built text
+    apply_pass(chapters, book, texts, fails, notes)
 
     # 7. specimen CSS: font sizes at 13 px or more; colors only through var(--oa-...)
     for sid, html in book.files.items():
@@ -242,6 +248,104 @@ def check(chapters, book, house):
         fails.append(f"chapter 01 breaks its own Rule 01.9: {dom.most_common(1)} of {n}")
     notes.append(f"chapter 01 rotation: {n} examples, top domain {dom.most_common(1)[0]}")
     return fails, notes
+
+
+DOME_ICONS = ["CL-025"]   # Congress: a capitol dome over columns (checked by eye at 64 px, November 7, 2026)
+RETIRED = [(r"\bSignal[\s -]*Grid", "the name Signal Grid (D2-326)"),
+           (r"\bstages?\s+\w+\s+of\s+(?:9|nine)\b", "a nine-stage tracker (DR-108)"),
+           (r"\b(?:nine|9)[\s-]+stages?\b", "a nine-stage tracker (DR-108)"),
+           (r"\bcondensed width,? proposed\b", "a condensed width proof (DR-115)"),
+           (r"four-dot", "the four-dot row, retired with the grid's pillar corners (DR-110)"),
+           (r"would rather skip", "DR-55's old clause (DR-124)"),
+           (r"\bRules?\s+08\.\d", "a rule number in chapter 08, renumbered in this pass (D2-325)")]
+
+
+def apply_pass(chapters, book, texts, fails, notes):
+    """Checks for the apply pass of November 7, 2026, each named for the decision it holds the page to."""
+    from guide_editor_common import HR7008, HR7008_BOTH, PILLAR_ICON, cl_name
+    c1 = next(c for c in chapters if c["number"] == "01")
+    r1 = {r["id"]: r for r in c1["rules"]}
+
+    # retired words and old cross-references, in every reader string, specimen and alt
+    for k, t in texts.items():
+        for pat, what in RETIRED:
+            for m in re.finditer(pat, t, re.I):
+                fails.append(f"{what} in {k}: …{t[max(0, m.start() - 40): m.end() + 30]}…")
+
+    # DR-125: the one-standard wording, verbatim where the card put it
+    if ch01.NONPARTISAN not in c1["intro"]:
+        fails.append("chapter 01's opening lacks A13's paragraph on what nonpartisan means (DR-125)")
+    if ch01.RULE_11_ADDED not in r1["01.11"]["rule"]:
+        fails.append("Rule 01.11 lacks A13's added sentence (DR-125)")
+    if r1["01.11"]["why"]["text"] != [ch01.RULE_11_WHY]:
+        fails.append("Rule 01.11's reason is not A13's (DR-125)")
+    if "naming the sides in a hinge headline" not in " ".join(r1["01.20"]["why"]["text"]):
+        fails.append("Rule 01.20's reason lacks \"in a hinge headline\" (DR-125)")
+    if "the spread of examples" not in " ".join(r1["01.12"]["why"]["text"]):
+        fails.append("Rule 01.12's reason lacks \"the spread of examples\" (DR-125)")
+    if re.search(r"\bbalance", " ".join(strings({k: v for k, v in c1.items()}))):
+        fails.append("chapter 01 still says \"balance\" in its text (DR-125)")
+    if ch01.UNEVEN and not any(x.get("after_rule") == "01.11" for x in c1["extras"]):
+        fails.append("the 2020 example is set but not placed after Rule 01.11 (DR-125)")
+
+    # DR-98: H.R. 7008 named whole with both provisions at its first mention in each chapter
+    whole = f"{HR7008}, {HR7008_BOTH}"
+    for sid in ("s-01-pieces", "s-02-25-correct"):
+        if whole not in texts.get(sid, ""):
+            fails.append(f"{sid}: H.R. 7008 is not named whole with both provisions (DR-98)")
+
+    # DR-126: the count by party in the same sentence as both provisions, and the source line's two parts
+    t25 = texts.get("s-02-25-correct", "")
+    sent = next((s for s in re.split(r"(?<=[.!?”])\s+(?=[“A-Z])", t25) if "45 Democrats" in s), "")
+    if not sent or "photo ID" not in sent or "individual stocks" not in sent or ch02.SENATE_COUNT not in sent:
+        fails.append(f"Rule 02.25: the Senate count is not in one sentence with both provisions, in Dustin's words (DR-126): {sent[:120]!r}")
+    if "Congressional Record" not in ch02.SRC_SENATE or "a secondary source" not in ch02.SRC_SENATE:
+        fails.append("Rule 02.25's source line must name the Congressional Record and mark the party roster secondary (DR-126)")
+
+    # DR-108, DR-128: six steps, step 6 named for whoever signs; a federal bill's sixth step is President
+    if ch01.STEPS_FEDERAL != ["Filed", "Hearing", "Committee vote", "First chamber", "Second chamber", "President"]:
+        fails.append("the federal steps are not DR-108's six with step 6 President (DR-128)")
+    for k, t in texts.items():
+        if re.search(r"\bGovernor\b", t) and "Governor Greg Abbott" not in t:
+            fails.append(f"{k}: a step named Governor, where every tracker in chapters 01 and 02 follows a federal bill")
+    if ch01.HR7008_STEPS and "President" not in texts.get("s-01-pieces", ""):
+        fails.append("the H.R. 7008 card does not name step 6 President (DR-128)")
+    notes.append("H.R. 7008 card: " + ("six numbered steps from the research mapping" if ch01.HR7008_STEPS
+                                       else "words only; the step states wait for the research lead's mapping"))
+    notes.append("2020 example after Rule 01.11: " + ("placed" if ch01.UNEVEN else "waits for the research lead's check"))
+
+    # DR-111, DR-112: pillar icons with their words in the pillar row; in a kicker, only a topic icon beside its own word
+    pills = book.files.get("s-01-pillars", "")
+    for p, cl in PILLAR_ICON.items():
+        if not re.search(rf'data-icon="{cl}"[^>]*>.*?</svg><span class="pw">{p}</span>', pills, re.S):
+            fails.append(f"s-01-pillars: {cl} is not drawn with the word {p} beside it (DR-111)")
+    cur = re.findall(r'<li class="pi cur" aria-current="true">.*?<span class="pw">(\w+)</span>', pills, re.S)
+    if cur != ["Track"] or ".cur .pw{text-decoration:underline" not in pills:
+        fails.append("s-01-pillars: the compact row must underline one current pillar's word (DR-111)")
+    for size, body in re.findall(r'<ol class="prow prow-(\d+)"[^>]*>(.*?)</ol>', pills, re.S):
+        for li_cls, li in re.findall(r'<li class="(pi(?: cur)?)"[^>]*>(.*?)</li>', body, re.S):
+            red = 'data-red="signature"' in li
+            if red and (li_cls != "pi cur" or int(size) < 48):
+                fails.append(f"s-01-pillars: red on a {size} px pillar icon that is not the current pillar at 48 px or more (DR-111)")
+    pillar_ids = set(PILLAR_ICON.values())
+    for sid, html in book.files.items():
+        for kick in re.findall(r'<p class="kick">.*?</p>', html, re.S):
+            for cl in re.findall(r'data-icon="(CL-\d{3})"', kick):
+                if sid == "s-01-21-failure":
+                    continue
+                if cl in pillar_ids:
+                    fails.append(f"{sid}: pillar icon {cl} inside a kicker (DR-112)")
+                    continue
+                m = re.search(rf'data-icon="{cl}".*?</svg><span class="sx">([^<]+)</span>', kick, re.S)
+                if not m or m.group(1).strip().lower() != cl_name(cl).lower():
+                    fails.append(f"{sid}: topic icon {cl} ({cl_name(cl)}) is not beside its own word in the kicker (DR-112)")
+    # Rule 01.6 keeps domes, columns and flags out of icons; the Civic Line's Congress icon draws a dome with columns
+    for sid, html in book.files.items():
+        for cl in DOME_ICONS:
+            if f'data-icon="{cl}"' in html:
+                fails.append(f"{sid}: {cl} draws a capitol dome with columns, which Rule 01.6 keeps out of icons")
+    if not re.search(r'<p class="kick">.*?data-icon="CL-02[0-2]|<p class="kick">.*?data-icon="CL-019', book.files.get("s-01-21-failure", ""), re.S):
+        fails.append("s-01-21-failure no longer shows the pillar icon in a kicker it teaches against")
 
 
 def main():

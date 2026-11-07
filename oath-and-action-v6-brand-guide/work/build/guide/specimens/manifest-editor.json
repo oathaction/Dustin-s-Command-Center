@@ -3,7 +3,7 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "A list of the words this guide uses, each with its meaning and the rule or chapter that sets it: Locked lines: Our four brand lines whose wording never changes: the tagline, the mission, the reader promise and the editorial commitment. Pillars: Explain, Track, Connect and Act, the four jobs our work does, always in that order. The seven colors: Newsprint, a warm off-white, is our page, and Charcoal carries the words. Pillar Red marks one thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a muted green, and White support the rest. View: One screen, card, slide or printed page. Working red: The one red a view may spend, on an error the reader must fix, the step they can take now or the point the headline names, in that order. Signature red: The red inside our marks, the wordmark’s ampersand and the lockmark’s lever. It never counts as a view’s working red. Token: A named color, size or type setting in our code, such as --oa-color-text-primary-on-newsprint. Builders use the name, and writers can skip the Tokens lines. Kicker: The short line above a headline that says what kind of piece it is. Deck: The line under a headline that says what the piece covers. Hinge headline: A headline that joins a rule to what it produces with our ampersand, as in “The zoning code & the rent.” Hinge divider: A hairline broken by our ampersand, set where a piece turns from how a decision is made to what you can do. Lockup: Our name and marks set together in one fixed arrangement. Our systems atlas: Who Do They Answer To?, our map of who makes public decisions and what shapes them. A loop in it is a chain of causes that returns to where it started, and its ten domains sort every issue by subject, such as elections and representation. Evidence grade: How sure a claim is: documented, well supported, plausible, contested or hypothesis. Illustrative: Our label for anything invented for an example, such as a person, a quote, a place or a figure.",
+  "alt": "A list of the words this guide uses, each with its meaning and the rule or chapter that sets it: Locked lines: Our four brand lines whose wording never changes: the tagline, the mission, the reader promise and the editorial commitment. Pillars: Explain, Track, Connect and Act, the four jobs our work does, always in that order. Each pillar has an icon, and its word always sits beside it. The seven colors: Newsprint, a warm off-white, is our page, and Charcoal carries the words. Pillar Red marks one thing in each view. Prussian, our dark blue, Stone, a mid gray, Verdigris, a muted green, and White support the rest. View: One screen, card, slide or printed page. Working red: The one red a view may spend, on an error the reader must fix, the step they can take now or the point the headline names, in that order. Signature red: The red inside our marks and icons, such as the wordmark’s ampersand and the lockmark’s lever. It never counts as a view’s working red. Token: A named color, size or type setting in our code, such as --oa-color-text-primary-on-newsprint. Builders use the name, and writers can skip the Tokens lines. Kicker: The short line above a headline that says what kind of piece it is. Deck: The line under a headline that says what the piece covers. Hinge headline: A headline that joins a rule to what it produces with our ampersand, as in “The zoning code & the rent.” Hinge divider: A hairline broken by our ampersand, set where a piece turns from how a decision is made to what you can do. Lockup: Our name and marks set together in one fixed arrangement. Our systems atlas: Who Do They Answer To?, our map of who makes public decisions and what shapes them. A loop in it is a chain of causes that returns to where it started, and its ten domains sort every issue by subject, such as elections and representation. Evidence grade: How sure a claim is: documented, well supported, plausible, contested or hypothesis. Illustrative: Our label for anything invented for an example, such as a person, a quote, a place or a figure.",
   "illustrative": false,
   "notes": "CP-M2, RP-S7: the guide's vocabulary before chapter 01 uses it. Token is defined here for the first time. The atlas glossary's own wording for a feedback loop: a chain of causes that returns to its starting variable.",
   "readable": true,
@@ -13,9 +13,9 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "A table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
+  "alt": "The ampersand in our name is the hinge, the joint a door swings on. It joins a promise to the action that keeps it, so every piece explains and tracks a decision, then turns to the people who make it and the step a reader can take. Chapter 04 draws the hinge and sets its rules. Then a table of the locked lines, each shown whole with its commitment in bold and its action underlined. Mission: understand, then improve. Reader promise: we explain the decision, then you get a way to take part. Editorial commitment: clarity, our duty, then action, our promise. Pillars: Explain and Track, then Connect and Act. The tagline names the result.",
   "illustrative": false,
-  "notes": "From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's.",
+  "notes": "From the brand strategy, section 1, approved at Gate 1 (S1). The hinge drawing is chapter 04's. The lead paragraph was the opening's second paragraph until the apply pass; it moved here so the opening keeps the content contract's two paragraphs once A13's paragraph on what nonpartisan means joined it (DR-125).",
   "readable": true,
   "label": "The hinge in the locked lines"
  },
@@ -23,9 +23,9 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "The four pillars in order with each pillar's job and products. 01 Explain: make the rules and their effects understandable. Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, two series, Dispatch and The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece.",
+  "alt": "The pillar row: the four pillar icons at 48 px, each with its word beside it, joined by arrows in order: Explain, an open book; Track, a route to a magnifier; Connect, two overlapping rings; Act, a finger pressing a round control. Then each pillar's job and products. 01 Explain: make the rules and their effects understandable. Explainers in the Reform 101 and The Oath series, the atlas's 16 question-first pathways, reports, the weekly briefing newsletter, glossaries and primers. 02 Track: follow the decision and keep its record within reach. Trackers, two series, Dispatch and The Public Record, the atlas Register. 03 Connect: help people reach the office that decides and the evidence it decides on. Guides and call scripts, the Field Notes series, the atlas's view of who can act. 04 Act: give the reader a useful next step. Act pieces in two kinds, case studies in the Proof It Works series, and the closing step on every piece. Last, the compact row at 24 px on a page that serves Track: every icon in one color, and the word Track set bold and underlined.",
   "illustrative": false,
-  "notes": "Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand architecture table (strategy section 3, S2); series pillars follow V5's series routes. Connect's job line is new, since the V5 census cut its line at 50 characters. CP-S8: the series is Dispatch, as Rule 02.26 spells it.",
+  "notes": "DR-111: the four pillar icons are Civic Line CL-019 Explain, CL-020 Track, CL-021 Connect and CL-022 Act, inlined from the black masters with their geometry untouched and their ink taken through currentColor; each word sits beside its icon, and the current pillar's word is underlined at every size, bold under 48 px. Red as a second sign on the current icon starts at 48 px, so the 24 px row stays one color. The 48 px row stacks in one column under 48em, with downward arrows, after the creative director's Board 6 review found the phone row dropping its arrow. Products named as the brand's set, with no launch dates or status (DR-91). Product placement follows the brand architecture table (strategy section 3, S2); each series' pillar follows Rule 02.26's series list, and series routes retire (DR-110). Connect's job line is new, since the V5 census cut its line at 50 characters (DR-123). CP-S8: the series is Dispatch, as Rule 02.26 spells it.",
   "readable": true,
   "label": "The four pillars, always in this order"
  },
@@ -33,16 +33,16 @@
   "chapter": "01",
   "rule": null,
   "width_px": null,
-  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of October 15, 2026: passed the House 232 to 198 on July 22, 2026; on September 30, 2026 a Senate vote to end debate on taking it up got 53 votes, short of the 60 it needed; then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
+  "alt": "Four pieces at a phone's text width, one per pillar, each opening with its kicker, turning at the hinge divider to What you can do and ending on one red ask button. Explain: Explainer, utility rates. Why is my electric bill going up? A regulator or a board approves your rate; who decides; then find your rate case. Track: Tracker, Congress. Stop Insider Trading Act Tracker. H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. As of October 15, 2026. The House passed it 232 to 198 on July 22, 2026. On September 30, 2026, a Senate vote to end debate on taking it up got 53 votes, short of the 60 it needed. Then follow this bill. Connect, labeled Illustrative: Guide, Field Notes. Who answers for the repair on your street in Alder County, what to say in 90 seconds, then find your supervisor. Act, labeled Illustrative: Act, how to take part. Alder County votes on backyard cottages March 9; send a comment by March 3.",
   "illustrative": false,
-  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98).",
+  "notes": "Explain and Track use real atlas copy and records; Connect and Act are invented, each with one Illustrative label at its head (DR-97). Each card is 340 px wide, the text column of a phone; the plate flows so the cards stack on a phone, and the caption carries the width (C-S6). H.R. 7008 named and described whole at its first mention (DR-98). The Track card is a tracker story card, so it takes numbered steps (DR-109) on the six steps with step 6 named President for a federal bill (DR-128); its step states come from the research lead's mapping in round two, and until then it prints the two documented votes. Its kicker stays in words: the Civic Line's Congress icon, CL-025, draws a capitol dome with columns, which Rule 01.6 keeps out of icons.",
   "label": "One piece from each pillar, at true size"
  },
  "s-01-1-correct": {
   "chapter": "01",
   "rule": "01.1",
   "width_px": 360,
-  "alt": "An illustrative tracker card, kicker Tracker, state senate. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. Both bars, yes and no, are Charcoal, each with its name and count. After the hinge divider, one red button: Follow S. 214.",
+  "alt": "An illustrative card, kicker Report, state senate. The Government Operations Committee sent S. 214 to the full senate, 6 to 3. Both bars, yes and no, are Charcoal, each with its name and count. After the hinge divider, one red button: Follow S. 214.",
   "illustrative": true,
   "notes": ""
  },
@@ -50,7 +50,7 @@
   "chapter": "01",
   "rule": "01.1",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same tracker card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote.",
+  "alt": "Failure case: do not publish. The same card with the no bar drawn in Pillar Red, so the card has two reds, one on a side of the vote.",
   "illustrative": true,
   "notes": "",
   "check_exempt": [
@@ -394,7 +394,7 @@
   "chapter": "01",
   "rule": "01.21",
   "width_px": null,
-  "alt": "Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? Tracker, Congress: Stop Insider Trading Act Tracker. Analysis, work and pay: Does pay rise with productivity? Report, state legislatures, illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label.",
+  "alt": "Seven kickers, one per content label, each over a headline. Explainer, utility rates: Why is my electric bill going up? Tracker, Congress: Stop Insider Trading Act Tracker. Analysis, productivity, with the Productivity topic icon, a worker at a desk beside a clock, just before the word Productivity: Does pay rise with productivity? Report, state legislatures, illustrative. Guide, Field Notes, illustrative. Act, how to take part, illustrative. Our position, committee votes, in a Charcoal label, illustrative. The four invented headlines carry the Illustrative label.",
   "illustrative": false,
   "notes": ""
  },
@@ -402,7 +402,7 @@
   "chapter": "01",
   "rule": "01.21",
   "width_px": null,
-  "alt": "Three kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts.",
+  "alt": "Four kickers that break the rule. Explain, a pillar name alone. Must read and Breaking above an illustrative position headline, with no label. Field Notes, then Guide, then Street repairs: the series first, the label second and three parts. The same Analysis kicker with the Explain pillar icon before its label, in place of the Productivity icon.",
   "illustrative": false,
   "notes": ""
  },
@@ -470,9 +470,9 @@
   "chapter": "02",
   "rule": null,
   "width_px": null,
-  "alt": "A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. Below it, a record of four retired lines from our fifth edition.",
+  "alt": "A table of the brand lines with each line's exact wording, role and place. The four locked lines, the pillars, the voice line, the supporting line Democracy has a structure, and the founding line From spectators to stewards, with no brand-line role. Below it, a record of our fifth edition's six supporting lines, retired with no role: Know the rules. Find the lever.; Institutions endure when people act.; The fine print affects the big picture.; Bring your questions. They belong here.; and two lines our copy of that edition keeps only in part, opening “Here is what the record shows. …” and “The rules connect. The gaps create opportunity. …”.",
   "illustrative": false,
-  "notes": "Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The four retired lines are DR-77's, shown only as a labeled record. CP-S9: colophon and the four-dot row explained at first use.",
+  "notes": "Locked lines from Master Brief section 3. Voice line B (G1-01). Supporting and founding line roles (G1-01, S5). The six retired lines are DR-77's four and DR-122's two, shown only as a labeled record. DR-122's two survive in the V5 text census only as their first 50 characters, so the record quotes each to the end of its last whole sentence, with an ellipsis, and says it is kept in part. CP-S9: colophon explained at first use. The pillars row names the pillar row of DR-111 in place of the grid's corners, which DR-110 retires.",
   "readable": true,
   "label": "The brand lines"
  },
@@ -698,7 +698,7 @@
   "chapter": "02",
   "rule": "02.14",
   "width_px": null,
-  "alt": "Before, Our brand guide, fifth edition, chapter 07 the Signal Grid, figure caption: Report cover kicker on Prussian The rule removes: Report cover kicker. After: The kicker, the short line above the title, on a report cover set on Prussian, our dark blue The repair: The kicker, the short line above the title, on a report cover set; , our dark blue.",
+  "alt": "Before, Our brand guide, fifth edition, chapter 07, figure caption: Report cover kicker on Prussian The rule removes: Report cover kicker. After: The kicker, the short line above the title, on a report cover set on Prussian, our dark blue The repair: The kicker, the short line above the title, on a report cover set; , our dark blue.",
   "illustrative": false,
   "notes": "W14 as approved on Board 5. Edit marks from the content file: dotted underline on removed words, solid on the repair."
  },
@@ -903,9 +903,9 @@
   "chapter": "02",
   "rule": "02.25",
   "width_px": null,
-  "alt": "A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes how the system works: Few voters leave their own party’s candidate over an undemocratic stand, so officials who take one face little threat of losing office. Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of losing office, snapshot of October 15, 2026, United States. Retrieved November 6, 2026. From survey experiments with 1,691 respondents (Graham and Svolik, 2020); about 3.5 percent left their own party’s candidate in realistic matchups. A feeling, People are frustrated with Congress, becomes the office that decides: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. A side, One party blocked the bill, becomes the structure: H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections. It needed 60 votes to move forward in the Senate and got 53.",
+  "alt": "A table of four rows, what a draft says and what we publish. A sweeping claim, Our democracy is broken, becomes how the system works: Few voters leave their own party’s candidate over an undemocratic stand, so officials who take one face little threat of losing office. Source: Oath & Action’s systems atlas, Who Do They Answer To?, connection L50, partisan loyalty and the risk of losing office, snapshot of October 15, 2026, United States. Retrieved November 6, 2026. From survey experiments with 1,691 respondents (Graham and Svolik, 2020); about 3.5 percent left their own party’s candidate in realistic matchups. A feeling, People are frustrated with Congress, becomes the office that decides: the committee chair decides which bills get a hearing. A slogan, Make your voice heard, becomes an illustrative next step: the hearing is Tuesday at 10 a.m. in Room 4. A side, One party blocked the bill, becomes the structure: H.R. 7008, the Stop Insider Trading Act, would bar members of Congress, their spouses and dependent children from buying individual stocks, and would require photo ID to vote in federal elections, and it needed 60 votes to move forward in the Senate and got 53, all from Republicans; 45 Democrats and two independents voted no.",
   "illustrative": false,
-  "notes": "Fifth-edition table, kept at Gate 0. Row one (DR-99) is the research lead's first choice, atlas connection L50, graded well supported, kept to the connection so the loop's safe-seat qualification stays out; it touches no ranked-choice voting, primaries or Massachusetts Question 3. Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1), documented in the bill texts, with the Congressional Record as the vote's source.",
+  "notes": "Fifth-edition table, kept at Gate 0. Row one (DR-99) is the research lead's first choice, atlas connection L50, graded well supported, kept to the connection so the loop's safe-seat qualification stays out; it touches no ranked-choice voting, primaries or Massachusetts Question 3. Row four names H.R. 7008 whole at its first mention in the chapter (DR-98, BE-M1), documented in the bill texts, with the Congressional Record as the vote's source. DR-126: the count by party sits in the same sentence as both provisions, in Dustin's words from \"it needed\" to \"voted no\"; the source line names the Record and marks the party roster (congress-legislators) as secondary, as the research lead's November 6 report read them.",
   "readable": true
  },
  "s-02-25-failure": {
@@ -920,9 +920,9 @@
   "chapter": "02",
   "rule": "02.26",
   "width_px": null,
-  "alt": "A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge, lockmark, lever, which is a place where one change has wide effects, Signal Grid and evidence grade.",
+  "alt": "A vocabulary sheet in four parts. Words we use: rule, decision, record, hearing, vote, office, deadline and step. Words we leave out, with what to write instead: genuinely, really, truly, actually, simply and just; leverage as a verb; underscore and reflect; unprecedented; broken, crisis and rigged; stakeholder; empower; fight, battle and front. Series names: Reform 101 and The Oath for Explain, Dispatch and The Public Record for Track, Field Notes for Connect, Proof It Works for Act. Terms we define at first use: hinge; lockmark, our mark of nine nodes, set in four fixed places; lever, which is a place where one change has wide effects; and evidence grade.",
   "illustrative": false,
-  "notes": "Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's. Series routes move to chapter 08. CP-S7: lever joins W04's definition to the lockmark's node.",
+  "notes": "Fifth-edition vocabulary, with the words W17, W18, Rule 01.14 and Rule 01.15 add. The fifth edition's list of words we use was cut short in the text census, so the last four words are the editor's (DR-123). The grid's coding term leaves the list (D2-326), and series routes retire (DR-110); each series keeps its pillar in words. The lockmark's four places follow DR-110. CP-S7: lever joins W04's definition to the lockmark's node.",
   "readable": true
  },
  "s-02-26-failure": {

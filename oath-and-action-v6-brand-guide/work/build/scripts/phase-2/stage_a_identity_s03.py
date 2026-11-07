@@ -4,10 +4,14 @@ Fix pass, November 6, 2026: codes and internal names leave the plates and alt te
 two columns at 712 px with L6 in its own plate (C-S7); the minimum-size table is readable to assistive technology and
 shows today's width only (AX-M1, BE-S11); marks in the minimum sheet share one bottom line (C-S13); the masthead's
 navigation is a div (AX-S8); the partnership lockup shows both orders (RP-S3, DR-102); type on fixed artboards follows
-D2-254, and labeled failures that must sit off the scale carry check_exempt "scale"."""
+D2-254, and labeled failures that must sit off the scale carry check_exempt "scale".
+
+Apply pass, November 7, 2026: S1 replaces L2 in the lockup sheet, the minimum sheet and table, and the surfaces sheet
+(DR-113); the badge shows at its new 48 px minimum (DR-118); the minimum table leaves out retired rows and condensed
+figures (DR-115, D2-328)."""
 import json
 import re
-from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark,
+from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark, s1, s1_width,
                                   wordmark, lockmark, amp, illus, head_label, tag, svg_file, mark_style, ink, ink2, hair, pal,
                                   tv, sig, ty, curl)
 
@@ -221,6 +225,7 @@ def s_03_2_failure():
 
 MIN = {  # each lockup's minimum, from the identity masters' table at today's width
     "L1": ("16 px tall, 152 px wide", "1.20 in wide"), "L2": ("90 px wide", "0.80 in"), "L3": ("196 px wide", "1.55 in"),
+    "S1": ("79 px wide", "0.65 in"),
     "L4": ("304 px wide", "2.30 in"), "L5": ("388 px wide", "2.90 in"), "L6": ("884 px wide", "6.60 in"),
     "L7": ("250 px wide", "1.90 in"), "L8": ("48 px wide", "0.50 in"),
 }
@@ -246,22 +251,22 @@ LOCK_CSS = (".oai-lockgrid{display:grid;grid-template-columns:minmax(0,1fr) minm
 def s_03_lockups():
     parts = [
         _lock_item("L1", "Wordmark", "Most uses: page heads, documents, slides and signs.", wordmark(32, label="Oath & Action, L1 wordmark")),
-        _lock_item("L2", "Stacked", "Square formats and posters.", mark(L2["today"], w=200, label="Oath & Action, L2 stacked lockup")),
+        _lock_item("S1", "Stacked", "OATH & over ACTION, flush left, for square formats and posters.", s1(40, label="Oath & Action, S1 stacked lockup")),
         _lock_item("L3", "Horizontal with the lockmark", "The site and email masthead.", l3_small(24)),
-        _lock_item("L8", "Monogram", "Small squares where the full name will not fit. Never a favicon.", mark(L8["today"], w=120, label="Oath & Action, L8 monogram")),
+        _lock_item("L8", "Monogram", "Squares where the name must show, such as a tile in a partner's directory. Never an avatar or a favicon.", mark(L8["today"], w=120, label="Oath & Action, L8 monogram")),
         _lock_item("L4", "Monogram and tagline", "Document footers and small print.", l4(304)),
         _lock_item("L7", "Section masthead", "Names the pillar a piece serves, in the surface's ink.", l7(l7_width(17, "TRACK"), "TRACK")),
         _lock_item("L5", "Wordmark and tagline", "Covers, banners and partner placements where the tagline travels with the mark.", l5(400), span=True),
     ]
     body = f'<div class="oai-lockgrid">{"".join(parts)}</div>'
     alt = ("Seven lockups at true size on Newsprint, two to a row, each with its job and its minimum on screen and in print: "
-           "L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; L2 stacked, OATH over ACTION with a large ampersand at "
-           "right, 90 pixels, 0.80 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the "
+           "L1 the wordmark, 16 pixels tall or 152 wide, 1.20 inches; S1 stacked, OATH & over ACTION on two flush-left lines, "
+           "79 pixels, 0.65 inches; L3 the wordmark with the lockmark grid at its right, 196 pixels, 1.55 inches; L8 the "
            "O & A monogram, 48 pixels, 0.50 inches; L4 the monogram, a hairline and the tagline on two lines, 304 pixels, "
            "2.30 inches; L7 the wordmark, a hairline and the word TRACK, 250 pixels, 1.90 inches; and L5 the wordmark over the "
            "tagline, 388 pixels, 2.90 inches. L6 follows in its own plate.")
     return rec("s-03-lockups", "03.2", 712, alt, body, css=LOCK_CSS,
-               notes="Two columns at 712 px (C-S7). L1, L2, L3 and L8 are masters. L4, L5 and L7 are assembled from the approved "
+               notes="Two columns at 712 px (C-S7). L1, S1, L3 and L8 are masters; S1 at 40 px capitals from its display master (DR-113). L4, L5 and L7 are assembled from the approved "
                      "masters and re-exported taglines on V5's layouts (I8 note). L6 has its own plate, s-03-l6, since its 884 px "
                      "minimum is wider than the column. L7's pillar word is live text at 17 px, a size on the scale, which sets L7 at 294 px.")
 
@@ -314,14 +319,14 @@ def s_03_3_failure():
 def s_03_4_correct():
     row1 = markrow([
         (wordmark(16, label="L1 at its minimum, 16 px tall"), ["L1, 16 px tall", "152 px wide"]),
-        (mark(L2["today"], w=90, label="L2 at its minimum, 90 px wide"), ["L2, 90 px wide"]),
+        (s1(14, label="S1 at its minimum, 79 px wide"), ["S1, 79 px wide"]),
         (l3_small(16, label="L3 at its minimum, 196 px wide", hang=True), ["L3, 196 px wide"]),
         (mark(L8["today"], w=48, label="L8 at its minimum, 48 px wide"), ["L8, 48 px wide"]),
     ], 36)
     row2 = markrow([
         (amp(16, label="Ampersand B at its minimum, 16 px"), ["Ampersand B, 16 px"]),
         (lockmark(16, label="Lockmark at its minimum, 16 px"), ["Lockmark, 16 px"]),
-        (mark(BADGE[16], h=16, label="Hinge-circle badge at its minimum, 16 px"), ["Badge, 16 px"]),
+        (mark(BADGE["display"], h=48, label="Hinge-circle badge at its minimum, 48 px"), ["Badge, 48 px"]),
         (mark(HINGE["compact"], w=245, label="Hinge diagram, compact master, at its minimum, 245 px wide"), ["Hinge diagram, compact, 245 px"]),
     ], 60)
     row3 = markrow([(l4(304), ["L4, 304 px wide"]), (l7(250, "CONNECT"), ["L7, 250 px wide with its longest word"])], 44)
@@ -333,8 +338,8 @@ def s_03_4_correct():
             'These are graphics, so the 13 px floor for text does not apply to the letters drawn inside them. L6 appears at its 884 px minimum after Rule 03.2.</p>'
             '</div></div>')
     alt = ("Every identity mark at its screen minimum, at true size, each row on one bottom line: the wordmark 16 pixels tall, "
-           "the stacked lockup 90 wide, the horizontal lockup 196 wide, the monogram 48 wide; ampersand B, the lockmark and the "
-           "badge at 16 pixels and the compact hinge diagram at 245; L4 at 304 and L7 at 250; L5 at 388; and the display hinge "
+           "the S1 stacked lockup 79 wide, the horizontal lockup 196 wide, the monogram 48 wide; ampersand B and the lockmark at "
+           "16 pixels, the badge at 48 and the compact hinge diagram at 245; L4 at 304 and L7 at 250; L5 at 388; and the display hinge "
            "diagram at 533.")
     return rec("s-03-4-correct", "03.4", 712, alt, body, css=MARKROW_CSS,
                notes="Marks at true size are graphics (Stage A brief: the 13 px floor exempts a mark shown at its minimum, and the note says so). "
@@ -369,15 +374,15 @@ def _mark_name(n):
 def s_03_minimums():
     rows = "".join(f'<tr><th scope="row">{E(_mark_name(r["lockup"]))}</th><td data-k="Screen">{E(_no_condensed(r["screen"]))}</td>'
                    f'<td data-k="Print">{E(_no_condensed(r["print"]))}</td><td data-k="Below the minimum">{E(r["below"])}</td></tr>'
-                   for r in MINIMUM_ROWS["rows"])
+                   for r in MINIMUM_ROWS["rows"] if r.get("status") != "retired")
     table = (f'<table class="stack"><caption class="oai-note" style="text-align:left;caption-side:top;padding-bottom:8px">{E(MINIMUM_ROWS["rule"])}</caption>'
              '<thead><tr><th scope="col">Mark</th><th scope="col">Screen minimum</th><th scope="col">Print minimum</th><th scope="col">Below the minimum</th></tr></thead>'
              f'<tbody>{rows}</tbody></table>')
     body = f'<div class="oai-panel oai-s-newsprint">{table}</div>'
     alt = "Minimum sizes on screen and in print for every identity mark, with the mark to use below each minimum."
     return rec("s-03-minimums", "03.4", None, alt, body, readable=True,
-               notes="Read from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8) with the condensed figures "
-                     "left out (BE-S11; they sit in s-proofs-minimums) and V5 named in words. readable: the table reaches assistive "
+               notes="Read from work/build/assets/identity/20261028_Identity-Minimum-Sizes.json (I8) with retired rows (L2, DR-113) and "
+                     "the condensed figures left out (DR-115, D2-328) and V5 named in words. readable: the table reaches assistive "
                      "technology (AX-M1). Stacks under 568 px with each cell's column named.")
 
 
@@ -390,15 +395,15 @@ def s_03_5_correct():
     for s, m, name in cols:
         inner = (f'<div class="oai-stack" style="gap:20px;align-items:flex-start">'
                  f'{wordmark(22, surface=s, mode=m, label=f"L1 on {name}")}'
-                 f'<div class="oai-row" style="gap:20px">{mark(L2["today"], w=110, surface=s, mode=m, label=f"L2 on {name}")}'
+                 f'<div class="oai-row" style="gap:20px">{s1(22, surface=s, mode=m, label=f"S1 on {name}")}'
                  f'{mark(L8["today"], w=60, surface=s, mode=m, label=f"L8 on {name}")}</div></div>')
         cells.append(f'<div class="oai-panel oai-s-{s}">{inner}<p class="oai-tag" style="margin-top:16px">{E(name)}</p></div>')
     css = ".oai-matrix{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:12px}"
     body = f'<div class="oai-matrix">{"".join(cells)}</div>'
-    alt = ("L1, L2 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with "
+    alt = ("L1, S1 and L8 on six grounds at true size: Newsprint, White and Charcoal with the red ampersand; Prussian with "
            "every part White; and one-color versions in Charcoal on Newsprint and in Newsprint on Charcoal.")
     return rec("s-03-5-correct", "03.5", None, alt, body, css=css,
-               notes="A sheet: the stage flows and each mark keeps its true size. Prussian cells place the explicit-White files from prussian/ (treatment D, I9). L1 uses the 24 px master at 22 px tall.")
+               notes="A sheet: the stage flows and each mark keeps its true size. Prussian cells place the explicit-White files from prussian/ (treatment D, I9), S1's included. L1 uses the 24 px master at 22 px tall; S1 its 24 px master at 22 px capitals.")
 
 
 @spec

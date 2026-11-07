@@ -1,5 +1,8 @@
 """Chapter 04 The Ampersand and the hinge: specimens.
 
+Apply pass, November 7, 2026: an article ends with B alone in the text's ink, and the badge keeps sizes from 48 px for
+back covers and events (DR-118); Rule 04.6's failure shows the badge at 16 px read as the registered trademark sign.
+
 Fix pass, November 6, 2026: hinge headlines come from Rule 02.27's correct list and set in the scale's styles at their
 fixed sizes (BE-M6, CP-M4, C-M7, D2-254); the Act card reads "The route plan & your commute." with the kicker
 "Act · How to take part" (D2-250); cards are drawn at a phone column's 358 px, so they fit a phone at true size (C-S7);
@@ -276,33 +279,67 @@ def s_04_5_failure():
 
 
 # ------------------------------------------------------------------------------------------- 04.6
+END_TEXT = ("The board meets again on April 2, and the agenda posts a week before. We will add the vote to the tracker once "
+            "the clerk publishes the minutes.")
+
+
+def end_b(surface="newsprint"):
+    """B alone as an article's end mark (DR-118): the 16 px master at 16 px, in the text's ink, its tail 1 px under the
+    baseline where the master draws it. At 17 px body text the capitals stand 12.4 px, under B's 14 px floor (Rule 03.4),
+    so B takes the master whose range starts at that floor."""
+    return svg_file(ID_DIR / AMP[16], h=16, decorative=True, style=f"color:{ink(surface)};display:inline-block;vertical-align:-1px")
+
+
+def end_badge():
+    return (f'<span class="oai-red" data-red="signature" data-failure="true" style="display:inline-block;line-height:0;vertical-align:-3px">'
+            f'{svg_file(ID_DIR / BADGE[16], h=16, decorative=True, style="color:" + tv("color-identity-signature-on-newsprint"))}</span>')
+
+
+def _article(mark_html):
+    return (f'<div class="oai-s-newsprint" style="width:100%;padding:24px 28px;border:1px solid {hair("newsprint")};{ty("body")}">'
+            f'{head_label()}<p>{E(END_TEXT)}&nbsp;{mark_html}</p></div>')
+
+
 @spec
 def s_04_6_correct():
-    end = (f'<div class="oai-s-newsprint" style="max-width:520px;padding:24px 28px;border:1px solid {hair("newsprint")};{ty("body")}">'
-           f'{head_label()}<p>The board meets again on April 2, and the agenda posts a week before. We will add the vote to the tracker once the clerk publishes the minutes.'
-           f'&nbsp;<span style="display:inline-block;vertical-align:-3px">{mark(BADGE[16], h=16, label="End mark: the hinge-circle badge")}</span></p></div>')
     card = (f'<div class="oai-s-charcoal" style="width:384px;height:576px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">'
             f'{mark(BADGE["display"], h=96, surface="charcoal", label="Hinge-circle badge, 96 px, on the back of an event card")}</div>')
-    body = (f'<div class="oai-stack" style="gap:32px">{end}<div class="oai-cell">{card}'
-            f'<span class="oai-tag">Back of a 4 by 6 in event card, true size</span></div></div>')
-    alt = ("The badge, a red ampersand B inside a thin ring, at true size: at 16 pixels as the end mark after an article's last "
-           "sentence, and at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.")
-    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True)
+    body = (f'<div class="oai-stack" style="gap:32px"><div class="oai-cell">{_article(end_b())}'
+            f'<span class="oai-tag">The end mark: B alone, in the text\'s ink, 16 px master</span></div>'
+            f'<div class="oai-cell">{card}<span class="oai-tag">The badge at 96 px on the back of a 4 by 6 in event card, true size</span></div></div>')
+    alt = ("At true size, the last lines of an article in 17 pixel body text, ending with ampersand B alone in Charcoal, the "
+           "text's ink, one space after the final period, its capitals at the 16 pixel master's 14 pixels. Below, the "
+           "hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 "
+           "inch event card. The article text is Illustrative.")
+    return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True,
+               notes="DR-118. B's 16 px master at 16 px in the text's ink, vertical-align -1 px so its tail lands 1 px under the baseline, "
+                     "as the master draws it. Body text 17 px (cap height 12.4 px), so B stands 1.6 px above the cap line: the 14 px "
+                     "floor for identity marks (Rule 03.4) wins over an exact cap height. The badge from its display master at 96 px.")
 
 
 @spec
 def s_04_6_failure():
-    r = 92
-    ring = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" aria-hidden="true" class="oai-svg" style="position:absolute;left:0;top:0">'
-            f'<defs><path id="oai-seal-arc" d="M120 120m-{r},0a{r},{r} 0 1,1 {2 * r},0a{r},{r} 0 1,1 -{2 * r},0"/></defs>'
-            f'<circle cx="120" cy="120" r="116" fill="none" stroke="{ink("newsprint")}" stroke-width="2"/>'
-            f'<text font-family="Inter, Arial, sans-serif" font-weight="700" font-size="17" letter-spacing="3" fill="{ink("newsprint")}">'
-            f'<textPath href="#oai-seal-arc">OATH &amp; ACTION · OFFICIAL SEAL · OATH &amp; ACTION · OFFICIAL SEAL ·</textPath></text></svg>')
-    seal = (f'<span style="position:relative;display:inline-block;width:240px;height:240px">{ring}'
-            f'<span style="position:absolute;left:60px;top:60px">{mark(BADGE["display"], h=120, decorative=True)}</span></span>')
-    body = f'<div class="oai-panel oai-s-newsprint">{seal}</div>'
-    alt = "Failure case: the badge set inside an outer ring of words, OATH & ACTION, OFFICIAL SEAL, repeated around the circle, turning it into a seal."
-    return rec("s-04-6-failure", "04.6", 300, alt, body)
+    # The comparison is rendered to a PNG, so both marks show as a reader's screen draws them and the registered sign
+    # takes the form most typefaces give it (Liberation Sans, metric twin of Arial), whatever fonts a viewer has.
+    badge = inline_master(BADGE[16], 16, style="color:var(--oa-color-identity-signature-on-newsprint);display:inline-block;vertical-align:-3px")
+    row = ('<div style="padding:4px 6px;font:400 17px/24px Inter,sans-serif;color:var(--oa-color-text-primary-on-newsprint);white-space:nowrap">'
+           f'minutes.&nbsp;{badge}<span style="display:inline-block;width:24px"></span>'
+           'minutes.&nbsp;<span style="font-family:Liberation Sans,Arial,sans-serif">&reg;</span></div>')
+    W, H = 230, 32
+    uri = raster_png(row, W, H, "badge-vs-registered", scale=4)
+    img1 = f'<img src="{uri}" width="{W}" height="{H}" alt="" style="display:block">'
+    img2 = f'<img src="{uri}" width="{2 * W}" height="{2 * H}" alt="" style="display:block">'
+    body = (f'<div class="oai-stack" style="gap:20px">{_article(end_badge())}'
+            f'<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:20px">'
+            f'<div class="oai-cell">{img1}<span class="oai-tag">The badge, then the registered trademark sign, true size</span></div>'
+            f'<div class="oai-cell">{img2}<span class="oai-tag">The same, enlarged twice</span></div></div></div></div>')
+    alt = ("Failure case: the same article ending with the hinge-circle badge, a red B inside a red ring, at 16 pixels after "
+           "the final period. Below, the words minutes. followed by the badge, then minutes. followed by the registered "
+           "trademark sign, at true size and enlarged twice: at this size the two read as the same kind of mark. Illustrative.")
+    return rec("s-04-6-failure", "04.6", 560, alt, body, illustrative=True,
+               notes="The badge's 16 px master after the last word, as the end mark stood before DR-118. The comparison row is a PNG "
+                     "rendered by Chromium at four times (raster_png), so it stays sharp at twice size on a 2x screen, shown at true size and at twice size: 17 px Inter, the badge, "
+                     "and the registered sign in Liberation Sans, the form most typefaces draw. A PNG keeps the 13 px text check clean.")
 
 
 # ------------------------------------------------------------------------------------------- 04.7

@@ -72,7 +72,7 @@
   {
    "lockup": "L8 monogram",
    "v5": "48 px wide, also listed for favicons",
-   "screen": "48 px wide (capitals 16.0 px; condensed 19.5 px). Never a favicon",
+   "screen": "48 px wide (capitals 16.0 px; condensed 19.5 px). Never an avatar or a favicon",
    "print": "0.50 in wide",
    "below": "Use the ampersand's 16 px master",
    "condensed": "kept for the record, not in use (D2-328)",
@@ -103,10 +103,11 @@
   {
    "lockup": "Hinge-circle badge",
    "v5": "New mark (S9)",
-   "screen": "48 px, display master; the 16 px and 24 px masters are kept for the record",
+   "screen": "48 px, from the display master",
    "print": "0.50 in",
    "below": "End an article with ampersand B alone (Rule 04.6). Never an avatar or favicon",
-   "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)"
+   "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)",
+   "masters_note": "The 16 px and 24 px badge masters stay in badge/ for the record and are not placed"
   }
  ],
  "condensed": "Figures marked condensed belong to the condensed wordmark, kept in the files for the record and not in use: Edition 06 keeps today's width (DR-115, D2-328).",

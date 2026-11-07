@@ -148,11 +148,13 @@ def update_minimums():
         if any("condensed" in str(r.get(k, "")) for k in ("screen", "print")):
             r["condensed"] = "kept for the record, not in use (D2-328)"
         if r["lockup"] == "Hinge-circle badge":
-            r.update({"screen": "48 px, display master; the 16 px and 24 px masters are kept for the record",
+            r.update({"screen": "48 px, from the display master",
+                      "masters_note": "The 16 px and 24 px badge masters stay in badge/ for the record and are not placed",
                       "print": "0.50 in",
                       "below": "End an article with ampersand B alone (Rule 04.6). Never an avatar or favicon",
                       "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)"})
         if r["lockup"] == "L8 monogram":
+            r["screen"] = r["screen"].replace("Never a favicon", "Never an avatar or a favicon")
             r["status_note"] = ("For squares where the name must show, such as a tile in a partner's directory. Social avatars "
                                 "and the app icon show ampersand B alone on the Charcoal tile (DR-116)")
     d["condensed"] = CONDENSED_NOTE
