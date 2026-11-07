@@ -936,3 +936,17 @@ Four owners worked in parallel under `work/handoffs/phase-2/20261107_Apply-Pass-
 | D2-403 | L6 stays as drawn, with its four pillar dots, until Dustin answers the identity designer's question on the changes board | Removing the dots changes a lockup, which needs his named approval (gate rule 4); the dots break DR-110 and DR-111, so the board asks |
 | D2-404 | Rule 01.11's reason prints as Dustin approved it in DR-125; the editor's one-sentence version goes to him on the changes board | Approved wording changes only with his answer |
 | D2-405 | The capitol dome in Civic Line's Congress icon (CL-025) goes to stage B as a question, and chapter 01 uses no icon for Congress until then | Rule 01.6 keeps domes to captioned photographs, and the Civic Line set is settled, so the conflict is Dustin's to resolve |
+
+### Editor, round two (research applied and copy edit)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-406 | Each first mention of H.R. 7008 reads "as the House passed it" before both provisions | The committee voted on the stock section alone, and DR-98's provisions are the House-passed text's |
+| D2-407 | The Track card says in words why step 2 has a slash, and that the committee voted on a version without the photo ID section | DR-108 puts the words beside every state, and the marks alone could imply the committee's text held both provisions |
+| D2-408 | The card draws its steps with chapter 11's `steps_svg()` and status words, imported from `apply_systems_ch11.py` | One drawing for every tracker, with no marks of the editor's own |
+| D2-409 | The card's step row is 288 px, 48 px to a step, with 24 px circles | Rule 11.5's sixths and Rule 11.7's story-card size, at a width that never scales below 13 px numbers |
+| D2-410 | The card dates itself "As of November 5, 2026" | The newest Congressional Record the research lead read |
+| D2-411 | The 2020 example logs as domain D10, Pennsylvania, all four regions, federal | Atlas issue I155's domain; the court case is Pennsylvania's, and the review's six states span the four regions |
+| D2-412 | Basis lines for Dustin's rulings read "Design judgment, approved by our founder and editor in November 2026" | One form across chapters 04, 08 and 11 (D2-253) |
+| D2-413 | Issue I155's summary takes the review's own wording on the next atlas V7.1 list; the atlas itself is never edited | The research lead found the summary's "no evidence in any of 64 cases" drops the one case the review says Trump's side won |
+| D2-414 | The main session ran the final checks itself: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures, 25 listed exemptions, each a labeled failure plate or a print piece) and the token tests (all pass, 35 of 35 plants caught) | A check is reported only once the main session has run it |
