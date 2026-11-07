@@ -144,7 +144,7 @@ BILLS = [
     dict(id='H.3301', title='Records request fees', step=4,
          states=['done', 'skipped', 'done', 'now', 'notyet', 'notyet'],
          line='Step 2 never happened: the committee voted without a public hearing. The House votes next.',
-         notes={2: 'Never happened: no public hearing.', 4: 'The House votes next.'},
+         notes={2: 'Never happened: no public hearing.', 4: 'The House votes next.'}, short='Step 2 never happened.',
          today='Stage 4 of 9: Out of committee. No hearing was held'),
 ]
 
@@ -423,8 +423,9 @@ def vt_list(b, d, notes=True, cls='vt'):
         word = ''
         if s == 'skipped' and not notes:
             word = '<span class="vt-note">Never happened</span>'
+        srw = '' if word else f'<span class="sr">: {E(STATES[s][0].lower())}</span>'
         lis.append(f'<li class="{seg}{cur}">{b_sample(s, d, num=i + 1)}<span class="vt-t"><span class="vt-n">{E(NAMES[i])}</span>'
-                   f'<span class="sr">: {E(STATES[s][0].lower())}</span>{note}{word}</span></li>')
+                   f'{srw}{note}{word}</span></li>')
     return f'<ol class="{cls}" style="--d:{d}px">{"".join(lis)}</ol>'
 
 
@@ -443,12 +444,13 @@ def row(opt, b, ctx):
     if opt == 'C':
         word = (f'<p class="cw"><span class="cw-w">{E(NAMES[b["step"] - 1])}</span> '
                 f'<span class="cw-n">Step {b["step"]} of 6</span></p>')
-        st_line = f'<p class="st">{E(b["line"])}</p>' if ctx != 'm' else ''
+        st_line = (f'<p class="st">{E(b["line"])}</p>' if ctx != 'm'
+                   else (f'<p class="st">{E(b["short"])}</p>' if b.get('short') else ''))
         core = f'{word}<div class="mkw">{mark}</div>{steps_sr(b["states"])}{st_line}'
     else:
         lab = labels(b['states'], {'l': 636}.get(ctx, 0)) if ctx == 'l' else ''
         st_line = (f'<p class="st"><b>{E(status_words(b))}</b> {E(b["line"])}</p>' if ctx != 'm'
-                   else f'<p class="st"><b>{E(status_words(b))}</b></p>')
+                   else f'<p class="st"><b>{E(status_words(b))}</b>{" " + E(b["short"]) if b.get("short") else ""}</p>')
         core = f'<div class="mkw">{mark}</div>{lab}{steps_sr(b["states"])}{st_line}'
     tp = take_part(b, tmark, compact=(ctx == 'm'))
     if ctx == 'm':
@@ -592,7 +594,7 @@ def option_section(o, num):
     c1024 = frame(panel(k, 'l', 'c'), f'Option {k} at 1024 px on Charcoal, true size', '1024 px, Charcoal', 1024)
     extra = ''
     if k == 'D':
-        extra = ('<h3 class="sub">On a bill\'s own page</h3><p>H.4212\'s page sets the same six steps with dates and a note on each. '
+        extra = ('<h3 class="sub">On a bill\'s own page</h3><p>H.4212\'s page sets the same six steps with a note on each and the dates known so far. '
                  'The box under step 2 holds the date to act and the page\'s one red ask, the button that opens the way to send testimony.</p>'
                  '<div class="pair">'
                  + frame(bill_page('s', 'n'), 'Option D, a bill\'s page at 360 px on Newsprint, true size', 'Bill page, 360 px, Newsprint', 360)
@@ -694,7 +696,7 @@ def sec_grid():
                f'{lockmark(40)}<span class="sg-m">72 px margin</span></div>')
     after = [
         (masthead, 'Masthead', 'L3, the wordmark with the lockmark, on screens 768 px and wider'),
-        (header, 'Page header', 'Report and slide pages: 24 px, beside the section label. Illustrative label'),
+        (header, 'Page header', 'Report and slide pages: 24 px, beside the section label. The section title is invented, so the piece is Illustrative'),
         (footer, 'Footer', 'Site, email and chart footers: 24 px, beside the tagline; 16 px in a chart footer'),
         (signoff, 'Sign-off', 'Bottom right of social cards, covers and posters: 40 px, inside the margin'),
     ]
@@ -777,7 +779,7 @@ def sec_checks(meas):
         tgt = '<li>Targets are set at 44 px tall in the lists and 48 px on the bill pages. Run the measure script to print measured sizes here.</li>'
     return f'''<section id="checks" aria-labelledby="checks-h"><p class="secnum">08</p>
 <h2 id="checks-h">Accessibility: what was measured</h2>
-<div class="lede"><p>Every state is named in words beside its mark, and a screen reader hears each step's name and state from a list the eye does not see. Shape alone tells each state apart in grayscale, and color never works alone: the one red mark always comes with its own shape and the words "You can take part now".</p></div>
+<div class="lede"><p>Each state has a name in words. The legend under every list names all of them, and the line beside each tracker names the step a bill is at, any step that never happened and the chance to take part. A screen reader hears every step's name and state from a list the eye does not see.</p><p>Shape alone tells each state apart in grayscale, and color never works alone: the one red mark always comes with its own shape and the words "You can take part now".</p></div>
 <h3 class="sub">Contrast, from the token values</h3>
 <div class="tw"><table class="stk tbl-con"><caption class="sr">Contrast of every mark and text pair the trackers use</caption>
 <thead><tr><th scope="col">Surface</th><th scope="col">What</th><th scope="col">Pair</th><th scope="col">Ratio</th><th scope="col">Needs</th><th scope="col">Result</th></tr></thead>

@@ -622,7 +622,7 @@ def page(res, M, crisp, pngs):
   <p class="kicker">Our recommendation</p>
   <h2 id="rec-h">S1, ampersand ends line one</h2>
   <ul>
-    <li>It is the wordmark broken after B. OATH, B and the white between H and B are exactly as the wordmark master draws them, so a reader who knows the masthead knows this stack at once.</li>
+    <li>It is the wordmark split after B. OATH, B and the white between H and B are exactly as the wordmark master draws them, so a reader who knows the masthead knows this stack at once.</li>
     <li>It reads in the name’s order and keeps B at the size of the capitals, as the wordmark does.</li>
     <li>It packs the name into the smallest box of the six, {m1["width_x"]:.2f}x by {m1["ink_height_x"]:.2f}x. In a 400 px round avatar its capitals reach {m1["avatar_cap_px"]:.0f} px, against {l2["avatar_cap_px"]:.0f} px for L2, and it holds 14 px capitals in tiles down to {m1["avatar_min_tile_px"]} px.</li>
     <li>Its lines hold {s1_lines["white_x"]:.3f}x of white, the same white as each side of B. L2 holds {l2["line_white_x"]:.3f}x, so the leading, the space between lines, barely moves and the block keeps L2’s density.</li>
