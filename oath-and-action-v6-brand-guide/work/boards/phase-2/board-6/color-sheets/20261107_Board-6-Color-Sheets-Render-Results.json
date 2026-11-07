@@ -1,0 +1,150 @@
+{
+ "file": "work/boards/phase-2/board-6/color-sheets/20261107_Board-6-Color-Sheets.html",
+ "checked": 132,
+ "failures": 0,
+ "mismatch": 0,
+ "bad": [],
+ "sheets": {
+  "patina@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "federal-ink@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "signal-orange@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "archive-ochre@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "highlighter@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "ballot-violet@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "today@1440": {
+   "width": 1200,
+   "height": 1922
+  },
+  "patina@390": {
+   "width": 358,
+   "height": 5004
+  },
+  "federal-ink@390": {
+   "width": 358,
+   "height": 5069
+  },
+  "signal-orange@390": {
+   "width": 358,
+   "height": 4995
+  },
+  "archive-ochre@390": {
+   "width": 358,
+   "height": 4930
+  },
+  "highlighter@390": {
+   "width": 358,
+   "height": 4871
+  },
+  "ballot-violet@390": {
+   "width": 358,
+   "height": 4974
+  },
+  "today@390": {
+   "width": 358,
+   "height": 4917
+  }
+ },
+ "captures": [
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-patina-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-federal-ink-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-signal-orange-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-archive-ochre-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-highlighter-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-ballot-violet-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-today-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheets-Strip-1440.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheets-Strip-1440-Grayscale.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-patina-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-federal-ink-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-signal-orange-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-archive-ochre-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-highlighter-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-ballot-violet-390.jpg",
+  "work/boards/phase-2/board-6/color-sheets/captures/20261107_Board-6-Color-Sheet-today-390.jpg"
+ ],
+ "rowsInUse": "156px 528px 358px 394px 259px",
+ "overrun": [],
+ "rows": [
+  156,
+  528,
+  358,
+  394,
+  259
+ ],
+ "rowsPerSheet": {
+  "patina": [
+   156,
+   528,
+   358,
+   394,
+   231
+  ],
+  "federal-ink": [
+   156,
+   527,
+   358,
+   388,
+   259
+  ],
+  "signal-orange": [
+   156,
+   507,
+   358,
+   394,
+   251
+  ],
+  "archive-ochre": [
+   156,
+   507,
+   358,
+   376,
+   218
+  ],
+  "highlighter": [
+   156,
+   486,
+   358,
+   394,
+   198
+  ],
+  "ballot-violet": [
+   156,
+   507,
+   358,
+   376,
+   244
+  ],
+  "today": [
+   156,
+   486,
+   358,
+   394,
+   198
+  ]
+ },
+ "byProp": {
+  "fill": 42,
+  "color": 34,
+  "stroke": 35,
+  "outline-color": 7,
+  "background-color": 14
+ }
+}
