@@ -278,7 +278,11 @@ def apply_pass(chapters, book, texts, fails, notes):
     if ch01.RULE_11_ADDED not in r1["01.11"]["rule"]:
         fails.append("Rule 01.11 lacks A13's added sentence (DR-125)")
     if r1["01.11"]["why"]["text"] != [ch01.RULE_11_WHY]:
-        fails.append("Rule 01.11's reason is not A13's (DR-125)")
+        fails.append("Rule 01.11's reason is not the recast Dustin approved (DR-132)")
+    # DR-132: the old first sentence of the reason appears nowhere in chapters 01 and 02, their specimens or alt text
+    for k, t in texts.items():
+        if ch01.RULE_11_WHY_OLD in t:
+            fails.append(f"{k} still carries Rule 01.11's old reason, which DR-132 replaced")
     if "naming the sides in a hinge headline" not in " ".join(r1["01.20"]["why"]["text"]):
         fails.append("Rule 01.20's reason lacks \"in a hinge headline\" (DR-125)")
     if "the spread of examples" not in " ".join(r1["01.12"]["why"]["text"]):

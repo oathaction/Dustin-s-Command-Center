@@ -82,8 +82,11 @@ HINGE_LEAD = ("The ampersand in our name is the hinge, the joint a door swings o
               "Chapter 04 draws the hinge and sets its rules.")
 RULE_11_ADDED = ("When the record shows one party using a mechanism more, report it that way, with the counts, as Rule 01.13 "
                  "asks, and add no case to even the count.")
-RULE_11_WHY = ("Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the "
-               "reader. Where the record shows one side doing more, the finding stands as the record shows it.")
+# DR-132 (Q4 on the changes board, November 8, 2026): the creative director's recast replaces A13's reason. The build checks
+# it verbatim and fails if the old first sentence returns anywhere in chapters 01 and 02.
+RULE_11_WHY = ("A case from each party, told the same way, puts a mechanism that both parties use in front of the reader. "
+               "Where the record shows one side doing more, the finding stands as the record shows it.")
+RULE_11_WHY_OLD = "Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the"
 
 ATLAS = "Oath & Action’s systems atlas, Who Do They Answer To?"
 
