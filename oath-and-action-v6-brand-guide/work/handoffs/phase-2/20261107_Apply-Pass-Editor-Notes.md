@@ -294,3 +294,60 @@ Modified:
 - This file
 
 Created: none. Nothing committed or pushed.
+
+## Q1 to Q4 pass
+
+November 8, 2026, under `work/handoffs/phase-2/20261108_Q1-To-Q4-Apply-Pass-Brief.md`, section "Editor", item 1. Dustin answered Q4 on the changes board as recommended (DR-132). I changed only my own files: chapter 01 through its build script, and the editor's build checks. I committed nothing; the main session's snapshot commit f5c40d2e holds the change. Item 2, the copy edit of the identity designer's new strings, waits for the main session's message with their notes.
+
+### What I did
+
+**Item 1, Rule 01.11's reason (DR-132).**
+
+| Location | Original | Revision | Reason |
+|---|---|---|---|
+| Rule 01.11, why it works (`RULE_11_WHY` in `guide_editor_ch01.py`) | "Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it." | "A case from each party, told the same way, puts a mechanism that both parties use in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it." | DR-132, Dustin's answer to Q4. The two sentences now open on different frames, as W13 asks, and the second keeps DR-93's standard word for word |
+
+- The new string matches DR-132 in the decision log, the brief and version (c) on the Q4 card, character for character. Its sentences run 21 and 16 words.
+- **Other copies.** I searched chapters 01 and 02, the visible text of all 112 of their specimens and every alt text in `manifest-editor.json` for the old reason whole and for its parts ("both parties use", "told the same way", "one side doing more", "in front of the reader", "stands as the record shows"). The old reason appeared once, in Rule 01.11's reason. Two other hits are different sentences that share a phrase: Rule 01.6's reason ("Campaigns in both parties use the dome and the flag ...") and Rule 01.11's own first paragraph ("When majorities of both parties use the same mechanism ..."). Neither repeats the reason, so both stay.
+- Outside my files, the old wording survives only on boards, which record what Dustin saw: board A (`work/boards/20261106_Stage-A-Foundations-Board.html` and its content file) and the changes board with its content file, where it is Q4's version (a). I left them alone. The chapters page carried it until the shared build regenerated the page.
+- **Build check.** The editor's build now names DR-132 when Rule 01.11's reason differs from the approved string, and it fails if the old first sentence turns up anywhere in chapters 01 and 02, their specimens or their alt text.
+- **Basis.** Rule 01.11's basis stays "Design judgment", as on 23 of chapter 01's 24 rules.
+- **Patterns in the changed string:** em dashes 0, listed fillers and corporate verbs 0, parallel runs 0. Round one counted one parallel run in my chapters, this reason, and none remains.
+
+### Routine calls, as proposed decision lines
+
+- D2-xxx | The editor's build fails if Rule 01.11's old first sentence appears anywhere in chapters 01 and 02, their specimens or their alt text | DR-132 replaces it, and the check stops a later edit from bringing an old copy back
+- D2-xxx | Rule 01.11's basis stays "Design judgment" | DR-132 changes only the reason's wording, and chapter 01's other rules that Dustin worded in DR-125 (01.12, 01.20) carry the same basis
+
+### Questions for Dustin
+
+None. DR-132 answers the question on Rule 01.11's reason that my round one, round two and fix pass notes carried.
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-2/guide_editor_build.py`: every check passes. The build rewrote `01-purpose.json` with one changed string, the reason. `02-voice.json`, the 112 specimens and `manifest-editor.json` came out byte for byte as before; git shows no change to them.
+- Planted faults, in memory, with nothing written: 6 of 6 caught, and the clean build drew no DR-132 failure. The plants: the old reason in Rule 01.11; the recast with "that" dropped; the old reason added to a chapter 01 caption, to a chapter 02 rule, to the text of `s-01-11-correct` and to the alt text of `s-02-lines`.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict`: 0 warnings, 9 chapter files, 100 rules, 233 specimens. A word diff of the chapters page shows two changes, the reason and the build date.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px: PASS, 0 failures, 756 same-page links. The page it checked carried my change and none of the identity designer's; their files showed no change when I ran it, so the build never failed on a file I do not own.
+- By eye in Playwright Chromium: Rule 01.11's reason on the chapters page at 1440 and 390 px. The paragraph's text in the page matches DR-132.
+- The new string against DR-132 in the decision log, the brief and the Q4 card, compared by script.
+- The search for the old reason, by script, whole and in parts, and my own read of every hit.
+
+### Not tested
+
+- The chapters page with the identity designer's Q1 to Q3 changes in it. Their rebuild carries my chapter 01 file, and the check after their pass covers both.
+- Screen readers, forced colors, Firefox, Safari, print, 200 percent zoom and real readers.
+- How the recast sounds read aloud to a reader.
+
+### Change log, Q1 to Q4 pass
+
+Modified:
+- `work/build/scripts/phase-2/guide_editor_ch01.py`: `RULE_11_WHY` takes DR-132's words; a new `RULE_11_WHY_OLD` holds the old first sentence the build looks for
+- `work/build/scripts/phase-2/guide_editor_build.py`: the reason check names DR-132, and a new check fails on the old first sentence
+- Regenerated by my build: `work/build/guide/chapters/01-purpose.json` (Rule 01.11's reason only)
+- Regenerated by the shared build and check: `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, its build report, its check results and four 390 px captures
+- This file
+
+Created: none. The planted-fault script and the captures stay in my session scratchpad.
+
+Not touched: `source/`, `work/ledger/`, the Civic Line masters, any board other than reading it, the reader check and every other owner's files. Nothing committed or pushed.
