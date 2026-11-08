@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-08T17:25:52.920Z",
+ "checked": "2026-11-08T18:01:34.533Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -182,7 +182,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9321,
+    "texts": 9327,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -223,12 +223,29 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 362148,
+   "height": 362507,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "frames": {
+    "snugPx": 32,
+    "frames": 233,
+    "scrolling": 4,
+    "snug": [
+     {
+      "specimen": "s-08-2-correct",
+      "sides": 32,
+      "hint": false,
+      "scrolls": false
+     }
+    ],
+    "hintNoScroll": [],
+    "scrollNoHint": [],
+    "couldFit": [],
+    "offCenter": []
+   },
    "fit": {
     "offered": [],
     "under": []
@@ -417,7 +434,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9185,
+    "texts": 9188,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -458,19 +475,37 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 388542,
+   "height": 389077,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
-   "fit": {
-    "offered": [
+   "frames": {
+    "snugPx": 32,
+    "frames": 233,
+    "scrolling": 17,
+    "snug": [
+     {
+      "specimen": "s-02-lines",
+      "sides": 32,
+      "hint": false,
+      "scrolls": false
+     },
      {
       "specimen": "s-03-1-failure",
-      "scale": 0.993,
-      "smallest": 61.39
-     },
+      "sides": 32,
+      "hint": false,
+      "scrolls": false
+     }
+    ],
+    "hintNoScroll": [],
+    "scrollNoHint": [],
+    "couldFit": [],
+    "offCenter": []
+   },
+   "fit": {
+    "offered": [
      {
       "specimen": "s-04-5-failure",
       "scale": 0.932,
@@ -662,7 +697,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9159,
+    "texts": 9166,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -703,12 +738,22 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 466428,
+   "height": 467005,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "frames": {
+    "snugPx": 32,
+    "frames": 233,
+    "scrolling": 40,
+    "snug": [],
+    "hintNoScroll": [],
+    "scrollNoHint": [],
+    "couldFit": [],
+    "offCenter": []
+   },
    "fit": {
     "offered": [
      {
@@ -917,7 +962,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9164,
+    "texts": 9171,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -958,12 +1003,22 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 482698,
+   "height": 483300,
    "fonts": [
     "Inter",
     "Inter Tight",
     "Lora"
    ],
+   "frames": {
+    "snugPx": 32,
+    "frames": 233,
+    "scrolling": 45,
+    "snug": [],
+    "hintNoScroll": [],
+    "scrollNoHint": [],
+    "couldFit": [],
+    "offCenter": []
+   },
    "fit": {
     "offered": [
      {

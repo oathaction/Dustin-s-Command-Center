@@ -325,6 +325,9 @@ a.toc-part-k:hover { text-decoration: underline }
     padding-inline: max(min(var(--oa-space-200), var(--room) / 2), min(var(--oa-space-200), var(--room) * -1000)) }
 }
 @media (min-width: 48em) { .plate-scroll { margin-inline: 0; padding: var(--oa-space-800) var(--oa-space-600) } }
+/* CD-S9 (Q1 to Q4 pass): the script adds .is-snug only to a frame whose stage scrolls inside 48 px sides and fits whole
+   inside 32 px ones, so the stage sits centered at true size with no hint and no tab stop. Phones keep their 16 px. */
+@media (min-width: 48em) { .plate-scroll.is-snug { padding-inline: var(--oa-space-400) } }
 /* AX-S4: on the mat the ring is Charcoal, 11.76 to 1, drawn inside the frame */
 .plate-scroll:focus-visible, .code:focus-visible, .table-wrap:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-palette-charcoal); outline-offset: calc(-1 * var(--oa-border-width-focus-ring)) }
 /* background and color come from the stage's surface class (.oa-surface-newsprint by default). AX-S13: a 1 px Stone

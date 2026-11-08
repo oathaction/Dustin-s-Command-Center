@@ -1,12 +1,24 @@
 {
  "pages": [
   {
-   "name": "Chapters page after the apply pass (chapters 01 to 08, identity proofs, chapter 11 trackers)",
+   "name": "Chapters page after the Q1 to Q4 pass (chapters 01 to 08, identity proofs, chapter 11 trackers)",
    "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
    "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
-   "version": "1794097605-c422",
+   "version": "1794161090-92f5",
    "published": "2026-11-08",
-   "access": "private"
+   "access": "private",
+   "history": [
+    {
+     "version": "1794097605-c422",
+     "published": "2026-11-08",
+     "note": "after the apply pass"
+    },
+    {
+     "version": "1794161090-92f5",
+     "published": "2026-11-08",
+     "note": "after the Q1 to Q4 pass, version 3"
+    }
+   ]
   },
   {
    "name": "Apply pass changes board",

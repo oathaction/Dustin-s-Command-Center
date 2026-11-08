@@ -51,6 +51,12 @@
 //                      13 px or more; the switch is then set back (CA-M1). Plates with no switch showing are skipped.
 //   illusOnce          a plate carries the Illustrative label once: never in both the piece and its caption (DR-97,
 //                      CD-N1, CA-N11)
+// Added in the Q1 to Q4 pass (November 8, 2026), both read at true size before fitFloor runs:
+//   scrollHint         a plate frame says it scrolls only when it does: a frame that holds its stage whole shows no
+//                      "Wider than this column" hint, no tab stop and no "Scroll sideways" name, and a frame that
+//                      scrolls shows all three (CD-S9, AX-S3, AX-S12)
+//   frameFit           no frame scrolls with sides over 32 px when 32 px sides would hold its stage whole, and a stage
+//                      in a frame that does not scroll sits centered, within 1 px, at true size (CD-S9)
 // A plate whose stage carries data-check-exempt="contrast size red locked" skips that test inside it; every exemption
 // is listed in the results. Writes <page stem>-Guide-Check-Results.json beside the page, and one capture per section at
 // 1440 and 390 px to captures/. Exit code 1 when any check fails.
@@ -507,6 +513,13 @@ function failuresFrom(a, width) {
   if (a.retiredClasses.count) add('retiredClasses', `${a.retiredClasses.count} element(s) with a retired grid class outside a failure plate, in ${a.retiredClasses.where.slice(0, 25).join(', ')}; first: ${JSON.stringify(a.retiredClasses.hits[0])}`);
   if (a.partOrder.length) add('partOrder', `${a.partOrder.length} chapter(s) out of their part, first: ${JSON.stringify(a.partOrder[0])}`);
   if (a.ruleRefCount) add('ruleRefs', `${a.ruleRefCount} citation(s) of a rule the page does not hold, first: ${JSON.stringify(a.ruleRefs[0])}`);
+  if (a.frames) {
+    const fr = a.frames, ids = (xs) => xs.slice(0, 12).map((x) => x.specimen).join(', ');
+    if (fr.hintNoScroll.length) add('scrollHint', `${fr.hintNoScroll.length} frame(s) that hold their stage whole but show a scroll hint, tab stop or "Scroll sideways" name: ${ids(fr.hintNoScroll)}; first: ${JSON.stringify(fr.hintNoScroll[0])}`);
+    if (fr.scrollNoHint.length) add('scrollHint', `${fr.scrollNoHint.length} frame(s) that scroll without their hint, tab stop and name: ${ids(fr.scrollNoHint)}; first: ${JSON.stringify(fr.scrollNoHint[0])}`);
+    if (fr.couldFit.length) add('frameFit', `${fr.couldFit.length} frame(s) that scroll though ${fr.snugPx} px sides would hold the stage whole: ${ids(fr.couldFit)}; first: ${JSON.stringify(fr.couldFit[0])}`);
+    if (fr.offCenter.length) add('frameFit', `${fr.offCenter.length} stage(s) in a frame that does not scroll, off center or not at true size: ${ids(fr.offCenter)}; first: ${JSON.stringify(fr.offCenter[0])}`);
+  }
   if (a.illusTwice.length) add('illusOnce', `${a.illusTwice.length} plate(s) with the Illustrative label in both the piece and its caption: ${a.illusTwice.slice(0, 12).join(', ')}`);
   if (a.codes.count) add('codes', `${a.codes.count} decision code(s) or studio word(s) in reader text, in ${a.codes.where.slice(0, 25).join(', ')}${a.codes.where.length > 25 ? ' and more' : ''}; first: ${JSON.stringify(a.codes.hits[0])}`);
   if (a.text.under13.length) add('under13', `${a.text.under13.length} text item(s) under 13 px, first: ${JSON.stringify(a.text.under13[0])}`);
@@ -522,6 +535,45 @@ function failuresFrom(a, width) {
   if (w.nearMisses.length) add('lockedLines', `${w.nearMisses.length} near miss(es) of a locked line, first: ${JSON.stringify(w.nearMisses[0])}`);
   if (w.pillarOrder.length) add('pillarOrder', `pillars out of order: ${JSON.stringify(w.pillarOrder.slice(0, 3))}`);
   return f;
+}
+
+// CD-S9 (Q1 to Q4 pass): read every plate frame at true size. A frame scrolls when its content runs more than 1 px past
+// it, the shell's own threshold. The narrow side is the --oa-space-400 token (32 px at the default text size). A plate
+// set to Fit to window, or a pending one, is skipped; the page opens every plate at true size.
+async function frameAudit(page) {
+  return page.evaluate(() => {
+    const rootCs = getComputedStyle(document.documentElement);
+    const tok = rootCs.getPropertyValue('--oa-space-400').trim();
+    const snugPx = /rem$/.test(tok) ? parseFloat(tok) * parseFloat(rootCs.fontSize) : (parseFloat(tok) || 32);
+    const out = { snugPx, frames: 0, scrolling: 0, snug: [], hintNoScroll: [], scrollNoHint: [], couldFit: [], offCenter: [] };
+    for (const fig of document.querySelectorAll('figure.plate')) {
+      const box = fig.querySelector(':scope > .plate-scroll'); const st = box && box.querySelector('.plate-stage');
+      if (!st || st.hasAttribute('data-pending') || fig.getAttribute('data-fit') === 'fit') continue;
+      const r = box.getBoundingClientRect(); if (r.width === 0 && r.height === 0) continue;
+      out.frames++;
+      const id = st.getAttribute('data-specimen');
+      const cs = getComputedStyle(box); const pl = parseFloat(cs.paddingLeft), pr = parseFloat(cs.paddingRight);
+      const scrolls = box.scrollWidth > box.clientWidth + 1;
+      const hint = fig.querySelector('.plate-hint');
+      const hintOn = !!hint && !hint.hidden && getComputedStyle(hint).display !== 'none';
+      const tabStop = box.getAttribute('tabindex') === '0';
+      const named = /scroll sideways/i.test(box.getAttribute('aria-label') || '');
+      const need = Math.max(st.offsetWidth, st.scrollWidth);
+      if (box.classList.contains('is-snug')) out.snug.push({ specimen: id, sides: pl, hint: hintOn, scrolls });
+      if (scrolls) {
+        out.scrolling++;
+        if (!hintOn || !tabStop || !named) out.scrollNoHint.push({ specimen: id, over: box.scrollWidth - box.clientWidth, hint: hintOn, tabStop, named });
+        if (Math.max(pl, pr) > snugPx + 0.5 && need + 2 * snugPx <= box.clientWidth) out.couldFit.push({ specimen: id, need, frame: box.clientWidth, sides: [pl, pr] });
+      } else {
+        if (hintOn || tabStop || named) out.hintNoScroll.push({ specimen: id, hint: hintOn, tabStop, named });
+        const s = st.getBoundingClientRect();
+        const gaps = [+(s.left - r.left).toFixed(2), +(r.right - s.right).toFixed(2)];
+        const scaled = Math.abs(s.width - st.offsetWidth) > 1;
+        if (Math.abs(gaps[0] - gaps[1]) > 1 || scaled) out.offCenter.push({ specimen: id, gaps, drawn: +s.width.toFixed(2), trueWidth: st.offsetWidth });
+      }
+    }
+    return out;
+  });
 }
 
 // CA-M1 (fix pass): set each plate whose switch shows to Fit to window, measure its smallest rendered text, set it back.
@@ -607,6 +659,7 @@ async function checkPage(browser, file, widths, opts = {}) {
     await page.waitForTimeout(500);
     if (opts.mutate) await page.evaluate(opts.mutate);
     const a = await audit(page);
+    a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
     const fails = failuresFrom(a, width);
     if (a.fit.under.length) fails.push({ key: 'fitFloor', msg: `${width}: ${a.fit.under.length} plate(s) whose Fit to window sets text under 13 px: ${a.fit.under.slice(0, 8).map((x) => `${x.specimen} (${x.smallest} px at ${Math.round(x.scale * 100)}%, "${x.sample}")`).join('; ')}` });
@@ -719,6 +772,29 @@ const PLANTS = [
   { key: 'illusOnce', fault: 'an Illustrative label in a piece whose caption carries one too', js: () => {
     const fig = document.querySelector('.plate-cap .illus').closest('figure');
     fig.querySelector('.plate-stage').insertAdjacentHTML('afterbegin', '<span class="illus">Illustrative</span>'); } },
+  // Q1 to Q4 pass, November 8, 2026 (CD-S9). The demo's 640 px sheet fits its frame at 1440 px.
+  { key: 'scrollHint', fault: 'a 640 px plate that fits its frame, with its "Wider than this column" hint shown', js: () => {
+    document.querySelector('[data-specimen="s-demo-sheet"]').closest('figure').querySelector('.plate-hint').hidden = false; } },
+  { key: 'scrollHint', fault: 'the same fitting plate with a tab stop and a "Scroll sideways" name on its frame', js: () => {
+    const box = document.querySelector('[data-specimen="s-demo-sheet"]').closest('.plate-scroll');
+    box.setAttribute('tabindex', '0'); box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Sheet, at true size. Scroll sideways to see all of it.'); } },
+  { key: 'scrollHint', fault: 'a 2,000 px plate that scrolls with its hint, tab stop and name left off (no resize)', js: () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    st.style.setProperty('--w', '2000px'); box.style.setProperty('--w', '2000px'); } },
+  { key: 'frameFit', fault: 'a plate 16 px too wide for 48 px sides, held at 48 px sides, so it scrolls though 32 px sides would hold it (the CD-S9 fault)', js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    const w = (box.clientWidth - 96 + 16) + 'px';
+    st.style.setProperty('--w', w); box.style.setProperty('--w', w); box.style.paddingInline = '48px';
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400)); } },
+  { key: 'frameFit', fault: 'the same plate with the shell\'s own sides after a resize: it takes 32 px sides and sits whole and centered with no hint (allowed: must not be flagged)', expect: false, js: async () => {
+    const st = document.querySelector('[data-specimen="s-demo-sheet"]'); const box = st.closest('.plate-scroll');
+    const w = (box.clientWidth - 96 + 16) + 'px';
+    st.style.setProperty('--w', w); box.style.setProperty('--w', w);
+    window.dispatchEvent(new Event('resize')); await new Promise((r) => setTimeout(r, 400)); },
+    verify: (r) => r.runs[0].frames.snug.some((x) => x.specimen === 's-demo-sheet' && x.sides === 32 && !x.hint && !x.scrolls)
+      && !r.failures.some((f) => f.key === 'scrollHint') },
+  { key: 'frameFit', fault: 'a fitting 640 px plate pushed off center by a 120 px left side', js: () => {
+    document.querySelector('[data-specimen="s-demo-sheet"]').closest('.plate-scroll').style.paddingLeft = '120px'; } },
 ];
 
 async function selfTest() {

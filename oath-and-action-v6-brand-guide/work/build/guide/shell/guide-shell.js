@@ -6,6 +6,7 @@
 // switches wide comparison frames between true size and fit to window; hides the rail once the full-width appendix
 // reaches it; and drives the Copy buttons with a status line. Fix pass, November 6, 2026: AX-S1, AX-S3, AX-S11, AX-S12, D2-251.
 // Apply fix pass, November 7, 2026: Fit to window is offered only where it keeps every text at 13 px or more (CA-M1, CA-N9).
+// Q1 to Q4 pass, November 8, 2026: a frame takes 32 px sides where that holds its stage whole at true size (CD-S9).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -178,6 +179,31 @@
     });
   }
 
+  // CD-S9 (Q1 to Q4 pass): a frame whose stage would scroll inside its usual sides (48 px from 48em) tries the narrower
+  // sides of .is-snug (32 px, set in the stylesheet) and keeps them only where the stage then fits whole, so it sits
+  // centered at true size with no hint and no tab stop. A frame that fits today keeps its sides, and one that still
+  // overflows at 32 px keeps them too and scrolls as before. The stage's need is its layout width at true size, which a
+  // Fit to window scale does not change. Where .is-snug narrows nothing (phones, the appendix), the frame keeps its sides.
+  function snug() {
+    var boxes = $$('.plate-scroll');
+    var sides = function (b) { var cs = getComputedStyle(b); return parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight); };
+    var tries = [];
+    boxes.forEach(function (b) {
+      var st = $('.plate-stage', b); if (!st) return;
+      var need = Math.max(st.offsetWidth, st.scrollWidth);
+      if (need + sides(b) > b.clientWidth + 1) tries.push({ box: b, need: need });
+    });
+    tries.forEach(function (t) { t.box.classList.add('is-snug'); });
+    tries.filter(function (t) { return t.need + sides(t.box) > t.box.clientWidth; })
+      .forEach(function (t) { t.box.classList.remove('is-snug'); });
+  }
+  // Every frame returns to its usual sides first, so the flowing stages and the test above both measure from there.
+  function sizeFrames() {
+    $$('.plate-scroll.is-snug').forEach(function (b) { b.classList.remove('is-snug'); });
+    hugFlowing();
+    snug();
+  }
+
   // A frame or code block that overflows becomes a focusable group named for what it holds, so a keyboard can scroll
   // it; one that fits stays out of the Tab order (AX-S3). Groups stay out of the landmark list. A plate that scrolls
   // shows its hint in the plate head, before the specimen (AX-S12).
@@ -271,7 +297,7 @@
   var rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { hugFlowing(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
+    rt = setTimeout(function () { sizeFrames(); $$('.plate--fit[data-fit="fit"]').forEach(applyFit); offerFit(); frames(); railCover(); }, 120);
   });
 
   // Copy buttons write their result to the status line beside them (a polite live region).
@@ -298,7 +324,7 @@
   });
 
   function start() {
-    hugFlowing();
+    sizeFrames();
     offerFit();
     frames();
     railCover();

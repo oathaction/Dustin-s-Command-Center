@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-07T07:34:12.033Z",
+ "checked": "2026-11-08T17:52:14.136Z",
  "page": "demo build (guide_build.py --demo), in a temporary folder",
  "axe": "found",
  "clean": {
@@ -525,7 +525,9 @@
    "verified": true,
    "ok": true,
    "message": "1440: 1 plate(s) whose Fit to window sets text under 13 px: s-demo-sheet (5.78 px at 39%, \"Newsprint\")",
-   "alsoFlagged": []
+   "alsoFlagged": [
+    "scrollHint"
+   ]
   },
   {
    "test": "fitFloor",
@@ -555,6 +557,66 @@
    "verified": true,
    "ok": true,
    "message": "1440: 1 plate(s) with the Illustrative label in both the piece and its caption: s-demo-1-correct",
+   "alsoFlagged": []
+  },
+  {
+   "test": "scrollHint",
+   "fault": "a 640 px plate that fits its frame, with its \"Wider than this column\" hint shown",
+   "expect": "caught",
+   "caught": true,
+   "verified": true,
+   "ok": true,
+   "message": "1440: 1 frame(s) that hold their stage whole but show a scroll hint, tab stop or \"Scroll sideways\" name: s-demo-sheet; first: {\"specimen\":\"s-demo-sheet\",\"hint\":true,\"tabStop\":false,\"named\":false}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "scrollHint",
+   "fault": "the same fitting plate with a tab stop and a \"Scroll sideways\" name on its frame",
+   "expect": "caught",
+   "caught": true,
+   "verified": true,
+   "ok": true,
+   "message": "1440: 1 frame(s) that hold their stage whole but show a scroll hint, tab stop or \"Scroll sideways\" name: s-demo-sheet; first: {\"specimen\":\"s-demo-sheet\",\"hint\":false,\"tabStop\":true,\"named\":true}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "scrollHint",
+   "fault": "a 2,000 px plate that scrolls with its hint, tab stop and name left off (no resize)",
+   "expect": "caught",
+   "caught": true,
+   "verified": true,
+   "ok": true,
+   "message": "1440: 1 frame(s) that scroll without their hint, tab stop and name: s-demo-sheet; first: {\"specimen\":\"s-demo-sheet\",\"over\":1229,\"hint\":false,\"tabStop\":false,\"named\":false}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "frameFit",
+   "fault": "a plate 16 px too wide for 48 px sides, held at 48 px sides, so it scrolls though 32 px sides would hold it (the CD-S9 fault)",
+   "expect": "caught",
+   "caught": true,
+   "verified": true,
+   "ok": true,
+   "message": "1440: 1 frame(s) that scroll though 32 px sides would hold the stage whole: s-demo-sheet; first: {\"specimen\":\"s-demo-sheet\",\"need\":787,\"frame\":867,\"sides\":[48,48]}",
+   "alsoFlagged": []
+  },
+  {
+   "test": "frameFit",
+   "fault": "the same plate with the shell's own sides after a resize: it takes 32 px sides and sits whole and centered with no hint (allowed: must not be flagged)",
+   "expect": "not flagged",
+   "caught": false,
+   "verified": true,
+   "ok": true,
+   "message": null,
+   "alsoFlagged": []
+  },
+  {
+   "test": "frameFit",
+   "fault": "a fitting 640 px plate pushed off center by a 120 px left side",
+   "expect": "caught",
+   "caught": true,
+   "verified": true,
+   "ok": true,
+   "message": "1440: 1 stage(s) in a frame that does not scroll, off center or not at true size: s-demo-sheet; first: {\"specimen\":\"s-demo-sheet\",\"gaps\":[149.33,77.34],\"drawn\":640,\"trueWidth\":640}",
    "alsoFlagged": []
   }
  ],

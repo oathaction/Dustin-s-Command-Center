@@ -1092,3 +1092,25 @@ The identity designer and the editor worked under `work/handoffs/phase-2/2026110
 |---|---|---|
 | D2-477 | The new L3 masthead master stays within DR-131: the wordmark keeps its 22 px capitals and a gap of 0.60 cap height, as in the October master, and only the lockmark changes, from 52 to 48 px, so its ratio to the capitals goes from 2.4 to 2.18 | Checked by the main session against both files, measured on the flat cap line (the October wordmark's capitals run from y 4 to 104); Q3's option (a) set L3's lockmark at 48 px in the masthead, which is this change |
 | D2-478 | The identity designer's question on the 16 and 24 px lockmark masters, which part into stripes when scaled, goes to Dustin with stage B's questions | Rebuilding a master's construction changes identity files, so it needs his named approval (gate rule 4); until then the masters and their ranges stay as approved |
+
+### After the creative director's look, November 8, 2026
+
+The creative director signed the pass off at 4 or more on every criterion for chapters 01, 03, 04, 08 and the proofs, with no Must fix item, and found CA-S1, CA-S2, CD-N8 and CD-N9 closed (`work/handoffs/phase-2/20261108_CD-Review-Of-Q1-To-Q4-Pass.md`). The editor's copy edit came first, then the owners fixed CD-S9, CD-S10 and CD-N10 to CD-N13 before the page was republished. Their routine calls:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-479 | Rule 03.4's exception names the end mark and defines it there: "Only the end mark, ampersand B at the close of an article, may stand under B’s 16 px minimum" | Chapter 03 is the guide's first use of the term (H02), and the brief's wording "under 16 px" did not say whose minimum (Editor) |
+| D2-480 | The manifest's `notes` fields keep their studio codes and stay unedited | The page prints none of them, and they are the maker's record (Editor) |
+| D2-481 | Rule 01.11's failure plate carries the Texas source alone and the band | CD-N13; with a full source line the plate could pass for our work (D2-308) (Editor) |
+| D2-482 | Print and widths other than 282 px take the October L3 master, and a printed sign-off takes the display master at 0.50 in | The masthead master and the 48 px master are drawn for a screen's pixel grid, and a print reader needs a named file (CD-S10) (Identity designer) |
+| D2-483 | The page calls the October file "the earlier L3 master" and the coming file "a print L3 at the masthead's proportion" | Reader pages carry no studio phase names or dates as labels (Identity designer) |
+| D2-484 | From 48em a plate frame takes 32 px sides only where its stage scrolls inside 48 px sides and fits whole inside 32 px ones | CD-S9; every plate that fits today keeps its layout (Engineer) |
+| D2-485 | A frame whose stage still overflows at 32 px keeps its 48 px sides and scrolls | CD-S9 narrows the sides only where that makes a plate fit, so wide plates and their Fit to window scale stay as reviewed (Engineer) |
+| D2-486 | The shell measures each stage's layout width in the page, so flowing stages qualify too | The review asks for a general fix, and `s-02-lines` overflows its frame at 1024 px the way a fixed-width plate does (Engineer) |
+| D2-487 | The 32 px side is the `oa.space.400` token; phones and the appendix keep their own sides | Every space in the shell comes from a token, and those frames already have sides under 32 px (Engineer) |
+| D2-488 | `scrollHint` fails a fitting frame with the hint, a tab stop or a "Scroll sideways" name, and a scrolling frame missing any of them | The hint, name and tab stop follow the frame's overflow both ways (CD-S9, AX-S3, AX-S12) (Engineer) |
+| D2-489 | `frameFit` fails a frame that scrolls when 32 px sides would hold its stage, and a stage in a frame that does not scroll if it sits more than 1 px off center or off its true size | It guards the faults CD-S9 names: a needless scroll and an off-center plate (Engineer) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-490 | The main session ran the final checks after the pass (`guide_build.py --strict`: 9 chapter files, 100 rules, 233 specimens, 0 warnings; `guide_check.js` at 1440, 1024, 390 and 360 px: 0 failures, 761 same-page links; token tests: all pass), looked at eight changed plates at 1,440 px and three at 390 px, scanned the page's text and alt text, and republished the chapters page to https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF as version 3 (1794161090-92f5). The live version 2 matched the committed build plus the host's wrapper, so nothing published was lost | A check is reported only once the main session has run it, and every file is seen before it is published |
