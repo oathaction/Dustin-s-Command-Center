@@ -1036,3 +1036,26 @@ The creative director rechecked the page after the fix pass and signed it off at
 | D2-459 | The publish copy and its `files.json` sit in my scratchpad, rebuilt on every run | As board A's builder does, so the publish call sends only the images the board uses |
 | D2-460 | The main session republished the chapters page to https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (version 2) and published the changes board privately at https://claude.ai/artifact/MG6kGhTeXYSzWBg4HcLnbA with its 58 captures, after a script scan of each page's text, alt text, scripts and links, a full read of the board's text and contact sheets of every capture. The live chapters page matched the pre-pass build plus the host's wrapper, so nothing published was lost | Every file is seen before it is published |
 | D2-461 | The chapters page's tokens.css download link does nothing inside the artifact viewer, which grants no download permission; the engineer declares the downloads capability or drops the link at stage B | The publish warned of it; the link has been on the page since D2-266 |
+
+## Changes board answers, November 8, 2026 (new chat)
+
+Dustin, in the ninth chat's starting prompt: "Changes board: Q1 to Q10 as recommended, and I approve Q1, Q2, Q3, Q5, Q6 and Q7 by name." The studio records each recommendation below, in the board's own wording (`work/boards/phase-2/apply-pass/20261107_Apply-Pass-Board-Content.json`). Q1 to Q4 close the apply pass. Q5 to Q10 set up stage B.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-129 | L6 is drawn without its four pillar dots. Its lockmark keeps L6's own proportion, and a page narrower than 884 px closes with the footer place | Dustin, November 8, as recommended (Q1), approved by name |
+| DR-130 | The end mark stands at the text's cap height, B's band on the capitals, as an exception to B's 16 px minimum for the end mark alone. Rule 03.4 gains one line for the exception | Dustin, November 8, as recommended (Q2), approved by name |
+| DR-131 | The proposed 48 px lockmark master is approved for the masthead and the sign-off. L3's lockmark is set at 48 px, and Rule 08.2 gains the feed test at 500 and 360 px | Dustin, November 8, as recommended (Q3), approved by name |
+| DR-132 | Rule 01.11's reason takes the creative director's recast: "A case from each party, told the same way, puts a mechanism that both parties use in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it." | Dustin, November 8, as recommended (Q4) |
+| DR-133 | The studio draws pixel-fit 16 and 24 px versions of the four pillar icons, keeping every feature and every red placement, and shows them beside the masters at 16, 24, 48 and 96 px before he approves them | Dustin, November 8, as recommended (Q5), approved by name |
+| DR-134 | The studio draws about eighteen utility icons on a 24-unit grid, limited to the actions the accessibility audit finds the guide, the atlas and the reports need | Dustin, November 8, as recommended (Q6), approved by name |
+| DR-135 | The studio redraws the domes and columns in six icons (domes in CL-025 Congress, CL-014, R-13 and R-42; columns in CL-059 and R-48), keeping every other part of each icon and its red. Rule 01.6 stands whole | Dustin, November 8, as recommended (Q7), approved by name |
+| DR-136 | Topic and atlas symbols take a 48 px floor, with 24 px allowed for the 41 that read there, and none at 16 px | Dustin, November 8, as recommended (Q8) |
+| DR-137 | Civic Line's 72 topic drawings become the topic set. The studio draws Testify and Contact an official if the Act pieces need them, each under his approval by name | Dustin, November 8, as recommended (Q9) |
+| DR-138 | Part openers carry no pillar icon. This replaces DR-88's clause that the pillar marks mark each part of the guide; the rest of DR-88 stands | Dustin, November 8, as recommended (Q10) |
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-462 | The pass for Q1 to Q4 runs in two rounds: the identity designer (Q1 to Q3, CD-N8, CD-N9, CA-S2) and the editor (Q4) in parallel, then the editor's copy edit of every string the identity designer changed, then the creative director's look, which also confirms the craft red team's CA-S1 and CA-S2 are closed | The eighth handoff orders the pass this way; the craft red team raised CA-S1 and CA-S2, so their closure is checked by name |
+| D2-463 | DR-133 to DR-135 approve drawing. Each new or redrawn drawing shows on board B beside its master at true size, and enters the guide only with Dustin's answer there | Q5's card says so in words, and gate rule 4 asks for the original beside the proposal at actual sizes |
+| D2-464 | DR-135 is read as a named exception to "the Civic Line icons are settled" for the six drawings' domes and columns alone; the original masters stay in the package as a record | The starting prompt lists the Civic Line icons as settled and approves Q7 by name in the same message; the studio asks him to confirm this reading in stage B's questions |
