@@ -113,6 +113,10 @@ SRC_R4A = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called 
            "District Court for the Central District of California, order of January 14, 2026; Texas and California. "
            "Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. "
            "The five-seat aims are each side’s stated goals; these lines do not measure the seats either map produced.")
+# CD-N13: the failure plate drops California, so it prints the Texas sources alone, as a piece that dropped California would.
+SRC_R4A_TX = ("Sources: Texas Legislature, H.B. 4, 89th Legislature, second called session, bill history, August 2025; Texas. "
+              "Oath & Action’s systems atlas, Loop R4a, case record, snapshot of October 15, 2026. Retrieved November 6, 2026. "
+              "The five-seat aim is the majority’s stated goal; this line does not measure the seats the map produced.")
 # BE-02: no count of the loop's redraws by party exists in the research lead's reports, so the plate says what it shows and
 # claims no count. When the research lead counts the case record by the party of the majority that drew each map, a sourced
 # count line replaces R4A_SCOPE, in the cases' own form.
@@ -1020,9 +1024,10 @@ def build(book):
                                   alt=f"Loop R4a, the map-drawing loop. Two cases in the same form and at the same length. Texas: {tx} California: {ca} {R4A_SCOPE} {SRC_R4A}",
                                   notes="BE-S1, CP-M5: both cases in one form, as the research lead's fix pass report sets them (task 3), with its source line. Both aims are each side's stated goal: Texas's stay application, and the California three-judge court's finding."),
                     "caption": f"Each case names the month, the majority that acted and the seats its map aimed at, then the last step its state required, in {words(tx)} words. Texas’s map became law with the governor’s signature; California’s needed a constitutional amendment only voters could approve. The line under the cases keeps the plate to what it shows: two of the loop’s redraws, with no count."},
-        "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A)}</p></div>',
+        "failure": {"specimen": A("s-01-11-failure", f'<div class="ed">{dnp()}{lead11}<div class="cases"><div><p class="st">Texas</p><p>{e(tx)}</p></div></div><p class="src">{e(SRC_R4A_TX)}</p></div>',
                                   css=(BASE, CHART, CASES), rule="01.11",
-                                  alt=f"The same loop with only the Texas case: {tx}"),
+                                  alt=f"{FC}The same loop with only the Texas case: {tx} {SRC_R4A_TX}",
+                                  notes="CD-N13: the Texas sources alone, as a piece that dropped California would print them, under the band D2-308 asks of a plate that could pass for our work."),
                     "caption": "The record holds a case from each party, so a piece that shows Texas alone drops a finding, and the loop reads as a charge against one party."},
         "related": ["15", "13"],
         "builders": ("Before a piece runs a mechanism, count the atlas’s case records for that loop by the party of the majority, and print "

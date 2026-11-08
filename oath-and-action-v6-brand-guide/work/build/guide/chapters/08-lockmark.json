@@ -93,7 +93,7 @@
     "oa.color.identity.signature.onNewsprint"
    ],
    "why": {
-    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels at the size it was made for, the four places read at one weight. The 48 px master also keeps the sign-off visible when a feed shrinks a social card to 500 px wide or less, as the feed test in the specifications measures. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
+    "text": "A signature works by turning up in the same place at the same size, so a reader finds it without looking. Because each place draws a master on whole pixels at the size it was made for, the four places read as one mark at the size each one sets. The 48 px master also keeps the sign-off visible when a feed shrinks a social card to 500 px wide or less, as the feed test in the specifications measures. Used as a bullet or scattered as decoration, the lockmark stops signing the page.",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
@@ -119,11 +119,11 @@
     },
     {
      "label": "Sign-off",
-     "value": "48 px from the 48 px master, bottom right of social cards, covers and posters, inside the margin; 0.50 in in print"
+     "value": "48 px from the 48 px master, bottom right of social cards, covers and posters, inside the margin. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen’s pixel grid"
     },
     {
      "label": "Feed test",
-     "value": "A 1200 by 630 px card reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark: each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node’s square plus 1 px on every side"
+     "value": "A 1200 by 630 px card on a light ground, such as Newsprint or White, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark: each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node’s square plus 1 px on every side. A test for a card on Charcoal or Prussian comes later"
     },
     {
      "label": "Feed test, our card",
@@ -142,7 +142,8 @@
     "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
     "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg",
     "work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg",
-    "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg"
+    "work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg",
+    "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg"
    ],
    "related": [
     "03",

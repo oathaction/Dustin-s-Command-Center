@@ -173,8 +173,10 @@ def update_minimums():
             r["files"] = ["lockmark/20261028_Lockmark-16px-Master.svg", "lockmark/20261028_Lockmark-24px-Master.svg",
                           LOCK[48], "lockmark/20261107_Lockmark-Display-Master.svg"]
             r["below"] = "Nothing smaller; the lever stays one size up at 16, 24 and 48 px"
+            r["print"] = "0.25 in; the sign-off at 0.50 in from the display master"
             r["places"] = ("Masthead (inside L3) and sign-off: the 48 px master at 48 px. Page header and footer: the 24 px master "
-                           "at 24 px. A chart's footer: the 16 px master at 16 px (Rule 08.2)")
+                           "at 24 px. A chart's footer: the 16 px master at 16 px. In print, the sign-off at 0.50 in takes the "
+                           "display master, since the 48 px master is drawn for a screen's pixel grid (Rule 08.2)")
             r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). A test set its range: drawn from "
                                 "one rect per pixel row, it parts into stripes at any size between whole multiples of its grid, "
                                 "so builders place it at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)")
@@ -187,7 +189,10 @@ def update_minimums():
         if r["lockup"] == "L3 horizontal with lockmark":
             r["screen"] = ("196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master. "
                            "In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px of space and the lockmark at 48 px from its 48 px master")
-            r["files"] = [L3["masthead"]]
+            r["files"] = [L3["masthead"], L3["today"]]
+            r["print"] = "1.55 in wide (condensed 1.30 in), from the earlier L3 master (Rule 03.2)"
+            r["print_note"] = ("The masthead master serves the 282 px masthead. Print and other widths take the October master, "
+                               "lockups/20261028_L3-Horizontal-Master.svg, until a print L3 at the masthead's proportion is drawn (CD-S10)")
             r["status_note"] = ("The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). The October "
                                 "master, with the lockmark at 2.4 cap heights, stays in lockups/ for the record")
         if r["lockup"] == "L6 editorial signature":

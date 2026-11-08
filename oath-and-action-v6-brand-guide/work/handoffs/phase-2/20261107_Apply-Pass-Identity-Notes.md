@@ -321,3 +321,22 @@ Modified:
 - This file
 
 Unchanged on purpose: the proposal in `work/boards/phase-2/apply-pass/lockmark/`, the October L3 files, the letterhead proof and every board. Nothing committed or pushed by me.
+
+### CD-S10, with CD-N10 to CD-N12
+
+November 8, 2026, from `work/handoffs/phase-2/20261108_CD-Review-Of-Q1-To-Q4-Pass.md` and the coordinator's two messages. I did not touch `guide_build.py`, the shell or any measured figure.
+
+- **CD-S10.** Rule 03.2's Files list `20261028_L3-Horizontal-Master.svg` again, and its builders note adds: the masthead master serves the 282 px masthead, and print and any other width take the earlier L3 master, with its lockmark at 2.4 cap heights, until we draw a print L3 at the masthead's proportion. Rule 03.6 gains an "In print" row and lists the same file. Rule 08.2's sign-off row says print takes the display master at 0.50 in, since the 48 px master is drawn for a screen's pixel grid, and the display master joins Rule 08.2's Files. In the minimum sizes file, L3's print column names the earlier master, a `print_note` explains it, and the lockmark's print column and `places` name the display master for the sign-off in print.
+- **CD-N10.** Rule 04.6's "At 17 px text" and "At 19 px text" rows add: a screen may move B 1 px up or down as it rounds to whole pixels, and its height stays the same.
+- **CD-N11.** Rule 08.2's reason now reads "the four places read as one mark at the size each one sets".
+- **CD-N12.** The feed test's sentence now covers a card on a light ground, such as Newsprint or White, and says a test for a card on Charcoal or Prussian comes later. I set no dark-card threshold.
+
+Routine calls:
+- D2-xxx | Print and widths other than 282 px take the October L3 master, and a printed sign-off takes the display master at 0.50 in | The masthead master and the 48 px master are drawn for a screen's pixel grid, and a print reader needs a named file (CD-S10)
+- D2-xxx | The page calls the October file "the earlier L3 master" and the coming file "a print L3 at the masthead's proportion" | Reader pages carry no studio phase names or dates as labels
+
+Tested: `stage_a_identity_s1.py`, then `stage_a_identity_build.py` (48 specimens, 3 chapters), then `guide_build.py --strict` (exit 0, 0 warnings, 9 chapter files, 100 rules, 233 specimens); a read-back of the changed rows from the built chapter files and the minimum sizes file; no em or en dash in chapters 03, 04 and 08.
+
+Not tested: `guide_check.js`, which the main session runs after the engineer's CD-S9 change; the new rows by eye on the page.
+
+Change log: modified `work/build/scripts/phase-2/stage_a_identity_chapters.py` and `stage_a_identity_s1.py`; regenerated `work/build/assets/identity/20261028_Identity-Minimum-Sizes.json`, `work/build/guide/chapters/03-identity.json`, `04-ampersand.json`, `08-lockmark.json` and `work/build/guide/specimens/s-03-minimums.html`, and the stage A chapters page with its build report; this file. The editor's chapter 01 files in the working tree are the editor's. Nothing committed or pushed by me.

@@ -133,6 +133,7 @@
     "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-24px.svg",
     "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-16px.svg",
     "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
     "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg"
    ],
    "related": [
@@ -140,7 +141,7 @@
     "07",
     "27"
    ],
-   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1’s files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6’s tagline."
+   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1’s files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6’s tagline. L3’s masthead master serves the 282 px masthead. For print and any other width, place the earlier L3 master, with its lockmark at 2.4 cap heights, until we draw a print L3 at the masthead’s proportion."
   },
   {
    "id": "03.3",
@@ -341,6 +342,10 @@
      "value": "L3 at 282 px in a 600 px header, sent as a PNG at twice size"
     },
     {
+     "label": "In print",
+     "value": "The earlier L3 master, until we draw a print L3 at the masthead’s proportion (Rule 03.2)"
+    },
+    {
      "label": "Section masthead",
      "value": "L7: L1, a hairline and the pillar’s name in Inter 600 capitals, in the surface’s ink"
     }
@@ -348,7 +353,8 @@
    "files": [
     "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
     "work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg",
-    "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg"
+    "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg",
+    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg"
    ],
    "related": [
     "07",

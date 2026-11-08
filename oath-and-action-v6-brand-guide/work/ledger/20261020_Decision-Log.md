@@ -1090,5 +1090,5 @@ The identity designer and the editor worked under `work/handoffs/phase-2/2026110
 
 | # | Decision | Reason |
 |---|---|---|
-| D2-477 | The new L3 masthead master stays within DR-131: the wordmark keeps its 22 px capitals and a gap of about 0.6 cap height (0.58 in the October master, 0.60 now), and only the lockmark changes, from 52 to 48 px, so its ratio to the capitals goes from 2.34 to 2.18 | Checked by the main session against both files; Q3's option (a) set L3's lockmark at 48 px in the masthead, which is this change |
+| D2-477 | The new L3 masthead master stays within DR-131: the wordmark keeps its 22 px capitals and a gap of 0.60 cap height, as in the October master, and only the lockmark changes, from 52 to 48 px, so its ratio to the capitals goes from 2.4 to 2.18 | Checked by the main session against both files, measured on the flat cap line (the October wordmark's capitals run from y 4 to 104); Q3's option (a) set L3's lockmark at 48 px in the masthead, which is this change |
 | D2-478 | The identity designer's question on the 16 and 24 px lockmark masters, which part into stripes when scaled, goes to Dustin with stage B's questions | Rebuilding a master's construction changes identity files, so it needs his named approval (gate rule 4); until then the masters and their ranges stay as approved |

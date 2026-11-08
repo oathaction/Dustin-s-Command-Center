@@ -295,11 +295,11 @@
     },
     {
      "label": "At 17 px text",
-     "value": "The body size: capitals 12.4 px; B 14.1 px tall, its top 0.6 px over the cap line and its tail 1.1 px under the baseline, measured in Chromium"
+     "value": "The body size: capitals 12.4 px; B 14.1 px tall, its top 0.6 px over the cap line and its tail 1.1 px under the baseline, measured in Chromium. A screen may move B 1 px up or down as it rounds to whole pixels; its height stays the same"
     },
     {
      "label": "At 19 px text",
-     "value": "Capitals 13.8 px; B 15.8 px tall, its top 1.2 px over the cap line and its tail 0.8 px under the baseline, measured in Chromium"
+     "value": "Capitals 13.8 px; B 15.8 px tall, its top 1.2 px over the cap line and its tail 0.8 px under the baseline, measured in Chromium. A screen may move B 1 px up or down as it rounds to whole pixels; its height stays the same"
     },
     {
      "label": "Badge",

@@ -279,6 +279,10 @@ def apply_pass(chapters, book, texts, fails, notes):
         fails.append("Rule 01.11 lacks A13's added sentence (DR-125)")
     if r1["01.11"]["why"]["text"] != [ch01.RULE_11_WHY]:
         fails.append("Rule 01.11's reason is not the recast Dustin approved (DR-132)")
+    # CD-N13: the failure plate shows Texas alone, so its text and alt cite no California source
+    for k in ("s-01-11-failure", "s-01-11-failure alt"):
+        if "California" in texts.get(k, ""):
+            fails.append(f"{k} still cites California, which the plate drops (CD-N13)")
     # DR-132: the old first sentence of the reason appears nowhere in chapters 01 and 02, their specimens or alt text
     for k, t in texts.items():
         if ch01.RULE_11_WHY_OLD in t:
