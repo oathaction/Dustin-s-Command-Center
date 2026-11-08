@@ -211,6 +211,8 @@ def lk(kind, size, surface="newsprint", label=None):
     """A lockmark drawing for the board: 'today' picks the master Rule 08.1 sets; 'p48' is the proposal; 'm24' is the
     24 px master at the size given."""
     if kind == "today":
+        if size >= 48:    # the masters as they stood on November 7, 2026, before the 48 px master (DR-131), so a rerun keeps the record
+            return mark(LOCK["display"], h=size, surface=surface, label=label or f"Lockmark at {size} px")
         return lockmark(size, surface=surface, label=label or f"Lockmark at {size} px")
     path = BOARD / "lockmark" / "20261107_Lockmark-48px-Proposal.svg" if kind == "p48" else ID_DIR / LOCK[24]
     return svg_file(path, h=size, label=label or f"Lockmark at {size} px", style=LIB.mark_style(surface), by_ref=False)

@@ -8,7 +8,10 @@ D2-254, and labeled failures that must sit off the scale carry check_exempt "sca
 
 Apply pass, November 7, 2026: S1 replaces L2 in the lockup sheet, the minimum sheet and table, and the surfaces sheet
 (DR-113); the badge shows at its new 48 px minimum (DR-118); the minimum table leaves out retired rows and condensed
-figures (DR-115, D2-328)."""
+figures (DR-115, D2-328).
+
+Q1 to Q4 pass, November 8, 2026: L3's masthead form places its new master, the lockmark at 48 px from its 48 px master
+on whole pixels (DR-131); L6 draws without its four pillar dots (DR-129)."""
 import json
 import re
 from stage_a_identity_lib import (E, ID_DIR, WM, WMC, L2, L3, L8, LOCK, AMP, BADGE, HINGE, TL1, TL2A, TL2B, fragment, mark, s1, s1_width,
@@ -51,11 +54,16 @@ MARKROW_CSS = (".oai-mr{display:flex;flex-wrap:wrap;align-items:flex-start}"
 
 # ------------------------------------------------------------------------------------------- lockup assembly
 def l3_small(master16or24=24, width="today", surface="newsprint", label="Oath & Action, L3 horizontal lockup", hang=False):
-    """L3 at small sizes: the wordmark's small master, 0.6x of space, the lockmark at 2.4 cap heights, centered on the
-    wordmark's box. 24: 221 or 181 px wordmark (22 px capitals), 13 px gap, 52 px lockmark. 16: 152 or 120 px wordmark
-    (14 px capitals), 8 px gap, 34 px lockmark from its 24 px master. hang=True lets the lockmark hang above and below
-    the wordmark's box, so the lockup's box is the wordmark's and its baseline lines up with other marks."""
+    """L3 at small sizes. 24: the masthead form, placed from L3's masthead master (DR-131): the 24 px wordmark master
+    (221 px, 22 px capitals), 13 px and the lockmark's 48 px master at 48 px, centered on the wordmark's box, 282 by
+    48 px on whole pixels. 16: the minimum form, built here: the 16 px wordmark master (152 px, 14 px capitals), 8 px and
+    the lockmark at 34 px from its 24 px master. hang=True lets the lockmark hang above and below the wordmark's box, so
+    the lockup's box is the wordmark's and its baseline lines up with other marks."""
     files = WM if width == "today" else WMC
+    if master16or24 == 24 and width == "today":
+        m = mark(L3["masthead"], h=48, surface=surface, decorative=True)
+        pad = "-12px 0" if hang else "0"
+        return (f'<span class="oai-l3" role="img" aria-label="{E(label)}" style="display:inline-flex;line-height:0;margin:{pad}">{m}</span>')
     if master16or24 == 24:
         wm = mark(files[24], h=24, surface=surface, decorative=True)
         lk = mark(LOCK["display"], h=52, surface=surface, decorative=True)
@@ -99,15 +107,16 @@ def l5(width_px, surface="newsprint"):
             f'<span style="position:absolute;left:0;top:{142.86 * k:.1f}px">{t1}</span></span>')
 
 
-def l6(width_px, dots=True):
+def l6(width_px, dots=False):
     """L6, the editorial signature strip, on the fifth edition's layout (1400 by 300 units), on Prussian in White.
-    The web address waits until it is settled. dots=False draws it without the four pillar dots, for the changes board
-    only (D2-403: the guide's L6 stays as drawn until Dustin answers)."""
+    The web address waits until it is settled. L6 draws without the four pillar dots since November 8, 2026 (DR-129);
+    dots=True draws them only for the changes board's record (stage_a_identity_fix_boards.py). The lockmark keeps L6's
+    own proportion, 148 units, from the master whose range holds that height: the display master at 884 px."""
     k = width_px / 1400
     wh = pal("white")
     wm = mark(WM["display"], h=50.8 * k, surface="prussian", decorative=True)
     t1 = svg_file(ID_DIR / TL1, w=363.34 * k, style=f"color:{wh}", decorative=True)
-    lk = mark(LOCK["display"], h=148 * k, surface="prussian", decorative=True)
+    lk = lockmark(148 * k, surface="prussian", decorative=True)
     dots = "".join(f'<span style="position:absolute;left:{(x - 6) * k:.1f}px;top:{(227.8 - 6) * k:.1f}px;width:{12 * k:.1f}px;height:{12 * k:.1f}px;border-radius:50%;background:{wh}"></span>'
                    for x in (85.6, 110.0, 134.4, 158.8)) if dots else ""
     what = "the wordmark, the tagline, four pillar dots and the lockmark" if dots else "the wordmark, the tagline and the lockmark"
@@ -283,9 +292,11 @@ def s_03_l6():
     body = (f'<div class="oai-pad">{l6(884)}<p class="oai-tag" style="margin-top:12px">L6 Editorial signature, at its minimum: 884 px wide on '
             f'screen, 6.60 in in print. The strip that closes a report or a long page, shown on Prussian, where every part is White.</p></div>')
     alt = ("L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the "
-           "tagline at left, four pillar dots under them and the lockmark at right. Its print minimum is 6.60 inches.")
+           "tagline at left and the lockmark at right. Its print minimum is 6.60 inches.")
     return rec("s-03-l6", "03.2", 932, alt, body, fit_switch=True,
-               notes="L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units. No web address until it is settled (DR-55).")
+               notes="L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew "
+                     "under the tagline (DR-129). The lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. "
+                     "No web address until it is settled (DR-55).")
 
 
 # ------------------------------------------------------------------------------------------- 03.3
@@ -441,7 +452,7 @@ def s_03_6_correct():
     email = (f'<div class="oai-s-white" style="width:600px;height:96px;display:flex;align-items:center;padding:0 24px;'
              f'border:1px solid {hair("white")}">{l3_small(24, surface="white", label="Oath & Action")}</div>')
     body = ('<div class="oai-stack" style="gap:24px">'
-            f'<div class="oai-cell">{desk}<span class="oai-tag">Site from 48em, 768 px at the default text size; shown at 1440 px: L3 with the 24 px wordmark master and a 52 px lockmark</span></div>'
+            f'<div class="oai-cell">{desk}<span class="oai-tag">Site from 48em, 768 px at the default text size; shown at 1440 px: L3 from its masthead master, the lockmark at 48 px</span></div>'
             f'<div class="oai-row top"><div class="oai-cell">{phone}<span class="oai-tag">Phone, 390 px: L1 from the 24 px master</span></div>'
             f'<div class="oai-cell">{email}<span class="oai-tag">Email, 600 px: L3, sent as a PNG at twice size</span></div></div></div>')
     alt = ("Three mastheads at true size: a 1440 pixel site bar with the wordmark and lockmark at left and five navigation words "
@@ -453,12 +464,12 @@ def s_03_6_correct():
 
 @spec
 def s_03_6_failure():
-    l3m = mark(L3["today"], w=150, surface="newsprint", decorative=True)
+    l3m = mark(L3["masthead"], w=150, surface="newsprint", decorative=True)
     phone = (f'<div class="oai-s-newsprint" style="width:390px;height:56px;display:flex;align-items:center;justify-content:space-between;'
              f'padding:0 8px 0 20px;border:1px solid {hair("newsprint")}">{l3m}{_burger()}</div>')
     body = f'<div>{phone}</div>'
-    alt = "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark's nodes and links run together at 28 pixels."
-    return rec("s-03-6-failure", "03.6", 400, alt, body, notes="L3 master at 150 px wide: 11.7 px capitals, 28 px lockmark.")
+    alt = "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark's nodes and links run together at 26 pixels."
+    return rec("s-03-6-failure", "03.6", 400, alt, body, notes="L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark whose pixel rows part into stripes.")
 
 
 # ------------------------------------------------------------------------------------------- 03.7

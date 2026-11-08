@@ -246,12 +246,21 @@ AMP = {"display": "ampersand/20261028_Amp-B-Display-Master.svg", 24: "ampersand/
        16: "ampersand/20261028_Amp-B-16px-Master.svg"}
 AMPN = {"display": "ampersand/20261028_Amp-B-Narrow-Display-Master.svg", 24: "ampersand/20261028_Amp-B-Narrow-24px-Master.svg",
         16: "ampersand/20261028_Amp-B-Narrow-16px-Master.svg"}
-LOCK = {"display": "lockmark/20261107_Lockmark-Display-Master.svg", 24: "lockmark/20261028_Lockmark-24px-Master.svg",
-        16: "lockmark/20261028_Lockmark-16px-Master.svg"}
+LOCK = {"display": "lockmark/20261107_Lockmark-Display-Master.svg", 48: "lockmark/20261108_Lockmark-48px-Master.svg",
+        24: "lockmark/20261028_Lockmark-24px-Master.svg", 16: "lockmark/20261028_Lockmark-16px-Master.svg"}
+# The lockmark's four masters and the heights each covers (Q1 to Q4 pass, November 8, 2026; DR-131): the 16 px master
+# from 16 to 23 px, the 24 px master from 24 to 47 px, the 48 px master at 48 px, and the display master from 49 px.
+# stage_a_identity_q_measure.py's range test chose the switch: built from one rect per pixel row, the 48 px master
+# parts into stripes at any size between whole multiples of its grid (its node cores fall to 0 to 72 percent full
+# color from 49 to 95 px at 1x), while the display master draws each part as one shape at every size.
+LOCK_DISPLAY_FROM = 49
 BADGE = {"display": "badge/20261028_Hinge-Badge-Display-Master.svg", 24: "badge/20261028_Hinge-Badge-24px-Master.svg",
          16: "badge/20261028_Hinge-Badge-16px-Master.svg"}
 L2 = {"today": "lockups/20261028_L2-Stacked-Master.svg", "condensed": "lockups/20261028_L2-Stacked-Condensed-Master.svg"}
-L3 = {"today": "lockups/20261028_L3-Horizontal-Master.svg", "condensed": "lockups/20261028_L3-Horizontal-Condensed-Master.svg"}
+L3 = {"today": "lockups/20261028_L3-Horizontal-Master.svg", "condensed": "lockups/20261028_L3-Horizontal-Condensed-Master.svg",
+      "masthead": "lockups/20261108_L3-Horizontal-Master.svg"}
+# L3 at the masthead since November 8, 2026 (DR-131): the 24 px wordmark master, 13 px of space and the lockmark's 48 px
+# master, on the pixel grid, 282 by 48 px. Written by stage_a_identity_s1.py; the October file stays as the record.
 L8 = {"today": "lockups/20261028_L8-Monogram-Master.svg", "condensed": "lockups/20261028_L8-Monogram-Condensed-Master.svg"}
 HINGE = {"display": "hinge/20261028_Hinge-Diagram-V2-Display-Master.svg", "compact": "hinge/20261028_Hinge-Diagram-V2-Compact-Master.svg"}
 # S1, the stacked lockup that replaced L2 (DR-113), written by stage_a_identity_s1.py from Board 6's files.
@@ -285,8 +294,25 @@ def amp(height, *, narrow=False, surface="newsprint", mode="color", label="Amper
     return mark(files[key], h=height, surface=surface, mode=mode, label=label, decorative=decorative, red_job=red_job)
 
 
+FIGURES = ROOT / "work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json"
+
+
+def figures(key):
+    """Measured figures the chapters print (Q1 to Q4 pass): 'endmark', 'feed' or 'range', written by
+    stage_a_identity_q_measure.py. None, with a warning, when the test has not run; the page then prints a marker that
+    the build's own text scan would show, and the maker reruns the test and the build."""
+    import json as _json
+    d = _json.loads(FIGURES.read_text()) if FIGURES.exists() else {}
+    if key not in d:
+        print(f"  WARNING: no '{key}' figures in {FIGURES.name}; run stage_a_identity_q_measure.py {key}, then build again")
+        return None
+    if key == "feed" and LOCK[48] not in str(d[key].get("lockmark_master", "")):
+        print(f"  WARNING: the feed figures were measured on {d[key].get('lockmark_master')}, not {LOCK[48]}; run the feed test again")
+    return d[key]
+
+
 def lockmark(size, *, surface="newsprint", mode="color", label="Lockmark", decorative=False):
-    key = 16 if size < 24 else (24 if size < 48 else "display")
+    key = 16 if size < 24 else (24 if size < 48 else (48 if size < LOCK_DISPLAY_FROM else "display"))
     return mark(LOCK[key], h=size, surface=surface, mode=mode, label=label, decorative=decorative)
 
 

@@ -29,7 +29,7 @@ Chapters 09 to 12, the rest of the part called Symbols and graphics, as finished
 | Maker | Role file (`.claude/agents/`) | Owns |
 |---|---|---|
 | Icon designer | `oa-design-director.md` | Every new drawing in this stage, by one hand: the pixel-fit pillar icons, the six redraws, the utility set, and any drawing open questions 3 and 4 add. Writes new files only, in new folders (`work/build/assets/pillar-pixel-fit/`, `civic-line-redraws/`, `utility-icons/`); the Civic Line masters are read, never edited |
-| Identity designer | `oa-design-director.md` | Chapter 09; chapter 12's dividers, watermarks and patterns |
+| Identity designer | `oa-design-director.md` | Chapter 09; chapter 12's dividers, watermarks and patterns; the lockmark's pixel masters if open question 7 says so |
 | Systems designer | `oa-design-director.md`, checked against `oa-ux-accessibility-lead.md` | Chapter 10; chapter 11's new groups (status marks, utility icons, information and alert marks); chapter 12's systems devices (intervention marker, chart keys, map locators, layer diagram) |
 | Editor | `oa-editor.md` | Every word: one meaning sentence per symbol, labels matched to Atlas V7's names and IDs, then the copy edit of all four chapters |
 | Engineer | `oa-engineer.md` | Shell for 09, 10 and 12; mark and icon tokens, including the tracker tokens (D2-402); a pixel-fit check and Board 6's shape-likeness script as build checks; the page's weight plan; the tokens.css link (D2-461) |
@@ -66,3 +66,4 @@ Everything in `20261106_Stage-A-Brief.md` sections "The content contract" and "R
 4. Should stage B also draw a pixel-fit end mark at 12 and 14 px (recommended)?
 5. The reader check has no answers yet. Retire its link and send one combined check at board B, to readers who have never seen the brand (recommended), or keep the live check and add a second round?
 6. Which tool made the Civic Line sheets, and on what terms (Q-16)?
+7. The 16 and 24 px lockmark masters part into stripes when a page scales them, as at L3's 196 px minimum. Should the identity designer rebuild the three pixel masters with each node and the lever as one outline, the same pixels at each master's own size, shown beside today's files at 16, 24, 34, 40 and 48 px on the drawings board (recommended), or keep them as they are?

@@ -3,13 +3,17 @@
 Apply pass, November 7, 2026: an article ends with B alone in the text's ink, and the badge keeps sizes from 48 px for
 back covers and events (DR-118); Rule 04.6's failure shows the badge at 16 px read as the registered trademark sign.
 
+Q1 to Q4 pass, November 8, 2026 (DR-130, CD-N8): the end mark stands at the text's cap height at every size, B's band
+on the capitals, as plate (a) on the changes board drew it, under B's 16 px minimum in body text by exception.
+
 Fix pass, November 6, 2026: hinge headlines come from Rule 02.27's correct list and set in the scale's styles at their
 fixed sizes (BE-M6, CP-M4, C-M7, D2-254); the Act card reads "The route plan & your commute." with the kicker
 "Act · How to take part" (D2-250); cards are drawn at a phone column's 358 px, so they fit a phone at true size (C-S7);
 B's sizes share one baseline and the 16 px master shows as pixels at four times (C-S13); the divider centers B on a line
 as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed (CP-M9)."""
 from stage_a_identity_lib import (E, ID_DIR, AMP, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
-                                  tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp)
+                                  tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp,
+                                  figures)
 from stage_a_identity_s03 import rec as _rec, markrow, MARKROW_CSS
 
 S = []
@@ -290,15 +294,26 @@ REG_PATH = ("M1477 707Q1477 514 1380.5 345.5Q1284 177 1115.5 80.5Q947 -16 754 -1
 
 
 def end_b(font_px=17, surface="newsprint"):
-    """B alone as an article's end mark, as the guide draws it until Dustin answers the cap height question (CD-M1):
-    16/14 of the text's cap height, so B's band sits on the capitals, and never under its 16 px minimum, with the
-    master's baseline on the text's. At 17 px text that is the 16 px master at 16 px, its tail 1 px under the baseline
-    and its top 2.6 px over the cap line (measured in Chromium at eight times). Half an em before it (CA-S4)."""
+    """B alone as an article's end mark at the text's cap height (DR-130): B's band, its master's capitals (the 16 px
+    master's y 1 to 15), on the text's capitals at every size, with the master's lowest row under the baseline as the
+    master draws it. B comes from the master whose range holds its height (Rule 04.1), and from the 16 px master under
+    16 px, the end mark's one exception to B's minimum (Rule 03.4). In Inter that is 0.831 em tall with vertical-align
+    -0.052 em. Half an em before it, inside the last word's no-wrap span (CA-S4)."""
     cap = font_px * CAP_EM
-    h = max(16.0, cap * 16 / 14)
-    below = h / 16
-    return svg_file(ID_DIR / AMP[16], h=h, decorative=True,
+    if cap * 16 / 14 < 24:
+        f, h, below = AMP[16], cap * 16 / 14, cap / 14
+    elif cap * 24 / 22 < 48:
+        f, h, below = AMP[24], cap * 24 / 22, cap / 22
+    else:
+        f, h, below = AMP["display"], cap * 1.0269, cap * 0.0135
+    return svg_file(ID_DIR / f, h=h, decorative=True,
                     style=f"color:{ink(surface)};display:inline-block;vertical-align:{-below:.3f}px;margin-left:0.5em")
+
+
+def end_figures(text_px):
+    """The end mark's figures at a text size, as stage_a_identity_q_measure.py measured them in Chromium at eight times."""
+    f = figures("endmark")
+    return (f or {}).get("measured_at_8x", {}).get(str(text_px))
 
 
 def end_badge():
@@ -332,19 +347,24 @@ def s_04_6_correct():
             f'{mark(BADGE["display"], h=96, surface="charcoal", label="Hinge-circle badge, 96 px, on the back of an event card")}</div>')
     body = (f'<div class="oai-pad"><div class="oai-stack" style="gap:32px">'
             f'<div class="oai-stack" style="gap:12px">{_article(end_b())}{_article(end_b(surface="charcoal"), "charcoal", label=False)}'
-            f'<span class="oai-tag">The end mark: B alone, in the text\'s ink, from its 16 px master at 16 px, half an em after the period</span></div>'
+            f'<span class="oai-tag">The end mark: B alone at the text\'s cap height, in the text\'s ink, half an em after the period</span></div>'
             f'<div class="oai-cell">{card}<span class="oai-tag">The badge at 96 px on the back of a 4 by 6 in event card, true size</span></div></div></div>')
+    m = end_figures(17) or {"capitals_px": 0, "b_px": 0, "top_over_cap_line_px": 0, "tail_under_baseline_px": 0}
     alt = ("At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending "
-           "with ampersand B alone in the text's ink, half an em after the final period. B stands 16 pixels tall beside "
-           "capitals 12.4 pixels tall, its top 2.6 pixels over the cap line. Below, the hinge-circle badge, a red ampersand B "
-           "inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.")
+           "with ampersand B alone in the text's ink, half an em after the final period. B stands at the text's cap height: "
+           f"{m['b_px']:.1f} pixels tall beside capitals {m['capitals_px']:.1f} pixels tall, its curves running "
+           f"{m['top_over_cap_line_px']:.1f} pixels over the cap line and {m['tail_under_baseline_px']:.1f} under the baseline. "
+           "Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back "
+           "of a 4 by 6 inch event card. The article text is Illustrative.")
     return rec("s-04-6-correct", "04.6", 560, alt, body, illustrative=True, fit_switch=True,
-               notes="CD-M1 and CA-S4. B's 16 px master at 16 px, its minimum (Rule 03.4), in the text's ink, with vertical-align -1 px so "
-                     "the master's baseline sits on the text's. Measured in Chromium at eight times beside a capital H of 17 px Inter: "
-                     "capitals 12.4 px, B 16.0 px, its top 2.6 px over the cap line, its tail 1.0 px under the baseline. Half an em of "
-                     "margin before B, inside a no-wrap span with the last word. DR-118 asks for the cap height; that height breaks "
-                     "B's minimum at body size, so both versions go to Dustin on the changes board (work/boards/phase-2/apply-pass/end-mark/). "
-                     "The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).")
+               notes="DR-130, CD-N8 and CA-S4. B at the text's cap height, as plate (a) on the changes board: its band, the 16 px "
+                     "master's y 1 to 15, on the capitals, so B is 16/14 of the cap height tall with vertical-align at minus 1/14 of "
+                     "the cap height, in the text's ink. Under B's 16 px minimum by the end mark's exception (Rule 03.4). Measured in "
+                     f"Chromium at eight times beside a capital H of 17 px Inter: capitals {m['capitals_px']:.1f} px, B {m['b_px']:.1f} px, "
+                     f"its top {m['top_over_cap_line_px']:.1f} px over the cap line, its tail {m['tail_under_baseline_px']:.1f} px under the "
+                     "baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). Half an em of margin before B, inside a "
+                     "no-wrap span with the last word. The plate is padded 24 px, so its tags and the event card stand clear of the "
+                     "frame (CD-S4, CA-S5).")
 
 
 @spec

@@ -47,9 +47,9 @@
   "chapter": "03",
   "rule": "03.2",
   "width_px": 932,
-  "alt": "L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the tagline at left, four pillar dots under them and the lockmark at right. Its print minimum is 6.60 inches.",
+  "alt": "L6, the editorial signature, at its 884 pixel minimum on a Prussian strip, all in White: the wordmark and the tagline at left and the lockmark at right. Its print minimum is 6.60 inches.",
   "illustrative": false,
-  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units. No web address until it is settled (DR-55).",
+  "notes": "L6 on V5's layout, measured from the Gate 0 capture: 1400 by 300 units, without the four pillar dots V5 drew under the tagline (DR-129). The lockmark keeps L6's proportion, 93.5 px at 884 px, from the display master. No web address until it is settled (DR-55).",
   "fit_switch": true
  },
  "s-03-3-correct": {
@@ -120,9 +120,9 @@
   "chapter": "03",
   "rule": "03.6",
   "width_px": 400,
-  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark’s nodes and links run together at 28 pixels.",
+  "alt": "Failure case: a 390 pixel phone bar with the L3 lockup squeezed to 150 pixels wide; its capitals are 12 pixels tall and the lockmark’s nodes and links run together at 26 pixels.",
   "illustrative": false,
-  "notes": "L3 master at 150 px wide: 11.7 px capitals, 28 px lockmark."
+  "notes": "L3's masthead master at 150 px wide: 11.7 px capitals, a 25.5 px lockmark whose pixel rows part into stripes."
  },
  "s-03-7-correct": {
   "chapter": "03",
@@ -266,9 +266,9 @@
   "chapter": "04",
   "rule": "04.6",
   "width_px": 560,
-  "alt": "At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending with ampersand B alone in the text’s ink, half an em after the final period. B stands 16 pixels tall beside capitals 12.4 pixels tall, its top 2.6 pixels over the cap line. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
+  "alt": "At true size, the last lines of an article in 17 pixel body text, on Newsprint and again on Charcoal, each ending with ampersand B alone in the text’s ink, half an em after the final period. B stands at the text’s cap height: 14.1 pixels tall beside capitals 12.4 pixels tall, its curves running 0.6 pixels over the cap line and 1.1 under the baseline. Below, the hinge-circle badge, a red ampersand B inside a thin red ring, at 96 pixels centered on the Charcoal back of a 4 by 6 inch event card. The article text is Illustrative.",
   "illustrative": true,
-  "notes": "CD-M1 and CA-S4. B's 16 px master at 16 px, its minimum (Rule 03.4), in the text's ink, with vertical-align -1 px so the master's baseline sits on the text's. Measured in Chromium at eight times beside a capital H of 17 px Inter: capitals 12.4 px, B 16.0 px, its top 2.6 px over the cap line, its tail 1.0 px under the baseline. Half an em of margin before B, inside a no-wrap span with the last word. DR-118 asks for the cap height; that height breaks B's minimum at body size, so both versions go to Dustin on the changes board (work/boards/phase-2/apply-pass/end-mark/). The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).",
+  "notes": "DR-130, CD-N8 and CA-S4. B at the text's cap height, as plate (a) on the changes board: its band, the 16 px master's y 1 to 15, on the capitals, so B is 16/14 of the cap height tall with vertical-align at minus 1/14 of the cap height, in the text's ink. Under B's 16 px minimum by the end mark's exception (Rule 03.4). Measured in Chromium at eight times beside a capital H of 17 px Inter: capitals 12.4 px, B 14.1 px, its top 0.6 px over the cap line, its tail 1.1 px under the baseline (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json). Half an em of margin before B, inside a no-wrap span with the last word. The plate is padded 24 px, so its tags and the event card stand clear of the frame (CD-S4, CA-S5).",
   "fit_switch": true
  },
  "s-04-6-failure": {
@@ -321,9 +321,9 @@
   "chapter": "08",
   "rule": "08.1",
   "width_px": 700,
-  "alt": "The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.",
+  "alt": "The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then its four masters at true size: the display master at 96 pixels with fine links and small nodes, and the 48, 24 and 16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal and on Prussian, where it is all White.",
   "illustrative": false,
-  "notes": "",
+  "notes": "Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display master at 96 px, then the 48, 24 and 16 px masters on whole pixels. On Prussian, the 48 px master's White file.",
   "fit_switch": true
  },
  "s-08-1-failure": {
@@ -337,10 +337,10 @@
  "s-08-2-correct": {
   "chapter": "08",
   "rule": "08.2",
-  "width_px": 770,
-  "alt": "The lockmark’s four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark and the lockmark at left and four navigation words at right. Page header: a white report header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people., and a chart’s footer with its source line and the lockmark at 16 pixels at right. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.",
+  "width_px": 802,
+  "alt": "The lockmark’s four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark and the lockmark at 48 pixels at left and four navigation words at right. Page header: a white report header with the lockmark at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers to its people., and a chart’s footer with its source line and the lockmark at 16 pixels at right. Sign-off: the bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.",
   "illustrative": false,
-  "notes": "DR-110 and D2-327. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the letterhead proof now draws it too (CA-S10). Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common to both columns of the scale (13 to 17 px), since the plate is 770 px wide.",
+  "notes": "DR-110 and DR-131. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the letterhead proof draws it too (CA-S10). Masthead: L3's masthead master, the 24 px wordmark master with the lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type takes sizes common to both columns of the scale (13 to 17 px).",
   "fit_switch": true
  },
  "s-08-2-failure": {
@@ -373,7 +373,7 @@
   "width_px": 1488,
   "alt": "The site masthead at true size: a 1440 pixel Newsprint bar with OATH & ACTION and the lockmark at left and five navigation words at right. Below it, on the same left edge, the 390 pixel phone bar with the wordmark and a menu button.",
   "illustrative": false,
-  "notes": "Today's width (DR-115). L3 from the 24 px master (221 px) with a 52 px lockmark from its display master; phone bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record.",
+  "notes": "Today's width (DR-115). L3 from its masthead master: the 24 px wordmark master (221 px), 13 px and the lockmark at 48 px from its 48 px master (DR-131); phone bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record.",
   "fit_switch": true
  },
  "s-proofs-avatar": {
@@ -390,7 +390,7 @@
   "width_px": 1248,
   "alt": "A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, the hinge headline The zoning code & the rent. broken before a red ampersand B, the wordmark 44 pixels tall at bottom left and the lockmark at 48 pixels at bottom right, inside the 72 pixel margin. No web address. Under it, the card’s specifications. The headline and kicker are invented.",
   "illustrative": true,
-  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's display master at 48 px (D2-327). No web address until the site is settled (DR-55).",
+  "notes": "1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. Sign-off from the lockmark's 48 px master at 48 px (DR-131), and the feed test's figures measured on this card in the built page (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key feed). No web address until the site is settled (DR-55).",
   "fit_switch": true
  },
  "s-proofs-letterhead": {

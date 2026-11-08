@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
- "checked": "2026-11-08T16:54:15.737Z",
+ "checked": "2026-11-08T17:14:52.650Z",
  "axe": "work/build/node_modules/axe-core/axe.min.js",
  "runs": [
   {
@@ -21,7 +21,7 @@
    "anchors": {
     "ids": 512,
     "duplicates": [],
-    "links": 756,
+    "links": 761,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -182,7 +182,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9300,
+    "texts": 9321,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -194,7 +194,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 338,
+    "marks": 418,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -223,7 +223,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 360418,
+   "height": 362083,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -255,7 +255,7 @@
    "anchors": {
     "ids": 512,
     "duplicates": [],
-    "links": 756,
+    "links": 761,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -417,7 +417,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9165,
+    "texts": 9185,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -429,7 +429,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 338,
+    "marks": 418,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -458,7 +458,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 386545,
+   "height": 388381,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -501,7 +501,7 @@
    "anchors": {
     "ids": 512,
     "duplicates": [],
-    "links": 756,
+    "links": 761,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -662,7 +662,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9139,
+    "texts": 9159,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -674,7 +674,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 338,
+    "marks": 418,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -703,7 +703,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 463970,
+   "height": 466320,
    "fonts": [
     "Inter",
     "Inter Tight",
@@ -756,7 +756,7 @@
    "anchors": {
     "ids": 512,
     "duplicates": [],
-    "links": 756,
+    "links": 761,
     "broken": [],
     "relatedLinks": 131,
     "relatedBad": [],
@@ -917,7 +917,7 @@
    "ruleRefCount": 0,
    "illusTwice": [],
    "text": {
-    "texts": 9144,
+    "texts": 9164,
     "minSize": 13,
     "under13": [],
     "lowContrast": [],
@@ -929,7 +929,7 @@
     "overflowing": []
    },
    "red": {
-    "marks": 338,
+    "marks": 418,
     "unmarked": [],
     "pageJobs": [],
     "specimenJobs": [],
@@ -958,7 +958,7 @@
     "nearMisses": [],
     "pillarOrder": []
    },
-   "height": 479991,
+   "height": 482549,
    "fonts": [
     "Inter",
     "Inter Tight",

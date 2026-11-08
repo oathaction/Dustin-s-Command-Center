@@ -1059,3 +1059,36 @@ Dustin, in the ninth chat's starting prompt: "Changes board: Q1 to Q10 as recomm
 | D2-462 | The pass for Q1 to Q4 runs in two rounds: the identity designer (Q1 to Q3, CD-N8, CD-N9, CA-S2) and the editor (Q4) in parallel, then the editor's copy edit of every string the identity designer changed, then the creative director's look, which also confirms the craft red team's CA-S1 and CA-S2 are closed | The eighth handoff orders the pass this way; the craft red team raised CA-S1 and CA-S2, so their closure is checked by name |
 | D2-463 | DR-133 to DR-135 approve drawing. Each new or redrawn drawing shows on board B beside its master at true size, and enters the guide only with Dustin's answer there | Q5's card says so in words, and gate rule 4 asks for the original beside the proposal at actual sizes |
 | D2-464 | DR-135 is read as a named exception to "the Civic Line icons are settled" for the six drawings' domes and columns alone; the original masters stay in the package as a record | The starting prompt lists the Civic Line icons as settled and approves Q7 by name in the same message; the studio asks him to confirm this reading in stage B's questions |
+
+## Q1 to Q4 pass, November 8, 2026
+
+The identity designer and the editor worked under `work/handoffs/phase-2/20261108_Q1-To-Q4-Apply-Pass-Brief.md`. Their routine calls, numbered by the main session in the order each owner's notes give them:
+
+### Identity designer
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-465 | The 48 px lockmark master serves 48 px only, and the display master starts at 49 px | Built row by row, the 48 px master parts into stripes at any size between whole multiples of 48 px (node cores 0 to 80 percent full color at 1x), while the display master stays whole at every size |
+| D2-466 | L3's masthead master is a new file on the pixel grid, `lockups/20261108_L3-Horizontal-Master.svg`, 282 by 48 px; the October L3 files stay as the record | L3 lives in the masthead, and only the 24 px wordmark master with the 48 px lockmark master sits on whole pixels there |
+| D2-467 | L3 at its 196 px minimum keeps its 34 px lockmark from the 24 px master | DR-131 sets L3's lockmark at 48 px in the masthead; the minimum form's proportion is an approved lockup |
+| D2-468 | The feed test passes a card when every one of the eight dark nodes keeps a near-black pixel and the lever keeps at least four red pixels, at 500 and 360 px | A reader then still sees nine nodes and a red lever; the display master fails it and the 48 px master passes, so the test tells the two apart |
+| D2-469 | The feed test runs on the proofs' card as the built page draws it, and the page prints the figures from the figures file | The rule's figures then come from the card a builder sees, and a stale or missing figure shows as a marker and a build warning |
+| D2-470 | The end mark takes B's 16 px master at 16/14 of the cap height until B reaches 24 px, then the master whose range holds it | Rule 04.1's ranges by B's height, with the end mark's exception below 16 px |
+| D2-471 | Rule 04.6 prints the 17 and 19 px figures, and the figures file keeps 15, 20 and 24 px | 17 px is the body size and 19 px is plate (a)'s second size on the board |
+| D2-472 | Rule 08.2's place labels and drawings both move 16 px in, and the plate grows to 802 px | One padding for the plate, as Rule 04.6 pads its whole plate |
+| D2-473 | The 48 px master's Prussian White file and L3's new Prussian White file sit in `prussian/` | Every treatment D file lives there, where Rule 03.1 sends builders |
+| D2-474 | `stage_a_identity_fix_boards.py` pins its "today" lockmarks of 48 px and up to the display master, and I did not rerun it | The board's plates record November 7; the pin keeps a rerun faithful to that record |
+
+### Editor
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-475 | The editor's build fails if Rule 01.11's old first sentence appears anywhere in chapters 01 and 02, their specimens or their alt text | DR-132 replaces it, and the check stops a later edit from bringing an old copy back |
+| D2-476 | Rule 01.11's basis stays "Design judgment" | DR-132 changes only the reason's wording, and chapter 01's other rules that Dustin worded in DR-125 (01.12, 01.20) carry the same basis |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-477 | The new L3 masthead master stays within DR-131: the wordmark keeps its 22 px capitals and a gap of about 0.6 cap height (0.58 in the October master, 0.60 now), and only the lockmark changes, from 52 to 48 px, so its ratio to the capitals goes from 2.34 to 2.18 | Checked by the main session against both files; Q3's option (a) set L3's lockmark at 48 px in the masthead, which is this change |
+| D2-478 | The identity designer's question on the 16 and 24 px lockmark masters, which part into stripes when scaled, goes to Dustin with stage B's questions | Rebuilding a master's construction changes identity files, so it needs his named approval (gate rule 4); until then the masters and their ranges stay as approved |

@@ -262,18 +262,18 @@
   {
    "id": "04.6",
    "title": "End an article with B alone, and keep the badge for back covers and events.",
-   "rule": "An article ends with ampersand B alone, half an em after its last word, in the text’s ink. B stands at the text’s cap height where its 16 px minimum allows; in body text it takes its 16 px master at 16 px, a little taller than the capitals beside it. The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
+   "rule": "An article ends with ampersand B alone, half an em after its last word, in the text’s ink. B stands at the text’s cap height at every size, so only the curves at its top and foot run past the capitals: in 17 px body text, B stands 14.1 px tall beside capitals 12.4 px tall. This is the one place B may stand under its 16 px minimum (Rule 03.4). The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
    "tokens": [
     "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onCharcoal"
    ],
    "why": {
-    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
+    "text": "At 16 px after a period, the badge’s ring closes in on B and the mark reads as the registered trademark sign, which tells a reader something false about our mark. B alone stays legible at text size and spends no red, and it keeps the hinge at the end of every piece. Set at the capitals’ height, it sits within the line it closes. From 48 px the ring reads as a ring, and with no words on it the badge claims nothing more. Our fifth edition gave the reason: “Seals imply an authority we do not claim.”",
     "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "correct": {
     "specimen": "s-04-6-correct",
-    "caption": "The last lines of an article at true size, body text at 17 px, on Newsprint and on Charcoal: each paragraph ends on B in the text’s ink, from its 16 px master, half an em after the period. Below, the badge at 96 px on the back of a 4 by 6 in event card."
+    "caption": "The last lines of an article at true size, body text at 17 px, on Newsprint and on Charcoal: each paragraph ends on B at the text’s cap height, in the text’s ink, half an em after the period. Below, the badge at 96 px on the back of a 4 by 6 in event card."
    },
    "failure": {
     "specimen": "s-04-6-failure",
@@ -291,15 +291,15 @@
     },
     {
      "label": "Size",
-     "value": "B’s band, its height less the overshoot above and below, on the text’s capitals, from the master whose range holds that height; never under B’s 16 px minimum (Rule 03.4)"
+     "value": "B’s band, its height less the overshoot above and below, on the text’s capitals at every text size: 16/14 of the cap height, from the 16 px master until B reaches 24 px. In body text B stands under its 16 px minimum, the end mark’s exception (Rule 03.4)"
     },
     {
-     "label": "At body size",
-     "value": "17 px text has capitals 12.4 px tall. B takes its 16 px master at 16 px on the text’s baseline: its top stands 2.6 px over the cap line and its tail 1 px under the baseline"
+     "label": "At 17 px text",
+     "value": "The body size: capitals 12.4 px; B 14.1 px tall, its top 0.6 px over the cap line and its tail 1.1 px under the baseline, measured in Chromium"
     },
     {
-     "label": "From 20 px text",
-     "value": "B’s band matches the capitals: at 24 px text, capitals 17.5 px, B 20 px tall from its 16 px master"
+     "label": "At 19 px text",
+     "value": "Capitals 13.8 px; B 15.8 px tall, its top 1.2 px over the cap line and its tail 0.8 px under the baseline, measured in Chromium"
     },
     {
      "label": "Badge",
@@ -329,7 +329,7 @@
     "24",
     "25"
    ],
-   "builders": "Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B in <code>currentColor</code>, so it takes the paragraph’s ink, at 16/14 of the text’s cap height and never under 16 px, with the master’s baseline on the text’s: at the 16 px master that sets <code>vertical-align: -1px</code>. Place the badge from its display master only."
+   "builders": "Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B in <code>currentColor</code>, so it takes the paragraph’s ink, from its 16 px master at 16/14 of the text’s cap height, with the master’s lowest row under the baseline. In Inter that is <code>height: 0.831em</code> and <code>vertical-align: -0.052em</code>, and it holds for text up to 27 px. Place the badge from its display master only."
   },
   {
    "id": "04.7",

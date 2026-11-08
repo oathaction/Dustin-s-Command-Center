@@ -18,6 +18,14 @@ edition, lockmark/20261107_Lockmark-Display-Master.svg and its Prussian White fi
 drawing in 20261028_Lockmark-Master-V5.svg with a clean title. The V5-named files stay, since Board 6's scripts read
 them; the asset package retires them. The minimum table calls that master "display master".
 
+Q1 to Q4 pass, November 8, 2026 (DR-129 to DR-131): copies the 48 px lockmark master Dustin approved from the changes
+board's proposal into lockmark/20261108_Lockmark-48px-Master.svg with a clean title, the drawing byte for byte the
+same, and writes its Prussian White file by treatment D. Writes a new L3 master for the masthead,
+lockups/20261108_L3-Horizontal-Master.svg, from the 24 px wordmark master and the 48 px lockmark master on the pixel
+grid, and its Prussian White file; the October L3 files stay as the record. The display master's title names its new
+range. The minimum sizes table gains the lockmark's four masters and their ranges, the end mark's exception on B's row
+(DR-130), L3's masthead form and L6's replacement under 884 px (DR-129).
+
 Run: python3 -I work/build/scripts/phase-2/stage_a_identity_s1.py      (prints the contour check)
 """
 import json
@@ -28,6 +36,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import board6_stacked_geom as G  # noqa: E402  (path reader and glyph split, read only)
+from stage_a_identity_lib import LOCK, LOCK_DISPLAY_FROM, L3, WM  # noqa: E402  (file names and the lockmark's ranges)
 
 ROOT = HERE.parents[3]
 ID = ROOT / "work/build/assets/identity"
@@ -159,22 +168,111 @@ def update_minimums():
                       "below": "End an article with ampersand B alone (Rule 04.6). Never an avatar or favicon",
                       "status_note": "From 48 px only, for back covers and events, since November 7, 2026 (DR-118)"})
         if r["lockup"] == "Lockmark":
-            r["screen"] = r["screen"].replace("V5 master from 48 px", "display master from 48 px")
+            r["screen"] = (f"16 px master from 16 to 23 px; 24 px master from 24 to 47 px; 48 px master {M48_RANGE}; "
+                           f"display master from {LOCK_DISPLAY_FROM} px")
             r["files"] = ["lockmark/20261028_Lockmark-16px-Master.svg", "lockmark/20261028_Lockmark-24px-Master.svg",
-                          "lockmark/20261107_Lockmark-Display-Master.svg"]
+                          LOCK[48], "lockmark/20261107_Lockmark-Display-Master.svg"]
+            r["below"] = "Nothing smaller; the lever stays one size up at 16, 24 and 48 px"
+            r["places"] = ("Masthead (inside L3) and sign-off: the 48 px master at 48 px. Page header and footer: the 24 px master "
+                           "at 24 px. A chart's footer: the 16 px master at 16 px (Rule 08.2)")
+            r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). Its range was chosen by test: drawn from "
+                                "one rect per pixel row, it parts into stripes at any size between whole multiples of its grid, "
+                                "so it is placed at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)")
+        if r["lockup"] == "Ampersand B, freestanding":
+            r["below"] = ("Nothing smaller, except the end mark, which stands at the text's cap height (Rule 04.6). "
+                          "Favicon: the 16 px master at 16 px")
+            r["end_mark"] = ("The end mark alone may stand under 16 px, at the text's cap height, because it follows a word and "
+                             "names nothing on its own (DR-130, Rules 03.4 and 04.6). It stands 16/14 of the text's cap height tall, "
+                             "from the 16 px master")
+        if r["lockup"] == "L3 horizontal with lockmark":
+            r["screen"] = ("196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master. "
+                           "In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px and the lockmark at 48 px from its 48 px master")
+            r["files"] = [L3["masthead"]]
+            r["status_note"] = ("The masthead master sets the lockmark at 48 px since November 8, 2026 (DR-131). The October "
+                                "master, with the lockmark at 2.4 cap heights, stays in lockups/ for the record")
+        if r["lockup"] == "L6 editorial signature":
+            r["below"] = "Close the page with the footer place: the lockmark at 24 px, then the tagline (Rule 08.2)"
+            r["status_note"] = "Drawn without its four pillar dots since November 8, 2026 (DR-129)"
         if r["lockup"] == "L8 monogram":
             r["screen"] = r["screen"].replace("Never a favicon", "Never an avatar or a favicon")
             r["status_note"] = ("For squares where the name must show, such as a tile in a partner's directory. Social avatars "
                                 "and the app icon show ampersand B alone on the Charcoal tile (DR-116)")
     d["condensed"] = CONDENSED_NOTE
-    d["updated"] = "November 7, 2026, apply pass: S1 added, L2 retired, the badge from 48 px, condensed figures kept for the record"
+    d["updated"] = ("November 8, 2026, Q1 to Q4 pass: the lockmark's 48 px master and ranges, the end mark's exception, "
+                    "L3's masthead master and L6 without its dots. November 7, 2026, apply pass: S1 added, L2 retired, the "
+                    "badge from 48 px, condensed figures kept for the record")
     MIN_FILE.write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
     return d
 
 
 LOCK_OLD = ("lockmark/20261028_Lockmark-Master-V5.svg", "prussian/20261028_Lockmark-Master-V5-Prussian-White.svg")
 LOCK_NEW = ("lockmark/20261107_Lockmark-Display-Master.svg", "prussian/20261107_Lockmark-Display-Master-Prussian-White.svg")
-LOCK_TITLE = "Lockmark, display master, for 48 px and up: the fifth edition's geometry, unchanged"
+LOCK_TITLE = f"Lockmark, display master, for {LOCK_DISPLAY_FROM} px and up: the fifth edition's geometry, unchanged"
+TREATMENT_D = ". Treatment D for Prussian: one color, White"
+
+# ------------------------------------------------------------------------------------- the 48 px master (DR-131)
+PROPOSAL = ROOT / "work/boards/phase-2/apply-pass/lockmark/20261107_Lockmark-48px-Proposal.svg"
+M48_RANGE = "at 48 px" if LOCK_DISPLAY_FROM == 49 else f"for 48 to {LOCK_DISPLAY_FROM - 1} px"
+M48_TITLE = (f"Lockmark, 48 px master on the pixel grid, {M48_RANGE}: the masthead and the sign-off. "
+             "Centers at 4.5, 23.5 and 42.5 px, 7 px nodes, a 9 px lever, 1 px links")
+
+
+def no_title(svg):
+    return re.sub(r"<title>.*?</title>", "", svg, count=1, flags=re.S)
+
+
+def prussian_hooks(svg):
+    """Treatment D for a lockmark or L3 file: every color hook becomes White."""
+    s = (svg.replace('fill="var(--link,#5D636D)"', f'fill="{WHITE}"').replace('fill="currentColor"', f'fill="{WHITE}"')
+         .replace('fill="var(--lever,#E63946)"', f'fill="{WHITE}"').replace('fill="var(--amp,#E63946)"', f'fill="{WHITE}"'))
+    s = re.sub(r"</title>", TREATMENT_D + "</title>", s, count=1)
+    assert sorted(set(re.findall(r"#[0-9A-Fa-f]{6}", s))) == [WHITE] and "currentColor" not in s and "var(" not in s
+    return s
+
+
+def lockmark_48():
+    """The proposal Dustin approved, as a master: a clean title, and every byte of the drawing unchanged."""
+    src = PROPOSAL.read_text()
+    dst = re.sub(r"<title>.*?</title>", f"<title>{esc(M48_TITLE)}</title>", src, count=1, flags=re.S)
+    assert no_title(dst) == no_title(src), "the 48 px master's drawing differs from the approved proposal"
+    assert "proposal" not in dst.lower() and "board" not in dst.lower() and "approval" not in dst.lower()
+    master = ID / LOCK[48]
+    master.write_text(dst)
+    pw = ID / "prussian" / (master.stem + "-Prussian-White.svg")
+    pw.write_text(prussian_hooks(dst))
+    assert re.findall(r"<rect [^>]*>", pw.read_text()) == re.findall(r"<rect [^>]*>", dst), "the Prussian file's rects differ"
+    return [str(master.relative_to(ROOT)), str(pw.relative_to(ROOT))]
+
+
+# ---------------------------------------------------------------------------------- L3 at the masthead (DR-131)
+L3_GAP, L3_LOCK = 13, 48                 # 13 px of space, 0.6 of the 22 px capitals rounded down; the lockmark at 48 px
+L3_TITLE = ("L3 horizontal lockup, masthead master on the pixel grid: the wordmark's 24 px master (capitals 22 px), "
+            "13 px of space and the lockmark's 48 px master, centered on the wordmark's box. 282 by 48 px, for the site "
+            "and email masthead")
+
+
+def _inner(svg):
+    """Everything inside a master's root <svg>, title removed."""
+    body = no_title(svg)
+    return body[re.match(r"<svg\b[^>]*>", body).end():body.rindex("</svg>")]
+
+
+def l3_masthead():
+    """L3 as Rule 03.6 now sets it in the masthead, built from two masters with their drawings unchanged."""
+    wm = (ID / WM[24]).read_text()
+    lk = (ID / LOCK[48]).read_text()
+    wvb = [float(v) for v in re.search(r'viewBox="([^"]+)"', wm).group(1).split()]
+    assert wvb == [0, 0, 221, 24], wvb
+    x, top = int(wvb[2]) + L3_GAP, int(wvb[3] / 2 - L3_LOCK / 2)
+    W = x + L3_LOCK
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {top} {W} {L3_LOCK}"><title>{esc(L3_TITLE)}</title>{_inner(wm)}'
+           f'<svg x="{x}" y="{top}" width="{L3_LOCK}" height="{L3_LOCK}" viewBox="0 0 48 48">{_inner(lk)}</svg></svg>')
+    assert _inner(wm) in svg and _inner(lk) in svg and (x, top, W) == (234, -12, 282)
+    master = ID / L3["masthead"]
+    master.write_text(svg)
+    pw = ID / "prussian" / (master.stem + "-Prussian-White.svg")
+    pw.write_text(prussian_hooks(svg))
+    return [str(master.relative_to(ROOT)), str(pw.relative_to(ROOT))]
 
 
 def display_lockmark():
@@ -182,7 +280,7 @@ def display_lockmark():
     out = []
     for old, new in zip(LOCK_OLD, LOCK_NEW):
         src = (ID / old).read_text()
-        tail = ". Treatment D for Prussian: one color, White" if "prussian/" in old else ""
+        tail = TREATMENT_D if "prussian/" in old else ""
         dst = re.sub(r"<title>.*?</title>", f"<title>{esc(LOCK_TITLE)}{tail}</title>", src, count=1, flags=re.S)
         assert "V5" not in dst and re.sub(r"<title>.*?</title>", "", dst) == re.sub(r"<title>.*?</title>", "", src)
         (ID / new).write_text(dst)
@@ -206,13 +304,16 @@ def run():
         assert d_only(svg) == d_only((SRC / src).read_text()), "the master's paths differ from Board 6's file"
         c["files"] = [str(p.relative_to(ROOT)) for p in (master, ch, pw)]
         report.append(c)
-    update_minimums()
     display_lockmark()
+    report.append({"m48": lockmark_48(), "l3": l3_masthead()})
+    update_minimums()
     return report
 
 
 if __name__ == "__main__":
-    for c in run():
+    rep = run()
+    extra = rep.pop()
+    for c in rep:
         print(f'S1 {c["size"]}: {c["contours"]} contours, {c["letters"]} letters matched ({" ".join(c["matched"])}), '
               f'B vs its master {c["b_vs_master"]:.1e}, B vs the wordmark\'s B {c["b_vs_wordmark"]:.1e}, '
               f'worst offset {c["worst_offset"]:.1e} units')
@@ -220,3 +321,4 @@ if __name__ == "__main__":
             print("  wrote", f)
     print("updated", MIN_FILE.relative_to(ROOT))
     print("wrote", ", ".join(LOCK_NEW))
+    print("wrote", ", ".join(extra["m48"] + extra["l3"]), "(48 px master byte for byte the approved drawing; L3 from two masters unchanged)")

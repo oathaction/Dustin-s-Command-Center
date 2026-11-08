@@ -7,6 +7,10 @@ avatar shows ampersand B alone on the Charcoal tile (DR-116). The social card's 
 its display master (D2-327). The stage A letterhead proof (20261106_Letterhead-Proof.pdf, both widths) stays in the
 proofs folder as the record of what board A showed; this pass writes a new one-page proof beside it.
 
+Q1 to Q4 pass, November 8, 2026 (DR-131): the site masthead places L3's masthead master, the lockmark at 48 px from its
+48 px master, and the social card's sign-off draws the 48 px master and prints the feed test's figures from
+stage_a_identity_q_measure.py. The letterhead draws neither place, so it is unchanged.
+
 Earlier rulings that still bind: each width-free proof is one specimen at actual size; kickers follow Rule 01.21
 (D2-250); the social card breaks at the hinge and carries its specifications; the letterhead's town is invented
 (Wrenfield) and its letter opens on the request; no decision codes or production words reach the page (D2-253)."""
@@ -16,8 +20,8 @@ import subprocess
 
 import stage_a_identity_lib as LIB
 from stage_a_identity_lib import (E, ROOT, WM, L2, LOCK, AMP, S1, S1_BOX, mark, lockmark, illus, ink, ink2, hair, pal, tv, ty,
-                                  CHAP_DIR, HERE, curl_html)
-from stage_a_identity_s03 import rec as _rec
+                                  CHAP_DIR, HERE, curl_html, figures)
+from stage_a_identity_s03 import rec as _rec, l3_small
 from stage_a_identity_s04 import headline
 
 S = []
@@ -47,9 +51,9 @@ def plabel(text, extra=""):
 
 
 def l3(surface="newsprint"):
-    """L3 at the masthead's size: the 24 px wordmark master, 13 px, the lockmark at 52 px from its display master."""
-    return (f'<span role="img" aria-label="Oath &amp; Action" style="display:inline-flex;align-items:flex-start;gap:13px;padding:14px 0">'
-            f'{mark(WM[24], h=24, surface=surface, decorative=True)}<span style="display:block;line-height:0;margin:-14px 0">{mark(LOCK["display"], h=52, surface=surface, decorative=True)}</span></span>')
+    """L3 at the masthead's size, from its masthead master: the 24 px wordmark master, 13 px and the lockmark at 48 px
+    from its 48 px master, 282 by 48 px on whole pixels (DR-131)."""
+    return l3_small(24, surface=surface, label="Oath & Action")
 
 
 def _burger(surface="newsprint"):
@@ -78,8 +82,9 @@ def s_proofs_masthead():
     alt = ("The site masthead at true size: a 1440 pixel Newsprint bar with OATH & ACTION and the lockmark at left and five "
            "navigation words at right. Below it, on the same left edge, the 390 pixel phone bar with the wordmark and a menu button.")
     return rec("s-proofs-masthead", "proofs", 1488, alt, body, css=PROOF_CSS, fit_switch=True,
-               notes="Today's width (DR-115). L3 from the 24 px master (221 px) with a 52 px lockmark from its display master; phone "
-                     "bar with the 24 px master (Rule 03.6). The width pair it replaces stays on board A as the record.")
+               notes="Today's width (DR-115). L3 from its masthead master: the 24 px wordmark master (221 px), 13 px and the lockmark "
+                     "at 48 px from its 48 px master (DR-131); phone bar with the 24 px master (Rule 03.6). The width pair it replaces "
+                     "stays on board A as the record.")
 
 
 # ------------------------------------------------------------------------------------------- avatar
@@ -125,7 +130,8 @@ SOCIAL_SPECS = [
     ("Kicker", "The H4 style at 24 px in Deep Stone: the content label, then the topic (Rule 01.21)"),
     ("Headline", "The title style at 110 px, broken at the hinge; B from its display master in the card's working red"),
     ("Wordmark", "The display master, 44 px tall, bottom left"),
-    ("Lockmark", "48 px from its display master, bottom right, inside the margin (Rule 08.2)"),
+    ("Lockmark", "48 px from its 48 px master, bottom right, inside the margin (Rule 08.2)"),
+    ("Feed test", None),
     ("Left out", "A deck, so the headline keeps the title size, and a web address until ours is settled"),
 ]
 
@@ -138,9 +144,19 @@ def _social():
             f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lockmark(48, label="Lockmark")}</div></div>')
 
 
+def feed_line():
+    """Rule 08.2's feed test on this card, as stage_a_identity_q_measure.py measured it on the built page."""
+    f = figures("feed") or {}
+    a, b = f.get("at_500"), f.get("at_360")
+    if not (a and b and a.get("passes") and b.get("passes")):
+        return "[run stage_a_identity_q_measure.py feed after the build, then build again]"
+    return (f"Passes Rule 08.2's test. Reduced to 500 px wide, the lockmark keeps {a['dark_nodes_kept']} of 8 nodes and "
+            f"{a['lever_red_px']} red pixels; at 360 px, {b['dark_nodes_kept']} of 8 nodes and {b['lever_red_px']} red pixels")
+
+
 @spec
 def s_proofs_social():
-    specs = "".join(f'<div class="oai-sp"><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in SOCIAL_SPECS)
+    specs = "".join(f'<div class="oai-sp"><dt>{E(a)}</dt><dd>{E(b if b is not None else feed_line())}</dd></div>' for a, b in SOCIAL_SPECS)
     css = PROOF_CSS + (".oai-spl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;margin:8px 0 0;max-width:1200px}"
                        ".oai-sp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid var(--oa-color-border-hairline-on-newsprint);font-size:14px;line-height:1.5}"
                        ".oai-sp dt{font-weight:700}.oai-sp dd{margin:0}")
@@ -154,7 +170,9 @@ def s_proofs_social():
            "specifications. The headline and kicker are invented.")
     return rec("s-proofs-social", "proofs", 1248, alt, body, css=css, illustrative=True, fit_switch=True,
                notes="1200 by 630, the link-preview size, type at the desktop ceiling (D2-254). The headline is chapter 02's hinge example. "
-                     "Sign-off from the lockmark's display master at 48 px (D2-327). No web address until the site is settled (DR-55).")
+                     "Sign-off from the lockmark's 48 px master at 48 px (DR-131), and the feed test's figures measured on this card "
+                     "in the built page (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key feed). No web address "
+                     "until the site is settled (DR-55).")
 
 
 # ------------------------------------------------------------------------------------------- letterhead
@@ -284,7 +302,7 @@ PROOFS = {
          "items": [{"specimen": "s-proofs-masthead", "label": "Site and phone", "caption": "Use Fit to window to see the site bar whole on a smaller screen."}]},
         {"label": "Avatar", "text": ["Ampersand B alone on the Charcoal tile, as Rule 04.7 sets it for social avatars and the app icon. The platform prints our name beside the avatar, so the mark can be B alone."],
          "items": [{"specimen": "s-proofs-avatar", "label": "Upload, feed and app icon", "caption": "At 32 px in a feed, B still reads, where any lettered mark would set its capitals under the 14 px floor."}]},
-        {"label": "Social card", "text": ["The 1200 by 630 link-preview card, with its specifications under it."],
+        {"label": "Social card", "text": ["The 1200 by 630 link-preview card, with its specifications under it. Its sign-off passes Rule 08.2's feed test at 500 and 360 px wide."],
          "items": [{"specimen": "s-proofs-social", "label": "Link-preview card", "caption": "Until chapter 23 sets social cards, build one from these specifications."}]},
         {"label": "Letterhead", "text": ["US Letter, 8.5 by 11 inches, at true size on screen, 96 px to the inch. Check the print proof's scale with a ruler before you judge it on paper."],
          "items": [{"specimen": "s-proofs-letterhead", "label": "US Letter", "caption": "The address, recipient and letter are invented, and the letter is signed with Dustin's name and title."}]},

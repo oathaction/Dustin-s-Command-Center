@@ -4,7 +4,10 @@ Apply pass, November 7, 2026 (DR-110, D2-325 to D2-327): the lockmark keeps four
 08.1 keeps its plates. Rule 08.2 draws the four places at true size: the masthead (L3 from 768 px), the page header
 (24 px beside the section label), the footer (24 px beside the tagline, 16 px in a chart's footer) and the sign-off
 (48 px from the display master). Rule 08.3 shows a bill as chapter 11 draws it, and the same bill drawn on the grid as a
-labeled failure. The old Rules 08.3 to 08.9, the codes table, the stages sheet and the composer leave the chapter."""
+labeled failure. The old Rules 08.3 to 08.9, the codes table, the stages sheet and the composer leave the chapter.
+
+Q1 to Q4 pass, November 8, 2026 (DR-131, CD-N9): the masthead (L3's masthead master) and the sign-off draw the 48 px
+master at 48 px; Rule 08.1's plate shows the four masters; Rule 08.2's places stand 16 px in from the frame."""
 from stage_a_identity_lib import (E, LOCK, fragment, mark, lockmark, sgrid, progress, illus, head_label, dnp, steps, ink, ink2,
                                   hair, pal, ground, ty, tv)
 from stage_a_identity_s03 import rec as _rec, l3_small
@@ -47,8 +50,8 @@ def s_08_1_correct():
         return f'<div class="oai-cell">{inner}<span class="oai-tag">{E(lbl)}</span></div>'
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:24px">' + cons
             + '<div class="oai-row">'
-            + it("96 px, display master", lockmark(96, label="Lockmark at 96 px"))
-            + it("48 px, display master", lockmark(48, label="Lockmark at 48 px"))
+            + it("Display master, 96 px", lockmark(96, label="Lockmark, display master, at 96 px"))
+            + it("48 px master", lockmark(48, label="Lockmark, 48 px master"))
             + it("24 px master", lockmark(24, label="Lockmark, 24 px master"))
             + it("16 px master", lockmark(16, label="Lockmark, 16 px master"))
             + f'<div class="oai-cell"><div class="oai-s-charcoal" style="padding:12px">{lockmark(48, surface="charcoal", label="Lockmark at 48 px on Charcoal")}</div><span class="oai-tag">On Charcoal</span></div>'
@@ -56,8 +59,12 @@ def s_08_1_correct():
             + '</div></div></div>')
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "
-           "true-size versions at 96, 48, 24 and 16 pixels, and at 48 pixels on Charcoal and on Prussian, where it is all White.")
-    return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True)
+           "its four masters at true size: the display master at 96 pixels with fine links and small nodes, and the 48, 24 and "
+           "16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal and "
+           "on Prussian, where it is all White.")
+    return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True,
+               notes="Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display "
+                     "master at 96 px, then the 48, 24 and 16 px masters on whole pixels. On Prussian, the 48 px master's White file.")
 
 
 @spec
@@ -73,7 +80,7 @@ def s_08_1_failure():
 
 
 # ------------------------------------------------------------------------------------------- 08.2
-PLACE_CSS = (".oai-pl8{display:flex;flex-direction:column;gap:28px}"
+PLACE_CSS = (".oai-pl8{display:flex;flex-direction:column;gap:28px;padding:12px 16px 16px}"
              ".oai-pl8 .oai-pl8-h{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:0 0 8px}"
              ".oai-pl8 .oai-pl8-n{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase}"
              ".oai-pl8-row{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-start}")
@@ -88,7 +95,7 @@ def _place(name, where, inner, scope=""):
 def _masthead():
     nav = "".join(f'<span style="{ty("ui")};white-space:nowrap">{t}</span>' for t in ("Explain", "Track", "Connect", "Act"))
     return (f'<div class="oai-s-newsprint" style="width:768px;height:80px;display:flex;align-items:center;justify-content:space-between;'
-            f'padding:0 32px;border:1px solid {hair("newsprint")}">{l3_small(24, label="Oath & Action, L3: the wordmark with the lockmark")}'
+            f'padding:0 32px;border:1px solid {hair("newsprint")}">{l3_small(24, label="Oath & Action, L3: the wordmark with the lockmark at 48 px")}'
             f'<div style="display:flex;gap:24px">{nav}</div></div>')
 
 
@@ -119,7 +126,7 @@ def _chart_foot():
 
 def _signoff():
     """The bottom-right corner of a 1080 px social card at true size: its right and bottom edges, the lockmark at 48 px
-    from the display master 72 px in from each, and two dimension lines that measure the margin."""
+    from its 48 px master 72 px in from each, and two dimension lines that measure the margin."""
     W, H, M, L = 360, 216, 72, 48
     st = pal("stone")
     cx, cy = W - M - L / 2, H - M - L / 2          # the lockmark's center
@@ -137,26 +144,27 @@ def _signoff():
 
 @spec
 def s_08_2_correct():
-    body = ('<div class="oai-pl8" style="padding:12px 0 16px">'
-            + _place("Masthead", "L3 on screens from 48em, 768 px at the default text size", _masthead())
+    body = ('<div class="oai-pl8">'
+            + _place("Masthead", "L3 on screens from 48em, 768 px at the default text size; the lockmark at 48 px", _masthead())
             + _place("Page header", "24 px, beside the section label on a report page", _page_header(), "The section title is invented.")
             + _place("Footer", "24 px beside the tagline; 16 px beside the source line in a chart's footer",
                      f'<div class="oai-stack" style="gap:12px">{_footer()}{_chart_foot()}</div>')
-            + _place("Sign-off", "48 px from the display master, bottom right of a social card, cover or poster", _signoff())
+            + _place("Sign-off", "48 px, bottom right of a social card, cover or poster", _signoff())
             + '</div>')
     alt = ("The lockmark's four places at true size, one under another. Masthead: a 768 pixel Newsprint bar with the wordmark "
-           "and the lockmark at left and four navigation words at right. Page header: a white report header with the lockmark "
+           "and the lockmark at 48 pixels at left and four navigation words at right. Page header: a white report header with the lockmark "
            "at 24 pixels beside the section label 03 Who writes the budget and the page number 7; the section title is "
            "Illustrative. Footer: a Charcoal footer with the lockmark at 24 pixels beside the tagline, A country that answers "
            "to its people., and a chart's footer with its source line and the lockmark at 16 pixels at right. Sign-off: the "
            "bottom-right corner of a 1080 pixel social card with the lockmark at 48 pixels inside its 72 pixel margin.")
-    return rec("s-08-2-correct", "08.2", 770, alt, body, css=PLACE_CSS, fit_switch=True,
-               notes="DR-110 and D2-327. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the "
-                     "letterhead proof now draws it too (CA-S10). Masthead: L3 from the 24 px wordmark master with the lockmark at 52 px from its display "
-                     "master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the 24 px master on whole pixels. "
-                     "Chart footer: the 16 px master beside chapter 02's jobs chart source line, word for word. Sign-off: the display "
-                     "master at 48 px, 72 px from the card's right and bottom edges (D2-295's card margin). Type takes sizes common "
-                     "to both columns of the scale (13 to 17 px), since the plate is 770 px wide.")
+    return rec("s-08-2-correct", "08.2", 802, alt, body, css=PLACE_CSS, fit_switch=True,
+               notes="DR-110 and DR-131. Footer place: the lockmark, 12 px, then the tagline, at the footer's left edge, as the "
+                     "letterhead proof draws it too (CA-S10). Masthead: L3's masthead master, the 24 px wordmark master with the "
+                     "lockmark at 48 px from its 48 px master, in a 768 px bar (Rule 03.6's breakpoint). Page header and footer: the "
+                     "24 px master on whole pixels. Chart footer: the 16 px master beside chapter 02's jobs chart source line, word "
+                     "for word. Sign-off: the 48 px master at 48 px, 72 px from the card's right and bottom edges (D2-295's card "
+                     "margin). The places and their labels stand 16 px in from the frame (CD-N9), so the plate is 802 px wide. Type "
+                     "takes sizes common to both columns of the scale (13 to 17 px).")
 
 
 @spec

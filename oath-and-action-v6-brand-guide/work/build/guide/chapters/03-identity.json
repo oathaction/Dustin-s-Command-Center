@@ -105,7 +105,7 @@
     },
     {
      "label": "L3 Horizontal with the lockmark",
-     "value": "The site and email masthead. Minimum 196 px wide; 1.55 in"
+     "value": "The site and email masthead, where it is 282 px wide with the lockmark at 48 px. Minimum 196 px wide; 1.55 in"
     },
     {
      "label": "L4 Monogram and tagline",
@@ -117,7 +117,7 @@
     },
     {
      "label": "L6 Editorial signature",
-     "value": "The strip that closes a report or a long page, with the tagline and the lockmark. Minimum 884 px wide; 6.60 in"
+     "value": "The strip that closes a report or a long page, with the tagline and the lockmark. Minimum 884 px wide; 6.60 in. A narrower page closes with the footer place (Rule 08.2)"
     },
     {
      "label": "L7 Section masthead",
@@ -132,7 +132,7 @@
     "work/build/assets/identity/lockups/20261107_S1-Stacked-Master.svg",
     "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-24px.svg",
     "work/build/assets/identity/lockups/20261107_S1-Stacked-Master-16px.svg",
-    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
     "work/build/assets/identity/lockups/20261028_L8-Monogram-Master.svg"
    ],
    "related": [
@@ -140,7 +140,7 @@
     "07",
     "27"
    ],
-   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1’s files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file."
+   "builders": "Check the lockup’s minimum before you place it. When the space falls under that minimum, switch to the lockup Rule 03.4’s table names. S1 replaced the earlier stacked lockup, L2, in November 2026, so retire L2 from your templates; S1’s files come in a Charcoal edition with its colors written in, for light grounds, and a White edition in <code>prussian/</code>. L4 to L7 have no master files of their own yet: build them from the wordmark, monogram and tagline masters on the layouts from our brand guide’s fifth edition, as the sheet shows, or ask the editor for a file. Leave out the four dots that edition drew under L6’s tagline."
   },
   {
    "id": "03.3",
@@ -194,7 +194,7 @@
   {
    "id": "03.4",
    "title": "Keep every mark at or above its minimum size.",
-   "rule": "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Under a lockup’s minimum, switch to the lockup the table names.",
+   "rule": "On screen, no identity mark draws its capitals under 14 px, and no tagline inside a lockup sets under 13 px. In print, no capitals under 3 mm and no tagline under 7 pt. Under a lockup’s minimum, switch to the lockup the table names. The end mark alone may stand under 16 px, at the text’s cap height, because it follows a word and names nothing on its own (Rule 04.6).",
    "tokens": [],
    "why": {
     "text": "We drew and checked each master at its smallest size, where the wordmark keeps its six enclosed counters, the holes inside letters such as O and A, and the ampersand keeps its two. Our fifth edition scaled one drawing to every size, and at its own 120 px minimum a notch in the ampersand closed into a seventh enclosed shape.",
@@ -230,6 +230,10 @@
      "value": "16 px; 0.25 in"
     },
     {
+     "label": "End mark",
+     "value": "Ampersand B at the text’s cap height, under 16 px in body text: 14.1 px tall in 17 px text (Rule 04.6)"
+    },
+    {
      "label": "Hinge-circle badge",
      "value": "48 px; 0.50 in (Rule 04.6)"
     },
@@ -250,7 +254,7 @@
     "19",
     "27"
    ],
-   "builders": "Read the height you will draw, then pick the master whose range holds it. For the wordmark, the 16 px master runs from 16 to 19 px tall, the 24 px master from 20 to 39 px and the display master from 40 px. For ampersand B and the lockmark, the 16 px master runs from 16 to 23 px, the 24 px master from 24 to 47 px and the display master from 48 px (Rule 04.1). S1’s masters follow its capitals: the 16 px master for capitals 14 to 17 px, the 24 px master for 18 to 36 px and the display master from 37 px. The badge starts at 48 px, from its display master. In print, set the width in inches from the table."
+   "builders": "Read the height you will draw, then pick the master whose range holds it. For the wordmark, the 16 px master runs from 16 to 19 px tall, the 24 px master from 20 to 39 px and the display master from 40 px. For ampersand B, the 16 px master runs from 16 to 23 px, the 24 px master from 24 to 47 px and the display master from 48 px (Rule 04.1). The lockmark’s 16 and 24 px masters run the same, its 48 px master serves 48 px only, and its display master starts at 49 px (Rule 08.1). S1’s masters follow its capitals: the 16 px master for capitals 14 to 17 px, the 24 px master for 18 to 36 px and the display master from 37 px. The badge starts at 48 px, from its display master. In print, set the width in inches from the table."
   },
   {
    "id": "03.5",
@@ -308,7 +312,7 @@
   {
    "id": "03.6",
    "title": "Use L3 for the masthead, and drop the lockmark when the bar gets narrow.",
-   "rule": "The masthead is the bar across the top of every page and email. From 48em wide, 768 px at the default text size, it sets L3: the wordmark at left and the lockmark at its right, 2.4 cap heights tall. Under 48em, it sets L1 from the 24 px master beside the menu button. Email takes L3 as an image.",
+   "rule": "The masthead is the bar across the top of every page and email. From 48em wide, 768 px at the default text size, it sets L3 from its masthead master: the wordmark at left and the lockmark at its right, 48 px tall, from the lockmark’s 48 px master. Under 48em, it sets L1 from the 24 px master beside the menu button. Email takes L3 as an image.",
    "tokens": [],
    "why": {
     "text": "The masthead is the one place every reader sees the mark, so it carries the fullest lockup the width allows. The lockmark needs about 34 px to show its nine nodes and its lever, and on a phone that room goes to the menu button.",
@@ -320,12 +324,12 @@
    },
    "failure": {
     "specimen": "s-03-6-failure",
-    "caption": "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px and the lockmark’s nodes and links run together at 28 px."
+    "caption": "L3 squeezed to 150 px across a phone bar. Its capitals fall to 12 px and the lockmark’s nodes and links run together at 26 px."
    },
    "specs": [
     {
      "label": "Site, from 48em",
-     "value": "L3: the 24 px wordmark master, 13 px of space, the lockmark at 52 px; bar 80 px tall"
+     "value": "L3 from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master, 282 by 48 px on whole pixels; bar 80 px tall"
     },
     {
      "label": "Site, under 48em",
@@ -334,7 +338,7 @@
     },
     {
      "label": "Email header",
-     "value": "L3 at 287 px in a 600 px header, sent as a PNG at twice size"
+     "value": "L3 at 282 px in a 600 px header, sent as a PNG at twice size"
     },
     {
      "label": "Section masthead",
@@ -342,9 +346,9 @@
     }
    ],
    "files": [
-    "work/build/assets/identity/lockups/20261028_L3-Horizontal-Master.svg",
+    "work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg",
     "work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg",
-    "work/build/assets/identity/lockmark/20261028_Lockmark-24px-Master.svg"
+    "work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg"
    ],
    "related": [
     "07",
@@ -470,7 +474,7 @@
    "after_rule": "03.2",
    "specimen": "s-03-l6",
    "label": "L6 at its minimum",
-   "caption": "L6 at its 884 px minimum, wider than this column, so it scrolls on smaller screens. It leaves out a web address until ours is settled."
+   "caption": "L6 at its 884 px minimum, wider than this column, so it scrolls on smaller screens. A page narrower than 884 px closes with the footer place (Rule 08.2). L6 leaves out a web address until ours is settled."
   },
   {
    "after_rule": "03.4",

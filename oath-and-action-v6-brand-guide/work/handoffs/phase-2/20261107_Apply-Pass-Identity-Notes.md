@@ -217,3 +217,107 @@ Modified:
 - This file
 
 Nothing committed or pushed by me.
+
+## Q1 to Q4 pass
+
+November 8, 2026, under `work/handoffs/phase-2/20261108_Q1-To-Q4-Apply-Pass-Brief.md`, after Dustin's answers DR-129 to DR-131. I changed only my own files: chapters 03, 04 and 08, the proofs, my specimens and manifest, my build scripts, the identity assets and one new figures file in `work/handoffs/phase-2/`. The proposal file in the board folder stays as it was, the record of what Dustin approved.
+
+**To open:** `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, at `#identity`, `#ampersand`, `#lockmark` and `#proofs`.
+
+**To rebuild:** `python3 -I work/build/scripts/phase-2/stage_a_identity_s1.py` (masters and the minimum sizes table), then `python3 work/build/scripts/phase-2/stage_a_identity_q_measure.py endmark`, then `python3 work/build/scripts/phase-2/stage_a_identity_build.py`, then `python3 -I work/build/scripts/phase-2/guide_build.py --strict`, then `python3 work/build/scripts/phase-2/stage_a_identity_q_measure.py feed`, then the identity build and the guide build once more, so the page prints the feed figures. The chapters read every measured figure from `work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json`; a missing figure prints a bracketed "run the test" marker and a build warning.
+
+### Items
+
+**1. The 48 px master (DR-131).** `stage_a_identity_s1.py` copies the proposal into `work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg` with a clean title and asserts that everything but the title is byte for byte the proposal. It writes the Prussian White file by treatment D, every color hook White and the rects unchanged, to `work/build/assets/identity/prussian/20261108_Lockmark-48px-Master-Prussian-White.svg`. The minimum sizes file's lockmark row now lists four masters with their ranges, the four files and which master each place draws.
+
+The range came from a test (`stage_a_identity_q_measure.py range`): both masters at 48 to 144 px on Newsprint, at 1x and 2x, with the share of each node's core and the lever's core drawn at full color. The 48 px master draws each node one pixel row at a time. At 48, 96 and 144 px at 1x its cores are 100 percent full color, and at every other size I tested they fall to between 0 and 80 percent, because the rows part into light stripes (a column through one node at 88 px reads 18, 62, 18, 68 in the red channel, where solid Charcoal reads 18). The display master draws each part as one shape and keeps its cores whole at every size, though it covers only 9 to 20 percent of its field with ink. So the 48 px master serves 48 px alone, and the display master starts at 49 px. The creative director had suggested 48 to 95 px; the test rules that out. The display master's title now reads "for 49 px and up", with its drawing unchanged and asserted.
+
+**2. Where the 48 px master goes.** L3's master file embeds the lockmark, so I wrote a new one beside it: `work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg`, the 24 px wordmark master, 13 px of space and the 48 px lockmark master centered on the wordmark's box, 282 by 48 px on the pixel grid, with its Prussian White file. The script asserts both masters sit inside it unchanged. The October L3 files stay as the record. Changes on the page:
+- Chapter 03: Rule 03.6's text, specifications ("282 by 48 px on whole pixels", email header 282 px), files and failure (L3 squeezed now gives a 26 px lockmark); Rule 03.2's L3 row and files; Rule 03.4's builders note gives the lockmark's four ranges. `l3_small(24)` places the new master, so the lockup sheet, the masthead plate and the places plate all draw it. L3 at its 196 px minimum keeps its own form.
+- Chapter 08: Rule 08.1 names four masters and what each keeps; its plate shows the display master at 96 px, then the 48, 24 and 16 px masters, and the 48 px master on Charcoal and on Prussian. Rule 08.2's text, reason, specifications, files, builders note and plate draw the 48 px master in the masthead and the sign-off. Rule 08.3's "Drawing" row names the four masters and what stays the same.
+- Proofs: the site masthead and the social card's sign-off. The letterhead draws neither place, so it is unchanged, and I did not rerun its PDF.
+
+Every 48 px lockmark on the page lands on whole pixels at 1440 px: Chromium snaps the inline drawing even where its box sits at a fractional position, and each one measures 100 percent crisp with whole cores.
+
+**3. The feed test (CA-S2).** Rule 08.2's specifications now say: a 1200 by 630 px card reduced to 500 and 360 px wide must keep each of its eight dark nodes with at least one near-black pixel (every color channel under 70) and the lever with at least four red pixels (red over 170, green and blue under 120), after Lanczos resampling, counting each node's square plus 1 px on every side. `stage_a_identity_q_measure.py feed` captures the proofs' card at 1x from the built page and runs it. It passes: 8 of 8 nodes and 11 red pixels at 500 px, 8 of 8 and 5 at 360 px. As a control, the same card drawn standalone with the display master fails, with 1 red pixel at 500 px and no dark node and 1 red pixel at 360 px. The figures print in Rule 08.2's "Feed test, our card" row and in the card's own specifications.
+
+**4. The end mark (DR-130, CD-N8).** `end_b()` now sets B's band, the 16 px master's y 1 to 15, on the capitals at every size: 16/14 of the cap height tall, from the master whose range holds B's height, with its lowest row under the baseline. Measured again in Chromium at eight times beside a capital H:
+
+| Text | Capitals | B | Top over the cap line | Tail under the baseline |
+|---|---|---|---|---|
+| 15 px | 10.9 px | 12.5 px | 1.1 px | 0.5 px |
+| 17 px | 12.4 px | 14.1 px | 0.6 px | 1.1 px |
+| 19 px | 13.8 px | 15.8 px | 1.2 px | 0.8 px |
+| 20 px | 14.5 px | 16.6 px | 1.5 px | 0.6 px |
+| 24 px | 17.5 px | 19.9 px | 1.5 px | 0.9 px |
+
+Rule 04.6's sentence now gives the 17 px figures in place of "a little taller than the capitals beside it" and says this is the one place B may stand under its 16 px minimum. Its "Size", "At 17 px text" and "At 19 px text" rows, builders note (`height: 0.831em`, `vertical-align: -0.052em`), plate, alt text and manifest note agree. Rule 03.4 gains the brief's line, and its specifications gain an "End mark" row. B's row in the minimum sizes file says the same in `below` and in a new `end_mark` field. Only `s-04-6-correct` ends an article on B in my chapters; the hinge headlines elsewhere are a different use.
+
+**5. L6 (DR-129).** `l6()` draws without the dots by default, and its lockmark now follows the range rule (the display master, 93.5 px at 884 px). `s-03-l6` and its alt text lose the dots. L6's caption, Rule 03.2's L6 row, Rule 08.2's footer row and the minimum table's "below" column say a page narrower than 884 px closes with the footer place. Rule 03.2's builders note tells producers to leave out the dots. No line about L6 waiting on Dustin remains; the only one was in the `l6()` docstring. No proof draws L6.
+
+**6. CD-N9.** Rule 08.2's places plate pads its content 12 px, 16 px, 16 px, so the four labels and their drawings stand 16 px in from the frame. The plate is now 802 px wide.
+
+**7. Looks.** In Chromium at 1440 px at twice size: Rule 08.2's places plate, Rule 08.1's plate, Rule 04.6's correct plate, the masthead plate, L6, the lockup sheet, the proofs' masthead and social card. At 390 px at twice size: Rule 04.6's correct plate, Rule 08.2's plate, L6, the proofs' masthead and Rule 03.6's mastheads. The end mark at 17 and 19 px at 1x and 2x, enlarged. These looks caught one fault, now fixed: L6's plate tag repeated the caption's line about the footer place.
+
+### Routine calls
+
+- D2-xxx | The 48 px lockmark master serves 48 px only, and the display master starts at 49 px | Built row by row, the 48 px master parts into stripes at any size between whole multiples of 48 px (node cores 0 to 80 percent full color at 1x), while the display master stays whole at every size
+- D2-xxx | L3's masthead master is a new file on the pixel grid, `lockups/20261108_L3-Horizontal-Master.svg`, 282 by 48 px; the October L3 files stay as the record | L3 lives in the masthead, and only the 24 px wordmark master with the 48 px lockmark master sits on whole pixels there
+- D2-xxx | L3 at its 196 px minimum keeps its 34 px lockmark from the 24 px master | DR-131 sets L3's lockmark at 48 px in the masthead; the minimum form's proportion is an approved lockup
+- D2-xxx | The feed test passes a card when every one of the eight dark nodes keeps a near-black pixel and the lever keeps at least four red pixels, at 500 and 360 px | A reader then still sees nine nodes and a red lever; the display master fails it and the 48 px master passes, so the test tells the two apart
+- D2-xxx | The feed test runs on the proofs' card as the built page draws it, and the page prints the figures from the figures file | The rule's figures then come from the card a builder sees, and a stale or missing figure shows as a marker and a build warning
+- D2-xxx | The end mark takes B's 16 px master at 16/14 of the cap height until B reaches 24 px, then the master whose range holds it | Rule 04.1's ranges by B's height, with the end mark's exception below 16 px
+- D2-xxx | Rule 04.6 prints the 17 and 19 px figures, and the figures file keeps 15, 20 and 24 px | 17 px is the body size and 19 px is plate (a)'s second size on the board
+- D2-xxx | Rule 08.2's place labels and drawings both move 16 px in, and the plate grows to 802 px | One padding for the plate, as Rule 04.6 pads its whole plate
+- D2-xxx | The 48 px master's Prussian White file and L3's new Prussian White file sit in `prussian/` | Every treatment D file lives there, where Rule 03.1 sends builders
+- D2-xxx | `stage_a_identity_fix_boards.py` pins its "today" lockmarks of 48 px and up to the display master, and I did not rerun it | The board's plates record November 7; the pin keeps a rerun faithful to that record
+
+### Question for Dustin
+
+1. **The 16 and 24 px lockmark masters part into stripes when scaled.** They are built the same way as the 48 px master, one rect per pixel row. Their approved ranges run to 23 and 47 px, and L3 at its 196 px minimum draws the 24 px master at 34 px, where its node cores measure 50 percent full color at 1x and 65 percent at 2x (78 percent at 40 px on a 2x screen). *Recommendation:* let the studio rebuild the three pixel masters with each node and the lever as one outline, the same pixels at each master's own size, and show the old and new files side by side on board B at 16, 24, 34, 40 and 48 px before you approve. Until then the masters and their ranges stay as approved.
+
+### For the main session and other owners
+
+- **Editor, round two.** My new or changed strings are in `stage_a_identity_chapters.py` (Rules 03.2, 03.4, 03.6, 04.6, 08.1, 08.2 and 08.3, and L6's caption), `stage_a_identity_s03.py` (`s-03-6-correct`'s tag, `s-03-6-failure`, `s-03-l6`), `stage_a_identity_s04.py` (`s-04-6-correct`'s tag and alt text), `stage_a_identity_s08.py` (Rule 08.1's plate tags and alt text, Rule 08.2's labels and alt text), `stage_a_identity_proofs.py` (the card's "Lockmark" and "Feed test" rows, its group text) and `stage_a_identity_s1.py` (the minimum table's rows). Every figure in Rules 04.6 and 08.2 and in the card's feed row comes from the figures file; please leave those numbers as they are.
+- **Creative director.** CA-S1 and CA-S2 are ready for the check by name: the four places now draw two pixel masters at their own sizes, and the feed test runs on the proofs' card.
+- **Main session.** The guide check rewrites captures in `work/boards/phase-2/stage-a/captures/`, as it does for every owner. Your snapshot commits took in-progress copies of `stage_a_identity_q_measure.py` during the pass; the file on disk is the finished one.
+
+### Tested (Q1 to Q4 pass)
+
+- `stage_a_identity_s1.py`: the S1 contour check passes as before; the 48 px master equals the proposal apart from its title; its Prussian file's rects equal the master's and hold only White; the new L3 holds both masters' drawings unchanged at x 234, y −12, in a 282 by 48 box; the display master files differ from the V5 files only in their titles; the four new files parse as XML.
+- The range test at 1x and 2x for 15 sizes of each master, plus the 24 px master at 24, 34 and 40 px, as in item 1.
+- The end mark, measured at eight times at five text sizes, as in item 4, with Inter 400 loaded.
+- The feed test on the built page's card and on two standalone control cards, as in item 3.
+- Every 48 px lockmark and L3 on the page at 1440 px at 1x: crisp share 100 percent on Newsprint and whole cores, the squeezed failure aside.
+- A scan of my chapter files, specimens and alt text: no em or en dash, "Signal Grid", decision code, "V5", "2.4 cap", "a little taller", listed filler or corporate verb, straight apostrophe or bracketed marker; "display master from 48" appears only for ampersand B.
+- `stage_a_identity_build.py`: 48 specimens, 3 chapters. `guide_build.py --strict`: exit 0, 0 warnings, 9 chapter files, 100 rules, 233 specimens. `guide_check.js` on the chapters page: PASS at 4 widths, 0 failures, 761 same-page links, the same 25 exemptions as before.
+- The looks listed in item 7.
+
+### Not tested (Q1 to Q4 pass)
+
+- A real feed. The test simulates the reduction with Lanczos resampling; platforms resample in their own ways.
+- Chapters 03, 04 and 08 whole at 1024 and 360 px by eye; the guide check covered overflow, type size and contrast there.
+- The end mark on a 1x screen held at reading distance, and in Firefox and Safari.
+- The 48 px master and the new L3 in print, and L3's email PNG.
+- The letterhead PDF, which I did not rerun because the letterhead did not change.
+- Screen readers by ear and real phones.
+
+### Change log (Q1 to Q4 pass)
+
+Created:
+- `work/build/assets/identity/lockmark/20261108_Lockmark-48px-Master.svg`
+- `work/build/assets/identity/prussian/20261108_Lockmark-48px-Master-Prussian-White.svg`
+- `work/build/assets/identity/lockups/20261108_L3-Horizontal-Master.svg`
+- `work/build/assets/identity/prussian/20261108_L3-Horizontal-Master-Prussian-White.svg`
+- `work/build/scripts/phase-2/stage_a_identity_q_measure.py`
+- `work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json`
+
+Modified:
+- `work/build/scripts/phase-2/stage_a_identity_lib.py`, `stage_a_identity_s1.py`, `stage_a_identity_s03.py`, `stage_a_identity_s04.py`, `stage_a_identity_s08.py`, `stage_a_identity_proofs.py`, `stage_a_identity_chapters.py`, `stage_a_identity_fix_boards.py` (the pin only; not rerun)
+- `work/build/assets/identity/20261028_Identity-Minimum-Sizes.json`
+- `work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg` and `work/build/assets/identity/prussian/20261107_Lockmark-Display-Master-Prussian-White.svg` (titles only)
+- Regenerated by my build: `work/build/guide/chapters/03-identity.json`, `04-ampersand.json`, `08-lockmark.json`, `proofs.json`, `work/build/guide/specimens/manifest-identity.json`, and `s-03-6-correct`, `s-03-6-failure`, `s-03-l6`, `s-03-lockups`, `s-03-minimums`, `s-04-6-correct`, `s-08-1-correct`, `s-08-2-correct`, `s-proofs-masthead` and `s-proofs-social`
+- Regenerated by the engineer's scripts: `work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html`, its build report, its guide check results and captures
+- This file
+
+Unchanged on purpose: the proposal in `work/boards/phase-2/apply-pass/lockmark/`, the October L3 files, the letterhead proof and every board. Nothing committed or pushed by me.
