@@ -1,0 +1,337 @@
+{
+ "criteria": [
+  {
+   "name": "Craft",
+   "lowest": 4,
+   "reason": "Every plate is padded and whole at true size; B's height and the lockmark's two weights are questions on the board."
+  },
+  {
+   "name": "Clarity",
+   "lowest": 4,
+   "reason": "Each changed chapter says its job on its first screen, and the tracker needs no key to read."
+  },
+  {
+   "name": "Brand fidelity",
+   "lowest": 4,
+   "reason": "Locked lines exact and red disciplined; DR-118, L6 and the lockmark's weight wait on Dustin's answers."
+  },
+  {
+   "name": "Usefulness",
+   "lowest": 4,
+   "reason": "Sizes, masters and files are listed for every place; tracker tokens and the Loop R4a count wait for stage B."
+  },
+  {
+   "name": "Evidence honesty",
+   "lowest": 4,
+   "reason": "The hearing wording follows the House and Senate rules, and Rule 01.11's plate claims only what it shows."
+  },
+  {
+   "name": "Accessibility",
+   "lowest": 4,
+   "reason": "No plate fits text under 13 px, every state reads by shape and word, and the guide check passes at four widths."
+  }
+ ],
+ "chapters": {
+  "01": {
+   "title": "Purpose",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "The H.R. 7008 card takes chapter 11's geometry, and every pillar word sits the same distance from its drawing."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "The card has a dateline and one sentence per fact."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "Locked lines exact, one working red per piece, pillar icons with their words."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Rule 01.11 tells builders to count the record by party."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "Rule 01.11's plate claims only what it shows; the count its title asks for waits for stage B."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The pieces figure is a readable group."
+    }
+   }
+  },
+  "02": {
+   "title": "Voice",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "Bands head every plate that could pass for our work."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "Rule 02.25's last row still runs 62 words, as DR-126 asks."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "DR-122 and DR-126 exact."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Each row pairs a draft with what we publish and its source."
+    },
+    "Evidence honesty": {
+     "score": 5,
+     "reason": "The provisions cite the House-passed text, and the office row cites House rule XI."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "Band text opens each failure's alt."
+    }
+   }
+  },
+  "03": {
+   "title": "Identity",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "S1 shows on a phone without scrolling, and L6's plate is padded."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "One width named, and three by three in words."
+    },
+    "Brand fidelity": {
+     "score": 4,
+     "reason": "L6's four pillar dots wait for Dustin, shown with and without on the board."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "S1 and the display master are both listed as files."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "Minimums come from measured files."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The minimum table is a named group."
+    }
+   }
+  },
+  "04": {
+   "title": "The Ampersand and the hinge",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "Padded plates and a vector registered-sign comparison; B's size is now a question on the board."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "Half an em of space reads as an ending."
+    },
+    "Brand fidelity": {
+     "score": 4,
+     "reason": "Every figure is true, and DR-118's cap height waits on Dustin's answer."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "The rule, specification and builders note agree: 16/14 of the cap height, never under 16 px."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "The measured figures print beside the rule."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "B is hidden from screen readers and the text stays whole."
+    }
+   }
+  },
+  "05": {
+   "title": "Color",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "Failure plates carry the band flush on the piece."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "Rule 05.7 now names the standard it means."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "DR-124 verbatim, and red never on Prussian."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Each limit is a number a producer can measure."
+    },
+    "Evidence honesty": {
+     "score": 5,
+     "reason": "Every ratio is measured on token values."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The guide check passes."
+    }
+   }
+  },
+  "06": {
+   "title": "Type",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "Rule 06.9's failure carries the band."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "Rule 06.8 says what the measure holds."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "Faces and scale unchanged."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Token and rule agree on 65 characters."
+    },
+    "Evidence honesty": {
+     "score": 5,
+     "reason": "The count is measured in Chromium."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The guide check passes."
+    }
+   }
+  },
+  "07": {
+   "title": "Layout and spacing",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "The spacing card reads at true size."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "The card's kicker matches its text."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "No retired grid use remains."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Eleven steps, each with a token."
+    },
+    "Evidence honesty": {
+     "score": 5,
+     "reason": "No claim changed."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The guide check passes."
+    }
+   }
+  },
+  "08": {
+   "title": "The lockmark",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "Bands and padding fixed; the place labels still sit on the frame."
+    },
+    "Clarity": {
+     "score": 5,
+     "reason": "One job and four places, on the first screen."
+    },
+    "Brand fidelity": {
+     "score": 4,
+     "reason": "Two weights across the places, now a question on the board."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Every place has a size, a master and a listed file."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "Basis lines name who approved each rule."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The guide check passes."
+    }
+   }
+  },
+  "11": {
+   "title": "Status and utility icons: trackers",
+   "scores": {
+    "Craft": {
+     "score": 5,
+     "reason": "Every plate sits whole at true size, and the keys draw the marks as the rows do."
+    },
+    "Clarity": {
+     "score": 5,
+     "reason": "Plain step names, and a definition of glyph."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "One working red, never spent on progress."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Tracker tokens and Nebraska's route wait for stage B."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "The hearing line follows the House and Senate rules; its claim about many state legislatures carries no source yet."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "No plate fits below 13 px, and targets measure 44 and 48 px."
+    }
+   }
+  },
+  "proofs": {
+   "title": "Identity proofs",
+   "scores": {
+    "Craft": {
+     "score": 4,
+     "reason": "The letterhead's footer takes the one arrangement."
+    },
+    "Clarity": {
+     "score": 4,
+     "reason": "Four pieces we publish, each named."
+    },
+    "Brand fidelity": {
+     "score": 5,
+     "reason": "Today's width, B alone on the avatar, the lockmark once in a view."
+    },
+    "Usefulness": {
+     "score": 4,
+     "reason": "Social card specifications and a letterhead PDF."
+    },
+    "Evidence honesty": {
+     "score": 4,
+     "reason": "The invented letter is labeled once."
+    },
+    "Accessibility": {
+     "score": 4,
+     "reason": "The guide check passes."
+    }
+   }
+  }
+ },
+ "signed_off": true,
+ "open": [
+  "Dustin: the end mark, plate (a) at cap height as an exception to B's minimum, or plate (b) at 16 px; the studio recommends (a).",
+  "Dustin: the proposed 48 px lockmark master for the masthead and the sign-off, with L3's lockmark at 48 px; the studio recommends approval once the board adds 96 px and display size.",
+  "Dustin: L6 without its four pillar dots; the studio recommends it.",
+  "Dustin: Rule 01.11's reason recast in two sentences; the studio and the editor recommend it.",
+  "Stage B: count Loop R4a's 2025 and 2026 redraws by party, and print the count on Rule 01.11's plate.",
+  "Stage B: pixel-fit pillar icons at 16 and 24 px, a 16 px kicker topic icon, tracker tokens, Nebraska's one-chamber route.",
+  "Reader check round two: the six steps, the pillar icons, the end mark, the 24 px lockmark and Pillar Red's party reading.",
+  "Notes: CD-N8, Rule 04.6's 'a little taller'; CD-N9, Rule 08.2's place labels on the frame."
+ ]
+}

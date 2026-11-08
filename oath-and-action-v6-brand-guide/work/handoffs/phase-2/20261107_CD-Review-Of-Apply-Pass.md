@@ -139,3 +139,91 @@ The second sentence carries DR-93, and it stays word for word. The two sentences
 
 - Created `work/handoffs/phase-2/20261107_CD-Review-Of-Apply-Pass.md` (this file).
 - Renders, crops and measuring scripts stay in my session scratchpad. No guide file, board, ledger or source file changed, and nothing was committed or pushed.
+
+## Recheck after the fix pass
+
+November 7, 2026. Page rechecked at commit a8599c6, after the four owners worked under `work/handoffs/phase-2/20261107_Apply-Pass-Fix-Brief.md`. I read each owner's "Fix pass" section and rendered the page again. The main session reports the strict build with 0 warnings, the guide check passing at four widths with 0 failures, and the token tests passing; I did not rerun them.
+
+### Verdict after the fix pass
+
+Signed off for the changes board. All four Must fix items are closed on the page, and every changed chapter now reaches 4 on all six criteria. What remains is either Dustin's to answer (the end mark, the 48 px lockmark master, L6's dots, Rule 01.11's reason) or stage B's to build (the redraw count for Loop R4a, pixel-fit pillar and topic icons, tracker tokens, Nebraska's route).
+
+### The Must fix items
+
+| ID | Closed? | What the page shows now |
+|---|---|---|
+| CD-M1 | Yes, by the second route | Rule 04.6's sentence, its "Size", "At body size" and "From 20 px text" rows and its builders note now give the drawn figures. I measured again at eight times size with capitals on the same line: capitals 12.3 px, B 15.9 px, its top 2.6 px over the cap line and its tail 1 px under the baseline, matching the page's own figures. B now sits half an em after the period, held to the last word. The cap height DR-118 approved waits on Dustin's answer to the board's end mark question, as the fix brief directs. |
+| BE-01 | Yes | Step 2 reads "The committee holds a hearing and takes testimony on the bill. Many state legislatures take testimony from the public there. In Congress, the committee hears the witnesses it invites." Step 5 says the second chamber's committee "can hold a hearing first". Rule 11.1's reason drops "a bill that skips it is news". The H.R. 7008 card says only that the committee held no hearing on this bill. |
+| BE-02 | Yes | Under the two cases, Rule 01.11's plate says the atlas records more redraws for the loop "and gives no count", and the caption says the plate shows two of them. The count by party goes to stage B. |
+| CA-M1 | Yes | Rule 11.1's correct plate is one 360 px piece with H.1180 at "Step 6 of 6: Governor." and H.R. 99012 at "Step 6 of 6: President.", each with its own key, whole at true size at 1,440 and 390 px. The wide extras are now 600 px plates that sit whole in the 1,440 px column. |
+
+### Should fix items and notes, spot checked
+
+- CD-S1, closed: the card carries "As of November 5, 2026" as a dateline and one sentence for step 2's slash. The card still runs long at 390 px because its source line now holds the earlier hearing; that is the right place for it.
+- CD-S2, closed: Rule 11.4 now reads "In a list, or on a card with this mark", and a card without the mark may end on the red ask.
+- CD-S3, closed with BE-01.
+- CD-S4, closed: Rule 04.6's correct plate has 24 px of padding, and its failure draws the ® sign as vector outlines beside "minutes." in Inter in both rows.
+- CD-S5, closed: the contents and the part opener read "09 Pillar icons".
+- CD-S6, closed: "Chapter 01’s one standard of evidence also decides which charts run."
+- CD-S7, closed: at 390 px the lockup sheet shows L1, S1 and L3 in its first column.
+- CD-S8, closed: `20261107_Lockmark-Display-Master.svg` sits in the Files of Rules 08.1 and 08.2, and no rule sends builders to the editor for it.
+- CD-N1, CD-N2, CD-N4, CD-N5, CD-N6 and CD-N7, closed: one Illustrative label per piece, "Wider than this column", the House-passed text in Rule 02.25's source line, the band on Rule 08.2's flyer, the hinge table's action half in plain text, and "three by three". CD-N3 goes to the reader check's second round.
+- From the other reviews, seen on the page: the H.R. 7008 card now uses chapter 11's row on the text edge with its key after the status words (CA-S3), and the pillars figure adds the 48 px section-opener row with Track underlined and its red parts drawn (CA-S7).
+
+### New notes from the recheck
+
+- **CD-N8, chapter 04, Rule 04.6's sentence.** "A little taller than the capitals beside it" softens a mark that stands 29 percent taller than the capitals. Write "taller than the capitals beside it, as the specifications measure", or give the figure.
+- **CD-N9, chapter 08, `s-08-2-correct`.** The place labels (Masthead, Page header, Footer, Sign-off) still sit on the frame's left rule. Inset them 16 px, as Rule 04.6's tags now are.
+
+### Scores after the fix pass
+
+| Chapter | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility |
+|---|---|---|---|---|---|---|
+| 01 Purpose | 4: the card takes chapter 11's geometry and every pillar word sits the same distance from its drawing | 4: the card has a dateline and one sentence per fact | 5: locked lines exact, one working red per piece, pillar icons with words | 4: Rule 01.11 tells builders to count the record by party | 4: Rule 01.11's plate claims only what it shows; the count its title asks for waits for stage B | 4: the pieces figure is a readable group |
+| 02 Voice | 4: bands head every plate that could pass for our work | 4: Rule 02.25's last row still runs 62 words, as DR-126 asks | 5: DR-122 and DR-126 exact | 4: each row pairs a draft with what we publish and its source | 5: the provisions cite the House-passed text and the office row cites House rule XI | 4: band text opens each failure's alt |
+| 03 Identity | 4: S1 shows on a phone without scrolling, and L6 is padded | 4: "three by three", and one width named | 4: L6's dots wait for Dustin, shown with and without on the board | 4: S1 and the display master are both listed as files | 4: minimums come from measured files | 4: the minimum table is a named group |
+| 04 The Ampersand and the hinge | 4: padded plates and a vector ® comparison; B's size is now a question on the board | 4: half an em of space reads as an ending | 4: every figure is true, and DR-118's cap height waits on Dustin's answer | 4: the rule, specification and builders note agree on 16/14 of the cap height, never under 16 px | 4: the measured figures print beside the rule | 4: B is hidden from screen readers and the text stays whole |
+| 05 Color | 4: failure plates carry the band flush on the piece | 4: Rule 05.7 now names the standard it means | 5: DR-124 verbatim, red never on Prussian | 4: each limit is a number a producer can measure | 5: every ratio measured on token values | 4: the guide check passes |
+| 06 Type | 4: Rule 06.9's failure carries the band | 4: Rule 06.8 says what the measure holds | 5: faces and scale unchanged | 4: token and rule agree on 65 characters | 5: the count is measured in Chromium | 4: the guide check passes |
+| 07 Layout and spacing | 4: the spacing card reads at true size | 4: the card's kicker matches its text | 5: no retired grid use | 4: eleven steps, each with a token | 5: no claim changed | 4: the guide check passes |
+| 08 The lockmark | 4: bands and padding fixed; the place labels sit on the frame | 5: one job, four places, on the first screen | 4: two weights across the places, now a question on the board | 4: every place has a size, a master and a listed file | 4: basis lines name who approved each rule | 4: the guide check passes |
+| 11 Trackers | 5: every plate sits whole at true size, and the keys draw the marks as the rows do | 5: plain step names, and a definition of glyph | 5: one working red, never on progress | 4: tracker tokens and Nebraska's route wait for stage B | 4: the hearing line follows the House and Senate rules; "many state legislatures" is unsourced | 4: no plate fits below 13 px, and targets measure 44 and 48 px |
+| Identity proofs | 4: the letterhead's footer takes the one arrangement | 4: four pieces we publish, each named | 5: today's width, B alone on the avatar, the lockmark once in a view | 4: social card specifications and a letterhead PDF | 4: the invented letter is labeled once | 4: the guide check passes |
+
+Lowest by criterion: Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 4, Accessibility 4. The same scores are in `work/boards/phase-2/apply-pass/20261107_CD-Scores.json` for the board builder.
+
+### The end mark at cap height, as an exception to B's minimum
+
+Recommend plate (a). At 17 px text, plate (a) sets B 14.1 px tall with its top 0.6 px over the cap line, which is DR-118 as Dustin approved it. It also uses the rule Rule 04.3 already uses for a hinge headline, B's band on the capitals, so "cap height" means one thing across the guide. Plate (b), what the guide draws today, puts B 2.6 px over the capitals, and at true size it reads louder than the line it closes. The exception is narrow: at 19 px text the two plates differ by 0.2 px of height, and from 20 px text they match, so it touches only body text under about 20 px. Rule 03.4's floor protects marks that have to name us alone, and the end mark follows a word in a piece that already carries our name. At 1x the scaled master's edges soften, as plate (a) shows; a pixel-fit end-mark master at 12 and 14 px, drawn at stage B under its own approval, cures that. If Dustin approves (a), Rule 03.4 gains one line for the exception and Rule 04.6 drops "where its 16 px minimum allows".
+
+### The proposed 48 px lockmark master
+
+Recommend approving it, with two additions to the board before Dustin answers:
+- Show the proposal beside today's display master at 96 px and at display size, as Master Brief section 3 asks for any change to identity geometry, and state its range: 48 to 95 px, with the display master from 96 px, where its hairlines hold.
+- Say plainly that L3 then sets its lockmark at 48 px in place of 52 px, so the masthead stays on whole pixels. That changes L3's proportion, and the same answer approves it by name.
+
+My reasons. The proposal keeps the drawing: nine nodes in the same order, the links, the lever at bottom right. It changes only weight, as the approved 16 and 24 px masters already do. With it, the four places read as one mark: its 22 percent ink sits between the display master's 15 and the 24 px master's 42, where today the masthead draws a hairline square and the page header draws a block of dots. In the feed test it keeps 7 percent near black and 10 red pixels at 500 px, where the display master keeps none and one, so the sign-off still signs a shared card. The doubled 24 px master survives a feed better, and at 1x on the card it fills 42 percent of its field and reads as a blot, so the proposal is the balance. The risk for Dustin: the masthead's lockmark becomes heavier and less fine than the fifth edition's hairline, and the feed test is a simulation. If he declines, today's masters stay with the new wording in Rules 08.1 and 08.3, and the sign-off stays faint in feeds.
+
+L6 and Rule 01.11 are unchanged from my first review: draw L6 without its dots (the board's pair shows nothing else moves), and approve the two-sentence recast of Rule 01.11's reason, which the editor now recommends too.
+
+### Tested (recheck)
+
+- Rendered at 1,440 px: Rule 04.6's two plates, Rule 01.11's correct plate, Rule 11.1's correct plate, the six steps, Rule 08.2's two plates, the pieces figure, the 600 px list on Newsprint, the hinge table and the pillars figure.
+- At 390 px at twice size: the pieces figure with the Track card, the lockup sheet, Rule 11.1's correct plate and Rule 04.6's correct plate.
+- The end mark, measured again at eight times size from ink rows with capitals on the same line.
+- A scan of the rendered text: none of "anyone can speak", "public can speak again", "is news", "3 by 3", "Pillar marks", "Ask the editor for the display", em dash or en dash; present are the new step 2 and Rule 11.1 wording, "gives no count", "Chapter 01’s one standard", "Wider than this column", the display master in three Files lists, Rule 11.4's scoped row, the House-passed text in Rule 02.25's source and 33 "Failure case: do not publish" bands.
+- The board plates: end mark (a) and (b) at 1x and 2x, the L6 pair at 1x, the lockmark masters compared at 2x, the four places today and with the proposal at 1x, and the feed test at 2x; the weight figures file and the head of the proposal's SVG.
+
+### Not tested (recheck)
+
+- The build, the guide check and the token tests myself; I rely on the main session's run.
+- 1,024 and 360 px by eye; the new failure bands in chapters 02, 05 and 06 by eye; the proofs after the footer change; the new letterhead PDF.
+- The proposal at 96 px and display size, which the board does not yet show, and on a real feed.
+- The House and Senate rules and how state legislatures take testimony; I did not open them.
+- Screen readers by ear, forced colors, Firefox, Safari, real phones and print.
+
+### Change log (recheck)
+
+- Modified `work/handoffs/phase-2/20261107_CD-Review-Of-Apply-Pass.md` (this section).
+- Created `work/boards/phase-2/apply-pass/20261107_CD-Scores.json`.
+- No guide file, ledger or source file changed, and nothing was committed or pushed.

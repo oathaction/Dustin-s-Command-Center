@@ -1,0 +1,1140 @@
+{
+ "title": "What your answers changed",
+ "url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
+ "deck": "The studio applied your answers to board A and Board 6 across chapters 01 to 08, the identity proofs and chapter 11, which now opens with the tracker rules. Every change sits below with the page before it and the page now, both at true size. Four decisions on this pass and six questions for stage B wait for your reply.",
+ "pages": [
+  "Each before is the chapters page as it stood on the morning of November 7, before the pass began. Each after is the page as it stands now, which is the copy the studio will publish to your chapters page link.",
+  "A capture shows the page at true size, so one wider than your window scrolls inside its frame."
+ ],
+ "ask": [
+  "Look through the changes, before above after, and open any of them in the published chapters page from its links.",
+  "Answer Q1 to Q4 on this pass. Q1, Q2 and Q3 touch identity drawings, so each needs your approval by name.",
+  "Answer Q5 to Q10, the questions that set up stage B. Q5, Q6 and Q7 need your approval by name.",
+  "Your marks collect in the reply box at the end, ready to paste into our chat."
+ ],
+ "sample_reply": "Q1 to Q10: as recommended, and I approve Q1, Q2, Q3, Q5, Q6 and Q7 by name.",
+ "scores": {
+  "intro": "The creative director rechecked the page after the fix pass and scored each chapter on the brief's six criteria, from 1 to 5. The reasons below are the creative director's own words. A DR number names one of your decisions in the decision log, such as DR-118, your end mark ruling on board A.",
+  "signed": "The creative director signed the page off after the recheck.",
+  "not_signed": "The creative director has not signed the page off.",
+  "legend": "Each row gives the lowest score any chapter received on that criterion, with the reason. In each row of squares, the upright rule after the fourth square marks the ship line of 4.",
+  "table_caption": "The creative director's scores for each chapter, 1 to 5. A boxed score is the lowest on its criterion.",
+  "open": [
+   "L6's pillar dots (Q1), the end mark (Q2), the proposed 48 px lockmark master (Q3) and Rule 01.11's reason (Q4) wait for your answers. The creative director backs the studio's recommendation on each, and asked the board to show both lockmark drawings at 96 px and at display size before you answer Q3, which its third plate does.",
+   "At stage B the studio counts the redraws of 2025 and 2026 in Loop R4a, the map-drawing loop, by party for Rule 01.11's plate. It also draws pixel-fit pillar icons at 16 and 24 px and a 16 px topic icon for kickers, adds tracker tokens, and sets a route for Nebraska's one-chamber legislature.",
+   "The reader check's second round asks readers about the six steps, the pillar icons, the end mark and the 24 px lockmark, and how they read Pillar Red for party.",
+   "Two small notes wait for the next pass: Rule 04.6 still says B stands \"a little taller\" than the capitals, and Rule 08.2's place labels sit on the plate's frame."
+  ]
+ },
+ "changes": {
+  "intro": [
+   "One card for each answer, your Board 6 answers first and then board A. Each card gives the decision in one sentence and shows the page before the pass above the page now at 1,440 px, with both at 390 px where the phone matters. The links under each decision open the same place in the published chapters page."
+  ],
+  "groups": [
+   {
+    "id": "board-6",
+    "title": "Your Board 6 answers",
+    "intro": "You agreed with all seven Board 6 recommendations on November 7, and then with the studio's wording for step 6 on a federal bill.",
+    "cards": [
+     {
+      "id": "b6-1",
+      "label": "B6-1 · DR-108",
+      "short": "Six plain tracker steps",
+      "decision": "A bill tracker has six plain steps: Filed, Hearing, Committee vote, First chamber, Second chamber and Governor.",
+      "text": [
+       "A step that never happened keeps its number under a slash, a bill that stops ends its line on a square, and a bill that becomes law says so in words. Chapter 11 now opens with these rules, and the nine stages drawn on the grid in chapter 08 retired."
+      ],
+      "where": [
+       "rule-11-1",
+       "fig-s-11-steps",
+       "rule-11-2",
+       "rule-11-3"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-08-stages",
+        "height": 1000,
+        "label": "Rule 08.5, Nine stages, five shapes"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-11-steps",
+        "height": 760
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-11-3-correct",
+        "height": 1040
+       }
+      ]
+     },
+     {
+      "id": "dr-128",
+      "label": "DR-128 · Your answer before the pass",
+      "short": "Governor or President at step 6",
+      "decision": "Step 6 takes the name of whoever signs the bill, Governor on a state bill and President on a federal one.",
+      "text": [
+       "Rule 11.1 shows a state bill and a federal bill at step 6, one above the other, so both names read at true size at every width. The H.R. 7008 card in chapter 01 now sits on the six steps, at step 5, with step 6 named President."
+      ],
+      "where": [
+       "rule-11-1",
+       "fig-s-01-pieces"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-01-pieces",
+        "find": "Stop Insider Trading Act Tracker",
+        "offset": -72,
+        "height": 600,
+        "label": "The H.R. 7008 card in chapter 01's pieces figure"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-01-pieces",
+        "find": "Stop Insider Trading Act Tracker",
+        "offset": -72,
+        "height": 760,
+        "label": "The H.R. 7008 card in chapter 01's pieces figure"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-11-1-correct",
+        "height": 1130
+       },
+       {
+        "side": "before",
+        "width": 390,
+        "anchor": "fig-s-01-pieces",
+        "find": "Stop Insider Trading Act Tracker",
+        "offset": -60,
+        "label": "The H.R. 7008 card"
+       },
+       {
+        "side": "after",
+        "width": 390,
+        "anchor": "fig-s-01-pieces",
+        "find": "Stop Insider Trading Act Tracker",
+        "offset": -60,
+        "label": "The H.R. 7008 card"
+       }
+      ]
+     },
+     {
+      "id": "b6-2",
+      "label": "B6-2 · DR-109",
+      "short": "Numbered steps and the timeline",
+      "decision": "Lists and story cards show a bill's steps as numbered circles, and a bill's own page turns the same steps upright as a timeline.",
+      "text": [
+       "One list of five bills shows every state, among them S.2045, stopped by a veto that stood. In a column 600 px wide the step names sit under the circles, and on a phone they sit in a key after the last bill."
+      ],
+      "where": [
+       "rule-11-5",
+       "fig-s-11-list-600-newsprint",
+       "rule-11-6"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-08-5-correct",
+        "offset": 1200,
+        "height": 760,
+        "label": "Rule 08.5, the wider tracker on the grid"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-11-list-600-newsprint",
+        "height": 900
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-11-page-600-newsprint",
+        "height": 900
+       },
+       {
+        "side": "before",
+        "width": 390,
+        "anchor": "fig-s-08-5-correct",
+        "offset": 40
+       },
+       {
+        "side": "after",
+        "width": 390,
+        "anchor": "fig-s-11-5-correct",
+        "offset": 40
+       }
+      ]
+     },
+     {
+      "id": "b6-3",
+      "label": "B6-3 · DR-110",
+      "short": "Chapter 08, The lockmark",
+      "decision": "Chapter 08 is now The lockmark, and the lockmark appears only in its four places: the masthead, the page header, the footer and the sign-off.",
+      "text": [
+       "The chapter keeps three rules: the master, the four places, and a rule that the lockmark codes nothing. Tracker progress, series routes, pillar corners and the grid in the kicker left the guide, and Rule 08.3 shows one retired use as a labeled failure."
+      ],
+      "where": [
+       "lockmark",
+       "rule-08-2",
+       "rule-08-3"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "signal-grid",
+        "height": 760,
+        "label": "Chapter 08 The Signal Grid, opening"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "lockmark",
+        "height": 760,
+        "label": "Chapter 08 The lockmark, opening"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-08-2-correct",
+        "height": 1040
+       }
+      ]
+     },
+     {
+      "id": "b6-4",
+      "label": "B6-4 · DR-111",
+      "short": "The pillar row",
+      "decision": "The pillar row shows the four pillar icons, each beside its word, and underlines the word of the pillar a page serves.",
+      "text": [
+       "The icons are Explain, Track, Connect and Act from the Civic Line, our set of symbols. From 48 px the current pillar's icon also shows its red part, as a section opener sets it, and on a phone the row stacks in one column with arrows pointing down."
+      ],
+      "where": [
+       "fig-s-01-pillars"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-01-pillars",
+        "height": 330
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-01-pillars",
+        "height": 330
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-01-pillars",
+        "offset": 960,
+        "height": 330,
+        "label": "The four pillars, the 48 px row on a section opener and the compact row"
+       },
+       {
+        "side": "before",
+        "width": 390,
+        "anchor": "fig-s-01-pillars"
+       },
+       {
+        "side": "after",
+        "width": 390,
+        "anchor": "fig-s-01-pillars"
+       }
+      ]
+     },
+     {
+      "id": "b6-5",
+      "label": "B6-5 · DR-112",
+      "short": "The kicker",
+      "decision": "A kicker keeps its content label and its words, and a topic icon may sit only beside the topic's own word.",
+      "text": [
+       "A kicker is the short line above a headline, such as \"Explainer · Utility rates\". Rule 01.21 shows the one picture a kicker may carry, the Productivity icon beside its own word. The grid and the pillar icons left the kicker, and the rule that built it from the grid retired with the grid's codes."
+      ],
+      "where": [
+       "rule-01-21",
+       "fig-s-01-21-correct"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-08-8-correct",
+        "height": 460,
+        "label": "Rule 08.8, the kicker built on the grid"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-01-21-correct",
+        "height": 830
+       }
+      ]
+     },
+     {
+      "id": "b6-6",
+      "label": "B6-6 · DR-113",
+      "short": "S1 replaces L2",
+      "decision": "Stacked lockup S1, \"OATH &\" over \"ACTION\" set flush left, replaces L2.",
+      "text": [
+       "S1 takes L2's place in the lockup sheet and the minimum sizes. The identity proofs set L2 beside S1 at three sizes, as the record of your approval by name, and on a phone S1 now shows in the sheet's left column without scrolling."
+      ],
+      "where": [
+       "fig-s-03-lockups",
+       "proofs-l2-beside-s1",
+       "rule-03-2"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-03-lockups",
+        "height": 700
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-03-lockups",
+        "height": 700
+       },
+       {
+        "side": "after",
+        "stage": true,
+        "anchor": "proofs-l2-beside-s1"
+       },
+       {
+        "side": "before",
+        "width": 390,
+        "anchor": "fig-s-03-lockups"
+       },
+       {
+        "side": "after",
+        "width": 390,
+        "anchor": "fig-s-03-lockups"
+       }
+      ]
+     },
+     {
+      "id": "b6-7",
+      "label": "B6-7 · DR-114",
+      "short": "Pillar Red stays",
+      "line_only": true,
+      "decision": "Pillar Red stays the lead color, so no page changed.",
+      "text": [
+       "How readers read it for party becomes a question in the reader check's second round, which the studio builds at stage B."
+      ]
+     }
+    ]
+   },
+   {
+    "id": "board-a",
+    "title": "Your board A answers",
+    "intro": "You accepted every board A recommendation and approved A1 and A6 by name. A2 and A5 took no answer, since your direction on the grid retired both jobs.",
+    "cards": [
+     {
+      "id": "a1",
+      "label": "A1 · DR-115",
+      "short": "One wordmark width",
+      "decision": "Edition 06 keeps today's wordmark width, with ampersand B as refined.",
+      "text": [
+       "You approved this by name. The condensed drawing left every page and the proofs, and its files stay in the package as a record. Rule 03.1 now names the one width in force."
+      ],
+      "where": [
+       "rule-03-1",
+       "proofs-masthead-on-the-site"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "stage": true,
+        "anchor": "proofs-the-marks-at-a-glance"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "rule-03-1",
+        "height": 900,
+        "until": "Tokens"
+       }
+      ]
+     },
+     {
+      "id": "a3",
+      "label": "A3 · DR-116",
+      "short": "B alone on the avatar",
+      "decision": "Social avatars and the app icon show ampersand B alone on a Charcoal tile, and L8 stays for squares where the name must show.",
+      "text": [
+       "The avatar proof and Rule 04.7 show B alone. Rule 03.7 keeps L8, the monogram lockup, for a tile in a partner's directory."
+      ],
+      "where": [
+       "proofs-avatar",
+       "rule-04-7",
+       "rule-03-7"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "stage": true,
+        "anchor": "proofs-avatar"
+       },
+       {
+        "side": "after",
+        "stage": true,
+        "anchor": "proofs-avatar"
+       }
+      ]
+     },
+     {
+      "id": "a4",
+      "label": "A4 · DR-117",
+      "short": "The crop takes the ink",
+      "decision": "The large crop of B takes the surface's ink and never red.",
+      "text": [
+       "Rule 04.8 now says so in its rule and its color specification. The crop on its plate already took Charcoal, so the drawing did not change."
+      ],
+      "where": [
+       "rule-04-8"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "rule-04-8",
+        "height": 900,
+        "until": "Tokens"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "rule-04-8",
+        "height": 900,
+        "until": "Tokens"
+       }
+      ]
+     },
+     {
+      "id": "a6",
+      "label": "A6 · DR-118",
+      "short": "B as the end mark",
+      "decision": "An article ends on B alone, in the text's ink, and the hinge-circle badge keeps sizes from 48 px for back covers and events.",
+      "text": [
+       "You approved this by name. At body size B now stands at its 16 px minimum, a little taller than the capitals beside it, half an em after the last period. Q2 asks whether it should stand at the text's cap height, as you approved, by an exception to that minimum."
+      ],
+      "where": [
+       "rule-04-6",
+       "fig-s-04-6-correct"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-04-6-correct",
+        "height": 300
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-04-6-correct",
+        "height": 520
+       }
+      ]
+     },
+     {
+      "id": "a7",
+      "label": "A7 · DR-119",
+      "short": "Three color limits",
+      "decision": "Rule 05.1 sets three limits for every view: Newsprint covers 60 to 85 percent, each section holds one dark panel at most, and red stays within 5 percent.",
+      "text": [
+       "The other shares from our fifth edition now set the balance across a body of work, such as a month of stories, and a single view may fall outside them."
+      ],
+      "where": [
+       "rule-05-1"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "rule-05-1",
+        "height": 900,
+        "until": "Tokens"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "rule-05-1",
+        "height": 900,
+        "until": "Tokens"
+       }
+      ]
+     },
+     {
+      "id": "a8",
+      "label": "A8 · DR-120",
+      "short": "The body measure",
+      "decision": "The body measure stays 33.88 rem, and Rule 06.8 now says it holds about 65 characters of 17 px Inter, measured in Chromium.",
+      "text": [
+       "The token's description says the same, in token version 6.0.0-gate2.3, and the token tests pass."
+      ],
+      "where": [
+       "rule-06-8"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "rule-06-8",
+        "height": 900,
+        "until": "Tokens"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "rule-06-8",
+        "height": 900,
+        "until": "Tokens"
+       }
+      ]
+     },
+     {
+      "id": "a9",
+      "label": "A9 · DR-121",
+      "short": "The atlas on Newsprint",
+      "line_only": true,
+      "decision": "Atlas System 1 moves from White to Newsprint in its finishing work for chapters 15 and 21, so no page changed now.",
+      "text": [
+       "No line in the guide puts the atlas on White, and Rule 05.7 names Newsprint."
+      ]
+     },
+     {
+      "id": "a10",
+      "label": "A10 · DR-122",
+      "short": "Two lines retired",
+      "decision": "The last two supporting lines from our fifth edition retired with no role.",
+      "text": [
+       "Before this pass the page left them out while their role waited on your answer. They now appear only in the record of retired lines under chapter 02's table of brand lines, quoted to the end of their last whole sentence, since our copy of that edition keeps only their openings."
+      ],
+      "where": [
+       "fig-s-02-lines",
+       "rule-02-23"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-02-lines",
+        "find": "Retired, kept as a record",
+        "offset": -24,
+        "height": 240
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-02-lines",
+        "find": "Retired, kept as a record",
+        "offset": -24,
+        "height": 330
+       }
+      ]
+     },
+     {
+      "id": "a11",
+      "label": "A11 · DR-123",
+      "short": "Three lines stand",
+      "line_only": true,
+      "decision": "The three lines the editor completed stand as written, so nothing changed.",
+      "text": [
+       "They are Connect's job, the end of the list of words we use, and the row on the committee chair in Rule 02.25, which now carries a source line from the House rules."
+      ]
+     },
+     {
+      "id": "a12",
+      "label": "A12 · DR-124",
+      "short": "How charts are chosen",
+      "decision": "Charts are chosen by the question and the evidence, and a set never adds or drops a finding to even the score.",
+      "text": [
+       "Rule 05.7 carries your three sentences word for word, after a line that ties them to chapter 01's one standard of evidence. Rule 01.16 now gives two readings only to a contested claim."
+      ],
+      "where": [
+       "rule-05-7",
+       "rule-01-16"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "rule-05-7",
+        "find": "Why it works",
+        "offset": 2,
+        "height": 360
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "rule-05-7",
+        "find": "Why it works",
+        "offset": 2,
+        "height": 460
+       }
+      ]
+     },
+     {
+      "id": "a13",
+      "label": "A13 · DR-125",
+      "short": "Nonpartisan, and the 2020 example",
+      "decision": "Chapter 01's opening now says what nonpartisan means for us, and the 2020 court record prints after Rule 01.11 as a finding that falls on one side.",
+      "text": [
+       "The research lead read the appeals court's opinion and the Lost, Not Stolen review in full before the example went in. It quotes both in whole sentences and keeps the one case the review says Trump's side won, at the grade Documented. Rules 01.11, 01.12 and 01.20 take the wording you approved."
+      ],
+      "where": [
+       "purpose",
+       "rule-01-11",
+       "fig-s-01-uneven"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "purpose",
+        "height": 600,
+        "label": "Chapter 01 Purpose, opening"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "purpose",
+        "height": 600,
+        "label": "Chapter 01 Purpose, opening"
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-01-uneven",
+        "height": 870
+       }
+      ]
+     },
+     {
+      "id": "a14",
+      "label": "A14 · DR-126",
+      "short": "The Senate count",
+      "decision": "Rule 02.25's last row gives the Senate count by party in the same sentence as both of H.R. 7008's provisions.",
+      "text": [
+       "Its source line names the Congressional Record and marks the party roster as a secondary source. It now also cites the House-passed text for the two provisions."
+      ],
+      "where": [
+       "rule-02-25",
+       "fig-s-02-25-correct"
+      ],
+      "views": [
+       {
+        "side": "before",
+        "width": 1440,
+        "anchor": "fig-s-02-25-correct",
+        "find": "H.R. 7008, the Stop Insider",
+        "offset": -60,
+        "height": 420
+       },
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-02-25-correct",
+        "find": "H.R. 7008, the Stop Insider",
+        "offset": -60,
+        "height": 560
+       }
+      ]
+     },
+     {
+      "id": "a15",
+      "label": "A15 · DR-127",
+      "short": "H10's corrected line",
+      "decision": "H10's corrected line stands: \"Each margin is the leading party's lead, in percentage points of all presidential votes.\"",
+      "text": [
+       "H10 is the house rule that names parties in words. Its corrected line was already on the page before this pass, and your answer confirms it."
+      ],
+      "same_before": "The line read the same before the pass, so one view shows it.",
+      "where": [
+       "rule-02-22",
+       "fig-s-02-22-correct"
+      ],
+      "views": [
+       {
+        "side": "after",
+        "width": 1440,
+        "anchor": "fig-s-02-22-correct",
+        "find": "Name parties in words",
+        "offset": 4,
+        "height": 372
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "review": {
+  "intro": [
+   "Three reviews read the page after the apply pass: the creative director's, a red team on brand and evidence, and a red team on craft and accessibility. They listed four Must fix items, each of which held back this board until an owner fixed it, and 28 Should fix items. The owners fixed all four Must fix items in the fix pass."
+  ],
+  "must": [
+   {
+    "id": "CD-M1",
+    "where": "Chapter 04",
+    "title": "The end mark's size",
+    "found": "At 17 px text B stood 16 px tall beside capitals 12.4 px tall, its top 2.6 px over the cap line. The rule called it 14 px, a figure that turned out to be the master's width.",
+    "fixed": "Every figure on the page is now the one measured in Chromium, and B sits half an em after the period, so it reads as an ending. The choice between cap height and B's 16 px minimum comes to you as Q2."
+   },
+   {
+    "id": "BE-01",
+    "where": "Chapter 11",
+    "title": "Who can speak at a hearing",
+    "found": "Step 2 said anyone can speak at a committee hearing. House rule XI and Senate rule XXVI give the public no such right, and a committee in Congress hears the witnesses it invites.",
+    "fixed": "Step 2 now says many state legislatures take testimony from the public there, a committee in Congress hears the witnesses it invites, and a bill's own page says how to take part. Rule 11.1 dropped its line that a skipped hearing is news."
+   },
+   {
+    "id": "BE-02",
+    "where": "Chapter 01",
+    "title": "Rule 01.11's plate and the count",
+    "found": "The rule asks for counts as the record gives them. Its plate showed one map redraw from each party with no count, and nobody had counted our atlas's redraws by party.",
+    "fixed": "The plate now says it shows two of the loop's redraws and gives no count. The research lead counts the redraws by party at stage B, and the count then takes that line's place."
+   },
+   {
+    "id": "CA-M1",
+    "where": "Chapter 11",
+    "title": "Step 6 out of sight",
+    "found": "At 1,440 px Rule 11.1's plate hid step 6 past the edge of the column, and fitting it to the window set its step names at 9.8 px.",
+    "fixed": "Every chapter 11 plate is now 600 px wide or less, and Rule 11.1 stacks its state and federal bills at 360 px. A new check fails any plate that would fit its text under 13 px."
+   }
+  ],
+  "should": {
+   "total": 28,
+   "intro": "The owners fixed what stayed inside their own files and changed no decision you made. What would change a drawing or your wording comes to you on this board.",
+   "rows": [
+    {
+     "state": "Fixed in full",
+     "count": 22,
+     "items": "CD-S1 to CD-S8; BE-03 to BE-07, BE-09 and BE-10; CA-S3, CA-S5, CA-S6 and CA-S8 to CA-S11"
+    },
+    {
+     "state": "Fixed, with one part carried to stage B",
+     "count": 3,
+     "items": "BE-08, the route for Nebraska's one-chamber legislature; CA-S7, pixel-fit pillar icons for chapter 09; CA-S12, a 16 px topic icon for chapter 10"
+    },
+    {
+     "state": "Fixed, with one part waiting on Q2",
+     "count": 1,
+     "items": "CA-S4: B now sits half an em after the period, and its size waits on your answer"
+    },
+    {
+     "state": "Waiting on Q3",
+     "count": 2,
+     "items": "CA-S1, the lockmark drawn at two weights, and CA-S2, the sign-off on a social card a feed shrinks"
+    }
+   ]
+  },
+  "after": [
+   "The creative director's recheck found no new Must fix item. The main session's final checks after the fix pass passed: the strict build with no warnings, the guide check with 0 failures at 1,440, 1,024, 390 and 360 px, and the token tests."
+  ]
+ },
+ "decisions": {
+  "intro": [
+   "Four questions on this pass wait for you. Each card shows the drawings at true size, gives the options with our recommendation, and says whether your answer needs your approval by name under gate rule 4, the rule that covers locked elements and identity drawings."
+  ],
+  "cards": [
+   {
+    "id": "Q1",
+    "question": "Should L6 lose its four pillar dots?",
+    "context": [
+     "L6 is the strip that closes a report, set in White on Prussian: the wordmark, the tagline and the lockmark. Under the tagline it draws four dots for the four pillars, with no words beside them.",
+     "Since your Board 6 answers, each pillar shows as its icon with its word, and the lockmark codes nothing. The dots do both jobs those answers retired. The guide draws L6 with its dots until you answer."
+    ],
+    "plates": [
+     {
+      "key": "L6-As-Drawn",
+      "page": "l6/20261107_L6-Dots-Plates.html",
+      "selector": "#l6-pair .cell:nth-of-type(1)",
+      "label": "L6 as the guide draws it",
+      "alt": "L6 at its 884 px minimum on Prussian, all in White: the wordmark, the tagline, four pillar dots under the tagline and the lockmark at the right.",
+      "caption": "At 884 px, L6's minimum width. Drawn by the identity designer, who wrote the line under each strip."
+     },
+     {
+      "key": "L6-Without-Dots",
+      "page": "l6/20261107_L6-Dots-Plates.html",
+      "selector": "#l6-pair .cell:nth-of-type(2)",
+      "label": "L6 without the four dots",
+      "alt": "The same L6 at 884 px without the four pillar dots: the wordmark, the tagline and the lockmark, each where it was.",
+      "caption": "The same width, set directly under the first, so the eye drops from one to the other."
+     }
+    ],
+    "options": [
+     {
+      "text": "Draw L6 without the four dots, keep its lockmark at L6's own proportion, and close any page narrower than 884 px with the footer place",
+      "short": "L6 without the dots"
+     },
+     {
+      "text": "Retire L6, and close every report with the footer place, the lockmark at 24 px beside the tagline",
+      "short": "retire L6"
+     },
+     {
+      "text": "Keep L6 as drawn, with the dots",
+      "short": "keep the dots"
+     }
+    ],
+    "recommended": "a",
+    "why": "Taking out the dots removes one element and redraws no letter, so L6 keeps its proportion and its place at the end of a report. The identity designer and the creative director both recommend it. Retiring L6 would drop the report's closing strip to fix one detail.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since this changes an approved lockup (gate rule 4).",
+    "source": "The identity designer's question 3 in the fix pass, and the creative director's review of the apply pass."
+   },
+   {
+    "id": "Q2",
+    "question": "Should the end mark stand at the text's cap height, below B's 16 px minimum?",
+    "context": [
+     "You approved B \"at the text's cap height\" to end an article. At 17 px body text the capitals stand 12.4 px tall, and every identity mark keeps a 16 px minimum under Rule 03.4, so the guide now draws B at 16 px. There its top stands 2.6 px over the cap line, and it reads louder than the line it ends.",
+     "Plate (a) sets B's band, its height less the curves that run past it, on the capitals. Plate (b) is what the guide draws today. Each plate shows a paragraph's last lines at 17 px, the body size, and at 19 px."
+    ],
+    "plates": [
+     {
+      "key": "End-Mark-A",
+      "copy": "end-mark/20261107_End-Mark-A-Cap-Height-2x.png",
+      "label": "(a) B at the text's cap height",
+      "alt": "Plate (a): an invented paragraph at 17 px and at 19 px, each ending on ampersand B in Charcoal at the height of the capitals, half an em after the period, with its measured figures under it.",
+      "caption": "At 17 px text B stands 14.1 px tall, its top 0.6 px over the cap line. Rendered by the identity designer at twice size and shown here at true size."
+     },
+     {
+      "key": "End-Mark-B",
+      "copy": "end-mark/20261107_End-Mark-B-Minimum-2x.png",
+      "label": "(b) B at its 16 px minimum",
+      "alt": "Plate (b): the same paragraph at 17 px and at 19 px, each ending on ampersand B at 16 px, taller than the capitals, with its measured figures under it.",
+      "caption": "At 17 px text B stands 16 px tall, its top 2.6 px over the cap line. The guide draws this today."
+     }
+    ],
+    "options": [
+     {
+      "text": "B at the text's cap height, as an exception to its 16 px minimum for the end mark alone, with one line in Rule 03.4 for the exception",
+      "short": "cap height, as an exception"
+     },
+     {
+      "text": "B at its 16 px minimum, as the guide draws it now",
+      "short": "the 16 px minimum"
+     }
+    ],
+    "recommended": "a",
+    "why": "The end mark follows a word and names nothing alone, so it can sit below the floor that keeps a mark legible on its own. At cap height it closes the line quietly, as you asked on board A. On an older screen its edges soften a little at 1x, and a pixel-fit end mark, drawn on whole pixels for 12 and 14 px, would cure that at stage B under its own approval.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since it sets how ampersand B is drawn at text size, a use you approved by name in DR-118 (gate rule 4).",
+    "source": "The identity designer's question 1 in the fix pass, and the creative director's Must fix item CD-M1."
+   },
+   {
+    "id": "Q3",
+    "question": "Should the masthead and the sign-off take a new 48 px lockmark master?",
+    "context": [
+     "The lockmark has three masters. The page header and the footer draw the 24 px master, a dense block of nine dots. The masthead and the sign-off draw the display master, a hairline square. Its red lever covers 9 pixels at 48 px, against 37 for the 24 px master at 24 px.",
+     "On a social card that a feed shrinks to 500 px, the display master leaves no near-black pixel and one red pixel. The identity designer drew a 48 px master on whole pixels, between the two weights. It lives only on this board."
+    ],
+    "plates": [
+     {
+      "key": "Places-Today",
+      "copy": "lockmark/20261107_Lockmark-Places-Today-2x.png",
+      "label": "Today, in the four places",
+      "alt": "The lockmark today in its four places at true size: the masthead at 52 px and the sign-off at 48 px as a hairline square, the page header and the footer at 24 px as a dense block of dots.",
+      "caption": "The masthead, the page header, the footer and the sign-off at true size. The section title in the page header is invented."
+     },
+     {
+      "key": "Places-Proposal",
+      "copy": "lockmark/20261107_Lockmark-Places-Proposal-2x.png",
+      "label": "With the proposed 48 px master",
+      "alt": "The same four places, with the masthead and the sign-off drawn from the proposed 48 px master: heavier nodes and a larger red lever, close in weight to the 24 px places.",
+      "caption": "The page header and the footer keep the 24 px master, and only the masthead and the sign-off change."
+     },
+     {
+      "key": "Larger-Sizes",
+      "compare": {
+       "sizes": [
+        48,
+        96,
+        192
+       ],
+       "rows": [
+        {
+         "label": "Today's display master",
+         "file": "work/build/assets/identity/lockmark/20261107_Lockmark-Display-Master.svg"
+        },
+        {
+         "label": "Proposed 48 px master",
+         "file": "work/boards/phase-2/apply-pass/lockmark/20261107_Lockmark-48px-Proposal.svg"
+        }
+       ]
+      },
+      "label": "Both drawings at 48, 96 and 192 px",
+      "alt": "Today's display master and the proposed 48 px master side by side at 48, 96 and 192 px on Newsprint. The display master keeps hairline links and small nodes at every size. The proposal's nodes, links and lever grow with it, and at 96 and 192 px its round nodes show the steps of its pixel grid.",
+      "caption": "Added at the creative director's request: 96 px, and 192 px for display size, four times the proposal's grid. The proposal is drawn for the masthead and the sign-off, and past 48 px its round nodes show the steps of its pixel grid. The board builder drew this plate from the two files and changed neither."
+     },
+     {
+      "key": "Feed-Test",
+      "copy": "lockmark/20261107_Lockmark-Sign-Off-Feed-Test-2x.png",
+      "label": "The sign-off when a feed shrinks the card",
+      "alt": "The sign-off corner of a 1,200 by 630 social card shrunk to 500 and 360 px wide, enlarged eight times, for the display master, the 24 px master doubled and the proposed 48 px master.",
+      "caption": "Each candidate on a card shrunk to 500 and 360 px wide, enlarged eight times. The display master leaves no near-black pixel at either width."
+     }
+    ],
+    "options": [
+     {
+      "text": "Approve the 48 px master for the masthead and the sign-off, set L3's lockmark at 48 px, and add the feed test at 500 and 360 px to Rule 08.2",
+      "short": "approve the 48 px master"
+     },
+     {
+      "text": "Keep today's masters, with the wording now in Rules 08.1 and 08.3 that the small masters draw the nodes and the lever heavier",
+      "short": "keep today's masters"
+     }
+    ],
+    "recommended": "a",
+    "why": "The proposal brings the four places close to one weight, and on a card shrunk to 500 px it keeps 7 percent near black and 10 red pixels, where the display master keeps no near-black pixel at all. The 24 px master doubled holds up on a shrunk card too, but the creative director found it soft at 40 px on Board 6, which is why the sign-off moved to the display master in this pass. The creative director recommends approval once the board shows both drawings at 96 px and at display size, which the third plate does.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since this adds a new identity master (gate rule 4).",
+    "source": "The identity designer's question 2 in the fix pass, after the craft and accessibility red team's items CA-S1 and CA-S2."
+   },
+   {
+    "id": "Q4",
+    "question": "Which wording should Rule 01.11's reason take?",
+    "context": [
+     "The reason you approved on board A opens two sentences in a row with \"Where\", the run of matching openings that chapter 02's W13 asks a writer to recast. It prints as you approved it until you answer. The editor first proposed one sentence and now backs the creative director's two-sentence recast."
+    ],
+    "versions": [
+     {
+      "label": "(a) As you approved it",
+      "source": "Board A, A13, approved as DR-125",
+      "text": "Where both parties use a mechanism, a case from each, told the same way, puts the mechanism in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it."
+     },
+     {
+      "label": "(b) The editor's one sentence",
+      "source": "The editor's notes, round one",
+      "text": "A case from each party, told the same way, puts a mechanism both parties use in front of the reader, and where the record shows one side doing more, the finding stands as the record shows it."
+     },
+     {
+      "label": "(c) The creative director's recast",
+      "source": "The creative director's review of the apply pass",
+      "text": "A case from each party, told the same way, puts a mechanism that both parties use in front of the reader. Where the record shows one side doing more, the finding stands as the record shows it."
+     }
+    ],
+    "options": [
+     {
+      "text": "Keep the wording you approved",
+      "short": "keep the approved wording"
+     },
+     {
+      "text": "The editor's one sentence",
+      "short": "the editor's one sentence"
+     },
+     {
+      "text": "The creative director's recast, which keeps your second sentence word for word",
+      "short": "the creative director's recast"
+     }
+    ],
+    "recommended": "c",
+    "why": "The recast changes only the first sentence, so its two sentences open on different frames. Your second sentence, which carries the one standard of evidence you set for everyone (DR-93), stays word for word. The editor's single sentence joins two separate cases with \"and\", and a first reading can stumble on \"a mechanism both parties use in front of the reader\".",
+    "named": false,
+    "named_note": "Gate rule 4 covers locked lines and identity drawings, so it does not apply here. The wording is yours, so it changes only with your answer.",
+    "source": "The editor's question in the apply pass and the fix pass, and the creative director's review."
+   }
+  ]
+ },
+ "stage_b": {
+  "intro": [
+   "Stage B builds chapters 09 to 12, the rest of the guide's part on symbols and graphics. Here is the scope the studio proposes, and six questions to settle before work starts. Nothing in this section is approved yet."
+  ],
+  "scope_caption": "Proposed by a planning agent for the main session from the Master Brief, the decision log, Board 6's notes and the Civic Line inventory.",
+  "scope": [
+   {
+    "chapter": "09",
+    "title": "Pillar icons",
+    "holds": "The four pillar icons in order, each with its word and the current word underlined; red in a row and one color at 16 px; where they go and their sizes. Plates: rows at 48 and 24 px on Newsprint and Charcoal, the phone column, an opener at 128 px, the rounded tile and a failure with a pillar icon in a kicker.",
+    "who": "Identity designer"
+   },
+   {
+    "chapter": "10",
+    "title": "Topic and atlas symbols",
+    "holds": "How a Civic Line icon is drawn; the 72 topic symbols; atlas symbols matched to our systems atlas by its IDs, with domains and routes named in words; size floors; and a test that no two symbols read alike.",
+    "who": "Systems designer"
+   },
+   {
+    "chapter": "11",
+    "title": "Status and utility icons",
+    "holds": "The trackers stay as Rules 11.1 to 11.7. New groups: status marks for other records on the tracker's shapes, such as a records request; utility icons; and marks for information, warnings, errors and success, each with its word.",
+    "who": "Systems designer"
+   },
+   {
+    "chapter": "12",
+    "title": "Graphic devices and patterns",
+    "holds": "Dividers, watermarks and frames such as the document reference; devices for the systems pages, such as chart keys and map locators; and patterns drawn from approved masters.",
+    "who": "Identity designer, with the systems designer for the systems devices"
+   }
+  ],
+  "after_scope": [
+   "The editor writes every word, the engineer builds the shell, the tokens and the checks, and the research lead checks each icon against our systems atlas. The creative director scores last, and board B carries the reader check's second round."
+  ],
+  "questions_intro": [
+   "Q5, Q6 and Q7 need your approval by name, since each would add or change identity drawings."
+  ],
+  "questions": [
+   {
+    "id": "Q5",
+    "question": "Should the studio draw the four pillar icons on whole pixels at 16 and 24 px?",
+    "context": [
+     "The Civic Line icons are drawn once and scaled, so at small sizes their thin line falls between pixels and reads lighter than the word beside it. Pixel-fit drawings would keep every feature and every red placement, set on whole pixels."
+    ],
+    "options": [
+     {
+      "text": "Draw pixel-fit 16 and 24 px versions, shown beside the masters at 16, 24, 48 and 96 px before you approve them",
+      "short": "draw pixel-fit versions"
+     },
+     {
+      "text": "Draw nothing new, and let the word stand alone under 48 px",
+      "short": "the word alone under 48 px"
+     }
+    ],
+    "recommended": "a",
+    "why": "The 24 px row on every page that serves a pillar reads faint beside its words today, and without these drawings chapter 09's craft score stays at 3.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since new drawings of the pillar icons change identity drawings (gate rule 4). You would see them at true size first.",
+    "source": "Stage B scoping notes, question 1."
+   },
+   {
+    "id": "Q6",
+    "question": "Should the studio draw a set of utility icons?",
+    "context": [
+     "Utility icons mark actions such as copy, filter and share. The Civic Line holds none of the eighteen the guide expects to need, and the six from our fifth edition and the twelve from an earlier one are not in this checkout."
+    ],
+    "options": [
+     {
+      "text": "Draw about eighteen on a 24-unit grid, limited to the actions the accessibility audit finds the guide, the atlas and the reports need",
+      "short": "draw about eighteen"
+     },
+     {
+      "text": "Redraw the fifth edition's six, and use words for the rest",
+      "short": "redraw the six"
+     },
+     {
+      "text": "Adopt an open-licensed set",
+      "short": "an open-licensed set"
+     }
+    ],
+    "recommended": "a",
+    "why": "A set drawn on our own grid keeps the line weight and the corners of our other icons, and the audit keeps it to the actions readers meet.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since a new icon set adds identity drawings (gate rule 4).",
+    "source": "Stage B scoping notes, question 2."
+   },
+   {
+    "id": "Q7",
+    "question": "How should the studio settle the domes and columns in six icons?",
+    "context": [
+     "Rule 01.6 keeps domes, columns and flags to a captioned photograph of a real place. Four icons draw a dome, the Civic Line's Congress icon among them, and two draw columns. Until you answer, they stay off guide pages."
+    ],
+    "options": [
+     {
+      "text": "Redraw the domes and columns, keeping every other part of each icon and its red",
+      "short": "redraw those parts"
+     },
+     {
+      "text": "Change Rule 01.6 to allow such an icon beside its institution's name",
+      "short": "change Rule 01.6"
+     },
+     {
+      "text": "Keep those six icons out of use",
+      "short": "keep them out of use"
+     }
+    ],
+    "recommended": "a",
+    "why": "A redraw keeps Rule 01.6 whole and keeps the topics these icons name, Congress among them, on our pages.",
+    "named": true,
+    "named_note": "Your approval by name is needed, since a redraw changes identity drawings and option (b) changes a rule you approved (gate rule 4).",
+    "source": "Stage B scoping notes, question 3, and the main session's routine call D2-405."
+   },
+   {
+    "id": "Q8",
+    "question": "How small may topic and atlas symbols go?",
+    "context": [
+     "Of our 122 topic and atlas symbols, only 41 read at 24 px."
+    ],
+    "options": [
+     {
+      "text": "A 48 px floor, with 24 px allowed for the 41 that read there, and none at 16 px",
+      "short": "a 48 px floor"
+     },
+     {
+      "text": "New drawings for small sizes",
+      "short": "new small drawings"
+     }
+    ],
+    "recommended": "a",
+    "why": "The floor uses the drawings we have and keeps every symbol legible where it appears, and a small drawing can follow later where a product needs one.",
+    "named": false,
+    "named_note": "Gate rule 4 does not apply, since a size floor changes no drawing.",
+    "source": "Stage B scoping notes, question 4."
+   },
+   {
+    "id": "Q9",
+    "question": "Which drawings become our topic set?",
+    "context": [
+     "Our fifth edition named twenty topics. Seven have no Civic Line drawing: State house, Bill, Committee hearing, Roll call vote, Contact an official, Testify and Organize. Three more, Ranked ballot, Open primary and District map, exist only as reform drawings in our systems atlas."
+    ],
+    "options": [
+     {
+      "text": "Civic Line's 72 drawings become the topic set, and the studio draws Testify and Contact an official if the Act pieces need them",
+      "short": "Civic Line's 72"
+     },
+     {
+      "text": "Draw every missing topic, each under your approval",
+      "short": "draw the gaps"
+     }
+    ],
+    "recommended": "a",
+    "why": "The 72 drawings already share one grid and one line, and Testify and Contact an official are the two gaps an Act piece would need.",
+    "named": false,
+    "named_note": "Gate rule 4 does not apply to the choice itself. Any new drawing that follows comes to you for approval by name.",
+    "source": "Stage B scoping notes, question 5."
+   },
+   {
+    "id": "Q10",
+    "question": "Should a part opener carry a pillar icon?",
+    "context": [
+     "When you approved stage board A's plan (DR-88), the pillar icons were to mark each part of the guide. Your Board 6 answer DR-112 keeps them to the pillar row, section openers and tiles."
+    ],
+    "options": [
+     {
+      "text": "Part openers carry no pillar icon",
+      "short": "no pillar icon on a part opener"
+     },
+     {
+      "text": "Assign one pillar to each part, and set its icon on the opener",
+      "short": "one pillar to each part"
+     }
+    ],
+    "recommended": "a",
+    "why": "Each part of the guide serves all four pillars, and DR-112 keeps an icon to the places where its pillar is the subject.",
+    "named": false,
+    "named_note": "Gate rule 4 does not apply, since no drawing changes.",
+    "source": "Stage B scoping notes, question 6."
+   }
+  ]
+ },
+ "reply": {
+  "text": [
+   "The answers you mark above collect here, ready to paste into our chat. A tick in an \"I approve by name\" box adds your approval by name to that answer. Your marks stay in this browser only. Until you mark one, the box holds a sample reply."
+  ],
+  "title": "Ready to paste"
+ }
+}

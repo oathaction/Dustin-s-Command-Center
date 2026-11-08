@@ -1,0 +1,2866 @@
+{
+ "captured": "2026-11-07T08:29:12.069Z",
+ "pages": {
+  "before": {
+   "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/ab3d43b8-cc87-5ece-933a-c4123e99234a/scratchpad/before/20261106_Stage-A-Chapters.html",
+   "mtime": "2026-11-07T07:49:48.465Z",
+   "bytes": 6058090
+  },
+  "after": {
+   "path": "/home/user/Dustin-s-Command-Center/oath-and-action-v6-brand-guide/work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html",
+   "mtime": "2026-11-07T07:45:06.413Z",
+   "bytes": 6205094
+  }
+ },
+ "anchors": {
+  "purpose": {
+   "kind": "chapter",
+   "chapter": "01",
+   "label": "01 Purpose"
+  },
+  "fig-s-01-words": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Words this guide uses, in chapter 01"
+  },
+  "fig-s-01-hinge-lines": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "The hinge in the locked lines, in chapter 01"
+  },
+  "fig-s-01-pillars": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "The four pillars, always in this order, in chapter 01"
+  },
+  "fig-s-01-pieces": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "One piece from each pillar, at true size, in chapter 01"
+  },
+  "group-01-1": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 1 Color and party"
+  },
+  "rule-01-1": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.1 Keep red off every party, side and person"
+  },
+  "fig-s-01-1-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.1, Correct application"
+  },
+  "fig-s-01-1-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.1, Failure case"
+  },
+  "rule-01-2": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.2 Draw every party in one neutral ink, with its name on the mark"
+  },
+  "fig-s-01-2-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.2, Correct application"
+  },
+  "fig-s-01-2-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.2, Failure case"
+  },
+  "rule-01-3": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.3 Run a two-way scale from Prussian through the page color to Verdigris"
+  },
+  "fig-s-01-3-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.3, Correct application"
+  },
+  "fig-s-01-3-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.3, Failure case"
+  },
+  "rule-01-4": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.4 On Prussian, turn identity marks White and data marks Newsprint"
+  },
+  "fig-s-01-4-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.4, Correct application"
+  },
+  "fig-s-01-4-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.4, Failure case"
+  },
+  "rule-01-5": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.5 Color a map by the rule or measure the story covers"
+  },
+  "fig-s-01-5-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.5, Correct application"
+  },
+  "fig-s-01-5-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.5, Failure case"
+  },
+  "group-01-2": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 2 Pictures"
+  },
+  "rule-01-6": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.6 Show domes, columns and flags only in a captioned photograph of that place"
+  },
+  "fig-s-01-6-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.6, Correct application"
+  },
+  "fig-s-01-6-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.6, Failure case"
+  },
+  "rule-01-7": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.7 Keep party symbols, candidate photos, campaign gear and protest slogans out of brand graphics"
+  },
+  "fig-s-01-7-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.7, Correct application"
+  },
+  "fig-s-01-7-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.7, Failure case"
+  },
+  "rule-01-8": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.8 Photograph people doing public work, and caption who, what, where and when"
+  },
+  "fig-s-01-8-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.8, Correct application"
+  },
+  "fig-s-01-8-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.8, Failure case"
+  },
+  "group-01-3": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 3 Choosing examples"
+  },
+  "rule-01-9": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.9 Draw no more than one example in four from one atlas domain, or one in five from one state"
+  },
+  "fig-s-01-9-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.9, Correct application"
+  },
+  "fig-s-01-9-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.9, Failure case"
+  },
+  "rule-01-10": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.10 Rotate examples across levels of government and regions"
+  },
+  "fig-s-01-10-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.10, Correct application"
+  },
+  "fig-s-01-10-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.10, Failure case"
+  },
+  "rule-01-11": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.11 Show a case from each party that uses a mechanism, and report the counts as the record gives them"
+  },
+  "fig-s-01-11-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.11, Correct application"
+  },
+  "fig-s-01-11-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.11, Failure case"
+  },
+  "fig-s-01-uneven": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "A finding that falls on one side, in chapter 01"
+  },
+  "rule-01-12": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.12 Log each example’s domain, state, region, level and backing coalition"
+  },
+  "fig-s-01-12-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.12, Correct application"
+  },
+  "fig-s-01-12-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.12, Failure case"
+  },
+  "group-01-4": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 4 Words"
+  },
+  "rule-01-13": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.13 Name the office that decides, and name a party only when party is part of the finding"
+  },
+  "fig-s-01-13-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.13, Correct application"
+  },
+  "fig-s-01-13-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.13, Failure case"
+  },
+  "rule-01-14": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.14 Ask questions a supporter of the current rule could ask too"
+  },
+  "fig-s-01-14-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.14, Correct application"
+  },
+  "fig-s-01-14-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.14, Failure case"
+  },
+  "rule-01-15": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.15 Use plain verbs in place of war and sports metaphors"
+  },
+  "fig-s-01-15-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.15, Correct application"
+  },
+  "fig-s-01-15-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.15, Failure case"
+  },
+  "rule-01-16": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.16 Show both readings of a contested claim at the same length"
+  },
+  "fig-s-01-16-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.16, Correct application"
+  },
+  "fig-s-01-16-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.16, Failure case"
+  },
+  "rule-01-17": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.17 Describe a rule so its supporters would accept the description"
+  },
+  "fig-s-01-17-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.17, Correct application"
+  },
+  "fig-s-01-17-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.17, Failure case"
+  },
+  "group-01-5": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 5 Hinge headlines"
+  },
+  "rule-01-18": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.18 Set both halves of a hinge headline in one color and weight, and give the red to the ampersand"
+  },
+  "fig-s-01-18-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.18, Correct application"
+  },
+  "fig-s-01-18-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.18, Failure case"
+  },
+  "rule-01-19": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.19 Join people through a rule or place they share, and rotate their order"
+  },
+  "fig-s-01-19-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.19, Correct application"
+  },
+  "fig-s-01-19-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.19, Failure case"
+  },
+  "rule-01-20": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.20 Name parties, the left or the right in a hinge headline only to report sourced agreement"
+  },
+  "fig-s-01-20-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.20, Correct application"
+  },
+  "fig-s-01-20-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.20, Failure case"
+  },
+  "group-01-6": {
+   "kind": "group",
+   "chapter": "01",
+   "label": "Group 6 Labels, Act pieces and names"
+  },
+  "rule-01-21": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.21 Open every kicker with one content label"
+  },
+  "fig-s-01-21-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.21, Correct application"
+  },
+  "fig-s-01-21-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.21, Failure case"
+  },
+  "rule-01-22": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.22 In a process piece, name the step and leave the side to the reader"
+  },
+  "fig-s-01-22-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.22, Correct application"
+  },
+  "fig-s-01-22-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.22, Failure case"
+  },
+  "rule-01-23": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.23 Put a position piece’s label before the headline and its fairness kit before the ask"
+  },
+  "fig-s-01-23-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.23, Correct application"
+  },
+  "fig-s-01-23-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.23, Failure case"
+  },
+  "rule-01-24": {
+   "kind": "rule",
+   "chapter": "01",
+   "label": "Rule 01.24 Name each product for what it does, and keep the ampersand for Oath & Action"
+  },
+  "fig-s-01-24-correct": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.24, Correct application"
+  },
+  "fig-s-01-24-failure": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Rule 01.24, Failure case"
+  },
+  "fig-s-01-founding-line": {
+   "kind": "figure",
+   "chapter": "01",
+   "label": "Our founding line, in chapter 01"
+  },
+  "voice": {
+   "kind": "chapter",
+   "chapter": "02",
+   "label": "02 Voice"
+  },
+  "fig-s-02-lines": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "The brand lines, in chapter 02"
+  },
+  "fig-s-02-about": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "How Oath & Action writes, in chapter 02"
+  },
+  "group-02-1": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 1 Sound like a person talking"
+  },
+  "rule-02-1": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.1 W01 Write it the way you would say it"
+  },
+  "fig-s-02-1-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.1, Correct application"
+  },
+  "fig-s-02-1-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.1, Failure case"
+  },
+  "rule-02-2": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.2 W02 Name who acts"
+  },
+  "fig-s-02-2-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.2, Correct application"
+  },
+  "fig-s-02-2-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.2, Failure case"
+  },
+  "rule-02-3": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.3 W03 Change the length of your sentences"
+  },
+  "fig-s-02-3-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.3, Correct application"
+  },
+  "fig-s-02-3-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.3, Failure case"
+  },
+  "rule-02-4": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.4 W04 Join thoughts that belong together"
+  },
+  "fig-s-02-4-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.4, Correct application"
+  },
+  "fig-s-02-4-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.4, Failure case"
+  },
+  "group-02-2": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 2 Put the point first and stop"
+  },
+  "rule-02-5": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.5 W05 Open with something the reader can use"
+  },
+  "fig-s-02-5-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.5, Correct application"
+  },
+  "fig-s-02-5-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.5, Failure case"
+  },
+  "rule-02-6": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.6 W06 Give the point without a reveal"
+  },
+  "fig-s-02-6-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.6, Correct application"
+  },
+  "fig-s-02-6-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.6, Failure case"
+  },
+  "rule-02-7": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.7 W07 Stop when the facts stop"
+  },
+  "fig-s-02-7-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.7, Correct application"
+  },
+  "fig-s-02-7-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.7, Failure case"
+  },
+  "rule-02-8": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.8 W08 Close without a slogan"
+  },
+  "fig-s-02-8-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.8, Correct application"
+  },
+  "fig-s-02-8-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.8, Failure case"
+  },
+  "group-02-3": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 3 Say what is so"
+  },
+  "rule-02-9": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.9 W09 Say what a thing is"
+  },
+  "fig-s-02-9-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.9, Correct application"
+  },
+  "fig-s-02-9-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.9, Failure case"
+  },
+  "rule-02-10": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.10 W10 Drop the matched pair"
+  },
+  "fig-s-02-10-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.10, Correct application"
+  },
+  "fig-s-02-10-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.10, Failure case"
+  },
+  "rule-02-11": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.11 W11 Skip the run of negatives"
+  },
+  "fig-s-02-11-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.11, Correct application"
+  },
+  "fig-s-02-11-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.11, Failure case"
+  },
+  "rule-02-12": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.12 W12 List what the facts hold"
+  },
+  "fig-s-02-12-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.12, Correct application"
+  },
+  "fig-s-02-12-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.12, Failure case"
+  },
+  "rule-02-13": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.13 W13 Give each sentence its own shape"
+  },
+  "fig-s-02-13-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.13, Correct application"
+  },
+  "fig-s-02-13-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.13, Failure case"
+  },
+  "group-02-4": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 4 Cut the padding"
+  },
+  "rule-02-14": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.14 W14 Pull stacked nouns apart"
+  },
+  "fig-s-02-14-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.14, Correct application"
+  },
+  "fig-s-02-14-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.14, Failure case"
+  },
+  "rule-02-15": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.15 W15 Use the verb inside the noun"
+  },
+  "fig-s-02-15-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.15, Correct application"
+  },
+  "fig-s-02-15-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.15, Failure case"
+  },
+  "rule-02-16": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.16 W16 Drop the hedges and keep the grade"
+  },
+  "fig-s-02-16-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.16, Correct application"
+  },
+  "fig-s-02-16-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.16, Failure case"
+  },
+  "rule-02-17": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.17 W17 Cut the intensifiers"
+  },
+  "fig-s-02-17-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.17, Correct application"
+  },
+  "fig-s-02-17-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.17, Failure case"
+  },
+  "rule-02-18": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.18 W18 Use everyday verbs"
+  },
+  "fig-s-02-18-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.18, Correct application"
+  },
+  "fig-s-02-18-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.18, Failure case"
+  },
+  "rule-02-19": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.19 W19 Let the facts carry the feeling"
+  },
+  "fig-s-02-19-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.19, Correct application"
+  },
+  "fig-s-02-19-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.19, Failure case"
+  },
+  "rule-02-20": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.20 W20 Size each word to its evidence"
+  },
+  "fig-s-02-20-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.20, Correct application"
+  },
+  "fig-s-02-20-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.20, Failure case"
+  },
+  "group-02-5": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 5 Marks and numbers"
+  },
+  "rule-02-21": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.21 W21 Leave out the em dash"
+  },
+  "fig-s-02-21-pair": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.21, Correct application"
+  },
+  "fig-s-02-21-fault": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.21, Failure case"
+  },
+  "group-02-6": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 6 House rules for every page"
+  },
+  "rule-02-22": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.22 Follow the 12 house rules on every page"
+  },
+  "fig-s-02-22-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.22, Correct application"
+  },
+  "fig-s-02-22-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.22, Failure case"
+  },
+  "fig-s-02-checklist": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Before you publish, in chapter 02"
+  },
+  "group-02-7": {
+   "kind": "group",
+   "chapter": "02",
+   "label": "Group 7 Our lines and words"
+  },
+  "rule-02-23": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.23 Set each brand line in its own place, word for word"
+  },
+  "fig-s-02-23-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.23, Correct application"
+  },
+  "fig-s-02-23-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.23, Failure case"
+  },
+  "fig-s-02-sound": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "How we sound, in chapter 02"
+  },
+  "rule-02-24": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.24 Close every piece on one next step, with its date"
+  },
+  "fig-s-02-24-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.24, Correct application"
+  },
+  "fig-s-02-24-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.24, Failure case"
+  },
+  "rule-02-25": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.25 Publish the mechanism behind a mood"
+  },
+  "fig-s-02-25-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.25, Correct application"
+  },
+  "fig-s-02-25-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.25, Failure case"
+  },
+  "rule-02-26": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.26 Use the words a reader would use, and spell series names exactly"
+  },
+  "fig-s-02-26-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.26, Correct application"
+  },
+  "fig-s-02-26-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.26, Failure case"
+  },
+  "rule-02-27": {
+   "kind": "rule",
+   "chapter": "02",
+   "label": "Rule 02.27 Write a hinge headline as a rule, then what it produces"
+  },
+  "fig-s-02-27-correct": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.27, Correct application"
+  },
+  "fig-s-02-27-failure": {
+   "kind": "figure",
+   "chapter": "02",
+   "label": "Rule 02.27, Failure case"
+  },
+  "identity": {
+   "kind": "chapter",
+   "chapter": "03",
+   "label": "03 Identity"
+  },
+  "rule-03-1": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.1 Place the wordmark from its master file"
+  },
+  "fig-s-03-1-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.1, Correct application"
+  },
+  "fig-s-03-1-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.1, Failure case"
+  },
+  "rule-03-2": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.2 Choose the lockup by the space and the surface"
+  },
+  "fig-s-03-2-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.2, Correct application"
+  },
+  "fig-s-03-2-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.2, Failure case"
+  },
+  "fig-s-03-lockups": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "The eight lockups, in chapter 03"
+  },
+  "fig-s-03-l6": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "L6 at its minimum, in chapter 03"
+  },
+  "rule-03-3": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.3 Keep one cap height of clear space on every side"
+  },
+  "fig-s-03-3-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.3, Correct application"
+  },
+  "fig-s-03-3-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.3, Failure case"
+  },
+  "rule-03-4": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.4 Keep every mark at or above its minimum size"
+  },
+  "fig-s-03-4-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.4, Correct application"
+  },
+  "fig-s-03-4-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.4, Failure case"
+  },
+  "fig-s-03-minimums": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Minimum sizes, in chapter 03"
+  },
+  "rule-03-5": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.5 Set the marks in their colors on the four approved surfaces"
+  },
+  "fig-s-03-5-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.5, Correct application"
+  },
+  "fig-s-03-5-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.5, Failure case"
+  },
+  "rule-03-6": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.6 Use L3 for the masthead, and drop the lockmark when the bar gets narrow"
+  },
+  "fig-s-03-6-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.6, Correct application"
+  },
+  "fig-s-03-6-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.6, Failure case"
+  },
+  "rule-03-7": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.7 Use L8 as the one monogram, and retire the spaced “O & A”"
+  },
+  "fig-s-03-7-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.7, Correct application"
+  },
+  "fig-s-03-7-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.7, Failure case"
+  },
+  "rule-03-8": {
+   "kind": "rule",
+   "chapter": "03",
+   "label": "Rule 03.8 Join a partner with a hairline, and keep our ampersand inside our name"
+  },
+  "fig-s-03-8-correct": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.8, Correct application"
+  },
+  "fig-s-03-8-failure": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Rule 03.8, Failure case"
+  },
+  "fig-s-03-misuse": {
+   "kind": "figure",
+   "chapter": "03",
+   "label": "Three more failures, in chapter 03"
+  },
+  "ampersand": {
+   "kind": "chapter",
+   "chapter": "04",
+   "label": "04 The Ampersand and the hinge"
+  },
+  "rule-04-1": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.1 Draw the ampersand from B’s master for its size"
+  },
+  "fig-s-04-1-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.1, Correct application"
+  },
+  "fig-s-04-1-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.1, Failure case"
+  },
+  "rule-04-2": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.2 Give each composition one ampersand moment"
+  },
+  "fig-s-04-2-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.2, Correct application"
+  },
+  "fig-s-04-2-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.2, Failure case"
+  },
+  "rule-04-3": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.3 Join a rule to its result with a hinge headline, and give its ampersand the view’s working red"
+  },
+  "fig-s-04-3-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.3, Correct application"
+  },
+  "fig-s-04-3-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.3, Failure case"
+  },
+  "fig-s-04-3-corrective": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.3, Corrective example"
+  },
+  "rule-04-4": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.4 Set a hinge divider between how a decision is made and what you can do about it"
+  },
+  "fig-s-04-4-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.4, Correct application"
+  },
+  "fig-s-04-4-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.4, Failure case"
+  },
+  "rule-04-5": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.5 Show the hinge diagram on its own, to explain the idea"
+  },
+  "fig-s-04-5-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.5, Correct application"
+  },
+  "fig-s-04-5-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.5, Failure case"
+  },
+  "rule-04-6": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.6 End an article with B alone, and keep the badge for back covers and events"
+  },
+  "fig-s-04-6-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.6, Correct application"
+  },
+  "fig-s-04-6-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.6, Failure case"
+  },
+  "rule-04-7": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.7 Put B on a Charcoal tile for avatars and the app icon"
+  },
+  "fig-s-04-7-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.7, Correct application"
+  },
+  "fig-s-04-7-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.7, Failure case"
+  },
+  "rule-04-8": {
+   "kind": "rule",
+   "chapter": "04",
+   "label": "Rule 04.8 Crop a large B off the bottom-right corner only"
+  },
+  "fig-s-04-8-correct": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.8, Correct application"
+  },
+  "fig-s-04-8-failure": {
+   "kind": "figure",
+   "chapter": "04",
+   "label": "Rule 04.8, Failure case"
+  },
+  "color": {
+   "kind": "chapter",
+   "chapter": "05",
+   "label": "05 Color"
+  },
+  "rule-05-1": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.1 Cover most of every view in Newsprint"
+  },
+  "fig-s-05-1-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.1, Correct application"
+  },
+  "fig-s-05-1-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.1, Failure case"
+  },
+  "fig-s-05-palette": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "The seven colors, in chapter 05"
+  },
+  "rule-05-2": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.2 Set text only on color pairs that pass"
+  },
+  "fig-s-05-2-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.2, Correct application"
+  },
+  "fig-s-05-2-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.2, Failure case"
+  },
+  "fig-s-05-roles": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Color roles on each surface, in chapter 05"
+  },
+  "rule-05-3": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.3 Give each view one working red"
+  },
+  "fig-s-05-3-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.3, Correct application"
+  },
+  "fig-s-05-3-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.3, Failure case"
+  },
+  "fig-s-05-3-corrective": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.3, Corrective example"
+  },
+  "fig-s-05-ask": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "The ask on four surfaces, in chapter 05"
+  },
+  "rule-05-4": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.4 Show every state with a word or a shape as well as a color"
+  },
+  "fig-s-05-4-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.4, Correct application"
+  },
+  "fig-s-05-4-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.4, Failure case"
+  },
+  "rule-05-5": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.5 Keep marks that carry meaning at 3 to 1, and give red on Newsprint a Charcoal keyline"
+  },
+  "fig-s-05-5-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.5, Correct application"
+  },
+  "fig-s-05-5-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.5, Failure case"
+  },
+  "fig-s-05-pairs": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Every palette pair, measured, in chapter 05"
+  },
+  "rule-05-6": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.6 Give each tint one named job, and keep tints off identity marks"
+  },
+  "fig-s-05-6-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.6, Correct application"
+  },
+  "fig-s-05-6-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.6, Failure case"
+  },
+  "rule-05-7": {
+   "kind": "rule",
+   "chapter": "05",
+   "label": "Rule 05.7 Set charts and the atlas on Newsprint, in the chart palette"
+  },
+  "fig-s-05-7-correct": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.7, Correct application"
+  },
+  "fig-s-05-7-failure": {
+   "kind": "figure",
+   "chapter": "05",
+   "label": "Rule 05.7, Failure case"
+  },
+  "type": {
+   "kind": "chapter",
+   "chapter": "06",
+   "label": "06 Type"
+  },
+  "rule-06-1": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.1 Keep each typeface to its one job"
+  },
+  "fig-s-06-1-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.1, Correct application"
+  },
+  "fig-s-06-1-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.1, Failure case"
+  },
+  "rule-06-2": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.2 Take every size from the type scale"
+  },
+  "fig-s-06-2-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.2, Correct application"
+  },
+  "fig-s-06-2-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.2, Failure case"
+  },
+  "fig-s-06-artboards": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Sizes for fixed artboards, in chapter 06"
+  },
+  "rule-06-3": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.3 Set no text on screen below 13 px"
+  },
+  "fig-s-06-3-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.3, Correct application"
+  },
+  "fig-s-06-3-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.3, Failure case"
+  },
+  "rule-06-4": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.4 Tighten tracking only as headings grow"
+  },
+  "fig-s-06-4-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.4, Correct application"
+  },
+  "fig-s-06-4-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.4, Failure case"
+  },
+  "rule-06-5": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.5 Line up figures in tables, and give negatives the true minus sign"
+  },
+  "fig-s-06-5-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.5, Correct application"
+  },
+  "fig-s-06-5-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.5, Failure case"
+  },
+  "rule-06-6": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.6 Balance a heading’s lines, and keep two words or more on its last line"
+  },
+  "fig-s-06-6-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.6, Correct application"
+  },
+  "fig-s-06-6-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.6, Failure case"
+  },
+  "rule-06-7": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.7 Hang opening quotation marks outside the text edge"
+  },
+  "fig-s-06-7-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.7, Correct application"
+  },
+  "fig-s-06-7-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.7, Failure case"
+  },
+  "rule-06-8": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.8 Set body text at 60 to 75 characters a line"
+  },
+  "fig-s-06-8-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.8, Correct application"
+  },
+  "fig-s-06-8-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.8, Failure case"
+  },
+  "rule-06-9": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.9 Set email type in the system font stack"
+  },
+  "fig-s-06-9-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.9, Correct application"
+  },
+  "fig-s-06-9-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.9, Failure case"
+  },
+  "rule-06-10": {
+   "kind": "rule",
+   "chapter": "06",
+   "label": "Rule 06.10 Load the three faces, and let no other face stand in"
+  },
+  "fig-s-06-10-correct": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.10, Correct application"
+  },
+  "fig-s-06-10-failure": {
+   "kind": "figure",
+   "chapter": "06",
+   "label": "Rule 06.10, Failure case"
+  },
+  "layout": {
+   "kind": "chapter",
+   "chapter": "07",
+   "label": "07 Layout and spacing"
+  },
+  "rule-07-1": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.1 Space everything in steps of the 8 px scale"
+  },
+  "fig-s-07-1-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.1, Correct application"
+  },
+  "fig-s-07-1-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.1, Failure case"
+  },
+  "rule-07-2": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.2 Set each page on the column grid for its width"
+  },
+  "fig-s-07-2-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.2, Correct application"
+  },
+  "fig-s-07-2-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.2, Failure case"
+  },
+  "rule-07-3": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.3 Span body text across the columns that hold its measure"
+  },
+  "fig-s-07-3-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.3, Correct application"
+  },
+  "fig-s-07-3-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.3, Failure case"
+  },
+  "fig-s-07-spans": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Body span at each width, in chapter 07"
+  },
+  "rule-07-4": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.4 Set a heading closer to the text it introduces than to the block above"
+  },
+  "fig-s-07-4-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.4, Correct application"
+  },
+  "fig-s-07-4-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.4, Failure case"
+  },
+  "rule-07-5": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.5 Set breakpoints in em, so larger text gets fewer columns"
+  },
+  "fig-s-07-5-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.5, Correct application"
+  },
+  "fig-s-07-5-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.5, Failure case"
+  },
+  "rule-07-6": {
+   "kind": "rule",
+   "chapter": "07",
+   "label": "Rule 07.6 Make every page read at 320 px wide, with nothing lost"
+  },
+  "fig-s-07-6-correct": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.6, Correct application"
+  },
+  "fig-s-07-6-failure": {
+   "kind": "figure",
+   "chapter": "07",
+   "label": "Rule 07.6, Failure case"
+  },
+  "lockmark": {
+   "kind": "chapter",
+   "chapter": "08",
+   "label": "08 The lockmark"
+  },
+  "rule-08-1": {
+   "kind": "rule",
+   "chapter": "08",
+   "label": "Rule 08.1 Draw the lockmark from its master for its size, and keep its drawing fixed"
+  },
+  "fig-s-08-1-correct": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.1, Correct application"
+  },
+  "fig-s-08-1-failure": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.1, Failure case"
+  },
+  "rule-08-2": {
+   "kind": "rule",
+   "chapter": "08",
+   "label": "Rule 08.2 Place the lockmark only in its four places, once in a view"
+  },
+  "fig-s-08-2-correct": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.2, Correct application"
+  },
+  "fig-s-08-2-failure": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.2, Failure case"
+  },
+  "rule-08-3": {
+   "kind": "rule",
+   "chapter": "08",
+   "label": "Rule 08.3 Let the lockmark code nothing"
+  },
+  "fig-s-08-3-correct": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.3, Correct application"
+  },
+  "fig-s-08-3-failure": {
+   "kind": "figure",
+   "chapter": "08",
+   "label": "Rule 08.3, Failure case"
+  },
+  "icons": {
+   "kind": "chapter",
+   "chapter": "11",
+   "label": "11 Status and utility icons"
+  },
+  "group-11-1": {
+   "kind": "group",
+   "chapter": "11",
+   "label": "Group 1 Trackers"
+  },
+  "rule-11-1": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.1 Follow every bill through six numbered steps with plain names"
+  },
+  "fig-s-11-1-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.1, Correct application"
+  },
+  "fig-s-11-1-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.1, Failure case"
+  },
+  "fig-s-11-steps": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "The six steps, in chapter 11"
+  },
+  "rule-11-2": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.2 Draw each step’s state as a shape, and say it in words"
+  },
+  "fig-s-11-2-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.2, Correct application"
+  },
+  "fig-s-11-2-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.2, Failure case"
+  },
+  "rule-11-3": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.3 Say in words when a bill becomes law or stops"
+  },
+  "fig-s-11-3-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.3, Correct application"
+  },
+  "fig-s-11-3-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.3, Failure case"
+  },
+  "rule-11-4": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.4 Mark the one way to take part in red, on its own shape, beside its words"
+  },
+  "fig-s-11-4-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.4, Correct application"
+  },
+  "fig-s-11-4-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.4, Failure case"
+  },
+  "rule-11-5": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.5 Use numbered steps in lists and on story cards"
+  },
+  "fig-s-11-5-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.5, Correct application"
+  },
+  "fig-s-11-5-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.5, Failure case"
+  },
+  "fig-s-11-list-360-charcoal": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Numbered steps at 360 px on Charcoal, in chapter 11"
+  },
+  "fig-s-11-list-600-newsprint": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Numbered steps in a 600 px column on Newsprint, in chapter 11"
+  },
+  "fig-s-11-list-600-charcoal": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Numbered steps in a 600 px column on Charcoal, in chapter 11"
+  },
+  "rule-11-6": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.6 Turn the same steps upright on a bill’s own page"
+  },
+  "fig-s-11-6-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.6, Correct application"
+  },
+  "fig-s-11-6-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.6, Failure case"
+  },
+  "fig-s-11-page-600-newsprint": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "A bill’s page in a 600 px column on Newsprint, in chapter 11"
+  },
+  "fig-s-11-page-360-charcoal": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "A bill’s page at 360 px on Charcoal, in chapter 11"
+  },
+  "rule-11-7": {
+   "kind": "rule",
+   "chapter": "11",
+   "label": "Rule 11.7 Size the marks for reading, and the targets for a thumb"
+  },
+  "fig-s-11-7-correct": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.7, Correct application"
+  },
+  "fig-s-11-7-failure": {
+   "kind": "figure",
+   "chapter": "11",
+   "label": "Rule 11.7, Failure case"
+  },
+  "proofs": {
+   "kind": "chapter",
+   "chapter": null,
+   "label": "Appendix: Identity proofs"
+  },
+  "proofs-masthead-on-the-site": {
+   "kind": "proof",
+   "chapter": null,
+   "label": "Identity proofs, Masthead on the site"
+  },
+  "fig-s-proofs-masthead": {
+   "kind": "figure",
+   "chapter": null,
+   "label": "Site and phone, in the Appendix: Identity proofs"
+  },
+  "proofs-avatar": {
+   "kind": "proof",
+   "chapter": null,
+   "label": "Identity proofs, Avatar"
+  },
+  "fig-s-proofs-avatar": {
+   "kind": "figure",
+   "chapter": null,
+   "label": "Upload, feed and app icon, in the Appendix: Identity proofs"
+  },
+  "proofs-social-card": {
+   "kind": "proof",
+   "chapter": null,
+   "label": "Identity proofs, Social card"
+  },
+  "fig-s-proofs-social": {
+   "kind": "figure",
+   "chapter": null,
+   "label": "Link-preview card, in the Appendix: Identity proofs"
+  },
+  "proofs-letterhead": {
+   "kind": "proof",
+   "chapter": null,
+   "label": "Identity proofs, Letterhead"
+  },
+  "fig-s-proofs-letterhead": {
+   "kind": "figure",
+   "chapter": null,
+   "label": "US Letter, in the Appendix: Identity proofs"
+  },
+  "proofs-l2-beside-s1": {
+   "kind": "proof",
+   "chapter": null,
+   "label": "Identity proofs, L2 beside S1"
+  },
+  "fig-s-proofs-stacked": {
+   "kind": "figure",
+   "chapter": null,
+   "label": "Three sizes, in the Appendix: Identity proofs"
+  }
+ },
+ "views": [
+  {
+   "key": "B6-1-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-08-stages",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-1-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 1000,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The Signal Grid",
+    "chapter_anchor": "signal-grid",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Nine stages, five shapes",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "DR-128-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-01-pieces",
+   "find": "Stop Insider Trading Act Tracker",
+   "file": "20261107_Apply-Board-DR-128-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 600,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "One piece from each pillar, at true size",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-2-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-08-5-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-2-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 760,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The Signal Grid",
+    "chapter_anchor": "signal-grid",
+    "rule": "08.5",
+    "rule_title": "Show tracker progress with a shape for each stage, from 40 px.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-3-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "signal-grid",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-3-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 760,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The Signal Grid",
+    "chapter_anchor": "signal-grid",
+    "rule": null,
+    "rule_title": "",
+    "figure": "",
+    "proof": "",
+    "kind": "chapter"
+   }
+  },
+  {
+   "key": "B6-4-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-01-pillars",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-4-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 330,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The four pillars, always in this order",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-5-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-08-8-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-5-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 460,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The Signal Grid",
+    "chapter_anchor": "signal-grid",
+    "rule": "08.8",
+    "rule_title": "Build the kicker from a 24 px grid, a 24 px icon and a label.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-6-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-03-lockups",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-6-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 700,
+   "about": {
+    "chapter": "03",
+    "chapter_title": "Identity",
+    "chapter_anchor": "identity",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The eight lockups",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A4-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "rule-04-8",
+   "find": null,
+   "file": "20261107_Apply-Board-A4-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 401,
+   "about": {
+    "chapter": "04",
+    "chapter_title": "The Ampersand and the hinge",
+    "chapter_anchor": "ampersand",
+    "rule": "04.8",
+    "rule_title": "Crop a large B off the bottom-right corner only.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A6-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-04-6-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-A6-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 300,
+   "about": {
+    "chapter": "04",
+    "chapter_title": "The Ampersand and the hinge",
+    "chapter_anchor": "ampersand",
+    "rule": "04.6",
+    "rule_title": "Use the hinge-circle badge only to close a piece, on a back cover or at events.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A7-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "rule-05-1",
+   "find": null,
+   "file": "20261107_Apply-Board-A7-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 367,
+   "about": {
+    "chapter": "05",
+    "chapter_title": "Color",
+    "chapter_anchor": "color",
+    "rule": "05.1",
+    "rule_title": "Cover most of every view in Newsprint.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A8-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "rule-06-8",
+   "find": null,
+   "file": "20261107_Apply-Board-A8-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 368,
+   "about": {
+    "chapter": "06",
+    "chapter_title": "Type",
+    "chapter_anchor": "type",
+    "rule": "06.8",
+    "rule_title": "Set body text at 60 to 75 characters a line.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A10-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-02-lines",
+   "find": "Retired, kept as a record",
+   "file": "20261107_Apply-Board-A10-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 240,
+   "about": {
+    "chapter": "02",
+    "chapter_title": "Voice",
+    "chapter_anchor": "voice",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The brand lines",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A12-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "rule-05-7",
+   "find": "Why it works",
+   "file": "20261107_Apply-Board-A12-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 360,
+   "about": {
+    "chapter": "05",
+    "chapter_title": "Color",
+    "chapter_anchor": "color",
+    "rule": "05.7",
+    "rule_title": "Set charts and the atlas on Newsprint, in the chart palette.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A13-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "purpose",
+   "find": null,
+   "file": "20261107_Apply-Board-A13-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 600,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "",
+    "proof": "",
+    "kind": "chapter"
+   }
+  },
+  {
+   "key": "A14-Before-1-1440",
+   "page": "before",
+   "width": 1440,
+   "anchor": "fig-s-02-25-correct",
+   "find": "H.R. 7008, the Stop Insider",
+   "file": "20261107_Apply-Board-A14-Before-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 420,
+   "about": {
+    "chapter": "02",
+    "chapter_title": "Voice",
+    "chapter_anchor": "voice",
+    "rule": "02.25",
+    "rule_title": "Publish the mechanism behind a mood.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "DR-128-Before-1-390",
+   "page": "before",
+   "width": 390,
+   "anchor": "fig-s-01-pieces",
+   "find": "Stop Insider Trading Act Tracker",
+   "file": "20261107_Apply-Board-DR-128-Before-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "One piece from each pillar, at true size",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-2-Before-1-390",
+   "page": "before",
+   "width": 390,
+   "anchor": "fig-s-08-5-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-2-Before-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The Signal Grid",
+    "chapter_anchor": "signal-grid",
+    "rule": "08.5",
+    "rule_title": "Show tracker progress with a shape for each stage, from 40 px.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-4-Before-1-390",
+   "page": "before",
+   "width": 390,
+   "anchor": "fig-s-01-pillars",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-4-Before-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The four pillars, always in this order",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-6-Before-1-390",
+   "page": "before",
+   "width": 390,
+   "anchor": "fig-s-03-lockups",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-6-Before-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "03",
+    "chapter_title": "Identity",
+    "chapter_anchor": "identity",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The eight lockups",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-1-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-11-steps",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-1-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 760,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The six steps",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-1-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-11-3-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-1-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 1040,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": "11.3",
+    "rule_title": "Say in words when a bill becomes law or stops.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "DR-128-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-01-pieces",
+   "find": "Stop Insider Trading Act Tracker",
+   "file": "20261107_Apply-Board-DR-128-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 760,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "One piece from each pillar, at true size",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "DR-128-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-11-1-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-DR-128-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 1130,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": "11.1",
+    "rule_title": "Follow every bill through six numbered steps with plain names.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-2-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-11-list-600-newsprint",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-2-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 900,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Numbered steps in a 600 px column on Newsprint",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-2-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-11-page-600-newsprint",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-2-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 900,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": null,
+    "rule_title": "",
+    "figure": "A bill’s page in a 600 px column on Newsprint",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-3-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "lockmark",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-3-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 760,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The lockmark",
+    "chapter_anchor": "lockmark",
+    "rule": null,
+    "rule_title": "",
+    "figure": "",
+    "proof": "",
+    "kind": "chapter"
+   }
+  },
+  {
+   "key": "B6-3-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-08-2-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-3-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 1040,
+   "about": {
+    "chapter": "08",
+    "chapter_title": "The lockmark",
+    "chapter_anchor": "lockmark",
+    "rule": "08.2",
+    "rule_title": "Place the lockmark only in its four places, once in a view.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-4-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-01-pillars",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-4-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 330,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The four pillars, always in this order",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-4-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-01-pillars",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-4-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 330,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The four pillars, always in this order",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-5-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-01-21-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-5-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 830,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": "01.21",
+    "rule_title": "Open every kicker with one content label.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-6-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-03-lockups",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-6-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 700,
+   "about": {
+    "chapter": "03",
+    "chapter_title": "Identity",
+    "chapter_anchor": "identity",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The eight lockups",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A1-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "rule-03-1",
+   "find": null,
+   "file": "20261107_Apply-Board-A1-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 367,
+   "about": {
+    "chapter": "03",
+    "chapter_title": "Identity",
+    "chapter_anchor": "identity",
+    "rule": "03.1",
+    "rule_title": "Place the wordmark from its master file.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A4-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "rule-04-8",
+   "find": null,
+   "file": "20261107_Apply-Board-A4-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 401,
+   "about": {
+    "chapter": "04",
+    "chapter_title": "The Ampersand and the hinge",
+    "chapter_anchor": "ampersand",
+    "rule": "04.8",
+    "rule_title": "Crop a large B off the bottom-right corner only.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A6-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-04-6-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-A6-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 520,
+   "about": {
+    "chapter": "04",
+    "chapter_title": "The Ampersand and the hinge",
+    "chapter_anchor": "ampersand",
+    "rule": "04.6",
+    "rule_title": "End an article with B alone, and keep the badge for back covers and events.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A7-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "rule-05-1",
+   "find": null,
+   "file": "20261107_Apply-Board-A7-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 482,
+   "about": {
+    "chapter": "05",
+    "chapter_title": "Color",
+    "chapter_anchor": "color",
+    "rule": "05.1",
+    "rule_title": "Cover most of every view in Newsprint.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A8-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "rule-06-8",
+   "find": null,
+   "file": "20261107_Apply-Board-A8-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 434,
+   "about": {
+    "chapter": "06",
+    "chapter_title": "Type",
+    "chapter_anchor": "type",
+    "rule": "06.8",
+    "rule_title": "Set body text at 60 to 75 characters a line.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A10-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-02-lines",
+   "find": "Retired, kept as a record",
+   "file": "20261107_Apply-Board-A10-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 330,
+   "about": {
+    "chapter": "02",
+    "chapter_title": "Voice",
+    "chapter_anchor": "voice",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The brand lines",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A12-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "rule-05-7",
+   "find": "Why it works",
+   "file": "20261107_Apply-Board-A12-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 460,
+   "about": {
+    "chapter": "05",
+    "chapter_title": "Color",
+    "chapter_anchor": "color",
+    "rule": "05.7",
+    "rule_title": "Set charts and the atlas on Newsprint, in the chart palette.",
+    "figure": "",
+    "proof": "",
+    "kind": "rule"
+   }
+  },
+  {
+   "key": "A13-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "purpose",
+   "find": null,
+   "file": "20261107_Apply-Board-A13-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 600,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "",
+    "proof": "",
+    "kind": "chapter"
+   }
+  },
+  {
+   "key": "A13-After-2-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-01-uneven",
+   "find": null,
+   "file": "20261107_Apply-Board-A13-After-2-1440.jpg",
+   "css_w": 916,
+   "css_h": 870,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "A finding that falls on one side",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A14-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-02-25-correct",
+   "find": "H.R. 7008, the Stop Insider",
+   "file": "20261107_Apply-Board-A14-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 560,
+   "about": {
+    "chapter": "02",
+    "chapter_title": "Voice",
+    "chapter_anchor": "voice",
+    "rule": "02.25",
+    "rule_title": "Publish the mechanism behind a mood.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A15-After-1-1440",
+   "page": "after",
+   "width": 1440,
+   "anchor": "fig-s-02-22-correct",
+   "find": "Name parties in words",
+   "file": "20261107_Apply-Board-A15-After-1-1440.jpg",
+   "css_w": 916,
+   "css_h": 372,
+   "about": {
+    "chapter": "02",
+    "chapter_title": "Voice",
+    "chapter_anchor": "voice",
+    "rule": "02.22",
+    "rule_title": "Follow the 12 house rules on every page.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "DR-128-After-1-390",
+   "page": "after",
+   "width": 390,
+   "anchor": "fig-s-01-pieces",
+   "find": "Stop Insider Trading Act Tracker",
+   "file": "20261107_Apply-Board-DR-128-After-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "One piece from each pillar, at true size",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-2-After-1-390",
+   "page": "after",
+   "width": 390,
+   "anchor": "fig-s-11-5-correct",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-2-After-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "11",
+    "chapter_title": "Status and utility icons",
+    "chapter_anchor": "icons",
+    "rule": "11.5",
+    "rule_title": "Use numbered steps in lists and on story cards.",
+    "figure": "Correct application",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-4-After-1-390",
+   "page": "after",
+   "width": 390,
+   "anchor": "fig-s-01-pillars",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-4-After-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "01",
+    "chapter_title": "Purpose",
+    "chapter_anchor": "purpose",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The four pillars, always in this order",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-6-After-1-390",
+   "page": "after",
+   "width": 390,
+   "anchor": "fig-s-03-lockups",
+   "find": null,
+   "file": "20261107_Apply-Board-B6-6-After-1-390.jpg",
+   "css_w": 390,
+   "css_h": 755,
+   "about": {
+    "chapter": "03",
+    "chapter_title": "Identity",
+    "chapter_anchor": "identity",
+    "rule": null,
+    "rule_title": "",
+    "figure": "The eight lockups",
+    "proof": "",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A1-Before-1-Plate",
+   "page": "before",
+   "width": "stage",
+   "anchor": "proofs-the-marks-at-a-glance",
+   "file": "20261107_Apply-Board-A1-Before-1-Plate.jpg",
+   "css_w": 960,
+   "css_h": 593,
+   "about": {
+    "chapter": null,
+    "chapter_title": "Wordmark width proofs",
+    "chapter_anchor": "proofs",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Both widths",
+    "proof": "The marks at a glance",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A3-Before-1-Plate",
+   "page": "before",
+   "width": "stage",
+   "anchor": "proofs-avatar",
+   "file": "20261107_Apply-Board-A3-Before-1-Plate.jpg",
+   "css_w": 960,
+   "css_h": 447,
+   "about": {
+    "chapter": null,
+    "chapter_title": "Wordmark width proofs",
+    "chapter_anchor": "proofs",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Both widths, side by side",
+    "proof": "Avatar",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "B6-6-After-1-Plate",
+   "page": "after",
+   "width": "stage",
+   "anchor": "proofs-l2-beside-s1",
+   "file": "20261107_Apply-Board-B6-6-After-1-Plate.jpg",
+   "css_w": 1248,
+   "css_h": 642,
+   "about": {
+    "chapter": null,
+    "chapter_title": "Identity proofs",
+    "chapter_anchor": "proofs",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Three sizes",
+    "proof": "L2 beside S1",
+    "kind": "figure"
+   }
+  },
+  {
+   "key": "A3-After-1-Plate",
+   "page": "after",
+   "width": "stage",
+   "anchor": "proofs-avatar",
+   "file": "20261107_Apply-Board-A3-After-1-Plate.jpg",
+   "css_w": 760,
+   "css_h": 492,
+   "about": {
+    "chapter": null,
+    "chapter_title": "Identity proofs",
+    "chapter_anchor": "proofs",
+    "rule": null,
+    "rule_title": "",
+    "figure": "Upload, feed and app icon",
+    "proof": "Avatar",
+    "kind": "figure"
+   }
+  }
+ ],
+ "plates": [
+  {
+   "key": "L6-As-Drawn",
+   "file": "20261107_Apply-Board-Q1-L6-As-Drawn.png",
+   "css_w": 884,
+   "css_h": 235,
+   "source": "20261107_L6-Dots-Plates.html",
+   "selector": "#l6-pair .cell:nth-of-type(1)",
+   "fonts": [
+    "Inter 400",
+    "Inter 700",
+    "Inter Tight 800"
+   ]
+  },
+  {
+   "key": "L6-Without-Dots",
+   "file": "20261107_Apply-Board-Q1-L6-Without-Dots.png",
+   "css_w": 884,
+   "css_h": 216,
+   "source": "20261107_L6-Dots-Plates.html",
+   "selector": "#l6-pair .cell:nth-of-type(2)",
+   "fonts": [
+    "Inter 400",
+    "Inter 700",
+    "Inter Tight 800"
+   ]
+  },
+  {
+   "key": "Larger-Sizes",
+   "file": "20261107_Apply-Board-Q3-Larger-Sizes.png",
+   "css_w": 480,
+   "css_h": 593,
+   "source": "drawn by the board builder from 20261107_Lockmark-Display-Master.svg and 20261107_Lockmark-48px-Proposal.svg",
+   "sizes": [
+    48,
+    96,
+    192
+   ]
+  }
+ ],
+ "errors": []
+}

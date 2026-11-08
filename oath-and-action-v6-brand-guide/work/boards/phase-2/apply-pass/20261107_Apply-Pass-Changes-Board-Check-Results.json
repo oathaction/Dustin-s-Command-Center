@@ -1,0 +1,141 @@
+{
+ "file": "work/boards/phase-2/apply-pass/20261107_Apply-Pass-Changes-Board.html",
+ "checked": "2026-11-07T08:30:14.561Z",
+ "views": [
+  "overview"
+ ],
+ "runs": [
+  {
+   "width": 1440,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 924,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 1440,
+   "clientWidth": 1440,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 59092,
+   "axe": [],
+   "focusStops": 40,
+   "focusWithoutRing": []
+  },
+  {
+   "width": 390,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 974,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 390,
+   "clientWidth": 390,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 88478,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  },
+  {
+   "width": 360,
+   "view": "overview",
+   "rootVisible": true,
+   "texts": 982,
+   "minSize": 13,
+   "under13": [],
+   "lowContrast": [],
+   "scrollWidth": 360,
+   "clientWidth": 360,
+   "overflowing": [],
+   "textCheck": {
+    "drawings": 0,
+    "labels": 0,
+    "outside": [],
+    "overlaps": [],
+    "marksOutside": []
+   },
+   "red": {
+    "marks": 0,
+    "unmarked": [],
+    "jobs": [],
+    "onPrussian": []
+   },
+   "scale": {
+    "groups": 0,
+    "marks": 0,
+    "bad": []
+   },
+   "party": {
+    "marks": 0,
+    "bad": []
+   },
+   "fonts": [
+    "Inter",
+    "Inter Tight",
+    "Lora"
+   ],
+   "height": 90586,
+   "axe": [],
+   "focusStops": null,
+   "focusWithoutRing": null
+  }
+ ],
+ "navigation": null,
+ "failures": [],
+ "pass": true
+}
