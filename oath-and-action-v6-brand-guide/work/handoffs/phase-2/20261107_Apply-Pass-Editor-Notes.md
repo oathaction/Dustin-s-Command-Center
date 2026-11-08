@@ -351,3 +351,70 @@ Modified:
 Created: none. The planted-fault script and the captures stay in my session scratchpad.
 
 Not touched: `source/`, `work/ledger/`, the Civic Line masters, any board other than reading it, the reader check and every other owner's files. Nothing committed or pushed.
+
+### Round two: copy edit of the identity designer's strings
+
+November 8, 2026, from the main session's message after the identity designer finished. I read their "Q1 to Q4 pass" notes and copy edited every reader string they added or changed in chapters 03, 04 and 08, the proofs, their specimens and alt text, and the minimum sizes file. A script listed 87 strings that are new since commit c734d03d, and I read each one. I changed strings only in the identity designer's build scripts and reran them in the order their notes give. I left every measured figure as their figures file sets it, and every master name as they wrote it. Before I edited, I reran `stage_a_identity_s1.py` and `stage_a_identity_build.py` untouched, and every output matched what was on disk, so each later diff is mine.
+
+The manifest's `notes` fields stay as the designer wrote them: they record studio codes and sources, and the page prints none of them. The proofs read their captions from `proofs.json`, so the notes never reach the page there either.
+
+| Location | Old | New | Reason |
+|---|---|---|---|
+| Rule 03.4, rule | "The end mark alone may stand under 16 px, at the text’s cap height, ..." | "Only the end mark, ampersand B at the close of an article, may stand under B’s 16 px minimum, at the text’s cap height, ..." | H02: the guide's first use of "end mark" is here, a chapter before Rule 04.6 defines it. The 16 px is B's minimum, which the sentence did not say |
+| Rule 03.4, For builders | "The lockmark’s 16 and 24 px masters run the same" | "... take B’s ranges" | "The same" left the reader to find what they match |
+| Rule 03.6, rule | "the wordmark at left and the lockmark at its right, 48 px tall, from the lockmark’s 48 px master" | "the wordmark at left and, to its right, the lockmark’s 48 px master at 48 px" | "48 px tall" could read as the wordmark's height, and the size was given twice |
+| Rule 04.6, rule | "... run past the capitals: in 17 px body text, B stands 14.1 px tall ... This is the one place B may stand under its 16 px minimum" | "... run past the capitals. In 17 px body text it is 14.1 px tall ... The end mark is the one use of B that may stand under its 16 px minimum" | W06, the colon held the figures back; "B stands" twice; "This" named no noun |
+| Rule 04.6, Size | "on the text’s capitals at every text size: 16/14 of the cap height, ... In body text B stands under its 16 px minimum" | "... at every text size, so B stands 16/14 of the cap height tall, ... In body text that puts B under its 16 px minimum" | The colon did not say what 16/14 measured |
+| Rule 04.6, For builders | "Draw B in `currentColor`, so it takes the paragraph’s ink, from its 16 px master at 16/14 ...; and it holds for text up to 27 px" | "Draw B from its 16 px master at 16/14 ..., and in `currentColor`, so it takes the paragraph’s ink ...; and those values hold for text up to 27 px" | The inserted clause split "Draw B" from its master; "it" had no clear noun |
+| Rule 08.1, rule | "so the drawing holds at small sizes" | "so the drawing holds at the sizes each one serves" | W20: 48 px is the masthead's size, which "small" overstates |
+| Rule 08.1, correct caption | "the display master at 96 px, then the 48, 24 and 16 px masters, and the 48 px master on Charcoal and on Prussian" | "the display master at 96 px and the 48, 24 and 16 px masters. Last, the 48 px master on Charcoal and on Prussian" | Two "then"s, and one "and" joined two rows of the plate |
+| `s-08-1-correct`, alt | "the 48 pixel master on Charcoal and on Prussian, where it is all White" | "the 48 pixel master on Charcoal, in Newsprint with its red lever, and on Prussian, all in White" | "All White" read as both grounds; on Charcoal the plate draws Newsprint and a red lever |
+| Rule 08.2, why | "Each place draws a master ..., so the four places read at one weight" | "Because each place draws a master ..., the four places read at one weight" | W13: two sentences in a row on the frame "..., so ..." |
+| Rule 08.2, Masthead specification | "the 24 px wordmark master, 13 px and the lockmark" | "13 px of space and the lockmark" | "13 px and" read as a third object; Rule 03.6 says "of space" |
+| Rule 08.2, Feed test | "Reduce the card with Lanczos resampling and count" | "Reduce the card with Lanczos resampling, a common filter for shrinking images, and count" | H02 |
+| Rule 08.2, For builders | "the 48 px master for the sign-off, which L3’s masthead master already carries;" | "the 48 px master for the sign-off, and L3’s masthead master, which holds it already, for the masthead;" | The list named three places and left out the masthead |
+| Rule 08.2, For builders | "every new social card template" | "every new template for a social card" | W14 |
+| Minimum sizes file and `s-03-minimums`, L3 row | "13 px and the lockmark at 48 px" | "13 px of space and the lockmark at 48 px" | As in Rule 08.2 |
+| Minimum sizes file, L3 status note | "The masthead master sets the lockmark at 48 px since November 8, 2026" | "... has set ..." | Tense |
+| Minimum sizes file, B's `end_mark` | "The end mark alone may stand under 16 px" | "Only the end mark, ampersand B at the close of an article, may stand under 16 px" | Matches Rule 03.4 |
+| Minimum sizes file, lockmark status note | "Its range was chosen by test ... so it is placed at 48 px only" | "A test set its range ... so builders place it at 48 px only" | W02, two passives |
+
+The rest I read and kept: Rule 03.2's L3 and L6 rows and builders line, Rule 03.4's "End mark" row, Rule 03.6's specifications and failure caption, L6's caption, Rule 04.6's reason, caption, figures rows and alt text, Rule 08.1's reason, basis, specifications and builders line, Rule 08.2's rule, caption, place rows and "Feed test, our card", Rule 08.3's drawing row, the proofs' social card text, every plate tag, the minimum table's other rows and their SVG titles.
+
+**Routine calls, as proposed decision lines**
+
+- D2-xxx | Rule 03.4's exception names the end mark and defines it there: "Only the end mark, ampersand B at the close of an article, may stand under B’s 16 px minimum" | Chapter 03 is the guide's first use of the term (H02), and the brief's wording "under 16 px" did not say whose minimum
+- D2-xxx | The manifest's `notes` fields keep their studio codes and stay unedited | The page prints none of them, and they are the maker's record
+
+**Noted, changed nothing**
+
+- Pixel widths. Chapters 03, 08 and the proofs write "1200 by 630", "1440 px" and "1080 px", and chapter 06 writes "1,200 px". The page uses both forms. I left both, since chapter 06 belongs to another owner. *For the main session:* pick one form at stage B.
+
+**Tested (round two)**
+
+- Each identity build rerun untouched before my edits reproduced every output on disk, checked by hash: 333 files.
+- `python3 -I work/build/scripts/phase-2/stage_a_identity_s1.py`, then `stage_a_identity_build.py`: the 48 px master and L3 assertions hold; 48 specimens, 3 chapters. Afterward, only the files my edits reach changed: `03-identity.json`, `04-ampersand.json`, `08-lockmark.json`, `manifest-identity.json`, `s-03-minimums.html` and the minimum sizes file.
+- Every number in the 17 changed strings, compared by script before and after: no figure changed.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict`: 0 warnings, 9 chapter files, 100 rules, 233 specimens.
+- `node work/build/scripts/phase-2/guide_check.js work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html` at 1440, 1024, 390 and 360 px: PASS, 0 failures, 761 same-page links.
+- Em and en dashes in the three chapter files, the identity manifest and `s-03-minimums`: 0.
+- A pattern scan of all 87 strings found no listed filler or corporate verb; its one filler hit, "key", sat in file references. Its negation hits are plain limits, such as "no tagline under 7 pt", and our fifth edition's quoted reason, and none turns "not X but Y". My edits add none of these.
+- By eye in Playwright Chromium: Rules 03.4 and 04.6 at 1440 and 390 px; `s-03-minimums` at 1440 and 390 px. The table measures the same width at 390 px before and after my edits.
+- `stage_a_identity_q_measure.py` was not rerun. My edits change no drawing and nothing it reads, and the figures file is untouched.
+
+**Not tested (round two)**
+
+- Rules 03.6, 08.1 and 08.2 by eye after the edits; the guide check covered them at four widths.
+- Screen readers, forced colors, Firefox, Safari, print, 200 percent zoom and real readers.
+
+**Change log, round two**
+
+Modified:
+- `work/build/scripts/phase-2/stage_a_identity_chapters.py` (Rules 03.4, 03.6, 04.6, 08.1 and 08.2)
+- `work/build/scripts/phase-2/stage_a_identity_s08.py` (`s-08-1-correct`'s alt text)
+- `work/build/scripts/phase-2/stage_a_identity_s1.py` (three rows of the minimum sizes table)
+- Regenerated by those scripts: `work/build/assets/identity/20261028_Identity-Minimum-Sizes.json`, `work/build/guide/chapters/03-identity.json`, `04-ampersand.json`, `08-lockmark.json`, `work/build/guide/specimens/manifest-identity.json` and `s-03-minimums.html`
+- Regenerated by the shared build and check: the stage A chapters page, its build report, its check results and its captures
+- This file
+
+Created: none. Not touched: `source/`, `work/ledger/`, the identity masters' drawings, the figures file, every board, the reader check, and the build scripts of owners other than the identity designer. Nothing committed or pushed.

@@ -175,20 +175,20 @@ def update_minimums():
             r["below"] = "Nothing smaller; the lever stays one size up at 16, 24 and 48 px"
             r["places"] = ("Masthead (inside L3) and sign-off: the 48 px master at 48 px. Page header and footer: the 24 px master "
                            "at 24 px. A chart's footer: the 16 px master at 16 px (Rule 08.2)")
-            r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). Its range was chosen by test: drawn from "
+            r["status_note"] = ("The 48 px master joined on November 8, 2026 (DR-131). A test set its range: drawn from "
                                 "one rect per pixel row, it parts into stripes at any size between whole multiples of its grid, "
-                                "so it is placed at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)")
+                                "so builders place it at 48 px only (work/handoffs/phase-2/20261108_Q1-To-Q4-Identity-Figures.json, key range)")
         if r["lockup"] == "Ampersand B, freestanding":
             r["below"] = ("Nothing smaller, except the end mark, which stands at the text's cap height (Rule 04.6). "
                           "Favicon: the 16 px master at 16 px")
-            r["end_mark"] = ("The end mark alone may stand under 16 px, at the text's cap height, because it follows a word and "
+            r["end_mark"] = ("Only the end mark, ampersand B at the close of an article, may stand under 16 px, at the text's cap height, because it follows a word and "
                              "names nothing on its own (DR-130, Rules 03.4 and 04.6). It stands 16/14 of the text's cap height tall, "
                              "from the 16 px master")
         if r["lockup"] == "L3 horizontal with lockmark":
             r["screen"] = ("196 px wide (condensed 164 px): wordmark 16 px master, lockmark 34 px from its 24 px master. "
-                           "In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px and the lockmark at 48 px from its 48 px master")
+                           "In the masthead, 282 px wide from its masthead master: the wordmark's 24 px master, 13 px of space and the lockmark at 48 px from its 48 px master")
             r["files"] = [L3["masthead"]]
-            r["status_note"] = ("The masthead master sets the lockmark at 48 px since November 8, 2026 (DR-131). The October "
+            r["status_note"] = ("The masthead master has set the lockmark at 48 px since November 8, 2026 (DR-131). The October "
                                 "master, with the lockmark at 2.4 cap heights, stays in lockups/ for the record")
         if r["lockup"] == "L6 editorial signature":
             r["below"] = "Close the page with the footer place: the lockmark at 24 px, then the tagline (Rule 08.2)"

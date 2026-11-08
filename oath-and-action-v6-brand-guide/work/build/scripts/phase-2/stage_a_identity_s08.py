@@ -60,8 +60,8 @@ def s_08_1_correct():
     alt = ("The lockmark: nine nodes on a three by three grid joined by thin links around the edge and through the center, with "
            "a larger red node, the lever, at bottom right. Its construction at 240 pixels with the node centers and radii, then "
            "its four masters at true size: the display master at 96 pixels with fine links and small nodes, and the 48, 24 and "
-           "16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal and "
-           "on Prussian, where it is all White.")
+           "16 pixel masters, each heavier, with the same nine nodes, links and lever. Last, the 48 pixel master on Charcoal, "
+           "in Newsprint with its red lever, and on Prussian, all in White.")
     return rec("s-08-1-correct", "08.1", 700, alt, body, fit_switch=True,
                notes="Construction from the display master at 240 px. The four masters each at their own size (DR-131): the display "
                      "master at 96 px, then the 48, 24 and 16 px masters on whole pixels. On Prussian, the 48 px master's White file.")

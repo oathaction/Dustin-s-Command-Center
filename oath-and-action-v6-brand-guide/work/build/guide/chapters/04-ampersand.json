@@ -262,7 +262,7 @@
   {
    "id": "04.6",
    "title": "End an article with B alone, and keep the badge for back covers and events.",
-   "rule": "An article ends with ampersand B alone, half an em after its last word, in the text’s ink. B stands at the text’s cap height at every size, so only the curves at its top and foot run past the capitals: in 17 px body text, B stands 14.1 px tall beside capitals 12.4 px tall. This is the one place B may stand under its 16 px minimum (Rule 03.4). The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
+   "rule": "An article ends with ampersand B alone, half an em after its last word, in the text’s ink. B stands at the text’s cap height at every size, so only the curves at its top and foot run past the capitals. In 17 px body text it is 14.1 px tall beside capitals 12.4 px tall. The end mark is the one use of B that may stand under its 16 px minimum (Rule 03.4). The hinge-circle badge, B inside the hinge diagram’s ring, keeps sizes from 48 px, on back covers and event materials. Keep the badge off anything about a candidate or a ballot measure, where a seal-like mark could read as an endorsement, and add no words or dates to it.",
    "tokens": [
     "oa.color.text.primary.onNewsprint",
     "oa.color.identity.signature.onCharcoal"
@@ -291,7 +291,7 @@
     },
     {
      "label": "Size",
-     "value": "B’s band, its height less the overshoot above and below, on the text’s capitals at every text size: 16/14 of the cap height, from the 16 px master until B reaches 24 px. In body text B stands under its 16 px minimum, the end mark’s exception (Rule 03.4)"
+     "value": "B’s band, its height less the overshoot above and below, on the text’s capitals at every text size, so B stands 16/14 of the cap height tall, from the 16 px master until B reaches 24 px. In body text that puts B under its 16 px minimum, the end mark’s exception (Rule 03.4)"
     },
     {
      "label": "At 17 px text",
@@ -329,7 +329,7 @@
     "24",
     "25"
    ],
-   "builders": "Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B in <code>currentColor</code>, so it takes the paragraph’s ink, from its 16 px master at 16/14 of the text’s cap height, with the master’s lowest row under the baseline. In Inter that is <code>height: 0.831em</code> and <code>vertical-align: -0.052em</code>, and it holds for text up to 27 px. Place the badge from its display master only."
+   "builders": "Wrap the last word and B in one span that does not break, with <code>margin-left: 0.5em</code> on B, so B never starts a line alone. Draw B from its 16 px master at 16/14 of the text’s cap height, with the master’s lowest row under the baseline, and in <code>currentColor</code>, so it takes the paragraph’s ink. In Inter that is <code>height: 0.831em</code> and <code>vertical-align: -0.052em</code>, and those values hold for text up to 27 px. Place the badge from its display master only."
   },
   {
    "id": "04.7",
