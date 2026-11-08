@@ -1015,3 +1015,24 @@ All four owners fixed every Must fix item under `work/handoffs/phase-2/20261107_
 | # | Decision | Reason |
 |---|---|---|
 | D2-447 | The main session ran the final checks after the fix pass: `guide_build.py --strict` (9 chapter files, 100 rules, 233 specimens, 0 warnings), `guide_check.js` at 1440, 1024, 390 and 360 px (0 failures) and the token tests (all pass) | A check is reported only once the main session has run it |
+
+## Changes board and publishing, November 7 and 8, 2026
+
+The creative director rechecked the page after the fix pass and signed it off at 4 on every criterion (`20261107_CD-Review-Of-Apply-Pass.md`, recheck section; `work/boards/phase-2/apply-pass/20261107_CD-Scores.json`). A board builder built the changes board. Its routine calls, numbered by the main session:
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-448 | A 1,440 px view is the chapter column, 24 px either side of it, under the masthead, cropped to a set height or to just above the rule's "Tokens" label | Each view shows the place that changed, and 50 captures come to 7.4 MB, well inside 16 MB |
+| D2-449 | The before page is the chapters page at commit 3130c5b, saved outside the repository and passed to the builder by path | It is the last state of the page before any apply pass change, and the repository holds no second copy of it |
+| D2-450 | Before sits above after at 1,440 px, joined by the hinge divider, and the two sit side by side at 390 px | Old above new with the hinge divider, as D2-314 set for board A's letter spacing pairs |
+| D2-451 | From 80em a change card sets its words in a sticky column beside a 920 px column of views; a card with a plate wider than that stacks | The decision stays in sight while Dustin scrolls tall captures, and wide plates keep true size |
+| D2-452 | The decision plates use the identity designer's own twice-size renders, shown at true size; L6's pair is captured cell by cell from the designer's plate page and set one above the other at one left edge | Two 884 px strips side by side need 1,866 px, so stacked they show whole at 1,440 px without scrolling |
+| D2-453 | The designer's "masters compared" plate stays off the board | At 1,389 px it would scroll, and the places plates, the larger sizes plate and the card's figures carry the same comparison |
+| D2-454 | The board adds a plate of today's display master and the proposed 48 px master at 48, 96 and 192 px, drawn by the capture script from the two files, and reads "display size" as 192 px | The creative director's recheck recommends approval once the board shows 96 px and display size; 192 px is four times the proposal's grid, and neither file changes |
+| D2-455 | The questions run Q1 to Q10 across both sections | One reply line per question, with no clash with board A's A numbers, Board 6's B6 numbers or lockup S1 |
+| D2-456 | A card that needs approval by name carries an "I approve by name" box, and its tick adds "Approved by name." to the reply line | Gate rule 4 needs the approval in Dustin's words, and the box lets him give it question by question |
+| D2-457 | A10's before shows the record of retired lines as it stood, with four lines | The before page never printed DR-122's two lines, which waited on board A |
+| D2-458 | The board check runs with `--no-captures` once it has passed with captures | Its full-page captures land in the board's own captures folder, and at 390 px the page runs past the 65,535 px a JPEG can hold, so that capture is an empty file; I removed the three by-products and looked at the board through my own renders |
+| D2-459 | The publish copy and its `files.json` sit in my scratchpad, rebuilt on every run | As board A's builder does, so the publish call sends only the images the board uses |
+| D2-460 | The main session republished the chapters page to https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (version 2) and published the changes board privately at https://claude.ai/artifact/MG6kGhTeXYSzWBg4HcLnbA with its 58 captures, after a script scan of each page's text, alt text, scripts and links, a full read of the board's text and contact sheets of every capture. The live chapters page matched the pre-pass build plus the host's wrapper, so nothing published was lost | Every file is seen before it is published |
+| D2-461 | The chapters page's tokens.css download link does nothing inside the artifact viewer, which grants no download permission; the engineer declares the downloads capability or drops the link at stage B | The publish warned of it; the link has been on the page since D2-266 |
