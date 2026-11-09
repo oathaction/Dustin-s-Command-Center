@@ -1240,3 +1240,30 @@ The studio put six questions to Dustin from round 0: the research lead's four (`
 | D2-548 | The engineer's pixel-fit check runs on square copies of B's masters, padded on the right, in a scratch folder | The check sets every box square and would place B's 13 by 14 box half a pixel off |
 | D2-549 | The end mark is measured with the line at four positions between pixels (0, 0.25, 0.5 and 0.75 px) | CD-N10 found today's B moves a pixel with the line's position, so a fit has to hold at each one |
 | D2-550 | Enlarged views on the plates show 1x renders at eight times and 2x renders at four times, the same physical size; the lockmark's 1x views are at six times so five sizes fit one row | Each view says its magnification |
+
+### Utility icon designer (`20261109_Stage-B-Utility-Icons-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-551 | Every option has its own 16 px master on a 16-unit grid with a 1.5 px line, and a 16 px glyph always comes from that file | Drawn at 16 px, the 24 px files pass for 27 of 54 options with a 1.33 px line; the masters pass 54 of 54 with the 1.5 px line and fewer soft pixels |
+| D2-552 | At 24 px every straight centerline sits on a whole unit; at 16 px on a quarter, with x = 7.75 as the axis of a glyph built on one upright line and its enclosure centred on that axis | Both edges of a 2 px line, and one edge of a 1.5 px line, then land on pixel edges, as the engineer's check asks |
+| D2-553 | A frame's corner rounds by half the line on the centerline (1 unit at 24 px, 0.75 at 16) | Sharp inner corners as in Civic Line, and one rule for every frame |
+| D2-554 | A dot is as wide as the line, and at 16 px its centre sits on a quarter pixel | A 1.5 px dot on a whole pixel lands as two grey pixels; on the quarter it fills one |
+| D2-555 | The arrow ships as one drawing pointing right; Previous mirrors it and the sort order in use turns it up or down | The audit's one drawing for three uses; turning about the centre keeps every line on the grid |
+| D2-556 | The chevron ships pointing down, closed, and turns half round for open | The audit's two states from one drawing |
+| D2-557 | Play and Pause options share a letter, to be picked as a pair | One button swaps them |
+| D2-558 | Every success option holds one check, Selected Check A's proportions scaled to fit | The audit draws both from one check; if Dustin picks another bare check, the success mark follows it |
+| D2-559 | Another Site C became an arrow leaving a ring, replacing a first draft of an arrow leaving a corner bracket | At true size the bracket draft read as View Full Size C |
+| D2-560 | Files are named for the drawing (Arrow, Chevron, Another-Site, View-Full-Size, Selected-Check) and carry `data-icon="U-<name>"` | Short stable names for a sprite, and the IDs a checker looks for (audit section 2) |
+| D2-561 | PNG previews are Charcoal on a clear ground, 1x and 2x | As the Civic Line previews |
+| D2-562 | Check results live in `work/build/assets/utility-icons/qa/`; the pixel pictures stay in my scratch folder | Civic Line keeps a `qa/` folder; the engineer asks for the pictures outside `work/build` |
+| D2-563 | The naming test is run at 24 px, as the main session's task sets, not the brief's 48 px | Utility glyphs are used only at 24 and 16 px (audit B-3) |
+| D2-564 | The 16 px line is 1.5 px, from the engineer's notes; `tokens.css` has no 16 px utility line token yet | The token source adds it with the first 16 px utility icon on a page |
+| D2-565 | The plate moves each glyph by under one pixel onto whole CSS pixels with a small script | Text before a glyph can leave it on a fraction of a pixel, which would misstate the masters in the capture |
+| D2-566 | The 2 px line stays heavier than Civic Line's line at 48 px | The token sets 2 px; the shared finish ties the two families, and the subjects keep them apart |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-567 | The creative director scores the makers' plate pages before the board is built, marks a recommended option on each card and names any option that is a near-duplicate of another or fails to name its subject; the makers fix in one round; the board builder then builds the board with the scores after the fix | One fix round before the board, so the board is built once and shows Dustin three real choices per icon (DR-146) |

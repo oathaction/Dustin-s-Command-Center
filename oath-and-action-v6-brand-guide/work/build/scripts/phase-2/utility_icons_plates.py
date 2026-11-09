@@ -196,8 +196,8 @@ def pf_line(fname):
     s1 = r['scales']['1x']
     st = s1['straight']
     out = 'pass' if r['pass'] else 'fail'
-    straight = ('%d of %d straight strokes on the pixel grid' % (st['fit'], st['total'])) if st['total'] else 'no straight strokes'
-    return '%s; %s; %d%% soft pixels at 1x' % (out, straight, round(s1['soft_edges']['share'] * 100))
+    straight = ('straight strokes on whole pixels %d of %d' % (st['fit'], st['total'])) if st['total'] else 'no straight strokes'
+    return '%s; %s; soft pixels at 1x %d%%' % (out, straight, round(s1['soft_edges']['share'] * 100))
 
 
 def lik_word(v):
@@ -342,8 +342,9 @@ for a in manifest:
             fig = ('%.3f, %s percentile' % (p['likeness'], pct(p['percentile']))) if p else 'under the 1st percentile'
             cells.append('<td><span class="sw np">%s</span><span class="fig">%s %s</span></td>'
                          % (use('u-%s-%s-24' % (key, o['option']), 24), o['option'], fig))
-        la_rows.append('<tr><th scope="row">%s</th><td><span class="sw np">%s</span><span class="fig">%s %s</span></td>%s</tr>'
-                       % (e(a['word'].replace('-', ' ')), use('cl-' + cid.lower(), 24), cid, e(cl_files[cid][1]), ''.join(cells)))
+        la_rows.append('<tr><th scope="row">%s</th><td><span class="sw np">%s%s</span><span class="fig">%s %s, at 24 and 48 px</span></td>%s</tr>'
+                       % (e(a['word'].replace('-', ' ')), use('cl-' + cid.lower(), 24), use('cl-' + cid.lower(), 48), cid,
+                          e(cl_files[cid][1]), ''.join(cells)))
 
 # Enclosed options measured against each other.
 twin_pairs = sorted([p for p in lik['flagged'] if p['against'] == 'new' and '24px' in p['a'] and '24px' in p['b']],
@@ -459,13 +460,13 @@ page = '''<!doctype html>
   %s
   <section class="card" id="look-alikes">
     <header class="ch-head"><p class="num">19</p><div><h2>Beside the Civic Line drawings the audit names</h2>
-    <p class="asked">Each option at 24 px beside the topic drawing a reader could take for it, with the look-alike figure.</p></div></header>
+    <p class="asked">Each option at 24 px beside the topic drawing a reader could take for it, with the look-alike figure. The check compares both at 24 px, where the Civic Line line is 0.63 px; the 48 px drawing is there so you can tell which one it is.</p></div></header>
     <table><thead><tr><th scope="col">Drawing</th><th scope="col">Civic Line</th><th scope="col">Option A</th><th scope="col">Option B</th><th scope="col">Option C</th></tr></thead>
     <tbody>%s</tbody></table>
   </section>
   <section class="card" id="twins">
     <header class="ch-head"><p class="num">20</p><div><h2>Enclosed options look alike to each other</h2>
-    <p class="asked">The ring or frame carries most of the shape at 24 px, so options drawn inside one measure as near twins. The closest pair among the 122 masters measures 0.964. This is why the recommendations keep the actions bare and enclose only the error and success marks.</p></div></header>
+    <p class="asked">The ring or frame carries most of the shape at 24 px, so options drawn inside one measure as near twins. The closest pair among the 122 masters measures 0.964. This is why the recommendations keep the actions bare and enclose only the three marks: error, success and warning.</p></div></header>
     <ul class="twins">%s</ul>
   </section>
   <section class="card" id="family">
