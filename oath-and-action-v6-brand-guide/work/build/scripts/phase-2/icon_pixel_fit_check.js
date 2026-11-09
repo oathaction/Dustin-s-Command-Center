@@ -180,36 +180,35 @@ function thicknessMap(mask, W, H) {
       }
     }
   }
-  // Shortest chord through each pixel along 4 directions; this is right at square corners, where no ball reaches.
-  const chord = new Float32Array(N).fill(Infinity);
-  const dirs = [[1, 0, 1], [0, 1, 1], [1, 1, Math.SQRT2], [1, -1, Math.SQRT2]];
-  for (const [dx, dy, unit] of dirs) {
-    const seen = new Uint8Array(N);
-    for (let i = 0; i < N; i++) {
-      if (!mask[i] || seen[i]) continue;
-      let x = i % W, y = (i - x) / W;
-      while (true) { const px = x - dx, py = y - dy; if (px < 0 || py < 0 || px >= W || py >= H || !mask[py * W + px]) break; x = px; y = py; }
-      const run = []; let xx = x, yy = y;
-      while (xx >= 0 && yy >= 0 && xx < W && yy < H && mask[yy * W + xx]) { run.push(yy * W + xx); xx += dx; yy += dy; }
-      const len = run.length * unit;
-      for (const q of run) { seen[q] = 1; if (len < chord[q]) chord[q] = len; }
+  // Pixels no ridge ball reaches (the tips of square corners, stair steps on a curve) take the width of the nearest
+  // pixel that one does, so a square corner never reads as a thin stroke.
+  const queue = new Int32Array(N); let qh = 0, qt = 0;
+  for (let i = 0; i < N; i++) if (mask[i] && lt[i] > 0) queue[qt++] = i;
+  while (qh < qt) {
+    const p = queue[qh++]; const x = p % W, y = (p - x) / W;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+      const xx = x + dx, yy = y + dy; if ((!dx && !dy) || xx < 0 || yy < 0 || xx >= W || yy >= H) continue;
+      const q = yy * W + xx; if (mask[q] && lt[q] === 0) { lt[q] = lt[p]; queue[qt++] = q; }
     }
   }
-  const th = new Float32Array(N);
-  for (let i = 0; i < N; i++) if (mask[i]) th[i] = lt[i] >= 0.85 * chord[i] ? lt[i] : chord[i];
+  const th = lt;
   return th;
 }
 
 function strokeWidths(mask, W, H, k) {
   const th = thicknessMap(mask, W, H);
-  const vals = []; for (let i = 0; i < W * H; i++) if (mask[i]) vals.push(th[i] / k);
-  if (!vals.length) return null;
-  vals.sort((a, b) => a - b);
+  const idx = []; for (let i = 0; i < W * H; i++) if (mask[i]) idx.push(i);
+  if (!idx.length) return null;
+  idx.sort((a, b) => th[a] - th[b]);
+  const vals = idx.map((i) => th[i] / k);
   const need = Math.max(1, Math.round(RULES.minThinArea * k * k));
-  const thinnest = vals[Math.min(vals.length - 1, need - 1)];
+  const at = Math.min(vals.length - 1, need - 1);
+  const thinnest = vals[at];
+  let sx = 0, sy = 0; for (let j = 0; j <= at; j++) { sx += idx[j] % W; sy += Math.floor(idx[j] / W); }
+  const thinAt = [(sx / (at + 1) + 0.5) / k, (sy / (at + 1) + 0.5) / k];
   const bins = new Map(); for (const v of vals) { const b = Math.round(v / 0.05); bins.set(b, (bins.get(b) || 0) + 1); }
   let mode = 0, best = -1; for (const [b, c] of bins) if (c > best) { best = c; mode = b * 0.05; }
-  return { thinnest, main: mode, median: vals[vals.length >> 1], widest: vals[vals.length - 1] };
+  return { thinnest, thinAt, main: mode, median: vals[vals.length >> 1], widest: vals[vals.length - 1] };
 }
 
 // Horizontal and vertical straight edges, positions in device px at 1x.
@@ -392,7 +391,7 @@ async function checkOne(page, file, svgText, S, weight) {
     const sf = soft(a);
     const items = judgeEdges(edges, scale);
     const kept = counters(m, D, D, 1);
-    const w = widths ? { thinnest: widths.thinnest * scale, main: widths.main * scale, median: widths.median * scale } : null;
+    const w = widths ? { thinnest: widths.thinnest * scale, main: widths.main * scale, median: widths.median * scale, at: widths.thinAt.map((v) => +(v * scale).toFixed(1)) } : null;
     const gapPx = gp.smallest ? gp.smallest.gap * scale : null;
     const fails = [];
     if (!w) fails.push('no ink');
@@ -404,7 +403,7 @@ async function checkOne(page, file, svgText, S, weight) {
     if (weight && w && Math.abs(w.main - weight * scale) > RULES.weightTolerance * scale) fails.push('weight');
     scales[scale + 'x'] = {
       device_px: D,
-      stroke_px: { declared: nominalSet.map((v) => +(v * scale).toFixed(3)), thinnest: w && +w.thinnest.toFixed(2), main: w && +w.main.toFixed(2), median: w && +w.median.toFixed(2) },
+      stroke_px: { declared: nominalSet.map((v) => +(v * scale).toFixed(3)), thinnest: w && +w.thinnest.toFixed(2), thinnest_near_px: w && w.at, main: w && +w.main.toFixed(2), median: w && +w.median.toFixed(2) },
       soft_edges: { ink_px: sf.ink, partial_px: sf.partial, share: +sf.share.toFixed(3) },
       straight: {
         strokes: items.filter((i) => i.kind === 'stroke').length, lone_edges: items.filter((i) => i.kind === 'edge').length,
@@ -429,7 +428,7 @@ function report(r) {
     const sp = s.stroke_px;
     const why = s.pass ? 'pass' : 'fail: ' + s.fails.join(', ');
     L.push(`  ${sc} (${s.device_px} device px) ${why}`);
-    L.push(`     stroke widths: thinnest ${sp.thinnest} px, main ${sp.main} px${sp.declared.length ? `, declared ${sp.declared.join(', ')} px` : ', none declared (filled shapes)'}  [min ${RULES.minStroke}${r.weight ? `, weight ${r.weight * (sc === '2x' ? 2 : 1)} ± ${RULES.weightTolerance * (sc === '2x' ? 2 : 1)}` : ''}]`);
+    L.push(`     stroke widths: thinnest ${sp.thinnest} px near (${sp.thinnest_near_px.join(', ')}), main ${sp.main} px${sp.declared.length ? `, declared ${sp.declared.join(', ')} px` : ', none declared (filled shapes)'}  [min ${RULES.minStroke}${r.weight ? `, weight ${r.weight * (sc === '2x' ? 2 : 1)} ± ${RULES.weightTolerance * (sc === '2x' ? 2 : 1)}` : ''}]`);
     L.push(`     soft edges: ${(s.soft_edges.share * 100).toFixed(0)}% of ${s.soft_edges.ink_px} ink px  [max ${RULES.maxSoftShare * 100}%]`);
     const st = s.straight;
     L.push(`     straight: ${st.fit} of ${st.total} fit (${st.strokes} strokes, ${st.lone_edges} lone edges)  [within ${RULES.edgeTolerance} px of a pixel edge]`);
@@ -475,7 +474,7 @@ const FIX = {
   soft: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12.3" cy="12.3" r="7.2" fill="none" stroke="#000" stroke-width="1.1"/><path d="M5.3 18.6 L18.7 5.4" stroke="#000" stroke-width="1.1"/></svg>',
   weightOff: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" fill="none" stroke="#000" stroke-width="2"/></svg>',
   // Allowance: a 1.5 px line at 16 px with one edge on a pixel edge passes (whole pixels cannot hold both edges).
-  oneAndAHalf: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3 3.75H13M3.75 3V13M3 12.25H13M12.25 3V13" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="square"/></svg>',
+  oneAndAHalf: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3 3.75H13M3.75 3V13M3 12.25H13M12.25 3V13M6 8.75H10" fill="none" stroke="#000" stroke-width="1.5"/></svg>',
   // Allowance: a round drawing fit to the grid (circle extremes on pixel edges, 2 px line) passes despite its curves.
   roundFit: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="#000" stroke-width="2"/><path d="M16 16L20 20" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>',
 };
