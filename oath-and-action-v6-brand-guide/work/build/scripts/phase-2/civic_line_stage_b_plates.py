@@ -59,6 +59,7 @@ NAMING = {
     ("R-48", "B"): ("An office building kept apart from a person at a desk, whose arrow stops at the bracket.", "near"),
     ("R-48", "C"): ("A panel of three kept apart from a person at a desk, whose arrow stops at the bracket.", "near"),
     ("Testify", "A"): ("A hearing: a witness seated at a table with a microphone, facing a raised panel.", "names"),
+    ("Testify", "B"): ("A person handing a signed paper up to a panel: written testimony, or to some a petition.", "near"),
     ("Testify", "C"): ("A panel and a microphone: a hearing, or a panel discussion.", "near"),
     ("Contact-An-Official", "A"): ("A person sending a message to someone at a desk.", "names"),
     ("Contact-An-Official", "B"): ("A desk phone wired to someone at a desk: calling an office.", "names"),
@@ -72,7 +73,6 @@ CARD_NOTE = {
     "CL-014": "Option B follows the Congress set picked on card 1; option C draws a second idea, a ballot stopped at the fence.",
     "R-13": "Options B and C follow the Congress set picked on card 1: Dustin picks the sign once.",
     "R-42": "Options B and C follow the Congress set picked on card 1: Dustin picks the sign once.",
-    "Testify": "Two options (D2-622): option B, the same hearing on a diagonal, was withdrawn as a near-duplicate of A; a standing microphone reads as a singer before judges, and the view from behind the witness repeats C.",
 }
 NEAREST = {"Testify": ["CL-005", "CL-027"], "Contact-An-Official": ["CL-026", "CL-061"]}
 # Settled drawings shown after the options, to compare (DR-152 asks for R-46 beside the Congress options).

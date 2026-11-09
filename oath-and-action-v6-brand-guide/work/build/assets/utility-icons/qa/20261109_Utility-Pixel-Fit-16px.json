@@ -1,6 +1,6 @@
 {
  "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
- "run": "2026-11-09T22:10:45.438Z",
+ "run": "2026-11-09T22:12:32.539Z",
  "rules": {
   "minStroke": 1,
   "minThinArea": 0.25,
@@ -1376,12 +1376,12 @@
        10.7
       ],
       "main": 1.5,
-      "median": 1.51
+      "median": 1.49
      },
      "soft_edges": {
-      "ink_px": 105,
-      "partial_px": 76,
-      "share": 0.724
+      "ink_px": 110,
+      "partial_px": 70,
+      "share": 0.636
      },
      "straight": {
       "strokes": 5,
@@ -1417,12 +1417,12 @@
        21.4
       ],
       "main": 3,
-      "median": 3.02
+      "median": 2.98
      },
      "soft_edges": {
-      "ink_px": 305,
-      "partial_px": 82,
-      "share": 0.269
+      "ink_px": 333,
+      "partial_px": 91,
+      "share": 0.273
      },
      "straight": {
       "strokes": 5,

@@ -95,10 +95,33 @@ def testify_a():
     return [("base", top + w + table), ("accent", mic)]
 
 
-# Testify B, the same hearing on a diagonal, was withdrawn in the fix round
-# (the review's M10, D2-622) as a near-duplicate of A. A standing microphone
-# reads as a singer before judges, and the view from behind the witness
-# repeats C, so the card keeps two options.
+def sheet(pen, cx, cy, w, h, deg):
+    """A sheet of written testimony, tilted by deg degrees about its center:
+    the page, two lines of text spaced so they stay apart at 48 px and, red, a signature. Returns (black, red)."""
+    t = math.radians(deg)
+    def R(x, y):
+        return (cx + x * math.cos(t) - y * math.sin(t), cy + x * math.sin(t) + y * math.cos(t))
+    hw, hh = w / 2, h / 2
+    page = pen.poly([R(-hw, -hh), R(hw, -hh), R(hw, hh), R(-hw, hh)], closed=True)
+    lines = [pen.poly([R(-hw + 9, -hh + 13), R(hw - 9, -hh + 13)]),
+             pen.poly([R(-hw + 9, -hh + 26), R(hw - 17, -hh + 26)])]
+    sig = [pen.poly([R(-hw + 8, hh - 10), R(-hw + 14, hh - 18), R(-hw + 19, hh - 10), R(-hw + 25, hh - 18), R(hw - 8, hh - 12)])]
+    return [page] + lines, sig
+
+
+def testify_b():
+    """Written testimony (fix round, at the main session's request): the
+    committee's raised, curved dais above, and a signed sheet of testimony
+    handed up from the person at lower left, tilted toward the bench. The
+    red is the signature. It draws testimony given on paper for the record,
+    as legislatures take it alongside spoken testimony. No table between two
+    people (CL-016), no line or speech mark to an official's desk (Contact an
+    official), no envelope or arrow (CL-061)."""
+    p = P(120, 40)
+    top = bench(p)
+    w = C.person(p, -46, 150, k=0.9, h=26)
+    blk, sig = sheet(p, 8, 100, 46, 58, 12)
+    return [("base", top + w + blk), ("accent", sig)]
 
 
 def testify_c():
@@ -153,6 +176,8 @@ def contact_c():
 REGISTRY = [
     ("Testify", "Testify", "A", "new", testify_a, None,
      "A raised, curved dais with three officials above the witness, who sits at a table with a front panel and a red microphone."),
+    ("Testify", "Testify", "B", "new", testify_b, None,
+     "Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais; red on the signature."),
     ("Testify", "Testify", "C", "new", testify_c, None,
      "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness."),
     ("Contact-An-Official", "Contact-An-Official", "A", "new", contact_a, None,

@@ -324,8 +324,10 @@ ICONS = [
             16: [circle(7.75, 7.75, 6.25)] + excl16(4.5, 8.5, 11.25)}),
         'B': ('An exclamation mark in an octagon, the stop sign', {
             24: [rpoly(octagon(12, 12, 8), R24)] + excl24(7, 13, 17),
-            16: [rpoly([(5.25, 1.75), (10.25, 1.75), (13.75, 5.25), (13.75, 10.25), (10.25, 13.75), (5.25, 13.75),
-                        (1.75, 10.25), (1.75, 5.25)], R16)] + excl16(4.5, 8.5, 11.25)}),
+            # 16 px: corners cut 2.25 from the flats, between the circle (A) and the square (C), so it reads as
+            # eight sides and stays under the look-alike flag against both.
+            16: [rpoly([(4, 1.75), (11.5, 1.75), (13.75, 4), (13.75, 11.5), (11.5, 13.75), (4, 13.75),
+                        (1.75, 11.5), (1.75, 4)], R16)] + excl16(4.5, 8.5, 11.25)}),
         'C': ('An exclamation mark in a square', {
             24: [rrect(4, 4, 20, 20, R24)] + excl24(7.5, 12.5, 16.5),
             16: [rrect(1.75, 1.75, 13.75, 13.75, R16)] + excl16(4.5, 8.5, 11.25)}),

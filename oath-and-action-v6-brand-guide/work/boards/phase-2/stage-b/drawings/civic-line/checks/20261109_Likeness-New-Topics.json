@@ -1,10 +1,10 @@
 {
  "tool": "work/build/scripts/phase-2/icon_likeness_check.js",
- "run": "2026-11-09T22:05:28.675Z",
+ "run": "2026-11-09T22:12:13.234Z",
  "method": "Ink maps at 24 px from coverage in Charcoal over Newsprint, Gaussian blur sigma 1.2 px, Pearson correlation best over shifts up to 1 px, percentile among the 7381 pairs of the 122 Civic Line masters (Board 6).",
  "renderer": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
- "files": 10,
- "compared": 5,
+ "files": 12,
+ "compared": 6,
  "editions_skipped": [
   {
    "name": "20261109_Contact-An-Official-Option-A-Red-Black.svg",
@@ -21,6 +21,10 @@
   {
    "name": "20261109_Testify-Option-A-Red-Black.svg",
    "as": "20261109_Testify-Option-A-Black.svg"
+  },
+  {
+   "name": "20261109_Testify-Option-B-Red-Black.svg",
+   "as": "20261109_Testify-Option-B-Black.svg"
   },
   {
    "name": "20261109_Testify-Option-C-Red-Black.svg",
@@ -186,6 +190,20 @@
    "against": "new"
   },
   {
+   "a": "20261109_Testify-Option-B-Black.svg",
+   "b": "20261109_Testify-Option-C-Black.svg",
+   "likeness": 0.8835,
+   "percentile": 96.8,
+   "against": "new"
+  },
+  {
+   "a": "20261109_Testify-Option-A-Black.svg",
+   "b": "20261109_Testify-Option-B-Black.svg",
+   "likeness": 0.8511,
+   "percentile": 91.1,
+   "against": "new"
+  },
+  {
    "a": "20261109_Testify-Option-A-Black.svg",
    "b": "20261109_Testify-Option-C-Black.svg",
    "likeness": 0.8399,
@@ -234,6 +252,13 @@
    "b": "CL-042 AI Concentration",
    "likeness": 0.4487,
    "percentile": 3.6,
+   "extent": 0.92
+  },
+  {
+   "a": "20261109_Testify-Option-B-Black.svg",
+   "b": "CL-042 AI Concentration",
+   "likeness": 0.6636,
+   "percentile": 32.4,
    "extent": 0.92
   },
   {

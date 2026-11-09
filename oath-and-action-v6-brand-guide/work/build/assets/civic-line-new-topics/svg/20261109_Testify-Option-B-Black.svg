@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="oa-civic-line-testify-option-b-black" data-id="Testify" width="128" height="128" viewBox="0 0 128 128">
+  <title>Testify, option B</title>
+  <desc>Oath &amp; Action Civic Line Testify, new topic drawing (DR-141, DR-147), option B. Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais; red on the signature. Drawn in Civic Line's hand: one line weight, round caps and joins, one red accent, the capped fit of DR-08. The group with data-part 'accent' holds the red parts.</desc>
+  <g id="oa-civic-line-testify-option-b-black-base" data-part="base">
+    <circle cx="34.7563" cy="15.1076" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.6351 30.2546 L26.6351 27.8938 A5.949258 5.949258 0 0 1 32.5843 21.9445 L36.9283 21.9445 A5.949258 5.949258 0 0 1 42.8775 27.8938 L42.8775 30.2546" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64" cy="12.0315" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M55.8788 27.1785 L55.8788 24.8177 A5.949258 5.949258 0 0 1 61.828 18.8684 L66.172 18.8684 A5.949258 5.949258 0 0 1 72.1212 24.8177 L72.1212 27.1785" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="93.2437" cy="15.1076" r="3.8151" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M85.1225 30.2546 L85.1225 27.8938 A5.949258 5.949258 0 0 1 91.0717 21.9445 L95.4157 21.9445 A5.949258 5.949258 0 0 1 101.3649 27.8938 L101.3649 30.2546" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.916 35.7079 Q64 21.0861 109.084 35.7079" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18.916 49.1113 Q64 34.4895 109.084 49.1113" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18.916" y1="35.7079" x2="18.916" y2="49.1113" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="109.084" y1="35.7079" x2="109.084" y2="49.1113" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="35.9748" cy="95.6027" r="5.538" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24.1859 119.7836 L24.1859 114.1633 A8.63604 8.63604 0 0 1 32.822 105.5273 L39.1276 105.5273 A8.63604 8.63604 0 0 1 47.7637 114.1633 L47.7637 119.7836" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="58.8409,69.1262 86.2538,74.953 78.907,109.5166 51.4941,103.6898" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="62.5579,78.0132 79.2439,81.5596" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="60.9111,85.7604 72.8298,88.2936" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="oa-civic-line-testify-option-b-black-accent" data-part="accent">
+    <polyline points="57.528,98.744 62.1174,94.7363 64.0835,100.1373 68.6723,96.1297 75.6597,101.3521" fill="none" stroke="#121212" stroke-width="3.3508" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

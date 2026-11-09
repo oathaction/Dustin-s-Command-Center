@@ -1347,3 +1347,26 @@ The creative director scored the makers' plates before the board (D2-567): 6 of 
 | D2-621 | Utility actions are drawn bare, and Error, Success and Warning keep their shapes. Rings and frames leave the per-icon options and go to one family card, placed before the utility cards with its own reply line | Ringed actions measure as near twins (Close B and Pause B 0.973), and picking a ring for one icon and not another would break the family |
 | D2-622 | Each action card shows three options where three real, clear choices exist, and at least two where a second is a real choice. A card that shows fewer than three prints the maker's one-line reason | Dustin asked for "2 or 3 options, 3 options for each" (DR-146), and a look-alike option gives him no real choice |
 | D2-623 | Pediments stay out of new options, as part of the classical front Rule 01.6 keeps out. The "Within DR-135" options keep theirs as the record of what DR-135 approved | The Civic Line designer's question 7, with the creative director's agreement |
+
+### Civic Line designer, fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-624 | Set B's sign draws five members on the near bench and none on the far one | Members on both benches turned to texture at 48 px, and members where the bench runs steep overlapped it |
+| D2-625 | CL-014 B keeps two rostrum tiers, red on the upper | The Speaker's tier is set B's Congress-only feature (D2-598); the red stays on the rostrum's top as in CL-025 B |
+| D2-626 | CL-014 B and C open the fence to three front pickets a side and leave the far bench out | The review's M4: the chamber and the fence read as two things at 48 px |
+| D2-627 | CL-014 C stops the ballot's arrow on a red bar at the fence, and its rostrum stays black | One red job: the stop, as R-48 C's brace |
+| D2-628 | Set C becomes the chamber seen from the rostrum | The staggered pair read as two signals; a front hemicycle is R-03's and R-46's half ring; members facing the reader read as a body, and the look-alike check puts it under the flag line (closest R-50, 0.876) |
+| D2-629 | CL-059 C's lender is a flat-roofed building with a door, and its loan paper carries a percent sign | A loan with interest is lending; no columns or pediment (D2-623) |
+| D2-630 | R-48 B's office building has two rows of three windows and a door | The review's flat-roofed agency; a window grid reads as an office |
+| D2-631 | R-48 C's arrow runs about 1.9 times its first length | Twice its length pushed the drawing past 238 source px, under DR-08's line floor |
+| D2-632 | Testify B is written testimony: a signed sheet handed up from the person to the committee's raised dais, red on the signature | Dustin asked for three options; testimony on paper is a third act, apart from speaking at the table (A) and the reader at the microphone (C) |
+| D2-633 | The testimony sheet carries two text lines, not three | Three lines merged into extra counters at 48 px (13 against 9); two leave 11 |
+| D2-634 | On 2x screens, 24 px pillar icons draw the master and 16 px icons keep the fit | The master passes width and gap at 48 device pixels and fails width at 32 |
+| D2-635 | The plate marks 24 px renders of topic drawings with an asterisk, explained once per section | A "reference" caption widened each figure and broke the row |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-636 | Testify takes a third option, written testimony (option B), and the board describes it with no claim about how many committees take written testimony | Dustin asked for three options on the action icons (DR-146); the research names written testimony only in Massachusetts results it could not open, so the board makes no claim the research does not support |

@@ -24,6 +24,25 @@
   {
    "id": "Testify",
    "name": "Testify",
+   "option": "B",
+   "within_dr135": null,
+   "change": "Written testimony: a signed sheet of testimony handed up from the person to the committee's raised, curved dais; red on the signature.",
+   "stem": "20261109_Testify-Option-B",
+   "folder": "work/build/assets/civic-line-new-topics",
+   "svg_red_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Red-Black.svg",
+   "svg_black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
+   "scale": 0.609244,
+   "stroke_units": 3.3508,
+   "extent_units": 114.92,
+   "ink_px": [
+    153.5,
+    188.6
+   ],
+   "at_cap": true
+  },
+  {
+   "id": "Testify",
+   "name": "Testify",
    "option": "C",
    "within_dr135": null,
    "change": "The raised, curved dais with three officials, and the red microphone on the witness table; the reader is the witness.",
