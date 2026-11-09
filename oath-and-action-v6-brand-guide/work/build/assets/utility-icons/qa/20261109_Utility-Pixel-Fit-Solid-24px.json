@@ -1,0 +1,295 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+ "run": "2026-11-09T22:10:56.235Z",
+ "rules": {
+  "minStroke": 1,
+  "minThinArea": 0.25,
+  "maxSoftShare": 0.95,
+  "inkAlpha": 8,
+  "fullAlpha": 247,
+  "edgeTolerance": 0.1,
+  "minStraight": 1.5,
+  "straightness": 0.01,
+  "minGap": 1,
+  "minCounterArea": 0.5,
+  "weightTolerance": 0.15
+ },
+ "results": [
+  {
+   "file": "work/build/assets/utility-icons/solid-partners/svg-24/20261109_Utility-Error-Solid-Partner-24px.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       2
+      ],
+      "thinnest": 1.98,
+      "thinnest_near_px": [
+       12,
+       14
+      ],
+      "main": 9,
+      "median": 8.94
+     },
+     "soft_edges": {
+      "ink_px": 322,
+      "partial_px": 72,
+      "share": 0.224
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 2,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       4
+      ],
+      "thinnest": 3.96,
+      "thinnest_near_px": [
+       24,
+       28.1
+      ],
+      "main": 18,
+      "median": 17.89
+     },
+     "soft_edges": {
+      "ink_px": 1254,
+      "partial_px": 146,
+      "share": 0.116
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 2,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/solid-partners/svg-24/20261109_Utility-Warning-Solid-Partner-24px.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       2
+      ],
+      "thinnest": 1.54,
+      "thinnest_near_px": [
+       12,
+       14.5
+      ],
+      "main": 7.35,
+      "median": 7.37
+     },
+     "soft_edges": {
+      "ink_px": 224,
+      "partial_px": 56,
+      "share": 0.25
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 3,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       4
+      ],
+      "thinnest": 3.07,
+      "thinnest_near_px": [
+       24,
+       29.1
+      ],
+      "main": 14.7,
+      "median": 14.74
+     },
+     "soft_edges": {
+      "ink_px": 837,
+      "partial_px": 107,
+      "share": 0.128
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 3,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/svg-24/20261109_Utility-Success-Option-A-24px.svg",
+   "size": 24,
+   "viewBox": [
+    0,
+    0,
+    24,
+    24
+   ],
+   "units_per_px": 1,
+   "supersample": 27,
+   "weight": null,
+   "scales": {
+    "1x": {
+     "device_px": 24,
+     "stroke_px": {
+      "declared": [
+       2
+      ],
+      "thinnest": 3.6,
+      "thinnest_near_px": [
+       19.7,
+       6.4
+      ],
+      "main": 9.45,
+      "median": 7.89
+     },
+     "soft_edges": {
+      "ink_px": 316,
+      "partial_px": 87,
+      "share": 0.275
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 48,
+     "stroke_px": {
+      "declared": [
+       4
+      ],
+      "thinnest": 7.2,
+      "thinnest_near_px": [
+       39.4,
+       12.7
+      ],
+      "main": 18.9,
+      "median": 15.78
+     },
+     "soft_edges": {
+      "ink_px": 1216,
+      "partial_px": 168,
+      "share": 0.138
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  }
+ ]
+}

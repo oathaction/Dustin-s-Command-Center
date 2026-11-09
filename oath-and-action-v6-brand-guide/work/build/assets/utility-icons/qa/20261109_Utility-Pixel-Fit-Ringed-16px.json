@@ -1,0 +1,1483 @@
+{
+ "tool": "work/build/scripts/phase-2/icon_pixel_fit_check.js",
+ "run": "2026-11-09T22:10:54.707Z",
+ "rules": {
+  "minStroke": 1,
+  "minThinArea": 0.25,
+  "maxSoftShare": 0.95,
+  "inkAlpha": 8,
+  "fullAlpha": 247,
+  "edgeTolerance": 0.1,
+  "minStraight": 1.5,
+  "straightness": 0.01,
+  "minGap": 1,
+  "minCounterArea": 0.5,
+  "weightTolerance": 0.15
+ },
+ "results": [
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Another-Site-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 122,
+      "partial_px": 104,
+      "share": 0.852
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 2,
+      "fit": 4,
+      "total": 4,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1,
+      "near_px": [
+       6,
+       8.1
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 410,
+      "partial_px": 198,
+      "share": 0.483
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 2,
+      "fit": 4,
+      "total": 4,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 2,
+      "near_px": [
+       11.9,
+       16.3
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Arrow-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 125,
+      "partial_px": 107,
+      "share": 0.856
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 1,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.73,
+      "near_px": [
+       7.8,
+       4.3
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 407,
+      "partial_px": 196,
+      "share": 0.482
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 1,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.46,
+      "near_px": [
+       15.7,
+       8.5
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Chevron-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 118,
+      "partial_px": 107,
+      "share": 0.907
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.04,
+      "near_px": [
+       4.8,
+       6.7
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 375,
+      "partial_px": 193,
+      "share": 0.515
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 4.07,
+      "near_px": [
+       9.6,
+       13.4
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Close-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.5
+     },
+     "soft_edges": {
+      "ink_px": 118,
+      "partial_px": 103,
+      "share": 0.873
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.9,
+      "near_px": [
+       5.5,
+       5.4
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 3
+     },
+     "soft_edges": {
+      "ink_px": 405,
+      "partial_px": 205,
+      "share": 0.506
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.8,
+      "near_px": [
+       11,
+       10.8
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Copy-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.5
+     },
+     "soft_edges": {
+      "ink_px": 141,
+      "partial_px": 113,
+      "share": 0.801
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 2,
+      "fit": 6,
+      "total": 6,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.16,
+      "near_px": [
+       5.1,
+       4.8
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 3
+     },
+     "soft_edges": {
+      "ink_px": 454,
+      "partial_px": 203,
+      "share": 0.447
+     },
+     "straight": {
+      "strokes": 4,
+      "lone_edges": 2,
+      "fit": 6,
+      "total": 6,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.32,
+      "near_px": [
+       10.2,
+       9.6
+      ]
+     },
+     "counters": {
+      "drawn": 3,
+      "open": 3
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Download-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 119,
+      "partial_px": 104,
+      "share": 0.874
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1.15,
+      "near_px": [
+       6.2,
+       11.9
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 397,
+      "partial_px": 197,
+      "share": 0.496
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 2.3,
+      "near_px": [
+       12.4,
+       23.9
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Filter-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 130,
+      "partial_px": 111,
+      "share": 0.854
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.53,
+      "near_px": [
+       5.7,
+       4.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.3
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 434,
+      "partial_px": 202,
+      "share": 0.465
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.05,
+      "near_px": [
+       11.3,
+       9.6
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Menu-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 128,
+      "partial_px": 107,
+      "share": 0.836
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 1,
+      "near_px": [
+       5.6,
+       7
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.98
+     },
+     "soft_edges": {
+      "ink_px": 421,
+      "partial_px": 189,
+      "share": 0.449
+     },
+     "straight": {
+      "strokes": 3,
+      "lone_edges": 0,
+      "fit": 3,
+      "total": 3,
+      "off": []
+     },
+     "gap": {
+      "parts": 4,
+      "smallest_px": 2,
+      "near_px": [
+       11.2,
+       14
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Pause-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 116,
+      "partial_px": 99,
+      "share": 0.853
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1.88,
+      "near_px": [
+       5.8,
+       5.2
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.98
+     },
+     "soft_edges": {
+      "ink_px": 385,
+      "partial_px": 185,
+      "share": 0.481
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 3.76,
+      "near_px": [
+       11.5,
+       10.3
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Play-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.5
+     },
+     "soft_edges": {
+      "ink_px": 120,
+      "partial_px": 105,
+      "share": 0.875
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 1,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.36,
+      "near_px": [
+       11.1,
+       7.9
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 3
+     },
+     "soft_edges": {
+      "ink_px": 405,
+      "partial_px": 201,
+      "share": 0.496
+     },
+     "straight": {
+      "strokes": 1,
+      "lone_edges": 0,
+      "fit": 1,
+      "total": 1,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 4.72,
+      "near_px": [
+       22.2,
+       15.8
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Reset-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       7.3,
+       5.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 141,
+      "partial_px": 118,
+      "share": 0.837
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       14.6,
+       10.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 467,
+      "partial_px": 238,
+      "share": 0.51
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 1,
+      "smallest_px": null,
+      "near_px": null
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Search-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       7.1,
+       5
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 133,
+      "partial_px": 110,
+      "share": 0.827
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.19,
+      "near_px": [
+       11.1,
+       10.9
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.97,
+      "thinnest_near_px": [
+       14.2,
+       10
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 435,
+      "partial_px": 226,
+      "share": 0.52
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 2.39,
+      "near_px": [
+       22.1,
+       21.9
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Selected-Check-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 114,
+      "partial_px": 99,
+      "share": 0.868
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.68,
+      "near_px": [
+       11.1,
+       5.8
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 385,
+      "partial_px": 208,
+      "share": 0.54
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 0,
+      "fit": 0,
+      "total": 0,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.35,
+      "near_px": [
+       22.1,
+       11.6
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-Sort-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 130,
+      "partial_px": 111,
+      "share": 0.854
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 1.09,
+      "near_px": [
+       3.8,
+       6.8
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 429,
+      "partial_px": 205,
+      "share": 0.478
+     },
+     "straight": {
+      "strokes": 2,
+      "lone_edges": 0,
+      "fit": 2,
+      "total": 2,
+      "off": []
+     },
+     "gap": {
+      "parts": 3,
+      "smallest_px": 2.18,
+      "near_px": [
+       7.5,
+       13.6
+      ]
+     },
+     "counters": {
+      "drawn": 1,
+      "open": 1
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  },
+  {
+   "file": "work/build/assets/utility-icons/family-ringed/svg-16/20261109_Utility-View-Full-Size-Ringed-16px.svg",
+   "size": 16,
+   "viewBox": [
+    0,
+    0,
+    16,
+    16
+   ],
+   "units_per_px": 1,
+   "supersample": 40,
+   "weight": 1.5,
+   "scales": {
+    "1x": {
+     "device_px": 16,
+     "stroke_px": {
+      "declared": [
+       1.5
+      ],
+      "thinnest": 1.49,
+      "thinnest_near_px": [
+       6.7,
+       4.1
+      ],
+      "main": 1.5,
+      "median": 1.49
+     },
+     "soft_edges": {
+      "ink_px": 124,
+      "partial_px": 107,
+      "share": 0.863
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 8,
+      "fit": 8,
+      "total": 8,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 1.55,
+      "near_px": [
+       5.3,
+       5.2
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    },
+    "2x": {
+     "device_px": 32,
+     "stroke_px": {
+      "declared": [
+       3
+      ],
+      "thinnest": 2.98,
+      "thinnest_near_px": [
+       13.5,
+       8.2
+      ],
+      "main": 3,
+      "median": 2.99
+     },
+     "soft_edges": {
+      "ink_px": 421,
+      "partial_px": 211,
+      "share": 0.501
+     },
+     "straight": {
+      "strokes": 0,
+      "lone_edges": 8,
+      "fit": 8,
+      "total": 8,
+      "off": []
+     },
+     "gap": {
+      "parts": 2,
+      "smallest_px": 3.1,
+      "near_px": [
+       10.5,
+       10.3
+      ]
+     },
+     "counters": {
+      "drawn": 2,
+      "open": 2
+     },
+     "fails": [],
+     "pass": true
+    }
+   },
+   "pass": true
+  }
+ ]
+}
