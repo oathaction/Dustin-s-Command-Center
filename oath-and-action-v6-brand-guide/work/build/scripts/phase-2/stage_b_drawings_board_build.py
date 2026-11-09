@@ -257,6 +257,10 @@ def strip_md(s):
     return s.strip()
 
 
+def display_id(i):
+    return i if re.match(r'(CL|R)-\d', i) else i.replace('-An-', ' an ').replace('-', ' ')
+
+
 def letter_of(s):
     m = re.match(r'^\s*(?:Option\s+|Set\s+|Fit\s+)?([A-Z])\b', str(s))
     return m.group(1) if m else None
@@ -428,9 +432,18 @@ def build_model(C, S, scratch, reuse):
     def rank_key(e):
         m = re.match(r'\d+', str(e.get('rank', '99')))
         return int(m.group(0)) if m else 99
-    groups = {}
-    for e in sorted(actions, key=rank_key):
-        groups.setdefault(rank_key(e), []).append(e)
+    # one card per drawing, except drawings the audit makes one button (Play "one button with Pause", D2-557)
+    groups, placed = {}, {}
+    order = sorted(actions, key=rank_key)
+    for k, e in enumerate(order):
+        m = re.search(r'one button with ([\w-]+)', str(e.get('label', '')), flags=re.I)
+        mate = next((x for x in order if m and str(x.get('word', '')).lower() == m.group(1).lower()), None)
+        if mate is not None and mate['key'] in placed:
+            groups[placed[mate['key']]].append(e)
+            placed[e['key']] = placed[mate['key']]
+        else:
+            groups[k] = [e]
+            placed[e['key']] = k
 
     # ---- files for the checks
     like_files, sib_sets, label_of = [], {}, {}
@@ -447,7 +460,7 @@ def build_model(C, S, scratch, reuse):
                 continue
             like_files.append(p)
             names.add(p.name)
-            label_of[p.name] = f'{i} {o["option"]}'
+            label_of[p.name] = f'{display_id(i)} {o["option"]}'
         sib_sets[i] = names
     for e in actions:
         names = set()
@@ -670,7 +683,7 @@ def like_lines(lk, own_label='today’s drawing', show_own=True):
                     f'{" " + chip(st, "chip--" + s["status"]) if st else ""}'))
     t = lk.get('twin')
     if t:
-        out.append(('Twin elsewhere in the set', f'{esc(t["name"])}, <span class="num">{fmt_like(t["likeness"])}</span> {chip("flagged", "chip--flag")}'))
+        out.append(('Closest other new drawing', f'{esc(t["name"])}, <span class="num">{fmt_like(t["likeness"])}</span> {chip("flagged", "chip--flag")}'))
     return out
 
 
@@ -703,7 +716,7 @@ def choice_note(o):
         return ''
     note = str(ch.get('note') or '').strip()
     if ch.get('real_choice'):
-        note = re.sub(r'^Real(\.|,)?\s*', '', note)
+        note = re.sub(r'^Real[.,:;]?\s*', '', note)
         txt = 'Yes.' + (f' {note[:1].upper()}{note[1:]}' if note else '')
     else:
         txt = 'No.' + (f' {note}' if note else '')
@@ -1110,8 +1123,10 @@ def pillars_card(card, model, C):
                 fit_keys.append(k)
     fit_keys.sort(key=lambda k: (-k[0], k[1]))
     lines = {k: next((f['line_px'] for p in ps for f in p['fits'] if (f['size_px'], f['fit']) == k), None) for k in fit_keys}
+    n_at = {sz: sum(1 for k in fit_keys if k[0] == sz) for sz, _ in fit_keys}
     head = '<p class="pg-h">Master, red-black above, black below</p>' + ''.join(
-        f'<p class="pg-h">{k[0]} px, Fit {k[1]}, {lines[k]} px line</p>' for k in fit_keys)
+        (f'<p class="pg-h">{k[0]} px, Fit {k[1]}, {lines[k]} px line</p>' if n_at[k[0]] > 1 else
+         f'<p class="pg-h">{k[0]} px, one fit, {lines[k]} px line</p>') for k in fit_keys)
     rows = ''
     for p in ps:
         mid = p['id']
@@ -1206,6 +1221,7 @@ def end_mark_card(card, model, C):
     iddir = SRC['id_plate'].parent
     enl = ''
     for s in sizes:
+        enl += '<div class="enl-col">'
         text_px = ef[f'{s}A']['text_px']
         for lab, stem in [('Today', f'Today-{text_px}')] + [(f'Fit {k[-1]}', f'Fit-{k[-1]}-{s}') for k in sorted(ef) if int(k[:-1]) == s]:
             cells = ''
@@ -1219,7 +1235,8 @@ def end_mark_card(card, model, C):
                        else f'As a 2x screen draws it, {num_words(END_MAG["2x"])} times larger')
                 cells += f'<figure class="enl">{img(p, w, h, f"{lab} at {s} px, {cap.lower()}", cls="px")}<figcaption class="caption">{esc(cap)}</figcaption></figure>'
             enl += f'<div class="enl-row"><p class="col-h">{esc(lab)}, B at {s} px in {text_px} px text</p><div class="enl-cells">{cells}</div></div>'
-    body = blocks + '<h4 class="sub4">Enlarged, beside a capital H of the same text</h4>' + frame(f'<div class="enls">{enl}</div>', 'The end mark enlarged')
+        enl += '</div>'
+    body = blocks + '<h4 class="sub4">Enlarged, beside a capital H of the same text</h4>' + frame(f'<div class="enls enls--em">{enl}</div>', 'The end mark enlarged')
     # figures: rows at 1x with the line at four positions
     mrow = ''
     for key, lab in [('T17', 'Today, 17 px text'), ('14A', 'Fit A, 14 px'), ('14B', 'Fit B, 14 px'), ('T15', 'Today, 15 px text'), ('12A', 'Fit A, 12 px'), ('12B', 'Fit B, 12 px')]:
@@ -1277,8 +1294,8 @@ def lockmark_card(card, model, C):
             key = f'{which}-{m}-at-{s}'
             r = meas.get(key) or (meas.get(f'today-{m}-at-{s}') if which == 'new' and m not in new else None)
             whole = f'nodes whole {round(100 * r["node_core_full"])}%' if r else ''
-            if which == 'new' and m not in new:
-                whole = 'today’s file, kept'
+            if m not in new:
+                whole = 'one circle per node' + (', today’s file kept' if which == 'new' else '')
             cells += (f'<figure class="lk"><span class="lk-g">{inline_svg(f, s, s, style="color:var(--oa-color-graphic-essential-on-newsprint)")}</span>'
                       f'<figcaption class="caption">{s} px, from the {m} px master{"<br>" + esc(whole) if whole else ""}</figcaption></figure>')
         rows += f'<div class="lk-row"><p class="col-h">{esc(lab)}</p><div class="stage lk-st" data-red="identity">{cells}</div></div>'
@@ -1406,7 +1423,7 @@ def lede(card, C):
                     f'The accessibility audit asks for {join_words(asked(x["entry"]) for x in s)}.')
         else:
             e = s[0]['entry']
-            line = f'For {e["label"][:1].lower() + e["label"][1:]}. The accessibility audit asks for {asked(e)}.'
+            line = f'The action: {e["label"]}. The accessibility audit asks for {asked(e)}.'
         return f'<p class="card-lede">{esc(line)}</p>'
     return paras(C['cards'][k].get('lede'), 'card-lede')
 
@@ -1426,7 +1443,9 @@ def reply_section(model, C):
                            f'data-group="{g["name"]}" aria-label="Card {c["n"]}, {attr(copy(lab))}"><span>{esc(short_label(lab))}'
                            f'{"<span class=star aria-hidden=true> ✓</span>" if False else ""}</span></label>' for v, lab, _ in g['options'])
             gl = f'<span class="pg-l">{esc(g["label"])}</span>' if g.get('label') else ''
-            gs += f'<span class="pgrp">{gl}{opts}</span>'
+            rl = next((short_label(lab) for v, lab, _ in g['options'] if v == g['rec']), None)
+            rc = f'<span class="pg-l pg-rec">Recommended: {esc(rl)}</span>' if rl else ''
+            gs += f'<span class="pgrp">{gl}{opts}{rc}</span>'
         lines += (f'<li class="bl" data-line="{c["n"]}"><a class="bl-n" href="#card-{c["n"]}"><span class="n">{c["n"]}</span> {esc(c["short"])}</a>'
                   f'<span class="bl-o">{gs}</span><label class="pill pill--named"><input type="checkbox" data-named="{c["n"]}" aria-label="I approve card {c["n"]} by name">'
                   f'<span>I approve by name</span></label></li>')
@@ -1519,6 +1538,7 @@ h4,.sub4{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);
 .chip{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;border:var(--oa-border-width-hairline) solid var(--oa-color-border-strong-on-white);padding:1px 6px;white-space:nowrap;color:var(--oa-color-text-primary-on-white)}
 .chip--named,.chip--rec{background:var(--oa-color-palette-charcoal);color:var(--oa-color-text-primary-on-charcoal);border-color:var(--oa-color-palette-charcoal)}
 .chip--out{border-style:dashed}
+.chips .chip{white-space:normal}
 .chip--low,.chip--flag{border-width:2px;font-weight:700}
 .chip--watch{border-style:dotted}
 .chip--ill{margin-right:.4em}
@@ -1604,6 +1624,9 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .em-st{display:grid;gap:var(--oa-space-150);width:100%}
 .em-lab{font:var(--oa-type-caption);color:var(--ink-2);margin:0 0 2px}
 .enls{display:grid;gap:var(--oa-space-200)}
+.enls--em{grid-template-columns:repeat(2,max-content);gap:var(--oa-space-200) var(--oa-space-600)}
+.enl-col{display:grid;gap:var(--oa-space-200);align-content:start}
+.pg-rec{margin-left:var(--oa-space-100)}
 .enl-row .col-h{margin-bottom:var(--oa-space-100)}
 .enl-cells{display:flex;gap:var(--oa-space-300);align-items:flex-end}
 .enl{margin:0}.enl figcaption{margin-top:var(--oa-space-050)}

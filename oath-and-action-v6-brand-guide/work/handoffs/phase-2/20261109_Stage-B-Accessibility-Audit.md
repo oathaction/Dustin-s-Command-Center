@@ -305,3 +305,12 @@ Paths relative to `oath-and-action-v6-brand-guide/`. Nothing in `source/`, `work
 - None.
 
 **Scratch, outside the repository** (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/443076db-a457-52c0-9ab2-d454e53bc53a/scratchpad/`): `guide.html` and its build report, `ax_probe.js`, `ax_target.js`, and `probe/` with the results JSON and the forced colors and text spacing captures. The `baseline.html` and `six-redraws.png` already there belong to another agent and were left alone.
+
+## 9. Fix round check
+
+The utility hand asked about two drawings (`20261109_Stage-B-Utility-Icons-Notes.md`, "For the accessibility lead"). I rendered both from `work/build/assets/utility-icons/svg-24/` and `svg-16/` at 24 and 16 px, at device scale 1, on Newsprint and Charcoal, beside CL-024, the Previous arrow, both Success options, inside 44 px chips and in the stepper row.
+
+- **Reset A, the half arc: yes, as an option, though not my pick.** It stays well apart from CL-024 (one arc, one head, no nodes; 0.644 on the look-alike check). It reads as undo, though, and beside "Previous step" in the stepper row it suggests one step back, so Reset B's three-quarter circle remains my recommendation.
+- **Selected Check B, the ticked box: yes.** The square says "selected", and neither Success option uses a square. If Dustin picks it, an off chip shows the empty box, so both states have a shape (C-5). The bare check, A, stays my pick for chips: the box draws a second outline inside the chip's own and crowds it at 16 px, and a ticked box sits near the marked ballots in R-01, R-11 and R-34.
+
+Tested: the renders above, by eye, plus the designer's look-alike figures as printed in the notes. Not tested: a reader naming either drawing. Scratch files are in `fixround/` in my scratch folder. This section is the only change to this file in the fix round.

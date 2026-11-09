@@ -1,5 +1,5 @@
 {
- "built": "2026-11-09T22:19:27.919997+00:00",
+ "built": "2026-11-09T22:21:21.628430+00:00",
  "thresholds": {
   "flag": 0.9127,
   "watch": 0.8708
@@ -388,7 +388,7 @@
          "status": ""
         },
         "twin": {
-         "name": "Contact-An-Official B",
+         "name": "Contact an Official B",
          "likeness": 0.9202,
          "status": "flag"
         }
@@ -2418,7 +2418,7 @@
   {
    "n": 19,
    "kind": "utility",
-   "title": "Success mark and Selected check",
+   "title": "Success mark",
    "groups": [
     {
      "name": "option",
@@ -2530,7 +2530,35 @@
        "naming_maker": "Names it: Done, or success."
       }
      ]
-    },
+    }
+   ],
+   "fewer_reason": "The closed circle repeated B, and the ticked box says selected, so it moves to the Selected check card."
+  },
+  {
+   "n": 20,
+   "kind": "utility",
+   "title": "Selected check",
+   "groups": [
+    {
+     "name": "option",
+     "label": null,
+     "rec": "A",
+     "options": [
+      [
+       "A",
+       "Option A",
+       "A"
+      ],
+      [
+       "B",
+       "Option B",
+       "B"
+      ]
+     ]
+    }
+   ],
+   "scores_under_4": [],
+   "subjects": [
     {
      "id": "check",
      "options": [
@@ -2615,10 +2643,10 @@
      ]
     }
    ],
-   "fewer_reason": "The closed circle repeated B, and the ticked box says selected, so it moves to the Selected check card. A steeper tick and a compact check repeated A, and the compact one read as the chevron at 16 px."
+   "fewer_reason": "A steeper tick and a compact check repeated A, and the compact one read as the chevron at 16 px."
   },
   {
-   "n": 20,
+   "n": 21,
    "kind": "utility",
    "title": "View full size",
    "groups": [
@@ -2772,7 +2800,7 @@
    ]
   },
   {
-   "n": 21,
+   "n": 22,
    "kind": "utility",
    "title": "Sort a column",
    "groups": [
@@ -2928,7 +2956,7 @@
    ]
   },
   {
-   "n": 22,
+   "n": 23,
    "kind": "utility",
    "title": "Warning mark",
    "groups": [
@@ -3039,7 +3067,7 @@
    "fewer_reason": "Readers know two warning shapes, the triangle and the diamond. A narrower triangle repeated A."
   },
   {
-   "n": 23,
+   "n": 24,
    "kind": "pillars",
    "title": "The pillar icons at 24 and 16 px",
    "groups": [
@@ -3440,7 +3468,7 @@
    ]
   },
   {
-   "n": 24,
+   "n": 25,
    "kind": "end-mark",
    "title": "The end mark on whole pixels at 14 and 12 px",
    "groups": [
@@ -3482,7 +3510,7 @@
    "scores_under_4": []
   },
   {
-   "n": 25,
+   "n": 26,
    "kind": "lockmark",
    "title": "The lockmark's small masters rebuilt",
    "groups": [
@@ -3507,7 +3535,7 @@
    "scores_under_4": []
   },
   {
-   "n": 26,
+   "n": 27,
    "kind": "l6",
    "title": "L6 with its wordmark and tagline centered",
    "groups": [
