@@ -274,10 +274,10 @@ function judgeEdges(edges, scale) {
       const whole = Math.abs(w - Math.round(w)) <= tol;
       const n = (on(lead.pos) ? 1 : 0) + (on(tr.pos) ? 1 : 0);
       const ok = whole ? n === 2 : n >= 1;
-      items.push({ kind: 'stroke', orient: e.orient, width: w, edges: [lead.pos * scale, tr.pos * scale], from: Math.max(lead.from, tr.from) * scale, to: Math.min(lead.to, tr.to) * scale, ok, need: whole ? 'both edges' : 'one edge' });
+      items.push({ kind: 'stroke', orient: e.orient, width: w, edges: [lead.pos * scale, tr.pos * scale], from: Math.max(lead.from, tr.from) * scale, to: Math.min(lead.to, tr.to) * scale, ok, need: whole ? 'both edges on pixel edges' : 'one edge on a pixel edge' });
     } else {
       done.add(e);
-      items.push({ kind: 'edge', orient: e.orient, edges: [e.pos * scale], from: e.from * scale, to: e.to * scale, ok: on(e.pos), need: 'on a pixel edge' });
+      items.push({ kind: 'edge', orient: e.orient, edges: [e.pos * scale], from: e.from * scale, to: e.to * scale, ok: on(e.pos), need: 'to sit on a pixel edge' });
     }
   }
   return items;

@@ -103,7 +103,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
   - pathway PW15, "Voting and public influence"
   - reform R-33, Citizen Assemblies
 - **Meaning, from our own copy.** Chapter 01 (Rule 01.13's why) says a reader "can call an office or testify before it". The tracker's step 2 copy (D2-423) says many state legislatures take testimony from the public, and congressional committees hear the witnesses they invite. In one sentence: a member of the public speaks for the record at a public hearing, before a body such as a state legislative committee, a city council or a regulatory board.
-- **What a reader must recognize.** One ordinary person speaking, with a microphone, at a witness table, facing a panel of several officials who sit together at a raised bench, often a curved dais. The direction matters: the person speaks to the officials, and the officials sit above and listen. DR-147's option says this. Red on the microphone or on the speaker's sound marks would put the second sign on the act of speaking.
+- **What a reader must recognize.** One ordinary person speaking, with a microphone, at a witness table, facing a panel of several officials who sit together at a raised bench, often a curved dais. Two legislatures' own guides describe exactly this. Nebraska: a witness fills out "the sign-in sheet at the witness table" ("Tips on Testifying at a Committee Hearing", nebraskalegislature.gov). Minnesota: "you should be seated at the testifiers' table" and "Speak slowly and clearly into the microphone" (Minnesota House, "Committees" brochure, February 2025). Washington's guide adds: "Legislative hearings are conducted informally. They are not judicial proceedings" (leg.wa.gov, "How to testify in committee", 2023), which is one more reason to keep court signs out (section 4 has the full citations). The direction matters: the person speaks to the officials, and the officials sit above and listen. DR-147's option says this. Red on the microphone or on the speaker's sound marks would put the second sign on the act of speaking.
 - **What would mislead.**
   - One figure at a raised bench, a gavel, scales or a robe. Those read as a courtroom, where a witness testifies in a trial (CL-027, R-11, R-16). Show at least three officials and no gavel.
   - A raised right hand, which reads as a court oath or as voting yes.
@@ -117,7 +117,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
   - pathway PW15, "Voting and public influence", whose short answer says randomized experiments in two state legislatures found that constituent calls and emails about a specific bill changed legislators' votes (V7's claim, quoted as V7 states it, not checked here)
   - V7's sources K1723, House of Representatives, "Find Your Representative", https://www.house.gov/representatives/find-your-representative, and K1724, United States Senate, "Contacting U.S. Senators", https://www.senate.gov/senators/senators-contact.htm (both recorded by V7 as checked 2026-10-15)
 - **Meaning, from our own copy.** Chapter 01 says a reader "can call an office". In one sentence: a reader calls, emails, writes to or visits the office of an official who represents them, to ask for help or to say how they want that official to act.
-- **What a reader must recognize.** A person, an official or an office, and a message going from the person to the office. The channel can be shown (a phone, a letter), but the drawing should say "to an official", not just "make a call".
+- **What a reader must recognize.** A person, an official or an office, and a message going from the person to the office. Washington's legislature lists the channels in one line: "writing a letter, sending an e-mail, calling the legislator's Olympia office, or by calling the Legislative Hotline" (leg.wa.gov, "How to testify in committee", 2023). The channel can be shown (a phone, a letter), but the drawing should say "to an official", not just "make a call".
 - **What would mislead.**
   - A phone handset alone. It is the common interface sign for "call", so it may match a utility glyph (the accessibility audit sets that list) and fail the shape-likeness check. Dustin asked for a very simple phone (DR-147). If the utility set has a phone, the topic phone needs one extra part, such as the red sound marks or a small office, and the board should show the pair side by side.
   - Person, arrow and envelope, which is CL-061 Household Income. An envelope also reads as our newsletter's subscribe action.
@@ -218,11 +218,56 @@ In progress.
 
 ## 4. Source for public testimony at state committee hearings (D2-423)
 
-In progress.
+### The claim
+
+D2-423's step 2 copy says "many state legislatures take testimony from the public". NCSL, which keeps the national comparisons, refuses this session (403), and I found no national count on a reachable official site. So the source is the legislatures themselves. Five official pages, read in full, from four regions, each say the public may testify at a committee hearing:
+
+| State | What its legislature says | Source, read in full |
+|---|---|---|
+| Nebraska | "In Nebraska, gubernatorial appointments and most bills, with the exception of a few technical bills, receive a public hearing by one of the Legislature's committees." And: "At public hearings, citizens have an opportunity within the time available to make their views known or have them incorporated into the official committee record." | Nebraska Legislature, "Tips on Testifying at a Committee Hearing", https://nebraskalegislature.gov/about/testifying.php, retrieved November 9, 2026 (no page date) |
+| Washington | "A bill has a public hearing before Senate and House committees before being considered on the floor of the House and Senate. Your opportunity to testify comes at the committee hearings." And: "Anyone can testify; you do not need formal training." | Washington State Legislature, "How to Testify in Committee" (two-page PDF, file dated March 2, 2023, modified September 29, 2023), https://leg.wa.gov/media/r5agoxpz/how-to-testify-in-committee.pdf, retrieved November 9, 2026 |
+| Minnesota | "Yes. Members of the general public are encouraged to testify before committees, though testimony will need to be arranged with committee staff prior to a scheduled hearing." The House brochure: "During a hearing, the committee can take testimony from the bill sponsors, the public and experts in the areas the bill would affect." | Minnesota Legislature, FAQ "May I testify at a committee hearing?" (last reviewed February 20, 2026), https://www.leg.mn.gov/leg/faq?subject=5; Minnesota House of Representatives, "Committees" brochure (PDF created February 26, 2025), https://www.house.mn.gov/hinfo/leginfo/Committees.pdf; both retrieved November 9, 2026 |
+| Utah | "Committee meetings are open to the public and provide a forum for citizens to express their views about proposed legislation, budgets, and other public policy issues." And: "Public testimony may influence the committee's action." | Utah Legislature, "How to Testify In A Committee", https://le.utah.gov/documents/aboutthelegislature/TestifyingbeforeaLegislativeCommittee.htm, retrieved November 9, 2026 (no page date) |
+| Texas | "Electronic registration has been implemented as a requirement for providing testimony at House committee hearings." | Texas Legislature Online, FAQ, question 27, "How do I testify at a House committee hearing?", https://capitol.texas.gov/resources/faq.aspx, retrieved November 9, 2026 (no page date) |
+
+Search results only (Not tested): Massachusetts joint committee hearing pages on malegislature.gov describe oral and written testimony with registration and time limits (the site's general testimony page answered 404 and its certificate failed through the proxy); Wisconsin's Legislative Council guide (legis.wisconsin.gov) says committees hear testimony from the public (the server reset the connection).
+
+### Recommendation
+
+The step 2 copy can stand as written. "Many" is a fair word for what five legislatures in four regions say on their own sites, and the copy makes no count. If an editor wants a number, it needs NCSL or the Council of State Governments' Book of the States, neither of which I could open; until then the guide should not print one.
+
+Source line, if the step needs one:
+
+> Sources: Nebraska Legislature, "Tips on Testifying at a Committee Hearing"; Washington State Legislature, "How to Testify in Committee", 2023; Minnesota Legislature, "May I testify at a committee hearing?", reviewed February 20, 2026; Utah Legislature, "How to Testify In A Committee"; Texas Legislature Online, FAQ 27; five states. Retrieved November 9, 2026. Each legislature sets its own rules on sign-up, time limits and which bills get a hearing, and these five are examples, not a count.
+
+### The federal half of the same sentence
+
+D2-423's other clause, that congressional committees hear the witnesses they invite, rests on the red team's finding BE-01, which cites House rule XI and Senate rule XXVI. I did not open either rule today, so that half stays as BE-01 left it.
 
 ## 5. Nebraska's one-chamber route on the six tracker steps
 
-In progress.
+### What the Legislature says
+
+Source for every quotation in this section: Nebraska Legislature, "Lawmaking in Nebraska", https://nebraskalegislature.gov/about/lawmaking.php, read in full and retrieved November 9, 2026 (no page date). The page walks a bill through Idea, Introduction, Committee, General File, Enrollment and Review, Select File, Final Reading, Governor, and Laws of Nebraska.
+
+### The mapping
+
+| Tracker step (DR-108, DR-128) | Nebraska's stage | The Legislature's words |
+|---|---|---|
+| 1 Filed | Introduction | "In order to introduce a bill, a senator files it with the Clerk of the Legislature. The clerk reads the title of the bill into the record, assigns it a number and prints copies of it for public and legislative use." |
+| 2 Hearing | Committee public hearing | "With the exception of a few technical bills, most bills introduced into the Legislature must receive a public hearing by a committee. At hearings, citizens have a chance to express their opinions to committee members." |
+| 3 Committee vote | Committee action | "After the hearing, committees may: Vote to send the bill to general file with or without amendments; Indefinitely postpone the bill; Take no action on it" |
+| 4 First chamber | General File, Select File and Final Reading, all in the one chamber | General File "is the first time the full Legislature has the opportunity to debate and vote on bills" and needs "a majority vote of the Legislature (25 votes)"; Select File "is the second debating and voting stage"; on Final Reading "All other bills without an emergency clause require a simple majority vote before going to the governor. A bill with an emergency clause requires a vote of two-thirds (33 members)" |
+| 5 Second chamber | None. Nebraska has one chamber | The page sends a bill from Final Reading straight to the governor: "After the Legislature passes a bill on Final Reading, it goes to the governor for consideration." |
+| 6 Governor | Governor | "The governor has five days, excluding Sundays, to decide what to do with a bill. If the governor signs a bill or declines to act on it, the bill becomes a state law." A veto can be overridden by "a vote of 30 senators". |
+
+After step 6: "Most bills passed and approved by the governor become law three calendar months after the Legislature adjourns", sooner with an emergency clause. The tracker reads a signed bill as law in words (DR-108), so a Nebraska card should say when it takes effect if that date is later.
+
+### How to draw step 5
+
+DR-108's slash means "a step that never happened" for this bill. In Nebraska step 5 cannot happen for any bill, so a bare slash would tell a reader the bill skipped something. My recommendation (question 2 below): keep six steps so every state reads on one scale, draw step 5 with the slash, and put the reason in words beside it on every Nebraska card: "Nebraska has one chamber." D2-407 already pairs a slash with words for H.R. 7008's step 2, so this follows a settled pattern. Step 4's words can say the full Legislature votes three times, so a reader does not think Nebraska bills face one vote.
+
+I did not check the Nebraska Constitution's own text on the one-house legislature or the five-day rule; the Legislature's page is the source above.
 
 ## 6. Real state bill numbers for examples
 
@@ -230,7 +275,82 @@ In progress.
 
 ## 7. Federal records requests and federal rulemaking, as status steps (DR-140)
 
-In progress.
+Both lists are written to sit beside the six-step bill tracker and to use its marks: a step that never happened keeps its number with a slash, a process that stops ends its line on a square, and the end state is said in words (DR-108). Plain step names are mine; every step and end state carries the official source it comes from.
+
+### A. A federal records request (Freedom of Information Act)
+
+Sources, all read in full and retrieved November 9, 2026:
+- **The statute.** 5 U.S.C. 552, via Cornell Law School's Legal Information Institute, https://www.law.cornell.edu/uscode/text/5/552.
+- **The government's FOIA site.** FOIA.gov, "Frequently Asked Questions", https://www.foia.gov/faq.html, run by the Justice Department's Office of Information Policy.
+- **The Justice Department's own report.** "Fiscal Year 2024 Annual Freedom of Information Act Report", Office of Information Policy, March 6, 2025, https://www.justice.gov/oip/media/1392121/dl. Its section III defines the outcome words that every agency's annual report uses.
+
+**Proposed steps (six).**
+
+| Step | Plain name | What happens | Source |
+|---|---|---|---|
+| 1 | Requested | The request reaches the agency's FOIA office, in writing, describing the records. The agency's 20 working days start | FOIA.gov FAQ: "The request simply must be in writing and reasonably describe the records you seek"; 5 U.S.C. 552(a)(6)(A)(i): "determine within 20 days (excepting Saturdays, Sundays, and legal public holidays) after the receipt of any such request whether to comply" |
+| 2 | Acknowledged | The agency confirms receipt and gives a tracking number | FOIA.gov FAQ: "you will usually receive a letter acknowledging the request with an assigned tracking number"; 552(a)(7)(A) requires a tracking number for "each request received that will take longer than ten days to process" |
+| 3 | Searching | The agency looks for the records | FOIA.gov FAQ: "The agency will typically search for records in response to your request" |
+| 4 | Reviewing | The agency decides what can be released and blacks out what an exemption protects | FOIA.gov FAQ: it will "review those records to determine which - and what parts of each - can be released. The agency will redact, or black out, any information protected from disclosure by one of the FOIA's nine exemptions" |
+| 5 | Answered | The agency sends its decision and the releasable records | FOIA.gov FAQ: "Once the agency has processed your request it will send you a written response"; 552(a)(6)(A)(i)(I) |
+| 6 | Appeal | Only if the requester appeals. The agency's appeal office reviews the answer and decides | 552(a)(6)(A)(i)(III)(aa): the right to appeal "within a period ... that is not less than 90 days after the date of such adverse determination"; 552(a)(6)(A)(ii): a decision on an appeal "within twenty days (excepting Saturdays, Sundays, and legal public holidays)". DOJ report, definition a: an appeal asks the agency to "review at a higher administrative level a FOIA determination" |
+
+A request that is never appealed ends at step 5, and step 6 takes a slash. Steps 3 and 4 can merge into one, "Processing", if the tracker needs five; FOIA.gov describes them as one sentence and the DOJ report counts neither separately.
+
+**Pauses a status line may need.** An agency may stop the 20-day clock once to ask the requester for information, and to settle fees (552(a)(6)(A), the two tolling clauses). It may extend the deadline by up to ten working days "in unusual circumstances" with written notice (552(a)(6)(B)(i)). These are waits inside a step, so I would show them in words ("Waiting on you: the agency asked a question") and not as steps.
+
+**End states after step 5, in the DOJ report's own categories (section III and table V.B(1)).**
+
+| Plain word | Official category | Definition |
+|---|---|---|
+| Granted | Full Grant | "an agency decision to disclose all records in full in response to a FOIA request" |
+| Partly granted | Partial Grant/Partial Denial | "an agency decision to disclose portions of the records and to withhold other portions that are exempt under the FOIA, or to otherwise deny a portion of the request for a procedural reason" |
+| Denied | Full Denial (based on exemptions) | "an agency decision not to release any records in response to a FOIA request because the records are exempt in their entireties under one or more of the FOIA exemptions" |
+| Closed, no records released | Full Denial based on reasons other than exemptions | The DOJ table lists these reasons: no records; all records referred to another component or agency; request withdrawn; fee-related reason; records not reasonably described; improper FOIA request for other reason; not agency record; duplicate request; other |
+| Withdrawn | Request Withdrawn | One of the reasons above. The government counts a withdrawn request as a full denial for a reason other than exemptions; a reader page should say "Withdrawn by the requester" so it does not read as a refusal |
+
+**End states after step 6, the appeal (DOJ table VI.B).** Upheld ("Affirmed on Appeal"); Partly reversed ("Partially Affirmed & Partially Reversed/Remanded"); Reversed or sent back ("Completely Reversed/Remanded"); Closed for other reasons.
+
+**After the agency.** Two routes lie outside the agency and outside the six steps: mediation by the Office of Government Information Services at the National Archives, "a nonexclusive alternative to litigation" (552(h)(3)), and a lawsuit in federal district court (552(a)(4)(B)). FOIA.gov describes both. I would show either in words after the end state ("Taken to court, March 2027") and not draw a seventh step.
+
+**On the brief's word list.** "Appealed" is a step and not an end state: an appeal ends in one of the four outcomes above. "Granted", "partly granted", "denied" and "withdrawn" all hold as end states.
+
+### B. A federal agency rule (notice and comment)
+
+Sources, read in full and retrieved November 9, 2026, except where marked:
+- **The rulemaking statute.** 5 U.S.C. 553, via Cornell's Legal Information Institute, https://www.law.cornell.edu/uscode/text/5/553.
+- **The Congressional Review Act.** 5 U.S.C. 801, via the same site, https://www.law.cornell.edu/uscode/text/5/801.
+- **Court review.** 5 U.S.C. 706, via the same site, https://www.law.cornell.edu/uscode/text/5/706.
+- **The White House regulatory office's definitions.** RegInfo.gov, "Frequently Asked Questions", the Office of Information and Regulatory Affairs (OIRA) definitions of each stage, https://www.reginfo.gov/public/jsp/Utilities/faq.myjsp.
+- **The Federal Register's own data.** federalregister.gov's public API (https://www.federalregister.gov/api/v1/documents.json), queried for documents of type "Proposed Rule" whose action reads "Proposed rule; withdrawal": 601 matches, the newest published November 9, 2026 by the Treasury Department's Financial Crimes Enforcement Network.
+- **Not opened.** The Office of the Federal Register's own guide, "A Guide to the Rulemaking Process": federalregister.gov's pages and PDF redirect this session to a bot check (unblock.federalregister.gov), though its API answers. ecfr.gov's API answered with an error asking for compressed responses, and I did not retry it, so no CFR text is cited.
+
+**Proposed steps (six).**
+
+| Step | Plain name | What happens | Source |
+|---|---|---|---|
+| 1 | Early notice | Optional. The agency asks whether or how to write a rule, before it proposes one | RegInfo.gov: "Pre-rule (or advance notice of proposed rulemaking) - Agencies undertake this type of action to solicit public comment on whether or not, or how best, to initiate a rulemaking. Such actions occur prior to the proposed rule stage." |
+| 2 | Proposed | The agency publishes the proposed rule in the Federal Register | 5 U.S.C. 553(b): "General notice of proposed rule making shall be published in the Federal Register"; RegInfo.gov: "Proposed rule - This is the rulemaking stage in which an agency proposes to add to or change its existing regulations and solicits public comment on this proposal." |
+| 3 | Comments open | Anyone may send written comments until the date the notice sets | 553(c): "the agency shall give interested persons an opportunity to participate in the rule making through submission of written data, views, or arguments with or without opportunity for oral presentation" |
+| 4 | Comments closed | The comment period has ended and the agency weighs what it received | 553(c): "After consideration of the relevant matter presented, the agency shall incorporate in the rules adopted a concise general statement of their basis and purpose." |
+| 5 | Final rule | The agency publishes the final rule with its answer to the comments and an effective date, and sends it to Congress | RegInfo.gov: "Final rule - This is the last step of the rulemaking process in which the agency responds to public comment on the proposed rule and makes appropriate revisions before publishing the final rule in the Federal Register to become effective."; 5 U.S.C. 801(a)(1)(A): "Before a rule can take effect, the Federal agency promulgating such rule shall submit to each House of the Congress and to the Comptroller General a report" |
+| 6 | In effect | The rule takes effect, usually at least 30 days after publication; a major rule waits at least 60 days | 553(d): publication "shall be made not less than 30 days before its effective date", with exceptions; 801(a)(3)(A): a major rule takes effect no earlier than "60 days after" Congress receives the report or the rule is published, whichever is later |
+
+Most rules skip step 1, so step 1 takes a slash, which follows DR-108 as written. If a five-step line reads better, drop step 1 and mention an early notice in words.
+
+**The shortcut route.** An interim final rule or a direct final rule skips steps 2 to 4. 553(b)(B) lets an agency skip notice and comment when it finds "for good cause" that they are "impracticable, unnecessary, or contrary to the public interest"; RegInfo.gov says interim final rules "typically" take comments after publication. Such a rule's line would show steps 2 to 4 with slashes, and words: "Issued without advance comment; comments taken after."
+
+**End states.**
+
+| Plain word | Where it comes from | Source |
+|---|---|---|
+| In effect | Step 6 reached | 553(d); 801(a)(3) and (a)(4) |
+| Withdrawn | The agency publishes a withdrawal of its proposed rule | federalregister.gov API: 601 Proposed Rule documents whose action reads "Proposed rule; withdrawal", newest November 9, 2026. RegInfo.gov separately notes an agency "may withdraw its rule from review and choose not to move forward with it" during OIRA review, which is a different, earlier withdrawal |
+| Struck by Congress | Congress enacts a joint resolution of disapproval | 801(b)(1): "A rule shall not take effect (or continue), if the Congress enacts a joint resolution of disapproval"; 801(b)(2) bars reissuing it "in substantially the same form" without a new law |
+| Set aside by a court | A court holds the rule unlawful | 5 U.S.C. 706(2): the reviewing court shall "hold unlawful and set aside agency action, findings, and conclusions" found, among other grounds, "arbitrary, capricious, an abuse of discretion, or otherwise not in accordance with law" (https://www.law.cornell.edu/uscode/text/5/706, read November 9, 2026). A court can also set aside part of a rule, so the words should say which part |
+| Changed or repealed later | The agency amends or revokes it | 801(a)(1)(D) names a rule an agency "revokes, suspends, replaces, amends, or otherwise makes ... ineffective". This is a later event on an in-effect rule, better told in words than as an end state |
+
+**Questions this leaves for the systems designer.** Whether "In effect" and the bill tracker's "law" share a mark (both mean the process finished and the rule binds), and whether a proposed rule that sits for years without action needs a word like the bill tracker's open step 5 ("no action since"). Neither is a research call.
 
 ## 8. Atlas issue I155's correction for the V7.1 list (D2-413)
 
