@@ -32,9 +32,33 @@
   "sign_off_rule": "A card is ready for the board when it scores 4 or more on every criterion and has no Must fix.",
   "naming_test": "The creative director's own reading at 48 px for Civic Line drawings and 24 px for utility glyphs, with no label shown, standing in for a first-time reader while knowing the labels. Each entry gives the reading, the verdict, and the maker's verdict.",
   "cards_ready": [
+    "CL-025 Congress",
+    "CL-014 Entrenched Power",
+    "R-13 Congressional Capacity",
+    "R-42 Congressional Tariff Votes",
+    "CL-059 Credit Allocation",
+    "R-48 Agency Independence",
+    "Testify (new topic symbol)",
     "Contact an official (new topic symbol)",
+    "Close",
+    "Menu",
+    "Arrow (Next, Previous and the sort order)",
+    "Chevron (expand and collapse)",
+    "Download",
+    "Go to another site",
+    "Search",
+    "Filter",
     "Copy",
+    "Play",
+    "Pause",
+    "Reset",
+    "Error mark",
+    "Success mark",
+    "Selected check",
     "View full size",
+    "Sort a column",
+    "Warning mark",
+    "Pixel-fit pillar icons (CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act)",
     "End mark: ampersand B at 14 and 12 px",
     "Lockmark masters rebuilt (24 and 48 px)",
     "L6 centered"
@@ -43,39 +67,21 @@
     {
       "question": "Does any Congress set read clearly as Congress, and if none does, what would?",
       "raised_by": "Civic Line icon designer",
-      "answer": "No. Without its label, no set names Congress at 48 px. Set A reads as a city hall, set B as an arena or a signal, and set C as two signals. Set B comes nearest, because it is the only one that reads as a legislative chamber, and with the label beside it a reader takes it for the House at once. What would read: the body in session. Draw the members, the rostrum they face and the benches they sit on. Members on the front bench as Civic Line heads and shoulders seen from behind turn the room into a body. Solid curved benches stop the rows reading as a signal. A rostrum about a third of the drawing's width, stepped in three tiers with the red on the top tier, gives the eye the House's own landmark. I tested this direction with three rough sketches in my scratch folder: the stepped rostrum alone read as a podium or a cake, and the version with members read as an assembly facing a podium, the closest to a legislature. None named Congress without the label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out, so the label will name it and the drawing's job is to make the label land at once."
+      "answer": "No. Without its label, no set names Congress at 48 px. Set A reads as a city hall, set B as an arena or a signal, and set C as two signals. Set B comes nearest, because it is the only one that reads as a legislative chamber, and with the label beside it a reader takes it for the House at once. What would read: the body in session. Draw the members, the rostrum they face and the benches they sit on. Members on the front bench as Civic Line heads and shoulders seen from behind turn the room into a body. Solid curved benches stop the rows reading as a signal. A rostrum about a third of the drawing's width, stepped in three tiers with the red on the top tier, gives the eye the House's own landmark. I tested this direction with three rough sketches in my scratch folder: the stepped rostrum alone read as a podium or a cake, and the version with members read as an assembly facing a podium, the closest to a legislature. None named Congress without the label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out, so the label will name it and the drawing's job is to make the label land at once. Rescore after the fix round: the reworked set B reads as the House in session, members facing a stepped rostrum, and the label Congress lands on it at once. No set names Congress without its label, and the board says so (D2-620)."
     },
     {
       "question": "Keep every action bare and draw only Error, Success and Warning in a shape?",
       "raised_by": "Utility icon designer",
-      "answer": "Yes. Ringed actions measure as near twins of each other (Close B and Pause B 0.973, Play B and Pause B 0.958), above the closest pair of Civic Line masters (0.964), so a toolbar of rings loses the shapes a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation. For the ring and frame options this means they stop being per-icon choices: picking Close B and Arrow A together would break the family. Show the enclosure once, on one family card that sets the recommended picks bare with shaped status marks beside the same set all ringed, so Dustin decides the treatment once. Each action card then offers bare pictures only, and the three status marks keep shapes that differ from each other: Error a closed circle, Success an open circle, Warning a triangle."
+      "answer": "Yes. Ringed actions measure as near twins of each other (Close B and Pause B 0.973, Play B and Pause B 0.958), above the closest pair of Civic Line masters (0.964), so a toolbar of rings loses the shapes a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation. For the ring and frame options this means they stop being per-icon choices: picking Close B and Arrow A together would break the family. Show the enclosure once, on one family card that sets the recommended picks bare with shaped status marks beside the same set all ringed, so Dustin decides the treatment once. Each action card then offers bare pictures only, and the three status marks keep shapes that differ from each other: Error a closed circle, Success an open circle, Warning a triangle. Rescore after the fix round: done (D2-621). The family card leads the plate and shows both rows at 24 and 16 px on both grounds, with the atlas stepper in use; the bare set has no flagged pair, and the ringed set has 29."
     },
     {
       "question": "Pediments (Civic Line designer's question 7)",
       "raised_by": "Civic Line icon designer",
-      "answer": "Agree with the designer: treat a pediment as part of the classical front and keep it out. That points to B for CL-059 and C for R-48. The A options keep theirs as the DR-135 record."
+      "answer": "Agree with the designer: treat a pediment as part of the classical front and keep it out. That points to B for CL-059 and C for R-48. The A options keep theirs as the DR-135 record. Recorded as D2-623."
     }
   ],
-  "general_must_fix": [
-    {
-      "owner": "Utility icon designer",
-      "fix": "Make one family-card plate for the enclosure question: the recommended picks bare with Error, Success and Warning in their shapes, beside the same set with every action ringed, at 24 and 16 px on Newsprint and Charcoal."
-    },
-    {
-      "owner": "Board builder",
-      "fix": "Place that family card before the utility cards with its own reply line, so Dustin settles the treatment before he picks per icon."
-    }
-  ],
-  "general_should_fix": [
-    {
-      "owner": "Utility icon designer",
-      "fix": "Print each utility card's option-to-option look-alike figures beside its options, so near-twins show on the card; the notes give only each option's figure against Civic Line."
-    },
-    {
-      "owner": "Board builder",
-      "fix": "Where a card offers fewer than three options after this round, print the maker's one-line reason on the card, so Dustin sees why DR-146's three became two or one."
-    }
-  ],
+  "general_must_fix": [],
+  "general_should_fix": [],
   "cards": [
     {
       "order": 1,
@@ -86,15 +92,15 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "One line weight inside DR-08, clean joins and even segment gaps at 2x; set C's staggered pair crowds at 48 px."
+          "reason": "One line weight inside DR-08 at 2x; set B now draws members, benches and a stepped rostrum, and set C's two tiers of members stay apart at 48 px."
         },
         "clarity": {
-          "score": 3,
-          "reason": "No option names Congress at 48 px without its label; B is recognized with it after a moment, since its dashed rows read as an arena or a signal, and C fails even with it."
+          "score": 4,
+          "reason": "B names it nearly: an assembly on a curved bench facing a stepped rostrum, which the label turns into the House at once; no option names Congress without its label (D2-620)."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "No dome, column or flag; the red sits on the center axis and the rows split into five sections with no center aisle, so nothing reads as a party's side."
+          "reason": "No dome, column or flag; the red sits on the rostrum's top tier in B and on the presiding desk in C, both on the center axis, and no seats are red."
         },
         "usefulness": {
           "score": 4,
@@ -109,10 +115,10 @@
           "reason": "The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1)."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
-        "option": "B, after the rework below",
-        "reason": "B is the only option that reads as a legislative chamber, and once its rostrum leads and its seats hold members, the label Congress lands at once."
+        "option": "B",
+        "reason": "B shows the House in session from the gallery, members facing the stepped rostrum, and the label Congress lands on it at once."
       },
       "options": [
         {
@@ -123,12 +129,12 @@
         {
           "option": "B",
           "real_choice": true,
-          "note": "The nearest to Congress."
+          "note": "The chamber in session from the gallery."
         },
         {
           "option": "C",
-          "real_choice": false,
-          "note": "Fails to name its subject at 48 px."
+          "real_choice": true,
+          "note": "The chamber seen from the rostrum, members facing the reader (0.619 against B)."
         }
       ],
       "naming_test": [
@@ -140,39 +146,27 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "A theater or arena seen from the seats; the dashed rows also read as a signal",
-          "creative_director_verdict": "Recognized with the label",
-          "maker_verdict": "Recognized with the label"
+          "creative_director_reading": "An assembly on a curved bench facing a stepped rostrum",
+          "creative_director_verdict": "Names it nearly; the label makes it the House at once",
+          "maker_verdict": "Names it nearly"
         },
         {
           "option": "C",
-          "creative_director_reading": "Two signals or two bowls",
-          "creative_director_verdict": "Fails, even with the label",
+          "creative_director_reading": "Members in two tiers facing a red table: an assembly, or an audience",
+          "creative_director_verdict": "Recognized with the label",
           "maker_verdict": "Recognized with the label"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "None of the three reads as Congress at 48 px. Rework set B as the chamber in session: draw the rows as solid curved benches in place of dashes, put members on the front bench as Civic Line heads and shoulders seen from behind, and make the rostrum the focal point, about a third of the drawing's width, stepped in three tiers with the red on the top tier. Keep five sections, no center aisle and no flag. Check it at 48 px against CL-005, R-03, R-46 and Testify A, then carry it into CL-014 B, R-13 B and R-42 B."
-        },
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Option C fails to name its subject: at 48 px the two staggered chambers read as two signals, and in R-13 and R-42 the Senate shrinks to a smudge. Redraw both chambers with set B's reworked parts so each one reads at 48 px, or replace C with another Congress sign that a reader recognizes at once with the label beside it."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [
         {
           "owner": "Board builder",
-          "fix": "Label the 24 px renders of the six redraws as a reference size. Topic symbols have a 48 px floor, and none of these six is among the 41 that read at 24 px (DR-136)."
-        },
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Say on the card that option A's flat-roofed hall with a red door sits close to CL-031 Local Government's gabled hall with a red door. A must keep its parts, so the card names the risk."
+          "fix": "Carry the plate's mark for 24 px renders as a reference size (DR-136), and print D2-620's line that no set names Congress without its label."
         }
       ],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Fix round: set B reworked as the chamber in session and set C replaced by the chamber seen from the rostrum; both Must fix items closed. If Dustin picks C here and C on Testify, the two share a composition, people in an arc above a red object on a line. With B and A recommended, that pair does not meet.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 2,
@@ -182,16 +176,16 @@
       "judged_at": "48 px, with 128 and 2x for craft",
       "scores": {
         "craft": {
-          "score": 3,
-          "reason": "At 48 px the fence posts and the chamber's rows merge into one dense band in B and C, which reads as a cage or a crown."
+          "score": 4,
+          "reason": "The fence now opens to three pickets a side and drops the far bench, so the chamber and the fence read as two things at 48 px."
         },
         "clarity": {
-          "score": 3,
-          "reason": "A nearly names a body closed in; B and C read as a fenced arena and need the label."
+          "score": 4,
+          "reason": "C draws both halves of the subject, a legislature closed in and a vote stopped at its fence; B names a body closed in nearly."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "No dome or column; the red moves to the rostrum on the center axis, and no seats are red."
+          "reason": "No dome or column; C's one red job is the stop at the fence, B's red sits on the rostrum's top, and no seats are red."
         },
         "usefulness": {
           "score": 4,
@@ -206,10 +200,10 @@
           "reason": "The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1)."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
-        "option": "B, following the Congress sign Dustin picks",
-        "reason": "B shows the same chamber as Congress closed in by its fence, so one sign holds across the four cards."
+        "option": "C",
+        "reason": "C shows both halves of entrenched power, a legislature closed in and a vote stopped at its fence, and it uses the same chamber as the recommended Congress sign."
       },
       "options": [
         {
@@ -220,12 +214,12 @@
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real, and tied to set B."
+          "note": "Set B's chamber closed in by the fence."
         },
         {
           "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of B: without set C's second chamber the two draw the same fenced chamber (0.975 on the look-alike check)."
+          "real_choice": true,
+          "note": "The vote stopped at the fence (0.871 against B, from 0.975)."
         }
       ],
       "naming_test": [
@@ -237,30 +231,22 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "A fenced arena or a circus ring",
-          "creative_director_verdict": "Recognized with the label",
-          "maker_verdict": "Recognized with the label"
+          "creative_director_reading": "A chamber of members closed in by a fence",
+          "creative_director_verdict": "Names it nearly",
+          "maker_verdict": "Names it nearly"
         },
         {
           "option": "C",
-          "creative_director_reading": "The same fenced arena as B",
-          "creative_director_verdict": "Recognized with the label",
-          "maker_verdict": "Recognized with the label"
+          "creative_director_reading": "A ballot stopped at the fence round a chamber: a vote that cannot get in",
+          "creative_director_verdict": "Names the subject",
+          "maker_verdict": "Names it nearly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Option C is a near-duplicate of B. Replace it with an option that draws the second idea, that an election cannot move the body: for example the chamber inside the fence with a ballot's arrow stopping at the fence and the red on the stop, as R-48 C stops its arrow at the brace. Check it against CL-009 Safe Seats and R-12."
-        },
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Open the drawing at 48 px so the chamber and the fence read as two things: fewer fence posts, or one row fewer inside. Carry set B's rework into option B."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": "CL-014 B against R-46 Expand the House is flagged at 0.950. I looked at them side by side at 48 and 96 px: R-46 is seat blocks seen from above with red seats at the right, and CL-014 B is a fenced arena. A reader will not take one for the other.",
-      "ready_for_board": false
+      "notes": "Fix round closed both Must fix items. C uses set B's chamber, so it fits the recommended Congress set. The look-alike flags on B and C (R-33 0.919 and R-46 0.918; R-13 A 0.943 and CL-035 0.926) are silhouette pairs at 24 px; at 48 px none reads as the other drawing. I now recommend C, where round 1 recommended B, because C draws the vote that cannot move the body.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 3,
@@ -271,11 +257,11 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "The tier layout gives the Congress sign room and brings the line to the cap weight; the report's chart line is crisp at 2x."
+          "reason": "The reworked chamber keeps its members and rostrum at three-quarter size on the top tier at 48 px, and the chart line is crisp at 2x."
         },
         "clarity": {
-          "score": 3,
-          "reason": "B reads as staff with a report under a chamber, which lands with the label; the chamber is the weak part, and A's open book still pulls toward reading."
+          "score": 4,
+          "reason": "B reads as a legislature in session above its own staff and their report, which the label settles at once; A keeps the open book DR-135 requires."
         },
         "brand_fidelity": {
           "score": 4,
@@ -294,10 +280,10 @@
           "reason": "The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1)."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "B",
-        "reason": "B shows Congress's own staff and their analysis, and it uses the same Congress sign as the other cards."
+        "reason": "B shows Congress's own staff and their analysis under the same Congress sign as the other cards."
       },
       "options": [
         {
@@ -325,31 +311,27 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Staff and a report under a chamber",
-          "creative_director_verdict": "Recognized with the label",
+          "creative_director_reading": "A legislature in session above two staff and a report",
+          "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Recognized with the label"
         },
         {
           "option": "C",
-          "creative_director_reading": "Two signals over staff and a report",
-          "creative_director_verdict": "Recognized with the label, weakly",
+          "creative_director_reading": "An assembly above two staff and a report",
+          "creative_director_verdict": "Recognized with the label",
           "maker_verdict": "Recognized with the label"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Carry set B's rework into R-13 B, and check at 48 px that the reworked chamber still reads at its three-quarter size on the top tier."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [
         {
           "owner": "Board builder",
-          "fix": "Show R-13's B and C as following the Congress set, so Dustin picks the sign once on CL-025 and these cards confirm it."
+          "fix": "Carry the plate's line that R-13's B and C follow the Congress set picked on CL-025."
         }
       ],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Fix round: set B's rework carried in, and set C replaced to match CL-025 C.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 4,
@@ -360,11 +342,11 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Parcel, tag and vote card keep their counters at 48 px, and the vote card's red frame is clean at 2x."
+          "reason": "The reworked chamber sits clear above the vote card and the parcel at 48 px, and the card's red frame is clean at 2x."
         },
         "clarity": {
-          "score": 3,
-          "reason": "B reads as a vote on goods with the label; the Congress sign above it is the weak part, and A keeps the ballot box that says a public election."
+          "score": 4,
+          "reason": "B reads as a legislature voting yes or no on goods with a price tag, which the label settles at once; A keeps the ballot box DR-135 requires."
         },
         "brand_fidelity": {
           "score": 4,
@@ -383,10 +365,10 @@
           "reason": "The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1)."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "B",
-        "reason": "B shows members voting yes or no on taxed imports, and it keeps one Congress sign across the cards."
+        "reason": "B shows members voting yes or no on taxed imports under the same Congress sign as the other cards."
       },
       "options": [
         {
@@ -414,31 +396,27 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "A chamber, a yes-and-no card and a parcel with a price tag: a vote on goods",
-          "creative_director_verdict": "Recognized with the label",
+          "creative_director_reading": "A legislature in session, a yes-and-no card and a parcel with a tag: a vote on goods",
+          "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Recognized with the label"
         },
         {
           "option": "C",
-          "creative_director_reading": "The same with two signals in place of the chamber",
-          "creative_director_verdict": "Recognized with the label, weakly",
+          "creative_director_reading": "An assembly, a yes-and-no card and a parcel with a tag",
+          "creative_director_verdict": "Recognized with the label",
           "maker_verdict": "Recognized with the label"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Carry set B's rework into R-42 B, and check at 48 px that the chamber still reads above the vote card and the parcel."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [
         {
           "owner": "Board builder",
-          "fix": "Show R-42's B and C as following the Congress set, as on R-13."
+          "fix": "Carry the plate's line that R-42's B and C follow the Congress set picked on CL-025."
         }
       ],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Fix round: set B's rework carried in, and set C replaced to match CL-025 C. R-42 A's flag against R-06 On-Cycle Elections (0.929) belongs to the DR-135 record and is unchanged.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 5,
@@ -449,15 +427,15 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Home, factory and branches stay exact; B's vault wheel is clean at 2x, though its X of spokes reads as a fan or a no sign at 48 px."
+          "reason": "B's wheel handles now stand past the rim and read as a vault wheel at 48 px; C's building and loan paper are clean at 2x, though the percent sign is small at 48 px."
         },
         "clarity": {
           "score": 4,
-          "reason": "With the red branches carrying money out, B reads as a bank vault paying out to a home and a factory."
+          "reason": "B reads as a bank vault paying out to a home and a factory, and C as a lender and a loan."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "B and C meet Rule 01.6 with the pediment gone; A keeps the pediment, which the designer's question 7 puts to Dustin."
+          "reason": "B and C keep the pediment out (D2-623); A keeps it as the DR-135 record."
         },
         "usefulness": {
           "score": 4,
@@ -486,12 +464,12 @@
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real."
+          "note": "The flat-roofed bank with a vault door."
         },
         {
           "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of B: at 48 px both read as a safe or vault paying out, one idea drawn twice."
+          "real_choice": true,
+          "note": "The lender and the loan, no vault."
         }
       ],
       "naming_test": [
@@ -503,31 +481,22 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "A vault paying out to a home and a factory",
-          "creative_director_verdict": "Names it nearly",
+          "creative_director_reading": "A bank vault with its wheel, paying out to a home and a factory",
+          "creative_director_verdict": "Names the subject",
           "maker_verdict": "Names the subject"
         },
         {
           "option": "C",
-          "creative_director_reading": "A safe paying out to a home and a factory",
+          "creative_director_reading": "A lender's office and a loan paper paying out; the percent sign is small at 48 px",
           "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Names the subject"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Option C is a near-duplicate of B. Replace it with a column-free bank sign that is not a vault, from the meaning sheet's list, such as a teller counter with its window or a loan paper beside a small flat-roofed building. Check it against CL-031, CL-016 and the bill and public records drawings."
-        }
-      ],
-      "should_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Draw B's vault wheel so it stops reading as an X in a circle at 48 px, for example with short handle ends standing past the rim."
-        }
-      ],
-      "notes": "The look-alike figures between these three options (0.96 to 0.99) come from the home, factory and branches they share, so they say little about the bank. The near-duplicate call rests on the 48 px reading.",
-      "ready_for_board": false
+      "must_fix": [],
+      "should_fix": [],
+      "notes": "Fix round closed the Must fix and the Should fix. The options' look-alike figures (0.96 to 0.99) still come from the home, factory and branches they share.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 6,
@@ -538,11 +507,11 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "The commission, brace and desk are clean at 2x; C's arrow is about 5 px long at 48 px and nearly vanishes."
+          "reason": "C's arrow now runs about 1.9 times its first length and reads at 48 px; B's window grid is clean at 2x."
         },
         "clarity": {
-          "score": 3,
-          "reason": "C names it nearly once the arrow is seen, and at 48 px the arrow is too small to carry the power to remove."
+          "score": 4,
+          "reason": "C reads as a panel kept apart from a person at a desk whose reach stops at the bracket."
         },
         "brand_fidelity": {
           "score": 4,
@@ -561,7 +530,7 @@
           "reason": "The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1)."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "C",
         "reason": "C shows a commission that an official's reach stops short of, which is the protection the reform sets up."
@@ -574,13 +543,13 @@
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of C: the same commission and brace with a lectern in place of the desk and no arrow (0.969), and the lectern reads as a speech."
+          "real_choice": true,
+          "note": "The agency as a column-free office building (0.899 against C, from 0.969)."
         },
         {
           "option": "C",
           "real_choice": true,
-          "note": "Real."
+          "note": "The commission."
         }
       ],
       "naming_test": [
@@ -592,30 +561,22 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "A panel and a speaker kept apart: a debate",
-          "creative_director_verdict": "Recognized with the label",
-          "maker_verdict": "Recognized with the label"
+          "creative_director_reading": "An office building kept apart from a person at a desk whose arrow stops at the bracket",
+          "creative_director_verdict": "Names it nearly",
+          "maker_verdict": "Names it nearly"
         },
         {
           "option": "C",
-          "creative_director_reading": "A panel kept apart from a person at a desk who points at it",
+          "creative_director_reading": "A panel of three kept apart from a person at a desk whose arrow stops at the bracket",
           "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Names it nearly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Option B is a near-duplicate of C. Replace it with an option that answers a different question, such as a flat-roofed agency building with no columns or pediment beside the brace and the official at a desk. The card then offers the building within DR-135, the building without its classical front, and the commission."
-        },
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Lengthen C's arrow to about twice its length so it reads at 48 px, and keep it clear of the brace."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Fix round closed both Must fix items. B against A measures 0.950 on the silhouette; at 48 px the pediment and lectern against the window grid and arrow tell them apart.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 7,
@@ -626,15 +587,15 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "The microphone reads as a microphone at 48 px and the dais curves cleanly; B fills less of the box than A and C."
+          "reason": "A's witness table now has a top and a front panel, and B's sheet and signature hold at 48 px."
         },
         "clarity": {
           "score": 4,
-          "reason": "A reads as a hearing: one person at a microphone facing a raised panel of three."
+          "reason": "A reads as a hearing: a witness seated at a table with a microphone, facing a raised panel."
         },
         "brand_fidelity": {
           "score": 4,
-          "reason": "Three officials and no gavel, scales, robe, flag or nameplate letters; the one red accent is the microphone."
+          "reason": "Three officials and no gavel, scales, robe, flag or nameplate letters; one red accent in each option."
         },
         "usefulness": {
           "score": 4,
@@ -658,53 +619,44 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "The witness at the table."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same parts and the same reading, moved onto a diagonal and drawn smaller."
+          "real_choice": true,
+          "note": "Testimony given on paper (0.851 against A, 0.883 against C)."
         },
         {
           "option": "C",
           "real_choice": true,
-          "note": "Real: the reader stands in for the witness."
+          "note": "The reader stands in for the witness."
         }
       ],
       "naming_test": [
         {
           "option": "A",
-          "creative_director_reading": "A hearing: a person at a microphone facing a raised panel (the nearest wrong reading is a talent-show panel)",
+          "creative_director_reading": "A hearing: a witness seated at a table with a microphone, facing a raised panel",
           "creative_director_verdict": "Names the subject",
           "maker_verdict": "Names the subject"
         },
         {
           "option": "B",
-          "creative_director_reading": "The same scene as A, smaller and on a diagonal",
+          "creative_director_reading": "A person handing a signed paper up to a panel: written testimony, or a petition",
           "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Names the subject"
+          "maker_verdict": "Names it nearly"
         },
         {
           "option": "C",
-          "creative_director_reading": "A panel with a microphone: a hearing or a panel talk",
+          "creative_director_reading": "A panel with a microphone: a hearing, or a panel talk",
           "creative_director_verdict": "Recognized with the label",
           "maker_verdict": "Names it nearly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Option B is a near-duplicate of A. Replace it with an option that changes what the drawing shows, for example the view from behind the witness, with the panel facing the reader across the table and the red microphone in front. Check it against CL-005, CL-016 and Contact an official C."
-        }
-      ],
-      "should_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Draw A's witness table as a table, a top with a front panel or legs, so the witness reads as seated at a table and the scene moves away from a talent-show panel."
-        }
-      ],
-      "notes": null,
-      "ready_for_board": false
+      "must_fix": [],
+      "should_fix": [],
+      "notes": "Fix round: B withdrawn as a near-duplicate and redrawn as written testimony; A's table drawn as a table. B's sheet with red writing shares its sign with CL-004 Petition (a page with a red pen), so some readers will say petition, and the label settles it. The board makes no claim about how many committees take written testimony (D2-636).",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 8,
@@ -715,7 +667,7 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Desk, figures and speech mark are clean at 2x; B's phone is about 18 px wide at 48 px, small for the drawing Dustin asked for by name."
+          "reason": "Desk, figures and speech mark are clean at 2x, and B's phone, now 1.25 times its first size, reads at 48 px."
         },
         "clarity": {
           "score": 4,
@@ -781,14 +733,10 @@
         }
       ],
       "must_fix": [],
-      "should_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Draw B's phone one step larger so it reads at 48 px, keeping the desk and the official at the cord's end."
-        }
-      ],
-      "notes": null,
-      "ready_for_board": true
+      "should_fix": [],
+      "notes": "Still ready. The fix round made B's phone larger and changed nothing else. Contact B against R-42 A measures 0.920 in a run of all the Civic Line drawings together; R-42 A is a building, a ballot box and a crate, and at 48 px the two do not read alike.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     },
     {
       "order": 9,
@@ -803,7 +751,7 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "A reads as Close at once; B reads as clear or cancel, C as a closed window."
+          "reason": "The one option reads as Close at once."
         },
         "brand_fidelity": {
           "score": 4,
@@ -815,7 +763,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -831,17 +779,7 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
-        },
-        {
-          "option": "B",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
+          "note": "The bare cross."
         }
       ],
       "naming_test": [
@@ -850,29 +788,13 @@
           "creative_director_reading": "Close",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "B",
-          "creative_director_reading": "Clear or cancel",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Close the window, or a box marked no",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C draw A in a ring and a frame. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. Readers know one bare sign for Close, so this card shows A alone and says so in one line."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "One option. Its printed reason holds: readers know one sign for Close, and the ring sits on the family card. I found no bare second form a reader names Close.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 10,
@@ -886,8 +808,8 @@
           "reason": "The bars sit on whole pixels at both sizes."
         },
         "clarity": {
-          "score": 3,
-          "reason": "A and B read as Menu; C reads as text or align left."
+          "score": 4,
+          "reason": "A reads as Menu; B reads as Menu beside its word, which always shows, and alone as an equals sign."
         },
         "brand_fidelity": {
           "score": 4,
@@ -899,14 +821,14 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
           "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "A",
         "reason": "Three even bars are the menu sign on every phone, and the guide already draws them."
@@ -915,17 +837,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "Three even bars."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same three bars, narrower and closer."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Fails to name its subject: reads as text."
+          "real_choice": true,
+          "note": "Two even bars, the shorter menu sign."
         }
       ],
       "naming_test": [
@@ -937,26 +854,16 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Menu",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Text, or align left",
-          "creative_director_verdict": "Fails",
-          "maker_verdict": "Fails"
+          "creative_director_reading": "An equals sign or a drag handle alone; Menu beside its word",
+          "creative_director_verdict": "Partly",
+          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option B is a near-duplicate of A and option C reads as text. Replace B with two even bars if that reads as Menu beside the word at 24 px. Three dots say More and a grid says apps, so if no third form names Menu, drop C and say why on the card."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds: three dots say More and a grid says apps.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 11,
@@ -971,7 +878,7 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "Every option reads as Next."
+          "reason": "Both options read as Next; B's closed head also reads as a plug at a glance."
         },
         "brand_fidelity": {
           "score": 4,
@@ -983,7 +890,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -999,17 +906,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "An open head."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same arrow with a longer shaft (0.840)."
+          "real_choice": true,
+          "note": "A closed line triangle head (0.496 against Play A)."
         }
       ],
       "naming_test": [
@@ -1021,30 +923,16 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Next, as a button",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Next, or continue",
-          "creative_director_verdict": "Names it",
+          "creative_director_reading": "Next, with a closed head; a plug at a glance",
+          "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Names it"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option B draws A in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family."
-        },
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C is a near-duplicate of A. Replace it with an arrow whose head is a closed line triangle, if it reads as Next and stays apart from Play; if not, the card shows A alone and says why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 12,
@@ -1059,7 +947,7 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "A reads as show more; C reads the same, only lighter beside a word."
+          "reason": "A reads as show more and B as a dropdown caret."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1071,7 +959,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1087,17 +975,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "The chevron."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same chevron, smaller (0.902)."
+          "real_choice": true,
+          "note": "A disclosure triangle in line, smaller and lighter beside a word."
         }
       ],
       "naming_test": [
@@ -1109,30 +992,16 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Show more, or scroll down",
+          "creative_director_reading": "A dropdown caret: open the list",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Open the list",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option B draws A in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family."
-        },
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C is a near-duplicate of A. Replace it with a disclosure triangle drawn in line, if it stays apart from Play, Warning and Sort at 24 and 16 px. Plus and minus are ruled out as the atlas's polarity signs (audit section 1.3). If nothing passes, the card shows A alone and says why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds: a smaller chevron repeated A, and plus and minus are the atlas's polarity signs.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 13,
@@ -1147,7 +1016,7 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "A and B read as Download; C reads as Download or move down."
+          "reason": "All three read as Download; C says download the file."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1159,7 +1028,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1175,17 +1044,17 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "Into a tray."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real: onto a line."
+          "note": "Onto a line."
         },
         {
           "option": "C",
-          "real_choice": false,
-          "note": "An enclosure, which is a choice for the whole set."
+          "real_choice": true,
+          "note": "Onto a page with a folded corner."
         }
       ],
       "naming_test": [
@@ -1203,20 +1072,16 @@
         },
         {
           "option": "C",
-          "creative_director_reading": "Download, or move down",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
+          "creative_director_reading": "Download the file",
+          "creative_director_verdict": "Names it",
+          "maker_verdict": "Names it"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C draws the arrow in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. Replace it with a third bare picture, such as the arrow down onto a page with a folded corner, checked against Copy and the Civic Line bill and records drawings."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Three options. C stays apart from Copy and from CL-048 Public Records.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 14,
@@ -1230,8 +1095,8 @@
           "reason": "The box, arrow and ring land on the grid at both sizes."
         },
         "clarity": {
-          "score": 3,
-          "reason": "A reads as open elsewhere; B can read as trending up; C reads as share or export."
+          "score": 4,
+          "reason": "A reads as open elsewhere; B can read as trending up beside nothing, and as a link mark after a word."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1243,14 +1108,14 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
           "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "A",
         "reason": "An arrow leaving a box by its corner is the known sign for a link that leaves the site."
@@ -1259,23 +1124,18 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "An arrow leaving a box by its corner."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real: the bare diagonal arrow many sites use."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Fails to name its subject: reads as share or export."
+          "note": "The bare diagonal arrow."
         }
       ],
       "naming_test": [
         {
           "option": "A",
-          "creative_director_reading": "Open somewhere else, or open in a new tab",
+          "creative_director_reading": "Open somewhere else",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
         },
@@ -1284,23 +1144,13 @@
           "creative_director_reading": "Up and to the right, or trending up",
           "creative_director_verdict": "Names it nearly",
           "maker_verdict": "Partly"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Share, or export",
-          "creative_director_verdict": "Fails",
-          "maker_verdict": "Fails"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C reads as share or export. Replace it with an arrow leaving a window that has a title bar, checked against View Full Size C and Copy, or drop it and say why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds: a window would say the link opens a new window, and these links open in the same tab (audit 1.2).",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 15,
@@ -1327,7 +1177,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1343,17 +1193,7 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
-        },
-        {
-          "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same magnifier with a glint (0.917)."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same magnifier with a larger lens, and it reads as zoom."
+          "note": "The plain magnifier."
         }
       ],
       "naming_test": [
@@ -1362,29 +1202,13 @@
           "creative_director_reading": "Search",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "B",
-          "creative_director_reading": "Search, or a magnifying glass",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Search, or zoom",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C are near-duplicates of A. Readers know one sign for Search, so the card shows A alone and says so, unless the maker finds a second form that a reader names Search at 24 px."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "One option. The printed reason holds: a glint or a larger lens repeated it, and the ring sits on the family card.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 16,
@@ -1399,7 +1223,7 @@
         },
         "clarity": {
           "score": 4,
-          "reason": "All three read as a funnel; C can read as a glass."
+          "reason": "A reads as Filter; B reads as filter or sort."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1411,7 +1235,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1427,17 +1251,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "The funnel."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A: only the spout changes (0.997)."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A: a wider funnel (0.938)."
+          "real_choice": true,
+          "note": "Three lines narrowing downward (0.383 against Sort C)."
         }
       ],
       "naming_test": [
@@ -1449,26 +1268,16 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Filter",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Filter, or a glass",
-          "creative_director_verdict": "Names it nearly",
+          "creative_director_reading": "Filter, or sort",
+          "creative_director_verdict": "Partly",
           "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C are near-duplicates of A. Replace one with three lines narrowing downward, the list-filter sign, checked against Menu, Sort and the Civic Line sliders (CL-012, CL-071, R-37). Drop the other and say why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 17,
@@ -1479,7 +1288,7 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Clean at 24 px; C's text lines crowd the front sheet at 16 px."
+          "reason": "Clean at 24 px, and C's one text line now clears the front sheet at 16 px."
         },
         "clarity": {
           "score": 4,
@@ -1495,7 +1304,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1545,14 +1354,10 @@
         }
       ],
       "must_fix": [],
-      "should_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "At 16 px, give C's front sheet one line of text in place of two, or open the gap, so the lines stop crowding."
-        }
-      ],
-      "notes": null,
-      "ready_for_board": true
+      "should_fix": [],
+      "notes": "Still ready. The fix round opened C at 16 px.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     },
     {
       "order": 18,
@@ -1579,7 +1384,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1595,17 +1400,7 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
-        },
-        {
-          "option": "B",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "An enclosure of A in a screen, which also narrows Play to video."
+          "note": "The plain triangle."
         }
       ],
       "naming_test": [
@@ -1614,29 +1409,13 @@
           "creative_director_reading": "Play",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "B",
-          "creative_director_reading": "Play",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Play the video",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C draw A in a ring and on a screen. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. The card shows A alone and says why; Play and Pause stay a pair (D2-557)."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "One option. The printed reason holds: the ring sits on the family card, and a screen narrows Play to video.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 19,
@@ -1663,7 +1442,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1679,17 +1458,7 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
-        },
-        {
-          "option": "B",
-          "real_choice": false,
-          "note": "An enclosure of A, which is a choice for the whole set."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "An enclosure of A in a screen."
+          "note": "Two plain bars."
         }
       ],
       "naming_test": [
@@ -1698,29 +1467,13 @@
           "creative_director_reading": "Pause",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "B",
-          "creative_director_reading": "Pause",
-          "creative_director_verdict": "Names it",
-          "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Pause the video",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C draw A in a ring and on a screen. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. The card shows A alone and says why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": "Pause A sits on the watch line against CL-012 Election Rules (0.897). I looked at the pair at 24 px: two hollow bars against a page with two sliders. They do not read alike, and Pause sits beside its word in a media control.",
-      "ready_for_board": false
+      "notes": "One option. The printed reason holds. Pause A against CL-012 Election Rules stays on the watch line (0.897) and does not read alike.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 20,
@@ -1734,8 +1487,8 @@
           "reason": "The three-quarter circle and its head sit cleanly at both sizes."
         },
         "clarity": {
-          "score": 3,
-          "reason": "B reads as undo or reset; A reads as refresh, the CL-024 trap the audit names."
+          "score": 4,
+          "reason": "B reads as undo or reset; A reads as undo, a near subject, and C as undo or turn left."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1747,14 +1500,14 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
           "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "B",
         "reason": "It reads as undo or start over and sits furthest from CL-024's loop."
@@ -1762,26 +1515,26 @@
       "options": [
         {
           "option": "A",
-          "real_choice": false,
-          "note": "Fails to name its subject: reads as refresh."
+          "real_choice": true,
+          "note": "The undo arc, about half round (0.644 against CL-024)."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real."
+          "note": "Three quarters round, upright corner head."
         },
         {
           "option": "C",
           "real_choice": true,
-          "note": "Real: the head at the left."
+          "note": "Three quarters round, head at the left."
         }
       ],
       "naming_test": [
         {
           "option": "A",
-          "creative_director_reading": "Refresh, or reload",
-          "creative_director_verdict": "Fails",
-          "maker_verdict": "Fails"
+          "creative_director_reading": "Undo",
+          "creative_director_verdict": "Partly",
+          "maker_verdict": "Partly"
         },
         {
           "option": "B",
@@ -1796,15 +1549,11 @@
           "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option A reads as refresh. Replace it with another reading of the audit's three-quarter circle that says undo or start over, or with the undo hook, an arrow curving back to the left, if the accessibility lead agrees it can stand outside the audit's spec. Check it against Previous, the mirrored arrow, and CL-024."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "A waits for the accessibility lead's word on its half arc, where the audit asks for about three quarters. A says undo, which is near reset and not the same action, so B stays recommended.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 21,
@@ -1815,7 +1564,7 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "Clean at 24 px; B's octagon loses its flats at 16 px and draws as A's circle."
+          "reason": "B's 16 px corners are now cut so the octagon reads apart from the circle (0.874)."
         },
         "clarity": {
           "score": 4,
@@ -1831,7 +1580,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -1847,17 +1596,17 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "A closed circle."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A at 16 px, where the octagon draws as a circle (0.888 at 24 px)."
+          "real_choice": true,
+          "note": "The stop sign."
         },
         {
           "option": "C",
           "real_choice": true,
-          "note": "Real: a square."
+          "note": "A square."
         }
       ],
       "naming_test": [
@@ -1880,15 +1629,11 @@
           "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option B draws as A at 16 px. Lengthen the octagon's flats so it reads as eight sides at 16 px, or replace it with another shape that stays apart from the Warning triangle."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Three options. The fix round closed the Must fix.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 22,
@@ -1902,8 +1647,8 @@
           "reason": "B's ring opens cleanly past the check at both sizes."
         },
         "clarity": {
-          "score": 3,
-          "reason": "A and B read as done; C reads as a ticked box, which says selected."
+          "score": 4,
+          "reason": "Both options read as done."
         },
         "brand_fidelity": {
           "score": 4,
@@ -1915,14 +1660,14 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
           "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "B",
         "reason": "The check leaving an open circle reads as done, and its outline differs from the error mark's closed circle."
@@ -1930,24 +1675,19 @@
       "options": [
         {
           "option": "A",
-          "real_choice": false,
-          "note": "Near-duplicate of B (0.965): a check in a circle with the circle closed."
+          "real_choice": true,
+          "note": "The check cut out of a solid disc; picking it brings solid partners for Error and Warning, shown on the card."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Fails to name its subject: reads as selected, which breaks D2-511's one meaning."
+          "note": "The check leaving an open circle."
         }
       ],
       "naming_test": [
         {
           "option": "A",
-          "creative_director_reading": "Done, or success",
+          "creative_director_reading": "Done, on a solid disc",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
         },
@@ -1956,23 +1696,13 @@
           "creative_director_reading": "Done, or success",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "A ticked box: selected",
-          "creative_director_verdict": "Fails",
-          "maker_verdict": "Fails"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option A is a near-duplicate of B and option C reads as a checked box. Offer C's checked box on the Selected check card, where selected is its meaning. Replace A with a form that differs in its picture and names done, for example the check cut out of a solid disc; if that is offered, show whether Error and Warning would take solid partners so the three status marks stay one kind. If no second form names done at 24 px, the card shows B alone and says why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds: the closed circle repeated B, and the ticked box moved to the Selected check card.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 23,
@@ -1999,7 +1729,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -2015,17 +1745,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "The plain check."
         },
         {
           "option": "B",
-          "real_choice": false,
-          "note": "Near-duplicate of A: a steeper long arm (0.940)."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A, and at 16 px it reads as Chevron A (0.924)."
+          "real_choice": true,
+          "note": "The ticked box, moved from Success."
         }
       ],
       "naming_test": [
@@ -2037,26 +1762,16 @@
         },
         {
           "option": "B",
-          "creative_director_reading": "Check, or tick",
+          "creative_director_reading": "A ticked box: selected",
           "creative_director_verdict": "Names it",
           "maker_verdict": "Names it"
-        },
-        {
-          "option": "C",
-          "creative_director_reading": "Check, near the chevron",
-          "creative_director_verdict": "Names it nearly",
-          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Options B and C are near-duplicates of A, and C collides with the chevron. Replace one with Success C's checked box, if the accessibility lead agrees it suits a chip's on state, and drop the other with a one-line reason."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds. B waits for the accessibility lead's word on a ticked box inside a chip that has its own outline.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 24,
@@ -2067,7 +1782,7 @@
       "scores": {
         "craft": {
           "score": 4,
-          "reason": "A is clean; B's arrowheads crowd the corners at 16 px."
+          "reason": "A is clean, and B's shorter heads now keep the four corners open at 16 px."
         },
         "clarity": {
           "score": 4,
@@ -2083,7 +1798,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -2133,14 +1848,10 @@
         }
       ],
       "must_fix": [],
-      "should_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "At 16 px, shorten B's arrowheads or its shafts so the four corners stop filling in."
-        }
-      ],
-      "notes": null,
-      "ready_for_board": true
+      "should_fix": [],
+      "notes": "Still ready. The fix round opened B at 16 px.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     },
     {
       "order": 25,
@@ -2154,8 +1865,8 @@
           "reason": "Both arrows sit on whole pixels and share the Next arrow's head."
         },
         "clarity": {
-          "score": 3,
-          "reason": "A reads as sort; B as sort or a list picker; C as resize."
+          "score": 4,
+          "reason": "A reads as sort; B as sort or a list picker; C as sorted downward."
         },
         "brand_fidelity": {
           "score": 4,
@@ -2167,14 +1878,14 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
           "reason": "Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
         "option": "A",
         "reason": "An up and a down arrow read as sort and share the Next arrow's head."
@@ -2183,17 +1894,17 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "Up and down arrows."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real: the chevron pair many tables use."
+          "note": "The chevron pair."
         },
         {
           "option": "C",
-          "real_choice": false,
-          "note": "Fails to name its subject: reads as resize."
+          "real_choice": true,
+          "note": "Bars of falling length beside a down arrow."
         }
       ],
       "naming_test": [
@@ -2211,20 +1922,16 @@
         },
         {
           "option": "C",
-          "creative_director_reading": "Move up and down, or resize",
-          "creative_director_verdict": "Fails",
-          "maker_verdict": "Fails"
+          "creative_director_reading": "Sorted downward",
+          "creative_director_verdict": "Partly",
+          "maker_verdict": "Partly"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C reads as resize. Replace it with the sort-lines sign, bars of falling length beside a down arrow, if it stays apart from Filter's new option and Menu; otherwise drop it and say why."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": false
+      "notes": "C reads as an order already in use, which competes with the turned Next arrow that marks the column in use (audit 1.2, item 16). A stays recommended.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 26,
@@ -2251,7 +1958,7 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins."
+          "reason": "The naming test is labeled as the designer's own reading, both checks reproduce on my rerun, and each card now prints its option-to-option figures."
         },
         "accessibility": {
           "score": 4,
@@ -2267,17 +1974,12 @@
         {
           "option": "A",
           "real_choice": true,
-          "note": "Real."
+          "note": "The triangle."
         },
         {
           "option": "B",
           "real_choice": true,
-          "note": "Real: the diamond."
-        },
-        {
-          "option": "C",
-          "real_choice": false,
-          "note": "Near-duplicate of A: the same triangle, narrower (0.929)."
+          "note": "The diamond."
         }
       ],
       "naming_test": [
@@ -2300,15 +2002,11 @@
           "maker_verdict": "Names it"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Utility icon designer",
-          "fix": "Option C is a near-duplicate of A. Readers know two warning shapes, the triangle and the diamond, so drop C and say why, unless the maker finds a third that names warning at 24 px."
-        }
-      ],
+      "must_fix": [],
       "should_fix": [],
-      "notes": "D2-510 keeps the warning mark only if chapter 11's specimens carry a notice that needs it.",
-      "ready_for_board": false
+      "notes": "Two options. The printed reason holds: readers know two warning shapes. D2-510 keeps the mark only if chapter 11 needs it.",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 27,
@@ -2318,12 +2016,12 @@
       "judged_at": "24 and 16 px at 1x and 2x, beside Inter text",
       "scores": {
         "craft": {
-          "score": 3,
-          "reason": "Every fit passes the pixel-fit check at 1x and 2x, but on a 2x screen the pixel drawings double into hard steps where the master would draw smooth, and Track's path and lens read as the characters 2Q at 16 px."
+          "score": 4,
+          "reason": "On 1x screens every fit passes at its size; on 2x screens the master draws at 24 px with a 1.26 device-pixel line, smooth and approved, and the 16 px fit doubles into 2 px steps, the better of the two there."
         },
         "clarity": {
           "score": 4,
-          "reason": "Each fit keeps its master's features, and each sits beside its pillar's word."
+          "reason": "Each fit keeps its master's features beside its pillar's word; Track's path still echoes a 2 at 16 px, as the designer says."
         },
         "brand_fidelity": {
           "score": 4,
@@ -2335,17 +2033,17 @@
         },
         "evidence_honesty": {
           "score": 4,
-          "reason": "The notes give each fit's check figures and say why 16 px has one fit."
+          "reason": "The notes give the masters' 2x figures at 24 and 16 px and state the Track caveat."
         },
         "accessibility": {
           "score": 4,
           "reason": "The black edition, the one in use under 48 px, carries every feature without red, and every fit passes the pixel-fit check."
         }
       },
-      "lowest_score": 3,
+      "lowest_score": 4,
       "recommended": {
-        "option": "24 px Fit B, with the 16 px fit",
-        "reason": "Fit B keeps Civic Line's light line, shares its 1 px line with the 16 px fit, and keeps the pillar icons apart from the heavier interface glyphs."
+        "option": "24 px Fit B on 1x screens and the master on 2x screens, with the 16 px fit on both",
+        "reason": "Fit B keeps Civic Line's light line on 1x screens, and on 2x screens the master itself draws smooth at 24 px, so the pillar icons stay apart from the heavier interface glyphs."
       },
       "options": [
         {
@@ -2390,20 +2088,11 @@
           "maker_verdict": "Not run"
         }
       ],
-      "must_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Show each fit as a 2x screen draws it, beside the master at 24 and 16 px on a 2x screen, and recommend what 2x screens get. The identity designer's answer for the end mark, the pixel fit on 1x screens and the smooth drawing on 2x screens switched by screen resolution, is the precedent; the engineer would build the switch."
-        }
-      ],
-      "should_fix": [
-        {
-          "owner": "Civic Line icon designer",
-          "fix": "Move Track's path so it stops forming a 2 beside the lens's Q at 16 px and in 24 px Fit A, for example by ending the path's upper run one pixel short of the lens or lowering its turn, and keep the pin, path and lens."
-        }
-      ],
-      "notes": "The designer recommends Fit A to match the utility line. I recommend Fit B. At true size beside 15 px Inter, Fit A reads as bold and Fit B matches the text's weight. Both pass every check, so this is Dustin's call between weight and the family's light hand.",
-      "ready_for_board": false
+      "must_fix": [],
+      "should_fix": [],
+      "notes": "I checked the designer's 2x advice by rendering each master at 24 and 16 px on a 2x screen beside the fits. At 24 px the master draws smooth and reads, so the advice holds. At 16 px the master's line falls under one device pixel, so the fit stays. The fit and the master differ a little in proportion (Act's hand is a quarter wider in the fit), so an icon changes slightly between 1x and 2x screens. The engineer builds the switch (D2-634).",
+      "ready_for_board": true,
+      "changed_in_fix_round": true
     },
     {
       "order": 28,
@@ -2462,8 +2151,9 @@
           "fix": "Stack today's line, Fit A and Fit B at true size one above the other, so the one-row difference shows before the enlarged views."
         }
       ],
-      "notes": null,
-      "ready_for_board": true
+      "notes": "Still ready. The identity files have not changed since round 1.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     },
     {
       "order": 29,
@@ -2512,8 +2202,9 @@
       "naming_test": [],
       "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": true
+      "notes": "Still ready. The identity files have not changed since round 1.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     },
     {
       "order": 30,
@@ -2562,8 +2253,41 @@
       "naming_test": [],
       "must_fix": [],
       "should_fix": [],
-      "notes": null,
-      "ready_for_board": true
+      "notes": "Still ready. The identity files have not changed since round 1.",
+      "ready_for_board": true,
+      "changed_in_fix_round": false
     }
-  ]
+  ],
+  "rescore": {
+    "date": "2026-11-09",
+    "basis": "Both fix rounds (Civic Line and utility), D2-620 to D2-639",
+    "summary": "Every card scores 4 or more on every criterion and has no Must fix, so all 30 are ready for the board and none goes to Dustin flagged. The six cards ready in round 1 still hold.",
+    "cards_rescored": [
+      "CL-014",
+      "CL-025",
+      "CL-059",
+      "Pillar-fits",
+      "R-13",
+      "R-42",
+      "R-48",
+      "Testify",
+      "U-another-site",
+      "U-arrow",
+      "U-chevron",
+      "U-close",
+      "U-download",
+      "U-error",
+      "U-filter",
+      "U-menu",
+      "U-pause",
+      "U-play",
+      "U-reset",
+      "U-search",
+      "U-selected-check",
+      "U-sort",
+      "U-success",
+      "U-warning"
+    ],
+    "round_1_items_closed": "Civic Line: 11 Must fix and 5 Should fix. Utility: 18 Must fix, the family plate, and 3 Should fix. Board builder: the family card's place."
+  }
 }

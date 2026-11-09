@@ -4,7 +4,93 @@ Oath & Action Edition 06, Phase 2, November 9, 2026. Written by the creative dir
 
 I read my role file, the Master Brief sections 3, 6, 9 and 11, `CLAUDE.md`, the drawings brief, the decision log from "Stage B answers" to the end (DR-139 to DR-155 and D2-491 to D2-619), the research lead's meaning sheet, section 1 of the accessibility audit, the three makers' notes and their plate pages. I looked at every drawing myself at true size on Newsprint and Charcoal, at 1x and 2x, and enlarged by whole pixels, and I reran both checks.
 
-## Decision or verdict
+The rescore after the fix rounds comes first below. The round 1 review follows it unchanged, as the record of what the fix rounds answered.
+
+## Rescore after the fix rounds
+
+I read the "Fix round" sections of both makers' notes, the decision log's D2-620 to D2-639, and the updated plate pages, with the utility family card first. I looked again at every changed drawing at true size and 2x, reran both checks, and updated `20261109_CD-Scores.json` in place with the same keys, adding `changed_in_fix_round` on each card and a `rescore` block at the end.
+
+### Verdict
+
+All 30 cards are ready for the board. Every card scores 4 or more on every criterion and has no Must fix, so none goes to Dustin flagged under D2-499.
+
+The six cards ready in round 1 still hold. The identity files have not changed since round 1. The fix round made Contact an official's phone larger and opened Copy C and View full size B at 16 px, each a Should fix I asked for, and nothing else changed on those three cards.
+
+Every round 1 Must fix is closed: the Civic Line designer's 11, the utility designer's 18 with the family plate, and the board builder's one, since the family card now leads the plate. The Should fix items for the makers are closed too. Three board-builder items carry forward: print D2-620's line on the Congress card, mark the 24 px renders of the redraws as a reference size, and show R-13 and R-42 as following the Congress set. Those are in the JSON.
+
+### Rescored cards
+
+| Card | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Final recommended | Ready |
+|---|---|---|---|---|---|---|---|---|
+| CL-025 Congress | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | B | Yes |
+| CL-014 Entrenched Power | 4 (was 3) | 4 (was 3) | 4 | 4 | 4 | 4 | C (was B) | Yes |
+| R-13 Congressional Capacity | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | B | Yes |
+| R-42 Congressional Tariff Votes | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | B | Yes |
+| CL-059 Credit Allocation | 4 | 4 | 4 | 4 | 4 | 4 | B | Yes |
+| R-48 Agency Independence | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | C | Yes |
+| Testify | 4 | 4 | 4 | 4 | 4 | 4 | A | Yes |
+| Pixel-fit pillar icons | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | Fit B at 24 px on 1x screens, the master on 2x, the 16 px fit on both | Yes |
+| Menu, Another site, Reset, Success, Sort | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | A, A, B, B, A | Yes |
+| Close, Arrow, Chevron, Download, Search, Filter, Play, Pause, Error, Selected check, Warning | 4 | 4 | 4 | 4 | 4 | 4 | A on each, Play with Pause | Yes |
+
+Each changed score's reason, the naming test on every new option and each card's notes are in the JSON. The reasons that moved a score:
+
+- **CL-025, Clarity 4.** Set B now draws the body: five members on a curved bench seen from behind, facing a rostrum stepped in three tiers with red on the top tier. At 48 px it reads as an assembly facing a stepped rostrum, and with the label it is the House at once. That meets the drawings brief's floor. No set names Congress without its label, and the board says so (D2-620). Set C, the chamber seen from the rostrum, reads as members in tiers, an assembly or an audience, and is a real third choice.
+- **CL-014, Craft 4 and Clarity 4.** The fence opens to three pickets a side, so the chamber and the fence read as two things at 48 px. The new C draws a ballot's arrow stopped on a red bar at the fence, which says both halves of the subject. I now recommend C, since it draws the vote that cannot move the body, and it uses the recommended Congress chamber.
+- **R-13 and R-42, Clarity 4.** The reworked chamber holds at three-quarter size on the top tier, and each drawing reads as a legislature with its staff, or voting on goods, once the label is beside it.
+- **R-48, Clarity 4.** C's arrow now runs about 1.9 times its first length and reads at 48 px. The new B, a flat-roofed office building, is a real choice against C (0.899, down from 0.969).
+- **Pillar fits, Craft 4.** I checked the designer's advice for 2x screens by drawing each master and fit at 24 and 16 px on a 2x screen. At 24 px the master draws smooth with a 1.26 device-pixel line and reads, so the advice holds: 1x screens draw Fit B, 2x screens draw the master. At 16 px the master's line falls under one device pixel, so the fit stays on both screens. The engineer builds the switch (D2-634).
+- **The five utility cards at Clarity 4.** No option on the plate now names something else. Menu B reads as Menu beside its word, which always shows. Another site keeps A and B. Reset A, the undo arc, says undo, near reset. Success A, a check cut out of a solid disc, names done. Sort C reads as sorted downward.
+
+### The short utility cards
+
+Close, Search, Play and Pause show one option each. Menu, Arrow, Chevron, Another site, Filter, Success, Selected check and Warning show two. Each reason printed on the plate holds. I looked for a real, clear extra choice on each short card and found none. Every candidate either repeats the option already there, says a different action (three dots say More, a window says a new window), or collides with a sign the system already uses (plus and minus are the atlas's polarity signs). For Close, Play and Pause, the only other real choice is the ring, and the family card puts it to Dustin once.
+
+### Final recommended options
+
+- **Congress set B:** CL-025 B, R-13 B and R-42 B, with CL-014 C, which uses the same chamber.
+- **Other redraws:** CL-059 B and R-48 C.
+- **New topics:** Testify A and Contact an official A.
+- **Utility family:** bare actions with shaped status marks.
+- **Utility icons:** A on every card except Reset B and Success B, with Play A and Pause A as a pair.
+- **Pillar icons:** Fit B at 24 px on 1x screens, the master on 2x screens, and the 16 px fit on both.
+- **Identity:** end mark Fit B at 14 and 12 px; approve the lockmark rebuild; approve L6 centered.
+
+### Risks for Dustin to weigh, after the rescore
+
+- **Congress still needs its label.** The reworked chamber makes the label land at once and cannot replace it.
+- **Testify B can read as a petition.** Its sheet with red writing shares a sign with CL-004 Petition, and the label settles it. The board makes no claim about how many committees take written testimony (D2-636).
+- **CL-025 C and Testify C share a composition**, people in an arc above a red object on a line. With B and A recommended, the pair does not meet.
+- **Sort C reads as an order already in use**, which competes with the turned Next arrow that marks the column in use. A stays recommended.
+- **Two options wait for the accessibility lead:** Reset A's half arc, where the audit asks for about three quarters, and Selected check B, a ticked box inside a chip that has its own outline.
+- **Track's path still echoes a 2 at 16 px**, as the designer says. It sits beside its word.
+- **The pillar icons change slightly between screens**, since a fit and its master differ in proportion (Act's hand is a quarter wider in the fit).
+
+### Tested in the rescore
+
+- Every changed Civic Line option at 24, 48 and 128 px on Newsprint and Charcoal, at 1x and 2x, and at 48 px enlarged by whole pixels, beside R-03, R-46, CL-005, CL-004 and Testify.
+- All 38 utility options at 24 and 16 px from their own masters on both grounds at 1x and 2x, and the plate's family card and Success card captured at device scale 1.
+- The pillar masters and fits at 24 and 16 px on a 2x screen, enlarged, and Track's 16 px fit enlarged.
+- The look-alike check, rerun: redraws (exit 1, 15 flagged pairs, as the designer reports), new topics (exit 0), pillar fits (exit 0), utility at 24 and 16 px (exit 0). A run of all redraws and new topics together finds no pair between Testify and any Congress option above the median. It flags Contact B against R-42 A at 0.920, and I looked: the two do not read alike.
+- The pixel-fit check, rerun: utility 24 px masters at 24 px with a 2 px line and 16 px masters at 16 px with a 1.5 px line, 37 of 38 each, the one fail Success A on line weight alone. Run without the weight test, Success A passes at its own size. Pillar fits pass: Fit A 8 of 8 and the 16 px fit 8 of 8 in both editions, and Fit B 4 of 4 in the black edition.
+- The identity files' dates, unchanged since round 1.
+- The plate pages for em and en dashes and for a claim about how many committees take written testimony: none of either.
+
+### Not tested in the rescore
+
+- No first-time reader named any drawing; the naming test is still my reading, knowing the labels.
+- The masters' pixel-fit figures at 2x; I looked at them and took the designer's figures.
+- Fit B's red-black edition in this rerun; it passed in round 1 and did not change.
+- Real 2x devices, browsers other than Chromium, forced colors.
+- The accessibility lead's two open items.
+
+### Change log for the rescore
+
+Modified: this file, with this section added above the round 1 record, and `work/boards/phase-2/stage-b/drawings/20261109_CD-Scores.json`, updated in place with the same keys plus `changed_in_fix_round` on each card and a `rescore` block. Nothing else changed, and nothing was committed or pushed. A copy of the round 1 JSON and my captures sit in the session scratch folder under `cd/r2/`.
+
+## Round 1 review (the record)
+
+### Decision or verdict
 
 Six of 30 cards are ready for the board: Contact an official, Copy, View full size, the end mark, the lockmark masters and L6 centered. The other 24 go back for one fix round. Most of them fail on the same point Dustin raised: an option that repeats another option, or one that names something else, gives him no real choice.
 
@@ -21,9 +107,9 @@ Recommended options: CL-025 B after the rework, with CL-014 B, R-13 B and R-42 B
 
 Where I differ from a maker: the pillar fits (I recommend Fit B, the designer Fit A) and the strength of the Congress sign (the designer recommends set B as it stands; I recommend it only after the rework). Every other recommendation matches the maker's.
 
-## The family questions
+### The family questions
 
-### Does any Congress set read clearly as Congress?
+#### Does any Congress set read clearly as Congress?
 
 No. Without its label, no set names Congress at 48 px. Set A reads as a city hall, set B as an arena or a signal, and set C as two signals. Set B comes nearest, because it is the only one that reads as a legislative chamber, and with the label beside it a reader takes it for the House after a moment.
 
@@ -35,7 +121,7 @@ What would read is the body in session. Draw the members, the rostrum they face 
 
 I tested this direction with three rough sketches in my scratch folder, which are not drawings for the board. The stepped rostrum alone read as a podium or a cake. The version with members read as an assembly facing a podium, the closest of the three to a legislature. None named Congress without the label. Most readers know Congress by the Capitol dome, which Rule 01.6 keeps out, so the label will name it, and the drawing's job is to make the label land at once.
 
-### Keep every action bare, and draw only Error, Success and Warning in a shape?
+#### Keep every action bare, and draw only Error, Success and Warning in a shape?
 
 Yes. Ringed actions measure as near twins of each other (Close B and Pause B 0.973, Play B and Pause B 0.958), closer than the closest pair of Civic Line masters (0.964), so a toolbar of rings loses the outlines a reader tells apart. Each control already has its own 44 px target and outline, so a ring repeats it. The status marks need a shape, because a bare check means selected and a bare exclamation mark is punctuation.
 
@@ -43,11 +129,11 @@ For the ring and frame options, this means they stop being per-icon choices. Pic
 
 Several actions have one sign readers know (Close, Play, Pause, Search and the selected check). Their only other real choice is the enclosure, which the family card decides. Those cards will show one or two options, below DR-146's three, because a third would be a look-alike. The board should print the reason on each such card.
 
-### Pediments (the Civic Line designer's question 7)
+#### Pediments (the Civic Line designer's question 7)
 
 I agree with the designer: treat a pediment as part of the classical front and keep it out. That points to B for CL-059 and C for R-48. The A options keep theirs as the DR-135 record.
 
-## Scores
+### Scores
 
 Scores run 1 to 5 on the Master Brief's six criteria (section 6). The reasons for every score are in the card sections below.
 
@@ -84,7 +170,7 @@ Scores run 1 to 5 on the Master Brief's six criteria (section 6). The reasons fo
 | Lockmark masters rebuilt (24 and 48 px) | 5 | 4 | 5 | 4 | 5 | 4 | Approve the rebuild | Yes |
 | L6 centered | 4 | 4 | 4 | 4 | 4 | 4 | Approve centered | Yes |
 
-## Civic Line redraws
+### Civic Line redraws
 
 These criteria take the same score and reason on every card in this section (the JSON repeats them on each card):
 
@@ -92,7 +178,7 @@ These criteria take the same score and reason on every card in this section (the
 - Evidence honesty, 4. The notes label the naming test as an agent's reading, keep Tested and Not tested apart, and their look-alike figures match my rerun.
 - Accessibility, 4. The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1).
 
-### CL-025 Congress
+#### CL-025 Congress
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -127,7 +213,7 @@ Should fix:
 - Board builder. Label the 24 px renders of the six redraws as a reference size. Topic symbols have a 48 px floor, and none of these six is among the 41 that read at 24 px (DR-136).
 - Civic Line icon designer. Say on the card that option A's flat-roofed hall with a red door sits close to CL-031 Local Government's gabled hall with a red door. A must keep its parts, so the card names the risk.
 
-### CL-014 Entrenched Power
+#### CL-014 Entrenched Power
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -159,7 +245,7 @@ Must fix:
 
 CL-014 B against R-46 Expand the House is flagged at 0.950. I looked at them side by side at 48 and 96 px: R-46 is seat blocks seen from above with red seats at the right, and CL-014 B is a fenced arena. A reader will not take one for the other.
 
-### R-13 Congressional Capacity
+#### R-13 Congressional Capacity
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -192,7 +278,7 @@ Should fix:
 
 - Board builder. Show R-13's B and C as following the Congress set, so Dustin picks the sign once on CL-025 and these cards confirm it.
 
-### R-42 Congressional Tariff Votes
+#### R-42 Congressional Tariff Votes
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -225,7 +311,7 @@ Should fix:
 
 - Board builder. Show R-42's B and C as following the Congress set, as on R-13.
 
-### CL-059 Credit Allocation
+#### CL-059 Credit Allocation
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -260,7 +346,7 @@ Should fix:
 
 The look-alike figures between these three options (0.96 to 0.99) come from the home, factory and branches they share, so they say little about the bank. The near-duplicate call rests on the 48 px reading.
 
-### R-48 Agency Independence
+#### R-48 Agency Independence
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -290,7 +376,7 @@ Must fix:
 - Civic Line icon designer. Option B is a near-duplicate of C. Replace it with an option that answers a different question, such as a flat-roofed agency building with no columns or pediment beside the brace and the official at a desk. The card then offers the building within DR-135, the building without its classical front, and the commission.
 - Civic Line icon designer. Lengthen C's arrow to about twice its length so it reads at 48 px, and keep it clear of the brace.
 
-## Testify and Contact an official
+### Testify and Contact an official
 
 These criteria take the same score and reason on every card in this section (the JSON repeats them on each card):
 
@@ -298,7 +384,7 @@ These criteria take the same score and reason on every card in this section (the
 - Evidence honesty, 4. The notes label the naming test as an agent's reading, keep Tested and Not tested apart, and their look-alike figures match my rerun.
 - Accessibility, 4. The shapes carry the subject in the black edition without the red, and the label carries the name, as the system allows for red on Newsprint (2.96 to 1).
 
-### Testify (new topic symbol)
+#### Testify (new topic symbol)
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: no.
 
@@ -331,7 +417,7 @@ Should fix:
 
 - Civic Line icon designer. Draw A's witness table as a table, a top with a front panel or legs, so the witness reads as seated at a table and the scene moves away from a talent-show panel.
 
-### Contact an official (new topic symbol)
+#### Contact an official (new topic symbol)
 
 Judged at 48 px, with 128 and 2x for craft. Ready for the board: yes.
 
@@ -360,7 +446,7 @@ Should fix:
 
 - Civic Line icon designer. Draw B's phone one step larger so it reads at 48 px, keeping the desk and the official at the cord's end.
 
-## The utility set
+### The utility set
 
 These criteria take the same score and reason on every card in this section (the JSON repeats them on each card):
 
@@ -369,7 +455,7 @@ These criteria take the same score and reason on every card in this section (the
 - Evidence honesty, 4. The naming test is labeled as the designer's own reading and both checks reproduce on my rerun; the notes leave out the option-to-option figures that show the near-twins.
 - Accessibility, 4. Each glyph sits beside a visible word, is hidden from assistive technology and draws in currentColor for forced colors; the live forced-color tests wait for the components.
 
-### Close
+#### Close
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -397,7 +483,7 @@ Must fix:
 
 - Utility icon designer. Options B and C draw A in a ring and a frame. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. Readers know one bare sign for Close, so this card shows A alone and says so in one line.
 
-### Menu
+#### Menu
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -425,7 +511,7 @@ Must fix:
 
 - Utility icon designer. Option B is a near-duplicate of A and option C reads as text. Replace B with two even bars if that reads as Menu beside the word at 24 px. Three dots say More and a grid says apps, so if no third form names Menu, drop C and say why on the card.
 
-### Arrow (Next, Previous and the sort order)
+#### Arrow (Next, Previous and the sort order)
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -454,7 +540,7 @@ Must fix:
 - Utility icon designer. Option B draws A in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family.
 - Utility icon designer. Option C is a near-duplicate of A. Replace it with an arrow whose head is a closed line triangle, if it reads as Next and stays apart from Play; if not, the card shows A alone and says why.
 
-### Chevron (expand and collapse)
+#### Chevron (expand and collapse)
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -483,7 +569,7 @@ Must fix:
 - Utility icon designer. Option B draws A in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family.
 - Utility icon designer. Option C is a near-duplicate of A. Replace it with a disclosure triangle drawn in line, if it stays apart from Play, Warning and Sort at 24 and 16 px. Plus and minus are ruled out as the atlas's polarity signs (audit section 1.3). If nothing passes, the card shows A alone and says why.
 
-### Download
+#### Download
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -511,7 +597,7 @@ Must fix:
 
 - Utility icon designer. Option C draws the arrow in a ring. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. Replace it with a third bare picture, such as the arrow down onto a page with a folded corner, checked against Copy and the Civic Line bill and records drawings.
 
-### Go to another site
+#### Go to another site
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -539,7 +625,7 @@ Must fix:
 
 - Utility icon designer. Option C reads as share or export. Replace it with an arrow leaving a window that has a title bar, checked against View Full Size C and Copy, or drop it and say why.
 
-### Search
+#### Search
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -567,7 +653,7 @@ Must fix:
 
 - Utility icon designer. Options B and C are near-duplicates of A. Readers know one sign for Search, so the card shows A alone and says so, unless the maker finds a second form that a reader names Search at 24 px.
 
-### Filter
+#### Filter
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -595,7 +681,7 @@ Must fix:
 
 - Utility icon designer. Options B and C are near-duplicates of A. Replace one with three lines narrowing downward, the list-filter sign, checked against Menu, Sort and the Civic Line sliders (CL-012, CL-071, R-37). Drop the other and say why.
 
-### Copy
+#### Copy
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: yes.
 
@@ -623,7 +709,7 @@ Should fix:
 
 - Utility icon designer. At 16 px, give C's front sheet one line of text in place of two, or open the gap, so the lines stop crowding.
 
-### Play
+#### Play
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -651,7 +737,7 @@ Must fix:
 
 - Utility icon designer. Options B and C draw A in a ring and on a screen. Ring and frame options belong on the one family card that shows the whole set ringed (see the family answer), since an enclosure is a choice for the set and picking it on one card would break the family. The card shows A alone and says why; Play and Pause stay a pair (D2-557).
 
-### Pause
+#### Pause
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -681,7 +767,7 @@ Must fix:
 
 Pause A sits on the watch line against CL-012 Election Rules (0.897). I looked at the pair at 24 px: two hollow bars against a page with two sliders. They do not read alike, and Pause sits beside its word in a media control.
 
-### Reset
+#### Reset
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -709,7 +795,7 @@ Must fix:
 
 - Utility icon designer. Option A reads as refresh. Replace it with another reading of the audit's three-quarter circle that says undo or start over, or with the undo hook, an arrow curving back to the left, if the accessibility lead agrees it can stand outside the audit's spec. Check it against Previous, the mirrored arrow, and CL-024.
 
-### Error mark
+#### Error mark
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -737,7 +823,7 @@ Must fix:
 
 - Utility icon designer. Option B draws as A at 16 px. Lengthen the octagon's flats so it reads as eight sides at 16 px, or replace it with another shape that stays apart from the Warning triangle.
 
-### Success mark
+#### Success mark
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -765,7 +851,7 @@ Must fix:
 
 - Utility icon designer. Option A is a near-duplicate of B and option C reads as a checked box. Offer C's checked box on the Selected check card, where selected is its meaning. Replace A with a form that differs in its picture and names done, for example the check cut out of a solid disc; if that is offered, show whether Error and Warning would take solid partners so the three status marks stay one kind. If no second form names done at 24 px, the card shows B alone and says why.
 
-### Selected check
+#### Selected check
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -793,7 +879,7 @@ Must fix:
 
 - Utility icon designer. Options B and C are near-duplicates of A, and C collides with the chevron. Replace one with Success C's checked box, if the accessibility lead agrees it suits a chip's on state, and drop the other with a one-line reason.
 
-### View full size
+#### View full size
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: yes.
 
@@ -821,7 +907,7 @@ Should fix:
 
 - Utility icon designer. At 16 px, shorten B's arrowheads or its shafts so the four corners stop filling in.
 
-### Sort a column
+#### Sort a column
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -849,7 +935,7 @@ Must fix:
 
 - Utility icon designer. Option C reads as resize. Replace it with the sort-lines sign, bars of falling length beside a down arrow, if it stays apart from Filter's new option and Menu; otherwise drop it and say why.
 
-### Warning mark
+#### Warning mark
 
 Judged at 24 px, with 16 px and 2x. Ready for the board: no.
 
@@ -879,9 +965,9 @@ Must fix:
 
 D2-510 keeps the warning mark only if chapter 11's specimens carry a notice that needs it.
 
-## The pixel-fit pillar icons
+### The pixel-fit pillar icons
 
-### Pixel-fit pillar icons (CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act)
+#### Pixel-fit pillar icons (CL-019 Explain, CL-020 Track, CL-021 Connect, CL-022 Act)
 
 Judged at 24 and 16 px at 1x and 2x, beside Inter text. Ready for the board: no.
 
@@ -919,9 +1005,9 @@ Should fix:
 
 The designer recommends Fit A to match the utility line. I recommend Fit B. At true size beside 15 px Inter, Fit A reads as bold and Fit B matches the text's weight. Both pass every check, so this is Dustin's call between weight and the family's light hand.
 
-## Identity
+### Identity
 
-### End mark: ampersand B at 14 and 12 px
+#### End mark: ampersand B at 14 and 12 px
 
 Judged at In a line of 17 and 15 px Inter text at 1x and 2x, and enlarged. Ready for the board: yes.
 
@@ -945,7 +1031,7 @@ Should fix:
 
 - Board builder. Stack today's line, Fit A and Fit B at true size one above the other, so the one-row difference shows before the enlarged views.
 
-### Lockmark masters rebuilt (24 and 48 px)
+#### Lockmark masters rebuilt (24 and 48 px)
 
 Judged at 16, 24, 34, 40 and 48 px at 1x and 2x. Ready for the board: yes.
 
@@ -964,7 +1050,7 @@ Is each option a real choice?
 
 - Rebuilt: yes. One proposal, as D2-496 sets.
 
-### L6 centered
+#### L6 centered
 
 Judged at 884 px, L6's minimum, at 1x and 2x. Ready for the board: yes.
 
@@ -983,7 +1069,7 @@ Is each option a real choice?
 
 - Centered: yes. One proposal, as D2-496 sets.
 
-## Required changes that span cards
+### Required changes that span cards
 
 Must fix:
 
@@ -997,7 +1083,7 @@ Should fix:
 
 After the fix round I rescore only the cards that changed, before the board builder starts.
 
-## Risks for Dustin to weigh
+### Risks for Dustin to weigh
 
 - **Congress needs its label.** Without the dome, which Rule 01.6 keeps out and DR-135 removes, no drawing will name Congress for most readers. The reworked chamber can make the label land at once; it cannot replace it.
 - **Fewer than three options on some utility cards.** Close, Play, Pause, Search and the selected check have one sign readers know. Padding them to three would put look-alikes in front of you, which is the problem this round fixes.
@@ -1005,7 +1091,7 @@ After the fix round I rescore only the cards that changed, before the board buil
 - **Red on a chamber's rostrum.** Sets B and C put the red on the rostrum, on the center axis. Whether readers take it for a party's color is DR-143's question for the combined reader check.
 - **Pixel fits on 2x screens.** The pillar fits and the end mark double into hard steps on 2x screens. The identity designer proposes a switch by screen resolution for the end mark; the pillar fits need the same answer.
 
-## Tested
+### Tested
 
 - Every Civic Line option at 24, 48 and 128 px beside its original, on Newsprint and Charcoal, at 1x and 2x, and at 48 px enlarged by whole pixels. Neighbors at 48 and 96 px: R-03, R-46, CL-005, CL-031, CL-009, CL-016, CL-026, CL-002, CL-061, R-36 and R-12.
 - All 54 utility options at 24 px from the 24 px masters and at 16 px from the 16 px masters, on Newsprint and Charcoal, at 1x and 2x, bare and beside a word, snapped to whole pixels; the closest pairs enlarged at 16 and 24 px.
@@ -1017,7 +1103,7 @@ After the fix round I rescore only the cards that changed, before the board buil
 - Three rough Congress sketches in my scratch folder at 48 and 128 px beside CL-025 B, R-03, R-46, CL-005 and Testify A.
 - A scan of the three plate pages and of my two files for em and en dashes: none.
 
-## Not tested
+### Not tested
 
 - No first-time reader named any drawing. My naming test knows the labels; the combined reader check (DR-143) comes after the board.
 - The pixel-fit check and the look-alike check on the identity marks; the identity designer ran the pixel-fit check on padded copies, and I did not rerun it.
@@ -1026,7 +1112,7 @@ After the fix round I rescore only the cards that changed, before the board buil
 - The plate pages' layout and words beyond the cards I captured; the editor copy-edits the board before it is scored again (D2-500).
 - Whether readers take any red rostrum for a party.
 
-## Change log
+### Change log
 
 Created:
 

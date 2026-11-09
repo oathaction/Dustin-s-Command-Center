@@ -1,10 +1,10 @@
 {
- "built": "2026-11-09T22:21:21.628430+00:00",
+ "built": "2026-11-09T22:28:10.118489+00:00",
  "thresholds": {
   "flag": 0.9127,
   "watch": 0.8708
  },
- "likeness_run": "2026-11-09T22:15:43.863Z",
+ "likeness_run": "2026-11-09T22:24:39.158Z",
  "cards": [
   {
    "n": 1,
@@ -34,13 +34,7 @@
      ]
     }
    ],
-   "scores_under_4": [
-    "CL-025 Congress, clarity 3",
-    "CL-014 Entrenched Power, craft 3",
-    "CL-014 Entrenched Power, clarity 3",
-    "R-13 Congressional Capacity, clarity 3",
-    "R-42 Congressional Tariff Votes, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "CL-025",
@@ -108,9 +102,9 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "A theater or arena seen from the seats; the dashed rows also read as a signal",
-        "creative_director_verdict": "Recognized with the label",
-        "maker_verdict": "Recognized with the label"
+        "creative_director_reading": "An assembly on a curved bench facing a stepped rostrum",
+        "creative_director_verdict": "Names it nearly; the label makes it the House at once",
+        "maker_verdict": "Names it nearly"
        },
        "naming_maker": "An assembly: members on a curved bench facing a stepped rostrum; with the label, the House in session. Names it nearly"
       },
@@ -140,8 +134,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-025-Congress-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "Two signals or two bowls",
-        "creative_director_verdict": "Fails, even with the label",
+        "creative_director_reading": "Members in two tiers facing a red table: an assembly, or an audience",
+        "creative_director_verdict": "Recognized with the label",
         "maker_verdict": "Recognized with the label"
        },
        "naming_maker": "Members in two tiers facing a presiding desk: an assembly, or an audience. Recognized with the label"
@@ -214,9 +208,9 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "A fenced arena or a circus ring",
-        "creative_director_verdict": "Recognized with the label",
-        "maker_verdict": "Recognized with the label"
+        "creative_director_reading": "A chamber of members closed in by a fence",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names it nearly"
        },
        "naming_maker": "A chamber of members closed in by a fence. Names it nearly"
       },
@@ -251,9 +245,9 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-014-Entrenched-Power-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "The same fenced arena as B",
-        "creative_director_verdict": "Recognized with the label",
-        "maker_verdict": "Recognized with the label"
+        "creative_director_reading": "A ballot stopped at the fence round a chamber: a vote that cannot get in",
+        "creative_director_verdict": "Names the subject",
+        "maker_verdict": "Names it nearly"
        },
        "naming_maker": "A ballot stopped at the fence round a chamber: a vote that cannot get in. Names it nearly"
       }
@@ -325,8 +319,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Staff and a report under a chamber",
-        "creative_director_verdict": "Recognized with the label",
+        "creative_director_reading": "A legislature in session above two staff and a report",
+        "creative_director_verdict": "Names it nearly",
         "maker_verdict": "Recognized with the label"
        },
        "naming_maker": "A legislature in session above two staff and a report: the legislature's own staff. Recognized with the label"
@@ -357,8 +351,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-13-Congressional-Capacity-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "Two signals over staff and a report",
-        "creative_director_verdict": "Recognized with the label, weakly",
+        "creative_director_reading": "An assembly above two staff and a report",
+        "creative_director_verdict": "Recognized with the label",
         "maker_verdict": "Recognized with the label"
        },
        "naming_maker": "An assembly above two staff and a report. Recognized with the label"
@@ -431,8 +425,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "A chamber, a yes-and-no card and a parcel with a price tag: a vote on goods",
-        "creative_director_verdict": "Recognized with the label",
+        "creative_director_reading": "A legislature in session, a yes-and-no card and a parcel with a tag: a vote on goods",
+        "creative_director_verdict": "Names it nearly",
         "maker_verdict": "Recognized with the label"
        },
        "naming_maker": "A legislature in session, a yes-and-no card and a parcel with a tag: a vote on goods. Recognized with the label"
@@ -463,8 +457,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-42-Congressional-Tariff-Votes-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "The same with two signals in place of the chamber",
-        "creative_director_verdict": "Recognized with the label, weakly",
+        "creative_director_reading": "An assembly, a yes-and-no card and a parcel with a tag",
+        "creative_director_verdict": "Recognized with the label",
         "maker_verdict": "Recognized with the label"
        },
        "naming_maker": "An assembly, a yes-and-no card and a parcel with a tag: a vote on goods. Recognized with the label"
@@ -486,17 +480,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -564,8 +558,8 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "A vault paying out to a home and a factory",
-        "creative_director_verdict": "Names it nearly",
+        "creative_director_reading": "A bank vault with its wheel, paying out to a home and a factory",
+        "creative_director_verdict": "Names the subject",
         "maker_verdict": "Names the subject"
        },
        "naming_maker": "A bank vault with its wheel, paying out to a home and a factory. Names the subject"
@@ -596,7 +590,7 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_CL-059-Credit-Allocation-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "A safe paying out to a home and a factory",
+        "creative_director_reading": "A lender's office and a loan paper paying out; the percent sign is small at 48 px",
         "creative_director_verdict": "Names it nearly",
         "maker_verdict": "Names the subject"
        },
@@ -619,24 +613,22 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "R-48 Agency Independence, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "R-48",
@@ -699,9 +691,9 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "A panel and a speaker kept apart: a debate",
-        "creative_director_verdict": "Recognized with the label",
-        "maker_verdict": "Recognized with the label"
+        "creative_director_reading": "An office building kept apart from a person at a desk whose arrow stops at the bracket",
+        "creative_director_verdict": "Names it nearly",
+        "maker_verdict": "Names it nearly"
        },
        "naming_maker": "An office building kept apart from a person at a desk, whose arrow stops at the bracket. Names it nearly"
       },
@@ -731,7 +723,7 @@
        "black": "work/build/assets/civic-line-redraws/svg/20261109_R-48-Agency-Independence-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "A panel kept apart from a person at a desk who points at it",
+        "creative_director_reading": "A panel of three kept apart from a person at a desk whose arrow stops at the bracket",
         "creative_director_verdict": "Names it nearly",
         "maker_verdict": "Names it nearly"
        },
@@ -754,17 +746,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -796,7 +788,7 @@
        "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-A-Black.svg",
        "naming_cd": {
         "option": "A",
-        "creative_director_reading": "A hearing: a person at a microphone facing a raised panel (the nearest wrong reading is a talent-show panel)",
+        "creative_director_reading": "A hearing: a witness seated at a table with a microphone, facing a raised panel",
         "creative_director_verdict": "Names the subject",
         "maker_verdict": "Names the subject"
        },
@@ -824,9 +816,9 @@
        "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-B-Black.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "The same scene as A, smaller and on a diagonal",
+        "creative_director_reading": "A person handing a signed paper up to a panel: written testimony, or a petition",
         "creative_director_verdict": "Names it nearly",
-        "maker_verdict": "Names the subject"
+        "maker_verdict": "Names it nearly"
        },
        "naming_maker": "A person handing a signed paper up to a panel: written testimony, or to some a petition. Names it nearly"
       },
@@ -852,7 +844,7 @@
        "black": "work/build/assets/civic-line-new-topics/svg/20261109_Testify-Option-C-Black.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "A panel with a microphone: a hearing or a panel talk",
+        "creative_director_reading": "A panel with a microphone: a hearing, or a panel talk",
         "creative_director_verdict": "Recognized with the label",
         "maker_verdict": "Names it nearly"
        },
@@ -875,17 +867,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -1026,7 +1018,7 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ]
      ]
     }
@@ -1088,19 +1080,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "Menu, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "menu",
@@ -1177,9 +1167,9 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Menu-Option-B-16px.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Menu",
-        "creative_director_verdict": "Names it",
-        "maker_verdict": "Names it"
+        "creative_director_reading": "An equals sign or a drag handle alone; Menu beside its word",
+        "creative_director_verdict": "Partly",
+        "maker_verdict": "Partly"
        },
        "naming_maker": "Partly: Alone, an equals sign or a drag handle; beside its word, Menu at once."
       }
@@ -1201,12 +1191,12 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
@@ -1288,8 +1278,8 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Arrow-Option-B-16px.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Next, as a button",
-        "creative_director_verdict": "Names it",
+        "creative_director_reading": "Next, with a closed head; a plug at a glance",
+        "creative_director_verdict": "Names it nearly",
         "maker_verdict": "Names it"
        },
        "naming_maker": "Names it: Next, or go."
@@ -1312,12 +1302,12 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
@@ -1399,7 +1389,7 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Chevron-Option-B-16px.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Show more, or scroll down",
+        "creative_director_reading": "A dropdown caret: open the list",
         "creative_director_verdict": "Names it",
         "maker_verdict": "Names it"
        },
@@ -1423,17 +1413,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -1554,9 +1544,9 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Download-Option-C-16px.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "Download, or move down",
-        "creative_director_verdict": "Names it nearly",
-        "maker_verdict": "Partly"
+        "creative_director_reading": "Download the file",
+        "creative_director_verdict": "Names it",
+        "maker_verdict": "Names it"
        },
        "naming_maker": "Names it: Download the file."
       }
@@ -1577,19 +1567,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "Go to another site, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "another-site",
@@ -1627,7 +1615,7 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Another-Site-Option-A-16px.svg",
        "naming_cd": {
         "option": "A",
-        "creative_director_reading": "Open somewhere else, or open in a new tab",
+        "creative_director_reading": "Open somewhere else",
         "creative_director_verdict": "Names it",
         "maker_verdict": "Names it"
        },
@@ -1690,7 +1678,7 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ]
      ]
     }
@@ -1752,12 +1740,12 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
@@ -1839,9 +1827,9 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Filter-Option-B-16px.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Filter",
-        "creative_director_verdict": "Names it",
-        "maker_verdict": "Names it"
+        "creative_director_reading": "Filter, or sort",
+        "creative_director_verdict": "Partly",
+        "maker_verdict": "Partly"
        },
        "naming_maker": "Partly: Filter, or sort: the list-filter sign."
       }
@@ -1863,17 +1851,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -2017,7 +2005,7 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ]
      ]
     }
@@ -2118,24 +2106,22 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "Reset, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "reset",
@@ -2173,9 +2159,9 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Reset-Option-A-16px.svg",
        "naming_cd": {
         "option": "A",
-        "creative_director_reading": "Refresh, or reload",
-        "creative_director_verdict": "Fails",
-        "maker_verdict": "Fails"
+        "creative_director_reading": "Undo",
+        "creative_director_verdict": "Partly",
+        "maker_verdict": "Partly"
        },
        "naming_maker": "Partly: Undo, a near subject."
       },
@@ -2274,17 +2260,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -2428,19 +2414,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "Success mark, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "success",
@@ -2484,7 +2468,7 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Success-Option-A-16px.svg",
        "naming_cd": {
         "option": "A",
-        "creative_director_reading": "Done, or success",
+        "creative_director_reading": "Done, on a solid disc",
         "creative_director_verdict": "Names it",
         "maker_verdict": "Names it"
        },
@@ -2547,12 +2531,12 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
@@ -2634,7 +2618,7 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Selected-Check-Option-B-16px.svg",
        "naming_cd": {
         "option": "B",
-        "creative_director_reading": "Check, or tick",
+        "creative_director_reading": "A ticked box: selected",
         "creative_director_verdict": "Names it",
         "maker_verdict": "Names it"
        },
@@ -2658,17 +2642,17 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
@@ -2812,24 +2796,22 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ],
       [
        "C",
        "Option C",
-       "C"
+       "option C"
       ]
      ]
     }
    ],
-   "scores_under_4": [
-    "Sort a column, clarity 3"
-   ],
+   "scores_under_4": [],
    "subjects": [
     {
      "id": "sort",
@@ -2945,9 +2927,9 @@
        "f16": "work/build/assets/utility-icons/svg-16/20261109_Utility-Sort-Option-C-16px.svg",
        "naming_cd": {
         "option": "C",
-        "creative_director_reading": "Move up and down, or resize",
-        "creative_director_verdict": "Fails",
-        "maker_verdict": "Fails"
+        "creative_director_reading": "Sorted downward",
+        "creative_director_verdict": "Partly",
+        "maker_verdict": "Partly"
        },
        "naming_maker": "Partly: Sort; reads as sorted downward, an order in use."
       }
@@ -2968,12 +2950,12 @@
       [
        "A",
        "Option A",
-       "A"
+       "option A"
       ],
       [
        "B",
        "Option B",
-       "B"
+       "option B"
       ]
      ]
     }
@@ -3089,9 +3071,7 @@
      ]
     }
    ],
-   "scores_under_4": [
-    "Pillar icons, craft 3"
-   ],
+   "scores_under_4": [],
    "fits": [
     {
      "id": "CL-019",

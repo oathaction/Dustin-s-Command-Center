@@ -340,6 +340,26 @@ class Like:
         return out
 
 
+PF_WORDS = {'no ink': 'it draws no ink', 'width': 'a stroke is under one device pixel', 'soft': 'most of its pixels are soft',
+            'straight': 'a straight stroke sits off the pixel grid', 'gap': 'a gap is under one device pixel',
+            'counters': 'an enclosed space fills in', 'weight': 'its main width differs from the set\'s line'}
+
+
+def pf_words(size, r):
+    """The pixel-fit result at one size in words: 'passes at 24 px' or what fails, and at which densities."""
+    if r is None:
+        return f'not run at {size} px'
+    if r['pass']:
+        return f'passes at {size} px'
+    by = {}
+    for item in r['fails']:
+        sc, _, codes = item.partition(': ')
+        for c in codes.split('; '):
+            by.setdefault(c, []).append(sc)
+    parts = [f'{PF_WORDS.get(c, c)} at {join_words(scs)}' for c, scs in by.items()]
+    return f'fails at {size} px: ' + '; '.join(parts)
+
+
 def pf_summary(pf, fname, size):
     r = pf.get((fname, size))
     if not r:
@@ -994,7 +1014,7 @@ def single_cl_card(card, model, C):
     card['lows'] = lows
     card['not_ready'] = bool(sc and not sc.get('ready_for_board', True))
     card['groups'] = [{'name': 'option', 'label': None, 'rec': rec,
-                       'options': [(o.letter, f'Option {o.letter}', o.letter) for o in sub['options']]}]
+                       'options': [(o.letter, f'Option {o.letter}', f'option {o.letter}') for o in sub['options']]}]
     approve = (C['cards']['redraw']['approve'] if sub['master'] else C['cards'][kind]['approve']).format(title=card['title'])
     return card_shell(card, body, approve, sh + open_items(scored), rec_block(sc))
 
@@ -1022,16 +1042,10 @@ def utility_col(opts, subs, rec, word):
             rows.append((f'{pre}{k}', v))
         for k, v in like_lines(o.like, show_own=False):
             rows.append((f'{pre}{k}', v))
-        pfw = []
-        for size, r in ((24, o.pf24), (16, o.pf16)):
-            if r is None:
-                pfw.append(f'not run at {size} px')
-            elif r['pass']:
-                pfw.append(f'passes at {size} px')
-            else:
-                pfw.append(f'fails at {size} px ({esc("; ".join(r["fails"]))[:160]})')
-        rows.append((f'{pre}Pixel fit, 1x and 2x', esc(', '.join(pfw).capitalize()) + '.'))
-    notes = ''.join(choice_note(o) for o in opts)
+        pfw = [pf_words(24, o.pf24), pf_words(16, o.pf16)]
+        txt = ('; ' if any(';' in x or ':' in x for x in pfw) else ', ').join(pfw)
+        rows.append((f'{pre}Pixel-fit check, 1x and 2x', esc(txt[:1].upper() + txt[1:]) + '.'))
+    notes = ''.join(dict.fromkeys(choice_note(o) for o in opts))
     return (f'<div class="col{" col--rec" if o0.letter == rec else ""}"><p class="col-h">Option {esc(o0.letter)}</p><p class="chips">{tags}</p>'
             f'<div class="tiles">{tiles}</div><p class="caption tcap">True size: 24 and 16 px, on Newsprint and on Charcoal</p>'
             f'<div class="spec stage">{spec}</div><p class="caption tcap">At 24 px beside its word</p>{dl(rows)}{notes}</div>')
@@ -1055,12 +1069,26 @@ def utility_card(card, model, C):
     if n_opts < 3 and not card.get('fewer_reason'):
         names = [s['title'].split(' (')[0] for s in subs] + [s['label'] for s in subs] + [str(s['word']).replace('-', ' ') for s in subs]
         card['fewer_reason'] = find_fewer_reason(model['notes']['ut_notes'], names) or next((o.reason for o in lead['options'] if o.reason), None)
-    body = f'<div class="cols cols--ut">{cols}</div>' + fewer_note(card, n_opts, 'utility designer')
+    body = f'<div class="cols cols--ut">{cols}</div>'
+    solid = next((o for o in lead['options'] if re.search(r'\bsolid\b', o.shows, flags=re.I)), None)
+    if solid and card.get('partners'):
+        titles = {x['id']: x['title'].split(' (')[0] for c in model['cards'] if c['kind'] == 'utility' for x in c['subjects']}
+        items = ''
+        for key, f in card['partners'].items():
+            f24, f16 = SRC['utility'] / f['24'], SRC['utility'] / f['16']
+            if not (f24.exists() and f16.exists()):
+                warn(f'solid partner {key}: files missing')
+                continue
+            items += (f'<span class="fam-i"><span class="fam-g">{inline_svg(f24, 24, 24)}{inline_svg(f16, 16, 16)}</span>'
+                      f'<span class="fam-l">{esc(titles.get(key, key))}</span></span>')
+        body += (f'<h4 class="sub4">{esc(W["partners_title"])}</h4><p class="pnote">{esc(W["partners_text"].format(letter=solid.letter))}</p>'
+                 f'<div class="fams fams--short"><div class="fam tile--np">{items}</div><div class="fam tile--ch">{items}</div></div>')
+    body += fewer_note(card, n_opts, 'utility designer')
     scored = [(s['title'], s['scores']) for s in subs]
     sh, lows = scores_block(scored)
     card['lows'] = lows
     card['not_ready'] = any(s['scores'] and not s['scores'].get('ready_for_board', True) for s in subs)
-    card['groups'] = [{'name': 'option', 'label': None, 'rec': rec, 'options': [(L, f'Option {L}', L) for L in letters]}]
+    card['groups'] = [{'name': 'option', 'label': None, 'rec': rec, 'options': [(L, f'Option {L}', f'option {L}') for L in letters]}]
     approve = W['pair_approve'] if len(subs) > 1 else W['approve'].format(title=card['title'])
     return card_shell(card, body, approve, sh + open_items(scored), rec_block(lead['scores']))
 
@@ -1237,6 +1265,8 @@ def end_mark_card(card, model, C):
             enl += f'<div class="enl-row"><p class="col-h">{esc(lab)}, B at {s} px in {text_px} px text</p><div class="enl-cells">{cells}</div></div>'
         enl += '</div>'
     body = blocks + '<h4 class="sub4">Enlarged, beside a capital H of the same text</h4>' + frame(f'<div class="enls enls--em">{enl}</div>', 'The end mark enlarged')
+    if W.get('two_x'):
+        body += f'<p class="pnote">{esc(W["two_x"])}</p>'
     # figures: rows at 1x with the line at four positions
     mrow = ''
     for key, lab in [('T17', 'Today, 17 px text'), ('14A', 'Fit A, 14 px'), ('14B', 'Fit B, 14 px'), ('T15', 'Today, 15 px text'), ('12A', 'Fit A, 12 px'), ('12B', 'Fit B, 12 px')]:
@@ -1414,16 +1444,17 @@ def lede(card, C):
         return ''.join(f'<p class="card-lede">{md(p.format(title=card["title"], lost=lost))}</p>' for p in C['cards']['redraw']['lede'])
     if k == 'utility':
         s = card['subjects']
+        W = C['cards']['utility']
 
         def asked(e):
             a = str(e.get('asked', '')).rstrip('.')
-            return 'a drawing of its own' if a.lower().startswith('its own') else a[:1].lower() + a[1:]
+            return W['own_asked'] if a.lower().startswith('its own') else a[:1].lower() + a[1:]
         if len(s) > 1:
-            line = (f'{join_words(x["title"].split(" (")[0] for x in s)} share one button, so you pick them as a pair (D2-557). '
-                    f'The accessibility audit asks for {join_words(asked(x["entry"]) for x in s)}.')
+            line = W['pair_lede'].format(names=join_words(x['title'].split(' (')[0] for x in s),
+                                         asked=join_words(asked(x['entry']) for x in s))
         else:
             e = s[0]['entry']
-            line = f'The action: {e["label"]}. The accessibility audit asks for {asked(e)}.'
+            line = W['lede'].format(label=e['label'], asked=asked(e))
         return f'<p class="card-lede">{esc(line)}</p>'
     return paras(C['cards'][k].get('lede'), 'card-lede')
 
@@ -1626,6 +1657,7 @@ dl.figs .chip{padding:0 4px;margin-left:.2em}
 .enls{display:grid;gap:var(--oa-space-200)}
 .enls--em{grid-template-columns:repeat(2,max-content);gap:var(--oa-space-200) var(--oa-space-600)}
 .enl-col{display:grid;gap:var(--oa-space-200);align-content:start}
+.fams--short{display:flex;flex-wrap:wrap}
 .pg-rec{margin-left:var(--oa-space-100)}
 .enl-row .col-h{margin-bottom:var(--oa-space-100)}
 .enl-cells{display:flex;gap:var(--oa-space-300);align-items:flex-end}
