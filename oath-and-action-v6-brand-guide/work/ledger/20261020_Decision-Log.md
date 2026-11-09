@@ -1181,3 +1181,19 @@ The studio asked three questions before round 0: whether the drawings board shou
 | D2-518 | The guide's plate labels keep their text marks (the check, the cross and the arrow) | They label a specimen, sit hidden beside their words and are not status messages |
 | D2-519 | The three marks also run the look-alike check against the badge corner of the fourteen Civic Line drawings that carry a check, a cross or an alert | A whole-drawing figure can miss a badge that matches a mark (UX-2) |
 | D2-520 | System 1's pressed-state cue goes to the atlas finishing pass, not this stage | DR-36 settles System 1, and the finishing pass owns its fixes (UX-4) |
+
+### Research lead (`20261109_Stage-B-Research-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D2-521 | The meaning sheet treats CL-025 as Congress, the institution, and records that V7 assigns the drawing to D1, Congressional capacity | The symbol's word is "Congress", and DR-146 asks each drawing to depict its institution |
+| D2-522 | One Congress sign replaces the dome in CL-025, R-13 and R-42, and the same chamber, without its Congress-only feature, replaces it in CL-014 (recommended to the icon designers, not imposed) | Four signs for one institution would teach the reader nothing; D2-495 leaves the options to the designers |
+| D2-523 | V7's short name for a variable is its loop `chain_label`; the editorial data's `label` field is the concept boards' plain name | All 25 short names on a loop match the loops' `chain_labels`; the field's own source list names the concept boards |
+| D2-524 | Rule 01.11's count is by the party that led the body that passed each map; a court-adopted map (Utah) and a court stay (Alabama) are listed and not counted | The rule's builders line counts "by the party of the majority"; a court is not a majority |
+| D2-525 | Missouri's 2025 map counts as passed, with its suspension in the qualification | The atlas records it as enacted; the suspension is a later court and voter step |
+| D2-526 | A records request has six steps, with step 6, Appeal, drawn as a slash when no appeal is filed | DR-108's slash marks a step that never happened. At the Justice Department in fiscal year 2024 (October 2023 to September 2024), 2,477 appeals were processed against 157,180 requests processed (its annual report, tables VI.B and V.B(1)); the two counts cover different cases, and other agencies were not checked |
+| D2-527 | A federal rule has six steps, with step 1, Early notice, drawn as a slash when the agency skipped it | Same reason; an advance notice is optional (RegInfo.gov) |
+| D2-528 | Waits inside a records request (a question to the requester, a fee estimate, a ten-day extension) show in words, not as steps | The statute treats them as pauses in the 20-day clock (552(a)(6)(A) and (B)) |
+| D2-529 | A withdrawn records request reads "Withdrawn by the requester", although the Justice Department counts it among full denials for reasons other than exemptions | The government's category would tell a reader the agency refused |
+| D2-530 | The state hearing claim cites five legislatures' own pages and prints no count | NCSL refuses this session, and "many" with five named examples claims no more than the pages show |
+| D2-531 | I155's correction is proposed as item 38 of the V7.1 list, in the list's four columns, and the list file is left unedited | D2-413, and the task's instruction not to edit the file |

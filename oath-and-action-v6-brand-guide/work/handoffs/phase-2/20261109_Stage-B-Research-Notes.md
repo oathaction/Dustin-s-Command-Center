@@ -1,15 +1,15 @@
 # Stage B research notes
 
-Oath & Action Edition 06, Phase 2, stage B, round 0. Research lead, November 9, 2026. Written for the two icon designers, the editor, the systems designer and the main session. Section 1 is the meaning sheet D2-502 asks for, and the icon designers draw from it. The other sections follow as the research lands.
+Oath & Action Edition 06, Phase 2, stage B, round 0. Research lead, November 9, 2026. Written for the two icon designers, the editor, the systems designer and the main session. Section 1 is the meaning sheet D2-502 asks for, and the icon designers draw from it. Sections 2 to 8 hold the rest of the stage B research. Status: complete.
 
-Sources for every V7 value in this file: `work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json` (built from Atlas V7, snapshot 2026-10-15; "title" is V7's full name and "label" is the short plain name from DR-35), `work/handoffs/phase-0/20261020_Atlas-Reconciliation-Data.json` (V7's register rows by sheet), and the studio's map of icons to V7 elements, `work/boards/phase-2/atlas-concepts/shared/20261030_Variable-Icon-Map.json`. Nothing here comes from memory. The full V7 HTML is not in this checkout (section 8).
+Sources for every V7 value in this file: `work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json` (built from Atlas V7, snapshot 2026-10-15; "title" is V7's full name, and "label" is the plain name from the concept boards and Dustin's newest atlas, not V7's own short name, which lives in the loops' `chain_labels`), `work/handoffs/phase-0/20261020_Atlas-Reconciliation-Data.json` (V7's register rows by sheet), and the studio's map of icons to V7 elements, `work/boards/phase-2/atlas-concepts/shared/20261030_Variable-Icon-Map.json`. Nothing here comes from memory. The full V7 model and HTML are not in this checkout (section 2).
 
 ## 1. Meaning sheet for the drawings board (D2-502)
 
 ### Read this first: four things that touch every drawing
 
 1. **Two drawings already draw a legislative chamber.** R-03 Proportional Elections draws a hemicycle (a half-ring of seats) as dots with a red block at the top center. R-46 Expand the House draws the chamber from above, with a rostrum and red seats added at the right end. DR-146's House-chamber option for CL-025 will sit beside both. Each chamber drawing needs a feature the other two lack, and the shape-likeness check should compare all three. One way to separate them: R-03 is about how seats are shared, R-46 is about more seats, and Congress is the body itself, so Congress could show two chambers (one large, one small, for the House and the Senate) or show the chamber as the gallery sees it, in elevation, where R-03 and R-46 are seen from above.
-2. **Red on one side of a chamber reads as party.** A red block of seats at the left or right of a hemicycle reads as one party's seats (Rule 01.1, and DR-114's question on reading Pillar Red for party). DR-146 puts Congress's red on the rostrum, at the center. Keep any new chamber drawing's red on the center axis or off the seats. R-46 already puts red seats on the right end; that drawing is settled, so I raise it only as a question (section 7).
+2. **Red on one side of a chamber reads as party.** A red block of seats at the left or right of a hemicycle reads as one party's seats (Rule 01.1, and DR-114's question on reading Pillar Red for party). DR-146 puts Congress's red on the rostrum, at the center. Keep any new chamber drawing's red on the center axis or off the seats. R-46 already puts red seats on the right end; that drawing is settled, so I raise it only as a question (question 4 at the end).
 3. **Use one sign for Congress across the four dome drawings.** CL-025, R-13 and R-42 all mean Congress, and CL-014 means a legislature or another rule-setting body. If each replaces its dome with a different picture, a reader learns four signs for one institution. I recommend one Congress sign, drawn once and reused smaller in R-13 and R-42, and the same chamber without the Congress-only feature in CL-014.
 4. **Signs already taken in the set.** These are in use and would make a new drawing read as another subject:
    - padlock: R-12 Filibuster Reform (red padlock on a desk)
@@ -27,7 +27,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
 
 ### CL-025 Congress
 
-- **V7 name and ID.** Not in V7 as its own element. The studio's icon map assigns CL-025 to **D1, "Congress's ability to write and check policy"** (short label "Congress's capacity"; V7 sheet 05; a stock; loops R2 and R13; domain D04).
+- **V7 name and ID.** Not in V7 as its own element. The studio's icon map assigns CL-025 to **D1, "Congress's ability to write and check policy"** (V7's short name "Congressional capacity"; the concept boards say "Congress's capacity"; V7 sheet 05; a stock; loops R2 and R13; domain D04).
 - **V7's meaning.** D1 is "the staff and independent expertise Congress needs to investigate problems, draft laws and oversee how agencies carry them out." The icon's own word is "Congress", the institution itself: the two-chamber national legislature, the House and the Senate.
 - **What a reader must recognize.** A lawmaking body of many elected members who sit together, debate and vote. If the drawing can carry one more idea, that the body has two chambers, which separates Congress from a state legislature, a city council and a foreign parliament.
 - **What would mislead.**
@@ -40,7 +40,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
 
 ### CL-014 Entrenched Power
 
-- **V7 name and ID.** **D7, "Entrenched control of rule-setting institutions"** (short label "Entrenched majority control"; V7 sheet 03; a stock; loops R4a and R12; domains D02 and D05).
+- **V7 name and ID.** **D7, "Entrenched control of rule-setting institutions"** (V7's short name "Entrenched majority control"; V7 sheet 03; a stock; loops R4a and R12; domains D02 and D05).
 - **V7's meaning.** "Lasting control of a legislature or another body that sets election rules or confirms judges", which safe seats help a majority keep and use again. V7's why: "A majority that cannot lose can keep redrawing the rules in its own favor."
 - **What a reader must recognize.** A rule-setting body, most often a legislature, and one majority closed in so the next election cannot easily move it. Today's fence carries the second idea well; the dome carried the first and must go. V7 counts the Senate that confirms judges as such a body, so the chamber should stay generic and not say "state" or "Congress" alone.
 - **What would mislead.**
@@ -73,7 +73,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
 
 ### CL-059 Credit Allocation
 
-- **V7 name and ID.** **EC5, "Where newly created credit goes"** (short label "Where credit goes"; V7 sheet 12; a flow; no loops).
+- **V7 name and ID.** **EC5, "Where newly created credit goes"** (V7 has no shorter name for it, since it sits on no loop; the concept boards say "Where credit goes"; V7 sheet 12; a flow).
 - **V7's meaning.** "Banks create deposits when they lend, so lending directs new purchasing power toward homes, businesses and other uses." V7's why: lending decides whether new money flows into homes and businesses or into bidding up assets people already own.
 - **What a reader must recognize.** A bank or lender at the source, and new money splitting toward different uses, at least homes and businesses. The red branching path does the second job now and stays (DR-135). The pediment and columns did the first job, so the replacement must still say "bank".
 - **What would mislead.**
@@ -103,7 +103,7 @@ Rule 01.6 keeps a capitol dome, columns and a flag out of icons. Rule 01.7 keeps
   - pathway PW15, "Voting and public influence"
   - reform R-33, Citizen Assemblies
 - **Meaning, from our own copy.** Chapter 01 (Rule 01.13's why) says a reader "can call an office or testify before it". The tracker's step 2 copy (D2-423) says many state legislatures take testimony from the public, and congressional committees hear the witnesses they invite. In one sentence: a member of the public speaks for the record at a public hearing, before a body such as a state legislative committee, a city council or a regulatory board.
-- **What a reader must recognize.** One ordinary person speaking, with a microphone, at a witness table, facing a panel of several officials who sit together at a raised bench, often a curved dais. Two legislatures' own guides describe exactly this. Nebraska: a witness fills out "the sign-in sheet at the witness table" ("Tips on Testifying at a Committee Hearing", nebraskalegislature.gov). Minnesota: "you should be seated at the testifiers' table" and "Speak slowly and clearly into the microphone" (Minnesota House, "Committees" brochure, February 2025). Washington's guide adds: "Legislative hearings are conducted informally. They are not judicial proceedings" (leg.wa.gov, "How to testify in committee", 2023), which is one more reason to keep court signs out (section 4 has the full citations). The direction matters: the person speaks to the officials, and the officials sit above and listen. DR-147's option says this. Red on the microphone or on the speaker's sound marks would put the second sign on the act of speaking.
+- **What a reader must recognize.** One ordinary person speaking, with a microphone, at a witness table, facing a panel of several officials who sit together at a raised bench, often a curved dais. Legislatures' own guides describe this scene. Nebraska: a witness fills out "the sign-in sheet at the witness table" ("Tips on Testifying at a Committee Hearing", nebraskalegislature.gov). Minnesota: "you should be seated at the testifiers' table" and "Speak slowly and clearly into the microphone" (Minnesota House, "Committees" brochure, February 2025). Washington's guide adds: "Legislative hearings are conducted informally. They are not judicial proceedings" (leg.wa.gov, "How to testify in committee", 2023), which is one more reason to keep court signs out (section 4 has the full citations). The direction matters: the person speaks to the officials, and the officials sit above and listen. DR-147's option says this. Red on the microphone or on the speaker's sound marks would put the second sign on the act of speaking.
 - **What would mislead.**
   - One figure at a raised bench, a gavel, scales or a robe. Those read as a courtroom, where a witness testifies in a trial (CL-027, R-11, R-16). Show at least three officials and no gavel.
   - A raised right hand, which reads as a court oath or as voting yes.
@@ -138,7 +138,7 @@ I compared every label in `work/build/assets/civic-line/20261029_Civic-Line-Inve
 
 - **V7 titles and IDs** from the atlas editorial data (51 variables, 50 reforms).
 - **V7's register rows** from the reconciliation data (`register_vars`, 51 rows, and `register_reforms`, 86 rows over 49 reforms; R-35, the rejected option, has no register row). All 51 variable titles there match the editorial data word for word.
-- **V7's short names.** V7 gives a variable a short name only inside its loops' `chain_labels`. The icon map's `v7_label` field holds them. I confirmed all 25 that sit on a loop against the loops' `chain_labels` in the editorial data, with no difference. The other 26 (A3, X1 to X5, EC1 to EC12, TC1 to TC8) sit on no loop, so V7 has no short name for them and the icon map repeats the title. I could not confirm those 26 short names, because there are none to confirm.
+- **V7's short names.** In these records, V7's short names for variables appear only in its loops' `chain_labels`, and the icon map's `v7_label` field holds them. I confirmed all 25 that sit on a loop against the loops' `chain_labels` in the editorial data, with no difference. The other 26 (A3, X1 to X5, EC1 to EC12, TC1 to TC8) sit on no loop, so the records hold no short name for them and the icon map repeats the title.
 
 Note for the editor: the editorial data's `label` field ("Congress's capacity", "Wealth at the top") holds the plain names from the concept boards and Dustin's newest atlas (DR-35). It is not V7's short name. V7's short names are the chain labels ("Congressional capacity", "Wealth concentration").
 
@@ -214,13 +214,70 @@ V7 has no variable, reform, loop or issue for these 22, so each has no V7 ID. Th
 
 ## 3. Loop R4a's 2025 and 2026 redraws by party (BE-02, D2-433)
 
-In progress.
+### Where earlier research stopped
+
+The November 6 notes set Texas and California side by side for Rule 01.11's plate, each from primary records, and did not count the rest ("How many seats either map produced in 2026: Not checked"). D2-433 then kept the plate to "two of the loop's redraws, with no count" until the atlas's record was counted. Chapter 01's builders line asks for exactly that count: "count the atlas's case records for that loop by the party of the majority, and print the counts with their source when one party leads."
+
+### The atlas's record
+
+I pulled every 2025 and 2026 congressional map event from the atlas editorial data and from the atlas's repair log (the 64 rows of `work/boards/phase-2/data-viz/shared/20261106_Chart-Data.json`, dataset `rule-changes`, which reproduces V7's repair log). Where they hold it:
+- loop R4a's case
+- links L56, L42 and L53
+- issue I022's status, issue X07's status, issue X15
+- reform R-04's problem evidence and status
+- repair log rows RL38, RL40, RL41, RL45, RL48, RL50, RL51 and RL53 to RL63
+
+| State | What happened, in the atlas's words or close to them | Who acted | Party of the majority that acted | Where the atlas says it | How I checked the party |
+|---|---|---|---|---|---|
+| Texas | H.B. 4, a mid-decade congressional map "designed to move five seats held by Democrats to Republicans", signed August 29, 2025; in force for 2026 | Legislature and governor | Republican | R4a ("Texas's Republican-led legislature"); RL38; I022; L56 | Atlas states it; primary records read November 6 (Texas Legislature Online) |
+| Missouri | H.B. 1 (2025 second extraordinary session), a map "splitting Kansas City among three districts to change control of the 5th District", September 28, 2025; suspended for 2026 by the state supreme court pending Proposition A, November 3, 2026 | Legislature (the atlas says "enacted") | Republican | RL40, RL48, RL60, RL61, RL63; L56; I022; X15 | Atlas does not state the party. Missouri House member list (house.mo.gov, read today): 105 Republicans and 50 Democrats among the 155 rows my script could read |
+| North Carolina | A new congressional map passed in 2025 | Legislature alone | Republican | L56 and R-04 ("unified state governments"); I022 | Atlas does not state the party, and calls the state a unified government. Session Law 2025-95 (Senate Bill 249, ncleg.gov, read today) was "ratified this the 22nd day of October, 2025" and carries the signatures of the Senate's president pro tempore and the House speaker, with no governor's signature. Search results only: the governor, Josh Stein, a Democrat, denounced it, and North Carolina redistricting bills need no governor's signature |
+| Ohio | A new congressional map in 2025 | Ohio Redistricting Commission | Republican (the commission's majority, not checked); search results say the vote was unanimous and bipartisan | L56 and R-04 ("unified state governments"); I022 | Not tested beyond search results: the commission adopted the map unanimously on October 31, 2025, as a compromise; Ohio's constitution required a new map because the 2021 map lacked bipartisan support; the map made two Democratic-held districts more Republican (Ballotpedia News, Columbus Dispatch via Yahoo, Bloomberg Government, WYSU, all snippets) |
+| Florida | H.B. 1-D (2026 Special Session D), Chapter 2026-229, redrew all 28 districts; "Reporting at the time put the effect at three to four additional Republican seats"; signed May 4, 2026 | Legislature and governor | Republican | RL53; I022 | The atlas's row says "five Republicans opposed, four in the Senate and one in the House" on votes of 83 to 28 and 21 to 17, which places a Republican majority. Not checked against flsenate.gov today |
+| Tennessee | Three bills in one day, May 7, 2026: repealed the ban on mid-decade changes and drew a map "splitting Memphis and Shelby County across three districts and ending the 9th's status as the state's only majority-Black district" | Legislature and governor | Republican | RL54; I022 | Atlas does not state the party. Not checked: the legislature's member directory loads by script and returned no list |
+| Louisiana | S.B. 121, "a new congressional map eliminating one of the state's two majority-Black districts", May 29, 2026 | Legislature (the atlas says "enacted") | Republican | RL56; I022 | Atlas does not state the party. Louisiana House member list (house.louisiana.gov, read today): 71 Republicans and 32 Democrats |
+| California | Proposition 50, approved by voters November 4, 2025 (64.42%), replaced the citizens commission's map with a legislature-drawn map for 2026 to 2030 | Legislature, then voters | Democratic | R4a ("a map drawn to favor Democrats"); RL41; L56 ("at the legislature's request"); I022 | Atlas states the map's aim, not the legislature's party. November 6 research read the court record calling it a "Democratic supermajority". California Assembly member list (assembly.ca.gov, read today): 62 Democrats and 21 Republicans by word count |
+| Virginia | Voters approved an amendment letting the General Assembly redraw congressional districts, April 21, 2026 (51.69%); the Supreme Court of Virginia voided it 4 to 3 on May 8, 2026; no new map took effect | Legislature, then voters; struck by the state court | Democratic | RL50, RL55; X15 ("a Democratic-backed amendment"); I022 | Atlas states it |
+| Utah | A state judge rejected the legislature's map and adopted the plaintiffs' map for 2026 under the voter-approved Proposition 4 standards, November 10, 2025 | A court | None. The court acted; the Republican-led legislature's map was rejected | RL45; X07; X15 | Atlas states the court acted |
+| Alabama | The U.S. Supreme Court stayed a lower court's order on June 2, 2026, so Alabama's 2023 map governs 2026 in place of the court-ordered map used in 2024 | A court, restoring a 2023 map | Not a 2025 or 2026 redraw by a majority | RL57; R-04 | Not counted as a redraw |
+
+### The count
+
+By the party of the majority that acted, the atlas's record of 2025 and 2026 congressional maps reads:
+
+- **New maps passed by Republican-led bodies: seven.** Texas, Missouri, North Carolina, Ohio, Florida, Tennessee and Louisiana. Missouri's is suspended for 2026 pending the November 3 referendum. Ohio's came from the state's redistricting commission under a deadline in the state constitution, with votes from both parties' members according to search results; that the commission has a Republican majority is my understanding and not checked today.
+- **New maps passed by Democratic-led bodies: one.** California's, which also needed voters' approval.
+- **Attempts by a Democratic-led body that did not take effect: one.** Virginia's, struck down by the state's supreme court.
+- **Maps adopted by a court: one.** Utah's.
+
+So the record falls more on one side, seven to one in maps passed, or seven to two if Virginia's attempt counts. Rule 01.11's second paragraph covers this case: "When the record shows one party using a mechanism more, report it that way, with the counts". DR-93 rules out adding a case to even it.
+
+### Draft line for Rule 01.11's plate
+
+Under the two cases, in place of "two of the loop's redraws, with no count":
+
+> Our systems atlas records eight new congressional maps passed between censuses in 2025 and 2026. Republican-led legislatures or commissions passed seven, and California's Democratic-led legislature passed one, which voters approved. Virginia's Democratic-led legislature began a ninth, which the state's supreme court struck down.
+
+Source line:
+
+> Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, loop R4a and its repair log, snapshot of October 15, 2026; congressional maps passed between censuses, January 2025 to October 2026; United States. Counts by the party that led the legislature or commission when the map passed. Ohio's 2025 map came from its redistricting commission under a deadline in the state constitution, and Missouri's is suspended for 2026 pending a November 3, 2026 referendum. A court adopted Utah's map, so it is not counted. The count measures maps passed and says nothing about the seats they moved.
+
+The editor should weigh two choices before this prints:
+- **Ohio.** If a commission map required by the state constitution does not belong beside discretionary redraws, the count becomes six to one, with Ohio named in the qualification.
+- **The date.** Missouri's referendum was held November 3, 2026, after the atlas snapshot. I could not open Missouri's election results (enr.sos.mo.gov answered 403), so the line describes the map as suspended pending the vote.
+
+### Problems in the atlas's record for the V7.1 list
+
+These are proposed lines, not edits:
+- **"Four Southern states."** Loop R4a's case says that after Louisiana v. Callais "four Southern states redrew maps that removed majority-Black districts", and R4b says "four states redrew within weeks". Neither names them. The repair log has three new maps passed on or after April 29, 2026 (Florida, Tennessee, Louisiana), and only Tennessee's and Louisiana's rows say a majority-Black district was removed; Alabama's row is a court stay restoring a 2023 map. Fix: name the four states, with a row each.
+- **"Unified state governments."** L56's mechanism says the redraws "were passed by unified state governments in Texas, Missouri, North Carolina and Ohio", and R-04's problem evidence says the same in other words. North Carolina's map became law without the governor (Session Law 2025-95 carries no governor's signature), and search results say its governor is a Democrat. Ohio's came from a commission vote that search results call unanimous and bipartisan. Fix: describe each state's route as it happened.
+- **North Carolina and Ohio have no repair log rows.** Both appear in L56, R-04 and I022, so a count from the log alone gives five Republican-led maps, while a count from the whole record gives seven. Fix: add a row for each. This sits beside V7.1 item 35, which asks for every map entry to carry its aim and expected seat effect in the same form.
 
 ## 4. Source for public testimony at state committee hearings (D2-423)
 
 ### The claim
 
-D2-423's step 2 copy says "many state legislatures take testimony from the public". NCSL, which keeps the national comparisons, refuses this session (403), and I found no national count on a reachable official site. So the source is the legislatures themselves. Five official pages, read in full, from four regions, each say the public may testify at a committee hearing:
+D2-423's step 2 copy says "many state legislatures take testimony from the public". NCSL, which keeps the national comparisons, refuses this session (403), and I found no national count on a reachable official site. So the source is the legislatures themselves. Five official pages, read in full, from three of the four Census regions (Midwest, West and South; I could not open a Northeastern one), each say the public may testify at a committee hearing:
 
 | State | What its legislature says | Source, read in full |
 |---|---|---|
@@ -234,7 +291,7 @@ Search results only (Not tested): Massachusetts joint committee hearing pages on
 
 ### Recommendation
 
-The step 2 copy can stand as written. "Many" is a fair word for what five legislatures in four regions say on their own sites, and the copy makes no count. If an editor wants a number, it needs NCSL or the Council of State Governments' Book of the States, neither of which I could open; until then the guide should not print one.
+The step 2 copy can stand as written. "Many" is a fair word for what five legislatures in three regions say on their own sites, and the copy makes no count. If an editor wants a number, it needs NCSL or the Council of State Governments' Book of the States, neither of which I could open; until then the guide should not print one.
 
 Source line, if the step needs one:
 
@@ -265,13 +322,34 @@ After step 6: "Most bills passed and approved by the governor become law three c
 
 ### How to draw step 5
 
-DR-108's slash means "a step that never happened" for this bill. In Nebraska step 5 cannot happen for any bill, so a bare slash would tell a reader the bill skipped something. My recommendation (question 2 below): keep six steps so every state reads on one scale, draw step 5 with the slash, and put the reason in words beside it on every Nebraska card: "Nebraska has one chamber." D2-407 already pairs a slash with words for H.R. 7008's step 2, so this follows a settled pattern. Step 4's words can say the full Legislature votes three times, so a reader does not think Nebraska bills face one vote.
+DR-108's slash means "a step that never happened" for this bill. In Nebraska step 5 cannot happen for any bill, so a bare slash would tell a reader the bill skipped something. My recommendation (question 2 below): keep six steps so every state reads on one scale, draw step 5 with the slash, and put the reason in words beside it on every Nebraska card: "Nebraska has one chamber." D2-407 already pairs a slash with words for H.R. 7008's step 2, so this follows a settled pattern. Step 4's words can say the full Legislature debates the bill on General File and Select File and then passes it on Final Reading, so a reader does not think Nebraska bills face one vote.
 
 I did not check the Nebraska Constitution's own text on the one-house legislature or the five-day rule; the Legislature's page is the source above.
 
 ## 6. Real state bill numbers for examples
 
-In progress.
+### What I found
+
+Chapter 11's invented state bills all take Massachusetts-style numbers, and all six are real bills in Massachusetts's current session, the 194th General Court. I opened each bill's page on malegislature.gov on November 9, 2026:
+
+| Number on our plate | Our invented title | The real bill with that number (194th General Court) | Its status on November 9, 2026 |
+|---|---|---|---|
+| H.4212 | Public meeting notice | "An Act authorizing the town of Lancaster to dissolve its animal control commission" | "Signed by the Governor, Chapter 77 of the Acts of 2026" (May 12, 2026) |
+| S.0876 | School bus contracts | S.876, "An Act to protect MassHealth applicants facing undue hardship" | Referred to Senate Ways and Means (September 29, 2025) |
+| H.1180 | Library hours | "An Act ensuring life insurance coverage while taking Paid Family and Medical Leave" | Referred to House Ways and Means (January 15, 2026) |
+| H.3301 | Records request fees | "An Act further regulating access to public records" | Referred to House Ways and Means (October 6, 2025) |
+| S.1517 | Snow route parking | "An Act banning artificial fluoridation schemes" | Accompanied a study order, S.2888 (December 18, 2025) |
+| S.2045 | Parking meter fees | "An Act establishing a college tuition tax deduction" | Referred to House Ways and Means (July 2, 2026) |
+
+H.3301 is the sharpest case: our invented "Records request fees" sits on a real public records bill, so a cropped plate would print false status words on a bill about nearly the same subject. These plates sit in chapter 11 (the list and page specimens, Rules 11.1, 11.3, 11.5, 11.6 and 11.7) and in chapter 08's plates 08.3, built by `work/build/scripts/phase-2/apply_systems_ch11.py`, `board6_tracker_build.py` and `stage_a_identity_s08.py`.
+
+### Recommendation
+
+The examples must stay invented and labeled Illustrative, and their numbers must change. Real state bills are a poor fit for these plates: each plate needs a bill at a given step on a given day (testimony open until a date, waiting on the governor, stopped by a veto), and a real bill's status moves, so the plate would go stale or wrong without a dated source line on every card. The H.R. 7008 card shows what a real bill costs: a full record check and an "as of" date.
+
+Extend BE-09's federal convention (invented federal bills take numbers from H.R. 99001 up) to state bills: H.99001, S.99002 and so on. Massachusetts's numbers in the current session run in the thousands (H.4212 and S.2888 above), and I know of no state that has reached 99,000, but I checked only Massachusetts, so this rests on that check and on the numbers' size.
+
+If an editor wants one real state bill as a "Became law" example, H.4212 above is a real Massachusetts bill that was signed as Chapter 77 of the Acts of 2026. I did not read its full history, so its six steps are not checked, and it would need the same record check H.R. 7008 had before it appears on a card.
 
 ## 7. Federal records requests and federal rulemaking, as status steps (DR-140)
 
@@ -282,7 +360,7 @@ Both lists are written to sit beside the six-step bill tracker and to use its ma
 Sources, all read in full and retrieved November 9, 2026:
 - **The statute.** 5 U.S.C. 552, via Cornell Law School's Legal Information Institute, https://www.law.cornell.edu/uscode/text/5/552.
 - **The government's FOIA site.** FOIA.gov, "Frequently Asked Questions", https://www.foia.gov/faq.html, run by the Justice Department's Office of Information Policy.
-- **The Justice Department's own report.** "Fiscal Year 2024 Annual Freedom of Information Act Report", Office of Information Policy, March 6, 2025, https://www.justice.gov/oip/media/1392121/dl. Its section III defines the outcome words that every agency's annual report uses.
+- **The Justice Department's own report.** "Fiscal Year 2024 Annual Freedom of Information Act Report", Office of Information Policy, March 6, 2025, https://www.justice.gov/oip/media/1392121/dl. Its section III defines the outcome words, and its tables V.B(1) and VI.B count requests and appeals by them.
 
 **Proposed steps (six).**
 
@@ -295,7 +373,7 @@ Sources, all read in full and retrieved November 9, 2026:
 | 5 | Answered | The agency sends its decision and the releasable records | FOIA.gov FAQ: "Once the agency has processed your request it will send you a written response"; 552(a)(6)(A)(i)(I) |
 | 6 | Appeal | Only if the requester appeals. The agency's appeal office reviews the answer and decides | 552(a)(6)(A)(i)(III)(aa): the right to appeal "within a period ... that is not less than 90 days after the date of such adverse determination"; 552(a)(6)(A)(ii): a decision on an appeal "within twenty days (excepting Saturdays, Sundays, and legal public holidays)". DOJ report, definition a: an appeal asks the agency to "review at a higher administrative level a FOIA determination" |
 
-A request that is never appealed ends at step 5, and step 6 takes a slash. Steps 3 and 4 can merge into one, "Processing", if the tracker needs five; FOIA.gov describes them as one sentence and the DOJ report counts neither separately.
+A request that is never appealed ends at step 5, and step 6 takes a slash. For scale, at the Justice Department alone in fiscal year 2024 (October 2023 to September 2024), 2,477 administrative appeals were processed and 157,180 requests were processed (annual report, tables VI.B and V.B(1)). An appeal in that year may concern a request from an earlier year, so the two numbers give a rough scale, not a rate. Steps 3 and 4 can merge into one, "Processing", if the tracker needs five; FOIA.gov describes them as one sentence and the DOJ report counts neither separately.
 
 **Pauses a status line may need.** An agency may stop the 20-day clock once to ask the requester for information, and to settle fees (552(a)(6)(A), the two tolling clauses). It may extend the deadline by up to ten working days "in unusual circumstances" with written notice (552(a)(6)(B)(i)). These are waits inside a step, so I would show them in words ("Waiting on you: the agency asked a question") and not as steps.
 
@@ -322,7 +400,7 @@ Sources, read in full and retrieved November 9, 2026, except where marked:
 - **The Congressional Review Act.** 5 U.S.C. 801, via the same site, https://www.law.cornell.edu/uscode/text/5/801.
 - **Court review.** 5 U.S.C. 706, via the same site, https://www.law.cornell.edu/uscode/text/5/706.
 - **The White House regulatory office's definitions.** RegInfo.gov, "Frequently Asked Questions", the Office of Information and Regulatory Affairs (OIRA) definitions of each stage, https://www.reginfo.gov/public/jsp/Utilities/faq.myjsp.
-- **The Federal Register's own data.** federalregister.gov's public API (https://www.federalregister.gov/api/v1/documents.json), queried for documents of type "Proposed Rule" whose action reads "Proposed rule; withdrawal": 601 matches, the newest published November 9, 2026 by the Treasury Department's Financial Crimes Enforcement Network.
+- **The Federal Register's own data.** federalregister.gov's public API (https://www.federalregister.gov/api/v1/documents.json), queried for documents of type "Proposed Rule" matching the phrase "proposed rule; withdrawal": 601 matches. The three newest each carry the action "Proposed rule; withdrawal.", the newest published November 9, 2026 by the Treasury Department's Financial Crimes Enforcement Network. I read only those three records.
 - **Not opened.** The Office of the Federal Register's own guide, "A Guide to the Rulemaking Process": federalregister.gov's pages and PDF redirect this session to a bot check (unblock.federalregister.gov), though its API answers. ecfr.gov's API answered with an error asking for compressed responses, and I did not retry it, so no CFR text is cited.
 
 **Proposed steps (six).**
@@ -336,7 +414,7 @@ Sources, read in full and retrieved November 9, 2026, except where marked:
 | 5 | Final rule | The agency publishes the final rule with its answer to the comments and an effective date, and sends it to Congress | RegInfo.gov: "Final rule - This is the last step of the rulemaking process in which the agency responds to public comment on the proposed rule and makes appropriate revisions before publishing the final rule in the Federal Register to become effective."; 5 U.S.C. 801(a)(1)(A): "Before a rule can take effect, the Federal agency promulgating such rule shall submit to each House of the Congress and to the Comptroller General a report" |
 | 6 | In effect | The rule takes effect, usually at least 30 days after publication; a major rule waits at least 60 days | 553(d): publication "shall be made not less than 30 days before its effective date", with exceptions; 801(a)(3)(A): a major rule takes effect no earlier than "60 days after" Congress receives the report or the rule is published, whichever is later |
 
-Most rules skip step 1, so step 1 takes a slash, which follows DR-108 as written. If a five-step line reads better, drop step 1 and mention an early notice in words.
+An early notice is optional (RegInfo.gov), so a rule that had none shows step 1 as a slash, which follows DR-108 as written. I did not count how often agencies use one. If a five-step line reads better, drop step 1 and mention an early notice in words.
 
 **The shortcut route.** An interim final rule or a direct final rule skips steps 2 to 4. 553(b)(B) lets an agency skip notice and comment when it finds "for good cause" that they are "impracticable, unnecessary, or contrary to the public interest"; RegInfo.gov says interim final rules "typically" take comments after publication. Such a rule's line would show steps 2 to 4 with slashes, and words: "Issued without advance comment; comments taken after."
 
@@ -345,7 +423,7 @@ Most rules skip step 1, so step 1 takes a slash, which follows DR-108 as written
 | Plain word | Where it comes from | Source |
 |---|---|---|
 | In effect | Step 6 reached | 553(d); 801(a)(3) and (a)(4) |
-| Withdrawn | The agency publishes a withdrawal of its proposed rule | federalregister.gov API: 601 Proposed Rule documents whose action reads "Proposed rule; withdrawal", newest November 9, 2026. RegInfo.gov separately notes an agency "may withdraw its rule from review and choose not to move forward with it" during OIRA review, which is a different, earlier withdrawal |
+| Withdrawn | The agency publishes a withdrawal of its proposed rule | federalregister.gov API: the three newest of 601 matching Proposed Rule documents carry the action "Proposed rule; withdrawal.", newest November 9, 2026. RegInfo.gov separately notes an agency "may withdraw its rule from review and choose not to move forward with it" during OIRA review, which is a different, earlier withdrawal |
 | Struck by Congress | Congress enacts a joint resolution of disapproval | 801(b)(1): "A rule shall not take effect (or continue), if the Congress enacts a joint resolution of disapproval"; 801(b)(2) bars reissuing it "in substantially the same form" without a new law |
 | Set aside by a court | A court holds the rule unlawful | 5 U.S.C. 706(2): the reviewing court shall "hold unlawful and set aside agency action, findings, and conclusions" found, among other grounds, "arbitrary, capricious, an abuse of discretion, or otherwise not in accordance with law" (https://www.law.cornell.edu/uscode/text/5/706, read November 9, 2026). A court can also set aside part of a rule, so the words should say which part |
 | Changed or repealed later | The agency amends or revokes it | 801(a)(1)(D) names a rule an agency "revokes, suspends, replaces, amends, or otherwise makes ... ineffective". This is a later event on an in-effect rule, better told in words than as an end state |
@@ -364,16 +442,63 @@ The wording of I155's summary and evidence note above is quoted from the atlas e
 
 ## Routine calls
 
-In progress.
+- D2-xxx | The meaning sheet treats CL-025 as Congress, the institution, and records that V7 assigns the drawing to D1, Congressional capacity | The symbol's word is "Congress", and DR-146 asks each drawing to depict its institution
+- D2-xxx | One Congress sign replaces the dome in CL-025, R-13 and R-42, and the same chamber, without its Congress-only feature, replaces it in CL-014 (recommended to the icon designers, not imposed) | Four signs for one institution would teach the reader nothing; D2-495 leaves the options to the designers
+- D2-xxx | V7's short name for a variable is its loop `chain_label`; the editorial data's `label` field is the concept boards' plain name | All 25 short names on a loop match the loops' `chain_labels`; the field's own source list names the concept boards
+- D2-xxx | Rule 01.11's count is by the party that led the body that passed each map; a court-adopted map (Utah) and a court stay (Alabama) are listed and not counted | The rule's builders line counts "by the party of the majority"; a court is not a majority
+- D2-xxx | Missouri's 2025 map counts as passed, with its suspension in the qualification | The atlas records it as enacted; the suspension is a later court and voter step
+- D2-xxx | A records request has six steps, with step 6, Appeal, drawn as a slash when no appeal is filed | DR-108's slash marks a step that never happened. At the Justice Department in fiscal year 2024 (October 2023 to September 2024), 2,477 appeals were processed against 157,180 requests processed (its annual report, tables VI.B and V.B(1)); the two counts cover different cases, and other agencies were not checked
+- D2-xxx | A federal rule has six steps, with step 1, Early notice, drawn as a slash when the agency skipped it | Same reason; an advance notice is optional (RegInfo.gov)
+- D2-xxx | Waits inside a records request (a question to the requester, a fee estimate, a ten-day extension) show in words, not as steps | The statute treats them as pauses in the 20-day clock (552(a)(6)(A) and (B))
+- D2-xxx | A withdrawn records request reads "Withdrawn by the requester", although the Justice Department counts it among full denials for reasons other than exemptions | The government's category would tell a reader the agency refused
+- D2-xxx | The state hearing claim cites five legislatures' own pages and prints no count | NCSL refuses this session, and "many" with five named examples claims no more than the pages show
+- D2-xxx | I155's correction is proposed as item 38 of the V7.1 list, in the list's four columns, and the list file is left unedited | D2-413, and the task's instruction not to edit the file
 
 ## Questions for Dustin
 
-In progress.
+1. **Rule 01.11's count.** The atlas records seven new congressional maps from Republican-led legislatures or commissions in 2025 and 2026 and one from a Democratic-led legislature (California), plus a Democratic-led attempt in Virginia that the state's supreme court struck down. Ohio's map, one of the seven, came from its redistricting commission under a constitutional deadline, with both parties' members voting for it according to search results. **Recommendation:** print the count as section 3 drafts it, seven and one, with Virginia named and Ohio and Missouri explained in the source line. That reports the record as it stands (DR-93). The other choice is six and one, with Ohio named apart.
+2. **Nebraska's step 5.** Nebraska has one chamber, so no Nebraska bill can reach a second chamber. **Recommendation:** keep the six steps for every state, draw Nebraska's step 5 with DR-108's slash, and print "Nebraska has one chamber" beside it on every Nebraska card, as D2-407 pairs a slash with words. The other choice, a seventh mark meaning "not on this route", adds a symbol readers must learn for one state.
+3. **Invented state bill numbers.** All six numbers on chapter 11's invented state bills, and on chapter 08's plates that reuse them, are real Massachusetts bills in the current session; our "H.3301, Records request fees" shares its number with a real public records bill. **Recommendation:** keep the examples invented and labeled Illustrative, and renumber them from H.99001 and S.99002 up, which extends BE-09's federal convention to state bills.
+4. **R-46 Expand the House reads red at one end of the chamber.** It is a settled, approved drawing (DR-144), and its red marks the added seats. Beside a new Congress drawing, red seats at the right end of a chamber may read as one party's seats. **Recommendation:** no redraw now; put R-46 beside the Congress options on the drawings board, and let DR-143's question on reading Pillar Red for party show whether readers take it that way.
 
 ## Tested and Not tested
 
-In progress.
+### Tested (read in full, or run by script)
+
+- Read my role file, `CLAUDE.md`, the stage B brief, and the decision log from "Stage B answers" (DR-139 to DR-148, D2-491 to D2-502).
+- Looked at the six DR-135 drawings and their neighbors at 256 px, and all 122 Civic Line drawings at 100 px on one sheet; read the six drawings' construction and red notes in the inventory CSV; searched every construction note for dome, column, pediment, cupola, capitol, portico and flag.
+- Read Rule 01.6, Rule 01.7, Rule 01.11 and chapter 01's line on calling or testifying, in `work/build/guide/chapters/01-purpose.json`.
+- Pulled by script, from the atlas editorial data, the V7 records for D1, D7, EC5, R-13, R-42, R-48, I047, I155, PW12, PW15, loop R4a and every record that mentions a 2025 or 2026 redraw; and from the reconciliation data, the register rows for each.
+- Compared all 122 Civic Line labels with V7 by script: 51 variables, 50 reforms, 25 short names against loop `chain_labels`, register titles against editorial titles, duplicate labels.
+- Read the atlas's repair log rows for 2025 and 2026 from the chart data.
+- Opened and read: foia.gov's FAQ and how-to page; 5 U.S.C. 552, 553, 706 and 801 on law.cornell.edu; the Justice Department's FY 2024 Annual FOIA Report (PDF, SHA-256 `6c41a46c64a16800d27ba42a1ecc20723917c30ded6ae8fe25b18904bae95d13`), its definitions and tables V.B(1) and VI.B; RegInfo.gov's FAQ; the federalregister.gov API query for proposed-rule withdrawals.
+- Opened and read: Nebraska Legislature, "Lawmaking in Nebraska" and "Tips on Testifying at a Committee Hearing"; Washington's "How to Testify in Committee" PDF; Minnesota's legislative FAQ and the House "Committees" brochure PDF; Utah's "How to Testify In A Committee"; Texas Legislature Online's FAQ.
+- Opened North Carolina Session Law 2025-95 on ncleg.gov.
+- Counted party labels by script on the Missouri House, Louisiana House and California Assembly member pages (current membership, November 9, 2026).
+- Opened malegislature.gov's pages for H.4212, H.1180, H.3301, S.876, S.1517 and S.2045 in the 194th General Court (through the fetch tool, which summarizes the page; I quote only the titles and statuses it returned).
+- Checked by script which guide specimens and build scripts carry the invented state numbers.
+- Read this file for em dashes.
+
+### Not tested
+
+- Atlas V7 itself: its model JSON and HTML are not in this checkout. Every V7 value here comes from the studio's records built from it (October 20, October 30 and November 5).
+- The Office of the Federal Register's "A Guide to the Rulemaking Process" and every federalregister.gov page (redirected to a bot check); ecfr.gov (API asked for compressed responses, not retried). No CFR text is cited.
+- NCSL, Ballotpedia and the Council of State Governments' Book of the States, for any national count of legislatures that take public testimony.
+- Massachusetts's and Wisconsin's testimony guides (search results only; one 404, one connection reset); New Hampshire's (empty reply); Illinois's (certificate failure).
+- Ohio's 2025 map: the commission's vote, its membership by party, and the seats it moved rest on search results only (Ballotpedia News, Columbus Dispatch via Yahoo, Bloomberg Government, WYSU).
+- North Carolina's governor's party and the rule that redistricting bills skip the governor (search results only).
+- Florida's and Tennessee's legislatures' party makeup (the atlas's Florida row implies it; Tennessee's directory returned no list).
+- Missouri's November 3, 2026 referendum result (enr.sos.mo.gov answered 403).
+- Which four states loop R4a means by "four Southern states".
+- Any state beyond Massachusetts for collisions with invented bill numbers, and whether any state has used numbers above 99,000.
+- H.4212's full six-step history.
+- The Nebraska Constitution's own text.
+- House rule XI and Senate rule XXVI (D2-423's federal clause rests on BE-01).
+- How any reader reads the meaning sheet's pictures; no drawing was made or tested.
+- Lost, Not Stolen and the Third Circuit opinion were not reopened today; section 8 quotes them from the November 7 research.
 
 ## Change log
 
-- Created `work/handoffs/phase-2/20261109_Stage-B-Research-Notes.md` (this file).
+- Created `work/handoffs/phase-2/20261109_Stage-B-Research-Notes.md` (this file). Section 1 was written first and announced to the main session; sections 2 to 8 followed.
+- Modified: none. No file in `source/`, `work/ledger/`, the asset masters, any board, the V7.1 issue list or another owner's files was touched. Nothing was committed or pushed.
+- Scratch files (contact sheets, downloads, scripts) stayed in the session scratchpad, with downloads in their own folders and scripts in a separate folder.
